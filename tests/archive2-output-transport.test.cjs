@@ -32,7 +32,7 @@ class FakeIndexedDb {
         };
         tx.objectStore = () => ({
           put: (record) => request(() => {
-            if (this.failPut) throw new DOMException("Quota exceeded", "QuotaExceededError");
+            if (this.failPut) throw new DOMException("Storage failure", typeof this.failPut === 'string' ? this.failPut : "QuotaExceededError");
             const clone = structuredClone(record);
             this.records.set(clone.outputRequestId, clone);
             return clone.outputRequestId;
@@ -157,6 +157,22 @@ test('publish and reopened consumers retain fallback output after IndexedDB reco
   assert.equal(await recovered.sweepExpired(envelope.ownerId, envelope.expiresAt), 1);
 });
 
+test('large or quota-blocked fallback outputs remain readable without a localStorage write', async () => {
+  for (const large of [false, true]) {
+    const localStorage = new MemoryStorage();
+    localStorage.setItem = () => { throw new DOMException('Storage quota exceeded', 'QuotaExceededError'); };
+    const envelope = await makeEnvelope({
+      questions: [{ questionUid: 'q-1', body: large ? 'x'.repeat(6 * 1024 * 1024) : 'small question' }],
+    });
+    const producer = output.createOutputStore(brokenIndexedDb, { crypto: webcrypto, localStorage });
+    await producer.write(envelope);
+    assert.equal(localStorage.length, 0);
+    const consumer = output.createOutputStore(brokenIndexedDb, { crypto: webcrypto, localStorage });
+    assert.deepEqual(await consumer.read(envelope.outputRequestId, envelope.ownerId, 'exam'), envelope);
+    assert.equal(await consumer.cleanup(envelope.ownerId, envelope.outputRequestId), true);
+  }
+});
+
 test("A/B request cleanup is exact and cannot delete another owner or request", async () => {
   const indexedDB = new FakeIndexedDb();
   const store = output.createOutputStore(indexedDB, { crypto: webcrypto });
@@ -219,13 +235,26 @@ test("owner cleanup stays scoped while TTL scavenging removes only expired envel
   assert.equal(indexedDB.records.has(live.outputRequestId), true, "TTL sweep must preserve all unexpired requests");
 });
 
-test("quota or serialization failures do not fall back to split browser keys", async () => {
+test("serialization failures do not fall back to split browser keys", async () => {
   const indexedDB = new FakeIndexedDb();
-  indexedDB.failPut = true;
+  indexedDB.failPut = 'DataCloneError';
   const store = output.createOutputStore(indexedDB, { crypto: webcrypto });
   const envelope = await makeEnvelope();
-  await assert.rejects(store.write(envelope), /QuotaExceededError|quota/i);
+  await assert.rejects(store.write(envelope), /DataCloneError/i);
   assert.equal(indexedDB.records.size, 0);
+});
+
+test('a full primary IndexedDB transfers one exact output in memory without another storage write', async () => {
+  const indexedDB = new FakeIndexedDb();
+  indexedDB.failPut = true;
+  const localStorage = new MemoryStorage();
+  localStorage.setItem = () => { throw new Error('must not try another quota-limited write'); };
+  const store = output.createOutputStore(indexedDB, { crypto: webcrypto, localStorage });
+  const envelope = await makeEnvelope();
+  await store.write(envelope);
+  assert.equal(localStorage.length, 0);
+  assert.deepEqual(await store.read(envelope.outputRequestId, envelope.ownerId, 'exam'), envelope);
+  assert.equal(await store.cleanup(envelope.ownerId, envelope.outputRequestId), true);
 });
 
 test("assignment envelope URLs preserve every supported frozen QPP", async () => {

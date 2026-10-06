@@ -11,6 +11,54 @@
   const ownerUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   const supportedQpp = [1, 2, 4, 6, 8];
   let memoryOwnerId = "";
+  const memoryRecords = new Map();
+  const memoryRequestType = "archive2-output-memory-request-v1";
+  const memoryResponseType = "archive2-output-memory-response-v1";
+
+  function retainMemoryRecord(record) {
+    memoryRecords.delete(record.outputRequestId);
+    memoryRecords.set(record.outputRequestId, structuredClone(record));
+    let bytes = [...memoryRecords.values()].reduce((sum, row) => sum + (row.bytes || 0), 0);
+    while (memoryRecords.size > 1 && (memoryRecords.size > 32 || bytes > 64 * 1024 * 1024)) {
+      const [id, oldest] = memoryRecords.entries().next().value;
+      memoryRecords.delete(id);
+      bytes -= oldest.bytes || 0;
+    }
+  }
+  root.addEventListener?.("message", (event) => {
+    if (event.origin !== root.location?.origin || event.data?.type !== memoryRequestType) return;
+    const { outputRequestId, ownerId, nonce } = event.data;
+    const record = memoryRecords.get(outputRequestId);
+    if (!record || record.ownerId !== ownerId || record.expiresAt <= Date.now()) return;
+    try {
+      event.source?.postMessage({ type: memoryResponseType, outputRequestId, ownerId, nonce, record }, event.origin);
+    } catch {}
+  });
+
+  function requestMemoryRecord(outputRequestId, ownerId, cryptoApi) {
+    const peers = [...new Set([root.opener, root.parent !== root ? root.parent : null].filter(Boolean))];
+    if (!peers.length || !root.addEventListener || !root.location?.origin) return Promise.resolve(null);
+    return new Promise((resolve) => {
+      const nonce = cryptoApi.randomUUID();
+      const finish = (record) => {
+        root.removeEventListener("message", receive);
+        clearTimeout(timer);
+        resolve(record);
+      };
+      const receive = (event) => {
+        const data = event.data;
+        if (event.origin !== root.location.origin || !peers.includes(event.source) ||
+            data?.type !== memoryResponseType || data.nonce !== nonce ||
+            data.outputRequestId !== outputRequestId || data.ownerId !== ownerId) return;
+        finish(data.record);
+      };
+      const timer = setTimeout(() => finish(null), 2000);
+      root.addEventListener("message", receive);
+      for (const peer of peers) {
+        try { peer.postMessage({ type: memoryRequestType, outputRequestId, ownerId, nonce }, root.location.origin); } catch {}
+      }
+    });
+  }
 
   function contractApi() {
     if (root.Archive2OutputContract) return root.Archive2OutputContract;
@@ -29,7 +77,9 @@
 
   function openOutputDatabase(indexedDBApi) {
     if (!indexedDBApi?.open) {
-      return Promise.reject(new Error("이 브라우저에서 임시 출력 저장소를 사용할 수 없습니다. 다시 열어 주세요."));
+      const error = new Error("이 브라우저에서 임시 출력 저장소를 사용할 수 없습니다. 다시 열어 주세요.");
+      error.name = "OutputStorageUnavailableError";
+      return Promise.reject(error);
     }
     return new Promise((resolve, reject) => {
       let request;
@@ -90,7 +140,7 @@
       fallbackStorage = options.localStorage || root.localStorage;
       fallbackStorage?.getItem(fallbackPrefix + "availability");
     } catch { fallbackStorage = undefined; }
-    const canFallback = error => error?.name === "UnknownError" && fallbackStorage;
+    const canFallback = error => ["UnknownError", "QuotaExceededError", "SecurityError", "InvalidStateError", "OutputStorageUnavailableError"].includes(error?.name);
     const fallbackKey = id => fallbackPrefix + id;
     const fallbackRecord = id => {
       const value = fallbackStorage?.getItem(fallbackKey(id));
@@ -112,13 +162,26 @@
         };
         try {
           await withOutputStore(indexedDBApi, "readwrite", (store) => store.put(record));
+          memoryRecords.delete(envelope.outputRequestId);
           fallbackStorage?.removeItem(fallbackKey(envelope.outputRequestId));
         } catch (error) {
           // Some browser profiles cannot open IndexedDB (Internal error).
           // Keep the complete sealed envelope in one atomic same-origin key;
           // consumers still verify owner, mode, expiry and payload hash.
           if (canFallback(error)) {
-            fallbackStorage.setItem(fallbackKey(envelope.outputRequestId), JSON.stringify(record));
+            // Small records can survive a refresh through one atomic key.
+            // Large/image-heavy records or a full/blocked Storage are handed
+            // directly to a same-origin child window without serializing them
+            // into a quota-limited browser key.
+            let persisted = false;
+            if (error.name !== "QuotaExceededError" && fallbackStorage && record.bytes <= 128 * 1024) {
+              try {
+                fallbackStorage.setItem(fallbackKey(envelope.outputRequestId), JSON.stringify(record));
+                persisted = true;
+              } catch {}
+            }
+            if (!persisted) retainMemoryRecord(record);
+            else memoryRecords.delete(envelope.outputRequestId);
             return { outputRequestId: envelope.outputRequestId, ownerId: envelope.ownerId, ...metrics };
           }
           const name = error?.name || "";
@@ -132,8 +195,16 @@
         return { outputRequestId: envelope.outputRequestId, ownerId: envelope.ownerId, ...metrics };
       },
       async read(outputRequestId, ownerId, mode, readOptions = {}) {
-        const record = fallbackRecord(outputRequestId) ||
-          await withOutputStore(indexedDBApi, "readonly", (store) => store.get(outputRequestId));
+        let fromPeer = false;
+        let record = fallbackRecord(outputRequestId) || memoryRecords.get(outputRequestId);
+        if (!record) {
+          try { record = await withOutputStore(indexedDBApi, "readonly", (store) => store.get(outputRequestId)); }
+          catch (error) { if (!canFallback(error)) throw error; }
+          if (!record) {
+            record = await requestMemoryRecord(outputRequestId, ownerId, cryptoApi);
+            fromPeer = Boolean(record);
+          }
+        }
         if (!record) throw new Error("출력 envelope를 찾을 수 없습니다. 원본에서 다시 열어 주세요.");
         if (record.outputRequestId !== outputRequestId || record.ownerId !== ownerId)
           throw new Error("출력 요청 identity가 일치하지 않습니다. 원본에서 다시 열어 주세요.");
@@ -148,32 +219,50 @@
           { outputRequestId, ownerId, mode, now: readOptions.now },
           cryptoApi,
         );
+        if (fromPeer) retainMemoryRecord(record);
         return record.envelope;
       },
       async cleanup(ownerId, outputRequestId) {
+        const memory = memoryRecords.get(outputRequestId);
+        if (memory) {
+          if (memory.ownerId !== ownerId) return false;
+          memoryRecords.delete(outputRequestId);
+          return true;
+        }
         const fallback = fallbackRecord(outputRequestId);
         if (fallback) {
           if (fallback.ownerId !== ownerId || fallback.outputRequestId !== outputRequestId) return false;
           fallbackStorage.removeItem(fallbackKey(outputRequestId));
           return true;
         }
-        return withOutputStore(indexedDBApi, "readwrite", (store, setResult) => {
-          const request = store.get(outputRequestId);
-          request.onsuccess = () => {
-            const record = request.result;
-            if (record?.ownerId === ownerId && record.outputRequestId === outputRequestId) {
-              store.delete(outputRequestId);
-              setResult(true);
-            } else {
-              setResult(false);
-            }
-          };
-          return request;
-        });
+        try {
+          return await withOutputStore(indexedDBApi, "readwrite", (store, setResult) => {
+            const request = store.get(outputRequestId);
+            request.onsuccess = () => {
+              const record = request.result;
+              if (record?.ownerId === ownerId && record.outputRequestId === outputRequestId) {
+                store.delete(outputRequestId);
+                setResult(true);
+              } else {
+                setResult(false);
+              }
+            };
+            return request;
+          });
+        } catch (error) {
+          if (canFallback(error)) return false;
+          throw error;
+        }
       },
       async sweepExpired(ownerId, now = Date.now()) {
         if (ownerId && !ownerUuid.test(String(ownerId))) throw new Error("ownerId is invalid for output cleanup.");
         let fallbackRemoved = 0;
+        for (const [id, record] of memoryRecords) {
+          if ((!ownerId || record.ownerId === ownerId) && record.expiresAt <= now) {
+            memoryRecords.delete(id);
+            fallbackRemoved++;
+          }
+        }
         const fallbackKeys = [];
         for (let index = 0; index < (fallbackStorage?.length || 0); index++) {
           const key = fallbackStorage.key(index);
@@ -402,7 +491,7 @@
     url.searchParams.set("archive2Context", "archive2");
     url.searchParams.set("archive2OutputContract", contractApi().CONTRACT_VERSION);
     // Static hosts may retain an older inline engine at the unversioned URL.
-    url.searchParams.set("v", "20261006-output-storage-recovery-1");
+    url.searchParams.set("v", "20261006-storage-independent-output-2");
     return url;
   }
   function outputEnvelopeUrl(path, base, envelope, options = {}) {

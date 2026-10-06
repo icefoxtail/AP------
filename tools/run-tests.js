@@ -32,6 +32,18 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive2-preview-feedback.test.cjs',
+    args: ['--test', 'tests/archive2-preview-feedback.test.cjs']
+  },
+  {
+    label: 'tests/archive2-output-memory-bridge.test.cjs',
+    args: ['--test', 'tests/archive2-output-memory-bridge.test.cjs']
+  },
+  {
+    label: 'tests/archive2-unit-envelope-handoff.test.cjs',
+    args: ['--test', 'tests/archive2-unit-envelope-handoff.test.cjs']
+  },
+  {
     label: 'tests/archive2-original-source-route.test.cjs',
     args: ['--test', 'tests/archive2-original-source-route.test.cjs']
   },

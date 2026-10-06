@@ -315,8 +315,9 @@
           L2: text(assignment.L2),
         }
       : null;
+    const parentKey = parent && pathKey(parent, BASIC_PARENT_FIELDS);
     const canonicalParentExists = parent && (authority.canonicalParents || []).some(
-      (candidate) => pathKey(candidate, BASIC_PARENT_FIELDS) === pathKey(parent, BASIC_PARENT_FIELDS),
+      (candidate) => pathKey(candidate, BASIC_PARENT_FIELDS) === parentKey,
     );
     if (!canonicalParentExists) reasons.push("canonical_parent_missing");
 

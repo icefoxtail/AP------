@@ -2747,6 +2747,8 @@ function getIndexAssignmentArchiveFile(item) {
 
 function getIndexAssignmentMixedPayload(item) {
     if (!isUnitPastExamItem(item)) return '';
+    if (Array.isArray(item?.outputSnapshot?.questions) && item.outputSnapshot.questions.length && item.outputSnapshot.meta)
+        return JSON.stringify(item.outputSnapshot);
     const key = String(item?.unitPastSnapshotKey || '').trim();
     if (!key) return '';
     try {
@@ -3687,8 +3689,9 @@ function goUnitPastMixedEngine(item, action, qpp, options = {}) {
         if (!popup) { alert('새 창을 허용한 뒤 다시 출력해 주세요.'); return; }
         void (async () => {
             try {
-                const questions = JSON.parse(localStorage.getItem(`mixedQuestions_${snapshotKey}`) || '[]');
-                const storedMeta = JSON.parse(localStorage.getItem(`mixedMeta_${snapshotKey}`) || '{}');
+                const snapshot = item.outputSnapshot || await window.Archive2Output.readOutputEnvelope(item.outputRequestId, item.outputOwnerId, 'exam');
+                const questions = snapshot.questions;
+                const storedMeta = snapshot.meta;
                 if (!Array.isArray(questions) || !questions.length) throw new Error('단원별 기출 데이터가 만료되었습니다. 단원별 기출 화면에서 다시 준비해 주세요.');
                 const meta = { ...storedMeta, qpp: Number(qpp || storedMeta.qpp || 4) };
                 const envelope = await window.Archive2Output.publishOutputEnvelope({
@@ -3763,14 +3766,34 @@ async function openPendingUnitPastAssignmentFromUrl() {
     if (!snapshotKey || !/^[a-zA-Z0-9_-]+$/.test(snapshotKey)) return;
     const pendingKey = `APMATH_UNIT_PAST_ASSIGN_${snapshotKey}`;
     let item = null;
-    try { item = JSON.parse(localStorage.getItem(pendingKey) || 'null'); } catch (e) {}
-    const rawQuestions = localStorage.getItem(`mixedQuestions_${snapshotKey}`);
-    if (!item || !rawQuestions) {
-        alert('출제할 단원별 기출 데이터가 없습니다. 단원별 기출 화면에서 다시 선택해 주세요.');
-        return;
-    }
     let questions = [];
-    try { questions = JSON.parse(rawQuestions) || []; } catch (e) {}
+    const outputRequestId = url.searchParams.get('outputRequestId');
+    const outputOwnerId = url.searchParams.get('outputOwnerId');
+    if (outputRequestId && outputOwnerId) {
+        try {
+            const envelope = await window.Archive2Output.readOutputEnvelope(outputRequestId, outputOwnerId, 'exam');
+            questions = envelope.questions;
+            const meta = envelope.meta;
+            item = {
+                ...meta, unitPast: true, title: meta.title || meta.identityTitle,
+                identityTitle: meta.identityTitle || meta.title, topic: meta.title,
+                qCount: envelope.questionCount, count: envelope.questionCount,
+                source_type: 'mixed', outputRequestId, outputOwnerId,
+                outputSnapshot: { questions, meta }, outputMeta: meta,
+            };
+        } catch (error) {
+            alert(error?.message || '출제할 단원별 기출을 다시 준비해 주세요.');
+            return;
+        }
+    } else {
+        try { item = JSON.parse(localStorage.getItem(pendingKey) || 'null'); } catch (e) {}
+        const rawQuestions = localStorage.getItem(`mixedQuestions_${snapshotKey}`);
+        if (!item || !rawQuestions) {
+            alert('출제할 단원별 기출 데이터가 없습니다. 단원별 기출 화면에서 다시 선택해 주세요.');
+            return;
+        }
+        try { questions = JSON.parse(rawQuestions) || []; } catch (e) {}
+    }
     item.unitPastSnapshotKey = snapshotKey;
     item.qCount = Number(item.qCount || questions.length || 0);
     item.count = item.qCount;
@@ -3778,6 +3801,8 @@ async function openPendingUnitPastAssignmentFromUrl() {
     _pendingQpp = Math.max(1, Number(url.searchParams.get('qpp')) || 4);
     url.searchParams.delete('unitPastAssign');
     url.searchParams.delete('qpp');
+    url.searchParams.delete('outputRequestId');
+    url.searchParams.delete('outputOwnerId');
     history.replaceState(null, '', url.toString());
     localStorage.removeItem(pendingKey);
     await openAssignTargetPanel(item, _pendingQpp);
@@ -3799,7 +3824,7 @@ window.onload = function () {
 <script src="archive2-history.js?v=20261004-class-grade-fallback-1"></script>
 <script src="archive2-source.js"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-<script src="archive2-output.js?v=20261006-output-storage-recovery-1"></script>
+<script src="archive2-output.js?v=20261006-storage-independent-output-2"></script>
 <script src="archive2-entry.js?v=20261003-navigation-s5-1"></script>
 </body>
 </html>
