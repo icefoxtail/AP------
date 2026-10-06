@@ -25,7 +25,7 @@ New engine attempts now write under `.tmp/archive/<runId>/<examUid>/visual-engin
 
 The workspace is carried with `AsyncLocalStorage`, so concurrent runs do not share a process-global path. A frozen calculation replay uses the same workspace identity to retain valid calculation cache bytes while writing fresh audit/result receipts. The regression suite checks concurrent writes, path traversal, redirects, immutable receipts, and cache reuse.
 
-This closes only the workspace boundary. The existing production runner still uses a guessed/full-size envelope and does not yet resolve actual Archive dimensions before layout.
+This checkpoint closed the workspace boundary. Phase 3A runner integration is recorded below.
 
 ### Phase 3A preflight measurement
 
@@ -41,10 +41,18 @@ This is a pre-layout constraint measurement only. It does not establish candidat
 - Static publication fixtures: 5/5 pass.
 - Standalone Chromium layout: 5/5 pass at 390 CSS px; minimum observed label font 16.25 CSS px.
 - Actual Archive desktop solution-mode fixture: 5/5 synthetic rows pass. Each final relative asset reference loaded the mapped temporary SVG; measured image box was 298.15625 × 298.15625 CSS px and minimum audited font was 12.423 CSS px.
-- DisplayEnvelope planning/final-audit contract: 16/16 fixture logic tests pass; these are not actual-profile evidence. Corrected actual source-page CSS preflight: 3/3 measurement rows pass, with no candidate SVG support verdict.
+- DisplayEnvelope planning/final-audit contract: 17/17 fixture logic tests pass; these are not actual-profile evidence. Corrected actual source-page CSS preflight: 3/3 measurement rows pass, with no candidate SVG support verdict.
 - `git diff --check`: pass.
 
 The Archive capture is synthetic workspace-integration evidence, not real-UID qualification. It observed an external qrious CDN request and therefore does not prove offline runtime closure. Raw logs, result summaries, SVG layout crops, screenshots, and the authority search are in the linked evidence package; the artifact-manifest SHA-256 is `d0df9f369f5d090b2cdc08e63d80f9a34973a8a095b3fbda55533ed4aa6f1957`.
+
+### Phase 3A candidate profile replay
+
+The runner now binds the measured Archive envelope before layout, captures the unchanged BUILD SVG at all four CSS profiles, measures every rendered label and stroke, runs a profile-specific topology audit, and compares the selected class against the final loaded Archive image and raw row. On Geometry q1 (`25_효천고_2학기_중간_고1_기출|1`), the current default medium profile measured 9.0625 CSS px and failed the 11px floor; large passed at 11.25 px and full passed at 15.5282 px. The temporary candidate bank records medium→large, and Actual Archive confirmed the selected image at 216×180 CSS px. The same candidate SVG SHA-256 was used across all four profile captures and the Archive image.
+
+The result remains `EXPERIMENTAL_LOCATOR_COMPLETE`. The v2 UID authority is still missing, so q1 is excluded from all qualification counts. `auditSlice` rechecked the profile receipts and final Archive capture and reported only the expected canonical UID authority/completion failures. The [q1 profile-run ledger](../evidence/apmath-visual-production-phase3-5/experimental-locator-geometry-q01/profile-run-ledger.json) and [evidence manifest](../evidence/apmath-visual-production-phase3-5/experimental-locator-geometry-q01/evidence-manifest.json) include the raw screenshots, profile measurements, stage receipts, and attempt/replay lineage.
+
+The ledger preserves six fixed-plan replays in the same run: the initial Unicode URL lookup failure; a pre-envelope baseline pass; the first profile identity-order failure; the raw Archive row filename failure; the repeated policy-ref ordering failure at final comparison; and the final successful profile/Archive/visual-review pass. All six BUILD receipts have the same candidate SVG SHA-256. The shared budget was not reset; no provider plan repair, content repair, or direct SVG patch was made. The two policy-order failures share one recorded root-cause group.
 
 ## Canonical Phase 2 authority
 
@@ -56,4 +64,4 @@ The canonical CLI attempts for Geometry UID `25_효천고_2학기_중간_고1_�
 
 ## Next unit
 
-Proceed to Phase 3A runner integration: resolve the measured envelope before layout, render the final candidate at each measured profile size, and compute the actual minimum from every candidate label while retaining stroke and graph-topology results per profile. Then compare the selected envelope against the loaded target image in the final Archive capture. Keep medium failures visible even when large or full passes. Phase 4 and Phase 5 work follows only after the remaining Phase 3 units are addressed or recorded as unresolved.
+Run the same experimental candidate profile slice for the real-source Graph q10 locator and coordinate-free Geometry q1. Keep any unsupported output or missing authority explicit. Phase 3B/C/D/E, the complete capability matrix, Phase 4 expansion, and Phase 5 qualification coverage remain open.

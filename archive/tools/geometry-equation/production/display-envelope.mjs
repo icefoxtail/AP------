@@ -84,6 +84,17 @@ function verifyActualArchivePreflight(root,preflightEvidence,{questionUid,source
   return measurement;
 }
 
+function verifyPlannedPreflight(root,plannedEnvelope){
+  if(!plannedEnvelope.preflightEvidence||objectSha(plannedEnvelope.preflightEvidence)!==plannedEnvelope.preflightEvidenceSha256)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_IDENTITY_INVALID');
+  const preflight=verifyActualArchivePreflight(root,plannedEnvelope.preflightEvidence,{questionUid:plannedEnvelope.questionUid,sourceRef:plannedEnvelope.sourceRef,archiveEngineSha256:plannedEnvelope.archiveEngineSha256});
+  if(!same(preflight.observation.qBoxRect,plannedEnvelope.container.qBoxRect)||!same(preflight.observation.solutionMetaRect,plannedEnvelope.container.solutionMetaRect)||preflight.observation.solutionMetaContentWidth!==plannedEnvelope.container.solutionMetaContentWidth)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_CONTAINER_MISMATCH');
+  for(const profile of plannedEnvelope.profiles){
+    const observed=preflight.observation.profiles.find(value=>value.sizeClass===profile.sizeClass);
+    if(!observed||observed.status!==profile.status||!same(observed.imageRect,profile.imageRect)||!same(observed.computedStyle,profile.computedStyle)||observed.naturalWidth!==profile.naturalWidth||observed.naturalHeight!==profile.naturalHeight||profile.profilePolicySha256!==objectSha(observed.computedStyle))throw Error('DISPLAY_ENVELOPE_PREFLIGHT_PROFILE_MISMATCH:'+profile.sizeClass);
+  }
+  return preflight;
+}
+
 function crc32(bytes){
   let crc=0xffffffff;
   for(const byte of bytes){crc^=byte;for(let bit=0;bit<8;bit++)crc=(crc&1)?(crc>>>1)^0xedb88320:crc>>>1;}
@@ -148,6 +159,7 @@ function profileAuditErrors({audit,measurement,screenshotRef,plannedProfile,plan
   if(measurement.questionUid!==plannedEnvelope.questionUid)errors.push('PROFILE_QUESTION_IDENTITY_MISMATCH');
   if(!same(measurement.candidateSvgRef,candidateSvgRef)||measurement.candidateSvgSha256!==candidateSvgRef.sha256)errors.push('PROFILE_CANDIDATE_SVG_BINDING_MISMATCH');
   if(measurement.naturalWidth!==candidateIntrinsic.width||measurement.naturalHeight!==candidateIntrinsic.height)errors.push('PROFILE_CANDIDATE_INTRINSIC_MISMATCH');
+  if(measurement.rawCapture?.viewBox?.width!==candidateIntrinsic.width||measurement.rawCapture?.viewBox?.height!==candidateIntrinsic.height||!finiteRect(measurement.rawCapture?.svg)||!near(measurement.rawCapture.svg.width,plannedProfile.imageRect.width,1)||!near(measurement.rawCapture.svg.height,plannedProfile.imageRect.height,1))errors.push('PROFILE_BROWSER_CANDIDATE_RENDER_MISMATCH');
   if(!same(measurement.sourceRef,identity.sourceRef)||!same(measurement.solutionRef,identity.solutionRef)||!same(measurement.policyRefs,identity.policyRefs)||measurement.inputIdentitySha256!==plannedEnvelope.inputIdentitySha256)errors.push('PROFILE_SOURCE_SOLUTION_POLICY_IDENTITY_MISMATCH');
   if(!finiteRect(measurement.imageRect)||!near(measurement.imageRect.width,plannedProfile.imageRect.width,1)||!near(measurement.imageRect.height,plannedProfile.imageRect.height,1))errors.push('PROFILE_IMAGE_RECT_MISMATCH');
   if(!same(measurement.computedStyle,plannedProfile.computedStyle)||measurement.profilePolicySha256!==plannedProfile.profilePolicySha256)errors.push('PROFILE_DISPLAY_POLICY_MISMATCH');
@@ -206,6 +218,7 @@ export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium
 export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,profileAudits}={}){
   if(plannedEnvelope?.schemaVersion!=='DISPLAY_ENVELOPE_v1'||!['PLANNED','PLANNED_RECOMPOSITION_REQUIRED'].includes(plannedEnvelope.status)||!Array.isArray(profileAudits)||!root)throw Error('DISPLAY_ENVELOPE_PLAN_REQUIRED');
   const identity=verifyInputIdentity(root,plannedEnvelope);
+  verifyPlannedPreflight(root,plannedEnvelope);
   if(!validRef(candidateSvgRef)||!candidateSvgRef.path.endsWith('.svg'))throw Error('DISPLAY_ENVELOPE_CANDIDATE_SVG_REF_REQUIRED');
   const svgBytes=readBoundFile(root,candidateSvgRef);
   const candidateIntrinsic=svgIntrinsic(svgBytes);
@@ -245,7 +258,7 @@ export function qualifyDisplayEnvelope(plannedEnvelope,{root,candidateSvgRef,pro
       else errors.push(...checkProfileWorkerArtifact(root,measurement.topologyEvidenceRef,{kind:'TOPOLOGY',plannedProfile,plannedEnvelope,candidateSvgRef}));
     }
     const strokes=measurement?.strokeMeasurements;
-    const strokeBindingsValid=Array.isArray(strokes)&&strokes.length>0&&strokes.every(row=>typeof row?.id==='string'&&row.id&&row.sizeClass===plannedProfile.sizeClass&&row.candidateSvgSha256===candidateSvgRef.sha256&&row.inputIdentitySha256===plannedEnvelope.inputIdentitySha256&&Number.isFinite(row.finalViewportCssStrokePx)&&row.finalViewportCssStrokePx>0);
+    const strokeBindingsValid=Array.isArray(strokes)&&strokes.length>0&&strokes.every(row=>typeof row?.id==='string'&&row.id&&row.sizeClass===plannedProfile.sizeClass&&row.candidateSvgSha256===candidateSvgRef.sha256&&row.inputIdentitySha256===plannedEnvelope.inputIdentitySha256&&Number.isFinite(row.finalViewportCssStrokePx)&&row.finalViewportCssStrokePx>=0)&&strokes.some(row=>row.finalViewportCssStrokePx>0);
     if(measurement?.strokeStatus!=='PASS'||!strokeBindingsValid)errors.push('STROKE_PROFILE_AUDIT_FAIL');
     const auditErrors=[...(measurement?.errors||[]),...errors];
     return {
@@ -298,7 +311,7 @@ export function compareActualDisplayEnvelope(envelope,{root,actualRef}={}, {tole
         const target=(row.state?.targets||[]).find(value=>value.id===actual.targetId);
         if(!target||target.loaded!==true||target.sizeClass!==actual.sizeClass||!same(target.rect,actual.imageRect)||!same(target.solutionMetaRect,actual.solutionMetaRect)||target.solutionMetaContentWidth!==actual.solutionMetaContentWidth||!same(target.qBoxRect,actual.qBoxRect)||!same(target.computedStyle,actual.computedStyle)||target.naturalWidth!==candidateIntrinsic?.width||target.naturalHeight!==candidateIntrinsic?.height)errors.push('ACTUAL_DISPLAY_ARCHIVE_TARGET_MISMATCH');
         if(!expectedPath||decodedUrlPath(target?.src)!==expectedPath)errors.push('ACTUAL_DISPLAY_ARCHIVE_ASSET_PATH_MISMATCH');
-        const responseVerified=(row.responses||[]).some(response=>response.status===200&&response.sha256===envelope.candidateSvgRef.sha256&&decodedUrlPath(response.url)===expectedPath);
+        const responseVerified=(row.responses||[]).some(response=>response.status===200&&response.sha256===envelope.candidateSvgRef.sha256.slice(7)&&decodedUrlPath(response.url)===expectedPath);
         if(!responseVerified)errors.push('ACTUAL_DISPLAY_ARCHIVE_ASSET_SHA_MISMATCH');
       }catch{errors.push('ACTUAL_DISPLAY_ARCHIVE_ROW_REF_INVALID');}
     }
