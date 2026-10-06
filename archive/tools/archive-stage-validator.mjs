@@ -10,6 +10,7 @@ import {
   validateTargetedR2Evidence,
 } from './archive-stage-validator-compat-v1.mjs';
 import { V2_EVIDENCE_SCHEMA } from './archive-stage-validator-common-v2.mjs';
+import { validateArtifactContract } from './archive-stage-validator-artifact-v2.mjs';
 import { validateCreateEvidence } from './archive-stage-validator-create-v2.mjs';
 import { validateR1Evidence } from './archive-stage-validator-r1-v2.mjs';
 import { validateR2Evidence } from './archive-stage-validator-r2-v2.mjs';
@@ -53,6 +54,7 @@ function loadV2ExamBinding(examFile) {
 
   return {
     actualArtifactSha: gitBlobSha(bytes),
+    questions,
     expectedQids: questions.map(question => Number(question?.id)).filter(Number.isInteger),
   };
 }
@@ -63,7 +65,7 @@ function validateV2Evidence({ evidence, evidenceFile, examFile, stage }) {
   if (!validator) return null;
 
   const binding = loadV2ExamBinding(examFile);
-  return validator({
+  const stageReport = validator({
     examUid: evidence?.examUid,
     artifactSha: evidence?.artifactSha,
     actualArtifactSha: binding.actualArtifactSha,
@@ -71,6 +73,22 @@ function validateV2Evidence({ evidence, evidenceFile, examFile, stage }) {
     evidence,
     expectedQids: binding.expectedQids,
   });
+
+  const artifactContract = validateArtifactContract({
+    stage: normalizedStage,
+    evidence,
+    questions: binding.questions,
+  });
+  if (!artifactContract.active) return stageReport;
+
+  const issues = [...stageReport.issues, ...artifactContract.issues];
+  return {
+    ...stageReport,
+    ok: issues.length === 0,
+    disposition: issues.length ? 'FAIL' : 'PASS',
+    artifactContract,
+    issues,
+  };
 }
 
 export function validateStageEvidence({ examFile, evidenceFile, stage }) {
