@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_CANCEL_RECOVERY_v1",
+  "unit": "abortsignal-python-worker-calculation-stage-recovery",
+  "status": "PASS",
+  "acceptance": "A caller AbortSignal issued after the Python child confirms startup terminates the worker and rejects with WORKER_CANCELLED. The interrupted calculation stage leaves no receipt, lock, or staging residue. Same-key recovery recomputes and commits complete bytes; a warm call may reuse only those bytes.",
+  "observed": {
+    "focusedRuns": 10,
+    "focusedPasses": 10,
+    "focusedFailures": 0,
+    "workerStartedConfirmed": true,
+    "abortIssuedAfterStart": true,
+    "cancelError": "WORKER_CANCELLED",
+    "workerCloseAwaitedBeforeReject": true,
+    "stageLoadableAfterCancel": false,
+    "lockPresentAfterCancel": false,
+    "stagingResidueAfterCancel": false,
+    "recoveryCacheHit": false,
+    "recoveryProducerCalls": 1,
+    "recoveredOutput": "\"recovered-after-cancel\"",
+    "warmCacheHit": true,
+    "warmProducerCalls": 0,
+    "warmOutput": "\"recovered-after-cancel\"",
+    "regressionTests": 55,
+    "regressionPasses": 55,
+    "regressionFailures": 0,
+    "pythonTests": 141,
+    "pythonFailures": 0
+  },
+  "focusedRun": {
+    "passed": 10,
+    "failed": 0,
+    "log": {
+      "path": "logs/worker-cancel-focused-10x.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-cancel-recovery\\worker-cancel\\visual-engine\\production\\worker-cancel-focused-10x.log",
+      "bytes": 2539,
+      "sha256": "sha256:4421ba22435ea3e7a5b9115129fd3a18e6a0be1cb6aa1c79132e81f3d53b32b7",
+      "command": "node --test --test-name-pattern=\"cancellation terminates its worker\" archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs (10 repetitions)"
+    }
+  },
+  "regressionSubset": {
+    "passed": 55,
+    "failed": 0,
+    "nodeVersion": "v24.14.1",
+    "log": {
+      "path": "logs/phase3d-cancel-node-regression.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-cancel-recovery\\worker-cancel\\visual-engine\\production\\phase3d-cancel-node-regression.log",
+      "bytes": 5999,
+      "sha256": "sha256:acbe57fdc2678ab8ce6ae51209af94a86c945fc7ffb0d3fed2c71289e3368b49",
+      "command": "node --test Phase3D six test files plus worker-cancel-recovery and repair-budget-replay"
+    }
+  },
+  "pythonSuite": {
+    "passed": 141,
+    "failed": 0,
+    "log": {
+      "path": "logs/phase3d-cancel-python-regression.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-cancel-recovery\\worker-cancel\\visual-engine\\production\\phase3d-cancel-python-regression.log",
+      "bytes": 337,
+      "sha256": "sha256:c6bc80df887a868c0a12ce511e095db9e29c3f687ea570a96073379488327212",
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py"
+    }
+  },
+  "implementation": {
+    "codeRefs": [
+      {
+        "path": "archive/tools/geometry-equation/production/worker.mjs",
+        "bytes": 2163,
+        "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/store.mjs",
+        "bytes": 7756,
+        "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+      },
+      {
+        "path": "archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs",
+        "bytes": 3472,
+        "sha256": "sha256:99f03033492c0f7549706d40e9639a0be8070e0b633fd613990d5e2e170d7477"
+      }
+    ],
+    "testName": "cancellation terminates its worker and leaves the calculation key recoverable"
+  },
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic isolated temp workspace; no student candidate modified",
+  "openDebt": [
+    "Browser/server cancellation and process-group cleanup are separate.",
+    "Provider timeout/recovery and malformed worker protocol remain separate.",
+    "The worker implementation changes the shared scope fingerprint; the same three frozen source plans were replayed under the new fingerprint in the linked P3E refresh package.",
+    "Canonical current-UID execution remains INPUT_REQUIRED."
+  ],
+  "lastUpdatedUtc": "2026-10-06T11:19:11.130Z"
+}
