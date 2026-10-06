@@ -50,6 +50,13 @@ problem image 표시 크기·배치, 선택지 block/column, 실제 가독성에
 **AUTO-FIRST:** 자동 choice/image/layout이 적정하면 `choiceColumns`, `imageSize`, `layoutTag`, `wide`를 불필요하게 추가·변경하지 않는다.
 수동 override는 actual render evidence 또는 deterministic 표시 결함이 있을 때만 사용한다. render 미실행 GPT는 추측 override보다 `NOT_RUN_CODEX_HANDOFF`를 우선한다.
 
+### 의미 경계 개행 — 2026 고등 시험지 파일럿 보강
+
+- 발문이 수학 대상이나 조건을 소개한 뒤 새 행렬 정의·등식·직선을 이어서 제시하면, actual render에서 두 의미 단위가 한 줄에 붙어 읽기 어려운 경우 다음 단위 앞에 최소 개행을 둔다. 예: `함수 $y=f(x)$의 그래프와` 다음에 `직선 $y=g(x)$`를 두고, 행렬 나열에서는 별도 정의가 시작되는 위치를 살핀다.
+- 첫 행렬 뒤 두 번째 행렬식, 두 행렬의 곱 `AB`, (가)/(나) 정의처럼 독립적으로 읽어야 하는 완결 수식 단위를 경계로 삼을 수 있다. 해당 시험지의 실제 폭과 줄바꿈을 확인한 뒤 필요한 문항에만 적용한다.
+- 개행은 `$...$` 바깥에 둔다. 수식 내부의 등식·조건·좌표·단위는 쪼개지 않는다. 쉼표 뒤에 개행을 넣어도 원문 쉼표와 공백을 보존하고, 개행만으로 문장·식·조건의 순서를 바꾸지 않는다.
+- 이 예시는 의미 경계를 찾는 회귀 참고다. 문항 번호, 긴 문장, 수식의 존재를 기준으로 자동 또는 일괄 개행하지 않는다.
+
 ## 5. FORMULA / NESTED STRUCTURE
 
 - `$...$` 내부 조판 newline 금지
@@ -58,6 +65,11 @@ problem image 표시 크기·배치, 선택지 block/column, 실제 가독성에
 - 완결된 수식 단위 전/후를 break point로 사용
 - (가)/(나), ㄱ/ㄴ/ㄷ, (1)/(2), ①/②, 경우, 별도 정의/참고문/조건 계층 표시
 - 이미 note-box/view-box/table로 정상 구조화됐으면 중복 wrapper 금지
+
+### MathJax 수식과 HTML placeholder
+
+- HTML 요소를 `$...$` MathJax 구간 안에 넣지 않는다. 특히 `style` 속성의 `#` 같은 HTML/CSS 문자가 TeX에 들어가면 actual exam render에서 `MATH_TYPESET_ERROR`를 일으킬 수 있다.
+- 수식 안에 (가)/(나) 입력 상자가 필요하면 완결 수식 앞뒤에서 MathJax 구간을 닫고, 상자 `<span>`은 수식 바깥에 둔 뒤 다음 수식 구간을 연다. 상자 안의 표기와 수식의 학생 노출 문자는 그대로 보존하고 엔진 재렌더로 확인한다.
 
 ## 6. problem asset / choices / page flow
 
@@ -99,6 +111,8 @@ actual render는 필수 전제조건이 아니다. GPT/예약/Codex가 렌더를
 승격 시 ledger의 `reason`에는 최소한 `grid slot + prompt/asset/subquestion occupancy → writing-space insufficient`의 구체적 근거를 남긴다.
 
 `subjective-2up`으로도 실제 render에서 부족한 특수 문항은 자동 `subjective-4up`/fullwidth로 확대하지 않고 HOLD/후속 엔진 개선 대상으로 분리한다.
+
+2026-10-06 고등 10시험지 파일럿에서 사용자가 지정한 `26_팔마고_1학기_기말_고1` q21/q22와 `26_순천고_1학기_기말_고2_대수` q20에 `subjective-2up`을 적용했다. 이는 해당 qid에 대한 명시 지시 사례이며, 비슷한 문항 전체의 자동 승격 근거가 아니다. 순천고 고2 q20에는 problem `image`가 없으므로 이미지 크기 override는 적용할 수 없다.
 
 #### 6-3. 내부 소문항 구조와 외부 layout 분리
 
@@ -187,6 +201,14 @@ aggregate 최소: `denominator, KEEP/POLISH/REFORMAT/HOLD, modifiedQuestionIds[]
 초기 qualification:
 - 중1 25 풍덕중 2학기 중간: q12, q13, q21, q23/q24/q25
 - 고1 25 제일고 2학기 중간: q15~q18, q19~q22
+
+2026-10-06 고등 10시험지 QUESTION MICRO_LAYOUT 파일럿 — main 반영 commit `9e3ea0f892c9d784c147004aece7b19d02f77fd1`:
+- 질문 경계: `26_효천고_1학기_기말_고1` q24에서 `함수 $y=f(x)$의 그래프와` 다음에 `직선 $y=g(x)$`를 새 줄로 시작했다.
+- 독립 수식 정의 경계: `26_순천여고_1학기_기말_고1` q4/q7, `26_순천고_1학기_기말_고1` q2, `26_복성고_1학기_기말_고1` q3/q6/q17/q19/q20에서 행렬·등식·조건이 시작되는 경계를 최소 개행으로 드러냈다.
+- formula/HTML 오류: `26_팔마고_1학기_기말_고2_대수` q12의 `(가)/(나)` span을 MathJax 구간 밖에 두어 `MATH_TYPESET_ERROR`를 해결했다. 학생 노출 식과 상자 문구는 보존했다.
+- `26_순천고_1학기_기말_고2_대수` q17은 두 수식 정의를 분리하고 q20은 명시 지시로 `subjective-2up`을 적용했다.
+- 범위: 10개 시험지 모두 Archive exam engine `qpp=4`에서 문항 표시를 확인했다. 이 파일럿은 solution/answer mode 또는 mobile viewport qualification을 뜻하지 않는다. 10/10 denominator, 15 changed qids, `SOURCE_TEXT_EXACT_PARITY`와 choices parity를 확인했다.
+- 이 목록은 개별 의미 경계 예시다. 문자 수·문장 길이·수식 개수로 줄바꿈/2up을 자동 분류하는 규칙으로 일반화하지 않는다.
 
 향후 실제 defect는 fixture·세부 예시로 추가한다.
 **원문 exact 보존 / AUTO-FIRST / CREATE self-check / R1 독립검수 / final render core contract는 유지한다.**
