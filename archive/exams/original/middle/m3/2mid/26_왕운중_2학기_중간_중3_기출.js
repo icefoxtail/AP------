@@ -17,7 +17,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "삼각비의 뜻"
+      "삼각비의 뜻",
+      "도형"
     ],
     "wide": false,
     "content": "직각삼각형 $ABC$에서 $\\sin B$의 값은? (3점)",
@@ -130,7 +131,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "사분원을 이용한 삼각비의 값"
+      "사분원을 이용한 삼각비의 값",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 반지름의 길이가 1인 사분원을 이용하여 보기에서 $55^\\circ$의 삼각비의 값으로 옳은 것만을 있는 대로 고르면? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\sin 55^\\circ=0.57$<br>ㄴ. $\\cos 55^\\circ=0.82$<br>ㄷ. $\\tan 55^\\circ=1.43$</div>",
@@ -142,7 +144,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "그림에서 $\\sin55^\\circ\\approx0.82$, $\\cos55^\\circ\\approx0.57$, $\\tan55^\\circ\\approx1.43$이다. 따라서 ㄷ만 옳고 정답은 ②.",
+    "solution": "그림에서 삼각비의 값을 하나씩 확인한다.\n$\\sin55^\\circ\\approx0.82$이므로 ㄱ은 거짓이다.\n$\\cos55^\\circ\\approx0.57$이므로 ㄴ은 거짓이다.\n$\\tan55^\\circ\\approx1.43$이므로 ㄷ은 참이다.\n따라서 ㄷ만 옳으므로 정답은 ②이다.",
     "sourceQuestionNo": "3",
     "displayNo": "3",
     "sourceOrdinal": 3,
@@ -186,7 +188,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "여각의 삼각비 관계"
+      "여각의 삼각비 관계",
+      "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 $\\triangle ABC$에서 $\\overline{DE}\\perp\\overline{BC}$이고 $\\angle BED=\\angle\\alpha$라고 할 때, $\\tan\\alpha$의 값은? (4점)",
@@ -315,7 +318,7 @@ window.questionBank = [
       "ㄷ, ㄴ, ㄱ, ㄹ"
     ],
     "answer": "③",
-    "solution": "$0^\\circ<40^\\circ<45^\\circ$이므로 $\\sin40^\\circ<\\tan40^\\circ<1$이고, $\\cos0^\\circ=1$, $50^\\circ>45^\\circ$이므로 $\\tan50^\\circ>1$이다. 따라서 $\\sin40^\\circ<\\tan40^\\circ<\\cos0^\\circ<\\tan50^\\circ$이고 순서는 ㄱ, ㄷ, ㄴ, ㄹ이므로 정답은 ③.",
+    "solution": "$0^\\circ<40^\\circ<45^\\circ$이므로\n$\\sin40^\\circ<\\tan40^\\circ<1$이다.\n또 $\\cos0^\\circ=1$이고 $50^\\circ>45^\\circ$이므로 $\\tan50^\\circ>1$이다.\n따라서\n$\\sin40^\\circ<\\tan40^\\circ<\\cos0^\\circ<\\tan50^\\circ$이다.\n즉 ㄱ, ㄷ, ㄴ, ㄹ의 순서이므로 정답은 ③이다.",
     "sourceQuestionNo": "6",
     "displayNo": "6",
     "sourceOrdinal": 6,
@@ -358,7 +361,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "무게중심과 삼각비의 활용"
+      "무게중심과 삼각비의 활용",
+      "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $G$는 삼각형 $ABC$의 무게중심이다. $\\overline{AC}=18\\,\\mathrm{cm}$이고 $\\overline{GD}=5\\,\\mathrm{cm}$일 때, $\\sin B$의 값은? (4점)",
@@ -370,7 +374,7 @@ window.questionBank = [
       "$\\dfrac{3}{5}$"
     ],
     "answer": "⑤",
-    "solution": "무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $AG:GD=2:1$이다. $GD=5$이므로 $AD=15$이다. 또 $D$는 $BC$의 중점이고 $\\angle A=90^\\circ$이므로, 빗변의 중점 성질에 따라 $AD=BD=CD=15$, 따라서 $BC=30$이다. 그러므로 $\\sin B=AC/BC=18/30=3/5$이고 정답은 ⑤.",
+    "solution": "무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나누므로\n$AG:GD=2:1$이다.\n$GD=5$이므로\n$AD=AG+GD=10+5=15$이다.\n$D$는 빗변 $BC$의 중점이고 $\\angle A=90^\\circ$이므로\n$AD=BD=CD=15$이다.\n따라서\n$BC=BD+DC=30$이고\n$\\sin B=\\dfrac{AC}{BC}=\\dfrac{18}{30}=\\dfrac35$이다.\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "7",
     "displayNo": "7",
     "sourceOrdinal": 7,
@@ -416,7 +420,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "사분원 좌표와 삼각비"
+      "사분원 좌표와 삼각비",
+      "그래프"
     ],
     "wide": false,
     "content": "반지름의 길이가 1인 사분원을 좌표평면 위에 나타낼 때, 다음 중에서 점 $B$의 좌표를 나타내는 것은? (4점)",
@@ -472,7 +477,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "정팔각형의 넓이"
+      "정팔각형의 넓이",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 지름의 길이가 12인 원에 내접하는 정팔각형의 넓이를 구하면? (4점)",
@@ -484,7 +490,7 @@ window.questionBank = [
       "$96\\sqrt{2}$"
     ],
     "answer": "④",
-    "solution": "원의 반지름은 $6$이고 정팔각형의 한 중심각은 $360^\\circ/8=45^\\circ$이다. 중심과 이웃한 두 꼭짓점을 이은 삼각형 한 개의 넓이는 $\\dfrac12\\cdot6\\cdot6\\cdot\\sin45^\\circ=9\\sqrt2$이다. 이런 삼각형이 8개이므로 정팔각형의 넓이는 $72\\sqrt2$이고 정답은 ④.",
+    "solution": "원의 반지름은 $6$이고 정팔각형의 한 중심각은\n$\\dfrac{360^\\circ}{8}=45^\\circ$이다.\n중심과 이웃한 두 꼭짓점을 이은 삼각형 한 개의 넓이는\n$\\dfrac12\\times6\\times6\\times\\sin45^\\circ=9\\sqrt2$이다.\n이런 삼각형이 $8$개이므로\n$8\\times9\\sqrt2=72\\sqrt2$이다.\n따라서 정답은 ④이다.",
     "sourceQuestionNo": "9",
     "displayNo": "9",
     "sourceOrdinal": 9,
@@ -529,7 +535,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "직선의 절편과 삼각비"
+      "직선의 절편과 삼각비",
+      "그래프"
     ],
     "wide": false,
     "content": "그림에서 두 점 $A$, $B$는 각각 직선 $y=mx+n$과 $x$축, $y$축의 교점이고 $\\overline{AB}\\perp\\overline{OH}$, $\\overline{OH}=2$이다. $\\angle BAO=\\alpha$라 하면 $\\tan\\alpha=\\dfrac{5}{12}$일 때, 양수 $m$, $n$에 대하여 $m+n$의 값은? (단, $O$는 원점이다.) (4점)",
@@ -541,7 +548,7 @@ window.questionBank = [
       "$\\dfrac{13}{4}$"
     ],
     "answer": "①",
-    "solution": "$OA=a$, $OB=b$라 하자. 직선 $AB$의 기울기가 $m$이고 $\\tan\\alpha=5/12$이므로 $b:a=5:12$이다. 따라서 $a=12k$, $b=5k$로 둘 수 있고, 피타고라스 정리에 의해 $AB=13k$이다. $OH=2$이므로 넓이를 두 방법으로 나타내면 $\\dfrac12\\cdot12k\\cdot5k=\\dfrac12\\cdot13k\\cdot2$, 따라서 $k=13/30$이다. 그러므로 $m=5/12$, $n=OB=5k=13/6$이고 $m+n=31/12$. 정답은 ①.",
+    "solution": "$OA=a$, $OB=b$라 하자.\n$\\tan\\alpha=\\dfrac{5}{12}$이므로\n$a:b=12:5$이다.\n따라서\n$a=12k$, $b=5k$로 두면\n$AB=13k$이다.\n$OH=2$이고 $AB\\perp OH$이므로 삼각형 $OAB$의 넓이를 두 방법으로 나타내면\n$\\dfrac12\\times12k\\times5k=\\dfrac12\\times13k\\times2$이다.\n$30k^2=13k$이므로\n$k=\\dfrac{13}{30}$이다.\n따라서\n$m=\\dfrac{5}{12}$,\n$n=OB=5k=\\dfrac{13}{6}$이고\n$m+n=\\dfrac{5}{12}+\\dfrac{13}{6}=\\dfrac{31}{12}$이다.\n따라서 정답은 ①이다.",
     "sourceQuestionNo": "10",
     "displayNo": "10",
     "sourceOrdinal": 10,
@@ -589,7 +596,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "삼각비를 이용한 두 지점 사이 거리"
+      "삼각비를 이용한 두 지점 사이 거리",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{AC}=40\\,\\mathrm{m}$, $\\overline{BC}=60\\,\\mathrm{m}$, $\\angle ACB=60^\\circ$일 때, 두 지점 $A$와 $B$ 사이의 거리를 구하면? (4점)",
@@ -601,7 +609,7 @@ window.questionBank = [
       "$20\\sqrt{7}\\,\\mathrm{m}$"
     ],
     "answer": "⑤",
-    "solution": "$A$에서 $BC$에 수선 $AH$를 내리자. $AC=40$, $\\angle C=60^\\circ$이므로 $CH=40\\cos60^\\circ=20$, $AH=40\\sin60^\\circ=20\\sqrt3$이다. 따라서 $BH=60-20=40$이고, 직각삼각형 $ABH$에서 $AB=\\sqrt{40^2+(20\\sqrt3)^2}=20\\sqrt7$. 정답은 ⑤.",
+    "solution": "$A$에서 $BC$에 수선 $AH$를 내리자.\n$AC=40$, $\\angle C=60^\\circ$이므로\n$CH=40\\cos60^\\circ=20$,\n$AH=40\\sin60^\\circ=20\\sqrt3$이다.\n따라서\n$BH=BC-CH=60-20=40$이다.\n직각삼각형 $ABH$에서\n$AB=\\sqrt{40^2+(20\\sqrt3)^2}\n=\\sqrt{1600+1200}\n=20\\sqrt7$이다.\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "11",
     "displayNo": "11",
     "sourceOrdinal": 11,
@@ -648,7 +656,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "직각삼각형의 넓이 변화"
+      "직각삼각형의 넓이 변화",
+      "도형"
     ],
     "wide": false,
     "content": "그림과 같이 넓이가 $S$인 직각삼각형 $ABC$에서 $\\overline{AB}$의 길이는 30 % 줄이고 $\\overline{BC}$의 길이는 30 % 늘려서 새로운 삼각형 $A\\prime B\\prime C\\prime$를 만들었다.<br>새로운 삼각형 $A\\prime B\\prime C\\prime$의 넓이는? (4점)",
@@ -706,7 +715,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "삼각비를 이용한 높이 측정"
+      "삼각비를 이용한 높이 측정",
+      "도형",
+      "표"
     ],
     "wide": false,
     "content": "오디세우스는 고향으로 돌아오던 중 외눈박이 거인을 만나 위험에 처하게 된다. 오디세우스 일행은 양의 등에 숨어 거인에게서 도망치려고 했지만 거인은 동굴 입구에 서서 양의 등을 일일이 만지며 확인하고 있었다. 그러자 오디세우스 일행은 계획을 바꾸어 긴 끈의 양 끝에 몸을 묶어 다음 그림과 같이 양의 옆구리에 매달려 탈출에 성공하였다.<br>오디세우스 일행이 매달려 있는 곳의 높이 $h$는 얼마일까? (4점)<br><table><tr><td>각</td><td>$51^\\circ$</td></tr><tr><td>$\\sin A$</td><td>$0.78$</td></tr><tr><td>$\\cos A$</td><td>$0.63$</td></tr><tr><td>$\\tan A$</td><td>$1.23$</td></tr></table>",
@@ -718,7 +729,7 @@ window.questionBank = [
       "$2.11\\,\\mathrm{m}$"
     ],
     "answer": "④",
-    "solution": "점 $B$에서 $AC$에 내린 수선의 발을 $H$라 하자. $AB=3\\,\\mathrm{m}$이고 $\\angle BAH=51^\\circ$이므로 $AH=3\\cos51^\\circ=3\\times0.63=1.89\\,\\mathrm{m}$이다. 그림에서 $AC=3\\,\\mathrm{m}$이고 $C$는 지면에서 $0.5\\,\\mathrm{m}$ 위에 있으므로 $h=AC+0.5-AH=3+0.5-1.89=1.61\\,\\mathrm{m}$이다. 따라서 정답은 ④이다.",
+    "solution": "점 $B$에서 $AC$에 내린 수선의 발을 $H$라 하자.\n$AB=3\\,\\mathrm{m}$이고 $\\angle BAH=51^\\circ$이므로\n$AH=3\\cos51^\\circ\n=3\\times0.63\n=1.89\\,\\mathrm{m}$이다.\n그림에서 $AC=3\\,\\mathrm{m}$이고 $C$는 지면에서 $0.5\\,\\mathrm{m}$ 위에 있으므로\n$h=AC+0.5-AH$이다.\n따라서\n$h=3+0.5-1.89=1.61\\,\\mathrm{m}$이므로 정답은 ④이다.",
     "sourceQuestionNo": "13",
     "displayNo": "13",
     "sourceOrdinal": 13,
@@ -762,7 +773,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "접기 도형과 삼각비"
+      "접기 도형과 삼각비",
+      "도형"
     ],
     "wide": false,
     "content": "직사각형 모양의 색종이를 두 점 $A$와 $C$가 겹치도록 접었다. $\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{AP}=5\\,\\mathrm{cm}$이고 $\\angle CPQ=x$라 할 때, $\\sin x$의 값은? (5점)",
@@ -774,7 +786,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "접으면 $A$와 $C$가 겹치므로 접는 선 $PQ$ 위의 점 $P$에 대하여 $PA=PC=5$이다. 직사각형의 높이는 $AB=3$이므로 직각삼각형 $PDC$에서 $PD=\\sqrt{5^2-3^2}=4$, 따라서 $AD=AP+PD=9$이다. 그러므로 $AC=\\sqrt{9^2+3^2}=3\\sqrt{10}$. 접는 선 $PQ$는 $AC$의 수직이등분선이므로 $M=PQ\\cap AC$라 하면 $MC=AC/2=3\\sqrt{10}/2$이다. 직각삼각형 $PMC$에서 $\\angle CPM=x$이므로 $\\sin x=MC/PC=3\\sqrt{10}/10$. 정답은 ③.",
+    "solution": "접으면 $A$와 $C$가 겹치므로 접는 선 $PQ$ 위의 점 $P$에 대하여\n$PA=PC=5$이다.\n직사각형의 높이는 $AB=3$이므로 직각삼각형 $PDC$에서\n$PD=\\sqrt{5^2-3^2}=4$이다.\n따라서\n$AD=AP+PD=5+4=9$이고\n$AC=\\sqrt{9^2+3^2}=3\\sqrt{10}$이다.\n접는 선 $PQ$는 $AC$의 수직이등분선이다.\n$PQ$와 $AC$의 교점을 $M$이라 하면\n$MC=\\dfrac{AC}{2}=\\dfrac{3\\sqrt{10}}{2}$이다.\n직각삼각형 $PMC$에서 $\\angle CPM=x$이므로\n$\\sin x=\\dfrac{MC}{PC}\n=\\dfrac{3\\sqrt{10}/2}{5}\n=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "14",
     "displayNo": "14",
     "sourceOrdinal": 14,
@@ -822,7 +834,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "좌표와 삼각비의 복합 활용"
+      "좌표와 삼각비의 복합 활용",
+      "그래프"
     ],
     "wide": false,
     "content": "그림의 $\\triangle OAC$에서 $\\angle A=90^\\circ$, $\\overline{OB}=10$, $\\sin\\angle AOB=\\dfrac{3}{5}$이다. $\\overline{OB}$가 $\\triangle OAC$의 넓이를 이등분할 때<br>점 $C$의 좌표는? (5점)",
@@ -834,7 +847,7 @@ window.questionBank = [
       "$\\left(\\dfrac{70}{5},-\\dfrac{24}{5}\\right)$"
     ],
     "answer": "②",
-    "solution": "$\\triangle OAB$에서 $\\angle A=90^\\circ$, $OB=10$, $\\sin\\angle AOB=3/5$이므로 $AB=6$, $OA=8$이다. 그림에서 $OB$가 $x$축이고 $O$가 원점이므로 $A=(8\\cdot4/5,\\,8\\cdot3/5)=(32/5,24/5)$, $B=(10,0)$이다. 또 $OB$가 $\\triangle OAC$의 넓이를 이등분하므로 $\\triangle OAB$와 $\\triangle OBC$의 넓이가 같고, 두 삼각형은 $AC$에 대한 높이가 같아 $AB=BC$이다. 따라서 $B$는 $AC$의 중점이므로 $C=2B-A=(68/5,-24/5)$. 정답은 ②.",
+    "solution": "직각삼각형 $OAB$에서\n$OB=10$, $\\sin\\angle AOB=\\dfrac35$이므로\n$AB=6$, $OA=8$이다.\n그림에서 $OB$가 $x$축이고 $O$가 원점이므로\n$A=\\left(8\\times\\dfrac45,8\\times\\dfrac35\\right)\n=\\left(\\dfrac{32}{5},\\dfrac{24}{5}\\right)$,\n$B=(10,0)$이다.\n$OB$가 $\\triangle OAC$의 넓이를 이등분하므로\n$[OAB]=[OBC]$이다.\n두 삼각형은 밑변 $AB$, $BC$가 같은 직선 $AC$ 위에 있고 높이가 같으므로\n$AB=BC$이다.\n따라서 $B$는 $AC$의 중점이고\n$C=2B-A\n=\\left(20,0\\right)-\\left(\\dfrac{32}{5},\\dfrac{24}{5}\\right)\n=\\left(\\dfrac{68}{5},-\\dfrac{24}{5}\\right)$이다.\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "15",
     "displayNo": "15",
     "sourceOrdinal": 15,
@@ -882,7 +895,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "원의 반지름"
+      "원의 반지름",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $x$의 값을 구하면? (3점)",
@@ -938,7 +952,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "중심거리와 현의 길이"
+      "중심거리와 현의 길이",
+      "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $AC$에 이르는 거리가 같고 $\\angle B=58^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)",
@@ -994,7 +1009,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "접선 조건으로 길이 구하기"
+      "접선 조건으로 길이 구하기",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{PA}$, $\\overline{PB}$는 원 $O$의 접선이고, 두 점 $A$, $B$는 그 접점이다. $\\angle APB=60^\\circ$일 때, $\\overline{PA}$와 $\\overline{PB}$의 길이의 합을 구하면? (4점)",
@@ -1006,7 +1022,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "②",
-    "solution": "$OA\\perp PA$, $OB\\perp PB$이고 $OA=OB$이므로 두 직각삼각형 $\\triangle OAP$, $\\triangle OBP$는 합동이다. 따라서 $OP$는 $\\angle APB=60^\\circ$를 이등분하여 $\\angle APO=30^\\circ$이다. $OA=3$이므로 직각삼각형 $OAP$에서 $\\tan30^\\circ=OA/PA=3/PA$, 따라서 $PA=3\\sqrt3$. 같은 점 $P$에서 그은 두 접선의 길이가 같아 $PB=PA=3\\sqrt3$이므로 합은 $6\\sqrt3$. 정답은 ②.",
+    "solution": "$OA\\perp PA$, $OB\\perp PB$이고 $OA=OB$이므로\n두 직각삼각형 $\\triangle OAP$, $\\triangle OBP$는 합동이다.\n따라서 $OP$는 $\\angle APB=60^\\circ$를 이등분하므로\n$\\angle APO=30^\\circ$이다.\n$OA=3$이므로 직각삼각형 $OAP$에서\n$\\tan30^\\circ=\\dfrac{OA}{PA}=\\dfrac3{PA}$이다.\n따라서\n$PA=3\\sqrt3$이다.\n같은 점 $P$에서 그은 두 접선의 길이는 같으므로\n$PB=PA=3\\sqrt3$이다.\n따라서\n$PA+PB=6\\sqrt3$이므로 정답은 ②이다.",
     "sourceQuestionNo": "18",
     "displayNo": "18",
     "sourceOrdinal": 18,
@@ -1107,7 +1123,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "접선의 길이와 직사각형"
+      "접선의 길이와 직사각형",
+      "도형"
     ],
     "wide": false,
     "content": "그림과 같이 가로의 길이가 $9\\,\\mathrm{cm}$, 세로의 길이가 $6\\,\\mathrm{cm}$인 직사각형의 3개의 변에 원 $O$가 내접하고 $DE$는 원 $O$의 접선일 때, $\\overline{EC}$의 길이를 구하면? (5점)",
@@ -1119,7 +1136,7 @@ window.questionBank = [
       "$\\dfrac{15}{2}\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "원의 반지름은 $3$이다. $EC=x$라 하고, $DE$의 접점을 $T$, 아래 변 $BC$의 접점을 $V$라 하자. 위쪽 변 $AD$도 접선이므로 점 $D$에서 그은 두 접선의 길이는 같아 $DT=9-3=6$이다. 또 점 $E$에서 그은 두 접선의 길이가 같고 $BE=9-x$, $BV=3$이므로 $ET=EV=(9-x)-3=6-x$이다. 따라서 $DE=DT+TE=12-x$. 직각삼각형 $DEC$에서 $(12-x)^2=x^2+6^2$이므로 $x=9/2$. 따라서 $EC=9/2\\,\\mathrm{cm}$이고 정답은 ③.",
+    "solution": "원의 반지름은 $3$이다.\n$EC=x$라 하고, $DE$의 접점을 $T$, 아래 변 $BC$의 접점을 $V$라 하자.\n위쪽 변 $AD$도 접선이므로 점 $D$에서 그은 두 접선의 길이는 같다.\n따라서\n$DT=9-3=6$이다.\n또 점 $E$에서 그은 두 접선의 길이도 같고\n$BE=9-x$, $BV=3$이므로\n$ET=EV=(9-x)-3=6-x$이다.\n따라서\n$DE=DT+TE=12-x$이다.\n직각삼각형 $DEC$에서\n$(12-x)^2=x^2+6^2$이다.\n$144-24x+x^2=x^2+36$이므로\n$24x=108$,\n$x=\\dfrac92$이다.\n따라서 $EC=\\dfrac92\\,\\mathrm{cm}$이고 정답은 ③이다.",
     "sourceQuestionNo": "20",
     "displayNo": "20",
     "sourceOrdinal": 20,
@@ -1166,13 +1183,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "한 점에서 그은 두 접선"
+      "한 점에서 그은 두 접선",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 원 $O$는 $\\triangle ABC$에 내접하고, 점 $D$, $E$, $F$는 접점이다. $\\overline{AB}=10\\,\\mathrm{cm}$, $\\overline{BE}=6\\,\\mathrm{cm}$, $\\overline{BC}=11\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 둘레의 길이를 구하시오. (7점)<br>($\\overline{BD}$, $\\overline{CF}$, $\\overline{AF}$ 길이 구하기 각각 2점, $\\triangle ABC$의 둘레의 길이 구하기 1점)",
     "choices": [],
     "answer": "$30\\,\\mathrm{cm}$",
-    "solution": "접선 길이 성질로 $BD=BE=6$, $AD=AF=4$, $CE=CF=5$. 따라서 $AC=9$, 둘레는 $30$ cm.",
+    "solution": "같은 점에서 원에 그은 두 접선의 길이는 같다.\n따라서\n$BD=BE=6\\,\\mathrm{cm}$이다.\n$AD=AB-BD=10-6=4\\,\\mathrm{cm}$이므로\n$AF=AD=4\\,\\mathrm{cm}$이다.\n또\n$CE=BC-BE=11-6=5\\,\\mathrm{cm}$이므로\n$CF=CE=5\\,\\mathrm{cm}$이다.\n따라서\n$AC=AF+FC=4+5=9\\,\\mathrm{cm}$이다.\n그러므로 삼각형 $ABC$의 둘레는\n$AB+BC+CA=10+11+9=30\\,\\mathrm{cm}$이다.\n따라서 구하는 둘레의 길이는 $30\\,\\mathrm{cm}$이다.",
     "sourceQuestionNo": "서술형1",
     "displayNo": "서술형1",
     "sourceOrdinal": 21,
@@ -1216,13 +1234,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "삼각비를 이용한 사각형의 넓이"
+      "삼각비를 이용한 사각형의 넓이",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같은 $\\square ABCD$의 넓이를 구하시오. (7점)<br>($\\overline{BD}$의 길이를 구한 경우 1점, $\\triangle ABD$의 넓이를 구한 경우 2점, $\\triangle DBC$의 넓이를 구한 경우 2점, $\\square ABCD$의 넓이를 구한 경우 2점)",
     "choices": [],
     "answer": "$\\dfrac{91\\sqrt3}{2}\\,\\mathrm{cm}^2$",
-    "solution": "$A$에서 $AB$를 밑변으로 보면 $AD=14$, $\\angle DAB=60^\\circ$이므로 $AD$의 $AB$ 방향 성분은 $14\\cos60^\\circ=7=AB$이다. 따라서 $DB=14\\sin60^\\circ=7\\sqrt3$이고 $[ABD]=\\dfrac12\\cdot7\\cdot7\\sqrt3=49\\sqrt3/2$이다. 또 $DC=12$, $\\angle BDC=30^\\circ$이므로 $[DBC]=\\dfrac12\\cdot DB\\cdot DC\\cdot\\sin30^\\circ=21\\sqrt3$이다. 따라서 $\\square ABCD$의 넓이는 $49\\sqrt3/2+21\\sqrt3=91\\sqrt3/2\\,\\mathrm{cm}^2$이다.",
+    "solution": "직각삼각형 $ADB$에서\n$AD=14$, $\\angle DAB=60^\\circ$이므로\n$AB=14\\cos60^\\circ=7$,\n$BD=14\\sin60^\\circ=7\\sqrt3$이다.\n따라서\n$[ABD]=\\dfrac12\\times AB\\times BD\n=\\dfrac12\\times7\\times7\\sqrt3\n=\\dfrac{49\\sqrt3}{2}$이다.\n또 $DC=12$, $\\angle BDC=30^\\circ$이므로\n$[DBC]=\\dfrac12\\times DB\\times DC\\times\\sin30^\\circ\n=\\dfrac12\\times7\\sqrt3\\times12\\times\\dfrac12\n=21\\sqrt3$이다.\n따라서\n$[ABCD]=[ABD]+[DBC]\n=\\dfrac{49\\sqrt3}{2}+21\\sqrt3\n=\\dfrac{91\\sqrt3}{2}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $\\dfrac{91\\sqrt3}{2}\\,\\mathrm{cm}^2$이다.",
     "sourceQuestionNo": "서술형2",
     "displayNo": "서술형2",
     "sourceOrdinal": 22,
@@ -1267,13 +1286,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "앙각을 이용한 높이 측정"
+      "앙각을 이용한 높이 측정",
+      "도형"
     ],
     "wide": false,
     "content": "물체를 올려본각 또는 내려본각의 크기를 측정하는 기구를 ‘클리노미터(clinometer)’라고 한다. 두 사람이 한 조가 되어 측정자는 각의 크기를 측정하고 싶은 곳을 빨대 구멍으로 바라보고, 다른 한 사람은 빨대와 실이 이루는 각의 크기를 읽는다. 측정자의 눈높이는 $1.6\\,\\mathrm{m}$이고, 측정자와 나무 사이의 거리는 $10\\,\\mathrm{m}$이다.<br>측정자가 측정한 나무의 높이를 구하시오.<br>(올바른 삼각비를 이용하는 과정 3점, 측정한 나무의 높이를 구하는 과정 3점) (6점)",
     "choices": [],
     "answer": "$1.6+\\dfrac{10\\sqrt3}{3}\\,\\mathrm{m}$ (약 $7.37\\,\\mathrm{m}$)",
-    "solution": "그림에서 빨대와 수직인 실이 이루는 각이 $60^\\circ$이므로, 빨대가 수평선과 이루는 올려본각은 $30^\\circ$이다. 나무의 높이를 $H$라 하면 눈높이보다 높은 부분은 $H-1.6$이고 수평거리는 $10\\,\\mathrm{m}$이므로 $\\tan30^\\circ=\\dfrac{H-1.6}{10}$이다. 따라서 $H-1.6=\\dfrac{10}{\\sqrt3}=\\dfrac{10\\sqrt3}{3}$이고, $H=1.6+\\dfrac{10\\sqrt3}{3}\\approx7.37\\,\\mathrm{m}$이다.",
+    "solution": "그림에서 빨대와 수직인 실이 이루는 각이 $60^\\circ$이므로\n빨대가 수평선과 이루는 올려본각은\n$90^\\circ-60^\\circ=30^\\circ$이다.\n나무의 높이를 $H\\,\\mathrm{m}$라 하면\n눈높이보다 높은 부분은 $H-1.6$이고 수평거리는 $10\\,\\mathrm{m}$이다.\n따라서\n$\\tan30^\\circ=\\dfrac{H-1.6}{10}$이다.\n$H-1.6=10\\times\\dfrac{\\sqrt3}{3}\n=\\dfrac{10\\sqrt3}{3}$이므로\n$H=1.6+\\dfrac{10\\sqrt3}{3}\\approx7.37$이다.\n따라서 측정한 나무의 높이는 약 $7.37\\,\\mathrm{m}$이다.",
     "sourceQuestionNo": "서술형3",
     "displayNo": "서술형3",
     "sourceOrdinal": 23,
