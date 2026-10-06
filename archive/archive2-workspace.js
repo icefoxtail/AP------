@@ -48,6 +48,13 @@
   const badge = (label, type = "") =>
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
+  let renderEligibilityCache = null;
+  function workspaceEligibility(record) {
+    if (!renderEligibilityCache) return C.eligibility(record, state);
+    if (!renderEligibilityCache.has(record))
+      renderEligibilityCache.set(record, C.eligibility(record, state));
+    return renderEligibilityCache.get(record);
+  }
   const SAVED_PAPER_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   const savedPaperIds = (values) => unique(
     (Array.isArray(values) ? values : []).map(String).filter((id) => SAVED_PAPER_UUID.test(id)),
@@ -120,7 +127,7 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!C.matches(record, selectionFilters, state) || !C.eligibility(record, state).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
       const parent = C.basicScopeParent(
         record,
         state.catalog.basicScopeLinks,
@@ -704,6 +711,7 @@
     };
   }
   let scopeRenderCache = null;
+  let displayedScopes = null;
   let renderingScopes = false;
   function scopeOptions() {
     if (renderingScopes && scopeRenderCache) return scopeRenderCache;
@@ -722,7 +730,7 @@
     const seenUids = new Set();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
-      if (!C.matches(record, selectionFilters, state) || !C.eligibility(record, state).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
       if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
       const parent = C.basicScopeParent(
         record,
@@ -796,7 +804,10 @@
         eligibleCount: sources.length,
       };
     });
-    if (renderingScopes) scopeRenderCache = result;
+    if (renderingScopes) {
+      scopeRenderCache = result;
+      displayedScopes = result;
+    }
     return result;
   }
   function scopeIsSelected(scope) {
@@ -837,18 +848,7 @@
         label: s.label,
         count:
           state.distribution === "all"
-            ? state.catalog.records.filter(
-                (r) =>
-                  C.matches(r, {
-                    ...state.filters,
-                    sourceFiles: state.sources,
-                    primaryPaths: s.paths,
-                    scopeQuestionUids: s.scopeQuestionUids,
-                  }, state) &&
-                  C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
-                  C.eligibility(r, state).ok &&
-                  !C.composeExclusions(context()).union.has(r.questionUid),
-              ).length
+            ? s.eligibleCount
             : Number(
                 state.distribution === "custom"
                   ? (state.custom[s.key]?.count ?? state.count)
@@ -1425,7 +1425,7 @@
     url.searchParams.set("subject", exam.subject || "");
     if (exam.qCount) url.searchParams.set("q", String(exam.qCount));
     O.applyUrl(url, originalSettingsForExam(exam));
-    url.searchParams.set("v", "20261006-archive1-source-route-1");
+    url.searchParams.set("v", "20261006-interaction-audit-2");
     if (!window.open(url.href, "_blank"))
       throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
   }
@@ -1517,7 +1517,7 @@
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
     const excluded = C.composeExclusions(context()).union;
     const eligible = pool().filter(r =>
-      C.matches(r, baseFilters, state) && C.eligibility(r, state).ok && !excluded.has(r.questionUid));
+      C.matches(r, baseFilters, state) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
@@ -1556,7 +1556,7 @@
     const candidates = pool().filter(
       (r) =>
         C.matches(r, selectionFilters, state) &&
-        C.eligibility(r, state).ok &&
+        workspaceEligibility(r).ok &&
         !excluded.has(r.questionUid),
     );
     const shortages = rows
@@ -2178,12 +2178,15 @@
     // Reuse scope counts only within this render. Every interaction rechecks
     // the current filters, catalog quality gates and previous-round exclusions.
     scopeRenderCache = null;
+    displayedScopes = null;
+    renderEligibilityCache = new WeakMap();
     renderingScopes = true;
     try {
       renderContent();
     } finally {
       renderingScopes = false;
       scopeRenderCache = null;
+      renderEligibilityCache = null;
     }
   }
   function renderContent() {
@@ -2525,6 +2528,11 @@
     const host = $("preview-host");
     if (!host) return;
     const token = (state.previewToken = (state.previewToken || 0) + 1);
+    const progress = document.createElement("div");
+    progress.className = "preview-progress";
+    progress.textContent = "문제지를 준비하고 있습니다.";
+    host.setAttribute("aria-busy", "true");
+    host.replaceChildren(progress);
     try {
       const papers = await prepare();
       if (host !== $("preview-host") || token !== state.previewToken) return;
@@ -2539,9 +2547,6 @@
       }
       const previousEnvelope = previewOutputEnvelope;
       previewOutputEnvelope = output.envelope;
-      frame.src = output.href;
-      if (previousEnvelope)
-        await O.createOutputStore().cleanup(previousEnvelope.ownerId, previousEnvelope.outputRequestId);
       frame.addEventListener("load", () => {
         const doc = frame.contentDocument;
         if (!doc) return;
@@ -2550,14 +2555,15 @@
             host.setAttribute("aria-busy", "false");
         };
         const observer = new MutationObserver(() => {
-          if (!doc.querySelector("#print-area .page")) return;
+          const failed = frame.contentWindow.__AP_OUTPUT_RENDER_ERROR__ || doc.documentElement.dataset.apRenderError;
+          if (!doc.querySelector("#print-area .page") && !failed) return;
           observer.disconnect();
           const ready = frame.contentWindow.__AP_RENDER_READY__;
           if (ready && typeof ready.then === "function")
             ready.then(complete, complete);
           else complete();
         });
-        if (doc.querySelector("#print-area .page")) complete();
+        if (doc.querySelector("#print-area .page") || frame.contentWindow.__AP_OUTPUT_RENDER_ERROR__ || doc.documentElement.dataset.apRenderError) complete();
         else observer.observe(doc.body, { childList: true, subtree: true });
         doc.addEventListener("click", (event) => {
           if (state.sealed || state.busy) return;
@@ -2569,11 +2575,10 @@
           if (i >= 0) replace(i);
         });
       });
-      const progress = document.createElement("div");
-      progress.className = "preview-progress";
-      progress.textContent = "문제지를 준비하고 있습니다.";
-      host.setAttribute("aria-busy", "true");
+      frame.src = output.href;
       host.replaceChildren(frame, progress);
+      if (previousEnvelope)
+        void O.createOutputStore().cleanup(previousEnvelope.ownerId, previousEnvelope.outputRequestId).catch(() => {});
     } catch (e) {
       if (host === $("preview-host") && token === state.previewToken) {
         host.setAttribute("aria-busy", "false");
@@ -3349,7 +3354,7 @@
         a === "scope-range"
       ) {
         if (state.sealed) return;
-        const scopes = scopeOptions();
+        const scopes = displayedScopes || scopeOptions();
         if (a === "scope-clear") state.scopes = [];
         else if (a === "scope-all") state.scopes = scopes.filter(s => s.basicScope).map((s) => s.key);
         else if (a === "scope-group") {
@@ -3644,7 +3649,7 @@
         }
         render();
       } else if (el.dataset.scope) {
-        const scope = scopeOptions().find((item) => item.key === el.dataset.scope);
+        const scope = (displayedScopes || scopeOptions()).find((item) => item.key === el.dataset.scope);
         const legacyPaths = scope?.paths || [];
         state.scopes = el.checked
           ? [

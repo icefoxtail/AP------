@@ -56,3 +56,24 @@ test('production-size compose curriculum and scope interactions stay responsive'
   a.render();
   assert.doesNotMatch(a.nodes.content.innerHTML, /data-scope=/);
 });
+
+test('select all and count edits do not block the production-size composition form', async t => {
+  const a = app();
+  a.render();
+  const selectionStart = performance.now();
+  await a.listeners.click({ target: { closest: selector => selector === 'button' ? { dataset: { action: 'scope-all' } } : null } });
+  const selectionElapsed = performance.now() - selectionStart;
+  t.diagnostic(`select-all click: ${selectionElapsed.toFixed(1)}ms`);
+  assert.ok(selectionElapsed < 450, `select-all blocks input for ${selectionElapsed.toFixed(1)}ms`);
+  a.state.scopes = [...a.nodes.content.innerHTML.matchAll(/data-scope="([^"]+)"/g)].map(match => match[1]);
+  for (const distribution of ['equal', 'all']) {
+    a.state.distribution = distribution;
+    a.state.count = 20;
+    const start = performance.now();
+    a.render();
+    const elapsed = performance.now() - start;
+    t.diagnostic(`${distribution} selection/count edit: ${elapsed.toFixed(1)}ms`);
+    assert.ok(elapsed < 450, `form blocks input for ${elapsed.toFixed(1)}ms`);
+    assert.match(a.nodes.content.innerHTML, /data-action="generate"/);
+  }
+});
