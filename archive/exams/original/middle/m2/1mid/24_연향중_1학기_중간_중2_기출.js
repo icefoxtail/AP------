@@ -1,4 +1,5 @@
 window.examTitle = "24_연향중_1학기_중간_중2_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -17,18 +18,17 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리수",
-      "순환소수",
-      "조건해석",
-      "계산"
+      "유리수와 순환소수",
+      "순환마디",
+      "분수의소수표현"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 순환마디를 찾기 위해 분자를 분모로 직접 나누어 소수점 아래 숫자의 반복 패턴을 확인함.\\n$5 \\div 54 = 0.0925925925\\dots$\\n소수점 아래에서 $9, 2, 5$가 일정하게 반복됨을 확인함.\\n$\\therefore 925$",
-    "level": "중",
+    "solution": "$\\frac{5}{54}=0.0925925925\\cdots$이므로 $925$가 반복된다. 따라서 순환마디는 $925$이고 정답은 ③이다.",
+    "level": "하",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -51,22 +51,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리수",
+      "유리수와 순환소수",
       "순환소수",
-      "표해석",
-      "계산"
+      "분수변환",
+      "소거식"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 순환소수를 분수로 고칠 때 빼기 식의 의미를 분석하여 소수점 위치의 이동을 파악함.\\n$1000x$는 소수점을 순환마디 끝으로, $10x$는 순환마디 시작 직전으로 이동시킴.\\n$\\implies$ 소수점 아래 둘째 자리부터 순환마디가 시작되어 셋째 자리에서 끝나는 형태를 찾아야 함.\\n④ $0.1\\dot{1}\\dot{8}$의 경우 $x = 0.1181818\\dots$\\n$1000x = 118.181818\\dots$\\n$10x = 1.181818\\dots$\\n$\\implies 1000x - 10x = 117$ 로 순환부분이 완벽히 소거됨.\\n$\\therefore$ ④",
+    "solution": "④를 $x=0.1\\dot1\\dot8=0.1181818\\cdots$라 두면 $1000x=118.181818\\cdots$, $10x=1.181818\\cdots$이므로 $1000x-10x=117$이다. 따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
@@ -85,24 +85,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리수",
-      "인수분해",
-      "순환소수",
-      "유한소수",
-      "개수세기",
-      "개념"
+      "유리수와 순환소수",
+      "유한소수판별",
+      "분모소인수",
+      "개수세기"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 기약분수로 나타낸 후 분모의 소인수를 분석하여 순환소수 여부를 판별함.\\n유한소수는 기약분수 분모의 소인수가 $2$ 또는 $5$뿐이어야 함. 그 외의 소인수가 있으면 순환소수임.\\n$i)  \\frac{25}{60} = \\frac{5}{12} = \\frac{5}{2^2 \\times 3} \\implies$ 소인수 $3$ 존재 (순환소수)\\n$ii)  \\frac{15}{96} = \\frac{5}{32} = \\frac{5}{2^5} \\implies$ (유한소수)\\n$iii)  \\frac{33}{3 \\times 5 \\times 11} = \\frac{1}{5} \\implies$ (유한소수)\\n$iv)  \\frac{5}{15} = \\frac{1}{3} \\implies$ 소인수 $3$ 존재 (순환소수)\\n$v)  \\frac{9}{2 \\times 3^2 \\times 5} = \\frac{1}{2 \\times 5} \\implies$ (유한소수)\\n$\\therefore$ 2개",
+    "solution": "기약분수의 분모에 $2,5$ 이외의 소인수가 남으면 순환소수이다. ① $\\frac5{12}$, ④ $\\frac13$만 순환소수이고 ② $\\frac5{32}$, ③ $\\frac15$, ⑤ $\\frac1{10}$은 유한소수이다. 따라서 $2$개, 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 4,
@@ -121,20 +119,17 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리수",
+      "유리수와 순환소수",
       "순환소수",
-      "도형",
-      "원",
-      "참거짓",
-      "오류판별",
+      "분수복원",
       "조건해석"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 수영이는 분모를 잘못 보았으므로 바르게 본 것은 분자이고, 은준이는 분자를 잘못 보았으므로 바르게 본 것은 분모이다. 이 둘을 합쳐 처음 기약분수를 복원한다.\\n은준이의 $0.\\dot{3}\\dot{6} = \\frac{36}{99} = \\frac{4}{11}$ 에서 바르게 본 분모는 $11$이다.\\n수영이의 $0.\\dot{5}\\dot{3} = \\frac{53}{99}$ 에서 바르게 본 분자는 $53$이다.\\n이 둘을 결합하면 처음 기약분수는 $\\frac{53}{11}$ 이다.\\n$\\implies \\frac{53}{11} = 4.818181\\dots = 4.\\dot{8}\\dot{1}$\\n$\\therefore 4.\\dot{8}\\dot{1}$",
+    "solution": "$0.\\dot5\\dot3=\\dfrac{53}{99}$이므로 원래 분자는 $53$이다.\n\n또 $0.\\dot3\\dot6=\\dfrac4{11}$이고 은준이는 분자만 잘못 보았으므로 원래 분모는 $11$이다.\n\n따라서 원래 분수는\n\n$\\dfrac{53}{11}=4.818181\\cdots=4.\\dot8\\dot1$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -158,17 +153,17 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리수",
-      "나머지정리",
-      "순환소수",
-      "계산"
+      "유리수와 순환소수",
+      "순환마디",
+      "주기",
+      "자릿수"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 순환마디의 길이를 파악하고 나눗셈의 나머지를 이용하여 특정 자리의 숫자를 결정함.\\n$\\frac{1}{7} = 0.\\dot{1}4285\\dot{7}$ 이므로 순환마디의 숫자는 6개임 ($1, 4, 2, 8, 5, 7$).\\n$a$ (30번째): $30 \\div 6 = 5$, 나머지가 $0$이므로 순환마디의 6번째 숫자임. $\\implies a = 7$\\n$b$ (50번째): $50 \\div 6 = 8 \\dots 2$, 나머지가 $2$이므로 순환마디의 2번째 숫자임. $\\implies b = 4$\\n$\\implies a+b = 7+4 = 11$\\n$\\therefore 11$",
+    "solution": "$\\dfrac17=0.142857142857\\cdots$이고 순환마디의 길이는 $6$이다.\n\n$30=6\\times5$이므로 $a=7$이다.\n\n$50=6\\times8+2$이므로 $b=4$이다.\n\n따라서\n\n$a+b=11$이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -192,22 +187,21 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "계산",
-      "개념",
-      "조건해석"
+      "식의계산",
+      "지수법칙",
+      "개념판정"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 지수법칙의 기본 성질을 각 보기에 적용하여 올바른 연산을 판별함.\\n① $a^5 \\times a^2 = a^{5+2} = a^7$\\n② $a^{12} \\div a^{12} = a^{12-12} = a^0 = 1$\\n③ $a^9 \\div a^3 = a^{9-3} = a^6$\\n④ $a^{10} \\div a^2 = a^{10-2} = a^8$ (올바른 계산)\\n⑤ $(ab)^2 = a^2b^2$\\n$\\therefore$ ④",
-    "level": "중",
+    "solution": "지수법칙을 적용하면 ① $a^7$, ② $1$, ③ $a^6$, ④ $a^8$, ⑤ $a^2b^2$이다. 따라서 정답은 ④이다.",
+    "level": "하",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
@@ -226,23 +220,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "도형",
-      "원",
-      "조건해석",
-      "계산"
+      "식의계산",
+      "단항식",
+      "곱셈나눗셈",
+      "지수법칙"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 단항식의 거듭제곱을 먼저 계산한 후 나눗셈을 역수의 곱셈으로 변환하여 식을 간단히 함.\\n$A = 5x^2y^3 \\times (-3xy^2)^2 = 5x^2y^3 \\times 9x^2y^4 = 45x^4y^7$\\n$B = 21x^3y^4 \\div \\frac{7}{5}x^2y = 21x^3y^4 \\times \\frac{5}{7x^2y} = 15xy^3$\\n$\\implies A \\div B = \\frac{45x^4y^7}{15xy^3} = 3x^3y^4$",
+    "solution": "$A=5x^2y^3\\times(-3xy^2)^2$\n\n$=45x^4y^7$이다.\n\n$B=21x^3y^4\\div\\dfrac75x^2y$\n\n$=15xy^3$이다.\n\n따라서\n\n$A\\div B\n=45x^4y^7\\div15xy^3$\n\n$=3x^3y^4$이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
@@ -261,26 +254,26 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
-      "계산",
-      "조건해석",
-      "중난도"
+      "식의계산",
+      "단항식",
+      "나눗셈",
+      "역연산"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 곱셈과 나눗셈의 역연산 관계를 이용하여 미지의 단항식을 구함.\\n$\\square \\times 3x^2 = -15x^6$\\n$\\implies \\square = -15x^6 \\div 3x^2$\\n계수는 계수끼리, 문자는 문자끼리 나눗셈을 수행함.\\n$\\implies \\square = \\frac{-15}{3} \\times x^{6-2}$\\n$\\therefore -5x^4$",
-    "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "빈칸을 $M$이라 하면 $M\\cdot3x^2=-15x^6$이므로 $M=-5x^4$이다. 정답은 ②이다.",
+    "level": "하",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
-    "content": "$(\\frac{25}{3})^a = \\frac{5^b}{81}$ 일 때, 두 자연수 $a, b$의 합 $a+b$는?",
+    "content": "$(\\frac{25}{3})^a = \\frac{5^b}{81}$일 때, 두 자연수 $a, b$의 값으로 옳은 것은?",
     "choices": [
       "$a=2, b=4$",
       "$a=3, b=3$",
@@ -295,24 +288,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
-      "지수",
-      "자연수조건",
-      "조건해석",
-      "응용",
-      "계산"
+      "식의계산",
+      "지수법칙",
+      "지수비교",
+      "자연수조건"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 양변의 밑을 소인수분해하여 통일한 후 지수를 비교하여 미지수를 구함.\\n$(\\frac{25}{3})^a = (\\frac{5^2}{3})^a = \\frac{5^{2a}}{3^a}$\\n우변을 소인수분해하여 정리함: $\\frac{5^b}{81} = \\frac{5^b}{3^4}$\\n양변의 분모와 분자의 지수를 각각 비교함.\\n$i) 분모:  3^a = 3^4 \\implies a=4$\\n$ii) 분자:  5^{2a} = 5^b \\implies 5^8 = 5^b \\implies b=8$\\n$\\implies a+b = 4+8 = 12$\\n$\\therefore$ ④",
+    "solution": "$\\left(\\frac{25}{3}\\right)^a=\\frac{5^{2a}}{3^a}=\\frac{5^b}{3^4}$이다. 분모의 지수를 비교하면 $a=4$이고, 분자의 지수를 비교하면 $b=2a=8$이다. 따라서 $(a,b)=(4,8)$이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -331,22 +322,23 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "식의계산",
+      "단항식",
+      "혼합계산",
       "계수비교",
-      "지수",
-      "계산",
-      "조건해석"
+      "지수비교"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 거듭제곱을 풀고 나눗셈을 역수의 곱셈으로 변환한 뒤 계수와 지수를 비교함.\\n$2x^A \\times (-4x)^2 \\div 8x^3 = 2x^A \\times 16x^2 \\times \\frac{1}{8x^3}$\\n$\\implies \\frac{32x^{A+2}}{8x^3} = 4x^{A+2-3} = 4x^{A-1}$\\n정리된 식이 $Bx^7$과 같으므로 계수와 지수를 비교함.\\n$\\implies B=4, A-1=7 \\implies A=8$\\n$\\implies A+B = 8+4 = 12$\\n$\\therefore 12$",
+    "solution": "$2x^A(-4x)^2\\div8x^3=4x^{A-1}=Bx^7$이므로 $B=4$, $A=8$이다. 따라서 $A+B=12$, 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
@@ -365,24 +357,23 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "식의계산",
       "다항식",
-      "전개",
-      "계수비교",
-      "도형",
-      "원",
-      "계산"
+      "괄호전개",
+      "동류항",
+      "계수의합"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 소괄호부터 차례대로 전개하여 동류항을 정리한 후 계수의 합을 구함.\\n$\\{3y + 4x - 2\\} - 6\\{x - 2y - 5\\}$\\n$\\implies 4x + 3y - 2 - 6x + 12y + 30$\\n동류항끼리 계산함.\\n$\\implies -2x + 15y + 28$\\n모든 계수와 상수항의 합을 계산함.\\n$\\implies -2 + 15 + 28 = 41$\\n$\\therefore 41$ 이므로 정답은 ③이다.",
+    "solution": "식을 전개하면 $-2x+15y+28$이다. 계수의 합은 $-2+15+28=41$이므로 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -401,22 +392,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "참거짓",
-      "조건해석",
-      "계산",
-      "중난도"
+      "식의계산",
+      "다항식",
+      "덧셈뺄셈",
+      "역산"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 잘못된 계산식을 등식으로 세워 어떤 식을 먼저 구한 뒤, 바른 계산식을 수행함.\\n어떤 식을 $M$이라 하면, $M - (-2x^2+3x-11) = 6x^2-x-10$\\n$\\implies M = (6x^2-x-10) + (-2x^2+3x-11) = 4x^2+2x-21$\\n바른 계산은 $M$에 주어진 식을 더하는 것임.\\n$\\implies (4x^2+2x-21) + (-2x^2+3x-11)$\\n$\\implies 2x^2+5x-32$\\n$\\therefore 2x^2+5x-32$",
+    "solution": "더해야 할 식을 $P=-2x^2+3x-11$, 원래 식을 $M$이라 하자.\n\n잘못 계산했으므로\n\n$M-P=6x^2-x-10$이다.\n\n따라서\n\n$M=4x^2+2x-21$이다.\n\n바르게 계산하면\n\n$M+P\n=2x^2+5x-32$이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -435,22 +426,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "최대최소",
-      "대입",
-      "조건해석",
-      "계산"
+      "식의계산",
+      "다항식",
+      "식의값",
+      "대입"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 괄호 안의 식을 단항식으로 나누어 식을 최대로 간단히 한 후 주어진 값을 대입함.\\n$7x - \\{5y + (12x^2-6xy) \\div 4x\\}$\\n$\\implies 7x - \\{5y + \\frac{12x^2}{4x} - \\frac{6xy}{4x}\\}$\\n$\\implies 7x - \\{5y + 3x - 1.5y\\} = 7x - \\{3x + 3.5y\\} = 4x - 3.5y$\\n$x=3, y=\\frac{4}{7}$ 을 대입함.\\n$\\implies 4(3) - 3.5(\\frac{4}{7}) = 12 - \\frac{7}{2}(\\frac{4}{7}) = 12 - 2 = 10$\\n$\\therefore 10$",
+    "solution": "$(12x^2-6xy)\\div4x\n=3x-\\dfrac32y$이다.\n\n따라서 전체 식은\n\n$7x-\\left(5y+3x-\\dfrac32y\\right)$\n\n$=4x-\\dfrac72y$이다.\n\n$x=3$, $y=\\dfrac47$을 대입하면\n\n$12-2=10$이다.\n\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 14,
@@ -469,22 +460,22 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "식의계산",
       "다항식",
-      "전개",
-      "계수비교",
-      "계산"
+      "분배법칙",
+      "계수비교"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 분배법칙을 이용하여 괄호를 전개한 후 동류항을 정리하여 각 계수를 추출함.\\n$\\frac{1}{2}a(6a-8b) - \\frac{2}{3}a(12a-9b)$\\n$\\implies (3a^2 - 4ab) - (8a^2 - 6ab)$\\n$\\implies 3a^2 - 4ab - 8a^2 + 6ab = -5a^2 + 2ab$\\n$a^2$의 계수는 $-5$, $ab$의 계수는 $2$임.\\n$\\implies 2 - (-5) = 7$\\n$\\therefore 7$",
+    "solution": "전개하면 $-5a^2+2ab$이다. 따라서 $ab$의 계수에서 $a^2$의 계수를 빼면 $2-(-5)=7$이므로 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -503,18 +494,17 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "나머지정리",
-      "부등식",
-      "도형",
-      "원",
-      "개념"
+      "일차부등식",
+      "부등식의성질",
+      "음수곱셈나눗셈",
+      "부등호방향"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호의 방향이 바뀜을 이용함.\\n① $a+5 < b+5 \\implies a < b$ (방향 유지)\\n② $2a-1 < 2b-1 \\implies 2a < 2b \\implies a < b$ (방향 유지)\\n③ $3-a+\\frac{1}{5} < 3-b+\\frac{1}{5} \\implies -a < -b \\implies a > b$ (방향 반대)\\n④ $\\frac{a}{4}-1 < \\frac{b}{4}-1 \\implies \\frac{a}{4} < \\frac{b}{4} \\implies a < b$ (방향 유지)\\n⑤ $a \\div (-7) > b \\div (-7) \\implies -\\frac{a}{7} > -\\frac{b}{7} \\implies a < b$ (방향 반대 $\\rightarrow$ 원래 부등호는 $a < b$ 임을 도출)\\n$\\therefore$ ③",
+    "solution": "①, ②, ④, ⑤는 모두 $a<b$를 뜻한다. ⑤는 음수 $-7$을 곱하면 부등호가 뒤집힌다. ③은 $a>b$이므로 나머지와 다르다. 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -538,25 +528,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "부등식",
       "일차부등식",
+      "해구하기",
       "자연수조건",
-      "범위",
-      "개수세기",
-      "조건해석"
+      "정수해개수"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 미지수가 포함된 항을 좌변으로, 상수항을 우변으로 이항하여 해의 범위를 구함.\\n$2x - 4 \\le 8 - x$\\n$\\implies 2x + x \\le 8 + 4$\\n$\\implies 3x \\le 12 \\implies x \\le 4$\\n조건을 만족하는 자연수 $x$는 $1, 2, 3, 4$ 임.\\n$\\therefore 4$",
-    "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "$2x-4\\le8-x$에서 $x\\le4$이다. 자연수 해는 $1,2,3,4$의 $4$개이므로 정답은 ⑤이다.",
+    "level": "하",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -575,24 +562,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "부등식",
       "일차부등식",
-      "수직선",
-      "조건해석",
-      "계산"
+      "계수조건",
+      "해의범위",
+      "경계값"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 부등식을 $x$에 대해 정리한 후, 주어진 해와 경계값을 일치시켜 미지수를 구함.\\n$3x - a > 5x + 2$\\n$\\implies 3x - 5x > a + 2 \\implies -2x > a + 2$\\n양변을 $-2$로 나누면 부등호 방향이 바뀜.\\n$\\implies x < \\frac{-(a+2)}{2}$\\n주어진 해가 $x < -4$ 이므로 경계값이 일치해야 함.\\n$\\implies \\frac{-(a+2)}{2} = -4 \\implies a + 2 = 8$\\n$\\implies a = 6$\\n$\\therefore 6$",
+    "solution": "$3x-a>5x+2$에서 $x<-\\frac{a+2}{2}$이다. 경계가 $-4$이므로 $-\\frac{a+2}{2}=-4$, 따라서 $a=6$이다. 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -611,25 +596,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "부등식",
       "일차부등식",
-      "수직선",
       "정수조건",
-      "범위",
-      "조건해석",
-      "계산"
+      "최대정수",
+      "매개변수범위"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 부등식을 풀고 수직선 위에서 가장 큰 정수가 $-2$가 되기 위한 경계 조건의 범위를 설정함.\\n$x - 3 \\le -2x + 3a \\implies 3x \\le 3a + 3 \\implies x \\le a + 1$\\n이 범위를 만족하는 가장 큰 정수가 $-2$가 되려면 경계값 $a+1$이 $-2$와 $-1$ 사이에 있어야 함.\\n$\\implies -2 \\le a + 1 < -1$ ($-1$이 포함되면 가장 큰 정수가 $-1$이 되므로 등호 제외)\\n각 변에서 $1$을 뺌.\\n$\\implies -3 \\le a < -2$\\n$\\therefore -3 \\le a < -2$",
-    "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "$x-3\\le-2x+3a$\n\n$3x\\le3a+3$\n\n$x\\le a+1$이다.\n\n가장 큰 정수해가 $-2$이려면\n\n$-2\\le a+1<-1$이다.\n\n따라서\n\n$-3\\le a<-2$이다.\n\n따라서 정답은 ②이다.",
+    "level": "상",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
@@ -648,25 +630,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
-      "최대최소",
-      "부등식",
       "일차부등식",
+      "분수소수",
       "정수조건",
-      "범위",
-      "조건해석"
+      "최대정수"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 계수가 분수와 소수로 섞여 있으므로 양변에 최소공배수를 곱하여 정수 계수로 변환함.\\n$\\frac{3x+2}{5} < 0.6 + \\frac{1}{3}x = \\frac{3}{5} + \\frac{1}{3}x$\\n분모 $5, 3$의 최소공배수 $15$를 양변에 곱함.\\n$\\implies 15(\\frac{3x+2}{5}) < 15(\\frac{3}{5} + \\frac{1}{3}x)$\\n$\\implies 3(3x+2) < 9 + 5x \\implies 9x + 6 < 9 + 5x$\\n$\\implies 4x < 3 \\implies x < 0.75$\\n이 범위를 만족하는 가장 큰 정수를 구함.\\n$\\therefore 0$",
+    "solution": "$0.6=\\frac35$로 바꾸고 양변에 $15$를 곱하면 $9x+6<9+5x$이다. 따라서 $x<\\frac34$이고 가장 큰 정수는 $0$이다. 정답은 ④이다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -685,25 +664,23 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "최대최소",
-      "부등식",
       "일차부등식",
-      "실생활",
-      "범위",
-      "조건해석",
-      "응용"
+      "활용",
+      "거리속력시간",
+      "시간제한",
+      "최대값"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 전체 이동 가능한 시간에서 물건을 사는 시간을 빼고 왕복 이동 거리에 대한 부등식을 세움.\\n전체 시간 $1$시간 $15$분 $= 75$분, 물건 사는 시간 $15$분이므로 순수 이동 가능 시간은 $60$분임.\\n다녀올 거리를 $xm$라 하면, 왕복 시간의 합은 $60$분 이하가 되어야 함.\\n$\\implies \\frac{x}{40} + \\frac{x}{40} \\le 60 \\implies \\frac{2x}{40} \\le 60$\\n$\\implies \\frac{x}{20} \\le 60 \\implies x \\le 1200$\\n거리 단위가 미터이므로 킬로미터로 환산함. ($1200m = 1.2km$)\\n$\\therefore 1.2km$",
+    "solution": "왕복 이동에 사용할 수 있는 시간은\n\n$75-15=60$분이다.\n\n편도 거리를 $x\\text{ m}$라 하면\n\n$\\dfrac{x}{40}+\\dfrac{x}{40}\\le60$\n\n$x\\le1200$이다.\n\n따라서 최대 거리는\n\n$1200\\text{ m}=1.2\\text{ km}$이다.\n\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -722,24 +699,23 @@ window.questionBank = [
     "standardUnitKey": "M1-07",
     "standardUnit": "입체도형의 성질",
     "standardUnitOrder": 7,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "복소수",
-      "도형",
-      "원",
+      "서술형",
+      "입체도형",
+      "원뿔",
+      "원기둥",
       "부피",
-      "조건해석",
-      "계산"
+      "비율"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 원뿔과 원기둥의 부피 공식을 각각 세운 후 비율을 계산함.\\n$i) 원뿔 부피  V_1 = \\frac{1}{3} \\pi (반지름)^2 (높이) = \\frac{1}{3} \\pi a^2 (3b) = \\pi a^2 b$\\n$ii) 원기둥 부피  V_2 = \\pi (반지름)^2 (높이) = \\pi (2b)^2 a = 4\\pi ab^2$\\n비율 계산: $\\frac{V_1}{V_2} = \\frac{\\pi a^2 b}{4\\pi ab^2} = \\frac{a}{4b}$\\n$\\therefore \\frac{a}{4b}$",
+    "solution": "원뿔의 부피는\n\n$\\dfrac13\\pi a^2(3b)=\\pi a^2b$이다.\n\n원기둥의 부피는\n\n$\\pi(2b)^2a=4\\pi ab^2$이다.\n\n따라서 부피의 비는\n\n$\\dfrac{\\pi a^2b}{4\\pi ab^2}\n=\\dfrac a{4b}$이다.\n\n따라서 원뿔의 부피는 원기둥의\n\n$\\dfrac a{4b}$배이다.",
     "level": "중",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -758,23 +734,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "지수",
-      "부등식",
+      "서술형",
       "일차부등식",
-      "조건해석",
-      "계산"
+      "해집합",
+      "경계값",
+      "계수결정"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 미지수가 없는 부등식의 해를 먼저 구한 뒤, 다른 부등식의 해와 경계값을 일치시킴.\\n$i) 첫 번째 부등식:  3x - 2 \\le x + 4 \\implies 2x \\le 6 \\implies x \\le 3$\\n$ii) 두 번째 부등식:  3x - a \\ge 5x - 10 + 1 \\implies -2x \\ge a - 9 \\implies x \\le \\frac{9-a}{2}$\\n두 부등식의 해가 서로 같으므로 경계값이 동일함.\\n$\\implies \\frac{9-a}{2} = 3 \\implies 9 - a = 6$\\n$\\implies a = 3$\\n$\\therefore 3$",
-    "level": "중",
+    "solution": "첫째 부등식은\n\n$3x-2\\le x+4$\n\n$x\\le3$이다.\n\n둘째 부등식은\n\n$3x-a\\ge5(x-2)+1$\n\n$x\\le\\dfrac{9-a}{2}$이다.\n\n두 해가 같으므로\n\n$\\dfrac{9-a}{2}=3$\n\n$a=3$이다.\n\n따라서 구하는 값은 $3$이다.",
+    "level": "상",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -793,24 +768,22 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "최대최소",
-      "지수",
-      "부등식",
-      "도형",
-      "원",
-      "범위",
-      "조건해석"
+      "서술형",
+      "일차부등식",
+      "활용",
+      "가격",
+      "인원수",
+      "최대값"
     ],
     "wide": false,
-    "solution": "<b>[키포인트]</b> 어른의 수를 미지수 $x$로 두고, 전체 비용이 제한 금액 이하라는 조건의 부등식을 세움.\\n어른이 $x$명이면 어린이는 $(25-x)$명임.\\n비용 조건: $1000x + 600(25-x) \\le 21000$\\n$\\implies 1000x + 15000 - 600x \\le 21000$\\n$\\implies 400x \\le 6000$\\n양변을 $400$으로 나눔.\\n$\\implies x \\le 15$\\n$\\therefore 15$",
+    "solution": "어른 수를 $x$명이라 하면 어린이는 $25-x$명이다.\n\n$1000x+600(25-x)\\le21000$\n\n$400x\\le6000$\n\n$x\\le15$이다.\n\n따라서 어른은 최대 $15$명이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
