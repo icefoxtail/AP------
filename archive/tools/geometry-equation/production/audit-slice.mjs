@@ -15,6 +15,12 @@ export function auditSlice(root,resultRef){
   }
   for(const name of ['UID_AUTHORITY','VERIFIED_SOLUTION','PLAN','SOURCE_REVIEW','MATH','MATH_REVIEW','TYPESET','MEASURE','NORMALIZE','BUILD','STATIC_AUDIT','ARCHIVE_BANK','CAPTURE','VISUAL_REVIEW'])if(!stages.some(s=>s.stage===name))errors.push('STAGE_MISSING:'+name);
   const plan=JSON.parse(readBoundFile(root,result.planRef));if(planHash(plan)!==plan.planSha256)errors.push('STALE_PLAN');
+  if(plan.graphPlan){
+    if(!stages.some(s=>s.stage==='GRAPH_OVERVIEW_FRAME'))errors.push('GRAPH_OVERVIEW_FRAME_REQUIRED');
+    const staticGraph=stages.findLast(s=>s.stage==='STATIC_AUDIT'),displayGraph=stages.findLast(s=>s.stage==='DISPLAY_GRAPH_REVIEW');
+    if(!staticGraph||JSON.parse(readBoundFile(root,staticGraph.outputs[0])).graph?.overview?.status!=='PASS')errors.push('GRAPH_OVERVIEW_STATIC_NOT_CLOSED');
+    if(!displayGraph||JSON.parse(readBoundFile(root,displayGraph.outputs[0])).overview?.status!=='PASS')errors.push('GRAPH_OVERVIEW_ACTUAL_SIZE_NOT_CLOSED');
+  }
   if(plan.sourceReviewPolicySha256!==sourcePolicyFingerprint(root))errors.push('STALE_SOURCE_REVIEW_POLICY');
   const verification=JSON.parse(readBoundFile(root,plan.verifiedSolutionRef));
   if(plan.verifiedSolutionPolicySha256!==verifiedSolutionPolicyFingerprint(root)||!validateReviewLineage(root,verification,'SOLUTION',plan.verifiedSolutionPolicySha256,plan.verificationInputSha256))errors.push('STALE_OR_UNBLINDED_SOLUTION_VERIFICATION');

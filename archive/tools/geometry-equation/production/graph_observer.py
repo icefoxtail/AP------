@@ -75,11 +75,34 @@ def denominator_lower(poly,a,b):
     bound=low if low>0 else -high if high<0 else S.Integer(0)
     return max(0,float(bound)*(1-1e-12))
 
+def overview_audit(plan,poly,points,transform):
+    """Independent shape adequacy from source coefficients and observed curves."""
+    if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_OVERVIEW_DEGREE']}
+    a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a))
+    xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
+    width=(xmax-xmin)*transform['sx']*transform['displayScale'];height=(ymax-ymin)*transform['sy']*transform['displayScale']
+    if not xmin+.05*(xmax-xmin)<h<xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<k<ymax-.05*(ymax-ymin):errors.append('OVERVIEW_VERTEX_OUTSIDE_INTERIOR')
+    natural=2/math.sqrt(abs(a))
+    if min(h-lo,hi-h)<natural*(1-1e-9):errors.append('OVERVIEW_DOMAIN_TOO_NARROW')
+    for point in plan.get('requiredPoints',[]):
+        px,py=point['x'],point['y']
+        if not xmin+.05*(xmax-xmin)<=px<=xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<=py<=ymax-.05*(ymax-ymin):errors.append('OVERVIEW_REQUIRED_FEATURE_CLIPPED:'+point['id'])
+        if not any(abs(q[0]-px)*transform['sx']*transform['displayScale']<=.35 and abs(q[1]-py)*transform['sy']*transform['displayScale']<=.35 for q in points):errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_OBSERVED:'+point['id'])
+    left=[p for p in points if p[0]<=h];right=[p for p in points if p[0]>=h]
+    measured=[]
+    for name,arm in [('LEFT',left),('RIGHT',right)]:
+        horizontal=max((abs(p[0]-h)*transform['sx']*transform['displayScale'] for p in arm),default=0)
+        rise=max(((p[1]-k)*(1 if a>0 else -1)*transform['sy']*transform['displayScale'] for p in arm),default=0)
+        if horizontal<max(40,width*.22):errors.append('OVERVIEW_'+name+'_ARM_TOO_NARROW')
+        if rise<max(50,height*.45):errors.append('OVERVIEW_'+name+'_ARM_TOO_SHORT')
+        measured.append({'arm':name,'horizontalCssPx':horizontal,'riseCssPx':rise})
+    return {'status':'FAIL' if errors else 'PASS','errors':errors,'vertex':[h,k],'opening':'UP' if a>0 else 'DOWN','plotCssSize':[width,height],'arms':measured,'policy':'QUADRATIC_OVERVIEW_v1'}
+
 def audit(plan,svg,transform):
     try:f,den,poly,evaluate,topology=resolve(plan)
     except (ValueError,KeyError,TypeError) as error:return {'status':'UNSUPPORTED','errors':[str(error)]}
     if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0: return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-    tolerance=.35;scale=transform['sy']*transform['displayScale'];errors=[];rows=[];intervals=[];markers=[];observed_roots=[]
+    tolerance=.35;scale=transform['sy']*transform['displayScale'];errors=[];rows=[];intervals=[];markers=[];observed_roots=[];actual_points=[]
     required_roots=[r for r,_ in topology['roots'] if plan['viewport'][0]<=r<=plan['viewport'][1] and not any(abs(r-h)<1e-9 for h in topology['holes']+topology['poles'])] if plan['viewport'][2]<=0<=plan['viewport'][3] else []
     if any((b-a)*transform['sx']*transform['displayScale']<1 for a,b in zip(required_roots,required_roots[1:])):return {'status':'UNSUPPORTED','errors':['GRAPH_ROOT_FEATURE_BELOW_DISPLAY_RESOLUTION'],'topology':topology}
     root=ET.fromstring(svg)
@@ -94,7 +117,9 @@ def audit(plan,svg,transform):
         values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',path.get('points',''))]
         if len(values)<4 or len(values)%2 or not all(math.isfinite(v) for v in values):errors.append('INVALID_CURVE_POINTS');continue
         points=[((values[i]-transform['originX'])/transform['sx'],(transform['originY']-values[i+1])/transform['sy']) for i in range(0,len(values),2)]
+        actual_points.extend(points)
         for (a,ya),(b,yb) in zip(points,points[1:]):
+            if a==b and ya==yb:continue  # identical SVG-quantized vertex, no segment
             if not a<b: errors.append('NONMONOTONE_SEGMENT');continue
             if any(a<r<b for r in topology['holes']+topology['poles']+topology['boundary']):errors.append('DOMAIN_CROSSING');continue
             if abs(ya)<1e-9:observed_roots.append(a)
@@ -139,4 +164,6 @@ def audit(plan,svg,transform):
     for hole in topology['holes']:
         lim=float(S.limit(f,x,S.Rational(str(hole))))
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
-    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'topology':topology,'segments':rows,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+    overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
+    if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
