@@ -214,7 +214,7 @@ window.questionBank = [
       "$a=6,\\ b\\ne-\\dfrac{3}{4}$"
     ],
     "answer": "④",
-    "solution": "[핵심] 해가 없으려면 두 직선이 평행하되 서로 일치하지 않아야 한다.\n[풀이] $x,y$의 계수비가 같아야 하므로 $\\dfrac{a}{3}=\\dfrac{4}{-2}=-2$, 따라서 $a=-6$이다. 두 식이 같은 직선이 되려면 상수항의 비도 같아야 한다. $\\dfrac{3}{2b}=-2$가 되는 값은 $b=-\\dfrac34$이다.\n[확인] 해가 없으려면 이 일치 조건을 피해야 하므로 $b\\ne-\\dfrac34$이다.\n[결론] $a=-6,\\ b\\ne-\\dfrac34$이므로 정답은 ④이다.",
+    "solution": "해가 없으려면 두 직선이 서로 평행하고 서로 다른 직선이어야 한다.\n\n두 식은\n\n$ax+4y=3$\n\n$3x-2y=2b$\n\n이다.\n\n평행하려면 $x,y$의 계수비가 같아야 하므로\n\n$\\dfrac a3=\\dfrac4{-2}$\n\n$\\dfrac a3=-2$\n\n$a=-6$이다.\n\n이때 두 직선이 완전히 같은 직선이 되려면 상수항의 비도 같아야 한다.\n\n$\\dfrac3{2b}=-2$\n\n$3=-4b$\n\n$b=-\\dfrac34$이다.\n\n해가 없으려면 같은 직선은 아니어야 하므로\n\n$b\\ne-\\dfrac34$이다.\n\n따라서\n\n$a=-6,\\quad b\\ne-\\dfrac34$\n\n이고 정답은 ④이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -252,7 +252,7 @@ window.questionBank = [
       "7회"
     ],
     "answer": "④",
-    "solution": "[핵심] A와 B가 이긴 횟수를 각각 미지수로 두고 두 사람의 이동 계단 수를 식으로 만든다.\n[풀이] A가 이긴 횟수를 $x$, B가 이긴 횟수를 $y$라 하면 A는 $3x-2y=5$, B는 $-2x+3y=10$을 만족한다. 첫째 식에 3, 둘째 식에 2를 곱해 더하면 $5x=35$이므로 $x=7$이다. $3x-2y=5$에 대입하면 $21-2y=5$, 따라서 $y=8$이다.\n[확인] B의 순이동은 $3\\cdot8-2\\cdot7=10$계단으로 조건과 맞는다.\n[결론] B가 이긴 횟수는 8회, 정답은 ④이다.",
+    "solution": "A가 이긴 횟수를 $x$회,\nB가 이긴 횟수를 $y$회라 하자.\n\nA의 계단 변화는\n\n$3x-2y=5$이다.\n\nB의 계단 변화는\n\n$-2x+3y=10$이다.\n\n첫째 식에 $3$을 곱하면\n\n$9x-6y=15$,\n\n둘째 식에 $2$를 곱하면\n\n$-4x+6y=20$이다.\n\n두 식을 더하면\n\n$5x=35$\n\n$x=7$이다.\n\n이를\n\n$3x-2y=5$\n\n에 대입하면\n\n$21-2y=5$\n\n$-2y=-16$\n\n$y=8$이다.\n\n따라서 B가 이긴 횟수는 $8$회이고 정답은 ④이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -630,7 +630,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "⑤",
-    "solution": "[핵심] 두 직선과 $x$축이 만드는 삼각형의 밑변과 높이를 구한다.\n[풀이] $x+y=4$의 $x$절편은 4, $2x-y=2$의 $x$절편은 1이다. 두 직선의 교점은 $y=4-x$를 둘째 식에 대입해 $3x=6$, 즉 $(2,2)$이다.\n[확인] 밑변 길이는 $4-1=3$, 높이는 2이므로 넓이는 $\\dfrac12\\cdot3\\cdot2=3$이다.\n[결론] 정답은 ⑤이다.",
+    "solution": "각 직선의 $x$절편을 구한다.\n\n$x+y=4$에서\n\n$y=0$이면\n\n$x=4$이다.\n\n$2x-y=2$에서\n\n$y=0$이면\n\n$2x=2$\n\n$x=1$이다.\n\n두 직선의 교점을 구한다.\n\n$x+y=4$에서\n\n$y=4-x$이다.\n\n이를\n\n$2x-y=2$\n\n에 대입하면\n\n$2x-(4-x)=2$\n\n$3x=6$\n\n$x=2$이다.\n\n따라서\n\n$y=2$이고 교점은 $(2,2)$이다.\n\n삼각형의 밑변은\n\n$4-1=3$,\n\n높이는 $2$이다.\n\n따라서 넓이는\n\n$\\dfrac12\\times3\\times2=3$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -669,7 +669,7 @@ window.questionBank = [
       "$\\dfrac12$"
     ],
     "answer": "①",
-    "solution": "[핵심] 선분 $AB$의 직선식과 $y=ax-2$의 교점이 선분의 $x$범위 $4\\le x\\le8$ 안에 있는지 본다.\n[풀이] $A(4,6),B(8,2)$를 잇는 직선은 $y=-x+10$이다. $ax-2=-x+10$에서 교점의 $x$좌표는 $x=\\dfrac{12}{a+1}$이다. 보기의 $a$를 대입하면 $a=2,\\dfrac32,1,\\dfrac12$에서는 각각 $x=4,\\dfrac{24}{5},6,8$로 선분 위에 있다.\n[확인] $a=\\dfrac52$이면 $x=\\dfrac{24}{7}<4$이므로 선분 $AB$와 만나지 않는다.\n[결론] 될 수 없는 값은 ①이다.",
+    "solution": "두 점 $A(4,6)$, $B(8,2)$를 지나는 직선의 기울기는\n\n$\\dfrac{2-6}{8-4}=-1$이다.\n\n따라서 선분 $AB$가 놓인 직선은\n\n$y=-x+10$이다.\n\n주어진 직선은\n\n$y=ax-2$이다.\n\n두 직선의 교점에서\n\n$ax-2=-x+10$\n\n$(a+1)x=12$\n\n$x=\\dfrac{12}{a+1}$이다.\n\n교점이 선분 $AB$ 위에 있으려면\n\n$4\\le x\\le8$\n\n이어야 한다.\n\n각 보기를 확인하면\n\n$a=2$일 때 $x=4$,\n\n$a=\\dfrac32$일 때 $x=\\dfrac{24}{5}$,\n\n$a=1$일 때 $x=6$,\n\n$a=\\dfrac12$일 때 $x=8$이다.\n\n모두 선분 위에 있다.\n\n하지만\n\n$a=\\dfrac52$\n\n이면\n\n$x=\\dfrac{12}{\\frac72}=\\dfrac{24}{7}<4$\n\n이므로 선분 $AB$와 만나지 않는다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -708,7 +708,7 @@ window.questionBank = [
       "㉠, ㉡, ㉣"
     ],
     "answer": "③",
-    "solution": "[핵심] 먼저 주어진 그래프에서 $a<0,\\ b>0$을 읽고 각 보기의 기울기와 $y$절편 부호를 판단한다.\n[풀이] ㉠ $y=-bx-a$는 기울기 음수, $y$절편 양수라 제2사분면을 지난다. ㉡ $y=bx+a$는 $x<0$일 때 두 항이 모두 음수라 제2사분면을 지나지 않는다. ㉢ $y=\\dfrac ba x+ab$는 기울기와 절편이 모두 음수라 충분히 작은 음수 $x$에서 $y>0$이 되어 제2사분면을 지난다. ㉣ $y=-\\dfrac abx+ab$는 기울기 양수, 절편 음수이고 $x<0$이면 $y<0$이라 제2사분면을 지나지 않는다.\n[확인] 조건을 만족하는 것은 ㉡, ㉣이다.\n[결론] 정답은 ③이다.",
+    "solution": "주어진 그래프에서\n\n$a<0,\\quad b>0$이다.\n\n㉠\n$y=-bx-a$\n\n에서 기울기 $-b<0$,\n$y$절편 $-a>0$이므로 제2사분면을 지난다.\n\n㉡\n$y=bx+a$\n\n에서 기울기 $b>0$,\n$y$절편 $a<0$이다.\n\n$x<0$이면\n\n$bx<0$\n\n이고 $a<0$이므로\n\n$y<0$이다.\n\n따라서 제2사분면을 지나지 않는다.\n\n㉢\n$y=\\dfrac ba x+ab$\n\n에서\n\n$\\dfrac ba<0$,\n\n$ab<0$이다.\n\n$x$가 충분히 작은 음수이면\n$\\dfrac ba x>0$이 크게 되어 제2사분면을 지난다.\n\n㉣\n$y=-\\dfrac abx+ab$\n\n에서\n\n$-\\dfrac ab>0$,\n\n$ab<0$이다.\n\n$x<0$이면 두 항이 모두 음수이므로\n\n$y<0$이다.\n\n따라서 제2사분면을 지나지 않는다.\n\n그러므로 ㉡, ㉣이고 정답은 ③이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -747,7 +747,7 @@ window.questionBank = [
       "40분 후"
     ],
     "answer": "①",
-    "solution": "[핵심] 그래프에서 두 사람의 속도를 읽어 거리식이 같아지는 시각을 구한다.\n[풀이] 동생은 $(0,0)$에서 $(60,1200)$까지 가므로 속력은 $20\\mathrm{m/min}$이다. 형은 $(10,0)$에서 $(50,1200)$까지 가므로 속력은 $30\\mathrm{m/min}$이다. 동생 출발 후 $x$분일 때 거리는 각각 $20x$, $30(x-10)$이다. $20x=30(x-10)$에서 $x=30$이다.\n[확인] 형은 동생보다 10분 늦게 출발했으므로 형이 움직인 시간은 $30-10=20$분이다.\n[결론] 정답은 ①이다.",
+    "solution": "그래프에서 동생은\n\n$(0,0)$에서 $(60,1200)$까지 이동한다.\n\n따라서 동생의 속력은\n\n$\\dfrac{1200}{60}=20\\mathrm{m/min}$이다.\n\n형은\n\n$(10,0)$에서 $(50,1200)$까지 이동하므로\n\n속력은\n\n$\\dfrac{1200}{50-10}=30\\mathrm{m/min}$이다.\n\n동생 출발 후 $x$분일 때\n\n동생이 간 거리는\n\n$20x$,\n\n형이 간 거리는\n\n$30(x-10)$이다.\n\n두 사람이 만날 때 거리가 같으므로\n\n$20x=30(x-10)$\n\n$20x=30x-300$\n\n$10x=300$\n\n$x=30$이다.\n\n이는 동생이 출발한 지 $30$분 후이다.\n\n형은 $10$분 늦게 출발했으므로\n\n$30-10=20$분 동안 움직였다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -876,7 +876,7 @@ window.questionBank = [
     "image": "assets/images/22_연향중_1학기_기말_중2_기출/q24.png",
     "choices": [],
     "answer": "(1) $y=20x+120$  (2) 2초 후",
-    "solution": "[핵심] $x$초 후의 $\\overline{CP}$를 먼저 구하고, 사각형 $ABCP$를 평행한 두 변 $AB,CP$를 가진 사다리꼴로 본다.\n[풀이] 점 $P$는 초속 $2\\mathrm{cm}$로 움직이므로 $\\overline{CP}=2x\\mathrm{cm}$이다. 그림에서 $AB=12\\mathrm{cm}$이고 두 평행한 변 $AB,CP$ 사이의 거리는 $AD=20\\mathrm{cm}$이다. 따라서 $y=\\dfrac12(12+2x)\\cdot20=120+20x$이다.\n[확인] $y=160$이면 $20x+120=160$, 따라서 $x=2$이다.\n[결론] (1) $y=20x+120$  (2) 2초 후이다.",
+    "solution": "(1)\n점 $P$는 초속 $2\\mathrm{cm}$로 움직이므로\n$x$초 후\n\n$CP=2x\\mathrm{cm}$이다.\n\n사각형 $ABCP$는\n평행한 두 변의 길이가\n\n$AB=12\\mathrm{cm}$,\n\n$CP=2x\\mathrm{cm}$\n\n이고 높이가\n\n$AD=20\\mathrm{cm}$\n\n인 사다리꼴이다.\n\n따라서 넓이 $y$는\n\n$y=\\dfrac12(12+2x)\\times20$\n\n$=10(12+2x)$\n\n$=120+20x$이다.\n\n따라서\n\n$y=20x+120$이다.\n\n(2)\n넓이가 $160\\mathrm{cm}^2$일 때\n\n$20x+120=160$\n\n$20x=40$\n\n$x=2$이다.\n\n따라서 점 $P$가 출발한 지 $2$초 후이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
