@@ -59,6 +59,21 @@ class FakeIndexedDb {
 }
 
 const now = Date.now();
+class MemoryStorage {
+  constructor() { this.rows = new Map(); }
+  get length() { return this.rows.size; }
+  key(index) { return [...this.rows.keys()][index] ?? null; }
+  getItem(key) { return this.rows.get(key) ?? null; }
+  setItem(key, value) { this.rows.set(key, String(value)); }
+  removeItem(key) { this.rows.delete(key); }
+}
+const brokenIndexedDb = {
+  open() {
+    const request = { error: new DOMException('Internal error.', 'UnknownError') };
+    queueMicrotask(() => request.onerror?.());
+    return request;
+  },
+};
 function makeEnvelope(overrides = {}) {
   return contract.createOutputEnvelope(
     {
@@ -97,6 +112,49 @@ test("IndexedDB transport stores and reads one exact, validated envelope", async
   );
   const reopened = await store.read(envelope.outputRequestId, envelope.ownerId, "exam", { now: now + 1 });
   assert.deepEqual(reopened, envelope);
+});
+
+test('IndexedDB Internal error preserves a complete validated output across reopened stores', async () => {
+  const localStorage = new MemoryStorage();
+  const envelope = await makeEnvelope();
+  const producer = output.createOutputStore(brokenIndexedDb, { crypto: webcrypto, localStorage });
+  await producer.sweepExpired();
+  await producer.write(envelope);
+  assert.equal(localStorage.length, 1);
+  const consumer = output.createOutputStore(brokenIndexedDb, { crypto: webcrypto, localStorage });
+  assert.deepEqual(await consumer.read(envelope.outputRequestId, envelope.ownerId, 'exam'), envelope);
+  await assert.rejects(consumer.read(envelope.outputRequestId, '44444444-4444-4444-8444-444444444444', 'exam'), /identity/);
+  await assert.rejects(consumer.read(envelope.outputRequestId, envelope.ownerId, 'ans'), /mode/);
+  assert.equal(await consumer.cleanup('44444444-4444-4444-8444-444444444444', envelope.outputRequestId), false);
+  assert.equal(await consumer.cleanup(envelope.ownerId, envelope.outputRequestId), true);
+  assert.equal(localStorage.length, 0);
+});
+
+test('fallback output rejects corrupted snapshots and expires without deleting unrelated storage', async () => {
+  const localStorage = new MemoryStorage();
+  localStorage.setItem('APMATH_SESSION', 'preserve');
+  const store = output.createOutputStore(brokenIndexedDb, { crypto: webcrypto, localStorage });
+  const envelope = await makeEnvelope();
+  await store.write(envelope);
+  const key = [...localStorage.rows.keys()].find(key => key !== 'APMATH_SESSION');
+  const stored = JSON.parse(localStorage.getItem(key));
+  stored.envelope.questions[0].body = 'tampered';
+  localStorage.setItem(key, JSON.stringify(stored));
+  await assert.rejects(store.read(envelope.outputRequestId, envelope.ownerId, 'exam'), /hash/i);
+  await store.write(envelope);
+  assert.equal(await store.sweepExpired(undefined, envelope.expiresAt), 1);
+  assert.equal(localStorage.getItem('APMATH_SESSION'), 'preserve');
+});
+
+test('publish and reopened consumers retain fallback output after IndexedDB recovers', async () => {
+  const localStorage = new MemoryStorage();
+  const original = await makeEnvelope();
+  const envelope = await output.publishOutputEnvelope(original, { indexedDB: brokenIndexedDb, crypto: webcrypto, localStorage });
+  const recovered = output.createOutputStore(new FakeIndexedDb(), { crypto: webcrypto, localStorage });
+  assert.deepEqual(await recovered.read(envelope.outputRequestId, envelope.ownerId, 'exam'), envelope);
+  assert.equal(await recovered.sweepExpired('44444444-4444-4444-8444-444444444444', envelope.expiresAt), 0);
+  assert.equal(localStorage.length, 1);
+  assert.equal(await recovered.sweepExpired(envelope.ownerId, envelope.expiresAt), 1);
 });
 
 test("A/B request cleanup is exact and cannot delete another owner or request", async () => {

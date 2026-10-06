@@ -6,6 +6,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (root) {
   const databaseName = "apmath-archive2-output-v1";
   const objectStoreName = "outputs";
+  const fallbackPrefix = "APMATH_ARCHIVE2_OUTPUT_ENVELOPE_v1:";
   const storeOwnerKey = "Archive2OutputOwnerId";
   const ownerUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   const supportedQpp = [1, 2, 4, 6, 8];
@@ -21,7 +22,9 @@
     const error = request?.error;
     const name = error?.name || "IndexedDBError";
     const message = error?.message || "브라우저 임시 출력 저장소 작업에 실패했습니다.";
-    return new Error(`${action}: ${message} (${name})`);
+    const failure = new Error(`${action}: ${message} (${name})`);
+    failure.name = name;
+    return failure;
   }
 
   function openOutputDatabase(indexedDBApi) {
@@ -82,6 +85,17 @@
   function createOutputStore(indexedDBApi = root.indexedDB, options = {}) {
     const contract = contractApi();
     const cryptoApi = options.crypto || root.crypto;
+    let fallbackStorage;
+    try {
+      fallbackStorage = options.localStorage || root.localStorage;
+      fallbackStorage?.getItem(fallbackPrefix + "availability");
+    } catch { fallbackStorage = undefined; }
+    const canFallback = error => error?.name === "UnknownError" && fallbackStorage;
+    const fallbackKey = id => fallbackPrefix + id;
+    const fallbackRecord = id => {
+      const value = fallbackStorage?.getItem(fallbackKey(id));
+      return value ? JSON.parse(value) : null;
+    };
     return {
       async write(envelope) {
         await contract.validateOutputEnvelope(envelope, {}, cryptoApi);
@@ -98,7 +112,15 @@
         };
         try {
           await withOutputStore(indexedDBApi, "readwrite", (store) => store.put(record));
+          fallbackStorage?.removeItem(fallbackKey(envelope.outputRequestId));
         } catch (error) {
+          // Some browser profiles cannot open IndexedDB (Internal error).
+          // Keep the complete sealed envelope in one atomic same-origin key;
+          // consumers still verify owner, mode, expiry and payload hash.
+          if (canFallback(error)) {
+            fallbackStorage.setItem(fallbackKey(envelope.outputRequestId), JSON.stringify(record));
+            return { outputRequestId: envelope.outputRequestId, ownerId: envelope.ownerId, ...metrics };
+          }
           const name = error?.name || "";
           const detail = name === "QuotaExceededError" || name === "DataCloneError"
             ? `출력 envelope를 통째로 저장하지 못했습니다 (${name}). 저장 공간을 비우고 다시 열어 주세요.`
@@ -110,7 +132,8 @@
         return { outputRequestId: envelope.outputRequestId, ownerId: envelope.ownerId, ...metrics };
       },
       async read(outputRequestId, ownerId, mode, readOptions = {}) {
-        const record = await withOutputStore(indexedDBApi, "readonly", (store) => store.get(outputRequestId));
+        const record = fallbackRecord(outputRequestId) ||
+          await withOutputStore(indexedDBApi, "readonly", (store) => store.get(outputRequestId));
         if (!record) throw new Error("출력 envelope를 찾을 수 없습니다. 원본에서 다시 열어 주세요.");
         if (record.outputRequestId !== outputRequestId || record.ownerId !== ownerId)
           throw new Error("출력 요청 identity가 일치하지 않습니다. 원본에서 다시 열어 주세요.");
@@ -128,6 +151,12 @@
         return record.envelope;
       },
       async cleanup(ownerId, outputRequestId) {
+        const fallback = fallbackRecord(outputRequestId);
+        if (fallback) {
+          if (fallback.ownerId !== ownerId || fallback.outputRequestId !== outputRequestId) return false;
+          fallbackStorage.removeItem(fallbackKey(outputRequestId));
+          return true;
+        }
         return withOutputStore(indexedDBApi, "readwrite", (store, setResult) => {
           const request = store.get(outputRequestId);
           request.onsuccess = () => {
@@ -144,20 +173,39 @@
       },
       async sweepExpired(ownerId, now = Date.now()) {
         if (ownerId && !ownerUuid.test(String(ownerId))) throw new Error("ownerId is invalid for output cleanup.");
-        return withOutputStore(indexedDBApi, "readwrite", (store, setResult) => {
-          const request = store.getAll();
-          request.onsuccess = () => {
-            let removed = 0;
-            for (const record of request.result || []) {
-              if ((!ownerId || record.ownerId === ownerId) && record.expiresAt <= now) {
-                store.delete(record.outputRequestId);
-                removed += 1;
+        let fallbackRemoved = 0;
+        const fallbackKeys = [];
+        for (let index = 0; index < (fallbackStorage?.length || 0); index++) {
+          const key = fallbackStorage.key(index);
+          if (key?.startsWith(fallbackPrefix)) fallbackKeys.push(key);
+        }
+        for (const key of fallbackKeys) {
+          let record;
+          try { record = JSON.parse(fallbackStorage.getItem(key)); } catch { continue; }
+          if (record && (!ownerId || record.ownerId === ownerId) && record.expiresAt <= now) {
+            fallbackStorage.removeItem(key);
+            fallbackRemoved++;
+          }
+        }
+        try {
+          return fallbackRemoved + await withOutputStore(indexedDBApi, "readwrite", (store, setResult) => {
+            const request = store.getAll();
+            request.onsuccess = () => {
+              let removed = 0;
+              for (const record of request.result || []) {
+                if ((!ownerId || record.ownerId === ownerId) && record.expiresAt <= now) {
+                  store.delete(record.outputRequestId);
+                  removed += 1;
+                }
               }
-            }
-            setResult(removed);
-          };
-          return request;
-        });
+              setResult(removed);
+            };
+            return request;
+          });
+        } catch (error) {
+          if (canFallback(error)) return fallbackRemoved;
+          throw error;
+        }
       },
     };
   }
@@ -192,7 +240,7 @@
       { ...input, ownerId: input.ownerId || outputOwnerId() },
       cryptoApi,
     );
-    const store = createOutputStore(options.indexedDB || root.indexedDB, { crypto: cryptoApi });
+    const store = createOutputStore(options.indexedDB || root.indexedDB, { ...options, crypto: cryptoApi });
     await store.sweepExpired();
     await store.write(envelope);
     return envelope;
@@ -217,12 +265,12 @@
   }
 
   async function readOutputEnvelope(outputRequestId, ownerId, mode, options = {}) {
-    const store = createOutputStore(options.indexedDB || root.indexedDB, { crypto: options.crypto || root.crypto });
+    const store = createOutputStore(options.indexedDB || root.indexedDB, { ...options, crypto: options.crypto || root.crypto });
     return store.read(outputRequestId, ownerId, mode, options);
   }
 
   async function storeOutputEnvelope(envelope, options = {}) {
-    const store = createOutputStore(options.indexedDB || root.indexedDB, { crypto: options.crypto || root.crypto });
+    const store = createOutputStore(options.indexedDB || root.indexedDB, { ...options, crypto: options.crypto || root.crypto });
     await store.sweepExpired();
     await store.write(envelope);
     return envelope;
@@ -354,7 +402,7 @@
     url.searchParams.set("archive2Context", "archive2");
     url.searchParams.set("archive2OutputContract", contractApi().CONTRACT_VERSION);
     // Static hosts may retain an older inline engine at the unversioned URL.
-    url.searchParams.set("v", "20261003-student-output-s4-1");
+    url.searchParams.set("v", "20261006-output-storage-recovery-1");
     return url;
   }
   function outputEnvelopeUrl(path, base, envelope, options = {}) {
