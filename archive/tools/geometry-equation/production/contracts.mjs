@@ -25,7 +25,8 @@ export function freezeWire(payload) {
   return {wireVersion:WIRE_VERSION, canonicalBlob:blob, objectSha256:bytesSha(Buffer.from(blob))};
 }
 export function validateResponse(value, requestHash) {
-  if (value?.wireVersion !== WIRE_VERSION || value.inputObjectSha256 !== requestHash || !['OK','UNSUPPORTED','ERROR'].includes(value.status) || !Object.hasOwn(value,'result')) throw Error('INVALID_WORKER_RESPONSE');
+  const responseKeys='inputObjectSha256,result,status,wireVersion';
+  if (!isObject(value) || Object.keys(value).sort().join(',') !== responseKeys || value.wireVersion !== WIRE_VERSION || value.inputObjectSha256 !== requestHash || !['OK','UNSUPPORTED','ERROR'].includes(value.status)) throw Error('INVALID_WORKER_RESPONSE');
   canonicalJson(value);
   return value;
 }

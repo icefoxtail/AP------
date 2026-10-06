@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_EXACT_WORKER_RESPONSE_SCHEMA_RECOVERY_v1",
+  "classification": "STRICT_WORKER_RESPONSE_KEYS_AND_MALFORMED_PROTOCOL_CACHE_NEGATIVES",
+  "status": "PASS",
+  "contract": {
+    "requiredTopLevelKeys": [
+      "inputObjectSha256",
+      "result",
+      "status",
+      "wireVersion"
+    ],
+    "additionalProperties": false,
+    "failCode": "INVALID_WORKER_RESPONSE"
+  },
+  "preservedFailures": [
+    {
+      "schemaVersion": "MISSING_RESULT_SCHEMA_FAILURE_v1",
+      "status": "FAILED_TEST_PRESERVED",
+      "case": "missing-result-field",
+      "preFixCommit": "dc466abee",
+      "preFixContractsGitBlobSha1": "36b4f0600696d7b92ed127f3e9570816253c3ce3",
+      "expected": "INVALID_WORKER_RESPONSE",
+      "observed": "NON_JSON_VALUE",
+      "observation": "The response passed version/hash/status validation and failed later at canonicalJson(undefined).",
+      "cacheResidueAssertionsReached": false
+    },
+    {
+      "schemaVersion": "UNEXPECTED_WORKER_FIELD_SCHEMA_FAILURE_v1",
+      "status": "FAILED_TEST_PRESERVED",
+      "case": "unexpected-response-field",
+      "preFixCommit": "feb5e914f",
+      "preFixContractsGitBlobSha1": "6bcefd8a00fc69135bcc4dcaf54775f9d5f11e1e",
+      "expected": "INVALID_WORKER_RESPONSE",
+      "observed": "MISSING_EXPECTED_REJECTION",
+      "observation": "A valid response with an extra diagnostic key was accepted.",
+      "cacheResidueAssertionsReached": false
+    }
+  ],
+  "cases": [
+    {
+      "name": "wrong-request-hash",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "malformed-json-frame",
+      "failure": "SyntaxError from JSON.parse",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "invalid-worker-status",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "invalid-wire-version",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "missing-result-field",
+      "failure": "INVALID_WORKER_RESPONSE before consumer serialization",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "unexpected-top-level-field",
+      "failure": "INVALID_WORKER_RESPONSE before cache publication",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    }
+  ],
+  "observations": {
+    "focusedRepetitions": 10,
+    "topLevelTestsPerRun": 2,
+    "protocolCasesPerRun": 6,
+    "focusedExitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nodeTests": 60,
+    "nodePasses": 60,
+    "nodeFailures": 0,
+    "pythonTests": 141,
+    "pythonPasses": 141,
+    "pythonFailures": 0
+  },
+  "currentFingerprint": {
+    "capability": "polynomial-spike-v1",
+    "sha256": "sha256:5894999ac449ec37f1f0bc2d919320d379ae7c1be01a6619da098ea5ec9ab727",
+    "q10RepairCount": 3,
+    "q10CandidateReplayRequired": true
+  },
+  "previousRequiredResultPackage": "docs/evidence/apmath-vprod/p3d/worker-result-required-v1/required-result-ledger.json",
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 7998,
+      "sha256": "sha256:c1ef7d3985a2b60c86b657cae3fec4ea8bc052b1fab5a571fda62a72923bec15"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/contracts.mjs",
+      "bytes": 5273,
+      "sha256": "sha256:58d55643d78ce39e5194c87e73ef46c8742615b76279cf58a2d119dc956551bc"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    }
+  ],
+  "logs": {
+    "focused": [
+      "logs/focused-01.json",
+      "logs/focused-02.json",
+      "logs/focused-03.json",
+      "logs/focused-04.json",
+      "logs/focused-05.json",
+      "logs/focused-06.json",
+      "logs/focused-07.json",
+      "logs/focused-08.json",
+      "logs/focused-09.json",
+      "logs/focused-10.json"
+    ],
+    "node": "logs/node-regression-60.json",
+    "python": "logs/python-regression-141.json",
+    "summary": "logs/summary.json",
+    "testSource": "logs/worker-malformed-recovery.test.mjs",
+    "runnerSource": "logs/run-malformed-exact-schema-regression.mjs"
+  },
+  "openDebt": [
+    "Other worker protocol and semantic result payload defects beyond the tested wire envelope remain open.",
+    "Provider timeout cleanup and remote-turn cancellation remain DEBT in the provider-timeout probe.",
+    "Canonical UID authority and qualification remain unresolved; these tests do not produce a candidate or student result."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHead": "feb5e914f",
+  "lastUpdatedUtc": "2026-10-06T17:14:04.292Z"
+}

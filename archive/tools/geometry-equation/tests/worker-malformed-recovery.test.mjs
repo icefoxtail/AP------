@@ -69,6 +69,11 @@ test('malformed JSON framing and invalid status schemas stay uncached until same
       const requestHash=freezeWire(payload).objectSha256;
       const response={wireVersion:WIRE_VERSION,inputObjectSha256:requestHash,status:'OK'};
       return'import sys\nsys.stdin.read()\nsys.stdout.write('+JSON.stringify(JSON.stringify(response)+'\n')+')\nsys.stdout.flush()\n';
+    }},
+    {name:'unexpected-response-field',payload:{action:'echo',value:'unexpected-response-field'},error:error=>error.message==='INVALID_WORKER_RESPONSE',makeScript:payload=>{
+      const requestHash=freezeWire(payload).objectSha256;
+      const response={wireVersion:WIRE_VERSION,inputObjectSha256:requestHash,status:'OK',result:{value:'must-not-publish'},diagnostic:'unexpected'};
+      return'import sys\nsys.stdin.read()\nsys.stdout.write('+JSON.stringify(JSON.stringify(response)+'\n')+')\nsys.stdout.flush()\n';
     }}
   ];
   for(const [index,scenario] of cases.entries()){
