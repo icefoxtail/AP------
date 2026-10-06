@@ -1,0 +1,11 @@
+{
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "attempt":1,
+  "stage":"R1",
+  "examUid":"20_신흥중_2학기_기말_중2_기출",
+  "attemptStatus":"FAILED_PREFLIGHT_EVIDENCE_BINDING",
+  "preflightEvidenceRef":".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.solution-preflight.json",
+  "issues":["GOLDEN_SAMPLE_BLOB_SHA_MISMATCH:21_신흥중","GOLDEN_SAMPLE_BLOB_SHA_MISMATCH:24_향림중","GOLDEN_SAMPLE_REPRESENTATIVE_QUESTION_COUNT_INVALID:24_향림중:1","NEGATIVE_SAMPLE_BLOB_SHA_MISMATCH:2026-10-01-bokseong/README.md","NEGATIVE_SAMPLE_BLOB_SHA_MISMATCH:2026-09-29/README.md"],
+  "cause":"Initial evidence used Git clean-filter blob ids, while CALIBRATION_PREFLIGHT binds the raw current file bytes with Git blob framing. The 24_향림중 sample also had only one representative qid. Corrected bindings and added q12 before opening the target solution.",
+  "targetSolutionOpened":false
+}

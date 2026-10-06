@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_DURABLE_CONTINUATION_v1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "firstMissingClosureStep": "CREATE_GOLDEN_VISUAL_PREFLIGHT_EVIDENCE",
+  "exactReason": "The single generic CREATE V2 validator invocation returned ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED. The selected Maesan Golden contains solutionImage assets, but current CREATE.solution-preflight.json has no representative visualSha256 for that sample. The preflight timing rule forbids retroactively claiming a post-authoring SVG read as preflight.",
+  "requiredNextAction": "Preserve the original preflight and validator failure. Continue this same CREATE stage with a clearly labeled post-authoring correction-review record: directly inspect a representative Maesan solution SVG, hash the selected item and SVG, record the late-discovery ordering issue without relabeling it as preflight, then repair the evidence closure under the applicable correction-review rule. Do not claim the failed validator passed; any later closure must be an explicitly authorized minimum correction-review path.",
+  "candidateArtifactSha": "5700661ee2f8a13aff255b6ba4b76d834ac88ac5",
+  "candidateRawSha256": "19a7110004942698c4675cf36f3d6ff70634e54d474de5cea7742c08a1654166",
+  "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/CREATE.evidence.json",
+  "evidenceRawSha256": "e83bb165e6124cbdfc9c66c9e6a794ff7d11f784773387371ed9f3b89c589443",
+  "preflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/CREATE.solution-preflight.json",
+  "preflightRawSha256": "cf6db7da4017d6cb8ff9a0941857cfa04fd0fdd66a675374ddd21b2f88edf7fa",
+  "validationAttemptRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/CREATE.validation.json"
+}

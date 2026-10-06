@@ -1,0 +1,2758 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "artifactPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/20_신흥중_2학기_기말_중2_기출.js",
+  "artifactSha": "2fdd890dcdf2b0914e917183adcfca81da1a34f6",
+  "artifactFileSha256": "sha256:30971716105079da1cce9d0edb57f05f83ce85c5c43cd31addc3e66521220489",
+  "candidateRawBytes": 56126,
+  "sourceInput": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/source/20_신흥중_2학기_기말_중2_기출.source.js",
+    "rawSha256": "sha256:b1c085122834ec8674e751b9b312fb9c3985be9a6559ec5e380c12acabd330c6",
+    "studentInputRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.student-input.postrepair.json",
+    "studentInputSha256": "sha256:8665641b16c43f1fa4fe555dad1628903a705e9ba407b1d85ab3dee470283d3a",
+    "sourceIdentityRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.source-identity.json",
+    "sourceIdentitySha256": "sha256:6f00e35ab6b2fe86de82e12333768cc653dc0f32078fc77e9df4608c19fab98d"
+  },
+  "independentAnswerFreeze": {
+    "ref": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+    "sha256": "sha256:a92f60d3da238d8d40ba8cb2c8f957893827a4244dbcb2bd89f01b8dd231cfc1",
+    "storedAnswerReadAfterFreeze": true,
+    "coverage": "24/24"
+  },
+  "answerAdjudications": {
+    "ref": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.answer-adjudications.json",
+    "sha256": "sha256:9be98986f329952d6811705e62d60a1b967847750aac5b829de19de5333f8ee0",
+    "finalCompare": "24/24 MATCH AFTER ADJUDICATION",
+    "originalMismatches": [
+      14,
+      15
+    ]
+  },
+  "repairProvenanceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.source-repair-provenance.json",
+  "repairProvenanceSha256": "sha256:36026308c6078addc3f661de97cb488af1897fec5f2276e386a2eb05c39f8241",
+  "calibrationPreflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.solution-preflight.json",
+  "calibrationPreflightSha256": "sha256:6116c42f4c4945b4d660c97a802bfca5396800c2bd6e8a0d650a94b041fbcbaa",
+  "calibrationAttemptHistory": [
+    ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.solution-preflight.attempt-1.json",
+    ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.solution-preflight.nonregistry-attempt.json",
+    ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.preflight.registry-audit.json"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the approved Bokseong false-PASS README and q20 failed SVG. Actual line primitives do not support the labeled slope/perpendicularity, so numeric geometry and coordinates outrank text labels. This correction review also retains the required checks for separated small-board decisions and exact active Meta lookup."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "observation": "Reviewed sign inference from graph slope/intercept through coefficient signs and quadrant conclusion; each algebraic transform and consequence is visible.",
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430"
+          },
+          {
+            "qid": 9,
+            "solutionSha256": "9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+            "observation": "Reviewed tangent equation, slope conversion, perpendicular slope product, and solved parameter as separate steps.",
+            "visualSha256": "0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 6,
+            "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+            "observation": "Reviewed completing squares, radius-squared condition, strict positivity, and excluded zero-radius endpoints.",
+            "visualSha256": "70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5"
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+            "observation": "Reviewed both absolute-value cases, distance equation, candidate parameters, and product.",
+            "visualSha256": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca"
+          }
+        ]
+      }
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx-\\dfrac cb$이다.\n따라서 기울기는\n$-\\dfrac ab$이다.\n그래프의 기울기가 양수이므로\n$-\\dfrac ab>0$이다.\n따라서 $a",
+        "observation": "Reviewed sign inference from graph slope/intercept through coefficient signs and quadrant conclusion; each algebraic transform and consequence is visible.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q08.png",
+        "visualObservedRenderSha256": "sha256:ae9efa096fb33d9482c5176e086a821681a1dc8a3de8e712f453344beca82d17",
+        "visualObservation": "Opened the rendered diagram: sign relation boxes and quadrant conclusion are distinct; source SVG hash binds the diagram."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n$",
+        "observation": "Reviewed tangent equation, slope conversion, perpendicular slope product, and solved parameter as separate steps.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+        "visualSha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q09.png",
+        "visualObservedRenderSha256": "sha256:1412795a155b5e0b466635c67844eae460a5f9fe890270fc60b025a36128ba9b",
+        "visualObservation": "Opened the rendered SVG: circle, axes, contact point P and tangent are legible; the slope relation is shown beside the geometry."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-kx=\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}$이고,\n$y^2+2y=(y+1)^2-1$이다.\n이를 원래 식에 대입하면\n$\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}+(y+1)^2-1+2k+1=0$",
+        "observation": "Reviewed completing squares, radius-squared condition, strict positivity, and excluded zero-radius endpoints.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+        "visualSha256": "sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q06.png",
+        "visualObservedRenderSha256": "sha256:ff30dfe9a81957ed140049516592d160a1f8b6252223d61d147331d4efdd7ae7",
+        "visualObservation": "Opened the rendered SVG and checked both sample circles and the open endpoint split; local ImageMagick font fallback limits glyph fidelity, so the raw solution text remains the authority."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+        "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfrac{|C_2-C_1|}{\\sqrt{A^2+B^2}}$이다.\n따라서 두 직선 사이의 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}$\n$=\\dfrac{|k-1|}{\\sqrt5}$이다.\n문제에서 이 거리가 $\\sqrt5$라고 했으므로\n$\\dfrac{|k",
+        "observation": "Reviewed both absolute-value cases, distance equation, candidate parameters, and product.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+        "visualSha256": "sha256:cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q07.png",
+        "visualObservedRenderSha256": "sha256:0057f0e90402a06a8fb00ac024b6c251ad9ab392a2ee56b6f1e836883e7eb028",
+        "visualObservation": "Opened the rendered SVG and checked the two parallel lines and number-line branches. ImageMagick substituted unsupported math glyphs; this is renderer-font fallback, not used to judge final target rendering."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "qualityCompareCount": "24/24"
+  },
+  "reviewEvidenceRefs": {
+    "questionLayout": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.question-layout-review.json",
+    "solutionLayout": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.solution-layout-review.json",
+    "meta": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+    "visualSvg": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json"
+  },
+  "artifactDispositions": {
+    "artifactSha": "2fdd890dcdf2b0914e917183adcfca81da1a34f6",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      }
+    ]
+  },
+  "denominator": 24,
+  "answerCompareCount": "24/24",
+  "questionLayoutCount": "24/24",
+  "solutionLayoutCount": "24/24",
+  "metaReviewCount": "24/24",
+  "visualSvgReviewCount": "24/24",
+  "smallBoardAuditCount": "24/24",
+  "solutionIdentityAlignmentCount": "24/24",
+  "solutionRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "questionRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "3개 (③)",
+      "originalIndependentFreezeAnswer": "3개 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "preRepairStoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "da51c022cf1f0d1db90e9bf6e2ce0b8dd85cb5d0d65cfc6d2cb378eec0ee8f90",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 1,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q1",
+        "id": 1,
+        "sourceOrdinal": 1,
+        "currentContentHash": "b3a8eda93cbf0f0c17912d380b3a2c02cb0493fbb65aff4cb2bc300881b370f0",
+        "currentChoicesHash": "0fb25cd630959ddf826e9eb573e0db37b5beb7b51b8320ec2c8a5ed7811f28aa",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "284228f9fc45dbadb69d798afb4de5f49fd717c083f699b054932dfa68726e26",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "보기 경계와 ㄱ~ㅁ의 목록이 별도 줄로 유지되어 있다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "da51c022cf1f0d1db90e9bf6e2ce0b8dd85cb5d0d65cfc6d2cb378eec0ee8f90",
+          "afterSolutionSha256": "da51c022cf1f0d1db90e9bf6e2ce0b8dd85cb5d0d65cfc6d2cb378eec0ee8f90",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "세 함수식 판별이 필요하지만 각 식을 일차함수 정의에 바로 대조한다. 하와 bucket2는 기본 분류형의 인접 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "All information is symbolic function classification and the five-item list; no figure carries a mathematical condition.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "일차함수 꼴 판별",
+      "decisiveStep": "따라서 ㄴ, ㄹ, ㅁ의 3개이다. 정답은 ③이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "제4사분면을 지나지 않는다 (④)",
+      "originalIndependentFreezeAnswer": "제4사분면을 지나지 않는다 (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "preRepairStoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "c2b89ed2b2823d48a478f98c985b07091cd7dcb7592b8cf80fb3122e6e59818d",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 2,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q2",
+        "id": 2,
+        "sourceOrdinal": 2,
+        "currentContentHash": "3527fb7359ef062fccd3a7d7e7685d3c52b8166c5b2fc9fbbee06a9035f25244",
+        "currentChoicesHash": "1a4e81a46de91626df8e688a711051c46207d421525f8abc313643374d590ee3",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "fa092563b213ac61b39a3c290febaeb3b300fd571d9fd50970cc38de838376db",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "발문과 단일 5선다형 질문이 의미 단위로 분리되고 선택지는 exact 그대로다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated the five option checks into independent reasoning blocks.",
+          "beforeSolutionSha256": "071fbe246f8407970d88f89a3ec8204de6f8fe3de06c7c7e863885ec43e187a9",
+          "afterSolutionSha256": "c2b89ed2b2823d48a478f98c985b07091cd7dcb7592b8cf80fb3122e6e59818d",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "다섯 선택지의 기울기·절편·사분면 판별을 각각 해야 한다. 절차는 익숙하고 접근 선택 부담은 낮아 bucket2; legacy 하와 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "Every claim is in the text and choices; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "기울기·절편으로 그래프 성질 판정",
+      "decisiveStep": " 옳은 설명은 ④이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "-1 (②)",
+      "originalIndependentFreezeAnswer": "-1 (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "preRepairStoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "5024b0efb39c9851611195b6e290f5aa39d516f19890913c2915d0e23f020979",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 3,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q3",
+        "id": 3,
+        "sourceOrdinal": 3,
+        "currentContentHash": "7b9c27a8a93ca714f444cb20e3ba81b956147c68d15914d08fdd290044778ee8",
+        "currentChoicesHash": "7d9c7ab23a2375786b5594f31d8aa89c1fcb41726cfa7b523300387af4d6493e",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "e54059dd3732d56273d48f45829dbd1a1955105a1fd8c38cc64b56d1d7afe882",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "조건 f(2)=9와 물음 f(-3)이 구분되며 함수 표기를 온전히 보존한다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated substitution, intermediate value, and final result.",
+          "beforeSolutionSha256": "0e65117fe2a32d4090993a152342ac8513d843c676d2f30b2321ad27f710bcea",
+          "afterSolutionSha256": "5024b0efb39c9851611195b6e290f5aa39d516f19890913c2915d0e23f020979",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 1,
+          "difficultyRationale": "조건 대입으로 a를 정한 뒤 한 번 더 대입하는 직선적 계산이므로 bucket1.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "Function-value condition and target value are explicit in the formula; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "함숫값 조건으로 다른 함숫값 계산",
+      "decisiveStep": "$f(-3)=2\\cdot(-3)+5=-6+5=-1$이다. 정답은 ②이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "4 (⑤)",
+      "originalIndependentFreezeAnswer": "4 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "preRepairStoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "70ee1651abe9eea9db666c7fbd722366b49f33f7c0d9fc7f7b7f56f3e71f2513",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 4,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q4",
+        "id": 4,
+        "sourceOrdinal": 4,
+        "currentContentHash": "cf5541534834382127671dbeb0c70c80f76025dbdf5c6c5ca69b54e8444e1241",
+        "currentChoicesHash": "9ad4491a02e9a7f576a1ba6cb50252988d97b731331715189393ffa24dee55e0",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "33adebcff3c8f756d03b609a5a408a9fa8c8c76b2c0fc5cc320ea7ffb402d94e",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "평행이동 조건과 점 (2,-2), k 질문의 순서가 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "70ee1651abe9eea9db666c7fbd722366b49f33f7c0d9fc7f7b7f56f3e71f2513",
+          "afterSolutionSha256": "70ee1651abe9eea9db666c7fbd722366b49f33f7c0d9fc7f7b7f56f3e71f2513",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "수직이동식을 세우고 한 점을 대입해 k를 구한다. 해석이 한 번 들어가므로 bucket2이며 legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "Translation and the point are explicit text conditions; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "평행이동한 직선식에 점 대입",
+      "decisiveStep": " 정답은 ⑤이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "96π (③)",
+      "originalIndependentFreezeAnswer": "96π (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "preRepairStoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "bee98847b4a00f6f4b0d22c46e506ba2840042c53cef1fb0e1b7314779bf393c",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 5,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q5",
+        "id": 5,
+        "sourceOrdinal": 5,
+        "currentContentHash": "3ca4e6b2daedb4dca33befad9ccf45a71b1c6fd2b8fc448a8869be236f170758",
+        "currentChoicesHash": "c9d82183f258edadcbcacad966287808575c939996bf3bb35125c58f7f7a6e89",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "0e3b02f7b26246e6ee7201e8c70b566f55458acb72879f8e5710a727ce911068",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "완결된 함수식과 회전축/부피 질문의 의미 경계가 유지된다. 수식은 쪼개지지 않는다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "bee98847b4a00f6f4b0d22c46e506ba2840042c53cef1fb0e1b7314779bf393c",
+          "afterSolutionSha256": "bee98847b4a00f6f4b0d22c46e506ba2840042c53cef1fb0e1b7314779bf393c",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "직선의 절편을 구해 회전 원뿔의 반지름·높이로 읽고 부피식을 적용한다. 그래프 해석 뒤 공식을 고르는 두 단계라 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source is only a line formula; intercepts are directly calculable. The original PDF was opened and has no extra figure/bounded-region cue; standard exam intent is the first-quadrant intercept triangle.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "절편 삼각형으로 원뿔 부피 계산",
+      "decisiveStep": " 정답은 ③이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "(-2,1) (①)",
+      "originalIndependentFreezeAnswer": "(-2,1) (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "preRepairStoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "0f07e7bd9c997b13436081e2d2da6374d7b6a59272724097fd681cbab8862a33",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 6,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q6",
+        "id": 6,
+        "sourceOrdinal": 6,
+        "currentContentHash": "9a4cfeb81a5b9d69d32735b5c07e40ee3808f9783dc8bbe946118638c7455b17",
+        "currentChoicesHash": "8050cb4a2a40b0aac2b80a7af56abb155cc51c7b8154eb12350c58fa010b415c",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "29acf7a0927c19e62de6d96088d3906ce4bfe1ac72436adff1a40f3750d1aab8",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "두 직선 조건과 교점 좌표 질문이 온전하다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated elimination and second-equation substitution without skipping arithmetic.",
+          "beforeSolutionSha256": "1734bfbc73f5f58825b2869182f95bca72404171a96d4689f64f8c73cc460b40",
+          "afterSolutionSha256": "0f07e7bd9c997b13436081e2d2da6374d7b6a59272724097fd681cbab8862a33",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "두 일차방정식을 가감하고 한 식에 대입한다. 익숙한 2단계 풀이로 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "Both line equations are fully stated; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "연립방정식으로 교점 계산",
+      "decisiveStep": " 교점은 $(-2,1)$이므로 정답은 ①이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "제4사분면 (④)",
+      "originalIndependentFreezeAnswer": "제4사분면 (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "preRepairStoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "d08a466f93fe8823a0e83b25737ac555c4b3d4bf88b350e1edbeb8bd69ddfedc",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 7,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q7",
+        "id": 7,
+        "sourceOrdinal": 7,
+        "currentContentHash": "ef0891baef219d4341522561c2d7ab2974243c59c2cefaefbeac66b91ed73dc5",
+        "currentChoicesHash": "89b519cf3471052ef305db026746003801781d36323cbf67423d595750ea8ed6",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "769d0cb8999fc8e7a4720f3a0de153fa0e17f892e35d112693f2cc9d699b024c",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "a,b,c 부호 조건과 묻는 사분면의 의미 경계가 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "d08a466f93fe8823a0e83b25737ac555c4b3d4bf88b350e1edbeb8bd69ddfedc",
+          "afterSolutionSha256": "d08a466f93fe8823a0e83b25737ac555c4b3d4bf88b350e1edbeb8bd69ddfedc",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "계수 부호에서 기울기·절편을 얻고 사분면을 판정한다. 조건 해석이 핵심이므로 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "Coefficient signs and asked quadrant are fully stated; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "기울기와 절편 부호로 사분면 판정",
+      "decisiveStep": "직선은 제1, 제2, 제3사분면을 지나고 제4사분면은 지나지 않는다. 정답은 ④이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "사다리꼴 (①)",
+      "originalIndependentFreezeAnswer": "사다리꼴 (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "preRepairStoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "68fcd0935ffbcd18c0bc8fee77cec53e520964e73b3e1513be465a25b809952b",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 8,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q8",
+        "id": 8,
+        "sourceOrdinal": 8,
+        "currentContentHash": "1fc02b16efccb1c0171a06e3ec1130f4c672059b3cb4f9834f59dd8c7725f932",
+        "currentChoicesHash": "958efa34fc219e2856008ee7e3d9ec6c4a8973d4518a63039b651e2781244057",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "169021894c82e4b2aca84233c2ca1de5d429c41ff6b54c63996928694a7a71e5",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "사각형 보기 목록과 두 대각선 성질 질문이 분리되어 있다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "68fcd0935ffbcd18c0bc8fee77cec53e520964e73b3e1513be465a25b809952b",
+          "afterSolutionSha256": "68fcd0935ffbcd18c0bc8fee77cec53e520964e73b3e1513be465a25b809952b",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 1,
+          "difficultyRationale": "평행사변형과 그 특수 사각형의 대각선 성질을 바로 대조하는 확인형이라 bucket1.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The five named quadrilateral classes are fully stated; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "평행사변형 대각선 성질 판정",
+      "decisiveStep": "일반적인 사다리꼴의 대각선은 서로를 이등분하지 않는다. 정답은 ①이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "OA=OB=OC (①)",
+      "originalIndependentFreezeAnswer": "OA=OB=OC (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "preRepairStoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "1500a1c75465720f968c9e2f29c4f342ffeb476b3e713fed104f05f0468ea61c",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 9,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q9",
+        "id": 9,
+        "sourceOrdinal": 9,
+        "currentContentHash": "b06b676b282dec016519a618b964d46002ad335d533bdc099021753816e72615",
+        "currentChoicesHash": "e5200f0e85d540ed018e4a5d1438df5c22240e02588f51d8738a9ef39f4de69c",
+        "currentImageRefHash": "0196354e5cf0dcdb87a8faa2c16933367dfa127d594ec06cae599ebefe359ef7",
+        "sourceIdentityFingerprint": "3ce561770163b207a1ecf2ad6a776f232a6de7eec96b13f2cf5253ee9b7f1034",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q09.png",
+        "assetSha256": "sha256:a754beee8aebaff4a68352199d400de0d3fdf8e7a6f2dcd3715ebe6977510d7c",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "문장 뒤 오른쪽 그림 참조가 붙어 있고, 각 선택지/그림의 의미가 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "1500a1c75465720f968c9e2f29c4f342ffeb476b3e713fed104f05f0468ea61c",
+          "afterSolutionSha256": "1500a1c75465720f968c9e2f29c4f342ffeb476b3e713fed104f05f0468ea61c",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "외심의 등거리 정의를 바로 선택지에 적용한다. 그림의 다른 보조선이 있어도 결정 개념은 한 가지이며 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q09.png",
+          "questionImageSha256": "sha256:a754beee8aebaff4a68352199d400de0d3fdf8e7a6f2dcd3715ebe6977510d7c",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The original circumcenter figure contains A,B,C,O and the three perpendicular foot labels M,L,N used by the prompt. The solution only applies equal-radius property; an additional solution SVG would duplicate the source figure.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "외심의 꼭짓점 거리 성질",
+      "decisiveStep": "그림에 다른 변 길이나 중점 조건은 없으므로 나머지 등식·합동 관계는 항상 성립하지 않는다. 정답은 ①이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "9 cm (②)",
+      "originalIndependentFreezeAnswer": "9 cm (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "preRepairStoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "6e3133f4a02a0e2c5f39f57bb75da42e89efc0f44b6f62fe4910f6950a81ccfd",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 10,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q10",
+        "id": 10,
+        "sourceOrdinal": 10,
+        "currentContentHash": "39b1a6f3a06a347ec0ef65414ef76cc778de48a5be69363fc3faae1ee6555086",
+        "currentChoicesHash": "740d44bf3f34a907c291181aeb91b5bbb4a5a9b99d7b509248ac5dbdbb5dd4db",
+        "currentImageRefHash": "5458c1b321811dfa20daeb923c7d9d08432c217e449885ee3cce4b5b415a6037",
+        "sourceIdentityFingerprint": "4a2c753543418698b04bc06e5329bdadb3914617db69717384f31088ae1c12a5",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q10.png",
+        "assetSha256": "sha256:a17b54ec65ded0328d89f9571a000ffb49a8a389e53f3e112839a0a33d31df1f",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "긴 조건은 문장 순서를 보존하며 그림 참조, AD/AE, 둘레, BD+EC 질문을 유지한다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "6e3133f4a02a0e2c5f39f57bb75da42e89efc0f44b6f62fe4910f6950a81ccfd",
+          "afterSolutionSha256": "6e3133f4a02a0e2c5f39f57bb75da42e89efc0f44b6f62fe4910f6950a81ccfd",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 4,
+          "difficultyRationale": "내심의 반지름·넓이 관계, 닮음, 세 변 길이를 연쇄 연결해 BD+EC를 구한다. 다단 추론으로 bucket4.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q10.png",
+          "questionImageSha256": "sha256:a17b54ec65ded0328d89f9571a000ffb49a8a389e53f3e112839a0a33d31df1f",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The original figure shows triangle ABC, incenter I, parallel DE, and D/E ownership. The solution derives incenter-distance and similarity relations without any new construction.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "내심과 평행선 닮음비 계산",
+      "decisiveStep": " 정답은 ②이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "10° (②)",
+      "originalIndependentFreezeAnswer": "10° (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "preRepairStoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "0cbc4ede4d33ce54222d0c91658bacbdcc869556ce44c2dcaa4796e92c346b92",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 11,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q11",
+        "id": 11,
+        "sourceOrdinal": 11,
+        "currentContentHash": "e290fa6b5eed4eca475ec3c0de61d0d6c19dc850dc5772dd347134618cec935b",
+        "currentChoicesHash": "9601d9c9de73a124ec2cb739891bd45cc2af026f6ffbc7e6848d86c2385cd1d8",
+        "currentImageRefHash": "9c19b0961d9891b417012774d27e3699343b083f341e193598cdee5f8a0d7a33",
+        "sourceIdentityFingerprint": "baebff61755ea7f85fa134a50a3da81a690b645fa03a157011213c734ad6e9dd",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q11.png",
+        "assetSha256": "sha256:bc2cb4298c098014fd5372e7dd61b88b3896d7ad0ed92cd4df72ec8f57d9b533",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "외심 조건과 그림의 각 표시/각 x 질문이 결속되어 있다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Expanded the angle sum and intermediate 2x equation.",
+          "beforeSolutionSha256": "3e5f860ba33d0ba9f83a2656f9a86a750ea6009c3c10d2352b1aad792423f97b",
+          "afterSolutionSha256": "0cbc4ede4d33ce54222d0c91658bacbdcc869556ce44c2dcaa4796e92c346b92",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "외심이 만드는 두 이등변삼각형의 각과 삼각형 내각합을 연결한다. 각 관계 선택이 필요해 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q11.png",
+          "questionImageSha256": "sha256:bc2cb4298c098014fd5372e7dd61b88b3896d7ad0ed92cd4df72ec8f57d9b533",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The original figure shows O, triangle vertices, and the 30°/50° angles used by the angle chase; no additional ray or marker is introduced.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "외심의 이등변삼각형으로 각 계산",
+      "decisiveStep": " 정답은 ②이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "20° (⑤)",
+      "originalIndependentFreezeAnswer": "20° (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "preRepairStoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "75839c09025e53cf8c10d2938a381b3e8c29313853bfd49e432df404beafa091",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 12,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q12",
+        "id": 12,
+        "sourceOrdinal": 12,
+        "currentContentHash": "a9ccac839df21dd3c2abbeba6ba329126448b8421f986f3205cdd1bdc2978a7a",
+        "currentChoicesHash": "7101a26cb07da755b5d03e29a56b7c17266f44bcb8ebfaff2b711533cac2fa1e",
+        "currentImageRefHash": "64ef34c2395b84e44f79dee2145def872d90dcc8205784dc02b1bed98dd27cad",
+        "sourceIdentityFingerprint": "8a48079271387758d71de32ddf3d3fe7fdb315915e78cf36ea12921c66b0663e",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q12.png",
+        "assetSha256": "sha256:17df85362f9e40925433ea559c4c84bbf5c87e1affb2873330869ee7954df9a9",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "평행사변형·각의 비 조건과 x-y 질문이 구별된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Expanded the angle-ratio solution and final difference.",
+          "beforeSolutionSha256": "d4f0299508ca631e5fae9a40c4803aad497e98a186dda33056877c1644a125ac",
+          "afterSolutionSha256": "75839c09025e53cf8c10d2938a381b3e8c29313853bfd49e432df404beafa091",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "인접각 비율을 식으로 구한 뒤 그림의 외각·맞은편 내각 차를 계산한다. 표준 2단계로 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q12.png",
+          "questionImageSha256": "sha256:17df85362f9e40925433ea559c4c84bbf5c87e1affb2873330869ee7954df9a9",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The parallelogram, extensions/angle labels x,y and vertices are already visible in the original image; solution only compares angles.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "평행사변형 각 관계",
+      "decisiveStep": "$y-x=20^\\circ$ 정답은 ⑤이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "56 (⑤)",
+      "originalIndependentFreezeAnswer": "56 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "preRepairStoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "6e0c96497e9d74f925f3a32a457224ac8e45d71e2e5e06323929f87291d47f46",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 13,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q13",
+        "id": 13,
+        "sourceOrdinal": 13,
+        "currentContentHash": "e5ebc7eaa53381956876118e625690530495503de78149b2001bfa47d01db03a",
+        "currentChoicesHash": "e505b795193eef1e51819d33dbeaf9b1b3fc2de93ae183d0133db12bc229a3dc",
+        "currentImageRefHash": "2bba368184168627ea747229e13ea6ad8816f190ed9e0f8a3e65a661b448ca61",
+        "sourceIdentityFingerprint": "344f80ee689935402d6e60e85835d1edc6d1877e2367af4ac4a89bdd3b6a896a",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q13.png",
+        "assetSha256": "sha256:6bfdb65180dd844c51a50593d5296b7d73bc4337a93bf9ba9fea476087e93a5d",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "대응 면 조건과 x,y가 포함된 입체도형 질문이 보존된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Corrected the source-edge label EF (not AF) and exposed the x equation.",
+          "beforeSolutionSha256": "419f6320553dc2cd1cd2e1f2189e8aa09ff2524ba76dafe73581f7d8b66e347b",
+          "afterSolutionSha256": "6e0c96497e9d74f925f3a32a457224ac8e45d71e2e5e06323929f87291d47f46",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "사면체 대응 꼭짓점·변을 정렬하고 닮음비를 두 변에 적용한 뒤 곱한다. 3차원 대응 해석 때문에 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q13.png",
+          "questionImageSha256": "sha256:6bfdb65180dd844c51a50593d5296b7d73bc4337a93bf9ba9fea476087e93a5d",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The two tetrahedron figures display all correspondence labels and measured edges; the solution reads the stated face correspondence without adding geometric structure.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "대응면 닮음비 계산",
+      "decisiveStep": "$EF=14$는 $AB=x$에 대응하므로 $14=2x$, $x=7$이다. $xy=56$이므로 정답은 ⑤이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": {
+        "status": "SOLUTION_LABEL_CORRECTED",
+        "reason": "Student figure labels EF=14; the corresponding edge to AB=x is EF, not AF."
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "30 cm² (③)",
+      "originalIndependentFreezeAnswer": "45 cm² (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "preRepairStoredAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "21f424f06d79348d93191b1997155589a3d1504da41ceef97ebc9836ecad3e51",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 14,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q14",
+        "id": 14,
+        "sourceOrdinal": 14,
+        "currentContentHash": "356e7beeeaf47a134b97c2c20c2eb9b07960233be7a368c2178c73de2b7af7ed",
+        "currentChoicesHash": "e0b9e2a7f290011b3d166c5efa5071af942c1949790013c7d4a8153a29a137f9",
+        "currentImageRefHash": "daa18d3bf4ce622df2334263404c9779bcf17d88bcb8aaf79a78ec46ca960458",
+        "sourceIdentityFingerprint": "acc83bfafb6c4a5572b2272212aa2735aada61f6d171ae55bddcb19ffeb13acc",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q14.png",
+        "assetSha256": "sha256:38d388a8d1e68a062759f195e648b8335b190b10e4adeee83f39b97d14eb17ad",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "두 무게중심의 정의와 기준 넓이 질문, 그림 참조가 그대로다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated the h calculation and nested centroid area steps.",
+          "beforeSolutionSha256": "013fb481f87c70181c647fb374ec12458a9040847d2eeef1cde853298609428b",
+          "afterSolutionSha256": "21f424f06d79348d93191b1997155589a3d1504da41ceef97ebc9836ecad3e51",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 4,
+          "difficultyRationale": "두 단계 무게중심 높이비, 작은 삼각형 넓이, 목표 넓이를 연쇄 적용한다. 조건 구조가 다단이라 bucket4.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q14.png",
+          "questionImageSha256": "sha256:38d388a8d1e68a062759f195e648b8335b190b10e4adeee83f39b97d14eb17ad",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source figure shows A,B,C,D,G,G′ and the median line. The solution uses centroid height ratios; no new geometry or marker is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "무게중심으로 넓이비 계산",
+      "decisiveStep": "무게중심에서 $[AGC]=[ABC]/3=30\\text{ cm}^2$이다. 정답은 ③이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": {
+        "status": "INDEPENDENT_FREEZE_CALCULATION_CORRECTED",
+        "originalFreezeAnswer": "45 cm²",
+        "correctedIndependentAnswer": "30 cm² (③)",
+        "reason": "D is midpoint of BC. If [ABC]=K, centroid G has height h/3 over BC and centroid G′ of GBC has height h/9. Since BD=BC/2, [G′BD]=K/18=5 gives K=90. AG/AD=2/3 and [ADC]=K/2, so [AGC]=K/3=30 cm². Original freeze retained."
+      }
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "2개 (③)",
+      "originalIndependentFreezeAnswer": "2개 (③)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "preRepairStoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "3f737da4e15c953f64858d5721a210cca12766de9c9f593593053212d55525d8",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 15,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q15",
+        "id": 15,
+        "sourceOrdinal": 15,
+        "currentContentHash": "a923e6de086f61cb980a3b3bcb8cfd37571a5227637dc4a30624224f1c8df639",
+        "currentChoicesHash": "9e62117b38c80cb8cbe399f1366f6e3af4baa398219efffd94ea1cbc5b6b0df8",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "9e7a56a3c6ec707b7bf2e39ce9368d6ff07ec208e08537fe3889ced5cd2bc1dd",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "ㄱ·ㄴ·ㄷ·ㄹ 각 변 묶음이 각자 별도 줄에 유지되어 nested structure가 보인다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Corrected the stored choice marker to match the two valid right triangles.",
+          "beforeSolutionSha256": "bf5c4c7bb1ce05ab26e96c93ad2321ab73480fd1e003e12291b2b9cbf4b4e6d0",
+          "afterSolutionSha256": "3f737da4e15c953f64858d5721a210cca12766de9c9f593593053212d55525d8",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "세 후보의 삼각형 성립과 피타고라스 역을 각각 판정해 개수를 센다. 경우별 검토가 있어 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The item is a text-only list of four side triples; the proof is arithmetic and needs no solution drawing.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "피타고라스 역으로 직각 판정",
+      "decisiveStep": " 2개이므로 정답은 ③이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": {
+        "status": "STORED_ANSWER_AND_SYMBOL_CORRECTED",
+        "preRepairStoredAnswer": "②",
+        "preRepairSolutionConclusion": "2개이므로 정답은 ②이다.",
+        "correctedStoredAnswer": "③",
+        "correctedSolutionConclusion": "2개이므로 정답은 ③이다.",
+        "reason": "The correct sets are ㄴ (3,4,5) and ㄹ (7,24,25); ㄱ fails triangle inequality and ㄷ is not Pythagorean. The original independent freeze said 2개 (③), so this is a stored encoding correction, not a blind contamination."
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "24 cm (④)",
+      "originalIndependentFreezeAnswer": "24 cm (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "preRepairStoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "814371f7b15c33029330f69f31000520cafcf13991574f9b81b95e8eef964e40",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 16,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q16",
+        "id": 16,
+        "sourceOrdinal": 16,
+        "currentContentHash": "d6cca6ffa2123392c04ec9e47a52ba0e1a0bde7a560aa8179b7fdfea8463820a",
+        "currentChoicesHash": "e0824e8e9d0b9875b695c74477533d252c1f13bcd3eddcdf835528a708094bd9",
+        "currentImageRefHash": "a0622eb187bcab196df42e0fc7f4723961225337dc93b625115df56d3d98d7e2",
+        "sourceIdentityFingerprint": "7dc955b67094634092ebd04223b21b113e0700dcf14707146ab29c37209463c1",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q16.png",
+        "assetSha256": "sha256:81a607af344bacaf15ed88088f7b6010a3c13ce35909ea5f2e1f9a30fe00ef64",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "중점 정의·사각형 기호·둘레 질문이 한 흐름으로 보존된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "814371f7b15c33029330f69f31000520cafcf13991574f9b81b95e8eef964e40",
+          "afterSolutionSha256": "814371f7b15c33029330f69f31000520cafcf13991574f9b81b95e8eef964e40",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "사각형의 변 중점을 잇는 성질에서 두 대각선 절반 길이를 합산한다. 한 정리의 직접 적용으로 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q16.png",
+          "questionImageSha256": "sha256:81a607af344bacaf15ed88088f7b6010a3c13ce35909ea5f2e1f9a30fe00ef64",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source figure identifies quadrilateral vertices, midpoints, both diagonal lengths, and the midpoint quadrilateral; no extra visual fact is introduced.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "중점연결정리로 둘레 계산",
+      "decisiveStep": "$PQRS$의 둘레는 $2(PQ+QR)=2(7+5)=24\\text{ cm}$이다. 정답은 ④이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "50 cm² (②)",
+      "originalIndependentFreezeAnswer": "50 cm² (②)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "preRepairStoredAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "f29a0f42b20d894dd98bd814e26a94b501eb4d4a6933c24461b301be3059dfae",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 17,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q17",
+        "id": 17,
+        "sourceOrdinal": 17,
+        "currentContentHash": "96176677116b70d5b04bb330e4d29f3b792bf9ee1b29d1a760f250421bbae72f",
+        "currentChoicesHash": "e5a8444927c38dbb5c7504752571cbe62c924c66f90740dab82860cd4afa187c",
+        "currentImageRefHash": "68845e8224d3b6749c4c7024a43350ffcc578000f8f313bb26fbd0f83ed702d0",
+        "sourceIdentityFingerprint": "fb2b82e187a5fb8f7135ac074da46e390f2cfaa7138ad3d09bccb56b98fd9c3f",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q17.png",
+        "assetSha256": "sha256:dec016792f547650b9efd6cae80291b3ddbad1ae53433c9c00c2b936a0386424",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "직각이등변 조건, l/수선의 발/길이 조건, 넓이 질문이 온전하다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Replaced the unsupported horizontal-component product with in-curriculum right-triangle RHA congruence.",
+          "beforeSolutionSha256": "dbd03102bd30c81aa3affd15c1edca8d3e26f4991c6e92b3eae5490ffbea86c9",
+          "afterSolutionSha256": "f29a0f42b20d894dd98bd814e26a94b501eb4d4a6933c24461b301be3059dfae",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 4,
+          "difficultyRationale": "두 직각삼각형의 각 관계와 RHA 합동을 세워 변을 옮기고 피타고라스로 넓이를 구한다. 보조각 추론까지 있어 bucket4.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q17.png",
+          "questionImageSha256": "sha256:dec016792f547650b9efd6cae80291b3ddbad1ae53433c9c00c2b936a0386424",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The original figure includes line l, perpendicular feet D/E, the 8/6 lengths, and the isosceles right angle. The revised congruence proof uses exactly triangles ABD and CAE already present.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "직각삼각형의 빗변과 한 예각의 합동으로 넓이 계산",
+      "decisiveStep": "직각삼각형 ABD와 CAE는 빗변 AB=AC, 예각 ABD=CAE로 합동이므로 AD=CE=6, BD=AE=8이다. 따라서 AB=10, [ABC]=50 cm².",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "-6 (①)",
+      "originalIndependentFreezeAnswer": "-6 (①)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "preRepairStoredAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "a6399ef5249bc1fbe07adf93f7c3a990230ab282b902f7bb0948a125cd2e40eb",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 18,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q18",
+        "id": 18,
+        "sourceOrdinal": 18,
+        "currentContentHash": "71b6d1b005dc038080ae57d5bd3c1d179d225b2d69091e9f442b71b4472272ea",
+        "currentChoicesHash": "b5777d41d4aadef3c02fe812da9b3972701180729be0c3194d6296e4abe123a3",
+        "currentImageRefHash": "26588f3b6a031c7fcc2fb20b534936ffad096b46c91c90c451d12c3ccb0656ef",
+        "sourceIdentityFingerprint": "14b29e8b2ec5106d2e70b2b0044f5331dcbd4beabb9655de04694730b43e97a8",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q18.png",
+        "assetSha256": "sha256:9445424689f9f670a2206a12d3ec9451a2e7198ca7393348c07464d6de39a552",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "평행 조건·그림 참조·x-y 질문이 한 흐름으로 보존된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Expanded Pythagorean and similarity equations line by line.",
+          "beforeSolutionSha256": "bf32f3a6ae5e06487aa228e8971e875bbb65b69a5625a357dc07cd1723adb8c5",
+          "afterSolutionSha256": "a6399ef5249bc1fbe07adf93f7c3a990230ab282b902f7bb0948a125cd2e40eb",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "직각삼각형에서 피타고라스로 x를 구하고 닮음비로 y를 계산한 뒤 차를 낸다. 두 개념의 순차 적용으로 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q18.png",
+          "questionImageSha256": "sha256:9445424689f9f670a2206a12d3ec9451a2e7198ca7393348c07464d6de39a552",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The original bow-tie figure supplies BC∥DE, right angle at A, and all labeled lengths; solution uses only those lines.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "삼각형 닮음으로 선분 계산",
+      "decisiveStep": " $x-y=-6$이므로 정답은 ①이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "15 (④)",
+      "originalIndependentFreezeAnswer": "15 (④)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "preRepairStoredAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "43eb76361abbdd2999331d9276da6f1aed98c6eb5248fa1499b616712c44d59d",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 19,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q19",
+        "id": 19,
+        "sourceOrdinal": 19,
+        "currentContentHash": "df3178eecd24fe955911a716bdea61b41031922b5592a3b5b7aa26cffa66ddcf",
+        "currentChoicesHash": "aef9fae397b6c56322aae496bbf3826aabeedf99fdda1216021270052421cec1",
+        "currentImageRefHash": "8e6752ec510f8fe097ce3f0a9167c1bedc2d4b8c4bcd49e4919712c37fa5aeab",
+        "sourceIdentityFingerprint": "6d239611e228c7d4c984624c05592992abf9aed07a483bdb14a31f563484b29f",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q19.png",
+        "assetSha256": "sha256:5c53a818f4211777742f944d7b5886bf403868bd3fd42bd499808e36fbbc0ed8",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "정사각형 넓이 둘과 x 질문의 그림/텍스트 결속이 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "43eb76361abbdd2999331d9276da6f1aed98c6eb5248fa1499b616712c44d59d",
+          "afterSolutionSha256": "43eb76361abbdd2999331d9276da6f1aed98c6eb5248fa1499b616712c44d59d",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "두 정사각형의 넓이에서 변을 복원하고 합친 직사각형의 대각선에 피타고라스를 적용한다. 기본 2단계라 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q19.png",
+          "questionImageSha256": "sha256:5c53a818f4211777742f944d7b5886bf403868bd3fd42bd499808e36fbbc0ed8",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source image shows the two adjacent squares and diagonal x. The solution uses their side lengths and Pythagorean theorem; no solution-only construction is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "피타고라스 정리로 대각선 계산",
+      "decisiveStep": "$x=15$ 정답은 ④이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "392 (⑤)",
+      "originalIndependentFreezeAnswer": "392 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "preRepairStoredAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "0a0b3cafe6f4e6d84d63a56d7ff42fed9cbc99caea4a5c99f53944b0bda49356",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 20,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q20",
+        "id": 20,
+        "sourceOrdinal": 20,
+        "currentContentHash": "b6f1d61a352eb0084ca7e2435f4d970b21aee40ce0d1891c95bfca691cb4ba18",
+        "currentChoicesHash": "af38e54eed7bd23313ac2e5c7c99bb7c24921ae4bed304aabd3fada6b1064df3",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "9f94517d00257286f13c4ac3d42d59ec55005fdd2c4062a0e06d2b4fa50fa22a",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "빨대 세 길이 조건과 가능한 제곱값의 합 질문이 분리된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated both cases and explicitly checked triangle inequalities.",
+          "beforeSolutionSha256": "9f8157130767ee388bf36b00fbbcb16e2860337e462686c454f05c6605e0fc76",
+          "afterSolutionSha256": "0a0b3cafe6f4e6d84d63a56d7ff42fed9cbc99caea4a5c99f53944b0bda49356",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "빗변 후보를 두 갈래로 나누고 각 제곱값과 삼각형 부등식을 점검해 합산한다. 경우분기 때문에 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The text gives three straw lengths and a two-case hypotenuse split; no geometric drawing is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "빗변 경우를 나누어 제곱합 계산",
+      "decisiveStep": " 합은 $317+75=392$이므로 정답은 ⑤이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "y=-4x+3",
+      "originalIndependentFreezeAnswer": "y=-4x+3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$y=-4x+3$",
+      "preRepairStoredAnswer": "$y=-4x+3$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "27934307ad0c986d99d88be91bf5539bd30a62cd28097516c5460dc8a9523d65",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 21,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q21",
+        "id": 21,
+        "sourceOrdinal": 21,
+        "currentContentHash": "4e09d70ba48a62957dbff44af349fe2db8dd0c8360743d4bca32024fb6bf3525",
+        "currentChoicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "currentImageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "16dac8af9d2721ad783a64289d496056b6f81c613ea2949bb43be69b082278b9",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": null,
+        "assetSha256": null,
+        "assetPhysicallyOpened": false
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "서술형 마커, 일차함수식, 평행·통과점 조건, 식 요구가 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "27934307ad0c986d99d88be91bf5539bd30a62cd28097516c5460dc8a9523d65",
+          "afterSolutionSha256": "27934307ad0c986d99d88be91bf5539bd30a62cd28097516c5460dc8a9523d65",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "평행 조건으로 기울기를 고정하고 한 점 대입으로 절편을 구한다. 표준 직접 적용이라 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "questionImageOpenStatus": "NOT_APPLICABLE",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The line slope and point are fully stated; no diagram is needed.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "기울기와 한 점으로 직선식 결정",
+      "decisiveStep": " 따라서 $y=-4x+3$이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "25π cm²",
+      "originalIndependentFreezeAnswer": "25π cm²",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$25\\pi\\text{ cm}^2$",
+      "preRepairStoredAnswer": "$25\\pi\\text{ cm}^2$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "16d8a99fb777971a92ac8a43d28a500cb6e877e56f3130794f055215f63de5fe",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 22,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q22",
+        "id": 22,
+        "sourceOrdinal": 22,
+        "currentContentHash": "357354ca856dcad251b40031740e10339fc0350f0df1342a833228c34411d63c",
+        "currentChoicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "currentImageRefHash": "50fac637761b0a98e42eb9f2a622a85b60e7629aa194a693c8133b39f463c7e8",
+        "sourceIdentityFingerprint": "c9141a0d15ccfa98dad96931a13af4106fe28588322f3adaeacabcde9be2a04e",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q22.png",
+        "assetSha256": "sha256:c3aacf1d0fe6af05de70ac10beea72cc679724afd7c86a2bd47e2d861d8fa04c",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "서술형2와 직각삼각형의 side condition 및 외접원 넓이 요구가 보존된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "upgradeReason": null,
+          "beforeSolutionSha256": "16d8a99fb777971a92ac8a43d28a500cb6e877e56f3130794f055215f63de5fe",
+          "afterSolutionSha256": "16d8a99fb777971a92ac8a43d28a500cb6e877e56f3130794f055215f63de5fe",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 2,
+          "difficultyRationale": "직각삼각형의 빗변이 외접원 지름임을 쓰고 원 넓이 공식을 적용한다. 익숙한 2단계로 bucket2; legacy 하 경계로 유지 가능.",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "legacyLevelRecheck": {
+            "status": "BORDERLINE_ACCEPTABLE",
+            "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP",
+          "metaDebtFields": [],
+          "metaDebtReason": null
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q22.png",
+          "questionImageSha256": "sha256:c3aacf1d0fe6af05de70ac10beea72cc679724afd7c86a2bd47e2d861d8fa04c",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The problem image labels the right triangle and side lengths; the solution uses the standard hypotenuse-diameter fact only.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "primaryMethod": "직각삼각형 외심의 위치",
+      "decisiveStep": " $\\pi r^2=\\pi\\cdot5^2=25\\pi\\text{ cm}^2$이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "25",
+      "originalIndependentFreezeAnswer": "25",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$25$",
+      "preRepairStoredAnswer": "$25$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "ee3c1190c541fd40356210506ba19068512153bb7a85e285f8a7f77b7fd8708d",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 23,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q23",
+        "id": 23,
+        "sourceOrdinal": 23,
+        "currentContentHash": "527d0e6befbd7b1323e606124e322fba7b62801b337c00564e4d6e4aea68f17d",
+        "currentChoicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "currentImageRefHash": "ec02eb692f4574438bb6377b372229834f5a619e68d94e916d126e21d118e5c1",
+        "sourceIdentityFingerprint": "f7edab3174a9a6d2702b2c01172357e50eb420c3d27700defaf7ded6b129917e",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q23.png",
+        "assetSha256": "sha256:ced370ebf118185e2b5466ae2125841a26b409c4545cd2545b2e9e00e5ae6387",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "서술형3와 그림에 있는 x,y 두 값의 합 질문이 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Separated intermediate squared side values in both triangles.",
+          "beforeSolutionSha256": "7fac1ee1b6d863f421b26d30c63ff7de647dc0a378df0b17f120b367b5d41da2",
+          "afterSolutionSha256": "ee3c1190c541fd40356210506ba19068512153bb7a85e285f8a7f77b7fd8708d",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 3,
+          "difficultyRationale": "내부 직각삼각형과 큰 직각삼각형에 피타고라스를 연속 적용한다. 두 번의 변 복원이라 bucket3.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q23.png",
+          "questionImageSha256": "sha256:ced370ebf118185e2b5466ae2125841a26b409c4545cd2545b2e9e00e5ae6387",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source image shows both nested right triangles, the 6/9 base segments and 10 cm hypotenuse; both Pythagorean steps map to that figure.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "연속 피타고라스 적용",
+      "decisiveStep": " $x+y=8+17=25$이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "[EOD]=75/8 cm², OH=3 cm",
+      "originalIndependentFreezeAnswer": "[EOD]=75/8 cm², OH=3 cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $\\dfrac{75}{8}\\text{ cm}^2$  (2) $3\\text{ cm}$",
+      "preRepairStoredAnswer": "(1) $\\dfrac{75}{8}\\text{ cm}^2$  (2) $3\\text{ cm}$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_MINIMUM_R1_REPAIR_AND_DIRECT_DEPENDENCY_REVIEW",
+      "repairApplied": true,
+      "solutionSha256": "71fa59d85015c6155b1b7582f176487858ecda62db92fbff64879fdbec882a57",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "sourceIdentity": {
+        "qid": 24,
+        "sourceArchiveFile": "archive/_generated/source-only/m2-20261004/20_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "20_신흥중_2학기_기말_중2_기출:q24",
+        "id": 24,
+        "sourceOrdinal": 24,
+        "currentContentHash": "d0d4eb6ac3366921cf0deee139879f7ff7e773fec8527bd403747cf59d4e0d4f",
+        "currentChoicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "currentImageRefHash": "d274348d5760b3b2a4b74826327111c879d2874aa8f1a978bf06539230d40e95",
+        "sourceIdentityFingerprint": "dd3e620ef3caa091d0fae3a01e19c91f4c1ecb0d501537e1794f1cc1b080ce99",
+        "componentParity": {
+          "content": true,
+          "choices": true,
+          "imageRef": true
+        },
+        "sourceIdentityStatus": "PASS",
+        "imageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q24.png",
+        "assetSha256": "sha256:63a36dc040975d928cbd046af4001f36a7721e605b1ae24f03a9a34a30a14daf",
+        "assetPhysicallyOpened": true
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP_WITH_REDUNDANT_GRID_TAG",
+          "finalDisposition": "LAYOUT_KEEP",
+          "changedFields": [
+            "layoutTag"
+          ],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "studentCoreFieldParity": "PASS",
+          "layoutTag": "",
+          "wide": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "서술형4, 직사각형/BD 중점/직선 교점 정의, 두 항목 (1)/(2)가 분명하고 각 단위 결속이 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "beforeDisposition": "UPGRADE_REQUIRED",
+          "finalDisposition": "UPGRADE_PASS",
+          "upgradeReason": "Used the given midpoint length directly and made the similarity/area/distance path easy to follow.",
+          "beforeSolutionSha256": "905da8b1c5d4e76ddc562f3aa9a66fee224900a8fd1a4eda6f47052fac969118",
+          "afterSolutionSha256": "71fa59d85015c6155b1b7582f176487858ecda62db92fbff64879fdbec882a57",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "alignmentEvidence": "Current candidate qid/content/choices/image exactly match locked helper source; final solution directly solves this current source item. Independent answer freeze and post-comparison adjudication are referenced in R1.answer-adjudications.json.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "META": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.meta-review.json",
+          "difficultyCurrentPassBucket": 4,
+          "difficultyRationale": "직사각형 대각선의 중점, 두 직각삼각형의 닮음, 빗변·높이 계산, 넓이와 중심거리까지 연결한다. 다단 풀이로 bucket4.",
+          "legacyLevelCompatibility": "NORMAL",
+          "legacyLevelRecheck": {
+            "status": "NORMAL",
+            "reason": "Current-pass bucket maps to the current legacy level."
+          },
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "reviewRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1.visual-review.json",
+          "questionImageRef": "assets/images/20_신흥중_2학기_기말_중2_기출/q24.png",
+          "questionImageSha256": "sha256:63a36dc040975d928cbd046af4001f36a7721e605b1ae24f03a9a34a30a14daf",
+          "questionImageOpenStatus": "OPENED_FROM_CURRENT_RUN_ASSET",
+          "solutionVisualNeed": "NOT_REQUIRED",
+          "solutionImageRef": null,
+          "reason": "The source rectangle already shows E,F,H,O, perpendicularity, the midpoint diagonal, and all lengths used for similarity and the requested area/distance.",
+          "assetLabelOwnerAndGeometry": "PASS",
+          "sourceToSolutionVisualParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding.",
+      "primaryMethod": "삼각형의 닮음과 직각삼각형으로 넓이·거리 계산",
+      "decisiveStep": " $[EOD]=\\dfrac12\\cdot\\dfrac{25}{4}\\cdot3=\\dfrac{75}{8}\\text{ cm}^2$이다. $OH=6-3=3\\text{ cm}$이다.",
+      "sourceMode": "ORIGINAL",
+      "postComparisonAdjudication": null
+    }
+  ]
+}

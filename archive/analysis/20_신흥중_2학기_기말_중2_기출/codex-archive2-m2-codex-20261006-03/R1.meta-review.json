@@ -1,0 +1,1607 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "artifact": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/20_신흥중_2학기_기말_중2_기출.js",
+    "rawSha256": "sha256:30971716105079da1cce9d0edb57f05f83ce85c5c43cd31addc3e66521220489",
+    "gitBlobSha": "2fdd890dcdf2b0914e917183adcfca81da1a34f6"
+  },
+  "curriculumAuthority": "2015 curriculum; q1-q7 and q21 use current/previous same-grade M2-1 function scope; q8-q20,q22-q24 use current M2-2 scopes as recorded per item.",
+  "reviewDenominator": 24,
+  "rows": [
+    {
+      "qid": 1,
+      "solutionSha256": "da51c022cf1f0d1db90e9bf6e2ce0b8dd85cb5d0d65cfc6d2cb378eec0ee8f90",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수",
+          "l4": ""
+        },
+        "rpmL3": "일차함수",
+        "rpmL4": "",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "세 함수식 판별이 필요하지만 각 식을 일차함수 정의에 바로 대조한다. 하와 bucket2는 기본 분류형의 인접 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "solutionSha256": "c2b89ed2b2823d48a478f98c985b07091cd7dcb7592b8cf80fb3122e6e59818d",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수",
+          "l4": "그래프"
+        },
+        "rpmL3": "일차함수",
+        "rpmL4": "그래프",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 6,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "M1-1",
+            "L1": "좌표평면과 그래프",
+            "L2": "그래프와 관계",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "무리함수",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "유리함수",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "다섯 선택지의 기울기·절편·사분면 판별을 각각 해야 한다. 절차는 익숙하고 접근 선택 부담은 낮아 bucket2; legacy 하와 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "solutionSha256": "5024b0efb39c9851611195b6e290f5aa39d516f19890913c2915d0e23f020979",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수",
+          "l4": ""
+        },
+        "rpmL3": "일차함수",
+        "rpmL4": "",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 1,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "함수",
+            "L3": "함숫값 계산",
+            "L4": "함숫값 직접 계산",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 1,
+        "recheckedBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "조건 대입으로 a를 정한 뒤 한 번 더 대입하는 직선적 계산이므로 bucket1.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "solutionSha256": "70ee1651abe9eea9db666c7fbd722366b49f33f7c0d9fc7f7b7f56f3e71f2513",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수",
+          "l4": "그래프의 평행이동"
+        },
+        "rpmL3": "일차함수",
+        "rpmL4": "그래프의 평행이동",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "geometry-equations-v1.json",
+            "courseKey": "수학(상)",
+            "L1": "도형의 방정식",
+            "L2": "직선의 방정식",
+            "L3": "두 직선의 위치 관계",
+            "L4": "두 직선의 위치 관계 종합",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "geometry-equations-v1.json",
+            "courseKey": "공통수학2",
+            "L1": "도형의 방정식",
+            "L2": "직선의 방정식",
+            "L3": "두 직선의 위치 관계",
+            "L4": "두 직선의 위치 관계 종합",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "수직이동식을 세우고 한 점을 대입해 k를 구한다. 해석이 한 번 들어가므로 bucket2이며 legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "solutionSha256": "bee98847b4a00f6f4b0d22c46e506ba2840042c53cef1fb0e1b7314779bf393c",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수",
+          "l4": "회전체의 부피"
+        },
+        "rpmL3": "일차함수",
+        "rpmL4": "회전체의 부피",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "직선의 절편을 구해 회전 원뿔의 반지름·높이로 읽고 부피식을 적용한다. 그래프 해석 뒤 공식을 고르는 두 단계라 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "solutionSha256": "0f07e7bd9c997b13436081e2d2da6374d7b6a59272724097fd681cbab8862a33",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "연립방정식",
+          "l4": "좌표"
+        },
+        "rpmL3": "연립방정식",
+        "rpmL4": "좌표",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 1,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "무리함수",
+            "L3": "함수 그래프의 교점",
+            "L4": "두 함수 그래프의 교점",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "두 일차방정식을 가감하고 한 식에 대입한다. 익숙한 2단계 풀이로 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "solutionSha256": "d08a466f93fe8823a0e83b25737ac555c4b3d4bf88b350e1edbeb8bd69ddfedc",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차방정식",
+          "l4": "사분면"
+        },
+        "rpmL3": "일차방정식",
+        "rpmL4": "사분면",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 6,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "M1-1",
+            "L1": "좌표평면과 그래프",
+            "L2": "그래프와 관계",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "무리함수",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "functions-graphs-v1.json",
+            "courseKey": "수학(하)",
+            "L1": "함수",
+            "L2": "유리함수",
+            "L3": "함수 그래프의 성질",
+            "L4": "함수 그래프의 성질 판정",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "계수 부호에서 기울기·절편을 얻고 사분면을 판정한다. 조건 해석이 핵심이므로 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "solutionSha256": "68fcd0935ffbcd18c0bc8fee77cec53e520964e73b3e1513be465a25b809952b",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "사각형",
+          "l4": "대각선"
+        },
+        "rpmL3": "사각형",
+        "rpmL4": "대각선",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "사각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 1,
+        "recheckedBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "평행사변형과 그 특수 사각형의 대각선 성질을 바로 대조하는 확인형이라 bucket1.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "solutionSha256": "1500a1c75465720f968c9e2f29c4f342ffeb476b3e713fed104f05f0468ea61c",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "외심",
+          "l4": "삼각형"
+        },
+        "rpmL3": "외심",
+        "rpmL4": "삼각형",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중3 수학",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "외심의 등거리 정의를 바로 선택지에 적용한다. 그림의 다른 보조선이 있어도 결정 개념은 한 가지이며 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "solutionSha256": "6e3133f4a02a0e2c5f39f57bb75da42e89efc0f44b6f62fe4910f6950a81ccfd",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "내심",
+          "l4": "삼각형"
+        },
+        "rpmL3": "내심",
+        "rpmL4": "삼각형",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 1,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 내심",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "상",
+        "previousBucket": 4,
+        "recheckedBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "내심의 반지름·넓이 관계, 닮음, 세 변 길이를 연쇄 연결해 BD+EC를 구한다. 다단 추론으로 bucket4.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "solutionSha256": "0cbc4ede4d33ce54222d0c91658bacbdcc869556ce44c2dcaa4796e92c346b92",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "외심",
+          "l4": "각"
+        },
+        "rpmL3": "외심",
+        "rpmL4": "각",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중3 수학",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "외심이 만드는 두 이등변삼각형의 각과 삼각형 내각합을 연결한다. 각 관계 선택이 필요해 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "solutionSha256": "75839c09025e53cf8c10d2938a381b3e8c29313853bfd49e432df404beafa091",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "평행사변형",
+          "l4": "각"
+        },
+        "rpmL3": "평행사변형",
+        "rpmL4": "각",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "사각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "인접각 비율을 식으로 구한 뒤 그림의 외각·맞은편 내각 차를 계산한다. 표준 2단계로 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "solutionSha256": "6e0c96497e9d74f925f3a32a457224ac8e45d71e2e5e06323929f87291d47f46",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "비례식"
+        },
+        "rpmL3": "닮은 도형",
+        "rpmL4": "비례식",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 1,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 닮음",
+            "L2": "도형의 닮음",
+            "L3": "닮은 도형",
+            "L4": "도형의 닮음비",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "사면체 대응 꼭짓점·변을 정렬하고 닮음비를 두 변에 적용한 뒤 곱한다. 3차원 대응 해석 때문에 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "solutionSha256": "21f424f06d79348d93191b1997155589a3d1504da41ceef97ebc9836ecad3e51",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "무게중심",
+          "l4": "넓이"
+        },
+        "rpmL3": "무게중심",
+        "rpmL4": "넓이",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 5,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "geometry-equations-v1.json",
+            "courseKey": "수학(상)",
+            "L1": "도형의 방정식",
+            "L2": "평면좌표",
+            "L3": "삼각형의 무게중심",
+            "L4": "무게중심의 활용",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "geometry-equations-v1.json",
+            "courseKey": "공통수학2",
+            "L1": "도형의 방정식",
+            "L2": "평면좌표",
+            "L3": "삼각형의 무게중심",
+            "L4": "무게중심의 활용",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 닮음",
+            "L2": "삼각형의 성질",
+            "L3": "삼각형의 무게중심",
+            "L4": "무게중심의 활용",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "상",
+        "previousBucket": 4,
+        "recheckedBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "두 단계 무게중심 높이비, 작은 삼각형 넓이, 목표 넓이를 연쇄 적용한다. 조건 구조가 다단이라 bucket4.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "solutionSha256": "3f737da4e15c953f64858d5721a210cca12766de9c9f593593053212d55525d8",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리와 활용",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리와 활용",
+          "l3": "직각삼각형",
+          "l4": ""
+        },
+        "rpmL3": "직각삼각형",
+        "rpmL4": "",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "세 후보의 삼각형 성립과 피타고라스 역을 각각 판정해 개수를 센다. 경우별 검토가 있어 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "solutionSha256": "814371f7b15c33029330f69f31000520cafcf13991574f9b81b95e8eef964e40",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "직사각형",
+          "l4": "중점"
+        },
+        "rpmL3": "직사각형",
+        "rpmL4": "중점",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "사각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "사각형의 성질과 판정",
+            "L4": "평행사변형의 성질",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "사각형의 변 중점을 잇는 성질에서 두 대각선 절반 길이를 합산한다. 한 정리의 직접 적용으로 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "solutionSha256": "f29a0f42b20d894dd98bd814e26a94b501eb4d4a6933c24461b301be3059dfae",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "직각이등변삼각형",
+          "l4": "넓이"
+        },
+        "rpmL3": "직각이등변삼각형",
+        "rpmL4": "넓이",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "상",
+        "previousBucket": 4,
+        "recheckedBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "두 직각삼각형의 각 관계와 RHA 합동을 세워 변을 옮기고 피타고라스로 넓이를 구한다. 보조각 추론까지 있어 bucket4.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "solutionSha256": "a6399ef5249bc1fbe07adf93f7c3a990230ab282b902f7bb0948a125cd2e40eb",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "평행선과 선분의 길이",
+          "l4": "도형"
+        },
+        "rpmL3": "평행선과 선분의 길이",
+        "rpmL4": "도형",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 닮음",
+            "L2": "도형의 닮음",
+            "L3": "평행선과 선분의 길이의 비",
+            "L4": "삼각형에서 평행선과 선분의 비",
+            "defaultSelectable": false
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 닮음",
+            "L2": "평행선 사이의 선분의 길이의 비",
+            "L3": "평행선과 선분의 길이의 비",
+            "L4": "삼각형에서 평행선과 선분의 비",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "직각삼각형에서 피타고라스로 x를 구하고 닮음비로 y를 계산한 뒤 차를 낸다. 두 개념의 순차 적용으로 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "solutionSha256": "43eb76361abbdd2999331d9276da6f1aed98c6eb5248fa1499b616712c44d59d",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리와 활용",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리와 활용",
+          "l3": "정사각형",
+          "l4": "넓이"
+        },
+        "rpmL3": "정사각형",
+        "rpmL4": "넓이",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "두 정사각형의 넓이에서 변을 복원하고 합친 직사각형의 대각선에 피타고라스를 적용한다. 기본 2단계라 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "solutionSha256": "0a0b3cafe6f4e6d84d63a56d7ff42fed9cbc99caea4a5c99f53944b0bda49356",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리와 활용",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리와 활용",
+          "l3": "직각삼각형",
+          "l4": ""
+        },
+        "rpmL3": "직각삼각형",
+        "rpmL4": "",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "빗변 후보를 두 갈래로 나누고 각 제곱값과 삼각형 부등식을 점검해 합산한다. 경우분기 때문에 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "solutionSha256": "27934307ad0c986d99d88be91bf5539bd30a62cd28097516c5460dc8a9523d65",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수와 그 그래프",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_POINT_SLOPE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "기울기와 한 점으로 식 구하기"
+        },
+        "rpmL3": "식 구하기",
+        "rpmL4": "기울기와 한 점으로 식 구하기",
+        "semanticScopeRelation": "PREVIOUS_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 1,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "geometry-equations-v1.json",
+            "courseKey": "수학(상)",
+            "L1": "도형의 방정식",
+            "L2": "직선의 방정식",
+            "L3": "직선의 방정식 구하기",
+            "L4": "한 점과 기울기가 주어진 직선",
+            "defaultSelectable": true
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "평행 조건으로 기울기를 고정하고 한 점 대입으로 절편을 구한다. 표준 직접 적용이라 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "solutionSha256": "16d8a99fb777971a92ac8a43d28a500cb6e877e56f3130794f055215f63de5fe",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "삼각형과 사각형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "도형의 성질",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형과 사각형의 성질",
+          "midUnit": "도형의 성질",
+          "l3": "직각삼각형",
+          "l4": "외접원"
+        },
+        "rpmL3": "직각삼각형",
+        "rpmL4": "외접원",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReasonCode": "RPM_PRIMARY_MIGRATION_GAP"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 2,
+        "globalCanonicalPairExamples": [
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중2 수학",
+            "L1": "도형의 성질",
+            "L2": "삼각형의 성질",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": true
+          },
+          {
+            "pack": "middle-geometry-v1.json",
+            "courseKey": "중3 수학",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "L3": "삼각형의 외심·내심",
+            "L4": "삼각형의 외심",
+            "defaultSelectable": false
+          }
+        ],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [],
+        "nullReason": null
+      },
+      "currentPassDifficulty": {
+        "level": "하",
+        "previousBucket": 2,
+        "recheckedBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "decision": "KEEP",
+        "rationale": "직각삼각형의 빗변이 외접원 지름임을 쓰고 원 넓이 공식을 적용한다. 익숙한 2단계로 bucket2; legacy 하 경계로 유지 가능.",
+        "legacyLevelRecheck": {
+          "status": "BORDERLINE_ACCEPTABLE",
+          "reason": "Bucket 2 is independently supported by the need for one modest condition interpretation or multiple direct checks, while the legacy 하 label remains reasonable under LEVEL BORDERLINE STABILITY LOCK. This is an adjacent mismatch, not a strong conflict."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "solutionSha256": "ee3c1190c541fd40356210506ba19068512153bb7a85e285f8a7f77b7fd8708d",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리와 활용",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리와 활용",
+          "l3": "직각삼각형",
+          "l4": "선분의 길이"
+        },
+        "rpmL3": "직각삼각형",
+        "rpmL4": "선분의 길이",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "중",
+        "previousBucket": 3,
+        "recheckedBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "내부 직각삼각형과 큰 직각삼각형에 피타고라스를 연속 적용한다. 두 번의 변 복원이라 bucket3.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "solutionSha256": "71fa59d85015c6155b1b7582f176487858ecda62db92fbff64879fdbec882a57",
+      "currentMeta": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "도형의 닮음과 피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리와 활용",
+        "subUnitConfidence": "current_pass",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리와 활용",
+          "l3": "직사각형",
+          "l4": "넓이"
+        },
+        "rpmL3": "직사각형",
+        "rpmL4": "넓이",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "projectionStatus": "RPM_ONLY",
+        "projectionReasonCode": "RPM_ONLY"
+      },
+      "keyAudit": {
+        "globalCanonicalPairDefinitions": 0,
+        "globalCanonicalPairExamples": [],
+        "exactTargetScopePathAndPairBindings": 0,
+        "nullFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": "No unique exact active PT/TPL binding was found for the source-bound RPM path in this target scope. Candidate records RPM_ONLY; leave the pair null, preserve semantic FINAL, and do not invent or borrow an unrelated binding."
+      },
+      "currentPassDifficulty": {
+        "level": "상",
+        "previousBucket": 4,
+        "recheckedBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "decision": "KEEP",
+        "rationale": "직사각형 대각선의 중점, 두 직각삼각형의 닮음, 빗변·높이 계산, 넓이와 중심거리까지 연결한다. 다단 풀이로 bucket4.",
+        "legacyLevelRecheck": {
+          "status": "NORMAL",
+          "reason": "Current-pass bucket maps to the current legacy level."
+        }
+      }
+    }
+  ]
+}

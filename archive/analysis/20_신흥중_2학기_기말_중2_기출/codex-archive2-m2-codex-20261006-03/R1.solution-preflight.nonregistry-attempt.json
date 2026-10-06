@@ -1,0 +1,187 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:afa6c2b1e9f5b3a2c564f369ae728994e5299e03ab14cbed1099fd245c29fd22",
+        "gitBlobSha": "65cc274defeddf9296333002df99e144ab7d016e"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:2b06a6d44e8d2bc74746f42c4e7ef361c58fee266da034a0989689637a56271a",
+        "gitBlobSha": "1762208980141069a87c4c4c103444523fdd8da0"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:4e921b245c224bb114c1f2e1e4bbab0dd09d07c7951685ece4c6eee2a908fef0",
+        "solutionExcerpt": "삼각형의 넓이를 $[XYZ]$로 나타내자.\n$DE\\parallel BC$이고 그림에서 $G$, $I$는 모두 $DE$ 위에 있다. $G$는 무게중심이므로 $G$에서 $BC$까지의 거리는 삼각형의 높이 $h$의 $\\dfrac13$이다. 따라서 $I$의 $BC$까지 거리, 즉 내접원의 반지름도 $r=\\dfrac h3$이다.\n\n삼각형을 꼭짓점 $A,B,C$에서 내심 $I$로 나누면 세 삼각형의 높이는 모두 $r$이다. 그러므로\n$[ABC]=\\dfrac12r(AB+BC",
+        "observation": "Reviewed the centroid-to-base distance, inradius relation, area identity, derived side length, and similarity ratio as separate reproducible steps.",
+        "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q09-solution.svg",
+        "visualSha256": "sha256:e39cca86b024bcccec673c3dbea965849e967bfc0dc8e7d51550f426fe2823bf",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q09.png",
+        "visualObservedRenderSha256": "sha256:536f63073f50f81dda2ed846f0f68e8d058947dc7eb0f3f7338079935c47f2a4",
+        "visualObservation": "Rendered and opened the SVG; the labeled centroid and incenter align to DE and the decisive segment lengths are legible."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "qid": 21,
+        "solutionSha256": "sha256:e4717e5a5701ec6425c7e3e408334d9f3ca9c3f82247b1b8c1b7ad622295a3f7",
+        "solutionExcerpt": "넓이는 정사각형 한 변의 길이에 자기 자신을 곱한 값이다.\n$2\\times2=4$이므로 넓이가 $4\\text{ cm}^2$인 정사각형의 한 변은 $2\\text{ cm}$이다.\n$6\\times6=36$이므로 넓이가 $36\\text{ cm}^2$인 정사각형의 한 변은 $6\\text{ cm}$이다.\n\n$B,C,E$가 한 직선 위에 있으므로\n$BE=BC+CE=2+6=8\\text{ cm}$이다. $EF=6\\text{ cm}$이고 $BE\\perp EF$이므로 삼각형 $BE",
+        "observation": "Reviewed area-to-side conversions, collinearity sum, perpendicular condition, Pythagorean substitutions, and final length.",
+        "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+        "visualSha256": "sha256:90692e4cf8bd0ec076d1c1f1a289aa6dc86673b9aeeae41166cb7abd552c81e4",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q21.png",
+        "visualObservedRenderSha256": "sha256:f3678a5d4e3e277535268d73370c99a90bad0b2bf95d810b03a292435a67bdae",
+        "visualObservation": "Rendered and opened the SVG; square outlines and diagonal BF are continuous, labels identify the intended lengths, and the right-angle mark is at E."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "qid": 24,
+        "solutionSha256": "sha256:8268525eaba23036c50e53d70b9ef6421d93623aeea056baecfb851d9f8479b5",
+        "solutionExcerpt": "삼각형의 넓이에서 높이를 구한다. 밑변은 $BC=10\\text{ cm}$이므로\n$60=\\dfrac12\\cdot10\\cdot h$\n$h=12\\text{ cm}$\n\n$AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변에 내린 높이는 밑변을 이등분한다. 따라서 밑변의 절반은\n$\\dfrac{10}{2}=5\\text{ cm}$이다.\n\n직각삼각형에서 피타고라스 정리를 쓰면\n$AB^2=12^2+5^2=144+25=169$\n$AB=13\\text{ cm}$\n\n따라서 구하는 길",
+        "observation": "Reviewed area-to-height, isosceles altitude bisector, base halves, and Pythagorean steps; each decisive value is explicit.",
+        "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q24-solution.svg",
+        "visualSha256": "sha256:27e9ddd178193db1e1531f2e658acca8ec2fb5d9be39b91425b8276782221aea",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q24.png",
+        "visualObservedRenderSha256": "sha256:61c48347a0a9d0920662553d6d0eda10085a9324bfc0231e2097f0d12138cc36",
+        "visualObservation": "Rendered and opened the SVG; altitude and equal base halves are clear and labels attach to the represented segments."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:978185096269b865850c13855abc9d7e7f4ca66f296605dd5f94e7bcd4670a23",
+        "solutionExcerpt": "[키포인트] 두 각의 이등분선과 그림의 평행 표시를 함께 이용한다.\n그림에서 $AB=6\\rm\\,cm$, $AC=12\\rm\\,cm$이고 $DE\\parallel AB$이다.\n$AD$는 $\\angle A$의 이등분선이므로 각의 이등분선의 성질에 따라 $BD:DC=AB:AC=1:2$이다. 따라서 $DC:BC=2:3$이다.\n$DE\\parallel AB$이므로 $\\triangle CDE\\sim\\triangle CBA$이고, $CE:CA=CD:CB=2:3$이다. 따라서 $C",
+        "observation": "Reviewed the angle-bisector ratio and parallel-similarity chain as distinct steps; the visual was checked against actual coordinates, not its labels.",
+        "visualPath": "assets/images/24_향림중_2학기_기말_중2_기출/q8-solution.svg",
+        "visualSha256": "sha256:132f7aae40e5310ac703782d2bc193548b15964070f6040f8c8c8d1177d661c2",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-24q08.png",
+        "visualObservedRenderSha256": "sha256:328edc8eb4ff74dd71f5872271159e4025c7706f6dec1dcf59da87a9caa3daca",
+        "visualObservation": "Rendered and opened the current repaired SVG; checked point order, line incidence, length labels, and text legibility."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:2681ad6ac7faed01a2f50a9016d3f8234674caea101ec95b01e9ad60235692ca",
+        "solutionExcerpt": "[키포인트] 두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, ",
+        "observation": "Reviewed the two medians, centroid 2:1 ratio, equal-median consequence of AB=AC, and final CG value.",
+        "visualPath": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg",
+        "visualSha256": "sha256:5ef35b124d2937ccc29e84eac81f1bf261d197376436918b302a3962a8bb3288",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-24q12.png",
+        "visualObservedRenderSha256": "sha256:13448825335aa4a783c26a99e277779db6b072c601aa3fc0a6808bfa9dc70b41",
+        "visualObservation": "Rendered and opened the SVG; median lines meet at G and the CG length label sits on the intended segment."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+        "sha256": "sha256:9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8",
+        "gitBlobSha": "61f30e0564efd58af8dc188f01673d07ef10946e"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/04_24_향림중_2학기_기말_중2_기출_q8_COORDINATE_SEMANTIC_FAIL.svg",
+        "sha256": "sha256:2996e0db0e34b90c8d84ccc5c2b23100d1fffeb93600f81f6cd65d0f812b88ac",
+        "gitBlobSha": "18a9238be50b7f0f79c648a72d4fbe95d403217a"
+      }
+    ]
+  },
+  "goldenCalibrationActualViewLedger": [
+    {
+      "path": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+      "sha256": "sha256:afa6c2b1e9f5b3a2c564f369ae728994e5299e03ab14cbed1099fd245c29fd22",
+      "gitBlobSha": "65cc274defeddf9296333002df99e144ab7d016e",
+      "items": [
+        {
+          "qid": 9,
+          "solutionSha256": "sha256:4e921b245c224bb114c1f2e1e4bbab0dd09d07c7951685ece4c6eee2a908fef0",
+          "solutionExcerpt": "삼각형의 넓이를 $[XYZ]$로 나타내자.\n$DE\\parallel BC$이고 그림에서 $G$, $I$는 모두 $DE$ 위에 있다. $G$는 무게중심이므로 $G$에서 $BC$까지의 거리는 삼각형의 높이 $h$의 $\\dfrac13$이다. 따라서 $I$의 $BC$까지 거리, 즉 내접원의 반지름도 $r=\\dfrac h3$이다.\n\n삼각형을 꼭짓점 $A,B,C$에서 내심 $I$로 나누면 세 삼각형의 높이는 모두 $r$이다. 그러므로\n$[ABC]=\\dfrac12r(AB+BC",
+          "observation": "Reviewed the centroid-to-base distance, inradius relation, area identity, derived side length, and similarity ratio as separate reproducible steps.",
+          "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q09-solution.svg",
+          "visualSha256": "sha256:e39cca86b024bcccec673c3dbea965849e967bfc0dc8e7d51550f426fe2823bf",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q09.png",
+          "visualObservedRenderSha256": "sha256:536f63073f50f81dda2ed846f0f68e8d058947dc7eb0f3f7338079935c47f2a4",
+          "visualObservation": "Rendered and opened the SVG; the labeled centroid and incenter align to DE and the decisive segment lengths are legible."
+        },
+        {
+          "qid": 21,
+          "solutionSha256": "sha256:e4717e5a5701ec6425c7e3e408334d9f3ca9c3f82247b1b8c1b7ad622295a3f7",
+          "solutionExcerpt": "넓이는 정사각형 한 변의 길이에 자기 자신을 곱한 값이다.\n$2\\times2=4$이므로 넓이가 $4\\text{ cm}^2$인 정사각형의 한 변은 $2\\text{ cm}$이다.\n$6\\times6=36$이므로 넓이가 $36\\text{ cm}^2$인 정사각형의 한 변은 $6\\text{ cm}$이다.\n\n$B,C,E$가 한 직선 위에 있으므로\n$BE=BC+CE=2+6=8\\text{ cm}$이다. $EF=6\\text{ cm}$이고 $BE\\perp EF$이므로 삼각형 $BE",
+          "observation": "Reviewed area-to-side conversions, collinearity sum, perpendicular condition, Pythagorean substitutions, and final length.",
+          "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+          "visualSha256": "sha256:90692e4cf8bd0ec076d1c1f1a289aa6dc86673b9aeeae41166cb7abd552c81e4",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q21.png",
+          "visualObservedRenderSha256": "sha256:f3678a5d4e3e277535268d73370c99a90bad0b2bf95d810b03a292435a67bdae",
+          "visualObservation": "Rendered and opened the SVG; square outlines and diagonal BF are continuous, labels identify the intended lengths, and the right-angle mark is at E."
+        },
+        {
+          "qid": 24,
+          "solutionSha256": "sha256:8268525eaba23036c50e53d70b9ef6421d93623aeea056baecfb851d9f8479b5",
+          "solutionExcerpt": "삼각형의 넓이에서 높이를 구한다. 밑변은 $BC=10\\text{ cm}$이므로\n$60=\\dfrac12\\cdot10\\cdot h$\n$h=12\\text{ cm}$\n\n$AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변에 내린 높이는 밑변을 이등분한다. 따라서 밑변의 절반은\n$\\dfrac{10}{2}=5\\text{ cm}$이다.\n\n직각삼각형에서 피타고라스 정리를 쓰면\n$AB^2=12^2+5^2=144+25=169$\n$AB=13\\text{ cm}$\n\n따라서 구하는 길",
+          "observation": "Reviewed area-to-height, isosceles altitude bisector, base halves, and Pythagorean steps; each decisive value is explicit.",
+          "visualPath": "assets/images/21_신흥중_2학기_기말_중2_기출/q24-solution.svg",
+          "visualSha256": "sha256:27e9ddd178193db1e1531f2e658acca8ec2fb5d9be39b91425b8276782221aea",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-q24.png",
+          "visualObservedRenderSha256": "sha256:61c48347a0a9d0920662553d6d0eda10085a9324bfc0231e2097f0d12138cc36",
+          "visualObservation": "Rendered and opened the SVG; altitude and equal base halves are clear and labels attach to the represented segments."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "sha256": "sha256:2b06a6d44e8d2bc74746f42c4e7ef361c58fee266da034a0989689637a56271a",
+      "gitBlobSha": "1762208980141069a87c4c4c103444523fdd8da0",
+      "items": [
+        {
+          "qid": 8,
+          "solutionSha256": "sha256:978185096269b865850c13855abc9d7e7f4ca66f296605dd5f94e7bcd4670a23",
+          "solutionExcerpt": "[키포인트] 두 각의 이등분선과 그림의 평행 표시를 함께 이용한다.\n그림에서 $AB=6\\rm\\,cm$, $AC=12\\rm\\,cm$이고 $DE\\parallel AB$이다.\n$AD$는 $\\angle A$의 이등분선이므로 각의 이등분선의 성질에 따라 $BD:DC=AB:AC=1:2$이다. 따라서 $DC:BC=2:3$이다.\n$DE\\parallel AB$이므로 $\\triangle CDE\\sim\\triangle CBA$이고, $CE:CA=CD:CB=2:3$이다. 따라서 $C",
+          "observation": "Reviewed the angle-bisector ratio and parallel-similarity chain as distinct steps; the visual was checked against actual coordinates, not its labels.",
+          "visualPath": "assets/images/24_향림중_2학기_기말_중2_기출/q8-solution.svg",
+          "visualSha256": "sha256:132f7aae40e5310ac703782d2bc193548b15964070f6040f8c8c8d1177d661c2",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-24q08.png",
+          "visualObservedRenderSha256": "sha256:328edc8eb4ff74dd71f5872271159e4025c7706f6dec1dcf59da87a9caa3daca",
+          "visualObservation": "Rendered and opened the current repaired SVG; checked point order, line incidence, length labels, and text legibility."
+        },
+        {
+          "qid": 12,
+          "solutionSha256": "sha256:2681ad6ac7faed01a2f50a9016d3f8234674caea101ec95b01e9ad60235692ca",
+          "solutionExcerpt": "[키포인트] 두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, ",
+          "observation": "Reviewed the two medians, centroid 2:1 ratio, equal-median consequence of AB=AC, and final CG value.",
+          "visualPath": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg",
+          "visualSha256": "sha256:5ef35b124d2937ccc29e84eac81f1bf261d197376436918b302a3962a8bb3288",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/golden-24q12.png",
+          "visualObservedRenderSha256": "sha256:13448825335aa4a783c26a99e277779db6b072c601aa3fc0a6808bfa9dc70b41",
+          "visualObservation": "Rendered and opened the SVG; median lines meet at G and the CG length label sits on the intended segment."
+        }
+      ]
+    }
+  ],
+  "negativeSampleObservation": "Read the 2026-10-01 regression README and actual q20 failed SVG; its text claims perpendicular lines although primitive geometry does not satisfy the claim. Read the 2026-09-29 visual-negative README and its frozen 24_향림중 q8 failure; the labeled angle bisectors and parallel relation do not all hold in coordinates. These examples set the preflight check: inspect actual geometry and topology, owner incidence, and written-step consistency rather than trusting labels or aggregate audit counts."
+}

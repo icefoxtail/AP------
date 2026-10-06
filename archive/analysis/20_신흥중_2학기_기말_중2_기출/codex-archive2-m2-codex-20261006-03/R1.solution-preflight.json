@@ -1,0 +1,153 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx-\\dfrac cb$이다.\n따라서 기울기는\n$-\\dfrac ab$이다.\n그래프의 기울기가 양수이므로\n$-\\dfrac ab>0$이다.\n따라서 $a",
+        "observation": "Reviewed sign inference from graph slope/intercept through coefficient signs and quadrant conclusion; each algebraic transform and consequence is visible.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q08.png",
+        "visualObservedRenderSha256": "sha256:ae9efa096fb33d9482c5176e086a821681a1dc8a3de8e712f453344beca82d17",
+        "visualObservation": "Opened the rendered diagram: sign relation boxes and quadrant conclusion are distinct; source SVG hash binds the diagram."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n$",
+        "observation": "Reviewed tangent equation, slope conversion, perpendicular slope product, and solved parameter as separate steps.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+        "visualSha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q09.png",
+        "visualObservedRenderSha256": "sha256:1412795a155b5e0b466635c67844eae460a5f9fe890270fc60b025a36128ba9b",
+        "visualObservation": "Opened the rendered SVG: circle, axes, contact point P and tangent are legible; the slope relation is shown beside the geometry."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-kx=\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}$이고,\n$y^2+2y=(y+1)^2-1$이다.\n이를 원래 식에 대입하면\n$\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}+(y+1)^2-1+2k+1=0$",
+        "observation": "Reviewed completing squares, radius-squared condition, strict positivity, and excluded zero-radius endpoints.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+        "visualSha256": "sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q06.png",
+        "visualObservedRenderSha256": "sha256:ff30dfe9a81957ed140049516592d160a1f8b6252223d61d147331d4efdd7ae7",
+        "visualObservation": "Opened the rendered SVG and checked both sample circles and the open endpoint split; local ImageMagick font fallback limits glyph fidelity, so the raw solution text remains the authority."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+        "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfrac{|C_2-C_1|}{\\sqrt{A^2+B^2}}$이다.\n따라서 두 직선 사이의 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}$\n$=\\dfrac{|k-1|}{\\sqrt5}$이다.\n문제에서 이 거리가 $\\sqrt5$라고 했으므로\n$\\dfrac{|k",
+        "observation": "Reviewed both absolute-value cases, distance equation, candidate parameters, and product.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+        "visualSha256": "sha256:cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q07.png",
+        "visualObservedRenderSha256": "sha256:0057f0e90402a06a8fb00ac024b6c251ad9ab392a2ee56b6f1e836883e7eb028",
+        "visualObservation": "Opened the rendered SVG and checked the two parallel lines and number-line branches. ImageMagick substituted unsupported math glyphs; this is renderer-font fallback, not used to judge final target rendering."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ]
+  },
+  "goldenCalibrationActualViewLedger": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "items": [
+        {
+          "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+          "qid": 8,
+          "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx-\\dfrac cb$이다.\n따라서 기울기는\n$-\\dfrac ab$이다.\n그래프의 기울기가 양수이므로\n$-\\dfrac ab>0$이다.\n따라서 $a",
+          "observation": "Reviewed sign inference from graph slope/intercept through coefficient signs and quadrant conclusion; each algebraic transform and consequence is visible.",
+          "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+          "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q08.png",
+          "visualObservedRenderSha256": "sha256:ae9efa096fb33d9482c5176e086a821681a1dc8a3de8e712f453344beca82d17",
+          "visualObservation": "Opened the rendered diagram: sign relation boxes and quadrant conclusion are distinct; source SVG hash binds the diagram."
+        },
+        {
+          "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+          "qid": 9,
+          "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+          "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n$",
+          "observation": "Reviewed tangent equation, slope conversion, perpendicular slope product, and solved parameter as separate steps.",
+          "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+          "visualSha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-maesan-q09.png",
+          "visualObservedRenderSha256": "sha256:1412795a155b5e0b466635c67844eae460a5f9fe890270fc60b025a36128ba9b",
+          "visualObservation": "Opened the rendered SVG: circle, axes, contact point P and tangent are legible; the slope relation is shown beside the geometry."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+          "qid": 6,
+          "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+          "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-kx=\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}$이고,\n$y^2+2y=(y+1)^2-1$이다.\n이를 원래 식에 대입하면\n$\\left(x-\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}+(y+1)^2-1+2k+1=0$",
+          "observation": "Reviewed completing squares, radius-squared condition, strict positivity, and excluded zero-radius endpoints.",
+          "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+          "visualSha256": "sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q06.png",
+          "visualObservedRenderSha256": "sha256:ff30dfe9a81957ed140049516592d160a1f8b6252223d61d147331d4efdd7ae7",
+          "visualObservation": "Opened the rendered SVG and checked both sample circles and the open endpoint split; local ImageMagick font fallback limits glyph fidelity, so the raw solution text remains the authority."
+        },
+        {
+          "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+          "qid": 7,
+          "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+          "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfrac{|C_2-C_1|}{\\sqrt{A^2+B^2}}$이다.\n따라서 두 직선 사이의 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}$\n$=\\dfrac{|k-1|}{\\sqrt5}$이다.\n문제에서 이 거리가 $\\sqrt5$라고 했으므로\n$\\dfrac{|k",
+          "observation": "Reviewed both absolute-value cases, distance equation, candidate parameters, and product.",
+          "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+          "visualSha256": "sha256:cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+          "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/R1-sample-renders/approved-golden-hyocheon-q07.png",
+          "visualObservedRenderSha256": "sha256:0057f0e90402a06a8fb00ac024b6c251ad9ab392a2ee56b6f1e836883e7eb028",
+          "visualObservation": "Opened the rendered SVG and checked the two parallel lines and number-line branches. ImageMagick substituted unsupported math glyphs; this is renderer-font fallback, not used to judge final target rendering."
+        }
+      ]
+    }
+  ],
+  "negativeSampleObservation": "Read the approved Bokseong false-PASS README and q20 failed SVG. Actual line primitives do not support the labeled slope/perpendicularity, so numeric geometry and coordinates outrank text labels. This correction review also retains the required checks for separated small-board decisions and exact active Meta lookup."
+}

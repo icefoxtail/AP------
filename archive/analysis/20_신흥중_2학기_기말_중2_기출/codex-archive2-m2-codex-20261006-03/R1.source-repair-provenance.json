@@ -1,0 +1,174 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "repairStatus": "MINIMUM_REPAIRS_COMPLETE_PENDING_R1_EVIDENCE_AND_VALIDATION",
+  "sourceAuthority": "R1.independent-freeze.json (answers frozen before stored answer disclosure), current final student source bundle and 13 roster-bound images",
+  "candidateHistory": [
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/pre-repair/20_신흥중_2학기_기말_중2_기출.js",
+      "rawSha256": "sha256:19a7110004942698c4675cf36f3d6ff70634e54d474de5cea7742c08a1654166",
+      "gitBlobSha": "5700661ee2f8a13aff255b6ba4b76d834ac88ac5",
+      "meaning": "Exact pre-R1 candidate preserved before adjudications/repairs."
+    },
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/pre-final-review/20_신흥중_2학기_기말_중2_기출.js",
+      "rawSha256": "sha256:154c73958d01cbff10fca590eac9385f40017eeb6ee5c7897bd17c6a9e4eb213",
+      "gitBlobSha": "d6c71ca68afe89b26a7597b3336da4e657f80b8f",
+      "meaning": "Exact candidate after q13/q15 answer adjudication and schema-default layout fields, before full solution-structure correction review."
+    }
+  ],
+  "currentFinalCandidate": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_신흥중_2학기_기말_중2_기출/20_신흥중_2학기_기말_중2_기출.js",
+    "rawSha256": "sha256:30971716105079da1cce9d0edb57f05f83ce85c5c43cd31addc3e66521220489",
+    "gitBlobSha": "2fdd890dcdf2b0914e917183adcfca81da1a34f6",
+    "bytes": 55942
+  },
+  "repairs": [
+    {
+      "qid": 2,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Separated five choice checks so each claim and calculation can be read independently."
+    },
+    {
+      "qid": 3,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Displayed the substitution, intermediate value, and final value on separate lines."
+    },
+    {
+      "qid": 6,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Displayed elimination, substitution into the second equation, and y-value derivation step by step."
+    },
+    {
+      "qid": 11,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expanded the angle sum through 2x+160=180 and 2x=20 before x=10."
+    },
+    {
+      "qid": 12,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expanded the 5:4 angle-ratio equation and the final exterior-minus-interior angle calculation."
+    },
+    {
+      "qid": 13,
+      "changedFields": [
+        "solution",
+        "decisiveStep"
+      ],
+      "reason": "The diagram labels EF=14, not AF; corrected the corresponding edge and split 2x=14, x=7."
+    },
+    {
+      "qid": 14,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expanded h=5×18 and kept the nested centroid/area steps distinct. Independent-answer freeze correction is separately recorded in R1.answer-adjudications.json."
+    },
+    {
+      "qid": 15,
+      "changedFields": [
+        "answer",
+        "solution",
+        "decisiveStep"
+      ],
+      "reason": "The solution identifies two right triangles (ㄴ and ㄹ) but stored choice ② denotes one; corrected the answer marker and conclusion to ③."
+    },
+    {
+      "qid": 17,
+      "changedFields": [
+        "solution",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "reason": "Replaced an unsupported component-product assertion with an in-curriculum right-triangle hypotenuse-and-acute-angle congruence proof; matched the method metadata."
+    },
+    {
+      "qid": 18,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expanded Pythagorean transformations and the similarity ratio before x−y."
+    },
+    {
+      "qid": 20,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Separated the two hypotenuse cases and explicitly established triangle inequalities for both candidates."
+    },
+    {
+      "qid": 21,
+      "changedFields": [
+        "rpmL3",
+        "rpmL4",
+        "rpmPath.l3",
+        "rpmPath.l4",
+        "legacyLevelCompatibility"
+      ],
+      "reason": "Removed the response-format label '서술형' from L4 and aligned the current semantic path to canonical '식 구하기 / 기울기와 한 점으로 식 구하기'."
+    },
+    {
+      "qid": 23,
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Displayed the intermediate squared side values in each of the two right triangles."
+    },
+    {
+      "qid": 24,
+      "changedFields": [
+        "solution",
+        "primaryMethod"
+      ],
+      "reason": "Used the given BO=5 and midpoint condition to derive OD and BD directly, then kept similarity, right-triangle height, area, and OH separate."
+    },
+    {
+      "qid": "q1-q24",
+      "changedFields": [
+        "layoutTag"
+      ],
+      "reason": "Removed the redundant 'grid' override. Restored the V2-required structural value as layoutTag='', which the current engine treats as its default. wide=false remains schema-required and is not a layout override."
+    },
+    {
+      "qid": [
+        1,
+        2,
+        4,
+        6,
+        9,
+        12,
+        15,
+        16,
+        19,
+        21,
+        22
+      ],
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ],
+      "reason": "Independently recomputed buckets were 2 while legacy level remained 하. These are adjacent level/bucket boundaries; after current-pass recheck, retained the stable legacy level per LEVEL BORDERLINE STABILITY LOCK and changed the compatibility marker from NORMAL to BORDERLINE_ACCEPTABLE."
+    }
+  ],
+  "protectedStudentFields": {
+    "content": "UNCHANGED",
+    "choices": "UNCHANGED",
+    "image": "UNCHANGED",
+    "assetRefs": "13/13 ROSTER SHA MATCH AND PHYSICALLY OPENED",
+    "sourceTextExactParity": "PASS",
+    "choicesExactParity": "PASS"
+  },
+  "solutionCalibrationOrder": "Approved-registry Golden 2 + Bokseong Negative preflight PASS before minimum correction-review edits; superseded nonregistry preflight attempt preserved separately.",
+  "staticQuestionRender": "NOT_RUN_CODEX_HANDOFF"
+}

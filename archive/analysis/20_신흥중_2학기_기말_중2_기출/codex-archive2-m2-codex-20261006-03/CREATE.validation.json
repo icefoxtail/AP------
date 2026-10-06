@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_VALIDATION_ATTEMPT_v1",
+  "examUid": "20_신흥중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "validatorMode": "CREATE_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "5700661ee2f8a13aff255b6ba4b76d834ac88ac5",
+  "denominator": 24,
+  "rowCount": 24,
+  "disposition": "FAIL",
+  "issues": ["ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"],
+  "preserved": true,
+  "exactReason": "The selected Maesan Golden JS contains solutionImage assets, but its selected representative items q1/q2 have no visualSha256; the V2 gate requires at least one actually read solution SVG for every selected sample that contains solutionImage assets.",
+  "validatorInvocationCount": 1
+}
