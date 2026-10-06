@@ -523,7 +523,7 @@ def main():
     text = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False)+'\n'
     if args.out:
         target = Path(args.out).resolve()
-        _check(target.is_relative_to((ROOT/'archive/_generated/geometry-visual-engine').resolve()), 'EVIDENCE_OUTPUT_SCOPE_VIOLATION')
+        _check(target.is_relative_to((ROOT/'.tmp/archive').resolve()), 'EVIDENCE_OUTPUT_SCOPE_VIOLATION')
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')
     print(text)

@@ -22,10 +22,10 @@ class EngineTests(unittest.TestCase):
         for fact in ({'independentFactHash':'frozen'},{'independentFactHash':'frozen','specialVisual':True}):
             with self.assertRaises(ValueError):build_independent({},fact)
     def test_output_guard(self):
-        config={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'archive/assets/images'}
+        config={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','examUid':'engine-tests','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'archive/assets/images'}
         with self.assertRaisesRegex(ValueError,'PRODUCTION'):output_root(config)
-        config['outputRoot']='archive/_generated/geometry-visual-engine/upgrade-v1'
-        self.assertTrue(output_root(config).is_relative_to(ROOT/'archive/_generated'))
+        config['outputRoot']='.tmp/archive/upgrade-v1/engine-tests'
+        self.assertTrue(output_root(config).is_relative_to(ROOT/'.tmp/archive'))
         config['allowProductionWrite']=True
         with self.assertRaises(ValueError):output_root(config)
     def test_entrypoint_import_no_io(self):
@@ -39,7 +39,7 @@ class EngineTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'DISPLAY_COORDINATE'):build(s)
     def test_file_witness_raw_sha_roundtrip(self):
         s=spec();s['id']='hash-roundtrip'
-        config={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'archive/_generated/geometry-visual-engine/upgrade-v1/tests/generated'}
+        config={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','examUid':'engine-tests','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'.tmp/archive/upgrade-v1/engine-tests/tests/generated'}
         result=write_candidate(s,config)
         raw=(output_root(config)/'candidate/hash-roundtrip/visual.svg').read_bytes()
         self.assertNotIn(b'\r\n',raw)

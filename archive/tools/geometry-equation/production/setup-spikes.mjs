@@ -3,9 +3,8 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {bytesSha} from '../../pipeline-core/canonical.mjs';
-import {generatedPath,GENERATED_ROOT} from './store.mjs';
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
-const destination=generatedPath(root,'archive/_generated/geometry-visual-engine/production/dependencies');
+const destination=path.join(root,'.tmp','apmath-visual-engine','dependencies');
 fs.mkdirSync(destination,{recursive:true});
 // Runtime modules stay under generated; manifests are the reproducible source.
 for(const name of ['package.json','package-lock.json'])fs.copyFileSync(new URL('runtime-'+name,import.meta.url),path.join(destination,name));
@@ -23,4 +22,4 @@ for(const [file,url] of [['NotoSansKR.ttf',lock.font.url],['OFL.txt',lock.font.l
   if(file.endsWith('.ttf')&&bytesSha(raw)!==lock.font.sha256)throw Error('FONT_DEPENDENCY_HASH_MISMATCH');
   fs.writeFileSync(path.join(destination,file),raw);
 }
-console.log(JSON.stringify({status:'INSTALLED',generatedRoot:path.relative(root,destination).replaceAll('\\','/'),qualification:'NOT_RUN'}));
+console.log(JSON.stringify({status:'INSTALLED',temporaryDependencyRoot:path.relative(root,destination).replaceAll('\\','/'),qualification:'NOT_RUN'}));

@@ -24,7 +24,7 @@ def build_independent(row,fact):
         spec=fact['visualSpec']
         if spec['sourceFacts'].get('independentFactHash')!=fact['independentFactHash']:raise ValueError('FROZEN_FACT_HASH_BINDING_FAIL')
         asset=(ROOT/special['path']).resolve()
-        if not asset.is_relative_to((ROOT/'archive/_generated/geometry-visual-engine').resolve()):raise ValueError('SPECIAL_ASSET_SCOPE_VIOLATION')
+        if not asset.is_relative_to((ROOT/'.tmp/archive').resolve()):raise ValueError('SPECIAL_ASSET_SCOPE_VIOLATION')
         result=build(spec);svg=asset.read_text(encoding='utf-8')
         from .engine import sha
         result['svg']=svg;result['witness'].update(classification='SPECIAL',status='CANDIDATE_REQUIRES_COMMON_QA',normalizedSvgSha256=sha(svg),publicationAuthorized=False)

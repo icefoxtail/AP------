@@ -36,7 +36,7 @@ remain UNRESOLVED. Failed artifacts and reviewer defects are preserved.
 A frozen result can be replayed without re-planning or editing facts:
 
 ```powershell
-node archive/tools/geometry-equation/production/run.mjs --question-uid '<same canonical UID>' --source-registry '<current parent registry path>' --resume 'archive/_generated/geometry-visual-engine/production/stages/RESULT/<key>/result.json'
+node archive/tools/geometry-equation/production/run.mjs --question-uid '<same canonical UID>' --source-registry '<current parent registry path>' --resume '.tmp/archive/<run-id>/<examUid>/visual-engine/production/stages/RESULT/<key>/result.json'
 ```
 
 Replay checks current UID authority, raw source/image refs, Node plan hash and
@@ -126,6 +126,11 @@ layout/repair/capability expansion.
 - Windows/Chrome smoke is verified. Other OS/browser environments and the full
   Geometry ≥6 + Graph ≥4 qualification/Seal are future work.
 
-All physical outputs are under ignored `archive/_generated/geometry-visual-engine`.
+New run outputs, candidate banks, and SVGs are written only below
+`.tmp/archive/<run-id>/<examUid>/visual-engine/production/`. A resumed result
+reuses its existing temporary workspace; a fresh invocation receives a new run
+ID. The pinned runtime dependencies are cached under `.tmp/apmath-visual-engine/`
+and are not Archive assets. Historical `archive/_generated` results are
+read-only evidence inputs.
 Keep them locally for review. A remote code checkout can reproduce them using
-the commands above, but the Git branch alone is not the durable evidence archive.
+the commands above. The Git branch alone is not the durable evidence archive.

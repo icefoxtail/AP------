@@ -10,8 +10,12 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
   if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
   run=assertOutput(run);const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
   if(matrix.synthetic!==false||sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html')))!==matrix.engineSha256)throw Error('STALE_ENGINE_MATRIX');
-  const overrides=new Map(matrix.sources.map(v=>['/'+v.sourcePath,path.join(repoRoot,v.candidatePath)]));
-  for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(path.join(repoRoot,source.candidatePath)))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets)if(sha256(fs.readFileSync(path.join(repoRoot,asset.path)))!==asset.sha256)throw Error('STALE_ASSET_MATRIX');}
+  const overrides=new Map(matrix.sources.map(v=>['/'+v.sourcePath,assertOutput(path.join(repoRoot,v.candidatePath))]));
+  for(const source of matrix.sources)for(const asset of source.assets||[])if(asset.archivePath){
+    if(!/^assets\/images\/[\p{L}\p{N}_.\/-]+$/u.test(asset.archivePath)||asset.archivePath.split('/').some(part=>!part||part==='.'||part==='..'))throw Error('INVALID_ARCHIVE_ASSET_REFERENCE');
+    overrides.set('/archive/'+asset.archivePath,assertOutput(path.join(repoRoot,asset.path)));
+  }
+  for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(assertOutput(path.join(repoRoot,source.candidatePath))))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets||[])if(sha256(fs.readFileSync(assertOutput(path.join(repoRoot,asset.path))))!==asset.sha256)throw Error('STALE_ASSET_MATRIX');}
   const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.woff':'font/woff','.woff2':'font/woff2','.ico':'image/x-icon'};
   const server=http.createServer((req,res)=>{
     try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname);const extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[extension],'Cache-Control':'no-store'});res.end(fs.readFileSync(file));}catch(error){res.writeHead(400);res.end();}
@@ -39,7 +43,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
           const numbers=numberNodes.map(v=>v.textContent.match(/^\s*(\d+)/)?.[1]).filter(Boolean);const count=new Set(numbers).size;
-          const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{const image=images.find(i=>i.src.includes('/'+asset.path.replace(/^archive\//,'')));const b=image?.getBoundingClientRect();return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:b?{x:b.x,y:b.y,width:b.width,height:b.height}:null};});
+          const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{const expected=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');const image=images.find(i=>new URL(i.src).pathname===expected);const b=image?.getBoundingClientRect();return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:b?{x:b.x,y:b.y,width:b.width,height:b.height}:null};});
           const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2;
           return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length};
         },{mode:item.mode,assets:item.assets});
@@ -53,7 +57,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const inspector=await browser.newPage({viewport:{width:Math.max(1,Math.ceil(target.rect.width)),height:Math.max(1,Math.ceil(target.rect.height))}});
           const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
           await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
-          const matches=page.locator('#print-area .sol-image-wrap img[src*="'+asset.path.replace(/^archive\//,'')+'"]');
+          const expectedImagePath=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
+          const matches=page.locator('#print-area .sol-image-wrap img[src*="'+expectedImagePath+'"]');
           if(await matches.count()){
             await matches.first().screenshot({path:path.join(folder,prefix+'-'+target.id+'.png')});
             const nativeBox=matches.first().locator('xpath=ancestor::div[contains(@class,"q-box")][1]');

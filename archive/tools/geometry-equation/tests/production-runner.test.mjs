@@ -6,17 +6,20 @@ import os from 'node:os';
 import path from 'node:path';
 import {runFrozen,repoRoot} from '../production/run.mjs';
 import {assetIdentity,planHash} from '../production/contracts.mjs';
-import {commitStage} from '../production/store.mjs';
+import {commitStage,withWorkRoot} from '../production/store.mjs';
 import {objectSha,canonicalJson,readBoundFile,fileRef} from '../../pipeline-core/canonical.mjs';
 import {resolveQuestion,runQuestion} from '../production/resolve-request.mjs';
 
 function bootstrap(mathPlan,capability){
   const identity=assetIdentity('synthetic-runner-'+crypto.randomUUID()+'|1','SOLUTION_VISUAL');
-  const source=commitStage(repoRoot,{stage:'INPUT',key:objectSha(identity),provenance:{synthetic:true},outputs:{'source.txt':'synthetic primitive inputs','solution.txt':'synthetic verified expectation'}});
-  const sourceRef=source.outputs.find(r=>r.path.endsWith('source.txt')),solutionRef=source.outputs.find(r=>r.path.endsWith('solution.txt'));
-  const plan={schemaVersion:'VISUAL_SPIKE_PLAN_v1',questionUid:identity.questionUid,visualAssetKey:identity.visualAssetKey,sourceRef,solutionRef,...(capability==='construction-spike-v1'?{mathPlan}:{graphPlan:mathPlan}),labels:[]};
-  const frozen=commitStage(repoRoot,{stage:'PLAN',key:planHash(plan),provenance:{synthetic:true},outputs:{'plan.json':canonicalJson({...plan,planSha256:planHash(plan)})}});
-  return {request:{questionUid:identity.questionUid,surface:identity.surface,mode:'PHASE0_2_EXPERIMENT',capability,sourceRef,solutionRef,frozenPlanRef:frozen.outputs[0]},plan};
+  const examUid=identity.questionUid.split('|')[0],workRoot=`.tmp/archive/test-${crypto.randomUUID()}/${examUid}/visual-engine/production`;
+  return withWorkRoot(workRoot,()=>{
+    const source=commitStage(repoRoot,{stage:'INPUT',key:objectSha(identity),provenance:{synthetic:true},outputs:{'source.txt':'synthetic primitive inputs','solution.txt':'synthetic verified expectation'}});
+    const sourceRef=source.outputs.find(r=>r.path.endsWith('source.txt')),solutionRef=source.outputs.find(r=>r.path.endsWith('solution.txt'));
+    const plan={schemaVersion:'VISUAL_SPIKE_PLAN_v1',questionUid:identity.questionUid,visualAssetKey:identity.visualAssetKey,sourceRef,solutionRef,...(capability==='construction-spike-v1'?{mathPlan}:{graphPlan:mathPlan}),labels:[]};
+    const frozen=commitStage(repoRoot,{stage:'PLAN',key:planHash(plan),provenance:{synthetic:true},outputs:{'plan.json':canonicalJson({...plan,planSha256:planHash(plan)})}});
+    return {request:{questionUid:identity.questionUid,surface:identity.surface,mode:'PHASE0_2_EXPERIMENT',capability,sourceRef,solutionRef,frozenPlanRef:frozen.outputs[0]},plan};
+  });
 }
 const integer=v=>({kind:'integer',value:String(v)});
 const graph={schemaVersion:'construction-spike-v1',nodes:[
@@ -32,7 +35,8 @@ test('frozen plan -> Node/Python -> Cindy -> immutable result; warm math and fre
   assert.equal(a.cacheHit,false);assert.equal(b.cacheHit,true);assert.deepEqual(a.stages[0],b.stages[0]);assert.notDeepEqual(a.stages[1],b.stages[1]);
   assert.equal(a.evidence.CINDY_RECONSTRUCTION.status,'PASS');assert.equal(a.status,'REVIEW_REQUIRED');assert.equal(a.productionAuthorized,false);
   const changed={...plan,labels:[{text:'label-only change'}]};
-  const receipt=commitStage(repoRoot,{stage:'PLAN',key:planHash(changed),provenance:{synthetic:true},outputs:{'plan.json':canonicalJson(changed)}});
+  const examUid=request.questionUid.split('|')[0],workRoot=`.tmp/archive/test-${crypto.randomUUID()}/${examUid}/visual-engine/production`;
+  const receipt=withWorkRoot(workRoot,()=>commitStage(repoRoot,{stage:'PLAN',key:planHash(changed),provenance:{synthetic:true},outputs:{'plan.json':canonicalJson(changed)}}));
   const c=JSON.parse(readBoundFile(repoRoot,(await runFrozen(repoRoot,{...request,frozenPlanRef:receipt.outputs[0]})).outputs[0]));
   assert.equal(c.cacheHit,true);assert.notEqual(a.planSha256,c.planSha256);
 });
@@ -46,7 +50,8 @@ test('unknown plan fields, source mismatch, wrong capability and production mode
   await assert.rejects(runFrozen(repoRoot,{...request,mode:'PRODUCTION_CANDIDATE'}),/ONLY_PHASE/);
   await assert.rejects(runFrozen(repoRoot,{...request,capability:'unimplemented'}),/UNSUPPORTED_CAPABILITY/);
   for(const p of [{...plan,randomOverride:true},{...plan,sourceRef:{...plan.sourceRef,sha256:objectSha('different')}}]){
-    const ref=commitStage(repoRoot,{stage:'PLAN',key:objectSha(p),provenance:{},outputs:{'plan.json':canonicalJson(p)}}).outputs[0];
+    const examUid=request.questionUid.split('|')[0],workRoot=`.tmp/archive/test-${crypto.randomUUID()}/${examUid}/visual-engine/production`;
+    const ref=withWorkRoot(workRoot,()=>commitStage(repoRoot,{stage:'PLAN',key:objectSha(p),provenance:{},outputs:{'plan.json':canonicalJson(p)}})).outputs[0];
     await assert.rejects(runFrozen(repoRoot,{...request,frozenPlanRef:ref}));
   }
 });
