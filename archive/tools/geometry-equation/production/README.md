@@ -107,9 +107,16 @@ PASS alone cannot close the overview axis.
 frozen interval is never enlarged by inference. Restricted domains require a
 separate context representation and remain unsupported here. Local zoom views
 cannot stand in for the main overview. General overview rules for cubic/quartic,
-exponential, rational, sqrt and mixed panels are not declared complete. This
-change repairs the existing quadratic vertical slice; it is not Phase 3's general
-layout/repair/capability expansion.
+exponential, rational, sqrt and mixed panels are not declared complete. The
+bounded Phase 4 cubic/quartic experiment now frames exact degree-3/4 rational
+polynomials only when the source domain is explicitly `ALL_REALS`; it preserves
+the source domain, freezes roots/critical points/inflections and tail directions,
+and fails closed for repeated roots, restricted intervals, or features below the
+measured display resolution. Its controlled cubic/quartic Archive fixtures pass
+at large and full respectively. These synthetic fixtures do not qualify a real
+UID or authorize publication; the full cubic/quartic family remains
+`EXPERIMENTAL / CONTROLLED FIXTURE ONLY` until canonical UID evidence and the
+remaining family coverage exist.
 
 - Construction: source points, closed SSS normalization, midpoint, line through
   points, perpendicular foot, circle radius, circle/circle and line/circle
@@ -126,6 +133,8 @@ layout/repair/capability expansion.
   positive-slope affine sqrt with a boundary secant envelope. Independent root
   isolation/coverage/interior bounds observe final polylines. Subpixel clustered
   root features return UNSUPPORTED, and missing hole markers/pole crossings fail.
+  The experimental cubic/quartic overview extension supports only all-real
+  degree-3/4 polynomial source domains and is not publication-qualified.
   Real UID publication currently dispatches polynomial only. Trig/log/exp/abs/
   piecewise/general compositions and mixed geometry/graph publication are not
   qualified or enabled.

@@ -13,12 +13,111 @@ x = S.Symbol('x', real=True)
 def polynomial(values, limit):
     if not isinstance(values,list) or not 1<=len(values)<=limit+1: raise ValueError('UNSUPPORTED_POLYNOMIAL_DEGREE')
     if any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values): raise ValueError('INVALID_COEFFICIENT')
+    if any('/' in value and int(value.split('/',1)[1])==0 for value in values):raise ValueError('INVALID_COEFFICIENT')
     return S.Poly(sum(S.Rational(v)*x**i for i,v in enumerate(values)),x)
 
 def real_roots(poly,lo,hi):
     if poly.is_zero: return []
     # Exact rational root isolation, retaining multiplicity and clustered roots.
     return [(float((a+b)/2),multiplicity) for (a,b),multiplicity in poly.intervals(eps=S.Rational(1,10**14)) if float(b)>=lo and float(a)<=hi]
+
+def polynomial_feature_inventory(poly,lo,hi):
+    groups=[]
+    def add(root,role,key,multiplicity):
+        value=float(poly.eval(S.Rational(str(root))))
+        row=next((item for item in groups if abs(item['x']-root)<=1e-12*max(1,abs(root)) and abs(item['y']-value)<=1e-12*max(1,abs(value))),None)
+        if row is None:
+            row={'x':root,'y':value,'roles':set(),'multiplicity':{'root':None,'derivative':None,'secondDerivative':None}}
+            groups.append(row)
+        row['roles'].add(role);row['multiplicity'][key]=int(multiplicity)
+    for root,multiplicity in real_roots(poly,lo,hi):add(root,'ROOT','root',multiplicity)
+    for root,multiplicity in real_roots(poly.diff(),lo,hi):add(root,'STATIONARY_EXTREMUM' if multiplicity%2 else 'STATIONARY_INFLECTION','derivative',multiplicity)
+    for root,multiplicity in real_roots(poly.diff().diff(),lo,hi):
+        if multiplicity%2:add(root,'INFLECTION','secondDerivative',multiplicity)
+    order={'ROOT':0,'STATIONARY_EXTREMUM':1,'STATIONARY_INFLECTION':2,'INFLECTION':3}
+    groups.sort(key=lambda row:(row['x'],row['y']))
+    rows=[{'id':f'feature-{index}','kind':'POLYNOMIAL_FEATURE','x':row['x'],'y':row['y'],'roles':sorted(row['roles'],key=lambda role:order[role]),'multiplicity':row['multiplicity']} for index,row in enumerate(groups,1)]
+    directions=expected_end_directions(poly);left_slope='DOWN' if directions['left']=='UP' else 'UP'
+    rows.extend([{'id':'tail-left','kind':'TAIL_DIRECTION','side':'LEFT','endpointX':lo,'direction':directions['left'],'slopeDirection':left_slope},{'id':'tail-right','kind':'TAIL_DIRECTION','side':'RIGHT','endpointX':hi,'direction':directions['right'],'slopeDirection':directions['right']}])
+    return rows
+
+def expected_end_directions(poly):
+    degree=poly.degree();leading=poly.LC();sign=1 if leading>0 else -1
+    left=sign if degree%2==0 else -sign
+    return {'left':'UP' if left>0 else 'DOWN','right':'UP' if sign>0 else 'DOWN'}
+
+def cubic_quartic_overview_audit(plan,poly,points,transform):
+    if poly.degree() not in (3,4):return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_CUBIC_QUARTIC_OVERVIEW_DEGREE']}
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_SOURCE_DOMAIN_UNSUPPORTED']}
+    if plan.get('overviewPolicy')!='POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_OVERVIEW_POLICY_REQUIRED']}
+    xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
+    roots=real_roots(poly,lo,hi)
+    if any(multiplicity!=1 for _,multiplicity in roots):return {'status':'UNSUPPORTED','errors':['OVERVIEW_REPEATED_ROOT_UNSUPPORTED']}
+    expected=polynomial_feature_inventory(poly,lo,hi);declared=plan.get('overviewFeatures')
+    feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'UNSUPPORTED','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
+    if plan.get('overviewFeaturePolicy')!=feature_policy:errors.append('OVERVIEW_FEATURE_POLICY_BINDING_MISMATCH')
+    if not isinstance(declared,list) or len(declared)!=len(expected):errors.append('OVERVIEW_FEATURE_INVENTORY_MISMATCH')
+    else:
+        for actual,wanted in zip(declared,expected):
+            if not isinstance(actual,dict):errors.append('OVERVIEW_FEATURE_INVENTORY_MISMATCH');break
+            if wanted['kind']=='TAIL_DIRECTION':
+                if set(actual)!={'id','kind','side','endpointX','direction','slopeDirection'} or actual.get('id')!=wanted['id'] or actual.get('side')!=wanted['side'] or actual.get('direction')!=wanted['direction'] or actual.get('slopeDirection')!=wanted['slopeDirection'] or not isinstance(actual.get('endpointX'),(int,float)) or abs(actual['endpointX']-wanted['endpointX'])>1e-10:
+                    errors.append('OVERVIEW_TAIL_DIRECTION_INVENTORY_MISMATCH');break
+            else:
+                if set(actual)!={'id','kind','x','y','roles','multiplicity'}:
+                    errors.append('OVERVIEW_FEATURE_INVENTORY_MISMATCH');break
+                tolerance_x=1e-8*max(1,abs(wanted['x']));tolerance_y=1e-8*max(1,abs(wanted['y']))
+                if actual['id']!=wanted['id'] or actual['kind']!=wanted['kind'] or actual['roles']!=wanted['roles'] or actual['multiplicity']!=wanted['multiplicity'] or not isinstance(actual['x'],(int,float)) or not isinstance(actual['y'],(int,float)) or not math.isfinite(actual['x']) or not math.isfinite(actual['y']) or abs(actual['x']-wanted['x'])>tolerance_x or abs(actual['y']-wanted['y'])>tolerance_y:
+                    errors.append('OVERVIEW_FEATURE_INVENTORY_MISMATCH');break
+    end_directions=expected_end_directions(poly)
+    if plan.get('overviewEndDirections')!=end_directions:errors.append('OVERVIEW_END_DIRECTION_BINDING_MISMATCH')
+    width=(xmax-xmin)*transform['sx']*transform['displayScale'];height=(ymax-ymin)*transform['sy']*transform['displayScale']
+    if not (xmin<0<xmax and ymin<0<ymax):errors.append('OVERVIEW_AXES_ORIGIN_NOT_VISIBLE')
+    feature_rows=[{'id':row['id'],'kind':row['kind'],'modelPoint':[row['x'],row['y']],'roles':row['roles'],'multiplicity':row['multiplicity']} for row in expected if row['kind']=='POLYNOMIAL_FEATURE']
+    px_tol=.35/max(1e-12,transform['sx']*transform['displayScale']);py_tol=.35/max(1e-12,transform['sy']*transform['displayScale'])
+    math_features=[feature for feature in expected if feature['kind']=='POLYNOMIAL_FEATURE']
+    for feature in math_features:
+        fx,fy=feature['x'],feature['y']
+        if not xmin+.05*(xmax-xmin)<fx<xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<fy<ymax-.05*(ymax-ymin):errors.append('OVERVIEW_FEATURE_OUTSIDE_INTERIOR:'+feature['id'])
+        if not any(abs(point[0]-fx)<=px_tol and abs(point[1]-fy)<=py_tol for point in points):errors.append('OVERVIEW_FEATURE_NOT_OBSERVED:'+feature['id'])
+    required=plan.get('requiredPoints',[])
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'}:errors.append('INVALID_REQUIRED_GRAPH_POINT');continue
+        px,py=float(point['x']),float(point['y'])
+        if not xmin+.05*(xmax-xmin)<=px<=xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<=py<=ymax-.05*(ymax-ymin):errors.append('OVERVIEW_REQUIRED_FEATURE_CLIPPED:'+point['id'])
+        if not any(abs(q[0]-px)<=px_tol and abs(q[1]-py)<=py_tol for q in points):errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_OBSERVED:'+point['id'])
+        exact_y=float(poly.eval(S.Rational(str(px))))
+        if abs(exact_y-py)>1e-8:errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_ON_CURVE:'+point['id'])
+    critical=[row for row in math_features if any(role.startswith('STATIONARY_') for role in row['roles'])]
+    if not critical:critical=[row for row in math_features if 'INFLECTION' in row['roles']]
+    sorted_points=sorted(points,key=lambda point:point[0]);tails={row['side']:row for row in expected if row['kind']=='TAIL_DIRECTION'};arms=[]
+    if not critical:errors.append('OVERVIEW_CRITICAL_FEATURE_MISSING')
+    elif len(sorted_points)<3:errors.append('OVERVIEW_FINAL_CURVE_POINTS_MISSING')
+    else:
+        if abs(sorted_points[0][0]-lo)*transform['sx']*transform['displayScale']>.5:errors.append('OVERVIEW_LEFT_END_EXIT_MISSING')
+        if abs(sorted_points[-1][0]-hi)*transform['sx']*transform['displayScale']>.5:errors.append('OVERVIEW_RIGHT_END_EXIT_MISSING')
+        left_anchor=min(critical,key=lambda row:row['x']);right_anchor=max(critical,key=lambda row:row['x'])
+        for side,anchor in [('LEFT',left_anchor),('RIGHT',right_anchor)]:
+            arm=[point for point in sorted_points if point[0]<=anchor['x']+px_tol] if side=='LEFT' else [point for point in sorted_points if point[0]>=anchor['x']-px_tol]
+            if len(arm)<3:errors.append('OVERVIEW_'+side+'_END_ARM_MISSING');arms.append({'side':side,'status':'FAIL'});continue
+            horizontal=max(abs(point[0]-anchor['x'])*transform['sx']*transform['displayScale'] for point in arm)
+            vertical=max(abs(point[1]-anchor['y'])*transform['sy']*transform['displayScale'] for point in arm)
+            edge=arm[:3] if side=='LEFT' else arm[-3:];delta=edge[-1][1]-edge[0][1];trend=abs(delta)*transform['sy']*transform['displayScale']
+            tail=tails.get(side);direction=tail['direction'] if tail else None;slope=tail['slopeDirection'] if tail else None
+            trend_matches=(delta>0 and slope=='UP') or (delta<0 and slope=='DOWN')
+            if horizontal<max(20,width*.12):errors.append('OVERVIEW_'+side+'_ARM_TOO_NARROW')
+            if vertical<max(50,height*.18):errors.append('OVERVIEW_'+side+'_ARM_TOO_SHORT')
+            if not trend_matches or trend<5:errors.append('OVERVIEW_'+side+'_END_DIRECTION_UNREADABLE')
+            arms.append({'side':side,'horizontalCssPx':horizontal,'verticalExcursionCssPx':vertical,'endDirection':direction,'observedSlopeDirection':'UP' if delta>0 else 'DOWN','observedTrendCssPx':trend})
+    min_feature_px=feature_policy['minimumDistinctFeatureSeparationCssPx']
+    for index,left_feature in enumerate(math_features):
+        for right_feature in math_features[index+1:]:
+            dx=(right_feature['x']-left_feature['x'])*transform['sx']*transform['displayScale'];dy=(right_feature['y']-left_feature['y'])*transform['sy']*transform['displayScale']
+            if math.hypot(dx,dy)<min_feature_px:return {'status':'UNSUPPORTED','errors':['OVERVIEW_FEATURES_BELOW_DISPLAY_RESOLUTION'],'features':feature_rows,'endDirections':end_directions}
+    distinct_roots=sorted(root for root,_ in roots)
+    if any((right-left)*transform['sx']*transform['displayScale']<1 for left,right in zip(distinct_roots,distinct_roots[1:])):
+        return {'status':'UNSUPPORTED','errors':['OVERVIEW_ROOTS_BELOW_DISPLAY_RESOLUTION'],'features':feature_rows,'endDirections':end_directions}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'degree':poly.degree(),'plotCssSize':[width,height],'features':feature_rows,'endDirections':end_directions,'arms':arms if critical else [],'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_SOURCE_ROOT_ISOLATION'}
 
 def resolve(plan):
     family=plan['family'];holes=[];poles=[];boundary=[]
@@ -77,6 +176,7 @@ def denominator_lower(poly,a,b):
 
 def overview_audit(plan,poly,points,transform):
     """Independent shape adequacy from source coefficients and observed curves."""
+    if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform)
     if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_OVERVIEW_DEGREE']}
     a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a))
     xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
@@ -166,4 +266,5 @@ def audit(plan,svg,transform):
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
     overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
-    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+    status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
+    return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}

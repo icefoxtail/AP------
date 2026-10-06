@@ -38,8 +38,10 @@ class GraphOverview(unittest.TestCase):
         r=audit(p,o['svg'],{**o['transform'],'displayScale':.1})
         self.assertEqual(r['status'],'FAIL');self.assertIn('OVERVIEW_LEFT_ARM_TOO_SHORT',r['errors'])
     def test_unimplemented_family_is_not_auto_qualified(self):
-        for p in [graph(coefficients=['0','0','0','1']),graph(family='exp')]:
-            with self.assertRaisesRegex(ValueError,'UNSUPPORTED_OVERVIEW'):fit_overview(p)
+        with self.assertRaisesRegex(ValueError,'CUBIC_QUARTIC_REQUIRES_ALL_REALS_SOURCE_DOMAIN'):
+            fit_overview(graph(coefficients=['0','0','0','1']))
+        with self.assertRaisesRegex(ValueError,'UNSUPPORTED_OVERVIEW_FAMILY'):
+            fit_overview(graph(family='exp'))
     def test_source_required_points_survive_fitting(self):
         p=graph(coefficients=['-1','0','1'],sourceDomain={'kind':'ALL_REALS'},requiredPoints=[{'id':'P','x':2,'y':3}])
         fitted=fit_overview(p)['graphPlan'];o=produce(fitted);r=audit(fitted,o['svg'],o['transform'])
