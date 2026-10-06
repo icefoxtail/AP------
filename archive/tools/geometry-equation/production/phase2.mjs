@@ -81,8 +81,9 @@ async function auditCandidateProfiles({svg,plan,candidateSvgRef,sourceRef,soluti
       graphStatus=graph.status==='PASS'?'PASS':'FAIL';
       const graphEvidence={schemaVersion:'DISPLAY_PROFILE_GRAPH_AUDIT_v1',status:graphStatus,questionUid:identity.questionUid,sizeClass:profile.sizeClass,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plan.inputIdentitySha256,displayScale:profile.displayScale,graph};
       const graphReceipt=receipt('DISPLAY_PROFILE_GRAPH',{[profile.sizeClass+'.json']:canonicalJson(graphEvidence)},profileProvenance);stageReceipts.push(graphReceipt);graphEvidenceRef=graphReceipt.outputs[0];
-      topologyStatus=graphStatus;
-      topologyPayload={schemaVersion:'DISPLAY_PROFILE_TOPOLOGY_AUDIT_v1',status:topologyStatus,questionUid:identity.questionUid,sizeClass:profile.sizeClass,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plan.inputIdentitySha256,displayScale:profile.displayScale,topology:graph.topology||null,observedGraphSegments:graph.segments||[]};
+      const nonOverviewErrors=(graph.errors||[]).filter(error=>!String(error).startsWith('OVERVIEW_'));
+      topologyStatus=graph.topology&&nonOverviewErrors.length===0?'PASS':'FAIL';
+      topologyPayload={schemaVersion:'DISPLAY_PROFILE_TOPOLOGY_AUDIT_v1',status:topologyStatus,questionUid:identity.questionUid,sizeClass:profile.sizeClass,candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plan.inputIdentitySha256,displayScale:profile.displayScale,graphStatus,overviewStatus:graph.overview?.status||'NOT_REPORTED',topologyErrors:nonOverviewErrors,topology:graph.topology||null,observedGraphSegments:graph.segments||[]};
     }else{
       const observedIds=new Set(capture.capture.geometry.map(item=>item.id)),missingPrimitiveIds=expectedPrimitiveIds.filter(id=>!observedIds.has(id));
       const validGeometry=capture.capture.geometry.length>0&&capture.capture.geometry.every(item=>item.id&&Number.isFinite(item.strokeWidthPx)&&item.strokeWidthPx>=0&&item.client&&['x','y','width','height'].every(key=>Number.isFinite(item.client[key])));
@@ -104,7 +105,7 @@ function specFor(plan,model,id){
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:0},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{},objects:[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX:(p.requiredPoints||[]).map(p=>p.x)},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}]};
+    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{},objects:[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX:(p.requiredPoints||[]).map(p=>p.x)},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}]};
   }
   const points=model.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1),pad=span*.35;
