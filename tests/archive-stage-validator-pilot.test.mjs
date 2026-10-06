@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {
   validateStageEvidence,
   validateTargetedR2Evidence,
@@ -41,14 +42,17 @@ assert.ok(nonEmptyReport.issues.includes('R2_TARGETED_NONEMPTY_SCOPE_NOT_YET_SUP
 
 const controlExam = path.resolve('archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js');
 const controlEvidence = path.resolve('archive/data/r2e-intake/m2/25_매산중_1학기_중간_중2_기출.review2.physical-evidence.json');
-const control = validateStageEvidence({
-  examFile: controlExam,
-  evidenceFile: controlEvidence,
-  stage: 'R2',
-});
-console.log('M2_O4_GENERIC_FULL_CONTROL=' + JSON.stringify(control));
-assert.equal(control.validatorMode, 'FULL');
-assert.equal(control.ok, true, JSON.stringify(control));
+// The moving production exam is not a frozen positive fixture. Exercise stale
+// byte binding deterministically without rewriting production or old PASS evidence.
+const staleDir = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-stale-control-'));
+try {
+  const staleExam = path.join(staleDir, path.basename(controlExam));
+  fs.writeFileSync(staleExam, fs.readFileSync(controlExam,'utf8') + '\n// intentionally stale regression bytes\n');
+  const control = validateStageEvidence({examFile:staleExam,evidenceFile:controlEvidence,stage:'R2'});
+  assert.equal(control.validatorMode,'FULL');
+  assert.equal(control.ok,false);
+  assert.ok(control.issues.includes('EVIDENCE_EXAM_SHA_MISMATCH'),JSON.stringify(control));
+} finally {fs.rmSync(staleDir,{recursive:true,force:true});}
 
 console.log('ARCHIVE_STAGE_VALIDATOR_PILOT_PASS');
 

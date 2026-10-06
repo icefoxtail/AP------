@@ -1,4 +1,6 @@
-const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN']);
+import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
+import { validateCodexRenderReceipt, validateCodexMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
+const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN', 'RENDER', 'PUBLICATION', 'MAIN_DONE']);
 const NEXT_STAGE = Object.freeze({
   CREATE: 'R1',
   R1: 'R2',
@@ -23,10 +25,17 @@ export function buildStageState({
   stage,
   workComplete = false,
   closurePending = false,
+  qualityContractVersion,
+  executionLine,
 } = {}) {
   required(typeof workComplete === 'boolean', 'STAGE_STATE_WORK_COMPLETE_BOOLEAN_REQUIRED');
   required(typeof closurePending === 'boolean', 'STAGE_STATE_CLOSURE_PENDING_BOOLEAN_REQUIRED');
+  if(qualityContractVersion !== undefined) {
+    required(qualityContractVersion===QUALITY_CONTRACT_V2,'STAGE_QUALITY_CONTRACT_UNSUPPORTED');
+    required(['CODEX','GPT_SCHEDULED'].includes(executionLine),'STAGE_EXECUTION_LINE_REQUIRED');
+  }
   return {
+    ...(qualityContractVersion ? {qualityContractVersion,executionLine} : {}),
     stage: normalizeStage(stage),
     workComplete,
     closurePending,
@@ -35,6 +44,7 @@ export function buildStageState({
 
 export function buildContinuation(input = {}) {
   const stage = normalizeStage(input.stage);
+  const contract=buildStageState({stage,qualityContractVersion:input.qualityContractVersion,executionLine:input.executionLine});
 
   for (const field of [
     'examUid',
@@ -49,6 +59,7 @@ export function buildContinuation(input = {}) {
   }
 
   return {
+    ...(contract.qualityContractVersion ? {qualityContractVersion:contract.qualityContractVersion,executionLine:contract.executionLine} : {}),
     stage,
     examUid: input.examUid,
     inputArtifactSha: input.inputArtifactSha,
@@ -100,12 +111,19 @@ export function consumeValidationPass({ state, validationReport } = {}) {
   required(nonEmpty(validationReport.artifactSha), 'CLOSURE_ARTIFACT_SHA_REQUIRED');
   required(nonEmpty(validationReport.evidenceRef), 'CLOSURE_EVIDENCE_REF_REQUIRED');
 
-  const nextStage = NEXT_STAGE[current.stage];
+  if(current.qualityContractVersion) {
+    required(validationReport.qualityContractVersion===current.qualityContractVersion,'CLOSURE_CONTRACT_DOWNGRADE_FORBIDDEN');
+    required(validationReport.executionLine===current.executionLine,'CLOSURE_EXECUTION_LINE_MISMATCH');
+  }
+  const currentContract=validationReport.qualityContractVersion===QUALITY_CONTRACT_V2;
+  if(currentContract) required(validationReport.artifactContract?.active===true,'CLOSURE_ARTIFACT_GATE_REQUIRED');
+  const nextStage = currentContract && validationReport.executionLine==='CODEX' && current.stage==='R3' ? 'RENDER' : NEXT_STAGE[current.stage];
   required(nonEmpty(nextStage), 'CLOSURE_NEXT_STAGE_REQUIRED');
 
   return {
     state: buildStageState({
       stage: nextStage,
+      ...(currentContract ? {qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:validationReport.executionLine} : {}),
       workComplete: false,
       closurePending: false,
     }),
@@ -172,4 +190,15 @@ export async function drainMasterContinuations({
     closedKeys,
     remaining,
   };
+}
+
+export function consumeCodexRenderPass({state,...input}) {
+  required(buildStageState(state).stage==='RENDER','RENDER_STAGE_REQUIRED');
+  const result=validateCodexRenderReceipt(input);required(result.ok,'RENDER_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'PUBLICATION',qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt};
+}
+export function consumeCodexMainDone({state,...input}) {
+  required(buildStageState(state).stage==='PUBLICATION','PUBLICATION_STAGE_REQUIRED');
+  const result=validateCodexMainDoneReceipt(input);required(result.ok,'MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt};
 }
