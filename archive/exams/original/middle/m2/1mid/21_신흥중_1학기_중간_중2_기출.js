@@ -30,7 +30,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 유리수와 소수의 분류 정의를 명확히 함.\\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\\n$\\therefore$ ③, ⑤",
+    "solution": "<b>[포인트]</b> 유리수와 소수의 분류 정의를 명확히 함.\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\n$\\therefore$ ③, ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -64,7 +64,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "각 소수를 소수점 아래 넷째 자리까지 전개하여 비교함.\\n① $0.9888\\dots$\\n② $0.9898\\dots$\\n③ $0.9088\\dots$\\n④ $0.9008\\dots$\\n⑤ $0.9008\\dots$\\n$\\because$ 소수 둘째 자리까지는 ①, ②가 같으나, 셋째 자리에서 ②($9$) > ①($8$)임.\\n$\\therefore$ ②",
+    "solution": "각 소수를 소수점 아래 넷째 자리까지 전개하여 비교함.\n① $0.9888\\dots$\n② $0.9898\\dots$\n③ $0.9088\\dots$\n④ $0.9008\\dots$\n⑤ $0.9008\\dots$\n$\\because$ 소수 둘째 자리까지는 ①, ②가 같으나, 셋째 자리에서 ②($9$) > ①($8$)임.\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -99,7 +99,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\\n$\\therefore$ ⑤",
+    "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -133,7 +133,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$\\frac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\\n$\\because 50 = 3 \\times 16 + 2$\\n$\\therefore$ $50$번째 숫자는 순환마디의 두 번째 숫자인 $8$임.",
+    "solution": "$\\frac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$\n순환마디는 $(1, 8, 5)$이며 길이는 $3$임.\n$\\because 50 = 3 \\times 16 + 2$\n$\\therefore$ $50$번째 숫자는 순환마디의 두 번째 숫자인 $8$임.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -170,7 +170,7 @@ window.questionBank = [
       "오류판별"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 순환마디의 시작과 끝점 위에만 점을 찍음.\\n② $0.57878\\dots$에서 순환마디는 $78$임.\\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\\n(※ 보기 구성상 ②번이 정답으로 제시됨)\\n$\\therefore$ ②",
+    "solution": "<b>[포인트]</b> 순환마디의 시작과 끝점 위에만 점을 찍음.\n② $0.57878\\dots$에서 순환마디는 $78$임.\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\n(※ 보기 구성상 ②번이 정답으로 제시됨)\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -204,7 +204,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$x = 2.34242\\dots$\\n$1000x = 2342.4242\\dots \\cdots (1)$\\n$10x = 23.4242\\dots \\cdots (2)$\\n소수점 아래 부분을 일치시키기 위해 $(1)-(2)$를 수행함.\\n$\\therefore 1000x - 10x$",
+    "solution": "$x = 2.34242\\dots$\n$1000x = 2342.4242\\dots \\cdots (1)$\n$10x = 23.4242\\dots \\cdots (2)$\n소수점 아래 부분을 일치시키기 위해 $(1)-(2)$를 수행함.\n$\\therefore 1000x - 10x$",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -240,7 +240,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "$x = 0.7\\dot{2}\\dot{3}$ 이라 함.\\n$1000x = 723.2323\\dots$\\n$10x = 7.2323\\dots$\\n$990x = 716 \\implies x = \\frac{716}{990} = \\frac{358}{495}$\\n⑤번의 $\\frac{217}{330}$은 약분 결과와 일치하지 않음.\\n$\\therefore$ ⑤",
+    "solution": "$x = 0.7\\dot{2}\\dot{3}$ 이라 함.\n$1000x = 723.2323\\dots$\n$10x = 7.2323\\dots$\n$990x = 716 \\implies x = \\frac{716}{990} = \\frac{358}{495}$\n⑤번의 $\\frac{217}{330}$은 약분 결과와 일치하지 않음.\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -274,7 +274,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "동일한 항의 덧셈을 곱셈으로 변환함.\\n$3^2 + 3^2 + 3^2 = 3 \\times 3^2$\\n지수법칙 $a^m \\times a^n = a^{m+n}$ 적용\\n$\\implies 3^{1+2} = 3^3$\\n$\\therefore 3^3$",
+    "solution": "동일한 항의 덧셈을 곱셈으로 변환함.\n$3^2 + 3^2 + 3^2 = 3 \\times 3^2$\n지수법칙 $a^m \\times a^n = a^{m+n}$ 적용\n$\\implies 3^{1+2} = 3^3$\n$\\therefore 3^3$",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -308,7 +308,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "① $a^{2+3} = a^5$\\n② $(a^4)^3 = a^{4 \\times 3} = a^{12}$ (참)\\n③ $3 \\times 5^3$\\n④ $x^2 \\div x^2 = 1$\\n⑤ $(-3)^3 x^6 = -27x^6$\\n$\\therefore$ ②",
+    "solution": "① $a^{2+3} = a^5$\n② $(a^4)^3 = a^{4 \\times 3} = a^{12}$ (참)\n③ $3 \\times 5^3$\n④ $x^2 \\div x^2 = 1$\n⑤ $(-3)^3 x^6 = -27x^6$\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -343,7 +343,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\\n분자 상수: $(-3)^2 = c \\implies c = 9$\\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$",
+    "solution": "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\n분자 상수: $(-3)^2 = c \\implies c = 9$\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -377,7 +377,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 밑을 소인수분해하여 지수법칙을 적용함.\\n(1) $\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a = 12$\\n(2) $\\frac{3 \\times 9^6}{3 \\times 3^4} = \\frac{(3^2)^6}{3^4} = \\frac{3^{12}}{3^4} = 3^8 \\implies b = 8$\\n$\\therefore a-b = 12 - 8 = 4$",
+    "solution": "<b>[포인트]</b> 밑을 소인수분해하여 지수법칙을 적용함.\n(1) $\\frac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\frac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a = 12$\n(2) $\\frac{3 \\times 9^6}{3 \\times 3^4} = \\frac{(3^2)^6}{3^4} = \\frac{3^{12}}{3^4} = 3^8 \\implies b = 8$\n$\\therefore a-b = 12 - 8 = 4$",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -411,7 +411,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$81 = 3^4$ 임.\\n$3^x \\div 3^3 = 3^{x-3} = 3^4$\\n$\\implies x - 3 = 4$\\n$\\therefore x = 7$",
+    "solution": "$81 = 3^4$ 임.\n$3^x \\div 3^3 = 3^{x-3} = 3^4$\n$\\implies x - 3 = 4$\n$\\therefore x = 7$",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -446,7 +446,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "⑤ $(-2xy)^2 \\times (-2x^2y)^3 = 4x^2y^2 \\times (-8x^6y^3) = -32x^8y^5$\\n$\\therefore$ 계수의 부호가 양수로 표기된 ⑤번이 옳지 않음.",
+    "solution": "⑤ $(-2xy)^2 \\times (-2x^2y)^3 = 4x^2y^2 \\times (-8x^6y^3) = -32x^8y^5$\n$\\therefore$ 계수의 부호가 양수로 표기된 ⑤번이 옳지 않음.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -483,7 +483,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> $(원뿔 부피) = \\frac{1}{3} \\pi r^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{1}{3} \\pi (2ab)^2 h$\\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{4}{3} \\pi a^2b^2 h$\\n양변을 $\\frac{4}{3} \\pi a^2b^2$로 나눔.\\n$h = (48\\pi a^3b^2 - 24\\pi a^2b^3) \\times \\frac{3}{4\\pi a^2b^2}$\\n$h = 36a - 18b$\\n$\\therefore 36a - 18b$",
+    "solution": "<b>[포인트]</b> $(원뿔 부피) = \\frac{1}{3} \\pi r^2 h$\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{1}{3} \\pi (2ab)^2 h$\n$48\\pi a^3b^2 - 24\\pi a^2b^3 = \\frac{4}{3} \\pi a^2b^2 h$\n양변을 $\\frac{4}{3} \\pi a^2b^2$로 나눔.\n$h = (48\\pi a^3b^2 - 24\\pi a^2b^3) \\times \\frac{3}{4\\pi a^2b^2}$\n$h = 36a - 18b$\n$\\therefore 36a - 18b$",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -517,7 +517,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$A = \\frac{2a^3}{6ab^2} = \\frac{a^2}{3b^2}$\\n$A \\div B = \\frac{a^2}{3b^2} \\times \\frac{2}{3ab^2} = \\frac{2a^2}{9ab^4} = \\frac{2a}{9b^4}$\\n$\\therefore \\frac{2a}{9b^4}$",
+    "solution": "$A = \\frac{2a^3}{6ab^2} = \\frac{a^2}{3b^2}$\n$A \\div B = \\frac{a^2}{3b^2} \\times \\frac{2}{3ab^2} = \\frac{2a^2}{9ab^4} = \\frac{2a}{9b^4}$\n$\\therefore \\frac{2a}{9b^4}$",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -551,7 +551,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\\n$\\therefore a+b = 1$",
+    "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\n$\\therefore a+b = 1$",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -585,7 +585,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "① 일차식(다항식)\\n④ 등식(방정식)\\n$\\therefore$ ①, ④",
+    "solution": "① 일차식(다항식)\n④ 등식(방정식)\n$\\therefore$ ①, ④",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -620,7 +620,7 @@ window.questionBank = [
       "오류판별"
     ],
     "wide": false,
-    "solution": "[핵심] 문장의 수량 관계를 부등식 기호와 괄호에 맞게 옮긴다.\\n[풀이] ① $3x-7<9$, ② $3x+5\\ge7$, ③ $600x\\le5000$, ④ $2x+4y>55$는 각각 문장을 바르게 나타낸다. ⑤에서 ‘$x$에서 4를 뺀 수의 2배’는 $2(x-4)$이고 ‘17보다 작지 않다’는 $\\ge17$이므로 $2(x-4)\\ge17$이어야 한다. 보기의 $2(x-4)>17$은 옳지 않다.\\n[결론] ⑤",
+    "solution": "문장의 수량 관계를 부등식 기호와 괄호에 맞게 옮긴다.\n① $3x-7<9$, ② $3x+5\\ge7$, ③ $600x\\le5000$, ④ $2x+4y>55$는 각각 문장을 바르게 나타낸다. ⑤에서 ‘$x$에서 4를 뺀 수의 2배’는 $2(x-4)$이고 ‘17보다 작지 않다’는 $\\ge17$이므로 $2(x-4)\\ge17$이어야 한다. 보기의 $2(x-4)>17$은 옳지 않다.\n⑤",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -655,7 +655,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "[핵심] 미지수 항은 한쪽으로, 상수항은 다른 쪽으로 이항한다.\\n[풀이] $2x+1>3x-1$에서 $2x-3x>-1-1$이므로 $-x>-2$이다. 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $x<2$이다.\\n[결론] ①",
+    "solution": "미지수 항은 한쪽으로, 상수항은 다른 쪽으로 이항한다.\n$2x+1>3x-1$에서 $2x-3x>-1-1$이므로 $-x>-2$이다. 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $x<2$이다.\n①",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -691,7 +691,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "양변에 $6$을 곱함: $42 - 3(x+1) > 10(4x-9)$\\n$42 - 3x - 3 > 40x - 90 \\implies 39 - 3x > 40x - 90$\\n$129 > 43x \\implies x < 3$\\n자연수 $x$는 $1, 2$임.\\n$\\therefore$ 2개",
+    "solution": "양변에 $6$을 곱함: $42 - 3(x+1) > 10(4x-9)$\n$42 - 3x - 3 > 40x - 90 \\implies 39 - 3x > 40x - 90$\n$129 > 43x \\implies x < 3$\n자연수 $x$는 $1, 2$임.\n$\\therefore$ 2개",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -728,7 +728,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "장미꽃 $x$송이를 산다고 함.\\n$800x > 500x + 2000$\\n$300x > 2000 \\implies x > \\frac{20}{3} = 6.66\\dots$\\n$\\therefore 7$송이 이상",
+    "solution": "장미꽃 $x$송이를 산다고 함.\n$800x > 500x + 2000$\n$300x > 2000 \\implies x > \\frac{20}{3} = 6.66\\dots$\n$\\therefore 7$송이 이상",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -762,7 +762,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$x = 2.1777\\dots$\\n$100x = 217.777\\dots$\\n$10x = 21.777\\dots$\\n$90x = 196 \\implies x = \\frac{196}{90}$\\n약분하여 기약분수로 나타냄.\\n$\\therefore \\frac{98}{45}$",
+    "solution": "$x = 2.1777\\dots$\n$100x = 217.777\\dots$\n$10x = 21.777\\dots$\n$90x = 196 \\implies x = \\frac{196}{90}$\n약분하여 기약분수로 나타냄.\n$\\therefore \\frac{98}{45}$",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -798,7 +798,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "(1) 길영: $0.1\\dot{8} = \\frac{17}{90} \\implies$ 분자 $17$은 바름.\\n(2) 상훈: $0.\\dot{4} = \\frac{4}{9} \\implies$ 분모 $9$는 바름.\\n(3) 처음 분수: $\\frac{17}{9} = 1.888\\dots$\\n$\\therefore 1.\\dot{8}$",
+    "solution": "(1) 길영: $0.1\\dot{8} = \\frac{17}{90} \\implies$ 분자 $17$은 바름.\n(2) 상훈: $0.\\dot{4} = \\frac{4}{9} \\implies$ 분모 $9$는 바름.\n(3) 처음 분수: $\\frac{17}{9} = 1.888\\dots$\n$\\therefore 1.\\dot{8}$",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -832,7 +832,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "상점까지의 거리를 $x m$라 함.\\n$(가는 시간) + (물건 사는 시간) + (오는 시간) \\le 50$\\n$\\frac{x}{60} + 10 + \\frac{x}{40} \\le 50$\\n$\\frac{x}{60} + \\frac{x}{40} \\le 40$\\n양변에 $120$을 곱함: $2x + 3x \\le 4800$\\n$5x \\le 4800 \\implies x \\le 960$\\n$\\therefore 960m$ 이내",
+    "solution": "상점까지의 거리를 $x m$라 함.\n$(가는 시간) + (물건 사는 시간) + (오는 시간) \\le 50$\n$\\frac{x}{60} + 10 + \\frac{x}{40} \\le 50$\n$\\frac{x}{60} + \\frac{x}{40} \\le 40$\n양변에 $120$을 곱함: $2x + 3x \\le 4800$\n$5x \\le 4800 \\implies x \\le 960$\n$\\therefore 960m$ 이내",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
