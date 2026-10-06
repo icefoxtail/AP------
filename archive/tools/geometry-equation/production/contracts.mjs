@@ -58,7 +58,7 @@ export function capabilityFingerprint(root, {capability, implementationPaths, ob
 }
 export const CAPABILITIES = Object.freeze({
   'construction-spike-v1': {status:'EXPERIMENTAL',requiredAudits:['SOURCE_CONDITIONS','CINDY_RECONSTRUCTION','SVG_PRIMITIVES','TYPOGRAPHY','RENDERED_LAYOUT','ACTUAL_ARCHIVE','INDEPENDENT_VISUAL_REVIEW']},
-  'polynomial-spike-v1': {status:'EXPERIMENTAL',requiredAudits:['SOURCE_CONDITIONS','GRAPH_INTERIOR_BOUND','GRAPH_TOPOLOGY','TYPOGRAPHY','RENDERED_LAYOUT','ACTUAL_ARCHIVE','INDEPENDENT_VISUAL_REVIEW']},
+  'polynomial-spike-v1': {status:'EXPERIMENTAL',requiredAudits:['SOURCE_CONDITIONS','GRAPH_INTERIOR_BOUND','GRAPH_TOPOLOGY','GRAPH_OVERVIEW','TYPOGRAPHY','RENDERED_LAYOUT','ACTUAL_ARCHIVE','INDEPENDENT_VISUAL_REVIEW']},
 });
 export function reduceResult(capability, evidence) {
   const descriptor = CAPABILITIES[capability];

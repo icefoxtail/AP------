@@ -84,6 +84,23 @@ Review receives source pixels plus final image and native solution-block capture
 
 ## Supported spike scope and limits
 
+Main polynomial publication now requires a separately audited
+`QUADRATIC_OVERVIEW_v1` frame. Vertex must lie inside the frame, and both arms
+must span at least max(40 CSS px, 22% of plot width) horizontally and
+max(50 CSS px, 45% of plot height) vertically. These are publication readability
+policies, not mathematical error tolerances. Source-required points must remain
+inside with margin and be observed on the curve. Mathematical chord/coverage
+PASS alone cannot close the overview axis.
+
+`graph_framing.py` fits display bounds without changing the function. A reviewed
+`sourceDomain:{kind:'ALL_REALS'}` permits a wider drawing interval; an older
+frozen interval is never enlarged by inference. Restricted domains require a
+separate context representation and remain unsupported here. Local zoom views
+cannot stand in for the main overview. General overview rules for cubic/quartic,
+exponential, rational, sqrt and mixed panels are not declared complete. This
+change repairs the existing quadratic vertical slice; it is not Phase 3's general
+layout/repair/capability expansion.
+
 - Construction: source points, closed SSS normalization, midpoint, line through
   points, perpendicular foot, circle radius, circle/circle and line/circle
   intersections with oriented-side selection, distance and scalar square.

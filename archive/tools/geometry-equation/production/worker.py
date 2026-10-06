@@ -44,6 +44,9 @@ def main():
         elif action == 'graph':
             from graph_spike import produce
             result = produce(payload['graphPlan'])
+        elif action == 'frame_graph':
+            from graph_framing import fit_overview
+            result = fit_overview(payload['graphPlan'])
         elif action == 'build':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import build
