@@ -1,6 +1,7 @@
 import {objectSha,bytesSha,canonicalJson,readBoundFile} from '../../pipeline-core/canonical.mjs';
 
 const forbidden=new Set(['answer','solution','proposedplan','verifiedsolution','verification','verdict','previousplan','defects']);
+const JSON_ENCODED_PROVIDER_PAYLOAD='Return one outer JSON response matching the caller schema. Its `payload` value must be a string containing exactly one valid JSON object matching the requested payload shape. Do not put bare fields or prose in `payload`, and do not use Markdown code fences.';
 export function assertStudentOnly(source){
   const visit=v=>{if(Array.isArray(v))v.forEach(visit);else if(v&&typeof v==='object')for(const [k,c] of Object.entries(v)){if(forbidden.has(k.toLowerCase()))throw Error('BLIND_SOURCE_LEAK:'+k);visit(c);}};
   visit(source);
@@ -15,8 +16,8 @@ export async function blindThenCompare({root,kind,source,images,comparison,polic
   assertStudentOnly(source);
   if(source.sourceImageRequired&&!images.length)throw Error('BLIND_SOURCE_IMAGE_MISSING');
   const instruction=kind==='SOLUTION'
-    ?'Solve only the supplied student question/images. No stored answer or solution is available. Freeze your independent answer, reasoning and every source condition. Payload {recomputedAnswer:string,reasoning:string,independentlyExtractedSourceConditions:[string],uncoveredConditions:[]}.'
-    :'Extract all conditions only from the original student question and required images. No proposed plan is available. Payload {sourceConditions:[{id:string,condition:string}],uncoveredConditions:[]}.';
+    ?JSON_ENCODED_PROVIDER_PAYLOAD+' Solve only the supplied student question/images. No stored answer or solution is available. Freeze your independent answer, reasoning and every source condition. Inner payload schema: {recomputedAnswer:string,reasoning:string,independentlyExtractedSourceConditions:[string],uncoveredConditions:[]}.'
+    :JSON_ENCODED_PROVIDER_PAYLOAD+' Extract all conditions only from the original student question and required images. No proposed plan is available. Inner payload schema: {sourceConditions:[{id:string,condition:string}],uncoveredConditions:[]}.';
   const blind=await call(kind+'_SOURCE_BLIND',{instruction,visibility:'SOURCE_ONLY',source,policySha256,inputBindingSha256},images);
   const blindReceipt=freeze(kind+'_BLIND_FREEZE',blind);
   if(!blindClosed(blind,kind))throw Error(kind+'_BLIND_NOT_CLOSED');
@@ -24,8 +25,8 @@ export async function blindThenCompare({root,kind,source,images,comparison,polic
   // Read the committed bytes, not an in-memory editable answer/inventory.
   const frozen=JSON.parse(readBoundFile(root,blindDecisionRef));
   const compareInstruction=kind==='SOLUTION'
-    ?'Compare the immutable independent decision with the now-disclosed stored answer/solution. Do not rewrite the frozen answer/reasoning. A discrepancy must be FAIL. Payload {solutionComparison:string,errors:[],uncoveredConditions:[]}.'
-    :'Compare the immutable independently extracted inventory with the now-disclosed proposed plan. Do not rewrite the inventory or silently omit any condition. Original question content, choices, answer and source images remain in the protected Archive bank (sol mode uses a reminder). Payload {mappedConditions:[{sourceConditionId:string,mappedTo:string}],errors:[],uncoveredConditions:[],realizationReview:string}.';
+    ?JSON_ENCODED_PROVIDER_PAYLOAD+' Compare the immutable independent decision with the now-disclosed stored answer/solution. Do not rewrite the frozen answer/reasoning. A discrepancy must be FAIL. Inner payload schema: {solutionComparison:string,errors:[],uncoveredConditions:[]}.'
+    :JSON_ENCODED_PROVIDER_PAYLOAD+' Compare the immutable independently extracted inventory with the now-disclosed proposed plan. Do not rewrite the inventory or silently omit any condition. Original question content, choices, answer and source images remain in the protected Archive bank (sol mode uses a reminder). Inner payload schema: {mappedConditions:[{sourceConditionId:string,mappedTo:string}],errors:[],uncoveredConditions:[],realizationReview:string}.';
   const compare=await call(kind+'_COMPARE',{instruction:compareInstruction,visibility:'COMPARE_ONLY',source,blindDecisionRef,independentDecision:frozen.payload,disclosed:comparison,policySha256,inputBindingSha256},images);
   const compareReceipt=freeze(kind+'_COMPARE',compare);
   const good=compare.output.status==='PASS'&&Array.isArray(compare.payload.errors)&&!compare.payload.errors.length&&Array.isArray(compare.payload.uncoveredConditions)&&!compare.payload.uncoveredConditions.length;

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_PROVIDER_TIMEOUT_CANCEL_PROBE_v1",
+  "classification": "DIRECT_READ_ONLY_APPSERVER_TIMEOUT_AND_CANCELLATION_PROBE",
+  "startedAt": "2026-10-06T20:08:23.894Z",
+  "model": "gpt-6-luna/max",
+  "timeoutMs": 1,
+  "toolAccess": "NONE",
+  "status": "PASS",
+  "invocation": {
+    "timeoutObserved": true,
+    "errorMessage": "VISUAL_PROVIDER_TIMEOUT",
+    "returnedStatus": null,
+    "providerInvocationId": null,
+    "threadId": "01a112d4-e2ee-7320-80c7-ffb25813d7f2",
+    "turnId": "01a112d4-e37d-7143-9f5f-c37116e67536"
+  },
+  "localProcessCleanup": {
+    "pid": 21676,
+    "killRequested": true,
+    "killError": null,
+    "exitObserved": true,
+    "exitCode": null,
+    "exitSignal": "SIGTERM",
+    "closeObserved": true,
+    "closeCode": null,
+    "closeSignal": "SIGTERM",
+    "closeWaitTimedOut": false
+  },
+  "remoteCancellation": {
+    "schemaVersion": "APPSERVER_REMOTE_TURN_CANCELLATION_v1",
+    "status": "REMOTE_INTERRUPT_CONFIRMED",
+    "threadId": "01a112d4-e2ee-7320-80c7-ffb25813d7f2",
+    "turnId": "01a112d4-e37d-7143-9f5f-c37116e67536",
+    "interruptRequested": true,
+    "acknowledgementReceived": true,
+    "acknowledgementKeys": [],
+    "acknowledgementError": null,
+    "terminalNotificationObserved": true,
+    "terminalStatus": "interrupted",
+    "elapsedMs": 40
+  },
+  "trace": {
+    "path": ".tmp/archive/phase3d-provider-timeout-cancel-25208/probe/trace/appserver-message-trace.jsonl",
+    "entries": 18,
+    "methods": [
+      "remoteControl/status/changed",
+      "thread/started",
+      "mcpServer/startupStatus/updated",
+      "mcpServer/startupStatus/updated",
+      "mcpServer/startupStatus/updated",
+      "thread/settings/updated",
+      "thread/status/changed",
+      "turn/started",
+      "mcpServer/startupStatus/updated",
+      "item/started",
+      "item/completed",
+      "thread/status/changed",
+      "turn/completed"
+    ],
+    "lastMethod": "turn/completed",
+    "lastTurnStatus": "interrupted"
+  },
+  "limitations": [
+    "One bounded authenticated read-only invocation only; it is not repeated timeout-recovery qualification.",
+    "A confirmed turn/interrupt ack without turn/completed status interrupted remains unconfirmed remote cancellation."
+  ]
+}
