@@ -146,4 +146,12 @@ Keep prior artifacts/evidence, calculate the missing axes under the new contract
 - 실제 Golden 파일/대표 문항 solution/필요 SVG/Negative sample의 SHA와 판독 observation을 남긴다. boolean이나 파일명 목록만으로 preflight를 대신하지 않는다. 알려진 Golden visual 예외는 모델로 복제하지 않는다.
 - actual render와 MAIN_DONE의 physical receipt는 `archive/tools/archive-codex-closeout-v2.mjs`로 소비한다. 품질 수학 판정은 worker의 책임이며 이 helper는 증거·파일·SHA·범위·remote parity만 검사한다.
 
-신규 evidence에는 `executionLine:CODEX` 또는 `executionLine:GPT_SCHEDULED`를 명시한다. Codex CURRENT CLI는 CODEX를 강제하며, 공통 qualityContractVersion만 보고 GPT R3를 RENDER로 전환하지 않는다. render/MAIN_DONE receipt 및 저장된 R3 validation report도 executionLine:CODEX로 결속한다. GPT 예약 라인의 MAIN handoff는 유지한다.
+신규 evidence에는 `executionLine:CODEX` 또는 `executionLine:GPT_SCHEDULED`를 명시한다. Codex CURRENT CLI는 CODEX를 강제하며, 공통 qualityContractVersion만 보고 GPT R3를 RENDER로 전환하지 않는다. render/MAIN_DONE receipt 및 저장된 R3 validation report도 executionLine:CODEX로 결속한다. GPT 예약 라인은 별도 CURRENT에 따라 `R3_RELEASE_READY → MASTER publication → MAIN_DONE`으로 독립 완결하며 Codex handoff를 만들지 않는다.
+
+## 14. GPT 예약 구현 연결 보강 — 2026-10-06
+
+- 신규 GPT evidence는 `executionLine:GPT_SCHEDULED` + current `campaignId` + fixed `stream=A|B|C`를 모두 결속한다. validator/state/continuation은 이 identity를 유지하며 cross-generation/cross-stream 승계를 거부한다.
+- GPT CREATE/R1은 기본 schema·difficulty enum·실제 production asset/SVG dependency·Golden/Negative provenance의 실제 SHA와 observation을 공통 artifact floor로 사용하되 GPT 전용 registry `archive/data/gpt-quality-calibration-registry-v2.json`을 사용한다.
+- R3 targeted rows는 open/changed/direct dependency만 유지하고, 전 문항 Meta null/debt disposition은 `artifactDispositions={artifactSha,rows:[...]}`에 별도 결속한다. 이것은 R3 전수 의미 재검이 아니다.
+- GPT stage validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id <campaign> --stream <A|B|C>`를 명시한다.
+- GPT는 render를 수행하지 않는다. 대신 MASTER의 MAIN_DONE은 `archive/tools/archive-gpt-closeout-v2.mjs`로 R3 validation SHA, final artifact SHA, asset SHA, production path, origin/main remote parity를 결속한다.

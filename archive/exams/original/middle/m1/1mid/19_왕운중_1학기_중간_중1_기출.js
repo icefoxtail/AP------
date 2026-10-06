@@ -22,7 +22,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "각 수의 절댓값은\n\n$\\dfrac{13}{2},\\ 3,\\ 0,\\ \\dfrac{14}{3},\\ 7$\n\n이다.\n\n가장 큰 값은 $7$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -59,7 +59,7 @@ window.questionBank = [
       "$45$, $81$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$10$의 약수: $1,2,5,10$\n\n$29$의 약수: $1,29$\n\n공약수는 $1$뿐이다.\n\n따라서 $10,29$가 서로소이고 정답은 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -96,7 +96,7 @@ window.questionBank = [
       "$2\\times2\\times2\\times7=2^3\\times7$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "⑤\n\n$2\\times2\\times2\\times7$\n\n$=2^3\\times7$\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -133,7 +133,7 @@ window.questionBank = [
       "$104=2\\times3\\times17$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$104=8\\times13$\n\n$=2^3\\times13$\n\n따라서\n\n$104=2\\times3\\times17$\n\n이라고 한 ⑤가 옳지 않다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -170,7 +170,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "두 수의 최대공약수는\n\n$2^2\\times3=12$\n\n따라서 공약수는 $12$의 약수이다.\n\n$8$은 $12$의 약수가 아니다.\n\n정답은 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -207,7 +207,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "정수인 것은\n\n$5,\\ 0,\\ -8,\\ \\dfrac62=3$\n\n이다.\n\n모두 $4$개이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -244,7 +244,7 @@ window.questionBank = [
       "$2^3\\times3\\times7$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "최소공배수가 $12$이면\n공배수는 모두 $12$의 배수이다.\n\n①\n\n$2^2\\times5=20$\n\n은 $12$의 배수가 아니다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -281,7 +281,7 @@ window.questionBank = [
       "절댓값이 가장 작은 수는 $-1$, $+1$이다."
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "음수끼리는 절댓값이 클수록 실제 값은 작다.\n\n예를 들어\n\n$|-5|>|-2|$\n\n이지만\n\n$-5<-2$\n\n따라서 ④가 옳다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -318,7 +318,7 @@ window.questionBank = [
       "$\\dfrac{1}{2}$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "주어진 수 중\n\n가장 큰 수는 $2$\n\n가장 작은 수는 $-\\dfrac53$\n\n따라서\n\n$2-\\dfrac53$\n\n$=\\dfrac13$\n\n정답은 ④이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -355,7 +355,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "$5$ 이상 $20$ 이하의 소수는\n\n$5,7,11,13,17,19$\n\n모두 $6$개이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -392,7 +392,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "어떤 수를 $x$라 하면\n\n$x+4=-3$\n\n$x=-7$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -429,7 +429,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "가능한 많은 친구에게 똑같이 나누려면\n\n$\\gcd(24,40)$\n\n을 구한다.\n\n$\\gcd(24,40)=8$\n\n따라서 $8$명이고 정답은 ③이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -466,7 +466,7 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "먼저\n\n$\\gcd(24,60)=12$\n\n이다.\n\n따라서\n\n$\\gcd(12,\\square)=4$\n\n가 되어야 한다.\n\n보기에서\n\n$\\gcd(12,12)=12$\n\n이므로 $12$는 들어갈 수 없다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -503,7 +503,7 @@ window.questionBank = [
       "$30$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$120=2^3\\times3\\times5$\n\n제곱수가 되려면 모든 지수가 짝수여야 한다.\n\n부족한 소인수를 곱하면\n\n$2\\times3\\times5=30$\n\n$120\\times30=60^2$\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -540,7 +540,7 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$-\\dfrac27$의 역수는\n\n$-\\dfrac72$\n\n$1.4=\\dfrac75$의 역수는\n\n$\\dfrac57$\n\n따라서\n\n$-\\dfrac72\\times\\dfrac57$\n\n$=-\\dfrac52$\n\n정답은 ②이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -577,7 +577,7 @@ window.questionBank = [
       "$\\dfrac{7}{2}$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$\\dfrac52-\\dfrac53-\\dfrac13+\\dfrac32$\n\n$=\\left(\\dfrac52+\\dfrac32\\right)\n-\\left(\\dfrac53+\\dfrac13\\right)$\n\n$=4-2$\n\n$=2$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -614,7 +614,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "같은 톱니에서 다시 만나려면\n\n$\\operatorname{lcm}(30,42)$\n\n만큼의 톱니가 지나가야 한다.\n\n$\\operatorname{lcm}(30,42)=210$\n\nA의 회전 수는\n\n$210\\div30=7$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -651,7 +651,7 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$\\{(-2)^3-(-5)\\}\\div\\left(-\\dfrac{3}{4^2}\\right)+(-5)$\n\n$=(-8+5)\\div\\left(-\\dfrac3{16}\\right)-5$\n\n$=(-3)\\times\\left(-\\dfrac{16}{3}\\right)-5$\n\n$=16-5$\n\n$=11$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -688,7 +688,7 @@ window.questionBank = [
       "75일"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "창호는 $4$일 주기로\n$3$일 출석, $1$일 휴식한다.\n\n준혁은 $5$일 주기로\n$4$일 출석, $1$일 휴식한다.\n\n$1$일부터 $100$일까지에서\n\n창호 휴식일: $25$일\n\n준혁 휴식일: $20$일\n\n둘 다 쉬는 날: $\\operatorname{lcm}(4,5)=20$일마다이므로 $5$일\n\n따라서 함께 도서관에 간 날은\n\n$100-25-20+5=60$일\n\n정답은 ③이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -725,7 +725,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$(-1)+(-1)^2+\\cdots+(-1)^B=-1$\n\n이 되려면 $B$는 홀수이다.\n\n또\n\n$\\{3-(-5)\\}\\times12\\div(-2)^2$\n\n$=8\\times12\\div4$\n\n$=24$\n\n따라서\n\n$AB=24$\n\n$B$는 $3$ 이상인 홀수이므로\n\n$B=3,\\quad A=8$\n\n$A+B=11$\n\n정답은 ②이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -758,7 +758,7 @@ window.questionBank = [
     "content": "[서술형 1] $4$보다 $+\\dfrac{1}{3}$만큼 작은 수와 $3$보다 $\\dfrac{3}{2}$만큼 큰 수를 구하고, 두 수 사이에 있는 정수의 개수를 구하여라.",
     "choices": [],
     "answer": "$\\dfrac{11}{3}$, $\\dfrac{9}{2}$, 1개",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $\\dfrac{11}{3}$, $\\dfrac{9}{2}$, 1개이다.",
+    "solution": "$4$보다 $\\dfrac13$만큼 작은 수는\n\n$4-\\dfrac13=\\dfrac{11}{3}$\n\n$3$보다 $\\dfrac32$만큼 큰 수는\n\n$3+\\dfrac32=\\dfrac92$\n\n따라서\n\n$\\dfrac{11}{3}<x<\\dfrac92$\n\n사이의 정수는\n\n$4$\n\n하나뿐이다.\n\n답:\n$\\dfrac{11}{3},\\ \\dfrac92,\\ 1$개",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -791,7 +791,7 @@ window.questionBank = [
     "content": "[서술형 2] 세 수 $a$, $b$, $c$에 대하여 $|a|=2$, $|b|=\\dfrac{2}{3}$, $|c|=6$일 때, $a+b-c$의 값 중에서 가장 큰 값과 가장 작은 값의 합을 구하시오.",
     "choices": [],
     "answer": "$0$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $0$이다.",
+    "solution": "$a+b-c$가 가장 크려면\n\n$a=2,\\quad b=\\dfrac23,\\quad c=-6$\n\n최댓값\n\n$2+\\dfrac23-(-6)=\\dfrac{26}{3}$\n\n가장 작으려면\n\n$a=-2,\\quad b=-\\dfrac23,\\quad c=6$\n\n최솟값\n\n$-2-\\dfrac23-6=-\\dfrac{26}{3}$\n\n따라서 두 값의 합은\n\n$0$",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -824,7 +824,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 세 조건을 모두 만족하는 자연수를 구하시오.\\n(가) $200$이하이다.\\n(나) $49$와 서로소가 아니다.\\n(다) $3$개의 소인수를 가지며, 세 소인수의 합은 $20$이다.",
     "choices": [],
     "answer": "$154$",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 $154$이다.",
+    "solution": "$49=7^2$과 서로소가 아니므로\n소인수 중 $7$이 있어야 한다.\n\n서로 다른 세 소인수의 합이 $20$이므로\n\n$7+p+q=20$\n\n$p+q=13$\n\n소수 두 수는\n\n$2,\\ 11$\n\n따라서 가장 작은 수는\n\n$2\\times7\\times11=154$\n\n$154\\le200$\n\n이므로 답은 $154$이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -857,7 +857,7 @@ window.questionBank = [
     "content": "[서술형 4] $5$로 나누면 $3$이 남고, $7$으로 나누면 $5$가 남고, $10$으로 나누면 $8$이 남는 자연수 중에서 가장 작은 수를 구하시오.",
     "choices": [],
     "answer": "$68$",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 $68$이다.",
+    "solution": "$10$으로 나누어 $8$이 남으므로\n\n$x=10k+8$\n\n이 수는 자동으로 $5$로 나누면 $3$이 남는다.\n\n또 $7$로 나누어 $5$가 남아야 하므로\n\n$10k+8\\equiv5\\pmod7$\n\n$3k+1\\equiv5\\pmod7$\n\n$3k\\equiv4\\pmod7$\n\n가장 작은 $k$는 $6$이다.\n\n따라서\n\n$x=10\\times6+8=68$",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",

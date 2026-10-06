@@ -26,7 +26,7 @@ source bytes만 source authority에서 새 generation source/로 가져올 수 �
 
 ## 3. Campaign manifest
 
-generation root에 campaign-manifest.json 하나를 둔다.
+frozen campaign manifest의 **정본은 Git** `archive/data/gpt-campaigns/H1_GPT2_20261006.json`이다. Library에는 manifest를 복제하지 않아도 된다. worker는 latest main의 이 파일만 partition authority로 읽는다.
 
 필수 schema 예:
 
@@ -34,8 +34,8 @@ generation root에 campaign-manifest.json 하나를 둔다.
   "campaignId": "H1_GPT2_20261006",
   "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
   "partitionStatus": "FROZEN",
-  "inventoryDenominator": 0,
-  "sourceAuthority": "<current source authority>",
+  "inventoryDenominator": 44,
+  "sourceAuthority": "<frozen branch + commit authority>",
   "streams": {
     "A": [],
     "B": [],
@@ -45,7 +45,7 @@ generation root에 campaign-manifest.json 하나를 둔다.
 
 각 stream 배열 항목은 최소 examUid와 sourceRef를 가진다.
 
-activation 전에 실제 inventory를 채우고 denominator와 정확히 맞춘다.
+현재 manifest는 실제 source authority branch `codex/source-only-h1-1mid-2019-2024-except-gangnam-20261005@b152d00f8c1daa7ba7f926565fc51d8aa10fc4d3`에서 original H1 1mid 2019~2024를 전수 추출한 44건으로 FROZEN이다. A=15 / B=15 / C=14, duplicate=0, unassigned=0이다.
 
 ## 4. Partition HARD
 
@@ -81,6 +81,7 @@ B/C도 동일하다.
 ## 6. Generation identity in artifacts
 
 현재 generation의 stage artifact/evidence/PASS/continuation/MAIN_DONE은 최소:
+- executionLine = GPT_SCHEDULED
 - campaignId
 - stream
 - examUid
@@ -107,7 +108,7 @@ campaignId 또는 stream이 다르면 current selector에서 무효다.
 
 15라인 생성/ON 전에:
 1. generation root 존재
-2. campaign-manifest 존재
+2. Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json` 존재
 3. campaignId 정확
 4. partitionStatus=FROZEN
 5. denominator 확정
@@ -118,3 +119,8 @@ campaignId 또는 stream이 다르면 current selector에서 무효다.
 10. old pilot automation OFF 유지
 
 이 gate가 닫힌 뒤에만 예약 생성/가동으로 넘어간다.
+
+## 9. Machine identity gate
+
+current generation의 모든 validator/state/continuation/MAIN_DONE receipt는 `executionLine=GPT_SCHEDULED`, `campaignId=H1_GPT2_20261006`, manifest-fixed stream을 함께 가진다.
+세 값 중 하나라도 누락/불일치하면 current generation artifact로 인정하지 않는다.

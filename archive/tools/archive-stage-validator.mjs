@@ -24,6 +24,7 @@ const V2_VALIDATORS = Object.freeze({
   R3: validateR3Evidence,
 });
 const normalize = value => String(value || '').replaceAll('\\', '/');
+const nonEmpty = value => typeof value === 'string' && value.trim().length > 0;
 
 export { gitBlobSha, validateTargetedR2Evidence };
 
@@ -36,6 +37,8 @@ function parseArgs(argv) {
     else if (arg === '--stage') out.stage = String(argv[++i] || '').toUpperCase();
     else if (arg === '--quality-contract') out.qualityContractVersion = argv[++i];
     else if (arg === '--execution-line') out.executionLine = argv[++i];
+    else if (arg === '--campaign-id') out.campaignId = argv[++i];
+    else if (arg === '--stream') out.stream = String(argv[++i] || '').toUpperCase();
     else if (arg === '--asset-root') out.assetRoot = argv[++i];
     else if (arg === '--json') out.json = true;
     else throw new Error(`UNKNOWN_ARGUMENT:${arg}`);
@@ -96,6 +99,7 @@ function validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot,
     artifactContract,
     qualityContractVersion: artifactContract.qualityContractVersion,
     executionLine: evidence.executionLine,
+    ...(evidence.executionLine === 'GPT_SCHEDULED' ? {campaignId: evidence.campaignId, stream: String(evidence.stream || '').toUpperCase()} : {}),
     issues,
   };
 }
@@ -107,7 +111,7 @@ function findSourceRoot(examFile) {
   }
 }
 
-export function validateStageEvidence({ examFile, evidenceFile, stage, qualityContractVersion, executionLine = qualityContractVersion ? 'CODEX' : undefined, repoRoot = findSourceRoot(examFile), assetRoot, goldenRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..') }) {
+export function validateStageEvidence({ examFile, evidenceFile, stage, qualityContractVersion, executionLine = qualityContractVersion ? 'CODEX' : undefined, campaignId, stream, repoRoot = findSourceRoot(examFile), assetRoot, goldenRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..') }) {
   const evidence = JSON.parse(fs.readFileSync(evidenceFile, 'utf8'));
   const version = evidence?.qualityContractVersion;
   const contractIssues = [];
@@ -117,6 +121,12 @@ export function validateStageEvidence({ examFile, evidenceFile, stage, qualityCo
   if (version !== undefined && version !== QUALITY_CONTRACT_V2) contractIssues.push('EVIDENCE_QUALITY_CONTRACT_UNSUPPORTED');
   if (qualityContractVersion === QUALITY_CONTRACT_V2 && version !== QUALITY_CONTRACT_V2) contractIssues.push('QUALITY_CONTRACT_REQUIRED');
   if (version === QUALITY_CONTRACT_V2 && evidence.schemaVersion !== V2_EVIDENCE_SCHEMA) contractIssues.push('QUALITY_CONTRACT_V2_SCHEMA_REQUIRED');
+  if (version === QUALITY_CONTRACT_V2 && evidence.executionLine === 'GPT_SCHEDULED') {
+    if (!nonEmpty(evidence.campaignId)) contractIssues.push('GPT_CAMPAIGN_ID_REQUIRED');
+    if (!['A','B','C'].includes(String(evidence.stream || '').toUpperCase())) contractIssues.push('GPT_STREAM_REQUIRED');
+    if (campaignId && evidence.campaignId !== campaignId) contractIssues.push('GPT_CAMPAIGN_ID_MISMATCH');
+    if (stream && String(evidence.stream || '').toUpperCase() !== String(stream).toUpperCase()) contractIssues.push('GPT_STREAM_MISMATCH');
+  }
   if(contractIssues.length) return {ok:false,stage,validatorMode:'CONTRACT_REJECTED',disposition:'FAIL',issues:contractIssues};
   const compatibility = validateCompatibilityEvidence({
     evidence,
@@ -158,6 +168,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       stage: args.stage,
       qualityContractVersion: args.qualityContractVersion,
       executionLine: args.executionLine || (args.qualityContractVersion ? 'CODEX' : undefined),
+      campaignId: args.campaignId,
+      stream: args.stream,
       assetRoot: args.assetRoot && path.resolve(args.assetRoot),
     });
     console.log(JSON.stringify(report, null, 2));

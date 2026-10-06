@@ -98,7 +98,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다음 네 행렬 $A=\\begin{pmatrix}2&-5\\end{pmatrix}$, $B=\\begin{pmatrix}-1&1&2\\\\3&0&1\\end{pmatrix}$, $C=\\begin{pmatrix}2&1\\\\0&-2\\\\3&0\\end{pmatrix}$, $D=\\begin{pmatrix}5\\\\-2\\\\3\\end{pmatrix}$에 대하여 다음 중 그 곱이 정의되는 것의 개수는? [3.6점]<br><div class='note-box'>$AB\\qquad BD\\qquad CB\\qquad CD\\qquad DA\\qquad DC$</div>",
+    "content": "다음 네 행렬 $A=\\begin{pmatrix}2&-5\\end{pmatrix}$, $B=\\begin{pmatrix}-1&1&2\\\\3&0&1\\end{pmatrix}$, <br>$C=\\begin{pmatrix}2&1\\\\0&-2\\\\3&0\\end{pmatrix}$, $D=\\begin{pmatrix}5\\\\-2\\\\3\\end{pmatrix}$에 대하여 다음 중 그 곱이 정의되는 것의 개수는? [3.6점]<br><div class='note-box'>$AB\\qquad BD\\qquad CB\\qquad CD\\qquad DA\\qquad DC$</div>",
     "choices": [
       "1",
       "2",
@@ -182,7 +182,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "이차 정사각행렬 $A$에 대하여 $A\\begin{pmatrix}1\\\\0\\end{pmatrix}=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$, $A\\begin{pmatrix}0\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\-1\\end{pmatrix}$이 성립할 때, 행렬 $A\\begin{pmatrix}1\\\\3\\end{pmatrix}$의 모든 성분의 곱을 구하면? [3.9점]",
+    "content": "이차 정사각행렬 $A$에 대하여 $A\\begin{pmatrix}1\\\\0\\end{pmatrix}=\\begin{pmatrix}1\\\\-1\\end{pmatrix}$, <br>$A\\begin{pmatrix}0\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\-1\\end{pmatrix}$이 성립할 때, 행렬 $A\\begin{pmatrix}1\\\\3\\end{pmatrix}$의 모든 성분의 곱을 구하면? [3.9점]",
     "choices": [
       "$-28$",
       "$-14$",
@@ -490,7 +490,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다항식 $f(x)=x^3+3x^2-2x-5$에 대하여, 등식 $f(x+a)=x^3-3x^2+bx+3$이 $x$의 값에 관계없이 항상 성립할 때, 이를 만족하는 상수 $a,b$에 대하여 $a+b$의 값은? [4.4점]",
+    "content": "다항식 $f(x)=x^3+3x^2-2x-5$에 대하여, <br>등식 $f(x+a)=x^3-3x^2+bx+3$이 $x$의 값에 관계없이 항상 성립할 때, 이를 만족하는 상수 $a,b$에 대하여 $a+b$의 값은? [4.4점]",
     "choices": [
       "$-5$",
       "$-4$",

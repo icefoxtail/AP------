@@ -507,12 +507,7 @@ window.questionBank = [
       "standardUnitOrder": 6,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "평면도형의 성질",
-        "원",
-        "부채꼴",
-        "넓이"
-      ],
+      "tags": ["평면도형의 성질","원","부채꼴","넓이","도형"],
       "wide": false,
       "content": "오른쪽 그림의 원 O에서 $\\overline{AB}\\parallel\\overline{OC}$이고 부채꼴 AOB의 넓이가 $40\\mathrm{cm}^2$일 때, 부채꼴 BOC의 넓이는? (4점)",
       "choices": [
@@ -800,11 +795,7 @@ window.questionBank = [
       "standardUnitOrder": 7,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "입체도형의 성질",
-        "사각뿔대",
-        "겉넓이"
-      ],
+      "tags": ["입체도형의 성질","사각뿔대","겉넓이","도형"],
       "wide": false,
       "content": "오른쪽 그림과 같이 두 밑면은 모두 정사각형이고, 옆면은 모두 합동인 사각뿔대의 겉넓이는? (4점)",
       "choices": [
@@ -852,12 +843,7 @@ window.questionBank = [
       "standardUnitOrder": 7,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "입체도형의 성질",
-        "원뿔",
-        "원기둥",
-        "부피"
-      ],
+      "tags": ["입체도형의 성질","원뿔","원기둥","부피","도형"],
       "wide": false,
       "content": "다음 그림과 같은 원뿔 모양의 그릇에 물을 가득 채워서 원기둥 모양의 그릇에 옮겼을 때, 물의 높이는? (단, 그릇의 두께는 생각하지 않는다.) (4점)",
       "choices": [
@@ -905,12 +891,7 @@ window.questionBank = [
       "standardUnitOrder": 7,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "입체도형의 성질",
-        "원기둥",
-        "구",
-        "부피"
-      ],
+      "tags": ["입체도형의 성질","원기둥","구","부피","도형"],
       "wide": false,
       "content": "오른쪽 그림과 같이 밑면의 지름의 길이가 6cm인 원기둥 안에 3개의 공이 꼭 맞게 들어 있다. 이때 원기둥에서 공 3개를 제외한 부분이 차지하는 부피는? (4점)",
       "choices": [
@@ -958,11 +939,7 @@ window.questionBank = [
       "standardUnitOrder": 7,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "입체도형의 성질",
-        "회전체",
-        "겉넓이"
-      ],
+      "tags": ["입체도형의 성질","회전체","겉넓이","도형"],
       "wide": false,
       "content": "오른쪽 그림과 같은 평면도형을 직선 $l$을 회전축으로 하여 1회전 시킬 때 생기는 회전체의 겉넓이는? (5점)",
       "choices": [
@@ -1144,14 +1121,7 @@ window.questionBank = [
       "standardUnitOrder": 7,
       "questionType": "서술형",
       "layoutTag": "subjective-2up",
-      "tags": [
-        "서술형",
-        "입체도형의 성질",
-        "원기둥",
-        "정사각뿔",
-        "겉넓이",
-        "부피"
-      ],
+      "tags": ["서술형","입체도형의 성질","원기둥","정사각뿔","겉넓이","부피","도형"],
       "wide": false,
       "content": "[서술형4] 다음 그림과 같은 입체도형의 겉넓이와 부피를 구하시오. (6점)<br>(1) 오른쪽 원기둥의 겉넓이를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_1.png\" alt=\"24번 (1) 원기둥\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\"><br>(2) 오른쪽 정사각뿔의 부피를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_2.png\" alt=\"24번 (2) 정사각뿔\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\">",
       "choices": [],

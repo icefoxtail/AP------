@@ -164,7 +164,8 @@ window.questionBank = [
       "수직선",
       "정사각형",
       "대소비교",
-      "피타고라스"
+      "피타고라스",
+      "도형"
     ],
     "wide": false,
     "content": "그림은 수직선 위에 한 변의 길이가 $2$인 정사각형 $ABCD$와 $DCFE$를 그린 것이다. 수직선 위에 $\\overline{BP}=\\overline{BD}$, $\\overline{BQ}=\\overline{BE}$인 두 점 $P$와 $Q$를 각각 잡을 때, $\\overline{PQ}$의 길이는? (4점)",

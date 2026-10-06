@@ -13,7 +13,7 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 새 GPT 2.0 예약 worker는 legacy JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md를 authority 또는 copy source로 사용하지 않는다.
 
 새 15라인의 유일한 예약 prompt copy source는 JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md다.
-현재 campaign/generation 및 A/B/C 고정 partition authority는 JS_Archive_2.0_GPT_Campaign_Generation_v1.md와 해당 generation의 frozen campaign-manifest다.
+현재 campaign/generation 및 A/B/C 고정 partition authority는 JS_Archive_2.0_GPT_Campaign_Generation_v1.md와 Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`이다.
 
 ## 1. 정상 생명주기
 
@@ -65,7 +65,6 @@ activation 후 worker가 임의로 stream을 바꾸지 않는다.
 Archive2-GPT/
   generations/
     H1_GPT2_20261006/
-      campaign-manifest.json
       A/
         <examUid>/
           source/
@@ -97,7 +96,7 @@ campaignId 또는 stream이 다른 artifact는 현재 stage 계산에 사용할 
 
 ## 5. Fixed stream manifest HARD
 
-campaign-manifest.json이 activation authority다.
+Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`이 activation authority다.
 
 필수:
 - campaignId
@@ -234,7 +233,7 @@ legacy/current generation 밖 PASS는 상태 계산에서 0으로 본다.
 15라인 ON 전 반드시:
 1. campaignId = H1_GPT2_20261006 고정
 2. 새 generation root 생성
-3. campaign-manifest partitionStatus=FROZEN
+3. Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`의 partitionStatus=FROZEN
 4. denominator = A+B+C assignment total
 5. duplicate/unassigned = 0
 6. 15개 worker가 각각 자기 STREAM=A/B/C를 명시
@@ -249,3 +248,30 @@ legacy/current generation 밖 PASS는 상태 계산에서 0으로 본다.
 현재 target이 안 닫히면 exact continuation을 같은 generation/stream에 남기고 lease를 해제한 뒤 자기 stream의 다음 eligible target으로 이동한다.
 다른 stream으로 넘어가지 않는다.
 오직 사용자 명시 지시만 lane을 OFF할 수 있다.
+
+## 15. Machine hardening — PR #296 공통 보강 반영
+
+모든 current-generation stage artifact/evidence/state/continuation에 다음을 HARD로 결속한다.
+- `executionLine=GPT_SCHEDULED`
+- `campaignId=H1_GPT2_20261006`
+- `stream=A|B|C`
+- `qualityContractVersion=JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
+
+validator는 기본 schema, difficulty 허용 enum, 실제 production asset 및 SVG dependency, EXCLUDED marker, known HOLD/FAIL review, examTitle을 기계적으로 거부한다.
+CREATE/R1 Golden preflight는 파일명/boolean만 남기지 않고 GPT 전용 calibration registry의 실제 Golden/Negative 파일 SHA, 대표 qid solution SHA, 필요한 solution SVG SHA, observation을 evidence에 결속한다.
+
+R3는 targeted `rows`를 확대하지 않는다. 미변경 문항의 합법적인 PT/TPL null debt는 현재 artifact SHA에 결속된 `artifactDispositions`로 인계한다.
+
+stage validator 호출은 반드시:
+`--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id H1_GPT2_20261006 --stream <A|B|C>`
+를 사용한다.
+
+MASTER MAIN_DONE은 render 없이 다음 physical evidence를 요구한다.
+- R3 validator report physical ref + SHA
+- final artifact Git blob SHA
+- 필요한 asset ref + SHA-256
+- production canonical path
+- final remote main SHA
+- origin/main의 production blob + asset parity
+
+이 closeout은 품질 의미판정을 다시 하지 않는다.

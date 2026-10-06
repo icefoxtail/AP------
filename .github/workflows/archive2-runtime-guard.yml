@@ -1,0 +1,42 @@
+name: Archive2 Runtime Guard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'archive/**'
+      - 'tests/archive2-*'
+      - 'tests/fixtures/archive2-*'
+      - 'tools/check-archive2-runtime.cjs'
+      - 'tools/run-tests.js'
+      - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
+      - '.github/workflows/archive2-runtime-guard.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'archive/**'
+      - 'tests/archive2-*'
+      - 'tests/fixtures/archive2-*'
+      - 'tools/check-archive2-runtime.cjs'
+      - 'tools/run-tests.js'
+      - 'docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md'
+      - '.github/workflows/archive2-runtime-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-contract:
+    name: Archive2 runtime contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify original routes, response budgets, and storage failures
+        run: node tools/check-archive2-runtime.cjs

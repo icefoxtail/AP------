@@ -23,7 +23,7 @@ window.questionBank = [
       "$1000=10^4$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "③\n\n$2\\times2\\times3\\times3\\times3$\n\n$=2^2\\times3^3$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -62,7 +62,7 @@ window.questionBank = [
       "ㄱ, ㄷ, ㄹ"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "ㄱ. 가장 작은 소수는 $2$ → 거짓\n\nㄴ. 한 자리 합성수는\n$4,6,8,9$ → $4$개 → 참\n\nㄷ. $7$의 배수 중 소수는 $7$ 하나뿐 → 거짓\n\nㄹ. $2$는 짝수인 소수 → 거짓\n\n따라서 ㄴ만 옳다.\n\n정답은 ①이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -99,7 +99,7 @@ window.questionBank = [
       "$256$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$6,18,24,36$의 소인수는 모두\n\n$2,\\ 3$\n\n이다.\n\n$256=2^8$\n\n의 소인수는 $2$뿐이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -136,7 +136,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "약수가 정확히 $3$개인 자연수는\n\n$p^2$\n\n꼴이고 $p$는 소수이다.\n\n$p^2\\le600$이므로\n\n$p\\le24$\n\n소수는\n\n$2,3,5,7,11,13,17,19,23$\n\n모두 $9$개이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -173,7 +173,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$10$과 $20$ 사이의 자연수는\n\n$11,12,13,14,15,16,17,18,19$\n\n$15=3\\times5$와 서로소이려면\n$3,5$의 배수를 제외한다.\n\n$11,13,14,16,17,19$\n\n모두 $6$개이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -210,7 +210,7 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "첫째 수:\n$2^a\\times3\\times5$\n\n둘째 수:\n$2^3\\times3^b\\times c$\n\n최대공약수가 $2^3\\times3$,\n최소공배수가 $2^5\\times3^4\\times5\\times11$이므로\n\n$a=5$\n\n$b=4$\n\n$c=11$\n\n따라서\n\n$a+b-c=5+4-11=-2$\n\n정답은 ①이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -247,7 +247,7 @@ window.questionBank = [
       "$49$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "구하는 분수를 $x$라 하자.\n\n$x\\times\\dfrac{26}{9}$,\n$x\\times\\dfrac{13}{12}$\n\n가 모두 자연수가 되어야 한다.\n\n가장 작은 값은\n\n$x=\\dfrac{36}{13}$\n\n왜냐하면\n\n$\\dfrac{36}{13}\\times\\dfrac{26}{9}=8$\n\n$\\dfrac{36}{13}\\times\\dfrac{13}{12}=3$\n\n이기 때문이다.\n\n따라서\n\n$a=36,\\quad b=13$\n\n$a+b=49$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -284,7 +284,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "절댓값이 같은 두 수는\n\n$-x,\\ x$\n\n로 둘 수 있다.\n\n두 수의 차가 $9$이므로\n\n$x-(-x)=9$\n\n$2x=9$\n\n$x=\\dfrac92$\n\n두 수는\n\n$-\\dfrac92,\\ \\dfrac92$\n\n그 사이의 정수는\n\n$-4,-3,-2,-1,0,1,2,3,4$\n\n모두 $9$개이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -324,7 +324,7 @@ window.questionBank = [
       "화, 오후9시"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "두바이는 그리니치보다 $4$시간 빠르고,\n뉴욕은 그리니치보다 $5$시간 느리다.\n\n두바이와 뉴욕의 시차는\n\n$4+5=9$시간\n\n두바이가 화요일 오전 $6$시이면\n\n뉴욕은 $9$시간 전인\n\n월요일 오후 $9$시\n\n이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -361,7 +361,7 @@ window.questionBank = [
       "$(-3)+(-5)-(-13)-(+6)$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "각 값을 계산한다.\n\n① $8+3+7=18$\n\n② $10-3+1=8$\n\n③ $-6-2-5=-13$\n\n④ $-4-9+8+2=-3$\n\n⑤ $-3-5+13-6=-1$\n\n가장 작은 값은 $-13$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -401,7 +401,7 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "전개도를 접으면 마주 보는 면은\n\n$-3\\leftrightarrow a$\n\n$5\\leftrightarrow b$\n\n$c\\leftrightarrow1$\n\n이다.\n\n마주 보는 두 수의 합이 $4$이므로\n\n$a=7$\n\n$b=-1$\n\n$c=3$\n\n따라서\n\n$abc=7\\times(-1)\\times3=-21$\n\n정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "candidate_evidence",
@@ -441,7 +441,7 @@ window.questionBank = [
       "$220$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$(-10)\\times(+11)\\times(-2)$\n\n$=(-10)\\times(-2)\\times(+11)$\n— 교환법칙\n\n$=\\{(-10)\\times(-2)\\}\\times(+11)$\n— 결합법칙\n\n$=20\\times11$\n\n$=220$\n\n따라서 “분배법칙”인 ②가 옳지 않다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -478,7 +478,7 @@ window.questionBank = [
       "$1000$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$41.6\\times1.7+58.4\\times1.7$\n\n$=(41.6+58.4)\\times1.7$\n\n$=100\\times1.7$\n\n$=170$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -515,7 +515,7 @@ window.questionBank = [
       "$-\\dfrac{1}{10}$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$-3$의 역수는\n\n$x=-\\dfrac13$\n\n$0.3=\\dfrac3{10}$의 역수는\n\n$y=\\dfrac{10}{3}$\n\n따라서\n\n$x\\div y\n=-\\dfrac13\\div\\dfrac{10}{3}$\n\n$=-\\dfrac13\\times\\dfrac3{10}$\n\n$=-\\dfrac1{10}$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -552,7 +552,7 @@ window.questionBank = [
       "$+3$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$\\left(-\\dfrac45\\right)\\left(-\\dfrac23\\right)\\div\\left(-\\dfrac85\\right)$\n\n$=\\dfrac8{15}\\times\\left(-\\dfrac58\\right)$\n\n$=-\\dfrac13$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -589,7 +589,7 @@ window.questionBank = [
       "$a\\lt0, b\\lt0, c\\lt0$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$ab<0$이므로\n$a,b$의 부호는 서로 다르다.\n\n$a-b>0$에서\n$a<0,\\ b>0$은 불가능하다.\n\n따라서\n\n$a>0,\\quad b<0$\n\n또\n\n$\\dfrac bc>0$\n\n이므로 $c<0$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -626,7 +626,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "먼저\n\n$\\left(-\\dfrac54\\right)\\div\\left(-\\dfrac53\\right)\n=\\dfrac34$\n\n$6-\\dfrac34=\\dfrac{21}{4}$\n\n또\n\n$(-2)^3=-8$\n\n$\\left(-\\dfrac34\\right)^2=\\dfrac9{16}$\n\n따라서\n\n$A=5+(-8)\\div\\dfrac{21}{4}\\times\\dfrac9{16}$\n\n$=5-\\dfrac{32}{21}\\times\\dfrac9{16}$\n\n$=5-\\dfrac67$\n\n$=\\dfrac{29}{7}$\n\n$A<5$이고 $A>4$이므로\n$A$보다 작은 양의 정수는\n\n$1,2,3,4$\n\n합은\n\n$1+2+3+4=10$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -663,7 +663,7 @@ window.questionBank = [
       "십의 자리의 숫자가 $x$, 일의 자리의 숫자가 $y$인 두 자리 자연수는 $xy$이다."
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "십의 자리 숫자가 $x$,\n일의 자리 숫자가 $y$이면\n\n두 자리 자연수는\n\n$10x+y$\n\n이다.\n\n$xy$가 아니다.\n\n따라서 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -702,7 +702,7 @@ window.questionBank = [
       "ㄴ, ㅁ, ㅂ"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "각 식을 정리하면\n\nㄴ.\n$a\\div b\\times c=\\dfrac{ac}{b}$\n\nㅂ.\n$a\\div(b\\div c)\n=a\\times\\dfrac cb\n=\\dfrac{ac}{b}$\n\n따라서 같은 것은\n\nㄴ, ㅂ\n\n정답은 ③이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -739,7 +739,7 @@ window.questionBank = [
       "$x+\\dfrac{2}{y}$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$x=-2,\\ y=-\\dfrac12$을 대입한다.\n\n① $-2xy=-2$\n\n② $x-y=-\\dfrac32$\n\n③ $4y^2-x=3$\n\n④ $x^2-\\dfrac y4\n=4+\\dfrac18\n=\\dfrac{33}{8}$\n\n⑤ $x+\\dfrac2y=-6$\n\n가장 큰 것은 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -772,7 +772,7 @@ window.questionBank = [
     "content": "(서술형1) 가로의 길이가 24cm, 세로의 길이가 10cm, 높이가 12cm인 직육면체 모양의 벽돌을 일정한 방향으로 빈틈없이 쌓아 가능한 한 작은 정육면체를 만들려고 할 때 다음 물음에 답하시오. (소인수분해를 사용하여 계산하시오.) [7점]\\n(1) 정육면체의 한 모서리의 길이를 구하시오. [3점]\\n(2) 필요한 벽돌의 총 개수를 구하시오. [4점]",
     "choices": [],
     "answer": "(1) 120cm, (2) 600개",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 (1) 120cm, (2) 600개이다.",
+    "solution": "정육면체 한 모서리는\n\n$24,10,12$의 최소공배수이다.\n\n$24=2^3\\times3$\n\n$10=2\\times5$\n\n$12=2^2\\times3$\n\n따라서\n\n$\\operatorname{lcm}=2^3\\times3\\times5=120$\n\n(1) 한 모서리는 $120\\,\\mathrm{cm}$\n\n벽돌 수는 부피의 비로\n\n$\\dfrac{120^3}{24\\times10\\times12}$\n\n$=\\dfrac{1728000}{2880}$\n\n$=600$\n\n(2) $600$개",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -805,7 +805,7 @@ window.questionBank = [
     "content": "(서술형2) 태호와 수현이는 계단에서 가위바위보 놀이를 하는데 이기면 3칸 올라가고 지면 2칸 내려가기로 했다. 처음 위치를 0으로 하고, 1칸 올라가는 것을 $+1$, 1칸 내려가는 것을 $-1$이라고 하자. 가위바위보를 8번 하여 태호가 5번 이겼다고 할 때, 두 사람의 위치를 나타내는 수의 차를 구하시오. (단, 비긴 경우는 없다.) [7점]",
     "choices": [],
     "answer": "10",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 10이다.",
+    "solution": "태호는 $8$번 중 $5$번 이기고 $3$번 진다.\n\n태호의 위치\n\n$5\\times3-3\\times2$\n\n$=15-6$\n\n$=9$\n\n수현은 $3$번 이기고 $5$번 진다.\n\n수현의 위치\n\n$3\\times3-5\\times2$\n\n$=9-10$\n\n$=-1$\n\n두 위치의 차는\n\n$9-(-1)=10$",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -838,7 +838,7 @@ window.questionBank = [
     "content": "(서술형3) 네 수 $-\\dfrac{2}{3}$, $\\dfrac{3}{5}$, $3$, $-\\dfrac{2}{7}$ 중에서 서로 다른 세 수를 골라 곱한 값 중에서 가장 큰 것을 $A$, 가장 작은 것을 $B$라 할 때, $A+B$의 값을 구하시오. [6점]",
     "choices": [],
     "answer": "$-\\dfrac{22}{35}$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $-\\dfrac{22}{35}$이다.",
+    "solution": "서로 다른 세 수의 곱을 모두 계산한다.\n\n$\\left(-\\dfrac23\\right)\\left(\\dfrac35\\right)(3)\n=-\\dfrac65$\n\n$\\left(-\\dfrac23\\right)\\left(\\dfrac35\\right)\\left(-\\dfrac27\\right)\n=\\dfrac4{35}$\n\n$\\left(-\\dfrac23\\right)(3)\\left(-\\dfrac27\\right)\n=\\dfrac47$\n\n$\\left(\\dfrac35\\right)(3)\\left(-\\dfrac27\\right)\n=-\\dfrac{18}{35}$\n\n가장 큰 값\n\n$A=\\dfrac47$\n\n가장 작은 값\n\n$B=-\\dfrac65$\n\n따라서\n\n$A+B=\\dfrac47-\\dfrac65$\n\n$=\\dfrac{20-42}{35}$\n\n$=-\\dfrac{22}{35}$",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",

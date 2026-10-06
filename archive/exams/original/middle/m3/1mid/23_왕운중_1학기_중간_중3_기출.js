@@ -420,9 +420,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "표"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다음 보기 중에서 옳은 것을 모두 고른 것은? [4점]\\n\\n<table class='question-table'><tr><td>ㄱ. 제곱근 5는 $\\pm\\sqrt{5}$이다.<br>ㄴ. $\\sqrt{9}$의 제곱근은 무리수이다.<br>ㄷ. 실수에서 무리수가 아닌 수는 모두 유리수이다.</td></tr></table>",
     "choices": [

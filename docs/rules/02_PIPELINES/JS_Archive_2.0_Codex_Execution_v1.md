@@ -25,6 +25,8 @@ ROOT
 ROOT는 routing과 기술 closure를 담당한다.
 수학·Meta·Visual·source의 의미 품질 판단을 ROOT가 대신하지 않는다.
 
+Archive 2.0 런타임 구현·개선·출력 경로 변경의 기술 closure에는 `../01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 반드시 함께 적용한다. 원본 기출의 Archive 1 직접 경로, 사용자 응답 속도, 저장소 장애·용량 초과 시 동작은 기능 추가와 리팩터링에서도 유지해야 하는 완료 조건이다. `node tools/check-archive2-runtime.cjs` 결과와 변경 흐름의 실제 브라우저 검증 없이 해당 런타임 변경을 MAIN_DONE으로 선언하지 않는다. 원본 시험지 source만 다루는 stage 검수의 절차를 이 규칙으로 대체하지 않는다.
+
 ## 2. ROOT
 
 ROOT 책임:
@@ -68,6 +70,8 @@ CREATE는 전 qid의 Archive 완제품 후보를 만든다.
 
 - source identity / content / choices / answer
 - QUESTION_LAYOUT exact parity
+- QUESTION_LAYOUT은 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`의 AUTO-FIRST와 의미 경계 기준을 qid별로 적용한다. 실제 엔진에서 자연스러운 흐름은 KEEP하고, 독립된 수식 정의·조건·질문 전환이 붙어 읽기 어려운 경우 완결 수식 바깥에서만 최소 개행한다. 글자 수/정규식 기반 일괄 수정은 금지한다. HTML placeholder는 MathJax `$...$` 구간 밖에 둔다.
+- 사용자가 예시 qid를 제시해도 전 qid 독립 검토를 생략하지 않는다. 각 qid의 `beforeDisposition`, `finalDisposition`, defect/KEEP 근거를 적고, user-supplied examples와 independent findings를 구분한다. pilot denominator를 닫기 전에 실제 exam engine에서 각 qid의 화면 흐름을 본다.
 - 학생용 작은칠판 solution
 - Meta Foundation
 - difficulty 4필드

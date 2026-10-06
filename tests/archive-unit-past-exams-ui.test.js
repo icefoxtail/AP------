@@ -20,7 +20,7 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
   assert.match(html, /archive2-core\.js\?v=20260922-shared-semantic/);
   assert.match(html, /unit-past-exams-core\.js\?v=20260922-shared-semantic/);
-  assert.match(html, /unit-past-exams\.js\?v=20260922-semantic-cards/);
+  assert.match(html, /unit-past-exams\.js\?v=20261006-unit-envelope-handoff-2/);
   assert.match(html, /id="unit-stepper"/);
   for (const id of ['unit-subunits', 'unit-difficulty', 'unit-mode', 'unit-quick-preset', 'unit-quick-count', 'unit-advanced-rows', 'unit-selection-report', 'unit-collection-scope', 'unit-collection-year-mode', 'unit-school-list', 'unit-collection-output', 'unit-collection-report']) {
     assert.match(js, new RegExp(id));

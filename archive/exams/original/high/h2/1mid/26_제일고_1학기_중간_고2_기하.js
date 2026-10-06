@@ -71,7 +71,8 @@ window.questionBank = [
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q2.png"
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q2.png",
+    "imageSize": "large"
   },
   {
     "id": 3,

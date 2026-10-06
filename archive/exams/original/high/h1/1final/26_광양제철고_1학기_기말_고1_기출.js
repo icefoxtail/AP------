@@ -297,7 +297,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "방정식 $x^3+1=0$의 한 허근을 $w$라 할 때, $(-w^2-1)+(-w^2-1)^2+\\cdots+(-w^2-1)^{22}$의 값은? [4.9점]",
+    "content": "방정식 $x^3+1=0$의 한 허근을 $w$라 할 때,<br>$(-w^2-1)+(-w^2-1)^2+\\cdots+(-w^2-1)^{22}$의 값은? [4.9점]",
     "choices": [
       "$-w$",
       "$-w-1$",

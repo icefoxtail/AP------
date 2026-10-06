@@ -26,7 +26,7 @@ GPT 작업 전 필독 라우터
 {SCOPE_DESCRIPTION}
 {CAMPAIGN_ID}
 {GENERATION_ROOT}
-{CAMPAIGN_MANIFEST}
+{CAMPAIGN_MANIFEST}   # Git: archive/data/gpt-campaigns/H1_GPT2_20261006.json
 {SOURCE_AUTHORITY}
 {ROLE}
 {STREAM}
@@ -45,9 +45,10 @@ LANE_INDEX 1/2/3 공용-pool 방식은 GPT 2.0에서 사용하지 않는다.
 campaignId = {CAMPAIGN_ID}
 stream = {STREAM}
 generationRoot = {GENERATION_ROOT}
-campaignManifest = {CAMPAIGN_MANIFEST}
+campaignManifest = {CAMPAIGN_MANIFEST}  # latest main Git authority; Library mirror 불필요
 sourceAuthority = {SOURCE_AUTHORITY}
 qualityContractVersion = JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
+executionLine = GPT_SCHEDULED
 
 매 run 시작 시 Notion CURRENT와 latest main의 Common Quality Contract → GPT Campaign Generation → GPT Scheduled Execution → GPT Scheduled Prompt Template 자기 ROLE block을 1회 읽고 바로 작업한다.
 
@@ -211,3 +212,15 @@ actual engine render, NOT_RUN_CODEX_HANDOFF, RENDER_PASS를 prerequisite/완료�
 - legacy THANOS/MAIN/WATCHDOG/R2-targeted 템플릿 혼합 금지
 - 같은 examUid를 둘 이상의 stream에 넣지 않음
 - 특정 시험지명은 worker prompt에 박지 않고 frozen campaign-manifest가 소유
+
+## 9. MACHINE GATE HARD — COPY TO ALL 15 LANES
+
+모든 stage evidence/state/continuation은 `executionLine=GPT_SCHEDULED`, current `campaignId`, fixed `stream`을 유지한다.
+validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id {CAMPAIGN_ID} --stream {STREAM}`을 명시한다.
+
+CREATE/R1은 GPT calibration registry의 실제 Golden/Negative 파일을 읽고 file SHA + 대표 qid solution SHA + 필요한 visual SHA + observation을 evidence에 남긴다. 이름 목록/boolean만으로 PASS 금지.
+artifact gate가 요구하는 기본 schema, difficulty enum, actual asset/SVG dependency, examTitle, EXCLUDED/known-fail rejection을 우회하지 않는다.
+
+R3는 targeted rows와 full-artifact Meta disposition을 분리한다. 미변경 qid의 합법적 PT/TPL null debt는 `artifactDispositions.artifactSha == finalArtifactSha`인 별도 rows로 결속한다.
+
+MASTER MAIN_DONE은 `archive-gpt-closeout-v2` 계약과 같은 evidence를 만든다: R3 validation ref+SHA / artifactSha / asset SHA / productionPath / remoteMainSha. origin/main production blob 및 asset parity가 맞기 전 MAIN_DONE 금지.
