@@ -56,6 +56,7 @@ problem image 표시 크기·배치, 선택지 block/column, 실제 가독성에
 - 첫 행렬 뒤 두 번째 행렬식, 두 행렬의 곱 `AB`, (가)/(나) 정의처럼 독립적으로 읽어야 하는 완결 수식 단위를 경계로 삼을 수 있다. 해당 시험지의 실제 폭과 줄바꿈을 확인한 뒤 필요한 문항에만 적용한다.
 - 개행은 `$...$` 바깥에 둔다. 수식 내부의 등식·조건·좌표·단위는 쪼개지 않는다. 쉼표 뒤에 개행을 넣어도 원문 쉼표와 공백을 보존하고, 개행만으로 문장·식·조건의 순서를 바꾸지 않는다.
 - 이 예시는 의미 경계를 찾는 회귀 참고다. 문항 번호, 긴 문장, 수식의 존재를 기준으로 자동 또는 일괄 개행하지 않는다.
+- 사용자가 특정 qid를 예시로 지정해도 그 qid만 보고 끝내지 않는다. 선정 분모의 모든 qid를 독립적으로 살펴 `beforeDisposition/finalDisposition`과 KEEP 근거 또는 결함 근거를 기록한다. 사용자의 예시는 audit 경계가 아니라 검토 신호다.
 
 ## 5. FORMULA / NESTED STRUCTURE
 
@@ -207,8 +208,14 @@ aggregate 최소: `denominator, KEEP/POLISH/REFORMAT/HOLD, modifiedQuestionIds[]
 - 독립 수식 정의 경계: `26_순천여고_1학기_기말_고1` q4/q7, `26_순천고_1학기_기말_고1` q2, `26_복성고_1학기_기말_고1` q3/q6/q17/q19/q20에서 행렬·등식·조건이 시작되는 경계를 최소 개행으로 드러냈다.
 - formula/HTML 오류: `26_팔마고_1학기_기말_고2_대수` q12의 `(가)/(나)` span을 MathJax 구간 밖에 두어 `MATH_TYPESET_ERROR`를 해결했다. 학생 노출 식과 상자 문구는 보존했다.
 - `26_순천고_1학기_기말_고2_대수` q17은 두 수식 정의를 분리하고 q20은 명시 지시로 `subjective-2up`을 적용했다.
-- 범위: 10개 시험지 모두 Archive exam engine `qpp=4`에서 문항 표시를 확인했다. 이 파일럿은 solution/answer mode 또는 mobile viewport qualification을 뜻하지 않는다. 10/10 denominator, 15 changed qids, `SOURCE_TEXT_EXACT_PARITY`와 choices parity를 확인했다.
+- 범위: 10개 시험지 모두 Archive exam engine `qpp=4`에서 문항 표시를 확인했다. 이 파일럿은 solution/answer mode 또는 mobile viewport qualification을 뜻하지 않는다. 최초 파일럿은 10/10 denominator, 15 changed qids, `SOURCE_TEXT_EXACT_PARITY`와 choices parity를 확인했다.
 - 이 목록은 개별 의미 경계 예시다. 문자 수·문장 길이·수식 개수로 줄바꿈/2up을 자동 분류하는 규칙으로 일반화하지 않는다.
+
+### 2026-10-06 독립 후속 화면 검토
+
+파일럿 종료 뒤 `26_효천고_1학기_기말_고1` q3/q23/q25를 다시 열어 화면을 확인했다. 앞서 사용자가 참고 대상으로 언급한 q3은 등식 `$2A=B$`가 자동 줄바꿈에서 좌변과 우변으로 갈라져 등식 앞에 개행을 추가했다. q23의 연립부등식은 수식 단위와 질문 흐름이 자연스러워 KEEP했다. 사용자가 지목하지 않은 q25에서는 `A_n`, `B_n`, `X` 행렬 정의가 서로 붙고 첫 식도 자동 줄바꿈으로 갈라져 각각 완결된 줄에 배치했다. q25는 이 후속 화면 검토에서 독립적으로 찾은 결함이다.
+
+후속 q3/q25 수정 뒤 누적 결과는 7/10 시험지, 17 qid 수정이다. 이 후속 화면 검토는 효천고 q3/q23/q25 범위이며, 10개 전 시험지의 2차 visual sweep을 완료했다는 뜻은 아니다. qid별 evidence에는 사용자 지정 사례와 독립 발견 사례를 나누고 KEEP/수정 disposition과 화면 근거를 기록한다.
 
 향후 실제 defect는 fixture·세부 예시로 추가한다.
 **원문 exact 보존 / AUTO-FIRST / CREATE self-check / R1 독립검수 / final render core contract는 유지한다.**
