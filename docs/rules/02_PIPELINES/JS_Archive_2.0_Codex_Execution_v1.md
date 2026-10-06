@@ -278,3 +278,7 @@ Actions는 CURRENT를 기본으로 강제한다. 역사 검수는 dispatch의 `q
 ROOT의 신규 job state는 `buildStageState({stage:"CREATE",qualityContractVersion:"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",executionLine:"CODEX"})`로 시작한다. 소비 helper는 계약을 다음 state에 유지하고, legacy 보고서로 downgrade하거나 다른 실행 라인의 PASS를 인계하는 것을 거부한다.
 
 동일 계약/라인 정보는 durable continuation에도 보존한다. MASTER technical resume에서 계약 버전을 잃고 legacy closure를 소비하지 않는다.
+
+### legacy level 타입 정정 — 2026-10-06
+
+난이도 정본 v1.3의 legacy `level`은 `하 | 중 | 상` 문자열이며 기존 값을 보존한다. `difficultyBucket`의 `1..5` 숫자와 분리한다. validator에 맞추려고 legacy level을 `1/2/3`으로 변환하지 않는다. qualification 첫 CREATE에서 정상 문자열을 거부한 숫자-only gate는 검사기 오류였다. 실패 attempt를 보존하고 그 오류를 바로잡으며, 이미 숫자로 변환한 값은 worker가 원래 문항별 값을 복원한다. bucket·confidence·boundary·compatibility의 독립 판정 및 나머지 gate는 완화하지 않는다.

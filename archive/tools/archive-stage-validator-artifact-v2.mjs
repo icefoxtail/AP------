@@ -159,7 +159,8 @@ function validateBasicSchema(question, qid, issues) {
   for (const field of ['category','originalCategory','layoutTag']) if (typeof question?.[field] !== 'string') issues.push('ARTIFACT_STRING_REQUIRED:'+field+':q'+qid);
   if (!Array.isArray(question?.tags) || question.tags.some(t=>!nonEmpty(t))) issues.push('ARTIFACT_TAGS_ARRAY_REQUIRED:q'+qid);
   if (typeof question?.wide !== 'boolean') issues.push('ARTIFACT_WIDE_BOOLEAN_REQUIRED:q'+qid);
-  if (question?.level !== null && !(Number.isInteger(question?.level) && question.level>=1 && question.level<=3)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
+  // difficulty canonical v1.3: historical level labels are not numeric bucket values.
+  if (!['하','중','상'].includes(question?.level)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
 }
 
 function resolveInside(root, relative) {
