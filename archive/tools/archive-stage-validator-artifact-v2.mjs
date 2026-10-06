@@ -222,7 +222,7 @@ function validateGoldenProvenance(evidence,repoRoot,issues) {
         if(q.solutionImage) {
           const visual=resolveInside(repoRoot,'archive/'+q.solutionImage);
           if(solutionSha256(fs.readFileSync(visual,'utf8'))!==item.visualSha256) throw new Error('GOLDEN_VISUAL_BINDING_REQUIRED');
-          visualReviewed=true;
+          visualReviewed=visualReviewed || !(registry.knownExceptions||[]).some(e=>e.path===sample.path && e.qid===item.qid && e.axis==='VISUAL_SEMANTIC_PARITY');
         }
       }
       if(box.window.questionBank?.some(q=>q.solutionImage) && !visualReviewed) throw new Error('GOLDEN_VISUAL_READ_REQUIRED');
