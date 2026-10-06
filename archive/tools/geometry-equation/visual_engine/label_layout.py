@@ -65,21 +65,31 @@ def candidate(at,width,height,direction,gap):
     return Box(x+gap if dx>0 else x-gap-width if dx<0 else x-width/2,
                y+gap if dy>0 else y-gap-height if dy<0 else y-height/2,width,height)
 
-def layout(labels,obstacles,safe_area,panel=None,measurements=None):
+def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
 
     Unsupported further repairs are explicit suggestions, never fake PASS.
     A coordinate side panel includes its point name, so long leaders are not
     needed. Critical point names remain at their marker or require polishing.
     """
+    if require_measurements and not isinstance(measurements,dict):raise ValueError('BROWSER_MEASUREMENTS_REQUIRED')
     measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
     for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
-        w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
-        w,h=finite(w),finite(h);chosen=None;method=None
+        if require_measurements:
+            if label['id'] not in measurements:raise ValueError('BROWSER_LABEL_MEASUREMENT_REQUIRED:'+label['id'])
+            measured=measurements[label['id']]
+            if not isinstance(measured,(list,tuple)) or len(measured)!=2:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
+            try:w,h=finite(measured[0]),finite(measured[1])
+            except ValueError:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id']) from None
+            if w<=0 or h<=0:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
+        else:
+            w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
+            w,h=finite(w),finite(h)
+        chosen=None;method=None
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if 'candidateCenters' in label:
             from .publication import box_owned
@@ -98,7 +108,10 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
         if chosen is None and panel is not None and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
             text=label.get('panelText',label['text'])
-            pw,ph=approximate_size(text,label.get('font',13.25))
+            if require_measurements:
+                if text!=label['text'] or label.get('panelPrefix'):raise ValueError('BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:'+label['id'])
+                pw,ph=w,h
+            else:pw,ph=approximate_size(text,label.get('font',13.25))
             pw=max(pw,w);ph=max(ph,h)
             for row in range(0,int(panel.height),24):
                 box=Box(panel.x,panel.y+row,pw,ph)

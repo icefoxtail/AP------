@@ -38,7 +38,7 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
       content='<path d="'+p.toPathData(5)+'" fill="#111"/>';
     } else throw Error('UNSUPPORTED_LABEL_KIND');
     const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" id="'+namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="'+esc(label.factRole)+'">'+content+'</svg>';
-    return {labelId:label.id,owner:label.owner,namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:actual,intrinsic:{width,height,baseline},fontPx:label.fontPx,typesetter:'MathJax SVG / NotoSansKR outlines'};
+    return {labelId:label.id,owner:label.owner,factRole:label.factRole,namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:actual,intrinsic:{width,height,baseline},fontPx:label.fontPx,typesetter:'MathJax SVG / NotoSansKR outlines'};
   };
 }
 export function composeTypographyProbe(fragments,{gap=12}={}) {

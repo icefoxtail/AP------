@@ -13,7 +13,7 @@ test('actual MathJax SVG and Korean outlines for required notation inventory',()
 });
 test('owner namespaces, deterministic fragment, font hash and missing glyph negatives',()=>{
   const t=typesetter({fontPath,fontSha256}),label=typographyLabels[0];
-  const a=t(label,{visualAssetKey:'asset1'});assert.deepEqual(a,t(label,{visualAssetKey:'asset1'}));
+  const a=t(label,{visualAssetKey:'asset1'});assert.deepEqual(a,t(label,{visualAssetKey:'asset1'}));assert.equal(a.owner,label.owner);assert.equal(a.factRole,label.factRole);
   assert.notEqual(a.namespace,t({...label,owner:'another'},{visualAssetKey:'asset1'}).namespace);
   assert.throws(()=>typesetter({fontPath,fontSha256:'wrong'}),/FONT_HASH/);
   assert.throws(()=>t({...label,text:'\u{10ffff}'},{visualAssetKey:'asset1'}),/MISSING_KOREAN/);
