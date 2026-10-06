@@ -622,7 +622,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
     "questionType": "단답형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "여러 가지 방정식과 부등식"
@@ -647,7 +647,7 @@ window.questionBank = [
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
     "questionType": "단답형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "이차방정식과 이차함수",
