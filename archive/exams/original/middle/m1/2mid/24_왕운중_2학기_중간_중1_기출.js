@@ -26,7 +26,7 @@ window.questionBank = [
       "$198^\\circ$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "직선 m과 l이 이루는 각이 61^\\circ이므로\nx=180^\\circ-61^\\circ=119^\\circ\n\n또 표시된 두 사선은 서로 수직이므로\ny=90^\\circ-61^\\circ=29^\\circ\n\n따라서\nx+y=119^\\circ+29^\\circ=148^\\circ\n\n정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -66,7 +66,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "5개의 점 중 두 점을 고르면 선분 하나가 정해진다.\n\n선분의 개수는\n\\dfrac{5\\times4}{2}=10\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -106,7 +106,7 @@ window.questionBank = [
       "$6\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "사다리꼴의 높이를 h\\,\\mathrm{cm}라 하자.\n\n넓이는\n\\dfrac{(3+5)\\times h}{2}=16\n\n4h=16\nh=4\n\n점 D와 변 BC 사이의 거리는 이 높이이므로\n4\\,\\mathrm{cm}\n\n정답은 ③이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
@@ -146,7 +146,7 @@ window.questionBank = [
       "$\\overline{AB}=16\\,\\mathrm{cm}$일 때, $\\overline{EC}=2\\,\\mathrm{cm}$이다."
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "AB의 길이를 L이라 하자.\n\nC는 AB의 중점이므로\nAC=CB=\\dfrac{L}{2}\n\nD는 CB의 중점이므로\nCD=DB=\\dfrac{L}{4}\n\nE는 AD의 중점이고\nAD=AC+CD=\\dfrac{3L}{4}\n이므로\nAE=ED=\\dfrac{3L}{8}\n\n또\nEC=AC-AE\n=\\dfrac{L}{2}-\\dfrac{3L}{8}\n=\\dfrac{L}{8}\n\n따라서\nEC:CD=1:2\n\nAD=\\dfrac{3}{4}AB이므로\nAD=\\dfrac23AB라는 ④가 옳지 않다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -186,7 +186,7 @@ window.questionBank = [
       "모서리 $BE$, 모서리 $DE$"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "삼각기둥에서 \\overline{DF}와 점 D에서 만나는 모서리 중 하나는 \\overline{DE}이다.\n\n또 \\overline{AB}와 \\overline{EF}는\n만나지 않고 평행하지도 않으며 같은 평면 위에 있지 않으므로\n꼬인 위치이다.\n\n따라서 올바른 짝은\n\\overline{DE},\\ \\overline{EF}\n이고 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -223,7 +223,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "ㄱ.\nl\\parallel m,\\ l\\parallel n이면\nm,n도 같은 방향이고 한 평면 위에 놓이므로\nm\\parallel n이다.\n\nㄴ.\nP\\perp Q,\\ Q\\perp R이라고 해서\nP\\parallel R인 것은 아니다.\n\nㄷ.\nP\\parallel Q이고 l\\perp P이면\nl\\perp Q이다.\n\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -263,7 +263,7 @@ window.questionBank = [
       "$\\angle a=52^\\circ$, $\\angle b=54^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "PO\\parallel AB이다.\n\n\\angle PQR=116^\\circ이므로\n접는 선 QR과 수평선이 이루는 예각은\n180^\\circ-116^\\circ=64^\\circ\n\n따라서\nb=64^\\circ\n\n접으면 직선 AB의 상이 QR을 기준으로 대칭이므로\n원래 AB와 접힌 AB가 이루는 작은 각은\n180^\\circ-2\\times64^\\circ=52^\\circ\n\n따라서\na=52^\\circ,\\quad b=64^\\circ\n\n정답은 ②이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -298,7 +298,7 @@ window.questionBank = [
     "content": "다음 중 두 직선 $l$, $m$에 대해 $l\\parallel m$인 것은? (4점)",
     "choices": [],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "평행선이면 같은 쪽 내각의 합이 180^\\circ이다.\n\n③에서\n118^\\circ+62^\\circ=180^\\circ\n\n따라서 ③의 두 직선이 평행하다.\n정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -335,7 +335,7 @@ window.questionBank = [
       "$\\angle B$의 대변의 길이: $5\\,\\mathrm{cm}$, $\\angle A=30^\\circ$, $\\angle C=45^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "① 세 각만 주어져 크기가 정해지지 않는다.\n\n②\n2+4<7\n이므로 삼각형이 만들어지지 않는다.\n\n③ 두 각만으로는 크기가 정해지지 않는다.\n\n④ 두 변과 끼인각이 아닌 각이 주어진 경우라 하나로 결정된다고 할 수 없다.\n\n⑤ \\angle B의 대변은 AC이고\nAC=5\\,\\mathrm{cm},\n\\angle A=30^\\circ,\n\\angle C=45^\\circ\n가 주어진다.\n한 변과 그 양 끝 각이 정해지므로 삼각형은 하나로 결정된다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -376,7 +376,7 @@ window.questionBank = [
       "‘엇각의 크기가 서로 같으면 두 직선은 평행하다.’는 원리가 사용되었다."
     ],
     "answer": "④",
-    "solution": "평행선을 작도할 때에는 원래 교점 C에서 같은 반지름의 호를 그리고, 점 P에서 그 호를 다시 그린다. 이어 원래 호의 두 교점 사이 거리를 새 호에 옮겨 대응점을 만든 뒤 P를 통과하도록 연결한다. D 원본의 표시와 길이·각 관계를 대조하면 이 작도 순서와 맞지 않는 진술은 ④이다.",
+    "solution": "직선 m 위의 점 C에서 만든 각을 점 P로 그대로 옮겨\n같은 크기의 엇각을 만드는 작도이다.\n\n작도 결과\nCD=PG\n\n\\angle DCE=\\angle FPG\n\n따라서 엇각의 크기가 같으므로\nl\\parallel m\n\n도식의 실제 작도 순서와 일치하지 않는 설명은 ④이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -419,7 +419,7 @@ window.questionBank = [
       "원을 그린다."
     ],
     "answer": "②, ⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②, ⑤이다.",
+    "solution": "컴퍼스는\n선분의 길이를 재어 다른 곳으로 옮길 때 사용하고,\n원을 그릴 때 사용한다.\n\n따라서 옳은 것은\n②, ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -456,7 +456,7 @@ window.questionBank = [
       "$6$개"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "둘레가 32\\,\\mathrm{cm}이므로\n2a+b=32\n\n삼각형이 되려면\nb<2a\n\n2a=32-b이므로\nb<32-b\n2b<32\nb<16\n\nb는 두 자리 자연수이고\na=\\dfrac{32-b}{2}가 자연수여야 하므로\nb=10,12,14\n\n각각\na=11,10,9\n이고 a\\ne b이다.\n\n따라서 가능한 삼각형은 3개이고 정답은 ②이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -497,7 +497,7 @@ window.questionBank = [
       "ㄷ과 ㄹ, ASA합동"
     ],
     "answer": "①",
-    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "ㄴ에서 한 변의 길이는 4\\,\\mathrm{cm}이고\n그 양 끝 각은\n60^\\circ,\\ 50^\\circ\n이다.\n(세 번째 각은 180^\\circ-60^\\circ-70^\\circ=50^\\circ)\n\nㅂ도 한 변의 길이가 4\\,\\mathrm{cm}이고\n그 양 끝 각이\n60^\\circ,\\ 50^\\circ\n이다.\n\n따라서 ㄴ과 ㅂ은\n한 변과 그 양 끝 각이 각각 같으므로\nASA 합동이다.\n\n정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -537,7 +537,7 @@ window.questionBank = [
       "$\\triangle OBC\\equiv\\triangle OAD$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "AC와 BD가 서로의 수직이등분선이므로\nAO=OC=3\\,\\mathrm{cm}\nBO=OD=4\\,\\mathrm{cm}\n이고 두 대각선은 수직이다.\n\n따라서\nAB=\\sqrt{3^2+4^2}=5\\,\\mathrm{cm}\n\n또\n[BCD]=\\dfrac12\\times BD\\times OC\n=\\dfrac12\\times8\\times3\n=12\\,\\mathrm{cm}^2\n\n네 변의 길이도 모두 5\\,\\mathrm{cm}이고\nAB\\parallel CD이다.\n\n\\triangle OBC와 합동인 삼각형의 올바른 대응 순서는\n\\triangle ODA이다.\n\\triangle OBC\\equiv\\triangle OAD라고 쓰면\nOB와 OA가 대응하므로 옳지 않다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "candidate_evidence",
@@ -577,7 +577,7 @@ window.questionBank = [
       "$4$회 이상 $6$회 미만"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "큰 값부터 센다.\n\n12회 이상 14회 미만: 1명\n\n10회 이상 12회 미만: 5명\n\n따라서 2번째부터 6번째로 많이 한 학생은\n10회 이상 12회 미만 계급에 있다.\n\n5번째로 많이 한 학생도 이 계급이므로\n정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -618,7 +618,7 @@ window.questionBank = [
       "$240\\,\\mathrm{mm}$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "큰 신발 크기부터 세면\n\n250: 1명\n245: 3명\n240: 1명\n235: 2명\n\n여기까지 7명이다.\n\n다음 값이 230\\,\\mathrm{mm}이므로\n8번째로 큰 학생의 신발 크기는\n230\\,\\mathrm{mm}\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -658,7 +658,7 @@ window.questionBank = [
       "$56\\%$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "220\\,\\mathrm{mm} 이상 240\\,\\mathrm{mm} 미만은\n\n220: 2명\n225: 3명\n230: 3명\n235: 2명\n\n합계\n2+3+3+2=10명\n\n전체는 25명이므로\n\\dfrac{10}{25}\\times100=40\\%\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -698,7 +698,7 @@ window.questionBank = [
       "성적이 $9$번째로 좋은 사람이 속하는 계급의 도수는 $7$명이다."
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "도수분포표에서\n\n50\\sim60:4명\n60\\sim70:5명\n70\\sim80:7명\n80\\sim90:8명\n90\\sim100:6명\n\n① 계급의 크기 10점 — 옳다.\n② 계급 5개 — 옳다.\n③ 70점 이상 80점 미만 7명 — 옳다.\n④ 70점 미만은 4+5=9명,\n\\dfrac9{30}\\times100=30\\% — 옳다.\n\n성적이 9번째로 좋은 학생은\n상위 6명이 있는 90\\sim100 다음인\n80\\sim90 계급에 속한다.\n이 계급의 도수는 8명이다.\n\n따라서 ⑤가 옳지 않다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -738,7 +738,7 @@ window.questionBank = [
       "$90$점"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "도수분포다각형에서 학생 수는\n\n50\\sim60:2명\n60\\sim70:7명\n70\\sim80:15명\n80\\sim90:9명\n90\\sim100:7명\n\n전체 40명이다.\n\n하위 25\\%는\n40\\times0.25=10명\n\n70점 미만은\n2+7=9명으로 25\\% 미만이다.\n\n따라서 보충 수업을 받지 않기 위해서는\n적어도 80점 이상이어야 한다.\n\n정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -778,7 +778,7 @@ window.questionBank = [
       "$3$만 원 미만인 학생 수는 $3$만 원 이상인 학생 수의 $9$배이다."
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "전체 학생 수는 50명이다.\n\n그래프에서 3만 원 미만인 학생 수는\n0+2+3=5명\n\n따라서\n\\dfrac5{50}\\times100=10\\%\n\n그러므로 옳은 설명은\n“3만 원 미만인 학생은 전체의 10\\%이다.”\n\n정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
@@ -813,7 +813,7 @@ window.questionBank = [
     "content": "[서술형1] 다음 그림에서 $\\angle AOB$가 평각이고 $\\angle COD=\\dfrac13\\angle AOD$, $\\angle DOE=\\dfrac12\\angle EOB$일 때, $\\angle COE$의 크기를 구하시오. (6점) ($\\angle COE$를 구하는 과정: 4점, $\\angle COE$의 크기: 2점)",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $60^\\circ$이다.",
+    "solution": "\\angle AOB=180^\\circ이고\n그림에서 \\angle AOC=90^\\circ이다.\n\n\\angle COD=x^\\circ라 하면\n\\angle AOD=90^\\circ+x\n\nx=\\dfrac13(90+x)\n\n3x=90+x\n2x=90\nx=45\n\n따라서\n\\angle DOB=180^\\circ-90^\\circ-45^\\circ=45^\\circ\n\n\\angle DOE=y^\\circ라 하면\n\\angle EOB=2y^\\circ\n\ny+2y=45^\\circ\n3y=45^\\circ\ny=15^\\circ\n\n따라서\n\\angle COE=\\angle COD+\\angle DOE\n=45^\\circ+15^\\circ\n=60^\\circ",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -848,7 +848,7 @@ window.questionBank = [
     "content": "[서술형2] 다음은 보검이네 반 학생 $25$명이 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다. $6$편 이상의 영화를 관람한 학생이 전체의 $32\\%$일 때, $A$, $B$의 값과 $4$편 미만의 영화를 관람한 학생은 전체의 몇 $\\%$인지 구하시오. (7점) ($A$를 구하는 과정: 2점, $B$를 구하는 과정: 2점, $4$편 미만의 영화를 관람한 학생이 전체의 몇 $\\%$인지 구하는 과정: 3점)",
     "choices": [],
     "answer": "$A=10,\\ B=6,\\ 56\\%$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $A=10,\\ B=6,\\ 56\\%$이다.",
+    "solution": "전체 25명의 32\\%는\n25\\times0.32=8명\n\n6편 이상 관람한 학생은\nB+2=8\nB=6\n\n도수의 합이 25이므로\n4+A+3+6+2=25\nA=10\n\n4편 미만 관람한 학생은\n4+A=14명\n\n따라서\n\\dfrac{14}{25}\\times100=56\\%\n\nA=10,\\quad B=6,\\quad 56\\%",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -883,7 +883,7 @@ window.questionBank = [
     "content": "[서술형3] 다음 그림에서 직각삼각형 $ABC$와 $BDE$에 대해, $\\overline{AC}=\\overline{BE}$, $\\overline{AB}=5\\,\\mathrm{cm}$, $\\overline{ED}=3\\,\\mathrm{cm}$, $\\angle BED=59^\\circ$, $\\angle BAC=31^\\circ$일 때, 삼각형의 합동을 이용하여 $\\overline{CD}$의 길이를 구하시오. (7점) (삼각형의 합동 이유: 3점, 삼각형의 합동 기호 표현: 1점, 삼각형의 합동 조건: 1점, $\\overline{CD}$의 길이: 2점)",
     "choices": [],
     "answer": "$2\\,\\mathrm{cm}$",
-    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $2\\,\\mathrm{cm}$이다.",
+    "solution": "\\triangle ABC에서\n\\angle ABC=90^\\circ,\\quad \\angle BAC=31^\\circ\n\n따라서\n\\angle ACB=180^\\circ-90^\\circ-31^\\circ\n=59^\\circ\n\n\\triangle BDE에서\n\\angle BDE=90^\\circ,\\quad \\angle BED=59^\\circ\n\n따라서\n\\angle DBE=31^\\circ\n\n그러므로\n\\angle BAC=\\angle DBE,\n\\angle ACB=\\angle BED,\nAC=BE\n\n따라서\n\\triangle ACB\\equiv\\triangle BED\n(ASA 합동)\n\n대응변에서\nAB=BD=5\\,\\mathrm{cm}\nBC=DE=3\\,\\mathrm{cm}\n\n따라서\nCD=BD-BC=5-3=2\\,\\mathrm{cm}",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
