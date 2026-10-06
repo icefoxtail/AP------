@@ -666,7 +666,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 $A^3 = \\dfrac{3}{4}A - \\dfrac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
+    "content": "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 <br>$A^3 = \\dfrac{3}{4}A - \\dfrac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$\\dfrac{5}{2}$",
     "solution": "[키포인트] $A^3$을 직접 구하여 두 조건을 각각 적용한다.\n1단계: $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다. 모든 성분의 합이 $4$이면 $(x-2)(x^2+x+3)=0$이고 실수해는 $x=2$뿐이므로 $a=2$이다.\n2단계: $A^3=\\dfrac34A-\\dfrac14I$의 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\dfrac34$이다. 따라서 $\\left(x-\\dfrac12\\right)^2=0$이고 $b=\\dfrac12$이다.\n3단계: $a+b=2+\\dfrac12=\\dfrac52$이다.\n∴ 정답: $\\dfrac{5}{2}$",

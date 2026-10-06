@@ -232,7 +232,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix}2&3\\\\1&4\\end{pmatrix}$, $B=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$에 대하여 $2(X-A)=X+B$를 만족시키는 행렬 $X$를 구하면?",
+    "content": "두 행렬 $A=\\begin{pmatrix}2&3\\\\1&4\\end{pmatrix}$, <br>$B=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$에 대하여 <br>$2(X-A)=X+B$를 만족시키는 행렬 $X$를 구하면?",
     "choices": [
       "$\\begin{pmatrix}2&7\\\\6&3\\end{pmatrix}$",
       "$\\begin{pmatrix}12&-18\\\\-2&10\\end{pmatrix}$",
@@ -406,7 +406,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "content": "$2$차 정사각행렬 $A$의 $(i,j)$성분 $a_{ij}$를 $a_{ij}=(-1)^i+4j+1$로 정의할 때, $b_{ij}=a_{ji}$를 만족시키는 $b_{ij}$를 $(i,j)$성분으로 하는 행렬 $B$를 구하면?",
+    "content": "$2$차 정사각행렬 $A$의 $(i,j)$성분 <br>$a_{ij}$를 $a_{ij}=(-1)^i+4j+1$로 정의할 때, $b_{ij}=a_{ji}$를 만족시키는 $b_{ij}$를 $(i,j)$성분으로 하는 행렬 $B$를 구하면?",
     "choices": [
       "$\\begin{pmatrix}9&12\\\\10&8\\end{pmatrix}$",
       "$\\begin{pmatrix}7&9\\\\10&13\\end{pmatrix}$",
