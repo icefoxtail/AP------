@@ -154,9 +154,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "표"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다음은 $(x+1)(x-1)(x^2+1)(x^4+1)(x^8+1)$을 전개하는 과정이다. 자연수 $a, b, c$에 대하여 $a+b+c$의 값은? (4점)<br><div class=\\\"question-table-wrap\\\"><table class=\\\"question-table\\\"><tr><td>$(x+1)(x-1)(x^2+1)(x^4+1)(x^8+1)$<br>$=(x^a-1)(x^2+1)(x^4+1)(x^8+1)$<br>$=(x^b-1)(x^4+1)(x^8+1)$<br>$=(x^c-1)(x^8+1)$<br>$=x^{16}-1$</td></tr></table></div>",
     "choices": [
@@ -434,9 +432,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "표"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다음은 완전제곱식을 이용하여 이차방정식 $x^2-6x-1=0$의 해를 구하는 과정이다. 이때 유리수 $A, B, C$에 대하여 $A+B+C$의 값을 구하면? (4점)<br><div class=\\\"question-table-wrap\\\"><table class=\\\"question-table\\\"><tr><td>$x^2-6x-1=0$<br>$x^2-6x=1$<br>$x^2-6x+A=1+A$<br>$(x-B)^2=C$<br>$x-B=\\pm\\sqrt{C}$<br>$x=B\\pm\\sqrt{C}$</td></tr></table></div>",
     "choices": [
@@ -645,11 +641,9 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "도형",
       "사각형",
       "원",
-      "넓이",
-      "그래프"
+      "넓이"
     ],
     "wide": false,
     "content": "공원에 있는 숲속 도서관 앞에 직사각형 모양의 야생화 꽃밭을 설치하려고 한다. 꽃밭의 가로의 길이는 $x\\text{ m}$, 꽃밭의 넓이는 $y\\text{ m}^2$이고, 꽃밭의 둘레의 길이는 $8\\text{ m}$일 때, $y$를 $x$에 대한 식으로 나타내면? (4점)",
@@ -682,7 +676,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "그래프",
       "표해석",
       "좌표",
       "대입",
@@ -742,7 +735,6 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "표",
       "서술형"
     ],
     "wide": false,
@@ -768,7 +760,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "표",
-      "그래프",
       "서술형"
     ],
     "wide": false,

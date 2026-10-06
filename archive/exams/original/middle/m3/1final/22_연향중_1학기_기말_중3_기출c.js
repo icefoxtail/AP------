@@ -86,7 +86,6 @@ window.questionBank = [
       "객관식",
       "인수분해",
       "이차방정식",
-      "도형",
       "원",
       "대입",
       "조건해석",
@@ -232,7 +231,6 @@ window.questionBank = [
       "이차함수",
       "일차함수",
       "함수",
-      "도형",
       "원",
       "넓이"
     ],
@@ -270,7 +268,6 @@ window.questionBank = [
       "함수",
       "도형",
       "원",
-      "그래프",
       "표해석"
     ],
     "wide": false,
@@ -306,7 +303,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "그래프",
       "계산"
     ],
     "wide": false,
@@ -342,7 +338,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "그래프",
       "조건해석",
       "계산"
     ],
@@ -442,7 +437,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "그래프",
       "계산"
     ],
     "wide": false,
@@ -479,7 +473,6 @@ window.questionBank = [
       "이차방정식",
       "이차함수",
       "함수",
-      "그래프",
       "대입"
     ],
     "wide": false,
@@ -547,7 +540,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "그래프",
       "표해석",
       "좌표"
     ],
@@ -582,7 +574,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "그래프",
       "표해석",
       "좌표",
       "참거짓",
@@ -659,7 +650,9 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/22_연향중_1학기_기말_중3_기출/q19.png",
+    "imageAlt": "AD=20cm, CD=12cm인 직사각형 ABCD와 변 위를 이동하는 점 P, Q"
   },
   {
     "id": 20,
