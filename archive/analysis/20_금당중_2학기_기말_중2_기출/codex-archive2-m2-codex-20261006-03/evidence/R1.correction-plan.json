@@ -1,0 +1,125 @@
+{
+  "stage": "R1",
+  "examUid": "20_금당중_2학기_기말_중2_기출",
+  "scope": [
+    3,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    21,
+    22,
+    23
+  ],
+  "preflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/R1.calibration-preflight.json",
+  "corrections": [
+    {
+      "qid": 3,
+      "storedAnswer": "①",
+      "previousSolution": "그림에서 $D$는 $AB$ 위, $F$는 $AC$ 위에 있고 $DF\\parallel BC$이다.\n\n$AB=AD+DB=9+12=21$, $AC=AF+FC=6+8=14$이므로\n$AB:AD=21:9=7:3$,\n$AC:AF=14:6=7:3$.\n\n또한 $\\angle BAC=\\angle DAF$이다. 두 변의 비와 그 끼인각이 같으므로 $\\triangle ABC\\sim\\triangle ADF$.\n따라서 옳은 설명은 ①이다.",
+      "previousSolutionSha256": "db220bea11867e0babb8879b2e6e129edbf02e614184e9bc07b27150778ea203",
+      "replacementSolution": "D, F는 각각 $AB$, $AC$ 위의 점이다. 주어진 길이로 전체 변의 길이를 구하면\n$AB=AD+DB=9+12=21$,\n$AC=AF+FC=6+8=14$이다.\n\n따라서\n$AB:AD=21:9=7:3$,\n$AC:AF=14:6=7:3$이다.\n또한 $\\angle BAC=\\angle DAF$이다.\n두 변의 비와 그 끼인각이 각각 같으므로\n$\\triangle ABC\\sim\\triangle ADF$이다.\n따라서 옳은 설명은 ①이다.",
+      "replacementSolutionSha256": "c0a523fe20cc9321477e1e32a80a066534a6f38a4697e0ccd86acb90b1f5cbe0",
+      "reason": "LOGIC_JUMP: conclusion relied on DF∥BC as a premise even though the source asks to establish the similarity; derive it by SAS"
+    },
+    {
+      "qid": 14,
+      "storedAnswer": "③",
+      "previousSolution": "윗변과 아랫변의 길이가 각각 $4\\text{ cm}$와 $11\\text{ cm}$이고, 왼쪽 빗변 $AB=25\\text{ cm}$이다. 두 직각변이 만드는 직각삼각형의 밑변은 $11-4=7\\text{ cm}$이다.\n\n사다리꼴의 높이를 $h=CD$라 하면\n$h^2+7^2=25^2$\n$h^2=576$\n$h=24\\text{ cm}$.\n\n사다리꼴의 넓이는\n$\\dfrac{AD+BC}{2}\\cdot h=\\dfrac{4+11}{2}\\cdot24=180\\text{ cm}^2$.\n따라서 정답은 ⑤이다.",
+      "previousSolutionSha256": "1b8f4bf4973842b54fcf46c6a4c7e5b5c7306200cedcc4552ffd7406883367c6",
+      "replacementSolution": "식빵은 $3$가지이고 소스는 $4$가지이다. 식빵을 하나 고를 때마다 소스를 고르는 방법은 $4$가지씩 있으므로 곱의 법칙을 적용한다.\n\n$3\\times4=12$.\n따라서 샌드위치를 주문하는 경우의 수는 $12$가지이고, 정답은 ③이다.",
+      "replacementSolutionSha256": "189bd3444033529d86412aa6786c70f46dba11d0962a56dc29ef05ffb1681385",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 15,
+      "storedAnswer": "④",
+      "previousSolution": "식빵은 $3$가지, 소스는 $4$가지이다. 식빵 한 가지를 고른 뒤 소스 한 가지를 고르면 한 주문이 정해지므로 곱의 법칙을 쓴다.\n\n$3\\times4=12$.\n따라서 경우의 수는 12가지, 정답은 ③이다.",
+      "previousSolutionSha256": "14c6cbd880c292c7af246ed7939dc2fbc158a5601f494616a78b1806fa954498",
+      "replacementSolution": "서로 다른 두 주사위의 눈은 순서쌍으로 센다.\n합이 $5$인 경우는\n$(1,4),(2,3),(3,2),(4,1)$의 $4$가지이다.\n\n합이 $7$인 경우는\n$(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$의 $6$가지이다.\n두 경우는 겹치지 않으므로\n$4+6=10$.\n따라서 구하는 경우의 수는 $10$이고, 정답은 ④이다.",
+      "replacementSolutionSha256": "07c80baac662a052cff53569ad5439c415cb19d7d84b5fe09e3f5700514f92c2",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 16,
+      "storedAnswer": "③",
+      "previousSolution": "서로 다른 두 주사위는 구별되므로 결과는 순서쌍 $(a,b)$로 센다. 두 눈의 합이 $5$인 경우는\n$(1,4),(2,3),(3,2),(4,1)$의 $4$가지.\n\n합이 $7$인 경우는\n$(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$의 $6$가지.\n\n서로 겹치지 않는 두 사건이므로 합은 $4+6=10$가지이다.\n따라서 정답은 ④이다.",
+      "previousSolutionSha256": "9a88fc83909aff299304a6f98995de6d7bcd7f47a4024d197dd1950634b32083",
+      "replacementSolution": "첫 번째 눈을 $x$, 두 번째 눈을 $y$라 하면 조건은\n$-x+y=1$,\n$y=x+1$이다.\n\n주사위 눈은 $1$부터 $6$까지이므로 $y$가 주사위 눈이 되려면 $x=1,2,3,4,5$이다. 가능한 순서쌍은\n$(1,2),(2,3),(3,4),(4,5),(5,6)$이다.\n따라서 경우의 수는 $5$이고, 정답은 ③이다.",
+      "replacementSolutionSha256": "500e8f3facdea36d805e94bd27aafc103b3ff20d3d395f71bcbd4617fd4a5aa3",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 17,
+      "storedAnswer": "②",
+      "previousSolution": "첫 번째 주사위 눈을 $x$, 두 번째 주사위 눈을 $y$라 하면 조건은 $-x+y=1$, 즉 $y=x+1$이다.\n\n$y$가 $1$부터 $6$까지의 눈이 되려면 $x=1,2,3,4,5$이고, 각각\n$(1,2),(2,3),(3,4),(4,5),(5,6)$\n의 $5$가지가 가능하다.\n\n따라서 경우의 수는 5이고 정답은 ③이다.",
+      "previousSolutionSha256": "bfa14d479f6b35a6f7205ff193a4626ba9bfdfbcafd4ad2ee5fd8861d788e749",
+      "replacementSolution": "서로 다른 두 주사위의 결과는 모두 $6\\times6=36$가지이다.\n\n① $x+y=13$은 합이 최대 $12$이므로 확률은 $0$이다.\n② $x-y=0$은 두 눈이 같은 경우 $6$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n③ $xy=7$은 두 눈이 $1$부터 $6$이므로 가능한 경우가 없어 확률은 $0$이다.\n④ $x+y>12$도 가능한 경우가 없어 확률은 $0$이다.\n⑤ $y=10x$는 $x\\ge1$일 때 $y\\ge10$이므로 가능한 경우가 없어 확률은 $0$이다.\n\n따라서 확률이 다른 하나는 ②이다.",
+      "replacementSolutionSha256": "75a79694d36ea72e941e04dfc1101fdfff9e06781ba268d54805854bdd872b35",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 18,
+      "storedAnswer": "③",
+      "previousSolution": "서로 다른 두 주사위의 모든 결과는 $6\\times6=36$가지이다.\n\n① $x+y=13$은 두 눈의 합이 최대 $12$이므로 불가능하다.\n② $x-y=0$은 두 눈이 같은 경우 $6$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n③ $xy=7$은 두 눈이 $1$부터 $6$이므로 불가능하다.\n④ $x+y>12$도 불가능하다.\n⑤ $y=10x$는 $x\\ge1$이면 $y\\ge10$이라 불가능하다.\n\n따라서 확률이 다른 하나는 ②이다.",
+      "previousSolutionSha256": "9c02412916b39b1a0b85ecaae2f436842bb80020cb4355a5ccfc5245848b7e60",
+      "replacementSolution": "$1$부터 $15$까지의 소수는 $2,3,5,7,11,13$으로 $6$개이다.\n$5$의 배수는 $5,10,15$로 $3$개이고, 두 집합에 모두 속하는 수는 $5$ 하나이다.\n\n포함배제 원리에 따라 소수이거나 $5$의 배수인 수는\n$6+3-1=8$개이다.\n\n공은 모두 $15$개이므로 구하는 확률은\n$\\dfrac8{15}$.\n따라서 정답은 ③이다.",
+      "replacementSolutionSha256": "86c70854c089f0ee6cc307d995723dabfcd1ce2fe9ae6b3858fb0176483b90e3",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 19,
+      "storedAnswer": "④",
+      "previousSolution": "$1$부터 $15$까지의 소수는 $2,3,5,7,11,13$으로 $6$개이다.\n\n$5$의 배수는 $5,10,15$로 $3$개이고, 소수이면서 $5$의 배수인 수는 $5$ 하나이다.\n\n따라서 소수이거나 $5$의 배수인 수는\n$6+3-1=8$개이다.\n\n전체 $15$개 중에서 고르므로 확률은 $\\dfrac8{15}$.\n정답은 ③이다.",
+      "previousSolutionSha256": "fbd8cea9c725833901ad4be3bc4ddd3ea6cdcbaa31ba70c57104f12a30961f16",
+      "replacementSolution": "두 번 모두 목표물을 맞히지 못하는 확률을 구해 여사건을 이용한다.\n한 번 맞히지 못할 확률은\n$1-\\dfrac35=\\dfrac25$이다.\n\n두 번 모두 맞히지 못할 확률은\n$\\dfrac25\\times\\dfrac25=\\dfrac4{25}$이다.\n따라서 적어도 한 번 맞힐 확률은\n$1-\\dfrac4{25}=\\dfrac{21}{25}$.\n정답은 ④이다.",
+      "replacementSolutionSha256": "d5adae6632bbeb0e6fb0709193ebb60b06521a195065c11d1a3f8ee0f0cfc66c",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 21,
+      "storedAnswer": "(1) △ACF∼△DEF, (2) 147 m",
+      "previousSolution": "남학생 3명과 여학생 4명 중 2명을 고르는 전체 경우의 수는\n$\\binom72=21$.\n\n남학생 1명과 여학생 1명을 고르는 경우의 수는\n$3\\times4=12$.\n\n따라서 구하는 확률은\n$\\dfrac{12}{21}=\\dfrac47$.\n정답은 ②이다.",
+      "previousSolutionSha256": "d11f3c4a7460419a4c67da220c3849ef1dfaf74c464ac86a18a7119f7606d0bb",
+      "replacementSolution": "막대기와 피라미드는 각각 지면에 수직이고 그림자 끝점은 $F$이다. 따라서 두 직각삼각형은 $\\angle C=\\angle E=90^\\circ$이고 $\\angle F$를 공통으로 가져 닮음이다.\n\n(1) 대응 순서에 따라\n$\\triangle ACF\\sim\\triangle DEF$.\n\n(2) 피라미드의 높이를 $x\\text{ m}$라 하면, 큰 삼각형의 높이와 밑변은 각각 $x$, $CF=220.5$이고 작은 삼각형의 높이와 밑변은 $DE=1$, $EF=1.5$이다.\n\n닮음비에서\n$\\dfrac{x}{1}=\\dfrac{220.5}{1.5}$,\n$x=147$.\n따라서 피라미드의 높이는 $147\\text{ m}$이다.",
+      "replacementSolutionSha256": "1d6f1130501edc2f983a7ebae93f8bd9d598a8b570e7af03a107339d7f68627b",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 22,
+      "storedAnswer": "(1) 15 cm, (2) △AGG′∼△AEF, (3) 10 cm",
+      "previousSolution": "피라미드의 높이와 그림자 길이로 만든 큰 삼각형은 막대기의 높이와 그림자 길이로 만든 작은 삼각형과 닮음이다.\n\n그림에서 대응 꼭짓점이 $A\\leftrightarrow D$, $C\\leftrightarrow E$, $F\\leftrightarrow F$이므로\n$\\triangle ACF\\sim\\triangle DEF$.\n\n피라미드 높이를 $x\\text{ m}$라 하면 막대기 높이 $DE=1\\text{ m}$, 막대기 그림자 $EF=1.5\\text{ m}$, 피라미드 그림자 $CF=220.5\\text{ m}$이다. 닮은 삼각형의 대응변의 비에서\n$\\dfrac{x}{1}=\\dfrac{220.5}{1.5}$\n$x=147$.\n\n따라서 피라미드의 높이는 $147\\text{ m}$이다.",
+      "previousSolutionSha256": "3329fbdfb0c3451db6e54b5494fe6798716ade87ed77933b495dc9d6ebbee566",
+      "replacementSolution": "$G$는 $\\triangle ABD$의 무게중심이므로 $AE$는 중선이고 $E$는 $BD$의 중점이다. 마찬가지로 $F$는 $DC$의 중점이다.\n\n(1) 따라서\n$EF=ED+DF=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=15\\text{ cm}$.\n\n(2) $AG:AE=AG':AF=2:3$이고 $\\angle GAG'=\\angle EAF$이므로 두 변의 비와 끼인각이 같다.\n$\\triangle AGG'\\sim\\triangle AEF$.\n\n(3) 대응변의 비에서\n$GG':EF=2:3$,\n$GG'=\\dfrac23\\times15=10\\text{ cm}$.\n따라서 구하는 길이는 $10\\text{ cm}$이다.",
+      "replacementSolutionSha256": "b9afa4ac5b790f16f08ad7309e3600703009479aa83dee674c9e7376dbe3a7ce",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    },
+    {
+      "qid": 23,
+      "storedAnswer": "(1) 1/6, (2) 1/8, (3) 5/48, (4) 7/48, (5) 1/4",
+      "previousSolution": "$G$가 $\\triangle ABD$의 무게중심이므로 $E$는 $BD$의 중점이다. $G'$가 $\\triangle ADC$의 무게중심이므로 $F$는 $DC$의 중점이다. 따라서\n$EF=ED+DF=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=15\\text{ cm}$.\n\n무게중심은 각 중선을 꼭짓점에서 $2:1$로 나눈다. 그러므로\n$AG:AE=AG':AF=2:3$.\n\n두 삼각형에서 끼인각 $\\angle GAG'=\\angle EAF$이고 양쪽 변의 비가 같으므로\n$\\triangle AGG'\\sim\\triangle AEF$.\n\n대응변의 비에서\n$GG':EF=2:3$\n$GG'=\\dfrac23\\cdot15=10\\text{ cm}$.\n\n답: (1) $15\\text{ cm}$, (2) $\\triangle AGG'\\sim\\triangle AEF$, (3) $10\\text{ cm}$.",
+      "previousSolutionSha256": "d47aafededc239b5574bdc88d50ad019ba996c190092f069bd2c67c3b56ee24e",
+      "replacementSolution": "A 신호를 알아맞히지 못할 확률은\n$1-\\dfrac56=\\dfrac16$이다.\n따라서 (1)의 답은 $\\dfrac16$이다.\n\nB 신호를 알아맞히지 못할 확률은\n$1-\\dfrac78=\\dfrac18$이다.\n따라서 (2)의 답은 $\\dfrac18$이다.\n\n(3) A만 알아맞히려면 A는 맞히고 B는 맞히지 못해야 한다.\n$\\dfrac56\\times\\dfrac18=\\dfrac5{48}$.\n\n(4) A는 맞히지 못하고 B만 알아맞힐 확률은\n$\\dfrac16\\times\\dfrac78=\\dfrac7{48}$이다.\n\n(5) 두 경우는 서로 겹치지 않으므로\n$\\dfrac5{48}+\\dfrac7{48}=\\dfrac{12}{48}=\\dfrac14$.\n따라서 두 신호 중 하나만 알아맞힐 확률은 $\\dfrac14$이다.",
+      "replacementSolutionSha256": "e220d9de3f261907b019351758f5b80bc5191ed646f1afa70c720ef5fb19e55b",
+      "reason": "SOLUTION_IDENTITY_MISMATCH: existing solution solved a different question"
+    }
+  ],
+  "metaRepairs": [
+    {
+      "qid": 3,
+      "field": "legacyLevelCompatibility",
+      "from": "NORMAL",
+      "to": "BORDERLINE_ACCEPTABLE",
+      "reason": "Independent difficulty recheck confirms standard, expected SAS similarity reasoning (bucket 3) while preserving the pre-existing upper legacy level as an adjacent borderline under LEVEL BORDERLINE STABILITY LOCK; no clear level error warrants changing the historical level."
+    },
+    {
+      "qid": 8,
+      "field": "legacyLevelCompatibility",
+      "from": "NORMAL",
+      "to": "BORDERLINE_ACCEPTABLE",
+      "reason": "Independent difficulty recheck confirms a standard nested-centroid area-ratio method (bucket 3); the pre-existing upper legacy level is retained as an adjacent borderline under LEVEL BORDERLINE STABILITY LOCK."
+    }
+  ]
+}

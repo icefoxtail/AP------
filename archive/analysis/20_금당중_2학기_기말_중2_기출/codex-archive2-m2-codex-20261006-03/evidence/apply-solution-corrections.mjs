@@ -1,0 +1,10 @@
+import fs from 'node:fs'; import vm from 'node:vm';
+import {gitBlobSha} from '../../../../../archive/tools/archive-stage-validator.mjs';
+import {solutionSha256} from '../../../../../archive/tools/archive-stage-validator-artifact-v2.mjs';
+const w='.tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출', f=w+'/20_금당중_2학기_기말_중2_기출.js', ep=w+'/evidence/CREATE.evidence.json';
+const box={window:{}};vm.createContext(box);vm.runInContext(fs.readFileSync(f,'utf8'),box,{timeout:5000});
+const corrections=JSON.parse(fs.readFileSync(w+'/evidence/solution-corrections.json','utf8'));for(const [id,s] of Object.entries(corrections))box.window.questionBank.find(q=>q.id===Number(id)).solution=s;
+fs.writeFileSync(f,'window.examTitle = '+JSON.stringify(box.window.examTitle)+';\n\nwindow.questionBank = '+JSON.stringify(box.window.questionBank,null,2)+';\n','utf8');
+const bytes=fs.readFileSync(f),e=JSON.parse(fs.readFileSync(ep,'utf8'));e.artifactSha=gitBlobSha(bytes);for(const row of e.rows)row.solutionSha256=solutionSha256(box.window.questionBank.find(q=>q.id===row.qid).solution);
+e.targetedCorrections=[{qid:13,reason:'Replaced coordinate slope/intersection calculation with the curriculum-aligned similar-triangle ratio using the rectangle diagonal and its midpoint.'},{qid:20,reason:'Replaced combination notation with ordered-pair counting and division by two for the order-independent pairs.'}];
+fs.writeFileSync(ep,JSON.stringify(e,null,2)+'\n','utf8');console.log(JSON.stringify({artifactSha:e.artifactSha},null,2));

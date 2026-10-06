@@ -1,0 +1,10 @@
+{
+  "stage": "CREATE",
+  "attempt": 1,
+  "status": "FAILED_ATTEMPT",
+  "artifactSha": "ae642f0231956a39f053ff64417ba1a21ca30c8b",
+  "issues": [
+    "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"
+  ],
+  "reason": "The first generic artifact validation used sha256:-prefixed hashes in `goldenCalibration`; this generic contract expects unprefixed SHA-256 hex. The separate calibration-preflight hashes remain correctly prefixed."
+}

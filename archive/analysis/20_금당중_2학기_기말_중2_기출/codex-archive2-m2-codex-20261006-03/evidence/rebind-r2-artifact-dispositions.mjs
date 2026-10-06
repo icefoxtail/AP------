@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import path from 'node:path';
+const root='.tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출';
+const f=p=>path.join(root,p),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const r1Path=f('evidence/R1.v2-evidence.json'),r1Raw=fs.readFileSync(r1Path),r1=JSON.parse(r1Raw.toString('utf8'));
+const evidencePath=f('evidence/R2.v2-evidence.json'),eRaw=fs.readFileSync(evidencePath),e=JSON.parse(eRaw.toString('utf8'));
+const disposition=r1.artifactDispositions;
+if(disposition?.artifactSha!==e.artifactSha||disposition.rows?.length!==23)throw Error('R1 disposition binding/denominator mismatch');
+const wanted=[10,11,12,13,14,16];
+const actual=disposition.rows.filter(r=>r.metaDebtFields?.length).map(r=>r.qid);
+if(JSON.stringify(actual)!==JSON.stringify(wanted))throw Error('unexpected R1 Meta debt scope');
+e.artifactDispositions=disposition;
+e.artifactDispositionBinding={sourcePath:'evidence/R1.v2-evidence.json',sourceSha256:sha(r1Raw),inheritedUnchanged:true,reason:'R2 carries forward R1-sealed Meta debt dispositions for unchanged artifact.'};
+fs.writeFileSync(evidencePath,JSON.stringify(e,null,2)+'\n');
+const attempt={recordType:'observed-validator-attempt',attempt:1,stage:'R2',examUid:e.examUid,artifactSha:e.artifactSha,evidencePath:'evidence/R2.v2-evidence.json',observedAt:new Date().toISOString(),ok:false,disposition:'FAIL',denominator:23,rowCount:23,issues:['ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q10','ARTIFACT_META_DEBT_REQUIRED:templateKey:q10','ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q11','ARTIFACT_META_DEBT_REQUIRED:templateKey:q11','ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q12','ARTIFACT_META_DEBT_REQUIRED:templateKey:q12','ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q13','ARTIFACT_META_DEBT_REQUIRED:templateKey:q13','ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q14','ARTIFACT_META_DEBT_REQUIRED:templateKey:q14','ARTIFACT_META_DEBT_REQUIRED:problemTypeKey:q16','ARTIFACT_META_DEBT_REQUIRED:templateKey:q16'],repair:'Added unchanged R1 artifactDispositions to R2 evidence; no candidate/source mutation or semantic reclassification.'};
+const attemptPath=f('evidence/R2.validation.attempt1.json');fs.writeFileSync(attemptPath,JSON.stringify(attempt,null,2)+'\n');
+console.log(JSON.stringify({evidenceSha256:sha(fs.readFileSync(evidencePath)),failedAttemptSha256:sha(fs.readFileSync(attemptPath)),r1DispositionSha256:sha(Buffer.from(JSON.stringify(disposition))),dispositionRows:disposition.rows.length,debtQids:actual,artifactSha:e.artifactSha}));

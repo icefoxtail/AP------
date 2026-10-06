@@ -1,0 +1,3903 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "20_금당중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "25737072ff23b6c7b863c3ee1e803fdc538f89f1",
+  "artifactPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+  "artifactHashBinding": {
+    "rawFileSha256": "571e9eb6a1d6f62aec2a0eab94b5e070bb21c84ebd25046b77d922aa4f57cc74",
+    "rawByteGitBlobSha1": "25737072ff23b6c7b863c3ee1e803fdc538f89f1",
+    "cleanFilterGitBlobSha1": "25737072ff23b6c7b863c3ee1e803fdc538f89f1",
+    "inputRawFileSha256": "b229633853b165d4354334062091e21c6200798af4830a2f513cb01b032590a8"
+  },
+  "sourceArtifact": {
+    "path": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+    "sha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702"
+  },
+  "studentInput": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/R1.student-input.json",
+    "sha256": "db3404fa12ed7102e6ca5ac4109954e6d5b63bbcc95eb110bee331fefa45e663",
+    "studentProjectionSha256": "deab90969e03a4ea91872442b4b5df32dfe211483647e470cfc7d8e2f55b1ed2",
+    "questionCount": 23,
+    "allReferencedAssetsOpened": true
+  },
+  "independentAnswerFreeze": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/R1.independent-freeze.json",
+    "sha256": "eecc9447c508750aa3a928bbb7edcecbbf468c90e210ff043f2abde96489d18c",
+    "frozenBeforeStoredAnswerExposure": true,
+    "questionCount": 23
+  },
+  "questionCount": 23,
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutCoverage": "23/23",
+  "questionLayoutStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "solutionLayoutCoverage": "23/23",
+  "smallBoardContinuityStatus": "PASS",
+  "metaReviewCoverage": "23/23",
+  "visualSvgReviewCoverage": "23/23",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Slope/point substitution is broken into separate calculation lines; q7 completes the circle square, applies transformations in sequence, and the opened SVG shows initial/intermediate/final center states.",
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+          },
+          {
+            "qid": 7,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "Actual final-center coordinates and radius agree with the written equation.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservation": "Actual final-center coordinates and radius agree with the written equation. Actual SVG bytes were hashed and the rendered sample was directly inspected."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "The perpendicular-line condition is translated to slopes before the unknown is solved; the SVG line directions agree, while the opened render reveals font-glyph defects in Korean labels, which are not copied.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "The perpendicular-line condition is translated to slopes before the unknown is solved; the SVG line directions agree, while the opened render reveals font-glyph defects in Korean labels, which are not copied. Actual SVG bytes were hashed and the rendered sample was directly inspected."
+          },
+          {
+            "qid": 6,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "The circle radius condition is evaluated strictly; the degenerate zero-radius endpoints are excluded.",
+            "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+            "visualSha256": "70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+            "visualObservation": "The circle radius condition is evaluated strictly; the degenerate zero-radius endpoints are excluded. Actual SVG bytes were hashed and the rendered sample was directly inspected."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Each candidate graph is evaluated with a stated vertical-line criterion, with rejected and accepted cases separated.",
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21"
+          },
+          {
+            "qid": 6,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "The count bound is proved, equality is constructed, and the Venn diagram expresses the same overlap variables; tofu glyphs in the opened text area are treated as a known presentation defect, not a model.",
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "visualObservation": "The count bound is proved, equality is constructed, and the Venn diagram expresses the same overlap variables; tofu glyphs in the opened text area are treated as a known presentation defect, not a model. Actual SVG bytes were hashed and the rendered sample was directly inspected."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the mandatory false-PASS regression: actual SVG coordinates can contradict labels; enumerated source subquestions need separate board blocks; null Meta keys must be checked for ACTIVE projection; runtime escaping needs inspection. The q20 failed SVG and q2/q17 grouping examples are not copied."
+    }
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Separate lines establish slope, point substitution, algebra, and answer; the line-by-line calculation remains reproducible without filler."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "The board flow completes square, identifies center/radius, applies translations in order, then states the final equation; opened solution SVG distinguishes initial/transient/final circles and centers."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "Each standard-form line is converted to slope form before applying perpendicular slopes; the solution SVG shows crossing line directions, though its Korean explanatory text is visibly garbled in the opened render and is not a presentation model."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.",
+        "observation": "Completing squares is shown explicitly, and the strict positive-radius condition excludes the zero-radius endpoints; the opened graph relates those boundary cases to a degenerate point."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.",
+        "observation": "Each candidate graph is separately tested with the vertical-line criterion and the accepted/rejected cases are explicit; this supports case-by-case reproducibility."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "observation": "The bound, equality construction, and maximum are shown as separate steps; the opened Venn diagram connects the set counts visually, though several equation labels have font-glyph defects and must not be copied."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "qualityCompareCount": "23/23"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceOrdinal": 1,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "e30d4dfcb9e31cfe9888e1581e41cffccefd3a9d337d3db899649524539bdb2f",
+      "contentHash": "592908024977ef0fa8bbe786314038a3bf30ca751e582aa0ae6bcc596cadeecd",
+      "choicesHash": "c7fbdc1267e4a158b60359cbf64df088dec67aabc265bcbb35ba2c8922f5ab0e",
+      "imageRefHash": "23b89b477c0cc2d6aa9a42c05a7646f107e64f4e8083861647208d7dca98d61b",
+      "studentBundleRowSha256": "949766ce1ad61bea99ddac2edbf216af30a60f8733c98ef1bbdc6d8833152128",
+      "independentAnswer": "③",
+      "independentAnswerReason": "유사 순서 대응으로 ∠H=∠D=95°",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09edff0bd88162381d9f69e85d0813ead58f006baad8769893b57579f89fddb7",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "Five short claims follow one source diagram; the diagram stays adjacent and labels the corresponding angles/sides. Grid is adequate."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "09edff0bd88162381d9f69e85d0813ead58f006baad8769893b57579f89fddb7",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Correspondence and side scale are stated first; the interior-angle sum is then shown before the matching answer, with visible paragraph breaks."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q01.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q01.png",
+              "sha256": "a215cb272dfe14ba0fb2b5f46f4f720df6c1d2635a986ffaa4b6e22c5b4088a1",
+              "gitBlobSha1": "87fbe36316998aed87e760db01cc76d1eb73c6f6",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q01 source image: labels A=100°, C=80°, B=85°, AB=6, BC=9, FG=12 are legible. The retained source diagram supplies all owners; the solution derives only those angles/ratios, so a duplicate solution SVG adds no new relation."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceOrdinal": 2,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "3e50ba1fa257a2e8367081a2ceb42520b7c06d4f3a26b3f66ca231787578890b",
+      "contentHash": "9113b10ef114411ce1bf74cdea9eaa317eb8f569ae792869da8c24b0b201d3e1",
+      "choicesHash": "e57324ab70bdd4f11666813f3a630ea25e7428b1049721db287f23a6dbf8ffc3",
+      "imageRefHash": "a4c80df62982643f054d75263aff0878f184bcbbeb5a6881f7ee66e518670670",
+      "studentBundleRowSha256": "f75fe691bdfa2b02512749490859650d70e21ef0d706d37def11435fc9370ae1",
+      "independentAnswer": "⑤",
+      "independentAnswerReason": "AC=12, EC=6, ∆ABC∼∆EDC에서 BC=18, BE=BC−EC=12cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c3b2a7de5112a0a5afe68ee5c9b89215bee335995dd1a475ff813a21f3ca884e",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "One condition-and-length sentence leads directly to a single length question; the triangle figure is adjacent and all numeric labels are intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "c3b2a7de5112a0a5afe68ee5c9b89215bee335995dd1a475ff813a21f3ca884e",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "AC is calculated, the triangle correspondence is justified by two angles, the proportion is set line by line, and BE is obtained by subtraction."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q02.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q02.png",
+              "sha256": "de4f07113006845d7830c1e0f1dfd5684819bf4593b60a54d7b0bb2f7071e2b1",
+              "gitBlobSha1": "279670305136406fb39ab1517bd4d35912eba247",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q02 image: A/D, E/C incidence and AD=3, DC=9, EC=6 are visible. The proof uses only these exact relations; no additional geometric construction is introduced."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceOrdinal": 3,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "18737cb1acc6f555a41fdf30eb6c18552cc55232326ed9a50de50513bbea62cc",
+      "contentHash": "d3c825dcbed7e769a1b0e9a0743f346a8c4a09dd8cefc62265cfe55d00429505",
+      "choicesHash": "dc5077b217edc2a2c91fe277d1fed9f0d190632d69c8e9f8c27bb85ab4b78c9a",
+      "imageRefHash": "90e62fe3cfd06a7664c7959210f2b577dfe7537e2cef3d03e7dc88c5ffd87745",
+      "studentBundleRowSha256": "6849eb6dea4d3f18ae5fb9b4577d0f99a15e600abb6c769a7cd1d1b385429be9",
+      "independentAnswer": "①",
+      "independentAnswerReason": "AD/AB=9/21=AF/AC=6/14=3/7이므로 DF∥BC, ∆ABC∼∆ADF",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced the circular visual-premise claim DF∥BC with a direct SAS similarity proof from source lengths and the included angle; difficulty legacy compatibility was independently classified as adjacent borderline and retained.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c0a523fe20cc9321477e1e32a80a066534a6f38a4697e0ccd86acb90b1f5cbe0",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The prompt and five short triangle-similarity claims remain together; the full labeled figure is adjacent. No independent formula boundary needs an override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "c0a523fe20cc9321477e1e32a80a066534a6f38a4697e0ccd86acb90b1f5cbe0",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Whole sides are computed, both ratios are shown, the included angle is identified, then SAS similarity and choice ① are concluded without assuming parallelism."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+            "level": "상"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "상",
+            "legacyCompatibility": "BORDERLINE_ACCEPTABLE",
+            "reason": "SAS similarity is a standard expected approach with one ratio-choice step; bucket 3 is retained, with the adjacent historical upper level recorded as borderline acceptable."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q03.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q03.png",
+              "sha256": "4fc68a127b0d436b5b6f3c2509872b605254afc0c5c0483662786d4f1944f341",
+              "gitBlobSha1": "2221c7f943dbcb59ba63e976bbbbc493bc06e3f6",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q03 image: D/F lie on the two sides and all four split lengths are readable. The corrected proof uses those labels and SAS; a solution SVG would duplicate the source geometry."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceOrdinal": 4,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "b39aa6260776b50943da030e7db8b1e20d3d065cc89c65f81b48e4fa1a42e5ca",
+      "contentHash": "b0a48dd586705098c8728574001202f5045f83e28ef8956abd0991dade6ea4fe",
+      "choicesHash": "1aa4aae99bcc74f6058883bfbb6a38ee10027b2e9f0e6dddd8f4cdc0690e4af5",
+      "imageRefHash": "a141e68fc80ad95b6e2800c08b4250a7ed3507517ed8470bb7d3a033655f4d65",
+      "studentBundleRowSha256": "706a9764151f027689c6e1aa9c096e43fbebbee250af0681ab0bcefa6246ab46",
+      "independentAnswer": "④",
+      "independentAnswerReason": "AD²=BD·DC로 DC=13.5; 넓이비 [ACD]/[ABD]=DC/BD=2.25이므로 2라는 설명이 틀림",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e15d91e1345caaa6e43026fceb880595065e17102795c54637db12856603dc1a",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The right-triangle condition, altitude definition, and “옳지 않은 것” question are ordered in one readable block beside its diagram."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "e15d91e1345caaa6e43026fceb880595065e17102795c54637db12856603dc1a",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The altitude relation is substituted to obtain DC; the area ratio is separately computed and compared with the false statement."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q04.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q04.png",
+              "sha256": "d32cb9b73734136baf370039a6d6c1779a8e0eac8cc816fa664ed9bfb4227c30",
+              "gitBlobSha1": "e7271c8d024f7ed8fc3135bda4840100a9be76f6",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q04 image: both right-angle marks, AD=9, BD=6 and vertex ownership are visible. The altitude/area equations map directly to the original diagram; no additional SVG relation is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceOrdinal": 5,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "27bbfa18fda3df90de6e211544b85710a93a85119c4057804918977c3b9581f4",
+      "contentHash": "4febfc90cdd4488901cea9c13d904a0dae98937eb0f99dfdb385544c39b715c1",
+      "choicesHash": "4f4e5aa25ea68ccc5bd2df83a8bae1d1f5c0354ede391c631f6f2fe97d690ec9",
+      "imageRefHash": "0bca953a947a081957e87942c244632566b7f427bf7fc7caeddc8c3488a0f0a2",
+      "studentBundleRowSha256": "6194d72a4661bec9b30be5eaae7ff15a961325941c0573629b4b649e5551eab9",
+      "independentAnswer": "⑤",
+      "independentAnswerReason": "중점삼각형 DBE의 둘레는 (8+10+12)/2=15cm여서 20cm가 아님",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fe8b03a6d0a077729e772951ac902d08cca42fda44ee87a791e94f905de08c1f",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The midpoint setup precedes five short claims; the source marks and side labels are visible in the adjacent figure."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "fe8b03a6d0a077729e772951ac902d08cca42fda44ee87a791e94f905de08c1f",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Midpoint segments and parallels are stated, the angle relation is justified, and the nonmatching perimeter is computed explicitly."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q05.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q05.png",
+              "sha256": "e308aa9a8ae2a39903eefdbe4748491c494747b943df8f5ca92148ea295cd632",
+              "gitBlobSha1": "d202c88938e06a023a9965de4cedafedba0bb88a",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q05 image: midpoint tick groups and side lengths 8, 10, 12 are legible. All solution relations are the marked midpoint theorem; a second SVG would be redundant."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "4074bf1a6923fe50b66dd7be2eee6fad78235764c83b3d91cd7ae580712466a8",
+      "contentHash": "9a62c109ac1370cf874e74cfdf31ec8a80f42a336c8260aad25baf9dafa22762",
+      "choicesHash": "4cb243f1ef8fbca1ae4171982ac58421f1ee8b72878df8ce3d6ab211be5b84c9",
+      "imageRefHash": "1ab8c8725b34e59894e7425accccf8c4130ea28f4d4ea9275509e0fb89948c13",
+      "studentBundleRowSha256": "80cc4ea1b27003f5cf53e9e300e848f49db920f95ed21dc93f7ec2c2c3734580",
+      "independentAnswer": "⑤",
+      "independentAnswerReason": "왼쪽 l−m=6, l−n=10이므로 m−n=4; 평행선 비례 6:4=9:x에서 x=6cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09dd92af267b72f3f191a25584880cc036274eae76eec84f60770bcbf0911fce",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The three parallel lines and x question are concise; the figure visibly labels each segment while preserving the l/m/n relationships."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "09dd92af267b72f3f191a25584880cc036274eae76eec84f60770bcbf0911fce",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The two lengths on each transversal are identified; the parallel-line proportion is expanded to x=6 on separate calculation lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q06.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q06.png",
+              "sha256": "f0e26f59e550c079009de8b7525bc6c0491a9ec28b04ae259ea98fb4e1a51d18",
+              "gitBlobSha1": "6cbd65863b07de8d806eefef6d772e89ae7f03f5",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q06 image: l∥m∥n and 6, 10, 9, x segment owners are visible. The solution is one parallel-line ratio and needs no additional visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "f1af7571d5dfa787692b56d1ee852467bf64a78031b0e4de43e033e6ea142ec4",
+      "contentHash": "d4247dcd028535175a3b3b5e43054fcb82f1a296262ee7618ac2c46b9f1ecedd",
+      "choicesHash": "a07adc621008174e2604ef58ff5f8f4772130d0e031330766322138bf0b3b866",
+      "imageRefHash": "3d7f90a4fcd3fff33b1d108e4b180dedf9271b4437a374dab789fdff6234e98d",
+      "studentBundleRowSha256": "88d8e46f17447bd2124c56c0cd260ba946b631ea05efbb022ccd85bcc175ae40",
+      "independentAnswer": "①",
+      "independentAnswerReason": "무게중심/평행선으로 AE:AC=2:3, AC=12, EC=4; DE=8이고 G가 DE의 중점이므로 x=GE=4, 2x−y=4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f6b3b4ec885b97c609fadbcdaff761bdbc6014b5fa8426f1113540e54002ac6d",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 1,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "Centroid and parallel conditions precede the target expression; the figure remains adjacent and carries x/y labels."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "f6b3b4ec885b97c609fadbcdaff761bdbc6014b5fa8426f1113540e54002ac6d",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Centroid/median facts and the parallel-triangle similarity justify x; the separate AE:AC relation gives y before evaluating 2x−y."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q07.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q07.png",
+              "sha256": "c94996ada3be4f28b3da53cd94cd9077d83db4e57d44a4264371aa21c50939a8",
+              "gitBlobSha1": "cf45497186bdd047519bdbd74eb27bbca5f2584a",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q07 image: centroid G, median AM, DE∥BC, AE=8 and BM=6 are legible. The original diagram already shows the only needed relation and variables."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 1,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceOrdinal": 8,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "cefb33a91657ba14dfc6864798a532a2366cd89287955a4202a95d02a66d82e4",
+      "contentHash": "126f35e057144ab1d04ce653fc01765f3a94f98193bcc3e0026d78488cd6b27a",
+      "choicesHash": "732923e1c81e800fe4530df35a469c9bcdf05cea005bcb4f5838d2b037c2ccf9",
+      "imageRefHash": "9d5af38415ff12a1f69f4ac5bde53e937619301d4077c9ed70024f5603c3daf7",
+      "studentBundleRowSha256": "8dec852f5ca6a4aad1db1215af8eaff79bf2146a627a137818764441db489a05",
+      "independentAnswer": "①",
+      "independentAnswerReason": "높이를 h라 하면 ABC 넓이=90; G′는 BC에서 높이 h/9, BD=BC/2이므로 [G′BD]=5cm²",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Independent current difficulty review retained the standard nested-centroid solution at bucket 3 and retained its adjacent historical upper legacy level under the stability lock.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "45f1d67d22871713fd5227b25cb356c3f7cefb16c892da44ca4df30fae3bce65",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "Both centroid definitions and the area value stay in one prompt block next to the complete triangle figure."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "45f1d67d22871713fd5227b25cb356c3f7cefb16c892da44ca4df30fae3bce65",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The first centroid gives area GBC; the second gives the 1/9 height; the half-base and 1/18 area ratio are shown before the answer."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+            "level": "상"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "상",
+            "legacyCompatibility": "BORDERLINE_ACCEPTABLE",
+            "reason": "Nested centroid/area ratios use a standard structure; bucket 3 is retained, with the adjacent historical upper level recorded as borderline acceptable."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q08.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q08.png",
+              "sha256": "4e430fdad27d3d73b5ab434778dde01fbc155400fad4325a92b95ad5cd902306",
+              "gitBlobSha1": "05482cdc2b26598e44114aef3f1dc24e0402c549",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q08 image: both centroids and median intersection on the same source triangle are visible. The nested height ratio is fully represented; no new solution-only relationship is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceOrdinal": 9,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "2d3d725e31be7c9756dec7f8ee38d98a5828bc54c68cf249b15efb07ab6c8c9b",
+      "contentHash": "5853bdba93531d67e2570ae0907aaac90573ad51f0204f50d90afdeda1d4adf8",
+      "choicesHash": "d7de6ad5b4797f4908e3d416916e69eb0ccf51641c4aa3c71111128b5b3ca8fe",
+      "imageRefHash": "66a3bdc549422d1b5f5b68a7231b8dfa7e5996a516d688fa0695efa73cc3a939",
+      "studentBundleRowSha256": "434c80b3141c2478f05756e63e35f53b9f9953ff8fdd55e903a483cfbde5d220",
+      "independentAnswer": "②",
+      "independentAnswerReason": "∆BCD에서 M,N은 BC,CD의 중점이므로 MN=BD/2=6; 좌표/닮음으로 BE=BD/3=4, 합 10cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0a0c3b34482a369ed5bcb3b551db24a4cfc3e2fca8807359f132fc889921b156",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The parallelogram construction is one ordered setup followed by one combined length question; the source figure is intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "0a0c3b34482a369ed5bcb3b551db24a4cfc3e2fca8807359f132fc889921b156",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The midpoint theorem gives MN; a separately justified similar-triangle ratio gives BE; the requested sum is explicit."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_REUSE",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q09.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q09.png",
+              "sha256": "b64caa3d2a8beb3df4d568d33f126769e515478d3d85faeaf46df0a1017d5ffe",
+              "gitBlobSha1": "d96e87a52f9d7ceecfe9b0ed1b8961fb509304da",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q09 image: parallelogram, midpoint marks M/N, and lines AM/AN/BD are all visible. The midpoint and intersection ratios use this exact figure."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceOrdinal": 10,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "a35017e4ad28fae26f342e2e2f51b7839ba3d67df06bee6ea5808f7a0e97a852",
+      "contentHash": "bfee6d4ff92542b64e88a012757061d2e3c4725bcfa18258ca4f505a5db8e5c8",
+      "choicesHash": "310d4fa906ddf50c1c832ebae73541a88488c29afa39d0dbe7a228275408837c",
+      "imageRefHash": "6b3f9032b7c639f96b07dca88ceace0664082304493cc54e5eb885261e7b090c",
+      "studentBundleRowSha256": "72e2320d5016a8d306cd4c790930a0bc71cc58f014a0f4a20227fe99a1b06d25",
+      "independentAnswer": "②",
+      "independentAnswerReason": "직각삼각형에서 x²+5²=13²로 x=12, y²+x²=15²로 y=9, 합 21",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "41cd279821e1aec22220c8f0df93c2a6891dbe8105a92827849695d91cf42860",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "A short x+y prompt is paired with the right-angle figure and side labels; no content split or layout override is needed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "41cd279821e1aec22220c8f0df93c2a6891dbe8105a92827849695d91cf42860",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The upper and lower right-triangle equations are separate; each square root result is substituted into x+y."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q10.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q10.png",
+              "sha256": "bc2823c711925f4816b1d7c9f47954038bccd38668cc47995932a481e1b764f8",
+              "gitBlobSha1": "31c49b59c9638e34de0518f64148a2b0c11bd8f0",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q10 image: the 5/13/15 side labels, x/y segments, and both right-angle marks are clear. The two Pythagorean equations directly use the existing figure."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceOrdinal": 11,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "6358477873e97eb19f2b1405c61ff9cd66e024de4c69c5ca6ae861f34d1efc91",
+      "contentHash": "31606cbbd29f139534b345ae551f9699b5284664d69829a3700f1f8914cee124",
+      "choicesHash": "a562bdc5752216c775412733161316c58c9506663af5f367187fec19e8066ad5",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "033292353e5d857e2bc8cf079dced8caa4bbd58df8f27dfec21092e6373ece46",
+      "independentAnswer": "③",
+      "independentAnswerReason": "7²+24²=25²",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d56d9a7f875eaf120055b5adcbc52f82bda9589e34d81b311961a9d26cd676f4",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The single triangle criterion question and five short side-length choices are a natural grid item with no visual dependency."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "d56d9a7f875eaf120055b5adcbc52f82bda9589e34d81b311961a9d26cd676f4",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "All five side triples are checked against the square relation, so selection is reproducible rather than asserted."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "하"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "하",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; side lengths and question text fully determine the triangle check. No solution SVG is useful."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceOrdinal": 12,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "3445f3e5bc6146dce170a05e63a24c31e1c944d3e5e981d124ab06077039540b",
+      "contentHash": "e59cb052567b1e084d18291b9f73f9ee6873ae302d5582c70baf5df0e7a9b6d9",
+      "choicesHash": "0ab1f315b653911a0a26f48de30454da1eb0095c30c4e0570594fac8222a11b4",
+      "imageRefHash": "126dd3e3e433bbaa94e5ab080df09f93fc880f7319e839bbe39ea723dfbb81f1",
+      "studentBundleRowSha256": "4522bb56cd3cab0b518dbce2fc7d87e1469085e51ba5296a1ebd1cf1289b89c2",
+      "independentAnswer": "⑤",
+      "independentAnswerReason": "밑변 차 11−4=7, 높이 √(25²−7²)=24; 넓이=(4+11)·24/2=180cm²",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b4ddf1980a81c64daee8eb3f3e230acf773a6c18bfc33a0aeee952aa5a701d8e",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The trapezoid area question is beside the intact dimension/right-angle figure; all lengths remain attached to their owners."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "b4ddf1980a81c64daee8eb3f3e230acf773a6c18bfc33a0aeee952aa5a701d8e",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The base difference leads to the right-triangle height; height and trapezoid area each have explicit equations."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q12.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q12.png",
+              "sha256": "28b0f26af51169f4cfbf389048441c3ec542bacc6b3e866414f353b5eb6b612f",
+              "gitBlobSha1": "83c4b214bfe41aab4522ec29a9c38c07b76c11ea",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q12 image: 4/11/25 labels and both right angles are clear. The base-difference right triangle and trapezoid area are already represented."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceOrdinal": 13,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "05f4f916b9a4428757fa62b66b3da787b400131529b302fa45b46fe4a6202706",
+      "contentHash": "e860c89272eee8e0e4a4dc4f2fe3c0da70d7fae0452e9793545accbe3f3425b1",
+      "choicesHash": "d1e9f86743655f9142de5a2814c6ce1cd93746a2160d8f334810ef1ac05fad9b",
+      "imageRefHash": "4e2baab47df7e8d2d2681eb980c7a2782de3320cdf80678aa7bb5b5e5a04bb53",
+      "studentBundleRowSha256": "581e84ea4c255719de6db620cce907993265a4a24d0468bae6dd0849ba576371",
+      "independentAnswer": "④",
+      "independentAnswerReason": "좌표 또는 직각삼각형으로 DE=6.25, EO=3.75, DO=5; 둘레 15cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "36a50fd7ae457d9c1d4195f2470a2472298f9c9d853d93c69bb1bce7300c74d5",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The rectangle construction and measurement conditions form one prompt; the diagonal/rectangle figure preserves all labels."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "36a50fd7ae457d9c1d4195f2470a2472298f9c9d853d93c69bb1bce7300c74d5",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The diagonal is computed; the right angle and corresponding triangles are justified; DE and EO are found before summing the perimeter."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "상"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 4,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "상",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q13.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q13.png",
+              "sha256": "649aa5b4ba43492e154a2a23d6a54eb8366eb879fcf0a3c52bbad5b707abc190",
+              "gitBlobSha1": "92a21f49985600f9c9e39faf74f94872c0b6a95d",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q13 image: rectangle sides 8 and 6, diagonal midpoint O, perpendicular EF, and endpoint ownership are visible. The similarity proof uses the source diagram directly."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceOrdinal": 14,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "962a86b20baec2387f37a676f8ea9efa853b2521dc59de0407a6ef1943455fbf",
+      "contentHash": "236ab60090e1d453c41ee6f7f1f5a00a643b1605d072b88e7097551466393ec0",
+      "choicesHash": "116122fe1e762286343d6a68bfdbee704ed39af8c07d7b236c2e8ae9fb3b0e78",
+      "imageRefHash": "028f4773f71b8c650e61e8aad5fa534869f8fc0df9fbb791634fc3216ad4751a",
+      "studentBundleRowSha256": "fea4d242bb21b0484dbe3bf5a5eef8e0b67a3acaf1b423091b9b530a6584a1dd",
+      "independentAnswer": "③",
+      "independentAnswerReason": "빵 3종류와 소스 4종류의 곱의 법칙: 3·4=12",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced q12 trapezoid solution with the direct 3-by-4 product-rule solution for this sandwich order-count question.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "189bd3444033529d86412aa6786c70f46dba11d0962a56dc29ef05ffb1681385",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 2,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The word problem states both choice counts before the question; the photo is adjacent and nonessential counts stay in text."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "189bd3444033529d86412aa6786c70f46dba11d0962a56dc29ef05ffb1681385",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The product-rule choice model is explained, then 3×4 and the matching answer are shown."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "하"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "하",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q14.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q14.png",
+              "sha256": "38c3762561dc979281915b36d41977696eebeae3726ebbcdd3568e02e6e994f4",
+              "gitBlobSha1": "accf2e13f08ec0129432c476d25d02b4352b298a",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q14 photo: illustrative breads/sauces; the prompt itself supplies counts 3 and 4. No mathematical visual is needed in the solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 2,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceOrdinal": 15,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "4f03f9981012093810bed6c37e5083447517175c2126ff8aea805f4d0323c2c2",
+      "contentHash": "86048b87944d4ec6305b3e9acfedc54556e4f16e355cdfcb9a9458e3a6120455",
+      "choicesHash": "d3b513eba093def1f570b24c40510eec0b00ca49748eda4d023fa531cfa202a7",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "03604bb9c7fd271e049c0f5ee68a9cabf41855b8a6ed92c59c21c79bde8c4f33",
+      "independentAnswer": "④",
+      "independentAnswerReason": "합 5인 순서쌍 4개, 합 7인 순서쌍 6개, 총 10",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q14 sandwich-count solution with separately enumerated ordered-pair cases for sums 5 and 7.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "07c80baac662a052cff53569ad5439c415cb19d7d84b5fe09e3f5700514f92c2",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The two-die condition and requested sum count form one short sentence; no figure or formula layout override is needed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "07c80baac662a052cff53569ad5439c415cb19d7d84b5fe09e3f5700514f92c2",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The sum-5 and sum-7 ordered pairs occupy separate blocks; disjoint counts are added before the answer."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "하"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "하",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; two ordered dice and requested sums fully specify the sample space. A new diagram would repeat enumeration without adding meaning."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceOrdinal": 16,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "dd6317d3ac4a87039fc231a76751f1b17aacebe677a6a1c66fc958e58631ce7c",
+      "contentHash": "9199ef54356b86b7fe7a6ca5e55b911342faa239a3b097394b081693f678fa9c",
+      "choicesHash": "aa06449b9ed46ce26bb3d6a480725eed0d300154ee5f330f42bfe26a0aa4fa03",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "f72beaf625027b74e480746960a574870e5942bb16297fc6eda27654e55b4594",
+      "independentAnswer": "③",
+      "independentAnswerReason": "y=x+1이고 x,y∈{1,…,6}; 가능한 x는 1~5로 5개",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q15 dice-sum solution with the ordered-pair count satisfying y=x+1.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "500e8f3facdea36d805e94bd27aafc103b3ff20d3d395f71bcbd4617fd4a5aa3",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The first/second die definitions and complete equation stay together; the equation is not split from its variables."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "500e8f3facdea36d805e94bd27aafc103b3ff20d3d395f71bcbd4617fd4a5aa3",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The equation is transformed to y=x+1; the die range is applied and every valid ordered pair is listed."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "하"
+          },
+          "populatedKeysStatus": "NULL_WITH_EXPLICIT_CANONICAL_DEBT",
+          "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "하",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; the equation and die range fully determine the five ordered pairs. No solution SVG is necessary."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceOrdinal": 17,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "030d31ec98041b2a5c3b6a9c6febe1ecec15f66ded5ca44a556a923ee31aff8d",
+      "contentHash": "3ee3711f1e39791e36b61d352131e6f80a53b651155465a4be917a4656a57448",
+      "choicesHash": "d247c55555d45d41f625ba4477d87240deb0d3dee3dbd743a81da93bc673955e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "16b9042e1db74caafb6189b19c486b53b414a79061e03e4491b10225d971137c",
+      "independentAnswer": "②",
+      "independentAnswerReason": "x−y=0은 6/36; 나머지는 불가능 사건(확률 0)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q16 outcome-count solution with event-by-event probabilities; only x−y=0 has nonzero probability.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "75a79694d36ea72e941e04dfc1101fdfff9e06781ba268d54805854bdd872b35",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The probability comparison question is followed by five compact event expressions; choices remain separate and intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "75a79694d36ea72e941e04dfc1101fdfff9e06781ba268d54805854bdd872b35",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The 36-outcome denominator is stated; all five events are separately checked, including the sole 6/36 case."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; the two-die sample space and all five events are explicit. Event-by-event arithmetic communicates the comparison directly."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceOrdinal": 18,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "452c8cd3a05eef7a364062c59832d39e5b669d71694715d8f8e3aedb9a32185d",
+      "contentHash": "28d62786f6167d61e7b9d1eac6fd88032372e51ea21237fe2f9653ae53b9177b",
+      "choicesHash": "af6150fa475b0c85afec75cb1b8082b280287d1b1da5c306a8fe47c59e3db240",
+      "imageRefHash": "87ab596d3e3270331d994cc648a9e1ee0b77616dc9c052c0a9510c6122aae1cf",
+      "studentBundleRowSha256": "e4f679aeb961d0b4687d2cd28e89d9fb29a662bbb04d86e43e4d02744a9045db",
+      "independentAnswer": "③",
+      "independentAnswerReason": "1~15 중 소수 6개, 5의 배수 3개, 교집합 {5} 1개; 합집합 8/15",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q17 dice-event comparison solution with prime/multiple-of-5 inclusion-exclusion for 1 through 15.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "86c70854c089f0ee6cc307d995723dabfcd1ce2fe9ae6b3858fb0176483b90e3",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The bag setup and event condition stay adjacent to the legible numbered-ball image; the choice fractions remain intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "86c70854c089f0ee6cc307d995723dabfcd1ce2fe9ae6b3858fb0176483b90e3",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Prime count, multiple count, overlap correction, total successful balls, and probability are distinct displayed steps."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q18.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q18.png",
+              "sha256": "955292bbe607304cbb300d322bc39220c73cef1dcbc50454240e0c793a93f8eb",
+              "gitBlobSha1": "b9822ed5a668aa4a5c6b26bc6d0720646945547e",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q18 image: numbered balls 1–15 are visible and agree with the text. The bag is the original problem asset; no separate solution diagram adds a relationship."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceOrdinal": 19,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "4bdf149f68d7839f3661b1555cb6f903d05c75e3e840cb4f8995b9c1066640ed",
+      "contentHash": "26843550885148a619b075023df0099bb9d0ef3b26946f861dce67e215f8eac3",
+      "choicesHash": "d1011ec41a3c7b236b0a44f7b8fc246e73469066c8fd4617eb562c1209aff4f9",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "c16fa5c65323dfba22cc7a9201b358e5683bc99fd32f8972d795fcc6a58af7af",
+      "independentAnswer": "④",
+      "independentAnswerReason": "적어도 1회 적중=1−(2/5)²=21/25",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q18 ball-counting solution with the complementary event of missing twice.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d5adae6632bbeb0e6fb0709193ebb60b06521a195065c11d1a3f8ee0f0cfc66c",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The two-shot probability and “at least once” target read as one compact condition/question block."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "d5adae6632bbeb0e6fb0709193ebb60b06521a195065c11d1a3f8ee0f0cfc66c",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The single-shot miss probability, two-miss probability, and complementary target probability are each shown explicitly."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+            "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; the complement computation is fully numerical and needs no visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceOrdinal": 20,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "fd4b6c9d37f689bd4376ffdcb640421919c776935be70898a0c091052731fe6a",
+      "contentHash": "961cfce3d6cd22266cd6eaa5f19eb3b4195b70420109947a0f24241585e05742",
+      "choicesHash": "ab5e129a3570b08904956e30740cbb15a28ce87d32cb7c754f5c7aa39eb7ffca",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "159b38594717477c24568ee962f7857bfaaa9178fa202965d82f02e48e0a5e80",
+      "independentAnswer": "②",
+      "independentAnswerReason": "전체 C(7,2)=21, 유리 3·4=12, 확률 12/21=4/7",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "Independent value/choice matches the stored answer.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7f3534ac9d3e91ef717db47f73d77c990719455b21b2157c670b2f017de4be54",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 3,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The selection population, chosen pair, and target probability stay together as one prompt with five short choices."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "7f3534ac9d3e91ef717db47f73d77c990719455b21b2157c670b2f017de4be54",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "The unordered total is derived by correcting ordered picks; favorable selections and final ratio are separate calculations."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+            "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; total and favorable selections are numerical combinations; no visual is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 3,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceOrdinal": 21,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "10e05d9e774c106ad640a31f3180d070954103586f2f275d6aac1319b95a7b8b",
+      "contentHash": "6241d645b3c053400779fec4b4b657d3a011e0c7edb2be9adda71dba778b109f",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "6a28fb3358caa01a0a4f4e1c9e34945dde4f56a44c3a48f416f2aed0d8f1dfd1",
+      "studentBundleRowSha256": "3ea90d31dee60aa8b0f67940da6935f7902219d1bb4c5a96a5267dea5cff8840",
+      "independentAnswer": {
+        "(1)": "∆ACF∼∆DEF",
+        "(2)": "x/1=220.5/1.5, x=147m"
+      },
+      "independentAnswerReason": "큰/작은 그림자 삼각형의 대응 변 비례",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) △ACF∼△DEF, (2) 147 m",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "All numbered subanswers semantically match; notation-only triangle/fraction formatting is normalized.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q20 selection-probability solution with the two similar shadow-triangle parts and x=147 m.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1d6f1130501edc2f983a7ebae93f8bd9d598a8b570e7af03a107339d7f68627b",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 4,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The long context and its two numbered subquestions are physically separated by source newlines; the diagram sits immediately before them."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "1d6f1130501edc2f983a7ebae93f8bd9d598a8b570e7af03a107339d7f68627b",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Right-angle/common-shadow reasoning identifies similar triangles; subparts (1)/(2), ratio, substitution, and final height are separated."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q21.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q21.png",
+              "sha256": "6c08394a2f36e0de7bb0011afc2fb1e33d2ca9055ad31c4adf3208ef9204c3e9",
+              "gitBlobSha1": "b9227d9d40ed7fe2911266533b1348ed2783ce2d",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q21 image: pyramid height, base center C, stick DE, ground line and common shadow endpoint F are visible. The two similar right triangles reuse all original geometry; a second SVG is redundant."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 4,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceOrdinal": 22,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "94685408a2263a9bfd7e546ef26baa6a9f0f2a29e9dc991eff197b6c8fb5f3ff",
+      "contentHash": "a40d3c6beef777deec3f6e5aa6d71e5c8129a010337d635f78ce1286941d53e0",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "981dd1b7527b65655f6c604e4327c05080722d93f5e1c155974f961ff0b0db53",
+      "studentBundleRowSha256": "c072a11124309492c337856481641507ffeb69254b945b4c09d4a2912cf94fd9",
+      "independentAnswer": {
+        "(1)": "EF=15cm",
+        "(2)": "∆AGG′∼∆AEF",
+        "(3)": "AG:AE=2:3, GG′=(2/3)·15=10cm"
+      },
+      "independentAnswerReason": "G,G′의 무게중심 정의로 E,F는 각 삼각형 밑변의 중점; EF=BC/2; 두 작은 삼각형 닮음",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) 15 cm, (2) △AGG′∼△AEF, (3) 10 cm",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "All numbered subanswers semantically match; notation-only triangle/fraction formatting is normalized.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q21 shadow-height solution with the three centroid/midpoint/similarity subparts.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b9afa4ac5b790f16f08ad7309e3600703009479aa83dee674c9e7376dbe3a7ce",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 4,
+          "sourcePageViewed": true,
+          "assetStatus": "PRESENT_AND_OPENED",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The centroid context and three numbered subquestions remain distinct source lines; the triangle diagram stays adjacent."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "b9afa4ac5b790f16f08ad7309e3600703009479aa83dee674c9e7376dbe3a7ce",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "Each centroid definition establishes its midpoint; EF, the similarity criteria, and the final ratio are separately shown by numbered part."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "상"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 4,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "상",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImageRefs": [
+            "assets/images/20_금당중_2학기_기말_중2_기출/q22.png"
+          ],
+          "problemImageRows": [
+            {
+              "ref": "assets/images/20_금당중_2학기_기말_중2_기출/q22.png",
+              "sha256": "c7e0422f58fc9ddcfd1697769eea52037543a762e66e1c4a92fa34d24ff8d01a",
+              "gitBlobSha1": "0cb85fe00ad1dd4006de5bd1917169e94c70a51b",
+              "openedForVisualReview": true
+            }
+          ],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "Opened q22 image: both centroid points, medians, base points E/D/F, and GG′/EF segments are visible. The similarity explanation introduces no new construction beyond this source figure."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 4,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceOrdinal": 23,
+      "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "sourceIdentityFingerprint": "310d38626f9a488dac02830e32d840978de46fb32ff90455031e2848f14328e0",
+      "contentHash": "a0ca32c76701a56479b94040af809d471a6700b70d9d90f89672d9885b9f1701",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "studentBundleRowSha256": "292b1260bf4dd10e429cc9d751f24029d56bbe6314f855d48be88c77b7eb34b6",
+      "independentAnswer": {
+        "(1)": "1/6",
+        "(2)": "1/8",
+        "(3)": "5/48",
+        "(4)": "7/48",
+        "(5)": "1/4"
+      },
+      "independentAnswerReason": "두 신호의 독립 시행으로 A만 정답 (5/6)(1/8), B만 정답 (1/6)(7/8), 합 12/48=1/4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) 1/6, (2) 1/8, (3) 5/48, (4) 7/48, (5) 1/4",
+      "compareResult": "MATCH",
+      "answerCompareBasis": "All numbered subanswers semantically match; notation-only triangle/fraction formatting is normalized.",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repairReason": "Replaced a q22 centroid-geometry solution with the five signal-probability subparts and exactly-one sum.",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Source prompt and choices were preserved; R1 repaired only identified solution identity/logic loci and q3/q8 legacy difficulty compatibility.",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e220d9de3f261907b019351758f5b80bc5191ed646f1afa70c720ef5fb19e55b",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "disposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "changedFields": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourcePage": 4,
+          "sourcePageViewed": true,
+          "assetStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The probability context and five numbered parts are separated by source newlines; each answer target remains explicit."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionIdentityAlignment": "ALIGNMENT_PASS",
+          "solutionSha256": "e220d9de3f261907b019351758f5b80bc5191ed646f1afa70c720ef5fb19e55b",
+          "smallBoardContinuityStatus": "PASS",
+          "axes": {
+            "STUDENT_REPRODUCIBILITY": "PASS",
+            "SMALL_BOARD_STRUCTURE": "PASS",
+            "EXPLANATION_DENSITY": "PASS"
+          },
+          "reason": "All five requested probabilities appear in their own blocks; complements, both joint products, and the disjoint-event sum are explicit."
+        },
+        "meta": {
+          "status": "PASS",
+          "currentValues": {
+            "category": "경우의 수와 확률",
+            "originalCategory": "경우의 수와 확률",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+            "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "populatedKeysStatus": "GLOBAL_ACTIVE_CONFIRMED",
+          "projectionDisposition": "PROJECTION_BINDING_PENDING",
+          "metaDebtFields": [],
+          "metaDebtReason": "",
+          "lookupRefs": [
+            "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+          ],
+          "difficultyReview": {
+            "status": "PASS",
+            "currentPass": true,
+            "bucket": 3,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevel": "중",
+            "legacyCompatibility": "NORMAL",
+            "reason": "Current solution/source complexity independently matches the stored bucket; legacy mapping is consistent or separately specified."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_NEEDED",
+          "problemImageRefs": [],
+          "problemImageRows": [],
+          "solutionSvgStatus": "NOT_PRESENT",
+          "solutionSvgNeed": "NOT_REQUIRED",
+          "reason": "No source visual ref; two signal success probabilities and numbered parts fully determine the independent-trial calculation."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourcePage": 4,
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "PT_SIMILAR_FIGURES",
+      "decisiveStep": "TPL_SIMILAR_FIGURES_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "PT_TRIANGLE_SIMILARITY",
+      "decisiveStep": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "PT_TRIANGLE_SIMILARITY",
+      "decisiveStep": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "PT_TRIANGLE_SIMILARITY",
+      "decisiveStep": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "PT_SIMILAR_FIGURES",
+      "decisiveStep": "TPL_SIMILAR_FIGURES_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "PT_PARALLEL_SEGMENT_RATIO",
+      "decisiveStep": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "PT_COORD_CENTROID",
+      "decisiveStep": "TPL_CENTROID_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "PT_COORD_CENTROID",
+      "decisiveStep": "TPL_CENTROID_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "PT_PARALLEL_SEGMENT_RATIO",
+      "decisiveStep": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "M2-07",
+      "decisiveStep": "M2-07-PYTHAGOREAN_APPLICATION",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "M2-07",
+      "decisiveStep": "M2-07-PYTHAGOREAN_THEOREM",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "M2-07",
+      "decisiveStep": "M2-07-PYTHAGOREAN_APPLICATION",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "M2-07",
+      "decisiveStep": "M2-07-PYTHAGOREAN_APPLICATION",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "M2-08",
+      "decisiveStep": "M2-08-PROBABILITY_COUNTING",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "decisiveStep": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "M2-08",
+      "decisiveStep": "M2-08-PROBABILITY_COUNTING",
+      "rpmDisposition": "RPM_ONLY_DEBT_RETAINED",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": null,
+      "templateStatus": null,
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup.",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "decisiveStep": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "decisiveStep": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_REPEATED_TRIALS",
+      "decisiveStep": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "decisiveStep": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "PT_TRIANGLE_SIMILARITY",
+      "decisiveStep": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 1,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "PT_COORD_CENTROID",
+      "decisiveStep": "TPL_CENTROID_APPLICATION",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "PT_PROBABILITY_REPEATED_TRIALS",
+      "decisiveStep": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "rpmDisposition": "R1_CURRENT_SOURCE_METHOD_RECHECKED",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      ],
+      "problemTypeStatus": "ACTIVE",
+      "templateStatus": "ACTIVE",
+      "exactCurriculumBindingMatches": 0,
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "reason": "Actual stored fields were read and matched to source/verified solution; populated keys are ACTIVE; exact target binding gaps remain projection metadata only; explicit nulls retain their scoped lookup debt."
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "25737072ff23b6c7b863c3ee1e803fdc538f89f1",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      }
+    ]
+  },
+  "repairs": {
+    "changedQids": [
+      3,
+      8,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      23
+    ],
+    "solutionChangedQids": [
+      3,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      23
+    ],
+    "metaChangedQids": [
+      3,
+      8
+    ],
+    "changedFields": {
+      "3": [
+        "solution",
+        "legacyLevelCompatibility"
+      ],
+      "8": [
+        "legacyLevelCompatibility"
+      ],
+      "14": [
+        "solution"
+      ],
+      "15": [
+        "solution"
+      ],
+      "16": [
+        "solution"
+      ],
+      "17": [
+        "solution"
+      ],
+      "18": [
+        "solution"
+      ],
+      "19": [
+        "solution"
+      ],
+      "21": [
+        "solution"
+      ],
+      "22": [
+        "solution"
+      ],
+      "23": [
+        "solution"
+      ]
+    },
+    "allAnswersUnchanged": true,
+    "allContentChoicesImageRefsUnchanged": true,
+    "directDependencyRecheck": "Changed solution/meta locus and same-qid source/image/answer relationships rechecked; no other qid depends on these fields."
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "studentBundleExtractedFromCurrentFinalSource": true,
+    "answersFrozenBeforeStoredAnswerExposure": true,
+    "referencedProblemImagesActuallyOpened": true
+  },
+  "summary": {
+    "questionCount": 23,
+    "answerMatchCount": 23,
+    "repairCount": 11,
+    "layoutPassCount": 23,
+    "solutionPassCount": 23,
+    "metaPassCount": 23,
+    "visualPassCount": 23
+  }
+}

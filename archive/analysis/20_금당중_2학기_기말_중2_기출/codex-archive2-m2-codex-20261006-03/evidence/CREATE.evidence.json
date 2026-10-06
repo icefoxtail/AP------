@@ -1,0 +1,1647 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "20_금당중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "ae642f0231956a39f053ff64417ba1a21ca30c8b",
+  "sourceArtifact": {
+    "path": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+    "sha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702"
+  },
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "23/23",
+  "solutionRewriteAttempted": "23/23",
+  "solutionRewriteResolved": "23/23",
+  "questionLayoutCoverage": "23/23",
+  "questionLayoutStatus": "PASS",
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "내분점·중점·거리 공식을 실제 좌표 계산으로 나누어 전개한 점을 확인했다.",
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "두 직선의 기울기·절편 결정이 조건 대입으로 연결되는 작은칠판 흐름을 확인했다.",
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+          },
+          {
+            "qid": 7,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n Visual asset inspected in the late correction-review; this additional item supplements the pre-writing solution samples.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservation": "The actual circle primitives represent the translated circle centers and radius 3; the final displayed center is C2=(5,−2), matching the written solution."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "두 좌표 차를 먼저 계산한 뒤 거리공식의 대입과 제곱근 정리를 단계별로 보였다.",
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "수직 조건에서 기울기를 결정하고 점 대입으로 상수를 정하는 흐름과 SVG 실제 기울기 일치를 확인했다.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "SVG line primitives encode equations 1x+3y+2=0 and 6x−2y−1=0; computed slopes −1/3 and 3 are perpendicular, and both traces meet in the depicted graph. ImageMagick CJK font is unavailable, so SVG labels rasterize as boxes in this local conversion; geometry was checked from actual SVG coordinates and equations."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "원소와 부분집합 관계를 구별해 각 선택지를 개별 판정하는 구성이다.",
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9"
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "개념 정의를 먼저 적용하고 각 후보를 분리해 판단하는 전개를 확인했다.",
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21"
+          },
+          {
+            "qid": 6,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B) Visual asset inspected in the late correction-review; this additional item supplements the pre-writing solution samples.",
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "visualObservation": "The Venn diagram encodes A-only=20−y, intersection=y, B-only=15−y and the constraint y≥20+15−30; this supports the minimum-overlap method."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the regression README and inspected q20-solution.bad.svg by actual coordinates. Text claims line 3x+4y−8=0 and a perpendicular relation, but its line primitive has positive slope +3/4, so it cannot be perpendicular to a line of slope −3/4. Also preserve negative regression for q1/q3/q7/q8/q20 actual primitive mismatches and q2/q17 enumerated-answer grouping omissions. Do not imitate."
+    }
+  },
+  "failedAttempts": [
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/CREATE.preflight.attempt1.json",
+      "disposition": "FAILED_ATTEMPT",
+      "reason": "Initial preflight evidence-builder used one excess parent-directory level when importing archive-stage-validator.mjs; module resolution failed and no calibration closure was accepted."
+    },
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/CREATE.solution-serialization.attempt1.json",
+      "disposition": "FAILED_ATTEMPT",
+      "reason": "Initial JavaScript template-string serialization dropped TeX backslashes in some commands and introduced tab/backspace controls. Restored only affected TeX command tokens in the final runtime solution values, then rebound every solution SHA and artifact blob SHA through validator helpers."
+    }
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의",
+        "observation": "내분점 좌표 공식의 비를 반대쪽 끝점에 곱하는 이유를 설명한 뒤 x좌표, y좌표, 중점, 거리 계산을 각각 실제 수식 줄로 전개한다. 중간 좌표를 숨기지 않아 좌표기하 풀이의 재현 가능성이 높다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=",
+        "observation": "직선 두 개의 기울기와 절편을 정하는 계산을 분리하고, 조건 좌표를 각 직선식에 대입해 미지수를 결정한다. 선형대수 풀이를 암묵적으로 생략하지 않는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌",
+        "observation": "두 점의 x좌표 차와 y좌표 차를 먼저 분리한 다음 거리공식에 대입하고 제곱근을 단계적으로 간단히 한다. 중간식부터 최종값까지 작은칠판 흐름이 이어진다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=",
+        "observation": "수직 조건의 기울기 곱 관계를 설정하고 주어진 점을 대입해 미지수를 구하는 구조를 표본으로 확인한다. 조건→식 설정→대입→결론이 추적 가능하다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를",
+        "observation": "원소 관계와 부분집합 관계를 구별하는 기준을 먼저 설명하고 다섯 보기를 각자 판단한다. 보기별 참·거짓 근거와 결론이 분리되어 있어 문항 구조와 해설 구조가 대응한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에",
+        "observation": "함수 조건에 맞는 식을 분류하며 필요조건을 명시하고 후보식을 전개·정리하여 탈락 근거를 보여준다. 오답 선택지의 핵심 오류를 학생이 재현할 수 있다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+        "sha256": "sha256:9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8",
+        "gitBlobSha": "61f30e0564efd58af8dc188f01673d07ef10946e"
+      }
+    ],
+    "qualityCompareCount": "23/23"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q01.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09edff0bd88162381d9f69e85d0813ead58f006baad8769893b57579f89fddb7",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q02.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c3b2a7de5112a0a5afe68ee5c9b89215bee335995dd1a475ff813a21f3ca884e",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q03.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "db220bea11867e0babb8879b2e6e129edbf02e614184e9bc07b27150778ea203",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q04.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e15d91e1345caaa6e43026fceb880595065e17102795c54637db12856603dc1a",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q05.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fe8b03a6d0a077729e772951ac902d08cca42fda44ee87a791e94f905de08c1f",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q06.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09dd92af267b72f3f191a25584880cc036274eae76eec84f60770bcbf0911fce",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q07.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f6b3b4ec885b97c609fadbcdaff761bdbc6014b5fa8426f1113540e54002ac6d",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q08.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "45f1d67d22871713fd5227b25cb356c3f7cefb16c892da44ca4df30fae3bce65",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q09.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0a0c3b34482a369ed5bcb3b551db24a4cfc3e2fca8807359f132fc889921b156",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q10.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "41cd279821e1aec22220c8f0df93c2a6891dbe8105a92827849695d91cf42860",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d56d9a7f875eaf120055b5adcbc52f82bda9589e34d81b311961a9d26cd676f4",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q12.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b4ddf1980a81c64daee8eb3f3e230acf773a6c18bfc33a0aeee952aa5a701d8e",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q13.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "36a50fd7ae457d9c1d4195f2470a2472298f9c9d853d93c69bb1bce7300c74d5",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q14.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1b8f4bf4973842b54fcf46c6a4c7e5b5c7306200cedcc4552ffd7406883367c6",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "14c6cbd880c292c7af246ed7939dc2fbc158a5601f494616a78b1806fa954498",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed. Current RPM mapping is RPM_ONLY with no active projection key, so both fields remain null as explicit metadata debt."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9a88fc83909aff299304a6f98995de6d7bcd7f47a4024d197dd1950634b32083",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 current RPM-primary rows are RPM_ONLY for this source/solution method and have no ACTIVE PT/TPL projection; keys remain null after scoped lookup."
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bfa14d479f6b35a6f7205ff193a4626ba9bfdfbcafd4ad2ee5fd8861d788e749",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q18.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9c02412916b39b1a0b85ecaae2f436842bb80020cb4355a5ccfc5245848b7e60",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fbd8cea9c725833901ad4be3bc4ddd3ea6cdcbaa31ba70c57104f12a30961f16",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7f3534ac9d3e91ef717db47f73d77c990719455b21b2157c670b2f017de4be54",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q21.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d11f3c4a7460419a4c67da220c3849ef1dfaf74c464ac86a18a7119f7606d0bb",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_RETAINED_NO_SOLUTION_SVG_NEEDED",
+          "problemImage": "assets/images/20_금당중_2학기_기말_중2_기출/q22.png",
+          "reason": "The original diagram/photo is required for the question and remains referenced without reconstruction; algebraic/similarity work is sufficiently explained in text, so no solution SVG is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3329fbdfb0c3451db6e54b5494fe6798716ade87ed77933b495dc9d6ebbee566",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeProvenance": "Exact original prompt and choices preserved from locked source; no repair or replacement.",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_금당중_2학기_기말_중2_기출/20_금당중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "ccc7e2fe4ac051433117be618d6ab4cb35fd0c3ea7d4d0193be47287e073b702",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_금당중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "092084f135f411539b709d931702728c83115364a327d7dd0fecf6bfa85399a0",
+          "sourcePdfPath": "source/2020_금당중2_수학_2기말.pdf",
+          "sourcePdfSha256": "3f67250ab18d1455e3004bbe126b1bf803f6f5e096f26d78f5ea2c2e8c1ba1c6",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "checkedPages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "defect": null,
+          "disposition": "LAYOUT_KEEP",
+          "basis": "Source text and choices unchanged; the actual PDF and qid image were inspected. Existing automatic grid/image flow is adequate; no override added.",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "basis": "The solution separates the concept/condition, equation setup, transformations, intermediate values, substitutions and final answer by meaningful board lines.",
+          "smallBoardContinuityStatus": "PASS"
+        },
+        "meta": {
+          "status": "PASS",
+          "basis": "Solution-derived primary method and decisive step were classified to the middle-2 curriculum scope; PT/TPL current lookup completed."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "problemImage": null,
+          "reason": "No source problem image is referenced; question and solution are text-only and need no visual asset."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d47aafededc239b5574bdc88d50ad019ba996c190092f069bd2c67c3b56ee24e",
+      "metaDebtFields": [],
+      "metaDebtReason": ""
+    }
+  ],
+  "targetedCorrections": [
+    {
+      "qid": 13,
+      "reason": "Replaced coordinate slope/intersection calculation with the curriculum-aligned similar-triangle ratio using the rectangle diagonal and its midpoint."
+    },
+    {
+      "qid": 20,
+      "reason": "Replaced combination notation with ordered-pair counting and division by two for the order-independent pairs."
+    }
+  ],
+  "validatorAttempts": [
+    {
+      "attempt": 1,
+      "status": "FAILED_ATTEMPT",
+      "issues": [
+        "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"
+      ],
+      "reason": "The generic artifact contract expects unprefixed SHA-256 hex in goldenCalibration hashes; the first evidence used sha256:-prefixed values from the separate calibration-preflight contract.",
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/CREATE.validation.attempt1.json"
+    },
+    {
+      "attempt": 2,
+      "status": "FAILED_ATTEMPT",
+      "issues": [
+        "ENOENT: wrong copied Unicode basename in validator CLI argument"
+      ],
+      "reason": "Validator did not read the artifact or evidence because an argument was mistyped. No gate result was produced.",
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/CREATE.validation.attempt2.json"
+    }
+  ],
+  "calibrationCorrectionReview": {
+    "status": "COMPLETED_AFTER_LATE_DISCOVERY",
+    "sequence": "REQUIRED_GOLDEN_SAMPLE_SVG_READ_FIRST; THEN_CHANGED_QID_REVIEW_ONLY",
+    "lateDiscovery": "Initial fixed Golden sample set included representative solutions but not an SVG-bearing qid from each full bank. Generic artifact contract requires at least one actual visual-reviewed item whenever the sample bank contains solutionImage. The initial order/coverage attempt is preserved as FAILED_ATTEMPT; it is not retroactively described as complete.",
+    "goldenVisualReads": [
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "qid": 7,
+        "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/golden-maesan-q7.svg.png"
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+        "qid": 6,
+        "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_금당중_2학기_기말_중2_기출/evidence/golden-jeil-q6.svg.png"
+      }
+    ],
+    "changedLociReviewed": [
+      {
+        "qid": 13,
+        "reviewedAfterSampleRead": true,
+        "solutionSha256": "36a50fd7ae457d9c1d4195f2470a2472298f9c9d853d93c69bb1bce7300c74d5",
+        "finding": "Similar-triangle proof is age-appropriate; angle correspondences and 5:8 side ratio yield DE=25/4, EO=15/4, DO=5; perimeter 15."
+      },
+      {
+        "qid": 20,
+        "reviewedAfterSampleRead": true,
+        "finding": "Ordered-pair total 7×6 is divided by 2 because order does not matter; favorable mixed pairs 3×4=12; probability 12/21=4/7.",
+        "solutionSha256": "7f3534ac9d3e91ef717db47f73d77c990719455b21b2157c670b2f017de4be54"
+      }
+    ]
+  },
+  "artifactHashBinding": {
+    "rawFileSha256": "b229633853b165d4354334062091e21c6200798af4830a2f513cb01b032590a8",
+    "cleanGitBlobSha": "ae642f0231956a39f053ff64417ba1a21ca30c8b",
+    "gitPathFilter": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js"
+  }
+}
