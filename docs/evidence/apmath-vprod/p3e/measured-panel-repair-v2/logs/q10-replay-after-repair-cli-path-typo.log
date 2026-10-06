@@ -1,0 +1,16 @@
+node:fs:2775
+      const stats = binding.lstat(base, true, undefined, true /* throwIfNoEntry */);
+                            ^
+
+Error: ENOENT: no such file or directory, lstat 'C:\Users\USER\Desktop\AP-worktrees\apmath-visual-phase3-5\AP------\.tmp\archive\visual-d06883b9-68da-48da-ae13-239d90b83c90\25_연향중_1학기_기말_中3_기출c'
+    at Object.realpathSync (node:fs:2775:29)
+    at safePath (file:///C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------/archive/tools/pipeline-core/canonical.mjs:53:23)
+    at fileRef (file:///C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------/archive/tools/pipeline-core/canonical.mjs:63:16)
+    at file:///C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------/archive/tools/geometry-equation/production/phase2.mjs:398:146 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: 'C:\\Users\\USER\\Desktop\\AP-worktrees\\apmath-visual-phase3-5\\AP------\\.tmp\\archive\\visual-d06883b9-68da-48da-ae13-239d90b83c90\\25_연향중_1학기_기말_中3_기출c'
+}
+
+Node.js v24.14.1

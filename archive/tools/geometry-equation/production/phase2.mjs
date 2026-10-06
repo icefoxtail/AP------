@@ -173,7 +173,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       const binding=conditionBinding({sourceRef,source:sourceOnly,images,plan:proposedPlan,policySha256:policy});
       return blindThenCompare({root,kind:'CONDITIONS',source:sourceOnly,images,comparison:{proposedPlan},policySha256:policy,inputBindingSha256:binding,call:reviewCall,freeze:reviewFreeze});
     };
-    let frozen,plan,planReceipt,solutionRef;
+    let frozen,plan,planReceipt,solutionRef,priorLayoutComposition=null,finalCompositionBinding=null;
     if(replayResultRef){
       const previous=JSON.parse(readBoundFile(root,replayResultRef));
       if(previous.identity.questionUid!==uid||previous.sourceRef.sha256!==sourceRef.sha256)throw Error('REPLAY_SOURCE_MISMATCH');
@@ -181,6 +181,8 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       repairBudget=new RepairBudget(previous.repairLedger);
       const priorStages=previous.stages.map(ref=>({ref,value:JSON.parse(readBoundFile(root,ref))}));
       const plans=priorStages.filter(s=>s.value.stage==='PLAN');if(!plans.length)throw Error('REPLAY_PLAN_REQUIRED');
+      const priorCompositions=priorStages.filter(s=>s.value.stage==='PROFILE_COMPOSITION');
+      if(priorCompositions.length)priorLayoutComposition=JSON.parse(readBoundFile(root,priorCompositions.at(-1).value.outputs[0]));
       const ref=plans.at(-1).value.outputs[0];frozen=JSON.parse(readBoundFile(root,ref));
       if(planHash(frozen)!==frozen.planSha256)throw Error('REPLAY_PLAN_HASH_MISMATCH');
       const {schemaVersion,questionUid:planUid,visualAssetKey,sourceRef:sourceBinding,solutionRef:solutionBinding,verifiedSolutionRef,verifiedSolutionPolicySha256,verificationInputSha256:priorVerificationBinding,sourceReviewInputSha256,sourceReviewPolicySha256,sourceRegistryRef:priorRegistry,planSha256,...semantic}=frozen;plan=semantic;
@@ -286,11 +288,28 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
         if(requiredPanelPx>maximumPanelPx)throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:GRAPH_FORMULA_PANEL_LIMIT');
         if(requiredPanelPx>spec.viewport.panel){
           const priorPanelPx=spec.viewport.panel,priorLabelInventory=prepared.labels.map(label=>({id:label.id,kind:label.kind,target:label.target??null,text:label.text,sourceMath:label.sourceMath??null}));
+          const sourcePlanSha256=objectSha(plan),sourceConditionsSha256=objectSha(plan.sourceConditions||[]),graphPlanSha256=objectSha(materialPlan.graphPlan);
+          const sourceFactSha256=objectSha({sourceConditions:plan.sourceConditions||[],newVisualInformation:plan.newVisualInformation||[],graphPlan:materialPlan.graphPlan});
+          const labelInventorySha256=objectSha(priorLabelInventory),baseSvgSha256=bytesSha(Buffer.from(model.svg));
+          const requestedProfile=displayEnvelopePlan.profiles.find(profile=>profile.sizeClass===requestedSizeClass);
+          const repairInput={schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_INPUT_v2',questionUid:uid,sourceSha256:sourceRef.sha256,solutionSha256:solutionRef.sha256,sourcePlanSha256,sourceConditionsSha256,sourceFactSha256,graphPlanSha256,baseSvgSha256,formulaLabelId:formulaId,formulaFragmentSha256:fragments[formulaId].fragmentSha256,formulaText:prepared.labels.find(label=>label.id===formulaId)?.text,measuredFormula:{widthPx:measuredFormula[0],heightPx:measuredFormula[1]},requestedSizeClass,profilePolicySha256:requestedProfile.profilePolicySha256,typographyPolicySha256:objectSha(typographyPolicy),sourcePolicySha256:sourcePolicyFingerprint(root),verifiedSolutionPolicySha256:verifiedSolutionPolicyFingerprint(root),displayPolicyRefsSha256:objectSha(displayEnvelopePlan.policyRefs),currentPanelPx:priorPanelPx,panelPaddingPx,maximumPanelPx};
+          const repairInputSha256=objectSha(repairInput),selectedPanelPx=requiredPanelPx;
           spec={...spec,viewport:{...spec.viewport,panel:requiredPanelPx}};
           const adjusted=await worker({action:'prepare',spec}),adjustedLabelInventory=adjusted.labels.map(label=>({id:label.id,kind:label.kind,target:label.target??null,text:label.text,sourceMath:label.sourceMath??null}));
-          if(canonicalJson(priorLabelInventory)!==canonicalJson(adjustedLabelInventory))throw Error('GRAPH_PANEL_COMPOSITION_LABEL_INVENTORY_CHANGED');
+          const sourcePlanAfterSha256=objectSha(plan),sourceConditionsAfterSha256=objectSha(plan.sourceConditions||[]),graphPlanAfterSha256=objectSha(materialPlan.graphPlan);
+          const sourceFactAfterSha256=objectSha({sourceConditions:plan.sourceConditions||[],newVisualInformation:plan.newVisualInformation||[],graphPlan:materialPlan.graphPlan});
+          const adjustedLabelInventorySha256=objectSha(adjustedLabelInventory);
+          const sourceConditionParity=sourceConditionsSha256===sourceConditionsAfterSha256;
+          const sourceFactParity=sourceFactSha256===sourceFactAfterSha256&&graphPlanSha256===graphPlanAfterSha256;
+          const semanticPlanParity=sourcePlanSha256===sourcePlanAfterSha256;
+          const labelInventoryParity=canonicalJson(priorLabelInventory)===canonicalJson(adjustedLabelInventory);
+          if(!sourceConditionParity||!sourceFactParity||!semanticPlanParity||!labelInventoryParity)throw Error('GRAPH_PANEL_COMPOSITION_SEMANTIC_PARITY_FAIL');
+          const repairOutput={schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_OUTPUT_v2',repairInputSha256,sourcePlanSha256:sourcePlanAfterSha256,sourceConditionsSha256:sourceConditionsAfterSha256,sourceFactSha256:sourceFactAfterSha256,graphPlanSha256:graphPlanAfterSha256,labelInventorySha256:adjustedLabelInventorySha256,formulaLabelId:formulaId,formulaFragmentSha256:fragments[formulaId].fragmentSha256,formulaText:adjusted.labels.find(label=>label.id===formulaId)?.text,measuredFormulaWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx};
+          const repairOutputSha256=objectSha(repairOutput),repairAction=repairBudget.record('LAYOUT',repairInputSha256,'MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW',repairOutputSha256);
+          if(priorLayoutComposition?.schemaVersion==='MEASURED_GRAPH_FORMULA_PANEL_v2'&&(priorLayoutComposition.repairInputSha256!==repairInputSha256||priorLayoutComposition.repairOutputSha256!==repairOutputSha256||priorLayoutComposition.selectedPanelPx!==selectedPanelPx))throw Error('LAYOUT_REPAIR_REPLAY_MISMATCH');
           prepared=adjusted;
-          stages.push(freeze('PROFILE_COMPOSITION',{schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_v1',status:'PASS',compositionOnly:true,sourceRef,solutionRef,sourcePlanSha256:planHash(frozen),requestedSizeClass,typographyPolicy,formulaLabelId:formulaId,fragmentRef:fragments[formulaId].fragmentSha256,measurementRef:measurementReceipt.outputs[0],formulaTextWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx:requiredPanelPx,displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256},provenance));
+          stages.push(freeze('PROFILE_COMPOSITION',{schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_v2',status:'PASS',compositionOnly:true,sourceRef,solutionRef,sourcePlanSha256,sourceConditionsSha256,sourceFactSha256,graphPlanSha256,labelInventoryBeforeSha256:labelInventorySha256,labelInventoryAfterSha256:adjustedLabelInventorySha256,sourceConditionParity,sourceFactParity,semanticPlanParity,labelInventoryParity,requestedSizeClass,typographyPolicy,formulaLabelId:formulaId,fragmentRef:fragments[formulaId].fragmentSha256,measurementRef:measurementReceipt.outputs[0],formulaTextWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx,repairInput,repairInputSha256,repairOutput,repairOutputSha256,repairIteration:repairAction.row.iteration,repairReplayed:repairAction.replayed,repairResumed:repairAction.resumed,displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256},provenance));
+          finalCompositionBinding={repairInputSha256,repairOutputSha256};
           stages.push(freeze('NORMALIZE_FINAL',spec,{...provenance,compositionStage:'PROFILE_COMPOSITION',displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256}));
         }
       }
@@ -301,7 +320,10 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     const archiveAssetRef=`assets/images/${workspace.examUid}/${solutionImageName}`;
     const builtReceipt=receipt('BUILD',{[solutionImageName]:built.svg,'witness.json':canonicalJson(built.witness)},provenance);stages.push(builtReceipt);const asset=builtReceipt.outputs.find(r=>r.path.endsWith('/'+solutionImageName));
     const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:reconstruction.peer?.points??null,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
-    if(plan.graphPlan)staticAudit.graph=await workerGraphAudit(materialPlan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:1});
+    if(plan.graphPlan){
+      staticAudit.graph=await workerGraphAudit(materialPlan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:1});
+      staticAudit.graphCompositionBinding={phase:'POST_COMPOSITION_BUILD',candidateSvgRef:asset,candidateSvgSha256:asset.sha256,graphPlanSha256:objectSha(materialPlan.graphPlan),...(finalCompositionBinding||{})};
+    }
     stages.push(freeze('STATIC_AUDIT',staticAudit,provenance));if(staticAudit.status!=='PASS'||staticAudit.graph&&staticAudit.graph.status!=='PASS')throw Error('STATIC_AUDIT_FAIL:'+JSON.stringify(staticAudit.errors));
     const expectedPrimitiveIds=[...Object.keys(reconstruction.peer?.points||{}),...(plan.displaySegments||[]).map(value=>value.id),...(plan.rightAngles||[]).map(value=>value.id)];
     const profileAudit=await auditCandidateProfiles({svg:built.svg,plan:displayEnvelopePlan,candidateSvgRef:asset,sourceRef,solutionRef,policyRefs:displayEnvelopePlan.policyRefs,identity,provenance,graphPlan:materialPlan.graphPlan??null,geometryStaticAudit:staticAudit,coordinateModel:built.witness.coordinateModel,expectedPrimitiveIds});

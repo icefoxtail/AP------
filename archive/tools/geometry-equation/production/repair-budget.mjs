@@ -16,4 +16,18 @@ export class RepairBudget {
     const signature=r=>objectSha({stage:r.stage,inputSha:r.inputSha,reason:r.reason,outputSha:r.outputSha});
     if(this.ledger.slice(0,-1).some(r=>signature(r)===signature(row)))throw Error('REPAIR_STAGNATION');
   }
+  record(stage,inputSha,reason,outputSha){
+    if(!HASH_PATTERN.test(outputSha))throw Error('INVALID_REPAIR_OUTPUT');
+    const prior=this.ledger.find(row=>row.stage===stage&&row.inputSha===inputSha&&row.reason===reason);
+    if(prior){
+      if(prior.outputSha===outputSha)return{row:prior,replayed:true,resumed:false};
+      if(prior.outputSha===null){
+        if(this.ledger.at(-1)!==prior)throw Error('INVALID_REPAIR_LEDGER');
+        this.complete(prior,outputSha);return{row:prior,replayed:true,resumed:true};
+      }
+      throw Error('REPAIR_OUTPUT_MISMATCH');
+    }
+    const row=this.consume(stage,inputSha,reason);this.complete(row,outputSha);
+    return{row,replayed:false,resumed:false};
+  }
 }
