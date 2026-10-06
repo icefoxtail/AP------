@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "WORKER_MISSING_RESULT_PRE_FIX_FAILURE_v1",
+  "status": "FAILED_TEST_PRESERVED",
+  "test": "malformed JSON framing and invalid status schemas stay uncached until same-key recovery",
+  "case": "missing-result-field",
+  "preFixContractCommit": "dc466abee",
+  "preFixContractsGitBlobSha1": "36b4f0600696d7b92ed127f3e9570816253c3ce3",
+  "expected": "INVALID_WORKER_RESPONSE",
+  "observed": "NON_JSON_VALUE",
+  "note": "The worker response passed wireVersion/hash/status checks without a result member; the consumer failed later during canonicalization. The run output showed this assertion mismatch. The failed run did not reach the test assertions for lock/staging cleanup, so those are not attributed to this attempt."
+}
