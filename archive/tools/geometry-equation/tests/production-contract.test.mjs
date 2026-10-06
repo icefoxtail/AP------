@@ -169,6 +169,46 @@ test('timeout terminates worker; next request uses a fresh subprocess',async()=>
   await assert.rejects(pythonWorker({action:'echo',value:1},{script,timeoutMs:100}),/WORKER_TIMEOUT/);
   assert.equal((await pythonWorker({action:'echo',value:2})).result,2);
 });
+test('timed out calculation stage stays uncached until same-key recovery commits complete bytes',async()=>{
+  const timeoutWorkRoot=`.tmp/archive/timeout-recovery-${crypto.randomUUID()}/exam-timeout/visual-engine/production`;
+  const key=objectSha({calculation:'worker-timeout-recovery'});
+  const stageDirectory=`${timeoutWorkRoot}/stages/MATH/${key.slice(7)}`;
+  const script=path.join(root,'timeout-stage-sleep.py');fs.writeFileSync(script,'import time\ntime.sleep(30)\n');
+  let timeoutProducerCalls=0;
+  await assert.rejects(withWorkRoot(timeoutWorkRoot,()=>calculationStage(root,{stage:'MATH',key,provenance:{attempt:'timeout'}},async()=>{
+    timeoutProducerCalls++;
+    const response=await pythonWorker({action:'echo',value:'must-not-publish'},{script,timeoutMs:100});
+    return{'model.json':canonicalJson(response.result)};
+  })),/WORKER_TIMEOUT/);
+  assert.equal(timeoutProducerCalls,1);
+  withWorkRoot(timeoutWorkRoot,()=>{
+    assert.equal(loadStage(root,'MATH',key),null);
+    assert.equal(fs.existsSync(path.join(root,stageDirectory+'.lock')),false);
+    const parent=path.join(root,timeoutWorkRoot,'stages','MATH');
+    const siblings=fs.existsSync(parent)?fs.readdirSync(parent):[];
+    assert.equal(siblings.some(name=>name.startsWith(path.basename(stageDirectory)+'.staging-')),false);
+  });
+  let recoveryProducerCalls=0;
+  const recovered=await withWorkRoot(timeoutWorkRoot,()=>calculationStage(root,{stage:'MATH',key,provenance:{attempt:'recovered'}},async()=>{
+    recoveryProducerCalls++;
+    const response=await pythonWorker({action:'echo',value:'recovered-complete'});
+    return{'model.json':canonicalJson(response.result)};
+  }));
+  assert.equal(recovered.cacheHit,false);assert.equal(recoveryProducerCalls,1);
+  assert.equal(readBoundFile(root,recovered.receipt.outputs[0]).toString('utf8'),'"recovered-complete"');
+  const warm=await withWorkRoot(timeoutWorkRoot,()=>calculationStage(root,{stage:'MATH',key,provenance:{attempt:'warm'}},async()=>{
+    recoveryProducerCalls++;
+    return{'model.json':'"wrong-recompute"'};
+  }));
+  assert.equal(warm.cacheHit,true);assert.equal(recoveryProducerCalls,1);
+  assert.equal(readBoundFile(root,warm.receipt.outputs[0]).toString('utf8'),'"recovered-complete"');
+  withWorkRoot(timeoutWorkRoot,()=>{
+    const parent=path.join(root,timeoutWorkRoot,'stages','MATH');
+    const siblings=fs.readdirSync(parent);
+    assert.deepEqual(siblings,[key.slice(7)]);
+    assert.ok(loadStage(root,'MATH',key));
+  });
+});
 test('production build worker rejects approximate fallback when browser measurements are absent',async()=>{
   const spec=JSON.parse(fs.readFileSync(new URL('publication-fixtures/owner-triangle.spec.json',import.meta.url),'utf8'));
   const response=await pythonWorker({action:'build',spec});

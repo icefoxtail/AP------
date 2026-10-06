@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_TIMEOUT_RECOVERY_v1",
+  "unit": "worker-timeout-calculation-stage-recovery",
+  "status": "PASS",
+  "acceptance": "A timed-out worker inside a calculation stage must leave no loadable receipt, lock, or staging residue. A same-key retry must call a fresh worker and commit complete output. Only the complete receipt may be reused warm.",
+  "observed": {
+    "focusedRuns": 10,
+    "focusedPasses": 10,
+    "focusedFailures": 0,
+    "timeoutError": "WORKER_TIMEOUT",
+    "stageLoadableAfterTimeout": false,
+    "lockPresentAfterTimeout": false,
+    "stagingResidueAfterTimeout": false,
+    "recoveryCacheHit": false,
+    "recoveryProducerCalls": 1,
+    "recoveredOutput": "\"recovered-complete\"",
+    "warmCacheHit": true,
+    "warmProducerCalls": 0,
+    "warmOutput": "\"recovered-complete\"",
+    "finalStageDirectoryEntries": 1
+  },
+  "regressionSubset": {
+    "passed": 51,
+    "failed": 0,
+    "nodeVersion": "v24.14.1",
+    "log": {
+      "path": "logs/phase3d-timeout-regression-subset.log",
+      "sourcePath": ".tmp\\archive\\phase3d-timeout-recovery\\worker-timeout\\visual-engine\\production\\phase3d-timeout-regression-subset.log",
+      "bytes": 5398,
+      "sha256": "sha256:e508f82830981b8f22037b9f45ef2f59e38c0518f2f58d3c111037a4d87c3c48",
+      "command": "node --test archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs"
+    }
+  },
+  "focusedRun": {
+    "passed": 10,
+    "failed": 0,
+    "log": {
+      "path": "logs/timeout-recovery-focused-10x.log",
+      "sourcePath": ".tmp\\archive\\phase3d-timeout-recovery\\worker-timeout\\visual-engine\\production\\timeout-recovery-focused-10x.log",
+      "bytes": 2659,
+      "sha256": "sha256:1073108d275c372fd9774a43c2c4a0131c3806fa66e6bdbc3d97d77079a3e6ff",
+      "command": "node --test --test-name-pattern=\"timed out calculation stage\" archive/tools/geometry-equation/tests/production-contract.test.mjs (10 repetitions)"
+    }
+  },
+  "implementation": {
+    "testName": "timed out calculation stage stays uncached until same-key recovery commits complete bytes",
+    "codeRefs": [
+      {
+        "path": "archive/tools/geometry-equation/tests/production-contract.test.mjs",
+        "bytes": 17525,
+        "sha256": "sha256:75123ac7618b1e2ebb15c0261d03c95345e234dec69cd48ffd5517babedf57db"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/store.mjs",
+        "bytes": 7756,
+        "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/worker.mjs",
+        "bytes": 1588,
+        "sha256": "sha256:46ad4b4d55e43320561d062f8248c8653a248f435df6a1fb5e957d3cf8ca7b3b"
+      }
+    ]
+  },
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic isolated test workspace; no student candidate modified",
+  "openDebt": [
+    "This unit covers a Python worker timeout and calculation-stage recovery; provider timeout and other worker error classes remain separate.",
+    "Canonical current-UID execution remains INPUT_REQUIRED."
+  ],
+  "lastUpdatedUtc": "2026-10-06T09:58:50.599Z"
+}
