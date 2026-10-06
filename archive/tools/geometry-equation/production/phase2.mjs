@@ -17,6 +17,8 @@ import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
 import {captureDisplayProfiles} from './display-profile-audit.mjs';
 import {planDisplayEnvelope,qualifyDisplayEnvelope,compareActualDisplayEnvelope,requestedProfileTypographyPolicy} from './display-envelope.mjs';
 import {RepairBudget} from './repair-budget.mjs';
+import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
+import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
 import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
@@ -319,11 +321,43 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       }
     }
     const built=await worker({action:'build',spec,measurements,fragments});
+    const layoutRepairBindings=[];
+    const ownerPointMarkers=prepared.prepared.primitives.filter(value=>value.role==='point').map(value=>({id:value.id,geometry:[...value.at,value.radius]}));
+    for(const repair of built.witness.layout.repairs||[]){
+      const label=prepared.labels.find(value=>value.id===repair.labelId),fragment=fragments[repair.labelId],measurement=measurements[repair.labelId];
+      if(!label||label.kind!==repair.labelKind||label.target!==repair.ownerId||!fragment||fragment.fragmentSha256!==repair.measuredFragmentSha256||!measurement||measurement.length!==2||measurement[0]!==repair.measuredBox.width||measurement[1]!==repair.measuredBox.height)throw Error('MEASURED_OWNER_LAYOUT_REPAIR_EVIDENCE_MISMATCH');
+      const requestedProfile=displayEnvelopePlan.profiles.find(value=>value.sizeClass===requestedSizeClass);
+      if(!requestedProfile)throw Error('MEASURED_OWNER_LAYOUT_PROFILE_REQUIRED');
+      const sourceConditionsSha256=objectSha(plan.sourceConditions||[]);
+      const sourceFactsSha256=objectSha({sourceConditions:plan.sourceConditions||[],newVisualInformation:plan.newVisualInformation||[],mathPlan:plan.mathPlan||null,graphPlan:materialPlan.graphPlan||null});
+      const labelInventory=prepared.labels.map(value=>({id:value.id,kind:value.kind,target:value.target??null,text:value.text,sourceMath:value.sourceMath??null,factRole:spec.displayFacts.factRolesByLabel?.[value.id]??null}));
+      const binding=bindMeasuredOwnerSafeLabelRepair({identity,sourceRef,solutionRef,planSha256:frozen.planSha256,sourceConditionsSha256,sourceFactsSha256,labelInventorySha256:objectSha(labelInventory),baseMathSvgSha256:bytesSha(Buffer.from(model.svg)),measurementRef:measurementReceipt.outputs[0],policyRefsSha256:objectSha(displayEnvelopePlan.policyRefs),profilePolicySha256:requestedProfile.profilePolicySha256,requestedSizeClass,repair,candidateSvgBytes:Buffer.from(built.svg),expectedLabel:label,pointMarkers:ownerPointMarkers,measurement,fragment});
+      const action=repairBudget.record('LAYOUT',binding.repairInputSha256,'MEASURED_OWNER_SAFE_LABEL_RELOCATION',binding.repairOutputSha256);
+      const repairReceipt=freeze('LAYOUT_REPAIR',{schemaVersion:'MEASURED_OWNER_SAFE_LAYOUT_REPAIR_STAGE_v1',status:'PASS',sourceRef,solutionRef,planSha256:frozen.planSha256,sourceConditionsSha256,sourceFactsSha256,labelInventorySha256:objectSha(labelInventory),repairInput:binding.repairInput,repairInputSha256:binding.repairInputSha256,repairOutput:binding.repairOutput,repairOutputSha256:binding.repairOutputSha256,repairIteration:action.row.iteration,repairReplayed:action.replayed,repairResumed:action.resumed,repairReplayRelation:action.replayed?'EXACT_REPLAY':action.resumed?'RESUMED':'NEW_INPUT_DISTINCT_BUDGET',candidateSvgSha256:binding.candidateSvgSha256,selectedSizeClass:requestedSizeClass,profilePolicySha256:requestedProfile.profilePolicySha256,policyRefs:displayEnvelopePlan.policyRefs},provenance);
+      stages.push(repairReceipt);layoutRepairBindings.push({binding,repairReceiptRef:repairReceipt.outputs[0]});
+    }
     if(built.witness.layout.unresolved.length||built.witness.layout.suppressed.length)throw Error('LAYOUT_INVENTORY_INCOMPLETE:'+JSON.stringify(built.witness.layout));
     const solutionImageName=`q${String(ordinal).padStart(2,'0')}-solution.svg`;
     const archiveAssetRef=`assets/images/${workspace.examUid}/${solutionImageName}`;
     const builtReceipt=receipt('BUILD',{[solutionImageName]:built.svg,'witness.json':canonicalJson(built.witness)},provenance);stages.push(builtReceipt);const asset=builtReceipt.outputs.find(r=>r.path.endsWith('/'+solutionImageName));
+    const measuredOwnerLayoutRepairAudits=[];
+    if(layoutRepairBindings.length){
+      let repairAuditBrowser;
+      try{
+        repairAuditBrowser=await dependency('playwright').chromium.launch({channel:'chrome',headless:true});
+        const repairAuditPage=await repairAuditBrowser.newPage();
+        for(const item of layoutRepairBindings){
+          try{
+            const audit=await auditMeasuredOwnerSafeLabelRepair({binding:item.binding,candidateSvgBytes:Buffer.from(built.svg),pointMarkers:ownerPointMarkers,page:repairAuditPage});
+            if(audit.candidateSvgSha256!==asset.sha256)throw Error('LAYOUT_REPAIR_AUDIT_BUILD_ASSET_SHA_MISMATCH');
+            measuredOwnerLayoutRepairAudits.push({...audit,candidateSvgRef:asset,repairReceiptRef:item.repairReceiptRef});
+          }catch(error){measuredOwnerLayoutRepairAudits.push({schemaVersion:'MEASURED_OWNER_SAFE_LAYOUT_REPAIR_AUDIT_v1',status:'FAIL',candidateSvgRef:asset,repairReceiptRef:item.repairReceiptRef,error:error.message});}
+        }
+      }finally{if(repairAuditBrowser)await repairAuditBrowser.close();}
+    }
     const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:reconstruction.peer?.points??null,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
+    staticAudit.measuredOwnerLayoutRepairAudits=measuredOwnerLayoutRepairAudits;
+    if(measuredOwnerLayoutRepairAudits.some(value=>value.status!=='PASS')){staticAudit.status='FAIL';staticAudit.errors=[...(staticAudit.errors||[]),'MEASURED_OWNER_LAYOUT_REPAIR_AUDIT_FAIL'];}
     if(plan.graphPlan){
       staticAudit.graph=await workerGraphAudit(materialPlan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:1});
       staticAudit.graphCompositionBinding={phase:'POST_COMPOSITION_BUILD',candidateSvgRef:asset,candidateSvgSha256:asset.sha256,graphPlanSha256:objectSha(materialPlan.graphPlan),...(finalCompositionBinding||{})};

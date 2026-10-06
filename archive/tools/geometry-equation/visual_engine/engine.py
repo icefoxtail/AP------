@@ -135,6 +135,8 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
         label_ids={label['id'] for label in labels}
         if set(fragments)!=label_ids:raise ValueError('FROZEN_FRAGMENT_INVENTORY_MISMATCH')
         if set(measurements)-label_ids:raise ValueError('BROWSER_MEASUREMENT_INVENTORY_MISMATCH')
+        missing_measurements=sorted(label_ids-set(measurements))
+        if missing_measurements:raise ValueError('BROWSER_LABEL_MEASUREMENT_REQUIRED:'+missing_measurements[0])
         for label_id,fragment in fragments.items():
             if not isinstance(fragment,dict):raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id)
             fragment_hash=fragment.get('fragmentSha256');intrinsic=fragment.get('intrinsic')
@@ -148,6 +150,13 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False)
             try:intrinsic_width=finite(intrinsic.get('width'));intrinsic_height=finite(intrinsic.get('height'))
             except ValueError:raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id) from None
             if intrinsic_width<=0 or intrinsic_height<=0:raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id)
+        for label in labels:
+            if label['kind'] in {'POINT_NAME','COORDINATE_LABEL'}:
+                fragment=fragments[label['id']]
+                if fragment['owner']!=label.get('target'):raise ValueError('FROZEN_FRAGMENT_OWNER_MISMATCH:'+label['id'])
+                label['measuredFragmentSha256']=fragment['fragmentSha256']
+                label['measuredFragmentOwner']=fragment['owner']
+                label['measuredFactRole']=fragment['factRole']
     if fragments is not None:
         prepared['fragmentProfile']='fragment-publication-spike-v1'
         for label in labels:

@@ -7,6 +7,7 @@ from .geometry_model import finite
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
+MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 
 @dataclass(frozen=True)
 class Box:
@@ -86,7 +87,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     needed. Critical point names remain at their marker or require polishing.
     """
     if require_measurements and not isinstance(measurements,dict):raise ValueError('BROWSER_MEASUREMENTS_REQUIRED')
-    measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[]
+    measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
     for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
@@ -114,19 +115,42 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         def acceptable(box):
             return safe_area.contains(box) and not any(collision(box,o) for o in occupied) and (owner_marker is None or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
+        default_gaps=() if 'candidateCenters' in label else tuple(label.get('gaps',(12,8,20,32,48)))
         if 'candidateCenters' in label:
             from .publication import box_owned
             for x, y in label['candidateCenters']:
                 box = Box(x-w/2, y-h/2, w, h)
                 if acceptable(box) and box_owned(label, box):
                     chosen=box;method='OWNER_BOUND_RELOCATION';break
-        for gap in (() if 'candidateCenters' in label else label.get('gaps',(12,8,20,32,48))):
+        for gap in default_gaps:
             for direction in directions:
                 box=candidate(label['at'],w,h,direction,gap)
                 if acceptable(box):
                     chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
                     break
             if chosen:break
+        repair=None
+        if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
+            and not label.get('candidateCenters') and isinstance(label.get('measuredFragmentSha256'),str)
+            and len(label['measuredFragmentSha256'])==71 and label['measuredFragmentSha256'].startswith('sha256:')
+            and isinstance(label.get('measuredFragmentOwner'),str) and label['measuredFragmentOwner']==label.get('target')
+            and label.get('measuredFactRole') in {'GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'}):
+            for gap in MEASURED_OWNER_REPAIR_GAPS:
+                for direction in directions:
+                    box=candidate(label['at'],w,h,direction,gap)
+                    if acceptable(box):
+                        chosen=box;method='MEASURED_OWNER_SAFE_RELOCATION'
+                        repair={'schemaVersion':'MEASURED_OWNER_SAFE_LABEL_RELOCATION_v1','failureClass':'OWNER_LABEL_NO_DEFAULT_CANDIDATE',
+                            'labelId':label['id'],'labelKind':label['kind'],'ownerId':label['target'],'factRole':label['measuredFactRole'],
+                            'sourceAt':list(label['at']),'ownerPoint':list(owner_marker['geometry']),
+                            'competingPoints':[{'id':marker['id'],'geometry':list(marker['geometry'])} for marker in sorted(competing_markers,key=lambda item:item['id'])],
+                            'measuredFragmentSha256':label['measuredFragmentSha256'],'measuredBox':{'width':w,'height':h},
+                            'defaultSearch':{'directions':list(directions),'gaps':list(default_gaps)},
+                            'supportedExtendedGaps':list(MEASURED_OWNER_REPAIR_GAPS),
+                            'selected':{'direction':direction,'gap':gap,'box':asdict(box)},
+                            'ownerPolicy':'EXACT_POINT_VORONOI_BOX_CORNERS','tolerancePxSquared':POINT_OWNER_DISTANCE_TOLERANCE_PX2}
+                        repairs.append(repair);break
+                if chosen:break
         if chosen is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
         if chosen is None and panel is not None and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
@@ -145,6 +169,8 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
         placed.append({**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method})
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})
-        trace.append({'id':label['id'],'fallback':method})
-    return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,
+        trace_row={'id':label['id'],'fallback':method}
+        if repair is not None:trace_row['repair']=repair
+        trace.append(trace_row)
+    return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,'repairs':repairs,
         'status':'POLISH_REQUIRED' if unresolved else 'PASS','basis':'APPROXIMATE_BUILD_SIDE_ONLY'}

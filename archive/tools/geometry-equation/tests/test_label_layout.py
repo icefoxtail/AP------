@@ -84,6 +84,38 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(accepted_coordinate['status'],'PASS')
         with self.assertRaisesRegex(ValueError,'POINT_LABEL_OWNER_MARKER_REQUIRED:A-name'):
             layout([owned],[points[1]],safe,measurements={'A-name':(30,10)},require_measurements=True)
+    def test_measured_owner_label_uses_bounded_extended_relocation_without_suppression(self):
+        points=[{'id':'A','kind':'point','geometry':(20,50,2)},{'id':'B','kind':'point','geometry':(80,50,2)}]
+        blockers=[
+            {'id':'center-block','kind':'rectangle','geometry':Box(-2,0,64,100)},
+            {'id':'west-near-block','kind':'rectangle','geometry':Box(-25,44,5,12)},
+            {'id':'northwest-block','kind':'rectangle','geometry':Box(-12,8,7,10)},
+            {'id':'southwest-block','kind':'rectangle','geometry':Box(-12,82,7,10)},
+        ]
+        safe=Box(-100,0,200,100)
+        fragment='sha256:'+'a'*64
+        for kind,oid,text in [('POINT_NAME','A-name','A'),('COORDINATE_LABEL','A-coordinate','(1,2)')]:
+            item=label(oid,(20,50),text,kind,target='A',directions=DIRECTIONS,gaps=(12,20,32,48),measuredFragmentSha256=fragment,measuredFragmentOwner='A',measuredFactRole='GIVEN')
+            result=layout([item],points+blockers,safe,measurements={oid:(30,10)},require_measurements=True)
+            self.assertEqual(result['status'],'PASS')
+            self.assertEqual(result['unresolved'],[])
+            self.assertEqual(result['suppressed'],[])
+            self.assertEqual(len(result['repairs']),1)
+            repair=result['repairs'][0]
+            self.assertEqual(repair['failureClass'],'OWNER_LABEL_NO_DEFAULT_CANDIDATE')
+            self.assertEqual((repair['labelKind'],repair['ownerId'],repair['factRole']),(kind,'A','GIVEN'))
+            self.assertEqual(repair['measuredFragmentSha256'],fragment)
+            self.assertEqual(repair['selected']['direction'],'W')
+            self.assertEqual(repair['selected']['gap'],64)
+            placed=next(value for value in result['labels'] if value['id']==oid)
+            box=Box(**placed['box'])
+            self.assertTrue(point_box_has_unambiguous_owner(box,points[0],points[1:]))
+        constrained=Box(0,0,40,100)
+        item=label('A-name',(20,50),'A','POINT_NAME',target='A',directions=DIRECTIONS,gaps=(12,20,32,48),measuredFragmentSha256=fragment,measuredFragmentOwner='A',measuredFactRole='GIVEN')
+        rejected=layout([item],points+blockers,constrained,measurements={'A-name':(30,10)},require_measurements=True)
+        self.assertEqual(rejected['unresolved'],['A-name'])
+        self.assertEqual(rejected['suppressed'],[])
+        self.assertEqual(rejected['repairs'],[])
     def test_circle_and_segment_boundary(self):
         self.assertFalse(collision(Box(15,15,10,10),{'kind':'circle','geometry':(20,20,100)},0))
         self.assertTrue(segment_hits_box((0,0),(100,100),Box(40,40,10,10)))
