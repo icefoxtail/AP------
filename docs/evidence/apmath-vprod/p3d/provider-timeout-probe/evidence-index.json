@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_PROVIDER_TIMEOUT_INDEX_v1",
+  "classification": "PROVIDER_TURN_TIMEOUT_OBSERVED_WITH_CLEANUP_DEBT",
+  "entries": [
+    {
+      "sourceRef": {
+        "path": ".tmp/archive/phase3d-provider-timeout/provider-timeout/visual-engine/production/provider-timeout-probe.json",
+        "bytes": 2107,
+        "sha256": "sha256:2924351d60ea30dabffa41b9d4733c86f7591aa574d7fb6d2b3a1a3e56a982e3"
+      },
+      "pathInPackage": "payload/provider-timeout-probe.json",
+      "bytes": 2107,
+      "sha256": "sha256:2924351d60ea30dabffa41b9d4733c86f7591aa574d7fb6d2b3a1a3e56a982e3",
+      "usedBy": "timeout-classification-and-process-snapshot"
+    },
+    {
+      "sourceRef": {
+        "path": ".tmp/archive/phase3d-provider-timeout/provider-timeout/visual-engine/production/provider-trace/appserver-message-trace.jsonl",
+        "bytes": 4206,
+        "sha256": "sha256:40dc2ff4644cbffac99bbe56d5dbf8eed43eb6c044d23db85e818ef45b65ce2d"
+      },
+      "pathInPackage": "payload/appserver-message-trace.jsonl",
+      "bytes": 4206,
+      "sha256": "sha256:40dc2ff4644cbffac99bbe56d5dbf8eed43eb6c044d23db85e818ef45b65ce2d",
+      "usedBy": "actual-appserver-trace-through-turn-start"
+    },
+    {
+      "sourceRef": {
+        "path": ".tmp/archive/phase3d-provider-timeout/provider-timeout/visual-engine/production/probe-provider-timeout.mjs",
+        "bytes": 3549,
+        "sha256": "sha256:4eb5e519044bfd9a070349e487cf976f7cf10c37128f1f927abba6a8e541ea10"
+      },
+      "pathInPackage": "logs/probe-provider-timeout.mjs",
+      "bytes": 3549,
+      "sha256": "sha256:4eb5e519044bfd9a070349e487cf976f7cf10c37128f1f927abba6a8e541ea10",
+      "usedBy": "probe-harness"
+    }
+  ]
+}

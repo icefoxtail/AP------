@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "PHASE3D_PROVIDER_TIMEOUT_PROBE_v1",
+  "classification": "TURN_TIMEOUT",
+  "timeoutMs": 1,
+  "errorMessage": "VISUAL_PROVIDER_TIMEOUT",
+  "durationMs": 2675,
+  "returnedOutput": null,
+  "processProbe": {
+    "before": {
+      "available": true,
+      "pids": []
+    },
+    "after": {
+      "available": true,
+      "pids": []
+    },
+    "newSurvivors": [],
+    "settled": true
+  },
+  "tracePath": ".tmp/archive/phase3d-provider-timeout/provider-timeout/visual-engine/production/provider-trace/appserver-message-trace.jsonl",
+  "traceExists": true,
+  "traceEvents": [
+    {
+      "sequence": 1,
+      "route": "response",
+      "method": null,
+      "turnStatus": null
+    },
+    {
+      "sequence": 2,
+      "route": "notification",
+      "method": "remoteControl/status/changed",
+      "turnStatus": null
+    },
+    {
+      "sequence": 3,
+      "route": "response",
+      "method": null,
+      "turnStatus": null
+    },
+    {
+      "sequence": 4,
+      "route": "response",
+      "method": null,
+      "turnStatus": null
+    },
+    {
+      "sequence": 5,
+      "route": "notification",
+      "method": "thread/started",
+      "turnStatus": null
+    },
+    {
+      "sequence": 6,
+      "route": "notification",
+      "method": "mcpServer/startupStatus/updated",
+      "turnStatus": null
+    },
+    {
+      "sequence": 7,
+      "route": "notification",
+      "method": "mcpServer/startupStatus/updated",
+      "turnStatus": null
+    },
+    {
+      "sequence": 8,
+      "route": "notification",
+      "method": "mcpServer/startupStatus/updated",
+      "turnStatus": null
+    },
+    {
+      "sequence": 9,
+      "route": "notification",
+      "method": "thread/settings/updated",
+      "turnStatus": null
+    },
+    {
+      "sequence": 10,
+      "route": "response",
+      "method": null,
+      "turnStatus": null
+    },
+    {
+      "sequence": 11,
+      "route": "notification",
+      "method": "thread/status/changed",
+      "turnStatus": null
+    },
+    {
+      "sequence": 12,
+      "route": "notification",
+      "method": "turn/started",
+      "turnStatus": "inProgress"
+    }
+  ]
+}
