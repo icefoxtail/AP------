@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "APMATH_VISUAL_LOGIC_TEST_LEDGER_v1",
+  "unit": "Phase 3A fail-closed display-envelope qualification contract",
+  "classification": "LOGIC_TESTS_ONLY_NOT_ACTUAL_BROWSER_EVIDENCE",
+  "command": "node --test archive/tools/geometry-equation/tests/display-envelope.test.mjs",
+  "result": "PASS",
+  "passed": 14,
+  "failed": 0,
+  "skipped": 0,
+  "log": {
+    "path": "docs/evidence/apmath-visual-production-phase3-5/display-envelope-qualification/logic-test-run.txt",
+    "sha256": "sha256:4c577bb0435eb6a6afcae9b991a463dc88b17c88901d8179c30488e7e4b7a937"
+  },
+  "sources": {
+    "archive/tools/geometry-equation/production/display-envelope.mjs": "91a11a55a5a852b217dbbd35ed24fd77cdeed23d9c14575ad86de1b4d8a30732",
+    "archive/tools/geometry-equation/tests/display-envelope.test.mjs": "61e02b97b80280bda93806c5d325098ef39f0226456a62b6f1eb0ab1e7ca8a34"
+  },
+  "actualBrowserEvidenceRef": null,
+  "notes": [
+    "Fixture-backed hash and gate mutation tests exercise the qualification logic.",
+    "Actual Archive profile qualification evidence is not represented by this test ledger.",
+    "Phase 3A measurement-only Archive preflight is recorded in display-envelope-preflight/phase3a1-ledger.json."
+  ]
+}
