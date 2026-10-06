@@ -17,7 +17,8 @@ window.questionBank = [
       "유리수와순환소수",
       "유한소수",
       "10의거듭제곱",
-      "계산"
+      "계산",
+      "표"
     ],
     "wide": false,
     "content": "분수 $\\frac{3}{2^{3}\\times5}$을 유한소수로 나타내는 과정이다. 다음 빈칸을 채워 $A+B\\times C$의 값을 구하면? [4점]\\n<div class=\"question-table-wrap\">\\n  <table>\\n    <tr>\\n      <td>$\\frac{3}{2^{3}\\times5}=\\frac{A}{2^{3}\\times5^{3}}=\\frac{A}{B}=C$</td>\\n    </tr>\\n  </table>\\n</div>",
@@ -29,7 +30,7 @@ window.questionBank = [
       "750"
     ],
     "answer": "③",
-    "solution": "[핵심]\n분모를 $10^3$으로 만들면 빈칸을 한 번에 읽을 수 있다.\n[독립 풀이 요약]\n분자·분모에 $5^2$을 곱해 $75/1000=0.075$로 바꾼다.\n[풀이]\n$\\frac{3}{2^3\\times5}=\\frac{3\\times5^2}{2^3\\times5^3}=\\frac{75}{1000}=0.075$이다. 따라서 $A=75$, $B=1000$, $C=0.075$이고, $A+B\\times C=75+1000\\times0.075=150$이다.\n[확인]\n$150$은 보기 ③과 일치한다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "$\\frac{3}{2^3\\times5}=\\frac{3\\times5^2}{2^3\\times5^3}=\\frac{75}{1000}=0.075$이다. 따라서 $A=75$, $B=1000$, $C=0.075$이고, $A+B\\times C=75+1000\\times0.075=150$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -100,7 +101,7 @@ window.questionBank = [
       "$\\frac{75}{2^{3}\\times5^{2}}$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n기약분수의 분모에 $2,5$ 이외의 소인수가 남으면 순환소수이다.\n[독립 풀이 요약]\n각 분수를 약분한 뒤 분모만 확인한다.\n[풀이]\n① $1/5$, ② $3/20$, ④ $9/100$, ⑤ $3/8$은 분모의 소인수가 $2,5$뿐이다. ③은 $\\frac{15}{2^3\\times3^2\\times5}=\\frac1{2^3\\times3}$이므로 분모에 $3$이 남는다.\n[확인]\n순환소수인 것은 ③ 하나이다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "① $1/5$, ② $3/20$, ④ $9/100$, ⑤ $3/8$은 분모의 소인수가 $2,5$뿐이다. ③은 $\\frac{15}{2^3\\times3^2\\times5}=\\frac1{2^3\\times3}$이므로 분모에 $3$이 남는다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -171,7 +172,7 @@ window.questionBank = [
       "$0.7\\dot{6} \\lt 0.76$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n순환소수는 반복되는 자리까지 직접 펼쳐 비교한다.\n[독립 풀이 요약]\n다섯 보기를 자리값 순서로 대조한다.\n[풀이]\n① $0.30<0.300300\\cdots$, ② $6.41444\\cdots>6.414141\\cdots$, ③ $0.83<0.888\\cdots$, ④ $0.123<0.12323\\cdots$, ⑤ $0.7666\\cdots>0.76$이다.\n[확인]\n주어진 부등호가 맞는 것은 ③뿐이다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "① $0.30<0.300300\\cdots$, ② $6.41444\\cdots>6.414141\\cdots$, ③ $0.83<0.888\\cdots$, ④ $0.123<0.12323\\cdots$, ⑤ $0.7666\\cdots>0.76$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -242,7 +243,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "④",
-    "solution": "[핵심]\n$38/11=3.\\overline{45}$의 순환마디 길이는 2이다.\n[독립 풀이 요약]\n홀수 번째는 4, 짝수 번째는 5이다.\n[풀이]\n$34$는 짝수이므로 34번째 숫자는 $5$이고, $35$는 홀수이므로 35번째 숫자는 $4$이다. 따라서 곱은 $5\\times4=20$이다.\n[확인]\n$20$은 보기 ④이다.\n[결론]\n따라서 정답은 ④이다.",
+    "solution": "$34$는 짝수이므로 34번째 숫자는 $5$이고, $35$는 홀수이므로 35번째 숫자는 $4$이다. 따라서 곱은 $5\\times4=20$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -313,7 +314,7 @@ window.questionBank = [
       "$0.\\dot{5}$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n두 자리 순환소수를 분수로 바꾸면 합에서 $a+b$가 바로 나온다.\n[독립 풀이 요약]\n$a+b=5$와 한 자리 소수 조건을 함께 사용한다.\n[풀이]\n$0.\\dot a\\dot b+0.\\dot b\\dot a=\\frac{10a+b+10b+a}{99}=\\frac{a+b}{9}=\\frac59$이므로 $a+b=5$이다. $a,b\\in\\{2,3,5,7\\}$이고 $a>b$이므로 $(a,b)=(3,2)$이다. 따라서 $0.\\dot3-0.\\dot2=1/9=0.\\dot1$이다.\n[확인]\n보기 ①과 일치한다.\n[결론]\n따라서 정답은 ①이다.",
+    "solution": "$0.\\dot a\\dot b+0.\\dot b\\dot a=\\frac{10a+b+10b+a}{99}=\\frac{a+b}{9}=\\frac59$이므로 $a+b=5$이다. $a,b\\in\\{2,3,5,7\\}$이고 $a>b$이므로 $(a,b)=(3,2)$이다. 따라서 $0.\\dot3-0.\\dot2=1/9=0.\\dot1$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -444,7 +445,8 @@ window.questionBank = [
       "유한소수",
       "순환소수",
       "참거짓",
-      "sourceEnumerationMismatch"
+      "sourceEnumerationMismatch",
+      "표"
     ],
     "wide": false,
     "content": "다음 중 옳은 것만을 있는 대로 고른 것은? [4점]\\n<div class=\"question-table-wrap\">\\n  <table>\\n    <tr>\\n      <td>\\n        ㄴ. 순환소수는 분수로 나타낼 수 있다.\\n        ㅂ. 모든 순환소수는 유리수이다.\\n        ㅇ. 유리수를 소수로 나타내면 유한소수가 아니면 반드시 순환소수이다.\\n        ㅈ. 어떤 분수의 분모를 소인수분해 하였을 때 2나 5 외의 다른 소인수가 있으면 유한소수가 아니다.\\n      </td>\\n    </tr>\\n  </table>\\n</div>",
@@ -526,7 +528,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "[핵심]\n거듭제곱의 거듭제곱은 지수를 곱한다.\n[독립 풀이 요약]\n밑이 모두 3이므로 지수만 비교한다.\n[풀이]\n$(3^5)^4\\div(3^x)^3=3^{20-3x}=3^{14}$이므로 $20-3x=14$이다. 따라서 $3x=6$, $x=2$이다.\n[확인]\n$2$는 보기 ①이다.\n[결론]\n따라서 정답은 ①이다.",
+    "solution": "$(3^5)^4\\div(3^x)^3=3^{20-3x}=3^{14}$이므로 $20-3x=14$이다. 따라서 $3x=6$, $x=2$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -596,7 +598,7 @@ window.questionBank = [
       "$27a^2$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n$a=3^{x-1}$에서 $3^x=3a$를 만든다.\n[독립 풀이 요약]\n$9^x=(3^x)^2$에 대입한다.\n[풀이]\n$3^x=3a$이므로 $9^x=(3^2)^x=(3^x)^2=(3a)^2=9a^2$이다.\n[확인]\n$9a^2$은 보기 ④이다.\n[결론]\n따라서 정답은 ④이다.",
+    "solution": "$3^x=3a$이므로 $9^x=(3^2)^x=(3^x)^2=(3a)^2=9a^2$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -666,7 +668,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "[핵심]\n세 항의 공통인수는 $3^n$이다.\n[독립 풀이 요약]\n$3^n(9+3+1)=351$로 정리한다.\n[풀이]\n$13\\cdot3^n=351$이므로 $3^n=27=3^3$이다. 따라서 $n=3$이다.\n[확인]\n$3$은 보기 ③이다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "$13\\cdot3^n=351$이므로 $3^n=27=3^3$이다. 따라서 $n=3$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -736,7 +738,7 @@ window.questionBank = [
       "29"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n괄호 밖 지수를 각 문자 지수에 곱한다.\n[독립 풀이 요약]\n$x$와 $y$의 지수를 따로 합한다.\n[풀이]\n$(x^4y)^3=x^{12}y^3$, $(x^2y^5)^2=x^4y^{10}$이다. 곱은 $x^{16}y^{13}$이므로 $a=16$, $b=13$이다. 따라서 $a+b=29$이다.\n[확인]\n$29$는 보기 ⑤이다.\n[결론]\n따라서 정답은 ⑤이다.",
+    "solution": "$(x^4y)^3=x^{12}y^3$, $(x^2y^5)^2=x^4y^{10}$이다. 곱은 $x^{16}y^{13}$이므로 $a=16$, $b=13$이다. 따라서 $a+b=29$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -806,7 +808,7 @@ window.questionBank = [
       "24"
     ],
     "answer": "③",
-    "solution": "[핵심]\n$a+b+c$를 최소로 하려면 공통 지수 $d$를 최대로 한다.\n[독립 풀이 요약]\n$d$는 32, 24, 40의 최대공약수이다.\n[풀이]\n$d=\\gcd(32,24,40)=8$이다. 따라서 $a=4$, $b=3$, $c=5$이고 $a+b+c=12$이다.\n[확인]\n$12$는 보기 ③이다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "$d=\\gcd(32,24,40)=8$이다. 따라서 $a=4$, $b=3$, $c=5$이고 $a+b+c=12$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -876,7 +878,7 @@ window.questionBank = [
       "$56x^4 y^{12}$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n계수와 문자 지수를 각각 계산한다.\n[독립 풀이 요약]\n제곱을 먼저 풀고 마지막 분수와 약분한다.\n[풀이]\n$(2xy^2)^3=8x^3y^6$, $(-x^2y)^2=x^4y^2$이다. 따라서 전체는 $8x^3y^6\\cdot x^4y^2\\cdot\\frac{7y^4}{4x^3}=14x^4y^{12}$이다.\n[확인]\n부호는 양수이고 보기 ③과 일치한다.\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "$(2xy^2)^3=8x^3y^6$, $(-x^2y)^2=x^4y^2$이다. 따라서 전체는 $8x^3y^6\\cdot x^4y^2\\cdot\\frac{7y^4}{4x^3}=14x^4y^{12}$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -947,7 +949,7 @@ window.questionBank = [
       "$18ab$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n높이는 부피를 밑넓이로 나눈 값이다.\n[독립 풀이 요약]\n정사각형 밑넓이를 먼저 구한다.\n[풀이]\n밑넓이는 $(2a^2b)^2=4a^4b^2$이다. 높이는 $8a^5b^3\\div4a^4b^2=2ab$이다.\n[확인]\n밑넓이와 높이의 곱은 원래 부피 $8a^5b^3$이다.\n[결론]\n따라서 정답은 ①이다.",
+    "solution": "밑넓이는 $(2a^2b)^2=4a^4b^2$이다. 높이는 $8a^5b^3\\div4a^4b^2=2ab$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -1019,7 +1021,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n$2^{13}5^{13}=10^{13}$으로 묶는다.\n[독립 풀이 요약]\n남은 $5^2=25$가 앞 두 자리를 만든다.\n[풀이]\n$2^{13}5^{15}=10^{13}\\cdot25=25\\cdot10^{13}$이다. 이는 25 뒤에 0이 13개인 수이므로 총 15자리이다.\n[확인]\n$15$는 보기 ⑤이다.\n[결론]\n따라서 정답은 ⑤이다.",
+    "solution": "$2^{13}5^{15}=10^{13}\\cdot25=25\\cdot10^{13}$이다. 이는 25 뒤에 0이 13개인 수이므로 총 15자리이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -1090,7 +1092,7 @@ window.questionBank = [
       "$-x+4y+4$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n잘못된 뺄셈식에서 미지의 식 $A$를 복원한다.\n[독립 풀이 요약]\n복원한 $A$를 원래 식에 더한다.\n[풀이]\n$(2x+y+1)-A=5x-2y-3$이므로 $A=-3x+3y+4$이다. 바른 계산은 $(2x+y+1)+A=-x+4y+5$이다.\n[확인]\n결과는 보기 ③과 일치한다\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "$(2x+y+1)-A=5x-2y-3$이므로 $A=-3x+3y+4$이다. 바른 계산은 $(2x+y+1)+A=-x+4y+5$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -1161,7 +1163,7 @@ window.questionBank = [
       "32"
     ],
     "answer": "③",
-    "solution": "[핵심]\n각 다항식을 단항식으로 나눈 뒤 동류항을 합친다.\n[독립 풀이 요약]\n두 몫에서 $x^2$항이 소거된다.\n[풀이]\n첫 몫은 $8x-4x^2$, 둘째 몫은 $-x+4x^2$이다. 합은 $7x$이므로 $a=0$, $b=7$이고 $b-a=7$이다.\n[확인]\n결과는 보기 ③과 일치한다\n[결론]\n따라서 정답은 ③이다.",
+    "solution": "첫 몫은 $8x-4x^2$, 둘째 몫은 $-x+4x^2$이다. 합은 $7x$이므로 $a=0$, $b=7$이고 $b-a=7$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -1231,7 +1233,7 @@ window.questionBank = [
       "$2x+3 \\gt 5$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n$x=1$을 직접 대입한다.\n[독립 풀이 요약]\n대입 후 참인 부등식을 찾는다.\n[풀이]\n① $3<5$는 참이다. ② $1\\ge4$, ③ $3<0$, ④ $5\\le1$, ⑤ $5>5$는 모두 거짓이다.\n[확인]\n참인 것은 ① 하나이다.\n[결론]\n따라서 정답은 ①이다.",
+    "solution": "① $3<5$는 참이다. ② $1\\ge4$, ③ $3<0$, ④ $5\\le1$, ⑤ $5>5$는 모두 거짓이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -1301,7 +1303,7 @@ window.questionBank = [
       "$5+\\frac{a}{4} \\Box 5+\\frac{b}{4}$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n$a-1\\le b-1$에서 $a\\le b$를 얻는다.\n[독립 풀이 요약]\n음수배가 들어간 식만 부등호 방향이 바뀐다.\n[풀이]\n①,③,④,⑤는 양수배 또는 같은 수를 더한 꼴이므로 $\\le$가 유지된다. ②는 $-a\\ge-b$이므로 $4-a\\ge4-b$가 된다.\n[확인]\n방향이 다른 것은 ②이다.\n[결론]\n따라서 정답은 ②이다.",
+    "solution": "①,③,④,⑤는 양수배 또는 같은 수를 더한 꼴이므로 $\\le$가 유지된다. ②는 $-a\\ge-b$이므로 $4-a\\ge4-b$가 된다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -1371,7 +1373,7 @@ window.questionBank = [
       "$\\frac{11}{3}$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n$a<0$이면 $\\frac13+ax$는 $x$가 작을수록 커진다.\n[독립 풀이 요약]\n양 끝점에서 최댓값과 최솟값을 계산한다.\n[풀이]\n최댓값은 $x=-11$일 때이므로 $\\frac13-11a=4$, 따라서 $a=-\\frac13$이다. 최솟값은 $x=3$일 때이므로 $b=\\frac13+3a=-\\frac23$이다. 따라서 $a-b=\\frac13$이다.\n[확인]\n$1/3$은 보기 ①이다.\n[결론]\n따라서 정답은 ①이다.",
+    "solution": "최댓값은 $x=-11$일 때이므로 $\\frac13-11a=4$, 따라서 $a=-\\frac13$이다. 최솟값은 $x=3$일 때이므로 $b=\\frac13+3a=-\\frac23$이다. 따라서 $a-b=\\frac13$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -1435,7 +1437,7 @@ window.questionBank = [
     "content": "[서술형 1번] 순환소수 $2.9\\dot{3}$에 자연수 $A$를 곱하면 자연수가 된다. 다음 물음에 답하시오. [7점]\\n(1) 순환소수를 $x$로 놓고 기약분수로 나타내는 과정을 서술하시오. [4점]\\n(2) $A$의 값 중 가장 작은 세 자리의 자연수를 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $\\frac{44}{15}$, (2) 105",
-    "solution": "[핵심]\n반복되는 소수 부분을 소거해 기약분수를 만든다.\n[독립 풀이 요약]\n분모 15를 없애는 가장 작은 세 자리 배수를 찾는다.\n[풀이]\n$x=2.9333\\cdots$라 하면 $100x-10x=293.333\\cdots-29.333\\cdots=264$이므로 $x=264/90=44/15$이다. $44$와 $15$는 서로소이므로 $xA$가 자연수려면 $A$는 15의 배수이다. 가장 작은 세 자리 15의 배수는 $105$이다.\n[확인]\n$44\\times105/15=308$은 자연수이다.\n[결론]\n(1) $44/15$, (2) $105$이다.",
+    "solution": "$x=2.9333\\cdots$라 하면 $100x-10x=293.333\\cdots-29.333\\cdots=264$이므로 $x=264/90=44/15$이다. $44$와 $15$는 서로소이므로 $xA$가 자연수려면 $A$는 15의 배수이다. 가장 작은 세 자리 15의 배수는 $105$이다.\n\n(1) $44/15$, (2) $105$이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -1499,7 +1501,7 @@ window.questionBank = [
     "content": "[서술형 2번] $(\\frac{3x^{2}}{y^{a}})^{b} = \\frac{9x^{c}}{y^{6}}$일 때, 상수 $a, b, c$에 대하여 $a+b-c$의 값을 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "1",
-    "solution": "[핵심]\n계수와 각 문자의 지수를 비교한다.\n[독립 풀이 요약]\n$b$, $c$, $a$의 순서로 결정한다.\n[풀이]\n$(3x^2/y^a)^b=3^bx^{2b}/y^{ab}$이다. $3^b=9$에서 $b=2$, $2b=c$에서 $c=4$, $ab=6$에서 $a=3$이다. 따라서 $a+b-c=3+2-4=1$이다.\n[확인]\n좌변은 $9x^4/y^6$으로 우변과 일치한다.\n[결론]\n구하는 값은 $1$이다.",
+    "solution": "$(3x^2/y^a)^b=3^bx^{2b}/y^{ab}$이다. $3^b=9$에서 $b=2$, $2b=c$에서 $c=4$, $ab=6$에서 $a=3$이다. 따라서 $a+b-c=3+2-4=1$이다.\n\n구하는 값은 $1$이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -1563,7 +1565,7 @@ window.questionBank = [
     "content": "[서술형 3번] $-1 \\le x \\le 3$일 때, $a \\le 5 - \\frac{1}{2}x \\le b$이다. 이때 $4ab$의 값을 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "77",
-    "solution": "[핵심]\n음수를 곱하면 부등호 방향이 바뀐다.\n[독립 풀이 요약]\n$x$의 범위를 $5-\\frac12x$의 범위로 변환한다.\n[풀이]\n$-1\\le x\\le3$에 $-1/2$을 곱하면 $1/2\\ge-\\frac12x\\ge-3/2$이다. 5를 더하면 $11/2\\ge5-\\frac12x\\ge7/2$이다. 따라서 $a=7/2$, $b=11/2$이고 $4ab=77$이다.\n[확인]\n양 끝점 대입값은 각각 $11/2$, $7/2$이다.\n[결론]\n구하는 값은 $77$이다.",
+    "solution": "$-1\\le x\\le3$에 $-1/2$을 곱하면 $1/2\\ge-\\frac12x\\ge-3/2$이다. 5를 더하면 $11/2\\ge5-\\frac12x\\ge7/2$이다. 따라서 $a=7/2$, $b=11/2$이고 $4ab=77$이다.\n\n구하는 값은 $77$이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",

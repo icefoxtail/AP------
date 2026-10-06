@@ -31,7 +31,7 @@ window.questionBank = [
       "$\\frac{1}{3}$"
     ],
     "answer": "②, ④",
-    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④",
+    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \ne 0$) 꼴로 나타낼 수 있는 수임.\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\n$\\therefore$ ②, ④",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -66,7 +66,7 @@ window.questionBank = [
       "$1.2121... \\rightarrow 212, 1.212$"
     ],
     "answer": "①",
-    "solution": "① $-1.45858...$ 의 반복 부분은 $58$이므로 순환마디는 $58$임. 점을 찍어 나타내면 $-1.4\\dot{5}\\dot{8}$로 옳음.\\n$\\therefore$ ①",
+    "solution": "① $-1.45858...$ 의 반복 부분은 $58$이므로 순환마디는 $58$임. 점을 찍어 나타내면 $-1.4\\dot{5}\\dot{8}$로 옳음.\n$\\therefore$ ①",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -101,7 +101,7 @@ window.questionBank = [
       "$\\frac{3}{2^2 \\times 5 \\times 7}$"
     ],
     "answer": "⑤",
-    "solution": "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\\n⑤ $\\frac{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\\n$\\therefore$ ⑤",
+    "solution": "기약분수의 분모 소인수가 $2, 5$뿐이어야 유한소수임.\n⑤ $\\frac{3}{2^2 \\times 5 \\times 7}$은 분모에 $7$이 남아있으므로 무한소수(순환소수)임.\n$\\therefore$ ⑤",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -137,7 +137,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "통분: $\\frac{3}{12} < \\frac{x}{12} < \\frac{6}{12} \\implies x \\in \\{4, 5\\}$\\n(1) $x=4 \\implies \\frac{4}{12} = \\frac{1}{3}$ (무한)\\n(2) $x=5 \\implies \\frac{5}{12} = \\frac{5}{2^2 \\times 3}$ (무한)\\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\\n$\\therefore$ 2개",
+    "solution": "통분: $\\frac{3}{12} < \\frac{x}{12} < \\frac{6}{12} \\implies x \\in \\{4, 5\\}$\n(1) $x=4 \\implies \\frac{4}{12} = \\frac{1}{3}$ (무한)\n(2) $x=5 \\implies \\frac{5}{12} = \\frac{5}{2^2 \\times 3}$ (무한)\n$\\because$ 두 경우 모두 분모에 $3$이 남아 유한소수가 아님.\n$\\therefore$ 2개",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -171,7 +171,7 @@ window.questionBank = [
       "$1000x-x$"
     ],
     "answer": "⑤",
-    "solution": "$x=1.023023...$\\n$1000x = 1023.023...$\\n$\\implies 1000x - x$ 를 통해 소수점 아래를 소거함.\\n$\\therefore$ ⑤",
+    "solution": "$x=1.023023...$\n$1000x = 1023.023...$\n$\\implies 1000x - x$ 를 통해 소수점 아래를 소거함.\n$\\therefore$ ⑤",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -208,7 +208,7 @@ window.questionBank = [
       "기약분수 분모에 2 또는 5 외 소인수 있으면 순환소수이다."
     ],
     "answer": "④",
-    "solution": "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\\n$\\because$ $\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\\n$\\therefore$ ④",
+    "solution": "④ 정수가 아닌 유리수는 유한소수 또는 순환소수(무한소수)로 나타낼 수 있음.\n$\\because$ $\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수임.\n$\\therefore$ ④",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -243,7 +243,7 @@ window.questionBank = [
       "$(\\frac{b}{a})^m = \\frac{b^m}{a}$"
     ],
     "answer": "②",
-    "solution": "② $(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$ 이므로 성립함.\\n$\\therefore$ ②",
+    "solution": "② $(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$ 이므로 성립함.\n$\\therefore$ ②",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -277,7 +277,7 @@ window.questionBank = [
       "22"
     ],
     "answer": "①",
-    "solution": "(1) $2 \\times 2^5 = 2^6 \\implies a=6$\\n(2) $3 \\times 3^2 = 3^3 \\implies b=3$\\n$\\therefore ab = 6 \\times 3 = 18$",
+    "solution": "(1) $2 \\times 2^5 = 2^6 \\implies a=6$\n(2) $3 \\times 3^2 = 3^3 \\implies b=3$\n$\\therefore ab = 6 \\times 3 = 18$",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -311,7 +311,7 @@ window.questionBank = [
       "(나), (라), (마)"
     ],
     "answer": "②",
-    "solution": "각 식을 차례로 계산한다.\\n(가) $5x^2 \\times (-6y^3)=-30x^2y^3$이므로 참이다.\\n(나) $(-2x^2y)^3=-8x^6y^3$이므로 $-xy \\times (-8x^6y^3)=8x^7y^4$로 참이다.\\n(다) $12a^5b^2 \\div 3a^2b=4a^3b$이므로 거짓이다.\\n(라) $9a^4 \\div (-27a^{11})=-\\frac{1}{3a^7}$이므로 참이다.\\n(마) $(-2x^2y)^2=4x^4y^2$이므로 거짓이다.\\n따라서 옳은 것은 (가), (나), (라)이므로 정답은 ②이다.",
+    "solution": "각 식을 차례로 계산한다.\n(가) $5x^2 \\times (-6y^3)=-30x^2y^3$이므로 참이다.\n(나) $(-2x^2y)^3=-8x^6y^3$이므로 $-xy \\times (-8x^6y^3)=8x^7y^4$로 참이다.\n(다) $12a^5b^2 \\div 3a^2b=4a^3b$이므로 거짓이다.\n(라) $9a^4 \\div (-27a^{11})=-\\frac{1}{3a^7}$이므로 참이다.\n(마) $(-2x^2y)^2=4x^4y^2$이므로 거짓이다.\n따라서 옳은 것은 (가), (나), (라)이므로 정답은 ②이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -348,7 +348,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "③",
-    "solution": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\\n부피 $= xy \\times h = 60x^2y$\\n$\\therefore h = 60x$",
+    "solution": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\n부피 $= xy \\times h = 60x^2y$\n$\\therefore h = 60x$",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -384,7 +384,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle C = 180 - 115 = 65^\\circ$\\n$\\angle B = \\angle C = 65^\\circ$\\n$\\therefore \\angle A = 180 - (65+65) = 50^\\circ$",
+    "solution": "$\\angle C = 180 - 115 = 65^\\circ$\n$\\angle B = \\angle C = 65^\\circ$\n$\\therefore \\angle A = 180 - (65+65) = 50^\\circ$",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -420,7 +420,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle B + \\angle C = 180 - 100 = 80^\\circ$\\n$\\because \\angle B = \\angle C$\\n$\\therefore \\angle B = 40^\\circ$",
+    "solution": "$\\angle B + \\angle C = 180 - 100 = 80^\\circ$\n$\\because \\angle B = \\angle C$\n$\\therefore \\angle B = 40^\\circ$",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -456,7 +456,7 @@ window.questionBank = [
       "$9cm$"
     ],
     "answer": "④",
-    "solution": "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\\n$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$",
+    "solution": "이등변삼각형의 꼭지각 이등분선(수선)은 밑변을 수직이등분함.\n$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -490,7 +490,7 @@ window.questionBank = [
       "$22^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle B=\\angle C=\\frac{180^\\circ-38^\\circ}{2}=71^\\circ$이다.\\n$\\angle B$의 이등분선은 $\\overline{BC}$와 $35.5^\\circ$를 이루고, $\\angle C$의 외각은 $180^\\circ-71^\\circ=109^\\circ$이므로 그 외각 이등분선은 $\\overline{CB}$와 $54.5^\\circ$를 이룬다.\\n따라서 두 이등분선 사이의 각은 $54.5^\\circ-35.5^\\circ=19^\\circ$이다.\\n$\\therefore \\angle BDC=19^\\circ$이므로 정답은 ②이다.",
+    "solution": "$\\angle B=\\angle C=\\frac{180^\\circ-38^\\circ}{2}=71^\\circ$이다.\n$\\angle B$의 이등분선은 $\\overline{BC}$와 $35.5^\\circ$를 이루고, $\\angle C$의 외각은 $180^\\circ-71^\\circ=109^\\circ$이므로 그 외각 이등분선은 $\\overline{CB}$와 $54.5^\\circ$를 이룬다.\n따라서 두 이등분선 사이의 각은 $54.5^\\circ-35.5^\\circ=19^\\circ$이다.\n$\\therefore \\angle BDC=19^\\circ$이므로 정답은 ②이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -526,7 +526,7 @@ window.questionBank = [
       "$65$"
     ],
     "answer": "③",
-    "solution": "두 삼각형은 직각삼각형이고 빗변 $\\overline{AB}=\\overline{DE}$, 한 변 $\\overline{BC}=\\overline{EF}$이므로 RHS 합동이다.\\n따라서 대응하는 각의 크기가 같아 $\\angle B=\\angle E=40^\\circ$이다.\\n직각삼각형 $DEF$에서 $\\angle F=90^\\circ$이므로 $\\angle D=180^\\circ-90^\\circ-40^\\circ=50^\\circ$이다.\\n따라서 $x=50$이므로 정답은 ③이다.",
+    "solution": "두 삼각형은 직각삼각형이고 빗변 $\\overline{AB}=\\overline{DE}$, 한 변 $\\overline{BC}=\\overline{EF}$이므로 RHS 합동이다.\n따라서 대응하는 각의 크기가 같아 $\\angle B=\\angle E=40^\\circ$이다.\n직각삼각형 $DEF$에서 $\\angle F=90^\\circ$이므로 $\\angle D=180^\\circ-90^\\circ-40^\\circ=50^\\circ$이다.\n따라서 $x=50$이므로 정답은 ③이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -562,7 +562,7 @@ window.questionBank = [
       "$5, 12, 13$"
     ],
     "answer": "③",
-    "solution": "가장 긴 변을 $c$라 할 때, 삼각형이 성립하고 $c^2>a^2+b^2$이면 둔각삼각형이다.\\n① $20^2=400$, $12^2+16^2=400$이므로 직각삼각형이다.\\n② $7+21=28$이므로 삼각형이 성립하지 않는다.\\n③ $5+7>9$이고 $9^2=81>5^2+7^2=74$이므로 둔각삼각형이다.\\n④ $5^2=25$, $3^2+4^2=25$이므로 직각삼각형이다.\\n⑤ $13^2=169$, $5^2+12^2=169$이므로 직각삼각형이다.\\n$\\therefore$ ③",
+    "solution": "가장 긴 변을 $c$라 할 때, 삼각형이 성립하고 $c^2>a^2+b^2$이면 둔각삼각형이다.\n① $20^2=400$, $12^2+16^2=400$이므로 직각삼각형이다.\n② $7+21=28$이므로 삼각형이 성립하지 않는다.\n③ $5+7>9$이고 $9^2=81>5^2+7^2=74$이므로 둔각삼각형이다.\n④ $5^2=25$, $3^2+4^2=25$이므로 직각삼각형이다.\n⑤ $13^2=169$, $5^2+12^2=169$이므로 직각삼각형이다.\n$\\therefore$ ③",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
@@ -597,7 +597,7 @@ window.questionBank = [
       "$108$"
     ],
     "answer": "③",
-    "solution": "직각삼각형에서 피타고라스 정리를 사용한다.\\n$AC^2=AB^2-BC^2=15^2-9^2=225-81=144$이므로 $AC=12$이다.\\n따라서 $\\triangle ABC$의 넓이는 $\\frac12 \\times BC \\times AC=\\frac12 \\times 9 \\times 12=54$이다.\\n따라서 정답은 ③이다.",
+    "solution": "직각삼각형에서 피타고라스 정리를 사용한다.\n$AC^2=AB^2-BC^2=15^2-9^2=225-81=144$이므로 $AC=12$이다.\n따라서 $\\triangle ABC$의 넓이는 $\\frac12 \\times BC \\times AC=\\frac12 \\times 9 \\times 12=54$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -633,7 +633,7 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "④",
-    "solution": "$I$가 내심이므로 $BI$, $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.\\n따라서 $\\angle IBC=\\frac12\\angle B$, $\\angle ICB=\\frac12\\angle C$이고,\\n$\\angle BIC=180^\\circ-\\frac12(\\angle B+\\angle C)=180^\\circ-\\frac12(180^\\circ-\\angle A)=90^\\circ+\\frac12\\angle A$이다.\\n$\\angle A=50^\\circ$이므로 $\\angle BIC=90^\\circ+25^\\circ=115^\\circ$.\\n$\\therefore$ ④",
+    "solution": "$I$가 내심이므로 $BI$, $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.\n따라서 $\\angle IBC=\\frac12\\angle B$, $\\angle ICB=\\frac12\\angle C$이고,\n$\\angle BIC=180^\\circ-\\frac12(\\angle B+\\angle C)=180^\\circ-\\frac12(180^\\circ-\\angle A)=90^\\circ+\\frac12\\angle A$이다.\n$\\angle A=50^\\circ$이므로 $\\angle BIC=90^\\circ+25^\\circ=115^\\circ$.\n$\\therefore$ ④",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -669,7 +669,7 @@ window.questionBank = [
       "$6cm$"
     ],
     "answer": "⑤",
-    "solution": "둘레 $= 2r + 8 = 20 \\implies 2r = 12 \\implies r = 6$\\n$\\therefore$ ⑤",
+    "solution": "둘레 $= 2r + 8 = 20 \\implies 2r = 12 \\implies r = 6$\n$\\therefore$ ⑤",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -703,7 +703,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\\n점 $A$에서 그은 접선이므로 $AD=AF=4$이다.\\n점 $C$에서 그은 접선이므로 $CE=CF=6$이다.\\n따라서 $AC=AF+FC=4+6=10$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\n점 $A$에서 그은 접선이므로 $AD=AF=4$이다.\n점 $C$에서 그은 접선이므로 $CE=CF=6$이다.\n따라서 $AC=AF+FC=4+6=10$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -739,7 +739,7 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "④",
-    "solution": "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\\n(2) $\\angle A<90^\\circ$이므로 둔각인 반대 배치를 제외하면 $\\angle BOC = 2\\angle A$이다. 따라서 $2\\angle A=120^\\circ$이므로 $\\angle A=60^\\circ$이다.\\n$\\therefore$ ④",
+    "solution": "$I$는 $\\triangle OBC$의 내심이므로\n\n$\\angle BIC\n=90^\\circ+\\dfrac12\\angle BOC$이다.\n\n$150^\\circ\n=90^\\circ+\\dfrac12\\angle BOC$\n\n$60^\\circ\n=\\dfrac12\\angle BOC$\n\n$\\angle BOC=120^\\circ$이다.\n\n또 $O$는 $\\triangle ABC$의 외심이므로\n\n$\\angle BOC=2\\angle A$이다.\n\n따라서\n\n$2\\angle A=120^\\circ$\n\n$\\angle A=60^\\circ$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -773,7 +773,7 @@ window.questionBank = [
       " "
     ],
     "answer": "$0.1\\dot{4}$",
-    "solution": "(1) $0.2\\dot{5}=\\frac{23}{90}$이고 수빈이가 잘못 읽어 만든 분수도 기약분수이므로 원래 분모는 $90$이다.\\n(2) $0.1\\dot{4}=\\frac{13}{90}$이고 준서가 잘못 읽어 만든 분수도 기약분수이므로 원래 분자는 $13$이다.\\n(3) 따라서 처음 분수는 $\\frac{13}{90}=0.1\\dot{4}$이다.",
+    "solution": "(1) $0.2\\dot{5}=\\frac{23}{90}$이고 수빈이가 잘못 읽어 만든 분수도 기약분수이므로 원래 분모는 $90$이다.\n(2) $0.1\\dot{4}=\\frac{13}{90}$이고 준서가 잘못 읽어 만든 분수도 기약분수이므로 원래 분자는 $13$이다.\n(3) 따라서 처음 분수는 $\\frac{13}{90}=0.1\\dot{4}$이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -807,7 +807,7 @@ window.questionBank = [
       " "
     ],
     "answer": "10",
-    "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\\n$\\therefore a+b = 10$",
+    "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\n$\\therefore a+b = 10$",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -845,7 +845,7 @@ window.questionBank = [
       " "
     ],
     "answer": "$153\\pi$",
-    "solution": "(1) 빗변 $c=26 \\implies R=13, M=169\\pi$\\n(2) $r = \\frac{10+24-26}{2} = 4 \\implies N=16\\pi$\\n$\\therefore M-N = 153\\pi$",
+    "solution": "직각삼각형에서 빗변은\n\n$\\sqrt{10^2+24^2}$\n\n$=\\sqrt{676}$\n\n$=26$이다.\n\n외접원의 반지름은 빗변의 절반이므로\n\n$R=13$이다.\n\n따라서\n\n$M=\\pi R^2$\n\n$=169\\pi$이다.\n\n내접원의 반지름은\n\n$r=\\dfrac{10+24-26}{2}$\n\n$=4$이다.\n\n따라서\n\n$N=\\pi r^2$\n\n$=16\\pi$이다.\n\n그러므로\n\n$M-N=169\\pi-16\\pi$\n\n$=153\\pi$이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
