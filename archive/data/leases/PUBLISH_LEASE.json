@@ -2,18 +2,25 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "H1-GPT2-MASTER-B-20261006T1658+0900-24-MAESANGO-1MID",
   "owner": "H1 GPT2 MASTER-B",
-  "status": "ACTIVE",
+  "status": "RELINQUISHED_WITH_EXACT_DEBT",
   "executionLine": "GPT_SCHEDULED",
   "campaignId": "H1_GPT2_20261006",
   "stream": "B",
   "claimedAt": "2026-10-06T16:58:30+09:00",
   "expiresAt": "2026-10-06T17:13:30+09:00",
-  "lastProgressAt": "2026-10-06T16:58:30+09:00",
+  "lastProgressAt": "2026-10-06T17:07:04+09:00",
+  "relinquishedAt": "2026-10-06T17:08:00+09:00",
   "expectedCompletionGate": "H1_GPT2_20261006_B_24_MAESANGO_1MID_MAIN_DONE",
   "scope": "H1_GPT2_20261006:B:PUBLISH:24_매산고_1학기_중간_고1_기출",
   "targets": [
     "24_매산고_1학기_중간_고1_기출"
   ],
-  "result": "PUBLISH_IN_PROGRESS",
-  "finalArtifactSha": "326235b339ad589e56af46f7e394a119be57ad72"
+  "result": "PUBLISH_PENDING",
+  "finalArtifactSha": "326235b339ad589e56af46f7e394a119be57ad72",
+  "preparedPublishBranch": "publish/h1-gpt2-b-24-maesango-20261006",
+  "preparedPublishCommitSha": "e9e5025feeab0a42fd2b27b08bf74caedd1f59e6",
+  "preparedPrNumber": 300,
+  "firstMissingClosureStep": "MAIN_PUBLISH_WRITE",
+  "exactError": "provider safety blocked direct main expected-SHA ref update and PR squash merge before merge side effect",
+  "nextAction": "next MASTER-B run reacquires global GPT publish lease, revalidates latest main/same-exam drift, then merges PR #300 or rebuilds same two-file commit, verifies remote parity, writes MAIN_DONE, removes continuation"
 }
