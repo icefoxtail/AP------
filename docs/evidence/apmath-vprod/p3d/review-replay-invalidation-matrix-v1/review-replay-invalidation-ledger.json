@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_REVIEW_REPLAY_INVALIDATION_MATRIX_v1",
+  "classification": "SOLUTION_AND_CONDITION_REVIEW_INPUT_BINDING_CONTROLLED_FIXTURES",
+  "status": "PASS",
+  "matrix": {
+    "verifiedSolution": {
+      "boundFields": [
+        "source file ref/SHA",
+        "student body",
+        "choices",
+        "source image bytes",
+        "stored answer",
+        "stored solution",
+        "verified solution policy/provider closure"
+      ],
+      "focusedRuns": 10,
+      "failures": 0,
+      "unchangedWarmReuse": true,
+      "changedInputRefreshCount": 1,
+      "staleReceiptAccepted": false
+    },
+    "sourceConditions": {
+      "boundFields": [
+        "source file ref/SHA",
+        "student body",
+        "choices",
+        "source image bytes",
+        "frozen visual plan/source-condition inventory",
+        "source policy/provider/observer closure"
+      ],
+      "focusedRuns": 10,
+      "failures": 0,
+      "unchangedWarmReuse": true,
+      "changedInputRefreshCount": 1,
+      "staleReceiptAccepted": false
+    },
+    "externalProviderCalled": false
+  },
+  "tests": {
+    "nodeFocusedRuns": 20,
+    "node": {
+      "passed": 126,
+      "failed": 0,
+      "log": {
+        "source": ".tmp/archive/phase3d-review-input-invalidation/test-run/node-regression.json",
+        "pathInPackage": "logs/node-regression-126.json",
+        "bytes": 20742,
+        "sha256": "sha256:c0b1aaf45241ada14a6a2be428a2d16391a3bdd3dad3dab13a40c266bb933b28",
+        "classification": "FULL_NODE_REGRESSION_SUITE"
+      }
+    },
+    "python": {
+      "passed": 142,
+      "failed": 0,
+      "log": {
+        "source": ".tmp/archive/phase3d-review-input-invalidation/test-run/python-regression.json",
+        "pathInPackage": "logs/python-regression-142.json",
+        "bytes": 565,
+        "sha256": "sha256:dd30b63b0b03c69fc41e2034d9e87014fa40c765eba96c9fa4cfe5c5be1a3288",
+        "classification": "FULL_PYTHON_REGRESSION_SUITE"
+      }
+    },
+    "summary": {
+      "source": ".tmp/archive/phase3d-review-input-invalidation/test-run/summary.json",
+      "pathInPackage": "logs/regression-summary.json",
+      "bytes": 3335,
+      "sha256": "sha256:cd9184262c591ec67dbe16d5a1d45dd1f8ce6d0a134c5ec44218750afb48c72a",
+      "classification": "FULL_REGRESSION_SUMMARY"
+    }
+  },
+  "candidateStatus": {
+    "productionImplementationChanged": false,
+    "candidateReplaysPerformed": false,
+    "reason": "Only tests and evidence changed; production fingerprint is unchanged.",
+    "p3eLedger": {
+      "source": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v9/measured-panel-repair-ledger.json",
+      "pathInPackage": "references/p3e-v9-current-candidate-ledger.json",
+      "bytes": 54177,
+      "sha256": "sha256:4170e77456eae6dfdcdcfdf7b23285f06dfb1d60e7f496bf32186a1908b7d7f0",
+      "classification": "UNCHANGED_CANDIDATE_STATUS"
+    },
+    "p3eManifest": {
+      "source": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v9/evidence-manifest.json",
+      "pathInPackage": "references/p3e-v9-evidence-manifest.json",
+      "bytes": 138802,
+      "sha256": "sha256:a40b18c6a2485633d25a270b3dea030ae67b123fbe70216db9683523aa71eab5",
+      "classification": "UNCHANGED_CANDIDATE_PACKAGE_MANIFEST"
+    },
+    "candidates": [
+      {
+        "candidate": "q10-graph",
+        "currentCodeFingerprint": "sha256:dfdc474b7f94fddbca7ada4654bfe559eef9cc538d366bb24d0c537684cd64fb",
+        "currentResultRef": {
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+          "bytes": 27959,
+          "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+        },
+        "repairLedger": [
+          {
+            "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+            "iteration": 1,
+            "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+            "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+            "stage": "LAYOUT"
+          },
+          {
+            "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+            "iteration": 2,
+            "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+            "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+            "stage": "LAYOUT"
+          },
+          {
+            "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+            "iteration": 3,
+            "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+            "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+            "stage": "LAYOUT"
+          }
+        ],
+        "selectedSizeClass": "full",
+        "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+        "actualArchive": "PASS",
+        "visualReview": "PASS"
+      },
+      {
+        "candidate": "q01-geometry",
+        "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+        "currentResultRef": {
+          "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+          "bytes": 25306,
+          "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+        },
+        "repairLedger": [],
+        "selectedSizeClass": "medium",
+        "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+        "actualArchive": "PASS",
+        "visualReview": "PASS"
+      },
+      {
+        "candidate": "coordinate-free-q01",
+        "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+        "currentResultRef": {
+          "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+          "bytes": 25816,
+          "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+        },
+        "repairLedger": [
+          {
+            "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+            "iteration": 1,
+            "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+            "reason": "INVALID_BRANCH",
+            "stage": "NORMALIZER"
+          },
+          {
+            "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+            "iteration": 2,
+            "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+            "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+            "stage": "SOURCE_REVIEW"
+          },
+          {
+            "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+            "iteration": 3,
+            "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+            "reason": "REALIZATION_RECIPE_REQUIRED",
+            "stage": "NORMALIZER"
+          }
+        ],
+        "selectedSizeClass": "medium",
+        "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+        "actualArchive": "PASS",
+        "visualReview": "PASS"
+      }
+    ]
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "bytes": 8042,
+      "sha256": "sha256:863c55c1333bd5f91230aa4ad3c64c5eac4f112ff988114d5aba8951bf205a2c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/source-policy.mjs",
+      "bytes": 2899,
+      "sha256": "sha256:b7fd19cd33c750772b489127e32c90ee4bf217656a20658bacf0033bc30ca533"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 62066,
+      "sha256": "sha256:aacff6c9ff202ba7851e59e99509f1cea9594f2db4ccdb0c6acc52eb591651c7"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/verification-replay-invalidation.test.mjs",
+      "bytes": 4695,
+      "sha256": "sha256:8aa8dd910cdc92d4a4b783a8ef1289d6901aac39d2f254ec2452cd19201a76bf"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs",
+      "bytes": 4801,
+      "sha256": "sha256:6043e0bf66826fa0c00869d144367957fa4209f76159d42e4c84d4af1304c212"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/p1-boundaries.test.mjs",
+      "bytes": 15338,
+      "sha256": "sha256:7bb829c08428fe04f691c83ac7da7f5d758b2012bdbb54d68ff15784089f4cbd"
+    }
+  ],
+  "limitations": [
+    "Both review input-binding families are exercised through production helpers with controlled provider stubs; this is not live provider solve/compare evidence.",
+    "The full Phase 2 runner stage-cache invalidation matrix across all source, solution, policy, provider, observer and rendering dependencies remains open.",
+    "Provider timeout cleanup and remote-turn cancellation remain unverified; canonical UID authority remains INPUT_REQUIRED."
+  ],
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false
+}
