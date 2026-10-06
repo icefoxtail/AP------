@@ -57,6 +57,6 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16860 bytes | sha256 b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca
 - 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 12742 bytes | sha256 79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954
 
-- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 14388 bytes | sha256 0e226b24902f20a0cc26d324a4e926b36f5cdab8ac85cb08fd4ab2db83a251f0
+- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 15496 bytes | sha256 4d71b86eb2a38c96c3b815d640ebe1d0af700ec72d8b7b9855c513bab6e18ee3
 
 - 02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md | 8586 bytes | sha256 c406261316cccac087917871ce4b35fed354c9f72715b95ed7e5ddd458b0d675
