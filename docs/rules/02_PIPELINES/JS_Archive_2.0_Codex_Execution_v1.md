@@ -69,6 +69,7 @@ CREATE는 전 qid의 Archive 완제품 후보를 만든다.
 - source identity / content / choices / answer
 - QUESTION_LAYOUT exact parity
 - QUESTION_LAYOUT은 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`의 AUTO-FIRST와 의미 경계 기준을 qid별로 적용한다. 실제 엔진에서 자연스러운 흐름은 KEEP하고, 독립된 수식 정의·조건·질문 전환이 붙어 읽기 어려운 경우 완결 수식 바깥에서만 최소 개행한다. 글자 수/정규식 기반 일괄 수정은 금지한다. HTML placeholder는 MathJax `$...$` 구간 밖에 둔다.
+- 사용자가 예시 qid를 제시해도 전 qid 독립 검토를 생략하지 않는다. 각 qid의 `beforeDisposition`, `finalDisposition`, defect/KEEP 근거를 적고, user-supplied examples와 independent findings를 구분한다. pilot denominator를 닫기 전에 실제 exam engine에서 각 qid의 화면 흐름을 본다.
 - 학생용 작은칠판 solution
 - Meta Foundation
 - difficulty 4필드

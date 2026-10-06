@@ -70,7 +70,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\0&-1\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\b&-2\\end{pmatrix}$에 대하여 $2A=B$일 때, $a+b$의 값은? [3점]",
+    "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\0&-1\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\b&-2\\end{pmatrix}$에 대하여 <br>$2A=B$일 때, $a+b$의 값은? [3점]",
     "choices": [
       "$1$",
       "$2$",
@@ -674,7 +674,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "<strong>서술형 3. [5점]</strong><br>$2$보다 큰 짝수인 자연수 $n$에 대하여 $A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$, $B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고 정의하자. $X=\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$에 대하여 $A_nB_nX=\\begin{pmatrix}1\\\\1\\end{pmatrix}$이 성립할 때, $x$가 자연수가 되는 $n$의 값 중 최솟값을 구하는 과정을 서술하시오.",
+    "content": "<strong>서술형 3. [5점]</strong><br>$2$보다 큰 짝수인 자연수 $n$에 대하여 <br>$A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$, <br>$B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고 정의하자. <br>$X=\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$에 대하여 $A_nB_nX=\\begin{pmatrix}1\\\\1\\end{pmatrix}$이 성립할 때, $x$가 자연수가 되는 $n$의 값 중 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$10$",
     "solution": "[키포인트] 행렬곱을 차례로 계산하여 $x^2=n-1$이라는 조건을 만든다.\n조건 정리: $n$은 짝수이므로 $(-1)^n=1$이다.\n풀이 방향: 먼저 $B_nX$를 구하고, 다시 $A_n$을 곱하여 두 성분의 연립식으로 바꾼다.\n정석 풀이: $B_nX=\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$이다. $n$이 짝수이므로 $A_nB_nX=\\begin{pmatrix}-x^2+n(n-1)!y\\\\(n-1)!y\\end{pmatrix}$이다. 이것이 $\\begin{pmatrix}1\\\\1\\end{pmatrix}$과 같으므로 $(n-1)!y=1$이고, 첫째 성분에서 $-x^2+n=1$이다. 따라서 $x^2=n-1$이다. $n$은 2보다 큰 짝수이므로 $n-1$은 1보다 큰 홀수이고 동시에 완전제곱수여야 한다. 가장 작은 값은 $9=3^2$이므로 $n-1=9$, $n=10$이다.\n따라서 구하는 최솟값은 $10$이다.",
