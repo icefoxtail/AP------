@@ -295,7 +295,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "이차정사각행렬 $X=\\begin{pmatrix}1&x\\\\0&-1\\end{pmatrix}$에 대하여 $X+X^2+\\cdots+X^{50}$의 모든 성분의 합이 175일 때, 실수 $x$의 값은? [4.5점]",
+    "content": "이차정사각행렬 $X=\\begin{pmatrix}1&x\\\\0&-1\\end{pmatrix}$에 대하여<br>$X+X^2+\\cdots+X^{50}$의 모든 성분의 합이 175일 때, 실수 $x$의 값은? [4.5점]",
     "choices": [
       "1",
       "2",
@@ -450,7 +450,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "이차정사각행렬 $A=\\begin{pmatrix}a&0\\\\0&b\\end{pmatrix}$가 다음을 만족한다.<br><div class='note-box'>(가) 모든 자연수 $n$에 대하여 $A^n+A^{n+1}+A^{n+2}+A^{n+3}=O$<br>(나) $A-A^2+A^3-A^4+\\cdots-A^{98}+A^{99}=E$<br>(다) $a\\ne b$</div>행렬 $A$의 모든 성분의 합은? (단, $i=\\sqrt{-1}$) [4.9점]",
+    "content": "이차정사각행렬 $A=\\begin{pmatrix}a&0\\\\0&b\\end{pmatrix}$가 다음을 만족한다.<br><div class='note-box'>(가) 모든 자연수 $n$에 대하여<br>$A^n+A^{n+1}+A^{n+2}+A^{n+3}=O$<br>(나) $A-A^2+A^3-A^4+\\cdots-A^{98}+A^{99}=E$<br>(다) $a\\ne b$</div>행렬 $A$의 모든 성분의 합은? (단, $i=\\sqrt{-1}$) [4.9점]",
     "choices": [
       "$-2$",
       "0",
@@ -610,7 +610,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "&lt;서술형3&gt;<br>이차정사각행렬 $A,B$가 $ABA=B+A-2E$, $A+B=BA$를 만족시킬 때, $A^2$의 모든 성분의 합을 구하는 과정을 서술하시오. (단, $E=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [10점]",
+    "content": "&lt;서술형3&gt;<br>이차정사각행렬 $A,B$가 $ABA=B+A-2E$,<br>$A+B=BA$를 만족시킬 때, $A^2$의 모든 성분의 합을 구하는 과정을 서술하시오. (단, $E=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [10점]",
     "choices": [],
     "answer": "$-4$",
     "solution":"[키포인트] 두 조건식에서 같은 곱 $BA$와 $ABA$를 반복하여 나타내고, 한 식을 다른 식에 대입해 $B$를 $A$로 표현한다.\n조건 정리: $A+B=BA$이고, 첫째 식의 오른쪽 $B+A-2E$는 $BA-2E$와 같다.\n풀이 방향: 먼저 $(A-E)BA=-2E$를 만든 뒤, 이를 이용하여 $A+3B=2E$를 얻고 마지막으로 $A^2$을 구한다.\n정석 풀이: $ABA=BA-2E$이므로 $ABA-BA=-2E$, 즉 $(A-E)BA=-2E$이다. 이 식의 양변 왼쪽에 $B$를 곱하면 $B(A-E)BA=-2B$이다. 그런데 $A+B=BA$에서 $B(A-E)=A$이므로 왼쪽은 $ABA$가 된다. 따라서 $ABA=-2B$이다. 한편 처음 조건에서 $ABA=BA-2E$이므로 $BA-2E=-2B$, 즉 $BA+2B=2E$이다. 다시 $BA=A+B$를 대입하면 $A+3B=2E$이고, 따라서 $B=\\dfrac{2E-A}{3}$이다. 이를 $BA=A+B$에 대입하면 $\\dfrac{2E-A}{3}A=A+\\dfrac{2E-A}{3}$이다. 양변에 3을 곱하면 $2A-A^2=2A+2E$이므로 $A^2=-2E$이다. 따라서 $A^2=\\begin{pmatrix}-2&0\\\\0&-2\\end{pmatrix}$이고 모든 성분의 합은 $-4$이다.\n따라서 구하는 값은 $-4$이다.",
