@@ -367,7 +367,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: 평각의 성질에 의해 $\\angle C = 180^\\circ - 130^\\circ = 50^\\circ$이다.\n2단계: $\\triangle ABC$는 $\\overline{AB}=\\overline{AC}$인 이등변삼각형이므로 두 밑각의 크기가 같다. $\\therefore \\angle B = \\angle C = 50^\\circ$.\n3단계: 삼각형의 세 내각의 합은 $180^\\circ$이므로 $\\angle A = 180^\\circ - (50^\\circ + 50^\\circ) = 80^\\circ$이다.",
+    "solution": "평각에서\n\n$\\angle C=180^\\circ-130^\\circ$\n\n$=50^\\circ$이다.\n\n$AB=AC$이므로\n\n$\\angle B=\\angle C=50^\\circ$이다.\n\n따라서\n\n$\\angle A=180^\\circ-50^\\circ-50^\\circ$\n\n$=80^\\circ$이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -402,7 +402,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: $\\angle B = \\angle C = \\frac{180^\\circ - 36^\\circ}{2} = 72^\\circ$이고, $\\angle B$의 이등분선에 의해 $\\angle ABD = \\angle DBC = 36^\\circ$이다.\n2단계: $\\triangle ABD$에서 $\\angle A = \\angle ABD = 36^\\circ$이므로 $\\overline{AD}=\\overline{BD}$인 이등변삼각형이다.\n3단계: $\\triangle BCD$에서 $\\angle BDC = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ$이므로 $\\overline{BD}=\\overline{BC}$인 이등변삼각형이다.\n4단계: 따라서 $\\angle ADB = 180^\\circ - 72^\\circ = 108^\\circ$이므로 ③번 $112^\\circ$는 옳지 않다.",
+    "solution": "$AB=AC$이므로\n\n$\\angle B=\\angle C$\n\n$=\\dfrac{180^\\circ-36^\\circ}{2}$\n\n$=72^\\circ$이다.\n\n$BD$는 $\\angle B$의 이등분선이므로\n\n$\\angle ABD=\\angle DBC=36^\\circ$이다.\n\n$\\triangle ABD$에서\n\n$\\angle A=\\angle ABD=36^\\circ$\n\n이므로\n\n$AD=BD$이다.\n\n$\\triangle BCD$에서\n\n$\\angle BDC=180^\\circ-36^\\circ-72^\\circ$\n\n$=72^\\circ$이다.\n\n따라서\n\n$BD=BC$이다.\n\n또\n\n$\\angle ADB=180^\\circ-72^\\circ$\n\n$=108^\\circ$이다.\n\n그러므로 $112^\\circ$라고 한 ③이 옳지 않다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -573,7 +573,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "solution": "1단계: 한 점에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{AD}=\\overline{AF}=4\\text{cm}$, $\\overline{BD}=\\overline{BE}=5\\text{cm}$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE})=2(4+5+x)=22$이다.\n3단계: $9+x=11$이므로 $x=2$이다. 따라서 $\\overline{EC}=2\\text{cm}$이고 정답은 ④이다.",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 같으므로\n\n$AD=AF=4$\n\n$BD=BE=5$이다.\n\n또\n\n$CE=CF=x$\n\n라 하자.\n\n삼각형의 둘레가 $22$이므로\n\n$(AD+DB)+(BE+EC)+(CF+FA)=22$\n\n$(4+5)+(5+x)+(x+4)=22$\n\n$18+2x=22$\n\n$2x=4$\n\n$x=2$이다.\n\n따라서\n\n$EC=2\\text{ cm}$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -606,7 +606,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: 외심 $O$에 대하여 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. 그림에서 $\\angle OAB=30^\\circ$, $\\angle OAC=40^\\circ$이고, $\\overline{OA}=\\overline{OC}$이므로 $\\angle OCA=40^\\circ$이다.\n2단계: $\\angle OBC=x$라 하면 $\\overline{OB}=\\overline{OC}$이므로 $\\angle BCO=x$이다. 따라서 $\\angle A=70^\\circ$, $\\angle B=30^\\circ+x$, $\\angle C=40^\\circ+x$이다.\n3단계: 삼각형의 내각의 합에서 $70+(30+x)+(40+x)=180$이므로 $2x=40$, $x=20^\\circ$이다.",
+    "solution": "외심이므로\n\n$OA=OB=OC$이다.\n\n따라서\n\n$\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$\n\n는 모두 이등변삼각형이다.\n\n그림에서\n\n$\\angle OAB=30^\\circ$,\n\n$\\angle OAC=40^\\circ$이다.\n\n$OA=OC$이므로\n\n$\\angle OCA=40^\\circ$이다.\n\n$\\angle OBC=x$라 하면\n\n$OB=OC$이므로\n\n$\\angle BCO=x$이다.\n\n따라서\n\n$\\angle A=30^\\circ+40^\\circ=70^\\circ$\n\n$\\angle B=30^\\circ+x$\n\n$\\angle C=40^\\circ+x$이다.\n\n삼각형의 내각의 합에서\n\n$70+(30+x)+(40+x)=180$\n\n$140+2x=180$\n\n$2x=40$\n\n$x=20^\\circ$이다.\n\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
