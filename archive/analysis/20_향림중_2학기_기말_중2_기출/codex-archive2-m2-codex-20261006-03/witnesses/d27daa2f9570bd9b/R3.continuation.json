@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_CONTINUATION_v1",
+  "stage": "R3",
+  "examUid": "20_향림중_2학기_기말_중2_기출",
+  "inputArtifactSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+  "finalArtifactSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+  "finalArtifactRawSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+  "workingPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/20_향림중_2학기_기말_중2_기출.js",
+  "evidenceRef": "archive/analysis/20_향림중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.continuation.json",
+  "completedStep": "Verified candidate SHA/blob, q22 R1/R2 bindings, q22 SVG SHA; inspected the official Archive route in archive/index.html, archive/archive2-workspace.js, archive/archive2-output.js and archive/engine.html. Official path is Archive workspace -> publishOutputEnvelope/outputEnvelopeUrl -> engine.html output-envelope consumer; it requires the same-origin Archive web app context.",
+  "firstMissingClosureStep": "ACTUAL_ARCHIVE_ENGINE_RENDER_MATRIX",
+  "exactReason": "The official Archive Engine route is implemented through archive/index.html and Archive2Output output envelopes into archive/engine.html. This worker has no available HTTP(S) Archive app tab; the only attempted local entry was rejected because file:// is disallowed. The browser policy refusal prohibits a local server, alternate browser surface, Playwright/Chrome, CDP, or workaround. The local candidate is a temp-run artifact, not an archive/exams production input; no approved official web-origin route is available to load this candidate. Therefore actual exam/solution/answer × desktop/mobile captures, loaded-candidate witness, MathJax/DOM/image decode checks, coverage, and R3 receipt remain unperformed. Hold for an approved Archive web app session/source-loading route; do not workaround.",
+  "targetedScope": {
+    "openFindingQids": [
+      22
+    ],
+    "changedQids": [
+      22
+    ],
+    "directDependencyQids": [
+      22
+    ],
+    "wholeExamSemanticReview": false,
+    "requiredRenderCoverage": {
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "requiredQidsPerCase": "1-24",
+      "lastQid": 24,
+      "actualCaptureCount": 0
+    }
+  },
+  "verifiedBindings": {
+    "r1EvidenceSha256": "535708c35be3b19778c4bcafe637a01768b624c43d4448f23b40f02411cbad69",
+    "r1ValidatorStatus": "PASS",
+    "r2EvidenceSha256": "9e14a1ab0d9085ceaaa42c337604838a744d73062ccaea3ab0d6fc497fce5207",
+    "r2ValidatorReportSha256": "f8ca4193272f5b3b726a9bde4d78a148096ef4ed9d24aa14e3fc21a6f39e6393",
+    "r2ValidatorStatus": "PASS",
+    "q22R1CorrectionReviewSha256": "d6615000b3dce8198f9191c44107e1a8fdf503d14c37ce9dd85cfed6392608e0",
+    "q22R1TransferIntegritySha256": "1c561a0d4fb05d114de55952178bc3af2f28df4f1712f98f8ba40716f72e2906",
+    "q22R2BlindFreezeSha256": "f21837d3674c9529eae59f731b3d319e718a06c15969d80138747068403ee7e8",
+    "q22R2ReviewSha256": "5aab489a9f624e6cdba33fbc507ec93a9716806121bb24f398e435332f470202",
+    "q22VisualRef": "assets/images/20_향림중_2학기_기말_중2_기출/q22.svg",
+    "q22VisualSha256": "bedb2645fa60eb54ffd7aa8347dc1c0e395929a12d5b999fb0f6a410bdba38f0",
+    "r2AggregateVisuals": "20 referenced visuals opened and inspected; does not substitute for actual engine decode/render verification."
+  },
+  "lockedScopeIntegrity": "NOT_CLOSED_RENDER_WITNESS_MISSING",
+  "releaseIntegrity": "NOT_CLOSED_RENDER_WITNESS_MISSING",
+  "genericR3Validator": "NOT_RUN_INCOMPLETE_CLOSURE",
+  "renderAttempt": {
+    "status": "BLOCKED_BY_BROWSER_POLICY",
+    "route": "Codex In-app Browser",
+    "requestedPage": "official local archive/engine.html",
+    "response": "Browser Use rejected this action due to browser security policy. The requested URL protocol is not allowed. Allowed protocols: http:, https:. The agent must not attempt to achieve the same outcome via workaround, indirect execution, raw CDP or browser commands, alternate browser surfaces, or policy circumvention.",
+    "captureCount": 0,
+    "followup": "NOT_RUN"
+  },
+  "officialRouteAssessment": {
+    "entrypoint": "archive/index.html -> Archive2Output.publishOutputEnvelope/outputEnvelopeUrl -> archive/engine.html",
+    "implementationFiles": [
+      "archive/index.html",
+      "archive/archive2-workspace.js",
+      "archive/archive2-output.js",
+      "archive/engine.html"
+    ],
+    "payloadPath": "same-origin output envelope identified by outputRequestId/outputOwnerId",
+    "candidateUsableAsDirectDataUrl": false,
+    "browserSurfaceAvailable": "none (cua.getState reported apps=[], browsers=[])",
+    "conclusion": "route implemented, current worker has no approved HTTP(S) Archive app session for temp-candidate output"
+  }
+}
