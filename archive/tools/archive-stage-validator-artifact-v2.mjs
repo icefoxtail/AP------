@@ -378,6 +378,7 @@ export function validateArtifactContract({ stage, evidence, questions, repoRoot,
     inspectControlEscapes(question, qid, issues);
 
     if (EXCLUDED_ANSWERS.has(String(question?.answer || ''))) issues.push('ARTIFACT_EXCLUDED_STUDENT_ITEM:q'+qid);
+    if (normalizedStage === 'R3' && String(question?.itemStatus || '').toUpperCase() === 'HOLD') issues.push('ARTIFACT_UNRESOLVED_ITEM_HOLD:q'+qid);
 
     validateMeta(question, dispositions.get(qid) || rows.get(qid), qid, repoRoot, h15GeometryAuthority, issues);
     validateDifficulty(question, qid, issues);

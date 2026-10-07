@@ -2,6 +2,7 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
+신규 Codex 작업은 archive/tools/CODEX_MAINTENANCE.md의 archive-codex-stage-kit.mjs를 사용한다. CREATE는 archive-create-preflight.mjs로 출고 전 HOLD/TeX/명시적 답 선택기호 후보를 확인한다. bind는 actual SHA/solution hash와 기존 명시적 reviewed 필드만 결속하며 PASS를 만들지 않는다. R1/R2 pre-freeze에는 raw JS 기반 bind/preflight/seal을 사용하지 않고 current student-only bundle 및 실제 asset 열람으로 exclusive original freeze를 작성한다. adjudication은 원 freeze를 덮지 않는 별도 파일이다. 필수 evidence 완료→normal generic validator→stable completion seal 순서로 끝내고 event SHA/nextStage/freedSlot/nextRosterTarget을 반환한다. 실제 수정 후에는 이전 proof를 보존하고 같은 session에서 필요한 재검증/fresh seal을 수행한다. PASS 통보 뒤 optional evidence 추가를 하지 않는다. 과거 unchanged receipt reuse와 actual render/MAIN_DONE gate는 유지한다.
 ROOT는 CURRENT §25에 따라 캡처/실제 render 요건 면제와 예외·HOLD 복구/해제를 결정할 상시 위임 권한을 가진다. 반복 사용자 승인을 prerequisite로 요구하지 않는다. 품질 결함은 원본 PDF→최소 수정→true item HOLD 문항 대체→영향 qid 검수로 복구한다. 캡처만 없으면 ROOT가 static 완성 경로를 결정한다. 실제 미실행 render는 NOT_RUN_ROOT_WAIVER로 기록하고 RENDER_PASS를 가장하지 않는다. 유효한 R1/R2·전 qid·JS/자산/SVG·zero item HOLD·production/readback 요건은 유지한다.
 freeze 전에는 current student-only bundle과 모든 참조 자산만 읽는다. raw JS head/Get-Content/answer-bearing 검색 및 prior HOLD 이유/답 요약을 읽지 않는다. 실제 자산을 열고 freeze를 파일로 기록한 뒤 qid-limited postfreeze extraction으로 비교한다.
 CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–25이다. Canary pilot은 역사 조회 전용이다.
