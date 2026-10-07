@@ -235,10 +235,70 @@
       "latestPrepublicationMainSha": "935ab5b552af3cd1529169422cc7264ebcd1a233",
       "targetOverlap": false,
       "engineHelperAuthorityDrift": false
+    },
+    {
+      "at": "2026-10-07T08:06:28.048Z",
+      "type": "PUBLICATION_PUSH_AND_REMOTE_READBACK",
+      "publicationCommit": "4a6e8ca76d229b2be18efbcf15a79d32812a75c7",
+      "remoteMainSha": "4a6e8ca76d229b2be18efbcf15a79d32812a75c7",
+      "nonForcePush": true,
+      "explicitFiles": 63,
+      "rawIndexByteParity": true,
+      "registrationSyncRun": 37591374982,
+      "registrationStatus": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-07T08:12:46.924Z",
+      "type": "DURABLE_TECHNICAL_CONTINUATION_DISPATCH",
+      "stage": "PUBLICATION",
+      "session": "/root/master",
+      "role": "archive_master",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "firstMissingClosureStep": "REGISTRATION_SYNC_TARGETED_TEST_FAILURE_DIAGNOSIS_AND_TARGET_READBACK",
+      "failureRun": 37591374982,
+      "sourceAndAssetBytesLocked": true,
+      "qualityStagesNotRewound": true,
+      "ownership": "MASTER technical evidence and target registration patch only"
+    },
+    {
+      "at": "2026-10-07T08:24:43.134Z",
+      "type": "MASTER_SAME_SESSION_TECHNICAL_FOLLOWUP",
+      "session": "/root/master",
+      "spawnCountUnchanged": true,
+      "masterCountUnchanged": true,
+      "diagnosis": "unrelated existing reviewed leaf fingerprint invalidated by full generation",
+      "decision": "implement run-local exact target24 registration bridge; preserve other records",
+      "fullGenerationNotApplied": true,
+      "unrelatedAdditionalExamsExcluded": 18,
+      "qualitySourceAndAssetsStillLocked": true
+    },
+    {
+      "at": "2026-10-07T08:39:27.539Z",
+      "type": "MASTER_TARGET_REGISTRATION_VALIDATED_PUBLICATION_READY",
+      "session": "/root/master",
+      "implementationStatus": "IMPLEMENTED_AND_APPLIED_RUN_LOCAL_BRIDGE",
+      "targetDbRows": 1,
+      "targetUidRows": 24,
+      "nonTargetRowsPreserved": true,
+      "sourceAssetsUnchanged": true,
+      "registrationProductionFiles": [
+        "archive/db.js",
+        "archive/data/question_identity_map.json",
+        "archive/data/question_metadata.json",
+        "archive/question-identity.js",
+        "archive/question-index.js",
+        "archive/question-index-report.md",
+        "archive/question-index-audit.md",
+        "archive/data/archive2-catalog.json",
+        "archive/data/archive2-canonical-input-manifest.json"
+      ],
+      "latestMain": "78d877c1e82739d095f379c6bc6e2f622738944f",
+      "overlap": false
     }
   ],
-  "spawnCount": 4,
-  "masterCount": 0,
+  "spawnCount": 5,
+  "masterCount": 1,
   "metrics": {
     "tokens": "NOT_AVAILABLE",
     "cost": "NOT_AVAILABLE"
