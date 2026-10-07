@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "ARCHIVE_R1_BOUNDED_META_ORDER_ADJUDICATION_V1",
+  "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "stage": "R1",
+  "scope": {
+    "qid": 7,
+    "field": "standardUnitOrder",
+    "onlyQuestionCompared": [5, 7, 9, 15, 18, 20],
+    "sourceMutationPerformed": false
+  },
+  "artifactBinding": {
+    "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+    "productionPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\exams\\original\\high\\h2\\1final\\22_매산고_1학기_기말_고2_기하_기출.js",
+    "candidateRawSha256": "aa53862a4a57b06ccde3ddb40285f64dc9fc5b879081d3693410a6f21d573adb",
+    "productionRawSha256": "aa53862a4a57b06ccde3ddb40285f64dc9fc5b879081d3693410a6f21d573adb",
+    "initialAssignedHead": "d835732c499f5c5df3bd85e28c3e2f5bf15057b9",
+    "currentWorktreeHeadAtAdjudication": "91ff11b832227f4064c2d51196fbe18084ce806c",
+    "currentR1EvidenceRef": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.evidence.json"
+  },
+  "observedFields": {
+    "shared": {
+      "standardCourse": "기하",
+      "standardUnitKey": "H15-GV-06",
+      "standardUnit": "평면벡터의 성분과 내적"
+    },
+    "qid7": {
+      "standardUnitOrder": 7
+    },
+    "peerQids": {
+      "5": 6,
+      "9": 6,
+      "15": 6,
+      "18": 6,
+      "20": 6
+    }
+  },
+  "canonicalBasis": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+      "observation": "The document declares itself the source of truth for standardCourse, standardUnitKey, standardUnit, and standardUnitOrder, and says it takes precedence for existing L1/L2 mappings. Its row H15-GV-06 has label '평면벡터의 성분과 내적' and order 6; H15-GV-07 is '직선과 원의 방정식' and order 7."
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md#standardUnitKey-standardUnit-standardUnitOrder",
+      "sha256": "d6b62662edc191b0c67aee06dbc1d3a2be9744250baf47f59f63b37091c91306",
+      "observation": "The solution protocol says these fields are filled from the standard-unit master table."
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+      "observation": "The active H15-GV-06 registry entry has label '평면벡터의 성분과 내적' and description '문서 기준 표준단원 (6)'; H15-GV-07 has a different label and order 7."
+    },
+    {
+      "path": "archive/tools/archive-stage-validator-artifact-v2.mjs",
+      "sha256": "c4daa31f51f0bfcf226ab473c81f6c09409ca7ae4020e99175f8af7e1745c0cb",
+      "observation": "The generic artifact contract currently verifies only that standardUnitOrder is a nonnegative integer; that type check does not establish equality with the canonical master order."
+    }
+  ],
+  "r1SemanticBasis": "The R1 q7 adjudication changed the unit key and label to H15-GV-06 because the verified solution uses direction vectors and their inner product. That semantic decision is supported; the remaining 7 is consistent with the previous H15-GV-07 classification and conflicts with the current key/label's canonical order.",
+  "verdict": "REQUIRED_META_FIELD_REPAIR",
+  "aliasAssessment": "No canonical alias or display-order rule authorizes standardUnitOrder 7 while standardUnitKey is H15-GV-06 and standardUnit is the H15-GV-06 label. The old H15-GV-07 classification may remain in originalCategory/provenance, but that does not change the current standardUnitOrder field's canonical meaning.",
+  "smallestRequiredTreatment": {
+    "field": "standardUnitOrder",
+    "qid": 7,
+    "before": 7,
+    "after": 6,
+    "repairType": "qid-limited Meta-only correction",
+    "answerFreezeImpact": "none",
+    "semanticClassificationImpact": "none",
+    "requiredFollowUp": "When ROOT releases source ownership, update only q7 standardUnitOrder to 6, bind the changed field in q7's Meta disposition, recompute final artifact SHA/evidence binding, and run the required same-session R1 artifact validator."
+  },
+  "ownershipConstraint": "No source or existing R1 evidence file was modified for this adjudication because ROOT currently owns the registration dirty files.",
+  "r1GenericValidatorDisposition": "PASS",
+  "r1GenericValidatorCaveat": "The completed R1 validator checks standardUnitOrder type/range but does not check master-order parity; its PASS does not waive this canonical mismatch.",
+  "itemHoldDisposition": "NO_ITEM_HOLD; the issue is a bounded Meta field correction.",
+  "nextRequiredAction": "ROOT performs the q7-only standardUnitOrder correction when source ownership is available, or explicitly records ROOT disposition without claiming the field was repaired."
+}
