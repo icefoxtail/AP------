@@ -1,0 +1,82 @@
+{
+  "examUid": "20_매산여고_2학기_기말_고2_수학II",
+  "stage": "CREATE_PREFLIGHT",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "pinnedWorkerContract": {
+    "role": "archive_create",
+    "model": "gpt-6-luna",
+    "reasoningEffort": "high",
+    "authority": "ROOT assignment packet",
+    "serviceTelemetry": "UNAVAILABLE_IN_THIS_AGENT_RUNTIME"
+  },
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation. Referenced solution SVG read; line coefficients and endpoint coordinates agree with labeled lines.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Approved failure fixture was read. It records false PASS from SVG label-versus-coordinate mismatch, collapsed enumerated small-board steps, null Meta despite unique exact active classifications, and runtime escaping drift. CREATE will inspect actual geometry, explicit intermediate equations, current metadata evidence, and evaluated runtime strings."
+    }
+  },
+  "sourcePreflight": {
+    "sourceEvidencePath": ".tmp/archive/source-batch-20261006/high/math2/20_매산여고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산여고_2학기_기말_고2_수학II.json",
+    "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+    "sourcePdf": {
+      "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말.pdf",
+      "sha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+      "status": "FOUND_AND_MATCHES_PROVENANCE",
+      "sourceEvidenceExpectedSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+      "pageCount": 6
+    },
+    "answerPdf": {
+      "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말_해설.pdf",
+      "sha256": "8188e7fba4214c9cb31f326b68f1accd74eb177333c62e7ed30992f3dd45ec36",
+      "status": "FOUND"
+    },
+    "lookupCandidatesNotAdopted": [
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매산고2_수2_2기말.pdf",
+        "sha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "status": "NOT_ADOPTED_DIFFERENT_IDENTITY_AND_SOURCE_PDF_SHA"
+      },
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2025_매산고2_수2_2기말.pdf",
+        "sha256": "34f5cdc7077a7a11c6f0ba335f515c4eb6635d4e7763acd9f919d4a3ff56caa3",
+        "status": "NOT_ADOPTED_WRONG_YEAR_AND_SCHOOL_IDENTITY"
+      }
+    ]
+  }
+}

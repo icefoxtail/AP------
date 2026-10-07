@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_QUALITY_CALIBRATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationOrder": ["Golden Sample read", "Negative Sample read", "target solution review"],
+  "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "goldenSampleRefs": [
+    {"path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js", "rawSha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf", "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"},
+    {"path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js", "rawSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c", "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"},
+    {"path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "rawSha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b", "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"}
+  ],
+  "goldenSampleQuestionRefs": [
+    {"path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js", "qid": 7, "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9", "solutionExcerpt": "완전제곱으로 중심·반지름을 구하고 C0→C1→C2 좌표를 순서대로 추적해 최종 원의 식을 얻는다.", "observation": "중심/반지름, 두 변환, 좌표 대입, 최종식이 독립 줄로 이어진다. SVG 실제 primitive의 세 중심 및 동일 반지름이 풀이와 맞는다.", "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg", "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"},
+    {"path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js", "qid": 12, "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171", "solutionExcerpt": "중심 이동 후 접선 거리식을 세우고 |a−4|=a를 경우로 나눈 뒤 a>0, b>0 조건으로 해를 거른다.", "observation": "절댓값 분기와 양수 조건의 배제 근거가 각 단계에 명시되어 학생이 풀이를 재현할 수 있다."},
+    {"path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js", "qid": 2, "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2", "solutionExcerpt": "각 직선식을 y=mx+n 꼴로 변형하고 기울기 곱 −1을 대입해 k를 구한다.", "observation": "각 변형식과 수직 조건이 줄 단위로 드러난다. SVG line primitive 기울기 −1/3과 3의 곱이 −1임을 실제 좌표에서 확인했다.", "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg", "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"},
+    {"path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js", "qid": 3, "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370", "solutionExcerpt": "두 제곱항을 각각 완전제곱으로 만들고 상수항을 정리해 중심과 반지름을 읽는다.", "observation": "중간식과 표준형 비교가 분리되어 있고 마지막에 중심·반지름을 명시한다."},
+    {"path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "qid": 6, "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af", "solutionExcerpt": "포함배제로 교집합 하한 y≥5를 얻고 y 최소를 구성해 여집합 합집합의 최댓값을 구한다.", "observation": "상한 도출과 실제 가능한 집합 배치를 제시해 최대값 달성 가능성까지 보인다.", "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg", "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd"},
+    {"path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "qid": 11, "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706", "solutionExcerpt": "무게중심 조건을 x,y 좌표별 평균식으로 나눠 B+C 좌표합을 얻고 OBC의 무게중심을 계산한다.", "observation": "두 좌표 조건과 최종 평균 계산이 모두 보이며 좌표 관계가 문장과 대응한다."}
+  ],
+  "negativeSampleRefs": [
+    {"path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md", "rawSha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8", "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906", "observation": "실제 SVG 좌표/위상, 작은칠판 열거 구조, exact Meta lookup, runtime TeX escape를 자기보고 집계로 대체하지 않는다."}
+  ],
+  "qualityCompareCount": "23/23",
+  "solutionWorkMode": "INDEPENDENT_REVIEW"
+}
