@@ -1,0 +1,17 @@
+node:fs:440
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\archive\analysis\m3-codex-20261007\20_연향중_2학기_기말_중3_기출\R3.assignment.json'
+    at Object.readFileSync (node:fs:440:20)
+    at file:///C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/registration-assignment.mjs:2:167
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_연향중_2학기_기말_중3_기출\\R3.assignment.json'
+}
+
+Node.js v24.14.1
