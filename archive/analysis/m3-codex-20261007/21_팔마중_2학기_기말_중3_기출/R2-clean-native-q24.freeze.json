@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_BLIND_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "executionLine": "CODEX",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 24,
+  "input": {
+    "studentBundleSha256": "a583da00acb0f3feda4d7e7780ba829b97fa4163e7a1a5b3882267d1300aca6a",
+    "artifactRawBufferBlobSha1": "8cc83ff611d082c80cc72df671b229030842ef6d",
+    "sourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\21_팔마중_2학기_기말_중3_기출.js",
+    "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q24.png",
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R2-clean-native-q24.student-input.json",
+    "assetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+    "sourceRawSha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+    "studentPayloadSha256": "d3f11617c2fe2bff1a5ac1db1cecf16ee88e921824b45ac0214973f71b5e5d44"
+  },
+  "visualRead": "Stem-and-leaf image: stem 0 has leaves 1,2,3; stem 1 has leaves 1,5,5,7,8; stem 2 has leaves 0,0,1,5. Key reads 0|3 as 3 repetitions, so values are 1-digit, teen, and 20s observations.",
+  "orderedValues": [
+    1,
+    2,
+    3,
+    11,
+    15,
+    15,
+    17,
+    18,
+    20,
+    20,
+    21,
+    25
+  ],
+  "cardinality": 12,
+  "reasoning": {
+    "expression": "A+B-C=23/3+16-35=-34/3",
+    "middlePair": [
+      15,
+      17
+    ],
+    "modeSum": 35,
+    "sum": 92,
+    "mean": "92/12=23/3",
+    "modes": [
+      15,
+      20
+    ],
+    "median": "(15+17)/2=16"
+  },
+  "answers": {
+    "part1": {
+      "mean": "23/3",
+      "unit": "repetitions per 30 seconds"
+    },
+    "part3": "-34/3",
+    "part2": {
+      "median": 16,
+      "modeSum": 35,
+      "mode": [
+        15,
+        20
+      ]
+    }
+  },
+  "status": "FROZEN_BEFORE_UPSTREAM_COMPARISON"
+}

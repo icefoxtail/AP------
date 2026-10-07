@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_VALIDATOR_BINDING_CORRECTION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "preservedValidatorIssue": "ARTIFACT_ASSET_REF_INVALID:image:q15",
+  "repair": {
+    "qid": 15,
+    "changedLocus": "q15 image property only",
+    "beforeRawSha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+    "beforeArtifactBlobSha1": "8cc83ff611d082c80cc72df671b229030842ef6d",
+    "afterRawSha256": "a199e81485749bbea175f0b377e375640f460bab4aa6a49fc4589360b66b736e",
+    "afterArtifactBlobSha1": "c3da0097d2053fc51954a6bc8983dc69d5fdd218",
+    "beforeImageField": null,
+    "afterImageField": "omitted",
+    "questionContentUnchanged": true,
+    "choicesUnchanged": true,
+    "sourceTableMarkdownRowsRetained": true,
+    "sourceImageBytesUnchanged": true,
+    "studentMathInfoChanged": false,
+    "reason": "V2 asset validator treats image:null as invalid; the layout instruction is to remove the duplicate image field, so the property is now omitted rather than null."
+  },
+  "q24UnchangedByCorrection": {
+    "nativeFreezeSha256": "3952cb9bf0cb1710c190f69ad59b2a1371bd9ebc3362030fec26d409857581a3",
+    "studentBundleSha256": "a583da00acb0f3feda4d7e7780ba829b97fa4163e7a1a5b3882267d1300aca6a",
+    "currentQidBodyParity": "PASS",
+    "nativeSumAnswer": "-5"
+  },
+  "postCorrectionExtraction": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출/R1.final-qid-layout-extraction.json",
+    "sha256": "9ed612c76a01053ca149dbbffa6730de6d97bc637966442929378e581b8bb422"
+  },
+  "validationPolicy": "This actual validator failure is repaired; same-stage generic V2 revalidation is required."
+}
