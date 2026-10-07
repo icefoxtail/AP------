@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_RECEIPT_v1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "archive2-m2-codex-20261006-03",
+  "examUid": "21_풍덕중_2학기_기말_중2_기출",
+  "stage": "ITEM_RECOVERY",
+  "status": "REPLACEMENT_READY_FOR_FRESH_R1_R2_Q19_ONLY_REVIEW",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "replacedQid": 19,
+  "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "originalSourceRef": {
+    "sourceProductionPath": "archive/exams/original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js#q19",
+    "sourceBatchPath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\source-batch\\21_풍덕중_2학기_기말_중2_기출.js",
+    "sourceBatchSha256": "sha256:69f23a51bd8112f7989dc6ed731217594e5bd66cb89b5cb21958208785ad8f8b",
+    "sourcePdfPath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\source-batch\\source\\2021_풍덕중2_수학_2기말.pdf",
+    "sourcePdfSha256": "sha256:96cf3ae325ec90d227e4cf47252bc545f324fd4016e54e2b7d266a73b8419d4b",
+    "sourceEvidencePath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\source-batch\\provenance\\archive\\analysis\\source-only-m2-20261004\\21_풍덕중_2학기_기말_중2_기출.evidence.json",
+    "sourceEvidenceSha256": "sha256:765e915f55508694faee4c31036d030774262fb5b26f73017874b5005fb80bcc",
+    "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+    "sourceBranchSha": "dbf1286902ca13bc641e98e198887365a1dfd5be"
+  },
+  "originalCandidate": {
+    "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.pre-replacement-artifact.snapshot.json",
+    "snapshotSha256": "sha256:56f02b0123ad434a3352876394db07e912323d85839c0cea98f9b49874f0e384",
+    "rawArtifactSha256": "25b427561bb7da2bb1c258cdb946d2e3885986ee99267aa523f84743e6a6f19c",
+    "gitBlobSha": "01627647679f9abddae04abdffb80a6ea5b35afe"
+  },
+  "originalHoldRevalidation": {
+    "ref": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.source-review.json",
+    "sha256": "sha256:f229ab9a076232bdf0adf6e25b64d143c96e5f2e5a5c7023e76e77c2108bc244",
+    "disposition": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "decisiveMissingFacts": [
+      "The joint probability P(A∩B), or an explicit independence condition, is not given."
+    ],
+    "mathematicalRecheck": {
+      "let": "x=P(A∩B)",
+      "formula": "P(exactly one)=P(A)+P(B)−2x=1−2x",
+      "bounds": "0≤x≤2/5",
+      "range": "1/5≤P(exactly one)≤1",
+      "storedAnswerCondition": "13/25 corresponds to x=6/25, the independence product (3/5)(2/5); the source does not establish that value."
+    }
+  },
+  "preservedPriorHold": {
+    "createHoldReceipt": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\CREATE.HOLD_NOT_PASS.json",
+      "sha256": "sha256:55d33def12104a9afaf998cb949a68231b41de08b15c665b0327e1b794eed777"
+    },
+    "r1Freeze": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R1.independent-freeze.json",
+      "sha256": "sha256:3665eecd5ca72cf0a2a2e3003059b1d9fdbcf2c7038ccb24ce2aa79766c0ce60"
+    },
+    "r1StudentBundleCurrent": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R1.student-bundle.current-20261007.json",
+      "sha256": "sha256:961cc3cc2f3dd0946a7a60824eaab3d1913c7d1f0196291b58efc2c4a3f26284"
+    },
+    "r1StudentBundleFinal": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R1.student-bundle.final-20261007.json",
+      "sha256": "sha256:56a50efa880fdd21a23a1e36057e0f119b0c79a3d3a49a3a7b495fbe004f0de9"
+    },
+    "r2Freeze": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R2.blind-freeze.current-20261007.json",
+      "sha256": "sha256:89a14d216d183ee8ce1483626703727c69ee87bbf0dd2b4022a77e7ce268f123"
+    },
+    "r2StudentBundle": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R2.student-bundle.current-20261007.json",
+      "sha256": "sha256:032b3d9c6cfca4117652a934712fd60232b9e234655dc33b02119ada497da5b0"
+    },
+    "r2HoldClosure": {
+      "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\R2.closure.HOLD_NOT_PASS.current-20261007.json",
+      "sha256": "sha256:61ba5ffa66adddbf92327e43f5449334e40e1c75ebb94518bfa0cd9b371cdb69"
+    },
+    "noPriorFreezeMutated": true
+  },
+  "solutionFirst": {
+    "conceptAndConditionsRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.solution-first-freeze.json",
+    "answerFreezeSha256": "sha256:4c6a9c89bc1bd5fe6933381c95df246620f834607535eb4799bf34e257729741",
+    "canonicalAnswer": "2/5",
+    "distractorDesignRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.distractor-design.json",
+    "distractorDesignSha256": "sha256:700a1584923814c870348b6bf850b8486100b1ae9190c5e87a1ea8cc3d132548",
+    "choiceFreezeRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.choice-freeze.json",
+    "choiceFreezeSha256": "sha256:2eaa2bb4d581f794b64866aab27c9c1a90f4b52366ee257df233ed95ed52dfbf",
+    "studentSolutionRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.solution-draft.json",
+    "studentSolutionSha256": "sha256:f4025eb3d65a6fa1069dd96318007203a11b26055e8de2cc0d4e17e7bae62570",
+    "blindStudentReSolveRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.blind-self-check.json",
+    "blindStudentReSolveSha256": "sha256:cd4d0ef2d0050a3812ebfb81da7d7fa1571cdbe82f54cce009f5b627a18e52be",
+    "blindAnswer": "2/5",
+    "matchingChoiceIndexes": [
+      3
+    ],
+    "answerCardinality": 1
+  },
+  "recoveryPreflight": {
+    "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.solution-preflight.json",
+    "sha256": "sha256:818fd784e357259726d40a2207fefcf6f0dc3d68f2ade4c2aa224ec787b77b54",
+    "resultPath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.solution-preflight.result.json",
+    "status": "PASS",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "currentReplacement": {
+    "candidatePath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\21_풍덕중_2학기_기말_중2_기출.js",
+    "rawSha256": "5ff5b5d30355265dc4586f4ad62fd8093ae26961f8abf7510f46a5e30e665a78",
+    "gitBlobSha": "09dc52a617d068d52d8c387f4177a059eed116d0",
+    "qid": 19,
+    "content": "주머니에 빨간 공 1개와 파란 공 4개가 있다. 이 주머니에서 공을 두 번 연속하여 한 개씩 꺼내되, 꺼낸 공은 다시 넣지 않는다. 두 공 중 빨간 공이 정확히 한 개 나올 확률은? (4점)",
+    "choices": [
+      "$\\frac{1}{5}$",
+      "$\\frac{8}{25}$",
+      "$\\frac{2}{5}$",
+      "$\\frac{3}{5}$",
+      "$\\frac{4}{5}$"
+    ],
+    "answer": "③",
+    "solution": "서로 다른 공을 두 번 꺼내는 순서에 따라 두 경우로 나눈다.\n빨간 공 다음에 파란 공을 꺼낼 확률은\n$\\dfrac{1}{5}\\times\\dfrac{4}{4}=\\dfrac{1}{5}$이다.\n파란 공 다음에 빨간 공을 꺼낼 확률은\n$\\dfrac{4}{5}\\times\\dfrac{1}{4}=\\dfrac{1}{5}$이다.\n두 경우는 겹치지 않으므로\n$\\dfrac{1}{5}+\\dfrac{1}{5}=\\dfrac{2}{5}$이다.\n따라서 정답은 ③이다.",
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "difficulty": {
+      "level": "중",
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL",
+      "evidencePath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.difficulty-evidence.json",
+      "evidenceSha256": "sha256:55dc64d1acb8b4766a6f3fe9123f1e6b86e31f3dd5c47a86e29dff2257d62e0d"
+    }
+  },
+  "freshMeta": {
+    "resolverEvidencePath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.meta-resolver-evidence.json",
+    "resolverEvidenceSha256": "sha256:e26b7cd8c1a64210b44a4d38cfe8a46ffa9526a21356409cc3250cc0cd1936cc",
+    "resolverValidation": {
+      "status": "PASS",
+      "errors": [],
+      "recomputed": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2",
+        "sourceFingerprint": "sha256:dd2138d2b9c345603e829604befe67b8d65f16664f24dea7c67a3034f8bc8ff4",
+        "inputBundleSha": "sha256:ede0e78791e0b20aa19430fa7b72df06b5a2be4fba68aac651efc5d829d6c7cb",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "경우를 나누어 구하는 확률"
+        },
+        "rpmL3": "확률의 활용",
+        "rpmL4": "경우를 나누어 구하는 확률",
+        "semanticScopeRelation": "CURRENT_SCOPE",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "crosswalkRecordId": "M2-RPM-117",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "ownerPack": "PROBABILITY_STATISTICS",
+        "ownerVersion": "1.0.0",
+        "bindingOwnerPack": "",
+        "bindingIdentity": "",
+        "legacyProjection": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "reasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "",
+          "candidateTemplateKeys": [
+            "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+          ],
+          "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+          "bindingOwnerPack": "",
+          "bindingIdentity": ""
+        },
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "rpmSemantic": {
+          "status": "FINAL",
+          "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "targetScope": "M2-2",
+          "scopeRelation": "CURRENT_SCOPE",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "경우를 나누어 구하는 확률",
+          "primaryMethod": "비복원 추출의 두 순서를 나누어 확률을 합산",
+          "decisiveStep": "빨강→파랑은 (1/5)(4/4)=1/5, 파랑→빨강은 (4/5)(1/4)=1/5; 두 경우를 더해 2/5.",
+          "sourceFingerprint": "sha256:dd2138d2b9c345603e829604befe67b8d65f16664f24dea7c67a3034f8bc8ff4",
+          "inputBundleSha": "sha256:ede0e78791e0b20aa19430fa7b72df06b5a2be4fba68aac651efc5d829d6c7cb",
+          "rpmRecordSha": "sha256:615d4a50de98c58568343f7ffaa0784c82ae06626d58dac87b3ee9d4800cd03c"
+        },
+        "advancedMetaEligible": false,
+        "dispositionReason": "",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_174d1526a619e3d2c6db7df82cf1114e3e308c45f4ddec3bd36a6471ab6510e8",
+            "sourceIdentityKey": "qid_v1_174d1526a619e3d2c6db7df82cf1114e3e308c45f4ddec3bd36a6471ab6510e8",
+            "sourceOrdinal": 19,
+            "contentHash": "sha256:36ccc0b90a4e716b246d249823ed1e5597f0576ff461d04c4e77f33e3d3936d9",
+            "choicesHash": "sha256:92d82a8a387844e5517f758022c2b4371480d6278831bcc68ccb1a00bc3b7323",
+            "imageRefHash": "sha256:439083f38956ba51ece90631552c6ea23c5c29570d3d5710e408e77e01ba7375",
+            "sourceFingerprint": "sha256:dd2138d2b9c345603e829604befe67b8d65f16664f24dea7c67a3034f8bc8ff4"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:f4025eb3d65a6fa1069dd96318007203a11b26055e8de2cc0d4e17e7bae62570",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "비복원 추출의 두 순서를 나누어 확률을 합산",
+            "decisiveStep": "빨강→파랑은 (1/5)(4/4)=1/5, 파랑→빨강은 (4/5)(1/4)=1/5; 두 경우를 더해 2/5.",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "경우를 나누어 구하는 확률"
+            },
+            "scopeRelation": "CURRENT_SCOPE"
+          }
+        },
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+            "bytes": 1839,
+            "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+          },
+          {
+            "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+            "bytes": 558996,
+            "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+          },
+          {
+            "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+            "bytes": 5809,
+            "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+            "bytes": 153671,
+            "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+            "bytes": 153671,
+            "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+            "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/canonical/registry_index.json",
+            "bytes": 14035,
+            "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+            "bytes": 879,
+            "sha256": "sha256:72cc1f7be577667c2f166183017041ae2eeeaff74a8ef3167a64ed1380c6325e",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+            "bytes": 2050,
+            "sha256": "sha256:bbb8e0c4c10211e5faadeb5cfe462aa5a9b06890ad4052690b24002dc5511c4e",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bytes": 1655704,
+            "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+            "bytes": 158736,
+            "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+            "bytes": 2091,
+            "sha256": "sha256:2800ec15d1dd9c15c51d5f18b48d399b233fbe33ff8eebfdf89a49c4ba98ae5f",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "bytes": 743114,
+            "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+            "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+          }
+        ],
+        "evidenceSha": "sha256:ee95579ed028157e5327b87f85e4facadd843158b9cb347e2a40cca216777f29"
+      }
+    },
+    "rpmSemanticStatus": "FINAL",
+    "rpmPath": {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 활용",
+      "l4": "경우를 나누어 구하는 확률"
+    },
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
+    "conditionLookupPath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.meta-condition-lookup.json",
+    "conditionLookupSha256": "sha256:0e65cff70936aadcbadbb028e51c1ff9125f0f897c01ff1235be1515300615c2",
+    "conditionKeys": [],
+    "conditionLookupDisposition": "NO_EXACT_ACTIVE_CONDITION_KEY; retain explicit condition in question and leave conditionKeys empty"
+  },
+  "sourceModeProvenance": {
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "curriculum": "Fresh 2015 M2-2 probability scope review; direct authoring, with replacement sampling explicitly stated.",
+    "answerCardinality": "Full ordered physical sample space has 20 equiprobable draws; exactly one red is 8 draws, uniquely 2/5.",
+    "noAliveGenerationPipeline": true,
+    "originalSourceRef": "See originalSourceRef above."
+  },
+  "integrity": {
+    "nonTargetInvarianceRef": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.non-target-invariance.json",
+    "nonTargetInvarianceSha256": "sha256:1b4eb548989d82e8143e0c55a72669e437fb3ba554d1bb54de981798a87aed72",
+    "nonTargetQidsUnchanged": true,
+    "nonTargetAssetRefsUnchanged": true,
+    "originalProductionAssetsUnchanged": true,
+    "changedQids": [
+      19
+    ],
+    "changedAssetRefs": []
+  },
+  "sanitizedReviewInput": {
+    "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\ITEM_RECOVERY.q19.student-projection.json",
+    "sha256": "sha256:6d0eab73c8b179b239b44bcfcfa207fd9a4cc093a7859f7e0f9b929c23effb5a",
+    "qidCount": 1,
+    "answerSolutionAndMetaExcluded": true
+  },
+  "nextAction": {
+    "request": "Fresh q19-only R1 and R2 clean reviews using the sanitized current student projection.",
+    "r1OrR2PassClaimed": false,
+    "stagePromotion": "NONE",
+    "r3RenderPublication": "NOT_RUN"
+  },
+  "pdfVisualEvidence": {
+    "path": ".tmp\\archive\\archive2-m2-codex-20261006-03\\21_풍덕중_2학기_기말_중2_기출\\CREATE.source-pdf-page-3.png",
+    "sha256": "sha256:29e44062e3ba262cc64d5febd32208935493c582ae7ba134024bf4c049fb7eaf",
+    "sourcePdfSha256": "sha256:96cf3ae325ec90d227e4cf47252bc545f324fd4016e54e2b7d266a73b8419d4b"
+  }
+}
