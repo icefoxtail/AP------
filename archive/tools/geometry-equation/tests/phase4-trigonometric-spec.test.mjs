@@ -9,8 +9,8 @@ import {specFor} from '../production/phase2.mjs';
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const observer=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 
-async function make(functionName,coefficients,phasePi,sourceDomain){
-  const request={family:'trigonometric',function:functionName,coefficients,phasePi,sourceDomain,domain:[-4,4],viewport:[-5,5,-5,5]};
+async function make(functionName,coefficients,phasePi,sourceDomain,axisTickValues){
+  const request={family:'trigonometric',function:functionName,coefficients,phasePi,sourceDomain,domain:[-4,4],viewport:[-5,5,-5,5],...(axisTickValues?{axisTickValues}:{})};
   const plan=(await pythonWorker({action:'frame_graph',graphPlan:request})).result.graphPlan;
   const graph=(await pythonWorker({action:'graph',graphPlan:plan})).result;
   const observation=(await pythonWorker({graphPlan:plan,svg:graph.svg,transform:graph.transform},{script:observer})).result;
@@ -33,10 +33,13 @@ test('sine and cosine specs preserve exact amplitude phase period and feature ma
   assert.equal(sine.plan.trigFeatures.periodPiMultiple,'2');assert.equal(sine.spec.objects[0].expression.includes('sin('),true);
   assert.equal(sine.spec.objects.find(object=>object.id==='period-label').text,'T=2π');
   assert.equal(sine.prepared.prepared.primitives.filter(primitive=>primitive.role==='trig-feature').length,5);
-  const cosine=await make('COS',['-1','-2','3'],'1/4',{kind:'ALL_REALS'});
+  const cosineTicks={x:['-2','2'],y:['-1','1']};
+  const cosine=await make('COS',['-1','-2','3'],'1/4',{kind:'ALL_REALS'},cosineTicks);
   assert.equal(cosine.observation.status,'PASS',JSON.stringify(cosine.observation.errors));
   assert.equal(cosine.plan.trigFeatures.centerBehavior,'MINIMUM');
   assert.equal(cosine.spec.objects[0].expression.includes('cos('),true);
+  assert.deepEqual(cosine.spec.displayFacts.axisTickValues,cosineTicks);
+  assert.deepEqual([cosine.spec.viewport.width,cosine.spec.viewport.height],[610,420]);
 });
 
 test('tangent spec preserves its exact pole-to-pole branch and dashed cues',async()=>{

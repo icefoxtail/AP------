@@ -72,7 +72,7 @@ async function buildCandidate(plan,fixture,runId,examUid){
     composition={reason:'MEASURED_FORMULA_PANEL',measuredWidth,padding,priorPanel:140,selectedPanel:selected,cap};
   }
   const built=(await pythonWorker({action:'build',spec,measurements,fragments})).result;
-  const expectedNoSafeTickLabel=['pole','hole'].includes(fixture.kind);assert.equal(built.witness.layout.status,expectedNoSafeTickLabel?'POLISH_REQUIRED':'PASS',JSON.stringify(built.witness.layout));
+  assert.equal(built.witness.layout.status,'PASS',JSON.stringify(built.witness.layout));assert.deepEqual(built.witness.layout.unresolved,[]);
   const staticAudit=(await pythonWorker({graphPlan:plan,svg:built.svg,transform:observerTransform(built.witness.coordinateModel,1)},{script:observerScript})).result;
   assert.equal(staticAudit.status,'PASS',JSON.stringify(staticAudit.errors));
   const modelRoot=path.join(root,`${examRoot}/visual-engine/production/rational-model/${fixture.kind}`);fs.mkdirSync(modelRoot,{recursive:true});
@@ -80,14 +80,15 @@ async function buildCandidate(plan,fixture,runId,examUid){
   for(const artifact of Object.values(modelArtifacts)){const target=path.join(root,artifact.path);fs.writeFileSync(target,typeof artifact.value==='string'?artifact.value:JSON.stringify(artifact.value,null,2)+'\n',{flag:'wx'});}
   return {graphModel,modelAudit,spec,prepared,built,staticAudit,fragments,measurements,measurementReceipt,measurementPath,composition,modelArtifacts};
 }
-async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,fixture}){
+async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,fixture,intrinsicSvg}){
   const run=`.tmp/archive/${runId}/${examUid}/visual-engine/production/archive-${sizeClass}`;fs.mkdirSync(path.join(root,run),{recursive:true});
   const candidate=patchBank(runId,examUid,svgPath,assetPath,sizeClass,fixture.content,fixture.answer,fixture.solution);
-  const matrix={schemaVersion:'APMATH_PHASE4_RATIONAL_ARCHIVE_MATRIX_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',synthetic:false,engineSha256:fileRef(root,'archive/engine.html').sha256.slice(7),sources:[candidate.info],rows:[{...candidate.info,mode:'sol',viewport:'rational-'+fixture.kind+'-'+sizeClass,width:1440,height:1000,urlPath:archiveUrl(),requireLocalResources:true,requireQrRenderer:true,envelopeTargets:[{id:candidate.assetId,questionId:1,displayOrdinal:1,intrinsicSvg:{width:384,height:320},sizeClasses:profileOrder,sourceAuthorityStatus:'CONTROLLED_SYNTHETIC_FIXTURE'}]}]};
+  const matrix={schemaVersion:'APMATH_PHASE4_RATIONAL_ARCHIVE_MATRIX_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',synthetic:false,engineSha256:fileRef(root,'archive/engine.html').sha256.slice(7),sources:[candidate.info],rows:[{...candidate.info,mode:'sol',viewport:'rational-'+fixture.kind+'-'+sizeClass,width:1440,height:1000,urlPath:archiveUrl(),requireLocalResources:true,requireQrRenderer:true,envelopeTargets:[{id:candidate.assetId,questionId:1,displayOrdinal:1,intrinsicSvg,sizeClasses:profileOrder,sourceAuthorityStatus:'CONTROLLED_SYNTHETIC_FIXTURE'}]}]};
   fs.writeFileSync(path.join(root,run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n',{flag:'wx'});
   const capture=await recordArchiveEvidence({run,attempt:'rational-'+sizeClass,blockExternalRequests:true});
   const captureFolder=path.join(root,run,'archive-render',`rational-${sizeClass}`),rowName=fs.readdirSync(captureFolder).find(name=>name.endsWith(`-sol-rational-${fixture.kind}-${sizeClass}.json`));assert.ok(rowName);
   const archiveRow=JSON.parse(fs.readFileSync(path.join(captureFolder,rowName),'utf8'));
+  assert.equal(capture.status,'PASS',JSON.stringify(capture.errors));assert.equal(archiveRow.status,'PASS',JSON.stringify(archiveRow.errors));
   assert.ok(archiveRow.id);assert.equal(archiveRow.network.policy,'LOCAL_ONLY');assert.deepEqual(archiveRow.network.externalRequests,[]);
   assert.equal(archiveRow.state.qrRendererAvailable,true);assert.equal(archiveRow.state.mathJaxSource,'local');assert.equal(archiveRow.state.mathJaxCdnFallback,false);
   assert.equal(archiveRow.state.targets[0].sizeClass,sizeClass);
@@ -100,34 +101,36 @@ async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,fixture
 test('rational pole and removable-hole candidates pass measured Archive profiles in controlled fixtures',async()=>{
   assert.ok(sourceBank.find(row=>row.id===1));
   const fixtures=[
-    {kind:'pole',numerator:['1','1'],denominator:['-1','1'],caption:'합성 유리함수 오버뷰',content:'합성 자료에서 함수 y=(x+1)/(x-1)의 그래프를 해석한다.',answer:'x=-1',solution:'실험용 유리함수 그래프 fixture.'},
-    {kind:'hole',numerator:['-1','1'],denominator:['-1','1'],caption:'합성 유리함수의 뚫린 점',content:'합성 자료에서 함수 y=(x-1)/(x-1)의 정의역과 그래프를 해석한다.',answer:'x=1 제외',solution:'실험용 removable-hole 그래프 fixture.'}
+    {kind:'pole',numerator:['1','1'],denominator:['-1','1'],axisTickValues:{x:['-5','5'],y:['0.5','1','1.5']},caption:'합성 유리함수 오버뷰',content:'합성 자료에서 함수 y=(x+1)/(x-1)의 그래프를 해석한다.',answer:'x=-1',solution:'실험용 유리함수 그래프 fixture.'},
+    {kind:'hole',numerator:['-1','1'],denominator:['-1','1'],axisTickValues:{x:['-5','5'],y:['0.5','1']},caption:'합성 유리함수의 뚫린 점',content:'합성 자료에서 함수 y=(x-1)/(x-1)의 정의역과 그래프를 해석한다.',answer:'x=1 제외',solution:'실험용 removable-hole 그래프 fixture.'}
   ];
   const outcomes=[];
   for(const fixture of fixtures){
-    const expectedNoSafeTickLabel=['pole','hole'].includes(fixture.kind);
-    const rawPlan={family:'rational',numerator:fixture.numerator,denominator:fixture.denominator,domain:[-4,4],viewport:[-4,4,-4,4],sourceDomain:{kind:'ALL_REALS'},requiredPoints:[]};
+    const rawPlan={family:'rational',numerator:fixture.numerator,denominator:fixture.denominator,domain:[-4,4],viewport:[-4,4,-4,4],sourceDomain:{kind:'ALL_REALS'},requiredPoints:[],axisTickValues:fixture.axisTickValues};
     const framed=(await pythonWorker({action:'frame_graph',graphPlan:rawPlan})).result;assert.equal(framed.policy,'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1');
     const runId=`phase4-rational-${fixture.kind}-${crypto.randomUUID()}`,examUid=path.basename(sourcePath,'.js'),candidate=await buildCandidate(framed.graphPlan,fixture,runId,examUid);
     const examRoot=`.tmp/archive/${runId}/${examUid}`,assetPath=`assets/images/${examUid}/q01-solution.svg`,svgPath=`${examRoot}/${assetPath}`;
     fs.mkdirSync(path.dirname(path.join(root,svgPath)),{recursive:true});fs.writeFileSync(path.join(root,svgPath),candidate.built.svg,{flag:'wx'});
     const svgRef=fileRef(root,svgPath);assert.equal(svgRef.sha256,'sha256:'+crypto.createHash('sha256').update(candidate.built.svg).digest('hex'));
-    const preflight=await captureArchive({runId:runId+'-preflight',examUid,svgPath,assetPath,sizeClass:'full',fixture});
+    const intrinsicSvg={width:candidate.spec.viewport.width,height:candidate.spec.viewport.height};
+    const preflight=await captureArchive({runId:runId+'-preflight',examUid,svgPath,assetPath,sizeClass:'full',fixture,intrinsicSvg});
     const profileAudits=[],profileScreenshots=[];
     for(const profile of profileOrder){
       const measured=preflight.profiles.find(item=>item.sizeClass===profile);assert.ok(measured?.imageRect?.width>0&&measured?.imageRect?.height>0);
-      const displayScale=measured.imageRect.width/384;
+      const displayScale=Math.min(measured.imageRect.width/intrinsicSvg.width,measured.imageRect.height/intrinsicSvg.height);
       const graph=(await pythonWorker({graphPlan:framed.graphPlan,svg:candidate.built.svg,transform:observerTransform(candidate.built.witness.coordinateModel,displayScale)},{script:observerScript})).result;
       const capture=await captureDisplayProfiles({svg:candidate.built.svg,profiles:[{sizeClass:profile,imageRect:measured.imageRect}]});
       const row=capture.rows[0],fonts=row.layout.labelMeasurements.map(label=>label.finalViewportCssFontPx).filter(Number.isFinite),minimumCssFontPx=fonts.length?Math.min(...fonts):null;
-      const requiredTickLabelFailures=row.layout.tickLabelEvidence?.filter(entry=>entry.status==='FAIL')||[];if(expectedNoSafeTickLabel)assert.ok(requiredTickLabelFailures.length,JSON.stringify({kind:fixture.kind,profile,layout:row.layout}));
-      const status=graph.status==='UNSUPPORTED'?'UNSUPPORTED':graph.status==='PASS'&&row.status==='PASS'&&minimumCssFontPx>=11&&requiredTickLabelFailures.length===0?'PASS':'FAIL';if(expectedNoSafeTickLabel)assert.notEqual(status,'PASS');
+      const requiredTickLabelFailures=row.layout.tickLabelEvidence?.filter(entry=>entry.status==='FAIL')||[];assert.deepEqual(requiredTickLabelFailures,[],JSON.stringify({kind:fixture.kind,profile,layout:row.layout}));
+      const status=graph.status==='UNSUPPORTED'?'UNSUPPORTED':graph.status==='PASS'&&row.status==='PASS'&&minimumCssFontPx>=11&&requiredTickLabelFailures.length===0?'PASS':'FAIL';
       profileAudits.push({sizeClass:profile,status,renderStatus:row.status,displayScale,imageRect:measured.imageRect,minimumCssFontPx,graphStatus:graph.status,graphErrors:graph.errors,layoutErrors:row.layout.errors,requiredTickLabelFailures,rationalOverview:graph.overview});
       const shotPath=path.join(root,examRoot,'visual-engine','production','profile-captures',fixture.kind,profile+'.png');fs.mkdirSync(path.dirname(shotPath),{recursive:true});fs.writeFileSync(shotPath,row.screenshot,{flag:'wx'});
       profileScreenshots.push({sizeClass:profile,path:path.relative(root,shotPath).replaceAll('\\','/'),bytes:row.screenshot.length,sha256:bytesSha(row.screenshot)});
     }
-    const passingProfile=profileOrder.slice(profileOrder.indexOf('medium')).find(profile=>profileAudits.find(row=>row.sizeClass===profile)?.status==='PASS'),selectionStatus=passingProfile?'QUALIFYING_PROFILE_SELECTED':'NO_QUALIFYING_PROFILE',selected=passingProfile||'full';
-    const final=await captureArchive({runId:runId+'-final',examUid,svgPath,assetPath,sizeClass:selected,fixture});
+    const passingProfile=profileOrder.slice(profileOrder.indexOf('medium')).find(profile=>profileAudits.find(row=>row.sizeClass===profile)?.status==='PASS'),selectionStatus=passingProfile?'QUALIFYING_PROFILE_SELECTED':'NO_QUALIFYING_PROFILE';
+    assert.ok(passingProfile,'NO_QUALIFYING_PROFILE:'+fixture.kind);
+    const selected=passingProfile;assert.equal(profileAudits.find(row=>row.sizeClass===selected)?.status,'PASS');
+    const final=await captureArchive({runId:runId+'-final',examUid,svgPath,assetPath,sizeClass:selected,fixture,intrinsicSvg});
     const result={schemaVersion:'APMATH_PHASE4_RATIONAL_FIXTURE_RESULT_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',runId,examUid,capability:'rational-spike-v1',family:fixture.kind,sourceDomain:{kind:'ALL_REALS'},rationalFeatures:framed.graphPlan.rationalFeatures,featurePolicy:framed.graphPlan.rationalFeaturePolicy,candidateLayoutStatus:candidate.built.witness.layout.status,unresolvedTickLabelIds:candidate.built.witness.layout.unresolved,independentMath:{modelAudit:candidate.modelAudit,staticAudit:candidate.staticAudit},frozenFragmentMeasurement:{path:candidate.measurementPath,receipt:candidate.measurementReceipt,bytes:fs.statSync(path.join(root,candidate.measurementPath)).size,sha256:fileRef(root,candidate.measurementPath).sha256},modelArtifacts:candidate.modelArtifacts,measuredPanelComposition:candidate.composition,candidateSvgRef:svgRef,candidateSvgSha256:svgRef.sha256,profileAudits,selectedSizeClass:selected,selectionStatus,archivePreflight:{run:preflight.run,status:preflight.capture.status,archiveRowStatus:preflight.archiveRow.status},actualArchive:{run:final.run,status:final.archiveRow.status,captureStatus:final.capture.status,rowId:final.archiveRow.id,loadedAsset:final.archiveRow.state.targets[0],network:final.archiveRow.network,mathJaxSource:final.archiveRow.state.mathJaxSource,mathJaxCdnFallback:final.archiveRow.state.mathJaxCdnFallback},profileScreenshots,qualificationStatus:'NOT_QUALIFIED',productionAuthorized:false};
     const resultPath=path.join(root,examRoot,'visual-engine','production',fixture.kind+'-publication-result.json');fs.mkdirSync(path.dirname(resultPath),{recursive:true});fs.writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
     outcomes.push({kind:fixture.kind,selectedSizeClass:selected,selectionStatus,profileAudits:profileAudits.map(row=>({sizeClass:row.sizeClass,status:row.status,minimumCssFontPx:row.minimumCssFontPx,graphStatus:row.graphStatus,graphErrors:row.graphErrors,layoutErrors:row.layoutErrors,requiredTickLabelFailures:row.requiredTickLabelFailures})),archiveStatus:final.capture.status,resultPath:path.relative(root,resultPath).replaceAll('\\','/')});

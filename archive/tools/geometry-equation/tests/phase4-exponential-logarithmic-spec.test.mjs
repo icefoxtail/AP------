@@ -37,11 +37,14 @@ test('exponential spec publishes a reference point and horizontal asymptote',asy
 });
 
 test('logarithmic spec preserves natural domain, exact reference and boundary cue',async()=>{
-  const result=await preparedSpec('logarithmic-affine-spike-v1',{family:'logarithmic-affine',coefficients:['1','1','0','0'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'},domain:[.1,4],viewport:[-1,5,-5,5]},'Natural logarithm overview');
+  const axisTickValues={x:['1','2','3','4'],y:['-2','-1','1']};
+  const result=await preparedSpec('logarithmic-affine-spike-v1',{family:'logarithmic-affine',coefficients:['1','1','0','0'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'},domain:[.1,4],viewport:[-1,5,-5,5],axisTickValues},'Natural logarithm overview');
   assert.equal(result.observation.status,'PASS',JSON.stringify(result.observation.errors));
   assert.deepEqual(result.plan.logarithmicFeatures.referencePoint,{x:'1',y:'0',argument:'1'});
   assert.ok(result.plan.domain[0]>0);
   assert.ok(result.spec.objects.find(object=>object.id==='f').expression.includes('log('));
+  assert.deepEqual(result.spec.displayFacts.axisTickValues,axisTickValues);
+  assert.deepEqual([result.spec.viewport.width,result.spec.viewport.height],[610,420]);
   assert.ok(result.spec.objects.some(object=>object.id==='reference-value'&&object.kind==='EQUATION_LABEL'));
   assert.ok(result.prepared.prepared.primitives.some(primitive=>primitive.role==='logarithmic-domain-boundary'&&primitive.dash==='5 4'));
   assert.ok(result.prepared.prepared.primitives.some(primitive=>primitive.role==='logarithmic-reference'&&primitive.state==='CLOSED'));

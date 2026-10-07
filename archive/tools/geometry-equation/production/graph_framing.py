@@ -64,10 +64,16 @@ def _fit_cubic_quartic(plan,coefficients):
             scales.append(scale)
     characteristic=max([1.0,*scales])
     radius=max(feature_extent*1.2,characteristic*1.1,1.0)
-    # Keep the coordinate origin as the visual center. Translation-heavy or
-    # sub-resolution features then fail the independent profile gate rather
-    # than being silently recentered into a different educational frame.
-    lo,hi=-radius,radius
+    # Keep the coordinate origin in frame. Quartic roots/critical points can
+    # sit close to one tail boundary (for example x^4-x has its right root at
+    # x=1); reserve common display-only room beyond the outer feature so unit
+    # ticks remain distinct from both the frame edge and the curve.
+    if degree==4:
+        tail_margin=max(.4,feature_extent*.25)
+        lo=min(-radius,min(coordinates)-tail_margin)
+        hi=max(radius,max(coordinates)+tail_margin)
+    else:
+        lo,hi=-radius,radius
     if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
     def evaluate(value):
         result=float(polynomial.eval(S.Rational(str(value))))
@@ -177,7 +183,11 @@ def _fit_rational_overview(plan):
         required_x.append(float(exact_x));required_y.append(float(point['y']))
     singularity_x=float(pole_or_hole);root_x=float(numerator_root)
     if any(not math.isfinite(value) or abs(value)>1e6 for value in (singularity_x,root_x,float(horizontal))):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
-    radius=max(8.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*4,*[abs(px-singularity_x)*1.2 for px in required_x])
+    # Keep the singularity, intercept and unit ticks in one readable local
+    # overview. A very wide all-real display compresses the y-axis tick column
+    # against both the nearby branch and the pole cue without adding useful
+    # information about the source function.
+    radius=max(6.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*1.2+1.0,*[abs(px-singularity_x)*1.2 for px in required_x])
     lo,hi=singularity_x-radius,singularity_x+radius
     def evaluate_exact(x_value):
         exact_x=Fraction(str(x_value));den=numerator[0]*0+denominator[0]+denominator[1]*exact_x
@@ -401,7 +411,7 @@ def _fit_logarithmic_affine_overview(plan):
         result=float(a)*math.log(argument)+float(c)
         if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE')
         return result
-    start_y=evaluate(lo);end_y=evaluate(hi);reference_y=float(c);low=min(0.0,start_y,end_y,reference_y);high=max(0.0,start_y,end_y,reference_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=.04*(hi-lo)
+    start_y=evaluate(lo);end_y=evaluate(hi);reference_y=float(c);low=min(0.0,start_y,end_y,reference_y);high=max(0.0,start_y,end_y,reference_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=max(.16*(hi-lo),.5/rate)
     viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
     features={'schemaVersion':'LOGARITHMIC_AFFINE_FEATURES_v1','naturalDomainBoundaryX':_fraction_text(root),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':_fraction_text(reference),'y':_fraction_text(c),'argument':'1'},'monotonicity':'INCREASING' if a*k>0 else 'DECREASING','sampleBoundaryArgument':'1/8','sampleDomain':[lo,hi]}
     policy={'schemaVersion':'LOGARITHMIC_AFFINE_FEATURE_POLICY_v1','sourceDomain':'kx+b>0','domainBoundaryPolicy':'NATURAL_OPEN_BOUNDARY','referenceArgument':'1','sampleBoundaryArgument':'1/8','boundaryCue':'DASHED_VERTICAL_LINE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32}

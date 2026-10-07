@@ -87,28 +87,29 @@ async function buildFinalSvg(graphPlan,family,coefficients,runId,examUid){
     composition={repairInput,repairInputSha256,repairOutput,repairOutputSha256,priorPanelPx,selectedPanelPx,repairReason:'MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW'};
   }
   const built=(await pythonWorker({action:'build',spec,measurements,fragments})).result;
-  assert.ok(['PASS','POLISH_REQUIRED'].includes(built.witness.layout.status),JSON.stringify(built.witness.layout));
+  assert.equal(built.witness.layout.status,'PASS',JSON.stringify(built.witness.layout));
+  assert.deepEqual(built.witness.layout.unresolved,[]);
   const staticAudit=(await pythonWorker({graphPlan,svg:built.svg,transform:observerTransform(built.witness.coordinateModel,1)},{script:observerScript})).result;
   assert.equal(staticAudit.status,'PASS',JSON.stringify(staticAudit));
-  const expectedNoSafeTickLabel=['cubic','quartic'].includes(family);
-  assert.equal(built.witness.layout.status,expectedNoSafeTickLabel?'POLISH_REQUIRED':'PASS',JSON.stringify(built.witness.layout));
+  assert.equal(built.witness.layout.status,'PASS',JSON.stringify(built.witness.layout));
   const modelRoot=path.join(root,`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}`);fs.mkdirSync(modelRoot,{recursive:true});
   const modelArtifacts={graphPlan:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/graph-plan.json`,value:graphPlan},graphModelSvg:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/graph-model.svg`,value:graphModel.svg},graphModelTransform:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/graph-model-transform.json`,value:graphModel.transform},modelAudit:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/model-audit.json`,value:modelAudit},visualSpec:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/visual-spec.json`,value:spec},finalSvg:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/final.svg`,value:built.svg},staticAudit:{path:`.tmp/archive/${runId}/${examUid}/visual-engine/production/p4-model/${family}/static-audit.json`,value:staticAudit}};
   for(const artifact of Object.values(modelArtifacts)){const target=path.join(root,artifact.path);fs.writeFileSync(target,typeof artifact.value==='string'?artifact.value:JSON.stringify(artifact.value,null,2)+'\n',{flag:'wx'});}
   return {svg:built.svg,graphModel,modelAudit,spec,prepared,built,staticAudit,fragments,measurements,measurementReceipt,measurementPath,composition,modelArtifacts};
 }
 
-async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,family,coefficients,content,answer,solution}){
+async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,family,coefficients,content,answer,solution,intrinsicSvg}){
   const run=`.tmp/archive/${runId}/${examUid}/visual-engine/production/archive-${sizeClass}`;
   fs.mkdirSync(path.join(root,run),{recursive:true});
   const candidate=patchBank(runId,examUid,svgPath,assetPath,sizeClass,content,answer,solution);
-  const envelopeTarget={id:candidate.assetId,questionId:1,displayOrdinal:1,intrinsicSvg:{width:384,height:320},sizeClasses:profileOrder,sourceAuthorityStatus:'CONTROLLED_SYNTHETIC_FIXTURE'};
+  const envelopeTarget={id:candidate.assetId,questionId:1,displayOrdinal:1,intrinsicSvg,sizeClasses:profileOrder,sourceAuthorityStatus:'CONTROLLED_SYNTHETIC_FIXTURE'};
   const row={...candidate.info,mode:'sol',viewport:'phase4-'+family+'-'+sizeClass,width:1440,height:1000,urlPath:archiveUrl(),requireLocalResources:true,requireQrRenderer:true,envelopeTargets:[envelopeTarget]};
   const matrix={schemaVersion:'APMATH_PHASE4_POLY34_ARCHIVE_MATRIX_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',synthetic:false,engineSha256:fileRef(root,'archive/engine.html').sha256.slice(7),sources:[candidate.info],rows:[row]};
   fs.writeFileSync(path.join(root,run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n',{flag:'wx'});
   const capture=await recordArchiveEvidence({run,attempt:'phase4-'+sizeClass,blockExternalRequests:true});
   const captureFolder=path.join(root,run,'archive-render','phase4-'+sizeClass);
   const archiveRow=JSON.parse(fs.readFileSync(path.join(captureFolder,candidate.info.id+'-sol-phase4-'+family+'-'+sizeClass+'.json'),'utf8'));
+  assert.equal(capture.status,'PASS',JSON.stringify(capture.errors));assert.equal(archiveRow.status,'PASS',JSON.stringify(archiveRow.errors));
   assert.ok(archiveRow.id);assert.equal(archiveRow.network.policy,'LOCAL_ONLY');assert.deepEqual(archiveRow.network.externalRequests,[]);
   assert.equal(archiveRow.state.qrRendererAvailable,true);assert.equal(archiveRow.state.mathJaxSource,'local');assert.equal(archiveRow.state.mathJaxCdnFallback,false);
   assert.equal(archiveRow.state.targets[0].sizeClass,sizeClass);
@@ -124,19 +125,18 @@ async function captureArchive({runId,examUid,svgPath,assetPath,sizeClass,family,
 test('cubic/quartic final SVGs pass the measured Archive CSS/profile publication boundary in a synthetic fixture',async()=>{
   assert.ok(sourceQuestion);
   const fixtures=[
-    {family:'cubic',coefficients:['0','-3','0','1'],content:'합성 자료에서 함수 y=x³-3x의 그래프를 해석한다.',answer:'x=0, ±√3',solution:'실험용 cubic 그래프 fixture.'},
-    {family:'quartic',coefficients:['0','-1','0','0','1'],content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
+    {family:'cubic',coefficients:['0','-3','0','1'],axisTickValues:{x:['-2','-1','1','2'],y:['-2','2']},content:'합성 자료에서 함수 y=x³-3x의 그래프를 해석한다.',answer:'x=0, ±√3',solution:'실험용 cubic 그래프 fixture.'},
+    {family:'quartic',coefficients:['0','-1','0','0','1'],axisTickValues:{x:['-1','-0.5','0.5','1'],y:['-1','1','2','3']},content:'합성 자료에서 함수 y=x⁴-x의 그래프를 해석한다.',answer:'x=0, 1',solution:'실험용 quartic 그래프 fixture.'}
   ];
   const outcomes=[];
   for(const fixture of fixtures){
-    const rawPlan={family:'polynomial',coefficients:fixture.coefficients,domain:[-1,1],viewport:[-1,1,-1,1],sourceDomain:{kind:'ALL_REALS'},requiredPoints:[]};
+    const rawPlan={family:'polynomial',coefficients:fixture.coefficients,domain:[-1,1],viewport:[-1,1,-1,1],sourceDomain:{kind:'ALL_REALS'},requiredPoints:[],axisTickValues:fixture.axisTickValues};
     const framed=(await pythonWorker({action:'frame_graph',graphPlan:rawPlan})).result;
     assert.equal(framed.policy,'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1');assert.equal(framed.sourceDomainPreserved,true);
     const graphPlan=framed.graphPlan;
     const runId='phase4-poly34-'+fixture.family+'-'+crypto.randomUUID();
     const examUid=path.basename(sourcePath,'.js');
     const candidate=await buildFinalSvg(graphPlan,fixture.family,fixture.coefficients,runId,examUid);
-    const expectedNoSafeTickLabel=['cubic','quartic'].includes(fixture.family);
     const examRoot=`.tmp/archive/${runId}/${examUid}`;
     const assetPath=`assets/images/${examUid}/q01-solution.svg`;
     const svgRelative=`${examRoot}/${assetPath}`;
@@ -144,21 +144,21 @@ test('cubic/quartic final SVGs pass the measured Archive CSS/profile publication
     fs.writeFileSync(path.join(root,svgRelative),candidate.svg,{flag:'wx'});
     const svgRef=fileRef(root,svgRelative);
     const preflightId=runId+'-preflight';
-    const preflight=await captureArchive({runId:preflightId,examUid,svgPath:svgRelative,assetPath,sizeClass:'full',family:fixture.family,coefficients:fixture.coefficients,content:fixture.content,answer:fixture.answer,solution:fixture.solution});
+    const intrinsicSvg={width:candidate.spec.viewport.width,height:candidate.spec.viewport.height};
+    const preflight=await captureArchive({runId:preflightId,examUid,svgPath:svgRelative,assetPath,sizeClass:'full',family:fixture.family,coefficients:fixture.coefficients,content:fixture.content,answer:fixture.answer,solution:fixture.solution,intrinsicSvg});
     const perProfile=[];
     const screenshotProfiles=[];
     for(const profile of profileOrder){
       const measured=preflight.envelopeProfiles.find(row=>row.sizeClass===profile);
       assert.ok(measured?.imageRect&&measured.imageRect.width>0&&measured.imageRect.height>0);
-      const displayScale=measured.imageRect.width/384;
+      const displayScale=Math.min(measured.imageRect.width/intrinsicSvg.width,measured.imageRect.height/intrinsicSvg.height);
       const graphResult=(await pythonWorker({graphPlan,svg:candidate.svg,transform:observerTransform(candidate.built.witness.coordinateModel,displayScale)},{script:observerScript})).result;
       const render=await captureDisplayProfiles({svg:candidate.svg,profiles:[{sizeClass:profile,imageRect:measured.imageRect}]});
       const row=render.rows[0];const cssFonts=row.layout.labelMeasurements.map(label=>label.finalViewportCssFontPx).filter(Number.isFinite);
       const minimumCssFontPx=cssFonts.length?Math.min(...cssFonts):null;
       const requiredTickLabelFailures=row.layout.tickLabelEvidence?.filter(item=>item.status==='FAIL')||[];
-      if(expectedNoSafeTickLabel)assert.ok(requiredTickLabelFailures.length,JSON.stringify({family:fixture.family,profile,layout:row.layout}));
       const status=graphResult.status==='UNSUPPORTED'?'UNSUPPORTED':graphResult.status==='PASS'&&row.status==='PASS'&&minimumCssFontPx>=11&&requiredTickLabelFailures.length===0?'PASS':'FAIL';
-      if(expectedNoSafeTickLabel)assert.notEqual(status,'PASS');
+      assert.deepEqual(requiredTickLabelFailures,[],JSON.stringify({family:fixture.family,profile,layout:row.layout}));
       perProfile.push({sizeClass:profile,status,renderStatus:row.status,displayScale,actualImageRect:measured.imageRect,minimumCssFontPx,graphStatus:graphResult.status,graphErrors:graphResult.errors,layoutErrors:row.layout.errors,requiredTickLabelFailures});
       const capturePath=path.join(root,examRoot,'visual-engine','production','profile-captures',fixture.family,profile+'.png');
       fs.mkdirSync(path.dirname(capturePath),{recursive:true});fs.writeFileSync(capturePath,row.screenshot,{flag:'wx'});
@@ -167,10 +167,12 @@ test('cubic/quartic final SVGs pass the measured Archive CSS/profile publication
     const requestedIndex=profileOrder.indexOf('medium');
     const passingProfile=profileOrder.slice(requestedIndex).find(profile=>perProfile.find(row=>row.sizeClass===profile)?.status==='PASS');
     const selectionStatus=passingProfile?'QUALIFYING_PROFILE_SELECTED':'NO_QUALIFYING_PROFILE';
-    const selected=passingProfile||'full';
+    assert.ok(passingProfile,'NO_QUALIFYING_PROFILE:'+fixture.family);
+    const selected=passingProfile;
     const finalRunId=runId+'-final';
-    const final=await captureArchive({runId:finalRunId,examUid,svgPath:svgRelative,assetPath,sizeClass:selected,family:fixture.family,coefficients:fixture.coefficients,content:fixture.content,answer:fixture.answer,solution:fixture.solution});
-    const result={schemaVersion:'APMATH_PHASE4_CUBIC_QUARTIC_FIXTURE_RESULT_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',runId,examUid,family:fixture.family,coefficients:fixture.coefficients,sourceDomain:{kind:'ALL_REALS'},overviewPolicy:framed.policy,featureInventory:graphPlan.overviewFeatures,candidateLayoutStatus:candidate.built.witness.layout.status,unresolvedTickLabelIds:candidate.built.witness.layout.unresolved,independentMath:{status:candidate.modelAudit.status,topology:candidate.modelAudit.topology,overview:candidate.modelAudit.overview},frozenFragmentMeasurement:{path:candidate.measurementPath,receipt:candidate.measurementReceipt,bytes:fs.statSync(path.join(root,candidate.measurementPath)).size,sha256:fileRef(root,candidate.measurementPath).sha256},modelArtifacts:candidate.modelArtifacts,measuredPanelComposition:candidate.composition,candidateSvgRef:svgRef,candidateSvgSha256:svgRef.sha256,profileAudits:perProfile,selectedSizeClass:selected,selectionStatus,selectionPolicy:'smallest passing class at or above medium; full is capture fallback only',archivePreflight:{run:preflight.run,captureStatus:preflight.capture.status,archiveRowStatus:preflight.archiveRow.status,assetResponseSha256:preflight.archiveRow.responses.find(response=>decodeURIComponent(new URL(response.url).pathname)==='/archive/'+assetPath)?.sha256},actualArchive:{run:final.run,status:final.archiveRow.status,captureStatus:final.capture.status,rowId:final.archiveRow.id,loadedAsset:final.archiveRow.state.targets[0],network:final.archiveRow.network,qrResponse:final.archiveRow.responses.find(response=>decodeURIComponent(new URL(response.url).pathname).endsWith('/archive/vendor/qrious/qrious.min.js')),mathJaxSource:final.archiveRow.state.mathJaxSource,mathJaxCdnFallback:final.archiveRow.state.mathJaxCdnFallback},profileScreenshots:screenshotProfiles,qualificationStatus:'NOT_QUALIFIED',productionAuthorized:false};
+    assert.equal(perProfile.find(row=>row.sizeClass===selected)?.status,'PASS');
+    const final=await captureArchive({runId:finalRunId,examUid,svgPath:svgRelative,assetPath,sizeClass:selected,family:fixture.family,coefficients:fixture.coefficients,content:fixture.content,answer:fixture.answer,solution:fixture.solution,intrinsicSvg});
+    const result={schemaVersion:'APMATH_PHASE4_CUBIC_QUARTIC_FIXTURE_RESULT_v1',classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',runId,examUid,family:fixture.family,coefficients:fixture.coefficients,sourceDomain:{kind:'ALL_REALS'},overviewPolicy:framed.policy,featureInventory:graphPlan.overviewFeatures,candidateLayoutStatus:candidate.built.witness.layout.status,unresolvedTickLabelIds:candidate.built.witness.layout.unresolved,independentMath:{status:candidate.modelAudit.status,topology:candidate.modelAudit.topology,overview:candidate.modelAudit.overview},frozenFragmentMeasurement:{path:candidate.measurementPath,receipt:candidate.measurementReceipt,bytes:fs.statSync(path.join(root,candidate.measurementPath)).size,sha256:fileRef(root,candidate.measurementPath).sha256},modelArtifacts:candidate.modelArtifacts,measuredPanelComposition:candidate.composition,candidateSvgRef:svgRef,candidateSvgSha256:svgRef.sha256,profileAudits:perProfile,selectedSizeClass:selected,selectionStatus,selectionPolicy:'smallest passing profile at or above medium',archivePreflight:{run:preflight.run,captureStatus:preflight.capture.status,archiveRowStatus:preflight.archiveRow.status,assetResponseSha256:preflight.archiveRow.responses.find(response=>decodeURIComponent(new URL(response.url).pathname)==='/archive/'+assetPath)?.sha256},actualArchive:{run:final.run,status:final.archiveRow.status,captureStatus:final.capture.status,rowId:final.archiveRow.id,loadedAsset:final.archiveRow.state.targets[0],network:final.archiveRow.network,qrResponse:final.archiveRow.responses.find(response=>decodeURIComponent(new URL(response.url).pathname).endsWith('/archive/vendor/qrious/qrious.min.js')),mathJaxSource:final.archiveRow.state.mathJaxSource,mathJaxCdnFallback:final.archiveRow.state.mathJaxCdnFallback},profileScreenshots:screenshotProfiles,qualificationStatus:'NOT_QUALIFIED',productionAuthorized:false};
     const resultPath=path.join(root,examRoot,'visual-engine','production',fixture.family+'-publication-result.json');fs.mkdirSync(path.dirname(resultPath),{recursive:true});fs.writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
     outcomes.push({family:fixture.family,selectedSizeClass:selected,selectionStatus,profiles:perProfile,archiveStatus:final.capture.status,resultPath:path.relative(root,resultPath).replaceAll('\\','/')});
   }

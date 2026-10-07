@@ -8,8 +8,8 @@ import {specFor} from '../production/phase2.mjs';
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 
-async function prepareRational({numerator,denominator,caption}){
-  const request={family:'rational',numerator,denominator,domain:[-4,4],viewport:[-4,4,-4,4],sourceDomain:{kind:'ALL_REALS'}};
+async function prepareRational({numerator,denominator,caption,axisTickValues}){
+  const request={family:'rational',numerator,denominator,domain:[-4,4],viewport:[-4,4,-4,4],sourceDomain:{kind:'ALL_REALS'},...(axisTickValues?{axisTickValues}:{})};
   const framed=(await pythonWorker({action:'frame_graph',graphPlan:request})).result;
   assert.equal(framed.policy,'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1');
   assert.equal(framed.sourceDomainPreserved,true);
@@ -29,9 +29,12 @@ test('rational is an explicit experimental capability with its own fingerprinted
 });
 
 test('pole plan materializes separate exact pole and horizontal-asymptote cues',async()=>{
-  const {graphModel,spec,prepared}=await prepareRational({numerator:['1','1'],denominator:['-1','1'],caption:'합성 유리함수 그래프'});
+  const axisTickValues={x:['-5','5'],y:['0.5','1','1.5']};
+  const {graphModel,spec,prepared}=await prepareRational({numerator:['1','1'],denominator:['-1','1'],caption:'합성 유리함수 그래프',axisTickValues});
   assert.match(spec.objects.find(obj=>obj.id==='f').expression,/\)\/\(/);
   assert.equal(spec.displayFacts.rationalGraphFeatures.singularity.kind,'VERTICAL_POLE');
+  assert.deepEqual(spec.displayFacts.axisTickValues,axisTickValues);
+  assert.deepEqual([spec.viewport.width,spec.viewport.height,spec.viewport.panel],[520,420,140]);
   const asymptotes=prepared.prepared.primitives.filter(item=>item.role==='asymptote');
   assert.deepEqual(asymptotes.map(item=>item.id).sort(),['rational-asymptote-horizontal','rational-asymptote-vertical']);
   assert.ok(asymptotes.every(item=>item.dash));
@@ -40,8 +43,10 @@ test('pole plan materializes separate exact pole and horizontal-asymptote cues',
 });
 
 test('cancelled denominator root materializes a white open hole and preserves its exclusion',async()=>{
-  const {graphModel,spec,prepared}=await prepareRational({numerator:['-1','1'],denominator:['-1','1'],caption:'합성 유리함수의 뚫린 점'});
+  const axisTickValues={x:['-5','5'],y:['0.5','1']};
+  const {graphModel,spec,prepared}=await prepareRational({numerator:['-1','1'],denominator:['-1','1'],caption:'합성 유리함수의 뚫린 점',axisTickValues});
   assert.equal(spec.displayFacts.rationalGraphFeatures.singularity.kind,'REMOVABLE_HOLE');
+  assert.deepEqual(spec.displayFacts.axisTickValues,axisTickValues);
   assert.equal(spec.displayFacts.rationalGraphPolicy.holeMarkerRadiusIntrinsicPx,4);
   assert.equal(spec.displayFacts.rationalGraphPolicy.minimumHoleMarkerDiameterCssPx,4.5);
   assert.ok(spec.objects.some(obj=>obj.id==='removable-hole-label'&&obj.text==='뚫린 점'));
