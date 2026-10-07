@@ -1,0 +1,44 @@
+{
+  "schema": "JS_ARCHIVE_R2_FREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "adjudications": [
+    {
+      "qid": 2,
+      "result": "ENCODING_CORRECTION",
+      "originalFrozenAnswer": "③",
+      "storedAnswer": "①",
+      "correctedIndependentAnswer": "①",
+      "reason": "The complete frozen rationale says only statement ① is false, while the frozen selection field says ③. OM=ON makes AB=CD and AM=CN; since M,N bisect the chords, 2AM=CD is true. Preserve the freeze and record the answer-label correction in this same R2 session."
+    },
+    {
+      "qid": 14,
+      "result": "TRUE_ITEM_HOLD_UNDERDETERMINED",
+      "originalFrozenAnswer": "③ 30°",
+      "storedAnswer": "EMPTY",
+      "correctedIndependentAnswer": "OPEN_HOLD",
+      "reason": "Source page 3 fixes arc AD=140° from the 110° tangent-chord angle and arc BC=80° from angle BDC=40°, while x=angle DBC=arc DC/2. The remaining condition is arc AB+arc DC=140°, so arc DC is not fixed. Valid assignments (AB,BC,CD,DA)=(80,100,40,140) give x=20° and (100,80,60,140) give x=30°. The HWP key says ③ (30°) but gives no additional condition or derivation. Missing decisive fact: a separate measure fixing arc AB or arc CD, or an equivalent angle/arc relation."
+    },
+    {
+      "qid": 11,
+      "result": "MATCH_SOURCE_KEY_CONFLICT",
+      "frozenAnswer": "① 28°",
+      "storedAnswer": "①",
+      "sourceHwpKeyAnswer": "⑤ 42°",
+      "reason": "Full source page 2 confirms x=angle BDC. Let arc BC=t and arc AD=3t/2. Intersecting chords give 70=(t+3t/2)/2, so t=56 and x=t/2=28°. The HWP answer key value 42° conflicts with the source geometry; the current candidate answer ① (28°) is supported."
+    }
+  ],
+  "sourcePdfPath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\middle\\m3\\20_이수중_2학기_기말_중3_기출\\source\\2020_이수중3_수학_2기말.pdf",
+  "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+  "sourceHwpPath": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(4)2기말\\중3\\2020_이수중3_수학_2기말_정답.hwp",
+  "sourceHwpSha256": "6f6e7814aa3adbaed75f2e119dc2a10f731d7d2e14bd77a6dcbd1fc168d83a8b",
+  "answerKeyEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\source-review\\answer-key-extract.json",
+  "answerKeyEvidenceSha256": "f105f3a5d6769a0e125eab8834187be9923e8f65f34092a4d5f207ed5e4353a4",
+  "fullPageLookup": "Full source PDF page 2 and page 3 inspected; q14 source image and zoom inspected. HWP answer-key extraction checked against source bytes. No q14-specific derivation or missing condition appears in the supplied source.",
+  "minimumRepairAttempts": "Checked the complete student input, q14 diagram, native PDF page 3, source question image, and answer HWP key. No minimal correction to supplied data makes x unique; inventing a value or solution would not be source-grounded.",
+  "nextAction": "ROOT direct replacement of the true q14 item HOLD, then qid 14 fresh R1/R2 on changed student input.",
+  "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.blind-freeze.json",
+  "freezeSha256": "058058b1c3c9ca4bb1e169058d69f03cd011c9bcbb2130cc5124448c2d1dd6ce",
+  "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.postfreeze-disclosure.json",
+  "postfreezeDisclosureSha256": "ef7f93e181fa9363cf355ef5f22779e745e36d1e9221ebdca90813183af2124c"
+}

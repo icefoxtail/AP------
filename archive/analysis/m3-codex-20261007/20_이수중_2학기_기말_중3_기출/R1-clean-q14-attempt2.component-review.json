@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_COMPONENT_REVIEW_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scopeQids": [
+    14
+  ],
+  "reviewer": "CODEX independent R1 clean attempt 2",
+  "source": {
+    "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+    "expectedHead": "d1c07101d7bde3ca7331454b0f70ab170fc72d64",
+    "artifactBlobSha1": "fccf1b7e32441fedb270081671dc3b62048b7602",
+    "artifactRawSha256": "79f6cdf0e118b805c9ba1bc08be5486ba1418128926c118486a6674d061d012a",
+    "studentBundleSha256": "ee6fe1a38b33b0c6e26efb5ceafd16996ff5614024bd750cb197de6b7ea00c55",
+    "previewPngSha256": "5f1a68a3ac4dae35781a627d31a85007d7dd2507fafc1b553bc8fbc2288ac033",
+    "svgSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee"
+  },
+  "freeze": {
+    "visualPhysicallyOpenedBeforeFreeze": true,
+    "sha256": "23963e8aead2d93fe8effcb96c225698ca3ffc8ddce5753ea0822605b4819c2f",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.independent-freeze.json"
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.postfreeze-disclosure.json",
+    "sha256": "bfee1cd09491b777413a1039eda907ffcb7c69632992ff84a8daba26b6b14d9d"
+  },
+  "answerComparison": {
+    "independentAnswer": "25 degrees",
+    "storedAnswer": "②",
+    "independentChoice": "②",
+    "match": true
+  },
+  "axes": {
+    "math": {
+      "status": "PASS",
+      "reason": "Triangle ACD gives angle ACD=25 degrees; cyclic order places B,C on the same side of chord AD, so inscribed angles ABD and ACD are equal."
+    },
+    "choices": {
+      "status": "PASS",
+      "reason": "Five distinct degree options; only 25 degrees satisfies the independently solved result; distractors are numerically plausible."
+    },
+    "questionLayout": {
+      "status": "REPAIR_REQUIRED",
+      "reason": "One continuous prompt combines cyclic-order condition, angle data, and the requested quantity. Under canonical question-layout meaning-boundary guidance, expose those boundaries with minimal breaks while preserving all text and math.",
+      "recommendedChangedLocus": "questionBank[qid=14].content layout only: insert \\n after the cyclic-order sentence and after the angle-data clause before the question; keep formulas/conditions intact."
+    },
+    "solutionLayout": {
+      "status": "PASS",
+      "reason": "Board sequence separates triangle angle sum, each calculation step, same-side/same-chord theorem rationale, and conclusion; no compressed calculation or redundant verification paragraph."
+    },
+    "meta": {
+      "status": "PASS",
+      "reason": "M3 2015 course, M3-06 circle properties, inscribed-angle subunit, circle-angle relation/composite template, and sequential integration fit the actual reasoning."
+    },
+    "difficulty": {
+      "status": "PASS",
+      "reason": "Two linked middle-school steps (triangle sum then same-chord inscribed angles) support level=중 / bucket=3; medium confidence is appropriate."
+    },
+    "visualSvg": {
+      "status": "PASS",
+      "reason": "Physically opened q14-replacement-render.png shows cyclic A-B-C-D, chords AC and DB, 115-degree angle CAD, 40-degree angle ADC, and x at ABD. Labels and geometry match the replacement stem; problem visual is necessary, and a separate solution image is unnecessary."
+    }
+  },
+  "replacementFidelity": {
+    "status": "PASS",
+    "reason": "Q14 is explicitly recorded as ROOT-authorized QUESTION_ONLY replacement after original source truth was established as underdetermined. q14.svg is byte-identical to replacement SVG; corrected reference and provenance fields align.",
+    "refCorrection": "questionBank[qid=14].image only, byte-identical SVG copy",
+    "sourceTruthClassification": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED"
+  },
+  "overallDisposition": "REVISE_REQUIRED",
+  "nextRequiredAction": "Original R1 owner applies the two content-only layout breaks, verifies text/choice atom parity and current SVG reference, then rebinds Q14 component evidence. No new math freeze is needed; no solution write occurred, so solution Golden/Negative preflight was not triggered.",
+  "actualExamRender": "NOT_RUN_ROOT_WAIVER; the opened PNG is the pre-existing rendering of the bound SVG, not an exam-engine render.",
+  "changedProductionLoci": [],
+  "validatorDisposition": "NOT_RUN_COMPONENT_ONLY",
+  "validatorIssues": [
+    "Question layout needs minimal meaning-boundary line breaks."
+  ]
+}

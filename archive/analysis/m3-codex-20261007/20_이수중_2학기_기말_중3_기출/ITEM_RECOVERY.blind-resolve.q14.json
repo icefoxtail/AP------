@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_BLIND_RESOLVE_V1",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "qid": 14,
+  "answerFreezeOrder": "NEW_STUDENT_BODY_AND_CHOICES_THEN_SOLVE",
+  "artifactRawSha256": "79f6cdf0e118b805c9ba1bc08be5486ba1418128926c118486a6674d061d012a",
+  "artifactSha": "fccf1b7e32441fedb270081671dc3b62048b7602",
+  "studentInput": {
+    "content": "원 O에 내접하는 사각형 ABCD의 꼭짓점은 원주 위에 A, B, C, D 순서로 놓여 있다. \\angle CAD=115^\\circ, \\angle ADC=40^\\circ일 때, \\angle ABD=x의 크기는? (4점)",
+    "choices": [
+      "$20^\\circ$",
+      "$25^\\circ$",
+      "$30^\\circ$",
+      "$35^\\circ$",
+      "$40^\\circ$"
+    ],
+    "image": "assets/images/20_이수중_2학기_기말_중3_기출/q14.svg",
+    "imageSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee"
+  },
+  "independentDerivation": {
+    "triangle": "∠ACD=180°−∠CAD−∠ADC=180°−115°−40°=25°.",
+    "circle": "Points B and C lie on the same segment of chord AD; ∠ABD and ∠ACD subtend the same chord AD, so they are equal.",
+    "answer": "∠ABD=x=25°."
+  },
+  "choiceSweep": [
+    {
+      "choice": "① 20°",
+      "status": "INCORRECT",
+      "errorPath": "Halve the 40° inscribed angle as though it were a central/arc conversion."
+    },
+    {
+      "choice": "② 25°",
+      "status": "CORRECT",
+      "errorPath": "Matches both the triangle angle sum and equal same-chord inscribed angle."
+    },
+    {
+      "choice": "③ 30°",
+      "status": "INCORRECT",
+      "errorPath": "Misread ∠CAD=115° as 110° before applying the triangle sum."
+    },
+    {
+      "choice": "④ 35°",
+      "status": "INCORRECT",
+      "errorPath": "Double 40° to 80° as an arc value, then subtract 80° from 115° as if both were triangle angles."
+    },
+    {
+      "choice": "⑤ 40°",
+      "status": "INCORRECT",
+      "errorPath": "Copy the marked ∠ADC instead of solving the other triangle angle and transferring it to the equal inscribed angle."
+    }
+  ],
+  "answerCardinality": "PASS; five distinct numeric choices, exactly one equals 25°.",
+  "visualParity": {
+    "status": "PASS",
+    "svgSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee",
+    "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/source-review/q14-replacement-render.png",
+    "renderSha256": "5f1a68a3ac4dae35781a627d31a85007d7dd2507fafc1b553bc8fbc2288ac033",
+    "renderer": "ImageMagick SVG conversion",
+    "actualObservation": "Four circle points are cyclic A-B-C-D; angle labels are attached to vertices/rays; x is visibly at B.",
+    "coordinateConfiguration": {
+      "center": [
+        310,
+        260
+      ],
+      "radius": 175,
+      "A": [
+        485,
+        260
+      ],
+      "B": [
+        443.98,
+        372.49
+      ],
+      "C": [
+        340.39,
+        432.34
+      ],
+      "D": [
+        422.49,
+        126.1
+      ],
+      "cyclicArcsDegrees": {
+        "AB": 40,
+        "BC": 40,
+        "CD": 230,
+        "DA": 50
+      },
+      "derivedAnglesDegrees": {
+        "CAD": 115,
+        "ADC": 40,
+        "ACD": 25,
+        "ABD": 25
+      }
+    },
+    "previousCandidateImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q14-replacement.svg"
+  },
+  "sourceKeyDisposition": "The original-source HWP ③ key belongs to the replaced item and remains preserved in sourceTruth; it does not determine this replacement."
+}

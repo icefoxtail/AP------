@@ -1,0 +1,68 @@
+{
+  "schema": "JS_ARCHIVE_R2_RESULT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "status": "OPEN_HOLD",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+  "head": "f2c43e6e3da9d1fd32a5475c1dee9fde3a0f47b4",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\20_이수중_2학기_기말_중3_기출.js",
+  "artifactRawSha256": "7e5e5a3a86931eb114980c7dfa9a56ff35c1baf1c5e582062118934358a6ba56",
+  "artifactBlobSha1": "eef988c10f75d3882f933e159ed85ee92fe26e98",
+  "studentBundleSha256": "af86cef24b683a91a03e97f873b70469acb1009a4796351eb4ada867f634a2f4",
+  "reviewedQids": 22,
+  "figureCount": 22,
+  "allReferencedFiguresOpenedAndHashMatched": true,
+  "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.blind-freeze.json",
+  "freezeSha256": "058058b1c3c9ca4bb1e169058d69f03cd011c9bcbb2130cc5124448c2d1dd6ce",
+  "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.postfreeze-disclosure.json",
+  "postfreezeDisclosureSha256": "ef7f93e181fa9363cf355ef5f22779e745e36d1e9221ebdca90813183af2124c",
+  "adjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.freeze-adjudication.json",
+  "adjudicationSha256": "e493a756f849644a7e2fedae8804037d4b7b1678b9ed8feec64bddb06278c338",
+  "evidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.evidence.json",
+  "evidenceSha256": "e997325215bb22ffdd133bb75449cc73f0262cc928faa637f9891fb4368c8e19",
+  "matchedQids": 20,
+  "encodingCorrections": [
+    {
+      "qid": 2,
+      "from": "③",
+      "to": "①",
+      "reason": "Frozen explanation states option ① alone is false; original freeze retained and same-session encoding correction recorded."
+    }
+  ],
+  "sourceKeyConflict": [
+    {
+      "qid": 11,
+      "candidateAnswer": "① (28°)",
+      "sourceKey": "⑤ (42°)",
+      "disposition": "Candidate answer is supported by source geometry; key conflict retained."
+    }
+  ],
+  "itemHoldQids": [
+    {
+      "qid": 14,
+      "reason": "Source underdetermined: x=arc CD/2; only arc AB+arc CD=140° is fixed. Two valid source-consistent configurations yield 20° and 30°. HWP answer key lists 30° without derivation or missing condition."
+    }
+  ],
+  "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+  "sourceHwpSha256": "6f6e7814aa3adbaed75f2e119dc2a10f731d7d2e14bd77a6dcbd1fc168d83a8b",
+  "sourcePageRead": [
+    2,
+    3
+  ],
+  "itemDisposition": "Q14 TRUE_ITEM_HOLD, requires ROOT direct replacement and fresh qid-limited R1/R2",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "completionBasis": "ROOT_DIRECTED_STATIC_COMPLETE",
+  "genericValidator": "archive/tools/archive-stage-validator.mjs --stage R2 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --asset-root <assignment.assetRootAbsolute> --json",
+  "validatorDisposition": "FAIL",
+  "validatorReportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.generic-validator.raw.json",
+  "validatorReportSha256": "8db55dabaeb354e8133698f491dca3ed72078e2515ed0825b560472983b78d62",
+  "validatorIssues": [
+    "ARTIFACT_KNOWN_FAILED_REVIEW:q14",
+    "ARTIFACT_VALUE_REQUIRED:solution:q14",
+    "ARTIFACT_ANSWER_REQUIRED:q14",
+    "ARTIFACT_ANSWER_REQUIRED_WITH_CHOICES:q14"
+  ],
+  "inheritedArtifactDispositions": "R1 current artifactDispositions reused unchanged; exact current fields and artifact SHA preserved.",
+  "nextRequiredAction": "ROOT direct replacement of q14 true item HOLD, then fresh R1/R2 review limited to q14 and direct dependencies."
+}

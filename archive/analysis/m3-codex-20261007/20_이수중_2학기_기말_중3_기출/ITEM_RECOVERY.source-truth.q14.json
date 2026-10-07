@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_TRUTH_V1",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "qid": 14,
+  "reviewedBeforeUpstreamHoldLedger": true,
+  "preflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/ITEM_RECOVERY.preflight.raw.json",
+    "status": "PASS",
+    "goldenSampleCount": 2,
+    "negativeSampleCount": 1
+  },
+  "latestSource": {
+    "candidateArtifactSha": "eef988c10f75d3882f933e159ed85ee92fe26e98",
+    "candidateArtifactRawSha256": "7e5e5a3a86931eb114980c7dfa9a56ff35c1baf1c5e582062118934358a6ba56",
+    "question": {
+      "content": "다음 그림에서 $x$의 값은? (4점)",
+      "choices": [
+        "$20^\\circ$",
+        "$25^\\circ$",
+        "$30^\\circ$",
+        "$35^\\circ$",
+        "$40^\\circ$"
+      ],
+      "image": "assets/images/20_이수중_2학기_기말_중3_기출/q14.png"
+    },
+    "sourcePdf": {
+      "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_이수중_2학기_기말_중3_기출/source/2020_이수중3_수학_2기말.pdf",
+      "sha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "pageCount": 4,
+      "nativePdfPage3Rendered": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/source-review/page-3.png",
+        "sha256": "ea6b3d5701f40f7c4a89a7a46753da335d09d2a09936e4b92ed93b347ded6b08"
+      }
+    },
+    "q14SourceImage": {
+      "path": "assets/images/20_이수중_2학기_기말_중3_기출/q14.png",
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/assets/images/20_이수중_2학기_기말_중3_기출/q14.png",
+      "sha256": "a8f65184c4c699837dcfeaa89ab1fb27573164c99bcb1203c2b32d8b43eaa079"
+    },
+    "sourceProvenance": {
+      "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_이수중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_이수중_2학기_기말_중3_기출/source_provenance.json",
+      "status": "SOURCE_QA_READY",
+      "q14Status": "PASS_SOURCE_PIXEL_TRANSCRIBED",
+      "priorAnswerSolutionProductionChanges": "NONE",
+      "priorAuditedRepairs": []
+    },
+    "answerReference": {
+      "pdfStatus": "NO_ANSWER_PDF_IN_SCOPED_SOURCE_DIRECTORY",
+      "hwpPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_이수중3_수학_2기말_정답.hwp",
+      "hwpSha256": "6f6e7814aa3adbaed75f2e119dc2a10f731d7d2e14bd77a6dcbd1fc168d83a8b",
+      "extractedRecordPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/source-review/answer-key-extract.json",
+      "extractedRecordSha256": "f105f3a5d6769a0e125eab8834187be9923e8f65f34092a4d5f207ed5e4353a4",
+      "q14KeyAnswer": "③ (30°)",
+      "recordsRead": "objective q1–17 and constructed response q18–22 text records"
+    }
+  },
+  "freshMathReview": {
+    "visibleGeometry": "Tangent T-A at A; cyclic points A,B,C,D in order; 110° is the angle from ray AT to chord AD; 40° is ∠BDC; x is ∠DBC.",
+    "facts": [
+      "Tangent-chord relation makes the minor arc AD 140° (the 110° shown is supplementary to the 70° tangent-chord angle).",
+      "Inscribed angle ∠BDC=40° gives arc BC=80°.",
+      "The circle arc sum leaves arc AB+arc CD=360°-140°-80°=140°; the source gives no separate value for either remaining arc.",
+      "x=∠DBC=arc DC/2, so x is not uniquely determined."
+    ],
+    "counterexamples": [
+      {
+        "arcAB": 100,
+        "arcBC": 80,
+        "arcCD": 40,
+        "arcDA": 140,
+        "arcSum": 360,
+        "xDegrees": 20,
+        "choice": "①"
+      },
+      {
+        "arcAB": 80,
+        "arcBC": 80,
+        "arcCD": 60,
+        "arcDA": 140,
+        "arcSum": 360,
+        "xDegrees": 30,
+        "choice": "③"
+      }
+    ],
+    "answerKeyRole": "The HWP key’s ③ is not a source premise and cannot select one of multiple valid arc configurations."
+  },
+  "repairAttempt": {
+    "repairType": "SOURCE_FIRST_MINIMUM_REPAIR",
+    "result": "NO_UNIQUE_SOURCE_GROUNDED_REPAIR",
+    "details": "The native PDF page and crop contain only the 110° tangent datum and 40° inscribed-angle datum. The answer HWP provides an intended answer but no omitted condition, corrected figure, or erratum. Adding a guessed arc/angle datum or changing either printed measure would invent source content."
+  },
+  "classification": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+  "decisiveMissingFacts": [
+    "A source-grounded value that separates arcs AB and CD (equivalently, a direct value for arc CD or angle x)."
+  ],
+  "alternateEvidenceChecked": [
+    "all four native source PDF page renders; page 3 and q14 crop enlarged; current q14 text/choices/image; source provenance; all answer HWP records q1–22; approved HWP objective key for q14"
+  ],
+  "whyTruthStillNonDeterministic": "Two source-valid cyclic arc configurations satisfy every printed condition and yield distinct listed answers 20° and 30°.",
+  "repairAttempted": true,
+  "nextRequiredEvidenceOrCapability": "No source-side fact can recover a unique answer. Proceed with root-authorized q14-only QUESTION_ONLY replacement after exact R1/R2 freeze comparison; preserve source bytes, answer-key intent, and this counterexample evidence."
+}

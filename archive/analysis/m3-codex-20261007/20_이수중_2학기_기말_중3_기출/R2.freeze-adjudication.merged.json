@@ -1,0 +1,60 @@
+{
+  "schema": "JS_ARCHIVE_R2_MERGED_FREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "currentArtifactRawSha256": "1c51a8a4dcc8933d08ff6d62572a17442eafae8e640404e23111208bd9cafcdb",
+  "currentArtifactBlobSha1": "f90e8f9d3cc9f6c178af832a0c3bccd9266e517e",
+  "previousAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.freeze-adjudication.pre-q14-cleanmerge.json",
+  "previousAdjudicationSha256": "e493a756f849644a7e2fedae8804037d4b7b1678b9ed8feec64bddb06278c338",
+  "mergedFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.blind-freeze.merged.json",
+  "mergedFreezeSha256": "1893d2fab238c818a15d122f41342c5ced138d8d304a34c8458b4b9bd7293c5e",
+  "mergedDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.postfreeze-disclosure.merged.json",
+  "mergedDisclosureSha256": "851c6649eb81989a5e5a9c5367c3fea7ec4418b16a2c3140c05243a4e251f099",
+  "currentStudentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2.student-input.current.json",
+  "currentStudentBundleSha256": "d23e0c05c7dde75d416fca9f107d9b84c649ec741052bae65e87c93249ca86c7",
+  "reusedUnchangedFreezeScope": "Qids 1–13 and 15–22 from the original valid R2 freeze; the old q14 row remains only in immutable historical freeze/adjudication evidence and is excluded from this current-body merge.",
+  "freshQ14": {
+    "componentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2-clean-q14.component.json",
+    "componentSha256": "31b4648e79b3ccf047bc214b77d19a60c372a08a34790eb784998a843d38154c",
+    "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2-clean-q14.freeze.json",
+    "freezeSha256": "d4b455dd0955035b82aa90f5cd655af2f73726c838bebe1e25d4402dca689475",
+    "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2-clean-q14.postfreeze-disclosure.json",
+    "postfreezeDisclosureSha256": "f81a5e5bea5a9328cd074b5bb60456032604272c31bc1769b4c48f973fff96dd",
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R2-clean-q14.student-input.json",
+    "studentBundleSha256": "8fda2c20c6c9646d4b8d28c9bd8b749fc8d1ba4ef0743d1893024a8c2c7b9255",
+    "visualPreviewPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/source-review/q14-replacement-render.png",
+    "visualPreviewSha256": "5f1a68a3ac4dae35781a627d31a85007d7dd2507fafc1b553bc8fbc2288ac033",
+    "visualOpenedBeforeFreeze": true,
+    "independentAnswer": "② (25°)",
+    "storedAnswer": "②",
+    "result": "MATCH",
+    "reasoning": "In cyclic quadrilateral ABCD, ∠ABD and ∠ACD are inscribed angles subtending the same arc AD, so they are equal. In triangle ACD, ∠ACD = 180° − 115° − 40° = 25°. Therefore x = ∠ABD = 25°, which is choice 2."
+  },
+  "priorQ2EncodingCorrection": {
+    "qid": 2,
+    "result": "ENCODING_CORRECTION",
+    "originalFrozenAnswer": "③",
+    "storedAnswer": "①",
+    "correctedIndependentAnswer": "①",
+    "reason": "The complete frozen rationale says only statement ① is false, while the frozen selection field says ③. OM=ON makes AB=CD and AM=CN; since M,N bisect the chords, 2AM=CD is true. Preserve the freeze and record the answer-label correction in this same R2 session."
+  },
+  "priorQ11SourceKeyConflict": {
+    "qid": 11,
+    "result": "MATCH_SOURCE_KEY_CONFLICT",
+    "frozenAnswer": "① 28°",
+    "storedAnswer": "①",
+    "sourceHwpKeyAnswer": "⑤ 42°",
+    "reason": "Full source page 2 confirms x=angle BDC. Let arc BC=t and arc AD=3t/2. Intersecting chords give 70=(t+3t/2)/2, so t=56 and x=t/2=28°. The HWP answer key value 42° conflicts with the source geometry; the current candidate answer ① (28°) is supported."
+  },
+  "priorQ14Undertermination": {
+    "qid": 14,
+    "result": "TRUE_ITEM_HOLD_UNDERDETERMINED",
+    "originalFrozenAnswer": "③ 30°",
+    "storedAnswer": "EMPTY",
+    "correctedIndependentAnswer": "OPEN_HOLD",
+    "reason": "Source page 3 fixes arc AD=140° from the 110° tangent-chord angle and arc BC=80° from angle BDC=40°, while x=angle DBC=arc DC/2. The remaining condition is arc AB+arc DC=140°, so arc DC is not fixed. Valid assignments (AB,BC,CD,DA)=(80,100,40,140) give x=20° and (100,80,60,140) give x=30°. The HWP key says ③ (30°) but gives no additional condition or derivation. Missing decisive fact: a separate measure fixing arc AB or arc CD, or an equivalent angle/arc relation."
+  },
+  "priorCounterexampleAndHwpKeyConflictPreserved": true,
+  "itemHoldQids": [],
+  "nextRequiredAction": "R3 release review and integrity/static gate."
+}

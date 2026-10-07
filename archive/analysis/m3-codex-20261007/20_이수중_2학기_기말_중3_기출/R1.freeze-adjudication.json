@@ -1,0 +1,46 @@
+{
+  "schema": "JS_ARCHIVE_R1_FREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1.independent-answer-freeze.json",
+  "freezeSha256": "2cc451de0674ccb17f6be0dba1285aff59476543a34ef43754d5dd57c6cdd4f9",
+  "artifactRawSha256": "7e5e5a3a86931eb114980c7dfa9a56ff35c1baf1c5e582062118934358a6ba56",
+  "artifactBlobSha1": "eef988c10f75d3882f933e159ed85ee92fe26e98",
+  "sourcePdfPath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\middle\\m3\\20_이수중_2학기_기말_중3_기출\\source\\2020_이수중3_수학_2기말.pdf",
+  "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+  "sourcePageReview": {
+    "renderedPagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\source-review\\page-hi-3.png",
+    "targetQidSourcePage": 3,
+    "targetQid": 14,
+    "allPagesRenderedAndRead": true,
+    "pages": 4
+  },
+  "adjudications": [
+    {
+      "reason": "학생 입력 완전; 원 풀이의 계산값 8 cm는 보기 ⑤와 대응. 기존 freeze를 보존하고 보기 번호만 같은 stage에서 정정.",
+      "qid": 1,
+      "originalFrozenAnswer": "④",
+      "correctedValue": "8 cm",
+      "correctedIndependentAnswer": "⑤",
+      "result": "ENCODING_CORRECTION",
+      "originalFrozenValue": "8 cm",
+      "storedAnswer": "⑤"
+    },
+    {
+      "reason": "원 freeze의 DEFP 포함은 잘못된 9점원 추론. 실제 직각쌍은 각각 ABDE(ADB,AEB), BCEF(BEC,BFC), CADF(CDA,CFA), AEPF(AEP,AFP), BDPF(BDP,BFP), CDEP(CDP,CEP). 원 freeze 보존 후 완전한 학생도형으로 수선 직각쌍을 재검.",
+      "correctedIndependentAnswer": "ABDE, BCEF, CADF, AEPF, BDPF, CDEP",
+      "result": "MATH_ADJUDICATION",
+      "storedAnswer": "ABDE, BCEF, CADF, AEPF, BDPF, CDEP",
+      "originalFrozenAnswer": "DEFP",
+      "qid": 22
+    },
+    {
+      "reason": "독립 attempt의 선택번호와 서술 근거가 불일치하며 수치 결론을 뒷받침하지 못함. 현재 후보도 answer/solution 공란, reviewStatus=CREATE_ITEM_HOLD. 원문 110° tangent-chord 관계와 D의 40° 표시를 적용해도 arc AD=140°, arc BC=80°만 정해지고 남은 arc AB+arc CD=140°이므로 x=arc CD/2는 고정되지 않는다. full source page 3와 q14 image 모두 검토; true item HOLD를 R2로 이관.",
+      "result": "FREEZE_UNSUPPORTED_OPEN_HOLD",
+      "storedAnswer": "EMPTY",
+      "independentAnswer": "OPEN_HOLD",
+      "originalFrozenAnswer": "④",
+      "qid": 14
+    }
+  ]
+}

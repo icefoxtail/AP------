@@ -1,0 +1,73 @@
+{
+  "schema": "JS_ARCHIVE_R1_GOLDEN_PREFLIGHT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "reviewedAtUtc": "2026-10-07T08:30:04.7608687Z",
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {
+          "observation": "Completed-square flow keeps relocation, independent x/y squares, radius readout, and final option as separate board steps.",
+          "qid": 3,
+          "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE"
+          ]
+        },
+        {
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "observation": "Two-stage circle transformation tracks center coordinates and preserves radius; rendered diagram agrees with the path and final circle."
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+    },
+    {
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "observation": "Rearranges each line separately, names both slopes, then uses the perpendicular-product equation; rendered line geometry matches slopes and intersection."
+        },
+        {
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+          "observation": "Completes squares and compares center/radius; rendered circle center (-1,3), radius 2 and endpoint agree with the equation."
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    }
+  ],
+  "negativeSample": {
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "Read the approved regression README and physically rendered q1-solution.bad.svg (SHA256 93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf). Displayed slope/intercept labels are not accepted as proof: rendered line misses the labeled point, so actual geometry must be checked.",
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+  }
+}
