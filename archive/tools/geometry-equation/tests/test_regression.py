@@ -54,9 +54,9 @@ class RegressionTests(unittest.TestCase):
     def test_special_registry_keeps_all_gates(self):
         from visual_engine.entrypoints import build_independent
         from visual_engine.engine import write_candidate
-        s=spec();s['id']='special-regression';cfg={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'archive/_generated/geometry-visual-engine/upgrade-v1/tests/generated'}
+        s=spec();s['id']='special-regression';cfg={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','examUid':'regression-tests','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'.tmp/archive/upgrade-v1/regression-tests/tests/generated'}
         write_candidate(s,cfg)
-        fact={'independentFactHash':'frozen','visualSpec':s,'specialVisual':{'adapter':'HANDCRAFTED_SVG','path':'archive/_generated/geometry-visual-engine/upgrade-v1/tests/generated/candidate/special-regression/visual.svg'}}
+        fact={'independentFactHash':'frozen','visualSpec':s,'specialVisual':{'adapter':'HANDCRAFTED_SVG','path':'.tmp/archive/upgrade-v1/regression-tests/tests/generated/candidate/special-regression/visual.svg'}}
         result=build_independent({},fact)
         self.assertEqual(result['witness']['classification'],'SPECIAL');self.assertFalse(result['witness']['publicationAuthorized']);self.assertEqual(len(result['witness']['requiredGates']),4)
 

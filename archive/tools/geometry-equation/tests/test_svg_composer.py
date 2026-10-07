@@ -1,7 +1,7 @@
 import sys,unittest,xml.etree.ElementTree as ET
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from visual_engine.svg_composer import compose
+from visual_engine.svg_composer import compose,validate_fragment_font
 from visual_engine.viewport import Viewport
 from visual_engine.math_expression import parse,serialize
 from visual_engine.style_tokens import load
@@ -10,6 +10,16 @@ def fixtures():
     return {'title':'원과 접점','primitives':[{'id':'point','kind':'circle','at':[100,100],'radius':2,'layer':70,'role':'point','token':'indicator'},{'id':'line','kind':'line','from':[32,200],'to':[400,200],'layer':40}]},{'labels':[{'id':'label','kind':'EQUATION_LABEL','text':'x^2-3x+4','markup':serialize(parse('x^2-3x+4'),'svg'),'math':True,'font':13.5,'baseline':[440,80],'box':{'x':440,'y':64,'width':120,'height':20}}]}
 
 class ComposerTests(unittest.TestCase):
+    def test_compacted_legacy_math_font_is_rejected_before_render(self):
+        def fragment(width):
+            return ET.fromstring(f'<svg width="{width}" height="13.32" viewBox="0 0 {width} 13.32"><svg width="{width}" height="13.32" viewBox="0 -666 500 666"><g data-mml-node="math"/></svg></svg>')
+        validate_fragment_font(fragment(10),20)
+        with self.assertRaisesRegex(ValueError,'FROZEN_FRAGMENT_FONT_SCALE_CHANGED'):validate_fragment_font(fragment(4.5),20)
+    def test_frozen_outline_dimensions_cannot_be_compacted(self):
+        root=ET.fromstring('<svg width="10" height="13.32" viewBox="0 0 10 13.32" data-outline-width="10" data-outline-height="13.32"><g/></svg>')
+        validate_fragment_font(root,20)
+        root.set('width','4.5');root.set('viewBox','0 0 4.5 13.32')
+        with self.assertRaisesRegex(ValueError,'FROZEN_FRAGMENT_FONT_SCALE_CHANGED'):validate_fragment_font(root,20)
     def test_structural_and_hangul(self):
         p,l=fixtures();s=compose(p,l,Viewport(-2,2,-2,2));root=ET.fromstring(s)
         self.assertEqual(root.attrib['preserveAspectRatio'],'xMidYMid meet')
