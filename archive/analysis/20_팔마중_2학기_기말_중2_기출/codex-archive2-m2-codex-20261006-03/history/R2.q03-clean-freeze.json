@@ -1,0 +1,35 @@
+{
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "stage": "R2",
+  "scope": "q03-only clean blind verification of newly replaced student body",
+  "qid": "q03",
+  "status": "FROZEN_BEFORE_STORED_ANSWER_ACCESS",
+  "blindAnswer": 5,
+  "inputArtifactRawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+  "inputArtifactGitBlobSha1": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e",
+  "studentFields": {
+    "content": "오른쪽 그림에서 $\\triangle ABC\\sim\\triangle DEF$일 때, 다음 중 옳지 않은 것은? [4점]",
+    "choices": [
+      "$AB=9\\text{ cm}$이다.",
+      "$AC=12\\text{ cm}$이다.",
+      "$BC:EF=3:2$이다.",
+      "$AB:DE=3:2$이다.",
+      "$AB:DF=3:2$이다."
+    ],
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q03.png"
+  },
+  "studentProjectionSha256": "b2d87a04871fe590b99780fea14fa76a005432f3e66798697bc39702e3b7c310",
+  "visual": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/assets/images/20_팔마중_2학기_기말_중2_기출/q03.png",
+    "sha256": "b20fcbed107699e188389cf4a531ad323c5138777783cec9758368375636429a",
+    "observed": "Similar triangles ABC~DEF; DE=6 cm, DF=8 cm, EF=10 cm, BC=15 cm."
+  },
+  "reasoning": [
+    "Correspondence A↔D, B↔E, C↔F.",
+    "Scale (large/small)=BC/EF=15/10=3/2.",
+    "AB=DE×3/2=9 and AC=DF×3/2=12; choices 1 and 2 are true.",
+    "BC:EF=15:10=3:2 and AB:DE=9:6=3:2; choices 3 and 4 are true.",
+    "AB:DF=9:8≠3:2; choice 5 is false, so the requested answer is ⑤."
+  ],
+  "frozenAtLocalDate": "2026-10-07"
+}

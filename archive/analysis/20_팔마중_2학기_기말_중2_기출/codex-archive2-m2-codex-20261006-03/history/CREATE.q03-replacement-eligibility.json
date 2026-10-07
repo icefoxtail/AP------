@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "ARCHIVE_FINAL_ITEM_REPLACEMENT_ELIGIBILITY_V1",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "qid": 3,
+  "decision": "ELIGIBLE_QUESTION_ONLY_DIRECT_REPLACEMENT",
+  "review2Status": "HOLD_NOT_PASS",
+  "review2FinalArtifactSha": "f83ffbc4b23087058a21f6c3e0bcd8dad4a13614",
+  "review2EvidenceRef": "R2.evidence.corrected.json",
+  "review2EvidenceSha256": "cf9da42098eb973daf096d29f5c4f5e8a9b1942963181aee35e2ff2dacf13f36",
+  "originalItem": {
+    "candidateRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/provenance/attempt-12/20_팔마중_2학기_기말_중2_기출.js",
+    "candidateGitBlobSha": "f83ffbc4b23087058a21f6c3e0bcd8dad4a13614",
+    "pdfPath": "source/2020_팔마중2_수학_2기말.pdf",
+    "pdfSha256": "057a383fb6210d6b0886f2fac19763ced521941d3c9665fafcb955be47fa7f50",
+    "answerKeyPath": "source/2020_팔마중2_수학_2기말_정답.hwp",
+    "answerKeySha256": "d825785144b4f78e0652a006dd41fb08814b0b7149e4d4939e534e0b5a4ed7e6",
+    "originalImagePath": "source/q03.png",
+    "originalImageSha256": "b7c75e666257f24968dd27272a66c0d4c678144c9522f51521d1a2e1db6d118a",
+    "originalImageExpectedSha256": "b7c75e666257f24968dd27272a66c0d4c678144c9522f51521d1a2e1db6d118a"
+  },
+  "reviewLineage": {
+    "r1SourceBindingRef": "R1.q03-desktop-source-binding.json",
+    "r1Decision": {
+      "independentAnswer": "④",
+      "answerKeyComparison": "MATCH",
+      "curriculumSolutionStatus": "HOLD",
+      "reason": "Similarity determines choices ①, ②, ③, and ⑤. Evaluating whether DF=12/5 cm (equivalently AC=4 cm) from sides 2 cm and 3 cm with included angle 50° requires a trigonometric/law-of-cosines step outside the M2-06 tool inventory. No deterministic in-scope student solution or unique one-locus source repair exists. Preserve the qid-only MATH_HOLD; do not replace the item during R1."
+    },
+    "r2PostFreezeRef": "R2.postfreeze-adjudication.json",
+    "r2HeldReason": "No deterministic in-curriculum M2-06 solution repair; answer-key choice alone is not a student proof.",
+    "priorCorrectionProtocolAttempts": [
+      "full desktop PDF/figure and HWP key checked",
+      "M2-06 side-ratio/correspondence routes checked",
+      "single-locus source repair checked; no source-supported unique typo correction"
+    ],
+    "review2ClosedHoldNotPass": true
+  },
+  "eligibilityAnalysis": {
+    "recoveryRuleRef": "docs/rules/02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md §§2–5, 9, 13",
+    "correctionRuleRef": "docs/rules/02_PIPELINES/수정프로토콜.md",
+    "eligibleAfterReview2": true,
+    "originalItemUnrecoverableAfterReview2": true,
+    "reason": "The printed source determines answer ④, but disproving AC=4 requires the third side of a 2/3 triangle with included 50° angle. The required trigonometric/law-of-cosines tool is outside the M2 course inventory. There is no unique one-locus OCR/source repair; making a student-reproducible in-scope item requires replacing the question data/claim as a whole.",
+    "replacementScope": "QUESTION_ONLY",
+    "nonTargetQidsMutationAllowed": false,
+    "priorR1R2FreezeAppliesToReplacementQ03": false
+  }
+}

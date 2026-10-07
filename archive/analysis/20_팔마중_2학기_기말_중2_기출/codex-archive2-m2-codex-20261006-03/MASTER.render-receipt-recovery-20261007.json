@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "JS_ARCHIVE_MASTER_RENDER_RECEIPT_RECOVERY_V1",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "stage": "RENDER_RECEIPT_CLOSURE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "completedStep": "DURABLE_MODE_AWARE_RECEIPT_VALIDATED",
+  "firstMissingClosureStep": "NONE_FOR_PALMA_RECEIPT",
+  "inputArtifactSha": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e",
+  "inputArtifactRawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+  "status": "RENDER_RECEIPT_TECHNICAL_PASS",
+  "receipt": {
+    "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.json",
+    "sha256": "3a3652688c7e603705a31a6621ae7a6e30c537ef7eb0b640cb56c4595f711447",
+    "preservedUnchanged": true
+  },
+  "modeAssetFinding": {
+    "candidateSourceAssets": 17,
+    "examDesktop": 17,
+    "examMobile": 17,
+    "solDesktop": 0,
+    "solMobile": 0,
+    "ansDesktop": 0,
+    "ansMobile": 0,
+    "basis": "Candidate has 17 question image fields, no solutionImage or inline source image; Archive Engine solution mode removes prompt images when q.image is present and answer mode renders answer cells only.",
+    "copiedExamDecodes": false
+  },
+  "helper": {
+    "path": "archive/tools/archive-codex-closeout-v2.mjs",
+    "sha256": "670d7a2af57e9da5b70b0a47692c10b33225f7575110592480594dd9f9dab3ab",
+    "testPath": "tests/archive-codex-closeout-v2.test.mjs",
+    "testSha256": "d9653805d35c0ef67a6125af6ed36d940721eca94ea402d2abbb86eae50e97ef",
+    "validatorDisposition": "PASS",
+    "issues": [],
+    "checks": "node --test tests/archive-codex-closeout-v2.test.mjs: 11 passed, 0 failed; original and durable Palma receipt validation: PASS, issues []"
+  },
+  "officialEngine": {
+    "url": "https://icefoxtail.github.io/AP------/archive/engine.html",
+    "session": "Codex In-app Browser tab 1",
+    "pageTitle": "JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)",
+    "access": "HTTP(S) page loaded",
+    "currentState": "No data parameter; engine reports exam data not supplied.",
+    "supportedSource": "normalizeArchiveExamScriptPath accepts exams/<path>.js or same-origin blob URL; it rejects .tmp candidates.",
+    "outputEnvelope": "Archive2Output mode publication uses IndexedDB envelope after a bank has loaded; no candidate upload/reference receiver or temp-asset path was found in current engine/app contract.",
+    "blockedCapability": "Approved HTTPS temporary-candidate JS and matching temporary assets served to the engine, or an existing official app flow that accepts this exact local candidate snapshot and emits a browser-bound output envelope."
+  },
+  "nextAction": "R3 reviewer can consume the existing exact six-case Palma receipt under the corrected mode-aware helper. For held roster rows lacking captures, ROOT must provide the approved HTTPS candidate and asset staging route/session; then hand that route and immutable candidate SHA to the existing archive_r3 reviewer for targeted actual render, followed by ROOT physical receipt consumption and publication.",
+  "publication": "NOT_RUN_BY_ASSIGNED_SCOPE",
+  "durableReceipt": {
+    "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.durable.json",
+    "sha256": "22bb6bc0eddcec9d64d8dd214913856c8005520dc76691acead8dfb632e10eaf",
+    "relocationManifestPath": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.durable.relocation.json",
+    "relocationManifestSha256": "2fe498061664cda4b25676dc9f579e17dcd3fd2a2991c5a2116522a25416ca1d",
+    "relocatedPhysicalFiles": 46,
+    "originalReceiptPath": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.json",
+    "originalReceiptSha256": "3a3652688c7e603705a31a6621ae7a6e30c537ef7eb0b640cb56c4595f711447",
+    "originalReceiptPreserved": true
+  },
+  "helperFinding": {
+    "validator": "archive/tools/archive-codex-closeout-v2.mjs::validateCodexRenderReceipt",
+    "status": "PASS",
+    "issues": [],
+    "binding": "mode-specific source assets; SVG external dependency closure; HTML image choices in exam mode"
+  }
+}
