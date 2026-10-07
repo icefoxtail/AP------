@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "21_왕운중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+  "artifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": false,
+  "targetedScope": {
+    "wholeExamSemanticReview": false,
+    "changedQids": [
+      18
+    ],
+    "openFindingQids": [],
+    "directDependencyQids": [
+      7,
+      11,
+      13,
+      15
+    ],
+    "reviewedQids": [
+      7,
+      11,
+      13,
+      15,
+      18
+    ],
+    "lastQid": 24,
+    "actualCaptureCount": 0,
+    "renderStatus": "NOT_RUN_USER_WAIVER",
+    "waivedScope": "actualRenderCaptureOnly"
+  },
+  "rows": [
+    {
+      "qid": 7,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "verdict": "CARRIED_FORWARD_NONBLOCKING_META_PROJECTION_DEBT",
+      "evidenceOnlyCarryForward": true,
+      "metaProjectionDebtRef": {
+        "stageEvidence": [
+          {
+            "stage": "R1",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.evidence.json",
+            "sha256": "309647fe704e30de37840d9e10ac8a72460c09fdbeecb7ee0136c7b5c860f0ab",
+            "qid": 7,
+            "axis": "META",
+            "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+          },
+          {
+            "stage": "CREATE",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/CREATE.evidence.json",
+            "sha256": "08e9d65f975ef0ce40f93275f48dfcd5b33d54490d0fbcafabe7335cda1c858d",
+            "qid": 7,
+            "axis": "META",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "M2-RPM-105/M2-RPM-223는 RPM_ONLY이며 lower-scope 조회 뒤에도 중등 Pythagorean ACTIVE PT/TPL exact binding이 없어 projection debt로 보존."
+          }
+        ],
+        "note": "Carry the existing nonblocking projection debt as evidence reference only; R2 makes no Meta reclassification."
+      }
+    },
+    {
+      "qid": 11,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "verdict": "CARRIED_FORWARD_NONBLOCKING_META_PROJECTION_DEBT",
+      "evidenceOnlyCarryForward": true,
+      "metaProjectionDebtRef": {
+        "stageEvidence": [
+          {
+            "stage": "R1",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.evidence.json",
+            "sha256": "309647fe704e30de37840d9e10ac8a72460c09fdbeecb7ee0136c7b5c860f0ab",
+            "qid": 11,
+            "axis": "META",
+            "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+            "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+          },
+          {
+            "stage": "CREATE",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/CREATE.evidence.json",
+            "sha256": "08e9d65f975ef0ce40f93275f48dfcd5b33d54490d0fbcafabe7335cda1c858d",
+            "qid": 11,
+            "axis": "META",
+            "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "서로 독립된 순서 있는 배열과 순서 없는 선택의 수를 비교하는 문항이라 단일 primary L3/L4로 유일 표현할 수 없음; 임의 분류를 하지 않음."
+          }
+        ],
+        "note": "Carry the existing nonblocking projection debt as evidence reference only; R2 makes no Meta reclassification."
+      }
+    },
+    {
+      "qid": 13,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "verdict": "CARRIED_FORWARD_NONBLOCKING_META_PROJECTION_DEBT",
+      "evidenceOnlyCarryForward": true,
+      "metaProjectionDebtRef": {
+        "stageEvidence": [
+          {
+            "stage": "R1",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.evidence.json",
+            "sha256": "309647fe704e30de37840d9e10ac8a72460c09fdbeecb7ee0136c7b5c860f0ab",
+            "qid": 13,
+            "axis": "META",
+            "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+          },
+          {
+            "stage": "CREATE",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/CREATE.evidence.json",
+            "sha256": "08e9d65f975ef0ce40f93275f48dfcd5b33d54490d0fbcafabe7335cda1c858d",
+            "qid": 13,
+            "axis": "META",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "M2-RPM-077/M2-RPM-195가 RPM_ONLY이며 현재 GLOBAL ACTIVE PT/TPL exact projection이 없음."
+          }
+        ],
+        "note": "Carry the existing nonblocking projection debt as evidence reference only; R2 makes no Meta reclassification."
+      }
+    },
+    {
+      "qid": 15,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "verdict": "CARRIED_FORWARD_NONBLOCKING_META_PROJECTION_DEBT",
+      "evidenceOnlyCarryForward": true,
+      "metaProjectionDebtRef": {
+        "stageEvidence": [
+          {
+            "stage": "R1",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.evidence.json",
+            "sha256": "309647fe704e30de37840d9e10ac8a72460c09fdbeecb7ee0136c7b5c860f0ab",
+            "qid": 15,
+            "axis": "META",
+            "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+          },
+          {
+            "stage": "CREATE",
+            "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/CREATE.evidence.json",
+            "sha256": "08e9d65f975ef0ce40f93275f48dfcd5b33d54490d0fbcafabe7335cda1c858d",
+            "qid": 15,
+            "axis": "META",
+            "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "M2-RPM-105/M2-RPM-223는 RPM_ONLY이며 lower-scope 조회 뒤에도 중등 Pythagorean ACTIVE PT/TPL exact binding이 없음."
+          }
+        ],
+        "note": "Carry the existing nonblocking projection debt as evidence reference only; R2 makes no Meta reclassification."
+      }
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS_STATIC_CODE_AND_PHYSICAL_SVG_BINDING",
+      "changedLocus": "q18 solution SVG code and physical asset binding",
+      "actualRenderStatus": "NOT_RUN_USER_WAIVER",
+      "solutionSvgRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q18-solution.svg",
+      "solutionSvgSha256": "6fe1288d3cf82c53498d5e3dcab92d612cac845183747e59d32b7df6d8a41c40",
+      "externalDependencies": []
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+    "rows": [
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification."
+      }
+    ]
+  },
+  "reviewScopeReused": {
+    "unchangedQids": 19,
+    "unchangedScopeStatus": "REUSED_FINAL_R1_R2_SEMANTIC_AND_VISUAL_COVERAGE",
+    "replacementQids": [],
+    "replacementStatus": "FINAL_R1_R2_PASS_REUSED",
+    "fullSemanticReviewRepeated": false
+  },
+  "reviewFindings": {
+    "priorOpenFinding": {
+      "qid": 18,
+      "scope": "actual render only",
+      "disposition": "waived by user directive; render remains NOT_RUN"
+    },
+    "staticChecks": [
+      "all 24 ordered qids and last qid",
+      "JS parse and current raw bytes",
+      "all current source asset references",
+      "SVG external dependency closure",
+      "physical SHA-256 for every referenced asset",
+      "R1/R2 reports and evidence bindings"
+    ]
+  },
+  "userWaiver": {
+    "scope": "actualRenderCaptureOnly",
+    "directiveText": "캡처없이 js 에셋 svg 코드 완성으로 완료해. 사용자 지시사항으로",
+    "renderStatus": "NOT_RUN_USER_WAIVER",
+    "captureCount": 0
+  },
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\.tmp\\archive\\archive2-m2-codex-20261006-03\\21_왕운중_2학기_기말_중2_기출",
+  "loadedJs": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/21_왕운중_2학기_기말_중2_기출.js",
+    "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/21_왕운중_2학기_기말_중2_기출.js",
+    "sha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79"
+  },
+  "assets": [
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+      "sha256": "bb18fe551ea4469b0230fd33040aa9d7df2ca1cb9b720b341743765a2b5f9ac3",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+        "sha256": "bb18fe551ea4469b0230fd33040aa9d7df2ca1cb9b720b341743765a2b5f9ac3"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q04.png",
+      "sha256": "eea8b33d8b8e34909c4f45ed5b4c7bb8543e836a5c66fedcb22ad21fdc1e651d",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q04.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q04.png",
+        "sha256": "eea8b33d8b8e34909c4f45ed5b4c7bb8543e836a5c66fedcb22ad21fdc1e651d"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q05-r4.png",
+      "sha256": "941dfd668d3997f502ba24b0f9ce84116261caef38fcb21cbc23210a04a7d965",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q05-r4.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q05-r4.png",
+        "sha256": "941dfd668d3997f502ba24b0f9ce84116261caef38fcb21cbc23210a04a7d965"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+      "sha256": "1c46d37c3958d8bb252bb6abd2820ad3a33ae44e265cbe82331f19c0cc44b73b",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+        "sha256": "1c46d37c3958d8bb252bb6abd2820ad3a33ae44e265cbe82331f19c0cc44b73b"
+      },
+      "kind": "svg",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q07-r3.png",
+      "sha256": "1f4add2470833c06deb39af27daa55ce20494f2a9afafce7953d2abd021d25d3",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q07-r3.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q07-r3.png",
+        "sha256": "1f4add2470833c06deb39af27daa55ce20494f2a9afafce7953d2abd021d25d3"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q08-r5.png",
+      "sha256": "889472f4a6fbc89cb1909c250ed502d11bca7bbfd594b49dcb9a52287f8cec40",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q08-r5.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q08-r5.png",
+        "sha256": "889472f4a6fbc89cb1909c250ed502d11bca7bbfd594b49dcb9a52287f8cec40"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+      "sha256": "c88b3629ba197787821f180bf22e98114f28ac8ffc829513e095e6283ec5593d",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+        "sha256": "c88b3629ba197787821f180bf22e98114f28ac8ffc829513e095e6283ec5593d"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+      "sha256": "60738709986d5152f517f0338014f57e4da3a462f6e8873c1cbcdcbf1b166549",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+        "sha256": "60738709986d5152f517f0338014f57e4da3a462f6e8873c1cbcdcbf1b166549"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+      "sha256": "d66770c68dfa75095f7ed114eacb09b93d49efa77b1af4671c57b5ccacadb9f2",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+        "sha256": "d66770c68dfa75095f7ed114eacb09b93d49efa77b1af4671c57b5ccacadb9f2"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q15.png",
+      "sha256": "89f43e05590b362516af6e6000c1bbada9f02a2eb17fe177be6c90c8e0e29723",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q15.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q15.png",
+        "sha256": "89f43e05590b362516af6e6000c1bbada9f02a2eb17fe177be6c90c8e0e29723"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q18-r6.png",
+      "sha256": "ba11ce867be1eec6cc5638fd86c6f4e45cbf46a5ea290ef9f2a30b0a5970819f",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q18-r6.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q18-r6.png",
+        "sha256": "ba11ce867be1eec6cc5638fd86c6f4e45cbf46a5ea290ef9f2a30b0a5970819f"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q18-solution.svg",
+      "sha256": "6fe1288d3cf82c53498d5e3dcab92d612cac845183747e59d32b7df6d8a41c40",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q18-solution.svg",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q18-solution.svg",
+        "sha256": "6fe1288d3cf82c53498d5e3dcab92d612cac845183747e59d32b7df6d8a41c40"
+      },
+      "kind": "svg",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q22-r5.png",
+      "sha256": "8d08d7ea30dcd118cc8f8cf410da5f8f0343318e97fbb01b15eb420c207adc14",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q22-r5.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q22-r5.png",
+        "sha256": "8d08d7ea30dcd118cc8f8cf410da5f8f0343318e97fbb01b15eb420c207adc14"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    },
+    {
+      "ref": "assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+      "sha256": "96929b3f3d970c050b8e35966d3b41cbdfa0de47ff6bff378d368a5e0064a0ee",
+      "file": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+        "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+        "sha256": "96929b3f3d970c050b8e35966d3b41cbdfa0de47ff6bff378d368a5e0064a0ee"
+      },
+      "kind": "png",
+      "externalDependencies": []
+    }
+  ],
+  "upstreamBindings": {
+    "R1": {
+      "evidence": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.evidence.json",
+        "sha256": "309647fe704e30de37840d9e10ac8a72460c09fdbeecb7ee0136c7b5c860f0ab",
+        "artifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "validatorReport": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.validation.final.json",
+        "sha256": "6c0d150b8044109d063ddaba9a9e446206cd9860cdb34c61f3208d95fde2642d"
+      }
+    },
+    "R2": {
+      "evidence": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R2.evidence.continuation.json",
+        "sha256": "69982ec7e0ad1397ba7b3f72a5a39a786ef4255889525ec0ac2819e3050dc8dc",
+        "artifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "validatorReport": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R2.validation.continuation-pass.json",
+        "sha256": "80370ef0aa27170d89d3858414a7e7c16fbd0ae0c4df019917ced148ad624174"
+      }
+    }
+  }
+}

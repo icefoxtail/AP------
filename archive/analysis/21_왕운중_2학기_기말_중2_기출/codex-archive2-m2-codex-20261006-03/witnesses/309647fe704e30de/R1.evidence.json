@@ -1,0 +1,2363 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "21_왕운중_2학기_기말_중2_기출",
+  "artifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+  "rawArtifactSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+  "artifactPath": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/21_왕운중_2학기_기말_중2_기출.js",
+  "scope": "FULL_EXAM_R1_DEEP",
+  "studentBundle": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.student-bundle.final.json",
+    "rawSha256": "4d06041d00ea8b54f6f0957a3ebf91e04c936f7a44dbb0830714998890709591",
+    "qidCount": 24,
+    "assetCount": 13,
+    "extractedFromCurrentFinalSource": true
+  },
+  "failedAttemptRef": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.failed-attempt-20261007.json",
+  "calibrationRef": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.calibration-preflight.json",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the false-PASS regression covering actual SVG geometry, enumerated small-board blocks, null-but-resolvable Meta, and TeX escape/source failures."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Actual small-board explanation read and compared for explicit concept, intermediate calculation, conditions, and separated conclusion."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Actual small-board explanation read and compared for explicit concept, intermediate calculation, conditions, and separated conclusion."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Actual small-board explanation read and compared for explicit concept, intermediate calculation, conditions, and separated conclusion. Associated solution SVG was raster-rendered and visually inspected for geometry/label ownership.",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Actual small-board explanation read and compared for explicit concept, intermediate calculation, conditions, and separated conclusion."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Actual small-board explanation read and compared for explicit concept, intermediate calculation, conditions, and separated conclusion. Associated solution SVG was raster-rendered and visually inspected for geometry/label ownership.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      }
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      }
+    ],
+    "negativeSampleRef": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8"
+    },
+    "qualityCompareCount": "24/24",
+    "solutionWorkMode": "INDEPENDENT_REVIEW_WITH_TARGETED_REPAIR_RECHECK"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "ㄱ, ㄷ, ㅂ",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "provenance/archive/evidence/r1-independent-freeze-q1-q2.json",
+      "answerCompareRef": "provenance/archive/evidence/R1.postfreeze-q1-q2-current-bound.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS_AFTER_LAYOUT_REPAIR",
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "93fa9173943297c7ff618ddbffa500e7324ae1e9b4970aeda1439da4bfd2d3b0",
+      "questionLayout": {
+        "status": "PASS_STATIC_TARGETED_RECHECK",
+        "evidence": "The prompt and six-item list are separated at the intended semantic boundaries, with the item rows readable and no formula or unit split."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "The six ㄱ~ㅂ judgments are each on separate lines; each rejection/acceptance has a mathematical property, and the conclusion is separated. No decisive intermediate step is compressed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-06 / M2-06-SIMILAR_FIGURE and PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_RATIO match the inspected 2015 M2-2 DIRECT_ACTIVE crosswalk and ACTIVE binding. 하 / difficultyBucket 1 / high confidence are consistent with a single recognition item; crossConceptKeys and conditionKeys empty fit the item."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "No problem image, solutionImage, referenced assets, or geometric construction is present. Neither the recognition list nor the property question requires a diagram; static figure review completed."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "The prompt and six-item list are separated at the intended semantic boundaries, with the item rows readable and no formula or unit split."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "The six ㄱ~ㅂ judgments are each on separate lines; each rejection/acceptance has a mathematical property, and the conclusion is separated. No decisive intermediate step is compressed."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "M2-06 / M2-06-SIMILAR_FIGURE and PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_RATIO match the inspected 2015 M2-2 DIRECT_ACTIVE crosswalk and ACTIVE binding. 하 / difficultyBucket 1 / high confidence are consistent with a single recognition item; crossConceptKeys and conditionKeys empty fit the item."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "No problem image, solutionImage, referenced assets, or geometric construction is present. Neither the recognition list nor the property question requires a diagram; static figure review completed."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "닮음의 정의로 항상 닮음인 도형을 구별",
+        "decisiveStep": "두 정삼각형·두 원·두 정사각형만 크기와 관계없이 모양이 같으므로 ㄱ, ㄷ, ㅂ을 고른다. 정답은 ②이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 1,
+        "contentHash": "e87db1b8855a20ac588a3c259e2d22d1b54de8ab6d697fb85b080cc772310aed",
+        "choicesHash": "dbb040413efcb26eeaea726e20a44f3d6e668fcbd6cfe2b4063241b73465dfb2",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_SOURCE_REPAIR_OR_LOCKED_SOURCE_ATOMS",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "studentPayloadAdjudication": "Only escaped newline separators changed to actual line separators; stem wording, list item order, choices, questionType, and wide are unchanged, so the independent answer freeze remains valid.",
+      "artifactBinding": {
+        "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+        "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+        "basis": "R1 postrepair supplement binds q1 payload to current projection; its newline-only content change preserves answer freeze.",
+        "currentCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "닮은 두 평면도형에서 대응하는 각의 크기는 비례한다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "provenance/archive/evidence/r1-independent-freeze-q1-q2.json",
+      "answerCompareRef": "provenance/archive/evidence/r1-review-q1-q2-final.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "950bb761ecc0b084ed04e29610def3167b0416449362514f05a6a4664db3a93b",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "The stem is a single concise question and each statement remains in an individual choice. The formula and unit in the volume-ratio choice remain intact. No layout override is indicated."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "Three short stages are separately line-broken: equality fact, why the wording is false, and conclusion. Sufficient for this one-property question."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-06 / M2-06-SIMILAR_FIGURE and PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_RATIO match the inspected 2015 M2-2 DIRECT_ACTIVE crosswalk and ACTIVE binding. 하 / difficultyBucket 1 / high confidence fit a direct concept check; no additional concept/condition relation is necessary."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "No figure, problem-image reference, solution SVG, or external asset is present or needed for evaluating the statement about corresponding angles."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "The stem is a single concise question and each statement remains in an individual choice. The formula and unit in the volume-ratio choice remain intact. No layout override is indicated."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Three short stages are separately line-broken: equality fact, why the wording is false, and conclusion. Sufficient for this one-property question."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "M2-06 / M2-06-SIMILAR_FIGURE and PT_SIMILAR_FIGURES / TPL_SIMILAR_FIGURES_RATIO match the inspected 2015 M2-2 DIRECT_ACTIVE crosswalk and ACTIVE binding. 하 / difficultyBucket 1 / high confidence fit a direct concept check; no additional concept/condition relation is necessary."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "No figure, problem-image reference, solution SVG, or external asset is present or needed for evaluating the statement about corresponding angles."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "닮음에서 대응각·대응변 성질을 진술별로 판단",
+        "decisiveStep": "닮은 평면도형에서 대응하는 각의 크기는 서로 같다. 각의 크기가 서로 비례하는 것이 아니므로 ③의 설명은 틀렸다. 따라서 정답은 ③이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 2,
+        "contentHash": "c21a8d930daded93bba9f10fd59f2563a0f37906ea37ab215abb360db128a090",
+        "choicesHash": "40bf15fc84c5bd297f84e5d95998d5e4c665b7f129ce7f1140ec0bf24e67cdbf",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_SOURCE_REPAIR_OR_LOCKED_SOURCE_ATOMS",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "studentPayloadUnchanged": true,
+      "artifactBinding": {
+        "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+        "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+        "basis": "R1 q1/q2 supplement confirms q2 student payload unchanged; prior clean review reused.",
+        "currentCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "③,⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "③,⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "939038e6d4038e5951601aa2066a7aa61c15d1c411cd55025991c3504bc755ea",
+      "answerReason": "대응각은 같고 대응변의 비만 3:5이다. ∠F=50°, EF=15, AC:DF=3:5는 참이며 ∠A=90° 및 ∠B:∠E=3:5는 거짓이다.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Triangle correspondence, 50° angle, and BC=9 cm are required to test choices."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Triangle correspondence, 50° angle, and BC=9 cm are required to test choices."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "삼각형 닮음비와 대응 관계로 진술을 판정",
+        "decisiveStep": "④ $AC$와 $DF$는 대응변이므로 $AC:DF=3:5$여서 옳다. ⑤ 대응각 $\\angle B$와 $\\angle E$는 크기가 같아 그 비가 $1:1$이므로 옳지 않다. 따라서 옳지 않은 것은 ③, ⑤이고 정답은 ③, ⑤이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 3,
+        "contentHash": "ceeb4fd41fa707ffec578a9802a3b0f57c73dc0211843f51ea68b69c4d2ec150",
+        "choicesHash": "f616d86b3a3fea12c310c2d650cf5364e91808a04f25923609b2ccf2cc0835f6",
+        "imageRefHash": "3779ab619d7766e23237ad5b5349b100421bf8ee845edf5450517d5678ed0ea8"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+      "imageSha256": "bb18fe551ea4469b0230fd33040aa9d7df2ca1cb9b720b341743765a2b5f9ac3",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "60",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ce69851c01d2f46409f044b5e26d9efd0238f551912bc28f4570ed2e933d1007",
+      "answerReason": "같은 높이 간격의 등변사다리꼴 단면에서 폭은 높이에 따라 선형 증가한다. x-48=72-x이므로 x=60.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Stacked trapezoid diagram supplies equal-height bands and width labels."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Stacked trapezoid diagram supplies equal-height bands and width labels."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "같은 높이 간격에서 평행한 단의 폭 변화 비교",
+        "decisiveStep": "따라서 가운데 변의 길이는 $x=72-12=60$ cm이다. 정답은 ③이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 4,
+        "contentHash": "c5df73c100615869c7cff24c02234232d4eaaf03adde9abaaa4d209df5f15638",
+        "choicesHash": "e6bebc6d32afce822be2931c55d5e9a00660bf738835e276d7a3b16e70beaa5a",
+        "imageRefHash": "05fdb055974c97400b341bf599f3f0446b66b87feb7cb71dcb2c90a2b58d029e"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q04.png",
+      "imageSha256": "eea8b33d8b8e34909c4f45ed5b4c7bb8543e836a5c66fedcb22ad21fdc1e651d",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "1:5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cf01162b3c327c7612981047909fa0c1ecd3ec1a2781548dc3bca3467dd3d0e3",
+      "answerReason": "반지름이 r, 2r, 3r인 동심원에서 (가)는 바깥 고리 5πr², (다)는 안쪽 원판 πr²이므로 비는 1:5.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Concentric target identifies which regions are (가) and (다)."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Concentric target identifies which regions are (가) and (다)."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "동심원의 반지름으로 두 영역의 넓이 계산",
+        "decisiveStep": "(다)의 넓이는 반지름 $3r$인 원에서 반지름 $2r$인 원을 뺀 넓이이므로 $S_{(다)}=\\pi(3r)^2-\\pi(2r)^2=5\\pi r^2$이다. 따라서 $S_{(가)}:S_{(다)}=1:5$이고 정답은 ①이다.",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 5,
+        "contentHash": "3f5b17a8a0f9c9a9e4eef7f4570a8fd98750131c20421c279dc2f9b9c362f940",
+        "choicesHash": "e89540625166f15611d72a53227c0cc9bd60bf77f5a736221afe1541447f2792",
+        "imageRefHash": "b17f192c76727d079e8eee631a67b3b0f1a5a49a4e40b76150e14036db1ef6ad"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q05-r4.png",
+      "imageSha256": "941dfd668d3997f502ba24b0f9ce84116261caef38fcb21cbc23210a04a7d965",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "③ (6)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "TARGETED_REPAIR_PASS",
+      "repairApplied": true,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "44c9dbcc628a53c6869b9a050348c42d3ab5221908fdbbe6e67e2717278fc46b",
+      "answerReason": "AB²=BD·BC에서 BC=25, DC=9. 높이선 성질로 x²=16·9이므로 x=12, y²=9·25이므로 y=15, z=9. x-y+z=6.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+        "evidence": "Reopened only the changed current q6 solution. BC, z, x²/144/x=12, y²/225/y=15, and final expression now occupy distinct logical lines; answer/math not re-solved."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Right angle, altitude foot, side labels 20 and 16, and x/y/z ownership are essential."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+          "evidence": "Reopened only the changed current q6 solution. BC, z, x²/144/x=12, y²/225/y=15, and final expression now occupy distinct logical lines; answer/math not re-solved."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Right angle, altitude foot, side labels 20 and 16, and x/y/z ownership are essential."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "직각삼각형의 빗변 분할과 높이 성질 적용",
+        "decisiveStep": "$AC^2=DC\\cdot BC$이므로 $y^2=9\\cdot25=225$, $y=15$이다. 따라서 $x-y+z=12-15+9=6$이고 정답은 ③이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 6,
+        "contentHash": "3b920cc5fd3eb23f4714e579689e195b57471c36debfc81687412ab941960dca",
+        "choicesHash": "9e033c981627ed7f85e68597ea0dd432653c30006930404e72b3d21ce8cf5faa",
+        "imageRefHash": "9051e672f2157a1257183ecac800cbcb93506a38af14a43cf2859b5f8b56db24"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+      "imageSha256": "1c46d37c3958d8bb252bb6abd2820ad3a33ae44e265cbe82331f19c0cc44b73b",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "④ (9/2 cm)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5bee3460c75ef17f847c3fecd0f24b018d6c4d30c7030e2d2612d2a3a01198e5",
+      "answerReason": "BC=9. Stewart 정리에서 9·AC²+5·6²=9·(3²+4·5), 따라서 AC²=81/4, AC=9/2.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+        "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Triangle and cevian lengths AB, BD, DC, AD are essential."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+          "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Triangle and cevian lengths AB, BD, DC, AD are essential."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "수선의 발을 놓고 피타고라스 정리로 길이 결정",
+        "decisiveStep": "A에서 BC에 내린 수선의 발을 두어 AB²=t²+h², AD²=(t−4)²+h²를 세운 뒤 t=43/8을 구하고 AC²=81/4에서 AC=9/2를 얻는다.",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 7,
+        "contentHash": "b0dc3924b5093bd39d805425478fe7c7dd92bff9bab40985abbf38ab7aab2abd",
+        "choicesHash": "63509603a31bed4ebb83e6e2071e62bc84fd5df90852f7738ada6b1084e2d9d1",
+        "imageRefHash": "7de5f89615e6276923f7091cd550d6dd64f48b12774a3dbf66aebf1335321d5f"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q07-r3.png",
+      "imageSha256": "1f4add2470833c06deb39af27daa55ce20494f2a9afafce7953d2abd021d25d3",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "② (135)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b7e4ad407bea2faa56b3ff4c7c78eb08f7acd2b1817aa04ff12f358cf4710b4d",
+      "answerReason": "닮음비 2:3이므로 부피비는 8:27이다. (나)의 부피는 40·27/8=135.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Cone pair grounds (가)/(나) naming; text supplies circumference ratio."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Cone pair grounds (가)/(나) naming; text supplies circumference ratio."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "닮은 입체도형의 길이비에서 부피비 계산",
+        "decisiveStep": "따라서 (나)의 부피는 $40\\times\\dfrac{27}{8}=135$이다. 정답은 ②이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 8,
+        "contentHash": "2df814ea0beb081f9679076acb2c47b38ef04f2b3555534714e3ee96a7ec3e67",
+        "choicesHash": "84f0428a5751fe2e01cd11acb1b53cffe218ca146482560590e0bacc8ecdb6ed",
+        "imageRefHash": "04e61037130566dec35ecd90596d5dc12406081106793f95cd2fc9e8209332e6"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q08-r5.png",
+      "imageSha256": "889472f4a6fbc89cb1909c250ed502d11bca7bbfd594b49dcb9a52287f8cec40",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "② (18/7 cm)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "39eaf37e5f3e130c8e373f40ada2cf9c2abeb6593397cff9e04f60d1673054b7",
+      "answerReason": "좌표로 B=(0,0), C=(9,0), A=(u,h), D=(u+6,h), M=(9/2,0)로 놓으면 교점 P,Q의 높이는 모두 3h/7이고 가로 좌표 차가 18/7이다.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Trapezoid, midpoint M, intersections P/Q, and lengths are necessary."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Trapezoid, midpoint M, intersections P/Q, and lengths are necessary."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "사다리꼴의 평행선과 닮음으로 교점 길이 결정",
+        "decisiveStep": "따라서 $\\triangle ADM$에서 두 점 $P,Q$는 각각의 변을 같은 비 $4:3$으로 나눈다. 그러므로 $PQ\\parallel AD$이고 $PQ:AD=PM:AM=3:7$이다. $PQ=6\\times\\dfrac37=\\dfrac{18}{7}$ cm이므로 정답은 ②이다.",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 9,
+        "contentHash": "7e413d7aa05bcdfc2336fb1f2fab5f008e578f7b38ff75b57790ca40be79d656",
+        "choicesHash": "82fcc1e96c4fbfdaa0577dd63f3374b54999b367aef3ee344c800950c8ea8690",
+        "imageRefHash": "64ffccb4d3c249b1d62c6436b9b4ecb90b471b737a701794b9f2bc065fc19fc8"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+      "imageSha256": "c88b3629ba197787821f180bf22e98114f28ac8ffc829513e095e6283ec5593d",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "20/3 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "provenance/archive/evidence/r1-clean-recheck-20261007-q10.json",
+      "answerCompareRef": "provenance/archive/evidence/r1-clean-recheck-20261007-q10-post-repair.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "TARGETED_REPAIR_PASS",
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "987363d1c12d7e5889c93145ecdb7109222e40218c64cdeca3756d132a830f49",
+      "questionLayout": {
+        "status": "STATIC_KEEP_RENDER_PENDING",
+        "evidence": "Prompt keeps the triangle reference, parallel conditions, ratio, and ask in source order. No formula or condition is split in stored content. Exact parity against original source and actual engine rendering were not performed in this qid-only recheck."
+      },
+      "solutionLayout": {
+        "status": "PASS_TARGETED_POST_REPAIR",
+        "evidence": "Separate blocks: AB=AD²/AF; =8²/(48/11); =64·11/48; =44/3 cm. Separate blocks: x=BD; =AB−AD; =44/3−8; =20/3 cm."
+      },
+      "meta": {
+        "status": "CURRENT_VALUES_REVIEWED_NO_CHANGE",
+        "evidence": "Current course/unit, subunit, active PT/TPL projection, decisiveStep, bucket=3, confidence=high, boundary=NONE, legacy compatibility=NORMAL are consistent with the parallel-segment similarity task. Compiled PT taxonomy and M2-06 curriculum binding are ACTIVE; TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE is ACTIVE. No Meta mutation."
+      },
+      "visualSvg": {
+        "status": "PROBLEM_VISUAL_PRESENT_REVIEWED_SOLUTION_SVG_NOT_REQUIRED",
+        "evidence": "Opened actual q10-r3.png before freeze; it shows AD=8 cm, A-F-D-B collinearity, E on AC, DE∥BC and EF∥DC. This diagram is the necessary problem visual and the textual similarity steps suffice without a solution SVG."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Prompt keeps the triangle reference, parallel conditions, ratio, and ask in source order. No formula or condition is split in stored content. Exact parity against original source and actual engine rendering were not performed in this qid-only recheck."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Separate blocks: AB=AD²/AF; =8²/(48/11); =64·11/48; =44/3 cm. Separate blocks: x=BD; =AB−AD; =44/3−8; =20/3 cm."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "Current course/unit, subunit, active PT/TPL projection, decisiveStep, bucket=3, confidence=high, boundary=NONE, legacy compatibility=NORMAL are consistent with the parallel-segment similarity task. Compiled PT taxonomy and M2-06 curriculum binding are ACTIVE; TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE is ACTIVE. No Meta mutation."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_VISUAL_REVIEWED",
+          "evidence": "Opened actual q10-r3.png before freeze; it shows AD=8 cm, A-F-D-B collinearity, E on AC, DE∥BC and EF∥DC. This diagram is the necessary problem visual and the textual similarity steps suffice without a solution SVG."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "두 쌍의 닮은 삼각형 비례식으로 미지 길이 계산",
+        "decisiveStep": "그림에서 AD=8이고 AF:FD=6:5임을 읽어 AF=48/11을 구한다. 두 닮음에서 AD/AB=AF/AD이므로 AB=44/3, x=BD=AB−AD=20/3이고 정답은 ⑤이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 10,
+        "contentHash": "27ff3f372fc2a8ff438dcdaea6d1427d63cba3b8f81679eba20cbf591e942e00",
+        "choicesHash": "1770947d9500f052af940c833a8edddd420c0fcd6c8a53b7ec68749b4b0d2026",
+        "imageRefHash": "e452cfef1c11aaa8cbe25211e9bdbd9e9b8df2334f7721ec3259c23aa714c90e"
+      },
+      "sourceTextExactParity": "PASS_SOURCE_REPAIR_OR_LOCKED_SOURCE_ATOMS",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+      "imageSha256": "60738709986d5152f517f0338014f57e4da3a462f6e8873c1cbcdcbf1b166549",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "storedSolutionSha256": "987363d1c12d7e5889c93145ecdb7109222e40218c64cdeca3756d132a830f49",
+      "artifactBinding": {
+        "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+        "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+        "basis": "Clean answer freeze and postrepair solution-layout evidence rebound to current artifact; q10 payload/solution hash unchanged since q10 targeted PASS; only q18 changed after that candidate.",
+        "currentCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "48d209d4f74de0f9c1cbc40b0802f9c9656ca4327f65f7a0ea8403b3ebeb518e",
+      "answerReason": "①~④는 각각 6가지이고, 부모를 한 묶음으로 한 뒤 내부 순서를 고려하는 ⑤는 3!·2!=12가지이다.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+        "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+          "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "각 경우의 수를 비교해 하나만 다른 배열 수를 판별",
+        "decisiveStep": "⑤ 부모님을 한 묶음으로 보면 세 대상을 배열하는 $3!$가지이고, 묶음 안에서 부모님을 바꾸는 $2$가지가 있다. $3!\\times2=12$가지이다. 따라서 나머지 넷과 다른 것은 ⑤이고 정답은 ⑤이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      },
+      "sourceFingerprint": {
+        "qid": 11,
+        "contentHash": "0bf426c39b578d5847369e31575ef8ab3ae523e3a2c77822a20da953f5a0b4e5",
+        "choicesHash": "083ec8f59c7d447912d95fce160174ad021924fad246d1120c6466d29246214c",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "②,③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "②,③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8fb5fcbcae18d1c5fc91691ac4673f3f7bfc80506aba120247a350089d9ce262",
+      "answerReason": "가능한 공은 1~10. 0은 불가능해 확률 0, 1은 1/10. 10 이상은 10만 해당해 1/10이고, 5 이상은 6/10이다.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "표본공간에서 각 진술의 확률 계산",
+        "decisiveStep": "④ 3이 나오는 경우도 한 가지이므로 확률은 $\\dfrac1{10}$이다. ⑤ 5 이상은 $5,6,7,8,9,10$의 여섯 가지이므로 확률은 $\\dfrac6{10}$이다. 따라서 옳은 것은 ②, ③이고 정답은 ②, ③이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 12,
+        "contentHash": "fc725a2fab37e760daa6345c3be808dbf7eb231311c92db88f0f849bf4f73088",
+        "choicesHash": "5bc998922f2978d572bae4c3c7363781a9357e8e0f57f78baf86974ce5836e60",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "④ (45)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8c38bc220000ba364814efb1c5667ce59f76e48b66c383f7e9cdc13e379fb770",
+      "answerReason": "평행사변형에서 E는 AD의 중점, G는 BD와 EC의 교점. 평행선 및 공통 높이로 [GDC]+[GAE]=3[GDE]. 따라서 합은 45.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+        "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Parallelogram, midpoint E, and intersection G define the area relations."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+          "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Parallelogram, midpoint E, and intersection G define the area relations."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "평행선과 같은 밑변·높이의 삼각형 넓이비 적용",
+        "decisiveStep": "두 삼각형 $GDE$, $GDC$는 밑변 $GD$가 같으므로 넓이비는 높이의 비 $GE:GC=1:2$이다. 따라서 $[GDC]=2\\times15=30$이다. $[GDC]+[GAE]=30+15=45$이므로 정답은 ④이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 13,
+        "contentHash": "c0bb05a8edd586b9740f9f362ce3edf7899652423e41a34b65735a9730161f79",
+        "choicesHash": "1b5c32216867af32dc7433f1196b0c56228f367e47b82884e9ba8c2726139431",
+        "imageRefHash": "f29bfc5160e7a2e5b73123d493348dc3ca0e53f459dc86c6b9728f46b238606e"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+      "imageSha256": "d66770c68dfa75095f7ed114eacb09b93d49efa77b1af4671c57b5ccacadb9f2",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "① (2/3)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2ab9b4f8144ba7cf02def26815b3daabb946ef338d1a1aecc49fa37c30092d97",
+      "answerReason": "2·3학년 학생은 12+8=20명, 전체는 30명이므로 확률은 20/30=2/3.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "전체 학생 수에 대한 유리한 학생 수의 비 계산",
+        "decisiveStep": "$12+8=20$명이다. 따라서 구하는 확률은 $\\dfrac{20}{30}=\\dfrac23$이고 정답은 ①이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 14,
+        "contentHash": "bce92ad438afea81b19ca7b1c499552cb369bb29b431488feeb936259bd6a474",
+        "choicesHash": "a7316cb7404c112d399630e436e2905f8e8f81202bae4df86013821cee00762a",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "② (24)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "TARGETED_REPAIR_PASS",
+      "repairApplied": true,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "R1 independently inspected current Meta fields; problemTypeKey, templateKey are null under RPM_PRIMARY_MIGRATION_GAP; preserved as explicit nonblocking projection debt with no unsupported reclassification.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6f682373e5a82638950efeda5cdfac0e2c1e15fb8a4e89b8d15c7a6182023b41",
+      "answerReason": "반원 넓이는 지름 제곱에 비례한다. 빗변 쪽 S1=S2+S3이므로 S3=8π. 두 직각변은 6,8이고 삼각형 넓이는 24.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+        "evidence": "Reopened only the changed current q15 solution. AB²/AB, BC²/BC, AC² calculation chain and area conclusion are separated into board lines; answer/math not re-solved."
+      },
+      "meta": {
+        "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+        "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Right angle and the three semicircle-area owners S1/S2/S3 are necessary."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+          "evidence": "Reopened only the changed current q15 solution. AB²/AB, BC²/BC, AC² calculation chain and area conclusion are separated into board lines; answer/math not re-solved."
+        },
+        "META": {
+          "status": "PASS_WITH_RECORDED_PROJECTION_DEBT",
+          "evidence": "현행 값과 difficulty를 직접 확인했다. projectionStatus에 기록된 비차단 mapping debt를 그대로 재인증하지 않고 현재 값 자체는 source 풀이 및 단원과 모순되지 않는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Right angle and the three semicircle-area owners S1/S2/S3 are necessary."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "반원의 넓이로 두 변을 구한 뒤 피타고라스 정리 적용",
+        "decisiveStep": "$AC=8$이다. 따라서 $\\triangle ABC$의 넓이는 $\\dfrac12\\times6\\times8=24$이고 정답은 ②이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "RPM_PRIMARY_MIGRATION_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 15,
+        "contentHash": "5e561c9884f8f841e7bd0dbdadfc8fb27b45c362c6883291427cf895458befc2",
+        "choicesHash": "316f0c005279f432feb748c6fe304d662fbce6533389865bade6f3fc2405773d",
+        "imageRefHash": "e625377cc05a166d140fd08dbd0354812b26070febd0f311bd112174291a7ad0"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q15.png",
+      "imageSha256": "89f43e05590b362516af6e6000c1bbada9f02a2eb17fe177be6c90c8e0e29723",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "① (1/12)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1a9047d9c09ba0dd8d96e1c2e25e9ed199ed5aff0110a260449df8d376e26fe9",
+      "answerReason": "해 x=-b/(3a)가 정수인 경우는 (a,b)=(1,3),(1,6),(2,6), 총 3/36=1/12.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "주사위 순서쌍을 열거해 정수해 사건의 확률 계산",
+        "decisiveStep": "$a\\ge3$이면 $3a\\ge9>b$이므로 가능한 $b$가 없다. 따라서 전체 $36$가지 중 정수해인 경우는 $3$가지이다. 구하는 확률은 $\\dfrac3{36}=\\dfrac1{12}$이고 정답은 ①이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 16,
+        "contentHash": "3f6ad9e3640ae4c0d26ee63026afb6fd08bf8425bd82b4bf9e416b58661873b6",
+        "choicesHash": "934e673983288d0e8c282f9594af64c38d3bc832466efa165f99d92d5b554f99",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "671b3329357d0f5fa7ffb354064d35ba24a6f1dd3903bf12decefe1bdbdce0ed",
+      "answerReason": "일어나지 않을 확률 q=1-p이므로 p=q-1은 일반적으로 성립하지 않는다.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "사건과 여사건의 확률 관계를 진술별로 판정",
+        "decisiveStep": "$p=1-q$이다. 따라서 $p=q-1$이라고 한 ③은 옳지 않다. 정답은 ③이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 17,
+        "contentHash": "071457863d0ce2e44c30d7932938d88c675e34c95c41f55df46aa1abb5d8ed14",
+        "choicesHash": "9c58054970b2abf29cf9e113e5d833b46335ca609d09eec6b66e147dae9addcc",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "15/2 (⑤)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "provenance/archive/evidence/r1-q18-independent-freeze-clean-20261007.json",
+      "answerCompareRef": "provenance/archive/evidence/r1-q18-clean-review-20261007.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "TARGETED_REPAIR_PASS",
+      "repairApplied": true,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6e600a975583557ea425df4b6c1bcdd16dda1ec6aaccfb85d0196b0a2ffa5482",
+      "questionLayout": {
+        "status": "PASS_STATIC_TARGETED_RECHECK",
+        "evidence": "The new runtime line break separates the condition from the final ask; concatenating across only that newline reproduces the exact original content string, including the original comma-following space. Choices and problem image reference are unchanged. Exam-page browser render was not run in this q18 repair subtask."
+      },
+      "solutionLayout": {
+        "status": "PASS_STATIC_TARGETED_RECHECK",
+        "evidence": "The stored solution bytes are unchanged from the post-freeze comparison and prior solution-layout review; the angle facts, similarity, ratio, intermediate BC, BD subtraction, and choice conclusion remain on separate logical lines."
+      },
+      "meta": {
+        "status": "PASS_UNCHANGED_PRIOR_REVIEW",
+        "evidence": "Independently checked current values: tags triangle/similarity/segment length/geometry; standardCourse M2 and unit M2-06 similarity; primaryMethod angle-based similarity and corresponding-side ratio; RPM scope M2-2, triangle similarity, application/length, current scope. These fit the item. Difficulty level 상 / bucket 3 is marked medium confidence with B34 and BORDERLINE_REVIEW, appropriately retaining its boundary uncertainty."
+      },
+      "visualSvg": {
+        "status": "PASS_STATIC_AND_RENDER_INSPECTED",
+        "evidence": "A deterministic consistent model displays the source topology and exact derived correspondence without unsupported angle labels. The final SVG and preview SHA are bound above. The final 960x430 SVG was raster-rendered and visually inspected. Point/segment labels are separated, the figure and proof text fit without clipping, and the given angle correspondence and side ratio are readable."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "The new runtime line break separates the condition from the final ask; concatenating across only that newline reproduces the exact original content string, including the original comma-following space. Choices and problem image reference are unchanged. Exam-page browser render was not run in this q18 repair subtask."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "The stored solution bytes are unchanged from the post-freeze comparison and prior solution-layout review; the angle facts, similarity, ratio, intermediate BC, BD subtraction, and choice conclusion remain on separate logical lines."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "Independently checked current values: tags triangle/similarity/segment length/geometry; standardCourse M2 and unit M2-06 similarity; primaryMethod angle-based similarity and corresponding-side ratio; RPM scope M2-2, triangle similarity, application/length, current scope. These fit the item. Difficulty level 상 / bucket 3 is marked medium confidence with B34 and BORDERLINE_REVIEW, appropriately retaining its boundary uncertainty."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_VISUAL_REVIEWED",
+          "evidence": "A deterministic consistent model displays the source topology and exact derived correspondence without unsupported angle labels. The final SVG and preview SHA are bound above. The final 960x430 SVG was raster-rendered and visually inspected. Point/segment labels are separated, the figure and proof text fit without clipping, and the given angle correspondence and side ratio are readable."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "각 조건으로 삼각형 닮음을 보이고 대응변 비 적용",
+        "decisiveStep": "$BC=\\dfrac{27}{2}$ cm이다. $BD=BC-CD=\\dfrac{27}{2}-6=\\dfrac{15}{2}$ cm이다. 정답은 ⑤이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 18,
+        "contentHash": "1d018a619acec312517aaa6f4a4c6fff51d64b63fdd0a366a94bd45499697487",
+        "choicesHash": "7fbadf22a226b104453138d427fd267b0d9c6b028ed1f087beac0282fbb1f171",
+        "imageRefHash": "04e8e1766efcfa4cacb580e273fd25ffec8ca108c7150ff1f6023025ba90699b"
+      },
+      "sourceTextExactParity": "PASS_SOURCE_REPAIR_OR_LOCKED_SOURCE_ATOMS",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q18-r6.png",
+      "imageSha256": "ba11ce867be1eec6cc5638fd86c6f4e45cbf46a5ea290ef9f2a30b0a5970819f",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "freezeSha256": "c8b30af48e4721942daab61bebad838c222a11d96f882fc3537d70ec88cfd23",
+      "correctionReviewRef": "provenance/archive/evidence/r1-q18-correction-review-20261007.json",
+      "solutionSvgSha256": "6fe1288d3cf82c53498d5e3dcab92d612cac845183747e59d32b7df6d8a41c40",
+      "solutionSvgBlobSha1": "01578d1bb317887b3dd6a6a2ef4b63d8c0f8e886",
+      "artifactBinding": {
+        "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+        "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+        "basis": "Fresh clean q18 freeze/answer review and changed-locus question/SVG evidence bind current content and q18 solution asset.",
+        "currentCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "⑤ (3/5)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d70f92d712bee610f54577aa7ee5cc0451d46baa6b1ddbe540d63685364fe60f",
+      "answerReason": "지지하지 않은 학생은 300-120=180명, 확률은 180/300=3/5.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "전체 투표자 중 지지하지 않는 인원의 비 계산",
+        "decisiveStep": "$300-120=180$명이다. 따라서 지지하지 않을 확률은 $\\dfrac{180}{300}=\\dfrac35$이고 정답은 ⑤이다.",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 19,
+        "contentHash": "7eb5d5842696e5f4d76d4c9c98150bd75c9bfff419423100bf3d80e03f264d9e",
+        "choicesHash": "18d7a2d424202abefa4806e3b7f61d2da8d073d1b85190d0541d6fac56e385d5",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "③ (46/105)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "291f91721955222c08ce24b162c34c918908d41ef2ce441f38f4ac30b55dce95",
+      "answerReason": "정확히 한 명만 푸는 경우의 확률은 (3/7·2/3·3/5)+(4/7·1/3·3/5)+(4/7·2/3·2/5)=46/105.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "한 명만 푸는 서로 배반인 세 경우의 확률 합산",
+        "decisiveStep": "세 경우는 서로 겹치지 않으므로 더하면 $\\dfrac{18+12+16}{105}=\\dfrac{46}{105}$이다. 따라서 정답은 ③이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 20,
+        "contentHash": "6f507f4705b4c583f6b3cbe40a6be48c795322da15957a8e8240749ab9a074f5",
+        "choicesHash": "80b77a3fc43b9739d5cf1b6d560ee5425ddb76553e451ce9d12681d7638f138b",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "(1) 16 ordered pairs; (2) 3/16",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "(1) 16가지 (2) 3/16",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "TARGETED_REPAIR_PASS",
+      "repairApplied": true,
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9a74e247097a16f60d6a0b584bad4c274253ad288c6e9ea7b3b82d13da212f58",
+      "answerReason": "표본공간은 동전 앞/뒤와 4~11의 8개 수로 16개 순서쌍. 소수 눈은 5,7,11의 세 가지이므로 확률은 3/16.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+        "evidence": "Reopened only the changed current q21 solution. The full 16 ordered pairs are split into two readable groups per coin face and probability cases remain separate; answer/math not re-solved."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_TARGETED_CHANGED_LOCUS_RECHECK",
+          "evidence": "Reopened only the changed current q21 solution. The full 16 ordered pairs are split into two readable groups per coin face and probability cases remain separate; answer/math not re-solved."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "동전·주사위의 전체 순서쌍과 유리한 경우 열거",
+        "decisiveStep": "(2) $4$부터 $11$까지의 소수는 $5,7,11$이다. 뒷면과 소수가 함께 나오는 경우는 $(뒷면,5),(뒷면,7),(뒷면,11)$의 $3$가지이다. 따라서 확률은 $\\dfrac3{16}$이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 21,
+        "contentHash": "5fbb54fd0b3e7ae744f16b5582ab835a853ee6ec264516cfe1524c23ff321e29",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "닮음비 4:5; EF=5 cm; 넓이=25 cm²",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "(1) 4:5 (2) EF=5 cm, 넓이=25 cm²",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0a285644ac3f4d5daa2c174f832bb056799a6b41735f00451e8771675b495862",
+      "answerReason": "직각변 AC:DF=8:10=4:5. 따라서 EF=4·5/4=5. 작은 삼각형의 넓이는 16이므로 큰 삼각형 넓이는 16·25/16=25.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Corresponding right triangles and labeled lengths 8,4,10 are essential."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Corresponding right triangles and labeled lengths 8,4,10 are essential."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "대응변 닮음비와 직각삼각형 넓이 계산",
+        "decisiveStep": "$EF=5$ cm이다. $\\triangle DEF$의 넓이는 $\\dfrac12\\times DF\\times EF=\\dfrac12\\times10\\times5=25$ cm$^2$이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 22,
+        "contentHash": "09ccecd7912337f82b9b46c3dc49cb85007dbf6b9027c3cb9a5026233503b489",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "0202dc68cdf92f49cd69bed17ee7d16d05ddeb9fc57f0bf9e2e77484ff74f80b"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q22-r5.png",
+      "imageSha256": "8d08d7ea30dcd118cc8f8cf410da5f8f0343318e97fbb01b15eb420c207adc14",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "38/5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "x+y=38/5",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c926b63845e1414cac7cf7a5e057dc6692f5fecc0edf823e0dfc42fcf8033f7b",
+      "answerReason": "△ABC∼△FCE이며 AB:FE=6:9=2:3이므로 BC:BE=2:5. △BCD∼△BFE에서 BD:BF=CD:FE=2:5. BF=10이므로 x=BD=4, y=CD=18/5, x+y=38/5.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+        "evidence": "Three parallel segments, crossing lines, BD/DF, CD labels are essential."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_PROBLEM_VISUAL_REVIEWED",
+          "evidence": "Three parallel segments, crossing lines, BD/DF, CD labels are essential."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "세 평행선에서 생기는 두 닮음비를 이어 미지 길이 계산",
+        "decisiveStep": "$x=BD=10\\times\\dfrac25=4$ cm, $y=CD=9\\times\\dfrac25=\\dfrac{18}{5}$ cm이다. 따라서 $x+y=4+\\dfrac{18}{5}=\\dfrac{38}{5}$이다.",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 23,
+        "contentHash": "0455b0b581296f428f1b898546a7ba30dbda45d6016e60287f05bfcd93435654",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "4912497dda88afcc597a4f9939d08d4b21869bb30f413c6aa0fa1737a34907c4"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": "assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+      "imageSha256": "96929b3f3d970c050b8e35966d3b41cbdfa0de47ff6bff378d368a5e0064a0ee",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "1/12",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentAnswerFreezeRef": "evidence/R1.independent-freeze.partial.json",
+      "storedAnswer": "1/12",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e8202b9294a35586404c580e6adadb4e69077fc5eeeae4b52a3f1d79add3b68c",
+      "answerReason": "무수히 많은 해는 계수와 상수항이 같은 비로 비례할 때다. (a,b,5b)=λ(2,1,5)에서 a=2b이며 가능한 주사위 쌍은 (2,1),(4,2),(6,3), 총 3/36=1/12.",
+      "questionLayout": {
+        "status": "PASS_STATIC",
+        "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+      },
+      "meta": {
+        "status": "PASS_CURRENT_VALUES_REVIEWED",
+        "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+      },
+      "visualSvg": {
+        "status": "VISUAL_EXEMPT",
+        "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_STATIC",
+          "evidence": "Safe current student projection compared against source-batch content/choices after layout-newline normalization; exact text atoms and choices match. All current referenced assets were opened. Actual engine render NOT_RUN_CODEX_HANDOFF."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "학생 풀이가 개념/조건, 결정식, 계산과 결론을 분리하고 필요한 경우 각 판단을 별도 줄에 둔다. 줄 수 기준이 아니라 핵심 중간식과 조건 연결을 확인했다."
+        },
+        "META": {
+          "status": "PASS_CURRENT_VALUES_REVIEWED",
+          "evidence": "현행 단원/하위단원, PT/TPL (있는 경우), decisiveStep, 난이도와 projectionScope를 직접 확인했다. 기존 META만 승계하지 않았고 현재 source와 풀이 구조에 정합하며 재분류 필요 없음."
+        },
+        "VISUAL_SVG": {
+          "status": "VISUAL_EXEMPT",
+          "evidence": "발문과 수치/경우 조건만으로 풀이를 완결할 수 있고 필요한 시각적 관계가 없어 문제 그림 또는 해설 SVG가 필요하지 않다."
+        }
+      },
+      "metaValues": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 성질",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "primaryMethod": "무수히 많은 해의 계수비 조건을 유리한 순서쌍으로 계산",
+        "decisiveStep": "$(2,1),(4,2),(6,3)$의 $3$가지이다. 전체 경우는 $6\\times6=36$가지이므로 구하는 확률은 $\\dfrac3{36}=\\dfrac1{12}$이다.",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "semanticSourceScope": "M2-2",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "sourceFingerprint": {
+        "qid": 24,
+        "contentHash": "6eaa662652a911d78bdfbf515afa3818f2585e2f4278e9f9af8c5e259ccbfcb7",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceTextExactParity": "PASS_LAYOUT_NORMALIZED_AGAINST_LOCKED_SOURCE_BATCH",
+      "choicesExactParity": "PASS",
+      "imageRef": null,
+      "imageSha256": null,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "provenance": {
+        "priorPartialRef": "evidence/R1.partial-evidence.json",
+        "priorPartialArtifactSha": "ea41379584a44e3dbca0226c1e4dbd8f85dd4259",
+        "currentReboundArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394"
+      },
+      "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "currentGitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+    }
+  ],
+  "aggregate": {
+    "denominator": 24,
+    "answerMatchCount": 24,
+    "answerMismatchCount": 0,
+    "questionLayout": "24/24 STATIC_PASS; ENGINE_RENDER_NOT_RUN_CODEX_HANDOFF",
+    "solutionLayout": "24/24 PASS_AFTER_TARGETED_REPAIR_RECHECK",
+    "meta": "24/24 current values reviewed; q7/q11/q13/q15 explicit projection debt retained",
+    "visualSvg": "13/13 referenced problem visuals opened/reviewed; q18 solution SVG separately rendered/reviewed; 11 qids VISUAL_EXEMPT",
+    "excludedFailedAttemptQids": [
+      1,
+      2,
+      10
+    ],
+    "failedAttemptPreserved": true,
+    "changedQids": [
+      1,
+      6,
+      10,
+      15,
+      18,
+      21
+    ],
+    "sourceTextExactParity": "PASS for 21 unchanged qids against locked source-batch after layout normalization; q1/q10 documented audited source repairs; q18 clean exact-atom layout correction.",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "overall": "PASS_STATIC_R1_RENDER_HANDOFF"
+  },
+  "nextStage": "R2_BLIND_SWEEP",
+  "artifactRebindLog": {
+    "currentArtifactSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+    "currentArtifactRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+    "rebindingRule": "For each qid, bind current student-field and solution hashes; unchanged qids retain prior clean review; changed qids 1,6,10,15,18,21 have current targeted review evidence.",
+    "changedQids": [
+      1,
+      6,
+      10,
+      15,
+      18,
+      21
+    ],
+    "failedPreFreezeAttemptsPreserved": [
+      1,
+      2,
+      10
+    ],
+    "excludedFailedAttemptQids": [
+      1,
+      2,
+      10
+    ],
+    "currentCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5"
+  },
+  "gitCleanFilterSha": "96fea3997e6179be3b82e2066582c4de543986a5",
+  "validationAttempt": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_왕운중_2학기_기말_중2_기출/evidence/R1.validation.json",
+    "attemptedAgainstArtifactSha": "96fea3997e6179be3b82e2066582c4de543986a5",
+    "rawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+    "disposition": "FAIL",
+    "issue": "COMMON_ACTUAL_ARTIFACT_SHA_MISMATCH",
+    "actualRawBufferGitBlobSha": "78e0339757c2af4bb852111f5ce73456c8996394",
+    "validatorSha256": "0c7a2b20275041a6c1f39a2ec0fa951f8493d71aab25d9086d40a93d912965e0",
+    "attemptedEvidenceSha256": "58bb1374e8bb6935044a11aee254f804c59bd11776cd18504065d8e1c4be5a87"
+  }
+}
