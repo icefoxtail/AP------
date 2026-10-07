@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_이수중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 14,
+  "productionPath": "archive/exams/original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+  "productionBaseline": {
+    "rawSha256": "3a2982155c85138128f2be14d25007ad7cf95a636526f1bc501788c7a8434772",
+    "rawBufferGitBlobSha1": "48561f5c6a967bbf852de3822ef024aefd3cdf8b",
+    "cleanFilterGitBlobSha1": "f1f3c542a3c3c3099f5bb771ce3647e91f3e0eec"
+  },
+  "candidate": {
+    "rawSha256": "655d8c1d5e8e4790115e664f7066919f97fb2066f3f8f3e96b323c4ecaf51dac",
+    "rawBufferGitBlobSha1": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8",
+    "cleanFilterGitBlobSha1": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "r1": {
+    "artifactSha": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8",
+    "evidenceSha256": "63e7d5682b097df28de1817c3b07b2d4d499bca8fae0512078270866a74f1314",
+    "validationSha256": "e67b85f41c9dc2a639d8d4e9ccfb1d2d1ec808a00f6297e238982b24d3387e8d",
+    "disposition": "PASS"
+  },
+  "r2": {
+    "artifactSha": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8",
+    "evidenceSha256": "a17b089621cdbe578f83032dd6b2669456eb2ff45e87450017aed9addd2cf623",
+    "validationSha256": "5691158be34769adedcb2e7f7b686f89e31c321f0cc40cd93673b7f7b0352b6f",
+    "disposition": "PASS"
+  },
+  "r3": {
+    "status": "NOT_RUN_BLOCKED",
+    "evidence": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_이수중_2학기_기말_중2_기출/R3.evidence.json",
+      "sha256": "9e773a00a5d0090ca0c784b6a3c1bed9c8270cdb9949b7a0f0bc29c77c30c31f"
+    },
+    "validator": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_이수중_2학기_기말_중2_기출/R3.validation.json",
+      "sha256": "2fe29fb5ebd4d24ea1b0cef1d87990e34cd444bcef8bf65f9891ca22a8139b04",
+      "disposition": "FAIL",
+      "issues": ["R3_RELEASE_INTEGRITY_REQUIRED"]
+    },
+    "continuation": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_이수중_2학기_기말_중2_기출/R3.continuation.json",
+      "sha256": "43f50c00affd962aee425109a5dba09a684bbb26ba017dcad16307b4a0263ce4"
+    },
+    "renderStatus": "NOT_RUN_NO_APPROVED_HTTP_ARCHIVE_ENGINE_SESSION",
+    "captureCount": 0,
+    "requiredCases": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "blocker": "No approved HTTP(S) Archive Engine session was available; browser inventory was empty. All six cases were not run and no captures were made.",
+    "forbiddenWorkaroundsNotUsed": [
+      "file://",
+      "local-server",
+      "alternate-browser",
+      "Playwright",
+      "CDP",
+      "substitute-captures"
+    ]
+  },
+  "itemRecovery": {
+    "disposition": "NOT_REQUIRED",
+    "itemHoldCount": 0
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": false
+  },
+  "resumeCondition": "Resume this R3 session when an approved HTTP(S) Archive Engine session can load the temporary candidate and its referenced assets through the official workspace/output-envelope route; then render all six desktop/mobile exam/solution/answer cases and bind the loaded JS, assets, captures, and reviewer identity."
+}
