@@ -1,0 +1,70 @@
+{
+  "id": "sqrt-affine-natural-boundary-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": 97.1,
+    "xMax": 129,
+    "yMin": -1.1423659658795862,
+    "yMax": 8.758139071743495,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": {
+    "x": true,
+    "y": false
+  },
+  "title": "양의 정의역 경계가 있는 제곱근 함수",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "sqrtFeatures": {
+      "schemaVersion": "SQRT_AFFINE_FEATURES_v1",
+      "radicandBoundaryX": "100",
+      "sourceEndpoints": [
+        {
+          "x": "100",
+          "y": 0,
+          "state": "CLOSED",
+          "source": "NATURAL_RADICAND_BOUNDARY"
+        }
+      ],
+      "rightTailDirection": "UP"
+    },
+    "sqrtFeaturePolicy": {
+      "schemaVersion": "SQRT_AFFINE_FEATURE_POLICY_v1",
+      "sourceDomainMode": "NATURAL_SQRT_AFFINE",
+      "boundaryPolicy": "NATURAL_NONNEGATIVE_RADICAND",
+      "endpointState": "CLOSED",
+      "rightTailDirection": "UP",
+      "endpointMarkerRadiusIntrinsicPx": 4,
+      "minimumEndpointMarkerDiameterCssPx": 3,
+      "minimumEndpointToTailSpanCssPx": 48
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "sqrt(2*x-200)",
+      "domain": [
+        100,
+        129
+      ],
+      "criticalX": [
+        100,
+        100.00107687988282
+      ]
+    },
+    {
+      "id": "formula",
+      "kind": "EQUATION_LABEL",
+      "text": "y=sqrt(2*x-200)",
+      "at": [
+        104.118,
+        7.570078467228725
+      ],
+      "priority": 0
+    }
+  ]
+}

@@ -36,6 +36,9 @@ def validate(spec):
         raise ValueError('UNKNOWN_SPEC_FIELD')
     if not {'id','visualType','viewport','objects','sourceFacts','derivedFacts','displayFacts'} <= spec.keys():
         raise ValueError('MISSING_SPEC_FIELD')
+    axes=spec.get('axes',True)
+    if not isinstance(axes,bool) and (not isinstance(axes,dict) or set(axes)!={'x','y'} or any(not isinstance(value,bool) for value in axes.values())):
+        raise ValueError('INVALID_AXIS_POLICY')
     if not isinstance(spec['id'],str) or not spec['id'] or spec['visualType'] not in VISUAL_TYPES:
         raise ValueError('INVALID_VISUAL_TYPE_OR_ID')
     for key in ('sourceFacts','derivedFacts','displayFacts'):
