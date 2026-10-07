@@ -7,7 +7,7 @@ qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
 JS Archive 2.0 keeps one product-quality contract and separates execution into two lines.
 
-- **Codex execution line:** ROOT + stage subagent conveyor, actual engine render, production publication, Git MAIN_DONE.
+- **Codex execution line:** ROOT + stage subagent conveyor, R3 actual render or ROOT-authorized static completion, production publication, Git MAIN_DONE.
 - **GPT scheduled execution line:** scheduled stage workers + selector/lease/Library handoff. `CREATE → R1 → R2 → R3 → MASTER → MAIN_DONE`. GPT 예약라인은 실제 engine render를 실행조건이나 완료상태로 두지 않는다. MASTER가 R3 완료 artifact를 target-only로 production/main에 반영하고 MAIN_DONE을 닫는다.
 
 A PASS in one execution line is not automatically inherited or invalidated by the other line. Artifact bytes, evidence, and the current contract decide.
@@ -25,7 +25,7 @@ This contract does not replace the existing canonical rules. It binds them into 
 ## 3. Final names from the beginning
 
 JS, PNG, and SVG use final production filenames and production-relative references from the start.
-Before promotion, work in `.tmp/archive/<examUid>/...` or an equivalent isolated execution-line area.
+Before promotion, work in `.tmp/archive/<runId>/<examUid>/...` under the assigned clean worktree. Use final filenames and production-relative asset references.
 Normal promotion moves the already-validated artifact to production; it does not rename assets or rewrite student-facing content.
 
 ## 4. Question layout
@@ -93,7 +93,7 @@ PASS binds answer, solution, decisiveStep, Meta, visual, and evidence to one fin
 
 ## 9. R2 and R3
 
-For the next qualification pilot, R2 keeps a full-qid blind answer sweep.
+Current Codex R2 keeps a full-qid blind answer sweep; terminated qualification pilots remain historical.
 Freeze the complete student-input answer before stored answer/solution exposure.
 MATCH closes quickly; mismatch/suspicious/high-risk locus gets deep treatment.
 R2 does not rerun the full R1 quality audit.
@@ -155,3 +155,12 @@ Keep prior artifacts/evidence, calculate the missing axes under the new contract
 - R3 targeted rows는 open/changed/direct dependency만 유지하고, 전 문항 Meta null/debt disposition은 `artifactDispositions={artifactSha,rows:[...]}`에 별도 결속한다. 이것은 R3 전수 의미 재검이 아니다.
 - GPT stage validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id <campaign> --stream <A|B|C>`를 명시한다.
 - GPT는 render를 수행하지 않는다. 대신 MASTER의 MAIN_DONE은 `archive/tools/archive-gpt-closeout-v2.mjs`로 R3 validation SHA, final artifact SHA, asset SHA, production path, origin/main remote parity를 결속한다.
+
+
+## Codex ownership clarification — 2026-10-07
+
+When ROOT selects the actual-render route, Codex R3 owns six-case Archive Engine rendering, screen judgment and reviewer-bound receipt. ROOT waiver/static-route authority follows Execution §25. ROOT accepts the machine witness, SHA/coverage/receipt and performs publication/readback; ROOT does not repeat screen quality review. The detailed conveyor, absolute assignment packet, R1/R2 student-only isolation, item HOLD travel, validator retry after actual repair and ledger contracts are in `JS_Archive_2.0_Codex_Execution_v1.md` §§16–25. This clarification does not change GPT_SCHEDULED render/publication behavior or the qualityContractVersion.
+
+## ROOT production-completion exceptions (CODEX)
+
+Codex completion is verified production readiness, publication and remote readback. Execution §25 delegates capture/render waiver and bounded HOLD recovery/release decisions to ROOT without repeated user approval. R1/R2 valid full-input freezes, complete qid coverage, R3 JS/assets/SVG/structure integrity, zero unresolved item HOLD and SHA-bound technical closeout remain required. ROOT-directed static completion records ROOT_DELEGATED / ROOT_DIRECTED_STATIC_COMPLETE / NOT_RUN_ROOT_WAIVER; direct-user waivers retain their distinct authority and status. Unexecuted screens are NOT_RUN, never fabricated RENDER_PASS. General ROOT static/MAIN_DONE validators and stage consumers are implemented across locked roster grade/course/run; full and partial waiver evidence have separate honest case status. The read-only archive-codex-root-waiver-intake CLI verifies durable authority revision, exact evidence and remote bytes. Historical direct-user helpers retain their original scope. This operational clarification keeps the qualityContractVersion and GPT_SCHEDULED behavior.

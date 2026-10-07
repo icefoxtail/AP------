@@ -1,4 +1,5 @@
 window.examTitle = "21_이수중_2학기_기말_중2_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -37,7 +38,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 2,
@@ -57,7 +59,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q02-r5.png",
     "answer": "①",
-    "solution": "닮은 삼각형에서 A와 D가 대응하므로 AB와 DE, AC와 DF가 대응한다. 닮음비는 AB:DE=15:5=3:1이다. 따라서 AC:DF=3:1이고 9:DF=3:1에서 DF=3 cm이다. 정답은 ①이다.",
+    "solution": "닮음의 순서 $\\triangle ABC\\sim\\triangle DEF$에서 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$이다.\\n따라서 $AB$와 $DE$, $AC$와 $DF$가 각각 대응한다.\\n$AB=15\\text{ cm}$, $DE=5\\text{ cm}$이므로 닮음비는\\n$AB:DE=15:5=3:1$이다.\\n대응변 $AC:DF$도 $3:1$이고 $AC=9\\text{ cm}$이므로\\n$9:DF=3:1$\\n$DF=3\\text{ cm}$이다.\\n따라서 정답은 ①이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -79,7 +81,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 3,
@@ -100,7 +103,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q03-r4.png",
     "answer": "⑤",
-    "solution": "원뿔의 부피식에서 (1/3)π×6²×h=96π이므로 높이는 8 cm이다.\n자른 평면은 밑면에서 4 cm 위에 있으므로 꼭짓점부터 절단면까지의 작은 원뿔 높이도 4 cm이다. 닮음비가 1:2이므로 작은 원뿔의 반지름은 3 cm이다.\n작은 원뿔의 부피는 (1/3)π×3²×4=12π cm³이다. 따라서 원뿔대의 부피는 96π−12π=84π cm³이고 정답은 ⑤이다.",
+    "solution": "원뿔의 부피를 이용해 처음 원뿔의 높이를 구한다.\\n$\\dfrac13\\pi\\cdot6^2\\cdot h=96\\pi$\\n$12h=96$\\n$h=8\\text{ cm}$이다.\\n밑면 중심 $O$에서 자른 면의 중심 $O'$까지가 $4\\text{ cm}$이므로 작은 원뿔의 높이는\\n$8-4=4\\text{ cm}$이다.\\n처음 원뿔과 작은 원뿔은 닮았으므로 반지름의 비는 높이의 비와 같다.\\n$ r:6=4:8$\\n$r=3\\text{ cm}$이다.\\n작은 원뿔의 부피는\\n$\\dfrac13\\pi\\cdot3^2\\cdot4=12\\pi\\text{ cm}^3$이다.\\n따라서 원뿔대의 부피는\\n$96\\pi-12\\pi=84\\pi\\text{ cm}^3$이다.\\n따라서 정답은 ⑤이다.",
     "level": "중",
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
@@ -124,7 +127,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 4,
@@ -144,7 +148,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q04-r4.png",
     "answer": "④",
-    "solution": "CD는 직각삼각형 ABC의 빗변 AB에 내린 높이이다. 닮은 삼각형의 대응변 관계에서 AC²=AD×AB, CD²=AD×DB이고 ∠A=∠BCD이다. 또 ΔABC∼ΔACD이다. 빗변 BC에 대한 관계는 BC²=BD×BA이므로 BD×AD라고 한 ④가 옳지 않다.",
+    "solution": "$CD\\perp AB$이고 $\\angle ACB=90^\\circ$이므로 $CD$는 빗변 $AB$에 내린 높이이다.\\n이때 $\\triangle ABC\\sim\\triangle ACD\\sim\\triangle CBD$이다.\\n빗변과 그 위의 두 조각을 이용하면\\n$AC^2=AD\\cdot AB$\\n$CD^2=AD\\cdot DB$\\n$BC^2=DB\\cdot AB$이다.\\n또한 닮음에서 $\\angle A=\\angle BCD$이다.\\n따라서 $BC^2$에 곱해지는 길이는 $DB$와 $AB$이다.\\n$DB\\cdot AD$라고 한 ④가 옳지 않다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -166,7 +170,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 5,
@@ -186,7 +191,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q05-r2.png",
     "answer": "③",
-    "solution": "D, E, F는 세 변의 중점이므로 중점연결정리에 의해 작은 삼각형의 각 변은 큰 삼각형의 대응변의 절반이다. 따라서 둘레도 절반이다. (8+10+12)/2=15 cm이므로 정답은 ③이다.",
+    "solution": "삼각형의 세 변의 중점으로 만든 삼각형에서 각 변은 원래 삼각형의 대응변의 절반이다.\\n$DE=\\dfrac12 AC=\\dfrac12\\cdot10=5\\text{ cm}$\\n$EF=\\dfrac12 AB=\\dfrac12\\cdot8=4\\text{ cm}$\\n$FD=\\dfrac12 BC=\\dfrac12\\cdot12=6\\text{ cm}$이다.\\n따라서 $\\triangle DEF$의 둘레는\\n$5+4+6=15\\text{ cm}$이다.\\n따라서 정답은 ③이다.",
     "level": "하",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -208,7 +213,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 6,
@@ -228,7 +234,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q06-r2.png",
     "answer": "⑤",
-    "solution": "세 평행선이 두 직선과 만날 때 대응하는 선분의 길이의 비는 같다. 따라서 7:x=6:12이고 x=14 cm이다. 정답은 ⑤이다.",
+    "solution": "세 평행선 $l,m,n$이 두 직선과 만났으므로 위쪽과 아래쪽 대응 선분의 비가 같다.\\n$7:x=6:12$\\n$\\dfrac7x=\\dfrac12$\\n$x=14\\text{ cm}$이다.\\n따라서 정답은 ⑤이다.",
     "level": "하",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -250,7 +256,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 7,
@@ -270,7 +277,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q07-r4.png",
     "answer": "④",
-    "solution": "BC∥DE이므로 ΔABC∼ΔADE이다. 대응하는 대각선에서 DA:AB=EA:AC이므로 9:6=7.5:x, 따라서 x=5 cm이다.\n또 ED:BC=DA:AB이므로 y:8=9:6, 따라서 y=12 cm이다. 그러므로 x+y=17 cm이고 정답은 ④이다.",
+    "solution": "$BC\\parallel DE$이므로 $\\triangle ADE\\sim\\triangle ACB$이다.\\n$DA:AB=EA:AC$에서\\n$9:6=7.5:x$\\n$9x=45$\\n$x=5\\text{ cm}$이다.\\n또 대응변의 비에서\\n$ED:BC=DA:AB$\\n$y:8=9:6$\\n$6y=72$\\n$y=12\\text{ cm}$이다.\\n따라서\\n$x+y=5+12=17\\text{ cm}$이다.\\n따라서 정답은 ④이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -292,7 +299,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 8,
@@ -313,7 +321,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q08.png",
     "answer": "②",
-    "solution": "무게중심 G는 중선 AD를 꼭짓점에서 2:1로 나누므로 AG:GD=2:1이다. AG=4 cm에서 GD=2 cm, 따라서 AD=6 cm이다.\n삼각형 ABD에서 E와 F는 AB와 BD의 중점이므로 EF는 중점연결선이다. 따라서 EF=AD/2=3 cm이고 정답은 ②이다.",
+    "solution": "무게중심은 중선을 꼭짓점에서 $2:1$로 나눈다.\\n$AG:GD=2:1$, $AG=4\\text{ cm}$이므로\\n$GD=2\\text{ cm}$\\n$AD=AG+GD=6\\text{ cm}$이다.\\n$\\triangle ABD$에서 $E,F$는 각각 $AB,BD$의 중점이다.\\n중점연결정리에 의해\\n$EF=\\dfrac12 AD=3\\text{ cm}$이다.\\n따라서 정답은 ②이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -327,8 +335,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
     "crossConceptKeys": [
       "CC_MIDPOINT"
     ],
@@ -337,7 +345,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 9,
@@ -357,7 +366,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q09-r5.png",
     "answer": "①",
-    "solution": "오른쪽 직각삼각형의 가로 길이 차이를 y cm라 하면 y²+4²=5²이다. 따라서 y²=9=3²이고, 길이는 양수이므로 y=3 cm이다.\n아래 밑변 x는 위 밑변 2 cm에 이 길이를 더한 x=2+3=5 cm이므로 정답은 ①이다.",
+    "solution": "윗변 $AD$의 길이는 $2\\text{ cm}$이고 높이 $AB$는 $4\\text{ cm}$이다.\\n오른쪽 빗변과 높이로 생기는 직각삼각형의 가로 길이를 $x-2$라 두면\\n$(x-2)^2+4^2=5^2$\\n$(x-2)^2=9$이다.\\n가로 길이는 양수이므로 $x-2=3$이고\\n$x=5$이다.\\n따라서 정답은 ①이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -371,8 +380,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_POSITIVE"
@@ -381,7 +390,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 10,
@@ -401,7 +411,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q10-r7.png",
     "answer": "④",
-    "solution": "두 직각삼각형이 합동이고 AC=8 cm, DE=6 cm이므로 BE=8 cm, BC=6 cm이다. 피타고라스 정리에서 AB²=8²+6²=100=10²이므로 AB=10 cm이다. 같은 방법으로 BD²=8²+6²=100=10²이므로 BD=10 cm이다.\n합동 관계에 따라 ∠DBE는 ∠A와 같다. E, B, C는 한 직선 위에 있으므로 ∠ABC+∠ABD+∠DBE=180°이다. 직각삼각형 ABC에서 ∠A+∠ABC=90°이므로 ∠ABD=90°이다.\n따라서 삼각형 ABD의 넓이는 (1/2)×AB×BD=(1/2)×10×10=50 cm²이다. 정답은 ④이다.",
+    "solution": "$\\triangle ABC$와 $\\triangle BDE$가 합동이고 두 삼각형은 각각 $C,E$에서 직각이다.\\n대응하는 변에서 $AC=BE=8\\text{ cm}$, $BC=DE=6\\text{ cm}$이다.\\n피타고라스 정리로\\n$AB^2=8^2+6^2=100$\\n$AB=10\\text{ cm}$이다.\\n합동인 두 삼각형의 빗변은 같으므로 $BD=10\\text{ cm}$이다.\\n$E,B,C$가 한 직선 위에 있으므로\\n$\\angle ABC+\\angle ABD+\\angle DBE=180^\\circ$이다.\\n합동에서 $\\angle DBE=\\angle A$이고, $\\triangle ABC$에서\\n$\\angle A+\\angle ABC=90^\\circ$이다.\\n따라서 $\\angle ABD=90^\\circ$이다.\\n그러므로\\n$[\\triangle ABD]=\\dfrac12\\cdot AB\\cdot BD=\\dfrac12\\cdot10\\cdot10=50\\text{ cm}^2$이다.\\n따라서 정답은 ④이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -426,7 +436,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 11,
@@ -444,7 +455,7 @@ window.questionBank = [
       "10, 24, 25"
     ],
     "answer": "①",
-    "solution": "가장 긴 변 5에 대해 3²+4²=9+16=25=5²이다. 피타고라스 정리의 역에 따라 세 변이 3, 4, 5인 삼각형은 직각삼각형이다. 정답은 ①이다.",
+    "solution": "직각삼각형이면 가장 긴 변의 제곱이 나머지 두 변의 제곱의 합과 같아야 한다.\\n① $3^2+4^2=9+16=25=5^2$\\n② $3^2+5^2=34\\ne7^2$\\n③ $6^2+7^2=85\\ne8^2$\\n④ $8^2+12^2=208\\ne17^2$\\n⑤ $10^2+24^2=676\\ne25^2$이다.\\n조건을 만족하는 것은 ①뿐이다.\\n따라서 정답은 ①이다.",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -458,15 +469,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 12,
@@ -498,15 +510,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 13,
@@ -538,15 +551,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 14,
@@ -564,7 +578,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "②",
-    "solution": "순서를 고려하지 않고 4명 중 2명을 뽑는다. 순서를 고려해 센 4×3을 2로 나누면 6가지이므로 정답은 ②이다.",
+    "solution": "서로 다른 두 명을 차례로 뽑아 순서 있게 세면\n$4\\times3=12$가지이다.\n대표 두 명을 뽑는 순서는 상관없으므로, 같은 두 명이 뽑히는 순서는 $2$번씩 세었다.\n따라서 실제 경우의 수는\n$12\\div2=6$\n이다.\n정답은 ②이다.",
     "level": "하",
     "category": "확률",
     "originalCategory": "확률",
@@ -578,15 +592,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 15,
@@ -606,7 +621,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q15-r6.png",
     "answer": "①",
-    "solution": "서로 다른 원 위의 다섯 점 중 세 점을 고르면 삼각형 하나가 정해진다. 경우의 수는 5×4×3÷(3×2×1)=10이므로 정답은 ①이다.",
+    "solution": "서로 다른 세 점이 한 직선 위에 있으면 삼각형이 되지 않는다. 원과 한 직선은 많아야 두 점에서 만나므로, 원 위의 서로 다른 세 점을 고르면 삼각형 하나가 정해진다.\\n가능한 삼각형은\\n$ABC, ABD, ABE, ACD, ACE, ADE, BCD, BCE, BDE, CDE$\\n로 모두 $10$개이다.\\n따라서 정답은 ①이다.",
     "level": "하",
     "category": "확률",
     "originalCategory": "확률",
@@ -620,15 +635,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 16,
@@ -660,15 +676,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 17,
@@ -688,7 +705,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q17.png",
     "answer": "②",
-    "solution": "2021년 11월은 30일까지이다. 월요일은 5일, 금요일은 4일이므로 두 요일에 해당하는 날은 9일이다. 확률은 9/30=3/10이므로 정답은 ②이다.",
+    "solution": "달력에서 월요일은 $1,8,15,22,29$일로 $5$일이다.\\n금요일은 $5,12,19,26$일로 $4$일이다.\\n두 요일은 겹치지 않으므로 원하는 날은\\n$5+4=9$일이다.\\n전체 날짜는 $30$일이므로 확률은\\n$\\dfrac9{30}=\\dfrac3{10}$이다.\\n따라서 정답은 ②이다.",
     "level": "하",
     "category": "확률",
     "originalCategory": "확률",
@@ -702,15 +719,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 18,
@@ -718,7 +736,7 @@ window.questionBank = [
     "tags": [
       "확률"
     ],
-    "content": "“윷놀이”란 윷가락을 던지고 말을 사용하여 승부를 겨루는 놀이로 정월대보름에 행해지는 전통놀이이다. 이 놀이의 명칭인 윷놀이는 나무막대기 넷을 가지고 노는 놀이이므로 ‘도·개·걸·윷·모’ 중 넷을 뜻하는 윷과 놀이가 복합된 것이라 추측된다. 여기서 4개의 윷가락을 던질 때, ‘개’가 나올 확률은? (4점)",
+    "content": "“윷놀이”란 윷가락을 던지고 말을 사용하여 승부를 겨루는 놀이로 정월대보름에 행해지는 전통놀이이다. 이 놀이의 명칭인 윷놀이는 나무막대기 넷을 가지고 노는 놀이이므로 ‘도·개·걸·윷·모’ 중 넷을 뜻하는 윷과 놀이가 복합된 것이라 추측된다.\n여기서 4개의 윷가락을 던질 때, ‘개’가 나올 확률은? (4점)",
     "choices": [
       "$\\frac{1}{16}$",
       "$\\frac{1}{8}$",
@@ -727,7 +745,7 @@ window.questionBank = [
       "$\\frac{3}{8}$"
     ],
     "answer": "⑤",
-    "solution": "윷가락 네 개의 앞뒤가 나오는 경우는 2⁴=16가지이다. ‘개’가 되려면 네 개 중 두 개가 뒤집혀야 한다. 뒤집히는 두 윷가락의 조합은 12, 13, 14, 23, 24, 34로 6가지이다. 따라서 확률은 6/16=3/8이고 정답은 ⑤이다.",
+    "solution": "윷가락 네 개의 앞뒤가 나오는 경우는\n$2^4=16$가지이다.\n‘개’는 네 개 중 두 개가 뒤집혀 나오는 경우이다.\n뒤집히는 두 윷가락을 고르는 경우는\n$(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)$\n의 $6$가지이다.\n따라서 확률은\n$\\dfrac6{16}=\\dfrac38$이다.\n정답은 ⑤이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -741,15 +759,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 19,
@@ -780,15 +799,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 20,
@@ -805,7 +825,7 @@ window.questionBank = [
       "$\\frac{9}{10}$"
     ],
     "answer": "⑤",
-    "solution": "두 꽃씨가 모두 싹이 나지 않을 확률은 (1−0.5)(1−0.8)=0.5×0.2=0.1이다. 적어도 하나에서 싹이 날 확률은 여사건을 이용해 1−0.1=0.9=9/10이다. 정답은 ⑤이다.",
+    "solution": "두 꽃씨의 발아 여부를 서로 독립인 사건으로 보고, 먼저 둘 다 싹이 나지 않을 확률을 구한다.\\n채송화 꽃씨가 싹이 나지 않을 확률은 $1-\\dfrac12=\\dfrac12$이고, 봉선화 꽃씨가 싹이 나지 않을 확률은 $1-\\dfrac45=\\dfrac15$이다.\\n따라서 둘 다 싹이 나지 않을 확률은\\n$\\dfrac12\\cdot\\dfrac15=\\dfrac1{10}$이다.\\n적어도 한 꽃씨에서 싹이 날 확률은 여사건을 이용하여\\n$1-\\dfrac1{10}=\\dfrac9{10}$이다.\\n따라서 정답은 ⑤이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -819,15 +839,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 21,
@@ -845,7 +866,7 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "③",
-    "solution": "남학생 3명과 여학생 2명을 일렬로 세우는 전체 방법은 5×4×3×2×1=120가지이다. 여학생 두 명을 한 묶음으로 보면 남학생 3명과 묶음 1개, 네 대상을 세우는 방법은 4×3×2×1=24가지이고 묶음 안 여학생 순서는 2가지이다. 서로 이웃하는 방법은 24×2=48가지이다.\n따라서 확률은 48/120=2/5이다. 정답은 ③이다.",
+    "solution": "서로 다른 다섯 명을 한 줄로 세우는 전체 경우의 수는\\n$5\\cdot4\\cdot3\\cdot2\\cdot1=120$이다.\\n여학생 두 명을 한 묶음으로 보면 남학생 세 명과 묶음 하나를 배열하므로\\n$4\\cdot3\\cdot2\\cdot1$가지이다.\\n묶음 안에서 여학생 두 명의 순서를 바꾸는 $2$가지가 있으므로 이웃하는 경우는\\n$4\\cdot3\\cdot2\\cdot1\\cdot2=48$가지이다.\\n따라서 확률은\\n$\\dfrac{48}{120}=\\dfrac25$이다.\\n따라서 정답은 ③이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -859,15 +880,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 22,
@@ -884,7 +906,7 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "③",
-    "solution": "목요일에 비가 왔으므로 금요일에 비가 올 확률은 1/3이고, 비가 오지 않을 확률은 2/3이다.\n금요일에 비가 오면 토요일에도 비가 올 확률은 1/3이다. 금요일에 비가 오지 않으면 토요일에 비가 올 확률은 1−1/6=5/6이다.\n따라서 토요일에 비가 올 확률은 1/3×1/3+2/3×5/6=1/9+5/9=2/3이므로 정답은 ③이다.",
+    "solution": "목요일에 비가 왔으므로 금요일에 비가 올 확률은 $\\dfrac13$이다.\\n따라서 금요일에 비가 오지 않을 확률은 $1-\\dfrac13=\\dfrac23$이다.\\n금요일 상태에 따라 토요일에 비가 오는 두 경우를 더한다.\\n$P(토요일 비)$\\n$=\\dfrac13\\cdot\\dfrac13+\\dfrac23\\cdot\\left(1-\\dfrac16\\right)$\\n$=\\dfrac19+\\dfrac23\\cdot\\dfrac56$\\n$=\\dfrac19+\\dfrac59=\\dfrac23$이다.\\n따라서 정답은 ③이다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -898,15 +920,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 23,
@@ -920,7 +943,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q23-r3.png",
     "answer": "2 cm",
-    "solution": "(1) ∠A는 공통이고 ∠ACB=∠ADE이므로 △ABC∼△AED이며 닮음 조건은 AA이다.\n(2) AB=AD+DB=4+8=12 cm이고 AE=6 cm이므로 닮음비 △ABC:△AED는 AB:AE=12:6=2:1이다.\n(3) 대응변 AC:AD=2:1이므로 AC=2×4=8 cm이다. 따라서 x=EC=AC−AE=8−6=2 cm이다.",
+    "solution": "(1) $\\angle A$는 공통이고 $\\angle ACB=\\angle ADE$이다.\\n따라서 $\\triangle ABC\\sim\\triangle AED$이고, 두 각이 같으므로 닮음 조건은 AA이다.\\n\\n(2) 그림에서 $AD=4\\text{ cm}$, $DB=8\\text{ cm}$이므로\\n$AB=AD+DB=4+8=12\\text{ cm}$이다.\\n$AB$와 $AE$가 대응하고 $AE=6\\text{ cm}$이므로 닮음비는\\n$\\triangle ABC: \\triangle AED=12:6=2:1$이다.\\n\\n(3) $AC$와 $AD$가 대응하므로\\n$AC:AD=2:1$\\n$AC=2\\cdot4=8\\text{ cm}$이다.\\n$AC=AE+EC$이므로\\n$x=EC=8-6=2\\text{ cm}$이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -942,7 +965,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 24,
@@ -956,7 +980,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/21_이수중_2학기_기말_중2_기출/q24.png",
     "answer": "27 cm",
-    "solution": "삼각형 ABM의 중선을 그어 BM의 중점을 N, 삼각형 AMC의 중선을 그어 MC의 중점을 N′이라 하자. 무게중심은 각 중선을 꼭짓점에서 2:1로 나누므로 AG:GN=AG′:G′N′=2:1이다.\n따라서 삼각형 ANN′와 삼각형 AGG′는 닮음비 3:2이고 GG′:NN′=2:3이다. 또 N, M, N′는 한 직선 위에 있고 BM=2MN, MC=2MN′이므로 NN′=BC/2이다.\n그러므로 GG′=(2/3)×(BC/2)=BC/3이다. GG′=9 cm이므로 BC=27 cm이다.",
+    "solution": "$N$을 $BM$의 중점, $N'$을 $MC$의 중점이라 하자.\\n$G,G'$은 각각 $\\triangle ABM,\\triangle AMC$의 무게중심이므로\\n$AG:GN=AG':G'N'=2:1$이다.\\n따라서\\n$\\dfrac{AG}{AN}=\\dfrac{AG'}{AN'}=\\dfrac23$이다.\\n$G,G'$은 각각 $AN,AN'$ 위에 있으므로 삼각형의 두 변을 같은 비로 나눈다.\\n따라서 $GG'\\parallel NN'$이고\\n$GG':NN'=2:3$이다.\\n또 $N,M,N'$은 한 직선 위에서\\n$MN=\\dfrac12 BM$, $MN'=\\dfrac12 MC$이다.\\n그러므로\\n$NN'=MN+MN'=\\dfrac12(BM+MC)=\\dfrac12BC$이다.\\n$GG'=\\dfrac23NN'=\\dfrac23\\cdot\\dfrac12BC=\\dfrac13BC$이다.\\n$GG'=9\\text{ cm}$이므로\\n$9=\\dfrac13BC$\\n$BC=27\\text{ cm}$이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -970,8 +994,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
     "crossConceptKeys": [
       "CC_SIMILARITY"
     ],
@@ -980,7 +1004,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 25,
@@ -992,7 +1017,7 @@ window.questionBank = [
     "content": "서술형 3. 0, 1, 2, 3, 4, 5가 각각 하나씩 적힌 6장의 카드 중 서로 다른 2장을 뽑아 두 자리 자연수를 만들려고 한다. 다음 물음에 답하시오. (6점)\n(1) 만들 수 있는 두 자리 자연수의 개수 (2점)\n(2) 만들 수 있는 두 자리 자연수 중 홀수일 확률 (4점)",
     "choices": [],
     "answer": "25개, 12/25",
-    "solution": "(1) 십의 자리는 0이 아닌 1~5 중 하나로 5가지이다. 일의 자리는 남은 카드 5장 중 하나이므로 만들 수 있는 두 자리 자연수는 5×5=25개이다.\n(2) 홀수가 되려면 일의 자리가 1, 3, 5 중 하나여서 3가지이다. 각각 십의 자리는 0이 아닌 남은 숫자 4가지이므로 홀수는 12개이다. 따라서 확률은 12/25이다.",
+    "solution": "십의 자리는 $0$이 될 수 없으므로 $1,2,3,4,5$ 중 하나를 고른다.\\n십의 자리 선택은 $5$가지이고, 일의 자리는 남은 카드 $5$장 중 고르므로 전체 두 자리 자연수는\\n$5\\cdot5=25$개이다.\\n홀수가 되려면 일의 자리가 $1,3,5$ 중 하나여야 한다.\\n각 일의 자리마다 십의 자리는 $0$이 아닌 남은 숫자 $4$가지이므로 홀수는\\n$3\\cdot4=12$개이다.\\n따라서 홀수일 확률은\\n$\\dfrac{12}{25}$이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -1006,8 +1031,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
@@ -1016,7 +1041,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   },
   {
     "id": 26,
@@ -1028,7 +1054,7 @@ window.questionBank = [
     "content": "서술형 4. 한 개의 주사위를 두 번 던져서 첫 번째 나온 눈의 수를 $x$, 두 번째 나온 눈의 수를 $y$라 할 때, $2x-y=6$일 확률을 구하시오. (4점)",
     "choices": [],
     "answer": "1/12",
-    "solution": "두 주사위 눈의 순서쌍은 36가지이다. 2x−y=6에서 y=2x−6이다. 가능한 순서쌍은 (4,2), (5,4), (6,6)의 3가지이므로 확률은 3/36=1/12이다.",
+    "solution": "전체 순서쌍 $(x,y)$는 주사위를 두 번 던지므로 $6\\cdot6=36$가지이다.\\n조건 $2x-y=6$을 $y$에 대하여 정리하면\\n$y=2x-6$이다.\\n$1\\le x,y\\le6$을 만족하는 순서쌍은\\n$(4,2),(5,4),(6,6)$의 $3$가지이다.\\n따라서 확률은\\n$\\dfrac3{36}=\\dfrac1{12}$이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -1042,8 +1068,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "layoutTag": "grid",
     "wide": false,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_RANGE"
@@ -1052,6 +1078,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "sourceMode": "ORIGINAL"
   }
 ];

@@ -1,0 +1,110 @@
+{
+  "status": "IMPLEMENTED_AND_VERIFIED",
+  "capture": {
+    "status": "CAPTURED_REVIEW_REQUIRED",
+    "renderPass": false,
+    "browser": "154.0.8037.98",
+    "cases": [
+      {
+        "id": "exam/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 24,
+        "assets": 4,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "exam/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 24,
+        "assets": 4,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "sol/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 24,
+        "assets": 3,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "sol/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 24,
+        "assets": 3,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "ans/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qidCount": 24,
+        "assets": 0,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "ans/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qidCount": 24,
+        "assets": 0,
+        "mechanicalStatus": "PASS",
+        "layoutReviewStatus": "NOT_REVIEWED"
+      }
+    ],
+    "sourceSha": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170"
+  },
+  "registration": {
+    "status": "APPLIED_PENDING_VALIDATORS",
+    "counts": {
+      "identity": 24,
+      "metadata": 24,
+      "index": 24,
+      "catalog": 24,
+      "db": 1
+    },
+    "nonTargetInvariant": {
+      "dbExamRows": 490,
+      "identityRows": 11747,
+      "metadataRows": 11747,
+      "indexRows": 11739,
+      "catalogRows": 11739,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    },
+    "sourceSha": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170"
+  },
+  "tests": {
+    "reviewAndPackageContracts": 7,
+    "runtimeGuard": 42,
+    "identityContract": "PASS",
+    "identityRuntime": "PASS",
+    "semanticAuthority": "PASS",
+    "registrationParity": "PASS",
+    "badSourceShaRollback": "PASS"
+  },
+  "knownLimits": [
+    "R3 screen judgment is still required; no new RENDER_PASS declared",
+    "Scoped apply consumes an isolated canonical candidate set; does not reclassify Meta or automatically approve runtime eligibility"
+  ]
+}

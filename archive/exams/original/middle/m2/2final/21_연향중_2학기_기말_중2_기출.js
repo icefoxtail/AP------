@@ -29,7 +29,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "②",
-    "solution": "12의 약수 중 1부터 12까지의 자연수는 $1,2,3,4,6,12$로 모두 6개이다.\n따라서 정답은 ②이다."
+    "solution": "12의 약수는 $1,2,3,4,6,12$이다.\n이 가운데 각 면에 적힌 수가 해당하는 것은 6개이다.\n따라서 경우의 수는 $6$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -59,7 +68,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "③, ④",
-    "solution": "① 확률은 사건이 일어나는 경우의 수를 모든 경우의 수로 나눈 값이므로 옳다. ② 일어나지 않는 사건의 확률은 $0$이므로 옳다. ③ 확률은 $0$ 또는 $1$이 될 수도 있어 $0<p<1$이라고 항상 말할 수 없다. ④ 확률은 $0$ 이상 $1$ 이하이므로 $1$보다 클 수 없다. ⑤ 반드시 일어나는 사건의 확률은 $1$이므로 옳다.\n따라서 옳지 않은 것은 ③, ④이다."
+    "solution": "확률은 $0$ 이상 $1$ 이하이다.\n불가능한 사건은 확률이 $0$이고, 반드시 일어나는 사건은 확률이 $1$이다.\n따라서 $0<p<1$이라는 ③은 두 끝값을 포함하지 않아 항상 참이 아니고, 확률이 $1$보다 클 수 있다는 ④도 틀리다.\n정답은 ③, ④이다.",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -92,7 +110,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "⑤",
-    "solution": "(1) 세 평행선이 두 직선을 자르므로 대응하는 선분의 길이의 비가 같다. 한 직선에서 두 구간의 비는 $3:9=1:3$이므로 다른 직선에서 $3.5:x=1:3$이다. 따라서 $x=10.5=\\dfrac{21}{2}$이다.\n(2) 두 평행선 사이에서 한 직선의 길이 6과 다른 직선의 길이 5가 대응하고, 다음 구간은 각각 $x$와 4이다. 따라서 $6:5=x:4$이고 $5x=24$이므로 $x=\\dfrac{24}{5}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "(1) 평행선이 세 개이므로 두 사선에서 대응하는 구간의 길이의 비가 같다.\n$\\dfrac{3}{9}=\\dfrac{3.5}{x}$\n$3x=31.5$\n$x=10.5=\\dfrac{21}{2}$이다.\n\n(2) 두 사선에서 평행선 사이 대응 구간의 비를 맞춘다.\n$\\dfrac{6}{x}=\\dfrac{5}{4}$\n$5x=24$\n$x=\\dfrac{24}{5}$이다.\n따라서 (1), (2)는 각각 $\\dfrac{21}{2},\\dfrac{24}{5}$이고 정답은 ⑤이다.",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -125,7 +152,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "①",
-    "solution": "$G$가 무게중심이므로 $B,G,E$는 한 직선 위에 있고 $BG:GE=2:1$이다. $GE=8$이므로 $x=BG=16$이다.\n또 $E$는 $AC$의 중점이고 $D$는 $BC$의 중점이다. 삼각형 $CBE$에서 $D$와 $F$는 각각 $CB$, $CE$의 중점이므로 $DF=\\dfrac12BE$. 따라서 $y=DF=\\dfrac12(16+8)=12$이다.\n그러므로 $x+y=16+12=28$이다. 따라서 정답은 ①이다."
+    "solution": "무게중심 $G$는 중선 $BE$를 $BG:GE=2:1$로 나눈다.\n$GE=8$이므로\n$BG=2\\times8=16$\n따라서 $x=16$이다.\n\n$D$는 $BC$의 중점이고 $DF\\parallel BE$이므로, 삼각형 $CBE$에서 $F$는 $CE$의 중점이다.\n중점 연결선의 길이는 밑변의 절반이므로\n$DF=\\dfrac12BE=\\dfrac12(16+8)=12$\n따라서 $y=12$이다.\n\n$x+y=16+12=28$이다.",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -158,7 +194,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "②",
-    "solution": "밑변 $BC=10$이고 넓이가 $60$이므로 꼭짓점 $A$에서 $BC$에 내린 높이는 $2\\times60\\div10=12$이다. 이등변삼각형의 높이는 밑변을 이등분하므로 밑변의 절반은 $5$이다.\n피타고라스 정리에 따라 같은 길이인 두 변은 $\\sqrt{5^2+12^2}=13$이다. 따라서 둘레는 $13+13+10=36\\text{ cm}$이다.\n따라서 정답은 ②이다."
+    "solution": "밑변 $BC=10$이고 넓이가 $60$이므로 높이를 $h$라 하면\n$\\dfrac12\\times10\\times h=60$\n$h=12$이다.\n이등변삼각형의 꼭짓점에서 밑변에 내린 높이는 밑변을 이등분하므로 밑변의 반은 $5$이다.\n피타고라스 정리로 같은 두 변의 길이를 구하면\n$AB=AC=\\sqrt{12^2+5^2}=13$이다.\n따라서 둘레는 $13+13+10=36\\text{ cm}$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -191,7 +236,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "②",
-    "solution": "$AC=2$이고 $\\triangle ABC$의 넓이가 5이므로 $\\dfrac12\\times AC\\times BC=5$에서 $BC=5$이다. $\\angle ACB=90^\\circ$이므로 피타고라스 정리에 따라 $AB^2=AC^2+BC^2=2^2+5^2=29$이다.\n정사각형 $GBAH$의 한 변은 $AB$이므로 넓이는 $AB^2=29$이다. 따라서 정답은 ②이다."
+    "solution": "그림에서 $AC=2$이고 $\\angle ACB=90^\\circ$이다.\n$\\triangle ABC$의 넓이로 $BC$를 구하면\n$\\dfrac12\\times AC\\times BC=5$\n$\\dfrac12\\times2\\times BC=5$\n$BC=5$이다.\n\n정사각형 $GBAH$의 한 변은 $BA$이므로 그 넓이는 $BA^2$이다.\n피타고라스 정리를 적용하면\n$BA^2=AC^2+BC^2=2^2+5^2=29$이다.\n따라서 정사각형 $GBAH$의 넓이는 $29$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -222,7 +276,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "③",
-    "solution": "빨강과 파랑을 이미 선택했으므로 나머지 네 가지 색 중에서 두 가지를 더 고르면 된다. 그 경우의 수는 $\\binom42=6$이다.\n따라서 정답은 ③이다."
+    "solution": "빨강과 파랑을 이미 골랐으므로 나머지 네 색 중에서 두 색을 더 고르면 된다.\n첫 번째 색은 4가지, 다음 색은 3가지이다. 두 색의 순서만 바뀐 같은 선택을 두 번 세었으므로\n$\\dfrac{4\\times3}{2}=6$\n따라서 경우의 수는 $6$이므로 정답은 ③이다.",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -254,7 +317,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "⑤",
-    "solution": "삼국 시대 또는 고려 시대의 신문을 만든 학생은 $7+8=15$명이다. 전체 학생 30명 가운데 한 명을 고르므로 확률은 $\\dfrac{15}{30}=\\dfrac12$이다.\n따라서 정답은 ⑤이다."
+    "solution": "삼국 시대 또는 고려 시대 신문을 만든 학생 수는\n$7+8=15$명이다.\n전체 학생 30명 중 한 명을 고르므로 구하는 확률은\n$\\dfrac{15}{30}=\\dfrac12$이다.",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -287,7 +359,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "④",
-    "solution": "$AD=AB$이므로 $A$는 $DB$의 중점이다. $AN\\parallel BC$이므로 삼각형 $DBC$에서 $N$은 $DC$의 중점이다. 또 $AM=CM$이므로 $M$은 $AC$의 중점이다. 이 중점 조건에서 $D,M,E$가 이루는 직선과 밑변의 분할비는 $BE:BC=2:3$이다. 따라서 $BE=15\\times\\dfrac23=10\\text{ cm}$이다.\n따라서 정답은 ④이다."
+    "solution": "$AD=AB$이므로 $A$는 $DB$의 중점이다.\n또 $AM=CM$이므로 $M$은 $AC$의 중점이다.\n\n$A$를 지나 $DE$와 평행한 직선을 그어 $BE$와 만나는 점을 $P$라 하자.\n삼각형 $DBE$에서 $A$는 $DB$의 중점이고 $AP\\parallel DE$이므로 $P$는 $BE$의 중점이다.\n따라서 $BP=PE$이다.\n\n$M$은 $AC$의 중점이고 $ME\\parallel AP$이므로 삼각형 $CAP$과 $CME$는 닮음이다.\n$\\dfrac{CE}{CP}=\\dfrac{CM}{CA}=\\dfrac12$이므로 $CP=2CE$이다.\n$CP=CE+PE$이므로 $PE=CE$이다.\n\n$BE=BP+PE=2CE$이고 $BC=BE+EC=3CE$이므로\n$BE:BC=2:3$이다.\n그림에서 $BC=15\\text{ cm}$이므로\n$BE=15\\times\\dfrac23=10\\text{ cm}$이다.",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -320,7 +401,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "③",
-    "solution": "삼각형 $ABC$의 넓이를 $S$라 하면, 무게중심 $G$에 대해 $[GBC]=\\dfrac13S$이다. 삼각형 $GBC$에서 $G\\prime$은 무게중심이므로 $[GG\\prime C]$는 $[GBC]$의 $\\dfrac13$이다. 따라서 $[GG\\prime C]=\\dfrac19S$이다.\n$[GG\\prime C]=5$이므로 $S=5\\times9=45\\text{ cm}^2$이다. 따라서 정답은 ③이다."
+    "solution": "삼각형 $ABC$의 넓이를 $S$라 하자.\n무게중심 $G$가 있는 삼각형에서 $[GBC]=\\dfrac13S$이다.\n삼각형 $GBC$에서 $G\\prime$은 무게중심이므로 중선이 삼각형을 넓이가 같은 세 부분으로 나눈다.\n따라서 $[GG\\prime C]=\\dfrac13[GBC]=\\dfrac19S$이다.\n\n$[GG\\prime C]=5$이므로\n$\\dfrac19S=5$\n$S=45\\text{ cm}^2$이다.",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -354,7 +444,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "④",
-    "solution": "$G$는 무게중심이므로 $AG:GM=2:1$이고, $G$를 지나는 $BC$와 평행한 선분은 $DE=\\dfrac23BC$이다. 또 $AD:DB=AE:EC=2:1$이다. 따라서 ①, ②, ③, ⑤는 옳다.\n$[ADE]:[ABC]=(2:3)^2=4:9$이므로 $[DBCE]:[ADE]=(1-\\dfrac49):\\dfrac49=\\dfrac59:\\dfrac49=5:4$이다. 보기 ④의 $4:5$와 다르다.\n따라서 정답은 ④이다."
+    "solution": "무게중심을 지나는 $BC$와 평행한 선분은 $DE=\\dfrac23BC$이므로 $\\triangle ADE$와 $\\triangle ABC$의 닮음비는 $2:3$이다.\n따라서 넓이비는\n$[ADE]:[ABC]=2^2:3^2=4:9$이다.\n\n남은 사각형의 넓이는 전체에서 $[ADE]$를 뺀 것이므로\n$[DBCE]:[ADE]=(9-4):4=5:4$이다.\n④는 $4:5$라고 했으므로 틀린 보기이다.",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -388,7 +487,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "④",
-    "solution": "$D$는 빗변 $BC$의 중점이므로 직각삼각형에서 빗변의 중선의 길이는 빗변의 절반이다. $GD=5$이고 $AG:GD=2:1$이므로 $AD=AG+GD=15$이다. 따라서 $BC=2AD=30$이다.\n직각삼각형 $ABC$에서 $AB^2+AC^2=BC^2$이므로 $AB^2=30^2-18^2=576$이다. $AB=24\\text{ cm}$이다. 따라서 정답은 ④이다."
+    "solution": "무게중심 $G$는 중선 $AD$를 $AG:GD=2:1$로 나눈다.\n$GD=5$이므로\n$AD=AG+GD=2\\times5+5=15$이다.\n\n직각삼각형에서 빗변의 중점까지의 거리는 빗변의 절반이므로\n$BC=2AD=30$이다.\n\n피타고라스 정리로\n$AB^2+AC^2=BC^2$\n$AB^2=30^2-18^2=900-324=576$\n$AB=24\\text{ cm}$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -421,7 +529,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "①",
-    "solution": "$OA=AB=BC=CD$이고 그림의 연속된 직각삼각형에 피타고라스 정리를 적용한다. $OA=a$라 하면 $OB^2=a^2+a^2=2a^2$이므로 $OB^2=2a^2$이다. 다음 직각삼각형에서 $OC^2=OB^2+a^2=3a^2$이다. 마지막 직각삼각형에서 $OD^2=OC^2+a^2=4a^2$이므로 $OD=2a$이다.\n따라서 $OA:OD=a:2a=1:2$이고 정답은 ①이다."
+    "solution": "$OA=AB=BC=CD=a$라 하자.\n첫 번째 직각삼각형에서\n$OB^2=OA^2+AB^2=a^2+a^2=2a^2$이다.\n다음 직각삼각형에서\n$OC^2=OB^2+BC^2=2a^2+a^2=3a^2$이다.\n마지막 직각삼각형에서\n$OD^2=OC^2+CD^2=3a^2+a^2=4a^2$\n이므로 $OD=2a$이다.\n따라서 $OA:OD=a:2a=1:2$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -451,7 +568,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "⑤",
-    "solution": "연이가 이길 확률은 $\\dfrac35$, 향이가 이길 확률은 $1-\\dfrac35=\\dfrac25$이다. 두 번의 경기에서 각자 한 번씩 이기는 순서는 연이 승리 후 향이 승리, 향이 승리 후 연이 승리의 두 가지이다.\n따라서 확률은 $2\\times\\dfrac35\\times\\dfrac25=\\dfrac{12}{25}$이다. 따라서 정답은 ⑤이다."
+    "solution": "한 번의 대국에서 연이가 이길 확률이 $\\dfrac35$이므로 향이가 이길 확률은\n$1-\\dfrac35=\\dfrac25$이다.\n두 번에 각자 한 번씩 이기는 순서는 연이 다음 향이, 향이 다음 연이의 두 가지이다.\n따라서 확률은\n$2\\times\\dfrac35\\times\\dfrac25=\\dfrac{12}{25}$이다.",
+    "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+    "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -482,7 +608,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "①",
-    "solution": "$O$와 $R$을 순서가 정해진 한 묶음으로 보면 이 묶음과 나머지 네 글자, 모두 5개를 배열하면 된다. 경우의 수는 $5!=120$이다.\n따라서 정답은 ①이다."
+    "solution": "$O$가 $R$ 바로 앞에 오도록 두 글자를 순서가 정해진 한 묶음 $OR$로 본다.\n이 묶음과 나머지 네 글자, 모두 다섯 항목을 차례로 배열한다.\n각 자리에 놓을 항목의 수는 차례로 5, 4, 3, 2, 1가지이므로\n$5\\times4\\times3\\times2\\times1=120$이다.\n따라서 정답은 ①이다.",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -513,7 +648,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "①",
-    "solution": "50원, 100원, 500원 동전을 각각 $a,b,c$개 쓴다고 하면 $a+2b+10c=31$이고 $0\\le a,b,c\\le5$이다.\n$c=2$이면 $a+2b=11$이므로 $(a,b)=(5,3),(3,4),(1,5)$의 3가지이다. $c=3$이면 $a+2b=1$이므로 $(a,b)=(1,0)$의 1가지이다. $c=0,1,4,5$일 때는 조건을 만족하는 $a,b$가 없다.\n따라서 지불 방법은 $3+1=4$가지이고 정답은 ①이다."
+    "solution": "50원, 100원, 500원 동전을 각각 $a,b,c$개 사용한다고 하자.\n금액을 50원 단위로 나타내면\n$a+2b+10c=31$, $0\\le a,b,c\\le5$이다.\n\n$c=0,1,4,5$이면 $a+2b=31,21,-9,-19$가 되어 $0\\le a,b\\le5$를 만족하지 않는다.\n$c=2$이면 $a+2b=11$이고 가능한 $(a,b)$는 $(5,3),(3,4),(1,5)$의 3가지이다.\n$c=3$이면 $a+2b=1$이고 가능한 경우는 $(1,0)$의 1가지이다.\n따라서 모두 $3+1=4$가지이다.",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -546,7 +690,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "⑤",
-    "solution": "$A$에서 $B$까지는 오른쪽으로 2칸, 위로 2칸 이동하므로 최단 경로 수는 $\\binom42=6$이다. $B$에서 $C$까지는 오른쪽 1칸, 위쪽 1칸이므로 최단 경로 수는 $\\binom21=2$이다.\n따라서 $B$를 거쳐 가는 최단 경로는 $6\\times2=12$가지이고 정답은 ⑤이다."
+    "solution": "그림에서 $A$에서 $B$까지는 오른쪽 2칸, 위쪽 2칸을 움직인다.\n네 번의 이동 중 위로 가는 두 번의 위치를 정한다.\n첫 번째 위 이동 위치는 4가지, 두 번째는 3가지이다. 두 위 이동의 순서만 바꾼 경우는 같은 길이므로\n$\\dfrac{4\\times3}{2}=6$가지이다.\n\n$B$에서 $C$까지는 오른쪽 1칸과 위쪽 1칸을 움직이므로 순서는 $2$가지이다.\n따라서 최단 경로의 수는\n$6\\times2=12$이다.\n따라서 정답은 ⑤이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -579,7 +732,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "②",
-    "solution": "시계 방향으로 $A$에서 $B$까지는 3칸 움직여야 하므로 주사위 눈은 3이다. $B$에서 $A$까지는 1칸 또는 5칸 움직이면 된다. 따라서 조건을 만족하는 눈의 순서쌍은 $(3,1),(3,5)$의 2가지이다. 전체 순서쌍은 $6\\times6=36$가지이므로 확률은 $\\dfrac2{36}=\\dfrac1{18}$이다.\n따라서 정답은 ②이다."
+    "solution": "그림의 네 자리를 시계 방향으로 보면 창훈의 말은 $A$에서 $B$로 가기 위해 3칸 움직여야 한다.\n지원의 말은 $B$에서 $A$로 가기 위해 1칸 또는 5칸 움직이면 된다.\n조건을 만족하는 눈의 순서쌍은 $(3,1),(3,5)$의 2가지이다.\n전체 눈의 순서쌍은 $6\\times6=36$가지이므로\n$\\dfrac{2}{36}=\\dfrac1{18}$이다.",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -606,7 +768,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "$10\\text{ cm}$",
-    "solution": "삼각형 $ABD$에서 무게중심 $G$는 중선 $AE$를 $AG:GE=2:1$로 나누고, 삼각형 $ADC$에서 무게중심 $G\\prime$은 중선 $AF$를 $AG\\prime:G\\prime F=2:1$로 나눈다. 따라서 $GG\\prime\\parallel EF$이고 $GG\\prime=\\dfrac23EF$이다.\n$E,F$는 각각 $BD,DC$의 중점이므로 $EF=\\dfrac12( BD+DC)=\\dfrac12BC=15\\text{ cm}$이다.\n따라서 $GG\\prime=\\dfrac23\\times15=10\\text{ cm}$이다."
+    "solution": "삼각형 $ABD$에서 $E$는 $BD$의 중점이고, 삼각형 $ADC$에서 $F$는 $DC$의 중점이다.\n따라서 $EF$는 삼각형 $ABC$의 중점 연결선이므로\n$EF=\\dfrac12BC=15\\text{ cm}$이다.\n\n두 무게중심 $G,G\\prime$은 각각 중선 $AE,AF$를 꼭짓점에서부터 $\\dfrac23$만큼 간 지점이다.\n따라서 $GG\\prime=\\dfrac23EF$이고\n$GG\\prime=\\dfrac23\\times15=10\\text{ cm}$이다.",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -634,7 +805,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "$\\dfrac{60}{13}\\text{ cm}$",
-    "solution": "직각삼각형 $ABC$의 넓이를 밑변 $BC$와 높이 $AH$로 나타내면 $\\dfrac12\\times13\\times AH$이다. 같은 넓이를 두 직각변 $AB$, $AC$로 나타내면 $\\dfrac12\\times12\\times5=30$이다.\n따라서 $\\dfrac{13}{2}AH=30$에서 $AH=\\dfrac{60}{13}\\text{ cm}$이다."
+    "solution": "$AB=12$, $AC=5$, $BC=13$이고\n$5^2+12^2=13^2$이므로 $\\angle A=90^\\circ$이다.\n삼각형의 넓이를 두 방법으로 나타내면\n$\\dfrac12\\times AB\\times AC=\\dfrac12\\times BC\\times AH$\n$\\dfrac12\\times12\\times5=\\dfrac12\\times13\\times AH$\n$30=\\dfrac{13}{2}AH$\n$AH=\\dfrac{60}{13}\\text{ cm}$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -659,6 +839,15 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "answer": "$\\dfrac{9}{25}$",
-    "solution": "$n/120$이 유한소수가 되려면 기약분수의 분모에서 소인수 3이 없어져야 하므로 $n$은 3의 배수여야 한다. $1$부터 $50$까지는 3의 배수가 16개이다. $n/170$이 유한소수가 되려면 분모의 소인수 17이 없어져야 하므로 $n$은 17의 배수여야 하며, 이 수는 17과 34의 2개이다. 두 경우의 공통 배수는 50 이하에 없으므로 조건을 만족하는 수는 $16+2=18$개이다.\n따라서 확률은 $\\dfrac{18}{50}=\\dfrac9{25}$이다."
+    "solution": "$n$을 1부터 50까지의 자연수라 하자.\n기약분수 $\\dfrac{n}{120}$이 유한소수가 되려면 분모의 소인수 3이 약분되어야 하므로 $n$은 3의 배수여야 한다.\n1부터 50까지의 3의 배수는 $3,6,\\ldots,48$이므로 16개이다.\n\n$\\dfrac{n}{170}$이 유한소수가 되려면 분모의 소인수 17이 약분되어야 하므로 $n$은 17의 배수이다.\n1부터 50까지는 17, 34의 2개이다.\n두 조건을 모두 만족하는 수는 51의 배수여야 하지만 50 이하에는 없다.\n따라서 유한소수가 되는 수는 $16+2=18$개이고 확률은\n$\\dfrac{18}{50}=\\dfrac9{25}$이다.",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
