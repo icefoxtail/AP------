@@ -1,0 +1,87 @@
+{
+  "id": "logarithmic-overview-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -0.03,
+    "xMax": 4.155,
+    "yMin": -2.599301927099795,
+    "yMax": 1.9061547465398494,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": {
+    "x": true,
+    "y": true
+  },
+  "title": "자연로그 함수의 정의역 경계와 기준점",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "logarithmicFeatures": {
+      "schemaVersion": "LOGARITHMIC_AFFINE_FEATURES_v1",
+      "naturalDomainBoundaryX": "0",
+      "boundarySide": "RIGHT",
+      "boundaryLimitDirection": "DOWN",
+      "referencePoint": {
+        "x": "1",
+        "y": "0",
+        "argument": "1"
+      },
+      "monotonicity": "INCREASING",
+      "sampleBoundaryArgument": "1/8",
+      "sampleDomain": [
+        0.125,
+        4
+      ]
+    },
+    "logarithmicFeaturePolicy": {
+      "schemaVersion": "LOGARITHMIC_AFFINE_FEATURE_POLICY_v1",
+      "sourceDomain": "kx+b>0",
+      "domainBoundaryPolicy": "NATURAL_OPEN_BOUNDARY",
+      "referenceArgument": "1",
+      "sampleBoundaryArgument": "1/8",
+      "boundaryCue": "DASHED_VERTICAL_LINE",
+      "referenceMarkerRadiusIntrinsicPx": 4,
+      "minimumReferenceMarkerDiameterCssPx": 3,
+      "minimumBoundaryApproachGapCssPx": 2,
+      "minimumBranchSpanCssPx": 32
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "(1)*log((1)*x+(0))+(0)",
+      "domain": [
+        0.125,
+        4
+      ],
+      "criticalX": [
+        1
+      ]
+    },
+    {
+      "id": "reference-value",
+      "kind": "EQUATION_LABEL",
+      "text": "f(1)=0",
+      "at": [
+        1,
+        0.36043653389117153
+      ],
+      "math": true,
+      "priority": 0
+    },
+    {
+      "id": "log-domain-boundary-label",
+      "kind": "EQUATION_LABEL",
+      "text": "x=0",
+      "at": [
+        0.4185000000000001,
+        1.0050634118119204
+      ],
+      "math": true,
+      "priority": 0
+    }
+  ]
+}

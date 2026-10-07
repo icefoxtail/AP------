@@ -1,0 +1,59 @@
+{
+  "answer": "0",
+  "capability": "logarithmic-affine-spike-v1",
+  "caption": "자연로그 함수의 정의역 경계와 기준점",
+  "coefficients": [
+    "1",
+    "1",
+    "0",
+    "0"
+  ],
+  "content": "함수 f(x)=ln x의 그래프에서 f(1)의 값을 구하시오.",
+  "domain": [
+    0.125,
+    4
+  ],
+  "family": "logarithmic-affine",
+  "kind": "logarithmic",
+  "solution": "x=1은 정의역에 속한다.\nf(1)=ln 1\nf(1)=0",
+  "sourceDomain": {
+    "kind": "NATURAL_LOG_AFFINE"
+  },
+  "viewport": [
+    -0.03,
+    4.155,
+    -2.599301927099795,
+    1.9061547465398494
+  ],
+  "shapeIntent": "OVERVIEW",
+  "overviewPolicy": "LOGARITHMIC_AFFINE_OVERVIEW_v1",
+  "logarithmicFeatures": {
+    "schemaVersion": "LOGARITHMIC_AFFINE_FEATURES_v1",
+    "naturalDomainBoundaryX": "0",
+    "boundarySide": "RIGHT",
+    "boundaryLimitDirection": "DOWN",
+    "referencePoint": {
+      "x": "1",
+      "y": "0",
+      "argument": "1"
+    },
+    "monotonicity": "INCREASING",
+    "sampleBoundaryArgument": "1/8",
+    "sampleDomain": [
+      0.125,
+      4
+    ]
+  },
+  "logarithmicFeaturePolicy": {
+    "schemaVersion": "LOGARITHMIC_AFFINE_FEATURE_POLICY_v1",
+    "sourceDomain": "kx+b>0",
+    "domainBoundaryPolicy": "NATURAL_OPEN_BOUNDARY",
+    "referenceArgument": "1",
+    "sampleBoundaryArgument": "1/8",
+    "boundaryCue": "DASHED_VERTICAL_LINE",
+    "referenceMarkerRadiusIntrinsicPx": 4,
+    "minimumReferenceMarkerDiameterCssPx": 3,
+    "minimumBoundaryApproachGapCssPx": 2,
+    "minimumBranchSpanCssPx": 32
+  }
+}

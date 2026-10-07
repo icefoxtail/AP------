@@ -1,0 +1,515 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_PROVIDER_CANCELLATION_OFFLINE_RUNTIME_v1",
+  "classification": "PROVIDER_TIMEOUT_CANCELLATION_AND_LOCAL_ARCHIVE_RUNTIME_CLOSURE_WITH_CANDIDATE_DEBT",
+  "status": "PASS_WITH_CANDIDATE_DEBT",
+  "priorPackageBuildAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v1/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The initial packager compared the prefixed QRious pixel-probe digest with the capture row’s raw-hex digest. It is preserved and excluded from the v4 package index/manifest."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v2/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The second package script joined the temporary exam JS under the nested visual-engine work root instead of its exam workspace root. It is preserved and excluded from the v4 index/manifest."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v4/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The fourth packaging attempt wrote nine evidence payloads through the Archive render-matrix copy, then stopped before writing the candidate bank, ledger, index, or manifest. It is preserved and excluded from the v5 package."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v5/",
+      "status": "MANIFESTED_VALIDATION_FAILED",
+      "reason": "The fifth package had a self-consistent byte manifest, but Windows copyTree paths in evidence-index.json retained backslashes and did not match normalized manifest paths. It is preserved and excluded from the v6 package."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v6/",
+      "status": "MANIFESTED_METADATA_DEFECT",
+      "reason": "The byte and evidence-index audits passed, but its ledger incorrectly claimed a preserved v3 package directory that is absent from the checkout. The v6 package is preserved; the unsupported history claim is removed here."
+    }
+  ],
+  "providerProbe": {
+    "status": "PASS",
+    "model": "gpt-6-luna/max",
+    "timeoutMs": 1,
+    "error": "VISUAL_PROVIDER_TIMEOUT",
+    "toolAccess": "NONE",
+    "localProcessCleanup": {
+      "pid": 21676,
+      "killRequested": true,
+      "killError": null,
+      "exitObserved": true,
+      "exitCode": null,
+      "exitSignal": "SIGTERM",
+      "closeObserved": true,
+      "closeCode": null,
+      "closeSignal": "SIGTERM",
+      "closeWaitTimedOut": false
+    },
+    "remoteCancellation": {
+      "schemaVersion": "APPSERVER_REMOTE_TURN_CANCELLATION_v1",
+      "status": "REMOTE_INTERRUPT_CONFIRMED",
+      "threadId": "01a112d4-e2ee-7320-80c7-ffb25813d7f2",
+      "turnId": "01a112d4-e37d-7143-9f5f-c37116e67536",
+      "interruptRequested": true,
+      "acknowledgementReceived": true,
+      "acknowledgementKeys": [],
+      "acknowledgementError": null,
+      "terminalNotificationObserved": true,
+      "terminalStatus": "interrupted",
+      "elapsedMs": 40
+    },
+    "trace": {
+      "path": ".tmp/archive/phase3d-provider-timeout-cancel-25208/probe/trace/appserver-message-trace.jsonl",
+      "entries": 18,
+      "methods": [
+        "remoteControl/status/changed",
+        "thread/started",
+        "mcpServer/startupStatus/updated",
+        "mcpServer/startupStatus/updated",
+        "mcpServer/startupStatus/updated",
+        "thread/settings/updated",
+        "thread/status/changed",
+        "turn/started",
+        "mcpServer/startupStatus/updated",
+        "item/started",
+        "item/completed",
+        "thread/status/changed",
+        "turn/completed"
+      ],
+      "lastMethod": "turn/completed",
+      "lastTurnStatus": "interrupted"
+    },
+    "probe": {
+      "source": ".tmp\\archive\\phase3d-provider-timeout-cancel-25208\\probe/provider-timeout-cancel-probe.json",
+      "pathInPackage": "logs/provider-timeout-cancel-probe.json",
+      "bytes": 2234,
+      "sha256": "sha256:f1ea39f34a676b362927d0e34f3b9fa67f5c0716c01ccf7d7827f576f9e0c0f7",
+      "classification": "ONE_BOUNDED_ACTUAL_APPSERVER_TIMEOUT"
+    },
+    "traceCopy": {
+      "source": ".tmp/archive/phase3d-provider-timeout-cancel-25208/probe/trace/appserver-message-trace.jsonl",
+      "pathInPackage": "logs/appserver-message-trace.jsonl",
+      "bytes": 6452,
+      "sha256": "sha256:1051889b42a7d7a3b95a4e3dfaccfe277d1954a037b1fe9eeb1318d17937e23c",
+      "classification": "TURN_INTERRUPT_ACK_AND_TERMINAL_NOTIFICATION"
+    },
+    "installedProtocolFiles": [
+      {
+        "source": ".tmp/archive/phase3d-provider-closure/protocol/v2/TurnInterruptParams.ts",
+        "pathInPackage": "protocol/v2/TurnInterruptParams.ts",
+        "bytes": 226,
+        "sha256": "sha256:643034c3d25c23c7700236d4d1ff16286565786d48148e85b0c4761fe46d3804",
+        "classification": "INSTALLED_CODEX_APP_SERVER_GENERATED_PROTOCOL"
+      },
+      {
+        "source": ".tmp/archive/phase3d-provider-closure/protocol/v2/TurnInterruptResponse.ts",
+        "pathInPackage": "protocol/v2/TurnInterruptResponse.ts",
+        "bytes": 212,
+        "sha256": "sha256:3994cb114b2c4a2e81ba3a349c3a7d1f13ce1b165776b2162b52c9a114c24bc4",
+        "classification": "INSTALLED_CODEX_APP_SERVER_GENERATED_PROTOCOL"
+      },
+      {
+        "source": ".tmp/archive/phase3d-provider-closure/protocol/v2/TurnCompletedNotification.ts",
+        "pathInPackage": "protocol/v2/TurnCompletedNotification.ts",
+        "bytes": 264,
+        "sha256": "sha256:1f56d73cb06876533fb224cd285634d3e090b21b647009be0e7c622937e40d3e",
+        "classification": "INSTALLED_CODEX_APP_SERVER_GENERATED_PROTOCOL"
+      },
+      {
+        "source": ".tmp/archive/phase3d-provider-closure/protocol/v2/TurnStatus.ts",
+        "pathInPackage": "protocol/v2/TurnStatus.ts",
+        "bytes": 233,
+        "sha256": "sha256:c69049363f97e97844e9fc851f0cd4122da057ba1371de003a28c00ab7a6ef1a",
+        "classification": "INSTALLED_CODEX_APP_SERVER_GENERATED_PROTOCOL"
+      }
+    ]
+  },
+  "offlineRuntime": {
+    "status": "PASS",
+    "networkPolicy": "LOCAL_ONLY",
+    "externalRequests": [],
+    "qrRendererAvailable": true,
+    "mathJaxSource": "local",
+    "mathJaxCdnFallback": false,
+    "historicalCdnResponse": {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+      "status": 200,
+      "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+      "bytes": 17579,
+      "rowRef": {
+        "source": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CAPTURE/8aa7b06f366e791469a51f519c9db2ff709296c82ade749176901e0ce60fbff3/va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-desktop.json",
+        "pathInPackage": "attempts/pre-vendoring-q1-archive-row.json",
+        "bytes": 33006,
+        "sha256": "sha256:abf28538343cdfccae8d73ea5a7b28c4ba32ad15cc55f2cfd509d16110f38550",
+        "classification": "HISTORICAL_EXTERNAL_CDN_REQUEST"
+      }
+    },
+    "vendor": {
+      "version": "QRious v4.0.2",
+      "license": "GPL v3",
+      "fileRef": {
+        "path": "archive/vendor/qrious/qrious.min.js",
+        "bytes": 17584,
+        "sha256": "sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d"
+      },
+      "cdnPixelParity": true,
+      "cdnPixelSha256": "sha256:47b7f8d85e26c4c091e325066000fb08cbb00e4704091c95902f787530a65deb",
+      "vendorPixelSha256": "sha256:47b7f8d85e26c4c091e325066000fb08cbb00e4704091c95902f787530a65deb",
+      "parityLog": {
+        "source": ".tmp/archive/phase3d-provider-closure/probe/qrious-parity.json",
+        "pathInPackage": "logs/qrious-pixel-parity.json",
+        "bytes": 970,
+        "sha256": "sha256:b51f5747680ca891386379bf9c80ed43b78a10cc9852db6c0c3b1a223fa0ec05",
+        "classification": "PINNED_VERSION_RENDER_PARITY"
+      },
+      "localResponse": {
+        "url": "http://127.0.0.1:51829/archive/vendor/qrious/qrious.min.js",
+        "status": 200,
+        "sha256": "892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d",
+        "bytes": 17584
+      }
+    },
+    "mathJaxFallbackBlockedByTest": "No fallback request or state transition occurred; MathJax source remained local.",
+    "candidate": {
+      "runId": "offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988",
+      "examUid": "25_효천고_2학기_중간_고1_기출",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "candidateResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "engineSha256": "739c2d7a9c1995bc486ab7cd81aa7c3f7a1a864aba87e12e5bbf30d5934fca6a",
+      "localQrRef": {
+        "path": "archive/vendor/qrious/qrious.min.js",
+        "bytes": 17584,
+        "sha256": "sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d"
+      },
+      "qrResponse": {
+        "url": "http://127.0.0.1:51829/archive/vendor/qrious/qrious.min.js",
+        "status": 200,
+        "sha256": "892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d",
+        "bytes": 17584
+      },
+      "solutionAssetRef": {
+        "path": ".tmp/archive/offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988/25_효천고_2학기_중간_고1_기출/assets/images/25_효천고_2학기_중간_고1_기출/q01-solution.svg",
+        "bytes": 27699,
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "loadedSolution": {
+        "url": "http://127.0.0.1:51829/archive/assets/images/25_%ED%9A%A8%EC%B2%9C%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C/q01-solution.svg?v=20260903.1",
+        "status": 200,
+        "sha256": "f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f",
+        "bytes": 27699
+      },
+      "networkPolicy": {
+        "policy": "LOCAL_ONLY",
+        "localOrigin": "http://127.0.0.1:51829",
+        "externalRequests": []
+      },
+      "qrRendererAvailable": true,
+      "mathJaxSource": "local",
+      "mathJaxCdnFallback": false,
+      "captureStatus": "PASS",
+      "rowStatus": "PASS",
+      "files": [
+        "summary.json",
+        "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-offline-local-runtime-va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-context.png",
+        "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-offline-local-runtime-va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536.png",
+        "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-offline-local-runtime.json",
+        "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-offline-local-runtime.png"
+      ]
+    },
+    "capturedRow": {
+      "status": "PASS",
+      "network": {
+        "policy": "LOCAL_ONLY",
+        "localOrigin": "http://127.0.0.1:51829",
+        "externalRequests": []
+      },
+      "qrRendererAvailable": true,
+      "mathJaxSource": "local",
+      "mathJaxCdnFallback": false,
+      "qrResponse": {
+        "url": "http://127.0.0.1:51829/archive/vendor/qrious/qrious.min.js",
+        "status": 200,
+        "sha256": "892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d",
+        "bytes": 17584
+      }
+    },
+    "matrixPath": ".tmp/archive/offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-render-matrix.json",
+    "candidateBankPath": ".tmp/archive/offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988/25_효천고_2학기_중간_고1_기출/25_효천고_2학기_중간_고1_기출.js",
+    "svgPath": ".tmp/archive/offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988/25_효천고_2학기_중간_고1_기출/assets/images/25_효천고_2학기_중간_고1_기출/q01-solution.svg",
+    "archiveCaptureFolder": ".tmp/archive/offline-archive-runtime-09ce90a7-8b10-4ee6-b0fa-ea2db3585988/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-render/offline-local-runtime"
+  },
+  "candidateReplays": [
+    {
+      "candidate": "q10-graph",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "status": "UNRESOLVED",
+      "error": "REPAIR_BUDGET_EXHAUSTED",
+      "providerPurpose": null,
+      "providerParserErrorName": null,
+      "providerPayloadSha256": null,
+      "providerRawOutputSha256": null,
+      "providerInvocationId": null,
+      "providerTerminalStatus": null,
+      "providerProcessCleanup": null,
+      "providerRemoteCancellation": null,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "actualArchive": null,
+      "finalSvgRef": null,
+      "replayLog": {
+        "source": ".tmp/archive/phase3d-provider-closure/replay-control/q10-graph-final-json-payload-contract-replay.json",
+        "pathInPackage": "candidate-attempts/q10-graph-final-json-payload-contract-replay.json",
+        "bytes": 2649,
+        "sha256": "sha256:286cd0dc84f0ba55b8c3d7bbf1c95d5c4c73501bf71d85f509f9ee12e27e7b21",
+        "classification": "FINAL_CURRENT_CODE_ATTEMPT"
+      },
+      "result": {
+        "source": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/a1cf58ebcb70af8919ddb61e569b3f65638a83016df5bdf27e5bcaf03a39bb93/result.json",
+        "pathInPackage": "candidate-attempts/q10-graph-result.json",
+        "bytes": 18171,
+        "sha256": "sha256:5b941e3f5c67e6df87ce47f137499d56522675971043db27a4c5db6637237644",
+        "classification": "FINAL_CURRENT_CODE_RESULT"
+      }
+    },
+    {
+      "candidate": "q01-geometry",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "providerPurpose": null,
+      "providerParserErrorName": null,
+      "providerPayloadSha256": null,
+      "providerRawOutputSha256": null,
+      "providerInvocationId": null,
+      "providerTerminalStatus": null,
+      "providerProcessCleanup": null,
+      "providerRemoteCancellation": null,
+      "repairLedger": [],
+      "actualArchive": "PASS",
+      "finalSvgRef": {
+        "bytes": 27699,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/d75a8539f19ad5f09ea594020212581bcc659f472475fa4087ddd817881153eb/q01-solution.svg",
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "replayLog": {
+        "source": ".tmp/archive/phase3d-provider-closure/replay-control/q01-geometry-final-json-payload-contract-replay.json",
+        "pathInPackage": "candidate-attempts/q01-geometry-final-json-payload-contract-replay.json",
+        "bytes": 2830,
+        "sha256": "sha256:07b0061ef3d7db4c7110632c588356c859b3ce15b0b74dd4eaae983b68cb37ec",
+        "classification": "FINAL_CURRENT_CODE_ATTEMPT"
+      },
+      "result": {
+        "source": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/3ea34f90f73c8a34e17802e39fa75e52ab06b33743e94debedade3edadd09eed/result.json",
+        "pathInPackage": "candidate-attempts/q01-geometry-result.json",
+        "bytes": 27630,
+        "sha256": "sha256:10092f787df447124a2d2261e9e5ec5d502f5b30eb6589de750bedf12b6bbbce",
+        "classification": "FINAL_CURRENT_CODE_RESULT"
+      }
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "providerPurpose": null,
+      "providerParserErrorName": null,
+      "providerPayloadSha256": null,
+      "providerRawOutputSha256": null,
+      "providerInvocationId": null,
+      "providerTerminalStatus": null,
+      "providerProcessCleanup": null,
+      "providerRemoteCancellation": null,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "actualArchive": "PASS",
+      "finalSvgRef": {
+        "bytes": 19211,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/aaf69f92ba28c6da6331754fcb2b243c67fe48fb7d08ae50d7219be2d6ba69d5/q01-solution.svg",
+        "sha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9"
+      },
+      "replayLog": {
+        "source": ".tmp/archive/phase3d-provider-closure/replay-control/coordinate-free-q01-final-json-payload-contract-replay.json",
+        "pathInPackage": "candidate-attempts/coordinate-free-q01-final-json-payload-contract-replay.json",
+        "bytes": 2841,
+        "sha256": "sha256:c6218cb91848e53154b8387cf49f80a8272dbf07b4c36151fcaa47e61f136f0f",
+        "classification": "FINAL_CURRENT_CODE_ATTEMPT"
+      },
+      "result": {
+        "source": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/a303f62ce071a266904e1ee501adc6c73a6de26d845d4a842107b0f1aabdd05c/result.json",
+        "pathInPackage": "candidate-attempts/coordinate-free-q01-result.json",
+        "bytes": 28140,
+        "sha256": "sha256:09aa62c05294abaa9f26e5cde6508ecb9fcd368d58dd56a388a9cea835aab13d",
+        "classification": "FINAL_CURRENT_CODE_RESULT"
+      }
+    }
+  ],
+  "tests": {
+    "offlineArchiveRuns": 3,
+    "providerParserContractRuns": 10,
+    "node": {
+      "passed": 130,
+      "failed": 0,
+      "log": {
+        "source": ".tmp/archive/phase3d-provider-closure/test-run/post-prompt-contract/node-regression.json",
+        "pathInPackage": "logs/node-regression-130.json",
+        "bytes": 23992,
+        "sha256": "sha256:694e399da1bb5127fb4e50bc9193ad13dae2aaa420cca9ac5d93966933a939c7",
+        "classification": "FULL_NODE_REGRESSION_WITH_OFFLINE_RUNTIME_TEST"
+      }
+    },
+    "python": {
+      "passed": 142,
+      "failed": 0,
+      "log": {
+        "source": ".tmp/archive/phase3d-provider-closure/test-run/post-prompt-contract/python-regression.json",
+        "pathInPackage": "logs/python-regression-142.json",
+        "bytes": 569,
+        "sha256": "sha256:f62a4a23bb8d00cd222183efb25094371016626c15d4e9b2ec4b6e58a6e2cf20",
+        "classification": "FULL_PYTHON_REGRESSION"
+      }
+    },
+    "summary": {
+      "source": ".tmp/archive/phase3d-provider-closure/test-run/post-prompt-contract/summary.json",
+      "pathInPackage": "logs/regression-summary.json",
+      "bytes": 2255,
+      "sha256": "sha256:47aad4bed55fe3487aae5e4ad8cfb41afe9cd002e44a6d25bbe4fb8cacb77c46",
+      "classification": "FULL_REGRESSION_SUMMARY"
+    }
+  },
+  "codeRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "bytes": 32109,
+      "sha256": "sha256:e0125b13d2075dc00a5e23f629c95acf4790f7c525ed2f4bb72109a99c956de9"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/auditor-turn-output.mjs",
+      "bytes": 3641,
+      "sha256": "sha256:0a5071253c50c86a6bcb72cc78b032725448fe1e716bae18c6407dc9352ef25a"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 63846,
+      "sha256": "sha256:3ea9ce71461dc668382800e8a0e16d1b157c819cf99a586d5eee3a739ff30247"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "bytes": 8511,
+      "sha256": "sha256:3ebea0bcc94d2fa604dffa595d0c032cf09341541e5301e3466d739a0bf84413"
+    },
+    {
+      "path": "archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "bytes": 26464,
+      "sha256": "sha256:bf535e012fac21077a2191818f37d988d76c9933051dde20bd1b1dceff658efc"
+    },
+    {
+      "path": "archive/engine.html",
+      "bytes": 186898,
+      "sha256": "sha256:739c2d7a9c1995bc486ab7cd81aa7c3f7a1a864aba87e12e5bbf30d5934fca6a"
+    },
+    {
+      "path": "archive/vendor/qrious/qrious.min.js",
+      "bytes": 17584,
+      "sha256": "sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d"
+    },
+    {
+      "path": "archive/vendor/qrious/LICENSE.md",
+      "bytes": 702,
+      "sha256": "sha256:d695ef573c74f602fd136f9d2919870edb216f0e56289f26062b91911b049566"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/offline-archive-runtime.test.mjs",
+      "bytes": 5067,
+      "sha256": "sha256:7edbd1ce40a884e05945e657395f3a8ec620e99b6e4c763ed0052653ee679591"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/provider-payload-contract.test.mjs",
+      "bytes": 4266,
+      "sha256": "sha256:57bcea6a8cf808e52a869826bf7ce9d6f7057980640a7058d6d7e19523586af0"
+    }
+  ],
+  "limitations": [
+    "The AppServer cancellation result is one bounded no-tools GPT-6 Luna/Max invocation, not repeated timeout qualification.",
+    "The offline Archive smoke capture uses the previously frozen q1 SVG only to verify runtime resource closure; it is not a current-fingerprint visual candidate replay.",
+    "Canonical UID authority remains INPUT_REQUIRED and all candidates remain outside qualification counts."
+  ],
+  "candidateReplayStatus": "q10 UNRESOLVED / REPAIR_BUDGET_EXHAUSTED with three rows preserved; q1 EXPERIMENTAL_LOCATOR_COMPLETE after one JSON-payload contract correction; coordinate-free q1 EXPERIMENTAL_LOCATOR_COMPLETE with three prior rows preserved",
+  "q10RepairCount": 3,
+  "q10LedgerReset": false,
+  "canonicalAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false,
+  "priorPromptEncodingFailure": {
+    "log": {
+      "source": ".tmp/archive/phase3d-provider-closure/replay-control/q01-geometry-final-provider-offline-replay.json",
+      "pathInPackage": "attempts/q1-invalid-payload-before-prompt-contract-fix.json",
+      "bytes": 2491,
+      "sha256": "sha256:71faf1af1de45dfaeb5befe6a224b2a47ed26f580348d76a9c2f60aace9ace82",
+      "classification": "PROMPT_ENCODING_FAILURE_PRESERVED"
+    },
+    "result": {
+      "source": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/2a5777686fc091054c378a61cc888b574149fb4d44d346ecdc27a05f4ca88707/result.json",
+      "pathInPackage": "attempts/q1-invalid-payload-before-prompt-contract-result.json",
+      "bytes": 13493,
+      "sha256": "sha256:ed2996838470dcc8a7a57bf57057672d44a974939ffd8b5fb4f15085a5a09cce",
+      "classification": "PROMPT_ENCODING_FAILURE_PRESERVED"
+    },
+    "classification": "MALFORMED_INNER_PAYLOAD_RECORDED_THEN_PROMPT_CONTRACT_FIXED",
+    "providerPurpose": "SOLUTION_COMPARE",
+    "finalValidationAttempts": 1,
+    "finalValidationStatus": "EXPERIMENTAL_LOCATOR_COMPLETE"
+  },
+  "providerPayloadContractFix": {
+    "sourcePolicyChanged": true,
+    "verifiedSolutionPolicyChanged": true,
+    "rule": "Outer AppServer payload is a string containing one JSON-encoded object; blind and compare prompt now state this explicitly."
+  }
+}

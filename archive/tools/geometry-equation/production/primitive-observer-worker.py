@@ -41,6 +41,24 @@ def audit(p):
         expected=[p['points'][r] for r in segment['refs']]
         if any(math.dist(a,b)>1e-8 for a,b in zip(actual,expected)):errors.append('SEGMENT_OWNER_MISMATCH:'+segment['id'])
         observations.append({'id':segment['id'],'observedEndpoints':actual,'expectedEndpoints':expected})
+    for oid,expected in (p.get('lines') or {}).items():
+        n=elements.get(oid)
+        if n is None or n.tag.split('}')[-1]!='line' or n.get('data-role')!='line':errors.append('LINE_MISSING:'+oid);continue
+        try:coefficients=[float(value) for value in expected];actual=[inverse(float(n.get('x1')),float(n.get('y1'))),inverse(float(n.get('x2')),float(n.get('y2')))]
+        except (TypeError,ValueError):errors.append('LINE_FACT_INVALID:'+oid);continue
+        a,b,c=coefficients;norm=math.hypot(a,b)
+        if norm<=1e-12:errors.append('LINE_FACT_DEGENERATE:'+oid);continue
+        residuals=[abs(a*x+b*y+c)/norm for x,y in actual]
+        if max(residuals)>1e-7:errors.append('LINE_EQUATION_MISMATCH:'+oid)
+        observations.append({'id':oid,'type':'LINE','observedEndpoints':actual,'equationResiduals':residuals})
+    for oid,expected in (p.get('circles') or {}).items():
+        n=elements.get(oid)
+        if n is None or n.tag.split('}')[-1]!='circle' or n.get('data-role')!='circle':errors.append('CIRCLE_MISSING:'+oid);continue
+        try:center=expected['center'];radius=float(expected['radius']);observed_center=inverse(float(n.get('cx')),float(n.get('cy')));observed_radius=float(n.get('r'))/sx
+        except (KeyError,TypeError,ValueError):errors.append('CIRCLE_FACT_INVALID:'+oid);continue
+        center_delta=math.dist(observed_center,center);radius_delta=abs(observed_radius-radius)
+        if center_delta>1e-7 or radius_delta>1e-7:errors.append('CIRCLE_GEOMETRY_MISMATCH:'+oid)
+        observations.append({'id':oid,'type':'CIRCLE','observedCenter':observed_center,'observedRadius':observed_radius,'centerDelta':center_delta,'radiusDelta':radius_delta})
     for angle in p.get('rightAngles',[]):
         n=elements.get(angle['id'])
         if n is None or n.tag.split('}')[-1]!='polyline':errors.append('RIGHT_ANGLE_MARK_MISSING:'+angle['id']);continue
@@ -65,7 +83,7 @@ def audit(p):
         if n is None or n.get('data-owner')!=f['owner'] or n.get('data-fragment-sha')!=expected:errors.append('FRAGMENT_OWNER_MISMATCH:'+oid)
         def tree(node):return (node.tag,tuple(sorted(node.attrib.items())),node.text or '',tuple(tree(c) for c in node))
         if n is not None and (len(n)!=1 or tree(n[0])!=tree(ET.fromstring(f['svg']))):errors.append('ACTUAL_GLYPH_TREE_MISMATCH:'+oid)
-    return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest(),'fragmentCount':len(wrappers),'strategy':'FINAL_XML_POINTS_SEGMENTS_FRAME_AND_BOUND_GLYPH_BYTES'}
+    return {'status':'FAIL' if errors else 'PASS','errors':errors,'observations':observations,'finalSvgSha256':'sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest(),'fragmentCount':len(wrappers),'strategy':'FINAL_XML_POINTS_SEGMENTS_LINES_CIRCLES_FRAME_AND_BOUND_GLYPH_BYTES'}
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:result,status=audit(payload),'OK'

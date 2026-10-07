@@ -24,7 +24,7 @@ async function runFrozenInWorkspace(root, request, workspace) {
   const planSha256 = validateFrozenPlan(plan);
   const capability=request.capability;
   const fingerprint=scopeFingerprint(root,capability);
-  if((capability==='construction-spike-v1'&&!plan.mathPlan)||(capability==='polynomial-spike-v1'&&plan.graphPlan?.family!=='polynomial')||(capability==='rational-spike-v1'&&plan.graphPlan?.family!=='rational')||(capability==='sqrt-affine-spike-v1'&&plan.graphPlan?.family!=='sqrt-affine'))throw Error('PLAN_CAPABILITY_MISMATCH');
+  if((capability==='construction-spike-v1'&&!plan.mathPlan)||(capability==='polynomial-spike-v1'&&plan.graphPlan?.family!=='polynomial')||(capability==='rational-spike-v1'&&plan.graphPlan?.family!=='rational')||(capability==='sqrt-affine-spike-v1'&&plan.graphPlan?.family!=='sqrt-affine')||(capability==='absolute-value-spike-v1'&&plan.graphPlan?.family!=='absolute-value')||(capability==='piecewise-affine-spike-v1'&&plan.graphPlan?.family!=='piecewise-affine')||(capability==='exponential-affine-spike-v1'&&plan.graphPlan?.family!=='exponential-affine')||(capability==='logarithmic-affine-spike-v1'&&plan.graphPlan?.family!=='logarithmic-affine')||(capability==='trigonometric-spike-v1'&&plan.graphPlan?.family!=='trigonometric'))throw Error('PLAN_CAPABILITY_MISMATCH');
   if(plan.sourceRef?.sha256!==request.sourceRef.sha256||plan.solutionRef?.sha256!==request.solutionRef.sha256)throw Error('PLAN_SOURCE_BINDING_MISMATCH');
   const action = plan.mathPlan ? 'construction' : 'graph';
   const projection = plan.mathPlan ? {action,graph:plan.mathPlan} : {action,graphPlan:plan.graphPlan};

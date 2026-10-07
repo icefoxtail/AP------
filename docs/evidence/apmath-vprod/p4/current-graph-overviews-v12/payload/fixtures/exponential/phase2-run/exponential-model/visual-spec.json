@@ -1,0 +1,72 @@
+{
+  "id": "exponential-overview-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -3.24,
+    "xMax": 3.24,
+    "yMin": -3.01283053847815,
+    "yMax": 23.098367461665816,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": {
+    "x": true,
+    "y": true
+  },
+  "title": "지수함수의 증가와 점근선",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "exponentialFeatures": {
+      "schemaVersion": "EXPONENTIAL_AFFINE_FEATURES_v1",
+      "referencePoint": {
+        "x": "0",
+        "y": "1"
+      },
+      "horizontalAsymptote": {
+        "y": "0",
+        "side": "LEFT",
+        "approachedFrom": "ABOVE"
+      },
+      "monotonicity": "INCREASING",
+      "growthSide": "RIGHT",
+      "growthDirection": "UP"
+    },
+    "exponentialFeaturePolicy": {
+      "schemaVersion": "EXPONENTIAL_AFFINE_FEATURE_POLICY_v1",
+      "sourceDomain": "ALL_REALS",
+      "referenceArgument": "EXPONENT_ZERO",
+      "asymptotePolicy": "EXACT_VERTICAL_SHIFT",
+      "referenceMarkerRadiusIntrinsicPx": 4,
+      "minimumReferenceMarkerDiameterCssPx": 3,
+      "minimumAsymptoteSeparationCssPx": 2,
+      "minimumBranchSpanCssPx": 32
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "(1)*exp((1)*x)+(0)",
+      "domain": [
+        -3,
+        3
+      ],
+      "criticalX": [
+        0
+      ]
+    },
+    {
+      "id": "reference-value",
+      "kind": "EQUATION_LABEL",
+      "text": "f(0)=1",
+      "at": [
+        0,
+        3.088895840011517
+      ],
+      "math": true,
+      "priority": 0
+    }
+  ]
+}

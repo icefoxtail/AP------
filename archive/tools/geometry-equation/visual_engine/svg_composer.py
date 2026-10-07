@@ -15,7 +15,7 @@ def safe_math_markup(value):
     return value
 
 def owner_attrs(value):
-    fields={'owner':'data-owner','ownerPoints':'data-owner-points','sourceLabel':'data-source-label','annotation':'data-annotation','ownerKind':'data-owner-kind','factRole':'data-fact-role'}
+    fields={'owner':'data-owner','ownerPoints':'data-owner-points','sourceLabel':'data-source-label','annotation':'data-annotation','ownerKind':'data-owner-kind','factRole':'data-fact-role','state':'data-state','branch':'data-branch','featureKind':'data-feature-kind','poleSide':'data-pole-side'}
     return ''.join(' '+name+'="'+esc(' '.join(value[key]) if isinstance(value[key],(list,tuple)) else value[key])+'"' for key,name in fields.items() if key in value)
 
 def compose(prepared,layout,viewport,fragments=None):

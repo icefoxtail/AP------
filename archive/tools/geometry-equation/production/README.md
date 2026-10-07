@@ -136,16 +136,24 @@ full tail, and closed outlined markers. The final visual-engine spec adds a
 deterministic near-boundary critical sample so the independent secant bound stays
 at 0.35 CSS px. Actual profile checks require a 48 CSS px endpoint-to-tail span
 and a 3 CSS px endpoint marker. The controlled `sqrt(2*x-200)` fixture selects
-medium; small is unsupported because the marker measures 2.625 CSS px. General
-overview rules for absolute-value, piecewise, exponential, logarithmic,
-trigonometric, and mixed panels remain incomplete.
+medium; small is unsupported because the marker measures 2.625 CSS px. The
+bounded absolute-value, piecewise, exponential/logarithmic, and trigonometric
+family slices have now been implemented as separate experimental routes.
 
-- Construction: source points, closed SSS normalization, midpoint, line through
-  points, perpendicular foot, circle radius, circle/circle and line/circle
-  intersections with oriented-side selection, distance and scalar square.
-  Cindy rebuilds only from source primitives. Selected-point descendants beyond
-  scalar calculations, line/line peer intersections, generic constraints,
-  scalar node refs and general realization solving are unsupported.
+- Construction: typed source points and closed SSS normalization; midpoint,
+  line/parallel through point, perpendicular foot, internal/external angle
+  bisectors, circles by center/radius, center/through-point, or three
+  non-collinear points; unique line-line intersection; line-circle and
+  circle-circle intersections with explicit oriented-side selection; tangents
+  at a circle point and external-point tangent contacts built from the
+  diameter-circle intersection; segment length, scalar square, and scalar
+  ratio. Cindy rebuilds point, line, circle, point-set, scalar, and selected
+  branch outputs independently. Typed source-bound `conditionAudits` check
+  incidence, distance, equal distance, midpoint ratio, perpendicular/parallel,
+  circle membership, tangency, and oriented side. General constraint solving,
+  arbitrary conics, non-circle tangency, collinear three-point circles,
+  zero-radius circles, off-circle tangent contacts, parallel line-line
+  intersections, and unsupported Cindy numeric envelopes remain unsupported.
   Cindy is a numeric peer, not an exact proof: integer operands outside ±1e6,
   rational operands outside ±1e9/denominator 1e9, magnitudes outside 1e-9..1e6
   (apart from zero), and sensitive cancellation are UNSUPPORTED. Large exact
@@ -160,9 +168,14 @@ trigonometric, and mixed panels remain incomplete.
   linear-over-linear inputs with one simple real denominator root, classified as
   a pole or removable hole; higher degrees, multiple denominator roots,
   oblique asymptotes, and additional source intervals fail closed. Both routes
-  are controlled-fixture-only, not publication-qualified. Trig/log/exp/abs/
-  piecewise general compositions and mixed geometry/graph publication remain
-  unsupported.
+  are controlled-fixture-only, not publication-qualified. Separate bounded
+  experimental routes also cover one affine absolute-value corner, one
+  two-branch piecewise-affine jump/continuous join on a closed interval, natural
+  exponential and logarithmic affine functions, and one full sine/cosine period
+  or one tangent branch between adjacent poles. Their observers bind the
+  family features, actual CSS profiles, and local Archive captures. General
+  compositions, restricted transcendental intervals, arbitrary piecewise
+  cases, and mixed geometry/graph publication remain unsupported.
 - Typography: the tested inventory includes Korean, fractions, radicals, powers,
   subscripts, prime, pi, degree/unit, entity/product and generated AST precedence.
   General TeX/Korean mixed shaping and a full notation/glyph qualification are

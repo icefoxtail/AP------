@@ -1,0 +1,268 @@
+{
+  "engine": "CindyJS",
+  "version": "0.0.5",
+  "verificationKind": "NUMERIC_PEER_NOT_EXACT_PROOF",
+  "numericPolicy": "CINDY_SAFE_ENVELOPE_v1",
+  "inputSha256": "sha256:48b1b86d53acb02f1e5d9e2ce2ff1389bdbc863ba07cbeefdf07a8494edf3b6b",
+  "points": {
+    "A": [
+      0,
+      2
+    ],
+    "B": [
+      4,
+      0
+    ],
+    "C": [
+      0,
+      3
+    ],
+    "D": [
+      4,
+      3
+    ],
+    "O": [
+      0,
+      0
+    ],
+    "P": [
+      4.999999999999999,
+      0
+    ],
+    "V": [
+      0,
+      0
+    ],
+    "X": [
+      2,
+      0
+    ],
+    "Y": [
+      0,
+      3
+    ],
+    "mid": [
+      2.4999999999999996,
+      0
+    ],
+    "crossLine": [
+      0,
+      0
+    ],
+    "contact": [
+      0.8000000000000003,
+      1.8330302779823364
+    ],
+    "contactOther": [
+      0.8000000000000003,
+      -1.8330302779823364
+    ]
+  },
+  "scalars": {
+    "lengthAB": 4,
+    "lengthAC": 3,
+    "ratio": 1.3333333333333333
+  },
+  "lines": {
+    "axisX": [
+      0,
+      1,
+      0
+    ],
+    "axisY": [
+      1,
+      0,
+      0
+    ],
+    "parallel": [
+      0,
+      -0.3333333333333333,
+      1
+    ],
+    "tangentAtA": [
+      0,
+      -0.5,
+      1
+    ],
+    "externalTangent": [
+      -0.2,
+      -0.45825756949558394,
+      1
+    ],
+    "externalTangentOther": [
+      -0.2,
+      0.45825756949558394,
+      1
+    ],
+    "radiusLine": [
+      1,
+      0,
+      0
+    ],
+    "internalBisector": [
+      1,
+      -1,
+      0
+    ],
+    "externalBisector": [
+      1,
+      1,
+      0
+    ]
+  },
+  "circles": {
+    "circleO": {
+      "center": [
+        0,
+        0
+      ],
+      "radius": 2
+    },
+    "circle3": {
+      "center": [
+        2,
+        1.5
+      ],
+      "radius": 2.5
+    },
+    "diameterCircle": {
+      "center": [
+        2.5,
+        0
+      ],
+      "radius": 2.5
+    }
+  },
+  "pointSets": {
+    "contacts": [
+      [
+        0.8000000000000003,
+        -1.8330302779823364
+      ],
+      [
+        0.8000000000000003,
+        1.8330302779823364
+      ]
+    ]
+  },
+  "conditionAudits": [
+    {
+      "id": "incidence-B-axisX",
+      "sourceConditionId": "incidence-B-axisX",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "distance-AB-4",
+      "sourceConditionId": "distance-AB-4",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": 4,
+      "expected": 4
+    },
+    {
+      "id": "equal-external-tangent-lengths",
+      "sourceConditionId": "equal-external-tangent-lengths",
+      "kind": "EQUAL_DISTANCE",
+      "status": "PASS",
+      "checks": [
+        "DISTANCES_EQUAL"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "midpoint-OP-half",
+      "sourceConditionId": "midpoint-OP-half",
+      "kind": "MIDPOINT_RATIO",
+      "status": "PASS",
+      "checks": [
+        "COLLINEAR",
+        "BETWEEN_ENDPOINTS",
+        "DISTANCE_RATIO"
+      ],
+      "observed": 1,
+      "expected": 1
+    },
+    {
+      "id": "perpendicular-coordinate-axes",
+      "sourceConditionId": "perpendicular-coordinate-axes",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PERPENDICULAR"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "parallel-through-C",
+      "sourceConditionId": "parallel-through-C",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "A-on-circleO",
+      "sourceConditionId": "A-on-circleO",
+      "kind": "CIRCLE_MEMBERSHIP",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "tangent-at-A",
+      "sourceConditionId": "tangent-at-A",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": 0
+    },
+    {
+      "id": "external-tangent-contact",
+      "sourceConditionId": "external-tangent-contact",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": 4.996003610813204e-16
+    },
+    {
+      "id": "contact-positive-side",
+      "sourceConditionId": "contact-positive-side",
+      "kind": "ORIENTED_SIDE",
+      "status": "PASS",
+      "checks": [
+        "STRICT_ORIENTED_HALF_PLANE"
+      ],
+      "observed": 9.16515138991168
+    },
+    {
+      "id": "contact-other-negative-side",
+      "sourceConditionId": "contact-other-negative-side",
+      "kind": "ORIENTED_SIDE",
+      "status": "PASS",
+      "checks": [
+        "STRICT_ORIENTED_HALF_PLANE"
+      ],
+      "observed": 9.16515138991168
+    }
+  ]
+}

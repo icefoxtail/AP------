@@ -1,0 +1,3939 @@
+{
+  "schemaVersion": "APMATH_PHASE4_CONSTRUCTION_V1_FIXTURE_RESULT_v1",
+  "classification": "CONTROLLED_SYNTHETIC_CONTENT_FIXTURE",
+  "runId": "phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c",
+  "examUid": "25_효천고_2학기_중간_고1_기출",
+  "capability": "construction-spike-v1",
+  "sourceConditions": [
+    {
+      "id": "incidence-B-axisX",
+      "condition": "INCIDENCE_POINT_ON_LINE 검수: B, axisX",
+      "mappedTo": "construction-node-refs:B,axisX"
+    },
+    {
+      "id": "distance-AB-4",
+      "condition": "DISTANCE_EQUALS 검수: O, B",
+      "mappedTo": "construction-node-refs:O,B"
+    },
+    {
+      "id": "equal-external-tangent-lengths",
+      "condition": "EQUAL_DISTANCE 검수: P, contact, P, contactOther",
+      "mappedTo": "construction-node-refs:P,contact,P,contactOther"
+    },
+    {
+      "id": "midpoint-OP-half",
+      "condition": "MIDPOINT_RATIO 검수: O, mid, P",
+      "mappedTo": "construction-node-refs:O,mid,P"
+    },
+    {
+      "id": "perpendicular-coordinate-axes",
+      "condition": "PERPENDICULAR 검수: axisX, axisY",
+      "mappedTo": "construction-node-refs:axisX,axisY"
+    },
+    {
+      "id": "parallel-through-C",
+      "condition": "PARALLEL 검수: axisX, parallel",
+      "mappedTo": "construction-node-refs:axisX,parallel"
+    },
+    {
+      "id": "A-on-circleO",
+      "condition": "CIRCLE_MEMBERSHIP 검수: circleO, A",
+      "mappedTo": "construction-node-refs:circleO,A"
+    },
+    {
+      "id": "tangent-at-A",
+      "condition": "TANGENCY_AT_POINT 검수: circleO, A, tangentAtA",
+      "mappedTo": "construction-node-refs:circleO,A,tangentAtA"
+    },
+    {
+      "id": "external-tangent-contact",
+      "condition": "TANGENCY_AT_POINT 검수: circleO, contact, externalTangent",
+      "mappedTo": "construction-node-refs:circleO,contact,externalTangent"
+    },
+    {
+      "id": "contact-positive-side",
+      "condition": "ORIENTED_SIDE 검수: O, P, contact",
+      "mappedTo": "construction-node-refs:O,P,contact"
+    },
+    {
+      "id": "contact-other-negative-side",
+      "condition": "ORIENTED_SIDE 검수: O, P, contactOther",
+      "mappedTo": "construction-node-refs:O,P,contactOther"
+    }
+  ],
+  "typedGraph": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "axisX",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axisY",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallel",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "C",
+          "axisX"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossLine",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "axisX",
+          "axisY"
+        ],
+        "outputType": "POINT",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mid",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "outputType": "POINT",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "CIRCLE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle3",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "outputType": "CIRCLE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diameterCircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "mid",
+          "P"
+        ],
+        "outputType": "CIRCLE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tangentAtA",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "circleO",
+          "A"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "contacts",
+        "op": "INTERSECTION",
+        "inputs": [
+          "circleO",
+          "diameterCircle"
+        ],
+        "outputType": "POINT_SET",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "contact",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "contacts"
+        ],
+        "outputType": "POINT",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "contactOther",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "contacts"
+        ],
+        "outputType": "POINT",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "externalTangent",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "contact"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "externalTangentOther",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "contactOther"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radiusLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "LINE",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "internalBisector",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "X",
+          "V",
+          "Y"
+        ],
+        "outputType": "LINE",
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "externalBisector",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "X",
+          "V",
+          "Y"
+        ],
+        "outputType": "LINE",
+        "args": {
+          "mode": "EXTERNAL"
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lengthAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "outputType": "SCALAR",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lengthAC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "outputType": "SCALAR",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ratio",
+        "op": "SCALAR_RATIO",
+        "inputs": [
+          "lengthAB",
+          "lengthAC"
+        ],
+        "outputType": "SCALAR",
+        "args": {},
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "incidence-B-axisX",
+        "sourceConditionId": "incidence-B-axisX",
+        "kind": "INCIDENCE_POINT_ON_LINE",
+        "refs": [
+          "B",
+          "axisX"
+        ]
+      },
+      {
+        "id": "distance-AB-4",
+        "sourceConditionId": "distance-AB-4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      },
+      {
+        "id": "equal-external-tangent-lengths",
+        "sourceConditionId": "equal-external-tangent-lengths",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "P",
+          "contact",
+          "P",
+          "contactOther"
+        ]
+      },
+      {
+        "id": "midpoint-OP-half",
+        "sourceConditionId": "midpoint-OP-half",
+        "kind": "MIDPOINT_RATIO",
+        "refs": [
+          "O",
+          "mid",
+          "P"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "1"
+        }
+      },
+      {
+        "id": "perpendicular-coordinate-axes",
+        "sourceConditionId": "perpendicular-coordinate-axes",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "axisX",
+          "axisY"
+        ]
+      },
+      {
+        "id": "parallel-through-C",
+        "sourceConditionId": "parallel-through-C",
+        "kind": "PARALLEL",
+        "refs": [
+          "axisX",
+          "parallel"
+        ]
+      },
+      {
+        "id": "A-on-circleO",
+        "sourceConditionId": "A-on-circleO",
+        "kind": "CIRCLE_MEMBERSHIP",
+        "refs": [
+          "circleO",
+          "A"
+        ]
+      },
+      {
+        "id": "tangent-at-A",
+        "sourceConditionId": "tangent-at-A",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "A",
+          "tangentAtA"
+        ]
+      },
+      {
+        "id": "external-tangent-contact",
+        "sourceConditionId": "external-tangent-contact",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "contact",
+          "externalTangent"
+        ]
+      },
+      {
+        "id": "contact-positive-side",
+        "sourceConditionId": "contact-positive-side",
+        "kind": "ORIENTED_SIDE",
+        "refs": [
+          "O",
+          "P",
+          "contact"
+        ],
+        "sign": 1
+      },
+      {
+        "id": "contact-other-negative-side",
+        "sourceConditionId": "contact-other-negative-side",
+        "kind": "ORIENTED_SIDE",
+        "refs": [
+          "O",
+          "P",
+          "contactOther"
+        ],
+        "sign": -1
+      }
+    ]
+  },
+  "conditionAudits": [
+    {
+      "id": "incidence-B-axisX",
+      "sourceConditionId": "incidence-B-axisX",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_LINE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "distance-AB-4",
+      "sourceConditionId": "distance-AB-4",
+      "kind": "DISTANCE_EQUALS",
+      "status": "PASS",
+      "checks": [
+        "EXACT_POINT_DISTANCE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "4"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "4"
+      }
+    },
+    {
+      "id": "equal-external-tangent-lengths",
+      "sourceConditionId": "equal-external-tangent-lengths",
+      "kind": "EQUAL_DISTANCE",
+      "status": "PASS",
+      "checks": [
+        "DISTANCES_EQUAL"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "midpoint-OP-half",
+      "sourceConditionId": "midpoint-OP-half",
+      "kind": "MIDPOINT_RATIO",
+      "status": "PASS",
+      "checks": [
+        "COLLINEAR",
+        "BETWEEN_ENDPOINTS",
+        "DISTANCE_RATIO"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "1"
+      },
+      "expected": {
+        "kind": "integer",
+        "value": "1"
+      }
+    },
+    {
+      "id": "perpendicular-coordinate-axes",
+      "sourceConditionId": "perpendicular-coordinate-axes",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PERPENDICULAR"
+      ],
+      "observed": true
+    },
+    {
+      "id": "parallel-through-C",
+      "sourceConditionId": "parallel-through-C",
+      "kind": "PARALLEL",
+      "status": "PASS",
+      "checks": [
+        "DIRECTION_VECTORS_PARALLEL"
+      ],
+      "observed": true
+    },
+    {
+      "id": "A-on-circleO",
+      "sourceConditionId": "A-on-circleO",
+      "kind": "CIRCLE_MEMBERSHIP",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "tangent-at-A",
+      "sourceConditionId": "tangent-at-A",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "external-tangent-contact",
+      "sourceConditionId": "external-tangent-contact",
+      "kind": "TANGENCY_AT_POINT",
+      "status": "PASS",
+      "checks": [
+        "POINT_ON_CIRCLE",
+        "TANGENT_CONTAINS_CONTACT",
+        "TANGENT_PERPENDICULAR_TO_RADIUS"
+      ],
+      "observed": {
+        "kind": "integer",
+        "value": "0"
+      }
+    },
+    {
+      "id": "contact-positive-side",
+      "sourceConditionId": "contact-positive-side",
+      "kind": "ORIENTED_SIDE",
+      "status": "PASS",
+      "checks": [
+        "STRICT_ORIENTED_HALF_PLANE"
+      ],
+      "observed": {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "21"
+              }
+            ]
+          }
+        ]
+      },
+      "sign": 1
+    },
+    {
+      "id": "contact-other-negative-side",
+      "sourceConditionId": "contact-other-negative-side",
+      "kind": "ORIENTED_SIDE",
+      "status": "PASS",
+      "checks": [
+        "STRICT_ORIENTED_HALF_PLANE"
+      ],
+      "observed": {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+          {
+            "kind": "integer",
+            "value": "-2"
+          },
+          {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "21"
+              }
+            ]
+          }
+        ]
+      },
+      "sign": -1
+    }
+  ],
+  "cindyComparison": {
+    "status": "PASS",
+    "rows": [
+      {
+        "id": "A",
+        "delta": 0
+      },
+      {
+        "id": "B",
+        "delta": 0
+      },
+      {
+        "id": "C",
+        "delta": 0
+      },
+      {
+        "id": "D",
+        "delta": 0
+      },
+      {
+        "id": "O",
+        "delta": 0
+      },
+      {
+        "id": "P",
+        "delta": 8.881784197001252e-16
+      },
+      {
+        "id": "V",
+        "delta": 0
+      },
+      {
+        "id": "X",
+        "delta": 0
+      },
+      {
+        "id": "Y",
+        "delta": 0
+      },
+      {
+        "id": "contact",
+        "delta": 4.965068306494546e-16
+      },
+      {
+        "id": "contactOther",
+        "delta": 4.965068306494546e-16
+      },
+      {
+        "id": "crossLine",
+        "delta": 0
+      },
+      {
+        "id": "mid",
+        "delta": 4.440892098500626e-16
+      },
+      {
+        "id": "lengthAB",
+        "delta": 0
+      },
+      {
+        "id": "lengthAC",
+        "delta": 0
+      },
+      {
+        "id": "ratio",
+        "delta": 0
+      },
+      {
+        "id": "axisX",
+        "delta": 0
+      },
+      {
+        "id": "axisY",
+        "delta": 0
+      },
+      {
+        "id": "externalBisector",
+        "delta": 0
+      },
+      {
+        "id": "externalTangent",
+        "delta": 1.1102230246251565e-16
+      },
+      {
+        "id": "externalTangentOther",
+        "delta": 1.1102230246251565e-16
+      },
+      {
+        "id": "internalBisector",
+        "delta": 0
+      },
+      {
+        "id": "parallel",
+        "delta": 5.551115123125783e-17
+      },
+      {
+        "id": "radiusLine",
+        "delta": 0
+      },
+      {
+        "id": "tangentAtA",
+        "delta": 0
+      },
+      {
+        "id": "circle3",
+        "delta": 0
+      },
+      {
+        "id": "circleO",
+        "delta": 0
+      },
+      {
+        "id": "diameterCircle",
+        "delta": 0
+      },
+      {
+        "id": "contacts:member",
+        "delta": 4.965068306494546e-16
+      },
+      {
+        "id": "contacts:member",
+        "delta": 4.965068306494546e-16
+      }
+    ],
+    "tolerance": 1e-8
+  },
+  "staticSvgAudit": {
+    "status": "PASS",
+    "errors": [],
+    "observations": [
+      {
+        "id": "A",
+        "expected": [
+          0,
+          2
+        ],
+        "observed": [
+          -1.0919571510451032e-11,
+          1.9999999999914686
+        ],
+        "delta": 1.385719273776821e-11,
+        "tolerance": 1e-8
+      },
+      {
+        "id": "O",
+        "expected": [
+          0,
+          0
+        ],
+        "observed": [
+          -1.0919571510451032e-11,
+          8.10892209660619e-12
+        ],
+        "delta": 1.3601163903897415e-11,
+        "tolerance": 1e-8
+      },
+      {
+        "id": "P",
+        "expected": [
+          4.999999999999999,
+          0
+        ],
+        "observed": [
+          5.0000000000041185,
+          8.10892209660619e-12
+        ],
+        "delta": 9.095264658651619e-12,
+        "tolerance": 1e-8
+      },
+      {
+        "id": "contact",
+        "expected": [
+          0.8000000000000003,
+          1.8330302779823364
+        ],
+        "observed": [
+          0.7999999999975281,
+          1.8330302780005798
+        ],
+        "delta": 1.841014219696189e-11,
+        "tolerance": 1e-8
+      },
+      {
+        "id": "segment-OP",
+        "observedEndpoints": [
+          [
+            -1.0919571510451032e-11,
+            8.10892209660619e-12
+          ],
+          [
+            5.0000000000041185,
+            8.10892209660619e-12
+          ]
+        ],
+        "expectedEndpoints": [
+          [
+            0,
+            0
+          ],
+          [
+            4.999999999999999,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "segment-OT",
+        "observedEndpoints": [
+          [
+            -1.0919571510451032e-11,
+            8.10892209660619e-12
+          ],
+          [
+            0.7999999999975281,
+            1.8330302780005798
+          ]
+        ],
+        "expectedEndpoints": [
+          [
+            0,
+            0
+          ],
+          [
+            0.8000000000000003,
+            1.8330302779823364
+          ]
+        ]
+      },
+      {
+        "id": "segment-PT",
+        "observedEndpoints": [
+          [
+            5.0000000000041185,
+            8.10892209660619e-12
+          ],
+          [
+            0.7999999999975281,
+            1.8330302780005798
+          ]
+        ],
+        "expectedEndpoints": [
+          [
+            4.999999999999999,
+            0
+          ],
+          [
+            0.8000000000000003,
+            1.8330302779823364
+          ]
+        ]
+      },
+      {
+        "id": "axisX",
+        "type": "LINE",
+        "observedEndpoints": [
+          [
+            -2.699999999982792,
+            8.10892209660619e-12
+          ],
+          [
+            7.44999999998279,
+            8.10892209660619e-12
+          ]
+        ],
+        "equationResiduals": [
+          8.10892209660619e-12,
+          8.10892209660619e-12
+        ]
+      },
+      {
+        "id": "axisY",
+        "type": "LINE",
+        "observedEndpoints": [
+          [
+            -1.0919571510451032e-11,
+            -4.2496727002209225
+          ],
+          [
+            -1.0919571510451032e-11,
+            5.416642422238587
+          ]
+        ],
+        "equationResiduals": [
+          1.0919571510451032e-11,
+          1.0919571510451032e-11
+        ]
+      },
+      {
+        "id": "externalTangent",
+        "type": "LINE",
+        "observedEndpoints": [
+          [
+            -2.699999999982792,
+            3.360555509648387
+          ],
+          [
+            7.44999999998279,
+            -1.0692676621415802
+          ]
+        ],
+        "equationResiduals": [
+          1.9809043294571896e-11,
+          6.6648908614297406e-12
+        ]
+      },
+      {
+        "id": "radiusLine",
+        "type": "LINE",
+        "observedEndpoints": [
+          [
+            -1.0919571510451032e-11,
+            -4.2496727002209225
+          ],
+          [
+            -1.0919571510451032e-11,
+            5.416642422238587
+          ]
+        ],
+        "equationResiduals": [
+          1.0919571510451032e-11,
+          1.0919571510451032e-11
+        ]
+      },
+      {
+        "id": "tangentAtA",
+        "type": "LINE",
+        "observedEndpoints": [
+          [
+            -2.699999999982792,
+            1.9999999999914686
+          ],
+          [
+            7.44999999998279,
+            1.9999999999914686
+          ]
+        ],
+        "equationResiduals": [
+          8.531397810429553e-12,
+          8.531397810429553e-12
+        ]
+      },
+      {
+        "id": "circleO",
+        "type": "CIRCLE",
+        "observedCenter": [
+          -1.0919571510451032e-11,
+          8.10892209660619e-12
+        ],
+        "observedRadius": 1.9999999999833598,
+        "centerDelta": 1.3601163903897415e-11,
+        "radiusDelta": 1.664024473768677e-11
+      },
+      {
+        "id": "diameterCircle",
+        "type": "CIRCLE",
+        "observedCenter": [
+          2.499999999996599,
+          8.10892209660619e-12
+        ],
+        "observedRadius": 2.5000000000075193,
+        "centerDelta": 8.793196086506404e-12,
+        "radiusDelta": 7.51931850118126e-12
+      }
+    ],
+    "finalSvgSha256": "sha256:d47fced3c4a74b0efbc57e9a970f93e8864188cfb1b6926f16abbdb80a390d78",
+    "fragmentCount": 4,
+    "strategy": "FINAL_XML_POINTS_SEGMENTS_LINES_CIRCLES_FRAME_AND_BOUND_GLYPH_BYTES"
+  },
+  "modelArtifacts": {
+    "typedConstructionGraph": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/typed-graph.json",
+      "value": {
+        "schemaVersion": "construction-spike-v1",
+        "nodes": [
+          {
+            "id": "O",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "A",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "B",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "C",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "D",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "V",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "X",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "Y",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "P",
+            "op": "SOURCE_POINT",
+            "inputs": [],
+            "outputType": "POINT",
+            "args": {
+              "coordinates": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
+            },
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "axisX",
+            "op": "LINE_THROUGH",
+            "inputs": [
+              "O",
+              "B"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "axisY",
+            "op": "LINE_THROUGH",
+            "inputs": [
+              "O",
+              "C"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "parallel",
+            "op": "PARALLEL_THROUGH",
+            "inputs": [
+              "C",
+              "axisX"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "crossLine",
+            "op": "LINE_INTERSECTION",
+            "inputs": [
+              "axisX",
+              "axisY"
+            ],
+            "outputType": "POINT",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "mid",
+            "op": "MIDPOINT",
+            "inputs": [
+              "O",
+              "P"
+            ],
+            "outputType": "POINT",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "circleO",
+            "op": "CIRCLE_THROUGH_POINT",
+            "inputs": [
+              "O",
+              "A"
+            ],
+            "outputType": "CIRCLE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "circle3",
+            "op": "CIRCLE_THROUGH_3",
+            "inputs": [
+              "O",
+              "B",
+              "C"
+            ],
+            "outputType": "CIRCLE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "diameterCircle",
+            "op": "CIRCLE_THROUGH_POINT",
+            "inputs": [
+              "mid",
+              "P"
+            ],
+            "outputType": "CIRCLE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "tangentAtA",
+            "op": "TANGENT_AT_POINT",
+            "inputs": [
+              "circleO",
+              "A"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "contacts",
+            "op": "INTERSECTION",
+            "inputs": [
+              "circleO",
+              "diameterCircle"
+            ],
+            "outputType": "POINT_SET",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "contact",
+            "op": "SELECT_POINT",
+            "inputs": [
+              "contacts"
+            ],
+            "outputType": "POINT",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE",
+            "branch": {
+              "kind": "SIDE_OF_ORIENTED_LINE",
+              "refs": [
+                "O",
+                "P"
+              ],
+              "sign": 1
+            }
+          },
+          {
+            "id": "contactOther",
+            "op": "SELECT_POINT",
+            "inputs": [
+              "contacts"
+            ],
+            "outputType": "POINT",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE",
+            "branch": {
+              "kind": "SIDE_OF_ORIENTED_LINE",
+              "refs": [
+                "O",
+                "P"
+              ],
+              "sign": -1
+            }
+          },
+          {
+            "id": "externalTangent",
+            "op": "LINE_THROUGH",
+            "inputs": [
+              "P",
+              "contact"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "externalTangentOther",
+            "op": "LINE_THROUGH",
+            "inputs": [
+              "P",
+              "contactOther"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "radiusLine",
+            "op": "LINE_THROUGH",
+            "inputs": [
+              "O",
+              "A"
+            ],
+            "outputType": "LINE",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "internalBisector",
+            "op": "ANGLE_BISECTOR",
+            "inputs": [
+              "X",
+              "V",
+              "Y"
+            ],
+            "outputType": "LINE",
+            "args": {
+              "mode": "INTERNAL"
+            },
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "externalBisector",
+            "op": "ANGLE_BISECTOR",
+            "inputs": [
+              "X",
+              "V",
+              "Y"
+            ],
+            "outputType": "LINE",
+            "args": {
+              "mode": "EXTERNAL"
+            },
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "lengthAB",
+            "op": "SEGMENT_LENGTH",
+            "inputs": [
+              "O",
+              "B"
+            ],
+            "outputType": "SCALAR",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "lengthAC",
+            "op": "SEGMENT_LENGTH",
+            "inputs": [
+              "O",
+              "C"
+            ],
+            "outputType": "SCALAR",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          },
+          {
+            "id": "ratio",
+            "op": "SCALAR_RATIO",
+            "inputs": [
+              "lengthAB",
+              "lengthAC"
+            ],
+            "outputType": "SCALAR",
+            "args": {},
+            "factRole": "DERIVED_INTERMEDIATE"
+          }
+        ],
+        "conditionAudits": [
+          {
+            "id": "incidence-B-axisX",
+            "sourceConditionId": "incidence-B-axisX",
+            "kind": "INCIDENCE_POINT_ON_LINE",
+            "refs": [
+              "B",
+              "axisX"
+            ]
+          },
+          {
+            "id": "distance-AB-4",
+            "sourceConditionId": "distance-AB-4",
+            "kind": "DISTANCE_EQUALS",
+            "refs": [
+              "O",
+              "B"
+            ],
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          },
+          {
+            "id": "equal-external-tangent-lengths",
+            "sourceConditionId": "equal-external-tangent-lengths",
+            "kind": "EQUAL_DISTANCE",
+            "refs": [
+              "P",
+              "contact",
+              "P",
+              "contactOther"
+            ]
+          },
+          {
+            "id": "midpoint-OP-half",
+            "sourceConditionId": "midpoint-OP-half",
+            "kind": "MIDPOINT_RATIO",
+            "refs": [
+              "O",
+              "mid",
+              "P"
+            ],
+            "expected": {
+              "kind": "integer",
+              "value": "1"
+            }
+          },
+          {
+            "id": "perpendicular-coordinate-axes",
+            "sourceConditionId": "perpendicular-coordinate-axes",
+            "kind": "PERPENDICULAR",
+            "refs": [
+              "axisX",
+              "axisY"
+            ]
+          },
+          {
+            "id": "parallel-through-C",
+            "sourceConditionId": "parallel-through-C",
+            "kind": "PARALLEL",
+            "refs": [
+              "axisX",
+              "parallel"
+            ]
+          },
+          {
+            "id": "A-on-circleO",
+            "sourceConditionId": "A-on-circleO",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "refs": [
+              "circleO",
+              "A"
+            ]
+          },
+          {
+            "id": "tangent-at-A",
+            "sourceConditionId": "tangent-at-A",
+            "kind": "TANGENCY_AT_POINT",
+            "refs": [
+              "circleO",
+              "A",
+              "tangentAtA"
+            ]
+          },
+          {
+            "id": "external-tangent-contact",
+            "sourceConditionId": "external-tangent-contact",
+            "kind": "TANGENCY_AT_POINT",
+            "refs": [
+              "circleO",
+              "contact",
+              "externalTangent"
+            ]
+          },
+          {
+            "id": "contact-positive-side",
+            "sourceConditionId": "contact-positive-side",
+            "kind": "ORIENTED_SIDE",
+            "refs": [
+              "O",
+              "P",
+              "contact"
+            ],
+            "sign": 1
+          },
+          {
+            "id": "contact-other-negative-side",
+            "sourceConditionId": "contact-other-negative-side",
+            "kind": "ORIENTED_SIDE",
+            "refs": [
+              "O",
+              "P",
+              "contactOther"
+            ],
+            "sign": -1
+          }
+        ]
+      }
+    },
+    "sympyModel": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/sympy-model.json",
+      "value": {
+        "engine": "SymPy",
+        "version": "1.14.0",
+        "points": {
+          "A": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ],
+            "approximation": [
+              0,
+              2
+            ],
+            "precisionDigits": 17
+          },
+          "B": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              4,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "C": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              0,
+              3
+            ],
+            "precisionDigits": 17
+          },
+          "D": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              4,
+              3
+            ],
+            "precisionDigits": 17
+          },
+          "O": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "P": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              5,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "V": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "X": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              2,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "Y": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ],
+            "approximation": [
+              0,
+              3
+            ],
+            "precisionDigits": 17
+          },
+          "mid": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "5",
+                "denominator": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              2.5,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "crossLine": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0,
+              0
+            ],
+            "precisionDigits": 17
+          },
+          "contact": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "approximation": [
+              0.8,
+              1.833030277982336
+            ],
+            "precisionDigits": 17
+          },
+          "contactOther": {
+            "exact": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-2",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "approximation": [
+              0.8,
+              -1.833030277982336
+            ],
+            "precisionDigits": 17
+          }
+        },
+        "scalars": {
+          "lengthAB": {
+            "exact": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "approximation": 4
+          },
+          "lengthAC": {
+            "exact": {
+              "kind": "integer",
+              "value": "3"
+            },
+            "approximation": 3
+          },
+          "ratio": {
+            "exact": {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            "approximation": 1.3333333333333333
+          }
+        },
+        "lines": {
+          "axisX": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              0,
+              1,
+              0
+            ]
+          },
+          "axisY": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              1,
+              0,
+              0
+            ]
+          },
+          "externalBisector": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              1,
+              1,
+              0
+            ]
+          },
+          "internalBisector": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              -1,
+              1,
+              0
+            ]
+          },
+          "radiusLine": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "approximation": [
+              1,
+              0,
+              0
+            ]
+          },
+          "parallel": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "-3"
+              }
+            ],
+            "approximation": [
+              0,
+              1,
+              -3
+            ]
+          },
+          "tangentAtA": {
+            "exact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "1"
+              },
+              {
+                "kind": "integer",
+                "value": "-2"
+              }
+            ],
+            "approximation": [
+              0,
+              1,
+              -2
+            ]
+          },
+          "externalTangent": {
+            "exact": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-2",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "numerator": "-21",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "approximation": [
+              -1.833030277982336,
+              -4.2,
+              9.16515138991168
+            ]
+          },
+          "externalTangentOther": {
+            "exact": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "rational",
+                "numerator": "-21",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "21"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "approximation": [
+              1.833030277982336,
+              -4.2,
+              -9.16515138991168
+            ]
+          }
+        },
+        "circles": {
+          "circle3": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              }
+            ],
+            "radiusExact": {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            "approximation": [
+              2,
+              1.5,
+              2.5
+            ]
+          },
+          "circleO": {
+            "centerExact": [
+              {
+                "kind": "integer",
+                "value": "0"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "radiusExact": {
+              "kind": "integer",
+              "value": "2"
+            },
+            "approximation": [
+              0,
+              0,
+              2
+            ]
+          },
+          "diameterCircle": {
+            "centerExact": [
+              {
+                "kind": "rational",
+                "numerator": "5",
+                "denominator": "2"
+              },
+              {
+                "kind": "integer",
+                "value": "0"
+              }
+            ],
+            "radiusExact": {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            "approximation": [
+              2.5,
+              0,
+              2.5
+            ]
+          }
+        },
+        "pointSets": {
+          "contacts": [
+            {
+              "exact": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-2",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "21"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "approximation": [
+                0.8,
+                -1.833030277982336
+              ]
+            },
+            {
+              "exact": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "2",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "21"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "approximation": [
+                0.8,
+                1.833030277982336
+              ]
+            }
+          ]
+        },
+        "conditionAudits": [
+          {
+            "id": "incidence-B-axisX",
+            "sourceConditionId": "incidence-B-axisX",
+            "kind": "INCIDENCE_POINT_ON_LINE",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_LINE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "distance-AB-4",
+            "sourceConditionId": "distance-AB-4",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "4"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "4"
+            }
+          },
+          {
+            "id": "equal-external-tangent-lengths",
+            "sourceConditionId": "equal-external-tangent-lengths",
+            "kind": "EQUAL_DISTANCE",
+            "status": "PASS",
+            "checks": [
+              "DISTANCES_EQUAL"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "midpoint-OP-half",
+            "sourceConditionId": "midpoint-OP-half",
+            "kind": "MIDPOINT_RATIO",
+            "status": "PASS",
+            "checks": [
+              "COLLINEAR",
+              "BETWEEN_ENDPOINTS",
+              "DISTANCE_RATIO"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "1"
+            },
+            "expected": {
+              "kind": "integer",
+              "value": "1"
+            }
+          },
+          {
+            "id": "perpendicular-coordinate-axes",
+            "sourceConditionId": "perpendicular-coordinate-axes",
+            "kind": "PERPENDICULAR",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PERPENDICULAR"
+            ],
+            "observed": true
+          },
+          {
+            "id": "parallel-through-C",
+            "sourceConditionId": "parallel-through-C",
+            "kind": "PARALLEL",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PARALLEL"
+            ],
+            "observed": true
+          },
+          {
+            "id": "A-on-circleO",
+            "sourceConditionId": "A-on-circleO",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "tangent-at-A",
+            "sourceConditionId": "tangent-at-A",
+            "kind": "TANGENCY_AT_POINT",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE",
+              "TANGENT_CONTAINS_CONTACT",
+              "TANGENT_PERPENDICULAR_TO_RADIUS"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "external-tangent-contact",
+            "sourceConditionId": "external-tangent-contact",
+            "kind": "TANGENCY_AT_POINT",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE",
+              "TANGENT_CONTAINS_CONTACT",
+              "TANGENT_PERPENDICULAR_TO_RADIUS"
+            ],
+            "observed": {
+              "kind": "integer",
+              "value": "0"
+            }
+          },
+          {
+            "id": "contact-positive-side",
+            "sourceConditionId": "contact-positive-side",
+            "kind": "ORIENTED_SIDE",
+            "status": "PASS",
+            "checks": [
+              "STRICT_ORIENTED_HALF_PLANE"
+            ],
+            "observed": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            },
+            "sign": 1
+          },
+          {
+            "id": "contact-other-negative-side",
+            "sourceConditionId": "contact-other-negative-side",
+            "kind": "ORIENTED_SIDE",
+            "status": "PASS",
+            "checks": [
+              "STRICT_ORIENTED_HALF_PLANE"
+            ],
+            "observed": {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            },
+            "sign": -1
+          }
+        ],
+        "transcript": [
+          {
+            "nodeId": "A",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "B",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "C",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "D",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "O",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "P",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "V",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "X",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "Y",
+            "op": "SOURCE_POINT",
+            "dependencies": []
+          },
+          {
+            "nodeId": "axisX",
+            "op": "LINE_THROUGH",
+            "dependencies": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "axisY",
+            "op": "LINE_THROUGH",
+            "dependencies": [
+              "C",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "circle3",
+            "op": "CIRCLE_THROUGH_3",
+            "dependencies": [
+              "B",
+              "C",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "circleO",
+            "op": "CIRCLE_THROUGH_POINT",
+            "dependencies": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "externalBisector",
+            "op": "ANGLE_BISECTOR",
+            "dependencies": [
+              "V",
+              "X",
+              "Y"
+            ]
+          },
+          {
+            "nodeId": "internalBisector",
+            "op": "ANGLE_BISECTOR",
+            "dependencies": [
+              "V",
+              "X",
+              "Y"
+            ]
+          },
+          {
+            "nodeId": "lengthAB",
+            "op": "SEGMENT_LENGTH",
+            "dependencies": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "lengthAC",
+            "op": "SEGMENT_LENGTH",
+            "dependencies": [
+              "C",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "mid",
+            "op": "MIDPOINT",
+            "dependencies": [
+              "O",
+              "P"
+            ]
+          },
+          {
+            "nodeId": "radiusLine",
+            "op": "LINE_THROUGH",
+            "dependencies": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "nodeId": "crossLine",
+            "op": "LINE_INTERSECTION",
+            "dependencies": [
+              "axisX",
+              "axisY"
+            ]
+          },
+          {
+            "nodeId": "diameterCircle",
+            "op": "CIRCLE_THROUGH_POINT",
+            "dependencies": [
+              "P",
+              "mid"
+            ]
+          },
+          {
+            "nodeId": "parallel",
+            "op": "PARALLEL_THROUGH",
+            "dependencies": [
+              "C",
+              "axisX"
+            ]
+          },
+          {
+            "nodeId": "ratio",
+            "op": "SCALAR_RATIO",
+            "dependencies": [
+              "lengthAB",
+              "lengthAC"
+            ]
+          },
+          {
+            "nodeId": "tangentAtA",
+            "op": "TANGENT_AT_POINT",
+            "dependencies": [
+              "A",
+              "circleO"
+            ]
+          },
+          {
+            "nodeId": "contacts",
+            "op": "INTERSECTION",
+            "dependencies": [
+              "circleO",
+              "diameterCircle"
+            ]
+          },
+          {
+            "nodeId": "contact",
+            "op": "SELECT_POINT",
+            "dependencies": [
+              "O",
+              "P",
+              "contacts"
+            ]
+          },
+          {
+            "nodeId": "contactOther",
+            "op": "SELECT_POINT",
+            "dependencies": [
+              "O",
+              "P",
+              "contacts"
+            ]
+          },
+          {
+            "nodeId": "externalTangent",
+            "op": "LINE_THROUGH",
+            "dependencies": [
+              "P",
+              "contact"
+            ]
+          },
+          {
+            "nodeId": "externalTangentOther",
+            "op": "LINE_THROUGH",
+            "dependencies": [
+              "P",
+              "contactOther"
+            ]
+          }
+        ],
+        "order": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "P",
+          "V",
+          "X",
+          "Y",
+          "axisX",
+          "axisY",
+          "circle3",
+          "circleO",
+          "externalBisector",
+          "internalBisector",
+          "lengthAB",
+          "lengthAC",
+          "mid",
+          "radiusLine",
+          "crossLine",
+          "diameterCircle",
+          "parallel",
+          "ratio",
+          "tangentAtA",
+          "contacts",
+          "contact",
+          "contactOther",
+          "externalTangent",
+          "externalTangentOther"
+        ],
+        "coordinateMode": "SOURCE_COORDINATES"
+      }
+    },
+    "cindyPeer": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/cindy-peer.json",
+      "value": {
+        "engine": "CindyJS",
+        "version": "0.0.5",
+        "verificationKind": "NUMERIC_PEER_NOT_EXACT_PROOF",
+        "numericPolicy": "CINDY_SAFE_ENVELOPE_v1",
+        "inputSha256": "sha256:48b1b86d53acb02f1e5d9e2ce2ff1389bdbc863ba07cbeefdf07a8494edf3b6b",
+        "points": {
+          "A": [
+            0,
+            2
+          ],
+          "B": [
+            4,
+            0
+          ],
+          "C": [
+            0,
+            3
+          ],
+          "D": [
+            4,
+            3
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "P": [
+            4.999999999999999,
+            0
+          ],
+          "V": [
+            0,
+            0
+          ],
+          "X": [
+            2,
+            0
+          ],
+          "Y": [
+            0,
+            3
+          ],
+          "mid": [
+            2.4999999999999996,
+            0
+          ],
+          "crossLine": [
+            0,
+            0
+          ],
+          "contact": [
+            0.8000000000000003,
+            1.8330302779823364
+          ],
+          "contactOther": [
+            0.8000000000000003,
+            -1.8330302779823364
+          ]
+        },
+        "scalars": {
+          "lengthAB": 4,
+          "lengthAC": 3,
+          "ratio": 1.3333333333333333
+        },
+        "lines": {
+          "axisX": [
+            0,
+            1,
+            0
+          ],
+          "axisY": [
+            1,
+            0,
+            0
+          ],
+          "parallel": [
+            0,
+            -0.3333333333333333,
+            1
+          ],
+          "tangentAtA": [
+            0,
+            -0.5,
+            1
+          ],
+          "externalTangent": [
+            -0.2,
+            -0.45825756949558394,
+            1
+          ],
+          "externalTangentOther": [
+            -0.2,
+            0.45825756949558394,
+            1
+          ],
+          "radiusLine": [
+            1,
+            0,
+            0
+          ],
+          "internalBisector": [
+            1,
+            -1,
+            0
+          ],
+          "externalBisector": [
+            1,
+            1,
+            0
+          ]
+        },
+        "circles": {
+          "circleO": {
+            "center": [
+              0,
+              0
+            ],
+            "radius": 2
+          },
+          "circle3": {
+            "center": [
+              2,
+              1.5
+            ],
+            "radius": 2.5
+          },
+          "diameterCircle": {
+            "center": [
+              2.5,
+              0
+            ],
+            "radius": 2.5
+          }
+        },
+        "pointSets": {
+          "contacts": [
+            [
+              0.8000000000000003,
+              -1.8330302779823364
+            ],
+            [
+              0.8000000000000003,
+              1.8330302779823364
+            ]
+          ]
+        },
+        "conditionAudits": [
+          {
+            "id": "incidence-B-axisX",
+            "sourceConditionId": "incidence-B-axisX",
+            "kind": "INCIDENCE_POINT_ON_LINE",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_LINE"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "distance-AB-4",
+            "sourceConditionId": "distance-AB-4",
+            "kind": "DISTANCE_EQUALS",
+            "status": "PASS",
+            "checks": [
+              "EXACT_POINT_DISTANCE"
+            ],
+            "observed": 4,
+            "expected": 4
+          },
+          {
+            "id": "equal-external-tangent-lengths",
+            "sourceConditionId": "equal-external-tangent-lengths",
+            "kind": "EQUAL_DISTANCE",
+            "status": "PASS",
+            "checks": [
+              "DISTANCES_EQUAL"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "midpoint-OP-half",
+            "sourceConditionId": "midpoint-OP-half",
+            "kind": "MIDPOINT_RATIO",
+            "status": "PASS",
+            "checks": [
+              "COLLINEAR",
+              "BETWEEN_ENDPOINTS",
+              "DISTANCE_RATIO"
+            ],
+            "observed": 1,
+            "expected": 1
+          },
+          {
+            "id": "perpendicular-coordinate-axes",
+            "sourceConditionId": "perpendicular-coordinate-axes",
+            "kind": "PERPENDICULAR",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PERPENDICULAR"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "parallel-through-C",
+            "sourceConditionId": "parallel-through-C",
+            "kind": "PARALLEL",
+            "status": "PASS",
+            "checks": [
+              "DIRECTION_VECTORS_PARALLEL"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "A-on-circleO",
+            "sourceConditionId": "A-on-circleO",
+            "kind": "CIRCLE_MEMBERSHIP",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "tangent-at-A",
+            "sourceConditionId": "tangent-at-A",
+            "kind": "TANGENCY_AT_POINT",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE",
+              "TANGENT_CONTAINS_CONTACT",
+              "TANGENT_PERPENDICULAR_TO_RADIUS"
+            ],
+            "observed": 0
+          },
+          {
+            "id": "external-tangent-contact",
+            "sourceConditionId": "external-tangent-contact",
+            "kind": "TANGENCY_AT_POINT",
+            "status": "PASS",
+            "checks": [
+              "POINT_ON_CIRCLE",
+              "TANGENT_CONTAINS_CONTACT",
+              "TANGENT_PERPENDICULAR_TO_RADIUS"
+            ],
+            "observed": 4.996003610813204e-16
+          },
+          {
+            "id": "contact-positive-side",
+            "sourceConditionId": "contact-positive-side",
+            "kind": "ORIENTED_SIDE",
+            "status": "PASS",
+            "checks": [
+              "STRICT_ORIENTED_HALF_PLANE"
+            ],
+            "observed": 9.16515138991168
+          },
+          {
+            "id": "contact-other-negative-side",
+            "sourceConditionId": "contact-other-negative-side",
+            "kind": "ORIENTED_SIDE",
+            "status": "PASS",
+            "checks": [
+              "STRICT_ORIENTED_HALF_PLANE"
+            ],
+            "observed": 9.16515138991168
+          }
+        ]
+      }
+    },
+    "cindyConditionComparison": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/cindy-comparison.json",
+      "value": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "A",
+            "delta": 0
+          },
+          {
+            "id": "B",
+            "delta": 0
+          },
+          {
+            "id": "C",
+            "delta": 0
+          },
+          {
+            "id": "D",
+            "delta": 0
+          },
+          {
+            "id": "O",
+            "delta": 0
+          },
+          {
+            "id": "P",
+            "delta": 8.881784197001252e-16
+          },
+          {
+            "id": "V",
+            "delta": 0
+          },
+          {
+            "id": "X",
+            "delta": 0
+          },
+          {
+            "id": "Y",
+            "delta": 0
+          },
+          {
+            "id": "contact",
+            "delta": 4.965068306494546e-16
+          },
+          {
+            "id": "contactOther",
+            "delta": 4.965068306494546e-16
+          },
+          {
+            "id": "crossLine",
+            "delta": 0
+          },
+          {
+            "id": "mid",
+            "delta": 4.440892098500626e-16
+          },
+          {
+            "id": "lengthAB",
+            "delta": 0
+          },
+          {
+            "id": "lengthAC",
+            "delta": 0
+          },
+          {
+            "id": "ratio",
+            "delta": 0
+          },
+          {
+            "id": "axisX",
+            "delta": 0
+          },
+          {
+            "id": "axisY",
+            "delta": 0
+          },
+          {
+            "id": "externalBisector",
+            "delta": 0
+          },
+          {
+            "id": "externalTangent",
+            "delta": 1.1102230246251565e-16
+          },
+          {
+            "id": "externalTangentOther",
+            "delta": 1.1102230246251565e-16
+          },
+          {
+            "id": "internalBisector",
+            "delta": 0
+          },
+          {
+            "id": "parallel",
+            "delta": 5.551115123125783e-17
+          },
+          {
+            "id": "radiusLine",
+            "delta": 0
+          },
+          {
+            "id": "tangentAtA",
+            "delta": 0
+          },
+          {
+            "id": "circle3",
+            "delta": 0
+          },
+          {
+            "id": "circleO",
+            "delta": 0
+          },
+          {
+            "id": "diameterCircle",
+            "delta": 0
+          },
+          {
+            "id": "contacts:member",
+            "delta": 4.965068306494546e-16
+          },
+          {
+            "id": "contacts:member",
+            "delta": 4.965068306494546e-16
+          }
+        ],
+        "tolerance": 1e-8
+      }
+    },
+    "visualSpec": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/visual-spec.json",
+      "value": {
+        "id": "construction-v1-tangent-fixture",
+        "visualType": "line_circle_geometry",
+        "viewport": {
+          "xMin": -1.75,
+          "xMax": 6.75,
+          "yMin": -3.5830302779823358,
+          "yMax": 4.75,
+          "width": 384,
+          "height": 320,
+          "panel": 0
+        },
+        "axes": false,
+        "title": "원 밖의 점에서 그은 접선",
+        "sourceFacts": {},
+        "derivedFacts": {},
+        "displayFacts": {
+          "notationByLabel": {},
+          "factRolesByLabel": {},
+          "squareAngleIds": []
+        },
+        "objects": [
+          {
+            "id": "A",
+            "kind": "POINT",
+            "at": [
+              0,
+              2
+            ]
+          },
+          {
+            "id": "O",
+            "kind": "POINT",
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "P",
+            "kind": "POINT",
+            "at": [
+              5,
+              0
+            ]
+          },
+          {
+            "id": "contact",
+            "kind": "POINT",
+            "at": [
+              0.8,
+              1.833030277982336
+            ]
+          },
+          {
+            "id": "axisX",
+            "kind": "LINE",
+            "coefficients": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "id": "axisY",
+            "kind": "LINE",
+            "coefficients": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "id": "circleO",
+            "kind": "CIRCLE",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 2
+          },
+          {
+            "id": "diameterCircle",
+            "kind": "CIRCLE",
+            "center": [
+              2.5,
+              0
+            ],
+            "radius": 2.5
+          },
+          {
+            "id": "tangentAtA",
+            "kind": "LINE",
+            "coefficients": [
+              0,
+              1,
+              -2
+            ]
+          },
+          {
+            "id": "externalTangent",
+            "kind": "LINE",
+            "coefficients": [
+              -1.833030277982336,
+              -4.2,
+              9.16515138991168
+            ]
+          },
+          {
+            "id": "radiusLine",
+            "kind": "LINE",
+            "coefficients": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "id": "segment-OP",
+            "kind": "SEGMENT",
+            "from": [
+              0,
+              0
+            ],
+            "to": [
+              5,
+              0
+            ]
+          },
+          {
+            "id": "segment-OT",
+            "kind": "SEGMENT",
+            "from": [
+              0,
+              0
+            ],
+            "to": [
+              0.8,
+              1.833030277982336
+            ]
+          },
+          {
+            "id": "segment-PT",
+            "kind": "SEGMENT",
+            "from": [
+              5,
+              0
+            ],
+            "to": [
+              0.8,
+              1.833030277982336
+            ]
+          },
+          {
+            "id": "A-coordinate",
+            "kind": "COORDINATE_LABEL",
+            "target": "A",
+            "exact": [
+              "0",
+              "2"
+            ]
+          },
+          {
+            "id": "P-coordinate",
+            "kind": "COORDINATE_LABEL",
+            "target": "P",
+            "exact": [
+              "5",
+              "0"
+            ]
+          },
+          {
+            "id": "T-name",
+            "kind": "POINT_NAME",
+            "target": "contact",
+            "text": "T",
+            "priority": 0
+          }
+        ]
+      }
+    },
+    "staticSvgAudit": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/static-svg-audit.json",
+      "value": {
+        "status": "PASS",
+        "errors": [],
+        "observations": [
+          {
+            "id": "A",
+            "expected": [
+              0,
+              2
+            ],
+            "observed": [
+              -1.0919571510451032e-11,
+              1.9999999999914686
+            ],
+            "delta": 1.385719273776821e-11,
+            "tolerance": 1e-8
+          },
+          {
+            "id": "O",
+            "expected": [
+              0,
+              0
+            ],
+            "observed": [
+              -1.0919571510451032e-11,
+              8.10892209660619e-12
+            ],
+            "delta": 1.3601163903897415e-11,
+            "tolerance": 1e-8
+          },
+          {
+            "id": "P",
+            "expected": [
+              4.999999999999999,
+              0
+            ],
+            "observed": [
+              5.0000000000041185,
+              8.10892209660619e-12
+            ],
+            "delta": 9.095264658651619e-12,
+            "tolerance": 1e-8
+          },
+          {
+            "id": "contact",
+            "expected": [
+              0.8000000000000003,
+              1.8330302779823364
+            ],
+            "observed": [
+              0.7999999999975281,
+              1.8330302780005798
+            ],
+            "delta": 1.841014219696189e-11,
+            "tolerance": 1e-8
+          },
+          {
+            "id": "segment-OP",
+            "observedEndpoints": [
+              [
+                -1.0919571510451032e-11,
+                8.10892209660619e-12
+              ],
+              [
+                5.0000000000041185,
+                8.10892209660619e-12
+              ]
+            ],
+            "expectedEndpoints": [
+              [
+                0,
+                0
+              ],
+              [
+                4.999999999999999,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "segment-OT",
+            "observedEndpoints": [
+              [
+                -1.0919571510451032e-11,
+                8.10892209660619e-12
+              ],
+              [
+                0.7999999999975281,
+                1.8330302780005798
+              ]
+            ],
+            "expectedEndpoints": [
+              [
+                0,
+                0
+              ],
+              [
+                0.8000000000000003,
+                1.8330302779823364
+              ]
+            ]
+          },
+          {
+            "id": "segment-PT",
+            "observedEndpoints": [
+              [
+                5.0000000000041185,
+                8.10892209660619e-12
+              ],
+              [
+                0.7999999999975281,
+                1.8330302780005798
+              ]
+            ],
+            "expectedEndpoints": [
+              [
+                4.999999999999999,
+                0
+              ],
+              [
+                0.8000000000000003,
+                1.8330302779823364
+              ]
+            ]
+          },
+          {
+            "id": "axisX",
+            "type": "LINE",
+            "observedEndpoints": [
+              [
+                -2.699999999982792,
+                8.10892209660619e-12
+              ],
+              [
+                7.44999999998279,
+                8.10892209660619e-12
+              ]
+            ],
+            "equationResiduals": [
+              8.10892209660619e-12,
+              8.10892209660619e-12
+            ]
+          },
+          {
+            "id": "axisY",
+            "type": "LINE",
+            "observedEndpoints": [
+              [
+                -1.0919571510451032e-11,
+                -4.2496727002209225
+              ],
+              [
+                -1.0919571510451032e-11,
+                5.416642422238587
+              ]
+            ],
+            "equationResiduals": [
+              1.0919571510451032e-11,
+              1.0919571510451032e-11
+            ]
+          },
+          {
+            "id": "externalTangent",
+            "type": "LINE",
+            "observedEndpoints": [
+              [
+                -2.699999999982792,
+                3.360555509648387
+              ],
+              [
+                7.44999999998279,
+                -1.0692676621415802
+              ]
+            ],
+            "equationResiduals": [
+              1.9809043294571896e-11,
+              6.6648908614297406e-12
+            ]
+          },
+          {
+            "id": "radiusLine",
+            "type": "LINE",
+            "observedEndpoints": [
+              [
+                -1.0919571510451032e-11,
+                -4.2496727002209225
+              ],
+              [
+                -1.0919571510451032e-11,
+                5.416642422238587
+              ]
+            ],
+            "equationResiduals": [
+              1.0919571510451032e-11,
+              1.0919571510451032e-11
+            ]
+          },
+          {
+            "id": "tangentAtA",
+            "type": "LINE",
+            "observedEndpoints": [
+              [
+                -2.699999999982792,
+                1.9999999999914686
+              ],
+              [
+                7.44999999998279,
+                1.9999999999914686
+              ]
+            ],
+            "equationResiduals": [
+              8.531397810429553e-12,
+              8.531397810429553e-12
+            ]
+          },
+          {
+            "id": "circleO",
+            "type": "CIRCLE",
+            "observedCenter": [
+              -1.0919571510451032e-11,
+              8.10892209660619e-12
+            ],
+            "observedRadius": 1.9999999999833598,
+            "centerDelta": 1.3601163903897415e-11,
+            "radiusDelta": 1.664024473768677e-11
+          },
+          {
+            "id": "diameterCircle",
+            "type": "CIRCLE",
+            "observedCenter": [
+              2.499999999996599,
+              8.10892209660619e-12
+            ],
+            "observedRadius": 2.5000000000075193,
+            "centerDelta": 8.793196086506404e-12,
+            "radiusDelta": 7.51931850118126e-12
+          }
+        ],
+        "finalSvgSha256": "sha256:d47fced3c4a74b0efbc57e9a970f93e8864188cfb1b6926f16abbdb80a390d78",
+        "fragmentCount": 4,
+        "strategy": "FINAL_XML_POINTS_SEGMENTS_LINES_CIRCLES_FRAME_AND_BOUND_GLYPH_BYTES"
+      }
+    },
+    "finalSvg": {
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-model/final.svg",
+      "value": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">원 밖의 점에서 그은 접선</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"segment-OP\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"129.101160856\" y1=\"175.452850701\" x2=\"261.51976958\" y2=\"175.452850701\"/></g><g data-layer=\"30\"><line id=\"segment-OT\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"129.101160856\" y1=\"175.452850701\" x2=\"150.288138252\" y2=\"126.907386869\"/></g><g data-layer=\"30\"><line id=\"segment-PT\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"261.51976958\" y1=\"175.452850701\" x2=\"150.288138252\" y2=\"126.907386869\"/></g><g data-layer=\"40\"><line id=\"axisX\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"57.595112146\" y1=\"175.452850701\" x2=\"326.404887854\" y2=\"175.452850701\"/></g><g data-layer=\"40\"><line id=\"axisY\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"129.101160856\" y1=\"288\" x2=\"129.101160856\" y2=\"32\"/></g><g data-layer=\"40\"><circle id=\"circleO\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"129.101160856\" cy=\"175.452850701\" r=\"52.967443489\"/></g><g data-layer=\"40\"><circle id=\"diameterCircle\" data-role=\"circle\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" cx=\"195.310465218\" cy=\"175.452850701\" r=\"66.209304362\"/></g><g data-layer=\"40\"><line id=\"tangentAtA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"57.595112146\" y1=\"122.485407212\" x2=\"326.404887854\" y2=\"122.485407212\"/></g><g data-layer=\"40\"><line id=\"externalTangent\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"57.595112146\" y1=\"86.452833676\" x2=\"326.404887854\" y2=\"203.771037936\"/></g><g data-layer=\"40\"><line id=\"radiusLine\" data-role=\"line\" stroke=\"#111\" stroke-width=\"2.05\" fill=\"none\" x1=\"129.101160856\" y1=\"288\" x2=\"129.101160856\" y2=\"32\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"129.101160856\" cy=\"122.485407212\" r=\"2\"/></g><g data-layer=\"70\"><circle id=\"O\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"129.101160856\" cy=\"175.452850701\" r=\"2\"/></g><g data-layer=\"70\"><circle id=\"P\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"261.51976958\" cy=\"175.452850701\" r=\"2\"/></g><g data-layer=\"70\"><circle id=\"contact\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"150.288138252\" cy=\"126.907386869\" r=\"2\"/></g><g data-layer=\"90\"><g id=\"T-name\" data-label-kind=\"POINT_NAME\" data-priority=\"0\" data-font-px=\"24.9\" data-owner=\"contact\" data-fragment-sha=\"sha256:984c7bc4b5e9e64025b90baec157cea746e0ef48515238c0a67a057e9edb36f2\" transform=\"translate(182.288138252 78.063636869)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5296\" height=\"16.8573\" viewBox=\"0 0 17.5296 16.8573\" id=\"lb-cb7247879738bda0a596adfe9ebc1f16134e2f0cef8de623966e6051ea2fa3a3\" data-owner=\"contact\" data-fact-role=\"DERIVED_INTERMEDIATE\"><svg style=\"vertical-align: 0;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5296px\" height=\"16.8573px\" role=\"img\" focusable=\"false\" viewBox=\"0 -677 704 677\" x=\"0\" y=\"0\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D447\" d=\"M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z\"></path></g></g></g></svg></svg></g></g><g data-layer=\"90\"><g id=\"O-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"24.9\" data-owner=\"O\" data-fragment-sha=\"sha256:8c52b95d8e8f3cab6c44dac74807aeeec81b8a11470a25305f6d0bae359a89ad\" transform=\"translate(98.116785856 187.452850701)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.9987\" height=\"18.077399999999997\" viewBox=\"0 0 18.9987 18.077399999999997\" id=\"lb-a42519acd38bfd5dc85603981b974c0c1ebabb103e5613436b75cf5f4a0a7864\" data-owner=\"O\" data-fact-role=\"DERIVED_INTERMEDIATE\"><svg style=\"vertical-align: -0.05ex;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"18.9987px\" height=\"18.077399999999997px\" role=\"img\" focusable=\"false\" viewBox=\"0 -704 763 726\" x=\"0\" y=\"0\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></svg></svg></g></g><g data-layer=\"90\"><g id=\"A-coordinate\" data-label-kind=\"COORDINATE_LABEL\" data-priority=\"2\" data-font-px=\"24.9\" data-owner=\"A\" data-fragment-sha=\"sha256:c33bcc9ee5ddfd0e754f267f45a3da05f8fef36cb6d8af8f160e8a289e91e020\" transform=\"translate(25.757410856 49.594782212)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"55.345229999999994\" height=\"24.9\" viewBox=\"0 0 55.345229999999994 24.9\" id=\"lb-64ee2227c877b67a5c1f0fc991a749ae3aad0ff2b1df434c89e860251952bf94\" data-owner=\"A\" data-fact-role=\"DERIVED_INTERMEDIATE\"><svg style=\"vertical-align: -0.566ex;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"55.345229999999994px\" height=\"24.9px\" role=\"img\" focusable=\"false\" viewBox=\"0 -750 2222.7 1000\" x=\"0\" y=\"0\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mo\"><path data-c=\"28\" d=\"M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(389,0)\"><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\"></path></g><g data-mml-node=\"mo\" transform=\"translate(889,0)\"><path data-c=\"2C\" d=\"M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(1333.7,0)\"><path data-c=\"32\" d=\"M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z\"></path></g><g data-mml-node=\"mo\" transform=\"translate(1833.7,0)\"><path data-c=\"29\" d=\"M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z\"></path></g></g></g></svg></svg></g></g><g data-layer=\"90\"><g id=\"P-coordinate\" data-label-kind=\"COORDINATE_LABEL\" data-priority=\"2\" data-font-px=\"24.9\" data-owner=\"P\" data-fragment-sha=\"sha256:18a4b8308132969f1c473dfa7e7fffa97aa9ea76db0d30553e451239b28e13e2\" transform=\"translate(273.51976958 138.562225701)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"55.345229999999994\" height=\"24.9\" viewBox=\"0 0 55.345229999999994 24.9\" id=\"lb-843ca95048938f75c4995775a553ae202779b540c0a6a2ef79a6ac639a602c38\" data-owner=\"P\" data-fact-role=\"DERIVED_INTERMEDIATE\"><svg style=\"vertical-align: -0.566ex;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"55.345229999999994px\" height=\"24.9px\" role=\"img\" focusable=\"false\" viewBox=\"0 -750 2222.7 1000\" x=\"0\" y=\"0\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mo\"><path data-c=\"28\" d=\"M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(389,0)\"><path data-c=\"35\" d=\"M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z\"></path></g><g data-mml-node=\"mo\" transform=\"translate(889,0)\"><path data-c=\"2C\" d=\"M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z\"></path></g><g data-mml-node=\"mn\" transform=\"translate(1333.7,0)\"><path data-c=\"30\" d=\"M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z\"></path></g><g data-mml-node=\"mo\" transform=\"translate(1833.7,0)\"><path data-c=\"29\" d=\"M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z\"></path></g></g></g></svg></svg></g></g></svg>\n"
+    }
+  },
+  "candidateSvgRef": {
+    "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/assets/images/25_효천고_2학기_중간_고1_기출/q01-solution.svg",
+    "bytes": 11443,
+    "sha256": "sha256:d47fced3c4a74b0efbc57e9a970f93e8864188cfb1b6926f16abbdb80a390d78"
+  },
+  "candidateSvgSha256": "sha256:d47fced3c4a74b0efbc57e9a970f93e8864188cfb1b6926f16abbdb80a390d78",
+  "frozenFragmentMeasurement": {
+    "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/construction-v1-frozen-fragment-browser-measurements.json",
+    "receipt": {
+      "schemaVersion": "PHASE4_CONSTRUCTION_V1_FRAGMENT_BROWSER_MEASUREMENT_v1",
+      "classification": "CONTROLLED_SYNTHETIC_CONTENT_FIXTURE",
+      "runtime": "playwright-chromium",
+      "browserVersion": "154.0.8037.98",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "candidateLabelIds": [
+        "O-name",
+        "A-coordinate",
+        "P-coordinate",
+        "T-name"
+      ],
+      "measurements": {
+        "O-name": [
+          18.984375,
+          18.0625
+        ],
+        "A-coordinate": [
+          55.34375,
+          24.890625
+        ],
+        "P-coordinate": [
+          55.34375,
+          24.890625
+        ],
+        "T-name": [
+          17.515625,
+          16.84375
+        ]
+      },
+      "observedFragments": {
+        "O-name": {
+          "fragmentSha256": "sha256:8c52b95d8e8f3cab6c44dac74807aeeec81b8a11470a25305f6d0bae359a89ad",
+          "owner": "O",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "observedBBox": {
+            "x": 1.2450000047683716,
+            "y": 4.899611099062895e-7,
+            "width": 17.180997848510742,
+            "height": 18.07740020751953,
+            "viewportWidth": 18.984375,
+            "viewportHeight": 18.0625
+          }
+        },
+        "A-coordinate": {
+          "fragmentSha256": "sha256:c33bcc9ee5ddfd0e754f267f45a3da05f8fef36cb6d8af8f160e8a289e91e020",
+          "owner": "A",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "observedBBox": {
+            "x": 2.3406009674072266,
+            "y": 0,
+            "width": 50.639129638671875,
+            "height": 24.899999618530273,
+            "viewportWidth": 55.34375,
+            "viewportHeight": 24.890625
+          }
+        },
+        "P-coordinate": {
+          "fragmentSha256": "sha256:18a4b8308132969f1c473dfa7e7fffa97aa9ea76db0d30553e451239b28e13e2",
+          "owner": "P",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "observedBBox": {
+            "x": 2.3406009674072266,
+            "y": 0,
+            "width": 50.639129638671875,
+            "height": 24.899999618530273,
+            "viewportWidth": 55.34375,
+            "viewportHeight": 24.890625
+          }
+        },
+        "T-name": {
+          "fragmentSha256": "sha256:984c7bc4b5e9e64025b90baec157cea746e0ef48515238c0a67a057e9edb36f2",
+          "owner": "contact",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "observedBBox": {
+            "x": 0.5229001641273499,
+            "y": 0,
+            "width": 17.00670051574707,
+            "height": 16.8572998046875,
+            "viewportWidth": 17.515625,
+            "viewportHeight": 16.84375
+          }
+        }
+      },
+      "typesetterInventory": {
+        "O-name": {
+          "fragmentSha256": "sha256:8c52b95d8e8f3cab6c44dac74807aeeec81b8a11470a25305f6d0bae359a89ad",
+          "fontSha256": "sha256:194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+          "fontPx": 24.9,
+          "intrinsic": {
+            "width": 18.9987,
+            "height": 18.077399999999997,
+            "baseline": 17.5296
+          }
+        },
+        "A-coordinate": {
+          "fragmentSha256": "sha256:c33bcc9ee5ddfd0e754f267f45a3da05f8fef36cb6d8af8f160e8a289e91e020",
+          "fontSha256": "sha256:194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+          "fontPx": 24.9,
+          "intrinsic": {
+            "width": 55.345229999999994,
+            "height": 24.9,
+            "baseline": 18.675
+          }
+        },
+        "P-coordinate": {
+          "fragmentSha256": "sha256:18a4b8308132969f1c473dfa7e7fffa97aa9ea76db0d30553e451239b28e13e2",
+          "fontSha256": "sha256:194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+          "fontPx": 24.9,
+          "intrinsic": {
+            "width": 55.345229999999994,
+            "height": 24.9,
+            "baseline": 18.675
+          }
+        },
+        "T-name": {
+          "fragmentSha256": "sha256:984c7bc4b5e9e64025b90baec157cea746e0ef48515238c0a67a057e9edb36f2",
+          "fontSha256": "sha256:194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+          "fontPx": 24.9,
+          "intrinsic": {
+            "width": 17.5296,
+            "height": 16.8573,
+            "baseline": 16.8573
+          }
+        }
+      }
+    },
+    "bytes": 3793,
+    "sha256": "sha256:a4099f67823943bd54b92c065afdb8004a531709a8240a8666e1b18430ef0858"
+  },
+  "profileAudits": [
+    {
+      "sizeClass": "small",
+      "status": "FAIL",
+      "imageRect": {
+        "x": -99913.921875,
+        "y": 10,
+        "width": 126,
+        "height": 105
+      },
+      "displayScale": 0.328125,
+      "minimumCssFontPx": 8.1703125,
+      "layoutErrors": [
+        "PUBLICATION_FONT_BELOW_11_CSS_PX:T-name",
+        "PUBLICATION_FONT_BELOW_11_CSS_PX:O-name",
+        "PUBLICATION_FONT_BELOW_11_CSS_PX:A-coordinate",
+        "PUBLICATION_FONT_BELOW_11_CSS_PX:P-coordinate"
+      ]
+    },
+    {
+      "sizeClass": "medium",
+      "status": "PASS",
+      "imageRect": {
+        "x": -99937.921875,
+        "y": 10,
+        "width": 174,
+        "height": 145
+      },
+      "displayScale": 0.453125,
+      "minimumCssFontPx": 11.282812499999999,
+      "layoutErrors": []
+    },
+    {
+      "sizeClass": "large",
+      "status": "PASS",
+      "imageRect": {
+        "x": -99958.921875,
+        "y": 10,
+        "width": 216,
+        "height": 180
+      },
+      "displayScale": 0.5625,
+      "minimumCssFontPx": 14.00625,
+      "layoutErrors": []
+    },
+    {
+      "sizeClass": "full",
+      "status": "PASS",
+      "imageRect": {
+        "x": -100000,
+        "y": 10,
+        "width": 298.140625,
+        "height": 248.453125
+      },
+      "displayScale": 0.7764078776041666,
+      "minimumCssFontPx": 19.33255615234375,
+      "layoutErrors": []
+    }
+  ],
+  "selectedSizeClass": "medium",
+  "archivePreflight": {
+    "run": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c-preflight/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-full",
+    "status": "PASS"
+  },
+  "actualArchive": {
+    "run": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c-final/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-medium",
+    "status": "PASS",
+    "rowId": "p4-construction-tangent-medium-25_효천고_2학기_중간_고1_기출-sol-construction-tangent-medium",
+    "loadedAsset": {
+      "id": "p4-construction-tangent-medium-25_효천고_2학기_중간_고1_기출",
+      "src": "http://127.0.0.1:55165/archive/assets/images/25_%ED%9A%A8%EC%B2%9C%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C/q01-solution.svg?v=20260903.1",
+      "loaded": true,
+      "rect": {
+        "x": 462.921875,
+        "y": 303.9375,
+        "width": 174,
+        "height": 145
+      },
+      "sizeClass": "medium",
+      "naturalWidth": 384,
+      "naturalHeight": 320,
+      "computedStyle": {
+        "width": "174px",
+        "height": "145px",
+        "maxWidth": "72%",
+        "maxHeight": "145px",
+        "objectFit": "contain",
+        "transform": "none",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "borderLeftWidth": "0px",
+        "borderRightWidth": "0px"
+      },
+      "wrapperRect": {
+        "x": 400.84375,
+        "y": 303.9375,
+        "width": 298.15625,
+        "height": 160.5
+      },
+      "solutionMetaRect": {
+        "x": 391.84375,
+        "y": 269.9375,
+        "width": 316.15625,
+        "height": 293.234375
+      },
+      "solutionMetaContentWidth": 298.15625,
+      "qBoxRect": {
+        "x": 391.84375,
+        "y": 162.9375,
+        "width": 316.15625,
+        "height": 429.09375
+      },
+      "sourceRef": "exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js#legacy:exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js#ordinal:1"
+    },
+    "network": {
+      "policy": "LOCAL_ONLY",
+      "localOrigin": "http://127.0.0.1:55165",
+      "externalRequests": []
+    },
+    "mathJaxSource": "local",
+    "mathJaxCdnFallback": false
+  },
+  "profileScreenshots": [
+    {
+      "sizeClass": "small",
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/profile-captures/small.png",
+      "bytes": 3298,
+      "sha256": "sha256:7997f93817c5278fd878cab671b4eca2f42ad9eed6157521da26611befe3fefb"
+    },
+    {
+      "sizeClass": "medium",
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/profile-captures/medium.png",
+      "bytes": 4696,
+      "sha256": "sha256:7c18fca70ff4b1f56f576cd7b21fa211ffff68dff15354a5dde8bdf1febf4873"
+    },
+    {
+      "sizeClass": "large",
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/profile-captures/large.png",
+      "bytes": 6109,
+      "sha256": "sha256:7a6844170492e2fb913ec7dbb0b6c36bc31ba9156506769725608c32aa3ca713"
+    },
+    {
+      "sizeClass": "full",
+      "path": ".tmp/archive/phase4-construction-v1-7e0b820a-c586-4d62-be71-77ad94599d3c/25_효천고_2학기_중간_고1_기출/visual-engine/production/profile-captures/full.png",
+      "bytes": 8987,
+      "sha256": "sha256:1b8b4259c71deb734d098b72c50bed3f510737afd6dbabb3a97a2c61148adfc7"
+    }
+  ],
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false
+}

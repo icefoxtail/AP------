@@ -1,0 +1,535 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "nodes": [
+    {
+      "id": "O",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "2"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "4"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "4"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "V",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "X",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "2"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "Y",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "0"
+          },
+          {
+            "kind": "integer",
+            "value": "3"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "P",
+      "op": "SOURCE_POINT",
+      "inputs": [],
+      "outputType": "POINT",
+      "args": {
+        "coordinates": [
+          {
+            "kind": "integer",
+            "value": "5"
+          },
+          {
+            "kind": "integer",
+            "value": "0"
+          }
+        ]
+      },
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "axisX",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "B"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "axisY",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "C"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "parallel",
+      "op": "PARALLEL_THROUGH",
+      "inputs": [
+        "C",
+        "axisX"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "crossLine",
+      "op": "LINE_INTERSECTION",
+      "inputs": [
+        "axisX",
+        "axisY"
+      ],
+      "outputType": "POINT",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "mid",
+      "op": "MIDPOINT",
+      "inputs": [
+        "O",
+        "P"
+      ],
+      "outputType": "POINT",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "circleO",
+      "op": "CIRCLE_THROUGH_POINT",
+      "inputs": [
+        "O",
+        "A"
+      ],
+      "outputType": "CIRCLE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "circle3",
+      "op": "CIRCLE_THROUGH_3",
+      "inputs": [
+        "O",
+        "B",
+        "C"
+      ],
+      "outputType": "CIRCLE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "diameterCircle",
+      "op": "CIRCLE_THROUGH_POINT",
+      "inputs": [
+        "mid",
+        "P"
+      ],
+      "outputType": "CIRCLE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "tangentAtA",
+      "op": "TANGENT_AT_POINT",
+      "inputs": [
+        "circleO",
+        "A"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "contacts",
+      "op": "INTERSECTION",
+      "inputs": [
+        "circleO",
+        "diameterCircle"
+      ],
+      "outputType": "POINT_SET",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "contact",
+      "op": "SELECT_POINT",
+      "inputs": [
+        "contacts"
+      ],
+      "outputType": "POINT",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE",
+      "branch": {
+        "kind": "SIDE_OF_ORIENTED_LINE",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "sign": 1
+      }
+    },
+    {
+      "id": "contactOther",
+      "op": "SELECT_POINT",
+      "inputs": [
+        "contacts"
+      ],
+      "outputType": "POINT",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE",
+      "branch": {
+        "kind": "SIDE_OF_ORIENTED_LINE",
+        "refs": [
+          "O",
+          "P"
+        ],
+        "sign": -1
+      }
+    },
+    {
+      "id": "externalTangent",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "P",
+        "contact"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "externalTangentOther",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "P",
+        "contactOther"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "radiusLine",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "O",
+        "A"
+      ],
+      "outputType": "LINE",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "internalBisector",
+      "op": "ANGLE_BISECTOR",
+      "inputs": [
+        "X",
+        "V",
+        "Y"
+      ],
+      "outputType": "LINE",
+      "args": {
+        "mode": "INTERNAL"
+      },
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "externalBisector",
+      "op": "ANGLE_BISECTOR",
+      "inputs": [
+        "X",
+        "V",
+        "Y"
+      ],
+      "outputType": "LINE",
+      "args": {
+        "mode": "EXTERNAL"
+      },
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "lengthAB",
+      "op": "SEGMENT_LENGTH",
+      "inputs": [
+        "O",
+        "B"
+      ],
+      "outputType": "SCALAR",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "lengthAC",
+      "op": "SEGMENT_LENGTH",
+      "inputs": [
+        "O",
+        "C"
+      ],
+      "outputType": "SCALAR",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "ratio",
+      "op": "SCALAR_RATIO",
+      "inputs": [
+        "lengthAB",
+        "lengthAC"
+      ],
+      "outputType": "SCALAR",
+      "args": {},
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "conditionAudits": [
+    {
+      "id": "incidence-B-axisX",
+      "sourceConditionId": "incidence-B-axisX",
+      "kind": "INCIDENCE_POINT_ON_LINE",
+      "refs": [
+        "B",
+        "axisX"
+      ]
+    },
+    {
+      "id": "distance-AB-4",
+      "sourceConditionId": "distance-AB-4",
+      "kind": "DISTANCE_EQUALS",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "expected": {
+        "kind": "integer",
+        "value": "4"
+      }
+    },
+    {
+      "id": "equal-external-tangent-lengths",
+      "sourceConditionId": "equal-external-tangent-lengths",
+      "kind": "EQUAL_DISTANCE",
+      "refs": [
+        "P",
+        "contact",
+        "P",
+        "contactOther"
+      ]
+    },
+    {
+      "id": "midpoint-OP-half",
+      "sourceConditionId": "midpoint-OP-half",
+      "kind": "MIDPOINT_RATIO",
+      "refs": [
+        "O",
+        "mid",
+        "P"
+      ],
+      "expected": {
+        "kind": "integer",
+        "value": "1"
+      }
+    },
+    {
+      "id": "perpendicular-coordinate-axes",
+      "sourceConditionId": "perpendicular-coordinate-axes",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "axisX",
+        "axisY"
+      ]
+    },
+    {
+      "id": "parallel-through-C",
+      "sourceConditionId": "parallel-through-C",
+      "kind": "PARALLEL",
+      "refs": [
+        "axisX",
+        "parallel"
+      ]
+    },
+    {
+      "id": "A-on-circleO",
+      "sourceConditionId": "A-on-circleO",
+      "kind": "CIRCLE_MEMBERSHIP",
+      "refs": [
+        "circleO",
+        "A"
+      ]
+    },
+    {
+      "id": "tangent-at-A",
+      "sourceConditionId": "tangent-at-A",
+      "kind": "TANGENCY_AT_POINT",
+      "refs": [
+        "circleO",
+        "A",
+        "tangentAtA"
+      ]
+    },
+    {
+      "id": "external-tangent-contact",
+      "sourceConditionId": "external-tangent-contact",
+      "kind": "TANGENCY_AT_POINT",
+      "refs": [
+        "circleO",
+        "contact",
+        "externalTangent"
+      ]
+    },
+    {
+      "id": "contact-positive-side",
+      "sourceConditionId": "contact-positive-side",
+      "kind": "ORIENTED_SIDE",
+      "refs": [
+        "O",
+        "P",
+        "contact"
+      ],
+      "sign": 1
+    },
+    {
+      "id": "contact-other-negative-side",
+      "sourceConditionId": "contact-other-negative-side",
+      "kind": "ORIENTED_SIDE",
+      "refs": [
+        "O",
+        "P",
+        "contactOther"
+      ],
+      "sign": -1
+    }
+  ]
+}

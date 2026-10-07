@@ -1,0 +1,69 @@
+{
+  "id": "absolute-value-corner-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -6.2,
+    "xMax": 8.2,
+    "yMin": -2.34,
+    "yMax": 15.34,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": {
+    "x": true,
+    "y": true
+  },
+  "title": "절댓값 함수의 그래프",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "absoluteFeatures": {
+      "schemaVersion": "ABSOLUTE_VALUE_FEATURES_v1",
+      "corner": {
+        "x": "1",
+        "y": "1",
+        "state": "CLOSED"
+      },
+      "xIntercepts": [],
+      "leftTailDirection": "UP",
+      "rightTailDirection": "UP",
+      "leftArmSlope": "-2",
+      "rightArmSlope": "2"
+    },
+    "absoluteFeaturePolicy": {
+      "schemaVersion": "ABSOLUTE_VALUE_FEATURE_POLICY_v1",
+      "sourceDomain": "ALL_REALS",
+      "grammar": "K_ABS_AX_PLUS_B_PLUS_C",
+      "cornerMarkerRadiusIntrinsicPx": 4,
+      "minimumCornerMarkerDiameterCssPx": 3,
+      "minimumArmSpanCssPx": 50,
+      "minimumArmRiseCssPx": 24
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "2*abs(x-1)+1",
+      "domain": [
+        -5,
+        7
+      ],
+      "criticalX": [
+        1
+      ]
+    },
+    {
+      "id": "absolute-corner-label",
+      "kind": "EQUATION_LABEL",
+      "text": "V=(1,1)",
+      "at": [
+        2.008,
+        2.4144
+      ],
+      "math": true,
+      "priority": 0
+    }
+  ]
+}

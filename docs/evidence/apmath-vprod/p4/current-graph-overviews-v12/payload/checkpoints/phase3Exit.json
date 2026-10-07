@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "APMATH_VISUAL_PHASE3_EXIT_LEDGER_v1",
+  "phase": "PHASE_3",
+  "phaseStatus": "IMPLEMENTED_BOUNDED_CAPABILITIES_COMPLETE_WITH_OPEN_DEBT",
+  "implementedBoundedCapabilitiesStatus": "COMPLETE",
+  "openDebtStatus": "OPEN",
+  "phase3ExitAssessment": "No additional independently implementable Phase 3 unit remains in the approved bounded scope. The implemented engine controls are complete for their stated supported classes; candidate authority, cap-limited q10 replay, and real-candidate owner-relocation coverage remain explicitly open.",
+  "completedCapabilities": [
+    {
+      "id": "TEMP_WORKSPACE_ISOLATION",
+      "status": "PASS",
+      "evidence": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json"
+    },
+    {
+      "id": "MEASURED_DISPLAY_ENVELOPE_AND_ACTUAL_ARCHIVE_CAPTURE",
+      "status": "PASS_WITH_CANDIDATE_DEBT",
+      "evidence": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v11/measured-panel-repair-ledger.json"
+    },
+    {
+      "id": "ARCHIVE_CANCELLATION_CLEANUP_AND_NO_PARTIAL_SUCCESS_PUBLICATION",
+      "status": "PASS",
+      "evidence": "docs/evidence/apmath-vprod/p3d/capture-cancel-v3/evidence-manifest.json"
+    },
+    {
+      "id": "WORKER_FAILURE_TIMEOUT_AND_STAGE_RECOVERY",
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/apmath-vprod/p3d/worker-result-required-v1/evidence-manifest.json",
+        "docs/evidence/apmath-vprod/p3d/worker-malformed-wire-v2/evidence-manifest.json",
+        "docs/evidence/apmath-vprod/phase3d-timeout-recovery/evidence-manifest.json",
+        "docs/evidence/apmath-vprod/phase3d-stage-recovery/evidence-manifest.json"
+      ]
+    },
+    {
+      "id": "OBSERVER_PROVIDER_AND_VERIFIED_SOLUTION_REPLAY_INVALIDATION",
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/apmath-vprod/p3d/observer-provider-cache-invalidation-v1/evidence-manifest.json",
+        "docs/evidence/apmath-vprod/p3d/review-replay-invalidation-matrix-v1/evidence-manifest.json",
+        "docs/evidence/apmath-vprod/p3d/verified-solution-replay-invalidation-v1/evidence-manifest.json"
+      ]
+    },
+    {
+      "id": "PROVIDER_REMOTE_INTERRUPT_LOCAL_PROCESS_CLEANUP_AND_OFFLINE_ARCHIVE_RESOURCES",
+      "status": "PASS",
+      "evidence": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v7/provider-offline-runtime-ledger.json"
+    },
+    {
+      "id": "MEASURED_OWNER_SAFE_POINT_AND_COORDINATE_LABEL_REPAIR",
+      "status": "PASS_CONTROLLED_FIXTURE_ONLY",
+      "coverage": "CONTROLLED_FIXTURE_ONLY_NO_REAL_CANDIDATE_TRIGGERED",
+      "evidence": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/measured-owner-layout-repair-ledger.json"
+    },
+    {
+      "id": "CURRENT_POLICY_CANDIDATE_REPLAY",
+      "status": "PASS_WITH_CANDIDATE_DEBT",
+      "evidence": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v11/measured-panel-repair-ledger.json"
+    }
+  ],
+  "openDebts": [
+    {
+      "id": "CANONICAL_UID_V2_SOURCE_AUTHORITY",
+      "status": "INPUT_REQUIRED",
+      "owner": "EXTERNAL_SOURCE_AUTHORITY_INPUT",
+      "evidence": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/authority-search.json",
+      "reason": "The existing qid_v1 identity map preserves a useful current source/version snapshot and exact sourceArchiveFile+ordinal rows. Its contract does not define the v2 source identity key, canonical source ID, active/retired mapping, or approved parent verification lineage. Converting it to ACTIVE by deriving sourceExamId/sourceIdentityKey from its paths would invent the missing authority fields and exceed the artifact's contract. The CLI's separate --experimental-locator route can find a source file, but it only returns EXPERIMENTAL_LOCATOR_COMPLETE and cannot close canonical Phase 2.",
+      "missingAuthorityFields": [
+        "SOURCE_EXAM_ID_REGISTRY_v1 registry instance",
+        "canonicalSourceExamId",
+        "sourceIdentityKey",
+        "ACTIVE/RETIRED mapping",
+        "questionUidV2 mapping",
+        "raw sourceSha256 binding",
+        "approved parent verified-solution run reference"
+      ],
+      "noPromotion": "No qid_v1 map, locator result, temporary registry, or taxonomy projection was promoted."
+    },
+    {
+      "id": "Q10_CURRENT_POLICY_REPLAY",
+      "status": "OPEN_UNRESOLVED",
+      "candidate": "25_연향중_1학기_기말_중3_기출c|10",
+      "error": "REPAIR_BUDGET_EXHAUSTED",
+      "repairRows": 3,
+      "repairBudgetLimit": 3,
+      "ledgerReset": false,
+      "archiveCaptureProduced": false,
+      "evidence": {
+        "bytes": 18171,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/a1cf58ebcb70af8919ddb61e569b3f65638a83016df5bdf27e5bcaf03a39bb93/result.json",
+        "sha256": "sha256:5b941e3f5c67e6df87ce47f137499d56522675971043db27a4c5db6637237644"
+      },
+      "priorP3ePackage": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v9/measured-panel-repair-ledger.json",
+      "reason": "The new provider/display policy produces a distinct layout action after the shared repair ledger is already at 3/3. The attempted current-policy run fails closed before BUILD/Archive capture; no fourth entry was added."
+    },
+    {
+      "id": "OWNER_SAFE_LABEL_RELOCATION_REAL_CANDIDATE_TRIGGER",
+      "status": "OPEN_CONTROLLED_FIXTURE_ONLY",
+      "coverage": "CONTROLLED_FIXTURE_ONLY_NO_REAL_CANDIDATE_TRIGGERED",
+      "evidence": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/measured-owner-layout-repair-ledger.json",
+      "reason": "The strict POINT_NAME/COORDINATE_LABEL repair and post-BUILD audit pass controlled east/west owner fixtures; none of the q1/q10/coordinate-free source replays triggered this repair."
+    }
+  ],
+  "currentCandidateResults": {
+    "q10": {
+      "status": "UNRESOLVED",
+      "error": "REPAIR_BUDGET_EXHAUSTED",
+      "repairRows": 3,
+      "canonicalAuthority": false
+    },
+    "q1": {
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "profile": "medium",
+      "repairRows": 0,
+      "actualArchive": "PASS",
+      "visualReview": "PASS",
+      "identity": "EXPERIMENTAL_LOCATOR",
+      "qualificationStatus": "NOT_QUALIFIED"
+    },
+    "coordinateFree": {
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "profile": "medium",
+      "repairRows": 3,
+      "actualArchive": "PASS",
+      "visualReview": "PASS",
+      "identity": "EXPERIMENTAL_LOCATOR",
+      "qualificationStatus": "NOT_QUALIFIED"
+    }
+  },
+  "providerOfflineRuntime": {
+    "status": "PASS_WITH_CANDIDATE_DEBT",
+    "providerTimeoutProbe": "PASS",
+    "remoteCancellation": "REMOTE_INTERRUPT_CONFIRMED",
+    "terminalStatus": "interrupted",
+    "localProcessCloseObserved": true,
+    "offlineRuntime": "PASS",
+    "networkPolicy": "LOCAL_ONLY",
+    "externalRequests": []
+  },
+  "nextPhase": {
+    "phase": "PHASE_4",
+    "firstSlice": "POLYNOMIAL_CUBIC_QUARTIC_ONLY",
+    "allowedNow": true,
+    "acceptanceGates": [
+      "closed grammar and exact domain rules",
+      "independent exact math verification",
+      "topology and critical-feature observer",
+      "overview framing and actual-size publication boundary",
+      "Actual Archive and final renderer evidence",
+      "positive and negative fixtures"
+    ],
+    "qualificationScope": "No canonical UID coverage; zero canonical user candidates."
+  },
+  "phase5": {
+    "status": "BLOCKED",
+    "reason": "Canonical UID v2 source authority remains INPUT_REQUIRED; do not mark ACTIVE or claim canonical qualification."
+  },
+  "evidenceRefs": [
+    {
+      "path": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/authority-search.json",
+      "bytes": 8114,
+      "sha256": "sha256:eb956746f4fc991f27c41232bff2f08be937c92094071eb9e0d74cdbbad84b8d"
+    },
+    {
+      "path": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json",
+      "bytes": 6098,
+      "sha256": "sha256:ead622472aae401c72ce02044bc7d2f3321887dfacb4a6f799c7e66ec69cbaa1"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v7/evidence-manifest.json",
+      "bytes": 7680,
+      "sha256": "sha256:a724fbe9a31bc0581f3832fa3e386376101ac5a8b2577a75fa3fa12bd8da8925"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v11/evidence-manifest.json",
+      "bytes": 92051,
+      "sha256": "sha256:2f2f8a85c1fdd68135347dede183506b1ed3925e5c2543de21428b9cac5fb6b6"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/evidence-manifest.json",
+      "bytes": 8480,
+      "sha256": "sha256:f6fc5e082fa4d55aaada07df10fde25786f48b40472a8aa474e9a9a3826b916d"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/capture-cancel-v3/evidence-manifest.json",
+      "bytes": 15893,
+      "sha256": "sha256:59a8b494d9ed48f96b0ee5ce0a513e4e68d3122958e70f17d534ae3e2a7ab6a1"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/observer-provider-cache-invalidation-v1/evidence-manifest.json",
+      "bytes": 2991,
+      "sha256": "sha256:1e5e58d9072691730fd3ea7689b56a31ce5ff74cb0d3cf5f74beaeb74cfbfebf"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/review-replay-invalidation-matrix-v1/evidence-manifest.json",
+      "bytes": 6040,
+      "sha256": "sha256:8fb715917ab6f4118eb602bf71f80e4a5364c1ae3badd00a71474d2090dc1130"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/verified-solution-replay-invalidation-v1/evidence-manifest.json",
+      "bytes": 3718,
+      "sha256": "sha256:95158a947776439de4493e8a1b86f3f7fe6c5d7d986f0b0ab764445edc1483f8"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/worker-result-required-v1/evidence-manifest.json",
+      "bytes": 3157,
+      "sha256": "sha256:5af4b6b57f792f0ea78844347e91f4ff9dab7908c9bff3016899124c25db5e88"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/worker-malformed-wire-v2/evidence-manifest.json",
+      "bytes": 2972,
+      "sha256": "sha256:b1cca3800c73fbd344438a90a81c00b7e5cba4a8b141261a83b33575a6709dae"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/phase3d-timeout-recovery/evidence-manifest.json",
+      "bytes": 900,
+      "sha256": "sha256:20ab3f526fc8f526745c9f45b293b7e08ebfc4fd6beecc7611a6611750f8e38f"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/phase3d-stage-recovery/evidence-manifest.json",
+      "bytes": 782,
+      "sha256": "sha256:ea481f0cdc419eb88dd321f149b06d086a92402ad54ade321a6cdf7802a34577"
+    }
+  ],
+  "checkpointCommit": "f75747e7e7a17fb03f0950ae76d4172197ae57c5",
+  "canonicalAuthorityStatus": "INPUT_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false
+}

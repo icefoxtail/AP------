@@ -7,7 +7,7 @@ import math
 import re
 
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
-           'log':math.log,'exp':math.exp,'abs':abs}
+           'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,])')
 
@@ -122,7 +122,9 @@ def serialize(node,mode='tex'):
         name=a[0].value if a[0].kind=='symbol' else ''
         if name=='sqrt':return ('\\sqrt{'+s(a[1])+'}') if mode=='tex' else '√('+s(a[1])+')'
         if name=='abs' and mode=='tex':return r'\left|'+s(a[1])+r'\right|'
-        fn=('\\'+name) if mode=='tex' and name in FUNCTIONS else (escape(name) if name in FUNCTIONS else s(a[0]))
+        if mode=='tex' and name=='ln':fn=r'\ln'
+        elif mode=='tex' and name in FUNCTIONS:fn='\\'+name
+        else:fn=escape(name) if name in FUNCTIONS else s(a[0])
         return fn+'('+','.join(s(v) for v in a[1:])+')'
     if k=='binary':
         left,right=a;op=node.value
