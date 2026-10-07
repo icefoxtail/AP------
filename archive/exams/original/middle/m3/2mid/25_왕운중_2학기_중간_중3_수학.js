@@ -25,12 +25,21 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "③",
-    "solution": "직각삼각형 $ABC$에서 직각은 $B$에 있다. 각 $A$에 대하여 맞은편 변은 $BC=6$, 빗변은 $AC=10$이므로\n$\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac35$이다.\n따라서 정답은 ③이다.",
+    "solution": "직각은 $B$이므로 빗변은 $AC=10$이다.\n각 $A$의 맞은편 변은 $BC=6$이다.\n$\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac35$\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -56,7 +65,7 @@ window.questionBank = [
       "$\\dfrac{5}{13}$"
     ],
     "answer": "⑤",
-    "solution": "$\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $AB:BC=5:12$이다. $AB=5k$, $BC=12k$라 하면 $AC=13k$이다.\n따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac5{13}$이므로 정답은 ⑤이다.",
+    "solution": "$\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $AB=5k$, $BC=12k$로 둔다.\n피타고라스 정리에 따라\n$AC=\\sqrt{(5k)^2+(12k)^2}=13k$이다.\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac{5k}{13k}=\\dfrac5{13}$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -64,7 +73,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "5k-12k-13k 직각삼각형 ABC",
     "solutionImageCaption": "tan A가 정하는 두 직각변을 빗변과 함께 비교한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -90,11 +108,20 @@ window.questionBank = [
       "$\\sqrt{2}-3$"
     ],
     "answer": "④",
-    "solution": "$\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이므로\n$\\sqrt2\\tan45^\\circ-\\sqrt3\\sin60^\\circ=\\sqrt2-\\dfrac32$이다.\n따라서 정답은 ④이다.",
+    "solution": "$\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이다.\n주어진 식에 대입하면\n$\\sqrt2\\cdot1-\\sqrt3\\cdot\\dfrac{\\sqrt3}{2}$\n$=\\sqrt2-\\dfrac32$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -121,12 +148,21 @@ window.questionBank = [
       "$78^\\circ, 77^\\circ$"
     ],
     "answer": "④",
-    "solution": "표에서 $\\sin79^\\circ=0.9816$, $\\cos77^\\circ=0.2250$이므로 $(x,y)=(79^\\circ,77^\\circ)$이다.\n따라서 정답은 ④이다.",
+    "solution": "표에서 $\\sin79^\\circ=0.9816$을 찾으면 $x=79^\\circ$이다.\n또 $\\cos77^\\circ=0.2250$이므로 $y=77^\\circ$이다.\n따라서 $(x,y)=(79^\\circ,77^\\circ)$이고 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q4.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -152,11 +188,20 @@ window.questionBank = [
       "$\\sin A+\\tan A$"
     ],
     "answer": "⑤",
-    "solution": "$\\sin90^\\circ=1$이므로 식은\n$\\sqrt{(\\tan A+1)^2}-\\sqrt{(\\sin A-1)^2}$이다.\n$A$는 예각이므로\n$\\tan A+1>0$, $\\sin A-1<0$이다.\n따라서\n$\\sqrt{(\\tan A+1)^2}=\\tan A+1$,\n$\\sqrt{(\\sin A-1)^2}=1-\\sin A$이다.\n그러므로\n$(\\tan A+1)-(1-\\sin A)=\\tan A+\\sin A$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$\\sin90^\\circ=1$이고 $0<\\sin A<1$, $\\tan A>0$이다.\n따라서\n$\\sqrt{(\\tan A+1)^2}=\\tan A+1$\n$\\sqrt{(\\sin A-1)^2}=1-\\sin A$이다.\n두 값을 빼면\n$(\\tan A+1)-(1-\\sin A)=\\tan A+\\sin A$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -183,7 +228,7 @@ window.questionBank = [
       "$\\dfrac{13\\sqrt{3}}{2}$"
     ],
     "answer": "①",
-    "solution": "$AB$를 $B$ 너머로 연장하면 $BC$와 연장선이 이루는 각은 $60^\\circ$이다. 따라서 $C$에서 직선 $AB$까지의 높이는 $2\\sin60^\\circ=\\sqrt3$이다.\n넓이는 $\\dfrac12\\cdot5\\cdot\\sqrt3=\\dfrac{5\\sqrt3}{2}$이므로 정답은 ①이다.",
+    "solution": "두 변 $AB=5$, $BC=2$가 끼인각은 $120^\\circ$이다.\n삼각형의 넓이는\n$\\dfrac12 AB\\cdot BC\\sin120^\\circ$\n$=\\dfrac12\\cdot5\\cdot2\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{5\\sqrt3}{2}$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q6.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q6-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
@@ -192,7 +237,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 도형: 다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 ",
     "solutionImageCaption": "해설의 핵심 관계: ∠ABC=120°이므로 연장선 BH와 BC 사이 ∠CBH=60°; CH⊥AB, CH=2 sin60°=√3.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -207,7 +261,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "도형"
+      "그래프"
     ],
     "wide": false,
     "content": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에 대하여 다음 중 옳지 않은 것을 고르면? [4점]",
@@ -219,13 +273,22 @@ window.questionBank = [
       "$\\tan47^\\circ=1.07$"
     ],
     "answer": "②",
-    "solution": "그림에서 $47^\\circ$의 삼각비를 읽으면\n$\\cos47^\\circ=0.68$,\n$\\sin47^\\circ=0.73$,\n$\\tan47^\\circ\\approx1.07$이다.\n또\n$43^\\circ=90^\\circ-47^\\circ$이므로\n$\\sin43^\\circ=\\cos47^\\circ=0.68$,\n$\\cos43^\\circ=\\sin47^\\circ=0.73$이다.\n따라서 $\\sin47^\\circ=0.68$이라고 한 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+    "solution": "반지름이 $1$인 사분원에서 각 $47^\\circ$에 대해 $x=\\cos47^\\circ=0.68$, $y=\\sin47^\\circ=0.73$이다.\n따라서 $\\tan47^\\circ=\\dfrac{y}{x}\\approx1.07$이다.\n여각 관계로 $\\sin43^\\circ=\\cos47^\\circ=0.68$, $\\cos43^\\circ=\\sin47^\\circ=0.73$이다.\n그러므로 $\\sin47^\\circ=0.68$이라는 ②가 옳지 않다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q7.png",
     "imageSize": "full",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -252,13 +315,22 @@ window.questionBank = [
       "$10+2\\sqrt{13}$"
     ],
     "answer": "③",
-    "solution": "$\\triangle ABH$는 $45^\\circ$-$45^\\circ$-$90^\\circ$인 직각이등변삼각형이다.\n$AB=4\\sqrt2$가 빗변이므로\n$AH=BH=4$이다.\n따라서\n$HC=BC-BH=10-4=6$이다.\n직각삼각형 $AHC$에서\n$AC=\\sqrt{AH^2+HC^2}\n=\\sqrt{4^2+6^2}\n=\\sqrt{52}\n=2\\sqrt{13}$이다.\n그러므로\n$AH+AC=4+2\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+    "solution": "직각삼각형 $ABH$에서 $\\angle ABH=45^\\circ$, 빗변 $AB=4\\sqrt2$이다.\n따라서 $AH=BH=4$이다.\n$HC=BC-BH=10-4=6$이다.\n직각삼각형 $AHC$에서\n$AC=\\sqrt{AH^2+HC^2}=\\sqrt{4^2+6^2}=2\\sqrt{13}$이다.\n$AH+AC=4+2\\sqrt{13}$이므로 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q8.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q8-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -284,12 +356,21 @@ window.questionBank = [
       "$\\dfrac{7\\sqrt{10}}{10}$"
     ],
     "answer": "④",
-    "solution": "$AB=k$라 두면\n$AC=3k$이다.\n$\\angle A=90^\\circ$이므로 피타고라스 정리에 의해\n$BC=\\sqrt{k^2+(3k)^2}\n=\\sqrt{10}k$이다.\n각 $C$에 대하여\n$\\cos C=\\dfrac{AC}{BC}$이므로\n$\\cos C=\\dfrac{3k}{\\sqrt{10}k}\n=\\dfrac{3}{\\sqrt{10}}\n=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
+    "solution": "$AB=k$라 두면 $AC=3k$이다.\n직각삼각형 $ABC$에서\n$BC=\\sqrt{k^2+(3k)^2}=\\sqrt{10}k$이다.\n각 $C$에서 인접변은 $AC$이므로\n$\\cos C=\\dfrac{AC}{BC}=\\dfrac{3k}{\\sqrt{10}k}=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q9-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -315,7 +396,7 @@ window.questionBank = [
       "$2:\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "세 내각을 각각\n$k$, $2k$, $3k$라 하자.\n삼각형의 내각의 합은 $180^\\circ$이므로\n$k+2k+3k=180^\\circ$이다.\n따라서\n$k=30^\\circ$이고\n$A=30^\\circ$, $B=60^\\circ$, $C=90^\\circ$이다.\n그러므로\n$\\sin A:\\cos B\n=\\sin30^\\circ:\\cos60^\\circ\n=\\dfrac12:\\dfrac12\n=1:1$이다.\n따라서 정답은 ①이다.",
+    "solution": "세 각을 $k,2k,3k$라 두면\n$k+2k+3k=180^\\circ$이므로 $k=30^\\circ$이다.\n따라서 $A=30^\\circ$, $B=60^\\circ$, $C=90^\\circ$이다.\n$\\sin A=\\sin30^\\circ=\\dfrac12$, $\\cos B=\\cos60^\\circ=\\dfrac12$이다.\n그러므로 $\\sin A:\\cos B=1:1$이고 정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -323,7 +404,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q10-solution.svg",
     "solutionImageAlt": "30°, 60°, 90° 내각을 표시한 직각삼각형 ABC",
     "solutionImageCaption": "각의 비 1:2:3에서 얻는 세 각과 sin A=cos B를 연결한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -350,7 +440,7 @@ window.questionBank = [
       "$6\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "$BC=8$을 밑변으로 보면\n$AH$가 $BC$에 대한 높이이다.\n삼각형의 넓이가 $12\\sqrt3$이므로\n$12\\sqrt3\n=\\dfrac12\\times8\\times AH$이다.\n따라서\n$4AH=12\\sqrt3$,\n$AH=3\\sqrt3$이다.\n따라서 정답은 ②이다.",
+    "solution": "$BC=8$을 밑변으로 보면 높이는 $AH$이다.\n삼각형의 넓이 공식에 대입하면\n$12\\sqrt3=\\dfrac12\\cdot8\\cdot AH=4AH$이다.\n양변을 $4$로 나누면\n$AH=\\dfrac{12\\sqrt3}{4}=3\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q11.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -359,7 +449,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q11-solution.svg",
     "solutionImageAlt": "120°인 C와 BC 연장선 위의 H, 수선 AH를 표시한 삼각형",
     "solutionImageCaption": "밑변 BC와 높이 AH가 만드는 넓이 관계를 본다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -386,13 +485,22 @@ window.questionBank = [
       "$36\\pi-54\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "원의 반지름을 $r$라 하자.\n정육각형이 원에 내접하므로\n$OA=OF=AF=r$이고 $\\triangle OAF$는 정삼각형이다.\n$OH\\perp AF$이므로\n$OH=\\dfrac{\\sqrt3}{2}r$이다.\n$OH=3\\sqrt3$이므로\n$\\dfrac{\\sqrt3}{2}r=3\\sqrt3$,\n$r=6$이다.\n따라서 원의 넓이는\n$\\pi r^2=36\\pi$이다.\n정육각형의 넓이는 한 변이 $6$인 정삼각형 $6$개의 넓이의 합이므로\n$6\\times\\dfrac{\\sqrt3}{4}\\times6^2\n=54\\sqrt3$이다.\n그러므로 색칠한 부분의 넓이는\n$36\\pi-54\\sqrt3$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "중심에서 변 $AF$에 내린 수선의 길이는 $OH$이다.\n반지름을 $r$라 하면 $OH=r\\cos30^\\circ=\\dfrac{\\sqrt3}{2}r$이다.\n$\\dfrac{\\sqrt3}{2}r=3\\sqrt3$에서 $r=6$이다.\n원 넓이는 $\\pi r^2=36\\pi$이다.\n정육각형은 한 변이 $6$인 정삼각형 여섯 개이므로 넓이는 $6\\cdot\\dfrac{\\sqrt3}{4}\\cdot6^2=54\\sqrt3$이다.\n색칠한 넓이는 $36\\pi-54\\sqrt3$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q12.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q12-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -419,7 +527,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "③",
-    "solution": "중심에서 현에 내린 수선은 현을 이등분하므로 $AH=12$이다. 직각삼각형 $OHA$에서 $OA^2=5^2+12^2=169$이므로 $x=13$이다.\n따라서 정답은 ③이다.",
+    "solution": "중심에서 현에 내린 수선은 현을 이등분하므로\n$AH=HB=\\dfrac{AB}{2}=12$이다.\n직각삼각형 $OHA$에서\n$OA^2=OH^2+AH^2=5^2+12^2=169$이다.\n$OA=x>0$이므로 $x=13$이고 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -428,7 +536,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageAlt": "현 AB=24의 중점 H와 중심 O에서 내린 수선",
     "solutionImageCaption": "중심에서 현에 내린 수선이 현을 이등분해 반지름 직각삼각형을 만든다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -455,13 +572,22 @@ window.questionBank = [
       "(마) $AM=BM$"
     ],
     "answer": "④",
-    "solution": "$OM\\perp AB$이므로\n$\\angle OMA=\\angle OMB=90^\\circ$이다.\n또 $OA=OB$는 같은 원의 반지름이고\n$OM$은 공통인 변이다.\n따라서 두 직각삼각형 $\\triangle OMA$, $\\triangle OMB$는\n빗변과 다른 한 변이 각각 같으므로 RHS 합동이다.\n합동에 의해 $AM=BM$이다.\n그러므로 (라)에 들어갈 합동 조건은 RHA가 아니라 RHS이다.\n따라서 정답은 ④이다.",
+    "solution": "$OM\\perp AB$이므로 $\\angle OMA=\\angle OMB=90^\\circ$이다.\n반지름이므로 $OA=OB$이고, $OM$은 공통이다.\n따라서 두 직각삼각형은 빗변과 한 변이 각각 같아 RHS로 합동이다.\n(라)의 RHA는 제시한 합동 조건과 다르므로 옳지 않다. 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q14.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q14-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -488,13 +614,22 @@ window.questionBank = [
       "$\\dfrac{289}{9}\\pi$"
     ],
     "answer": "⑤",
-    "solution": "원의 중심을 $O$, 반지름을 $r$라 하자.\n원의 중심에서 현에 내린 수선은 그 현을 이등분하므로\n$AM=\\dfrac{AB}{2}=5$이다.\n그림에서 $CM=3$이므로\n$OM=r-3$이다.\n직각삼각형 $OMA$에서\n$r^2=(r-3)^2+5^2$이다.\n따라서\n$r^2=r^2-6r+9+25$,\n$6r=34$,\n$r=\\dfrac{17}{3}$이다.\n그러므로 원의 넓이는\n$\\pi r^2\n=\\dfrac{289}{9}\\pi$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "현에 내린 수선은 현을 이등분하므로 $AM=\\dfrac{AB}{2}=5$이다.\n반지름을 $r$라 하면 그림에서 $OM=r-CM=r-3$이다.\n직각삼각형 $OMA$에서\n$r^2=(r-3)^2+5^2$이다.\n$r^2=r^2-6r+9+25$이다.\n$0=-6r+34$이다.\n$6r=34$이므로 $r=\\dfrac{34}{6}=\\dfrac{17}{3}$이다.\n원의 넓이는\n$\\pi r^2=\\dfrac{289}{9}\\pi$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q15.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q15-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -521,13 +656,22 @@ window.questionBank = [
       "$8\\sqrt{3}\\pi$"
     ],
     "answer": "⑤",
-    "solution": "$OD=OE=OF$이므로\n원의 중심에서 같은 거리에 있는 세 현의 길이는 같다.\n따라서\n$AB=BC=CA=12$이고 $\\triangle ABC$는 정삼각형이다.\n그러므로 중심각\n$\\angle AOB=120^\\circ$이다.\n$D$는 현 $AB$의 중점이므로\n$AD=6$이고\n$\\angle AOD=60^\\circ$이다.\n직각삼각형 $OAD$에서\n$\\sin60^\\circ=\\dfrac{AD}{OA}\n=\\dfrac6{OA}$이다.\n따라서\n$OA=\\dfrac6{\\sin60^\\circ}\n=4\\sqrt3$이다.\n원의 둘레는\n$2\\pi\\times4\\sqrt3=8\\sqrt3\\pi$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$OD=OE=OF$이므로 같은 원에서 중심으로부터 거리가 같은 현은 길이가 같다.\n따라서 $AB=BC=CA=12$이고 $\\triangle ABC$는 정삼각형이다.\n중점 $D$에서 $AD=6$, $\\angle ADO=90^\\circ$이다.\n정삼각형의 중심선에서 $\\angle DAO=30^\\circ$이므로\n$\\cos30^\\circ=\\dfrac{AD}{AO}=\\dfrac6{AO}$, 따라서 $AO=4\\sqrt3$이다.\n원의 둘레는 $2\\pi AO=8\\sqrt3\\pi$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q16.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q16-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -554,13 +698,22 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "한 점에서 한 원에 그은 두 접선의 길이는 같다. $PA=PB=2$이므로 $QB=PQ-PB=3$이고, 다시 $QB=QC$이므로 $x=3$이다.\n따라서 정답은 ①이다.",
+    "solution": "점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB=2$이다.\n직선 $PQ$에서 $PQ=PB+BQ$이므로\n$BQ=5-2=3$이다.\n점 $Q$에서 그은 두 접선도 같아 $QB=QC$이다.\n따라서 $x=QC=3$이고 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q17.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q17-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -587,13 +740,22 @@ window.questionBank = [
       "$44$"
     ],
     "answer": "②",
-    "solution": "공통 접선 위에서 $A$에서 첫 번째 원의 접점까지의 길이를 $t$라 하자.\n같은 점에서 한 원에 그은 두 접선의 길이는 같으므로\n첫 번째 삼각형에서 $B$ 쪽 접선 길이는 $34-t$이다.\n따라서 $BC=26$에서 $C$ 쪽 접선 길이는\n$26-(34-t)=t-8$이고,\n$AC=2t-8$이다.\n\n두 번째 삼각형에서 $CD=22$이므로\n$D$ 쪽 접선 길이는 $30-t$이 된다.\n따라서\n$AD=30$이다.\n\n세 번째 삼각형에서 $DE=16$을 이용하면\n$E$ 쪽 접선 길이는 $t-14$이고,\n$AE=2t-14$이다.\n\n네 번째 삼각형에서 $EF=12$를 이용하면\n$F$ 쪽 접선 길이는 $26-t$이므로\n$AF=26$이다.\n\n따라서\n$AD+AF=30+26=56$이다.\n따라서 정답은 ②이다.",
+    "solution": "그림에서 이웃한 두 원은 공통 접선 위의 같은 점에서 접한다. 첫 원에서 $A$부터 접점까지의 길이를 $t$라 하자.\n$AB=34$이므로 $B$에서 접점까지는 $34-t$이다.\n$BC=26$에서 $C$의 접선 길이는 $26-(34-t)=t-8$이다.\n공통 접선 $AC$의 접점이 같으므로 다음 원의 $C$쪽 접선 길이도 $t-8$이다. $CD=22$에서 $D$쪽 길이는 $22-(t-8)=30-t$이다.\n따라서 $AD=t+(30-t)=30$이다.\n공통 접선 $AD$에서 $D$쪽 길이는 $30-t$이다. $DE=16$에서 $E$쪽 길이는 $16-(30-t)=t-14$이고, $AE=t+(t-14)=2t-14$이다.\n공통 접선 $AE$에서 $E$쪽 길이는 $t-14$이다. $EF=12$에서 $F$쪽 길이는 $12-(t-14)=26-t$이다.\n따라서 $AF=t+(26-t)=26$이고, $AD+AF=30+26=56$이다.\n정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q18.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q18-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -620,13 +782,22 @@ window.questionBank = [
       "$\\dfrac{1}{12}$"
     ],
     "answer": "②",
-    "solution": "피타고라스 정리에 의해\n$AC=\\sqrt{5^2+12^2}=13$이다.\n$M$은 빗변 $AC$의 중점이므로\n$BM=\\dfrac{13}{2}$이다.\n또\n$MH\\perp BC$, $AB\\perp BC$이므로\n$MH\\parallel AB$이다.\n$M$은 $AC$의 중점이고 $MH\\parallel AB$이므로\n중점 연결 정리에 의해 $H$는 $BC$의 중점이다.\n따라서\n$BH=\\dfrac{BC}{2}=6$이다.\n직각삼각형 $BMH$에서\n$\\sin x=\\dfrac{BH}{BM}\n=\\dfrac6{13/2}\n=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
+    "solution": "직각삼각형 $ABC$에서\n$AC=\\sqrt{5^2+12^2}=13$이다.\n빗변의 중점 $M$은 세 꼭짓점에서 같은 거리에 있으므로 $BM=\\dfrac{13}{2}$이다.\n$MH\\perp BC$이고 $AB\\perp BC$이므로 $MH\\parallel AB$이다.\n따라서 $\\triangle MHB\\sim\\triangle ABC$이고 닮음비는 $MH:AB=1:2$이다.\n$BH=\\dfrac{BC}{2}=6$이므로\n$\\sin x=\\dfrac{BH}{BM}=\\dfrac6{13/2}=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q19.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q19-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -653,13 +824,22 @@ window.questionBank = [
       "$\\dfrac{\\sqrt{6}+\\sqrt{2}}{6}$"
     ],
     "answer": "③",
-    "solution": "$AF=6$, $\\angle EAF=30^\\circ$인 직각삼각형이므로\n$AE=6\\cos30^\\circ=3\\sqrt3$,\n$EF=6\\sin30^\\circ=3$이다.\n또 $\\angle BAE=45^\\circ$이므로\n$AE$가 수평 방향으로 만드는 길이는\n$3\\sqrt3\\cos45^\\circ=\\dfrac{3\\sqrt6}{2}$이다.\n그림에서 $EF$가 같은 수평 방향으로 만드는 길이는\n$3\\sin45^\\circ=\\dfrac{3\\sqrt2}{2}$이다.\n따라서 $AF=6$이 수평 방향으로 만드는 길이는\n$\\dfrac{3\\sqrt6}{2}+\\dfrac{3\\sqrt2}{2}$이다.\n한편 이 길이는 $6\\sin75^\\circ$이므로\n$6\\sin75^\\circ\n=\\dfrac{3\\sqrt6+3\\sqrt2}{2}$이다.\n따라서\n$\\sin75^\\circ\n=\\dfrac{\\sqrt6+\\sqrt2}{4}$이다.\n따라서 정답은 ③이다.",
+    "solution": "직각삼각형 $AEF$에서 $AF=6$, $\\angle EAF=30^\\circ$이다.\n$AE=6\\cos30^\\circ=3\\sqrt3$, $EF=6\\sin30^\\circ=3$이다.\n$AE$는 수직변 $AB$와 $45^\\circ$를 이루므로 가로 성분은 $AE\\cos45^\\circ=\\dfrac{3\\sqrt6}{2}$이다.\n$EF\\perp AE$이고 그림의 방향에서 가로 성분은 $EF\\cos45^\\circ=\\dfrac{3\\sqrt2}{2}$이다.\n따라서 $AF$의 가로 성분은 $\\dfrac{3\\sqrt6+3\\sqrt2}{2}=6\\sin75^\\circ$이다.\n$\\sin75^\\circ=\\dfrac{\\sqrt6+\\sqrt2}{4}$이므로 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q20.png",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q20-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -680,7 +860,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 $AB=9$, $BC=12$인 삼각형 $ABC$에서 $\\sin B=\\dfrac{2\\sqrt{2}}{3}$일 때, $\\triangle ABC$의 넓이를 구하고, 그 과정을 서술하시오. [총 4점]",
     "choices": [],
     "answer": "$36\\sqrt{2}$",
-    "solution": "$A$에서 $BC$에 내린 높이를 $h$라 하자.\n직각삼각형에서\n$\\sin B=\\dfrac{h}{AB}$이므로\n$\\dfrac{h}{9}=\\dfrac{2\\sqrt2}{3}$이다.\n따라서\n$h=9\\times\\dfrac{2\\sqrt2}{3}\n=6\\sqrt2$이다.\n그러므로\n$[\\triangle ABC]\n=\\dfrac12\\times BC\\times h\n=\\dfrac12\\times12\\times6\\sqrt2\n=36\\sqrt2$이다.\n따라서 구하는 넓이는 $36\\sqrt2$이다.",
+    "solution": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하고 $AH=h$라 하자.\n직각삼각형 $ABH$에서\n$h=AB\\sin B=9\\cdot\\dfrac{2\\sqrt2}{3}=6\\sqrt2$이다.\n따라서 $\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot12\\cdot6\\sqrt2=36\\sqrt2$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q21.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -689,7 +869,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q21-solution.svg",
     "solutionImageAlt": "AB=9, BC=12인 삼각형에서 A의 수선 AH와 sin B 비",
     "solutionImageCaption": "sin B가 밑변 BC에 대한 높이 AH를 정하고 삼각형 넓이를 만든다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -710,7 +899,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$\\sin A=\\dfrac{4}{5}$, $\\tan A=\\dfrac{4}{3}$",
-    "solution": "$\\cos A=\\dfrac{AB}{AC}=\\dfrac35$이므로\n$AB=3k$, $AC=5k$라 두자.\n$\\angle B=90^\\circ$이므로 피타고라스 정리에 의해\n$BC=\\sqrt{(5k)^2-(3k)^2}\n=4k$이다.\n따라서\n$\\sin A=\\dfrac{BC}{AC}\n=\\dfrac45$이고,\n$\\tan A=\\dfrac{BC}{AB}\n=\\dfrac43$이다.\n따라서 구하는 값은\n$\\sin A=\\dfrac45$, $\\tan A=\\dfrac43$이다.",
+    "solution": "$\\cos A=\\dfrac{AB}{AC}=\\dfrac35$이므로 $AB=3k$, $AC=5k$로 둔다.\n피타고라스 정리에 따라\n$BC=\\sqrt{(5k)^2-(3k)^2}=4k$이다.\n따라서 $\\sin A=\\dfrac{BC}{AC}=\\dfrac45$,\n$\\tan A=\\dfrac{BC}{AB}=\\dfrac43$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q22.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -719,7 +908,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q22-solution.svg",
     "solutionImageAlt": "AB:BC:AC=3:4:5인 직각삼각형 ABC",
     "solutionImageCaption": "cos A가 정하는 3-4-5 변 관계에서 sin A와 tan A를 읽는다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -740,13 +938,22 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림과 같이 중심이 $O$로 같은 두 원의 반지름의 길이가 각각 $5\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$이다. 큰 원의 현 $AB$가 작은 원에 접할 때의 그 접점을 $M$이라 할 때, $\\triangle OAB$의 넓이를 구하고, 그 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$10\\sqrt{6}\\,\\mathrm{cm}^2$",
-    "solution": "큰 원의 현 $AB$가 작은 원에 $M$에서 접하므로\n$OM\\perp AB$이고\n$OM=5\\,\\mathrm{cm}$이다.\n또 큰 원의 반지름은 $7\\,\\mathrm{cm}$이므로\n$OB=7\\,\\mathrm{cm}$이다.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=BM$이다.\n직각삼각형 $OMB$에서\n$BM=\\sqrt{OB^2-OM^2}\n=\\sqrt{7^2-5^2}\n=\\sqrt{24}\n=2\\sqrt6$이다.\n따라서\n$AB=2BM=4\\sqrt6$이다.\n그러므로\n$[\\triangle OAB]\n=\\dfrac12\\times AB\\times OM\n=\\dfrac12\\times4\\sqrt6\\times5\n=10\\sqrt6\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $10\\sqrt6\\,\\mathrm{cm}^2$이다.",
+    "solution": "작은 원의 반지름이므로 $OM=5$이고 큰 원의 반지름은 $OB=7$이다.\n접선에 그은 반지름은 접선에 수직이므로 $OM\\perp AB$이다.\n중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM$이다.\n직각삼각형 $OMB$에서\n$BM=\\sqrt{OB^2-OM^2}=\\sqrt{7^2-5^2}=2\\sqrt6$이다.\n$AB=2BM=4\\sqrt6$이다.\n따라서 $\\triangle OAB$의 넓이는\n$\\dfrac12\\cdot AB\\cdot OM=\\dfrac12\\cdot4\\sqrt6\\cdot5=10\\sqrt6\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q23.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q23-solution.svg",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -767,12 +974,21 @@ window.questionBank = [
     "content": "[서술형 4] 다음 그림과 같이 산의 바로 위 상공 $500\\,\\mathrm{m}$ 높이에 떠 있는 비행기에서 산의 양 끝 두 지점 $A$, $B$를 내려다본 각의 크기는 각각 $40^\\circ$, $31^\\circ$이었다. 이때 두 지점 $A$, $B$ 사이의 거리를 구하고, 그 과정을 서술하시오. [총 6점] (단, $\\tan50^\\circ=1.19$, $\\tan59^\\circ=1.66$으로 계산한다.)",
     "choices": [],
     "answer": "$1425\\,\\mathrm{m}$",
-    "solution": "비행기의 위치를 $P$, $P$에서 $AB$가 놓인 직선에 내린 수선의 발을 $H$라 하자.\n그러면\n$PH=500\\,\\mathrm{m}$이다.\n그림에서 내려다본 각 $40^\\circ$, $31^\\circ$의 여각은 각각\n$50^\\circ$, $59^\\circ$이다.\n직각삼각형 $PHA$에서\n$\\tan50^\\circ=\\dfrac{AH}{PH}$이므로\n$AH=500\\times1.19=595\\,\\mathrm{m}$이다.\n직각삼각형 $PHB$에서\n$\\tan59^\\circ=\\dfrac{BH}{PH}$이므로\n$BH=500\\times1.66=830\\,\\mathrm{m}$이다.\n$H$가 $A$와 $B$ 사이에 있으므로\n$AB=AH+BH$이다.\n따라서\n$AB=595+830=1425\\,\\mathrm{m}$이다.\n따라서 구하는 거리는 $1425\\,\\mathrm{m}$이다.",
+    "solution": "비행기에서 산 위 수선의 발을 $H$, 비행기를 $P$라 하면 $PH=500\\,\\mathrm{m}$이다.\n내려다본 각과 수평선이 이루는 각의 여각은 $50^\\circ$, $59^\\circ$이다.\n직각삼각형 $PAH$에서\n$AH=PH\\tan50^\\circ=500\\cdot1.19=595\\,\\mathrm{m}$이다.\n직각삼각형 $PBH$에서\n$BH=PH\\tan59^\\circ=500\\cdot1.66=830\\,\\mathrm{m}$이다.\n$H$가 $A,B$ 사이에 있으므로\n$AB=AH+HB=595+830=1425\\,\\mathrm{m}$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q24.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q24-solution.svg"
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q24-solution.svg",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
