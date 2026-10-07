@@ -13,6 +13,7 @@ evidence의 executionLine은 CODEX로 기록한다. 신규 Codex 계약 버전�
 R3 targeted rows와 별도로 artifactDispositions={artifactSha,rows:[{qid,metaDebtFields,metaDebtReason}]}에 전 문항의 기존 봉인 Meta disposition을 결속한다. metadata를 다시 분류하지 않는다. CREATE/R1은 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md의 Golden provenance 형식으로 실제 샘플 SHA와 두 문항 이상 판독 근거를 남긴다.
 루트 AGENTS.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md를 최초 1회 읽는다.
 R3 targeted release와 ROOT가 선택한 actual render 또는 static completion 계약을 수행한다. 공식 Archive Engine desktop/mobile × exam/sol/ans 6 cases를 직접 판정하고 loaded JS/assets/capture SHA와 reviewer identity를 결속한다. ROOT가 화면을 재검하지 않는다. generic PASS만으로 RENDER_PASS를 주장하지 않는다. 승인 경로가 없거나 명시적 security refusal이면 exact continuation을 남기고 NOT_RUN/0 captures를 사실대로 기록한다.
+ROOT static/partial waiver receipt는 CURRENT §25.6의 실제 RootWaived validator/CLI에 수납할 full-qid·reviewer·SHA 증거를 작성한다. 기존 유효 증거는 원 권한/identity를 보존해 재사용한다.
 지정받은 examUid만 작업하고 새 target을 선택하지 않는다.
 whole-exam 재검을 하지 않는다.
 open finding, changed locus, direct dependency, locked-scope integrity, release integrity만 확인한다.

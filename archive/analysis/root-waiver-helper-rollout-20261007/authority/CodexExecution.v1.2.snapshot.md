@@ -1,4 +1,4 @@
-# JS Archive 2.0 — Codex Execution Contract v1.3
+# JS Archive 2.0 — Codex Execution Contract v1.2
 
 status: CURRENT / CODEX EXECUTION LINE
 updated: 2026-10-07
@@ -434,7 +434,7 @@ ROOT 결정은 `decisionAuthority:ROOT_DELEGATED`, runId, examUid/qid/case 범�
 
 actual 경로와 면제 경로의 gate를 구별하고 publish 전에 실제 helper가 decision·고정 roster·전체 qid·R1/R2·R3 static·zero HOLD·raw bytes를 수납해야 한다. publication 뒤 HEAD/origin-main·production blob/raw SHA·모든 final asset과 durable evidence의 remote parity를 닫는다.
 
-일반 ROOT 자동 수납은 `validateCodexRootWaivedStaticReceipt` / `validateCodexRootWaivedMainDoneReceipt`와 `consumeCodexRootWaivedStaticPass` / `consumeCodexRootWaivedMainDone`으로 구현되어 있다. 학년·과목·runId·시험지 수는 고정하지 않고 실제 SHA-bound locked roster의 membership·전체 qid 분모를 사용한다. R3/RENDER → PUBLICATION은 static gate, PUBLICATION → MAIN_DONE은 actual remote parity gate로 전환한다. CREATE/R1/R2에서 조기 publication으로 전환하지 않는다. 이전 중2 직접 사용자 면제 함수는 그 역사적 범위로 유지하며 ROOT 경로와 normal render 경로를 구분한다. 기존 receipt의 권한 주체를 소급 변경하거나 앱 runtime 변경의 별도 응답성·저장소·실제 동작 검증을 이 권한으로 생략하지 않는다. 예외 schema의 새 기능에 실제 구현 지원이 부족한 경우에만 MASTER의 exact 기술 continuation으로 복구하며 같은 면제 권한을 사용자에게 재요청하지 않는다.
+현재 `validateCodexUserWaivedStaticReceipt`/`validateCodexUserWaivedMainDoneReceipt`는 20261006 중2 15시험지의 직접 사용자 면제에 한정된 구현이다. 일반 ROOT 결정까지 이미 자동 수납한다고 주장하지 않는다. 새 ROOT 면제를 해당 helper가 지원하지 않으면 ROOT가 실제 durable technical continuation으로 MASTER에 필요한 decision/schema/gate 결속만 구현·복구하도록 인계한다. 사용자에게 면제 권한을 다시 요청하거나 구현 미비를 영구 HOLD로 종료하지 않는다. normal render gate를 일괄 완화하거나 기존 receipt의 권한 주체를 소급 변경하지 않는다. 이 시험지 캡처 권한으로 앱 runtime 변경의 별도 응답성·저장소·실제 동작 검증 계약을 생략하지 않는다.
 
 ### 25.4 HOLD 복구·해제의 실행 순서
 
@@ -454,19 +454,3 @@ actual 경로와 면제 경로의 gate를 구별하고 publish 전에 실제 hel
 - 기존 7개 actual 영수증: 필요한 mode witness와 추가로 실제 decode한 witness를 분리 보존; 원 캡처·reviewer·JS·자산 SHA를 유지해 receipt compatibility만 복구.
 - publication: Git 정규화로 달라진 SVG/JSON raw bytes와 임시 evidence 경로를 필요한 범위에서 수리하고 index 및 remote readback까지 완료.
 - 앞으로 동일 blocker에서 ROOT 예외 결정 → 해당 worker의 최소 복구/static closure → 기술 gate 수납 → production·MAIN_DONE으로 연결한다.
-
-### 25.6 일반 ROOT 수납 CLI·receipt 계약 (구현 완료)
-
-```text
-node archive/tools/archive-codex-root-waiver-intake.mjs --phase static --root <worktreeRoot> --receipt <relativeStaticReceipt>
-node archive/tools/archive-codex-root-waiver-intake.mjs --phase main-done --root <worktreeRoot> --receipt <relativeMainDoneReceipt>
-```
-
-CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하고 PASS/FAIL exit code를 반환한다. phase만 바꾸어 잘못된 schema를 MAIN_DONE으로 승격하지 않는다. source JS·자산·기존 검수 증거는 수정하지 않는다.
-
-- ROOT 결정 schema: `JS_ARCHIVE_CODEX_ROOT_WAIVER_DECISION_V1`; `decisionAuthority:ROOT_DELEGATED`, rootIdentity, runId/examUid, exact qids/6 case scope, 사유·대체 검수·publication 조건·reviewer 및 JS/asset/evidence SHA를 기록한다. `waivedCaseIds`는 NOT_RUN case의 정확한 집합이다.
-- static schema: `JS_ARCHIVE_CODEX_ROOT_WAIVED_STATIC_RECEIPT_V1`, status STATIC_CODE_COMPLETE. main schema: `JS_ARCHIVE_CODEX_ROOT_WAIVED_MAIN_DONE_RECEIPT_V1`, status MAIN_DONE 및 actual remoteMainSha. 공통 completionBasis는 ROOT_DIRECTED_STATIC_COMPLETE다.
-- standing authority는 CURRENT §25의 durable snapshot에 sourcePath/section/sourceGitCommit/sourceGitBlobSha1/sourceRawSha256을 결속한다. canonical Git blob과 snapshot bytes가 일치하고 authority revision이 origin/main ancestry에 있어야 한다. 문서가 이후 갱신돼도 이미 발행된 결정의 권한 근거를 재현한다.
-- full waiver는 6 NOT_RUN·0 captures, partial은 1–5 actual PASS case와 나머지 NOT_RUN을 기록한다. partial은 `JS_ARCHIVE_CODEX_PARTIAL_RENDER_WITNESS_V1`에 same JS/R3 reviewer/실제 PNG capture·전 qid 및 마지막 qid coverage·viewport·MathJax/layout/decode·mode별 asset/SVG dependency SHA를 결속한다. 실행 안 한 case를 PASS로 보충하지 않는다.
-- 유효한 기존 R3 static 증거는 source/asset/현재 SHA가 같고 full-qid·integrity·zero HOLD·R1/R2 결속이 일치하면 원 권한과 reviewer를 보존해 재사용한다. USER evidence를 ROOT evidence로 소급 재작성하지 않는다.
-- MAIN_DONE은 production raw/Git blob·모든 asset·decision·authority snapshot·roster·R1/R2·R3·loaded JS·partial actual witness/captures의 remote bytes parity까지 확인한다. 임시 `.tmp` 참조, 잘못된 SHA, 무효 scope, item HOLD, non-PASS raw V2/CODEX proof, 경로 이탈을 수납하지 않는다.

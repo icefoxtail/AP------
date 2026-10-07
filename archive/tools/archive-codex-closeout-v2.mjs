@@ -159,6 +159,174 @@ export function validateCodexUserWaivedMainDoneReceipt({receipt,root}) {
   }catch(error){issues.push(error.message);}
   return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',completionBasis:issues.length?undefined:'USER_DIRECTED_STATIC_COMPLETE',renderStatus:issues.length?undefined:'NOT_RUN_USER_WAIVER',issues};
 }
+const ROOT_WAIVER_CASE_IDS=['exam/desktop','exam/mobile','sol/desktop','sol/mobile','ans/desktop','ans/mobile'];
+const ROOT_WAIVER_AUTHORITY_PATH='docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md';
+function safeArchiveProductionPath(value){
+  return typeof value==='string'&&/^archive\/exams\/(original|similar|types)\/[A-Za-z0-9가-힣_./-]+\.js$/.test(value)&&!value.includes('\\')&&!value.includes('..')&&!path.posix.isAbsolute(value)&&path.posix.normalize(value)===value&&!value.split('/').some(segment=>!segment||segment==='.'||segment==='..')&&!/generated/i.test(value);
+}
+function validateRootStandingAuthority({root,reference}){
+  if(reference?.sourcePath!==ROOT_WAIVER_AUTHORITY_PATH||![25,'25','§25'].includes(reference.section)||!(/^[a-f0-9]{40}$/i).test(reference.sourceGitCommit||'')||!(/^[a-f0-9]{40}$/i).test(reference.sourceGitBlobSha1||'')||!(/^[a-f0-9]{64}$/i).test(reference.sourceRawSha256||''))throw new Error('ROOT_WAIVER_AUTHORITY_REVISION_BINDING_REQUIRED');
+  if(reference.path!==ROOT_WAIVER_AUTHORITY_PATH&&!/^archive\/analysis\//.test(reference.path||''))throw new Error('ROOT_WAIVER_AUTHORITY_SNAPSHOT_PATH_REQUIRED');
+  const physical=durableBound(root,reference,'standing §25 authority'),main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
+  execFileSync('git',['-C',root,'merge-base','--is-ancestor',reference.sourceGitCommit,main],{stdio:'pipe'});
+  const source=execFileSync('git',['-C',root,'cat-file','blob',`${reference.sourceGitCommit}:${ROOT_WAIVER_AUTHORITY_PATH}`]);
+  if(hash(source)!==reference.sourceRawSha256||gitBlobSha(source)!==reference.sourceGitBlobSha1||!source.equals(physical))throw new Error('ROOT_WAIVER_AUTHORITY_GIT_BLOB_MISMATCH');
+  const text=source.toString('utf8');
+  if(!text.includes('## 25. PRODUCTION 완성 우선 — ROOT 예외·HOLD 해제 권한')||!text.includes('ROOT에 캡처 조건 면제와 예외·HOLD 복구·해제의 최종 운영 권한')||!text.includes('completionBasis:ROOT_DIRECTED_STATIC_COMPLETE')||!text.includes('NOT_RUN_ROOT_WAIVER'))throw new Error('ROOT_WAIVER_STANDING_POLICY_BINDING_REQUIRED');
+  return {main,sourceSha256:hash(source),sourceGitBlobSha1:gitBlobSha(source)};
+}
+function durableBound(root,ref,label){
+  if(typeof ref?.path!=='string'||/(?:^|[\\/])\.tmp(?:[\\/]|$)/i.test(ref.path))throw new Error('ROOT_WAIVER_DURABLE_REF_REQUIRED:'+label);
+  return readBound(root,ref);
+}
+function hasText(value){return typeof value==='string'&&value.trim().length>0;}
+function r3Identity(value){return value?.reviewerId||value?.session||value?.reviewer||value?.identity||null;}
+function sameRef(a,b){return a?.path===b?.path&&a?.sha256===b?.sha256;}
+function sameAssetBindings(actual,expected){
+  const a=[...(actual||[])].map(x=>({ref:x.ref,sha256:x.sha256})).sort((x,y)=>x.ref.localeCompare(y.ref));
+  return JSON.stringify(a)===JSON.stringify(expected);
+}
+function rootDecisionCaseSet(decision){
+  if(!['NOT_RUN_ROOT_WAIVER','PARTIAL_RENDER_ROOT_WAIVER'].includes(decision?.renderStatus))throw new Error('ROOT_WAIVER_RENDER_STATUS_REQUIRED');
+  const cases=decision.caseDispositions;
+  if(!Array.isArray(cases)||cases.length!==ROOT_WAIVER_CASE_IDS.length||new Set(cases.map(c=>c.id)).size!==cases.length||ROOT_WAIVER_CASE_IDS.some(id=>!cases.some(c=>c.id===id)))throw new Error('ROOT_WAIVER_CASE_SCOPE_REQUIRED');
+  for(const item of cases){
+    if(item.status==='NOT_RUN'){
+      if(item.captureCount!==0||!hasText(item.reason))throw new Error('ROOT_WAIVER_NOT_RUN_FACTS_REQUIRED:'+item.id);
+    }else if(item.status==='PASS'){
+      if(decision.renderStatus!=='PARTIAL_RENDER_ROOT_WAIVER'||!Number.isInteger(item.captureCount)||item.captureCount<=0)throw new Error('ROOT_WAIVER_ACTUAL_CASE_FACTS_REQUIRED:'+item.id);
+    }else throw new Error('ROOT_WAIVER_CASE_STATUS_INVALID:'+item.id);
+  }
+  const notRun=cases.filter(item=>item.status==='NOT_RUN').map(item=>item.id);
+  const waived=[...(decision.waivedCaseIds||[])];
+  if(new Set(waived).size!==waived.length||waived.length!==notRun.length||waived.some(id=>!notRun.includes(id)))throw new Error('ROOT_WAIVER_WAIVED_CASE_COMPLEMENT_REQUIRED');
+  if(decision.renderStatus==='NOT_RUN_ROOT_WAIVER'){
+    if(cases.some(item=>item.status!=='NOT_RUN')||notRun.length!==ROOT_WAIVER_CASE_IDS.length||decision.actualRenderReceipt!==undefined)throw new Error('ROOT_WAIVER_ALL_CASES_NOT_RUN_REQUIRED');
+  }else if(cases.every(item=>item.status==='NOT_RUN')||cases.every(item=>item.status==='PASS')||!decision.actualRenderReceipt){
+    throw new Error('ROOT_WAIVER_PARTIAL_CASE_BALANCE_REQUIRED');
+  }
+  return cases;
+}
+function sameCaseDisposition(actual,expected){
+  if(!Array.isArray(actual)||actual.length!==expected.length||new Set(actual.map(item=>item.id)).size!==actual.length||ROOT_WAIVER_CASE_IDS.some(id=>!actual.some(item=>item.id===id)))return false;
+  return ROOT_WAIVER_CASE_IDS.every(id=>{const a=actual.find(item=>item.id===id),e=expected.find(item=>item.id===id);return !!a&&!!e&&a.status===e.status&&a.captureCount===e.captureCount&&(a.status!=='NOT_RUN'||a.reason===e.reason);});
+}
+function validateRootPartialActualReceipt({actualRef,root,receipt,decision,decisionCases,bank,qids,assets,staticClosure}){
+  if(!sameRef(actualRef,decision.actualRenderReceipt))throw new Error('ROOT_PARTIAL_ACTUAL_RENDER_REF_BINDING_REQUIRED');
+  const actual=JSON.parse(durableBound(root,actualRef,'partial actual render receipt').toString('utf8'));
+  if(actual?.schemaVersion!=='JS_ARCHIVE_CODEX_PARTIAL_RENDER_WITNESS_V1'||actual.status!=='PARTIAL_RENDER_WITNESS'||actual.renderStatus!=='PARTIAL_RENDER_ROOT_WAIVER'||actual.executionLine!=='CODEX'||actual.qualityContractVersion!==QUALITY_CONTRACT_V2||actual.examUid!==receipt.examUid||actual.artifactSha!==receipt.artifactSha||actual.artifactRawSha256!==receipt.artifactRawSha256||actual.loadedJs?.sha256!==receipt.loadedJs.sha256)throw new Error('ROOT_PARTIAL_ACTUAL_RENDER_BINDING_REQUIRED');
+  const actualLoaded=durableBound(root,actual.loadedJs,'partial loaded JS');
+  if(hash(actualLoaded)!==receipt.artifactRawSha256||gitBlobSha(actualLoaded)!==receipt.artifactSha)throw new Error('ROOT_PARTIAL_LOADED_JS_SHA_MISMATCH');
+  const actualReviewer=actual.r3ReviewerIdentity||actual.reviewerIdentity,closureReviewer=staticClosure.reviewerIdentity;
+  if(actualReviewer?.role!=='archive_r3'||r3Identity(actualReviewer)!==r3Identity(closureReviewer))throw new Error('ROOT_PARTIAL_R3_REVIEWER_REQUIRED');
+  if(!sameOrderedValues(actual.qids,qids)||!sameAssetBindings(actual.assets,assets))throw new Error('ROOT_PARTIAL_QID_ASSET_BINDING_REQUIRED');
+  const r3=JSON.parse(durableBound(root,actual.r3Validation,'partial R3 validation').toString('utf8'));
+  if(r3.ok!==true||r3.validatorMode!=='R3_V2'||r3.stage!=='R3'||r3.examUid!==receipt.examUid||r3.artifactSha!==receipt.artifactSha||r3.qualityContractVersion!==QUALITY_CONTRACT_V2||r3.executionLine!=='CODEX'||r3.artifactContract?.active!==true)throw new Error('ROOT_PARTIAL_R3_RELEASE_READY_REQUIRED');
+  const expectedIds=decisionCases.filter(item=>item.status==='PASS').map(item=>item.id),actualCases=actual.cases;
+  if(!Array.isArray(actualCases)||actualCases.length!==expectedIds.length||new Set(actualCases.map(c=>c.id)).size!==actualCases.length||expectedIds.some(id=>!actualCases.some(c=>c.id===id)))throw new Error('ROOT_PARTIAL_ACTUAL_CASE_SET_REQUIRED');
+  for(const c of actualCases){
+    const d=decisionCases.find(item=>item.id===c.id),mode=c.id.split('/')[0];
+    if(c.status!=='PASS'||!Number.isInteger(c.viewport?.width)||c.viewport.width<=0||!Number.isInteger(c.viewport?.height)||c.viewport.height<=0||(c.id.endsWith('/mobile')&&c.viewport.width>600)||!Array.isArray(c.captures)||c.captures.length!==d.captureCount)throw new Error('ROOT_PARTIAL_ACTUAL_CASE_INCOMPLETE:'+c.id);
+    const covered=new Set();
+    for(const capture of c.captures){const png=durableBound(root,capture.image,'partial capture');if(!png.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw new Error('ROOT_PARTIAL_PNG_CAPTURE_REQUIRED:'+c.id);if(!Array.isArray(capture.qids))throw new Error('ROOT_PARTIAL_CAPTURE_QIDS_REQUIRED:'+c.id);capture.qids.forEach(q=>covered.add(Number(q)));}
+    if(qids.some(q=>!covered.has(Number(q))))throw new Error('ROOT_PARTIAL_QID_CAPTURE_COVERAGE_REQUIRED:'+c.id);
+    const required=expandSvgDependencies(modeAssetRefs(bank,mode),bank,actualCases,assets,root),expectedAssets=assets.filter(asset=>required.has(asset.ref));
+    if(required.size!==expectedAssets.length||!Array.isArray(c.loadedAssets)||c.loadedAssets.length!==expectedAssets.length)throw new Error('ROOT_PARTIAL_MODE_ASSET_SET_REQUIRED:'+c.id);
+    for(const asset of expectedAssets){const found=c.loadedAssets.filter(item=>item.ref===asset.ref);if(found.length!==1||found[0].sha256!==asset.sha256||hash(durableBound(root,found[0].file,'partial decoded asset'))!==asset.sha256)throw new Error('ROOT_PARTIAL_ASSET_DECODE_BINDING_REQUIRED:'+c.id+':'+asset.ref);}
+    if(c.mathJaxStatus!=='PASS'||c.layoutReviewStatus!=='PASS'||c.assetDecodeStatus!=='PASS')throw new Error('ROOT_PARTIAL_CASE_REVIEW_REQUIRED:'+c.id);
+  }
+  return actual;
+}
+export function validateCodexRootWaivedStaticReceipt({receipt,root}){
+  const issues=[];
+  try{
+    if(receipt?.schemaVersion!=='JS_ARCHIVE_CODEX_ROOT_WAIVED_STATIC_RECEIPT_V1'||receipt?.status!=='STATIC_CODE_COMPLETE'||receipt?.executionLine!=='CODEX'||receipt?.qualityContractVersion!==QUALITY_CONTRACT_V2||receipt?.completionBasis!=='ROOT_DIRECTED_STATIC_COMPLETE'||!['NOT_RUN_ROOT_WAIVER','PARTIAL_RENDER_ROOT_WAIVER'].includes(receipt?.renderStatus))throw new Error('ROOT_WAIVER_STATIC_CONTRACT_REQUIRED');
+    if(receipt.renderReceipt!==undefined)throw new Error('ROOT_WAIVER_RENDER_CLAIM_FORBIDDEN');
+    const decision=JSON.parse(durableBound(root,receipt.rootDecision,'decision').toString('utf8'));
+    if(decision?.schemaVersion!=='JS_ARCHIVE_CODEX_ROOT_WAIVER_DECISION_V1'||decision?.decisionAuthority!=='ROOT_DELEGATED'||decision?.executionLine!=='CODEX'||decision?.qualityContractVersion!==QUALITY_CONTRACT_V2||decision?.completionBasis!=='ROOT_DIRECTED_STATIC_COMPLETE'||!['NOT_RUN_ROOT_WAIVER','PARTIAL_RENDER_ROOT_WAIVER'].includes(decision?.renderStatus))throw new Error('ROOT_WAIVER_DECISION_REQUIRED');
+    if(decision.rootIdentity?.role!=='ROOT'||!hasText(decision.rootIdentity?.identity||decision.rootIdentity?.rootId))throw new Error('ROOT_WAIVER_ROOT_IDENTITY_REQUIRED');
+    if(!hasText(decision.reason)||decision.alternativeReview?.status!=='PASS'||!hasText(decision.alternativeReview?.description)||!Array.isArray(decision.publicationConditions)||!decision.publicationConditions.length||decision.publicationConditions.some(x=>!hasText(x)))throw new Error('ROOT_WAIVER_REASON_ALTERNATIVE_REVIEW_REQUIRED');
+    validateRootStandingAuthority({root,reference:decision.authorityReference});
+    if(!hasText(decision.runId)||decision.runId!==receipt.runId||decision.examUid!==receipt.examUid||decision.scope?.examUid!==receipt.examUid||decision.scope?.runId!==receipt.runId)throw new Error('ROOT_WAIVER_RUN_EXAM_SCOPE_REQUIRED');
+    if(receipt.rootDecision.runId!==undefined&&receipt.rootDecision.runId!==decision.runId)throw new Error('ROOT_WAIVER_DECISION_RUN_MISMATCH');
+    const lockedRoster=JSON.parse(durableBound(root,receipt.lockedRoster,'locked roster').toString('utf8'));
+    if(!sameRef(decision.lockedRoster,receipt.lockedRoster)||lockedRoster.runId!==decision.runId||lockedRoster.executionLine!=='CODEX'||lockedRoster.qualityContractVersion!==QUALITY_CONTRACT_V2||!(lockedRoster.locked===true||hasText(lockedRoster.lockedAt))||!Array.isArray(lockedRoster.rows)||!lockedRoster.rows.length||new Set(lockedRoster.rows.map(row=>row.examUid)).size!==lockedRoster.rows.length)throw new Error('ROOT_WAIVER_FIXED_LOCKED_ROSTER_REQUIRED');
+    const rosterRows=lockedRoster.rows.filter(row=>row.examUid===receipt.examUid);
+    if(rosterRows.length!==1)throw new Error('ROOT_WAIVER_EXAM_ROSTER_MEMBERSHIP_REQUIRED');
+    const rosterRow=rosterRows[0];
+    if(!Number.isInteger(rosterRow.questionCount)||rosterRow.questionCount<=0||rosterRow.productionPath!==receipt.productionPath)throw new Error('ROOT_WAIVER_ROSTER_DENOMINATOR_OR_PRODUCTION_REQUIRED');
+    if(!safeArchiveProductionPath(receipt.productionPath))throw new Error('ROOT_WAIVER_PRODUCTION_PATH_INVALID');
+    if(!sameOrderedValues(decision.scope.qids,receipt.qids)||!Array.isArray(decision.scope.caseIds)||ROOT_WAIVER_CASE_IDS.some(id=>!decision.scope.caseIds.includes(id))||new Set(decision.scope.caseIds).size!==ROOT_WAIVER_CASE_IDS.length)throw new Error('ROOT_WAIVER_EXACT_QID_CASE_SCOPE_REQUIRED');
+    const decisionCases=rootDecisionCaseSet(decision);
+    if(decision.renderStatus!==receipt.renderStatus||!sameCaseDisposition(receipt.caseDisposition,decisionCases))throw new Error('ROOT_WAIVER_RECEIPT_CASE_DISPOSITION_MISMATCH');
+    if(receipt.artifactSha!==decision.artifact?.artifactSha||receipt.artifactRawSha256!==decision.artifact?.artifactRawSha256||receipt.loadedJs?.sha256!==receipt.artifactRawSha256||decision.evidence?.loadedJs?.path!==receipt.loadedJs.path||decision.evidence?.loadedJs?.sha256!==receipt.loadedJs.sha256)throw new Error('ROOT_WAIVER_ARTIFACT_EVIDENCE_BINDING_REQUIRED');
+    const loaded=durableBound(root,receipt.loadedJs,'loaded JS');
+    if(hash(loaded)!==receipt.artifactRawSha256||gitBlobSha(loaded)!==receipt.artifactSha)throw new Error('ROOT_WAIVER_ARTIFACT_SHA_MISMATCH');
+    const box={window:{}};vm.runInNewContext(loaded.toString('utf8'),box,{timeout:1000});
+    const bank=box.window.questionBank||box.window.questions;
+    if(!Array.isArray(bank)||!bank.length)throw new Error('ROOT_WAIVER_QUESTION_BANK_REQUIRED');
+    const actualQids=bank.map(q=>Number(q.id));
+    if(new Set(actualQids).size!==actualQids.length||actualQids.length!==rosterRow.questionCount||!sameOrderedValues(receipt.qids,actualQids)||!sameOrderedValues(decision.scope.qids,actualQids))throw new Error('ROOT_WAIVER_FULL_LOCKED_QID_DENOMINATOR_REQUIRED');
+    if(!Array.isArray(receipt.assets)||receipt.assets.some(asset=>/(?:^|[\\/])\.tmp(?:[\\/]|$)/i.test(asset.file?.path||'')))throw new Error('ROOT_WAIVER_DURABLE_ASSET_SET_REQUIRED');
+    const assets=deriveStaticAssets({bank,assets:receipt.assets,root});
+    if(!sameAssetBindings(decision.assets,assets))throw new Error('ROOT_WAIVER_DECISION_ASSET_BINDING_REQUIRED');
+    const staticClosure=JSON.parse(durableBound(root,receipt.r3StaticClosure,'R3 static closure').toString('utf8'));
+    if(staticClosure?.executionLine!=='CODEX'||staticClosure?.qualityContractVersion!==QUALITY_CONTRACT_V2||staticClosure.examUid!==receipt.examUid||staticClosure.artifactSha!==receipt.artifactSha||staticClosure.artifactRawSha256!==receipt.artifactRawSha256||staticClosure.status!=='STATIC_CODE_COMPLETE'||!['ROOT_DIRECTED_STATIC_COMPLETE','USER_DIRECTED_STATIC_COMPLETE'].includes(staticClosure.completionBasis)||!['NOT_RUN_ROOT_WAIVER','NOT_RUN_USER_WAIVER','PARTIAL_RENDER_ROOT_WAIVER'].includes(staticClosure.renderStatus)||staticClosure.reviewerIdentity?.role!=='archive_r3'||!hasText(r3Identity(staticClosure.reviewerIdentity))||staticClosure.structureIntegrityStatus!=='PASS'||staticClosure.jsIntegrityStatus!=='PASS'||staticClosure.assetIntegrityStatus!=='PASS'||staticClosure.changedOpenDependencyReviewStatus!=='PASS'||staticClosure.itemHoldCount!==0||!Array.isArray(staticClosure.itemHoldQids)||staticClosure.itemHoldQids.length!==0||!sameOrderedValues(staticClosure.qids,actualQids))throw new Error('ROOT_WAIVER_R3_STATIC_CLOSURE_REQUIRED');
+    if(!sameAssetBindings(staticClosure.assets,assets))throw new Error('ROOT_WAIVER_R3_ASSET_CLOSURE_MISMATCH');
+    const decisionReviewer=decision.r3ReviewerIdentity;
+    if(decisionReviewer?.role!==staticClosure.reviewerIdentity.role||r3Identity(decisionReviewer)!==r3Identity(staticClosure.reviewerIdentity))throw new Error('ROOT_WAIVER_R3_REVIEWER_BINDING_REQUIRED');
+    for(const stage of ['R1','R2']){
+      const reportRef=receipt[`${stage.toLowerCase()}Validation`];
+      if(!sameRef(decision.evidence?.[`${stage.toLowerCase()}Validation`],reportRef)||!sameRef(staticClosure.upstreamBindings?.[stage]?.validatorReport,reportRef))throw new Error(`ROOT_WAIVER_${stage}_REPORT_REF_BINDING_REQUIRED`);
+      const report=JSON.parse(durableBound(root,reportRef,`${stage} validation`).toString('utf8'));
+      if(!validateStageReport(report,{stage,examUid:receipt.examUid,artifactSha:receipt.artifactSha,qids:actualQids}))throw new Error(`ROOT_WAIVER_${stage}_FULL_PASS_REQUIRED`);
+    }
+    if(!sameRef(decision.evidence?.r3StaticClosure,receipt.r3StaticClosure))throw new Error('ROOT_WAIVER_R3_STATIC_REF_BINDING_REQUIRED');
+    if(!Array.isArray(decision.alternativeReview.evidenceRefs)||!decision.alternativeReview.evidenceRefs.some(ref=>sameRef(ref,receipt.r3StaticClosure)))throw new Error('ROOT_WAIVER_ALTERNATIVE_REVIEW_EVIDENCE_REQUIRED');
+    for(const ref of decision.alternativeReview.evidenceRefs)durableBound(root,ref,'alternative review evidence');
+    if(decision.renderStatus==='NOT_RUN_ROOT_WAIVER'){
+      if(receipt.actualRenderReceipt!==undefined)throw new Error('ROOT_WAIVER_UNEXPECTED_ACTUAL_RENDER_RECEIPT');
+    }else validateRootPartialActualReceipt({actualRef:receipt.actualRenderReceipt,root,receipt,decision,decisionCases,bank,qids:actualQids,assets:receipt.assets,staticClosure});
+  }catch(error){issues.push(error.message);}
+  return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',completionBasis:issues.length?undefined:'ROOT_DIRECTED_STATIC_COMPLETE',renderStatus:issues.length?undefined:receipt.renderStatus,issues};
+}
+function collectRootWaiverPhysicalRefs({receipt,root}){
+  const decision=JSON.parse(durableBound(root,receipt.rootDecision,'decision').toString('utf8'));
+  const refs=[['rootDecision',receipt.rootDecision],['lockedRoster',receipt.lockedRoster],['loadedJs',receipt.loadedJs],['r1Validation',receipt.r1Validation],['r2Validation',receipt.r2Validation],['r3StaticClosure',receipt.r3StaticClosure],['authorityReference',decision.authorityReference]];
+  for(const asset of receipt.assets||[])refs.push([`asset:${asset.ref}`,asset.file]);
+  for(const key of ['loadedJs','r1Validation','r2Validation','r3StaticClosure'])if(decision.evidence?.[key])refs.push([`decisionEvidence:${key}`,decision.evidence[key]]);
+  for(const ref of decision.alternativeReview?.evidenceRefs||[])refs.push(['alternativeReviewEvidence',ref]);
+  if(receipt.actualRenderReceipt){
+    refs.push(['actualRenderReceipt',receipt.actualRenderReceipt]);
+    const actual=JSON.parse(durableBound(root,receipt.actualRenderReceipt,'partial actual render receipt').toString('utf8'));
+    refs.push(['actualLoadedJs',actual.loadedJs],['actualR3Validation',actual.r3Validation]);
+    for(const c of actual.cases||[]){for(const capture of c.captures||[])refs.push([`actualCapture:${c.id}`,capture.image]);for(const asset of c.loadedAssets||[])refs.push([`actualDecodedAsset:${c.id}:${asset.ref}`,asset.file]);}
+  }
+  const seen=new Map();
+  for(const [label,ref] of refs){
+    durableBound(root,ref,label);
+    const prior=seen.get(ref.path);if(prior&&prior!==ref.sha256)throw new Error('ROOT_WAIVER_PHYSICAL_REF_SHA_CONFLICT:'+ref.path);seen.set(ref.path,ref.sha256);
+  }
+  return [...seen].map(([path,sha256])=>({path,sha256}));
+}
+export function validateCodexRootWaivedMainDoneReceipt({receipt,root}){
+  if(receipt?.schemaVersion!=='JS_ARCHIVE_CODEX_ROOT_WAIVED_MAIN_DONE_RECEIPT_V1'||receipt?.status!=='MAIN_DONE')return {ok:false,disposition:'FAIL',issues:['ROOT_WAIVER_MAIN_DONE_STATUS_REQUIRED']};
+  const staticReceipt={...receipt,schemaVersion:'JS_ARCHIVE_CODEX_ROOT_WAIVED_STATIC_RECEIPT_V1',status:'STATIC_CODE_COMPLETE'};
+  const staticResult=validateCodexRootWaivedStaticReceipt({receipt:staticReceipt,root});
+  if(!staticResult.ok)return staticResult;
+  const issues=[];
+  try{
+    const main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
+    if(execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==main)throw new Error('WORKING_HEAD_MAIN_PARITY_REQUIRED');
+    if(main!==receipt.remoteMainSha)throw new Error('REMOTE_MAIN_SHA_MISMATCH');
+    const readBlob=ref=>execFileSync('git',['-C',root,'cat-file','blob',main+':'+ref]);
+    const production=readBlob(receipt.productionPath);
+    if(gitBlobSha(production)!==receipt.artifactSha||hash(production)!==receipt.artifactRawSha256)throw new Error('REMOTE_PRODUCTION_ARTIFACT_MISMATCH');
+    for(const asset of receipt.assets)if(hash(readBlob('archive/'+asset.ref))!==asset.sha256)throw new Error('REMOTE_ASSET_SHA_MISMATCH:'+asset.ref);
+    for(const ref of collectRootWaiverPhysicalRefs({receipt,root}))if(hash(readBlob(ref.path))!==ref.sha256)throw new Error('REMOTE_WAIVER_EVIDENCE_SHA_MISMATCH:'+ref.path);
+  }catch(error){issues.push(error.message);}
+  return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',completionBasis:issues.length?undefined:'ROOT_DIRECTED_STATIC_COMPLETE',renderStatus:issues.length?undefined:receipt.renderStatus,issues};
+}
 export function validateCodexRenderReceipt({receipt,root,artifactSha,assets=[],qids=[]}) {
   const issues=[];
   try {

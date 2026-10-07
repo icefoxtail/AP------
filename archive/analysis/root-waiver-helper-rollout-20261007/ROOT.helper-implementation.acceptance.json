@@ -1,0 +1,39 @@
+{
+  "executionLine": "CODEX",
+  "implementedBy": "/root/master_hold_render_recovery",
+  "acceptedBy": "/root",
+  "staticIntake": {
+    "phase": "static",
+    "receiptPath": "archive/analysis/root-waiver-helper-rollout-20261007/20_향림중_2학기_기말_중2_기출/ROOT.static-intake.receipt.json",
+    "receiptSha256": "b899603582d6c748f4e73d6925cfbd64368a819c47aaf41e563ae408fff64b7a",
+    "ok": true,
+    "disposition": "PASS",
+    "completionBasis": "ROOT_DIRECTED_STATIC_COMPLETE",
+    "renderStatus": "NOT_RUN_ROOT_WAIVER",
+    "issues": []
+  },
+  "scope": "General locked-roster ROOT full/partial waiver, no grade/course/run/exam-count constants",
+  "functions": [
+    "validateCodexRootWaivedStaticReceipt",
+    "validateCodexRootWaivedMainDoneReceipt",
+    "consumeCodexRootWaivedStaticPass",
+    "consumeCodexRootWaivedMainDone"
+  ],
+  "syntaxChecked": true,
+  "unitTestsAddedOrRun": false,
+  "sourceAndOriginal15CloseoutsUnchanged": true,
+  "files": [
+    {
+      "path": "archive/tools/archive-codex-closeout-v2.mjs",
+      "sha256": "efe957f7ad51595289b46ace59d453259da572b2fe05a81e3ef5e28abd6b38e5"
+    },
+    {
+      "path": "archive/tools/archive-stage-runtime-v2.mjs",
+      "sha256": "b1dd1b9512707b23bdc667cdcb79491354608afcfbfd1cb76342fb1b4f528b06"
+    },
+    {
+      "path": "archive/tools/archive-codex-root-waiver-intake.mjs",
+      "sha256": "05fd084d20ed20c22efe351f068aba036d61e370a982fa1c97518b901c48f42d"
+    }
+  ]
+}
