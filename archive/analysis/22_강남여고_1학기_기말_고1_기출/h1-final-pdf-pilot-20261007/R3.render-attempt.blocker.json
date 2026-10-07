@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RENDER_ATTEMPT_BLOCKER_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "runId": "h1-final-pdf-pilot-20261007",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "artifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "artifactRawSha256": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3"
+  },
+  "route": "ROOT-directed static completion under CURRENT §25",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "acceptedPassCases": [],
+  "physicalCaptureCount": 0,
+  "caseDisposition": [
+    {
+      "id": "exam/desktop",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "exam/mobile",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "sol/desktop",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "sol/mobile",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "ans/desktop",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "ans/mobile",
+      "status": "NOT_RUN"
+    }
+  ],
+  "observedOnlyAttempt": {
+    "caseId": "exam/desktop",
+    "status": "OBSERVED_ONLY_NOT_ACCEPTED",
+    "engineUrl": "http://127.0.0.1:8769/archive/engine.html",
+    "candidateUrl": "http://127.0.0.1:8769/archive/engine.html?preview=1&mode=exam&qpp=4&data=exams%2Foriginal%2Fhigh%2Fh1%2F1final%2F22_%EA%B0%95%EB%82%A8%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A01_%EA%B8%B0%EC%B6%9C.js",
+    "browserSurface": "Chrome CUA extension browser tab 509722947",
+    "loadedPageTitle": "JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)",
+    "observedQidRange": [
+      1,
+      24
+    ],
+    "observedFirstPageQids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "observedScreenshotPixels": {
+      "width": 1270,
+      "height": 600
+    },
+    "screenshotSaved": false,
+    "screenshotSha256": null,
+    "summary": "Actual official engine showed the candidate exam layout and qids 1–24 in page accessibility text; first page screenshot was visually inspected. This was not a durable PNG capture or an accepted case PASS."
+  },
+  "blockerFacts": [
+    "The CUA IAB open call explicitly returned: IAB visibility is not supported in a subagent thread.",
+    "The supported Chrome CUA tab surface provides live screenshots to the reviewer but no viewport override or operation to save PNG bytes under assigned evidenceRoot.",
+    "Control+Shift+I did not change the page or expose DevTools. No alternate browser route was tried after ROOT selected the static path."
+  ],
+  "authorityRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/ROOT.static-route-authorization.json",
+  "createdAt": "2026-10-07T07:55:16.006Z"
+}

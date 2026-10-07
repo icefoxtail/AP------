@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_BOUNDED_REPAIR_PROVENANCE_V1",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "preflightPath": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.golden-calibration.json",
+  "preflightSha256": "1bdd7de06d83e4a99d5dc6c0ddd75f64528a0f76496e1800c256b90c45c47f6b",
+  "originalCandidateRawSha256": "4ec28f0bd1d6342b79fd5975e0a267acc7e06c86d30b90b19cceb5ab32e6bdb1",
+  "originalCandidateRawBlobSha1": "aef119c7f15d6deaa2cc122e971798a3a434d21f",
+  "repairedCandidateRawSha256": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170",
+  "repairedCandidateRawBlobSha1": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "repairStatus": "SAME_STAGE_MINIMAL_SOLUTION_CORRECTION",
+  "changedLoci": [
+    {
+      "qid": 13,
+      "field": "solution",
+      "beforeSolutionSha256": "a904f8c30ff222026fb40adf5b8c95996eabd15ff25eee657daf14d158805d1e",
+      "afterSolutionSha256": "37040fc8a5811fe8e47021dc38f2189b299e52579d13730cd8c9b4d51b113e38",
+      "before": "그래프의 꼭짓점은 $y=-3$에 있으므로 두 수평선 $y=2$, $y=-2$는 각각 포물선과 두 점에서 만난다.",
+      "after": "그래프의 꼭짓점은 $y=-3$보다 아래에 있다. 따라서 두 수평선 $y=2$, $y=-2$는 모두 꼭짓점보다 위에 있어 포물선과 각각 두 점에서 만난다.",
+      "reason": "원본 PDF의 그림에서 y=-3은 y절편에 표시되어 있고 꼭짓점은 그보다 아래다. 모든 root sum conclusion remains 4; correct only the inaccurate graph statement."
+    }
+  ],
+  "studentBodyFieldsChanged": false,
+  "answerFieldsChanged": false,
+  "assetFieldsChanged": false,
+  "freezeRemainsValid": true,
+  "freezePath": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.independent-freeze.json",
+  "freezeSha256": "1225e076f44d80216807f3142aee426b893fd69396f34d272f71a47554513f5a"
+}

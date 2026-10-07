@@ -1,0 +1,40 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_SOURCE_SOLUTION_ADJUDICATION_V1",
+  "runId": "h1-final-pdf-pilot-20261007",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "sourceTextFreezeRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/source-text-freeze.json",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_강남여1_1기말.pdf",
+    "sha256": "3ae5d3d1354c5c734beb77291edc6a006ac06a5088d0b6d5328b5db78f4eb51b"
+  },
+  "independentSolving": {
+    "sourceOnlySolveCompletedBeforeOfficialSolutionPdfRead": true,
+    "physicallyPersistedAnswerFreezeBeforeOfficialSolutionPdfRead": false,
+    "provenanceNote": "All 24 items were independently solved from the four visually read student source pages before opening the same-exam solution PDF. The independent answer table was persisted after comparison, so this evidence does not claim a prospective physical freeze. One provisional calculation, q12, was then corrected as recorded below.",
+    "answersBeforeReference": ["③","④","①","②","⑤","③","⑤","②","①","④","①","④ provisional","⑤","③","①","②","④","①","⑤","③","two lines y=√3x±6","ab=-5","x+y=4","√2/2"]
+  },
+  "reference": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_강남여1_1기말_해설.pdf",
+    "sha256": "5c6a15d7118caf9ac5b5338cc9d6f4249ecc1a73d1053c8e91c0147ef2bfbf55"
+  },
+  "comparisonStatus": "ANSWER_CARDINALITY_AND_VALUES_REVIEWED_WITH_SOURCE_REFERENCE",
+  "mismatchAndAdjudication": [
+    {
+      "qid": 12,
+      "initialAnswer": "④ (-5)",
+      "cause": "The first computation used the original circle center (3,-k) after reflection about the origin, rather than the reflected center.",
+      "correctedDerivation": "The original center (3,-k) maps to (-3,k). The x-axis reflection of 3x+y=4 is 3x-y=4. Requiring the transformed circle center to lie on that line gives 3(-3)-k=4, so k=-13.",
+      "finalAnswer": "② (-13)",
+      "synchronizedFields": ["answer","solution","decisiveStep","standardUnitKey","subUnitKey","problemTypeKey","templateKey","difficultyEvidence"],
+      "resolution": "CORRECTED_BEFORE_CREATE_FINAL_ARTIFACT"
+    }
+  ],
+  "officialReferenceCrosscheck": {
+    "qidCount": 24,
+    "finalAnswerMatchCount": 24,
+    "q12FinalCrosscheck": "MATCH_AFTER_REDERIVATION",
+    "officialSolutionPdfUsedAsSourceTruth": false,
+    "officialSolutionUsedFor": "answer and derivation cross-check after independent source-based solving"
+  }
+}
+

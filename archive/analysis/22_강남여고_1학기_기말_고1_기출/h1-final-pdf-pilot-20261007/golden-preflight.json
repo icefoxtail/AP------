@@ -1,0 +1,57 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_GOLDEN_PREFLIGHT_V2",
+  "runId": "h1-final-pdf-pilot-20261007",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "CREATE",
+  "sampleReadBeforeWork": true,
+  "preflightStatus": "CALIBRATION_PREFLIGHT_PASS",
+  "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+      "items": [
+        {"qid":1,"solutionSha256":"4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3","solutionExcerpt":"먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"각 좌표 계산을 별도 식으로 적고 내분비의 가중치가 왜 반대쪽 값에 곱해지는지 먼저 설명한다."},
+        {"qid":3,"solutionSha256":"77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0","solutionExcerpt":"원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.\n주어진 식은\n$x^2+y^2-6x+4y+9=0$이다.\n먼저 상수항 $9$를 오른쪽으로 옮겨\n$x$에 대한 항과 $y$에 대한 항을 모은다.\n$x^2-6x+y^2+4y=-9$이다.\n이제 각각 완전제곱식을 만든다.","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"완전제곱을 x항과 y항으로 나누어 계산하고 양변에 더하는 상수도 식으로 드러낸다."},
+        {"qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionExcerpt":"원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.","solutionImage":"assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg","visualSha256":"c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"두 번의 변환을 원의 중심 좌표로 차례로 보이며, SVG 원의 중심과 반지름 표기가 풀이의 이동값을 함께 보여 준다."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "items": [
+        {"qid":3,"solutionSha256":"14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370","solutionExcerpt":"원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.","solutionImage":"assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg","visualSha256":"3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"전개에서 원의 표준형까지 중간식을 보여 주며, SVG 중심 좌표 C(-1,3), 반지름 2, (1,3) 끝점을 실제 원과 반지름 선으로 연결한다."},
+        {"qid":11,"solutionSha256":"9f367d34825e18314d4a2e007296c98c5753fbaf0cfe7e26eb2ee6ef7ebd8abd","solutionExcerpt":"원의 중심은 $C(a,a)$이고 반지름은 $\\dfrac13$이다.\n직선\n$y=-x+3$\n을 일반형으로 바꾸면\n$x+y-3=0$이다.\n원이 이 직선과 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n접하는 경우도 한 점에서 만나는 경우이므로 포함한다.","solutionImage":"assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg","visualSha256":"d05851bb0476a3a3863bf45b3e29e7a0fe2d699be1fc6b5b66d6aaebac535ed0","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"절댓값 거리 부등식의 양 끝 경계를 모두 산출하고, 도형은 두 동일 반지름 원의 접점과 중심 이동 방향을 나타낸다."},
+        {"qid":23,"solutionSha256":"3dc2f460505f1be7605b8c0d8aa3a414c469a3d7057904646969ffdcfe6688cd","solutionExcerpt":"먼저 원의 중심과 반지름을 구한다.\n$x^2+y^2-8x-4y+18=0$에서 완전제곱식을 만들면\n$(x-4)^2+(y-2)^2=2$이다.\n따라서 원의 중심은\n$O=(4,2)$이고,\n반지름은 $\\sqrt2$이다.","solutionImage":"assets/images/25_효천고_2학기_중간_고1_기출/q23-solution.svg","visualSha256":"3e8ef0ef80c34be00cf2fc4803554c2647f59135f22a16d6a431016b2e3cbe3d","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"해설에서 논리 조건을 문단과 식으로 분리하고, SVG 좌표·수치 사실을 실제 좌표 기하와 함께 표시한다."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+      "items": [
+        {"qid":15,"solutionSha256":"9726199ae74e6339f7629a963850c12d6f6431af82dbe1087212ddf88672a5ed","solutionExcerpt":"$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다.\n넓이의 비는 대응하는 변의 비의 제곱이므로\n$\\dfrac{[ADE]}{[ABC]}=(\\dfrac{AD}{AB})^2=\\dfrac19$이다.\n따라서 $AD:AB=1:3$, 즉 $AD:DB=1:2$이다. 같은 방법으로 $AE:EC=1:2$이다.\n내분점 공식으로\n$D=(\\dfrac{2\\cdot2+(-1)}3,\\dfrac{2\\cdot5+(-1)}3)=(1,3)$이다.","solutionImage":"assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg","visualSha256":"69d77e49eaaba69e2ab31218b4dc3d6869c49055eb513dac8ebc33e153bc7324","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"넓이비에서 변의 비를 제곱근으로 복원해 식을 보이고, 그림은 실제 좌표에서 D·E와 평행선을 그려 준다."},
+        {"qid":21,"solutionSha256":"090a82044742e50ae7340abf9a397e50cd123a437574ddc31b4f9283e2690feb","solutionExcerpt":"$10$ 이하의 소수 집합은\n$P=\\{2,3,5,7\\}$이고, 그 여집합은\n$P^C=\\{1,4,6,8,9,10\\}$이다.\n$a=n(X-P)$라 하면 $a=n(X\\cap P^C)$이고 $0\\le a\\le6$이다.\n$b=n(X\\cap P)$라 하면 $0\\le b\\le4$이다.","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"조건을 두 변수로 나눈 뒤 가능한 값 범위와 경우 배제를 실제 계산으로 보여 준다."}
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "observation": "README and physical q3-solution.bad.svg read. q3 labels 7x+y-15=0 and PH=2sqrt(2), but SVG line from (65,356) to (520,31) has screen slope -325/455 and is not the labeled line; actual coordinates/topology must be checked. README also records q2/q17 enumerated judgments compressed into one paragraph despite 22/22 self-report. I read the fixture JS solutions q2 and q17 and confirmed the issue is paragraph/block structure, not the count. Jeil q18 known visual exception was excluded from the calibration items."
+  },
+  "targetWorkOrder": "SOURCE_TEXT_FREEZE and independent source solve before official-solution comparison; this sample preflight completed before writing target solution text.",
+  "solutionWorkMode": "FRESH_SOURCE_AND_INDEPENDENT_ANSWER",
+  "calibrationOrder": "SOURCE_TEXT_FREEZE -> sample preflight -> solution authoring",
+  "qualityCompareCount": "PENDING_CREATE_SOLUTION",
+  "preflightObservation": "The three H1 Golden artifacts show explicit intermediate equations, separated logical conditions, and visuals whose coordinates and labels can be checked against the mathematics. The negative fixture establishes that self-reported counts do not replace physical block and geometry inspection."
+}

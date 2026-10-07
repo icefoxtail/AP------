@@ -1,0 +1,2200 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "runId": "h1-final-pdf-pilot-20261007",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "stageStatus": "PASS",
+  "artifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "artifactRawSha256": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170",
+  "validatorRawBufferBlobSha1": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "gitCleanFilterBlobSha1": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "evidenceRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.review-evidence.json",
+  "createdAt": "2026-10-07T07:39:21.320Z",
+  "denominator": 24,
+  "qidCoverage": {
+    "expected": 24,
+    "observed": 24,
+    "missing": [],
+    "orphan": []
+  },
+  "sourceIdentity": {
+    "status": "PASS",
+    "sourcePdfAbsolute": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_강남여1_1기말.pdf",
+    "sourcePdfSha256": "3ae5d3d1354c5c734beb77291edc6a006ac06a5088d0b6d5328b5db78f4eb51b",
+    "renderedPages": [
+      {
+        "page": 1,
+        "sha256": "22f39043a70a4b24647631a50705aeccd6cbae9c2e08e759520b0a182bc72e21"
+      },
+      {
+        "page": 2,
+        "sha256": "eab581f9a7f19bf3ce09f82300a2c7642d1bc058f8acc7b022addb89a701410f"
+      },
+      {
+        "page": 3,
+        "sha256": "83bcdd8b0ddd0c8053485f66d9e6cdfdc4b0a59996456a981aec3d47e2b8a4cd"
+      },
+      {
+        "page": 4,
+        "sha256": "8fe7ad82bfccc62cf79bf04725e4bd2efd2c75e08522f506e203fda547323a70"
+      }
+    ],
+    "sourceQuestionCoverage": "q1-q24 visually matched across original PDF pages 1-4"
+  },
+  "sourceRawSha256": "4ec28f0bd1d6342b79fd5975e0a267acc7e06c86d30b90b19cceb5ab32e6bdb1",
+  "sourceRawBlobSha1": "aef119c7f15d6deaa2cc122e971798a3a434d21f",
+  "studentBundleRef": ".tmp/archive/h1-final-pdf-pilot-20261007/22_강남여고_1학기_기말_고1_기출/R1.student-only.json",
+  "studentBundleSha256": "2edebc02aab41a6d79796221560cb0aa7085be65b20272268f6efb3e60d88990",
+  "postfreezeDisclosureRef": ".tmp/archive/h1-final-pdf-pilot-20261007/22_강남여고_1학기_기말_고1_기출/R1.postfreeze-source.json",
+  "postfreezeDisclosureSha256": "e28ef1c21f69c598c9e61c489b3b54130362ba59db8a53acb3ddaf47fa21f497",
+  "studentBodyParityAfterSolutionRepair": "PASS",
+  "independentFreezeRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.independent-freeze.json",
+  "independentFreezeSha256": "1225e076f44d80216807f3142aee426b893fd69396f34d272f71a47554513f5a",
+  "independentFreezeQids": 24,
+  "independentAnswerFrozenBeforeStoredAnswer": true,
+  "adjudicationRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.answer-adjudications.json",
+  "adjudicationSha256": "2395d0e8eb86cd30d558b81fc88e752fe9c666d7c9a29f388e229c2772af5416",
+  "answerAdjudication": {
+    "qid": 23,
+    "status": "SAME_STAGE_CALCULATION_CORRECTION",
+    "originalFreezePreserved": true,
+    "correctedAnswer": "4",
+    "storedAnswer": "$4$",
+    "comparison": "MATCH"
+  },
+  "repairProvenanceRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.solution-repair-provenance.json",
+  "repairProvenanceSha256": "fbf9ea8a690c50ef4f9783c1c0541e87b6cff71ef0bb208892c0310f162664c5",
+  "changedLoci": [
+    {
+      "qid": 13,
+      "field": "solution",
+      "beforeArtifactRawSha256": "4ec28f0bd1d6342b79fd5975e0a267acc7e06c86d30b90b19cceb5ab32e6bdb1",
+      "afterArtifactRawSha256": "672b9b6f07e1168699e0a5b705ec101b97a65ee9744af402b866f2b69f5cb170",
+      "beforeSolutionSha256": "a904f8c30ff222026fb40adf5b8c95996eabd15ff25eee657daf14d158805d1e",
+      "afterSolutionSha256": "37040fc8a5811fe8e47021dc38f2189b299e52579d13730cd8c9b4d51b113e38"
+    }
+  ],
+  "solutionRewriteCount": 1,
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "mathAnswerCompareCount": "24/24",
+  "questionLayoutAuditCount": "24/24",
+  "solutionLayoutAuditCount": "24/24",
+  "smallBoardContinuityCount": "24/24",
+  "metadataAuditCount": "24/24",
+  "visualAuditCount": "24/24",
+  "metaSemanticStatus": "PASS_WITH_EXISTING_PROJECTION_DEBT",
+  "metaProjectionDebtCount": 11,
+  "metaProjectionDebtQids": [
+    1,
+    2,
+    5,
+    9,
+    10,
+    12,
+    13,
+    16,
+    18,
+    22,
+    23
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "P, M을 각각 좌표식으로 계산해 거리를 제곱대입·정리하고 최종값을 별도 식으로 닫는다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "완전제곱으로 중심·반지름을 얻고 이동 단계 중간 중심과 최종식을 별도 줄로 연결한다. 도형은 중심 좌표와 반지름 보존을 서술과 함께 확인.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "좌표 차, 거리 공식 대입, 제곱합, 근호 정리를 한 단계씩 분리한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 9,
+            "solutionSha256": "91a904c2485de17236e3a5f6859a970ab617243f24c740ff38229ac72ed01cb4",
+            "observation": "집합 원소와 포함 기호 뜻을 먼저 고정하고 각 보기 판정을 별도 block으로 분리한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+            "observation": "평행이동선의 공통점, 원 중심, 모든 기울기의 직선족, 반지름을 단계별로 대조한다. 도형은 실제 원과 직선족의 공통점을 표시하고 풀이의 좌표 (2,3)과 연결한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "b0c7e00130a0213f97cf9865cff041ecc9439eab8a3a344b94eaf5f8592d0269"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "qid": 16,
+            "solutionSha256": "73a8ce3fe706022c3aa0a8ea090b4f569d291e70452cdc45680e92c65f452642",
+            "observation": "교점, 넓이, 높이, 반지름, 원 위의 조건과 양의 좌표 선택이 줄별로 연결된다. 실제 SVG geometry가 해설 라벨과 일치하는지 확인.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "225105cf1aa0638db8308528cbe8dbc7d4c48b542d0b4a90d41e4c8282ff1e35"
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+            "observation": "수직 방향의 두 변 후보, 제1사분면 조건, CD 중점과 반지름 계산이 서술과 도형에서 맞는다. known exception q18은 선택·계승하지 않았다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "f87f8dab040c26c459d7056923c9801d7655db1d46e65159851f406ded5bc35a"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "실제 SVG 좌표로 기하·라벨의 맞음을 계산한다. 단순 집계 PASS, 소문항 판정을 한 문단으로 붙임, exact active classification 누락을 놓치지 않는다."
+    }
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "P, M을 각각 좌표식으로 계산해 거리를 제곱대입·정리하고 최종값을 별도 식으로 닫는다."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "완전제곱으로 중심·반지름을 얻고 이동 단계 중간 중심과 최종식을 별도 줄로 연결한다. 도형은 중심 좌표와 반지름 보존을 서술과 함께 확인.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "좌표 차, 거리 공식 대입, 제곱합, 근호 정리를 한 단계씩 분리한다."
+          },
+          {
+            "qid": 9,
+            "solutionSha256": "91a904c2485de17236e3a5f6859a970ab617243f24c740ff38229ac72ed01cb4",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "집합 원소와 포함 기호 뜻을 먼저 고정하고 각 보기 판정을 별도 block으로 분리한다."
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "평행이동선의 공통점, 원 중심, 모든 기울기의 직선족, 반지름을 단계별로 대조한다. 도형은 실제 원과 직선족의 공통점을 표시하고 풀이의 좌표 (2,3)과 연결한다.",
+            "visualSha256": "b0c7e00130a0213f97cf9865cff041ecc9439eab8a3a344b94eaf5f8592d0269"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 16,
+            "solutionSha256": "73a8ce3fe706022c3aa0a8ea090b4f569d291e70452cdc45680e92c65f452642",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "교점, 넓이, 높이, 반지름, 원 위의 조건과 양의 좌표 선택이 줄별로 연결된다. 실제 SVG geometry가 해설 라벨과 일치하는지 확인.",
+            "visualSha256": "225105cf1aa0638db8308528cbe8dbc7d4c48b542d0b4a90d41e4c8282ff1e35"
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "수직 방향의 두 변 후보, 제1사분면 조건, CD 중점과 반지름 계산이 서술과 도형에서 맞는다. known exception q18은 선택·계승하지 않았다.",
+            "visualSha256": "f87f8dab040c26c459d7056923c9801d7655db1d46e65159851f406ded5bc35a"
+          }
+        ]
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "실제 SVG 좌표로 기하·라벨의 맞음을 계산한다. 단순 집계 PASS, 소문항 판정을 한 문단으로 붙임, exact active classification 누락을 놓치지 않는다."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "24/24",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "REVIEW_EXISTING_SOLUTION",
+    "calibrationOrder": "assignment → Golden/Negative actual preflight → target review/repair → final quality compare",
+    "preflightRef": "archive/analysis/22_강남여고_1학기_기말_고1_기출/h1-final-pdf-pilot-20261007/R1.golden-calibration.json",
+    "preflightSha256": "1bdd7de06d83e4a99d5dc6c0ddd75f64528a0f76496e1800c256b90c45c47f6b"
+  },
+  "artifactDispositions": {
+    "artifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:d64f07d991343b7ad9a665cd6fb6f3c4589bc263d8d71670e5e31f2674f72d75 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:d64f07d991343b7ad9a665cd6fb6f3c4589bc263d8d71670e5e31f2674f72d75",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:1bee28fc9d564b344f9930ee30f59b14f6ab857b622e87b49323924dae8d2125 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:1bee28fc9d564b344f9930ee30f59b14f6ab857b622e87b49323924dae8d2125",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_COORD_DISTANCE",
+          "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+        }
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_GIVEN_SLOPE"
+        }
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=META_ONLY_COMPATIBILITY_PENDING; resolver evidence sha256:e1b5f3f43412e808ecffb5501aab6875c82bd23a65a5d1601cb8435eedf88984 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "resolverEvidenceSha": "sha256:e1b5f3f43412e808ecffb5501aab6875c82bd23a65a5d1601cb8435eedf88984",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_DIRECT"
+        }
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER"
+        }
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT"
+        }
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:03bca390507756a0549049187ddec8ac0fc9452dd6ff99d21cfd852d259b0065 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:03bca390507756a0549049187ddec8ac0fc9452dd6ff99d21cfd852d259b0065",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:3d125b294a8c0803700d4427a177c539f2f45f7dbd3268596ab1c9134c4f442e found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:3d125b294a8c0803700d4427a177c539f2f45f7dbd3268596ab1c9134c4f442e",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "templateKey": "TM_CIRCLE_CENTER_RADIUS"
+        }
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=META_ONLY_COMPATIBILITY_PENDING; resolver evidence sha256:2c7454120b283b837f51f175867bcc54c4b5fc52f532f6563e92630c3f190d8e found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "resolverEvidenceSha": "sha256:2c7454120b283b837f51f175867bcc54c4b5fc52f532f6563e92630c3f190d8e",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:66f5561ea01f356ec05f9a51fba8fafcf77212dca6bb77b8edd70861d2772dbe found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:66f5561ea01f356ec05f9a51fba8fafcf77212dca6bb77b8edd70861d2772dbe",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER"
+        }
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_COORD_DISTANCE",
+          "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+        }
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=META_ONLY_COMPATIBILITY_PENDING; resolver evidence sha256:99c2ccdd622e0b38fd88a25629cec02827be3e97ddc99fe50889e1c88b5a6129 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+        "resolverEvidenceSha": "sha256:99c2ccdd622e0b38fd88a25629cec02827be3e97ddc99fe50889e1c88b5a6129",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT"
+        }
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:99059ef9f59f83e6cac0d7ac036394a497b88cb15e99911b7df2039b2285ef80 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:99059ef9f59f83e6cac0d7ac036394a497b88cb15e99911b7df2039b2285ef80",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+        }
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+          "templateKey": "TT_LINE_REFLECTION_EQUATION"
+        }
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_GIVEN_SLOPE"
+        }
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:9dfed7edc84c6643f132abe5191856ff16a5c114ced92103278217d41b652215 found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:9dfed7edc84c6643f132abe5191856ff16a5c114ced92103278217d41b652215",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semanticStatus=FINAL; projectionStatus=PROJECTION_UNMATERIALIZED; resolver evidence sha256:222b9d12fca1d7b1abe39272176c38225991635bbeb691d04ae6a0477463370a found no exact current ACTIVE projection for problemTypeKey,templateKey. Preserve the current null fields as metadata-only debt.",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "resolverEvidenceSha": "sha256:222b9d12fca1d7b1abe39272176c38225991635bbeb691d04ae6a0477463370a",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [],
+        "metaDebtReason": "",
+        "reviewedAgainstActualFields": {
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "templateKey": "TPL_DISTANCE_AREA_APPLICATION"
+        }
+      }
+    ]
+  },
+  "itemHoldCount": 0,
+  "renderStatus": "NOT_RUN_R1_STATIC_REVIEW_ONLY",
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "C (-9/4)",
+      "initialFrozenAnswer": "C (-9/4)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "중근이므로 판별식 9+4k=0, k=-9/4.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6a53d5adb678d48eec8ff62442796f3c323867113f92b3daa92d2109bcda365f",
+      "decisiveStep": "$k=-\\dfrac94$ | 따라서 정답은 ③이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "이차함수와 한 점에서 만남 조건 및 k 질문을 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "판별식 설정, 전개, k 계산과 결론을 나눔."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-13",
+            "standardUnit": "이차함수",
+            "standardUnitOrder": 13,
+            "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+            "subUnit": "이차함수의 그래프",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "D (7개)",
+      "initialFrozenAnswer": "D (7개)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "|x-3|<4에서 -1<x<7, 정수 0~6으로 7개.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b2c9375803767dfdb9c28d134b2c4534baba4bb7ecd8e61fa482a635a740fe7c",
+      "decisiveStep": "정수해는 $0,1,2,3,4,5,6$이다. | 따라서 정수해의 개수는 $7$이다. 정답은 ④이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "절댓값 범위에서 정수해 개수로 이어지는 조건 경계가 분명. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "절댓값 범위 변형과 정수 열거·개수를 분리."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-08",
+            "standardUnit": "여러 가지 부등식",
+            "standardUnitOrder": 8,
+            "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+            "subUnit": "절댓값 부등식",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "A (1)",
+      "initialFrozenAnswer": "1",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "같은 x좌표의 두 점이므로 거리 |3-2|=1.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "507b236cc622afd0a768cd30d646d2ea439e1836cd4c250ca9f3b44cc0d6b4d7",
+      "decisiveStep": "$=1$ | 따라서 정답은 ①이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 점의 좌표와 거리 질문을 원문 순서로 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "거리 공식 대입·정리·최종값을 식으로 보임."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-09",
+            "standardUnit": "평면좌표",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+            "subUnit": "좌표와 거리",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_COORD_DISTANCE",
+            "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "B (y=-x±3√2)",
+      "initialFrozenAnswer": "B (y=-x±3√2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "원점-직선 y=-x+c의 거리 |c|/√2=3이므로 |c|=3√2.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1c3b7fe22520f452689e44a0bdecda2801abe3651e77e5a229c04485f28021ff",
+      "decisiveStep": "$c=\\pm3\\sqrt2$ | 따라서 접선은 $y=-x\\pm3\\sqrt2$이고 정답은 ②이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "원 접선의 기울기와 양쪽 부호 선택지를 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "직선 설정, 거리=반지름, 두 부호를 제시."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-11",
+            "standardUnit": "원의 방정식",
+            "standardUnitOrder": 11,
+            "subUnitKey": "H15-SA-11-TANGENT",
+            "subUnit": "원과 접선",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_CIRCLE_TANGENT",
+            "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "E (14)",
+      "initialFrozenAnswer": "E (14)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "P(a)+P(-a)=2a²+4=8에서 a²=2. P(a²)=a⁶+a⁴+2=14.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bb6960db7b7b120831944e30fe40bbce924f8b0a11cc65566e7f9774ba79ddab",
+      "decisiveStep": "$=8+4+2=14$ | 따라서 정답은 ⑤이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 나머지 조건과 최종 나머지 질문을 모두 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "나머지 정리, a² 도출, P(a²) 대입 순서."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-02",
+            "standardUnit": "항등식과 나머지정리",
+            "standardUnitOrder": 2,
+            "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+            "subUnit": "나머지정리와 인수정리",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "C (3)",
+      "initialFrozenAnswer": "C (3)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "무게중심 G=(2,1)이므로 a+b=3.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "39adcfe276ba04e2f2e278b14fafcb74c59755fb75a0b236a408f68454f82c65",
+      "decisiveStep": "$=(2,1)$ | 따라서 $a+b=2+1=3$이다. 정답은 ③이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "세 점으로 무게중심 좌표와 합을 묻는 구조를 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "평균 좌표와 합 계산 분리."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-09",
+            "standardUnit": "평면좌표",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+            "subUnit": "삼각형의 좌표와 무게중심",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_DIRECT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "E (-1)",
+      "initialFrozenAnswer": "E (-1)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "AB 기울기 -1/2에서 b=2a-1. 중점 조건 a=2b-4. 따라서 (a,b)=(2,3), 차 -1.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e06fd000bab0618a929f044ce78767a74717050f69904df1c5ad64f402c83508",
+      "decisiveStep": "$b=2a-1$을 대입하면 $a=2$, $b=3$이다. | 따라서 $a-b=-1$이고 정답은 ⑤이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "수직이등분선 조건과 a-b 질문을 순서대로 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "기울기와 중점 조건을 연립해 변수 도출."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-10",
+            "standardUnit": "직선의 방정식",
+            "standardUnitOrder": 10,
+            "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+            "subUnit": "두 직선의 평행과 수직",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_LINE_RELATION",
+            "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "B (2)",
+      "initialFrozenAnswer": "B (2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "|k-1|/√5=√5라서 k=6,-4, 합 2.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2632fe5779b6aeb88c935ff0bcd94a2d7f1b6c245b2d2e9a0c3df4dc4f00a318",
+      "decisiveStep": "$k=6$ 또는 $k=-4$ | 두 값의 합은 $2$이다. 정답은 ②이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "평행선 거리와 k 전체합 조건을 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "평행선 거리식과 두 k, 합을 제시."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-10",
+            "standardUnit": "직선의 방정식",
+            "standardUnitOrder": 10,
+            "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+            "subUnit": "직선 사이의 거리와 각",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+            "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "A (7)",
+      "initialFrozenAnswer": "A (7)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "27-9xy=18에서 xy=1, 따라서 x²+y²=9-2=7.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4d86c42a27f1526b85adebfffa4a618da7987f4d05e9b07d99893c087d58b7ad",
+      "decisiveStep": "$=9-2=7$ | 따라서 정답은 ①이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 대칭식 조건 뒤 제곱합 질문을 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "세제곱 공식으로 xy를 얻고 제곱합에 대입."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-01",
+            "standardUnit": "다항식의 연산",
+            "standardUnitOrder": 1,
+            "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+            "subUnit": "다항식의 연산",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "D (14)",
+      "initialFrozenAnswer": "D (14)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "첫 교점은 k≥2, 둘째 비교점은 k<6. 정수 2,3,4,5의 합 14.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a55f350419675d692c26427f0e66a4f042ee8fb17a722bc8dc652e5cad3d9e9f",
+      "decisiveStep": "정수 $k$는 $2,3,4,5$이다. | 합은 $14$이므로 정답은 ④이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 그래프의 만남/비만남 조건을 모두 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "두 판별식 부등식과 정수 범위, 합을 분리."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-13",
+            "standardUnit": "이차함수",
+            "standardUnitOrder": 13,
+            "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+            "subUnit": "이차함수의 그래프",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "A (1)",
+      "initialFrozenAnswer": "A (1)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "중심 (2,3), 반지름²=2이므로 x²+y²-4x-6y+11=0, 계수합 1.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4c6c2dc2edf881b3edc20b5b55741ad2873da65b8856231262cc16ce0c5cbcf7",
+      "decisiveStep": "$x^2+y^2-4x-6y+11=0$ | $a+b+c=-4-6+11=1$이므로 정답은 ①이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "지름 끝점, 계수형 원, 계수합 질문을 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "중점·반지름에서 원 표준형과 계수합 도출."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-11",
+            "standardUnit": "원의 방정식",
+            "standardUnitOrder": 11,
+            "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+            "subUnit": "원의 방정식",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_CIRCLE_EQUATION",
+            "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "B (-13)",
+      "initialFrozenAnswer": "B (-13)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "대칭 후 원 중심 (-3,k), 대칭된 직선 3x-y=4. 중심이 선 위라서 k=-13.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "605db47414a6f4c7ffa189ee1701d1bb51e2472d899e3b2cc73bb29b765d4260",
+      "decisiveStep": "$k=-13$ | 따라서 정답은 ②이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 도형 변환과 넓이 이등분 조건을 원문대로 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "변환 후 중심을 구하고 중심 통과 조건 대입."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-12",
+            "standardUnit": "도형의 이동",
+            "standardUnitOrder": 12,
+            "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+            "subUnit": "합성 변환",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "E (4)",
+      "initialFrozenAnswer": "E (4)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "그림에서 f=(x-1)²-4. f=2 근 합 2, f=-2 근 합 2, 총합 4.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "37040fc8a5811fe8e47021dc38f2189b299e52579d13730cd8c9b4d51b113e38",
+      "decisiveStep": "각 수평선과 만나는 두 점은 대칭축 $x=1$에 대해 대칭이므로 두 근의 합은 각각 $2$이다. | 서로 다른 네 실근의 합은 $2+2=4$이다. 정답은 ⑤이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "문제 그래프를 질문 가까이 두고 실근합 조건을 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "MINIMAL_CORRECTION_Q13",
+          "basis": "절댓값의 두 경우와 대칭근 합을 보임; 잘못된 꼭짓점 서술은 원본 그림에 맞게 수정."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-13",
+            "standardUnit": "이차함수",
+            "standardUnitOrder": 13,
+            "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+            "subUnit": "이차함수의 그래프",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q13.png"
+          ],
+          "basis": "PDF 및 실제 graph asset에서 영점 -1,3, y절편 -3, 대칭축 x=1 확인; f=±2의 네 서로 다른 근 합 4."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "C (4)",
+      "initialFrozenAnswer": "C (4)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "수직 기울기 -2. (1,-4)를 지나 2x+y+2=0, ac=4.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bd1fd0b6db44693e9abbca78c94f9430446bb941c578e257129b7e4a09a37212",
+      "decisiveStep": "$2x+y+2=0$ | $a=2$, $c=2$이므로 $ac=4$이다. 정답은 ③이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "점 통과·수직·계수곱 조건을 그대로 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "수직 기울기, 점 대입, ac 계산을 분리."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-10",
+            "standardUnit": "직선의 방정식",
+            "standardUnitOrder": 10,
+            "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+            "subUnit": "두 직선의 평행과 수직",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_LINE_RELATION",
+            "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "A (4)",
+      "initialFrozenAnswer": "A (4)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "선까지의 부호거리 A=-2,B=1이므로 AP:PB=2:1. 투영으로 [ACP]=1/3,[BDP]=1/12, 비 4.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c30b05568b7b30a4c5155f293456d704f13cb1dbddccad83f7c016846543d60e",
+      "decisiveStep": "$=2\\cdot2=4$ | 따라서 정답은 ①이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "수선발 diagram을 조건 가까이 두고 삼각형 비를 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "수선발, 비율, 투영 길이와 넓이비를 전개."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-09",
+            "standardUnit": "평면좌표",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+            "subUnit": "좌표와 거리",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_COORD_DISTANCE",
+            "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q15.png"
+          ],
+          "basis": "실제 그림에서 A,B, 직선, C,D 수선발, 교점 P의 관계가 지문과 부합."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "B (3√10)",
+      "initialFrozenAnswer": "B (3√10)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "반사된 원 중심 (-1,-2),(-2,1), 각 반지름 √10. 중심거리 √10, 최대거리는 3√10.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bae659221e87ecabb8e5dff1d3b2ecf836005311e35df16e3215367ba197c243",
+      "decisiveStep": "$P'Q'_{\\max}=\\sqrt{10}+\\sqrt{10}+\\sqrt{10}=3\\sqrt{10}$ | 따라서 정답은 ②이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "원과 두 반사 정의를 문제 그림에 결속. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "반사된 원의 중심·반지름과 최대거리를 계산."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-12",
+            "standardUnit": "도형의 이동",
+            "standardUnitOrder": 12,
+            "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+            "subUnit": "합성 변환",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q16.png",
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q16-solution.svg"
+          ],
+          "basis": "문제 원 중심 (1,-2), r=√10; solution SVG 실제 렌더에서 반사 중심 (-1,-2),(-2,1), 같은 반지름 및 최대 거리 결속."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "D (√7)",
+      "initialFrozenAnswer": "D (√7)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "각의 이등분선 정리에서 중점 통과는 AB=BC. a²+9=16, a>0이므로 √7.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4a6b8733a36f160816a723941797f0452ae22c27c0b3f869823585134c2106ca",
+      "decisiveStep": "$a=\\sqrt7$ (양수) | 따라서 정답은 ④이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "각의 이등분선/중점 조건과 diagram을 함께 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "거리 등식과 양수 조건으로 양의 해 선택."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-10",
+            "standardUnit": "직선의 방정식",
+            "standardUnitOrder": 10,
+            "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+            "subUnit": "직선 사이의 거리와 각",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+            "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q17.png"
+          ],
+          "basis": "B의 각 이등분선이 AC 중점을 지나는 실제 그림을 확인."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "A (3)",
+      "initialFrozenAnswer": "C (6)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "l에 수직이며 A를 지나는 선 y=2x-1과 l의 교점 C=(1,1). AC:CB=1:2이면 B=3C-2A=(-1,-3), ab=3.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0f9e21acebc344a47374836874c0f75f82ac72276d828d4627d4ed9b01ee6e00",
+      "decisiveStep": "$t=-3$ | $B=(-1,-3)$이므로 $ab=(-1)(-3)=3$이다. 정답은 ①이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "직교·내분 조건과 ab 질문을 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "방향벡터, 내분 좌표, 직선 대입 순서."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-09",
+            "standardUnit": "평면좌표",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+            "subUnit": "좌표와 거리",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "E (2√39/13)",
+      "initialFrozenAnswer": "E (2√39/13)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "현 길이 2, 반지름 2이므로 중심-현 거리 √3. 4|m|/√(m²+1)=√3에서 m²=3/13. 축 삼각형 넓이 2|m|=2√39/13.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ffdb67ce9fe3d6f6657e22be75fa8d0717e59e292a00e9d10966264a181ca4d0",
+      "decisiveStep": "$=2\\sqrt{\\dfrac3{13}}=\\dfrac{2\\sqrt{39}}{13}$ | 따라서 정답은 ⑤이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "현 길이와 두 축으로 만든 넓이를 순서대로 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "현의 수직이등분과 중심거리, m², 넓이 계산."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-11",
+            "standardUnit": "원의 방정식",
+            "standardUnitOrder": 11,
+            "subUnitKey": "H15-SA-11-INTERSECTION",
+            "subUnit": "원과 직선·원의 교점",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+            "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q19-solution.svg"
+          ],
+          "basis": "실제 SVG 렌더에서 중심 (2,0), 반지름 2, 현 길이 2, 중심 수선 OH=√3 관계 확인."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "C (y=7x-1)",
+      "initialFrozenAnswer": "C (y=7x-1)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "반사축 y=2x-1 위 (0,-1)은 고정. 방향 (1,1)을 축 방향 (1,2)에 반사하면 (1/5,7/5), 기울기 7.",
+      "answerCardinality": "one unique choice",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2f5a5d8641c2442be5910730c055217f03b9eead7849d24e1f26c7f43c274eed",
+      "decisiveStep": "$l':y=7x-1$ | 따라서 정답은 ③이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "대칭 대상과 대칭축, 결과 방정식 질문을 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "반사 각도에서 기울기와 고정 교점을 사용."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-12",
+            "standardUnit": "도형의 이동",
+            "standardUnitOrder": 12,
+            "subUnitKey": "H15-SA-12-REFLECTION",
+            "subUnit": "대칭이동",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+            "templateKey": "TT_LINE_REFLECTION_EQUATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "y=√3x+6 또는 y=√3x-6",
+      "initialFrozenAnswer": "y=√3x±6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$y=\\sqrt3x+6$ 또는 $y=\\sqrt3x-6$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "기울기 tan60=√3. 원점-직선 거리 |c|/2=3이므로 c=±6.",
+      "answerCardinality": "two tangent lines",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "166e0c038cddf590a897242aa303bc497483c50499b79857c745ebef26204a38",
+      "decisiveStep": "따라서 구하는 직선은 | $y=\\sqrt3x+6$, $y=\\sqrt3x-6$이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "서술형 표식, 각도 및 원 접선 조건을 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "접선 기울기와 거리 조건에서 두 직선을 구함."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-11",
+            "standardUnit": "원의 방정식",
+            "standardUnitOrder": 11,
+            "subUnitKey": "H15-SA-11-TANGENT",
+            "subUnit": "원과 접선",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_CIRCLE_TANGENT",
+            "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "-5",
+      "initialFrozenAnswer": "-5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$ab=-5$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "원 중심 (1,2),(3,1), 같은 반지름. 중심선 수직이등분선은 중점 (2,3/2)을 지나며 기울기 2: y=2x-5/2, ab=-5.",
+      "answerCardinality": "one scalar response",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8af05af71c87b0fd0a9b6cc785806bde58d6cfadb8a0267405f60b944ea9be19",
+      "decisiveStep": "$y=2x-\\dfrac52$ | $a=2$, $b=-\\dfrac52$이므로 $ab=-5$이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "두 원 식과 대칭축 직선, ab를 모두 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "완전제곱, 두 중심, 중점 수직선, 곱을 보임."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-11",
+            "standardUnit": "원의 방정식",
+            "standardUnitOrder": 11,
+            "subUnitKey": "H15-SA-11-INTERSECTION",
+            "subUnit": "두 원의 위치 관계",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "REQUIRED",
+          "refs": [
+            "assets/images/22_강남여고_1학기_기말_고1_기출/q22-solution.svg"
+          ],
+          "basis": "실제 SVG 렌더에서 중심 (1,2),(3,1), 중점 (2,3/2), 대칭축 y=2x-5/2 확인."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "4",
+      "initialFrozenAnswer": "37/7",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$4$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "외분점 조건 (4B-A)/3=(13,-4)에서 a=3,b=1. 따라서 B=(11,-3), C=(-3,4). BC를 4:3으로 내분하는 좌표는 (3B+4C)/7=((33-12)/7,(-9+16)/7)=(3,1), 합은 4.",
+      "adjudicationRef": "R1.answer-adjudications.json",
+      "adjudicationStatus": "SAME_STAGE_CALCULATION_CORRECTION",
+      "answerCardinality": "one scalar response",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5379516be6b2335612af9b03c3d57333f5528ee76fb0a37137879d212e1856da",
+      "decisiveStep": "$=(3,1)$이다. | 따라서 $x+y=4$이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "외분·내분 두 조건과 x+y 질문의 순서 보존. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "외분으로 a,b, 점 좌표 후 내분점과 합 계산."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_NULL_PROJECTION_DEBT_BOUND",
+          "basis": "Actual PT/TPL values remain null; matching existing projection-only null debt is bound below. Other current taxonomy and difficulty fields reviewed.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-09",
+            "standardUnit": "평면좌표",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+            "subUnit": "좌표와 거리",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "√2/2",
+      "initialFrozenAnswer": "1/√2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\dfrac{\\sqrt2}{2}$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "R1_PASS",
+      "reasoning": "f=3/√((k+1)²+(5-k)²), 분모²=2(k-2)²+18. 최댓값 3/√18=1/√2.",
+      "answerCardinality": "one scalar response",
+      "sourceTextParity": "PASS",
+      "choicesExactParity": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "21c19eb850615ba9857aa0844c549c60f8084cbebb65945fb5fa6df2b68fb093",
+      "decisiveStep": "$f(2)=\\dfrac3{\\sqrt{18}}=\\dfrac{\\sqrt2}{2}$ | 따라서 최댓값은 $\\dfrac{\\sqrt2}{2}$이다.",
+      "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP_AUTO",
+          "finalDisposition": "KEEP_AUTO",
+          "basis": "거리함수 정의와 최댓값 질문을 유지. Student text/choices equal the frozen current-source bundle; PDF page visually checked. No screen-specific override asserted.",
+          "actualEngineRender": "NOT_RUN_R1"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "basis": "거리함수와 분모 완전제곱, 최대 대입."
+        },
+        "meta": {
+          "status": "PASS",
+          "disposition": "CURRENT_ACTIVE_FIELDS_REVIEWED",
+          "basis": "Actual non-null PT/TPL, H15 curriculum binding, subunit, concepts/conditions, and difficulty fields checked against current active registry.",
+          "actualFields": {
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-10",
+            "standardUnit": "직선의 방정식",
+            "standardUnitOrder": 10,
+            "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+            "subUnit": "직선 사이의 거리와 각",
+            "subUnitConfidence": "rule_inferred",
+            "subUnitClassificationDepth": "complete_rule",
+            "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+            "templateKey": "TPL_DISTANCE_AREA_APPLICATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "metaDebtFields": []
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": "NOT_REQUIRED",
+          "refs": [],
+          "basis": "No visual asset is required or present; the item is fully specified by text and formulas."
+        }
+      }
+    }
+  ]
+}
