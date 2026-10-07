@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_V1",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "SOURCE_FRESH_CREATE",
+  "calibrationOrder": [
+    "assignment_scope",
+    "golden_3_and_negative_actual_read",
+    "preflight",
+    "target_source_pdf_review",
+    "fresh_solve_and_author"
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "questions": [
+        {
+          "qid": 12,
+          "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+          "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지름은 그대로 $a$이다.\n이 원이 $y$축에 접하므로\n중심에서 $y$축까",
+          "observation": "Shows explicit center translation, tangent-distance equations, sign cases, admissibility condition and final value in distinct board lines.",
+          "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+          "solutionImageSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df"
+        },
+        {
+          "qid": 9,
+          "solutionSha256": "9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+          "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n$",
+          "observation": "Derives tangent equation and both slopes before applying perpendicular-product condition.",
+          "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+          "solutionImageSha256": "0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112"
+        }
+      ],
+      "svg": {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+        "sha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+        "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\calibration-svgs\\maesan-q12.png",
+        "renderSha256": "b278cb0231669026ad75fdaea7c78a4217f576d2a6454866a3f12541cb94834c",
+        "observation": "Rendered geometry shows the translated circle tangent to both axes; center and tangent points are labeled."
+      }
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "questions": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\d",
+          "observation": "Separates each line conversion and slope extraction, then applies the perpendicular condition.",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "solutionImageSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=4$\n$=(2)^2$이다.\n원의 표준형\n$(x-a)^2+(y-b)^2=r",
+          "observation": "Completes squares for both variables, substitutes, and compares standard circle form.",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+          "solutionImageSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c"
+        }
+      ],
+      "svg": {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\calibration-svgs\\hyocheon-q2.png",
+        "renderSha256": "7540e088a6e4ad8cd529d8bc8e7114979c167c3ee1a76661dabc3f91d5ed9df6",
+        "observation": "Coordinate lines encode the two equations and their slopes; ImageMagick render substitutes missing Korean font glyphs, so text legibility is not accepted from this renderer."
+      }
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "questions": [
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15",
+          "observation": "Uses De Morgan and inclusion-exclusion, proves a lower bound, then exhibits an attaining region allocation.",
+          "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+          "solutionImageSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd"
+        },
+        {
+          "qid": 11,
+          "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+          "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=0$,\n$x_B+x_C=-2$이다.\n$y$좌표에 대하여\n$\\dfrac{4+y_B+y_C}{3}=0$,\n$y_B+y_C=-4$이다.\n따라서 삼각형 $OBC$의 무게중심은\n$\\left(\\dfrac{-2}{3},\\dfrac{-4}{3}\\right)$이다.\n그러므로\n$a+b=-\\dfrac23-\\dfrac43=-2$이고 정답은",
+          "observation": "Separates x/y centroid equations and derives the requested sum from coordinates.",
+          "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q11-solution.svg",
+          "solutionImageSha256": "40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134"
+        }
+      ],
+      "svg": {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+        "sha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+        "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\calibration-svgs\\jeil-q6.png",
+        "renderSha256": "0734aadfa0a1f129debdec3a169509ddbc040866feac42597a829daf72297652",
+        "observation": "Venn regions are labeled 20−y, y, 15−y and the constraint; missing superscript glyphs in the ImageMagick render are renderer/font artifacts, not copied."
+      }
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "q2/q17 enumerated judgments must be separate board blocks; q1/q3/q7/q8/q20 coordinate geometry must be verified from primitives; exact active Meta mappings cannot remain null; runtime escapes require evaluated-value inspection."
+    }
+  ],
+  "targetPdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2021_순여고2_수2_2기말.pdf",
+    "sha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+    "pageRenderPaths": [
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-1.png",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-2.png",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-3.png",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-4.png",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-5.png",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pdf\\bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e\\adopted\\page-6.png"
+    ]
+  }
+}

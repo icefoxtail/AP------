@@ -1,0 +1,293 @@
+{
+  "schema": "JS_ARCHIVE_R1_FRESH_IMPACTED_SCOPE_SUPPLEMENT_V1",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "stage": "R1",
+  "reviewKind": "FRESH_IMPACTED_SCOPE_ONLY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "scope": {
+    "sourceQuestionCount": 23,
+    "qids": [
+      13,
+      22
+    ],
+    "fullExamStageClosure": false,
+    "genericValidatorRun": false
+  },
+  "artifact": {
+    "workingJsAbsolute": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/21_순천여고_2학기_기말_고2_수학II.js",
+    "preRepairRawSha256": "4ae4de7366741a552c74b2e07b66d7c80d45695c1ffe647d1334610a1d56dad3",
+    "solutionOnlyIntermediateRawSha256": "90630863cfc3e5709da769439f2f7331834aaacf592d7c29a85ae683bfa3cde4",
+    "finalRawSha256": "7341cf036c72a2307ff87e9061518c2b335cc97b2ff75371a2adaab9b3944ee9",
+    "originalAttemptedFinalRawSha256": "7341cf036c72a2307ff87e9061518c2b335cc97d5"
+  },
+  "freeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/archive/analysis/21_순천여고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1.RECOVERY_FRESH.freeze.json",
+    "sha256": "a961dbb997a4595752e8c94ba4637b7efacf07b5c11ea746cde1aac0d9363f61",
+    "studentBundlePath": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/R1.RECOVERY_FRESH.student-bundle.json",
+    "studentBundleSha256": "1533dafb7d0baa95fe9c68cc05e88ded81e0ad06caae3cc2d6ee56e5014715d5",
+    "frozenBeforeStoredAnswerSolutionDisclosure": true,
+    "currentPostfreezePath": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/R1.RECOVERY_FRESH.postfinal.qids.json",
+    "currentPostfreezeSha256": "9c14606ad873afad27d2920b825ba0e1eb8fddf4f403178b25f0acca4c3e7c56",
+    "postfreezeSourceRawSha256": "7341cf036c72a2307ff87e9061518c2b335cc97d5",
+    "postfreezeQidCount": 2,
+    "studentPayloadSha256": {
+      "q13": "6b9ec0fe66b365d97f76d01d61e30d38465939945c07ffaf1ba819dd330d5d56",
+      "q22": "aeb0237b962576e34fe91ba44139a78a8dec9b9c10db2d39a3901f4173722a5f"
+    },
+    "postfreezeStudentBodyParity": {
+      "q13": "content/choices/image exact to frozen bundle",
+      "q22": "content/choices exact to frozen bundle"
+    }
+  },
+  "independentAnswers": {
+    "q13": {
+      "frozen": "5",
+      "stored": "⑤ (choice value 5)",
+      "result": "MATCH",
+      "cardinality": 1
+    },
+    "q22": {
+      "frozen": "f(x)=x^4-8x^2+4; f(3)=13",
+      "stored": "$f(x)=x^4-8x^2+4$, $f(3)=13",
+      "result": "MATCH",
+      "cardinality": 1
+    }
+  },
+  "questionRows": [
+    {
+      "qid": 13,
+      "fourAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP_STATIC",
+          "evidence": "Current content, choices, and image reference match frozen student bundle. Grid remains AUTO-FIRST; no deterministic static boundary/asset defect found."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "The added antiderivative and endpoint substitution make the zero integral traceable. Remaining lines separately show f(2)-f(-1), f(3), and the product."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H15-M2-06 / derivative-application unit fits 2015 Math II. PT_DERIVATIVE_GRAPH_ANALYSIS and TPL_DERIVATIVE_GRAPH_QUANTITATIVE_RECOVERY are current ACTIVE projections. No null PT/TPL or relational Meta debt."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "Opened the referenced q13 graph before freeze; its SHA is unchanged. It already supplies the derivative graph used in the solution, so a duplicate solution SVG adds no needed relation."
+        }
+      },
+      "math": {
+        "status": "PASS",
+        "evidence": "Graph gives f'(x)=3x^2-1 for x<=1 and f'(x)=2 for x>=1. Piecewise integrals give f(-1)=1 and f(3)=5, product 5."
+      },
+      "difficulty": {
+        "currentPassBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "The student recovers the familiar quadratic from vertex and point, then applies standard definite-integral accumulation across the stated pieces. No nonstandard transformation, case search, or existence/range argument is central."
+      },
+      "legacyLevel": {
+        "preserved": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "The upper legacy level remains a defensible adjacent judgment for a graph-plus-calculus item; bucket 3 records its predictable standard route."
+      },
+      "finalSolutionSha256": "5ea230f3bea46f0dd7e2e17a37f1e7239a12ac67d5f380c25b51a2845416f302",
+      "changedFields": [
+        "solution",
+        "difficultyBucket",
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 22,
+      "fourAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP_STATIC",
+          "evidence": "Current content and empty choices match frozen student bundle. The prompt separates conditions and task; grid remains AUTO-FIRST."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Board flow separately states the even-quartic form, value at zero, stationary equation, second-derivative verification, and final substitution."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H15-M2-06 / derivative-application unit fits 2015 Math II. PT_DERIVATIVE_FUNCTION_DETERMINATION and TPL_STRUCTURAL_FUNCTION_DETERMINE are current ACTIVE projections and fit reconstruction from symmetry/extrema. No null PT/TPL or relational Meta debt."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No image or solutionImage is required for this algebraic even-quartic determination; there is no visual dependency."
+        }
+      },
+      "math": {
+        "status": "PASS",
+        "evidence": "Even monic quartic is x^4+ax^2+b; f(0)=4 gives b=4, f'(2)=0 gives a=-8, second-derivative signs verify extrema, and f(3)=13."
+      },
+      "difficulty": {
+        "currentPassBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "This uses a predictable even-polynomial setup, one derivative condition, and direct evaluation. The extrema check confirms the conditions without nonstandard transformation, branching, or existence analysis."
+      },
+      "legacyLevel": {
+        "preserved": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "The upper legacy level remains a defensible adjacent judgment for a 7-point written derivation; bucket 3 captures the learned standard structural method."
+      },
+      "finalSolutionSha256": "0eb62c0e3af2e96104572964d47f47c1b5b31220460ea3690803be53b743a5a5",
+      "changedFields": [
+        "difficultyBucket",
+        "legacyLevelCompatibility"
+      ]
+    }
+  ],
+  "repair": {
+    "qid": 13,
+    "scope": "solution-only",
+    "beforeSolutionSha256": "c4ecec71b7fdc1af4ecf5c5fc1478f0a579b85d006436ff8232f889f7453e75b",
+    "afterSolutionSha256": "5ea230f3bea46f0dd7e2e17a37f1e7239a12ac67d5f380c25b51a2845416f302",
+    "beforeLocus": "대칭 구간의 적분은 ∫[-1,1](3x^2-1)dx=0",
+    "afterLocus": "원시함수 x^3-x를 이용하면; ∫[-1,1](3x^2-1)dx=[x^3-x]_{-1}^{1}=(1-1)-((-1)^3-(-1))=0",
+    "studentContentChoicesAnswerImageUnchanged": true,
+    "goldenNegativePreflightBeforeMutation": true
+  },
+  "metaChanges": [
+    {
+      "qid": 13,
+      "difficultyBucket": {
+        "before": 4,
+        "after": 3
+      },
+      "legacyLevelCompatibility": {
+        "before": "NORMAL",
+        "after": "BORDERLINE_ACCEPTABLE"
+      },
+      "preservedLevel": "상"
+    },
+    {
+      "qid": 22,
+      "difficultyBucket": {
+        "before": 4,
+        "after": 3
+      },
+      "legacyLevelCompatibility": {
+        "before": "NORMAL",
+        "after": "BORDERLINE_ACCEPTABLE"
+      },
+      "preservedLevel": "상"
+    }
+  ],
+  "assets": [
+    {
+      "qid": 13,
+      "reference": "assets/images/21_순천여고_2학기_기말_고2_수학II/q13.png",
+      "absolutePath": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/assets/images/21_순천여고_2학기_기말_고2_수학II/q13.png",
+      "sha256": "0a1ecd4a023246942f6497d73dc1a9d8f6bbba0d63f1008451cdc9700612675b",
+      "openedBeforeFreeze": true
+    }
+  ],
+  "goldenNegativeCalibration": {
+    "qualityCompareCount": "2/2",
+    "calibrationStatus": "PASS_FOR_CORRECTION_REVIEW",
+    "sampleReadBeforeInitialTargetDisclosure": false,
+    "sampleReadBeforeCorrectionReview": true,
+    "calibrationOrder": "INITIAL_TARGET_COMPARE_PRECEDED_PREFLIGHT_FAILED_ATTEMPT_PRESERVED; MINIMAL_CORRECTION_REVIEW_AFTER_PREFLIGHT",
+    "goldenSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha1": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "questions": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "excerpt": "Intermediate internal-division coordinates, midpoint and distance simplification are displayed as separate steps.",
+            "observation": "Each weighted-coordinate substitution is visible; the teacher-language explanation does not replace arithmetic."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "excerpt": "Parallel lines give m=-3; point (1,-2) substitution yields -2=-3+n; then n=1 and m+n=-2.",
+            "observation": "The condition is named before substitution and the algebra steps are separate."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha1": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "questions": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "excerpt": "Coordinate differences are computed separately, then substituted and simplified through sqrt(50)=5sqrt(2).",
+            "observation": "Intermediate arithmetic and the final formula are traceable."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "excerpt": "Both line equations are rearranged to slope form before the perpendicular slope condition is substituted.",
+            "observation": "Method selection and transformations occupy separate lines."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha1": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "questions": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "excerpt": "Membership and inclusion choices are judged in separate cases, then the false option is concluded.",
+            "observation": "Separate decision blocks keep the reasoning traceable."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "excerpt": "The vertical-line criterion is stated and each graph case is judged separately.",
+            "observation": "Criterion, case reasons, and conclusion remain distinct."
+          }
+        ]
+      }
+    ],
+    "negativeSamples": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha1": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read q2/q17 small-board regression: enumerated source cases must occupy separate actual solution blocks; counts alone do not prove the flow."
+      }
+    ]
+  },
+  "failedAttempt": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/archive/analysis/21_순천여고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1.RECOVERY_FRESH.preflight-order-attempt.json",
+    "sha256": "9b6631618baa328c4db50894db8b538fe5d72ccf1a73203975310150e54206a3"
+  },
+  "render": {
+    "status": "NOT_RUN_ROOT_WAIVER",
+    "actualRenderPassClaimed": false,
+    "scope": "q13/q22 supplemental static review only"
+  },
+  "summary": {
+    "disposition": "SCOPED_SUPPLEMENT_PASS",
+    "qids": [
+      13,
+      22
+    ],
+    "answerMismatchCount": 0,
+    "fourAxisHoldCount": 0,
+    "itemHoldCount": 0,
+    "full23R1Validator": "NOT_RUN_BY_SCOPED_WORKER"
+  },
+  "nextRequiredAction": "Original R1 owner aggregates unchanged q1-q12 and q14-q21 evidence with this q13/q22 supplement and runs the required generic V2 R1 validator once against the final full 23-row artifact.",
+  "artifactBindingCorrection": {
+    "field": "artifact.finalRawSha256",
+    "originalAttemptedValue": "7341cf036c72a2307ff87e9061518c2b335cc97d5",
+    "reason": "The supplied supplement artifact SHA was abbreviated/mistyped; verified against current file bytes without changing q13/q22 review evidence.",
+    "verifiedValue": "7341cf036c72a2307ff87e9061518c2b335cc97b2ff75371a2adaab9b3944ee9",
+    "sourcePath": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/21_순천여고_2학기_기말_고2_수학II.js"
+  }
+}
