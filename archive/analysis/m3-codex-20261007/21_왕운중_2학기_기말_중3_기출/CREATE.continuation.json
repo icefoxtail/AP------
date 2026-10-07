@@ -1,0 +1,42 @@
+{
+  "examUid": "21_왕운중_2학기_기말_중3_기출",
+  "stage": "CREATE",
+  "result": "FAIL_WITH_TRUE_ITEM_HOLD",
+  "executionLine": "CODEX",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\21_왕운중_2학기_기말_중3_기출.js",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출",
+  "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출",
+  "sourceInputRawSha256": "042c1be7fc2c00e4a1219f6181fadec04240e91b62b232f76587a1f038b30e4d",
+  "finalArtifactRawSha256": "5ed8ab4b00c9db29c35fc8bb1f93e64f98d5596d313ece4a09adf6d82a8fbd32",
+  "finalArtifactSha": "19f0f9124870ab5f3a53e0e1379d7bf79b6bf8d9",
+  "evidenceRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\CREATE.evidence.json",
+  "sourcePDFSha256": "31aa3d78b0fd87e8b66f756a7e2636448e2a10031dca9d81f7ddf6f15f9127c4",
+  "answerHwpSha256": "461e53a4f77551d74b388bf12cc6c07a629e5d975fdc09aa30456986954914e5",
+  "sourceProvenanceSha256": "827066d6c355b31f1b6e313efb73b7c6bdea97fbf5efcca581483d7792153bb5",
+  "itemHolds": [
+    {
+      "qid": 1,
+      "reason": "Official key is ④, but option ② omits the same-arc condition and can also be false; keep key only as provenance pending R1/R2 adjudication."
+    },
+    {
+      "qid": 11,
+      "reason": "D is arbitrary on arc BC, so angle BDE (and its tangent) varies; official ② is provenance only pending R1/R2 adjudication."
+    }
+  ],
+  "validator": {
+    "disposition": "FAIL",
+    "issues": [
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q1",
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q1",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q11",
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q11"
+    ],
+    "rawReports": [
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\CREATE.validator.attempt01.json",
+      "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\CREATE.validator.attempt02.json"
+    ]
+  },
+  "firstMissingClosureStep": "Fresh R1/R2 adjudication for held q1 and q11; after R2, replace any remaining true HOLD qid with a complete item, run targeted fresh R1/R2 for changed qids, then rerun CREATE generic validator after the revision.",
+  "exactReason": "Current V2 CREATE report remains FAIL solely for q1/q11 HOLD and small-board continuity gates; all 23 qids are present, source/choice parity denominator is 23/23, and no forced PASS was recorded."
+}
