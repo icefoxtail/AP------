@@ -1,23 +1,23 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 490
-- 시험지 파일 수: 490
-- 원본 문항 수(중복 제거 전): 11739
-- 최종 인덱스 문항 수(중복 제거 후): 11739
+- 시험지 수(db.js): 491
+- 시험지 파일 수: 491
+- 원본 문항 수(중복 제거 전): 11763
+- 최종 인덱스 문항 수(중복 제거 후): 11763
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 490672 bytes
-- 시험지 JS 총 크기: 19951414 bytes
-- 인덱스 크기: 12503819 bytes
+- db.js 크기: 491657 bytes
+- 시험지 JS 총 크기: 20000328 bytes
+- 인덱스 크기: 12528912 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(11739)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(11763)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 11645
+- 공식(official): 11669
 - RAW-(임시 규약, 허용): 0 (distinct 0)
 - 비공식(invalid): 94 (distinct 21)
 - 빈 키(empty): 0
@@ -28,7 +28,7 @@
 
 - 누락 id: 0
 - 누락 content: 0
-- 누락 choices: 0
+- 누락 choices: 4
 - 누락 level: 455
 - 누락 standardUnit: 0
 - 누락 standardUnitKey: 0
@@ -37,11 +37,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 2412
+- q.image 보유: 2416
 - content 내부 <img>: 26
 - content 내부 <svg>: 78
 - content 내부 <table>: 177
-- 시각요소 보유(hasImage=true, OR 합산): 2686
+- 시각요소 보유(hasImage=true, OR 합산): 2690
 
 ## 누락 예시
 
@@ -52,7 +52,10 @@
   - 없음
 
 ### choices
-  - 없음
+  - original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js#21
+  - original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js#22
+  - original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js#23
+  - original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js#24
 
 ### level
   - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3
