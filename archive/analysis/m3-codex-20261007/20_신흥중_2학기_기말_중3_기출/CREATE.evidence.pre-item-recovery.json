@@ -1,0 +1,1860 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "artifactSha": "f990e35c40b22430aaec5c7795e18dbcdb0ad6f3",
+  "evidenceRef": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/CREATE.evidence.json",
+  "sourceManifestAbsolute": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/batch-manifest.json",
+  "sourceArtifactRawSha256": "76bf1083ef47197a07a42f2c5167e76f4c4d4f66b345966f29a0f7983cc246d2",
+  "sourceArtifactGitBlobSha1": "e2285d93c7ec0fee5a3e450ef9c42625d2ca699b",
+  "workingArtifactAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\20_신흥중_2학기_기말_중3_기출.js",
+  "workingArtifactRawSha256": "957b1b3f30d663cb31fdc0f00cf6af7c5d2ccf35e57dfbb7d965492f0690f7c4",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출",
+  "productionRelativePath": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 5,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "observation": "Set equality follows from mutual subset relations; element membership fixes a=0, then b=5 and the final sum.",
+            "solutionSha256": "5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f"
+          },
+          {
+            "qid": 12,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "observation": "The translated center and unchanged radius yield two absolute-distance equations; both cases and b>0 filtering are shown.",
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 3,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "observation": "Complete-square steps preserve the constants and reveal the center and radius.",
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c"
+          },
+          {
+            "qid": 16,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "observation": "Distributive and De Morgan transformations are shown before the actual common elements are removed and summed.",
+            "solutionSha256": "ea018fce5031c37442cfac44e69fb2cd487db7600a40998e3fe613c5c799ac41"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the approved false-PASS fixture and its actual failure descriptions: verify SVG geometry coordinates, preserve enumerated solution blocks, require null-debt lookup and nullReason, and inspect sandbox-evaluated strings including TeX escapes."
+    }
+  },
+  "renderDecision": "ROOT_DELEGATED / ROOT_DIRECTED_STATIC_COMPLETE / NOT_RUN_ROOT_WAIVER; quality not waived",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "renderStatusEvidence": {
+    "actualEngineRender": "NOT_RUN",
+    "authority": "ROOT_DELEGATED",
+    "completionBasis": "ROOT_DIRECTED_STATIC_COMPLETE",
+    "reason": "Standing CURRENT §25 authority assigns ROOT the capture/render waiver decision; this CREATE candidate records no actual RENDER_PASS."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q01",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q01",
+      "sourceOrdinal": 1,
+      "contentHash": "4cd633eca281381928c7e1321a42b4cb533325c02f9bc130eab9394091cf6823",
+      "choicesHash": "6bbb68dbd35f22ac52fefa83d958c2037b58f99388cc263b8a78bfb2d3d5e4df",
+      "imageRefHash": "39cb300f93fdd62b3a4351ec2bb5315e1947737bf17ba2fbd9c26cdec0fb2894",
+      "sourceFingerprint": "8afde53b4aa4fb2905098ac90318da7b40e8cc74a2fa21af6c95114f6636df99",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q01.png",
+          "assetSha256": "f635db0077100228b8d17055ab52a2bee1dc76d363de204098c7a3749377f0f3",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a57c4d1243243913c28ca7ba78d1b1a94e1f5df3e9489699cfce75bfbc6d47c0",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "①"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q02",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q02",
+      "sourceOrdinal": 2,
+      "contentHash": "06e6e0e40415f4010b77acfffaf6005a34383cec10d28dd865a4115731d24d99",
+      "choicesHash": "a96f4647c638a3c3eebbb43b04e55aa8c524a572deeabd4f3e227d6db9a14b95",
+      "imageRefHash": "c527da5bac04a730c076e2cb5730780ec2d15246866ba0bd8c381769a0e0f2e6",
+      "sourceFingerprint": "8ab779a82cb3ed0eb53fbd5bbe55bc6b28ff0f7efde575e8a93a43b95d95f604",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT",
+          "choiceEncodingRepair": {
+            "field": "choices",
+            "from": "runtime CR generated by unescaped JavaScript \\r in TeX \\rm token",
+            "to": "literal TeX \\rm with no control characters",
+            "sourceTruth": "full-page source PDF visual transcription",
+            "changedChoiceIndexes": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q02.png",
+          "assetSha256": "60e9c1b2713a379b300841b25097b56dd6eb2bc5f7e11d57421db0ed56fa5354",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fa7d80b21ec800860e0a6d03b7f7d8a17bed9c9454a086778c8593a96d43fc4f",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "①"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q03",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q03",
+      "sourceOrdinal": 3,
+      "contentHash": "0bf8f6dafb0d1b7821208a16250540fa263021a76bde391f5669159af76ca132",
+      "choicesHash": "2bf3ed756b01e21bb903b44f16c1dc0ca4afaf80a133b1e79d45802fe7ea8c53",
+      "imageRefHash": "e977a29d27cd78bac5418dbe5032d55643b0e0e6ca06ac3f6e9bd60004972873",
+      "sourceFingerprint": "50d15124b373a56f63357b213c5c7fbde0651f2769b25103c4d4d0bf14b9a94d",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT",
+          "choiceEncodingRepair": {
+            "field": "choices",
+            "from": "runtime CR generated by unescaped JavaScript \\r in TeX \\rm token",
+            "to": "literal TeX \\rm with no control characters",
+            "sourceTruth": "full-page source PDF visual transcription",
+            "changedChoiceIndexes": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q03.png",
+          "assetSha256": "a903678c578753d4e9565d6451dff1afa7a2bc6f8eca732338c77a5898719e9d",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "87f3400c485d3399aaaedc612b4113b0537fba2bc34a3e39596ad69b54ff3bdc",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "①"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q04",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q04",
+      "sourceOrdinal": 4,
+      "contentHash": "708278a1ccbd1682e0912007c99cc260b03847d06db278a220e93bac08cc0812",
+      "choicesHash": "4115b41ccceb6241a03d147b80694c483724d83ff1629bdef3b7eabf976a1812",
+      "imageRefHash": "b2bdad5cbea552762b03e9ebd56124d3f60d31c4972e940c1d26470f7aa194f0",
+      "sourceFingerprint": "8660d481dfa60fb8600c0f71e24088329e5e09174489bd7272f5c31040bd1af2",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT",
+          "choiceEncodingRepair": {
+            "field": "choices",
+            "from": "runtime CR generated by unescaped JavaScript \\r in TeX \\rm token",
+            "to": "literal TeX \\rm with no control characters",
+            "sourceTruth": "full-page source PDF visual transcription",
+            "changedChoiceIndexes": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q04.png",
+          "assetSha256": "6435fc09d80a2c0ff07d0626ed8e35d04e175d29aff16046c037fad68799cd83",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "71b99825ca6124d9e8774b20577b69c1630964e75ef5cdef652abb759f55387a",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "③"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q05",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q05",
+      "sourceOrdinal": 5,
+      "contentHash": "85858fbb28cbf4d535d5c65bf1dcd3ae4edbc9b60477e1b7a55853df92fc80a2",
+      "choicesHash": "29ae14221d7c54b5c0159430a6f04b79815100f4325d3ede0304297968d039c3",
+      "imageRefHash": "f0a6ecadd4ac3f451fb0c0e1a39c175a02bb8a0257e7818f705fbc64af0d90a5",
+      "sourceFingerprint": "3c7e62df02851d36555504159abde60f91a2f155f837b01cd395ed071929de4b",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q05.png",
+          "assetSha256": "25a34798d296457d055aa3f0048b702d7d4a180df4de85bfaa7ee532bf2bd330",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4efaf6e7a450cb4b4125dea0045fcd1c2e97baf9fc10e9ceb0d7732e86791815",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "⑤"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q06",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q06",
+      "sourceOrdinal": 6,
+      "contentHash": "a701e8a7e1fc3cf1b99ce331ccd1b85884cad6b9439d1ca2d1aee438c30ab272",
+      "choicesHash": "e4c7b552f7d71eccf20bb2f76f3e66c678603b9d30968d5175c1dae951859f56",
+      "imageRefHash": "55aef2fd560c1ddfc995de344c7e441d888b5175f83eebba5bd84cbf664dce66",
+      "sourceFingerprint": "7f94b683a6495ecc556a27ac1e1a3ae83c5ed1f91766266f83fd0417b3abec8e",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q06.png",
+          "assetSha256": "0e0d55a8f82390aa7595cef3cbbf1650716d463ed03bdeacdd8633534da7429b",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "901c5a9f116469be77bbb7122d7ddc1a8b3cd71d366f776e97edbc7a3543d240",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "④"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q07",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q07",
+      "sourceOrdinal": 7,
+      "contentHash": "6c537072bd82379cf6d463c4b349fe1b7c22dcff3ff919adad74fd26567ac624",
+      "choicesHash": "3afc104376c7548b71b9633105b0d24f640b7f9db5a8fc8d454587e864f7f384",
+      "imageRefHash": "1c132903ba2546a03d8e31010f6e01b7ff1b019d37f4c88c3eced8b3957370cd",
+      "sourceFingerprint": "76d29647397dc07ca3f0e46428762e4f7c05b0d7ddf9448b4ab18213d4a93205",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 1,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "The full mathematical analysis demonstrates two true choices and exactly why the single-answer source item is held for cardinality adjudication."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q07.png",
+          "assetSha256": "a6ac5cf3f2db8eee447a356f7a81cf4b4f48c8d01140afbeabc845e75537c69e",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3e9e3e77fc477f343f27bedf8ae7a2da1da652f6fdfcea9a188d130b7cb03121",
+      "metaDebtFields": [],
+      "itemDisposition": "HOLD",
+      "itemHoldReason": "SOURCE_MULTIPLE_CORRECT_CHOICES",
+      "answerCardinalityOrSourceFacts": "Both ③ (2·chord AB > chord CD) and ④ (2·arc AB = arc CD) are true from the stated 40° and 80° central angles; source asks for a single correct choice.",
+      "nextRequiredAction": "R1/R2 adjudicate answer cardinality; true HOLD may be replaced only after their review.",
+      "answerEvidence": {
+        "mathematicallyTrueChoices": [
+          "③",
+          "④"
+        ],
+        "singleAnswerSourceConflict": true
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q08",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q08",
+      "sourceOrdinal": 8,
+      "contentHash": "e65cd06979e45d1e71ac3af6c013469ca0e69b7a6377aa8627a792230792a973",
+      "choicesHash": "0fdd01958243503d646ca2e47cdeca559015c98d2414755c0ad508261d775306",
+      "imageRefHash": "d44ec526c460c17ff5d56855006cff6b2c28e6c04328ab04e7098ad2068c6d10",
+      "sourceFingerprint": "64c1d02264c8df6a2674414235b3ad94a89b39f10184258b0b40f2684dd03dab",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q08.png",
+          "assetSha256": "313cdd0f034cadb0ae7ae9c57f96dc0552ae51a35bcb70f075409c438c8aacb6",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2bf0c03076f5cc81c24b959bea31617ed8f32076bcb106420b44d000c1bdc6c4",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "②"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q09",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q09",
+      "sourceOrdinal": 9,
+      "contentHash": "b06aaf95bf43ee97f310b5f1a5de6c74f91dd6b22a7050fb15cd44e7f13cffcc",
+      "choicesHash": "641fac394f5ea747b484a6b02c85df5ce9f953971b5ff8c9a4ce133b27afa8b7",
+      "imageRefHash": "ed16ee1f6b54636390d351dc247a4d9b3a123441c8326099890e13b3def03d68",
+      "sourceFingerprint": "de0c39998d5a636d83af0ee750f35cf24d995f8d4053a4e09fe62531b0e39589",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT",
+          "choiceEncodingRepair": {
+            "field": "choices",
+            "from": "runtime CR generated by unescaped JavaScript \\r in TeX \\rm token",
+            "to": "literal TeX \\rm with no control characters",
+            "sourceTruth": "full-page source PDF visual transcription",
+            "changedChoiceIndexes": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": "Diagnostic derivation is recorded; student answer completion remains held pending source-condition adjudication.",
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q09.png",
+          "assetSha256": "1ee083870effc831db335a6341b77f439e7613760b526388befa65d245a4e70f",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "6dc4c05d5fced6ddb00642063390af441a8585c65ee8f357a3cd245409f4f989",
+      "metaDebtFields": [],
+      "itemDisposition": "HOLD",
+      "itemHoldReason": "SOURCE_GEOMETRY_RELATION_UNRESOLVED",
+      "answerCardinalityOrSourceFacts": "The given tangent data determine AP=AQ=15, but the full page and q09 crop do not state a unique construction/position relation for triangle vertices B,C sufficient to fix AB+AC+BC.",
+      "nextRequiredAction": "R1/R2 decide whether the source figure supplies an exact relation; if unresolved, carry true item HOLD.",
+      "answerEvidence": {
+        "status": "UNRESOLVED",
+        "facts": "The given tangent data determine AP=AQ=15, but the full page and q09 crop do not state a unique construction/position relation for triangle vertices B,C sufficient to fix AB+AC+BC."
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q10",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q10",
+      "sourceOrdinal": 10,
+      "contentHash": "9e81b97083e30bcf98baad65df6828c54b0bbf20dfa09b78bad7e72b39fcb424",
+      "choicesHash": "7ee146d3cf7cb89741cc9a0a8b8526450c579d3ddf8131d1691be8f7b1ae8db3",
+      "imageRefHash": "09f7c7283cd55145b3784a57e1bb33d0b3243b1bd9a40a35d156192029725ad4",
+      "sourceFingerprint": "3de4425a538422a24689c80f17ff3c2eaff36315305643ab71ba4cf385daae5d",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "M3 원에 외접한 직교 사각형의 의미 분류는 명확하나 현행 ACTIVE PT/TPL projection에서 exact M3 path를 확인하지 못해 semantic classification은 유지하고 projection debt로 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q10.png",
+          "assetSha256": "0f07910714f6af17784bce06d96ca8e0bdde3665ed0068442306b55a3d401656",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "745e51c2ee69bc86356c2338bdf810a14921c967d0804450a4e3bf7bcee603f5",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M3 원에 외접한 직교 사각형의 의미 분류는 명확하나 현행 ACTIVE PT/TPL projection에서 exact M3 path를 확인하지 못해 semantic classification은 유지하고 projection debt로 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "①"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q11",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q11",
+      "sourceOrdinal": 11,
+      "contentHash": "08b27a2f22bfd68b70a6e7b410b5236da578341dcba5021f1223aee62a76cf48",
+      "choicesHash": "11ddc76a79c1376cd736d5a2b7df6208e48ab8e4fc2e9648fefe75adfd31e64e",
+      "imageRefHash": "0ef694fb92914d9deac6de3791cfae4c4eaf9c1973e34f1c6dcae3589ad086e2",
+      "sourceFingerprint": "5e72b1838704cbe8d5869fcc4b41b6d8b6dc66ee72268a3b574200b2f9de58c2",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENCY_CONDITION",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q11.png",
+          "assetSha256": "228920edd2b4cc1336e3870e85160b871bf5d4c87b49513dfcc605fab351e933",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "21447c5eaf9b85b41b08890ff7c0605790d94df753fc7e399bda7849e3602bf8",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "⑤"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q12",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q12",
+      "sourceOrdinal": 12,
+      "contentHash": "f17b021b073c429683ab40267217887c182791e6ac22cdc45b29c834f10e1aa3",
+      "choicesHash": "aa84e7e0e14a40a078bb1265a70229fd5719416e4d5829eb687d58716b308683",
+      "imageRefHash": "69d2902bcd55360c33c5dbe52d25413a38d569b3c81ae4c21d0424550c1379bf",
+      "sourceFingerprint": "140f1254df1e83e3fb9eb23ab97ede60c8391f9e602a2b97436eccbb6404576a",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q12.png",
+          "assetSha256": "2c0259c2db046552e294bb3ff2f5368da1992110a0f144566baa33d847f9bab4",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1e017c19fb12341f8abd2610f8fec021977f0754b0000efb1b07c207999ea6db",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "②"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q13",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q13",
+      "sourceOrdinal": 13,
+      "contentHash": "62c0d3379284c6da410092edf701a0f6dd9690d4321ef7477a23cffa7d7f0f4f",
+      "choicesHash": "1cb5807942fd7ec085b036d29bde5f97e58c9ce0347e5ab565f55bd99b390028",
+      "imageRefHash": "f8b4d67a50829f4e7f27c06c7448216573c5ca64a9447fd8adc5097dc9b7d75e",
+      "sourceFingerprint": "79b552b9bf5c53adfb4c097d09294b44655578b44987e8c48200882379fd35c9",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 2,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q13.png",
+          "assetSha256": "58323823e593bac770895ff8e94ed607c4e0fba0931e0c8d897bb6c0cedcb597",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9457a417c7273f259ba930ddadf6b186f8679e582d0090cd5275566c95e1d4ee",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "③"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q14",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q14",
+      "sourceOrdinal": 14,
+      "contentHash": "b29aced4c520e730771f577b7840c0f4a50020a311bba16b9ea62594bf540088",
+      "choicesHash": "22e45421266c1d349737693710ef28ee7828ad088681ea4b4481f2c39aa5d585",
+      "imageRefHash": "7b5079c12f9cfa4e26f13f1f818c94f57089516b11b39eb219633c5807152ddc",
+      "sourceFingerprint": "a17a693026b86c6aec1baf9b0f6cbebda94c6006c01c4cdda5e6054bcff51096",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q14.png",
+          "assetSha256": "8aecfa6a08ba2cda99a1136d482457a331faa16392b9df97afbe13d114f260a3",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8222db6a1c47d11c1c12aa9a7ea368a94d6ae82b4cfff8f8def4f089aeb03302",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "④"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q15",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q15",
+      "sourceOrdinal": 15,
+      "contentHash": "a017efe5a9e8aa635a4b532b20b87e8c56d674b966f41afb2ac5d0d3aa27a641",
+      "choicesHash": "5ef5d9af98933f40b3a1ab48493d272a4ef2b0cdb3074e3cbe02e5f82d0d3ce3",
+      "imageRefHash": "4a357f8c89c4ef69d2cd24f1fb92d24755a06d65e6a3511d47465b09aaa59d7d",
+      "sourceFingerprint": "13eadd73216e35bf484a84394a87141318b43cba90002ea291364089fd377a8a",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": "Diagnostic derivation is recorded; student answer completion remains held pending source-condition adjudication.",
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "원의 외접 오각형의 각 관계는 수학적으로 분석했으나 exact ACTIVE M3 projection이 확인되지 않아 semantic gap이 아닌 projection debt로 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q15.png",
+          "assetSha256": "311d0db0214fb104d0adc2ce8821caf23cb2f2cd175ad6004764465d684cc4b8",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "76646153c6b987ccab98691701027c32a979339ce7d6ecc6b25a3e0bbe9a34da",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "원의 외접 오각형의 각 관계는 수학적으로 분석했으나 exact ACTIVE M3 projection이 확인되지 않아 semantic gap이 아닌 projection debt로 기록함.",
+      "itemDisposition": "HOLD",
+      "itemHoldReason": "SOURCE_INSUFFICIENT_CONDITION",
+      "answerCardinalityOrSourceFacts": "Tangential pentagon and ∠COD=86° determine C+D=188° but do not fix A; therefore B+E is not unique absent a further condition.",
+      "nextRequiredAction": "R1/R2 verify whether any missing source condition exists; if not, carry true item HOLD.",
+      "answerEvidence": {
+        "status": "UNRESOLVED",
+        "facts": "Tangential pentagon and ∠COD=86° determine C+D=188° but do not fix A; therefore B+E is not unique absent a further condition."
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q16",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q16",
+      "sourceOrdinal": 16,
+      "contentHash": "7cf9ab55a9679c8846523f283c4ee8df3e0172353dcffe23352d827ddf5a7133",
+      "choicesHash": "548a90db87060a6314e42d6aa130aab273ec3c0fa7df781bd50b0eb29babee46",
+      "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceFingerprint": "77fef22430a8174fadb1ec16fb539c0f2a5a46ad2321a0ebc098d9d0cd0a8a4c",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "대푯값 의미 분류는 M3-2 canonical에서 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No visual asset is required for this text-only item."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "270d8f0e7c623dda8cef2e8e7277a7d491b5e6366052b226c986a54b95cf6280",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "대푯값 의미 분류는 M3-2 canonical에서 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "①"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q17",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q17",
+      "sourceOrdinal": 17,
+      "contentHash": "86957f404f79b063061ce176bcfe4990d20e8516bc62e4072637893b4dcfa363",
+      "choicesHash": "a92e62d7c5f68474208407951118d39548fd5a94effb08bdac0ed00964b40d54",
+      "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceFingerprint": "a739065253199c5003eee38799a01e79745d728a8ec5d96906b1f9575fded5ac",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "평균에서 편차 평균을 구하는 M3 의미 분류는 유지하되 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No visual asset is required for this text-only item."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "070c14b6bb9721603e3ef40636c472ce775b85587ca860add90c73e828e07bb6",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "평균에서 편차 평균을 구하는 M3 의미 분류는 유지하되 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "③"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q18",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q18",
+      "sourceOrdinal": 18,
+      "contentHash": "20c3d2ceb7defe8b63f5a1f750170a889b5afe0268cfeb84fb3e120a5c1f80b5",
+      "choicesHash": "06c81a5cd910aa84f11d03a2a442c49f25a74370c8871b29eba08f3bbd1c8c4d",
+      "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceFingerprint": "1dc9db6de93d550ee945a272ca2e25075b3e435fe38d3a606e20b4f51e9a844e",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "중앙값/최빈값 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No visual asset is required for this text-only item."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a73b8d1c37b41315ccdb3b9e67c61f57a7ad5b9535e27e853646bd3ecd345d22",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "중앙값/최빈값 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "④"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q19",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q19",
+      "sourceOrdinal": 19,
+      "contentHash": "d7501cd7de3e3471382e7d10c6751a63eb6a85ca969fe53c54ac296235601303",
+      "choicesHash": "24c769cfe0f1a9c6a24954dc9409acc9a24ffdc7c52903c3612350f863983b2d",
+      "imageRefHash": "65d8555f2b5cb3eb06fbe5c26cf97f98494edd61a6671641d989d3c0f0e830a1",
+      "sourceFingerprint": "ba44c1c8acd0e194397c59e1af79956fab1c4bd806f36dbf76c18087617c6987",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "표의 수준별 빈도와 평균을 가중해 전체 평균을 구하는 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q19.png",
+          "assetSha256": "c617fb80bd1464de61f79c78dadeb691af2f831c31dabf5ad42e561b6e015489",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4cc61a7533315f2e061cc96e476b1bc138885f33dc4808138196ac4f809a0675",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "표의 수준별 빈도와 평균을 가중해 전체 평균을 구하는 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "②"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q20",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q20",
+      "sourceOrdinal": 20,
+      "contentHash": "2ba9da4184cbde779fb270e7a630849d3f1df9093951fab05357bf616129d090",
+      "choicesHash": "4c6c151a82f8b9a636cd3ee8eec8831e3ad2d5238bae77523a37b23c85c1f260",
+      "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceFingerprint": "6ba038b8d6a7f7c8226333e746abd2a8f27adc8d28626b1283f3295cbbe903e9",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 3,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "평균·분산으로 곱의 평균을 유도하는 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No visual asset is required for this text-only item."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d1a5a0366e007a927d5a38a184b63161f96cc0a205222a3df6a6593a66b1ffb7",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "평균·분산으로 곱의 평균을 유도하는 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "④"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q21",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q21",
+      "sourceOrdinal": 21,
+      "contentHash": "825791f7a901d4e40e2148b65d8bbb53460f7f07f2ce5da0b67693d712a8221a",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "8480eb54e0a8650543f292e7929a4c0b92ea63dab078ed3116b5726f1fdefe6f",
+      "sourceFingerprint": "28da637be20ff940653cc003715f618e43656ba736b17f28f5219e939754d178",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 4,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q21.png",
+          "assetSha256": "f8fd944fc46f9bd7753b053f0489b21a5f3029a62350cdf2383d4d325a8ffb49",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "45af30140758b84ed7dd8cb5c4e779357a754de93b23ba9e262d54f5652c26cf",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "25(3-\\sqrt3)\\rm\\,cm^2"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q22",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q22",
+      "sourceOrdinal": 22,
+      "contentHash": "5b25bbdb3a3045e1714f18220d4be1e978a876105883f518dc7f5d9b1e9dae23",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "c2557af7d028732dc9fb21cf7202e4cb6c821f258de233bcba5c7170fc14ef9a",
+      "sourceFingerprint": "7ce0d163d8443cc08cf0dbd6b9ce0ab61022a45a1b82b65e59750f6559043b2d",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 4,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q22.png",
+          "assetSha256": "033fc5506ed1441e3d088342dab41bb2a183e215d1a259c8217b86f9584f3b8b",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a881246c1b4e59b6abb4f282e7436c6975d9aabadd554afec32373a110f7e4ba",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "∠A=85°, ∠B=50°, ∠C=95°, ∠D=130°"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q23",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q23",
+      "sourceOrdinal": 23,
+      "contentHash": "c234ef0e6adfc07104619db6c4739120fabe5c7c31d609cfd243de065c9305d7",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "52bbcb02319203e5d351c03f24930b8abfb962a995bbddde7eb35e32e0dee9ba",
+      "sourceFingerprint": "f6e4a14745424feb97bf081f6be3b0d9dd05288111c0441b999664135cd48496",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 4,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "projectionDebt": false,
+          "reason": "Semantic path assigned from 2015 M3-2 curriculum mapped to the current M3 standard-unit master; no prior metadata verdict used."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q23.png",
+          "assetSha256": "ee01eb00367f5fb16abced733defc9c66b60494ca484faa9fb2ced23e9472690",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "32b3375f9c1ff057bce1778b9fe355ca5cde241099f0cdb759ccaefe1e07d1eb",
+      "metaDebtFields": [],
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "① ∠PAO=∠PBO=90°, ② PO=PO, ③ OA=OB, ④ △PAO≡△PBO, ⑤ PA=PB"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "questionUid": "20_신흥중_2학기_기말_중3_기출#q24",
+      "sourceIdentityKey": "20_신흥중_2학기_기말_중3_기출#q24",
+      "sourceOrdinal": 24,
+      "contentHash": "ff0437f7f3011ddba0856568d6e161e7ab4c045090066a2a5db96f147ae326c2",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceFingerprint": "b32e6ce08d9bdfb89b04b2823dea4ace248c4461ccc8a6ca03bfd84767478774",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceArchiveFile": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "sourcePdf": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/source/2020_신흥중3_수학_2기말.pdf",
+          "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+          "sourceProvenance": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/20_신흥중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_신흥중_2학기_기말_중3_기출/source_provenance.json",
+          "sourcePage": 4,
+          "fullPagePdfVisuallyInspected": true,
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "imageReferenceExactParity": true,
+          "sourceMode": "COMMITTED_BRANCH_SNAPSHOT"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "beforeDisposition": "SOURCE_EXACT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "reason": "Original Korean prompt, math text, choices, punctuation, ordering and source line breaks are preserved exactly. AUTO-FIRST uses the existing grid layout; no manual override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "reason": "Student can follow the required formula setup, transformation, intermediate calculation, condition use and answer in separate equation blocks; no post-solution verification section."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionDebt": true,
+          "reason": "두 집단 평균·분산을 결합한 M3 분산 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No visual asset is required for this text-only item."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cd67990c07dd808cbbc011aaa0835f85e62cf0cfe0510f107560e5def602bc96",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "두 집단 평균·분산을 결합한 M3 분산 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함.",
+      "itemDisposition": "PASS",
+      "answerEvidence": {
+        "status": "SOLVED_FROM_SOURCE",
+        "answer": "\\dfrac{15}{2}"
+      },
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "f990e35c40b22430aaec5c7795e18dbcdb0ad6f3",
+    "rows": [
+      {
+        "qid": 10,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M3 원에 외접한 직교 사각형의 의미 분류는 명확하나 현행 ACTIVE PT/TPL projection에서 exact M3 path를 확인하지 못해 semantic classification은 유지하고 projection debt로 기록함."
+      },
+      {
+        "qid": 15,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "원의 외접 오각형의 각 관계는 수학적으로 분석했으나 exact ACTIVE M3 projection이 확인되지 않아 semantic gap이 아닌 projection debt로 기록함."
+      },
+      {
+        "qid": 16,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "대푯값 의미 분류는 M3-2 canonical에서 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 17,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "평균에서 편차 평균을 구하는 M3 의미 분류는 유지하되 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 18,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "중앙값/최빈값 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 19,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "표의 수준별 빈도와 평균을 가중해 전체 평균을 구하는 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+      },
+      {
+        "qid": 20,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "평균·분산으로 곱의 평균을 유도하는 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 debt를 기록함."
+      },
+      {
+        "qid": 24,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "두 집단 평균·분산을 결합한 M3 분산 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+      }
+    ]
+  },
+  "itemHolds": [
+    {
+      "qid": 7,
+      "status": "HOLD",
+      "reason": "SOURCE_MULTIPLE_CORRECT_CHOICES",
+      "facts": "Both ③ (2·chord AB > chord CD) and ④ (2·arc AB = arc CD) are true from the stated 40° and 80° central angles; source asks for a single correct choice.",
+      "nextRequiredAction": "R1/R2 adjudicate answer cardinality; true HOLD may be replaced only after their review."
+    },
+    {
+      "qid": 9,
+      "status": "HOLD",
+      "reason": "SOURCE_GEOMETRY_RELATION_UNRESOLVED",
+      "facts": "The given tangent data determine AP=AQ=15, but the full page and q09 crop do not state a unique construction/position relation for triangle vertices B,C sufficient to fix AB+AC+BC.",
+      "nextRequiredAction": "R1/R2 decide whether the source figure supplies an exact relation; if unresolved, carry true item HOLD."
+    },
+    {
+      "qid": 15,
+      "status": "HOLD",
+      "reason": "SOURCE_INSUFFICIENT_CONDITION",
+      "facts": "Tangential pentagon and ∠COD=86° determine C+D=188° but do not fix A; therefore B+E is not unique absent a further condition.",
+      "nextRequiredAction": "R1/R2 verify whether any missing source condition exists; if not, carry true item HOLD."
+    }
+  ],
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "24/24",
+  "solutionRewriteAttempted": "24/24",
+  "solutionRewriteResolved": "21/24",
+  "questionLayoutCoverage": "24/24",
+  "questionLayoutStatus": "PASS_STATIC_SOURCE_EXACT",
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "knownQuestionLayoutRepairPending": 0,
+  "questionLayoutHoldCount": 0,
+  "smallBoardAuditCount": "22/24_PASS; 2/24_HOLD",
+  "metaProjectionDebtCount": 8,
+  "visualSvgCoverage": "24/24",
+  "createDisposition": "CREATE_CANDIDATE_READY_WITH_ITEM_HOLD",
+  "firstMissingClosureStep": "R1/R2 adjudication of q7, q9, q15; true unresolved item holds remain eligible for bounded recovery."
+}

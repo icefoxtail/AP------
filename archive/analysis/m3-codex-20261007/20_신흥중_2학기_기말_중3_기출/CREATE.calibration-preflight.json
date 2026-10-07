@@ -1,0 +1,57 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_CALIBRATION_PREFLIGHT_V2",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "completedBeforeTargetAuthoring": true,
+  "calibrationScope": "H1 Golden fixes student-facing solution/layout/visual floor only; M3 curriculum/Meta/difficulty adjudicated from separate canonical.",
+  "samples": [
+    {
+      "exam": "25_매산여고_2학기_중간_고1_기출.js",
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "qids": [
+        {"qid": 5, "observation": "Set equality is derived explicitly from mutual subset relations; elements and order-insensitive equality are traced before a=0, b=5 and answer."},
+        {"qid": 12, "observation": "Translated center and unchanged radius are stated, then absolute-distance constraints are solved with both cases and b>0 filtering. No compressed jump."}
+      ],
+      "linkedSvg": [
+        {"qid": 12, "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg", "sha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df", "renderedPreview": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\preflight\\maesan-q12-solution.png", "observation": "SVG topology shows axes, shifted circle centered (-2,2), radius 2, tangencies and construction radii consistent with its key relation; visual labels support but do not replace geometry."}
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간_고1_기출.js",
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "qids": [
+        {"qid": 3, "observation": "Complete-square transformation is expanded by x and y, constants are collected, and center/radius are read from standard form."},
+        {"qid": 16, "observation": "Set expression is transformed by distributive and De Morgan laws, then the exact shared elements are removed before summing."}
+      ],
+      "linkedSvg": [
+        {"qid": 3, "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg", "sha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c", "renderedPreview": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\preflight\\hyocheon-q03-solution.png", "observation": "Actual circle primitive is centered at (-1,3) with radius 2 and its marked rightmost point is (1,3), matching the standard-form result."}
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_중간_고1_기출.js",
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "qids": [
+        {"qid": 4, "observation": "All choices are normalized against X∩Y^c∩Z^c; the one choice differing by including X∩Z elements is distinguished."},
+        {"qid": 9, "observation": "Strict increase plus f(3)=4 partitions choices into two ordered values below 4 and one value above 4; counts are multiplied explicitly."}
+      ],
+      "linkedSvg": []
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observedFailures": [
+      "SVG labels must be checked against actual geometry/topology coordinates, not text alone.",
+      "Enumerated source structure must be preserved as separate solution blocks.",
+      "Meta null requires lookup evidence and nullReason; exact ACTIVE candidate cannot be left null.",
+      "Check sandbox-evaluated runtime source, including TeX escapes."
+    ],
+    "jeilKnownExceptionQ18Excluded": true
+  },
+  "preflightResult": "PASS",
+  "preflightNote": "Six actual representative Golden qids across all three fixed H1 samples plus both linked SVGs and the approved Negative README were inspected before target solution authoring. Golden is not M3 curriculum, Meta, or difficulty authority."
+}

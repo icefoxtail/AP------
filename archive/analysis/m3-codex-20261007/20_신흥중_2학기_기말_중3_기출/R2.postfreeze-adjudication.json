@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "CODEX_R2_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "artifactSha": "e46a33f56af10e6c2db8ddc9584e28c3007bbc78",
+  "artifactRawSha256": "3254962f27bbfd7889d288376ff50302e3b2994a7a895c884f99d2148713f8ef",
+  "blindFreezeSha256": "890fb7135c36a9b56cba5013cc3d955634055badd8fbbaac6b9f816012948977",
+  "postfreezeDisclosureSha256": "188cd54ce9f5f1900ec3745ce1786ea2fdbd096f5a9d1eb697196947f384b766",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_수학_2기말.pdf",
+    "sha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+    "pageCount": 4,
+    "allPagesVisuallyInspected": true,
+    "pageEvidence": [
+      {
+        "page": 1,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R2.source-pdf-page-1.png",
+        "sha256": "e11247dd9131f083bead76815c47bf70ddb68b43b9717b73e895f53629f0a287"
+      },
+      {
+        "page": 2,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R2.source-pdf-page-2.png",
+        "sha256": "d88d4ae894b418182478635194b99efd786445eab5957a1167c2d3f69bb233e1"
+      },
+      {
+        "page": 3,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R2.source-pdf-page-3.png",
+        "sha256": "4f356a3aa54540e2917cb4217774435c41c89b29f269d6bcc1823919a952b351"
+      },
+      {
+        "page": 4,
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R2.source-pdf-page-4.png",
+        "sha256": "68c09ec56abca421d70b1adbc2a75d5894446a27c0b6cda87261b9caaf3e79c3"
+      }
+    ]
+  },
+  "adjudications": [
+    {
+      "qid": 7,
+      "status": "TRUE_ITEM_HOLD",
+      "frozenAnswer": "③ and ④ both appear true; non-unique",
+      "storedAnswer": "③, ④",
+      "decisiveMissingFacts": "No missing geometric data: the source itself has two true options in a single-answer item.",
+      "alternateEvidenceChecked": [
+        "Current student image q07.png opened; SHA matches assignment.",
+        "Original source PDF pages 1–4 visually inspected; q7 appears on page 1 and confirms central angles 40° and 80° and the same answer choices."
+      ],
+      "fullPageLookupResult": "Source PDF p1 confirms a single-answer prompt; ∠AOB=40°, ∠COD=80°. This makes ③ and ④ both true.",
+      "repairAttempted": "No source mutation. Verified chord inequality 2·AB>CD and arc equality 2 arc AB=arc CD independently.",
+      "whyTruthNonDeterministic": "The item requests one correct choice although choices ③ and ④ are both mathematically true under its stated figure.",
+      "nextRecovery": "ROOT may replace q7 as a true item HOLD after current R2; then only q7 needs fresh R1/R2 on its changed student body."
+    },
+    {
+      "qid": 9,
+      "status": "TRUE_ITEM_HOLD",
+      "frozenAnswer": "④ (30cm) under a tentative BC-tangent reading",
+      "storedAnswer": "HOLD",
+      "decisiveMissingFacts": "The source does not state that BC is tangent, or otherwise define B and C so that AB, AC and BC are uniquely fixed.",
+      "alternateEvidenceChecked": [
+        "Current student image q09.png opened; SHA matches assignment.",
+        "Original source PDF pages 1–4 visually inspected; q9 appears on page 2.",
+        "The complete four-page source PDF was checked; no continuation or answer key supplies another BC relation."
+      ],
+      "fullPageLookupResult": "Page 2 gives AP and AQ tangent to circle O, OP=8cm, OA=17cm, then asks for perimeter of △ABC. It depicts B and C but supplies no defining relation. AP=AQ=15cm is determined; perimeter is not.",
+      "repairAttempted": "No source mutation. A conditional calculation gives 30cm only if BC is additionally assumed tangent at the circle rightmost point; that assumption is absent from the text.",
+      "whyTruthNonDeterministic": "With A,P,Q and the circle fixed, B,C lack defining constraints. Distinct placements/lines produce different △ABC perimeters while preserving the stated conditions.",
+      "nextRecovery": "ROOT may direct a q9 true-item replacement under §25.4 after current R2; otherwise preserve item HOLD. Any replacement needs fresh R1/R2 only for q9."
+    },
+    {
+      "qid": 15,
+      "status": "TRUE_ITEM_HOLD",
+      "frozenAnswer": "⑤ (223°) under a tentative cyclic-diagram reading",
+      "storedAnswer": "HOLD",
+      "decisiveMissingFacts": "The statement says the pentagon circumscribes circle O; no additional condition fixes angle A or B+E from ∠COD alone.",
+      "alternateEvidenceChecked": [
+        "Current student image q15.png opened; SHA matches assignment.",
+        "Original source PDF pages 1–4 visually inspected; q15 appears on page 3.",
+        "The complete source PDF was checked for a continuation or answer key; none exists."
+      ],
+      "fullPageLookupResult": "Page 3 explicitly says the pentagon circumscribes circle O and gives ∠COD=86°. For a tangential pentagon, this gives C+D=188°; total angle sum gives A+B+E=352°, leaving B+E dependent on unconstrained A.",
+      "repairAttempted": "No source mutation. The cyclic interpretation would yield 223°, but conflicts with the printed word 외접; it was not accepted as the source answer.",
+      "whyTruthNonDeterministic": "Under the printed tangential topology, multiple valid angle distributions can preserve ∠COD=86° while changing A and therefore B+E.",
+      "nextRecovery": "ROOT may direct a q15 true-item replacement under §25.4 after current R2; otherwise preserve item HOLD. Any replacement needs fresh R1/R2 only for q15."
+    }
+  ]
+}

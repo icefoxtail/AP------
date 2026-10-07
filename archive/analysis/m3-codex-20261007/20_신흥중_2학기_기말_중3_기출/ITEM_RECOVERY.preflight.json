@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_PREFLIGHT_V1",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "ITEM_RECOVERY",
+  "targetQids": [
+    7,
+    9,
+    15
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f",
+        "solutionExcerpt": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.\n즉\n$A=B$이다.\n서로 같은 두 집합은 원소의 순서는 ",
+        "observation": "Mutual subset relations lead to set equality; element membership fixes a=0, then b and the final sum are derived."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+        "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에",
+        "observation": "The translated center and fixed radius lead to an absolute-value equation; both cases and b>0 are handled."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $",
+        "observation": "Completing squares is shown separately for x and y before constants are collected and the standard form is read."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 16,
+        "solutionSha256": "sha256:ea018fce5031c37442cfac44e69fb2cd487db7600a40998e3fe613c5c799ac41",
+        "solutionExcerpt": "주어진 집합을 먼저 확인한다.\n$A=\\{1,2,4,7,8\\}$,\n$B=\\{3,4,5,7,9\\}$,\n$C=\\{4,7,10,12,13\\}$이다.\n구",
+        "observation": "Set-law transformations are explicit before the shared elements are removed and summed."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read false-PASS findings on SVG geometry/topology, separated solution blocks, Meta-null lookup evidence, and evaluated TeX escape integrity."
+      }
+    ]
+  },
+  "visualSampleRefs": [
+    {
+      "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+      "sha256": "sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+      "gitBlobSha": "8e20c9ec936393448def970c0994bf43b3170a81",
+      "qid": 12,
+      "renderedPreview": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\item-recovery-preflight\\maesan-q12.svg.png",
+      "observation": "Rendered translated circle, axes, center, radius and tangencies match stated facts."
+    },
+    {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+      "sha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+      "gitBlobSha": "323b2910c006305ef098e4bf8e61406eb4702f3f",
+      "qid": 3,
+      "renderedPreview": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\item-recovery-preflight\\hyocheon-q03.svg.png",
+      "observation": "Rendered circle center, radius and marked point match standard-form result."
+    }
+  ],
+  "sourceReview": {
+    "questionPdf": {
+      "absolute": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_수학_2기말.pdf",
+      "sha256": "sha256:7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+      "pageCount": 4,
+      "allPagesVisuallyInspected": true
+    },
+    "answerPdf": {
+      "absolute": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_정답_2기말.pdf",
+      "sha256": "sha256:aef10d001d68e8c0c42624bf04e92f9c6b08dcd7be26e9886088f8d70bc03578",
+      "pageCount": 2,
+      "allPagesVisuallyInspected": true,
+      "mathKey": {
+        "q7": "④",
+        "q9": "④",
+        "q15": "⑤"
+      }
+    },
+    "answerHwp": {
+      "absolute": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_수학_2기말_정답.hwp",
+      "sha256": "sha256:57d42581cf66e55228d917ad74cc86680ae826580b1ad8aaa9f6759587994b0e",
+      "fullBodySectionExtracted": true,
+      "sourceContent": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review-recovery\\answer-hwp-text.txt"
+    },
+    "sourceFacts": {
+      "q7": "Two correct options: ③ and ④.",
+      "q9": "Full diagram shows A-B-P and A-C-Q tangent lines and BC visually tangent to the same circle; together with answer key ④ this is the A-excircle perimeter configuration.",
+      "q15": "Printed 外接 conflicts with cyclic diagram and key ⑤; 内接 is the one-word source-grounded correction."
+    }
+  }
+}

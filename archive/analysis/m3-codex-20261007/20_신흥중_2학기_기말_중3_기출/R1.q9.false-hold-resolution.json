@@ -1,0 +1,55 @@
+{
+  "schema": "JS_ARCHIVE_R1_Q9_SAME_STAGE_FALSE_HOLD_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "qid": 9,
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.independent-freeze.json",
+    "sha256": "5d63f7f2491ee26a3ca4fe462e1d0187d4d59b4ce5258f38b5709d3d21e7f3ef",
+    "independentAnswer": "④",
+    "studentPayloadSha256": "727e912dc2dc3ebda8e30234a2632326bbe483a9da75d729ba53e1a670a10acd",
+    "studentBodyAndVisualUnchanged": true
+  },
+  "preservedFalseHold": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.postfreeze-adjudication.json",
+    "sha256": "39873c337ffd814d3d3dfc2c55e396f57635f2d5f919240828e16aef14ce99b8",
+    "priorConclusion": "HOLD",
+    "status": "SUPERSEDED_BY_FULL_PAGE_SOURCE_RELATION"
+  },
+  "sourceAudit": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.source-audit.json",
+    "sha256": "87778020302b1bbc4c328449f28ed1c7bdffdf36d0cdde3b3cb14450fa014d6b",
+    "row": {
+      "qid": 9,
+      "sourceDisposition": "FALSE_HOLD_NO_REPAIR_NEEDED",
+      "page": 2,
+      "fullPageLookupResult": "The source figure shows A-B-P collinear along the stated tangent AP, A-C-Q collinear along AQ, and segment BC touching the circle at one point as a third tangent. This is an A-excircle configuration. The official answer PDF and HWP both give ④.",
+      "decisiveDerivation": "AP^2=OA^2-OP^2=17^2-8^2=225, so AP=AQ=15. Let T be the tangency point on BC. Tangent-segment equalities give BP=BT and CQ=CT; AP=AB+BP, AQ=AC+CQ, BC=BT+TC. Thus AB+BC+CA=AP+AQ=30 cm.",
+      "repairAttempted": "None to stem/choices/image; solve from source-encoded third tangent.",
+      "whyTruthUnique": "The visible three tangent lines make the perimeter cancellation identity exact; no extra condition is introduced."
+    },
+    "questionPdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+    "answerPdfSha256": "aef10d001d68e8c0c42624bf04e92f9c6b08dcd7be26e9886088f8d70bc03578",
+    "answerHwpSha256": "57d42581cf66e55228d917ad74cc86680ae826580b1ad8aaa9f6759587994b0e",
+    "page": 2,
+    "fullPageRenderedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review\\source-page-2.png",
+    "fullPageRenderedSha256": "56d0e990b9257856fbf7f1fb5f044cfe64c69e62811ccbdaeb2693df641c0be1",
+    "studentCropPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\assets\\images\\20_신흥중_2학기_기말_중3_기출\\q09.png",
+    "studentCropSha256": "1ee083870effc831db335a6341b77f439e7613760b526388befa65d245a4e70f"
+  },
+  "independentDerivation": [
+    "OA=17, OP=8 and OP ⟂ AP, so AP=√(17²−8²)=15; similarly AQ=15.",
+    "The full source page shows B on AP, C on AQ, and segment BC tangent to the same circle at T.",
+    "At B, equal tangents give BP=BT; at C, CQ=CT. Collinearity gives AB=AP−BP, AC=AQ−CQ, and BC=BT+TC=BP+CQ.",
+    "Thus AB+BC+CA=(AP−BP)+(BP+CQ)+(AQ−CQ)=AP+AQ=30 cm, choice ④."
+  ],
+  "currentSolutionSha256": "6b2e8112f4fc756227d2aeb20db1bf1a117b46fd38e30795ff6ac2e4bc72145c",
+  "currentStoredAnswer": "④",
+  "comparison": "MATCH",
+  "verdict": "PASS",
+  "changedStudentFields": [],
+  "changedCurrentField": "solution only, source-grounded proof of tangent-segment cancellation",
+  "freshInputReviewRequired": false,
+  "status": "SAME_STAGE_SOURCE_ADJUDICATION_COMPLETE"
+}

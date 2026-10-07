@@ -1,0 +1,105 @@
+{
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q7-q15",
+  "disclosedAt": "2026-10-07T09:20:31.854Z",
+  "freeze": {
+    "path": "archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R1-clean-q7-q15.independent-freeze.json",
+    "sha256": "4d52fb0ff98261fcc5fe4c149d69fbf49efddda3343aef05ce4b52e471145b73"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\20_신흥중_2학기_기말_중3_기출.js",
+    "sha256": "f5637f7327cdab49b96030aebac3f535a0eeae7ab7ced7b2f74130f21aacc199",
+    "artifactSha": "1b8c96c456c655292d2db13aee2c9d00a7d906d3"
+  },
+  "excludedQids": [],
+  "questions": [
+    {
+      "id": 7,
+      "content": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때, 옳은 것은? (4점)",
+      "choices": [
+        "$\\overline{AB}>\\overline{CD}$",
+        "$\\overline{AB}<\\overline{CD}$",
+        "$\\overline{AB}=\\overline{CD}$",
+        "$\\overset{\\frown}{AB}>\\overset{\\frown}{CD}$",
+        "$\\overset{\\frown}{AB}=\\overset{\\frown}{CD}$"
+      ],
+      "tags": [
+        "도형",
+        "원"
+      ],
+      "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q07.png",
+      "answer": "②",
+      "solution": "두 중심각의 크기는\n$\\angle AOB=40^\\circ,\\quad \\angle COD=80^\\circ$이다.\n각 중심각에 대응하는 작은 호의 크기는 각각\n$\\overset{\\frown}{AB}=40^\\circ,\\quad \\overset{\\frown}{CD}=80^\\circ$이다.\n같은 원에서 중심각이 큰 쪽의 현이 더 길다.\n$40^\\circ<80^\\circ$이므로\n$\\overline{AB}<\\overline{CD}$이다.\n따라서 정답은 ②이다.",
+      "decisiveStep": "같은 원에서 중심각 40°<80°이므로 대응하는 현의 길이는 AB<CD이다.",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "category": "원의 성질",
+      "level": "중",
+      "difficultyBucket": 2,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "questionType": "객관식",
+      "originalCategory": "원의 성질",
+      "layoutTag": "grid",
+      "wide": false,
+      "standardCourse": "중3 수학",
+      "standardUnitOrder": 6,
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+      "visualEvidence": "The original q07 diagram visibly carries the same-circle central angles 40° and 80° used by the replacement; no solution-only SVG is required."
+    },
+    {
+      "id": 15,
+      "content": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때, $\\angle B+\\angle E$의 크기를 구하면?",
+      "choices": [
+        "$216^\\circ$",
+        "$218^\\circ$",
+        "$220^\\circ$",
+        "$222^\\circ$",
+        "$223^\\circ$"
+      ],
+      "tags": [
+        "도형",
+        "원"
+      ],
+      "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q15.png",
+      "answer": "⑤",
+      "solution": "오각형이 원에 내접하므로 $\\angle B$와 $\\angle E$는 원주각이다.\n원 위의 점 순서에 따라\n$\\angle B=\\dfrac12\\left(\\overset{\\frown}{AE}+\\overset{\\frown}{ED}+\\overset{\\frown}{DC}\\right)$,\n$\\angle E=\\dfrac12\\left(\\overset{\\frown}{DC}+\\overset{\\frown}{CB}+\\overset{\\frown}{BA}\\right)$이다.\n두 괄호를 더하면 원 전체의 호가 한 번씩 더해지고, 호 $CD$는 한 번 더 포함된다.\n따라서\n$\\angle B+\\angle E=\\dfrac12\\left(360^\\circ+\\overset{\\frown}{CD}\\right)$\n$=\\dfrac12(360^\\circ+86^\\circ)=223^\\circ$이다.\n따라서 정답은 ⑤이다.",
+      "decisiveStep": "두 원주각이 보는 호의 합에는 전체 360°와 CD 86°가 한 번 더 들어가므로 합은 223°이다.",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "category": "원의 성질",
+      "level": "중",
+      "difficultyBucket": 3,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "questionType": "객관식",
+      "originalCategory": "원의 성질",
+      "layoutTag": "grid",
+      "wide": false,
+      "standardCourse": "중3 수학",
+      "standardUnitOrder": 6,
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+      "visualEvidence": "The full source diagram shows A,B,C,D,E on the circle; after correcting the single contradictory word to 내접, the retained q15 crop matches the corrected cyclic condition."
+    }
+  ]
+}
