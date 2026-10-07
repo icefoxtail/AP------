@@ -1,0 +1,54 @@
+{
+  "schema": "JS_ARCHIVE_R1_QID_COMPONENT_REVIEW_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_신흥중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q18",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 18,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceSha256": "0fffdb153f2b4bddd5770bbb596d6e98c0ca9e6b13af08cb0ac1fce8e3ce40ac",
+  "artifactSha": "8282d03ef959d469420949faf69690e27fc736fb",
+  "studentBundleSha256": "e58054ceaa7398038b580f52543323a4f04bd9073850d190e9ae534f9177e19d",
+  "freeze": {
+    "path": "archive/analysis/m3-codex-20261007/21_신흥중_2학기_기말_중3_기출/R1-clean-q18.independent-freeze.json",
+    "sha256": "8641bd5d6f4ace7d3071a117a4696c43204dac5426521999b973dd1a06e1646d"
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/m3-codex-20261007/21_신흥중_2학기_기말_중3_기출/R1-clean-q18.postfreeze-disclosure.json",
+    "sha256": "2bbe615608970431ef15e89dd3ea83c5ad0c0389b8df63e33c1cbf35a591d34f"
+  },
+  "answerComparison": {
+    "independentAnswer": "③",
+    "storedAnswer": "③",
+    "result": "MATCH",
+    "cardinality": 1
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "status": "PASS",
+      "disposition": "KEEP",
+      "basis": "한 문장 안에서 질문 대상과 (단, x/y 변수 정의)가 결속되고 배점이 문항 끝에 있다. 독립된 조건·보기·공통 자료 경계가 더 없어 추가 개행 요구 근거가 없다. 그림 선택지는 별도 q18 PNG에 ①~⑤로 구조화되어 있다."
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "PASS",
+      "disposition": "KEEP",
+      "basis": "줄별로 변수 의미(x 증가, y 감소) → 음의 상관관계/오른쪽 아래 방향 → ③ 식별 → 최종 답이 진행된다. 이 개념 문항에는 생략된 계산식이나 기하 근거가 없고, 각 전환이 별도 줄/문단으로 드러난다."
+    },
+    "META": {
+      "status": "PASS",
+      "disposition": "KEEP",
+      "basis": "현재 q18 값은 M3·통계·통계 자료 해석, standardUnitKey M3-07, 유효한 비-null subUnitKey M3-07-STATISTICS_DATA_INTERPRETATION이며 difficultyBucket 2 / level 중 / high confidence / NONE boundary flag가 서로 일관된다. H2 null-subUnit 예외를 사용하지 않는다."
+    },
+    "VISUAL_SVG": {
+      "status": "PASS",
+      "disposition": "KEEP",
+      "basis": "문항의 핵심인 산점도 선택을 위해 문제 PNG가 필수다. 실제 q18.png를 열어 다섯 패널, x/y 축 및 분포 방향을 확인했고 SHA가 할당값과 일치한다. ③만 우하향이며 ①·⑤는 우상향, ②·④는 뚜렷한 상관 방향이 없다. 풀이 보조 SVG는 필요하지 않다."
+    }
+  },
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "renderReviewClaimed": false,
+  "componentConclusion": "PASS",
+  "changedLocus": [],
+  "issues": []
+}

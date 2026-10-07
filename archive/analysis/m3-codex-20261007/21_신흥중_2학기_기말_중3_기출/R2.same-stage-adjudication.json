@@ -1,0 +1,55 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_R2_SAME_STAGE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_신흥중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "originalFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출\\R2.blind-freeze.json",
+  "originalFreezeSha256": "9352d933294484114a3e93b921f7354b9795af48a90950e02c24228c6ca28f24",
+  "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출\\R2.postfreeze-disclosure.json",
+  "postfreezeDisclosureSha256": "193ee1978967d0a133951eebfdb7e04d1e6f36918fdfe4e3e49a260706736f8e",
+  "currentArtifactSha256": "00c859629b9cce3a326ba8e9107631b47ebe19742cef46e3cf00287afcda51f1",
+  "studentBodyComparison": {
+    "sourceBundleSha256": "ee009e6a705d5381be3fa1dc1b3673e9d800a64d6b69317e7f314b7189e6b7e7",
+    "disclosedQidsMatched": 23,
+    "totalQids": 23,
+    "comparedFields": [
+      "content",
+      "choices",
+      "image"
+    ],
+    "status": "PASS"
+  },
+  "changes": [
+    {
+      "qid": 18,
+      "originalBlindAnswer": "①",
+      "storedAnswer": "③",
+      "compareResult": "SUSPICIOUS",
+      "adjudicatedAnswer": null,
+      "verdict": "ITEM_HOLD",
+      "reason": "학생용 bundle 및 실제 원본 시험지 3쪽은 모두 문언상 양의 상관관계를 요구하지만 그림 ①만 양의 관계이고, 비행 거리 증가와 남은 연료는 음의 관계를 시사하여 조건 내부가 모순된다. 저장 답 ③을 강제 채택하지 않는다.",
+      "sourcePage": "R1.source-pdf-3.png",
+      "nextAction": "동일 R1 원 session으로 q18 item HOLD 전달; source fidelity 검수 후 최소 수정 또는 true-HOLD 직접 대체. 변경 시 영향 q18만 fresh R2."
+    },
+    {
+      "qid": 21,
+      "originalBlindAnswer": "108°",
+      "storedAnswer": "72°",
+      "compareResult": "MISMATCH",
+      "adjudicatedAnswer": "72°",
+      "verdict": "ADJUDICATED_MATCH",
+      "reason": "사전 계산 오류. 정오각형에서 ∠FBC=72°, ∠BCF=36°이므로 ∠BFC=72°. 원 freeze는 보존하고 같은 R2에서 수학적으로 정정."
+    },
+    {
+      "qid": 22,
+      "originalBlindAnswer": "3√3 cm (part 2 only; part 1 omitted)",
+      "storedAnswer": "(1) △ABC∼△ACH; (2) 3√3 cm",
+      "compareResult": "MISMATCH",
+      "adjudicatedAnswer": "(1) △ABC∼△ACH; (2) 3√3 cm",
+      "verdict": "ADJUDICATED_MATCH",
+      "reason": "원 freeze가 학생 문항의 두 소문항 중 (2) 길이 답만 기록해 답 cardinality가 불완전했다. 학생 도형에서 ∠ACB=∠AHC=90°이고 접선-현 각으로 ∠ABC=∠ACH이므로 △ABC∼△ACH. AB=12, AH=9에서 AC²=AB·AH=108, CH²=AC²−AH²=27, CH=3√3. 원 freeze를 보존해 보완 기록."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "JS_ARCHIVE_R1_SAME_SESSION_ADJUDICATION_V1",
+  "examUid": "21_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "freezeRef": {
+    "path": "R1.independent-freeze.json",
+    "sha256": "c37cf00e127ea3c2d79824ccd2d7edbd7ad4238e95eff993b4de4544d46b7558",
+    "preserved": true
+  },
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_신흥중3_수학_2기말.pdf",
+    "sha256": "5a4981d68bfc30f53ef25ba1b1c7369a63816ab45737dd1400d24560f8037b53",
+    "q18Page": 3,
+    "renderedPageEvidence": [
+      "R1.source-pdf-3.png",
+      "R1.source-pdf-4.png"
+    ],
+    "q18BodyMatchesBundle": true,
+    "decision": "FALSE_HOLD: exact native wording defines x as flight distance and y as remaining fuel amount; five plots in q18 image contain a unique negative trend, option ③; no body change."
+  },
+  "items": [
+    {
+      "qid": 6,
+      "originalFreezeAnswer": "2πa",
+      "sameSessionAdjudicatedAnswer": "③ (2πa)",
+      "basis": "Each square side is the diameter of one outside semicircle. Four arcs each have length πa/2, total 2πa. Original stored choice ② contradicted the solution conclusion ③; answer repaired to ③."
+    },
+    {
+      "qid": 14,
+      "originalFreezeAnswer": "④",
+      "sameSessionAdjudicatedAnswer": "③",
+      "basis": "The source's third statement is the definition of variance. The fourth requires absolute deviation to compare closeness; signed deviation being numerically smaller does not imply closer. Stored answer ③ is correct; original freeze error preserved."
+    },
+    {
+      "qid": 19,
+      "originalFreezeAnswer": "1/5",
+      "sameSessionAdjudicatedAnswer": "⑤ (2/5)",
+      "basis": "Prompt asks for social score greater than science, x>y. Six points lie below y=x among 15, giving 6/15=2/5. Stored solution/choice ⑤ are correct; original freeze direction error preserved."
+    },
+    {
+      "qid": 18,
+      "originalFreezeAnswer": "③",
+      "sameSessionAdjudicatedAnswer": "③",
+      "basis": "Native PDF p.3 exact body matches student bundle; x flight distance increases while y remaining fuel decreases. Unique option ③. Blank answer/solution was a false hold, corrected without body change."
+    },
+    {
+      "qid": 22,
+      "originalFreezeAnswer": "(1) △AHC∼△ACB; (2) 3√3 cm",
+      "sameSessionAdjudicatedAnswer": "(1) △ABC∼△ACH; (2) 3√3 cm",
+      "basis": "The similar-triangle order is equivalent. Stored answer omitted subpart (1) and doubled TeX escapes; answer repaired with both requested parts and normal TeX encoding."
+    }
+  ],
+  "q15TableLayoutRepair": {
+    "qid": 15,
+    "changedField": "image",
+    "removed": true,
+    "reason": "Original PDF and q15.png table cells were directly compared with Markdown table: row labels 회/편차(점), columns 1–5, cells 5, −6, x−1, 3, −1 all match exactly. archive/engine.html prints the image below content, so the image duplicated the complete Markdown table; removing only image leaves all student mathematical information unchanged. Freeze preserved under ROOT direction."
+  },
+  "changeLoci": {
+    "qids": [
+      2,
+      4,
+      6,
+      9,
+      12,
+      15,
+      16,
+      18,
+      22
+    ],
+    "fields": {
+      "2": [
+        "solution"
+      ],
+      "4": [
+        "solution"
+      ],
+      "6": [
+        "answer",
+        "solution"
+      ],
+      "9": [
+        "solution"
+      ],
+      "12": [
+        "solution"
+      ],
+      "15": [
+        "image"
+      ],
+      "16": [
+        "solution"
+      ],
+      "18": [
+        "answer",
+        "solution"
+      ],
+      "22": [
+        "answer"
+      ]
+    }
+  },
+  "renderStatus": "NOT_RUN_ROOT_WAIVER"
+}

@@ -1,0 +1,58 @@
+============================================================
+ Archive 등록 자동 동기화: DB → UID → META HOLD → INDEX → CATALOG
+============================================================
+✅ db.js 생성 완료: 총 1개 파일 등록
+✅ DB 변경 요약: 이전 0개 → 현재 1개 (추가 1 / 삭제 0 / 메타 변경 0)
+✅ 기존 메타데이터 보존: 0개; 신규 inventory 등록: 1개
+➕ 새로 추가됨(1개):
+  - original/middle/m3/2final/21_신흥중_2학기_기말_중3_기출.js
+✅ archive 기준 위치: C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_신흥중_2학기_기말_중3_기출\registration\candidate\archive
+✅ exams 기준 위치: C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_신흥중_2학기_기말_중3_기출\registration\candidate\archive\exams
+✅ db.js 출력 위치: C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_신흥중_2학기_기말_중3_기출\registration\candidate\archive\db.js
+✅ 출력 구조: window.mainDB.exams
+✅ file 경로: exams/ 제외, exams 내부 상대경로
+✅ 하위 폴더 스캔: original / similar / types 포함
+✅ 유형 폴더 학년 구분 대응: types/high/h1~h3, types/middle/m1~m3
+✅ 금지 구조 검사 통과: "시험", "연도", "학교", 2026년 패턴, file: exams/ 없음
+
+▶ 문항 UID 증분 동기화
+  $ node C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_신흥중_2학기_기말_중3_기출\registration\candidate\archive\tools\intelligence\sync-question-identity-map-v1.mjs
+node:internal/modules/cjs/loader:1459
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_신흥중_2학기_기말_중3_기출\registration\candidate\archive\tools\intelligence\sync-question-identity-map-v1.mjs'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)
+    at Module._load (node:internal/modules/cjs/loader:1242:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.14.1
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_������_2�б�_�⸻_��3_����\registration\candidate\archive\build_db.py", line 1919, in <module>
+    run_archive_registration_sync()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_������_2�б�_�⸻_��3_����\registration\candidate\archive\build_db.py", line 1848, in run_archive_registration_sync
+    run_pipeline_command(
+    ~~~~~~~~~~~~~~~~~~~~^
+        "���� UID ���� ����ȭ",
+        ^^^^^^^^^^^^^^^^^^^^^^^
+        ["node", intelligence / "sync-question-identity-map-v1.mjs"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        repo_root,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\AP-worktrees\m3-codex-main-done\AP------\.tmp\archive\m3-codex-20261007\21_������_2�б�_�⸻_��3_����\registration\candidate\archive\build_db.py", line 1831, in run_pipeline_command
+    subprocess.run([str(part) for part in command], cwd=str(cwd), check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['node', 'C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_������_2�б�_�⸻_��3_����\\registration\\candidate\\archive\\tools\\intelligence\\sync-question-identity-map-v1.mjs']' returned non-zero exit status 1.
