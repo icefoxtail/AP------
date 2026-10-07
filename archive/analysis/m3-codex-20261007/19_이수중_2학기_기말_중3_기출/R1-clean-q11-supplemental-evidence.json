@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_SUPPLEMENTAL_COMPONENT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q11",
+  "scopeQids": [11],
+  "componentOnly": true,
+  "fullStagePassClaimed": false,
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+  "head": "0bb109b364c76c6b11038a73eb050632da5380c1",
+  "workingJsRawSha256": "b023fe2d4dc636970df909bfe9e9038c170c5db5d291c7edbe57f3136d651190",
+  "studentBundle": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\19_이수중_2학기_기말_중3_기출\\R1-clean-q11.student-input.json",
+    "sha256": "c109483710b5f1bef9f33e7c955af872590e2326bf588d8b6c457b8af9753c2d"
+  },
+  "freeze": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\19_이수중_2학기_기말_중3_기출\\R1-clean-q11-independent-freeze.json",
+    "sha256": "b8a512e2d948b6d99ab10a6144f83c73490704ff0000efb1afdfb3b2f167bde3"
+  },
+  "postfreezeDisclosure": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\19_이수중_2학기_기말_중3_기출\\R1-clean-q11.postfreeze-disclosure.json",
+    "sha256": "e1ce3a350241e5fca0762f899fd561588775880d8b504a065c3f23fa3dc8f899"
+  },
+  "asset": {
+    "ref": "assets/images/19_이수중_2학기_기말_중3_기출/q11.png",
+    "sha256": "b3a29ce8a749d841420293a19fd57a3fc9c97a46c1022d4d56cbc5c40c4ed03f",
+    "physicallyOpenedBeforeFreeze": true
+  },
+  "currentSolutionSha256": "09d3950f122fff33e89852c5835b6b4375bab06f3695eb8f443dff7bff4005ca",
+  "independentAnswer": {
+    "status": "MATCH",
+    "choiceIndex": 5,
+    "frozenChoice": "$\\overline{OC},\\ \\overline{CN},\\ \\overline{ON}$",
+    "storedAnswer": "⑤",
+    "cardinality": "ONE",
+    "reason": "Equal chords are bisected into equal half-chords; OA=OC are radii; right triangles OAM and OCN are RHS-congruent, giving OM=ON."
+  },
+  "axisReviews": {
+    "questionLayout": {
+      "status": "PASS_STATIC_REVIEW",
+      "reason": "Prompt separates setup, ordered proof facts, and blank question with meaning-boundary line breaks; formulas and segment relations remain intact.",
+      "renderStatus": "NOT_RUN_ROOT_WAIVER",
+      "actualRenderPassClaimed": false,
+      "parityLimit": "SOURCE_TEXT_EXACT_PARITY against the original source is not claimed from this qid-only disclosure."
+    },
+    "solutionLayout": {
+      "status": "FAIL_MINIMAL_REPAIR_REQUIRED",
+      "smallBoardContinuityStatus": "FAIL",
+      "finding": "Current solution establishes AM=CN and OA=OC and notes the right angles, then jumps directly to blank values. It omits decisive RHS congruence and the corresponding-side conclusion OM=ON.",
+      "minimalChange": "After OA=OC, add a separate line stating triangle OAM congruent to triangle OCN (RHS), then a separate line stating OM=ON; retain the existing blank mapping and answer.",
+      "goldenNegativePreflight": "NOT_RUN: this component authored no solution text and made no repair; required before the original R1 owner writes the correction."
+    },
+    "meta": {
+      "status": "REPAIR_REQUIRED",
+      "currentFields": {
+        "category": "원의 성질",
+        "originalCategory": "원의 성질",
+        "tags": ["도형", "원", "현의 수직이등분선"],
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "crossConceptKeys": ["CC_PYTHAGOREAN"],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "primaryClassification": "M3-06 / M3-06-CIRCLE_LINE; RPM Primary M3-2 L3-2.1.1 (원의 중심과 현), decisive L4-2.1.1.3 (중심거리와 현의 길이). Current PT and template keys are ACTIVE, and template parent matches PT; inspected 2015 M3-06 binding is ACTIVE.",
+      "crossConceptFinding": "CC_PYTHAGOREAN is not used by the current solution, which uses RHS triangle congruence; remove this unsupported assignment (empty list) unless the original R1 owner records a solution-based reason satisfying the decisive additional concept rule.",
+      "conditionIntegration": "No separate condition key is implicated; SEQUENTIAL matches one ordered proof.",
+      "lookupLimit": "Disclosure does not expose curriculum identity separately. Preserve any existing projection debt only when exact current binding evidence confirms it."
+    },
+    "visualSvg": {
+      "status": "PASS_STATIC_VISUAL_REVIEW",
+      "visualNecessity": "Problem diagram supports the named chord/foot/right-angle configuration and equal-chord tick marks; the referenced PNG was physically opened before freeze.",
+      "semanticParity": "Labels A, B, C, D, O, M, N; circle, chords, and perpendicular feet agree with the student statement.",
+      "svgDisposition": "No solution SVG is needed to explain this theorem proof.",
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    }
+  },
+  "difficulty": {
+    "status": "RECHECK_RECOMMENDED",
+    "current": {"bucket": 3, "confidence": "high", "boundary": "NONE", "legacyLevel": "중"},
+    "reason": "The prompt supplies the proof sequence and asks for three entries; the method is strongly guided and may fit bucket 2 under the fixed 2/3 boundary. Independently re-adjudicate before carrying bucket 3/high forward."
+  },
+  "artifactMutation": "NONE",
+  "validator": {
+    "disposition": "NOT_RUN_COMPONENT_ONLY",
+    "issues": ["R1 generic V2 validator intentionally deferred to the original R1 owner after merging this qid component with valid unchanged-qid evidence."],
+    "nextRequiredAction": "Original R1 owner applies qid11-only minimum solution correction, removes unsupported CC_PYTHAGOREAN or records canonical evidence, re-adjudicates difficulty bucket, binds changed qid and direct dependencies, then runs the required full generic V2 R1 validator once after merge."
+  }
+}

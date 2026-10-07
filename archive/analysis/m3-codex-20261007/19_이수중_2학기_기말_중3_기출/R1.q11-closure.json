@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "CODEX_R1_QID11_CLEAN_COMPONENT_MERGE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scopeQids": [
+    11
+  ],
+  "oldInvalidFreeze": {
+    "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.independent-freeze.json",
+    "sha256": "bee36be51a3104120af60b526b2a46eef08ae342eab3eea6729417aca6845731",
+    "status": "PRESERVED_FAILED_INCOMPLETE_STUDENT_INPUT"
+  },
+  "cleanComponent": {
+    "freezePath": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1-clean-q11-independent-freeze.json",
+    "freezeSha256": "b8a512e2d948b6d99ab10a6144f83c73490704ff0000efb1afdfb3b2f167bde3",
+    "supplementalPath": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1-clean-q11-supplemental-evidence.json",
+    "supplementalSha256": "2bdd039e34068fc38232749d669c8a1720f44b17aa1fb77f52664e73c7d65b72",
+    "studentBundleSha256": "c109483710b5f1bef9f33e7c955af872590e2326bf588d8b6c457b8af9753c2d",
+    "studentPayloadSha256": "a91300002354cdaf56bbd967dd466646799c9001646f749727cf0fd28278bc43",
+    "assetSha256": "b3a29ce8a749d841420293a19fd57a3fc9c97a46c1022d4d56cbc5c40c4ed03f",
+    "independentAnswer": "⑤",
+    "cardinality": "ONE",
+    "compareResult": "MATCH"
+  },
+  "solutionRepair": {
+    "status": "APPLIED_MINIMAL",
+    "beforeSolutionSha256": "09d3950f122fff33e89852c5835b6b4375bab06f3695eb8f443dff7bff4005ca",
+    "afterSolutionSha256": "d81ba59c175ac04a507d265c153bad27b540aa45965aee145e0feb548197a1ab",
+    "changedLocus": "questionBank[11].solution",
+    "change": "After establishing OA=OC and AM=CN with right angles at M and N, explicitly state △OAM≅△OCN by RHS on its own line, then state the corresponding-side conclusion OM=ON on a separate line before mapping the blanks.",
+    "solutionLayout": "PASS_STATIC_AFTER_REPAIR",
+    "smallBoardContinuityStatus": "PASS"
+  },
+  "metaRepair": {
+    "changedLocus": "questionBank[11].crossConceptKeys",
+    "before": [
+      "CC_PYTHAGOREAN"
+    ],
+    "after": [],
+    "reason": "Current q11 proof uses chord bisection, equal radii, and RHS triangle congruence; it contains no Pythagorean step or independent Pythagorean decisive concept. Retain the current M3-06 unit, PT_CIRCLE_LINE_RELATION, and TM_CIRCLE_CHORD_PERP_BISECTOR projection."
+  },
+  "difficultyAdjudication": {
+    "before": {
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyLevel": "중"
+    },
+    "after": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "중"
+    },
+    "reason": "With the complete proof scaffold visible, the student fills radius equality, equal half-chords, and the RHS correspondence. The theorem and method are familiar and immediately determined by the printed sequence; choosing or restructuring a proof path is not required. This matches Bucket 2's direct standard combination more closely than Bucket 3's need to select a solution direction. The adjacent-boundary review resolves toward 2 with high confidence."
+  },
+  "unchangedAxesReused": {
+    "questionLayout": "PASS_STATIC_REVIEW from q11 clean component; no student-field change after its freeze",
+    "metaUnitAndProjection": "Retain M3-06 / M3-06-CIRCLE_LINE / PT_CIRCLE_LINE_RELATION / TM_CIRCLE_CHORD_PERP_BISECTOR; ACTIVE binding supported in component evidence",
+    "visualSvg": "PASS_STATIC_VISUAL_REVIEW from q11 clean component; q11 problem PNG unchanged, no solution SVG required",
+    "otherQids": "Reuse valid unchanged qids 1-10 and 12-22; no additional semantic or visual review performed"
+  },
+  "calibrationPreflight": {
+    "calibrationPath": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.calibration.json",
+    "status": "PASS_REUSED_SAME_R1_SESSION_BEFORE_SOLUTION_REPAIR",
+    "goldenCount": 3,
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "allCurrentSampleHashesMatchRecorded": true
+  },
+  "closure": {
+    "overallVerdict": "R1_QUALITY_SEALED",
+    "genericValidator": {
+      "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.validator.raw.json",
+      "sha256": "1fe8082573ae13054f5044da54c556e4f8d06afb93db04d4be50c4cb0e6d7e13",
+      "disposition": "PASS",
+      "issues": [],
+      "denominator": 22,
+      "rowCount": 22
+    },
+    "validatedEvidence": {
+      "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.evidence.json",
+      "sha256": "060c297d691413946c8d4bcd1ca5d3c8c11d3bc17456d60ffbb59fa3760b19ac"
+    },
+    "finalArtifact": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\19_이수중_2학기_기말_중3_기출\\19_이수중_2학기_기말_중3_기출.js",
+      "rawSha256": "a8a868081daea3e687ceb80ef684429b9b7f07b4ed80f4aab141e84b722bab06",
+      "artifactSha": "921e27a75a325462948b76f56adb381347362727"
+    },
+    "itemHoldCount": 0,
+    "actualRender": "NOT_RUN_ROOT_WAIVER",
+    "actualRenderPassClaimed": false
+  }
+}
