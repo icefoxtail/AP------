@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "APMATH_VISUAL_ENGINE_INDEPENDENT_REVIEW_v1",
+  "reviewer": "Codex",
+  "reviewedHead": "1792b181f2da31b4526f0b17e0cf5f2fccadfe56",
+  "sourceScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+  "implementationPackage": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v12",
+  "reviewedPackageManifestSha256": "sha256:cea7beeb1f3f2a53645229039902d4c3c6960ccc14d3adb588aa54abaab1d544",
+  "verdict": "PASS_FOR_READY_FOR_FINAL_REVIEW",
+  "codeReview": {"status":"PASS","findings":[]},
+  "executionReview": {
+    "nodeFullSuite":{"status":"PASS","tests":158,"passed":158,"failed":0,"excludedTestFile":"archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs","exclusionReason":"This regression enters q10 Phase 2; q10 was held at the shared 3/3 repair limit.","logReviewed":true,"independentlyRerunByCodex":false},
+    "nodeFocusedSuite":{"status":"PASS","tests":27,"passed":27,"failed":0},
+    "pythonFullSuite":{"status":"PASS","tests":186,"passed":186,"failed":0,"independentlyRerunByCodex":true}
+  },
+  "archiveEvidenceReview":{"controlledFixtureRows":13,"selectedRowsPass":13,"localOnly":true,"externalRequests":0,"candidateSvgResponseHashesMatch":true,"qriousResponseSha256":"sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d","profileAndArchivePngCount":91,"actualArchiveContextScreenshotsReviewed":13,"manifestFiles":333,"packageIndexUniquePaths":332,"duplicateIndexPaths":0},
+  "qualificationDisposition":{"canonicalUidAuthority":"INPUT_REQUIRED","qualifiedUidCount":0,"phase5":"BLOCKED","canonicalQ10":"UNRESOLVED / REPAIR_BUDGET_EXHAUSTED at 3/3; not rerun","q1":"UNRESOLVED / INVALID_SOURCE_CONDITION_BINDING; zero repairs; no Archive capture","coordinateFreeQ1":"UNRESOLVED / INVALID_SOURCE_CONDITION_BINDING; existing three repairs retained; no Archive capture","sealOrActiveClaim":false},
+  "resolvedFindings":[{"id":"ABSOLUTE_VALUE_TEST_EOF_SYNTAX","resolutionCommit":"37b1b336437abeb57c8605f3705e660b94db277b"},{"id":"ACTUAL_ARCHIVE_SCREENSHOT_PACKAGE_GAP","resolutionCommit":"37b1b336437abeb57c8605f3705e660b94db277b"},{"id":"DUPLICATE_INDEX_PATHS_AND_Q10_REF","resolutionCommit":"32108c56bd4676cd7f673b6d322fa79b2256955e"},{"id":"STALE_PACKAGE_CROSS_REFERENCES_AND_REPORT_STATUS","resolutionCommit":"1792b181f2da31b4526f0b17e0cf5f2fccadfe56"}],
+  "remainingFindings":[{"id":"Q10_SOURCE_RESULT_PROVENANCE_PATH","severity":"LOW","status":"NON_BLOCKING","description":"The original q10 sourceResultRef is an unavailable .tmp path; its copied result, manifest, abort record, and SHA are available and bound within the tracked package; the canonical q10 ledger remains unchanged at 3/3."}]
+}

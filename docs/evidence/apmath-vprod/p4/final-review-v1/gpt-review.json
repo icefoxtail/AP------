@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "APMATH_VISUAL_ENGINE_INDEPENDENT_REVIEW_v1",
+  "reviewer": "GPT independent sub-agent",
+  "reviewedHead": "1792b181f2da31b4526f0b17e0cf5f2fccadfe56",
+  "sourceScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+  "implementationPackage": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v12",
+  "reviewedPackageManifestSha256": "sha256:cea7beeb1f3f2a53645229039902d4c3c6960ccc14d3adb588aa54abaab1d544",
+  "verdict": "PASS_FOR_READY_FOR_FINAL_REVIEW",
+  "codeAndAuthorityReview":{"status":"PASS","blockingFindings":[],"capabilityFingerprintsRecomputed":9,"allFingerprintsMatchLedger":true,"constructionV1":"11 source-bound SymPy/Cindy condition audits, independent final-SVG primitive check, fail-closed degeneracies","unsupportedBoundaries":"Explicit; no general constraint solver, arbitrary conics, mixed compositions, or unrestricted domains claimed"},
+  "executionEvidenceReview":{"nodeTests":"158/158 PASS; archive-cancel-recovery.test.mjs excluded because it invokes q10 Phase 2","pythonTests":"186/186 PASS","actualArchiveRows":13,"allSelectedRowsPass":true,"allRowsLocalOnly":true,"allRowsHaveZeroExternalRequests":true,"candidateSvgAndQrResponseHashesMatch":true,"qriousSha256":"sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d","screenshotsReviewed":["cubic","construction-v1","rational-hole"],"manifestFiles":333,"uniqueIndexPaths":332,"duplicateIndexPaths":0},
+  "qualificationDisposition":{"quadratic":"Historical q10 full-profile PASS is correctly marked stale/experimental; current canonical q10 remains unresolved at 3/3.","q10Incident":"Separate unresolved cancellation attempt with one isolated row and no CAPTURE receipt; does not modify or reset canonical ledger.","q1AndCoordinateFreeQ1":"Both final-fingerprint replays fail closed at INVALID_SOURCE_CONDITION_BINDING; no retries.","uidAuthority":"INPUT_REQUIRED; qualified UID count zero; Phase 5 BLOCKED; no Seal/ACTIVE claim."},
+  "remainingFindings":[{"id":"Q10_SOURCE_RESULT_PROVENANCE_PATH","severity":"LOW","status":"NON_BLOCKING","description":"The q10 incident’s original sourceResultRef retains an unavailable .tmp path. The copied result, manifest, and abort references are package-local and hash-verified."}]
+}
