@@ -114,5 +114,3 @@ test('absolute-value natural boundary candidate passes measured Archive profiles
   const resultPath=path.join(root,examRoot,'visual-engine','production/absolute-value-publication-result.json');fs.mkdirSync(path.dirname(resultPath),{recursive:true});fs.writeFileSync(resultPath,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
   console.log('ABSOLUTE_VALUE_ACTUAL_ARCHIVE='+JSON.stringify({classification:'CONTROLLED_SYNTHETIC_CONTENT_FIXTURE',corner:plan.absoluteFeatures.corner,viewport:plan.viewport,profileAudits:profileAudits.map(row=>({sizeClass:row.sizeClass,status:row.status,displayScale:row.displayScale,graphStatus:row.graphStatus,arms:row.absoluteOverview?.arms,errors:row.graphErrors})),selectedSizeClass:selected,archiveStatus:final.capture.status,resultPath:path.relative(root,resultPath).replaceAll('\\','/')}));
 });
-
-\n

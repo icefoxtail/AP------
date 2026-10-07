@@ -28,5 +28,60 @@
       "fileCount": 272,
       "bytes": 11152711
     }
-  ]
+  ],
+  "correctiveRegression": {
+    "status": "PASS",
+    "testFilesFixed": [
+      "archive/tools/geometry-equation/tests/phase4-absolute-value-spec.test.mjs",
+      "archive/tools/geometry-equation/tests/absolute-value-archive.test.mjs"
+    ],
+    "focused": [
+      {
+        "command": "node --test phase4-absolute-value-spec.test.mjs",
+        "tests": 2,
+        "passed": 2,
+        "failed": 0,
+        "log": {
+          "path": "payload/regression/absolute-value-spec-focused.txt",
+          "bytes": 312,
+          "sha256": "sha256:6b907c5075f2d561426b21092313911f4de911e8ca91914028081802ef29134a"
+        }
+      },
+      {
+        "command": "node --test --test-concurrency=1 absolute-value-archive plus all Phase 4 spec/Construction files",
+        "tests": 29,
+        "passed": 29,
+        "failed": 0,
+        "log": {
+          "path": "payload/regression/phase4-spec-construction-focused.txt",
+          "bytes": 9121,
+          "sha256": "sha256:c9d50be9439293cff3dc28a5920e05606135c5bbeb939641cad7c0e06810928b"
+        }
+      }
+    ],
+    "safeNodeSuite": {
+      "command": "node --test --test-concurrency=1 all geometry-equation tests except archive-cancel-recovery.test.mjs",
+      "exitCode": 0,
+      "tests": 158,
+      "passed": 158,
+      "failed": 0,
+      "excludedTestFile": "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs",
+      "exclusionReason": "This file enters q10 Phase 2. It was excluded to preserve the canonical q10 shared 3/3 ledger.",
+      "log": {
+        "path": "payload/regression/node-full-suite.txt",
+        "bytes": 48867,
+        "sha256": "sha256:c81a96086db49341ff1ccb51a4c1c80afd38e4a772c9623eba44260456650658"
+      }
+    },
+    "syntaxDefectAttempt": {
+      "path": "payload/regression/node-syntax-defect-attempt.json",
+      "bytes": 782,
+      "sha256": "sha256:0c6c954cc9fff00d82033fd0b3e33203b75c7bd980c06af7216ef8cced666de5"
+    },
+    "supersededPriorNodeRun": {
+      "path": "payload/regression/node-full-suite-pre-correction-superseded.txt",
+      "bytes": 48864,
+      "sha256": "sha256:e56edd30a816496ce0753308bcff684ed667cf42c85a4425f99bfca435aa0449"
+    }
+  }
 }

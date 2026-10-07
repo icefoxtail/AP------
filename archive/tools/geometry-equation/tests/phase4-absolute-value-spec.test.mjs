@@ -43,8 +43,3 @@ test('absolute-value spec preserves the exact corner, intercepts, marker, and br
   const inverted=specFor({capability:'absolute-value-spike-v1',graphPlan:interceptPlan.graphPlan,caption:'절댓값 함수의 그래프'},interceptPlan.graphModel,'absolute-value-inverted-fixture');
   assert.deepEqual([...inverted.objects.find(object=>object.id==='f').criticalX].sort((a,b)=>a-b),[-2,0,2]);
 });
-
-
-
-
-\n

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "APMATH_NODE_SYNTAX_DEFECT_ATTEMPT_v1",
+  "status": "FAILED_BEFORE_CORRECTION",
+  "defects": [
+    {
+      "testFile": "archive/tools/geometry-equation/tests/phase4-absolute-value-spec.test.mjs",
+      "line": 50,
+      "error": "SyntaxError: Invalid or unexpected token",
+      "cause": "Literal backslash+n suffix at EOF."
+    },
+    {
+      "testFile": "archive/tools/geometry-equation/tests/absolute-value-archive.test.mjs",
+      "line": 118,
+      "error": "SyntaxError: Invalid or unexpected token",
+      "cause": "Same EOF cleanup mistake; fixed before corrected suite."
+    }
+  ],
+  "rawFailureLogPreserved": false,
+  "note": "The full-suite log path was reused for the corrected run; this structured record does not claim to be a raw failure log."
+}
