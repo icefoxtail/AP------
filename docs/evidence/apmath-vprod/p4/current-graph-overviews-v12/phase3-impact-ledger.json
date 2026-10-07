@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "APMATH_PHASE3_FINAL_FINGERPRINT_IMPACT_v1",
+  "classification": "EXPERIMENTAL_LOCATOR_IMPACT_ONLY_NOT_QUALIFICATION",
+  "compositeScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+  "policy": "One replay each; no retry; preserve existing shared ledgers; q10 excluded.",
+  "candidates": [
+    {
+      "candidate": "geometry-q1",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "priorStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "priorFingerprint": "sha256:f3016860f41469da4790d6aba884e7692be2ce26b1ae46d8af70c972c4f81283",
+      "priorRepairCount": 0,
+      "priorRepairLedger": [],
+      "priorResultRef": {
+        "path": "payload/phase3-impact/geometry-q1/prior-result.json",
+        "bytes": 28952,
+        "sha256": "sha256:16d91ece361c8249d0be28f827719de9b0c21696f27e65715814c27185f0d11c"
+      },
+      "finalCompositeScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+      "finalResultFingerprint": null,
+      "finalStatus": "UNRESOLVED",
+      "error": "INVALID_SOURCE_CONDITION_BINDING",
+      "repairCount": 0,
+      "repairLedger": [],
+      "actualArchive": null,
+      "productionAuthorized": false,
+      "resultRef": {
+        "path": "payload/phase3-impact/geometry-q1/final-result.json",
+        "bytes": 17656,
+        "sha256": "sha256:e0fa9ea87adc8fee266386fea714e8d97e605af4ec77b7ba11b20f06e90262d0"
+      },
+      "resultManifestRef": {
+        "path": "payload/phase3-impact/geometry-q1/result-manifest.json",
+        "bytes": 1080,
+        "sha256": "sha256:0be1a6d17d99b36007522e0ded00a6d5cca83db379c3e673221fe8c956d2a140"
+      },
+      "classification": "EXPERIMENTAL_LOCATOR_REPLAY_UNRESOLVED_NOT_QUALIFIED"
+    },
+    {
+      "candidate": "coordinate-free-q1",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "priorStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "priorFingerprint": "sha256:f3016860f41469da4790d6aba884e7692be2ce26b1ae46d8af70c972c4f81283",
+      "priorRepairCount": 3,
+      "priorRepairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "priorResultRef": {
+        "path": "payload/phase3-impact/coordinate-free-q1/prior-result.json",
+        "bytes": 29462,
+        "sha256": "sha256:b95c2dc868ea60b0eb8d6a5934105f9be69fbfde1634fbf46f30e637a8cb6c30"
+      },
+      "finalCompositeScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+      "finalResultFingerprint": null,
+      "finalStatus": "UNRESOLVED",
+      "error": "INVALID_SOURCE_CONDITION_BINDING",
+      "repairCount": 3,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "actualArchive": null,
+      "productionAuthorized": false,
+      "resultRef": {
+        "path": "payload/phase3-impact/coordinate-free-q1/final-result.json",
+        "bytes": 18165,
+        "sha256": "sha256:578a4e53639d00f564cd7793c2d6de25e860f7844161514692c592bff370b205"
+      },
+      "resultManifestRef": {
+        "path": "payload/phase3-impact/coordinate-free-q1/result-manifest.json",
+        "bytes": 1084,
+        "sha256": "sha256:26f626009ee40edd9e311ed5f9c6b0a40724caca9f4f7a22b5766079674cc53b"
+      },
+      "classification": "EXPERIMENTAL_LOCATOR_REPLAY_UNRESOLVED_NOT_QUALIFIED"
+    }
+  ]
+}

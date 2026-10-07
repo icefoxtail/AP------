@@ -1,0 +1,180 @@
+{
+  "id": "construction-v1-tangent-fixture",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.75,
+    "xMax": 6.75,
+    "yMin": -3.5830302779823358,
+    "yMax": 4.75,
+    "width": 384,
+    "height": 320,
+    "panel": 0
+  },
+  "axes": false,
+  "title": "원 밖의 점에서 그은 접선",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "notationByLabel": {},
+    "factRolesByLabel": {},
+    "squareAngleIds": []
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "contact",
+      "kind": "POINT",
+      "at": [
+        0.8,
+        1.833030277982336
+      ]
+    },
+    {
+      "id": "axisX",
+      "kind": "LINE",
+      "coefficients": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "axisY",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 2
+    },
+    {
+      "id": "diameterCircle",
+      "kind": "CIRCLE",
+      "center": [
+        2.5,
+        0
+      ],
+      "radius": 2.5
+    },
+    {
+      "id": "tangentAtA",
+      "kind": "LINE",
+      "coefficients": [
+        0,
+        1,
+        -2
+      ]
+    },
+    {
+      "id": "externalTangent",
+      "kind": "LINE",
+      "coefficients": [
+        -1.833030277982336,
+        -4.2,
+        9.16515138991168
+      ]
+    },
+    {
+      "id": "radiusLine",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "segment-OP",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "segment-OT",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0.8,
+        1.833030277982336
+      ]
+    },
+    {
+      "id": "segment-PT",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        0.8,
+        1.833030277982336
+      ]
+    },
+    {
+      "id": "A-coordinate",
+      "kind": "COORDINATE_LABEL",
+      "target": "A",
+      "exact": [
+        "0",
+        "2"
+      ]
+    },
+    {
+      "id": "P-coordinate",
+      "kind": "COORDINATE_LABEL",
+      "target": "P",
+      "exact": [
+        "5",
+        "0"
+      ]
+    },
+    {
+      "id": "T-name",
+      "kind": "POINT_NAME",
+      "target": "contact",
+      "text": "T",
+      "priority": 0
+    }
+  ]
+}

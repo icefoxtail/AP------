@@ -1,0 +1,84 @@
+{
+  "id": "trig-tangent-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -1.566860032938488,
+    "xMax": 1.566860032938488,
+    "yMin": -10.781283344772875,
+    "yMax": 10.781283344772875,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": {
+    "x": true,
+    "y": true
+  },
+  "title": "탄젠트 함수의 한 가지와 수직 점근선",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "trigFeatures": {
+      "schemaVersion": "TRIGONOMETRIC_FEATURES_v1",
+      "function": "TAN",
+      "phasePi": "0",
+      "cycleCenterPi": "0",
+      "periodPiMultiple": "1",
+      "amplitude": "1",
+      "midline": "0",
+      "centerBehavior": "INCREASING",
+      "referencePoint": {
+        "xPiMultiple": "0",
+        "y": "0"
+      },
+      "poles": [
+        {
+          "id": "pole-left",
+          "xPiMultiple": "-1/2",
+          "side": "LEFT"
+        },
+        {
+          "id": "pole-right",
+          "xPiMultiple": "1/2",
+          "side": "RIGHT"
+        }
+      ],
+      "sampleBoundaryDistance": "3/25"
+    },
+    "trigFeaturePolicy": {
+      "schemaVersion": "TRIGONOMETRIC_FEATURE_POLICY_v1",
+      "function": "TAN",
+      "sourceDomain": "ALL_REALS_WITH_TAN_POLES",
+      "displayWindow": "ONE_COMPLETE_POLE_TO_POLE_BRANCH",
+      "markerRadiusIntrinsicPx": 3.5,
+      "minimumMarkerDiameterCssPx": 2.5,
+      "minimumBoundaryApproachGapCssPx": 2,
+      "minimumBranchSpanCssPx": 80
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "(1)*tan((1)*x+(0)*pi)+(0)",
+      "domain": [
+        -1.4507963267948965,
+        1.4507963267948965
+      ],
+      "criticalX": [
+        0
+      ]
+    },
+    {
+      "id": "period-label",
+      "kind": "EQUATION_LABEL",
+      "text": "T=π",
+      "at": [
+        1.566860032938488,
+        0
+      ],
+      "math": true,
+      "priority": 0
+    }
+  ]
+}

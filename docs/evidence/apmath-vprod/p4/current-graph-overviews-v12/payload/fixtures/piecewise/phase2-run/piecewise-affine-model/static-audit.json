@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "features": {
+    "schemaVersion": "PIECEWISE_AFFINE_FEATURES_v1",
+    "sourceInterval": {
+      "lo": "-4",
+      "hi": "4",
+      "startState": "CLOSED",
+      "endState": "CLOSED"
+    },
+    "breakpoint": {
+      "x": "0",
+      "owner": "RIGHT",
+      "leftLimitY": "1",
+      "rightLimitY": "-1",
+      "valueY": "-1",
+      "continuity": "JUMP"
+    },
+    "markers": [
+      {
+        "id": "source-start",
+        "kind": "SOURCE_ENDPOINT",
+        "x": "-4",
+        "y": "-3",
+        "state": "CLOSED",
+        "owner": "LEFT"
+      },
+      {
+        "id": "source-end",
+        "kind": "SOURCE_ENDPOINT",
+        "x": "4",
+        "y": "3",
+        "state": "CLOSED",
+        "owner": "RIGHT"
+      },
+      {
+        "id": "breakpoint-owner-closed",
+        "kind": "BREAKPOINT",
+        "x": "0",
+        "y": "-1",
+        "state": "CLOSED",
+        "owner": "RIGHT"
+      },
+      {
+        "id": "breakpoint-limit-open",
+        "kind": "BREAKPOINT",
+        "x": "0",
+        "y": "1",
+        "state": "OPEN",
+        "owner": "LEFT"
+      }
+    ]
+  },
+  "branchCoverage": [
+    {
+      "side": "LEFT",
+      "sourceInterval": [
+        "-4",
+        "0"
+      ],
+      "points": 201,
+      "branchSpanCssPx": 83.33333333333333
+    },
+    {
+      "side": "RIGHT",
+      "sourceInterval": [
+        "0",
+        "4"
+      ],
+      "points": 201,
+      "branchSpanCssPx": 83.33333333333333
+    }
+  ],
+  "markers": [
+    {
+      "id": "piecewise-source-start",
+      "kind": "piecewise-source-endpoint",
+      "state": "CLOSED",
+      "owner": "LEFT",
+      "point": [
+        -3.9999999999840004,
+        -3.000000000014063
+      ],
+      "radius": 4,
+      "fill": "#111",
+      "stroke": "#111",
+      "strokeWidth": 0.8
+    },
+    {
+      "id": "piecewise-source-end",
+      "kind": "piecewise-source-endpoint",
+      "state": "CLOSED",
+      "owner": "RIGHT",
+      "point": [
+        3.999999999984001,
+        3.000000000014062
+      ],
+      "radius": 4,
+      "fill": "#111",
+      "stroke": "#111",
+      "strokeWidth": 0.8
+    },
+    {
+      "id": "piecewise-breakpoint-owner-closed",
+      "kind": "piecewise-breakpoint",
+      "state": "CLOSED",
+      "owner": "RIGHT",
+      "point": [
+        0,
+        -1.0000000000148435
+      ],
+      "radius": 4,
+      "fill": "#111",
+      "stroke": "#111",
+      "strokeWidth": 0.8
+    },
+    {
+      "id": "piecewise-breakpoint-limit-open",
+      "kind": "piecewise-breakpoint",
+      "state": "OPEN",
+      "owner": "LEFT",
+      "point": [
+        0,
+        1.0000000000148435
+      ],
+      "radius": 4,
+      "fill": "#fff",
+      "stroke": "#111",
+      "strokeWidth": 0.8
+    }
+  ],
+  "topology": {
+    "sourceInterval": [
+      "-4",
+      "4"
+    ],
+    "breakpointOwnership": "RIGHT",
+    "continuity": "JUMP",
+    "leftIntervalState": [
+      "CLOSED",
+      "OPEN"
+    ],
+    "rightIntervalState": [
+      "CLOSED",
+      "CLOSED"
+    ],
+    "visibleIntervals": [
+      [
+        -4,
+        0
+      ],
+      [
+        0,
+        4
+      ]
+    ]
+  },
+  "maximumMarkerDiameterCssFloor": 3,
+  "minimumBranchSpanCssFloor": 32,
+  "mathMethod": "EXACT_RATIONAL_TWO_BRANCH_SOURCE_INTERVAL_AND_OWNER_RECOMPUTATION"
+}

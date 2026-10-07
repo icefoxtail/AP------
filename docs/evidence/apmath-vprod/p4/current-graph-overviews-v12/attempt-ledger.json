@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "APMATH_PHASE4_PACKAGE_ATTEMPTS_v1",
+  "currentPackage": "current-graph-overviews-v12",
+  "stagingValidation": {
+    "path": ".tmp/archive/phase4-current-package-build-v12-20261007/stage-package",
+    "status": "PASS_MANIFEST_INDEX_CODE_AND_EXTERNAL_REF_VERIFICATION",
+    "manifestFiles": 276,
+    "indexEntries": 275,
+    "manifestSha256": "sha256:96469dfa7ce386a6f1b2e2c4eef7c3dd55e94d23b453f0927f94befa08078fbf"
+  },
+  "attempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v10",
+      "status": "INCOMPLETE_UNVERIFIED_SOURCE_REFERENCE_CHECK",
+      "reason": "The v10 build wrote payload/index/manifest, then its final verifier resolved package-local checkpoint paths from repository root and failed. The directory is preserved unchanged.",
+      "fileCount": 276,
+      "bytes": 11728445,
+      "manifestRef": {
+        "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v10/evidence-manifest.json",
+        "bytes": 58358,
+        "sha256": "sha256:3b307ee5e7ec917c0012403f5931387bc4a2b0081cf8a53ddf5023254e5cfcbc"
+      }
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v11",
+      "status": "INCOMPLETE_UNMANIFESTED_BUILD",
+      "reason": "The copied builder stopped at a NameError after the fixture payload was copied. The directory is preserved unchanged.",
+      "fileCount": 272,
+      "bytes": 11152711
+    }
+  ]
+}

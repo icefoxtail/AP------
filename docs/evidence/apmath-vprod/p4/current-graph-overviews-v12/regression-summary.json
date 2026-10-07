@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "APMATH_FINAL_FROZEN_SCOPE_REGRESSION_v1",
+  "compositeScopeFingerprint": "sha256:eb5a0accc3ea8f17a7b19e743f892821b3f751b31dfb8ad23151684a1158edc6",
+  "node": {
+    "command": "node --test --test-concurrency=1 all geometry-equation tests except archive-cancel-recovery.test.mjs",
+    "exitCode": 0,
+    "tests": 158,
+    "passed": 158,
+    "failed": 0,
+    "excludedTestFile": "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs",
+    "exclusionReason": "This test enters q10 Phase 2. It was excluded to preserve the canonical shared 3/3 ledger; the P3D cancellation package remains evidence for cancellation behavior.",
+    "log": {
+      "path": "payload/regression/node-full-suite.txt",
+      "bytes": 48864,
+      "sha256": "sha256:e56edd30a816496ce0753308bcff684ed667cf42c85a4425f99bfca435aa0449"
+    }
+  },
+  "python": {
+    "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v",
+    "exitCode": 0,
+    "tests": 186,
+    "passed": 186,
+    "failed": 0,
+    "log": {
+      "path": "payload/regression/python-full-suite.txt",
+      "bytes": 24545,
+      "sha256": "sha256:b25fbbfd3ff95b7997f8d73f5398aecb7492e32b9fd729f1aaf0d1545def8c22"
+    }
+  },
+  "q10Replayed": false
+}

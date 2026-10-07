@@ -10,10 +10,16 @@ SIGNATURES = {
     'SOURCE_POINT': ([], 'POINT'), 'NORMALIZATION_ORIGIN': ([], 'POINT'),
     'NORMALIZATION_AXIS': ([], 'POINT'), 'MIDPOINT': (['POINT','POINT'],'POINT'),
     'LINE_THROUGH': (['POINT','POINT'],'LINE'),
+    'PARALLEL_THROUGH': (['POINT','LINE'],'LINE'),
+    'ANGLE_BISECTOR': (['POINT','POINT','POINT'],'LINE'),
     'PERPENDICULAR_FOOT': (['POINT','LINE'],'POINT'),
     'CIRCLE_CENTER_RADIUS': (['POINT'],'CIRCLE'),
+    'CIRCLE_THROUGH_3': (['POINT','POINT','POINT'],'CIRCLE'),
+    'CIRCLE_THROUGH_POINT': (['POINT','POINT'],'CIRCLE'),
+    'TANGENT_AT_POINT': (['CIRCLE','POINT'],'LINE'),
     'INTERSECTION': (None,'POINT_SET'), 'SELECT_POINT': (['POINT_SET'],'POINT'),
-    'SEGMENT_LENGTH': (['POINT','POINT'],'SCALAR'), 'SCALAR_SQUARE': (['SCALAR'],'SCALAR'),
+    'LINE_INTERSECTION': (['LINE','LINE'],'POINT'),
+    'SEGMENT_LENGTH': (['POINT','POINT'],'SCALAR'), 'SCALAR_SQUARE': (['SCALAR'],'SCALAR'), 'SCALAR_RATIO': (['SCALAR','SCALAR'],'SCALAR'),
 }
 
 def scalar(value, depth=0):
@@ -70,7 +76,7 @@ def dependencies(node):
     return sorted(set(refs))
 
 def validate(graph):
-    if graph.get('schemaVersion')!='construction-spike-v1' or set(graph)-{'schemaVersion','nodes','realization'}: raise ValueError('UNSUPPORTED_GRAPH_SCHEMA')
+    if graph.get('schemaVersion')!='construction-spike-v1' or set(graph)-{'schemaVersion','nodes','realization','conditionAudits'}: raise ValueError('UNSUPPORTED_GRAPH_SCHEMA')
     if not isinstance(graph['nodes'],list) or not 1<=len(graph['nodes'])<=64: raise ValueError('NODE_BUDGET')
     nodes={}
     for node in graph['nodes']:
@@ -84,8 +90,9 @@ def validate(graph):
             b=node.get('branch',{})
             if set(b)!={'kind','refs','sign'} or b['kind']!='SIDE_OF_ORIENTED_LINE' or len(b['refs'])!=2 or b['sign'] not in (-1,1): raise ValueError('INVALID_BRANCH')
         elif 'branch' in node: raise ValueError('UNEXPECTED_BRANCH')
-        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'}}.get(node['op'],set())
+        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'}}.get(node['op'],set())
         if set(node['args'])!=expected: raise ValueError('UNSUPPORTED_NODE_ARGS')
+        if node['op']=='ANGLE_BISECTOR' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_ANGLE_BISECTOR_MODE')
         nodes[node['id']]=node
     deps={key:dependencies(n) for key,n in nodes.items()}
     for key,n in nodes.items():
@@ -95,6 +102,22 @@ def validate(graph):
         if expected is not None and types!=expected: raise ValueError('INPUT_TYPE_MISMATCH')
         if n['op']=='INTERSECTION' and types not in (['LINE','CIRCLE'],['CIRCLE','CIRCLE'],['LINE','LINE']): raise ValueError('UNSUPPORTED_INTERSECTION_TYPES')
         if n['op']=='SELECT_POINT' and any(nodes[r]['outputType']!='POINT' for r in n['branch']['refs']): raise ValueError('BRANCH_REFERENCE_TYPE')
+        if n['op']=='SELECT_POINT' and nodes[n['inputs'][0]]['op']=='INTERSECTION' and [nodes[r]['outputType'] for r in nodes[n['inputs'][0]]['inputs']]==['LINE','LINE']:raise ValueError('UNIQUE_INTERSECTION_HAS_NO_BRANCH')
+    conditions=graph.get('conditionAudits',[])
+    if not isinstance(conditions,list) or len(conditions)>128:raise ValueError('CONDITION_AUDIT_BUDGET')
+    condition_types={'INCIDENCE_POINT_ON_LINE':['POINT','LINE'],'DISTANCE_EQUALS':['POINT','POINT'],'EQUAL_DISTANCE':['POINT','POINT','POINT','POINT'],'MIDPOINT_RATIO':['POINT','POINT','POINT'],'PERPENDICULAR':['LINE','LINE'],'PARALLEL':['LINE','LINE'],'CIRCLE_MEMBERSHIP':['CIRCLE','POINT'],'TANGENCY_AT_POINT':['CIRCLE','POINT','LINE'],'ORIENTED_SIDE':['POINT','POINT','POINT']}
+    seen_condition_ids=set()
+    for condition in conditions:
+        kind=condition.get('kind') if isinstance(condition,dict) else None
+        expected_keys={'id','kind','refs','sourceConditionId'}|({'expected'} if kind in {'DISTANCE_EQUALS','MIDPOINT_RATIO'} else {'sign'} if kind=='ORIENTED_SIDE' else set())
+        if not isinstance(condition,dict) or set(condition)!=expected_keys or kind not in condition_types or not isinstance(condition.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,63}',condition['id']) or condition['id'] in seen_condition_ids or not isinstance(condition.get('sourceConditionId'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,63}',condition['sourceConditionId']) or not isinstance(condition.get('refs'),list) or len(condition['refs'])!=len(condition_types[kind]):
+            raise ValueError('INVALID_CONDITION_AUDIT')
+        seen_condition_ids.add(condition['id'])
+        if any(reference not in nodes for reference in condition['refs']):raise ValueError('UNKNOWN_CONDITION_REFERENCE')
+        if [nodes[reference]['outputType'] for reference in condition['refs']]!=condition_types[kind]:raise ValueError('CONDITION_AUDIT_TYPE_MISMATCH')
+        if kind in {'DISTANCE_EQUALS','MIDPOINT_RATIO'}:condition['_expectedValue']=scalar(condition['expected'])
+        if kind=='ORIENTED_SIDE' and (isinstance(condition.get('sign'),bool) or condition.get('sign') not in (-1,1)):raise ValueError('INVALID_ORIENTED_SIDE_SIGN')
+        if any(nodes[reference]['op']=='SELECT_POINT' for reference in condition['refs']) and kind not in {'INCIDENCE_POINT_ON_LINE','CIRCLE_MEMBERSHIP','TANGENCY_AT_POINT','ORIENTED_SIDE','EQUAL_DISTANCE','MIDPOINT_RATIO','DISTANCE_EQUALS'}:raise ValueError('UNSUPPORTED_SELECTED_CONDITION_REFERENCE')
     try:
         sorter=TopologicalSorter(deps);sorter.prepare();order=[]
         while sorter.is_active():
@@ -121,13 +144,44 @@ def execute(graph):
         elif op=='LINE_THROUGH':
             if a[0]==a[1]: raise ValueError('DEGENERATE_LINE')
             value=S.Line(*a)
+        elif op=='PARALLEL_THROUGH':
+            point,line=a
+            direction=line.direction
+            value=S.Line(point,S.Point(point.x+direction.x,point.y+direction.y))
+        elif op=='ANGLE_BISECTOR':
+            first,vertex,last=a;u=S.Matrix([first.x-vertex.x,first.y-vertex.y]);v=S.Matrix([last.x-vertex.x,last.y-vertex.y])
+            nu=S.sqrt(u.dot(u));nv=S.sqrt(v.dot(v))
+            if nu==0 or nv==0:raise ValueError('DEGENERATE_ANGLE_RAY')
+            direction=u/nu+(v/nv if args['mode']=='INTERNAL' else -v/nv)
+            if direction[0]==0 and direction[1]==0:raise ValueError('DEGENERATE_ANGLE_BISECTOR')
+            value=S.Line(vertex,S.Point(vertex.x+direction[0],vertex.y+direction[1]))
         elif op=='PERPENDICULAR_FOOT': value=a[1].projection(a[0])
         elif op=='SEGMENT_LENGTH': value=a[0].distance(a[1])
         elif op=='SCALAR_SQUARE': value=a[0]**2
+        elif op=='SCALAR_RATIO':
+            if a[1]==0:raise ValueError('SCALAR_RATIO_DIVISION_ZERO')
+            value=a[0]/a[1]
         elif op=='CIRCLE_CENTER_RADIUS':
             radius=scalar(args['radius'])
             if radius.is_positive is not True: raise ValueError('INVALID_RADIUS')
             value=S.Circle(a[0],radius)
+        elif op=='CIRCLE_THROUGH_3':
+            if S.Line(a[0],a[1]).contains(a[2]):raise ValueError('COLLINEAR_CIRCLE_POINTS')
+            value=S.Circle(*a)
+        elif op=='CIRCLE_THROUGH_POINT':
+            if a[0]==a[1]:raise ValueError('DEGENERATE_CIRCLE_RADIUS')
+            value=S.Circle(a[0],a[0].distance(a[1]))
+        elif op=='TANGENT_AT_POINT':
+            circle,contact=a
+            if not isinstance(circle,S.Circle):raise ValueError('CIRCLE_TANGENT_REQUIRES_CIRCLE')
+            if circle.center.distance(contact)!=circle.radius:raise ValueError('TANGENT_POINT_NOT_ON_CIRCLE')
+            radial=S.Matrix([contact.x-circle.center.x,contact.y-circle.center.y]);direction=S.Matrix([-radial[1],radial[0]])
+            if direction[0]==0 and direction[1]==0:raise ValueError('DEGENERATE_CIRCLE_TANGENT')
+            value=S.Line(contact,S.Point(contact.x+direction[0],contact.y+direction[1]))
+        elif op=='LINE_INTERSECTION':
+            hits=a[0].intersection(a[1])
+            if len(hits)!=1 or not isinstance(hits[0],S.Point2D):raise ValueError('UNIQUE_LINE_INTERSECTION_REQUIRED')
+            value=hits[0]
         elif op=='INTERSECTION':
             value=a[0].intersection(a[1])
             if any(not isinstance(p,S.Point2D) for p in value): raise ValueError('COINCIDENT_INTERSECTION')
@@ -142,11 +196,58 @@ def execute(graph):
             value=matches[0]
         objects[key]=value
         transcript.append({'nodeId':key,'op':op,'dependencies':deps[key]})
-    points={};scalars={}
+    points={};scalars={};lines={};circles={};point_sets={}
     for key,value in objects.items():
         if isinstance(value,S.Point2D):
             numeric=[float(v.evalf(17)) for v in value]
             if not all(math.isfinite(v) for v in numeric): raise ValueError('NONFINITE_POINT')
             points[key]={'exact':[exact(v) for v in value],'approximation':numeric,'precisionDigits':17}
         elif nodes[key]['outputType']=='SCALAR':scalars[key]={'exact':exact(value),'approximation':float(value.evalf(17))}
-    return {'engine':'SymPy','version':S.__version__,'points':points,'scalars':scalars,'transcript':transcript,'order':order,'coordinateMode':'CONSTRUCTED_REALIZATION' if 'realization' in graph else 'SOURCE_COORDINATES'}
+        elif nodes[key]['outputType']=='LINE':
+            coefficients=list(value.coefficients)
+            numeric=[float(term.evalf(17)) for term in coefficients]
+            if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_LINE')
+            lines[key]={'exact':[exact(term) for term in coefficients],'approximation':numeric}
+        elif nodes[key]['outputType']=='CIRCLE':
+            center=value.center;radius=value.radius;numeric=[float(center.x.evalf(17)),float(center.y.evalf(17)),float(radius.evalf(17))]
+            if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_CIRCLE')
+            circles[key]={'centerExact':[exact(center.x),exact(center.y)],'radiusExact':exact(radius),'approximation':numeric}
+        elif nodes[key]['outputType']=='POINT_SET':
+            if not isinstance(value,(list,tuple)):raise ValueError('INVALID_POINT_SET')
+            rows=[]
+            for point_value in value:
+                if not isinstance(point_value,S.Point2D):raise ValueError('INVALID_POINT_SET_MEMBER')
+                numeric=[float(v.evalf(17)) for v in point_value]
+                if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_POINT_SET')
+                rows.append({'exact':[exact(v) for v in point_value],'approximation':numeric})
+            point_sets[key]=rows
+    condition_rows=[]
+    for condition in graph.get('conditionAudits',[]):
+        refs=[objects[reference] for reference in condition['refs']];kind=condition['kind'];observed=None;expected=None;valid=False
+        if kind=='INCIDENCE_POINT_ON_LINE':
+            observed=refs[1].distance(refs[0]);valid=observed==0
+        elif kind=='DISTANCE_EQUALS':
+            observed=refs[0].distance(refs[1]);expected=condition['_expectedValue'];valid=observed==expected
+        elif kind=='EQUAL_DISTANCE':
+            first=refs[0].distance(refs[1]);second=refs[2].distance(refs[3]);observed=first-second;valid=observed==0
+        elif kind=='MIDPOINT_RATIO':
+            start,middle,end=refs;expected=condition['_expectedValue'];distance_start= start.distance(middle);distance_end=middle.distance(end)
+            aligned=S.Line(start,end).contains(middle);between=S.Matrix([middle.x-start.x,middle.y-start.y]).dot(S.Matrix([middle.x-end.x,middle.y-end.y]))<=0
+            if distance_end==0:raise ValueError('MIDPOINT_RATIO_ZERO_DENOMINATOR')
+            observed=distance_start/distance_end;valid=aligned and between and observed==expected
+        elif kind in {'PERPENDICULAR','PARALLEL'}:
+            observed=refs[0].is_perpendicular(refs[1]) if kind=='PERPENDICULAR' else refs[0].is_parallel(refs[1]);valid=observed is True
+        elif kind=='CIRCLE_MEMBERSHIP':
+            observed=refs[0].center.distance(refs[1])-refs[0].radius;valid=observed==0
+        elif kind=='TANGENCY_AT_POINT':
+            circle,contact,line=refs;radial=S.Line(circle.center,contact);observed=circle.center.distance(contact)-circle.radius
+            valid=observed==0 and line.contains(contact) and line.is_perpendicular(radial)
+        elif kind=='ORIENTED_SIDE':
+            start,end,target=refs;cross=(end.x-start.x)*(target.y-start.y)-(end.y-start.y)*(target.x-start.x);observed=cross;valid=cross*condition['sign']>0
+        if not valid:raise ValueError('CONDITION_AUDIT_FAIL:'+condition['id']+':'+kind)
+        checks={'INCIDENCE_POINT_ON_LINE':['POINT_ON_LINE'],'DISTANCE_EQUALS':['EXACT_POINT_DISTANCE'],'EQUAL_DISTANCE':['DISTANCES_EQUAL'],'MIDPOINT_RATIO':['COLLINEAR','BETWEEN_ENDPOINTS','DISTANCE_RATIO'],'PERPENDICULAR':['DIRECTION_VECTORS_PERPENDICULAR'],'PARALLEL':['DIRECTION_VECTORS_PARALLEL'],'CIRCLE_MEMBERSHIP':['POINT_ON_CIRCLE'],'TANGENCY_AT_POINT':['POINT_ON_CIRCLE','TANGENT_CONTAINS_CONTACT','TANGENT_PERPENDICULAR_TO_RADIUS'],'ORIENTED_SIDE':['STRICT_ORIENTED_HALF_PLANE']}[kind]
+        row={'id':condition['id'],'sourceConditionId':condition['sourceConditionId'],'kind':kind,'status':'PASS','checks':checks,'observed':exact(observed) if isinstance(observed,S.Basic) else observed}
+        if expected is not None:row['expected']=exact(expected)
+        if kind=='ORIENTED_SIDE':row['sign']=condition['sign']
+        condition_rows.append(row)
+    return {'engine':'SymPy','version':S.__version__,'points':points,'scalars':scalars,'lines':lines,'circles':circles,'pointSets':point_sets,'conditionAudits':condition_rows,'transcript':transcript,'order':order,'coordinateMode':'CONSTRUCTED_REALIZATION' if 'realization' in graph else 'SOURCE_COORDINATES'}

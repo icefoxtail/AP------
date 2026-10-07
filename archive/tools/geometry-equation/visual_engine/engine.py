@@ -35,6 +35,25 @@ def prepare(spec):
             x,y=value.center;r=value.radius;critical.extend([(x-r,y-r),(x+r,y+r)])
         elif isinstance(value,tuple) and len(value)==2 and isinstance(value[0],float):critical.append(value)
         elif isinstance(value,tuple):critical.extend(value)
+    piecewise_features=spec['displayFacts'].get('piecewiseFeatures')
+    if piecewise_features is not None:
+        if piecewise_features.get('schemaVersion')!='PIECEWISE_AFFINE_FEATURES_v1':raise ValueError('PIECEWISE_MARKER_INVENTORY_REQUIRED')
+        for marker in piecewise_features.get('markers',[]):critical.append((float(Fraction(marker['x'])),float(Fraction(marker['y']))))
+    exponential_features=spec['displayFacts'].get('exponentialFeatures')
+    if exponential_features is not None:
+        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        reference=exponential_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+    logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
+    if logarithmic_features is not None:
+        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        reference=logarithmic_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+    trig_features=spec['displayFacts'].get('trigFeatures')
+    if trig_features is not None:
+        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if trig_features.get('function') in {'SIN','COS'}:
+            critical.extend((float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y']))) for row in trig_features.get('phasePoints',[]))
+        elif trig_features.get('referencePoint'):
+            reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
     if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,Circle) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
@@ -99,10 +118,63 @@ def prepare(spec):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
             at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
             primitive({'id':'sqrt-domain-endpoint-'+str(index),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'domain-endpoint','fill':'#111'},'circle')
+    absolute_features=spec['displayFacts'].get('absoluteFeatures')
+    if absolute_features is not None:
+        if absolute_features.get('schemaVersion')!='ABSOLUTE_VALUE_FEATURES_v1':raise ValueError('ABSOLUTE_VALUE_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('absoluteFeaturePolicy',{});radius=policy.get('cornerMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('ABSOLUTE_VALUE_CORNER_MARKER_POLICY_REQUIRED')
+        corner=absolute_features.get('corner')
+        if not isinstance(corner,dict) or corner.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_ABSOLUTE_VALUE_CORNER_STATE')
+        at=vp.screen((float(Fraction(corner['x'])),float(Fraction(corner['y']))))
+        primitive({'id':'absolute-value-corner','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'absolute-corner','fill':'#111'},'circle')
+    piecewise_features=spec['displayFacts'].get('piecewiseFeatures')
+    if piecewise_features is not None:
+        if piecewise_features.get('schemaVersion')!='PIECEWISE_AFFINE_FEATURES_v1':raise ValueError('PIECEWISE_MARKER_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('piecewiseFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('PIECEWISE_MARKER_POLICY_REQUIRED')
+        for marker in piecewise_features.get('markers',[]):
+            if marker.get('state') not in {'OPEN','CLOSED'} or marker.get('owner') not in {'LEFT','RIGHT'}:raise ValueError('INVALID_PIECEWISE_MARKER')
+            at=vp.screen((float(Fraction(marker['x'])),float(Fraction(marker['y']))));fill='#fff' if marker['state']=='OPEN' else '#111'
+            role='piecewise-source-endpoint' if marker.get('kind')=='SOURCE_ENDPOINT' else 'piecewise-breakpoint'
+            primitive({'id':'piecewise-'+marker['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':role,'fill':fill,'state':marker['state'],'owner':marker['owner']},'circle')
+    exponential_features=spec['displayFacts'].get('exponentialFeatures')
+    if exponential_features is not None:
+        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('exponentialFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('EXPONENTIAL_REFERENCE_MARKER_POLICY_REQUIRED')
+        y=float(Fraction(exponential_features['horizontalAsymptote']['y']));xmin,xmax,ymin,ymax=vp.bounds
+        primitive({'id':'exponential-horizontal-asymptote','kind':'line','from':vp.screen((xmin,y)),'to':vp.screen((xmax,y)),'token':'auxiliary','layer':25,'role':'exponential-asymptote','dash':'5 4'},'line')
+        reference=exponential_features['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+        primitive({'id':'exponential-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'exponential-reference','fill':'#111','state':'CLOSED'},'circle')
+    logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
+    if logarithmic_features is not None:
+        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('logarithmicFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('LOGARITHMIC_REFERENCE_MARKER_POLICY_REQUIRED')
+        x=float(Fraction(logarithmic_features['naturalDomainBoundaryX']));xmin,xmax,ymin,ymax=vp.bounds
+        primitive({'id':'logarithmic-domain-boundary','kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'logarithmic-domain-boundary','dash':'5 4'},'line')
+        reference=logarithmic_features['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+        primitive({'id':'logarithmic-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED'},'circle')
+    trig_features=spec['displayFacts'].get('trigFeatures')
+    if trig_features is not None:
+        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('trigFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('TRIG_MARKER_POLICY_REQUIRED')
+        if trig_features.get('function') in {'SIN','COS'}:
+            for feature in trig_features.get('phasePoints',[]):
+                at=vp.screen((float(Fraction(feature['xPiMultiple']))*math.pi,float(Fraction(feature['y']))))
+                primitive({'id':'trig-'+feature['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-feature','fill':'#111','owner':feature['id'],'featureKind':feature['kind']},'circle')
+        elif trig_features.get('function')=='TAN':
+            xmin,xmax,ymin,ymax=vp.bounds
+            for pole in trig_features.get('poles',[]):
+                x=float(Fraction(pole['xPiMultiple']))*math.pi
+                primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole['side']},'line')
+            reference=trig_features['referencePoint'];at=vp.screen((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+            primitive({'id':'trig-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-reference','fill':'#111'},'circle')
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
     graph_index=0
-    named={v.get('target') for v in spec['objects'] if v['kind']=='POINT_NAME'}
+    named={v.get('target') for v in spec['objects'] if v['kind'] in {'POINT_NAME','COORDINATE_LABEL'}}
     for obj in spec['objects']:
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
         if kind=='POINT':
@@ -119,7 +191,7 @@ def prepare(spec):
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if graph_index==0 else 'secondaryCurve','layer':40 if graph_index==0 else 35,'role':'curve'},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if graph_index==0 else 'secondaryCurve','layer':40 if graph_index==0 else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]

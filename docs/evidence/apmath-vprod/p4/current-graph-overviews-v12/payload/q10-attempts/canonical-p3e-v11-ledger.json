@@ -1,0 +1,3178 @@
+{
+  "schemaVersion": "APMATH_PHASE3E_CURRENT_POLICY_REPLAY_v1",
+  "classification": "CURRENT_PROVIDER_POLICY_AND_OFFLINE_ARCHIVE_IMPACT_REPLAY_EXPERIMENTAL_LOCATOR_NOT_QUALIFICATION",
+  "status": "PASS_WITH_CANDIDATE_DEBT",
+  "priorP3ePackage": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v9/measured-panel-repair-ledger.json",
+  "priorPackageBuildAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v10/",
+      "status": "MANIFESTED_DEPENDENCY_SUPERSEDED",
+      "reason": "The v10 package bytes and stage receipts verified, but it referenced P3D v6 whose ledger contained an unsupported claim that a missing v3 directory was preserved. This v11 package binds corrected P3D v7 evidence."
+    }
+  ],
+  "supersedesPriorP3eResultPackage": true,
+  "supersessionReason": "Provider prompt encoding and Archive local-resource changes alter current solution/display-policy fingerprints. The prior q10 full-profile/Archive/visual receipts remain historical and do not establish current support; the current q10 replay is unresolved at the shared repair cap.",
+  "currentProviderOfflineEvidencePackage": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v7/provider-offline-runtime-ledger.json",
+  "currentProviderOfflineEvidenceManifest": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v7/evidence-manifest.json",
+  "providerPayloadContractFix": {
+    "sourcePolicyChanged": true,
+    "verifiedSolutionPolicyChanged": true,
+    "rule": "Outer AppServer payload is a string containing one JSON-encoded object; blind and compare prompt now state this explicitly."
+  },
+  "providerTimeoutAndOfflineRuntime": {
+    "providerProbeStatus": "PASS",
+    "remoteCancellationStatus": "REMOTE_INTERRUPT_CONFIRMED",
+    "terminalStatus": "interrupted",
+    "localCloseObserved": true,
+    "offlineRuntimeStatus": "PASS",
+    "networkPolicy": "LOCAL_ONLY",
+    "externalRequests": []
+  },
+  "candidateReplays": [
+    {
+      "candidate": "q10-graph",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "runId": "visual-d06883b9-68da-48da-ae13-239d90b83c90",
+      "workRoot": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production",
+      "status": "UNRESOLVED",
+      "error": "REPAIR_BUDGET_EXHAUSTED",
+      "errorCode": null,
+      "identityStatus": null,
+      "sourceRef": {
+        "bytes": 32756,
+        "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+        "sha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+      },
+      "sourcePackagePath": "sources/q10-graph-source.js",
+      "solutionRef": null,
+      "solutionPackagePath": null,
+      "currentResultRef": {
+        "bytes": 18171,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/a1cf58ebcb70af8919ddb61e569b3f65638a83016df5bdf27e5bcaf03a39bb93/result.json",
+        "sha256": "sha256:5b941e3f5c67e6df87ce47f137499d56522675971043db27a4c5db6637237644"
+      },
+      "currentResultPackagePath": "candidate-results/q10-graph-current-policy-result.json",
+      "replayRecordPackagePath": "candidate-results/q10-graph-current-policy-replay-record.json",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "previousStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "previousResultPackage": "references/p3e-v9-ledger.json#q10-graph",
+      "capability": "polynomial-spike-v1",
+      "currentCodeFingerprint": "sha256:3248ef5f55c11bd7ce3902e6b90a4f125045b9f00ad3dfc7bf5ab1771a69b89b",
+      "previousCodeFingerprint": "sha256:dfdc474b7f94fddbca7ada4654bfe559eef9cc538d366bb24d0c537684cd64fb",
+      "currentFingerprintMatchesResult": false,
+      "fingerprintRecomputedFromCurrentCode": "sha256:3248ef5f55c11bd7ce3902e6b90a4f125045b9f00ad3dfc7bf5ab1771a69b89b",
+      "semanticPlanSha256": "sha256:ec59edee666662aaa02b2e82ac095357c764cb648b3a36c922ea89df8eb45244",
+      "semanticPlanUnchanged": true,
+      "currentPlanRef": {
+        "bytes": 4076,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/9ce20609cc72ffb11fdba2fcb6e651e2d5e6b2f2cfeb2847a3e8d68597fcff2a/plan.json",
+        "sha256": "sha256:b12e598526c340cbb946ea13cb08a571ea7fc7e4fa56647073c68d48b20bc524"
+      },
+      "currentPlanPackagePath": null,
+      "selectedSizeClass": null,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "repairLedgerReset": false,
+      "actualArchiveStatus": null,
+      "actualArchiveSynthetic": null,
+      "actualArchiveRuntime": null,
+      "displayEnvelopeStatus": null,
+      "profileStatus": [],
+      "independentVisualReviewStatus": null,
+      "finalSvgRef": null,
+      "qualificationStatus": "NOT_QUALIFIED",
+      "productionAuthorized": false,
+      "stageCount": 49,
+      "stageReceipts": [
+        {
+          "stage": "SOURCE_LOCATOR",
+          "receipt": {
+            "bytes": 1110,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOURCE_LOCATOR/5d175f28cd30bb4b87f4e6dc5b6e7c658e3b3141d1ae6281f8661887fb773b78/manifest.json",
+            "sha256": "sha256:baab99e31bdfca30933ee9aa004ee4e0d6ddb1c5b83945ed0fff1dd779eb7c48"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOURCE_LOCATOR-5d175f28cd30.json",
+          "receiptSha256": "sha256:129185a408e525a13fbbb8b93bf8c80ee0fcf07c780673c537cd03468ede0737"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1132,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/4b94c9e2d54d8de7aba6434423798d3492f156427022445c1dc4271021768738/manifest.json",
+            "sha256": "sha256:a171759d28cb0817717a2881175c5c8a862b6fb2a41ffc2f97a43135605fde9b"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_BLIND_FREEZE-4b94c9e2d54d.json",
+          "receiptSha256": "sha256:5a1276f57e02eef93902ad885726fd836217fde05208584c2d6b3da427dd19bd"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1117,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_COMPARE/4dd8091bf24b7c763ecca51fcb799419bfda788b8b2fb037c61b652776a0ef0c/manifest.json",
+            "sha256": "sha256:9675c7c2e5550ad1b4bbd600184863648d33055d10603d3967ab6ca41f5ff4e0"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_COMPARE-4dd8091bf24b.json",
+          "receiptSha256": "sha256:e6268525196669517745422252da67497e3b92d801d922fcec2df2625fa45e79"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/VERIFIED_SOLUTION/ef6a6a6ab491ba287143011b342b98221fe2f3ccaf2060fa929c8aef8ea525c9/manifest.json",
+            "sha256": "sha256:76ae4361d265be6d9c7b438d05c9a83a9afcb70c660d6d94d4c3af43f55351e4"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/VERIFIED_SOLUTION-ef6a6a6ab491.json",
+          "receiptSha256": "sha256:0410d7bae2c2471e30fa2eca0886a551bb3d58603122f81bef6fda2afb1e2623"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1091,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLANNER/43c2e793aabbca897455cd69575578ef607d93665faefd375cd0bebf06bc39e6/manifest.json",
+            "sha256": "sha256:e37bff52b3b33ceaa8f5f76d1ae0dfde81d3a7dacfaee3e9c6e081b00c0807ca"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLANNER-43c2e793aabb.json",
+          "receiptSha256": "sha256:11549a89d6146d61326fe12fa648a88e060f4511b8d9c6ebd99eb73e3a8b8642"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1091,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLANNER/7c0ab295d7cfcba54847e604d5da2606cf71737e3aed1e87a66329497468004d/manifest.json",
+            "sha256": "sha256:8944441a20f49cbc31e0f6235d0778962d3e2bfefa3ee305f50caabd8a263588"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLANNER-7c0ab295d7cf.json",
+          "receiptSha256": "sha256:42a3429eaf2a382ef7ed5de97328b459dae4c6fb22bc47a534eb0ec6ba64668c"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1091,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLANNER/e19e1fa0fab07fb0b55d64d2ae91e856286906d8b7faec5864101eb666b57f22/manifest.json",
+            "sha256": "sha256:3548c0d5417e4d50f55023ea6d36a95611dabcfca5b85e7411922bbc17768c39"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLANNER-e19e1fa0fab0.json",
+          "receiptSha256": "sha256:0bc2fc29cca47b2b6ac065147f12024f2293d5fafa10d84208566f002fa8ca4a"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1138,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/9b3c26013d2e4b37472efc3331c077d1ffb758ae4e0371cf0414681414e7772d/manifest.json",
+            "sha256": "sha256:5c32621ac0f9de354d19137e3d989661008a1ea744e228cd13b4d532ef3e0421"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-9b3c26013d2e.json",
+          "receiptSha256": "sha256:6a36cad314c6cfecccffeda1a3fee8a45003e92969076375680b3f3027c9e343"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1124,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_COMPARE/9307eba07b7b78ce314903faa6aa6d7fcfb198f67e807ebb8007f3fa5107cca2/manifest.json",
+            "sha256": "sha256:35364f9ad19a542686b5e4668756107aeef8acd655e6603f57c9223ca25832b8"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_COMPARE-9307eba07b7b.json",
+          "receiptSha256": "sha256:78993584feaa3bfeff8586bacc4e3cd5a88d8149e32cf37e60b365c868281c1a"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOURCE_REVIEW/445335e68413b63bf18e0dcd4cc584a494e2a81f08a1fd3f8f4e16aa9ef67f45/manifest.json",
+            "sha256": "sha256:6f837568b45ecff7bb9aa3f39f2f81b088f7e3d2dcc195c4c7301eac2db94b9d"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOURCE_REVIEW-445335e68413.json",
+          "receiptSha256": "sha256:e0e8507361c41ef1761bcb705fc8a5f55ba64a78973a52d7309218aa328fd347"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/abd682910731aca0f82abbac7c9097e3bb472c44803418b712f554248562b738/manifest.json",
+            "sha256": "sha256:617a0df04340fcdd12d245a98770f600aa8e450176e830119bde7094b934927d"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-abd682910731.json",
+          "receiptSha256": "sha256:12c78de465bc913d3efd4254369a9ff36cb0d610e31ce0623f09a873c42a7d57"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/daae2a9a7de220dbd3d32314254e0baa5f8ae0b44fb9512af0e90601bc755b2b/manifest.json",
+            "sha256": "sha256:bb5d1195c85d86404b2a2bd125fb0eaca1a0b3927663b52fc7664afa33708611"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-daae2a9a7de2.json",
+          "receiptSha256": "sha256:1fcae303a587dfddd8b21358256bd39ea2c28008728cf6ab6e683e7e128ebcf3"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/22bf833bc61724782ee3045615b66a8b01a1f18b434731b41daba24419656c4b/manifest.json",
+            "sha256": "sha256:448002be4e9312b6031e50515ec46c352331f8bf98b922e8eb8eb5ac7b1890c7"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-22bf833bc617.json",
+          "receiptSha256": "sha256:ccce6f5c312ee0449868c9c6dbcfce5e4944fff1a0d3361bba91990024b8f3d7"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1132,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/69cb238d870e948264762e15d578884db66900c27d80dcdfa121e14e49410c66/manifest.json",
+            "sha256": "sha256:430fa8b88c7c2bf028a5fb86a0122ffe1e8849b1adc569303c48e5a429b71497"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_BLIND_FREEZE-69cb238d870e.json",
+          "receiptSha256": "sha256:88721b84e357a25c39f639e52f9cc2150c10078949149f2c8e03f3190eafb759"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1117,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_COMPARE/51e2fae9eff58ff059e31b76b4d5e03b31c33d8b7751869257d8c98ba4b864a2/manifest.json",
+            "sha256": "sha256:2c36746746103a4a81dc90d5d6ed09ba3962341ee2a52974fe95298c99c9adcd"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_COMPARE-51e2fae9eff5.json",
+          "receiptSha256": "sha256:fd1d1d179369ac8e8dbbc5fef2c22e0f5d0661c3ba7c9e90c37354abdf188d82"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/VERIFIED_SOLUTION/324e85ff5a9878ca13348e267e95090c29e7867f0b28d385e103f9fb99e48cdd/manifest.json",
+            "sha256": "sha256:be163895b981c74d8dbe48399b70e441a2c4293bb270d1aee594b0fbc2d59d63"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/VERIFIED_SOLUTION-324e85ff5a98.json",
+          "receiptSha256": "sha256:bb6e14f710b522467649f98f3a9da9b100a86fe368de157e5390f9c3f1cc9042"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1138,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/05991f371d0abfe83f0cb324ed522f3a85f25320d2365e53d3929a79f5bbbf73/manifest.json",
+            "sha256": "sha256:b82803b093cc885c1becf01ed987ffe5605f1ca5c07f828ef36dd6961b7eb6fc"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-05991f371d0a.json",
+          "receiptSha256": "sha256:491b3e63fd8fe5083377c1fc128766b162bb3d6c3aef3265ea4f8ae09cbddd35"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1124,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_COMPARE/06368eedf7895bde575f0834b58322a322236a605c446692789b65ffc5f76476/manifest.json",
+            "sha256": "sha256:2671d2eaa9cbcbbdf7c557a63cd5487cef2556616eff6e9fb952ae94c5d063df"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_COMPARE-06368eedf789.json",
+          "receiptSha256": "sha256:c144012f10b6e6dbdccf8034d63ac62004e35062ebf13c32383d9904da51ee4c"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOURCE_REVIEW/8ab7afb9c2889a0eea0821f46afbc2d371ba4fe8073ab891febb7536e4fa3e90/manifest.json",
+            "sha256": "sha256:763f0b1830dab2bb0f07a01c3cb6b45732b36fb5a4da3069bf65b2a4e9b2c904"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOURCE_REVIEW-8ab7afb9c288.json",
+          "receiptSha256": "sha256:18f1414bed9b2b4b3a0adde732bed2b329e66c66abb0bf4a5517bf05612fc8f9"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/95a3c3609118b9f8d84e661ebeb9d187dc26e258014b0bb7fedf2cfb5ccbbc09/manifest.json",
+            "sha256": "sha256:763441a15239346eb3879103a71c7af02d7ff9b8ff3f11814d65877f93142acc"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-95a3c3609118.json",
+          "receiptSha256": "sha256:82189b06ed569b031bba9f9cbc4f19e1e0adbad6870ce46c5f09f2c74ece9ea5"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/065d4417118f2b05baa081f2714cda5220df1c0ba31842bda30ab84a36e99733/manifest.json",
+            "sha256": "sha256:c38265b69cacab15155c9544ca1cbbd4e53e0ea9ebfdba1d0353ed9d08bf83f4"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-065d4417118f.json",
+          "receiptSha256": "sha256:0eb788458349fedec3b7313c3f0fa297482f1ad70224cb6ab329e165ff58be03"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/d5e7769704cb8ab71d8e3b6cc4ffa35cadd89e73009fdb6c18abeef6e94efb0c/manifest.json",
+            "sha256": "sha256:ab41d7dcd624a487ce963a538c0ebbdc01cc26ae0cfcfcb931267686a681b017"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-d5e7769704cb.json",
+          "receiptSha256": "sha256:421062fd10e81ec4f7c4f9fa6beec2fef01123592bf443b189ccaef41903e706"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/fd482e3f44a8ef0b878110abb2657310a1276adb369ee19fdcc4df50d2964b96/manifest.json",
+            "sha256": "sha256:6b7b60734d3e5a378e1f175a6151a675fdcfd5835283ace0c8fd7c02e88fda2c"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-fd482e3f44a8.json",
+          "receiptSha256": "sha256:38c73b6160fa897eb096a8ac9f9e6f2722052cccee1105167a34264d356f4fde"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/c74a0b86954ebb52526c6327d6ab235f23f960f601194aea935103f168fd284c/manifest.json",
+            "sha256": "sha256:dd36227369b7e9cef10ac51cf9eeb5803ebe8f398f0f553a8a23ab903c17e7d1"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-c74a0b86954e.json",
+          "receiptSha256": "sha256:80772b8bca604ee34664d2b97879e06ddd87d340d7f90bc5433b3ef4eafd1d3a"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/e6738f810e9abb749479f58643f87a7a0a4e8caaff6c3145db88bb9f76a58e96/manifest.json",
+            "sha256": "sha256:6bb744061cc9fb6156a4a42aa96f4aed0a91287997eac80a6029293e0a476e38"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-e6738f810e9a.json",
+          "receiptSha256": "sha256:0bc0ec3725940a51fb8d674552f5de5d4a6110ed49f125cf2c93a548ae034814"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/83733ad451c10da49733f2359b7db71df5386db442ceeb606421b9f998ca5235/manifest.json",
+            "sha256": "sha256:adf0d99ce54eb3695b06f598a07c3155e26914b4e6c095c3aea1a2d0fb6d2d84"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-83733ad451c1.json",
+          "receiptSha256": "sha256:d5c5612f51efa3c065051c4020a834f25ce934bf8197d56311f4feaa812cbc09"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/4ca39be78e337adaead6fdf03d882828fa0b60cbe3d825426dc30b767d231699/manifest.json",
+            "sha256": "sha256:d5db674fba6451f3e1860f266149f97305c4f1627e75462e3b9c48a70bf8611f"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-4ca39be78e33.json",
+          "receiptSha256": "sha256:11b26065b96b80989c64db0f5823bf22c12fb830e03aaa285eb803192d69b16a"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/9269df784e67fad1f0741a3d13e5f04e3955c5bc950de119f9e5df0d6594adb4/manifest.json",
+            "sha256": "sha256:9d15828901e34c051cdeed1d79a3748312e1f2642d184464c71ca283c38c71b8"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-9269df784e67.json",
+          "receiptSha256": "sha256:8fcbfa8760f1321c10e04d7fc9fe5111325cd04bb953c45cf44ab064196dcefc"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/8275e03ddf4419f2c48c279c7c0cf10170eff6437f57b18d2768adca70e15b2d/manifest.json",
+            "sha256": "sha256:b16427a2dc336c8f0119485e01b1fd1499d2d5d002c0343a31fa3510cda31d76"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-8275e03ddf44.json",
+          "receiptSha256": "sha256:03589b67cee379dbc1a47ef1b47afafd070a9dfc7355d39a1f06d86d0aa0a990"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/007d5c6a0763b575243f3df668096975f102e1e84fc6b434601111ffdb9d06fd/manifest.json",
+            "sha256": "sha256:6f4457534627ee158e85f06ffff16ca6782d04c4498d8a95b62d53b6f6912eba"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-007d5c6a0763.json",
+          "receiptSha256": "sha256:c2e4aa35995435c30d380c462d1a53f1185726ede2751c1b9ba02828c0e1701b"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/9deb544c9e3e9eb88412768e8588b1880dfb3c8768aba0faeeca2f8acc4fbce8/manifest.json",
+            "sha256": "sha256:d772d4fa2ffee2e0722e08323818ca72d07e9139a50fc23dbcdeae4b23e49006"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-9deb544c9e3e.json",
+          "receiptSha256": "sha256:51fb5817371aaaddb323d94148dd33691d18e25e20d9ae4adce14f2327331999"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/f6d0b07be14b17f559b350e214b9e8707d83be8dd77f3bc4b8faa754126e6ca0/manifest.json",
+            "sha256": "sha256:62331fe3332a7e55dd307168e3c27d04b9d22349be08df279f48099cb9ba2212"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-f6d0b07be14b.json",
+          "receiptSha256": "sha256:f92793c3d57e77520e939974ebe204b6ad45ed97a165f2d9650e9294e720f20e"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1132,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/62f85f684aa9b9859565954b79ab70592d678b19dcc78388cfe968e3b1a082c3/manifest.json",
+            "sha256": "sha256:fc799031b5c047a73108e26c07e14f704be68723200368672e8d884cbaf79a99"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_BLIND_FREEZE-62f85f684aa9.json",
+          "receiptSha256": "sha256:e3a227dc35f23c9b358544e99d71278a7c5f9c5f35828d2da328303cfa920b70"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1117,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_COMPARE/0e6190c35710109cd1948187697bf42bf64bc5f7bc4c44a51a844366cee32534/manifest.json",
+            "sha256": "sha256:e707de2eceddb7a2c427a763a1e4624512fa055d711a5a3f4e042c20edf30d97"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOLUTION_COMPARE-0e6190c35710.json",
+          "receiptSha256": "sha256:9d2d56db43c280e73b0befd418f1015df9a627ae24f2027bb74e4285ca31c73d"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/VERIFIED_SOLUTION/05df1838cdca3a8c144cfdf0ade10b4450a0d96e91224301656e418b74b4124b/manifest.json",
+            "sha256": "sha256:c909b1e1f7339abf11488602d524fc157a6077a0e22de252c9850417b68f700a"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/VERIFIED_SOLUTION-05df1838cdca.json",
+          "receiptSha256": "sha256:666e7009e54016b3f4903e40983c5d558c7b787a9e3bfeaa0e2e76fec442e302"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1138,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/bc21fa93338cd0993663f4abdcfc5be8d6eb4cad0dec321be74d328e59448e9c/manifest.json",
+            "sha256": "sha256:63aa766b453ab827e3532d151e71add034f6acb1359865386e5bec95fc5cd7dd"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-bc21fa93338c.json",
+          "receiptSha256": "sha256:9aa9896289097ab9828d9934917307739a1a14132e7db5bae89ed3a3fbe38702"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1123,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/CONDITIONS_COMPARE/9868a12fab9f1b9de6401f7db478ce564268cc55d9fe6788bc24d413940f94ce/manifest.json",
+            "sha256": "sha256:04ae049960aa743f8bf5882e72164c5751d162bac3f8862e78a903089a6fc76f"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/CONDITIONS_COMPARE-9868a12fab9f.json",
+          "receiptSha256": "sha256:7ae6cb902b9fd141eedb3ad744e8623d3008cce651dbe64a9e78c3e7bd2c14ba"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOURCE_REVIEW/411e3ca939f26f1cbda9daf6f7e5513bb1404acbad0299eb84456e36d9612b2f/manifest.json",
+            "sha256": "sha256:3eb755fa6c8c1d62e167808f78151227b8998ea8bee5847b7389c0fd21e411ff"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/SOURCE_REVIEW-411e3ca939f2.json",
+          "receiptSha256": "sha256:e0412a46287fde7c21f30010eee6bce3940c2ba52db1d931269b8b3e8ebd96a9"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1081,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/PLAN/9ce20609cc72ffb11fdba2fcb6e651e2d5e6b2f2cfeb2847a3e8d68597fcff2a/manifest.json",
+            "sha256": "sha256:d49b50b60b766af235d1bc117ed80d3a9926314083c1b1909d718007739ca1d2"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/PLAN-9ce20609cc72.json",
+          "receiptSha256": "sha256:9ecff02005b198e4803850a1e4b93a3f668099961e871a63463f073e9e1c1e4c"
+        },
+        {
+          "stage": "GRAPH_OVERVIEW_FRAME",
+          "receipt": {
+            "bytes": 1128,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/GRAPH_OVERVIEW_FRAME/f6e7ebf4a7557baacef9052dbe8e767241999cea3c0315d8de408558eb38f122/manifest.json",
+            "sha256": "sha256:2122866270881ac000f82f53a02eb817ccdddb7a4ab2c95e5ec708022ae53fcf"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/GRAPH_OVERVIEW_FRAME-f6e7ebf4a755.json",
+          "receiptSha256": "sha256:1ab91707b1e66024ed38065d912b143782ca074e572d922fbc3d57958347681c"
+        },
+        {
+          "stage": "MATH",
+          "receipt": {
+            "bytes": 1083,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/MATH/c17507bd6377dec95598e67de20564862223ef47d9c2f54d0605ea6b6fdeb2d7/manifest.json",
+            "sha256": "sha256:1b63420cf1bdcac60c573f3859b113c96eb9a3c48646aa443e79c8372fb12a18"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/MATH-c17507bd6377.json",
+          "receiptSha256": "sha256:201cb1fd11d44ada9930adf8d473f16e0e763641c484e65bfed7c893d4c9278d"
+        },
+        {
+          "stage": "MATH_REVIEW",
+          "receipt": {
+            "bytes": 1103,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/MATH_REVIEW/88b05757b94d7a57eacf26eee19db702bd4e07b58834e3d447d32c56657797a6/manifest.json",
+            "sha256": "sha256:333ae96f31f055a494d3d8da7de9e54f895a63eb679e6cdcc3baf853b2da556f"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/MATH_REVIEW-88b05757b94d.json",
+          "receiptSha256": "sha256:c7bbf429eabe47bdf5b4ef690d5ebb2d3edca4b7bccb826b26e8b81ac834fa40"
+        },
+        {
+          "stage": "NORMALIZE",
+          "receipt": {
+            "bytes": 1095,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/NORMALIZE/d4dbe89e39a3e2f3d888bde4212b678db68e40fe1ae9ab0be59fab452461f0c2/manifest.json",
+            "sha256": "sha256:f022827325bd133486c29af1b19c691b67343fcbece29b968691f580db1e463c"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/NORMALIZE-d4dbe89e39a3.json",
+          "receiptSha256": "sha256:c0a3ae3168357e8406556b34fc830d6a16fcaa44101d52094bcdceb8fad2d42c"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_CAPTURE",
+          "receipt": {
+            "bytes": 2249,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/DISPLAY_ENVELOPE_CAPTURE/b9ee55228a636d90cc0379e762bb64f2cefdacc2966e18ea956e89bc7c36e88f/manifest.json",
+            "sha256": "sha256:48d4629a8a10e2292932f71832a9b635f066e3f4dbb6a4107727a6616f5a3274"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/DISPLAY_ENVELOPE_CAPTURE-b9ee55228a63.json",
+          "receiptSha256": "sha256:7d60cfc91a43b0c67dbbfe9ecec5e6200d641c89409b12cfe763dc548011700f"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_PREFLIGHT",
+          "receipt": {
+            "bytes": 3078,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/DISPLAY_ENVELOPE_PREFLIGHT/f44a211909805d907a4c1334aca37c73b91a63782be6cb2c47baa59d894e8a5f/manifest.json",
+            "sha256": "sha256:09ce5d7aa8099a75b23ca15d78caffe52c78ed675315526baf6633382e9c217a"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/DISPLAY_ENVELOPE_PREFLIGHT-f44a21190980.json",
+          "receiptSha256": "sha256:5d32370b2043240da40e56db11100806baecb89b3b696bbb07f5e349314edf50"
+        },
+        {
+          "stage": "DISPLAY_TYPOGRAPHY_POLICY",
+          "receipt": {
+            "bytes": 2280,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/DISPLAY_TYPOGRAPHY_POLICY/c6fbc1bd14272b814accca0018bedfc043bfbdcef8978c75ef4c64e924122918/manifest.json",
+            "sha256": "sha256:2e00b8e14bd4b8b23dd1e3ae466fa6c2d2e06a69e478b85d8febcc9c28198f91"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/DISPLAY_TYPOGRAPHY_POLICY-c6fbc1bd1427.json",
+          "receiptSha256": "sha256:acbe2c7669de3f2431ccab3d38659b8bc139163d72a8b132e20246596a4ad65b"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE",
+          "receipt": {
+            "bytes": 2321,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/DISPLAY_ENVELOPE/bd231c80bb6c23f63ae3470d05790fa32a0c1cf6f95acc4c6337a82572f1ea29/manifest.json",
+            "sha256": "sha256:4b620b065a9135d5d2a3ec6c77219bf20611215ac0d7decd0f54d99b47ee26d2"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/DISPLAY_ENVELOPE-bd231c80bb6c.json",
+          "receiptSha256": "sha256:59506bc7cc58435647a1d6572af5b826acceffc7b9dff8e4fc4fdc578d207b3f"
+        },
+        {
+          "stage": "TYPESET",
+          "receipt": {
+            "bytes": 1091,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/TYPESET/d6898ab07b8975147e5a14d945f7b4b7412f851c2ddbafa1f6d63ad79f060603/manifest.json",
+            "sha256": "sha256:cb91eb002cde77468c1b5a1d7c3e5ae7bdf32a837273258bd28b2b89913bdba5"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/TYPESET-d6898ab07b89.json",
+          "receiptSha256": "sha256:5ddc7ae3dbeb33b1c59f988823f5a02aebee05e3e6315b656e402b66267aec1d"
+        },
+        {
+          "stage": "MEASURE",
+          "receipt": {
+            "bytes": 1091,
+            "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/MEASURE/004ecf637f3b64ada03906894ee57152b015e8aaf9d2e99dd510092cabe7ab7f/manifest.json",
+            "sha256": "sha256:3ecce33c507c86aff38b3fd2d957aec46ac9d0cde277a6a2a24f275b8f8d170b"
+          },
+          "pathInPackage": "stage-manifests/q10-graph/current-json-payload-policy/MEASURE-004ecf637f3b.json",
+          "receiptSha256": "sha256:0d4637b14c95ded242aa41965fa034b4c69b6c11c011abb76d7e281e6be7fd84"
+        }
+      ]
+    },
+    {
+      "candidate": "q01-geometry",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "runId": "visual-ed741b36-d931-4999-9850-f76d9af07473",
+      "workRoot": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "errorCode": null,
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "sourceRef": {
+        "bytes": 54538,
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      "sourcePackagePath": "sources/q01-geometry-source.js",
+      "solutionRef": {
+        "bytes": 384,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_INPUT/e484daec480893fd66111ee1639b6f2228c01a6add9fda88ddd61bce92363e33/solution.txt",
+        "sha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+      },
+      "solutionPackagePath": "sources/q01-geometry-solution.txt",
+      "currentResultRef": {
+        "bytes": 27630,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/3ea34f90f73c8a34e17802e39fa75e52ab06b33743e94debedade3edadd09eed/result.json",
+        "sha256": "sha256:10092f787df447124a2d2261e9e5ec5d502f5b30eb6589de750bedf12b6bbbce"
+      },
+      "currentResultPackagePath": "candidate-results/q01-geometry-current-policy-result.json",
+      "replayRecordPackagePath": "candidate-results/q01-geometry-current-policy-replay-record.json",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "previousStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "previousResultPackage": "references/p3e-v9-ledger.json#q01-geometry",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:7fd1784d8c698818f4e9ffabc1a81b20b7d85fcf7453018bb34533b929bd40a8",
+      "previousCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "currentFingerprintMatchesResult": true,
+      "fingerprintRecomputedFromCurrentCode": "sha256:7fd1784d8c698818f4e9ffabc1a81b20b7d85fcf7453018bb34533b929bd40a8",
+      "semanticPlanSha256": "sha256:a808338d9704e86cbf302bc501df097c6035eede5cd5be00e3b4afb91bc95ae8",
+      "semanticPlanUnchanged": true,
+      "currentPlanRef": {
+        "bytes": 3659,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/e584cbaf89c02074934e87be47924975eb9d020c3b3c2641e7d089a4a683fbe7/plan.json",
+        "sha256": "sha256:5dee783b8dd712cb9173a06b3249e2faac93b07db030aa255cfe02e0e4a18ffb"
+      },
+      "currentPlanPackagePath": null,
+      "selectedSizeClass": "medium",
+      "repairLedger": [],
+      "previousRepairLedger": [],
+      "repairLedgerReset": false,
+      "actualArchiveStatus": "PASS",
+      "actualArchiveSynthetic": false,
+      "actualArchiveRuntime": "playwright-chromium",
+      "displayEnvelopeStatus": "PASS",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-3-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:ABLength-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "independentVisualReviewStatus": "PASS",
+      "finalSvgRef": {
+        "bytes": 27699,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/d75a8539f19ad5f09ea594020212581bcc659f472475fa4087ddd817881153eb/q01-solution.svg",
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "qualificationStatus": "NOT_QUALIFIED",
+      "productionAuthorized": false,
+      "stageCount": 71,
+      "stageReceipts": [
+        {
+          "stage": "SOURCE_LOCATOR",
+          "receipt": {
+            "bytes": 1102,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOURCE_LOCATOR/9539d4bcb1502c773b560a57a7000fd7713cf68057768fa6e757230e7fd09a70/manifest.json",
+            "sha256": "sha256:a7577a81640082946fd31d150149f8214d6b9e1c855dffa583be15fa7915228c"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOURCE_LOCATOR-9539d4bcb150.json",
+          "receiptSha256": "sha256:e3b3c9ea52a8c906efe6a2d71f7b39c25ddc8d3cd6a8081f3bb144fef8c59210"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1124,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/8142a77c607119e114aeadf02e54bbcf2f7883edea6d0da55c5ab0f5f736ebaa/manifest.json",
+            "sha256": "sha256:1e9a1f418dc21e3d03772219a3207cd47ce654ea6e5829aa69d8b0575b10c787"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_BLIND_FREEZE-8142a77c6071.json",
+          "receiptSha256": "sha256:c023656200a0fe426945051c314aa5f65e11c43f56caa282a7f153e319563c5c"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_COMPARE/bf2232c7d588c104da46670b79579e78f4ccfe4d44e20bc0748fcefd814b6515/manifest.json",
+            "sha256": "sha256:ff06dedd7fa69adafe1d67548fea3d65649eddfd69cd605a29358f30316df338"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_COMPARE-bf2232c7d588.json",
+          "receiptSha256": "sha256:7f636e3ccc33b2f410333f2f071a4ba2feacbbf1855d40147b0b978a1a2d8bc5"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1112,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/VERIFIED_SOLUTION/038e41c4ebd4d1c8d23d28dc12e88e193aa49662373fdcc51d1198b6db07c518/manifest.json",
+            "sha256": "sha256:9deb2877c90e1ba2210bd9996fe21da20cc0254496f489b3f02641fd3cc0bd5c"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/VERIFIED_SOLUTION-038e41c4ebd4.json",
+          "receiptSha256": "sha256:7d2ea6af3542c9b8197ab489c629528db9ed5ad9a51517ab4512667b502bf82b"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1083,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLANNER/a6148dee4fe28214b6b97e31b3bcbf45b1a93e5a15ca3223cf4e36835e7521f2/manifest.json",
+            "sha256": "sha256:76ab4b306f5a844afbb1b4166b9cab14a41384a4e8e13211ec8d44de4198ef75"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLANNER-a6148dee4fe2.json",
+          "receiptSha256": "sha256:5b5dc525044eaa5593e1389c24cad52dce16761df156e4bc04a626d9604e917d"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1083,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLANNER/8b8a23ab8833ae2e683fd545cd9b2032e154f7f42ed7a469bb4f6f7e15856f71/manifest.json",
+            "sha256": "sha256:1a2540098d4fa3fa6442ac30291efd555738f327f63ff5eb7351af9330c0de54"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLANNER-8b8a23ab8833.json",
+          "receiptSha256": "sha256:07bec3bea0b7b3e514027ceb3862b915afcac9d7ea13d1c7aa00c75b81c79e47"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1130,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/aa7184dd6ca07f75fd8b7e009b1c456cde29d1fb95734219affb9b5bf306dfe2/manifest.json",
+            "sha256": "sha256:55a5fc1c3d51ab3dd8525e622afc997de9d2f89f983ae46a363a9fdf16fcacd5"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-aa7184dd6ca0.json",
+          "receiptSha256": "sha256:e8ea7dd7e9909c6bc5e03688afb25d642ed826ddbc454e49c573532a9ebd6bb2"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1115,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_COMPARE/f51a0e71985e41fd8688fcd9e063a4d8d23c759853debe6952f10236b346a879/manifest.json",
+            "sha256": "sha256:acad22d486cb055b8deef429e32637188268d4f6776a6a3e90fd390dfb100732"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_COMPARE-f51a0e71985e.json",
+          "receiptSha256": "sha256:5a97bdfeee108b018df30f38abc934143a320a1f35cf4c2b56af00c34f31994b"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1100,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOURCE_REVIEW/25bc5e98f42219a8976df08222a6b654f793a8a0614c962d96b5066d027f4217/manifest.json",
+            "sha256": "sha256:adf00601ee8747d4b3b860cd80229c5a131056e997bde4c9cbdf1eaa17840be9"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOURCE_REVIEW-25bc5e98f422.json",
+          "receiptSha256": "sha256:fad95461bd36a13068da21d11610b639dfe04c2352594423733acc6432f6c0e5"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/5b532a0d28130fa18e73227f7802f6b62242ce1ffddf0c68fb4713e3dbe3c238/manifest.json",
+            "sha256": "sha256:1226184724c27b347068878a1c7b6a711a1b1f0a86fb291ac72609dc5b632f75"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-5b532a0d2813.json",
+          "receiptSha256": "sha256:b71ba71a5088ca65f3af17e71778b33daa65548180c37336e2397afec02e6db5"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/cbf3e76bc79af841fe4946253bcaff61f0972a1dc5952cb6fe1760b9e186471c/manifest.json",
+            "sha256": "sha256:704141ab4dddd6ffc641145cf84776af3f770ab9bd362ce2dbdb4a2f6494c28b"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-cbf3e76bc79a.json",
+          "receiptSha256": "sha256:aff90adc04a29ec17b7aced1c0ed808502874d07cc65c7d5bc71627e718305fb"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/f7bb6134bd2d470b55604e5267c8151a51309d9a1dc6721536903f69e99ecf78/manifest.json",
+            "sha256": "sha256:80c30fbcf47f7bcfefdb0e6c56e94bdb9cacc7dae19dca97ec3e38566937367d"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-f7bb6134bd2d.json",
+          "receiptSha256": "sha256:f0d0474aa445b7060072a7cf0dbcb9e01b868bc346f661ecc1e974c0826899b1"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/fcf0fd3f6f422aba305854b3e80b02eef9609e4aba6fead2c466d49716add74d/manifest.json",
+            "sha256": "sha256:2aebe6b509f3ceb39353ef084477270d50403e152c9103701bceb9a0a8480146"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-fcf0fd3f6f42.json",
+          "receiptSha256": "sha256:25f21bbe158e4d6363c1fca8e179f06581a0b73478ebd6751ae40bcb6a9af6dd"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/f9ab7c837d82385aeffa99d4bd301322ce292f2f17f29418b1095bc7f7e4f9c2/manifest.json",
+            "sha256": "sha256:cbac4625ef9fac25d141df2090b9b122730e753ac268946248a00ef5642dd776"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-f9ab7c837d82.json",
+          "receiptSha256": "sha256:7357b9ff3d90b4a74cee58d629a5e50317d2738ed5dcc78c0f67f91ec636e8db"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/14d755f7efc37dce60701f7b2ae290e26312f6e4a232f0f956ec5b1dce5bb5d9/manifest.json",
+            "sha256": "sha256:9b3010ee75742515b808e4a3d96c25c3e566f9af528d723377b81719d098a691"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-14d755f7efc3.json",
+          "receiptSha256": "sha256:0d0459a74e4fd4456e2b2bd10bc2413b6dd7c51a6b54b893ab705bc45c8f7b98"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/2918079b1f10ff3ca412a22eb6a75f9e40d65187e46c00a6f1a078c7b2c86b36/manifest.json",
+            "sha256": "sha256:113603630455fdc46f4f76cfc90694861da32f5d5a188a74b3615e5868bef34c"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-2918079b1f10.json",
+          "receiptSha256": "sha256:695a442ff308083f81711b063c1f32cf39492e6e8d4f2afd0d5e9f7ddbb8e391"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1124,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/30e1d246ff50d44596c33a1b0f57dc73a67ae39b22c9bb3317fe77b27c36a7dc/manifest.json",
+            "sha256": "sha256:76bca6063cd957220a55f0bbdbe176e08dba8f368192b93f4bfb365288603ef7"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_BLIND_FREEZE-30e1d246ff50.json",
+          "receiptSha256": "sha256:a4d4fb8b172cd4bcf141b7f930cb163148cc3ff002c987201c8bf980dd6e6eef"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_COMPARE/512f0e13fecf3435a89071688b43b06c1a6b26341f1d6e378119a341af0e43a1/manifest.json",
+            "sha256": "sha256:5590641e5ddfa488a6010429deea2916ad8f58d20cd6c254ad22eaaf7536430f"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_COMPARE-512f0e13fecf.json",
+          "receiptSha256": "sha256:a02a821ba47ffaa4e416b8c5d3803c6eb056f53e063ac45df86d3c1fa94e1bab"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1112,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/VERIFIED_SOLUTION/6995030636b343cc8b787ee4ed074b209d46dee649b4c1baad0118df21325498/manifest.json",
+            "sha256": "sha256:3845dfa671dcf3fa5ed19a6867404c3992bd8d91057f89b1cbe59946ca651e52"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/VERIFIED_SOLUTION-6995030636b3.json",
+          "receiptSha256": "sha256:3cb557e6ddd5b1ce90151368642ec0aa164cbfc82c302fb2f63cd847691d9677"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1130,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/8187240506b42fdc7e749cbcceca2e5cf10ee4ca0f3d73d31d22edad05592888/manifest.json",
+            "sha256": "sha256:21de5306b9bbb9523459330f90e82f979ba2e948ca4cd4a59c46c100a59d191c"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-8187240506b4.json",
+          "receiptSha256": "sha256:bdb368d1f8b04b446fe5dad39353eacbc1bded81a2fb2711a2377b6284e82a27"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1115,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_COMPARE/12cb4d1c4890e9b9d3e66e1e04040fbc16a19b19d75c3e8ea55e8f5f629aefb3/manifest.json",
+            "sha256": "sha256:8c1932f31aadae9adac33b5f0008530fd185b178a70e8c433acceed8a95084c0"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_COMPARE-12cb4d1c4890.json",
+          "receiptSha256": "sha256:6311c842dac64168dddc3317e8461c51f2c8d441158f47b5b8a7dc5dd7c80e2e"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1100,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOURCE_REVIEW/5a706c5fe5e0818369cabd5e92bc48e472504926243ac052d1bea81eeb0c3a18/manifest.json",
+            "sha256": "sha256:7dc6ae5293f3133d39de5e97fa151a10aac3cffc4720eea9b380af78eda2da68"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOURCE_REVIEW-5a706c5fe5e0.json",
+          "receiptSha256": "sha256:934ba42df309b4a930efb9a7055fc7b5e5443f99d8950be4f58d17732639ec85"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/268fac00704b242317c7626242e6256330165d5c59bd34918fde3327e2f349bd/manifest.json",
+            "sha256": "sha256:09a5ad4d23258cf5498bdcdde366a80af7182e9ead9490a3762f8de95cd8d9cf"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-268fac00704b.json",
+          "receiptSha256": "sha256:1214e4107431ecd80050efc2a33cd07377702bf969d373d72f8f70edd8bb49cd"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/26dd58d78eff1eea6d6b2479137bdaa47edbbe28e8a6d84e9a5d7b698188cc0c/manifest.json",
+            "sha256": "sha256:95fda090edbbc8fb75967e20c66dda7457b16f838f048075aa3adae223a2a9db"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-26dd58d78eff.json",
+          "receiptSha256": "sha256:f084e782ff653dc96608f4c70809af77f2a85a0e2fb88874d48c39f5350b425d"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/1c473391d4b032db56fbeca6c3d665469b98f364bdb1889e2839c7465a3cba2a/manifest.json",
+            "sha256": "sha256:e2f876cbf61f1ada1d47c32fa902f5c39bd0d6e59a096795c7ffebec4fb73965"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-1c473391d4b0.json",
+          "receiptSha256": "sha256:e2909be5f2930e2eadbab6f0f9e26b0108b4094f4db3dfea2a05d8f17f267d29"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/7088ed197fa5eb0ecdfece76c42d4d94c347820a833813ab6bc76d3917143e55/manifest.json",
+            "sha256": "sha256:f8fe5cbd0a57ee95832a18c6db9ff668094085fd806c24eddcd19f156d6725a6"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-7088ed197fa5.json",
+          "receiptSha256": "sha256:31bd39d97a78657b12aa892d95e10e60f987ecafa8bf29ce043f40a63f1f5a6a"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/4321cc8aca158913dc109dc845fec468a1ffbd8269250f4d1bddd944142a2dda/manifest.json",
+            "sha256": "sha256:91433acbcbd202f250c6e21bee7e7f3b7ed27b26615e5f4da3bc3408ad99f40a"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-4321cc8aca15.json",
+          "receiptSha256": "sha256:0c650a8de8c9832b3e8f9563cd47ebdc0058896e6b198047f967c41c3bdb2879"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/98f44d138dc66edac91cc57554e5b8b9cff1e18daf9d1941ac547d3889fe0cfa/manifest.json",
+            "sha256": "sha256:384cda9e79269625e195c5ffc24461aa064f4f241c8fe38367829f7aada9cd28"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-98f44d138dc6.json",
+          "receiptSha256": "sha256:fb8b6aff4e461fbaf2a66349951f96aa3c337119982f4a981070bdc8fc72058b"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/11b58f462d66cf8b83859c66dafc9bd465a550d8236d32640a11534c5aa9e868/manifest.json",
+            "sha256": "sha256:ea6e911487e9d0ef4d4bedb34219d824695c94a15b322abf1b04225fad54bda2"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-11b58f462d66.json",
+          "receiptSha256": "sha256:4cfc4767cbd54e0d7e3221406901be0f7e0aeb882b5b1c27d565330520723688"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/20605efd150f18ba9cc9fd986602a33ab67c2d8250adcfeda131bbf3c2a5d226/manifest.json",
+            "sha256": "sha256:377a8d3dd6021e79830964df535a818aeacfecd516747dac02240dcbdca1cf20"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-20605efd150f.json",
+          "receiptSha256": "sha256:24bf980c1454541c2445e7b5f07dd00c00f725f9d131dd8f64ea83c30a051e46"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/223c5dd3f30be137abfc2a3d8182208bd0c853f1c899d9d1ffd1401ede80320e/manifest.json",
+            "sha256": "sha256:afeb69585cb9c207f60b4d1a5a4a0837bfa0503996e0cc7b36b753680433fbf7"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-223c5dd3f30b.json",
+          "receiptSha256": "sha256:86a198259f5a16ebe74e996048dd2634d3f157b749a01dd5b8c7e807594c6cae"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/2fe0bc1dddde181f1cae55ee12c7f0f70a7d395a90769898d3618c46cdb117e6/manifest.json",
+            "sha256": "sha256:04ee8add200636fefda6ed165b9e075cd80d5b03139c4ba0cdc79c3f370b8ef2"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-2fe0bc1dddde.json",
+          "receiptSha256": "sha256:c90338e8353a920944c9579ad86aa3d8434ad4fc58b64cbdbba655f2c637b219"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/65736db0d0c3ed370b7bd1c48df22856085d240a3a08002d45e655b9b2d48ff5/manifest.json",
+            "sha256": "sha256:97e07cb0fe430a7c9d6b23dc4d235b299f376d13e71b5872ad074f21e14cdd4e"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-65736db0d0c3.json",
+          "receiptSha256": "sha256:7ab7fb0b0bcc141999abb75eb519085df494add02635c5a9ef521aee1a2b7c76"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/d173e7f1f84e100e0264192b17377a82bf7f2023796506c4cdf3b58135f33f17/manifest.json",
+            "sha256": "sha256:22b70c12b01e2947b0d2fc401e6b9b926f5ef751d50c3a2cb965b7cb4c76b1b1"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-d173e7f1f84e.json",
+          "receiptSha256": "sha256:aa3f61fbfb17dd6897093df49d93ecf08a80da440a43c779537b69d5381db2e6"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/ff2524b0cf3ce7964fe8ec5ec01f361b6afd11d412a64f5ed033f6d89f61fc03/manifest.json",
+            "sha256": "sha256:15c1e9537c289e489f29aa45d77e44f697eedab6311edcc10bd21e98ffaca49b"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-ff2524b0cf3c.json",
+          "receiptSha256": "sha256:1e9be5e31b879b9b66a6081aec20bc797d7f488208665488c57526be3dbe401b"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1124,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/b34407aead88af7e08920b93de49b1cc5356dd332ac00076fb9a389a263c2be3/manifest.json",
+            "sha256": "sha256:e00985fae08b3133c65610387e600b63bf5e672894567a87050029b0c4d3a3ec"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_BLIND_FREEZE-b34407aead88.json",
+          "receiptSha256": "sha256:906c38424feb9e4861246898e8c909b49aa88db22c0654ad3c587e42e6dd629e"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1109,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_COMPARE/2cabb1e65551953e29571e55d3a931d8ecf230c79ad0fe59d4cf8d9c30b30dfa/manifest.json",
+            "sha256": "sha256:20f3da87c591cf6f3ac57b3b7ab79fe339eff377c09eacbd83deb7adfe60e6fd"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOLUTION_COMPARE-2cabb1e65551.json",
+          "receiptSha256": "sha256:7fcd42397b4ba46bf232939c7ba9445ac8b83255881f894949ff3e02c2e29f26"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1112,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/VERIFIED_SOLUTION/ce2695c99a4556f172617b66a70dcd2c7f0288483e554efd3ef93e34aa050be6/manifest.json",
+            "sha256": "sha256:a87d08a9f259d15a671abfb1483788f5d298011829249df59e01e99c7727125e"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/VERIFIED_SOLUTION-ce2695c99a45.json",
+          "receiptSha256": "sha256:14dfd4961fec90436cca6c6017b673fad6640c8f6464d180d63d11e8dda7ca8a"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1130,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/b8f0db9021fe459c95d4f0033f9c9cba3d9db6bc1ee80fb414ea759f03ec3e6f/manifest.json",
+            "sha256": "sha256:bcf3ae5f0d205dad60e2981069343c80fb14cc442473ee3d50340426ce11bac4"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-b8f0db9021fe.json",
+          "receiptSha256": "sha256:e5767456183bc14ce6f53f05792fe65c1d09c74baf9fb082cd53fd5744b30602"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1115,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CONDITIONS_COMPARE/b292e289c0b6714510be8a3d8bd31dc43f57c3eba42e6b401a9584c68ca3ba76/manifest.json",
+            "sha256": "sha256:c3d9d9c40a55297f43834b3366264268daa7f1a3700670c933af4155d10983b8"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CONDITIONS_COMPARE-b292e289c0b6.json",
+          "receiptSha256": "sha256:5c486186faccf596a33afc3a0280fbc57f82e154aad181d0ad1d207cd168b390"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1100,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOURCE_REVIEW/ea99f734b1b90645b46189d287028466ead8eb0994e9fd8725c6f5fe7d88187a/manifest.json",
+            "sha256": "sha256:5d2adaa05d91699b74d8a7ffa43c6eb81f9b99ff65c8ed07b6403f04e21dd64a"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/SOURCE_REVIEW-ea99f734b1b9.json",
+          "receiptSha256": "sha256:c6315838581013d8457f45c1b1731a08aeace7c81eea599fc7e4b0564cccbc9c"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/PLAN/e584cbaf89c02074934e87be47924975eb9d020c3b3c2641e7d089a4a683fbe7/manifest.json",
+            "sha256": "sha256:e6a3177c8e3f63d386c1e5e3abc52c4c2cd2e9c280ef943eadc60276fd23c504"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/PLAN-e584cbaf89c0.json",
+          "receiptSha256": "sha256:5389909239785bfd64b581b08523e7d15e96bb12098df2b08a6b36a818d24c65"
+        },
+        {
+          "stage": "MATH",
+          "receipt": {
+            "bytes": 1073,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/MATH/8e3bbc640f7907931ae281f2a250556cc638c886caf1479baefafef701a9baac/manifest.json",
+            "sha256": "sha256:d16e17be7e743588482e83fb73f6dc00780e1d6b361a0c77ceac00127097b23f"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/MATH-8e3bbc640f79.json",
+          "receiptSha256": "sha256:a129fb6e319fa94af6088d75e50ccc182aa6fc629ebdfd3ff643152b095eb0c4"
+        },
+        {
+          "stage": "MATH_REVIEW",
+          "receipt": {
+            "bytes": 1093,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/MATH_REVIEW/37fbe2fcd87e18e7eeed8dd1269c2b3d3abb7af7787e34be7180cffdaf8c3be4/manifest.json",
+            "sha256": "sha256:d1c3d33d1f55e1d1fc97cf99e5b3fe2d992a0045c7676b4008bd8414586d561f"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/MATH_REVIEW-37fbe2fcd87e.json",
+          "receiptSha256": "sha256:3f9a81cbc21059a3f8631defea8d7bb36427561f8ad5465f059eeb034c04ec6f"
+        },
+        {
+          "stage": "NORMALIZE",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/NORMALIZE/eb29e23e9abbf3251b1bedb54f441a3aa21b8fbe00f2f1722a46f9fef9415b5b/manifest.json",
+            "sha256": "sha256:43bf201ace5f787fe2e847508880ef1e7ed6091aaf4a49b126dfc2502371be13"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/NORMALIZE-eb29e23e9abb.json",
+          "receiptSha256": "sha256:e098a6cb5aa45ea9b6a023f5773c66c461bc400eaf0cf04a89c5a388c1883140"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_CAPTURE",
+          "receipt": {
+            "bytes": 2237,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_CAPTURE/d291b6c8776951b5e8b9763aa334649880e9358f5bb393fddbf46370086df72e/manifest.json",
+            "sha256": "sha256:cbaaf02fbc97d2156e0e6bde0d068a8a56fef1a0f81233d0dfb451098c8a8f88"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE_CAPTURE-d291b6c87769.json",
+          "receiptSha256": "sha256:eb3cba1c846ecbe7f9bdfbccee9e52b4470bd098e1e1a11674d28593ef9b441f"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_PREFLIGHT",
+          "receipt": {
+            "bytes": 3067,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_PREFLIGHT/2aef7fe1d9760378ef7f2e3e36e5a90a811ccc176db5aaf03e1cc01eba9318f0/manifest.json",
+            "sha256": "sha256:4fc25255419c674cb816417ece5911bdc630cb34be169b64fb952f1585e5c694"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE_PREFLIGHT-2aef7fe1d976.json",
+          "receiptSha256": "sha256:ae49ba5a41576a3ead45d726ab5edaf83f3ed05fca33a75cc39dd305d8bed727"
+        },
+        {
+          "stage": "DISPLAY_TYPOGRAPHY_POLICY",
+          "receipt": {
+            "bytes": 2270,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_TYPOGRAPHY_POLICY/95db7f5a679d502fd1f0867a6de0a95aef064e1cb5c4da9806411281d2868026/manifest.json",
+            "sha256": "sha256:4e140873d3a73b34b94340c3d4cd6edc52ac02448fddca3afeb514bb07e6337b"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_TYPOGRAPHY_POLICY-95db7f5a679d.json",
+          "receiptSha256": "sha256:64b5d26199d3404cdb84b30f36723ccb322c0850ccc0c89b9b09241f27612117"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE",
+          "receipt": {
+            "bytes": 2311,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE/61a6eb049abb1e032b55459abaf1becf4eb82fdda2fc1371bc0415c35ae7139a/manifest.json",
+            "sha256": "sha256:6d9455dd44a7e6af8bcd976369ef6a706ce4a81f0adadfb1d1cd8e1f7a665b56"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE-61a6eb049abb.json",
+          "receiptSha256": "sha256:ba785e8e2c4d3ca2b73fca7feba27d0108f92fb87eb52b8617945aa399004dd0"
+        },
+        {
+          "stage": "TYPESET",
+          "receipt": {
+            "bytes": 1083,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/TYPESET/e15c5c0eda27e601ff3798e35350829547fd914eacf122147fd7b5fa5c2da454/manifest.json",
+            "sha256": "sha256:950c8a7d59e6e244de77fb193e4cf64da86cd38a11d85796cb994a22a229a195"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/TYPESET-e15c5c0eda27.json",
+          "receiptSha256": "sha256:75ec2ec72dcbdb2b9d9baf17e038e3d758da6be87a0ced8333fafefd00ac05e6"
+        },
+        {
+          "stage": "MEASURE",
+          "receipt": {
+            "bytes": 1083,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/MEASURE/721997baa7c3a0bd99c79c313997466419aecd8f46f36eccf27fe1a8a3b659a6/manifest.json",
+            "sha256": "sha256:0d1d9c3a8bc9378ac05162448f12c562c8af045db337fb5935c58592120b1c61"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/MEASURE-721997baa7c3.json",
+          "receiptSha256": "sha256:e57794635c9329aa89096bba23f8554e736f7de1b895ee02b8103851736dabeb"
+        },
+        {
+          "stage": "BUILD",
+          "receipt": {
+            "bytes": 1403,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/d75a8539f19ad5f09ea594020212581bcc659f472475fa4087ddd817881153eb/manifest.json",
+            "sha256": "sha256:39e6c09c89a97a61093c32b83fda4111b74b2009f78c13dc5cc8bbfd494339f2"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/BUILD-d75a8539f19a.json",
+          "receiptSha256": "sha256:26404e5bafa774afc17945b91e4c3eb9b2949f84290b4b42d85b99b54d5565f7"
+        },
+        {
+          "stage": "STATIC_AUDIT",
+          "receipt": {
+            "bytes": 1096,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/STATIC_AUDIT/a92a3663abcd320044377ddf20047e1a54efafc657433af8b7f69ffbc5b0da0a/manifest.json",
+            "sha256": "sha256:bef78e7ac64376f0bf932de1b3fca662659357f2f61efeaf0726f477dc3e9821"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/STATIC_AUDIT-a92a3663abcd.json",
+          "receiptSha256": "sha256:f0bceec98dcf3a1d438490e790022532ae7778f15ee09dcd6e0bdf5761e47dde"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1658,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/eca02fb21689278386cce761352e19fb11e52428357393a1c25bd9de592a6c3b/manifest.json",
+            "sha256": "sha256:0ca3c077bde16fa519ea1f197608b9b8123fa1053e83ce9ccc5e5624beb8a59d"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-eca02fb21689.json",
+          "receiptSha256": "sha256:9232ce13411348a6806764cf2b7917859dba60ff027a5127bbb21320a2268bc3"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1655,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/39064b24d6a12215bca26a6dde3a00c6216c14406e003e92a79f7ff110c40e96/manifest.json",
+            "sha256": "sha256:e852eafcc27830ef4d00aa0e24b6ad95a64d6cf22389daa9037020c1732ead10"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-39064b24d6a1.json",
+          "receiptSha256": "sha256:2f96a9358998e652ca8d7ef25c2c9104ee2d3b9565aec74068dc7fd3bd50999f"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1662,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/c7a08a9496e4973fcfe4c8ef73d0873ccf4c94c11eb1efff0d2f83b86575728c/manifest.json",
+            "sha256": "sha256:c19d16407b53894c6af80d953aa0731a1e6ddd0014f0f16bffaa1833c507a889"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-c7a08a9496e4.json",
+          "receiptSha256": "sha256:0403b7fea3d21cbd1c1d114dabf59f4f312a3b7af3414bd308a0460e95b3da4d"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1660,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/17845abaf85865c676f86efb638acfb36ee95ed07062e25283ecf076a9db4bd5/manifest.json",
+            "sha256": "sha256:0f3ed1f9e74aa507afd75ac5e4d702c2099c176ce2601f517aed52c1c20310c8"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-17845abaf858.json",
+          "receiptSha256": "sha256:3bf91c83e9fd87a09a0686e05d30c6f97bac05a271845be45d1c69a55137ccc2"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1657,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/ca84f11f57a0d73dc606158678f1475b40db031b417257a07bdb634eb85dc8af/manifest.json",
+            "sha256": "sha256:fe38e9d8ed30ac24d86db597f42e5b2593cf7e574d751d3db823facd36ee9b84"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-ca84f11f57a0.json",
+          "receiptSha256": "sha256:f7f3f949e48cbf478fe79b2c16c447fdb886bd1db1d0a39db7329992320bc51a"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1664,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/244ad13d9adc7457e2d3f0584d2ded8641a8e3e72eb9f993b11a2919428ca203/manifest.json",
+            "sha256": "sha256:c06b3bc6653df9ef0562258621a0ee7e799a26aa34877c8c78b565ba5edc4808"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-244ad13d9adc.json",
+          "receiptSha256": "sha256:cdd46069e726d5da224659e6156290cecf460678f4d7a15ea03aff7c0f197b71"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1656,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/325d227858a2cf98b2ee69c7b67d417bf823cffdf524748c5f6379479e7a6cdb/manifest.json",
+            "sha256": "sha256:1fa305e4606aafb7eab4264470767424abf2b6fcd0c5d89261aaeb2ba95ec4cc"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-325d227858a2.json",
+          "receiptSha256": "sha256:ccff595073cfb2eef7de4cee3ab1be596a17e4734414163061cc1fbb9fa8730d"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1653,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/df55bf3f41176eecefad5de56208b49b96aafc2e5bb1295a291fdd382ae1b3fb/manifest.json",
+            "sha256": "sha256:0c0f3631e64ca21571a218c1f23de23265739f69a71b7eab106bc0a061003cd9"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-df55bf3f4117.json",
+          "receiptSha256": "sha256:1bb42ffe930c06b9a1c3dc93e6ef54d2dee989f38e594e2e8fef1cdefdc5add5"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1660,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/728ed576ea9744f8524977f220ec356fe23793004abcd22ae290a0536e46ba1a/manifest.json",
+            "sha256": "sha256:1e88d61b7464e9e398d04286047b085353119f3b587a35a6bb9fc1031f7615ff"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-728ed576ea97.json",
+          "receiptSha256": "sha256:d1aecc1d4207de83f9b31ec3bd8eea7be08bb38a9384dd74b5d75745b6beea58"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1666,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/e46b8f0f3a9655611825df143d85725e0737ccc1fefe2c732aafb94fd06ebc6f/manifest.json",
+            "sha256": "sha256:cda7c9d529e2f5cf701f029eeda29bdaa98d4c6a4bf508331c11ed07298e3c08"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-e46b8f0f3a96.json",
+          "receiptSha256": "sha256:710262da7fab291f00e32a5e347f603605a7941f5d056f5aebd9c8e5d2c71b2b"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1663,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/5957684aaeed2305576285bb723d731b41e78789bfbb487949f4a3007b8f9058/manifest.json",
+            "sha256": "sha256:fbae07c1de3c2e5836095e4c6721a255e812c81d39dcd406b1e6e885adf6ac6a"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-5957684aaeed.json",
+          "receiptSha256": "sha256:6d07d24c5b8178401efaaa410d3ea03b4535e66854761891ad68a2870d472672"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1670,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/e4817ddd96341112b2d1de961aa3aaedf5fd6423da1f53161204766874281458/manifest.json",
+            "sha256": "sha256:a4af16281ee69f9f128000d372857055a2dddff04d2d34a2d23d0fd86d9fec4b"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-e4817ddd9634.json",
+          "receiptSha256": "sha256:1d335dab432c47e1a642f4515a8767cc8d921a7507c6be8c7d6efcb1dea06ac1"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_AUDIT",
+          "receipt": {
+            "bytes": 1128,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_AUDIT/6108faba543ef248b59324848c462dfed0473a4dfe7a6c73544a6538b0fca99e/manifest.json",
+            "sha256": "sha256:95073d6b59b06cb9a8c693794125b26954976e181fecc313d825012f872b2ee6"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE_AUDIT-6108faba543e.json",
+          "receiptSha256": "sha256:e1e20af19eca667b8fd87ad9dc3900c424aebb60d21786b7a18be84e0b38ecb0"
+        },
+        {
+          "stage": "ARCHIVE_BANK",
+          "receipt": {
+            "bytes": 1458,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/ARCHIVE_BANK/538aa5b427ba2f612336e53ad93c2c5881a6774cc8e2f0378a9dee7bb349b0ac/manifest.json",
+            "sha256": "sha256:ed1e4579aab3330e95638c7baa37d8275d809f57c8becc7a58f1fed8e09d8eb5"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/ARCHIVE_BANK-538aa5b427ba.json",
+          "receiptSha256": "sha256:39504d83d6bc5e2a0296ca9d2bd76dd475a9891d8008563f93d51f65259301b2"
+        },
+        {
+          "stage": "CAPTURE",
+          "receipt": {
+            "bytes": 2803,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/CAPTURE/000581f3e3bf5d43cb8b78e32fc750e42e14182687529a94231ef930944e3002/manifest.json",
+            "sha256": "sha256:39f6b78860cb57099ecd22f22a7897846bc6f130ea46313ce5516a90636b9463"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/CAPTURE-000581f3e3bf.json",
+          "receiptSha256": "sha256:1cdd92e19560cdad9cda3cbd8f9c21b4436850e7f2d0e28590d559495fdecb89"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_ACTUAL",
+          "receipt": {
+            "bytes": 1662,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_ACTUAL/71d1c262b508355b289491ae306a16a80e88eadbc0a0ea8bac09a5380c22069b/manifest.json",
+            "sha256": "sha256:cfee3f96936fccbdd34ec073ff5187bfccadd1fbf384e6c351f621636800e4b6"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE_ACTUAL-71d1c262b508.json",
+          "receiptSha256": "sha256:7da7f16908833f8b2a7d5a072bc0796211c97e2122cceb1d773651c56165a45f"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_FINAL",
+          "receipt": {
+            "bytes": 1566,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_FINAL/218295b28545e62021669d560da0e057f245e0076d29a127508be5354dfdcc4b/manifest.json",
+            "sha256": "sha256:4a7e802a6f8b3d94d7d83f60889cbc6d83b5e8bff87bde1cf0de34ee4dd622c7"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/DISPLAY_ENVELOPE_FINAL-218295b28545.json",
+          "receiptSha256": "sha256:62ff7ca1dcbcd57c84c00fe7947bd7df513ea115c3c84228d4713a4882d28d13"
+        },
+        {
+          "stage": "VISUAL_REVIEW",
+          "receipt": {
+            "bytes": 1100,
+            "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/VISUAL_REVIEW/7dfd056d122d0572a5140d00a41663fab3dacc413993167524414fe81f632972/manifest.json",
+            "sha256": "sha256:f0b7e9b39de43ff896c71624144ff3e1f31f8ed3a486983cd762b92b0040a885"
+          },
+          "pathInPackage": "stage-manifests/q01-geometry/current-json-payload-policy/VISUAL_REVIEW-7dfd056d122d.json",
+          "receiptSha256": "sha256:5c91c995e71a2342253cabd4ee8b0bd5009c626334553aa876b7f5a4c65baf70"
+        }
+      ]
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "runId": "visual-356c630c-ca80-4baa-8c43-4015bfa41fd2",
+      "workRoot": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "errorCode": null,
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "sourceRef": {
+        "bytes": 41090,
+        "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:f2b726065d3802ccdb9d3454ad92a2deece34772674188c24cd4f4b96374796e"
+      },
+      "sourcePackagePath": "sources/coordinate-free-q01-source.js",
+      "solutionRef": {
+        "bytes": 212,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_INPUT/884c7adf488efabfa6a689f2182d57e7257a5e8d290026d2e84e031a5f094c34/solution.txt",
+        "sha256": "sha256:c6385f4a00da8b246224a366dd9bb3c1429c6c575acb7f09e85e04a90953668e"
+      },
+      "solutionPackagePath": "sources/coordinate-free-q01-solution.txt",
+      "currentResultRef": {
+        "bytes": 28140,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/a303f62ce071a266904e1ee501adc6c73a6de26d845d4a842107b0f1aabdd05c/result.json",
+        "sha256": "sha256:09aa62c05294abaa9f26e5cde6508ecb9fcd368d58dd56a388a9cea835aab13d"
+      },
+      "currentResultPackagePath": "candidate-results/coordinate-free-q01-current-policy-result.json",
+      "replayRecordPackagePath": "candidate-results/coordinate-free-q01-current-policy-replay-record.json",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "previousStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "previousResultPackage": "references/p3e-v9-ledger.json#coordinate-free-q01",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:7fd1784d8c698818f4e9ffabc1a81b20b7d85fcf7453018bb34533b929bd40a8",
+      "previousCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "currentFingerprintMatchesResult": true,
+      "fingerprintRecomputedFromCurrentCode": "sha256:7fd1784d8c698818f4e9ffabc1a81b20b7d85fcf7453018bb34533b929bd40a8",
+      "semanticPlanSha256": "sha256:e08e4580b4b8cdcc129fc29c6dffe0855ddfa3f5e0870cfbb0967ccd9ef66a70",
+      "semanticPlanUnchanged": true,
+      "currentPlanRef": {
+        "bytes": 6281,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/74a904c6a67b63978711dd7e98013767adb68984c27ae95f16b8623207dab8e0/plan.json",
+        "sha256": "sha256:16e1e4e3666f5850dc204c7d2ff0c2db771ee7a9a53ef267ea462bf968f9668e"
+      },
+      "currentPlanPackagePath": null,
+      "selectedSizeClass": "medium",
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "repairLedgerReset": false,
+      "actualArchiveStatus": "PASS",
+      "actualArchiveSynthetic": false,
+      "actualArchiveRuntime": "playwright-chromium",
+      "displayEnvelopeStatus": "PASS",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:C-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:HypotenuseX",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthAB-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthBC-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:SquareAC-value",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "independentVisualReviewStatus": "PASS",
+      "finalSvgRef": {
+        "bytes": 19211,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/aaf69f92ba28c6da6331754fcb2b243c67fe48fb7d08ae50d7219be2d6ba69d5/q01-solution.svg",
+        "sha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9"
+      },
+      "qualificationStatus": "NOT_QUALIFIED",
+      "productionAuthorized": false,
+      "stageCount": 70,
+      "stageReceipts": [
+        {
+          "stage": "SOURCE_LOCATOR",
+          "receipt": {
+            "bytes": 1106,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOURCE_LOCATOR/4d1708dac92a56ba4f3c3b6d5ae433b38fce502ecc2e7d6bcaeb6ec04c2978b0/manifest.json",
+            "sha256": "sha256:ae96efc53835558e3dc6eca7ee8e627cc48c9a1238c74389d791afc8995e90d8"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOURCE_LOCATOR-4d1708dac92a.json",
+          "receiptSha256": "sha256:d339fa01202422681f2f91e823c261bf78e61eb52cc95e401dbf20fec9bfe8c3"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1128,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/978d6fed2dcce72ba55bc2300afee60f3ae75657351a0934f95145768d33355e/manifest.json",
+            "sha256": "sha256:79f3c94815e58cf2eb26a9ec45b6c8acfc22775a790b1cd73df4a7791cda545e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_BLIND_FREEZE-978d6fed2dcc.json",
+          "receiptSha256": "sha256:ac1b3e96a8776460357017f2354e775983dbeea22de29f64780e339ae9bbb1e6"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1113,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_COMPARE/6b3854127dd693dbacdc505147133ae77392bca6e416bbc350247017e287032e/manifest.json",
+            "sha256": "sha256:65f26a6a8c42ba75ca3eaf4a81160aa9680806f27f28ac331e29c61297207820"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_COMPARE-6b3854127dd6.json",
+          "receiptSha256": "sha256:3a25272989094a32c79de1cae1f178979d145dd4ca6c2f7b5ffad885675136ce"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1116,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VERIFIED_SOLUTION/849ab85fc7f21f4e75cb2613611bdc32f0c0b1685f1520ab7c2ffff07ae59df8/manifest.json",
+            "sha256": "sha256:e1a86cad840c55e68bab9124a525c266a3f34bfbd9dcfae4282b84307c5ac930"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/VERIFIED_SOLUTION-849ab85fc7f2.json",
+          "receiptSha256": "sha256:0bf86f05800e95da33b57f7553e22a4a3555cc8c18af0f62e1fb2d0e383abe6e"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLANNER/d010ceea17f2864d31568bdc2c75328f681fef7496ca7671749dfaac688cd1d0/manifest.json",
+            "sha256": "sha256:283a1006aa668ced0d713dc5dbf08d00946d9fb66a9177060bdd2d82caf23074"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLANNER-d010ceea17f2.json",
+          "receiptSha256": "sha256:df961e694e33bd16c70e4661162a20537f01d8d1e1fb491e053470e1f2280450"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLANNER/c908f499528b59f2fef7e4f8ad581d98e8c73982ae62e79e37805fbb18463c0a/manifest.json",
+            "sha256": "sha256:edf2f1dae5ccc0d6a6202077163f83e64dac3a85328837698c729401680a049f"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLANNER-c908f499528b.json",
+          "receiptSha256": "sha256:a6cfd360d7d2b2a4a450ecc0a496e3442970405e6fe516b86f302877af32035c"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLANNER/f84602e074d52993cf35ba39c7ff0c4903cbe70bcb680aaddff8d6a8b79b1c6b/manifest.json",
+            "sha256": "sha256:3d118b4597703e56de7ba301fd8503043ef6c0317b75e1ce3f30032104823ab1"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLANNER-f84602e074d5.json",
+          "receiptSha256": "sha256:d7cd4f36bfd27b6b01e59d9744fb954a134345ec981bc21a2284e606693d5526"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1134,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/6fb833ad4502e8e762d2d81675f00a0587350e0b5cfde2a69611919c91c537c9/manifest.json",
+            "sha256": "sha256:f8cda855953197f66214a985c0c7076ef11ac808658d0c894fa25cab9e2a5958"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-6fb833ad4502.json",
+          "receiptSha256": "sha256:1799aec7cb420f052f7f81a33b4b0c564d3fe8ed6c93321444e83addbd815157"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_COMPARE/50b6eb8913d0914dd536eb625a6e557b03be3200955387eeb9426832e9a0727e/manifest.json",
+            "sha256": "sha256:7707f79835782d39b43613531caa3bfeb82ba1c2824dde22e8b515e0adf9e29a"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_COMPARE-50b6eb8913d0.json",
+          "receiptSha256": "sha256:f7f390c835f59ff8d5a92999228df1edba8d9f15187009f49841428edffd0d31"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1105,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOURCE_REVIEW/bdc337f6b5dc9b6cc95d6a66b784271e91ca0533fd7a7a1e45eea61bfee248d2/manifest.json",
+            "sha256": "sha256:0fc4336b1421512ea25d4b28f4f323d0dfdaf5c081edb63b680656c7b8a831a3"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOURCE_REVIEW-bdc337f6b5dc.json",
+          "receiptSha256": "sha256:74b1532694b47817a63fbc24f354374aff2e4c1fbf92dbb896e42ff79280dbba"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLANNER/d5d3a61cdeb6f26725f59b6bd7c199a773ac7c2090cbe97c8b6a25b2d6f723df/manifest.json",
+            "sha256": "sha256:a28b2053cb7b2af5b460d320a11ee412867ee71a07d0c585070f4e7aef04ed76"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLANNER-d5d3a61cdeb6.json",
+          "receiptSha256": "sha256:9491fac16c93bbdc3cca4cd7a825920ea0b6bb8f004f08ac8d487ff71d134127"
+        },
+        {
+          "stage": "PLANNER",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLANNER/0188d80801827fd250e78654e59e639c7b43eba09329911da91ca2e8c1e61c02/manifest.json",
+            "sha256": "sha256:62c2294ad8fadaf8bd4ccdf300999e76dbd88ceec5e1488e58b414f09c5f8535"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLANNER-0188d8080182.json",
+          "receiptSha256": "sha256:8f5d2a992506dbab04233c39e63e0a00133cd5e37ace0839bf6af2858f8f6904"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1134,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/c92ed595f67dafc5e3a30bdf426d5c4519bb22c6bb3d9c8fb194b46d5481c745/manifest.json",
+            "sha256": "sha256:451dddeafd8afe23255b9ce8edfbb4c709e8c584b68be94c82839524d91adab9"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-c92ed595f67d.json",
+          "receiptSha256": "sha256:b47e3b13e07c592943363e4080ee59ac9db6f19af162c78bbdd44dda3051e94c"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_COMPARE/5ffd08bce5ca0bec1ad2805b23221646cb961ab8fe7897748f82733eb3e938bd/manifest.json",
+            "sha256": "sha256:ff1f643fbb256d594900abf6f438157fdac17e48b40766373d656ec7857848b5"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_COMPARE-5ffd08bce5ca.json",
+          "receiptSha256": "sha256:5744040926a483a12ba579b22fca3c1b570c04b5c74a8f17102908f4923548f6"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1105,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOURCE_REVIEW/f463139b9b480037cc826b41800305843ce173def0c2442c53bb82fd32235fea/manifest.json",
+            "sha256": "sha256:d147937ef1e1a966578637e821db9043ed6585a5c3acd93439359227c2dddb54"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOURCE_REVIEW-f463139b9b48.json",
+          "receiptSha256": "sha256:b0672d67e0a0b8d893a9adbb6494c95b710fd835549a62914e4347fe43102f7d"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/95565f4e2f56527aa6ad10c0bdb3f5ba3faef3adb837261a663ed1819691f0cc/manifest.json",
+            "sha256": "sha256:ff56194acfc4421c91b717a6a79be5c4bce6da5b11ec58014e5f2f639a65af83"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-95565f4e2f56.json",
+          "receiptSha256": "sha256:f8bcb6266ddd4d7fc972da756aede7be3f4e414388b39f95bfbbe6052f7b5ff5"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/b056a786960b60b826b7c31959fb38bb109625885baa1c2828786dcf7f4f7290/manifest.json",
+            "sha256": "sha256:06d203d9155854c4a5966456ba31bcc7ef5b24b612259d778a208d2fa6c0720c"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-b056a786960b.json",
+          "receiptSha256": "sha256:d6cb7873ad2de097345cee357349935b2a95c0365d31c4f80f58ae812ebf270b"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1128,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/f3979310651f9f1826a58c6275b8157e09e4562081b729d6dd01eeef3795b14f/manifest.json",
+            "sha256": "sha256:5c8480d0c463b7b3d9ad8a8940daca98304b8ae1afc92d2f21bec2829f44d409"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_BLIND_FREEZE-f3979310651f.json",
+          "receiptSha256": "sha256:bfb7fecf8f8a6d8091997e0eb05cd654afdc46adf80aefe99237c229de231986"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1113,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_COMPARE/deae6c089ef0859c742a8174093eddfe2f3a03ea29e07d48e1d7068b622c8721/manifest.json",
+            "sha256": "sha256:f188330cef376239a556d50ea3f8dad7bbfc8fc9f09b09af495f07bd5e035fa0"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_COMPARE-deae6c089ef0.json",
+          "receiptSha256": "sha256:e513b5666488ae80ffff0aa5ccb1c1517919c37f4312de35642899e475a8f748"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1116,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VERIFIED_SOLUTION/be95fa4e6f6445c03fe561866b73915b10d9b3563f95be09ffa6539f75bacd99/manifest.json",
+            "sha256": "sha256:9a9939406ca5ad240b8c5f5c2ac437be3544ff0fd7a23f7bf3406ef65dc8c3cf"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/VERIFIED_SOLUTION-be95fa4e6f64.json",
+          "receiptSha256": "sha256:e39c1581f186bc4c331bfccd577447fc137c94b47953f7bbf71db2ada9953279"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1134,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/679d96b3c4258e60f1b538aedef26cb8185a6065aadc5e0bdb9a867bf898bc32/manifest.json",
+            "sha256": "sha256:01251ef274569cdcb3ec82f068f3f3d9abc721f38c91b5b9b4bcbd0236414871"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-679d96b3c425.json",
+          "receiptSha256": "sha256:83d6f24a7d8358813c55b634cb85195096d2113e3fce2e94897b03432ccb5838"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1120,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_COMPARE/c3e6b4c020ab8a465613a786a6e639eb76dead4f1973d18e4af90502cd72f7a9/manifest.json",
+            "sha256": "sha256:9081bee285b3b125e7f310bfd910a9c7fe0c79f22f144ffc8f0365ab8561f224"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_COMPARE-c3e6b4c020ab.json",
+          "receiptSha256": "sha256:b49afc2aadd07fe313657f5e36abb954aef5875421c8478e7c75f7678f4a7bca"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1105,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOURCE_REVIEW/595437c03561ddf3e0316790722cbbc3abb570c6178dff6c73d7b54f995d7ef8/manifest.json",
+            "sha256": "sha256:fda5d4c874f16f2a67d7d49bb7eb874dc8328df1db73001f5e86c43682a81fa6"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOURCE_REVIEW-595437c03561.json",
+          "receiptSha256": "sha256:3c2cc2ef2d4291dbc0daf5a6fe785ca823cf535c897b32aae80dcceed39539e5"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/71715b0e9730905009cf0f9d319c99b198672256bc2bb6622156017635cbdb78/manifest.json",
+            "sha256": "sha256:7508f0f75ae61cb0641663a14620c53e62b352bda4da06fd256e09890245f7ef"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-71715b0e9730.json",
+          "receiptSha256": "sha256:f191f308afe201fc86a877e97af10694005390b4ed6bf775b9b9fdbf8135c47b"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/af573bf948639c095877a2c2b44cf20a5a0bfbb81e70d5b1e93baf0348808860/manifest.json",
+            "sha256": "sha256:e2a57daf0d9d7f16b2e69cd238dc944c38024ab4e7d997f099fc41b001f88e5e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-af573bf94863.json",
+          "receiptSha256": "sha256:0aed20014c3b9ab58c7c182a75848968cd696b8bc4081c3cad756b94795948ec"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/2fcaa91044341d347dcd7d9fb7ace7f16bef801393c3c2c455ce7f99a254ae95/manifest.json",
+            "sha256": "sha256:fb2ef2a5679356f2435622ea89df4293e9ecab1d6faa3900147c51c32cef46c3"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-2fcaa9104434.json",
+          "receiptSha256": "sha256:19a08e505240fec71a905bab889063d0a16a622ba147533773aba03c9f54bd6d"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/ce381d571e7fbaace933547abce5816f7b586e6e94c4a687eff08cdeadeb77a9/manifest.json",
+            "sha256": "sha256:fa0e0ed376aa34b1d08aef64c6d63cdd06bda0a9606666a544719a1594ddf23f"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-ce381d571e7f.json",
+          "receiptSha256": "sha256:070870c08fa502ea96c92de98b447a571feffe2c9337cc3c7427b5b23ccba589"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/a1d33d02bde27186c59b8ac7d642f29ffcf703b6541c8d9ea6e678af0d4799cd/manifest.json",
+            "sha256": "sha256:9147429ac2b639daf084c87e017dac902b4f51c560fc1b184c3b1164862a784d"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-a1d33d02bde2.json",
+          "receiptSha256": "sha256:29afbf75610e4aa045ddd8ea6deda667dd4f6f6f0a8aed74150710f15aa54166"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/0b22636d057ecedb2210bd018aa2960d4b9a1d26b41c24a58d0f74a4dbbbc8a4/manifest.json",
+            "sha256": "sha256:31518ecd3d3d8465e3d9b05ffd9d2e8d94ba868924a8bc0f53d2afb2796b46df"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-0b22636d057e.json",
+          "receiptSha256": "sha256:73b3d1c33b79308ec28a2784d5237c8f0159c301950a00b0908cee4d88125df6"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/775d8292fc75962fc27660218b675638ae889e5b208079c60bbe747b6ce3aa93/manifest.json",
+            "sha256": "sha256:c87009a3dec5726f60a001d808707705dbb35b404780487d0b219a7b9968805b"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-775d8292fc75.json",
+          "receiptSha256": "sha256:78c014483b5067665b41a4c3f0843f4e2a2c7b2d0ffdbe6b9a8543aa7a895b0c"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/305734e154524a85d08fa003f02f08a91100533bf32bf00259a4c041a956007c/manifest.json",
+            "sha256": "sha256:b639d07cc879617443937f9a701d92c9b129de4bdae67f1638ec770affcee15f"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-305734e15452.json",
+          "receiptSha256": "sha256:46af1fd3371204556b70215cfc0aa301c4839759cb78d17f25d18511f95eda3c"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/8ea3d6bf1a665ed601cfbfd37b4a1e551074735b8f472673e1dcf5d52e14e8b6/manifest.json",
+            "sha256": "sha256:8d6951ace10cfac412df49dd779d7379e7e1eefd502e863d1a1d31f7ed96d02a"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-8ea3d6bf1a66.json",
+          "receiptSha256": "sha256:6179768ab0ef0148ee860f5e5689708515e34b3cd4a0f9504276435ea2ee35f8"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/f1e98c8b7121fcdcf028fa313026a5fd4fd0bb4c03ea2956cdfa0d78631d0ca7/manifest.json",
+            "sha256": "sha256:ea27c7bda7cd77909ca758e94be1a4036801ca35bb830cf0d2e6d5054c982a24"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-f1e98c8b7121.json",
+          "receiptSha256": "sha256:8a3e400b0b52f02357195d7b61b5a141d5d75079c660673ec64f3180a94b98ad"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/272a4d687333376d13d97ce31ed000cbaa0761d4e3f464bff30cf21a8436a34f/manifest.json",
+            "sha256": "sha256:9910fa1b2607e2d15511f6133a099aa1d67721b203279827902db8a9c949bbb3"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-272a4d687333.json",
+          "receiptSha256": "sha256:1ae2dc5d5f6509121aff00dcb3fda60558a1a8d4407e76e70bda1e06d41746b9"
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1128,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_BLIND_FREEZE/b57aba987205c03aaf6af1cc10a02a003b3a9a02e47e760abe40a07f14a6017c/manifest.json",
+            "sha256": "sha256:dc4e2077c21f3828d0abfabc14a3fa21ba2282d07fb43e2f13cd0acf11db7ba5"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_BLIND_FREEZE-b57aba987205.json",
+          "receiptSha256": "sha256:7b9e5f99ada888505851fbaf8fa5be5e00b1df3b2759b24a1359b46a5939f628"
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "receipt": {
+            "bytes": 1113,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_COMPARE/3daa83fb7f2104ba2d18963cd6c3e769296535a7a75bbca9ded7d2ed89f2d26b/manifest.json",
+            "sha256": "sha256:7154e953d7e5da5a62cda31e4024149eeb06702b98ca92f1552141eeadf39ffd"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOLUTION_COMPARE-3daa83fb7f21.json",
+          "receiptSha256": "sha256:d91487ed56025acf1ea9064b7bcc514626c4f6943ba00b4a8df278b19aac1c30"
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "receipt": {
+            "bytes": 1116,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VERIFIED_SOLUTION/2434046f7e06efa43502933bc8c0d1efc5782f3fc2cf5290daf683f19ed0ba30/manifest.json",
+            "sha256": "sha256:795c63108e760767805dc5b715e597ec7f28573f031e0e2bc8c19bcb8af29e06"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/VERIFIED_SOLUTION-2434046f7e06.json",
+          "receiptSha256": "sha256:e13f7a3845990fd17425f50d1bbc5f4503b01ab2e5b9b6f661ad36814f8e563e"
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "receipt": {
+            "bytes": 1134,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_BLIND_FREEZE/500004c48b5e1e86d14012a6254fe90fe2e6dcb07499a840387a19abac219dd2/manifest.json",
+            "sha256": "sha256:8fef05a5edc021eaf1500f3f541d76116bcbbbf03efc5d41bd521f8bcce05b31"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_BLIND_FREEZE-500004c48b5e.json",
+          "receiptSha256": "sha256:a00a42799b8cc47b3404f4d38834f30a12b1784640fac44525c501d452030b5f"
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "receipt": {
+            "bytes": 1119,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CONDITIONS_COMPARE/7da23c8384154bcb7d4c2125cfb78fabf8b44b05103ab3767cd5b92bfdbe2b46/manifest.json",
+            "sha256": "sha256:7de161aa890c3f7ab4b83bbe5764635618f3ca37f9e6e1f48f1121db38abb182"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CONDITIONS_COMPARE-7da23c838415.json",
+          "receiptSha256": "sha256:f780c7e6be6a0269d5cc41ff9c6cd1f8842cabb0c7bc7e720791cdafb374705d"
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "receipt": {
+            "bytes": 1105,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOURCE_REVIEW/403e1d3c37b59ba3820254b0bc6f7edd4663be6660a1abb13c084e7ad3e81903/manifest.json",
+            "sha256": "sha256:9566dbb91209657e3161a4f28f033c330c02975fd207d411867b4ff378edf2be"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/SOURCE_REVIEW-403e1d3c37b5.json",
+          "receiptSha256": "sha256:172f965e8667b3fdd9af0adc70dbdcd6d5704edb26b45b4ba58fbbabadd32ceb"
+        },
+        {
+          "stage": "PLAN",
+          "receipt": {
+            "bytes": 1077,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/PLAN/74a904c6a67b63978711dd7e98013767adb68984c27ae95f16b8623207dab8e0/manifest.json",
+            "sha256": "sha256:c90ff6a271124b968e6551fe97379e39e11b588689fb136d3a1f1451a7352999"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/PLAN-74a904c6a67b.json",
+          "receiptSha256": "sha256:36e94654f1e1617e13efcc2e3d8b8de94a9d20559bdaed86551b4f1997994cb5"
+        },
+        {
+          "stage": "MATH",
+          "receipt": {
+            "bytes": 1078,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/MATH/e67e7977eae099571c80c20964d14996e8086e838489b41a340743acf1d05e9a/manifest.json",
+            "sha256": "sha256:65eeb0dc34ef553a098c2961c9bd40e5552167ff9709766ac37551f1de0a5d13"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/MATH-e67e7977eae0.json",
+          "receiptSha256": "sha256:4897d7716a7382772a24c5b5781d5e7a4a707e42434fa63c45c8b9c182898422"
+        },
+        {
+          "stage": "MATH_REVIEW",
+          "receipt": {
+            "bytes": 1097,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/MATH_REVIEW/6ad941629aeafbdc8e4e1efae4253533481ad547654c6cb0998fc3c56d945ede/manifest.json",
+            "sha256": "sha256:49eedf31e56045c9c61d9beb257fdcebeaac7981365fb7001e028a2266f235f9"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/MATH_REVIEW-6ad941629aea.json",
+          "receiptSha256": "sha256:37665e6539f0db01b02794fcf8fba3d056105576f2b19c09142bfe9c6e1a60b2"
+        },
+        {
+          "stage": "NORMALIZE",
+          "receipt": {
+            "bytes": 1092,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/NORMALIZE/638251d638eee9d99436f93fb990f0c3cf845a43d568b496620a3f81fe148b5d/manifest.json",
+            "sha256": "sha256:58cf667821e613399cc130ff5778e480706f6b8045d33d5de9d9ce81041c236b"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/NORMALIZE-638251d638ee.json",
+          "receiptSha256": "sha256:fc679a6cbbdce11335c8d192abd06cf98e0dfa57fc2c7004968b2239b8ae9f7d"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_CAPTURE",
+          "receipt": {
+            "bytes": 2240,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_CAPTURE/5783a515dceab11b66cc269f89874dc28bd20f7ae4c35b91cb11b88f63e21510/manifest.json",
+            "sha256": "sha256:8be2deebd857b5070df868629e5f0828191348f7964c8ca462a64849c532d5d9"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE_CAPTURE-5783a515dcea.json",
+          "receiptSha256": "sha256:479b89e49633e29efdcfbe690fd242822fb81faeb11ba55fee112d57ac606a0d"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_PREFLIGHT",
+          "receipt": {
+            "bytes": 3071,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_PREFLIGHT/12b2e1f8e6663231d914c64ed33a54545e46d47a4cf8b9dfb4d76a1c4b6afa65/manifest.json",
+            "sha256": "sha256:5fde9f04b4e07b8bde23a3fd2e3c11f445591ffcfd47ebb810188b5096a4a547"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE_PREFLIGHT-12b2e1f8e666.json",
+          "receiptSha256": "sha256:e6eab368921d10195539790cdab55bc088e2325628f8d435af3652748004a124"
+        },
+        {
+          "stage": "DISPLAY_TYPOGRAPHY_POLICY",
+          "receipt": {
+            "bytes": 2273,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_TYPOGRAPHY_POLICY/9f3f163d068fb69af2a335a7fa83611e1ded5fa5861524bb0aa89318b1fb3d50/manifest.json",
+            "sha256": "sha256:97fcc4770e12d3cd26a4214606ba637987ac0ef3d37eec3796a8e2130aff50b6"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_TYPOGRAPHY_POLICY-9f3f163d068f.json",
+          "receiptSha256": "sha256:9f24238563e6605e1c76df8369441b78efb01e4bc8bba1ea64797563bbce1cc6"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE",
+          "receipt": {
+            "bytes": 2314,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE/6f4b16b6650aec42e24e0357535801924d886249b3f586418e7671030d76a75b/manifest.json",
+            "sha256": "sha256:de454ab70fc43fca03451e5bb3595bc5aa53071d44dc64044d23dcf0eec27a48"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE-6f4b16b6650a.json",
+          "receiptSha256": "sha256:13a2f1cd6b78b5c54066da420ed9f9fbf21d29dc51d9eb6c020204ac3acdf209"
+        },
+        {
+          "stage": "TYPESET",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/TYPESET/9334c6c8e832e82f7675bfed223bcf94ecd1e476e6f4e09ae58013fd8f87e636/manifest.json",
+            "sha256": "sha256:39fc4a551281facc31ad28e2c268166413f51d2709b8211a20713abb928ff290"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/TYPESET-9334c6c8e832.json",
+          "receiptSha256": "sha256:d608a3e2e025f941ed34dd48149c25b03d30a6b42a02e2a8dc6e8fafce8ecefd"
+        },
+        {
+          "stage": "MEASURE",
+          "receipt": {
+            "bytes": 1087,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/MEASURE/c957cd8c168ad0b89c79124aeb5a11cd3cdfe1109c2ada34f6a9d0437f6b28e0/manifest.json",
+            "sha256": "sha256:207788151a180510f678ba63dba97317b2d1f504b9e8d9a998b54645feedf5d9"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/MEASURE-c957cd8c168a.json",
+          "receiptSha256": "sha256:8f5b4ee6eb7b8b15976903f14704e3348ef2303806f8dd6900adb3a1e66a0c4d"
+        },
+        {
+          "stage": "BUILD",
+          "receipt": {
+            "bytes": 1407,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/aaf69f92ba28c6da6331754fcb2b243c67fe48fb7d08ae50d7219be2d6ba69d5/manifest.json",
+            "sha256": "sha256:c0e2624fa2a1bb53fce30c6b243ec826d0e308c8cc199d4a3a3cd3bddfa84aa8"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/BUILD-aaf69f92ba28.json",
+          "receiptSha256": "sha256:578b4c8620046f1915cbe4982cc6a4210e118ecd108b878bec8f3e10b220aa91"
+        },
+        {
+          "stage": "STATIC_AUDIT",
+          "receipt": {
+            "bytes": 1101,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/STATIC_AUDIT/0024d0890b548b9376bcbe53b56e036299ffe7bff47152edafc6977df96d94db/manifest.json",
+            "sha256": "sha256:711f4980197b8475a9771aad15abf4776782142255f476ca372698909117f9b6"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/STATIC_AUDIT-0024d0890b54.json",
+          "receiptSha256": "sha256:56b7899a80aab224956d5868531a88b521aa06e807bc8b5a6046b5bdd0e155d1"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1662,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/7e2ea4547c143ed61a434b604e67c5c2bff2cfce475518d1a932279b3b33f9a1/manifest.json",
+            "sha256": "sha256:6e41d1b6f322bc7c9a0cef6c8b346c4bae022b0aa1ff2694bd505e44507b1f7c"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-7e2ea4547c14.json",
+          "receiptSha256": "sha256:7ebdcfca52a8aa2a5e14e97cf818ee1c14cd37c332d0bca34849c40c72f993c5"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1659,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/b0ddff99fc76c0f4092accb792900da135b4870262f8527b30a365816dd1f5c3/manifest.json",
+            "sha256": "sha256:40f4b711fd82a98e838eaf81ede4e9fdbc12a9306af19915358777f1c46374cb"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-b0ddff99fc76.json",
+          "receiptSha256": "sha256:13aae32d144f5ff0070a0beaa43c4b199ee8a541025ef3b21b98a84d63fef6d0"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1666,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/4c29d78a5f88a2b70c1b8dcdb140aff53b2cad5517db17e341a9f569047446bc/manifest.json",
+            "sha256": "sha256:3ac2026c31333d628104eb56ae2a63658cb0bc4f4f9e5bc60ab6684105cf2d43"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-4c29d78a5f88.json",
+          "receiptSha256": "sha256:94a4a9545018728ee0abfbcf616af79a3d0db6a5942dff36b6d9f7ed00b9eb3a"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1664,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/587d86be90aa45b1fb4e6c5faa14fe7ee8a1ceb4e623b00c99e0e39b8e3e810d/manifest.json",
+            "sha256": "sha256:96ff927c61e4e9726723d99f7061bc456163f02c3e803aa49068afa28064d9ce"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-587d86be90aa.json",
+          "receiptSha256": "sha256:d109abb943f816bd82534b3a5ea7f96a8b9b57e2fe2d68c3b7b5cac5a7ed1d48"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1661,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/f2d1143f46ff85c22f06e66cfad36f5012c3a46bf12b20447daecd46c3ec9991/manifest.json",
+            "sha256": "sha256:3d9f88e9a0d882ed38395b6730612d6e56296909025a6e857cd5b0ca73d64836"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-f2d1143f46ff.json",
+          "receiptSha256": "sha256:aaf838100c7fad27540cf791878feb3c85fc346f03f7c08ca1a9c3a808f067d4"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1668,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/c609affd7d37218eff27d0c35a8dcadd0981d517ea773d4422efdf36fa2656c8/manifest.json",
+            "sha256": "sha256:c149f97d96f44e7ae3bc3cc06e5d0d62ae05d1eb4cc171849888ba22400990be"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-c609affd7d37.json",
+          "receiptSha256": "sha256:a3cf569a894c1f43d06d9530eec04a07c6e25b974acdcd525358653f958d2f84"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1660,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/bfe93f0583121b2bb5887200f4c65fe5812d53ec84fe9695316f9d67753686b4/manifest.json",
+            "sha256": "sha256:66ccd856d188162e33df8c4511e50b0baeb9576592039980f50d669ec2a4cf1e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-bfe93f058312.json",
+          "receiptSha256": "sha256:9403bd38cb49010e03401b2d89a315ab91c85dc5fe4272ddf1a533ca7b714fe9"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1657,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/60de6615035ce3e95a828946e2520f6fafc024df1755cc1fde2871eba5de7065/manifest.json",
+            "sha256": "sha256:47ca93e28cf568771dfc3d730e5a2afa5b210542b23273585a107529f056d72e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-60de6615035c.json",
+          "receiptSha256": "sha256:1c9ebc024b4f518985f8abf12b22b5a5c5658bdc57f09698398d1ee539c9b7be"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1664,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/1c68b9b9528dda9f6638e55a3f608d5dac43021ad74599c3dd77b5fa55ef0944/manifest.json",
+            "sha256": "sha256:5388b55fff29ec03a0dae3b98837863967c20f733687751db5d5318706fe7f9a"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-1c68b9b9528d.json",
+          "receiptSha256": "sha256:b12610f4d0eeb4aa83006cb9cf12211f8ba2029c704f24481555f31f5cef4d86"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_SCREENSHOT",
+          "receipt": {
+            "bytes": 1670,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_SCREENSHOT/d4ad2533e0046bc96f5c357f8bfe9e47e6820891076936ef3deb8944976343ab/manifest.json",
+            "sha256": "sha256:7360fc431bbe4f10a485abc4f8182a211a1a922d2ac3a1cfab38e8fad63c5631"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_SCREENSHOT-d4ad2533e004.json",
+          "receiptSha256": "sha256:3722a667ad0b2a82f84b588150703f75b2654a6a18701d31f5db80b05fff1303"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_TOPOLOGY",
+          "receipt": {
+            "bytes": 1667,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_TOPOLOGY/8fcf43e052f314efd173548782e602d81dfbcf9547558c95217bf6d42827d413/manifest.json",
+            "sha256": "sha256:0b35003737abdc72d538b64dd06ea67961b235b4bb4fe7df863746b3d4e3a766"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_TOPOLOGY-8fcf43e052f3.json",
+          "receiptSha256": "sha256:e4100fc01014cb02ff190a02dcf9411563fbc4d2c230112e627559c8c31d40ea"
+        },
+        {
+          "stage": "DISPLAY_PROFILE_MEASUREMENT",
+          "receipt": {
+            "bytes": 1674,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_PROFILE_MEASUREMENT/7c44b41e5e72cebfded633e7650f5eae7b82d93d8a2a4bb586ac8a828601ab75/manifest.json",
+            "sha256": "sha256:0ad4e58901990d1b5444cab41f80f339eeb6a5a1075993a1103a0417542aa88e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_PROFILE_MEASUREMENT-7c44b41e5e72.json",
+          "receiptSha256": "sha256:fd592c9cfd9b13524fcb0dc1e88ae01bacbbc1352367e21bb4de2fb01f36a8c3"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_AUDIT",
+          "receipt": {
+            "bytes": 1132,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_AUDIT/09dc269ca459f3ce668e5cb69afc76e30264df1e31f1494b54f03012a44d2c0d/manifest.json",
+            "sha256": "sha256:2c97f31e2070c7157412471ebfac281dc414fdb9868acde3c38261d3b105ac1d"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE_AUDIT-09dc269ca459.json",
+          "receiptSha256": "sha256:9e7422aed4f1c3fe00b7461cbdbc2b9548b869e080e845b337834059b2441c0b"
+        },
+        {
+          "stage": "ARCHIVE_BANK",
+          "receipt": {
+            "bytes": 1462,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/ARCHIVE_BANK/81fd1a5f94d0e70c4a4af1807d542011b28aa4e7719789eaa6929644c6263b7d/manifest.json",
+            "sha256": "sha256:98a830dd3ce72d6dde002ce932b909c17daee6e80d5915842da020b79b110219"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/ARCHIVE_BANK-81fd1a5f94d0.json",
+          "receiptSha256": "sha256:25c4125f92ef02209afd746e354c3557e5493b01db46f55af681d3bfe70358aa"
+        },
+        {
+          "stage": "CAPTURE",
+          "receipt": {
+            "bytes": 2805,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/CAPTURE/985208b832ab7d80e1573c682918cc51726954be39d0e28f67b1d91f024587f8/manifest.json",
+            "sha256": "sha256:48327ffaacd69a0bbb8feb8d89799bbed2ec5d89ef7e6b364bc5e96bd8338c40"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/CAPTURE-985208b832ab.json",
+          "receiptSha256": "sha256:0187da36f9445602a8a2629aae5ce9e6a3d75b590177bf99b5966e588061618e"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_ACTUAL",
+          "receipt": {
+            "bytes": 1666,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_ACTUAL/1b454e1a573b224d96e14aa6f2dcff390205257f6dec1dadc01cd20e2fbdb9bc/manifest.json",
+            "sha256": "sha256:221636e9cc11ddca55f4bbc96cefa3d4932f19dee88441cb13eb787b902d39c4"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE_ACTUAL-1b454e1a573b.json",
+          "receiptSha256": "sha256:a2fb6dca4d12f41e1e1ef2f9d39b9a9ac9f5ca408a4f4980f8802dd2f55a6a59"
+        },
+        {
+          "stage": "DISPLAY_ENVELOPE_FINAL",
+          "receipt": {
+            "bytes": 1570,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/DISPLAY_ENVELOPE_FINAL/1137d763220ea1ff0cdcf10eb3bd7ad15d1f3c01e5ab2a08f79ceee9893a83c1/manifest.json",
+            "sha256": "sha256:cbc4903ff8151218c9c2ed008250ce43955525fbf6c43cf28457357169b7af3c"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/DISPLAY_ENVELOPE_FINAL-1137d763220e.json",
+          "receiptSha256": "sha256:2a2986fedcc3db68f98c42a2f813d7e7af0ea632db8c414a7b18fbafc2cd50a5"
+        },
+        {
+          "stage": "VISUAL_REVIEW",
+          "receipt": {
+            "bytes": 1105,
+            "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VISUAL_REVIEW/bd169111ee2a4d322942deb31beda41f121e08a05d0b509965b4f80362d1511f/manifest.json",
+            "sha256": "sha256:d62d6ea3efb912cbf20e16e73dd49d9f9a3efdca8cd0f65de72a8406bb6b8a0e"
+          },
+          "pathInPackage": "stage-manifests/coordinate-free-q01/current-json-payload-policy/VISUAL_REVIEW-bd169111ee2a.json",
+          "receiptSha256": "sha256:893c6ba71cbff5152bd70c7e0e22e739acba98687d4128535a86abdbad862abd"
+        }
+      ]
+    }
+  ],
+  "candidateAcceptance": {
+    "q10": {
+      "status": "UNRESOLVED",
+      "error": "REPAIR_BUDGET_EXHAUSTED",
+      "repairRows": 3,
+      "budgetLimit": 3,
+      "ledgerReset": false,
+      "archiveCaptureAfterReplay": false
+    },
+    "q1": {
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "profile": "medium",
+      "repairRows": 0,
+      "archive": "PASS",
+      "visualReview": "PASS"
+    },
+    "coordinateFree": {
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "profile": "medium",
+      "repairRows": 3,
+      "archive": "PASS",
+      "visualReview": "PASS"
+    }
+  },
+  "priorCandidateRows": [
+    {
+      "candidate": "q10-graph",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "previousResultPackagePath": "q10-graph/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "currentResultPackagePath": "q10-graph/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "runId": "visual-d06883b9-68da-48da-ae13-239d90b83c90",
+      "workRoot": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production",
+      "capability": "polynomial-spike-v1",
+      "currentCodeFingerprint": "sha256:dfdc474b7f94fddbca7ada4654bfe559eef9cc538d366bb24d0c537684cd64fb",
+      "previousCodeFingerprint": "sha256:5894999ac449ec37f1f0bc2d919320d379ae7c1be01a6619da098ea5ec9ab727",
+      "frozenSemanticPlanSha256": "sha256:ec59edee666662aaa02b2e82ac095357c764cb648b3a36c922ea89df8eb45244",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 32756,
+        "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+        "sha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+      },
+      "solutionRef": {
+        "bytes": 393,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_INPUT/dc2555c4dc5c239c21bd267bc98907202f7d1f8c1000e2a2eacbeb61decce333/solution.txt",
+        "sha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8"
+      },
+      "candidateSvgRef": {
+        "bytes": 23399,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/BUILD/fc4ce5d71872d674d0c6f12f24cd1bea9c86d74f3fb83664f1a905ddafaf8ae8/q10-solution.svg",
+        "sha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5"
+      },
+      "candidateSvgSha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "full",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:formula",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y",
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "PASS",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": {
+        "compositionOnly": true,
+        "displayEnvelopeInputIdentitySha256": "sha256:f77ae0fa18df841810d85f5636075311dcfea7166386b693ca77205bb88202ef",
+        "formulaLabelId": "formula",
+        "formulaTextWidthPx": 143.84375,
+        "fragmentRef": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+        "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+        "labelInventoryAfterSha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+        "labelInventoryBeforeSha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+        "labelInventoryParity": true,
+        "measurementRef": {
+          "bytes": 27420,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/MEASURE/50b11691a1b79e4e09b7f3019bf658005236c88973c1daa6c3bca5775b687368/measure.json",
+          "sha256": "sha256:0d8efc223e2d1a42176aea240bd7d52cd9745c1b55802fd684737aca2abf0f69"
+        },
+        "panelPaddingPx": 24,
+        "previousRepairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "priorPanelPx": 140,
+        "repairInput": {
+          "baseSvgSha256": "sha256:055ebaa51fbc19fcf08cfd4f5c2e437ffbb5b2c93b31fe23a6c04215eb52af95",
+          "currentPanelPx": 140,
+          "displayPolicyRefsSha256": "sha256:2136a942e5b479a772b5b82a543d660745e7b0bb4458a685ccc8452820cfc3d9",
+          "formulaFragmentSha256": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+          "formulaLabelId": "formula",
+          "formulaText": "y=3·x^(2)−1",
+          "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+          "maximumPanelPx": 200,
+          "measuredFormula": {
+            "heightPx": 25.859375,
+            "widthPx": 143.84375
+          },
+          "panelPaddingPx": 24,
+          "profilePolicySha256": "sha256:641eac60214dad8dd2a17be9a81eefaf26372c79b217903e98dabe3d1a3b6472",
+          "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+          "requestedSizeClass": "medium",
+          "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_INPUT_v2",
+          "solutionSha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8",
+          "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+          "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+          "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c",
+          "sourcePolicySha256": "sha256:bfa54ce18908cc89352bc03007e5681e58046f230345185db14812f20b10f218",
+          "sourceSha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54",
+          "typographyPolicySha256": "sha256:e017d57c2804756c076333f01f2958faadf8cf6542abd400b29dde15fe375587",
+          "verifiedSolutionPolicySha256": "sha256:89af81d8d560fc7bcfd66a4d4188990a502e666a30780704ba16fe5ebab09889"
+        },
+        "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "repairIteration": 3,
+        "repairOutput": {
+          "formulaFragmentSha256": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+          "formulaLabelId": "formula",
+          "formulaText": "y=3·x^(2)−1",
+          "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+          "labelInventorySha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+          "measuredFormulaWidthPx": 143.84375,
+          "panelPaddingPx": 24,
+          "priorPanelPx": 140,
+          "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_OUTPUT_v2",
+          "selectedPanelPx": 167.9,
+          "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+          "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+          "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c"
+        },
+        "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+        "repairReplayRelation": "EXACT_REPLAY",
+        "repairReplayed": true,
+        "repairResumed": false,
+        "requestedSizeClass": "medium",
+        "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_v2",
+        "selectedPanelPx": 167.9,
+        "semanticPlanParity": true,
+        "solutionRef": {
+          "bytes": 393,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_INPUT/dc2555c4dc5c239c21bd267bc98907202f7d1f8c1000e2a2eacbeb61decce333/solution.txt",
+          "sha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8"
+        },
+        "sourceConditionParity": true,
+        "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+        "sourceFactParity": true,
+        "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+        "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c",
+        "sourceRef": {
+          "bytes": 32756,
+          "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+          "sha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+        },
+        "status": "PASS",
+        "typographyPolicy": {
+          "baseFontPx": 24.9,
+          "comfortCssPx": 0.25,
+          "cssTargetFontPx": 11.25,
+          "displayScale": 0.453125,
+          "fontFloorCssPx": 11,
+          "maximumBaseFontPx": 32,
+          "minimumBaseFontPx": 20,
+          "requestedSizeClass": "medium",
+          "rounding": "CEIL_TO_TENTH_BASE_PX",
+          "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1"
+        }
+      },
+      "postBuildGraphBinding": {
+        "candidateSvgRef": {
+          "bytes": 23399,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/BUILD/fc4ce5d71872d674d0c6f12f24cd1bea9c86d74f3fb83664f1a905ddafaf8ae8/q10-solution.svg",
+          "sha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5"
+        },
+        "candidateSvgSha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5",
+        "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+        "phase": "POST_COMPOSITION_BUILD",
+        "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2"
+      },
+      "actualArchive": {
+        "matrixSha256": "86e8885f35ebb8c210773c7bf35fc1a6827abc6d9f5919122985b6d9f2f4e83e",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-2a6cc447b6e7c16a252a26e67c36862ebf953eac3614217df476135452cdd838-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "replayLog": null,
+      "stageCount": 69
+    },
+    {
+      "candidate": "q01-geometry",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "previousResultPackagePath": "q01-geometry/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "currentResultPackagePath": "q01-geometry/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "runId": "visual-ed741b36-d931-4999-9850-f76d9af07473",
+      "workRoot": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "previousCodeFingerprint": "sha256:3b16d34eacd00df5a446653e220762291e905d10626e1ddd35e75eff6734bd39",
+      "frozenSemanticPlanSha256": "sha256:a808338d9704e86cbf302bc501df097c6035eede5cd5be00e3b4afb91bc95ae8",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 54538,
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      "solutionRef": {
+        "bytes": 384,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_INPUT/5bbe56490595cc682802ab32374e8921fb12ff28b37a528bf4bc52369e6a6ee5/solution.txt",
+        "sha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+      },
+      "candidateSvgRef": {
+        "bytes": 27699,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/9197d479af85360aef834f5e98d7a9c95e5ffc3300029ad4573fd47ec22ad10f/q01-solution.svg",
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "candidateSvgSha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "medium",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-3-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:ABLength-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": null,
+      "postBuildGraphBinding": null,
+      "actualArchive": {
+        "matrixSha256": "47a2c22b6ca9d8a3d7fbb7fb27cac72cf5422b2d236315a0b15c77621d78a3c0",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [],
+      "previousRepairLedger": [],
+      "replayLog": null,
+      "stageCount": 64
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "previousResultPackagePath": "coordinate-free-q01/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "currentResultPackagePath": "coordinate-free-q01/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "runId": "visual-356c630c-ca80-4baa-8c43-4015bfa41fd2",
+      "workRoot": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "previousCodeFingerprint": "sha256:3b16d34eacd00df5a446653e220762291e905d10626e1ddd35e75eff6734bd39",
+      "frozenSemanticPlanSha256": "sha256:e08e4580b4b8cdcc129fc29c6dffe0855ddfa3f5e0870cfbb0967ccd9ef66a70",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 41090,
+        "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:f2b726065d3802ccdb9d3454ad92a2deece34772674188c24cd4f4b96374796e"
+      },
+      "solutionRef": {
+        "bytes": 212,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_INPUT/40a2b66f43d571d4cd6105460e26321aac93e686d777a6ef9e7c4dfb3e116bbc/solution.txt",
+        "sha256": "sha256:c6385f4a00da8b246224a366dd9bb3c1429c6c575acb7f09e85e04a90953668e"
+      },
+      "candidateSvgRef": {
+        "bytes": 19211,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/fb23b9d18efa876532b55cde6e3a54781588dacff61b8a2ab707c2773f6fcfc3/q01-solution.svg",
+        "sha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9"
+      },
+      "candidateSvgSha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "medium",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:C-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:HypotenuseX",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthAB-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthBC-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:SquareAC-value",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": null,
+      "postBuildGraphBinding": null,
+      "actualArchive": {
+        "matrixSha256": "b396e340da0fed93dc25feefc7fdf3e3a58b3f4f372ae8f1502ac49584769ece",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-569fe0a9aa9cc86b222606fba0a849db3b4343827eb03d732b809d41f2707904-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "replayLog": null,
+      "stageCount": 63
+    }
+  ],
+  "priorAttemptHistory": [
+    {
+      "attempt": "pre-fix-missing-result-negative",
+      "classification": "CONTRACT_DEFECT_PRESERVED",
+      "status": "FAIL",
+      "observedError": "NON_JSON_VALUE",
+      "expectedError": "INVALID_WORKER_RESPONSE",
+      "contractCommit": "dc466abee",
+      "contractBlobSha1": "36b4f0600696d7b92ed127f3e9570816253c3ce3"
+    },
+    {
+      "attempt": "pre-fix-unexpected-field-negative",
+      "classification": "CONTRACT_DEFECT_PRESERVED",
+      "status": "FAIL",
+      "observedError": "MISSING_EXPECTED_REJECTION",
+      "expectedError": "INVALID_WORKER_RESPONSE",
+      "contractCommit": "feb5e914f",
+      "contractBlobSha1": "6bcefd8a00fc69135bcc4dcaf54775f9d5f11e1e"
+    },
+    {
+      "attempt": 1,
+      "candidate": "q10-graph",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY_EXACT_BUDGET_ACTION",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "repairIteration": 3,
+      "repairReplayed": true,
+      "repairReplayRelation": "EXACT_REPLAY",
+      "repairLedgerLength": 3,
+      "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+      "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 2,
+      "candidate": "q01-geometry",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "repairLedgerLength": 0,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 3,
+      "candidate": "coordinate-free-q01",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY_PRESERVE_THREE_REPAIRS",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "repairLedgerLength": 3,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 4,
+      "candidate": "q10-graph",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY_EXACT_PANEL_ACTION",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "repairLedgerLength": 3,
+      "repairReplayed": true,
+      "repairReplayRelation": "EXACT_REPLAY",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 5,
+      "candidate": "q01-geometry",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "repairLedgerLength": 0,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 6,
+      "candidate": "coordinate-free-q01",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY_PRESERVE_THREE_REPAIRS",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "repairLedgerLength": 3,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    }
+  ],
+  "additionalAttemptHistory": [
+    {
+      "candidate": "q01-geometry",
+      "classification": "PROMPT_CONTRACT_VALIDATION_AFTER_SINGLE_PRIOR_INVALID_PAYLOAD",
+      "preFixFailureRef": "docs/evidence/apmath-vprod/p3d/provider-timeout-offline-runtime-v7/attempts/q1-invalid-payload-before-prompt-contract-result.json",
+      "finalValidationAttempts": 1,
+      "currentStatus": "EXPERIMENTAL_LOCATOR_COMPLETE"
+    },
+    {
+      "candidate": "q10-graph",
+      "classification": "CURRENT_POLICY_REPLAY_STOPPED_AT_SHARED_REPAIR_CAP",
+      "currentResultRef": {
+        "bytes": 18171,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/a1cf58ebcb70af8919ddb61e569b3f65638a83016df5bdf27e5bcaf03a39bb93/result.json",
+        "sha256": "sha256:5b941e3f5c67e6df87ce47f137499d56522675971043db27a4c5db6637237644"
+      },
+      "repairRowsBefore": 3,
+      "repairRowsAfter": 3,
+      "additionalRepairEntries": 0,
+      "status": "UNRESOLVED",
+      "error": "REPAIR_BUDGET_EXHAUSTED"
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "classification": "CURRENT_POLICY_REPLAY",
+      "currentResultRef": {
+        "bytes": 28140,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/a303f62ce071a266904e1ee501adc6c73a6de26d845d4a842107b0f1aabdd05c/result.json",
+        "sha256": "sha256:09aa62c05294abaa9f26e5cde6508ecb9fcd368d58dd56a388a9cea835aab13d"
+      },
+      "repairRowsPreserved": 3,
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE"
+    }
+  ],
+  "repairBudget": {
+    "q10Limit": 3,
+    "q10CurrentCount": 3,
+    "q10LedgerMatchesPrevious": true,
+    "q1CurrentCount": 0,
+    "coordinateFreeCurrentCount": 3,
+    "noLedgerReset": true
+  },
+  "currentCodeRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "bytes": 32109,
+      "sha256": "sha256:e0125b13d2075dc00a5e23f629c95acf4790f7c525ed2f4bb72109a99c956de9"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/auditor-turn-output.mjs",
+      "bytes": 3641,
+      "sha256": "sha256:0a5071253c50c86a6bcb72cc78b032725448fe1e716bae18c6407dc9352ef25a"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 63846,
+      "sha256": "sha256:3ea9ce71461dc668382800e8a0e16d1b157c819cf99a586d5eee3a739ff30247"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "bytes": 8511,
+      "sha256": "sha256:3ebea0bcc94d2fa604dffa595d0c032cf09341541e5301e3466d739a0bf84413"
+    },
+    {
+      "path": "archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "bytes": 26464,
+      "sha256": "sha256:bf535e012fac21077a2191818f37d988d76c9933051dde20bd1b1dceff658efc"
+    },
+    {
+      "path": "archive/engine.html",
+      "bytes": 186898,
+      "sha256": "sha256:739c2d7a9c1995bc486ab7cd81aa7c3f7a1a864aba87e12e5bbf30d5934fca6a"
+    },
+    {
+      "path": "archive/vendor/qrious/qrious.min.js",
+      "bytes": 17584,
+      "sha256": "sha256:892f9f28a344e47135270d02b9356b7896523e60ad4db9c0bd10574d1986ab6d"
+    },
+    {
+      "path": "archive/vendor/qrious/LICENSE.md",
+      "bytes": 702,
+      "sha256": "sha256:d695ef573c74f602fd136f9d2919870edb216f0e56289f26062b91911b049566"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/offline-archive-runtime.test.mjs",
+      "bytes": 5067,
+      "sha256": "sha256:7edbd1ce40a884e05945e657395f3a8ec620e99b6e4c763ed0052653ee679591"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/provider-payload-contract.test.mjs",
+      "bytes": 4266,
+      "sha256": "sha256:57bcea6a8cf808e52a869826bf7ce9d6f7057980640a7058d6d7e19523586af0"
+    }
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false,
+  "limitations": [
+    "All candidates use the experimental source-plus-ordinal locator route; the current identity registry does not establish canonical v2 authority.",
+    "q10 is unresolved under current provider/display policy because the attempted layout action exceeds its already-full shared three-entry budget. No new repair row or current q10 Archive capture was produced.",
+    "q1 and coordinate-free q1 completed current medium-profile, Actual Archive, and independent visual-review stages, but remain experimental and outside qualification counts.",
+    "The earlier P3E v9 q10 full-profile/Archive/visual receipt is preserved only as prior history and is superseded for current-code support claims."
+  ],
+  "evidenceIndexPath": "evidence-index.json",
+  "manifestPath": "evidence-manifest.json"
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "APMATH_Q10_ATTEMPT_DISPOSITION_v1",
+  "canonical": {
+    "status": "UNRESOLVED",
+    "error": "REPAIR_BUDGET_EXHAUSTED",
+    "repairCount": 3,
+    "repairLimit": 3,
+    "repairLedger": [
+      {
+        "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+        "iteration": 1,
+        "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+        "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+        "stage": "LAYOUT"
+      },
+      {
+        "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+        "iteration": 2,
+        "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+        "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+        "stage": "LAYOUT"
+      },
+      {
+        "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "iteration": 3,
+        "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+        "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+        "stage": "LAYOUT"
+      }
+    ],
+    "resultRef": {
+      "path": "payload/q10-attempts/canonical-q10-result.json",
+      "bytes": 18171,
+      "sha256": "sha256:5b941e3f5c67e6df87ce47f137499d56522675971043db27a4c5db6637237644"
+    },
+    "p3eLedgerRef": {
+      "path": "payload/q10-attempts/canonical-p3e-v11-ledger.json",
+      "bytes": 193482,
+      "sha256": "sha256:e30aac2c18cc33641295e153d0d7840137c484e99c6a0e0a5b19d77c82487263"
+    },
+    "replayed": false
+  },
+  "isolatedCancellation": {
+    "classification": "ACCIDENTAL_ISOLATED_UNRESOLVED_ATTEMPT_NOT_CONTINUATION",
+    "status": "UNRESOLVED",
+    "errorCode": "ARCHIVE_CAPTURE_CANCELLED",
+    "runId": "archive-cancel-48c79495-458a-4745-9190-7dda665675df",
+    "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+    "repairCount": 1,
+    "repairLedger": [
+      {
+        "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+        "iteration": 1,
+        "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+        "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+        "stage": "LAYOUT"
+      }
+    ],
+    "captureReceiptCount": 0,
+    "stages": [
+      "SOURCE_LOCATOR",
+      "SOLUTION_BLIND_FREEZE",
+      "SOLUTION_COMPARE",
+      "VERIFIED_SOLUTION",
+      "PLANNER",
+      "PLANNER",
+      "PLANNER",
+      "CONDITIONS_BLIND_FREEZE",
+      "CONDITIONS_COMPARE",
+      "SOURCE_REVIEW",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "SOLUTION_BLIND_FREEZE",
+      "SOLUTION_COMPARE",
+      "VERIFIED_SOLUTION",
+      "CONDITIONS_BLIND_FREEZE",
+      "CONDITIONS_COMPARE",
+      "SOURCE_REVIEW",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "PLAN",
+      "SOLUTION_BLIND_FREEZE",
+      "SOLUTION_COMPARE",
+      "VERIFIED_SOLUTION",
+      "CONDITIONS_BLIND_FREEZE",
+      "CONDITIONS_COMPARE",
+      "SOURCE_REVIEW",
+      "PLAN",
+      "GRAPH_OVERVIEW_FRAME",
+      "MATH",
+      "MATH_REVIEW",
+      "NORMALIZE"
+    ],
+    "cleanup": {
+      "browserCloseError": null,
+      "browserClosed": true,
+      "browserWasLaunched": true,
+      "serverCloseError": null,
+      "serverClosed": true,
+      "serverWasListening": true
+    },
+    "resultRef": {
+      "path": "payload/q10-attempts/isolated-cancellation-result.json",
+      "bytes": 14643,
+      "sha256": "sha256:4b6d8d2c5d82db780556f728e4cc984a15b6f7e04527f4aa0e22072f89be0ab7"
+    },
+    "resultManifestRef": {
+      "path": "payload/q10-attempts/isolated-cancellation-manifest.json",
+      "bytes": 1096,
+      "sha256": "sha256:1e2bc7122ee6bc9ac14e6c5d2763d5220270cec17c73d86e4c5974ed413a9089"
+    },
+    "abortProofRef": {
+      "path": "payload/q10-attempts/ABORTED.json",
+      "bytes": 356,
+      "sha256": "sha256:de5296c138c6ee553291f040d3aa011166a920fc49e22aea3f26dfba7e031cab"
+    },
+    "effectOnCanonicalLedger": "NONE; remains 3/3; no reset or support claim"
+  }
+}

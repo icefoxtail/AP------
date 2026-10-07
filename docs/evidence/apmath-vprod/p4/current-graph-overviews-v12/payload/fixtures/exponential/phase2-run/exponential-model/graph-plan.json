@@ -1,0 +1,54 @@
+{
+  "answer": "1",
+  "capability": "exponential-affine-spike-v1",
+  "caption": "지수함수의 증가와 점근선",
+  "coefficients": [
+    "1",
+    "1",
+    "0"
+  ],
+  "content": "함수 f(x)=eˣ의 그래프에서 f(0)의 값을 구하시오.",
+  "domain": [
+    -3,
+    3
+  ],
+  "family": "exponential-affine",
+  "kind": "exponential",
+  "solution": "x=0을 대입한다.\nf(0)=e⁰\nf(0)=1",
+  "sourceDomain": {
+    "kind": "ALL_REALS"
+  },
+  "viewport": [
+    -3.24,
+    3.24,
+    -3.01283053847815,
+    23.098367461665816
+  ],
+  "shapeIntent": "OVERVIEW",
+  "overviewPolicy": "EXPONENTIAL_AFFINE_OVERVIEW_v1",
+  "exponentialFeatures": {
+    "schemaVersion": "EXPONENTIAL_AFFINE_FEATURES_v1",
+    "referencePoint": {
+      "x": "0",
+      "y": "1"
+    },
+    "horizontalAsymptote": {
+      "y": "0",
+      "side": "LEFT",
+      "approachedFrom": "ABOVE"
+    },
+    "monotonicity": "INCREASING",
+    "growthSide": "RIGHT",
+    "growthDirection": "UP"
+  },
+  "exponentialFeaturePolicy": {
+    "schemaVersion": "EXPONENTIAL_AFFINE_FEATURE_POLICY_v1",
+    "sourceDomain": "ALL_REALS",
+    "referenceArgument": "EXPONENT_ZERO",
+    "asymptotePolicy": "EXACT_VERTICAL_SHIFT",
+    "referenceMarkerRadiusIntrinsicPx": 4,
+    "minimumReferenceMarkerDiameterCssPx": 3,
+    "minimumAsymptoteSeparationCssPx": 2,
+    "minimumBranchSpanCssPx": 32
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "domain": [
+    -4,
+    4
+  ],
+  "family": "piecewise-affine",
+  "piecewise": {
+    "breakX": "0",
+    "left": [
+      "1",
+      "1"
+    ],
+    "owner": "RIGHT",
+    "right": [
+      "1",
+      "-1"
+    ]
+  },
+  "sourceDomain": {
+    "kind": "CLOSED_INTERVAL",
+    "range": [
+      "-4",
+      "4"
+    ]
+  },
+  "viewport": [
+    -4.32,
+    4.32,
+    -3.9,
+    3.9
+  ],
+  "shapeIntent": "OVERVIEW",
+  "overviewPolicy": "PIECEWISE_AFFINE_TWO_BRANCH_OVERVIEW_v1",
+  "piecewiseFeatures": {
+    "schemaVersion": "PIECEWISE_AFFINE_FEATURES_v1",
+    "sourceInterval": {
+      "lo": "-4",
+      "hi": "4",
+      "startState": "CLOSED",
+      "endState": "CLOSED"
+    },
+    "breakpoint": {
+      "x": "0",
+      "owner": "RIGHT",
+      "leftLimitY": "1",
+      "rightLimitY": "-1",
+      "valueY": "-1",
+      "continuity": "JUMP"
+    },
+    "markers": [
+      {
+        "id": "source-start",
+        "kind": "SOURCE_ENDPOINT",
+        "x": "-4",
+        "y": "-3",
+        "state": "CLOSED",
+        "owner": "LEFT"
+      },
+      {
+        "id": "source-end",
+        "kind": "SOURCE_ENDPOINT",
+        "x": "4",
+        "y": "3",
+        "state": "CLOSED",
+        "owner": "RIGHT"
+      },
+      {
+        "id": "breakpoint-owner-closed",
+        "kind": "BREAKPOINT",
+        "x": "0",
+        "y": "-1",
+        "state": "CLOSED",
+        "owner": "RIGHT"
+      },
+      {
+        "id": "breakpoint-limit-open",
+        "kind": "BREAKPOINT",
+        "x": "0",
+        "y": "1",
+        "state": "OPEN",
+        "owner": "LEFT"
+      }
+    ]
+  },
+  "piecewiseFeaturePolicy": {
+    "schemaVersion": "PIECEWISE_AFFINE_FEATURE_POLICY_v1",
+    "sourceDomainMode": "CLOSED_INTERVAL",
+    "breakpointOwnership": "RIGHT",
+    "outerEndpointState": "CLOSED",
+    "jumpPolicy": "OWNER_CLOSED_OTHER_LIMIT_OPEN",
+    "continuousJoinPolicy": "ONE_CLOSED_MARKER",
+    "markerRadiusIntrinsicPx": 4,
+    "minimumMarkerDiameterCssPx": 3,
+    "minimumBranchSpanCssPx": 32
+  }
+}
