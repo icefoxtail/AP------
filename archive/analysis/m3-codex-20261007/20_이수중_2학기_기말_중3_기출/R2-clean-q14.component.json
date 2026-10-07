@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_R2_COMPONENT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 14,
+  "disposition": "COMPONENT_PASS_MATCH",
+  "source": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/20_이수중_2학기_기말_중3_기출.js",
+    "rawSha256": "1c51a8a4dcc8933d08ff6d62572a17442eafae8e640404e23111208bd9cafcdb",
+    "validatorRawBufferBlobSha1": "f90e8f9d3cc9f6c178af832a0c3bccd9266e517e",
+    "gitCleanFilterBlobSha1": "f90e8f9d3cc9f6c178af832a0c3bccd9266e517e",
+    "head": "d1c07101d7bde3ca7331454b0f70ab170fc72d64"
+  },
+  "freeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/R2-clean-q14.freeze.json",
+    "sha256": "d4b455dd0955035b82aa90f5cd655af2f73726c838bebe1e25d4402dca689475"
+  },
+  "disclosure": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/R2-clean-q14.postfreeze-disclosure.json",
+    "sha256": "f81a5e5bea5a9328cd074b5bb60456032604272c31bc1769b4c48f973fff96dd",
+    "qid": 14
+  },
+  "comparison": {
+    "frozenAnswer": {
+      "choiceIndex": 2,
+      "value": "25°"
+    },
+    "storedAnswer": "②",
+    "choiceCardinality": 1,
+    "disposition": "MATCH",
+    "solutionMathSupport": [
+      "Stored solution computes ∠ACD = 180° − 115° − 40° = 25° correctly.",
+      "It correctly equates ∠ABD and ∠ACD as inscribed angles subtending chord AD from the same side.",
+      "Therefore x=25° and choice ② is supported."
+    ],
+    "pinpointIssue": null
+  },
+  "prefreezeInput": {
+    "studentBundleSha256": "8fda2c20c6c9646d4b8d28c9bd8b749fc8d1ba4ef0743d1893024a8c2c7b9255",
+    "studentPayloadSha256": "42dd9f092c434ebd9589d93901f320e558235b8a3e7561625628a6e98fec43c5",
+    "svgSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee",
+    "previewPngSha256": "5f1a68a3ac4dae35781a627d31a85007d7dd2507fafc1b553bc8fbc2288ac033",
+    "actualPngOpenBeforeFreeze": true
+  },
+  "mutation": {
+    "workingJsChanged": false,
+    "assetChanged": false
+  },
+  "validator": {
+    "genericV2R2": "NOT_RUN_COMPONENT_SCOPE",
+    "instruction": "Original R2 owner merges this qid14 component with the existing valid 21-qid R2 evidence and runs the generic V2 R2 validator once.",
+    "issues": []
+  },
+  "nextRequiredAction": "Merge qid14 component with original 21-qid R2 evidence, then run the generic V2 R2 validator once on the complete stage artifact."
+}

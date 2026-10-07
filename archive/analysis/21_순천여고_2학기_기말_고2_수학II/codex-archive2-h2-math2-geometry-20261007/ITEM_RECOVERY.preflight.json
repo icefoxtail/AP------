@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "ownerSession": "/root/create_07",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "TARGETED_REPAIR",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 12,
+      "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+      "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+      "visualSha256": "sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+      "visualObservation": "Rendered circle is tangent to both coordinate axes; center and tangent points are attached to actual primitives."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 9,
+      "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+      "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfr",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+      "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+      "visualObservation": "Line primitives encode both equations and slopes. ImageMagick substituted missing fonts, so tofu text is renderer-specific and is not used as a visual model."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 3,
+      "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+      "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 6,
+      "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+      "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+      "visualSha256": "sha256:70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+      "visualObservation": "Venn regions 20−y, y, 15−y and the overlap lower bound correspond. Font substitution in the local renderer is not copied."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 11,
+      "solutionSha256": "sha256:b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+      "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=0$,\n$x_B+x_C=-2$이다.\n$y$좌표에 대하여\n$\\dfrac{4+y_B+y_C}{3}=0$,\n$y_B+y_C=-4$이다.\n따라서 삼각형 $OBC$의 무게중심은\n$\\left(\\dfrac{-2}{3},\\dfrac{-4}{3}\\right)$이다",
+      "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Actual README read. Reject aggregate-only small-board claims when enumerated decisions stay in one paragraph; compare visual facts to primitive coordinates; inspect runtime escapes and exact active Meta."
+    }
+  ],
+  "svgRenders": [
+    {
+      "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+      "sha256": "sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+      "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.calibration\\maesan-q12.png",
+      "renderSha256": "sha256:97dcc4678512bdbd7f9bb70a69b7400223f985e92944bcae872652eeaadbfae7",
+      "observation": "Rendered circle is tangent to both coordinate axes; center and tangent points are attached to actual primitives."
+    },
+    {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "sha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+      "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.calibration\\hyocheon-q2.png",
+      "renderSha256": "sha256:8f713b142d95354555ed78306de7f0ffd59f1dc0d088368c43ee1ef3d794ca4d",
+      "observation": "Line primitives encode both equations and slopes. ImageMagick substituted missing fonts, so tofu text is renderer-specific and is not used as a visual model."
+    },
+    {
+      "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+      "sha256": "sha256:70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+      "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.calibration\\jeil-q6.png",
+      "renderSha256": "sha256:1ee5356b70e5ccf768d662fe85af4c6bb36aa168b39351e438e8356603f9ea39",
+      "observation": "Venn regions 20−y, y, 15−y and the overlap lower bound correspond. Font substitution in the local renderer is not copied."
+    }
+  ],
+  "renderFontNote": "ImageMagick locally falls back for STIX Two Math and other embedded font families; visual text artifacts from this renderer are recorded and are not treated as reference quality.",
+  "createdBeforeTargetHoldReasonOrMutation": true,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+        "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+        "visualSha256": "sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+        "visualObservation": "Rendered circle is tangent to both coordinate axes; center and tangent points are attached to actual primitives."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n따라서 이 접선의 기울기는 $-\\dfr",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+        "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualObservation": "Line primitives encode both equations and slopes. ImageMagick substituted missing fonts, so tofu text is renderer-specific and is not used as a visual model."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II.",
+        "visualSha256": "sha256:70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+        "visualObservation": "Venn regions 20−y, y, 15−y and the overlap lower bound correspond. Font substitution in the local renderer is not copied."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 11,
+        "solutionSha256": "sha256:b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+        "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=0$,\n$x_B+x_C=-2$이다.\n$y$좌표에 대하여\n$\\dfrac{4+y_B+y_C}{3}=0$,\n$y_B+y_C=-4$이다.\n따라서 삼각형 $OBC$의 무게중심은\n$\\left(\\dfrac{-2}{3},\\dfrac{-4}{3}\\right)$이다",
+        "observation": "Read actual solution bytes and followed equations: distinct setup/condition, transformation, intermediate value, substitution, calculation, final answer. Do not transfer H1 content or Meta to Math II."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Actual README read. Reject aggregate-only small-board claims when enumerated decisions stay in one paragraph; compare visual facts to primitive coordinates; inspect runtime escapes and exact active Meta."
+      }
+    ]
+  }
+}

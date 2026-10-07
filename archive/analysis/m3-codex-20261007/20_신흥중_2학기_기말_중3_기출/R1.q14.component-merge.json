@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_COMPONENT_MERGE_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "qid": 14,
+  "sourceFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1-clean-q14.independent-freeze.json",
+  "sourceFreezeSha256": "b298ccec65b72b072df2accb0d2b4b1a42de7710d28a381a9669a526f1709edd",
+  "sourceComponentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1-clean-q14.component-review.json",
+  "sourceComponentSha256": "84ed40c5cef4caa66e9bc8fb04946928b22ad791a090db8c270294a08d3543a1",
+  "postfreezeQuestionLayoutDelta": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.q14.layout-only-rebind.json",
+    "sha256": "a32d994c29312f6031f340efb848fb9bd23912a176ce14730614c9665a974ab3",
+    "changedField": "content presentation newline only",
+    "questionBoundary": "after 84°일 때, before ∠CBE",
+    "sourceTextExactParity": "PASS",
+    "choicesExactParity": "PASS",
+    "studentPayloadPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.q14.post-layout-student-input.json",
+    "studentPayloadSha256": "3ca21be4ea17364e8b030affa4374a4bfafea84187789e705260b2a9d8398f16",
+    "freezeValidity": "VALID_LAYOUT_ONLY_DELTA"
+  },
+  "currentArtifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\20_신흥중_2학기_기말_중3_기출.js",
+    "rawSha256": "3254962f27bbfd7889d288376ff50302e3b2994a7a895c884f99d2148713f8ef",
+    "rawBufferBlobSha1": "e46a33f56af10e6c2db8ddc9584e28c3007bbc78",
+    "gitCleanFilterBlobSha1": "e46a33f56af10e6c2db8ddc9584e28c3007bbc78"
+  },
+  "independentAnswer": {
+    "answer": "④",
+    "value": "28°",
+    "freezeBeforeDisclosure": true,
+    "storedAnswer": "④",
+    "comparison": "MATCH"
+  },
+  "axisEvidence": {
+    "questionLayout": {
+      "status": "PASS",
+      "beforeDisposition": "LAYOUT_POLISH",
+      "finalDisposition": "LAYOUT_POLISH",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "reason": "Added one LF at the semantic question boundary after the condition; exact text atoms and choices are unchanged."
+    },
+    "solutionLayout": {
+      "status": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8222db6a1c47d11c1c12aa9a7ea368a94d6ae82b4cfff8f8def4f089aeb03302",
+      "reason": "풀이의 중심각·호·접선-현 계산과 결론이 별도 행으로 추적되며 핵심 수치 대입과 최종값이 생략되지 않음."
+    },
+    "meta": {
+      "status": "PASS",
+      "classificationRationale": "중3 원의 성질 범위에서 접선-현 각과 중심각/호를 연계한다. 현재 unit/subunit와 template/type가 풀이·발문에 부합하며 difficulty fields가 모두 물리적으로 존재한다.",
+      "actualCurrentFields": {
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "standardUnit": "원의 성질",
+        "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+        "questionType": "객관식",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "standardUnitKey": "M3-06",
+        "difficultyBoundaryFlag": "NONE",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "standardCourse": "중3 수학",
+        "difficultyConfidence": "medium",
+        "difficultyBucket": 3,
+        "level": "상",
+        "subUnit": "원주각",
+        "category": "원의 성질"
+      },
+      "missingOrDrift": "NONE"
+    },
+    "visualSvg": {
+      "actualRender": "NOT_RUN_ROOT_WAIVER",
+      "necessity": "PROBLEM_IMAGE_REQUIRED",
+      "solutionSvg": "NOT_REQUIRED",
+      "assetVisualIssue": "NONE",
+      "assetTopology": "원 O, 접점 A/B, 접선 PA/PB, AD, chord AC/AB, tangent extension BE, P/C/D/E/O labels와 44°/84° 표기가 발문과 일치하며 보임",
+      "status": "PASS",
+      "assetOpened": true
+    }
+  },
+  "verdict": "PASS",
+  "disposition": "SAME_STAGE_QUESTION_LAYOUT_POLISH_COMPLETE",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "nextRequiredAction": "Merge q14 component into the unchanged qid rows, rebind full artifact SHA, and run the full generic V2 R1 validator once."
+}

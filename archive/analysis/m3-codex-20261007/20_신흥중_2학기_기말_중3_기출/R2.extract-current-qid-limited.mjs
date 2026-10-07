@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import crypto from 'node:crypto';
+const sourcePath='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/20_신흥중_2학기_기말_중3_기출.js';
+const expected='3254962f27bbfd7889d288376ff50302e3b2994a7a895c884f99d2148713f8ef';
+const bytes=fs.readFileSync(sourcePath);
+const sha=crypto.createHash('sha256').update(bytes).digest('hex');
+if(sha!==expected) throw new Error(`source SHA mismatch ${sha}`);
+const sandbox={window:Object.create(null)};
+vm.runInNewContext(bytes.toString('utf8'),sandbox,{timeout:1500,contextCodeGeneration:{strings:false,wasm:false}});
+const bank=sandbox.window.questionBank||sandbox.window.questions;
+if(!Array.isArray(bank)||bank.length!==24) throw new Error('current bank denominator mismatch');
+const rows=bank.map((q,index)=>{
+  const id=Number(q.id??q.qid??index+1);
+  if(id<1||id>24) throw new Error(`unexpected qid ${id}`);
+  return {qid:id,answer:q.answer??null,solution:q.solution??q.explanation??q.sol??null};
+}).sort((a,b)=>a.qid-b.qid);
+if(rows.some((r,i)=>r.qid!==i+1)) throw new Error('qid coverage mismatch');
+const output={schemaVersion:'R2_POSTFREEZE_QID_LIMITED_DISCLOSURE_V1',runId:'m3-codex-20261007',examUid:'20_신흥중_2학기_기말_중3_기출',sourcePath,sourceSha256:sha,qidCoverage:rows.map(x=>x.qid),rows};
+const outPath=new URL('./R2.postfreeze-disclosure.json',import.meta.url);
+fs.writeFileSync(outPath,JSON.stringify(output,null,2)+'\n');
+console.log(JSON.stringify({path:outPath.pathname,sourceSha256:sha,count:rows.length,answers:rows.map(({qid,answer})=>({qid,answer}))}));

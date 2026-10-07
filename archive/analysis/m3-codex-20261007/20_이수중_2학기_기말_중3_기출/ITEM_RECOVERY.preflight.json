@@ -1,0 +1,100 @@
+{
+  "solutionQualityCalibration": {
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "P=(1,6)",
+        "observation": "내분점에서 비의 반대쪽 좌표를 곱하고 x·y 좌표와 중점·거리 계산을 독립된 판서 단계로 보여 학생이 재현할 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7",
+        "solutionExcerpt": "|b+7|=13",
+        "observation": "수직 조건으로 a를 구한 뒤 점-직선 거리와 절댓값 두 경우, b>0 선택을 순서대로 연결한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+        "solutionExcerpt": "|a-4|=a",
+        "observation": "원이 축에 접하는 조건을 중심 이동과 축까지의 거리로 적용하고 a>0·b>0으로 해를 선택한다. 실제 SVG는 C(-2,2), 양 축 접점과 반지름 선분을 읽기 쉽게 보여 준다.",
+        "visualSha256": "sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+        "visualAssetPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+        "renderedVisual": {
+          "path": "archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/source-review/golden-maesan-q12.png",
+          "sha256": "sha256:98c4b2dc14fbca2abefd77ad9161e910d0542d8a389448da1cbf7b5aacfe5829",
+          "renderer": "ImageMagick SVG conversion",
+          "status": "READABLE_RENDER_REVIEWED",
+          "observation": "원이 축에 접하는 조건을 중심 이동과 축까지의 거리로 적용하고 a>0·b>0으로 해를 선택한다. 실제 SVG는 C(-2,2), 양 축 접점과 반지름 선분을 읽기 쉽게 보여 준다."
+        }
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "k=6",
+        "observation": "두 직선의 방정식을 각각 기울기형으로 정리해 수직 조건을 적용한다. SVG 실제 렌더에서 축과 두 선의 기울기 관계는 보이나 이 호스트의 한글 폰트 대체로 패널 문장은 판독하지 않는다.",
+        "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualAssetPath": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "renderedVisual": {
+          "path": "archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/source-review/golden-hyocheon-q02.png",
+          "sha256": "sha256:0f3ce57b797c2d356dca9e98dd2082ca2ff0e2ff4c1688959bc235abc9570e66",
+          "renderer": "ImageMagick SVG conversion",
+          "status": "PARTIAL_TEXT_FONT_FALLBACK",
+          "observation": "두 직선의 방정식을 각각 기울기형으로 정리해 수직 조건을 적용한다. SVG 실제 렌더에서 축과 두 선의 기울기 관계는 보이나 이 호스트의 한글 폰트 대체로 패널 문장은 판독하지 않는다."
+        }
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "(x+1)^2+(y-3)^2=4",
+        "observation": "완전제곱과 표준형 비교로 중심·반지름을 구한다. SVG 실제 렌더에서 중심·반지름 끝점·같은 단위 눈금과 라벨이 읽힌다.",
+        "visualSha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "visualAssetPath": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "renderedVisual": {
+          "path": "archive/analysis/m3-codex-20261007/20_이수중_2학기_기말_중3_기출/source-review/golden-hyocheon-q03.png",
+          "sha256": "sha256:8b34ca4b2fe7c2f2d9bc5c6e080ff549fe735c414e4ad008f197be09e747dcd2",
+          "renderer": "ImageMagick SVG conversion",
+          "status": "READABLE_RENDER_REVIEWED",
+          "observation": "완전제곱과 표준형 비교로 중심·반지름을 구한다. SVG 실제 렌더에서 중심·반지름 끝점·같은 단위 눈금과 라벨이 읽힌다."
+        }
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Approved false-PASS regression README read in this preflight; actual geometry/topology, enumeration-block structure, canonical Meta resolvability, and runtime escape families were checked."
+      }
+    ],
+    "preflightScope": "Only q14 recovery authoring; no target mutation occurred before this record."
+  }
+}

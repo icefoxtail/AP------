@@ -1,0 +1,57 @@
+{
+  "schema": "JS_ARCHIVE_R1_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.independent-freeze.json",
+    "sha256": "5d63f7f2491ee26a3ca4fe462e1d0187d4d59b4ce5258f38b5709d3d21e7f3ef"
+  },
+  "disclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1.postfreeze-disclosure.json",
+    "sha256": "bf90fe63922b5076a22b4f3f850b0652e47bcea44884bf91aec546e544d51a85",
+    "excludedQids": [
+      14
+    ]
+  },
+  "qids": [
+    {
+      "qid": 7,
+      "independentAnswer": [
+        "③",
+        "④"
+      ],
+      "storedAnswer": "③, ④",
+      "status": "MULTIPLE_VALID_OPTIONS",
+      "adjudication": "MATCH_AS_MULTIPLE_TRUE_OPTIONS",
+      "reason": "Central angles 40° and 80° make option ④ true by arc measure and option ③ true by chord triangle inequality; do not force one answer."
+    },
+    {
+      "qid": 9,
+      "initialTentativeAnswer": "④",
+      "independentAnswer": null,
+      "storedAnswer": "HOLD",
+      "status": "UNRESOLVED_STUDENT_RELATION",
+      "adjudication": "VOID_TENTATIVE_FREEZE",
+      "reason": "Prompt states only AP,AQ are tangents; image does not provide an explicit or uniquely source-grounded relation fixing B,C and BC. A 30cm perimeter requires an extra tangent relation and is not frozen."
+    },
+    {
+      "qid": 14,
+      "initialTentativeAnswer": "④",
+      "independentAnswer": null,
+      "storedAnswer": "EXCLUDED",
+      "status": "UNRESOLVED_MISSING_STUDENT_FACT",
+      "adjudication": "VOID_TENTATIVE_FREEZE",
+      "reason": "The text asks ∠CBE but no point E is defined/labeled. Root disclosure deliberately excluded q14; no source answer/solution lookup was used."
+    },
+    {
+      "qid": 15,
+      "initialTentativeAnswer": "⑤",
+      "independentAnswer": null,
+      "storedAnswer": "HOLD",
+      "status": "UNRESOLVED_TEXT_DIAGRAM_CONFLICT",
+      "adjudication": "VOID_TENTATIVE_FREEZE",
+      "reason": "Text says pentagon circumscribes circle, while required figure appears cyclic/inscribed and marks ∠COD at labeled vertices; a unique B+E cannot be justified from this conflict without source-page recovery."
+    }
+  ]
+}

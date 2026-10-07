@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_DESIGN_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "qid": 14,
+  "workingJsRawSha256": "7e5e5a3a86931eb114980c7dfa9a56ff35c1baf1c5e582062118934358a6ba56",
+  "workingJsBlobSha": "eef988c10f75d3882f933e159ed85ee92fe26e98",
+  "sourceTruthEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/ITEM_RECOVERY.source-truth.q14.json",
+  "sourceTruthEvidenceSha256": "89c9ab9cb0826b4bbf83567d2cc07a305f787e7508ae77392e16e401121b52e3",
+  "upstream": {
+    "R1ResultPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/R1.result.json",
+    "R1ResultSha256": "d151c2c2a9c87cc3086464afce96cf9fb0cda539d593422b6427b8a323e79060",
+    "R1FreezeAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/R1.freeze-adjudication.json",
+    "R1FreezeAdjudicationSha256": "60b574030a273169a9a0cb09d21cde2bec36b5de92c25505fd47fe31ba482b1b",
+    "R1OriginalAnswerFreeze": "④; basis used an angle label as ∠ADC=40° although the source marks ∠BDC=40°; preserved but unsupported.",
+    "R2ResultPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/R2.result.json",
+    "R2ResultSha256": "3f2e7dbbfdb108232cb6549cdde3343f52d50cf51c7f4ac0e25c8bb4a077a3d4",
+    "R2BlindFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/R2.blind-freeze.json",
+    "R2BlindFreezeSha256": "058058b1c3c9ca4bb1e169058d69f03cd011c9bcbb2130cc5124448c2d1dd6ce",
+    "R2FreezeAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/R2.freeze-adjudication.json",
+    "R2FreezeAdjudicationSha256": "e493a756f849644a7e2fedae8804037d4b7b1678b9ed8feec64bddb06278c338",
+    "R2OriginalAnswerFreeze": "③ 30°; it treated the displayed 110° tangent angle as an interior quadrilateral angle; preserved as failed freeze, not reused."
+  },
+  "replacementDesign": {
+    "method": "CODEX_DIRECT_AUTHORING",
+    "replacementScope": "QUESTION_ONLY",
+    "concept": "M3 circle inscribed-angle relations; angle sum in triangle ACD followed by equal inscribed angles subtending chord AD.",
+    "curriculum": "2015 M3-06 원의 성질",
+    "responseForm": "five-choice objective",
+    "difficultyRole": "middle, approximately two decisive steps, comparable to a 4-point circle-angle item",
+    "questionBody": "원 O에 내접하는 사각형 ABCD의 꼭짓점은 원주 위에 A, B, C, D 순서로 놓여 있다. ∠CAD=115°, ∠ADC=40°일 때, ∠ABD=x의 크기는?",
+    "conditions": {
+      "cyclicOrder": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "angleCAD": 115,
+      "angleADC": 40,
+      "target": "x=angle ABD"
+    },
+    "solutionFirstDerivation": [
+      "삼각형 ACD에서 ∠ACD=180°−115°−40°=25°이다.",
+      "B와 C는 현 AD의 같은 쪽 원주 위에 있으므로 ∠ABD와 ∠ACD는 같은 현 AD를 보는 원주각이다.",
+      "따라서 x=25°."
+    ],
+    "canonicalAnswerFrozenBeforeChoices": {
+      "answerValue": "25°",
+      "unique": true,
+      "answerChoiceIndexAfterDistractorDesign": "②",
+      "independentSolveStatus": "PASS"
+    },
+    "choices": [
+      {
+        "value": "20°",
+        "basis": "Mistakenly halve the 40° inscribed angle as if the target required a central-angle/arc conversion."
+      },
+      {
+        "value": "25°",
+        "basis": "Correct solution-first derivation."
+      },
+      {
+        "value": "30°",
+        "basis": "Use 180°−110°−40° after misreading the printed 115° angle as 110°."
+      },
+      {
+        "value": "35°",
+        "basis": "Double 40° to its intercepted arc and subtract that arc value from the 115° triangle angle."
+      },
+      {
+        "value": "40°",
+        "basis": "Copy ∠ADC as x without transferring to the equal same-chord inscribed angle."
+      }
+    ],
+    "answerDistribution": {
+      "countsBeforeReplacement": {
+        "①": 4,
+        "②": 3,
+        "③": 2,
+        "④": 5,
+        "⑤": 3
+      },
+      "choiceOrder": "ascending numeric",
+      "selectedIndex": "②",
+      "reason": "Among feasible sorted numeric choices, ② is in a least-used position tied with ⑤, differs from neighbor q13=③/q15=④, and avoids defaulting to ③."
+    },
+    "visualDesign": "Create q14-replacement.svg with cyclic A-B-C-D order, quadrilateral chords, diagonal AC and BD; points on one circle; labels ∠CAD=115°, ∠ADC=40°, x=∠ABD. Use a coordinate-realizable configuration with arcs AB=40°, BC=40°, CD=230°, DA=50° so the shown angles are 115°, 40°, and both requested equal-chord angles are 25°.",
+    "visualPath": "assets/images/20_이수중_2학기_기말_중3_기출/q14-replacement.svg",
+    "metaFresh": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    "difficultyFresh": {
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "The replacement has two linked angle steps, a small integer arithmetic load, and standard same-chord reasoning within the current M3 circle unit."
+    }
+  },
+  "preservedOriginal": {
+    "sourceImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q14.png",
+    "sourceImageSha256": "a8f65184c4c699837dcfeaa89ab1fb27573164c99bcb1203c2b32d8b43eaa079",
+    "sourceAnswerKey": "③ (30°)",
+    "sourceTruthEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출/ITEM_RECOVERY.source-truth.q14.json"
+  },
+  "nonTargetInvariantBefore": {
+    "questionObjects": [
+      {
+        "qid": 1,
+        "objectSha256": "a22a63baacd58fa9cd8db53d4be307d3da82ee74269d1fba5070971614af0a0a"
+      },
+      {
+        "qid": 2,
+        "objectSha256": "4bdda7290acaa5a25536eff114d30cb6b8c1d4764386d796baaca653261071f7"
+      },
+      {
+        "qid": 3,
+        "objectSha256": "00654a498080625aaa7373b02c1169af69336fc62c670ef58149fff0142fab98"
+      },
+      {
+        "qid": 4,
+        "objectSha256": "d169b647f46c139b6642f0f13917c50d29cef1d254e3d89c628b8ea57804ad8a"
+      },
+      {
+        "qid": 5,
+        "objectSha256": "6cfdecb54693ce413e170114373cadcfde7188e3dcdac78a33f03495fb357ebe"
+      },
+      {
+        "qid": 6,
+        "objectSha256": "000786e7921c0407f1b4dd6b487333c2f935dbd4f4ca835707af637e8cb81e0b"
+      },
+      {
+        "qid": 7,
+        "objectSha256": "201db036351e874ac0cd646d61181a80ba833e3cb86bb9ed6e6e67c1cfc2a4fc"
+      },
+      {
+        "qid": 8,
+        "objectSha256": "90fae8a045c9ace5be8b39648cc0ecd41a3f44ecdc2f4fa581f2b4cc887282a1"
+      },
+      {
+        "qid": 9,
+        "objectSha256": "16f606f421de7209cc22f89dbce2ff15bd045c6263c9af05fa8172ab2bc31c6e"
+      },
+      {
+        "qid": 10,
+        "objectSha256": "1d9e2e41ea6cf12a86156e1ff02f1e54c1c3118e89b34f0d0567a9a4bc680a74"
+      },
+      {
+        "qid": 11,
+        "objectSha256": "26ab470c50c340cc1b752b008273681484cca3ef9ab68fa5d7f05b1f7be39b11"
+      },
+      {
+        "qid": 12,
+        "objectSha256": "611bd87035813163ab1e9c98e2eb8ff0833332a68a53902374c49425b7b8fc42"
+      },
+      {
+        "qid": 13,
+        "objectSha256": "dfcead08e8c1d77b1ab0c7831ce18ac8b1a857c4763b69645b943ae2f7dccf3d"
+      },
+      {
+        "qid": 15,
+        "objectSha256": "6fb635a5e56f58fae2824069a06d21c6d61d16772f6b42c5391cdd19856992fe"
+      },
+      {
+        "qid": 16,
+        "objectSha256": "3d7c7645af54dc3783e262af01ae92ffacb27778e980e1c19757b43b664db58c"
+      },
+      {
+        "qid": 17,
+        "objectSha256": "5dfa88b2bb60b495434dcbb31f28e746e919198fd58827e1d855e5b4e12cf4d9"
+      },
+      {
+        "qid": 18,
+        "objectSha256": "017ba045b0d2b8a4a1b058cce3294439b777b24dd8c95c69d133f962a1d9b1b7"
+      },
+      {
+        "qid": 19,
+        "objectSha256": "358b1ccd512ece2eb96657ecb7f8214f7cf1fe95f86c760d55acb0ef477c0466"
+      },
+      {
+        "qid": 20,
+        "objectSha256": "8f75a9716c04ff9c4b75ab1742f2dd6e8f3a8bb1c25ddce8e56c6cf617fee792"
+      },
+      {
+        "qid": 21,
+        "objectSha256": "7d6ea5f88efbba974ef9c191516cb7fda18e65aad1024d0b1c63542c07b42c5a"
+      },
+      {
+        "qid": 22,
+        "objectSha256": "f99433d41d6d0b54922a85e61e8600a6348185eae9418baf4467588dfb4883b4"
+      }
+    ],
+    "sourceAssets": [
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q01.png",
+        "sha256": "8a65e3ab20068e8631e720d0e8c8408c06e47e997a73fab1725092c893c507d7"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q02.png",
+        "sha256": "2d032fc408c2a5c4fc8bce8cd0877252c2949694cbb6cfb270c2617121330b1c"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q03.png",
+        "sha256": "266bd0d9f8e54a63a1e1c3073bb5d2c2fa405da60c629dc7ec86dcbf2a80291a"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q04.png",
+        "sha256": "fd996617266f8d86b5a9f3e9c53ad4367d60e9c3cd8c0338d35b4333e61e6297"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q05.png",
+        "sha256": "164c5b9aaa19e984990e3799d7a01df02dc2be1f2ac0f0bb35e9183a83fad60b"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q06.png",
+        "sha256": "649b633e32b6aa450042b90b2ec605a3a34cbd60fbf490d744c667b1932f8146"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q07.png",
+        "sha256": "ac6d29fa52e7369ae0377b97113c9390e345599951c87e2199a598901c77b96c"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q08.png",
+        "sha256": "224e82b4d13ddf033313aa9abc85f1e31f232cabcf5a415688c1a9485615d878"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q09.png",
+        "sha256": "b8ce7eb4dea90183aba0a7039b6bc9a207605e3ad7a9aa3198f2506628bc6a46"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q10.png",
+        "sha256": "c3a97d87498555a75bcaefde56e04616fa91416a956304ce53ef803368f0d487"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q11.png",
+        "sha256": "7ee95b900e1c3232f1dda36d60728de4a2a9843c300e482b832297cce9693082"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q12.png",
+        "sha256": "435dcaa8ff80dca5e78b44c3cb35c7db8e55f8169574a185fc8acc7368a4d7e2"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q13.png",
+        "sha256": "4f86d628500f35df3f598c065d630ee9e65922b75dd3d8581dfc49cb449684d9"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q14.png",
+        "sha256": "a8f65184c4c699837dcfeaa89ab1fb27573164c99bcb1203c2b32d8b43eaa079"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q15.png",
+        "sha256": "d81fa5996042930f3942bd524fb52270f025e88b4c09f51a66c0c86f7bed6dec"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q16.png",
+        "sha256": "593cc93c2817bef06e6b42fb3b2945620534938b45b3cd72dd648cfc0838303c"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q17.png",
+        "sha256": "18b223338655f81164fcdfab27cb509eaad5db7c87e3d884f00d510baefb9a00"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q18.png",
+        "sha256": "db68712ddfbac0601274465dfd311fc36c255e7c3ced8136dea1a95e2f09d5e7"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q19.png",
+        "sha256": "b30d4b8255254a279f38519288ca3a8a6b21755ce71acf9860393459d7139d48"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q20.png",
+        "sha256": "f261ede9afb19920a35bfda156586c8cb0484095e5772f32b02507ec2ad07f9a"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q21-r1.png",
+        "sha256": "0d8a868325e1a9a9aceac4e137da6fbf4c6ba035bf731afebda6237b0a7a582c"
+      },
+      {
+        "ref": "assets/images/20_이수중_2학기_기말_중3_기출/q22.png",
+        "sha256": "d97f3e12e1e2ea3e4f3f4dfb8892634ea7937bb99fb599672ef050b052e8ea27"
+      }
+    ]
+  },
+  "filenameRefCorrection": {
+    "from": "assets/images/20_이수중_2학기_기말_중3_기출/q14-replacement.svg",
+    "to": "assets/images/20_이수중_2학기_기말_중3_기출/q14.svg",
+    "svgBytesUnchanged": true,
+    "sha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee",
+    "reason": "Final filename contract; preserved original design reference above."
+  }
+}

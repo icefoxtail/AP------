@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "examPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\21_순천여고_2학기_기말_고2_수학II\\21_순천여고_2학기_기말_고2_수학II.js",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "e53704e7db12e9c8516939c0ad1249c64283e222",
+  "artifactRawSha256": "7341cf036c72a2307ff87e9061518c2b335cc97b2ff75371a2adaab9b3944ee9",
+  "artifactRawBufferBlobSha1": "e53704e7db12e9c8516939c0ad1249c64283e222",
+  "gitCleanFilterBlobSha1": "e53704e7db12e9c8516939c0ad1249c64283e222",
+  "questionCount": 23,
+  "reviewerIdentity": "/root/r3_07 (Codex R3; gpt-6-luna/high)",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      13,
+      22
+    ],
+    "directDependencyQids": [
+      13,
+      22
+    ]
+  },
+  "rows": [
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "changedLocus": "q13 recropped source graph bytes, expanded antiderivative endpoint line, difficulty binding",
+      "directDependencyRechecked": [
+        "q13 student image SHA",
+        "q13 answer",
+        "q13 solution",
+        "q13 smallboard",
+        "q13 Meta",
+        "q13 difficulty",
+        "q13 source parity"
+      ],
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "LAYOUT_KEEP_STATIC",
+          "evidence": "Current content, choices, and image reference match frozen student bundle. Grid remains AUTO-FIRST; no deterministic static boundary/asset defect found."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "SOLUTION_KEEP",
+          "evidence": "The added antiderivative and endpoint substitution make the zero integral traceable. Remaining lines separately show f(2)-f(-1), f(3), and the product."
+        },
+        "META": {
+          "disposition": "CURRENT_FIELDS_RETAINED",
+          "evidence": "H15-M2-06 / derivative-application unit fits 2015 Math II. PT_DERIVATIVE_GRAPH_ANALYSIS and TPL_DERIVATIVE_GRAPH_QUANTITATIVE_RECOVERY are current ACTIVE projections. No null PT/TPL or relational Meta debt."
+        },
+        "VISUAL_SVG": {
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "Opened the referenced q13 graph before freeze; its SHA is unchanged. It already supplies the derivative graph used in the solution, so a duplicate solution SVG adds no needed relation."
+        }
+      },
+      "studentAssetRefs": [
+        {
+          "ref": "assets/images/21_순천여고_2학기_기말_고2_수학II/q13.png",
+          "sha256": "0a1ecd4a023246942f6497d73dc1a9d8f6bbba0d63f1008451cdc9700612675b"
+        }
+      ],
+      "solutionSha256": "5ea230f3bea46f0dd7e2e17a37f1e7239a12ac67d5f380c25b51a2845416f302",
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "changedLocus": "q22 fresh complete problem replacement with uniquely determined even quartic; fresh answer/solution/Meta/difficulty",
+      "directDependencyRechecked": [
+        "q22 student content",
+        "q22 answer",
+        "q22 solution",
+        "q22 smallboard",
+        "q22 Meta",
+        "q22 difficulty",
+        "q22 source parity"
+      ],
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "LAYOUT_KEEP_STATIC",
+          "evidence": "Current content and empty choices match frozen student bundle. The prompt separates conditions and task; grid remains AUTO-FIRST."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "SOLUTION_KEEP",
+          "evidence": "Board flow separately states the even-quartic form, value at zero, stationary equation, second-derivative verification, and final substitution."
+        },
+        "META": {
+          "disposition": "CURRENT_FIELDS_RETAINED",
+          "evidence": "H15-M2-06 / derivative-application unit fits 2015 Math II. PT_DERIVATIVE_FUNCTION_DETERMINATION and TPL_STRUCTURAL_FUNCTION_DETERMINE are current ACTIVE projections and fit reconstruction from symmetry/extrema. No null PT/TPL or relational Meta debt."
+        },
+        "VISUAL_SVG": {
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No image or solutionImage is required for this algebraic even-quartic determination; there is no visual dependency."
+        }
+      },
+      "studentAssetRefs": [],
+      "solutionSha256": "0eb62c0e3af2e96104572964d47f47c1b5b31220460ea3690803be53b743a5a5",
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "e53704e7db12e9c8516939c0ad1249c64283e222",
+    "rows": [
+      {
+        "qid": 9,
+        "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+        "templateKey": null,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Current assigned artifact has templateKey null; preserve existing projection debt without semantic reclassification."
+      }
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "renderDecision": {
+    "authority": "ROOT_DELEGATED",
+    "completionBasis": "ROOT_DIRECTED_STATIC_COMPLETE",
+    "reason": "ROOT selected CURRENT Execution §25 full six-case capture/render waiver for this assigned exam; SHA-bound ROOT waiver decision is handled by ROOT.",
+    "caseIds": [
+      "desktop-exam",
+      "desktop-sol",
+      "desktop-answer",
+      "mobile-exam",
+      "mobile-sol",
+      "mobile-answer"
+    ],
+    "captureCount": 0,
+    "actualRenderPass": false
+  },
+  "r1Binding": {
+    "evidenceRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.evidence.json",
+    "evidenceSha256": "e37673fb5ad6bdb28e8c09a55f2551d07e44e0a0928d4ca8b596116d59321880",
+    "reportRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.validator.final.stdout.raw.json",
+    "reportSha256": "300721971321c6dd90277f0e940f42b81c5ca0b5388a190815fda9eac14ba9aa",
+    "denominator": 23,
+    "disposition": "PASS"
+  },
+  "r2Binding": {
+    "evidenceRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R2.CURRENT_FULL23.evidence.json",
+    "evidenceSha256": "fd38469dc5642c27cc708a3c50379078ef695e62b1be5824dad4a101dab82974",
+    "reportRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R2.CURRENT_FULL23.validator.stdout.raw.json",
+    "reportSha256": "b5998f8acf15207760d66b787d10bd02210297297d0f71d57d838a02d53f1626",
+    "denominator": 23,
+    "disposition": "PASS"
+  },
+  "repairProvenance": {
+    "evidenceRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.evidence.json",
+    "q13RecropRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.q13-asset-recrop-adjudication.json",
+    "q22ReplacementRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\ITEM_RECOVERY.evidence.json"
+  },
+  "currentQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ]
+}

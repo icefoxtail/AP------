@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "R2_BLIND_COMPONENT_POSTCOMPARISON_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "R2-clean-q7-q15",
+  "scope": [7, 15],
+  "componentStatus": "MATCH",
+  "freeze": {
+    "path": "archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R2-clean-q7-q15.freeze.json",
+    "sha256": "6b2fca739ba28972fa807c2b46471ef39f44192042d865c574ee026bdd872d54"
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R2-clean-q7-q15.postfreeze-disclosure.json",
+    "sha256": "15573dc52f35991acbb49a7edfc6f32914169f9974a0cc96118386b182f70d04"
+  },
+  "sourceBinding": {
+    "workingJsAbsolute": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/20_신흥중_2학기_기말_중3_기출.js",
+    "rawSha256": "084f9dcd8bddc1cbaea715d34901cac6dae2ba04014de84b9d0445a91dcc78db",
+    "gitBlobSha1": "59802cd211804312707eaf2bff638608d631e2ee"
+  },
+  "studentBundleSha256": "d627a0175dff338c565e2e03327a99658585bbf5c8ab1439a575093f8dfd328b",
+  "assetBindings": [
+    {"qid": 7, "ref": "assets/images/20_신흥중_2학기_기말_중3_기출/q07.png", "sha256": "a6ac5cf3f2db8eee447a356f7a81cf4b4f48c8d01140afbeabc845e75537c69e"},
+    {"qid": 15, "ref": "assets/images/20_신흥중_2학기_기말_중3_기출/q15.png", "sha256": "311d0db0214fb104d0adc2ce8821caf23cb2f2cd175ad6004764465d684cc4b8"}
+  ],
+  "comparisons": [
+    {
+      "qid": 7,
+      "status": "MATCH",
+      "frozenAnswer": "②",
+      "storedAnswer": "②",
+      "solutionSupport": "Stored reasoning compares the two central angles and their corresponding chords; it supports AB < CD.",
+      "cardinality": "Exactly one listed choice states AB < CD."
+    },
+    {
+      "qid": 15,
+      "status": "MATCH",
+      "frozenAnswer": "⑤ (223°)",
+      "storedAnswer": "⑤",
+      "solutionSupport": "Stored inscribed-angle arc decomposition sums to (360° + arc CD)/2 = (360° + 86°)/2 = 223°.",
+      "cardinality": "Exactly one listed choice is 223°."
+    }
+  ],
+  "validator": {"status": "NOT_RUN_BY_COMPONENT_WORKER", "reason": "Parent/original R2 owner merges this component with unchanged qids and runs the actual full generic V2 R2 validator."},
+  "jsMutation": false,
+  "nextRequiredAction": "Original R2 owner merges qids 7 and 15 with valid unchanged qid freezes/adjudications and runs the full generic V2 R2 validator."
+}

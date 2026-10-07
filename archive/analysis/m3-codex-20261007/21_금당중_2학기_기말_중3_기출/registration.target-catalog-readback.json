@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "TARGET_ONLY_CATALOG_PROJECTION_READBACK_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_금당중_2학기_기말_중3_기출",
+  "head": "8bc8105a96102030e08d7a68fd3e8826080e6e7b",
+  "source": {
+    "rawSha256": "3d9a16009144edbe9502b4892f4a85aa000c6d8b3f198cd80150161edfe30206",
+    "expectedRawSha256": "3d9a16009144edbe9502b4892f4a85aa000c6d8b3f198cd80150161edfe30206"
+  },
+  "target": {
+    "rowCount": 25,
+    "canonicalExpectedRows": 25,
+    "diffQids": [],
+    "allRowsMatchCanonicalExpected": true,
+    "changedFieldsVsOriginalAppliedCatalog": {
+      "metadataAssignmentEvidence": 25
+    },
+    "reviewStatusUnchanged": true,
+    "automaticFlagsUnchanged": true,
+    "evidenceDigestMatchesCurrentMetadata": true
+  },
+  "nonTarget": {
+    "count": 11763,
+    "deepEqualToOriginalAppliedCatalog": true,
+    "driftVsFullCurrentCanonicalExpected": 1134,
+    "preRegistrationHeadDriftVsSameExpected": 1134
+  },
+  "preservation": {
+    "receiptTargetCounts": {
+      "identity": 25,
+      "metadata": 25,
+      "index": 25,
+      "catalog": 25,
+      "db": 1
+    },
+    "receiptNonTargetInvariant": {
+      "dbExamRows": 491,
+      "identityRows": 11771,
+      "metadataRows": 11771,
+      "indexRows": 11763,
+      "catalogRows": 11763,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    },
+    "identityRuntimeUnmodifiedSinceReceipt": true
+  },
+  "catalog": {
+    "sha256": "59ef88eaaa9128ccfc8ca821991443be80ed997a3a79589954dd949310b032f5",
+    "indexVersion": "4dcd048c271c03ae036f1debb3e94c85f9589acc96a5eaadbba762392d8b9d69",
+    "indexVersionFormulaPass": true
+  },
+  "manifest": {
+    "sha256": "ad527b2ec2ac207771bf8e26b0126e1ce6e8326083c3663dce58eecb072384ee",
+    "catalogRawHashBound": true,
+    "generatedFromCatalogIndexVersionMatches": true,
+    "projectionVersionMatches": true
+  },
+  "disposition": "TARGET_PROJECTION_PASS; FULL_CATALOG_CHECK_REMAINS_BLOCKED_BY_PREEXISTING_NON_TARGET_DRIFT"
+}

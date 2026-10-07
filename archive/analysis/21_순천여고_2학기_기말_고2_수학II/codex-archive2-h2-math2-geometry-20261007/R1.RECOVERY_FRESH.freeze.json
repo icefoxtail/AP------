@@ -1,0 +1,34 @@
+{
+  "schema": "JS_ARCHIVE_R1_FRESH_IMPACTED_SCOPE_FREEZE_V1",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "stage": "R1",
+  "reviewKind": "FRESH_IMPACTED_SCOPE_ONLY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceQuestionCount": 23,
+  "allowedQids": [
+    13,
+    22
+  ],
+  "freezePhase": "PRE_STORED_ANSWER_AND_SOLUTION_COMPARISON",
+  "studentBundleAbsolute": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/R1.RECOVERY_FRESH.student-bundle.json",
+  "studentBundleSha256": "1533dafb7d0baa95fe9c68cc05e88ded81e0ad06caae3cc2d6ee56e5014715d5",
+  "answers": [
+    {
+      "asset": {
+        "sha256": "0a1ecd4a023246942f6497d73dc1a9d8f6bbba0d63f1008451cdc9700612675b",
+        "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/assets/images/21_순천여고_2학기_기말_고2_수학II/q13.png"
+      },
+      "reasoning": "Read the opened graph: the symmetric parabola has vertex (0,-1) and passes through (1,2), so on the parabolic part f'(x)=3x^2-1; for x≥1, f'(x)=2. Thus integral from -1 to 1 is 0 and from 1 to 2 is 2; f(-1)=f(2)-2=1. Then f(3)=f(2)+2=5, giving product 5.",
+      "independentAnswer": "5",
+      "qid": 13,
+      "studentPayloadSha256": "6b9ec0fe66b365d97f76d01d61e30d38465939945c07ffaf1ba819dd330d5d56"
+    },
+    {
+      "studentPayloadSha256": "aeb0237b962576e34fe91ba44139a78a8dec9b9c10db2d39a3901f4173722a5f",
+      "qid": 22,
+      "independentAnswer": "f(x)=x^4-8x^2+4; f(3)=13",
+      "reasoning": "Write the even monic quartic as f(x)=x^4+ax^2+c. Since x=2 is stationary, f′(2)=32+4a=0, hence a=-8. The maximum value f(0)=4 gives c=4. Then f(3)=81-72+4=13. Also f″(x)=12x^2-16, so f″(0)=-16<0 and f″(±2)=32>0, confirming the stated maximum and minima."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_POSTFREEZE_ADJUDICATION_V1",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "originalFreezeAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\21_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R2.independent-freeze.json",
+  "originalFreezeSha256": "6b9d2a7a47d7a2fe82b8b6aafa35b0fed1f1aad0479a2426b920ecd2ed0e0577",
+  "postfreezeExtractionAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\21_순천여고_2학기_기말_고2_수학II\\R2.postfreeze-student-bundle.json",
+  "postfreezeExtractionSha256": "a10718fcb6d0b800278755101181d7534149a08825373014a4b76d2ef4a55c17",
+  "rows": [
+    {
+      "qid": 13,
+      "disposition": "INPUT_UNDETERMINED",
+      "preservedInitialFreeze": "35/3 estimate from an incorrect reading of an unlabeled vertex; original file retained unchanged",
+      "proof": "The student graph states an even quadratic y=f'(x) with f'(1)=2 and a constant y=2 branch for x>=1, but gives no exact vertex value. For every a>2, f'(x)=a*x^2+2-a on x<=1 has the stated symmetry and junction. Its implied f(-1)f(3)=20a/3-15; a=3 gives 5 and a=4 gives 35/3. Therefore the current student image does not determine one listed answer.",
+      "storedAnswer": "⑤",
+      "comparison": "SUSPICIOUS",
+      "requiresSourceVisualRepair": true
+    },
+    {
+      "qid": 22,
+      "disposition": "CONFIRMED_TRUE_ITEM_HOLD",
+      "proof": "The student conditions admit f1=x^4-2x^2-2 and f2=x^4-4x^2-2. For each, |f|=2 has five distinct real roots, yet f1(3)=61 and f2(3)=43. The stated conditions do not determine f(3).",
+      "storedAnswer": "HOLD",
+      "comparison": "SUSPICIOUS",
+      "requiresSourceFullPageRepairOrQuestionOnlyReplacement": true
+    }
+  ]
+}

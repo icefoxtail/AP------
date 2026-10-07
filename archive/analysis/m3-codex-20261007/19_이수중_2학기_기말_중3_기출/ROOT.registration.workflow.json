@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "ROOT_TARGET_REGISTRATION_WORKFLOW_EXECUTION_V1",
+  "status": "TARGET_REGISTERED_PENDING_PUBLICATION",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "commands": [
+    {
+      "label": "assignment",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-assignment.mjs",
+        "19_이수중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.assignment.raw.txt",
+        "sha256": "54a743200194c40136f014b39563b26da21a8a838344b888e8ce4e5501750635"
+      }
+    },
+    {
+      "label": "candidate",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-candidate-inputs.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.candidate.raw.txt",
+        "sha256": "ef3342845de91430077682787b5384c6c24c5302d13de0e4d8f02e3f1cbe03d5"
+      }
+    },
+    {
+      "label": "db-builder",
+      "command": [
+        "python",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/build_db.py"
+      ],
+      "exitCode": 1,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.db-builder.raw.txt",
+        "sha256": "0ab6104a8252cfab7d154b022c533de76509c6750d0c8f7d9a72722bf68e2be8"
+      }
+    },
+    {
+      "label": "index-builder",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-question-index.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.index-builder.raw.txt",
+        "sha256": "1a0825ccbb41baaa4ab6f83b2cbcfea8676ce12a9afc56abcef9ace3f9fb44d9"
+      }
+    },
+    {
+      "label": "catalog-builder",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-archive2-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.catalog-builder.raw.txt",
+        "sha256": "ccceb49d266636f8e99c5dbd2aaaba9cd183f7049432348c93e304278af71070"
+      }
+    },
+    {
+      "label": "candidate-check",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.candidate-check.raw.txt",
+        "sha256": "ccceb49d266636f8e99c5dbd2aaaba9cd183f7049432348c93e304278af71070"
+      }
+    },
+    {
+      "label": "prepare",
+      "command": [
+        "node",
+        "archive/tools/prepare-target-registration.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json",
+        "--candidate-root",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate",
+        "--output",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/package.json"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.prepare.raw.txt",
+        "sha256": "450ff3de718fe03be2d887eb40065ff0d6cf2b90d544061865bf1952f0dfc584"
+      }
+    },
+    {
+      "label": "dry-run",
+      "command": [
+        "node",
+        "archive/tools/register-target-exam.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json",
+        "--proposal",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/package.json",
+        "--catalog-candidate",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/data/archive2-catalog.json",
+        "--evidence-root",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.dry-run.raw.txt",
+        "sha256": "0141e81b5672bbcd983b1ff5e8d763227b110fe5a8fd82139e62c79843ea91eb"
+      }
+    },
+    {
+      "label": "apply",
+      "command": [
+        "node",
+        "archive/tools/register-target-exam.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json",
+        "--proposal",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/package.json",
+        "--catalog-candidate",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/candidate/archive/data/archive2-catalog.json",
+        "--evidence-root",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출",
+        "--apply"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.apply.raw.txt",
+        "sha256": "dcafa054df15ecd30c438d03f0046d18f6b5bd7704a8c20b956e52e29de2a0c3"
+      }
+    },
+    {
+      "label": "full-check",
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "exitCode": 1,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.full-check.raw.txt",
+        "sha256": "00f2e2e98d138bded09ededbc0a2ebbcaaae1106982b179d315a823dc7258c7f"
+      }
+    },
+    {
+      "label": "projection-diagnostic",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/catalog-projection-diagnostic.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/expected"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.projection-diagnostic.raw.txt",
+        "sha256": "fcda677f16d37c04a6d5d2b625dd3c01829d734adee8dd0f492c8f44dcf73a9e"
+      }
+    },
+    {
+      "label": "target-projection",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-catalog-projection-repair.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/expected/archive2-catalog.expected.json",
+        ".tmp/archive/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration/repair",
+        "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/registration.assignment.json"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.target-projection.raw.txt",
+        "sha256": "db2fce47d90929d2acb36a50c07820147662694a0be4cfeade2c61b54ae4d2d3"
+      }
+    },
+    {
+      "label": "technical-readback",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/verify-registration.mjs",
+        "19_이수중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.technical-readback.raw.txt",
+        "sha256": "b5de9884c850309e2c4ac342b44765a4e935b97f12d0e773e0ccf01130b39a65"
+      }
+    },
+    {
+      "label": "tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/target-registration-contract.test.mjs",
+        "tests/archive-question-identity-contract.test.mjs",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/ROOT.registration.tests.raw.txt",
+        "sha256": "53907ea2bbe44af22af08f419d4e44ba4a1452e4678b565ca42b37fbb7034106"
+      }
+    }
+  ],
+  "adapter": {
+    "path": ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-candidate-inputs.mjs",
+    "sha256": "3a21f44f05aa05ee3d5bb6a9a078f5c51922eccc853f336d414ebb3713451482"
+  },
+  "fullCatalogCheck": "SEE_ACTUAL_RAW_REPORT; PREEXISTING_NON_TARGET_DRIFT_PRESERVED",
+  "finishedAt": "2026-10-07T11:04:32.070Z"
+}

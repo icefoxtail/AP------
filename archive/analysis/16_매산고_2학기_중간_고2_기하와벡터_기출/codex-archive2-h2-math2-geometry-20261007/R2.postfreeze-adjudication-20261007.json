@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "R2_POSTFREEZE_ADJUDICATION_V1",
+  "examUid": "16_매산고_2학기_중간_고2_기하와벡터_기출",
+  "stage": "R2",
+  "createdUtc": "2026-10-07T10:20:14.1005593Z",
+  "originalFreezeAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\16_매산고_2학기_중간_고2_기하와벡터_기출\\codex-archive2-h2-math2-geometry-20261007\\R2.independent-freeze-20261007.json",
+  "originalFreezeSha256": "2b06f769cc353321dbfaeb7acdfe81eac1d73152f78f132e8b2800fb1020851c",
+  "originalFreezePreserved": true,
+  "adjudications": [
+    {
+      "qid": 11,
+      "originalFrozenAnswer": "8sqrt(2)",
+      "correctedIndependentAnswer": "8sqrt(5)",
+      "cause": "postfreeze arithmetic correction",
+      "reasoning": "From b²=n(a²+1)=na(a+2), cancel a² to obtain 1=2a, hence a=1/2 (not 1). Then b=√(5n)/2 and tangent slope a_n=na/b=√(n/5). The sum telescopes: √5(√81−√1)=8√5, matching choice ②."
+    },
+    {
+      "qid": 18,
+      "originalFrozenAnswer": "4(p^2+1)",
+      "correctedIndependentAnswer": "4(p+1/p)",
+      "cause": "postfreeze length-factor correction",
+      "reasoning": "The intersection y-values differ by 4√(1+p²). Since the line slope is p>0, Δx=Δy/p, so segment length is Δy√(1+p²)/p=4(p²+1)/p=4(p+1/p), matching the stored expression."
+    },
+    {
+      "qid": 16,
+      "originalFrozenAnswer": "t=1; distance=15/2+ln(4)",
+      "correctedArtifactAnswer": "t=1,; 15/2+2ln2",
+      "cause": "same-stage minimum answer-encoding repair",
+      "changedField": "answer",
+      "originalArtifactAnswer": "15/2+2ln2",
+      "solutionAlreadyContainedT1": true,
+      "repairReason": "The prompt requests both the time of minimum speed and the following 3-second distance. The answer field omitted t=1 although the solution correctly derived it; answer field now carries both requested outputs.",
+      "studentPayloadHashesUnchanged": true
+    }
+  ],
+  "postmutationArtifactSha256": "1d13121c117c992e1a0cd9921f53542ef324205a30a311784fd7846dd977c926",
+  "postmutationPostfreezeExtractionAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\16_매산고_2학기_중간_고2_기하와벡터_기출\\R2.postfreeze-disclosure.postmutation.json",
+  "postmutationPostfreezeExtractionSha256": "cc98a4642a98d69187816292a05513554e638d449e2978e50949538609788ae7"
+}

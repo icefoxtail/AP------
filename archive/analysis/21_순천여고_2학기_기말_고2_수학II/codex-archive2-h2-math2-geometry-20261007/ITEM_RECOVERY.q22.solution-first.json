@@ -1,0 +1,36 @@
+{
+  "replacedQid": 22,
+  "responseForm": "서술형 short answer",
+  "totalPoints": 7,
+  "pointSplit": "함수식 2점, 과정 5점",
+  "curriculum": "2015 개정 수학II / 도함수의 활용",
+  "nearConcept": "짝함수 사차함수와 도함수 극점 조건으로 계수 결정",
+  "question": "[서술형2] 최고차항의 계수가 $1$인 사차함수 $f(x)$의 그래프가 $y$축에 대칭이다.\n이 그래프가 $(0,4)$에서 극댓값을 갖고 $x=-2$, $x=2$에서 극솟값을 갖는다.\n$f(x)$를 구하고 $f(3)$의 값을 구하는 과정을 서술하시오. [총 7점] (함수식 2점, 과정 5점)",
+  "solutionFirstDerivation": [
+    "짝함수이고 monic quartic이므로 f(x)=x^4+ax^2+b.",
+    "(0,4)가 극댓점이므로 f(0)=b=4.",
+    "x=2가 극점이므로 f′(2)=32+4a=0, 따라서 a=-8.",
+    "f″(x)=12x^2-16이므로 f″(0)=-16<0, f″(±2)=32>0; 주어진 극댓값/극솟값 조건이 실제로 성립한다.",
+    "f(x)=x^4-8x^2+4, f(3)=81-72+4=13."
+  ],
+  "canonicalAnswer": "$f(x)=x^4-8x^2+4$, $f(3)=13$",
+  "uniqueness": "The conditions determine b=4 and a=-8 uniquely from f(0) and f′(2)=0; the second-derivative checks certify the named extrema.",
+  "difficultyRole": "4/5: identify even quartic coefficients, use derivative critical point, verify extremum type, evaluate requested function value.",
+  "solution": "짝함수이고 최고차항의 계수가 $1$인 사차함수이므로\n$f(x)=x^4+ax^2+b$로 둔다.\n\n극댓점이 $(0,4)$이므로\n$f(0)=b=4$이다.\n\n$x=2$가 극점이므로 $f′(2)=0$이다.\n$f′(x)=4x^3+2ax$에서\n$32+4a=0$, $a=-8$이다.\n\n실제로 $f″(x)=12x^2-16$이므로\n$f″(0)=-16<0$, $f″(\\pm2)=32>0$이다.\n따라서 $x=0$에서 극대, $x=\\pm2$에서 극소가 된다.\n\n$f(x)=x^4-8x^2+4$,\n$f(3)=81-72+4=13$이다.\n따라서 $f(x)=x^4-8x^2+4$이고 $f(3)=13$이다.",
+  "fidelityComparison": {
+    "originalRole": "7-point constructed response: determine an even monic quartic from derivative/root-structure reasoning, then evaluate f(3).",
+    "replacementRole": "7-point constructed response: determine an even monic quartic from named extrema, verify extrema by f″, then evaluate f(3).",
+    "preserved": [
+      "2015 Math II",
+      "even monic quartic structure",
+      "derivative/extrema method",
+      "short-answer response form",
+      "same 7-point allocation",
+      "function and f(3) requested",
+      "difficulty bucket 4"
+    ],
+    "stepBurden": "Five distinct board decisions: even polynomial form; b from (0,4); a from f′(2)=0; verify local max/min using f″; evaluate f(3).",
+    "noGuessing": "This is a visibly new replacement question, not an inferred condition added to the old q22."
+  },
+  "decisiveStep": "Use the even form and f(0) to fix b, then f′(2)=0 to fix a."
+}

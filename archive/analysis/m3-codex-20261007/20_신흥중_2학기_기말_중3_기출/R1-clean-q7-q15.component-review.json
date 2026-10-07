@@ -1,0 +1,55 @@
+{
+  "schema": "archive-r1-component-review-v1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1_CLEAN_COMPONENT",
+  "scopeQids": [7, 15],
+  "reviewMode": "POSTFREEZE_QID_LIMITED_STATIC",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "artifactRawSha256": "f5637f7327cdab49b96030aebac3f535a0eeae7ab7ced7b2f74130f21aacc199",
+  "artifactRawBufferBlobSha1": "1b8c96c456c655292d2db13aee2c9d00a7d906d3",
+  "artifactGitCleanFilterBlobSha1": "1b8c96c456c655292d2db13aee2c9d00a7d906d3",
+  "freezeRef": "R1-clean-q7-q15.independent-freeze.json",
+  "freezeSha256": "4d52fb0ff98261fcc5fe4c149d69fbf49efddda3343aef05ce4b52e471145b73",
+  "postfreezeDisclosureRef": "R1-clean-q7-q15.postfreeze-disclosure.json",
+  "postfreezeDisclosureSha256": "2e829d7787644890e093eb312115a590d7789af2582607c4cc7585dd08e5931a",
+  "itemRecoveryRef": "ITEM_RECOVERY.result.json",
+  "itemRecoverySha256": "578012f635bac3459ecb539069e8dd960bcd2008f4407c957435139f6a80cd32",
+  "sourceAuditRef": "ITEM_RECOVERY.source-audit.json",
+  "sourceAuditSha256": "87778020302b1bbc4c328449f28ed1c7bdffdf36d0cdde3b3cb14450fa014d6b",
+  "answerComparison": {
+    "qid7": {"independentChoice": 2, "storedAnswer": "②", "matches": true, "choices": 5, "uniqueCorrectChoice": true},
+    "qid15": {"independentChoice": 5, "storedAnswer": "⑤", "matches": true, "choices": 5, "uniqueCorrectChoice": true}
+  },
+  "items": [
+    {
+      "qid": 7,
+      "provenance": "Direct single-answer replacement; source audit confirms original item had two mathematically true choices. Current qid-limited payload has a unique chord comparison answer.",
+      "axes": {
+        "QUESTION_LAYOUT": {"disposition": "MINIMAL_REVISION", "evidence": "Condition (40° and 80° central angles) and the prompt '옳은 것은?' remain in one text run.", "minimumChange": "Place a semantic line break after '$\\angle COD=80^\\circ$일 때,' before '옳은 것은?' while preserving the condition and punctuation."},
+        "SOLUTION_LAYOUT": {"disposition": "PASS_STATIC", "evidence": "The central-angle values, corresponding arc values, chord-order rule, comparison, and answer are separated into readable steps; no critical transformation is omitted."},
+        "META": {"disposition": "PASS_STATIC", "evidence": "Current fields are category/originalCategory '원의 성질', course/unit '중3 수학/원의 성질', level '중', bucket 2, confidence medium, boundary NONE, tags 도형·원. These agree with the single-step circle chord comparison."},
+        "VISUAL_SVG": {"disposition": "SOURCE_IMAGE_REQUIRED_NO_SVG", "evidence": "The physically opened, hash-matched q07 source diagram carries both 40° and 80° central angles required to interpret the item. The original image is preserved and no solution-only SVG is mathematically necessary."}
+      },
+      "difficultyDisposition": "KEEP_MEDIUM_BUCKET2",
+      "visualRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q07.png",
+      "visualSha256": "a6ac5cf3f2db8eee447a356f7a81cf4b4f48c8d01140afbeabc845e75537c69e"
+    },
+    {
+      "qid": 15,
+      "provenance": "Audited one-word source repair 外접→내접; diagram and official answer key support the cyclic condition and ⑤=223°.",
+      "axes": {
+        "QUESTION_LAYOUT": {"disposition": "MINIMAL_REVISION", "evidence": "The cyclic-pentagon condition and 86° central-angle condition run directly into the requested sum in the same text run.", "minimumChange": "Place a semantic line break after '$\\angle COD=86^\\circ$일 때,' before '$\\angle B+\\angle E$의 크기를 구하면?' while preserving all text."},
+        "SOLUTION_LAYOUT": {"disposition": "MINIMAL_REVISION", "evidence": "The inscribed-angle facts, both intercepted-arc formulas, and the 360° plus extra-CD reasoning are explicit. The last substitution and evaluated result are chained on one line.", "minimumChange": "On separate lines show '=\\frac12(360^\\circ+86^\\circ)' and '=223^\\circ', followed by the answer sentence. This preserves every step and makes the final value distinct."},
+        "META": {"disposition": "PASS_STATIC", "evidence": "Current fields are category/originalCategory '원의 성질', course/unit '중3 수학/원의 성질', subUnit '원주각', level '중', bucket 3, confidence medium, boundary NONE, tags 도형·원; these fit the cyclic-pentagon inscribed-angle sum."},
+        "VISUAL_SVG": {"disposition": "SOURCE_IMAGE_REQUIRED_NO_SVG", "evidence": "The physically opened, hash-matched q15 figure establishes the A-B-C-D-E cyclic order and marked central angle. It matches the audited 내접 repair, so the source image is required and no solution-only SVG is necessary."}
+      },
+      "difficultyDisposition": "KEEP_MEDIUM_BUCKET3",
+      "visualRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q15.png",
+      "visualSha256": "311d0db0214fb104d0adc2ce8821caf23cb2f2cd175ad6004764465d684cc4b8"
+    }
+  ],
+  "componentDisposition": "REVISION_REQUIRED_Q7_QUESTION_LAYOUT; Q15_QUESTION_AND_SOLUTION_LAYOUT",
+  "validator": {"disposition": "NOT_RUN_COMPONENT_ONLY", "issues": ["No generic R1 V2 validator was run for this supplemental two-qid component review."]},
+  "nextRequiredAction": "Original R1 owner applies only the listed layout edits to q7/q15, running Golden/Negative preflight before editing q15 solution; then rebind/review affected qids and direct dependencies. ROOT arranges targeted R3 review. No JS mutation or R2/R3 work in this component."
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_RECOVERY_FRESH_FREEZE_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "21_순천여고_2학기_기말_고2_수학II",
+  "stage": "R2",
+  "reviewKind": "FRESH_IMPACTED_SCOPE_ONLY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "allowedQids": [13, 22],
+  "freezeBeforeAnswerSolutionComparison": true,
+  "studentBundle": {
+    "path": ".tmp/archive/archive2-h2-math2-geometry-20261007/21_순천여고_2학기_기말_고2_수학II/R2.RECOVERY_FRESH.student-bundle.json",
+    "sha256": "1533dafb7d0baa95fe9c68cc05e88ded81e0ad06caae3cc2d6ee56e5014715d5",
+    "sourceRawSha256AtBundleCreation": "4ae4de7366741a552c74b2e07b66d7c80d45695c1ffe647d1334610a1d56dad3",
+    "currentSourceSha256AfterAuthorizedSolutionOnlyAdvance": "90630863cfc3e5709da769439f2f7331834aaacf592d7c29a85ae683bfa3cde4",
+    "currentStudentParity": "ROOT_VERIFIED_EXACT_QUESTIONS_ARRAY_AND_PAYLOAD_HASHES_AND_ASSET_BINDINGS"
+  },
+  "studentAssets": [
+    {
+      "ref": "assets/images/21_순천여고_2학기_기말_고2_수학II/q13.png",
+      "sha256": "0a1ecd4a023246942f6497d73dc1a9d8f6bbba0d63f1008451cdc9700612675b",
+      "openedAndReviewed": true,
+      "observations": "Graph of f'(x): an upward-opening y-axis-symmetric parabola with vertex (0,-1), meeting the horizontal ray y=2 at x=1; the derivative is constant at 2 to the right of x=1."
+    }
+  ],
+  "independentAnswers": [
+    {
+      "qid": 13,
+      "studentFacts": "f is continuous; its derivative graph is the symmetric quadratic segment and line shown; f(2)=3; ask f(-1)f(3). Choices -3,-2,0,2,5.",
+      "independentDerivation": [
+        "The parabola has vertex (0,-1) and passes through (1,2), so its equation on x<=1 is f'(x)=3x^2-1; for x>=1 the graph gives f'(x)=2.",
+        "Integral from -1 to 1 of (3x^2-1) dx is 0, and integral from 1 to 2 of 2 dx is 2. Thus f(2)-f(-1)=2, so f(-1)=1.",
+        "f(3)-f(2)=integral from 2 to 3 of 2 dx=2, so f(3)=5.",
+        "Therefore f(-1)f(3)=5."
+      ],
+      "answer": "5",
+      "choiceIndex1Based": 5,
+      "status": "FROZEN"
+    },
+    {
+      "qid": 22,
+      "studentFacts": "A monic quartic f is even; it has a local maximum value 4 at x=0 and local minima at x=-2 and x=2; find f(x) and f(3).",
+      "independentDerivation": [
+        "Even monic quartic has form f(x)=x^4+bx^2+c.",
+        "f(0)=4 gives c=4. Also f'(x)=4x^3+2bx=2x(2x^2+b); critical points at ±2 require b=-8.",
+        "Thus f(x)=x^4-8x^2+4. Then f(3)=81-72+4=13.",
+        "Check: f''(x)=12x^2-16, so f''(0)=-16<0 and f''(±2)=32>0, matching the stated extrema."
+      ],
+      "answer": {
+        "f(x)": "x^4-8x^2+4",
+        "f(3)": 13
+      },
+      "status": "FROZEN"
+    }
+  ],
+  "freezeEvidence": {
+    "sourceReadPreFreeze": false,
+    "upstreamAnswersOrSolutionsReadPreFreeze": false,
+    "requiredVisualsReadPreFreeze": true,
+    "notes": "Freeze was made from the exact supplied student bundle and opened q13 image. ROOT separately confirmed current source student-payload parity after a solution-only advance."
+  }
+}

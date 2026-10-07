@@ -15717,6 +15717,192 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+      "school": "신흥중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+      "school": "이수중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/19_이수중_2학기_기말_중3_기출.js",
+      "school": "이수중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
     }
   ]
 };

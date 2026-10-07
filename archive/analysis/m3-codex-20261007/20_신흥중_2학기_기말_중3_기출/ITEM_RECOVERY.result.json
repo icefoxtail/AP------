@@ -1,0 +1,82 @@
+{
+  "schema": "JS_ARCHIVE_ITEM_RECOVERY_RESULT_V1",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "stage": "ITEM_RECOVERY",
+  "decisionAuthority": "ROOT_DELEGATED_CURRENT_EXECUTION_25",
+  "method": "SAME_SESSION_CODEX_DIRECT_AUTHORING_NO_GENERATION_PIPELINE",
+  "sourceAuditRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.source-audit.json",
+  "calibrationPreflightRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.preflight.json",
+  "calibrationGateReport": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.calibration-report.json",
+  "sourceInputs": {
+    "questionPdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+    "answerPdfSha256": "aef10d001d68e8c0c42624bf04e92f9c6b08dcd7be26e9886088f8d70bc03578",
+    "answerHwpSha256": "57d42581cf66e55228d917ad74cc86680ae826580b1ad8aaa9f6759587994b0e"
+  },
+  "rows": [
+    {
+      "qid": 7,
+      "result": "QUESTION_REPLACEMENT",
+      "reason": "True single-answer source conflict: old ③ and ④ both mathematically true.",
+      "method": "CODEX_DIRECT_AUTHORING",
+      "replacementAnswer": "②",
+      "choiceCount": 5,
+      "visualRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q07.png",
+      "freshReviewRequired": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "FALSE_HOLD_NO_REPAIR_NEEDED",
+      "reason": "Full-page diagram shows a third common tangent BC, and current R1/R2 freezes both independently identify ④ when reading that geometry.",
+      "answer": "④",
+      "perimeter": "30 cm",
+      "questionBodyChanged": false,
+      "visualChanged": false,
+      "existingR2FreezeReusable": true,
+      "solutionChanged": true,
+      "targetedReviewRequired": [
+        "R1 solution-only"
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "AUDITED_SOURCE_REPAIR",
+      "reason": "Minimal source correction 외접→내접 aligns stem with cyclic diagram and official key ⑤.",
+      "changedLocus": "content: one Korean relation word",
+      "answer": "⑤",
+      "visualRef": "assets/images/20_신흥중_2학기_기말_중3_기출/q15.png",
+      "freshReviewRequired": [
+        "R1",
+        "R2"
+      ]
+    }
+  ],
+  "nonTargetInvariantProofRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.invariance-after.json",
+  "artifactSha": "1b8c96c456c655292d2db13aee2c9d00a7d906d3",
+  "rawSha256": "f5637f7327cdab49b96030aebac3f535a0eeae7ab7ced7b2f74130f21aacc199",
+  "result": "ITEM_RECOVERY_COMPLETE",
+  "finalArtifact": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/20_신흥중_2학기_기말_중3_기출.js",
+    "rawSha256": "f5637f7327cdab49b96030aebac3f535a0eeae7ab7ced7b2f74130f21aacc199",
+    "gitBlobSha1": "1b8c96c456c655292d2db13aee2c9d00a7d906d3"
+  },
+  "genericValidator": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\CREATE.validator-report.json",
+    "sha256": "d000e5ab1ff58b6447d0c6de008f0565c90de27b14ce88d31c42e5945827b571",
+    "disposition": "PASS",
+    "issues": [],
+    "denominator": 24,
+    "rowCount": 24
+  },
+  "nonTargetInvariant": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\ITEM_RECOVERY.invariance-after.json",
+    "nonTargetQidsUnchanged": 21,
+    "questionPayloadMismatches": 0,
+    "assignedAssetsUnchanged": 19,
+    "assetMismatches": 0
+  },
+  "nextRequiredAction": "Fresh clean R1/R2 for q7 replacement and q15 corrected stem; targeted q9 solution-only R1 adjudication. Current q9 independent answer freezes remain reusable because student body and visual are unchanged."
+}

@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "artifactSha": "59802cd211804312707eaf2bff638608d631e2ee",
+  "artifactRawSha256": "084f9dcd8bddc1cbaea715d34901cac6dae2ba04014de84b9d0445a91dcc78db",
+  "evidenceRef": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R3.evidence.json",
+  "workingJsAbsolute": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/20_신흥중_2학기_기말_중3_기출.js",
+  "assetRootAbsolute": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출",
+  "reviewScope": "FULL_STRUCTURAL_TARGETED_RELEASE",
+  "targetedScope": {
+    "openFindingQids": [
+      9
+    ],
+    "changedQids": [
+      7,
+      14,
+      15
+    ],
+    "directDependencyQids": []
+  },
+  "rows": [
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "disposition": "Direct single-answer replacement; current source and choices match clean qid freeze; answer ② independently confirmed by R1/R2 MATCH; no remaining item HOLD."
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "disposition": "Valid original ④ freeze retained; same-session source-geometry adjudication resolved false HOLD; third tangent BC supports perimeter 30; superseded HOLD interpretation preserved."
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "disposition": "Original cropped E asset restored and hash-bound; clean R1 and full R2 MATCH retained; referenced image integrity passes."
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "disposition": "Audited one-word source correction 외접→내접 retained with provenance; fresh clean R1/R2 freeze agrees on ⑤ (223°); solution flow and asset reference remain bound."
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "59802cd211804312707eaf2bff638608d631e2ee",
+    "rows": [
+      {
+        "qid": 10,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M3 원에 외접한 직교 사각형의 의미 분류는 명확하나 현행 ACTIVE PT/TPL projection에서 exact M3 path를 확인하지 못해 semantic classification은 유지하고 projection debt로 기록함."
+      },
+      {
+        "qid": 16,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "대푯값 의미 분류는 M3-2 canonical에서 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 17,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "평균에서 편차 평균을 구하는 M3 의미 분류는 유지하되 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 18,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "중앙값/최빈값 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 null projection debt를 기록함."
+      },
+      {
+        "qid": 19,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "표의 수준별 빈도와 평균을 가중해 전체 평균을 구하는 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+      },
+      {
+        "qid": 20,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "평균·분산으로 곱의 평균을 유도하는 M3 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection이 없어 debt를 기록함."
+      },
+      {
+        "qid": 24,
+        "metaDisposition": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "두 집단 평균·분산을 결합한 M3 분산 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함."
+      }
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "upstreamBindings": {
+    "R1": {
+      "validatorReport": {
+        "path": "archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R1.validator-report.recovery-closeout.json",
+        "sha256": "e52df46b68ebb7ff1685754e9aa88856584f2d598de3e413c8674442548fa5c2"
+      }
+    },
+    "R2": {
+      "validatorReport": {
+        "path": "archive/analysis/m3-codex-20261007/20_신흥중_2학기_기말_중3_기출/R2.validator-report.recovery-closeout.json",
+        "sha256": "7905f62540455687e33da914ea95dae8739e5a9960bfbaefbfac3f2a02e9b2a3"
+      }
+    }
+  }
+}

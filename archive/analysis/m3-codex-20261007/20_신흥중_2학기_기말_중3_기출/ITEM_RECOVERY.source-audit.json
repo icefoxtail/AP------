@@ -1,0 +1,76 @@
+{
+  "schema": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_AUDIT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "scopeQids": [
+    7,
+    9,
+    15
+  ],
+  "sourceInputs": {
+    "questionPdf": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_수학_2기말.pdf",
+      "sha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+      "pageCount": 4,
+      "allPagesVisuallyInspected": true
+    },
+    "answerPdf": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_정답_2기말.pdf",
+      "sha256": "aef10d001d68e8c0c42624bf04e92f9c6b08dcd7be26e9886088f8d70bc03578",
+      "pageCount": 2,
+      "allPagesVisuallyInspected": true,
+      "mathKey": {
+        "7": "④",
+        "9": "④",
+        "15": "⑤"
+      }
+    },
+    "answerHwp": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2020_신흥중3_수학_2기말_정답.hwp",
+      "sha256": "57d42581cf66e55228d917ad74cc86680ae826580b1ad8aaa9f6759587994b0e",
+      "bodyStream": "BodyText/Section0",
+      "paragraphRecords": 55,
+      "allBodyContentExtracted": true,
+      "containsAdditionalGeometryConditions": false
+    }
+  },
+  "rows": [
+    {
+      "qid": 7,
+      "sourceDisposition": "TRUE_HOLD_SOURCE_MULTIPLE_CORRECT",
+      "page": 1,
+      "fullPageLookupResult": "The single-answer stem is exact; the diagram labels central angles 40° and 80°. Both option ③ (2 chord AB > chord CD) and option ④ (2 arc AB = arc CD) are true. Official answer ④ alone does not repair answer cardinality.",
+      "repairAttempted": "No single source-text correction makes the existing one-answer statement mathematically unique while preserving its item; replace only q7 with a direct-authored same-domain, single-answer chord comparison.",
+      "alternateEvidenceChecked": [
+        "question PDF p1 + q07 crop",
+        "answer PDF p1 key",
+        "full HWP answer body"
+      ],
+      "whyTruthStillNonDeterministic": "Two existing choices remain true under the stated 40°/80° central angles."
+    },
+    {
+      "qid": 9,
+      "sourceDisposition": "FALSE_HOLD_NO_REPAIR_NEEDED",
+      "page": 2,
+      "fullPageLookupResult": "The source figure shows A-B-P collinear along the stated tangent AP, A-C-Q collinear along AQ, and segment BC touching the circle at one point as a third tangent. This is an A-excircle configuration. The official answer PDF and HWP both give ④.",
+      "decisiveDerivation": "AP^2=OA^2-OP^2=17^2-8^2=225, so AP=AQ=15. Let T be the tangency point on BC. Tangent-segment equalities give BP=BT and CQ=CT; AP=AB+BP, AQ=AC+CQ, BC=BT+TC. Thus AB+BC+CA=AP+AQ=30 cm.",
+      "repairAttempted": "None to stem/choices/image; solve from source-encoded third tangent.",
+      "whyTruthUnique": "The visible three tangent lines make the perimeter cancellation identity exact; no extra condition is introduced."
+    },
+    {
+      "qid": 15,
+      "sourceDisposition": "TRUE_HOLD_REPAIRABLE_AUDITED_SOURCE_REPAIR",
+      "page": 3,
+      "fullPageLookupResult": "The printed word 外接 conflicts with the diagram, which places A,B,C,D,E on the circle; the answer PDF/HWP key is ⑤ (223°), which matches the cyclic interpretation.",
+      "repairAttempted": "Minimum one-word source correction: 外접→내접 (외접→내접), preserving all other content/choices and using the source diagram plus answer key as proof.",
+      "repairedTruth": "For cyclic pentagon arcs x=AB, y=BC, z=DE, w=EA, arc CD=86; B+E=1/2[(w+z+86)+(86+y+x)]=1/2[(360-86)+172]=223°.",
+      "whyCorrectionIsSourceGrounded": "The figure and both answer keys independently agree on the single-word correction; no new condition is added."
+    }
+  ],
+  "upstreamComparison": {
+    "r1HoldsReopened": true,
+    "r2HoldsReopened": true,
+    "notInheritedAsTruth": true,
+    "nonTargetScope": "unchanged qids remain frozen/untouched; later R1/R2 only for q7,q15 changed student body; q9 solution-only adjudication is q9 scope."
+  }
+}

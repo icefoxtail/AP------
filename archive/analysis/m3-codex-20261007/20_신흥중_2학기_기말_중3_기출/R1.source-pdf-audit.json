@@ -1,0 +1,53 @@
+{
+  "schema": "JS_ARCHIVE_R1_SOURCE_PDF_AUDIT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "sourcePdfAbsolute": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\middle\\m3\\20_신흥중_2학기_기말_중3_기출\\source\\2020_신흥중3_수학_2기말.pdf",
+  "sourcePdfSha256": "7e74f19b0c17e61192decf24739536a7eeb371fec3d3a4c79783164cf4c7fbdf",
+  "pageCount": 4,
+  "renderedPages": [
+    {
+      "page": 1,
+      "renderedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review\\source-page-1.png",
+      "sha256": "d502938e0b0af65af02492a9da53acd07d4915b72200651c0b71241c26a55813"
+    },
+    {
+      "page": 2,
+      "renderedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review\\source-page-2.png",
+      "sha256": "56d0e990b9257856fbf7f1fb5f044cfe64c69e62811ccbdaeb2693df641c0be1"
+    },
+    {
+      "page": 3,
+      "renderedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review\\source-page-3.png",
+      "sha256": "af499f4e6d13a56e3cb2342ea110a60db6577cbb13a06e1ca90a9f8fd41cbaf4"
+    },
+    {
+      "page": 4,
+      "renderedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\source-review\\source-page-4.png",
+      "sha256": "48877cce43a803c43164357682cab702b049592e7c2afbe89927b089562d0472"
+    }
+  ],
+  "allPagesVisuallyInspected": true,
+  "findings": [
+    {
+      "qid": 9,
+      "page": 2,
+      "finding": "The source gives AP and AQ as tangents, OP=8, OA=17 and depicts ABC, but states no relation making BC tangent or fixing B,C. The rendered source does not establish a unique perimeter beyond the tangent length AP=AQ=15; carry item HOLD.",
+      "disposition": "KEEP_TRUE_ITEM_HOLD"
+    },
+    {
+      "qid": 14,
+      "page": 3,
+      "finding": "The source page labels E on the extension of tangent line PB beyond B, so the full page defines ∠CBE. The assigned q14 crop omits the E label and student text does not define E; the complete prefreeze student bundle was visually incomplete for this angle. Do not retroactively certify the excluded q14 freeze. A crop/body repair that restores E requires fresh q14-only R1.",
+      "sourceGroundedMath": "Tangents from P: minor arc AB=180−44=136°. The 84° tangent-chord angle at A intercepts minor arc AC=168°, so the other arc A-B-C is 192° and arc BC=56°. Then tangent-chord ∠CBE=56°/2=28° (choice ④), only as source-PDF diagnosis, not a clean student-input freeze.",
+      "disposition": "FRESH_QID_ONLY_R1_AFTER_INPUT_REPAIR"
+    },
+    {
+      "qid": 15,
+      "page": 3,
+      "finding": "The statement says pentagon ABCDE circumscribes circle O. The figure/radii do not establish a unique B+E from only central angle COD=86°; tangential angle relations determine C+D but leave A unconstrained. Carry item HOLD.",
+      "disposition": "KEEP_TRUE_ITEM_HOLD"
+    }
+  ]
+}

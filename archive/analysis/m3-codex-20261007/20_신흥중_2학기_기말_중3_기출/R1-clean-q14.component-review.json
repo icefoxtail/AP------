@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_COMPONENT_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "20_신흥중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 14,
+  "artifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\20_신흥중_2학기_기말_중3_기출.js",
+    "rawSha256": "8222ad589bb19fc4c8615862eb03a935a2fdabbc8ee5946c08591435d683a31e",
+    "rawBufferBlobSha1": "67e4639191ef0b109db5b2ab7eac86a276230ab5",
+    "gitCleanFilterBlobSha1": "67e4639191ef0b109db5b2ab7eac86a276230ab5"
+  },
+  "inputs": {
+    "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\assets\\images\\20_신흥중_2학기_기말_중3_기출\\q14.png",
+    "studentBundleSha256": "10631bbca8ce448e6d95217d6ba481bcfa7d1e93b04968ec20f451e6ef8a9922",
+    "studentPayloadSha256": "f04afe81852bc8ef1329919dec5a75ea18b32b0f8225471d0cfc93200ff766f6",
+    "assetSha256": "b793cb19a2ad0d23c14fa7eb99bd6a904104c3b4da226365d84a3ebe68889d48"
+  },
+  "disclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1-clean-q14.postfreeze-disclosure.json",
+    "sha256": "221a89a8cb032f003a3742fc38446ad05c1b02b6c1776f67f905dc43ca6a8fd3"
+  },
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_신흥중_2학기_기말_중3_기출\\R1-clean-q14.independent-freeze.json",
+    "sha256": "b298ccec65b72b072df2accb0d2b4b1a42de7710d28a381a9669a526f1709edd"
+  },
+  "mathReview": {
+    "storedAnswer": "④",
+    "comparison": "MATCH",
+    "solutionMath": "PASS",
+    "independentAnswer": "④",
+    "status": "PASS",
+    "rationale": "접선삼각형 PAB에서 ∠PAB=∠PBA=68°; ∠CAD=84°는 접선-현 각과 일치; 최종 접선-현 ∠CBE=28°로 독립 도출됨."
+  },
+  "sourceReview": {
+    "sourcePdfReconciliation": "NOT_REVIEWED_IN_THIS_COMPONENT",
+    "imageReferenceExact": "PASS",
+    "choicesExact": "PASS",
+    "status": "CURRENT_STUDENT_PAYLOAD_PARITY_PASS",
+    "questionIdentity": "source raw/artifact hash 및 studentPayloadSha256 결속 확인",
+    "contentExact": "PASS"
+  },
+  "questionLayout": {
+    "reason": "질문 조건 경계: “...84°일 때,”와 “∠CBE의 크기를 구하면?”이 같은 문단에 이어짐. 원문 text atom은 정확히 보존됨.",
+    "beforeDisposition": "LAYOUT_POLISH",
+    "renderStatus": "NOT_RUN_ROOT_WAIVER",
+    "proposedMinimalLayoutOnlyDelta": "“일 때,” 뒤, ∠CBE 앞에 문단 개행을 둔다. 완결 수식 밖의 개행만 추가하고 문구·수식·보기는 그대로 유지한다.",
+    "changedFields": [],
+    "choicesExactParityStatus": "PASS",
+    "issueCodes": [
+      "QUESTION_ASK_BURIED"
+    ],
+    "sourceTextExactParityStatus": "PASS",
+    "finalDisposition": "LAYOUT_POLISH",
+    "knownRepairPending": true
+  },
+  "solutionLayout": {
+    "goldenNegativePreflight": "NOT_REQUIRED_NO_SOLUTION_EDIT",
+    "smallBoardContinuityStatus": "PASS",
+    "solutionCorrection": "NONE",
+    "reason": "풀이의 중심각·호·접선-현 계산과 결론이 별도 행으로 추적되며 핵심 수치 대입과 최종값이 생략되지 않음.",
+    "disposition": "KEEP",
+    "status": "PASS"
+  },
+  "metaReview": {
+    "status": "PASS",
+    "classificationRationale": "중3 원의 성질 범위에서 접선-현 각과 중심각/호를 연계한다. 현재 unit/subunit와 template/type가 풀이·발문에 부합하며 difficulty fields가 모두 물리적으로 존재한다.",
+    "actualCurrentFields": {
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "standardUnit": "원의 성질",
+      "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
+      "questionType": "객관식",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "standardUnitKey": "M3-06",
+      "difficultyBoundaryFlag": "NONE",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "standardCourse": "중3 수학",
+      "difficultyConfidence": "medium",
+      "difficultyBucket": 3,
+      "level": "상",
+      "subUnit": "원주각",
+      "category": "원의 성질"
+    },
+    "missingOrDrift": "NONE"
+  },
+  "visualSvgReview": {
+    "actualRender": "NOT_RUN_ROOT_WAIVER",
+    "necessity": "PROBLEM_IMAGE_REQUIRED",
+    "solutionSvg": "NOT_REQUIRED",
+    "assetVisualIssue": "NONE",
+    "assetTopology": "원 O, 접점 A/B, 접선 PA/PB, AD, chord AC/AB, tangent extension BE, P/C/D/E/O labels와 44°/84° 표기가 발문과 일치하며 보임",
+    "status": "PASS",
+    "assetOpened": true
+  },
+  "overallComponentDisposition": "R1_QID14_COMPONENT_REVIEWED_WITH_QUESTION_LAYOUT_POLISH_PENDING",
+  "requiredNextAction": "원 R1 owner가 q14 content에서 질문 경계에 최소 문단 개행을 적용하고 changed qid 14만 layout/exact parity 재결속한 뒤 full evidence를 unchanged qids와 통합해 generic V2 R1 validator를 1회 실행한다.",
+  "reviewedUtc": "2026-10-07T08:02:04Z"
+}

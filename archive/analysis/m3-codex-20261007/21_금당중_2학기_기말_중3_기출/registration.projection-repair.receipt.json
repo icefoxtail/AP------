@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_PROJECTION_REPAIR_V1",
+  "status": "TARGET_ONLY_PROJECTION_REPAIRED_NON_TARGET_DRIFT_REMAINS",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_금당중_2학기_기말_중3_기출",
+  "stage": "MAIN_DONE_REGISTRATION_CLOSURE",
+  "head": "8bc8105a96102030e08d7a68fd3e8826080e6e7b",
+  "originMainObserved": "bbbb66dcd32d6cd5586761d830d46383d6ea5a00",
+  "productionSource": {
+    "path": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+    "rawSha256": "3d9a16009144edbe9502b4892f4a85aa000c6d8b3f198cd80150161edfe30206",
+    "blobSha1": "0a5e2156900b1082d45ac3cbd844c63f36ef6bbe",
+    "changed": false
+  },
+  "repairLocus": [
+    {
+      "description": "Only 25 target metadataAssignmentEvidence.evidenceDigest values corrected to existing metadata sourceDigests.completeClassification; target statuses and automatic=false remain unchanged; indexVersion recomputed.",
+      "path": "archive/data/archive2-catalog.json",
+      "actualAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\data\\archive2-catalog.json",
+      "sha256": "59ef88eaaa9128ccfc8ca821991443be80ed997a3a79589954dd949310b032f5"
+    },
+    {
+      "description": "Catalog SHA and projectionVersion re-bound; remaining input file bindings preserved.",
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "actualAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\data\\archive2-canonical-input-manifest.json",
+      "sha256": "ad527b2ec2ac207771bf8e26b0126e1ce6e8326083c3663dce58eecb072384ee"
+    }
+  ],
+  "target": {
+    "qidCount": 25,
+    "canonicalExpectedDiffQids": [],
+    "changedField": "metadataAssignmentEvidence.evidenceDigest",
+    "beforeValue": "",
+    "afterValue": "24dc74f6c4a8a4ef588941ddcec9c139bb601d65a642c259eab4a87fe5cb7b2b",
+    "automaticCount": 0,
+    "reviewStatusesChanged": false,
+    "semanticFieldsPromoted": false
+  },
+  "preservation": {
+    "baselineHeadCatalogSha256": "f8234cf5cfd23e79181649c55a5702ff521e54f34fd5f2c901b6643d5f69c7ab",
+    "baselineNonTargetRows": 11763,
+    "missingNonTargetRows": 0,
+    "packedNonTargetRowDiffs": 0,
+    "dictionaryIdsPreserved": true,
+    "columnSchemaPreserved": true,
+    "nonCatalogManifestBindingsPreserved": true,
+    "identityRuntimeTuplesUnchanged": true
+  },
+  "validators": [
+    {
+      "name": "target-only full-canonical row readback",
+      "evidencePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.target-catalog-readback.json",
+      "disposition": "PASS",
+      "sha256": "856058cf6a98193b3ce0656eba22d37e51ecc214fd648be200fb833242cb1b80"
+    },
+    {
+      "name": "raw registry row and manifest invariance",
+      "evidencePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.target-catalog-raw-invariance.json",
+      "disposition": "PASS",
+      "sha256": "6a923b659ab729f390e8b28684be9df0a61c04495dafa3875531e41e0f8fea12"
+    },
+    {
+      "name": "target identity/registration tests",
+      "evidencePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.target-tests.final.raw.txt",
+      "disposition": "PASS_6_TESTS",
+      "sha256": "bc13f73bc7ddf82633e95e3b8e33df511e263b64d0626b17c9915058350e4e61"
+    },
+    {
+      "name": "official current full catalog check",
+      "evidencePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.catalog-check.after-target-repair.raw.txt",
+      "disposition": "FAIL_PREEXISTING_NON_TARGET_PROJECTION_DRIFT",
+      "sha256": "00f2e2e98d138bded09ededbc0a2ebbcaaae1106982b179d315a823dc7258c7f"
+    },
+    {
+      "name": "official catalog check with pre-registration HEAD registry inputs",
+      "evidencePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.catalog-check.baseline-replay.raw.txt",
+      "disposition": "FAIL_SAME_BASELINE_DRIFT",
+      "sha256": "5cbdcb09f4e317bf061cb724a522d7c4ae538a844251cd2fc0e0585c66f92646"
+    }
+  ],
+  "residual": {
+    "fullCanonicalCatalogNonTargetDiffRows": 1134,
+    "preRegistrationHeadNonTargetDiffRows": 1134,
+    "scope": "Existing current-source projection drift outside target E registration",
+    "disposition": "PRESERVED_NO_GLOBAL_REGENERATION_OR_NON_TARGET_ROW_EDIT"
+  },
+  "genericAdapter": {
+    "candidateInputsScriptAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\build-target-candidate-inputs.mjs",
+    "candidateInputsScriptSha256": "23ebba7c6e215771d631b63b49ac2ecf0a19f7e3e680ece78404b4bdff5e91d5",
+    "targetProjectionRepairScriptAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\build-target-catalog-projection-repair.mjs",
+    "targetProjectionRepairScriptSha256": "4a312c8f1540fbb864bbfd99461a63ad0a4d484ca411555bc37e2aaa03e44141",
+    "usesAssignmentForTargetPathAndQidDenominator": true,
+    "candidateMetadataCarriesCurrentCompleteClassificationDigest": true
+  },
+  "nextRequiredAction": "ROOT records the full canonical catalog check as a pre-existing non-target projection failure, keeps this target-only receipt and invariance proof bound to HEAD 8bc8105a96102030e08d7a68fd3e8826080e6e7b, then decides MAIN_DONE closeout/publication under the existing delegated authority. Do not rerun full projections or alter non-target rows for this E closure.",
+  "sharedHelperOrDocumentationChanged": false,
+  "sourceOrAssetBytesChanged": false,
+  "createdAt": "2026-10-07T10:49:54.2963994Z"
+}

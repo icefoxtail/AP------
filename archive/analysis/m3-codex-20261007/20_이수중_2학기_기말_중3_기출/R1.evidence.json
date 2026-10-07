@@ -1,0 +1,2469 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_이수중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "artifactSha": "f90e8f9d3cc9f6c178af832a0c3bccd9266e517e",
+  "artifactRawSha256": "1c51a8a4dcc8933d08ff6d62572a17442eafae8e640404e23111208bd9cafcdb",
+  "studentBundleSha256": "af86cef24b683a91a03e97f873b70469acb1009a4796351eb4ada867f634a2f4",
+  "independentFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1.independent-answer-freeze.json",
+  "independentFreezeSha256": "2cc451de0674ccb17f6be0dba1285aff59476543a34ef43754d5dd57c6cdd4f9",
+  "freezeAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1.freeze-adjudication.json",
+  "freezeAdjudicationSha256": "60b574030a273169a9a0cb09d21cde2bec36b5de92c25505fd47fe31ba482b1b",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "schema": "JS_ARCHIVE_R1_GOLDEN_PREFLIGHT_V1",
+    "runId": "m3-codex-20261007",
+    "examUid": "20_이수중_2학기_기말_중3_기출",
+    "reviewedAtUtc": "2026-10-07T08:30:04.7608687Z",
+    "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+    "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+    "goldenCalibrationSet": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "samples": [
+      {
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "observation": "Completed-square flow keeps relocation, independent x/y squares, radius readout, and final option as separate board steps.",
+            "qid": 3,
+            "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE"
+            ]
+          },
+          {
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "observation": "Two-stage circle transformation tracks center coordinates and preserves radius; rendered diagram agrees with the path and final circle."
+          }
+        ],
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+      },
+      {
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "observation": "Rearranges each line separately, names both slopes, then uses the perpendicular-product equation; rendered line geometry matches slopes and intersection."
+          },
+          {
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "observation": "Completes squares and compares center/radius; rendered circle center (-1,3), radius 2 and endpoint agree with the equation."
+          }
+        ],
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+      }
+    ],
+    "negativeSample": {
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the approved regression README and physically rendered q1-solution.bad.svg (SHA256 93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf). Displayed slope/intercept labels are not accepted as proof: rendered line misses the labeled point, so actual geometry must be checked.",
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+    }
+  },
+  "sourcePdf": {
+    "sha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+    "q14PageReview": "page-3-high-resolution",
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\middle\\m3\\20_이수중_2학기_기말_중3_기출\\source\\2020_이수중3_수학_2기말.pdf",
+    "fullPageCoverage": "4/4_RENDERED_READ",
+    "sourcePdfRenderingEvidence": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\source-review"
+  },
+  "sourceStudentParity": "PASS_22_OF_22_CONTENT_CHOICES_IMAGE",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "renderDecisionAuthority": "ROOT_DELEGATED",
+  "completionBasis": "ROOT_DIRECTED_STATIC_COMPLETE",
+  "itemHoldQids": [],
+  "overallDisposition": "R1_QUALITY_SEALED",
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "⑤",
+      "independentReason": "OA^2=OH^2+AH^2이므로 AH=4; 현의 수직이등분선 OH가 AB를 이등분하므로 AB=8 cm.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "disposition": "ENCODING_CORRECTION: value 8 cm maps to choice ⑤",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3e7c1d213cbf8a57bd81ab5bb0fe154b21fd01ccc23616f1907bdcc3f246c6d6",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "8a65e3ab20068e8631e720d0e8c8408c06e47e997a73fab1725092c893c507d7",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q01.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q01.png",
+      "problemImageSha256": "8a65e3ab20068e8631e720d0e8c8408c06e47e997a73fab1725092c893c507d7"
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "①",
+      "independentReason": "OM=ON이면 같은 원에서 현 AB와 CD의 중심거리 같아 AB=CD; AM=BM, CN=DN이고 AM=CN. 보기 ①의 AM=OM은 일반적으로 성립하지 않는다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e36dc7b9e031c41685cfba98d1a4b0953f75f87702792bb1e571e1dd5c883dae",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "2d032fc408c2a5c4fc8bce8cd0877252c2949694cbb6cfb270c2617121330b1c",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q02.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q02.png",
+      "problemImageSha256": "2d032fc408c2a5c4fc8bce8cd0877252c2949694cbb6cfb270c2617121330b1c"
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "⑤",
+      "independentReason": "OM=ON이므로 현 AB=AC. 밑각 B=C=(180-50)/2=65도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4d61c3ee0795c27c07ea4b7298b6b86b68890fe673cf43a4d84cb8c43b6e5356",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "266bd0d9f8e54a63a1e1c3073bb5d2c2fa405da60c629dc7ec86dcbf2a80291a",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q03.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q03.png",
+      "problemImageSha256": "266bd0d9f8e54a63a1e1c3073bb5d2c2fa405da60c629dc7ec86dcbf2a80291a"
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "②",
+      "independentReason": "OT는 반지름이고 PT는 접선이므로 OT⊥PT; PT=sqrt(PO^2-OT^2)=sqrt(100-25)=5sqrt3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "388dac8008ef62edff331277988af54db0af1b315f9e3b8aa0b1dffb263ca363",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "fd996617266f8d86b5a9f3e9c53ad4367d60e9c3cd8c0338d35b4333e61e6297",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q04.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q04.png",
+      "problemImageSha256": "fd996617266f8d86b5a9f3e9c53ad4367d60e9c3cd8c0338d35b4333e61e6297"
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "④",
+      "independentReason": "두 접선 PA, PB가 이루는 각 30도이므로 중심각 AOB=150도. 이등변삼각형 AOB의 밑각 x=(180-150)/2=15도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f6e43fc64e25647d97ea2fab5d5938688a6dbafd8190643ff12256f116e2224b",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "164c5b9aaa19e984990e3799d7a01df02dc2be1f2ac0f0bb35e9183a83fad60b",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q05.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q05.png",
+      "problemImageSha256": "164c5b9aaa19e984990e3799d7a01df02dc2be1f2ac0f0bb35e9183a83fad60b"
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "②",
+      "independentReason": "접선 길이 PA=PB=sqrt(15^2-9^2)=12. 넓이 APBO=두 직각삼각형 넓이 합=2*(9*12/2)=108 cm^2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 1,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "486dd6760e6d17742ac2fa3543070a574d5c3ed87f6412ae5f9302594ed2d4cc",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "649b633e32b6aa450042b90b2ec605a3a34cbd60fbf490d744c667b1932f8146",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q06.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q06.png",
+      "problemImageSha256": "649b633e32b6aa450042b90b2ec605a3a34cbd60fbf490d744c667b1932f8146"
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "③",
+      "independentReason": "접점에서의 접선 길이를 쓰면 BE=(AB+BC-AC)/2=(8+6-7)/2=7/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d457467a44e50df1f0d1dfebd92b724a9f6723c768847fbb1b21d0ad00bc3b1a",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "ac6d29fa52e7369ae0377b97113c9390e345599951c87e2199a598901c77b96c",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q07.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q07.png",
+      "problemImageSha256": "ac6d29fa52e7369ae0377b97113c9390e345599951c87e2199a598901c77b96c"
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "②",
+      "independentReason": "원주각 APB와 중심각 AOB가 같은 호 AB를 보므로 x=120/2=60도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "578407018a316ad49c25b85f887585288a9c9cb9400e9eb1b0361ad80becc8ca",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "224e82b4d13ddf033313aa9abc85f1e31f232cabcf5a415688c1a9485615d878",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q08.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q08.png",
+      "problemImageSha256": "224e82b4d13ddf033313aa9abc85f1e31f232cabcf5a415688c1a9485615d878"
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "④",
+      "independentReason": "AC가 지름이므로 ∠ABC=90도, ∠ACB=65도. 같은 현 AB를 보는 원주각 ∠ADB=x=∠ACB=65도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "98985e53f359c2e4558a2076af6e2b957127e7b3e9a098b78466329e4acbfcc2",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "b8ce7eb4dea90183aba0a7039b6bc9a207605e3ad7a9aa3198f2506628bc6a46",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q09.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q09.png",
+      "problemImageSha256": "b8ce7eb4dea90183aba0a7039b6bc9a207605e3ad7a9aa3198f2506628bc6a46"
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "④",
+      "independentReason": "C가 작은 호 AB 위에 있으므로 ∠ACB는 큰 호 AB를 본다. 큰 호의 크기는 360-100=260도이므로 x=130도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "eae182592404e878014354ca71c746e4cb1c1b1a518e2fdb1965225f7f9bab50",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "c3a97d87498555a75bcaefde56e04616fa91416a956304ce53ef803368f0d487",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q10.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q10.png",
+      "problemImageSha256": "c3a97d87498555a75bcaefde56e04616fa91416a956304ce53ef803368f0d487"
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "①",
+      "independentReason": "교차현 각에서 arc AD+arc BC=2*70=140. 2arc AD=3arc BC이므로 arc BC=56, x=∠BDC=arc BC/2=28도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b226dcd737927949dc0abb6d13c51e5b4e95c4c2bb74c5dfd737cf5ba8e6950f",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "7ee95b900e1c3232f1dda36d60728de4a2a9843c300e482b832297cce9693082",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q11.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q11.png",
+      "problemImageSha256": "7ee95b900e1c3232f1dda36d60728de4a2a9843c300e482b832297cce9693082"
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "⑤",
+      "independentReason": "접선 반지름으로 사각형 ADOF의 각에서 중심각 DOF=180-50=130도. ∠DEF=65도, 따라서 삼각형 DEF에서 x=∠FDE=180-65-55=60도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 2,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cbb73504e9f8bf1258a9a41d83ec4a44ccfea18c9ee251382efbccb627f6f446",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "435dcaa8ff80dca5e78b44c3cb35c7db8e55f8169574a185fc8acc7368a4d7e2",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q12.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q12.png",
+      "problemImageSha256": "435dcaa8ff80dca5e78b44c3cb35c7db8e55f8169574a185fc8acc7368a4d7e2"
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "③",
+      "independentReason": "외부 두 할선의 P각 30도에서 arc BC-arc AD=60도. ∠ADC=115도이므로 arc AB+arc BC=230, arc CD+arc DA=130. 따라서 arc AB-arc CD=100+(arc AD-arc BC)=40, x=20도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "01261e6df1958d7d4192cef9cda50bc01e23741971edfcfc36386d202830318e",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "4f86d628500f35df3f598c065d630ee9e65922b75dd3d8581dfc49cb449684d9",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q13.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q13.png",
+      "problemImageSha256": "4f86d628500f35df3f598c065d630ee9e65922b75dd3d8581dfc49cb449684d9"
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "25 degrees (choice ②)",
+      "independentReason": "Triangle ACD gives ∠ACD=180°−115°−40°=25°. ∠ACD and ∠ABD subtend chord AD from the same side, so x=25°; unique choice ②.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "disposition": "ROOT_AUTHORIZED_QUESTION_ONLY_REPLACEMENT; q14 attempt 2 answer 25° matches ②; replacement fidelity PASS.",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "MINIMAL_BREAKS_KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ce46ba601e7fd208fb60fdcae05d14822cc58462ce220812ee00b66c7effc0f3",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "freezeValidity": "MEANING_INVARIANT_LAYOUT_ONLY",
+          "observation": "Two newline breaks after cyclic-order statement and before requested angle. Removing only these breaks reconstructs answer-frozen q14 content byte-for-byte.",
+          "disposition": "MINIMAL_BREAKS_KEEP",
+          "newContentSha256": "b63dce9eaa7bc6e5b7729f2b211c937fbef29f77692f50d2ad8423abfff66915",
+          "oldContentSha256": "18b52f5e01cc763e023e14fd2e311b568b041647b507ea69499c400f30094b2f",
+          "status": "PASS"
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "observation": "Reused attempt-2 component review; solution body unchanged.",
+          "status": "PASS"
+        },
+        "SMALL_BOARD": {
+          "disposition": "KEEP",
+          "observation": "Reused attempt-2 board-flow verdict and rebound its exact current solution SHA256.",
+          "status": "PASS"
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "observation": "Reused attempt-2 independent q14 Meta judgment; exact current physical fields rebound.",
+          "currentFields": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "standardUnit": "원의 성질",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+            "subUnit": "원주각",
+            "subUnitConfidence": "high",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL"
+          },
+          "status": "PASS"
+        },
+        "VISUAL_SVG": {
+          "disposition": "QUESTION_ONLY_REPLACEMENT_SVG",
+          "previewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\source-review\\q14-replacement-render.png",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q14.svg",
+          "problemImageSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee",
+          "observation": "Reused physically opened pre-freeze q14 preview; cyclic order, AC/DB, CAD=115°, ADC=40°, x at ABD; SVG reference and bytes match.",
+          "previewSha256": "5f1a68a3ac4dae35781a627d31a85007d7dd2507fafc1b553bc8fbc2288ac033",
+          "status": "PASS",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q14.svg",
+      "problemImageSha256": "7306e836bcedf4487e1bebfe7f4d615b21aec0004fc65ef29986ee0dc39843ee",
+      "answerCardinality": 1,
+      "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.student-input.json",
+      "studentBundleSha256": "ee6fe1a38b33b0c6e26efb5ceafd16996ff5614024bd750cb197de6b7ea00c55",
+      "studentPayloadSha256": "1516eeedf044ba620a3e70cdeac0c043f2b59d74c95385e398a62edeb3441f22",
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.independent-freeze.json",
+      "freezeSha256": "23963e8aead2d93fe8effcb96c225698ca3ffc8ddce5753ea0822605b4819c2f",
+      "componentReviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.component-review.json",
+      "componentReviewSha256": "7f936f9d5f4f35429c5f91e86815da0643b104f823f19ae8f51bfcb457c71313",
+      "layoutAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.layout-adjudication.json",
+      "layoutAdjudicationSha256": "5cba398e6c1b0f7efd3a3fc27e4f66a820c683d21db07cb3f7149cdf3708c9bd"
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "④",
+      "independentReason": "접선의 직선각에서 ∠CAB=180-50-70=60도. 접선-현 정리에 따라 x=∠ACB=각(접선 AT, AB)=70도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fdd58078b76e835b6d919b2e7fddeeae331144f08d9deec77312b002cdfe94bf",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "d81fa5996042930f3942bd524fb52270f025e88b4c09f51a66c0c86f7bed6dec",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q15.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q15.png",
+      "problemImageSha256": "d81fa5996042930f3942bd524fb52270f025e88b4c09f51a66c0c86f7bed6dec"
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "④",
+      "independentReason": "접선-현 정리로 접선과 AD의 각 30도에 대응하는 ∠ABD=30도이고 ∠ADB=40도. 따라서 arc AD=60, arc AB=80; x=∠DCB가 보는 arc DAB는 140도여서 x=70도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "250620c9bc90ce808b1f4502539f0ab919a592882996ac57b9fabd51f6411612",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "593cc93c2817bef06e6b42fb3b2945620534938b45b3cd72dd648cfc0838303c",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q16.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q16.png",
+      "problemImageSha256": "593cc93c2817bef06e6b42fb3b2945620534938b45b3cd72dd648cfc0838303c"
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "①",
+      "independentReason": "AQ는 지름 BC인 반원의 Q에서의 접선이므로 접선-현 정리로 ∠AQC=∠QBC=x. 직각삼각형 BQC에서 ∠QCB=90-x. A,C,B가 일직선이고 △AQC에서 ∠ACQ=180-(90-x)=90+x; 28+x+90+x=180이므로 x=31도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "235b80911b0b190fa4fe287b69df80407e5f3c51fd5a076a5784725ebba3b9e8",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "18b223338655f81164fcdfab27cb509eaad5db7c87e3d884f00d510baefb9a00",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q17.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q17.png",
+      "problemImageSha256": "18b223338655f81164fcdfab27cb509eaad5db7c87e3d884f00d510baefb9a00"
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "(1) 3 cm; (2) 6 cm; (3) 3 cm; (4) 50도; (5) 80도",
+      "independentReason": "OP=OQ는 중심에서 현까지의 거리이므로 현 AB=AC=6. 수선의 발은 각 현을 이등분하여 AQ=QC=3, AP=PB=3. AB=AC인 △ABC에서 ∠B=∠C=50도, x=∠A=80도.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "AQ=3 cm; AB=6 cm; BP=3 cm; y=50°; x=80°",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 3,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "84f6d1292ce62d28b109ebaf84a46f49af951893652cb88677e7354662a769f5",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "db68712ddfbac0601274465dfd311fc36c255e7c3ced8136dea1a95e2f09d5e7",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q18.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q18.png",
+      "problemImageSha256": "db68712ddfbac0601274465dfd311fc36c255e7c3ced8136dea1a95e2f09d5e7"
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "15 cm",
+      "independentReason": "OM은 현 AB의 수직이등분선이며 CM=3이고 AM=9. 중심을 O라 하고 OM=d이면 반지름 r=d+3, 또한 r^2=d^2+9^2. 따라서 (d+3)^2=d^2+81에서 d=12, r=15.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "15 cm",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 4,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f8cd1caaeaea9255ee316aafcc016c08bf2b4d04c55a24830ef0dade82d1647f",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "b30d4b8255254a279f38519288ca3a8a6b21755ce71acf9860393459d7139d48",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q19.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q19.png",
+      "problemImageSha256": "b30d4b8255254a279f38519288ca3a8a6b21755ce71acf9860393459d7139d48"
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "증명: AB+CD=AD+BC",
+      "independentReason": "같은 점에서 그은 접선 길이가 같아 AP=AS, BP=BQ, CQ=CR, DR=DS. 그러므로 AB+CD=(AP+PB)+(CR+RD)=(AS+SD)+(BQ+QC)=AD+BC.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "AB+CD=AD+BC",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 4,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b046b742f89aa761ec5864376f919d18162d049a1bf2f8de995ae85b14946915",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "f261ede9afb19920a35bfda156586c8cb0484095e5772f32b02507ec2ad07f9a",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q20.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q20.png",
+      "problemImageSha256": "f261ede9afb19920a35bfda156586c8cb0484095e5772f32b02507ec2ad07f9a"
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "무대 양 끝을 현으로 하고 중심각 120도인 원호형 레일 (반지름 10/sqrt3 m)",
+      "independentReason": "시선각 60도인 위치의 원주각은 무대 끝점을 잇는 현 10m를 보고, 이에 대응하는 중심각은 120도. 현 길이 10=2R sin60이므로 R=10/sqrt3 m. 이 원호 위에서 무대 전체가 최대 시야각 60도로 보인다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "무대 양 끝을 잇는 현이 10 m이고 그 현을 보는 원주각이 60°가 되는 원의 큰 호",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_FINAL",
+      "disposition": "INDEPENDENT_MATCH",
+      "sourcePageNo": 4,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b0e3c4779bb1568149542dc8a90777edb7568c8fb531ba05753c0c9d017534d9",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "0d8a868325e1a9a9aceac4e137da6fbf4c6ba035bf731afebda6237b0a7a582c",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q21-r1.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "currentDifficultyFields": {
+        "level": "중",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q21-r1.png",
+      "problemImageSha256": "0d8a868325e1a9a9aceac4e137da6fbf4c6ba035bf731afebda6237b0a7a582c"
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "ABDE, BCEF, CADF, AEPF, BDPF, CDEP",
+      "independentReason": "직각쌍 검토로 ABDE, BCEF, CADF, AEPF, BDPF, CDEP만 확인. DEFP는 포함되지 않음.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "ABDE, BCEF, CADF, AEPF, BDPF, CDEP",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "disposition": "MATH_ADJUDICATION: corrected cyclic-quadrilateral list after right-angle-pair audit",
+      "sourcePageNo": 4,
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "questionLayoutDisposition": "KEEP",
+      "solutionLayoutDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "be24b55d7fdea3763a2bc6354c63a6d6169c593d2d78ccf38f00926e77b2d840",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Student content and choices match the frozen current bundle; source-page structure and original image label/topology reviewed; AUTO-FIRST layout retained."
+        },
+        "SOLUTION_LAYOUT": {
+          "disposition": "KEEP",
+          "status": "PASS",
+          "observation": "Line-by-line derivation, intermediate values, conditions, and separated conclusion checked against source and independent reasoning."
+        },
+        "SMALL_BOARD": {
+          "disposition": "PASS",
+          "status": "PASS",
+          "observation": "Core equation/geometry basis, transformation, intermediate result, substitution, and final value remain traceable in sequence."
+        },
+        "META": {
+          "disposition": "KEEP_CURRENT_FIELDS",
+          "status": "PASS",
+          "observation": "Current physical standard/subunit/problem/template and difficulty fields read directly; actual fields bound in artifactDispositions; null template debt retained without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "problemImageSha256": "d97f3e12e1e2ea3e4f3f4dfb8892634ea7937bb99fb599672ef050b052e8ea27",
+          "disposition": "PROBLEM_IMAGE_REQUIRED_SVG_NOT_NEEDED",
+          "solutionSvgStatus": "NOT_REQUIRED",
+          "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q22.png",
+          "observation": "Required original problem image was physically opened and its SHA matched; no solution SVG is referenced or needed.",
+          "status": "PASS",
+          "openedBeforeFreeze": true
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "currentMetaFields": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원과 직선·각의 성질",
+        "subUnitConfidence": "medium",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "currentDifficultyFields": {
+        "level": "상",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "problemImageRef": "assets/images/20_이수중_2학기_기말_중3_기출/q22.png",
+      "problemImageSha256": "d97f3e12e1e2ea3e4f3f4dfb8892634ea7937bb99fb599672ef050b052e8ea27"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "f90e8f9d3cc9f6c178af832a0c3bccd9266e517e",
+    "rows": [
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 1,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 2,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 3,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "high",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 18,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 19,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 20,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing null Meta projection retained: no verified exact ACTIVE binding for the current combination; no semantic reclassification applied.",
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "중",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      {
+        "metaDisposition": "KEEP_CURRENT_FIELDS",
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": null,
+        "status": "PASS",
+        "currentDifficultyFields": {
+          "level": "상",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "currentMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원과 직선·각의 성질",
+          "subUnitConfidence": "medium",
+          "subUnitClassificationDepth": "complete_candidate",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      }
+    ]
+  },
+  "currentHead": "d1c07101d7bde3ca7331454b0f70ab170fc72d64",
+  "studentInputComponents": [
+    {
+      "note": "Preserved original student bundle for 21 unchanged qids.",
+      "qidScope": "1-13,15-22",
+      "sha256": "af86cef24b683a91a03e97f873b70469acb1009a4796351eb4ada867f634a2f4",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1.student-input.json"
+    },
+    {
+      "note": "Fresh q14 QUESTION_ONLY replacement bundle; freeze valid under meaning-invariant layout delta.",
+      "qidScope": "14",
+      "sha256": "ee6fe1a38b33b0c6e26efb5ceafd16996ff5614024bd750cb197de6b7ea00c55",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.student-input.json"
+    }
+  ],
+  "q14Merge": {
+    "replacementAuthorizedBy": "ROOT",
+    "sourceTruthClassification": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "answerFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.independent-freeze.json",
+    "answerFreezeSha256": "23963e8aead2d93fe8effcb96c225698ca3ffc8ddce5753ea0822605b4819c2f",
+    "componentReviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.component-review.json",
+    "componentReviewSha256": "7f936f9d5f4f35429c5f91e86815da0643b104f823f19ae8f51bfcb457c71313",
+    "layoutAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\20_이수중_2학기_기말_중3_기출\\R1-clean-q14-attempt2.layout-adjudication.json",
+    "layoutAdjudicationSha256": "5cba398e6c1b0f7efd3a3fc27e4f66a820c683d21db07cb3f7149cdf3708c9bd",
+    "answer": "25 degrees",
+    "storedAnswer": "②",
+    "choiceIndex": 2,
+    "match": true,
+    "replacementFidelity": "PASS",
+    "onlyChangedLocus": "questionBank[qid=14].content",
+    "layoutDeltaSemantics": "EXACT_TEXT_PRESERVED_TWO_NEWLINES_ONLY"
+  }
+}
