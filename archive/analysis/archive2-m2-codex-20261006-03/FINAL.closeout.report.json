@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_M2_FINAL_CLOSEOUT_REPORT_V1",
+  "runId": "archive2-m2-codex-20261006-03",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "status": "COMPLETE",
+  "productionVerifiedMainSha": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+  "examCount": 15,
+  "questionCount": 358,
+  "mainDoneCount": 15,
+  "holdCount": 0,
+  "actualRenderEvidenceReusedExamCount": 8,
+  "userDirectedStaticCompleteExamCount": 7,
+  "roster": {
+    "path": "archive/analysis/archive2-m2-codex-20261006-03/roster.json",
+    "sha256": "db2bd6150afe93c350b9a7f15e7f360b526f9c9d8403b06660343033679f4674"
+  },
+  "sourcePreservation": {
+    "original48ExamManifestPath": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/batch-manifest.json",
+    "sha256": "ae82f4d326b1c02cb37706bd2637c51424fa9563c1f8f5837fdbb1e09effa328",
+    "latestLocalInputUnchanged": true,
+    "pilotDisposition": "HISTORICAL_ONLY_NO_RESUME"
+  },
+  "metrics": {
+    "recoveryFreshSpawnCount": 12,
+    "byRole": {
+      "CREATE": 1,
+      "R1": 1,
+      "R2": 3,
+      "R3": 6,
+      "MASTER": 1
+    },
+    "existingStageSessionContinued": {
+      "R3": [
+        "/root/r3_21_pungdeok"
+      ]
+    },
+    "masterFreshSpawnCount": 1,
+    "masterSameSessionContinuationCount": 4,
+    "scope": "Verified current recovery interval only; previous full-run spawn totals unavailable",
+    "resolvedCustomRoleModel": "gpt-6-luna",
+    "resolvedCustomRoleEffort": "high",
+    "recoveryEvidenceFirstCreatedAt": "2026-10-07T03:24:18.002Z",
+    "finalTechnicalAuditAt": "2026-10-07T04:45:29.359Z",
+    "observedEvidenceWindowMinutes": 81.18928333333334,
+    "tokenUsage": null,
+    "monetaryCost": null,
+    "usageLimitation": "Per-agent tokens and billed cost are not exposed by available tools; no estimate asserted"
+  },
+  "repairs": [
+    {
+      "examUid": "19_연향중_2학기_기말_중2_기출",
+      "locus": "q23",
+      "method": "PDF scoring ambiguity retained; authorized QUESTION_ONLY replacement; fresh q23 R1/R2; postfreeze answer and solution minimal correction",
+      "unchangedReuse": "23 qids R1/R2 freezes and meaning/visual evidence"
+    },
+    {
+      "examUid": "20_팔마중_2학기_기말_중2_기출",
+      "locus": "render receipt only",
+      "method": "Actual mode asset expectation corrected; original six captures and R3 identity reused; immutable physical witness relocation"
+    },
+    {
+      "examUids": [
+        "21_신흥중_2학기_기말_중2_기출",
+        "21_이수중_2학기_기말_중2_기출"
+      ],
+      "locus": "R2 contract evidence only",
+      "method": "All valid current freezes reused; CODEX/V2 and matching R1 Meta projection bindings corrected; raw forced generic PASS"
+    },
+    {
+      "examCount": 7,
+      "locus": "existing actual render receipt compatibility only",
+      "method": "Required mode subset retained; every genuine extra decode preserved; actual captures/reviewer/source unchanged; raw historical JSON witnesses durably preserved"
+    },
+    {
+      "scope": "publication only",
+      "method": "Existing SVG raw witness bytes restored where Git normalization differed; exact index and remote SHA verified"
+    }
+  ],
+  "operatingDocumentUpgrade": {
+    "commit": "5acaf8ef00c45275b3fd58a0836442e4a243189d",
+    "current": "docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md",
+    "sections": "16–24",
+    "improvements": [
+      "Stage serial conveyor and fresh assignment packet",
+      "PDF to minimum repair to true-HOLD item replacement",
+      "Raw V2/CODEX report intake before publication",
+      "R3 owns actual render; ROOT consumes SHA/receipts",
+      "Mode-specific actual decoded witness preservation",
+      "Raw Git index/remote byte checks and targeted binding repairs",
+      "Separate explicit run-scoped user render waiver; normal render path retained"
+    ]
+  },
+  "rows": [
+    {
+      "examUid": "19_동산중_2학기_기말_중2_기출",
+      "questionCount": 25,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "d01eec4abf862f4add17170855dd4774bfda8e9903dc9b8e5eebc89af473909d",
+      "productionBlobSha1": "febaad824bbf151af1708855c44c01d6e0152ac3",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/19_동산중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "ee15038e947eda7e9b254e79d3f47b0656dff5d12200d828099e94160c42def7"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "19_신흥중_2학기_기말_중2_기출",
+      "questionCount": 23,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "7eefc181d551382724e2435b3f092c54b28440f1aaf5e805126f85d5b9945b57",
+      "productionBlobSha1": "1146493bfee4a32fe3b0ae5eb4b5d3093db66bef",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/19_신흥중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "204ea6309fa6a48b1b154a807d73a498f7e58ab81c770cebea46ab93acd77924"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "19_연향중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "32d20b2580da97032b108897b09ecd1e935d2dbeda4b0d5186ba4b0e6bb89807",
+      "productionBlobSha1": "9cd750198ccfa7d464728fe9b158bde1f9f4a419",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/19_연향중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "828e451fe9569ca1d7563127670129ecec40fcfa0d9ca6a489fb8fe60ca70c43"
+      },
+      "receiptRecordedMain": "3f5f61ef33e96a9ab115cddb62e7ff7c971e7357",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "19_풍덕중_2학기_기말_중2_기출",
+      "questionCount": 23,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "88a1a285e80ec0b08764dc146a09f1ff809a6f7f146b2f8c8b2816bc4f91c4bb",
+      "productionBlobSha1": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/19_풍덕중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "295bfb92488173fafd4263234d20c6a6f9639695970759f117197b1f6d5e5fbe"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_금당중_2학기_기말_중2_기출",
+      "questionCount": 23,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "571e9eb6a1d6f62aec2a0eab94b5e070bb21c84ebd25046b77d922aa4f57cc74",
+      "productionBlobSha1": "25737072ff23b6c7b863c3ee1e803fdc538f89f1",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/20_금당중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "8a90224afcd5a064ab496336d6f833998ede2246aa057025b1759c20f6b74851"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_신흥중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "30971716105079da1cce9d0edb57f05f83ce85c5c43cd31addc3e66521220489",
+      "productionBlobSha1": "2fdd890dcdf2b0914e917183adcfca81da1a34f6",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/20_신흥중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "e8dbf1f63af039167b118e8a89541003c373280cf4802e61508d3128ba97b472"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_왕의중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "88502dd4a098f8b6104b54317a5fab38fdb8442e1c18b353d5e61c1d648bd37d",
+      "productionBlobSha1": "cbbd61a5221c08317d1009411910af60c640b6b8",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/20_왕의중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "29dc55277c3354ab9d99439dbcee9a4033c462372c8db1e393ca82c285257597"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_팔마중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+      "productionBlobSha1": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.receipt.json",
+        "sha256": "3934aaf42b3d3d9b8009ecffb3c57f619d90c3d1f3b750fc03dfe48195350585"
+      },
+      "receiptRecordedMain": "2ac2cc9100d100bef1fff4f627542dd71c262c47",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_풍덕중_2학기_기말_중2_기출",
+      "questionCount": 25,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "0c2d9c14291387733b6f83fa6f06a3a3c5a73193d08b225ca821f9105f45ba8a",
+      "productionBlobSha1": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+      "completionBasis": "EXISTING_ACTUAL_RENDER_REUSED",
+      "renderStatus": "RENDER_PASS_REUSED",
+      "receipt": {
+        "path": "archive/analysis/20_풍덕중_2학기_기말_중2_기출/render/MAIN_DONE.COMPAT.receipt.json",
+        "sha256": "a16f55622e6eee66d10c8ae8c5ade2569eae39009e2a2f9187c3c7e0c27e71de"
+      },
+      "receiptRecordedMain": "3bddd292910f36b550c22ab8a4f55b3e26d49a24",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "20_향림중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+      "productionBlobSha1": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/20_향림중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "a302cf3e12b395263581994aff7736ab417b1158901114ea90967e49873346c3"
+      },
+      "receiptRecordedMain": "27b9945c967a5d7e85308cb1a1a31f334e5fe2c0",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "21_신흥중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "a29f18540184dd16227f750fad092dc36851293bbae05ba8a5149d8728f8e1ea",
+      "productionBlobSha1": "00efa8f7662958b740a88c347e454c0bad9b8015",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/21_신흥중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "1b326105044a5ebbe76d8f5d0a92b08a66301ce5a0f043db20bef09a33117837"
+      },
+      "receiptRecordedMain": "f79661acb9d03684abb8bd0c1ce1bc762a4eef28",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "21_연향중_2학기_기말_중2_기출",
+      "questionCount": 21,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "14356f015a37edfe68f2722829d3b731d0930b85b207c8fb3062117b31104c19",
+      "productionBlobSha1": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/21_연향중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "4407960dea5654c1ed25918fd90d2c11a3b97ed48bef6abeedea7be5e2be3de9"
+      },
+      "receiptRecordedMain": "54338054747fd7ad5796ba16ecee2693c8e701ee",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "21_왕운중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/21_왕운중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "59e08dd06940f847e278582ca3037d0a0fa6614e91752de9c6c17e3788900d79",
+      "productionBlobSha1": "78e0339757c2af4bb852111f5ce73456c8996394",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/21_왕운중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "afe6af0f84a6f9b4f0b5530de22c50ed0d47363ddebb4626abd8f2d9328f83c7"
+      },
+      "receiptRecordedMain": "cc816a9a865a83eba803e56bba14a63cbd698ddf",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "21_이수중_2학기_기말_중2_기출",
+      "questionCount": 26,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "655d8c1d5e8e4790115e664f7066919f97fb2066f3f8f3e96b323c4ecaf51dac",
+      "productionBlobSha1": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/21_이수중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "5414cdc6ecbca0983368a5afb921c635c3ffdd588cf5c10a0c6ca5b28f96cfdf"
+      },
+      "receiptRecordedMain": "10a10730a57305728368f58d1bc5a00edeaf14e2",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    },
+    {
+      "examUid": "21_풍덕중_2학기_기말_중2_기출",
+      "questionCount": 24,
+      "status": "MAIN_DONE",
+      "productionReflected": true,
+      "productionPath": "archive/exams/original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+      "productionRawSha256": "58e72ac8b0c0ad87ecc2b9c2ba14a7105e0e9f7591b19b71bc772b0c16d8224f",
+      "productionBlobSha1": "8e3c55743190bcaad4b98200a6d32f66d4686369",
+      "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+      "renderStatus": "NOT_RUN_USER_WAIVER",
+      "receipt": {
+        "path": "archive/analysis/21_풍덕중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/ROOT.MAIN_DONE.USER_WAIVER.receipt.json",
+        "sha256": "20b0c916c77e177c38e3ad1d4ef9e71acbc26be648f3b6d19d31a5ef2399eac2"
+      },
+      "receiptRecordedMain": "7e119f69985ac8e0310255a181264a2f955f7b55",
+      "latestMainParity": {
+        "ok": true,
+        "disposition": "PASS",
+        "completionBasis": "USER_DIRECTED_STATIC_COMPLETE",
+        "renderStatus": "NOT_RUN_USER_WAIVER",
+        "issues": []
+      }
+    }
+  ]
+}
