@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 11,
+  "productionPath": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+  "candidate": {
+    "rawSha256": "a29f18540184dd16227f750fad092dc36851293bbae05ba8a5149d8728f8e1ea",
+    "gitBlobSha1": "00efa8f7662958b740a88c347e454c0bad9b8015"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "completedStages": {
+    "CREATE": {
+      "status": "CREATE_DONE_WITH_ITEM_HOLDS",
+      "artifactSha": "9bcd3c6e4a6b300df591b7743fb9df74dc209b71"
+    },
+    "R1": {
+      "status": "PASS",
+      "evidenceSha256": "931794ac33823bd6f91bc0023264f5ce9d9426149ee2a7140feb6b446d7f309c",
+      "validationSha256": "8ea2413cde6b2eb0c1274f76d1992be38b80760d787dcb8511dc8768e27b4cec"
+    },
+    "R2": {
+      "status": "PASS",
+      "evidenceSha256": "89b35240b987325c01dceb467e30c73378b461a878c89aaf442ae5d28cf148e0",
+      "validationSha256": "774c31633fd589f97dea61ac258dd2b46db8ce952f7735134a1cf1dfbabd0ade"
+    },
+    "R3": {
+      "status": "NOT_RUN_BLOCKED",
+      "continuation": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_신흥중_2학기_기말_중2_기출/R3.continuation.json",
+        "sha256": "ae6049e3152101e99850687bbae9594bfd80a380b7071b845bd2ddcf69bdd6b1"
+      },
+      "missingClosureStep": "ACTUAL_ARCHIVE_ENGINE_RENDER_MATRIX",
+      "requiredCases": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile",
+        "ans/desktop",
+        "ans/mobile"
+      ],
+      "blocker": "The assigned R3 subagent has no browser inventory; official Codex IAB is unavailable in the subagent session (apps=[], browsers=[]), and browser id 2 returns Browser is not available. No permitted alternative route was used.",
+      "forbiddenWorkaroundsNotUsed": [
+        "local-server",
+        "alternate-browser",
+        "Playwright",
+        "CDP"
+      ]
+    }
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": true
+  },
+  "holdReason": "R1/R2 are complete and pass; only required actual R3 captures are unavailable because the sanctioned In-app Browser is unavailable inside the assigned R3 subagent session.",
+  "resumeCondition": "Resume the same R3 session when the official in-app browser is available to that session or the platform supplies an approved route that preserves R3 reviewer identity and actual engine captures."
+}

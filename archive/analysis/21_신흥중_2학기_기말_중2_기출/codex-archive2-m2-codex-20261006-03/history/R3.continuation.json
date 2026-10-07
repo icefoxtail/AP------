@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "archive2-stage-continuation-v2",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "R3",
+  "result": "CONTINUATION",
+  "inputArtifactSha": "00efa8f7662958b740a88c347e454c0bad9b8015",
+  "finalArtifactSha": "00efa8f7662958b740a88c347e454c0bad9b8015",
+  "rawArtifactSha256": "a29f18540184dd16227f750fad092dc36851293bbae05ba8a5149d8728f8e1ea",
+  "workingPath": ".tmp/archive/archive2-m2-codex-20261006-03/21_신흥중_2학기_기말_중2_기출/21_신흥중_2학기_기말_중2_기출.js",
+  "completedStep": "TARGETED_SCOPE_AND_LOCKED_ARTIFACT_PREFLIGHT",
+  "firstMissingClosureStep": "OFFICIAL_ARCHIVE_ENGINE_RENDER_AND_VISUAL_INSPECTION",
+  "exactReason": "The sanctioned Archive engine route remains unavailable in this subagent. Initial visible IAB request was refused: IAB visibility is not supported in a subagent thread. On continuation, cua.getState() and cua.listBrowsers() returned no browsers; the approved IAB id 2 request was refused: Browser is not available: 2. No local-server, alternate-browser, Playwright, or CDP workaround was attempted. Actual Archive render captures and asset-load observations are unavailable; the six required captures and their visual inspection remain open.",
+  "targetedScope": {
+    "openFindings": [
+      1,
+      20
+    ],
+    "changedQids": [
+      1,
+      20
+    ],
+    "directDependencyQids": [
+      1,
+      20
+    ],
+    "lockedScopeIntegrity": "R1 final-current aggregate records q1/q20 only; 22 unchanged qids; non-target hashes all match.",
+    "releaseIntegrity": "Final candidate raw SHA-256 and Git blob SHA-1 match the assigned values; R2 final-current aggregate validation PASS 24/24."
+  },
+  "bindings": {
+    "r1FinalCurrentAggregateRef": ".tmp/archive/archive2-m2-codex-20261006-03/21_신흥중_2학기_기말_중2_기출/R1.final-current-aggregate.json",
+    "r1FinalCurrentAggregateSha256": "931794ac33823bd6f91bc0023264f5ce9d9426149ee2a7140feb6b446d7f309c",
+    "r2EvidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/21_신흥중_2학기_기말_중2_기출/R2.evidence.final-current.json",
+    "r2EvidenceSha256": "89b35240b987325c01dceb467e30c73378b461a878c89aaf442ae5d28cf148e0",
+    "r2ValidationRef": ".tmp/archive/archive2-m2-codex-20261006-03/21_신흥중_2학기_기말_중2_기출/R2.validation.final-current.json",
+    "r2ValidationSha256": "774c31633fd589f97dea61ac258dd2b46db8ce952f7735134a1cf1dfbabd0ade"
+  },
+  "renderStatus": {
+    "requiredCases": [
+      "desktop/exam",
+      "desktop/solution",
+      "desktop/answer",
+      "mobile/exam",
+      "mobile/solution",
+      "mobile/answer"
+    ],
+    "capturesObtained": 0,
+    "visualInspection": "NOT_RUN_OFFICIAL_ENGINE_BLOCKED",
+    "mathJaxAndVisualDecodeInspection": "NOT_RUN_OFFICIAL_ENGINE_BLOCKED",
+    "actualAssetLoadObservations": "NOT_OBSERVED_NO_ENGINE_SESSION",
+    "renderReceipt": null,
+    "genericV2R3ValidatorRun": false
+  },
+  "reviewer": "Codex R3 subagent",
+  "receipt": null,
+  "renderAttemptHistory": [
+    {
+      "step": "visible IAB open",
+      "request": "cua.createBrowserTab(\"iab\", official engine file URI, {visible:true})",
+      "result": "REFUSED",
+      "reason": "IAB visibility is not supported in a subagent thread"
+    },
+    {
+      "step": "approved IAB resolution",
+      "request": "cua.getState() then cua.listBrowsers()",
+      "result": "NO_BROWSER_AVAILABLE",
+      "observed": "apps=[]; browsers=[]"
+    },
+    {
+      "step": "approved IAB tab open",
+      "request": "cua.createBrowserTab(\"2\", \"about:blank\", {visible:false})",
+      "result": "REFUSED",
+      "reason": "Browser is not available: 2"
+    }
+  ]
+}

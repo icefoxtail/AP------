@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R2",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "00efa8f7662958b740a88c347e454c0bad9b8015",
+  "artifactRawSha256": "a29f18540184dd16227f750fad092dc36851293bbae05ba8a5149d8728f8e1ea",
+  "studentInputRef": "R2.student-input.final-current.json",
+  "studentInputSha256": "6a31f16d18a4ec402cf9e50504df9f01e99922f0395c58c9919c7c5ea0248c9b",
+  "projectionParityRef": "R2.projection-parity.final-current.json",
+  "projectionParitySha256": "6f9c74a2fa92e4bf5317e4211ecfcafe2049c56062b65f3a6a25aea5cd8a4817",
+  "independentFreezeRef": "R2.independent-freeze.json",
+  "independentFreezeSha256": "2c9a178e063c32f49cc29070cdf39375be963fe489fa654a024754b6c238b20f",
+  "replacementBlindFreezeRef": "R2.blind-freeze-q1-q20.json",
+  "replacementBlindFreezeSha256": "801cf2c0c9bc19515df0b4c85bc986ca75778bb6f710d5133acecd484c143567",
+  "replacementResultRef": "R2.q1-q20.fresh-blind-result.json",
+  "replacementResultSha256": "3d0fde92241c57b6e5cf53e2647bf54961e12036d41d31d9b1f28f7a52135cce",
+  "replacementComparisonRef": "R2.post-freeze-comparison-q1-q20.json",
+  "replacementComparisonSha256": "39c05d89cc7ed4c7ffc50237a1c6eb8efbb6bee1a23f439341bee63d10f1a25d",
+  "currentR1AggregateRef": "R1.final-current-aggregate.json",
+  "currentR1AggregateSha256": "931794ac33823bd6f91bc0023264f5ce9d9426149ee2a7140feb6b446d7f309c",
+  "currentR1ValidationRef": "R1.validation.final-current.json",
+  "currentR1ValidationSha256": "8ea2413cde6b2eb0c1274f76d1992be38b80760d787dcb8511dc8768e27b4cec",
+  "priorFullR2EvidenceRef": "R2.evidence.json",
+  "priorFullR2EvidenceSha256": "562bc5d3a73298ae5e97f35ad5490957732d517cbe057d3d37886e85da3a6987",
+  "priorFullR2ValidationRef": "R2.validation.pre-item-recovery.json",
+  "priorFullR2ValidationSha256": "e971fbb77eac0fe1ec4b71b93ab81edb83f373129c63f17fbb922ee1db6f0ad1",
+  "priorFullR2FreezeRef": "R2.independent-freeze.json",
+  "priorFullR2FreezeSha256": "2c9a178e063c32f49cc29070cdf39375be963fe489fa654a024754b6c238b20f",
+  "priorR2ContinuationRef": "R2.continuation.json",
+  "priorR2ContinuationSha256": "40244d7d90a4b12d1b1646ed50fd63d208b19aaa217e76da12c06e0d80718cd7",
+  "denominator": 24,
+  "unchangedRowsCarriedForward": 22,
+  "replacementQids": [
+    1,
+    20
+  ],
+  "visualAssetsOpenedForUnchangedRows": 10,
+  "replacementVisualCompleteness": "PASS_NO_CURRENT_STUDENT_PROBLEM_IMAGE_REFERENCES",
+  "answerExposureBeforeReplacementFreeze": false,
+  "result": "PASS",
+  "openHoldQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "blindAnswer": "20",
+      "blindChoice": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "QUESTION_ONLY_REPLACEMENT_MATCH_AFTER_FRESH_BLIND_REVIEW",
+      "sourceMode": "QUESTION_ONLY_REPLACEMENT",
+      "replacementScope": "QUESTION_ONLY",
+      "answerCardinality": "SINGLE_CHOICE_UNIQUE",
+      "answerBasis": "20 cm",
+      "blindFreezeRef": "R2.blind-freeze-q1-q20.json",
+      "blindFreezeSha256": "801cf2c0c9bc19515df0b4c85bc986ca75778bb6f710d5133acecd484c143567",
+      "freshTargetedResultRef": "R2.q1-q20.fresh-blind-result.json",
+      "freshTargetedResultSha256": "3d0fde92241c57b6e5cf53e2647bf54961e12036d41d31d9b1f28f7a52135cce",
+      "replacementEvidenceRef": "ITEM_RECOVERY.evidence.json#items[qid=1]",
+      "replacementEvidenceSha256": "07b63c46945f61ac653cd2c704266a3a32d6d89703b5baa2d04f100277203d93",
+      "targetedR1EvidenceRef": "R1.q1-q20.targeted-review.json#qid=1",
+      "targetedR1EvidenceSha256": "48c516d291540d101cbb177a95e726087545ffa875ebdba517ebdc13b87bc5c5",
+      "metaDisposition": {
+        "status": "PASS_WITH_NONBLOCKING_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "high",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "삼각형 무게중심의 2:1 분할비로 AG, GD를 구한 뒤 길이의 선형결합 계산",
+          "decisiveStep": "AD=AG+GD=3t=12이므로 t=4, 따라서 x+3y=AG+3GD=8+3·4=20 cm."
+        }
+      },
+      "linkedVisuals": []
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "7 cm",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "직각삼각형에서 x²+24²=25²이므로 x=7. 보기 ①.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "피타고라스 정리",
+          "decisiveStep": "$=625-576$ $=49$ 길이는 양수이므로 $x=7$이다. 따라서 정답은 ①이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
+          "sha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "③",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "8²+17²=353≠19²=361; 나머지는 피타고라스 삼쌍.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "피타고라스 정리의 역",
+          "decisiveStep": "④ $10^2+24^2=100+576=676=26^2$ ⑤ $7^2+24^2=49+576=625=25^2$ 따라서 직각삼각형이 아닌 것은 ③이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "52 cm",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "높이=sqrt(17²-(14-6)²)=15; 둘레=17+14+6+15=52. 보기 ④.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "피타고라스 정리의 활용; 사다리꼴의 둘레",
+          "decisiveStep": "$h=15\\text{ cm}$ 따라서 사다리꼴의 둘레는 $17+6+15+14=52\\text{ cm}$이다. 정답은 ④이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+          "sha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "36 cm²",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "G′BD는 ABC의 1/18, AGC는 ABC의 1/3; ABC=108이므로 AGC=36. 보기 ②.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "무게중심이 만드는 넓이비",
+          "decisiveStep": "$=\\dfrac1{18}S$ $6=\\dfrac1{18}S$이므로 $S=108\\text{ cm}^2$이다. 무게중심은 삼각형을 넓이가 같은 세 부분으로 나누므로 $[AGC]=\\dfrac13S=36\\text{ cm}^2$이다. 따라서 정답은 ②이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-r2.png",
+          "sha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "450",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "x² 가능값은 17이 빗변일 때 64, x가 빗변일 때 514; 차=450. 보기 ③.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "피타고라스 정리의 경우 분류",
+          "decisiveStep": "$x<17$: $x^2=64$. $x=17$이면 빗변이 다른 변보다 길어야 하므로 불가능하다. $x>17$: $x^2=514$. 따라서 가능한 $x^2$의 차는 $514-64=450$이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "50 cm²",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "대응변 AB=CD=6, BC=DE=8. 좌표로 △ACE 넓이=50. 보기 ④.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt.",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "삼각형의 합동; 직각삼각형의 넓이",
+          "decisiveStep": "사각형 $ABCE$의 넓이는 $[ABE]+[BCE]$이고, 이는 $[ABC]+[ACE]$와 같다. $[ABC]=\\dfrac12\\cdot6\\cdot8=24\\text{ cm}^2$ $[ACE]=42+32-24=50\\text{ cm}^2$이다. 따라서 정답은 ④이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q07.png",
+          "sha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "225π cm²",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "무게중심에서 GD=AD/3이므로 AD=15; 직각삼각형 외접반지름은 빗변의 절반=AD. 보기 ④.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "무게중심의 중선 분할비; 직각삼각형의 외접원 성질",
+          "decisiveStep": "직각삼각형의 외접원에서 빗변은 지름이므로 반지름은 $15\\text{ cm}$이다. $\\pi\\cdot15^2=225\\pi\\text{ cm}^2$ 따라서 정답은 ④이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+          "sha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "10 cm",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "DE가 G와 I를 지나는 평행선. G의 높이 h/3=r, r/h=BC/(18+12+BC)에서 BC=15; DE=2BC/3=10. 보기 ③.",
+      "metaDisposition": {
+        "status": "PASS",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "standardUnit": "도형의 닮음",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "subUnit": "평행선 사이의 선분의 길이의 비",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "무게중심의 평행선 비; 내심과 넓이",
+          "decisiveStep": "$BC=15\\text{ cm}$ $DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다. $G$가 중선 위에서 꼭짓점으로부터 $\\dfrac23$ 위치이므로 $\\dfrac{AD}{AB}=\\dfrac{AE}{AC}=\\dfrac23$. 따라서 $DE=\\dfrac23BC=\\dfrac23\\cdot15=10\\text{ cm}$이다. 정답은 ③이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q09.png",
+          "sha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "6",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "1~12의 홀수는 6개. 보기 ③.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "유한한 경우의 수 세기",
+          "decisiveStep": "홀수는 $1,3,5,7,9,11$이다. 경우의 수는 $6$가지이다. 따라서 정답은 ③이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "9",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "서로 겹치지 않는 남녀 후보에서 1명: 4+5=9. 보기 ②.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "합의 법칙",
+          "decisiveStep": "남학생 4명과 여학생 5명은 서로 겹치지 않는 후보이다. 남학생을 뽑는 경우와 여학생을 뽑는 경우를 더한다. $4+5=9$ 따라서 대표를 뽑는 경우의 수는 9가지이고 정답은 ②이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "8",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "집→학교 2가지와 학교→도서관 4가지의 선택 조합 2×4=8. 보기 ⑤.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "곱의 법칙",
+          "decisiveStep": "집에서 학교까지 가는 길을 하나 고른 뒤, 학교에서 도서관까지 가는 길을 하나 고른다. 같은 지점을 두 번 지나지 않는 각 구간의 길 선택은 서로 연결된다. $2\\times4=8$ 따라서 모든 경우의 수는 8이고 정답은 ⑤이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q12.png",
+          "sha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "10",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "눈 차 2인 순서쌍 8개, 차 5인 순서쌍 2개; 합=10. 보기 ②.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "순서쌍 세기; 합의 법칙",
+          "decisiveStep": "$(1,3),(2,4),(3,5),(4,6)$과 그 순서를 바꾼 4개로 모두 8개이다. 차가 5인 순서쌍은 $(1,6),(6,1)$의 2개이다. 두 경우는 겹치지 않으므로 $8+2=10$가지이다. 따라서 정답은 ②이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "①",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "12의 약수 중 주사위 눈은 1,2,3,4,6으로 확률 5/6; 나머지는 0 또는 1.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "확률의 뜻; 유한한 표본공간",
+          "decisiveStep": "④ 7 이상인 눈은 없어 확률이 0이다. ⑤ 모든 눈이 6 이하이므로 확률이 1이다. 따라서 확률이 0이나 1이 아닌 것은 ①이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "1/3",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "EXCITING MATH 12글자 중 모음 E,I,I,A 4개; 4/12=1/3. 보기 ⑤.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "경우의 수에 의한 확률",
+          "decisiveStep": "전체 알파벳은 $12$개이고, 모음은 $E,I,I,A$의 $4$개이다. $P(모음)=\\dfrac4{12}=\\dfrac13$ 따라서 정답은 ⑤이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "7/16",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "전체 16개, 빨간 우산 7개·노란 우산 0개; 7/16. 보기 ②.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "확률의 뜻; 합집합 사건",
+          "decisiveStep": "노란 우산은 없으므로 빨간색 또는 노란색인 우산은 빨간 우산 7개뿐이다. $P=\\dfrac7{16}$ 따라서 정답은 ②이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "3/8",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "(5/8)(6/10)=3/8. 보기 ①.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "독립 시행의 곱셈",
+          "decisiveStep": "두 주머니에서의 선택은 독립이므로 두 확률을 곱한다. $\\dfrac58\\times\\dfrac35=\\dfrac38$ 따라서 정답은 ①이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "5/9",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "여사건: 1−(2/3)²=5/9. 보기 ③.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path.",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "독립 시행의 여사건을 이용해 적어도 한 번 딸기맛이 나올 확률을 구함",
+          "decisiveStep": "적어도 한 번 딸기맛일 확률은 여사건을 이용해 $1-\\dfrac49=\\dfrac59$이다. 따라서 정답은 ③이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "2/9",
+      "storedAnswer": "④",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS",
+      "disposition": "POST_COMPARE_ARITHMETIC_ADJUDICATION_CLOCKWISE_A_TO_E_TO_D_TO_C",
+      "answerBasis": "The printed pentagon labels clockwise from A as E, D, C, B. Recount from the student diagram: reaching C requires total 3 or 8, 7/36, option ④. Original blind arithmetic 2/9 is preserved in R2.independent-freeze.json.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "경우 분류; 순서쌍에 의한 확률",
+          "decisiveStep": "따라서 유리한 경우는 $2+5=7$개이고 전체 경우는 $6\\times6=36$개이다. $P=\\dfrac7{36}$ 정답은 ④이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q19.png",
+          "sha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "11/36",
+      "blindChoice": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "QUESTION_ONLY_REPLACEMENT_MATCH_AFTER_FRESH_BLIND_REVIEW",
+      "sourceMode": "QUESTION_ONLY_REPLACEMENT",
+      "replacementScope": "QUESTION_ONLY",
+      "answerCardinality": "SINGLE_CHOICE_UNIQUE",
+      "answerBasis": "11/36",
+      "blindFreezeRef": "R2.blind-freeze-q1-q20.json",
+      "blindFreezeSha256": "801cf2c0c9bc19515df0b4c85bc986ca75778bb6f710d5133acecd484c143567",
+      "freshTargetedResultRef": "R2.q1-q20.fresh-blind-result.json",
+      "freshTargetedResultSha256": "3d0fde92241c57b6e5cf53e2647bf54961e12036d41d31d9b1f28f7a52135cce",
+      "replacementEvidenceRef": "ITEM_RECOVERY.evidence.json#items[qid=20]",
+      "replacementEvidenceSha256": "07b63c46945f61ac653cd2c704266a3a32d6d89703b5baa2d04f100277203d93",
+      "targetedR1EvidenceRef": "R1.q1-q20.targeted-review.json#qid=20",
+      "targetedR1EvidenceSha256": "48c516d291540d101cbb177a95e726087545ffa875ebdba517ebdc13b87bc5c5",
+      "metaDisposition": {
+        "status": "PASS_WITH_NONBLOCKING_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "high",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "서로 다른 두 주사위의 순서쌍을 합 및 차 조건에 따라 분류해 경우의 수에 의한 확률 계산",
+          "decisiveStep": "합 8,9,10,11,12에서 조건을 만족하는 순서쌍 수가 각각 3,2,3,2,1이므로 P=11/36."
+        }
+      },
+      "linkedVisuals": []
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "$10",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "10 cm",
+      "storedAnswer": "$10$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "정사각형 변 길이 2,6; BF=sqrt((2+6)²+6²)=10.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "넓이로부터 정사각형의 변 계산; 피타고라스 정리",
+          "decisiveStep": "$=8^2+6^2=64+36=100$ $BF=10\\text{ cm}$ 따라서 구하는 길이는 $10\\text{ cm}$이다."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+          "sha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "$0",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "0",
+      "storedAnswer": "$0$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "감귤 확률 p=7/10, 바나나 확률 q=0; pq=0.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "경우의 수에 의한 확률; 불가능한 사건의 확률",
+          "decisiveStep": "$q=0$이다. $pq=\\dfrac7{10}\\cdot0=0$ 따라서 구하는 값은 0이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "$\\dfrac{3}{5}",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "3/5",
+      "storedAnswer": "$\\dfrac{3}{5}$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "총 10쌍. 일의 자리가 3인 경우 2쌍, 5인 경우 4쌍; 6/10=3/5.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "조합에 준하는 두 장 선택 경우 세기; 경우의 수에 의한 확률",
+          "decisiveStep": "큰 수가 5이면 $(1,5),(2,5),(3,5),(4,5)$의 4가지이다. 유리한 경우는 $2+4=6$가지이므로 $P=\\dfrac6{10}=\\dfrac35$이다."
+        }
+      },
+      "linkedVisuals": [],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    },
+    {
+      "qid": 24,
+      "blindAnswer": "$13",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "preAdjudicationBlindAnswer": "13 cm",
+      "storedAnswer": "$13$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerBasis": "밑변 절반 5, 높이=2×60/10=12; AB=sqrt(5²+12²)=13.",
+      "metaDisposition": {
+        "status": "PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "observed": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_documented",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "primaryMethod": "삼각형의 넓이; 이등변삼각형의 성질; 피타고라스 정리",
+          "decisiveStep": "$AB^2=12^2+5^2=144+25=169$ $AB=13\\text{ cm}$ 따라서 구하는 길이는 13."
+        }
+      },
+      "linkedVisuals": [
+        {
+          "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+          "sha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+          "opened": true
+        }
+      ],
+      "carriedForwardFromEvidence": "R2.evidence.json",
+      "projectionParityRef": "R2.projection-parity.final-current.json"
+    }
+  ]
+}
