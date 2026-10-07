@@ -3,15 +3,16 @@ import {QUALITY_CONTRACT_V2} from '../archive/tools/archive-stage-validator-arti
 import {gitBlobSha} from '../archive/tools/archive-stage-validator.mjs';
 import {validateCodexRenderReceipt,validateCodexMainDoneReceipt} from '../archive/tools/archive-codex-closeout-v2.mjs';
 import {buildContinuation,consumeValidationPass,consumeCodexRenderPass,consumeCodexMainDone} from '../archive/tools/archive-stage-runtime-v2.mjs';
-function fixture(){
+function fixture({question='{id:1,image:"assets/images/test/q01.svg"}',files={'q01.svg':Buffer.from('<svg/>')},loadedModes={exam:['q01.svg'],sol:[],ans:[]}}={}){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'codex-closeout-')),hash=b=>createHash('sha256').update(b).digest('hex');
  const write=(p,b)=>{fs.mkdirSync(path.dirname(path.join(root,p)),{recursive:true});fs.writeFileSync(path.join(root,p),b);return {path:p,sha256:hash(Buffer.from(b))};};
- const js=Buffer.from('window.questionBank=[{id:1,image:"assets/images/test/q01.svg"}];'),artifactSha=gitBlobSha(js),loadedJs=write('archive/exams/original/middle/m2/2final/test.js',js);
- const ab=Buffer.from('<svg/>'),assetFile=write('archive/assets/images/test/q01.svg',ab),assets=[{ref:'assets/images/test/q01.svg',sha256:hash(ab)}];
+ const js=Buffer.from(`window.questionBank=[${question}];`),artifactSha=gitBlobSha(js),loadedJs=write('archive/exams/original/middle/m2/2final/test.js',js);
+ const assets=Object.entries(files).map(([name,bytes])=>({ref:`assets/images/test/${name}`,sha256:hash(bytes)}));
+ const assetFiles=new Map(assets.map(asset=>[asset.ref,write(`archive/${asset.ref}`,files[asset.ref.slice('assets/images/test/'.length)])]));
  const r3={ok:true,validatorMode:'R3_V2',stage:'R3',examUid:'test',artifactSha,executionLine:'CODEX',qualityContractVersion:QUALITY_CONTRACT_V2,artifactContract:{active:true},disposition:'PASS',evidenceRef:'r3-evidence.json'};
  const r3Validation=write('r3-report.json',JSON.stringify(r3));
  const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j5u0AAAAASUVORK5CYII=','base64');
- const receipt={executionLine:'CODEX',qualityContractVersion:QUALITY_CONTRACT_V2,status:'RENDER_PASS',artifactSha,loadedJs,r3Validation,cases:['exam','sol','ans'].flatMap(mode=>['desktop','mobile'].map(device=>({id:mode+'/'+device,status:'PASS',viewport:{width:device==='mobile'?390:1280,height:900},captures:[{image:write(`captures/${mode}-${device}.png`,png),qids:[1]}],loadedAssets:[{...assets[0],file:assetFile}],mathJaxStatus:'PASS',layoutReviewStatus:'PASS',assetDecodeStatus:'PASS'})))};
+ const receipt={executionLine:'CODEX',qualityContractVersion:QUALITY_CONTRACT_V2,status:'RENDER_PASS',artifactSha,loadedJs,r3Validation,cases:['exam','sol','ans'].flatMap(mode=>['desktop','mobile'].map(device=>({id:mode+'/'+device,status:'PASS',viewport:{width:device==='mobile'?390:1280,height:900},captures:[{image:write(`captures/${mode}-${device}.png`,png),qids:[1]}],loadedAssets:(loadedModes[mode]||[]).map(name=>{const ref=`assets/images/test/${name}`,asset=assets.find(a=>a.ref===ref);return {...asset,file:assetFiles.get(ref)}}),mathJaxStatus:'PASS',layoutReviewStatus:'PASS',assetDecodeStatus:'PASS'})))};
  return {root,receipt,artifactSha,assets,qids:[1],r3,write,cleanup:()=>fs.rmSync(root,{recursive:true,force:true})};
 }
 test('current R3 closes to RENDER, legacy R3 still closes to MAIN',()=>{
@@ -22,6 +23,30 @@ test('six bound capture cases and assets enable publication, not MAIN_DONE',()=>
 });
 test('stale JS, omitted mobile case, omitted last qid and wrong loaded asset fail',()=>{
  for(const mutate of [f=>f.receipt.loadedJs.sha256='stale',f=>f.receipt.cases.pop(),f=>f.receipt.cases[0].captures[0].qids=[],f=>f.receipt.cases[0].loadedAssets[0].sha256='wrong']){const f=fixture();try{mutate(f);assert.equal(validateCodexRenderReceipt(f).ok,false);}finally{f.cleanup();}}
+});
+test('question-image assets are required in exam cases and absent from modes that do not render them',()=>{
+ const f=fixture();try{
+  assert.equal(validateCodexRenderReceipt(f).ok,true);
+  f.receipt.cases.find(c=>c.id==='sol/desktop').loadedAssets=[{...f.assets[0],file:f.receipt.cases[0].loadedAssets[0].file}];
+  assert.equal(validateCodexRenderReceipt(f).ok,false);
+ }finally{f.cleanup();}
+});
+test('solution-only SVG dependencies bind through solution cases, not exam witnesses',()=>{
+ const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j5u0AAAAASUVORK5CYII=','base64');
+ const f=fixture({question:'{id:1,solutionImage:"assets/images/test/sol.svg"}',files:{'sol.svg':Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"><image href="dep.png"/></svg>'),'dep.png':png},loadedModes:{exam:[],sol:['sol.svg','dep.png'],ans:[]}});
+ try{
+  assert.equal(validateCodexRenderReceipt(f).ok,true);
+  f.receipt.cases.find(c=>c.id==='sol/mobile').loadedAssets=f.receipt.cases.find(c=>c.id==='sol/mobile').loadedAssets.filter(a=>a.ref.endsWith('sol.svg'));
+  assert.equal(validateCodexRenderReceipt(f).ok,false);
+ }finally{f.cleanup();}
+});
+test('HTML image choices are exam assets and missing choice decode fails',()=>{
+ const f=fixture({question:'{id:1,choices:["<img src=\\\"assets/images/test/choice.png\\\">"]}',files:{'choice.png':Buffer.from('choice-bytes')},loadedModes:{exam:['choice.png'],sol:[],ans:[]}});
+ try{
+  assert.equal(validateCodexRenderReceipt(f).ok,true);
+  f.receipt.cases.find(c=>c.id==='exam/mobile').loadedAssets=[];
+  assert.equal(validateCodexRenderReceipt(f).ok,false);
+ }finally{f.cleanup();}
 });
 test('MAIN_DONE requires render receipt, origin/main production blob, asset bytes and HEAD parity',()=>{
  const f=fixture();try{
