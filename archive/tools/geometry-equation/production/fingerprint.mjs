@@ -7,11 +7,13 @@ const producer={
   'construction-spike-v1':['production/construction.py'],
   'polynomial-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'rational-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
+  'sqrt-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
 };
 const observers={
   'construction-spike-v1':['production/cindy-observer.mjs','production/layout-repair-audit.mjs','audit_publication.py'],
   'polynomial-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
   'rational-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
+  'sqrt-affine-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
 };
 const locate=p=>p.startsWith('../pipeline-core/')?'archive/tools/pipeline-core/'+p.slice('../pipeline-core/'.length):prefix+p;
 export function scopeFingerprint(root,capability) {

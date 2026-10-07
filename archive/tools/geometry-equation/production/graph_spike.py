@@ -49,5 +49,13 @@ def produce(plan):
             radius=float(plan['rationalFeaturePolicy']['holeMarkerRadiusIntrinsicPx'])
             curves.append(f'<circle id="rational-removable-hole" data-role="hole" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="white" stroke="black" stroke-width="1"/>')
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
+    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_ENDPOINT_OVERVIEW_v1':
+        features=plan.get('sqrtFeatures');policy=plan.get('sqrtFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        radius=float(policy['endpointMarkerRadiusIntrinsicPx'])
+        for index,endpoint in enumerate(features.get('sourceEndpoints',[])):
+            if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
+            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            curves.append(f'<circle id="sqrt-domain-endpoint-{index}" data-role="domain-endpoint" data-endpoint-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
     svg='<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">'+''.join(curves)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}

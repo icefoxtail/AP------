@@ -122,8 +122,23 @@ marker with a 4 intrinsic px radius and a 4.5 CSS px minimum diameter at the
 measured Archive profile. The controlled Archive fixtures select medium for the
 pole and large for the hole. Both families remain `EXPERIMENTAL / CONTROLLED
 FIXTURE ONLY`; neither establishes real-UID publication support or canonical
-qualification. General overview rules for exponential, square-root, absolute-
-value, piecewise, trigonometric, and mixed panels remain incomplete.
+qualification.
+
+The separate `sqrt-affine-spike-v1` experiment accepts `sqrt(a*x+b)` with exact
+rational coefficient strings and `a>0`. Its source domain is either the natural
+nonnegative-radicand domain or an explicit finite closed rational interval whose
+lower endpoint is at or above the radicand root. The sampler starts exactly at
+the natural boundary, or preserves the closed interval numerically without
+expansion. A display-only viewport margin may precede a closed endpoint marker;
+the curve is never sampled in that margin. The independent observer checks the
+exact endpoint inventory, pre-root exclusion, rightward one-sided increase,
+full tail, and closed outlined markers. The final visual-engine spec adds a
+deterministic near-boundary critical sample so the independent secant bound stays
+at 0.35 CSS px. Actual profile checks require a 48 CSS px endpoint-to-tail span
+and a 3 CSS px endpoint marker. The controlled `sqrt(2*x-200)` fixture selects
+medium; small is unsupported because the marker measures 2.625 CSS px. General
+overview rules for absolute-value, piecewise, exponential, logarithmic,
+trigonometric, and mixed panels remain incomplete.
 
 - Construction: source points, closed SSS normalization, midpoint, line through
   points, perpendicular foot, circle radius, circle/circle and line/circle

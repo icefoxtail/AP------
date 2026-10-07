@@ -1,0 +1,8 @@
+classification: CLI_PATH_LOOKUP_FAILURE_NO_STAGE_MUTATION
+attempt: Phase 3 post-engine-fingerprint coordinate-free replay command
+failure: ENOENT for an inferred examUid path (25_연향중_2학기_기말_중2_기출)
+root cause: the bound result identifies the actual source examUid as 25_삼산중_2학기_기말_중2_기출; the path was inferred incorrectly from a truncated terminal display
+recovery: inspect the bound prior RESULT.identity.questionUid and sourceRef, then retry using the exact result path from the ledger
+
+additional attempt: exact path retrieved via Node used Windows separators and was rejected as NON_CANONICAL_PATH; no stage mutation
+recovery: normalize the bound repo-relative path to forward slashes before invoking run.mjs

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "APMATH_PHASE4_CURRENT_GRAPH_FIXTURE_ATTEMPTS_v1",
+  "classification": "FAILED_DEFECTS_AND_EXPECTED_UNSUPPORTED_PROFILES_PRESERVED",
+  "attempts": [
+    {
+      "id": "finite-closed-interval-start-above-root",
+      "classification": "FRAMING_DOMAIN_GATE_DEFECT_FIXED",
+      "observed": "The direct matrix rejected a closed interval beginning at x=1 for radicand 6x-2 (natural root 1/3), because it required the root to lie inside the finite interval.",
+      "repair": "Require interval lower endpoint >= natural root; preserve exact endpoints and do not expand the finite interval."
+    },
+    {
+      "id": "final-engine-near-boundary-chord",
+      "classification": "FINAL_SPEC_SAMPLING_DEFECT_FIXED",
+      "observedError": "CURVE_INTERIOR_BOUND_FAIL",
+      "observedSegment": {
+        "x": [
+          100.00000000006443,
+          100.00151041668278
+        ],
+        "totalBoundPx": 0.35536591813643964,
+        "limitPx": 0.35
+      },
+      "repair": "Add a deterministic critical point at boundary+(1.2/(Viewport.sy*sqrt(slope)))^2; keep observer bound at 0.35 CSS px.",
+      "inputMeasurements": [
+        {
+          "path": "payload/attempts/final-curve-chord-failure/phase4-sqrt-affine-48bd0e32-ced0-48e4-9552-b43706bb7aa6-frozen-fragment-measurements.json",
+          "bytes": 4775,
+          "sha256": "sha256:b091b98951a20221dbeca04a7e60c37aec91a9d375e245d9288527fa7815ccf4"
+        },
+        {
+          "path": "payload/attempts/final-curve-chord-failure/phase4-sqrt-affine-cfc7b1ea-2d57-4c5e-9a92-c5a7dc20d9cc-frozen-fragment-measurements.json",
+          "bytes": 4775,
+          "sha256": "sha256:b091b98951a20221dbeca04a7e60c37aec91a9d375e245d9288527fa7815ccf4"
+        }
+      ]
+    },
+    {
+      "id": "archive-x-axis-unit-tick-clipping",
+      "classification": "ENGINE_VIEWPORT_CLIPPING_DEFECT_FIXED",
+      "failure": {
+        "runId": "phase4-sqrt-affine-d98441a4-a67c-4e73-91d5-ed87f75b4fbf",
+        "failureClass": "FINAL_ARCHIVE_GEOMETRY_VIEWPORT_CLIPPING",
+        "observedErrors": [
+          "p4-sqrt-affine-full-25_효천고_2학기_중간_고1_기출:GEOMETRY_VIEWPORT_CLIPPING:model-x-unit"
+        ],
+        "rootCause": "The x-axis remained visible while a legacy model-x-unit tick at x=1 was emitted outside a positive-boundary viewport beginning near x=97.1.",
+        "repair": "visual_engine/engine.py now emits unit ticks only when their coordinate lies inside visible axis bounds.",
+        "row": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-row.json",
+          "bytes": 33069,
+          "sha256": "sha256:8e77e56094e8ccc4549fb2975e033a22b5b895d416a0b6a52fc8c260de24a779"
+        },
+        "screenshot": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-screenshot.png",
+          "bytes": 1086949,
+          "sha256": "sha256:871bb8593833f0ed56edafc5140fd7ed337d72848c802eef12e5df088c7753da"
+        },
+        "targetImage": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-target-image.png",
+          "bytes": 4053,
+          "sha256": "sha256:0e65c79a7b9687cb177c6b7ab7c74f37a4dd7cf8386c179617720aa67237f191"
+        },
+        "context": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-context.png",
+          "bytes": 8032,
+          "sha256": "sha256:8b06304dc05532d558d313781a3f13bf1559f26ce36664f4449340dd6ea65fd9"
+        },
+        "envelope": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-envelope-context.png",
+          "bytes": 8032,
+          "sha256": "sha256:8b06304dc05532d558d313781a3f13bf1559f26ce36664f4449340dd6ea65fd9"
+        },
+        "summary": {
+          "path": "payload/attempts/archive-axis-tick-clipping/archive-summary.json",
+          "bytes": 806,
+          "sha256": "sha256:878020e0ae6d370261dd5b6903d0763a12832554a2844a4c7e4f04e54c872b2f"
+        }
+      }
+    },
+    {
+      "id": "sqrt-small-profile",
+      "classification": "EXPECTED_UNSUPPORTED_PROFILE",
+      "reason": "At displayScale 0.328125, the 4px intrinsic marker renders 2.625 CSS px, below the 3px policy floor; medium/large/full pass."
+    },
+    {
+      "id": "coordinate-free-replay-cli-path-lookup",
+      "classification": "NO_MUTATION_COMMAND_FAILURE_PRESERVED",
+      "evidence": {
+        "path": "payload/phase3-impact/coordinate-free-q1/attempts/command-path-failures.txt",
+        "bytes": 754,
+        "sha256": "sha256:62a2e7e9c9f9ff7b13d34a3801582a8c0bbe669b57300e808603585503755f3a"
+      },
+      "reason": "A guessed exam path was wrong; a second invocation used Windows separators and was rejected as NON_CANONICAL_PATH. Neither published a stage. The bound result identity/path was then used with forward slashes."
+    }
+  ],
+  "partialPackageAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p4/phase4-current-graph-overviews-v1/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "Initial package builder failed before a complete manifest was produced; all partial files are preserved.",
+      "fileCount": 14,
+      "bytes": 388625,
+      "treeSha256": "sha256:0ca83f3513278e3f415f2c0a378b2fce8dcaf5e0119ae3d2d283bc2cb07b6ae2"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/phase4-current-graph-overviews-v2/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "Python Windows MAX_PATH path resolution failed while opening a row listed by directory enumeration; v2 bytes are preserved and excluded.",
+      "fileCount": 14,
+      "bytes": 388625,
+      "treeSha256": "sha256:54b89f07351260d2bf07976dff92d2216a4055c8744b64f6a00e94f623937a5e"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/phase4-current-graph-overviews-v3/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "The package payload was copied after the long-path fix, but the builder stopped before ledger/index/manifest because its Python script omitted the subprocess import; v3 bytes are preserved and excluded.",
+      "fileCount": 140,
+      "bytes": 16724158,
+      "treeSha256": "sha256:4522e78cb7472cca1f5b53e09352f2e1e24ca4e0884cc8ca7e4ea694394f08c8"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/phase4-current-graph-overviews-v4/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "Fixture payloads were copied; the P3 capture screenshot output basename exceeded Windows MAX_PATH when copied into the evidence tree. v4 bytes are preserved and excluded.",
+      "fileCount": 149,
+      "bytes": 16764523,
+      "treeSha256": "sha256:40d5aea1e74455bbc73e4489996a2857b6222f04b965efaf2788ca9a7344c380"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v5/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "The package stopped while discovering the preserved failed Archive row; v5 payload bytes are preserved and excluded.",
+      "fileCount": 175,
+      "bytes": 18630984,
+      "treeSha256": "sha256:5db98bfe9cd6684fa1175ced414e8d44be8240145e6d2362859cbcd9ff75c7dd"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v6/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "The package stopped on a cardinality ambiguity because the envelope-context screenshot also matched the context glob; v6 payload bytes are preserved and excluded.",
+      "fileCount": 175,
+      "bytes": 18630984,
+      "treeSha256": "sha256:5ae7e1fdccb56de995733cddb4aed4dc880b13e3207b639acdc8aac9383deb2a"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v7/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "The failed Archive row has both a full-page screenshot and a target-image screenshot; v7 payload bytes are preserved and excluded after screenshot cardinality validation rejected the two distinct images.",
+      "fileCount": 175,
+      "bytes": 18630984,
+      "treeSha256": "sha256:2e2dc08f5ac58f6f4d3f9149a0ec069562d6c3826ea04598b24c3ba1ae82b007"
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/current-graph-overviews-v9/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "cause": "Fixture, phase3-impact, failure, and regression payloads were copied; one tracked-code reference used the wrong production subpath. v8 bytes are preserved and excluded.",
+      "fileCount": 183,
+      "bytes": 19781475,
+      "treeSha256": "sha256:f5f4a2f99a4ae296f25542400ccc4b6c1205b8ebc5fe4af0abe9d306e734d064"
+    }
+  ]
+}

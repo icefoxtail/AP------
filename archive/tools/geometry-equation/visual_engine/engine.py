@@ -24,6 +24,9 @@ def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
+    axis_option=spec.get('axes',True)
+    show_x=axis_option if isinstance(axis_option,bool) else axis_option['x']
+    show_y=axis_option if isinstance(axis_option,bool) else axis_option['y']
     symbols={name:evaluate(parse(expression)) for name,expression in spec['displayFacts'].get('symbolDefinitions',{}).items()}
     for name,value in symbols.items():
         if not name.isalpha() or isinstance(value,(bool,tuple,complex)) or not math.isfinite(float(value)):raise ValueError('INVALID_EXACT_SYMBOL_DEFINITION')
@@ -32,22 +35,34 @@ def prepare(spec):
             x,y=value.center;r=value.radius;critical.extend([(x-r,y-r),(x+r,y+r)])
         elif isinstance(value,tuple) and len(value)==2 and isinstance(value[0],float):critical.append(value)
         elif isinstance(value,tuple):critical.extend(value)
-    if spec.get('axes',True):critical.extend([(0,0),(1,0),(0,1)])
+    if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,Circle) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
     primitives=[];labels=[];obstacles=[];sampling=[]
     def primitive(p,obstacle=None):
         primitives.append(p)
         if obstacle:obstacles.append({'id':p['id'],'kind':obstacle,'geometry':p.get('points', [p.get('from'),p.get('to')]) if obstacle not in {'point','circle'} else (*p['at'],p['radius'])})
-    if spec.get('axes',True):
+    if show_x or show_y:
         xmin,xmax,ymin,ymax=vp.bounds
-        for oid,a,b in [('x-axis',(xmin,0),(xmax,0)),('y-axis',(0,ymin),(0,ymax))]:
+        axes=[]
+        if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
+        if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))
+        for oid,a,b in axes:
             primitive({'id':oid,'kind':'line','from':vp.screen(a),'to':vp.screen(b),'token':'axis','layer':30,'role':'axis'},'axis')
-        for oid,at,delta in [('model-x-unit',(1,0),(0,4)),('model-y-unit',(0,1),(-4,0))]:
+        unit_ticks=[]
+        if show_x and xmin<=1<=xmax:unit_ticks.append(('model-x-unit',(1,0),(0,4)))
+        if show_y and ymin<=1<=ymax:unit_ticks.append(('model-y-unit',(0,1),(-4,0)))
+        for oid,at,delta in unit_ticks:
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick'},'line')
-        for oid,at,text in [('axis-x',(xmax,0),'x'),('axis-y',(0,ymax),'y')]:
+        axis_labels=[]
+        if show_x:axis_labels.append(('axis-x',(xmax,0),'x'))
+        if show_y:axis_labels.append(('axis-y',(0,ymax),'y'))
+        for oid,at,text in axis_labels:
             labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
-        for axis,lo,hi in [('x',xmin,xmax),('y',ymin,ymax)]:
+        visible_axes=[]
+        if show_x:visible_axes.append(('x',xmin,xmax))
+        if show_y:visible_axes.append(('y',ymin,ymax))
+        for axis,lo,hi in visible_axes:
             raw=(hi-lo)/5;power=10**math.floor(math.log10(raw));step=next(v*power for v in (1,2,5,10) if v*power>=raw)
             for index in range(math.ceil(lo/step),math.floor(hi/step)+1):
                 value=index*step
@@ -75,6 +90,15 @@ def prepare(spec):
             if not isinstance(marker_radius,(int,float)) or isinstance(marker_radius,bool) or marker_radius<=0:raise ValueError('RATIONAL_HOLE_MARKER_POLICY_REQUIRED')
             primitive({'id':'rational-removable-hole','kind':'circle','at':at,'radius':marker_radius,'token':'indicator','layer':65,'role':'hole','fill':'#fff'},'circle')
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
+    sqrt_features=spec['displayFacts'].get('sqrtFeatures')
+    if sqrt_features is not None:
+        if sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('sqrtFeaturePolicy',{});radius=policy.get('endpointMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('SQRT_ENDPOINT_MARKER_POLICY_REQUIRED')
+        for index,endpoint in enumerate(sqrt_features.get('sourceEndpoints',[])):
+            if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
+            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            primitive({'id':'sqrt-domain-endpoint-'+str(index),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'domain-endpoint','fill':'#111'},'circle')
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
     graph_index=0
