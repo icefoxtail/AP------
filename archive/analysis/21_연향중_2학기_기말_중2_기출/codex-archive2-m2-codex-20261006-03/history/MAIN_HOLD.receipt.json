@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_연향중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 12,
+  "productionPath": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+  "candidate": {
+    "rawSha256": "14356f015a37edfe68f2722829d3b731d0930b85b207c8fb3062117b31104c19",
+    "gitBlobSha1": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "completedStages": {
+    "CREATE": {
+      "status": "PASS",
+      "evidenceSha256": "ae373a9f4ac42c4d596ad34c31438c1b43c5d066f38945c496f577fa3c18f4bc"
+    },
+    "R1": {
+      "status": "PASS",
+      "evidenceSha256": "e523c31960b28ff3581b421fa37838020537afb0413d917bb9747bf3c31d9bc8",
+      "validationSha256": "b14fbbc55b8f87a03f4190dceb4d045d09a79c437792859755cdbcbe293e4fa5"
+    },
+    "R2": {
+      "status": "PASS",
+      "evidenceSha256": "a5a5d355708c88f1eb225c422920bddfeb2bd30527035cc41bb8be4401f1f50d",
+      "validationSha256": "931e31def1998fc291d30696aa161e85788e2b7659091ef8dadc16fd24564cd1"
+    },
+    "R3": {
+      "status": "NOT_RUN_BLOCKED",
+      "continuation": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_연향중_2학기_기말_중2_기출/R3.continuation.json",
+        "sha256": "ee79eea8469a71f3812ab9ed848f6b9d8b3d1a67064cfe3f84404e3c013f07be"
+      },
+      "missingClosureStep": "ACTUAL_ARCHIVE_ENGINE_RENDER_MATRIX",
+      "requiredCases": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile",
+        "ans/desktop",
+        "ans/mobile"
+      ],
+      "blocker": "The official Archive engine route archive/engine.html requires an HTTP(S) same-origin app tab; Codex IAB refused the local file URL and the assigned R3 subagent had no browser instance. No captures were made; no supported HTTP(S) engine tab or sanctioned workspace browser route was available.",
+      "forbiddenWorkaroundsNotUsed": [
+        "local-server",
+        "alternate-browser",
+        "Playwright",
+        "CDP"
+      ]
+    }
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": true
+  },
+  "holdReason": "R1/R2 and content quality pass; the only missing gate is actual R3 engine rendering/capture under the sanctioned browser route.",
+  "resumeCondition": "Resume the same R3 session when the official Archive engine is reachable through an approved HTTP(S) in-app browser context in the assigned R3 session."
+}
