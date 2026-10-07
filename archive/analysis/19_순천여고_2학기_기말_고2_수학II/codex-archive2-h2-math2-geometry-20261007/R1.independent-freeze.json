@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_INDEPENDENT_FREEZE_V1",
+  "stage": "R1",
+  "examUid": "19_순천여고_2학기_기말_고2_수학II",
+  "qidsCovered": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+  "denominator": 22,
+  "inputHolds": [],
+  "inputSource": {"path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\R1.student-bundle.json", "sha256":"6456f2bbb8fcdefdba51f6d91b9fb33e7a3b8eaaf3f5b2c50b6269cb16a8799d"},
+  "requiredAssetsOpened": [
+    {"qid":6,"ref":"assets/images/19_순천여고_2학기_기말_고2_수학II/q6.png","path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\assets\\images\\19_순천여고_2학기_기말_고2_수학II\\q6.png","sha256":"c5017bc239aecddae26dd474f1f60c69bedf9f53e4ab01d12165aebf1fb3cc6c","observation":"Graph of f prime is readable; zeros near -1, 2, 4; signs support extrema and monotonicity claims."},
+    {"qid":21,"ref":"assets/images/19_순천여고_2학기_기말_고2_수학II/q21.png","path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\assets\\images\\19_순천여고_2학기_기말_고2_수학II\\q21.png","sha256":"2539a24bcb83ec0457b0d9abf77e01902357cd2c8e7f4cf0ca6d80e6b41557a3","observation":"Circle centered at (0,2) radius 2, y=x squared, symmetric side regions S1 and S2; curves and labels legible despite rough shading."}
+  ],
+  "reviewerModelRecord": {"role":"archive_r1","model":"gpt-6-luna","reasoningEffort":"high","serviceTelemetry":"not collected"},
+  "independentResults": [
+    {"qid":1,"answer":"-4","reasoning":"f prime=4x(x^2+2); global minimum at x=0, value -4."},
+    {"qid":2,"answer":"11","reasoning":"Integrate f prime: f=2x^3-3x+1 from f(0)=1; evaluate at 2."},
+    {"qid":3,"answer":"12","reasoning":"Antiderivative x^3+x^2; evaluate from 0 to 2."},
+    {"qid":4,"answer":"15","reasoning":"Velocity is 3t^2-4t; at t=3 it is 15."},
+    {"qid":5,"answer":"17","reasoning":"Integral quotient limit is f(2)=3(4)+4+1."},
+    {"qid":6,"answer":"ㄱ, ㄴ (choice 3)","reasoning":"f prime changes + to - at 2, then is negative on (2,3); it changes sign at 4, so f is not increasing throughout (3,5)."},
+    {"qid":7,"answer":"-8","reasoning":"Split at -2: integrands are -3x^2-6x and 3x^2+6x; each integral over its subinterval is -4."},
+    {"qid":8,"answer":"5","reasoning":"Need k greater than h(x)=-4x^3+3x^2+6x for 1<x<3. h is strictly decreasing there with supremum 5 at 1, so k=5 works and is minimal natural choice."},
+    {"qid":9,"answer":"1.5 m/s","reasoning":"Similar triangles give shadow length s equal to the person's distance from the lamp; rates match."},
+    {"qid":10,"answer":"0","reasoning":"f prime=x^2+2ax+1 is nonnegative for all x exactly when |a|<=1; the isolated zero cases still give strict increase. Integer sum -1+0+1=0."},
+    {"qid":11,"answer":"-1","reasoning":"For F=x^3-3x^2 the local maximum is 0 and local minimum -4; three distinct roots require -4<k<0, so greatest integer is -1."},
+    {"qid":12,"answer":"2/3","reasoning":"v=(t-2)^2, so t=2; substitute into position to get 2/3."},
+    {"qid":13,"answer":"6","reasoning":"Differentiate the integral equation twice to obtain f=12x^2-2a. Conditions I(-1)=I prime(-1)=0 give 1-a-b=0 and -4+2a+b=0, hence a=3,b=-2 and f(1)=6."},
+    {"qid":14,"answer":"-32","reasoning":"The equation reduces to t^3-6t+a=0. Three distinct real roots require -4sqrt(2)<a<4sqrt(2), so mn=-32."},
+    {"qid":15,"answer":"8","reasoning":"f(x)-f(2)=x^3-4x and oddness fixes f(2)=0; roots -2,0,2 give two symmetric lobes of area 4 each."},
+    {"qid":16,"answer":"20","reasoning":"Differentiate to get f=4x^3+3ax^2-2; evaluating the integral identity at x=1 and integrating this f on [0,1] yields a=1. The limit is 2(1+1)f(1)=20."},
+    {"qid":17,"answer":"-4/3","reasoning":"g=(x-3/2)^2-9/4=x(x-3). Limit existence forces f to vanish at 0 and 3. The sole nondifferentiability of |f| forces the zero at 0 to be even, giving monic f=x^2(x-3). Integrate f+g on [-1,1]."},
+    {"qid":18,"answer":"-6","reasoning":"The integral term in (나) is x times (1/6 integral f)=ax, so f=|x-2|+ax. Integrating gives 4+8a=6a, hence a=-2. For H=xf-ax^2, H=x^2 for x<=2 and H=3x^2-4x for x>=2; intersection count jumps at k=0 and 4. Thus x^2+bx+c has roots 0,4 and a+b+c=-6."},
+    {"qid":19,"answer":"maximum 5, minimum 1","reasoning":"Critical points 1 and 3; endpoint and critical values are f(0)=5, f(1)=1, f(3)=5, f(4)=1."},
+    {"qid":20,"answer":"x=1, 3","reasoning":"Polynomial limit at negative infinity forces a monic quadratic; f prime(3)=2 and f(3)=0 give f=x^2-4x+3."},
+    {"qid":21,"answer":"4pi/3","reasoning":"Intersections satisfy x=0, plus/minus sqrt(3). Each side region has area integral from 0 to sqrt(3) of x^2-2+sqrt(4-x^2), equal 2pi/3; double it."},
+    {"qid":22,"answer":"x^3-3x^2+4","reasoning":"Differentiate (나) to get g=xg prime, hence polynomial g=cx. Divisibility by (x-2)^2 gives k=-2,c=-2, and f=x^3-3x^2+4."}
+  ],
+  "preDisclosureFourAxisReview": {
+    "questionLayout":"All 22 prompts and choices were read in the frozen student bundle. Mathematical expressions and attached conditions remain identifiable; long multi-condition prompts q13-q18 and q20-q22 should preserve condition/ask boundaries and grouped formulas in rendered layout. No input omission found.",
+    "solutionLayout":"Independent solution chains above capture required setup, transformation, intermediate values, substitutions, and final results; solution-body comparison is postfreeze.",
+    "meta":"Actual current Meta fields are not present in the student-only bundle and remain explicitly pending postfreeze extraction; no classification inferred from prior evidence.",
+    "visualSvg":"q6 graph and q21 geometry are required visuals, both opened and readable. Other qids have no required asset. SVG need and current Meta disposition require postfreeze current-field inspection."
+  }
+}

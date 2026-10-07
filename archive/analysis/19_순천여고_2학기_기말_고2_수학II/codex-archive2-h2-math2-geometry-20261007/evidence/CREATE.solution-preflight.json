@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOLUTION_PREFLIGHT_V1",
+  "stage": "CREATE",
+  "examUid": "19_순천여고_2학기_기말_고2_수학II",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "calibrationStatus": "PASS",
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": [
+    "assignment_and_source_identity",
+    "golden_and_negative_read",
+    "preflight_pass",
+    "target_solution_draft"
+  ],
+  "solutionWorkMode": "SOURCE_ONLY_FRESH",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "내분점 두 좌표를 별도로 계산하고, 중점과 거리 공식을 실제 수치로 이어 최종 선택지까지 보인다.",
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+        },
+        {
+          "qid": 7,
+          "observation": "완전제곱으로 원의 중심과 반지름을 찾은 뒤 평행이동·원점 대칭을 차례로 적용한다.",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "visualObservation": "SVG의 원 중심 좌표 C0=(-3,1), C1=(-5,2), C2=(5,-2), 반지름 3의 동일성을 풀이와 대조했다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "원소 관계와 부분집합 관계를 구별해 보기마다 참·거짓 근거를 제시한다.",
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9"
+        },
+        {
+          "qid": 17,
+          "observation": "수직인 두 방향을 모두 비교하고 제1사분면 조건으로 후보를 거른 후 중점과 반지름을 계산한다.",
+          "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+          "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q17-solution.svg",
+          "visualSha256": "3305f493c628a4f6d7cffb55baff33f70b78eceb13574b515ed16289c8109869",
+          "visualObservation": "좌표 도형의 A,B,C,D, 중심 (15/2,9), CD=5 및 r=5/2 표기를 좌표·거리 계산과 대조했다. 제일고 q18의 알려진 visual exception은 사용하지 않았다."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+    "svgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+    "svgSha256": "1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+    "observation": "README와 q7 failure SVG의 실제 좌표 primitive를 읽었다. 표기된 A(-1/2,0), B(0,-1)은 polyline을 통과하지 않아 라벨만으로 시각 정합성을 입증할 수 없으며, SVG geometry 자체를 계산해 확인해야 한다."
+  },
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sourceReview": {
+    "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_순여고2_수2_2기말.pdf",
+    "sourcePdfSha256": "25d6540dcd5b64af6eeffe5bd1e098a2299cb5fc8e2f136e3fb5a9ef28a66dc74",
+    "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_순여고2_수2_2기말_해설.pdf",
+    "answerPdfSha256": "1425849c7855e1ed113bc27e253042d2c0bb53f3b718ef28c83a93ada6e30e3a",
+    "renderedAndViewedPages": {
+      "source": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "answer": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "observations": [
+      "시험지 식별정보는 2019학년도 2학기 기말고사, 수학II, 2학년이며 question bank와 22문항 분모가 일치한다.",
+      "q8 source PDF는 선택지 ①~④까지만 인쇄되어 있으나 answer PDF handwritten marking identifies ⑤=5; 수학적으로 최소 자연수는 5.",
+      "q12 source/answer PDF states direction-change, but x′=(t-2)^2 does not change sign at t=2; answer key treats v=0 as direction change."
+    ]
+  }
+}

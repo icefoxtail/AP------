@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q21_SOURCE_VISUAL_HOLD_SUPPLEMENT_V1",
+  "examUid": "19_순천여고_2학기_기말_고2_수학II",
+  "qid": 21,
+  "scope": "q21 source-visual hold release binding only",
+  "upstreamHoldProvenance": {
+    "origin": "CREATE",
+    "type": "source_visual_hold",
+    "reportedReason": "원본 도형의 손글씨/해칭이 S1/S2 영역을 가로지름",
+    "provenanceDisposition": "PRESERVED",
+    "oldReconstruction": "q21-source-clean.svg",
+    "oldReconstructionStatus": "NOT_ADOPTED",
+    "thisSupplementDoesNotRewriteOrEraseOriginalHold": true
+  },
+  "observedSourceVisual": {
+    "ref": "assets/images/19_순천여고_2학기_기말_고2_수학II/q21.png",
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\assets\\images\\19_순천여고_2학기_기말_고2_수학II\\q21.png",
+    "sha256": "2539a24bcb83ec0457b0d9abf77e01902357cd2c8e7f4cf0ca6d80e6b41557a3",
+    "openedBeforeFreeze": true,
+    "observedReadableFacts": [
+      "좌표축 x,y와 원점 O가 읽힌다.",
+      "원 C의 중심 표식 C와 y축 위 중심 위치, 원의 위쪽 y=4 표기가 읽힌다.",
+      "포물선 y=x^2 표기와 원의 교점 경로가 읽힌다.",
+      "왼쪽/오른쪽 영역을 가리키는 S2/S1 화살표와 두 영역 구분이 읽힌다.",
+      "해칭은 곡선 주변을 거칠게 가로지르지만 S1/S2 라벨, 원호·포물선 경계, 원점·교점의 위치를 가리지 않는다."
+    ]
+  },
+  "studentPayloadFacts": {
+    "questionText": "원 C: x^2+(y-2)^2=4; y=x^2",
+    "ask": "두 곡선으로 둘러싸인 S1,S2의 넓이 합",
+    "uniqueDeterminingFacts": "원 방정식과 포물선 식이 정확한 곡선을 정하고, 그림의 S1/S2 화살표가 좌우 대칭인 두 side region을 지정한다."
+  },
+  "prefreezeIsolation": {
+    "usedOnlyLockedCurrentStudentBundleAndRequiredAsset": true,
+    "usedActualQ21Crop": true,
+    "usedUnreferencedReconstruction": false,
+    "usedUpstreamAnswerOrKey": false,
+    "usedUpstreamHoldReasonBeforeFreeze": false,
+    "usedPriorCreateEvidenceBeforeFreeze": false
+  },
+  "freezeBinding": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\19_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.independent-freeze.json",
+    "sha256": "120adee9cdebd7183d88c47b33a92828324cb230ee990f545452f2547669cc9e",
+    "freezePrecededStoredAnswerDisclosure": true,
+    "denominator": 22,
+    "inputHoldQids": []
+  },
+  "calculationAdjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\19_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.freeze-adjudication.json",
+    "sha256": "4fd49aa1038688424c9b36a83c88d2818c65f6770e5ce5e6ec3ab49e95de6130",
+    "originalFrozenQ21Answer": "4pi/3",
+    "adjudicatedAnswer": "8pi/3-3sqrt3",
+    "classification": "POSTFREEZE_CALCULATION_OMISSION_WITH_COMPLETE_ORIGINAL_INPUT",
+    "reason": "The original visual fixes the regions; the initial computation omitted the parabolic-area correction when evaluating the side-region area. No region fact or boundary was supplied only after answer disclosure.",
+    "studentPayloadChanged": false,
+    "assetChanged": false
+  },
+  "currentReviewBinding": {
+    "r1EvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\19_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.evidence.json",
+    "r1EvidenceSha256": "195c5aced8b360e75a8807f49a86bf633faff51593043cdb24779f9454c7a254",
+    "currentJsRawSha256": "78475265202d3322e3021511b34f65c1ccc8f37553af28f80131884d7501a89c",
+    "q21PostfreezeRecheckPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\R1.postfreeze-final-changed-qids-10-21.json",
+    "q21PostfreezeRecheckSha256": "d135bd19c484235f8e6b782692d6d2a3baf171b611fba95d9e5f63be0300cfec"
+  },
+  "disposition": {
+    "priorCreateSourceVisualHold": "RESOLVED_FOR_CURRENT_R1_CANDIDATE",
+    "reason": "Required original q21.png was actually read before freeze and its labels, curve identities, axes, and S1/S2 region arrows uniquely specify the student problem despite rough hatching.",
+    "r1InputVisualStatus": "PASS",
+    "freezeValidityForQ21": "VALID_AFTER_POSTFREEZE_CALCULATION_ADJUDICATION",
+    "terminalExamHold": false
+  },
+  "nextAction": "R2 independently extracts and freezes its own complete current student-only input; this supplemental is not an answer/solution handoff."
+}
