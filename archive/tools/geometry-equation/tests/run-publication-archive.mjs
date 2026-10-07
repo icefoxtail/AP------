@@ -8,16 +8,19 @@ import http from 'node:http';
 import {repoRoot,launchBrowser} from '../visual-browser-runtime.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
-const folder=path.join(repoRoot,'archive/_generated/geometry-visual-engine/publication-tests');
+const folder=path.join(repoRoot,'.tmp/archive/visual-engine-tests/publication-tests');
 const fixtures=JSON.parse(fs.readFileSync(path.join(folder,'manifest.json'),'utf8'));
 const sourcePath='/archive/exams/original/middle/m3/2mid/25_publication_fixture.js';
-const bank='window.examTitle="도형 엔진 회귀 테스트";window.questionBank='+JSON.stringify(fixtures.map((f,i)=>({id:i+1,content:'도형의 관계를 확인하시오.',answer:'회귀 테스트',solution:'점, 선분, 각도와 영역의 관계를 확인한다.',solutionImage:f.svg.replace(/^archive\//,''),solutionImageAlt:'도형 엔진 synthetic fixture '+f.id,solutionImageSize:'full'})))+';';
+const assets=fixtures.map((f,i)=>({...f,archivePath:`assets/images/publication-tests/q${String(i+1).padStart(2,'0')}-solution.svg`,archiveUrlPath:`/archive/assets/images/publication-tests/q${String(i+1).padStart(2,'0')}-solution.svg`}));
+const assetOverrides=new Map(assets.map(f=>[f.archiveUrlPath,path.join(repoRoot,f.svg)]));
+const bank='window.examTitle="도형 엔진 회귀 테스트";window.questionBank='+JSON.stringify(assets.map((f,i)=>({id:i+1,content:'도형의 관계를 확인하시오.',answer:'회귀 테스트',solution:'점, 선분, 각도와 영역의 관계를 확인한다.',solutionImage:f.archivePath,solutionImageAlt:'도형 엔진 synthetic fixture '+f.id,solutionImageSize:'full'})))+';';
 const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf','.ico':'image/x-icon'};
 const server=http.createServer((req,res)=>{
   try{
     if(req.method!=='GET'){res.writeHead(405);res.end();return;}
     const requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
     if(requested===sourcePath){res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8','Cache-Control':'no-store'});res.end(bank);return;}
+    if(assetOverrides.has(requested)){const file=assetOverrides.get(requested);res.writeHead(200,{'Content-Type':'image/svg+xml','Cache-Control':'no-store'});res.end(fs.readFileSync(file));return;}
     const file=path.resolve(repoRoot,'.'+requested),type=types[path.extname(file)];
     if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!type||!fs.existsSync(file)||!fs.realpathSync(file).startsWith(fs.realpathSync(repoRoot)+path.sep)){res.writeHead(404);res.end();return;}
     res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'});res.end(fs.readFileSync(file));
@@ -43,8 +46,8 @@ try{
   result.state=state;
   if(!state.mode||!state.mathJaxReady||state.renderError||state.overflow)errors.push('ARCHIVE_RENDER_STATE_FAIL');
   if(state.readiness){const r=JSON.parse(state.readiness);if(r.failed||!['RENDER_READY','PRINT_READY'].includes(r.state))errors.push('ARCHIVE_READINESS_FAIL');}
-  for(const f of fixtures){
-    const target=state.images.find(i=>decodeURIComponent(new URL(i.src).pathname)==='/'+f.svg);
+  for(const f of assets){
+    const target=state.images.find(i=>decodeURIComponent(new URL(i.src).pathname)===f.archiveUrlPath);
     if(!target?.loaded)throw Error('ARCHIVE_TARGET_LOAD_FAIL:'+f.id);
     const bytes=fs.readFileSync(path.join(repoRoot,f.svg));if(sha256(bytes)!==f.svgSha256)throw Error('STALE_FIXTURE:'+f.id);
     const inspector=await browser.newPage({viewport:{width:390,height:844}});
@@ -53,7 +56,7 @@ try{
     rows.push({id:f.id,status:layout.status,svgSha256:f.svgSha256,actualImage:target,measurementMode:'ISOLATED_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE',minCssFont:Math.min(...capture.labels.map(l=>l.effectiveFontPx)),errors:layout.errors});
     fs.writeFileSync(path.join(folder,f.id+'.archive-layout.json'),JSON.stringify({capture,layout},null,2));
     const image=page.locator('#print-area .sol-image-wrap img').filter({visible:true});
-    for(let i=0;i<await image.count();i++)if(await image.nth(i).getAttribute('src')&&decodeURIComponent(new URL(await image.nth(i).evaluate(e=>e.src)).pathname)==='/'+f.svg){await image.nth(i).screenshot({path:path.join(folder,f.id+'.archive.png')});break;}
+    for(let i=0;i<await image.count();i++)if(await image.nth(i).getAttribute('src')&&decodeURIComponent(new URL(await image.nth(i).evaluate(e=>e.src)).pathname)===f.archiveUrlPath){await image.nth(i).screenshot({path:path.join(folder,f.id+'.archive.png')});break;}
     if(layout.status!=='PASS')errors.push('ARCHIVE_LAYOUT_FAIL:'+f.id);
   }
   await page.screenshot({path:path.join(folder,'archive-desktop.png'),fullPage:true});

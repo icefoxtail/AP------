@@ -54,7 +54,7 @@ def constraints(tree):
     found=[]
     def visit(n):
         if n.kind=='binary' and n.value=='/':found.append(('denominator',n.args[1]))
-        if n.kind=='call' and n.args[0].kind=='symbol' and n.args[0].value in {'log','sqrt','tan'}:
+        if n.kind=='call' and n.args[0].kind=='symbol' and n.args[0].value in {'log','ln','sqrt','tan'}:
             found.append((n.args[0].value,n.args[1]))
         for v in n.args:visit(v)
     visit(tree);return found
@@ -86,7 +86,7 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
                 if kind=='denominator':
                     if abs(z)<1e-14:raise ValueError('POLE')
                     signature.append(1 if z>0 else -1)
-                elif kind=='log':
+                elif kind in {'log','ln'}:
                     if z<=0:raise ValueError('LOG_DOMAIN')
                 elif kind=='sqrt':
                     if z<0:raise ValueError('SQRT_DOMAIN')
