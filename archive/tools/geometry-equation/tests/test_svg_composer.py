@@ -26,6 +26,23 @@ class ComposerTests(unittest.TestCase):
         self.assertIn('원과 접점',s);self.assertNotIn('\\frac',s)
     def test_layer_order(self):
         p,l=fixtures();s=compose(p,l,Viewport(-2,2,-2,2));self.assertLess(s.index('id="line"'),s.index('id="point"'));self.assertLess(s.index('id="point"'),s.index('id="label"'))
+    def test_measured_tick_knockout_is_painted_over_graph_and_under_label(self):
+        prepared={'title':'함수 그래프','primitives':[{'id':'f-branch-0','kind':'line','from':[20,20],'to':[180,180],'layer':50,'role':'curve'}]}
+        label={'id':'tick-x-1-label','kind':'TICK_LABEL','text':'1','font':13,'math':True,'centered':True,
+               'tickId':'tick-x-1','tickAxis':'x','tickValue':1,'tickDisplayValue':'1','owner':'tick-x-1',
+               'at':[100,100],'baseline':[100,118],'box':{'x':94,'y':112,'width':12,'height':12}}
+        knockout={'schemaVersion':'TICK_LABEL_GRAPH_KNOCKOUT_v1','labelId':label['id'],'tickOwner':'tick-x-1','axis':'x','value':1,
+                  'obstacleIds':['f-branch-0'],'box':label['box'],'padding':6.0,'clearancePx':'SVG_USER_SPACE','reason':'PRESERVED_GRAPH_STROKE_CLEARANCE'}
+        layout={'labels':[{**label,'tickLabelKnockout':knockout}],
+                'trace':[{'id':label['id'],'fallback':'TICK_LABEL_GRAPH_KNOCKOUT_S','tickLabelKnockout':knockout}]}
+        svg=compose(prepared,layout,Viewport(-2,2,-2,2,width=200,height=200,panel=0))
+        root=ET.fromstring(svg)
+        mask=root.find('.//*[@data-role="tick-label-knockout"]')
+        self.assertIsNotNone(mask)
+        self.assertEqual(mask.attrib['data-owner-label'],label['id'])
+        self.assertEqual(mask.attrib['data-occluded-primitives'],'f-branch-0')
+        self.assertLess(svg.index('id="f-branch-0"'),svg.index('data-role="tick-label-knockout"'))
+        self.assertLess(svg.index('data-role="tick-label-knockout"'),svg.index('id="tick-x-1-label"'))
     def test_duplicate_label(self):
         p,l=fixtures();l['labels'].append({**l['labels'][0],'id':'label2'})
         with self.assertRaisesRegex(ValueError,'DUPLICATE_SEMANTIC'):compose(p,l,Viewport(-2,2,-2,2))

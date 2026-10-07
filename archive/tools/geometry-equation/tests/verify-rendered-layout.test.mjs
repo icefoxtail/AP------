@@ -37,6 +37,18 @@ test('leader crossing a core line is a hard rendered failure',()=>{const c=captu
 function tickCapture({id='tick-x--2',axis='x',value=-2,point=[34.84,160],box={x:27.84,y:172,width:14,height:12},extraTicks=[]}={}) {
   const [x,y]=point,labelId=id+'-label';const axisClient=axis==='x'?{x:0,y,width:300,height:0}:{x,y:0,width:0,height:300};const tickClient=axis==='x'?{x,y:y-4,width:0,height:8}:{x:x-4,y,width:8,height:0};return{...capture(),safeMargin:0,labels:[{id:labelId,kind:'TICK_LABEL',priority:0,value:value<0?'−'+Math.abs(value):String(value),owner:id,tickOwner:id,tickAxis:axis,tickValue:String(value),tickDisplayValue:value<0?'−'+Math.abs(value):String(value),tickSource:[x,y],tickSourceClient:[x,y],client:box,bbox:{x:box.x,y:box.y,width:box.width,height:box.height},missingGlyphCount:0,font:'serif',baseFontPx:12,effectiveFontPx:12,renderedVisibility:visibleMeasurement(labelId,box)}],geometry:[{id:axis+'-axis',kind:'axis',axis,points:axis==='x'?[[0,y],[300,y]]:[[x,0],[x,300]],client:axisClient,strokeWidthPx:0,visibilityEvidence:visibleGeometryMeasurement(axis+'-axis',axisClient)},{id,kind:'tick',axis,value:String(value),points:axis==='x'?[[x,y-4],[x,y+4]]:[[x-4,y],[x+4,y]],client:tickClient,strokeWidthPx:0,visibilityEvidence:visibleGeometryMeasurement(id,tickClient)},...extraTicks]};
 }
+test('curve clearance is accepted only with a visible measured white knockout between curve and tick label',()=>{
+  const c=tickCapture({id:'tick-x-1',value:1,point:[100,160],box:{x:93,y:172,width:14,height:12}}),label=c.labels[0],maskBox={x:87,y:166,width:26,height:24};
+  const curve={id:'f-branch-0',kind:'curve',role:'curve',points:[[100,100],[100,220]],client:{x:100,y:100,width:0,height:120},strokeWidthPx:.8,paintOrder:1};
+  const rectNode={tag:'rect',id:'tick-x-1-label-knockout-background',display:'inline',visibility:'visible',opacity:1,clipPath:'none',mask:'none',clipPathState:{status:'CLEAR'},maskState:{status:'CLEAR'}};
+  const svgNode={tag:'svg',id:null,display:'block',visibility:'visible',opacity:1,clipPath:'none',mask:'none',clipPathState:{status:'CLEAR'},maskState:{status:'CLEAR'}};
+  const mask={id:'tick-x-1-label-knockout-background',kind:'tickLabelKnockout',role:'tick-label-knockout',ownerLabelId:label.id,occludedPrimitiveIds:['f-branch-0'],client:maskBox,fill:'rgb(255, 255, 255)',fillOpacity:1,opacity:1,strokeWidthPx:0,paintOrder:2,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:[rectNode,svgNode],content:[{tag:'rect',id:rectNode.id,bbox:maskBox,client:maskBox,ancestors:[rectNode,svgNode],fill:'#fff',fillOpacity:1,stroke:'none',strokeOpacity:1,strokeWidth:0}]}};
+  label.paintOrder=3;c.geometry.push(curve,mask);
+  const result=analyzeRenderedLayout(c);
+  assert.equal(result.status,'PASS',JSON.stringify(result.errors));assert.equal(result.labelCollisionCount,0);
+  const invalid={...c,geometry:c.geometry.map(item=>item===mask?{...mask,fill:'rgb(255, 0, 0)'}:item)};
+  assert.ok(analyzeRenderedLayout(invalid).errors.includes('TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+mask.id));
+});
 function visibleMeasurement(id,bbox,kind='TEXT') {
   const tag=kind==='TEXT'?'text':'g',contentTag=kind==='TEXT'?'text':'path';
   const clearState=()=>({status:'CLEAR',value:'none',referenceId:null,reason:null});

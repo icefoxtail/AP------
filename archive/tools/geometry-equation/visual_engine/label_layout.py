@@ -149,11 +149,22 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
-        chosen=None;method=None
+        chosen=None;method=None;tick_knockout=None
         def acceptable(box):
             return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
                 and (owner_marker is None or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
+        def tick_knockout_conflicts(box):
+            if tick_owner is None or not safe_area.contains(box):return None
+            if not tick_box_respects_owner(box,label['at'],label['tickAxis']):return None
+            conflicts=[obstacle for obstacle in occupied if collision(box,obstacle)]
+            if not conflicts:return None
+            # Keep the regular six-unit clearance by painting a measured white
+            # backing only when a graph stroke enters that clearance. Owner,
+            # axis, normal distance, font and graph primitive stay fixed;
+            # ticks, axes, points and other labels remain hard blockers.
+            if not all(obstacle.get('kind')=='curve' or obstacle.get('role')=='asymptote' for obstacle in conflicts):return None
+            return conflicts
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
             allowed=('N','S') if label['tickAxis']=='x' else ('W','E')
@@ -195,6 +206,19 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                             'ownerPolicy':'EXACT_POINT_VORONOI_BOX_CORNERS','tolerancePxSquared':POINT_OWNER_DISTANCE_TOLERANCE_PX2}
                         repairs.append(repair);break
                 if chosen:break
+        if chosen is None and tick_owner is not None:
+            for gap in default_gaps:
+                for direction in directions:
+                    box=candidate(label['at'],w,h,direction,gap)
+                    conflicts=tick_knockout_conflicts(box)
+                    if conflicts:
+                        chosen=box;method='TICK_LABEL_GRAPH_KNOCKOUT_'+direction
+                        tick_knockout={'schemaVersion':'TICK_LABEL_GRAPH_KNOCKOUT_v1','labelId':label['id'],
+                            'tickOwner':label['tickId'],'axis':label['tickAxis'],'value':label['tickValue'],
+                            'obstacleIds':sorted(obstacle['id'] for obstacle in conflicts),'box':asdict(box),
+                            'padding':6.0,'clearancePx':'SVG_USER_SPACE','reason':'PRESERVED_GRAPH_STROKE_CLEARANCE'}
+                        break
+                if chosen:break
         if chosen is None and tick_owner is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
         if chosen is None and tick_owner is None and panel is not None and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
@@ -211,10 +235,13 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
-        placed.append({**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method})
+        placed_label={**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method}
+        if tick_knockout is not None:placed_label['tickLabelKnockout']=tick_knockout
+        placed.append(placed_label)
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})
         trace_row={'id':label['id'],'fallback':method}
         if repair is not None:trace_row['repair']=repair
+        if tick_knockout is not None:trace_row['tickLabelKnockout']=tick_knockout
         trace.append(trace_row)
     return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,'repairs':repairs,
         'status':'POLISH_REQUIRED' if unresolved else 'PASS','basis':'APPROXIMATE_BUILD_SIDE_ONLY'}

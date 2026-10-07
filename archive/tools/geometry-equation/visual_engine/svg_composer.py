@@ -70,6 +70,28 @@ def compose(prepared,layout,viewport,fragments=None):
         elif kind=='path':svg=f'<path {attrs} d="{esc(p["d"])}"/>'
         else:raise ValueError('UNKNOWN_COMPOSER_PRIMITIVE')
         layers.append((p['layer'],index,svg))
+    for index,row in enumerate(layout.get('trace',[])):
+        knockout=row.get('tickLabelKnockout')
+        if knockout is None:continue
+        owner=next((value for value in layout['labels'] if value['id']==knockout.get('labelId')),None)
+        primitives={value['id']:value for value in prepared['primitives']}
+        if (knockout.get('schemaVersion')!='TICK_LABEL_GRAPH_KNOCKOUT_v1'
+            or knockout.get('labelId')!=row.get('id') or not knockout.get('obstacleIds')
+            or owner is None or owner.get('kind')!='TICK_LABEL' or owner.get('tickId')!=knockout.get('tickOwner')
+            or knockout.get('box')!=owner.get('box')
+            or any(not isinstance(value,str) or not value or value not in primitives
+                   or primitives[value].get('role') not in {'curve','asymptote'} for value in knockout['obstacleIds'])):
+            raise ValueError('INVALID_TICK_LABEL_GRAPH_KNOCKOUT')
+        box=knockout['box'];padding=float(knockout['padding'])
+        if not math.isfinite(padding) or padding<0:raise ValueError('INVALID_TICK_LABEL_GRAPH_KNOCKOUT_PADDING')
+        rect_id=element_id(knockout['labelId']+'-knockout-background')
+        svg=(f'<rect id="{rect_id}" data-role="tick-label-knockout" '
+             f'data-owner-label="{esc(knockout["labelId"])}" '
+             f'data-occluded-primitives="{esc(" ".join(knockout["obstacleIds"]))}" '
+             f'x="{num(box["x"]-padding)}" y="{num(box["y"]-padding)}" '
+             f'width="{num(box["width"]+2*padding)}" height="{num(box["height"]+2*padding)}" '
+             'fill="#fff" stroke="none"/>')
+        layers.append((89,index,svg))
     for index,label in enumerate(layout['labels']):
         oid=element_id(label['id']);key=(label['kind'],label.get('owner',label.get('target')),label['text'])
         if key in semantic_labels:raise ValueError('DUPLICATE_SEMANTIC_LABEL')

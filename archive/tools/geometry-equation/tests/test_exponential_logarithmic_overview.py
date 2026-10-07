@@ -14,8 +14,8 @@ from graph_observer import audit
 def exp_request(coefficients=('1','1','0'),source_domain=None):
     return {'family':'exponential-affine','coefficients':list(coefficients),'sourceDomain':source_domain or {'kind':'ALL_REALS'},'domain':[-2,2],'viewport':[-3,3,-2,12]}
 
-def log_request(coefficients=('1','1','0','0'),source_domain=None):
-    return {'family':'logarithmic-affine','coefficients':list(coefficients),'sourceDomain':source_domain or {'kind':'NATURAL_LOG_AFFINE'},'domain':[.1,4],'viewport':[-1,5,-5,5]}
+def log_request(coefficients=('1','1','0','0'),source_domain=None,axis_tick_values=None):
+    return {'family':'logarithmic-affine','coefficients':list(coefficients),'sourceDomain':source_domain or {'kind':'NATURAL_LOG_AFFINE'},'domain':[.1,4],'viewport':[-1,5,-5,5],**({'axisTickValues':axis_tick_values} if axis_tick_values is not None else {})}
 
 def build(request):
     plan=fit_overview(request)['graphPlan'];model=produce(plan);observed=audit(plan,model['svg'],model['transform'])
@@ -37,10 +37,15 @@ class ExponentialLogarithmicOverview(unittest.TestCase):
         self.assertEqual(reverse['exponentialFeatures']['horizontalAsymptote']['approachedFrom'],'BELOW')
 
     def test_logarithm_natural_boundary_reference_and_both_boundary_sides(self):
-        plan,model,observed=build(log_request())
+        ticks={'x':['1','2','3','4'],'y':['-2','-1','1']}
+        plan,model,observed=build(log_request(axis_tick_values=ticks))
         self.assertEqual(observed['status'],'PASS',observed['errors'])
         self.assertEqual(plan['logarithmicFeatures']['naturalDomainBoundaryX'],'0')
         self.assertEqual(plan['logarithmicFeatures']['referencePoint'],{'x':'1','y':'0','argument':'1'})
+        self.assertEqual(plan['axisTickValues'],ticks)
+        self.assertGreater(plan['viewport'][0],-.6)
+        self.assertLess(plan['viewport'][0],-.4)
+        self.assertEqual(plan['domain'][0],.125)
         self.assertEqual(observed['monotonicity'],'INCREASING')
         self.assertGreater(observed['boundaryApproachGapCssPx'],2)
         reverse,_,reverse_audit=build(log_request(coefficients=('-1','-1','0','2')))

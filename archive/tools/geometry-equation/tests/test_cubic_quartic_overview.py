@@ -22,6 +22,14 @@ def scale_transform(transform,display_scale):
     return {key:value for key,value in transform.items() if key!='aspectPolicy'}|{'displayScale':display_scale}
 
 class CubicQuarticOverview(unittest.TestCase):
+    def test_quartic_reserves_tail_room_past_the_outer_root(self):
+        graph=framed(['0','-1','0','0','1'])
+        roots=[row['x'] for row in graph['overviewFeatures'] if row.get('kind')=='POLYNOMIAL_FEATURE' and 'ROOT' in row.get('roles',[])]
+        self.assertEqual(roots,[0.0,1.0])
+        self.assertLess(graph['domain'][0],-1.0)
+        self.assertGreaterEqual(graph['domain'][1],1.4)
+        self.assertGreater(graph['domain'][1],max(roots))
+
     def test_exact_cubic_and_quartic_feature_inventory_and_tail_directions(self):
         cases=[
             (['0','-3','0','1'],3,3,{'left':'DOWN','right':'UP'}),

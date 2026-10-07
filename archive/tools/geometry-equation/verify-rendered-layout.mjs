@@ -8,6 +8,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
   await page.evaluate(()=>document.fonts.ready);
   return page.evaluate(publicationViewport=>{
     const svg=document.querySelector('svg');if(!svg||document.querySelector('parsererror'))throw Error('SVG_RENDER_PARSE_FAIL');
+    const paintOrder=new Map([...svg.querySelectorAll('*')].map((element,index)=>[element,index]));
     const r=svg.getBoundingClientRect(),v=svg.viewBox.baseVal;
     const rect=b=>({x:b.x,y:b.y,width:b.width,height:b.height});
     const safeBox=e=>{try{return rect(e.getBBox());}catch{return{x:0,y:0,width:0,height:0};}};
@@ -78,7 +79,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
+      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
       const bbox=safeBox(e),client=rect(e.getBoundingClientRect()),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
@@ -95,19 +96,23 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
-    const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"]')].filter(e=>!e.closest('g[data-fragment-sha]')).map(e=>{
+    const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')).map(e=>{
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
       const style=getComputedStyle(e),matrix=e.getScreenCTM();
       const strokeWidthPx=style.stroke==='none'?0:parseFloat(style.strokeWidth)*(style.vectorEffect==='non-scaling-stroke'?1:Math.max(Math.hypot(matrix.a,matrix.b),Math.hypot(matrix.c,matrix.d)));
       if(tag==='circle'){const at=project(e,e.cx.baseVal.value,e.cy.baseVal.value);const radius=e.r.baseVal.value*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b);return{id:e.id,kind:e.getAttribute('data-role')==='point'?'point':'circle',at,radius,client,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};}
-      if(tag==='rect')return{id:e.id,kind:'conditionBox',client,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      if(tag==='rect'){
+        const role=e.getAttribute('data-role');
+        if(role==='tick-label-knockout')return{id:e.id,kind:'tickLabelKnockout',role,ownerLabelId:e.getAttribute('data-owner-label'),occludedPrimitiveIds:(e.getAttribute('data-occluded-primitives')||'').split(/\s+/).filter(Boolean),client,fill:style.fill,fillOpacity:Number.parseFloat(style.fillOpacity),opacity:Number.parseFloat(style.opacity),paintOrder:paintOrder.get(e)??null,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+        return{id:e.id,kind:'conditionBox',role,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      }
       let points=[];
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',points,client,strokeWidthPx,axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
@@ -212,6 +217,18 @@ export function analyzeRenderedLayout(capture) {
   const scale=Number.isFinite(capture.coordinateScale)?capture.coordinateScale:capture.svg.width/capture.viewBox.width;const pad=capture.safeMargin*scale;
   const safe={x:capture.svg.x+pad,y:capture.svg.y+pad,width:capture.svg.width-2*pad,height:capture.svg.height-2*pad};
   const tickLabels=capture.labels.filter(v=>v.kind==='TICK_LABEL'||v.visualRole==='tick-label'),tickEvidence=[];
+  const tickKnockouts=capture.geometry.filter(v=>v.kind==='tickLabelKnockout'),geometryById=new Map(capture.geometry.map(v=>[v.id,v])),validKnockoutIds=new Set();
+  for(const knockout of tickKnockouts){
+    const owners=capture.labels.filter(v=>v.id===knockout.ownerLabelId&&v.kind==='TICK_LABEL');
+    const owner=owners.length===1?owners[0]:null,targets=(knockout.occludedPrimitiveIds||[]).map(id=>geometryById.get(id));
+    const white=String(knockout.fill||'').trim().toLowerCase()==='rgb(255, 255, 255)'||String(knockout.fill||'').trim().toLowerCase()==='#fff';
+    const layers=owner&&Number.isFinite(knockout.paintOrder)&&Number.isFinite(owner.paintOrder)&&knockout.paintOrder<owner.paintOrder;
+    const targetRows=targets.length>0&&targets.every(target=>target&&['curve','asymptote'].includes(target.kind)&&Number.isFinite(target.paintOrder)&&target.paintOrder<knockout.paintOrder);
+    if(!owner||!white||!(knockout.fillOpacity>=.999)||!(knockout.opacity>=.999)||!visibleGeometry(knockout).ok||!layers||!targetRows||!contains(knockout.client,expand(owner.client,1))){
+      errors.push('TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+knockout.id);continue;
+    }
+    validKnockoutIds.add(knockout.id);
+  }
   const ownedCounts=new Map(tickLabels.map(v=>[v.tickOwner,(tickLabels.filter(x=>x.tickOwner===v.tickOwner).length)]));
   const normalized=v=>String(v??'').replace(/−/g,'-').trim();
   for(const label of tickLabels) {
@@ -268,6 +285,10 @@ export function analyzeRenderedLayout(capture) {
       let hit=false;
       const strokePad=(g.strokeWidthPx??0)/2;
       if(!Number.isFinite(strokePad)||strokePad<0){errors.push('INVALID_STROKE_MEASUREMENT:'+g.id);continue;}
+      if(g.kind==='tickLabelKnockout'){
+        if(g.ownerLabelId===label.id)continue;
+        hit=overlap(box,expand(g.client,strokePad));
+      } else
       if(g.kind==='conditionBox'){
         if(g.id===label.id+'-box'){if(!contains(g.client,box)){overflowCount++;errors.push('CONDITION_BOX_OVERFLOW:'+label.id);}continue;}
         hit=overlap(box,expand(g.client,strokePad));
@@ -276,7 +297,10 @@ export function analyzeRenderedLayout(capture) {
         const far=Math.max(...[box.x,right(box)].flatMap(a=>[box.y,bottom(box)].map(b=>Math.hypot(a-x,b-y))));
         hit=near<=g.radius+strokePad&&(g.kind==='point'||far>=Math.max(0,g.radius-strokePad));
       } else hit=g.points?.some((p,j)=>j>0&&segmentBox(g.points[j-1],p,expand(box,strokePad)));
-      if(hit){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
+      if(hit){
+        const masked=tickKnockouts.some(knockout=>validKnockoutIds.has(knockout.id)&&knockout.ownerLabelId===label.id&&knockout.occludedPrimitiveIds.includes(g.id)&&['curve','asymptote'].includes(g.kind)&&contains(knockout.client,expand(box,strokePad)));
+        if(!masked){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
+      }
     }
   }
   const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);

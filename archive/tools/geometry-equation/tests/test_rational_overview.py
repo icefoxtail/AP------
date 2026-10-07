@@ -25,6 +25,15 @@ def screen_point(model,point):
     t=model['transform'];return (t['originX']+point[0]*t['sx'],t['originY']-point[1]*t['sy'])
 
 class RationalOverview(unittest.TestCase):
+    def test_local_overview_keeps_unit_ticks_while_preserving_all_real_source_domain(self):
+        ticks={'x':['-5','5'],'y':['0.5','1','1.5']}
+        plan,model=framed_model(graph(axisTickValues=ticks))
+        self.assertEqual(plan['sourceDomain'],{'kind':'ALL_REALS'})
+        self.assertEqual(plan['domain'],[-5.0,7.0])
+        self.assertEqual(plan['axisTickValues'],ticks)
+        self.assertEqual(plan['rationalFeatures']['singularity'],{'kind':'VERTICAL_POLE','x':'1'})
+        self.assertEqual(audit(plan,model['svg'],model['transform'])['status'],'PASS')
+
     def test_exact_linear_over_linear_pole_and_horizontal_asymptote(self):
         plan,model=framed_model(graph())
         features=plan['rationalFeatures']

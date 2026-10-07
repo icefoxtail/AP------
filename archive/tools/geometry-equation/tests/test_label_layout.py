@@ -139,6 +139,33 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(result['status'],'POLISH_REQUIRED')
         self.assertEqual(result['unresolved'],[item['id']])
         self.assertEqual(result['suppressed'],[])
+    def test_required_tick_crossing_curve_uses_measured_label_knockout_without_relaxing_owner(self):
+        tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
+        item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=False)
+        result=layout([item],[tick,axis,curve],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS')
+        self.assertEqual(result['suppressed'],[])
+        self.assertTrue(tick_box_respects_owner(Box(**result['labels'][0]['box']),item['at'],'x'))
+        self.assertEqual(result['labels'][0]['placement'],'TICK_LABEL_GRAPH_KNOCKOUT_N')
+        knockout=result['labels'][0]['tickLabelKnockout']
+        self.assertEqual(knockout['obstacleIds'],['f-branch-0'])
+        self.assertEqual(knockout['box'],result['labels'][0]['box'])
+        self.assertEqual(knockout['padding'],6.0)
+        self.assertEqual(result['trace'][0]['tickLabelKnockout'],knockout)
+    def test_tick_knockout_never_covers_a_point_or_axis_owner(self):
+        tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
+        points=[{'id':'protected-feature-north','kind':'point','geometry':(100,86,2)},
+                {'id':'protected-feature-south','kind':'point','geometry':(100,118,2)}]
+        item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=True)
+        result=layout([item],[tick,axis,curve,*points],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
+        self.assertEqual(result['status'],'POLISH_REQUIRED')
+        self.assertEqual(result['unresolved'],[item['id']])
+        self.assertEqual(result['suppressed'],[])
+        self.assertEqual(result['repairs'],[])
     def test_tick_label_requires_exact_axis_and_value_binding(self):
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':2,'geometry':(100,96,100,104)}

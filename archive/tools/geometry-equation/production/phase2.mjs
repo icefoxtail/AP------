@@ -24,6 +24,19 @@ import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicy
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding} from './blinded-review.mjs';
 
+const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
+const RATIONAL_OVERVIEW_CANVAS=Object.freeze({width:520,height:420,panel:140});
+const graphViewport=(values,canvas=GRAPH_OVERVIEW_CANVAS)=>({
+  xMin:values[0],xMax:values[1],yMin:values[2],yMax:values[3],
+  width:canvas.width,height:canvas.height,panel:canvas.panel
+});
+function axisTickDisplayFacts(graphPlan){
+  const values=graphPlan.axisTickValues;
+  if(values===undefined)return{};
+  if(!values||Object.keys(values).sort().join(',')!=='x,y'||['x','y'].some(axis=>!Array.isArray(values[axis])))throw Error('INVALID_GRAPH_AXIS_TICK_VALUES');
+  return {axisTickValues:values};
+}
+
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const schema={type:'object',properties:{status:{type:'string',enum:['PASS','FAIL','UNSUPPORTED']},payload:{type:'string'}},required:['status','payload'],additionalProperties:false};
 const compilerContract=`Return payload as a JSON object. For geometry: {capability:'construction-spike-v1',mathPlan:{schemaVersion:'construction-spike-v1',nodes:[...]},displaySegments:[{id,refs:[pointId,pointId]}],coordinateLabels:[pointId],caption:string}. Each node has id (ASCII alphanumeric starts letter), op, inputs, args, outputType, factRole GIVEN/DERIVED_INTERMEDIATE/CONCLUSION. Supported ops SOURCE_POINT (args coordinates=[typedScalar,typedScalar]), NORMALIZATION_ORIGIN(args {}), NORMALIZATION_AXIS(args length=typedScalar), MIDPOINT, LINE_THROUGH, PERPENDICULAR_FOOT, CIRCLE_CENTER_RADIUS(args radius=typedScalar), INTERSECTION (POINT_SET), SELECT_POINT (branch {kind:'SIDE_OF_ORIENTED_LINE',refs:[A,B],sign:1|-1}). All other point outputs POINT, lines LINE, circles CIRCLE. Derived points must never have raw coordinates. typedScalar={kind:'integer',value:'decimal integer'} or {kind:'rational',numerator:'...',denominator:'...'} or {kind:'expression',op:'sqrt'|'add'|'sub'|'mul'|'div'|'neg'|'pow',args:[typedScalars]}. For coordinate-free SSS use realization:{recipeId:'SSS_POSITIVE_SIDE_v1',unit:'source-length',reflectionEquivalent:true} inside mathPlan, A origin, B positive x at source AB distance, C selected positive side of two circles. Use source length values, and compute any necessary missing distance exactly from verified solution (e.g sqrt(34)). Explicitly state source bindings for each introduced normalization/label in conditions. Do not add unused construction circles to displaySegments. For a polynomial source graph only: {capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['constant','x coefficient','x squared coefficient',...],domain:[lo,hi],viewport:[xmin,xmax,ymin,ymax]},caption:string}. Coefficients are exact integer or rational strings; max degree4. Domain/viewports must show the source's decisive structure. Declare sourceDomain:{kind:'ALL_REALS'} only when the source polynomial has no restriction; otherwise declare {kind:'INTERVAL',range:[lo,hi]}. Preserve all source-required points/tangency anchors/intercepts as requiredPoints:[{id:string,x:number,y:number}]; these are independently reviewed source/solution features, never convenient invented points. The main overview must show the vertex and enough of both arms to make the opening and symmetry legible. A local detail cannot replace the overview. Do not guess symbolic coefficients. Reject unsupported source. caption is short student-facing Korean, with no internal/debug terms. Either plan must have sourceConditions:[{id,condition,mappedTo}] and newVisualInformation:[string] and no unsupported source condition. No SVG, raw derived coordinates, or measurements.`;
@@ -183,7 +196,7 @@ export function specFor(plan,model,id){
     if(!features||features.schemaVersion!=='LOGARITHMIC_AFFINE_FEATURES_v1'||!policy||policy.schemaVersion!=='LOGARITHMIC_AFFINE_FEATURE_POLICY_v1')throw Error('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED');
     const [a,k,b,c]=p.coefficients,expression=`(${a})*log((${k})*x+(${b}))+(${c})`,number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},root=number(features.naturalDomainBoundaryX),ref=number(features.referencePoint.x),refY=number(features.referencePoint.y),showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
     const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[ref]},{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[ref,refY+(v[3]-v[2])*.08],math:true,priority:0},{id:'log-domain-boundary-label',kind:'EQUATION_LABEL',text:'x='+features.naturalDomainBoundaryX,at:[root+(k.startsWith('-')?-1:1)*(v[1]-v[0])*.1,v[3]-(v[3]-v[2])*.2],math:true,priority:0}];
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
+    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.trigFeatures,policy=p.trigFeaturePolicy;
@@ -191,7 +204,7 @@ export function specFor(plan,model,id){
     const [a,k,c]=p.coefficients,fn=p.function.toLowerCase(),phase=p.phasePi,number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},expression=`(${a})*${fn}((${k})*x+(${phase})*pi)+(${c})`,criticalX=p.function==='TAN'?[number(features.cycleCenterPi)*Math.PI]:features.phasePoints.map(point=>number(point.xPiMultiple)*Math.PI),period=features.periodPiMultiple,periodLabel=`T=${period==='1'?'':period.includes('/')?'('+period+')':period}π`,showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
     const periodLabelAt=p.function==='TAN'?[v[1],(v[2]+v[3])/2]:[(v[0]+v[1])/2,v[3]-(v[3]-v[2])*.08];
     const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'period-label',kind:'EQUATION_LABEL',text:periodLabel,at:periodLabelAt,math:true,priority:0}];
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{trigFeatures:features,trigFeaturePolicy:policy},objects};
+    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),trigFeatures:features,trigFeaturePolicy:policy},objects};
   }
   if(plan.capability==='sqrt-affine-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.sqrtFeatures;
@@ -222,14 +235,14 @@ export function specFor(plan,model,id){
     ];
     if(singularity.kind==='VERTICAL_POLE')objects.push({id:'vertical-asymptote-label',kind:'GRAPH_ANNOTATION',text:'x='+singularity.x,at:[xSingularity+(v[1]-v[0])*.07,v[3]-(v[3]-v[2])*.08],math:true,priority:0});
     else if(singularity.kind==='REMOVABLE_HOLE')objects.push({id:'removable-hole-label',kind:'GRAPH_ANNOTATION',text:'뚫린 점',at:[xSingularity+(v[1]-v[0])*.08,exactNumber(singularity.y)+(v[3]-v[2])*.08],priority:0});
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{rationalGraphFeatures:features,rationalGraphPolicy:p.rationalFeaturePolicy},objects};
+    return {id,visualType:'function_graph',viewport:graphViewport(v,RATIONAL_OVERVIEW_CANVAS),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),rationalGraphFeatures:features,rationalGraphPolicy:p.rationalFeaturePolicy},objects};
   }
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
     const framedCriticalX=(p.overviewFeatures||[]).filter(feature=>feature.kind==='POLYNOMIAL_FEATURE').map(feature=>feature.x);
     const criticalX=[...new Set([...(p.requiredPoints||[]).map(point=>point.x),...framedCriticalX])];
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{},objects:[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}]};
+    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:axisTickDisplayFacts(p),objects:[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}]};
   }
   const points=model.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1),pad=span*.35;
