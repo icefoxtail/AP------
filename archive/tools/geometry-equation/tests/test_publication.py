@@ -11,7 +11,7 @@ import unittest
 import xml.etree.ElementTree as ET
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from visual_engine.engine import build
+from visual_engine.engine import build, prepare
 from visual_engine.label_layout import Box
 from visual_engine.publication import box_owned
 from visual_engine.past_exam_adapter import adapt_expected_facts
@@ -104,6 +104,24 @@ class PublicationTests(unittest.TestCase):
         self.assertIn('lAB-label', result['witness']['layout']['unresolved'])
         self.assertEqual(result['witness']['layout']['suppressed'], [])
         self.assertTrue(all(l['font'] == 16 for l in result['witness']['layout']['labels']))
+
+    def test_production_fragment_build_rejects_estimated_or_stale_measurements(self):
+        s,_=load();_,labels,_,_,_,_=prepare(s)
+        ids={label['id'] for label in labels}
+        svg='<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>'
+        fragments={label_id:{'labelId':label_id,'owner':'source-bound','factRole':'DERIVED_INTERMEDIATE',
+            'fragmentSha256':'sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest(),'svg':svg,
+            'intrinsic':{'width':10,'height':10}} for label_id in ids}
+        measurements={label_id:[10,10] for label_id in ids}
+        with self.assertRaisesRegex(ValueError,'BROWSER_MEASURED_TYPOGRAPHY_REQUIRED'):
+            build(s,strict_measured_fragments=True)
+        with self.assertRaisesRegex(ValueError,'FROZEN_FRAGMENT_INVENTORY_MISMATCH'):
+            build(s,measurements,{key:value for key,value in fragments.items() if key!=next(iter(ids))},strict_measured_fragments=True)
+        with self.assertRaisesRegex(ValueError,'BROWSER_LABEL_MEASUREMENT_REQUIRED'):
+            build(s,{},fragments,strict_measured_fragments=True)
+        tampered=dict(fragments);first=next(iter(ids));tampered[first]={**tampered[first],'fragmentSha256':'sha256:'+'0'*64}
+        with self.assertRaisesRegex(ValueError,'FROZEN_FRAGMENT_HASH_MISMATCH'):
+            build(s,measurements,tampered,strict_measured_fragments=True)
 
     def test_annotation_hash_changes_even_without_legacy_fact_change(self):
         s, _ = load(); a = build(s)['witness']['publicationSpecSha256']

@@ -7,7 +7,7 @@ import math
 import re
 
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
-           'log':math.log,'exp':math.exp,'abs':abs}
+           'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,])')
 
@@ -87,12 +87,28 @@ def serialize(node,mode='tex'):
     def escape(v):return html.escape(v) if mode=='svg' else v
     k=node.kind; a=node.args
     if k=='number':return node.value
+    if k in {'entity','variable','constant','degree','unit'}:
+        if k=='entity':
+            if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_ENTITY_NOTATION')
+            return r'\mathrm{'+node.value+'}' if mode=='tex' else escape(node.value)
+        if k=='variable':
+            if not re.fullmatch(r'[A-Za-zαβθ]{1,16}',node.value):raise ValueError('INVALID_VARIABLE_NOTATION')
+            return escape(node.value)
+        if k=='constant':
+            if node.value not in {'pi','π','e'}:raise ValueError('UNKNOWN_CONSTANT')
+            return (r'\pi' if mode=='tex' else 'π') if node.value in {'pi','π'} else 'e'
+        if len(a)!=1:raise ValueError('NOTATION_ARITY')
+        if k=='degree':return s(a[0])+(r'^{\circ}' if mode=='tex' else '°')
+        if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_UNIT_NOTATION')
+        return s(a[0])+(r'\,\mathrm{'+node.value+'}' if mode=='tex' else ' '+escape(node.value))
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
-        return {'π':r'\pi','α':r'\alpha','β':r'\beta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else node.value
+        return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'
-    if k=='unary':return ('−' if node.value=='-' and mode!='tex' else node.value)+s(a[0])
+    if k=='unary':
+        child=s(a[0]);child='('+child+')' if a[0].kind=='binary' and a[0].value in {'+','-','=','<','>'} else child
+        return ('−' if node.value=='-' and mode!='tex' else node.value)+child
     if k in {'prime','subscript'}:
         if k=='prime':
             base=node;count=0
@@ -106,19 +122,30 @@ def serialize(node,mode='tex'):
         name=a[0].value if a[0].kind=='symbol' else ''
         if name=='sqrt':return ('\\sqrt{'+s(a[1])+'}') if mode=='tex' else '√('+s(a[1])+')'
         if name=='abs' and mode=='tex':return r'\left|'+s(a[1])+r'\right|'
-        fn=('\\'+name) if mode=='tex' and name in FUNCTIONS else (escape(name) if name in FUNCTIONS else s(a[0]))
+        if mode=='tex' and name=='ln':fn=r'\ln'
+        elif mode=='tex' and name in FUNCTIONS:fn='\\'+name
+        else:fn=escape(name) if name in FUNCTIONS else s(a[0])
         return fn+'('+','.join(s(v) for v in a[1:])+')'
     if k=='binary':
         left,right=a;op=node.value
+        priorities={'=':5,'<':5,'>':5,'<=':5,'>=':5,'!=':5,'+':10,'-':10,'*':20,'implicit':20,'/':20,'^':30}
+        def operand(child,right_side=False):
+            text=s(child)
+            if child.kind=='unary' and op=='^' and not right_side:return '('+text+')'
+            if child.kind!='binary':return text
+            low=priorities.get(child.value,0)<priorities.get(op,0)
+            equal=priorities.get(child.value,0)==priorities.get(op,0)
+            wrap=low or (equal and ((right_side and op in {'-','/','='}) or (op=='^' and not right_side)))
+            return '('+text+')' if wrap else text
         if op=='^':
-            if mode=='tex':return s(left)+'^{'+s(right)+'}'
-            if mode=='svg':return s(left)+'<tspan baseline-shift="super" font-size="70%">'+s(right)+'</tspan>'
-            return s(left)+'^('+s(right)+')'
+            if mode=='tex':return operand(left)+'^{'+s(right)+'}'
+            if mode=='svg':return operand(left)+'<tspan baseline-shift="super" font-size="70%">'+s(right)+'</tspan>'
+            return operand(left)+'^('+s(right)+')'
         if op=='/':
             if mode=='tex':return '\\frac{'+s(left)+'}{'+s(right)+'}'
             return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript','unary'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
         mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠'}
-        return s(left)+escape(mapped.get(op,op))+s(right)
+        return operand(left)+escape(mapped.get(op,op))+operand(right,True)
     raise ValueError('UNKNOWN_AST_NODE')
 
 def evaluate(node,values=None):
