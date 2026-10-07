@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_PREFLIGHT_FAILED_ATTEMPT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "status": "FAIL_CALIBRATION_ORDER",
+  "actualSequence": [
+    "Student-only bundle and referenced images checked.",
+    "Maesan Golden q1/q3 solutions read, but its exam includes 12 solution SVGs and no Maesan solution SVG representative was opened before target review.",
+    "Hyocheon Golden q2/q3 solutions and solution SVGs were opened; Bokseong negative README and q1 failed SVG were opened.",
+    "Durable answer freeze and target solution review/repair occurred.",
+    "Late inspection found Maesan q14 actual solution SVG was required to complete sample visual coverage."
+  ],
+  "missingAtInitialPreflight": {
+    "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "qid": 14,
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageSha256": "ab0e080a1ee3abf262823ff83be0fd5af7cf0926e303b506526a0cd0037e99ae"
+  },
+  "initialSamplesActuallyRead": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        1,
+        3
+      ],
+      "visualRepresentativeBeforeTarget": false
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        2,
+        3
+      ],
+      "visualRepresentativeBeforeTarget": true
+    }
+  ],
+  "negativeSampleActuallyRead": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "failedSvg": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+    "failedSvgSha256": "93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf"
+  },
+  "relatedValidatorFailure": "The first generic R1 report also exposed a separate malformed negativeSample JSON binding. This sequence error is preserved independently; the corrected calibration object now binds both the Negative sample and Golden visual representative.",
+  "failedAttemptPreserved": true,
+  "permittedNext": "After actually opening q14 Golden SVG, perform correction-review only for changed q21 locus; do not repeat all qids or claim the original preflight was timely."
+}

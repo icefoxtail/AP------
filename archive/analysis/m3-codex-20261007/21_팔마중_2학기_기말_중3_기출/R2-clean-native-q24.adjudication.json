@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R2-clean-native-q24",
+  "executionLine": "CODEX",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 24,
+  "source": {
+    "rawSha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+    "artifactRawBufferBlobSha1": "8cc83ff611d082c80cc72df671b229030842ef6d",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\21_팔마중_2학기_기말_중3_기출.js"
+  },
+  "freeze": {
+    "preservedUnchanged": true,
+    "path": "archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R2-clean-native-q24.freeze.json",
+    "sha256": "0bc71bab48cf9bc179837c5faadd158e89e10feb29c0eea8b1a5e2ffe302de9a"
+  },
+  "disclosure": {
+    "sha256": "7c86f306bd34453c07d3a9ff400c1487633295d362729b9d6462c5e7d9e67035",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R2-clean-native-q24.postfreeze-disclosure.json"
+  },
+  "studentInput": {
+    "assetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+    "studentBundleSha256": "a583da00acb0f3feda4d7e7780ba829b97fa4163e7a1a5b3882267d1300aca6a"
+  },
+  "locus": "R2 freeze arithmetic only: initial grouped sum was mis-added as 92 although the already-frozen 12-value transcription is correct.",
+  "adjudication": {
+    "median": "(15+17)/2=16",
+    "values": [
+      1,
+      2,
+      3,
+      11,
+      15,
+      15,
+      17,
+      18,
+      20,
+      20,
+      21,
+      25
+    ],
+    "expression": "14+16-35=-5",
+    "sum": 168,
+    "uniqueFinalAnswer": true,
+    "mean": "168/12=14",
+    "cardinality": 12,
+    "correctedIndependentFinalAnswer": "-5",
+    "modes": [
+      15,
+      20
+    ],
+    "modeSum": 35
+  },
+  "storedComparison": {
+    "visualChanged": false,
+    "storedAnswer": "-5",
+    "itemHold": false,
+    "verdict": "MATCH_AFTER_SAME_SESSION_ARITHMETIC_ADJUDICATION",
+    "bodyChanged": false
+  },
+  "originalFreezeCorrection": {
+    "priorSum": 92,
+    "priorExpression": "-34/3",
+    "reason": "arithmetic summation error; no student-body, source, or visual-input change",
+    "priorMean": "23/3",
+    "preserveOriginalFreeze": true
+  },
+  "status": "R2_QID_ADJUDICATED",
+  "nextAction": "Include this qid receipt in parent aggregate R2 closure; no source/asset repair required."
+}

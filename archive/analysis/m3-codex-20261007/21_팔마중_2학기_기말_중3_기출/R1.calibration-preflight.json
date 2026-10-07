@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_PREFLIGHT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "sampleReadBeforeWork": false,
+  "calibrationStatus": "TARGETED_CORRECTION_REVIEW_PASS_AFTER_PRESERVED_ORDER_FAILURE",
+  "calibrationOrder": [
+    "assignment and student-only input/asset integrity",
+    "read 2 Golden samples and applicable Negative sample including actual visuals",
+    "durable independent freeze",
+    "postfreeze stored-answer disclosure",
+    "full 25-qid R1 review and same-stage repair"
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha1": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "내분점 비의 반대쪽 값을 곱해 좌표를 구한 뒤, 중점과 거리 공식을 각각 식으로 전개한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "좌표 계산, 중점, 거리 공식이 각 단계별 줄에 있고 핵심 대입값이 생략되지."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+            "solutionExcerpt": "각 항에 완전제곱을 만들고 양변에 같은 수를 더해 원의 표준형으로 정리한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "식 설정→각 항의 완전제곱→표준형 비교→최종 대입이 보인다."
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+            "solutionExcerpt": "최솟값·최댓값의 경우를 구분하고 실제 원소 개수를 벤 다이어그램에 표시한다.",
+            "visualSha256": "ab0e080a1ee3abf262823ff83be0fd5af7cf0926e303b506526a0cd0037e99ae",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "q14 actual solution SVG pixel preview에서 최솟값/최댓값의 원소와 교집합·차집합 수가 풀이의 경우 구분과 일치함을 확인."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha1": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "수직인 두 직선의 기울기 곱을 식으로 두고 각 직선의 기울기를 순서대로 구한다.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "기울기 계산과 곱 조건이 분리되어 추적된다. 실제 SVG pixel preview도 열어 두 직선 관계를 확인했다."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "solutionExcerpt": "원 식을 완전제곱식으로 정리해 중심과 반지름을 표준형에 대응시킨다.",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "표준형의 중심·반지름과 actual SVG 좌표, 중심/접점 label이 일치함을 pixel preview로 확인했다."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha1": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "README와 q1 failed SVG를 함께 읽고 pixel preview로 확인: 표시된 기울기·절편과 actual line geometry가 불일치한다. 라벨 텍스트만으로 visual parity PASS를 주지 않는다.",
+      "representativeFailedVisualPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "representativeFailedVisualSha256": "93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+      "representativeFailedVisualGitBlobSha1": "bfc5672371832703aa8b13a60123ccda296653bf"
+    }
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha1": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha1": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "내분점 비의 반대쪽 값을 곱해 좌표를 구한 뒤, 중점과 거리 공식을 각각 식으로 전개한다.",
+        "observation": "좌표 계산, 중점, 거리 공식이 각 단계별 줄에 있고 핵심 대입값이 생략되지."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+        "solutionExcerpt": "각 항에 완전제곱을 만들고 양변에 같은 수를 더해 원의 표준형으로 정리한다.",
+        "observation": "식 설정→각 항의 완전제곱→표준형 비교→최종 대입이 보인다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "수직인 두 직선의 기울기 곱을 식으로 두고 각 직선의 기울기를 순서대로 구한다.",
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "observation": "기울기 계산과 곱 조건이 분리되어 추적된다. 실제 SVG pixel preview도 열어 두 직선 관계를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원 식을 완전제곱식으로 정리해 중심과 반지름을 표준형에 대응시킨다.",
+        "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "observation": "표준형의 중심·반지름과 actual SVG 좌표, 중심/접점 label이 일치함을 pixel preview로 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "solutionSha256": "10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+        "visualSha256": "ab0e080a1ee3abf262823ff83be0fd5af7cf0926e303b506526a0cd0037e99ae",
+        "observation": "actual solution SVG pixel preview에서 최솟값/최댓값 조건과 표시가 일치함."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha1": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": false,
+    "qualityCompareCount": "25/25 initial full review; q21 1/1 post-preflight correction review",
+    "calibrationStatus": "TARGETED_CORRECTION_REVIEW_PASS_AFTER_PRESERVED_ORDER_FAILURE",
+    "solutionWorkMode": "R1_FULL_REVIEW_WITH_Q21_SAME_STAGE_REPAIR",
+    "calibrationOrder": "Initial partial Golden/Negative preflight → target review/repair → order failure preserved → late Maesan q14 actual solution SVG read → q21-only correction-review"
+  },
+  "initialPreflightOrderFailure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.calibration-preflight-failure.json",
+    "sha256": "2cd9a2b18e08f8cfc9895400431a407ef70b90b46bf63008628190075a9a1ade",
+    "status": "PRESERVED_FAIL_CALIBRATION_ORDER"
+  },
+  "fullTargetReviewOccurredBeforeLateGoldenVisualRead": true,
+  "lateGoldenVisualReadPath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js#q14-solution.svg",
+  "lateGoldenVisualReadSha256": "ab0e080a1ee3abf262823ff83be0fd5af7cf0926e303b506526a0cd0037e99ae",
+  "minimumCorrectionReview": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.correction-review.json",
+    "sha256": "fd9a4440921fad98822ba5d93f6ff7841f560311ba2184b8653f1ca4d236aa9c",
+    "scope": "q21 only",
+    "reason": "Only q21 was changed; CURRENT calibration protocol requires the allowed minimum correction-review after late Golden visual read."
+  }
+}

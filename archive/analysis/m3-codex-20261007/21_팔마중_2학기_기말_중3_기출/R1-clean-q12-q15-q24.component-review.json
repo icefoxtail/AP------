@@ -1,0 +1,170 @@
+{
+  "schema": "JS_ARCHIVE_R1_AFFECTED_QID_COMPONENT_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q12-q15-q24",
+  "scope": "AFFECTED_QID_ONLY",
+  "qids": [
+    12,
+    15,
+    24
+  ],
+  "denominator": 3,
+  "sourceSha256": "fead4ef5cc8fe8e063f875681c36fc81b5c5a809cd8c49a4dc409221c2248362",
+  "artifactSha": "81ad1f9ec16b5877cc7fe00a705dca4471089312",
+  "studentBundleSha256": "2f1efa56d22262554a376c4bb308a337e3f5a0b078cf35322b2f2e3d181852b1",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-q12-q15-q24.independent-freeze.json",
+    "frozenBeforeStoredAnswerDisclosure": true,
+    "sha256": "a3138c1a503dcd44c6668500beaf61fd5719f5ac71dafd7192cc19fe3c0c8d7a"
+  },
+  "disclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-q12-q15-q24.postfreeze-disclosure.json",
+    "sha256": "f1d1a836507ed6f8a8edcb7449475380cddf1c878d75c6627f3cb963241fb070"
+  },
+  "goldenNegativePreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-q12-q15-q24.golden-negative-preflight.json",
+    "status": "PASS_FOR_COMPONENT_REVIEW",
+    "sha256": "8e7758650e6f2d6280f216dcc8e05ae6a242efb976b38b5a7449f901246951cf"
+  },
+  "adjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-q12-q15-q24.q24-adjudication.json",
+    "sha256": "13b2b5312a488a7698bb08afe324d023a7c7717f082e15e6145b6400cb626806"
+  },
+  "answerComparison": [
+    {
+      "status": "MATCH",
+      "storedAnswer": "⑤",
+      "qid": 12,
+      "independentAnswer": "⑤"
+    },
+    {
+      "status": "MATCH",
+      "storedAnswer": "④",
+      "qid": 15,
+      "independentAnswer": "④"
+    },
+    {
+      "status": "MATCH_AFTER_SAME_SESSION_ADJUDICATION",
+      "correctedIndependentAnswer": "15",
+      "storedAnswer": "15",
+      "qid": 24,
+      "originalFreezeAnswer": "59/4"
+    }
+  ],
+  "axisEvidence": [
+    {
+      "META": {
+        "evidence": "Tags 통계/최빈값 and M3-07 representative-statistics unit fit the source. Current tag master has no active M3-07 problemTypeKey/templateKey row matching a projection; null fields remain debt as already disclosed, not a reason to invent a key. difficultyBucket=2 is consistent with five direct frequency comparisons.",
+        "status": "PASS_WITH_BOUND_PROJECTION_DEBT"
+      },
+      "VISUAL_SVG": {
+        "evidence": "Text-only data; no problem image or solution SVG required.",
+        "status": "NO_VISUAL_REQUIRED"
+      },
+      "SOLUTION_LAYOUT": {
+        "evidence": "Frequency checks ①–⑤ are each shown in separate labeled blocks; conclusion identifies ⑤ without hiding any frequency count.",
+        "status": "PASS"
+      },
+      "qid": 12,
+      "QUESTION_LAYOUT": {
+        "evidence": "One concise prompt; five choices each preserve a complete data set and claimed mode; no manual line-break/layout override needed.",
+        "issueCodes": [],
+        "disposition": "LAYOUT_KEEP"
+      }
+    },
+    {
+      "META": {
+        "evidence": "Tags 통계/편차 and M3-07 subunit match. No exact active M3-07 problemTypeKey/templateKey mapping is present in current tag master; preserve null/debt. difficultyBucket=2 is reasonable for a deviation relation plus option checks.",
+        "status": "PASS_WITH_BOUND_PROJECTION_DEBT"
+      },
+      "VISUAL_SVG": {
+        "evidence": "Opened q15.png. All table rows/columns/numbers and D=76 cm prompt condition agree with current student content; no solution-only SVG is needed. The source image includes non-chart prose and the full table already represented in Markdown.",
+        "status": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED"
+      },
+      "SOLUTION_LAYOUT": {
+        "evidence": "Deviation sum equation, x, mean substitution, all heights, below-mean count and |73−76|=3 are separate readable steps.",
+        "status": "PASS"
+      },
+      "qid": 15,
+      "QUESTION_LAYOUT": {
+        "evidence": "Current content already contains the full A–E deviation Markdown table; q15.png (490×210) repeats that complete table and repeats part of the prompt at the top. Official engine static path archive/engine.html SHA f9c7671d3e0f7a02a0ffb1bae01ffca4e3ca273e8bc6446a236700571519aaeb lines 2382–2400 builds formatted q.content, then renderQuestionImageHTML(q), and inserts both in separate q-content/q-image-wrap blocks. Thus duplicate table display is structurally confirmed if this official renderer path is used. Student table values/labels match image exactly: A,B,C,D,E; 2,−5,1,x,4; prompt D=76 cm.",
+        "issueCodes": [
+          "ASSET_DEFECT"
+        ],
+        "disposition": "LAYOUT_REFORMAT_REQUIRED"
+      }
+    },
+    {
+      "META": {
+        "evidence": "Tags 통계/대표값 and M3-07 subunit match. Current active tag master exposes no exact M3-07 problemTypeKey/templateKey mapping; preserve disclosed null/debt. difficultyBucket=2 fits a 12-data mean/median/multimode computation and final combination.",
+        "status": "PASS_WITH_BOUND_PROJECTION_DEBT"
+      },
+      "VISUAL_SVG": {
+        "evidence": "Opened q24.png; all 12 stem/leaf values and the key are legible and correspond to the stated 12 students. No solution SVG is needed; the crop contains repeated instruction/subquestion prose and needs source-bounded crop repair.",
+        "status": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED"
+      },
+      "SOLUTION_LAYOUT": {
+        "evidence": "After same-session answer adjudication, stored solution math is correct and its mean/median/modes/C/final substitution occupy separate lines. It currently states 합은 168 without showing addition. Add one explicit line 1+2+3+11+15+15+17+18+20+20+21+25=168 before 168÷12=14 to meet reproducible small-board flow.",
+        "status": "MINIMAL_REPAIR_REQUIRED"
+      },
+      "qid": 24,
+      "QUESTION_LAYOUT": {
+        "evidence": "Current content places (1),(2),(3) on one physical line; add line breaks before each subpart marker while preserving every source character/order. q24.png (540×320) includes top-edge repeated instruction text and bottom of first subquestion (1) around the chart; official engine displays content and image independently. Chart-only crop must retain heading 윗몸일으키기 횟수, key (0 3은 3회), stems 0/1/2 and leaves 1,2,3 / 1,5,5,7,8 / 0,0,1,5, and exclude surrounding prompt/subquestion prose.",
+        "issueCodes": [
+          "NESTED_STRUCTURE_FLAT",
+          "ASSET_DEFECT"
+        ],
+        "disposition": "LAYOUT_REFORMAT_REQUIRED"
+      }
+    }
+  ],
+  "issues": [
+    {
+      "locus": "image reference / q15.png full displayed image",
+      "qid": 15,
+      "action": "ROOT-owned minimum source-PDF repair decision after confirmed content+image engine path; retain exact table facts and remove duplicated presentation without changing math/source text."
+    },
+    {
+      "locus": "content separators before (1),(2),(3); q24.png crop; solution sum line",
+      "qid": 24,
+      "action": "ROOT-owned layout-only line breaks, chart-only crop, and one explicit summation step. Keep original freeze and current answer."
+    }
+  ],
+  "changedLocus": [],
+  "staticRender": "NOT_RUN",
+  "globalStageVerdict": "NOT_CLAIMED",
+  "genericV2Validator": "NOT_RUN_PARENT_FULL_ROSTER",
+  "actualRenderStatus": "NOT_RUN_ROOT_DECISION_REQUIRED",
+  "nextRequiredAction": "ROOT apply q15/q24 minimal repairs and rebind only affected qids/direct dependencies; then request targeted R3 review for changed visual/layout loci. No child JS or asset edits.",
+  "targetQuestionBindings": [
+    {
+      "qid": 12,
+      "imageRef": null,
+      "studentPayloadSha256": "f8237bf5b1e73d1843119b6cd1fe8aa8968e69297a28e208b2cb4ea99bba0029",
+      "storedSolutionSha256": "90d990719777e2c6d4bc99ec24a940b381fca126e32fed74603f45efe0f10fa3"
+    },
+    {
+      "assetAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q15.png",
+      "imageRef": "assets/images/21_팔마중_2학기_기말_중3_기출/q15.png",
+      "storedSolutionSha256": "6f23e9b63e2d4b400488cf2a2d3bdd75622cde78ae65a907079183a93e6232bf",
+      "qid": 15,
+      "studentPayloadSha256": "8c91a58b06a85879666b131379bc7b360c6d22c94114332e3e8f821b95daa958",
+      "assetSha256": "83d5e4247a68fa3ceafc04576144968e8c1077eb3e29e70155616fd89536be76"
+    },
+    {
+      "assetAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q24.png",
+      "imageRef": "assets/images/21_팔마중_2학기_기말_중3_기출/q24.png",
+      "storedSolutionSha256": "6e3ab912f70562ed8838e8252808d95042a81525a54dab2b189f473e15946cb9",
+      "qid": 24,
+      "studentPayloadSha256": "344e0aafb021e11fe47a36cdf748364c801f9c3f3a0585c7bcc2fe74caadbd21",
+      "assetSha256": "07417885462e96e7ac6d5ab2ee159bfbc23a8deb514fc9de3d6797472d479801"
+    }
+  ],
+  "metaAuthority": {
+    "sha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json",
+    "gitBlobSha": "ca504997b839c6265dc4714294bcb54d83430e54",
+    "lookup": "Current active rows under M3-07 include the representative-statistics unit/subunit; no matching active problemTypeKey or templateKey rows."
+  }
+}

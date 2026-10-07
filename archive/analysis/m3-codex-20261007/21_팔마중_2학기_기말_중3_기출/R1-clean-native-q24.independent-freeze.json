@@ -1,0 +1,37 @@
+{
+  "schema": "R1_INDEPENDENT_ANSWER_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "qid": 24,
+  "scope": "AFFECTED_QID_ONLY",
+  "frozenAt": "2026-10-08T00:28:58.2819334+09:00",
+  "sourceRawSha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+  "sourceArtifactBlobSha1": "8cc83ff611d082c80cc72df671b229030842ef6d",
+  "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-native-q24.student-input.json",
+  "studentBundleSha256": "a583da00acb0f3feda4d7e7780ba829b97fa4163e7a1a5b3882267d1300aca6a",
+  "requiredAssetAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q24.png",
+  "requiredAssetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+  "visualObservation": "The actual PNG shows a stem-and-leaf key 0|3 = 3 repetitions (3 times); stem 0 leaves 1,2,3; stem 1 leaves 1,5,5,7,8; stem 2 leaves 0,0,1,5.",
+  "independentReasoning": [
+    "Read the key as stem=tens and leaf=ones: observations are 1,2,3,11,15,15,17,18,20,20,21,25 (12 values).",
+    "Sum = 1+2+3+11+15+15+17+18+20+20+21+25 = 168, so mean A=168/12=14.",
+    "With 12 sorted observations, the median is the mean of the 6th and 7th values: (15+17)/2=16.",
+    "The most frequent values are 15 and 20, each occurring twice; all other values occur once. Thus the sum of the modes C=15+20=35.",
+    "A+B-C=14+16-35=-5."
+  ],
+  "independentAnswer": {
+    "part1": "14",
+    "part2": {
+      "median": "16",
+      "modes": [
+        15,
+        20
+      ]
+    },
+    "part3": "-5"
+  },
+  "answerCardinality": "Each requested statistic has a unique value; the mode is a two-value set {15,20}; part (3) explicitly asks for the sum of the modes, giving a unique value.",
+  "status": "FROZEN_BEFORE_STORED_ANSWER_DISCLOSURE",
+  "comparisonStatus": "PENDING_POSTFREEZE_ROOT_PAYLOAD"
+}

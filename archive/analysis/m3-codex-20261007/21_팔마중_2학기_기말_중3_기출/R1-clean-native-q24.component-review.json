@@ -1,0 +1,83 @@
+{
+  "schema": "R1_AFFECTED_QID_COMPONENT_REVIEW_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scope": "AFFECTED_QID_ONLY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "qid": 24,
+  "source": {
+    "path": null,
+    "rawSha256": null,
+    "artifactBlobSha1": null
+  },
+  "input": {
+    "studentBundle": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-native-q24.student-input.json",
+    "studentBundleSha256": "a583da00acb0f3feda4d7e7780ba829b97fa4163e7a1a5b3882267d1300aca6a",
+    "independentFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-native-q24.independent-freeze.json",
+    "independentFreezeSha256": "3952cb9bf0cb1710c190f69ad59b2a1371bd9ebc3362030fec26d409857581a3",
+    "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1-clean-native-q24.postfreeze-disclosure.json",
+    "postfreezeDisclosureSha256": "ccc43a568425364d753af3976b87146dc17a2960a25827868e0863bdb62b4413",
+    "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q24.png",
+    "assetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6"
+  },
+  "independentMath": {
+    "answerCardinality": "PASS: unique mean and median; two modes are both required values and part (3) uniquely asks for their sum",
+    "independentAnswer": {
+      "part1": "14",
+      "part2": {
+        "median": "16",
+        "modes": [
+          15,
+          20
+        ]
+      },
+      "part3": "-5"
+    },
+    "storedAnswer": "-5",
+    "comparison": "MATCH",
+    "solutionSha256": "cf965a29448ea54c81d5894c49d05e92f3787d7dea4953f9bd688fe01d3d5e73",
+    "derivationMatch": "PASS: displayed 12 sorted observations, total 168, mean 14, median (15+17)/2=16, modes 15 and 20, sum 35, final 14+16-35=-5."
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "disposition": "LAYOUT_KEEP_STATIC",
+      "evidence": "Frozen student text exactly matches disclosed current q24 content, choices and image reference. Each of (1), (2), and (3) begins on its own line; no choices exist; grid/wide=false is appropriate, with no unnecessary layout override. The prompt and necessary chart remain together in normal item flow.",
+      "status": "PASS_STATIC",
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    },
+    "SOLUTION_LAYOUT": {
+      "disposition": "PASS",
+      "smallBoardStatus": "PASS",
+      "evidence": "Teacher-language transitions identify the ordered data, total, mean, middle pair, modal values, mode sum, and final requested expression. The 12 observations, addition, division, median average, frequency conclusion, mode sum, and final two transformations are shown as separate downward steps; no decisive calculation is hidden and no verification text is added.",
+      "solutionSha256": "cf965a29448ea54c81d5894c49d05e92f3787d7dea4953f9bd688fe01d3d5e73"
+    },
+    "META": {
+      "disposition": "PASS_WITH_DECLARED_PROJECTION_DEBT",
+      "evidence": "Actual disclosed fields: tags 통계/대표값; questionType 서술형; category/originalCategory 대표값; level 중; standardCourse 중3 수학; standardUnitKey M3-07 / 통계; subUnitKey M3-07-STATISTICS_REPRESENTATIVE / 대푯값과 산포도; depth complete_rule; difficultyBucket 2, confidence medium, boundary NONE, legacyLevelCompatibility NORMAL; integration SEQUENTIAL; crossConceptKeys/conditionKeys empty. Current q24 classification fits the data and requested representative statistics. subUnitKey is populated; no H2/RPM null-subunit exception is invoked. Existing problemTypeKey/templateKey null debt and its reason are explicitly present; preserve their classification and bind these actual current values in the final artifactDispositions.",
+      "debtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "independentDifficulty": "Bucket 2 is plausible for direct, routine representative-value calculations over 12 observations; no nonroutine case split or inference drives the solution.",
+      "rootBindingFollowup": "ROOT: ensure the q24 existing PT/TPL debt is represented in artifactDispositions bound to the final artifact SHA, or cite the existing matching binding."
+    },
+    "VISUAL_SVG": {
+      "disposition": "NATIVE_SOURCE_CHART_REQUIRED_NO_SOLUTION_SVG",
+      "evidence": "Opened the assigned PNG at the exact expected SHA. The stem-and-leaf chart is necessary to recover the data; visible title, key (0|3=3), stem rows, and all leaves match the freeze. Crop shows the chart only and no edge clipping; no solution SVG is mathematically needed. No solution SVG dependency is declared in this qid disclosure.",
+      "assetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+      "actualAssetViewed": true,
+      "renderStatus": "NOT_RUN_ROOT_WAIVER"
+    }
+  },
+  "overall": "QID_COMPONENTS_PASS_PENDING_ROOT_AGGREGATE_META_BINDING_AND_GENERIC_STAGE_VALIDATOR",
+  "itemHold": "NONE",
+  "changedLocus": [],
+  "validatorDisposition": "NOT_RUN_BY_AFFECTED_QID_COMPONENT_WORKER",
+  "issues": [
+    "ROOT must confirm/bind the existing q24 problemTypeKey/templateKey projection debt in aggregate artifactDispositions at the final artifact SHA.",
+    "Actual exam render was not run under ROOT waiver; do not label this RENDER_PASS."
+  ],
+  "nextRequiredAction": "ROOT: aggregate q24 component evidence, bind existing Meta projection debt in final artifactDispositions, then run the assigned single generic V2 R1 validator for the full mother artifact."
+}
