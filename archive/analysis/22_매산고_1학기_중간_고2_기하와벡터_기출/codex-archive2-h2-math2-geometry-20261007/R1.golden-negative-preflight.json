@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_V1",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "sha256": "sha256:c369170aab5d569c50bb7b4ebf13099e4a3a72b535f66ab18154de49604fd338",
+        "path": "archive/exams/original/high/h2/2mid/22_금당고_2학기_중간_고2_기하_기출.js",
+        "gitBlobSha": "2dbb5266e9f9cdb06ffae7f363c4dc09ee7172f8"
+      },
+      {
+        "sha256": "sha256:35fee22862598bf1f2adfef9083482f542c91367835b34cd117bf2a6467f33de",
+        "path": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+        "gitBlobSha": "f9b0c00924cec44dcd5c64d8f72289d29921ed84"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "solutionExcerpt": "초점과 준선이 각각 $F(0,2)$, $y=-2$이므로 꼭짓점은 두 사이의 중점 $(0,0)$이다.",
+        "solutionSha256": "sha256:26712e3ac9ae982ac8d00b098412f0d9bd8e88f63cf44b131f9bc10812defea8",
+        "path": "archive/exams/original/high/h2/2mid/22_금당고_2학기_중간_고2_기하_기출.js",
+        "qid": 2,
+        "observation": "Parabola parameters are established, the point is substituted on separate lines, and the conclusion follows the arithmetic."
+      },
+      {
+        "solutionExcerpt": "$3x^2+4y^2=12$를 표준형으로 고치면",
+        "solutionSha256": "sha256:1c06adc2cf2c964bf31c9901c4c3a5d83e8c5c78b8444204fadb2f4f69d7009f",
+        "path": "archive/exams/original/high/h2/2mid/22_금당고_2학기_중간_고2_기하_기출.js",
+        "qid": 7,
+        "observation": "Ellipse normalization is shown before identifying semiaxes and applying the requested property."
+      },
+      {
+        "solutionExcerpt": "양변을 $x$에 대하여 미분하면",
+        "solutionSha256": "sha256:c4e03d55dc9a257131cbb70c7b447a50bc86c63d570a6e9144a1930cfc6a104a",
+        "path": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+        "qid": 4,
+        "observation": "Implicit differentiation is written out and the contact coordinates are substituted explicitly."
+      },
+      {
+        "solutionExcerpt": "중심 $O$를 원점으로 하고 한 변의 길이를 $1$로 두면",
+        "solutionSha256": "sha256:2e45f98c014a26ac3df6eb190e347694a27850d0f79dcd42a1fde49221ad1ded",
+        "path": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+        "qid": 5,
+        "observation": "A stated coordinate model grounds the vector expressions in concrete vertices."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "sha256": "sha256:2d40f1dcfd7f03a56a9a6e485e5413ad02551bf08668e79d3922309a7fd27aa4",
+        "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/negative-angle-owner-binding.png",
+        "gitBlobSha": "7ab4f30257737dc7254d114188523ed6433c0967"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "0/20",
+    "correctionReviewScope": {
+      "qid": 6,
+      "reason": "Freshly check only the solution branch selection after the preserved order failure."
+    },
+    "targetVisual": {
+      "sha256": "sha256:c7ef538e68d8048dd3a7fdd64adc1126ce0f09a41744a3a2b313e224c8bea7bd",
+      "convertedPng": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_중간_고2_기하와벡터_기출/source-review/q17-solution.png",
+      "ref": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_중간_고2_기하와벡터_기출/assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution.svg",
+      "qid": 17,
+      "observation": "Rendered PNG opens: right angle at B, AB=4, angle C=30 degrees, midpoint P of BC, and labeled coordinates are mutually consistent."
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "1": {
+    "answer": "③",
+    "level": "중",
+    "difficultyBucket": 2,
+    "method": "표준형에서 포물선의 초점 좌표를 읽는다.",
+    "decisiveStep": "y²=8x=4·2x에서 p=2이므로 a=2.",
+    "solution": "포물선의 표준형은\n$y^2=4px$이다.\n\n주어진 식을 비교하면\n$y^2=8x=4\\cdot2x$,\n$p=2$이다.\n\n초점은 $(p,0)$이므로\n$a=p=2$이다.\n\n따라서 정답은 ③이다."
+  },
+  "2": {
+    "answer": "②",
+    "level": "중",
+    "difficultyBucket": 2,
+    "method": "타원의 반축과 초점거리 관계를 쓴다.",
+    "decisiveStep": "c²=16−7=9이므로 두 초점 사이 거리는 2c=6.",
+    "solution": "타원의 표준형에서\n$a^2=16,\\quad b^2=7$이다.\n\n초점거리 $c$는\n$c^2=a^2-b^2=16-7=9$,\n$c=3$이다.\n\n두 초점 사이의 거리는\n$2c=6$이다.\n\n따라서 정답은 ②이다."
+  },
+  "3": {
+    "answer": "①",
+    "level": "하",
+    "difficultyBucket": 1,
+    "method": "벡터의 실수배와 덧셈을 정리한다.",
+    "decisiveStep": "동류 벡터의 계수를 모아 −a+4b를 얻는다.",
+    "solution": "괄호를 풀어 같은 벡터끼리 모은다.\n\n$-3\\vec a+6\\vec b+2(\\vec a-\\vec b)$\n$=-3\\vec a+6\\vec b+2\\vec a-2\\vec b$\n$=(-3+2)\\vec a+(6-2)\\vec b$\n$=-\\vec a+4\\vec b$이다.\n\n따라서 정답은 ①이다."
+  },
+  "4": {
+    "answer": "⑤",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "타원의 한 점에서의 접선 방정식을 표준형으로 쓴다.",
+    "decisiveStep": "−x/3+√6·y/9=1에서 기울기는 √6/2.",
+    "solution": "타원의 식을 표준형으로 바꾸면\n$\\dfrac{x^2}{3}+\\dfrac{y^2}{9}=1$이다.\n\n점 $(x_1,y_1)$에서의 접선은\n$\\dfrac{xx_1}{3}+\\dfrac{yy_1}{9}=1$이다.\n점 $(-1,\\sqrt6)$을 대입하면\n$-\\dfrac{x}{3}+\\dfrac{\\sqrt6}{9}y=1$이다.\n\n이를 $y=mx+n$ 꼴로 정리하면\n$y=\\dfrac{3}{\\sqrt6}x+\\dfrac{9}{\\sqrt6}$,\n기울기는\n$m=\\dfrac{3}{\\sqrt6}=\\dfrac{\\sqrt6}{2}$이다.\n\n따라서 정답은 ⑤이다."
+  },
+  "5": {
+    "answer": "④",
+    "level": "중",
+    "difficultyBucket": 2,
+    "method": "포물선의 초점과 준선까지의 거리 정의를 적용한다.",
+    "decisiveStep": "H는 P에서 준선으로 내린 수선의 발이므로 PF=PH=5.",
+    "solution": "포물선 위의 점은\n초점과 준선까지의 거리가 같다.\n\n$F$는 초점이고 $H$는 $P$에서 준선 $x=-p$에 내린 수선의 발이므로\n$PF=PH$이다.\n\n$PH=5$이므로\n$PF=5$이다.\n\n따라서 정답은 ④이다."
+  },
+  "6": {
+    "answer": "②",
+    "level": "중",
+    "difficultyBucket": 3,
+    "hold": "대수적으로는 p=−1,−4가 가능하고, 그림의 PF 방향이 x_P<x_F를 뜻한다면 −4가 제외된다. R1/R2가 이 도식 순서를 source 조건으로 판정해야 한다.",
+    "method": "포물선의 좌표매개화와 거리 조건을 풀고 원본 도식의 PF 방향 순서를 함께 대조한다.",
+    "decisiveStep": "대수조건은 p=−1 또는 −4를 주며, 도식의 x_P<x_F 순서가 조건이면 p=−4를 제거한다.",
+    "solution": "$u=-p>0$으로 두고 포물선 위의 점을\n$P=(pt^2,2pt)=(-ut^2,-2ut)$로 나타낸다.\n\n직선 $x=-p=u$는 수직선이고\n$H=(u,-2ut)$, $I=(u,0)$이므로\n$HI=2u|t|=4$,\n$u|t|=2$이다.\n\n또한\n$PH=u-(-ut^2)=u(1+t^2)=5$이다.\n두 식에서 $|t|=2/u$를 대입하면\n$u+\\dfrac4u=5$,\n$u^2-5u+4=0$,\n$(u-1)(u-4)=0$이다.\n\n따라서 $u=1$ 또는 $u=4$이고\n초점의 $x$좌표 $p=-u$는 $-1$ 또는 $-4$이다.\n\n그림에는 $P$에서 $F$로 내려가는 선분이 오른쪽 아래 방향으로 그려져 있어\n$x_P<x_F$라는 순서를 나타내는 것으로 읽을 수 있다.\n이 순서를 조건으로 적용하면\n$-ut^2<-u$,\n$t^2>1$이다.\n$u=4$일 때 $|t|=2/u=1/2$이므로 $t^2<1$이 되어 그림의 순서와 맞지 않는다.\n따라서 그림의 순서가 의도된 조건이면 $u=1$, $p=-1$이다.\n\n다만 원문은 이 순서를 문장으로 명시하지 않고 도식으로만 나타내므로\n도식의 상대 위치가 답을 결정하는 조건인지 R1/R2 독립 판정이 필요해 이 문항은 HOLD이다."
+  },
+  "7": {
+    "answer": "②",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "쌍곡선의 초점거리 관계를 적용한다.",
+    "decisiveStep": "세로 반축 길이 2이므로 a²+4=25, 따라서 a²=21.",
+    "solution": "식을 세로 주축의 표준형으로 고치면\n$\\dfrac{y^2}{b^2}-\\dfrac{x^2}{a^2}=1$이다.\n\n주축의 길이가 $4$이므로\n$2b=4$, $b=2$이다.\n초점 $(0,5)$에서 초점거리 $c=5$이다.\n\n쌍곡선에서는\n$c^2=a^2+b^2$이므로\n$25=a^2+4$,\n$a^2=21$이다.\n\n따라서 정답은 ②이다."
+  },
+  "8": {
+    "answer": "③",
+    "level": "중",
+    "difficultyBucket": 2,
+    "method": "표준형의 반축 길이로 점근선 기울기를 구한다.",
+    "decisiveStep": "점근선의 기울기는 ±b/a=±4/2=±2.",
+    "solution": "쌍곡선\n$\\dfrac{x^2}{4}-\\dfrac{y^2}{16}=1$에서\n$a=2,\\quad b=4$이다.\n\n가로 주축 쌍곡선의 점근선은\n$y=\\pm\\dfrac ba x$이므로\n$y=\\pm\\dfrac42x=\\pm2x$이다.\n\n따라서 정답은 ③이다."
+  },
+  "9": {
+    "answer": "④",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "정사각형의 수직인 두 변을 성분축으로 놓고 벡터를 합친다.",
+    "decisiveStep": "a−b+2c=3a+b이고 a⊥b, |a|=|b|=2이므로 제곱 크기는 40.",
+    "solution": "정사각형의 두 변은 서로 수직이고\n$|\\vec a|=|\\vec b|=2$이다.\n대각선 벡터는\n$\\vec c=\\vec a+\\vec b$이다.\n\n따라서\n$\\vec a-\\vec b+2\\vec c$\n$=\\vec a-\\vec b+2(\\vec a+\\vec b)$\n$=3\\vec a+\\vec b$이다.\n\n$\\vec a\\perp\\vec b$이므로\n$|3\\vec a+\\vec b|^2=9|\\vec a|^2+|\\vec b|^2$\n$=9\\cdot4+4=40$이다.\n\n구하는 값은\n$|3\\vec a+\\vec b|=\\sqrt{40}=2\\sqrt{10}$이다.\n\n따라서 정답은 ④이다."
+  },
+  "10": {
+    "answer": "①",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "직선 대입 후 판별식이 음수인 조건으로 교점을 배제한다.",
+    "decisiveStep": "판별식 <0에서 k²<10을 얻고 가장 큰 정수는 3.",
+    "solution": "직선 $y=2x+k$를 쌍곡선에 대입한다.\n$2x^2-3(2x+k)^2=6$\n$10x^2+12kx+3k^2+6=0$이다.\n\n실수 교점이 없으려면 이 $x$의 이차방정식의 판별식이 음수여야 한다.\n$\\Delta=(12k)^2-4\\cdot10(3k^2+6)$\n$=24k^2-240<0$,\n$k^2<10$이다.\n\n정수 $k$는 $-3,-2,-1,0,1,2,3$이고\n가장 큰 값은 $3$이다.\n\n따라서 정답은 ①이다."
+  },
+  "11": {
+    "answer": "⑤",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "완전제곱식으로 중심을 옮겨 표준형에서 초점거리를 구한다.",
+    "decisiveStep": "a²=4, b²=3이므로 두 초점 사이 거리는 2√7.",
+    "solution": "식을 완전제곱식으로 정리한다.\n$3(x^2-4x)-4(y^2+2y)-4=0$\n$3(x-2)^2-4(y+1)^2=12$이다.\n\n양변을 $12$로 나누면\n$\\dfrac{(x-2)^2}{4}-\\dfrac{(y+1)^2}{3}=1$이다.\n따라서 $a^2=4$, $b^2=3$이다.\n\n$c^2=a^2+b^2=4+3=7$이므로\n두 초점 사이의 거리는\n$2c=2\\sqrt7$이다.\n\n따라서 정답은 ⑤이다."
+  },
+  "12": {
+    "answer": "③",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "접점 매개변수로 포물선의 접선을 나타내고 주어진 점을 대입한다.",
+    "decisiveStep": "t=3/2,−1/2 중 양의 기울기는 t=3/2; x절편은 9.",
+    "solution": "포물선 $y^2=4px$에서 접점 $(pt^2,2pt)$의 접선은\n$ty=x+pt^2$이다.\n여기서는 $p=-4$이므로\n$ty=x-4t^2$이다.\n\n점 $(3,-4)$가 접선 위에 있으므로\n$-4t=3-4t^2$,\n$4t^2-4t-3=0$,\n$(2t-3)(2t+1)=0$이다.\n따라서 $t=\\dfrac32$ 또는 $t=-\\dfrac12$이다.\n\n접선의 기울기는 $1/t$이므로\n기울기가 양수인 경우는 $t=\\dfrac32$이다.\n접선의 $x$절편에서는 $y=0$이므로\n$x=4t^2=4\\cdot\\dfrac94=9$이다.\n\n따라서 정답은 ③이다."
+  },
+  "13": {
+    "answer": "①",
+    "level": "상",
+    "difficultyBucket": 4,
+    "hold": "인쇄된 넓이 조건과 해설지의 공식키가 충돌한다.",
+    "method": "반축과 초점거리의 관계로 출처 조건의 가능성을 점검한다.",
+    "decisiveStep": "bc/2≤(b²+c²)/4=9/4<2√5여서 인쇄된 넓이 조건을 만족하는 타원은 없다.",
+    "solution": "타원의 장축의 길이가 $6$이므로 긴 반축의 길이는 $3$이다.\n짧은 반축을 $b$, 초점거리를 $c$라 하면\n$b^2+c^2=9$이다.\n\n그림의 삼각형 $AOF$의 넓이는\n$\\dfrac12bc$이다.\n$(b-c)^2\\ge0$에서\n$bc\\le\\dfrac{b^2+c^2}{2}$이므로\n$\\dfrac12bc\\le\\dfrac{b^2+c^2}{4}=\\dfrac94$이다.\n\n그런데 인쇄된 넓이 조건은 $2\\sqrt5$이고\n$\\dfrac94<2\\sqrt5$이므로 조건을 만족하는 타원은 존재하지 않는다.\n따라서 원문 조건만으로는 답을 정할 수 없어 이 문항은 HOLD이다."
+  },
+  "14": {
+    "answer": "④",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "이등변 사다리꼴의 대칭과 중점 벡터로 높이를 구한 뒤 대각선 길이를 계산한다.",
+    "decisiveStep": "AP²=20, 수평거리 2이므로 높이 4; BD²=6²+4²=52.",
+    "solution": "$AD\\parallel BC$이고 밑각이 같으므로 사다리꼴은 이등변이다.\n두 밑변의 길이 차는 $8-4=4$이므로\n각 옆의 수평 차는 $2$이다.\n\n$P$를 $BC$의 중점이라 하면\n$\\overrightarrow{AB}+\\overrightarrow{AC}=2\\overrightarrow{AP}$이다.\n따라서\n$2|AP|=4\\sqrt5$,\n$|AP|=2\\sqrt5$이다.\n\n직각삼각형에서 $AP$의 수평 성분은 $2$이므로\n$2^2+h^2=(2\\sqrt5)^2$,\n$h=4$이다.\n\n$BD$의 수평 성분은 $BC$의 절반과 $AD$의 길이를 더한 $2+4=6$이다.\n따라서\n$|BD|=\\sqrt{6^2+4^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n\n따라서 정답은 ④이다."
+  },
+  "15": {
+    "answer": "①",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "서로 평행하지 않은 두 벡터를 기저로 보아 계수쌍의 행렬식을 0으로 둔다.",
+    "decisiveStep": "AB=(-4,8), AC=(2,k+3), 평행 조건에서 −4(k+3)−16=0이므로 k=−7.",
+    "solution": "$\\vec a,\\vec b$는 서로 평행하지 않으므로\n두 벡터의 계수를 좌표처럼 비교할 수 있다.\n\n$\\overrightarrow{AB}=\\overrightarrow{OB}-\\overrightarrow{OA}$\n$=(-2\\vec a+5\\vec b)-(2\\vec a-3\\vec b)$\n$=-4\\vec a+8\\vec b$이다.\n\n또\n$\\overrightarrow{AC}=\\overrightarrow{OC}-\\overrightarrow{OA}$\n$=(4\\vec a+k\\vec b)-(2\\vec a-3\\vec b)$\n$=2\\vec a+(k+3)\\vec b$이다.\n\n세 점이 한 직선 위에 있으려면 두 계수쌍이 비례한다.\n$\\begin{vmatrix}-4&8\\\\2&k+3\\end{vmatrix}=0$\n$-4(k+3)-16=0$,\n$k=-7$이다.\n\n따라서 정답은 ①이다."
+  },
+  "16": {
+    "answer": "-1/2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "쌍곡선 표준형의 접점형 접선 방정식을 쓴다.",
+    "decisiveStep": "3x−2y=1에서 y절편은 −1/2.",
+    "solution": "점 $(3,4)$에서의 접선은\n$\\dfrac{3x}{1}-\\dfrac{4y}{2}=1$이다.\n\n이를 정리하면\n$3x-2y=1$,\n$y=\\dfrac32x-\\dfrac12$이다.\n\n따라서 $y$절편은 $-\\dfrac12$이다."
+  },
+  "17": {
+    "answer": "28",
+    "level": "중",
+    "difficultyBucket": 3,
+    "method": "벡터 조건에서 BC의 중점을 찾고 직각삼각형의 길이를 사용한다.",
+    "decisiveStep": "P는 BC의 중점이므로 PB=2√3, 따라서 PA²=4²+(2√3)²=28.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution.svg",
+    "solution": "$\\overrightarrow{PB}+\\overrightarrow{PC}=\\vec0$이므로\n$\\overrightarrow{PB}=-\\overrightarrow{PC}$이다.\n따라서 $P$는 $BC$의 중점이다.\n\n$\\angle B=90^\\circ$, $\\angle C=30^\\circ$이고\n$AB=4$는 $30^\\circ$의 맞은편 변이다.\n따라서\n$AC=8$, $BC=4\\sqrt3$이다.\n\n$P$가 중점이므로\n$PB=\\dfrac{BC}{2}=2\\sqrt3$이다.\n$AB\\perp BP$이므로\n$PA^2=AB^2+PB^2$\n$=4^2+(2\\sqrt3)^2$\n$=16+12=28$이다.\n\n따라서 답은 $28$이다."
+  },
+  "18": {
+    "answer": "5/2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "중심 대칭으로 초점거리 합을 옮기고 둘레 조건에서 중심 현의 길이를 구한다.",
+    "decisiveStep": "PF′+F′Q=PF′+PF=8이므로 PQ=5, 중심을 지나므로 OP=5/2.",
+    "solution": "타원에서 긴 반축의 길이는 $4$이므로\n초점까지 거리의 합은\n$PF+PF'=2\\cdot4=8$이다.\n\n직선 $PQ$가 중심 $O$를 지나므로\n$P,Q$는 서로 마주 보는 점이다.\n중심 대칭에 의해\n$F'Q=PF$이다.\n따라서\n$PF'+F'Q=PF'+PF=8$이다.\n\n삼각형 $PF'Q$의 둘레가 $13$이므로\n$PQ=13-8=5$이다.\n또 $O$가 $PQ$의 중점이므로\n$OP=\\dfrac{PQ}{2}=\\dfrac52$이다.\n\n따라서 답은 $\\dfrac52$이다."
+  },
+  "19": {
+    "answer": "(1) 2, (2) 12",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "두 초점 위치벡터의 합이 0임을 이용해 벡터합을 원점 위치벡터로 바꾼다.",
+    "decisiveStep": "F+F′=0이므로 PF+PF′=−2OP=2PO; 최댓값은 2·6=12.",
+    "solution": "타원의 초점거리 $c$는\n$c^2=36-20=16$,\n$c=4$이다.\n따라서 두 초점의 위치벡터 합은\n$\\overrightarrow{OF}+\\overrightarrow{OF'}=\\vec0$이다.\n\n(1)\n$\\overrightarrow{PF}+\\overrightarrow{PF'}$\n$=(\\overrightarrow{PO}+\\overrightarrow{OF})+(\\overrightarrow{PO}+\\overrightarrow{OF'})$\n$=2\\overrightarrow{PO}$이다.\n그러므로 $k=2$이다.\n\n(2)\n$|\\overrightarrow{PF}+\\overrightarrow{PF'}|=2|PO|$이다.\n타원 위에서 $OP$의 최댓값은 긴 반축의 길이 $6$이므로\n구하는 최댓값은\n$2\\cdot6=12$이다."
+  },
+  "20": {
+    "answer": "(1) 2√481/5, (2) 2√13+4, (3) 72/5",
+    "level": "상",
+    "difficultyBucket": 4,
+    "method": "직사각형 좌표로 벡터를 나타내고 원 위 거리의 최댓값을 중심거리로 구한다.",
+    "decisiveStep": "a+b=QD+CP의 중심 이동은 32/5+4이고 반지름은 4이므로 최댓값 72/5.",
+    "solution": "$B=(0,0)$으로 두면\n$C=(6,0)$, $D=(6,8)$, $A=(0,8)$이다.\n$CQ:QD=1:4$이므로\n$Q=(6,\\dfrac85)$이다.\n\n(1)\n$\\overrightarrow{CD}=(0,8)$,\n$\\overrightarrow{BQ}=(6,\\dfrac85)$이므로\n$\\vec a=(-6,\\dfrac{32}{5})$이다.\n따라서\n$|\\vec a|=\\sqrt{36+\\dfrac{1024}{25}}=\\dfrac{2\\sqrt{481}}5$이다.\n\n(2)\n지름 $CD=8$인 원의 중심 $O$는 $(6,4)$이고 반지름은 $4$이다.\n$BO=\\sqrt{6^2+4^2}=2\\sqrt{13}$이므로\n$|\\vec b|=|BP|$의 최댓값은\n$BO+4=2\\sqrt{13}+4$이다.\n\n(3)\n$\\vec a+\\vec b=\\overrightarrow{CD}+\\overrightarrow{QP}$\n$=\\overrightarrow{QD}+\\overrightarrow{CP}$이다.\n여기서 $QD=\\dfrac{32}{5}$이고,\n$\\overrightarrow{CP}$는 중심 $O-C$가 길이 $4$인 원 위를 움직이는 벡터이다.\n따라서 합벡터의 최댓값은\n$\\dfrac{32}{5}+4+4=\\dfrac{72}{5}$이다."
+  }
+}
