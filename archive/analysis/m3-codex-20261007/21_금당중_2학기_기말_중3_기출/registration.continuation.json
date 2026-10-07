@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_CONTINUATION_V1",
+  "status": "DRY_RUN_VALIDATED_NOT_APPLIED",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_금당중_2학기_기말_중3_기출",
+  "stage": "MAIN_DONE",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+  "currentHead": "8bc8105a96102030e08d7a68fd3e8826080e6e7b",
+  "firstMissingClosureStep": "ROOT_SHARED_REGISTRY_APPLY_AND_POST_APPLY_VALIDATION",
+  "exactReason": "The full archive build_db.py pipeline produces the target DB row but exits FAIL at its follow-on missing sync-question-identity-map-v1.mjs helper. Target-only canonical source projection, official index builder, and official catalog builder succeeded in isolated .tmp candidates; prepare-target-registration and register-target-exam validated a one-target dry-run. The full candidate apply path also succeeded in a separate .tmp sandbox. Shared nine registry files remain untouched pending ROOT-owned application.",
+  "assignmentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.assignment.json",
+  "assignmentSha256": "fa97083f2c716e6ad43062bba84be0a92787251f0d021f71e3d0f596e2a4cfa1",
+  "source": {
+    "path": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+    "rawSha256": "3d9a16009144edbe9502b4892f4a85aa000c6d8b3f198cd80150161edfe30206",
+    "validatorRawBufferBlobSha1": "0a5e2156900b1082d45ac3cbd844c63f36ef6bbe",
+    "gitCleanFilterBlobSha1": "0a5e2156900b1082d45ac3cbd844c63f36ef6bbe"
+  },
+  "assetCount": 17,
+  "assetHashDisposition": "PASS_ALL_EXACT_R3_STATIC_CLOSURE_ASSET_HASHES",
+  "candidateRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\candidate",
+  "packageOutputAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\registration-package.json",
+  "generatorPrerequisites": [],
+  "dryRun": {
+    "disposition": "PASS_PLAN_VALIDATED_NOT_APPLIED",
+    "packagePathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\registration-package.json",
+    "packageSha256": "3444d887d16d9909117135224d91fb167a270cc29021ea7cc21a60a92beecbaf",
+    "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\register-target-exam.dry-run.raw.txt",
+    "reportSha256": "61b69d431f5ff0c61a5c68c46bbc172bf254b9cf913d07b795c9662683a4277a",
+    "targetCounts": {
+      "db": 1,
+      "identity": 25,
+      "catalog": 25,
+      "index": 25,
+      "metadata": 25
+    },
+    "nonTargetInvariant": {
+      "baselineCatalogRows": 11763,
+      "baselineMetadataRows": 11771,
+      "allPreservedByDeepComparison": true,
+      "baselineDbRows": 491,
+      "baselineIndexRows": 11763,
+      "baselineIdentityRows": 11771,
+      "identityRuntimeTuplesPreserved": true
+    },
+    "targetAutomaticCount": 0
+  },
+  "nextRequiredAction": "ROOT may run the single target `register-target-exam.mjs --apply` command in the assigned worktree only after rechecking the nine baseline hashes, source/assets, and HEAD still match the validated package. Then consume the generated target-registration.receipt.json, compare its nine afterSha256 values to current production bytes, run `node archive/tools/build-archive2-catalog.mjs --check`, and run `node --test tests/archive-question-identity-contract.test.mjs tests/archive-question-identity-runtime.test.mjs tests/target-registration-contract.test.mjs`. Publish/readback remains ROOT-owned.",
+  "productionRegistryChanged": false,
+  "semanticFieldsPromoted": false,
+  "createdAt": "2026-10-07T10:21:22.9953325Z",
+  "candidateCommandPlan": [
+    "In the isolated candidate mirror only, run `python <candidateRoot>\\archive\\build_db.py` with current directory `<candidateRoot>\\archive` after copying the full production exam tree.",
+    "Set `$env:GEOMETRY_ARCHIVE_ROOT=\"<candidateRoot>\\archive\"`; run `node <worktreeRoot>\\archive\\tools\\build-question-index.mjs`; output remains in candidateRoot.",
+    "Restore the four exact read-only `_generated` inputs named in this continuation under the isolated mirror, then run its copied canonical `build-question-identity-map.mjs`, `build-approved-question-metadata-v1.mjs`, `build-question-identity-runtime.mjs`, and `build-archive2-catalog.mjs` in pipeline dependency order.",
+    "Run `node archive/tools/prepare-target-registration.mjs --root <worktreeRoot> --assignment archive/analysis/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration.assignment.json --candidate-root .tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/candidate --output .tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/registration-package.json`.",
+    "Run `node archive/tools/register-target-exam.mjs --root <worktreeRoot> --assignment archive/analysis/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration.assignment.json --proposal .tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/registration-package.json --catalog-candidate .tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/candidate/archive/data/archive2-catalog.json --evidence-root archive/analysis/m3-codex-20261007/21_금당중_2학기_기말_중3_기출` without `--apply` for validated dry-run."
+  ],
+  "validations": [
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.db-builder.raw.txt",
+      "issue": "Missing candidate archive/tools/intelligence/sync-question-identity-map-v1.mjs; generated DB row is preserved, pipeline failure is not promoted.",
+      "name": "build_db.py target-isolated candidate",
+      "reportSha256": "cc19b74a0c6fb9853876fc4680311078dd4ed0e1696b947760bfe55750c88d1e",
+      "disposition": "FAIL_PIPELINE_AFTER_DB_GENERATION"
+    },
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.index-builder.raw.txt",
+      "name": "canonical question-index target candidate",
+      "disposition": "PASS_25_ROWS_ZERO_INVALID_KEYS_ZERO_DUPLICATES"
+    },
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.catalog-materializer-check.raw.txt",
+      "name": "canonical catalog target candidate plus --check",
+      "reportSha256": "7393de65503c03e10c3d8e81fc5608b800abe8541f535f3458f9007a7c89c88c",
+      "disposition": "PASS_25_TARGET_ROWS_IDENTITY_SOURCE_VERIFIED_AUTOMATIC_ZERO"
+    },
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.contract-test.raw.txt",
+      "name": "target-registration-contract tests in apply-sandbox",
+      "reportSha256": "e04f7d74eb457d62f1e510f12497054566b12889e82e5df186ed5ad2ca60d5e7",
+      "disposition": "PASS_4_TESTS"
+    },
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.identity-runtime-tests.raw.txt",
+      "name": "identity contract/runtime tests in apply-sandbox",
+      "reportSha256": "f62306a0e079f5f92d0da4995677c514d3d66bd8e31dff00c83622feba5e333b",
+      "disposition": "PASS_2_TESTS"
+    },
+    {
+      "reportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.apply-sandbox.attempt2.raw.txt",
+      "receiptPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration\\apply-sandbox\\archive\\analysis\\registration-apply-sandbox\\target-registration.receipt.json",
+      "name": "registrar apply in isolated sandbox",
+      "disposition": "PASS_APPLIED_PENDING_VALIDATORS_SANDBOX_ONLY",
+      "receiptSha256": "4fcdb26cdbeb1a1abf0d0fa6b806cad2f8cfc7e18eea0b1a3764e7d6c2dc4077"
+    }
+  ],
+  "issues": [
+    {
+      "issue": "First isolated catalog invocation lacked mixer-selector.js/archive2-canonical.js; copied actual canonical dependencies and reran.",
+      "disposition": "REPAIRED_IN_SAME_SESSION",
+      "originalReportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.catalog-builder.raw.txt"
+    },
+    {
+      "issue": "A catalog attempt was invalid because candidate input copying overwrote target-only identity/metadata rows with baseline rows; copy filter corrected and canonical builder plus --check rerun.",
+      "disposition": "PRESERVED_AND_SUPERSEDED",
+      "originalReportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.catalog-builder.attempt2.raw.txt"
+    },
+    {
+      "issue": "First apply-sandbox invocation lacked build-question-index.mjs used by the registrar; copied canonical generator and reran.",
+      "disposition": "PRESERVED_AND_REPAIRED_IN_SAME_SESSION",
+      "originalReportPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_금당중_2학기_기말_중3_기출\\registration.apply-sandbox.raw.txt"
+    }
+  ]
+}

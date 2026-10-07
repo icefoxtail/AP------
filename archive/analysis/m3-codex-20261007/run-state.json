@@ -5,62 +5,64 @@
     "19_이수중_2학기_기말_중3_기출/MAIN_DONE.receipt.json",
     "19_이수중_2학기_기말_중3_기출/ROOT.main-done.intake.json",
     "19_왕운중_2학기_기말_중3_기출/MAIN_DONE.receipt.json",
-    "19_왕운중_2학기_기말_중3_기출/ROOT.main-done.intake.json"
+    "19_왕운중_2학기_기말_중3_기출/ROOT.main-done.intake.json",
+    "21_금당중_2학기_기말_중3_기출/MAIN_DONE.receipt.json",
+    "21_금당중_2학기_기말_중3_기출/ROOT.main-done.intake.json"
   ],
   "remainingCreateQueue": [
-    "21_매산중_2학기_기말_중3_기출",
-    "21_신흥중_2학기_기말_중3_기출",
-    "21_왕운중_2학기_기말_중3_기출",
     "21_팔마중_2학기_기말_중3_기출",
     "21_풍덕중_2학기_기말_중3_기출",
     "25_왕운중_2학기_중간_중3_수학",
     "25_풍덕중_2학기_중간_중3_수학"
   ],
-  "masterCount": 1,
-  "lastVerifiedMain": "f2c43e6e3da9d1fd32a5475c1dee9fde3a0f47b4",
+  "masterCount": 2,
+  "lastVerifiedMain": "8bc8105a96102030e08d7a68fd3e8826080e6e7b",
   "root": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------",
   "runId": "m3-codex-20261007",
   "slots": {
     "R1": {
-      "session": "/root/r1_21_geumdang",
-      "examUid": "21_금당중_2학기_기말_중3_기출",
-      "freezeDisclosed": false
+      "examUid": "21_매산중_2학기_기말_중3_기출",
+      "excludedDisclosureQids": [
+        6
+      ],
+      "freezeDisclosed": true,
+      "session": "/root/r1_21_maesan"
     },
     "CREATE": {
-      "session": "/root/create_20_sinheung",
-      "examUid": "20_신흥중_2학기_기말_중3_기출",
-      "scope": "q7,9,15 ITEM_RECOVERY"
+      "session": "/root/create_21_wangun",
+      "examUid": "21_왕운중_2학기_기말_중3_기출"
     },
-    "R3": null,
-    "R2": {
-      "session": "/root/r2_20_isu",
+    "R3": {
       "examUid": "20_이수중_2학기_기말_중3_기출",
-      "freezeDisclosed": false
-    }
+      "scope": "same-stage technical closure schema repair",
+      "session": "/root/r3_20_isu"
+    },
+    "R2": null
   },
-  "spawnCount": 22,
+  "spawnCount": 28,
   "rootTechnicalScript": ".tmp/archive/m3-codex-20261007/root-technical.mjs",
   "lockedRoster": "archive/analysis/m3-codex-20261007/locked-roster.json",
-  "updatedAt": "2026-10-07T08:38:22.4985602Z",
+  "updatedAt": "2026-10-07T10:36:12.1712484Z",
   "completed": [
     "20_연향중_2학기_기말_중3_기출",
     "19_이수중_2학기_기말_중3_기출",
-    "19_왕운중_2학기_기말_중3_기출"
+    "19_왕운중_2학기_기말_중3_기출",
+    "21_금당중_2학기_기말_중3_기출"
   ],
   "publicationRecovery": "Preserved failed raw-index parity publication 0bcc580d5; repaired raw bytes in 0bb109b36; non-force push and actual MAIN_DONE PASS",
-  "itemRecoveryQueue": [
-    {
-      "examUid": "20_신흥중_2학기_기말_중3_기출",
-      "state": "REVALIDATE_SOURCE_TRUTH_BEFORE_MIN_REPAIR_OR_DIRECT_REPLACEMENT",
-      "rawSha256": "3254962f27bbfd7889d288376ff50302e3b2994a7a895c884f99d2148713f8ef",
-      "priority": "next CREATE slot",
-      "session": "/root/create_20_sinheung",
-      "qids": [
-        7,
-        9,
-        15
-      ]
-    }
+  "itemRecoveryQueue": [],
+  "pendingR1Queue": [
+    "21_신흥중_2학기_기말_중3_기출"
   ],
-  "pendingR1Queue": []
+  "pendingPublicationQueue": [
+    "20_신흥중_2학기_기말_중3_기출",
+    "20_이수중_2학기_기말_중3_기출"
+  ],
+  "registrationContinuation": {
+    "nonTargetInvarianceRequired": true,
+    "status": "APPLIED_PENDING_VALIDATORS_catalog_projection_stale",
+    "target": "21_금당중_2학기_기말_중3_기출",
+    "session": "/root/master_registration_bootstrap"
+  },
+  "spawnCountStatus": "28 is historical checkpoint; reconcile unique durable assignment sessions before final"
 }
