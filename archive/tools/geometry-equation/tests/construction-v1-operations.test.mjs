@@ -39,6 +39,11 @@ test('degenerate Construction V1 inputs remain explicit errors',async()=>{
 test('typed condition audit IDs must resolve to frozen source condition IDs',()=>{
   const sourceConditions=constructionV1Graph.conditionAudits.map(audit=>({id:audit.sourceConditionId,condition:audit.kind+' source fact',mappedTo:audit.refs.join('|')}));
   assert.doesNotThrow(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions}));
+  const multiTargetConditions=sourceConditions.map((row,index)=>({...row,mappedTo:index===0?['A','coordinateLabels']:['PRESERVED_ARCHIVE_BANK',row.mappedTo]}));
+  assert.doesNotThrow(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions:multiTargetConditions}));
   assert.throws(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions:sourceConditions.slice(1)}),/CONDITION_AUDIT_SOURCE_BINDING_REQUIRED/);
   assert.throws(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions:sourceConditions.map((row,index)=>index?row:{...row,extra:true})}),/INVALID_SOURCE_CONDITION_BINDING/);
+  for(const mappedTo of [[],['A',''],['A','A'],{}]){
+    assert.throws(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions:sourceConditions.map((row,index)=>index?row:{...row,mappedTo})}),/INVALID_SOURCE_CONDITION_BINDING/);
+  }
 });
