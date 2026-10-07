@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "CODEX_R2_QID_OWNER_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "qid": 6,
+  "decision": "TRUE_ITEM_HOLD_NO_VALID_CHOICE",
+  "candidate": {
+    "head": "f0112058dc0904e29d70a068d0fabe8fcf83ca0d",
+    "workingJsPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/21_매산중_2학기_기말_중3_기출.js",
+    "workingJsSha256": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6",
+    "rawBufferGitBlobSha1": "3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e"
+  },
+  "source": {
+    "pdfPath": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/21_매산중_2학기_기말_중3_기출/source/2021_매산중3_수학_2기말.pdf",
+    "pdfSha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b5474f2e6cc45bc93090",
+    "page": 1,
+    "sourcePagePngPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/source-pages/p1hi-1.png",
+    "sourcePagePngSha256": "29423320e261d01b5ed29c2624c3c75524f72bf8e31aa420ac1500250fd6483d",
+    "studentAssetPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/assets/images/21_매산중_2학기_기말_중3_기출/q06.png",
+    "studentAssetSha256": "8508f47aef1b2539df26a49716ddb972a436cab28dddb0c4a283b7d20b464914",
+    "sourceDetailPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/source-review/q06-source-detail.png",
+    "sourceDetailSha256": "21a9328fedc9094de70246f4ff1d5fd5791bbe415e760ace6231fd73be3b4396"
+  },
+  "angleOwnership": {
+    "x": "∠ADB at D, bounded by DA and DB",
+    "y": "∠BAT at A, bounded by BA and tangent AT",
+    "givenAtC": "∠DCB=80°",
+    "givenAtB": "∠DBA=35°"
+  },
+  "independentDerivation": [
+    "Cyclic quadrilateral: ∠DAB+∠DCB=180°, so ∠DAB=100°.",
+    "Triangle DAB: x=∠ADB=180°−100°−35°=45°.",
+    "Tangent-chord theorem for chord AB: y=∠ADB=45°.",
+    "Therefore y−x=0°, which is absent from choices 8, 10, 12, 15, 17."
+  ],
+  "sourceCompleteness": {
+    "studentVisualComplete": true,
+    "sourceVisualComplete": true,
+    "studentBodyChanged": false,
+    "visualOrConditionChanged": false,
+    "missingInputFinding": false
+  },
+  "priorEvidencePreserved": [
+    {
+      "path": "R2.blind-freeze.json",
+      "sha256": "0f798699e8c02256455ebf1af4e3005ba168669592f2ea8e40a33c8028e2e327",
+      "note": "original pre-disclosure q6 HOLD retained"
+    },
+    {
+      "path": "R2.stage-evidence-v2.json",
+      "sha256": "3338a2803be1d3ef035bbf25c368076248727e565f470aa65773de44aec27b52",
+      "note": "first R2 PASS retained as historical; q6 PASS/②=10 is superseded by this owner adjudication"
+    },
+    {
+      "path": "R2.generic-v2-validator-raw.json",
+      "sha256": "8e9594fe03e6d94a0993a0239c45eb146337d92781462e5d30da3b99b49ab796",
+      "note": "first raw generic report retained unchanged"
+    },
+    {
+      "path": "R2.adjudication.json",
+      "sha256": "002e467ac4f2e4daa0e14555acfc8d3ea994e9f6bae52f9a2acc916b7f858c89",
+      "note": "prior same-session q6 answer correction retained"
+    },
+    {
+      "path": "R1.q6-q22-postapply-adjudication.json",
+      "sha256": "a47702529e8b985137074de764e825d17a9e4de4c79fddc4f78f59a1c2eda34f",
+      "note": "R1 postapply angle-owner counterproof"
+    },
+    {
+      "path": "R2-q6-q14-postfreeze.postfreeze-disclosure.json",
+      "sha256": "908b4aea594925158a8f359fd904af5721ffebb7ff0b6a8baaecb458057769ae",
+      "note": "postfreeze source answer ②=10; conflict is resolved by visible x owner at D"
+    }
+  ],
+  "scope": {
+    "thisContinuationOwns": [
+      6
+    ],
+    "q24Touched": false,
+    "otherQidsTouched": false,
+    "workingJsOrAssetsModified": false,
+    "freshAnswerChasing": false,
+    "fullGenericRevalidationThisContinuation": false,
+    "reason": "q24 student body has since changed to two native subparts; a future complete 24-item R1→R2 cycle is separately scheduled. This continuation records q6 ownership only.",
+    "nextRequiredAction": "ROOT must carry q6 as true item HOLD into source/PDF repair or authorized question-only replacement, then fresh R1/R2 for the changed qid within the planned full 24-item cycle; do not consume the old generic PASS as current full-stage closure."
+  }
+}

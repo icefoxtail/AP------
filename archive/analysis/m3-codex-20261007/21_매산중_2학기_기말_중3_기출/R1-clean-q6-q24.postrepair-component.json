@@ -1,0 +1,81 @@
+{
+  "schema": "JS_ARCHIVE_R1_QID_COMPONENT_V2_POSTREPAIR",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scope": [
+    6,
+    24
+  ],
+  "originalFreshFreeze": {
+    "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1-clean-q6-q24.freeze.json",
+    "sha256": "b93c9ae6904bc6ebc15f89cae3aed6b16c71b209ebf392e9514b8e91a2ddc32a",
+    "studentBundleSha256": "be7369f29446c113f84bc9b280205aa4b21fd11dbc3f23527657ca7457ca1552"
+  },
+  "originalPreRepairComponent": {
+    "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1-clean-q6-q24.component.json",
+    "sha256": "a636e559ef19c8010ac0b19776b23a86853123b26be804b480eaf8c2efc2ff79"
+  },
+  "currentFinalArtifact": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/21_매산중_2학기_기말_중3_기출.js",
+    "rawSha256": "28bd4b13871866c1e7d6a8377076426c79808f019399448c75bd09298f3bdc99",
+    "rawBufferBlobSha1": "69686027c3ea6e29414b1455700f99d553c16ea0",
+    "head": "5c49e3fa084bab1fa7f683010ead3cff8d1f4acc"
+  },
+  "studentPayloadInvariance": {
+    "qid6": {
+      "sha256": "ea48bf0ddfe2efb232c342686189123f58d2e9879bdb41771a4657fe0668cc19",
+      "projectedFieldsMatchCurrentArtifact": true
+    },
+    "qid24": {
+      "sha256": "3d631b5e2ce15d33538538668dc902d7260318542b8333081216807ffa62e1b8",
+      "projectedFieldsMatchCurrentArtifact": true
+    },
+    "currentProblemAssetSha256": {
+      "q6": "8508f47aef1b2539df26a49716ddb972a436cab28dddb0c4a283b7d20b464914",
+      "q24": "6d9443b9782c9c3aa519e83913ac351f8d6ed241480bb5391d75ace7649422a"
+    }
+  },
+  "answerFreeze": {
+    "q6": {
+      "independentAnswer": "0",
+      "storedAnswer": "①",
+      "comparison": "MATCH",
+      "cardinality": "one number"
+    },
+    "q24": {
+      "independentAnswer": [
+        6,
+        1.2
+      ],
+      "storedAnswer": "(1) 6; (2) 1.2",
+      "comparison": "MATCH",
+      "cardinality": "two ordered numbers"
+    }
+  },
+  "changedLoci": [
+    {
+      "qid": 6,
+      "field": "solution",
+      "beforeSha256": "14cc26ddd6a274297d4de719329b146043acb50ba71cd8434da91b76bcb79707",
+      "afterSha256": "bf7af170c532884dd8287cb7457b7437b78b33b63eda26031d392431c18d6180",
+      "repair": "Split 180−100−35 into the separate lines 180−100−35, 80−35, 45. Values, method, answer and all student payload fields unchanged."
+    },
+    {
+      "qid": 24,
+      "field": "solution",
+      "beforeSha256": "942b05759d276d875c0ae0ab863e4909fa3a077e19858175ec29363fb302d5e1",
+      "afterSha256": "5c31f5a8e9e5740a9759963e9eb5d6246a43014ab1af6ad5f85074f3886ad92a",
+      "repair": "In each variance subpart, separate the deviation subtotal, division by n, and final numeric value onto successive lines. No data, formula, answer, source image, Meta field or student body changed."
+    }
+  ],
+  "q24MetaDebt": {
+    "problemTypeKey": null,
+    "templateKey": null,
+    "disposition": "Bind exact current null fields and existing nullReason in final artifactDispositions; no semantic reclassification or high-school projection."
+  },
+  "componentStatus": "PASS_SOLUTION_LAYOUT_ONLY_REPAIR",
+  "genericValidator": "NOT_RUN_COMPONENT; ROOT final aggregate owns single generic V2 R1 run after full evidence binding."
+}

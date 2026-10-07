@@ -1,0 +1,65 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_R2_NATIVE_QID_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "scope": "qid:24 only",
+  "reviewerMode": "fresh blind; no stored answer/solution exposed before freeze",
+  "frozenAt": "2026-10-07T12:34:59Z",
+  "input": {
+    "studentBundlePath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R2-native-q24.student-input.json",
+    "studentBundleSha256": "920ca1254865351599bbc102f5b4ae6e55c3526f3db40ce23603164ae04f578a",
+    "studentPayloadSha256": "3d631b5e2ce15d33538538668dc902d7260318542b8333081216807ffa62e1b8",
+    "studentContent": "[서답형 4] [서술형]\n[수준별 4-(①)] 다음 자료의 분산을 구하시오. (4점)\n$6, 2, 5, 3, 9$\n[수준별 4-(②)] 다음은 아이폰을 인터넷에서 구매하려고 한다. 이 아이폰의 평점을 조사하여 만든 자료이다. 분산을 구하시오. (5점)",
+    "choices": [],
+    "requiredImage": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/assets/images/21_매산중_2학기_기말_중3_기출/q24.png",
+      "sha256": "cf9ad9a0cbf1023b0a7cdf14dc67df8afcf90132ec57b263fd13c4063046fc49",
+      "physicallyViewed": true,
+      "observation": "Image is a degraded scan of a boxed chart/grid with plotted vertical bars. Exact category labels, scale markings, and bar values cannot be read reliably."
+    },
+    "nativeStudentProblemPdf": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_매산중3_수학_2기말.pdf",
+      "sha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b547f2e6cc45bc93090",
+      "manifestMatched": true,
+      "studentProblemPage": 4,
+      "qidCropPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R2-native-q24-source-q24-crop.png",
+      "qidCropPhysicallyViewed": true
+    }
+  },
+  "qid": 24,
+  "subparts": [
+    {
+      "id": "24-(1)",
+      "prompt": "자료 6, 2, 5, 3, 9의 분산",
+      "freezeStatus": "FROZEN_ANSWER",
+      "answer": 6,
+      "answerCardinality": 1,
+      "reasoning": [
+        "산술평균=(6+2+5+3+9)/5=5",
+        "편차 제곱합=(6−5)^2+(2−5)^2+(5−5)^2+(3−5)^2+(9−5)^2=1+9+0+4+16=30",
+        "중학교 자료의 분산=편차 제곱합/자료의 개수=30/5=6"
+      ]
+    },
+    {
+      "id": "24-(2)",
+      "prompt": "아이폰 평점 자료의 분산",
+      "freezeStatus": "HOLD_REQUIRED_STUDENT_VISUAL_FACT_UNREADABLE",
+      "answer": null,
+      "answerCardinality": null,
+      "missingFacts": [
+        "표/도표의 정확한 평점 범주 또는 관측값",
+        "각 범주의 정확한 빈도/도수 또는 원자료 수치",
+        "분산 계산에 필요한 축 숫자와 막대 높이"
+      ],
+      "reasoning": "질문은 이미지 자료의 분산을 요구한다. 실제 지정 PNG 및 manifest 일치 원본 PDF의 q24 crop을 열어 확인했지만 도표 숫자와 축 눈금이 손상되어 판독할 수 없다. 자료를 추측하거나 저장 답안으로 보완하지 않는다."
+    }
+  ],
+  "overall": {
+    "status": "HOLD_INCOMPLETE_STUDENT_VISUAL_FACTS",
+    "fullyFrozenAnswerSubparts": 1,
+    "totalSubparts": 2,
+    "r2Pass": false,
+    "reason": "24-(2)의 필수 수치 사실을 학생용 그림에서 복원할 수 없음; answer-key cardinality를 추정하지 않음."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "CODEX_R2_BLIND_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "reviewer": "archive_r2",
+  "scope": { "mode": "AFFECTED_QID_ONLY", "qids": [6, 24] },
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "freezeState": "FROZEN_BEFORE_UPSTREAM_ANSWER_DISCLOSURE",
+  "input": {
+    "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-clean-q6-q24.student-input.json",
+    "studentBundleSha256": "be7369f29446c113f84bc9b280205aa4b21fd11dbc3f23527657ca7457ca1552",
+    "currentJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\21_매산중_2학기_기말_중3_기출.js",
+    "currentJsSha256": "55c8df59311ae28ed259a1c930ba738fd8970bf3883d6f662fb6088722617f38",
+    "currentJsArtifactBlobSha1": "a3076cae23aafe9ee9475dc876079f89e329c556",
+    "openedStudentAssets": [
+      { "qid": 6, "ref": "assets/images/21_매산중_2학기_기말_중3_기출/q06.png", "sha256": "8508f47aef1b2539df26a49716ddb972a436cab28dddb0c4a283b7d20b464914", "openedAndInspected": true },
+      { "qid": 24, "ref": "assets/images/21_매산중_2학기_기말_중3_기출/q24.png", "sha256": "6d9443b9782c9c3aa519e83913ac351f8d6ed241480bb5391d75ace7649422a6", "openedAndInspected": true }
+    ]
+  },
+  "answers": [
+    {
+      "qid": 6,
+      "independentResult": { "value": -55, "unit": "degrees", "cardinality": 1, "choiceIndex": null },
+      "derivation": [
+        "The student diagram gives cyclic quadrilateral D-C-B-A, angle DCB=80 degrees, angle DBA=35 degrees, x=angle DAB, and y as the acute angle from chord AB to tangent AT.",
+        "Opposite angles of cyclic quadrilateral sum to 180 degrees, so x=angle DAB=100 degrees.",
+        "Triangle DAB gives angle ADB=180-100-35=45 degrees.",
+        "By the tangent-chord theorem, y=angle ADB=45 degrees.",
+        "Thus y-x=45-100=-55 degrees."
+      ],
+      "choiceAudit": { "choices": [0, 10, 12, 15, 17], "matchingChoices": 0, "status": "SUSPICIOUS_NO_CHOICE_MATCHES_INDEPENDENT_GEOMETRY_RESULT" }
+    },
+    {
+      "qid": 24,
+      "independentResult": { "subparts": [ { "label": "4-(①)", "value": 6 }, { "label": "4-(②)", "value": 1.2 } ], "cardinality": 2 },
+      "derivation": [
+        "For 6,2,5,3,9, the mean is 5 and the squared deviations sum to 1+9+0+4+16=30; population variance=30/5=6.",
+        "The graph gives frequencies 1,2,4,2,1 for ratings 1,2,3,4,5. The mean is 30/10=3.",
+        "The squared-deviation sum is 4*1+1*2+0*4+1*2+4*1=12; population variance=12/10=1.2."
+      ],
+      "status": "FROZEN"
+    }
+  ],
+  "comparison": "PENDING_ROOT_SCOPED_POSTFREEZE_PAYLOAD",
+  "notes": "No answer, solution, Meta, prior review, or upstream summary was read before this durable freeze."
+}

@@ -1,0 +1,114 @@
+{
+  "schema": "JS_ARCHIVE_R1_QID_COMPONENT_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scope": [6, 24],
+  "assignment": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-clean-q6-q24.assignment.json",
+    "sha256": "3c1aa26ee1f5db4e1d5a3a9ec070706e6934e21fb003e182770c8dbe4cabdec9"
+  },
+  "artifact": {
+    "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\21_매산중_2학기_기말_중3_기출.js",
+    "rawSha256": "55c8df59311ae28ed259a1c930ba738fd8970bf3883d6f662fb6088722617f38",
+    "validatorRawBufferBlobSha1": "a3076cae23aafe9ee9475dc876079f89e329c556",
+    "gitCleanFilterBlobSha1": "a3076cae23aafe9ee9475dc876079f89e329c556",
+    "head": "18e75238065748266ad11f458ebf417f46e61e0f"
+  },
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-clean-q6-q24.freeze.json",
+    "sha256": "b93c9ae6904bc6ebc15f89cae3aed6b16c71b209ebf392e9514b8e91a2ddc32a",
+    "disclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-clean-q6-q24.postfreeze-disclosure.json",
+    "disclosureSha256": "cf9c0a12cb133786fd9c4bd5610f02c396c4c3ddadf80855d1929933ff00b412",
+    "disclosureOrder": "answer freeze was durably written and hashed before the ROOT post-freeze qid-limited disclosure was opened"
+  },
+  "studentInput": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-clean-q6-q24.student-input.json",
+    "sha256": "be7369f29446c113f84bc9b280205aa4b21fd11dbc3f23527657ca7457ca1552"
+  },
+  "qidReviews": [
+    {
+      "qid": 6,
+      "independentAnswer": "0",
+      "answerCardinality": "one numeric value",
+      "storedAnswer": "①",
+      "storedAnswerComparison": "MATCH: choice ① is 0",
+      "questionLayout": {
+        "disposition": "KEEP_STATIC",
+        "evidence": "Prompt has one concise condition/question line and delegates the geometric data to the referenced diagram. Choices are five distinct numeric values without duplicated engine labels. The diagram is referenced directly; source wording and choice sequence match the frozen student bundle. Actual desktop/mobile line wrapping remains NOT_RUN for ROOT/R3 closure."
+      },
+      "solutionLayout": {
+        "disposition": "REPAIR_REQUIRED_MINIMAL",
+        "evidence": "The cyclic-quadrilateral deduction, triangle angle ownership, tangent-chord relation, and final subtraction are mathematically correct and appear in a downward sequence. However x=180°-100°-35°=45° compresses two calculation stages onto one line. Show the intermediate 80° subtraction result on a separate line before 45°. This is a presentation-only correction; no answer, condition, or method change is indicated."
+      },
+      "meta": {
+        "disposition": "PASS_CURRENT_FIELDS",
+        "evidence": "The current fields consistently classify the item as middle-school circle geometry: curriculum 2015, M3-06 / 원의 성질, subUnit M3-06-CIRCLE_LINE / 원과 직선, PT_CIRCLE_ANGLE_RELATIONS and TPL_CIRCLE_ANGLE_TANGENT_CHORD. Difficulty bucket 3 with high confidence is consistent with the short multi-theorem angle chain."
+      },
+      "visualSvg": {
+        "disposition": "PASS_STATIC_SOURCE_IMAGE",
+        "evidence": "Opened q06.png at the assigned absolute path. The circle, points A/B/C/D/O, tangent AT, angle labels 80° and 35°, and x/y placements are legible and support the stated angle ownership. The image is the required source diagram; no reconstructed SVG is required or present in the disclosed qid payload.",
+        "asset": {
+          "ref": "assets/images/21_매산중_2학기_기말_중3_기출/q06.png",
+          "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\assets\\images\\21_매산중_2학기_기말_중3_기출\\q06.png",
+          "sha256": "8508f47aef1b2539df26a49716ddb972a436cab28dddb0c4a283b7d20b464914"
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "independentAnswer": [6, 1.2],
+      "answerCardinality": "two ordered numeric results, (1) then (2)",
+      "storedAnswer": "(1) 6; (2) 1.2",
+      "storedAnswerComparison": "MATCH for both subparts and order",
+      "questionLayout": {
+        "disposition": "KEEP_STATIC",
+        "evidence": "The two labeled subparts are visibly separated; part (1) data occupies its own line, and part (2) introduces the graph-based rating data before asking for variance. No answer choices are expected for this written-response item. The actual q24 graph is present by reference. Actual desktop/mobile line wrapping remains NOT_RUN for ROOT/R3 closure."
+      },
+      "solutionLayout": {
+        "disposition": "REPAIR_REQUIRED_MINIMAL",
+        "evidence": "Both subparts show the data count/frequencies, mean, squared deviations, and variance denominator, so the calculations are reproducible and the population-variance convention is explicit. In part (1), the line =1+9+0+4+16=30/5=6 compresses the subtotal, division, and final result; separate 30/5 and 6 onto successive lines. In part (2), =4+2+0+2+4=12/10=1.2 similarly compresses the subtotal and final division; separate 12/10 and 1.2 onto successive lines. Keep all math and explanation; this is a line-break-only repair."
+      },
+      "meta": {
+        "disposition": "META_ONLY_PROJECTION_DEBT_BIND_REQUIRED",
+        "evidence": "Current semantic fields identify curriculum 2015, M3-07 / 통계, and M3-07-STATISTICS_REPRESENTATIVE / 대푯값과 산포도; the independently verified task is variance for raw data and a frequency graph. problemTypeKey and templateKey are null in the actual current fields with an explicit nullReason stating no exact active PT/TPL binding for this M3 target. Preserve these fields without semantic reclassification or high-school key projection; bind the existing null-field disposition to the exact final artifact in aggregate artifactDispositions. The special H2/RPM-only null-subunit exception is not invoked. Difficulty bucket 3/high confidence is consistent with routine two-part variance computation."
+      },
+      "visualSvg": {
+        "disposition": "PASS_STATIC_SOURCE_IMAGE",
+        "evidence": "Opened q24.png at the assigned absolute path. The graph identifies 10 ratings and clearly shows score/frequency pairs 1:1, 2:2, 3:4, 4:2, 5:1; the bars and labels agree. The source graph is the required visual; no reconstructed SVG is required or present in the disclosed qid payload.",
+        "asset": {
+          "ref": "assets/images/21_매산중_2학기_기말_중3_기출/q24.png",
+          "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\assets\\images\\21_매산중_2학기_기말_중3_기출\\q24.png",
+          "sha256": "6d9443b9782c9c3aa519e83913ac351f8d6ed241480bb5391d75ace7649422a"
+        }
+      }
+    }
+  ],
+  "componentStatus": "REPAIR_REQUIRED_SOLUTION_LAYOUT_AND_Q24_META_DISPOSITION_BINDING",
+  "changedLoci": [],
+  "requiredLociForRoot": [
+    {
+      "qid": 6,
+      "field": "solution",
+      "action": "Insert an explicit intermediate line for the arithmetic from 180°-100°-35° to 45°; preserve the verified mathematical content and answer."
+    },
+    {
+      "qid": 24,
+      "field": "solution",
+      "action": "Separate the deviation subtotal from the final division/result in both subparts; preserve the verified mathematical content and answers."
+    },
+    {
+      "qid": 24,
+      "field": "artifactDispositions",
+      "action": "Bind the existing null problemTypeKey/templateKey projection debt to current artifact SHA in aggregate evidence; do not semantic-reclassify and do not apply the H2 null-subunit exception."
+    }
+  ],
+  "validator": {
+    "status": "NOT_RUN_PARENT_AGGREGATE",
+    "reason": "Parent handles the full 24-qid generic R1 validator after aggregate; this scoped component does not invoke or claim the whole-stage validator."
+  },
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "renderNote": "This component contains static student-visible content and asset review only; it does not claim actual engine render or screen PASS."
+}

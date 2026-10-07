@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "examPath": ".tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/21_매산중_2학기_기말_중3_기출.js",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "실제 solution 문자열과 SVG preview를 판독. 중심을 표준형에서 도출한 뒤 이동·대칭을 순서별 좌표식으로 추적하고 반지름 불변을 명시한다. 그림은 C0→C1→C2 실제 중심을 구별하고 반지름 관계를 보여 준다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 17,
+        "solutionSha256": "sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145",
+        "solutionExcerpt": "세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.",
+        "observation": "실제 solution 블록에서 평행 경우 3쌍과 세 직선 동시교점 경우를 분리하고, 매개변수 계산과 마지막 M+N 전개를 별도 줄에 둔다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "실제 solution 문자열과 SVG preview를 판독. 두 완전제곱 변형을 먼저 보이고 중심·반지름을 표준형에 대응하며, SVG의 C(-1,3), r=2, (1,3) 좌표와 원이 일치한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87",
+        "solutionExcerpt": "과목 $A$를 선호하는 학생의 집합을 $A$,",
+        "observation": "실제 풀이에서 최대·최소를 각각 제약식으로 세우고 그 경계값이 실제로 가능한 집합 배치임을 구성해 보인다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+        "solutionExcerpt": "ㄱ. 차집합은 교집합으로 나타내면",
+        "observation": "실제 solution 문자열의 ㄱ/ㄴ/ㄷ/ㄹ 판단이 각각 빈 줄로 분리되어 참·거짓 근거와 반례가 개별 블록으로 읽힌다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "observation": "실제 solution과 Venn SVG preview를 판독. 포함배제 하한, 상한, 경계 배치 가능성을 순서대로 설명한다. ImageMagick preview에서 일부 보수기호가 대체 glyph 상자로 보였으므로 text fidelity는 SVG preview만으로 단정하지 않았다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+        "sha256": "sha256:3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f",
+        "gitBlobSha": "74d146e75f756584458c7a4b30af84c4696559bd"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "qualityCompareCount": "24/24",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

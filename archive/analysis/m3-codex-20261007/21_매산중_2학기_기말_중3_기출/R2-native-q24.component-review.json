@@ -1,0 +1,119 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_R2_AFFECTED_QID_COMPONENT_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "scope": {
+    "mode": "AFFECTED_QID_ONLY",
+    "qids": [
+      24
+    ]
+  },
+  "createdAt": "2026-10-07T12:35:30Z",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24.freeze.json",
+    "sha256": "912a24ed760ba4a6e293996f92eb158d6867be0df521193ddd3912f9d41ac991",
+    "preserved": true
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24.postfreeze-disclosure.json",
+    "sha256": "e4df663014266c9c67685ab54e1404b2457e4ec05392e93a5dbfc973ae00e661",
+    "shaVerifiedBeforeRead": true
+  },
+  "currentArtifact": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/21_매산중_2학기_기말_중3_기출.js",
+    "rawSha256": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6",
+    "gitRawBufferBlobSha1": "3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e"
+  },
+  "studentInput": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24.student-input.json",
+    "sha256": "920ca1254865351599bbc102f5b4ae6e55c3526f3db40ce23603164ae04f578a",
+    "studentPayloadSha256": "3d631b5e2ce15d33538538668dc902d7260318542b8333081216807ffa62e1b8"
+  },
+  "visualSource": {
+    "assignedPng": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/assets/images/21_매산중_2학기_기말_중3_기출/q24.png",
+      "sha256": "cf9ad9a0cbf1023b0a7cdf14dc67df8afcf90132ec57b263fd13c4063046fc49",
+      "openedBeforeFreeze": true,
+      "observation": "Degraded chart; exact labels, axis values, and bar heights are not reliably legible."
+    },
+    "sourcePdf": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_매산중3_수학_2기말.pdf",
+      "sha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b547f2e6cc45bc93090",
+      "manifestShaMatched": true,
+      "studentProblemPage": 4,
+      "pageRenderedAndOpened": true,
+      "pageEvidence": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24-source-page4.png",
+        "sha256": "2623995f54843e84ed755cc50413c302b3173726fb8906cf1ee5741043008056"
+      },
+      "qidCrop": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24-source-q24-crop.png",
+        "sha256": "a938ca59aa48df8ec245d4da0fecacf97047a2591d1962d739b8c28d5ab84aa2",
+        "opened": true,
+        "observation": "The full student q24 subpart prompt and chart are visible; the chart source scan remains too degraded to recover values."
+      }
+    }
+  },
+  "comparison": [
+    {
+      "subpart": "24-(1)",
+      "blindFreeze": {
+        "answer": 6,
+        "cardinality": 1
+      },
+      "disclosedStoredAnswer": "(1) $6$",
+      "disposition": "MATCH",
+      "reason": "Stored answer matches the independently frozen answer exactly."
+    },
+    {
+      "subpart": "24-(2)",
+      "blindFreeze": {
+        "status": "HOLD_REQUIRED_STUDENT_VISUAL_FACT_UNREADABLE",
+        "answer": null,
+        "cardinality": null
+      },
+      "disclosedStoredAnswer": null,
+      "disposition": "UNRESOLVED_SOURCE_HOLD",
+      "reason": "Disclosure has no second-subpart answer; current item is ITEM_HOLD and the disclosed source notes part2_hold/source_visual_hold. No value or cardinality is inferred."
+    }
+  ],
+  "sourceHold": {
+    "qid": 24,
+    "subpart": "24-(2)",
+    "status": "ITEM_HOLD",
+    "missingFacts": [
+      "exact rating categories or raw observations",
+      "exact frequency/count for each category or equivalent source data",
+      "readable axis numerals/scale and bar heights"
+    ],
+    "authoritativeStudentSource": {
+      "pngPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/assets/images/21_매산중_2학기_기말_중3_기출/q24.png",
+      "pngSha256": "cf9ad9a0cbf1023b0a7cdf14dc67df8afcf90132ec57b263fd13c4063046fc49",
+      "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_매산중3_수학_2기말.pdf",
+      "pdfSha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b547f2e6cc45bc93090",
+      "pdfPage": 4,
+      "cropEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R2-native-q24-source-q24-crop.png",
+      "cropEvidenceSha256": "a938ca59aa48df8ec245d4da0fecacf97047a2591d1962d739b8c28d5ab84aa2"
+    },
+    "nextRequiredAction": "Recover a higher-resolution exact student q24 chart/source image or an authoritative student-data transcription, then request a fresh blind review limited to q24-(2). If unavailable, retain the true item HOLD."
+  },
+  "componentDisposition": {
+    "status": "HOLD_INCOMPLETE_STUDENT_VISUAL_FACTS",
+    "answerSubpartsCompared": 1,
+    "answerSubpartsMatched": 1,
+    "unresolvedSubparts": 1,
+    "fullR2Pass": false,
+    "fullExamValidator": {
+      "disposition": "NOT_RUN_BY_COMPONENT_WORKER",
+      "reason": "This is qid-limited evidence; full-exam generic V2 R2 validation and aggregate closure remain ROOT-owned."
+    }
+  },
+  "mutations": {
+    "workingJs": false,
+    "assets": false,
+    "motherR2Evidence": false
+  }
+}
