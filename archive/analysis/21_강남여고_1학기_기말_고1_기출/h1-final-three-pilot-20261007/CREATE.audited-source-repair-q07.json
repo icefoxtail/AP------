@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_AUDITED_SOURCE_REPAIR_V1",
+  "examUid": "21_강남여고_1학기_기말_고1_기출",
+  "qid": 7,
+  "classification": "AUDITED_SOURCE_REPAIR",
+  "originalValue": "x^2+x-2=0",
+  "repairedValue": "x^2+x+2=0",
+  "repairReason": "The full-page source prints the negative sign but simultaneously identifies the roots as non-real. The official worked solution computes αβ=+2 and the marked answer is −3; both independently point to the unique one-sign correction +2.",
+  "independentMathResult": {
+    "roots": "complex conjugates of x^2+x+2=0",
+    "sum": "−1",
+    "product": "2",
+    "sumOfSquares": "−3",
+    "answer": "①"
+  },
+  "affectedFields": [
+    "content",
+    "answer",
+    "solution",
+    "decisiveStep"
+  ],
+  "postRepairAnswerCardinality": 1,
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_강남여1_1기말.pdf",
+    "sha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a",
+    "page": 2,
+    "originalStudentContent": "방정식 $x^2+x-2=0$의 두 허근을 $\\alpha,\\beta$라 할 때, $\\alpha^2+\\beta^2$의 값을 구하면? [3점]"
+  },
+  "officialSolutionPdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_강남여1_1기말_해설.pdf",
+    "sha256": "5edfb539c4bf27eff61e3f0c32dc598d9937f4aef0d7e719ec550a29209e9188",
+    "page": 2,
+    "observedProduct": "αβ=+2",
+    "markedAnswer": "①"
+  },
+  "originalAnswerFreezeRef": "archive/analysis/21_강남여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/CREATE.independent-answer-freeze.json",
+  "originalAnswerFreezeSha256": "fb0b6686ce204f1b3b190342f42d5bb09ae204ea5d8c4dd32ac5d584c3f736b7",
+  "sourceTextExactParity": "AUDITED_SOURCE_REPAIR; exact source bytes preserved in record",
+  "currentCorrectedStudentPayloadSha256": "264d0cff67e6a817dfae10f3f541460751734db2a0a81448bd36556e119139f2",
+  "currentStudentBodyRequiresFreshIndependentFreeze": true,
+  "studentFullPageEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\source-page-2.png",
+    "sha256": "97a3cb4b7695d202429ade7da5a551443545ec91b450a15dacf34fefdadcf7b6"
+  },
+  "studentQ07DetailEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\q07-detail.png",
+    "sha256": "81e9a601650e837b4894d16d89ef563b24007657072a92cc8e77477c4e4484b3"
+  },
+  "officialFullPageEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\official-solution-page-2.png",
+    "sha256": "8884e65bb9d623022dc809e584e5b65d41bdbf1730d6b73176d1c4c0801430c9"
+  },
+  "pixelReadback": {
+    "status": "PASS",
+    "observedStudentExpression": "x^2+x-2=0",
+    "observedStudentTerm": "두 허근",
+    "observedOfficialExpression": "x^2+x-2=0",
+    "observedOfficialCalculation": "αβ=+2 and α²+β²=−3",
+    "interpretation": "Both PDFs contain the same one-sign source defect; the non-real-root wording and official calculation uniquely indicate +2."
+  }
+}

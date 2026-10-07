@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "RUN_POSTFREEZE_DISCLOSURE_V1",
+  "sourceRawSha256": "0c0dc821e59d1440b0b7f7865e75c498c87a687102506c2811b60c7829af4ebd",
+  "sourceRawBlobSha1": "6d388eedd3e23ff288b2018d65e1ab2001ecb972",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_고흥고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\R1.independent-freeze.json",
+    "sha256": "84bdc7780f380d7bb5a42bbc5e8e34fe864e42d8689f87d7c5d26b491bdce183"
+  },
+  "disclosedAt": "2026-10-07T12:21:41.822Z",
+  "rows": [
+    {
+      "qid": 12,
+      "answer": "④",
+      "solution": "첫째 연립방정식에서 $x+y=-3$, $xy=-4$를 만족하는 순서쌍을 구한다.\n$t^2+3t-4=0$\n$(t+4)(t-1)=0$\n\n가능한 순서쌍은 $(x,y)=(-4,1)$ 또는 $(1,-4)$이다.\n\n먼저 두 경우의 제곱합은\n$x^2+y^2=(-4)^2+1^2=17$이다.\n따라서 $a=17$이다.\n\n둘째 연립방정식의 $17y+bx=5$에 대입한다.\n$(x,y)=(-4,1)$이면\n$17-4b=5$\n$b=3$\n이므로 조건 $a>b$도 만족한다.\n$(x,y)=(1,-4)$이면 $-68+b=5$에서 $b=73$이 되어 $a>b$를 만족하지 않는다.\n\n따라서 $(x,y)=(-4,1)$이고\n$a+b+x+y=17+3-4+1=17$이다.\n\n따라서 정답은 ④이다.",
+      "decisiveStep": "공통근 조건으로 두 순서쌍 후보를 만든 뒤 $a>b$ 조건으로 유일한 순서쌍을 고른다."
+    }
+  ]
+}

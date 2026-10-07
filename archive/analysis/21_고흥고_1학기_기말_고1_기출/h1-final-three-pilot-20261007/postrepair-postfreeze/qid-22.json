@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "RUN_POSTFREEZE_DISCLOSURE_V1",
+  "sourceRawSha256": "a64d66b56f7572091a71d7fa34ea6f9de7eb75a7482429b4c5d1fc103beaa88f",
+  "sourceRawBlobSha1": "93c49d5de6954dfdfd91fb8aeb901e905a41751d",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_고흥고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\R1.postrepair-freeze-binding.json",
+    "sha256": "06bcd48cab64dcdb9d696338efd07707ab9cbd2cce869aac0cc4fadae7b7e944"
+  },
+  "disclosedAt": "2026-10-07T12:29:09.919Z",
+  "rows": [
+    {
+      "qid": 22,
+      "answer": "$3\\sqrt{10}\\text{ m}$",
+      "solution": "좌표를 $C=(0,0)$, $A=(6,0)$, $B=(6,6)$으로 둔다.\n그러면 변 $BC$는 $y=x$, 변 $CA$는 $y=0$이고\n$AB$의 중점은 $P=(6,3)$이다.\n\n경로가 $BC$와 $CA$를 차례로 만나므로, 먼저 $P$를 $CA$에 대하여 대칭이동한 점은\n$P_1=(6,-3)$이다.\n이를 다시 $BC$ ($y=x$)에 대하여 대칭이동하면\n$P_2=(-3,6)$이다.\n\n두 번의 반사를 펼쳐 보면 꺾인 경로의 길이는 $P$에서 $P_2$까지의 직선거리 이상이다.\n$PP_2=\\sqrt{(-3-6)^2+(6-3)^2}$\n$=\\sqrt{81+9}=3\\sqrt{10}$\n\n이 선분은 두 반사한 변의 내부를 차례로 지나므로 이 길이가 실제 최솟값이다.\n따라서 경로의 최단 거리는 $3\\sqrt{10}\\text{ m}$이다.",
+      "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q22-solution.svg",
+      "decisiveStep": "경유 변 $CA$, $BC$를 차례로 반사해 꺾인 경로를 직선으로 펼치고 양 끝점 사이 거리를 구한다."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","gitBlobSha":"eb8776d19989f8f4219f4b80db0daf72310109cd"},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665","gitBlobSha":"e23fc34093196f68aff6fef48d66b9830e6d9c12"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":7,"solutionSha256":"sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionExcerpt":"원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.","observation":"표준형 변환에서 중심·반지름, 이동 순서별 좌표와 크기 보존을 분리해 작은 칠판에서 재현 가능하게 쓴다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":12,"solutionSha256":"sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171","solutionExcerpt":"원래 원의 중심과 반지름부터 확인한다.","observation":"중심·반지름·접선 조건을 각각 별도 줄로 세우고 절댓값 경우와 양수 조건을 적용한다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":2,"solutionSha256":"sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","solutionExcerpt":"두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.","observation":"두 기울기를 실제 식에서 도출하고 수직 조건 대입과 계산 결론을 단계별 줄로 둔다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":6,"solutionSha256":"sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7","solutionExcerpt":"주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.","observation":"완전제곱 변형, 반지름 제곱, 양수 조건과 경계 제외를 순서대로 드러낸다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":6,"solutionSha256":"sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af","solutionExcerpt":"드모르간의 법칙으로","observation":"포함배제 상한과 그 상한을 달성하는 실제 배치를 따로 보여 재현 가능성을 확보한다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":13,"solutionSha256":"sha256:18595ac39feb9304040eb8eaa40ff3b24c076379e0be9fea26ffea4caebf32f8","solutionExcerpt":"원의 중심은 $(2,-4)$이고 반지름은 $\\sqrt{10}$이다.","observation":"중심거리 식, 접선 등식, 절댓값의 두 값과 곱 계산을 각각 나누어 적는다."}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","gitBlobSha":"f06387b8bbb5adce4244fbb576c0bd500ab282fa"}
+    ],
+    "calibrationAxes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+    "sampleReadBeforeWork":true,
+    "qualityCompareCount":"22/22",
+    "calibrationStatus":"PASS",
+    "solutionWorkMode":"INDEPENDENT_RECHECK",
+    "calibrationOrder":"SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

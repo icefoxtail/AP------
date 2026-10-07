@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "CODEX_R1_POSTFREEZE_ADJUDICATION_V1",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "sourceRawSha256AtFreeze": "332b1770cd0da13b3e79ca3b15e6511d61145a3d05dcc5956c774dc4d62a1b65",
+  "originalFreezePath": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.independent-freeze.json",
+  "originalFreezePreserved": true,
+  "studentBodyChanged": false,
+  "freezeValidity": "VALID_FOR_ALL_QIDS",
+  "correctionReview": {
+    "samplePreflightPath": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.solution-calibration-preflight.json",
+    "samplePreflightGate": "PASS",
+    "sampleReadBeforeCorrection": true,
+    "scope": [2,4,7,11,13,20],
+    "rows": [
+      {"qid":2,"originalFreezeAnswer":"−5/3 (선지 ③)","adjudicatedAnswer":"−8/3 (선지 ④)","finding":"평행 조건에서 a=1은 두 직선이 일치하므로 평행인 두 직선에서 제외한다. 남는 평행값은 −2이고 수직값은 −2/3이므로 합은 −8/3. 기존 candidate answer/solution은 이 결론과 일치."},
+      {"qid":4,"originalFreezeAnswer":"ㄱ, ㄴ, ㄹ, ㅁ (선지 ③)","adjudicatedAnswer":"ㄱ, ㄹ, ㅁ (선지 ④)","finding":"ㄴ 우변의 (1/ω̄)²은 ω²이며, 1/ω=ω²이므로 우변은 2ω²이다. 좌변은 ω²+ω=−1이므로 ㄴ은 거짓. 기존 candidate answer/solution은 ㄴ 거짓, 정답 ④로 일치."},
+      {"qid":7,"finding":"독립 풀이의 범위는 candidate answer ③과 일치한다. 학생용 solution 끝의 ‘정답은 ④’는 선택기호 표기 오류이며 ③으로 최소 수정."},
+      {"qid":11,"finding":"독립 풀이에서 가능한 정수 k는 −2,…,5로 8개이며 candidate answer ③과 일치한다. 학생용 solution 끝의 ‘정답은 ④’는 선택기호 표기 오류이며 ③으로 최소 수정."},
+      {"qid":13,"finding":"독립 풀이의 동치 부등식은 선택지 ③이며 candidate answer ③과 일치한다. 학생용 solution 끝의 ‘정답은 ④’는 선택기호 표기 오류이며 ③으로 최소 수정."},
+      {"qid":16,"finding":"정답은 유지했다. 기존 풀이가 첫째 사분면의 최소 원이라고 단정하고 다른 축 접원 중심 부호 경우를 비교하지 않아 네 경우를 계산해 최소성을 보였다."},
+      {"qid":17,"finding":"정답은 유지했다. 기존 풀이가 AB 투영값을 최소라고 단정했으므로 둘레 OA, AB, BC, CO의 각 거리제곱 최솟값을 확인해 AB의 64/13이 전역 최소임을 보였다."},
+      {"qid":20,"originalFreezeAnswer":"m∈(−∞,−4]∪[−1,∞)","storedAnswerAtCompare":"m≤−4 또는 −1≤m≤−4/5","adjudicatedAnswer":"m≤−4 또는 m≥−1","finding":"문항은 구간 안에 적어도 한 실근을 요구한다. 판별식 조건은 m≤−4 또는 m≥−1. m≤−4이면 f(−2)=3(m+4)≤0<f(2)=−5m−4이므로 구간 안에 근이 있고, m≥−1이면 f(−2)=3(m+4)>0≥f(1)=−3(m+1)이므로 [−2,1]에 근이 있다. 기존 solution은 두 근이 모두 구간에 있어야 한다고 조건을 강화해 부당하게 범위를 축소했다."}
+    ]
+  },
+  "changedQids": [7,11,13,16,17,20],
+  "directDependencies": ["answer q20", "solution q7", "solution q11", "solution q13", "solution q16", "solution q17", "solution q20", "decisiveStep q20", "q20 solutionImage"],
+  "next": "Same-session R1 correction and changed-locus review; no student-body change, so original independent freeze remains valid."
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "RUN_POSTFREEZE_DISCLOSURE_V1",
+  "sourceRawSha256": "a64d66b56f7572091a71d7fa34ea6f9de7eb75a7482429b4c5d1fc103beaa88f",
+  "sourceRawBlobSha1": "93c49d5de6954dfdfd91fb8aeb901e905a41751d",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_고흥고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\R1.postrepair-freeze-binding.json",
+    "sha256": "06bcd48cab64dcdb9d696338efd07707ab9cbd2cce869aac0cc4fadae7b7e944"
+  },
+  "disclosedAt": "2026-10-07T12:29:09.748Z",
+  "rows": [
+    {
+      "qid": 20,
+      "answer": "$(x-12)^2+y^2=36$",
+      "solution": "두 백화점의 위치를 그림처럼 $A=(0,0)$, $B=(9,0)$이라 하고, 배송 비용이 같은 지점을 $P=(x,y)$라 하자.\n$A$의 1km당 비용을 $c$라 하면 $B$의 1km당 비용은 $2c$이다.\n\n두 배송 비용이 같으므로\n$c\\cdot AP=2c\\cdot BP$\n$AP=2BP$\n\n거리의 제곱을 이용하면\n$x^2+y^2=4\\{(x-9)^2+y^2\\}$\n$x^2+y^2=4x^2-72x+324+4y^2$\n$3x^2+3y^2-72x+324=0$\n$x^2+y^2-24x+108=0$\n\n완전제곱식으로 고치면\n$(x-12)^2+y^2=36$\n\n따라서 배송 비용이 같은 지점은 중심 $(12,0)$, 반지름 $6$인 원 위의 점이다.",
+      "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q20-solution.svg",
+      "decisiveStep": "단위 거리당 비용 비를 거리 비 $AP:BP=2:1$로 바꾸고, 자취의 방정식을 완전제곱한다."
+    }
+  ]
+}

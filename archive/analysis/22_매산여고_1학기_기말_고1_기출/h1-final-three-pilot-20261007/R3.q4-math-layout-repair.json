@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_LAYOUT_REPAIR_V1",
+  "runId": "h1-final-three-pilot-20261007",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "qid": 4,
+  "repairType": "SOURCE_MATCHED_MATH_LINEBREAK",
+  "cause": "Solution-mode actual engine S12 horizontal overflow on the q3/q4 page. q4 box scrollWidth 400px exceeded clientWidth 316px; the wide aligned 보기 math was the measured locus.",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_매여고1_1기말.pdf",
+    "sha256": "a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",
+    "page": 1,
+    "observedWrap": "PDF wraps the fifth statement after 자연수, continuing with n의 개수는 100이다."
+  },
+  "before": {
+    "artifactRawSha256": "690231f3158fc88c93b676a3eda91f86742587cba73f10109cb86ed7bbb7e0d4",
+    "artifactSha": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd",
+    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 보기에서 옳은 것만을 있는 대로 고르시오. (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [3.9점]\n&lt;보기&gt;\n$\\begin{aligned}\\text{ㄱ. }&\\omega^{-3}=1\\\\\\text{ㄴ. }&\\dfrac1\\omega+\\left(\\dfrac1\\omega\\right)^2=\\dfrac1\\omega+\\left(\\dfrac1{\\overline{\\omega}}\\right)^2\\\\\\text{ㄷ. }&\\omega+\\dfrac1\\omega=1\\\\\\text{ㄹ. }&\\omega^2=\\overline{\\omega}\\\\\\text{ㅁ. }&(-\\omega-1)^n=\\left(\\dfrac{\\overline{\\omega}}{\\omega+\\overline{\\omega}}\\right)^n\\text{을 만족시키는 200 이하의 자연수 }n\\text{의 개수는 100이다.}\\end{aligned}$",
+    "validatorRawBufferBlobSha1": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd",
+    "gitCleanFilterBlobSha1": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd"
+  },
+  "after": {
+    "artifactRawSha256": "ce2da2d64e740c9e8b39b45980834dbe925e64603710c4edb65d1db5a4e0add2",
+    "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 보기에서 옳은 것만을 있는 대로 고르시오. (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [3.9점]\n&lt;보기&gt;\n$\\begin{aligned}\\text{ㄱ. }&\\omega^{-3}=1\\\\\\text{ㄴ. }&\\dfrac1\\omega+\\left(\\dfrac1\\omega\\right)^2=\\dfrac1\\omega+\\left(\\dfrac1{\\overline{\\omega}}\\right)^2\\\\\\text{ㄷ. }&\\omega+\\dfrac1\\omega=1\\\\\\text{ㄹ. }&\\omega^2=\\overline{\\omega}\\\\\\text{ㅁ. }&(-\\omega-1)^n=\\left(\\dfrac{\\overline{\\omega}}{\\omega+\\overline{\\omega}}\\right)^n\\\\&\\text{을 만족시키는 200 이하의 자연수 }n\\\\&\\text{의 개수는 100이다.}\\end{aligned}$",
+    "validatorRawBufferBlobSha1": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+    "gitCleanFilterBlobSha1": "6a2deee9d7a6009448d01d30530b8a34461b99ac"
+  },
+  "change": {
+    "field": "questionBank[id=4].content",
+    "exactOperation": "Inserted two aligned row breaks before the explanation and before 의 개수는 100이다. in item ㅁ; no wording, math tokens, conditions, choices, answer, or solution changed.",
+    "mathTokensAndWordsPreserved": true,
+    "choicesUnchanged": true,
+    "answerUnchanged": true,
+    "solutionUnchanged": true,
+    "studentMathContentChanged": false,
+    "studentFormattingChanged": true
+  },
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_maesan2022"
+  },
+  "proof": {
+    "afterRemovingInsertedAlignedRowBreaksContentEqualsBefore": true,
+    "normalizedContentSha256": "4d83efa936ed8178d0f915442b0e3bbea3ee492929bfdd04c9bfe4af2d31ef47",
+    "beforeContentSha256": "4d83efa936ed8178d0f915442b0e3bbea3ee492929bfdd04c9bfe4af2d31ef47",
+    "afterContentSha256": "9f9f01ed145056cc4f6ca555c14ee332fb9c6236f319dfe11e4207d3e601b0a5",
+    "allKoreanWordsAndMathTokensPreserved": true,
+    "sourceWrapObservedDirectly": true
+  }
+}

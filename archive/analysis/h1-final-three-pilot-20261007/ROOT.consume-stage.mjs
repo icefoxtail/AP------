@@ -1,0 +1,15 @@
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';import {buildStageState,consumeValidationPass} from '../../tools/archive-stage-runtime-v2.mjs';
+const dir=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(dir,'../../..'),[uid,stage,reportPath,session,mode]=process.argv.slice(2),ev=path.join(root,'archive/analysis',uid,path.basename(dir)),reportBytes=fs.readFileSync(reportPath),r=JSON.parse(reportBytes);
+const roster=JSON.parse(fs.readFileSync(path.join(dir,'ROOT.roster.json')));if(!roster.rows.some(x=>x.examUid===uid))throw Error('OUTSIDE_LOCKED_ROSTER');
+if(!r.ok||r.issues.length||!r.artifactContract?.active||r.examUid!==uid||r.stage!==stage)throw Error('CURRENT_FULL_RAW_PASS_REQUIRED');
+const n=r.artifactContract.questionCount;if(!Number.isInteger(n)||n<1||(stage!=='R3'&&(r.common.expectedQids.length!==n||r.common.observedQids.length!==n)))throw Error('DENOMINATOR_BINDING_REQUIRED');
+const stateFile=path.join(ev,'ROOT.state.json'),state=JSON.parse(fs.readFileSync(stateFile));
+if(mode&&mode!=='--rebind')throw Error('UNKNOWN_INTAKE_MODE');
+const rebind=mode==='--rebind',intakeFile=path.join(ev,'ROOT.'+stage+'.intake.json');
+if(rebind&&!fs.existsSync(intakeFile))throw Error('ORIGINAL_STAGE_INTAKE_REQUIRED');
+const consumed=consumeValidationPass({state:buildStageState({...state,...(rebind?{stage}:{}),workComplete:true}),validationReport:r});
+const receipt={at:new Date().toISOString(),uid,stage,session,reportPath,reportSha256:createHash('sha256').update(reportBytes).digest('hex'),artifactSha:r.artifactSha,questionCount:n,consumed,...(rebind?{intakeKind:'SAME_SESSION_CURRENT_PROOF_REBIND',currentDownstreamStatePreserved:state}: {})};
+if(rebind)fs.copyFileSync(intakeFile,path.join(ev,'ROOT.'+stage+'.intake.superseded.'+Date.now()+'.json'));
+fs.writeFileSync(path.join(ev,'ROOT.'+stage+'.intake.json'),JSON.stringify(receipt,null,2)+'\n');
+if(!rebind)fs.writeFileSync(stateFile,JSON.stringify(consumed.state,null,2)+'\n');
+console.log(JSON.stringify({uid,stage,next:consumed.state.stage,questionCount:n,artifactSha:r.artifactSha}));
