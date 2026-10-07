@@ -8,6 +8,53 @@ import { gitBlobSha } from './archive-stage-validator-compat-v1.mjs';
 
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const CASES = ['exam/desktop','exam/mobile','sol/desktop','sol/mobile','ans/desktop','ans/mobile'];
+function referencedImages(value) {
+  const refs=new Set();
+  if(typeof value==='string')for(const m of value.matchAll(/<(?:img|image)\b[^>]*?(?:src|href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(m[1]);
+  return refs;
+}
+function choiceHtml(choice) {
+  if(choice===null || choice===undefined)return '';
+  if(typeof choice==='object')choice=choice.text || choice.content || choice.value || choice.answer || Object.values(choice)[0] || '';
+  return String(choice);
+}
+function modeAssetRefs(bank, mode) {
+  const refs=new Set();
+  const add=(value)=>{for(const ref of referencedImages(value))refs.add(ref);};
+  for(const q of bank){
+    const content=typeof q.content==='string'&&q.content ? q.content : (typeof q.question==='string' ? q.question : '');
+    if(mode==='exam'){
+      if(q.image)refs.add(q.image);else add(content);
+      if(Array.isArray(q.choices))for(const choice of q.choices)add(choiceHtml(choice));
+    }else if(mode==='sol'){
+      const stripReminder=!!q.image || q.solutionReminderImagePolicy==='STRIP_INLINE';
+      if(!stripReminder)add(content);
+      if(q.solutionImage)refs.add(q.solutionImage);
+      add(q.solution || q.explanation || q.sol || '');
+    }else if(mode==='ans') add(q.answer ?? '');
+  }
+  return refs;
+}
+function expandSvgDependencies(refs,bank,cases,assets,root) {
+  const expanded=new Set(refs);
+  const requiredByMode=new Map(['exam','sol','ans'].map(mode=>[mode,modeAssetRefs(bank,mode)]));
+  for(const ref of expanded){
+    if(!ref.toLowerCase().endsWith('.svg'))continue;
+    const source=assets.find(asset=>asset.ref===ref);
+    const eligibleModes=[...requiredByMode].filter(([,required])=>required.has(ref)).map(([mode])=>mode);
+    const eligibleCases=cases.filter(c=>eligibleModes.includes(c.id.split('/')[0]));
+    const witness=eligibleCases.flatMap(c=>c.loadedAssets||[]).find(asset=>asset.ref===ref);
+    if(!source || !witness || witness.sha256!==source.sha256)throw new Error('RENDER_SVG_LOADED_FILE_REQUIRED:'+ref);
+    const svgBytes=readBound(root,witness.file);
+    if(hash(svgBytes)!==source.sha256)throw new Error('RENDER_LOADED_ASSET_MISMATCH:'+ref);
+    for(const match of svgBytes.toString('utf8').matchAll(/(?:href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(match[1])){
+      const dependency=path.posix.normalize(path.posix.join(path.posix.dirname(ref),match[1]));
+      expanded.add(dependency);
+      for(const mode of eligibleModes)requiredByMode.get(mode).add(dependency);
+    }
+  }
+  return expanded;
+}
 function readBound(root, ref) {
   if (!ref || typeof ref.path !== 'string' || path.isAbsolute(ref.path)) throw new Error('PHYSICAL_REF_REQUIRED');
   const file=path.resolve(root,ref.path),rel=path.relative(path.resolve(root),file);
@@ -29,21 +76,22 @@ export function validateCodexRenderReceipt({receipt,root,artifactSha,assets=[],q
     if(!Array.isArray(bank) || !bank.length)throw new Error('RENDER_QUESTION_BANK_REQUIRED');
     const actualQids=bank.map(q=>Number(q.id));
     if(new Set(actualQids).size!==actualQids.length || actualQids.some(q=>!qids.includes(q)) || qids.some(q=>!actualQids.includes(q)))throw new Error('RENDER_EXPECTED_QIDS_MISMATCH');
+    const cases=receipt.cases;
+    if(!Array.isArray(cases) || cases.length!==CASES.length || new Set(cases.map(c=>c.id)).size!==CASES.length || CASES.some(id=>!cases.some(c=>c.id===id)))throw new Error('RENDER_SIX_CASES_REQUIRED');
     const refs=new Set();
     for(const q of bank){
       for(const field of ['image','solutionImage','visualAsset'])if(q[field])refs.add(q[field]);
-      for(const field of ['content','solution'])if(typeof q[field]==='string')for(const m of q[field].matchAll(/<(?:img|image)\b[^>]*?(?:src|href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(m[1]);
+      for(const field of ['content','question','solution','explanation','sol','answer'])if(typeof q[field]==='string')for(const ref of referencedImages(q[field]))refs.add(ref);
+      if(Array.isArray(q.choices))for(const choice of q.choices)for(const ref of referencedImages(choiceHtml(choice)))refs.add(ref);
     }
-    // Include SVG dependencies from the bound file actually loaded, not an unrelated production copy.
-    for(const ref of refs)if(ref.endsWith('.svg')){
-      const entry=receipt.cases?.[0]?.loadedAssets?.find(a=>a.ref===ref);
-      if(!entry)throw new Error('RENDER_SVG_LOADED_FILE_REQUIRED');
-      for(const m of readBound(root,entry.file).toString('utf8').matchAll(/(?:href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(path.posix.normalize(path.posix.join(path.posix.dirname(ref),m[1])));
-    }
+    // Expand only actual mode-rendered SVGs, using a SHA-bound witness from a case that requires that SVG.
+    for(const mode of ['exam','sol','ans'])for(const ref of expandSvgDependencies(modeAssetRefs(bank,mode),bank,cases,assets,root))refs.add(ref);
     if(new Set(assets.map(a=>a.ref)).size!==assets.length || refs.size!==assets.length || assets.some(a=>!refs.has(a.ref)))throw new Error('RENDER_EXPECTED_ASSET_SET_MISMATCH');
-    const cases=receipt.cases;
-    if(!Array.isArray(cases) || cases.length!==CASES.length || new Set(cases.map(c=>c.id)).size!==CASES.length || CASES.some(id=>!cases.some(c=>c.id===id)))throw new Error('RENDER_SIX_CASES_REQUIRED');
     for(const c of cases){
+      const mode=c.id.split('/')[0];
+      const caseRefs=expandSvgDependencies(modeAssetRefs(bank,mode),bank,cases,assets,root);
+      const caseAssets=assets.filter(asset=>caseRefs.has(asset.ref));
+      if(caseRefs.size!==caseAssets.length)throw new Error('RENDER_EXPECTED_MODE_ASSET_SET_MISMATCH:'+mode);
       if(c.status!=='PASS' || !Number.isInteger(c.viewport?.width) || c.viewport.width<=0 || !Number.isInteger(c.viewport?.height) || c.viewport.height<=0 || !Array.isArray(c.captures) || !c.captures.length)throw new Error('RENDER_CASE_INCOMPLETE:'+c.id);
       if(c.id.endsWith('/mobile') && c.viewport.width>600)throw new Error('RENDER_MOBILE_VIEWPORT_REQUIRED');
       const covered=new Set();
@@ -54,8 +102,8 @@ export function validateCodexRenderReceipt({receipt,root,artifactSha,assets=[],q
         capture.qids.forEach(q=>covered.add(Number(q)));
       }
       if(!qids.length || qids.some(q=>!covered.has(Number(q))))throw new Error('RENDER_QID_COVERAGE_REQUIRED:'+c.id);
-      if(!Array.isArray(c.loadedAssets) || c.loadedAssets.length!==assets.length)throw new Error('RENDER_ASSET_SET_REQUIRED:'+c.id);
-      for(const asset of assets){
+      if(!Array.isArray(c.loadedAssets) || c.loadedAssets.length!==caseAssets.length)throw new Error('RENDER_ASSET_SET_REQUIRED:'+c.id);
+      for(const asset of caseAssets){
         const matches=c.loadedAssets.filter(a=>a.ref===asset.ref);
         if(matches.length!==1 || matches[0].sha256!==asset.sha256 || hash(readBound(root,matches[0].file))!==asset.sha256)throw new Error('RENDER_LOADED_ASSET_MISMATCH:'+c.id+':'+asset.ref);
       }
