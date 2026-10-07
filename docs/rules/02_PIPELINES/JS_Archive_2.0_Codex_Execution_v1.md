@@ -172,7 +172,7 @@ node archive/tools/archive-stage-validator.mjs --stage <CREATE|R1|R2|R3> --exam 
 기계 gate:
 - 실제 final JS parse / qid binding
 - Meta 필수 field 물리 존재
-- 허용 null PT/TPL debt의 명시적 evidence
+- 허용 null PT/TPL debt의 명시적 evidence. H2·2015 교육과정·기하의 `RPM_ONLY`만 null `subUnitKey`를 허용하며, `artifactDispositions.rows[].rpmOnlyNullSubUnitProjection`에 resolver input/evidence/validator receipt를 결속한다. V2 validator가 현재 crosswalk/RPM authority hashes와 semantic FINAL·unmaterialized projection을 재계산해야 하고 artifact content/choices/image refs/solution 및 H2·2015·기하·L1이 일치해야 한다. H15-GV L1의 non-null child key도 현재 canonical crosswalk에 해당 projection이 없고 production metadata에 등록되지 않았으면 FAIL이다. `subUnitKey == standardUnitKey`인 기존 호환 값 및 등록된 legacy key는 유지한다. 임의 null·필드 누락·다른 course/curriculum의 null은 FAIL이다. 자세한 필드 계약은 Common Quality Contract §13을 따른다.
 - difficulty 4필드
 - choices에 ①~⑤ 중복 삽입 여부
 - TAB/form-feed 등 control-character 손상
