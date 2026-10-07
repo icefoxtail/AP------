@@ -1,0 +1,2053 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "19_연향중_2학기_기말_중2_기출",
+  "artifactSha": "9cd750198ccfa7d464728fe9b158bde1f9f4a419",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceArtifactSha256": "4a67f4dbffb2586b1080dc7ac5a953da9e2ad28ac1397c272dc51bcb4e358abc",
+  "sourceInputSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+  "independentFreezeRef": "R1.answer-freeze.json",
+  "independentFreezeSha256": "0106d05381eda5a0cb73f2e2593875808ce2aa2345d7eaeee1fb5e69b46152cd",
+  "studentInputRef": "R1.student-input-recovery.json",
+  "studentInputSha256": "b2dec92113f7166eb006a28d7b537d05eff502df68ffb53365b1c552714898c0",
+  "metaOnlyCorrection": {
+    "qids": [
+      1,
+      2,
+      3,
+      21
+    ],
+    "field": "problemTypeKey",
+    "from": null,
+    "to": "PT_COORD_CENTROID",
+    "basis": "ACTIVE compiled M2-05 / M2-05-TRIANGLE_PROPERTIES binding; student fields and solution unchanged."
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "내분비를 적용한 뒤 x·y 좌표 계산을 각각 수식 줄로 전개하고 최종 좌표를 분리해 적어 학생이 계산을 따라갈 수 있다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "기울기 조건과 한 점을 지나는 조건을 순서대로 대입하고, 방정식 변형을 별도 줄에 두어 최종 결론에 연결한다."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Current preflight visually checked actual q7 SVG: center labels C0=(-3,1), C1=(-5,2), C2=(5,-2), three radii match, and panel final equation matches the solution.",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "좌표 차를 먼저 계산하고 거리식에 대입한 뒤 제곱근을 단계별로 정리해 답을 내며 불필요한 문장을 더하지 않는다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "수직 조건을 기울기 곱으로 번역하고 두 직선을 기울기형으로 정리한 다음 식을 곱해 k를 구하는 흐름이 보인다.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "실패 fixture README를 읽었다. 문제 내부 설명/집계가 아니라 SVG 실제 좌표와 topology에서 관계를 계산하고, 나열형 판정을 구조적으로 분리하며 Meta null은 lookup 근거로 검수한다."
+    }
+  },
+  "visualReviewSummary": {
+    "referencedFiguresOpened": 12,
+    "visualRefs": [
+      {
+        "qid": 1,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q01.png",
+        "sha256": "372cc249c8ed11a8e096eba700dc25b83ec15a88f610dd2914bf0b2491d8f727"
+      },
+      {
+        "qid": 2,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q02.png",
+        "sha256": "ab025f670b4abb2976dde6893573d691372d69098a2cd82ab2ed347cc0f01624"
+      },
+      {
+        "qid": 3,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q03.png",
+        "sha256": "0421ad58648a2ea2b29b34f31c8bdb3477e60001b6bdcaa059746c811c6af1c5"
+      },
+      {
+        "qid": 4,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q04.png",
+        "sha256": "a36a2eb89bb08612a0e0d45873341e75fb7b390be393ae79c1a7bc71395a6a0b"
+      },
+      {
+        "qid": 5,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q05.png",
+        "sha256": "7338594ea45717c7a60d4d40a0c06e9d974ea2c5a495ce43580e47762bb185d2"
+      },
+      {
+        "qid": 6,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q06.png",
+        "sha256": "95e7f3c195e531742f4dc274be989cde6cb98cb543dd1502e34339fd0aad117e"
+      },
+      {
+        "qid": 8,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q08.png",
+        "sha256": "5e3a5dfe65a798c3f92dcd40d514112d016f45ea6ed578100421b6c28c7c495f"
+      },
+      {
+        "qid": 9,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q09.png",
+        "sha256": "19b6613842bf50abe7822b701f9820500828e19af3e482b6b3dfe85ba3551acf"
+      },
+      {
+        "qid": 11,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q11.png",
+        "sha256": "3e0b1922d3c97e16aedf5e15365276cc281d06a249638575ad6acaab84f91ee5"
+      },
+      {
+        "qid": 14,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q14.png",
+        "sha256": "b25047d35c9203ae009b795a9c5f278c5b166f26483b49755917591bda5da4ad"
+      },
+      {
+        "qid": 17,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q17.png",
+        "sha256": "89d13b20ce889dc89f46a9ffe5477948e9c32096bb4b9ad4c46285eca36b76d9"
+      },
+      {
+        "qid": 21,
+        "ref": "assets/images/19_연향중_2학기_기말_중2_기출/q21.png",
+        "sha256": "d94a8531a8cd444bae02f5e4e567b95f4a508bf0f129e0ff36217037ab5328e3"
+      }
+    ],
+    "questionSvgRefs": 0,
+    "solutionSvgRefs": 0
+  },
+  "openFindings": [
+    "q08: independent shaded area is 192 cm^2; stored option ④ is 192π cm^2.",
+    "q20: missing independence/joint-probability condition; stored answer relies on an added assumption."
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "4",
+      "independentWork": "Centroid ratios and area ratios verify options 1,2,3,5; AG=BG is not generally true.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Question and solution show centroid and area facts with separate mathematical steps; q image vertex/median labels are consistent. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently matched active M2-05/M2-05-TRIANGLE_PROPERTIES PT_COORD_CENTROID; template retained null with debt because no single exact active template is uniquely supported."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q01.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f4e94445e94b42165e9ddc229819c886d5e42180cd25f3740cb4f6b6eb096f38",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q01.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Question and solution show centroid and area facts with separate mathematical steps; q image vertex/median labels are consistent. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+      }
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "4 cm^2",
+      "independentWork": "Area GBC is 24; in triangle GBC, G'D is one third of G's altitude to BC and BD=BC/2, so [G'BD]=4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Two centroid altitude ratios and base ratio are shown in separate steps; q image labels G,G',D support the relation. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently matched active M2-05/M2-05-TRIANGLE_PROPERTIES PT_COORD_CENTROID; template retained null with debt because no single exact active template is uniquely supported."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q02.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ff0be526c9523e4828766b608de102d7923bb93f1c351e0fb3bba3aa11de7144",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q02.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Two centroid altitude ratios and base ratio are shown in separate steps; q image labels G,G',D support the relation. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "4 cm",
+      "independentWork": "Coordinates along BC give x(G)=2 and x(G')=6, hence GG'=4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Coordinate setup, centroid coordinates, subtraction, and answer occupy separate lines; diagram and 12 cm label agree. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently matched active M2-05/M2-05-TRIANGLE_PROPERTIES PT_COORD_CENTROID; template retained null with debt because no single exact active template is uniquely supported."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q03.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3b0a702ca56fdc1130ec7136420f2eb4b15ef6bfcc00a6a132b442c5a25a13d8",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q03.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Coordinate setup, centroid coordinates, subtraction, and answer occupy separate lines; diagram and 12 cm label agree. Meta PT_COORD_CENTROID corrected; no single matching active template determined. difficulty bucket 3 / legacy 중 is plausible."
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "24 cm^2",
+      "independentWork": "AB=10 is hypotenuse and BC=8, so AC=6 and area=6*8/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Square areas, side lengths, Pythagorean steps, and area substitution are explicit. Visual confirms right angle C and 100/64 labels. Unit/category and bucket 2 / legacy 하 are plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q04.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b4d7719c627aa1c430f76a848f5711fa9ed41732b75367b7399ea22f21d39cd6",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q04.png",
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Square areas, side lengths, Pythagorean steps, and area substitution are explicit. Visual confirms right angle C and 100/64 labels. Unit/category and bucket 2 / legacy 하 are plausible."
+      }
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "18",
+      "independentWork": "BC=6+9=15; x=8 from 8-15-17, y=10 from right triangle ABD; x+y=18.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "BC composition, hypotenuse substitution, intermediate x, and y calculation are separately shown. Visual confirms BD=6, DC=9, AC=17, right angle B. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q05.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e0db5115c18ffd86d1d01cf1bd7558ca58da6fd17c3fe6bb48620fd5c0eea156",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q05.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "BC composition, hypotenuse substitution, intermediate x, and y calculation are separately shown. Visual confirms BD=6, DC=9, AC=17, right angle B. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "4 cm",
+      "independentWork": "AE^2=(12+CE)^2+12^2=20^2, so CE=4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Square side, coordinate-length relation, equation transformations, and final CE are separated. Visual confirms the two squares and AE=20. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q06.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "772e59900e9b888b8b082689c2210e0f77b4f52355591d185033ab4aa261aa31",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q06.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Square side, coordinate-length relation, equation transformations, and final CE are separated. Visual confirms the two squares and AE=20. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "②,⑤",
+      "independentWork": "Only 3-4-5 and 8-15-17 satisfy the Pythagorean theorem.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②,⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "All five triples are tested independently; answer includes both qualifying options. No image is necessary. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7052171c5d7108e46020b7cdfc732bf4745a95a187a3b94c9a085367a223706d",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "All five triples are tested independently; answer includes both qualifying options. No image is necessary. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "192 cm^2",
+      "independentWork": "Four shaded lunes have the area of rectangle ABCD by the right-triangle lune relation; 12×16=192 cm^2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "PASS_AFTER_REPAIR: removed the transcription-only pi token from all five choices; source page 2 and answer key support ④=192 cm^2.",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "b2dec92113f7166eb006a28d7b537d05eff502df68ffb53365b1c552714898c0"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Printed source values/units are restored exactly; choices remain in order."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Existing solution calculates 192 cm^2 and concludes ④; no solution change."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Unaffected prior R1 Meta review carried forward."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Previously reviewed figure unchanged; no SVG field."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9ef721a7b444d7d9dd203cf5fa53756988ac19e24409b7bbf51ada0b65bb8cec",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q08.png",
+      "difficultyReview": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyLevel": "상",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "The figure supports the four lunes and rectangle dimensions, but independent area 192 cm^2 conflicts with every listed pi-valued choice. Solution progression is legible; keep question/answer finding open. Bucket 4 / legacy 상 plausible, confidence medium."
+      },
+      "repairApplied": true
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "6",
+      "independentWork": "A shortest edge path between opposite cube vertices uses the three directions in any order: 3!=6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Cube vertices show opposite start/end; all three edge directions are used in the counting argument. Image necessary and semantically aligned. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q09.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "631028051ce1b349136ba965dd9d746494979acf2b6e396ecd1a8d90c2e7dbfa",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q09.png",
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Cube vertices show opposite start/end; all three edge directions are used in the counting argument. Image necessary and semantically aligned. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "3",
+      "independentWork": "Solve a+2b+10c=32 with 0<=a,b,c<=4: c=2 yields (4,4); c=3 yields (2,0),(0,1).",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Coin limits and equation are stated; cases c=2 and c=3 are separated and exhaust possibilities. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "87c369b713b3ac7aa5ccbe90e91bcc81ece4f40cc5456de79d46c386f26e45bc",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Coin limits and equation are stated; cases c=2 and c=3 are separated and exhaust possibilities. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "14",
+      "independentWork": "There are 2 drinks and 7 other menu items, giving 2*7=14.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Menu image confirms 2 drinks and 7 non-drink choices; multiplication is on a separate line. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q11.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "675720ae0bd09c8a35756d436ecb68d3bbee3e2f1a0e9bb6a00d3f71e2fd288e",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q11.png",
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Menu image confirms 2 drinks and 7 non-drink choices; multiplication is on a separate line. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "33",
+      "independentWork": "For y=1..5 all six x work; for y=6, x=1,2,3 work; total 33.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Cases by y and final sum are line-separated; inequality is counted correctly. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cbc0cf55e07021790a1867cdb3c331d569b7abc69eb415bcf7c7f8e2420ed535",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Cases by y and final sum are line-separated; inequality is counted correctly. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "78",
+      "independentWork": "Choose the two participants: C(13,2)=78.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Handshake pair interpretation and combination count are explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f0ec4a5a6480a68798f1fb6a222a9c81cca2a3e1ac72fb5a70545949f46b2055",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Handshake pair interpretation and combination count are explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "30",
+      "independentWork": "C(4,2)*3+C(3,2)*4=18+12=30.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Two-line point placement matches the two selection cases; both terms are separately shown. Image is necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q14.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c8503b31535091d9a00a607cb8723d8e2bd1c044f0ecf7ff578d5acc151b1cd2",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q14.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Two-line point placement matches the two selection cases; both terms are separately shown. Image is necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "1/2",
+      "independentWork": "There are 6 qualifying cards among 12; 6/12=1/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Qualifying card sets are listed and combined; fraction is explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "61189a62a578611c6186f88e8fb6ac61d17c082cde3360b53e7b348afdd355cc",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Qualifying card sets are listed and combined; fraction is explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "16/81",
+      "independentWork": "With replacement, P(even)*P(divisor of 6)=(4/9)(4/9)=16/81.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Replacement condition supports independent draws; both event counts and product are explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9a6c42d20ea154b0406356ed5b846c5a7fe09ee5f8b5b7d263fcdb98f7ffe389",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "하",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Replacement condition supports independent draws; both event counts and product are explicit. No image necessary. Bucket 2 / legacy 하 plausible."
+      }
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "1/4",
+      "independentWork": "The region graph has B adjacent to A,C,D; color symmetry makes P(B=red)=1/4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Actual region boundaries show B adjacent to A,C,D; coloring count steps match those boundaries. Image is necessary and topology verified. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q17.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6d9c1c4036f5a9b9ba5b4ac868b0a7768f9663092426735ec6b5d4acf39081a7",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q17.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Actual region boundaries show B adjacent to A,C,D; coloring count steps match those boundaries. Image is necessary and topology verified. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "4/9",
+      "independentWork": "Complement: all different outcomes are 6*5*4=120; (216-120)/216=4/9.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Complement count is explicit and probability simplification is correct. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "86f189376771dc69064916fb33ea5e0b190a8225c5f6fb242b9b37c90b1761d5",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Complement count is explicit and probability simplification is correct. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "3/5",
+      "independentWork": "Total 120; adjacent H,D are 2*4!=48; nonadjacent probability=72/120=3/5.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Total, adjacent block count, complement, and probability are separate. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a8eaaf328d3b7821ee21787a30bd63e7d4326d24142c7ff2a6ca9492ce3128f4",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Total, adjacent block count, complement, and probability are separate. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "2/3",
+      "independentWork": "By the current middle-school convention, A and B are independent: (3/4)(5/6)+(1/4)(1/6)=5/8+1/24=2/3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "FALSE_HOLD_CLEARED: current 00_RULES_INDEX convention treats middle-school probability events as independent absent a contrary dependency condition; no student mutation.",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "b2dec92113f7166eb006a28d7b537d05eff502df68ffb53365b1c552714898c0"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Printed condition and ask match the source; no missing-condition HOLD under current middle-school rule."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Existing solution’s independence calculation is consistent with current convention and is step-separated."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Unaffected prior R1 Meta/difficulty review carried forward."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No visual is referenced or necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "325338bcb29949337b5276d7ba620b9ff28a3fb32c48bd89f314154e777e6ace",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Solution layout is separated, but it inserts independence absent from the prompt; answer is not determined as written. No visual necessary. Bucket 3 / legacy 중 plausible."
+      },
+      "policyAdjudication": {
+        "rule": "docs/rules/00_RULES_INDEX.md lines 224-229",
+        "status": "FALSE_HOLD_CLEARED",
+        "studentFieldsChanged": false
+      },
+      "answerFreezeAdjudication": {
+        "initialIndependentFreezeValue": "Not determined from marginal probabilities alone",
+        "initialFreezeRef": "R1.answer-freeze.json",
+        "initialFreezePrecededStoredAnswer": true,
+        "policyRule": "docs/rules/00_RULES_INDEX.md lines 224-229; middle-school probability defaults to independent absent stated dependency",
+        "adjudicatedAnswer": "2/3",
+        "derivation": "(3/4)(5/6)+(1/4)(1/6)=2/3",
+        "derivedWithoutUsingStoredAnswer": true,
+        "studentFieldsChanged": false
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "16 cm",
+      "independentWork": "AG:GD=2:1 gives GD=6; GG'=2/3*6=4; AG'=12+4=16.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "16 cm",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Two centroid ratios and AG addition are separate; visual confirms D midpoint and A,G,G' order. Meta PT_COORD_CENTROID corrected; no single matching active template determined. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently matched active M2-05/M2-05-TRIANGLE_PROPERTIES PT_COORD_CENTROID; template retained null with debt because no single exact active template is uniquely supported."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Inspected actual assets/images/19_연향중_2학기_기말_중2_기출/q21.png; geometry/labels/topology support the stem. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a5222cd8c4b2b33f12a34979bff41b51b3382fa14f360dbadd5bffc13616257c",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": "assets/images/19_연향중_2학기_기말_중2_기출/q21.png",
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Two centroid ratios and AG addition are separate; visual confirms D midpoint and A,G,G' order. Meta PT_COORD_CENTROID corrected; no single matching active template determined. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "20, 52",
+      "independentWork": "If 6 is hypotenuse, a^2=36-16=20; if a is hypotenuse, a^2=16+36=52.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "20, 52",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Both possible hypotenuse cases are shown separately and both produce triangle-valid values. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c3ba57780bd83b76f271a2366ac0f8f2671c8ed88a6996fdcd9350b5381713de",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Both possible hypotenuse cases are shown separately and both produce triangle-valid values. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "(1) 24가지, (2) 24가지",
+      "independentWork": "(1) 백의 자리 3가지, 십의 자리 4가지, 일의 자리 홀수 2가지이므로 3×4×2=24. (2) 일의 자리 0이면 3×4=12; 일의 자리 2이어도 반복 허용으로 백의 자리 1,2,3 모두 가능하여 3×4=12. 따라서 12+12=24.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "independentFreezeRef": "R1.q23.independent-freeze.fresh.json",
+      "independentFreezeSha256": "b5736221040108e70741b9f6de38a6bf049e6445381ac076d37bc9403dafcc0f",
+      "storedAnswer": "(1) 24가지, (2) 24가지",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "Q23_DIRECT_REPLACEMENT_CONFIRMED_AFTER_POSTFREEZE_ADJUDICATION",
+      "sourceIdentity": {
+        "sourceArtifactRawSha256": "d32b1bfe24c0c80b7d4f8439e7b86d3ff01710d091da10cf32b40de62d525107",
+        "studentProjectionSha256": "96603a3ad1cf72a1bcfa34364822ffb19eb05e83c1feec7b8d89e047531cbb83",
+        "studentInputSha256": "7209c819c2e48b13be837d45c1dba6aab310db234027b425c48cffcfd13f276b",
+        "sourceMode": "ITEM_RECOVERY_DIRECT_REPLACEMENT",
+        "replacementReceiptRef": "ITEM_RECOVERY.receipt.json"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Current q23 student projection exactly matches the frozen qid bundle. The repeat condition, odd/even tasks, and two scored subparts have explicit boundaries; grid default remains appropriate. Static disposition only; actual render/capture is renderNOT_RUN_USER_WAIVER."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Corrected small-board flow separates units 0 and units 2 cases; each has explicit 3-by-4 count, and the final 12+12=24 is shown on its own line. All q23 solution bytes were compared with the calibrated floor after the post-freeze correction."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Current physical fields retain M2-08/PROBABILITY_COUNTING and existing null problemTypeKey/templateKey projection debt; fields and existing debt reason are bound to this final artifact without semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "Current student bundle has image:null and visualReferences:[]; no q23 problem or solution visual is necessary."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5ee0d46f3fd3b304027b76c12c80d2e1c9dc7f3b516ebc6e25fe081824074115",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "metaReview": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "visualRefsReviewed": [],
+      "difficultyReview": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "The direct replacement asks two elementary digit-count products with one explicit case split; bucket 2 is consistent with the current item."
+      },
+      "repairApplied": true,
+      "repairAttempted": [
+        {
+          "attempt": 1,
+          "repairType": "POSTFREEZE_MATHEMATICAL_AND_ANSWER_CORRECTION",
+          "priorAnswer": "(1) 24가지, (2) 20가지",
+          "independentAnswer": "(1) 24가지, (2) 24가지",
+          "status": "APPLIED",
+          "reason": "The units-digit-2 case retains hundreds digit 2 under the explicit repetition condition; the answer and its dependent solution were corrected."
+        }
+      ],
+      "calibrationPreflightRef": "R1.q23.calibration-preflight.validation.json",
+      "calibrationPreflightSha256": "8a039a1a859ff7e574d4edc0ae9b23d8f7767a4184ba48e864dcf6cbdb012383",
+      "priorQ23EvidenceRef": "R1.v2-evidence.pre-q23-fresh.json#rows/q23",
+      "renderDisposition": "renderNOT_RUN_USER_WAIVER"
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "은도끼 복권",
+      "independentWork": "Gold chance=1/C(6,2)=1/15; silver chance=1/13; equal cost/prize favors silver.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "은도끼 복권",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceIdentity": {
+        "sourceSha256": "84b57caf24ec2759c90616c6ff25969ec2a7bb57a977ba4b2ac59684489690f2",
+        "studentProjectionSha256": "58f2e9bf214c7e1a658df789a8338fe329bebb7da8c47dbd02456ea543a936e2"
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Student condition and task are legible; choices are correctly grouped and quantities remain attached to units."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "observation": "Combinations and reciprocal probability comparison are explicit; equal ticket costs/prizes support decision. Claim and evidence fields are visibly separated. No image necessary. Bucket 3 / legacy 중 plausible."
+        },
+        "META": {
+          "status": "PASS",
+          "observation": "Independently reviewed current taxonomy/bindings; existing unit/subunit/difficulty values are plausible. Null problemTypeKey/templateKey are declared debt; no exact active M2 binding uniquely fits this item."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "observation": "No figure/table is needed or referenced. No question solutionImage/visualAsset SVG is present; visual necessity assessed independently."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "60b44a3ece6e48de93bfea9fc93bf21e931b61701799faffbe7768fa804a37bf",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s).",
+      "visualRefsReviewed": null,
+      "difficultyReview": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevel": "중",
+        "compatibility": "NORMAL",
+        "verdict": "PASS",
+        "reason": "Combinations and reciprocal probability comparison are explicit; equal ticket costs/prizes support decision. Claim and evidence fields are visibly separated. No image necessary. Bucket 3 / legacy 중 plausible."
+      }
+    }
+  ],
+  "sourcePdfReview": {
+    "path": "source/2019_연향중2_수학_2기말.pdf",
+    "sha256": "f1533c9fd2eb294c90d00695c1c9d01f5f85562ec1437af506ee33dbd19a411f",
+    "reviewedPages": [
+      2,
+      5
+    ],
+    "observations": {
+      "q08": "Original page 2 confirms choices carry pi factors (including 192 pi), while geometric lune total is 192 cm^2.",
+      "q20": "Original page 5 contains only the two marginal success probabilities; no independence or joint condition.",
+      "q23": "Original page 5 has no instruction that the four digits must each be used exactly once and no repetition rule."
+    }
+  },
+  "validatorAttempt1": {
+    "status": "FAIL",
+    "issues": [
+      "COMMON_ACTUAL_ARTIFACT_SHA_MISMATCH",
+      "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q8",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q20",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q23"
+    ],
+    "disposition": "Attempt preserved in R1.validation.attempt-1.json; corrected evidence binding/sample visual audit before final validation."
+  },
+  "validatorAttempt2": {
+    "status": "FAIL",
+    "issues": [
+      "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q8",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q20",
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q23"
+    ],
+    "disposition": "Attempt preserved; first Golden exam included SVGs outside its selected sample qids, so added the audited q07 SVG sample."
+  },
+  "priorEvidenceRef": "R1.v2-evidence.attempt-1.json",
+  "priorEvidenceSha256": "ce2a0994c0025b695c7fc5774194f79b04243a35dd3af6a18681f2c1b6f5f653",
+  "targetedRecoveryRef": "R1.targeted-hold-recovery.json",
+  "targetedRecoverySha256": "f820d160836dc3d736c28161181a631b4056c85b3449638d4c984c6087846fb2",
+  "finalTargetedReview": {
+    "q08": "PASS_AFTER_REPAIR",
+    "q20": "FALSE_HOLD_CLEARED_BY_CURRENT_MIDDLE_SCHOOL_INDEPENDENCE_RULE",
+    "q23": "PASS_AFTER_POSTFREEZE_ADJUDICATION",
+    "unaffectedQids": "carried forward from the frozen R1 evidence without semantic re-review"
+  },
+  "finalArtifactSha": "9cd750198ccfa7d464728fe9b158bde1f9f4a419",
+  "finalArtifactRawSha256": "32d20b2580da97032b108897b09ecd1e935d2dbeda4b0d5186ba4b0e6bb89807",
+  "validatorRawBufferBlobSha1": "9cd750198ccfa7d464728fe9b158bde1f9f4a419",
+  "gitCleanFilterBlobSha1": "aeaca169d36c71faaa94be96566ae99277694fad",
+  "freshQ23IndependentFreezeRef": "R1.q23.independent-freeze.fresh.json",
+  "freshQ23IndependentFreezeSha256": "b5736221040108e70741b9f6de38a6bf049e6445381ac076d37bc9403dafcc0f",
+  "freshQ23StudentInputRef": "ITEM_RECOVERY.student-input.q23.json",
+  "freshQ23StudentInputSha256": "7209c819c2e48b13be837d45c1dba6aab310db234027b425c48cffcfd13f276b",
+  "freshQ23CurrentFinalStudentInputRef": "R2.q23.student-only.final.json",
+  "freshQ23CurrentFinalStudentInputSha256": "6dc91ca919163269fdc4427ee60d2a9fc32ea59e59873e56c9e6c4a440386536",
+  "sourceLineage": {
+    "qid": 23,
+    "currentReplacementReceiptRef": "ITEM_RECOVERY.receipt.json",
+    "currentSourceRevalidationRef": "ITEM_RECOVERY.source-revalidation.json",
+    "priorFailedHoldRefs": [
+      "R1.q23-hold-evidence.json",
+      "R1.q23-repair-attempt-1.json",
+      "R1.targeted-answer-adjudication.q23.json",
+      "R1.targeted-hold-recovery-attempt-1.json",
+      "R1.targeted-hold-recovery.json",
+      "R2.continuation.final.json"
+    ],
+    "priorSourceAmbiguityRetainedAsHistorical": true,
+    "currentPromptRule": "Same digits may be reused; this current replacement condition is explicit."
+  },
+  "artifactDispositions": {
+    "artifactSha": "9cd750198ccfa7d464728fe9b158bde1f9f4a419",
+    "rows": [
+      {
+        "qid": 1,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 2,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 3,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 4,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 5,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 6,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 7,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 8,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 9,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 10,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 11,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 12,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 13,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 14,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 15,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 16,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 17,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 18,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 19,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 20,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 21,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 22,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 23,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      },
+      {
+        "qid": 24,
+        "metaFields": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "standardUnitOrder": 8,
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        },
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Active taxonomy reviewed for this qid; no unique exact active binding is supported for the declared null field(s)."
+      }
+    ]
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "$P=(1,6)$이다.",
+        "observation": "내분비를 적용한 뒤 x·y 좌표 계산을 각각 수식 줄로 전개하고 최종 좌표를 분리해 적어 학생이 계산을 따라갈 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "$m+n=-3+1=-2$이다.",
+        "observation": "기울기 조건과 한 점을 지나는 조건을 순서대로 대입하고, 방정식 변형을 별도 줄에 두어 최종 결론에 연결한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "$=5\\sqrt2$이다.",
+        "observation": "좌표 차를 먼저 계산하고 거리식에 대입한 뒤 제곱근을 단계별로 정리해 답을 내며 불필요한 문장을 더하지 않는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "$k=6$이다.",
+        "observation": "수직 조건을 기울기 곱으로 번역하고 두 직선을 기울기형으로 정리한 다음 식을 곱해 k를 구하는 흐름이 보인다.",
+        "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualObservation": "q02 solution SVG의 data-a/data-b는 첫 직선 (1,3), 둘째 (6,-2)이며 기울기 -1/3과 3의 곱은 -1이다. SVG의 설명 수치가 실제 line 정의와 맞는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "$(-5,2)\\rightarrow(5,-2)$이다.",
+        "observation": "원 표준형 정리와 중심 평행이동·원점 대칭을 각각 계산 줄로 보이며, 반지름 불변과 최종 식을 결론으로 잇는다.",
+        "visualSha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "visualObservation": "실제 q7 SVG의 세 원 반지름은 동일하고 중심 라벨은 C0=(-3,1), C1=(-5,2), C2=(5,-2)로 솔루션 변환 순서와 맞으며 panel의 최종 원 식도 일치한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "실패 fixture README를 읽었다. 문제 내부 설명/집계가 아니라 SVG 실제 좌표와 topology에서 관계를 계산하고, 나열형 판정을 구조적으로 분리하며 Meta null은 lookup 근거로 검수한다."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "24/24"
+  },
+  "freshQ23CalibrationPreflightRef": "R1.q23.calibration-preflight.fresh.json",
+  "freshQ23CalibrationPreflightSha256": "ac23db690082faefcedf42fe711234b682c98b35f6e20d2a9d28545dc43bfd7d"
+}
