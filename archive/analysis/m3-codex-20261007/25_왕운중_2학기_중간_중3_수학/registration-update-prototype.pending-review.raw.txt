@@ -1,0 +1,11 @@
+file:///C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/registration-update-tools/prepare-existing-target-update-prototype.mjs:22
+for(const b of assignment.baselineRegistryBindings){if(!registryPaths.includes(b.relativePath))throw Error('UNEXPECTED_BASELINE_PATH:'+b.relativePath);if(shaFile(safeRoot(b.relativePath))!==b.sha256)throw Error('BASELINE_REGISTRY_SHA_MISMATCH:'+b.relativePath);}
+                                                                                                                                                                                                             ^
+
+Error: BASELINE_REGISTRY_SHA_MISMATCH:archive/db.js
+    at file:///C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/registration-update-tools/prepare-existing-target-update-prototype.mjs:22:206
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

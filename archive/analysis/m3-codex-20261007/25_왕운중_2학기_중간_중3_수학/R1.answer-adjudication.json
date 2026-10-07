@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "R1_POSTFREEZE_SAME_STAGE_ADJUDICATION_V1",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "qid": 24,
+  "originalFreeze": {
+    "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/R1.independent-freeze.json",
+    "sha256": "sha256:5ec0f92ca15c6fc370dcdb9b01dea4599834cc4360700b5396ec56d6280d9470",
+    "frozenAnswer": "about 721 m",
+    "preserved": true
+  },
+  "adjudicationStatus": "CORRECTED_GEOMETRY_INTERPRETATION",
+  "reason": "The student image marks the angles of depression from a horizontal line. The complementary 50° and 59° are the angles at P between each line of sight and the vertical PH, not angles at ground endpoints.",
+  "calculation": [
+    "PH=500 m",
+    "∠APH=50°, so tan50°=AH/PH and AH=500·1.19=595 m",
+    "∠HPB=59°, so tan59°=BH/PH and BH=500·1.66=830 m",
+    "H lies between A and B, so AB=AH+HB=1425 m"
+  ],
+  "correctedIndependentAnswer": "1425 m",
+  "storedAnswer": "$1425\\,\\mathrm{m}$",
+  "answerComparison": "MATCH_AFTER_SAME_STAGE_ADJUDICATION",
+  "bodyChanged": false,
+  "visualProof": {
+    "openedAndInspectedBeforeFreeze": true,
+    "sha256": "sha256:e77f7f6839fee0e3513007d27df7bb252bac9967c982ce455554d4aa1261b76c",
+    "path": ".tmp/archive/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/assets/images/25_왕운중_2학기_중간_중3_수학/q24.png"
+  },
+  "decision": "Retain current q24 answer and solution. Preserve original freeze and attach this calculation adjudication."
+}

@@ -1,0 +1,88 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "solutionExcerpt": "양변에 $3$을 더하면",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "observation": "Variables and point-condition are stated before substitution; the decisive coefficient and constant calculations occupy separate equation lines."
+      },
+      {
+        "solutionExcerpt": "$(x,y)\\rightarrow(-x,-y)$",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "observation": "Coordinate changes are written in ordered stages, and the final circle equation follows from the preserved radius and moved center.",
+        "visualSha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+      },
+      {
+        "solutionExcerpt": "$x^2+2x=(x+1)^2-1$이고,",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "observation": "The completion-of-square identities are shown before substitution into the source equation, then the standard form is compared with the requested quantities.",
+        "visualSha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c"
+      },
+      {
+        "solutionExcerpt": "집합 $A$의 원소는",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:91a904c2485de17236e3a5f6859a970ab617243f24c740ff38229ac72ed01cb4",
+        "observation": "The membership/subset distinction is defined before the options are judged in separate blocks."
+      },
+      {
+        "solutionExcerpt": "무게중심은",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 11,
+        "solutionSha256": "sha256:b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+        "observation": "The coordinate-average condition is applied separately to x and y before the requested centroid is calculated; its diagram was inspected.",
+        "visualSha256": "sha256:40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134"
+      },
+      {
+        "solutionExcerpt": "$\\dfrac{5\\times4}{2}=10$가지이다.",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:093fba9886d141f2136ce98a7854553020ebdbf4320d9683427d51dd4032f373",
+        "observation": "The overcount and division by order are explained beside the displayed computation, followed by a distinct aggregation and answer line."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "24/24",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}

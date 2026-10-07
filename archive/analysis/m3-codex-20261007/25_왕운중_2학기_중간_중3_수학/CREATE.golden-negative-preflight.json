@@ -1,0 +1,34 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "targetArtifactRawSha256": "6c757fc71dd5ee42ab7a20afd6188e693d19493540e03c1a01fbd98a22d4bd70",
+  "preflightCompletedBeforeTargetEdits": true,
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {"qid": 7, "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9", "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d", "observation": "Read solution steps for standard form, center, translation, origin symmetry, preserved radius, and final equation. Read actual SVG labels and center coordinates."},
+        {"qid": 18, "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585", "visualSha256": "818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b", "observation": "Read set-inclusion derivation, mandatory/optional points, distance condition, and total-minus-excluded count. Read SVG grid and mandatory/optional/count labels."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {"qid": 2, "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2", "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4", "observation": "Read y-form transformations, both slopes, perpendicular substitution, and k calculation; compared SVG labels and line coordinates."},
+        {"qid": 7, "solutionSha256": "8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a", "visualSha256": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca", "observation": "Read parallel test, distance formula, absolute-value cases, two k values, and product; compared the SVG parallel lines and distance labels."}
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "relatedSvgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+    "relatedSvgSha256": "9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8",
+    "observation": "Read the regression README and failed SVG. The label 3x+4y-8=0 implies slope -3/4 while the actual line primitive has positive slope. In target work, verify primitive geometry, split enumerated reasoning across blocks, and inspect runtime TeX escaping. Jeil q18 was not used as a model per assignment."
+  },
+  "readBeforeTargetEditing": true
+}
