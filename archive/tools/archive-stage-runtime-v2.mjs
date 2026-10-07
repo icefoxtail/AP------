@@ -1,5 +1,5 @@
 import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
-import { validateCodexRenderReceipt, validateCodexMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
+import { validateCodexRenderReceipt, validateCodexMainDoneReceipt, validateCodexUserWaivedMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
 import { validateGptMainDoneReceipt } from './archive-gpt-closeout-v2.mjs';
 const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN', 'RENDER', 'PUBLICATION', 'MAIN_DONE']);
 const NEXT_STAGE = Object.freeze({
@@ -216,6 +216,13 @@ export function consumeCodexMainDone({state,...input}) {
   required(buildStageState(state).stage==='PUBLICATION','PUBLICATION_STAGE_REQUIRED');
   const result=validateCodexMainDoneReceipt(input);required(result.ok,'MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
   return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt};
+}
+export function consumeCodexUserWaivedMainDone({state,...input}) {
+  const current=buildStageState(state);
+  required(current.stage==='RENDER','USER_WAIVER_RENDER_STAGE_REQUIRED');
+  required(current.executionLine==='CODEX' && current.qualityContractVersion===QUALITY_CONTRACT_V2,'USER_WAIVER_CODEX_CURRENT_REQUIRED');
+  const result=validateCodexUserWaivedMainDoneReceipt(input);required(result.ok,'USER_WAIVED_MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt,closure:result};
 }
 
 export function consumeGptMainDone({state,...input}) {
