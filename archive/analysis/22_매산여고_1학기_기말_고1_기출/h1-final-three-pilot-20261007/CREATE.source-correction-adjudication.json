@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "CREATE_SOURCE_AND_SOLUTION_ADJUDICATION_v1",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "sourcePdfSha256": "a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",
+  "officialSolutionPdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_매여고1_1기말_해설.pdf",
+  "officialSolutionPdfSha256": "d0951c85753c0c6cfa2bb82abe674eb083ae05ed4b82cd800fe67821fa41c719",
+  "officialSolutionViewedPages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "originalFreezePreserved": true,
+  "adjudications": [
+    {
+      "qid": 2,
+      "kind": "SOLUTION_CALCULATION_ADJUDICATION",
+      "sourceTextChanged": false,
+      "initialIndependentReading": "parallel slope equation produced a=1 and a=−2; initial answer encoding included both",
+      "currentCalculation": "a=1 makes both printed equations identical, so it is not a pair of parallel distinct lines; the only parallel case is a=−2. Perpendicular case a=−2/3. Sum = −8/3.",
+      "finalAnswer": "④",
+      "affectedFields": [
+        "answer",
+        "solution",
+        "decisiveStep"
+      ],
+      "officialEvidence": "Official solution page 1 excludes the coincident-line case and circles −8/3."
+    },
+    {
+      "qid": 4,
+      "kind": "SOURCE_PIXEL_TRANSCRIPTION_AND_CALCULATION_ADJUDICATION",
+      "sourceTextChanged": true,
+      "initialPixelRead": "Low-resolution view made the final denominator in ㄴ appear to be ω.",
+      "pixelRecheck": "Original page 1 high-resolution crop shows the rightmost term is (1/ωbar)^2; source expression is 1/ω+(1/ω)^2=1/ω+(1/ω̄)^2.",
+      "currentCalculation": "Left side is ω̄+ω=−1; right side is ω̄+ω̄=2ω̄, so ㄴ is false. ㄱ, ㄹ are true. ㄴ in ㅁ is true for even n, yielding 100 values. Correct option ④.",
+      "finalAnswer": "④",
+      "officialSolutionMismatch": "Handwritten official working circles ②; direct evaluation of the exact source expression yields ④.",
+      "affectedFields": [
+        "content",
+        "answer",
+        "solution",
+        "decisiveStep"
+      ],
+      "pixelEvidence": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\.tmp\\archive\\h1-final-three-pilot-20261007\\22_매산여고_1학기_기말_고1_기출\\q4-box-zoom.png"
+    },
+    {
+      "qid": 6,
+      "kind": "SOURCE_PIXEL_RECHECK",
+      "sourceTextChanged": false,
+      "initialPixelRead": "The first glyph in the second line coefficient looked like 8 under an overlapping handwritten mark.",
+      "pixelRecheck": "Full-resolution source and official page 2 show 3x−4y−2=0. Both coefficient lengths equal 5; the positive-slope bisector is 7x−y−13=0.",
+      "finalAnswer": "⑤",
+      "affectedFields": [],
+      "pixelEvidence": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\.tmp\\archive\\h1-final-three-pilot-20261007\\22_매산여고_1학기_기말_고1_기출\\q6-zoom.png"
+    },
+    {
+      "qid": 10,
+      "kind": "ANSWER_ENCODING_ADJUDICATION",
+      "sourceTextChanged": false,
+      "initialIndependentCalculation": "The eligible integer a values are −1,0,1,2: four values.",
+      "encodingCorrection": "Four corresponds to option ② in the printed choice order; initial JS selection used ④.",
+      "finalAnswer": "②",
+      "affectedFields": [
+        "answer",
+        "solution"
+      ]
+    },
+    {
+      "qid": 19,
+      "kind": "OFFICIAL_SOLUTION_CALCULATION_CORRECTION",
+      "sourceTextChanged": false,
+      "initialIndependentCalculation": "Midpoint of OB is (5,10). Line through A(−5,5) and midpoint has slope 1/2 and intercept 15/2; ab=15/4.",
+      "officialSolutionMismatch": "The handwritten official page 5 writes intercept −15/2, which fails substitution of A(−5,5). Direct substitution gives 5=(1/2)(−5)+b, hence b=15/2.",
+      "finalAnswer": "15/4",
+      "affectedFields": [
+        "answer",
+        "solution",
+        "decisiveStep"
+      ]
+    },
+    {
+      "qid": 22,
+      "kind": "INDEPENDENT_CALCULATION_ADJUDICATION",
+      "sourceTextChanged": false,
+      "initialIndependentFreeze": "a=1",
+      "postCompareRecheck": "For a>1, the all-five condition reduces to 1<a<3, giving integer a=2; a=1 is the separate zero-coefficient case. For a<1, 3−2√2<a<1 yields no integer.",
+      "officialSolutionNote": "The handwritten work derives 3−2√2<a<3; its final note lists a=1, while the valid integer a=2 is also in that interval and satisfies the system.",
+      "finalAnswer": "1, 2",
+      "affectedFields": [
+        "answer",
+        "solution",
+        "decisiveStep"
+      ]
+    }
+  ]
+}

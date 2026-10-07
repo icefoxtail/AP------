@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "CODEX_R2_BLIND_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "worktreeRoot": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------",
+  "head": "98020fdaecf1ff00059fc562b356e51fb31f3fd6",
+  "sourceSha256": "a323e89d8ee4599c0db3491de2990f0b6dde638a12fd9678bfff4de4468aa69f",
+  "sourceRawBufferBlobSha1": "d9fd9ea853fbe654daa9fdb03606dde652f896c0",
+  "studentBundlePath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R2.student-input.json",
+  "studentBundleSha256": "89dbe6849344b9eabc8bb8923733d341eef504eeabb3dda4aec05e1837f4bfa8",
+  "coverage": {"expectedQids": 24, "frozenQids": 24, "resolvedQids": 22, "holdQids": [6, 14]},
+  "visualInputReview": {
+    "requiredAssetRefs": 17,
+    "physicallyViewedPngs": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,20,22],
+    "svg": {"qid": 21, "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/assets/images/21_매산중_2학기_기말_중3_기출/q21-r1.svg", "sha256": "4e7515e12f6f873e7345ab62077daf690ab38b8b67790c0826a4fa3dcfce5751", "visualSourcePngs": [
+      {"path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/source-pages/q21-source-1.png", "sha256": "cca52586015a4fe1741f41d25e319c5e1a3922b017c5b63a92d416ba2c499268", "visualFacts": "큰 반원 안의 A-C-B 삼각형과 중심 표기가 보임. A에서 40도, 반원 지름에 대응하는 직각, 미지각 표기를 확인."},
+      {"path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/source-pages/q21-source-2.png", "sha256": "2e307682ace92cc8e89a846d416b38dc769d0db7f98845cc775e3878e019f172", "visualFacts": "큰 반원 지름 AB, AB 위 분점 C를 지나는 수직선 CG, AC와 CB를 지름으로 하는 작은 반원 두 개 및 CG를 지름으로 하는 원 O 구성을 확인."}
+    ], "note": "SVG 직접 열기는 image viewer에서 미지원. Freeze는 SVG 코드만으로 하지 않았고, 지정된 두 source-page PNG의 고정 SHA 및 실제 열람에 근거함."}
+  },
+  "items": [
+    {"qid":1,"status":"FROZEN","cardinality":"single choice","answer":"4 (80°)","reasoning":"원주각 40°가 호 AB를 보므로 중심각 AOB=2×40°=80°.","visualFacts":"P의 원주각 40°와 중심 O, 현/호 AB를 확인."},
+    {"qid":2,"status":"FROZEN","cardinality":"single choice","answer":"4 (4)","reasoning":"오른쪽 반원에서 위 끝-오른쪽 점 호 8은 중심각 120°(아래 끝 원주각 60°의 두 배). 나머지 호 x는 60°에 대응하므로 x=8×60/120=4.","visualFacts":"수직 지름, 위쪽 30° 원주각, 아래 60° 원주각, 오른쪽 반원의 8과 x 호 표기를 확인."},
+    {"qid":3,"status":"FROZEN","cardinality":"single choice","answer":"3 (40°)","reasoning":"내접사각형의 맞은편 각 ABC=180°−80°=100°. 삼각형 ABC에서 BAC=180°−100°−40°=40°.","visualFacts":"원에 내접한 ABCD, D=80°, C의 각 분할 40°를 확인."},
+    {"qid":4,"status":"FROZEN","cardinality":"single choice","answer":"4 (40°)","reasoning":"∠ACB=20°이므로 호 AB=40°. 호 CD=호 AB=40°. 두 현 교각 ∠APB=(호 AB+호 CD)/2=40°.","visualFacts":"교차 현 AC, BD 및 같은 호 AB, CD 표시 확인."},
+    {"qid":5,"status":"FROZEN","cardinality":"single choice","answer":"5 (80°)","reasoning":"세 호의 비 합은 9, 호 BC는 4/9×360°=160°. ∠A는 호 BC의 원주각이므로 80°.","visualFacts":"원에 내접한 삼각형과 호 AB:BC:CA=3:4:2 조건 확인."},
+    {"qid":6,"status":"HOLD","cardinality":"single choice","answer":null,"reasoning":"이미지 해상도에서 x,y가 어느 두 선 사이의 각인지와 35°가 끼인 각의 경계를 유일하게 판독하지 못함. 복수의 해석이 가능해 확정하지 않음.","visualFacts":"접선 AT, 원주상 A,B,C,D, 80°와 35° 표시는 보이나 x,y 각호의 꼭짓점·경계가 불명확."},
+    {"qid":7,"status":"FROZEN","cardinality":"single choice","answer":"3 (65°)","reasoning":"두 접선 사이 각 50°이므로 작은 호 AB=180°−50°=130°. 원주각 x=130°/2=65°.","visualFacts":"두 접선과 외부각 50°, 원주각 x 확인."},
+    {"qid":8,"status":"FROZEN","cardinality":"single choice","answer":"5 (60°)","reasoning":"∠BCT를 θ라 하면 접선-현 정리로 ∠BAC=θ. AB가 지름이므로 ∠ACB=90°, ∠ABC=90°−θ. PC=BC로 △PBC 이등변이고 P,A,B가 일직선이므로 ∠BPC=∠PBC=∠ABC. △PBC에서 ∠PCB=180°−θ이므로 두 밑각은 각각 θ/2. 또 ∠PBC=∠ABC=90°−θ이므로 θ/2=90°−θ, 따라서 θ=60°.","visualFacts":"지름 AB의 연장선상 P, C에서의 접선, PC=BC 표기 확인."},
+    {"qid":9,"status":"FROZEN","cardinality":"single choice","answer":"5 (80°)","reasoning":"접점 E,D에서의 접선각 ∠C는 180°−2×55°=70°. △ABC에서 A=180°−30°−70°=80°.","visualFacts":"내접원/삼각형 외접원, 접점 D,E,F 및 ∠EFD=55°, ∠B=30° 확인."},
+    {"qid":10,"status":"FROZEN","cardinality":"single choice","answer":"2 (45°)","reasoning":"각 호 AB, AD, CD를 t, 호 BC를 u라 둔다. 외부 두 할선 각에서 (t−u)/2=30°, 전체 호에서 3t+u=360°이므로 u=45°. x=∠BDC=u/2=22.5°, 따라서 2x=45°.","visualFacts":"두 할선의 외부각 30°, 같은 호 세 개, x 원주각을 확인."},
+    {"qid":11,"status":"FROZEN","cardinality":"single choice","answer":"4 (84°)","reasoning":"호 AB=360°/5=72°. 호 CD=(4/3)×72°=96°. 내부에서 만나는 두 현의 각 ∠APB=(72°+96°)/2=84°.","visualFacts":"교차 현, 호 AB의 둘레 대비 1/5 및 호 비 3:4를 확인."},
+    {"qid":12,"status":"FROZEN","cardinality":"single choice","answer":"2 (햄버거)","reasoning":"표의 도수는 치킨 5, 햄버거 9, 피자 8, 떡볶이 4, 돼지국밥 2이므로 최댓값 9의 항목은 햄버거.","visualFacts":"표의 모든 항목과 도수를 읽음."},
+    {"qid":13,"status":"FROZEN","cardinality":"single choice","answer":"5 (10)","reasoning":"x+y=5, 평균 조건에서 6x+14+16+9+10y=81이므로 6x+10y=42. 연립하면 x=2,y=3. 최빈 도수는 10점의 3회.","visualFacts":"6~10점 도수표의 x,2,2,1,y와 합계 10 확인."},
+    {"qid":14,"status":"HOLD","cardinality":"single choice","answer":null,"reasoning":"학생용 그래프 PNG의 점/꺾은선 위치와 도수 숫자가 저해상도로 겹쳐 읽히지 않아 다섯 진술의 참거짓을 독립 확정할 수 없음.","visualFacts":"세 학생 A,B,C의 꺾은선그래프와 축(점수/도수)은 확인. 각 좌표를 확정할 정도로 선과 격자 교차점이 판독되지 않음."},
+    {"qid":15,"status":"FROZEN","cardinality":"single choice","answer":"5 (76점)","reasoning":"처음 총점은 5×82=410. 6회 평균은 81이므로 총점 486. 여섯 번째 점수는 486−410=76.","visualFacts":"텍스트 조건과 다섯 선택지를 확인."},
+    {"qid":16,"status":"FROZEN","cardinality":"single choice","answer":"1 (−7)","reasoning":"총점 5×72=360이므로 a=360−(68+78+74+75)=65. a의 편차는 65−72=−7.","visualFacts":"다섯 점수와 평균 72, 편차 질문 확인."},
+    {"qid":17,"status":"FROZEN","cardinality":"single choice","answer":"1 (2)","reasoning":"편차 제곱합은 2²+1²+(−1)²+0²+(−2)²=10. 분산=10/5=2.","visualFacts":"편차 2,1,−1,0,−2 확인."},
+    {"qid":18,"status":"FROZEN","cardinality":"single choice","answer":"4 (11)","reasoning":"각 값에 3을 더하면 평균은 9, 표준편차는 불변인 2. 합은 11.","visualFacts":"네 변량에 동일하게 3을 더하고 평균·표준편차 합을 묻는 문장 확인."},
+    {"qid":19,"status":"FROZEN","cardinality":"single choice","answer":"4 (마스크 안 쓴 사람 수와 코로나 확진자 수)","reasoning":"마스크 미착용 인원이 늘수록 감염 전파 위험과 확진자 수가 대체로 함께 커지는 양의 상관 관계의 예다.","visualFacts":"선택지 다섯 쌍을 확인."},
+    {"qid":20,"status":"FROZEN","cardinality":"single choice","answer":"5 (E)","reasoning":"세로축 키가 비슷할 때 가로축 발 크기가 상대적으로 큰 점은 산점도의 추세보다 오른쪽에 놓인 점이다. 표시 점 중 E가 해당한다.","visualFacts":"키(세로)와 발 크기(가로) 축, A~E 점 위치를 확인. E는 같은 키대의 추세보다 오른쪽에 위치."},
+    {"qid":21,"status":"FROZEN","cardinality":"two subparts","answer":{"1-(1)":"50°","1-(2)":"πr²"},"reasoning":"(1) 반원 지름 AB를 보는 ∠ACB=90°, A의 각이 40°이므로 x=50°. (2) 큰 반원과 두 작은 반원의 차는 arbelos 넓이. CG를 빗변 AB 위의 높이라 하면 CG²=AC·CB이고, 큰 반원 넓이−두 작은 반원 넓이=π(AB²−AC²−CB²)/8=π·AC·CB/4=πCG²/4. CG=2r이므로 πr².","visualFacts":"두 source-page PNG를 실제 확인했고 SVG hash-bound 임베디드 이미지와 동일한 payload라는 배정 근거를 확인. 첫 도형의 40°/직각 구조, 둘째 도형의 큰 반원·AC/CB 작은 반원·수선 CG 및 지름 CG인 원 O를 확인."},
+    {"qid":22,"status":"FROZEN","cardinality":"three subparts","answer":{"1":"평행사변형","2":"1:2","3":"4 cm"},"reasoning":"G는 두 높이의 교점. H는 B의 대척점. BH가 지름이므로 CH⊥BC, AG⊥BC라 AG∥CH. 또 AH⊥AB, CG⊥AB라 AH∥CG. 따라서 AGCH는 평행사변형. 중심과 현 BC 사이 OD=2이면 반지름 방향 좌표에서 HC=2·OD=4, 따라서 비 1:2. 평행사변형의 마주보는 변 AG=HC=4 cm.","visualFacts":"삼각형 ABC, 중심 O, BC의 수선발 D와 OD=2 cm, A/C에서 내린 수선의 발 E/F 및 G, OB 연장선의 원 교점 H를 확인."},
+    {"qid":23,"status":"FROZEN","cardinality":"single numeric response","answer":"6","reasoning":"정렬하면 1,1,2,2,3,3,3,5,6,7. 중앙값 a=(3+3)/2=3, 최빈값 b=3, 따라서 a+b=6.","visualFacts":"열 개 자료를 확인."},
+    {"qid":24,"status":"FROZEN","cardinality":"single numeric response","answer":"1.8","reasoning":"평균은 (1×2+2×1+3×4+4×1+5×2)/10=3. 분산은 (2×4+1×1+4×0+1×1+2×4)/10=18/10=1.8.","visualFacts":"점수 1~5의 도수 2,1,4,1,2와 표본수 10 확인."}
+  ],
+  "freezeStatus": "BLIND_FREEZE_WITH_HONEST_HOLD",
+  "preFreezeDisclosure": false,
+  "storedAnswerOrSolutionRead": false
+}
+

@@ -1,0 +1,39 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "stage": "R1.SOURCE_LABEL_FRESH",
+  "targetQid": 13,
+  "performedBeforeTargetSolutionOrMetaRead": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldens": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {"qid": 7, "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9", "observation": "Center (-3,1), radius 3; translation and origin reflection are separated into board steps, with center coordinates traced to (5,-2) before deriving the final circle.", "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d", "visualObservation": "Pixels show initial, translated, and final circles with dashed motion and final center; labels and final equation align with the geometry."},
+        {"qid": 8, "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b", "observation": "Reads graph slope and intercept signs, derives coefficient relations, then tests new line slope and intercepts in separate steps; the sign chain remains reproducible."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {"qid": 2, "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2", "observation": "Rearranges both line equations to slope-intercept form, identifies slopes, and applies perpendicularity explicitly to solve k.", "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4", "visualObservation": "Pixels show negative- and positive-slope lines consistent with slopes -1/3 and 3; intersection and axes are clear. Rasterizer lacked STIX/Cambria fonts, so text uses fallback boxes while vector geometry remains legible."},
+        {"qid": 3, "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370", "observation": "Completing-square substitutions and standard-form coefficient comparison are shown stepwise before stating center and radius."}
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "Read all regression classes: SVG labels must be checked against actual coordinates/topology; small-board counts do not prove separated substeps; null Meta needs lookup evidence; runtime TeX escaping must be checked after sandbox evaluation.",
+    "negativeSvgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+    "negativeSvgSha256": "d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+    "negativePixelPath": "archive/analysis/22_매산고_1학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/preflight-pixels/negative-bokseong-q3.png",
+    "negativePixelSha256": "12ded8fda8386508a388383f40e11d7608cf42f2fb8e2ba22272c0d5637dde271",
+    "visualObservation": "Pixels show the labeled line 7x+y-15=0 rising to the right, while that equation has slope -7; this is the false-pass geometry defect described by the README."
+  }
+}
+

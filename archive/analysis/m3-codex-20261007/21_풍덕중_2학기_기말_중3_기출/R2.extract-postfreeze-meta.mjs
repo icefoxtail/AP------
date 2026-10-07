@@ -1,0 +1,12 @@
+import fs from 'node:fs'; import vm from 'node:vm'; import crypto from 'node:crypto';
+const sourcePath='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/21_풍덕중_2학기_기말_中3_基出.js'.replaceAll('中','중').replaceAll('基出','기출');
+const expected='f55f55c1d1978b8a8cd423a56688b841f3ff02a0f6a9d64f1112970628a05efa';
+const bytes=fs.readFileSync(sourcePath), sha=crypto.createHash('sha256').update(bytes).digest('hex'); if(sha!==expected) throw Error('SOURCE_SHA_MISMATCH');
+const sandbox={window:Object.create(null)}; vm.runInNewContext(bytes.toString('utf8'),sandbox,{timeout:1500,contextCodeGeneration:{strings:false,wasm:false}});
+const bank=sandbox.window.questionBank||sandbox.window.questions; const qids=[13,14,15,16,17,18,19];
+const rows=bank.filter(q=>qids.includes(Number(q.id))).map(q=>({qid:Number(q.id),problemTypeKey:q.problemTypeKey??null,templateKey:q.templateKey??null}));
+if(rows.length!==7) throw Error('QID_COVERAGE_MISMATCH');
+const out={schemaVersion:'R2_POSTFREEZE_META_FIELDS_EXTRACTION_V1',sourceSha256:sha,qids,rows};
+const output='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R2.postfreeze-meta-fields.json';
+fs.writeFileSync(output,JSON.stringify(out,null,2)+'\n');
+console.log(JSON.stringify({path:output,sha256:crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex'),rows}));

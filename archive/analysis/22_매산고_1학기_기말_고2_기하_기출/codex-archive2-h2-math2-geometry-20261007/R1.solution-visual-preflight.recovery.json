@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "ARCHIVE_R1_SOLUTION_VISUAL_PREFLIGHT_RECOVERY_V1",
+  "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "recoveryAt": "2026-10-07 Asia/Seoul",
+  "positiveGeometryGolden": {
+    "path": "archive/analysis/22_금당고_2학기_중간_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/q19-solution.png",
+    "sha256": "0ad8405aa89fe860afa48977dae1b436fb09c53537a4a97a1558ccbd076e534d",
+    "opened": true,
+    "observation": "Rendered geometry relates the decisive conic facts to labeled points; source labels and shape geometry were checked together."
+  },
+  "requiredTargetSvgCalibration": [
+    {
+      "qid": 3,
+      "svgRef": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q03-solution.svg",
+      "svgSha256": "a81fc417a15d48af277e2b11f701a58aab94b9b785a3e082c514145abfa88f17",
+      "renderPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/q03-solution.png",
+      "renderSha256": "5f239581f4a8196f00b93fa08332e8cc59ddfe12fc02e4ff9c08db8cf0aa90db",
+      "observation": "Ellipse center and foci match c=5 and FF'=10."
+    },
+    {
+      "qid": 4,
+      "svgRef": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q04-solution.svg",
+      "svgSha256": "59af21398a69f83e4a9447f85d2e102cfa4da893af853554a1c314891e09e013",
+      "renderPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/q04-solution.png",
+      "renderSha256": "b690badc47c6fdace9b0152788735779860642e1ea0028fb99635481ac6d2f7d",
+      "observation": "The hyperbola opens along the x-axis and its two asymptotes have slope magnitudes 4/a; annotation concludes 4/a=5."
+    }
+  ],
+  "negativeCalibration": [
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/02_25_왕운중_2학기_중간_중2_수학_q21_ANGLE_LABEL_OWNER_BINDING_FAIL.svg",
+      "svgSha256": "3282a28115e28b0b7dc36a2a19998abfc8c4094a13fc03b7618c04f806ff75f3",
+      "renderPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/negative-angle-owner-binding.png",
+      "renderSha256": "2d40f1dcfd7f03a56a9a6e485e5413ad02551bf08668e79d3922309a7fd27aa4",
+      "observation": "The 58-degree label is not in the correct owner wedge; a numerically present angle label fails when it is not bound to the vertex and both rays."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "svgSha256": "1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+      "renderPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.golden-calibration/negative-bokseong-q7.png",
+      "renderSha256": "95343e24af25a4e6564bcab62be0491cdff3d49f94989c6b1422c00f58a1eef3",
+      "observation": "The curve primitive does not pass through the coordinates labeled for points A and B; read plotted geometry rather than trusting labels."
+    }
+  ],
+  "goldenProtocolNegativeReadme": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "opened": true,
+    "observation": "The frozen failures preserve SVG geometry, small-board separation, Meta, and runtime-escape false-pass cases."
+  },
+  "protocolRules": {
+    "solutionProtocol": "docs/rules/02_PIPELINES/해설프로토콜.md",
+    "canonicalSmallBoard": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md#3-6-11",
+    "geometryVisual": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
+    "questionLayout": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md#4-5"
+  },
+  "outcome": "RECOVERY_PREFLIGHT_PASS"
+}

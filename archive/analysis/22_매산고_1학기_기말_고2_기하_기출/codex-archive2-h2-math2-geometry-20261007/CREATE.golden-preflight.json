@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+  "stage": "CREATE",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.",
+        "observation": "원의 완전제곱·중심 이동·대칭과 반지름 보존을 순서대로 분리해 계산한다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은",
+        "observation": "접선식→기울기→수직조건→계산을 판서 단계별로 둔다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선",
+        "observation": "각 직선의 기울기를 먼저 정리하고 곱 조건을 중간식으로 연결한다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은",
+        "observation": "완전제곱의 상수 이동을 등식으로 모두 드러낸다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "README and frozen bad q3 SVG read; displayed line equation and actual line primitive disagree, so geometry must be recomputed from coordinates."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+        "sha256": "sha256:d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+        "gitBlobSha": "80072636d7d07f75c32bf7671f52bd00d70c34a2",
+        "observation": "Actual failure SVG read; its coordinate-level line/topology is not trusted from text labels."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "visualSampleRefs": [
+      {
+        "qid": 7,
+        "path": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "sha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "gitBlobSha": "145bb00f7bbe034d259877b9d7a34c9e70bf8728",
+        "inspection": "actual SVG XML read; point/curve/line primitives and label mapping compared against the adjacent solution facts"
+      },
+      {
+        "qid": 9,
+        "path": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+        "sha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+        "gitBlobSha": "f2837312bb29321dd49f2224ed6ef54c227e5eb9",
+        "inspection": "actual SVG XML read; point/curve/line primitives and label mapping compared against the adjacent solution facts"
+      },
+      {
+        "qid": 2,
+        "path": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "gitBlobSha": "43028e415d716ebac63e6a5dd5981bd9340f12c1",
+        "inspection": "actual SVG XML read; point/curve/line primitives and label mapping compared against the adjacent solution facts"
+      },
+      {
+        "qid": 3,
+        "path": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "sha256": "sha256:752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "gitBlobSha": "323b2910c006305ef098e4bf8e61406eb4702f3f",
+        "inspection": "actual SVG XML read; point/curve/line primitives and label mapping compared against the adjacent solution facts"
+      }
+    ]
+  }
+}

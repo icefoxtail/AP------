@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-07T12:21:08.855Z",
+  "uid": "22_매산여고_1학기_기말_고1_기출",
+  "scope": "Isolated canonical candidate input-path binding repair only",
+  "reason": "Canonical manifest reads historical archive/_generated inputs; preserve original root read-only access without creating or updating generated directories",
+  "historicalReadRoot": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------",
+  "originalGeneratorSha256": "eb31810985025ea5d9e412c8b18aa1e439aa8ad147e63d00089e4a21f2d38e81",
+  "readMappedGeneratorSha256": "f4905fc07a4ce7349154070b4acd4565a96bb3bf6ee1942d65e116bcac934eaa",
+  "canonicalGeneratorSemanticsChanged": false,
+  "productionGeneratorChanged": false,
+  "generatedDirectoriesCreated": false,
+  "steps": [
+    {
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "da56fc357667080a222d2597817ac240eaf54cfef6b1b1c6317b2cde36b92c1e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-basic-scope-parent-links.mjs"
+      ],
+      "exitCode": 1,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "109d305fc1835409f50c1b2caf84f812349b83313d6fe4ca3af852b9bfac7023"
+    }
+  ],
+  "ok": false
+}

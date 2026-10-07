@@ -1,0 +1,17 @@
+import fs from "node:fs";
+import path from "node:path";
+import {createHash} from "node:crypto";
+const [ev]=process.argv.slice(2);
+const sha=s=>createHash("sha256").update(s,"utf8").digest("hex");
+const p=path.join(ev,"R3.q4-math-encoding-repair.json"),a=JSON.parse(fs.readFileSync(p,"utf8"));
+const old=a.proof.pdfSourceQ4Observed;
+a.proof.pdfSourceQ4Observed="Five labeled statements, ㄱ through ㅁ, are present in the boxed 보기. The fifth statement naturally wraps after 자연수 and continues with n의 개수는 100이다.";
+a.proof.claimCorrectionHistory=[{field:"proof.pdfSourceQ4Observed",previousValue:old,correctedValue:a.proof.pdfSourceQ4Observed,reason:"Direct visual recheck of source PDF page 1 shows five labels ㄱ, ㄴ, ㄷ, ㄹ, ㅁ; the prior evidence summary undercounted the displayed rows.",sourcePdfSha256:"a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",sourcePage:1,reviewerIdentity:{role:"archive_r3",reviewerId:"/root/r3_maesan2022"}}];
+fs.writeFileSync(p,JSON.stringify(a,null,2)+"\n");
+const q=path.join(ev,"R3.q4-math-layout-repair.json"),r=JSON.parse(fs.readFileSync(q,"utf8"));
+const before=r.before.content,after=r.after.content;
+const normalized=after.replace("\\\\&\\text{을","\\text{을").replace("n\\\\&\\text{의","n\\text{의");
+r.proof={afterRemovingInsertedAlignedRowBreaksContentEqualsBefore:normalized===before,normalizedContentSha256:sha(normalized),beforeContentSha256:sha(before),afterContentSha256:sha(after),allKoreanWordsAndMathTokensPreserved:normalized===before,sourceWrapObservedDirectly:true};
+if(normalized!==before)throw Error("Q4_PARITY_PROOF_FAILED");
+fs.writeFileSync(q,JSON.stringify(r,null,2)+"\n");
+console.log(JSON.stringify([{path:p,sha256:sha(fs.readFileSync(p,"utf8"))},{path:q,sha256:sha(fs.readFileSync(q,"utf8")),artifactSha:r.after.artifactSha,rawSha:r.after.artifactRawSha256,proof:r.proof}]));

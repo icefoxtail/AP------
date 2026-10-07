@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "q1: q1 내분점·중점·거리 풀이에서 좌표 계산을 각 단계로 분리하고 공식 적용 이유를 먼저 둠; 단계 간 생략 없이 학생이 수치 대입을 재현할 수 있음."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "q2: q1 내분점·중점·거리 풀이에서 좌표 계산을 각 단계로 분리하고 공식 적용 이유를 먼저 둠; 단계 간 생략 없이 학생이 수치 대입을 재현할 수 있음."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "q1: q1 거리식 전개와 q2 수직 기울기 계산이 식 설정→변형→대입→결론 순서로 보임. q2 solutionImage의 두 실제 직선 기울기 −1/3, 3의 곱이 −1임을 좌표식에서 판독함."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "q2: q1 거리식 전개와 q2 수직 기울기 계산이 식 설정→변형→대입→결론 순서로 보임. q2 solutionImage의 두 실제 직선 기울기 −1/3, 3의 곱이 −1임을 좌표식에서 판독함.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "SVG XML 좌표의 두 직선 계수로 기울기 −1/3, 3을 재계산해 수직 관계를 확인."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "q1: q1 보기별 원소/부분집합 판정을 별도 단락으로 분리하고 q2 함수 여부를 수직선 기준으로 검토함. 제일고 q18 known visual exception은 calibration 모델로 사용하지 않음."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "q2: q1 보기별 원소/부분집합 판정을 별도 단락으로 분리하고 q2 함수 여부를 수직선 기준으로 검토함. 제일고 q18 known visual exception은 calibration 모델로 사용하지 않음."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "SVG의 실제 좌표·선분 incidence·각도 귀속, 열거 풀이의 물리적 단락 분리, null인데 해결 가능한 Meta, runtime TeX escape의 false-PASS 사례를 직접 판독."
+    }
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "observation": "q1: q1 내분점·중점·거리 풀이에서 좌표 계산을 각 단계로 분리하고 공식 적용 이유를 먼저 둠; 단계 간 생략 없이 학생이 수치 대입을 재현할 수 있음."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "observation": "q2: q1 내분점·중점·거리 풀이에서 좌표 계산을 각 단계로 분리하고 공식 적용 이유를 먼저 둠; 단계 간 생략 없이 학생이 수치 대입을 재현할 수 있음."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "observation": "q1: q1 거리식 전개와 q2 수직 기울기 계산이 식 설정→변형→대입→결론 순서로 보임. q2 solutionImage의 두 실제 직선 기울기 −1/3, 3의 곱이 −1임을 좌표식에서 판독함."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "observation": "q2: q1 거리식 전개와 q2 수직 기울기 계산이 식 설정→변형→대입→결론 순서로 보임. q2 solutionImage의 두 실제 직선 기울기 −1/3, 3의 곱이 −1임을 좌표식에서 판독함.",
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualObservation": "SVG XML 좌표의 두 직선 계수로 기울기 −1/3, 3을 재계산해 수직 관계를 확인."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "observation": "q1: q1 보기별 원소/부분집합 판정을 별도 단락으로 분리하고 q2 함수 여부를 수직선 기준으로 검토함. 제일고 q18 known visual exception은 calibration 모델로 사용하지 않음."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "observation": "q2: q1 보기별 원소/부분집합 판정을 별도 단락으로 분리하고 q2 함수 여부를 수직선 기준으로 검토함. 제일고 q18 known visual exception은 calibration 모델로 사용하지 않음."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "SVG의 실제 좌표·선분 incidence·각도 귀속, 열거 풀이의 물리적 단락 분리, null인데 해결 가능한 Meta, runtime TeX escape의 false-PASS 사례를 직접 판독."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "0/25",
+    "calibrationStatus": "PREFLIGHT_COMPLETE",
+    "solutionWorkMode": "FULL_ALL_QUESTIONS_FRESH_SOURCE_ANSWER",
+    "calibrationOrder": [
+      "assignment",
+      "golden+negative preflight",
+      "source PDF page review",
+      "solution authoring"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "R1_AFFECTED_QID_COMPONENT_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "qid": 24,
+  "scope": "affected qid 24 only; no source or asset mutation",
+  "status": "ITEM_HOLD",
+  "identity": {
+    "assignmentSha256": "de40f2b65bb5ef41ea94164b18a881eba6d5213c8fef987b97f81d6025a6d8a5",
+    "head": "f0112058dc0904e29d70a068d0fabe8fcf83ca0d",
+    "sourceAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\21_매산중_2학기_기말_중3_기출.js",
+    "sourceSha256": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6",
+    "sourceArtifactSha": "3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e",
+    "studentBundleSha256": "920ca1254865351599bbc102f5b4ae6e55c3526f3db40ce23603164ae04f578a",
+    "studentPayloadSha256": "3d631b5e2ce15d33538538668dc902d7260318542b8333081216807ffa62e1b8",
+    "independentFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-native-q24.independent-freeze.json",
+    "independentFreezeSha256": "c2e04bc93344ae88d90e4acb32fd043a740d9f9ed1fa12252259936a3b8b7a3",
+    "postfreezeDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-native-q24.postfreeze-disclosure.json",
+    "postfreezeDisclosureSha256": "be756a95fab3abe1c96a5e37d1608672388093b6ec3c0c70e9958df884a16ecd"
+  },
+  "sourceVisualReadback": {
+    "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\assets\\images\\21_매산중_2학기_기말_중3_기출\\q24.png",
+    "assetSha256": "cf9ad9a0cbf1023b0a7cdf14dc67df8afcf90132ec57b263fd13c4063046fc49",
+    "sourcePdfPath": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(4)2기말\\중3\\2021_매산중3_수학_2기말.pdf",
+    "sourcePdfSha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b5474f2e6cc45bc93090",
+    "sourcePageNo": 4,
+    "pageRenderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\q24-source-student-page4.png",
+    "pageRenderSha256": "7efb7b1a655296b3ee4bb766275ec7d3915e18f91c62ddbd09d5429f3f348376",
+    "graphCropPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\q24-source-graph-crop.png",
+    "graphCropSha256": "b09f3acfee9279f819012f7056c281a7c18a706b431507599a109043e93dcacb",
+    "observation": "Opened the original referenced PNG and the exact school source problem PDF student page 4. The source graph remains degraded/unreadable at native resolution and in a 600-dpi page render/crop; the category labels and bar/frequency values cannot be reliably identified. No answer material was opened and no graph values were inferred."
+  },
+  "answerComparison": {
+    "subparts": [
+      {
+        "part": "4-(①)",
+        "independentAnswer": 6,
+        "storedAnswer": 6,
+        "result": "MATCH",
+        "cardinality": "one numeric variance",
+        "calculation": "mean=5; squared deviations 1,9,0,4,16 sum to 30; variance=30/5=6"
+      },
+      {
+        "part": "4-(②)",
+        "independentAnswer": null,
+        "storedAnswer": null,
+        "result": "NOT_DETERMINABLE_SOURCE_HOLD",
+        "expectedCardinality": "one numeric variance after the visual data are recovered",
+        "exactMissingFacts": [
+          "Legible rating/category values represented by the graph.",
+          "Legible frequency/count for each category (or exact bar heights on a readable scale)."
+        ],
+        "reason": "The assigned image and the corresponding original source-PDF student-page graph are both unreadable for the data needed to calculate variance."
+      }
+    ],
+    "itemAnswerCardinality": "two numeric subpart results are requested; current answer field supplies only part 4-(①), with part 4-(②) unresolved under the disclosed source hold.",
+    "freezeIntegrity": "Original independent freeze was sealed before the exact-qid disclosure and remains preserved."
+  },
+  "fourAxisReview": {
+    "QUESTION_LAYOUT": {
+      "status": "PASS_STATIC",
+      "evidence": "Student prompt preserves the ①/② subpart boundaries and the associated data/image reference; choices are empty in both student bundle and disclosed q24 payload. layoutTag=grid and wide=false; no unsupported layout override was introduced. Text and question order match the student-only bundle. Actual screen render remains unexecuted under ROOT waiver."
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "PARTIAL_HOLD",
+      "part1": "PASS: mean, variance definition, explicit squared-deviation expression, arithmetic reduction, and final value 6 appear in a downward-traceable sequence with separate lines for the key steps.",
+      "part2": "HOLD: a complete mathematical solution cannot be written without the rating categories and frequencies; prose or guessed values cannot replace those data.",
+      "smallBoard": "Part 1 follows the small-board calculation sequence. Part 2 is incomplete because of source visual data loss."
+    },
+    "META": {
+      "status": "PASS_STATIC",
+      "evidence": "Current q24 payload physically contains tags=[통계, 분산], level=중, category/originalCategory=통계, standardCourse=중3 수학, standardUnitKey=M3-07, standardUnit=통계, subUnitKey=M3-07-STATISTICS_REPRESENTATIVE, subUnit=대푯값과 산포도, difficultyBucket=3, difficultyConfidence=medium, and the explicit nullReason for problemTypeKey/templateKey. No unrelated semantic reclassification was made."
+    },
+    "VISUAL_SVG": {
+      "status": "HOLD_ASSET_DEFECT",
+      "problemVisual": "The q24 problem graph is required to solve part 4-(②), but its data labels/frequencies are not legible in the assigned PNG or source-PDF page 4. Source fidelity prevents reconstructing values from guesswork.",
+      "solutionSvg": "NOT_REQUIRED: the item is a statistics computation whose needed visual is source data; a newly drawn solution SVG cannot restore missing source values.",
+      "actualRender": "NOT_RUN_ROOT_WAIVER; no RENDER_PASS is claimed."
+    }
+  },
+  "disposition": {
+    "overall": "ITEM_HOLD",
+    "exactReason": "Part 4-(②) depends on graph categories and frequencies that cannot be recovered from the assigned source visual or the exact original student PDF page.",
+    "nextRequiredAction": "Hand qid 24 to R2 for its assigned complete-input review. If R2 also cannot recover the graph data, preserve the exact missing facts and keep q24 held for ROOT recovery/substitution routing. No other qid or asset is in scope."
+  }
+}

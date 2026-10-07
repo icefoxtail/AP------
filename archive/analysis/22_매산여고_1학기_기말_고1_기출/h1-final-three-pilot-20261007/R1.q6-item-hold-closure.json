@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "CODEX_R1_ITEM_STATUS_CLOSURE_V1",
+  "runId": "h1-final-three-pilot-20261007",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "qid": 6,
+  "sourceQuestionUid": "22_매산여고_1학기_기말_고1_기출#6",
+  "decision": "CLEAR_STALE_ITEM_STATUS",
+  "reason": "The prior status has no current hold-reason field. Its original uncertainty was the first glyph of the second line coefficient under an overlapping handwritten mark. The durable CREATE source-pixel recheck resolves it as 3x−4y−2=0 from the full-resolution source and official page 2. Both line normal lengths are 5, and the unique positive-slope bisector is 7x−y−13=0. R1 and R2 independently reach the same answer. No source or condition defect remains.",
+  "sourceTruth": {
+    "sourcePdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_매여고1_1기말.pdf",
+    "sourcePdfSha256": "a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",
+    "sourcePage": 2,
+    "sourceTextChanged": false,
+    "sourceTextExactParity": "PASS",
+    "choicesExactParity": "PASS",
+    "pixelEvidencePath": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/.tmp/archive/h1-final-three-pilot-20261007/22_매산여고_1학기_기말_고1_기출/q6-zoom.png",
+    "pixelEvidenceSha256": "fb932e70c62fa70a2dc86d44d16aca55735febc3d8fb26d5006936c673e8475e"
+  },
+  "correctionProvenance": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/CREATE.source-correction-adjudication.json",
+    "sha256": "cc5ab3880a31725879367cc6d79e1e576a4073c4426982ee3d3c61f3861db58a",
+    "qid6Record": "SOURCE_PIXEL_RECHECK; sourceTextChanged=false; finalAnswer=⑤; affectedFields=[]"
+  },
+  "officialSolution": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_매여고1_1기말_해설.pdf",
+    "sha256": "d0951c85753c0c6cfa2bb82abe674eb083ae05ed4b82cd800fe67821fa41c719",
+    "pageViewed": 2,
+    "observation": "Page 2 shows the equal-distance derivation with both normal lengths 5 and circles choice ⑤."
+  },
+  "independentReview": {
+    "r1EvidencePath": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.evidence.json",
+    "r1Answer": "⑤ (7x−y−13=0)",
+    "r2FreezePath": "C:/Users/USER/Desktop/AP-worktrees/h1-final-three-pilot-20261007/AP------/archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R2.independent-freeze.json",
+    "r2FreezeSha256": "a519f1cd65be993e5b6c3944fac22636356db55996930a95f47df9cdfb8f0110",
+    "r2Answer": "7x−y−13=0",
+    "r2CompletedWithHolds": "ROOT completion event reported itemHoldCount=1 for q6 before this R1 correction."
+  },
+  "itemStatusChange": {
+    "before": "HOLD",
+    "after": "ABSENT",
+    "holdReasonFieldBefore": "ABSENT",
+    "studentBodyChanged": false,
+    "studentPayloadSha256Before": "32273b93f6f7f2655d4d36e43e05f46ff0a249f1d71cc6dcc7d8c0dc4bff3062",
+    "studentPayloadSha256After": "32273b93f6f7f2655d4d36e43e05f46ff0a249f1d71cc6dcc7d8c0dc4bff3062",
+    "studentPayloadParity": "PASS",
+    "changedScope": ["q6.itemStatus"],
+    "candidateRawSha256Before": "5bcd4c6d38e26b907b5c17d052fd823456308f69b7ce2ad7b4f04b6798ee40d7",
+    "candidateRawBlobSha1Before": "9db82642898238407cd4c57f7bbe62a32a8d886f",
+    "candidateRawSha256After": "9d6abce101a9e73602224abad9939617679fd35ceaf20b712f8e73420189d48c",
+    "candidateRawBlobSha1After": "1d522aea3c4ee0ac51015f5a307cfba2a3ce7336"
+  },
+  "holdDisposition": {"itemHoldCount": 0, "itemHoldQids": []},
+  "requiredFollowup": "Request same-session R2 evidence SHA binding repair; q6 student payload and independent answer freeze remain valid, so no fresh answer solve is required."
+}

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "R1_GOLDEN_NEGATIVE_CALIBRATION_V1",
+  "examUid": "21_강남여고_1학기_기말_고1_기출",
+  "stage": "R1",
+  "sampleReadBeforeCorrectionReview": true,
+  "calibrationStatus": "PASS",
+  "qualityAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "내분 공식에서 양 끝점 계수 선택을 말로 설명하고 x·y 계산, 중점, 거리식, 제곱근 정리와 보기 결론을 순서대로 각각 적었다. 학생이 계산을 재현할 수 있는 중간값과 줄 경계가 확보됐다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "observation": "평행 조건→기울기 고정→점 대입→n 계산→m+n 결론이 별도 줄에 있어 불필요한 서술 없이 재현 가능하다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+          "observation": "원의 표준형으로 옮기고 x/y 완전제곱, 우변 보정, 중심·반지름 대응, 최종 계산을 분리해 작은 칠판 흐름이 명확하다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "observation": "The source SVG geometry shows the original circle center (-3,1), translated center (-5,2), reflected final center (5,-2), and unchanged radius 3. The opened PNG has fallback boxes for some relation glyphs, so this item was used to check geometric facts only, not as a screen-readability PASS model.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "좌표 차를 각각 계산한 뒤 거리식에 대입하고 제곱근을 정리해 5√2와 보기까지 연결한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "observation": "두 직선을 y형식으로 각각 정리해 기울기를 산출하고 수직 곱을 식으로 보인 뒤 k=6에 이른다. SVG q02의 좌표와 data-equation을 대조해 1x+3y+2=0의 기울기 −1/3, 6x−2y−1=0의 기울기 3 및 수직 관계가 실제 line primitive와 일치함을 확인했다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ]
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+          "observation": "x/y 완전제곱을 나누어 표준형과 비교한다. SVG q03의 중심 (-1,3), 반지름 2 표기와 원 좌표를 확인했다. 제일고 q18의 known visual exception은 이번 선택 및 visual calibration에 사용하지 않았다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ]
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "observation": "Negative README의 네 회귀군(SVG 좌표·위상 불일치, enumerated small-board 합침, exact ACTIVE Meta null 누락, runtime TeX escape)을 target audit에서 체크했다. 실제 geometry를 SVG coordinates로 판정하며 solution 문자열만으로 SVG를 통과시키지 않는다."
+  },
+  "preflightOrderNote": "Target answer/solution disclosure had occurred before noticing this preflight requirement. Original attempt and freeze are preserved separately; this file records actual Golden/Negative reads preceding the correction-review only.",
+  "additionalReadNotSelected": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+      "qids": [
+        1,
+        2,
+        3
+      ],
+      "reason": "Read q1–q3 as an additional calibrated reference. Excluded from the selected Golden set because registry-wide Jeil solution SVGs require a separate visual sample and q18 is a known visual exception; q18 was not treated as a model."
+    }
+  ]
+}

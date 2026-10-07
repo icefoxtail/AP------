@@ -1,0 +1,12 @@
+const fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');const p=process.argv[2],s={window:{}};vm.runInNewContext(fs.readFileSync(p,'utf8'),s);const q=s.window.questionBank.find(x=>Number(x.id)===24);if(!q)throw new Error('q24 missing');
+q.content=`[서답형 4] [서술형]\n[수준별 4-(①)] 다음 자료의 분산을 구하시오. (4점)\n$6, 2, 5, 3, 9$\n[수준별 4-(②)] 다음은 아이폰을 인터넷에서 구매하려고 한다. 이 아이폰의 평점을 조사하여 만든 자료이다. 분산을 구하시오. (5점)`;
+q.answer='(1) $6$';
+q.solution=`(1) 자료는 $6,2,5,3,9$이고 자료의 개수는 $5$이다.\n평균은\n$\\bar{x}=\\dfrac{6+2+5+3+9}{5}=\\dfrac{25}{5}=5$이다.\n분산은 편차를 제곱하여 더한 뒤 자료의 개수로 나눈 값이다.\n$\\dfrac{(6-5)^2+(2-5)^2+(5-5)^2+(3-5)^2+(9-5)^2}{5}$\n$=\\dfrac{1+9+0+4+16}{5}=\\dfrac{30}{5}=6$이다.\n따라서 (1)의 분산은 $6$이다.`;
+q.decisiveStep='(1) 평균 5를 구하고 편차 제곱의 평균을 계산해 분산 6을 얻는다. (2)는 원본 도수 그래프의 정확한 높이 자료가 확인되어야 분산을 계산할 수 있다.';
+q.image='assets/images/21_매산중_2학기_기말_중3_기출/q24.png';
+q.sourceQuestionNo='서답형 4';q.displayNo='24';q.sourceOrdinal=24;q.sourcePageNo=4;
+q.contentSource='full_page_source_evidence';q.choicesSource='full_page_source_evidence';q.answerSource='official_hwp_q24_part1_plus_independent_solve; part2_hold';q.solutionSource='fresh_independent_solution_part1; part2_source_visual_hold';q.extractionStatus='SOURCE_TEXT_EXTRACTED';q.reviewStatus='ITEM_HOLD';
+q.difficultyBucket=3;q.level='중';q.difficultyConfidence='medium';q.difficultyBoundaryFlag='NONE';q.legacyLevelCompatibility='NORMAL';
+q.sourceIdentityKey='sha256:'+crypto.createHash('sha256').update(JSON.stringify({content:q.content,choices:q.choices,image:q.image||null}),'utf8').digest('hex')+'|24';
+fs.writeFileSync(p,`window.examTitle = ${JSON.stringify(s.window.examTitle)};\nwindow.questionBank = ${JSON.stringify(s.window.questionBank,null,2)};\n`,'utf8');
+console.log(JSON.stringify({q24Content:q.content,q24Answer:q.answer,q24Image:q.image,answerMode:'PARTIAL_KNOWN_PART1; PART2_HOLD'}));

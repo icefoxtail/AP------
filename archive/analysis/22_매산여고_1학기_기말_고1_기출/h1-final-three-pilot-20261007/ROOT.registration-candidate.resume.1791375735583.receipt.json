@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-07T12:22:40.809Z",
+  "uid": "22_매산여고_1학기_기말_고1_기출",
+  "scope": "Isolated canonical candidate input-path binding repair only",
+  "reason": "Canonical manifest reads historical archive/_generated inputs; preserve original root read-only access without creating or updating generated directories",
+  "historicalReadRoot": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------",
+  "originalGeneratorSha256": "f4905fc07a4ce7349154070b4acd4565a96bb3bf6ee1942d65e116bcac934eaa",
+  "readMappedGeneratorSha256": "f4905fc07a4ce7349154070b4acd4565a96bb3bf6ee1942d65e116bcac934eaa",
+  "parentOriginalSha256": "22af089e6cde93fa9087a72a8ca9cfeba38b0de94e1fdddd7f73b59279d15962",
+  "parentReadMappedSha256": "01e34af30d7b7eec607db23b89e09992ee117fcd6bd3e983fbb5a58f4b6c7588",
+  "canonicalGeneratorSemanticsChanged": false,
+  "productionGeneratorChanged": false,
+  "generatedDirectoriesCreated": false,
+  "steps": [
+    {
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "da56fc357667080a222d2597817ac240eaf54cfef6b1b1c6317b2cde36b92c1e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-basic-scope-parent-links.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "b58d592ff6c01eb2562f9aba7a478805f9943b74d6a8de0adc15cba5f5636ce2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "2cc357674bb83bca9d9b6e1dea06aac75152516541b16312406c040b10537370",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-basic-scope-parent-links.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "b58d592ff6c01eb2562f9aba7a478805f9943b74d6a8de0adc15cba5f5636ce2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-archive2-crosswalk-inventory.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "cf43a68b10404aa165d424d6744c0555fd1541f5f8112ce4c969cfd47f0c4b9f",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "c0409a96b0c69e3028d9e262a4456170e338483a3cb003d482eb8542e76e3ed2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "2cc357674bb83bca9d9b6e1dea06aac75152516541b16312406c040b10537370",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ok": true
+}

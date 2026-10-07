@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "reports": [
+    {
+      "name": "materializer-test",
+      "command": [
+        "node",
+        "tests/archive-meta-v2-materializer.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "semantic-authority",
+      "command": [
+        "node",
+        "tests/archive2-meta-v2-semantic-authority.test.cjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "materializer-check",
+      "command": [
+        "node",
+        "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "identity-contract",
+      "command": [
+        "node",
+        "tests/archive-question-identity-contract.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "identity-runtime",
+      "command": [
+        "node",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "registration-parity",
+      "command": [
+        "node",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "target-runtime-parity",
+      "command": [
+        "node",
+        ".tmp/archive/archive2-h2-math2-geometry-20261007/registration-final-audit.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "actualRecheckStdout": "archive/analysis/archive2-h2-math2-geometry-20261007/registration-live/checks/target-runtime-parity.attempt2.stdout.txt"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    }
+  ],
+  "recheck": {
+    "scope": "target-runtime-parity only",
+    "originalFailurePreserved": "archive/analysis/archive2-h2-math2-geometry-20261007/registration-live/checks/ROOT.registration-validator-results.attempt1.json",
+    "reason": "ROOT supplemental audit wrongly expected canonical UID in legacy index; actual schema uses sourceOrdinal/qKey join. Corrected checker; registry bytes untouched."
+  }
+}

@@ -1,0 +1,42 @@
+✔ uses only locked display aliases and roster grade/course for target DB identity (1.6621ms)
+✔ builds DB course ranges from embedded approved Meta only (0.4688ms)
+✖ resolves only duplicate-key embedded order residue through the active canonical unit master (1.4566ms)
+✔ derives target identity with the canonical UID and source fingerprint contracts (0.1827ms)
+✔ copies embedded metadata values, preserves nullable projection, and marks empty advanced fields pending (0.2293ms)
+✔ appends exactly one DB row while preserving all existing DB rows (1.5295ms)
+✔ allows candidate drift only in the exact nine registration baseline files (0.1803ms)
+✔ binds a non-index0 R1 evidence path and the actual shared-validator PASS report (11.5679ms)
+✔ normalizes only explicit positive META evidence fields from heterogeneous valid R1 rows (29.7926ms)
+✔ accepts an authorized historical R1 proof only through current R3 and MAIN_DONE reuse chain (33.3104ms)
+✔ rejects R1 evidence paths that escape the trusted workspace (0.9238ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 182.0762
+
+✖ failing tests:
+
+test at archive\tools\prepare-target-registration-candidate.test.mjs:50:1
+✖ resolves only duplicate-key embedded order residue through the active canonical unit master (1.4566ms)
+  AssertionError [ERR_ASSERTION]: item-level Meta remains verbatim
+  
+  undefined !== 7
+  
+      at TestContext.<anonymous> (file:///C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/archive/tools/prepare-target-registration-candidate.test.mjs:72:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,22 @@
+{
+  "schemaVersion":"JS_ARCHIVE_R1_GOLDEN_PREFLIGHT_V1",
+  "runId":"h1-final-three-pilot-20261007",
+  "examUid":"21_고흥고_1학기_기말_고1_기출",
+  "stage":"R1",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "preflightTiming":"AFTER_INDEPENDENT_ANSWER_FREEZE_BEFORE_STORED_COMPARISON_OR_SOLUTION_EDIT",
+  "goldenSamples":[
+    {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","items":[
+      {"qid":15,"solutionSha256":"4bec2ff701e8d84cef228175b4c01be8f28417e7ac0e3e8a89f530e9b5ff472c","observation":"States the perpendicular relation, defines P and Q, derives their coordinates and distances on separate math lines, handles the absolute-value cases, then substitutes and concludes. Diagram shows O,P,Q and circle together with key values; actual SVG was opened and visually inspected.","axes":["SOLUTION_LAYOUT","SMALL_BOARD_STRUCTURE","BOARD_FLOW_CONTINUITY","VISUAL_SEMANTIC_PARITY"],"visualSha256":"54c3cd78b078de34a9b3f180884a38396f99bb7746e9e38f3acc0d34e94e46b1"},
+      {"qid":19,"solutionSha256":"7b5581fb6249f4dae311dd8ade45162fc06cbcbfd36113e0e1754fd737c14c34","observation":"Separates the incompatibility relation, maximum-sum choice, complement count, binomial selection, and final arithmetic into successive blocks; explains why each selection is valid."}
+    ]},
+    {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","items":[
+      {"qid":10,"solutionSha256":"600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c","observation":"Explains B⊆A from the premise and checks each assertion in separate blocks; the SVG gives a nested-set diagram plus counterexample notes. Actual SVG was opened and visually inspected; geometric containment matches the labels.","axes":["SOLUTION_LAYOUT","SMALL_BOARD_STRUCTURE","BOARD_FLOW_CONTINUITY","VISUAL_SEMANTIC_PARITY"],"visualSha256":"aaf0a79f61ef32e568ae299605519096a5a92674aa6f13ef1c03d15e75e6c78c"},
+      {"qid":15,"solutionSha256":"6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87","observation":"Separates upper and lower bounds for the intersection count, explains why each bound is attainable, then computes the requested difference."}
+    ]}
+  ],
+  "negativeSample":{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","observation":"Read the actual regression description: reviewers must calculate expected facts from SVG coordinates/topology instead of trusting labels; enumerated solution claims need distinct blocks; current runtime values and Meta exact-match debt must be checked."},
+  "negativeVisualSample":{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg","sha256":"022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92","previewPath":"archive/analysis/21_고흥고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/calibration-preview/negative-q1.png","previewSha256":"35f5fd63432c78510ed370154cbdae188fee6f9909a20f11431718485bcac3a6","observation":"Opened the actual SVG and preview: despite labels claiming slope −5/6, intercept −7/6, and points A(−5,3), B(1,−2), the drawn line passes through the origin and misses the labeled points. Confirms geometry must be recomputed from coordinates, not labels."},
+  "knownGoldenExceptionExcluded":"25_제일고 q18 visual; not read or selected.",
+  "processNote":"A broad archive/analysis reference search was inadvertently run after freeze; no target prior HOLD reason or target answer summary was read. Preflight itself used only the current registry-authorized samples and negative fixture."
+}

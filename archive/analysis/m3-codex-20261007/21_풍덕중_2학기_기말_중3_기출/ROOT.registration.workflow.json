@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "ROOT_TARGET_REGISTRATION_WORKFLOW_EXECUTION_V1",
+  "status": "TARGET_REGISTERED_PENDING_PUBLICATION",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "commands": [
+    {
+      "label": "assignment",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-assignment.mjs",
+        "21_풍덕중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.assignment.raw.txt",
+        "sha256": "0003e7377727cbad166f098d6949e65cec2c13ed969f8312df21e8708b1aec6f"
+      }
+    },
+    {
+      "label": "candidate",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-candidate-inputs.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.candidate.raw.txt",
+        "sha256": "7a6b00deaf0f2161090f352c46a62beac1c0f46b73b6f7f76dd497a7ad08591f"
+      }
+    },
+    {
+      "label": "db-builder",
+      "command": [
+        "python",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/build_db.py"
+      ],
+      "exitCode": 1,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.db-builder.raw.txt",
+        "sha256": "a34270ff0d77b1d59056d68590793e78b48dafaafc963453057deb200955d899"
+      }
+    },
+    {
+      "label": "index-builder",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-question-index.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.index-builder.raw.txt",
+        "sha256": "3b863b683a628d3a9a423bdc0d52a265bcc4c858c1df663e7bd3f6f2cd4a120b"
+      }
+    },
+    {
+      "label": "catalog-builder",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-archive2-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.catalog-builder.raw.txt",
+        "sha256": "d2d2399d45c60a2d766a703b975c051bb7c1b5c946ad5de28615db6649b983c5"
+      }
+    },
+    {
+      "label": "candidate-check",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.candidate-check.raw.txt",
+        "sha256": "d2d2399d45c60a2d766a703b975c051bb7c1b5c946ad5de28615db6649b983c5"
+      }
+    },
+    {
+      "label": "prepare",
+      "command": [
+        "node",
+        "archive/tools/prepare-target-registration.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json",
+        "--candidate-root",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate",
+        "--output",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/package.json"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.prepare.raw.txt",
+        "sha256": "8ff51d790d58acaee1233fa01b9a635ad83432760a2af9e77483c430d1cbd5bf"
+      }
+    },
+    {
+      "label": "dry-run",
+      "command": [
+        "node",
+        "archive/tools/register-target-exam.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json",
+        "--proposal",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/package.json",
+        "--catalog-candidate",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/data/archive2-catalog.json",
+        "--evidence-root",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.dry-run.raw.txt",
+        "sha256": "8059a192b7e937bdb0be43f8d20f320ac16b816fcb9cd71d497725110b66fe1b"
+      }
+    },
+    {
+      "label": "apply",
+      "command": [
+        "node",
+        "archive/tools/register-target-exam.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json",
+        "--proposal",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/package.json",
+        "--catalog-candidate",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/candidate/archive/data/archive2-catalog.json",
+        "--evidence-root",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출",
+        "--apply"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.apply.raw.txt",
+        "sha256": "e68b9afc68b08e85c441f54209abb5a68fe65343705fb9c14df92e5f3d6c57d4"
+      }
+    },
+    {
+      "label": "full-check",
+      "command": [
+        "node",
+        "archive/tools/build-archive2-catalog.mjs",
+        "--check"
+      ],
+      "exitCode": 1,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.full-check.raw.txt",
+        "sha256": "00f2e2e98d138bded09ededbc0a2ebbcaaae1106982b179d315a823dc7258c7f"
+      }
+    },
+    {
+      "label": "projection-diagnostic",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/catalog-projection-diagnostic.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/expected"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.projection-diagnostic.raw.txt",
+        "sha256": "ed94ab522a3d18a1f2fb79cf1383b574d9a637bed4e5b640549eb223b623c9d3"
+      }
+    },
+    {
+      "label": "target-projection",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-catalog-projection-repair.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/expected/archive2-catalog.expected.json",
+        ".tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration/repair",
+        "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/registration.assignment.json"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.target-projection.raw.txt",
+        "sha256": "a8dba63d7d7de62a98e2eef9789499b75b0fb33cc06b6b3bd1cd53f25dff15fe"
+      }
+    },
+    {
+      "label": "technical-readback",
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/verify-registration.mjs",
+        "21_풍덕중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.technical-readback.raw.txt",
+        "sha256": "991d09777ee1f2a53b359b8c2436c7f909b0c55f67ba62e490ba0fc27f81f020"
+      }
+    },
+    {
+      "label": "tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/target-registration-contract.test.mjs",
+        "tests/archive-question-identity-contract.test.mjs",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "rawReport": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/ROOT.registration.tests.raw.txt",
+        "sha256": "effd23b8a7794e7e00581915d659662d9b4ea499c8e1ce865d3d0d142a104056"
+      }
+    }
+  ],
+  "adapter": {
+    "path": ".tmp/archive/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/registration/build-target-candidate-inputs.mjs",
+    "sha256": "3a21f44f05aa05ee3d5bb6a9a078f5c51922eccc853f336d414ebb3713451482"
+  },
+  "fullCatalogCheck": "SEE_ACTUAL_RAW_REPORT; PREEXISTING_NON_TARGET_DRIFT_PRESERVED",
+  "finishedAt": "2026-10-07T16:55:45.541Z"
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf","gitBlobSha":"f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","gitBlobSha":"f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b","gitBlobSha":"639acb54459718fdeb83a1a281f33483bc81edb4"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":7,"solutionSha256":"sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionExcerpt":"원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.","observation":"실제 bytes에서 완전제곱·중심·반지름을 구한 다음 이동과 대칭을 별도 좌표 block으로 전개하고 SVG actual facts와 대조했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":17,"solutionSha256":"sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145","solutionExcerpt":"세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.","observation":"평행 세 쌍과 동시교점을 분리하고 계수 계산·대입·마지막 식 정리를 각각 줄 단위로 보였다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":3,"solutionSha256":"sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370","solutionExcerpt":"원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.","observation":"x/y 완전제곱 변형을 개별로 적고 표준형과 중심·반지름을 대응했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":15,"solutionSha256":"sha256:6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87","solutionExcerpt":"과목 $A$를 선호하는 학생의 집합을 $A$,","observation":"최댓값과 최솟값을 별도 제약으로 세우고 각 경계가 가능한 구성임을 보였다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e","solutionExcerpt":"ㄱ. 차집합은 교집합으로 나타내면","observation":"ㄱ/ㄴ/ㄷ/ㄹ 참거짓과 반례를 각각 독립 block으로 분리했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","qid":6,"solutionSha256":"sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af","solutionExcerpt":"드모르간의 법칙으로","observation":"포함배제 하한과 집합 실현 가능성 및 최댓값 도출을 순서대로 보였다."}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","gitBlobSha":"9775c4993d7e148a9da816ae36acdf652bc69906","observation":"4축 수치 자기보고가 실구조·실기하·정확한 Meta mapping을 대체하지 못한 실패 유형을 실제 README에서 확인."},
+      {"path":"archive/fixtures/visual-negative-regressions/2026-09-29/README.md","sha256":"sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8","gitBlobSha":"6184b4f2da7e098575b19cc8bac5c61fe9c513c7","observation":"missing owner ray, angle/length label owner, coordinate/topology mismatch를 actual SVG와 대조해야 함을 확인."},
+      {"path":"archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg","sha256":"sha256:3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f","gitBlobSha":"74d146e75f756584458c7a4b30af84c4696559bd","pixelPreviewPath":"archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.negative-owner-ray-preview.png","pixelPreviewSha256":"sha256:42420ee3f0c0dd71d4c5a3802d1b7c5a0ea9921b9ef858258a5be3db9f3116f1","observation":"실제 primitive에는 BC owner ray가 없어 30도 텍스트만으로 visual pass를 줄 수 없는 것을 pixel view에서 확인."}
+    ],
+    "calibrationAxes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+    "sampleReadBeforeWork":true,
+    "calibrationStatus":"PASS",
+    "qualityCompareCount":"25/25",
+    "solutionWorkMode":"INDEPENDENT_REVIEW",
+    "calibrationOrder":"FAILED_ATTEMPT1_PRESERVED; PREFLIGHT_COMPLETED_BEFORE_FREEZE_AND_SOLUTION_AXIS_REVIEW"
+  }
+}

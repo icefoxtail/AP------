@@ -1,0 +1,253 @@
+{
+  "runId": "h1-final-three-pilot-20261007",
+  "startedAt": "2026-10-07T10:22:51.264Z",
+  "events": [
+    {
+      "type": "CREATE_DISPATCH",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "session": "/root/create_maesan2022",
+      "role": "archive_create",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "renderPreflight": "CAPABILITY_READY",
+      "nextStage": "R1",
+      "freedSlot": null,
+      "nextRosterTarget": "21_강남여고_1학기_기말_고1_기출"
+    },
+    {
+      "at": "2026-10-07T10:26:32.336Z",
+      "type": "CREATE_FIRST_SOURCE_CHECKPOINT",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "sourcePages": 6,
+      "sourceIdentity": "순천매산여자고등학교",
+      "goldenNegativePreflight": "ACTUAL_PASS_BEFORE_AUTHORING",
+      "slotOwner": "/root/create_maesan2022"
+    },
+    {
+      "at": "2026-10-07T11:01:38.231Z",
+      "type": "CREATE_COMPLETE_CONVEYOR_TRANSITION",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "artifactSha": "96b65db4a43b9d517f805659150d89a82cea8532",
+      "artifactRawSha256": "332b1770cd0da13b3e79ca3b15e6511d61145a3d05dcc5956c774dc4d62a1b65",
+      "nextStage": "R1",
+      "nextSession": "/root/r1_maesan2022",
+      "freedSlot": "CREATE",
+      "nextRosterTarget": "21_강남여고_1학기_기말_고1_기출",
+      "newCreateSession": "/root/create_gangnam2021",
+      "studentBundleSha256": "7d34a566c489c7f81f37f58229e746c98e4ff05c9c9fa154443a3bad4126131b",
+      "projectionDebtQidCount": 18
+    },
+    {
+      "at": "2026-10-07T11:32:31.6808314Z",
+      "type": "R1_COMPLETE_CONVEYOR_TRANSITION",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "nextStage": "R2",
+      "nextSession": "/root/r2_maesan2022",
+      "freedSlot": "R1",
+      "itemHoldCount": 0,
+      "artifactSha": "9db82642898238407cd4c57f7bbe62a32a8d886f",
+      "artifactRawSha256": "5bcd4c6d38e26b907b5c17d052fd823456308f69b7ce2ad7b4f04b6798ee40d7"
+    },
+    {
+      "at": "2026-10-07T11:43:15.1084645Z",
+      "type": "R2_COMPLETE_R3_DISPATCH_WITH_SAME_SESSION_FLAG_REBIND",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "nextStage": "R3",
+      "nextSession": "/root/r3_maesan2022",
+      "originalHoldCount": 1,
+      "sourceBackedFlagClosure": "R1.q6-item-hold-closure.json",
+      "finalHoldCount": 0,
+      "artifactSha": "1d522aea3c4ee0ac51015f5a307cfba2a3ce7336"
+    },
+    {
+      "at": "2026-10-07T11:45:12.1009495Z",
+      "type": "CREATE_COMPLETE_CONVEYOR_TRANSITION",
+      "examUid": "21_강남여고_1학기_기말_고1_기출",
+      "questionCount": 27,
+      "itemHoldCount": 0,
+      "nextStage": "R1",
+      "nextSession": "/root/r1_gangnam2021",
+      "freedSlot": "CREATE",
+      "nextRosterTarget": "21_고흥고_1학기_기말_고1_기출",
+      "newCreateSession": "/root/create_goheung2021",
+      "artifactSha": "bb28988b4413f2717f410cc7af0a5e3574bbf473",
+      "studentBundleSha256": "d49dcbbabc84d95fda0682c4878f371a092909db23bc44fe33385b3dd264200f"
+    },
+    {
+      "at": "2026-10-07T11:58:07.5110061Z",
+      "type": "CREATE_FIRST_SOURCE_CHECKPOINT",
+      "examUid": "21_고흥고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "sourcePages": 4,
+      "goldenNegativePreflight": "ACTUAL_TEXT_AND_PIXELS_BEFORE_DRAFTING",
+      "slotOwner": "/root/create_goheung2021"
+    },
+    {
+      "at": "2026-10-07T12:03:56.5884219Z",
+      "type": "CREATE_COMPLETE_R1_QUEUED",
+      "examUid": "21_고흥고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "nextStage": "R1",
+      "freedSlot": "CREATE",
+      "nextRosterTarget": null,
+      "blockingSlotOwner": "/root/r1_gangnam2021",
+      "artifactSha": "6d388eedd3e23ff288b2018d65e1ab2001ecb972"
+    },
+    {
+      "at": "2026-10-07T12:05:44.5079416Z",
+      "type": "R2_SAME_SESSION_Q4_ENCODING_LAYOUT_VALIDITY_AND_REBIND_PASS",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "artifactRawSha256": "ce2da2d64e740c9e8b39b45980834dbe925e64603710c4edb65d1db5a4e0add2",
+      "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+      "reportSha256": "f6b70b5efe3f4e1b5cfb38abac5356e9b765866d62c2c465f741ce64428eddf3",
+      "originalFreezeValid": true,
+      "itemHoldCount": 0
+    },
+    {
+      "at": "2026-10-07T12:09:42.8194862Z",
+      "type": "R1_COMPLETE_R2_DISPATCH_AND_SAME_STAGE_CLOSURE_QUEUE",
+      "examUid": "21_강남여고_1학기_기말_고1_기출",
+      "questionCount": 27,
+      "itemHoldCount": 0,
+      "nextStage": "R2",
+      "nextSession": "/root/r2_gangnam2021",
+      "freedSlot": "R1",
+      "nextRosterTarget": "22_매산여고_1학기_기말_고1_기출",
+      "existingR1ClosureSession": "/root/r1_maesan2022",
+      "artifactSha": "ffa4b949d687286d1eadabb00aa444bd5f8c9510",
+      "finalR1ReportSha256": "6c7acb2e2c2ab4c0d79327aa5159e4cd00e00c0a358fe6e8a719e274fddb8dc2"
+    },
+    {
+      "at": "2026-10-07T12:18:34.6098822Z",
+      "type": "R3_COMPLETE_DURABLE_PROMOTION_AND_R1_CLOSURE_RELEASE",
+      "examUid": "22_매산여고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+      "renderStatus": "RENDER_PASS",
+      "nextStage": "PUBLICATION",
+      "freedSlots": [
+        "R1",
+        "R3"
+      ],
+      "nextRosterTarget": "21_고흥고_1학기_기말_고1_기출",
+      "newR1Session": "/root/r1_goheung2021"
+    },
+    {
+      "at": "2026-10-07T12:23:38.5595777Z",
+      "type": "R2_COMPLETE_R3_DISPATCH",
+      "examUid": "21_강남여고_1학기_기말_고1_기출",
+      "questionCount": 27,
+      "itemHoldCount": 0,
+      "nextStage": "R3",
+      "nextSession": "/root/r3_gangnam2021",
+      "freedSlot": "R2",
+      "artifactSha": "ffa4b949d687286d1eadabb00aa444bd5f8c9510",
+      "reportSha256": "bcc8c8e23463e5652b9579a294b71b8ee18375e0c8c9bd90c3bb9fa8cc592535"
+    },
+    {
+      "at": "2026-10-07T12:29:05.2064498Z",
+      "type": "REMOTE_AUTHORITY_DRIFT_SCOPED_REVIEW",
+      "remoteMainSha": "4ca503e269e5a345af13641b67fe5f8a05305a21",
+      "changedHelper": "archive/tools/archive-stage-validator-artifact-v2.mjs",
+      "changedAuthority": "CURRENT Execution H2 2015 geometry null subUnit projection paragraph",
+      "affectedScope": "H2 2015 Geometry / H15-GV standardUnitKey",
+      "pilotScope": "H1 first-term-final / H15-SA",
+      "targetSourceAssetOverlap": false,
+      "existingH1ReceiptReuseBasis": "Changed branch is H2-only; no H1 policy or target input changed"
+    },
+    {
+      "at": "2026-10-07T12:32:27.2037903Z",
+      "type": "R3_COMPLETE_DURABLE_PROMOTION",
+      "examUid": "21_강남여고_1학기_기말_고1_기출",
+      "questionCount": 27,
+      "itemHoldCount": 0,
+      "nextStage": "PUBLICATION",
+      "freedSlot": "R3",
+      "artifactSha": "ffa4b949d687286d1eadabb00aa444bd5f8c9510",
+      "renderStatus": "RENDER_PASS",
+      "renderReviewFalsePositive": "q12 crop-boundary concern cleared by actual full desktop/mobile capture review; source unchanged"
+    },
+    {
+      "at": "2026-10-07T12:39:27.1367626Z",
+      "type": "R1_COMPLETE_R2_DISPATCH",
+      "examUid": "21_고흥고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "nextStage": "R2",
+      "nextSession": "/root/r2_goheung2021",
+      "freedSlot": "R1",
+      "artifactSha": "93c49d5de6954dfdfd91fb8aeb901e905a41751d",
+      "reportSha256": "f75b933603097be374216bf8f2b8dda4a47930836f3da24e581f2a74db50bd9a",
+      "changedQids": [
+        5,
+        6,
+        13
+      ],
+      "sourceRepairScope": "Choices TeX encoding restored from original PDF; semantic math unchanged"
+    },
+    {
+      "at": "2026-10-07T12:51:34.5779382Z",
+      "type": "R2_COMPLETE_R3_DISPATCH",
+      "examUid": "21_고흥고_1학기_기말_고1_기출",
+      "questionCount": 22,
+      "itemHoldCount": 0,
+      "nextStage": "R3",
+      "nextSession": "/root/r3_goheung2021",
+      "freedSlot": "R2",
+      "artifactSha": "93c49d5de6954dfdfd91fb8aeb901e905a41751d",
+      "reportSha256": "421bcd55587d620835990372b193329f87724bb8c013b63494e687b77707cdb1"
+    },
+    {
+      "at": "2026-10-07T12:58:51.1532652Z",
+      "type": "ALL_R3_COMPLETE_PUBLICATION_FENCE",
+      "examCount": 3,
+      "questionCount": 71,
+      "itemHoldCount": 0,
+      "actualRenderCases": 18,
+      "head": "e191263cd2f2633aa9a79ef112c602dad316fec0",
+      "targetSourceAssetOverlap": false,
+      "authorityDrift": "H2-only; H1 input/contract/engine unchanged",
+      "nextStage": "PUBLICATION",
+      "freedSlot": "R3"
+    },
+    {
+      "at": "2026-10-07T13:12:38.8433993Z",
+      "type": "SOURCE_PUBLISHED_AND_TARGET_REGISTRATION_CHECKS_PASS",
+      "sourcePublicationSha": "e6e2d3730cd7d479cf19a6733878af55acc2458d",
+      "publicationBaseHead": "afb07461197e64982e8bd6d66df3e13e0625da76",
+      "examCount": 3,
+      "questionCount": 71,
+      "requiredChecks": 7,
+      "allRequiredChecksPass": true,
+      "upstreamDrift": "Only unrelated H1 1mid q13 asset and evidence; selected source/assets, helpers, registry files unchanged",
+      "checksReusedOnUnchangedInputs": true
+    },
+    {
+      "at": "2026-10-07T13:19:41.0196315Z",
+      "type": "INITIAL_ALL_MAIN_DONE_AND_WINDOWS_LONG_PATH_READBACK_REPAIR",
+      "remoteMainSha": "1250c3a3a2fcca9c68f5f6c3fdfdf8fa86e479c7",
+      "examCount": 3,
+      "questionCount": 71,
+      "canonicalMainDoneHelpersPass": true,
+      "itemHoldCount": 0,
+      "technicalRepair": "git ls-tree object IDs + git cat-file blob instead of git show revision:path for deep preserved snapshot paths",
+      "qualityInputsChanged": false,
+      "next": "Publish bounded helper/failure/initial closeout provenance, then rebind final current main SHA"
+    }
+  ],
+  "spawnCount": 12,
+  "masterCount": 0,
+  "slotOwners": {
+    "CREATE": null,
+    "R1": null,
+    "R2": null,
+    "R3": null
+  },
+  "nextCreateRosterIndex": 3,
+  "pendingR1Queue": []
+}

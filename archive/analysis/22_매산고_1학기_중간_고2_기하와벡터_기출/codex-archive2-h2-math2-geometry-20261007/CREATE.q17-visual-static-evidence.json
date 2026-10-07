@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "JS_ARCHIVE_VISUAL_GEOMETRY_STATIC_EVIDENCE_V1",
+  "qid": 17,
+  "sourceSolutionSha256": "be2add4abb6a42c197990c553c564f4526036e7e28e0e8b47a215ebc8bc05c49",
+  "finalSvgSha256": "c7ef538e68d8048dd3a7fdd64adc1126ce0f09a41744a3a2b313e224c8bea7bd",
+  "finalSvgGitBlobSha1": "1cc9cf65f520d55042b724a74195d2114c4fe0b0",
+  "finalSvgCandidatePath": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_중간_고2_기하와벡터_기출/assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution.svg",
+  "futureProductionRef": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q17-solution.svg",
+  "sourceCoordinates": "CONSTRUCTED_REALIZATION",
+  "coordinateModel": {
+    "rationale": "Set the right-angle vertex B at the origin and use AB=4 on the positive y-axis. The 30-degree angle at C forces BC=4√3. The vector equation makes P the midpoint of BC.",
+    "points": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        "4√3",
+        0
+      ],
+      "P": [
+        "2√3",
+        0
+      ]
+    },
+    "coordinateMapToSvg": "(x,y) -> (135+65x, 330-65y)",
+    "freeVariables": [],
+    "geometryConditions": [
+      "AB=4",
+      "AB perpendicular BC",
+      "angle ACB=30 degrees",
+      "P lies on BC",
+      "PB=PC"
+    ],
+    "constructionLedger": [
+      "B=(0,0)",
+      "A=(0,4)",
+      "C=(4√3,0)",
+      "P=(2√3,0)"
+    ],
+    "conditionResiduals": [
+      {
+        "condition": "AB=4",
+        "residual": 0,
+        "tolerance": 1e-12
+      },
+      {
+        "condition": "AB perpendicular BC",
+        "residual": 0,
+        "tolerance": 1e-12
+      },
+      {
+        "condition": "angle ACB=30 degrees",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-12
+      },
+      {
+        "condition": "PB=PC",
+        "residual": 0,
+        "tolerance": 1e-12
+      },
+      {
+        "condition": "P lies on BC",
+        "residual": 0,
+        "tolerance": 1e-12
+      }
+    ],
+    "degeneracyChecks": {
+      "nonzeroSides": true,
+      "triangleAreaPositive": true,
+      "distinctVertices": true
+    }
+  },
+  "expectedFacts": [
+    "right angle at B",
+    "angle C=30 degrees",
+    "AB=4",
+    "P is midpoint of BC",
+    "PB=PC=2√3"
+  ],
+  "pythonInputs": {
+    "A": [
+      0,
+      4
+    ],
+    "B": [
+      0,
+      0
+    ],
+    "C": [
+      10.392304845413264,
+      0
+    ],
+    "P": [
+      5.196152422706632,
+      0
+    ]
+  },
+  "pythonCalculatedOutputs": {
+    "AB": 4,
+    "BC": 6.928203230275509,
+    "PB": 3.4641016151377544,
+    "PC": 3.4641016151377544,
+    "dotBA_BC": 0,
+    "angleACB": 30.000000000000004
+  },
+  "actualSvgPrimitives": {
+    "segmentAB": [
+      [
+        135,
+        70
+      ],
+      [
+        135,
+        330
+      ]
+    ],
+    "segmentBC": [
+      [
+        135,
+        330
+      ],
+      [
+        585,
+        330
+      ]
+    ],
+    "segmentCA": [
+      [
+        585,
+        330
+      ],
+      [
+        135,
+        70
+      ]
+    ],
+    "rightAngleMarkerVertex": "B",
+    "angleArcVertex": "C",
+    "pointMarkers": {
+      "A": [
+        135,
+        70
+      ],
+      "B": [
+        135,
+        330
+      ],
+      "C": [
+        585,
+        330
+      ],
+      "P": [
+        360,
+        330
+      ]
+    },
+    "midpointTick": [
+      [
+        360,
+        330
+      ],
+      [
+        360,
+        338
+      ]
+    ]
+  },
+  "observedFacts": [
+    "AB=260/65=4",
+    "BC=450/65=4√3",
+    "BP=PC=225/65=2√3",
+    "angle arc is centered at C between CB and CA",
+    "right-angle marker is at B"
+  ],
+  "sourceConditionCoverage": [
+    "AB=4",
+    "angle B=90 degrees",
+    "angle C=30 degrees",
+    "vector equation identifies P as midpoint of BC"
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      "A/B/C labels match question vertices",
+      "P label is on BC midpoint"
+    ],
+    "result": "PASS"
+  },
+  "labelOwnerBindings": [
+    {
+      "label": "AB=4",
+      "ownerSegment": "AB",
+      "result": "PASS"
+    },
+    {
+      "label": "30°",
+      "ownerVertex": "C",
+      "ownerRays": [
+        "CB",
+        "CA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "label": "P",
+      "owner": "midpoint of BC",
+      "result": "PASS"
+    },
+    {
+      "label": "BP=PC=2√3",
+      "ownerSegments": [
+        "BP",
+        "PC"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "xmlParseResult": "PASS",
+  "styleFloorStatus": "PASS_STATIC",
+  "styleNormalizationAction": "NEW_CURRENT_STYLE",
+  "styleVersion": "ARCHIVE_GEOMETRY_STATIC_V1",
+  "semanticGeometryPreserved": true,
+  "staticPreview": {
+    "path": "archive/analysis/22_매산고_1학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/calibration/q17-solution-final.png",
+    "sha256": "4e0d9fc1d2abba560f9902cad5e0030fdf78b531b57a2761054a4dcb856d6a0a",
+    "renderer": "ImageMagick SVG preview",
+    "actualBrowserRender": "NOT_RUN_R3"
+  },
+  "actualBrowserRender": "NOT_RUN_R3",
+  "realRenderClaimed": false
+}

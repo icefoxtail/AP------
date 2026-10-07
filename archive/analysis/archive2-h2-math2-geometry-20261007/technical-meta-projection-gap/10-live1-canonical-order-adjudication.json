@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GEOMETRY_LIVE10_META_ORDER_ADJUDICATION_V1",
+  "status": "STRICT_GUARD_RETAINED_SOURCE_META_REPAIR_REQUIRED",
+  "createdAt": "2026-10-08T01:06:30.5748813+09:00",
+  "head": "91ff11b832227f4064c2d51196fbe18084ce806c",
+  "failure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\registration-live\\10-live1\\producer.stderr.txt",
+    "rawSha256": "2b2b01adca49c66d56b5f7b3410555a41104807b03dbbe00dc240a1ce23cc59d",
+    "error": "R1_META_UNIT_PARITY_CONFLICT:H15-GV-06",
+    "preserved": true
+  },
+  "source": {
+    "rosterIndex": 10,
+    "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+    "productionPath": "archive/exams/original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
+    "currentArtifactRawSha256": "aa53862a4a57b06ccde3ddb40285f64dc9fc5b879081d3693410a6f21d573adb",
+    "currentArtifactBlobSha1": "8643131069a7924c1a4904a43c26b844b9d77f5c",
+    "questionCount": 20,
+    "r1EvidencePath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.evidence.json",
+    "r1EvidenceSha256": "6826ab748955fca67f1cfbba102db49d8cdd6b4d52b6f598af20ef7669e4f859",
+    "r1ValidationPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.validator.attempt3.raw.json",
+    "r1ValidationSha256": "8bd7f8d4d21af194087f9c67fbf8e4efddf28aa536725b423498a70dd8f293c3",
+    "observedUnitRows": [
+      {
+        "qid": 5,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 6
+      },
+      {
+        "qid": 7,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 7
+      },
+      {
+        "qid": 9,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 6
+      },
+      {
+        "qid": 15,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 6
+      },
+      {
+        "qid": 18,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 6
+      },
+      {
+        "qid": 20,
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "standardUnitOrder": 6
+      }
+    ]
+  },
+  "canonicalMaster": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json",
+    "rawSha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+    "entry": {
+      "key": "H15-GV-06",
+      "keyType": "standardUnitKey",
+      "labelKo": "평면벡터의 성분과 내적",
+      "description": "문서 기준 표준단원 (6)",
+      "status": "active"
+    }
+  },
+  "adjudication": {
+    "source": "ROOT authoritative R1 q7 bounded adjudication",
+    "result": "q7 standardUnitOrder 7 is required source Meta repair; ROOT authorized q7 order 7 to 6 only after current R1 rebind",
+    "classification": "source Meta defect, not a legal alias",
+    "producerDecision": "Keep fail-closed R1_META_UNIT_PARITY_CONFLICT until corrected production artifact and current R1 proof are republished."
+  },
+  "implementation": {
+    "changedLocus": "none; existing strict same-key unit+order check remains intact",
+    "producerPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.mjs",
+    "producerRawSha256": "d641e1b2c07642f3d78d03c99824a9101099fb7670d3ee3e77b88c457b5d4a96",
+    "producerGitBlobSha1": "b6409c19ad4b2537487a5670f7122f880345adbd",
+    "testPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.test.mjs",
+    "testRawSha256": "599e3fa5af421986f273f04313b78787e688c04633e807fa61f8d4864b250504",
+    "testGitBlobSha1": "25c660161081642b17c8631bbe1d2ab733b1f783",
+    "normalizationAttemptPreservedPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\10-live1-canonical-order-investigation\\normalization-attempt-tests.stdout.txt",
+    "normalizationAttemptExit": 1,
+    "normalizationAttemptStdoutSha256": "db353aa9caf47349024e0daa15eaf0bc93eb73330230ad5c6cdb0f842688aed1",
+    "finalSyntax": "PASS",
+    "finalTests": {
+      "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+      "exitCode": 0,
+      "passed": 10,
+      "failed": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\10-live1-canonical-order-investigation\\final-strict-guard-tests.stdout.txt",
+      "stdoutSha256": "8683557d0387ef1aa1607f6a93ab9ba3ee06893cd06a121a8e4f18277540060a",
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\10-live1-canonical-order-investigation\\final-strict-guard-tests.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scope": {
+    "examJsUnchanged": true,
+    "assetFilesUnchanged": true,
+    "nineAppliedRegistryFilesUnchangedByThisContinuation": true,
+    "noApply": true,
+    "noStage": true,
+    "nextAction": "After ROOT-approved q7-only source Meta repair is republished and current R1 evidence/validation are rebound, regenerate index10 assignment from current raw/blob and proof refs, then rerun producer; index11 continues from the latest sequential live registry baseline."
+  }
+}

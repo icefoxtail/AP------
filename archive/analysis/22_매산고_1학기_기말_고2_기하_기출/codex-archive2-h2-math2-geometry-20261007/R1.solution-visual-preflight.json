@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "ARCHIVE_R1_SOLUTION_VISUAL_PREFLIGHT_V1",
+  "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "performedBeforeAnySolutionAuthoringOrRepair": true,
+  "preflightAt": "2026-10-07 Asia/Seoul",
+  "calibration": [
+    {
+      "takeaway": "Geometry facts and labels must be read from the rendered object relationships; visual role must match the decisive solution step.",
+      "kind": "geometry-golden",
+      "opened": true,
+      "path": "archive/analysis/22_금당고_2학기_중간_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/q19-solution.png"
+    },
+    {
+      "kind": "geometry-visual-rule",
+      "read": true,
+      "takeaway": "Audit visual necessity across every qid; check geometry, label owner, coordinate semantics, and render need separately.",
+      "path": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md"
+    },
+    {
+      "inspected": true,
+      "kind": "negative-regression",
+      "takeaway": "A correct angle value does not pass when placed outside its actual owner wedge; check vertex and both rays.",
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/02_25_왕운중_2학기_중간_중2_수학_q21_ANGLE_LABEL_OWNER_BINDING_FAIL.svg"
+    },
+    {
+      "kind": "negative-regression-contract",
+      "read": true,
+      "takeaway": "Check owner rays, angle wedge, segment owner, and coordinate conditions in the actual SVG.",
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md"
+    },
+    {
+      "kind": "solution-protocol",
+      "read": true,
+      "takeaway": "Preflight golden/negative before solution edits; use curriculum inventory and full visual necessity coverage.",
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md"
+    },
+    {
+      "sections": "3,6,11",
+      "kind": "canonical-smallboard",
+      "read": true,
+      "takeaway": "Show each decisive equation/condition and intermediate value on its own meaningful line, with concise Korean narration.",
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md"
+    }
+  ],
+  "outcome": "PASS_PREFLIGHT"
+}

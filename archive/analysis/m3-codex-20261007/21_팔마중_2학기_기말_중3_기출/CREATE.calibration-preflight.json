@@ -1,0 +1,118 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_CALIBRATION_PREFLIGHT_V1",
+  "stage": "CREATE",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "FRESH_SOURCE_AND_ANSWER",
+  "calibrationOrder": [
+    "ASSIGNMENT_SCOPE_CONFIRMED",
+    "GOLDEN_AND_NEGATIVE_SAMPLES_READ",
+    "TARGET_AUTHORING"
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "Inner division and midpoint coordinates are computed component by component, then distance is simplified through visible intermediate lines.",
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다.\n따라서\n$P=(1,6)$이다.\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\right)$\n$=\\left(\\dfrac62,\\dfrac{16}2\\right)$\n$=(3,8)$이다.\n마지막으로 두 점 $P(1,6)$, $M(3,8)$ 사이의 거리를 구한다.\n두 점 사이의 거리 공식에 $x$좌표의 차와 $y$좌표의 차를 넣으면\n$PM=\\sqrt{(3-1)^2+(8-6)^2}$\n$=\\sqrt{2^2+2^2}$\n$=\\sqrt{4+4}$\n$=\\sqrt8$\n$=\\sqrt{4\\cdot2}=2\\sqrt2$이다.\n\n따라서 정답은 ④이다."
+          },
+          {
+            "qid": 12,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Translation updates the center and preserves radius; both absolute-value cases are shown before applying positivity.",
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+            "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지름은 그대로 $a$이다.\n이 원이 $y$축에 접하므로\n중심에서 $y$축까지의 거리와 반지름이 같다.\n중심의 $x$좌표가 $a-4$이므로\n$|a-4|=a$이다.\n$a>0$인 조건을 이용하여 이 절댓값 방정식을 나누어 푼다.\n만약 $a\\ge4$이면\n$a-4=a$가 되어\n$-4=0$이므로 불가능하다.\n따라서 $0<a<4$이고\n$4-a=a$\n$2a=4$\n$a=2$이다.\n이제 이동한 원이 $x$축에도 접한다.\n중심에서 $x$축까지의 거리는 $|b-2|$이므로\n$|b-2|=a=2$이다.\n따라서\n$b-2=2$ 또는 $b-2=-2$이다.\n첫 번째 경우에는\n$b=4$이고,\n두 번째 경우에는\n$b=0$이다.\n문제에서 $b>0$이므로\n$b=4$만 가능하다.\n따라서\n$a+b=2+4=6$이다.\n\n그러므로 정답은 ②이다."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "Coordinate differences, substituted distance formula, square-root simplification and answer remain separate and reproducible.",
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다."
+          },
+          {
+            "qid": 3,
+            "axes": [
+              "QUESTION_LAYOUT",
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Completing squares exposes the center and radius; the solution SVG visibly binds the coordinates and radius to the circle.",
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=4$\n$=(2)^2$이다.\n원의 표준형\n$(x-a)^2+(y-b)^2=r^2$\n과 비교하면\n$a=-1$, $b=3$, $r=2$이다.\n따라서 중심은 $(-1,3)$이고 반지름의 길이는 $2$이다.\n\n따라서 정답은 ①이다."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "The frozen false-PASS fixture was read with its q3 failed SVG. Verify actual geometry/topology, keep enumerated decisions in separate blocks, preserve resolvable Meta mappings, and inspect evaluated runtime strings for escape damage.",
+      "failureAsset": {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+        "sha256": "d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+        "gitBlobSha": "80072636d7d07f75c32bf7671f52bd00d70c34a2",
+        "observation": "The displayed equation label does not match the line primitive coordinates; visual text cannot substitute for geometric verification."
+      }
+    }
+  },
+  "pdfReview": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_팔마중3_수학_2기말.pdf",
+    "sha256": "6ebc50156d2c35a2b88fd1f81e9613dda7b97ec972d06f2a26e9bb009c58d8fe",
+    "pageCount": 6,
+    "allPagesRenderedAndVisuallyInspected": true,
+    "answerHwpListedByManifest": false
+  }
+}

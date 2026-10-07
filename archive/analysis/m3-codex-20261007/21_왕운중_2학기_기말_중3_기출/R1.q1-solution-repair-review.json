@@ -1,0 +1,42 @@
+{
+  "recordType": "R1_QID_SOLUTION_REPAIR_REVIEW",
+  "schemaVersion": "1",
+  "examUid": "21_왕운중_2학기_기말_중3_기출",
+  "qid": 1,
+  "componentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\R1-clean-q1-q11.component.json",
+  "componentSha256": "11e52ad9985a172b82b411d56420a174adc9c051e14aad8c9cc911b236938f9f",
+  "freshFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_왕운중_2학기_기말_중3_기출\\R1-clean-q1-q11.independent-freeze.json",
+  "freshFreezeSha256": "56adc3c8422ff49beccd1aa63ae61010130371e6f57bd2330e07cc8950048ec5",
+  "preRepairWorkingRawSha256": "59a9f53aa73062d45dc6b0fcdc244f5f8f35ddb516093fc59b24b29e89094522",
+  "postRepairWorkingRawSha256": "513358b88fce790a22b00861d309a8ed860b8c7fc122011ceb8af9a0acc16d14",
+  "oldSolutionSha256": "e9d158896ebd73e64255b5c5c1d771bac8f101a253bc4454ee5ca5ad528e5003",
+  "newSolutionSha256": "f4bf990aa7065ca6da9f1d96bc3ea931762583bf674f37ce9f7f67d6133a2a05",
+  "changedFields": [
+    "solution"
+  ],
+  "unchangedFields": [
+    "student content",
+    "choices",
+    "stored answer",
+    "Meta",
+    "asset references"
+  ],
+  "goldenNegativePreflight": {
+    "performedBeforeRepair": true,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      }
+    ],
+    "negativeSamplePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "negativeSampleSha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "source": "component preflight and same R1 session actual prior sample-read receipts"
+  },
+  "repair": "For a same-circle counterexample, 60° central angle gives an equilateral radius-radius-chord triangle, so the chord is r. Doubling to 120° still does not make a diameter; that chord is shorter than 2r. Separate equations and comparison show chord length is not doubled.",
+  "changedLocusReview": "PASS: the decisive claim is now demonstrated with a curriculum-valid geometric comparison and no extra source condition."
+}

@@ -1,0 +1,60 @@
+{
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R2-clean-native-q24",
+  "disclosedAt": "2026-10-07T15:29:49.246Z",
+  "freeze": {
+    "path": "archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R2-clean-native-q24.freeze.json",
+    "sha256": "0bc71bab48cf9bc179837c5faadd158e89e10feb29c0eea8b1a5e2ffe302de9a"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\21_팔마중_2학기_기말_중3_기출.js",
+    "sha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+    "artifactSha": "8cc83ff611d082c80cc72df671b229030842ef6d"
+  },
+  "excludedQids": [],
+  "questions": [
+    {
+      "id": 24,
+      "content": "[서술형3] 다음 줄기와 잎 그림은 후주네 반 학생 12명의 30초 동안의 윗몸일으키기 횟수를 조사하여 나타낸 것이다. 이 자료의 평균, 중앙값, 최빈값을 구하려고 할 때, 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오. [5점]\n(1) 위의 줄기와 잎 그림의 평균을 풀이 과정을 쓰고 구하면? [2점]\n(2) 위의 줄기와 잎 그림에서 중앙값과 최빈값을 풀이 과정을 쓰고 구하면? [2점]\n(3) 위 (1),(2)에서 구한 평균값을 $A$, 중앙값을 $B$, 최빈값의 합을 $C$라고 할 때, $A+B-C$의 값은? [1점]",
+      "choices": [],
+      "answer": "-5",
+      "solution": "줄기와 잎 그림의 자료를 작은 순서로 쓰면\n$1,2,3,11,15,15,17,18,20,20,21,25$이다.\n자료의 합은\n$1+2+3+11+15+15+17+18+20+20+21+25=168$이다.\n따라서 평균은\n$A=168\\div12=14$이다.\n가운데 두 값은 15와 17이므로 중앙값은\n$B=\\dfrac{15+17}{2}=16$이다.\n15와 20이 각각 두 번 나타나므로 최빈값은 15와 20이다.\n최빈값의 합은\n$C=15+20=35$이다.\n그러므로\n$A+B-C=14+16-35$\n$=30-35$\n$=-5$이다.",
+      "tags": [
+        "통계",
+        "대표값"
+      ],
+      "image": "assets/images/21_팔마중_2학기_기말_중3_기출/q24.png",
+      "questionType": "서술형",
+      "layoutTag": "grid",
+      "wide": false,
+      "category": "대표값",
+      "originalCategory": "대표값",
+      "level": "중",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "subUnitConfidence": "rule_inferred",
+      "subUnitClassificationDepth": "complete_rule",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
+      "decisiveStep": "A=14, B=16, C=15+20=35이므로 A+B-C=14+16-35=-5이다.",
+      "visualDisposition": "NATIVE_SOURCE_CHART_ONLY_CROP_NO_SOLUTION_SVG_REQUIRED",
+      "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image."
+    }
+  ]
+}

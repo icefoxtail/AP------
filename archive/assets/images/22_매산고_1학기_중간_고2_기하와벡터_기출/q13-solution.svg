@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">타원의 장축, 두 초점, 삼각형 AFF′의 넓이 관계</title>
+  <desc id="desc">중심 O인 타원의 장축 반축 a는 3이다. 점 A는 y축 위, 초점 F′와 F는 x축 위에 있다. OA=b, OF=c이며, 삼각형 AFF′의 밑변은 2c, 높이는 b이다.</desc>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="48" y="48" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="23" font-weight="700" fill="#182230">타원의 초점과 삼각형의 넓이</text>
+  <text x="48" y="76" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="14" fill="#536273">기호 관계를 나타낸 개념도</text>
+
+  <g transform="translate(0,0)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ellipse with a=3, b=√5, c=2 as one valid representative geometry -->
+    <ellipse cx="285" cy="295" rx="198" ry="147.492" fill="#f7f9fc" stroke="#60738a" stroke-width="3"/>
+    <!-- coordinate axes -->
+    <line x1="58" y1="295" x2="506" y2="295" stroke="#8895a5" stroke-width="1.8"/>
+    <path d="M506 295 l-10 -5 v10 z" fill="#8895a5" stroke="none"/>
+    <line x1="285" y1="465" x2="285" y2="112" stroke="#8895a5" stroke-width="1.8"/>
+    <path d="M285 112 l-5 10 h10 z" fill="#8895a5" stroke="none"/>
+    <text x="515" y="301" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="16" fill="#536273">x</text>
+    <text x="293" y="111" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="16" fill="#536273">y</text>
+
+    <!-- triangle AFF′ and altitude AO -->
+    <path d="M285 147.508 L153 295 L417 295 Z" fill="#dceafe" fill-opacity="0.58" stroke="#3b6ea8" stroke-width="2.5"/>
+    <line x1="285" y1="147.508" x2="285" y2="295" stroke="#c34d2c" stroke-width="3" stroke-dasharray="8 7"/>
+    <!-- right-angle marker at O -->
+    <path d="M285 278 L302 278 L302 295" fill="none" stroke="#c34d2c" stroke-width="2"/>
+    <!-- major semiaxis marker -->
+    <line x1="285" y1="326" x2="483" y2="326" stroke="#8a5fb5" stroke-width="2"/>
+    <path d="M285 326 l9 -5 v10 z M483 326 l-9 -5 v10 z" fill="#8a5fb5" stroke="none"/>
+    <line x1="285" y1="314" x2="285" y2="338" stroke="#8a5fb5" stroke-width="1.6"/>
+    <line x1="483" y1="314" x2="483" y2="338" stroke="#8a5fb5" stroke-width="1.6"/>
+
+    <!-- points -->
+    <circle cx="285" cy="295" r="4.5" fill="#172b4d"/>
+    <circle cx="153" cy="295" r="4.5" fill="#172b4d"/>
+    <circle cx="417" cy="295" r="4.5" fill="#172b4d"/>
+    <circle cx="285" cy="147.508" r="4.5" fill="#172b4d"/>
+    <text x="270" y="318" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="17" font-weight="700" fill="#172b4d">O</text>
+    <text x="130" y="318" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="17" font-weight="700" fill="#172b4d">F′</text>
+    <text x="420" y="318" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="17" font-weight="700" fill="#172b4d">F</text>
+    <text x="292" y="143" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="17" font-weight="700" fill="#172b4d">A</text>
+    <text x="306" y="238" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="16" fill="#a63f26">b</text>
+    <text x="358" y="286" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="16" fill="#245b92">c</text>
+    <text x="372" y="350" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="16" fill="#70469a">a = 3</text>
+    <text x="240" y="355" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="14" fill="#536273">F′F = 2c</text>
+  </g>
+
+  <rect x="552" y="112" width="354" height="292" rx="16" fill="#f5f8fc" stroke="#d4dde8" stroke-width="1.5"/>
+  <text x="582" y="153" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="18" font-weight="700" fill="#243449">타원의 관계</text>
+  <text x="582" y="197" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="20" fill="#243449">AO = b,  OF = c</text>
+  <text x="582" y="235" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="20" fill="#243449">a² = b² + c² = 9</text>
+  <line x1="582" y1="257" x2="876" y2="257" stroke="#d4dde8" stroke-width="1.5"/>
+  <text x="582" y="293" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="18" font-weight="700" fill="#243449">△AFF′의 밑변과 높이</text>
+  <text x="582" y="329" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="20" fill="#243449">밑변 2c, 높이 b</text>
+  <text x="582" y="367" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="19" fill="#243449">넓이 = ½ · 2c · b = bc</text>
+  <text x="582" y="435" font-family="Malgun Gothic, Batang, Arial, sans-serif" font-size="14" fill="#536273">그림은 기호 관계를 보이는 한 가지 모양이다.</text>
+</svg>
+

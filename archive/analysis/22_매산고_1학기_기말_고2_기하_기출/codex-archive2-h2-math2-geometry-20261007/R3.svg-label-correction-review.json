@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "ARCHIVE_R3_SVG_LABEL_CORRECTION_REVIEW_V1",
+  "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "identity": "/root/r3_11"
+  },
+  "sequence": {
+    "initialSvgCoordinateWritesPrecededGoldenNegativeSampleReview": true,
+    "preflightBeforeInitialWrites": false,
+    "orderErrorPreserved": true,
+    "notBackdated": true,
+    "lateCalibrationStatus": "AFTER_INITIAL_WRITE_ORDER_ERROR",
+    "samplesReviewedAfterInitialWrites": 4,
+    "changedLocusCorrectionReviewOccurredAfterSamples": true
+  },
+  "goldenSamples": [
+    {
+      "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.golden-calibration/25_매산여고_2학기_중간_고1_기출-q08.png",
+      "axis": "student-facing geometric relationship/layout",
+      "observation": "The explanatory step sequence is separated into bounded blocks; use clear label grouping and uncluttered semantic flow.",
+      "sha256": "42f04d82f7f28c411a84efcc2c1808bb936949b68770bfad23ee9eb5a3b01138"
+    },
+    {
+      "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.golden-calibration/25_효천고_2학기_중간_고1_기출-q03.png",
+      "axis": "circle geometry labels",
+      "observation": "The center, radius, point and circle equation are visually bound to their geometric owners without a label crossing the circle outline.",
+      "sha256": "ac7f6a688081ef9886a37a16e5e3a8c7340e469f15655ea96353b45f8da96932"
+    }
+  ],
+  "negativeSamples": [
+    {
+      "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.svg-review/negative-angle-owner-binding.png",
+      "sourcePath": "archive/fixtures/visual-negative-regressions/2026-09-29/02_25_왕운중_2학기_중간_중2_수학_q21_ANGLE_LABEL_OWNER_BINDING_FAIL.svg",
+      "axis": "label-to-angle ownership",
+      "observation": "A numerically present 58° label outside its vertex/ray wedge is a failure; q7 angle label must sit inside the acute wedge.",
+      "sha256": "2d40f1dcfd7f03a56a9a6e485e5413ad02551bf08668e79d3922309a7fd27aa4",
+      "sourceSha256": "3282a28115e28b0b7dc36a2a19998abfc8c4094a13fc03b7618c04f806ff75f3"
+    },
+    {
+      "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R1.golden-calibration/negative-bokseong-q7.png",
+      "sourcePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "axis": "rendered geometry versus labels",
+      "observation": "The curve fails to pass through its labeled points; inspect actual geometry and label attachment.",
+      "sha256": "95343e24af25a4e6564bcab62be0491cdff3d49f94989c6b1422c00f58a1eef3",
+      "sourceSha256": "1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5"
+    }
+  ],
+  "changedLocusReview": {
+    "status": "PASS",
+    "scope": [
+      7,
+      12,
+      13,
+      18
+    ],
+    "geometryAndMathParametersPreserved": true,
+    "localPixelRenderReviewed": true,
+    "officialArchiveEngineCases": "NOT_RUN",
+    "officialCaptures": 0,
+    "rows": [
+      {
+        "qid": 7,
+        "file": "q07-solution.svg",
+        "geometry": "blue slope 1/2 and red slope 3 meet at (220,210); acute angle is 45°.",
+        "after": "slope label is clear of blue line; 45° now lies in the upper-right wedge bounded by the vertex and both rays.",
+        "assetPath": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_기말_고2_기하_기출/assets/images/22_매산고_1학기_기말_고2_기하_기출/q07-solution.svg",
+        "assetSha256": "320a0f0954c7251bf88097e86075ccfe6a81924e980b78850a170b8c2547d370",
+        "localPreviewPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R3.local-svg-previews/q07.png",
+        "localPreviewSha256": "f22d6e35df809887b99642ec09c6757af6d3bfd34409af73444f82dc8dfec88e",
+        "geometryPathsUnchangedByExactTextOnlyReplacement": true
+      },
+      {
+        "qid": 12,
+        "file": "q12-solution.svg",
+        "geometry": "ellipse center (320,250), radii (150,200); A=(320,50), B=(470,250), P=(214,391) lies on the ellipse within its scale; tangent endpoint (108,250) is x=-5√2 and tangent direction is parallel to AB.",
+        "after": "ellipse equation label is outside ellipse border and chord; plotted A/B/P, tangent, intercept and all paths are unchanged.",
+        "assetPath": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_기말_고2_기하_기출/assets/images/22_매산고_1학기_기말_고2_기하_기출/q12-solution.svg",
+        "assetSha256": "7dd11d31d051cf2915611438d2c2e4cdd600533b7de751e85de862a2cc1290ee",
+        "localPreviewPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R3.local-svg-previews/q12.png",
+        "localPreviewSha256": "6012d440f637c4edbcc867a7a737df6fafa1df26b9995a935f728177efb78d38",
+        "geometryPathsUnchangedByExactTextOnlyReplacement": true
+      },
+      {
+        "qid": 13,
+        "file": "q13-solution.svg",
+        "geometry": "section points N=(120,320), C=(120,70), M=(238,153); φ is owned at N between NC and NM; NC and NM lengths remain 2√3 and 2√2.",
+        "after": "NC label clears the vertical side; NM label clears the red segment while remaining beside its midpoint; point/segment paths unchanged.",
+        "assetPath": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_기말_고2_기하_기출/assets/images/22_매산고_1학기_기말_고2_기하_기출/q13-solution.svg",
+        "assetSha256": "57e17faa481885739aaff1b39b2a31d8f8154312fa8343b6539df117085cecd1",
+        "localPreviewPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R3.local-svg-previews/q13.png",
+        "localPreviewSha256": "28a894465fea20d3fb8b0732a69dc920445ec767fbb5f4de6af94105b10a555c",
+        "geometryPathsUnchangedByExactTextOnlyReplacement": true
+      },
+      {
+        "qid": 18,
+        "file": "q18-solution.svg",
+        "geometry": "OP=5 vertical; A OP-direction component=-3; AB=2 is the blue horizontal segment from A to B.",
+        "after": "component text is clear of PA; AB=2 now sits over the blue AB segment; path coordinates and values unchanged.",
+        "assetPath": ".tmp/archive/archive2-h2-math2-geometry-20261007/22_매산고_1학기_기말_고2_기하_기출/assets/images/22_매산고_1학기_기말_고2_기하_기출/q18-solution.svg",
+        "assetSha256": "578ae28681bb024373d55b7e22c68cef2cd212b75c3aef6cc71cdc6b45da4d0a",
+        "localPreviewPath": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R3.local-svg-previews/q18.png",
+        "localPreviewSha256": "7cbb53da1aabfedc8a09aa29277d2a2382329ae3567b8b41058730849f0ae38c",
+        "geometryPathsUnchangedByExactTextOnlyReplacement": true
+      }
+    ]
+  },
+  "earlierGenericValidator": {
+    "path": "archive/analysis/22_매산고_1학기_기말_고2_기하_기출/codex-archive2-h2-math2-geometry-20261007/R3.validator.attempt1.raw.json",
+    "sha256": "4bd69dfdd3ee94ab8efe813d032245da8ddd139b3bf7735a58ff7a790842810e",
+    "disposition": "PASS",
+    "scope": "prior candidate asset/evidence revision; preserved as historical attempt"
+  },
+  "outcome": "PASS_AFTER_LATE_GOLDEN_NEGATIVE_PREFLIGHT_AND_CHANGED_LOCUS_CORRECTION_REVIEW"
+}

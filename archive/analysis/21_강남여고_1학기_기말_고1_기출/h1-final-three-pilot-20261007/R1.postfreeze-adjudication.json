@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "R1_POSTFREEZE_ADJUDICATION_V1",
+  "examUid": "21_강남여고_1학기_기말_고1_기출",
+  "sourceRawSha256": "2b490259a09c5ec927a3294415dc5c3491a5e6387d9063ef0898d1ec64d30c5c",
+  "originalFreezePath": "archive/analysis/21_강남여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.independent-answer-freeze.json",
+  "originalFreezeSha256": "2e85938e955fb2b9044226233c254924873ab327216413db288174c81ee24c78",
+  "correctionReviewAfterCalibration": true,
+  "rows": [
+    {
+      "qid": 1,
+      "previousStoredAnswer": "⑤",
+      "correctedStoredAnswer": "③",
+      "status": "ANSWER_ENCODING_CORRECTION",
+      "reason": "Independent freeze gives count 5; q1 choices are 3,4,5,6,7, so the unique matching choice is ③. Current answer ⑤ pointed to 7. Only the answer marker changed; student fields, solution, decisiveStep and assets are unchanged.",
+      "adjudicatedIndependentAnswer": "5",
+      "beforeArtifactRawSha256": "1e465d8db37db3ff4fb04e48c07e73f5cf936fb82c72465bcfc44e008b9ff42c",
+      "afterArtifactRawSha256": "c517205d6a31ccab6a86fb21f0167c9e537473fc674b37338aab108663e2017f"
+    },
+    {
+      "qid": 24,
+      "previousFrozenAnswer": "-28",
+      "adjudicatedIndependentAnswer": "44",
+      "status": "ENCODING_AND_ARITHMETIC_CORRECTION",
+      "reason": "With slopes -a/3 and -b/2, perpendicularity requires (-a/3)(-b/2)=-1, hence ab=-6; parallelism gives a+b=2. Therefore a^3+b^3=2^3-3(-6)(2)=44. Original freeze and mistaken sign are preserved."
+    },
+    {
+      "qid": 26,
+      "previousFrozenAnswer": null,
+      "adjudicatedIndependentAnswer": "8",
+      "status": "INTERPRETATION_CORRECTION",
+      "reason": "The complete student statement explicitly places the item in complex-number context (i=sqrt(-1)). From z^2=-16, let u=a+b-2, v=a-b. Then uv=0 and u^2-v^2=-16, giving (a,b)=(3,-1) or (-1,3). With the principal complex square root sqrt(-1)=i, only (3,-1) satisfies sqrt(a)/sqrt(b)=-sqrt(a/b). The translated circle is (x-3)^2+(y+1)^2=25; its y-axis chord endpoints are (0,3),(0,-5), length 8."
+    }
+  ],
+  "orderIncident": {
+    "type": "PREFLIGHT_ORDER_LATE_DISCOVERY",
+    "preserveOriginalAttempt": true,
+    "preflightEvidencePath": "archive/analysis/21_강남여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.golden-negative-preflight.json",
+    "correctionReviewScope": "Only q24 answer sign adjudication, q26 radical-context adjudication, and q19 Meta locus; no prior answer freeze replaced."
+  }
+}

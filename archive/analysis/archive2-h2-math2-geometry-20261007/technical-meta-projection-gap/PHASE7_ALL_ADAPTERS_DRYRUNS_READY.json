@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_PHASE7_ALL_ADAPTERS_V1",
+  "status": "PROOF_ADAPTERS_VALID_AND_DEFAULT_DRYRUNS_PASS_NOT_APPLIED",
+  "createdAt": "2026-10-08T00:13:18.0340112+09:00",
+  "head": "e80c0f58b54f6c1e38a33f01ec4d78af4d4fc483",
+  "authority": {
+    "producerAuthorityPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\ROOT.target-registration-producer-authority.json",
+    "producerAuthoritySha256": "aefdbe73c99cfbec51df82d4a8f2f57aa2cd08f3419a14aeeac8776f72905aff",
+    "lockedRosterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\roster.json",
+    "lockedRosterSha256": "4836455360e09d7f666fa9c25da73ac566a7ebdd5cafe604cd59d5351748b82a",
+    "currentR1PathManifestPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\ROOT.current-registration-r1-path-manifest.json",
+    "currentR1PathManifestSha256": "c9ac8d0e5d64c5e7d6c8e2517bedb38e2a213d3e4856254a27aa6e5e8282d51e",
+    "manifestStatus": "ACTUAL_VALIDATED_PROOFS_REFERENCED_NO_SEMANTIC_PROMOTION"
+  },
+  "implementationFiles": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.mjs",
+      "rawSha256": "d641e1b2c07642f3d78d03c99824a9101099fb7670d3ee3e77b88c457b5d4a96",
+      "gitBlobSha1": "b6409c19ad4b2537487a5670f7122f880345adbd"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.test.mjs",
+      "rawSha256": "599e3fa5af421986f273f04313b78787e688c04633e807fa61f8d4864b250504",
+      "gitBlobSha1": "25c660161081642b17c8631bbe1d2ab733b1f783"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\CODEX_MAINTENANCE.md",
+      "rawSha256": "8d6bf71a646e5025ba5d4114d084c3a7eef308ef0032cb52d693d2f142f4c14c",
+      "gitBlobSha1": "49e29c2363d6cd9691b0057891a5f683046b3b46"
+    }
+  ],
+  "validation": {
+    "syntaxCheck": "PASS",
+    "targetedTests": {
+      "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+      "exitCode": 0,
+      "passed": 10,
+      "failed": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\PHASE7_TESTS.stdout.txt",
+      "stdoutSha256": "f339eac48c25b201560e5f7ce51eaa631e8f61e58724e7ec1604caa23ae11691",
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\PHASE7_TESTS.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "normalR1ProofAdapterSweep": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\PHASE7_NORMAL_R1_ADAPTER_AUDIT.tsv",
+      "exitCode": 0,
+      "stdoutSha256": "db431a6505d6248bd688c44594fea494eebdb7b9ad104f672d13404639a9eccd",
+      "passedIndices": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "reuseIndex3": "VALIDATED_SEPARATELY_BY_EXPLICIT_REUSE_CHAIN",
+      "rows": [
+        "0\tPASS\t21\tc032ebe9ce52b40c74745cd7e9b31577cbd32706204ac95d5b69eccb4af7a67c\t30b6951e696cd6b2cbdfe3b588d000175fe3371536a5cc602155f8a2545ad4d8",
+        "1\tPASS\t23\t0c5b21a4430ba45413a193f1b0a2aa16f3bef69823b7a63d26a801fed3fe6489\t2951173d301d8510a0a7e34bf324f527d22f29cccc5041b12c25064698389afb",
+        "2\tPASS\t22\t195c5aced8b360e75a8807f49a86bf633faff51593043cdb24779f9454c7a254\tfce292092e190865c385ca5ef6134fdc3f3820d5271c49e9d7dcb3356814776f",
+        "3\tREUSE_CHAIN_VALIDATED_BY_INDEX3_DRYRUN",
+        "4\tPASS\t23\t4bd603062a14fd27c033aee84b2b27e64a4e9e51425a2bf304288d0d1e243db0\t8c3479c6f1f6d26f4ba274973b6b2091aaba3c1ddff2fbb308e780f849aaf3a9",
+        "5\tPASS\t23\t271935ae9d6eb2ce37dbac9cb1cf77544c760a34cd3fdf7796c3762b41902336\tc247234dbee324d75030ac5c27c43ba6e1c98116b76d9db88cd0acc1962a6cd9",
+        "6\tPASS\t23\te37673fb5ad6bdb28e8c09a55f2551d07e44e0a0928d4ca8b596116d59321880\t300721971321c6dd90277f0e940f42b81c5ca0b5388a190815fda9eac14ba9aa",
+        "7\tPASS\t23\tcbdf5f69cfd15c1bc66d1aeef7c0f065eed3fd692ef3afeab6fee2a614286155\tca88dbc9421a6c4fff270fdfae690019d0668cb5dc8e0e294032e5613c8942f9",
+        "8\tPASS\t20\t6ad308cb2bbe651ed300b8ccab7a8b781e003233be4b6851ca73b4439a301dd1\t3dfc37115c0a9ae73fda6c263966c0cbec481877ec2355e1c307d08500309613",
+        "9\tPASS\t22\t12211cebcbc0c8938941c974f3e4c8c3a35a714d10160e7a7bed0daf1026f4f8\tdcf1a0af6eacd00912bc263ac9a821a16fa0358f1dc528ca1e83a12b32a5682d",
+        "10\tPASS\t20\t6826ab748955fca67f1cfbba102db49d8cdd6b4d52b6f598af20ef7669e4f859\t8bd7f8d4d21af194087f9c67fbf8e4efddf28aa536725b423498a70dd8f293c3",
+        "11\tPASS\t20\t85efcf85127ea30d77a653265f373313b371fbaaae5c21f1eb1f963b1c48d82e\tf8ba23a3d2294fa1c8a40c8617fb1e7d35b0363277776b03120c5b0ed42776e6"
+      ]
+    }
+  },
+  "actualDefaultDryRuns": [
+    {
+      "rosterIndex": 0,
+      "examUid": "19_금당고_2학기_기말_고2_수학II",
+      "questionCount": 21,
+      "packagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\registration-package-current-r1.json",
+      "packageSha256": "6206ab24516146894b9947f2166631094dddac946780c877de144d0cd595e7f3",
+      "producerReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index0-e80-current-r1-attempt1\\target-registration-producer.receipt.json",
+      "producerReceiptSha256": "a28617d3833289c5a70ac764dd964501fdd0225b707bd4d5a41bf05fe0df7d4f",
+      "dryRunReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index0-e80-current-r1-attempt1\\target-registration.receipt.json",
+      "dryRunReceiptSha256": "9db3c2042e0712fd6b3dc208b26b8c6286e24df736136c71609c67539a2b2949",
+      "status": "PLAN_VALIDATED_NOT_APPLIED",
+      "targetCounts": {
+        "identity": 21,
+        "metadata": 21,
+        "index": 21,
+        "catalog": 21,
+        "db": 1
+      },
+      "nonTargetDeepComparisonPreserved": true,
+      "producerNoMainRegistryWrites": true
+    },
+    {
+      "rosterIndex": 1,
+      "examUid": "19_복성고_2학기_기말_고2_수학II",
+      "questionCount": 23,
+      "packagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_복성고_2학기_기말_고2_수학II\\registration-package-attempt1.json",
+      "packageSha256": "4eb42665b69e3db38563450014713670ffd76c74544db419f72ec15c7962b797",
+      "producerReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index1-e80-r1-normalization-attempt1\\target-registration-producer.receipt.json",
+      "producerReceiptSha256": "a00c3d55daec532b4fdfc1c3387178e0a3723fd52ec646b7c56671d4b811c7a0",
+      "dryRunReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index1-e80-r1-normalization-attempt1\\target-registration.receipt.json",
+      "dryRunReceiptSha256": "2f55d42142545d5fdd0ec95fcf9b046ed010ff7ffa9610681956251ddddc73dc",
+      "status": "PLAN_VALIDATED_NOT_APPLIED",
+      "targetCounts": {
+        "identity": 23,
+        "metadata": 23,
+        "index": 23,
+        "catalog": 23,
+        "db": 1
+      },
+      "nonTargetDeepComparisonPreserved": true,
+      "producerNoMainRegistryWrites": true
+    },
+    {
+      "rosterIndex": 3,
+      "examUid": "20_매산고_2학기_기말_고2_수학II",
+      "questionCount": 20,
+      "packagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산고_2학기_기말_고2_수학II\\registration-package-final.json",
+      "packageSha256": "345d702072fcc1f70e37b3cf5fba373ccd42c634853edbc6327f711f8d72755f",
+      "producerReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index3-r1-reuse-attempt4\\target-registration-producer.receipt.json",
+      "producerReceiptSha256": "24c74f5af0f761ae3cc5319f310908cb310abd3104c7e4b8f6de86f64cebf108",
+      "dryRunReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index3-r1-reuse-attempt4\\target-registration.receipt.json",
+      "dryRunReceiptSha256": "775896ea90db3b4fd3a608c77835e2d3ad6a2cd41e352c4b59ae22412c2b3f55",
+      "status": "PLAN_VALIDATED_NOT_APPLIED",
+      "targetCounts": {
+        "identity": 20,
+        "metadata": 20,
+        "index": 20,
+        "catalog": 20,
+        "db": 1
+      },
+      "nonTargetDeepComparisonPreserved": true,
+      "producerNoMainRegistryWrites": true
+    }
+  ],
+  "reuseChain": {
+    "rosterIndex": 3,
+    "historicalR1RawEvidenceSha256": "0c647d5e22db48ca10435a9410c8746cbc04e2e897cb1774ece1bdf6f7dacb30",
+    "historicalR1CleanLfEvidenceSha256": "bd123435a4f05bcef2ed0937e000033817b60524d16e286f89afa937a4a22a2d",
+    "historicalR1ArtifactGitBlobSha1": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+    "currentArtifactRawSha256": "7f02f2c70c34b28a07b01799726f42564924806dd4f54ec55f919abd1388ec21",
+    "currentR3ValidationSha256": "ff81abbdc9562db89efbf4f1366479afcf5b9fc483832943df96cfe807eb927b",
+    "mainDoneIntakeSha256": "fc30ddb5041bc334cd8d0afa885118a1e329ca509b2a6c16f08c1e1721eec83e",
+    "currentRenderDisposition": "PASS",
+    "metaSemanticsUnchangedConfirmed": true,
+    "currentAllQidMetaDispositionCount": 20,
+    "currentArtifactGitBlobSha1": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+    "historicalVsCurrentShaDistinct": true
+  },
+  "registryNoApply": {
+    "mainRootNineBaselineFilesUnchanged": true,
+    "currentMatchesAllDryRunBeforeHashes": true,
+    "dryRunProposedAfterHashesApplied": 0,
+    "baselineProof": [
+      {
+        "rosterIndex": 0,
+        "path": "archive/db.js",
+        "mainCurrentSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalBeforeSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalAfterSha256": "e613055a6bc4b6cfdd1a57f22948710d7339f70e74582cce181a6f56d3cb7313",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/data/question_identity_map.json",
+        "mainCurrentSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalBeforeSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalAfterSha256": "6698b01e3f0832df10b1195ccdd7aec937aeda4656444d2314aaa7ab8134b4f9",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/data/question_metadata.json",
+        "mainCurrentSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalBeforeSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalAfterSha256": "a7a55d9ab351fd84d14c215402984d9498dfa323a571aebfcc6e67e9fc038f09",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/question-identity.js",
+        "mainCurrentSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalBeforeSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalAfterSha256": "02c081789ff57cddfa425621090405747152bddc63a7828916ac9787c3a79f52",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/question-index.js",
+        "mainCurrentSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalBeforeSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalAfterSha256": "5c76fef3e36946009d7274e8a81d5fd6f1bb9a3f8f9fbea4185b1d0900cbb53c",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/question-index-report.md",
+        "mainCurrentSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalBeforeSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalAfterSha256": "da56f8e0560806987b5eae5aad25f8dc1a85dfaa3f8eb44d5c21fc635a54f828",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/question-index-audit.md",
+        "mainCurrentSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalBeforeSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalAfterSha256": "127b65cabf174347349b12c3a8a6d5b5110dfc4976d3f4e6619cf35e77006010",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/data/archive2-catalog.json",
+        "mainCurrentSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalBeforeSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalAfterSha256": "62a821ae4479346a3f019278cb7d1a440798232abfc8b44dab259f73a1cfac47",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 0,
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "mainCurrentSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalBeforeSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalAfterSha256": "3b6efbd0cd88619541985fd4097e72c93672eb2308743acfd4e12b529b3f23f2",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/db.js",
+        "mainCurrentSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalBeforeSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalAfterSha256": "75cbff076fbdd318926d96cd42246fce190a86ab3c58415aadb1c63da256eaa2",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/data/question_identity_map.json",
+        "mainCurrentSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalBeforeSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalAfterSha256": "8faed42c9e80e0242768045618505c5a956db9b45498ab059c8885c559ff00ef",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/data/question_metadata.json",
+        "mainCurrentSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalBeforeSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalAfterSha256": "097f4ec7bd198ce0242538a2e036c42821a380bde63481ac3ada85d2074ac87f",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/question-identity.js",
+        "mainCurrentSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalBeforeSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalAfterSha256": "5f34575463070c93d72a9f3c4c6e99f8f2ef270094a553ca752f410bb8bcad27",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/question-index.js",
+        "mainCurrentSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalBeforeSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalAfterSha256": "9394626c498e38454751024ae5a1ac7c7ff817d609060c3051a6e5e66b5c8462",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/question-index-report.md",
+        "mainCurrentSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalBeforeSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalAfterSha256": "3544308771a3fc6231754d87bdca5136166ad93658f11bea35465c4dcbba41d4",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/question-index-audit.md",
+        "mainCurrentSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalBeforeSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalAfterSha256": "81f091ac66f315296659ad9205903ed43d82407449942671843bc753393e65cb",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/data/archive2-catalog.json",
+        "mainCurrentSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalBeforeSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalAfterSha256": "6d530abfc7b28b7c051568749f7af45a10309f4271cf16596fed8418b70eb150",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 1,
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "mainCurrentSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalBeforeSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalAfterSha256": "ef775a450205d080789d72ca011a59324fb368379d285a69d9c2dbb76d308e2c",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/db.js",
+        "mainCurrentSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalBeforeSha256": "5dc9273be302d85dd3f1871baa31831789d3ccb9e1b137c0b29c0a437c2b1fd7",
+        "proposalAfterSha256": "cf616d69f931dd8153ab69cacd45e7f252c2584cf068dd10ff1aeccc487f7c83",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/data/question_identity_map.json",
+        "mainCurrentSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalBeforeSha256": "5b6386b58328305f49e90c56862fd88e75d358892934df4a00a3fdd6a65bb7e9",
+        "proposalAfterSha256": "98356e265d419c91aa4d240b492752335de5c3e7f24f5f6bc80d30176d031c3f",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/data/question_metadata.json",
+        "mainCurrentSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalBeforeSha256": "7526f551c003a1a8e804a19f7832ab909484cd7b44ee2a938e125be617cded35",
+        "proposalAfterSha256": "c7eeb6781f9d842ef33308dd8925374f30056e182c7cb970a49a5348a17f22df",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/question-identity.js",
+        "mainCurrentSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalBeforeSha256": "68d4029d6f71c7dbf587c9c6050e32fdffca96c33d180d7fb71cd0e52f915d9d",
+        "proposalAfterSha256": "da5485869ffe6c17ce9d7f73611936820d5a2ddc660e63b4e1ab0795788ae246",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/question-index.js",
+        "mainCurrentSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalBeforeSha256": "ccf0f801ffc84a91ab9ff004acd041b10522009577e0a9472e76139877cd30a2",
+        "proposalAfterSha256": "9fec3c1be434a1cb48a262f471aadca3d8a2eedad3302e1dedf2a3e33f3803e7",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/question-index-report.md",
+        "mainCurrentSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalBeforeSha256": "28670b32b134545b4fa9e7699b141153d97c436e22bd4435720413dcc90a9e76",
+        "proposalAfterSha256": "3952f37458d95a1129cecbf3e673a7e6e7b61415daa93dfdae03090d720cf618",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/question-index-audit.md",
+        "mainCurrentSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalBeforeSha256": "11979cc7eb413bf7507b2149022b0b1d62786087c070e2ed6c92d544d6b899c1",
+        "proposalAfterSha256": "ca282fdc2471ca015a137f4f16115ab4fe6aa6afc9c6fc95477f3d30405e7c93",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/data/archive2-catalog.json",
+        "mainCurrentSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalBeforeSha256": "0c67a47cfb20dbbfe69c2acd3a0c658859e7f844b7a3e10d3d62e48f5e35876e",
+        "proposalAfterSha256": "74adec410450a0eaa9d575764e9b31975507675af3943da3c9904898d8634b14",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      },
+      {
+        "rosterIndex": 3,
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "mainCurrentSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalBeforeSha256": "0d1fb24a53831deb98bf1b9ea6c6cf5e3ca345d4c3a64ea308816675a1a4c798",
+        "proposalAfterSha256": "e24c49872e10e389022c9b71eacd11f696f025cbc451831890e0516f9a2ac42a",
+        "mainMatchesBefore": true,
+        "proposalApplied": false
+      }
+    ]
+  },
+  "sequencing": "The three package receipts prove the normal and reuse producers end-to-end against the current nine-file baseline. ROOT must refresh each subsequent candidate baseline and package after the prior sequential apply; do not apply stale later packages against an earlier snapshot.",
+  "commands": {
+    "normal": "node archive/tools/prepare-target-registration-candidate.mjs --root <ABS_ROOT> --authority <ROOT_AUTHORITY> --roster <LOCKED_ROSTER> --roster-index <INDEX> --assignment <TARGET_ASSIGNMENT> --r1-evidence <EXACT_R1_EVIDENCE> --r1-validation <ACTUAL_R1_V2_VALIDATION> --candidate-root <FRESH_BASELINE_ROOT> --index-root <UNIQUE_TEMP_INDEX_ROOT> --evidence-root <TARGET_EVIDENCE_ROOT> --package-output <TEMP_PACKAGE>",
+    "reuse": "node archive/tools/prepare-target-registration-candidate.mjs --root <ABS_ROOT> --authority <ROOT_AUTHORITY> --roster <LOCKED_ROSTER> --roster-index 3 --assignment <REUSE_ASSIGNMENT> --r1-reuse-manifest archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/ROOT.current-registration-r1-path-manifest.json --candidate-root <FRESH_BASELINE_ROOT> --index-root <UNIQUE_TEMP_INDEX_ROOT> --evidence-root <TARGET_EVIDENCE_ROOT> --package-output <TEMP_PACKAGE>; default register-target-exam is run internally without --apply"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_ENCODING_REPAIR_V1",
+  "runId": "h1-final-three-pilot-20261007",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "qid": 4,
+  "repairType": "EXACT_MATH_DELIMITER_ENCODING",
+  "reason": "Official Archive Engine raised EQUAL_SLOT_MATH_ERROR. MathJax saw bare aligned TeX and reported Missing \\\\end{aligned}, missing \\\\dfrac arguments, and missing \\\\left/\\\\right delimiters.",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2022_매여고1_1기말.pdf",
+    "sha256": "a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",
+    "page": 1
+  },
+  "before": {
+    "artifactRawSha256": "9d6abce101a9e73602224abad9939617679fd35ceaf20b712f8e73420189d48c",
+    "artifactSha": "1d522aea3c4ee0ac51015f5a307cfba2a3ce7336",
+    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 보기에서 옳은 것만을 있는 대로 고르시오. (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [3.9점]\n&lt;보기&gt;\n\\begin{aligned}\\text{ㄱ. }&\\omega^{-3}=1\\\\\\text{ㄴ. }&\\dfrac1\\omega+\\left(\\dfrac1\\omega\\right)^2=\\dfrac1\\omega+\\left(\\dfrac1{\\overline{\\omega}}\\right)^2\\\\\\text{ㄷ. }&\\omega+\\dfrac1\\omega=1\\\\\\text{ㄹ. }&\\omega^2=\\overline{\\omega}\\\\\\text{ㅁ. }&(-\\omega-1)^n=\\left(\\dfrac{\\overline{\\omega}}{\\omega+\\overline{\\omega}}\\right)^n\\text{을 만족시키는 200 이하의 자연수 }n\\text{의 개수는 100이다.}\\end{aligned}",
+    "contentSha256": "ed561919d718ec48c4765dccbe8ecf529a6928b98b94c1efc8e9261616b41b4e",
+    "validatorRawBufferBlobSha1": "1d522aea3c4ee0ac51015f5a307cfba2a3ce7336",
+    "gitCleanFilterBlobSha1": "1d522aea3c4ee0ac51015f5a307cfba2a3ce7336"
+  },
+  "after": {
+    "artifactRawSha256": "690231f3158fc88c93b676a3eda91f86742587cba73f10109cb86ed7bbb7e0d4",
+    "artifactSha": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd",
+    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, 보기에서 옳은 것만을 있는 대로 고르시오. (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수이다.) [3.9점]\n&lt;보기&gt;\n$\\begin{aligned}\\text{ㄱ. }&\\omega^{-3}=1\\\\\\text{ㄴ. }&\\dfrac1\\omega+\\left(\\dfrac1\\omega\\right)^2=\\dfrac1\\omega+\\left(\\dfrac1{\\overline{\\omega}}\\right)^2\\\\\\text{ㄷ. }&\\omega+\\dfrac1\\omega=1\\\\\\text{ㄹ. }&\\omega^2=\\overline{\\omega}\\\\\\text{ㅁ. }&(-\\omega-1)^n=\\left(\\dfrac{\\overline{\\omega}}{\\omega+\\overline{\\omega}}\\right)^n\\text{을 만족시키는 200 이하의 자연수 }n\\text{의 개수는 100이다.}\\end{aligned}$",
+    "contentSha256": "4d83efa936ed8178d0f915442b0e3bbea3ee492929bfdd04c9bfe4af2d31ef47",
+    "validatorRawBufferBlobSha1": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd",
+    "gitCleanFilterBlobSha1": "b1bf059a78acbaecc4b036a8e72fc1b9fafc72dd"
+  },
+  "change": {
+    "field": "questionBank[id=4].content",
+    "locus": "&lt;보기&gt; aligned block",
+    "beforePrefix": "\\begin{aligned}",
+    "afterPrefix": "$\\begin{aligned}",
+    "beforeSuffix": "\\end{aligned}",
+    "afterSuffix": "\\end{aligned}$",
+    "sourceWordsAndMathTokensPreserved": true,
+    "choicesUnchanged": true,
+    "answerUnchanged": true,
+    "solutionUnchanged": true,
+    "semanticStudentPayloadChanged": false,
+    "studentFacingEncodingChanged": true
+  },
+  "proof": {
+    "afterRemovingOnlyAddedMathDelimitersContentEqualsBefore": true,
+    "engineErrorLocus": "q4; actual source ref ordinal 4",
+    "pdfSourceQ4Observed": "Five labeled statements, ㄱ through ㅁ, are present in the boxed 보기. The fifth statement naturally wraps after 자연수 and continues with n의 개수는 100이다.",
+    "claimCorrectionHistory": [
+      {
+        "field": "proof.pdfSourceQ4Observed",
+        "previousValue": "four aligned statements inside 보기 box",
+        "correctedValue": "Five labeled statements, ㄱ through ㅁ, are present in the boxed 보기. The fifth statement naturally wraps after 자연수 and continues with n의 개수는 100이다.",
+        "reason": "Direct visual recheck of source PDF page 1 shows five labels ㄱ, ㄴ, ㄷ, ㄹ, ㅁ; the prior evidence summary undercounted the displayed rows.",
+        "sourcePdfSha256": "a2f4bf1d1d6692b00553907b44d440fd5a72321e16edd6c33e5829a6d5b35db9",
+        "sourcePage": 1,
+        "reviewerIdentity": {
+          "role": "archive_r3",
+          "reviewerId": "/root/r3_maesan2022"
+        }
+      }
+    ]
+  },
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_maesan2022"
+  }
+}

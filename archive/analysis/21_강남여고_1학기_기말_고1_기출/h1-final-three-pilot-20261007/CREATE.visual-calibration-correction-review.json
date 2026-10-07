@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_VISUAL_CALIBRATION_CORRECTION_REVIEW_V1",
+  "examUid": "21_강남여고_1학기_기말_고1_기출",
+  "status": "CORRECTION_REVIEW_COMPLETE",
+  "solutionTextSamplesReadBeforeAuthoring": true,
+  "actualGoldenVisualSampleRefs": [
+    {
+      "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "sha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+      "observation": "Centers after the stated translation/reflection and final circle equation match."
+    },
+    {
+      "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+      "sha256": "7ee9d274953f32e8c74510e2c1f305b5da858289ccd9cbc834751710b63bac88",
+      "observation": "Tangent at P=(3,2), equation 3x+2y=13 and perpendicular slope are consistent."
+    },
+    {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "sha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "observation": "The two line directions are perpendicular and the labels support k=6; ImageMagick fallback font affected Korean glyphs only."
+    },
+    {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+      "sha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+      "observation": "Circle center (−1,3) and radius 2 agree with the standard equation."
+    }
+  ],
+  "actualNegativeVisualSample": {
+    "path": "archive/fixtures/visual-negative-regressions/2026-09-29/03_25_왕운중_2학기_중간_중2_수학_q24_COORDINATE_SEMANTIC_FAIL.svg",
+    "sha256": "f61417f186b285939680ae4df403ed6732d0fce7465625157568bdb1cd3e4026",
+    "render": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\negative-coordinate-fail.png",
+    "finding": "The displayed marks and geometry do not support the asserted coordinate relation; check actual plotted positions, not the caption."
+  },
+  "finalCandidateReview": {
+    "staticSvgCount": 11,
+    "staticSvgPngDirectory": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\svg-static-renders",
+    "montage": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h1-final-three-pilot-20261007\\AP------\\archive\\analysis\\21_강남여고_1학기_기말_고1_기출\\h1-final-three-pilot-20261007\\svg-static-renders\\solution-svg-montage.png",
+    "changedLoci": [
+      {
+        "qid": 27,
+        "field": "solutionImage",
+        "reason": "Added the n=4 and n=16 extreme area levels; both parallel lines cross the circle as required."
+      }
+    ],
+    "newOpenVisualIssues": [],
+    "actualExamEngineRender": "NOT_RUN_CODEX_HANDOFF",
+    "actualExamRenderOwner": "R3",
+    "montageSha256": "4b5788281e894d928eada68ec8623687b074d03cd1c5613458fd28320ea1b5bb",
+    "changedLociAfterVisualReview": [
+      {
+        "qid": 27,
+        "field": "solutionImage",
+        "reason": "After visual sample read, labeled the n=4 and n=16 extreme area levels; both parallel lines were checked to cross the circle and remain parallel to AB."
+      }
+    ]
+  },
+  "sampleReadBeforeSolutionTextAuthoring": true,
+  "visualSamplePixelInspectionBeforeInitialSvgDraft": false,
+  "visualSamplePixelInspectionAfterInitialSvgDraft": true,
+  "lateVisualSampleHandling": "Preserved sequence; after actual Golden and Negative visual pixels were read, completed same-stage targeted correction review and statically re-rendered all 11 solution SVGs.",
+  "actualExamEngineRender": "NOT_RUN_CODEX_HANDOFF"
+}

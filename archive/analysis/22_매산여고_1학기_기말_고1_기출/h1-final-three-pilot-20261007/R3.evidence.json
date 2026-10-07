@@ -1,0 +1,499 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "22_매산여고_1학기_기말_고1_기출",
+  "runId": "h1-final-three-pilot-20261007",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+  "artifactRawSha256": "ce2da2d64e740c9e8b39b45980834dbe925e64603710c4edb65d1db5a4e0add2",
+  "validatorRawBufferBlobSha1": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+  "gitCleanFilterBlobSha1": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+  "finalDisposition": "R3_RELEASE_READY",
+  "evidenceStatus": "R3_RELEASE_READY",
+  "itemHoldCount": 0,
+  "itemHoldQids": [],
+  "denominator": 22,
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      4,
+      6,
+      7,
+      11,
+      13,
+      16,
+      17
+    ],
+    "directDependencyQids": [
+      20
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "/root/r3_maesan2022"
+  },
+  "rows": [
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "The source-backed delimiters and line breaks repair the original q4 MathJax error and q4 horizontal overflow; PDF words/math tokens, choices, answer and solution are unchanged. All six actual cases show q4 without clipping.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "R1/R2 final closure clears the stale q6 item status; angle-bisector answer and solution render fully.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Current choice ③ and solution range render completely with the final choice label.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Two absolute-value branches and the eight integer k values remain readable with no clipping.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Choice ③ and final equivalent quadratic inequality are visible; no flow or clipping issue.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Minimum-radius case comparison, post-freeze adjudication and final choice fit within the solution card.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Endpoint maximum and four segment minima, including AB projection, are visible in the solution flow.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "disposition": "TARGETED_RENDER_REVIEW_PASS",
+      "reason": "Answer range, interval proof and direct solution-SVG dependency render completely.",
+      "r1EvidenceRef": "R1.evidence.json",
+      "r2EvidenceRef": "R2.evidence.json",
+      "captureReviewRef": "R3.capture-review.json"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac",
+    "rows": [
+      {
+        "qid": 1,
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "metaDebtFields": [],
+        "debtStatus": "NO_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 2,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 3,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 4,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 5,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 6,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 7,
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "metaDebtFields": [],
+        "debtStatus": "NO_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 8,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 9,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 10,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 11,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 12,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 13,
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "metaDebtFields": [],
+        "debtStatus": "NO_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 14,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 15,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 16,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 17,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 18,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 19,
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "metaDebtFields": [],
+        "debtStatus": "NO_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 20,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 21,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      },
+      {
+        "qid": 22,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current candidate fields are explicitly null and are recorded as existing projection debt for this exact artifact SHA. R1 preserves the current fields and performs no semantic remapping or automatic-eligibility claim.",
+        "debtStatus": "EXISTING_NULL_PROJECTION_DEBT"
+      }
+    ]
+  },
+  "upstreamBindings": {
+    "R1": {
+      "evidence": {
+        "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.evidence.json",
+        "sha256": "3009ffa2495e6fc68c2da9b708d0b7fca77895e785776d8c50ef35b97027f4e8"
+      },
+      "validator": {
+        "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R1.validator.q4-formatting-final.raw.json",
+        "sha256": "af882d3f2e68a24d13cc609fc20725a872d971c67f6bdad98b4b5a3684e827df"
+      },
+      "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac"
+    },
+    "R2": {
+      "evidence": {
+        "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R2.evidence.json",
+        "sha256": "a67456438304342701b9511dfb0f25537a60389de44cedcf0d8455631d5538d5"
+      },
+      "validator": {
+        "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R2.validator.raw.json",
+        "sha256": "f6b70b5efe3f4e1b5cfb38abac5356e9b765866d62c2c465f741ce64428eddf3"
+      },
+      "artifactSha": "6a2deee9d7a6009448d01d30530b8a34461b99ac"
+    }
+  },
+  "render": {
+    "status": "ACTUAL_CAPTURE_REVIEW_PASS",
+    "captureReport": {
+      "path": ".tmp/archive/h1-final-three-pilot-20261007/22_매산여고_1학기_기말_고1_기출/capture-04/machine-capture.json",
+      "sha256": "f64dbe11fa7a421ab57afbb55b09a66146d5af6c625f70660f2eace1ada30f56"
+    },
+    "captureReview": {
+      "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R3.capture-review.json",
+      "sha256": "595134e7cd918aad3f579258d4bb14530680adbbf70610aab0bd28aedb6a1f10"
+    },
+    "engine": {
+      "path": "archive/engine.html",
+      "sha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83"
+    },
+    "collector": "archive/tools/capture-codex-exam.mjs",
+    "loadedJs": {
+      "path": ".tmp/archive/h1-final-three-pilot-20261007/22_매산여고_1학기_기말_고1_기출/22_매산여고_1학기_기말_고1_기출.js",
+      "sha256": "ce2da2d64e740c9e8b39b45980834dbe925e64603710c4edb65d1db5a4e0add2"
+    },
+    "caseIds": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "allQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "reviewedQidsPerCase": 22,
+    "allMathJaxErrors": true,
+    "allAssetsDecoded": true,
+    "allCasesMechanicalPass": true,
+    "failedAttemptLedger": {
+      "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R3.render-attempt-ledger.json",
+      "sha256": "bd82ea7faa58edc78f097fc26630b08ddba114812472e51afaebe26969ebd57d"
+    }
+  },
+  "repairs": [
+    {
+      "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R3.q4-math-encoding-repair.json",
+      "sha256": "a25af3e1900b5eeb470f26fde088b15ab8eb922102837aa2d1ac69a87c99c730"
+    },
+    {
+      "path": "archive/analysis/22_매산여고_1학기_기말_고1_기출/h1-final-three-pilot-20261007/R3.q4-math-layout-repair.json",
+      "sha256": "d81f04c5f83ae527b520d4a2ce6658d31b53ee167b7dc5a18dbfb6f3acdc982b"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q03-solution.svg",
+      "sha256": "85009ea01e499d30808a0b7bbe9c614e390f5908b413432a1039e3dd196eaacb"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q06-solution.svg",
+      "sha256": "fce853ecc0b6c3ad5cb3aead996766f2d4ab030150a64d8aa0f25bb4759adc59"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q08.png",
+      "sha256": "b43107955c760f1550d2f020f2306b93e2d66b89c849235f2260db804a428ee7"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q09-solution.svg",
+      "sha256": "d690f552025143cd0469c5164e64dba72d3fac1ba3816786fe624d791061ffd4"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q11-solution.svg",
+      "sha256": "8cfeb895f71140308c1ca3af231ec9a2982ffbe47caff52ff2edba8b9cc1c571"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q12-solution.svg",
+      "sha256": "7efe3f0aaa67344d2d450cd2c4119529c9cbfb190f56a5e39b13709d7108d532"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q14-solution.svg",
+      "sha256": "0a737902c934c18707f483549f5d69e58c1bf895db60a666cecc384d25e964a4"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q15-solution.svg",
+      "sha256": "4878b6e6ea3d542c707a059a54948a8400b04736f417c04457eff85b09f1d3f7"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q16-solution.svg",
+      "sha256": "61529dcaf9e526d34639e573d499271441ffff4164df94906c9f2692022fbc6f"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q17-solution.svg",
+      "sha256": "9d5736da66e199090d568b2582268b3e0d1c79dc360a47cef3c9953af89f9386"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q18-solution.svg",
+      "sha256": "99d7b4dd4567da57c52b3992e2ec6130914c1d0a36ae45645cf4f90d18669ebc"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q19-solution.svg",
+      "sha256": "d7bd1bb1c74a830ef22c3b2959c811437a4be315844fc9e67f87bd830ee329c9"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q20-solution.svg",
+      "sha256": "c228530825b02b06ad92626e889ab76c6ce70b7fedabe31bbf77145a67772984"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q21-solution.svg",
+      "sha256": "6f4eca0fdee87688ade3e79380a59f04f27b05bb00ce4f236e81548dceb5aafa"
+    },
+    {
+      "path": "assets/images/22_매산여고_1학기_기말_고1_기출/q22-solution.svg",
+      "sha256": "d966710e2cfa088463ae76cff741ababbaddcc02835bd91bb3bdcd0146f45a8f"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_ORDER_FAILED_ATTEMPT_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "22_매산고_1학기_중간_고2_기하와벡터_기출",
+  "stage": "R1",
+  "status": "FAILED_ORDER",
+  "failure": "Target answer/solution/Meta fields were compared before Golden/Negative preflight, and q6.solution was prematurely mutated before preflight. Preserve this failed attempt; the later actual preflight PASS authorizes only a q6 changed-locus correction review.",
+  "knownTargetScopeBeforePreflight": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "noMutationBeforePreflight": false,
+  "nextAllowedWork": "Fresh required Golden/Negative preflight, then limited correction review on q6; q13 source-body HOLD remains ROOT-directed because student-body edit would invalidate q13 freeze.",
+  "prematureMutation": {
+    "qid": 6,
+    "field": "solution",
+    "oldSolutionSha256": "33134d08b4f72572b9d0ca232d54df90951b5f864f884aa0e9c7e0d3091e3d69",
+    "firstPrematureNewSolutionSha256": "aa0cfd40d5fa9ad82db6c5f7325240d0fd202bb375ec65552e6c86e1349d7340",
+    "receipt": "archive/analysis/22_매산고_1학기_중간_고2_기하와벡터_기출/codex-archive2-h2-math2-geometry-20261007/R1.q06-solution-repair.receipt.json"
+  },
+  "allowedCorrectionReviewAfterFreshPreflight": {
+    "nextReview": "Check the source-figure branch and explicitly show inequality reversal when dividing by -u<0.",
+    "scope": "q6.solution only"
+  }
+}

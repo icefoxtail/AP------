@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import {createHash} from 'node:crypto';
+import {gitBlobSha} from '../../../tools/archive-stage-validator.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const [phase,source,assetRoot,output,freezeFile]=process.argv.slice(2);
+if(!['student','postfreeze'].includes(phase)||!source||!assetRoot||!output)throw Error('ARGS_REQUIRED');
+const bytes=fs.readFileSync(source),box={window:{}};
+vm.runInNewContext(bytes.toString('utf8'),box,{timeout:5000});
+const bank=box.window.questionBank||box.window.questions;
+if(!Array.isArray(bank)||!bank.length)throw Error('BANK_REQUIRED');
+const sourceRawSha256=sha(bytes),sourceRawBlobSha1=gitBlobSha(bytes);
+const pick=(obj,keys)=>Object.fromEntries(keys.filter(k=>obj[k]!==undefined).map(k=>[k,obj[k]]));
+const choice=c=>typeof c==='string'?c:(c&&typeof c==='object'?pick(c,['text','content','value']):c);
+const keys=['id','sourceQuestionNo','displayNo','content','question','choices','image','imageSize','choiceColumns','layoutTag','wide','preserveChoicePrefixes'];
+const refsOf=q=>{const refs=new Set();if(q.image)refs.add(q.image);
+for(const value of [q.content,q.question,...(q.choices||[]).map(c=>typeof c==='string'?c:JSON.stringify(c))])if(typeof value==='string')for(const m of value.matchAll(/<(?:img|image)\b[^>]*?(?:src|href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(m[1]);
+return refs;};
+const rows=bank.map(q=>{const student=pick(q,keys);if(student.choices)student.choices=student.choices.map(choice);
+const assets=[...refsOf(student)].map(ref=>{if(!ref.startsWith('assets/images/')||ref.includes('..'))throw Error('ASSET_PATH_INVALID:'+ref);const file=path.resolve(assetRoot,ref);return {ref,path:file,sha256:sha(fs.readFileSync(file))};});
+return {qid:Number(q.id),student,studentPayloadSha256:sha(Buffer.from(JSON.stringify(student))),assets};});
+let payload={schemaVersion:'RUN_SAFE_STUDENT_BUNDLE_V1',sourceRawSha256,sourceRawBlobSha1,examTitle:box.window.examTitle,questionCount:rows.length,rows,whitelist:keys,parityStatus:'PASS',extractedAt:new Date().toISOString()};
+if(phase==='postfreeze'){
+if(!freezeFile)throw Error('FREEZE_REQUIRED');
+const frozenBytes=fs.readFileSync(freezeFile),freeze=JSON.parse(frozenBytes);
+if(freeze.sourceRawSha256!==sourceRawSha256)throw Error('FREEZE_CURRENT_SOURCE_SHA_REQUIRED');
+const frozenRows=freeze.rows||freeze.answers||freeze.items;
+if(!Array.isArray(frozenRows)||rows.some(r=>!frozenRows.some(f=>Number(f.qid??f.id)===r.qid)))throw Error('FULL_QID_FREEZE_REQUIRED');
+payload={schemaVersion:'RUN_POSTFREEZE_DISCLOSURE_V1',sourceRawSha256,sourceRawBlobSha1,freeze:{path:path.resolve(freezeFile),sha256:sha(frozenBytes)},disclosedAt:new Date().toISOString(),rows:bank.map(q=>({qid:Number(q.id),...pick(q,['answer','solution','explanation','sol','solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize','decisiveStep'])}))};}
+fs.writeFileSync(output,JSON.stringify(payload,null,2)+'\n');
+console.log(JSON.stringify({phase,output,sha256:sha(fs.readFileSync(output)),sourceRawSha256,sourceRawBlobSha1,questionCount:rows.length,assetCount:rows.reduce((n,r)=>n+r.assets.length,0)}));

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_CORRECTION_PREFLIGHT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "targetQids": [
+    20
+  ],
+  "candidateRawShaBefore": "e64c20775e7eb29f9ad23e17103531cce661aef16f296350464634bf561f5702",
+  "priorFailedAttemptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1-reconcile-q20.solution-attempt1.failed.json",
+  "sampleReadBeforeCorrection": true,
+  "calibrationOrder": "preserved initial sequence failure; fresh physical preflight completed before q20 encoding correction",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSamples": [
+    {
+      "itemSolutionSha256": [
+        "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87"
+      ],
+      "qids": [
+        3,
+        15
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "visualPixelReview": {
+        "sha256": "8eb1248b62d95e06573928d81c84d7ddcddeca6ca1fa3ec36a21e815ee642808",
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.golden-hyochun-q3.png",
+        "observation": "standard form, center and radius labels visually agree",
+        "qid": 3
+      },
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+    },
+    {
+      "itemSolutionSha256": [
+        "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+        "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af"
+      ],
+      "qids": [
+        5,
+        6
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "visualPixelReview": {
+        "sha256": "7711d1605084bfe87b00458eecf50cac30ecc58955bbcbcc4b50345ce30c5ea4",
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.golden-jeil-q6.png",
+        "observation": "actual Venn SVG pixel view; text glyph substitutions noted and not used as visual authority",
+        "qid": 6
+      },
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b"
+    }
+  ],
+  "negativeSamples": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "observation": "per-qid physical structure, actual geometry, exact active metadata must be audited",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8"
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "observation": "text labels do not substitute for actual owner-ray/topology review",
+      "sha256": "4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8"
+    },
+    {
+      "pixelPreviewPath": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.negative-owner-ray-preview.png",
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+      "pixelPreviewSha256": "42420ee3f0c0dd71d4c5a3802d1b7c5a0ea9921b9ef858258a5be3db9f3116f1",
+      "observation": "actual preview opened; stated angle owner is missing its BC ray",
+      "sha256": "3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f"
+    }
+  ],
+  "preflightStatus": "PASS",
+  "preflightCompletedAtUtc": "2026-10-07T16:15:13.1946246Z"
+}

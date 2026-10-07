@@ -1,0 +1,147 @@
+============================================================
+ Archive 등록 자동 동기화: DB → UID → META HOLD → INDEX → CATALOG
+============================================================
+✅ db.js 생성 완료: 총 515개 파일 등록
+✅ DB 변경 요약: 이전 491개 → 현재 515개 (추가 24 / 삭제 0 / 메타 변경 0)
+✅ 기존 메타데이터 보존: 491개; 신규 inventory 등록: 24개
+➕ 새로 추가됨(24개):
+  - original/high/h1/1final/22_매산여고_1학기_기말_고1_기출.js
+  - original/high/h1/1mid/24_매산여고_1학기_중간_고1_기출.js
+  - original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js
+  - original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js
+  - original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js
+  - original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js
+  - original/high/h2/2final/20_매산고_2학기_기말_고2_수학II.js
+  - original/high/h2/2final/20_매산여고_2학기_기말_고2_수학II.js
+  - original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js
+  - original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js
+  - original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js
+  - original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js
+  ... 외 4개
+✅ archive 기준 위치: C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive
+✅ exams 기준 위치: C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\exams
+✅ db.js 출력 위치: C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\db.js
+✅ 출력 구조: window.mainDB.exams
+✅ file 경로: exams/ 제외, exams 내부 상대경로
+✅ 하위 폴더 스캔: original / similar / types 포함
+✅ 유형 폴더 학년 구분 대응: types/high/h1~h3, types/middle/m1~m3
+✅ 금지 구조 검사 통과: "시험", "연도", "학교", 2026년 패턴, file: exams/ 없음
+
+▶ 문항 UID 증분 동기화
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\intelligence\sync-question-identity-map-v1.mjs
+{
+  "status": "UPDATED",
+  "records": 12320,
+  "newFiles": 24,
+  "newRecords": 549,
+  "newSourceFiles": [
+    "original/high/h1/1final/22_매산여고_1학기_기말_고1_기출.js",
+    "original/high/h1/1mid/24_매산여고_1학기_중간_고1_기출.js",
+    "original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/20_매산고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/20_매산여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+    "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
+    "original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+    "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/19_이수중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js"
+  ],
+  "renamedFiles": [],
+  "renamedRecords": 0,
+  "identityDigest": "9386bf4a4509eec13f85a8b98c288191d1d7e2aa5426cb0beee3dc0cd1906525"
+}
+✅ 문항 UID 증분 동기화
+
+▶ 신규 문항 metadata HOLD 동기화
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\intelligence\sync-pending-question-metadata-v1.mjs
+{
+  "status": "UPDATED",
+  "total": 12320,
+  "added": 549,
+  "addedFiles": [
+    "original/high/h1/1final/22_매산여고_1학기_기말_고1_기출.js",
+    "original/high/h1/1mid/24_매산여고_1학기_중간_고1_기출.js",
+    "original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/20_매산고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/20_매산여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+    "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+    "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
+    "original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+    "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+    "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/19_이수중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+    "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js"
+  ],
+  "relocated": 0,
+  "relocatedFiles": [],
+  "digest": "113d505bfd50a246ba145b334cc72c436bcf5fc296d78b24deda9de196612127"
+}
+✅ 신규 문항 metadata HOLD 동기화
+
+▶ 문항 UID runtime 갱신
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\intelligence\build-question-identity-runtime.mjs
+{
+  "output": "archive/question-identity.js",
+  "identityDigest": "9386bf4a4509eec13f85a8b98c288191d1d7e2aa5426cb0beee3dc0cd1906525",
+  "runtimeDigest": "04b88869f2bcd63963041ab01347f1fa9664f5c0d4374e8ca3c5bb04c887c2ff",
+  "fileCount": 516,
+  "questionCount": 12320,
+  "bytes": 3140700
+}
+✅ 문항 UID runtime 갱신
+
+▶ Question index 갱신
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\build-question-index.mjs
+scope: GEOMETRY_ARCHIVE_ROOT fs-walk(production paths); exam files: 515
+question-index generated: 12312 questions (source 12312), 13123368 bytes
+duplicate_skipped: 0 records in 0 groups; final duplicate qKey: 0
+key class: official=12218 raw=0 invalid=94 empty=0 (invalid distinct=21)
+visual: image=2673 img=26 svg=77 table=181 total=2950
+✅ Question index 갱신
+
+▶ Meta Foundation runtime source rename 동기화
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\meta-foundation\sync-runtime-source-path-renames.mjs
+{
+  "status": "NO_CHANGE",
+  "renameEvidenceCount": 2,
+  "updatedRecords": 0,
+  "updatedRuntimeFiles": []
+}
+✅ Meta Foundation runtime source rename 동기화
+
+▶ Archive 2.0 intermediate catalog/manifest 갱신
+  $ node C:\Users\USER\Desktop\AP-worktrees\h1-final-three-pilot-20261007\AP------\.tmp\archive\h1-final-three-pilot-20261007\22_매산여고_1학기_기말_고1_기출\registration-root\archive\tools\build-archive2-catalog.mjs

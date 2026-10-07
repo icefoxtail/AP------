@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+const dir=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(dir,'../../..'),manifest=JSON.parse(fs.readFileSync(path.join(dir,'ROOT.publication.allowlist.json'))),git=args=>execFileSync('git',['-C',root,...args],{maxBuffer:128*1024*1024});
+if(git(['diff','--cached','--name-only']).length)throw Error('EMPTY_INDEX_REQUIRED');if(git(['rev-parse','HEAD']).toString().trim()!==manifest.head)throw Error('PUBLICATION_FENCE_HEAD_CHANGED');
+for(let i=0;i<manifest.files.length;i+=30)git(['add','-f','--',...manifest.files.slice(i,i+30)]);
+const actual=git(['-c','core.quotePath=false','diff','--cached','--name-only','-z']).toString('utf8').split('\0').filter(Boolean),allowed=new Set(manifest.files);if(actual.some(p=>!allowed.has(p))||actual.length!==allowed.size)throw Error('EXPLICIT_PUBLICATION_ALLOWLIST_PARITY_REQUIRED');
+git(['-c','core.whitespace=cr-at-eol,-blank-at-eof','diff','--cached','--check']);console.log(JSON.stringify({status:'EXPLICIT_TARGET_SOURCE_EVIDENCE_STAGED',fileCount:actual.length,examCount:manifest.rows.length,questionCount:manifest.rows.reduce((n,r)=>n+r.questionCount,0)}));

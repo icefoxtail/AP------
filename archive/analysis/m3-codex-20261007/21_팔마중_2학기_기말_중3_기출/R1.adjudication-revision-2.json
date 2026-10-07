@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_ADJUDICATION_REVISION_V2",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "originalFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1.independent-freeze.json",
+  "originalFreezeSha256": "f8d6f5eb5185f680605957b52e9419d5cfe357c53ba8ca6979bc08a178ce6d80",
+  "priorAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1.adjudication.json",
+  "priorAdjudicationSha256": "bfb4e3aa6ac06b2fcb78b4f4b673ff41dcc4f7402adca324c273cf4417239d64",
+  "sourceRepairPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\R1.source-repair.json",
+  "sourceRepairSha256": "0bc523a69639589a6e07500e99f373acbd113a1311d765049d8e8267385e0438",
+  "preserveAllPriorFreezeAndAdjudicationHistory": true,
+  "items": [
+    {
+      "qid": 9,
+      "finalIndependentAnswer": "33° (②)",
+      "answerCardinality": "1",
+      "verdict": "PASS",
+      "reason": "Valid secant geometry; the earlier interpretation as a triangle with nonexistent segment PQ was corrected in same-stage adjudication."
+    },
+    {
+      "qid": 12,
+      "finalIndependentAnswer": "No false statement",
+      "answerCardinality": "0 valid choices for the requested single answer",
+      "verdict": "HOLD",
+      "reason": "Each of the five mode claims is correct, while the prompt asks for an incorrect choice."
+    },
+    {
+      "qid": 15,
+      "finalIndependentAnswer": "Statements ① and ④ are false",
+      "answerCardinality": "2",
+      "verdict": "HOLD",
+      "reason": "The prompt asks for one incorrect statement but two statements are false."
+    },
+    {
+      "qid": 21,
+      "priorFreeze": "2/5",
+      "priorAdjudication": "HOLD / undetermined",
+      "finalIndependentAnswer": "2/5 (④)",
+      "answerCardinality": "1",
+      "verdict": "PASS_AFTER_REPAIR",
+      "reason": "Original-resolution SHA-verified graph contains 20 distinct points and eight points strictly above y=x. The previously reported 18 positions/7 above was a recount error; only answer and solution were repaired."
+    },
+    {
+      "qid": 24,
+      "finalIndependentAnswer": "10 or 15",
+      "answerCardinality": "2 computed outcomes",
+      "verdict": "HOLD",
+      "reason": "The exact wording asks for A+B−C as a single value, but the 12 listed values have two modes, 15 and 20, so C and the final scalar are not uniquely specified. The current stored answer acknowledges both outcomes, but the question itself does not explicitly authorize a set-valued final result."
+    }
+  ]
+}

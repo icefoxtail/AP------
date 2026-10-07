@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "R1_INDEPENDENT_FREEZE_V1",
+  "executionLine": "CODEX",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "scope": "qid 24 only",
+  "status": "PARTIAL_FREEZE_SOURCE_HOLD",
+  "freezeOrder": "Independent answers and reasoning recorded before any stored answer/solution disclosure",
+  "identity": {
+    "assignmentSha256": "de40f2b65bb5ef41ea94164b18a881eba6d5213c8fef987b97f81d6025a6d8a5",
+    "expectedHead": "f0112058dc0904e29d70a068d0fabe8fcf83ca0d",
+    "actualHead": "f0112058dc0904e29d70a068d0fabe8fcf83ca0d",
+    "currentSourceAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\21_매산중_2학기_기말_중3_기출.js",
+    "currentSourceSha256": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6",
+    "currentSourceArtifactSha": "3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e",
+    "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\R1-native-q24.student-input.json",
+    "studentBundleSha256": "920ca1254865351599bbc102f5b4ae6e55c3526f3db40ce23603164ae04f578a",
+    "studentPayloadSha256": "3d631b5e2ce15d33538538668dc902d7260318542b8333081216807ffa62e1b8",
+    "assetAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\assets\\images\\21_매산중_2학기_기말_중3_기출\\q24.png",
+    "assetSha256": "cf9ad9a0cbf1023b0a7cdf14dc67df8afcf90132ec57b263fd13c4063046fc49"
+  },
+  "reviewedStudentPrompt": "[서답형 4] [서술형] [수준별 4-(①)] 다음 자료의 분산을 구하시오. (4점) 6,2,5,3,9. [수준별 4-(②)] 아이폰 평점 조사 자료의 분산을 구하시오. (5점)",
+  "assetObservation": "Opened the assigned original PNG. It contains the referenced rating-frequency table, but the printed digits/labels needed to read the distribution are not legible at native or enlarged contrast-enhanced resolution. No answer data was consulted.",
+  "subparts": [
+    {
+      "part": "4-(①)",
+      "independentAnswer": 6,
+      "answerCardinality": "one numeric variance",
+      "reasoning": [
+        "자료의 평균은 (6+2+5+3+9)/5=5.",
+        "편차제곱은 1, 9, 0, 4, 16이고 합은 30이다.",
+        "분산은 30/5=6이다."
+      ],
+      "confidence": "determined from complete student text",
+      "status": "FROZEN"
+    },
+    {
+      "part": "4-(②)",
+      "independentAnswer": null,
+      "answerCardinality": "The prompt requests one numeric variance, but no unique numeric value can be independently determined until the rating values/frequencies are legible.",
+      "reasoning": [
+        "The prompt supplies the context and points to a frequency table in q24.png.",
+        "The table categories/frequencies cannot be reliably read from the assigned image; guessing them would not be an independent solution."
+      ],
+      "exactMissingFacts": [
+        "Legible rating categories/values in the table.",
+        "Legible frequency/count for each category, including any combined/tally entries."
+      ],
+      "status": "SOURCE_HOLD",
+      "holdReason": "Required student visual is present but its relevant printed data are unreadable at available resolution; answer cannot be determined without those facts."
+    }
+  ],
+  "answerDisclosure": "None before this durable independent freeze.",
+  "postfreezeExtractionComparison": "Pending ROOT exact-qid payload disclosure after freeze.",
+  "temporaryVisuals": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\q24-review-upscale.png",
+      "sha256": "7f0a7ff3772fb885a21550e0651364703874264ec89e910f17297e0fc89adc64",
+      "purpose": "visual magnification only"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_매산중_2학기_기말_중3_기출\\q24-review-crop.png",
+      "sha256": "e5f6749664ca528a429257238634be0d830695650865b46ea8bc659eeb4c046c",
+      "purpose": "visual crop/contrast only"
+    }
+  ]
+}

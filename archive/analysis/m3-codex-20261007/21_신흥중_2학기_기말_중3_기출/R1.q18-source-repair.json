@@ -1,0 +1,150 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_R1_SOURCE_REPAIR_RECEIPT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_신흥중_2학기_기말_중3_기출",
+  "stage": "R1_SOURCE_REPAIR_CONTINUATION",
+  "authority": "ROOT_DELEGATED",
+  "rootHead": "4ca503e269e5a345af13641b67fe5f8a05305a21",
+  "scope": {
+    "qid": 18,
+    "allowedFields": [
+      "content",
+      "decisiveStep",
+      "image asset bytes q18 only"
+    ],
+    "changedRuntimeQids": [
+      18
+    ],
+    "other22RuntimeByteEquivalent": true,
+    "allQuestionImageReferenceStringsUnchanged": true,
+    "allQuestionSolutionImageReferencesUnchanged": true,
+    "allNonQ18AssetBytesUnchanged": true
+  },
+  "sourceArtifact": {
+    "before": {
+      "rawSha256": "00c859629b9cce3a326ba8e9107631b47ebe19742cef46e3cf00287afcda51f1",
+      "rawBufferBlobSha1": "161c69f72cf9723a9fa4dc39b9601a0d6b5bdbed",
+      "cleanFilterBlobSha1": "161c69f72cf9723a9fa4dc39b9601a0d6b5bdbed"
+    },
+    "after": {
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출\\21_신흥중_2학기_기말_중3_기출.js",
+      "rawSha256": "0fffdb153f2b4bddd5770bbb596d6e98c0ca9e6b13af08cb0ac1fce8e3ce40ac",
+      "rawBufferBlobSha1": "8282d03ef959d469420949faf69690e27fc736fb",
+      "cleanFilterBlobSha1": "8282d03ef959d469420949faf69690e27fc736fb"
+    }
+  },
+  "nativeSource": {
+    "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_신흥중3_수학_2기말.pdf",
+    "pdfSha256": "5a4981d68bfc30f53ef25ba1b1c7369a63816ab45737dd1400d24560f8037b53",
+    "p3ImagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.source-pdf-3.png",
+    "p3ImageSha256": "058f848007558893d256f1ff11a2a39904928360025068842ec210dac3247ae2",
+    "exactSourceTextObserved": "다음 중 비행기가 비행한 거리와 남은 연료의 양의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)",
+    "correctionText": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)",
+    "reason": "Native source and R2 blind adjudication parse `양의 상관관계` as a positive-correlation condition, while the stated flight-distance/remaining-fuel situation is negative. Make the requested polarity explicit without changing data, options, or grading points."
+  },
+  "oldR1AndR2Provenance": {
+    "originalR1EvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.evidence.json",
+    "originalR1EvidenceSha256": "03967caa8a4c92c4faf227191775d9b060c7d4250d2e3a301ab3ce8d4916b3e1",
+    "originalR1GenericPassPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.validator.raw.json",
+    "originalR1GenericPassSha256": "2ef4e0ef4330cc6975290ac5858be88ef0779278e57e53aeb3416204f7d02c35",
+    "originalR1GenericDisposition": "PASS on prior artifact only; superseded for q18 after body correction",
+    "priorR1Q18AdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.adjudication.json",
+    "priorR1Q18Interpretation": "FALSE_HOLD based on reading `양의` as amount; superseded by exact native wording and R2 literal-positive freeze",
+    "r2EvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R2.evidence.json",
+    "r2EvidenceSha256": "46cc1fef8b91d7d8dec3cf537ec9cd0da8d2e6c46a7bf40f64d001fc4b6558f3",
+    "r2Q18BlindAnswer": "①",
+    "r2Q18StoredAnswer": "③",
+    "r2Q18Verdict": "HOLD",
+    "r2SameStagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R2.same-stage-adjudication.json",
+    "r2SameStageSha256": "5ec354c7fc24df3bc0d574ce7de300b051b85e3e1d5af72e80990cef928b2a3e",
+    "r2Q18Disposition": "ITEM_HOLD",
+    "r2ValidatorRecheckPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R2.validator.recheck-1.raw.json",
+    "r2ValidatorRecheckSha256": "38904b38b54f0f6f8d22bf2b1fa8f27534ce805dba11479abdd49a8a47733cd0",
+    "r2ValidatorIssues": [
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q18"
+    ]
+  },
+  "beforeQ18": {
+    "content": "다음 중 비행기가 비행한 거리와 남은 연료의 양의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)",
+    "answer": "③",
+    "solutionSha256": "dd1033440e83614ea8f2ebf3013ebf83811b52833a92f09e0e68a7b4da1d3b5f",
+    "decisiveStep": "본문의 양의 상관 문구와 공식 정답/그림의 음의 상관 방향이 충돌한다.",
+    "meta": {
+      "standardCourse": "M3",
+      "standardUnit": "통계",
+      "subUnit": "통계 자료 해석",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2
+    },
+    "imageRef": "assets/images/21_신흥중_2학기_기말_중3_기출/q18.png",
+    "imageSha256": "c8cc5e84a863035a3f8fa4bb629cc763569f58a374813a4a56e6454101ebf2e6"
+  },
+  "afterQ18": {
+    "content": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)",
+    "answer": "③",
+    "solution": "비행한 거리 $x$가 커질수록 남은 연료의 양 $y$는 줄어든다.\n따라서 두 변량은 음의 상관관계이고, 산점도는 오른쪽으로 갈수록 아래로 모여야 한다.\n\n그림에서 이 관계를 나타내는 것은 ③이다.\n정답은 ③이다.",
+    "solutionSha256": "dd1033440e83614ea8f2ebf3013ebf83811b52833a92f09e0e68a7b4da1d3b5f",
+    "solutionUnchanged": true,
+    "decisiveStep": "비행 거리 $x$가 커질수록 남은 연료의 양 $y$가 줄어드는 음의 상관관계를 고른다.",
+    "meta": {
+      "standardCourse": "M3",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "subUnit": "통계 자료 해석",
+      "subUnitConfidence": "high",
+      "subUnitClassificationDepth": "L2",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "metaDisposition": "Existing classification/debt unchanged; statistics/data-interpretation unit remains correct. Rebind unchanged PT/TPL null debt to fresh artifact SHA; no semantic reclassification.",
+    "imageRef": "assets/images/21_신흥중_2학기_기말_중3_기출/q18.png",
+    "oldImageSha256": "c8cc5e84a863035a3f8fa4bb629cc763569f58a374813a4a56e6454101ebf2e6",
+    "newImageSha256": "d0cb66602ddcbcb3bdc9b1ef4e9d14968689498003c92a34aff4b38924b0df66",
+    "newImagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출\\assets\\images\\21_신흥중_2학기_기말_중3_기출\\q18.png",
+    "originalImageBackupPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출\\assets\\images\\21_신흥중_2학기_기말_중3_기출\\q18_orig.png",
+    "originalImageBackupSha256": "c8cc5e84a863035a3f8fa4bb629cc763569f58a374813a4a56e6454101ebf2e6",
+    "cropPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.q18-crop-preview.png",
+    "cropPreviewSha256": "d0cb66602ddcbcb3bdc9b1ef4e9d14968689498003c92a34aff4b38924b0df66",
+    "cropMethod": "Keep five numbered scatterplot options and all axes/origins; remove repeated prompt text; 2x Lanczos upscale with mild 1.1 sharpening. Existing image reference string/path is unchanged."
+  },
+  "sourceRepairType": "AUDITED_SOURCE_REPAIR",
+  "independentRationale": "After the explicit negative-correlation correction, among the five supplied plots only ③ slopes downward as x (distance) increases while y (remaining fuel) decreases. Stored answer ③ and current solution already match this reasoning; R1 decisiveStep is synchronized. Do not use prior freezes as new review evidence.",
+  "freezeImpact": {
+    "oldR1FreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.independent-freeze.json",
+    "oldR1FreezeSha256": "c37cf00e127ea3c2d79824ccd2d7edbd7ad4238e95eff993b4de4544d46b7558",
+    "oldR1FreezePreserved": true,
+    "oldR2FreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R2.blind-freeze.json",
+    "oldR2FreezeSha256": "9352d933294484114a3e93b921f7354b9795af48a90950e02c24228c6ca28f24",
+    "oldR2FreezePreserved": true,
+    "validForRepairedQ18": false,
+    "affectedQids": [
+      18
+    ],
+    "freshStagesRequired": [
+      "R1",
+      "R2"
+    ]
+  },
+  "calibrationReuse": {
+    "priorR1PreflightPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_신흥중_2학기_기말_중3_기출/R1.calibration-preflight.json",
+    "priorR1PreflightSha256": "23a465cac3d69e38a7f9b21407e6ff2abbecf708341d31f14bb626e0be593262",
+    "priorPreflightWasBeforeInitialSolutionWork": true,
+    "freshR1MustPerformItsOwnGoldenNegativePreflight": true
+  },
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "nextRequiredAction": "Run a clean q18-only R1 freeze and R2 blind review against the repaired text and cropped graph-only asset; then rebuild final aggregate evidence and run its required generic validator. Do not reuse old q18 freezes or claim the full exam currently R1/R2 sealed."
+}

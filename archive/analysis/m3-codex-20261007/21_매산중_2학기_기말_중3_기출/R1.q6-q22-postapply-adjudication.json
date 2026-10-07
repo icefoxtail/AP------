@@ -1,0 +1,59 @@
+{
+  "schema": "CODEX_R1_Q6_Q22_POSTAPPLY_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "stage": "R1_SAME_SESSION_CONTINUATION",
+  "currentCandidate": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/21_매산중_2학기_기말_中3_基出.js",
+    "rawSha256": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6",
+    "rawBufferBlobSha1": "3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e",
+    "head": "f0112058dc0904e29d70a068d0fabe8fcf83ca0d"
+  },
+  "r1Freeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1.independent-freeze.json",
+    "sha256": "0e2c851017e7bc0d1544eff9a3c3e4d13dc1d527960e70b045b8940de04a1edc",
+    "preserved": true
+  },
+  "calibrationPreflight": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1.solution-calibration.json",
+    "sha256": "0379f74a377d90a45e4e0a65a96130e6b35d58186f3f54ea59ac041df88c4acb",
+    "latestPreflight": "PASS on current CREATE candidate before q6 edit; fixed Golden and Negative refs/observations unchanged."
+  },
+  "q6ChangedLocus": {
+    "qid": 6,
+    "field": "content",
+    "before": "...점 $A$는 접선일 때...",
+    "after": "...점 $A$는 접점일 때...",
+    "sourcePdf": {
+      "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/21_매산중_2학기_기말_중3_기출/source/2021_매산중3_수학_2기말.pdf",
+      "sha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b5474f2e6cc45bc93090",
+      "page": 1
+    },
+    "basis": "One-word source restoration only; AT is tangent and A is its point of tangency in both the source figure and current student image. This does not alter rays, angle owners, choices, or the current geometry calculation.",
+    "mathConclusion": "The opened source/student diagram labels x at D=∠ADB and 35° at B=∠DBA; cyclic angle gives ∠DAB=100°, so x=45°. Tangent–AB y=∠ADB=45°. Thus y−x=0°, absent choices 8,10,12,15,17.",
+    "storedR2Disposition": "R2 q6 PASS/②=10 uses x=∠ABD=35°, conflicting with the visible x° owner at D. Preserve R1 answer-owner counterproof; q6 remains true item HOLD. No new answer chase."
+  },
+  "q22MarkerNormalization": {
+    "declarationPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1.q22-marker-normalization-declaration.json",
+    "declarationSha256": "e47768c3d56da40ff254a8a88f9b6d80c9cb154df158c274f7a8f6471fb15b35",
+    "currentCandidateBinding": "cf506dfe4ef1c96b4907c74a5d01b856391a2f48dd093ec3256b56813137a9f6 / 3f85e358f73a9c4d1bd7c5acc848e0d25a3f894e",
+    "currentQ22ContentSha256": "c2fa4505a7b9cea90d781b63481edfa3726b4421a4005377c14efc35100acac2",
+    "q22ImageSha256": "9f5121e0851c8d7783159e54e163191b906364e597b220116360b0237165f35c",
+    "conclusion": "Ordinal-only audited normalization resolves the source-layout HOLD: source 2-1/2-2/repeated 2-2 maps to current (1)/(2)/(3); all three math requests and order are identical. No q22 freeze invalidation."
+  },
+  "postCreateInvariant": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/R1.postcreate-invariance.json",
+    "sha256": "6fbf78cdc40ffd2ca676e06942d152df6bcdbea5df1ddd197220c66832938458",
+    "coverage": "21 qids (1-5,7-21,23), runtime fields and linked assets PASS. q6/q22 handled above; q24 excluded and not read/re-solved."
+  },
+  "q24Scope": {
+    "owner": "CREATE",
+    "disposition": "Current q24 source restoration body is not inspected here. Old 1.8 freeze remains bound only to the prior yoghurt-frequency body and must not be reused; fresh q24 R1 and R2 required after restored body/asset arrives."
+  },
+  "sharedCandidateEditsByThisContinuation": [
+    "qid6 content one-word source restoration only"
+  ],
+  "noOtherSharedWrites": true,
+  "genericValidator": "Not rerun in this continuation; prior full R1 V2 report predates q24 CREATE body restoration and q6 word fix. Final full R1 generic run belongs after fresh q24 R1/R2 and ROOT aggregation.",
+  "checkpoint": "Current q6 remains ITEM_HOLD for no valid listed choice and R2 owner contradiction; q22 source marker normalization evidence is ready; wait for q24 CREATE/fresh R1-R2 and ROOT aggregate/release."
+}
