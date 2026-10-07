@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "ROOT_EXISTING_TARGET_ACTUAL_REGISTRATION_V1",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "status": "TARGET_REGISTERED_PENDING_PUBLICATION",
+  "head": "f0f4c504e45cf6716d3c8718823cd4a0acb6c289",
+  "artifactRawSha256": "3bda5885441b075559334036562658ff6f2d63f7e61dd4f88f1ea0937c0c6ecf",
+  "proof": {
+    "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.final-quality-proof.json",
+    "sha256": "a4616acc6d5a371d82df054262f9b31a9c94475b017e62adcff9583f02e2b05d"
+  },
+  "mergeReceipt": {
+    "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.merge.receipt.json",
+    "sha256": "40e21ecffae4e65d659d1a71b32f822c954581f72b05cac4ef1c109aef8392fb"
+  },
+  "reports": [
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.final-fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-update-tools/merge-existing-target-registration.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\registration-update.assignment.json",
+        "--prototype",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\prototype.json",
+        "--quality-proof",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\ROOT.existing-registration.final-quality-proof.json",
+        "--output-dir",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\final-quality-dry-run",
+        "--validate-final-quality"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.final-quality-dry-run.raw.txt",
+        "sha256": "ba30a5b9adfb32737e570754e3bb30f66503936fe00828fcfaefbae61d7d6797"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-update-tools/merge-existing-target-registration.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\registration-update.assignment.json",
+        "--prototype",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\prototype.json",
+        "--quality-proof",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\ROOT.existing-registration.final-quality-proof.json",
+        "--output-dir",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\applied",
+        "--apply"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.apply.raw.txt",
+        "sha256": "8ccffe64dd2def63cb02a9ef506d310f3dbccacb1ae1f21bb1b8ba702da2910d"
+      }
+    }
+  ],
+  "implementation": {
+    "path": ".tmp/archive/m3-codex-20261007/registration-update-tools/merge-existing-target-registration.mjs",
+    "sha256": "5e021214e22895a929e40e83b6f83a8ad2a7ce3496972fdf9d926c0673c7c35a"
+  },
+  "finishedAt": "2026-10-07T18:11:46.108Z"
+}

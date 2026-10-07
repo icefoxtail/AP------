@@ -1,0 +1,57 @@
+{
+  "status": "ISOLATED_FINAL_CANDIDATE_READY_NO_SHARED_APPLY",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "head": "f0f4c504e45cf6716d3c8718823cd4a0acb6c289",
+  "artifactRawSha256": "3bda5885441b075559334036562658ff6f2d63f7e61dd4f88f1ea0937c0c6ecf",
+  "reports": [
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-update-tools/audit-existing-registration.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "25",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.audit.raw.txt",
+        "sha256": "dffea28bb2f9c4c8b43a8c54cc64c0b7e0c1c4c65e819bcf29f9134ed70a7aab"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-update-tools/prepare-existing-registration-update-assignment.mjs",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        ".tmp/archive/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/registration-final/registration-update-audit.json"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.assignment.raw.txt",
+        "sha256": "375983a2f7468f0e9793d759acd2a8b7c0ea6487eac9503057e8170ef77a0b71"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/registration-update-tools/prepare-existing-target-update-prototype.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+        "--assignment",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\registration-update.assignment.json",
+        "--candidate-root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\candidate",
+        "--output",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\registration-final\\prototype.json"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.existing-registration.prototype.raw.txt",
+        "sha256": "1272ca53286763260baf04ea0c1e1c9b52241425b16aac7ca21d61ab5bfa5f0e"
+      }
+    }
+  ],
+  "finalDirectory": ".tmp/archive/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/registration-final",
+  "finishedAt": "2026-10-07T18:06:20.290Z"
+}

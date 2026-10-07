@@ -1,0 +1,993 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "artifactSha": "6d28b977421164c5263e8faa29a47237f425e778",
+  "artifactRawSha256": "3bda5885441b075559334036562658ff6f2d63f7e61dd4f88f1ea0937c0c6ecf",
+  "validatorRawBufferBlobSha1": "6d28b977421164c5263e8faa29a47237f425e778",
+  "gitCleanFilterBlobSha1": "6d28b977421164c5263e8faa29a47237f425e778",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학\\25_풍덕중_2학기_중간_중3_수학.js",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학",
+  "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\25_풍덕중_2학기_중간_중3_수학",
+  "expectedHead": "3e156278663d9595b7773f60d01e165c3986a813",
+  "assignmentSha256": "ae8ec1c42edadbcbdf45f4c0657b738f86597f824b3c4f1e1d7f4144533a8f7f",
+  "reviewScope": "FULL_STRUCTURAL_TARGETED_RELEASE",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      2,
+      3,
+      6,
+      7,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "directDependencyQids": []
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "itemHoldCount": 0,
+  "itemHoldQids": [],
+  "rows": [
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow separates the two side calculations and the product conclusion; q2 source visual and answer binding are unchanged."
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed calculation flow states the special-angle values, evaluates both terms, combines them, and binds the result to the recorded choice."
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow derives the missing leg from Pythagoras, uses complementary angles, and rationalizes the final ratio."
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow obtains the shared side in each right triangle before the final hypotenuse calculation."
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow applies the stated angle range to both absolute-value square roots before simplifying."
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow defines the foot H, computes both tunnel segments, and adds them for the requested length."
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "reviewedLoci": "Repaired solution SVG XML, text alternatives, circle/chord geometry and displayed radius/chord/offset labels are statically consistent with q14 solution."
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "reviewedLoci": "Repaired solution SVG XML, equal chord marks, midpoint construction, equal center distances and locus circle are statically consistent with q15 solution."
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow derives the center-to-chord distance and radius equation before computing circumference."
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "reviewedLoci": "Repaired solution SVG XML, chord/equidistance construction, equal-chord marks and angle labels are statically consistent with q17 solution."
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow sets the three equal-tangent variables and derives the requested tangent length; repaired SVG labels the same tangent relationship."
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow relates the tangent lengths, forms the right-triangle equation and isolates the requested length."
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "reviewedLoci": "Repaired solution SVG XML and right-angle/radius/common-hypotenuse construction agree with the RHS congruence explanation."
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "reviewedLoci": "Changed solution flow applies the difference-of-squares identity and substitutes the exact special-angle value."
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "reviewedLoci": "Repaired solution SVG XML and labels preserve the eye-level horizontal run, sight angle, vertical difference, and added eye height."
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "6d28b977421164c5263e8faa29a47237f425e778",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "삼각비 기본값; 삼각형 비 읽기."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "직각삼각형의 두 삼각비를 길이 곱에 연결."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "특수각 삼각비 계산."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "여각과 주어진 근삿값 활용."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            {
+              "key": "COND_RANGE",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "semanticObservation": "예각 삼각비 대소/증감."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "삼각비와 피타고라스 결합."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "두 직각삼각형 연결과 직접 길이 측정."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "특수각 삼각비의 대소관계."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN",
+            "CC_PERPENDICULAR"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            },
+            {
+              "key": "CC_PERPENDICULAR",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "기본 비와 피타고라스, 수직 관계 재해석."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "표를 이용한 삼각비 역조회."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "crossConceptKeys": [
+            "CC_LINE_EQUATION",
+            "CC_SLOPE"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "REINTERPRETATION",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_LINE_EQUATION",
+              "status": "ACTIVE"
+            },
+            {
+              "key": "CC_SLOPE",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "삼각비로 기울기를 구해 직선식 구성."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            {
+              "key": "COND_RANGE",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "semanticObservation": "범위 조건이 절댓값 부호를 결정."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "subUnit": "삼각비의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "공통 높이를 이용한 삼각비 복합도형."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "원과 현의 중심거리 및 수직이등분선."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "같은 현 길이의 중심거리 정리."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "현의 수직이등분선과 반지름 계산."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "같은 중심거리의 현 길이와 이등변각."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "원의 접선 길이 연쇄 관계."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "crossConceptKeys": [
+            "CC_PYTHAGOREAN"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "INTERDEPENDENT",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PYTHAGOREAN",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "접선 길이와 직각삼각형 길이 관계."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "crossConceptKeys": [
+            "CC_PERPENDICULAR"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_PERPENDICULAR",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "접선과 반지름의 수직 및 RHS 합동."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "subUnit": "삼각비",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "특수각 삼각비 계산."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "subUnit": "삼각비의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "앙각을 이용한 높이 측정."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "standardUnitOrder": 5,
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "subUnit": "삼각비의 활용",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "crossConceptKeys": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_TRIANGLE_AREA",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "삼각비를 이용한 두 삼각형 넓이 계산."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENCY_CONDITION",
+          "crossConceptKeys": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [
+            {
+              "key": "CC_TRIANGLE_AREA",
+              "status": "ACTIVE"
+            }
+          ],
+          "conditionKeys": []
+        },
+        "semanticObservation": "접선의 수직 관계와 삼각비로 넓이 계산."
+      },
+      {
+        "qid": 25,
+        "metaDebtFields": [],
+        "metaDispositionStatus": "PASS",
+        "reviewedMetaFields": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "subUnit": "원과 직선",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "canonicalKeyStatuses": {
+          "problemTypeKey": "ACTIVE",
+          "templateKey": "ACTIVE",
+          "crossConceptKeys": [],
+          "conditionKeys": []
+        },
+        "semanticObservation": "접선 길이를 연결한 연쇄 추론."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "R1_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "freezePath": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/R1.independent-freeze.v1.json",
+  "freezeSha256": "5b5360a35f8efa8904d22bb6bf698fb09f04642f31c2e4f4c2ed39e0b33d262e",
+  "disclosurePath": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/R1.postfreeze-disclosure.json",
+  "disclosureSha256": "7ec0bee059d401cf46cad4110dc98b2909c472b9364dadef1d239c65ed9f4b01",
+  "studentInputValidity": "VALID_UNCHANGED",
+  "studentBundleSha256": "2e23f6cba83d4e519549aa9e1877a85d930086d81d862f3d4936fd4609c6a32a",
+  "candidateRawSha256": "71d36f71a6322c1f25c009995e7ce06fdeb0d2f7069b1253e90fe2e7b4db6ed1",
+  "studentFieldParity": {"qidCount":25,"fields":["content","choices","image"],"differences":[]},
+  "adjudications": [
+    {"qid":7,"locus":"independentAnswer.reasoning","frozenAnswer":"E","adjudicatedAnswer":"A","storedAnswer":"①","reason":"직각삼각형 BCD에서 tan30°=BC/CD이므로 BC=6·√3/3=2√3. 삼각형 ABC는 45°-45°-90°이므로 AB=BC, 따라서 AC=2√6이고 선택지 A(①)이다. 원 freeze의 BC 계산 6√3은 삼각비 비율 산술 오류다."},
+    {"qid":18,"locus":"independentAnswer.imageLabelOwnership","frozenAnswer":"A","adjudicatedAnswer":"E","storedAnswer":"⑤","reason":"원본 q18.png에서 3, 6, 7은 접선 조각 BP, CR 등에 붙은 수가 아니라 삼각형 변 AB, AC, BC의 전체 길이 표기다. 접선 길이를 BP=BQ=u, AP=AR=w, CQ=CR=x로 두면 u+w=3, w+x=6, u+x=7. 따라서 2x=6+7−3=10, x=5, 선택지 E(⑤)이다."},
+    {"qid":23,"locus":"independentAnswer.areaArithmetic","frozenAnswer":"60√3 cm²","adjudicatedAnswer":"42√3 cm²","storedAnswer":"$42\\sqrt{3}\\,\\mathrm{cm}^2$","reason":"AC=12, AB=6√3. [ABC]=(1/2)·6·6√3=18√3 (원 freeze의 36√3은 1/2 산술 누락). [ACD]=(1/2)·12·8·sin60°=24√3. 전체는 42√3 cm²."}
+  ],
+  "validityDecision": "The complete pre-freeze student input and all referenced images remained unchanged. Preserve the original freeze; these are same-session post-disclosure calculation/label-reading adjudications, not blind-input contamination.",
+  "allOtherQids": "MATCH_AFTER_NORMALIZATION",
+  "nextCheck": "Complete per-qid solution/layout/Meta/visual audit; retain unchanged candidate unless a verified content defect is found."
+}
