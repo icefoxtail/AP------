@@ -1,24 +1,26 @@
 window.examTitle = "21_신흥중_2학기_기말_중2_기출";
+
 window.questionBank = [
   {
     "id": 1,
     "questionType": "객관식",
     "tags": [
+      "객관식",
       "무게중심",
+      "중선",
       "선분의 길이",
       "도형"
     ],
-    "content": "다음 그림에서 점 $G$가 $\\triangle ABC$의 무게중심일 때,\n $x+y$의 값을 구하면? \n(단, $\\overline{AD}=6\\text{ cm}$) (4점)",
+    "content": "삼각형 $ABC$에서 점 $D$는 선분 $BC$의 중점이고 점 $G$는 무게중심이다.\n 선분 $AD$의 길이가 $12\\text{ cm}$일 때, $x=\\overline{AG}$, $y=\\overline{GD}$로 놓으면 $x+3y$의 값은? (4점)",
     "choices": [
-      "$6\\text{ cm}$",
-      "$7\\text{ cm}$",
+      "$4\\text{ cm}$",
       "$8\\text{ cm}$",
-      "$9\\text{ cm}$",
-      "$10\\text{ cm}$"
+      "$12\\text{ cm}$",
+      "$16\\text{ cm}$",
+      "$20\\text{ cm}$"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
-    "answer": "①",
-    "solution": "그림에서 $x=AG$, $y=GD$이므로 $x+y$는 선분 $AD$의 길이와 같다.\n\n$x+y=AG+GD$\n$=AD$\n$=6\\text{ cm}$\n\n따라서 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "무게중심 $G$는 중선 $AD$를 꼭짓점 $A$ 쪽에서 $2:1$로 나눈다.\n\n$AG:GD=2:1$\n$GD=t$라 두면 $AG=2t$\n$AD=AG+GD=3t=12\\text{ cm}$\n$t=4\\text{ cm}$\n\n$x=AG=8\\text{ cm},\\quad y=GD=4\\text{ cm}$\n$x+3y=8+3\\cdot4=20\\text{ cm}$\n\n따라서 구하는 값은 $20\\text{ cm}$이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -28,14 +30,14 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "candidate_evidence",
+    "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_documented",
     "layoutTag": "grid",
     "wide": false,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "legacyLevelCompatibility": "NORMAL",
     "rpmSemanticStatus": "FINAL",
     "rpmPath": {
       "curriculum": "2015",
@@ -43,14 +45,14 @@ window.questionBank = [
       "majorUnit": "도형의 닮음과 피타고라스 정리",
       "midUnit": "삼각형의 무게중심",
       "l3": "중선과 무게중심",
-      "l4": "좌표·길이"
+      "l4": "2:1 비"
     },
     "rpmL3": "중선과 무게중심",
-    "rpmL4": "좌표·길이",
+    "rpmL4": "2:1 비",
     "semanticSourceScope": "M2-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "primaryMethod": "분할선분의 길이를 더해 중선 전체 길이를 구함",
-    "decisiveStep": "$x+y=AG+GD=AD=6\\text{ cm}$ 따라서 정답은 ①이다.",
+    "primaryMethod": "삼각형 무게중심의 2:1 분할비로 AG, GD를 구한 뒤 길이의 선형결합 계산",
+    "decisiveStep": "AD=AG+GD=3t=12이므로 t=4, 따라서 x+3y=AG+3GD=8+3·4=20 cm.",
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
     "problemTypeKey": null,
@@ -58,8 +60,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path.",
-    "sourceMode": "AUDITED_REPAIR"
+    "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
   },
   {
     "id": 2,
@@ -79,7 +80,7 @@ window.questionBank = [
     ],
     "image": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
     "answer": "①",
-    "solution": "직각삼각형에서 빗변의 길이는 $25\\text{ cm}$이고 한 직각변은 $24\\text{ cm}$이다. 피타고라스 정리를 사용한다.\n\n$24^2+x^2=25^2$\n$x^2=25^2-24^2$\n$=625-576$\n$=49$\n\n길이는 양수이므로 $x=7$이다. 따라서 정답은 ①이다.",
+    "solution": "직각삼각형에서 빗변의 길이는 $25\\text{ cm}$이고 한 직각변은 $24\\text{ cm}$이다. 피타고라스 정리를 사용한다.\n\n$24^2+x^2=25^2$\n$x^2=25^2-24^2$\n$=625-576$\n$=49$\n\n길이는 양수이므로 $x=7\\text{ cm}$이다.\n\n따라서 정답은 ①이다.",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1139,18 +1140,22 @@ window.questionBank = [
     "id": 20,
     "questionType": "객관식",
     "tags": [
-      "확률"
+      "객관식",
+      "확률",
+      "경우의 수",
+      "순서쌍",
+      "주사위"
     ],
-    "content": "서로 다른 두 개의 주사위 $A$, $B$를 던져서 $A$에서 나온 눈의 수를 $x$, $B$에서 나온 눈의 수를 $y$라 할 때,\n $2x+y<7$일 확률을 구하면? (4점)",
+    "content": "서로 다른 두 개의 주사위 $A$, $B$를 동시에 던져 나온 눈의 수를 각각 $x$, $y$라 하자.\n $x+y\\ge8$이고 $|x-y|\\le2$일 확률을 구하면? (4점)",
     "choices": [
-      "$\\dfrac{1}{6}$",
       "$\\dfrac{1}{12}$",
-      "$\\dfrac{3}{18}$",
       "$\\dfrac{5}{36}$",
-      "$\\dfrac{7}{36}$"
+      "$\\dfrac{2}{9}$",
+      "$\\dfrac{11}{36}$",
+      "$\\dfrac{5}{12}$"
     ],
-    "answer": "①, ③",
-    "solution": "$2x+y<7$인 순서쌍을 센다.\n\n$x=1$이면 $y=1,2,3,4$의 4가지이고, $x=2$이면 $y=1,2$의 2가지이다. $x\\ge3$이면 가능한 경우가 없다.\n\n유리한 경우는 $4+2=6$개이고 전체 경우는 $36$개이다.\n$P=\\dfrac6{36}=\\dfrac16$\n\n보기 ①은 $\\dfrac16$, 보기 ③은 $\\dfrac3{18}=\\dfrac16$이므로 두 보기가 모두 정답이다.\n정답은 ①, ③이다.",
+    "answer": "④",
+    "solution": "서로 다른 두 주사위의 전체 순서쌍은\n$6\\times6=36$가지이다.\n\n두 조건을 함께 만족하는 순서쌍을 합 $x+y$에 따라 센다.\n\n$x+y=8$: $(3,5),(4,4),(5,3)$의 3가지\n$x+y=9$: $(4,5),(5,4)$의 2가지\n$x+y=10$: $(4,6),(5,5),(6,4)$의 3가지\n$x+y=11$: $(5,6),(6,5)$의 2가지\n$x+y=12$: $(6,6)$의 1가지\n\n유리한 경우는 $3+2+3+2+1=11$가지이다.\n따라서 확률은\n$\\dfrac{11}{36}$이다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -1160,7 +1165,7 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "candidate_evidence",
+    "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_documented",
     "layoutTag": "grid",
     "wide": false,
@@ -1181,8 +1186,8 @@ window.questionBank = [
     "rpmL4": "경우를 나누어 구하는 확률",
     "semanticSourceScope": "M2-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "primaryMethod": "순서쌍 세기; 경우의 수에 의한 확률",
-    "decisiveStep": "유리한 경우는 $4+2=6$개이고 전체 경우는 $36$개이다. $P=\\dfrac6{36}=\\dfrac16$이므로 보기 ①과 ③이 모두 정답이다.",
+    "primaryMethod": "서로 다른 두 주사위의 순서쌍을 합 및 차 조건에 따라 분류해 경우의 수에 의한 확률 계산",
+    "decisiveStep": "합 8,9,10,11,12에서 조건을 만족하는 순서쌍 수가 각각 3,2,3,2,1이므로 P=11/36.",
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
     "problemTypeKey": null,
@@ -1190,8 +1195,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
-    "sourceMode": "ORIGINAL"
+    "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
   },
   {
     "id": 21,
@@ -1367,7 +1371,7 @@ window.questionBank = [
     "choices": [],
     "image": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
     "answer": "$13$",
-    "solution": "삼각형의 넓이에서 높이를 구한다. 밑변은 $BC=10\\text{ cm}$이므로\n$60=\\dfrac12\\cdot10\\cdot h$\n$h=12\\text{ cm}$\n\n$AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변에 내린 높이는 밑변을 이등분한다. 따라서 밑변의 절반은\n$\\dfrac{10}{2}=5\\text{ cm}$이다.\n\n직각삼각형에서 피타고라스 정리를 쓰면\n$AB^2=12^2+5^2=144+25=169$\n$AB=13\\text{ cm}$\n\n따라서 구하는 길이는 13.",
+    "solution": "삼각형의 넓이에서 높이를 구한다. 밑변은 $BC=10\\text{ cm}$이므로\n$60=\\dfrac12\\cdot10\\cdot h$\n$h=12\\text{ cm}$\n\n$AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변에 내린 높이는 밑변을 이등분한다. 따라서 밑변의 절반은\n$\\dfrac{10}{2}=5\\text{ cm}$이다.\n\n직각삼각형에서 피타고라스 정리를 쓰면\n$AB^2=12^2+5^2=144+25=169$\n$AB=13\\text{ cm}$\n\n따라서 구하는 길이는 $13\\text{ cm}$이다.",
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q24-solution.svg",
     "level": "중",
     "category": "피타고라스 정리",
