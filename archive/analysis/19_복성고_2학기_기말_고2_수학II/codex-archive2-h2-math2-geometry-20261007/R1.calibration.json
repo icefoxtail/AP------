@@ -1,0 +1,86 @@
+{
+  "schema": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "examUid": "19_복성고_2학기_기말_고2_수학II",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "따라서 정답은 ④이다.",
+        "observation": "좌표 계산을 내분점·중점·거리 단계로 분리하고 각 중간값을 별도 수식 줄에 두어 학생이 순서를 따라갈 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7",
+        "solutionExcerpt": "$b=6$이고,",
+        "observation": "수직 조건으로 계수를 정한 뒤 거리 조건의 두 부호 경우와 b>0 조건을 분리해 탈락 이유까지 보인다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "$k=6$이다.",
+        "observation": "기울기 계산과 수직 조건을 분리하고 line equation과 actual coordinates가 SVG에서 맞는다.",
+        "solutionImageRef": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualObservation": "SVG의 두 직선 endpoint를 model coordinate에 대입해 각 equation을 만족하고 기울기 곱이 -1임을 확인."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "반지름의 길이는 $2$이다.",
+        "observation": "완전제곱식에서 중심과 반지름을 얻고 SVG의 center marker와 radius segment가 좌표 사실에 맞는다.",
+        "solutionImageRef": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+        "visualObservation": "circle centered at (-1,3), radius endpoint (1,3), and radius 2 agree with the equation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "최종 원의 중심은 $(5,-2)$이고",
+        "observation": "Translation maps center (-3,1) to (-5,2), origin reflection to (5,-2); SVG has those exact centers and equal three-unit radii.",
+        "solutionImageRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "visualObservation": "Read actual SVG coordinates: C0=(-3,1), C1=(-5,2), C2=(5,-2); each radius is three units and the final equation agrees."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "False PASS regression: inspect actual geometry primitives, physical small-board blocks, nullable Meta resolution, and sandbox-evaluated TeX escaping."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "23/23"
+  }
+}
