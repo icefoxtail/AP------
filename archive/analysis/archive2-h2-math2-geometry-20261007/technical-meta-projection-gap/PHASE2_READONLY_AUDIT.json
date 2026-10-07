@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_TECHNICAL_CONTINUATION_PHASE2_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+  "head": "d835732c499f5c5df3bd85e28c3e2f5bf15057b9",
+  "auditScope": "Locked roster rows.slice(7,12), q metadata-key strings only; no mathematical content/answer/solution read or semantic reclassification.",
+  "assignmentPacket": {
+    "pathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\ROOT.exact-geometry-key-audit-assignment.json",
+    "rawSha256": "6C1F0A7DD09608F977650C0D2CCC9052A62ED616E5C1994AEDDB337658C6A04F"
+  },
+  "preservedPhase1Receipt": {
+    "pathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\CONTINUATION.json",
+    "rawSha256": "CD383D41498073E8A540A580C8240537A00EC00E064A080348876FD78E2648C9",
+    "modified": false
+  },
+  "canonicalEvidence": {
+    "rpmGeometryCrosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+      "rawSha256": "5426B4C3BE737D86FC5082E89604F976A8258D2287732EBB7CEF29F101953D13",
+      "status": "ACTIVE_REFERENCE",
+      "2015RecordCountsByStandardUnitKey": {
+        "H15-GV-01": 2,
+        "H15-GV-02": 2,
+        "H15-GV-03": 2,
+        "H15-GV-04": 8,
+        "H15-GV-05": 6,
+        "H15-GV-06": 6,
+        "H15-GV-07": 0,
+        "H15-GV-08": 6,
+        "H15-GV-09": 6
+      },
+      "allExisting2015RowsAre": "mappingStatus=RPM_ONLY, bindingStatus=NO_ACTIVE_MAPPING, subUnitKey=null"
+    },
+    "standardUnitAuthority": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "rawSha256": "89F195E5EB6E959837BD90B482583225CC7D77E33B64EEF5414B18F13EE8AF4E",
+      "H15GvParentKeys": ["H15-GV-01", "H15-GV-02", "H15-GV-03", "H15-GV-04", "H15-GV-05", "H15-GV-06", "H15-GV-07", "H15-GV-08", "H15-GV-09"]
+    },
+    "registeredProductionMetadata": {
+      "path": "archive/data/question_metadata.json",
+      "rawSha256": "BDDC42EA11488CAA509F665C889397DB27286E9D6D689E8CC842CB0E3C161A85",
+      "H15GvChildKeyMatches": 0,
+      "existingH22GeometryLegacyKeyCounts": {
+        "H22-GE-01|H22-GE-01-CORE": 27,
+        "H22-GE-02|H22-GE-02-CORE": 22,
+        "H22-GE-03|H22-GE-03-CORE": 10,
+        "H22-GE-05|H22-GE-05-VECTOR_BASIC": 3,
+        "H22-GE-06|H22-GE-06-VECTOR_BASIC": 1,
+        "H22-GE-07|H22-GE-07-VECTOR_BASIC": 1
+      }
+    }
+  },
+  "rosterAudit": [
+    {
+      "rosterIndex": 7,
+      "examUid": "15_강남여고_2학기_중간_고2_기하와벡터_기출",
+      "candidateRawSha256": "57ddd0ed12dc986df77218e2fbe906b6b878813c5a17df2f3e9168420dfd0873",
+      "productionRawSha256": "57ddd0ed12dc986df77218e2fbe906b6b878813c5a17df2f3e9168420dfd0873",
+      "candidateProductionParity": true,
+      "result": "No H15-GV child keys; existing subUnitKey values equal their H15-GV standardUnitKey and remain compatible."
+    },
+    {
+      "rosterIndex": 8,
+      "examUid": "16_매산고_2학기_중간_고2_기하와벡터_기출",
+      "candidateRawSha256": "1d13121c117c992e1a0cd9921f53542ef324205a30a311784fd7846dd977c926",
+      "productionRawSha256": "1d13121c117c992e1a0cd9921f53542ef324205a30a311784fd7846dd977c926",
+      "candidateProductionParity": true,
+      "result": "No H15-GV child keys; existing subUnitKey values equal their H15-GV standardUnitKey and remain compatible."
+    },
+    {
+      "rosterIndex": 9,
+      "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+      "candidateRawSha256": "c369170aab5d569c50bb7b4ebf13099e4a3a72b535f66ab18154de49604fd338",
+      "productionRawSha256": null,
+      "currentKeyCounts": {"H22-GE-01-CORE": 17, "H22-GE-02-CORE": 5},
+      "result": "Current H22-GE legacy keys match existing registered production metadata and remain valid."
+    },
+    {
+      "rosterIndex": 10,
+      "examUid": "22_매산고_1학기_기말_고2_기하_기출",
+      "stage": "R1_ACTIVE",
+      "candidateRawSha256": "1652d0fd5be6a50572f80d76744294995f50a9f3c6eb142448bcecb5f42e2726",
+      "productionRawSha256": null,
+      "finding": "All 20 non-null subUnitKey values are synthetic H15-GV-xx-CORE children absent from the canonical standard-unit child inventory, current RPM crosswalk projection, and registered production metadata.",
+      "affectedItems": [
+        {"qid":1,"questionUid":"qid_v1_80519a39441ad3cfdb206c7234d4e206141d189ec8303be6ca72187a7e696078","standardUnitKey":"H15-GV-09","subUnitKey":"H15-GV-09-CORE"},
+        {"qid":2,"questionUid":"qid_v1_35f701c11db194bd8b28f07ddfe040a48dd3ae91b85d89a007532b0464d09609","standardUnitKey":"H15-GV-05","subUnitKey":"H15-GV-05-CORE"},
+        {"qid":3,"questionUid":"qid_v1_578a6126ef8b1b35716e8209b2a8360f69a1d909386ed45db0abf45fd73e2e66","standardUnitKey":"H15-GV-02","subUnitKey":"H15-GV-02-CORE"},
+        {"qid":4,"questionUid":"qid_v1_e92421d06af7f3b3a9eae5b83a7488fc73269c7041e5ee1f1648168a51391ee6","standardUnitKey":"H15-GV-03","subUnitKey":"H15-GV-03-CORE"},
+        {"qid":5,"questionUid":"qid_v1_684263006a742a32f08f5e9b7b84d7a5e841d252a6cc2519d9a9634a39ed8b21","standardUnitKey":"H15-GV-06","subUnitKey":"H15-GV-06-CORE"},
+        {"qid":6,"questionUid":"qid_v1_6c33bfce93bb395bfa1717dd7e519f8df5d91349ff093f6a5cb81db2c8745435","standardUnitKey":"H15-GV-05","subUnitKey":"H15-GV-05-CORE"},
+        {"qid":7,"questionUid":"qid_v1_986ecdf5afa4f7abac8f74ec0e8c2f7ae6b1fffc4ee06ec596185ebe0cb98e99","standardUnitKey":"H15-GV-07","subUnitKey":"H15-GV-07-CORE"},
+        {"qid":8,"questionUid":"qid_v1_180466e8571336e273269b276aec270e96610c4d57bd87dd29d04e74d08175b5","standardUnitKey":"H15-GV-09","subUnitKey":"H15-GV-09-CORE"},
+        {"qid":9,"questionUid":"qid_v1_b306afc4f7507789a05deade5e95a38edc59b9b60235ca5ba22011a423cfb239","standardUnitKey":"H15-GV-06","subUnitKey":"H15-GV-06-CORE"},
+        {"qid":10,"questionUid":"qid_v1_6db46ef9a9d2a51060a4c1cde523fb9de3ea0e9cd578824b9100679a4980fd68","standardUnitKey":"H15-GV-09","subUnitKey":"H15-GV-09-CORE"},
+        {"qid":11,"questionUid":"qid_v1_ed6a4727c06be6446b73e1dab03933bc75a347f2b41b8ab0cc83cac871fe4e0c","standardUnitKey":"H15-GV-08","subUnitKey":"H15-GV-08-CORE"},
+        {"qid":12,"questionUid":"qid_v1_9f85c6090faeb17fc2ed6d14b9ea0d15f38a49447686305c5cfa5577dfd61e04","standardUnitKey":"H15-GV-04","subUnitKey":"H15-GV-04-CORE"},
+        {"qid":13,"questionUid":"qid_v1_ba61354514bf4024f2354683fb11a0a7bd167e8407364fcfb45bd3c8a971b6a4","standardUnitKey":"H15-GV-08","subUnitKey":"H15-GV-08-CORE"},
+        {"qid":14,"questionUid":"qid_v1_8fced7d33526d33686941ac44c3a2697e131b05ea2fbb3818133e53a581d28a9","standardUnitKey":"H15-GV-08","subUnitKey":"H15-GV-08-CORE"},
+        {"qid":15,"questionUid":"qid_v1_92bc2262b584caf601e57541f0fd097057ab077ae9c14de13a5c2afe20a1a197","standardUnitKey":"H15-GV-06","subUnitKey":"H15-GV-06-CORE"},
+        {"qid":16,"questionUid":"qid_v1_9f1c634dba41ab6a38a4983ae08370d296d38fff42d23e4ea10ff643b5756d6b","standardUnitKey":"H15-GV-08","subUnitKey":"H15-GV-08-CORE"},
+        {"qid":17,"questionUid":"qid_v1_aef2e0cf9f4bbc2ce1a2a53711f5d620dfd370e5d7294c21166c30a3cf8e025e","standardUnitKey":"H15-GV-01","subUnitKey":"H15-GV-01-CORE"},
+        {"qid":18,"questionUid":"qid_v1_a2ee1c9509bbaa7e176cbf0e2d8ce8581c7c181b5e1fcc7170c5a6b2ca643617","standardUnitKey":"H15-GV-06","subUnitKey":"H15-GV-06-CORE"},
+        {"qid":19,"questionUid":"qid_v1_02a616adc69425714f4818e850a771dbcf17b409c1c8b60bfb4a180a298b0448","standardUnitKey":"H15-GV-08","subUnitKey":"H15-GV-08-CORE"},
+        {"qid":20,"questionUid":"qid_v1_1337d40e9dab853d0da79f0c8bd27f4903c9b29804c17f9441eab022e4be208f","standardUnitKey":"H15-GV-06","subUnitKey":"H15-GV-06-CORE"}
+      ]
+    },
+    {
+      "rosterIndex": 11,
+      "examUid": "22_매산고_1학기_중간_고2_기하와벡터_기출",
+      "candidateRawSha256": "b9cbb62b77dc17ff652b3581e01f0458355a703eb051d2f278fb17c6159750ab",
+      "metadataPresent": false,
+      "stageStatus": "CREATE_ACTIVE_METADATA_PENDING",
+      "result": "PENDING; absence of Meta fields is not classified as a defect."
+    }
+  ],
+  "validatorGuard": {
+    "issue": "ARTIFACT_META_GEOMETRY_RPM_ONLY_NONCANONICAL_SUBUNIT_KEY:q<qid>",
+    "targetedCurrentCandidateCheck": {"questionCount":20,"disposition":"FAIL_CLOSED_EXPECTED","issueCount":20,"qids":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},
+    "compatibility": "subUnitKey equal to canonical H15-GV standardUnitKey remains valid; registered H22-GE legacy child keys remain valid; null still requires phase-1 resolver proof."
+  },
+  "changedFiles": [
+    {"path":"archive/tools/archive-stage-validator-artifact-v2.mjs","rawSha256":"C4DAA31F51F0BFCF226AB473C81F6C09409CA7AE4020E99175F8AF7E1745C0CB","rawBufferBlobSha1":"31901fb4686680bad9a743b784a2bc4667161dc8","cleanFilterBlobSha1":"31901fb4686680bad9a743b784a2bc4667161dc8"},
+    {"path":"archive/tools/archive-stage-validator-artifact-v2.test.mjs","rawSha256":"F9841DBD7B9E2A519E0E09DE9ED328421A80B61DCD21BAF645B0B9C7D49969C8","rawBufferBlobSha1":"14a25572d1cd439e265a24f5b7a151ce50294a76","cleanFilterBlobSha1":"14a25572d1cd439e265a24f5b7a151ce50294a76"},
+    {"path":"docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md","rawSha256":"8EF254202F6AE4D9FDD2E60F39E09F933F69D4DF9350F2BBBE37CF35134930AA","rawBufferBlobSha1":"a9dba1f5d09a14c02379215ca708a982197f83b8","cleanFilterBlobSha1":"a9dba1f5d09a14c02379215ca708a982197f83b8"},
+    {"path":"docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md","rawSha256":"06AD043C16A866BEAEC3A41EF122478B3B41FEC20F5B8F249AAA49D3C06F77E6","rawBufferBlobSha1":"88fcf134de682b9555ac674dea5483ccbb0e4d51","cleanFilterBlobSha1":"88fcf134de682b9555ac674dea5483ccbb0e4d51"}
+  ],
+  "tests": {"command":"node --test archive/tools/archive-stage-validator-artifact-v2.test.mjs","disposition":"PASS","passed":9,"failed":0,"issues":[]},
+  "nextRequiredAction": "R1 quality owner corrects only subUnitKey for qids 1-20 in rosterIndex 10 using the existing valid freeze/current artifact body and performs the required validator recheck. Preserve the existing freeze and unrelated qids; keep publication deferred until this finding closes."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_TECHNICAL_CONTINUATION_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "22_매산고_1학기_중간_고2_기하와벡터_기출",
+  "stage": "CREATE",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+  "head": "d835732c499f5c5df3bd85e28c3e2f5bf15057b9",
+  "assignment": {
+    "pathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_매산고_1학기_중간_고2_기하와벡터_기출\\CREATE.assignment.json",
+    "rawSha256": "A9436883B69E10EF282BD13CF5AA7485CE065A8148ABA8D59568E425F574AD16",
+    "assetRootAbsoluteExists": true,
+    "evidenceRootAbsoluteExists": true
+  },
+  "workingArtifact": {
+    "pathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_매산고_1학기_중간_고2_기하와벡터_기출\\22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+    "expectedRawSha256FromAssignment": "a02267c1694f575c12d27789a9fa9831ea1e6afd0e7f9cc86df89a3a93741ca3",
+    "observedCurrentRawSha256": "EC945569BA658B71CDEC0AF9112D72A7DD51490D5567F14032D3E6287DE802F0",
+    "assignmentBindingStatus": "MISMATCH_REQUIRES_CREATE_OWNER_RECONCILIATION",
+    "modifiedByThisContinuation": false
+  },
+  "diagnosis": {
+    "existingResolverRepresentation": "RPM_SEMANTIC_FINAL with PROJECTION_UNMATERIALIZED and RPM_ONLY_COMPATIBILITY_PROJECTION; existing resolver recomputes canonical authority refs and evidence SHA.",
+    "actualGap": "Artifact V2 rejected canonical null subUnitKey and only allowed problemTypeKey/templateKey in metaDebtFields.",
+    "scope": "Only H2 + 2015 + standardCourse 기하 + high2-geometry RPM_ONLY rows with canonical null subUnitKey.",
+    "notChanged": ["exam content", "answers", "solutions", "semantic Meta verdict", "resolver", "crosswalk", "qualityContractVersion"]
+  },
+  "implementation": {
+    "proofSchema": "JS_ARCHIVE_RPM_ONLY_NULL_SUBUNIT_PROJECTION_V1",
+    "artifactDispositionFields": [
+      "qid",
+      "metaDebtFields includes subUnitKey",
+      "metaDebtReason",
+      "rpmOnlyNullSubUnitProjection.input",
+      "rpmOnlyNullSubUnitProjection.resolverEvidence",
+      "rpmOnlyNullSubUnitProjection.validatorReceipt"
+    ],
+    "failClosedChecks": [
+      "exact H2/2015/기하 context and standardCourse",
+      "question standardUnitKey equals resolver context",
+      "subUnitKey is physically present and null",
+      "current question content/choices/solution hashes equal resolver input",
+      "resolver recomputes FINAL + PROJECTION_UNMATERIALIZED + RPM_ONLY against current canonical authority hashes",
+      "resolver validator receipt verifies against recomputed result"
+    ]
+  },
+  "changedFiles": [
+    {
+      "path": "archive/tools/archive-stage-validator-artifact-v2.mjs",
+      "rawSha256": "C4EF3D95535E582C62E32039C7144E96B3A0D2E2799C3544A2667258DE183D66",
+      "rawBufferBlobSha1": "dd8a2d8d3d5d9190802cbc8238120fdd4369b1d1",
+      "cleanFilterBlobSha1": "dd8a2d8d3d5d9190802cbc8238120fdd4369b1d1"
+    },
+    {
+      "path": "archive/tools/archive-stage-validator-artifact-v2.test.mjs",
+      "rawSha256": "C3EB55B2D64BA93D155BAB175DA83BBA67ABF169EE7DE51551D447A106D7E87B",
+      "rawBufferBlobSha1": "3f274ca138824a617fbfea19293e04d8630e0728",
+      "cleanFilterBlobSha1": "3f274ca138824a617fbfea19293e04d8630e0728"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md",
+      "rawSha256": "39B59B676AA7E53D4642DDD3FEF0C5CEC7DD0A549231E993E851A12A09D87C21",
+      "rawBufferBlobSha1": "abdedd1a9cf7def96fa237c332bce513cb0de3e2",
+      "cleanFilterBlobSha1": "abdedd1a9cf7def96fa237c332bce513cb0de3e2"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md",
+      "rawSha256": "4E62F3489A63D5E5704C4561684A8D499468B1129E106830A7038FFBE0FEED24",
+      "rawBufferBlobSha1": "46cd0caaeec52d1ac002d89a43190b3f76ce557f",
+      "cleanFilterBlobSha1": "46cd0caaeec52d1ac002d89a43190b3f76ce557f"
+    }
+  ],
+  "validator": {
+    "command": "node --test archive/tools/archive-stage-validator-artifact-v2.test.mjs",
+    "disposition": "PASS",
+    "issues": [],
+    "tests": { "passed": 6, "failed": 0 },
+    "cases": [
+      "resolver-proven geometry RPM_ONLY null subUnitKey accepted",
+      "arbitrary null without proof rejected",
+      "altered resolver evidence/canonical hashes rejected",
+      "unknown curriculum rejected",
+      "unknown standardCourse rejected",
+      "missing subUnitKey rejected"
+    ]
+  },
+  "nextRequiredAction": "CREATE owner first reconciles the assignment artifactRawSha256 mismatch against the current working JS/source provenance. After exact input binding is restored, attach the resolver proof under each affected artifactDispositions row, add subUnitKey to metaDebtFields, record metaDebtReason, then run the normal V2/CODEX stage validator."
+}

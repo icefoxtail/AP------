@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { objectSha } from './pipeline-core/canonical.mjs';
+import { validateMetaValidatorReceipt, validateResolverEvidence } from './meta-foundation/rpm-active-resolver.mjs';
 
 export const QUALITY_CONTRACT_V2 = 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006';
 
@@ -57,9 +59,87 @@ function inspectControlEscapes(question, qid, issues) {
   }
 }
 
-function validateMeta(question, row, qid, issues) {
+function validateRpmOnlyNullSubUnitProjection(question, row, qid, repoRoot, issues) {
+  const debtFields = new Set(array(row?.metaDebtFields).map(String));
+  if (!debtFields.has('subUnitKey')) return false;
+  const projection = row?.rpmOnlyNullSubUnitProjection;
+  try {
+    const input = projection?.input;
+    const evidence = projection?.resolverEvidence;
+    const context = input?.curriculumContext || {};
+    const source = input?.sourceIdentity || {};
+    const solution = input?.solutionIdentity || {};
+    const exactScope = projection?.schemaVersion === 'JS_ARCHIVE_RPM_ONLY_NULL_SUBUNIT_PROJECTION_V1'
+      && context.grade === 'H2' && context.curriculum === '2015' && context.scope === '기하'
+      && ['기하', '기하와 벡터'].includes(context.standardCourse)
+      && question.standardCourse === context.standardCourse
+      && context.standardUnitKey === question.standardUnitKey
+      && context.subUnitKey === '';
+    const exactArtifact = question.subUnitKey === null
+      && source.sourceOrdinal === qid
+      && source.contentHash === objectSha(question.content ?? '')
+      && source.choicesHash === objectSha(question.choices ?? [])
+      && source.imageRefHash === objectSha({
+        image: question.image ?? '', visualAsset: question.visualAsset ?? '',
+        fullPageImagePath: question.fullPageImagePath ?? '', fullPageImageRelPath: question.fullPageImageRelPath ?? '',
+        sourceEvidencePath: question.sourceEvidencePath ?? '', sourcePageEvidencePaths: question.sourcePageEvidencePaths ?? [],
+      })
+      && (!question.sourceIdentityKey || source.sourceIdentityKey === question.sourceIdentityKey)
+      && solution.solutionHash === objectSha(question.solution ?? '');
+    const exactResolution = evidence?.semanticStatus === 'FINAL'
+      && evidence?.disposition === 'RPM_SEMANTIC_FINAL'
+      && evidence?.projectionStatus === 'PROJECTION_UNMATERIALIZED'
+      && evidence?.projectionReasonCode === 'RPM_ONLY_COMPATIBILITY_PROJECTION'
+      && evidence?.crosswalkFile === 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json'
+      && evidence?.crosswalkStatus === 'RPM_ONLY';
+    if (!repoRoot || !exactScope || !exactArtifact || !exactResolution) throw new Error('PROJECTION_BINDING_INVALID');
+    const validation = validateResolverEvidence(input, evidence, { repoRoot });
+    if (validation.status !== 'PASS') throw new Error('RESOLVER_EVIDENCE_INVALID');
+    const receipt = projection.validatorReceipt;
+    if (!validateMetaValidatorReceipt(receipt, evidence.evidenceSha, validation)) throw new Error('RESOLVER_RECEIPT_INVALID');
+    return true;
+  } catch {
+    issues.push('ARTIFACT_META_RPM_ONLY_NULL_SUBUNIT_PROOF_INVALID:q' + qid);
+    return false;
+  }
+}
+
+function loadH15GeometryProjectionAuthority(repoRoot) {
+  if (!repoRoot) throw new Error('REPO_ROOT_REQUIRED');
+  const standardUnitsPath = path.join(repoRoot, 'docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md');
+  const standardUnits = fs.readFileSync(standardUnitsPath, 'utf8');
+  const crosswalkPath = path.join(repoRoot, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json');
+  const crosswalk = JSON.parse(fs.readFileSync(crosswalkPath, 'utf8'));
+  const metadataPath = path.join(repoRoot, 'archive/data/question_metadata.json');
+  const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+  const registeredKeys = new Set(array(metadata.records).map(record => [record.standardCourse, record.standardUnitKey, record.subUnitKey].join('|')));
+  return { standardUnits, crosswalkRecords: array(crosswalk.records), registeredKeys };
+}
+
+function validateH15GeometrySubUnitProjection(question, qid, authority, issues) {
+  if (!/^H15-GV-\d{2}$/.test(String(question?.standardUnitKey || '')) || !nonEmpty(question?.subUnitKey)
+    || question.subUnitKey === question.standardUnitKey) return;
+  if (!authority) {
+    issues.push('ARTIFACT_META_GEOMETRY_RPM_ONLY_KEY_AUTHORITY_UNAVAILABLE:q' + qid);
+    return;
+  }
+  if (!authority.standardUnits.includes('| ' + question.standardUnitKey + ' |')) return;
+  const rows = authority.crosswalkRecords.filter(record => record.curriculum === '2015'
+      && record.standardUnitKey === question.standardUnitKey);
+  const rpmOnlyWithoutSubUnit = rows.length === 0 || rows.every(record => record.mappingStatus === 'RPM_ONLY'
+    && record.bindingStatus === 'NO_ACTIVE_MAPPING' && record.subUnitKey === null);
+  if (!rpmOnlyWithoutSubUnit) return;
+
+  const legacyKey = [question.standardCourse, question.standardUnitKey, question.subUnitKey].join('|');
+  if (!authority.registeredKeys.has(legacyKey)) issues.push('ARTIFACT_META_GEOMETRY_RPM_ONLY_NONCANONICAL_SUBUNIT_KEY:q' + qid);
+}
+
+function validateMeta(question, row, qid, repoRoot, h15GeometryAuthority, issues) {
+  const debtFields = new Set(array(row?.metaDebtFields).map(String));
+  const allowedNullSubUnit = validateRpmOnlyNullSubUnitProjection(question, row, qid, repoRoot, issues);
+  validateH15GeometrySubUnitProjection(question, qid, h15GeometryAuthority, issues);
   for (const field of ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth']) {
-    if (hasOwn(question, field) && !nonEmpty(question[field])) issues.push('ARTIFACT_META_VALUE_REQUIRED:'+field+':q'+qid);
+    if (hasOwn(question, field) && !nonEmpty(question[field]) && !(field === 'subUnitKey' && question[field] === null && allowedNullSubUnit)) issues.push('ARTIFACT_META_VALUE_REQUIRED:'+field+':q'+qid);
   }
   if (!Number.isInteger(question.standardUnitOrder) || question.standardUnitOrder < 0) issues.push('ARTIFACT_META_ORDER_INVALID:q'+qid);
   for (const field of META_FIELDS) {
@@ -78,8 +158,8 @@ function validateMeta(question, row, qid, issues) {
     issues.push('ARTIFACT_META_VALUE_REQUIRED:integrationPattern:q' + qid);
   }
 
-  const debtFields = new Set(array(row?.metaDebtFields).map(String));
-  if([...debtFields].some(f=>!['problemTypeKey','templateKey'].includes(f))) issues.push('ARTIFACT_META_DEBT_FIELD_INVALID:q'+qid);
+  if([...debtFields].some(f=>!['problemTypeKey','templateKey','subUnitKey'].includes(f))
+    || (debtFields.has('subUnitKey') && !allowedNullSubUnit)) issues.push('ARTIFACT_META_DEBT_FIELD_INVALID:q'+qid);
   for (const field of ['problemTypeKey', 'templateKey']) {
     if (hasOwn(question, field) && !nonEmpty(question[field])) {
       if (question[field] !== null) issues.push('ARTIFACT_META_NULL_OR_STRING_REQUIRED:'+field+':q'+qid);
@@ -261,6 +341,13 @@ export function validateArtifactContract({ stage, evidence, questions, repoRoot,
   if (!Array.isArray(questions) || questions.length === 0) {
     issues.push('ARTIFACT_QUESTION_BANK_REQUIRED');
   }
+  const needsH15GeometryAuthority = array(questions).some(question => /^H15-GV-\d{2}$/.test(String(question?.standardUnitKey || ''))
+    && nonEmpty(question?.subUnitKey) && question.subUnitKey !== question.standardUnitKey);
+  let h15GeometryAuthority = null;
+  if (needsH15GeometryAuthority) {
+    try { h15GeometryAuthority = loadH15GeometryProjectionAuthority(repoRoot); }
+    catch { h15GeometryAuthority = null; }
+  }
 
   if (['CREATE', 'R1'].includes(normalizedStage)) {
     if (evidence?.goldenCalibrationReviewed !== true) {
@@ -292,7 +379,7 @@ export function validateArtifactContract({ stage, evidence, questions, repoRoot,
 
     if (EXCLUDED_ANSWERS.has(String(question?.answer || ''))) issues.push('ARTIFACT_EXCLUDED_STUDENT_ITEM:q'+qid);
 
-    validateMeta(question, dispositions.get(qid) || rows.get(qid), qid, issues);
+    validateMeta(question, dispositions.get(qid) || rows.get(qid), qid, repoRoot, h15GeometryAuthority, issues);
     validateDifficulty(question, qid, issues);
 
     if (['CREATE', 'R1'].includes(normalizedStage)) {
