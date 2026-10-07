@@ -15,6 +15,7 @@ import { validateCreateEvidence } from './archive-stage-validator-create-v2.mjs'
 import { validateR1Evidence } from './archive-stage-validator-r1-v2.mjs';
 import { validateR2Evidence } from './archive-stage-validator-r2-v2.mjs';
 import { validateR3Evidence } from './archive-stage-validator-r3-v2.mjs';
+import { artifactSnapshot } from './archive-codex-artifact-io.mjs';
 
 const ALLOWED_STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'SOLUTION_UPGRADE']);
 const V2_VALIDATORS = Object.freeze({
@@ -99,6 +100,7 @@ function validateV2Evidence({ evidence, evidenceFile, examFile, stage, repoRoot,
     artifactContract,
     qualityContractVersion: artifactContract.qualityContractVersion,
     executionLine: evidence.executionLine,
+    ...(evidence.executionLine === 'CODEX' ? {technicalBinding: artifactSnapshot({sourceFile: examFile, evidenceFile, assetRoot: assetRoot || path.join(repoRoot, 'archive'), questions: binding.questions})} : {}),
     ...(evidence.executionLine === 'GPT_SCHEDULED' ? {campaignId: evidence.campaignId, stream: String(evidence.stream || '').toUpperCase()} : {}),
     issues,
   };

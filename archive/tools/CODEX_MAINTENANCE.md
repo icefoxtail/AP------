@@ -1,5 +1,31 @@
 # Codex capture and scoped registration tools
 
+## CREATE preflight, immutable freeze, and stable completion
+
+`archive-create-preflight.mjs --exam <current-js> --evidence <draft-evidence>` reports actual item HOLD counts/reasons, missing TeX command backslashes inside math, bare math environments, and explicit simple final-value/choice-marker inconsistencies. `REVIEW_REQUIRED` requires the stage worker's source/math review; it never rewrites source or solves a question. A reasoned genuine HOLD is `CARRY_ITEM_HOLD`, preserving the CREATE→R1→R2 recovery path. R3 artifact validation rejects remaining `itemStatus:HOLD`. Initial preflight is separate from the one normal end-of-stage generic validator.
+
+```powershell
+node archive/tools/archive-codex-stage-kit.mjs bind --root . --exam <current-js> --evidence <draft.json> --reviewed-source-sha <current-raw-sha256> --production-path <final-production-js> --output <fresh-bound.json>
+node archive/tools/archive-codex-stage-kit.mjs freeze --root . --stage R1 --reviewer <actual-session-id> --bundle <current-student-only.json> --answers <independent-answers.json> --asset-reads <actual-opened-assets.json> --output <fresh-original-freeze.json>
+node archive/tools/archive-codex-stage-kit.mjs adjudicate --root . --freeze <original-freeze.json> --corrections <qid-corrections.json> --output <fresh-adjudication.json>
+```
+
+`bind` computes raw SHA-256, official raw-buffer Git blob SHA-1, optional production-path clean-filter SHA-1, and each existing row's actual solution hash. It lifts `smallBoardContinuityStatus` only when that exact reviewed field already exists in a supported nested solution-layout record. Missing review fields remain missing; no quality verdict, Meta approval or new row is manufactured. Rebinding a different artifact requires the worker's explicit current reviewed raw SHA. Outputs require fresh paths.
+
+R1/R2 pre-freeze use only `freeze`, the safe current student bundle, and actually opened student assets. `bind`, preflight and raw-JS-based `seal` are forbidden before blind freeze. Answers use `{qid, independentAnswer, reasoning}` rows covering the complete current qid set. Asset acknowledgements use `{ref, sha256, opened:true}` after real inspection. Freeze writes exclusively and cannot overwrite; token/calculation/time corrections are separate adjudication files referencing the original bytes/SHA. This does not replace clean affected-scope review when a freeze is genuinely invalidated.
+
+After all mandatory evidence is final, run the normal V2/CODEX generic validator once. Its `technicalBinding` hashes actual source/evidence/asset bytes. Then seal the stable handoff:
+
+```powershell
+node archive/tools/archive-codex-stage-kit.mjs seal --root . --stage R1 --reviewer <actual-session-id> --exam <current-js> --evidence <final-evidence.json> --report <actual-raw-generic.json> --asset-root <assets-parent> --next-roster <next-examUid-or-NONE> --proof <other-required-proof> --output <fresh-complete-event.json>
+node archive/tools/archive-codex-stage-kit.mjs verify-complete --root . --event <complete-event.json> --event-sha <worker-returned-event-sha256>
+node archive/tools/archive-codex-stage-kit.mjs intake --root . --state <current-stage-state.json> --event <complete-event.json> --event-sha <worker-returned-event-sha256> --output <fresh-root-intake.json>
+```
+
+The completion event returns next stage, freed slot and next roster together. ROOT verifies its delivered SHA and all bound files before freeing/routing the slot. Any post-PASS source/evidence/asset/report/declared-proof mutation invalidates the event; the same worker must preserve old proof, make the necessary correction/revalidation and seal a fresh event. Optional evidence refinements are completed before normal validation. Sealing stage PASS never asserts actual render PASS or MAIN_DONE; R3 actual render and existing publication/waiver gates remain separate. Historical valid unchanged receipts can follow the existing reuse path without rerunning quality solely to obtain the new event format.
+
+Git remote byte readback uses one revision's tree object IDs and `cat-file blob`, with a 128 MiB buffer, so deep Unicode evidence paths do not become Windows revision:path filename-stat failures.
+
 These tools prepare machine evidence and target-only registration. They do not solve questions, approve Meta, review screenshots, publish, or declare MAIN_DONE.
 
 ## Capture capability before CREATE

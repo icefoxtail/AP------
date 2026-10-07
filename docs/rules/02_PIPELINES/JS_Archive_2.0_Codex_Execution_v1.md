@@ -474,6 +474,14 @@ CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하
 
 ## Implemented maintenance CLI — 2026-10-07
 
+### Stable worker completion maintenance — 2026-10-08
+
+신규 Codex stage는 `archive/tools/CODEX_MAINTENANCE.md`의 CREATE preflight 및 `archive-codex-stage-kit.mjs`를 사용한다. CREATE 출고 전 실제 HOLD count/reason, TeX 표기, 명시적 최종값과 선택기호의 불일치 후보를 먼저 표시하고 해당 worker가 원본·수학 근거로 처리한다. 정당한 CREATE HOLD는 R1/R2로 운반하고 R3의 남은 itemStatus HOLD는 release FAIL이다. 구조 lint는 source/수학/Visual 승인이 아니며 자동 발문 수정은 하지 않는다.
+
+기술 bind는 actual raw SHA-256·raw-buffer/clean-filter blob SHA·solution hash와 기존의 명시적 small-board 검수 필드만 결속한다. quality PASS/Meta 의미 판정/없는 reviewed field를 만들지 않는다. R1/R2 pre-freeze에서는 raw JS를 읽는 bind/preflight/seal을 금지하고 current student-only bundle과 실제 asset 열람 후 immutable freeze만 사용한다. original freeze는 exclusive-write로 보존하고 adjudication을 별도 파일로 기록한다.
+
+필수 evidence를 모두 작성한 최종 상태에서 normal generic validator를 1회 실행한 뒤 fresh stable completion event를 seal한다. ROOT는 worker가 반환한 event SHA와 source/evidence/assets/raw report/추가 필수 proof의 현재 bytes를 확인하고 nextStage·freedSlot·nextRosterTarget을 함께 수납한다. 완료 event 뒤 파일 수정은 이전 event를 무효화한다. 실제 오류·수정에 필요한 재검증과 fresh event는 같은 session에서 수행하고 정상 PASS 뒤 임의 optional refinement는 하지 않는다. 과거의 유효한 unchanged receipt는 기존 reuse 경로를 유지하며 새 event 포맷만을 위해 재검수하지 않는다. R3 actual render/ROOT §25/publication/MAIN_DONE gate는 별도로 유지한다.
+
 Run bootstrap can use `archive/tools/capture-codex-exam.mjs --preflight` to actually verify isolated Chrome, a physical PNG and the required mobile viewport before CREATE. Six-case collection uses the same CLI with the assigned JS and real asset root. It emits `CAPTURED_REVIEW_REQUIRED`, never `RENDER_PASS`. R3 reviews its actual PNGs; `build-codex-render-receipt.mjs` requires SHA-bound R3 coverage/judgment for all six cases and consumes the existing render receipt validator. API or machine capture refusal remains an honest blocker; existing §25 authority and source quality gates are unchanged.
 
 For one new production exam, `prepare-target-registration.mjs` extracts only its rows from isolated canonical generator outputs. `register-target-exam.mjs` defaults to validated dry-run and requires explicit `--apply`, exact source/assets/HEAD/catalog/baseline hashes and full target UID/ordinal coverage. It preserves non-target records, runtime tuples and dictionary IDs, rolls back its own failed writes, and does not grant semantic review or automatic eligibility. ROOT performs required registration validation, target-only publication and remote readback before MAIN_DONE. A whole-generator unrelated failure is preserved rather than forcing PASS or changing unrelated exams. CLI usage and tested boundaries: `archive/tools/CODEX_MAINTENANCE.md`.

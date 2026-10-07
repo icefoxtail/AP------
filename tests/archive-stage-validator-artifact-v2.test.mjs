@@ -14,7 +14,7 @@ const negativePath='archive/fixtures/review-negative-regressions/negative/README
 const negativeSample={path:negativePath,sha256:solutionSha256('known negative case'),observation:'생략된 중간식은 PASS 불가'};
 fs.writeFileSync(path.join(root,'archive/data/codex-quality-calibration-registry-v2.json'),JSON.stringify({qualityContractVersion:QUALITY_CONTRACT_V2,goldenPaths:samples.map(s=>s.path),negativePaths:[negativePath]}));
 fs.writeFileSync(path.join(root,'archive/data/gpt-quality-calibration-registry-v2.json'),JSON.stringify({qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'GPT_SCHEDULED',goldenPaths:samples.map(s=>s.path),negativePaths:[negativePath]}));
-const question=(extra={})=>({id:1,level:1,category:'대수',originalCategory:'대수',standardCourse:'중등수학',standardUnitKey:'UNIT',standardUnit:'방정식',standardUnitOrder:1,subUnitKey:'SUB',subUnit:'일차방정식',subUnitConfidence:'candidate_evidence',subUnitClassificationDepth:'complete_candidate',questionType:'객관식',layoutTag:'grid',wide:false,tags:[],content:'x+1=2에서 x를 구하시오.',choices:['1','2','3','4','5'],answer:'①',solution:'x+1=2\nx=2-1=1',problemTypeKey:'PT_SAMPLE',templateKey:'TPL_SAMPLE',crossConceptKeys:[],conditionKeys:[],integrationPattern:'NONE',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',...extra});
+const question=(extra={})=>({id:1,level:'중',category:'대수',originalCategory:'대수',standardCourse:'중등수학',standardUnitKey:'UNIT',standardUnit:'방정식',standardUnitOrder:1,subUnitKey:'SUB',subUnit:'일차방정식',subUnitConfidence:'candidate_evidence',subUnitClassificationDepth:'complete_candidate',questionType:'객관식',layoutTag:'grid',wide:false,tags:[],content:'x+1=2에서 x를 구하시오.',choices:['1','2','3','4','5'],answer:'①',solution:'x+1=2\nx=2-1=1',problemTypeKey:'PT_SAMPLE',templateKey:'TPL_SAMPLE',crossConceptKeys:[],conditionKeys:[],integrationPattern:'NONE',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',...extra});
 const row=q=>({qid:q.id,sourceMode:'ORIGINAL',axisEvidence:{questionLayout:'PASS',solutionLayout:'PASS',meta:'PASS',visualSvg:'PASS'},provenanceEvidence:{sourceParity:'PASS'},smallBoardContinuityStatus:'PASS',solutionSha256:solutionSha256(q.solution)});
 function run(qs=[question()],{stage='CREATE',change=()=>{},strict=true,omitTitle=false}={}){
  const bytes=Buffer.from((omitTitle?'':'window.examTitle="fixture";')+'window.questionBank='+JSON.stringify(qs)+';'),exam=path.join(root,'fixture.js'),ev=path.join(root,'evidence.json');fs.writeFileSync(exam,bytes);
@@ -35,6 +35,7 @@ test('missing basic fields, bad choices type and blank R3 solution fail',()=>{
  assert.equal(run([q]).ok,false);assert.equal(run([question({choices:{bad:true}})]).ok,false);assert.equal(run([question({solution:''})],{stage:'R3'}).ok,false);
 });
 test('invalid difficulty enums and non-null Meta placeholders fail',()=>{
+ assert.equal(run([question({level:1})]).ok,false);
  for(const field of ['difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(run([question({[field]:'MADE_UP'})]).ok,false);
  assert.equal(run([question({templateKey:{bad:true}})],{change:e=>{e.rows[0].metaDebtFields=['templateKey'];e.rows[0].metaDebtReason='not a null';}}).ok,false);
 });
