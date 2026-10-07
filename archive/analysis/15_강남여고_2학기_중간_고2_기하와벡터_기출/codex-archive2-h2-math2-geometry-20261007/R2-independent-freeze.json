@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R2_BLIND_FREEZE_V1",
+  "status": "FROZEN_BEFORE_UPSTREAM_DISCLOSURE",
+  "examUid": "15_강남여고_2학기_중간_고2_기하와벡터_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceIdentity": {
+    "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+    "sourceRawSha256": "57ddd0ed12dc986df77218e2fbe906b6b878813c5a17df2f3e9168420dfd0873",
+    "sourceRawBufferBlobSha1": "19e785740d016efb7d1044da5c25db4542ab170a",
+    "studentBundleSha256": "69f068f45e813cb1da018bf6261bfa4b7278935dc56d46676e85dd8a5449fda9",
+    "expectedHead": "4bba2a76aab03235c2e9b1a7758725242107d57c"
+  },
+  "studentInputCompleteness": {
+    "qidCoverage": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+    "allFiveReferencedStudentImagesActuallyOpened": true,
+    "imageHashesMatchedAssignment": true,
+    "imageObservations": {
+      "q06": "Regular hexagon ABCDEF with three diagonals AD, BE, CF meeting at O.",
+      "q10": "Triangle ABC; M is midpoint of BC; K lies on AM and is midpoint of AM; vector a is AB and vector b is AC.",
+      "q11": "Regular hexagon ABCDEF inscribed in a circle.",
+      "q22": "Hyperbola with tangent at P meeting its two asymptotes at A and B; diagram labels the upper and lower branches/intersections.",
+      "q23": "Grid vectors read as a=(-2,2), b=(-3,1), c=(3,5) in Cartesian coordinates."
+    },
+    "curriculumMethod": "Solved directly from the supplied student prompts and diagrams using conic sections, differentiation, vectors, analytic geometry, and Euclidean area methods. No Math II/H1 answer verdict or prior review verdict was inherited."
+  },
+  "coverageCount": 23,
+  "answers": [
+    {"qid":1,"answer":"10","choice":3,"reasoning":"y^2=4px gives p=5; focus (5,0), directrix x=-5, so a+b-c=5+0-(-5)=10."},
+    {"qid":2,"answer":"20","choice":2,"reasoning":"Ellipse has semiaxes 5,3 and positive focus coordinate 4; full axis lengths m=10,n=6, hence m+n+p=20."},
+    {"qid":3,"answer":"7","choice":3,"reasoning":"Transverse axis length 6 gives a=3; c=5 and c^2=a^2+b^2 give b=4; a+b=7."},
+    {"qid":4,"answer":"sqrt(3)/2","choice":5,"reasoning":"Normalize to x^2/4-y^2/3=1; asymptote slope is sqrt(3)/2, equal to tan(theta)."},
+    {"qid":5,"answer":"-(2x+3y)/(3(x-2y))","choice":1,"reasoning":"Implicit differentiation gives 2x+3y+(3x-6y)y'=0; solve for y'."},
+    {"qid":6,"answer":"(가),(나),(다)","choice":5,"reasoning":"Using unit-hexagon coordinates A=(-1/2,sqrt(3)/2), F=(1/2,sqrt(3)/2), E=(1,0), D=(1/2,-sqrt(3)/2), C=(-1/2,-sqrt(3)/2), B=(-1,0), the three displayed vector equalities/norm are true; the last sum is (2,-2sqrt(3)) with norm 4."},
+    {"qid":7,"answer":"2e^(t+2)","choice":4,"reasoning":"dy/dt=2e^(2t+3), dx/dt=e^(t+1); their ratio is 2e^(t+2)."},
+    {"qid":8,"answer":"sqrt(13)","choice":2,"reasoning":"|a-b|^2=|a|^2+|b|^2-2|a||b|cos(pi/3)=16+9-12=13."},
+    {"qid":9,"answer":"-9","choice":2,"reasoning":"Parallelism gives (a,2)=-(3,-2), so a=-3; perpendicularity gives (-3,2) dot (-4,b)=12+2b=0, b=-6."},
+    {"qid":10,"answer":"-1/2","choice":2,"reasoning":"With A as origin, M=(a+b)/2 and K=(a+b)/4; BK=K-a=(-3/4)a+(1/4)b, so m+n=-1/2."},
+    {"qid":11,"answer":"2","choice":4,"reasoning":"For a regular hexagon centered at O, sum of vertex position vectors is zero; AB+AC+AD+AE+AF=-6OA, whose norm is 6 times the side length. Thus side=12/6=2."},
+    {"qid":12,"answer":"1","choice":3,"reasoning":"P and Q are each affine combinations of A,B with coefficient sum 1 (internal and external division); their midpoint M also has coefficient sum 1, so s+t=1."},
+    {"qid":13,"answer":"2","choice":1,"reasoning":"The two line direction vectors are (1,m) and (4,2). For m=2, cosine of the angle between them is |8+4|/(sqrt(5)sqrt(20))=4/5; among listed integer choices this gives m=2."},
+    {"qid":14,"answer":"10","choice":2,"reasoning":"AP dot BP=0 describes the circle with diameter AB; center is (0,2) and r^2=|AB|^2/4=32/4=8, so a+b+r^2=10."},
+    {"qid":15,"answer":"3sqrt(5)/5","choice":5,"reasoning":"One tangent is vertical at x=2 (ellipse rightmost point); the other has slope 2 from the tangent condition. The acute angle to a vertical line has tan=1/2, so sin+cos=(1+2)/sqrt(5)=3sqrt(5)/5."},
+    {"qid":16,"answer":"4","choice":4,"reasoning":"dy/dx=(t^n-1)/(t^2-1), whose limit at t=1 is n/2; multiplying by 8/n gives 4."},
+    {"qid":17,"answer":"1/3","choice":3,"reasoning":"For d=a dot b, squaring the condition gives 6kd=k^2+1. Since k>0, d=(k+1/k)/6 is minimized at k=1, giving cos(theta)=d=1/3."},
+    {"qid":18,"answer":"pi-2","choice":5,"reasoning":"The two radius-2 disks have centers distance 2sqrt(2); their lens area is 2pi-4. The half-plane x+y<=2 selects exactly half the symmetric lens, so area=pi-2."},
+    {"qid":19,"answer":"10","choice":1,"reasoning":"The vector equation makes P the centroid: P=((6,12)+(4,5)+(8,7))/3=(6,8), so OP=10."},
+    {"qid":20,"answer":"y=4x-15","choice":null,"reasoning":"At t=1, (x,y)=(5,5); dy/dx=(6t+2)/2=4, hence tangent y-5=4(x-5)."},
+    {"qid":21,"answer":"(1) AB=-5a+b, AC=2a-(k+1)b; (2) k=-3/5","choice":null,"reasoning":"Subtract the given position vectors. Collinearity of coefficient pairs (-5,1) and (2,-k-1) requires determinant 5k+3=0."},
+    {"qid":22,"answer":"8","choice":null,"reasoning":"At P=(3,1), the hyperbola tangent is x-y=2. Its intersections with y=x/sqrt(3) and y=-x/sqrt(3) have squared distances from O equal to 16+8sqrt(3) and 16-8sqrt(3); the product of distances is sqrt(64)=8."},
+    {"qid":23,"answer":"1/2","choice":null,"reasoning":"From the opened grid, a=(-2,2), b=(-3,1), c=(3,5). Solving c=pa+qb gives 2p+q=5 and -2p-3q=3, hence p=9/2,q=-4 and p+q=1/2."}
+  ],
+  "freezeProvenance": {
+    "answerSourceExposureBeforeFreeze": false,
+    "solutionSourceExposureBeforeFreeze": false,
+    "freezeCreatedBy": "R2 independent solve from current student-only bundle and all referenced images.",
+    "mustPreserveThisFreeze": true
+  }
+}

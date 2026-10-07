@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_GOLDEN_PREFLIGHT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "15_강남여고_2학기_중간_고2_기하와벡터_기출",
+  "preflightTiming": "BEFORE_TARGET_SOLUTION_AUTHORING",
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "observation": "중심과 반지름을 표준형에서 분리해 이동 순서마다 좌표를 계산하고, 변환식·중간 좌표·최종 원의 식을 각각 줄로 남긴다.",
+          "axes": [
+            "solution_layout",
+            "small_board_continuity"
+          ]
+        },
+        {
+          "qid": 9,
+          "solutionSha256": "9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+          "observation": "접선식과 기울기 변환을 보여 준 뒤 수직 기울기 조건을 대입하고 정수 답까지 계산한다.",
+          "axes": [
+            "solution_layout",
+            "small_board_continuity"
+          ]
+        }
+      ],
+      "visualReview": [
+        {
+          "qid": 7,
+          "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "sha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "observation": "실제 세 중심 좌표와 같은 반지름 원을 표시한다. 평행이동·원점대칭 순서와 최종식이 SVG 수치와 일치한다."
+        },
+        {
+          "qid": 9,
+          "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+          "sha256": "0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+          "observation": "원 위 P=(3,2)의 반지름 OP와 접선을 표시한다. 패널의 접선식 3x+2y=13, 기울기 -3/2 및 직선 기울기 m/3이 계산과 맞는다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "두 직선을 각각 y=mx+b로 정리하고 수직 조건의 곱, 중간식, k=6을 분리해 보인다.",
+          "axes": [
+            "solution_layout",
+            "small_board_continuity"
+          ]
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "observation": "완전제곱식 두 항과 상수 정리를 거쳐 중심·반지름을 표준형과 비교한다.",
+          "axes": [
+            "solution_layout",
+            "small_board_continuity"
+          ]
+        }
+      ],
+      "visualReview": [
+        {
+          "qid": 2,
+          "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "sha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "observation": "SVG 실제 선식 x+3y+2=0 및 6x-2y-1=0이 각각 표시되고 두 번째 기울기 k/2, k=6과 일치한다."
+        },
+        {
+          "qid": 3,
+          "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+          "sha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+          "observation": "원 중심 (-1,3)과 반지름 2, 표준형 (x+1)^2+(y-3)^2=2^2가 표시와 일치한다."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "실패 SVG는 본문 문구가 아니라 실제 선·점 좌표와 topology에서 사실을 재계산한다. 보기 구조는 해설에서도 판정별 독립 block으로 나눈다. runtime MathJax escape를 검수한다."
+  },
+  "knownGoldenExceptionExcluded": "25_제일고 q18 visual was not selected."
+}

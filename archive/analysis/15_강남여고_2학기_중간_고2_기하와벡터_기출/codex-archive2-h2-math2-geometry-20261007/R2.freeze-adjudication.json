@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R2_FREEZE_ADJUDICATION_V1",
+  "status": "ADJUDICATED_IN_SAME_R2_SESSION_AFTER_FREEZE",
+  "examUid": "15_강남여고_2학기_중간_고2_기하와벡터_기출",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "originalFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\15_강남여고_2학기_중간_고2_기하와벡터_기출\\codex-archive2-h2-math2-geometry-20261007\\R2-independent-freeze.json",
+  "originalFreezeSha256": "'+$freezeSha+'",
+  "postfreezeExtractorPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\15_강남여고_2학기_중간_고2_기하와벡터_기출\\R2.postfreeze-student-extract.json",
+  "postfreezeExtractorSha256": "3ca3f25b7fb056fdf0ec5c31fbcd2b184a548921d4ec1af49f6007a3e39d4933",
+  "decisions": [
+    {
+      "qid": 14,
+      "locus": "answer computation in the original independent freeze",
+      "originalFrozenAnswer": "10",
+      "correctedIndependentAnswer": "7",
+      "reasoning": "AB^2=(2-(-2))^2+(1-3)^2=20, so the diameter circle has r^2=AB^2/4=5. Its center is (0,2), hence a+b+r^2=0+2+5=7, choice ①. The source solution independently shows the same computation and stored answer ①.",
+      "storedAnswer": "①",
+      "disposition": "MATCH_AFTER_SAME_SESSION_ADJUDICATION"
+    },
+    {
+      "qid": 23,
+      "locus": "diagram vector direction reading in the original independent freeze",
+      "originalFrozenAnswer": "1/2",
+      "correctedIndependentAnswer": "-7/4",
+      "reasoning": "The opened grid diagram shows vector a pointing down-left, so a=(-2,-2); b=(-3,1) and c=(3,5). Thus -2p-3q=3 and -2p+q=5, giving q=1/2, p=-9/4 and p+q=-7/4. The source solution gives the same vectors, equations and result.",
+      "storedAnswer": "-7/4",
+      "disposition": "MATCH_AFTER_SAME_SESSION_ADJUDICATION"
+    }
+  ],
+  "coverage": {"qidCount": 23, "unchangedIndependentFreezeQids": [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22], "adjudicatedQids": [14,23], "finalCoverageCount": 23},
+  "provenance": {"preFreezeAnswerExposure": false, "originalFreezePreservedUnchanged": true, "postfreezeComparisonOnlyAfterFullCoverageFreeze": true}
+}
