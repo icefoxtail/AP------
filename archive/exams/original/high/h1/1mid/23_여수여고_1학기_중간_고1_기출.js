@@ -10,8 +10,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "덧셈뺄셈",
+      "계산"
+    ],
     "wide": false,
     "content": "두 다항식 $A=x^{2}+5xy-4y^{2}$, $B=2x^{2}-xy+y^{2}$에 대하여 $2A-3B$를 구하면? [3.3점]",
     "choices": [
@@ -22,18 +41,7 @@ window.questionBank = [
       "$-4x^{2}+13xy-11y^{2}$"
     ],
     "answer": "⑤",
-    "tags": [
-      "객관식",
-      "다항식",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n다항식의 대입 시 괄호를 사용하여 부호를 주의하며 동류항끼리 계산한다.\n\n조건 정리\n- $A = x^2 + 5xy - 4y^2$\n- $B = 2x^2 - xy + y^2$\n\n풀이 과정\n$2A-3B$에 주어진 식을 대입한다.\n$2(x^2 + 5xy - 4y^2) - 3(2x^2 - xy + y^2)$\n$= (2x^2 + 10xy - 8y^2) - (6x^2 - 3xy + 3y^2)$\n$= 2x^2 - 6x^2 + 10xy + 3xy - 8y^2 - 3y^2$\n$= -4x^2 + 13xy - 11y^2$\n\n결론\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
-    "subUnit": "다항식의 기본 연산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "solution": "$2A-3B$에 두 다항식을 그대로 대입한다.\n$2A-3B=2(x^2+5xy-4y^2)-3(2x^2-xy+y^2)$\n$=2x^2+10xy-8y^2-6x^2+3xy-3y^2$\n$=-4x^2+13xy-11y^2$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 2,
@@ -44,8 +52,28 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "곱셈공식",
+      "대칭식",
+      "계산"
+    ],
     "wide": false,
     "content": "$x-y=1$, $x^{2}+y^{2}=4$일 때, $x^{3}-y^{3}$의 값을 구하면? [3.5점]",
     "choices": [
@@ -56,18 +84,7 @@ window.questionBank = [
       "$\\frac{15}{2}$"
     ],
     "answer": "①",
-    "tags": [
-      "객관식",
-      "다항식",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n곱셈 공식의 변형을 이용하여 $xy$의 값을 먼저 구한 후, $x^3-y^3$의 값을 계산한다.\n\n조건 정리\n- $x-y=1$\n- $x^2+y^2=4$\n\n풀이 과정\n1. $(x-y)^2 = x^2 - 2xy + y^2$을 이용한다.\n$1^2 = 4 - 2xy \\implies 2xy = 3 \\implies xy = \\frac{3}{2}$\n2. $x^3-y^3 = (x-y)^3 + 3xy(x-y)$에 대입한다.\n$x^3-y^3 = 1^3 + 3 \\cdot \\left(\\frac{3}{2}\\right) \\cdot 1 = 1 + \\frac{9}{2} = \\frac{11}{2}$\n\n결론\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
-    "subUnit": "다항식의 기본 연산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "solution": "먼저 $xy$를 구한다.\n$(x-y)^2=x^2-2xy+y^2$이므로\n$1=4-2xy$이다.\n따라서\n$2xy=3$,\n$xy=\\dfrac32$이다.\n\n이제\n$x^3-y^3=(x-y)^3+3xy(x-y)$를 이용하면\n$x^3-y^3=1^3+3\\cdot\\dfrac32\\cdot1$\n$=1+\\dfrac92$\n$=\\dfrac{11}{2}$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 3,
@@ -78,8 +95,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "전개",
+      "계수비교"
+    ],
     "wide": false,
     "content": "$(2x-1)(2x^{2}+x+1)$을 전개하면 $ax^{3}+bx^{2}+cx-1$이다. $a-b+c$의 값은? (단, $a, b, c$는 상수이다.) [3.7점]",
     "choices": [
@@ -90,19 +126,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "tags": [
-      "객관식",
-      "다항식",
-      "전개",
-      "계수비교",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n분배법칙을 이용하여 다항식을 전개한 후, 동류항끼리 정리하여 계수를 비교한다.\n\n조건 정리\n- $(2x-1)(2x^2+x+1) = ax^3+bx^2+cx-1$\n\n풀이 과정\n주어진 식을 분배법칙으로 전개한다.\n$(2x-1)(2x^2+x+1) = 2x(2x^2+x+1) - 1(2x^2+x+1)$\n$= 4x^3 + 2x^2 + 2x - 2x^2 - x - 1$\n$= 4x^3 + x - 1$\n계수를 비교하면 $a=4, b=0, c=1$이다.\n$a-b+c = 4 - 0 + 1 = 5$\n\n결론\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
-    "subUnit": "다항식의 기본 연산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "solution": "주어진 곱을 전개한다.\n$(2x-1)(2x^2+x+1)$\n$=4x^3+2x^2+2x-2x^2-x-1$\n$=4x^3+x-1$이다.\n\n$ax^3+bx^2+cx-1$과 계수를 비교하면\n$a=4$, $b=0$, $c=1$이다.\n따라서\n$a-b+c=4-0+1=5$이므로 정답은 ⑤이다."
   },
   {
     "id": 4,
@@ -113,8 +137,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+    "subUnit": "다항식의 나눗셈",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_DIVISION",
+    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "나눗셈",
+      "나머지"
+    ],
     "wide": false,
     "content": "다항식 $A=2x^{4}+3x^{3}+4x+5$, $B=x^{2}+1$에 대하여 $A$를 $B$로 나누었을 때의 나머지는? [4점]",
     "choices": [
@@ -125,18 +168,7 @@ window.questionBank = [
       "$x+10$"
     ],
     "answer": "②",
-    "tags": [
-      "객관식",
-      "다항식",
-      "나머지정리",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n다항식의 나눗셈은 직접 나눗셈을 이용하여 차수가 나누는 식보다 작아질 때까지 계산한다.\n\n조건 정리\n- $A = 2x^4 + 3x^3 + 4x + 5$\n- $B = x^2 + 1$\n\n풀이 과정\n직접 나눗셈을 수행한다.\n1. $2x^4$을 맞추기 위해 몫에 $2x^2$을 곱한다. $2x^2(x^2+1) = 2x^4+2x^2$.\n위 식에서 빼면 $3x^3 - 2x^2 + 4x + 5$가 남는다.\n2. $3x^3$을 맞추기 위해 몫에 $3x$를 곱한다. $3x(x^2+1) = 3x^3+3x$.\n위 식에서 빼면 $-2x^2 + x + 5$가 남는다.\n3. $-2x^2$을 맞추기 위해 몫에 $-2$를 곱한다. $-2(x^2+1) = -2x^2-2$.\n위 식에서 빼면 $x + 7$이 남는다. 나머지의 차수가 $B$보다 작으므로 나눗셈이 종료된다.\n따라서 나머지는 $x+7$이다.\n\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
-    "subUnit": "다항식의 나눗셈",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "solution": "$A$를 $B=x^2+1$로 나눈다.\n먼저\n$2x^4\\div x^2=2x^2$이므로\n$A-2x^2B$\n$=(2x^4+3x^3+4x+5)-(2x^4+2x^2)$\n$=3x^3-2x^2+4x+5$이다.\n\n다음으로\n$3x^3\\div x^2=3x$이므로\n$(3x^3-2x^2+4x+5)-3xB$\n$=-2x^2+x+5$이다.\n\n마지막으로\n$-2x^2\\div x^2=-2$이므로\n$(-2x^2+x+5)-(-2)B$\n$=x+7$이다.\n\n나머지의 차수는 $2$보다 작으므로 나머지는 $x+7$이다.\n따라서 정답은 ②이다."
   },
   {
     "id": 5,
@@ -147,8 +179,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "나머지정리",
+      "항등식",
+      "합성제수"
+    ],
     "wide": false,
     "content": "다항식 $P(x)$를 $x-a$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $R$이라 하자. $x^{2}P(x)$를 $x(x-a)$로 나누었을 때의 나머지를 $T(x)$라 할 때, $T(a)$의 값은? (단, $a, R$은 상수이다.) [4.3점]",
     "choices": [
@@ -159,21 +210,7 @@ window.questionBank = [
       "$3aR$"
     ],
     "answer": "②",
-    "tags": [
-      "객관식",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "인수분해",
-      "도형",
-      "원",
-      "대입"
-    ],
-    "solution": "[키포인트]\n나눗셈의 관계식을 항등식으로 세우고, 식을 변형하여 새로운 나누는 식에 대한 나머지를 구한다.\n\n조건 정리\n- $P(x) = (x-a)Q(x) + R$\n\n풀이 과정\n1. 양변에 $x^2$을 곱한다.\n$x^2P(x) = x^2(x-a)Q(x) + x^2R$\n2. 나누는 식이 $x(x-a)$이므로, 우변을 이 형태로 묶어낸다.\n$x^2R$을 $x(x-a)$로 나누었을 때의 형태로 변형한다.\n$x^2R = R(x^2 - ax + ax) = R(x^2 - ax) + aRx = Rx(x-a) + aRx$\n3. 원래 식에 대입하여 묶는다.\n$x^2P(x) = x \\cdot x(x-a)Q(x) + Rx(x-a) + aRx$\n$= x(x-a)[xQ(x) + R] + aRx$\n4. $x(x-a)$로 나누었을 때 몫은 $xQ(x)+R$이고, 나머지는 $T(x) = aRx$이다.\n$T(a) = a \\cdot R \\cdot a = a^2R$이다.\n\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
-    "subUnit": "나머지정리와 인수정리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "$P(x)$를 $x-a$로 나눈 관계를 쓰면\n$P(x)=(x-a)Q(x)+R$이다.\n\n양변에 $x^2$을 곱하면\n$x^2P(x)=x^2(x-a)Q(x)+Rx^2$이다.\n\n여기서\n$Rx^2=R\\{x(x-a)+ax\\}$\n$=Rx(x-a)+aRx$이므로\n$x^2P(x)$를 $x(x-a)$로 나눈 나머지는\n$T(x)=aRx$이다.\n\n따라서\n$T(a)=aR\\cdot a=a^2R$이므로 정답은 ②이다."
   },
   {
     "id": 6,
@@ -184,8 +221,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "subUnit": "항등식과 계수비교",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "항등식",
+      "참거짓",
+      "전개"
+    ],
     "wide": false,
     "content": "다음 중 $x$에 대한 항등식인 것을 모두 고르면? [3.7점]",
     "choices": [
@@ -196,21 +252,7 @@ window.questionBank = [
       "$x-3=x+2$"
     ],
     "answer": "②, ③",
-    "tags": [
-      "객관식",
-      "항등식",
-      "나머지정리",
-      "인수분해",
-      "이차방정식",
-      "지수",
-      "참거짓",
-      "대입"
-    ],
-    "solution": "[키포인트]\n항등식은 미지수에 어떤 값을 대입해도 항상 참이 되는 등식이며, 식을 정리했을 때 좌변과 우변이 완벽히 일치해야 한다.\n\n풀이 과정\n① $x^2=2x-3 \\implies x^2-2x+3=0$ (이차방정식)\n② 좌변: $3x+3+x = 4x+3$, 우변: $4x+4-1 = 4x+3$. 좌변과 우변이 같으므로 항등식이다.\n③ 좌변: $(x+2)^2 - 8x = x^2+4x+4-8x = x^2-4x+4 = (x-2)^2$. 우변과 같으므로 항등식이다.\n④ 좌변: $(x+2)^2 - (x-2)^2 = (x^2+4x+4) - (x^2-4x+4) = 8x$. 우변인 $4x$와 다르므로 항등식이 아니다.\n⑤ $x-3=x+2 \\implies -3=2$ (불능, 해가 없는 방정식)\n\n결론\n따라서 정답은 ②, ③이다.",
-    "subUnitKey": "H15-SA-02-IDENTITY",
-    "subUnit": "항등식과 계수비교",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "항등식은 모든 $x$에 대하여 항상 성립해야 한다. 각 보기를 정리한다.\n\n① $x^2=2x-3$은\n$x^2-2x+3=0$이라는 방정식이므로 항등식이 아니다.\n\n② 왼쪽은\n$3(x+1)+x=4x+3$이고,\n오른쪽은\n$4(x+1)-1=4x+3$이다.\n항상 같으므로 항등식이다.\n\n③ 왼쪽은\n$(x+2)^2-8x$\n$=x^2+4x+4-8x$\n$=x^2-4x+4$\n$=(x-2)^2$이다.\n항등식이다.\n\n④ 왼쪽은\n$(x+2)^2-(x-2)^2=8x$이므로\n오른쪽 $4x$와 항상 같지 않다.\n항등식이 아니다.\n\n⑤ $x-3=x+2$를 정리하면 $-3=2$가 되어 항상 성립하지 않는다.\n\n따라서 항등식은 ②, ③이다."
   },
   {
     "id": 7,
@@ -221,8 +263,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "subUnit": "항등식과 계수비교",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "항등식",
+      "나머지정리",
+      "계수비교"
+    ],
     "wide": false,
     "content": "다음은 $x$의 값에 관계없이 등식 $(x+2)^{3}=a(x-1)^{3}+b(x-1)^{2}+c(x-1)+d$가 항상 성립할 때, 상수 $a, b, c, d$에 대하여 $a-b+c-d$의 값을 구하는 과정이다. 다음 (가), (나), (다)에 들어갈 말로 알맞게 짝지은 것을 고르면? [4.3점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n  <tr>\n    <td>\n      $(x+2)^{3}=a(x-1)^{3}+b(x-1)^{2}+c(x-1)+d$를 다시 정리하면<br>\n      $(x+2)^{3}=(x-1)$ <b>(가)</b> $+d$이므로 나머지 정리를 이용하면 $d=$ <b>(나)</b> $^{3}$이다.<br>\n      상수 $c$를 구하기 위하여 <b>(가)</b> $=(x-1)Q(x)+c$이므로 $c=27$이다.<br>\n      이 나눗셈 과정을 반복하여 $a, b, c, d$의 값을 구할 수 있고 $a-b+c-d$의 값은 <b>(다)</b> 이다.\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
@@ -233,21 +294,7 @@ window.questionBank = [
       "(가) $a(x-1)^2+b(x-1)+c$, (나) 1, (다) -8"
     ],
     "answer": "③",
-    "tags": [
-      "객관식",
-      "항등식",
-      "나머지정리",
-      "인수분해",
-      "계수비교",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n조립제법을 연속으로 사용하여 $(x-1)$에 대한 내림차순으로 정리된 식의 계수를 찾는다.\n\n조건 정리\n- $(x+2)^3 = a(x-1)^3+b(x-1)^2+c(x-1)+d$\n\n풀이 과정\n1. 우변을 $(x-1)$로 묶으면 $(x-1)[a(x-1)^2+b(x-1)+c]+d$가 되므로, (가)는 $a(x-1)^2+b(x-1)+c$이다.\n2. 양변에 $x=1$을 대입하면 $(1+2)^3 = d \\implies d = 3^3 = 27$이므로 (나)는 $3$이다.\n3. 좌변 $(x+2)^3 = ((x-1)+3)^3 = (x-1)^3 + 9(x-1)^2 + 27(x-1) + 27$이다.\n항등식의 계수 비교에 의해 $a=1, b=9, c=27, d=27$임을 알 수 있다.\n4. 구하고자 하는 값 $a-b+c-d = 1 - 9 + 27 - 27 = -8$이므로 (다)는 $-8$이다.\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-02-IDENTITY",
-    "subUnit": "항등식과 계수비교",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "$t=x-1$로 놓으면 $x+2=t+3$이다.\n따라서\n$(x+2)^3=(t+3)^3$\n$=t^3+9t^2+27t+27$이다.\n\n다시 $t=x-1$을 대입하면\n$(x+2)^3=(x-1)^3+9(x-1)^2+27(x-1)+27$이다.\n\n주어진 항등식과 비교하면\n$a=1$, $b=9$, $c=27$, $d=27$이다.\n\n또 우변을 $(x-1)$로 묶으면\n$(x-1)\\{a(x-1)^2+b(x-1)+c\\}+d$이므로\n(가)는 $a(x-1)^2+b(x-1)+c$이다.\n$x=1$을 대입하면 $d=3^3$이므로 (나)는 $3$이다.\n\n마지막으로\n$a-b+c-d=1-9+27-27=-8$이므로 (다)는 $-8$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 8,
@@ -258,8 +305,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "인수정리",
+      "나머지정리",
+      "삼차식"
+    ],
     "wide": false,
     "content": "최고차항의 계수가 1인 삼차식 $P(x)$에 대하여 $P(2-x)$를 $(x-2)$로 나누었을 때 나머지가 2이다. $P(x)-x^{2}$은 $(x-1)(x+2)$로 나누어떨어진다고 할 때, $P(2)$의 값은? [4.5점]",
     "choices": [
@@ -270,21 +336,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "tags": [
-      "객관식",
-      "나머지정리",
-      "인수정리",
-      "인수분해",
-      "계수비교",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n나머지정리와 인수정리를 이용하여 삼차식 $P(x)$를 구성한다.\n\n조건 정리\n- $P(x)$는 최고차항 계수가 $1$인 삼차식\n- $P(2-x)$를 $x-2$로 나눈 나머지는 $2$\n- $P(x)-x^2$은 $(x-1)(x+2)$로 나누어떨어짐\n\n풀이 과정\n1. 나머지정리에 의해 $P(2-x)$ 식에 $x=2$를 대입하면 $P(0) = 2$이다.\n2. $P(x)-x^2$은 $(x-1)(x+2)$를 인수로 가지므로, $P(x)-x^2 = (x-1)(x+2)Q(x)$로 둘 수 있다.\n3. $P(x)$가 최고차항 계수가 $1$인 삼차식이므로, $Q(x)$는 형태가 $(x-k)$인 일차식이다.\n따라서 $P(x) = (x-1)(x+2)(x-k) + x^2$이다.\n4. 조건 1에서 찾은 $P(0)=2$를 대입한다.\n$P(0) = (-1)(2)(-k) + 0 = 2k = 2 \\implies k = 1$\n5. $P(x)$를 완성하면 $P(x) = (x-1)(x+2)(x-1) + x^2$이다.\n6. $P(2)$를 계산한다.\n$P(2) = (1)(4)(1) + 4 = 8$\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
-    "subUnit": "나머지정리와 인수정리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "$P(2-x)$를 $x-2$로 나눈 나머지가 $2$이므로\n나머지정리에 따라 $x=2$를 대입한다.\n$P(2-2)=P(0)=2$이다.\n\n또 $P(x)-x^2$이 $(x-1)(x+2)$로 나누어떨어지고\n$P(x)$가 최고차항의 계수가 $1$인 삼차식이므로\n$P(x)-x^2=(x-1)(x+2)(x+c)$\n로 둘 수 있다.\n\n$x=0$을 대입하면\n$P(0)=(-1)(2)c=2$이므로\n$c=-1$이다.\n\n따라서\n$P(x)=(x-1)(x+2)(x-1)+x^2$이고,\n$P(2)=(1)(4)(1)+4=8$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 9,
@@ -295,8 +347,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "인수분해",
+      "다항식",
+      "계수비교"
+    ],
     "wide": false,
     "content": "다항식 $x^{2}+3xy-2x+2y^{2}-y-3$을 인수분해하면 $(x+ay+b)(x+cy+d)$가 된다. 이때, $ac+bd$의 값은? (단, $a, b, c, d$는 실수인 상수이다.) [4점]",
     "choices": [
@@ -307,21 +378,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "tags": [
-      "객관식",
-      "다항식",
-      "나머지정리",
-      "인수분해",
-      "계수비교",
-      "범위",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n두 개 이상의 문자가 포함된 다항식은 차수가 낮은 문자에 대하여 내림차순으로 정리한 후 인수분해한다.\n\n조건 정리\n- $x^2+3xy-2x+2y^2-y-3 = (x+ay+b)(x+cy+d)$\n\n풀이 과정\n1. 주어진 식을 $x$에 대하여 내림차순으로 정리한다.\n$x^2 + (3y-2)x + (2y^2-y-3)$\n2. 상수항 부분을 먼저 인수분해한다.\n$2y^2-y-3 = (2y-3)(y+1)$\n3. 전체 식을 대각선 방법(크로스)으로 인수분해한다.\n$(2y-3) + (y+1) = 3y-2$가 되어 $x$의 계수와 일치한다.\n따라서 식은 $(x + 2y - 3)(x + y + 1)$로 인수분해된다.\n4. $(x+ay+b)(x+cy+d)$와 비교하면, $a=2, b=-3, c=1, d=1$ (또는 위치 변경)이다.\n5. $ac+bd = (2)(1) + (-3)(1) = 2 - 3 = -1$\n\n결론\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-03-FACTORIZATION",
-    "subUnit": "인수분해",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "식을 $x$에 대하여 정리하면\n$x^2+(3y-2)x+(2y^2-y-3)$이다.\n\n상수항 부분은\n$2y^2-y-3=(2y-3)(y+1)$이고,\n$(2y-3)+(y+1)=3y-2$이므로\n전체 식은\n$(x+2y-3)(x+y+1)$로 인수분해된다.\n\n따라서\n$(a,b,c,d)=(2,-3,1,1)$ 또는 두 인수의 순서를 바꾼 값이다.\n어느 경우에도\n$ac+bd=2\\cdot1+(-3)\\cdot1=-1$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 10,
@@ -332,8 +389,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "인수정리",
+      "인수분해",
+      "삼차식"
+    ],
     "wide": false,
     "content": "삼차식 $2x^{3}+ax^{2}+bx-4$가 두 일차식 $2x-1$과 $x-2$를 인수로 갖도록 상수 $a, b$를 정하고 이 식을 인수분해 했을 때의 나머지 인수를 구하면? [4점]",
     "choices": [
@@ -344,21 +420,7 @@ window.questionBank = [
       "$2x+1$"
     ],
     "answer": "③",
-    "tags": [
-      "객관식",
-      "다항식",
-      "나머지정리",
-      "인수정리",
-      "인수분해",
-      "계수비교",
-      "연립방정식",
-      "대입"
-    ],
-    "solution": "[키포인트]\n인수정리를 이용하여 연립방정식을 세워 미정계수를 구하고, 조립제법으로 나머지 인수를 찾는다.\n\n조건 정리\n- $P(x) = 2x^3+ax^2+bx-4$\n- $P(1/2) = 0$, $P(2) = 0$\n\n풀이 과정\n1. $P(2) = 16 + 4a + 2b - 4 = 0 \\implies 4a + 2b = -12 \\implies 2a + b = -6$\n2. $P(1/2) = 2(1/8) + a(1/4) + b(1/2) - 4 = 0 \\implies 1/4 + a/4 + b/2 - 4 = 0$. 양변에 $4$를 곱하면 $1 + a + 2b - 16 = 0 \\implies a + 2b = 15$\n3. 연립방정식 풀이: $a = 15 - 2b$를 첫 번째 식에 대입하면 $2(15 - 2b) + b = -6 \\implies 30 - 3b = -6 \\implies 3b = 36 \\implies b=12, a=-9$.\n4. 다항식은 $2x^3 - 9x^2 + 12x - 4$이다.\n5. 조립제법을 통해 $x-2$로 나누면 몫은 $2x^2 - 5x + 2$가 되고, 이를 다시 인수분해하면 $(x-2)(2x-1)$이다.\n전체 인수분해 결과는 $(2x-1)(x-2)(x-2)$이므로 나머지 인수는 $x-2$이다.\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-03-FACTORIZATION",
-    "subUnit": "인수분해",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "주어진 삼차식의 최고차항 계수는 $2$이고\n$2x-1$, $x-2$를 인수로 가진다.\n나머지 일차인수를 $x-r$이라 두면\n다항식은\n$(2x-1)(x-2)(x-r)$의 꼴이다.\n\n상수항을 비교하면\n$(-1)(-2)(-r)=-4$이다.\n즉\n$-2r=-4$이므로\n$r=2$이다.\n\n따라서 나머지 인수는 $x-2$이고 정답은 ③이다."
   },
   {
     "id": 11,
@@ -369,26 +431,38 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "questionType": "객관식",
-    "layoutTag": "grid",
-    "wide": false,
-    "content": "$\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$를 만족시키는 실수 $a, b$에 대하여 $ab$의 값은? [3.6점]",
-    "choices": ["$-4\\sqrt{6}$","$-2\\sqrt{6}$","$1$","$2\\sqrt{6}$","$4\\sqrt{6}$"],
-    "answer": "⑤",
-    "tags": [
-      "객관식",
-      "제곱근",
-      "근호",
-      "복소수",
-      "조건해석",
-      "계산",
-      "개념"
-    ],
-    "solution": "√(−2)√(−3)=(i√2)(i√3)=i²√6=−√6이다.\n\n√18/√(−2)=3√2/(i√2)=3/i=−3i이다.\n\n√(−8)/√(−12)=(2i√2)/(2i√3)=√2/√3=√6/3이다.\n문제의 식에서는 이 값을 빼므로 그 항은 −√6/3이다.\n\n따라서\na+bi=−√6−3i−√6/3\n=−4√6/3−3i이다.\n\n그러므로 a=−4√6/3, b=−3이고,\nab=(−4√6/3)(−3)=4√6이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수",
+      "제곱근",
+      "계산"
+    ],
+    "wide": false,
+    "content": "$\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$를 만족시키는 실수 $a, b$에 대하여 $ab$의 값은? [3.6점]",
+    "choices": [
+      "$-4\\sqrt{6}$",
+      "$-2\\sqrt{6}$",
+      "$1$",
+      "$2\\sqrt{6}$",
+      "$4\\sqrt{6}$"
+    ],
+    "answer": "⑤",
+    "solution": "음수의 제곱근을 허수단위 $i$로 바꾼다.\n$\\sqrt{-2}=i\\sqrt2$,\n$\\sqrt{-3}=i\\sqrt3$이므로\n$\\sqrt{-2}\\sqrt{-3}=-\\sqrt6$이다.\n\n또\n$\\dfrac{\\sqrt{18}}{\\sqrt{-2}}\n=\\dfrac{3\\sqrt2}{i\\sqrt2}\n=\\dfrac3i=-3i$이다.\n\n그리고\n$\\dfrac{\\sqrt{-8}}{\\sqrt{-12}}\n=\\dfrac{2\\sqrt2\\,i}{2\\sqrt3\\,i}\n=\\sqrt{\\dfrac23}\n=\\dfrac{\\sqrt6}{3}$이다.\n\n따라서 전체 식은\n$-\\sqrt6-3i-\\dfrac{\\sqrt6}{3}$\n$=-\\dfrac{4\\sqrt6}{3}-3i$이다.\n\n$a=-\\dfrac{4\\sqrt6}{3}$, $b=-3$이므로\n$ab=4\\sqrt6$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 12,
@@ -399,8 +473,30 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수",
+      "켤레복소수",
+      "단위근",
+      "참거짓"
+    ],
     "wide": false,
     "content": "복소수 $z$와 그 켤레복소수 $\\bar{z}$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? (단, 복소수 $z$의 실수부분, 허수부분은 모두 0이 아니다.) [4.3점]\n<div class=\"question-table-wrap\">\n<table>\n  <tr>\n    <td>\n      ㄱ. $z\\bar{z}$는 실수이다.\n      ㄴ. $\\frac{z+\\bar{z}}{z\\bar{z}}$는 실수이다.\n      ㄷ. $\\omega = \\frac{1-\\sqrt{3}i}{2}$일 때, $\\omega^3+2\\omega^6 = 1$이다.\n    </td>\n  </tr>\n</table>\n</div>",
     "choices": [
@@ -411,21 +507,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "tags": [
-      "객관식",
-      "제곱근",
-      "근호",
-      "분모유리화",
-      "복소수",
-      "켤레복소수",
-      "지수",
-      "참거짓"
-    ],
-    "solution": "[키포인트]\n복소수의 켤레 성질 및 특수한 복소수의 거듭제곱 규칙을 활용한다.\n\n조건 정리\n- $z=a+bi$ ($a, b$는 $0$이 아닌 실수)\n\n풀이 과정\nㄱ. $z\\bar{z} = (a+bi)(a-bi) = a^2+b^2$. $a, b$가 실수이므로 항상 실수이다. (참)\nㄴ. $z+\\bar{z} = 2a$ (실수), $z\\bar{z} = a^2+b^2$ ($0$이 아닌 실수). 따라서 실수 나누기 실수는 실수이다. (참)\nㄷ. $\\omega = \\frac{1-\\sqrt{3}i}{2}$에서 $2\\omega-1 = -\\sqrt{3}i$. 양변을 제곱하면 $4\\omega^2-4\\omega+1 = -3 \\implies 4\\omega^2-4\\omega+4=0 \\implies \\omega^2-\\omega+1=0$. 양변에 $(\\omega+1)$을 곱하면 $\\omega^3+1=0 \\implies \\omega^3=-1$이다.\n구하는 식은 $\\omega^3+2(\\omega^3)^2 = (-1) + 2(-1)^2 = -1 + 2 = 1$. (참)\n\n결론\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
-    "subUnit": "복소수의 뜻과 표현",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "$z=a+bi$라 두자. 조건에서 $a\\ne0$, $b\\ne0$이다.\n\nㄱ.\n$z\\bar z=(a+bi)(a-bi)=a^2+b^2$이므로 실수이다.\n따라서 ㄱ은 참이다.\n\nㄴ.\n$z+\\bar z=2a$이고\n$z\\bar z=a^2+b^2>0$이므로\n$\\dfrac{z+\\bar z}{z\\bar z}\n=\\dfrac{2a}{a^2+b^2}$이다.\n실수이므로 ㄴ은 참이다.\n\nㄷ.\n$\\omega=\\dfrac{1-\\sqrt3 i}{2}$에 대하여\n$\\omega^2=\\dfrac{-1-\\sqrt3 i}{2}$이고,\n$\\omega^3=-1$이다.\n따라서\n$\\omega^6=1$이고\n$\\omega^3+2\\omega^6=-1+2=1$이다.\nㄷ도 참이다.\n\n따라서 ㄱ, ㄴ, ㄷ이 모두 옳으므로 정답은 ⑤이다."
   },
   {
     "id": 13,
@@ -436,8 +518,27 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "subUnit": "판별식과 근의 조건",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식",
+      "판별식",
+      "중근"
+    ],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $2x^{2}-2(a+3)x+2a+4=0$이 중근을 가질 때, $a$의 값은? [3.5점]",
     "choices": [
@@ -448,19 +549,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "tags": [
-      "객관식",
-      "전개",
-      "이차방정식",
-      "판별식",
-      "조건해석",
-      "계산"
-    ],
-    "solution": "[키포인트]\n이차방정식이 중근을 가질 조건은 판별식 $D=0$임을 이용한다.\n\n조건 정리\n- 이차방정식 $2x^2-2(a+3)x+2a+4=0$이 중근을 가짐\n\n풀이 과정\n1. 짝수 판별식 $D/4$를 사용한다.\n$D/4 = (-(a+3))^2 - 2(2a+4) = 0$\n2. 식을 전개하여 정리한다.\n$a^2 + 6a + 9 - 4a - 8 = 0$\n$a^2 + 2a + 1 = 0$\n$(a+1)^2 = 0$\n3. 따라서 $a = -1$이다.\n\n결론\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-05-DISCRIMINANT",
-    "subUnit": "판별식과 근의 조건",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "중근을 가지려면 판별식이 $0$이어야 한다.\n주어진 방정식\n$2x^2-2(a+3)x+2a+4=0$에서\n$A=2$, $B=-2(a+3)$, $C=2a+4$이다.\n\n판별식은\n$D=B^2-4AC$\n$=4(a+3)^2-8(2a+4)$\n$=4\\{(a+3)^2-4a-8\\}$\n$=4(a^2+2a+1)$\n$=4(a+1)^2$이다.\n\n$D=0$이므로\n$(a+1)^2=0$,\n$a=-1$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 14,
@@ -471,8 +560,29 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식",
+      "근과계수",
+      "자연수조건"
+    ],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^{2}-(4a+b)x+2ab=0$의 두 실근의 절댓값이 같고 부호가 다를 때, 나올 수 있는 실수 $ab$값들의 합은? (단, $a$는 자연수이고, 두 근의 곱은 -100 미만이 되지 않는다.) [5점]",
     "choices": [
@@ -483,21 +593,7 @@ window.questionBank = [
       "$-20$"
     ],
     "answer": "③",
-    "tags": [
-      "객관식",
-      "절댓값",
-      "계수비교",
-      "이차방정식",
-      "판별식",
-      "근과계수",
-      "최대최소",
-      "자연수조건"
-    ],
-    "solution": "[키포인트]\n두 근의 절댓값이 같고 부호가 다르면 두 근의 합은 $0$이고 두 근의 곱은 음수임을 이용한다.\n\n조건 정리\n- 두 근의 합: $4a+b = 0$\n- 두 근의 곱: $2ab \\lt 0$\n- $a$는 자연수\n- 두 근의 곱 $\\ge -100$\n\n풀이 과정\n1. 합의 조건에서 $b = -4a$이다.\n2. 이 값을 곱의 식에 대입하면 $2a(-4a) = -8a^2$이다. 이는 $a$가 자연수일 때 항상 음수이므로 부호 조건은 성립한다.\n3. 최소 조건에서 $-8a^2 \\ge -100 \\implies a^2 \\le 12.5$이다.\n4. 이를 만족하는 자연수 $a$는 $1, 2, 3$이다.\n5. 구하고자 하는 것은 $ab$의 값들의 합이다. $ab = a(-4a) = -4a^2$이다.\n$a=1$일 때, $ab = -4(1) = -4$\n$a=2$일 때, $ab = -4(4) = -16$\n$a=3$일 때, $ab = -4(9) = -36$\n6. 모든 가능한 $ab$의 합은 $-4 + (-16) + (-36) = -56$이다.\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "두 실근의 절댓값이 같고 부호가 다르므로 두 근을 $r$, $-r$로 둘 수 있다.\n따라서 두 근의 합은 $0$이다.\n\n근과 계수의 관계에서\n두 근의 합은 $4a+b$이므로\n$4a+b=0$,\n$b=-4a$이다.\n\n따라서\n$ab=a(-4a)=-4a^2$이다.\n\n두 근의 곱은\n$2ab=-8a^2$이고,\n이 값이 $-100$ 미만이 아니므로\n$-8a^2\\ge -100$이다.\n즉\n$a^2\\le \\dfrac{25}{2}$이다.\n\n$a$는 자연수이므로\n$a=1,2,3$이다.\n각각의 $ab$는\n$-4,-16,-36$이다.\n\n따라서 가능한 $ab$의 합은\n$-4-16-36=-56$이므로 정답은 ③이다."
   },
   {
     "id": 15,
@@ -508,8 +604,28 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "subUnit": "이차방정식과 이차함수의 관계",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차함수",
+      "판별식",
+      "접선",
+      "매개변수"
+    ],
     "wide": false,
     "content": "$x$에 대한 이차함수 $y=x^{2}+2(2k-a)x+4k^{2}-5a+a^{2}$의 그래프가 $a$의 값에 관계없이 $x$축에 접할 때, 상수 $k$의 값은? [3.8점]",
     "choices": [
@@ -520,21 +636,7 @@ window.questionBank = [
       "$\\frac{5}{2}$"
     ],
     "answer": "④",
-    "tags": [
-      "객관식",
-      "항등식",
-      "전개",
-      "이차방정식",
-      "판별식",
-      "이차함수",
-      "함수",
-      "그래프"
-    ],
-    "solution": "[키포인트]\n이차함수가 $x$축에 접할 조건인 $D=0$을 적용한 후, $a$에 대한 항등식으로 식을 푼다.\n\n조건 정리\n- $y=x^2+2(2k-a)x+4k^2-5a+a^2$ 그래프가 $x$축에 접함\n- $a$의 값에 관계없이 성립\n\n풀이 과정\n1. 이차함수가 $x$축에 접하므로 $x$절편을 구하는 이차방정식의 판별식이 $0$이어야 한다. 짝수 판별식 $D/4$를 사용한다.\n$D/4 = (2k-a)^2 - (4k^2-5a+a^2) = 0$\n2. 식을 전개한다.\n$4k^2 - 4ak + a^2 - 4k^2 + 5a - a^2 = 0$\n$-4ak + 5a = 0$\n$a(5-4k) = 0$\n3. 이 등식이 '$a$의 값에 관계없이' 항상 성립해야 하므로, $a$에 대한 항등식이다.\n따라서 괄호 안의 값이 $0$이어야 한다.\n$5-4k = 0 \\implies k = \\frac{5}{4}$\n\n결론\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
-    "subUnit": "이차방정식과 이차함수의 관계",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "그래프가 $x$축에 접하려면 이차방정식\n$x^2+2(2k-a)x+4k^2-5a+a^2=0$\n이 중근을 가져야 한다.\n\n판별식을 $4$로 나누어 계산하면\n$\\dfrac D4=(2k-a)^2-(4k^2-5a+a^2)$\n$=4k^2-4ka+a^2-4k^2+5a-a^2$\n$=a(5-4k)$이다.\n\n이 값이 $a$의 값에 관계없이 항상 $0$이어야 하므로\n$5-4k=0$이다.\n\n따라서\n$k=\\dfrac54$이고 정답은 ④이다."
   },
   {
     "id": 16,
@@ -545,12 +647,32 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "subUnit": "이차방정식과 이차함수의 관계",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차함수",
+      "그래프",
+      "직선과의교점",
+      "정수조건"
+    ],
     "wide": false,
-    "content": "다음은 $x \\lt -\\frac{1}{2}$ 또는 $x \\gt 3$일 때 $f(x)=2x^{2}-5x-3$이고, $-\\frac{1}{2} \\le x \\le 3$일 때 $f(x)=-2x^{2}+5x+3$인 함수 $f(x)$의 그래프이다.\n\n직선 $y=3x+k$가 위의 함수와 서로 다른 네 점에서 만나도록 하는 정수 $k$의 개수는? [4.7점]",
-    "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NyIgdmlld0JveD0iMCAwIDI0MCAxNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGxpbmUgeDE9IjIwIiB5MT0iMTEwIiB4Mj0iMjIwIiB5Mj0iMTEwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjEzMCIgeDI9IjEwMCIgeTI9IjIwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPHBhdGggZD0iTSA2MS4wLDI3LjQ0IEwgNjIuMjYsMzIuNTUgTCA2My41MywzNy41OCBMIDY0Ljc5LDQyLjUyIEwgNjYuMDUsNDcuMzcgTCA2Ny4zMiw1Mi4xNCBMIDY4LjU4LDU2LjgzIEwgNjkuODQsNjEuNDMgTCA3MS4xMSw2NS45NSBMIDcyLjM3LDcwLjM4IEwgNzMuNjMsNzQuNzIgTCA3NC44OSw3OC45OCBMIDc2LjE2LDgzLjE2IEwgNzcuNDIsODcuMjUgTCA3OC42OCw5MS4yNSBMIDc5Ljk1LDk1LjE3IEwgODEuMjEsOTkuMDEgTCA4Mi40NywxMDIuNzYgTCA4My43NCwxMDYuNDIgTCA4NS4wLDExMC4wIiBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxwYXRoIGQ9Ik0gODUuMCwxMTAuMCBMIDg3LjY5LDEwMi42NSBMIDkwLjM4LDk1LjcgTCA5My4wOCw4OS4xMiBMIDk1Ljc3LDgyLjk0IEwgOTguNDYsNzcuMTQgTCAxMDEuMTUsNzEuNzMgTCAxMDMuODUsNjYuNyBMIDEwNi41NCw2Mi4wNiBMIDEwOS4yMyw1Ny44MSBMIDExMS45Miw1My45NCBMIDExNC42Miw1MC40NyBMIDExNy4zMSw0Ny4zNyBMIDEyMC4wLDQ0LjY3IEwgMTIyLjY5LDQyLjM1IEwgMTI1LjM4LDQwLjQxIEwgMTI4LjA4LDM4Ljg3IEwgMTMwLjc3LDM3LjcxIEwgMTMzLjQ2LDM2LjkzIEwgMTM2LjE1LDM2LjU1IEwgMTM4Ljg1LDM2LjU1IEwgMTQxLjU0LDM2LjkzIEwgMTQ0LjIzLDM3LjcxIEwgMTQ2LjkyLDM4Ljg3IEwgMTQ5LjYyLDQwLjQxIEwgMTUyLjMxLDQyLjM1IEwgMTU1LjAsNDQuNjcgTCAxNTcuNjksNDcuMzcgTCAxNjAuMzgsNTAuNDcgTCAxNjMuMDgsNTMuOTQgTCAxNjUuNzcsNTcuODEgTCAxNjguNDYsNjIuMDYgTCAxNzEuMTUsNjYuNyBMIDE3My44NSw3MS43MyBMIDE3Ni41NCw3Ny4xNCBMIDE3OS4yMyw4Mi45NCBMIDE4MS45Miw4OS4xMiBMIDE4NC42Miw5NS43IEwgMTg3LjMxLDEwMi42NSBMIDE5MC4wLDExMC4wIiBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxwYXRoIGQ9Ik0gMTkwLjAsMTEwLjAgTCAxOTEuNTgsMTA1LjUxIEwgMTkzLjE2LDEwMC44OSBMIDE5NC43NCw5Ni4xNCBMIDE5Ni4zMiw5MS4yNSBMIDE5Ny44OSw4Ni4yMyBMIDE5OS40Nyw4MS4wOCBMIDIwMS4wNSw3NS44IEwgMjAyLjYzLDcwLjM4IEwgMjA0LjIxLDY0LjgzIEwgMjA1Ljc5LDU5LjE0IEwgMjA3LjM3LDUzLjMyIEwgMjA4Ljk1LDQ3LjM3IEwgMjEwLjUzLDQxLjI5IEwgMjEyLjExLDM1LjA3IEwgMjEzLjY4LDI4LjczIEwgMjE1LjI2LDIyLjI0IEwgMjE2Ljg0LDE1LjYzIEwgMjE4LjQyLDguODggTCAyMjAuMCwyLjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMjE1IiB5PSIxMjUiIGZvbnQtc2l6ZT0iMTBweCIgZm9udC1mYW1pbHk9InNlcmlmIj54PC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIyNSIgZm9udC1zaXplPSIxMHB4IiBmb250LWZhbWlseT0ic2VyaWYiPnk8L3RleHQ+CiAgPHRleHQgeD0iMTA1IiB5PSIxMjUiIGZvbnQtc2l6ZT0iMTBweCIgZm9udC1mYW1pbHk9InNlcmlmIj5PPC90ZXh0PgogIDx0ZXh0IHg9Ijg1IiB5PSIxMjUiIGZvbnQtc2l6ZT0iOXB4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2VyaWYiPi0xLzI8L3RleHQ+CiAgPHRleHQgeD0iMTkwIiB5PSIxMjUiIGZvbnQtc2l6ZT0iMTBweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNlcmlmIj4zPC90ZXh0PgogIDx0ZXh0IHg9IjE0NSIgeT0iMzAiIGZvbnQtc2l6ZT0iMTBweCIgZm9udC1mYW1pbHk9InNlcmlmIj55PWYoeCk8L3RleHQ+CiAgPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSIxMCIgcmVmWD0iMCIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwwLDYgTDYsMyB6IiBmaWxsPSJibGFjayIvPjwvbWFya2VyPjwvZGVmcz4KPC9zdmc+",
-    "imageSize": "large",
+    "content": "다음은 $x \\lt -\\frac{1}{2}$ 또는 $x \\gt 3$일 때 $f(x)=2x^{2}-5x-3$이고, $-\\frac{1}{2} \\le x \\le 3$일 때 $f(x)=-2x^{2}+5x+3$인 함수 $f(x)$의 그래프이다.\n<svg width=\"240\" height=\"140\" viewBox=\"0 0 240 140\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"110\" x2=\"220\" y2=\"110\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <line x1=\"100\" y1=\"130\" x2=\"100\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <path d=\"M 61.0,27.44 L 62.26,32.55 L 63.53,37.58 L 64.79,42.52 L 66.05,47.37 L 67.32,52.14 L 68.58,56.83 L 69.84,61.43 L 71.11,65.95 L 72.37,70.38 L 73.63,74.72 L 74.89,78.98 L 76.16,83.16 L 77.42,87.25 L 78.68,91.25 L 79.95,95.17 L 81.21,99.01 L 82.47,102.76 L 83.74,106.42 L 85.0,110.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 85.0,110.0 L 87.69,102.65 L 90.38,95.7 L 93.08,89.12 L 95.77,82.94 L 98.46,77.14 L 101.15,71.73 L 103.85,66.7 L 106.54,62.06 L 109.23,57.81 L 111.92,53.94 L 114.62,50.47 L 117.31,47.37 L 120.0,44.67 L 122.69,42.35 L 125.38,40.41 L 128.08,38.87 L 130.77,37.71 L 133.46,36.93 L 136.15,36.55 L 138.85,36.55 L 141.54,36.93 L 144.23,37.71 L 146.92,38.87 L 149.62,40.41 L 152.31,42.35 L 155.0,44.67 L 157.69,47.37 L 160.38,50.47 L 163.08,53.94 L 165.77,57.81 L 168.46,62.06 L 171.15,66.7 L 173.85,71.73 L 176.54,77.14 L 179.23,82.94 L 181.92,89.12 L 184.62,95.7 L 187.31,102.65 L 190.0,110.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 190.0,110.0 L 191.58,105.51 L 193.16,100.89 L 194.74,96.14 L 196.32,91.25 L 197.89,86.23 L 199.47,81.08 L 201.05,75.8 L 202.63,70.38 L 204.21,64.83 L 205.79,59.14 L 207.37,53.32 L 208.95,47.37 L 210.53,41.29 L 212.11,35.07 L 213.68,28.73 L 215.26,22.24 L 216.84,15.63 L 218.42,8.88 L 220.0,2.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <text x=\"215\" y=\"125\" font-size=\"10px\" font-family=\"serif\">x</text>\n  <text x=\"90\" y=\"25\" font-size=\"10px\" font-family=\"serif\">y</text>\n  <text x=\"105\" y=\"125\" font-size=\"10px\" font-family=\"serif\">O</text>\n  <text x=\"85\" y=\"125\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">$-\\frac{1}{2}$</text>\n  <text x=\"190\" y=\"125\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n  <text x=\"145\" y=\"30\" font-size=\"10px\" font-family=\"serif\">y=f(x)</text>\n  <defs><marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker></defs>\n</svg>\n직선 $y=3x+k$가 위의 함수와 서로 다른 네 점에서 만나도록 하는 정수 $k$의 개수는? [4.7점]",
     "choices": [
       "1",
       "2",
@@ -559,18 +681,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "그래프",
-      "직선과의교점",
-      "교점개수"
-    ],
-    "solution": "[키포인트]\n구간별로 정의된 이차함수의 그래프와 직선의 위치 관계를 파악하여 교점의 개수를 구한다.\n\n조건 정리\n- 함수 $f(x)$의 그래프와 직선 $y = 3x + k$가 서로 다른 네 점에서 만남\n\n풀이 과정\n직선 $y=3x+k$가 함수 $f(x)$의 그래프와 서로 다른 네 점에서 만나려면, 직선이 다음 두 경계 상태 사이에 있어야 한다.\n1. 직선이 점 $(-\\frac{1}{2}, 0)$을 지날 때:\n$0 = 3(-\\frac{1}{2}) + k \\implies k = \\frac{3}{2} = 1.5$\n이때 교점은 $3$개이다.\n2. 직선이 위로 볼록한 부분 $y = -2x^{2}+5x+3$과 접할 때:\n$-2x^{2}+5x+3 = 3x+k \\implies 2x^{2}-2x+k-3 = 0$\n이 이차방정식의 판별식이 $0$이어야 하므로,\n$D/4 = (-1)^{2}-2(k-3) = 1-2k+6 = 7-2k=0 \\implies k = \\frac{7}{2} = 3.5$\n이때 교점은 $3$개(접점 포함)이다.\n따라서 서로 다른 네 점에서 만나기 위한 $k$의 범위는 $1.5 \\lt k \\lt 3.5$이다.\n이를 만족하는 정수 $k$는 $2, 3$의 $2$개이다.\n\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
-    "subUnit": "이차방정식과 이차함수의 관계",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "함수의 바깥쪽 두 구간에서는\n$2x^2-5x-3=3x+k$이므로\n$2x^2-8x-(3+k)=0$이다.\n두 근은\n$x=2\\pm\\dfrac{\\sqrt{22+2k}}2$이다.\n\n오른쪽 근이 $3$보다 크고 왼쪽 근이 $-\\dfrac12$보다 작아야\n바깥쪽 두 구간에서 각각 한 점씩 만난다.\n특히 왼쪽 근에 대하여\n$2-\\dfrac{\\sqrt{22+2k}}2<-\\dfrac12$\n이므로\n$\\sqrt{22+2k}>5$,\n$k>\\dfrac32$이다.\n\n안쪽 구간에서는\n$-2x^2+5x+3=3x+k$이므로\n$2x^2-2x+k-3=0$이다.\n서로 다른 두 교점이 있으려면\n$D=(-2)^2-8(k-3)>0$이어야 하므로\n$28-8k>0$,\n$k<\\dfrac72$이다.\n이 범위에서는 두 근이 $-\\dfrac12\\le x\\le3$ 안에 놓인다.\n\n따라서 네 교점을 가지는 범위는\n$\\dfrac32<k<\\dfrac72$이다.\n이를 만족하는 정수는\n$k=2,3$의 두 개이다.\n따라서 정답은 ②이다."
   },
   {
     "id": 17,
@@ -581,8 +692,28 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "subUnit": "이차방정식과 이차함수의 관계",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차함수",
+      "포물선",
+      "접선",
+      "모델링"
+    ],
     "wide": false,
     "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는? [5.6점]\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"150\" x2=\"220\" y2=\"150\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 34.0,175.2 L 37.38,160.69 L 40.77,146.94 L 44.15,133.96 L 47.54,121.74 L 50.92,110.28 L 54.31,99.59 L 57.69,89.66 L 61.08,80.5 L 64.46,72.1 L 67.85,64.46 L 71.23,57.59 L 74.62,51.48 L 78.0,46.13 L 81.38,41.55 L 84.77,37.73 L 88.15,34.68 L 91.54,32.39 L 94.92,30.86 L 98.31,30.1 L 101.69,30.1 L 105.08,30.86 L 108.46,32.39 L 111.85,34.68 L 115.23,37.73 L 118.62,41.55 L 122.0,46.13 L 125.38,51.48 L 128.77,57.59 L 132.15,64.46 L 135.54,72.1 L 138.92,80.5 L 142.31,89.66 L 145.69,99.59 L 149.08,110.28 L 152.46,121.74 L 155.85,133.96 L 159.23,146.94 L 162.62,160.69 L 166.0,175.2\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 115.0,30.0 L 175.0,150.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"130\" y1=\"150\" x2=\"130\" y2=\"60\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"140\" y1=\"150\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"100\" y1=\"30\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <path d=\"M 140,30 Q 160,70 140,150\" fill=\"none\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,2\"/>\n  <text x=\"40\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">A</text>\n  <text x=\"160\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\n  <text x=\"175\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\n  <text x=\"100\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"130\" y=\"100\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">h</text>\n  <text x=\"152\" y=\"80\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"167\" y=\"145\" font-size=\"8px\" text-anchor=\"middle\" font-family=\"serif\"><tspan x=\"167\" dy=\"0\">1</tspan><tspan x=\"167\" dy=\"8\">2</tspan>m</text>\n  <line x1=\"163\" y1=\"149\" x2=\"171\" y2=\"149\" stroke=\"black\" stroke-width=\"0.4\"/>\n</svg>",
     "choices": [
@@ -593,21 +724,7 @@ window.questionBank = [
       "$\\frac{7}{2}$"
     ],
     "answer": "③",
-    "tags": [
-      "객관식",
-      "계수비교",
-      "이차방정식",
-      "판별식",
-      "근과계수",
-      "이차함수",
-      "최대최소",
-      "함수"
-    ],
-    "solution": "[키포인트]\n포물선을 좌표평면 위에 나타내어 이차함수 식을 세우고, 직선과 접할 조건(판별식 $D=0$)을 이용한다.\n\n조건 정리\n- 포물선의 폭: $4$m, 높이: $4$m\n- 조형물이 지면과 만나는 점: $A, B$\n- $B$로부터 $0.5$m 떨어진 지점 $C$에서 쏜 레이저가 조형물(포물선)에 접함\n\n풀이 과정\n1. 조형물의 단면을 좌표평면 위에 나타낸다. 지면 $AB$의 중점을 원점 $(0, 0)$이라 하면, 높이가 $4$m이므로 꼭짓점은 $(0, 4)$이다.\n2. 폭이 $4$m이므로 포물선의 $x$절편은 $-2$와 $2$이다. 즉, 점 $A$는 $(-2, 0)$, 점 $B$는 $(2, 0)$이다. 포물선의 방정식은 $y = -x^2 + 4$가 된다.\n3. 점 $B(2, 0)$로부터 바깥쪽으로 $0.5$m 떨어진 점 $C$의 좌표는 $(2.5, 0)$이다.\n4. 점 $C(2.5, 0)$을 지나고 포물선에 접하는 레이저(직선)의 방정식을 $y = m(x - 2.5)$라 하자.\n5. 포물선과 직선이 접하므로 $-x^2 + 4 = m(x - 2.5)$에서 $x^2 + mx - (2.5m + 4) = 0$이다.\n6. 이 이차방정식의 판별식 $D=0$이어야 하므로,\n$D = m^2 - 4(1)(-2.5m - 4) = m^2 + 10m + 16 = 0$\n$(m+2)(m+8) = 0 \\implies m = -2$ 또는 $m = -8$이다.\n7. 기울기가 $m = -2$일 때 중근 $x = -\\frac{m}{2} = 1$을 가지며, 이때 접점의 $x$좌표가 조형물 범위 안에 존재한다. ($m = -8$일 때는 $x = 4$가 되어 조형물 범위 밖이므로 제외한다.)\n8. $x = 1$일 때의 높이 $h$는 $y = -(1)^2 + 4 = 3$이다.\n\n결론\n따라서 구하는 높이 $h$는 $3$이다.",
-    "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
-    "subUnit": "이차방정식의 풀이",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "지면 $AB$의 중점을 원점으로 두고 지면을 $x$축으로 잡는다.\n폭이 $4$m이므로\n$A=(-2,0)$, $B=(2,0)$이고,\n높이가 $4$m이므로 꼭짓점은 $(0,4)$이다.\n따라서 조형물의 포물선은\n$y=-x^2+4$이다.\n\n$C$는 $B$에서 바깥쪽으로 $0.5$m 떨어져 있으므로\n$C=\\left(\\dfrac52,0\\right)$이다.\n\n$C$를 지나는 직선을\n$y=m\\left(x-\\dfrac52\\right)$라 하자.\n이 직선이 포물선에 접하므로\n$-x^2+4=m\\left(x-\\dfrac52\\right)$,\n즉\n$x^2+mx-\\left(\\dfrac52m+4\\right)=0$\n이 중근을 가져야 한다.\n\n판별식을 $0$으로 두면\n$m^2+10m+16=0$\n$(m+2)(m+8)=0$이므로\n$m=-2$ 또는 $m=-8$이다.\n\n접점의 $x$좌표는 중근\n$x=-\\dfrac m2$이다.\n$m=-2$이면 $x=1$로 조형물의 범위 $-2\\le x\\le2$ 안에 있다.\n$m=-8$이면 $x=4$로 조형물의 범위 밖이므로 제외한다.\n\n따라서 접점의 높이는\n$h=-1^2+4=3$m이다.\n정답은 ③이다."
   },
   {
     "id": 18,
@@ -618,8 +735,32 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EXTREMUM"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식",
+      "근과계수",
+      "판별식",
+      "최소값"
+    ],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^{2}-4kx+4k^{2}-k+2=0$이 두 실근 $\\alpha, \\beta$를 가질 때, $\\alpha^{3}+\\beta^{3}-16k^{3}$의 최솟값은? (단, $k$는 실수이다.) [5.5점]",
     "choices": [
@@ -630,18 +771,7 @@ window.questionBank = [
       "96"
     ],
     "answer": "②",
-    "tags": [
-      "객관식",
-      "이차방정식",
-      "근과계수",
-      "판별식",
-      "정수조건"
-    ],
-    "solution": "[키포인트]\n실근 조건(판별식 $D \\ge 0$)으로 $k$의 범위를 제한한 후, 곱셈 공식의 변형으로 주어진 식을 $k$에 대한 함수로 나타내어 최솟값을 구한다.\n\n조건 정리\n- $x^2-4kx+4k^2-k+2=0$이 두 실근 $\\alpha, \\beta$를 가짐\n\n풀이 과정\n1. 실근 조건: $D/4 = (2k)^2 - (4k^2-k+2) \\ge 0 \\implies k-2 \\ge 0 \\implies k \\ge 2$\n2. 근과 계수의 관계: $\\alpha+\\beta=4k$, $\\alpha\\beta=4k^2-k+2$\n3. 식 변형:\n$\\alpha^3+\\beta^3 = (\\alpha+\\beta)^3 - 3\\alpha\\beta(\\alpha+\\beta)$\n$= (4k)^3 - 3(4k^2-k+2)(4k) = 64k^3 - 48k^3 + 12k^2 - 24k = 16k^3 + 12k^2 - 24k$\n주어진 식은 $\\alpha^3+\\beta^3 - 16k^3 = 12k^2 - 24k$가 된다.\n4. $f(k) = 12k^2 - 24k = 12(k-1)^2 - 12$ 로 두면 대칭축이 $k=1$인 이차함수이다.\n5. 조건에서 $k \\ge 2$이므로, 구간 내 최솟값은 꼭짓점이 아닌 경계값 $k=2$에서 발생한다.\n$f(2) = 12(2-1)^2 - 12 = 0$\n\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-SA-05-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "solution": "두 실근을 가지려면 판별식이 $0$ 이상이어야 한다.\n주어진 방정식의 판별식을 $4$로 나누면\n$\\dfrac D4=(2k)^2-(4k^2-k+2)$\n$=k-2$이다.\n따라서\n$k\\ge2$이다.\n\n근과 계수의 관계에서\n$\\alpha+\\beta=4k$,\n$\\alpha\\beta=4k^2-k+2$이다.\n\n$\\alpha^3+\\beta^3$\n$=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)$이므로\n$\\alpha^3+\\beta^3$\n$=64k^3-12k(4k^2-k+2)$\n$=16k^3+12k^2-24k$이다.\n\n따라서\n$\\alpha^3+\\beta^3-16k^3$\n$=12k^2-24k$\n$=12(k-1)^2-12$이다.\n\n조건 $k\\ge2$에서 $(k-1)^2$은 $k=2$일 때 가장 작다.\n따라서 최솟값은\n$12(2-1)^2-12=0$이다.\n정답은 ②이다."
   },
   {
     "id": 19,
@@ -652,27 +782,32 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "다항식",
+      "인수분해",
+      "공식"
+    ],
     "wide": false,
     "content": "[서술형 1번] 다음 인수분해 공식의 빈칸을 완성하고, 이를 이용하여 (6)~(8)의 다항식을 인수분해하시오. [각 0.5점, 4점]\n(1) $x^{3}+3x^{2}y+3xy^{2}+y^{3} = $\n(2) $x^{3}-3x^{2}y+3xy^{2}-y^{3} = $\n(3) $x^{2}+y^{2}+z^{2}+2xy+2yz+2zx = $\n(4) $x^{3}+y^{3} = $\n(5) $x^{3}-y^{3} = $\n(6) $x^{2}+4y^{2}+9z^{2}+4xy-12yz-6zx$\n(7) $8x^{3}-12x^{2}+6x-1$\n(8) $x^{3}-27$",
     "choices": [],
     "answer": "(1) $(x+y)^{3}$ (2) $(x-y)^{3}$ (3) $(x+y+z)^{2}$ (4) $(x+y)(x^{2}-xy+y^{2})$ (5) $(x-y)(x^{2}+xy+y^{2})$ (6) $(x+2y-3z)^{2}$ (7) $(2x-1)^{3}$ (8) $(x-3)(x^{2}+3x+9)$",
-    "tags": [
-      "서술형",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "인수분해",
-      "계수비교",
-      "대입",
-      "조건해석"
-    ],
-    "solution": "[키포인트]\n고등학교 과정의 기본 인수분해 공식을 정확히 암기하고 구조를 파악하여 적용한다.\n\n조건 정리\n- 주어진 다항식의 인수분해 공식을 완성하고 활용한다.\n\n풀이 과정\n기본 공식 작성:\n(1) $(x+y)^3$\n(2) $(x-y)^3$\n(3) $(x+y+z)^2$\n(4) $(x+y)(x^2-xy+y^2)$\n(5) $(x-y)(x^2+xy+y^2)$\n\n공식 적용:\n(6) $x^2 + (2y)^2 + (-3z)^2 + 2(x)(2y) + 2(2y)(-3z) + 2(-3z)(x)$의 형태이므로 3번 공식에 의해 $(x+2y-3z)^2$이다.\n(7) $(2x)^3 - 3(2x)^2(1) + 3(2x)(1)^2 - 1^3$의 형태이므로 2번 공식에 의해 $(2x-1)^3$이다.\n(8) $x^3 - 3^3$의 형태이므로 5번 공식에 의해 $(x-3)(x^2+3x+9)$이다.\n\n결론\n각 문항의 인수분해 결과는 위와 같다.",
-    "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
-    "subUnit": "다항식의 나눗셈",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "solution": "기본 인수분해 공식을 차례로 적용한다.\n\n(1)\n$x^3+3x^2y+3xy^2+y^3=(x+y)^3$\n\n(2)\n$x^3-3x^2y+3xy^2-y^3=(x-y)^3$\n\n(3)\n$x^2+y^2+z^2+2xy+2yz+2zx=(x+y+z)^2$\n\n(4)\n$x^3+y^3=(x+y)(x^2-xy+y^2)$\n\n(5)\n$x^3-y^3=(x-y)(x^2+xy+y^2)$\n\n(6)\n주어진 식은\n$x^2+(2y)^2+(-3z)^2+2x(2y)+2(2y)(-3z)+2(-3z)x$\n이므로\n$(x+2y-3z)^2$이다.\n\n(7)\n$8x^3-12x^2+6x-1$\n$=(2x)^3-3(2x)^2\\cdot1+3(2x)\\cdot1^2-1^3$\n$=(2x-1)^3$이다.\n\n(8)\n$x^3-27=x^3-3^3$\n$=(x-3)(x^2+3x+9)$이다.\n\n따라서 답은\n(1) $(x+y)^3$,\n(2) $(x-y)^3$,\n(3) $(x+y+z)^2$,\n(4) $(x+y)(x^2-xy+y^2)$,\n(5) $(x-y)(x^2+xy+y^2)$,\n(6) $(x+2y-3z)^2$,\n(7) $(2x-1)^3$,\n(8) $(x-3)(x^2+3x+9)$이다."
   },
   {
     "id": 20,
@@ -683,27 +818,32 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_DIVISION",
+    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "다항식",
+      "나눗셈",
+      "나머지정리"
+    ],
     "wide": false,
     "content": "[서술형 2번] 최고차항의 계수가 1인 삼차식 $P(x)$에 대하여 $P(1)=1$, $P(2)=4$, $P(3)=9$일 때, $P(x)$를 $(x-1)(2x-4)$로 나눈 몫과 나머지를 구하시오. [6점]",
     "choices": [],
     "answer": "몫: $\\frac{1}{2}x-1$, 나머지: $3x-2$",
-    "tags": [
-      "서술형",
-      "제곱근",
-      "근호",
-      "계수비교",
-      "복소수",
-      "이차방정식",
-      "근과계수",
-      "참거짓"
-    ],
-    "solution": "[키포인트]\n주어진 함숫값의 규칙성을 파악하여 다항식을 구성하고, 나눗셈 항등식을 세운다.\n\n조건 정리\n- 최고차항 계수가 $1$인 삼차식 $P(x)$\n- $P(1)=1, P(2)=4, P(3)=9$\n\n풀이 과정\n1. 조건 분석: $P(1)=1^2, P(2)=2^2, P(3)=3^2$의 규칙을 보인다.\n따라서 $P(x)-x^2=0$이라는 $3$차 방정식은 $x=1, 2, 3$을 근으로 갖는다.\n2. $P(x)$ 구성: $P(x)-x^2 = (x-1)(x-2)(x-3)$ (최고차항 계수가 $1$이므로)\n$P(x) = (x-1)(x-2)(x-3) + x^2$\n3. 나머지 정리 적용: $P(x)$를 $(x-1)(2x-4) = 2(x-1)(x-2)$로 나눈 몫을 $Q(x)$, 나머지를 $ax+b$라 하자.\n$P(x) = 2(x-1)(x-2)Q(x) + ax+b$\n$x=1$ 대입: $P(1) = a+b = 1$\n$x=2$ 대입: $P(2) = 2a+b = 4$\n연립하여 풀면 $a=3, b=-2$이므로 나머지는 $3x-2$이다.\n4. 몫 구하기:\n$(x-1)(x-2)(x-3)+x^2 = 2(x-1)(x-2)Q(x) + 3x-2$\n$2(x-1)(x-2)Q(x) = (x-1)(x-2)(x-3) + x^2 - 3x + 2$\n우변의 뒤쪽 식을 인수분해하면 $x^2-3x+2 = (x-1)(x-2)$이다.\n$2(x-1)(x-2)Q(x) = (x-1)(x-2)(x-3) + (x-1)(x-2) = (x-1)(x-2)(x-3+1) = (x-1)(x-2)(x-2)$\n양변을 $2(x-1)(x-2)$로 나누면 $Q(x) = \\frac{x-2}{2} = \\frac{1}{2}x-1$이다.\n\n결론\n몫은 $\\frac{1}{2}x-1$, 나머지는 $3x-2$이다.",
-    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
-    "subUnit": "나머지정리와 인수정리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "$P(1)=1$, $P(2)=4$, $P(3)=9$이므로\n$P(x)-x^2$은 $x=1,2,3$에서 모두 $0$이다.\n\n$P(x)$는 최고차항의 계수가 $1$인 삼차식이므로\n$P(x)-x^2=(x-1)(x-2)(x-3)$이다.\n따라서\n$P(x)=(x-1)(x-2)(x-3)+x^2$이다.\n\n나누는 식은\n$(x-1)(2x-4)=2(x-1)(x-2)$이다.\n나머지를 $ax+b$라 두면\n$x=1$에서\n$a+b=P(1)=1$이고,\n$x=2$에서\n$2a+b=P(2)=4$이다.\n두 식을 빼면\n$a=3$, 따라서 $b=-2$이다.\n나머지는 $3x-2$이다.\n\n이제\n$P(x)-(3x-2)$\n$=(x-1)(x-2)(x-3)+x^2-3x+2$\n$=(x-1)(x-2)\\{(x-3)+1\\}$\n$=(x-1)(x-2)^2$이다.\n\n이를 $2(x-1)(x-2)$로 나누면 몫은\n$\\dfrac{x-2}{2}=\\dfrac12x-1$이다.\n\n따라서\n몫은 $\\dfrac12x-1$,\n나머지는 $3x-2$이다."
   },
   {
     "id": 21,
@@ -714,23 +854,31 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
+    "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+    "subUnit": "이차방정식의 풀이",
+    "subUnitConfidence": "source_solution_semantic_resolved",
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
-    "wide": false,
-    "content": "[서술형 3번] 봄이와 가을이가 이차방정식 $x^{2}+ax+b=0$ ($a, b$는 실수)의 근을 구하려고 한다. 그런데 봄이는 $x$의 계수를 잘못 보고 풀어 두 근 $1+3i, 1-3i$를 얻었고, 가을이는 상수항을 잘못 보고 풀어 두 근 $2+2i, 2-2i$를 얻었다. 이차방정식 $x^{2}+ax+b=0$의 올바른 두 근을 구하시오. [5점]",
-    "choices": [],
-    "answer": "$2 \\pm \\sqrt{6}i$",
     "tags": [
       "서술형",
       "이차방정식",
       "근과계수",
-      "복소수",
-      "계수오류"
+      "복소수"
     ],
-    "solution": "[키포인트]\n잘못 본 계수 외의 올바른 계수들은 두 근의 합과 곱을 통해 각각 추출하여 온전한 이차방정식을 세운다.\n\n조건 정리\n- 봄이는 상수항을 바르게 봄 (근: $1+3i, 1-3i$)\n- 가을이는 $x$의 계수를 바르게 봄 (근: $2+2i, 2-2i$)\n\n풀이 과정\n1. 봄이는 $x$의 계수 $a$를 잘못 보았으므로, 상수항 $b$는 올바르게 보았다.\n두 근의 곱: $b = (1+3i)(1-3i) = 1 - 9i^2 = 10$\n2. 가을이는 상수항 $b$를 잘못 보았으므로, $x$의 계수 $a$는 올바르게 보았다.\n두 근의 합: $-a = (2+2i) + (2-2i) = 4 \\implies a = -4$\n3. 올바른 이차방정식은 $x^2 - 4x + 10 = 0$이다.\n4. 근의 공식을 이용하여 올바른 근을 구한다.\n$x = \\frac{-(-2) \\pm \\sqrt{(-2)^2 - 1(10)}}{1} = 2 \\pm \\sqrt{4-10} = 2 \\pm \\sqrt{-6} = 2 \\pm \\sqrt{6}i$\n\n결론\n따라서 올바른 두 근은 $2 \\pm \\sqrt{6}i$이다.",
-    "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
-    "subUnit": "이차방정식의 풀이",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "wide": false,
+    "content": "[서술형 3번] 봄이와 가을이가 이차방정식 $x^{2}+ax+b=0$ ($a, b$는 실수)의 근을 구하려고 한다. 그런데 봄이는 $x$의 계수를 잘못 보고 풀어 두 근 $1+3i, 1-3i$를 얻었고, 가을이는 상수항을 잘못 보고 풀어 두 근 $2+2i, 2-2i$를 얻었다. 이차방정식 $x^{2}+ax+b=0$의 올바른 두 근을 구하시오. [5점]",
+    "choices": [],
+    "answer": "$2 \\pm \\sqrt{6}i$",
+    "solution": "봄이는 $x$의 계수만 잘못 보았으므로 상수항 $b$는 올바르게 보았다.\n봄이가 얻은 두 근의 곱으로\n$b=(1+3i)(1-3i)$\n$=1-(3i)^2$\n$=1+9=10$이다.\n\n가을이는 상수항만 잘못 보았으므로 $x$의 계수 $a$는 올바르게 보았다.\n가을이가 얻은 두 근의 합은\n$(2+2i)+(2-2i)=4$이다.\n근과 계수의 관계에서 두 근의 합은 $-a$이므로\n$-a=4$,\n$a=-4$이다.\n\n따라서 올바른 이차방정식은\n$x^2-4x+10=0$이다.\n\n근의 공식을 적용하면\n$x=\\dfrac{4\\pm\\sqrt{(-4)^2-4\\cdot1\\cdot10}}{2}$\n$=\\dfrac{4\\pm\\sqrt{-24}}{2}$\n$=\\dfrac{4\\pm2\\sqrt6\\,i}{2}$\n$=2\\pm\\sqrt6\\,i$이다.\n\n따라서 올바른 두 근은\n$2\\pm\\sqrt6\\,i$이다."
   }
 ];
