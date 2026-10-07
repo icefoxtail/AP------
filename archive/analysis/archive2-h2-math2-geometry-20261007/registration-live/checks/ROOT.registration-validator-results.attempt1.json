@@ -1,0 +1,79 @@
+{
+  "status": "FAIL",
+  "reports": [
+    {
+      "name": "materializer-test",
+      "command": [
+        "node",
+        "tests/archive-meta-v2-materializer.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "semantic-authority",
+      "command": [
+        "node",
+        "tests/archive2-meta-v2-semantic-authority.test.cjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "materializer-check",
+      "command": [
+        "node",
+        "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "identity-contract",
+      "command": [
+        "node",
+        "tests/archive-question-identity-contract.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "identity-runtime",
+      "command": [
+        "node",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "registration-parity",
+      "command": [
+        "node",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "target-runtime-parity",
+      "command": [
+        "node",
+        ".tmp/archive/archive2-h2-math2-geometry-20261007/registration-final-audit.mjs"
+      ],
+      "exitCode": 1,
+      "status": "FAIL"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    }
+  ]
+}

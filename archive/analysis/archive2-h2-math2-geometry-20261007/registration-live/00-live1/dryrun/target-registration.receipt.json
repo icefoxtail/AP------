@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1",
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "head": "91ff11b832227f4064c2d51196fbe18084ce806c",
+  "sourceArtifactSha256": "efc60e364086887dba14a10221882e51325d991cbaeac25896c07ecf4da4ab09",
+  "sourceArtifactBlobSha1": "8a1480e0f5f93d6dff2376ed63021a77d38faa0a",
+  "targetQidSet": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "targetCounts": {
+    "identity": 21,
+    "metadata": 21,
+    "index": 21,
+    "catalog": 21,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 503,
+    "identityRows": 12049,
+    "metadataRows": 12049,
+    "indexRows": 12041,
+    "catalogRows": 12041,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "metaProjection": {
+    "targetFieldStatusCounts": {
+      "standardUnit=approved_source": 21,
+      "subUnit=approved_source": 21,
+      "concept=manual_review_pending": 21,
+      "problemType=approved_source": 21,
+      "template=approved_source": 21,
+      "difficulty=approved_source": 21
+    },
+    "targetNullProblemType": 0,
+    "targetNullTemplate": 0,
+    "semanticFieldsCopiedUnchanged": true
+  },
+  "catalog": {
+    "records": 12062,
+    "exams": 504,
+    "identityDigest": "8f1a1b9ecea68523b4ce4ac2365b4305751d2885f084a63ae55f2d5158f5c773",
+    "indexVersion": "73e8acb5aae44e39309d2dea0150cf33baf21ecd20bd5bb12f514516ffe84dd8",
+    "projectionVersion": "archive2-canonical-v1:d37f558c71ccb5e854b057a4369b73e4ed69904982c66736655a4da6a01ce4b6",
+    "targetAutomaticCount": 0
+  },
+  "assets": [],
+  "changedFiles": [
+    {
+      "path": "archive/db.js",
+      "beforeSha256": "338727f3de37c9ba31532036d6eab88a0b6cfd5712a4f10ea8a688a936990a2f",
+      "afterSha256": "6bddb2e9744dd9fba513fe93b310bac8455e60380e0b4980f70e9e57a4bf73ae"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeSha256": "05823728a14418e3eb301934969ede1a868f1d0140e9efc0f243c4b17fbf75b6",
+      "afterSha256": "ab3b4e5ae9e1da64003a8adf2d4c9661924949498523c89aa21d1089a7760476"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeSha256": "eb6d1026484c4d5f0faff5fa78242e73138cf765a21f836993e676b52ed3e2e4",
+      "afterSha256": "2ce513641c734f21470f80b4fcec8dea49feaf78885a584269112bc0f8f397c9"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "beforeSha256": "c0068217aa933ab86f0139a116525eefe16b87094c9114a55ce104bd59f86c6a",
+      "afterSha256": "e465711d39550fbecec1f9650e9fb6bff6d467dc3f5f5ec12e46d41a41e0fc46"
+    },
+    {
+      "path": "archive/question-index.js",
+      "beforeSha256": "9813f0878ed226340914fd7ca1978d047ee6e966362d93df6c026c269c135928",
+      "afterSha256": "6d8660e4cc0e7e9aeb5e27ae6a2707a8ee7d8b2ebb139ffe2fe9d626ce5ec358"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "beforeSha256": "3a9ed36cae9bbabb06110393bbd8c525ea7f7d773d15088e39bc1f7cbb966da2",
+      "afterSha256": "545dca868377d7e6266974fd34c29ec439f6da2e1ea030303de04db2aea5227a"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "beforeSha256": "c92159e550f82283b611805f12314bf09d10702129b4b67a14983f8e808ebac9",
+      "afterSha256": "b534b4bd70169ed3ed3de9bb238a0392402dee89fc990f229aa5bcdb2d878493"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "beforeSha256": "b3272d06584d7889e47c48623eda160e22f0f7766d500df366341f2ac619db3b",
+      "afterSha256": "030dea69fab1be595e11b422c0b9babeda4f0ede194905bc88a7ee78b9c38c5c"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "ddce747ff527c022ca5dcc458dab79392a503e9f96652bc7c0aba865130651e2",
+      "afterSha256": "09c8ac23ad1ed141918b4e603f477a9fc88147b1dd2897582bef3ad82568764f"
+    }
+  ],
+  "checks": {
+    "baselineSnapshotExact": true,
+    "targetOrdinalCoverage": true,
+    "nonTargetRowsUnchanged": true,
+    "sourceAssetHashesMatch": true,
+    "sourceStatusVerified": true,
+    "manifestGeneratedFromCurrentCatalog": true
+  },
+  "createdAt": "2026-10-07T15:54:44.850Z"
+}

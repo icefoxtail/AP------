@@ -1,0 +1,38 @@
+{
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "targetCounts": {
+    "identity": 20,
+    "metadata": 20,
+    "index": 20,
+    "catalog": 20,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 515,
+    "identityRows": 12314,
+    "metadataRows": 12314,
+    "indexRows": 12306,
+    "catalogRows": 12306,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "catalog": {
+    "records": 12326,
+    "exams": 516,
+    "identityDigest": "4021800917a9013c2610ca1bd86abb38381ca4908a39cb63538e4fbac1261b36",
+    "indexVersion": "a53dcb29b0319b3aec444b71e386ad10043b32d25281ae4f828b862b183ab78c",
+    "projectionVersion": "archive2-canonical-v1:ff9622932b81e0c537be98dcc0b6b217810703866ecbcd87e7f762ca22c6dfd7",
+    "targetAutomaticCount": 0
+  },
+  "changedFiles": [
+    "archive/db.js",
+    "archive/data/question_identity_map.json",
+    "archive/data/question_metadata.json",
+    "archive/question-identity.js",
+    "archive/question-index.js",
+    "archive/question-index-report.md",
+    "archive/question-index-audit.md",
+    "archive/data/archive2-catalog.json",
+    "archive/data/archive2-canonical-input-manifest.json"
+  ]
+}
