@@ -1,0 +1,64 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "ITEM_RECOVERY",
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "qid": 10,
+  "reviewMode": "DIRECT_REPLACEMENT_BLIND_SELF_CHECK",
+  "inputFieldsVisible": [
+    "content",
+    "choices"
+  ],
+  "storedAnswerAndSolutionUsed": false,
+  "studentContent": "삼각형 $ABC$에서 $\\overline{AB}=\\overline{AC}=12\\rm\\,cm$, $\\angle BAC=30^\\circ$이다. 점 $M$은 $\\overline{BC}$의 중점이고, 점 $D$는 $\\overline{AB}$ 위의 점으로 $\\overline{AD}:\\overline{DB}=2:1$이다.\n$\\triangle ADM$의 넓이는? (5점)",
+  "choices": [
+    "$6\\rm\\,cm^2$",
+    "$9\\rm\\,cm^2$",
+    "$12\\rm\\,cm^2$",
+    "$18\\rm\\,cm^2$",
+    "$24\\rm\\,cm^2$"
+  ],
+  "derivation": [
+    "S_ABC=1/2·12·12·sin30°=36 cm².",
+    "M is the midpoint of BC, so S_ABM=S_ABC/2=18 cm².",
+    "AD:DB=2:1 gives AD/AB=2/3; triangles ADM and ABM share a height, so S_ADM=(2/3)·18=12 cm²."
+  ],
+  "choiceEvaluation": [
+    {
+      "choice": "6",
+      "correct": false,
+      "reason": "uses DB/AB=1/3 as the scaling ratio"
+    },
+    {
+      "choice": "9",
+      "correct": false,
+      "reason": "treats D as midpoint and halves 18 again"
+    },
+    {
+      "choice": "12",
+      "correct": true,
+      "reason": "matches the derived area"
+    },
+    {
+      "choice": "18",
+      "correct": false,
+      "reason": "omits the AD/AB ratio"
+    },
+    {
+      "choice": "24",
+      "correct": false,
+      "reason": "applies 2/3 to full area 36 and omits median split"
+    }
+  ],
+  "answerCardinality": "ONE_OF_FIVE",
+  "blindAnswer": "12 cm² (③)",
+  "visualDecision": "NO_VISUAL_REQUIRED",
+  "nonTargetPayloadInvariant": {
+    "qidsChecked": 22,
+    "changedQids": []
+  },
+  "assetBytesInvariant": {
+    "assignedAssetsChecked": 23,
+    "changedAssets": []
+  }
+}

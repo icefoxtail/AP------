@@ -1,0 +1,34 @@
+{
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "qid": 10,
+  "stage": "ITEM_RECOVERY_SOURCE_REVALIDATION_ADDENDUM",
+  "supersedesRef": "archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/q10-source-review/q10-source-truth-adjudication.json",
+  "supersedesDisposition": "FALSE_HOLD_NO_REPAIR_NEEDED",
+  "finalSourceTruthDisposition": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+  "sourceEvidence": {
+    "questionPdfSha256": "08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+    "questionPdfAllPagesReopened": true,
+    "answerPdfSha256": "c28fa375e83cc0f9b117204979327b0804f80c677373fbc4e8e66d7aec9ee688",
+    "answerPdfAllPagesReopened": true,
+    "answerKeyResult": "Option ④ (49 cm²) is marked; no reproducible derivation appears on any answer-PDF page.",
+    "currentQ10ImageSha256": "c8216ec50de24d94f7a74e7532feda46fced881c3ceb5d9e1b0b008d58a4e58b"
+  },
+  "decisiveMissingFacts": [
+    "The figure does not mark a fold crease or identify A and C as corresponding positions of one material point.",
+    "The equality AB=BC used in the provisional derivation is not stated or marked; assuming it is the only route to the key's 49 cm² answer.",
+    "The answer PDF supplies only a circled choice, not a proof that resolves the missing fold correspondence."
+  ],
+  "alternateEvidenceChecked": [
+    "Current student prompt and q10.png were physically reopened.",
+    "All four pages of the original question PDF were rendered and viewed; q10 on page 2 was also enlarged at 300 dpi.",
+    "All four pages of the answer PDF were rendered and viewed; q10 on page 2 was enlarged at 300 dpi.",
+    "The full q10 crop is present and readable; there is no additional clipped label, crease mark, or numeric fact to restore."
+  ],
+  "whyTruthStillNonDeterministic": "A conditional construction that adds AB=BC leads to 49 cm², but that fold correspondence is absent from the complete original prompt and figure. The answer key is not a mathematical derivation. No deterministic source repair can establish the missing relation.",
+  "repairAttempted": "No student-content or visual repair was made; the source is complete but nonunique, and adding a fold relation would invent a condition.",
+  "directReplacementEligible": true,
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "nextRequiredAction": "Directly author a same-curriculum, same-response-form q10 replacement; then request fresh clean q10-only R1/R2 because the student body and decisive visual disposition change."
+}

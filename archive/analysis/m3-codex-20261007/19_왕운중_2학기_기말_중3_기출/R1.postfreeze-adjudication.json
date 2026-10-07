@@ -1,0 +1,67 @@
+{
+  "schemaVersion":"CODEX_R1_POSTFREEZE_ADJUDICATION_V1",
+  "runId":"m3-codex-20261007",
+  "examUid":"19_왕운중_2학기_기말_중3_기출",
+  "originalFreeze":{
+    "path":"archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/R1.independent-freeze.json",
+    "sha256":"2d4891950b969d28235235db26ba30f4b5a7aea617e5959283d80965f961a761",
+    "preserved":true
+  },
+  "qid22":{
+    "originalFrozenAnswer":"15 cm",
+    "freezeConfidence":"high",
+    "storedAnswerBeforeRepair":"13",
+    "preRepairCompareResult":"MISMATCH",
+    "adjudicationType":"POSTFREEZE_CALCULATION_CORRECTION",
+    "studentBodyChanged":false,
+    "decisiveVisualChanged":false,
+    "auditedSourceRepairCarriedForward":{
+      "sourceComparisonPath":"archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/CREATE.source-comparison.json",
+      "field":"q22 content and image",
+      "printedOriginal":"AB=AC=5, BC=10",
+      "carriedRepair":"AB=AC=5, BC=8",
+      "reason":"5-5-10 is degenerate; the prior audited repair changed only BC to 8 and retained the original pixels with a BC=8 SVG overlay.",
+      "visuals":{
+        "svgSha256":"68bf479a271475359e9633bcd3bb7a53ed7e062aaa072f13e0c75b8642e833a0",
+        "externalImageSha256":"507bd6576a5ee9be1edca42618c28efcd803eb7ce882d9310ac7ccbdc428ed26"
+      }
+    },
+    "recalculation":{
+      "coordinates":"B=(0,0), C=(8,0), A=(4,3), Q=(q,0), q>8",
+      "circumcircle":"x^2+y^2-8x+(7/3)y=0",
+      "ratio":"AP:PQ=1:3 and P is between A and Q, so QP=(3/4)QA",
+      "secantEquation":"(3/4)((q-4)^2+9)=q(q-8)",
+      "simplifiedEquation":"q^2-8q-75=0",
+      "roots":"q=4±sqrt(91)",
+      "selectedRoot":"q=4+sqrt(91), since q>8",
+      "correctAnswer":"4+sqrt(91)",
+      "cause":"The frozen 15 and stored 13 both came from an incorrect factorization of q^2-8q-75; the correct roots are not integers."
+    },
+    "changedLoci":["questionBank[22].answer","questionBank[22].solution","questionBank[22].decisiveStep","questionBank[22].answerSource","questionBank[22].solutionSource"],
+    "solutionSha256":"55c6420f6ca4b3592f62ef61d2b8add9bf3340d5a424b0373167dd92d72c904f",
+    "currentCandidateRawSha256":"5399b93207e212d5c8999d3752a4e1148884b79694de2e06484d63fe7cf0eb0f",
+    "currentCandidateBlobSha1":"bf61bb194516071e15f7c8a8842c4e40bc0cc2dd"
+  },
+  "qid10":{
+    "originalFrozenAnswer":"49 cm^2, choice ④",
+    "freezeConfidence":"medium",
+    "freezeUncertainty":"Fold-congruence relation not independently established from the student visual.",
+    "sourcePdf":{
+      "path":"C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2019_왕운중3_수학_2기말.pdf",
+      "sha256":"08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+      "page":2,
+      "renderedPagePath":".tmp/archive/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/source-review/page-2.png",
+      "renderedPageSha256":"6361aac8f569d52b494b943e3b5a70f2009d366f74abe8b90ec9ec7019363268"
+    },
+    "answerPdf":{
+      "path":"C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2019_왕운중3_수학_2기말_정답.pdf",
+      "sha256":"c28fa375e83cc0f9b117204979327b0804f80c677373fbc4e8e66d7aec9ee688",
+      "page":2,
+      "renderedPagePath":".tmp/archive/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/answer-review/answer-2.png",
+      "renderedPageSha256":"ecbb49e2baefc3d92c86aad95ce0ef3302fbc200deafa41c56ea17de61ae0894",
+      "observation":"The page visibly circles choice ④ (49 cm^2)."
+    },
+    "disposition":"OPEN_FOR_R2_BLIND",
+    "reason":"The answer key agrees with the frozen tentative value, but the fold relation needed for a reproducible small-board derivation remains unclear. Keep current answer/solution fields blank for R2; the answer key is not an independent derivation."
+  }
+}

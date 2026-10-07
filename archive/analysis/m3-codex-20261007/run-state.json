@@ -1,10 +1,11 @@
 {
   "unpublishedCloseoutEvidence": [
     "20_연향중_2학기_기말_중3_기출/MAIN_DONE.receipt.json",
-    "20_연향중_2학기_기말_중3_기출/ROOT.main-done.intake.json"
+    "20_연향중_2학기_기말_중3_기출/ROOT.main-done.intake.json",
+    "19_이수중_2학기_기말_중3_기출/MAIN_DONE.receipt.json",
+    "19_이수중_2학기_기말_중3_기출/ROOT.main-done.intake.json"
   ],
   "remainingCreateQueue": [
-    "20_이수중_2학기_기말_중3_기출",
     "21_금당중_2학기_기말_중3_기출",
     "21_매산중_2학기_기말_중3_기출",
     "21_신흥중_2학기_기말_중3_기출",
@@ -15,45 +16,35 @@
     "25_풍덕중_2학기_중간_중3_수학"
   ],
   "masterCount": 1,
-  "lastVerifiedMain": "0bb109b364c76c6b11038a73eb050632da5380c1",
+  "lastVerifiedMain": "935ab5b552af3cd1529169422cc7264ebcd1a233",
   "root": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------",
   "runId": "m3-codex-20261007",
   "slots": {
     "R1": {
+      "scope": "q14 clean merge currentR1HOLDtravel",
       "freezeDisclosed": true,
       "examUid": "20_신흥중_2학기_기말_중3_기출",
       "session": "/root/r1_20_sinheung"
     },
     "CREATE": {
-      "session": "/root/create_19_wangun",
-      "scope": "q10 ITEM_RECOVERY",
-      "examUid": "19_왕운중_2학기_기말_중3_기출"
+      "examUid": "20_이수중_2학기_기말_중3_기출",
+      "session": "/root/create_20_isu"
     },
     "R3": {
-      "examUid": "19_이수중_2학기_기말_중3_기출",
-      "session": "/root/r3_19_isu"
+      "session": "/root/r3_19_wangun",
+      "examUid": "19_왕운중_2학기_기말_중3_기출"
     },
     "R2": null
   },
-  "spawnCount": 12,
+  "spawnCount": 17,
   "rootTechnicalScript": ".tmp/archive/m3-codex-20261007/root-technical.mjs",
   "lockedRoster": "archive/analysis/m3-codex-20261007/locked-roster.json",
-  "updatedAt": "2026-10-07T07:22:53.2962131Z",
+  "updatedAt": "2026-10-07T08:05:51.1810591Z",
   "completed": [
-    "20_연향중_2학기_기말_중3_기출"
+    "20_연향중_2학기_기말_중3_기출",
+    "19_이수중_2학기_기말_중3_기출"
   ],
   "publicationRecovery": "Preserved failed raw-index parity publication 0bcc580d5; repaired raw bytes in 0bb109b36; non-force push and actual MAIN_DONE PASS",
-  "itemRecoveryQueue": [
-    {
-      "priority": "next CREATE slot",
-      "state": "REVALIDATE_SOURCE_TRUTH_BEFORE_REPAIR_REPLACEMENT",
-      "qids": [
-        10
-      ],
-      "examUid": "19_왕운중_2학기_기말_중3_기출",
-      "rawSha256": "5399b93207e212d5c8999d3752a4e1148884b79694de2e06484d63fe7cf0eb0f",
-      "session": "/root/create_19_wangun"
-    }
-  ],
+  "itemRecoveryQueue": [],
   "pendingR1Queue": []
 }

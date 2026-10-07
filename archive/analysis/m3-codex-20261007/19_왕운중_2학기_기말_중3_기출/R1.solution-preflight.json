@@ -1,0 +1,63 @@
+{
+  "schemaVersion":"R1_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "runId":"m3-codex-20261007",
+  "examUid":"19_왕운중_2학기_기말_중3_기출",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "completedBeforeSolutionRepair":true,
+  "goldenRegistry":{
+    "path":"archive/data/codex-quality-calibration-registry-v2.json",
+    "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "goldenPaths":[
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+    ],
+    "knownException":"25_제일고 q18 VISUAL_SEMANTIC_PARITY is excluded from visual modeling."
+  },
+  "samples":[
+    {
+      "examUid":"25_매산여고_2학기_중간_고1_기출",
+      "jsSha256":"0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "qid":7,
+      "solutionSvgRef":"assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "solutionSvgSha256":"6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "observedSolutionPattern":"Convert the circle equation to standard form, identify center/radius, then show each translation/reflection as a separate coordinate step before writing the final equation.",
+      "observedVisualPattern":"Axes and original/intermediate/final circles are distinguished; coordinate arrows and a compact relation panel support the written derivation."
+    },
+    {
+      "examUid":"25_효천고_2학기_중간_고1_기출",
+      "jsSha256":"80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "qid":2,
+      "solutionSvgRef":"assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "solutionSvgSha256":"cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+      "observedSolutionPattern":"Rewrite each line in slope-intercept form, name both slopes, substitute their product into the perpendicularity condition, and isolate k on separate lines.",
+      "observedVisualPattern":"The graph contains both lines and axes; the written slopes agree with the visible negative shallow and positive steep directions. Some rendered glyphs fall back due to unavailable font, while graph geometry remained inspectable."
+    },
+    {
+      "examUid":"25_제일고_2학기_중간_고1_기출",
+      "jsSha256":"17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "qid":6,
+      "solutionSvgRef":"assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+      "solutionSvgSha256":"70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+      "observedSolutionPattern":"Use De Morgan and inclusion-exclusion, show the lower bound on the overlap, then construct a set partition attaining the bound.",
+      "observedVisualPattern":"The Venn diagram's overlap and exclusive-region variables match the algebraic proof and the shown extremal partition."
+    }
+  ],
+  "negativePreflight":{
+    "path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "readmeSha256":"39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "openedSvgSamples":[
+      {"qid":1,"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg","sha256":"93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf","observation":"Actual line does not pass through both labeled points despite slope/intercept labels."},
+      {"qid":3,"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg","sha256":"d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2","observation":"Rendered line has positive slope while the labeled equation 7x+y−15=0 has negative slope; PH is not perpendicular."},
+      {"qid":7,"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg","sha256":"1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5","observation":"The plotted parabola does not pass through the labeled points."},
+      {"qid":8,"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg","sha256":"d053c5a22193029c675069fe6aa22e1014f96bb3821788f1095180c350681a41","observation":"The actual line primitive does not realize the labeled tangent equation/point relation."},
+      {"qid":20,"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg","sha256":"9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8","observation":"Actual line slope has the opposite sign from the labeled 3x+4y−8=0 and is not perpendicular to PH."}
+    ],
+    "reviewedOtherFailureModes":[
+      "Enumerated-source judgments must have independently separated solution blocks (README q2 and q17 examples).",
+      "Null Meta projection is not accepted when a unique exact ACTIVE binding exists.",
+      "Sandbox runtime content/choices/answer/solution must be checked for control-character damage such as missing TeX backslash before rm."
+    ]
+  },
+  "curriculumTransferRule":"These H1 samples set only the student-facing flow/layout/visual quality floor; their solution methods and metadata are not transferred to M3."
+}

@@ -1,0 +1,139 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "status": "AUDITED_RUNTIME_ESCAPE_REPAIR",
+  "sourceInputSha256": "65662b3b3db8dee43530b8309f3dce48a436d0e04f883e453e37c27a19bac8a6",
+  "sourcePdfSha256": "08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+  "sourcePage": 3,
+  "qids": [
+    15,
+    18,
+    20
+  ],
+  "beforeRuntimeValues": {
+    "15": [
+      {
+        "value": "$8\\pi\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$9\\pi\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$10\\pi\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$11\\pi\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$12\\pi\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      }
+    ],
+    "18": [
+      {
+        "value": "$40+16\\pi\rm\\,cm^2$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$40-16\\pi\rm\\,cm^2$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$40\\pi\rm\\,cm^2$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$40+8\\pi\rm\\,cm^2$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$40-8\\pi\rm\\,cm^2$",
+        "controlCodes": [
+          13
+        ]
+      }
+    ],
+    "20": [
+      {
+        "value": "$4\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$8\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$10\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$12\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      },
+      {
+        "value": "$20\rm\\,cm$",
+        "controlCodes": [
+          13
+        ]
+      }
+    ]
+  },
+  "afterRuntimeValues": {
+    "15": [
+      "$8\\pi\\rm\\,cm$",
+      "$9\\pi\\rm\\,cm$",
+      "$10\\pi\\rm\\,cm$",
+      "$11\\pi\\rm\\,cm$",
+      "$12\\pi\\rm\\,cm$"
+    ],
+    "18": [
+      "$40+16\\pi\\rm\\,cm^2$",
+      "$40-16\\pi\\rm\\,cm^2$",
+      "$40\\pi\\rm\\,cm^2$",
+      "$40+8\\pi\\rm\\,cm^2$",
+      "$40-8\\pi\\rm\\,cm^2$"
+    ],
+    "20": [
+      "$4\\rm\\,cm$",
+      "$8\\rm\\,cm$",
+      "$10\\rm\\,cm$",
+      "$12\\rm\\,cm$",
+      "$20\\rm\\,cm$"
+    ]
+  },
+  "repair": "Restore missing TeX backslash before rm so JavaScript runtime strings are \rm and do not contain carriage return U+000D.",
+  "sourceComparison": "The original PDF page 3 choices show these lengths with cm/cm^2 units; only runtime string encoding was repaired.",
+  "candidateRawSha256": "59fea14b05eee3890371590b6ee1ea65d1cd372de18c300673e7648536ada290"
+}

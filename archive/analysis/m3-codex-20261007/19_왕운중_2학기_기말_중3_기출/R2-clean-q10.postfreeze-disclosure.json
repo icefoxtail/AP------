@@ -1,0 +1,74 @@
+{
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "stage": "R2-clean-q10",
+  "disclosedAt": "2026-10-07T07:57:39.554Z",
+  "freeze": {
+    "path": "archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/R2-clean-q10.freeze.json",
+    "sha256": "37888087769e6364d4eef03bd19fcc980f19dda1bf05f3073fbea46b4b9b6d7a"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\19_왕운중_2학기_기말_중3_기출\\19_왕운중_2학기_기말_중3_기출.js",
+    "sha256": "c9d6e3ac50cd4897c47a977efdecbea5f68347975d4dec474e4d68efa9259590",
+    "artifactSha": "d309da3373178c44b892833753a6b0db71838fc2"
+  },
+  "excludedQids": [],
+  "questions": [
+    {
+      "id": 10,
+      "content": "삼각형 $ABC$에서 $\\overline{AB}=\\overline{AC}=12\\rm\\,cm$, $\\angle BAC=30^\\circ$이다. 점 $M$은 $\\overline{BC}$의 중점이고, 점 $D$는 $\\overline{AB}$ 위의 점으로 $\\overline{AD}:\\overline{DB}=2:1$이다.\n$\\triangle ADM$의 넓이는? (5점)",
+      "choices": [
+        "$6\\rm\\,cm^2$",
+        "$9\\rm\\,cm^2$",
+        "$12\\rm\\,cm^2$",
+        "$18\\rm\\,cm^2$",
+        "$24\\rm\\,cm^2$"
+      ],
+      "answer": "③",
+      "solution": "[키포인트] 포함각과 두 변으로 $\\triangle ABC$의 넓이를 구한 뒤, 중점과 선분비를 넓이비로 차례로 적용한다.\n$S_{ABC}=\\dfrac12\\times AB\\times AC\\times\\sin\\angle BAC$\n$=\\dfrac12\\times12\\times12\\times\\sin30^\\circ=36\\rm\\,cm^2$이다.\n$M$은 $BC$의 중점이므로 $BM=MC$이다. 두 삼각형 $ABM$, $ACM$은 밑변이 같고 높이가 같아 넓이가 같다.\n따라서 $S_{ABM}=\\dfrac12S_{ABC}=18\\rm\\,cm^2$이다.\n$AD:DB=2:1$이므로 $\\dfrac{AD}{AB}=\\dfrac23$이다.\n$\\triangle ADM$과 $\\triangle ABM$은 밑변이 각각 $AD$, $AB$이고, 꼭짓점 $M$에서 직선 $AB$까지의 높이가 같다.\n따라서 $S_{ADM}=\\dfrac{AD}{AB}S_{ABM}=\\dfrac23\\times18=12\\rm\\,cm^2$이다.\n정답은 ③이다.",
+      "tags": [
+        "도형",
+        "삼각비",
+        "삼각형의 넓이"
+      ],
+      "category": "삼각비",
+      "originalCategory": "삼각비",
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "wide": false,
+      "level": "상",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "tagConfidence": "medium",
+      "tagStatus": "reviewed_create",
+      "sourceQuestionNo": "10",
+      "displayNo": "10",
+      "sourceOrdinal": 10,
+      "sourcePageNo": 2,
+      "contentSource": "codex_direct_replacement",
+      "choicesSource": "codex_direct_replacement",
+      "answerSource": "solution_first_independent_solve",
+      "solutionSource": "fresh_direct_replacement_solution",
+      "extractionStatus": "DIRECT_ITEM_REPLACEMENT",
+      "reviewStatus": "CREATE_DONE",
+      "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+      "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|10",
+      "decisiveStep": "포함각으로 ABC 넓이를 구한 다음 중점과 선분비를 같은 높이 넓이비로 적용한다."
+    }
+  ]
+}

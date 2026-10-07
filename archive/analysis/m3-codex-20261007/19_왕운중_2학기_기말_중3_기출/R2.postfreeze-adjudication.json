@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "R2_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\19_왕운중_2학기_기말_중3_기출\\R2.blind-freeze.json",
+    "sha256": "f178ff89111fd36f22bf6175dcb206179440f17e473597067685166072acf270",
+    "preservedUnmodified": true
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\19_왕운중_2학기_기말_중3_기출\\R2.postfreeze-disclosure.json",
+    "sha256": "25c2095ddeffdc78c9f91c835cd3a3b25a14ee26dc6c6fbcfcb69905cfa49889"
+  },
+  "artifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\19_왕운중_2학기_기말_중3_기출\\19_왕운중_2학기_기말_중3_기출.js",
+    "sha256": "5399b93207e212d5c8999d3752a4e1148884b79694de2e06484d63fe7cf0eb0f"
+  },
+  "adjudications": [
+    {
+      "qid": 11,
+      "initialFreeze": "choice 2 (100(√3+1) m)",
+      "correctedIndependentAnswer": "choice 1 (100(√3-1) m)",
+      "storedAnswer": "choice 1",
+      "result": "MATCH_AFTER_SAME_STAGE_ADJUDICATION",
+      "reasoning": "Student diagram places C above a point H between A and B. At 45° AH=h; at 30° BH=√3h. Thus AB=AH+HB=h(1+√3)=200 and h=100(√3-1). Initial difference equation misread the point order; original freeze retained."
+    },
+    {
+      "qid": 21,
+      "initialFreeze": "(3+√3)/6",
+      "correctedIndependentAnswer": "(2+√2)/√3",
+      "storedAnswer": "(2+√2)/√3",
+      "result": "MATCH_AFTER_SAME_STAGE_ADJUDICATION",
+      "reasoning": "The marked x is ∠VMN (between VM and MN), as confirmed by the q21 student diagram. VM=VN=√3a/2, MN=a, and altitude to MN gives sin x=√(2/3), cos x=1/√3, tan x=√2. Product=(2+√2)/√3. Initial freeze read the angle as ∠VMB; original freeze retained."
+    },
+    {
+      "qid": 22,
+      "initialFreeze": "15 cm",
+      "correctedIndependentAnswer": "4+√91 cm",
+      "storedAnswer": "4+√91",
+      "result": "MATCH_AFTER_SAME_STAGE_ADJUDICATION",
+      "reasoning": "For q>8, QA²=(q-4)²+9 and QP=3QA/4. Secant power gives q(q-8)=3((q-4)²+9)/4, so q²-8q-75=0 and q=4+√91. Initial freeze made a quadratic-root arithmetic error; original freeze retained."
+    },
+    {
+      "qid": 10,
+      "initialFreeze": "uncertain / no answer frozen",
+      "storedAnswer": "choice 4 (49 cm²)",
+      "result": "OPEN_TRUE_ITEM_HOLD_CANDIDATE_TO_ROOT",
+      "reasoning": "Opened q10 current student image and source question PDF page 2. The diagram gives 7 cm rectangle height and ∠ABC=30° but does not explicitly mark the crease/correspondence that would establish AB=BC (for example, A and C as reflected positions with B fixed on the crease). If that is the intended fold relation, then the altitude 7 gives AB=14 and, conditionally BC=AB=14, area=49 cm²; however, the current figure does not let me certify that correspondence independently. The answer PDF page 2 marks ④/49 cm² but supplies no derivation. Preserve as open for ROOT recovery/direct replacement decision.",
+      "specificAmbiguity": "Missing/ambiguous fold correspondence: no crease or reflected-point indication establishes that A and C are corresponding folded positions with B fixed on the crease, hence AB=BC.",
+      "conditionalDerivation": "If AB=BC is intended: perpendicular separation from A to line BC is 7; sin30=7/AB, so AB=14 and BC=14; area=(1/2)AB·BC·sin30=49 cm².",
+      "sourceDeterminacyAssessment": "Reviewer uncertainty tied to a specific unstated/unmarked fold correspondence; do not label the source mathematically defective solely from inability to infer the intended fold mapping."
+    }
+  ],
+  "comparisonSummary": {
+    "matchedAtFirstComparison": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      23
+    ],
+    "correctedToMatch": [
+      11,
+      21,
+      22
+    ],
+    "unresolved": [
+      10
+    ],
+    "mismatchesRemaining": 0
+  },
+  "sourceReview": {
+    "sourceQuestionPdf": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(4)2기말\\중3\\2019_왕운중3_수학_2기말.pdf",
+    "sourceQuestionPdfSha256": "08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+    "targetPage": 2,
+    "sourceAnswerPdf": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(4)2기말\\중3\\2019_왕운중3_수학_2기말_정답.pdf",
+    "sourceAnswerPdfSha256": "c28fa375e83cc0f9b117204979327b0804f80c677373fbc4e8e66d7aec9ee688",
+    "answerKeyPage": 2,
+    "answerKeyUse": "confirms displayed ④ only; not used as independent proof"
+  }
+}

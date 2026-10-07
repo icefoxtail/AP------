@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "m3-codex-20261007",
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q10",
+  "scope": "AFFECTED_QID_ONLY",
+  "qid": 10,
+  "source": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/19_왕운중_2학기_기말_중3_기출.js",
+    "rawFileSha256": "c9d6e3ac50cd4897c47a977efdecbea5f68347975d4dec474e4d68efa9259590",
+    "artifactBlobSha1": "d309da3373178c44b892833753a6b0db71838fc2"
+  },
+  "rootHeadAtInitialCheck": "0bb109b364c76c6b11038a73eb050632da5380c1",
+  "rootHeadAfterUnrelatedFastForward": "4753663520409596272b0217c5c7c417ca2b8f92",
+  "studentBundleSha256": "3d51d687e633e80c46f461bf0af029da95b71827c2276a7abb9e271863b0497c",
+  "studentPayloadSha256": "c7c6f436fe1c439742e2b82eb3af082a3af154332ec40c6c138ea145f8f09b6e",
+  "freeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/R1-clean-q10.independent-freeze.json",
+    "sha256": "9e0726877b7e3770422585753cd89212f078b0dae888a646b8cdd01faf60aafb"
+  },
+  "postfreezeDisclosure": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/R1-clean-q10.postfreeze-disclosure.json",
+    "sha256": "d48222d4febe0c12073ef11ee348bc191d97337e2a42dc023e278bdd55766ade"
+  },
+  "math": {
+    "status": "PASS",
+    "independentAnswer": 12,
+    "unit": "cm^2",
+    "choiceIndex": 3,
+    "choiceSymbol": "③",
+    "storedComparison": "MATCH",
+    "answerCardinality": 1,
+    "distractorIntegrity": "PASS",
+    "reason": "M is the midpoint of BC, so its distance to AB is half AC·sin30°=3; AD=2/3·12=8; [ADM]=1/2·8·3=12. Choices 6, 9, 18, 24 are distinct and do not duplicate the correct value."
+  },
+  "questionLayout": {
+    "status": "PASS_STATIC",
+    "disposition": "LAYOUT_KEEP",
+    "reason": "The triangle data and point/ratio conditions remain together; a line break separates the area question from its setup. No unnecessary layout override.",
+    "studentBundleParity": "PASS",
+    "sourceTextOriginParity": "NOT_RECHECKED_IN_SCOPED_COMPONENT"
+  },
+  "solutionLayout": {
+    "status": "PASS_STATIC",
+    "smallBoardContinuity": "PASS",
+    "reason": "Shows the sine-area setup, substitution, midpoint equal-area fact, half-area calculation, 2:1 segment ratio, same-height area ratio, and final value in top-to-bottom order. No essential condition or calculation is skipped."
+  },
+  "meta": {
+    "status": "PASS",
+    "curriculum": "M3 2015 / M3-05 trigonometric ratios / application",
+    "concept": "included-angle triangle area followed by midpoint and same-height area ratios",
+    "responseForm": "five-option multiple choice; all choices use cm^2",
+    "difficulty": "difficultyBucket 3 / medium, source targetLevel 상, and legacy NORMAL compatibility are explicitly bound; the recorded three linked steps support this role.",
+    "curriculumConceptResponseDifficultyFidelity": "PASS"
+  },
+  "visualSvg": {
+    "status": "PASS",
+    "visualNeeded": false,
+    "disposition": "VISUAL_NOT_REQUIRED",
+    "reason": "The included angle, equal sides, midpoint, segment ratio, and target area are completely specified in text. No image/table/diagram reference exists in the student bundle; a solution SVG is not needed to establish the calculation."
+  },
+  "render": {
+    "status": "NOT_RUN_ROOT_WAIVER",
+    "actualRenderPass": false,
+    "reason": "ROOT delegated static-complete route; no render was performed or claimed."
+  },
+  "provenance": {
+    "status": "PASS_FOR_CURRICULUM_AND_REPLACEMENT_ROLE",
+    "references": [
+      {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/CREATE.q10-replacement.json",
+        "sha256": "9e218daa6be0b3590201a2ced5ecc54ec6d4eeb82c9b74303b6e8527ec087cbb"
+      },
+      {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/CREATE.q10-replacement-solution-freeze.json",
+        "sha256": "dfec2055d73de58f065f6a58a6a8aaecfd67b078f9760d0d4a6da1e013b4db82"
+      }
+    ],
+    "curriculum": "2015 M3-05 trig-ratio application; core concept is included-angle area then equal-height and segment-ratio area.",
+    "responseForm": "five-option multiple choice",
+    "difficultyRole": "source score 5; targetBucket 3; targetLevel 상; rationale is three linked steps",
+    "visualDecision": "No visual required: all values and relations stated",
+    "nonTargetInvariant": "PASS; denominator 22, changed qids [] in the replacement record.",
+    "exactOriginTextParity": "Not independently re-compared to original PDF in this component; current student bundle and qid disclosure match."
+  },
+  "changes": [],
+  "itemHold": "NONE",
+  "genericValidator": {
+    "disposition": "NOT_RUN_COMPONENT_ONLY",
+    "owner": "Original R1 owner merges this qid with valid unchanged evidence for remaining qids and runs the actual full generic V2 R1 validator once."
+  },
+  "nextAction": "Original R1 owner: merge the q10 freeze and four-axis findings with unchanged qids, resolve source-provenance evidence from existing valid receipts if required, then run the full generic V2 R1 validator."
+}
