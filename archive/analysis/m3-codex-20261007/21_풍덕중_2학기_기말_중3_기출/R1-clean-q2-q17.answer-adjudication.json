@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SAME_STAGE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q2-q17",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "scopeQids": [2, 17],
+  "originalFreezePreserved": {
+    "path": "R1-clean-q2-q17.independent-freeze.json",
+    "sha256": "d937fb35a1e85455981651754a90679706af4c4134e451f240e87bfd6096bd53",
+    "answers": {"2": "6", "17": "⑤"}
+  },
+  "postfreezeDisclosure": {
+    "path": "R1-clean-q2-q17.postfreeze-disclosure.json",
+    "sha256": "92c7bce5314af1233829bebb64b6676169c8b7aada07433d660d63287d8a0629",
+    "sourceSha256": "bb96d34e097960d0b36f1eaecbf6333c3fcac54e822d6bf5cf4e53cb491188be",
+    "artifactSha": "821e9bbdf745ee644f7343436a00979a90798ab8"
+  },
+  "corrections": [
+    {
+      "qid": 2,
+      "status": "SAME_STAGE_VISUAL_SCOPE_ADJUDICATION",
+      "priorIndependentAnswer": "6",
+      "adjudicatedIndependentAnswer": "8",
+      "choiceIndex1Based": 2,
+      "answerCardinality": 1,
+      "reason": "Original q02 PNG shows the 4 cm label on the left small arc; both adjacent 24-degree inscribed angles subtend equal small arcs, and the x arrow spans both lower small arcs. Therefore x=4+4=8 cm. The first freeze misread the label and the x-arrow extent. This is the specific source-arrow interpretation correction; no new independent solve was performed.",
+      "storedAnswerAfterFreeze": "②",
+      "storedSolutionSha256": "b710baea4e152bfd0405669005aee37bca8b81ac36e1b7e71deeae7765b6ad52",
+      "comparison": "MATCH_AFTER_ADJUDICATION",
+      "artifactChanged": false,
+      "evidenceChangedLocus": ["q02.independentAnswer.adjudication"]
+    },
+    {
+      "qid": 17,
+      "status": "UNCHANGED_FREEZE_MATCH",
+      "independentAnswer": "⑤",
+      "answerCardinality": 1,
+      "storedAnswerAfterFreeze": "⑤",
+      "storedSolutionSha256": "8f913e2d86838103a9415001dfe7051d714eaa59e782a9d5f35222e745b789b7",
+      "comparison": "MATCH",
+      "artifactChanged": false,
+      "evidenceChangedLocus": []
+    }
+  ],
+  "historyNotes": [
+    "The original sealed student-input freeze remains immutable and was made before any stored answer or solution exposure.",
+    "The q02 visual-scope error was corrected in the same stage after authorized postfreeze extraction; no fresh answer-chasing session or agent was used.",
+    "A separate ROOT pre-handoff was skipped before beginning the correction; this is recorded as a process history event, not hidden or represented as approval provenance.",
+    "The initial target-disclosure-before-Golden-preflight order was preserved as an ordering event; only the permitted q02/q17 correction-review began after actual preflight."
+  ],
+  "calibrationPreflightPath": "R1-clean-q2-q17.calibration-preflight.json",
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "actualRenderPassClaimed": false
+}

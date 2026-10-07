@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_CORRECTION_PREFLIGHT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "targetQids": [
+    20
+  ],
+  "candidateRawShaBefore": "d643726bb468c13460c908ae34a6b146a1bf23ee2c97a5c05fa7c0a516db9c83",
+  "sampleReadBeforeCorrection": true,
+  "correctionReviewScope": "answer+solution q20 only after prior complete-input freeze; preserve prior R1 and R2 attempts",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "excerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)^2-9+6=0$이다.\n상수항을 정리하면\n$(x+1)^2+(y-3)^2=4$\n$=(2)^2",
+          "observation": "Q3 actual solution bytes isolate both completing-square transformations and compare with circle standard form; source-derived steps stay separate."
+        },
+        {
+          "qid": 15,
+          "solutionSha256": "6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87",
+          "excerpt": "과목 $A$를 선호하는 학생의 집합을 $A$,\n과목 $B$를 선호하는 학생의 집합을 $B$라고 하자.\n주어진 조건은\n$n(A)=12$,\n$n(B)=17$,\n$n(A\\cap B)=x$이고,\n전체 학생 수는 $25$명이다.\n먼저 $x$의 최댓값을 구한다.\n교집합의 원소 수는 두 집합 중 원소가 더 적은 집합의 원소 수를 넘을 수 없다.\n따라서\n$x\\le12$이다.\n과목 $A$를 선호하는 $12$명이 모두 과목 $",
+          "observation": "Q15 actual solution separates the upper and lower bounds and verifies an attainable arrangement."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "items": [
+        {
+          "qid": 5,
+          "solutionSha256": "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+          "excerpt": "ㄱ. 차집합은 교집합으로 나타내면\n$A-B=A\\cap B^C$이다.\n이는 $A\\cup B^C$와 항상 같지 않다. 예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$이면 $A-B=\\varnothing$이고 $A\\cup B^C=U$이므로 ㄱ은 거짓이다.\n\nㄴ. 흡수법칙에 따라\n$A\\cap(A\\cup B)=A$,\n$A\\cup(A\\cap B)=A$이다.\n두 식이 같으므로 ㄴ은 참이다.\n\nㄷ. 드모르간의 법칙에 ",
+          "observation": "Q5 actual solution gives ㄱ/ㄴ/ㄷ/ㄹ separate truth blocks with counterexamples."
+        },
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "excerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.",
+          "observation": "Q6 actual solution separates the inclusion-exclusion bound from an attainable case; its actual SVG preview is inspected with glyph limits recorded."
+        }
+      ]
+    }
+  ],
+  "negativeSamples": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the false-PASS regression; item-level geometry/proof must be checked from actual constraints, not self-report."
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "sha256": "4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+      "observation": "Read actual visual owner-ray and topology failure patterns."
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+      "sha256": "3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f",
+      "pixelPreview": {
+        "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.negative-owner-ray-preview.png",
+        "sha256": "42420ee3f0c0dd71d4c5a3802d1b7c5a0ea9921b9ef858258a5be3db9f3116f1"
+      },
+      "observation": "Actual pixel view shows a labelled 30° claim with no owner ray; use geometric primitives, not only labels."
+    }
+  ],
+  "preflightCompletedAtUtc": "2026-10-07T16:04:05.514Z"
+}

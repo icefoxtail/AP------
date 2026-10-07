@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_AFFECTED_QID_FOUR_AXIS_COMPONENT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q2-q17",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewScope": "AFFECTED_QID_ONLY",
+  "allowedQids": [2, 17],
+  "currentArtifact": {
+    "workingJsRawSha256": "bb96d34e097960d0b36f1eaecbf6333c3fcac54e822d6bf5cf4e53cb491188be",
+    "validatorRawBufferBlobSha1": "821e9bbdf745ee644f7343436a00979a90798ab8",
+    "gitCleanFilterBlobSha1": "821e9bbdf745ee644f7343436a00979a90798ab8",
+    "studentBundleSha256": "c721897a74e3bc58e99ac5e37c12a8a00c30cfcd28980df06dcc932416410863",
+    "postfreezeDisclosureSha256": "92c7bce5314af1233829bebb64b6676169c8b7aada07433d660d63287d8a0629",
+    "artifactChanged": false
+  },
+  "answerReview": {
+    "adjudicationPath": "R1-clean-q2-q17.answer-adjudication.json",
+    "status": "QID_COMPONENT_COMPLETE",
+    "answers": {"2": "8 (choice ②)", "17": "⑤"},
+    "cardinality": {"2": 1, "17": 1},
+    "freezePreserved": true
+  },
+  "calibration": {
+    "path": "R1-clean-q2-q17.calibration-preflight.json",
+    "status": "PASS",
+    "qualityCompareCount": "2/2",
+    "sampleReadBeforeCorrectionReview": true
+  },
+  "questionLayout": {
+    "status": "STATIC_COMPONENT_REVIEWED",
+    "qidDispositions": {
+      "2": {"disposition": "LAYOUT_KEEP", "observation": "One concise question line; five unnumbered choice strings rely on engine numbering; the referenced source image is adjacent and was opened."},
+      "17": {"disposition": "LAYOUT_KEEP", "observation": "One concise question line and five short choice strings; no image or layout override is present."}
+    },
+    "choicesParityAgainstCurrentStudentBundle": "PASS",
+    "sourceTextExactParityAgainstOriginalExamPage": "NOT_VERIFIED_IN_ASSIGNED_INPUT",
+    "renderStatus": "NOT_RUN_ROOT_WAIVER"
+  },
+  "solutionLayout": {
+    "status": "STATIC_COMPONENT_REVIEWED",
+    "qidFindings": {
+      "2": {"solutionSha256": "b710baea4e152bfd0405669005aee37bca8b81ac36e1b7e71deeae7765b6ad52", "disposition": "KEEP", "axes": {"STUDENT_REPRODUCIBILITY": "PASS", "SMALL_BOARD_STRUCTURE": "PASS", "EXPLANATION_DENSITY": "PASS", "VISUAL_SEMANTIC_PARITY": "PASS_STATIC", "VISUAL_READABILITY": "PASS_STATIC"}, "observation": "Explains equal inscribed angles and equal arcs, identifies 4 cm as one small arc, states x covers both arcs, and shows x=4+4=8 followed by choice ② on separate lines."},
+      "17": {"solutionSha256": "8f913e2d86838103a9415001dfe7051d714eaa59e782a9d5f35222e745b789b7", "disposition": "KEEP", "axes": {"STUDENT_REPRODUCIBILITY": "PASS", "SMALL_BOARD_STRUCTURE": "PASS", "EXPLANATION_DENSITY": "PASS", "VISUAL_SEMANTIC_PARITY": "PASS_STATIC_NOT_APPLICABLE", "VISUAL_READABILITY": "PASS_STATIC"}, "observation": "For this conceptual selection, the explanation names the co-increasing quantities and identifies ⑤; no hidden calculation step is required."}
+    }
+  },
+  "meta": {
+    "status": "CURRENT_FIELDS_REVIEWED_EXISTING_DEBT_RETAINED",
+    "qidFindings": {
+      "2": {"standardCourse": "중3 수학", "standardUnitKey": "M3-06", "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE", "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS", "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC", "difficulty": {"level": "중", "difficultyBucket": 1, "difficultyConfidence": "medium", "difficultyBoundaryFlag": "NONE", "legacyLevelCompatibility": "NORMAL"}, "disposition": "RETAIN_CURRENT_POPULATED_FIELDS"},
+      "17": {"standardCourse": "중3 수학", "standardUnitKey": "M3-07", "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION", "problemTypeKey": null, "templateKey": null, "problemTypeNullReason": "현재 M3 통계 scope의 ACTIVE PT projection 미확인; L1/L2·통계 소단원은 유지하고 evidence에서 canonical debt로 추적.", "templateNullReason": "현재 M3 통계 scope의 ACTIVE TPL projection 미확인; 의미 재분류 없이 projection debt로 추적.", "difficulty": {"level": "중", "difficultyBucket": 2, "difficultyConfidence": "high", "difficultyBoundaryFlag": "NONE", "legacyLevelCompatibility": "NORMAL"}, "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT", "requiredArtifactDispositionFields": ["problemTypeKey", "templateKey"]}
+    },
+    "semanticReclassification": false,
+    "h2NullSubUnitExceptionUsed": false
+  },
+  "visualSvg": {
+    "status": "STATIC_COMPONENT_REVIEWED",
+    "qidFindings": {
+      "2": {"visualDisposition": "SOURCE_IMAGE_REUSED", "assetRef": "assets/images/21_풍덕중_2학기_기말_중3_기출/q02.png", "assetSha256": "7754d9f8ac9ebf6c4d1d37bd3cc6ad8b7290e5213539d9d86ee51389a6a8b6c6", "opened": true, "observation": "Original circle diagram supplies center O, equal marked 24-degree angles, 4 cm on one small arc, and an x arrow across both lower arcs; no reconstructed solution SVG is used."},
+      "17": {"visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED", "visualRefs": [], "observation": "Correlation concept is fully stated in text/choices; no diagram or SVG is required."}
+    },
+    "actualRenderStatus": "NOT_RUN_ROOT_WAIVER",
+    "actualRenderPassClaimed": false
+  },
+  "artifactDispositions": {
+    "artifactSha": "821e9bbdf745ee644f7343436a00979a90798ab8",
+    "rows": [
+      {"qid": 2, "metaDebtFields": [], "disposition": "RETAIN_CURRENT_POPULATED_FIELDS"},
+      {"qid": 17, "metaDebtFields": ["problemTypeKey", "templateKey"], "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT", "recordedValues": {"problemTypeKey": null, "templateKey": null}}
+    ]
+  },
+  "scopeLimitations": [
+    "This is an affected-qid component packet, not a whole-exam R1 PASS or a whole-artifact validator result.",
+    "Question text exact parity against original exam page is not attested by the assigned student-only bundle.",
+    "Existing q17 Meta null projection debt is bound to the actual current fields; resolver-backed advanced projection validity remains owned by the aggregate technical gate."
+  ],
+  "validatorDisposition": "NOT_RUN_COMPONENT_ONLY_PARENT_AGGREGATES_FULL_R1",
+  "nextRequiredAction": "ROOT binds these qid-only component rows into the locked full-exam artifact dispositions, verifies original-source parity using authorized source evidence if still required, then runs the one generic V2 R1 validator for the complete aggregate and routes R3 targeted review."
+}

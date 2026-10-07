@@ -1,0 +1,13 @@
+import fs from 'node:fs';import vm from 'node:vm';import crypto from 'node:crypto';
+const source='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/21_풍덕중_2학기_기말_中3_基出.js'.replaceAll('中','중').replaceAll('基出','기출');
+const expected='bb96d34e097960d0b36f1eaecbf6333c3fcac54e822d6bf5cf4e53cb491188be';
+const bytes=fs.readFileSync(source),rawSha=crypto.createHash('sha256').update(bytes).digest('hex');if(rawSha!==expected)throw Error('CURRENT_SOURCE_SHA_MISMATCH:'+rawSha);
+const sandbox={window:Object.create(null)};vm.runInNewContext(bytes.toString('utf8'),sandbox,{timeout:1500,contextCodeGeneration:{strings:false,wasm:false}});
+const bank=sandbox.window.questionBank||sandbox.window.questions;if(!Array.isArray(bank)||bank.length!==25)throw Error('QID_DENOMINATOR_MISMATCH');
+const qids=Array.from({length:25},(_,i)=>i+1);
+const rows=bank.filter(q=>qids.includes(Number(q.id??q.qid))).map(q=>({qid:Number(q.id??q.qid),answer:q.answer??null,solutionSha256:crypto.createHash('sha256').update(String(q.solution??q.explanation??q.sol??'')).digest('hex')})).sort((a,b)=>a.qid-b.qid);
+if(rows.length!==25||rows.some((r,i)=>r.qid!==i+1))throw Error('QID_COVERAGE_MISMATCH');
+const out={schemaVersion:'R2_FINAL_AGGREGATE_POSTFREEZE_QID_EXTRACTION_V1',runId:'m3-codex-20261007',examUid:'21_풍덕중_2학기_기말_중3_기출',sourceSha256:rawSha,sourceGitBlobSha1:'821e9bbdf745ee644f7343436a00979a90798ab8',qids,rows};
+const path='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R2-final-aggregate.postfreeze-extraction.json';
+fs.writeFileSync(path,JSON.stringify(out,null,2)+'\n');
+console.log(JSON.stringify({path,sha256:crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'),qids:rows.map(({qid,answer})=>({qid,answer}))}));

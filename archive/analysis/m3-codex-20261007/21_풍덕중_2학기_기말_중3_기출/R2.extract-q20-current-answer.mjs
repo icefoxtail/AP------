@@ -1,0 +1,10 @@
+import fs from 'node:fs';import vm from 'node:vm';import crypto from 'node:crypto';
+const source='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/21_풍덕중_2학기_기말_中3_基出.js'.replaceAll('中','중').replaceAll('基出','기출');
+const expected='d643726bb468c13460c908ae34a6b146a1bf23ee2c97a5c05fa7c0a516db9c83';
+const bytes=fs.readFileSync(source),sha=crypto.createHash('sha256').update(bytes).digest('hex');if(sha!==expected)throw Error('SOURCE_SHA_MISMATCH');
+const s={window:Object.create(null)};vm.runInNewContext(bytes.toString('utf8'),s,{timeout:1500,contextCodeGeneration:{strings:false,wasm:false}});
+const q=(s.window.questionBank||s.window.questions).find(x=>Number(x.id)===20);if(!q)throw Error('Q20_MISSING');
+const result={schema:'R2_Q20_CURRENT_ANSWER_EXTRACTION_V1',examUid:'21_풍덕중_2학기_기말_중3_기출',qid:20,sourceSha256:sha,answer:q.answer??null,solutionSha256:crypto.createHash('sha256').update(String(q.solution??'')).digest('hex')};
+const output='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R2.q20-current-answer-extraction.json';
+fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({path:output,sha256:crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex'),qid:result.qid,answer:result.answer,solutionSha256:result.solutionSha256}));

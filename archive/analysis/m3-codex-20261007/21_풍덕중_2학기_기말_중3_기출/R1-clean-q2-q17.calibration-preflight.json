@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_CALIBRATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "stage": "R1-clean-q2-q17",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "scopeQids": [2, 17],
+  "sampleReadBeforeCorrectionReview": true,
+  "calibrationStatus": "PASS",
+  "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "calibrationOrder": "Initial postfreeze disclosure was opened before sample preflight; retained as an ordering-history event. Correction-review began only after the actual samples below were read. No sample timestamp was backdated.",
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha1": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "representativeQuestions": [
+        {"qid": 2, "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba", "observation": "Explains slope choice, substitutes the given point into a visible equation, and separates the final combination of values."},
+        {"qid": 17, "solutionSha256": "5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145", "observation": "Separates nontriangle cases and writes the deciding algebra in successive visible lines through the final result."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha1": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "representativeQuestions": [
+        {"qid": 2, "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2", "observation": "Shows each rearrangement and the perpendicular-slope substitution on separate lines."},
+        {"qid": 17, "solutionSha256": "d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58", "observation": "Connects the translated line and circle center to the condition with explicit coordinate equations and visible final multiplication."}
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha1": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Read the documented regression where a self-reported 22/22 small-board count concealed combined enumerated decisions in q2/q17; reviewed actual visible block flow rather than line-count claims."
+    }
+  ],
+  "qualityCompareCount": "2/2",
+  "solutionWorkMode": "CORRECTION_REVIEW_ONLY_NO_STUDENT_SOLUTION_EDIT",
+  "targetDisclosureSha256": "92c7bce5314af1233829bebb64b6676169c8b7aada07433d660d63287d8a0629",
+  "independentFreezeSha256": "d937fb35a1e85455981651754a90679706af4c4134e451f240e87bfd6096bd53"
+}

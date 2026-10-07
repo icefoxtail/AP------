@@ -1,0 +1,2370 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "artifactSha": "821e9bbdf745ee644f7343436a00979a90798ab8",
+  "artifactRawSha256": "bb96d34e097960d0b36f1eaecbf6333c3fcac54e822d6bf5cf4e53cb491188be",
+  "assignmentSha256": "d89a01bff4a26ebf41e2c66dbb9c79425b504757cee69ee8eaececc487ad8156",
+  "currentStudentBundleSha256": "002e6d0d60e3bc0eeb1f6eecd0b90cdbdd3b05edb7c54f246d86f742507c8aa7",
+  "independentFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1.independent-freeze.json",
+  "independentFreezeSha256": "b5e672ba164b313041c3bf013b70fbce90ec923eddbad5d3e1f42cdc1e15b889",
+  "postfreezeExtractionPath": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.postfreeze-extraction.json",
+  "postfreezeAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1.postfreeze-adjudication.json",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Physically read: aggregate self-report does not substitute for actual per-qid small-board blocks, geometry and exact ACTIVE Meta projection."
+    },
+    "additionalNegativeSamples": [
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "observation": "Physically read actual visual failure patterns; label text alone cannot prove owner rays, angle owners or coordinate facts."
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+        "sha256": "3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f",
+        "pixelPreviewPath": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.negative-owner-ray-preview.png",
+        "pixelPreviewSha256": "42420ee3f0c0dd71d4c5a3802d1b7c5a0ea9921b9ef858258a5be3db9f3116f1",
+        "observation": "Actual rendered failed figure has a stated BC angle owner but no BC ray."
+      }
+    ],
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "observation": "Actual solution bytes separate standard form, center/radius, translation, reflection, and final equation; pixel view visually binds C0→C1→C2 and invariant radius."
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145",
+            "observation": "Actual solution separates all parallel pairs, concurrency, parameter substitutions and final expression into distinct blocks."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "observation": "Actual solution shows both complete-square transformations and compares standard form; rendered circle, center, radius and marked point agree."
+          },
+          {
+            "qid": 15,
+            "solutionSha256": "6f4b7515194ab33e69dd2a6ceab003094e091c11b3871c5e4b3abd7ab991fb87",
+            "observation": "Actual solution keeps maximum and minimum constraints separate and constructs attainable boundary cases."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 5,
+            "solutionSha256": "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+            "observation": "Actual solution separates ㄱ/ㄴ/ㄷ/ㄹ and gives counterexamples per false statement."
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "observation": "Actual solution shows inclusion-exclusion lower bound, attainable arrangement and maximum; rendered diagram visually reviewed with text-glyph limitations noted."
+          }
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "② (30°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "30de0b1eab31fe68e67d815e5e54a42e13e59dd803427f56441de5176bd724c1",
+      "sourceStudentPayloadSha256": "7bb008cde5ad33ec0b7694a9f2de0ba214d55e1fac356fe1800095c66f05dc4d",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q01.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q01.png",
+          "sha256": "33354aad8578a4d44e018bb05f60fbcf473ccdee0b8f27ce898a87dc33a9f45d",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS_AFTER_SAME_STAGE_VISUAL_ADJUDICATION",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "note": "One concise question line; five unnumbered choice strings rely on engine numbering; the referenced source image is adjacent and was opened."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "solutionSha256": "b710baea4e152bfd0405669005aee37bca8b81ac36e1b7e71deeae7765b6ad52",
+          "disposition": "KEEP",
+          "note": "Explains equal inscribed angles and equal arcs, identifies 4 cm as one small arc, states x covers both arcs, and shows x=4+4=8 followed by choice ② on separate lines."
+        },
+        "META": {
+          "status": "PASS",
+          "disposition": "RETAIN_CURRENT_POPULATED_FIELDS",
+          "actualFields": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "difficulty": {
+              "level": "중",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL"
+            },
+            "disposition": "RETAIN_CURRENT_POPULATED_FIELDS"
+          },
+          "note": "Current populated M3-06 metadata fields retained."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "visualDisposition": "SOURCE_IMAGE_REUSED",
+          "assetRef": "assets/images/21_풍덕중_2학기_기말_중3_기출/q02.png",
+          "assetSha256": "7754d9f8ac9ebf6c4d1d37bd3cc6ad8b7290e5213539d9d86ee51389a6a8b6c6",
+          "note": "Original circle diagram supplies center O, equal marked 24-degree angles, 4 cm on one small arc, and an x arrow across both lower arcs; no reconstructed solution SVG is used."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b710baea4e152bfd0405669005aee37bca8b81ac36e1b7e71deeae7765b6ad52",
+      "sourceStudentPayloadSha256": "f7fdd90ea49ef51f568a9c49b857ea20ec799c4c521fbffeb8e03e0a2685192b",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q02.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q02.png",
+          "sha256": "a144bf5b3f60d853d18b92ef16b826b5a8f11aaa31138f7573c9ad1e04a9589b",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "disposition": "Original fresh freeze 6 corrected to 8 after restored native image showed the x-arrow spans both 4 cm subarcs; current stored answer ② matches value 8.",
+      "adjudication": "Student visual depicts equal 24-degree inscribed angles and equal intercepted arcs; candidate states x=4 cm while the five choices are 6,8,9,10,12. The printed prompt/options and solution conflict; do not guess a key.",
+      "adjudicatedAnswer": "8",
+      "answerCardinality": 1,
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "metaDebtFields": [],
+      "sourceDelta": {
+        "changedFields": [
+          "answer",
+          "solution",
+          "decisiveStep"
+        ],
+        "authorityRef": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/CREATE-recovery.outcome.json",
+        "reason": "same-stage CREATE recovery/source review; fresh R1 visual reading confirmed 8 cm / choice ②."
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "④ (보은, 학진)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "NO_ASSET_PRESENT",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7369425bfe8489263d5514ef311516dc12d566d3817038e01fac5ad9a140b91d",
+      "sourceStudentPayloadSha256": "d4fd965d34eb6df6c944ec8291e4482605f9e098d76b10f66544df66ad50010a",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "① (x=80°, y=100°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7e56ddd78bdd3f8acf7ff1d23c2326cf5e910716ecf9d9ec13a9af8bf1166e79",
+      "sourceStudentPayloadSha256": "40182c6d0cc92a5b03c420dfb151bce24505f06da45f410c672eb79552e0967a",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q04.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q04.png",
+          "sha256": "70783b2c3fc7bc5dbe8575a966713597c8edd298ff1337f76fad71c728cd47ec",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "④ (40°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "491bac7b0006ac49ffc5d182bb6d15790ca027367079124a0047f5988a21bb53",
+      "sourceStudentPayloadSha256": "6f750e83390fde511d4aed19161d3e410f1956a92f4e02a22e2250802cdf5fb0",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q05.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q05.png",
+          "sha256": "57a3d35543875fd44004f2c90f512d872def58fded71e994fd6d836f46557fee",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "③ (45°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "de6f307f99ba27cc030843107fa272aab6a9ec02320939e8944fa8e7b4599f26",
+      "sourceStudentPayloadSha256": "a8165ba09e5ea56fc9604defac0cd406e6d0058d92e93ba17c343f2290b87842",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q06.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q06.png",
+          "sha256": "a19766dad96dc6a4457e61cd6a3da8bf1fa8091eaf432d9b2d1a9245d5ec5e48",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "③ (50°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a92354c97fc9fcf3b3c4d88e65229700f5fec182dd78a7e165809e286ff125b4",
+      "sourceStudentPayloadSha256": "f96a99e0d9c395fe74f08f9c47adb7503d903f1699f591c1ce4c11ad3d7b3bcf",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q07.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q07.png",
+          "sha256": "26a1cdfd0d91d930bfa8a4a11281722eea607ad1a7612c11f7a85262183a20df",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "④ (66°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0d87cc6fdb61b5a03026cd5ddf0a20818a37a51d7586a10ea20644858af3dbee",
+      "sourceStudentPayloadSha256": "c2b6cf8baed6922c056c7cb3a4249f2469eddd6195fc6dd2a39c2669502e8e74",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q08.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q08.png",
+          "sha256": "2cc435a639f7c31f977af5fb0ca6e28a318f3ba59fcb18c3a8dfb3adbb4b5059",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "HOLD",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Viewed current q09.png; two circle intersections and secant continuations support cyclic-angle reconstruction."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "893cef79ea455a2f4bd4194926b6f44f044e8d9f0cf745f0d68b0ea2afb30208",
+      "sourceStudentPayloadSha256": "cdb293a2a3ed2bfd8e12e87d6601298e9c8067b5598f8b201dd3e764e645847c",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_TWO_CIRCLES",
+        "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q09.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q09.png",
+          "sha256": "adb4e48642c6168a58e2b58b3a873ff4fa0b67a2fb9c4bc67e7de4b5eaf20421",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "disposition": "MATCH_AFTER_VISUAL_RECONSTRUCTION",
+      "adjudication": "Image shows A,P,B collinear, D,Q,C collinear and A,P,Q,D cyclic. Given ∠BPQ=52°, ∠APQ=128°; opposite cyclic angle x=∠ADQ=52°.",
+      "adjudicatedAnswer": "⑤ (52°)"
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "① (60°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "32b5cff70d940ec84428add081201fe45e838475c5897a36bb585a23921ef008",
+      "sourceStudentPayloadSha256": "367fb50f4536448bcfe81b04e395d8b762f111f526b10d8145287e582654a461",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q10.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q10.png",
+          "sha256": "0a61092092be31a148f0b71fb05511eb5aa7c44ce8fab58c373ca3487a83ac6a",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "③ (22°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "22ae5a8bc1452a65263fa5168710667b29387b0a6faf6f3857e0f5e7959eff22",
+      "sourceStudentPayloadSha256": "eced840dbc055dabde42cd4a52c7aca535aba95ed932be15e586784333e8f57d",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q11.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q11.png",
+          "sha256": "3c8b3f9d5bfcaccf78ed81608627a404d1c8e3d9e52dc242ba9933ccd5a4c0c6",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "HOLD",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Viewed current q12.png; labels AB=AC=5, AE=3 and right-angle marker are bound to actual segments."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "82088f9bed6f56b3c379d3b36335b490aedf8bf51cc6d30e4967a118f73da330",
+      "sourceStudentPayloadSha256": "644e3fca69a91aa811acfcac374702a73441e07ba53dd15cc6c841f3cafb96ba",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q12.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q12.png",
+          "sha256": "bfb704b227ea7993892aab32d876a43fcc2e296573cd3135a6fb8c863ea93002",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "disposition": "MATCH_AFTER_VISUAL_READING_CORRECTION",
+      "adjudication": "Actual image assigns AB=AC=5 cm and AE=3 cm with AE perpendicular BC. Isosceles altitude gives BE=EC=4; intersecting chords give AE·DE=BE·EC=16, so DE=16/3 cm.",
+      "adjudicatedAnswer": "④ (16/3 cm)"
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "⑤ (평균 12.4, 중앙값 12)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "NO_ASSET_PRESENT",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c22672d429cf9f8e9dc2906661ef80527e9159d3d8f5b812f8d613fe810517f4",
+      "sourceStudentPayloadSha256": "a3a0dbc037d2d16dcf361324a46c726b874292fdafad39cba6dd1d1d36d9d200",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "① (ㄱ, ㄷ)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "14ee206e875daf1b9a4c76d47dbc709b45aefc404f4e554d629b335d8ae92c65",
+      "sourceStudentPayloadSha256": "c01d55b073af1c55cf1c2b6940d5e64727015649db7b8040ad5a6a6bfb7c4227",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q14.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q14.png",
+          "sha256": "41e1cf7837c0422a9eefebf48acde8ae3fafdbc7574832a336e2405cc738bf06",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "① (65점)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6e33809335f690a1754fcca6a820d5dba11a320aa107502fae8f342a71ff6ce9",
+      "sourceStudentPayloadSha256": "eee14b707a527f03026ef7bf5bf548cdb916af8cd2d854ea86658d34efeccc41",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q15.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q15.png",
+          "sha256": "ece1a7d7c902c1cdddcbee061b0f7793db4680cb6083c9d7a4a065f4ed17634b",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Viewed current q16.png; point placement supports the axis comparisons and overall positive trend."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1c82bb2cde54cda49da5d5658f1b400195d80a203b7968c0287636bb00c91f41",
+      "sourceStudentPayloadSha256": "da6333afe72cd7a0895cecf7a7858a2ae4560cd0b43dd8ecaeaac0419fa300dc",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q16.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q16.png",
+          "sha256": "faae8da29b2c6963fb4dcc706204a2398e1026aa4178f7f7ccbfd62639e4513a",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "note": "One concise question line and five short choice strings; no image or layout override is present."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "solutionSha256": "8f913e2d86838103a9415001dfe7051d714eaa59e782a9d5f35222e745b789b7",
+          "disposition": "KEEP",
+          "note": "For this conceptual selection, the explanation names the co-increasing quantities and identifies ⑤; no hidden calculation step is required."
+        },
+        "META": {
+          "status": "PASS_WITH_EXISTING_PROJECTION_DEBT",
+          "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+          "actualFields": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "problemTypeNullReason": "현재 M3 통계 scope의 ACTIVE PT projection 미확인; L1/L2·통계 소단원은 유지하고 evidence에서 canonical debt로 추적.",
+            "templateNullReason": "현재 M3 통계 scope의 ACTIVE TPL projection 미확인; 의미 재분류 없이 projection debt로 추적.",
+            "difficulty": {
+              "level": "중",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "high",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL"
+            },
+            "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+            "requiredArtifactDispositionFields": [
+              "problemTypeKey",
+              "templateKey"
+            ]
+          },
+          "note": "Preserve the actual M3-07 null PT/TPL projection debt; no H2 null-subunit exception or semantic reclassification."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "NO_ASSET_PRESENT",
+          "visualDisposition": "NO_ADDITIONAL_VISUAL_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "note": "Correlation concept is fully stated in text/choices; no diagram or SVG is required."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8f913e2d86838103a9415001dfe7051d714eaa59e782a9d5f35222e745b789b7",
+      "sourceStudentPayloadSha256": "e73717053434c92d80c64e72b9d725ed023ff283a8e4d3653170a0736970eaf1",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 M3-07 통계 scope의 ACTIVE PT/TPL projection이 없는 기존 debt를 실제 null 필드 그대로 유지; semantic reclassification and H2 exception not used.",
+      "disposition": "Fresh independent answer ⑤ matches; source repair changed only ambiguous choice ④ to Korean grade/shoe size.",
+      "adjudication": "The candidate itself notes option ④ (Korean and music grades) can also be interpreted as positive association while option ⑤ is positive. Student input gives no data or condition that makes the intended single answer unique; answer field is absent.",
+      "answerCardinality": 1,
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceDelta": {
+        "changedField": "choices[3]",
+        "authorityRef": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/CREATE-recovery.outcome.json",
+        "reason": "The old Korean/music-grade distractor admitted a positive-correlation interpretation; CREATE recovery changed this distractor to Korean grades/shoe size and the fresh R1 freeze then selected ⑤."
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "② (평균 9, 표준편차 3)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "NO_ASSET_PRESENT",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cfac861f8e410487eb59f1d8fde06bedf3080f372f78cac5473de7112e354ed9",
+      "sourceStudentPayloadSha256": "162d8ae2ab175cf54b0fff2023885f67101f6e9b3a08d6921bf4aab934c65848",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "② (18/7)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "NO_ASSET_PRESENT",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "028cf2a02c98daf75c91fad927b29331621af0214ec8d2f57355b0daf3b110e4",
+      "sourceStudentPayloadSha256": "ef9610ee9c943154e7051d998e9a7f15cf2bf7b6503f30471cb398b4ad1e094a",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS_AFTER_SOURCE_ADJUDICATION",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "PDF-native full q20 page/ordinal review and current crop parity show all five options and required point/segment marks."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution presents options ①–⑤ with separate angle, chord-product, trapezoid and secant calculations; required intermediate sums/products and final choice are on distinct lines."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current M3-06 subunit/PT/TPL and difficulty/condition fields unchanged from the prior reviewed artifact."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_PDF_PAGE_CROP",
+          "assetRef": "assets/images/21_풍덕중_2학기_기말_중3_기출/q20.png",
+          "assetSha256": "3ba24e4629fb5902e531feedb7851e310b5d5236964b6d8fbc770bb7d8266d5a",
+          "note": "Native PDF page4 crop and current q20 PNG contain the same option points, P, ordinals, segment labels and equality/parallel marks; native PDF proof is bound by R1-reconcile-q20.final-check.json."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "25c700ea2840b024bc03fd68a6fb300c16918b4f286e8bb783ef97f549099718",
+      "sourceStudentPayloadSha256": "3117b254e7facaf1f421b97c11354f068f46bc211c0a2a89a00141637bb27642",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q20.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q20.png",
+          "sha256": "3ba24e4629fb5902e531feedb7851e310b5d5236964b6d8fbc770bb7d8266d5a",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "disposition": "Source-PDF page 4 proves option ⑤ uniquely fails the secant product; current stored answer is now ⑤. Earlier R1 ② freeze and intermediate R2 ③ correction remain in history.",
+      "adjudication": "The answer field/solution name ③, whose figure is a general parallelogram without a right-angle marker. Independent reading of option ②'s intersecting-segment labels also appears to violate the chord-product criterion, so a second possible noncyclic choice remains. The low-resolution mark-to-segment owners do not resolve the conflict; do not force a single key.",
+      "adjudicatedAnswer": "⑤",
+      "answerCardinality": "one choice",
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "metaDebtFields": [],
+      "adjudicationRef": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-reconcile-q20.final-check.json",
+      "adjudicatedAnswerSha": "25c700ea2840b024bc03fd68a6fb300c16918b4f286e8bb783ef97f549099718"
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "⑤ (94°)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Viewed current q21.png; chord BC and 64-degree angle owners are identifiable."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "161ac29bc52ca59e7a9ffa82ab99d8ae2233dc30fed06c95ab3e6e29d41974d0",
+      "sourceStudentPayloadSha256": "270ed7dd0022ef6bdd76a5074dcc3e644096c1d1aba963cc8e123858d22d0946",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q21.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q21.png",
+          "sha256": "952be03406929c94611dc531263ff9cc818d330c035d5d82320c6128906ac4f6",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ]
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "x=50°",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "50",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "PIXEL_RENDER_SHA_BOUND",
+          "note": "Rendered q22-clean.svg to pixel preview and inspected the cyclic quadrilateral labels/angle placement."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ac6ce594ae71035dadb32dd5f416ad3a9e40c2c0e58310324499b48780090265",
+      "sourceStudentPayloadSha256": "729fcd635db3b4dc0ab856876ac980011f05803112a056f4fe843a9e2fba4e17",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q22-clean.svg",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-clean.svg",
+          "sha256": "0c34ce0bd8e5f6d2d101cd7990219656460c842bbba3986b3aa574e61539d332",
+          "method": "PIXEL_RENDER_SHA_BOUND",
+          "pixelPreview": {
+            "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1.q22-visual-preview.png",
+            "sha256": "f9580dd691c0ecef00ccbf339ec44e68a6f30081b6036b79f220ed67c066961"
+          }
+        }
+      ]
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "(1) x=−3; (2) variance=16/3; (3) standard deviation=4√3/3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$4\\sqrt3/3$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "384ec25f6424db4d149aac5fe6cd1878cfd4d2c1094bb849c6afc9f0b17b2ad5",
+      "sourceStudentPayloadSha256": "92e73c64572f12a8d50dd529ab2c7a213d1bd7e5fd2371253d7199b7587cbb9c",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q23.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q23.png",
+          "sha256": "43dc502486c9b4a2d9b04e1aa45fd6b330c3dae4fc780f14082fcc1ce2c8477d",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "ab=−7/2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$-7/2$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Opened the assigned current student problem asset at its bound SHA; no linked solutionImage is present."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1d2f955bfb222df36c5404b6b30e1bd8ab58ab297e5caaa632bfd24de3fe2cdf",
+      "sourceStudentPayloadSha256": "39dc36055834dd09f7bda8906eedf96eac74352762499c8532301b5100de6854",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q24.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q24.png",
+          "sha256": "a3b9959697b10b41443e521c60d6aa8f6bbbdf5bad98be2e5d54a8eb3bc56e7a",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used."
+    },
+    {
+      "qid": 25,
+      "independentAnswer": "CH=2√5 cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$3\\sqrt2$",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Static student content, mathematical line breaks, choice order, units and question/condition boundaries read from the current student bundle; KEEP with no edit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "note": "Current solution read after freeze; essential setup, transformations, intermediate values and conclusion remain in separate readable steps where needed."
+        },
+        "META": {
+          "status": "PASS",
+          "note": "Current physical M3 course/unit/subunit, problem/template projection, tags, difficultyBucket/confidence/boundary/legacy compatibility and integrationPattern inspected. No H2-specific null-subunit exception applied."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "method": "SOURCE_PIXEL_SHA_BOUND",
+          "note": "Viewed current q25.png; AB=9 diameter, AH=6, tangent at C and perpendicular foot H are identifiable."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4d8d678995145c5b4f3fc888e4c5150c7df2976677632c75753af68afb890d23",
+      "sourceStudentPayloadSha256": "31be459f1a579cab9d90f8f17fca344082d8918771ebf0d20fb9543bd0afc248",
+      "metaSnapshot": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visualRefs": [
+        {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q25.png",
+          "ref": "assets/images/21_풍덕중_2학기_기말_중3_기출/q25.png",
+          "sha256": "c5e1121bbfbd847304d0b8f3f18c88f056ca34a84509e0a4c56368c072a3ada3",
+          "method": "SOURCE_PIXEL_SHA_BOUND"
+        }
+      ],
+      "disposition": "CALCULATION_ENCODING_CORRECTION",
+      "adjudication": "The image labels AH=6 cm, not AC=6 cm. With AB=9 as diameter, OC=4.5; AH parallel OC makes the A-to-O height difference 1.5, hence CH²+1.5²=4.5² and CH=3√2 cm. Original freeze preserved.",
+      "adjudicatedAnswer": "3√2 cm"
+    }
+  ],
+  "currentStudentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1.final.student-input.json",
+  "assignmentRefs": [
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-clean-q2-q17.assignment.json",
+      "sha256": "d89a01bff4a26ebf41e2c66dbb9c79425b504757cee69ee8eaececc487ad8156",
+      "qids": [
+        2,
+        17
+      ]
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-reconcile-q20.assignment.json",
+      "sha256": "e118ba27861964408fd5097f2921ccfae3c6ebce27cdc354c0f99401240a9a4a",
+      "qids": [
+        20
+      ]
+    }
+  ],
+  "sourceParityReferences": [
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-clean-q2-q17.independent-freeze.json",
+      "sha256": "d937fb35a1e85455981651754a90679706af4c4134e451f240e87bfd6096bd53",
+      "qids": [
+        2,
+        17
+      ]
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-clean-q2-q17.four-axis-review.json",
+      "sha256": "d4cf8fae2c35aef59d451181d8c3a7e649c34914dc5ea95cb21b888aff5519e6",
+      "qids": [
+        2,
+        17
+      ]
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/R1-clean-q2-q17.answer-adjudication.json",
+      "sha256": "9a315f1c3f40875140584aec49f4868fdcd3c5d6ebd2d19a46bf354985362b60",
+      "qids": [
+        2,
+        17
+      ]
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_中3_기출/R1-reconcile-q20.final-check.json",
+      "sha256": "9ffb4b8497494f6521ecd60b8d2c4fe4953f95f07c2506f4b778a51aadfe5439",
+      "qids": [
+        20
+      ]
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/CREATE-recovery.source-answer-review.json",
+      "sha256": "6fdb933347d7d500101d749f48cc6360a700673dadfca26ffd60051242bdaafb"
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/CREATE-recovery.q2-visual-repair.json",
+      "sha256": "9eb8fee12721912de32110387c375c0da30cf2539b9e6a56ae4819f5e57abe8d"
+    },
+    {
+      "path": "archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/CREATE-recovery.outcome.json",
+      "sha256": "64f71d8d4fb18549fde3c3dd74086b1fb3b62795661fe13b60ea23bc1c2d4dcd"
+    },
+    {
+      "path": ".tmp/archive/source-batch-20261006/middle/m3/21_풍덕중_2학기_기말_중3_기출/source/2021_풍덕중3_수학_2기말.pdf",
+      "sha256": "e51bca24b2a8a885c41778d47942db9d88e5250aba4aae95b858d3057ef222af"
+    }
+  ],
+  "supplementalFreezeRefs": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1-clean-q2-q17.independent-freeze.json",
+      "sha256": "d937fb35a1e85455981651754a90679706af4c4134e451f240e87bfd6096bd53",
+      "qids": [
+        2,
+        17
+      ]
+    }
+  ],
+  "supplementalAdjudicationRefs": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1-clean-q2-q17.answer-adjudication.json",
+      "sha256": "9a315f1c3f40875140584aec49f4868fdcd3c5d6ebd2d19a46bf354985362b60",
+      "qids": [
+        2,
+        17
+      ]
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\R1-reconcile-q20.final-check.json",
+      "sha256": "9ffb4b8497494f6521ecd60b8d2c4fe4953f95f07c2506f4b778a51aadfe5439",
+      "qids": [
+        20
+      ]
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "821e9bbdf745ee644f7343436a00979a90798ab8",
+    "rows": [
+      {
+        "qid": 1,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 2,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 3,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 4,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 5,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 6,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 7,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 8,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 9,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TWO_CIRCLES",
+          "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 10,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 11,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 12,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 13,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 14,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 15,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 16,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "subUnit": "통계 자료 해석",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 17,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 M3 통계 scope의 ACTIVE PT projection 미확인; L1/L2·통계 소단원은 유지하고 evidence에서 canonical debt로 추적.; 현재 M3 통계 scope의 ACTIVE TPL projection 미확인; 의미 재분류 없이 projection debt로 추적.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "subUnit": "통계 자료 해석",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 18,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 19,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 20,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 21,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 22,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 23,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 24,
+        "disposition": "RETAIN_CURRENT_NULL_PROJECTION_DEBT",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current canonical GLOBAL ACTIVE probability-statistics taxonomy has no exact M3-07 curriculum binding for this statistical data question; preserve actual null projection. Confirmed no H2 RPM-only null-subunit exception is used.",
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-07",
+          "standardUnit": "통계",
+          "standardUnitOrder": 7,
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "subUnit": "대푯값과 산포도",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "qid": 25,
+        "disposition": "RETAIN_CURRENT_FIELDS",
+        "metaDebtFields": [],
+        "recordedValues": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "standardUnitOrder": 6,
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "subUnitConfidence": "rule_inferred",
+          "subUnitClassificationDepth": "complete_rule",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "openItemHolds": [],
+  "zeroItemHolds": true,
+  "sourceSemanticReclassification": false,
+  "metaMeaningReclassified": false,
+  "renderStatus": "NOT_RUN_ROOT_WAIVER",
+  "actualRenderPassClaimed": false,
+  "aggregateFull25": true,
+  "aggregateCreatedAtUtc": "2026-10-07T16:39:02.833Z"
+}

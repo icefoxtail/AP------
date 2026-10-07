@@ -1,0 +1,70 @@
+{
+  "schema": "CREATE_RECOVERY_Q2_SOURCE_VISUAL_COMPLETENESS_V1",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/21_풍덕중_2학기_기말_중3_기출/source/2021_풍덕중3_수학_2기말.pdf",
+    "sha256": "e51bca24b2a8a885c41778d47942db9d88e5250aba4aae95b858d3057ef222af",
+    "page": 1
+  },
+  "sourceRaster": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\source-review\\page1-600-1.png",
+    "sha256": "5b00b4a11a6b120515c6dd9994b1f7b8c520b261ae9b8b69eb8c17cb1dd35def",
+    "renderDpi": 600
+  },
+  "oldCurrentAsset": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_풍덕중_2학기_기말_중3_기출\\assets\\images\\21_풍덕중_2학기_기말_중3_기출\\q02.png",
+    "sha256": "a144bf5b3f60d853d18b92ef16b826b5a8f11aaa31138f7573c9ad1e04a9589b",
+    "pixelSize": [
+      155,
+      170
+    ],
+    "finding": "Old 155x170 crop clipped the right lower-arc arrow endpoint and the x/cm label edge; the full x-arc scope could not be read from the assigned student asset."
+  },
+  "nativeRepair": {
+    "method": "Direct original PDF raster crop; no redraw or semantic reconstruction.",
+    "sourcePageBboxAt600Dpi": [
+      1600,
+      2720,
+      650,
+      660
+    ],
+    "previewPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/source-review/q02-pdf-native-repair-crop.png",
+    "previewSha256": "7754d9f8ac9ebf6c4d1d37bd3cc6ad8b7290e5213539d9d86ee51389a6a8b6c6",
+    "finalStudentAssetPath": "C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_중3_기출/assets/images/21_풍덕중_2학기_기말_중3_기출/q02.png",
+    "finalStudentAssetSha256": "7754d9f8ac9ebf6c4d1d37bd3cc6ad8b7290e5213539d9d86ee51389a6a8b6c6",
+    "finalStudentAssetPixels": [
+      650,
+      660
+    ],
+    "byteParityPreviewToFinal": true
+  },
+  "visualCompleteness": {
+    "status": "PASS_SOURCE_IMAGE_COMPLETE",
+    "actualPreviewOpened": true,
+    "requiredFacts": [
+      "both 24° inscribed-angle marks fully visible",
+      "lower-left 4cm subarc label fully visible",
+      "left and right lower endpoints both visible",
+      "x arrow visibly spans the full lower arc from left endpoint to right endpoint",
+      "x cm label fully visible"
+    ],
+    "clipping": "NONE",
+    "interpretation": "The equal 24° inscribed angles subtend equal lower subarcs. The 4cm marker identifies one subarc; x marks the full two-subarc arc, so x=4+4=8cm."
+  },
+  "answerKeyCrossReference": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2021_풍덕중3_수학_2기말_정답.hwp",
+    "sha256": "efee64c7e591948b16df1245ab2a824cae86971779bf81b1299accabf5485b96",
+    "page": 1,
+    "keyedAnswer": "②",
+    "role": "corroboration only; source PDF visual establishes arc scope"
+  },
+  "reviewRouting": {
+    "previousR1R2Disposition": "TRUE_ITEM_HOLD on q2",
+    "reason": "Both prior reviews used the clipped 155x170 asset, so the missing arrow endpoint is a real student-input deficiency.",
+    "freshReviewRequired": [
+      2
+    ]
+  },
+  "decision": "Replace q02.png with the native PDF crop. q2 is no longer a complete-input old-owner math-only correction; fresh q2 R1/R2 is needed because its source image changed."
+}

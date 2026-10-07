@@ -1,0 +1,13 @@
+import fs from 'node:fs';import vm from 'node:vm';import crypto from 'node:crypto';
+const source='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/21_풍덕중_2학기_기말_中3_基出.js'.replaceAll('中','중').replaceAll('基出','기출');
+const bundle='C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/archive/analysis/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/R2.student-input.json'.replaceAll('中','중').replaceAll('基出','기출');
+const bytes=fs.readFileSync(source), rawSha=crypto.createHash('sha256').update(bytes).digest('hex');
+if(rawSha!=='d643726bb468c13460c908ae34a6b146a1bf23ee2c97a5c05fa7c0a516db9c83')throw Error('CURRENT_SOURCE_SHA_MISMATCH');
+const s={window:Object.create(null)};vm.runInNewContext(bytes.toString('utf8'),s,{timeout:1500,contextCodeGeneration:{strings:false,wasm:false}});
+const current=(s.window.questionBank||s.window.questions).find(q=>Number(q.id)===20);
+const old=JSON.parse(fs.readFileSync(bundle,'utf8')).questions.find(q=>Number(q.id)===20);
+const fields=['id','content','choices','image'];
+const checks=Object.fromEntries(fields.map(k=>[k,JSON.stringify(current[k]??null)===JSON.stringify(old[k]??null)]));
+const payload={id:current.id,content:current.content,choices:current.choices,image:current.image??null};
+const currentPayloadSha=crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+console.log(JSON.stringify({sourceSha256:rawSha,currentQ20StudentPayloadSha256:currentPayloadSha,originalFrozenQ20StudentPayloadSha256:old.studentPayloadSha256,fieldEquality:checks,allEqual:Object.values(checks).every(Boolean),currentQ20ImageSha256:crypto.createHash('sha256').update(fs.readFileSync('C:/Users/USER/Desktop/AP-worktrees/m3-codex-main-done/AP------/.tmp/archive/m3-codex-20261007/21_풍덕중_2학기_기말_中3_基出/assets/images/21_풍덕중_2학기_기말_중3_기출/q20.png'.replaceAll('中','중').replaceAll('基出','기출'))).digest('hex')}));

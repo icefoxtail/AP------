@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "CREATE_RECOVERY",
+  "examUid": "21_풍덕중_2학기_기말_중3_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "q1: q1/q2 line-by-line computational flow. q7 center and radius remain correct under translation and origin reflection; SVG circles all have equal radius and centers map (−3,1)→(−5,2)→(5,−2)."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "q2: q1/q2 line-by-line computational flow. q7 center and radius remain correct under translation and origin reflection; SVG circles all have equal radius and centers map (−3,1)→(−5,2)→(5,−2)."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "q7: q1/q2 line-by-line computational flow. q7 center and radius remain correct under translation and origin reflection; SVG circles all have equal radius and centers map (−3,1)→(−5,2)→(5,−2).",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservation": "Read the actual SVG XML and verified its factual geometry against its coordinates/primitives: q1/q2 line-by-line computational flow. q7 center and radius remain correct under translation and origin reflection; SVG circles all have equal radius and centers map (−3,1)→(−5,2)→(5,−2)."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "q1: q1 distance calculation shows coordinate differences and simplification. q2 vertical-line slopes are −1/3 and 3, confirmed from actual SVG line models."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "q2: q1 distance calculation shows coordinate differences and simplification. q2 vertical-line slopes are −1/3 and 3, confirmed from actual SVG line models.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "Read the actual SVG XML and verified its factual geometry against its coordinates/primitives: q1 distance calculation shows coordinate differences and simplification. q2 vertical-line slopes are −1/3 and 3, confirmed from actual SVG line models."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "q1: q1 option judgments are separated. q2 uses the vertical-line test. q17 SVG points form square sides of length 5; the drawn circle has center midpoint of CD and radius 2.5. Known q18 exception was not used."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "q2: q1 option judgments are separated. q2 uses the vertical-line test. q17 SVG points form square sides of length 5; the drawn circle has center midpoint of CD and radius 2.5. Known q18 exception was not used."
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+            "observation": "q17: q1 option judgments are separated. q2 uses the vertical-line test. q17 SVG points form square sides of length 5; the drawn circle has center midpoint of CD and radius 2.5. Known q18 exception was not used.",
+            "visualSha256": "3305f493c628a4f6d7cffb55baff33f70b78eceb13574b515ed16289c8109869",
+            "visualObservation": "Read the actual SVG XML and verified its factual geometry against its coordinates/primitives: q1 option judgments are separated. q2 uses the vertical-line test. q17 SVG points form square sides of length 5; the drawn circle has center midpoint of CD and radius 2.5. Known q18 exception was not used."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Read actual failure cases: mislabeled SVG geometry, incomplete solution line blocks, null metadata where active mappings exist, and source/runtime escape divergence. These prevent answer-match, count, or SVG-label-only false PASS."
+    }
+  },
+  "recoveryScope": [
+    2,
+    17
+  ],
+  "recoveryComparison": {
+    "q2": "Equal 24° inscribed angles have equal intercepted arc lengths; the source visual arrow marks x as the whole lower arc. The 4cm arc is one of two equal subarcs.",
+    "q17": "Answer key gives intended ⑤; current question option ④ is a potentially plausible second positive-correlation pair, so audit a single minimal distractor repair before closing."
+  },
+  "order": [
+    "recovery assignment/sha binding",
+    "actual Golden 2-3 + Negative preflight",
+    "question PDF and companion answer HWP direct read",
+    "qid-limited repair"
+  ]
+}
