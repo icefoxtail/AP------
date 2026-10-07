@@ -275,7 +275,7 @@ window.questionBank = [
     "standardCourse": "기하",
     "standardUnitKey": "H15-GV-06",
     "standardUnit": "평면벡터의 성분과 내적",
-    "standardUnitOrder": 7,
+    "standardUnitOrder": 6,
     "subUnitKey": null,
     "subUnit": "평면벡터 · 두 직선의 방향벡터와 각",
     "subUnitConfidence": "rule_inferred",

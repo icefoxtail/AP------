@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_TARGET_REGISTRATION_GENERATOR_PROBE_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+  "head": "e191263cd2f2633aa9a79ef112c602dad316fec0",
+  "preservedReceipts": [
+    {"path":"archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/CONTINUATION.json","sha256":"CD383D41498073E8A540A580C8240537A00EC00E064A080348876FD78E2648C9"},
+    {"path":"archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/PHASE2_READONLY_AUDIT.json","sha256":"1F386F54149DA39FC16FA62C8D87EEC4FA82F0E558BBF4E8337DE87C60E04954"},
+    {"path":"archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/PHASE3_TARGET_REGISTRATION_PLAN.json","sha256":"A916D1A352E76F9E04525E9AA77DA5B2FC6D181C9FDBADD20331CA02221D3D31"}
+  ],
+  "candidateRoot": {
+    "pathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\registration-canonical-root",
+    "kind": "isolated local clone of the exact current HEAD",
+    "head": "e191263cd2f2633aa9a79ef112c602dad316fec0",
+    "initialStatus": "CLEAN before generator runs",
+    "registryBaselineParity": "all nine registration baseline input raw SHA-256 values exactly matched the calling root before generation",
+    "lockedProductionSources": "indices 0-10 tracked and present at the locked production paths; index 11 absent/pending",
+    "windowsCheckoutRecovery": "initial local clone checkout hit Windows long-path errors; clone-local core.longpaths=true and core.autocrlf=false were set, then git reset --hard HEAD completed. Calling worktree and its Git state were not changed.",
+    "archiveGeneratedHistory": "read-only; no writes under archive/_generated or archive/exams/_generated"
+  },
+  "index0Assignment": {
+    "path": ".tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/registration.assignment.json",
+    "rawSha256": "a0ef83aa6b4031812bc88d183607daba506f1df8777bc2a91ef2d6446587d303",
+    "currentProductionRawSha256": "efc60e364086887dba14a10221882e51325d991cbaeac25896c07ecf4da4ab09",
+    "validatorRawBufferBlobSha1": "8a1480e0f5f93d6dff2376ed63021a77d38faa0a",
+    "expectedHead": "e191263cd2f2633aa9a79ef112c602dad316fec0",
+    "releaseAssets": [],
+    "rosterBootstrapCandidateShaUsed": false
+  },
+  "generatorSteps": [
+    {
+      "command": "node archive/tools/intelligence/build-question-identity-map.mjs",
+      "workingDirectoryAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\registration-canonical-root",
+      "exitCode": 1,
+      "stdoutPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/01-identity-generator.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/01-identity-generator.stderr.txt",
+      "stderrSha256": "634c7ba1230bcccb449ed6d402588de78322fc3b8d5baf0589d152920e7fda09",
+      "disposition": "FAIL_CLOSED_INPUT_ABSENT",
+      "issue": "required archive/_generated/intelligence/phase0/inventory-latest.json absent; the sibling qkey-collision-review input is also absent from the isolated HEAD snapshot",
+      "writes": "none; the builder fails before producing question_identity_map.json"
+    },
+    {
+      "command": "node archive/tools/build-question-index.mjs",
+      "workingDirectoryAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\registration-canonical-root",
+      "exitCode": 1,
+      "stdoutPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/02-question-index-generator.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/02-question-index-generator.stderr.txt",
+      "stderrSha256": "3ddfaa46c846b08f925c0d87d2cacab70f046dd58b80db72afbe16288a696d82",
+      "disposition": "FAIL_CLOSED_DB_SOURCE_PARITY",
+      "issue": "28 tracked production JS paths are absent from candidate db.js, including the 11 available locked registration targets; unowned missing paths were not edited or reconciled",
+      "writes": "none; the builder exits before writing question-index outputs"
+    },
+    {
+      "command": "node archive/tools/build-archive2-catalog.mjs",
+      "workingDirectoryAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\registration-canonical-root",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/03-archive2-catalog-generator.stdout.txt",
+      "stdoutSha256": "3cf1b650c1511e2448ea622ea7315230ac43690b7f0ed38704217efa8b92aa85",
+      "stderrPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/03-archive2-catalog-generator.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "PASS_BASELINE_CANDIDATE_ONLY",
+      "output": {"examCount":497,"questionCount":11900,"metadataRecordCount":11908,"lockedTargetRows":0},
+      "writes": "isolated clone only: archive/data/archive2-catalog.json and archive/data/archive2-canonical-input-manifest.json"
+    },
+    {
+      "command": "node archive/tools/prepare-target-registration.mjs --root <worktree> --assignment .tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/registration.assignment.json --candidate-root <isolated-root> --output .tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/registration-package.json",
+      "workingDirectoryAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+      "exitCode": 1,
+      "stdoutPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/04-prepare-target-registration.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "archive/analysis/archive2-h2-math2-geometry-20261007/technical-meta-projection-gap/generator-probe/04-prepare-target-registration.stderr.txt",
+      "stderrSha256": "62df5bc509bbb1b2fab21acf0b277dffd7ab06d6e9d6af5411b5e312590a8823",
+      "disposition": "FAIL_CLOSED_TARGET_DENOMINATOR_MISMATCH",
+      "targetPackageWritten": false,
+      "registrationCliInvoked": false
+    }
+  ],
+  "candidateOutputs": {
+    "targetSourceFile": "original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js",
+    "targetCounts": {"db":0,"identity":0,"metadata":0,"index":0,"catalog":0},
+    "baselineOutputRawSha256": {
+      "archive/db.js": "56c66506947916f19872252d6744366b998416761731aaa7f437fc0934664bdf",
+      "archive/data/question_identity_map.json": "d516cadeb7c881affdc28dea9f87b69c69e6dca6a36eb8c78bde3e566c97cbfb",
+      "archive/data/question_metadata.json": "03286be402941edd247d077f564ba6944b37c96bca6f91d0f7e7ee69a23b45d5",
+      "archive/question-index.js": "bf3e891e34559c526a02a3231c55472d47032ee7f1e9813423aa4bb8d8455b46",
+      "archive/data/archive2-catalog.json": "402bd942f651ca108bb7061c05081b6a43529cc98ac0a13b34881a207f2ca1c3",
+      "archive/data/archive2-canonical-input-manifest.json": "173c140f7b02cafe34f5a7e4e9ec89a0afff7f96ae6d1bf49493d8af0517a090"
+    },
+    "mainRootRegistryBytesChanged": false,
+    "registryApplyCommitStageOrPublicationPerformed": false
+  },
+  "technicalProducerGap": {
+    "existingFunction": "prepare-target-registration.mjs extracts target rows but does not produce them",
+    "dependencyCycle": "build-question-index and build-archive2-catalog consume a db.js exam row; the target-only package that adds that row requires generated index/catalog rows. The current tree has no canonical target db-row producer input/API that breaks this cycle.",
+    "safeResolutionNeeded": "An existing authoritative targetDbRow source/schema or a bounded canonical producer interface for a roster-assigned production target. Do not infer school/year/subject/range fields from filenames or question semantics.",
+    "phase0Input": "The identity-map builder also requires read-only historical phase0 inventory/collision-review files absent at current HEAD and absent in the temp clone; no archive/_generated history files were created or changed."
+  },
+  "nextRequiredAction": "ROOT supplies or identifies the authoritative targetDbRow producer/source for index0 (and the same bounded schema for ready indices 1-10) without semantic inference. Then rerun target-only canonical generation, prepare index0 package, and require the built-in registration dry-run to return PLAN_VALIDATED_NOT_APPLIED. Only ROOT applies after index11 completes R1/R2/R3."
+}

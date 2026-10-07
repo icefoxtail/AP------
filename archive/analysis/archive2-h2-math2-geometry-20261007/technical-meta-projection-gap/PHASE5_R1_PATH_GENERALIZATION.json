@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_R1_PATH_GENERALIZATION_V1",
+  "status": "PASS",
+  "createdAt": "2026-10-07T23:27:09.4661676+09:00",
+  "scope": "same fixed-roster target producer; explicit R1 path support only",
+  "priorIndex0Dryrun": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\PHASE4_INDEX0_PACKAGE_DRYRUN.json",
+    "rawSha256": "73CE3C070810F41D20D5F9283A4BDE577C369B01CB442F512272C18298971C9A",
+    "status": "PLAN_VALIDATED_NOT_APPLIED",
+    "preserved": true,
+    "mainRegistryApply": false
+  },
+  "behavior": {
+    "cliOption": "--r1-evidence",
+    "pathRule": "required root-relative or absolute path resolving inside worktree; symlinks resolving outside root rejected",
+    "assignmentPathBinding": "if r1EvidencePath is present it must equal normalized root-relative resolved path",
+    "assignmentRawShaBinding": "if r1EvidenceSha256 is present it must equal exact evidence file raw SHA-256",
+    "unconditionalProofRequirements": [
+      "R1 stage + exam UID + quality contract + execution line",
+      "source raw SHA-256 and raw-buffer blob SHA-1 match assignment",
+      "complete sequential qid set matches current VM bank denominator",
+      "each qid verdict PASS and axisEvidence.META.status PASS"
+    ]
+  },
+  "tests": {
+    "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+    "exitCode": 0,
+    "passed": 8,
+    "failed": 0,
+    "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index0-e80-producer-attempt6\\producer-path-generalization-tests.stdout.txt",
+    "stdoutRawSha256": "EDA8386FC28F559274585CE48108B2D4C995C901E1B0DDCB7FBBB731D98BE9A4",
+    "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\archive2-h2-math2-geometry-20261007\\technical-meta-projection-gap\\index0-e80-producer-attempt6\\producer-path-generalization-tests.stderr.txt",
+    "stderrRawSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "coverage": [
+      "non-index0 geometry roster UID with noncanonical R1 filename and evidence folder",
+      "valid path + optional assignment path/SHA bindings",
+      "wrong optional SHA rejected",
+      "wrong optional path rejected",
+      "invalid META proof rejected after correct source/path/SHA bindings",
+      "path traversal outside worktree rejected"
+    ]
+  },
+  "implementationFiles": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.mjs",
+      "rawSha256": "FA0EADB9349B6493DC323747E1FE4D9475E4F459FDF4BBC836885D40D3B1E62C",
+      "gitBlobSha1": "4c62a637749020685ac790b5565f713982bff684"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\prepare-target-registration-candidate.test.mjs",
+      "rawSha256": "A78641D6037B20FE172C11654E0D57BF675AF53A5FAF526A03DDAC446C903710",
+      "gitBlobSha1": "29dbf8580e4be5ab7aa2cfe0bf3e9bf5c2ed31e5"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\tools\\CODEX_MAINTENANCE.md",
+      "rawSha256": "967E828B2F2FC4E657F40D01AC9346ACFBB493EBD520B1485714FA2269938145",
+      "gitBlobSha1": "2b006eae1542821d5a7df0d9d004979cabeb29ae"
+    }
+  ],
+  "exactInvocation": "node archive/tools/prepare-target-registration-candidate.mjs --root <ABS_ROOT> --authority <AUTHORITY_PATH> --roster <ROSTER_PATH> --roster-index <FIXED_INDEX> --assignment <TARGET_ASSIGNMENT> --r1-evidence <EXACT_CURRENT_ROOT_RELATIVE_R1_EVIDENCE_PATH> --candidate-root <FRESH_CANDIDATE_BASELINE> --index-root <UNIQUE_TEMP_INDEX_ROOT> --evidence-root <TARGET_EVIDENCE_ROOT> --package-output <TEMP_PACKAGE_PATH>",
+  "nextAction": "ROOT supplies each target exact current R1 evidence path and optionally binds assignment.r1EvidencePath and assignment.r1EvidenceSha256; run this updated producer with a fresh current registry baseline per sequential target. No R1 schema/proof conditions were weakened. Do not apply here."
+}

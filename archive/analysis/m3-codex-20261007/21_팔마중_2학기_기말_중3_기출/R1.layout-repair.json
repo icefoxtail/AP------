@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_LAYOUT_REPAIR_CHECKPOINT_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "status": "SOURCE_AND_LAYOUT_REPAIRS_COMPLETE_AGGREGATE_PENDING_FRESH_Q24_REVIEW",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------",
+  "expectedHead": "fd7f78d255e63cfbb959b9907fccbc636fdb9bdc",
+  "candidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\21_팔마중_2학기_기말_중3_기출.js",
+    "rawSha256": "14ff54df43918a3ac076709b2666901ae732ee47ce2863606238da98394cd23f",
+    "artifactBlobSha1": "8cc83ff611d082c80cc72df671b229030842ef6d"
+  },
+  "preflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1-clean-q12-q15-q24.golden-negative-preflight.json",
+    "sha256": "ebbc284642ec2bcd3a0002fd3e9c4ef3ad4ebf40156250a87bfbac48b6b29c8f",
+    "sampleReadBeforeComponentReview": true,
+    "calibrationStatus": "PASS_FOR_COMPONENT_REVIEW"
+  },
+  "nativeSourceRepair": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.native-source-repair.json",
+    "sha256": "872b5a1efe2e2d732ef8764a880c302b5f158b01151a9649527c798186ff24b9",
+    "sourcePdfPath": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m3/21_팔마중_2학기_기말_중3_기출/source/2021_팔마중3_수학_2기말.pdf",
+    "sourcePdfSha256": "6ebc50156d2c35a2b88fd1f81e9613dda7b97ec972d06f2a26e9bb009c58d8fe",
+    "page3PreviewSha256": "7605155646d88ff10ff8c1f8609ed666ac9b6015c2b4ec99210e074cf292e685",
+    "page5PreviewSha256": "ae6b49f131364ac407f25e25d3ad408cb4cc06a7c7d9f328ffb29a7dc875ea41"
+  },
+  "q12": {
+    "variantStatus": "ROOT_APPROVED_AUDITED_SOURCE_ERROR_MIN_REPAIR",
+    "currentChoice5": "2,5,9,9,1,9,5 [최빈값: 5]",
+    "nativePdfChoice5": "2,5,9,9,1,9,5 [최빈값: 9]",
+    "currentIndependentAnswer": "⑤",
+    "currentStoredAnswer": "⑤",
+    "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1-clean-q12-q15-q24.independent-freeze.json",
+    "freezeSha256": "a3138c1a503dcd44c6668500beaf61fd5719f5ac71dafd7192cc19fe3c0c8d7a",
+    "mathFreezeStatus": "MATCH_REUSED_CURRENT_VARIANT",
+    "sourceNativeParityClaimed": false
+  },
+  "q15": {
+    "layoutDisposition": "LAYOUT_REFORMAT",
+    "currentBodyTableRows": [
+      "| 학생 | A | B | C | D | E |",
+      "| 편차 | 2 | -5 | 1 | $x$ | 4 |"
+    ],
+    "nativePdfTableRows": [
+      "학생 | A | B | C | D | E",
+      "편차 | 2 | -5 | 1 | x | 4"
+    ],
+    "tableParity": "PASS",
+    "imageFieldBefore": "assets/images/21_팔마중_2학기_기말_중3_기출/q15.png",
+    "imageFieldAfter": null,
+    "imageBytesRetainedUnreferenced": true,
+    "retainedAssetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출/assets/images/21_팔마중_2학기_기말_중3_기출/q15.png",
+    "retainedAssetSha256": "83d5e4247a68fa3ceafc04576144968e8c1077eb3e29e70155616fd89536be76",
+    "engineCodeEvidence": {
+      "path": "archive/engine.html",
+      "sha256": "f9c7671d3e0f7a02a0ffb1bae01ffca4e3ca273e8bc6446a236700571519aaeb",
+      "contentBlockLine": 2398,
+      "imageBlockConstructionLine": 2395,
+      "imageFieldGuardLine": 2268,
+      "staticFact": "Official engine builds q-content from formatted content and a separate imageHTML block; renderQuestionImageHTML returns empty if !q.image. Setting null eliminates the duplicate raster block while leaving the Markdown table text/cells unchanged."
+    },
+    "sourceVariant": {
+      "authority": "ROOT_APPROVED_AUDITED_SOURCE_ERROR_MIN_REPAIR",
+      "nativePdfChoice1": "x=-20",
+      "activeChoice1": "x=-2",
+      "currentIndependentAnswer": "④",
+      "currentStoredAnswer": "④",
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1-clean-q12-q15-q24.independent-freeze.json",
+      "freezeSha256": "a3138c1a503dcd44c6668500beaf61fd5719f5ac71dafd7192cc19fe3c0c8d7a",
+      "mathFreezeStatus": "MATCH_REUSED_CURRENT_VARIANT",
+      "sourceNativeParityClaimed": false
+    }
+  },
+  "q24": {
+    "semanticSourceRestoration": true,
+    "nativePdfPage": 5,
+    "chartOnlyCrop": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출/assets/images/21_팔마중_2학기_기말_중3_기출/q24.png",
+      "beforePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.q24-image-before-chart-crop.png",
+      "beforeSha256": "07417885462e96e7ac6d5ab2ee159bfbc23a8deb514fc9de3d6797472d479801",
+      "cropEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.q24-chart-only.png",
+      "cropEvidenceSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+      "finalAssetSha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6",
+      "dimensions": "480x158",
+      "preservedTitle": "윗몸일으키기 횟수",
+      "preservedKey": "0의 잎 3은 3회",
+      "stems": [
+        0,
+        1,
+        2
+      ],
+      "leaves": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          5,
+          5,
+          7,
+          8
+        ],
+        [
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "leafCount": 12,
+      "sourcePdfVisualParity": "PASS"
+    },
+    "questionLayout": {
+      "subpartBreaks": [
+        "(1)",
+        "(2)",
+        "(3)"
+      ],
+      "sourceTextRestoredToNativePdf": true
+    },
+    "nativePart3Meaning": "최빈값의 합을 C라고 할 때",
+    "beforeVariantMeaning": "최빈값 중 가장 작은 값을 C라고 할 때",
+    "currentAnswer": "-5",
+    "solutionSha256": "cf965a29448ea54c81d5894c49d05e92f3787d7dea4953f9bd688fe01d3d5e73",
+    "decisiveStep": "A=14, B=16, C=15+20=35이므로 A+B-C=14+16-35=-5이다.",
+    "freshR1Required": true,
+    "freshR2Required": true,
+    "studentOnlyCurrentInputPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.q24-native-current.student-input.json",
+    "studentOnlyCurrentInputSha256": "89ae383e7cb5b67cc227efe5d95de62a70e1457de6da3c9138bd02b22181532b",
+    "oldFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1-clean-q12-q15-q24.independent-freeze.json",
+    "oldFreezeSha256": "a3138c1a503dcd44c6668500beaf61fd5719f5ac71dafd7192cc19fe3c0c8d7a",
+    "oldFreezeReuse": false
+  },
+  "qidChanges": {
+    "layoutChangedQids": [
+      15,
+      24
+    ],
+    "semanticSourceRestoredQids": [
+      24
+    ],
+    "sourceErrorVariantsRetainedQids": [
+      12,
+      15
+    ],
+    "mathBodyChangedQids": [
+      24
+    ],
+    "freshMathFreezePendingQids": [
+      24
+    ],
+    "q12q15CurrentVariantFreezesReusable": true
+  },
+  "render": {
+    "decision": "ROOT_DIRECTED_STATIC_COMPLETE",
+    "actualRenderStatus": "NOT_RUN_ROOT_WAIVER",
+    "actualRenderPassClaimed": false
+  },
+  "nextRequiredAction": "ROOT to obtain fresh clean R1/R2 q24 review on the native-sum prompt, then build the full-25 aggregate from the 22 unchanged valid rows, current q12/q15 variant rows, and the new q24 child review."
+}

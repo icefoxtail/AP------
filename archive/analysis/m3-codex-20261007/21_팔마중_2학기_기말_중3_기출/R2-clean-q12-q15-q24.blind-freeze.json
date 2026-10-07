@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R2_BLIND_FREEZE_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R2",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewScope": "AFFECTED_QID_ONLY",
+  "allowedQids": [12, 15, 24],
+  "assignmentSha256": "4828a117d31695979e1d5d2dc278a03a2eef29db87d3676a1a75f187b7d894b0",
+  "head": "fd7f78d255e63cfbb959b9907fccbc636fdb9bdc",
+  "currentArtifactRawSha256": "fead4ef5cc8fe8e063f875681c36fc81b5c5a809cd8c49a4dc409221c2248362",
+  "currentArtifactValidatorBlobSha1": "81ad1f9ec16b5877cc7fe00a705dca4471089312",
+  "currentStudentBundleSha256": "2f1efa56d22262554a376c4bb308a337e3f5a0b078cf35322b2f2e3d181852b1",
+  "inputCompleteness": {
+    "bundleQuestionCount": 3,
+    "bundleQids": [12, 15, 24],
+    "allQuestionSubpartsReviewed": true,
+    "allReferencedStudentVisualsOpened": true,
+    "visualAssets": [
+      {"qid": 15, "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q15.png", "sha256": "83d5e4247a68fa3ceafc04576144968e8c1077eb3e29e70155616fd89536be76", "observed": "Student stem/table is present; rows show students A–E and deviations 2, -5, 1, x, 4."},
+      {"qid": 24, "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\assets\\images\\21_팔마중_2학기_기말_중3_기출\\q24.png", "sha256": "07417885462e96e7ac6d5ab2ee159bfbc23a8deb514fc9de3d6797472d479801", "observed": "Stem-and-leaf key indicates 0|3 means 3 repetitions; stems/leaves encode 1,2,3; 11,15,15,17,18; 20,20,21,25 (12 values)."}
+    ]
+  },
+  "frozenAnswers": [
+    {
+      "qid": 12,
+      "answer": "⑤",
+      "answerCardinality": 1,
+      "reasoning": "Counts of the listed values give modes respectively 5; 28 and 35; red and yellow; 1, 2 and 5; and 9. Thus the only incorrect claim is choice ⑤, which claims 5 is a mode in the last data set, where 9 occurs three times and 5 occurs twice.",
+      "studentPayloadSha256": "f8237bf5b1e73d1843119b6cd1fe8aa8968e69297a28e208b2cb4ea99bba0029"
+    },
+    {
+      "qid": 15,
+      "answer": "④",
+      "answerCardinality": 1,
+      "reasoning": "The deviations sum to zero, so 2-5+1+x+4=0 and x=-2. Since D is 76 cm with deviation -2, the mean is 78 cm. Heights are A=80, B=73, C=79, D=76, E=82 cm; B and D differ by 3 cm, so the statement claiming 7 cm (choice ④) is false. The below-mean students are B and D.",
+      "studentPayloadSha256": "8c91a58b06a85879666b131379bc7b360c6d22c94114332e3e8f821b95daa958"
+    },
+    {
+      "qid": 24,
+      "answer": {"subparts": {"1": 14, "2": {"median": 16, "modes": [15, 20]}, "3": 15}},
+      "answerCardinality": "free_response_subparts_complete",
+      "reasoning": "The visual encodes the 12 values 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25. Their sum is 168, so the mean is 14. The 6th and 7th ordered values are 15 and 17, so the median is 16. The modes are 15 and 20; the smaller mode C is 15. Therefore A+B-C=14+16-15=15.",
+      "studentPayloadSha256": "344e0aafb021e11fe47a36cdf748364c801f9c3f3a0585c7bcc2fe74caadbd21"
+    }
+  ],
+  "freezeStatus": "FROZEN_BEFORE_ANY_STORED_ANSWER_OR_SOLUTION_DISCLOSURE"
+}

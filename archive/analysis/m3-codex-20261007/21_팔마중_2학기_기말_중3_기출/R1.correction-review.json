@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CORRECTION_REVIEW_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "status": "PASS_TARGETED_CHANGED_LOCUS",
+  "performedAfterCompletedCorrectionReviewPreflight": true,
+  "preflightPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.calibration-preflight.json",
+  "preflightSha256": "a5b3d88bfbba370b5f7feebaa43e8889da960162182c1a0906b5f4ee7ba7a1b2",
+  "preservedSequenceFailurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.calibration-preflight-failure.json",
+  "reviewScope": {
+    "qids": [
+      21
+    ],
+    "reason": "Only q21 answer and solution changed; no whole-stage rerun."
+  },
+  "candidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/.tmp/archive/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/21_팔마중_2학기_기말_중3_기출.js",
+    "rawSha256": "3c9ec421b54cf22037d86f6965382df76c7bbf1aead0512c466e4331f48e3945",
+    "artifactSha": "8d63fcc9dc3165efa72e3919e8ad67eebd1cd2e4"
+  },
+  "independentFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R1.independent-freeze.json",
+  "independentFreezeSha256": "f8d6f5eb5185f680605957b52e9419d5cfe357c53ba8ca6979bc08a178ce6d80",
+  "visual": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/.tmp/archive/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/assets/images/21_팔마중_2학기_기말_중3_기출/q21.png",
+    "sha256": "8bbb9442bcaf4c587a496c4607bda6252bbebdfc56b15551cd3d557d02821fdd",
+    "pixelPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------/archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/q21-grid-nearest.png",
+    "pixelPreviewSha256": "01086e597ff74eeee445b74a871e9983579678bab6cc524d4b15a3a9191ca7e2",
+    "openedAtCorrectionReview": true,
+    "pointCount": 20,
+    "enumeratedPoints": [
+      "(65,65)",
+      "(65,80)",
+      "(70,70)",
+      "(70,90)",
+      "(75,80)",
+      "(75,85)",
+      "(80,70)",
+      "(80,80)",
+      "(80,85)",
+      "(80,95)",
+      "(85,95)",
+      "(90,75)",
+      "(90,85)",
+      "(90,90)",
+      "(90,100)",
+      "(95,70)",
+      "(95,90)",
+      "(100,80)",
+      "(100,95)",
+      "(100,100)"
+    ],
+    "strictlyAboveYEqualsX": [
+      "(65,80)",
+      "(70,90)",
+      "(75,80)",
+      "(75,85)",
+      "(80,85)",
+      "(80,95)",
+      "(85,95)",
+      "(90,100)"
+    ],
+    "aboveCount": 8,
+    "ratio": "8/20=2/5"
+  },
+  "solution": {
+    "answer": "④",
+    "solutionSha256": "f4ba56b412af83bc09d0e2daedf1fa451a312fadd08ea49e113a266b32d95aa3",
+    "studentBodyParity": "PASS",
+    "studentBundleSha256": "6d9ac5920c3415456efb2369239857ba403eb84050343927d955d4d85467280a"
+  },
+  "goldenNegativeComparison": {
+    "goldenPath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "goldenQid": 14,
+    "goldenSolutionSha256": "10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+    "goldenVisualSha256": "ab0e080a1ee3abf262823ff83be0fd5af7cf0926e303b506526a0cd0037e99ae",
+    "observation": "분기별 집합 구성과 답을 분리해 보이는 작은 칠판 흐름을 q21의 점 좌표 열거·비율 계산에 적용했다.",
+    "negativePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "negativeSvgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+    "observationNegative": "q21 answer depends on actual marked coordinates; visual text claims are not substituted for direct geometric/data-point verification."
+  },
+  "reviewedDirectDependencies": [
+    "answer",
+    "solution",
+    "math",
+    "source image parity",
+    "QUESTION_LAYOUT unchanged",
+    "META unchanged",
+    "SMALL_BOARD continuity",
+    "VISUAL_SVG necessity"
+  ],
+  "reviewerConclusion": "The corrected solution enumerates all 20 distinct plot marks, lists exactly 8 above y=x, computes 8/20=2/5, and matches choice ④. Changed locus closes; q12/q15/q24 item HOLDs are unaffected."
+}

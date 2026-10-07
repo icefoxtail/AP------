@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R2_COMPONENT_COMPARISON_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "21_팔마중_2학기_기말_중3_기출",
+  "stage": "R2-clean-q12-q15-q24",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewScope": "AFFECTED_QID_ONLY",
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\21_팔마중_2학기_기말_중3_기출\\21_팔마중_2학기_기말_중3_기출.js",
+    "rawSha256": "fead4ef5cc8fe8e063f875681c36fc81b5c5a809cd8c49a4dc409221c2248362",
+    "artifactSha": "81ad1f9ec16b5877cc7fe00a705dca4471089312"
+  },
+  "assignmentSha256": "4828a117d31695979e1d5d2dc278a03a2eef29db87d3676a1a75f187b7d894b0",
+  "head": "fd7f78d255e63cfbb959b9907fccbc636fdb9bdc",
+  "blindFreeze": {
+    "path": "archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R2-clean-q12-q15-q24.blind-freeze.json",
+    "sha256": "3e65da48099073def7111495fa7b26273ae35d09b3b04af82556b37a1885747b"
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/m3-codex-20261007/21_팔마중_2학기_기말_중3_기출/R2-clean-q12-q15-q24.postfreeze-disclosure.json",
+    "sha256": "60e59ede98d7892cf021dc48055f8322b61bab590982650dc60f55403013463d"
+  },
+  "components": [
+    {"qid": 12, "blindAnswer": "⑤", "storedAnswer": "⑤", "disposition": "MATCH", "issue": null},
+    {"qid": 15, "blindAnswer": "④", "storedAnswer": "④", "disposition": "MATCH", "issue": null},
+    {"qid": 24, "blindAnswer": {"subparts": {"1": 14, "2": {"median": 16, "modes": [15, 20]}, "3": 15}}, "storedAnswer": "15", "disposition": "MATCH_FINAL_RESPONSE_AND_SOLUTION_COMPONENTS", "issue": null}
+  ],
+  "componentCheck": "Stored solutions were compared after freeze against independent calculations. All decisive calculations, choice selection, units and stated components agree; q24 stored scalar 15 is the requested final subpart and its solution supplies all three requested subparts.",
+  "itemHoldCount": 0,
+  "repairs": [],
+  "affectedOnlyDisposition": "COMPONENTS_MATCH_NO_REPAIR",
+  "genericValidator": "DEFERRED_TO_ROOT_FULL_MOTHER_VALIDATION",
+  "fullExamR2Status": "NOT_CLAIMED"
+}
