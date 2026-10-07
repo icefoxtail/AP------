@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_REGISTRATION_VALIDATOR_CLOSEOUT_V1",
+  "at": "2026-10-07T13:07:36.275Z",
+  "head": "e6e2d3730cd7d479cf19a6733878af55acc2458d",
+  "scope": "Three selected targets applied with non-target invariance; current canonical registration checks",
+  "ok": true,
+  "results": [
+    {
+      "label": "materializer-test",
+      "command": [
+        "node",
+        "tests/archive-meta-v2-materializer.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.materializer-test.stdout.log",
+        "sha256": "cc67fcb4d2dc9667353c286ce83c2f07f276cb6cbfd1681da6f51fd8efd36ba0"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.materializer-test.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "semantic-authority",
+      "command": [
+        "node",
+        "tests/archive2-meta-v2-semantic-authority.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.semantic-authority.stdout.log",
+        "sha256": "1e029e1baac393a34c36f3bd9f92672c22723b9dbb6712474fdcbbc4ba612c02"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.semantic-authority.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "materializer-check",
+      "command": [
+        "node",
+        "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.materializer-check.stdout.log",
+        "sha256": "a2f4e84453663689ff6e785cf6dbeda9e6f37aad05b86c11b0744496e56b9e47"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.materializer-check.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "identity-contract",
+      "command": [
+        "node",
+        "tests/archive-question-identity-contract.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.identity-contract.stdout.log",
+        "sha256": "efd660ba1cccfc39b74fcd867f3c80a1558d603291bf5568db6b8a6a55035a40"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.identity-contract.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "identity-runtime",
+      "command": [
+        "node",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.identity-runtime.stdout.log",
+        "sha256": "d861223ede061a02075942190e477091bb46b2c5ea98b777370d09aff3f75dcb"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.identity-runtime.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "registration-parity",
+      "command": [
+        "node",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.registration-parity.stdout.log",
+        "sha256": "fd1c7253cb9bfa47ccb9fd4b12899bb60949b69f1a04c6712dc51b2771562cbc"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.registration-parity.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "registration-sync",
+      "command": [
+        "node",
+        "tests/archive2-registration-sync.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.registration-sync.stdout.log",
+        "sha256": "01e1c8b86a283a164b46511c978fdaff5e2d52cf9f6f1af2703ab4035ff766e8"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-three-pilot-20261007/ROOT.registration-check.registration-sync.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "registryBindings": [
+    {
+      "path": "archive/db.js",
+      "sha256": "701eb85d66b2ecebdfed4cb295910239c861b04fff6c5d9b81562ee530205f12"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "37f526550cf2c950afccc52465789f6162585170cc0e7b381a19d4e197610970"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "3d5c98738867521cafe6079049a1a3424468483ded30039f8a0b8225587ef39b"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "sha256": "d4bd98713e79d747c10d45f0fb200e0c397ba2942a05fd8191c143cf48e75928"
+    },
+    {
+      "path": "archive/question-index.js",
+      "sha256": "e4df981465a5e6b4d65dcc496552e9e77f90ef3574114a252d48938f659b4105"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "sha256": "127ba97ac8c2642d3723c5b1dc1793760c6f780f81ee0e85b2f880fb779c97e7"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "sha256": "62294eb673672ce5d7885598e5e734a71d7009001b223cd42f57c05b4f736a09"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "sha256": "a58d97eea030161dad65bc475ffe750ef6e3386a2cde96c214e0d744207e386f"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "sha256": "8966a89d37c2fd754e415ba1918bbf01569b4510c102e4d58279afa3fc8bea4b"
+    }
+  ],
+  "bindingAddedAt": "2026-10-07T13:09:13.5846171Z",
+  "bindingBasis": "Current exact registry outputs unchanged since actual seven PASS checks; prior receipt preserved"
+}
