@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "ROOT_ACTUAL_PUBLICATION_EXECUTION_V1",
+  "examUid": "21_왕운중_2학기_기말_중3_기출",
+  "status": "MAIN_DONE",
+  "remoteMainSha": "fd7f78d255e63cfbb959b9907fccbc636fdb9bdc",
+  "artifactRawSha256": "513358b88fce790a22b00861d309a8ed860b8c7fc122011ceb8af9a0acc16d14",
+  "reports": [
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "merge",
+        "--ff-only",
+        "--quiet",
+        "origin/main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.fast-forward.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "stage",
+        "21_왕운중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.stage.raw.txt",
+        "sha256": "5b924bb7393bee11a34750d8f5b3db4f0021543e8779af7b9564e6866c710d2f"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/stage-registry.mjs",
+        "21_왕운중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.registry-stage.raw.txt",
+        "sha256": "6d4fd524c979740fd8df24341835308b47b56b5befb1e83b036f2e5b0e89ad7d"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "commit",
+        "--quiet",
+        "-m",
+        "Complete reviewed m3 archive 21_왕운중_2학기_기말_중3_기출 with exact production parity"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.commit.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.push.raw.txt",
+        "sha256": "42d49d2c48129b8a8e3eb090a202ac1bdc9da3254761b08374dba8969327aef9"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.readback-fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/readback-registry.mjs",
+        "21_왕운중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.registry-readback.raw.txt",
+        "sha256": "284daab40d72ed988670eccf8e55788a9cf5918af1bebfb31b3aefe9610aed57"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "main-done",
+        "21_왕운중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.main-done-receipt.raw.txt",
+        "sha256": "6c45be450cbe5e0043607d03db909dec505b226cb7553c759b0a0dbf0bbeee83"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "intake-main",
+        "21_왕운중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_왕운중_2학기_기말_중3_기출/ROOT.publication.main-done-intake.raw.txt",
+        "sha256": "1f232abedb2758bf41f0074e87b7282eee236609d5fb191fc1b2de9a85141eb0"
+      }
+    }
+  ],
+  "implementation": {
+    "path": ".tmp/archive/m3-codex-20261007/publish-exam.mjs",
+    "sha256": "5059019e843d00c3b6ae67fefb51e9880c01e18dea66c45062e476a915d0ca2b",
+    "authority": "LOCAL_ORCHESTRATION_OF_ACTUAL_CANONICAL_HELPERS"
+  },
+  "finishedAt": "2026-10-07T14:42:23.408Z"
+}

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "ROOT_ACTUAL_PUBLICATION_EXECUTION_V1",
+  "examUid": "25_풍덕중_2학기_중간_중3_수학",
+  "status": "MAIN_DONE",
+  "remoteMainSha": "80db0325004c817337462bfa7f803a87b9d2ff7b",
+  "artifactRawSha256": "3bda5885441b075559334036562658ff6f2d63f7e61dd4f88f1ea0937c0c6ecf",
+  "reports": [
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "merge",
+        "--ff-only",
+        "--quiet",
+        "origin/main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.fast-forward.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "stage",
+        "25_풍덕중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.stage.raw.txt",
+        "sha256": "392a0fd71dfbf6571aab6d715c880ef23d0955b0958e772a88a77e26357925fe"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/stage-registry.mjs",
+        "25_풍덕중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.registry-stage.raw.txt",
+        "sha256": "84dba134585a72e1a43f7fd62944d2842aa035b2fa4c26b8d27b56f2cef8d988"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "commit",
+        "--quiet",
+        "-m",
+        "Complete reviewed m3 archive 25_풍덕중_2학기_중간_중3_수학 with exact production parity"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.commit.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "http.version=HTTP/1.1",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.push.raw.txt",
+        "sha256": "a81adb667a30ccf207ce176b0a833dac11da3e6cb86cc78b073638953f1486c0"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.readback-fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/readback-registry.mjs",
+        "25_풍덕중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.registry-readback.raw.txt",
+        "sha256": "9a06702e549286d159132523f02c8cc235b165fbe6c3cae47d67cea330ffa5da"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "main-done",
+        "25_풍덕중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.main-done-receipt.raw.txt",
+        "sha256": "6cb5b2b8fb5702def98198fa79fbe669a125a972405bad5821e7d52569014177"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "intake-main",
+        "25_풍덕중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_풍덕중_2학기_중간_중3_수학/ROOT.publication.main-done-intake.raw.txt",
+        "sha256": "21f3d3a47c930209d05eff5d4f1298fb876a22cdd39b8dae3ef6c6932c147ec6"
+      }
+    }
+  ],
+  "implementation": {
+    "path": ".tmp/archive/m3-codex-20261007/publish-exam.mjs",
+    "sha256": "7f6004cf7c29ca3afbb5025dcf07d2982434c5bab3d2dd3435393f5154feb987",
+    "authority": "LOCAL_ORCHESTRATION_OF_ACTUAL_CANONICAL_HELPERS"
+  },
+  "finishedAt": "2026-10-07T18:12:56.971Z"
+}

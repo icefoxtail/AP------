@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const uid=process.argv[2];
+if(!uid||uid.includes('/')||uid.includes('..'))throw Error('EXAM_UID_REQUIRED');
+const base='archive/analysis/m3-codex-20261007/'+uid;
+const files=['archive/db.js','archive/data/question_identity_map.json','archive/data/question_metadata.json','archive/question-identity.js','archive/question-index.js','archive/question-index-report.md','archive/question-index-audit.md','archive/data/archive2-catalog.json','archive/data/archive2-canonical-input-manifest.json'];
+const git=(...args)=>execFileSync('git',args,{maxBuffer:128*1024*1024});
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+git('add','--',...files);
+const rows=files.map(p=>{const b=fs.readFileSync(p);let staged=git('cat-file','blob',':'+p);if(!b.equals(staged)){const blob=git('hash-object','--no-filters','-w',p).toString().trim();git('update-index','--add','--cacheinfo','100644,'+blob+','+p);staged=git('cat-file','blob',':'+p);}if(!b.equals(staged))throw Error('INDEX_BYTES_MISMATCH:'+p);return {path:p,sha256:hash(b),blobSha1:git('rev-parse',':'+p).toString().trim()};});
+const out=base+'/ROOT.registration.index-parity.json';
+fs.writeFileSync(out,JSON.stringify({examUid:uid,status:'PASS',head:git('rev-parse','HEAD').toString().trim(),rows,verifiedAt:new Date().toISOString()},null,2)+'\n');
+const blob=git('hash-object','--no-filters','-w',out).toString().trim();git('update-index','--add','--cacheinfo','100644,'+blob+','+out);
+console.log(JSON.stringify({status:'PASS',registryFiles:rows.length,receipt:out}));

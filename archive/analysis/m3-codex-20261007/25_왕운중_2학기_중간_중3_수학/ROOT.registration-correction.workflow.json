@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "ROOT_TARGET_REGISTRATION_SERIALIZATION_CORRECTION_V1",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "status": "CORRECTION_PUBLISHED_MAIN_DONE_REFRESHED",
+  "remoteMainSha": "f0f4c504e45cf6716d3c8718823cd4a0acb6c289",
+  "sourceMeaningAndAssetBytesChanged": false,
+  "correctedIndexSha256": "a0db91d6ac704ae46f34dcf23dcde2f71c4cac93eb89be037ff331508ea62045",
+  "repairEvidence": {
+    "path": "archive/analysis/m3-codex-20261007/registration-update-compatibility/published-index-target-only-repair.receipt.json",
+    "sha256": "d4be471dd4794238a5dc9417d41807b5dfe85e2268492c58ea31fed1a7a9bf40"
+  },
+  "reports": [
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "stage",
+        "25_왕운중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.stage.raw.txt",
+        "sha256": "523bb510f07c188e7db3693a3e9618a3703423795eb0b53f6e9d794d165302f6"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/stage-registry.mjs",
+        "25_왕운중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.registry-stage.raw.txt",
+        "sha256": "714c0d429f7d1c6eaa90c330845deb318ac05ff346771cde63f8caa99d7fd75e"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "commit",
+        "--quiet",
+        "-m",
+        "Repair existing m3 registry index serialization with unchanged target projections"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.commit.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "http.version=HTTP/1.1",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.push.raw.txt",
+        "sha256": "0b3d130d685d4313a541c74458e97b3182ecc95a9b6a568b01540245f6d04b63"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.readback-fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/readback-registry.mjs",
+        "25_왕운중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.registry-readback.raw.txt",
+        "sha256": "ab3c62dad6973320396b4474bc9719de3d33b6452c09b381c58bdac4408c883e"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "main-done",
+        "25_왕운중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.main-done-receipt.raw.txt",
+        "sha256": "1ce49f437629524ee09e66fe8342e6e53cc9b086f6dff6fb17bbe74daea3d249"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "intake-main",
+        "25_왕운중_2학기_중간_중3_수학"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.registration-correction.main-done-intake.raw.txt",
+        "sha256": "62fc332e5f7eafd449b7cc02b264fde0dca9f9424d916867dac269476600b95c"
+      }
+    }
+  ],
+  "finishedAt": "2026-10-07T18:05:10.600Z"
+}

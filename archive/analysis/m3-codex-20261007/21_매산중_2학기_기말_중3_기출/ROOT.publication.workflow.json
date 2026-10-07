@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "ROOT_ACTUAL_PUBLICATION_EXECUTION_V1",
+  "examUid": "21_매산중_2학기_기말_중3_기출",
+  "status": "MAIN_DONE",
+  "remoteMainSha": "6eeae8ce93026d5a4dcf9df06eaffad33c9651c9",
+  "artifactRawSha256": "28bd4b13871866c1e7d6a8377076426c79808f019399448c75bd09298f3bdc99",
+  "reports": [
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "merge",
+        "--ff-only",
+        "--quiet",
+        "origin/main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.fast-forward.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "stage",
+        "21_매산중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.stage.raw.txt",
+        "sha256": "cf4fd3c6146d8a67ca5914b3e09f9e224ca8bed515f7dac33eb30bea02df79b6"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/stage-registry.mjs",
+        "21_매산중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.registry-stage.raw.txt",
+        "sha256": "2e389cb1abe89b2449a3687c8a5317757eee7b078c0ce364ec2ced9a0ba6f9be"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "commit",
+        "--quiet",
+        "-m",
+        "Complete reviewed m3 archive 21_매산중_2학기_기말_중3_기출 with exact production parity"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.commit.raw.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.push.raw.txt",
+        "sha256": "6d124bae2412616faa629086c8a11f1f20b8bb7740ac2af78afb768bcfc05208"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "main"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.readback-fetch.raw.txt",
+        "sha256": "518e4a732b1273b1a207fc04e66848d4e4a4359413285acf403d0702baa37466"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/readback-registry.mjs",
+        "21_매산중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.registry-readback.raw.txt",
+        "sha256": "5d5a46139b1543694b380562d86dc0511924d9ed241b156c7ac329803185b150"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "main-done",
+        "21_매산중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.main-done-receipt.raw.txt",
+        "sha256": "f8126991a7ac1d77adf3c9cb3e7bfdbbec3b641e67b49b152cc566b532dd0028"
+      }
+    },
+    {
+      "command": [
+        "node",
+        ".tmp/archive/m3-codex-20261007/root-technical.mjs",
+        "intake-main",
+        "21_매산중_2학기_기말_중3_기출"
+      ],
+      "exitCode": 0,
+      "report": {
+        "path": "archive/analysis/m3-codex-20261007/21_매산중_2학기_기말_중3_기출/ROOT.publication.main-done-intake.raw.txt",
+        "sha256": "164088cdb0967ba576ba065c09113214045965014371a0657c390d8bf6ee1b75"
+      }
+    }
+  ],
+  "implementation": {
+    "path": ".tmp/archive/m3-codex-20261007/publish-exam.mjs",
+    "sha256": "5059019e843d00c3b6ae67fefb51e9880c01e18dea66c45062e476a915d0ca2b",
+    "authority": "LOCAL_ORCHESTRATION_OF_ACTUAL_CANONICAL_HELPERS"
+  },
+  "finishedAt": "2026-10-07T13:47:57.704Z"
+}

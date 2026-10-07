@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "EXISTING_TARGET_REGISTRATION_V2_PROOF_COMPATIBILITY_TESTS_V1",
+  "status": "PASS",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "head": "f0f4c504e45cf6716d3c8718823cd4a0acb6c289",
+  "spliceRegression": {
+    "firstSemicolonInsideJsonString": true,
+    "firstSemicolonOffset": 1210781,
+    "jsonArrayBoundary": 10319687,
+    "baselineRowsContainingSemicolon": 59,
+    "escapedQuoteAndDollarSyntheticCase": "PASS",
+    "sample": [
+      {
+        "sourceFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 13,
+        "qKey": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js_13"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 18,
+        "qKey": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js_18"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 15,
+        "qKey": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js_15"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 18,
+        "qKey": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js_18"
+      }
+    ]
+  },
+  "activeR1": {
+    "reviewSha256": "31aaabe20497e8ca6192501527a9d2e8a209f9f841d99e4e8d1a4dfbd6ac9786",
+    "validatorReportSha256": "9083506c0d83a3bc7bd59bc8c3c3df7a7f107d5114b164a1b4b4d2f2055f992d",
+    "officialValidator": "PASS",
+    "artifactContract": "PASS"
+  },
+  "activeR2": {
+    "stageEvidenceSha256": "30a6e55aa373ca86ab7d380611b011a3d66f555f146b7d5d2f63fd76da9815ef",
+    "validatorReportSha256": "57421c77c4b25176d05fa4846c837f1a57ccea7a5b6c78f24ed54f1b37fd9cfc",
+    "officialValidator": "PASS",
+    "artifactContract": "PASS"
+  },
+  "canonicalV2FinalGate": {
+    "status": "PASS_NO_SHARED_WRITE",
+    "rawReportsRevalidated": true,
+    "rootStaticReceiptValidatedByOfficialIntake": true,
+    "actualIntakeReportBound": true,
+    "mergeReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\registration-update-tools\\v2-canonical-final-merge\\registration-update.merge.receipt.json",
+    "mergeReceiptSha256": "0039e7fc9d343cb703c918f34ac4bbc16bdf31411da743b83262bd139a15d13d",
+    "preservedMergeReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\canonical-v2-full-merge.receipt.json",
+    "preservedMergeReceiptSha256": "0039e7fc9d343cb703c918f34ac4bbc16bdf31411da743b83262bd139a15d13d",
+    "preservedMergerPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\merge-existing-target-registration.implemented.mjs",
+    "preservedMergerSha256": "5e021214e22895a929e40e83b6f83a8ad2a7ce3496972fdf9d926c0673c7c35a"
+  },
+  "pungCanonicalNoStatusShape": {
+    "r1StatusAbsent": true,
+    "r2StatusAbsent": true,
+    "status": "PASS_NO_SHARED_WRITE",
+    "proofPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\pung-canonical-v2-no-status-shape\\final-quality-proof-reference-manifest.json",
+    "receiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\pung-canonical-v2-no-status-shape\\canonical-v2-full-merge.receipt.json",
+    "receiptSha256": "def532eee28e178b8616bbe7e04989ed3d35538448cc20cb41c29759f2ab5c57"
+  },
+  "negativeCases": [
+    {
+      "name": "missing-r1-validator-report",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_EVIDENCE_REFERENCE_REQUIRED:R1.validatorReport",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\missing-r1-validator-report.raw.txt"
+    },
+    {
+      "name": "missing-r2-validator-report",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_EVIDENCE_REFERENCE_REQUIRED:R2.validatorReport",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\missing-r2-validator-report.raw.txt"
+    },
+    {
+      "name": "wrong-evidence-hash",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_EVIDENCE_SHA_MISMATCH",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\wrong-evidence-hash.raw.txt"
+    },
+    {
+      "name": "inactive-r1-contract",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_ACTIVE_EVIDENCE_CONTRACT_REQUIRED",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\inactive-r1-contract.raw.txt"
+    },
+    {
+      "name": "partial-r1-qid-coverage",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_FULL_QID_COVERAGE_REQUIRED",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\partial-r1-qid-coverage.raw.txt"
+    },
+    {
+      "name": "r1-item-hold",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_HOLD_OR_NONPASS_ROW",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\r1-item-hold.raw.txt"
+    },
+    {
+      "name": "r3-static-item-hold",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R3_STATIC_CLOSURE_HOLD_OR_NONCOMPLETE",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\r3-static-item-hold.raw.txt"
+    },
+    {
+      "name": "wrong-final-artifact-blob",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_FINAL_SOURCE_RAW_OR_BUFFER_BLOB_SHA_MISMATCH",
+      "rawPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\v2-negative-fixtures\\fixtures\\wrong-final-artifact-blob.raw.txt"
+    },
+    {
+      "name": "pung-canonical-r1-no-status-missing-r1-validator-report",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_EVIDENCE_REFERENCE_REQUIRED:R1.validatorReport"
+    },
+    {
+      "name": "pung-canonical-r1-no-status-inactive-r1-contract",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_ACTIVE_EVIDENCE_CONTRACT_REQUIRED"
+    },
+    {
+      "name": "pung-canonical-r1-no-status-partial-r1-qid-coverage",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_FULL_QID_COVERAGE_REQUIRED"
+    },
+    {
+      "name": "pung-canonical-r1-no-status-r1-item-hold",
+      "status": "PASS_NEGATIVE_GUARD",
+      "exitCode": 2,
+      "expectedReason": "V2_R1_HOLD_OR_NONPASS_ROW"
+    }
+  ],
+  "negativeGuardCount": 12,
+  "canonicalV2FinalGateRuns": [
+    {
+      "name": "canonical-v2-current-r1-r2-r3-root-intake-positive-validation-only",
+      "status": "PASS_NO_SHARED_WRITE",
+      "sourceRawSha256": "bbe3cb8ff042826fbf354f2654b1126c185f7dfab9f83a8f29469f7657c2fa00",
+      "sourceBlobSha1": "61e0997b3f76551a8b0d012eb3cf469972d774ff",
+      "mergeReceiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\.tmp\\archive\\m3-codex-20261007\\registration-update-tools\\v2-canonical-final-merge\\registration-update.merge.receipt.json",
+      "mergeReceiptSha256": "0039e7fc9d343cb703c918f34ac4bbc16bdf31411da743b83262bd139a15d13d"
+    },
+    {
+      "name": "canonical-v2-pung-r1-no-top-status-current-r2-r3-intake-validation-only",
+      "status": "PASS_NO_SHARED_WRITE",
+      "r1StatusFieldAbsent": true,
+      "r2StatusFieldAbsent": true,
+      "sourceRawSha256": "3bda5885441b075559334036562658ff6f2d63f7e61dd4f88f1ea0937c0c6ecf",
+      "sourceBlobSha1": "6d28b977421164c5263e8faa29a47237f425e778",
+      "receiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m3-codex-main-done\\AP------\\archive\\analysis\\m3-codex-20261007\\registration-update-compatibility\\pung-canonical-v2-no-status-shape\\canonical-v2-full-merge.receipt.json",
+      "receiptSha256": "def532eee28e178b8616bbe7e04989ed3d35538448cc20cb41c29759f2ab5c57"
+    }
+  ],
+  "sharedWrite": false,
+  "sharedNineBytesUnchanged": true,
+  "productionSourceUnchanged": true,
+  "finalQualityApplyNotAttempted": true
+}

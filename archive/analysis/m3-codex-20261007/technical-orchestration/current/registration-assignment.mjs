@@ -1,0 +1,7 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';import crypto from 'node:crypto';
+const uid=process.argv[2],base='archive/analysis/m3-codex-20261007/'+uid,receipt=JSON.parse(fs.readFileSync(base+'/ROOT.static.receipt.json','utf8'));
+const roster=JSON.parse(fs.readFileSync('archive/analysis/m3-codex-20261007/locked-roster.json','utf8')),row=roster.rows.find(r=>r.examUid===uid);if(!row)throw Error('NOT_LOCKED_ROSTER');
+const a=fs.existsSync(base+'/R3.assignment.json')?JSON.parse(fs.readFileSync(base+'/R3.assignment.json','utf8')):{runId:'m3-codex-20261007',examUid:uid,qualityContractVersion:roster.qualityContractVersion,executionLine:'CODEX',worktreeRootAbsolute:process.cwd(),workingJsAbsolute:row.workingJsAbsolute,assetRootAbsolute:row.candidateRoot,evidenceRootAbsolute:process.cwd()+'/'+base,productionRelativePath:row.productionPath};
+const b=fs.readFileSync(receipt.productionPath),sha=crypto.createHash('sha256').update(b).digest('hex');if(sha!==receipt.artifactRawSha256)throw Error('SOURCE_MISMATCH');
+Object.assign(a,{stage:'TARGET_REGISTRATION',expectedHead:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),artifactRawSha256:sha,validatorRawBufferBlobSha1:receipt.artifactSha,allowedQids:receipt.qids,releaseAssets:receipt.assets.map(({ref,sha256})=>({ref,sha256}))});
+const p=base+'/registration.assignment.json';if(fs.existsSync(p))throw Error('FRESH_ASSIGNMENT_REQUIRED');fs.writeFileSync(p,JSON.stringify(a,null,2)+'\n');console.log(JSON.stringify({path:p,head:a.expectedHead,sourceRawSha256:sha}));

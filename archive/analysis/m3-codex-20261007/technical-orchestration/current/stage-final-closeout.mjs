@@ -1,0 +1,11 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import {execFileSync} from 'node:child_process';
+const base='archive/analysis/m3-codex-20261007',sha=b=>crypto.createHash('sha256').update(b).digest('hex'),git=(...a)=>execFileSync('git',a,{maxBuffer:128*1024*1024});
+const final=JSON.parse(fs.readFileSync(base+'/FINAL_ROSTER_READBACK.json'));if(final.status!=='ALL_FIXED_M3_MAIN_DONE'||final.examCount!==13||final.itemHoldCount!==0)throw Error('ALL13_MAIN_DONE_REQUIRED');
+if(git('diff','--cached','--name-only','-z').length)throw Error('INDEX_MUST_BE_EMPTY_BEFORE_CLOSEOUT');
+const files=[...new Set([...git('diff','--name-only','-z','--',base).toString().split('\0'),...git('ls-files','--others','--exclude-standard','-z','--',base).toString().split('\0')].filter(Boolean))].filter(p=>! /\.(pdf|hwp|hwpx)$/i.test(p));
+if(files.some(p=>!p.startsWith(base+'/')||p.includes('/_generated/')))throw Error('CLOSEOUT_SCOPE_ESCAPE');const rows=[];
+for(let i=0;i<files.length;i+=25)git('add','--',...files.slice(i,i+25));
+const repair=p=>{const bytes=fs.readFileSync(p);let staged=git('show',':'+p);if(!bytes.equals(staged)){const mode=git('ls-files','--stage','--',p).toString().split(' ')[0],blob=git('hash-object','--no-filters','-w',p).toString().trim();git('update-index','--add','--cacheinfo',mode+','+blob+','+p);staged=git('show',':'+p);}if(!bytes.equals(staged))throw Error('CLOSEOUT_INDEX_RAW_MISMATCH:'+p);return {path:p,sha256:sha(bytes),blobSha1:git('rev-parse',':'+p).toString().trim()};};
+for(const p of files)rows.push(repair(p));
+const reportPath=base+'/FINAL_CLOSEOUT.index-parity.json';fs.writeFileSync(reportPath,JSON.stringify({schemaVersion:'M3_EXPLICIT_CLOSEOUT_INDEX_PARITY_V1',status:'PASS',fileCount:rows.length,rows,scope:'Only own fixed m3 run evidence; explicit paths; native PDF/HWP inputs excluded and preserved locally',createdAt:new Date().toISOString()},null,2)+'\n');git('add','--',reportPath);const witness=repair(reportPath);
+console.log(JSON.stringify({status:'PASS',fileCount:rows.length+1,witness}));

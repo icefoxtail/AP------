@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "TARGET_ONLY_PUBLISHED_QUESTION_INDEX_REPAIR_V1",
+  "status": "REPAIRED_TARGET_INDEX_ONLY",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "head": "3e156278663d9595b7773f60d01e165c3986a813",
+  "productionSource": {
+    "path": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+    "rawSha256": "bbe3cb8ff042826fbf354f2654b1126c185f7dfab9f83a8f29469f7657c2fa00",
+    "artifactSha": "61e0997b3f76551a8b0d012eb3cf469972d774ff"
+  },
+  "badPublishedIndex": {
+    "sha256": "4f92c6543e66d3c2eac4172571dedabde331feaca16e3998b5f8d15179d41843",
+    "backupPath": "archive/analysis/m3-codex-20261007/registration-update-compatibility/question-index.published-invalid.js",
+    "rollbackBaseSha256": "a0db91d6ac704ae46f34dcf23dcde2f71c4cac93eb89be037ff331508ea62045",
+    "rollbackBasePath": ".tmp/archive/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/registration-final/applied/rollback-backups/2026-10-07T17-39-25-380Z/archive/question-index.js"
+  },
+  "failureCause": {
+    "locus": "archive/tools/merge-existing-target-registration.mjs question-index string-splice boundary",
+    "firstSemicolonOffset": 1210781,
+    "jsonArrayBoundary": 10319687,
+    "semicolonRows": [
+      {
+        "sourceFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 13,
+        "qKey": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js_13"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 18,
+        "qKey": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js_18"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 15,
+        "qKey": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js_15"
+      },
+      {
+        "sourceFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+        "sourceOrdinal": 18,
+        "qKey": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js_18"
+      },
+      {
+        "sourceFile": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 13,
+        "qKey": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js_13"
+      },
+      {
+        "sourceFile": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 22,
+        "qKey": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js_22"
+      },
+      {
+        "sourceFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
+        "sourceOrdinal": 14,
+        "qKey": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js_14"
+      },
+      {
+        "sourceFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+        "sourceOrdinal": 8,
+        "qKey": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js_8"
+      }
+    ]
+  },
+  "repair": {
+    "file": "archive/question-index.js",
+    "beforeSha256": "4f92c6543e66d3c2eac4172571dedabde331feaca16e3998b5f8d15179d41843",
+    "afterSha256": "a0db91d6ac704ae46f34dcf23dcde2f71c4cac93eb89be037ff331508ea62045",
+    "targetRowsReplaced": 24,
+    "nonTargetRowsPreserved": 12327,
+    "canonicalManifestIncludesQuestionIndex": false,
+    "otherEightRegistryFilesUnchanged": true
+  },
+  "validation": {
+    "syntax": "PASS",
+    "runtimeReadback": "PASS",
+    "targetProjection": "PASS",
+    "nonTargetRows": "PASS",
+    "semicolonInStringRegressionCase": "PASS"
+  },
+  "appliedReceipt": {
+    "path": "archive/analysis/m3-codex-20261007/25_왕운중_2학기_중간_중3_수학/ROOT.existing-registration.merge.receipt.json",
+    "sha256": "76becbb2dc41dc397599fa5dc6afbccdfd9070395f8bb21a68f2ad467cbc8478"
+  }
+}

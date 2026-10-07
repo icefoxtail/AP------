@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const uid=process.argv[2],base='archive/analysis/m3-codex-20261007/'+uid;
+const git=(...args)=>execFileSync('git',args,{maxBuffer:128*1024*1024});
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const parity=JSON.parse(fs.readFileSync(base+'/ROOT.registration.index-parity.json','utf8'));
+const rows=parity.rows.map(r=>{const b=git('show','origin/main:'+r.path);if(hash(b)!==r.sha256)throw Error('REMOTE_REGISTRY_BYTES_MISMATCH:'+r.path);return {...r,remoteSha256:hash(b),status:'PASS'};});
+const out=base+'/ROOT.registration.remote-readback.json';fs.writeFileSync(out,JSON.stringify({examUid:uid,status:'PASS',remoteMainSha:git('rev-parse','origin/main').toString().trim(),rows,verifiedAt:new Date().toISOString()},null,2)+'\n');
+console.log(JSON.stringify({status:'PASS',count:rows.length,path:out}));
