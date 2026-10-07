@@ -15903,6 +15903,656 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/high/h1/1final/22_매산여고_1학기_기말_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2022,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1final/21_강남여고_1학기_기말_고1_기출.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 27,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-11",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 11,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-11",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/high/h1/1final/21_고흥고_1학기_기말_고1_기출.js",
+      "school": "고흥고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-07",
+      "rangeStartUnit": "여러 가지 방정식",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-07",
+          "rangeStartUnit": "여러 가지 방정식",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
+      "file": "original/middle/m3/2final/21_신흥중_2학기_기말_중3_기출.js",
+      "school": "신흥중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+      "school": "매산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-M2-05",
+      "rangeStartUnit": "접선의 방정식",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-05",
+          "rangeStartUnit": "접선의 방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-03",
+      "rangeStartUnit": "미분계수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-03",
+          "rangeStartUnit": "미분계수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-02",
+      "rangeStartUnit": "함수의 연속",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-02",
+          "rangeStartUnit": "함수의 연속",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/20_매산고_2학기_기말_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-03",
+      "rangeStartUnit": "미분계수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-03",
+          "rangeStartUnit": "미분계수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/20_매산여고_2학기_기말_고2_수학II.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-03",
+      "rangeStartUnit": "미분계수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "정적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-03",
+          "rangeStartUnit": "미분계수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "정적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M2-03",
+      "rangeStartUnit": "미분계수",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-03",
+          "rangeStartUnit": "미분계수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2015,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "기하와벡터",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": null,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": null,
+      "courseRanges": [
+        {
+          "standardCourse": "기하와 벡터",
+          "courseCode": "H15-GV",
+          "rangeStartUnitKey": "H15-GV-01",
+          "rangeStartUnit": "포물선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-GV-07",
+          "rangeEndUnit": "직선과 원의 방정식",
+          "rangeEndUnitOrder": 7
+        },
+        {
+          "standardCourse": "미적분",
+          "courseCode": "H15-CALC",
+          "rangeStartUnitKey": "H15-CALC-05",
+          "rangeStartUnit": "여러 가지 미분법",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-CALC-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하와벡터"
+    },
+    {
+      "file": "original/high/h2/2mid/16_매산고_2학기_중간_고2_기하와벡터_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2016,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "기하와벡터",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": null,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": null,
+      "courseRanges": [
+        {
+          "standardCourse": "기하와 벡터",
+          "courseCode": "H15-GV",
+          "rangeStartUnitKey": "H15-GV-01",
+          "rangeStartUnit": "포물선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-GV-06",
+          "rangeEndUnit": "평면벡터의 성분과 내적",
+          "rangeEndUnitOrder": 6
+        },
+        {
+          "standardCourse": "수학Ⅱ",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-05",
+          "rangeStartUnit": "접선의 방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        },
+        {
+          "standardCourse": "미적분",
+          "courseCode": "H15-CALC",
+          "rangeStartUnitKey": "H15-CALC-04",
+          "rangeStartUnit": "삼각함수의 미분",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-CALC-07",
+          "rangeEndUnit": "여러 가지 적분법",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하와벡터"
+    },
+    {
+      "file": "original/high/h2/2mid/22_금당고_2학기_중간_고2_기하_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "final",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-GV-01",
+      "rangeStartUnit": "포물선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-GV-09",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H15-GV",
+          "rangeStartUnitKey": "H15-GV-01",
+          "rangeStartUnit": "포물선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-GV-09",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "기하와벡터",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-GV-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-GV-06",
+      "rangeEndUnit": "평면벡터",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H15-GV",
+          "rangeStartUnitKey": "H15-GV-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-GV-06",
+          "rangeEndUnit": "평면벡터",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하와벡터"
+    },
+    {
+      "file": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
     }
   ]
 };
