@@ -470,3 +470,10 @@ CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하
 - full waiver는 6 NOT_RUN·0 captures, partial은 1–5 actual PASS case와 나머지 NOT_RUN을 기록한다. partial은 `JS_ARCHIVE_CODEX_PARTIAL_RENDER_WITNESS_V1`에 same JS/R3 reviewer/실제 PNG capture·전 qid 및 마지막 qid coverage·viewport·MathJax/layout/decode·mode별 asset/SVG dependency SHA를 결속한다. 실행 안 한 case를 PASS로 보충하지 않는다.
 - 유효한 기존 R3 static 증거는 source/asset/현재 SHA가 같고 full-qid·integrity·zero HOLD·R1/R2 결속이 일치하면 원 권한과 reviewer를 보존해 재사용한다. USER evidence를 ROOT evidence로 소급 재작성하지 않는다.
 - MAIN_DONE은 production raw/Git blob·모든 asset·decision·authority snapshot·roster·R1/R2·R3·loaded JS·partial actual witness/captures의 remote bytes parity까지 확인한다. 임시 `.tmp` 참조, 잘못된 SHA, 무효 scope, item HOLD, non-PASS raw V2/CODEX proof, 경로 이탈을 수납하지 않는다.
+
+
+## Implemented maintenance CLI — 2026-10-07
+
+Run bootstrap can use `archive/tools/capture-codex-exam.mjs --preflight` to actually verify isolated Chrome, a physical PNG and the required mobile viewport before CREATE. Six-case collection uses the same CLI with the assigned JS and real asset root. It emits `CAPTURED_REVIEW_REQUIRED`, never `RENDER_PASS`. R3 reviews its actual PNGs; `build-codex-render-receipt.mjs` requires SHA-bound R3 coverage/judgment for all six cases and consumes the existing render receipt validator. API or machine capture refusal remains an honest blocker; existing §25 authority and source quality gates are unchanged.
+
+For one new production exam, `prepare-target-registration.mjs` extracts only its rows from isolated canonical generator outputs. `register-target-exam.mjs` defaults to validated dry-run and requires explicit `--apply`, exact source/assets/HEAD/catalog/baseline hashes and full target UID/ordinal coverage. It preserves non-target records, runtime tuples and dictionary IDs, rolls back its own failed writes, and does not grant semantic review or automatic eligibility. ROOT performs required registration validation, target-only publication and remote readback before MAIN_DONE. A whole-generator unrelated failure is preserved rather than forcing PASS or changing unrelated exams. CLI usage and tested boundaries: `archive/tools/CODEX_MAINTENANCE.md`.
