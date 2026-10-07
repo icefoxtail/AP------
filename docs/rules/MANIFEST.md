@@ -10,7 +10,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 ## files
 - 04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md | 16938 bytes | sha256 aca7c23683f3fb75c7b8fc93eda7ef6267091be2f1aea1a53dc3fefc26fce4e4
 - 02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md | 21848 bytes | sha256 13011f58df4f38f8ece653a5dc426420e092334a53806da671029107a1249f86
-- 00_RULES_INDEX.md | 56020 bytes | sha256 403d1b9560ff9899ec95157382de3e084f4d0448f3cc039dfca26440b03177a6
+- 00_RULES_INDEX.md | 56183 bytes | sha256 683cabb9948aa74d6d90ded7c513c6bb7336e43057f9f4e93663727b5dad38bb
 - 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 15111 bytes | sha256 ec0bfc1cc30d517c0dea7e322b171fc98a9c896b5dc7a35c360c9c0ccd60be3a
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11721 bytes | sha256 dd6c8d7dbc69a8b09e996091c78fcb2a84ea5effa6a503ddd0c731c0a1c8c618
@@ -36,7 +36,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 20641 bytes | sha256 15e70482d76dba1aa9a36a8c08c3cc51907303523b3eaf6c761bd888c20ac57c
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 131690 bytes | sha256 64ec77dd44dde3f0138fd309157c2cc3c62b6c1556fb3079e5dd090b9acbad8f
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
-- 02_PIPELINES/수정프로토콜.md | 53700 bytes | sha256 601dad2b77840a020eae154f8b44313c9e6ae0676075c9cb728e7827ba092cb2
+- 02_PIPELINES/수정프로토콜.md | 54610 bytes | sha256 b04db82d6319c3c6990e9b330926e1aaa5d0dcb23e61d43d40f137477d8c74cd
 - 02_PIPELINES/작업방식_적응형배치루프_v1.md | 9468 bytes | sha256 ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685
 - 02_PIPELINES/수정후보고프로토콜.md | 880 bytes | sha256 bbdd866d15e6dc7e03ee265cf3b02571f6ef3ed4a15c03ebacb816d3311cbc4f
 - 02_PIPELINES/작업방식_5문항배치루프_필수.md | 5586 bytes | sha256 03ff3af80c2ce350181a142377955cc6657fa7f2d419c7461c6a09e7b1013858
@@ -57,7 +57,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16860 bytes | sha256 b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca
 - 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 12742 bytes | sha256 79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954
 
-- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 33503 bytes | sha256 b4dc3afd957706f57badd7eeff02f6773404ba584d8a4cf209cf5c6006c9e90b
+- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 42253 bytes | sha256 179d27b7653e6b35b49b921580207793d7b54cf4af7955086d518aa2ae03d15f
 
-- 02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md | 10619 bytes | sha256 3b83b5a013113b769eb8c2f6c38e07b611ec443cb0f081a803b3fca8b74737a3
+- 02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md | 11698 bytes | sha256 a632b80483028f7490b968c27817228274cdf31e2f84f5136ecdef6e69906fc8
 - 02_PIPELINES/JS_Archive_2.0_Codex_Canary_Canonical_v1.md | 15818 bytes | sha256 85092178397557c2c91cde831cca3c14f3abdd4933fabdb5eddcd41a14666270

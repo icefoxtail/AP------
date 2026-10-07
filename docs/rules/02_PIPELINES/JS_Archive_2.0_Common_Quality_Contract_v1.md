@@ -7,7 +7,7 @@ qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
 JS Archive 2.0 keeps one product-quality contract and separates execution into two lines.
 
-- **Codex execution line:** ROOT + stage subagent conveyor, actual engine render, production publication, Git MAIN_DONE.
+- **Codex execution line:** ROOT + stage subagent conveyor, R3 actual render or ROOT-authorized static completion, production publication, Git MAIN_DONE.
 - **GPT scheduled execution line:** scheduled stage workers + selector/lease/Library handoff. `CREATE → R1 → R2 → R3 → MASTER → MAIN_DONE`. GPT 예약라인은 실제 engine render를 실행조건이나 완료상태로 두지 않는다. MASTER가 R3 완료 artifact를 target-only로 production/main에 반영하고 MAIN_DONE을 닫는다.
 
 A PASS in one execution line is not automatically inherited or invalidated by the other line. Artifact bytes, evidence, and the current contract decide.
@@ -159,4 +159,8 @@ Keep prior artifacts/evidence, calculate the missing axes under the new contract
 
 ## Codex ownership clarification — 2026-10-07
 
-Codex R3 owns actual six-case Archive Engine rendering, screen judgment and reviewer-bound receipt. ROOT accepts the machine witness, SHA/coverage/receipt and performs publication/readback; ROOT does not repeat screen quality review. The detailed conveyor, absolute assignment packet, R1/R2 student-only isolation, item HOLD travel, validator retry after actual repair and ledger contracts are in `JS_Archive_2.0_Codex_Execution_v1.md` §§16–23. This clarification does not change GPT_SCHEDULED render/publication behavior or the qualityContractVersion.
+When ROOT selects the actual-render route, Codex R3 owns six-case Archive Engine rendering, screen judgment and reviewer-bound receipt. ROOT waiver/static-route authority follows Execution §25. ROOT accepts the machine witness, SHA/coverage/receipt and performs publication/readback; ROOT does not repeat screen quality review. The detailed conveyor, absolute assignment packet, R1/R2 student-only isolation, item HOLD travel, validator retry after actual repair and ledger contracts are in `JS_Archive_2.0_Codex_Execution_v1.md` §§16–25. This clarification does not change GPT_SCHEDULED render/publication behavior or the qualityContractVersion.
+
+## ROOT production-completion exceptions (CODEX)
+
+Codex completion is verified production readiness, publication and remote readback. Execution §25 delegates capture/render waiver and bounded HOLD recovery/release decisions to ROOT without repeated user approval. R1/R2 valid full-input freezes, complete qid coverage, R3 JS/assets/SVG/structure integrity, zero unresolved item HOLD and SHA-bound technical closeout remain required. ROOT-directed static completion records ROOT_DELEGATED / ROOT_DIRECTED_STATIC_COMPLETE / NOT_RUN_ROOT_WAIVER; direct-user waivers retain their distinct authority and status. Unexecuted screens are NOT_RUN, never fabricated RENDER_PASS. Existing limited helper support must be extended through a real MASTER technical continuation before accepting a new ROOT decision; documentation does not assert unimplemented automation. This operational clarification keeps the qualityContractVersion and GPT_SCHEDULED behavior.

@@ -2,7 +2,8 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
-CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–23이다. Canary pilot은 역사 조회 전용이다.
+ROOT는 CURRENT §25에 따라 캡처/실제 render 요건 면제와 예외·HOLD 복구/해제를 결정할 상시 위임 권한을 가진다. 반복 사용자 승인을 prerequisite로 요구하지 않는다. 품질 결함은 원본 PDF→최소 수정→true item HOLD 문항 대체→영향 qid 검수로 복구한다. 캡처만 없으면 ROOT가 static 완성 경로를 결정한다. 실제 미실행 render는 NOT_RUN_ROOT_WAIVER로 기록하고 RENDER_PASS를 가장하지 않는다. 유효한 R1/R2·전 qid·JS/자산/SVG·zero item HOLD·production/readback 요건은 유지한다.
+CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–25이다. Canary pilot은 역사 조회 전용이다.
 assignment의 worktreeRootAbsolute/workingJsAbsolute/assetRootAbsolute/evidenceRootAbsolute와 expected SHA를 첫 동작에서 확인하고 absolute 경로로 작업한다. default cwd/primary checkout/source-batch를 임의 대용하지 않는다.
 정상 완료 뒤 generic validator는 1회 실행한다. 실제 FAIL/수정 후 같은 session에서 필요한 binding/locus를 고치고 재검증한다; one-run은 실패 뒤 재검증 금지가 아니다. 변화 없는 PASS를 반복하지 않는다.
 완전한 input으로 freeze한 계산/encoding 오류는 원 freeze를 보존하고 같은 stage에서 adjudication한다. pre-freeze 답 노출/필수 visual 누락/student-body 교체로 freeze가 무효이면 영향 qid만 clean session으로 ROOT에 인계한다.
