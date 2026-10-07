@@ -226,6 +226,18 @@
       "allRequiredChecksPass": true,
       "upstreamDrift": "Only unrelated H1 1mid q13 asset and evidence; selected source/assets, helpers, registry files unchanged",
       "checksReusedOnUnchangedInputs": true
+    },
+    {
+      "at": "2026-10-07T13:19:41.0196315Z",
+      "type": "INITIAL_ALL_MAIN_DONE_AND_WINDOWS_LONG_PATH_READBACK_REPAIR",
+      "remoteMainSha": "1250c3a3a2fcca9c68f5f6c3fdfdf8fa86e479c7",
+      "examCount": 3,
+      "questionCount": 71,
+      "canonicalMainDoneHelpersPass": true,
+      "itemHoldCount": 0,
+      "technicalRepair": "git ls-tree object IDs + git cat-file blob instead of git show revision:path for deep preserved snapshot paths",
+      "qualityInputsChanged": false,
+      "next": "Publish bounded helper/failure/initial closeout provenance, then rebind final current main SHA"
     }
   ],
   "spawnCount": 12,
