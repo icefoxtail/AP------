@@ -16522,6 +16522,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "기하와벡터"
+    },
+    {
+      "file": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
     }
   ]
 };
