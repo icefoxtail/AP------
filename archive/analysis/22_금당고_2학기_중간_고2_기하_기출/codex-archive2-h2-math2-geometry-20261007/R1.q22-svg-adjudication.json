@@ -1,0 +1,31 @@
+{
+  "schema": "JS_ARCHIVE_R1_Q22_VISUAL_ADJUDICATION_V1",
+  "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+  "initialReviewFinding": "R1 preflight visual pass initially called the blue locus a circle.",
+  "initialFindingPreserved": true,
+  "correctedFinding": "Parameter-level SVG inspection showed the old primitive was an ellipse, not a circle: rx=150, ry=141.42, with focal points O=(250,210), F=(350,210); the plotted P has OP+PF≈300. The first visual call was a near-circle perceptual misread.",
+  "repairNeed": "Although the ellipse equation was valid, the prior drawing omitted the source construction A and fold line l, so it did not directly support AP=PF. Replace only this missing construction and make the sampled eccentricity source-plausible.",
+  "currentGeometry": {
+    "svgAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\assets\\images\\22_금당고_2학기_중간_고2_기하_기출\\q22-solution.svg",
+    "svgSha256": "23da491eb6f2a85699a990a01554d413524fc856ffb66cf015313609d7002d8e",
+    "renderedPngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.svg-review\\q22-solution.png",
+    "renderedPngSha256": "d53052f6d3a384342ba6674854cd17b8fefa726c5c8b3737d99f041f96cba1ce",
+    "renderMethod": "ImageMagick 7.1.2 density 150",
+    "actualRenderedAndViewed": true,
+    "illustrativeParameters": {
+      "ellipseCenter": "(236,220)",
+      "pointA": "A=(380,220), on circle, so AP=20=PF",
+      "foldLine": "l:x=321 is the perpendicular bisector of AF and passes through P",
+      "circleCenter": "O=(210,220)",
+      "pointP": "P=(321,220), the right major-axis vertex in this example",
+      "semifocal": "c=26=OF/2",
+      "radius": "r=170",
+      "distanceSum": "OP+PF=111+59=170=r",
+      "semiminor": "b=sqrt(85^2-26^2)=80.9259",
+      "semimajor": "a=85=r/2",
+      "interiorFocus": "F=(262,220), OF=52"
+    },
+    "sourceInvariant": "All labels and geometry satisfy OA=r, AP=PF, OP+PF=r, 2a=r, and c=OF/2. The displayed aspect ratio follows OF/r=52/170 and was not enlarged for display."
+  },
+  "rootDirective": "Keep original mistaken-circle finding, this parameter-based correction, and final rendered evidence together."
+}

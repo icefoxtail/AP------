@@ -1,0 +1,1917 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+  "artifactSha": "f346d2e2677f1efe3cb6b69a05742e71e759c791",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "expectedInitialHead": "bbbb66dcd32d6cd5586761d830d46383d6ea5a00",
+  "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+  "sourcePdfPageCount": 4,
+  "sourceQuestionCount": 22,
+  "sourceMode": "ORIGINAL_WITH_AUDITED_SOURCE_REPAIR",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read actual student solution and cross-checked its decisive line flow; source and solution fields bound to q7. Opened actual SVG, checked its text/coordinates and rendered view.",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "observation": "Read actual student solution and cross-checked its decisive line flow; source and solution fields bound to q8. Opened actual SVG, checked its text/coordinates and rendered view.",
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read actual student solution and cross-checked its decisive line flow; source and solution fields bound to q2. Opened actual SVG, checked its text/coordinates and rendered view.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Read actual student solution and cross-checked its decisive line flow; source and solution fields bound to q3. Opened actual SVG, checked its text/coordinates and rendered view.",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the negative regression README and inspected its five cited SVG coordinate/topology failures, q2/q17 block structure defects, Meta null-key regression, and runtime escape warning."
+    }
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fb6974c1f4d48d437a0413a06a8f5122b340138e29cae67e1a71cb7155ef9b01",
+      "decisiveStep": "표준형에서 중심을 읽는다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "fb6974c1f4d48d437a0413a06a8f5122b340138e29cae67e1a71cb7155ef9b01",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 1,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "26712e3ac9ae982ac8d00b098412f0d9bd8e88f63cf44b131f9bc10812defea8",
+      "decisiveStep": "포물선의 꼭짓점과 초점 거리로 방정식을 세운다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "26712e3ac9ae982ac8d00b098412f0d9bd8e88f63cf44b131f9bc10812defea8",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 2,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e586bdb75dacc0f534507f34d829567b0d53e15e17effc4dac4790cb6feaacfc",
+      "decisiveStep": "쌍곡선은 두 제곱항의 부호가 다르다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "e586bdb75dacc0f534507f34d829567b0d53e15e17effc4dac4790cb6feaacfc",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 3,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1a812ffbecf71790bc280640322329e8ca41b041f01e5aa060b0a21613e0b551",
+      "decisiveStep": "접선 기울기형에서 절편을 계산한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "1a812ffbecf71790bc280640322329e8ca41b041f01e5aa060b0a21613e0b551",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-02",
+          "subUnitKey": "H22-GE-02-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 4,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5833ea23b2d7ebf6670de9c11702276cdedc681ea99c9c98b7c8c58117fa1960",
+      "decisiveStep": "c²=a²+b²로 미지의 분모를 정한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "5833ea23b2d7ebf6670de9c11702276cdedc681ea99c9c98b7c8c58117fa1960",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 5,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4bc4103b35b2876b14991a4283ecc3b83b31be4f0578c5614bf51c96380b1f21",
+      "decisiveStep": "포물선 정의로 사다리꼴의 평행변 합이 AB임을 보인다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "4bc4103b35b2876b14991a4283ecc3b83b31be4f0578c5614bf51c96380b1f21",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q06.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q06-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 6,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "verdict": "HOLD",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "0dae74deb19aabe18393bc01329855e0faa03708eea8d85333b7cf1e3888cbcc",
+      "decisiveStep": "원문 조건과 보기가 불일치한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "HOLD",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "HOLD",
+          "evidenceRef": "source-pages/page-1-q07-crop.png"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "solutionSha256": "0dae74deb19aabe18393bc01329855e0faa03708eea8d85333b7cf1e3888cbcc",
+          "note": "Unresolved source item; solution field carries hold rationale only."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "HOLD",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 1,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPagePngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 7,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "fullPageAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+          "fullPageSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039",
+          "cropAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1-q07-crop.png",
+          "cropSha256": "e90596b183097fdbe5f2265f7b1f387d907229513b7954d5f5e27eb0cd13f42a",
+          "note": "PDF prints 3x²+4y²=120; printed options contain multiple statements false for that equation. No source key or erratum found."
+        }
+      },
+      "holdEvidence": {
+        "decisiveMissingFacts": "A source-authoritative correction/erratum for the printed equation/choices or answer key.",
+        "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+        "fullPageLookupResult": "Page 1 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA e90596b183097fdbe5f2265f7b1f387d907229513b7954d5f5e27eb0cd13f42a.",
+        "repairAttempted": "Source comparison completed; no deterministic source repair exists without changing the printed mathematics.",
+        "whyDeterministicClosureImpossible": "With literal 120, several choices conflict with the ellipse facts, so a unique “not correct” answer cannot be derived.",
+        "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+      }
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "020f691f4425abebc57ee94e40d154169f81d9934b1b5a165a4a92d15c7e4854",
+      "decisiveStep": "외부점을 지나는 접선 조건으로 접점 y좌표를 정한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "020f691f4425abebc57ee94e40d154169f81d9934b1b5a165a4a92d15c7e4854",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-02",
+          "subUnitKey": "H22-GE-02-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 8,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "85f44fea0d63d27a9a5c6fe2a057d39427bf0f9b35cde5d4cafa7cc44a3705da",
+      "decisiveStep": "직각삼각형과 쌍곡선의 거리 차를 결합한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "85f44fea0d63d27a9a5c6fe2a057d39427bf0f9b35cde5d4cafa7cc44a3705da",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q09.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q09-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 9,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "verdict": "HOLD",
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceModeRationale": "q10 source text minimally repaired against page 2 full-size crop.",
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "1fb842898c2b1e68ccd3ed090a143705ad4194e0132b182b5f8a5682c1fc4b08",
+      "decisiveStep": "직선 방향이 자유로워 넓이만으로 a+b가 정해지지 않는다.",
+      "questionLayout": {
+        "beforeDisposition": "AUDITED_SOURCE_REPAIR",
+        "finalDisposition": "HOLD",
+        "sourceTextParity": "PDF-authoritative wording; other source text/choices retained."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "HOLD",
+          "evidenceRef": "source-pages/page300-q10-text.png"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "solutionSha256": "1fb842898c2b1e68ccd3ed090a143705ad4194e0132b182b5f8a5682c1fc4b08",
+          "note": "Unresolved source item; solution field carries hold rationale only."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "HOLD",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q10.png",
+          "solutionImageRef": null,
+          "visualReview": "Preserved rostered source illustration; no extra solution diagram was required by the algebraic explanation."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "AUDITED_REPAIR",
+          "sourceOrdinal": 10,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "repair": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "cropPathAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page300-q10-text.png",
+          "cropSha256": "b2b6393c086c55daa0e66ccacea1cff0edbdaaf0084e445f9c90c7328fc50376",
+          "oldQuestion": "그림과 같이 두 초점 $F(4,0),F'(-4,0)$을 초점으로 하는 타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$에서 점 $F,F'를 지나는 직선이 타원과 만나는 두 점을 각각 $A,B$라 하자. 삼각형 $ABF'$의 넓이가 $20$일 때, 상수 $a,b$에 대하여 $a+b$의 값을 구하시오. (단, $a>0,b>0$) [3.8점]",
+          "newQuestion": "그림과 같이 두 초점 $F(4,0),F'(-4,0)$을 초점으로 하는 타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$에서 점 $F$를 지나는 직선이 타원과 만나는 두 점을 각각 $A,B$라 하자. 삼각형 $ABF'$의 넓이가 $20$일 때, 상수 $a,b$에 대하여 $a+b$의 값을 구하시오. (단, $a>0,b>0$) [3.8점]",
+          "changedLocus": [
+            "F,F′ → F in line-through condition",
+            "ABF → ABF′ triangle label"
+          ],
+          "minimality": "Restore exactly what page 2 prints; no new condition added."
+        },
+        "repairedTruth": {
+          "pdfPageNo": 2,
+          "pdfCropAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page300-q10-text.png",
+          "pdfCropSha256": "b2b6393c086c55daa0e66ccacea1cff0edbdaaf0084e445f9c90c7328fc50376",
+          "viewedFullPageAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "viewedFullPageSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        }
+      },
+      "holdEvidence": {
+        "decisiveMissingFacts": "A fixed line direction or other condition that determines the conic parameters uniquely.",
+        "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+        "fullPageLookupResult": "Page 2 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA b2b6393c086c55daa0e66ccacea1cff0edbdaaf0084e445f9c90c7328fc50376.",
+        "repairAttempted": "Minimal audited source-wording repair applied; remaining ambiguity is mathematical and not repaired by adding a condition.",
+        "whyDeterministicClosureImpossible": "The line direction is free; area 20 is one constraint on the line and unknown a,b, so a+b is not uniquely determined.",
+        "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+      }
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f4c1289ba2407b9716021477286db4e002d6e4e1d779e388cc5428b54ca36217",
+      "decisiveStep": "준선 거리 표현으로 거리합을 최소화한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "f4c1289ba2407b9716021477286db4e002d6e4e1d779e388cc5428b54ca36217",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 11,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "verdict": "HOLD",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "53d1cbb1def5dd6d7f2209e665dcc85b00a8098ceea56321b651d895808740c6",
+      "decisiveStep": "원문 식과 선택지의 수학적 일치 여부를 확인한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "HOLD",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "HOLD",
+          "evidenceRef": "source-pages/page-2-q12-zoom.png"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "solutionSha256": "53d1cbb1def5dd6d7f2209e665dcc85b00a8098ceea56321b651d895808740c6",
+          "note": "Unresolved source item; solution field carries hold rationale only."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "HOLD",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 12,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "fullPageAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPageSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3",
+          "cropAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2-q12-zoom.png",
+          "cropSha256": "a9feaac71e89478cda3d262b28ea689bec4b7f0f1f05fbcc2eed70b551e10961",
+          "note": "PDF prints ellipse equation ending =10 followed by Korean particle 이; literal condition gives no listed answer. No source key or erratum found."
+        }
+      },
+      "holdEvidence": {
+        "decisiveMissingFacts": "A source-authoritative equation correction/erratum or answer key reconciling =10 with the choices.",
+        "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+        "fullPageLookupResult": "Page 2 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA a9feaac71e89478cda3d262b28ea689bec4b7f0f1f05fbcc2eed70b551e10961.",
+        "repairAttempted": "Source comparison completed; no deterministic source repair exists without changing the printed mathematics.",
+        "whyDeterministicClosureImpossible": "With literal =10, solving the conic equations does not produce any listed answer; correcting it to fit the choices would be speculative.",
+        "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+      }
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f166f38b64731cd38aa8ddd0fcef5e1433e6abbdf9b53fd263020b6788f3c07e",
+      "decisiveStep": "사각형 넓이로 b를 정하고 쌍곡선 식에 대입한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "f166f38b64731cd38aa8ddd0fcef5e1433e6abbdf9b53fd263020b6788f3c07e",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 13,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 2,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+          "fullPagePngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8d1426769e928326327fd1af9c95433958efd9d88d664de6b076527ae01ea8d5",
+      "decisiveStep": "교점의 y²부터 풀고 수평·수직 거리를 더한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "8d1426769e928326327fd1af9c95433958efd9d88d664de6b076527ae01ea8d5",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 14,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6eeab0b3477f794838a49c2c3b6b5fb3e5c69cee98aa1eac06edf7c6cccb50d1",
+      "decisiveStep": "초점 거리와 준선 거리가 같음을 사용한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "6eeab0b3477f794838a49c2c3b6b5fb3e5c69cee98aa1eac06edf7c6cccb50d1",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 15,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1403d49b1cad01b323ae4a332b401489d57d6adb6f2c1bbaa27d21064b5d3475",
+      "decisiveStep": "근의 합으로 직선 기울기, 근의 차로 현 길이를 정한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "1403d49b1cad01b323ae4a332b401489d57d6adb6f2c1bbaa27d21064b5d3475",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 16,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "dc569b17a73fc02061f246468e3101a70dbc6396774154d54083bb0ad7c83d90",
+      "decisiveStep": "접선과 점근선 교점을 구해 평균을 낸다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "dc569b17a73fc02061f246468e3101a70dbc6396774154d54083bb0ad7c83d90",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-02",
+          "subUnitKey": "H22-GE-02-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 17,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "be7cf39db7482ed7e0443bd78038f6387461d0a6dd1f7bc8cff86759d0946102",
+      "decisiveStep": "두 접선의 축절편에서 거리 곱을 구한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "be7cf39db7482ed7e0443bd78038f6387461d0a6dd1f7bc8cff86759d0946102",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-02",
+          "subUnitKey": "H22-GE-02-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 18,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 3,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+          "fullPagePngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "69fcc0cdde136e84127c3c7f603f9f8648d22975039aa16ab2e3cc27e2febc03",
+      "decisiveStep": "점근선 기울기와 초점으로 a,b를 정한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "69fcc0cdde136e84127c3c7f603f9f8648d22975039aa16ab2e3cc27e2febc03",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 19,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "48fcb0f1917b50f4339dc966e69899a71bceb7bb5ac41d0ad60e20f6f8022a84",
+      "decisiveStep": "접선 방향각 범위와 원의 중심각 변화를 연결한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "48fcb0f1917b50f4339dc966e69899a71bceb7bb5ac41d0ad60e20f6f8022a84",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 20,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "241feab368ab94086e783dfe800b4d2aa49b1cc91f4eb963a37e2bbe3270e5e2",
+      "decisiveStep": "접선 조건 판별식과 절편의 행렬식을 계산한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "241feab368ab94086e783dfe800b4d2aa49b1cc91f4eb963a37e2bbe3270e5e2",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-02",
+          "subUnitKey": "H22-GE-02-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": null,
+          "solutionImageRef": null,
+          "visualReview": "No visual asset is needed for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 21,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceModeRationale": "Exact source body retained from rostered source item.",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f521d61a64c92798f6770d2867d426cd10b4e42b3a9eaf48264fd23550fe0875",
+      "decisiveStep": "접은 선 위 점의 등거리성과 원의 반지름을 결합한다.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextParity": "KEEP: full source-page text and choices preserved."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidenceRef": "full-page source render and original body parity"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "solutionSha256": "f521d61a64c92798f6770d2867d426cd10b4e42b3a9eaf48264fd23550fe0875",
+          "note": "Small-board flow with actual equations, condition use, intermediate values, substitution, and final answer."
+        },
+        "meta": {
+          "status": "PASS_WITH_RPM_PROJECTION_DEBT",
+          "standardUnitKey": "H22-GE-01",
+          "subUnitKey": "H22-GE-01-CORE",
+          "projectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json: 2022 conic paths are RPM_ONLY / NO_ACTIVE_MAPPING; no PT/TPL key invented."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22.png",
+          "solutionImageRef": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22-solution.svg",
+          "visualReview": "Rendered candidate SVG and inspected plotted loci/labels against the source solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourcePdf": {
+          "sha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981"
+        },
+        "sourceIdentity": {
+          "sourceMode": "ORIGINAL",
+          "sourceOrdinal": 22,
+          "sourceQuestionVisualReview": "PASS"
+        },
+        "sourceParity": {
+          "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+          "pageNo": 4,
+          "fullPagePngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+          "fullPagePngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981",
+          "sourceBodySource": "rostered selected branch snapshot; checked against visible PDF page"
+        }
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "f346d2e2677f1efe3cb6b69a05742e71e759c791",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-02",
+          "standardUnit": "이차곡선의 접선",
+          "subUnitKey": "H22-GE-02-CORE",
+          "subUnit": "포물선의 접선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-02",
+          "standardUnit": "이차곡선의 접선",
+          "subUnitKey": "H22-GE-02-CORE",
+          "subUnit": "쌍곡선의 접선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "포물선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-02",
+          "standardUnit": "이차곡선의 접선",
+          "subUnitKey": "H22-GE-02-CORE",
+          "subUnit": "쌍곡선의 접선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-02",
+          "standardUnit": "이차곡선의 접선",
+          "subUnitKey": "H22-GE-02-CORE",
+          "subUnit": "포물선의 접선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-02",
+          "standardUnit": "이차곡선의 접선",
+          "subUnitKey": "H22-GE-02-CORE",
+          "subUnit": "타원의 접선",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION: active crosswalk high2-geometry.json records 2022 conic L3/L4 paths as NO_ACTIVE_MAPPING; preserve verified 2022 standardUnit/subUnit projection and null problemType/template until current active exact keys exist.",
+        "actualFields": {
+          "standardCourse": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE"
+        }
+      }
+    ]
+  },
+  "itemHoldCount": 3,
+  "itemHolds": [
+    {
+      "qid": 7,
+      "decisiveMissingFacts": "A source-authoritative correction/erratum for the printed equation/choices or answer key.",
+      "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+      "fullPageLookupResult": "Page 1 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA e90596b183097fdbe5f2265f7b1f387d907229513b7954d5f5e27eb0cd13f42a.",
+      "repairAttempted": "Source comparison completed; no deterministic source repair exists without changing the printed mathematics.",
+      "whyDeterministicClosureImpossible": "With literal 120, several choices conflict with the ellipse facts, so a unique “not correct” answer cannot be derived.",
+      "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+    },
+    {
+      "qid": 10,
+      "decisiveMissingFacts": "A fixed line direction or other condition that determines the conic parameters uniquely.",
+      "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+      "fullPageLookupResult": "Page 2 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA b2b6393c086c55daa0e66ccacea1cff0edbdaaf0084e445f9c90c7328fc50376.",
+      "repairAttempted": "Minimal audited source-wording repair applied; remaining ambiguity is mathematical and not repaired by adding a condition.",
+      "whyDeterministicClosureImpossible": "The line direction is free; area 20 is one constraint on the line and unknown a,b, so a+b is not uniquely determined.",
+      "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+    },
+    {
+      "qid": 12,
+      "decisiveMissingFacts": "A source-authoritative equation correction/erratum or answer key reconciling =10 with the choices.",
+      "alternateEvidenceChecked": "Reviewed all four rostered source pages and the qid-specific full-page crop; no answer key was in the source PDF.",
+      "fullPageLookupResult": "Page 2 visually opened from source PDF SHA 6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9; exact crop SHA a9feaac71e89478cda3d262b28ea689bec4b7f0f1f05fbcc2eed70b551e10961.",
+      "repairAttempted": "Source comparison completed; no deterministic source repair exists without changing the printed mathematics.",
+      "whyDeterministicClosureImpossible": "With literal =10, solving the conic equations does not produce any listed answer; correcting it to fit the choices would be speculative.",
+      "nextRequiredEvidenceOrCapability": "Carry exact student-only qid input through independent R1 and R2. If both confirm a true hold, ROOT direct replacement under §20."
+    }
+  ],
+  "sourceRepair": {
+    "qid": 10,
+    "type": "AUDITED_SOURCE_REPAIR",
+    "sourcePdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+    "pageNo": 2,
+    "cropAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page300-q10-text.png",
+    "cropSha256": "b2b6393c086c55daa0e66ccacea1cff0edbdaaf0084e445f9c90c7328fc50376",
+    "oldLoci": {
+      "lineThrough": "F and F′",
+      "triangle": "ABF"
+    },
+    "newLoci": {
+      "lineThrough": "F",
+      "triangle": "ABF′"
+    },
+    "result": "Current text matches PDF, but item remains HOLD as underdetermined."
+  },
+  "sourceRenderBinding": [
+    {
+      "pdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+      "pageNo": 1,
+      "pngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-1.png",
+      "pngSha256": "82a1a7ed1d6538d6276e451b1970fd3127c0e66818b7f78f8f01888af1a0f039"
+    },
+    {
+      "pdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+      "pageNo": 2,
+      "pngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-2.png",
+      "pngSha256": "4abf83486ca0bbc3af45910b9eff15a4409306d075e0cebed640bf0918481fe3"
+    },
+    {
+      "pdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+      "pageNo": 3,
+      "pngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-3.png",
+      "pngSha256": "22833194a58c0e404321a7aa99de99b06c58b4b395e0506d7963c284574c03c3"
+    },
+    {
+      "pdfSha256": "6a937c911393cbd05a84125b41b868f97b3f27f2b68dd73b813cef05ec3d06a9",
+      "pageNo": 4,
+      "pngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\source-pages\\page-4.png",
+      "pngSha256": "cca43636f5093c00c5be2c47da4ffbdbb7c418992f30bbd28d7b352d1a04c981"
+    }
+  ],
+  "screenRenderStatus": "NOT_RUN_ROOT_WAIVER_PENDING",
+  "visualStaticReview": {
+    "contactSheetAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\solution-preview\\contact-sheet.png",
+    "contactSheetSha256": "0863d77d2c1cfdc502689c2d80cab90b71c8ca495d3b82be1d18912974aecf1c",
+    "solutionSvgCount": 10,
+    "screenRenderStatus": "NOT_RUN_ROOT_WAIVER_PENDING"
+  },
+  "sourceOnlyEvidenceSha256": "45280340f9cfa4b9efa966742125c835cb4918955832198b9d116699415fb812",
+  "worktreeRootAbsolute": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\22_금당고_2학기_중간_고2_기하_기출.js",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출",
+  "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007",
+  "assignmentPacketSha256": "8b3b72cbdaa4d17af4d69e7618e51b1bfe82d35dd8964ca1e0f82692ff59e3a5",
+  "assetSha256ByProductionRef": {
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q06-solution.svg": "e5ca4925aaf44c90dba9e1c81d263426db41ccc331f7c659373f0638a6233ba6",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q06.png": "c3f03dd5719dffbdc2521bc3161611015643c23745e8d4d63c7aecbfcb83b3bb",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q09-solution.svg": "fa407bd229c4fb555d9c66b6973c717431bbf189ba9af7c65a41077b8bff76a0",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q09.png": "cfd63e4c9a1938f064f038f3dbf6689989a40b3f571c71af983fa83e075044f9",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q10.png": "c85c595d697849811e54b435c916298f64668e3c3c34de0634b0ea0c68ca1367",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13-solution.svg": "56868be290e1f0ed2ca574f1c3ad8a19609602bbafd4591bb9d7015a6c0660c4",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q13.png": "84507ed350755a9aa572b5c8ebb2e8e40be131dd390847015f99846423408376",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14-solution.svg": "107b0a7569e87e122c7171def8580060e51b7a45a25b594e5922c390cc61818a",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q14.png": "24840c7ce77de2d51fa1c5acfa247c78250ead4e8af76034907ef1b5268f3d8e",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15-solution.svg": "2b2e4c44bab39841131a97b2c170f85c500d64934c26d585f4812c2dbf439bee",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q15.png": "aac1309b57636a8a4e91dc5c340be950a631472a6ccb05cf33be11958935ee8c",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16-solution.svg": "64dc3850b8404a9027f855f55c30c265ea1ffeb1cb6bbac7c6731831e9f681f1",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q16.png": "83f3b56f95c93c6cd46959df7f41b45c9ab596041b65910455e8141f2a410e03",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17-solution.svg": "9de6172a26838d426befae980be8d430f9a8c093c7d341ec624a28033dbf8551",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q17.png": "1086ead904660df1e285ceab49f37d0e884a2a71c8b6710c0670c2f67f2d45cd",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18-solution.svg": "c71b8f0d5faa45da6fb7632032eb85b5009f57306d71d965b29839490756b7db",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q18.png": "ff04132f96e6348474a478d44f2e5f9b2e18e1dcd05da8c31b17fa3b6bea3fd7",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19-solution.svg": "4a3078645a05d7e66d803e57c0538466f291bf6b687300b5d9faccfb23aa3af2",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q19.png": "55c2e878731fd9e63b6bdee6a3b3dea05a08f7d53b28b31d325a97341bb9c9b9",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22-solution.svg": "d06b1db8c058d84ad3e22f4b98cbc21e120e192d75faf9d02a08f359cc05cc5a",
+    "assets/images/22_금당고_2학기_중간_고2_기하_기출/q22.png": "1157dec808387d25de657c22fb64295e180638e41b59f967fabfceb86e522068"
+  },
+  "sourceContext": {
+    "examYear": 2022,
+    "sourceCurriculumContext": "2015-revision high-school grade-2 Geometry source context for a 2022 exam; preserved as historical source context.",
+    "currentNormalizedTaxonomy": "2022 RPM Primary v1.0 HIGH Geometry",
+    "taxonomyProjectionEvidence": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json; source historical curriculum and current normalized taxonomy remain separate."
+  }
+}

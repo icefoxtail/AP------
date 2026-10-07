@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "R1_FRESH_IMPACTED_SCOPE_INDEPENDENT_FREEZE_V1",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+  "stage": "R1_SOURCE_REPAIR_FRESH",
+  "scopeQids": [7, 10, 12],
+  "sourceArtifactRawSha256": "42661de2a301dc1712a7f09261b4240c9a986ec8becadd48633cdf03f12b633e",
+  "studentBundleSha256": "766d78f0ecb3715b5969dfaf9c35403e28097fde70647a613033b0ba3bf4a753",
+  "studentPayloadSha256": {
+    "7": "acb7b3c351b63c2522526f7e5dd29205bac612bccb9b7651e39f9f34f32c67dd",
+    "10": "b63ad989dd2afed4d804f395e3c175a40b4d377d47f36affbadef40574fdaeb5",
+    "12": "00b9032b6ebc15657bf3ec871a8dccd3e2701ac21aa86d7d42d758437f30f7c2"
+  },
+  "openedRequiredAssets": [
+    {
+      "qid": 10,
+      "ref": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q10.png",
+      "sha256": "c85c595d697849811e54b435c916298f64668e3c3c34de0634b0ea0c68ca1367",
+      "visualFact": "Ellipse centered at O with foci marked at x=-4 and x=4; a straight line through right focus F meets ellipse at A and B."
+    }
+  ],
+  "items": [
+    {
+      "qid": 7,
+      "answerChoiceIndexOneBased": 2,
+      "visibleFacts": [
+        "3x^2+4y^2=12 is x^2/4+y^2/3=1, so semimajor axis is 2, semiminor axis sqrt(3), and foci are (±1,0).",
+        "The center is (0,0); axis lengths are 4 and 2sqrt(3).",
+        "For a tangent y=x+k, substitution gives 7x^2+8kx+4k^2-12=0; zero discriminant yields k^2=7, hence both listed tangent lines are correct.",
+        "The sum of distances to the two foci on this ellipse is 2a=4, not 30."
+      ],
+      "independentAnswer": "②",
+      "reasoning": "Choice ② is the only false statement; choices ①, ③, ④, and ⑤ follow from the standard form and tangent discriminant."
+    },
+    {
+      "qid": 10,
+      "answerChoiceIndexOneBased": 2,
+      "visibleFacts": [
+        "The image shows the two foci at F=(4,0), F'=(-4,0), and A,B on the ellipse on a secant through F.",
+        "For the ellipse, AF+AF'=2a and BF+BF'=2a. Since F lies between A and B on the secant, AB=AF+FB.",
+        "Therefore AB+AF'+BF'=4a. The given perimeter 20 gives a=5.",
+        "With focal distance c=4, b^2=a^2-c^2=25-16=9, and positive b gives b=3; thus a+b=8."
+      ],
+      "independentAnswer": "②",
+      "reasoning": "The requested sum is 5+3=8."
+    },
+    {
+      "qid": 12,
+      "answerChoiceIndexOneBased": 4,
+      "visibleFacts": [
+        "The ellipse x^2/36+y^2/11=1 has focal distance c=sqrt(36-11)=5.",
+        "The shared foci force a^2+9=25 for the hyperbola, hence a^2=16.",
+        "On the ellipse, PF+PF'=2*6=12. On the hyperbola, |PF-PF'|=2a=8.",
+        "Thus |PF^2-PF'^2|=|PF-PF'|(PF+PF')=8*12=96; subtracting a^2=16 gives 80."
+      ],
+      "independentAnswer": "④",
+      "reasoning": "The requested expression evaluates to 80."
+    }
+  ],
+  "freezeOrder": "Independent solutions and choice indices recorded before postfreeze stored-answer extraction; no stored answer, solution, upstream verdict, or hold rationale was seen before this file was written."
+}
