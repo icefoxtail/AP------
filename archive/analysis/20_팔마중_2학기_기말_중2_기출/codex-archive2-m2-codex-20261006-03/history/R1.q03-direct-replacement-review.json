@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "ARCHIVE_R1_Q03_DIRECT_REPLACEMENT_REVIEW_V1",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "qid": 3,
+  "scope": "Q03_ONLY",
+  "candidate": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/20_팔마중_2학기_기말_중2_기출.js",
+    "rawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+    "gitBlobSha": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e"
+  },
+  "independentFreeze": {
+    "ref": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R1.q03-independent-freeze.json",
+    "freezeSha256": "3391de9d0e2401febbbe895c6ce4e27ff5bced23ac536a7d63b8d898678b8e06",
+    "studentProjectionSha256": "29dd1a4ae3e4e4d209264ce2c7ce03aa1b90d2b1bd35522582d643850cb9c86a",
+    "diagramSha256": "b20fcbed107699e188389cf4a531ad323c5138777783cec9758368375636429a",
+    "independentAnswer": "⑤",
+    "storedAnswer": "⑤",
+    "compareResult": "MATCH",
+    "uniqueAnswerCardinality": {
+      "choiceTruth": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "uniqueIncorrectChoice": "⑤",
+      "count": 1
+    },
+    "solutionOnlyCorrectionAfterFreeze": true,
+    "studentProjectionUnchanged": true
+  },
+  "sourceFidelity": {
+    "replacementScope": "QUESTION_ONLY",
+    "recoveryType": "QUESTION_REPLACEMENT",
+    "method": "CODEX_DIRECT_AUTHORING",
+    "replacedQid": 3,
+    "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+    "originalSource": {
+      "pdfSha256": "057a383fb6210d6b0886f2fac19763ced521941d3c9665fafcb955be47fa7f50",
+      "page": 1,
+      "originalProblemImageSha256": "b7c75e666257f24968dd27272a66c0d4c678144c9522f51521d1a2e1db6d118a"
+    },
+    "replacementQuestionUid": "20_팔마중_2학기_기말_중2_기출:q03:replacement1",
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "sharedEducationalRole": "M2 triangle similarity; five-choice select-the-incorrect-statement response; corresponding-side ratio reasoning; medium short-step burden.",
+    "independentRationale": "Original diagram gives BC=5, DE=2, EF=3 and included angle 50°, but choice AC=4 depends on an angle-derived third side with no M2-reproducible method; replacement keeps the similarity/response role and supplies deterministic corresponding lengths."
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "verdict": "PASS",
+      "basis": "One concise prompt states the diagram context and asks for the incorrect statement; five choices are separate parallel statements; no extra condition/question boundary is merged; image reference resolves."
+    },
+    "SOLUTION_LAYOUT": {
+      "verdict": "PASS_AFTER_MINIMUM_REPAIR",
+      "beforeFinding": "Compression of ratio and substitution/arithmetic steps; prior solution did not explicitly confirm choice ④.",
+      "afterBasis": "Ratio substitution and simplification occupy separate rows; AB and AC each show correspondence, scale substitution, and result on separate rows; AB:DE is explicitly evaluated; AB:DF is evaluated and compared before the conclusion.",
+      "solutionSha256": "1eacecd917ac90c07836699eb78b4016576c9403a07fe0a7ac8b9eed78c63137"
+    },
+    "META": {
+      "verdict": "PASS_FRESH_REPLACEMENT_META",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "standardUnit": "도형의 닮음",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "rpmL3": "닮음의 활용",
+      "rpmL4": "길이",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "projectionStatus": "PROJECTION_REUSE"
+    },
+    "VISUAL_SVG": {
+      "verdict": "PASS",
+      "visualNeed": "Problem diagram is essential; no separate solution SVG is needed for the ratio derivation.",
+      "artifactRef": "assets/images/20_팔마중_2학기_기말_중2_기출/q03.png",
+      "artifactSha256": "b20fcbed107699e188389cf4a531ad323c5138777783cec9758368375636429a",
+      "topologyAndLabels": "Two triangles ABC and DEF are shown with vertex order ABC~DEF; labels BC=15, EF=10, DE=6, DF=8 attach to the corresponding sides and are legible; derived AB=9 and AC=12 are not preprinted."
+    }
+  },
+  "correction": {
+    "priorCandidateRawSha256": "752354c0c0496c486909c188010401e4b443b0753413f53a578788b0f8eab3dc",
+    "preflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R1.q03-solution-correction-preflight.json",
+    "preflightStatus": "PASS",
+    "failedAttemptRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R1.failed-attempt-q03-solution-layout.json",
+    "changedQidsVsPreReplacementBaseline": [
+      3
+    ],
+    "requiredDownstreamReview": "R3 targeted q03 solution/answer/diagram dependency"
+  },
+  "priorUnchangedR1Qids": {
+    "validity": "VALID_TRANSFER",
+    "unchangedQidCount": 23,
+    "changedQidsVsPreReplacementBaseline": [
+      3
+    ],
+    "priorEvidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R1.evidence.json",
+    "priorNonQ03Verdicts": {
+      "PASS": 19,
+      "PASS_AFTER_REPAIR": 4
+    },
+    "note": "Prior q03 HOLD/freeze is invalid for the replacement; the other 23 qid objects are byte-semantically identical to the immediate pre-replacement attempt-15 candidate.",
+    "lastWholeExamValidation": {
+      "ref": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R1.validation-final.json",
+      "disposition": "FAIL",
+      "issuesOnlyForQid": 3,
+      "nonQ03RowsRemainIndividuallyValid": true,
+      "wholeExamClosureClaimed": false
+    }
+  },
+  "evidenceSha256": "c69ab7eaf3ed25e54b17982a4fc8b70d747864a02ae3092d2e5a7fad4704458e"
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "blindDecisionFrozenBeforeCompare": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "INDEPENDENT_REVIEW",
+  "calibrationOrder": "assignment -> 3 fixed H1 Golden artifacts/representative solutions/SVGs -> approved negative README/frozen failure SVGs -> postfreeze target compare/repair",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "qualityCompareCount": "22/22",
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "representativeQuestions": [
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "observation": "Solution traces center through standard form, each translation/reflection, then final equation; SVG shows successive centers and final circle. Keep calculations as separate board steps and map every visual mark to the named center."
+        },
+        {
+          "qid": 8,
+          "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+          "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+          "observation": "Solution separates original-line sign facts, coefficient relations, and new-line intercept/slope. SVG groups those dependencies in an ordered diagram and gives the excluded quadrant as a distinct conclusion."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "representativeQuestions": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "observation": "Solution derives both line slopes before applying perpendicularity and isolates k in its own calculation. SVG presents the two lines on axes; labels and geometric relationships should agree with the actual plotted primitives."
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+          "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+          "observation": "Solution completes square then compares canonical form field-by-field. SVG labels center and radius at their geometric owners and displays the standard-form equation."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "representativeQuestions": [
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+          "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+          "observation": "Solution uses inclusion-exclusion to establish the least possible overlap, then verifies attainability with disjoint region counts. SVG assigns each region its own count and explains the minimizing choice."
+        },
+        {
+          "qid": 11,
+          "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+          "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q11-solution.svg",
+          "visualSha256": "40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134",
+          "observation": "Solution keeps x- and y-coordinate constraints separate, derives both sums, then forms the centroid and final scalar. SVG places A and O on the plotted coordinates and preserves that sequence."
+        }
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Read all four cross-axis false-PASS families: inspect SVG coordinates/topology, physical solution blocks, exact Meta mapping before null, and runtime strings after JS evaluation."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "sha256": "93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+      "gitBlobSha": "bfc5672371832703aa8b13a60123ccda296653bf",
+      "observation": "Actual line primitive misses the labeled points despite the stated slope/intercept; text labels alone do not establish parity."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "sha256": "d053c5a22193029c675069fe6aa22e1014f96bb3821788f1095180c350681a41",
+      "gitBlobSha": "0d504b51ea948cd77886d7772fa256d057cd17eb",
+      "observation": "The claimed tangent line does not match the actual plotted circle/point geometry; verify the mathematical primitives."
+    }
+  ],
+  "visualInspectionNote": "SVGs were opened as converted local raster views; ImageMagick reported missing STIX/Cambria fonts and substituted Sans in some labels. Structural positions/geometry were inspected; raster font fallback is not asserted as an engine-render finding. Jeil q18 known visual exception was excluded from calibration models. Golden examples set presentation quality only; middle-school curriculum/method authority remains current M3 canon.",
+  "completedAtUtc": "2026-10-07T06:55:00Z"
+}

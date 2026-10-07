@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_QID_ROW_v1",
+  "stage": "R1_CORRECTION_REVIEW",
+  "examUid": "20_향림중_2학기_기말_중2_기출",
+  "qid": 22,
+  "finalArtifact": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/20_향림중_2학기_기말_중2_기출.js",
+    "rawSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+    "gitBlobSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89"
+  },
+  "preservedEvidence": {
+    "cleanAnswerFreeze": {
+      "path": "R1.q22-replacement.clean-answer-freeze.json",
+      "sha256": "4fc6d4c3a011be6f6d0ea31817559fb5fdea770843557141855b3134aa0477b7",
+      "unchanged": true
+    },
+    "originalFailingFourAxisReport": {
+      "path": "R1.q22-replacement.clean-review.json",
+      "sha256": "372dffc21d2c8963ad6ca612cc4525ee597c03d86478b535ca8138f5b1eed905",
+      "unchanged": true
+    },
+    "postFailureCorrectionPreflight": {
+      "path": "R1.q22-replacement.correction-preflight.json",
+      "sha256": "b37189b654cc15632134b7033a1b7f7304ec23c2ba7dc15067041a287a205909",
+      "sampleReadBeforeEdit": true,
+      "retroactiveClaim": false
+    }
+  },
+  "changedQ22Fields": [
+    "solution",
+    "decisiveStep",
+    "projectionStatus",
+    "projectionReasonCode",
+    "removed metaNullReason"
+  ],
+  "unchangedQ22Dependencies": {
+    "content": true,
+    "choices": true,
+    "questionType": true,
+    "layoutTag": true,
+    "problemImageRef": true,
+    "problemImageAssetSha256": "bedb2645fa60eb54ffd7aa8347dc1c0e395929a12d5b999fb0f6a410bdba38f0",
+    "answer": true
+  },
+  "independentFreezeAndAnswerCompare": {
+    "independentAnswer": "(1) 17 cm; (2) r = 3 cm",
+    "currentStoredAnswer": "(1) $17\\text{ cm}$  (2) $3\\text{ cm}$",
+    "comparison": "MATCH",
+    "parts": 2
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "status": "PASS",
+      "disposition": "LAYOUT_KEEP",
+      "evidence": {
+        "studentBundleCurrentSourceParity": "PASS",
+        "contentExactParityWithAuthorizedCurrentReplacementDesign": "PASS",
+        "choicesExactParityWithAuthorizedCurrentReplacementDesign": "PASS",
+        "semanticStructure": "Main geometry and measurements form the stem; two independently numbered requested processes are on separate lines; no formula or condition is split; current grid is AUTO_FIRST and appropriate for two written parts plus one in-line diagram.",
+        "sourceMode": "ALIVE_REPLACEMENT",
+        "contentSha256": "81e668735722eb42a542f64c526f4afe524d2dabf2e64a3b4cd622ec25459bc2",
+        "choicesCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "carriedFromUnchangedPriorAxisHash": "9b0503dfcb9813f00bf0d3cd1a8653eb26d560e75a66d1f8a3778eee179bb562",
+      "evidenceHash": "706ed801f54f075f26e14439db42a261d0ab0e2289ecd8f8ff93f5ee0b58032d"
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "PASS",
+      "evidence": {
+        "solutionSha256": "74ca80661cf95df96319d1fb65d84eda1e7bd2e7afdf9a75387e6ddcebe54ec1",
+        "malformedSuperscript": "CLEARED; BC, AB, and AC squared-length terms are correctly written with ^{2}.",
+        "lineStructure": [
+          "Pythagorean setup",
+          "side-length substitution",
+          "225+64 intermediate",
+          "289 result",
+          "BC=17 conclusion",
+          "right-triangle area 60",
+          "incircle equal perpendicular-distance fact",
+          "sum of three triangle areas",
+          "side/radius substitution",
+          "factor simplification",
+          "60=20r substitution",
+          "r=60/20",
+          "r=3 cm conclusion"
+        ],
+        "independentMathematicalCheck": "BC^2=15^2+8^2=289 gives BC=17. [ABC]=60 and [ABC]=1/2*r*(15+17+8)=20r give r=3. Both match the frozen answer and two requested parts.",
+        "qualityCompareCount": "1/1 q22 correction locus",
+        "calibrationRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.correction-preflight.json",
+        "calibrationSha256": "b37189b654cc15632134b7033a1b7f7304ec23c2ba7dc15067041a287a205909",
+        "calibrationStatus": "PASS_POST_FAILURE_CORRECTION_REVIEW",
+        "sampleReadBeforeCorrection": true,
+        "targetPriorSolutionWasVisibleInEarlierFailedAttempt": true,
+        "engineRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      "evidenceHash": "48be7a76ea3c610ef7702a3500b9e0df76edf981c3dcf3325fd427208b1a17ad"
+    },
+    "META": {
+      "status": "PASS",
+      "evidence": {
+        "metaSnapshotSha256": "3e1e2f22cb414dd2ae2517d5c2000e9ca05898f7652a0fe725d20f9a6e23bca1",
+        "replacementCurriculumFit": "중2 수학 / M2-05 도형의 성질 / M2-05-TRIANGLE_PROPERTIES; sequential right-triangle and incenter area-partition reasoning.",
+        "typeTemplate": "PT_TRIANGLE_CENTERS / TPL_TRIANGLE_INCENTER, current exact active binding; projectionStatus=PROJECTION_REUSE and projectionReasonCode=ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE.",
+        "replacementSpecificDecisiveStep": "Updated to current 15-8-17 triangle and r=3 area partition; no prior 13-15-12/area 84/r=21/5 values remain.",
+        "nullReason": "metaNullReason removed because the exact current TPL binding is present.",
+        "difficulty": "difficultyBucket=3, confidence=medium, boundaryFlag=NONE; consistent with two-step middle-level work.",
+        "unchangedRelevantMeta": [
+          "standard course/unit/subunit",
+          "problem/template keys",
+          "cross-concept",
+          "primaryMethod",
+          "difficulty",
+          "RPM path and L3/L4"
+        ]
+      },
+      "evidenceHash": "5c8159a581b15a3a6ab0d78ffb97b43bdec51eec99ff9c6ca39be558f2812e86"
+    },
+    "VISUAL_SVG": {
+      "status": "PASS",
+      "evidence": {
+        "assetRef": "assets/images/20_향림중_2학기_기말_중2_기출/q22.svg",
+        "assetSha256": "bedb2645fa60eb54ffd7aa8347dc1c0e395929a12d5b999fb0f6a410bdba38f0",
+        "renderedPreviewSha256": "ed67a0996775603e0e09b2d850d70eb4552b2f1e2574944a3306b2b37903f300",
+        "actualRender": "ImageMagick SVG rasterization; visually inspected current q22 replacement.",
+        "geometry": "Right angle at A; legs labeled 15 cm and 8 cm in 15:8 proportion; BC is not given; I is inside and centered correctly; circle is tangent to all three sides; radius marker r points along a perpendicular radius. At 12 px/cm the 36 px incircle matches the derived r=3 cm.",
+        "need": "Problem visual is necessary to identify the referenced configuration. A separate solution SVG is not necessary because the area partition is communicated by the written derivation.",
+        "targetEngineRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      "carriedFromUnchangedPriorAxisHash": "f2079dfe0082ed8748c6a58a712c49dc96bcb382cd9e07ef39275b9ce9cc3993",
+      "evidenceHash": "d7a6d623a92684b6d46a4c94ad2c05f329a11c8125a5df7a2ff39f9a43ab7e91"
+    }
+  },
+  "r1Row": {
+    "examUid": "20_향림중_2학기_기말_중2_기출",
+    "qid": 22,
+    "artifactBinding": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/20_향림중_2학기_기말_중2_기출.js",
+      "rawSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+      "gitBlobSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89"
+    },
+    "studentInputSha256": "6ea41b84f65d2938e7db05f7461c1667f8491e0d33a2df61367cf88c82130832",
+    "studentBodyContentSha256": "81e668735722eb42a542f64c526f4afe524d2dabf2e64a3b4cd622ec25459bc2",
+    "answerFreezeRef": "R1.q22-replacement.clean-answer-freeze.json",
+    "answerFreezeSha256": "4fc6d4c3a011be6f6d0ea31817559fb5fdea770843557141855b3134aa0477b7",
+    "independentAnswer": "(1) 17 cm; (2) r = 3 cm",
+    "storedAnswerComparison": "MATCH",
+    "fourAxisStatus": {
+      "QUESTION_LAYOUT": "PASS",
+      "SOLUTION_LAYOUT": "PASS",
+      "META": "PASS",
+      "VISUAL_SVG": "PASS"
+    },
+    "fourAxisEvidenceHashes": {
+      "QUESTION_LAYOUT": "706ed801f54f075f26e14439db42a261d0ab0e2289ecd8f8ff93f5ee0b58032d",
+      "SOLUTION_LAYOUT": "48be7a76ea3c610ef7702a3500b9e0df76edf981c3dcf3325fd427208b1a17ad",
+      "META": "5c8159a581b15a3a6ab0d78ffb97b43bdec51eec99ff9c6ca39be558f2812e86",
+      "VISUAL_SVG": "d7a6d623a92684b6d46a4c94ad2c05f329a11c8125a5df7a2ff39f9a43ab7e91"
+    },
+    "targetedR1Status": "PASS_QID22_ONLY"
+  },
+  "scopeDisposition": {
+    "q22": "PASS_TARGETED_ROW_BOUND_TO_FINAL_ARTIFACT",
+    "otherQidsReviewed": false,
+    "otherQidsTransferred": false,
+    "wholeExamValidator": "NOT_RUN_PER_INSTRUCTION",
+    "examLevelR1Status": "NOT_CLAIMED"
+  },
+  "finalArtifactSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+  "finalArtifactGitBlobSha1": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89"
+}

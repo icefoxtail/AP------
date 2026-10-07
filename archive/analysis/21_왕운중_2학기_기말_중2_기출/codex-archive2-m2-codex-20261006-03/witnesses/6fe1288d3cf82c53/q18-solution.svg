@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">삼각형 ABC와 DAC의 닮음 및 선분 BD</title>
+  <desc id="desc">D는 BC 위에 있다. 주어진 각의 크기가 같아 삼각형 ABC와 DAC가 닮음이다. AC는 9센티미터, CD는 6센티미터이며, 대응변 비로 BC를 구한 뒤 BD를 계산한다.</desc>
+  <rect width="960" height="430" fill="#ffffff"/>
+  <g font-family="sans-serif" fill="#17212b">
+    <text x="42" y="42" font-size="22" font-weight="700">∠ABD = ∠CAD</text>
+    <text x="42" y="72" font-size="17">D가 BC 위에 있으므로 △ABC ∼ △DAC</text>
+  </g>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <polygon points="70,340 238,196 430,340" fill="#4d91c8" fill-opacity="0.10" stroke="#286c9f" stroke-width="4"/>
+    <polygon points="238,196 270,340 430,340" fill="#e6a34c" fill-opacity="0.16" stroke="#c47b20" stroke-width="3"/>
+    <line x1="70" y1="340" x2="430" y2="340" stroke="#263746" stroke-width="4"/>
+    <line x1="238" y1="196" x2="270" y2="340" stroke="#c47b20" stroke-width="3"/>
+    <path d="M 96 340 A 26 26 0 0 0 89.7 323.1" fill="none" stroke="#8f3d72" stroke-width="3"/>
+    <path d="M 258.8 211.6 A 26 26 0 0 1 243.6 221.4" fill="none" stroke="#8f3d72" stroke-width="3"/>
+  </g>
+  <g fill="#17212b" stroke="#ffffff" stroke-width="2">
+    <circle cx="70" cy="340" r="5"/><circle cx="238" cy="196" r="5"/><circle cx="270" cy="340" r="5"/><circle cx="430" cy="340" r="5"/>
+  </g>
+  <g font-family="sans-serif" font-size="20" font-weight="600" fill="#17212b">
+    <text x="57" y="369">B</text><text x="229" y="184">A</text><text x="263" y="369">D</text><text x="427" y="369">C</text>
+    <text x="330" y="255" transform="rotate(36.87 330 255)">AC = 9 cm</text>
+    <text x="330" y="407">CD = 6 cm</text>
+    <text x="139" y="407">BD = ?</text>
+  </g>
+  <line x1="490" y1="30" x2="490" y2="400" stroke="#d8e0e8" stroke-width="2"/>
+  <g font-family="sans-serif" fill="#17212b">
+    <text x="526" y="72" font-size="21" font-weight="700">대응변의 비</text>
+    <text x="526" y="116" font-size="22">AC : DC = BC : AC</text>
+    <text x="526" y="158" font-size="22">9 : 6 = BC : 9</text>
+    <text x="526" y="200" font-size="22" font-weight="600">BC = 27/2 cm</text>
+    <line x1="526" y1="225" x2="900" y2="225" stroke="#d8e0e8" stroke-width="2"/>
+    <text x="526" y="270" font-size="21" font-weight="700">D가 B와 C 사이에 있으므로</text>
+    <text x="526" y="314" font-size="22">BD = BC − CD</text>
+    <text x="526" y="356" font-size="22" font-weight="600">= 27/2 − 6 = 15/2 cm</text>
+  </g>
+</svg>

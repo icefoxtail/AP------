@@ -1,0 +1,1985 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_향림중_2학기_기말_중2_기출",
+  "artifactSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+  "artifactBinding": {
+    "relativePath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/20_향림중_2학기_기말_중2_기출.js",
+    "fileSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+    "gitBlobSha1": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+    "createArtifactBlobSha1": "bb05af6e73301bc87003c07dffa8bccda7a8a11d"
+  },
+  "studentInput": {
+    "bundlePath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.final-student-bundle.q22-replacement.json",
+    "bundleSha256": "4cad241495a4193451695a5f7040e0f4ddd047e5cef9ad7d49142606f6553ed4",
+    "finalSourceParityPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.final-student-source-parity.q22-replacement.json",
+    "finalStudentSourceParity": true,
+    "allReferencedVisualsOpened": true,
+    "referencedVisualCount": 20
+  },
+  "answerFreeze": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.answer-freeze.json",
+    "sha256": "a2fd783ae3bb8cde3393eb670f0874c645562534286769735352ea1ab1da4825",
+    "qidCount": 24,
+    "freezeBeforeStoredAnswer": true,
+    "postFreezeAdjudications": [
+      24
+    ],
+    "q22ReplacementFreezeRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.clean-answer-freeze.json",
+    "q22ReplacementFreezeSha256": "4fc6d4c3a011be6f6d0ea31817559fb5fdea770843557141855b3134aa0477b7",
+    "supersededHistoricalQid": [
+      22
+    ],
+    "note": "Original q22 hold/freeze preserved as historical evidence; q22 is replaced under authorized ITEM_RECOVERY and has its own fresh pre-comparison freeze."
+  },
+  "sourceReview": {
+    "status": "PASS_AFTER_AUTHORIZED_Q22_ALIVE_REPLACEMENT",
+    "pdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/source/2020_향림중2_수학_2기말.pdf",
+    "pdfSha256": "416e00dd6f12cf12b5bc1f41285fee1a3156420b6f7620c684a38303c671b0c7",
+    "q22OriginalPdfPage": 4,
+    "officialAnswerMaterial": "NOT_FOUND_IN_ASSIGNED_SOURCE_BUNDLE",
+    "examQuestionCount": 24,
+    "q22ReplacementIntegrityRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.transfer-integrity.json",
+    "q22HistoricalSourceHoldRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT06.FAIL.json",
+    "q22HistoricalHoldSuperseded": true
+  },
+  "calibrationOrder": {
+    "attempt01": "FAIL_ORDER_PRESERVED",
+    "attempt01Path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.ATTEMPT01.FAIL.json",
+    "attempt02": "CALIBRATION_PREFLIGHT_PASS_THEN_24_QID_SOLUTION_CORRECTION_REVIEW",
+    "preflightPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.solution-preflight.json",
+    "preflightStatus": "PASS"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Actual intermediate arithmetic and theorem-to-expression link are visible, with the final value separated."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Read the separate substitutions and calculations; verify the conclusion follows from the shown values without skipped decisive steps."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Opened q7 solution and rendered its SVG. Checked initial center (-3,1), translated center (-5,2), origin-symmetric final center (5,-2), and unchanged radius 3 against the three circle positions. ImageMagick fell back on Korean/math fonts in the note panel; coordinate topology and circle placement remain visible.",
+            "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/provenance/golden-visual-review/golden-maesan-q7.png",
+            "visualObservedRenderSha256": "a3780ce014c402033cfc11256292b2d899f6e1f65445ce0d009d0f240c847b95"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Actual intermediate arithmetic and theorem-to-expression link are visible, with the final value separated."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read the separate substitutions and calculations; verify the conclusion follows from the shown values without skipped decisive steps. Actual SVG render checked: the negative-slope and positive-slope lines are perpendicular for the displayed k=6. ImageMagick font fallback garbles Korean panel glyphs, but line topology and k=6 are visible.",
+            "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/provenance/golden-visual-review/golden-hyocheon-q2.png",
+            "visualObservedRenderSha256": "54b7149d822701b355597f05829610d7ec36224347b8c033886f726fdf6deb27"
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+            "observation": "Opened q6 solution and rendered its SVG. Checked the two valid parameter examples k=-1 and k=9, equal r²=9/4 circles, and the open exclusion interval 0<k<8 on the number line. ImageMagick fell back on Korean/math fonts in labels; circle and interval topology are visible.",
+            "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+            "visualSha256": "70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+            "visualObservedRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/provenance/golden-visual-review/golden-hyocheon-q6.png",
+            "visualObservedRenderSha256": "fbdfe149f5216f6a18dd0d18f30468a2be1a32914fe46c3ee710b6ee4b10d544"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read actual false-PASS regression README and applied coordinate/topology validation, actual block separation, exact Meta null handling, and runtime-escape review."
+    }
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다.\n따라서\n$P=(1,6)$이다.\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\right)$\n$=\\left(\\dfrac62,\\dfrac{16}2\\right)$\n$=(3,8)$이다.\n마지막으로 두 점 $P(1,6)$, $M(3,8)$ 사이의 거리를 구한다.\n두 점 사이의 거리 공식에 $x$좌표의 차와 $y$좌표의 차를 넣으면\n$PM=\\sqrt{(3-1)^2+(8-6)^2}$\n$=\\sqrt{2^2+2^2}$\n$=\\sqrt{4+4}$\n$=\\sqrt8$\n$=\\sqrt{4\\cdot2}=2\\sqrt2$이다.\n\n따라서 정답은 ④이다.",
+        "observation": "Actual intermediate arithmetic and theorem-to-expression link are visible, with the final value separated."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$, $y=-2$를 대입하면\n$-2=-3\\cdot1+n$\n$-2=-3+n$이다.\n양변에 $3$을 더하면\n$n=-2+3=1$이다.\n따라서\n$m+n=-3+1=-2$이다.\n\n그러므로 정답은 ①이다.",
+        "observation": "Read the separate substitutions and calculations; verify the conclusion follows from the shown values without skipped decisive steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+        "observation": "Actual intermediate arithmetic and theorem-to-expression link are visible, with the final value separated."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+        "observation": "Read the separate substitutions and calculations; verify the conclusion follows from the shown values without skipped decisive steps."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read actual false-PASS regression README and applied coordinate/topology validation, actual block separation, exact Meta null handling, and runtime-escape review."
+      }
+    ],
+    "qualityCompareCount": "24/24",
+    "orderRecovery": {
+      "preservedFailedAttempt": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.ATTEMPT01.FAIL.json",
+      "correctionReviewScope": "24 solution quality loci re-reviewed after sample preflight; q14/q23 solution changes directly rechecked; no new answer freeze."
+    }
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceOrdinal": 1,
+      "sourceIdentity": {
+        "contentSha256": "80d6410c864ae4b4480160f96373de371d4c70028558b9c81a3781ec31e6776a",
+        "choicesSha256": "1db0408d7e2fb9828ef707c8645bd9d85ab464caad01b88bb79bf7763cbf6384",
+        "imageRefSha256": "78d400c136fd8bbf01161c86e7bd6cbb8d6c832f0bb06d0c7abcb21ef9b4cf92",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "④",
+      "preCompareFrozenAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "짧은 접선길이 문제: 자료 도입과 최종 질문을 한 문장 단위로 읽을 수 있음.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "접선 등식→DB 계산→BE/CF 대입→합을 줄 단위로 구분.",
+          "solutionSha256": "2380d7d170f2106a4bbdacf3fde22db56b2c1758cdc4aa35c65c0c7bfe1480c7",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-TRIANGLE_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "problemTypeKey": "PT_TRIANGLE_CENTERS",
+            "templateKey": "TPL_TRIANGLE_INCENTER",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "내심",
+            "rpmL4": "내심과 거리",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q01 PNG를 열어 내접원 접점과 AB/AF/CE 길이 표기를 확인; 학생풀이의 접선 귀속과 맞음.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q01.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2380d7d170f2106a4bbdacf3fde22db56b2c1758cdc4aa35c65c0c7bfe1480c7",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 2,
+      "sourceOrdinal": 2,
+      "sourceIdentity": {
+        "contentSha256": "426faa8fdbd350f61116276180db485136ebcb1d342467549f0c4a2680418932",
+        "choicesSha256": "3cc51bf2207f493c2bbaaa413e75ce1408c44d48c241d118e443e86277941b29",
+        "imageRefSha256": "5ed50f8c60d913dc4c1b6884815b757c4ced27e468b038d3ac1305d3d4693837",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "①",
+      "preCompareFrozenAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "두 조건과 질문이 간결하며 각 조건은 식 내부에 결속됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "각 이등분, 삼각형 내각합, 마지막 이등분을 별도 식으로 전개.",
+          "solutionSha256": "58b36fd6bb1012cb48ecf9c3ab63700cfb1ba145e03caeea7fde2a5a4c356fa2",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-TRIANGLE_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "problemTypeKey": "PT_TRIANGLE_CENTERS",
+            "templateKey": "TPL_TRIANGLE_INCENTER",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "내심",
+            "rpmL4": "각의 이등분선과 내심",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q02 PNG에서 내심 각이등분선과 35°/70° 조건을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q02.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "58b36fd6bb1012cb48ecf9c3ab63700cfb1ba145e03caeea7fde2a5a4c356fa2",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 3,
+      "sourceOrdinal": 3,
+      "sourceIdentity": {
+        "contentSha256": "c5d3c43ea5110b08ba32755443bbfd77b77bb8ee6061932e7473ef085122179c",
+        "choicesSha256": "1fea3a2d8222034f3611b07f9b45115977cd8fb2b3447b1025f8e09a8a9f9dce",
+        "imageRefSha256": "406cbc1e25cc9a8f7e631e38ab6486bca60fc51851acd2c2dba2fea9f1c8c8c4",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "②",
+      "preCompareFrozenAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "사각형 정의와 괄호 조건, 옳지 않은 선택 질문의 의미 경계가 유지됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "보기별 판정 블록과 계산 근거가 분리됨.",
+          "solutionSha256": "50bfacb844042d0217d83da34d4a304bb59969b4b2fbde64d108416e3a03edfd",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "평행사변형의 판정",
+            "rpmL4": "대각선 조건",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q03 PNG의 사각형·대각선 교점 O 확인; 보기 판정에 필요한 도형 구조가 보임.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q03.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "50bfacb844042d0217d83da34d4a304bb59969b4b2fbde64d108416e3a03edfd",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 4,
+      "sourceOrdinal": 4,
+      "sourceIdentity": {
+        "contentSha256": "6c8e57bc75b4f72e67e5c64cc9f2e02643a67c43fd9c60f255f8de28e940c546",
+        "choicesSha256": "9b9e3a3e3f2284916dd06188e6fd23b9efffb57f8ea0715cc773163438ac52b6",
+        "imageRefSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "①",
+      "preCompareFrozenAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "한 문장 완결형 질문; 별도 조건 전환 없음.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "마름모 대각선 성질에서 네 각이 직각임을 보이고 결론을 구분.",
+          "solutionSha256": "40224ed84ea8064d80f66500b5021fcdbc9c1da3e3ddf70c9194d492bc9e021b",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "사각형의 포함 관계",
+            "rpmL4": "조건으로 사각형 판정",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "참조 그림/표/SVG 없음; 정사각형 판별은 텍스트만으로 충분하고 추가 SVG 불필요.",
+          "sourceImageRef": null,
+          "sourceImageReviewed": false,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "40224ed84ea8064d80f66500b5021fcdbc9c1da3e3ddf70c9194d492bc9e021b",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 5,
+      "sourceOrdinal": 5,
+      "sourceIdentity": {
+        "contentSha256": "aee3004802b2a9cc9386ffdf09a894cf693ec0964cf9bcf664b424b31668d6bb",
+        "choicesSha256": "e886b1135b6d717be479ad5e16014cae4fa925815275948b09dc13e2782b8298",
+        "imageRefSha256": "663c817dac363935439eb555c205aefa0dd1d53e1d1094ab993a07e0553132c9",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "④",
+      "preCompareFrozenAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "직사각형·각·O 정의와 질문을 수식 단위로 유지함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "맞꼭지각→이등변삼각형→직각 보각→차 계산 단계가 분리됨.",
+          "solutionSha256": "9c01a72cfb0d97b68a3002c063b3e974882ec2db669e7c04ad20d6891d0dc879",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "직사각형·마름모·정사각형",
+            "rpmL4": "특수 사각형의 대각선 성질",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q05 PNG에서 직사각형 대각선 교점, x/y, 100° 위치 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q05.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9c01a72cfb0d97b68a3002c063b3e974882ec2db669e7c04ad20d6891d0dc879",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 6,
+      "sourceOrdinal": 6,
+      "sourceIdentity": {
+        "contentSha256": "9dc1079945d71f44d328b554fbf2dbbe805cc56c1c1f84a130ad4b53e756b3ce",
+        "choicesSha256": "d0dbb3f5d5f1faa440d04dbef85502cd1eebcc95007daa6a393683c45fab7737",
+        "imageRefSha256": "e207403b5c5da340933028fcf6aeec84f5efbd863b4bb8992b6e8ffca92bcae5",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "③",
+      "preCompareFrozenAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "구성 조건이 순서대로 제시되고 넓이 질문이 마지막에 구분됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "중점/닮음→넓이 관계→수치 대입 순서가 보임.",
+          "solutionSha256": "ecce62301ad4fc1518c345a5d8a286bcc354471994dec4002de6d334e938e235",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "넓이와 활용",
+            "rpmL4": "평행선과 넓이",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q06 PNG의 E 중점표시와 EF∥AC 화살표를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q06.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ecce62301ad4fc1518c345a5d8a286bcc354471994dec4002de6d334e938e235",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 7,
+      "sourceOrdinal": 7,
+      "sourceIdentity": {
+        "contentSha256": "9ca83006d110518d7964e5efe471184d4ec38a94c91c0c44ee8a251ece8da3db",
+        "choicesSha256": "1da35ca8bb317762d9de79d2ab23a6c86b8d3fb800041fdd1c5dea18984e699c",
+        "imageRefSha256": "2ad4df52a490859e6e1ce49675691c6936511f47f6fa4dc833beb1045b9609d2",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "③",
+      "preCompareFrozenAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "직각삼각형 및 수선 조건 다음에 x−y 질문이 명확함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "높이 관계로 y, 피타고라스로 x를 따로 계산하고 차를 결론냄.",
+          "solutionSha256": "4254c06e4a6ad5eff9676ef7c835c3bdaf3d336e88b1f00a2a44189011fbf377",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "삼각형의 닮음",
+            "rpmL4": "AA",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q07 PNG의 D 직각, AD=12, BD=16, AC=15 및 x,y 위치 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q07.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4254c06e4a6ad5eff9676ef7c835c3bdaf3d336e88b1f00a2a44189011fbf377",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 8,
+      "sourceOrdinal": 8,
+      "sourceIdentity": {
+        "contentSha256": "fe6e15d78c445347a435f0c4c1262675b0a701b1105f7d61ea1fe4ba8b400dda",
+        "choicesSha256": "1a5e6d566af9d3ea3b25b2e78a2f4da86b26b3151bd86bd6659966cee608401d",
+        "imageRefSha256": "4e9b98b156c52ebb8b55ff7c366bda62bb35f173cf6db7cb097f02577fea849b",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "④",
+      "preCompareFrozenAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "두 정사각형 넓이 조건을 독립 수식 단위로 둔 뒤 넓이를 묻는 구조임.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "정사각형 넓이에서 변을 복원한 뒤 피타고라스와 넓이 계산을 분리.",
+          "solutionSha256": "dfaec334bcb7206d406883296b11f192ce3e18756a401968ed63c4963ff172d7",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS_WITH_UNMATERIALIZED_PROJECTION",
+          "review": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+            "subUnit": "피타고라스 정리의 활용",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED"
+          },
+          "debtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q08 PNG의 직각표시와 제곱넓이 라벨 225/289를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q08.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "dfaec334bcb7206d406883296b11f192ce3e18756a401968ed63c4963ff172d7",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 9,
+      "sourceOrdinal": 9,
+      "sourceIdentity": {
+        "contentSha256": "30d26e199d54807919f353087a1d2ab37fcc558c84c840f9987978855e8b1cd1",
+        "choicesSha256": "0f4a60613d0c2951b163c8a98cd905deb119a1a4815c56ea66998b37d0916fd8",
+        "imageRefSha256": "214f1edaae68f88e151c60f7a681efafa563563f2a7864ad428d138c778d578b",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "③",
+      "preCompareFrozenAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "평행사변형·각·이등분선 조건과 각의 차 질문이 유지됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "평행사변형 각→삼각형 각→x,y→차 순서가 추적됨.",
+          "solutionSha256": "6aab575e89cf50c60f333423a1832145cf73fdab27978e9f53f0b0b80a97af87",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "평행사변형의 성질",
+            "rpmL4": "변·각의 성질",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q09 PNG의 평행사변형, 각 이등분선, x/y 위치와 직선상 B-C-E 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q09.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6aab575e89cf50c60f333423a1832145cf73fdab27978e9f53f0b0b80a97af87",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 10,
+      "sourceOrdinal": 10,
+      "sourceIdentity": {
+        "contentSha256": "06cbdf493965bca348104fc3e823273eada676c3c566752448a08edc7d955afa",
+        "choicesSha256": "9ac30636670f311a1aa1da3934d3c990b0abd2b885bd12d76f730c3fa52d73c0",
+        "imageRefSha256": "26624341341bce7388ebc5aa75a987e0e34671491b3eff29f60e979c536d1d84",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "⑤",
+      "preCompareFrozenAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "닮음 조건과 옳지 않은 선택 질문이 구분됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "대응점·각·변 비·넓이 비 비교 단계가 독립됨.",
+          "solutionSha256": "9b7bbdef0a347a4bda822301e6d5db6ca0768f9f968c9f3438486b98c0da7ad8",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "닮은 도형",
+            "rpmL4": "닮음비",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q10 PNG의 대응 꼭짓점 순서와 8/12, 9 및 각 표기를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q10.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9b7bbdef0a347a4bda822301e6d5db6ca0768f9f968c9f3438486b98c0da7ad8",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 11,
+      "sourceOrdinal": 11,
+      "sourceIdentity": {
+        "contentSha256": "95a2666c2d4006fef69150cf9254fcd7baf9417cc3847f66355bc2d428bca142",
+        "choicesSha256": "cd142186f29095b0973626df84b27d8e612f619c4df8cdc61482c8182c021b1b",
+        "imageRefSha256": "2cb03663c7fb313af1fbe200f0be3125ff7d7cb8970b1a91f1a5ab8489e8a698",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "④",
+      "preCompareFrozenAnswer": "④",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "CD 길이 질문과 도형 참조가 짧고 완결됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "실제 SVG에 변 길이/수선 발을 표시하고, 식 설정·대입·최종 제곱근이 분리됨.",
+          "solutionSha256": "66b3636ef032a2882c071bbcce245426e0428e2f8eee1c1c52b8114660c2e555",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS_WITH_UNMATERIALIZED_PROJECTION",
+          "review": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+            "subUnit": "피타고라스 정리의 활용",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED"
+          },
+          "debtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q11 PNG의 D 분할 길이와 세 변 조건을 확인; solution inline SVG를 PNG로 실제 렌더해 7,9,8,12 라벨과 수선 발을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q11.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": true,
+          "solutionSvgRenderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/provenance/R1-q11-solution.png",
+          "decision": "EXISTING_SOLUTION_SVG_MATH_AND_RENDER_PASS"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "66b3636ef032a2882c071bbcce245426e0428e2f8eee1c1c52b8114660c2e555",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 12,
+      "sourceOrdinal": 12,
+      "sourceIdentity": {
+        "contentSha256": "a60546865375318c298f2818388775ffa8c37c4937d3f9e07ec96092516fe685",
+        "choicesSha256": "1332e0b6682bf5c0f194b552ca9ec16c83d78ef25f7902bbeccc66e8c6595412",
+        "imageRefSha256": "8cfdc923971de0feeca2f0a7f0b33b29923a180d5f63c089d85fad7687958bf3",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "③",
+      "preCompareFrozenAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "평행 조건과 합을 묻는 질문이 명료함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "닮음비와 두 미지수 결정 및 합 계산이 각각 줄로 보임.",
+          "solutionSha256": "ada9219eeb47ed01246f9497fa7da735567ae4c970b6df3f97e8e6f38a144fb1",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-PARALLEL_LENGTH_RATIO; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "subUnit": "평행선과 선분의 길이의 비",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "비례 활용",
+            "rpmL4": "미지 길이",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q12 PNG에서 DE∥BC, 8/12/6/9, x/y 라벨 귀속을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q12.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ada9219eeb47ed01246f9497fa7da735567ae4c970b6df3f97e8e6f38a144fb1",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 13,
+      "sourceOrdinal": 13,
+      "sourceIdentity": {
+        "contentSha256": "ca897cd6bf1a7ec40e4772816acd8a7cac2effeb60d05c1c048f5dedffcc1a7a",
+        "choicesSha256": "65bdd8ed837beeae5a4cb41aed837497fb03a5a4ff0a9941acbde6c449065020",
+        "imageRefSha256": "7dbb6fc7ec40d39462caef53a90bebc5bed7bcc6b144e8d2b69771a9b8a7f547",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "⑤",
+      "preCompareFrozenAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "중점 정의 다음에 둘레 질문이 분리됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "세 중선 길이 계산과 둘레 합산이 분리됨.",
+          "solutionSha256": "43eda2f8741e3d51f0b65fd85bfbff80292495faf87161aca850e18f40924171",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-PARALLEL_LENGTH_RATIO; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "subUnit": "평행선과 선분의 길이의 비",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "삼각형과 평행선",
+            "rpmL4": "기본 비례",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q13 PNG의 중점 표시와 4/6/8 변 라벨을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q13.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "43eda2f8741e3d51f0b65fd85bfbff80292495faf87161aca850e18f40924171",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 14,
+      "sourceOrdinal": 14,
+      "sourceIdentity": {
+        "contentSha256": "527fcbef3c981492be196e57b6dbc9f880b5ee281aaf2eb5b2c241236590ee63",
+        "choicesSha256": "aef9fae397b6c56322aae496bbf3826aabeedf99fdda1216021270052421cec1",
+        "imageRefSha256": "6beb4db1b05b402eff104aeb5f110c039917e8245b0c7aab00103902a9578f83",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "⑤",
+      "preCompareFrozenAnswer": "⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "세 평행선 조건과 x 질문이 간결함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "비례식→교차곱→나눗셈→x 결론이 줄 단위로 보강됨.",
+          "solutionSha256": "d19252d4b6ac27160efdb4be4f41bbbb00b33d0b513c252fde084362ddcddbef",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-PARALLEL_LENGTH_RATIO; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "subUnit": "평행선과 선분의 길이의 비",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "평행선 사이 선분비",
+            "rpmL4": "여러 평행선",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q14 PNG의 세 평행선 및 27/12, 20/x 분할 위치를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q14.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d19252d4b6ac27160efdb4be4f41bbbb00b33d0b513c252fde084362ddcddbef",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "SOLUTION_LINEBREAK_REPAIR",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 15,
+      "sourceOrdinal": 15,
+      "sourceIdentity": {
+        "contentSha256": "7d823738f592fff150d2420ce08af82d42dca5aba80d03dc1776efa0fe5635ae",
+        "choicesSha256": "eaefe45c4acc6bde3bd37de115a4d1bccbc8f42f8a76f8194a54f94626999fd8",
+        "imageRefSha256": "81659dd8b1873f22ed89aaebe88763394dcf87b3768299eac70ebd2716dea3ff",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "①",
+      "preCompareFrozenAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "중점 조건·전체 넓이 조건 뒤 사각형 넓이를 묻는 구조임.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "넓이비 설정과 값 대입이 구분됨.",
+          "solutionSha256": "26d35e2add40c6be260c8b84c7034777a3a84be41cbb2a1a683f146f7c097bf2",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "넓이와 무게중심",
+            "rpmL4": "넓이 분할",
+            "projectionStatus": "PROJECTION_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q15 PNG의 세 중선과 교점 G, BEGD 영역을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q15.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "26d35e2add40c6be260c8b84c7034777a3a84be41cbb2a1a683f146f7c097bf2",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 16,
+      "sourceOrdinal": 16,
+      "sourceIdentity": {
+        "contentSha256": "16a6a24b7afdbb74acaf4b24e910ae17665df75ca0a661de129501ddd98a594f",
+        "choicesSha256": "57f0679e70fb6474c42cecdc7746226be618e872d8492cd42334bbe5c43fbd2f",
+        "imageRefSha256": "6237d24bfa0cd1cea774ba6f2fbb3502bc66359cf5682c5367499c8b3f7b9f62",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "②",
+      "preCompareFrozenAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "무게중심과 평행 조건 뒤 합을 묻는 구조임.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "중점/중선 성질→BE 길이→BG→AC→합으로 분리됨.",
+          "solutionSha256": "6b94ce1018d7cef6068f38d7e0a67acd5860d892f01d5060925f6bcee972a33d",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "2:1 비",
+            "projectionStatus": "PROJECTION_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q16 PNG에서 G, E/F, DF∥BE, 5와 9의 귀속을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q16.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6b94ce1018d7cef6068f38d7e0a67acd5860d892f01d5060925f6bcee972a33d",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 17,
+      "sourceOrdinal": 17,
+      "sourceIdentity": {
+        "contentSha256": "d7ac615374c47e0551973b33a68954f57be5132e1917974a1f8cd637f8c94ce2",
+        "choicesSha256": "df446e4079ad0472ebffbd6d6b614225b0b0f73aec6fe73276ee99b3f73bed27",
+        "imageRefSha256": "2402b19c01d6951e8bbbdbbf90ae9be6ca6bc390cf5a1d9180e03469df7fe63a",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "②",
+      "preCompareFrozenAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "두 무게중심 정의와 선분 길이 질문이 유지됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "중심에서의 1:3 관계→GG′ 비→수치 대입이 구분됨.",
+          "solutionSha256": "9de2157b47a85a6fe9b8664c2911ab17be26a2095e41e5430a8cae4e8e8418d3",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_COORD_CENTROID",
+            "templateKey": "TPL_CENTROID_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "좌표·길이",
+            "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q17 PNG의 공통 밑변 중점 M, 두 무게중심, AD=12를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q17.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9de2157b47a85a6fe9b8664c2911ab17be26a2095e41e5430a8cae4e8e8418d3",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 18,
+      "sourceOrdinal": 18,
+      "sourceIdentity": {
+        "contentSha256": "c0f24cb94828fa9cf83345a3c96d8c3ee9bd1698bc2c2cf0ba44d393348c98e1",
+        "choicesSha256": "119a6d81cf8b830697ba7ba1e4042113a222c8a082c3619f03f917d8c647f06f",
+        "imageRefSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "①",
+      "preCompareFrozenAnswer": "①",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "카드 범위·배수 합집합 조건과 경우의 수 질문이 간결함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "배수 열거→겹침 확인→합 단계가 분리됨.",
+          "solutionSha256": "0c410847d3a6e88b3e932a9e11a5a8cb985b9492641680abd4ef02fddbc0777d",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS_WITH_UNMATERIALIZED_PROJECTION",
+          "review": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "중복 없이 세기",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED"
+          },
+          "debtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "참조 visual 없음; 유한집합 열거 문제로 추가 SVG 불필요.",
+          "sourceImageRef": null,
+          "sourceImageReviewed": false,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0c410847d3a6e88b3e932a9e11a5a8cb985b9492641680abd4ef02fddbc0777d",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "problemTypeKey, templateKey는 null 유지. RPM semantic FINAL과 표준/세부 단원은 확인; exact safe PT/TPL projection 부재/compatibility projection only 사유를 기록.",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 19,
+      "sourceOrdinal": 19,
+      "sourceIdentity": {
+        "contentSha256": "9b48c83b062d5110973c8ce9fd9c493c1a26e2f0a2dc6711c85591aea04b9100",
+        "choicesSha256": "29af7c548a1b81a597bba815aa2a0ae9fde6b45c3d499d88259aebf54638ea50",
+        "imageRefSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "③",
+      "preCompareFrozenAnswer": "③",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "숫자 카드 선택 조건과 세 자리 자연수 질문이 명료함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "첫 자리 제한→자리별 선택→곱셈 결론이 구분됨.",
+          "solutionSha256": "ef1c0a554f8b6b0d2c5c335b3168fe121680faeb484cfeac3e620833f235fac5",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-08/M2-08-PROBABILITY_COUNTING; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수",
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "projectionStatus": "PROJECTION_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "참조 visual 없음; 숫자 카드 조건은 문장으로 충분하고 추가 SVG 불필요.",
+          "sourceImageRef": null,
+          "sourceImageReviewed": false,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ef1c0a554f8b6b0d2c5c335b3168fe121680faeb484cfeac3e620833f235fac5",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "META_DIRECT_BINDING_REPAIR",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 20,
+      "sourceOrdinal": 20,
+      "sourceIdentity": {
+        "contentSha256": "5293b76700ab54cb9c042ce201cbeac6cefe795b6353c8e4cfd28783a3167705",
+        "choicesSha256": "477da164615113ec634be5cbf403b1de64f202a8ed102751dd803dd9256c891b",
+        "imageRefSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "②",
+      "preCompareFrozenAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "a,b의 서로 다른 선택 정의를 같은 문장 안에서도 식별 가능하게 제시함.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "순서 있는 선출과 순서 없는 선택을 분리한 뒤 a+b를 계산함.",
+          "solutionSha256": "a5503aa1bf7d1fc397cc0bc07661c3f2bd276004fec8c485263bc134428f4f7e",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "META_ONLY_UNRESOLVED",
+          "review": "현재 문항은 순서 있는 임원 선출과 순서 없는 대표 선택을 함께 요구한다. M2-RPM-109/110의 두 서로 다른 L4가 필요해 단일 primary를 임의 고르지 않고 Meta-only unresolved로 기록.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "projectionStatus": "PROJECTION_BINDING_PENDING"
+          },
+          "debtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
+          "reasonCode": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "참조 visual 없음; 서로 다른 선택 정의를 텍스트로 확인하고 추가 SVG 불필요.",
+          "sourceImageRef": null,
+          "sourceImageReviewed": false,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a5503aa1bf7d1fc397cc0bc07661c3f2bd276004fec8c485263bc134428f4f7e",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 문항은 순서 있는 임원 선출과 순서 없는 대표 선택을 함께 요구한다. M2-RPM-109/110의 두 서로 다른 L4가 필요해 단일 primary를 임의 고르지 않고 Meta-only unresolved로 기록.",
+      "verdict": "PASS_WITH_META_ONLY_UNRESOLVED",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 21,
+      "sourceOrdinal": 21,
+      "sourceIdentity": {
+        "contentSha256": "d8e806f4f052a5cc543bc1d66597c74da9b87c2a3fdc026e4608e895f57fe1ae",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefSha256": "d601ebdbe65d77b64582187a3956438871b7d6c03a8e89aa99e7bd3c70d79126",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "서술형",
+      "preCompareFrozenAnswer": "서술형",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $\\angle BCA=\\angle DAC$  (2) $\\triangle ABC\\cong\\triangle CDA$  (3) 대변의 길이가 각각 같다",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "보기·증명 전개와 (1)(2)(3) 빈칸이 줄 경계로 나뉨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "(1)(2)(3) 각 증명 요구를 별도 블록으로 답함.",
+          "solutionSha256": "3b25313a08fb7a351ca7aa062b5e1fdfa4458c1f2c588163703273e10eb40b84",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-05/M2-05-QUADRILATERAL_PROPERTIES; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+            "subUnit": "사각형의 성질",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "평행사변형의 성질",
+            "rpmL4": "변·각의 성질",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q21 PNG에서 AB∥DC, AD∥BC, AC 대각선 표시를 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q21.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3b25313a08fb7a351ca7aa062b5e1fdfa4458c1f2c588163703273e10eb40b84",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 22,
+      "sourceOrdinal": 22,
+      "sourceIdentity": {
+        "contentSha256": "81e668735722eb42a542f64c526f4afe524d2dabf2e64a3b4cd622ec25459bc2",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefSha256": "a0a79a875f7e463b89aa6689b1e4e25abf7710c60982cb5d7dfc2ad33034a758",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "(1) 17 cm; (2) r = 3 cm",
+      "preCompareFrozenAnswer": "(1) 17 cm; (2) r = 3 cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $17\\text{ cm}$  (2) $3\\text{ cm}$",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS_AFTER_REPLACEMENT",
+        "sourceParity": "PASS",
+        "reason": "Current authorized replacement source and referenced SVG were bound to a clean student-only freeze; independent answer (1) 17 cm; (2) r=3 cm matches stored answer."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": {
+            "studentBundleCurrentSourceParity": "PASS",
+            "contentExactParityWithAuthorizedCurrentReplacementDesign": "PASS",
+            "choicesExactParityWithAuthorizedCurrentReplacementDesign": "PASS",
+            "semanticStructure": "Main geometry and measurements form the stem; two independently numbered requested processes are on separate lines; no formula or condition is split; current grid is AUTO_FIRST and appropriate for two written parts plus one in-line diagram.",
+            "sourceMode": "ALIVE_REPLACEMENT",
+            "contentSha256": "81e668735722eb42a542f64c526f4afe524d2dabf2e64a3b4cd622ec25459bc2",
+            "choicesCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "evidenceHash": "706ed801f54f075f26e14439db42a261d0ab0e2289ecd8f8ff93f5ee0b58032d"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": {
+            "solutionSha256": "74ca80661cf95df96319d1fb65d84eda1e7bd2e7afdf9a75387e6ddcebe54ec1",
+            "malformedSuperscript": "CLEARED; BC, AB, and AC squared-length terms are correctly written with ^{2}.",
+            "lineStructure": [
+              "Pythagorean setup",
+              "side-length substitution",
+              "225+64 intermediate",
+              "289 result",
+              "BC=17 conclusion",
+              "right-triangle area 60",
+              "incircle equal perpendicular-distance fact",
+              "sum of three triangle areas",
+              "side/radius substitution",
+              "factor simplification",
+              "60=20r substitution",
+              "r=60/20",
+              "r=3 cm conclusion"
+            ],
+            "independentMathematicalCheck": "BC^2=15^2+8^2=289 gives BC=17. [ABC]=60 and [ABC]=1/2*r*(15+17+8)=20r give r=3. Both match the frozen answer and two requested parts.",
+            "qualityCompareCount": "1/1 q22 correction locus",
+            "calibrationRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.correction-preflight.json",
+            "calibrationSha256": "b37189b654cc15632134b7033a1b7f7304ec23c2ba7dc15067041a287a205909",
+            "calibrationStatus": "PASS_POST_FAILURE_CORRECTION_REVIEW",
+            "sampleReadBeforeCorrection": true,
+            "targetPriorSolutionWasVisibleInEarlierFailedAttempt": true,
+            "engineRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+          },
+          "evidenceHash": "48be7a76ea3c610ef7702a3500b9e0df76edf981c3dcf3325fd427208b1a17ad",
+          "solutionSha256": "74ca80661cf95df96319d1fb65d84eda1e7bd2e7afdf9a75387e6ddcebe54ec1",
+          "smallBoardContinuity": "PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": {
+            "metaSnapshotSha256": "3e1e2f22cb414dd2ae2517d5c2000e9ca05898f7652a0fe725d20f9a6e23bca1",
+            "replacementCurriculumFit": "중2 수학 / M2-05 도형의 성질 / M2-05-TRIANGLE_PROPERTIES; sequential right-triangle and incenter area-partition reasoning.",
+            "typeTemplate": "PT_TRIANGLE_CENTERS / TPL_TRIANGLE_INCENTER, current exact active binding; projectionStatus=PROJECTION_REUSE and projectionReasonCode=ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE.",
+            "replacementSpecificDecisiveStep": "Updated to current 15-8-17 triangle and r=3 area partition; no prior 13-15-12/area 84/r=21/5 values remain.",
+            "nullReason": "metaNullReason removed because the exact current TPL binding is present.",
+            "difficulty": "difficultyBucket=3, confidence=medium, boundaryFlag=NONE; consistent with two-step middle-level work.",
+            "unchangedRelevantMeta": [
+              "standard course/unit/subunit",
+              "problem/template keys",
+              "cross-concept",
+              "primaryMethod",
+              "difficulty",
+              "RPM path and L3/L4"
+            ]
+          },
+          "evidenceHash": "5c8159a581b15a3a6ab0d78ffb97b43bdec51eec99ff9c6ca39be558f2812e86",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "problemTypeKey": "PT_TRIANGLE_CENTERS",
+            "templateKey": "TPL_TRIANGLE_INCENTER",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "외접원·내접원 활용",
+            "rpmL4": "반지름·각 계산",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": {
+            "assetRef": "assets/images/20_향림중_2학기_기말_중2_기출/q22.svg",
+            "assetSha256": "bedb2645fa60eb54ffd7aa8347dc1c0e395929a12d5b999fb0f6a410bdba38f0",
+            "renderedPreviewSha256": "ed67a0996775603e0e09b2d850d70eb4552b2f1e2574944a3306b2b37903f300",
+            "actualRender": "ImageMagick SVG rasterization; visually inspected current q22 replacement.",
+            "geometry": "Right angle at A; legs labeled 15 cm and 8 cm in 15:8 proportion; BC is not given; I is inside and centered correctly; circle is tangent to all three sides; radius marker r points along a perpendicular radius. At 12 px/cm the 36 px incircle matches the derived r=3 cm.",
+            "need": "Problem visual is necessary to identify the referenced configuration. A separate solution SVG is not necessary because the area partition is communicated by the written derivation.",
+            "targetEngineRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+          },
+          "evidenceHash": "d7a6d623a92684b6d46a4c94ad2c05f329a11c8125a5df7a2ff39f9a43ab7e91",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q22.svg",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "decision": "PROBLEM_SVG_RENDER_PASS_NO_SEPARATE_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "74ca80661cf95df96319d1fb65d84eda1e7bd2e7afdf9a75387e6ddcebe54ec1",
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "R1_Q22_REPLACEMENT_CORRECTION_REVIEW_PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "answerFreezeRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.clean-answer-freeze.json",
+      "answerFreezeSha256": "4fc6d4c3a011be6f6d0ea31817559fb5fdea770843557141855b3134aa0477b7",
+      "repairApplied": true
+    },
+    {
+      "qid": 23,
+      "sourceOrdinal": 23,
+      "sourceIdentity": {
+        "contentSha256": "168f2c2e7c830d0aef8bd5e3074bc2a6442311e9fe86c10d3a8508591a837c7d",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefSha256": "043363a3c082b90d755f40bc82b4609cf763966ee803ca67e916eed6dc5b9815",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "12π cm³",
+      "preCompareFrozenAnswer": "12π cm³",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $1:2$  (2) $12\\pi\\text{ cm}^3$",
+      "compareResult": "MATCH",
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "닮음과 부피 조건 후 (1)(2) 물음이 분리됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "닮음비→부피비→x 방정식→서술형 값 결론; 선택지 기호 제거됨.",
+          "solutionSha256": "79ba061ad53c195cdf987bb355438d29d68f8613dd003d12d2b74bd8f4775320",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "닮음의 활용",
+            "rpmL4": "넓이·부피 비",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q23 PNG에서 작은/큰 원뿔과 모선 5/10을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q23.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "79ba061ad53c195cdf987bb355438d29d68f8613dd003d12d2b74bd8f4775320",
+      "verdict": "PASS",
+      "repairApplied": true,
+      "disposition": "SOLUTION_CONCLUSION_REPAIR",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 24,
+      "sourceOrdinal": 24,
+      "sourceIdentity": {
+        "contentSha256": "0977a3d45d75a5052182a117779cf8c859adf23c93ead31f31d3a4b4454d8a8b",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefSha256": "62dc34bddaa70d8ed9cd8f9982809af35835b8c64c8accf92ed6ed32987a1b32",
+        "studentFieldsVerifiedAgainstBundle": true
+      },
+      "independentAnswer": "(1) △AEF∼△DIE (AA)  (2) 8 cm  (3) 32/3 cm",
+      "preCompareFrozenAnswer": "6 cm",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $\\triangle AEF\\sim\\triangle DIE$ (AA)  (2) $8\\text{ cm}$  (3) $\\dfrac{32}{3}\\text{ cm}$",
+      "compareResult": "MATCH",
+      "postFreezeAdjudication": {
+        "answer": "32/3 cm",
+        "reason": "좌표 반사 계산을 바로잡아 원본 도형에서 재계산; 상세는 answer-freeze adjudications에 보존."
+      },
+      "sourceMathAnswer": {
+        "status": "PASS",
+        "sourceParity": "PASS",
+        "reason": "완전한 학생 입력 및 참조 이미지에서 조건을 독립 풀이했고 freeze 후 stored answer와 비교; 정답 집합/선택기호/단위 확인."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "review": "접기 상황과 (1)(2)(3) 소문항이 분리됨.",
+          "disposition": "KEEP_STATIC_PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "review": "닮음 조건·AE·대응비와 AF 계산이 소문항별로 분리됨.",
+          "solutionSha256": "12bb1c39952c33d4d3441dfbf9f58f772a21fffa646ce41b5a6412e3c3dd39f4",
+          "smallBoardContinuity": "PASS",
+          "disposition": "KEEP_STATIC_PASS"
+        },
+        "META": {
+          "status": "PASS",
+          "review": "표준 단원 M2-06/M2-06-SIMILAR_FIGURE; RPM·활성 PT/TPL 값을 현재 artifact와 local authority에 대조.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음과 피타고라스 정리",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음",
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+            "rpmSemanticStatus": "FINAL",
+            "rpmL3": "삼각형의 닮음",
+            "rpmL4": "AA",
+            "projectionStatus": "PROJECTION_REUSE"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "review": "q24 PNG와 원본 PDF 4쪽을 열어 접는 선 HI, C→E, ED=8, DI=6, IC=10을 확인.",
+          "sourceImageRef": "assets/images/20_향림중_2학기_기말_중2_기출/q24.png",
+          "sourceImageReviewed": true,
+          "solutionSvgReviewed": false,
+          "solutionSvgRenderPath": null,
+          "decision": "NO_ADDITIONAL_SOLUTION_SVG_NEEDED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "12bb1c39952c33d4d3441dfbf9f58f772a21fffa646ce41b5a6412e3c3dd39f4",
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL"
+    }
+  ],
+  "summary": {
+    "qidCount": 24,
+    "independentAnswerCount": 24,
+    "answerMatches": 24,
+    "answerMismatches": 0,
+    "questionLayoutReviewed": "24/24",
+    "solutionLayoutReviewed": "24/24",
+    "metaReviewed": "24/24",
+    "visualSvgReviewed": "24/24",
+    "sourceMathAnswerReviewed": "24/24",
+    "holdQids": [],
+    "metaOnlyUnresolvedQids": [
+      20
+    ],
+    "repairedQids": [
+      14,
+      19,
+      22,
+      23
+    ],
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "r1Disposition": "READY_AFTER_Q22_REPLACEMENT"
+  },
+  "validationHistory": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT01.FAIL.json",
+      "issues": [
+        "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED",
+        "ARTIFACT_KNOWN_FAILED_REVIEW:q22",
+        "ARTIFACT_CONTROL_ESCAPE:solution:q23"
+      ]
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT02.FAIL.json",
+      "validatorInputEvidenceSha256": "aaf327acae0b8a0d316a6c54afdd9f39a900311fb7d48756752670febd7944d8",
+      "issues": [
+        "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED",
+        "ARTIFACT_KNOWN_FAILED_REVIEW:q22"
+      ]
+    }
+  ],
+  "q22ReplacementTransferIntegrity": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.transfer-integrity.json",
+    "sha256": "1c561a0d4fb05d114de55952178bc3af2f28df4f1712f98f8ba40716f72e2906",
+    "status": "PASS_NON_TARGET_ROWS_BYTE_BOUND",
+    "transferredQidCount": 23,
+    "q22CorrectionReviewSha256": "d6615000b3dce8198f9191c44107e1a8fdf503d14c37ce9dd85cfed6392608e0"
+  },
+  "priorValidatorAttempts": [
+    {
+      "attempt": 1,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT01.FAIL.json",
+      "status": "PRESERVED"
+    },
+    {
+      "attempt": 2,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT02.FAIL.json",
+      "status": "PRESERVED"
+    },
+    {
+      "attempt": 3,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT03.FAIL.json",
+      "status": "PRESERVED"
+    },
+    {
+      "attempt": 4,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT04.FAIL.json",
+      "status": "PRESERVED"
+    },
+    {
+      "attempt": 5,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT05.FAIL.json",
+      "status": "PRESERVED"
+    },
+    {
+      "attempt": 6,
+      "reportPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.validator-ATTEMPT06.FAIL.json",
+      "status": "PRESERVED"
+    }
+  ],
+  "finalQ22CorrectionReview": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.correction-review.json",
+    "sha256": "d6615000b3dce8198f9191c44107e1a8fdf503d14c37ce9dd85cfed6392608e0",
+    "answerFreezePath": ".tmp/archive/archive2-m2-codex-20261006-03/20_향림중_2학기_기말_중2_기출/R1.q22-replacement.clean-answer-freeze.json",
+    "answerFreezeSha256": "4fc6d4c3a011be6f6d0ea31817559fb5fdea770843557141855b3134aa0477b7",
+    "fourAxisStatus": {
+      "QUESTION_LAYOUT": "PASS",
+      "SOLUTION_LAYOUT": "PASS",
+      "META": "PASS",
+      "VISUAL_SVG": "PASS"
+    }
+  }
+}

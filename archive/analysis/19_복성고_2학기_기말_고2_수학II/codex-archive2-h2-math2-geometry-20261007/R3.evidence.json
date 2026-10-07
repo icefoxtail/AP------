@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "19_복성고_2학기_기말_고2_수학II",
+  "artifactSha": "50969cbce2ec17d99f86577e8cff24dbbf09f059",
+  "artifactRawSha256": "04229134b7d02994ab93e574ce2e657fdff5ac116dfaaa127aca7b8114eefeaa",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "r3_02"
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      8,
+      14,
+      22,
+      23
+    ],
+    "directDependencyQids": [
+      8,
+      14
+    ]
+  },
+  "rows": [
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": {
+          "recorded": "19e03ff17f1ecd4d1afa9fc83b6a7236b473ed7deb954b72d590961e02c1205d",
+          "actual": "19e03ff17f1ecd4d1afa9fc83b6a7236b473ed7deb954b72d590961e02c1205d",
+          "match": true
+        },
+        "boundedLocus": "solution TeX arrow encoding is valid \\to; invalid \\too absent"
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/19_복성고_2학기_기말_고2_수학II/q8.png"
+        ]
+      }
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": {
+          "recorded": "25f11be9b53ed244f4bed423b4fd929b5760f5c1acb44eaf668f1610eae2590f",
+          "actual": "25f11be9b53ed244f4bed423b4fd929b5760f5c1acb44eaf668f1610eae2590f",
+          "match": true
+        },
+        "boundedLocus": "solution TeX arrow encoding is valid \\to; invalid \\too absent"
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": [
+          "assets/images/19_복성고_2학기_기말_고2_수학II/q14.png"
+        ]
+      }
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": {
+          "recorded": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34",
+          "actual": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34",
+          "match": true
+        },
+        "boundedLocus": "answer fraction command is valid \\dfrac notation"
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": []
+      }
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "changedOpenDependencyReview": {
+        "status": "PASS",
+        "repairApplied": false,
+        "solutionSha256": {
+          "recorded": "6b9fae398f7fb8f98ce8734d3d7984f2125019c14e0c80b62a74b0a355a08b32",
+          "actual": "6b9fae398f7fb8f98ce8734d3d7984f2125019c14e0c80b62a74b0a355a08b32",
+          "match": true
+        },
+        "boundedLocus": "solution TeX arrow encoding is valid \\to; invalid \\too absent"
+      },
+      "directDependencyReview": {
+        "status": "PASS",
+        "assetRefs": []
+      }
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "structureReview": {
+    "status": "PASS",
+    "qidCount": 23,
+    "orderedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "lastQid": 23,
+    "syntax": "PASS",
+    "requiredFields": "PASS",
+    "controlCharacters": "PASS",
+    "choicesLabels": "PASS",
+    "svgXmlCodeDependencies": "PASS",
+    "summary": "Full structural integrity scan; only bounded R1 loci and direct image dependencies were reviewed semantically."
+  },
+  "assetReview": {
+    "status": "PASS",
+    "assets": [
+      {
+        "ref": "assets/images/19_복성고_2학기_기말_고2_수학II/q14.png",
+        "sha256": "66b31999ecc18b94ff45a6323d7c1282f6a9de1183dfc5cf64fd543d11d519b3"
+      },
+      {
+        "ref": "assets/images/19_복성고_2학기_기말_고2_수학II/q8.png",
+        "sha256": "3bebf455c937a3205b434b157b715ba02e25704d50b9aad86ba8f5de8eeea421"
+      }
+    ]
+  },
+  "upstreamBindings": {
+    "R1": {
+      "evidence": {
+        "path": "archive/analysis/19_복성고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1.evidence.json",
+        "sha256": "0c5b21a4430ba45413a193f1b0a2aa16f3bef69823b7a63d26a801fed3fe6489"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/19_복성고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1.validator.report.final.json",
+        "sha256": "2951173d301d8510a0a7e34bf324f527d22f29cccc5041b12c25064698389afb"
+      }
+    },
+    "R2": {
+      "evidence": {
+        "path": "archive/analysis/19_복성고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R2.evidence.json",
+        "sha256": "5e1de56d4541f02afe64a266577c896e225923835d13cfa597e62be26fa606d2"
+      },
+      "validatorReport": {
+        "path": "archive/analysis/19_복성고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R2.validator.report.raw.json",
+        "sha256": "7c6ad344eed9a0d19a66f8fc5ff877ceb65ed5e5facd26851527144720154356"
+      }
+    }
+  },
+  "artifactDispositions": {
+    "artifactSha": "50969cbce2ec17d99f86577e8cff24dbbf09f059",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": "Current PT/TPL fields populated; no projection debt."
+      }
+    ]
+  },
+  "itemHoldCount": 0,
+  "itemHoldQids": []
+}

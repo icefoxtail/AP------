@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "19_복성고_2학기_기말_고2_수학II",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationOrder": [
+    "assignment",
+    "golden_and_negative_read",
+    "preflight_pass",
+    "target_solution_draft"
+  ],
+  "solutionWorkMode": "SOURCE_ONLY_FRESH",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "Coordinates are found one at a time from the section ratio, then midpoint and distance calculations are written through to the selected choice. This is a useful floor for explicit substitution and intermediate values."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "Coordinate differences are stated before the distance formula, followed by square and radical simplification on separate lines; prose identifies why the formula applies."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "observation": "Each set relation is separately checked and justified, including the invalid subset notation. This sets the floor for option-by-option blocks."
+        },
+        {
+          "qid": 17,
+          "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+          "observation": "The solution makes both perpendicular side-vector cases explicit, rejects the point outside the first quadrant, and computes the diameter midpoint and radius before the final expression.",
+          "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q17-solution.svg",
+          "visualSha256": "3305f493c628a4f6d7cffb55baff33f70b78eceb13574b515ed16289c8109869",
+          "visualObservation": "Read the SVG source and checked its labeled vertices, diameter CD, midpoint, radius, and final value against the stated coordinate construction."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "svgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+    "svgSha256": "1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+    "observation": "Read the regression README and the frozen q7 SVG. The plotted parabola primitive does not pass through the labeled A(-1/2,0) and B(0,-1); labels alone do not establish geometry correctness. The q1 SVG was also read: its labeled slope and intercept do not match the actual line segment. These failures were used to keep student equations, SVG geometry, and source facts independently checkable."
+  },
+  "targetSourcePreflight": {
+    "examPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_복성고2_수2_2기말.pdf",
+    "examPdfSha256": "030c827f475affa5ed74c5dadcf63f46bf54958dfcf5749e61dd7a44beb5c109",
+    "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_복성고2_수2_2기말_해설.pdf",
+    "answerPdfSha256": "c203a08354170c54535df2d920a7df97e690b780660c2a0c30db539a51ff6750",
+    "examFullPagesRendered": 7,
+    "answerFullPagesRendered": 7,
+    "comparison": "2019 source PDF full pages 1-7 match the 23 candidate question order, including the four written-response items. The earlier 2022 same-school PDF is a different exam and was not used to alter source text. Page 7 confirms source q23 has |x| in each (|x|-a) expression; candidate source had omitted bars around x and will be minimally repaired from the scanned original."
+  },
+  "sourceHashAdjudication": {
+    "previousReportedExamPdfSha256": "fc76f190d5d6697186b73ee657b00dca135a07c25dd9d63ae15d219d119e9cbf",
+    "previousReportedAnswerPdfSha256": "74fe7b59bcbb3f02fc358af2d1f13ed20d443062b7c9a425cbfb332dc9ad5e",
+    "reason": "Those values were accidentally copied from the 2022 same-school PDFs. Recomputed SHA-256 values now bind the actual 2019 PDF files whose complete pages were rendered and compared.",
+    "corrected": true
+  }
+}

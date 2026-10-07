@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_INDEPENDENT_FREEZE_V1",
+  "examUid": "19_복성고_2학기_기말_고2_수학II",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceRawSha256": "04229134b7d02994ab93e574ce2e657fdff5ac116dfaaa127aca7b8114eefeaa",
+  "studentBundleSha256": "9555e00951eff0ce62f7bd3454b2cfc81affb80897f211c4b5ab1ad0933512c1",
+  "requiredAssetSha256": {
+    "q8.png": "3bebf455c937a3205b434b157b715ba02e25704d50b9aad86ba8f5de8eeea421",
+    "q14.png": "66b31999ecc18b94ff45a6323d7c1282f6a9de1183dfc5cf64fd543d11d519b3"
+  },
+  "freezeBasis": "Complete 23-qid current student-only bundle; all required referenced problem assets opened before answering. No stored answers or solutions disclosed before this freeze.",
+  "rows": [
+    {"qid":1,"blindAnswer":"3","reasoning":"For f(x)=3x+2, f'(x)=3 at every x."},
+    {"qid":2,"blindAnswer":"17","reasoning":"Integral from 1 to 3 of x^2-1 is 20/3, so reduced b/a=20/3 and b-a=17."},
+    {"qid":3,"blindAnswer":"4","reasoning":"By the derivative quotient, limit is f'(1)/2; f'(1)=3+5=8."},
+    {"qid":4,"blindAnswer":"1","reasoning":"f'(x)=3(x-3)(x+1), so the local maximum occurs at x=-1; f(-1)=5+a=6 gives a=1."},
+    {"qid":5,"blindAnswer":"2","reasoning":"Integrate f': f(x)=2x^4-x^3-2x+C; f(0)=3 gives C=3 and f(1)=2."},
+    {"qid":6,"blindAnswer":"-2","reasoning":"The symmetric difference quotient tends to 4f'(1)=8. Since f'(1)=4+a, a=-2."},
+    {"qid":7,"blindAnswer":"108","reasoning":"The curves meet at x=-2,4; upper-minus-lower is -3x^2+6x+24, whose integral on [-2,4] is 108."},
+    {"qid":8,"blindAnswer":"-1","reasoning":"Opened graph shows f' zeros at 0 and 2, negative between. With cubic leading coefficient 1, f'=3x(x-2); f(2)-f(0)=integral_0^2 f'=-4, hence minimum is 3-4=-1."},
+    {"qid":9,"blindAnswer":"[-1,0]","reasoning":"f'(x)=6x(x-1) is negative on (0,1), so the decreasing interval is [0,1] (choice ③)."},
+    {"qid":10,"blindAnswer":"{0,2}","reasoning":"f'=2x(2x^2+3x+a). For a=0, x=0 is double and -3/2 is the sole sign-changing zero; for a=2 the quadratic has no real roots and x=0 is the sole sign-changing zero. The other listed a values yield three extrema."},
+    {"qid":11,"blindAnswer":"11","reasoning":"Three distinct roots require p(-2)=15-a>0 and p(4/3)=-95/27-a<0. Exactly two negative roots also require p(0)=3-a<0. Thus integer 4<=a<=14, giving 11 values."},
+    {"qid":12,"blindAnswer":"9","reasoning":"Integration by parts reduces the identity to x f(x)-integral_0^x f=-x^3+3x^2; differentiating gives f'=-3x+6. With f(0)=3, f(2)=9."},
+    {"qid":13,"blindAnswer":"2","reasoning":"Differentiate F=xf-3x^4+2x^3 and use F'=f to get f'=12x^2-6x. Hence f=4x^3-3x^2+C; f(1)=3 gives C=f(0)=2."},
+    {"qid":14,"blindAnswer":"4","reasoning":"Opened figure shows an inscribed cylinder in a cone of base radius 6 and height 18. Similarity gives r=6(1-h/18); maximizing pi r^2 h gives h=6 and r=4."},
+    {"qid":15,"blindAnswer":"4","reasoning":"f-g=2x^3-3x^2-12x+a+16. On 0<x<4, the required lower bound for a is maximized at x=2, yielding a>=4; minimum is 4."},
+    {"qid":16,"blindAnswer":"2","reasoning":"Differentiable additive f is linear; f'(0)=2 implies f(x)=2x."},
+    {"qid":17,"blindAnswer":"4","reasoning":"The two equal lobes have total area a^5/2. Setting this to 512 gives a^5=1024 and a=4."},
+    {"qid":18,"blindAnswer":"4","reasoning":"The odd terms integrate to zero against even f. The remaining value is (1/2) integral_-1^1 f = (1/2)(2 integral_0^1 f)=4."},
+    {"qid":19,"blindAnswer":"18","reasoning":"Relative distance is t+t^2/2. The third meeting occurs at 180 m relative travel, so t+t^2/2=180 gives t=18 s."},
+    {"qid":20,"blindAnswer":"(4 s, 48 m); impact velocity -24 m/s","reasoning":"x=24t-3t^2 has vertex at t=4, x=48. It reaches ground at t=8 and dx/dt=24-6t=-24 m/s then."},
+    {"qid":21,"blindAnswer":"27","reasoning":"f'=3x^2+2ax+b has global minimum at -a/3. Condition (나) makes its minimum occur at -2, so a=6; monotonicity requires b>=12. Then f'(1)=15+b is minimized at b=12, giving 27."},
+    {"qid":22,"blindAnswer":"(가) x^3-2x^2-4x-15; (나) (5/2)x^2-10x-25/2","reasoning":"Integrate (t-2)(3t+2) for x>=1 and (t-2)5 for x<1, splitting at t=1; both pieces agree at x=1 with value -20."},
+    {"qid":23,"blindAnswer":"-4","reasoning":"Let p(u)=u^3-3u^2-9u+b, u=|x|-a. Differentiability at zero requires p'(-a)=0, so a=1 or -3. a=-3 gives a local minimum at zero and no maximum; a=1 gives local maximum p(-1)=5+b=0, so b=-5 and a+b=-4."}
+  ]
+}

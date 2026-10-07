@@ -1,0 +1,1918 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_매산여고_2학기_기말_고2_수학II",
+  "artifactSha": "ae3e4ebe9d5b5925bd167579960711fa28995234",
+  "artifactRawSha256": "dbda725fd3dba796ae4d437b95ef3fde62226370bf3e5bb72655f88f60a60b38",
+  "studentBundleSha256": "a3f770fd6bde743f20ab2d8d9a1728a3f32be2c99a347e9355380b50afbc7a0f",
+  "studentBundlePayloadSha256": "981c226343f4a25bedf6885ee0d4f1dbbcc00fc6010de4b878fdb5980cbf417e",
+  "independentFreeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/20_매산여고_2학기_기말_고2_수학II/R1.independent-freeze.json",
+    "sha256": "ca4e4f098a528bcbf42ffabbbade32f1f56b5cb75c84fc8ae0bd06a8215625fa"
+  },
+  "postfreezeExtraction": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/20_매산여고_2학기_기말_고2_수학II/R1.final-qid-extraction-after-repair.json",
+    "sha256": "f5e218532d70da2c879b734eea3d7d38f1723547e8b2104cd29ffa2080d3de9c"
+  },
+  "freezeAdjudications": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-math2-geometry-main-done/AP------/.tmp/archive/archive2-h2-math2-geometry-20261007/20_매산여고_2학기_기말_고2_수학II/R1.freeze-adjudications.json",
+    "sha256": "c51e68e1d4328b0e7299fbac0e892aa5bae05ea73c8eee2d8f71d02518b0a37f",
+    "qids": [
+      10,
+      15,
+      23
+    ]
+  },
+  "denominator": 23,
+  "questionLayoutCoverage": "23/23",
+  "solutionLayoutCoverage": "23/23",
+  "metaCoverage": "23/23",
+  "visualSvgCoverage": "23/23",
+  "smallBoardAuditCount": "23/23",
+  "smallBoardContinuityStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "실제 SVG 좌표/위상, 작은칠판 열거 구조, exact Meta lookup, runtime TeX escape를 자기보고 집계로 대체하지 않는 회귀 기준을 확인했다."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "완전제곱, 중심/반지름 및 두 변환을 줄별로 추적했다. 실제 SVG 중심 세 점과 같은 반지름이 식의 이동과 일치한다."
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "절댓값 방정식의 경우분기와 a>0, b>0에 따른 해 제거가 풀이 흐름에 드러난다."
+          }
+        ],
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "두 직선의 기울기를 변형식에서 읽고 수직 조건을 적용한다. 실제 line 좌표의 기울기 -1/3과 3의 곱이 -1이다."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "각 제곱항의 완전제곱 변형과 상수 정리를 거쳐 중심/반지름으로 이어진다."
+          }
+        ],
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "포함배제에서 교집합 하한을 얻고 실현 가능한 분할 구성을 보여 상한이 달성됨을 확인한다. Venn 구역 값과 y 조건이 일치한다."
+          },
+          {
+            "qid": 11,
+            "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+            "visualSha256": "40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "무게중심 조건을 x,y 좌표식으로 분리하고 OBC 중심의 평균을 계산한다."
+          }
+        ],
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "-16",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "e57e5ffb3116319e8171da05ec6b9e371f9f7eeabe4ca5186d29d44eed635f76"
+      },
+      "solutionSha256": "b348876b5dddfd8b57ee8dbea189e4b97892ff524dfdec97349c87fc99f525e1",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "위치 함수와 가속도 질문의 경계가 명확하고 수식·보기는 자동 배치에 맡긴다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "위치→속도→가속도→t=1 대입이 식으로 분리된다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "위치·속도·가속도는 수학II 도함수 활용에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MOTION",
+          "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "위치→속도→가속도→t=1 대입이 식으로 분리된다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "1: 두 번 미분하고 지정 시각을 대입하는 직접 적용."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "11",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "f2b54beadf4a9b7b58406063536686e7d9a2c843a2dd27588cbdab7a51b4bab9"
+      },
+      "solutionSha256": "41fdc4a210f150ce42446c9a26bbfb36948757115c92ce2350d0ea0f3b410f31",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "부정적분 등식과 적분상수 단서가 결속되어 있고 질문·보기가 분리된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "부정적분식을 미분하고 x=1 대입을 별도 단계로 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "부정적분 함수 관계와 대입에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "부정적분식을 미분하고 x=1 대입을 별도 단계로 보인다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "1: 부정적분의 도함수를 복원하고 한 번 대입."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "be42a501b0439f0e35df81637ad0928002f1469bb544875071c7a86884ffb0e0"
+      },
+      "solutionSha256": "9c70586bb9430e4fa50cb2aed4be4cf678d3153a78211cde9f8c7d743a811454",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "정적분 구간과 피적분 다항식이 한 수식 단위로 유지된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "원시함수, 상·하한 대입, 차 계산이 모두 드러난다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "다항함수 정적분 계산에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+          "templateKey": "TPL_DEFINITE_EVALUATION",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "원시함수, 상·하한 대입, 차 계산이 모두 드러난다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "1: 기본 원시함수와 정적분 계산."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "91",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "e64fd37fa28c98b6f02b1f797f749b7f5d4041eda5f8bbedc70372099b480566"
+      },
+      "solutionSha256": "fc6a4137aafbb8e1c276d237a73ade1ea59f5e3ee22c1ea0051751b42e80ee78",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "도함수 정보와 초기 함수값 조건 뒤에 최종 질문이 이어진다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "도함수 적분, C 결정, f(3) 계산을 분리한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "도함수에서 함수 복원에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "도함수 적분, C 결정, f(3) 계산을 분리한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "1: 표준 적분 후 초기값으로 상수를 결정."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "7",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "SAME_STAGE_DIFFICULTY_BOUNDARY_ADJUDICATION",
+      "repairApplied": true,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "c4d458b1d1c0405eed2e9888fefb1250fcf3c59301089f7a82c23b10fabec79a"
+      },
+      "solutionSha256": "3328e17e7f77042d245d268e10b2f82378b7c04008a33e1177590cd91efd0869",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "적분 정의와 최솟값 조건이 한 수식/조건 흐름으로 읽힌다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "적분상수 포함 완전제곱, 최솟값 적용, f(1) 대입을 보여 준다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "부정적분 함수 관계와 최솟값 조건에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "적분상수 포함 완전제곱, 최솟값 적용, f(1) 대입을 보여 준다."
+        }
+      },
+      "changedFields": [
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility"
+      ],
+      "difficultyRecheck": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "2/B12: 최솟값 조건을 완전제곱과 결합해 상수를 정하는 한 단계 해석이 있다; 기존 하 경계는 재검 후 허용."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "0<=a<=6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "885dfa9cf4883dbc89bae7ce878e37a6b8da6e78e22a0d30559ab439ae2406df"
+      },
+      "solutionSha256": "a66490ab19b9acedd41a02e53a7e5051deb1874472291564739f608bf8b80438",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "전칭 증가 조건과 매개변수 범위 질문이 보존된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "증가 조건, 도함수 판별식, 부등식 인수분해가 이어진다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "전구간 증가 판정과 매개변수 범위에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+          "templateKey": "TPL_MONOTONICITY_CONDITION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "증가 조건, 도함수 판별식, 부등식 인수분해가 이어진다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 전구간 증가 조건을 도함수 이차식의 판별식으로 변환."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_CONDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "10",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "19962347a09d26fc00c3d8e4a844ac3d89ce50c66fdc31e96bad3f7ab02001c6"
+      },
+      "solutionSha256": "1431a0dd8ba0f50089487d10b28bc90b479c04c4ec849a378acb7b3bdae239ac",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "극솟값 위치·값 조건과 극댓값을 포함한 목표식이 구분된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "극솟값 조건 두 식, 계수 풀이, 다른 극점 값과 최종 합을 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "극대·극소와 함수값 관계에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "극솟값 조건 두 식, 계수 풀이, 다른 극점 값과 최종 합을 보인다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 두 극값 조건에서 계수를 정하고 다른 임계점의 함숫값을 결합."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "②",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "70be9ef6eb4348d830c593ac17a9293babb186f1755ed899317bd8266222aeab"
+      },
+      "solutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "도함수 그래프를 제시하는 문장과 원함수 개형 질문이 구분되고 q8 그림을 확인했다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "그래프의 구간별 부호와 극값, 원점 통과를 구분한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "도함수 그래프 질적 분석에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+          "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "PROBLEM_VISUAL_REQUIRED_SOLUTION_SVG_NOT_REQUIRED",
+          "reason": "q8.png를 실제 열어 f′ 부호구간 및 선택 개형의 극값 순서를 확인했다. 해설은 해당 sign chart와 선택 결론을 직접 설명한다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "그래프의 구간별 부호와 극값, 원점 통과를 구분한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 그래프 부호의 네 구간을 읽어 세 극값 순서를 선택."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+        "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "20/3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "d7c268e65df007fa1d43eebc64dbbde25d0e23dcb14de367b56da317c6f75a0a"
+      },
+      "solutionSha256": "bcd88ef5f49b2203d6df430c7ec8436e0b87d8c9849d700d13ecdaff981cbac9",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "원시함수 조건과 극값 조건이 수학적으로 결속된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "임계점, 원시함수, 극소 조건으로 C 결정, 극대값 계산이 있다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "도함수로 극값을 계산하는 유형에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "임계점, 원시함수, 극소 조건으로 C 결정, 극대값 계산이 있다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 도함수 인수분해, 극소 조건의 C 결정, 다른 극값 계산."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "POSTFREEZE_CALCULATION_ADJUDICATION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "79f736575cfca7445f76a95052ceb7b79e6ae6ca2902e984841b5f88d4f6449a"
+      },
+      "solutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "f′ 그래프·초기값·세 실근 조건이 각각 식별된다; q10 그래프를 확인했다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "그래프에서 도함수 복원, 적분, 극값의 열린 범위, 정수 세기를 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "극값과 방정식 실근 개수 관계에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "PROBLEM_VISUAL_REQUIRED_SOLUTION_SVG_NOT_REQUIRED",
+          "reason": "q10.png를 실제 열어 하향 포물선의 근 ±1과 f′(0)=3을 확인했다. 해설의 f′와 극값 범위가 그림과 일치한다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "그래프에서 도함수 복원, 적분, 극값의 열린 범위, 정수 세기를 보인다."
+        }
+      },
+      "answerAdjudication": {
+        "frozenAnswer": "4",
+        "correctedIndependentAnswer": "3",
+        "reason": "count from 3<k<7 is 4,5,6: three integers.",
+        "originalFreezePreserved": true
+      },
+      "difficultyRecheck": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "4: 도함수 그래프에서 삼차함수를 복원하고 극값 사이 정수 높이를 세는 복합 구조."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "46",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "026d2db25c1435e0fed4a2bbff7a511036a54aaba70c61fdfc0613da16a3704c"
+      },
+      "solutionSha256": "12f84f029e94c457f39f309a6c4eb7a5417411cc2d4308518ac1a5cd0d45bf8c",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "부정적분 관계식과 기준 함수값이 정확한 순서로 보존된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "항등식 미분, 다항식 관계, f 복원, 값 대입을 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "부정적분 관계식에서 함수 복원에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "항등식 미분, 다항식 관계, f 복원, 값 대입을 보인다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 적분 관계식을 미분하고 다항식 계수를 비교."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "-14",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "3b40758860da82f9a8c0638267c4e2baf180df45694b56ca79ba71e71ac16029"
+      },
+      "solutionSha256": "62a3987d4979376f1e51b72a5e1e56000f2351267fa11f784fc465e5974cb10e",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "닫힌구간 조건과 최댓값 정보가 한 덩어리로 읽힌다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "도함수·임계점·끝점 값, k 결정, 최솟값 계산을 포함한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "닫힌구간 최대·최소에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "도함수·임계점·끝점 값, k 결정, 최솟값 계산을 포함한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 임계점과 두 끝점의 값 비교 후 최댓값 상수와 최솟값을 함께 구함."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "37/12",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "a5a10394c9ccbaf03a59a0dd92b057a15b3b0b7c7b518d91d146e21bc69c9e5a"
+      },
+      "solutionSha256": "f7bd98c033e0b3b25f4ab7d8e4a2c0d5e9bba69587e607f5135e28e2458109fd",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "두 함수의 정의와 둘러싸인 넓이 질문이 명확하다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "교점, 위아래 곡선 전환, 두 구간 적분을 분리한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "두 곡선 사이 넓이에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "교점, 위아래 곡선 전환, 두 구간 적분을 분리한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 교점과 위아래 전환에 따른 구간 분할 적분."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "7/2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "4471c1e6cba9e4e95d995a7483bdcde91da203700d3c2c3814da5d5070a89cf2"
+      },
+      "solutionSha256": "7b3fc0547da6d516db3088e118500ef8702b0d119bbcba6c5a08c604adaeae22",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "t≥0 및 a<b 조건이 시각 조건과 결속된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "속도 적분, 위치방정식, 인수분해, 시간 조건, 합을 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "속도 적분으로 위치를 복원하는 유형에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+          "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "속도 적분, 위치방정식, 인수분해, 시간 조건, 합을 보인다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 속도에서 위치를 복원하고 중근을 포함한 시간 해를 분류."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "29/3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "POSTFREEZE_CALCULATION_ADJUDICATION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "30070762e637eb7d891b8a5cbe9288845a0cc01e752f0175590aba62477cac29"
+      },
+      "solutionSha256": "653829e650d4188fd9b7a343c18ffbac2190dfe178623183034505f7dffb99f0",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "절댓값 식과 x축으로 둘러싸인 부분의 넓이 질문이 보존된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "영점과 부호, 양·음 영역을 모두 적분하며 대칭성을 적용한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "절댓값 함수와 x축 사이 넓이에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "영점과 부호, 양·음 영역을 모두 적분하며 대칭성을 적용한다."
+        }
+      },
+      "answerAdjudication": {
+        "frozenAnswer": "1/3",
+        "correctedIndependentAnswer": "29/3",
+        "reason": "the bounded area includes positive region 0≤|x|≤2 as well as negative lobe 2≤|x|≤3.",
+        "originalFreezePreserved": true
+      },
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 절댓값의 부호 구간, 양·음 영역, 대칭을 조합."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "40",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "9e67b5ee68a13036f2ed8e329ae7a46b25b51d1aba2a5db17c290b3a7e8a5258"
+      },
+      "solutionSha256": "63229d556f4e0a85e5f366f962b16659813e195977cc97a46c36cb892fa51e25",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "홀함수 조건, g=x²f 관계, 정적분 값과 목표식이 구분된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "홀짝성으로 홀함수 항을 제거하고 FTC와 대칭 조건을 적용한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "정적분의 홀짝 대칭 성질에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+          "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "홀짝성으로 홀함수 항을 제거하고 FTC와 대칭 조건을 적용한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "4: 홀짝성 및 FTC로 대칭 구간 정적분을 축약."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      }
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "-7",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "SAME_STAGE_MINIMUM_REPAIR",
+      "repairApplied": true,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "0358c9a41525efaab9401dc3ebf3a1bbda5d789135095c0a8c861b3344ddd91b"
+      },
+      "solutionSha256": "6f03775743c72363624b8c2b33462b4a8ac308818749a3e325fc56651eae72a9",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "(가)/(나) 조건을 별도 줄로 두고 질문을 분리했다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "MINIMUM_REPAIR",
+          "reason": "부호를 바로잡아 g′+g 항등식과 계수 비교를 일관되게 전개한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "부정적분 관계식의 다항식 계수 비교에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "부호를 바로잡아 g′+g 항등식과 계수 비교를 일관되게 전개한다."
+        }
+      },
+      "changedFields": [
+        "solution",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "difficultyRecheck": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "3: 조건을 미분해 익숙한 다항식 계수비교로 해결."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "18",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "5b68869fd95394cd6b574afa9ecd8d84b13dda3d0fc7d2474c35a7adeec7f55f"
+      },
+      "solutionSha256": "ed8934c61c0a8cc036a3fbe392eb4d87ed7994e0c8671109b0761055b8f1f7b5",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "x 구간, g(a) 정의, 가중합 질문이 구분된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "a 세 경우마다 도함수와 임계점·끝값을 확인해 가중합을 만든다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "구간 최대와 매개변수별 비교에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "a 세 경우마다 도함수와 임계점·끝값을 확인해 가중합을 만든다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "4: 매개변수 세 값에서 구간 임계점과 끝값을 따로 분류."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      }
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "4/3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\dfrac{4}{3}$",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "b86b438f581fda2f59ecf0e3af6dcbe5710d04fab58755d19aad3f2f31d55b8c"
+      },
+      "solutionSha256": "ed7635632da14692440613c76cb7126c738bd36c21eba0f604e4860d74457539",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "주관식 단답형과 단일 넓이 질문이 간결하다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "교점·부호·전개식·원시함수·대입을 한 줄씩 추적한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "곡선과 x축 사이 넓이에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "교점·부호·전개식·원시함수·대입을 한 줄씩 추적한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "2: 영점·부호를 확인해 기본 다항함수 적분."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "113/5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\dfrac{113}{5}$",
+      "compareResult": "MATCH",
+      "answerCardinality": 1,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "5a7ec88278e52a53f7a989be08335f2f3e0b150d4eb1300b204f5d39a041b99b"
+      },
+      "solutionSha256": "39a60b299bb3084601437f8aed525826102be01aa31c270c0272c131ea32ec88",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "P,Q 정의, 외분 조건, f(t) 정의, 극댓값 질문의 순서가 보존된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "외분점 공식, f(t), 도함수 임계점, 극대 판정을 드러낸다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "모델량의 극대화에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "외분점 공식, f(t), 도함수 임계점, 극대 판정을 드러낸다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "4: 외분 모델링과 삼차함수 극대화를 연결."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "f'(x)=6x^2+10x-4; f(x)=2x^3+5x^2-4x+3; f(-1)=10",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$f′(x)=6x^2+10x−4,\\quad f(x)=2x^3+5x^2−4x+3,\\quad f(−1)=10$",
+      "compareResult": "MATCH",
+      "answerCardinality": 3,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "a5f891171c463651381a8e27448589669cfe75475cae97fa7a867dbb69116e9d"
+      },
+      "solutionSha256": "60670ce7cb22820c0c86b9e6361419e162529c9087b5bc42c0452b0b04c99d34",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "점·기울기 조건과 1)~3) 소문항이 별도 줄로 구분된다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "기울기에서 도함수, 적분상수, 점 대입, 최종값을 분리한다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "도함수에서 원함수 복원에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "기울기에서 도함수, 적분상수, 점 대입, 최종값을 분리한다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "2: 도함수 적분과 한 점 조건을 직접 적용."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-07",
+        "standardUnit": "부정적분",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+        "subUnit": "부정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "f=x^4-3x^2-4; g=x; area=96/5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$f(x)=x^4−3x^2−4,\\quad g(x)=x,\\quad \\dfrac{96}{5}$",
+      "compareResult": "MATCH",
+      "answerCardinality": 3,
+      "verdict": "PASS",
+      "disposition": "KEEP",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "2c1b9d22e894b084b399baafdddf4ef49f6dd387eef0553828ed6466b2062b8a"
+      },
+      "solutionSha256": "72c74eb93e81ce989eaa11fed5d63c24ca2cf409c6c6534602f8d104f5ce74ae",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "(가)~(다) 조건 및 1),2) 요구를 각각 별도 줄에 둔다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "차수비교, 짝·홀 다항식 꼴, 두 조건, 근 구간과 넓이를 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "다항함수 조건 복원 및 정적분 넓이에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "차수비교, 짝·홀 다항식 꼴, 두 조건, 근 구간과 넓이를 보인다."
+        }
+      },
+      "difficultyRecheck": {
+        "bucket": 5,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "5: 무한대 극한에서 두 차수를 동시에 역추론하고 함수와 넓이를 복원."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "A=-2; k=3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\int_{-2}^{0}f(x)dx=−2,\\quad k=3$",
+      "compareResult": "MATCH",
+      "answerCardinality": 2,
+      "verdict": "PASS",
+      "disposition": "POSTFREEZE_CALCULATION_ADJUDICATION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_FINAL",
+      "sourceIdentity": {
+        "status": "PASS",
+        "studentPayloadSha256": "d1af381fb7c56f43b4b948a8f609c52895284b4061e95bbb6900532ffc022644"
+      },
+      "solutionSha256": "67640ffed1c31f54d744f6fd99b947280562efa3fac8b3eff883edcf03e8ea32",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP_STATIC",
+          "reason": "자기참조 적분 조건, 두 소문항, k≥1 조건을 구분한다.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "reason": "A 설정, 절댓값 구간분리, A 방정식, k 적분식, k 조건 적용을 보인다."
+        },
+        "META": {
+          "status": "PASS",
+          "reason": "정적분 함수 관계와 구간 조건 해결에 대응한다.",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "SOLUTION_VISUAL_NOT_REQUIRED",
+          "reason": "이 문항의 결정 단계는 수식·조건·계산으로 완결되고 solutionImage가 없어도 필요한 기하/그래프 사실이 생략되지 않는다."
+        },
+        "SMALL_BOARD_STRUCTURE": {
+          "status": "PASS",
+          "reason": "A 설정, 절댓값 구간분리, A 방정식, k 적분식, k 조건 적용을 보인다."
+        }
+      },
+      "answerAdjudication": {
+        "frozenAnswer": "sqrt(7)",
+        "correctedIndependentAnswer": "A=-2; k=3",
+        "reason": "integral of |x²−1| over [-2,0] is 2, not 4/3; A=2+2A gives -2.",
+        "originalFreezePreserved": true
+      },
+      "difficultyRecheck": {
+        "bucket": 5,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "5: 자기참조 적분상수, 절댓값 구간분할, 매개변수 적분 조건을 연결."
+      },
+      "metaSnapshot": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT"
+      }
+    }
+  ],
+  "artifactRawBufferBlobSha1": "ae3e4ebe9d5b5925bd167579960711fa28995234",
+  "gitCleanFilterBlobSha1": "ae3e4ebe9d5b5925bd167579960711fa28995234",
+  "calibrationPreflight": {
+    "sha256": "2b22dce171e99e82642365720936065bee8edb99154c6c2fd0abd2e5e0ae4782",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.calibration-preflight.json"
+  }
+}

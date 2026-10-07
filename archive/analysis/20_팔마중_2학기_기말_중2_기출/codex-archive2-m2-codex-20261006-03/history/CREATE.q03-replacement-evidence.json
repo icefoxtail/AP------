@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "ARCHIVE_DIRECT_QUESTION_REPLACEMENT_EVIDENCE_V1",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "qid": 3,
+  "questionUid": "20_팔마중_2학기_기말_중2_기출:q03:replacement1",
+  "replacementScope": "QUESTION_ONLY",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementReason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "originalSourceRef": {
+    "desktopPdf": {
+      "path": "source/2020_팔마중2_수학_2기말.pdf",
+      "sha256": "057a383fb6210d6b0886f2fac19763ced521941d3c9665fafcb955be47fa7f50",
+      "page": 1
+    },
+    "originalQuestionAsset": {
+      "path": "source/q03.png",
+      "sha256": "b7c75e666257f24968dd27272a66c0d4c678144c9522f51521d1a2e1db6d118a"
+    },
+    "originalSourceJs": {
+      "path": "provenance/attempt-12/20_팔마중_2학기_기말_중2_기출.js",
+      "sha256": "3e749a4c8573d05f993f6b3c692361828f95f49a04cc9380c13216b72a8ca278",
+      "gitBlobSha": "f83ffbc4b23087058a21f6c3e0bcd8dad4a13614"
+    },
+    "desktopAnswerKey": {
+      "path": "source/2020_팔마중2_수학_2기말_정답.hwp",
+      "sha256": "d825785144b4f78e0652a006dd41fb08814b0b7149e4d4939e534e0b5a4ed7e6",
+      "originalQid3Answer": "④"
+    },
+    "r1SourceBindingRef": "R1.q03-desktop-source-binding.json",
+    "r2HoldRef": "R2.postfreeze-adjudication.json",
+    "r2FinalEvidenceRef": "R2.evidence.corrected.json",
+    "r2FinalEvidenceSha256": "cf9da42098eb973daf096d29f5c4f5e8a9b1942963181aee35e2ff2dacf13f36"
+  },
+  "eligibility": "REVIEW2 closed HOLD_NOT_PASS after exact source and answer-key comparison. Original source item has no M2-reproducible method to decide whether the third side equals 12/5 from side lengths 2 and 3 with included 50°. A normal one-locus correction is unsupported; replacing this held qid is the only way to provide an in-scope student item.",
+  "priorReviewFreezesApplyToReplacement": false,
+  "solutionFirstRef": "CREATE.q03-replacement-solution-first-v3.json",
+  "solutionFirstSha256": "c98a0c1a81187085460f72d36efa4645576089cb406b52cd21ed4fdb8203d28a",
+  "calibrationPreflightRef": "CREATE.q03-item-recovery-preflight.json",
+  "calibrationPreflightResultRef": "CREATE.q03-item-recovery-preflight.validation.json",
+  "calibrationPreflightStatus": "PASS",
+  "newItem": {
+    "content": "오른쪽 그림에서 $\\triangle ABC\\sim\\triangle DEF$일 때, 다음 중 옳지 않은 것은? [4점]",
+    "choices": [
+      "$AB=9\\text{ cm}$이다.",
+      "$AC=12\\text{ cm}$이다.",
+      "$BC:EF=3:2$이다.",
+      "$AB:DE=3:2$이다.",
+      "$AB:DF=3:2$이다."
+    ],
+    "answer": "⑤",
+    "solutionSha256": "d5249101214482bbc8ab564ede863cd7f1fa811d1259f33466c7c811a9d15f4a",
+    "problemImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q03.png",
+    "problemImageSha256": "b20fcbed107699e188389cf4a531ad323c5138777783cec9758368375636429a",
+    "visualObservation": "Two right-triangle diagrams show corresponding side labels BC=15, EF=10, DE=6 and DF=8 with vertices A↔D, B↔E, C↔F; the qid statement does not expose derived AB=9 or AC=12 as labels.",
+    "finalArtifactSha": "cae8e84632389b1e1259920ddf2c8cf72f330969",
+    "finalArtifactRawSha256": "752354c0c0496c486909c188010401e4b443b0753413f53a578788b0f8eab3dc"
+  },
+  "answerCardinality": {
+    "responseForm": "single-choice select the incorrect statement",
+    "truthTable": [
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "uniqueFalseChoice": "⑤",
+    "independentRecheck": "BC/EF=3/2; AB=9; AC=12; AB:DF=9:8, so exactly choice ⑤ is false.",
+    "independentVerification": {
+      "correspondence": {
+        "AB": "DE",
+        "BC": "EF",
+        "AC": "DF"
+      },
+      "scaleRatio": "BC/EF=15/10=3/2",
+      "derivedLengths": {
+        "AB": "DE×3/2=6×3/2=9 cm",
+        "AC": "DF×3/2=8×3/2=12 cm"
+      },
+      "choiceEvaluation": [
+        {
+          "choice": "① AB=9 cm",
+          "truth": true
+        },
+        {
+          "choice": "② AC=12 cm",
+          "truth": true
+        },
+        {
+          "choice": "③ BC:EF=3:2",
+          "truth": true
+        },
+        {
+          "choice": "④ AB:DE=3:2",
+          "truth": true
+        },
+        {
+          "choice": "⑤ AB:DF=3:2",
+          "truth": false,
+          "actualRatio": "9:8"
+        }
+      ],
+      "independentAnswer": "⑤",
+      "uniqueFalseStatementCount": 1
+    }
+  },
+  "curriculum": {
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-06",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "allowedMethods": [
+      "similar-triangle correspondence",
+      "side-length ratio"
+    ],
+    "outOfCurriculumDependencies": []
+  },
+  "difficultyFresh": {
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "reason": "Medium 4-point M2-06 correspondence and scale-ratio reasoning; comparable short-step burden."
+  },
+  "methodProvenance": "CODEX_DIRECT_AUTHORING_NO_ALIVE_OR_PIPELINE_GENERATION",
+  "finalArtifactSha": "cae8e84632389b1e1259920ddf2c8cf72f330969",
+  "finalArtifactRawSha256": "752354c0c0496c486909c188010401e4b443b0753413f53a578788b0f8eab3dc",
+  "sourceMode": "ALIVE_REPLACEMENT",
+  "replacementQid": 3,
+  "newMeta": {
+    "rpmSemanticStatus": "FINAL",
+    "rpmPath": {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "도형의 닮음과 피타고라스 정리",
+      "midUnit": "도형의 닮음",
+      "l3": "닮음의 활용",
+      "l4": "길이"
+    },
+    "rpmL3": "닮음의 활용",
+    "rpmL4": "길이",
+    "semanticSourceScope": "M2-2",
+    "semanticScopeRelation": "CURRENT_SCOPE",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "projectionStatus": "PROJECTION_REUSE",
+    "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+    "bindingOwnerPack": "MIDDLE_GEOMETRY"
+  },
+  "independentVerificationRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/CREATE.q03-replacement-independent-verification.json",
+  "independentVerificationSha256": "4f44311dfa64f46039045eb566290dbff5d721f77659e689bda7d4e648447ee2",
+  "independentVerification": {
+    "correspondence": {
+      "AB": "DE",
+      "BC": "EF",
+      "AC": "DF"
+    },
+    "scaleRatio": "BC/EF=15/10=3/2",
+    "derivedLengths": {
+      "AB": "DE×3/2=6×3/2=9 cm",
+      "AC": "DF×3/2=8×3/2=12 cm"
+    },
+    "choiceEvaluation": [
+      {
+        "choice": "① AB=9 cm",
+        "truth": true
+      },
+      {
+        "choice": "② AC=12 cm",
+        "truth": true
+      },
+      {
+        "choice": "③ BC:EF=3:2",
+        "truth": true
+      },
+      {
+        "choice": "④ AB:DE=3:2",
+        "truth": true
+      },
+      {
+        "choice": "⑤ AB:DF=3:2",
+        "truth": false,
+        "actualRatio": "9:8"
+      }
+    ],
+    "independentAnswer": "⑤",
+    "uniqueFalseStatementCount": 1
+  }
+}

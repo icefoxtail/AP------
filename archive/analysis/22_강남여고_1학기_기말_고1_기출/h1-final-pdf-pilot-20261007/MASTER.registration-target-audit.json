@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "MASTER_REGISTRATION_CONTINUATION_RESULT_V1",
+  "stage": "PUBLICATION",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "head": "4a6e8ca76d229b2be18efbcf15a79d32812a75c7",
+  "finalArtifactSha": "28492a60815009f11397d4cf1f48b7ca066d6f56",
+  "firstMissingClosureStep": "REGISTRATION_SYNC_TARGETED_TEST_FAILURE_DIAGNOSIS_AND_TARGET_READBACK",
+  "validatorDisposition": {
+    "materializeMetaV2": "PASS",
+    "archiveRegistrationSync": "PASS",
+    "materializeCheck": "PASS",
+    "questionIdentityContract": "PASS",
+    "questionIdentityRuntime": "PASS",
+    "archiveRegistrationParity": "PASS",
+    "metaV2SemanticAuthority": "FAIL",
+    "gitDiffCheck": "FAIL_LOCAL_WINDOWS_CRLF_GENERATED_DB"
+  },
+  "failingLocus": "tests/archive2-meta-v2-semantic-authority.test.cjs:18",
+  "failureDetails": "Generated projection has no eligible reviewed Meta Foundation leaf. The prior eligible row is existing unrelated 25_동산중_2학기_기말_중1_기출 q10 (qid_v1_51128c...): current sourceStatus HOLD, sourceFingerprint e80b397c... differs from approvedSourceFingerprint 8dc1defb...; baseline snapshot version of the test passes. Target source and 7 assets remain unchanged.",
+  "targetRegistration": "24/24 qid 1-24 rows agree across identity, metadata, catalog and question-index generation. Full scan also adds 18 unrelated exam files; do not apply full generated output. Target-only row bundle is in MASTER.target-registration-proposal.json. No scoped generator/CLI was found; target-only application bridge is IMPLEMENTATION_REQUIRED. Do not reinterpret Meta fields or repair unrelated q10.",
+  "changedFiles": "MASTER evidence only after restoring all derived registry outputs from exact pre-generation snapshot; ROOT ledger/state untouched.",
+  "nextRequiredAction": "ROOT to decide exact target-only application bridge, apply only target identity/db/index/catalog/meta rows, run the bundle integrity checks, then own publication and remote registration readback."
+}

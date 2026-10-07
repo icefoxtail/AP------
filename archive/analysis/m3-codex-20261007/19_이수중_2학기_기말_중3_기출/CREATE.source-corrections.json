@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOURCE_CORRECTION_LEDGER_V1",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "runId": "m3-codex-20261007",
+  "sourcePdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2019_이수중3_수학_2기말.pdf",
+  "sourcePdfSha256": "bda3b594a9f5930bf4c7841188f38c8d20addcd34cffcc9cfafc38591760a0d2",
+  "initialCandidateRawSha256": "db333ae7e803a1bb8ab31538f5bf3bc9f7d8d1fe45cf5bac89dfa992db992716",
+  "finalArtifactRawSha256": "6b4a0a5a0d0aa81264a6379379812d91c1aca57d1dd4a5d970fc219025214543",
+  "corrections": [
+    {
+      "qid": 7,
+      "kind": "SOURCE_TRANSCRIPTION_CORRECTION",
+      "initialCandidateRawSha256": "db333ae7e803a1bb8ab31538f5bf3bc9f7d8d1fe45cf5bac89dfa992db992716",
+      "field": "choices[0]",
+      "originalValue": "$(20+20\\sqrt3)\\rm\\,m$",
+      "repairedValue": "$(30+30\\sqrt3)\\rm\\,m$",
+      "sourcePdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2019_이수중3_수학_2기말.pdf",
+      "sourcePdfSha256": "bda3b594a9f5930bf4c7841188f38c8d20addcd34cffcc9cfafc38591760a0d2",
+      "sourcePage": 2,
+      "visualLocator": "page 2, question 7, choice ①",
+      "reason": "원본 PDF 2쪽 보기 ①은 (30+30√3)m이다. 후보에 남은 20은 source text와 맞지 않고, 30m 수평거리·45° 하향각·60° 상향각에서 얻는 백화점 높이와도 불일치해 해당 보기 한 곳만 source exact로 복구했다.",
+      "postRepairAnswer": "①",
+      "postRepairAnswerCardinality": 1,
+      "affectedFields": [
+        "choices[0]",
+        "answer",
+        "solution",
+        "decisiveStep"
+      ]
+    },
+    {
+      "qid": 22,
+      "kind": "AUDITED_SOURCE_REPAIR_PRESERVED",
+      "sourcePdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중3/2019_이수중3_수학_2기말.pdf",
+      "sourcePdfSha256": "bda3b594a9f5930bf4c7841188f38c8d20addcd34cffcc9cfafc38591760a0d2",
+      "sourcePage": 4,
+      "originalValue": {
+        "stem": "PA=2cm, AB=6cm, AT=3cm",
+        "figure": "PA=4cm, AB=12cm, AT=7cm"
+      },
+      "repairedValue": {
+        "stem": "PA=4cm, AB=12cm, AT=7cm",
+        "figure": "PA=4cm, AB=12cm, AT=7cm"
+      },
+      "reason": "selected branch의 기존 source_provenance AUDITED_SOURCE_REPAIR를 보존했다. 원본 그림 표기와 기존 수리 기록에 결속된 수치를 유지한다.",
+      "priorProvenanceCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+      "priorProvenancePath": "archive/evidence/source-intake-m3-20261004/19_이수중_2학기_기말_중3_기출/source_provenance.json",
+      "postRepairAnswerCardinality": "NOT_APPLICABLE_CONSTRUCTED_RESPONSE"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "CODEX/V2",
+  "executionLine": "CODEX",
+  "examUid": "21_이수중_2학기_기말_중2_기출",
+  "owner": "archive_r3",
+  "reviewerId": "/root/r3_21_isu_user_waiver",
+  "currentArtifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\.tmp\\archive\\archive2-m2-codex-20261006-03\\21_이수중_2학기_기말_중2_기출\\21_이수중_2학기_기말_중2_기출.js",
+    "artifactSha": "9630faea60bf74b81e1c4130d8bcc6ae36a363a8",
+    "artifactRawSha256": "655d8c1d5e8e4790115e664f7066919f97fb2066f3f8f3e96b323c4ecaf51dac"
+  },
+  "r3": {
+    "status": "STATIC_CODE_COMPLETE",
+    "validatorReport": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\archive\\analysis\\21_이수중_2학기_기말_중2_기출\\codex-archive2-m2-codex-20261006-03\\R3.validation.user-waiver-static.json",
+      "sha256": "05355e597fad13a5bad0e338720f0422c3dcaf67e058d5932eb9410d1c124ae3",
+      "disposition": "PASS",
+      "issues": []
+    },
+    "receiptPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\archive\\analysis\\21_이수중_2학기_기말_중2_기출\\codex-archive2-m2-codex-20261006-03\\R3.USER_WAIVER.STATIC.receipt.json",
+    "receiptSha256": "0f854d650dcb87ca5db764e5c0e8802251ef8d13553421b21af43243f01c598f",
+    "renderStatus": "NOT_RUN_USER_WAIVER",
+    "captureCount": 0
+  },
+  "upstreamGap": {
+    "firstMissingClosureStep": "R2_V2_GENERIC_VALIDATOR_ACTIVE_CONTRACT_PASS",
+    "r2Evidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\.tmp\\archive\\archive2-m2-codex-20261006-03\\21_이수중_2학기_기말_중2_기출\\R2.evidence.20261007.json",
+      "sha256": "a17b089621cdbe578f83032dd6b2669456eb2ff45e87450017aed9addd2cf623"
+    },
+    "priorReport": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\.tmp\\archive\\archive2-m2-codex-20261006-03\\21_이수중_2학기_기말_중2_기출\\R2.validation.20261007.json",
+      "sha256": "5691158be34769adedcb2e7f7b686f89e31c321f0cc40cd93673b7f7b0352b6f",
+      "validatorMode": "R2_V2",
+      "ok": true,
+      "commonFullQidProof": false,
+      "activeArtifactContractPassProof": false
+    },
+    "forcedUnchangedEvidenceValidation": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\m2-archive-20261006\\AP------\\.tmp\\archive\\archive2-m2-codex-20261006-03\\21_이수중_2학기_기말_중2_기출\\R2.V2.FORCED.CLOSURE.validation.json",
+      "sha256": "4d4bcfc5560f905e3eb445e6c29155ad9d7692e7dd5fcb133a0e9faa32b011af",
+      "validatorMode": "CONTRACT_REJECTED",
+      "ok": false,
+      "issues": [
+        "EXECUTION_LINE_MISMATCH",
+        "QUALITY_CONTRACT_REQUIRED"
+      ]
+    },
+    "resumeCondition": "R2 owner repairs only missing V2 evidence bindings, preserves blind/adjudication semantics, runs normal R2 generic validator, and ROOT rebinds R3 receipt to that report."
+  },
+  "userWaiver": {
+    "basis": "USER_DIRECTED_STATIC_COMPLETE",
+    "actualRender": "NOT_RUN_USER_WAIVER",
+    "captureCount": 0,
+    "renderPassClaimed": false
+  }
+}

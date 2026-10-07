@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_RENDER_RECEIPT_ASSET_CONTINUATION_V1",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "stage": "R3_RENDER_RECEIPT_CLOSURE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactSha": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e",
+  "artifactRawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+  "status": "CONTINUATION_REQUIRED",
+  "firstMissingClosureStep": "ACTUAL_MODE_SPECIFIC_ASSET_DECODE_BINDING_FOR_SOLUTION_AND_ANSWER_CASES",
+  "exactReason": "ROOT reported validateCodexRenderReceipt failure RENDER_ASSET_SET_REQUIRED:sol/desktop. The saved case witness lists all 17 source assets for exam/desktop and exam/mobile, but lists zero loadedAssets for sol/desktop, sol/mobile, ans/desktop, and ans/mobile. The actual solution-mode DOM decode observations also had no current source asset image elements; no saved/documented preloader witness proves that the source assets were fetched and decoded in these four cases. Do not bind the 17 assets to these cases based only on current file hashes or exam-mode requests.",
+  "helperFinding": {
+    "validator": "archive/tools/archive-codex-closeout-v2.mjs::validateCodexRenderReceipt",
+    "status": "FAIL",
+    "issue": "RENDER_ASSET_SET_REQUIRED:sol/desktop",
+    "findingSource": "ROOT reported this exact helper result in the continuation task; raw helper stdout was not present in this exam evidence directory.",
+    "preservedWithoutRewrite": true
+  },
+  "receipt": {
+    "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.json",
+    "sha256": "3a3652688c7e603705a31a6621ae7a6e30c537ef7eb0b640cb56c4595f711447"
+  },
+  "existingDecodeWitness": {
+    "receiptCaseAssetCounts": {
+      "exam/desktop": 17,
+      "exam/mobile": 17,
+      "sol/desktop": 0,
+      "sol/mobile": 0,
+      "ans/desktop": 0,
+      "ans/mobile": 0
+    },
+    "browserRequestLog": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R3.RENDER.REQUESTS.jsonl",
+      "sha256": "002541e103a981e24492da46ad3202a5443cc75c7ef8754e2ce282e65c5b8a14",
+      "limitation": "The log records current candidate and asset responses but does not bind individual asset responses to all six render modes; it cannot prove solution/answer case decodes."
+    },
+    "fullPageCapturesPreserved": true,
+    "recaptured": false,
+    "semanticReviewRepeated": false
+  },
+  "renderReceiptValidation": "NOT_RUN_IN_THIS_CONTINUATION: no actual decode witness exists to support the required four case asset sets.",
+  "dispositionForRootOrMaster": "Keep the generic R3 V2 PASS and the receipt as historical evidence, but do not consume RENDER_PASS or publication closure from this receipt until a separately authorized actual mode-specific asset-decode witness is available."
+}

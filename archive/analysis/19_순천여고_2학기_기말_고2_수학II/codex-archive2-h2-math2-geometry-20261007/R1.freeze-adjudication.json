@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_FREEZE_ADJUDICATION_V1",
+  "examUid": "19_순천여고_2학기_기말_고2_수학II",
+  "originalFreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\19_순천여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\R1.independent-freeze.json",
+  "originalFreezeSha256": "120adee9cdebd7183d88c47b33a92828324cb230ee990f545452f2547669cc9e",
+  "originalFreezePreserved": true,
+  "studentBundleSha256": "6456f2bbb8fcdefdba51f6d91b9fb33e7a3b8eaaf3f5b2c50b6269cb16a8799d",
+  "completeInput": true,
+  "inputHoldQids": [],
+  "freezeValidity": "VALID_WITH_POSTFREEZE_CALCULATION_ADJUDICATION",
+  "freezePathMetadataCorrection": {
+    "qid": 21,
+    "field": "requiredAssetsOpened[1].path",
+    "recorded": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\assets\\images\\19_순천여고_2학기_기말_고2_수학II\\q21.png",
+    "actualOpened": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\assets\\images\\19_순천여고_2학기_기말_고2_수학II\\q21.png",
+    "assetSha256": "2539a24bcb83ec0457b0d9abf77e01902357cd2c8e7f4cf0ca6d80e6b41557a3",
+    "actualOpenedBeforeFreeze": true
+  },
+  "adjudications": [
+    {
+      "qid": 18,
+      "preFreezeAnswer": "-6",
+      "adjudicatedAnswer": "-3",
+      "method": "Let a=(1/6)∫f; f=|x-2|+ax; integration gives a=-2. Then k=xf(x)-ax^2 equals 2x-x^2 for x<2 and x^2-2x for x>=2. g(k) changes at 0 and 1, so x^2+bx+c has roots 0,1 and a+b+c=-3.",
+      "storedAnswer": "④ / -3",
+      "storedSolutionCorrect": true,
+      "artifactChanged": false
+    },
+    {
+      "qid": 21,
+      "preFreezeAnswer": "4pi/3",
+      "adjudicatedAnswer": "8pi/3-3sqrt3",
+      "method": "Intersect at O and P=(sqrt3,3). Each side area is integral_0^3(sqrt(4-(y-2)^2)-sqrt(y))dy = 4pi/3-3sqrt3/2, so the two sum to 8pi/3-3sqrt3.",
+      "storedAnswer": "8pi/3-3sqrt3",
+      "storedSolutionMatches": true,
+      "artifactChanged": {
+        "locus": "q21.solution",
+        "reason": "Use Math II circle-sector and polynomial-area reasoning instead of the inverse-trigonometric antiderivative; question payload and stored answer unchanged."
+      }
+    },
+    {
+      "qid": 10,
+      "preFreezeAnswer": "0",
+      "adjudicatedAnswer": "0",
+      "method": "D=x^2+2ax+1 is nonnegative exactly for |a|<=1; at boundary it is a square with one isolated zero, hence f remains strictly increasing.",
+      "artifactChanged": {
+        "locus": "q10.solution",
+        "reason": "Make strict-increase conclusion at boundary explicit."
+      }
+    }
+  ],
+  "changedQids": [
+    10,
+    21
+  ],
+  "currentArtifactSha": "ed87608fc0c36bf09edc557f54304e8aa24d9e64",
+  "currentArtifactRawSha256": "78475265202d3322e3021511b34f65c1ccc8f37553af28f80131884d7501a89c",
+  "changedQidPostfreezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\R1.postfreeze-final-changed-qids-10-21.json",
+  "changedQidPostfreezeSha256": "d135bd19c484235f8e6b782692d6d2a3baf171b611fba95d9e5f63be0300cfec"
+}

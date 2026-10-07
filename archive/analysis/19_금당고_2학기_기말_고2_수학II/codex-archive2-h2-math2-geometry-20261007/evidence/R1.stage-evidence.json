@@ -1,0 +1,1546 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "8a1480e0f5f93d6dff2376ed63021a77d38faa0a",
+  "artifactRawSha256": "efc60e364086887dba14a10221882e51325d991cbaeac25896c07ecf4da4ab09",
+  "artifactRawBufferBlobSha1": "8a1480e0f5f93d6dff2376ed63021a77d38faa0a",
+  "gitCleanFilterBlobSha1": "8a1480e0f5f93d6dff2376ed63021a77d38faa0a",
+  "sourceBundleSha256": "56509c3a25e8ed739dd5637089ffac9a2fc02d6473a62af517161db4afe36ad1",
+  "sourceRawSha256": "ae1911b13a84eede648df5cb5c7e26930c7f60421982ae96e785c0f5effe4da6",
+  "freeze": {
+    "path": "archive/analysis/19_금당고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1-independent-freeze.json",
+    "sha256": "ccc3509e587cff690948cfc8768d9d05fb291b74c669b24fb810a900fd61bc6c",
+    "status": "COMPLETE_BEFORE_STORED_ANSWER_DISCLOSURE",
+    "qidCount": 21,
+    "adjudicationPaths": [
+      "archive/analysis/19_금당고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1-freeze-adjudication-q18.json",
+      "archive/analysis/19_금당고_2학기_기말_고2_수학II/codex-archive2-h2-math2-geometry-20261007/R1-answer-encoding-adjudication-q1.json"
+    ]
+  },
+  "postfreezeDisclosure": {
+    "path": ".tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/postfreeze/R1.postfreeze.json",
+    "sha256": "d06b1b5b675d8227a60c9f38e04b948ed7cbae35f88457dc98ac5b62891ada39",
+    "sourceRawSha256": "ae1911b13a84eede648df5cb5c7e26930c7f60421982ae96e785c0f5effe4da6",
+    "qidCount": 21
+  },
+  "postrepairQidExtraction": {
+    "path": ".tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/postfreeze/R1.postfreeze-q1-q10.json",
+    "sha256": "fb358aef04781f7aa4ecac22570df369450c13eaa579fbf6ece8e391bab460ce",
+    "qids": [
+      1,
+      10
+    ]
+  },
+  "studentParity": {
+    "path": ".tmp/archive/archive2-h2-math2-geometry-20261007/19_금당고_2학기_기말_고2_수학II/postfreeze/R1.student-postrepair-final.json",
+    "sha256": "9aeee8b2aa871ab740cf35d9ce70182962308e130f09ce3a5731bf591f2e1ccd",
+    "qidCount": 21,
+    "studentPayloadMismatches": [],
+    "requiredAssetCount": 0
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the regression fixture and inspected the bad SVG plus its saved render. The labeled point and polyline do not coincide; visual text cannot substitute for checking actual coordinates. The fixture also documents bundled enumeration and metadata false-PASS patterns."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read actual solution and SVG; the solution derives circle form then tracks center transforms while retaining radius. Rendered center labels, transformation arrows and final equation align.",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "observation": "Read actual solution and proof-flow SVG. The solution turns graph observations into sign relations and applies them to slope/intercepts; the SVG organizes the chain without replacing algebra.",
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Read the actual solution. Coordinate differences are calculated separately, then substituted into the distance formula and simplified through the radical to the final value.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read actual solution and SVG. Both slope equations and the perpendicular product are explicit; actual line equations/coordinates support the labeled relationship. The saved render has missing Korean glyphs, so its math flow is used while its glyph rendering is not a typography model.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "changedQids": [
+    1,
+    10
+  ],
+  "directDependencyQids": [
+    1,
+    10
+  ],
+  "itemHoldQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "-2",
+      "independentReasoning": "F'(x)=3x^2+2ax+3와 f(x)=3x^2-4x+3의 계수를 비교하면 2a=-4이므로 a=-2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": true,
+      "sourceMode": "SAME_STAGE_MINIMUM_REPAIR",
+      "disposition": "ANSWER_ENCODING_CORRECTION_Q1_AND_SOLUTION_LABEL",
+      "changedFields": [
+        "answer",
+        "solution"
+      ],
+      "preRepairStoredAnswer": "②",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f3c6520aa4583e5ad373048238619162d4e3eb692268afda40fc15c4e77258c9",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Single condition and requested coefficient remain one sentence; five compact choices are aligned as a grid.",
+          "studentPayloadSha256": "15448857f367e5d008d2144845b4fcd21acd44d1b002d14af2279388870a2052",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "CORRECTION",
+          "evidence": "Derivative and coefficient comparison lead line by line to a=-2; the answer encoding was corrected to the first matching choice.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "f3c6520aa4583e5ad373048238619162d4e3eb692268afda40fc15c4e77258c9"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II indefinite integral/antiderivative coefficient comparison; bucket 1 fits direct coefficient matching.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_DERIVATIVE_IDENTITY_COEFFICIENT_DETERMINE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No referenced figure/table or geometric relation is needed; symbolic derivative comparison is complete.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "31",
+      "independentReasoning": "∫_1^2 5x^4 dx=[x^5]_1^2=32-1=31.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c1fe949169ca2a24ccd5398225dbcc0cd76af01dd06223c4044c0b973bada17d",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Single integral expression and value question; source notation is retained and the solution writes the differential clearly.",
+          "studentPayloadSha256": "9e545d518ba15294f99d329bd1cd43bfb2416e92d14f85846d899f169ed3908b",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Antiderivative, endpoint substitution, arithmetic, and choice are shown on separate lines.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "c1fe949169ca2a24ccd5398225dbcc0cd76af01dd06223c4044c0b973bada17d"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II definite polynomial integral; bucket 1 fits direct antiderivative and endpoint evaluation.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-08",
+            "standardUnit": "정적분",
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "subUnit": "정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+            "templateKey": "TPL_DEFINITE_EVALUATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No referenced figure/table is needed; the integral is fully specified symbolically.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "3",
+      "independentReasoning": "곡선의 접선 기울기는 y'=2x+1이고 x=1에서 3이므로 a=3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1052edf0420bc12e9caec2dc413b286ce7f43e5409a36e886f044541f9c71f4b",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Point/tangent condition and requested slope form one coherent question; no unrelated break.",
+          "studentPayloadSha256": "9d1ab1dcd17deff3c388e1cd71b3b61dac0535ae7dc873813440e326ab29d998",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Derivative at the contact x-coordinate is evaluated, then the line through the supplied point gives its equation.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "1052edf0420bc12e9caec2dc413b286ce7f43e5409a36e886f044541f9c71f4b"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II tangent/differentiation; bucket 1 fits one derivative evaluation.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-05",
+            "standardUnit": "접선의 방정식",
+            "subUnitKey": "H15-M2-05-TANGENT",
+            "subUnit": "접선의 방정식",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+            "templateKey": "TPL_TANGENT_CONSTRUCTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No source diagram is referenced; tangent slope follows directly from the displayed curve and point.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "1/2",
+      "independentReasoning": "평균변화율은 (f(1)-f(0))/(1-0)=1이고 f'(c)=2c이므로 2c=1, c=1/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c07f2c262a381ca6550fe7f94f6abd0aaf23ef906fadb3ed582cb0140db1fabd",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Closed interval and mean-value request stay together as one condition.",
+          "studentPayloadSha256": "6bb82115fc09ddf6e359f0bdd13337698e7a3a11a6de5192c098a8ca002fbb65",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Mean slope is computed from endpoints, set equal to 2c, then c is isolated.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "c07f2c262a381ca6550fe7f94f6abd0aaf23ef906fadb3ed582cb0140db1fabd"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II mean value theorem application; bucket 2 reflects endpoint slope followed by derivative matching.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+            "templateKey": "TPL_MEAN_VALUE_THEOREM_INTERNAL_POINT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No visual is needed; endpoint values and derivative determine the mean-value point.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "0",
+      "independentReasoning": "위치변화량은 ∫_1^3(4-2t)dt=[4t-t^2]_1^3=3-3=0.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4f7d003c5a2972f75eab6b2f45347b8e4cfc5cc9f909f3d110585d0b62acd71d",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Motion context, time interval, and requested displacement stay in one sentence.",
+          "studentPayloadSha256": "17c4d3e8b6d75e94e8d9e3720b09dfc1b8014a01d9e2d267c5a69b7e58c89707",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Velocity is integrated over the exact interval and the endpoint difference is evaluated.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "4f7d003c5a2972f75eab6b2f45347b8e4cfc5cc9f909f3d110585d0b62acd71d"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II displacement as velocity integral; bucket 2 reflects a direct definite integral in context.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+            "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No motion diagram is needed; the time interval and velocity function fully determine displacement.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "3",
+      "independentReasoning": "f'=4x(x-2)(x+2). 구간의 후보 x=-3,-2,0,1에서 함숫값은 14,-11,5,-2. 최댓값 14와 최솟값 -11의 합은 3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "557bf514413bbd73e7ddf334a7b6559c049a44fed900f06aae0304caef62ebaf",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Closed interval, polynomial, and combined extrema request stay together.",
+          "studentPayloadSha256": "c6dc9a7608f2e3ebd32f4c1f4a4c1d0cbc44c41981b11e31bc9dbeb9a4621882",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Derivative factors; all endpoints and interior critical points are substituted; max/min are compared and added.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "557bf514413bbd73e7ddf334a7b6559c049a44fed900f06aae0304caef62ebaf"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II global extrema; bucket 3 reflects derivative critical points plus closed-interval comparison.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+            "templateKey": "TPL_GLOBAL_EXTREMA_COMPARISON",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No graph asset is needed; endpoint and critical-point evaluations establish the extrema.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "-25",
+      "independentReasoning": "f'=4x^2(x-3). x=0은 부호가 바뀌지 않는 정류점이고 x=3에서 극솟값 f(3)=-25 하나만 있으므로 모든 극값의 합은 -25.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7bd4f39ba767ace7461aa916a2edfe7f7ef7155a664d756031e26b9008f06cfb",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Polynomial and sum-of-all-extrema request stay together.",
+          "studentPayloadSha256": "6c4c85e9dcc4fe774413773ced630c3d0b1ce112055ec048cceb79dba8b05fdc",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Derivative factors; the stationary non-extremum at 0 and sign change at 3 are distinguished before evaluating the extremum.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "7bd4f39ba767ace7461aa916a2edfe7f7ef7155a664d756031e26b9008f06cfb"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II extrema structure; bucket 2 reflects factoring a derivative and classifying stationary points.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+            "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No graph asset is needed; derivative factorization and sign test establish the extrema.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "128π",
+      "independentReasoning": "1초 후 반지름은 4cm, dr/dt=2cm/s. V=4πr^3/3이므로 dV/dt=4πr^2(dr/dt)=128π cm^3/s.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "932ae3cc05879470637a849a49437509ab8ed6af1ac271a01fe8d919c3c19e9d",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Initial radius, growth rate, elapsed time, and rate requested stay semantically linked.",
+          "studentPayloadSha256": "243b9d765f6756d474741c641269bdd865c6c6b90bc92f77d6783b3c66561635",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Volume formula is differentiated by the chain rule; the one-second radius is substituted with the rate.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "932ae3cc05879470637a849a49437509ab8ed6af1ac271a01fe8d919c3c19e9d"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II related rate; bucket 3 reflects chain rule and time-dependent substitution.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+            "templateKey": "TPL_MOTION_COMPOSITE_MODEL",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No diagram is needed; volume formula and radius rate fully determine the related rate.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "8",
+      "independentReasoning": "교점 x=0,2 및 구간 끝 x=-2를 나누어 절댓값 넓이를 적분한다. ∫_-2^0(x^2-2x)dx=20/3, ∫_0^2(2x-x^2)dx=4/3, 합은 8.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e70a28b73cadc05059eff8c6fbd1e79805261b4a76f98654a4baa79d25624c4b",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Curve, x-axis, and bounding vertical lines are named together before the area question.",
+          "studentPayloadSha256": "e719a46d91032fbcef6f016083ba17dcc8ca8c3496322212c5b716acad2966cb",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The x-axis crossings split the signed-area integral; both pieces are evaluated and summed.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "e70a28b73cadc05059eff8c6fbd1e79805261b4a76f98654a4baa79d25624c4b"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II signed area; bucket 3 reflects crossing-based interval split and summation.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No source graph is referenced; crossings and signed integrals encode both regions.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "2",
+      "independentReasoning": "교점 방정식은 p(x)=x^3-6x^2+9x-2k=0. 서로 다른 두 교점은 중근 하나와 단근 하나이므로 중근은 p'=3(x-1)(x-3)의 임계점이어야 한다. p(1)=4-2k=0에서 k=2(양수); p(3)=-2k=0은 양수가 아니다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": true,
+      "sourceMode": "SAME_STAGE_MINIMUM_REPAIR",
+      "disposition": "MINIMUM_SOLUTION_REPAIR_Q10",
+      "changedFields": [
+        "solution"
+      ],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "20c92b50b66392b782b35699c31fa400f74f12c3dea02f2212c09cf07fb8de02",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Two curves and the positive-k/two-distinct-intersections condition remain explicit; no student-body change was made.",
+          "studentPayloadSha256": "61a87af96c705e9981fa56c49cb17e8a0b2d146d81a45634aa23f9b55d0d1e7f",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "UPGRADE",
+          "evidence": "Repaired: derivative locates local maximum/minimum; all positive-k level cases are counted; k=2 is factored to establish exactly two distinct intersections.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "20c92b50b66392b782b35699c31fa400f74f12c3dea02f2212c09cf07fb8de02"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II derivative/extremum root count; bucket 4 reflects classifying three intersections across level cases.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+            "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No source visual is referenced; derivative monotonicity and level intersections fully resolve the two-point condition.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "3",
+      "independentReasoning": "P=x^4-4x^3-2x^2+12x에서 P'=4(x-3)(x-1)(x+1). [0,3]의 후보 0,1,3에서 P값은 0,7,-9. |P+k|≤10 전체 조건은 -1≤k≤3이므로 정수 최댓값은 3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3e0629dc0dfc865f136971b9b15a64156e3aa6676e07e450e9164ad74c239563",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Domain condition precedes the absolute inequality and integer-maximum request in one coherent block.",
+          "studentPayloadSha256": "7af18a63e57776cae6b7de707cce43471cb02b4f399080f31f947b64292653f9",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Derivative sign and endpoint/critical values establish the full range; both sides of the absolute inequality bound k.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "3e0629dc0dfc865f136971b9b15a64156e3aa6676e07e450e9164ad74c239563"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II global inequality via extrema; bucket 4 reflects range analysis and integer bound.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+            "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No graph asset is needed; derivative and endpoint values prove the range directly.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "8",
+      "independentReasoning": "f는 짝함수이므로 (4x^3+2x)f(x)는 홀함수라 적분이 0. 남는 ∫_-1^1 f(x)dx=2∫_-1^0 f(x)dx=8.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "51509c9c0790b0e762eef0a3a30d40b6cf6981fd0ebb61750be5abbdbc03d8bc",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The parity/integral conditions are separately line-broken; the queried integral is distinct from the common conditions.",
+          "studentPayloadSha256": "de1d194f7208b63c3eb2594479e04ece0a910614d4640e157b57739b6c08e7eb",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Odd-even symmetry removes the odd integrand term; the given half-interval integral is doubled.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "51509c9c0790b0e762eef0a3a30d40b6cf6981fd0ebb61750be5abbdbc03d8bc"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II definite integral symmetry; bucket 3 reflects parity and a supplied half-interval integral.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-08",
+            "standardUnit": "정적분",
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "subUnit": "정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_GLOBAL_INTEGRAL_CONSTRAINT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No diagram is relevant; even/odd symmetry resolves the integral.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "-3/4",
+      "independentReasoning": "일대일 삼차함수가 되려면 f'=-3x^2+4ax+a가 전 구간에서 부호가 바뀌지 않아야 하며, 아래로 열린 이차식이므로 판별식≤0. 16a^2+12a≤0에서 -3/4≤a≤0, 최솟값은 -3/4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2f6111be3506bcc53bed1f41ba41a23813985edb8523a480e469feee0060485c",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Domain-wide injectivity condition and minimum-parameter request are explicit.",
+          "studentPayloadSha256": "fa6b113d2767f332aad11e33cdd946a22ff188d30df5ea3db0daad713a9174d2",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The derivative sign condition is converted to a discriminant inequality and the allowed interval is solved.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "2f6111be3506bcc53bed1f41ba41a23813985edb8523a480e469feee0060485c"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II one-to-one monotonicity; bucket 4 reflects a global derivative/discriminant condition.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+            "templateKey": "TPL_INVERSE_ONE_TO_ONE_MONOTONICITY",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No graph asset is needed; the derivative discriminant gives the global injectivity condition.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "-1",
+      "independentReasoning": "주어진 항등식을 y에 대해 미분하면 F'(x+y)=F'(y)+3x. y=0, F'=f, f(0)=2를 대입하여 f(x)=2+3x. 따라서 F'(-1)=f(-1)=-1.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c68ce4b3f18a13ddabec2e2e07a72674ac49f4b09bacb98f23ab0332a7aa48b4",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Functional identity, given f(0), and requested derivative value are linked in one prompt.",
+          "studentPayloadSha256": "53c594c07fe1006aac95f34fb2eac10bffc69b18e94ae266eb9fb31f7062a8fc",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Differentiate the identity, substitute x=0 and f(0), then evaluate f(-1).",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "c68ce4b3f18a13ddabec2e2e07a72674ac49f4b09bacb98f23ab0332a7aa48b4"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II functional identity and derivative; bucket 3 reflects differentiation and evaluation at a point.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_FUNCTIONAL_EQUATION_DERIVATIVE_DETERMINE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No visual is needed; the functional identity is differentiated directly.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "-6",
+      "independentReasoning": "g'=u이면 f=-8x+9-u이고 fu=-20x^2+54x-36. 이차식 u^2+(8x-9)u+(-20x^2+54x-36)=0의 판별식은 9(4x-5)^2이므로 다항식 해는 u=2x-3 또는 u=-10x+12. 적분식의 x=1 값은 g(1)=10이어야 한다. g(2)=7 조건과 함께 보면 u=2x-3 가지는 g(1)=7로 배제되고, u=-10x+12이면 g(x)=-5x^2+12x+3이므로 g(3)=-6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bd5b1354c5375d8aba7935e4fb4f22bdbc85f2e3def7568670455f08013c3efd",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Both polynomial relations and g(2) are separated by a source line break; requested g(3) is clear.",
+          "studentPayloadSha256": "6b36419c09287704b354975ce9bbb8a75594e90c506a570049cb00f80d54af86",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The x=1 value fixes g(1); derivative and product factorization identify the branches; g(2) rejects one branch before g(3).",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "bd5b1354c5375d8aba7935e4fb4f22bdbc85f2e3def7568670455f08013c3efd"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II integral/derivative polynomial relation; bucket 4 reflects factor branches and condition-based branch rejection.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_VALUE_DERIVATIVE_CONDITIONS_FUNCTION_DETERMINE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No source visual is referenced; polynomial identities and branch conditions are sufficient.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "0",
+      "independentReasoning": "f'=3x^2+12x+k는 [0,3]에서 증가하므로 최솟값은 x=0의 k. f가 증가하려면 k≥0이고 가능한 최솟값은 0.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "93f036c9dcf2a76198c4a4bfdaee38a48849f0c999da963735eb071302bb4aec",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Closed interval, monotonicity requirement, and minimum-k request are explicit.",
+          "studentPayloadSha256": "855698a440de4ea733df03eff2fd4a3756f90b9cc1fbee770cd1ee02e7fc404e",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The derivative is minimized on the closed interval at x=0, yielding the least k.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "93f036c9dcf2a76198c4a4bfdaee38a48849f0c999da963735eb071302bb4aec"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II monotonicity on a closed interval; bucket 2 reflects derivative minimum at an endpoint.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+            "templateKey": "TPL_MONOTONICITY_CONDITION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No graph asset is needed; derivative monotonicity identifies its minimum.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "4",
+      "independentReasoning": "h=f-4x는 monic quartic이고 h'=f'-4의 세 근은 -3<a<b<0. h=3이 서로 다른 두 점에서 접하므로 h-3은 두 이중근의 곱이다. 두 접점 중 하나는 -3, 다른 하나는 b이고 남은 정류점 a는 중점이 된다: h=(x+3)^2(x-b)^2+3, a=(b-3)/2. h(a)=4에서 (b+3)^4/16=1, -3<b<0이므로 b=-1, a=-2. 이때 h(a)=4, h(b)=3이므로 f(a)f(b)=(4+4a)(3+4b)=(-4)(-1)=4.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f2a4028eef469998b8dac6b76d542306b08f6dd203d6ed1886755988c2a3a734",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Three tangent conditions are separately line-broken and labels (가)-(다) are preserved.",
+          "studentPayloadSha256": "3c59b5f0d47456d566687e76806ce05552854700ac44da213d29f8941b19795c",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The quartic difference is factored from the two tangencies; derivative roots locate the middle contact; parameter and requested values are computed.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "f2a4028eef469998b8dac6b76d542306b08f6dd203d6ed1886755988c2a3a734"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II quartic tangency/extrema; bucket 5 reflects constrained quartic factorization and parameter determination.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+            "templateKey": "TPL_TANGENT_EXTREMUM_FUNCTION_DETERMINE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 5,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No visual asset is present or required; quartic tangency conditions are encoded by the factored polynomial.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "15",
+      "independentReasoning": "From 2m-3n=8 and n=2k, m=4+3k. g''(2)=8-6k<0 requires k>=2; m-n=4+k<=20 gives k<=16, hence 15 pairs.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_CORRECT_OPTION",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3402da8c5ab14e18f261b685d0d0e3d5029401a3020b68afa53782ee33410a2a",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Natural-number restrictions and extremum condition are separately line-broken as (가)/(나).",
+          "studentPayloadSha256": "68e10525cf4f31066a036b5d7960635b015b005f1654907c5bbee7aba1c63e66",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The integral-defined derivative is evaluated at 2; the critical equation, strict second-derivative test, and natural-number bound count 15 pairs.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "3402da8c5ab14e18f261b685d0d0e3d5029401a3020b68afa53782ee33410a2a"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II integral-defined extrema; bucket 4 reflects critical and strict second-derivative conditions with integer counting.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INTEGRAL_DEFINED_EXTREMA_FROM_ROOT_COUNT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No diagram is required; the integral derivative and second derivative give exact extremum conditions.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "9/2",
+      "independentReasoning": "교점은 (x-2)^2=-x+4에서 x=0,3. 구간에서 직선-포물선=3x-x^2이므로 넓이는 ∫_0^3(3x-x^2)dx=9/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "\\dfrac{9}{2}",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_EXACT_RESULT",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3226d8e2d1bf58b298c394b35689e3a2787dd363ba2afc15a2e84369e6d6b4e6",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The two curves and bounded-area request are concise and unambiguous.",
+          "studentPayloadSha256": "492515b485d67ed07104f93ada3b711ba77351424f5ce8f3e7503887e14988ea",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Intersections are solved first; line-minus-curve is integrated over the bounded interval.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "3226d8e2d1bf58b298c394b35689e3a2787dd363ba2afc15a2e84369e6d6b4e6"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II area between curves; bucket 3 reflects intersection solving and definite integration.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "A sketch is optional, not needed to identify intersections or the sign of the explicit difference polynomial.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "1<a<2",
+      "independentReasoning": "접점 x=t인 접선이 P(1,a)를 지나면 a=f(t)+f'(t)(1-t)=-2t^3+3t^2+1. 이 함수는 t=0에서 극솟값 1, t=1에서 극댓값 2를 가지므로 서로 다른 세 실근이 생기는 범위는 엄격히 1<a<2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "1<a<2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_EXACT_RESULT",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d388eb35671cd89de7a9bed79a5b0694e683a3fb756235647bc6f274f8b2a713",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "External point, curve, and distinct-three-tangent condition are explicit in one prompt.",
+          "studentPayloadSha256": "7c8676223c5c1ca4968e8fd26f03614dfc9d0de7d563ec251ca3db8f647f8f77",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "The tangent-through-point condition becomes a cubic in the contact coordinate; its turning values give the strict range for three contacts.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "d388eb35671cd89de7a9bed79a5b0694e683a3fb756235647bc6f274f8b2a713"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II external tangent count; bucket 4 reflects deriving and analyzing an auxiliary cubic.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+            "templateKey": "TPL_TANGENT_FROM_EXTERNAL_POINT",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "A graph is optional; the auxiliary cubic derivative gives exact turning values and contact count.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "maximum 0; minimum -27/16",
+      "independentReasoning": "|f|가 0에서만 미분불가능하려면 0은 홀수 중복도의 근이고, 다른 실근은 짝수 중복도여야 한다. 최고차항 1인 삼차식에서 [1,3]에 근을 가지므로 허용 형태는 f(x)=x(x-r)^2, r∈[1,3]. (x=0 삼중근인 x^3은 [1,3]의 근이 없어 제외.) f(1)f'(1)=(1-r)^3(3-r). r∈[1,3]에서 끝값은 0, 내부 임계점 r=5/2? 미분하면 2(r-1)^2(2r-5), 따라서 최솟값 r=5/2에서 -27/16이고 최댓값 0.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "최댓값 0, 최솟값 -\\dfrac{27}{16}",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "answerCardinalityStatus": "SINGLE_EXACT_RESULT",
+      "repairApplied": false,
+      "sourceMode": "CURRENT_ARTIFACT_REVIEW",
+      "changedFields": [],
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d5bc5e974c1baebf1f2d5da9d588a4e641bffc3e9cb8033a44f52f11e7e5ce2e",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Absolute-value differentiability condition and interval-root condition are separate, followed by the requested extrema.",
+          "studentPayloadSha256": "4808fa9aa074583054e85f22262e24571347939c230555c7ea2214ae2d49dfdf",
+          "studentBodyUnchangedAfterRepair": true
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "evidence": "Root multiplicities determine the admissible cubic family; the target expression is reduced to a one-variable function and optimized.",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "solutionSha256": "d5bc5e974c1baebf1f2d5da9d588a4e641bffc3e9cb8033a44f52f11e7e5ce2e"
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "H2 Math II derivative/extrema with root multiplicity; bucket 5 reflects differentiability constraints and parameter optimization.",
+          "actualFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+            "templateKey": "TPL_ROOT_MULTIPLICITY_FUNCTION_DETERMINE",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 5,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "semanticDisposition": "FINAL",
+          "projectionDisposition": "POPULATED_CURRENT_KEYS_NO_NULL_DEBT"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "disposition": "VISUAL_NOT_REQUIRED",
+          "evidence": "No visual asset is required; multiplicity and one-variable optimization give exact extrema.",
+          "problemImage": null,
+          "solutionImage": null,
+          "visualAsset": null,
+          "requiredAssets": []
+        }
+      }
+    }
+  ]
+}

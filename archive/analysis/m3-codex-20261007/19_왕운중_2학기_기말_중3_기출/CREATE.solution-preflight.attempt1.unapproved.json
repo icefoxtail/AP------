@@ -1,0 +1,101 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "performedBeforeTargetSolutionAuthoring": true,
+  "protocol": "JS아카이브_학생용해설_운영규칙_v1.md §3/§6/§11; Archive_작업전_Golden_Sample_Calibration_v1.md §2-§5; source-only fresh-solve → sample calibration → target authoring",
+  "solutionWorkMode": "SOURCE_ONLY_FRESH_CREATE",
+  "calibrationOrder": [
+    "target source/PDF visual answer freeze",
+    "three current m3 Golden samples read",
+    "current cross-axis Negative fixture read",
+    "target solution authoring"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+    "archive/exams/original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+    "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sha256": "25e5fd2c5ad85c09fca3104038369e68039d55d5729412a92a9c2aa270cb5e51",
+      "gitBlobSha": "fd25dae6892c86a886128337fae0c1ad77ebe797",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "826acb47957bd5178ff0b19fa8daf01c5ebabdc1e8fffc0f61caf8d5ee7ff73f",
+          "solutionExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다.\n길이 $16\\rm\\,cm$인 현의 절반은 $8\\rm\\,cm$이다.\n\n반지름이 $10\\rm\\,cm$이므로 직각삼각형에서\n$x^2+8^2=10^2$,\n$x^2=36$이다.\n길이는 양수이므로 $x=6$이다.\n\n따라서 정답은 ①이다.",
+          "observation": "읽은 실제 solution은 필요 성질→수치 대입→중간 제곱식→양의 길이 선택→최종 선택지를 분리한다."
+        },
+        {
+          "qid": 5,
+          "solutionSha256": "03965776952fe6fa756d9abe6486a016abf3c32698f9b4e778c9c8f0ee0aa4a3",
+          "solutionExcerpt": "$AB$는 지름이므로\n$\\angle AOB=180^\\circ$이다.\n주어진 $\\angle AOC=62^\\circ$에서\n$\\angle BOC=180^\\circ-62^\\circ=118^\\circ$이다.\n\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n따라서\n$\\angle BCO=\\dfrac{180^\\circ-118^\\circ}{2}=31^\\circ$이다.\n\n정답은 ⑤이다.",
+          "observation": "읽은 실제 solution은 지름이 만드는 중심각→보각으로 남은 중심각→이등변삼각형 밑각 계산→정답으로 전개한다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+      "sha256": "86dc106504e50475c02237410b6943c18cb49494bed7518903478ad984ec8761",
+      "gitBlobSha": "9cc0ed7541ee55323fea4f0d91eebe3bc38bdb98",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "154914eac5d5c3224e80f27d51656ba462edc62d006a2d0388b5698bcd33990a",
+          "solutionExcerpt": "같은 호를 보는 중심각은 원주각의 $2$배이다.\n그림의 $50^\\circ$인 원주각과 중심각 $x$는 같은 호를 보므로\n$x=2\\times50^\\circ=100^\\circ$\n\n따라서 정답은 ⑤이다.",
+          "observation": "읽은 실제 solution은 필요 성질→수치 대입→중간 제곱식→양의 길이 선택→최종 선택지를 분리한다."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "19b0f9bc3a3593e58cedfd65dfc170d80adc77d07563af60a9e79cc109a055f6",
+          "solutionExcerpt": "호 $AB,BC,CD,DA$의 크기를 각각 $a,b,c,d$라 하자.\n원 밖의 점 $E$에서 두 할선이 이루는 각이 $22^\\circ$이므로\n$b-d=44^\\circ$\n점 $F$에서 두 할선이 이루는 각이 $24^\\circ$이므로\n$c-a=48^\\circ$\n따라서\n$b=d+44^\\circ,\\quad c=a+48^\\circ$\n한 원의 네 호의 합은 $360^\\circ$이므로\n$a+b+c+d=360^\\circ$\n$a+(d+44^\\circ)+(a+48^\\circ)+d=360^\\circ$\n$2(a+d)+92^\\circ=360^\\circ$\n$a+d=134^\\circ$\n$\\angle BCD=x$는 호 $BAD$를 보는 원주각이므로\n$x=\\dfrac{134^\\circ}{2}=67^\\circ$\n\n따라서 정답은 ②이다.",
+          "observation": "읽은 실제 solution은 외부 두 할선의 호 차를 각각 식으로 놓고 360° 전체 호 합에 대입해 원주각으로 마무리한다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+      "sha256": "72aa0e050a25db1749990c36564f57431c7fa0ff7fef32bb6731ca0218a7aad8",
+      "gitBlobSha": "6ac1d9fab4ddc6328c1b0282422a461d47a2b132",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "deec6327767cd9c220acead607c0bc563798754cd04a6031b50e0c3ce0aa07d7",
+          "solutionExcerpt": "중심각의 크기는 그 중심각이 보는 호의 크기와 같다.\n따라서 작은 호의 크기는 $134^\\circ$이고, $\\angle x$가 보는 반대쪽 큰 호의 크기는\n$360^\\circ-134^\\circ=226^\\circ$\n이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$\\angle x=\\dfrac{226^\\circ}{2}=113^\\circ$\n따라서 정답은 ②이다.",
+          "observation": "읽은 실제 solution은 필요 성질→수치 대입→중간 제곱식→양의 길이 선택→최종 선택지를 분리한다."
+        },
+        {
+          "qid": 8,
+          "solutionSha256": "a0fe9bdfe2d28fc4c096044356bf040f8917ba5a84a010d3c51741a1ebc8d5f9",
+          "solutionExcerpt": "$\\angle BAC=70^\\circ$이므로 호 $BC$의 크기는\n$2\\times70^\\circ=140^\\circ$\n이다.\n$\\angle BCA=60^\\circ$이므로 호 $AB$의 크기는\n$2\\times60^\\circ=120^\\circ$\n이다.\n두 현 $AC$, $BD$의 교점을 $E$라 하자.\n$\\angle BEC=95^\\circ$이므로\n$95^\\circ=\\dfrac{\\wideparen{BC}+\\wideparen{AD}}{2}$\n$190^\\circ=140^\\circ+\\wideparen{AD}$\n$\\wideparen{AD}=50^\\circ$\n원 전체에서\n$\\wideparen{CD}=360^\\circ-(120^\\circ+140^\\circ+50^\\circ)=50^\\circ$\n따라서\n$x=\\dfrac{\\wideparen{CD}}2=25^\\circ,\\qquad y=\\dfrac{\\wideparen{AD}}2=25^\\circ$\n그러므로\n$2x-y=2\\times25^\\circ-25^\\circ=25^\\circ$\n따라서 정답은 ①이다.",
+          "observation": "읽은 실제 solution은 원주각에서 호를 계산하고 교차현 각 정리를 수식으로 대입한 뒤 나머지 호와 최종 답을 계산한다."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+    "observation": "README directly read: actual SVG primitives/coordinates must be checked, enumerated judgments must each have separate reasoning blocks, exact-active Meta lookup prevents false null, evaluated runtime must catch doubled TeX escapes."
+  },
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "calibrationConclusions": [
+    "Keep the decisive equation and each transformation as explicit lines; never substitute prose for an omitted calculation.",
+    "For enumerated statements, separate each judgment; do not accept a self-reported count without checking actual structure.",
+    "For figures, bind claims to the actual geometry; exact student text and evaluated runtime TeX are separate checks.",
+    "Samples set a quality floor only; target answers and curriculum decisions remain source-derived."
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "qualityCompareCount": "PENDING_FINAL_SOLUTION"
+}

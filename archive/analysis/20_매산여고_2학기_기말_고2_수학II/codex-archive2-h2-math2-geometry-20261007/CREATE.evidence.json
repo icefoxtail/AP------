@@ -1,0 +1,2722 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "20_매산여고_2학기_기말_고2_수학II",
+  "artifactSha": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+  "artifactRawSha256": "74c898650063a4f314ff5cf993c1d70b2cc69d360dd343c93910d5eb243d2ea0",
+  "validatorRawBufferBlobSha1": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+  "gitCleanFilterBlobSha1": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "observation": "Actual q7 solution and SVG read. The solution derives C0=(−3,1), translates it to C1=(−5,2), then reflects it to C2=(5,−2), retaining radius 3. SVG circle centers, equal radii, labels, dashed intermediate states, and final equation agree with those values; axes use equal unit scale.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation. Referenced solution SVG read; line coefficients and endpoint coordinates agree with labeled lines.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Approved failure fixture was read. It records false PASS from SVG label-versus-coordinate mismatch, collapsed enumerated small-board steps, null Meta despite unique exact active classifications, and runtime escaping drift. CREATE will inspect actual geometry, explicit intermediate equations, current metadata evidence, and evaluated runtime strings."
+    }
+  },
+  "sourceAudit": {
+    "adoptedSource": {
+      "sourcePdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말.pdf",
+      "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+      "answerPdfAbsolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말_해설.pdf",
+      "answerPdfSha256": "8188e7fba4214c9cb31f326b68f1accd74eb177333c62e7ed30992f3dd45ec36",
+      "school": "순천매산여자고등학교",
+      "grade": "고2",
+      "course": "수학II",
+      "term": "2020학년도 2학기 기말고사",
+      "pageCount": 6,
+      "qidCount": 23,
+      "denominator": {
+        "multipleChoice": 18,
+        "shortAnswer": 2,
+        "constructedResponse": 3
+      },
+      "sourceEvidenceAbsolutePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+      "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+      "sourcePageImages": [
+        {
+          "page": 1,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-1.png",
+          "sha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5",
+          "matchesSourceEvidenceRenderSha256": true
+        },
+        {
+          "page": 2,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-2.png",
+          "sha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84",
+          "matchesSourceEvidenceRenderSha256": true
+        },
+        {
+          "page": 3,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-3.png",
+          "sha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112",
+          "matchesSourceEvidenceRenderSha256": true
+        },
+        {
+          "page": 4,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-4.png",
+          "sha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f",
+          "matchesSourceEvidenceRenderSha256": true
+        },
+        {
+          "page": 5,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-5.png",
+          "sha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785",
+          "matchesSourceEvidenceRenderSha256": true
+        },
+        {
+          "page": 6,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-6.png",
+          "sha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a",
+          "matchesSourceEvidenceRenderSha256": true
+        }
+      ]
+    },
+    "qid2SpotCheck": {
+      "sourcePdfPage": 1,
+      "cropPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\q2-source-crop.png",
+      "cropSha256": "d8b950303c154205bb83f20d5e9c7bd84ea332279ed2c59c0ab7f4fd616b3d06",
+      "cropRectFitZPagePoints": [
+        20,
+        500,
+        360,
+        645
+      ],
+      "sourceText": "등식 ∫f(x)dx=7x²−3x+C를 만족시키는 함수 f(x)에 대하여 f(1)의 값을 구하면? (단, C는 적분상수) [3.5점]",
+      "candidateParity": "PASS",
+      "answerPdfPage": 1,
+      "answerPdfView": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\answer-exact-page1.png",
+        "sha256": "141903979077f1284670b792c6cb5c46581f45362cf792c332de61d8ec97a74d",
+        "parity": "MATCHES_TARGET_Q2"
+      },
+      "legacySourceEvidenceBBoxRetained": [
+        35,
+        260,
+        330,
+        355
+      ]
+    },
+    "lookupCandidatesNotAdopted": [
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2025_매산고2_수2_2기말.pdf",
+        "sha256": "34f5cdc7077a7a11c6f0ba335f515c4eb6635d4e7763acd9f919d4a3ff56caa3",
+        "status": "NOT_ADOPTED_WRONG_YEAR_AND_SCHOOL_IDENTITY"
+      },
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매산고2_수2_2기말.pdf",
+        "sha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "status": "NOT_ADOPTED_DIFFERENT_IDENTITY_AND_SOURCE_PDF_SHA"
+      }
+    ]
+  },
+  "sourceReviewAttempts": [
+    {
+      "attemptId": "create05-source-review-false-finding-20261007",
+      "reviewerFinding": {
+        "qid": 2,
+        "claim": "candidate qid2 differs from source PDF q2",
+        "status": "FALSE_FINDING"
+      },
+      "cause": {
+        "description": "A non-adopted 2025 male-school PDF bitmap was mistaken for the target 2020 female-school source.",
+        "wrongPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2025_매산고2_수2_2기말.pdf",
+        "wrongPdfSha256": "34f5cdc7077a7a11c6f0ba335f515c4eb6635d4e7763acd9f919d4a3ff56caa3",
+        "actualViewedPngPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\not-adopted\\2025-maesan-go-34f5cdc7077a7a11c6fba6aa77cfcc4c6d45a3473dc45bb\\page1.png",
+        "actualViewedPngSha256": "d12dd71ceb52e2a98913c343c3cd041bbc6dd4da2e5c6e13647bf73ab3aadd62"
+      },
+      "rootDecision": {
+        "status": "AUDITED_SOURCE_REPAIR_APPROVED_THEN_CANCELLED_BEFORE_MUTATION",
+        "qid": 2,
+        "authority": "ROOT",
+        "cancelledReason": "Adopted 2020 source problem page and answer page both match unchanged candidate qid2.",
+        "mutationOccurred": false
+      },
+      "finalAdjudication": {
+        "status": "SUPERSEDED_BY_CORRECT_SOURCE_IDENTIFICATION",
+        "sourceParity": "PASS",
+        "candidateQuestionChanged": false
+      }
+    }
+  ],
+  "headProvenance": {
+    "initialVerifiedHead": "dd0cc151ce301fbda6b9bc91820954e85d6d0969",
+    "currentHead": "4753663520409596272b0217c5c7c417ca2b8f92",
+    "driftType": "PUBLICATION_ONLY"
+  },
+  "authorityHashes": {
+    "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+    "archive/data/master_tables/js_archive_tag_master.json": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json": "491f2b503d8405c5d0e42d79ea772237a83a44aac9873822adf644eaa4cec9e0",
+    "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2",
+    "archive/data/meta-foundation/canonical/packs/derivative/bindings.json": "749352f85c414239687ed44e9f0ca8b372f6c4f57fe7bb356cdbe8f751e96df5",
+    "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0",
+    "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e",
+    "archive/data/meta-foundation/canonical/condition_registry.json": "bbb8e0c4c10211e5faadeb5cfe462aa5a9b06890ad4052690b24002dc5511c4e",
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+  },
+  "copiedSourceAssets": [
+    {
+      "qid": 8,
+      "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8.png",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\assets\\images\\20_매산여고_2학기_기말_고2_수학II\\q8.png",
+      "sha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f",
+      "sourcePage": 2,
+      "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19"
+    },
+    {
+      "qid": 10,
+      "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10.png",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\assets\\images\\20_매산여고_2학기_기말_고2_수학II\\q10.png",
+      "sha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d",
+      "sourcePage": 3,
+      "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19"
+    }
+  ],
+  "rootRenderDecision": {
+    "status": "NOT_RUN_ROOT_WAIVER",
+    "scope": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "captures": 0,
+    "authority": "ROOT assignment",
+    "reason": "ROOT selected static completion; no actual RENDER_PASS is claimed."
+  },
+  "artifactDispositions": {
+    "artifactSha": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": []
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "b348876b5dddfd8b57ee8dbea189e4b97892ff524dfdec97349c87fc99f525e1",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "b348876b5dddfd8b57ee8dbea189e4b97892ff524dfdec97349c87fc99f525e1",
+          "primaryMethod": "위치 함수를 미분해 속도와 가속도를 순서대로 구한다.",
+          "decisiveStep": "x(t)를 두 번 미분한 뒤 t=1을 대입해 가속도를 결정한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MOTION",
+            "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "위치 함수를 미분해 속도와 가속도를 순서대로 구한다.",
+          "decisiveStep": "x(t)를 두 번 미분한 뒤 t=1을 대입해 가속도를 결정한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-029",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(3)",
+              "l3": "속도와 가속도",
+              "l4": "위치·속도·가속도"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "두 번 미분하고 한 값을 대입하는 직접 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 1,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              160,
+              330,
+              255
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-1.png",
+            "sha256": "61dca5674b984f2d7aed361ee58d553c1117793e32bab92de4f68a959d62bbe1"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-1.png",
+            "sha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "41fdc4a210f150ce42446c9a26bbfb36948757115c92ce2350d0ea0f3b410f31",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "41fdc4a210f150ce42446c9a26bbfb36948757115c92ce2350d0ea0f3b410f31",
+          "primaryMethod": "부정적분으로 주어진 식을 미분해 피적분함수를 복원한다.",
+          "decisiveStep": "양변을 미분하여 f(x)=14x-3을 얻고 x=1을 대입한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "부정적분으로 주어진 식을 미분해 피적분함수를 복원한다.",
+          "decisiveStep": "양변을 미분하여 f(x)=14x-3을 얻고 x=1을 대입한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-031",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "부정적분의 뜻",
+              "l4": "원시함수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "부정적분의 역연산과 함수값 대입."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 1,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              260,
+              330,
+              355
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-1.png",
+            "sha256": "61dca5674b984f2d7aed361ee58d553c1117793e32bab92de4f68a959d62bbe1"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-1.png",
+            "sha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "9c70586bb9430e4fa50cb2aed4be4cf678d3153a78211cde9f8c7d743a811454",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9c70586bb9430e4fa50cb2aed4be4cf678d3153a78211cde9f8c7d743a811454",
+          "primaryMethod": "다항함수의 원시함수를 구해 정적분의 상한·하한 값을 계산한다.",
+          "decisiveStep": "원시함수 x^4+4x를 구한 뒤 0과 -1에서의 값의 차를 계산한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-08",
+            "standardUnit": "정적분",
+            "standardUnitOrder": 8,
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "subUnit": "정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+            "templateKey": "TPL_DEFINITE_EVALUATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "다항함수의 원시함수를 구해 정적분의 상한·하한 값을 계산한다.",
+          "decisiveStep": "원시함수 x^4+4x를 구한 뒤 0과 -1에서의 값의 차를 계산한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-037",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분",
+              "l3": "정적분의 뜻",
+              "l4": "정적분 계산"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "원시함수와 두 끝값 대입."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 1,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              355,
+              330,
+              455
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-1.png",
+            "sha256": "61dca5674b984f2d7aed361ee58d553c1117793e32bab92de4f68a959d62bbe1"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-1.png",
+            "sha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "fc6a4137aafbb8e1c276d237a73ade1ea59f5e3ee22c1ea0051751b42e80ee78",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "fc6a4137aafbb8e1c276d237a73ade1ea59f5e3ee22c1ea0051751b42e80ee78",
+          "primaryMethod": "도함수를 적분하고 초기 함수값으로 적분상수를 정한다.",
+          "decisiveStep": "f(x)=x^4+x^3/3-x+C를 구하고 f(0)=4로 C=4를 결정한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "도함수를 적분하고 초기 함수값으로 적분상수를 정한다.",
+          "decisiveStep": "f(x)=x^4+x^3/3-x+C를 구하고 f(0)=4로 C=4를 결정한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-036",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "조건을 이용한 함수 결정",
+              "l4": "도함수에서 원함수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "원함수 복원과 초기조건 대입."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 1,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              160,
+              705,
+              260
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-1.png",
+            "sha256": "61dca5674b984f2d7aed361ee58d553c1117793e32bab92de4f68a959d62bbe1"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-1.png",
+            "sha256": "35bd471a0cdfdca8e31c7e89b652ec02449863deb7457a15162a6146e51a29a5"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "3328e17e7f77042d245d268e10b2f82378b7c04008a33e1177590cd91efd0869",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3328e17e7f77042d245d268e10b2f82378b7c04008a33e1177590cd91efd0869",
+          "primaryMethod": "도함수의 부정적분에 미지 상수를 두고 최솟값 조건으로 상수를 결정한다.",
+          "decisiveStep": "f(x)=2(x-2)^2+C-8에서 최솟값 조건으로 C=13을 구한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "도함수의 부정적분에 미지 상수를 두고 최솟값 조건으로 상수를 결정한다.",
+          "decisiveStep": "f(x)=2(x-2)^2+C-8에서 최솟값 조건으로 C=13을 구한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-032",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "부정적분의 뜻",
+              "l4": "적분상수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "적분상수 결정과 이차함수의 꼭짓점."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 2,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              55,
+              330,
+              150
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-2.png",
+            "sha256": "26fa803ba191e96ca78aefeed26924e45f4c53097ebcf3892e72bb516cbc2c60"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-2.png",
+            "sha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "a66490ab19b9acedd41a02e53a7e5051deb1874472291564739f608bf8b80438",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "a66490ab19b9acedd41a02e53a7e5051deb1874472291564739f608bf8b80438",
+          "primaryMethod": "전 구간 증가 조건을 도함수의 전역 부호 조건으로 바꾸고 판별식으로 a의 범위를 정한다.",
+          "decisiveStep": "f′(x)=3x²+2ax+2a≥0의 판별식 조건 a(a−6)≤0에서 0≤a≤6을 얻는다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+            "templateKey": "TPL_MONOTONICITY_CONDITION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_RANGE"
+            ],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "전 구간 증가 조건을 도함수의 전역 부호 조건으로 바꾸고 판별식으로 a의 범위를 정한다.",
+          "decisiveStep": "f′(x)=3x²+2ax+2a≥0의 판별식 조건 a(a−6)≤0에서 0≤a≤6을 얻는다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-023",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "증가·감소와 극값",
+              "l4": "증감표"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "전 구간 단조성의 판별식 경계."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 2,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              440,
+              330,
+              585
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-2.png",
+            "sha256": "26fa803ba191e96ca78aefeed26924e45f4c53097ebcf3892e72bb516cbc2c60"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-2.png",
+            "sha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "1431a0dd8ba0f50089487d10b28bc90b479c04c4ec849a378acb7b3bdae239ac",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "1431a0dd8ba0f50089487d10b28bc90b479c04c4ec849a378acb7b3bdae239ac",
+          "primaryMethod": "극솟값 위치와 함수값 조건으로 계수를 정한 뒤 다른 극점의 함수값을 계산한다.",
+          "decisiveStep": "f′(3)=0, f(3)=3에서 a=−6,b=9를 구하고 다른 극점 x=1의 값을 더한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+            "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "극솟값 위치와 함수값 조건으로 계수를 정한 뒤 다른 극점의 함수값을 계산한다.",
+          "decisiveStep": "f′(3)=0, f(3)=3에서 a=−6,b=9를 구하고 다른 극점 x=1의 값을 더한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-024",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "증가·감소와 극값",
+              "l4": "극대·극소"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "극점 조건 연립과 다른 극값 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 2,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              55,
+              705,
+              155
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-2.png",
+            "sha256": "26fa803ba191e96ca78aefeed26924e45f4c53097ebcf3892e72bb516cbc2c60"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-2.png",
+            "sha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+          "primaryMethod": "도함수 그래프의 부호 변화를 읽어 원함수의 증가·감소와 극값 개형을 정한다.",
+          "decisiveStep": "f′의 부호가 +,−,+,−로 바뀌므로 x=−1,0,1에서 극대·극소·극대가 되는 보기를 고른다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+            "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "도함수 그래프의 부호 변화를 읽어 원함수의 증가·감소와 극값 개형을 정한다.",
+          "decisiveStep": "f′의 부호가 +,−,+,−로 바뀌므로 x=−1,0,1에서 극대·극소·극대가 되는 보기를 고른다.",
+          "crosswalkRecord": null,
+          "lookupDisposition": "ACTIVE_MACHINE_PROJECTION_WITH_NONBLOCKING_RPM_COVERAGE_GAP",
+          "difficultyRationale": "도함수 부호 변화로 원함수 개형 판정."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "REQUIRED_SOURCE_CROP",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": {
+            "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8.png",
+            "sha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f",
+            "sourcePage": 2,
+            "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19"
+          },
+          "observation": "Reference derivative graph and five graph choices are present.",
+          "correctionReview": {
+            "status": "PASS_NO_ARTIFACT_CHANGE",
+            "goldenSamplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+            "goldenQid": 7,
+            "goldenVisualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "targetSolutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+            "targetAssetSha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f",
+            "reviewedDisposition": "SOURCE_PROBLEM_CROP_REQUIRED; SOLUTION_SVG_NOT_REQUIRED"
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 2,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_VISUAL_CHOICES_IN_SOURCE_ASSET",
+            "bboxPdfPoints": [
+              365,
+              538,
+              705,
+              920
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-2.png",
+            "sha256": "26fa803ba191e96ca78aefeed26924e45f4c53097ebcf3892e72bb516cbc2c60"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-2.png",
+            "sha256": "f976b0cdc439ae6449032eb47f6f836be9653c8de4669554e478d79736c95b84"
+          },
+          "asset": {
+            "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8.png",
+            "sha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f"
+          }
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "bcd88ef5f49b2203d6df430c7ec8436e0b87d8c9849d700d13ecdaff981cbac9",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "bcd88ef5f49b2203d6df430c7ec8436e0b87d8c9849d700d13ecdaff981cbac9",
+          "primaryMethod": "도함수의 두 극점을 확인하고 주어진 극솟값으로 적분상수를 정한 뒤 극댓값을 계산한다.",
+          "decisiveStep": "f′=(x+3)(x−1)에서 x=1의 최솟값으로 C를 정하고 x=−3을 대입한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+            "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "도함수의 두 극점을 확인하고 주어진 극솟값으로 적분상수를 정한 뒤 극댓값을 계산한다.",
+          "decisiveStep": "f′=(x+3)(x−1)에서 x=1의 최솟값으로 C를 정하고 x=−3을 대입한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-024",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "증가·감소와 극값",
+              "l4": "극대·극소"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "적분상수 복원과 극댓값 산출."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 3,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              55,
+              330,
+              145
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-3.png",
+            "sha256": "b85fd9cd9091cfce6bc51ab8f55ac46b9bead49392185a3ffc88fbfa32e04d4f"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-3.png",
+            "sha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+          "primaryMethod": "도함수 그래프에서 극값을 복원하고 수평선 y=k가 삼차함수와 세 번 만나는 범위를 정수로 센다.",
+          "decisiveStep": "f(−1)=3, f(1)=7이므로 3<k<7이며 정수 k는 4,5,6이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+            "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_INTEGER"
+            ],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "도함수 그래프에서 극값을 복원하고 수평선 y=k가 삼차함수와 세 번 만나는 범위를 정수로 센다.",
+          "decisiveStep": "f(−1)=3, f(1)=7이므로 3<k<7이며 정수 k는 4,5,6이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-027",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(3)",
+              "l3": "방정식과 부등식",
+              "l4": "근의 개수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "도함수 그래프에서 열린 극값 범위와 정수 개수 판정."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "REQUIRED_SOURCE_CROP",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": {
+            "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10.png",
+            "sha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d",
+            "sourcePage": 3,
+            "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19"
+          },
+          "observation": "Derivative graph axes, roots ±1, and maximum label 3 are present.",
+          "correctionReview": {
+            "status": "PASS_NO_ARTIFACT_CHANGE",
+            "goldenSamplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+            "goldenQid": 7,
+            "goldenVisualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "targetSolutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+            "targetAssetSha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d",
+            "reviewedDisposition": "SOURCE_PROBLEM_CROP_REQUIRED; SOLUTION_SVG_NOT_REQUIRED"
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 3,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              150,
+              330,
+              385
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-3.png",
+            "sha256": "b85fd9cd9091cfce6bc51ab8f55ac46b9bead49392185a3ffc88fbfa32e04d4f"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-3.png",
+            "sha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112"
+          },
+          "asset": {
+            "ref": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10.png",
+            "sha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d"
+          }
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "12f84f029e94c457f39f309a6c4eb7a5417411cc2d4308518ac1a5cd0d45bf8c",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "12f84f029e94c457f39f309a6c4eb7a5417411cc2d4308518ac1a5cd0d45bf8c",
+          "primaryMethod": "부정적분 관계식을 미분해 f′를 얻고 f(2)로 적분상수를 정한다.",
+          "decisiveStep": "x f′(x)=9x²−10x에서 f′=9x−10을 구한 뒤 f(2)=6을 대입한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "부정적분 관계식을 미분해 f′를 얻고 f(2)로 적분상수를 정한다.",
+          "decisiveStep": "x f′(x)=9x²−10x에서 f′=9x−10을 구한 뒤 f(2)=6을 대입한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-031",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "부정적분의 뜻",
+              "l4": "원시함수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "함수·원시함수 항등식 미분과 계수 복원."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 3,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              55,
+              705,
+              150
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-3.png",
+            "sha256": "b85fd9cd9091cfce6bc51ab8f55ac46b9bead49392185a3ffc88fbfa32e04d4f"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-3.png",
+            "sha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "62a3987d4979376f1e51b72a5e1e56000f2351267fa11f784fc465e5974cb10e",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "62a3987d4979376f1e51b72a5e1e56000f2351267fa11f784fc465e5974cb10e",
+          "primaryMethod": "닫힌구간의 끝점과 도함수의 임계점을 모두 비교해 최댓값 조건에서 상수를 정한다.",
+          "decisiveStep": "기본 다항식의 최댓값 32와 최솟값 −20을 구하고 k+35=38에서 k=3을 얻는다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+            "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_RANGE"
+            ],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "닫힌구간의 끝점과 도함수의 임계점을 모두 비교해 최댓값 조건에서 상수를 정한다.",
+          "decisiveStep": "기본 다항식의 최댓값 32와 최솟값 −20을 구하고 k+35=38에서 k=3을 얻는다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-025",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "최대·최소",
+              "l4": "구간 최대·최소"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "닫힌구간 임계점·끝점 전체 비교."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 3,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              150,
+              705,
+              255
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-3.png",
+            "sha256": "b85fd9cd9091cfce6bc51ab8f55ac46b9bead49392185a3ffc88fbfa32e04d4f"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-3.png",
+            "sha256": "beb69f27a5bd084d879cef50d2c91ac88307c06eb06ec509d81ee7434f987112"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "f7bd98c033e0b3b25f4ab7d8e4a2c0d5e9bba69587e607f5135e28e2458109fd",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "f7bd98c033e0b3b25f4ab7d8e4a2c0d5e9bba69587e607f5135e28e2458109fd",
+          "primaryMethod": "두 곡선의 교점을 구하고 위·아래가 바뀌는 구간별로 차의 절댓값을 적분한다.",
+          "decisiveStep": "교점 −2,0,1로 구간을 나누어 8/3과 5/12를 더한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "두 곡선의 교점을 구하고 위·아래가 바뀌는 구간별로 차의 절댓값을 적분한다.",
+          "decisiveStep": "교점 −2,0,1로 구간을 나누어 8/3과 5/12를 더한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-044",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분의 활용",
+              "l3": "넓이",
+              "l4": "두 곡선 사이"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "교점과 구간별 위아래 전환을 포함한 넓이 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 4,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              55,
+              330,
+              155
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-4.png",
+            "sha256": "0c1a96163adf895e0ea071650adcc342b2d7d1f9d12717c679cd2978f252076a"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-4.png",
+            "sha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "7b3fc0547da6d516db3088e118500ef8702b0d119bbcba6c5a08c604adaeae22",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7b3fc0547da6d516db3088e118500ef8702b0d119bbcba6c5a08c604adaeae22",
+          "primaryMethod": "속도를 적분해 위치 함수를 구하고 초기 위치를 반영한 뒤 원점에 도달하는 시각을 인수분해한다.",
+          "decisiveStep": "x(t)=−5+2t³−9t²+12t=0의 허용 근 1,5/2를 더한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+            "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_RANGE"
+            ],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "속도를 적분해 위치 함수를 구하고 초기 위치를 반영한 뒤 원점에 도달하는 시각을 인수분해한다.",
+          "decisiveStep": "x(t)=−5+2t³−9t²+12t=0의 허용 근 1,5/2를 더한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-046",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분의 활용",
+              "l3": "속도와 거리",
+              "l4": "위치 변화"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "속도 적분·초기위치·시간근 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 4,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              155,
+              330,
+              285
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-4.png",
+            "sha256": "0c1a96163adf895e0ea071650adcc342b2d7d1f9d12717c679cd2978f252076a"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-4.png",
+            "sha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "653829e650d4188fd9b7a343c18ffbac2190dfe178623183034505f7dffb99f0",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "653829e650d4188fd9b7a343c18ffbac2190dfe178623183034505f7dffb99f0",
+          "primaryMethod": "|x|=2,3에서 구간을 나누어 중심의 양의 영역과 양쪽의 음의 영역 넓이를 모두 합한다.",
+          "decisiveStep": "짝함수이므로 2[∫₀²f(x)dx+∫₂³−f(x)dx]=29/3이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "CASE_BRANCH",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "|x|=2,3에서 구간을 나누어 중심의 양의 영역과 양쪽의 음의 영역 넓이를 모두 합한다.",
+          "decisiveStep": "짝함수이므로 2[∫₀²f(x)dx+∫₂³−f(x)dx]=29/3이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-043",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분의 활용",
+              "l3": "넓이",
+              "l4": "곡선과 x축"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "절댓값 함수의 세 유계영역을 부호별 적분."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 4,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              55,
+              705,
+              150
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-4.png",
+            "sha256": "0c1a96163adf895e0ea071650adcc342b2d7d1f9d12717c679cd2978f252076a"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-4.png",
+            "sha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "63229d556f4e0a85e5f366f962b16659813e195977cc97a46c36cb892fa51e25",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "63229d556f4e0a85e5f366f962b16659813e195977cc97a46c36cb892fa51e25",
+          "primaryMethod": "g의 홀함수성과 g′의 짝함수성을 이용해 대칭구간에서 사라지는 항을 제거하고 미적분 기본정리로 경계값을 얻는다.",
+          "decisiveStep": "홀함수 적분은 0이고 −3∫g′=−6g(2)=20이므로 12g(−2)=40이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-08",
+            "standardUnit": "정적분",
+            "standardUnitOrder": 8,
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "subUnit": "정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+            "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "INTERDEPENDENT",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "g의 홀함수성과 g′의 짝함수성을 이용해 대칭구간에서 사라지는 항을 제거하고 미적분 기본정리로 경계값을 얻는다.",
+          "decisiveStep": "홀함수 적분은 0이고 −3∫g′=−6g(2)=20이므로 12g(−2)=40이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-040",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분",
+              "l3": "정적분의 성질",
+              "l4": "대칭성"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "홀짝성과 대칭구간 정적분의 관계."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 4,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              335,
+              155,
+              705,
+              300
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-4.png",
+            "sha256": "0c1a96163adf895e0ea071650adcc342b2d7d1f9d12717c679cd2978f252076a"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-4.png",
+            "sha256": "3e0039b386fbe07a828f520f49acc542094e9a31138694a3e8c52533a205a54f"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "9bae7970267980dfdf348b89adcc75269ffae69f79a370f98b3c74f73443d73a",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9bae7970267980dfdf348b89adcc75269ffae69f79a370f98b3c74f73443d73a",
+          "primaryMethod": "부정적분 관계식을 미분해 g′−g의 다항식 항등식을 세우고 계수를 비교한다.",
+          "decisiveStep": "g′−g=3x³−4x²−12x+3에서 g(1)=−7을 얻는다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "부정적분 관계식을 미분해 g′−g의 다항식 항등식을 세우고 계수를 비교한다.",
+          "decisiveStep": "g′−g=3x³−4x²−12x+3에서 g(1)=−7을 얻는다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-031",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "부정적분의 뜻",
+              "l4": "원시함수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "부정적분 함수관계의 항등식과 계수 비교."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 5,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              55,
+              330,
+              190
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-5.png",
+            "sha256": "d50cae0e84a172fe27a8be143475578c0d94a8283c3751cbb54844795e29a872"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-5.png",
+            "sha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "ed8934c61c0a8cc036a3fbe392eb4d87ed7994e0c8671109b0761055b8f1f7b5",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ed8934c61c0a8cc036a3fbe392eb4d87ed7994e0c8671109b0761055b8f1f7b5",
+          "primaryMethod": "세 매개변수 값마다 도함수의 임계점과 구간 끝점을 비교해 g(a)를 계산한다.",
+          "decisiveStep": "g(−1)=1, g(1/4)=1/4, g(1)=15를 얻어 가중합 18을 계산한다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+            "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_RANGE"
+            ],
+            "integrationPattern": "CASE_BRANCH",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "세 매개변수 값마다 도함수의 임계점과 구간 끝점을 비교해 g(a)를 계산한다.",
+          "decisiveStep": "g(−1)=1, g(1/4)=1/4, g(1)=15를 얻어 가중합 18을 계산한다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-025",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "최대·최소",
+              "l4": "구간 최대·최소"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "매개변수 세 값의 구간 최댓값 비교."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 5,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "bboxPdfPoints": [
+              35,
+              390,
+              330,
+              510
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-5.png",
+            "sha256": "d50cae0e84a172fe27a8be143475578c0d94a8283c3751cbb54844795e29a872"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-5.png",
+            "sha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "ed7635632da14692440613c76cb7126c738bd36c21eba0f604e4860d74457539",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ed7635632da14692440613c76cb7126c738bd36c21eba0f604e4860d74457539",
+          "primaryMethod": "곡선의 영점 0과 2를 확인하고 그 사이에서 비음이 아닌 다항함수를 적분한다.",
+          "decisiveStep": "∫₀²x(x−2)²dx=4/3이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "곡선의 영점 0과 2를 확인하고 그 사이에서 비음이 아닌 다항함수를 적분한다.",
+          "decisiveStep": "∫₀²x(x−2)²dx=4/3이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-043",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분의 활용",
+              "l3": "넓이",
+              "l4": "곡선과 x축"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "영점 구간에서 다항함수 넓이 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 5,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "NA",
+            "bboxPdfPoints": [
+              335,
+              200,
+              705,
+              340
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-5.png",
+            "sha256": "d50cae0e84a172fe27a8be143475578c0d94a8283c3751cbb54844795e29a872"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-5.png",
+            "sha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "39a60b299bb3084601437f8aed525826102be01aa31c270c0272c131ea32ec88",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "39a60b299bb3084601437f8aed525826102be01aa31c270c0272c131ea32ec88",
+          "primaryMethod": "외분점 공식을 y좌표에 적용해 t의 삼차함수를 만들고 도함수로 극댓값을 구한다.",
+          "decisiveStep": "f(t)=(−2t³+54t+5)/5의 극댓값은 t=3에서 113/5이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-06",
+            "standardUnit": "도함수의 활용",
+            "standardUnitOrder": 6,
+            "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+            "subUnit": "도함수의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+            "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 4,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "외분점 공식을 y좌표에 적용해 t의 삼차함수를 만들고 도함수로 극댓값을 구한다.",
+          "decisiveStep": "f(t)=(−2t³+54t+5)/5의 극댓값은 t=3에서 113/5이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-026",
+            "rpmPath": {
+              "majorUnit": "미분",
+              "midUnit": "도함수의 활용(2)",
+              "l3": "최대·최소",
+              "l4": "도형 활용"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "외분 모델링 후 삼차함수 극대."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 5,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "NA",
+            "bboxPdfPoints": [
+              335,
+              390,
+              705,
+              550
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-5.png",
+            "sha256": "d50cae0e84a172fe27a8be143475578c0d94a8283c3751cbb54844795e29a872"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-5.png",
+            "sha256": "735edab818e45320eee5c8ca8cd9d4cadab4b1fb6b499147bbbbb39b94f57785"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "60670ce7cb22820c0c86b9e6361419e162529c9087b5bc42c0452b0b04c99d34",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "60670ce7cb22820c0c86b9e6361419e162529c9087b5bc42c0452b0b04c99d34",
+          "primaryMethod": "접선 기울기로 주어진 f′를 적분하고 점 (1,6)으로 적분상수를 결정한다.",
+          "decisiveStep": "f(x)=2x³+5x²−4x+3에서 f(−1)=10이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-07",
+            "standardUnit": "부정적분",
+            "standardUnitOrder": 7,
+            "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+            "subUnit": "부정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "접선 기울기로 주어진 f′를 적분하고 점 (1,6)으로 적분상수를 결정한다.",
+          "decisiveStep": "f(x)=2x³+5x²−4x+3에서 f(−1)=10이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-036",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "부정적분",
+              "l3": "조건을 이용한 함수 결정",
+              "l4": "도함수에서 원함수"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "도함수 적분과 초기조건."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 6,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "NA",
+            "bboxPdfPoints": [
+              25,
+              90,
+              360,
+              540
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-6.png",
+            "sha256": "fedf4f58ee8c2cc4ca47a5bcc7b5969b2f257c6c37b4638d3d9b0255fc0c3542"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-6.png",
+            "sha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "72c74eb93e81ce989eaa11fed5d63c24ca2cf409c6c6534602f8d104f5ce74ae",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "72c74eb93e81ce989eaa11fed5d63c24ca2cf409c6c6534602f8d104f5ce74ae",
+          "primaryMethod": "극한의 최고차항 비로 두 다항함수의 차수를 결정하고 나머지 조건으로 함수를 복원한 뒤 넓이를 적분한다.",
+          "decisiveStep": "f=x⁴−3x²−4=(x²−4)(x²+1)이므로 x축과의 넓이는 96/5이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-09",
+            "standardUnit": "적분의 활용",
+            "standardUnitOrder": 9,
+            "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+            "subUnit": "적분의 활용",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+            "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "difficultyBucket": 5,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "극한의 최고차항 비로 두 다항함수의 차수를 결정하고 나머지 조건으로 함수를 복원한 뒤 넓이를 적분한다.",
+          "decisiveStep": "f=x⁴−3x²−4=(x²−4)(x²+1)이므로 x축과의 넓이는 96/5이다.",
+          "crosswalkRecord": {
+            "id": "H2-M2-RPM-043",
+            "rpmPath": {
+              "majorUnit": "적분",
+              "midUnit": "정적분의 활용",
+              "l3": "넓이",
+              "l4": "곡선과 x축"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "bindingStatus": "ACTIVE"
+          },
+          "lookupDisposition": "DIRECT_CURRENT_CROSSWALK",
+          "difficultyRationale": "차수 비 추론, 함수 복원, 근과 부호 확인, 넓이 계산."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 6,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "NA",
+            "bboxPdfPoints": [
+              365,
+              40,
+              705,
+              510
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-6.png",
+            "sha256": "fedf4f58ee8c2cc4ca47a5bcc7b5969b2f257c6c37b4638d3d9b0255fc0c3542"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-6.png",
+            "sha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a"
+          },
+          "asset": null
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "solutionSha256": "67640ffed1c31f54d744f6fd99b947280562efa3fac8b3eff883edcf03e8ea32",
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "defects": [],
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "renderStatus": "NOT_RUN_ROOT_WAIVER",
+          "evidence": "Direct comparison against adopted PDF page render; source wording and choices are exact and in order."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "67640ffed1c31f54d744f6fd99b947280562efa3fac8b3eff883edcf03e8ea32",
+          "primaryMethod": "정적분을 상수 A로 두고 절댓값 구간을 나누어 자기일관 방정식으로 A를 구한 뒤 k 조건을 푼다.",
+          "decisiveStep": "A=∫₋₂⁰f=2+2A에서 A=−2, 이후 k≥1과 적분조건으로 k=3이다.",
+          "evidence": "Explanatory sentences and each decisive mathematical line, substitution, intermediate result, and conclusion are separate."
+        },
+        "meta": {
+          "status": "PASS",
+          "actualCurrentFields": {
+            "standardCourse": "수학II",
+            "standardUnitKey": "H15-M2-08",
+            "standardUnit": "정적분",
+            "standardUnitOrder": 8,
+            "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+            "subUnit": "정적분",
+            "subUnitConfidence": "candidate_evidence",
+            "subUnitClassificationDepth": "complete_candidate",
+            "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+            "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_RANGE"
+            ],
+            "integrationPattern": "INTERDEPENDENT",
+            "difficultyBucket": 5,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "primaryMethod": "정적분을 상수 A로 두고 절댓값 구간을 나누어 자기일관 방정식으로 A를 구한 뒤 k 조건을 푼다.",
+          "decisiveStep": "A=∫₋₂⁰f=2+2A에서 A=−2, 이후 k≥1과 적분조건으로 k=3이다.",
+          "crosswalkRecord": null,
+          "lookupDisposition": "ACTIVE_MACHINE_PROJECTION_WITH_NONBLOCKING_RPM_COVERAGE_GAP",
+          "difficultyRationale": "자기참조 정적분과 절댓값 구간 및 k 범위."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "problemVisualDisposition": "NOT_REQUIRED",
+          "solutionSvgDisposition": "NOT_REQUIRED",
+          "asset": null,
+          "observation": "No additional source diagram or solution SVG is needed for the algebraic solution."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+          "sourcePage": 6,
+          "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP------\\.tmp\\archive\\source-batch-20261006\\high\\math2\\20_매산여고_2학기_기말_고2_수학II\\provenance\\archive\\evidence\\source-intake-math2-20261004\\20_매산여고_2학기_기말_고2_수학II.json",
+          "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+          "sourceEvidenceRenderSha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a",
+          "legacySourceClaim": {
+            "textFidelity": "PASS_FULL_PAGE_PIXEL_REVIEW",
+            "choicesFidelity": "NA",
+            "bboxPdfPoints": [
+              365,
+              510,
+              705,
+              830
+            ]
+          },
+          "actualViewedPagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\20_매산여고_2학기_기말_고2_수학II\\source-pdf-review\\adopted\\2020-maesan-yeogo-d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19\\page-6.png",
+            "sha256": "fedf4f58ee8c2cc4ca47a5bcc7b5969b2f257c6c37b4638d3d9b0255fc0c3542"
+          },
+          "durablePagePng": {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\source-pages\\question-page-6.png",
+            "sha256": "5b0c4a4f53c868870d77bc9fd6cc2e5e61f918b50800ef83b9db94a913125a8a"
+          },
+          "asset": null
+        }
+      }
+    }
+  ],
+  "preflightTimingStatus": "LATE_GOLDEN_VISUAL_READ_WITH_TARGETED_CORRECTION_REVIEW",
+  "preflightCorrectionReview": {
+    "status": "LATE_GOLDEN_VISUAL_READ_CORRECTION_REVIEW",
+    "readAtUtc": "2026-10-07 07:44:07 UTC",
+    "preflightTiming": "NOT_RETROACTIVE_INITIAL_PREFLIGHT_REMAINS_INCOMPLETE",
+    "initialPreflightPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\CREATE.preflight.json",
+    "initialPreflightSha256": "e46b25b31d571d3414558c9fe3924c390c1d2a14a0ba3446050fa4e49075237f",
+    "initialValidatorFailure": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\CREATE.validator.initial-preflight-failure.stdout.json",
+      "sha256": "df2e60f088b3cff4e93e135f5c76622022cbb7cce8848a9338e8111b24425c6b",
+      "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+    },
+    "lateGoldenRead": {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "svgAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\assets\\images\\25_매산여고_2학기_중간_고1_기출\\q7-solution.svg",
+      "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "observation": "Actual q7 solution and SVG read. The solution derives C0=(−3,1), translates it to C1=(−5,2), then reflects it to C2=(5,−2), retaining radius 3. SVG circle centers, equal radii, labels, dashed intermediate states, and final equation agree with those values; axes use equal unit scale."
+    },
+    "targetedCorrectionReview": {
+      "scopeQids": [
+        8,
+        10
+      ],
+      "status": "PASS_NO_ARTIFACT_CHANGE",
+      "candidateRawSha256Before": "74c898650063a4f314ff5cf993c1d70b2cc69d360dd343c93910d5eb243d2ea0",
+      "candidateRawSha256After": "74c898650063a4f314ff5cf993c1d70b2cc69d360dd343c93910d5eb243d2ea0",
+      "candidateBlobShaBefore": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+      "candidateBlobShaAfter": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+      "changedCandidateLoci": [],
+      "evidenceLociChanged": [
+        "goldenCalibration.samples[qid7.visualSha256]",
+        "q8 visualSvg correctionReview",
+        "q10 visualSvg correctionReview"
+      ],
+      "items": [
+        {
+          "qid": 8,
+          "solutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+          "assetRef": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8.png",
+          "assetSha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f",
+          "observation": "Original derivative graph and all five choice graphs are present; solution reads the +,−,+,− sign intervals and selects the matching f graph. No solution SVG is authored."
+        },
+        {
+          "qid": 10,
+          "solutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+          "assetRef": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10.png",
+          "assetSha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d",
+          "observation": "Original f′ parabola includes roots ±1 and peak 3; solution recovers extrema heights 3 and 7 before counting k. No solution SVG is authored."
+        }
+      ],
+      "disposition": "Golden q7 geometrical SVG is an expression floor only; its visual treatment does not transfer H1 curriculum or Meta to this H2 calculus exam."
+    }
+  }
+}

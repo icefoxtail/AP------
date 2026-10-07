@@ -1,0 +1,24 @@
+{
+  "gate": "CALIBRATION_PREFLIGHT",
+  "stage": "REPAIR",
+  "attempt": 1,
+  "disposition": "FAIL",
+  "stdout": {
+    "ok": false,
+    "stage": "REPAIR",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 22,
+    "issues": [
+      "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js|q1",
+      "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js|q7",
+      "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|q1",
+      "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|q2",
+      "NEGATIVE_SAMPLE_SHA256_MISMATCH:archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+    ]
+  },
+  "repair": "Added sha256: digest prefixes to file and parsed-solution hash bindings; sample bytes and observations were unchanged.",
+  "recheckPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_순천여고_2학기_기말_고2_수학II\\R1.q18-calibration-preflight.json",
+  "recheckDisposition": "PASS"
+}

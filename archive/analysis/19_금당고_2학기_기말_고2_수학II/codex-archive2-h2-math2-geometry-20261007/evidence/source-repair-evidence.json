@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_REPAIR_EVIDENCE_V1",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+  "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+  "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+  "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+  "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+  "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce",
+  "repairs": [
+    {
+      "qid": 11,
+      "field": "content",
+      "from": "-12x",
+      "to": "+12x",
+      "page": 2,
+      "bboxPdfPoints": [
+        300,
+        65,
+        565,
+        145
+      ],
+      "reason": "The source PDF visibly has +12x; the locked candidate had -12x.",
+      "correctedText": "$0\\le x\\le 3$일 때, 부등식 $\\left|x^4-4x^3-2x^2+12x+k\\right|\\le 10$이 성립하기 위한 정수 $k$의 최댓값은? [4.2점]"
+    },
+    {
+      "qid": 14,
+      "field": "content",
+      "from": "F(x-y)",
+      "to": "F(x+y)",
+      "page": 3,
+      "bboxPdfPoints": [
+        35,
+        70,
+        290,
+        150
+      ],
+      "reason": "The source PDF visibly has F(x+y); the locked candidate had F(x-y).",
+      "correctedText": "다항함수 $f(x)$의 한 부정적분을 $F(x)$라 할 때, 모든 실수 $x,y$에 대하여 $F(x+y)=F(x)+F(y)+3xy$가 성립한다고 한다. $f(0)=2$일 때, $F'(-1)$의 값은? [4.8점]"
+    },
+    {
+      "qid": 18,
+      "field": "content",
+      "from": "극값을 갖는다",
+      "to": "극댓값을 갖는다",
+      "page": 3,
+      "bboxPdfPoints": [
+        300,
+        385,
+        565,
+        545
+      ],
+      "reason": "The source PDF specifies a local maximum; the locked candidate only said an extremum.",
+      "correctedText": "다음 조건을 만족시키는 두 자연수 $m,n$의 모든 순서쌍 $(m,n)$의 개수는?\n(가) $m-n\\le 20$\n(나) 함수 $f(x)=6x^2-2mx+3n$에 대하여 함수 $g(x)=\\displaystyle\\int_0^x(x-t)f(t),dt$가 $x=2$에서 극댓값을 갖는다. [6.0점]"
+    }
+  ],
+  "itemHolds": [
+    {
+      "qid": 10,
+      "answer": "②",
+      "reason": "The source equation has two distinct intersections for each of k=2,3,4,5. The source key marks ②, but the printed choices include other valid positive k values; no unique answer is supported.",
+      "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+      "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce",
+      "sourcePage": 2,
+      "bboxPdfPoints": [
+        35,
+        500,
+        285,
+        590
+      ]
+    }
+  ]
+}

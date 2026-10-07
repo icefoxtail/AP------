@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_팔마중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 8,
+  "productionPath": "archive/exams/original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+  "candidate": {
+    "rawSha256": "f635093ec48d7063cdec223c4d6d2f5efbb60113e1a4a67614f7d0cc5ae599d9",
+    "gitBlobSha1": "77d2224a3b3d96985bd9bacb24b469db2d74cd4e"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "completedStages": {
+    "R1": {
+      "status": "PASS",
+      "evidenceSha256": "f50895f91b45539329965e81d04b0c9d128a8dbd422e12ea9165f606c52b1ddc",
+      "validationSha256": "6ab1126b12076e5cc3900eeb3ac47a586187d8fd40d8eebb2f74ab6034cd72e"
+    },
+    "R2": {
+      "status": "PASS",
+      "evidenceSha256": "5a32538296c52061d5e5cfab644876d43b29ed3284057fc9b6ebbd43090a8c99",
+      "validationSha256": "771ae6a89115682c5957a3d4e0309a180cefc8f35a90335a6cfa6183d6cd8ce4"
+    },
+    "R3": {
+      "genericValidatorStatus": "PASS",
+      "rootReceiptStatus": "FAIL",
+      "rootReceiptIssue": "RENDER_ASSET_SET_REQUIRED:sol/desktop",
+      "receiptRef": {
+        "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.CODEX.RENDER.RECEIPT.json",
+        "sha256": "3a3652688c7e603705a31a6621ae7a6e30c537ef7eb0b640cb56c4595f711447"
+      },
+      "genericValidationRef": {
+        "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.validation.json",
+        "sha256": "4d310caafcf2daed2b0c02ed75443918b88086a788bac6c069d91ca24d2b64b3"
+      },
+      "continuationRef": {
+        "path": "archive/analysis/20_팔마중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.render-receipt-asset-continuation.json",
+        "sha256": "bf38ee3730f518bee29960408c930e6d6a275724e28eeb50a856fb833702e853"
+      },
+      "rootCheckRef": {
+        "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_팔마중_2학기_기말_중2_기출/R3.receipt-root-validation.failed.json",
+        "sha256": "92f249ddcd7dab44b2869e72afa899c1e41f0f064346deae60661e584460e239"
+      },
+      "requiredCases": {
+        "exam/desktop": 17,
+        "exam/mobile": 17,
+        "sol/desktop": 0,
+        "sol/mobile": 0,
+        "ans/desktop": 0,
+        "ans/mobile": 0
+      },
+      "actualCaptureCount": 6,
+      "coverageCount": 24
+    }
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": false
+  },
+  "holdReason": "R3 actual engine renders exist, but root receipt cannot bind the final 17-asset set to solution/answer cases because the actual receipt has no per-mode loaded-asset witness; do not fabricate asset loads.",
+  "missingClosureStep": "TRUTHFUL_PER_MODE_ASSET_DECODE_BINDING_FOR_SOLUTION_AND_ANSWER",
+  "resumeCondition": "Resume the same R3/ROOT technical closure only when the sanctioned renderer provides actual mode-bound loaded-asset decode evidence or the platform provides an approved receipt contract for mode-specific asset sets."
+}

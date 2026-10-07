@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_풍덕중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 15,
+  "productionPath": "archive/exams/original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+  "productionBaseline": {
+    "rawSha256": "08d63887a0bc513289905dd2e8a75e92a4dbfb139050726733320b55c26ba666",
+    "rawBufferGitBlobSha1": "86e388396efedb58dc9bde394e9bd85b45a20e24",
+    "cleanFilterGitBlobSha1": "e25e01d3c44a0f532db5b469f563f66b55f68814"
+  },
+  "candidate": {
+    "rawSha256": "58e72ac8b0c0ad87ecc2b9c2ba14a7105e0e9f7591b19b71bc772b0c16d8224f",
+    "rawBufferGitBlobSha1": "8e3c55743190bcaad4b98200a6d32f66d4686369",
+    "cleanFilterGitBlobSha1": "8e3c55743190bcaad4b98200a6d32f66d4686369"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "r1": {
+    "artifactSha": "8e3c55743190bcaad4b98200a6d32f66d4686369",
+    "evidenceSha256": "d911540982f56337f74b90f81d05f25983e4f826499acf41850b704833a69496",
+    "validationSha256": "f66b24da89866f8ca3f44731ae93365e30f07557d2e569b46b71f47a47ce34fc",
+    "disposition": "PASS"
+  },
+  "r2": {
+    "artifactSha": "8e3c55743190bcaad4b98200a6d32f66d4686369",
+    "evidenceSha256": "6ebd622b2f3b804fcb2d1303479f427b87e2aa48b231f2aed988d2a34e9482da",
+    "validationSha256": "fc92bdfa4fcce000ea5f10ccc70c306a403512c8d5774be8e9486cbdc26eb9a6",
+    "disposition": "PASS"
+  },
+  "itemRecovery": {
+    "disposition": "QUESTION_REPLACEMENT_DONE",
+    "replacedQid": 19,
+    "itemHoldCount": 0,
+    "receiptPath": ".tmp/archive/archive2-m2-codex-20261006-03/21_풍덕중_2학기_기말_중2_기출/ITEM_RECOVERY.receipt.json",
+    "receiptSha256": "e706316309bedbafbc954c8d45dcb7931675c8f96ce8cf9a34f183d3c8a2b846"
+  },
+  "r3": {
+    "status": "NOT_RUN_BLOCKED",
+    "evidence": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_풍덕중_2학기_기말_중2_기출/evidence/R3.ACTUAL-RENDER.ACCESS-HOLD.json",
+      "sha256": "880e542e864e2357a7a5de8f5b6bc095f4f2ef85fcbadef512c100ae1fc14275"
+    },
+    "validator": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_풍덕중_2학기_기말_중2_기출/evidence/R3.VALIDATOR.json",
+      "sha256": "63b85043f5107f99e6ceaf9376e2305fc255bb8f4c9850905e3d18e4f5c4957c",
+      "disposition": "FAIL",
+      "issues": ["R3_RELEASE_INTEGRITY_REQUIRED"]
+    },
+    "continuation": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/21_풍덕중_2학기_기말_중2_기출/evidence/R3.CONTINUATION.json",
+      "sha256": "30f2e7fab0bb18e4d9960973b8e82f6d399d5e65e7f2df43b0252ef48a419a1b"
+    },
+    "lockedScopeIntegrity": true,
+    "releaseIntegrity": false,
+    "requiredCases": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "captureCount": 0,
+    "staticAssetDecodeStatus": "PASS_RECORDED_FOR_7_IMAGES",
+    "blocker": "No approved HTTP(S) Archive Engine session was present. All six actual screen cases remain NOT_RUN with zero captures; the official workspace/output-envelope/archive/engine.html route was unavailable.",
+    "forbiddenWorkaroundsNotUsed": [
+      "file://",
+      "local-server",
+      "alternate-browser",
+      "Playwright",
+      "CDP",
+      "substitute-captures"
+    ]
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": false
+  },
+  "resumeCondition": "Resume this R3 session when an approved HTTP(S) Archive Engine session can load the current temporary candidate and required assets through the official workspace/output-envelope route; then complete all six actual renders, bind loaded JS/assets/capture hashes and reviewer identity, and run R3 closure."
+}

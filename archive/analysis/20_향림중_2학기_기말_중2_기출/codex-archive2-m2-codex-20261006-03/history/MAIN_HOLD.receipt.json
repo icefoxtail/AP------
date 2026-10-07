@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "HOLD_NOT_PASS",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_향림중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "rosterPosition": 10,
+  "productionPath": "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+  "candidate": {
+    "rawSha256": "a4e6ead8d7dd3778a47f1985a5585fc0f0990e0db5883e52e43c3fe28317ed98",
+    "gitBlobSha1": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89"
+  },
+  "remoteMainSha": "9a75aa9dca6f28d3aa19e01bb99240f54efd6432",
+  "r1": {
+    "artifactSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+    "evidenceSha256": "535708c35be3b19778c4bcafe637a01768b624c43d4448f23b40f02411cbad69",
+    "validationSha256": "6cd19ada96c678a805642b325e58f6e70f3902d25cba2fc787e5a5452a866d71",
+    "disposition": "PASS"
+  },
+  "r2": {
+    "artifactSha": "2ddaf561174ad9bd590b3dfc36ff95c82abc2f89",
+    "evidenceSha256": "9e14a1ab0d9085ceaaa42c337604838a744d73062ccaea3ab0d6fc497fce5207",
+    "validationSha256": "f8ca4193272f5b3b726a9bde4d78a148096ef4ed9d24aa14e3fc21a6f39e6393",
+    "disposition": "PASS"
+  },
+  "r3": {
+    "status": "NOT_RUN_BLOCKED",
+    "continuation": {
+      "path": "archive/analysis/20_향림중_2학기_기말_중2_기출/codex-archive2-m2-codex-20261006-03/R3.continuation.json",
+      "sha256": "ef64aaa3fcb312175325a87a1baaad579f5d99e91550ec018aea966b020d265d"
+    },
+    "missingClosureStep": "ACTUAL_ARCHIVE_ENGINE_RENDER_MATRIX",
+    "requiredCases": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "blocker": "Codex In-app Browser refused the official local file:// Archive engine URL; no documented permitted fallback after explicit refusal",
+    "forbiddenWorkaroundsNotUsed": [
+      "local-server",
+      "alternate-browser",
+      "Playwright",
+      "CDP"
+    ]
+  },
+  "itemRecovery": {
+    "q22EvidenceSha256": "03979c179bb7effed857d606acc3e7e4482286f2fa9fc49cf1d9a237693dabd3",
+    "disposition": "QUESTION_ONLY replacement reviewed by R1/R2; still not published because R3 actual render is unavailable"
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "remoteProductionPresent": false
+  },
+  "resumeCondition": "Resume the same R3 session only when the supported Codex in-app browser can load the official local Archive engine URL or the platform provides a sanctioned workspace-file browser route."
+}

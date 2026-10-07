@@ -1,0 +1,131 @@
+{
+  "examUid": "20_매산여고_2학기_기말_고2_수학II",
+  "stage": "CREATE_PREFLIGHT",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "pinnedWorkerContract": {
+    "role": "archive_create",
+    "model": "gpt-6-luna",
+    "reasoningEffort": "high",
+    "authority": "ROOT assignment packet",
+    "serviceTelemetry": "UNAVAILABLE_IN_THIS_AGENT_RUNTIME"
+  },
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Actual student solution read: decisive formula, substituted source values, and arithmetic reductions are visible in separate lines before the final choice."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Actual student solution read: conditions are translated into mathematical relations, parameters are derived by explicit substitution/algebra, and the conclusion follows in a separate equation. Referenced solution SVG read; line coefficients and endpoint coordinates agree with labeled lines.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Approved failure fixture was read. It records false PASS from SVG label-versus-coordinate mismatch, collapsed enumerated small-board steps, null Meta despite unique exact active classifications, and runtime escaping drift. CREATE will inspect actual geometry, explicit intermediate equations, current metadata evidence, and evaluated runtime strings."
+    }
+  },
+  "sourcePreflight": {
+    "sourceEvidencePath": ".tmp/archive/source-batch-20261006/high/math2/20_매산여고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산여고_2학기_기말_고2_수학II.json",
+    "sourceEvidenceSha256": "1800bce3d98d465e28bf036baaf504cad848f888deb7868a4d85b79e80580521",
+    "sourcePdf": {
+      "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말.pdf",
+      "sha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+      "status": "FOUND_AND_MATCHES_PROVENANCE",
+      "sourceEvidenceExpectedSha256": "d2a8a261c1041c4871b6700d7c1bc734104d708e4667b1d43a5660244b2dae19",
+      "pageCount": 6
+    },
+    "answerPdf": {
+      "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매여고2_수2_2기말_해설.pdf",
+      "sha256": "8188e7fba4214c9cb31f326b68f1accd74eb177333c62e7ed30992f3dd45ec36",
+      "status": "FOUND"
+    },
+    "lookupCandidatesNotAdopted": [
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2020_매산고2_수2_2기말.pdf",
+        "sha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "status": "NOT_ADOPTED_DIFFERENT_IDENTITY_AND_SOURCE_PDF_SHA"
+      },
+      {
+        "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2025_매산고2_수2_2기말.pdf",
+        "sha256": "34f5cdc7077a7a11c6f0ba335f515c4eb6635d4e7763acd9f919d4a3ff56caa3",
+        "status": "NOT_ADOPTED_WRONG_YEAR_AND_SCHOOL_IDENTITY"
+      }
+    ]
+  },
+  "revisionStatus": "LATE_GOLDEN_VISUAL_READ_AFTER_INITIAL_DRAFT",
+  "lateVisualRead": {
+    "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "qid": 7,
+    "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+    "svgAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\assets\\images\\25_매산여고_2학기_중간_고1_기출\\q7-solution.svg",
+    "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+    "observation": "Actual q7 solution and SVG read. The solution derives C0=(−3,1), translates it to C1=(−5,2), then reflects it to C2=(5,−2), retaining radius 3. SVG circle centers, equal radii, labels, dashed intermediate states, and final equation agree with those values; axes use equal unit scale."
+  },
+  "correctionReview": {
+    "scopeQids": [
+      8,
+      10
+    ],
+    "status": "PASS_NO_ARTIFACT_CHANGE",
+    "candidateRawSha256Before": "74c898650063a4f314ff5cf993c1d70b2cc69d360dd343c93910d5eb243d2ea0",
+    "candidateRawSha256After": "74c898650063a4f314ff5cf993c1d70b2cc69d360dd343c93910d5eb243d2ea0",
+    "candidateBlobShaBefore": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+    "candidateBlobShaAfter": "c72a2ce985c3b0603830d265e5e1ee4320c558a6",
+    "changedCandidateLoci": [],
+    "evidenceLociChanged": [
+      "goldenCalibration.samples[qid7.visualSha256]",
+      "q8 visualSvg correctionReview",
+      "q10 visualSvg correctionReview"
+    ],
+    "items": [
+      {
+        "qid": 8,
+        "solutionSha256": "9296b04ed92ce29c21a9d056356a8983dbba77bc3f975967cdb171f70ca65b53",
+        "assetRef": "assets/images/20_매산여고_2학기_기말_고2_수학II/q8.png",
+        "assetSha256": "e405c70dbb96ee8bb39a6b5f461e248aacc86ee691fd4f20ae6103cc3ff6ae4f",
+        "observation": "Original derivative graph and all five choice graphs are present; solution reads the +,−,+,− sign intervals and selects the matching f graph. No solution SVG is authored."
+      },
+      {
+        "qid": 10,
+        "solutionSha256": "7fce00c5800dbb01b0ca11df70a78ac322f1804ed59e18d10cd13d5a46e46c57",
+        "assetRef": "assets/images/20_매산여고_2학기_기말_고2_수학II/q10.png",
+        "assetSha256": "b8be824bb50d89f3f8aef01fd20b4b1da07ed018cdf9181d61aaa1794885c38d",
+        "observation": "Original f′ parabola includes roots ±1 and peak 3; solution recovers extrema heights 3 and 7 before counting k. No solution SVG is authored."
+      }
+    ],
+    "disposition": "Golden q7 geometrical SVG is an expression floor only; its visual treatment does not transfer H1 curriculum or Meta to this H2 calculus exam."
+  },
+  "initialPreflightSha256": "e46b25b31d571d3414558c9fe3924c390c1d2a14a0ba3446050fa4e49075237f",
+  "initialValidatorFailure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\20_매산여고_2학기_기말_고2_수학II\\codex-archive2-h2-math2-geometry-20261007\\CREATE.validator.initial-preflight-failure.stdout.json",
+    "sha256": "df2e60f088b3cff4e93e135f5c76622022cbb7cce8848a9338e8111b24425c6b",
+    "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+  }
+}

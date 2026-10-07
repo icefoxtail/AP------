@@ -1,0 +1,57 @@
+{
+  "examUid": "19_왕운중_2학기_기말_중3_기출",
+  "qid": 10,
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "stage": "ITEM_RECOVERY_SOLUTION_FIRST",
+  "sourceTruthDisposition": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+  "sourceHoldRef": "archive/analysis/m3-codex-20261007/19_왕운중_2학기_기말_중3_기출/q10-source-review/q10-source-truth-adjudication.addendum.json",
+  "curriculum": {
+    "curriculum": "2015",
+    "course": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "coreConcept": "triangle area from two sides and included sine; area ratios from equal altitudes and segment ratios"
+  },
+  "responseForm": "객관식 5지선다",
+  "difficultyRole": {
+    "sourceScore": 5,
+    "targetBucket": 3,
+    "targetLevel": "상",
+    "rationale": "three linked student steps: included-angle triangle area, median area split, segment-ratio area split"
+  },
+  "conditions": {
+    "AB_cm": 12,
+    "AC_cm": 12,
+    "angleBAC_deg": 30,
+    "M": "midpoint of BC",
+    "D": "point on AB with AD:DB=2:1"
+  },
+  "directSolution": [
+    "[ABC]=1/2·AB·AC·sin∠BAC=1/2·12·12·1/2=36 cm².",
+    "BM=MC, so triangles ABM and ACM share altitude from A and have equal area; [ABM]=36/2=18 cm².",
+    "AD:DB=2:1 gives AD/AB=2/3. Triangles ADM and ABM share altitude from M to AB, so [ADM]/[ABM]=AD/AB=2/3.",
+    "[ADM]=2/3·18=12 cm²."
+  ],
+  "existenceAndUniqueness": {
+    "nondegenerate": true,
+    "reason": "AB=AC=12 and included angle 30° determine a nondegenerate triangle; M and D are unique from the stated midpoint and ratio conditions.",
+    "uniqueArea": 12,
+    "unit": "cm²"
+  },
+  "frozenAnswer": "12 cm²",
+  "frozenChoicePosition": "③",
+  "choiceDesignAfterFreezeRequired": true,
+  "choiceErrorsPlanned": [
+    "Use DB/AB=1/3 instead of AD/AB=2/3.",
+    "Halve the median subtriangle area a second time.",
+    "Stop after the median split and ignore D.",
+    "Invert the section ratio and multiply by 3/2."
+  ],
+  "visualDecision": {
+    "newVisualRequired": false,
+    "reason": "All lengths, included angle, midpoint and segment ratio are explicit in text; no diagram is needed to determine the replacement item."
+  },
+  "nonTargetMutationAllowed": false
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion":"JS_ARCHIVE_GOLDEN_CALIBRATION_V2",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeWork":true,
+  "calibrationStatus":"PASS",
+  "calibrationAxes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+  "goldenCalibrationSet":[
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples":[
+    {
+      "path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+      "items":[
+        {"qid":1,"solutionSha256":"4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"P, M을 각각 좌표식으로 계산해 거리를 제곱대입·정리하고 최종값을 별도 식으로 닫는다."},
+        {"qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"완전제곱으로 중심·반지름을 얻고 이동 단계 중간 중심과 최종식을 별도 줄로 연결한다. 도형은 중심 좌표와 반지름 보존을 서술과 함께 확인.","visualSha256":"c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"}
+      ]
+    },
+    {
+      "path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256":"3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha":"eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "items":[
+        {"qid":1,"solutionSha256":"027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"좌표 차, 거리 공식 대입, 제곱합, 근호 정리를 한 단계씩 분리한다."},
+        {"qid":9,"solutionSha256":"91a904c2485de17236e3a5f6859a970ab617243f24c740ff38229ac72ed01cb4","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY"],"observation":"집합 원소와 포함 기호 뜻을 먼저 고정하고 각 보기 판정을 별도 block으로 분리한다."},
+        {"qid":17,"solutionSha256":"d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"평행이동선의 공통점, 원 중심, 모든 기울기의 직선족, 반지름을 단계별로 대조한다. 도형은 실제 원과 직선족의 공통점을 표시하고 풀이의 좌표 (2,3)과 연결한다.","visualSha256":"b0c7e00130a0213f97cf9865cff041ecc9439eab8a3a344b94eaf5f8592d0269"}
+      ]
+    },
+    {
+      "path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256":"c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "gitBlobSha":"e23fc34093196f68aff6fef48d66b9830e6d9c12",
+      "items":[
+        {"qid":16,"solutionSha256":"73a8ce3fe706022c3aa0a8ea090b4f569d291e70452cdc45680e92c65f452642","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"교점, 넓이, 높이, 반지름, 원 위의 조건과 양의 좌표 선택이 줄별로 연결된다. 실제 SVG geometry가 해설 라벨과 일치하는지 확인.","visualSha256":"225105cf1aa0638db8308528cbe8dbc7d4c48b542d0b4a90d41e4c8282ff1e35"},
+        {"qid":17,"solutionSha256":"dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b","axes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],"observation":"수직 방향의 두 변 후보, 제1사분면 조건, CD 중점과 반지름 계산이 서술과 도형에서 맞는다. known exception q18은 선택·계승하지 않았다.","visualSha256":"f87f8dab040c26c459d7056923c9801d7655db1d46e65159851f406ded5bc35a"}
+      ]
+    }
+  ],
+  "negativeSample":{
+    "path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256":"dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "gitBlobSha":"f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "observation":"실제 SVG 좌표로 기하·라벨의 맞음을 계산한다. 단순 집계 PASS, 소문항 판정을 한 문단으로 붙임, exact active classification 누락을 놓치지 않는다."
+  },
+  "negativeVisualFixture":{
+    "path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+    "sha256":"7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+    "gitBlobSha":"3598d979a174c87faf66ef93aadb962b2047b5df",
+    "observation":"Reported line 7x+y-15=0 conflicts with line primitive slope and perpendicular geometry; compute from actual coordinates rather than labels."
+  },
+  "solutionWorkMode":"REVIEW_EXISTING_SOLUTION",
+  "qualityCompareCount":"24/24",
+  "knownExceptionPolicy":"25_제일고 q18 visual is excluded as a model."
+}

@@ -1,3 +1,7 @@
+## CURRENT — 2026-10-07 — Codex Archive 2.0 실행 개선
+
+Codex 일반 실행 authority는 [Codex Execution v1.1](02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md)과 [Common Quality Contract](02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md)다. Execution §§16–23은 렌더 경로 사전 확인, stage 컨베이어, absolute assignment, blind bundle, item HOLD 이동, 수정 후 validator 재검증, R3 receipt 및 ledger를 정의한다. Canary/5시험지 qualification은 종료된 역사이며 재개 authority가 아니다. 이 항목은 Codex 라인에만 적용하고 아래 GPT 예약/M2-1 운영을 변경하지 않는다.
+
 ## CURRENT — 2026-10-03 — M2-1 THANOS MASTER ×5
 
 - automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
@@ -495,3 +499,5 @@ CREATE와 모든 REVIEW 단계는 최종 SVG bytes의 실제 좌표/위상에서
 `25_삼산중_2학기_중간_중2_수학 q13`(D의 각도값 귀속),
 `25_삼산중_2학기_중간_중2_수학 q24`(외심/수직이등분선 실제 좌표 불일치).
 이 4건과 동형 결함은 향후 생성·검수에서 반드시 FAIL/REPAIR 대상으로 잡아야 한다.
+
+- Codex Execution v1.3 §25: production 완성 우선, ROOT 캡처 면제·예외·HOLD 복구/해제 상시 위임, 별도 static gate 및 실제 구현 결속.

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_MAIN_HOLD_RECEIPT_V1",
+  "status": "MAIN_HOLD",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "19_연향중_2학기_기말_중2_기출",
+  "finalExamDisposition": "HOLD",
+  "stageDisposition": "R2_DONE_WITH_ITEM_HOLDS",
+  "candidate": {
+    "path": "19_연향중_2학기_기말_중2_기출.js",
+    "artifactSha": "f1bc459d879112f3b084cc8442a5cededb4ac247"
+  },
+  "heldQids": [
+    23
+  ],
+  "itemHolds": [
+    {
+      "qid": 23,
+      "questionUid": null,
+      "reason": "SOURCE_TRUTH_NOT_DETERMINISTIC",
+      "observedEvidence": [
+        {
+          "authority": "Original exam PDF",
+          "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말.pdf",
+          "sha256": "f1533c9fd2eb294c90d00695c1c9d01f5f85562ec1437af506ee33dbd19a411f",
+          "page": 5,
+          "pixels": [
+            "source/held-recovery/original-5.png",
+            "source/held-recovery/source-q23-detail.png"
+          ],
+          "finding": "Printed stem does not state whether digits may repeat."
+        },
+        {
+          "authority": "Official answer PDF",
+          "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말_정답.pdf",
+          "sha256": "a0d35ba0e0f862bd748d98437fdd84bf7d0ca5b9dc2e90ca92c86e7a376bd0a2",
+          "page": 2,
+          "pixels": [
+            "source/held-recovery/answer-2.png",
+            "source/held-recovery/answer-q23-detail.png",
+            "source/held-recovery/answer-q23-full-detail.png"
+          ],
+          "finding": "Main derivation assumes no reuse: 2×2×2=8 and total 3×3×2=18, hence even=10. Adjacent rubric note states “서술한 정답이 24인 경우, 별도 기준에 따라 채점.” It does not identify whether 24 is wrong/partial or accepted under the alternative repetition reading."
+        },
+        {
+          "authority": "Current Archive correction protocol",
+          "path": "docs/rules/02_PIPELINES/수정프로토콜.md",
+          "finding": "REPAIR_BEFORE_HOLD and ONE_SEMANTIC_LOCUS_REPAIR permit one missing-condition repair only if deterministic; multiple plausible condition readings remain HOLD."
+        },
+        {
+          "authority": "Current Archive extraction/transcription rules",
+          "path": "docs/rules/02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md",
+          "finding": "Full-page is primary; condition inference is barred when multiple readings remain."
+        }
+      ],
+      "repairAttempted": [
+        {
+          "attempt": 1,
+          "repairType": "PROPOSED_ONE_SEMANTIC_LOCUS_REPAIR",
+          "proposedCondition": "숫자 0,1,2,3을 중복하여 사용하지 않고",
+          "proposedDependentSolutionEdit": "Replace the claim that all four digits are each used once with an explicit no-reuse statement.",
+          "mathUnderProposal": "no repetition gives odd=8 and even=10",
+          "status": "REVERTED",
+          "reason": "Answer PDF page 2 includes an explicit grading note for written answer 24; therefore the no-reuse interpretation is not uniquely established by the full source package."
+        }
+      ],
+      "authorityLookupAttempted": [
+        {
+          "authority": "Original exam PDF",
+          "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말.pdf",
+          "sha256": "f1533c9fd2eb294c90d00695c1c9d01f5f85562ec1437af506ee33dbd19a411f",
+          "page": 5,
+          "pixels": [
+            "source/held-recovery/original-5.png",
+            "source/held-recovery/source-q23-detail.png"
+          ],
+          "finding": "Printed stem does not state whether digits may repeat."
+        },
+        {
+          "authority": "Official answer PDF",
+          "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말_정답.pdf",
+          "sha256": "a0d35ba0e0f862bd748d98437fdd84bf7d0ca5b9dc2e90ca92c86e7a376bd0a2",
+          "page": 2,
+          "pixels": [
+            "source/held-recovery/answer-2.png",
+            "source/held-recovery/answer-q23-detail.png",
+            "source/held-recovery/answer-q23-full-detail.png"
+          ],
+          "finding": "Main derivation assumes no reuse: 2×2×2=8 and total 3×3×2=18, hence even=10. Adjacent rubric note states “서술한 정답이 24인 경우, 별도 기준에 따라 채점.” It does not identify whether 24 is wrong/partial or accepted under the alternative repetition reading."
+        },
+        {
+          "authority": "Current Archive correction protocol",
+          "path": "docs/rules/02_PIPELINES/수정프로토콜.md",
+          "finding": "REPAIR_BEFORE_HOLD and ONE_SEMANTIC_LOCUS_REPAIR permit one missing-condition repair only if deterministic; multiple plausible condition readings remain HOLD."
+        },
+        {
+          "authority": "Current Archive extraction/transcription rules",
+          "path": "docs/rules/02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md",
+          "finding": "Full-page is primary; condition inference is barred when multiple readings remain."
+        }
+      ],
+      "whyDeterministicClosureImpossible": "The printed stem is silent; the official main derivation supports no reuse, but the explicit separate-rubric note for answer 24 does not identify whether 24 is a partial-credit error or the repetition-allowed interpretation. The candidate solution also states that all four digits are each used once for a three-digit integer, which is not a feasible literal condition. Adding no reuse selects one reading and changes the problem; neither answer PDF text nor source provides an authoritative resolution of the 24 rubric. The proposed repair was therefore reverted.",
+      "nextRequiredEvidenceOrCapability": "School/author clarification or the full separate scoring rubric that states whether answer 24 is an accepted repetition-allowed interpretation or a partial-credit error under an intended no-reuse condition.",
+      "holdEvidenceRef": "R1.q23-hold-evidence.json",
+      "holdEvidenceSha256": "8812d2d9074c408dbdf5910cac2717761764ed365beb185e446ab8f76aa1a0e7"
+    }
+  ],
+  "sourceAuthority": {
+    "originalExamPdf": {
+      "authority": "Original exam PDF",
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말.pdf",
+      "sha256": "f1533c9fd2eb294c90d00695c1c9d01f5f85562ec1437af506ee33dbd19a411f",
+      "page": 5,
+      "pixels": [
+        "source/held-recovery/original-5.png",
+        "source/held-recovery/source-q23-detail.png"
+      ],
+      "finding": "Printed stem does not state whether digits may repeat."
+    },
+    "officialAnswerPdf": {
+      "authority": "Official answer PDF",
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_연향중2_수학_2기말_정답.pdf",
+      "sha256": "a0d35ba0e0f862bd748d98437fdd84bf7d0ca5b9dc2e90ca92c86e7a376bd0a2",
+      "page": 2,
+      "pixels": [
+        "source/held-recovery/answer-2.png",
+        "source/held-recovery/answer-q23-detail.png",
+        "source/held-recovery/answer-q23-full-detail.png"
+      ],
+      "finding": "Main derivation assumes no reuse: 2×2×2=8 and total 3×3×2=18, hence even=10. Adjacent rubric note states “서술한 정답이 24인 경우, 별도 기준에 따라 채점.” It does not identify whether 24 is wrong/partial or accepted under the alternative repetition reading."
+    }
+  },
+  "rulesReviewed": [
+    {
+      "path": "docs/rules/02_PIPELINES/수정프로토콜.md",
+      "finding": "REPAIR_BEFORE_HOLD and ONE_SEMANTIC_LOCUS_REPAIR permit one missing-condition repair only if deterministic; multiple plausible condition readings remain HOLD."
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md",
+      "finding": "Full-page is primary; condition inference is barred when multiple readings remain."
+    }
+  ],
+  "stageEvidence": {
+    "CREATE": {
+      "disposition": "PASS",
+      "evidenceSha256": "24c67ed26f536553bcc8b8dc4753e63a267de402aa48bedb06f2efbb929bcd16",
+      "validatorSha256": "1e48f5fc651af8f9e62ac4a157d2c68f4602de5aa2cc445839179fd48ea3ff9f"
+    },
+    "R1": {
+      "artifactSha": "f1bc459d879112f3b084cc8442a5cededb4ac247",
+      "evidenceSha256": "588fe67777104f6137dafef562f517a80f2722c81a97e6d27e123ed0d0c0ef6a",
+      "validatorSha256": "8191156ecfe5175247926b0996143ee598bd8ac4dbc149f24b2395d47dcbb97c",
+      "heldQids": [
+        23
+      ]
+    },
+    "R2": {
+      "disposition": "R2_DONE_WITH_ITEM_HOLDS",
+      "artifactSha": "f1bc459d879112f3b084cc8442a5cededb4ac247",
+      "evidenceSha256": "bb471d60ab55feef9e5aa51a56e682d581cbe2b5a1d1fd57f205e6063e84cbd5",
+      "validatorSha256": "449a3672139b3e6635f830e44805aca777d64c9ca373e0bdb5636a9bc2c8c4ea",
+      "denominator": 24,
+      "rowCount": 24,
+      "heldQids": [
+        23
+      ],
+      "continuationSha256": "d717a9a05b07dfccd283228647856ea8c9324ec30813ec3cb7d9321b39321535"
+    }
+  },
+  "R3": {
+    "status": "NOT_STARTED_ITEM_HOLD_REMAINS"
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "reason": "A source-truth ITEM_HOLD remains; no R3 release or production publish was allowed."
+  },
+  "sourceCondition": {
+    "studentFieldsChangedAtHoldQid": false,
+    "proposedNoReuseCondition": "REVERTED_NONDETERMINISTIC",
+    "otherRepairs": {
+      "q08": "PASS_AFTER_REPAIR choices transcription",
+      "q20": "FALSE_HOLD_CLEARED current middle-school convention"
+    }
+  }
+}

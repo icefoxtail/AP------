@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "CODEX_R1_SAME_STAGE_ADJUDICATION_V1",
+  "runId": "m3-codex-20261007",
+  "examUid": "19_이수중_2학기_기말_중3_기출",
+  "stage": "R1",
+  "freezePath": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.independent-freeze.json",
+  "freezeSha256": "bee36be51a3104120af60b526b2a46eef08ae342eab3eea6729417aca6845731",
+  "storedDisclosurePath": "archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/R1.postfreeze-disclosure.json",
+  "adjudications": [
+    {"qid":1,"initialIndependentAnswer":"④","storedAnswer":"②","finalVerifiedAnswer":"②","result":"RESOLVED_SAME_STAGE_CALCULATION_CORRECTION","reason":"sin A=5/13 gives opposite=5 and adjacent=12, so tan A=5/12. The initial freeze inverted the ratio; the complete-input freeze remains valid and is preserved."},
+    {"qid":10,"initialIndependentAnswer":"① (6 cm)","storedAnswer":"④","finalVerifiedAnswer":"④ (12 cm)","result":"RESOLVED_SAME_STAGE_DIAGRAM_INTERPRETATION_CORRECTION","reason":"The source diagram marks x for the full chord. The center-to-chord distance is 8 and radius is 10, so the half chord is 6 and x=2(6)=12. The initial freeze treated x as a half-chord; complete input remains valid."},
+    {"qid":13,"initialIndependentAnswer":"② (35°)","storedAnswer":"④","finalVerifiedAnswer":"④ (55°)","result":"RESOLVED_SAME_STAGE_ANGLE_ARC_ADJUDICATION","reason":"The 110° central angle and x intercept the same arc in the source figure. Therefore x=110°/2=55°. The initial freeze misread the angle rays; the complete visual input remains valid."},
+    {"qid":19,"initialIndependentAnswer":"x≈4.26 cm, y≈3.58 cm","storedAnswer":"x=3 cm, y=3.5754 cm","finalVerifiedAnswer":"x=3 cm, y=3.5754 cm","result":"RESOLVED_SAME_STAGE_SOURCE_VISUAL_ADJUDICATION","reason":"The source figure marks AD as the angle bisector. y=BD tan50°=3(1.1918)=3.5754. The two resulting 50° right triangles give tan50°=y/x, hence x=3. The original complete-input freeze is preserved; the initial freeze overlooked the angle-bisector marks."}
+  ],
+  "invalidFreeze": {
+    "qid":11,
+    "attemptStatus":"FAILED_INCOMPLETE_STUDENT_INPUT",
+    "initialIndependentAnswer":"①",
+    "storedAnswer":"⑤",
+    "originalStudentPayloadSha256":"911d02b4e281c72add87434ca016d1d277d2c66f36957c69d1916eeb2bdb61f5",
+    "sourcePdfPath":"C:\\Users\\USER\\Desktop\\기출정리 파일\\(4)2기말\\중3\\2019_이수중3_수학_2기말.pdf",
+    "sourcePdfSha256":"bda3b594a9f5930bf4c7841188f38c8d20addcd34cffcc9cfafc38591760a0d2",
+    "sourcePage":2,
+    "missingStudentMaterial":"The boxed proof text and its three blanks in the source PDF were absent from the supplied current student bundle; the choices cannot be mapped to the missing proof order from the visible stem and figure alone.",
+    "sourceGroundedRepair":"The current candidate stem now includes the source proof text with semantic line breaks. This modifies q11 student content, so the original q11 freeze remains invalid and a fresh q11-only clean R1 is required.",
+    "freshReviewDisposition":"ROOT_SCHEDULE_AFTER_CURRENT_R1_SLOT_FREES"
+  },
+  "repairLoci": [
+    {"qid":2,"field":"solution","change":"Corrected malformed exponent delimiters ^{,2} to ^{2}; mathematical derivation unchanged."},
+    {"qid":7,"field":"choices[0]","change":"Restored valid TeX escapes for the source-confirmed (30+30√3)m choice; independent answer ① unchanged."},
+    {"qid":10,"field":"solution","change":"Corrected malformed exponent delimiters ^{,2} to ^{2}; mathematical derivation unchanged."},
+    {"qid":11,"field":"content","change":"Restored the source PDF proof text and blank order; fresh q11 R1 required."},
+    {"qid":21,"field":"content","change":"Placed (1) and (2) on separate lines at the source semantic boundary; no meaning change."}
+  ],
+  "preservedSourceRepair": {
+    "qid":22,
+    "sourceCorrectionLedger":"archive/analysis/m3-codex-20261007/19_이수중_2학기_기말_중3_기출/CREATE.source-corrections.json",
+    "priorSourceProvenanceCommit":"ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+    "decision":"Preserve the prior AUDITED_SOURCE_REPAIR aligning the stem to clear printed figure values PA=4, AB=12, AT=7; do not revert to the conflicting OCR/text clause." 
+  }
+}
