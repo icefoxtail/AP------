@@ -1,4 +1,4 @@
-# JS Archive 2.0 — Codex Execution Contract v1.1
+# JS Archive 2.0 — Codex Execution Contract v1.2
 
 status: CURRENT / CODEX EXECUTION LINE
 updated: 2026-10-07
@@ -20,10 +20,12 @@ ROOT
 → R1
 → R2
 → R3
-→ actual RENDER
+→ ROOT render 경로 결정: actual RENDER 또는 근거 있는 캡처 면제 + R3 static closure
 → PUBLICATION
 → MAIN_DONE
 ```
+
+완료 목표는 검증된 production 완성·반영·remote readback이다. 캡처는 품질 근거를 확보하는 수단이며, ROOT는 §25의 위임 권한으로 그 필요성과 대체 수납 경로를 결정한다.
 
 ROOT는 routing과 기술 closure를 담당한다.
 수학·Meta·Visual·source의 의미 품질 판단을 ROOT가 대신하지 않는다.
@@ -41,6 +43,8 @@ ROOT 책임:
 - target-only publication
 - Git merge/readback
 - MAIN_DONE closure
+- 캡처/실제 render 요건 면제·예외 경로 결정 및 SHA-bound decision receipt
+- HOLD 복구 우선순위·최소 수정·문항 대체·해제·publication의 최종 운영 결정 (§25)
 
 ROOT 금지:
 - 문제 직접 풀이로 worker verdict 대체
@@ -180,7 +184,7 @@ validator는 복수정답 의미판정, 해설 논리, Meta 의미분류, SVG �
 
 ## 9. actual RENDER
 
-R3가 구조·targeted 검수를 끝낸 final artifact를 공식 Archive Engine에서 직접 render하고 판정한다. ROOT는 R3 보고서·machine witness·SHA·coverage·receipt 계약만 수납한다. R3 generic validator PASS와 actual RENDER_PASS는 별도 gate다.
+ROOT가 actual render 경로를 선택하면 R3가 구조·targeted 검수를 끝낸 final artifact를 공식 Archive Engine에서 직접 render하고 판정한다. ROOT가 §25에 따라 캡처를 면제한 경우 R3는 전 qid 구조·JS·자산·SVG code 및 변경 범위의 static closure를 작성한다. ROOT는 R3 보고서·machine witness·SHA·coverage·receipt 계약만 수납한다. R3 generic validator PASS와 actual RENDER_PASS는 별도 gate다.
 
 확인 범위:
 - 문제/해설/정답 화면 정상 로드
@@ -197,7 +201,7 @@ render 성공 상태:
 
 ## 10. PUBLICATION / MAIN_DONE
 
-RENDER_PASS 뒤 ROOT가 publication을 직접 닫는다.
+actual 경로의 RENDER_PASS 또는 §25의 ROOT 면제 결정에 결속된 STATIC_CODE_COMPLETE gate 수납 뒤 ROOT가 publication을 직접 닫는다.
 
 1. latest main 1회 조회
 2. 같은 시험지 production canonical overlap/drift 확인
@@ -300,7 +304,7 @@ ROOT는 첫 spawn 전에 최신 main, AGENTS, 본 CURRENT, Common Quality Contra
 - 깨끗한 worktree의 absolute root와 actual Git root/HEAD를 고정한다. primary checkout의 unrelated 변경을 worker 작업 경로로 사용하지 않는다.
 - custom role/config의 실제 resolved model/effort가 `gpt-6-luna / high`인지 첫 spawn 전에 확인한다.
 - 공식 Archive Engine의 승인된 HTTP(S) URL/session, candidate 전달 경로, temporary asset 로드 경로와 witness/capture 수단을 확인한다. 빈 tab 목록만으로 engine capability가 없다고 단정하지 않는다. 알려진 승인 URL이 있으면 공식 경로를 확인한다.
-- browser/runtime가 명시적으로 거부한 동작은 우회하지 않는다. 공통 접근 blocker는 run 수준에서 1회 기록하고 exact missing URL/session/capability를 요청한다. 동일 blocker를 시험지마다 재시도하거나 새로운 콘텐츠 HOLD로 만들지 않는다. 독립 CREATE/R1/R2는 계속 처리할 수 있으나 render/publication은 완료로 세지 않는다.
+- browser/runtime가 명시적으로 거부한 동작은 우회하지 않는다. 공통 접근 blocker는 run 수준에서 1회 기록하고 ROOT가 §25의 캡처 면제·static 완성 경로를 우선 결정한다. 반복 사용자 요청이나 동일 blocker의 시험지별 재시도를 prerequisite로 만들지 않는다. 콘텐츠 품질 근거가 충분하면 면제 경로로 production을 닫고, 실제 render는 NOT_RUN으로 남긴다. 필요한 품질 근거도 복구할 수 없는 경우에만 exact missing input을 요청한다.
 - bootstrap은 renderer/witness 구현을 새로 만들었다는 선언이 아니다. 구현되지 않은 기능은 `IMPLEMENTATION_REQUIRED`로 구분한다.
 
 ## 17. STAGE CONVEYOR — slot과 인계를 함께 기록한다
@@ -355,7 +359,7 @@ CREATE의 item HOLD를 시험지 최종 완료로 집계하지 않는다. 각 st
 3. R1/R2는 upstream HOLD를 정답으로 삼지 않고 student bundle에서 독립 재판정한다.
 4. R2 뒤에도 true item HOLD가 남고 최소복구가 불가능하면 `Archive_Final_Item_Direct_Replacement_v1.md`에 따라 held qid만 직접 대체한다. 사용자 허용 custom author role을 사용하고 임의 새 role/ALIVE 전면 pipeline을 열지 않는다.
 5. replacement는 solution-first·실제 오답 경로·5 choices 전수·fresh Meta·non-target invariance를 닫는다. student body 교체로 무효인 qid만 새 clean R1/R2 freeze를 수행한다.
-6. 기존 stage owner가 unchanged qids를 재사용하고 current full evidence를 재결속·검증한다. `itemHoldCount=0` 이후 R3로 간다. R3 actual render 이전 publication은 금지한다.
+6. 기존 stage owner가 unchanged qids를 재사용하고 current full evidence를 재결속·검증한다. `itemHoldCount=0` 이후 R3로 간다. actual 경로는 RENDER_PASS, ROOT 면제 경로는 R3 static closure와 별도 gate 수납 뒤 publication한다.
 
 HOLD 유지에는 decisiveMissingFacts, alternateEvidenceChecked, fullPageLookupResult, repairAttempted, whyDeterministicClosureImpossible, nextRequiredEvidenceOrCapability가 필요하다. 콘텐츠 item hold와 run 공통 browser/receipt blocker는 서로 다른 원인으로 기록한다.
 
@@ -403,5 +407,50 @@ run ledger에 examUid/stage/sessionId/role, resolved model/effort, input/output 
 1. **검증 결과 형식:** raw generic `--json` 결과를 그대로 보존한다. `status:PASS`만 가진 custom summary 또는 common-only report를 현재 V2 artifact contract PASS로 수납하지 않는다. `ok/validatorMode/stage/examUid/artifactSha/qualityContractVersion/executionLine/common/active artifactContract`와 고정 전체 qid 분모를 확인한다.
 2. **기술 결속 복구:** 위 결속이 실제로 실패했을 때만 해당 stage의 기존 owner가 증거와 valid freeze의 적용 범위를 확인해 최소 동기화하고 필요한 normal validator를 다시 실행한다. unchanged 문제를 다시 풀거나 학생 body에 영향 없는 변경으로 새 blind session을 만들지 않는다. 원 report·실패·correction provenance를 보존한다. ROOT는 물리 경로/필드 alias/SHA 전송만 정정하며 의미 판정은 worker가 수행한다.
 3. **Git 전송 바이트:** production 자산이 local witness와 같아도 Git index/remote가 같은 raw bytes인지 별도로 확인한다. stat cache와 autocrlf로 기존 SVG·JS의 remote SHA가 달라질 수 있다. 필요한 경로만 명시적으로 raw bytes에 결속해 stage하고 index raw SHA를 확인한 뒤 publish한다. 생성/수정/검수된 JS·SVG의 의미나 source artifact를 이 전송 복구 과정에서 바꾸지 않는다. 긴 Windows 경로의 remote readback은 revision/path 모호성이 없는 Git blob 읽기를 사용한다.
-4. **사용자 지시의 run별 예외:** 실제 캡처 요건을 면제하는 명시적 사용자 지시가 있으면 지시 원문·고정 roster·범위·SHA를 별도 receipt로 보존한다. `renderStatus:NOT_RUN_USER_WAIVER`, `completionBasis:USER_DIRECTED_STATIC_COMPLETE`인 별도 static/MAIN_DONE gate를 사용하고 normal `RENDER_PASS` 경로를 완화하지 않는다. complete R1/R2, R3 JS·자산·구조 integrity, zero item HOLD, production 및 remote parity는 유지한다. 이 run의 예외가 다른 run의 기본 render 요건으로 자동 전파되지 않는다.
+4. **위임된 ROOT 예외 결정:** §25에 따른 ROOT의 캡처 면제 또는 직접 사용자 면제 지시가 있으면 권한 근거·결정 주체·고정 roster·범위·SHA를 별도 receipt로 보존한다. `renderStatus:NOT_RUN_USER_WAIVER`, `completionBasis:USER_DIRECTED_STATIC_COMPLETE`인 별도 static/MAIN_DONE gate를 사용하고 normal `RENDER_PASS` 경로를 완화하지 않는다. complete R1/R2, R3 JS·자산·구조 integrity, zero item HOLD, production 및 remote parity는 유지한다. 각 run의 면제 결정은 범위별로 결속한다. ROOT의 예외 결정 권한은 일반 Codex 운영에 적용되며, 이전 run의 면제 결과를 새 run에 근거 없이 자동 승계하지 않는다.
 5. **수납 후 재개:** 역할 slot은 정상 closure에서 즉시 해제한다. 내용 수정이 없는 receipt 전송 오류는 ROOT가 항목별로 정정하고 실제 helper가 소비한 뒤 완료를 기록한다. 새로운 stage 품질 판단이 필요한 경우 해당 owner의 같은 session으로 되돌린다.
+
+## 25. PRODUCTION 완성 우선 — ROOT 예외·HOLD 해제 권한
+
+### 25.1 상시 위임과 완료 기준
+
+2026-10-07 사용자 지시로 ROOT에 캡처 조건 면제와 예외·HOLD 복구·해제의 최종 운영 권한을 부여한다. 본 §25는 다른 절·AGENTS·role 설정의 캡처 전제에 우선하며, actual 경로를 선택한 범위에는 기존 R3 실제 render 계약을 적용한다. 이 권한은 일반 Codex 실행 라인에 적용한다. 승인 범위 안의 각 run에서 별도 사용자 면제 지시나 같은 적용 여부의 재승인을 기다리지 않는다. ROOT는 고정 roster·ownership·현재 SHA와 worker의 검증 근거에 따라 결정하며 새로운 교과·시험지로 범위를 확장하지 않는다.
+
+MAIN_DONE의 목표는 완성된 학생용 JS·정답·해설·Meta·문제 이미지·해설 SVG, 유효한 R1/R2, R3 release/static integrity, zero unresolved item HOLD, 실제 production 반영 및 remote readback·closeout 수납이다. 캡처 유무만으로 완성/미완성을 판정하지 않는다. 학생용 품질의 의미 판단은 해당 worker가 수행하고 ROOT는 그 근거를 수납한다.
+
+### 25.2 ROOT가 캡처를 면제할 수 있는 범위
+
+ROOT는 browser/임시 후보 전달 경로 부재, 실행 도구의 명시적 접근 거부, 유효한 unchanged actual 증거의 재사용, 코드·자산 검수와 기존 증거에 비해 중복 capture의 추가 효용이 낮은 경우 등에서 actual render/capture의 일부 또는 전부를 면제할 수 있다. 정상적으로 유용한 render는 R3가 수행한다. 화면을 ROOT가 다시 심사하거나 면제를 위해 보안 거부를 우회하지 않는다.
+
+면제 경로에도 다음은 충족한다.
+- 완전한 current student bundle·필수 그림과 pre-disclosure freeze에 결속된 R1/R2 전 qid PASS. unchanged 유효 범위는 재사용한다.
+- R3의 변경/open/direct dependency 및 전체 구조·마지막 qid·JS syntax·필수 필드·참조 자산·SVG XML/code·외부 dependency·raw SHA 검수.
+- 알려진 계산·정답·해설·수학적 visual 결함, 누락/깨진 asset, 무효 freeze, 해제되지 않은 item HOLD를 먼저 복구한다. 이 결함을 캡처 면제로 통과시키지 않는다.
+- 실행하지 않은 화면/MathJax/overflow 판정은 NOT_RUN으로 기록한다. static 검수와 실제 화면 PASS를 구분한다.
+
+ROOT 결정은 `decisionAuthority:ROOT_DELEGATED`, runId, examUid/qid/case 범위, 권한 근거, 사유, 대체 검수, R3 reviewer identity, JS·자산·evidence SHA, 남은 NOT_RUN 항목, publication 조건을 포함하는 physical decision receipt로 보존한다. ROOT 결정에는 `completionBasis:ROOT_DIRECTED_STATIC_COMPLETE`를 사용한다. 전체 render 미실행은 `renderStatus:NOT_RUN_ROOT_WAIVER`, 일부 case를 실제 실행한 경우는 `renderStatus:PARTIAL_RENDER_ROOT_WAIVER`로 구분하고 case별 실제 PASS/NOT_RUN과 capture 수를 사실대로 기록한다. 직접 사용자 지시는 기존 USER_DIRECTED_STATIC_COMPLETE/NOT_RUN_USER_WAIVER로 보존한다. 두 경로 모두 실제 RENDER_PASS로 가장하지 않는다.
+
+### 25.3 구현과 수납의 일치
+
+actual 경로와 면제 경로의 gate를 구별하고 publish 전에 실제 helper가 decision·고정 roster·전체 qid·R1/R2·R3 static·zero HOLD·raw bytes를 수납해야 한다. publication 뒤 HEAD/origin-main·production blob/raw SHA·모든 final asset과 durable evidence의 remote parity를 닫는다.
+
+현재 `validateCodexUserWaivedStaticReceipt`/`validateCodexUserWaivedMainDoneReceipt`는 20261006 중2 15시험지의 직접 사용자 면제에 한정된 구현이다. 일반 ROOT 결정까지 이미 자동 수납한다고 주장하지 않는다. 새 ROOT 면제를 해당 helper가 지원하지 않으면 ROOT가 실제 durable technical continuation으로 MASTER에 필요한 decision/schema/gate 결속만 구현·복구하도록 인계한다. 사용자에게 면제 권한을 다시 요청하거나 구현 미비를 영구 HOLD로 종료하지 않는다. normal render gate를 일괄 완화하거나 기존 receipt의 권한 주체를 소급 변경하지 않는다. 이 시험지 캡처 권한으로 앱 runtime 변경의 별도 응답성·저장소·실제 동작 검증 계약을 생략하지 않는다.
+
+### 25.4 HOLD 복구·해제의 실행 순서
+
+1. 콘텐츠 item HOLD, evidence/receipt/hash 전송 오류, run 공통 render/capture blocker를 각각 원인과 영향 범위로 기록한다. CREATE의 미완료·WAIT·CONTINUATION을 시험지 최종 HOLD로 종결하지 않는다.
+2. 콘텐츠는 바탕화면 기출의 문제·정답 PDF 전 페이지와 source evidence를 대조한다. 복원 근거가 있으면 수정프로토콜의 단일 의미 locus·최소 수정부터 적용한다. 원 freeze/실패/원문·수정 provenance를 보존하고 관련 JS/answer/solution/decisiveStep/Meta/visual/evidence를 동기화한다.
+3. R1/R2 뒤에도 true item HOLD이면 직접 문항 대체 규칙으로 해당 qid의 완제품을 작성하고 변경 학생 입력의 영향 qid만 fresh R1/R2 검수한다. ROOT가 이 복구·대체를 승인 범위에서 자율 dispatch하며 같은 적용 여부를 재질문하지 않는다.
+4. 유효한 완전 입력 freeze 뒤 발견된 계산·선택기호·단위 encoding 오류는 같은 stage에서 최소 adjudication한다. 학생 body/필수 그림이 바뀐 경우 freeze 유효성은 worker가 판정한다. unchanged qid를 다시 풀거나 다시 capture하지 않는다.
+5. 기술 오류는 raw generic V2/CODEX report, 실제 자산 root, mode별 필요한 decoded set, raw/clean-filter hash, Git index/remote bytes, durable physical ref 및 reviewer 결속을 항목별로 복구한다. 원래 정상 validator 1회 규칙은 실제 수정 이후 필요한 재검증을 막지 않는다.
+6. 캡처만 막힌 경우 §25.2의 ROOT 면제와 R3 static closure로 이어간다. production 완성 근거가 충족되면 ROOT가 HOLD 해제와 publication·closeout을 닫는다. 이 결정은 해결/면제/부분 미실행을 명시한 closeout evidence로 남긴다.
+7. 필수 품질 입력·정답 결정·자산 복구·대체까지 가능한 경로를 실제 소진한 경우에만 terminal HOLD를 유지하고 exact missing facts와 이미 시도한 복구를 기록한다. 기술 인계나 캡처 파일 부재만으로 terminal HOLD를 만들지 않는다.
+
+### 25.5 이번 중2 완료에서 고정할 운영 사례
+
+- 연향 q23: PDF의 조건·채점 모호성 보존 → true item HOLD의 직접 대체 → fresh q23 R1/R2 → postfreeze 최소 정답/해설 수정; 나머지 23 qid는 재사용.
+- 팔마: 실제 sol/ans에 없는 문제 그림을 decode했다고 만들지 않고 mode별 필요한 자산 계약을 수리; 기존 실제 6개 capture와 reviewer를 재사용.
+- 신흥·이수: structural/common-only 보고서를 full V2/CODEX PASS로 수납하지 않고 기존 유효 freeze와 Meta disposition을 재사용해 실제 raw 강제 validator 증거를 복구.
+- 기존 7개 actual 영수증: 필요한 mode witness와 추가로 실제 decode한 witness를 분리 보존; 원 캡처·reviewer·JS·자산 SHA를 유지해 receipt compatibility만 복구.
+- publication: Git 정규화로 달라진 SVG/JSON raw bytes와 임시 evidence 경로를 필요한 범위에서 수리하고 index 및 remote readback까지 완료.
+- 앞으로 동일 blocker에서 ROOT 예외 결정 → 해당 worker의 최소 복구/static closure → 기술 gate 수납 → production·MAIN_DONE으로 연결한다.
