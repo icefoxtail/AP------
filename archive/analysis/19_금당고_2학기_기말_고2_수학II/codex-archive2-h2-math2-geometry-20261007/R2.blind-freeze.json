@@ -1,0 +1,151 @@
+{
+  "schema": "JS_ARCHIVE_R2_BLIND_ANSWER_FREEZE_V1",
+  "status": "FROZEN_BEFORE_STORED_ANSWER_DISCLOSURE",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "stage": "R2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerRole": "archive_r2",
+  "resolvedModel": "gpt-6-luna",
+  "reasoningEffort": "high",
+  "serviceTelemetry": "unavailable",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------",
+  "expectedHead": "1bf89fa326cb4f9da862f2e348eaea61b436f887",
+  "candidateAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\19_금당고_2학기_기말_고2_수학II.js",
+  "candidateRawSha256": "efc60e364086887dba14a10221882e51325d991cbaeac25896c07ecf4da4ab09",
+  "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\R2.student-bundle.json",
+  "studentBundleSha256": "9aeee8b2aa871ab740cf35d9ce70182962308e130f09ce3a5731bf591f2e1ccd",
+  "qidCoverage": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "requiredAssets": [],
+  "allRequiredAssetsOpened": true,
+  "answers": [
+    {
+      "reasoning": "F'(x)=3x^2+2ax+3=3x^2-4x+3, so a=-2.",
+      "answer": "-2",
+      "qid": 1
+    },
+    {
+      "reasoning": "Integral from 1 to 2 of 5x^4 is [x^5]_1^2=32-1.",
+      "answer": "31",
+      "qid": 2
+    },
+    {
+      "reasoning": "The tangent slope is f'(1)=2(1)+1=3.",
+      "answer": "3",
+      "qid": 3
+    },
+    {
+      "reasoning": "The secant slope is 1; f'(c)=2c=1, hence c=1/2.",
+      "answer": "1/2",
+      "qid": 4
+    },
+    {
+      "reasoning": "Displacement is integral_1^3(4-2t)dt=[4t-t^2]_1^3=0.",
+      "answer": "0",
+      "qid": 5
+    },
+    {
+      "reasoning": "Critical points are -2 and 0; values at -3,-2,0,1 are 14,-11,5,-2. Maximum plus minimum is 14-11=3.",
+      "answer": "3",
+      "qid": 6
+    },
+    {
+      "reasoning": "f'(x)=4x^2(x-3); the only extremum is the minimum at x=3, with f(3)=-25. x=0 is stationary without an extremum.",
+      "answer": "-25",
+      "qid": 7
+    },
+    {
+      "reasoning": "At t=1, r=4 and dr/dt=2. dV/dt=4*pi*r^2*dr/dt=128*pi.",
+      "answer": "128*pi",
+      "qid": 8
+    },
+    {
+      "reasoning": "Split by roots 0 and 2. The areas on [-2,0] and [0,2] are 20/3 and 4/3, total 8.",
+      "answer": "8",
+      "qid": 9
+    },
+    {
+      "reasoning": "Two distinct intersections require a repeated root. The difference cubic has critical x=1,3; positive k gives the double root at x=1 when k=2, with remaining root x=4.",
+      "answer": "2",
+      "qid": 10
+    },
+    {
+      "reasoning": "For p(x)=x^4-4x^3-2x^2+12x, p\\u0027(x)=4(x-3)(x-1)(x+1). On [0,3], extrema values are p(0)=0,p(1)=7,p(3)=-9. |p+k|<=10 gives -1<=k<=3.",
+      "answer": "3",
+      "qid": 11
+    },
+    {
+      "reasoning": "Odd terms cancel because f is even; the remaining integral of f over [-1,1] is twice integral_-1^0 f=8.",
+      "answer": "8",
+      "qid": 12
+    },
+    {
+      "reasoning": "For injectivity, f\\u0027(x)=-3x^2+4ax+a must not change sign. Its discriminant is 16a^2+12a<=0, giving -3/4<=a<=0; the minimum is -3/4.",
+      "answer": "-3/4",
+      "qid": 13
+    },
+    {
+      "reasoning": "The functional identity forces F(x)=3x^2/2+cx+C. Since f=F' and f(0)=2, c=2; hence F'(-1)=-3+2=-1.",
+      "answer": "-1",
+      "qid": 14
+    },
+    {
+      "reasoning": "Factoring the linear polynomials f and g' using their sum -8x+9 and product -20x^2+54x-36, the integral identity and g(2)=7 select f=2x-3, g'=-10x+12. Thus g(3)=7+integral_2^3(-10x+12)dx=7-13=-6.",
+      "answer": "-6",
+      "qid": 15
+    },
+    {
+      "reasoning": "f'(x)=3x^2+12x+k has minimum k on [0,3], so the least k ensuring nonnegative derivative is 0.",
+      "answer": "0",
+      "qid": 16
+    },
+    {
+      "reasoning": "Writing h=f-(4x+3), the two tangencies give h=((x-m)^2-1)^2. The condition for the line y=4x+4 gives the additional tangent at x=m and two intersections at m±sqrt(2). Since -3 is one of the roots of f\\u0027-4, m=-2; then a=-2,b=-1, f(a)=-4 and f(b)=-1, product 4.",
+      "answer": "4",
+      "qid": 17
+    },
+    {
+      "reasoning": "g'(2)=integral_0^2 f=16-4m+6n=0 gives m=4+3n/2, so n=2k,m=4+3k. For a local maximum f(2)<0 gives k>=2. m-n=4+k<=20 gives k<=16; 15 pairs.",
+      "answer": "15",
+      "qid": 18
+    },
+    {
+      "reasoning": "Intersections are x=0,3. Area is integral_0^3[(-x+4)-(x-2)^2]dx=9/2.",
+      "answer": "9/2",
+      "qid": 19
+    },
+    {
+      "reasoning": "A tangent at parameter t passes through (1,a) exactly when a=-2t^3+3t^2+1. This cubic has three distinct real preimages precisely between its local minimum 1 at t=0 and local maximum 2 at t=1.",
+      "answer": "1<a<2",
+      "qid": 20
+    },
+    {
+      "reasoning": "The required root r in [1,3] must be double because |f| is differentiable there; the cubic is f=x(x-r)^2. With u=r-1 in [0,2], f(1)f'(1)=(1-r)^3(3-r)=u^3(u-2), whose maximum is 0 at the endpoints and minimum is -27/16 at u=3/2.",
+      "answer": "maximum 0; minimum -27/16",
+      "qid": 21
+    }
+  ]
+}

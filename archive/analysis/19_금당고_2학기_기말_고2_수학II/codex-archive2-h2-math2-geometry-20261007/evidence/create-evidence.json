@@ -1,0 +1,1425 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "artifactSha": "f58fc8a02059f6c2efa54f8c710f3f7b44fa8beb",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceInput": {
+    "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/19_금당고_2학기_기말_고2_수학II/19_금당고_2학기_기말_고2_수학II.js",
+    "sha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+    "sourceEvidencePath": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/19_금당고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/19_금당고_2학기_기말_고2_수학II.json",
+    "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+    "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+    "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+    "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+    "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 7,
+            "observation": "The board flow completes the square, computes the center after each transformation in order, and ends with the final circle equation. The companion SVG shows the centers and preserved radius.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+          },
+          {
+            "qid": 8,
+            "observation": "The solution turns graph observations into coefficient-sign relations step by step, then applies them to slope and intercepts of the new line. The SVG organizes the relation without replacing the algebra.",
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+            "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 2,
+            "observation": "The perpendicular-slope condition is visible as two explicit slope equations and a product equation; the graph displays both actual lines.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+          },
+          {
+            "qid": 3,
+            "observation": "Completing squares is shown through the center and radius values, and the SVG circle is centered at (-1,3) with radius 2.",
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+            "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "items": [
+          {
+            "qid": 5,
+            "observation": "Each ㄱ/ㄴ/ㄷ/ㄹ claim is isolated and proved or refuted with a specific identity or counterexample.",
+            "solutionSha256": "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+            "solutionExcerpt": "ㄱ. 차집합은 교집합으로 나타내면\n$A-B=A\\cap B^C$이다.\n이는 $A\\cup B^C$와 항상 같지 않다. 예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$이면 $A-B=\\varnothing$이고 $A\\cup B^C=U$이므로 ㄱ은 거짓이다.\n\nㄴ. 흡수법칙에 따라\n$A\\cap(A\\cup B)=A$,\n$A\\c",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 6,
+            "observation": "The upper bound is derived from the universe size, then a concrete partition attains it; the Venn SVG encodes the intersection and exclusive regions.",
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Read the cross-axis false-PASS fixture and inspected its frozen q7 SVG. It documents bundled ㄱ/ㄴ/ㄷ verdicts without separate blocks and a curve primitive that misses its labeled point; the candidate solutions therefore keep decisive steps explicit and source-derived."
+    },
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "solutionWorkMode": "SOURCE_ONLY_FRESH",
+    "calibrationOrder": [
+      "assignment",
+      "golden_and_negative_read",
+      "preflight_pass",
+      "target_solution_draft"
+    ],
+    "calibrationStatus": "PASS",
+    "qualityCompareCount": "21/21"
+  },
+  "summary": {
+    "questionCount": 21,
+    "itemHoldCount": 1,
+    "sourceRepairCount": 3
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "613857195e4603e00e50af3bfe30f0514a810585e7c487cdc87f806463f53e73",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_DERIVATIVE_IDENTITY_COEFFICIENT_DETERMINE",
+          "difficultyBucket": 1,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            35,
+            130,
+            280,
+            235
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "613857195e4603e00e50af3bfe30f0514a810585e7c487cdc87f806463f53e73"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "c1fe949169ca2a24ccd5398225dbcc0cd76af01dd06223c4044c0b973bada17d",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+          "templateKey": "TPL_DEFINITE_EVALUATION",
+          "difficultyBucket": 1,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            35,
+            285,
+            280,
+            370
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c1fe949169ca2a24ccd5398225dbcc0cd76af01dd06223c4044c0b973bada17d"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "1052edf0420bc12e9caec2dc413b286ce7f43e5409a36e886f044541f9c71f4b",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-05",
+          "subUnitKey": "H15-M2-05-TANGENT",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENT_CONSTRUCTION",
+          "difficultyBucket": 1,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            35,
+            420,
+            280,
+            500
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1052edf0420bc12e9caec2dc413b286ce7f43e5409a36e886f044541f9c71f4b"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "c07f2c262a381ca6550fe7f94f6abd0aaf23ef906fadb3ed582cb0140db1fabd",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+          "templateKey": "TPL_MEAN_VALUE_THEOREM_INTERNAL_POINT",
+          "difficultyBucket": 2,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            35,
+            565,
+            280,
+            655
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c07f2c262a381ca6550fe7f94f6abd0aaf23ef906fadb3ed582cb0140db1fabd"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "4f7d003c5a2972f75eab6b2f45347b8e4cfc5cc9f909f3d110585d0b62acd71d",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+          "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+          "difficultyBucket": 2,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            300,
+            70,
+            565,
+            175
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4f7d003c5a2972f75eab6b2f45347b8e4cfc5cc9f909f3d110585d0b62acd71d"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "557bf514413bbd73e7ddf334a7b6559c049a44fed900f06aae0304caef62ebaf",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_GLOBAL_EXTREMA_COMPARISON",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            300,
+            285,
+            565,
+            370
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "557bf514413bbd73e7ddf334a7b6559c049a44fed900f06aae0304caef62ebaf"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7bd4f39ba767ace7461aa916a2edfe7f7ef7155a664d756031e26b9008f06cfb",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+          "difficultyBucket": 2,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 1,
+          "sourceBboxPdfPoints": [
+            300,
+            440,
+            565,
+            515
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7bd4f39ba767ace7461aa916a2edfe7f7ef7155a664d756031e26b9008f06cfb"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "932ae3cc05879470637a849a49437509ab8ed6af1ac271a01fe8d919c3c19e9d",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+          "templateKey": "TPL_MOTION_COMPOSITE_MODEL",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            35,
+            65,
+            285,
+            130
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "932ae3cc05879470637a849a49437509ab8ed6af1ac271a01fe8d919c3c19e9d"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e70a28b73cadc05059eff8c6fbd1e79805261b4a76f98654a4baa79d25624c4b",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            35,
+            315,
+            285,
+            415
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e70a28b73cadc05059eff8c6fbd1e79805261b4a76f98654a4baa79d25624c4b"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d66993fc7f1a6bd2245f3b9d8cb9078d7324ff1b83ba99dfb29f6e88a915fd0a",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        },
+        "mathAnswer": {
+          "status": "HOLD",
+          "reason": "The source equation has two distinct intersections for each of k=2,3,4,5. The source key marks ②, but the printed choices include other valid positive k values; no unique answer is supported.",
+          "independentDerivation": "h(x)=x(x-3)^2; for 2k>4, one intersection lies left of x=1 and one right of x=3."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+          "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            35,
+            500,
+            285,
+            590
+          ],
+          "answerKey": "②",
+          "sourceTextVerified": true
+        }
+      },
+      "verdict": "HOLD",
+      "itemHold": {
+        "status": "HOLD",
+        "axis": "MATH_ANSWER_CARDINALITY",
+        "reason": "The source equation has two distinct intersections for each of k=2,3,4,5. The source key marks ②, but the printed choices include other valid positive k values; no unique answer is supported.",
+        "officialAnswer": "②",
+        "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+        "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+        "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+        "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce"
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d66993fc7f1a6bd2245f3b9d8cb9078d7324ff1b83ba99dfb29f6e88a915fd0a"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceFidelityStatus": "AUDITED_REPAIR",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3e0629dc0dfc865f136971b9b15a64156e3aa6676e07e450e9164ad74c239563",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+          "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "field": "content",
+          "from": "-12x",
+          "to": "+12x",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            300,
+            65,
+            565,
+            145
+          ],
+          "sourceObservation": "The source PDF visibly has +12x; the locked candidate had -12x.",
+          "renderedSourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\source\\original-2.png"
+        },
+        "repairedTruth": {
+          "verifiedAgainstSourcePdf": true,
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "correctedContent": "$0\\le x\\le 3$일 때, 부등식 $\\left|x^4-4x^3-2x^2+12x+k\\right|\\le 10$이 성립하기 위한 정수 $k$의 최댓값은? [4.2점]",
+          "answerAndSolutionRecomputed": true,
+          "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+          "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3e0629dc0dfc865f136971b9b15a64156e3aa6676e07e450e9164ad74c239563"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "51509c9c0790b0e762eef0a3a30d40b6cf6981fd0ebb61750be5abbdbc03d8bc",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_GLOBAL_INTEGRAL_CONSTRAINT",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            300,
+            260,
+            565,
+            420
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "51509c9c0790b0e762eef0a3a30d40b6cf6981fd0ebb61750be5abbdbc03d8bc"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "2f6111be3506bcc53bed1f41ba41a23813985edb8523a480e469feee0060485c",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+          "templateKey": "TPL_INVERSE_ONE_TO_ONE_MONOTONICITY",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 2,
+          "sourceBboxPdfPoints": [
+            300,
+            500,
+            565,
+            585
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2f6111be3506bcc53bed1f41ba41a23813985edb8523a480e469feee0060485c"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceFidelityStatus": "AUDITED_REPAIR",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "c68ce4b3f18a13ddabec2e2e07a72674ac49f4b09bacb98f23ab0332a7aa48b4",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_FUNCTIONAL_EQUATION_DERIVATIVE_DETERMINE",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "field": "content",
+          "from": "F(x-y)",
+          "to": "F(x+y)",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "sourceBboxPdfPoints": [
+            35,
+            70,
+            290,
+            150
+          ],
+          "sourceObservation": "The source PDF visibly has F(x+y); the locked candidate had F(x-y).",
+          "renderedSourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\source\\original-3.png"
+        },
+        "repairedTruth": {
+          "verifiedAgainstSourcePdf": true,
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "correctedContent": "다항함수 $f(x)$의 한 부정적분을 $F(x)$라 할 때, 모든 실수 $x,y$에 대하여 $F(x+y)=F(x)+F(y)+3xy$가 성립한다고 한다. $f(0)=2$일 때, $F'(-1)$의 값은? [4.8점]",
+          "answerAndSolutionRecomputed": true,
+          "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+          "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c68ce4b3f18a13ddabec2e2e07a72674ac49f4b09bacb98f23ab0332a7aa48b4"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "bd5b1354c5375d8aba7935e4fb4f22bdbc85f2e3def7568670455f08013c3efd",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-07",
+          "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+          "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_VALUE_DERIVATIVE_CONDITIONS_FUNCTION_DETERMINE",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "sourceBboxPdfPoints": [
+            35,
+            275,
+            290,
+            400
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bd5b1354c5375d8aba7935e4fb4f22bdbc85f2e3def7568670455f08013c3efd"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "93f036c9dcf2a76198c4a4bfdaee38a48849f0c999da963735eb071302bb4aec",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+          "templateKey": "TPL_MONOTONICITY_CONDITION",
+          "difficultyBucket": 2,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "sourceBboxPdfPoints": [
+            35,
+            510,
+            290,
+            615
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "93f036c9dcf2a76198c4a4bfdaee38a48849f0c999da963735eb071302bb4aec"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "f2a4028eef469998b8dac6b76d542306b08f6dd203d6ed1886755988c2a3a734",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_TANGENT_EXTREMUM_FUNCTION_DETERMINE",
+          "difficultyBucket": 5,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "sourceBboxPdfPoints": [
+            300,
+            70,
+            565,
+            250
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f2a4028eef469998b8dac6b76d542306b08f6dd203d6ed1886755988c2a3a734"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceFidelityStatus": "AUDITED_REPAIR",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3402da8c5ab14e18f261b685d0d0e3d5029401a3020b68afa53782ee33410a2a",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_INTEGRAL_DEFINED_EXTREMA_FROM_ROOT_COUNT",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "field": "content",
+          "from": "극값을 갖는다",
+          "to": "극댓값을 갖는다",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "sourceBboxPdfPoints": [
+            300,
+            385,
+            565,
+            545
+          ],
+          "sourceObservation": "The source PDF specifies a local maximum; the locked candidate only said an extremum.",
+          "renderedSourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\19_금당고_2학기_기말_고2_수학II\\source\\original-3.png"
+        },
+        "repairedTruth": {
+          "verifiedAgainstSourcePdf": true,
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 3,
+          "correctedContent": "다음 조건을 만족시키는 두 자연수 $m,n$의 모든 순서쌍 $(m,n)$의 개수는?\n(가) $m-n\\le 20$\n(나) 함수 $f(x)=6x^2-2mx+3n$에 대하여 함수 $g(x)=\\displaystyle\\int_0^x(x-t)f(t),dt$가 $x=2$에서 극댓값을 갖는다. [6.0점]",
+          "answerAndSolutionRecomputed": true,
+          "answerPdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말_해설.pdf",
+          "answerPdfSha256": "503ba26f021789fa81d1cc65c426c19739c4db4603067d2d50b9fef3438a82ce"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3402da8c5ab14e18f261b685d0d0e3d5029401a3020b68afa53782ee33410a2a"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3226d8e2d1bf58b298c394b35689e3a2787dd363ba2afc15a2e84369e6d6b4e6",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "difficultyBucket": 3,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 4,
+          "sourceBboxPdfPoints": [
+            30,
+            65,
+            290,
+            230
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3226d8e2d1bf58b298c394b35689e3a2787dd363ba2afc15a2e84369e6d6b4e6"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d388eb35671cd89de7a9bed79a5b0694e683a3fb756235647bc6f274f8b2a713",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "templateKey": "TPL_TANGENT_FROM_EXTERNAL_POINT",
+          "difficultyBucket": 4,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 4,
+          "sourceBboxPdfPoints": [
+            30,
+            295,
+            290,
+            410
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d388eb35671cd89de7a9bed79a5b0694e683a3fb756235647bc6f274f8b2a713"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Preserved source text, condition boundaries and choice order; only independently PDF-verified repairs are recorded.",
+          "actualRenderStatus": "NOT_RUN_ROOT_WAIVER"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d5bc5e974c1baebf1f2d5da9d588a4e641bffc3e9cb8033a44f52f11e7e5ce2e",
+          "reason": "The decisive setup, transformation, intermediate values, substitution and conclusion are visibly separated in mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_ROOT_MULTIPLICITY_FUNCTION_DETERMINE",
+          "difficultyBucket": 5,
+          "rationale": "Current source and fresh solution determine the H15 Math II unit, subunit, type, template and difficulty."
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "The full-page source and intake audit confirm this item has no figure, graph, table or source visual."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputSha256": "7638917e65485ea83597cbad1297bae26f318f239003e7ab378428f360e8e839",
+          "sourceEvidenceSha256": "23902488b0eaf50e578674a579eb55eb9d5f291c749843640279397427296e1d",
+          "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/수2/2019_금당고2_수2_2기말.pdf",
+          "sourcePdfSha256": "ebdc919b6cd221628e017d4d49f9500bc7916ad6c3ab5091827ace7a9f0a5b1d",
+          "sourcePage": 4,
+          "sourceBboxPdfPoints": [
+            300,
+            65,
+            565,
+            220
+          ],
+          "fullPageVisualComparison": true
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d5bc5e974c1baebf1f2d5da9d588a4e641bffc3e9cb8033a44f52f11e7e5ce2e"
+    }
+  ]
+}

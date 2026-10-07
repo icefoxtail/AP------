@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "19_금당고_2학기_기말_고2_수학II",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationOrder": [
+    "assignment",
+    "golden_and_negative_read",
+    "preflight_pass",
+    "target_solution_draft"
+  ],
+  "solutionWorkMode": "SOURCE_ONLY_FRESH",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "items": [
+        {
+          "qid": 7,
+          "observation": "The board flow completes the square, computes the center after each transformation in order, and ends with the final circle equation. The companion SVG shows the centers and preserved radius.",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+        },
+        {
+          "qid": 8,
+          "observation": "The solution turns graph observations into coefficient-sign relations step by step, then applies them to slope and intercepts of the new line. The SVG organizes the relation without replacing the algebra.",
+          "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+          "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "qid": 2,
+          "observation": "The perpendicular-slope condition is visible as two explicit slope equations and a product equation; the graph displays both actual lines.",
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+        },
+        {
+          "qid": 3,
+          "observation": "Completing squares is shown through the center and radius values, and the SVG circle is centered at (-1,3) with radius 2.",
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^2-1$이고,\n$y^2-6y=(y-3)^2-9$이다.\n이를 원래 식에 대입하면\n$(x+1)^2-1+(y-3)",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "visualSha256": "752cec51f255cb4bfc7dfb6a5e8cd83fd2a4184bb08ab40cabc20db55ad0c28c",
+          "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "items": [
+        {
+          "qid": 5,
+          "observation": "Each ㄱ/ㄴ/ㄷ/ㄹ claim is isolated and proved or refuted with a specific identity or counterexample.",
+          "solutionSha256": "5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+          "solutionExcerpt": "ㄱ. 차집합은 교집합으로 나타내면\n$A-B=A\\cap B^C$이다.\n이는 $A\\cup B^C$와 항상 같지 않다. 예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$이면 $A-B=\\varnothing$이고 $A\\cup B^C=U$이므로 ㄱ은 거짓이다.\n\nㄴ. 흡수법칙에 따라\n$A\\cap(A\\cup B)=A$,\n$A\\c",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 6,
+          "observation": "The upper bound is derived from the universe size, then a concrete partition attains it; the Venn SVG encodes the intersection and exclusive regions.",
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ],
+          "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+          "visualObservation": "Rendered SVG reviewed; its mathematical labels and geometry support the stated board relation."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+    "observation": "Read the cross-axis false-PASS fixture and inspected its frozen q7 SVG. It documents bundled ㄱ/ㄴ/ㄷ verdicts without separate blocks and a curve primitive that misses its labeled point; the candidate solutions therefore keep decisive steps explicit and source-derived."
+  }
+}
