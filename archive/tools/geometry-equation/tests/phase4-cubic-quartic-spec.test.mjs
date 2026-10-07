@@ -20,3 +20,12 @@ test('Phase 2 final graph spec samples every frozen cubic/quartic feature and ig
   assert.deepEqual(spec.displayFacts.axisTickValues,plan.graphPlan.axisTickValues);
   assert.match(spec.objects[1].text,/x\^3/);
 });
+
+test('quadratic Phase 2 graphs retain the legacy canvas used by medium-profile typography',()=>{
+  const plan={capability:'polynomial-spike-v1',caption:'이차함수',graphPlan:{
+    family:'polynomial',coefficients:['-1','0','3'],domain:[-2,2],viewport:[-2,2,-1,5],overviewFeatures:[]
+  }};
+  const spec=specFor(plan,{},'quadratic-medium-profile');
+  assert.equal(spec.viewport.width,384);
+  assert.equal(spec.viewport.height,320);
+});
