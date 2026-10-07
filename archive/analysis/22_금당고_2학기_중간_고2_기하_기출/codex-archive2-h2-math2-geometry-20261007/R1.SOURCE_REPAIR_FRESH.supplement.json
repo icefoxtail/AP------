@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "R1_FRESH_IMPACTED_SCOPE_SUPPLEMENT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "runId": "archive2-h2-math2-geometry-20261007",
+  "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+  "stage": "R1",
+  "reviewKind": "FRESH_IMPACTED_SCOPE_ONLY",
+  "scopeQids": [
+    7,
+    10,
+    12
+  ],
+  "sourceArtifactRawSha256": "c369170aab5d569c50bb7b4ebf13099e4a3a72b535f66ab18154de49604fd338",
+  "initialArtifactRawSha256": "42661de2a301dc1712a7f09261b4240c9a986ec8becadd48633cdf03f12b633e",
+  "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\R1.SOURCE_REPAIR_FRESH.student-bundle.json",
+  "studentBundleSha256": "766d78f0ecb3715b5969dfaf9c35403e28097fde70647a613033b0ba3bf4a753",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.SOURCE_REPAIR_FRESH.independent-freeze.json",
+    "sha256": "b13e0d4314fc5969c3dcbeb02628390485b885cd17b7b0c1f02a81ebadb34ee1",
+    "sourceSha256AtFreeze": "42661de2a301dc1712a7f09261b4240c9a986ec8becadd48633cdf03f12b633e",
+    "disclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.SOURCE_REPAIR_FRESH.postfreeze.json",
+    "disclosureSha256": "6c30e394842f6860f1a58b08173d107bc6d4292ba0d406cf6f793e6e795e667b",
+    "finalDisclosurePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.SOURCE_REPAIR_FRESH.postrepair.final3.json",
+    "finalDisclosureSha256": "0b962b32e8ee766dc3f478496d6bbe89b0e75850ab40435f6ec4c51943839029",
+    "studentBodyAndAssetsUnchanged": true,
+    "answersMatchCount": "3/3"
+  },
+  "calibration": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.SOURCE_REPAIR_FRESH.calibration-preflight.json",
+    "sha256": "e523a364879fc59942053067b828f0193456235de501c93a6b0a6c11bea7c838",
+    "validationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\archive\\analysis\\22_금당고_2학기_중간_고2_기하_기출\\codex-archive2-h2-math2-geometry-20261007\\R1.SOURCE_REPAIR_FRESH.calibration-preflight.validation.json",
+    "validationSha256": "9d7ce766d24b334952f700febe5098edec60e8abdbb63c73012cca1f3eba4445",
+    "status": "PASS",
+    "goldenSamples": 2,
+    "goldenRepresentativeQids": 4,
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "negativeSvgCount": 5
+  },
+  "changedLoci": [
+    {
+      "qid": 7,
+      "field": "solution",
+      "reason": "Show tangent substitution and discriminant condition instead of asserting c^2=7."
+    },
+    {
+      "qid": 12,
+      "field": "solution",
+      "reason": "Show focal squared-distance difference expansion before evaluation."
+    }
+  ],
+  "unchangedScope": {
+    "qid": 10,
+    "field": "solution",
+    "reason": "Complete small-board proof; no change."
+  },
+  "studentContentChanged": false,
+  "assetBytesChanged": false,
+  "answerChanged": false,
+  "itemHoldQids": [],
+  "scopeStatus": "PASS_TARGETED_REVIEW",
+  "stageGenericValidator": "NOT_RUN_PARENT_ASSIGNED_FULL_22_AGGREGATE",
+  "items": [
+    {
+      "qid": 7,
+      "independentAnswer": "②",
+      "storedAnswer": "②",
+      "answerComparison": "MATCH",
+      "studentPayloadSha256": "acb7b3c351b63c2522526f7e5dd29205bac612bccb9b7651e39f9f34f32c67dd",
+      "freezeStudentPayloadSha256": "acb7b3c351b63c2522526f7e5dd29205bac612bccb9b7651e39f9f34f32c67dd",
+      "freezeStillValid": true,
+      "finalSolutionSha256": "1c06adc2cf2c964bf31c9901c4c3a5d83e8c5c78b8444204fadb2f4f69d7009f",
+      "axes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_KEEP_STATIC",
+          "evidence": "Student payload hash and all required asset refs/SHAs match the pre-freeze bundle. No question content or choice mutation."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_AFTER_MINIMAL_SAME_STAGE_REPAIR",
+          "evidence": "Added standard-form read, focal-distance sum 2a, tangent substitution, and discriminant=0 steps as distinct lines."
+        },
+        "META": {
+          "status": "CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION",
+          "course": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "category": "이차곡선",
+          "tags": [
+            "객관식",
+            "이차곡선",
+            "타원"
+          ],
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "dispositionNote": "Preserve the current null problemTypeKey/templateKey fields for ROOT artifactDispositions binding; no reclassification or unverified null-resolution."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_VISUAL_NOT_REQUIRED",
+          "necessity": "No referenced problem image and no solution SVG is needed for the algebraic conic reasoning."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "②",
+      "storedAnswer": "②",
+      "answerComparison": "MATCH",
+      "studentPayloadSha256": "b63ad989dd2afed4d804f395e3c175a40b4d377d47f36affbadef40574fdaeb5",
+      "freezeStudentPayloadSha256": "b63ad989dd2afed4d804f395e3c175a40b4d377d47f36affbadef40574fdaeb5",
+      "freezeStillValid": true,
+      "finalSolutionSha256": "c44c5530f8441ce026dd18543041f6ac1f3148a0ddc397a8449cca9215d14adc",
+      "axes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_KEEP_STATIC",
+          "evidence": "Student payload hash and all required asset refs/SHAs match the pre-freeze bundle. No question content or choice mutation."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_KEEP",
+          "evidence": "Existing proof shows F between A and B on the secant, both ellipse focal-sum identities, perimeter 4a, and a^2-b^2=16."
+        },
+        "META": {
+          "status": "CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION",
+          "course": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "타원",
+          "category": "이차곡선",
+          "tags": [
+            "객관식",
+            "이차곡선",
+            "타원"
+          ],
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "dispositionNote": "Preserve the current null problemTypeKey/templateKey fields for ROOT artifactDispositions binding; no reclassification or unverified null-resolution."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_STATIC_ASSET_CONFIRMED",
+          "necessity": "Required because the stem says “그림과 같이” and defines the secant/points A,B through the figure.",
+          "problemAsset": {
+            "ref": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q10.png",
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-math2-geometry-main-done\\AP------\\.tmp\\archive\\archive2-h2-math2-geometry-20261007\\22_금당고_2학기_중간_고2_기하_기출\\assets\\images\\22_금당고_2학기_중간_고2_기하_기출\\q10.png",
+            "sha256": "c85c595d697849811e54b435c916298f64668e3c3c34de0634b0ea0c68ca1367"
+          },
+          "openedBeforeFreeze": true,
+          "observed": "Ellipse centered at O with foci marked at x=-4 and x=4; secant through F meets ellipse at A and B.",
+          "solutionSvg": "Not required; the focal-sum perimeter derivation is fully represented algebraically."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "④",
+      "storedAnswer": "④",
+      "answerComparison": "MATCH",
+      "studentPayloadSha256": "00b9032b6ebc15657bf3ec871a8dccd3e2701ac21aa86d7d42d758437f30f7c2",
+      "freezeStudentPayloadSha256": "00b9032b6ebc15657bf3ec871a8dccd3e2701ac21aa86d7d42d758437f30f7c2",
+      "freezeStillValid": true,
+      "finalSolutionSha256": "496dce934b9c79e462e9ba166464d97906a7fe52651fdf87e87bb72158adbe91",
+      "axes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_KEEP_STATIC",
+          "evidence": "Student payload hash and all required asset refs/SHAs match the pre-freeze bundle. No question content or choice mutation."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_AFTER_MINIMAL_SAME_STAGE_REPAIR",
+          "evidence": "Expanded the difference of squared distances from the two focal coordinates before applying |x|=24/5."
+        },
+        "META": {
+          "status": "CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION",
+          "course": "기하",
+          "standardUnitKey": "H22-GE-01",
+          "standardUnit": "이차곡선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "subUnit": "쌍곡선",
+          "category": "이차곡선",
+          "tags": [
+            "객관식",
+            "이차곡선",
+            "쌍곡선"
+          ],
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "dispositionNote": "Preserve the current null problemTypeKey/templateKey fields for ROOT artifactDispositions binding; no reclassification or unverified null-resolution."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_VISUAL_NOT_REQUIRED",
+          "necessity": "No referenced problem image and no solution SVG is needed for the algebraic conic reasoning."
+        }
+      }
+    }
+  ]
+}

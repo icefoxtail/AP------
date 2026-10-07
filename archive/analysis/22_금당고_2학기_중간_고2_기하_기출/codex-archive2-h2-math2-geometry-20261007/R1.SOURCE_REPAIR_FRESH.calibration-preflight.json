@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "R1_FRESH_IMPACTED_SCOPE_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "22_금당고_2학기_중간_고2_기하_기출",
+  "stage": "R1",
+  "targetArtifactRawSha256": "42661de2a301dc1712a7f09261b4240c9a986ec8becadd48633cdf03f12b633e",
+  "scopeQids": [
+    7,
+    10,
+    12
+  ],
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n",
+        "observation": "Small-board flow derives the circle standard form, records center/radius, applies translation then origin reflection in separate steps, and concludes with the new equation.",
+        "solutionImagePath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "solutionImageSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "visualObservation": "SVG shows the original and translated/reflected circle centers in the correct order; dashed intermediate circles and final circle correspond to C0=(-3,1), C1=(-5,2), C2=(5,-2), radius 3."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n$by=-ax-c$\n$y=-\\dfrac abx",
+        "observation": "Solution derives coefficient signs from slope/intercepts, carries them into the transformed line, and states the excluded quadrant after checking intercepts.",
+        "solutionImagePath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "solutionImageSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservation": "SVG panels preserve the original slope/intercept signs, coefficient relations, and resulting negative slope with positive intercepts; conclusion identifies quadrant III."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 13,
+        "solutionSha256": "sha256:18595ac39feb9304040eb8eaa40ff3b24c076379e0be9fea26ffea4caebf32f8",
+        "solutionExcerpt": "원의 중심은 $(2,-4)$이고 반지름은 $\\sqrt{10}$이다.\n중심에서 직선 $x+3y+k=0$까지의 거리는\n$\\dfrac{|2+3(-4)+k|}{\\sqrt{1^2+3^2}}$\n$=\\dfrac{|k-10|}{\\sqrt{10}}$이다.\n직선이 원에 접하려면 이 거리가 반지름과 같아야 한다.\n$\\dfrac{|k-10|}",
+        "observation": "Distance from center to line is shown as a formula, set equal to the radius, split into both absolute-value cases, then multiplied.",
+        "solutionImagePath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q13-solution.svg",
+        "solutionImageSha256": "c096d80cbce18f14c24a0db363cced27eb5cc66cfcce6cda9ebdd40d7ce8d5a4",
+        "visualObservation": "SVG circle is centered at (2,-4) with radius sqrt(10); the two line primitives touch at the circle boundary and match k=0 and k=20."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 22,
+        "solutionSha256": "sha256:53aa1f776ff9f4bb671f7f0ff436e7f38feed37c59475d616f0fe769681fc99f",
+        "solutionExcerpt": "주어진 원의 중심은 $C=(3,4)$이고 반지름은 $4$이다. 중심과 원점 사이의 거리는\n$OC=\\sqrt{3^2+4^2}=5$이다.\n주어진 원 위의 점 $P$에서 $OP$가 가장 짧을 때와 가장 길 때는 각각 중심 $C$를 향하는 방향과 반대 방향이다.\n따라서\n$5-4\\le OP\\le5+4$,\n$1\\le OP\\le9$이",
+        "observation": "Solution establishes the attainable OP interval from OC=5 and radius 4, separates tangent endpoint cases from seven two-intersection radii, and totals 16.",
+        "solutionImagePath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg",
+        "solutionImageSha256": "4442e44748ce0616181fc05cde6373954718af59bc9f81cd9936705c0e452929",
+        "visualObservation": "SVG shows C=(3,4), OC=5, radius 4, endpoint radii 1 and 9 tangent, and intermediate integer radii with two intersections."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "negativeSampleObservations": [
+      "Read the false-PASS regression README and inspected its SVG-geometry, small-board enumeration, exact Meta lookup, and sandbox-runtime escape failure families. For the geometry defect, check actual primitives against expected coordinates/topology instead of trusting labels."
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "negativeVisualSamples": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+        "gitBlobSha": "bfc5672371832703aa8b13a60123ccda296653bf",
+        "observation": "The line does not pass through the labeled A/B points at the stated slope and y-intercept."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+        "sha256": "d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+        "gitBlobSha": "80072636d7d07f75c32bf7671f52bd00d70c34a2",
+        "observation": "The primitive line rises while 7x+y-15=0 slopes downward; the labeled PH segment is also not perpendicular to that line."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+        "gitBlobSha": "67fa6456c55de7a59b6c43d8fe25b9a815d6381a",
+        "observation": "The parabola primitive does not pass through the labeled A(-1/2,0) and B(0,-1)."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+        "sha256": "d053c5a22193029c675069fe6aa22e1014f96bb3821788f1095180c350681a41",
+        "gitBlobSha": "0d504b51ea948cd77886d7772fa256d057cd17eb",
+        "observation": "The steep line primitive has incompatible slope/contact geometry for 7x+y-20=0 at T(14/5,2/5)."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+        "sha256": "9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8",
+        "gitBlobSha": "61f30e0564efd58af8dc188f01673d07ef10946e",
+        "observation": "The labeled 3x+4y-8=0 has slope -3/4 but the plotted primitive rises; the altitude relation is inconsistent."
+      }
+    ],
+    "sampleSvgInspectionMethod": "Opened raster previews generated from the actual SVG bytes with ImageMagick; compared visible labels to plotted primitives. This is a static SVG inspection, not official engine render."
+  }
+}

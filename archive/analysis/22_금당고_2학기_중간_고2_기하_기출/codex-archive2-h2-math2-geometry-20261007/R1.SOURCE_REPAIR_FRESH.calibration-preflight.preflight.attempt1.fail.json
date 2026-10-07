@@ -1,0 +1,18 @@
+{
+  "ok": false,
+  "stage": "R1",
+  "gate": "CALIBRATION_PREFLIGHT",
+  "questionCount": 22,
+  "issues": [
+    "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js|q7",
+    "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js|q8",
+    "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|q13",
+    "GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|q22",
+    "NEGATIVE_SAMPLE_SHA256_MISMATCH:archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+  ],
+  "attempt": 1,
+  "evidenceSha256": "826a2bb97b97017ff25538190bdb422785fb3cbc892f33a08b928f56fe0f4be4",
+  "cause": "The invoked gate hashes SHA fields with a sha256: prefix; initial evidence omitted that prefix."
+}
