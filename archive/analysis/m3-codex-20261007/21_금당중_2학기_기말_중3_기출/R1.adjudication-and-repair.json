@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "R1_POSTFREEZE_ADJUDICATION_AND_REPAIR_V1",
+  "examUid": "21_금당중_2학기_기말_중3_기출",
+  "freezePath": "archive/analysis/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/R1.independent-freeze.json",
+  "freezeSha256": "cec15264252488be82ff572e5cb975724d67442438b001f266c90e4fad7f1f0c",
+  "adjudications": [
+    {
+      "qid": 1,
+      "originalFreezeAnswer": "75°",
+      "storedAnswer": "④",
+      "resolvedAnswer": "75°",
+      "resolvedChoice": "④",
+      "issue": "answer correct; choice index was a transcription error in the freeze row (75° is choice 4).",
+      "sameSession": true
+    },
+    {
+      "qid": 4,
+      "originalFreezeAnswer": "(ㄹ) is not 2",
+      "storedAnswer": "①",
+      "resolvedAnswer": "①",
+      "issue": "The incorrect fill is (ㄱ): OA=OB does not name the equal side OP required by △OAP; intended blank is OA=OP; question image and answer choice order are unchanged.",
+      "sameSession": true
+    },
+    {
+      "qid": 25,
+      "originalFreezeAnswer": "√19−1",
+      "storedAnswer": "3",
+      "resolvedAnswer": "3",
+      "issue": "Calculation correction after freeze: 9+(1−a)^2+1+(a+1)^2=12+2a²; variance equation (12+2a²)/5=6 gives a²=9 and positive a=3.",
+      "sameSession": true
+    }
+  ],
+  "q4MeaningInvariantLayoutRepair": {
+    "sourceJsBeforeSha256": "6ddb650887ec0fe5f638f193771998055bcb70fefe7607ec97fd1460cb5d7172",
+    "sourceJsAfterSha256": "3d9a16009144edbe9502b4892f4a85aa000c6d8b3f198cd80150161edfe30206",
+    "sourcePage1Path": "archive/analysis/m3-codex-20261007/21_금당중_2학기_기말_중3_기출/source-pages/page-1.png",
+    "sourcePage1Sha256": "27850fb5b138cf916b5f012195c89b49d456accd849fa51410f2608dde90f3d8",
+    "imageRef": "assets/images/21_금당중_2학기_기말_중3_기출/q04-r1.png",
+    "imageSha256": "f38e6da0d8549804e6f966d65f5a57e88f3a27f24058d1e90348c5d4336777f6",
+    "beforeContentSha256": "1f89b69bf542efe3ee70c6bfddd551ca1a05cd10ac432de97902946e18d75ca9",
+    "afterContentSha256": "38ed46345c9203f54e797bb029617ef4b675e228a86bbeae03c6f8f72129cfa6",
+    "removedRedundantBlock": "[그림의 증명 빈칸] $\\triangle OAP$는 $\\overline{OA}=(ㄱ)$인 이등변삼각형이므로 $\\angle APO=(ㄴ)$이다. $\\angle AOB$는 $\\triangle OAP$의 한 (ㄷ)이므로 $\\angle AOB=\\angle APO+(ㄹ)= (ㄴ)\\angle APO$를 만족한다. 그러므로 $\\angle APB=(ㅁ)\\angle AOB$.",
+    "sourceFactChoiceMeaningParity": "PASS: proof blanks, circle/diameter statements, exterior-angle relation, and all answer choices remain legible and identical in the unchanged q04-r1.png and source page 1; only their duplicate text transcription and added bracket caption were removed from content.",
+    "freezeValidity": "REUSE: complete original student input included q04-r1.png; the removed content suffix exactly duplicates the unchanged decisive figure text, so no premise, label, angle, option, or answer-relevant meaning changed.",
+    "layoutDisposition": "REFORMAT / PASS_AFTER_MINIMAL_REPAIR"
+  }
+}
