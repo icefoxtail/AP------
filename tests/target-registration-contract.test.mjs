@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateRegistrationPackage} from '../archive/tools/target-registration-contract.mjs';
+const file='original/high/h1/1final/scoped-test.js',allowed=['db','identity'];
+const packet=()=>({schemaVersion:'JS_ARCHIVE_TARGET_REGISTRATION_PACKAGE_V1',catalogCandidateSha256:'a'.repeat(64),baselineBindings:allowed.map(relativePath=>({relativePath,sha256:'b'.repeat(64)})),registrationDelta:{targetDbRow:{file}},targetOutputs:Object.fromEntries([['identityRows','sourceArchiveFile'],['metadataRows','sourceArchiveFile'],['catalogRows','sourceFile'],['indexRows','sourceFile']].map(([name,key])=>[name,[1,2,3].map(sourceOrdinal=>({[key]:file,sourceOrdinal,questionUid:'u'+sourceOrdinal}))]))});
+const check=proposal=>validateRegistrationPackage({proposal,allowed,questionCount:3,targetFile:file});
+test('question denominator is source-specific, not hardcoded 24',()=>assert.equal(check(packet()).questionCount,3));
+test('unrelated records cannot enter a scoped package',()=>{const p=packet();p.targetOutputs.metadataRows[0].sourceArchiveFile='original/other.js';assert.throws(()=>check(p),/TARGET_ONLY_ROWS_REQUIRED/);});
+test('missing baseline and duplicate ordinals fail before writes',()=>{const p=packet();p.baselineBindings.pop();assert.throws(()=>check(p),/COMPLETE_BASELINE/);const q=packet();q.targetOutputs.catalogRows[1].sourceOrdinal=1;assert.throws(()=>check(q),/ORDINAL/);});
+test('different UID across projections fails closed',()=>{const p=packet();p.targetOutputs.metadataRows[2].questionUid='different';assert.throws(()=>check(p),/UID_JOIN/);});
