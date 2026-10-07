@@ -25,7 +25,7 @@ This contract does not replace the existing canonical rules. It binds them into 
 ## 3. Final names from the beginning
 
 JS, PNG, and SVG use final production filenames and production-relative references from the start.
-Before promotion, work in `.tmp/archive/<examUid>/...` or an equivalent isolated execution-line area.
+Before promotion, work in `.tmp/archive/<runId>/<examUid>/...` under the assigned clean worktree. Use final filenames and production-relative asset references.
 Normal promotion moves the already-validated artifact to production; it does not rename assets or rewrite student-facing content.
 
 ## 4. Question layout
@@ -93,7 +93,7 @@ PASS binds answer, solution, decisiveStep, Meta, visual, and evidence to one fin
 
 ## 9. R2 and R3
 
-For the next qualification pilot, R2 keeps a full-qid blind answer sweep.
+Current Codex R2 keeps a full-qid blind answer sweep; terminated qualification pilots remain historical.
 Freeze the complete student-input answer before stored answer/solution exposure.
 MATCH closes quickly; mismatch/suspicious/high-risk locus gets deep treatment.
 R2 does not rerun the full R1 quality audit.
@@ -155,3 +155,8 @@ Keep prior artifacts/evidence, calculate the missing axes under the new contract
 - R3 targeted rows는 open/changed/direct dependency만 유지하고, 전 문항 Meta null/debt disposition은 `artifactDispositions={artifactSha,rows:[...]}`에 별도 결속한다. 이것은 R3 전수 의미 재검이 아니다.
 - GPT stage validator 호출은 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id <campaign> --stream <A|B|C>`를 명시한다.
 - GPT는 render를 수행하지 않는다. 대신 MASTER의 MAIN_DONE은 `archive/tools/archive-gpt-closeout-v2.mjs`로 R3 validation SHA, final artifact SHA, asset SHA, production path, origin/main remote parity를 결속한다.
+
+
+## Codex ownership clarification — 2026-10-07
+
+Codex R3 owns actual six-case Archive Engine rendering, screen judgment and reviewer-bound receipt. ROOT accepts the machine witness, SHA/coverage/receipt and performs publication/readback; ROOT does not repeat screen quality review. The detailed conveyor, absolute assignment packet, R1/R2 student-only isolation, item HOLD travel, validator retry after actual repair and ledger contracts are in `JS_Archive_2.0_Codex_Execution_v1.md` §§16–23. This clarification does not change GPT_SCHEDULED render/publication behavior or the qualityContractVersion.

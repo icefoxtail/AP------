@@ -1,6 +1,8 @@
 # JS Archive 2.0 Codex Canary Canonical v1
 
-**STATUS: CURRENT CANARY / PHASE 10 ONE-EXAM PILOT**
+**STATUS: HISTORICAL — CLOSED CANARY / PHASE 10 PILOT**
+
+2026-10-07: 종료된 pilot 기록이다. 신규/재개 Codex 실행은 `JS_Archive_2.0_Codex_Execution_v1.md`를 따른다. 아래 target/흐름/문구는 역사 보존이며 자동 재개·현재 authority 승계를 뜻하지 않는다.
 
 이 문서는 Archive 2.0의 Codex multi-agent canary 실행용 최소 정본이다. 기존 1.x / M2-1 운영을 변경하지 않는다.
 

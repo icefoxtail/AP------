@@ -2,6 +2,12 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
+CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–23이다. Canary pilot은 역사 조회 전용이다.
+assignment의 worktreeRootAbsolute/workingJsAbsolute/assetRootAbsolute/evidenceRootAbsolute와 expected SHA를 첫 동작에서 확인하고 absolute 경로로 작업한다. default cwd/primary checkout/source-batch를 임의 대용하지 않는다.
+MASTER는 firstMissingClosureStep에 실제 필요한 validator만 실행하고 승계된 유효 PASS를 다시 검증하지 않는다. 실제 FAIL/수정 후 같은 session에서 필요한 binding/locus를 고치고 재검증한다; one-run은 실패 뒤 재검증 금지가 아니다. 변화 없는 PASS를 반복하지 않는다.
+완전한 input으로 freeze한 계산/encoding 오류는 원 freeze를 보존하고 같은 stage에서 adjudication한다. pre-freeze 답 노출/필수 visual 누락/student-body 교체로 freeze가 무효이면 영향 qid만 clean session으로 ROOT에 인계한다.
+기존 Meta projection debt는 actual current fields와 일치하는 범위에서 artifactDispositions에 결속한다. semantic 재분류 없이 evidence 누락을 수리한다. raw-buffer blob/clean-filter blob/raw SHA-256과 gate digest prefix 계약을 구별한다.
+결과에는 전체 SHA와 실제 absolute evidence path, 변경 locus, validator disposition/issues, next required action만 compact하게 반환한다. helper 자동화가 미구현이면 구현 완료로 보고하지 않는다.
 evidence의 executionLine은 CODEX로 기록한다. 신규 Codex 계약 버전은 JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006이며 evidence에 명시한다. validator는 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006으로 호출한다. working asset이 임시 패키지 안에 있으면 --asset-root로 실제 assets/ 부모를 지정한다. 같은 역할의 다른 시험지를 동시에 시작하지 않는다.
 R3 targeted rows와 별도로 artifactDispositions={artifactSha,rows:[{qid,metaDebtFields,metaDebtReason}]}에 전 문항의 기존 봉인 Meta disposition을 결속한다. metadata를 다시 분류하지 않는다. CREATE/R1은 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md의 Golden provenance 형식으로 실제 샘플 SHA와 두 문항 이상 판독 근거를 남긴다.
 루트 AGENTS.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md를 최초 1회 읽는다.
