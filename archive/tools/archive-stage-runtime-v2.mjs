@@ -1,5 +1,5 @@
 import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
-import { validateCodexRenderReceipt, validateCodexMainDoneReceipt, validateCodexUserWaivedMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
+import { validateCodexRenderReceipt, validateCodexMainDoneReceipt, validateCodexUserWaivedMainDoneReceipt, validateCodexRootWaivedStaticReceipt, validateCodexRootWaivedMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
 import { validateGptMainDoneReceipt } from './archive-gpt-closeout-v2.mjs';
 const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN', 'RENDER', 'PUBLICATION', 'MAIN_DONE']);
 const NEXT_STAGE = Object.freeze({
@@ -222,6 +222,20 @@ export function consumeCodexUserWaivedMainDone({state,...input}) {
   required(current.stage==='RENDER','USER_WAIVER_RENDER_STAGE_REQUIRED');
   required(current.executionLine==='CODEX' && current.qualityContractVersion===QUALITY_CONTRACT_V2,'USER_WAIVER_CODEX_CURRENT_REQUIRED');
   const result=validateCodexUserWaivedMainDoneReceipt(input);required(result.ok,'USER_WAIVED_MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt,closure:result};
+}
+export function consumeCodexRootWaivedStaticPass({state,...input}) {
+  const current=buildStageState(state);
+  required(['R3','RENDER'].includes(current.stage),'ROOT_WAIVER_R3_OR_RENDER_STAGE_REQUIRED');
+  required(current.executionLine==='CODEX'&&current.qualityContractVersion===QUALITY_CONTRACT_V2,'ROOT_WAIVER_CODEX_CURRENT_REQUIRED');
+  const result=validateCodexRootWaivedStaticReceipt(input);required(result.ok,'ROOT_WAIVED_STATIC_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'PUBLICATION',qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt,closure:result};
+}
+export function consumeCodexRootWaivedMainDone({state,...input}) {
+  const current=buildStageState(state);
+  required(current.stage==='PUBLICATION','PUBLICATION_STAGE_REQUIRED');
+  required(current.executionLine==='CODEX'&&current.qualityContractVersion===QUALITY_CONTRACT_V2,'ROOT_WAIVER_CODEX_CURRENT_REQUIRED');
+  const result=validateCodexRootWaivedMainDoneReceipt(input);required(result.ok,'ROOT_WAIVED_MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
   return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt,closure:result};
 }
 
