@@ -30,49 +30,15 @@ Source-qid close: SOURCE_EXPANSION_DONE for both L4s under the source distance L
 
 ## Exact answer and detailed student solution
 
-Answer: $t=-10$ 또는 $t=\dfrac{15}{2}$, 즉 $t\in\left\{-10,\dfrac{15}{2}\right\}$.
+**정답:** \(t=-10\) 또는 \(t=\dfrac{15}{2}\)
 
-Let $P_t=(x,y)$. From $y=2x+t$ and $x+y=6$,
-\[
-3x+t=6,\qquad x=\dfrac{6-t}{3},\qquad y=6-x=\dfrac{12+t}{3}.
-\]
-
-The normal-vector lengths for both $n_1$ and $n_2$ are $5$. For $n_1$,
-\[
-\begin{aligned}
-3x-4y+10
-&=(6-t)-\dfrac{48+4t}{3}+10\\
-&=\dfrac{18-3t-48-4t+30}{3}
-=-\dfrac{7t}{3}.
-\end{aligned}
-\]
-Thus $d(P_t,n_1)=\dfrac{7|t|}{15}$.
-
-For $n_2$,
-\[
-4x+3y
-=\dfrac{24-4t+36+3t}{3}
-=\dfrac{60-t}{3},
-\]
-so $d(P_t,n_2)=\dfrac{|60-t|}{15}$.
-
-Equating the distances gives
-\[
-7|t|=|60-t|.
-\]
-If $t<0$, then $|t|=-t$ and $|60-t|=60-t$, so
-\[
--7t=60-t,\qquad t=-10.
-\]
-If $0\le t\le60$, then
-\[
-7t=60-t,\qquad t=\dfrac{15}{2}.
-\]
-If $t>60$, then $7t=t-60$, which would give $t=-10$ and contradict $t>60$. Therefore the complete solution set is
-\[
-t=-10,\quad \dfrac{15}{2}.
-\]
-Both values satisfy the original distance equality.
+두 직선 \(y=2x+t\), \(x+y=6\)을 연립하면
+\[P_t=\left(\frac{6-t}{3},\frac{12+t}{3}\right)\]
+이다. 점과 직선 사이의 거리 공식에서 두 직선 \(n_1,n_2\)의 계수 \((3,-4)\), \((4,3)\)의 길이는 각각 \(5\)이다. 따라서
+\[d(P_t,n_1)=\frac{|3x-4y+10|}{5}=\frac{7|t|}{15},\qquad d(P_t,n_2)=\frac{|4x+3y|}{5}=\frac{|60-t|}{15}.\]
+두 거리가 같으므로 \(7|t|=|60-t|\)이다. 양변을 제곱하여 정리하면
+\[49t^2=(60-t)^2\iff 48t^2+120t-3600=0\iff 2t^2+5t-150=0.\]
+이를 인수분해하면 \((2t-15)(t+10)=0\)이므로 \(t=\dfrac{15}{2}\) 또는 \(t=-10\)이다. 두 값은 원래 절댓값 등식에도 성립하며, 구하는 모든 실수 \(t\)는 이 두 값이다.
 
 ## Meta and curriculum proposal
 
