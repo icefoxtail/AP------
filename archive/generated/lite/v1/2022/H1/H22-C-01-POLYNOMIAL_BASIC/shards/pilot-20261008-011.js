@@ -69,11 +69,11 @@ window.questionBank = [
     "choices": [
       "0",
       "$\\frac14$",
+      "$\\frac13$",
       "$\\frac12$",
-      "$\\frac34$",
       "1"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "[키포인트] $2x-1=2(x-\\frac12)$이므로 기준값은 $\\frac12$이다. $P(\\frac12)=\\frac14-\\frac34+2-1=\\frac12$이므로 나머지는 $\\frac12$이다.",
     "image": "assets/generated-lite/ALITE-20261008-HYC26-Q20-004.svg"
   }
