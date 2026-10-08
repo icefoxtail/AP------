@@ -772,7 +772,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "호 AB 위를 움직이는 P와 양쪽 직선에 대한 대칭점 P1, P2 및 최단거리 선분의 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -817,7 +820,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 각의 이등분선 AH, 무게중심 G, 삼각형 GHC의 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -986,7 +992,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "세 직선이 이루는 직각삼각형과 빗변 AB의 중점 M을 중심으로 하는 외접원",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1025,6 +1034,9 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "두 쌍의 평행선의 교점 네 개가 이루는 평행사변형과 높이·너비",
+    "solutionImageSize": "full"
   }
 ];
