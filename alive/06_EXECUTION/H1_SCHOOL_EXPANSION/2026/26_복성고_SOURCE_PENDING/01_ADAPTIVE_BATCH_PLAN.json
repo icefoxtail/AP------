@@ -2,7 +2,7 @@
   "schemaVersion": "ALIVE_LITE_ADAPTIVE_BATCH_PLAN_v1",
   "authorityCommit": "ca9d8f7a65d478eb76d569c525d7eec1a2dff29c",
   "sourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "planRevision": 3,
+  "planRevision": 4,
   "sourceQidCoverage": [
     1,
     2,
@@ -155,9 +155,26 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED",
+      "status": "CREATE_CLOSED_REVIEW_PENDING",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
-      "candidateRegistryRequiredBeforeC": true
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 38,
+      "blueprintExploredCount": 50,
+      "acceptedBlueprintCount": 38,
+      "extL3CandidateCount": 0,
+      "extL4CandidateCount": 12,
+      "sourceExpansionDoneQids": [
+        9,
+        13,
+        14,
+        16
+      ],
+      "sourceContinuationRequiredQids": [],
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b03-create-index-v1.json",
+      "extensionIndex": "archive/data/generated-lite/bokseong-2026-1final-b03-extension-index-v1.json",
+      "reviewState": "NOT_TESTED",
+      "generatedShardCount": 4,
+      "distinctL2Count": 3
     },
     {
       "id": "B04",
@@ -229,7 +246,7 @@
       "candidateRegistryRequiredBeforeC": true
     }
   ],
-  "nextBatchId": "B03",
+  "nextBatchId": "B04",
   "qualityStatus": "PLANNING_ONLY",
   "generatedCount": 0,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
