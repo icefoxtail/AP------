@@ -1,5 +1,13 @@
 # 복성고 release
 
+## CURRENT — 2026-10-09 B01·B02 83/83 독립 수학 REVIEW → 74 UID Consumer main 운영 완료
+- 원본 2026 복성고 고1 1학기 기말 23문항, original Git blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 불변.
+- B01 45 + B02 38 = 83 UID 학생용 발문·보기만 읽고 독립 풀이 A1을 각각 물리 동결(커밋 `8c0fcc32` / `035d9d07`)한 후 A2 저장 answer/solution 비교 83/83 일치, MATH mismatch 0.
+- **운영 출시/실제 학생 Chrome 조회 74/83**: B01 **45**, B02 **29**. [PR #347](https://github.com/icefoxtail/AP------/pull/347) main squash `54d8a27864fd44d27d61aa48a21e283ad1fef199`. Consumer index 264 승인 UID(복성고 172/효천고 92), 기존 190 승인 보호, 중복 0. 실제 main Chrome [run 37815407309](https://github.com/icefoxtail/AP------/actions/runs/37815407309) PASS, Archive2 Runtime Guard [run 37815407399](https://github.com/icefoxtail/AP------/actions/runs/37815407399) PASS, 23/26 원본과 동일한 출력 문항 수 보호.
+- **별도 q11 분류 보류 9 UID**: B02 `ALITE-BSG26-B02-Q11-A01..A09`의 절댓값 포함 부등식은 기존 RPM L3/L4에 정확 일치하는 ACTIVE 의미 경로 미확정. 수학 A1/A2 9/9 일치하지만 허위로 AM-GM/코시형 '절대부등식'을 매핑하지 않고 HOLD/학생용 0으로 유지. 기존 HOLD 12 + 신규 9 = Consumer excluded 21.
+- 신규 closeout: `B01_B02_REVIEW_CONSUMER_CLOSEOUT_20261009.json`; q11 분류 미해결 원장 `B02_Q11_TAXONOMY_HOLD_20261009.json`. B01/B02 **검수 대상 83은 완료, 출시 74, 분류 미출시 9**로 구분. 배포 후 실제 로그인 학생 계정 smoke는 NOT_TESTED.
+- B01 원본 q15는 이번 B01 45 생성 후보에 포함되지 않은 별개 source Blueprint continuation이다. 이 원장으로 q15 생성 완료를 소급 주장하지 않는다.
+
 CURRENT(2026-10-08): 복성고 Consumer DB 73 UID(B03 38+B04 26+B05 q21 9), 실제 Chrome 조회 73 UID, B05 q22 10 UID 공급 제외. 역사적인 0건 상태는 아래의 과거 기록. 엄격한 clean blind 검수 PASS는 주장하지 않으며 형님 명시적 운영병합 지시로 선별 반영.
 
 ## B03 REVIEW 2026-10-08
