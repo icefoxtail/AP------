@@ -25,8 +25,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 지점 사이에서 운영하는 코스가 다음 표와 같다.<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>코스</th><th>가</th><th>나</th><th>다</th><th>라</th></tr></thead><tbody><tr><th>출발</th><td>1</td><td>1</td><td>1</td><td>2</td></tr><tr><th>도착</th><td>1</td><td>2</td><td>2</td><td>1</td></tr></tbody></table></div>출발 지점을 행, 도착 지점을 열로 하는 코스 수 행렬을 $A$라고 하자. 같은 코스를 여러 번 이용할 수 있을 때 (1) $A$와 (2) 연속 3회 이동하는 전체 경우의 수를 각각 구하시오.",
     "choices": [],
-    "answer": "A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16",
-    "solution": "1번에서 1번으로 가는 코스 1개, 1번에서 2번으로 2개, 2번에서 1번으로 1개, 2번에서 2번으로 0개이므로 $A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix}$이다.\n두 번 이동하는 경우는 $A^2=\\begin{pmatrix}3&2\\\\1&2\\end{pmatrix}$, 세 번 이동하는 경우는 $A^3=A^2A=\\begin{pmatrix}5&6\\\\3&2\\end{pmatrix}$이다.\n출발점과 도착점을 모두 고려하면 각 성분을 더한 $5+6+3+2=16$가지이다.\n따라서 구하는 값은 A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16이다.",
+    "answer": "$A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16$",
+    "solution": "1번에서 1번으로 가는 코스 1개, 1번에서 2번으로 2개, 2번에서 1번으로 1개, 2번에서 2번으로 0개이므로 $A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix}$이다.\n두 번 이동하는 경우는 $A^2=\\begin{pmatrix}3&2\\\\1&2\\end{pmatrix}$, 세 번 이동하는 경우는 $A^3=A^2A=\\begin{pmatrix}5&6\\\\3&2\\end{pmatrix}$이다.\n출발점과 도착점을 모두 고려하면 각 성분을 더한 $5+6+3+2=16$가지이다.\n따라서 구하는 값은 $A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
     "sourceType": "generated"
@@ -53,7 +53,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "1회 이동 코스의 수가 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$인 두 지점 사이에서 정확히 세 번 이동한다. 1번 지점에서 출발하여 2번 지점에 도착하는 경우의 수는?",
+    "content": "1회 이동 코스의 수가 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$인 두 지점 사이에서 정확히 세 번 이동한다. 1번 지점에서 출발하여 2번 지점에 도착하는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$2$",
       "$3$",
@@ -89,7 +89,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동해 1번에 도착하되, **첫 번째 이동 직후 반드시 2번 지점**에 있는 경우의 수는?",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동해 1번에 도착하되, **첫 번째 이동 직후 반드시 2번 지점**에 있는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$1$",
       "$2$",
@@ -125,10 +125,10 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$이다. 1번에서 출발한 뒤 **세 번째 이동이 끝날 때 처음으로** 1번 지점에 돌아오는 경우의 수를 구하시오.",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$이다. 1번에서 출발한 뒤 **세 번째 이동이 끝날 때 처음으로** 1번 지점에 돌아오는 경우의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [],
-    "answer": "4",
-    "solution": "세 번째 이동 전까지 1번에 돌아오면 안 되므로 첫 번째와 두 번째 이동을 마친 지점은 모두 2번이어야 한다.\n가능한 지점 순서는 $1\\to2\\to2\\to1$ 하나뿐이다.\n이에 해당하는 코스 수는 $A_{12}A_{22}A_{21}=2\\times1\\times2=4$가지이다.\n따라서 구하는 값은 4이다.",
+    "answer": "$4$",
+    "solution": "세 번째 이동 전까지 1번에 돌아오면 안 되므로 첫 번째와 두 번째 이동을 마친 지점은 모두 2번이어야 한다.\n가능한 지점 순서는 $1\\to2\\to2\\to1$ 하나뿐이다.\n이에 해당하는 코스 수는 $A_{12}A_{22}A_{21}=2\\times1\\times2=4$가지이다.\n따라서 구하는 값은 $4$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
     "sourceType": "generated"
@@ -155,7 +155,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "1번에서 2번으로 가는 서로 다른 코스는 2개, 2번에서 1번으로 가는 코스는 3개이고 같은 지점에서 끝나는 1회 코스는 없다. 1번에서 출발해 정확히 네 번 이동하여 1번으로 돌아오는 경우의 수는?",
+    "content": "1번에서 2번으로 가는 서로 다른 코스는 2개, 2번에서 1번으로 가는 코스는 3개이고 같은 지점에서 끝나는 1회 코스는 없다. 1번에서 출발해 정확히 네 번 이동하여 1번으로 돌아오는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$12$",
       "$18$",
@@ -191,7 +191,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "첫 번째 이동의 코스 수 행렬은 $B=\\begin{pmatrix}0&3\\\\1&1\\end{pmatrix}$, 두 번째와 세 번째 이동의 코스 수 행렬은 각각 $A=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$이다. 1번에서 출발해 정확히 세 번 이동하고 2번에서 도착하는 경우의 수는?",
+    "content": "첫 번째 이동의 코스 수 행렬은 $B=\\begin{pmatrix}0&3\\\\1&1\\end{pmatrix}$, 두 번째와 세 번째 이동의 코스 수 행렬은 각각 $A=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$이다. 1번에서 출발해 정확히 세 번 이동하고 2번에서 도착하는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$1$",
       "$2$",
@@ -227,7 +227,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동한 뒤 1번에 도착하는 경로 중 **2번 지점을 한 번 이상 거치는** 경우의 수는?",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동한 뒤 1번에 도착하는 경로 중 **2번 지점을 한 번 이상 거치는** 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$5$",
       "$8$",
@@ -263,10 +263,10 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "코스 수 행렬이 $A=\\begin{pmatrix}2&2\\\\1&1\\end{pmatrix}$인 두 지점에서 1번을 출발해 세 번 이동하고 다시 1번에 도착한다. **중간의 두 지점 중 정확히 한 곳만 2번**인 경로의 수를 구하시오.",
+    "content": "코스 수 행렬이 $A=\\begin{pmatrix}2&2\\\\1&1\\end{pmatrix}$인 두 지점에서 1번을 출발해 세 번 이동하고 다시 1번에 도착한다. **중간의 두 지점 중 정확히 한 곳만 2번**인 경로의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [],
-    "answer": "8",
-    "solution": "세 번 이동에는 출발·중간1·중간2·도착의 지점이 정해진다. 중간 지점이 정확히 한 번 2번인 순서는 $1\\to2\\to1\\to1$, $1\\to1\\to2\\to1$ 두 가지이다.\n첫째 순서의 코스 수는 $2\\times1\\times2=4$이고, 둘째 순서 역시 $2\\times2\\times1=4$이다.\n둘은 서로 다른 경로 구조이므로 합은 $4+4=8$가지이다.\n따라서 구하는 값은 8이다.",
+    "answer": "$8$",
+    "solution": "세 번 이동에는 출발·중간1·중간2·도착의 지점이 정해진다. 중간 지점이 정확히 한 번 2번인 순서는 $1\\to2\\to1\\to1$, $1\\to1\\to2\\to1$ 두 가지이다.\n첫째 순서의 코스 수는 $2\\times1\\times2=4$이고, 둘째 순서 역시 $2\\times2\\times1=4$이다.\n둘은 서로 다른 경로 구조이므로 합은 $4+4=8$가지이다.\n따라서 구하는 값은 $8$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
     "sourceType": "generated"

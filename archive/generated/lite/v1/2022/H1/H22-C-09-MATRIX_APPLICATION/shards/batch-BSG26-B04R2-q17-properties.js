@@ -1,115 +1,7 @@
-window.examTitle = "ALIVE_LITE_BSG26_B04R2_Q17";
+window.examTitle = "ALIVE_LITE_BSG26_B04R2_Q17_PROPERTIES";
 window.questionBank = [
   {
     "id": 1,
-    "uid": "ALITE-BSG26-B04R2-Q17-S01",
-    "level": "중",
-    "difficultyBucket": 3,
-    "category": "행렬의 거듭제곱",
-    "originalCategory": "행렬",
-    "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C-09",
-    "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "객관식",
-    "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "행렬"
-    ],
-    "wide": false,
-    "content": "$A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$일 때, $A+A^2+\\cdots+A^6$의 모든 성분의 합은?",
-    "choices": [
-      "$12$",
-      "$42$",
-      "$48$",
-      "$54$",
-      "$66$"
-    ],
-    "answer": "④",
-    "solution": "$A=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}+N$, $N=\\begin{pmatrix}0&0\\\\2&0\\end{pmatrix}$으로 놓으면 $N^2=O$이다.\n직접 곱하면 $A^2=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이고, 이를 반복하면 $A^k=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이다.\n$A$부터 $A^6$까지 대각 성분의 합은 $12$이고, 왼쪽 아래 성분의 합은 $2(1+2+\\cdots+6)=42$이다.\n따라서 전체 성분의 합은 $12+42=54$이다.\n따라서 정답은 ④이다.",
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
-  },
-  {
-    "id": 2,
-    "uid": "ALITE-BSG26-B04R2-Q17-S02",
-    "level": "중",
-    "difficultyBucket": 3,
-    "category": "행렬의 거듭제곱",
-    "originalCategory": "행렬",
-    "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C-09",
-    "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "객관식",
-    "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "행렬"
-    ],
-    "wide": false,
-    "content": "$A=\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix}$일 때 $A^n$의 $(2,1)$성분이 $27$이다. 자연수 $n$은?",
-    "choices": [
-      "$7$",
-      "$8$",
-      "$9$",
-      "$10$",
-      "$27$"
-    ],
-    "answer": "③",
-    "solution": "$A^2=\\begin{pmatrix}1&0\\\\6&1\\end{pmatrix}$, $A^3=\\begin{pmatrix}1&0\\\\9&1\\end{pmatrix}$으로 왼쪽 아래 성분이 거듭제곱할 때마다 $3$씩 증가한다.\n따라서 $A^n=\\begin{pmatrix}1&0\\\\3n&1\\end{pmatrix}$이다.\n조건에서 $3n=27$이므로 $n=9$이다.\n따라서 정답은 ③이다.",
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
-  },
-  {
-    "id": 3,
-    "uid": "ALITE-BSG26-B04R2-Q17-S03",
-    "level": "중",
-    "difficultyBucket": 3,
-    "category": "행렬의 거듭제곱",
-    "originalCategory": "행렬",
-    "standardCourse": "공통수학1",
-    "standardUnitKey": "H22-C-09",
-    "standardUnit": "행렬과 그 연산",
-    "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "객관식",
-    "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "행렬"
-    ],
-    "wide": false,
-    "content": "$A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$일 때 $A-A^2+A^3-A^4+A^5-A^6+A^7-A^8$의 $(2,1)$성분은?",
-    "choices": [
-      "$-16$",
-      "$-8$",
-      "$0$",
-      "$8$",
-      "$16$"
-    ],
-    "answer": "②",
-    "solution": "$A^k=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이므로 $(2,1)$성분은 $2k$이다.\n주어진 교대합의 $(2,1)$성분은 $2(1-2+3-4+5-6+7-8)$이다.\n인접한 두 항을 묶으면 $(-1)+(-1)+(-1)+(-1)=-4$이므로 전체는 $-8$이다.\n따라서 정답은 ②이다.",
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
-  },
-  {
-    "id": 4,
     "uid": "ALITE-BSG26-B04R2-Q17-S04",
     "level": "중",
     "difficultyBucket": 3,
@@ -119,15 +11,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "$A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix}$일 때 $A^4B^3$의 모든 성분의 합은?",
@@ -145,7 +38,7 @@ window.questionBank = [
     "sourceType": "generated"
   },
   {
-    "id": 5,
+    "id": 2,
     "uid": "ALITE-BSG26-B04R2-Q17-S05",
     "level": "중",
     "difficultyBucket": 3,
@@ -155,15 +48,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "$A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}$일 때 $AB-BA$의 $(1,1)$성분은?",
@@ -181,7 +75,7 @@ window.questionBank = [
     "sourceType": "generated"
   },
   {
-    "id": 6,
+    "id": 3,
     "uid": "ALITE-BSG26-B04R2-Q17-S06",
     "level": "중",
     "difficultyBucket": 3,
@@ -191,15 +85,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "$A=\\begin{pmatrix}1&0\\\\t&1\\end{pmatrix}$에서 $t$는 자연수이다. $A+A^2+\\cdots+A^5$의 모든 성분의 합이 $55$일 때 $t$는?",
@@ -212,12 +107,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$A^k=\\begin{pmatrix}1&0\\\\kt&1\\end{pmatrix}$임을 직접 행렬곱으로 확인할 수 있다.\n따라서 다섯 행렬의 대각 성분합은 $10$, $(2,1)$성분합은 $(1+2+3+4+5)t=15t$이다.\n$10+15t=55$에서 $15t=45$이므로 $t=3$이다.\n따라서 정답은 ②이다.",
-    "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
-    "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+    "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+    "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
     "sourceType": "generated"
   },
   {
-    "id": 7,
+    "id": 4,
     "uid": "ALITE-BSG26-B04R2-Q17-S07",
     "level": "중",
     "difficultyBucket": 3,
@@ -227,15 +122,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}1&0\\\\1&0\\end{pmatrix}$에 대하여 $A+A^2+\\cdots+A^7$의 모든 성분의 합은?",
@@ -253,7 +149,7 @@ window.questionBank = [
     "sourceType": "generated"
   },
   {
-    "id": 8,
+    "id": 5,
     "uid": "ALITE-BSG26-B04R2-Q17-S08",
     "level": "중",
     "difficultyBucket": 3,
@@ -263,15 +159,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$에 대하여 $A+A^2+\\cdots+A^9$의 모든 성분의 합은?",
@@ -289,7 +186,7 @@ window.questionBank = [
     "sourceType": "generated"
   },
   {
-    "id": 9,
+    "id": 6,
     "uid": "ALITE-BSG26-B04R2-Q17-S09",
     "level": "중",
     "difficultyBucket": 3,
@@ -299,15 +196,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
-    "subUnit": "행렬의 연산",
+    "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+    "subUnit": "행렬의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "행렬"
+      "행렬",
+      "행렬의 성질"
     ],
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}2&0\\\\1&0\\end{pmatrix}$에 대하여 $A+A^2+A^3+A^4+A^5$의 모든 성분의 합은?",
