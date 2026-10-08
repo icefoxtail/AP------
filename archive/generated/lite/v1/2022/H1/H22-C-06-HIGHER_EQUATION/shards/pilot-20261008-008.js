@@ -1,0 +1,108 @@
+window.examTitle = "ALIVE_LITE_HYOCHEON_H22-C-06-HIGHER_EQUATION_BATCH008";
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "여러 가지 방정식과 부등식",
+    "originalCategory": "여러 가지 방정식과 부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+    "subUnit": "여러 가지 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "삼차·사차방정식",
+      "인수분해형"
+    ],
+    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, $\\omega^{2026}+\\omega^{2027}$의 값은?",
+    "choices": [
+      "-2",
+      "-1",
+      "0",
+      "1",
+      "2"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 세제곱근의 주기성을 이용하여 높은 거듭제곱을 간단히 한다.\n$x^3-1=(x-1)(x^2+x+1)$이고 $\\omega$는 허근이므로 $\\omega^2+\\omega+1=0$이다.\n$\\omega^3=1$이고 $2026=3\\cdot675+1$, $2027=3\\cdot675+2$이므로 $\\omega^{2026}=\\omega$, $\\omega^{2027}=\\omega^2$이다.\n따라서 $\\omega+\\omega^2=-1$이다.",
+    "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+    "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+  },
+  {
+    "id": 2,
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "여러 가지 방정식과 부등식",
+    "originalCategory": "여러 가지 방정식과 부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+    "subUnit": "여러 가지 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "삼차·사차방정식",
+      "인수분해형"
+    ],
+    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 하자. 다음 보기에서 옳은 것의 개수는?\n< 보 기 >\nㄱ. $\\omega^3=1$\nㄴ. $\\omega+\\overline{\\omega}=-1$\nㄷ. $\\omega\\overline{\\omega}=1$\nㄹ. $\\omega^2=\\overline{\\omega}$\nㅁ. $\\omega+\\omega^2=1$\nㅂ. $\\dfrac1\\omega=\\omega^2$\nㅅ. $\\omega^2+\\omega+1=1$",
+    "choices": [
+      "2개",
+      "3개",
+      "4개",
+      "5개",
+      "6개"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] $\\omega^2+\\omega+1=0$, $\\omega^3=1$, $\\overline{\\omega}=\\omega^2$를 이용해 각 진술을 판정한다.\nㄱ은 정의에 따라 참이다.\nㄴ은 두 켤레 허근의 합이 $-1$이므로 참이다.\nㄷ은 두 켤레 허근의 곱이 $1$이므로 참이다.\nㄹ은 $\\omega^2=\\overline{\\omega}$이므로 참이다.\nㅁ은 $\\omega+\\omega^2=-1$이므로 거짓이다.\nㅂ은 $\\omega^3=1$이므로 $1/\\omega=\\omega^2$로 참이다.\nㅅ은 $\\omega^2+\\omega+1=0$이므로 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ, ㄹ, ㅂ으로 $5$개이다.",
+    "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+    "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+  },
+  {
+    "id": 3,
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "여러 가지 방정식과 부등식",
+    "originalCategory": "여러 가지 방정식과 부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+    "subUnit": "여러 가지 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "삼차·사차방정식",
+      "인수분해형"
+    ],
+    "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 한다. $1\\le n\\le20$인 자연수 $n$ 중에서 $\\omega^n+\\overline{\\omega}^{\\,n}=2$를 만족하는 $n$의 개수는?",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 켤레 허근의 거듭제곱도 주기가 $3$이다.\n$n$이 $3$의 배수이면 $\\omega^n=\\overline{\\omega}^{\\,n}=1$이므로 합이 $2$이다.\n그 외의 경우 두 거듭제곱은 $\\omega,\\overline{\\omega}$를 순서만 바꾸어 나타내므로 합은 $-1$이다.\n따라서 $1$부터 $20$까지 조건에 맞는 자연수는 $3,6,9,12,15,18$이고 개수는 $6$개이다.",
+    "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+    "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+  }
+];

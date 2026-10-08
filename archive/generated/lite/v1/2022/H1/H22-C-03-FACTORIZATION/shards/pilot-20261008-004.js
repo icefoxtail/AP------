@@ -1,0 +1,178 @@
+window.examTitle = "ALIVE_LITE_HYOCHEON_H22-C-03-FACTORIZATION_BATCH004";
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "중",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "공통인수",
+      "단계적 인수분해"
+    ],
+    "content": "두 다항식 $P(x)=x^3-2x^2+2x-4$, $Q(x)=x^3-x^2-x-2$의 공통인 인수는?",
+    "choices": [
+      "$x+1$",
+      "$x-1$",
+      "$x-2$",
+      "$x+2$",
+      "$x^2+1$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 두 다항식을 각각 인수분해한 뒤 공통 인수를 찾는다.\n$P(x)=(x-2)(x^2+2)$이고 $Q(x)=(x-2)(x^2+x+1)$이다.\n따라서 두 다항식에 공통으로 포함된 인수는 $x-2$이며 정답은 ③이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "difficultyBucket": 3
+  },
+  {
+    "id": 2,
+    "level": "중",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "공통인수",
+      "단계적 인수분해"
+    ],
+    "content": "두 다항식 $P(x)=x^4+x^2-2$, $Q(x)=x^4+x^3-x-1$을 각각 인수분해했을 때 공통으로 나타나는 이차식 인수는? (단, 이차식의 최고차항의 계수는 $1$이다.)",
+    "choices": [
+      "$x^2+1$",
+      "$x^2-2$",
+      "$x^2-1$",
+      "$x^2+2$",
+      "$x^2-4$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 두 다항식에서 같은 이차인수를 찾아낸다.\n$P(x)=(x^2-1)(x^2+2)$이다.\n$Q(x)=x^3(x+1)-(x+1)=(x+1)(x^3-1)=(x+1)(x-1)(x^2+x+1)$이다.\n따라서 공통으로 나타나는 최고차항 계수 $1$인 이차식 인수는 $(x+1)(x-1)=x^2-1$이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "difficultyBucket": 3
+  },
+  {
+    "id": 3,
+    "level": "중",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "인수분해 공식",
+      "이차식"
+    ],
+    "content": "두 다항식 $P(x)=x^4-5x^2+4$, $Q(x)=x^4-4x^2+3$의 공통인 이차식 인수는? (단, 이차식의 최고차항의 계수는 $1$이다.)",
+    "choices": [
+      "$x^2-4$",
+      "$x^2-3$",
+      "$x^2-2$",
+      "$x^2-1$",
+      "$x^2+1$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] $x^2$을 한 문자로 생각하여 각각 인수분해한다.\n$P(x)=(x^2-1)(x^2-4)$이고 $Q(x)=(x^2-1)(x^2-3)$이다.\n따라서 공통인 이차식 인수는 $x^2-1$이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "difficultyBucket": 3
+  },
+  {
+    "id": 4,
+    "level": "상",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "공통인수",
+      "단계적 인수분해"
+    ],
+    "content": "두 다항식 $P(x)=x^3-3x+2$, $Q(x)=x^3+3x^2-4$의 최고차항 계수가 $1$인 공통인수 중 차수가 가장 높은 것은?",
+    "choices": [
+      "$x^2-x-2$",
+      "$x^2+x-2$",
+      "$x^2+x+2$",
+      "$x^2-1$",
+      "$x^2+2x-3$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 두 다항식을 완전히 인수분해한 뒤 각 일차인수가 공통으로 나타나는 횟수를 비교한다.\n$P(x)=(x-1)^2(x+2)$이고 $Q(x)=(x-1)(x+2)^2$이다.\n따라서 공통인수 중 차수가 가장 높은 것은 $(x-1)(x+2)=x^2+x-2$이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "difficultyBucket": 4
+  },
+  {
+    "id": 5,
+    "level": "상",
+    "category": "인수분해",
+    "originalCategory": "인수분해",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "공통인수",
+      "단계적 인수분해"
+    ],
+    "content": "두 다항식 $P(x)=x^4-5x^2+4$, $Q(x)=x^3+2x^2-5x-6$의 최고차항 계수가 $1$인 공통인수 중 차수가 가장 높은 것은?",
+    "choices": [
+      "$x^2-2x+1$",
+      "$x^2+x-2$",
+      "$x^2-x-2$",
+      "$x^2-4$",
+      "$x^2-1$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 두 다항식의 일차인수들을 비교하여 공통인수를 곱한다.\n$P(x)=(x^2-1)(x^2-4)=(x-1)(x+1)(x-2)(x+2)$이다.\n$Q(x)=(x-2)(x+1)(x+3)$이다.\n따라서 공통인수 중 차수가 가장 높은 것은 $(x-2)(x+1)=x^2-x-2$이다.",
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+    "difficultyBucket": 4
+  }
+];
