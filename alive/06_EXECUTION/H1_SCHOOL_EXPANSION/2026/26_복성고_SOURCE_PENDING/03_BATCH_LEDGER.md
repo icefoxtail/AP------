@@ -66,3 +66,17 @@
 - 객관식 정답 분포 ①9 ②7 ③8 ④8 ⑤6. L2 manifest의 역사 승인 기록 보존.
 - 누적 생성 후보 **121개** (B01 45 + B02 38 + B03 38). 독립 REVIEW·main publication·student DB 등록 신규 승인 0.
 - 인덱스: `archive/data/generated-lite/bokseong-2026-1final-b03-create-index-v1.json`, 누적 v4, extension cumulative v3. 다음 배치 **B04(q17/q20/q23)**는 다음 사용자 지시가 있을 때만 실행.
+
+
+## CURRENT — 2026-10-08 B04/B05 R2 재설계 생산 원장
+| 배치 | source qid | 과거 초안 | 새 R2 후보 | 다음 상태 |
+|---|---|---:|---:|---|
+| B04R2 | 17, 20, 23 | 11 | **26** (9+9+8) | 독립 REVIEW 대기 |
+| B05R2 | 21, 22 | 8 | **19** (9+10) | 독립 REVIEW + q22 Meta 판정 대기 |
+
+- A/B/C/D R2 물리 산출: 신규 고유 UID 45/45, 객관식 23·서답 22, 객관식 정답 위치 ①4 / ②5 / ③8 / ④4 / ⑤2. 제작자 별도 알고리즘 결과 45/45 일치, 구조·SHA·manifest/index parity 정상.
+- 기존 초안 19 UID는 이번 revision에 포함하지 않는다. 누적 활성 생성 후보 **166** = B01 45 + B02 38 + B03 38 + B04R2 26 + B05R2 19.
+- 새 누적 인덱스: `archive/data/generated-lite/bokseong-2026-1final-create-index-v5.json`.
+- q20 주개념 RPM H1-RPM-203(조건을 만족하는 행렬). q22는 H1-RPM-179(연립**일차**부등식) 및 H1-RPM-182(AMGM)로 억지 귀속 금지; 신규 L3/L4 후보 독립 검토만 남김.
+- 제외 설계 6건 및 45개 Blueprint 근거: `B04_B05_R2_BLUEPRINT_DESIGN.json`. R2는 CREATE 후보이고 독립 REVIEW·실제 student consumer·main publication 모두 미실행.
+- next batch: B06(q18/q19) 도형·색칠 source 시각 근거 확인 후 착수.
