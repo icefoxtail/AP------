@@ -2,7 +2,7 @@
   "schemaVersion": "ALIVE_LITE_ADAPTIVE_BATCH_PLAN_v1",
   "authorityCommit": "ca9d8f7a65d478eb76d569c525d7eec1a2dff29c",
   "sourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "planRevision": 4,
+  "planRevision": 5,
   "sourceQidCoverage": [
     1,
     2,
@@ -194,9 +194,22 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED",
+      "status": "CREATE_R2_CANDIDATES_REVIEW_PENDING",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
-      "candidateRegistryRequiredBeforeC": true
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 26,
+      "blueprintExploredCount": 29,
+      "acceptedBlueprintCount": 26,
+      "rejectedBlueprintCount": 3,
+      "sourceExpansionDoneQids": [
+        17,
+        20,
+        23
+      ],
+      "sourceHoldQids": [],
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b04-create-index-v1.json",
+      "receipt": "B04_R2_CREATE_RECEIPT.json",
+      "metaOnlyReviewDebt": []
     },
     {
       "id": "B05",
@@ -216,9 +229,23 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED",
+      "status": "CREATE_R2_CANDIDATES_REVIEW_PENDING",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
-      "candidateRegistryRequiredBeforeC": true
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 19,
+      "blueprintExploredCount": 22,
+      "acceptedBlueprintCount": 19,
+      "rejectedBlueprintCount": 3,
+      "sourceExpansionDoneQids": [
+        21,
+        22
+      ],
+      "sourceHoldQids": [],
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b05-create-index-v1.json",
+      "receipt": "B05_R2_CREATE_RECEIPT.json",
+      "metaOnlyReviewDebt": [
+        "q22 RPM Primary exact L3/L4 needs approval; source math finished"
+      ]
     },
     {
       "id": "B06",
@@ -246,9 +273,9 @@
       "candidateRegistryRequiredBeforeC": true
     }
   ],
-  "nextBatchId": "B04",
-  "qualityStatus": "PLANNING_ONLY",
-  "generatedCount": 0,
+  "nextBatchId": "B06",
+  "qualityStatus": "B04_B05_CREATE_R2_READY_FOR_INDEPENDENT_REVIEW",
+  "generatedCount": 166,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
   "extensionDiscoveryContract": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
   "extensionCandidateIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json",

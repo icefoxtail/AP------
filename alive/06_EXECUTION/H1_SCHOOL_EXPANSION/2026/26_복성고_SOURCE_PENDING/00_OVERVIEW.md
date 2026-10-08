@@ -39,3 +39,11 @@
 - 객관식 정답 분포 ①9 ②7 ③8 ④8 ⑤6. L2 manifest의 역사 승인 기록 보존.
 - 누적 생성 후보 **121개** (B01 45 + B02 38 + B03 38). 독립 REVIEW·main publication·student DB 등록 신규 승인 0.
 - 인덱스: `archive/data/generated-lite/bokseong-2026-1final-b03-create-index-v1.json`, 누적 v4, extension cumulative v3. 다음 배치 **B04(q17/q20/q23)**는 다음 사용자 지시가 있을 때만 실행.
+
+
+## CURRENT — 2026-10-08 B04/B05 R2 재설계 (위 과거 PLANNED 기록 대체)
+- B04 q17·q20·q23 **26 UID**(9+9+8), B05 q21·q22 **19 UID**(9+10) 생성·물리 저장. 기존 B04 11 / B05 8 초안은 새 R2 브랜치에서 superseded.
+- 기존 B01 45 + B02 38 + B03 38 = 121 보존, R2 추가 45 → **active CREATE 후보 누적 166 UID**.
+- q17 RPM-201/202/203을 풀이별 구분, q20 RPM-203, q23 RPM-202 + 경우의 수 CrossConcept, q21 RPM-194. q22는 절댓값+이차부등식 결합 L3/L4 후보 별도 **Meta review**.
+- L2 기준 shard 6 / metadata 6 / manifest 4 / 누적 v5 인덱스 물리화, 45 문항 제작자 독립 계산법 재계산·보기·결론·구조 검사 PASS. **외부 독립 REVIEW / 실제 렌더 / 학생용 DB / main 출고 NOT_TESTED**.
+- 다음 CREATE 대상은 **B06 q18·q19**, 사용자의 다음 진행 지시 기준.
