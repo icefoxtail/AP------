@@ -23,3 +23,10 @@
 - 복성고: SOURCE_PATH_UNVERIFIED (실제 파일 검색 필요).
 - 효천고: 파일럿 브랜치 78 UID (2026-10-08 14시대 원격 readback), batch009·011 로컬 16 후보 미반입, SVG 4개 Codex 렌더 대기; 94는 예상치, Git 등록 수 아님.
 - 새 worker는 다음 일감 소진 시 로스터 최신연도에서 다음 source로 이동. 지침 부재·미해결 artifact면 continuation/blocked 상태를 남기고 다른 대상은 계속 진행.
+
+## 2026-10-08 SOURCE RESOLVED — 최신 사실이 위 이전 상태를 대체
+- 정확한 첫 대상: **26_복성고_1학기_기말_고1_기출**
+- source: `archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js`
+- source blob SHA: `8266fa476906e9134b94f23e803bd3b2fb26ece4`
+- 원본 파일의 question id 23개 관찰. 일부 파일 끝 후처리 코드 존재하므로 런타임 반영된 최종 bank/asset inventory는 생성 전 확인.
+- 상태: SOURCE_FOUND → source audit/자산 확인 → 생성 batch. 기존 SOURCE_PATH_UNVERIFIED/중간 파일 가정은 HISTORY로 취급.

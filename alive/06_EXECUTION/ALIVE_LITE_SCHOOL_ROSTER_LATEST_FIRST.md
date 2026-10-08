@@ -14,3 +14,10 @@
 - Git `archive/exams/original/high/h1` 원본 파일 inventory, 2026 source 존재/시험종류/학년/과목/문항수/sha 검증.
 - 2026 복성고가 다른 학기 또는 다른 평가종류에 있으면 검증된 실경로로 school folder를 개명/재결속한다.
 - 미확인 학교·연도·순서/분모를 만들어서 생산하지 않는다.
+
+## 2026-10-08 SOURCE RESOLVED — 최신 사실이 위 이전 상태를 대체
+- 정확한 첫 대상: **26_복성고_1학기_기말_고1_기출**
+- source: `archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js`
+- source blob SHA: `8266fa476906e9134b94f23e803bd3b2fb26ece4`
+- 원본 파일의 question id 23개 관찰. 일부 파일 끝 후처리 코드 존재하므로 런타임 반영된 최종 bank/asset inventory는 생성 전 확인.
+- 상태: SOURCE_FOUND → source audit/자산 확인 → 생성 batch. 기존 SOURCE_PATH_UNVERIFIED/중간 파일 가정은 HISTORY로 취급.
