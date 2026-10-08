@@ -47,3 +47,13 @@
 - q17 RPM-201/202/203을 풀이별 구분, q20 RPM-203, q23 RPM-202 + 경우의 수 CrossConcept, q21 RPM-194. q22는 절댓값+이차부등식 결합 L3/L4 후보 별도 **Meta review**.
 - L2 기준 shard 6 / metadata 6 / manifest 4 / 누적 v5 인덱스 물리화, 45 문항 제작자 독립 계산법 재계산·보기·결론·구조 검사 PASS. **외부 독립 REVIEW / 실제 렌더 / 학생용 DB / main 출고 NOT_TESTED**.
 - 다음 CREATE 대상은 **B06 q18·q19**, 사용자의 다음 진행 지시 기준.
+
+
+## CURRENT — B06 SOURCE+DESIGN FROZEN (2026-10-08)
+- 2026 복성고 고1 1학기 기말 B06 q18/q19 원본 PNG 실제 확인 및 A/B Blueprint 설계 완료.
+- 설계 탐색 38 / ACCEPT 제안 25 / 제외·보류 13; q18 10 / q19 15. **생성 UID 0, 신규 shard 0**.
+- q18 primary RPM H1-RPM-177(방정식의 활용/도형·함수 결합); q19 primary H1-RPM-187(합·곱의 법칙/단계별 선택, 이전 same-grade scope 재사용).
+- q19 원본 인접변 AB·AC·AD·BC·CD, BD 비인접. q18 기존 q18-solution.svg는 실제로 수직선 자료여서 구멍 그림에 사용 금지.
+- 등록된 B06 extension-l4 제안은 q18 6 / q19 8, 미승인·비공급. q19 과거 EXT 14개 보존.
+- 설계 정본 B06_BATCH_DESIGN.json → B06_STEM_PATTERN_BANK.json → B06_VISUAL_GENERATION_PLAN.json / B06_SOURCE_VISUAL_AUDIT.json.
+- 사용자 별도 진행 지시 전에는 C 생성/D 저장 착수하지 않음. B01~B05 생성 후보 166 UID 보존.
