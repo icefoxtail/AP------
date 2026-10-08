@@ -1,6 +1,6 @@
 {
   "schemaVersion": "ALIVE_LITE_EXTENSION_L4_CANDIDATES_v0.1",
-  "status": "DRAFT_PILOT",
+  "status": "EXTENSION_CANDIDATES_REVIEW_PENDING",
   "curriculum": "2022",
   "course": "공통수학1",
   "l1": "H22-C-06",
@@ -53,8 +53,73 @@
       ],
       "reviewStatus": "DISCOVERED_UNREVIEWED",
       "canonicalPromoted": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-CONJUGATE-CUBIC-VIETA",
+      "label": "실수계수 삼차식의 허근쌍·나머지 실근 계수 제약",
+      "parentL3": "삼차·사차방정식",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "canonicalParentL3RecordId": "H1-RPM-172",
+      "existingCanonicalL4": "인수분해형",
+      "sourceSeedQids": [
+        8
+      ],
+      "sourceSeedOriginalL2": "H22-C-04-COMPLEX_BASIC",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "decisiveStepSignature": "허근의 켤레쌍을 실수 이차인수로 묶어 세 근의 합/곱·두근곱합 복원",
+      "contrastWithExisting": "허근 켤레쌍으로 실계수 이차인수를 만든 뒤 삼차방정식의 근/계수를 재구성. 기존 인수분해형의 하위 조건인지 별도 L4인지 검수 필요",
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q08-C01",
+        "ALITE-BSG26-B02-Q08-C02",
+        "ALITE-BSG26-B02-Q08-C03",
+        "ALITE-BSG26-B02-Q08-C04",
+        "ALITE-BSG26-B02-Q08-C05",
+        "ALITE-BSG26-B02-Q08-C07"
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q08-C01",
+        "BSG26-B02-Q08-C02",
+        "BSG26-B02-Q08-C03",
+        "BSG26-B02-Q08-C04",
+        "BSG26-B02-Q08-C05",
+        "BSG26-B02-Q08-C07"
+      ],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "L4_VS_CONDITION_PATTERN_REVIEW_REQUIRED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-CONJUGATE-CUBIC-RECONSTRUCT",
+      "label": "허근쌍을 이용한 삼차식 재구성 후 계산",
+      "parentL3": "삼차·사차방정식",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "canonicalParentL3RecordId": "H1-RPM-172",
+      "existingCanonicalL4": "인수분해형",
+      "sourceSeedQids": [
+        8
+      ],
+      "sourceSeedOriginalL2": "H22-C-04-COMPLEX_BASIC",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "decisiveStepSignature": "켤레쌍의 실수 이차인수와 남은 일차인수 전개",
+      "contrastWithExisting": "허근 켤레쌍으로 실계수 이차인수를 만든 뒤 삼차방정식의 근/계수를 재구성. 기존 인수분해형의 하위 조건인지 별도 L4인지 검수 필요",
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q08-C06"
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q08-C06"
+      ],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "L4_VS_CONDITION_PATTERN_REVIEW_REQUIRED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
     }
   ],
   "canonicalRPMModified": false,
-  "lastBatchId": "pilot-20261008-008"
+  "lastBatchId": "B02-Q08",
+  "candidateCount": 5,
+  "newB02CandidateIds": [
+    "EXT-H1-BSG26-CONJUGATE-CUBIC-VIETA",
+    "EXT-H1-BSG26-CONJUGATE-CUBIC-RECONSTRUCT"
+  ]
 }

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "ALIVE_LITE_B01R2_EXTENSION_GAP_LEDGER_v1",
+  "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceDenominator": 23,
+  "B01SourceQids": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    12,
+    15
+  ],
+  "generatedCompleteUidCount": 45,
+  "exploredBlueprintCount": 65,
+  "acceptedBlueprintCount": 45,
+  "extensionL4ProposalCount": 33,
+  "extensionL3GranularityProposalCount": 3,
+  "existingRPMReusedByDefault": true,
+  "sourceQidExtensionMatrix": [
+    {
+      "sourceQid": 1,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C08-COMB-INVERSE",
+        "EXT-H1-C08-COMB-IDENTITY",
+        "EXT-H1-C08-COMB-SYMMETRY"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 4,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 2,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C08-PERM-GAP",
+        "EXT-H1-C08-PERM-DISTANCE",
+        "EXT-H1-C08-PERM-MULTIBLOCK",
+        "EXT-H1-C08-PERM-ORDER-SYMMETRY",
+        "EXT-H1-C08-PERM-EXACT-ADJ",
+        "EXT-H1-C08-PERM-ALTERNATE",
+        "EXT-H1-C08-PERM-INVERSE-N"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 8,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 4,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C01-POLY-MONOMIAL-COEFF",
+        "EXT-H1-C01-POLY-COEFF-INVERSE",
+        "EXT-H1-C01-POLY-SYMMETRIC-PAIRS"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 6,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 6,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C09-MATRIX-ENTRY-INVERSE",
+        "EXT-H1-C09-MATRIX-ENTRY-FUNCTIONAL",
+        "EXT-H1-C09-MATRIX-SUM-DIFFERENCE",
+        "EXT-H1-C09-MATRIX-AGGREGATE",
+        "EXT-H1-C09-MATRIX-ORDERED-PRODUCT-SUM",
+        "EXT-H1-C09-MATRIX-PRODUCT-INVERSE"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 8,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 7,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C06-INEQ-ENDPOINT-INTEGER",
+        "EXT-H1-C06-INEQ-PARAMETER-FEASIBILITY",
+        "EXT-H1-C06-INEQ-INTEGER-INVERSE",
+        "EXT-H1-C06-INEQ-INTERVAL-INCLUSION"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 6,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 12,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C08-DIST-MANDATORY-PICK",
+        "EXT-H1-C08-DIST-ENDPOINTS",
+        "EXT-H1-C08-DIST-ADJACENCY",
+        "EXT-H1-C08-DIST-ALTERNATING",
+        "EXT-H1-C08-DIST-RELATIVE-ORDER",
+        "EXT-H1-C08-DIST-UNLABELED-PARTITION",
+        "EXT-H1-C08-DIST-NONEMPTY-LABELED"
+      ],
+      "extensionL3CandidateIds": [],
+      "generatedL4Examples": 9,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 15,
+      "extensionL4CandidateIds": [
+        "EXT-H1-C08-DIGIT-DIVISIBILITY-SUFFIX",
+        "EXT-H1-C08-DIGIT-SUM-RESIDUE",
+        "EXT-H1-C08-DIGIT-MULTIPLE-MODULUS"
+      ],
+      "extensionL3CandidateIds": [
+        "EXT-H1-C08-L3-DIGIT-CONSTRUCTION"
+      ],
+      "generatedL4Examples": 0,
+      "sourceVisualRequiredUnseen": false
+    },
+    {
+      "sourceQid": 19,
+      "extensionL4CandidateIds": [],
+      "extensionL3CandidateIds": [
+        "EXT-H1-C08-L3-ADJACENCY-COLOR"
+      ],
+      "generatedL4Examples": 0,
+      "sourceVisualRequiredUnseen": true
+    },
+    {
+      "sourceQid": 23,
+      "extensionL4CandidateIds": [],
+      "extensionL3CandidateIds": [
+        "EXT-H1-C09-L3-STATE-TRANSITION"
+      ],
+      "generatedL4Examples": 0,
+      "sourceVisualRequiredUnseen": false
+    }
+  ],
+  "mathReview": "NOT_TESTED",
+  "semanticReview": "NOT_TESTED",
+  "visualBlockers": [
+    {
+      "qid": 19,
+      "status": "SOURCE_VISUAL_UNREAD"
+    }
+  ],
+  "q15Finding": {
+    "sourceQid": 15,
+    "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+    "previousStatus": "RPM_PRIMARY_L3_UNRESOLVED",
+    "potentialReuseL3": "합·곱의 법칙",
+    "priorScope": "H22-C-07-CORE",
+    "rpmRecordIds": [
+      "H1-RPM-186",
+      "H1-RPM-187"
+    ],
+    "status": "PRIOR_SAME_GRADE_SEMANTIC_REUSE_REQUIRES_REVIEW",
+    "generatedUidCount": 0
+  },
+  "originalB01DesignAnd45GeneratedArtifactsPreserved": true,
+  "taxonomyPromotionAllowed": false,
+  "nextBatch": "B02",
+  "nextBatchMandatoryPreflight": "RPM L3/L4 current + prior/lower scope → L3/L4 new candidate triage + candidate registry before any C generation"
+}
