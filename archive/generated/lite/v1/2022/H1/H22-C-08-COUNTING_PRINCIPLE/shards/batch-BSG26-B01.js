@@ -1,0 +1,65 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01-Q12-BP01",
+    "level": "중",
+    "category": "순열과 조합",
+    "originalCategory": "분할·분배",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "서로 다른 액션 영화 4편, 코미디 영화 3편, 공포 영화 2편 중 액션 2편, 코미디 1편, 공포 1편을 선택해 네 편을 모두 한 번씩 시청하는 순서를 정하는 경우의 수는?",
+    "choices": [
+      "$648$",
+      "$720$",
+      "$864$",
+      "$936$",
+      "$1080$"
+    ],
+    "answer": "③",
+    "solution": "영화를 종류별로 선택하는 방법은 ${}_4C_2\\times{}_3C_1\\times{}_2C_1=6\\times3\\times2=36$가지이다. 선택된 네 영화는 서로 다른 작품이므로 전체 시청 순서는 $4!=24$가지이다. 따라서 총 경우의 수는 $36\\times24=864$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01-Q12-BP02",
+    "level": "중",
+    "category": "순열과 조합",
+    "originalCategory": "분할·분배",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "서로 다른 액션 영화 4편, 로맨스 영화 3편, 공포 영화 2편 중 액션 2편, 로맨스 1편, 공포 1편을 골라 시청하려 한다. 로맨스 영화를 맨 처음 시청할 때 가능한 선택과 시청 순서의 총수는?",
+    "choices": [
+      "$144$",
+      "$180$",
+      "$216$",
+      "$252$",
+      "$288$"
+    ],
+    "answer": "③",
+    "solution": "영화를 고르는 방법은 ${}_4C_2\\times{}_3C_1\\times{}_2C_1=6\\times3\\times2=36$가지이다. 고른 로맨스 영화는 한 편이므로 첫 자리에 고정한다. 나머지 세 작품의 순서는 $3!=6$가지이므로 총 $36\\times6=216$가지이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  }
+];

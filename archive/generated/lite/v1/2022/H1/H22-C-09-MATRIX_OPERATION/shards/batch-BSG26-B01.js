@@ -1,0 +1,65 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01-Q06-BP01",
+    "level": "중",
+    "category": "행렬과 그 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}2&1\\\\-3&4\\end{pmatrix}$, $B=\\begin{pmatrix}1&-2\\\\5&0\\end{pmatrix}$에 대하여 $A+2B$의 $(1,2)$성분을 $a$, $3A-B$의 $(2,1)$성분을 $b$라 하자. $a-b$의 값은?",
+    "choices": [
+      "$9$",
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "answer": "③",
+    "solution": "$(1,2)$성분을 계산하면 $a=1+2\\times(-2)=-3$이다. $(2,1)$성분을 계산하면 $b=3\\times(-3)-5=-14$이다. 따라서 $a-b=-3-(-14)=11$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01-Q06-BP02",
+    "level": "중",
+    "category": "행렬과 그 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "행렬 $A=\\begin{pmatrix}a&1\\\\2&b\\end{pmatrix}$, $B=\\begin{pmatrix}1&0\\\\5&3\\end{pmatrix}$가 $2A-B=\\begin{pmatrix}3&2\\\\-1&5\\end{pmatrix}$를 만족할 때, $a+b$의 값은?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "③",
+    "solution": "같은 위치의 성분이 같으므로 $2a-1=3$에서 $a=2$이고, $2b-3=5$에서 $b=4$이다. 나머지 두 성분도 $2\\times1-0=2$, $2\\times2-5=-1$로 조건과 일치한다. 따라서 $a+b=6$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  }
+];
