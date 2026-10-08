@@ -1,5 +1,11 @@
 # ALIVE LITE CONTINUATION — CURRENT
 
+## CURRENT REVIEW+CONSUMER HARD — 학생 공급까지 같은 채팅에서 완료 (2026-10-08)
+- 검수자/MAIN은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 추가 필독하며, 생성 승인 → 실제 Archive 2.0 Generated Bank Consumer DB 등록 → 학생 검색·선택/조회 검증 → main remote readback까지 같은 REVIEW+MAIN에서 닫는다. main shard/manifest 저장만으로 DONE 아님.
+- 기존 효천고 92 이전 PASS는 정답 ③ 편중/보기 품질 신규 gate 전의 기록이다. 별도 repair branch phase1~4 45개 변경기록은 수학 독립재검 미완. 최종 diff/번호·보기 재검 후 승인 분모를 새로 확정하여 등록한다. HOLD 공급 금지.
+- 현행 original 전용 DB/index loader를 `ALITE-*` shard에 그대로 사용하는 것은 금지. Generated 전용 consumer adapter 및 실학생 조회 증거가 미구현이면 `REVIEW_PASSED_REGISTRATION_PENDING` 상태를 기록한다.
+
+
 2026-10-08 KST | CURRENT / 생성 우선 | Authority: Git main. Notion은 미러/진입점.
 
 ## 작업자 첫 실행
