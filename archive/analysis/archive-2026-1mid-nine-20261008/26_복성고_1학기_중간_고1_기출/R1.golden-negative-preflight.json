@@ -1,0 +1,93 @@
+{
+  "status": "PREFLIGHT_COMPLETE_BEFORE_SOLUTION_REPAIR",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "내분점에서 각 좌표의 반대쪽 비를 곱하는 설명 뒤에 x/y 좌표의 실제 분자·분모 계산, 중점, 거리식, 제곱근 정리 순서가 분리돼 있다. 계산을 생략하지 않고 좌표를 확정한 뒤 다음 단계로 넘어가는 작은칠판 흐름을 확인했다.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "평행 조건에서 기울기를 읽고 점 대입을 따로 전개한 뒤 m+n으로 끝난다. 설명과 식 전환이 구분되고 불필요한 재계산이 없다.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "좌표 차를 각각 적고 거리 공식, 제곱합, 근호 간단히 하기, 답을 순차적으로 분리했다.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "observation": "첫 직선과 둘째 직선을 각각 y=mx+n 꼴로 정리하고 두 기울기 곱으로 k를 구한다. SVG를 실제로 읽어 점·축·선 좌표를 확인했다: first line endpoints map to slope -1/3; second line endpoints map to slope 3; their product is -1. The labeled equation, numeric geometry and solution agree.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD",
+              "VISUAL_SVG"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "원소 관계와 부분집합 관계를 구별한 뒤 보기 ①~⑤를 각각 별도 단락에서 판정하고 참/거짓 이유를 붙인다.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "실제 problem image를 열어 다섯 그래프를 확인했다. 설명은 vertical-line test를 기준으로 그림 ②만 두 점에 만남을 분리해 설명하고, ④의 열린 끝점 경계를 언급한다.",
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD",
+              "VISUAL_PROBLEM_IMAGE"
+            ]
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "README reports false PASS despite SVG geometry mismatch and merged enumerated small-board decisions. I read the actual q1/q3 bad SVGs: q1 labeled points A(-5,3), B(1,-2), slope -5/6 and intercept -7/6, but the actual line and marked points do not pass through the labeled coordinates or realize that line. q3 actual primitive maps to positive slope while the label 7x+y-15=0 requires slope -7, and the labeled H is not the perpendicular foot for P. Therefore inspect coordinates/topology rather than SVG labels, and keep enumerated judgments in separate blocks. q1 bad SVG SHA256 022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92; q3 bad SVG SHA256 7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c."
+    }
+  },
+  "observedDate": "2026-10-08"
+}

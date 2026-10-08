@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"R1_DISCARDED_PREFLIGHT_ATTEMPT_V1",
+  "date":"2026-10-08",
+  "status":"DISCARDED_NOT_USED_FOR_PRE-FLIGHT",
+  "attempts":[
+    {"attempt":1,"issue":"Initial golden extraction used an ad-hoc parser and stopped with a JavaScript syntax error before reading or recording any sample evidence.","effect":"No Golden/Negative observation was accepted from this attempt."},
+    {"attempt":2,"issue":"Golden JS inputs were referenced with relative paths; Node resolved them from the primary checkout cwd rather than the assigned worktree. Their raw SHA-256 values differed from the absolute assigned-worktree files.","effect":"All observations and hashes from this attempt were discarded. No solution repair occurred before the subsequently completed absolute-path Golden/Negative preflight."}
+  ],
+  "acceptedPreflight":"R1.golden-negative-preflight.json",
+  "acceptedPreflightSha256":"5cf693b370241dae327ba8180f5865694f5033018b7f5e8c926bdcbe96f876a6"
+}

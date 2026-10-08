@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_POSTRECOVERY_CHANGED_QID_REVIEW_V1",
+  "stage": "R1",
+  "reviewerId": "r1_02",
+  "sourceRawSha256": "550d579f4470bf6d4613c7865fa3fc5da9175d999b50fc31a97377b28092afae",
+  "rawBufferBlobSha1": "47c94569bcd00cdd2ee63eb7742573e84baf55b4",
+  "currentStudentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.student.current.postrecovery.final.json",
+    "sha256": "7a01534cf92dd6c3b04f0b4698eee34f9bc7ba072d713d9be1b3fe10a00674bc"
+  },
+  "currentStudentBundleQids": 24,
+  "currentStudentBundleAssets": 5,
+  "originalFullFreeze": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.independent-freeze.json",
+    "sha256": "42cfb0e1dc95127472275a24cb3d9d03e09b4dc9e8d28bfcb281bc7c9db2a96d"
+  },
+  "recoveryFreeze": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.postrecovery.clean.freeze.json",
+    "sha256": "c0693d4597c78190d41acf87d7429c2b88fb5eb969232b8bc0acfff32f3ca88d"
+  },
+  "r2RecoveryFreeze": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R2.postrecovery.clean.freeze.json",
+    "sha256": "2c88c53045a4f7d511f51c12fd81c84074cffdf2da7abd1b50578c8efb315eb4"
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.postrecovery.postfreeze-disclosure.q14-q24.final.json",
+    "sha256": "331405b0e5b1d943831143382a14403b66cdf74e2483a4c740dfa6d5c95950b8"
+  },
+  "metaReview": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.meta-difficulty-review.postrecovery.final.json",
+    "sha256": "61e698c9b210d0f3dc684e32d6122dd05a8c0ec37e205060bb5b63820d33fda5"
+  },
+  "q14": {
+    "answer": "27 (choice ①)",
+    "math": "For each a∈{1,2,3}, real-radical definedness gives bc≥0 and the denominator gives a>0; |b−c|=b−c gives b≥c, with b≠c. There are C(3,2)=3 negative pairs, one positive pair, and five zero pairs: 9 per a, 27 total.",
+    "questionLayout": "PASS: image and condition blocks retained; the two conditions and asked ordered-triple count have clear semantic boundaries; exact student fields and all choices parity-checked.",
+    "solutionLayout": "PASS: domain, fixed-a split, bc>0/zero cases, subtotals, multiplication, final answer are separate readable steps.",
+    "smallBoard": "PASS: count derivation shows each case and intermediate value; no omitted arithmetic.",
+    "visualSvg": {
+      "status": "PASS",
+      "problemImageOpened": true,
+      "assetSha256": "c11b59d0a649818f1b6166887ac64d7313e9060d99cf1a192f12c4548b4a2e3c",
+      "solutionSvgRequired": false
+    },
+    "meta": {
+      "status": "PASS",
+      "course": "공통수학1",
+      "unit": "H22-C-08 순열과 조합",
+      "subunit": "순열",
+      "problemType": "PT_COUNTING_ARRANGEMENT",
+      "template": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "difficultyBucket": 3,
+      "level": "중"
+    }
+  },
+  "q24": {
+    "answer": "9",
+    "math": "The R1 freeze error substituted g−x=u(x−1) after deriving g=u(x−1); the correct expression is (u−1)x−u. Root divisibility and |g(1)|<|g(2)| force g=u(x−1), Q=(4/u)(x−2). Coefficients yield (u−2)(7u²+28u+32)=0; the quadratic has discriminant −112, so u=2 is the only real value. Witness f=2x²−3x−2, g=2x−2, Q=2x−4 satisfies all conditions and gives 9.",
+    "witnessChecks": {
+      "identity": "(x²g−8)Q−7(g−x)²=f²",
+      "divisibility": "gQ=4(x−1)(x−2)",
+      "inequality": "|g(1)|=0<2=|g(2)|",
+      "objective": "f(−1)²=9"
+    },
+    "questionLayout": "PASS: all three labeled conditions, leading coefficient, and requested maximum remain separately legible; current student payload parity exact.",
+    "solutionLayout": "PASS: degree restriction, root assignment, parameterization, coefficient equations, unique-real-root conclusion, direct witness check, and objective are separate steps.",
+    "smallBoard": "PASS: no key equation/result is compressed; direct substitution verifies feasibility before claiming the maximum.",
+    "visualSvg": {
+      "status": "PASS",
+      "problemImageOpened": false,
+      "solutionSvgRequired": false,
+      "reason": "No diagram-dependent mathematical step; no SVG needed."
+    },
+    "meta": {
+      "status": "PASS",
+      "course": "공통수학1",
+      "unit": "H22-C-02 항등식과 나머지 정리",
+      "subunit": "핵심",
+      "problemType": "PT_H1_REMAINDER_THEOREM",
+      "template": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "difficultyBucket": 4,
+      "level": "상"
+    }
+  },
+  "preserved": {
+    "nonTargetQids": 22,
+    "allQuestionObjectsAndReferencedAssetsInvariant": true,
+    "q16CleanFreezePreserved": true,
+    "q3AdjudicationPreserved": true,
+    "q14R2Correction": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R2.postrecovery.adjudication.q14.json",
+      "sha256": "3fb13f30de849f079fefb8733f1a6a6f8e5672025a136583313b720669cd15c4",
+      "meaning": "R2 original 24 freeze preserved; same-stage count corrected to 27."
+    },
+    "q24R1Adjudication": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.postrecovery.q24-adjudication.json",
+      "sha256": "00fae586fe73318d8282f74a4caa7762908557127729f222ef69a583888d6043"
+    },
+    "q14ReplacementProvenance": "ALIVE_REPLACEMENT",
+    "q24ReplacementProvenance": "ALIVE_REPLACEMENT"
+  }
+}

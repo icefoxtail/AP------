@@ -17328,6 +17328,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "공통수학1",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-08",
+      "rangeEndUnit": "순열과 조합",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-08",
+          "rangeEndUnit": "순열과 조합",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "공통수학1"
     }
   ]
 };
