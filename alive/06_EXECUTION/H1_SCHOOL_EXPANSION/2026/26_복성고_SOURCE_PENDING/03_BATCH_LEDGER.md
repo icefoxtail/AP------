@@ -1,18 +1,14 @@
-# 복성고 ALIVE LITE 신규 1단계 전체 스캔 원장
+# 복성고 ALIVE LITE — 최신 배치 원장
 
-- Git source blob: `8266fa476906e9134b94f23e803bd3b2fb26ece4`
-- 23/23 qid 1회 배정, 6개 적응형 배치
-- 생성 신규 문항: 0 (STEP1 planning only)
-- 다음 실행: B01 전체 A→B→C→D 완료, 이후 별도 지시
-- 이미지 q18/q19: `SOURCE_VISUAL_UNREAD` (실제 이미지 픽셀 확인 전 PASS 금지)
-- RPM L3/L4 정본 전수 조회: 다음 배치 A/B에서 직접 재판정 필요
-- 이전 capacity 파일럿 실적·UID는 새 생산에 승계하지 않음
+원본 23문항. B01 완료 후보 13개 / 원본 7개(q1,q2,q4,q6,q7,q12,q15). Blueprint 탐색 18, ACCEPT 13, 제외 3, HOLD 2. q15 RPM L3 불확실하여 후보 0. 6개 원본도 전체 L4 소진 증거가 없어 continuation 유지.
 
-| Batch | Source qids | Risk | Status |
-|---|---|---|---|
-| B01 | 1, 2, 4, 6, 7, 12, 15 | BASIC_TO_STANDARD | PLANNED |
-| B02 | 3, 5, 8, 10, 11 | STANDARD | PLANNED |
-| B03 | 9, 13, 14, 16 | COMPLEX | PLANNED |
-| B04 | 17, 20, 23 | MATRIX_COMPLEX | PLANNED |
-| B05 | 21, 22 | EXTENDED_RESPONSE_COMPLEX | PLANNED |
-| B06 | 18, 19 | VISUAL_REQUIRED | PLANNED |
+| Batch | Source qids | Candidate | 상태 |
+|---|---|---:|---|
+| B01 | 1,2,4,6,7,12,15 | 13 | CREATE_GENERATED_REVIEW_PENDING |
+| B02 | 3,5,8,10,11 | 0 | PLANNED |
+| B03 | 9,13,14,16 | 0 | PLANNED |
+| B04 | 17,20,23 | 0 | PLANNED |
+| B05 | 21,22 | 0 | PLANNED |
+| B06 | 18,19 | 0 | PLANNED |
+
+B01 candidate Git readback yes; REVIEW math blind not run; production main 0.
