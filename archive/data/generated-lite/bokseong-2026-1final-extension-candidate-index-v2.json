@@ -55,8 +55,7 @@
   "registriesB02": [
     "archive/generated/lite/v1/2022/H1/H22-C-09-CORE/extension-l4/registry.json",
     "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/extension-l4/registry.json",
-    "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/extension-l4/registry.json",
-    "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/extension-l3/registry.json",
+    "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/extension-l4/registry.json",
     "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/extension-l3/registry.json"
   ],
   "B01": {
@@ -67,17 +66,19 @@
   "B02": {
     "generated": 38,
     "L4CandidateCount": 13,
-    "L3CandidateCount": 2,
-    "discoveredWithSampleUidCount": 35
+    "L3CandidateCount": 1,
+    "discoveredWithSampleUidCount": 40,
+    "reclassifiedQ08": "Primary existing RPM H1-RPM-172 in 6th unit, false new-L3 retired",
+    "separateQ11L3": "EXT-H1-BSG26-ABS-PIECEWISE-L3 / H22-C-06-INEQUALITY"
   },
   "cumulativeGeneratedCandidates": 83,
   "cumulativeL4Proposals": 46,
-  "cumulativeL3Proposals": 5,
+  "cumulativeL3Proposals": 4,
   "independentlyApprovedNewL4": 0,
   "independentlyApprovedNewL3": 0,
   "canonicalPromoted": false,
   "consumerSelectable": false,
-  "reviewStatus": "DISCOVERY_ONLY",
+  "reviewStatus": "DISCOVERY_USER_CORRECTED_NOT_SEMANTIC_REVIEWED",
   "granularityVerdict": "ALL_EXT_REQUIRE_INDEPENDENT_REVIEW",
   "sourceQidsB02": [
     3,
@@ -87,9 +88,14 @@
     11
   ],
   "sourceScopeHoldsB02": [
-    8,
     10,
     11
   ],
-  "createdB02RegistryRecordCount": 15
+  "createdB02RegistryRecordCount": 14,
+  "registriesB02Superseded": [
+    "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/extension-l3/registry.json",
+    "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/extension-l4/registry.json"
+  ],
+  "unitOrderPolicy": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md",
+  "classificationTablePath": "archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json"
 }
