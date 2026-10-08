@@ -1,9 +1,10 @@
 # 25 팔마고 고1 2학기 중간 — 생성 개요
 
-- Source inventory: 23/23 ordered unique source IDs, 19 multiple-choice and 4 constructed-response; total 100 points.
-- Primary L2 groups: 7; adaptive work plan in `01_ADAPTIVE_BATCH_PLAN.json` covers every source qid exactly once.
-- Source HOLD before generation: q11 (undeclared `z`) and q16 (printed set braces conflict with source solution). Original source is preserved; these qids produce no candidates unless independently resolved with source evidence.
-- q20 contains the original school-name typo “마팔고”; do not copy the typo into generated text.
-- Student-facing figures: q9, q10, q15, q17, q19. All five were opened at original resolution during source inventory. Four additional SVGs are solution-only references.
-- Output counts are not preset. Only meaningful, curriculum-safe blueprints become candidates.
-- Worktree is based on latest fetched `origin/main` commit `330394489f6e90c5c7d5c7ae28623ab52ca824b9`.
+- Source inventory: 23/23 ordered unique qids, 19 multiple-choice, 4 constructed response, 100 points.
+- All 23 qids have one-time Primary L2 assignment and a generation disposition; q11/q16 are source-level HOLD.
+- Candidate pool: 27 MD candidates across seven L2 groups.
+- Independent content review: PASS 26 / REJECT 0 / HOLD 1. The sole review HOLD is q10 until actual SVG engine render.
+- Supply withholding: B01 q12/q19 and B05 q4 EXT-L4; B07 q13 BP03 projection binding; B02 q10 render. Twenty-two candidates remain supply-eligible pending registration.
+- B01 q22 difficulty correction was rechecked; level 중 / bucket 3 now PASS.
+- Reviewed 23 multiple-choice answer positions: ①4 / ②6 / ③3 / ④6 / ⑤4.
+- Generated Consumer DB registration and actual Chrome lookup are in progress. After Palma closes, pause for user quality review; no later exam starts.

@@ -1,6 +1,6 @@
 # ALIVE production manifest — 25 팔마고 고1 2학기 중간
 
-- Status: `SOURCE_LOCKED / ADAPTIVE_PLAN_CONFIRMED / CANDIDATE_GENERATION_IN_PROGRESS`
+- Status: `SOURCE_LOCKED / GENERATION_COMPLETE / REVIEW_COMPLETE_WITH_RENDER_HOLD`
 - Current worktree base: `330394489f6e90c5c7d5c7ae28623ab52ca824b9` (latest fetched `origin/main` at start)
 - Production branch: `codex/alive-palma-25-h1-2mid`
 - Source: `archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js`
@@ -11,10 +11,10 @@
 - Primary L2 groups: 7, with exact one-time qid coverage in `01_ADAPTIVE_BATCH_PLAN.json`.
 - Source HOLD qids: 11 and 16 due unresolved source wording; q20 school-name typo recorded and excluded from generated wording.
 - Current authorized scope: this Palma exam only; after its closure pause for user quality review. All later schools are deferred until the user resumes.
-- Independent review: NOT_STARTED
-- Approved / rejected / candidate hold: 0 / 0 / 0
-- Consumer DB registered / student lookup verified: 0 / 0
-- Main publication: NOT_STARTED
+- Independent review: PASS 26 / REJECT 0 / HOLD 1 across 27 candidates; B02 q10 awaits actual engine render. Final supply eligibility is separately frozen by the 4 APPROVED / 23 HOLD SHA-bound roster.
+- Independent-review PASS / REJECT / HOLD: 26 / 0 / 1; supply eligibility: 4 APPROVED / 23 HOLD per `review/APPROVED_UIDS.json`.
+- Consumer DB registered / student lookup verified: 4 / 4 (all four SHA-roster APPROVED UIDs searched, opened and selected in headed Google Chrome)
+- Main publication: PENDING final scoped commit/push and origin/main remote readback
 
 ## Authority and execution decisions
 
@@ -33,8 +33,16 @@
 |---|---:|---|---|
 | Source inventory | 23 | PASS | `00_FULL_SCAN.json`, `01_SOURCE_AUDIT.md` |
 | Adaptive L2 plan | 7 batches / 23 source qids | PASS | `01_ADAPTIVE_BATCH_PLAN.json` |
-| Candidates generated | 0 | IN_PROGRESS | B01–B04 assigned to four distinct L2-owned CREATE workers |
-| Independent review | 0 | NOT_STARTED | blind student-input-first review pending |
-| Consumer registration | 0 | NOT_STARTED | approved UIDs only |
-| Student lookup | 0 | NOT_STARTED | Chrome evidence pending |
-| Main remote readback | 0 | NOT_STARTED | after eligible publication |
+| Candidates generated | 27 | COMPLETE | all seven L2 batches have candidate/disposition coverage |
+| Independent review | 27 | REVIEW_COMPLETE_WITH_RENDER_HOLD | 26 PASS, 0 REJECT, 1 HOLD |
+| Consumer registration | 4 | STATIC_REGISTERED | exact 4 APPROVED roster UIDs only; 23 HOLD candidate UIDs are excluded; see `review-consumer-closeout.json` |
+| Student lookup | 4 | PASS | headed Chrome individually searched/opened/selected all 4; preview answer/solution hidden; held UID returns 0 |
+| Main remote readback | 0 | PENDING | root will commit/push scoped files and verify `origin/main` parity |
+
+
+## 2026-10-09 Consumer registration checkpoint
+
+- The SHA-bound `review/APPROVED_UIDS.json` is authoritative: 4 approved, 23 held; ordered roster commitment `F51C9340AE5574035036EE03A9CE7EDA0ABC45A3930BAF7063346B7F00018C16`.
+- Exactly four B07 questions were added to the Generated Consumer index; total registry rows are 287 (prior 283 preserved). `excludedHoldUids` includes all 23 held Palma candidates; none occur in records.
+- Student lookup/selection and actual Chrome smoke remain pending. No browser pass or main publication is claimed.
+
