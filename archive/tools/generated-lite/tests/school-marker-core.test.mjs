@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import {test} from "node:test";
+import {readFileSync} from "node:fs";
+import {generatePilotPaper,searchSameL3} from "../school-marker-core.mjs";
+const model=JSON.parse(readFileSync(new URL("../../../data/generated-lite/hyocheon-2026-1mid-school-marker-read-model.json",import.meta.url),"utf8"));
+test("26 source slots, 22 unique generated candidates",()=>{assert.equal(model.slots.length,26);assert.equal(model.candidates.length,22);assert.equal(new Set(model.candidates.map(c=>c.uid)).size,22)});
+test("zero unapproved generated questions appear in student paper",()=>{const a=generatePilotPaper({model,seed:"same"});assert.equal(a.counts.replaced,0);assert.equal(a.counts.originalKept,26);assert.ok(!JSON.stringify(a).includes('"solution"'));assert.ok(!JSON.stringify(a).includes('"answer"'))});
+test("same seed freezes identical paper revision",()=>assert.deepEqual(generatePilotPaper({model,seed:"fixed"}),generatePilotPaper({model,seed:"fixed"})));
+test("test-only verified candidate replaces; wrong L3 and curriculum gate block",()=>{const c=model.candidates.find(c=>c.sourceQid===5),slot=model.slots.find(s=>s.sourceQid===5);const s={...slot,l3SharedKey:c.l3SharedKey,originalDifficultyBucket:c.difficultyBucket,questionType:c.questionType};const good={...c,uid:"TEST-ONLY-VERIFIED",independentMathPassed:true,curriculumGatePassed:true,rendererPassed:true,supplyApproved:true,replacementSlotApprovals:[s.slotKey]};const m={...model,slots:[s],candidates:[good]};assert.equal(generatePilotPaper({model:m}).counts.replaced,1);assert.equal(generatePilotPaper({model:{...m,candidates:[{...good,l3SharedKey:"DIFFERENT"}]}}).counts.replaced,0);assert.equal(generatePilotPaper({model:{...m,candidates:[{...good,curriculumGatePassed:false}]}}).counts.replaced,0);assert.equal(generatePilotPaper({model:m,avoidUids:[good.uid]}).counts.replaced,0)});
+test("L3 sharing search includes drafts only in explicit preview",()=>{const c=model.candidates.find(c=>c.sourceQid===5);assert.equal(searchSameL3(model,c).length,0);assert.ok(searchSameL3(model,c,{includeUnverified:true}).length>=9)});
+test("unfilled fallback exposes missing eligibility",()=>{const a=generatePilotPaper({model,fallback:"UNFILLED_REPORT"});assert.equal(a.counts.unfilled,26)});
