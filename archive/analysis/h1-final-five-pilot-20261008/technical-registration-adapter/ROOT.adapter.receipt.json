@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "H1_FINAL_FIVE_TARGET_REGISTRATION_ADAPTER_V1",
+  "disposition": "H1 PATH/GRADE/DISPLAY ALIAS GUARDS IMPLEMENTED; TARGET-ONLY REGISTRATION FLOW PRESERVED",
+  "head": "5e711187f736e211e7b9ff0a4bf9a599b164eafd",
+  "expectedHead": "5e711187f736e211e7b9ff0a4bf9a599b164eafd",
+  "lockedRosterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\ROOT.roster.json",
+  "lockedRosterSha256": "d854cd0649d7202a5de199de96549bd135c9337017ac5ade8bd9f6ec5e27477a",
+  "implementation": {
+    "h2": "existing math2 and geometry subject aliases and h2 source/grade constraints preserved",
+    "pathGuard": "accepts only original/high/h1 or original/high/h2; exact path grade must match authority grade",
+    "assignmentBinding": "producer assignment continues to bind lockedRosterSha256, producerAuthorityPath/SHA, target source SHA-256 and raw-buffer Git blob SHA-1; no weakened guard",
+    "h1Course": "ROOT registration projection supplies course=수학(상), matching existing H1 DB subject/primaryStandardCourse; embedded R1 Meta supplies H15-SA course ranges",
+    "h1Grade": "ROOT registration projection supplies grade=h1; source grade resolver must return 고1",
+    "uid": "supports locked H1 examUid form ending _고1_기출 without adding a filename subject segment; H1 display subject is obtained from authority course",
+    "candidateExecution": "One latest-source candidateRoot is reused for all five target-only packages. Per target: target-local index generation and the approved canonical archive2 catalog projection run only inside candidateRoot; no full build_db, semantic Meta regeneration, non-target repair, or MAIN write. After each apply, compare/refresh the same nine registration baseline files before the next producer invocation."
+  },
+  "rootConstruction": {
+    "originalLockedRoster": "leave ROOT.roster.json and dispatcher roster unchanged",
+    "authorityScope": "mirror each projected row as examUid, productionPath, grade=h1, course=수학(상); bind authority.roster.sha256 to that projection",
+    "registrationRoster": "create a separately SHA-locked registration roster projection; for each row add grade=h1 and course=수학(상), preserving examUid and productionPath",
+    "reusableCandidateRoot": "keep one candidate checkout at expected HEAD; after each applied package, refresh/compare the same nine REGISTRATION_BASELINE_FILES between root and candidate root before the next producer invocation; preserve non-target rows and exact-source/R1 bindings",
+    "assignment": "use the existing assignment fields to bind the projected roster SHA and authority path/SHA; no unbound duplicate grade/course field is required"
+  },
+  "validation": {
+    "disposition": "PASS",
+    "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs archive/tools/prepare-existing-target-registration-update.test.mjs",
+    "failed": 0,
+    "passed": 14
+  },
+  "fileBindings": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\tools\\prepare-target-registration-candidate.mjs",
+      "sha256": "697f4f92b694bec59d44b4aa57914616431790e7a80920a26fca937aac0ace0c"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\tools\\prepare-target-registration-candidate.test.mjs",
+      "sha256": "c413730832ec35e6ecf69612746eed875f4571c4da2b944779370258d541e503"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\h1-final-five-pilot-20261008\\technical-registration-adapter\\registration-tests.log",
+      "sha256": "cc82ebd505a81e34525147894f47d6c1b71cb080efc347188edb53089750d4eb"
+    }
+  ],
+  "status": "CLOSED",
+  "implementationNotes": "The full canonical archive2 catalog projection is an approved isolated candidate operation. It is not a full build_db and does not write MAIN. No catalog engine optimization was added."
+}

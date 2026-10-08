@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "ROOT_FRESH_AFFECTED_QID_REVIEW_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "reviewMode": "FRESH_AFFECTED_QID_ONLY",
+  "reviewerIdentity": { "role": "archive_r1", "reviewerId": "/root/r1_maesan2021_q14fresh" },
+  "scope": { "qid": 14, "dependencies": [14], "fullQidOrder": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], "otherQidsReviewedHere": false },
+  "bindings": {
+    "sourceJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\21_매산고_1학기_기말_고1_기출.js",
+    "sourceRawSha256": "9ef452747702cedf02d229a900ccf100251684e17124540a682a63be40946773",
+    "sourceRawBufferGitBlobSha1": "f933f570dfe2394dc2088607789b8dd8fbee4cee",
+    "currentStudentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\R1.q14fresh.student-bundle.current-epoch.json",
+    "currentStudentBundleSha256": "560c6df8712dacaab884b8a5639e9482bac7e2f80ccc19de4dc9abfd6a4b29de",
+    "independentAnswerFileAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q14fresh.independent-answers.json",
+    "independentAnswerFileSha256": "d516c21355491b2a49a30f04eadbf0169cd54c4ea8b0e808153ab7098bc2f46f",
+    "originalScopeFreezeAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q14fresh.original-scope-freeze.json",
+    "originalScopeFreezeSha256": "143ff62fdbd6ac58a9b2e31ce8be6bdd477a6dcf8f7cdaea6f816803bb428cd2",
+    "postfreezeDisclosureAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q14fresh.postfreeze-disclosure.json",
+    "postfreezeDisclosureSha256": "bdac1e048902fbf8a532acd4790f14a3b157bc541ea23a5dde0a909cc2435d8d"
+  },
+  "sourceGrounding": {
+    "sourcePdfAbsolute": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(2)1기말\\수학(상)\\2021_매산고1_1기말.pdf",
+    "sourcePdfSha256": "dcd12fa9fb1fd1b9ecc5fd23d5d33394bb4ff66de327c1dfb441c4701c2f5dab",
+    "page": 4,
+    "converter": "pdftoppm version 26.07.0",
+    "renderParams": "-f 4 -l 4 -png -r 220 -singlefile; MediaBox default; RGB and Poppler default antialias; honor PDF rotation",
+    "directPage4PngAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\source-pdf\\r1-q14-source-page4-provenance-check.png",
+    "directPage4PngSha256": "05df10fb8094e1c859db6519e26a9e2960d630500324950694323c577b48d135",
+    "q14OnlyIsolatedCropAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\source-pdf\\r1-q14-source-page4-isolated-review.png",
+    "q14OnlyIsolatedCropSha256": "14bacce315223a085605dbb8102b51b431a5e705d04e89b13113d49dda13fd04",
+    "actualVisualRead": true,
+    "passivePage4CacheSha256": "f96a812358a6bedd0431eea4c3c7163f4ef16663552c53354ffd28c021af50a9",
+    "passiveCacheByteMatchedFreshPdfRender": false,
+    "cacheMismatchDisposition": "recorded; no same-byte or provenance-equivalence claim is made"
+  },
+  "qidReview": {
+    "qid": 14,
+    "sourceFidelity": { "verdict": "PASS", "basis": "Directly inspected isolated q14 crop from authorized original PDF page 4. Current condition, A(5,0), first-quadrant quarter-circle movement, O note, 4.8-point score, and five choices match the source meaning and visible source item." },
+    "independentMath": {
+      "verdict": "PASS",
+      "independentAnswer": "5π/6",
+      "derivation": "For B=(5 cos t,5 sin t), 0≤t≤π/2, the centroid is G=((5+5 cos t)/3,5 sin t/3)=(5/3,0)+(5/3)(cos t,sin t). G traces a quarter-circle of radius 5/3, so its length is (π/2)(5/3)=5π/6."
+    },
+    "answerComparison": { "verdict": "MATCH", "storedAnswer": "②", "matchingChoice": "5/6π" },
+    "answerCardinality": { "verdict": "PASS", "choiceCount": 5, "equivalentChoices": ["②"], "reason": "The five current choice values are distinct; only ② equals 5π/6." },
+    "QUESTION_LAYOUT": {
+      "verdict": "FAIL",
+      "exactLocus": "qid14 student.content",
+      "finding": "The current body has no explicit newline at the condition/question boundary: the initial circle/A/B condition, movement condition, final question, and parenthetical O note remain one continuous paragraph.",
+      "minimalRepairScope": "Add semantic line breaks after the setup sentence and movement condition, and separate the parenthetical note from the final question while keeping each formula/condition intact. No text or answer change is indicated."
+    },
+    "SOLUTION_LAYOUT": {
+      "verdict": "PASS",
+      "finding": "Current solution separates centroid coordinates, the transformed quarter-circle locus, the arc-length substitution, and the answer into readable paragraphs. The decisive substitution is shown and no required mathematical step is omitted."
+    },
+    "META": {
+      "verdict": "PASS",
+      "finding": "수학(상) / 평면좌표 / 삼각형의 좌표와 무게중심 and centroid-application type/template agree with the task. Difficulty bucket 3 is plausible for the combined centroid-locus and arc-length application; no semantic mismatch found."
+    },
+    "VISUAL_SVG": {
+      "initialVerdict": "FAIL",
+      "initialAssetSha256": "7c34ec0438b337cf432570d554d4845a4d9a335e46896ecf87fcc79d2423e9c2",
+      "initialViewBox": "0 0 720 440",
+      "initialFinding": "The blue source circle has center y=270 and radius 180, so its bottom y=450 exceeded the viewBox bottom 440 and was visibly clipped in the old passive preview.",
+      "repairReceiptAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q14-svg-bbox-repair.json",
+      "repairReceiptSha256": "269d8618f99f2f5d06b61ca50105b038fadc014e3a69ae337dc7ba506a521544",
+      "currentAssetSha256": "36edc401ceee7002ad8542bcd734bf031f49f67a05a9429b36eb122f549b1c57",
+      "currentViewBox": "0 0 720 460",
+      "currentPreviewAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\solution-svg-previews\\q14-solution.bbox-repair.png",
+      "currentPreviewSha256": "559f692805c90508bb719d19c5abee358b9264c81a3121f435f6cd66da81f9a7",
+      "currentPreviewActuallyOpened": true,
+      "currentVerdict": "PASS",
+      "currentFinding": "The full source circle now remains inside the viewport. The small quarter-arc G locus, center, endpoints, labels, and stated 5π/6 length remain mathematically consistent. No other clipping is visible.",
+      "studentProblemVisualRequired": false,
+      "solutionVisualRead": true,
+      "renderStatus": "NOT_RUN_R1_STATIC",
+      "actualArchiveEngineRenderClaimed": false
+    }
+  },
+  "answerFileCreationNote": "The unfrozen independent-answer JSON was authored with WriteAllText instead of exclusive CreateNew; ROOT preserved this fact. ROOT subsequently created the immutable original-scope freeze exclusively with writeFresh/wx and verified full-20 student-bundle parity before qid14 disclosure.",
+  "overallDisposition": "FINDINGS_REMAIN",
+  "changeLocus": ["qid14.student.content line-break boundaries"],
+  "nextRequiredAction": "Original R1 owner applies the minimal qid14 content line-break repair and rechecks qid14 question layout; retain the q14-only scope and the unchanged mathematical/answer freeze. ROOT/original R1 owner performs any required later stage validation."
+}

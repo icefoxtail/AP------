@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "scope": "ITEM_RECOVERY_Q17_Q20_DIRECT_REPLACEMENT",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.",
+        "observation": "Opened actual Golden q7 solution and referenced SVG before drafting. Checked student-reproducible steps, board structure and density, labels and math/visual agreement, and visual readability.",
+        "visualRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "visualSha256": "sha256:c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+        "visualPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_매산여고_2학기_중간_고1_기출-q7.png",
+        "visualPreviewSha256": "sha256:32701c0376a86f398fcc3d7393f0887ac73306f9627084427caa42b30b67bbbd",
+        "actualVisualOpened": true,
+        "visualObservation": "Opened the actual SVG and generated/actual-cached PNG preview; confirmed visible geometry/labels match the sample solution and checked readability."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.",
+        "observation": "Opened actual Golden q8 solution and referenced SVG before drafting. Checked student-reproducible steps, board structure and density, labels and math/visual agreement, and visual readability.",
+        "visualRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "visualSha256": "sha256:8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75",
+        "visualPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_매산여고_2학기_중간_고1_기출-q8.png",
+        "visualPreviewSha256": "sha256:aa800fbc1a5b2a73ff880a9ed6bed6e5e9ade096c7fff90fa9c859ef4ce381c6",
+        "actualVisualOpened": true,
+        "visualObservation": "Opened the actual SVG and generated/actual-cached PNG preview; confirmed visible geometry/labels match the sample solution and checked readability."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "Opened actual Golden q3 solution and referenced SVG before drafting. Checked student-reproducible steps, board structure and density, labels and math/visual agreement, and visual readability.",
+        "visualRef": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "visualSha256": "sha256:3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+        "visualPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_효천고_2학기_중간_고1_기출-q3.png",
+        "visualPreviewSha256": "sha256:fa7bbba22d63ca0aaea8c56c456692ef77883710873f77fc36e04c723254bce1",
+        "actualVisualOpened": true,
+        "visualObservation": "Opened the actual SVG and generated/actual-cached PNG preview; confirmed visible geometry/labels match the sample solution and checked readability."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$",
+        "observation": "Opened actual Golden q10 solution and referenced SVG before drafting. Checked student-reproducible steps, board structure and density, labels and math/visual agreement, and visual readability.",
+        "visualRef": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q10-solution.svg",
+        "visualSha256": "sha256:aaf0a79f61ef32e568ae299605519096a5a92674aa6f13ef1c03d15e75e6c78c",
+        "visualPreviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_효천고_2학기_중간_고1_기출-q10.png",
+        "visualPreviewSha256": "sha256:e251f1accdad57af66f29ae968c3600170ea39450b14eda786a0e0d2f3ccde80",
+        "actualVisualOpened": true,
+        "visualObservation": "Opened the actual SVG and generated/actual-cached PNG preview; confirmed visible geometry/labels match the sample solution and checked readability."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "Read the approved Bokseong negative regression README before drafting; used its documented false-pass failure modes as a check against counting line breaks or self-reported board counts as evidence."
+      }
+    ]
+  }
+}

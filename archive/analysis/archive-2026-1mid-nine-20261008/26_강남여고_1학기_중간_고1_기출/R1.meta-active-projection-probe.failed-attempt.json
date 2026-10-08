@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "JS_ARCHIVE_META_ACTIVE_PROJECTION_PROBE_V1",
+  "status": "FAIL",
+  "examUid": "26_강남여고_1학기_중간_고1_기출",
+  "sourceRawSha256": "7b4ec0b5141141663eebf2df09ffcce88a462ab94b013658dc90e56fef7a4b00",
+  "checkedQids": [
+    9,
+    10,
+    14,
+    20,
+    21
+  ],
+  "validator": "validateActiveMetaFields direct field probe",
+  "issues": "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey; ADVANCED_META_FIELD_TYPE_INVALID:templateKey",
+  "interpretation": "This direct probe has no artifactDispositions argument and reports the deliberate null PT/TPL fields. The task contract requires preserving these current projection debts and binding them in final artifactDispositions with exact reasons; it does not authorize guessing active PT/TPL keys. The corrected subUnitKey/subUnit fields are valid current canonical table keys.",
+  "recovery": "Carry exact current null values plus explicit debt fields/reason in final full-qid artifactDispositions; run generic V2 R1 artifact gate that is debt-aware.",
+  "createdAt": "2026-10-08T06:29:10.8246207Z"
+}

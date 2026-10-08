@@ -1,0 +1,15 @@
+✔ preflight binds the full student-only bank and opaque original freeze without reading source JS or answers (61.4363ms)
+✔ freezes only fresh q14 answers, binds all 20 current student qids, and preserves the opaque original freeze (79.8671ms)
+✔ postfreeze disclosure verifies full source parity and emits only q14 stored fields, Meta, and answer assets (87.1875ms)
+✔ rejects q13 outside-scope source change and missing q13 dependency asset acknowledgment (101.6388ms)
+✔ rejects scope expansion and a current safe bundle that drops one qid from the full denominator (76.3404ms)
+✔ rejects unknown answer fields, extra qid answers, full-bank order loss, and stale source authority (110.6939ms)
+✔ rejects current bundle mutation or source drift after the q14 freeze (150.4143ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 773.36

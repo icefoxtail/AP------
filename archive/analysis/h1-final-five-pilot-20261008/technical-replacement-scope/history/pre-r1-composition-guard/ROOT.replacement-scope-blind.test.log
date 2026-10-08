@@ -1,0 +1,15 @@
+✔ preflights R1 and R2 against a full 20-qid bundle while scoping the fresh review to q17/q20 (86.4894ms)
+✔ freezes exactly two fresh answers with a full denominator and no stage-pass or dispatcher claim (65.6596ms)
+✔ postfreeze disclosure verifies all 20 source rows and emits only q17/q20 answer fields and assets (74.617ms)
+✔ rejects outside-qid payload mutation, missing scoped assets, and missing ROOT recovery admission proof (121.3973ms)
+✔ allows q17/q20 asset replacement while requiring all 18 outside-scope asset hashes to stay exact (48.7134ms)
+✔ rejects wrong reviewer role, three answers, and source-SHA rebind attempts (89.5007ms)
+✔ rejects full qid loss, scope overwrite, and source or current bundle drift after freeze (173.7317ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 764.5276

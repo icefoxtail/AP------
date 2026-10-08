@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_SUFFICIENCY_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "allowedQids": [
+    17,
+    20
+  ],
+  "currentArtifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\21_매산고_1학기_기말_고1_기출.js",
+    "rawSha256": "37aa02556959821382042d0f8aa7104c4fe969a899016e397cd64e18328af4d9",
+    "gitBlobSha1": "db338d4a3991340f50d7e41221e182fe0eb13640"
+  },
+  "originalSourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매산고1_1기말.pdf",
+    "sha256": "dcd12fa9fb1fd1b9ecc5fd23d5d33394bb4ff66de327c1dfb441c4701c2f5dab",
+    "fullPagesActuallyRead": [
+      5,
+      6
+    ],
+    "pageImages": {
+      "5": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\source-pages\\source-page-5.png",
+        "sha256": "752430624dc2730e78bbc1d5aaeb67ddd019c4a35a1081c78bbc222f05cb44f5",
+        "opened": true
+      },
+      "6": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\source-pages\\source-page-6.png",
+        "sha256": "c79562aedec26c441ed4de0dcca24a876cf1f1972be68a98dfb5849cc5a6f35f",
+        "opened": true
+      }
+    }
+  },
+  "companions": {
+    "solutionPdf": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매산고1_1기말_해설.pdf",
+      "sha256": "d5576f9f116557aef5550ca38b60fce7ca164c625cfec3c9bfb32b2d4fd6db0a",
+      "pageCount": 8,
+      "allPagesRenderedAndOpened": true,
+      "role": "Corroborative only; source wording remains authority."
+    },
+    "answerHwp": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매산고1_1기말_정답.hwp",
+      "sha256": "11575577b29d511c32ea19bef3433039b5cdf0dda0397dec9d26c84f2e171e99",
+      "bytesHashVerified": true,
+      "contentRead": false,
+      "reason": "No HWP text extraction/parser was available in this environment; no claim is made that the HWP content was read."
+    }
+  },
+  "upstreamR1R2SummariesRead": false,
+  "items": [
+    {
+      "qid": 17,
+      "sourcePage": 5,
+      "currentContent": "<단답형 2>\n두 직선 \\(y=m(x-2),\\ y=-\\dfrac1m x+6\\)의 교점을 \\(P\\)라고 하자. 점 \\(P\\)는 \\((p,q)\\)를 제외한 원 \\(C\\) 위를 움직일 때, 원 \\(C\\)의 방정식을 구하면 중심이 \\((a,b)\\)이고 반지름이 \\(r\\)인 원이다. \\(a+b+r^2-p-q\\)의 값을 구하시오. (단, \\(m\\ne0\\)은 실수) [5점]",
+      "sufficiency": "TRUE_ITEM_HOLD",
+      "independentDerivation": {
+        "fixedA": [
+          2,
+          0
+        ],
+        "fixedB": [
+          0,
+          6
+        ],
+        "lineSlopes": [
+          "m",
+          "-1/m"
+        ],
+        "rightAngleAtP": true,
+        "locusCircle": {
+          "center": [
+            1,
+            3
+          ],
+          "radiusSquared": 10
+        },
+        "parametricIntersection": {
+          "x": "2m(m+3)/(m^2+1)",
+          "y": "2m(3m-1)/(m^2+1)"
+        },
+        "unattainedCirclePoints": [
+          {
+            "point": [
+              0,
+              0
+            ],
+            "reason": "m=0, excluded and second line undefined"
+          },
+          {
+            "point": [
+              2,
+              6
+            ],
+            "reason": "lies on locus circle but any finite m line y=m(x-2) has y=0 at x=2"
+          }
+        ],
+        "requestedValueAlternatives": [
+          {
+            "omittedPoint": [
+              0,
+              0
+            ],
+            "value": 14
+          },
+          {
+            "omittedPoint": [
+              2,
+              6
+            ],
+            "value": 6
+          }
+        ]
+      },
+      "sourceCorrectionSearch": {
+        "handwrittenOrPrintedDisambiguatorFound": false,
+        "alternateSourceAnnotationsRead": true,
+        "deterministicMinimalCorrection": false
+      },
+      "conclusion": "The source says the locus circle excludes one point (p,q), but the given finite nonzero real m parameter excludes both (0,0) and (2,6). Both satisfy the locus-circle equation. The source does not identify which point is (p,q); the requested value is not unique."
+    },
+    {
+      "qid": 20,
+      "sourcePage": 6,
+      "currentContent": "<서술형 2>\n서로소인 두 자연수 \\(a,b\\) (단, \\(1<a<b\\))와 양수 \\(c\\)에 대하여 다음 세 직선 \\(l,m,n\\)이 만드는 삼각형의 꼭짓점의 \\(x\\)좌표와 \\(y\\)좌표가 모두 정수이다. 이 삼각형의 넓이가 \\(150\\) 이하의 자연수가 되도록 하는 \\(a,b\\)의 순서쌍 \\((a,b)\\)의 개수를 구하시오.\n\\(l:y=-\\dfrac ab x+c,\\quad m:y=\\dfrac ba x,\\quad n:y=\\dfrac{b-a}{a+b}x\\) [10점]",
+      "sufficiency": "TRUE_ITEM_HOLD",
+      "independentDerivation": {
+        "S": "a^2+b^2",
+        "intersections": {
+          "M": [
+            "a*t",
+            "b*t"
+          ],
+          "N": [
+            "(a+b)*t",
+            "(b-a)*t"
+          ],
+          "t": "b*c/S"
+        },
+        "integerVertexCondition": "t is a positive integer, since gcd(a,b)=1; then all coordinates are integers.",
+        "area": "S*t^2/2",
+        "counterexamplePair": [
+          2,
+          3
+        ],
+        "caseA": {
+          "c": "13/3",
+          "t": 1,
+          "area": "13/2",
+          "qualifies": false
+        },
+        "caseB": {
+          "c": "26/3",
+          "t": 2,
+          "area": 26,
+          "qualifies": true
+        }
+      },
+      "sourceAnnotation": {
+        "printed": "상수 c",
+        "handwritten": "양수 c",
+        "transcribed": "양수 c"
+      },
+      "sourceCorrectionSearch": {
+        "fixedCProvided": false,
+        "quantifierOverCProvided": false,
+        "otherDeterministicConditionFound": false,
+        "deterministicMinimalCorrection": false
+      },
+      "conclusion": "Even taking the handwritten correction as authoritative, c is merely positive and is neither fixed nor quantified per (a,b). For the same coprime pair (2,3), positive c values yield integer vertices but different natural-area eligibility. The requested pair count is not uniquely determined."
+    }
+  ],
+  "postSourceFirstSufficiencyAssessment": "Recorded before opening the assigned R1/R2 evidence files. The companion solution PDF was consulted only as corroboration; it did not supply an unambiguous source-grounded correction for either item.",
+  "authorizedNextAction": "After reading the full q17/q20 R1/R2 source-quality evidence, apply a deterministic source repair only if those materials establish a source-backed unique condition; otherwise use the authorized direct replacement for q17/q20 only, preserving response forms and non-target qids."
+}

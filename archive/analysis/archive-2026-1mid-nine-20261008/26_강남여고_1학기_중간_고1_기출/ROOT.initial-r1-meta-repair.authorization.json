@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "ROOT_BOUNDED_STAGE_REPAIR_AUTHORIZATION_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고1_기출",
+  "stage": "R1",
+  "owner": "/root/r1_01",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "basis": "User authorized new-import CREATE→R1→R2→R3→main; CURRENT Execution §5 requires initial full-qid independent Meta review.",
+  "scope": {
+    "qidCandidates": [
+      9,
+      10,
+      14,
+      20,
+      21
+    ],
+    "fields": "Only worker-confirmed erroneous CREATE-draft semantic Meta and direct difficulty dependencies"
+  },
+  "preRepairSourceRawSha256": "0478e4f902d498bdcf413f95d3c2a1ecebb89f82df61bc6c5f747bc9456a98a4",
+  "newImport": true,
+  "existingProduction": false,
+  "previousCanonicalR1Seal": false,
+  "rootAssignedFinalMetaKeys": false,
+  "requirements": [
+    "Worker uses actual current canonical taxonomy and RPM resolver",
+    "Original and final fields and canonical hash preserved",
+    "Student and asset exact parity preserve valid freeze",
+    "Necessary generic revalidation after final change"
+  ],
+  "sourceQualityWaived": false
+}

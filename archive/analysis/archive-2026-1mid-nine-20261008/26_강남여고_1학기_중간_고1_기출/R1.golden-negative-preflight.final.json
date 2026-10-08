@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CALIBRATION_PREFLIGHT_V1",
+  "reviewerId": "r1_01",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeFinalCurrentQualityReview": true,
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$",
+            "observation": "내분점 비율 선택을 말로 풀고 좌표별 분자·분모, 중간 좌표, 거리 계산을 각각 줄로 전개한다. 계산값이 다음 단계로 연결되어 학생이 복원할 수 있다."
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$",
+            "observation": "평행 조건으로 기울기를 정한 뒤 통과점 대입을 따로 보여 n을 구하고 최종 m+n으로 연결한다."
+          },
+          {
+            "qid": 7,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualRenderSha256": "f0ff9cd9bf45dd612bb736f7f0aa474fcd5a656d88b49881f387f6d48ea01a43",
+            "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "visualRenderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\maesan-q07.png",
+            "observation": "Opened actual SVG and rendered PNG. The dashed original/translated circles, center labels and final circle match the stated center translation and final circle. Some subscript glyphs render as fallback boxes in this external rasterizer; the geometry and center ownership remain legible.",
+            "readTiming": "PRE_FINAL_R1_QUALITY_REVIEW"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY"
+            ],
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{",
+            "observation": "좌표 차를 각각 계산한 뒤 거리 공식, 제곱합, 근호 정리를 순서대로 분리해 적는다."
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_READABILITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의",
+            "observation": "Opened actual SVG and rendered PNG. The two colored lines and axes show opposite-sign slopes consistent with perpendicularity. Several Korean labels render as fallback boxes in this external rasterizer, so the written solution carries the algebraic claim; the line geometry remains visible.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "visualRenderSha256": "2d42d8e8b20439347302c8e732f0362acd8e1204726b4e913fd8bfa7389ab453",
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "visualRenderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\hyocheon-q02.png",
+            "readTiming": "PRE_FINAL_R1_QUALITY_REVIEW"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha1": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "실패 README의 q7 사례와 bad SVG bytes를 함께 읽음. A(-1/2,0), B(0,-1) 라벨 점은 각각 x축 위·아래에 표시되지만 실제 포물선 polyline은 x=300에서 y≈85.8로 지나며 (0,0) 원점 위치 (300,165)를 통과하지 않는다. 좌표·위상에서 시각 의미를 계산하고 label만 믿지 않는다.",
+      "relatedFailureAsset": {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+        "gitBlobSha1": "2a42b27f3c8ec316334b5c68421f4619b58cdae7"
+      }
+    }
+  },
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "calibrationStatus": "PASS",
+  "qualityCompareCount": "24/24",
+  "solutionWorkMode": "R1_CURRENT_ARTIFACT_INDEPENDENT_REVIEW",
+  "calibrationOrder": "Initial postfreeze solution disclosure preceded this preflight and is preserved as a failed ordering attempt. After reading the actual Golden/Negative bytes, current source rows were re-read and reviewed; no solution edit occurred before calibration.",
+  "physicalVisualPreflight": {
+    "openedSvgPngPairs": [
+      {
+        "svg": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\assets\\images\\25_매산여고_2학기_중간_고1_기출\\q7-solution.svg",
+          "sha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+        },
+        "renderedPng": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\maesan-q07.png",
+          "sha256": "f0ff9cd9bf45dd612bb736f7f0aa474fcd5a656d88b49881f387f6d48ea01a43"
+        },
+        "observation": "Opened actual SVG and rendered PNG. The dashed original/translated circles, center labels and final circle match the stated center translation and final circle. Some subscript glyphs render as fallback boxes in this external rasterizer; the geometry and center ownership remain legible."
+      },
+      {
+        "svg": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\assets\\images\\25_효천고_2학기_중간_고1_기출\\q02-solution.svg",
+          "sha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+        },
+        "renderedPng": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\hyocheon-q02.png",
+          "sha256": "2d42d8e8b20439347302c8e732f0362acd8e1204726b4e913fd8bfa7389ab453"
+        },
+        "observation": "Opened actual SVG and rendered PNG. The two colored lines and axes show opposite-sign slopes consistent with perpendicularity. Several Korean labels render as fallback boxes in this external rasterizer, so the written solution carries the algebraic claim; the line geometry remains visible."
+      }
+    ],
+    "renderTool": "ImageMagick magick",
+    "renderStatus": "ACTUAL_PNGS_OPENED_AND_REVIEWED"
+  }
+}

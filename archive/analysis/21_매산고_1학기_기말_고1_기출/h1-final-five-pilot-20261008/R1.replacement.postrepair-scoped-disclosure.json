@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "ROOT_POST_REPAIR_SCOPED_SOLUTION_DISCLOSURE_V1",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "scopeQids": [
+    17,
+    20
+  ],
+  "originalScopeFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.replacement.original-scope-freeze.json",
+    "sha256": "505944068544e6d3d1737c86850f5882002b58fa8095152ba70f5221e653fd44"
+  },
+  "currentSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\21_매산고_1학기_기말_고1_기출.js",
+    "sha256": "fdf7e9fd545a7b2ebf28bad1ff61cc882620b56ad3f72d1ce7ad8c1b5d210cef",
+    "rawBufferGitBlobSha1": "a9d0c6204a4c6ee17676ff940b6ade081d528bc8"
+  },
+  "originalSafeFullStudentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\ITEM_RECOVERY.full-current-student-bundle.json",
+    "sha256": "e58e00e7574cf82f46c747c8a85c7a8e6d61a865b04e2f058172adfae705143e"
+  },
+  "full20StudentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 17,
+      "solution": "두 직선은 각각 $A(2,0)$, $B(0,6)$을 지난다.\n\n두 직선의 기울기는 $m$, $-\\dfrac1m$이므로\n$m\\cdot\\left(-\\dfrac1m\\right)=-1$이다.\n따라서 $AP\\perp BP$이고 $\\angle APB=90^\\circ$이다.\n\n직각삼각형 $APB$의 빗변은 $AB$이다.\n그러므로 $P$는 지름이 $AB$인 원 $C$ 위에 있다.\n\n원의 중심은 $AB$의 중점이므로\n$(a,b)=\\left(\\dfrac{2+0}{2},\\dfrac{0+6}{2}\\right)=(1,3)$이다.\n\n$AB=\\sqrt{(2-0)^2+(0-6)^2}=\\sqrt{40}=2\\sqrt{10}$이다.\n따라서 $r=\\dfrac{AB}{2}=\\sqrt{10}$이고 $r^2=10$이다.\n\n$a+b+r^2=1+3+10=14$이다.\n\n따라서 정답은 $14$이다.",
+      "answer": "14",
+      "solutionImage": "assets/images/21_매산고_1학기_기말_고1_기출/q17-solution.svg"
+    },
+    {
+      "qid": 20,
+      "solution": "$S=a^2+b^2$라 놓는다. 조건에서 $c=\\dfrac Sb$이다.\n\n$m$과 $n$은 원점을 지나므로 한 꼭짓점은 $O=(0,0)$이다.\n\n$l$과 $m$의 교점에서는\n$-\\dfrac abx+c=\\dfrac bax$이다.\n\n$c=\\dfrac Sb$를 대입하여 정리하면\n$x=\\dfrac{abc}{S}=a,\\qquad y=\\dfrac{b^2c}{S}=b$이다.\n따라서 $M=(a,b)$이다.\n\n$l$과 $n$의 교점에서는\n$-\\dfrac abx+c=\\dfrac{b-a}{a+b}x$이다.\n\n같은 방법으로\n$x=\\dfrac{bc(a+b)}S=a+b,\\qquad y=\\dfrac{bc(b-a)}S=b-a$이다.\n따라서 $N=(a+b,b-a)$이다.\n\n$a,b$가 정수이므로 세 꼭짓점의 좌표는 모두 정수이다.\n\n직선 $OM$의 기울기는\n$\\dfrac ba$이고, 직선 $MN$의 기울기는\n$\\dfrac{(b-a)-b}{(a+b)-a}=-\\dfrac ab$이다.\n\n두 기울기의 곱은\n$\\dfrac ba\\left(-\\dfrac ab\\right)=-1$이다.\n따라서 $OM\\perp MN$이고, 삼각형 $OMN$은 $M$에서 직각이다.\n\n$OM=\\sqrt{a^2+b^2}=\\sqrt S$이다.\n\n또한\n$MN=\\sqrt{((a+b)-a)^2+((b-a)-b)^2}$\n$=\\sqrt{b^2+(-a)^2}=\\sqrt S$이다.\n\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot OM\\cdot MN$\n$=\\dfrac12\\cdot\\sqrt S\\cdot\\sqrt S=\\dfrac S2$이다.\n\n넓이가 자연수이려면 $S$가 짝수여야 한다.\n서로소인 $a,b$가 둘 다 짝수일 수 없으므로 $a,b$는 모두 홀수이다.\n넓이가 $150$ 이하이므로 $S\\le300$이다.\n\n홀수 $b$별로 조건을 만족하는 홀수 $a$를 나열하면\n$b=5$: $a=3$ (1개)\n$b=7$: $a=3,5$ (2개)\n$b=9$: $a=5,7$ (2개)\n$b=11$: $a=3,5,7,9$ (4개)\n$b=13$: $a=3,5,7,9,11$ (5개)\n$b=15$: $a=7$ (1개)\n$b=17$: $a=3$ (1개)이다.\n\n따라서 순서쌍의 개수는\n$1+2+2+4+5+1+1=16$이다.\n\n따라서 정답은 $16$이다.",
+      "answer": "16",
+      "solutionImage": "assets/images/21_매산고_1학기_기말_고1_기출/q20-solution.svg"
+    }
+  ],
+  "otherQidAnswersExposed": false
+}

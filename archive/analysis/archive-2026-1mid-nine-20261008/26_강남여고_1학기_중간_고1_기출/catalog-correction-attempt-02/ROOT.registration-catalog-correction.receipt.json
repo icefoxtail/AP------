@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "ROOT_REGISTRATION_CATALOG_DERIVED_HEADER_CORRECTION_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고1_기출",
+  "head": "b351301e64636218044c2aeac6148149d7adfcd4",
+  "disposition": "CORRECTED_MATERIALIZER_PASS",
+  "diagnosis": {
+    "baselineMaterializerCheck": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/catalog-baseline-check-head-b351301e/result.json",
+      "sha256": "d33f533d5c6a709f3fbcbb33ab8430d37138720f116c17182aaefd91b4ecf3fa",
+      "exitCode": 0,
+      "examCount": 536,
+      "questionCount": 12786
+    },
+    "appliedCanonicalProjection": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/catalog-applied-projection-attempt-01/result.json",
+      "sha256": "35b2d9a1d847c0520d7270b68c78557314759f68873d256aedc314da77bdcb0b",
+      "exitCode": 0
+    },
+    "actualVsExpectedDecoded": {
+      "recordDiffCount": 0,
+      "examDiffCount": 0,
+      "taxonomyDiffCount": 0,
+      "healthDiffCount": 0,
+      "packedColumnsEqual": true,
+      "packedStringsEqual": true,
+      "packedRecordRowsEqual": true,
+      "onlyCatalogFieldDifference": "indexVersion",
+      "actualIndexVersion": "9cdc5ac8dfdef8051504d05bffe8592cc47251356c5514e9462333e5ac8141ec",
+      "canonicalIndexVersion": "00770e0f4e4224c0e5d36e599388f415a16d023e8d3764db6720fcdfda19b8d9",
+      "manifestOnlyDiffs": [
+        "generatedFromCatalogIndexVersion",
+        "projectionVersion",
+        "files[data/archive2-catalog.json].sha256"
+      ]
+    }
+  },
+  "before": {
+    "catalogPath": "archive/data/archive2-catalog.json",
+    "catalogSha256": "a7487b164519fa0c860b466626189c153f4089e13af1ebbd2e7bde5975ba145e",
+    "manifestPath": "archive/data/archive2-canonical-input-manifest.json",
+    "manifestSha256": "bd4ce8bf4099ed9dd3045190759c2befc8b8d0637db267f97ac00d0e624069bb"
+  },
+  "after": {
+    "catalogSha256": "7c4f804059bc074dd9debae77ac400cdc43643bddf26d304d33ebd98357ebff6",
+    "manifestSha256": "791121b9f08e3f6e49ea8ebcf664c26ad4aa201fc7a421d098c690de3f98b804",
+    "indexVersion": "00770e0f4e4224c0e5d36e599388f415a16d023e8d3764db6720fcdfda19b8d9",
+    "projectionVersion": "archive2-canonical-v1:65b2e2e6f7757dfc034ff6a4c0bb700ccd5fbc838e5fa64d5640db1d8ec4daf2"
+  },
+  "nonTargetRegistryFiles": [
+    {
+      "path": "archive/db.js",
+      "sha256": "d22895b7efb6f803f1c76f40a9966f6bec178b362786be67533190bad9fea7db",
+      "unchanged": true
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "b783c458bc3e29e3fac671eb33bc64f414e92eb4ccda4fdfbc141b77ea939f96",
+      "unchanged": true
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "7aeb716e09237fc232e78686cec1d260862f2dafc3894a93a8e0dbfea4a6340c",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-identity.js",
+      "sha256": "e1eaf870daf3a90752b73951817c95fe17af9be820b21827e1e5544a47767194",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-index.js",
+      "sha256": "784a0625efe042c4e7e5f2d04aa92b6c1291a3e51b3bd0233735438cb3097fa4",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "sha256": "9b1b3a76181f676c4c5f09c8e9b73286bff301358f540b61219a558b6daf43bc",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "sha256": "41bc5367d21b971194540a893236c9f5973adcbe82199b9955bdbbc152fcde60",
+      "unchanged": true
+    }
+  ],
+  "sourceAssetProofsUnchanged": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\assets\\images\\26_강남여고_1학기_중간_고1_기출\\q07.png",
+  "qualityProofSha256": {
+    "r1Evidence": "7d608b8b1b0501eece21e6fbb3e5e521c987b8c56c436742544e7eaffeab2e66",
+    "r1Validation": "426e4cfff5f5dd5264a8fd4e592e4f046cf64709970f7f7c926e7a951dae2ee5",
+    "r2Evidence": "3f236298f2e5b87a16e25ea97b5e4d4304c3c3a11289f3c51c3982f3a92bfc71",
+    "r3Evidence": "dbd18d6de0743f42fb4c57708f282fc8a263caaa44239725b57c125b5eec3f89",
+    "r3Validation": "144e5ec75fab5ea42b661724cb5462f701fcf99de09557f30a45b4f1fd468976"
+  },
+  "check": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+    "head": "b351301e64636218044c2aeac6148149d7adfcd4",
+    "exitCode": 0,
+    "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\catalog-correction-attempt-02\\check\\stdout.bin",
+    "stdoutSha256": "09b2d985e994c39a0a6e6ea633d11c4dd940a623408f1d6bb9b5f9234275bf13",
+    "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\catalog-correction-attempt-02\\check\\stderr.bin",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applyReceipt": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-apply-head-b351301e/target-registration.receipt.json",
+    "sha256": "c175827d1fc37afd496d267144df723e6d57efa9b1ff5ad304f93d5fcc946a40"
+  },
+  "createdAt": "2026-10-08T07:26:44.535Z"
+}

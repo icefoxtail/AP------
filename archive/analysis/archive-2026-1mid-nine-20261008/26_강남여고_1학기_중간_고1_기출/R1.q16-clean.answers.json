@@ -1,0 +1,13 @@
+[
+  {
+    "qid": 16,
+    "independentAnswer": {
+      "selectionType": "single_choice",
+      "choiceNumber": 2,
+      "choiceText": "18",
+      "numericValue": 18,
+      "cardinality": 1
+    },
+    "reasoning": "완전제곱하면 f(x)=(x-a)^2+a^2이며 a>0이다. a≤2이면 꼭짓점 x=a가 [0,2] 안에 있어 최솟값은 a^2=10이므로 a=√10>2라는 모순이 생긴다. 따라서 a>2이고, f'(x)=2(x-a)<0가 [0,2]에서 성립하므로 최솟값은 x=2에서 나온다. f(2)=4-4a+2a^2=10에서 a^2-2a-3=0, 즉 (a-3)(a+1)=0이므로 a>2에 맞는 값은 a=3이다. f는 구간에서 감소하므로 최댓값은 x=0에서 나오며 f(0)=2a^2=18이다. 보기에서 18은 두 번째 선택지이므로 1-based choiceNumber=2, 단일 정답(cardinality=1)이다."
+  }
+]

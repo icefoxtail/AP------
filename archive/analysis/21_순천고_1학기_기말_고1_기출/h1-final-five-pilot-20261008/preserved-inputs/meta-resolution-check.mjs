@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {createHash} from 'node:crypto';
+import {objectSha} from 'file:///C:/Users/USER/Desktop/AP-worktrees/archive-gates/AP------/archive/tools/pipeline-core/canonical.mjs';
+const root='C:/Users/USER/Desktop/AP-worktrees/archive-gates/AP------';
+const examPath=process.argv[2];
+const source=fs.readFileSync(examPath);
+const box={window:{}};vm.runInNewContext(source.toString('utf8'),box);
+const q=box.window.questionBank;
+const taxonomy=JSON.parse(fs.readFileSync(root+'/archive/data/meta-foundation/compiled/taxonomy_registry.json','utf8'));
+const bindings=JSON.parse(fs.readFileSync(root+'/archive/data/meta-foundation/compiled/curriculum_bindings.json','utf8'));
+const cross=JSON.parse(fs.readFileSync(root+'/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json','utf8'));
+const paths={master:'docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md',taxonomy:'archive/data/meta-foundation/compiled/taxonomy_registry.json',bindings:'archive/data/meta-foundation/compiled/curriculum_bindings.json',crosswalk:'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json'};
+const fileSha=p=>createHash('sha256').update(fs.readFileSync(root+'/'+p)).digest('hex');
+const rows=q.map(item=>{
+ const pt=taxonomy.problemTypes.find(x=>x.problemTypeKey===item.problemTypeKey&&x.status==='ACTIVE');
+ const tpl=item.templateKey===null?null:taxonomy.templates.find(x=>x.templateKey===item.templateKey&&x.parentProblemTypeKey===item.problemTypeKey&&x.status==='ACTIVE');
+ const binding=bindings.bindings.find(x=>x.problemTypeKey===item.problemTypeKey&&x.curriculum==='2015'&&x.standardCourse===item.standardCourse&&x.standardUnitKey===item.standardUnitKey&&x.subUnitKey===item.subUnitKey&&x.status==='ACTIVE');
+ const rpm=cross.records.filter(x=>x.curriculum==='2015'&&x.standardCourse===item.standardCourse&&x.standardUnitKey===item.standardUnitKey&&x.subUnitKey===item.subUnitKey&&x.problemTypeKey===item.problemTypeKey&&(item.templateKey===null||x.templateKey===item.templateKey));
+ return {qid:item.id,sourceArchiveFile:'archive/exams/original/high/h1/1final/21_순천고_1학기_기말_고1_기출.js',sourceOrdinal:item.id,sourceIdentityFingerprint:objectSha({sourceArchiveFile:'archive/exams/original/high/h1/1final/21_순천고_1학기_기말_고1_기출.js',sourceOrdinal:item.id,content:item.content,choices:item.choices,image:item.image||'',solutionImage:item.solutionImage||''}),contentHash:objectSha(item.content),choicesHash:objectSha(item.choices),imageRefHash:objectSha({image:item.image||'',solutionImage:item.solutionImage||''}),solutionSha256:createHash('sha256').update(item.solution,'utf8').digest('hex'),primaryMethod:item.primaryMethod,decisiveStep:item.decisiveStep,curriculum:'2015',standardCourse:item.standardCourse,standardUnitKey:item.standardUnitKey,subUnitKey:item.subUnitKey,problemTypeLookup:pt?{status:pt.status,label:pt.canonicalLabelKo,ownerPack:pt.ownerPack}:null,templateLookup:tpl?{status:tpl.status,label:tpl.canonicalLabelKo,parentProblemTypeKey:tpl.parentProblemTypeKey,ownerPack:tpl.ownerPack}:null,curriculumBindingLookup:binding?{status:binding.status,problemTypeKey:binding.problemTypeKey,standardUnitKey:binding.standardUnitKey,subUnitKey:binding.subUnitKey,ownerPack:binding.ownerPack}:null,rpmCrosswalkCandidates:rpm.map(x=>({id:x.id,status:x.mappingStatus,rpmPath:x.rpmPath,problemTypeKey:x.problemTypeKey,templateKey:x.templateKey,bindingStatus:x.bindingStatus})),currentLookupDisposition:item.id===19?'TEMPLATE_NULL_AFTER_ACTIVE_LOOKUP; META_ONLY_TEMPLATE_PROJECTION_DEBT':'ACTIVE_PT_TEMPLATE_AND_EXACT_CURRICULUM_BINDING'};
+});
+console.log(JSON.stringify({schema:'JS_ARCHIVE_CREATE_META_LOOKUP_AUDIT_V1',examUid:'21_순천고_1학기_기말_고1_기출',sourceRawSha256:createHash('sha256').update(source).digest('hex'),sourceGitBlobSha1:(await import('file:///C:/Users/USER/Desktop/AP-worktrees/archive-gates/AP------/archive/tools/archive-stage-validator.mjs')).gitBlobSha(source),authorityFiles:Object.fromEntries(Object.entries(paths).map(([k,p])=>[k,{path:p,sha256:fileSha(p)}])),rows},null,2));

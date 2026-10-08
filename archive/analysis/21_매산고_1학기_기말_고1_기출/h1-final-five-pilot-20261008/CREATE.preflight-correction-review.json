@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_CORRECTION_REVIEW_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "initialInvocation": {
+    "status": "REVIEW_REQUIRED",
+    "itemHoldCount": 2,
+    "holds": [
+      17,
+      20
+    ],
+    "findings": [
+      {
+        "qid": 1,
+        "field": "content",
+        "code": "TEX_ENVIRONMENT_OUTSIDE_MATH"
+      }
+    ],
+    "rawStdoutFile": "NOT_CAPTURED_AT_INITIAL_INVOCATION",
+    "disposition": "Failure provenance recorded from the actual initial tool output; no generic validator was run at this point."
+  },
+  "correction": {
+    "qid": 1,
+    "locus": "content LaTeX environment wrapper",
+    "change": "Wrapped the existing aligned system in MathJax delimiters; source math/text/choice order unchanged.",
+    "reason": "The aligned environment must be inside MathJax delimiters."
+  },
+  "revalidation": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.preflight.raw.json",
+    "sha256": "99fb731c6fc333c6019108b9d6ead41ba5150a931142b665ba9a9f90a1c8113e",
+    "status": "CARRY_ITEM_HOLD",
+    "findings": [],
+    "holds": [
+      17,
+      20
+    ],
+    "artifactRawSha256": "4e41815d91ea1c138915838effe452968c92c3a5d55cdce407577c9bc74559c1",
+    "artifactSha": "58ae570a5b9cf5ea8f5696089a6decf654ff3042"
+  },
+  "genericValidator": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.validator.raw.json",
+    "sha256": "4eb440e42bb7cec25d8a73d9bca29e0e28d7bfe5ec499048f1f72b23986b4f9c",
+    "disposition": "PASS",
+    "issues": [],
+    "artifactSha": "58ae570a5b9cf5ea8f5696089a6decf654ff3042"
+  },
+  "sameCreateSession": true
+}
