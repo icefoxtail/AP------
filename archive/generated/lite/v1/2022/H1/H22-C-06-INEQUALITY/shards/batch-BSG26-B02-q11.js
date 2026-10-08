@@ -13,14 +13,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x-1|+|x-5|\\le6$을 만족시키는 정수 $x$는 모두 몇 개인가?",
@@ -48,14 +49,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x+2|+|x-4|\\le8$의 해가 $a\\le x\\le b$일 때, $a+b$의 값은?",
@@ -83,14 +85,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x+2|+|x-4|<6$을 만족시키는 정수 $x$의 개수는?",
@@ -118,14 +121,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x-1|-|x-5|\\ge2$를 만족시키는 정수 $x$ 중 가장 작은 값은?",
@@ -153,14 +157,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|2x-1|+|x+2|\\le7$을 만족시키는 정수 $x$의 개수는?",
@@ -188,14 +193,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "자연수 $k$에 대하여 부등식 $|x-2|+|x+2|\\le2k$의 실수해가 존재하도록 하는 $k$의 최솟값은?",
@@ -223,14 +229,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "부등식 $|x-1|+|x-5|\\le4$를 만족시키는 정수 $x$는 모두 몇 개인가?",
@@ -258,14 +265,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "연립부등식 $\\begin{cases}|x-1|+|x+3|\\le6\\\\x\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수는?",
@@ -293,14 +301,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "candidate_rpm_extension_not_canonical",
+    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
     "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
-      "부등식"
+      "부등식",
+      "L3 후보: 절댓값을 포함한 부등식"
     ],
     "wide": false,
     "content": "실수 $a$에 대하여 부등식 $|x-a|+|x-(a+4)|\\le6$의 해집합이 $p\\le x\\le q$이다. $p+q=10$일 때, $a$의 값은?",
