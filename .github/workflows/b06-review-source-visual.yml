@@ -1,0 +1,23 @@
+name: B06 Review Source Visual
+on:
+  push:
+    branches: [review/alive-lite-bokseong-b06-independent-20261008]
+    paths: ['.github/workflows/b06-review-source-visual.yml']
+permissions:
+  contents: read
+jobs:
+  png-source-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export two existing source PNG bytes to review log for exact independent visual reading
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          for (const q of ['q18','q19']) {
+            const p='archive/assets/images/26_복성고_1학기_기말_고1_기출/'+q+'.png';
+            const b=fs.readFileSync(p);
+            if (b.length>25000 || b.subarray(0,8).toString('hex')!=='89504e470d0a1a0a') throw Error('unexpected source PNG');
+            console.log('B06_IMAGE_START_'+q+' '+b.toString('base64')+' B06_IMAGE_END_'+q);
+          }
+          NODE
