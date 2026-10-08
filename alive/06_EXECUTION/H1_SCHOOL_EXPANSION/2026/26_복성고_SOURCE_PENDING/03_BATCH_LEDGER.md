@@ -47,3 +47,11 @@
 - 기존 B01 45건 유지 → cumulative 83 generated UIDs. 원본 23개 전체 중 11개 source에서 generated 후보 확보; q15는 B01 taxonomy hold 유지.
 - 독립 REVIEW PASS 0 / B02 main publication 0 / consumer DB 0. 다음 생성 **B03**(q9,13,14,16), 사용자 별도 지시 전 착수 금지.
 - B02 index `archive/data/generated-lite/bokseong-2026-1final-b02-create-index-v1.json`; extension index v2.
+
+
+## 2026-10-08 단원 순서 보정 — B02 CURRENT
+
+- q8 seed 원본은 복소수 4단원(H22-C-04)이지만, 신규 7 UID의 Primary는 **6단원 삼차·사차방정식 / H22-C-06-HIGHER_EQUATION / RPM H1-RPM-172**이다. 켤레복소수는 앞 단원 선수개념. 가짜 신규 L3 후보는 철회, 관련 L4 2종만 심사.
+- q11 신규 9 UID는 **6단원 H22-C-06-INEQUALITY의 절댓값을 포함한 부등식 별도 L3 후보표**에 등록. AMGM/코시형 절대부등식과 합치지 않는다.
+- B02 EXT 후보 2026 현재: L3 1종 / L4 13종. B01 포함 누적 L3 4종 / L4 46종. 분류 변경 후에도 생성 UID 수 B02 38 / 누적 83 변함없음.
+- 소스 변경 0 / 신규 REVIEW PASS 0 / 신규 DB 등록 0 / main 반영 0. q8 새 경로로 실제 이동, 이전 폴더의 생성 q8 물리 파일 제거. 위 기록이 종전 q8 L3 미확정 및 후보 2종 문구를 대체함.
