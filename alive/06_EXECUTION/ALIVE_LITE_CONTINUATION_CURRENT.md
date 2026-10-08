@@ -1,5 +1,11 @@
 # ALIVE LITE CONTINUATION — CURRENT
 
+## CURRENT REVIEW+CONSUMER HARD — 학생 공급까지 같은 채팅에서 완료 (2026-10-08)
+- 검수자/MAIN은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 추가 필독하며, 생성 승인 → 실제 Archive 2.0 Generated Bank Consumer DB 등록 → 학생 검색·선택/조회 검증 → main remote readback까지 같은 REVIEW+MAIN에서 닫는다. main shard/manifest 저장만으로 DONE 아님.
+- 기존 효천고 92 이전 PASS는 정답 ③ 편중/보기 품질 신규 gate 전의 기록이다. 별도 repair branch phase1~4 45개 변경기록은 수학 독립재검 미완. 최종 diff/번호·보기 재검 후 승인 분모를 새로 확정하여 등록한다. HOLD 공급 금지.
+- 현행 original 전용 DB/index loader를 `ALITE-*` shard에 그대로 사용하는 것은 금지. Generated 전용 consumer adapter 및 실학생 조회 증거가 미구현이면 `REVIEW_PASSED_REGISTRATION_PENDING` 상태를 기록한다.
+
+
 2026-10-08 KST | CURRENT / 생성 우선 | Authority: Git main. Notion은 미러/진입점.
 
 ## 작업자 첫 실행
@@ -68,3 +74,11 @@
 - B01R2는 CREATE 45 UID, Blueprint 65 중 45 ACCEPT의 사실 기록. 추가 taxonomy 발견 등록은 **L4 후보 33, L3 세분화 검토 후보 3**, canonical 승인 유형 0. 기존 45의 REVIEW PASS/MAIN/DB는 0.
 - q15의 기존 L3 미확정 기록은 RPM 전체 부재로 해석 금지. H1-RPM-186/187의 H22-C-07-CORE 합·곱의 법칙 L3가 존재하여 prior same-grade semantic 재사용 및 EXT L4 적합성을 먼저 REVIEW한다.
 - 다음 미완료 생산 배치는 B02. B01 확장 후보 검토는 별도 독립 semantic REVIEW; 필요 시 완료된 B01 UID는 건드리지 않고 sidecar로 처리.
+
+## CURRENT HARD — 단원 순서에 따른 주개념 우선 (2026-10-08, 사용자 직접 지시)
+- 신규 문항을 분류할 때 필수 결정적 풀이·출제목표를 중심으로 표준단원 순서를 비교한다. 뒤 단원 개념이 주된 평가 대상이면 뒤 단원 Primary를 선택하고, 앞 단원의 필수 도구는 선수개념/CrossConcept로 기록한다. 단순 용어 등장에 따른 기계식 최신단원 선택은 금지.
+- **복성고 B02 q8:** seed H22-C-04 복소수는 source provenance, 생성 문항의 주분류는 H22-C-06-HIGHER_EQUATION / RPM L3 삼차·사차방정식 / H1-RPM-172. 켤레허근은 선수개념. 잘못된 EXT L3 후보를 철회한다.
+- **복성고 B02 q11:** H22-C-06-INEQUALITY 아래 절댓값을 포함한 부등식 L3는 별도 taxonomy candidate table로 분리하며, RPM '절대부등식'(산술기하평균/코시)과 동일시하지 않는다. 독립 검수 전 official RPM으로 등록 금지.
+- 신설 운영 규정: docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md
+- 후보 분류표: archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json
+- source 원본 바이트 불변, generated shard/meta/index/manifest/receipt 및 EXT registry는 한 분류로 일관 결속한다.
