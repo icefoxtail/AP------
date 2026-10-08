@@ -300,7 +300,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q09.svg",
+    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q09.png",
     "imageAlt": "삼각형 OAB와 세 변의 내분점 C D E",
     "imageSize": "medium"
   },
@@ -337,7 +337,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q10.svg",
+    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q10.png",
     "imageAlt": "전체집합 U와 집합 A B C, A와 B에만 속하는 부분을 음영으로 표시한 벤다이어그램",
     "imageSize": "medium"
   },
@@ -509,7 +509,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q15.svg",
+    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q15.png",
     "imageAlt": "두 좌표평면과 원, 첫째 중심 0 1 반지름 1, 둘째 중심 1 -1 반지름 1",
     "imageSize": "medium"
   },
@@ -580,7 +580,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q17.svg",
+    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q17.png",
     "imageAlt": "원 x제곱 더하기 y제곱은 4, 직선 y=x, A B P Q R의 위치",
     "imageSize": "large"
   },
@@ -651,7 +651,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q19.svg",
+    "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q19.png",
     "imageAlt": "좌표축과 원 x제곱 더하기 y제곱 16 및 좌우 두 반원으로 이루어진 태극 문양",
     "imageSize": "medium"
   },
