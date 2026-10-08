@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1",
+  "stage": "R2",
+  "reviewerIdentity": {
+    "role": "archive_r2",
+    "reviewerId": "r2_recovery_02"
+  },
+  "frozenAt": "2026-10-08T08:53:36.682Z",
+  "sourceRawSha256": "d4622adf3f2d09191805189b042bf28fb5e44a671808462977c0e4351a936bfe",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R2.scope-14,24@postrecovery.json",
+    "sha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be"
+  },
+  "bundleAdapterProvenance": {
+    "input": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R2.scope-14,24@postrecovery.json",
+      "sha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be"
+    },
+    "inputSchemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+    "legacyConverted": false,
+    "studentFieldsDropped": [],
+    "answersRead": false,
+    "originalBundleMutated": false
+  },
+  "studentQidOrder": [
+    14,
+    24
+  ],
+  "rows": [
+    {
+      "qid": 14,
+      "independentAnswer": 24,
+      "reasoning": "그림에서 카드값은 -3,-2,-1,0,1,2,3이다. 실수 범위에서 분모 sqrt(a)가 정의되고 0이 아니어야 하므로 a는 1,2,3이다. 가 조건은 이때 bc>=0이면 두 변이 모두 정의되며 sqrt(bc)/sqrt(a)=sqrt(bc/a)가 성립한다. 나 조건은 b>=c를 뜻한다. 세 카드가 서로 달라 b=c는 제외된다. a=1이면 남은 수 중 음수 둘의 한 쌍, 양수 둘의 한 쌍, 0과 음수/양수의 가능한 쌍 4개로 6개다. a=2 또는 a=3이면 남은 음수 3개에서 3쌍, 양수 2개에서 1쌍, 0과 비영수의 가능한 쌍 5개로 각각 9개다. 따라서 총 6+9+9=24개다. 모든 보기 27,30,39,45,54와 일치하지 않는다."
+    },
+    {
+      "qid": 24,
+      "independentAnswer": 9,
+      "reasoning": "f(x)=2x^2+px+r라 두고 g의 차수를 따진다. 나머지 -7(g-x)^2는 나누는 식 x^2g-8보다 차수가 낮아야 한다. g가 상수 또는 2차 이상이면 이 나머지 차수 조건에 모순이므로 g=ux+v (u!=0)이다. 몫은 최고차항 계수 비교로 Q=(4/u)x+s이다. 항등식 f^2=(x^2g-8)Q-7(g-x)^2의 계수 비교로 us+4v/u=4p, vs-7(u-1)^2=p^2+4r, -32/u-14(u-1)v=2pr, -8s-7v^2=r^2를 얻는다. gQ가 (x-1)(x-2)로 나누어지므로 (u+v)(4/u+s)=0, (2u+v)(8/u+s)=0이다. 두 근을 g와 Q에 배정하는 모든 경우를 위 계수식에 대입하면 실수 해는 u=2,v=-2,p=-3,r=-2,s=-4뿐이며 |g(1)|=0<2=|g(2)|도 만족한다. 따라서 f=2x^2-3x-2, g=2x-2, Q=2x-4이다. 직접 대입하면 (x^2g-8)Q-7(g-x)^2=4x^4-12x^3+x^2+12x+4=f(x)^2이고 gQ=4(x-1)(x-2)이다. f(-1)=3이므로 최댓값은 9다."
+    }
+  ],
+  "assetReads": [
+    {
+      "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q14.png",
+      "sha256": "c11b59d0a649818f1b6166887ac64d7313e9060d99cf1a192f12c4548b4a2e3c",
+      "opened": true,
+      "observation": "실제 PNG를 열어 -3,-2,-1,0,1,2,3의 카드 7장이 각각 보임을 확인했다."
+    }
+  ]
+}

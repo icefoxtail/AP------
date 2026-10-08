@@ -158,9 +158,27 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED",
+      "status": "CREATE_B03_COMPLETED_REVIEW_REPAIR_MATH_PASS_RELEASE_OPEN",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
-      "candidateRegistryRequiredBeforeC": true
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 38,
+      "blueprintExploredCount": 50,
+      "acceptedBlueprintCount": 38,
+      "extensionL4CandidateCount": 12,
+      "extensionL3CandidateCount": 0,
+      "productionShardCount": 4,
+      "sourceExpansionDoneQids": [
+        9,
+        13,
+        14,
+        16
+      ],
+      "reviewRepairedUids": [
+        "ALITE-BSG26-B03-Q14-I06",
+        "ALITE-BSG26-B03-Q14-I09"
+      ],
+      "reviewIssueDisposition": "CROSS_BATCH_EXACT_AND_NUMERIC_NEAR_DUPLICATES_REPAIRED",
+      "sourceUidsVerified": 38
     },
     {
       "id": "B04",
@@ -232,9 +250,9 @@
       "candidateRegistryRequiredBeforeC": true
     }
   ],
-  "nextBatchId": "B03",
-  "qualityStatus": "PLANNING_ONLY",
-  "generatedCount": 0,
+  "nextBatchId": "B04",
+  "qualityStatus": "B03_MATH_REVIEWED_SOURCE_CANDIDATES_NOT_STUDENT_SUPPLY_VERIFIED",
+  "generatedCount": 121,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
   "extensionDiscoveryContract": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
   "extensionCandidateIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json",

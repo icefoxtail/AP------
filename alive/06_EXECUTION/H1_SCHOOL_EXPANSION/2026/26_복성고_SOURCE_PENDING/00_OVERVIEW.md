@@ -12,3 +12,7 @@ NEXT: Git original/high/h1 tree에서 26 복성고 전체 검색 → 실제 file
 - source blob SHA: `8266fa476906e9134b94f23e803bd3b2fb26ece4`
 - 원본 파일의 question id 23개 관찰. 일부 파일 끝 후처리 코드 존재하므로 런타임 반영된 최종 bank/asset inventory는 생성 전 확인.
 - 상태: SOURCE_FOUND → source audit/자산 확인 → 생성 batch. 기존 SOURCE_PATH_UNVERIFIED/중간 파일 가정은 HISTORY로 취급.
+
+## 2026-10-08 REVIEW B03 요약 (CURRENT)
+- 1학기 기말 실제 기출 원본 SHA `8266fa476906e9134b94f23e803bd3b2fb26ece4` · source qids 23.
+- 누적 B01 45 + B02 38 + B03 38 = 121 generated UID 후보. B03 수학검수/중복 2건 대체. actual Consumer/학생용 조회는 아직 미확인. B04~B06 원장 별도 생산.

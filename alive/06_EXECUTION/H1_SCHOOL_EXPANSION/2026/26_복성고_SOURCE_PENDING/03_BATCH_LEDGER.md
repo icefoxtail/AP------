@@ -64,3 +64,10 @@
 - 앞서 생산자가 교체한 q8 7문항의 6단원/HIGHER_EQUATION 분류 및 q11 절댓값 부등식 독립 L3 proposal은 그대로 보존(신규 RPM 정식 승격 0).
 - before histogram(B01+B02): ①12/②13/③24/④23/⑤11. after: ①12/②14/③25/④23/⑤9. 배치 B02 after: ①3/②6/③13/④12/⑤4.
 - actual Chrome/physical blind freeze 및 student consumer DB 등록은 수행 증거가 없어 PASS를 주장하지 않음. B03 producer work는 이 review 범위에서 제외.
+
+## B03 — 2026-10-08 REVIEW 수학검수·핀포인트 수리
+- 원본 q9·q13·q14·q16 (4 qid), 50 Blueprint 탐색, 38 ACCEPT → **38 UID 실제 생성**. B01 45+B02 38+B03 38=총 121.
+- 학생용 선행 풀이·계산 비교 38/38, 해설 정답기호 38/38, 전수 5지 유일정답 38/38, L2/RPM 수학분류 38/38. q9 S01/S02 answer preview 선노출, q14 I06/I09 reviewer 재작성으로 formal fresh blind 4건 미완료.
+- B02 대비 완전 중복 q14 I06, 수치형 구조 중복 q14 I09 두 문항은 새 결정적 풀이구조로 직접 교체. 기존 38 UID 유지. 새 L4 12개는 REVIEW 의미 승격 0.
+- B03 분포 ①9/②7/③8/④8/⑤6, 합산 분포 ①21/②21/③33/④31/⑤15. 원본·RPM 정본·효천고 Consumer 변경 없음.
+- 다음 CREATE B04 (q17·q20·q23)는 별도 생산자 소유. 본 REVIEW는 B03 생성 후보만 Git main 전송; **Consumer 학생용 등록/Chrome 실검증 전 승인 0**.

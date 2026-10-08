@@ -1,0 +1,1464 @@
+{
+  "schemaVersion": "ALIVE_LITE_B03_BLUEPRINT_EXPANSION_DESIGN_v1",
+  "batchId": "B03",
+  "sourcePath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceQids": [
+    9,
+    13,
+    14,
+    16
+  ],
+  "currentPhase": "D_CANDIDATES_SAVED_AND_INDEXED_PENDING_FINAL_RECEIPT",
+  "targetExamClass": "2022 공통수학1",
+  "priorB01B02CandidatesNotRegenerated": true,
+  "denominators": {
+    "source": 4,
+    "explored": 50,
+    "accepted": 38,
+    "excluded": 12,
+    "extensions": "DISCOVERY_REGISTRY_SEPARATE"
+  },
+  "rows": [
+    {
+      "sourceQid": 9,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-08",
+      "sourceSubUnitKey": "H22-C-08-COMBINATION",
+      "sourceLevel": "중",
+      "sourceStudentText": "1부터 7까지 숫자가 적힌 공 중 3개를 동시에 꺼낸다. 소수가 적힌 공 2개와 소수가 아닌 수가 적힌 공 1개를 꺼내는 경우의 수를 $a$, 세 자연수의 합이 홀수인 경우의 수를 $b$라 할 때 $a+b$는? [4점]",
+      "sourceChoices": [
+        "26",
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "sourceAnswer": "⑤",
+      "sourceStudentSolution": "[키포인트] 두 경우의 수 $a,b$를 각각 조건에 맞게 나누어 센다.\n조건 정리: 1부터 7까지의 소수는 $2,3,5,7$의 4개이고, 소수가 아닌 수는 $1,4,6$의 3개이다. 홀수는 4개, 짝수는 3개이다.\n풀이 방향: $a$는 소수와 소수가 아닌 수의 선택을 곱하고, $b$는 합이 홀수가 되는 홀수의 개수에 따라 나눈다.\n정석 풀이: $a={}_4C_2\\times{}_3C_1=6\\times3=18$이다. 세 수의 합이 홀수이려면 홀수를 1개 또는 3개 골라야 한다. 따라서 $b={}_4C_1{}_3C_2+{}_4C_3=4\\times3+4=16$이다. 그러므로 $a+b=18+16=34$이다.\n따라서 정답은 ⑤이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-08",
+      "targetSubUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceStandardUnitOrder": 8,
+      "targetStandardUnitOrder": 8,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "조합의 활용",
+      "rpmCanonicalPrimaryL4": "선택 조건",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-194",
+      "rpmComparators": [
+        "H1-RPM-192",
+        "H1-RPM-195",
+        "H1-RPM-196"
+      ],
+      "primaryMethod": "분류된 유한집합에서 동시 선택하고 합집합·여집합·합의 짝홀·최솟값을 제약하는 조합",
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B03-Q09-S01",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "RPM_EXISTING",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "36",
+          "decisiveStepSignature": "소수 둘·비소수 하나를 계수한 분류 조합",
+          "targetObjective": "소수 둘·비소수 하나를 계수한 분류 조합",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S01"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S02",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "40",
+          "decisiveStepSignature": "세 정수의 합이 홀수인 선택을 홀수개수 1/3으로 나눔",
+          "targetObjective": "세 정수의 합이 홀수인 선택을 홀수개수 1/3으로 나눔",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S02"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S03",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "66",
+          "decisiveStepSignature": "네 정수의 합이 짝수인 경우를 홀수개수 0/2/4로 분기",
+          "targetObjective": "네 정수의 합이 짝수인 경우를 홀수개수 0/2/4로 분기",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S03"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S04",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "63",
+          "decisiveStepSignature": "배수군에서 정확히 하나 고르고 보완군에서 둘 선택",
+          "targetObjective": "배수군에서 정확히 하나 고르고 보완군에서 둘 선택",
+          "conditionPattern": "EXISTING_L4_CONDITION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S04"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S05",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "15",
+          "decisiveStepSignature": "선택한 세 수의 최솟값 고정 후 상위 범위 조합",
+          "targetObjective": "선택한 세 수의 최솟값 고정 후 상위 범위 조합",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S05"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S06",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "RPM_EXISTING",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "24",
+          "decisiveStepSignature": "홀수·짝수의 지정 구성으로 조합의 곱",
+          "targetObjective": "홀수·짝수의 지정 구성으로 조합의 곱",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S06"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S07",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "52",
+          "decisiveStepSignature": "적어도 하나의 소수라는 조건을 여집합으로 계수",
+          "targetObjective": "적어도 하나의 소수라는 조건을 여집합으로 계수",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S07"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S08",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "19",
+          "decisiveStepSignature": "특정 배수군에서 적어도 두 개 선택을 2/3개로 분할",
+          "targetObjective": "특정 배수군에서 적어도 두 개 선택을 2/3개로 분할",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S08"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S09",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "9",
+          "decisiveStepSignature": "지정 수 포함과 총합의 짝홀 조건을 함께 계수",
+          "targetObjective": "지정 수 포함과 총합의 짝홀 조건을 함께 계수",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S09"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-S10",
+          "targetRpmPrimaryL3": "조합의 활용",
+          "targetRpmL4": "선택 조건",
+          "rpmCanonicalRecordId": "H1-RPM-194",
+          "semanticSourceScope": "2022/공통수학1/H22-C-08-COUNTING_PRINCIPLE",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "18",
+          "decisiveStepSignature": "소수 정확히 둘과 합 홀수 제약의 두 분류 결합",
+          "targetObjective": "소수 정확히 둘과 합 홀수 제약의 두 분류 결합",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "소수·홀짝·배수 분류: 선행 개념"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q09-S10"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-X01",
+          "candidateKind": "EXCLUDED",
+          "disposition": "DUPLICATE",
+          "reason": "동일 조합 수에 값만 변경",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-X02",
+          "candidateKind": "EXCLUDED",
+          "disposition": "L3_DRIFT",
+          "reason": "선택 이후 배열 순서가 주된 해법으로 바뀜",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q09-X03",
+          "candidateKind": "EXCLUDED",
+          "disposition": "CURRICULUM_VIOLATION",
+          "reason": "확률 기대값을 별도 개념으로 강제",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "notExploredL4": [
+        {
+          "reason": "Exhaustive universal semantic novelty not provable; bounded RPM comparison complete for candidate design, independent review pending"
+        }
+      ],
+      "candidateCount": 10,
+      "sourceClosureReason": "Reviewed all relevant current RPM L4 and bounded high-quality extension proposals; each accepted B03 blueprint materially generated; independent semantic novelty and math review remain NOT_TESTED",
+      "candidateStatus": "CREATE_CANDIDATE_NOT_REVIEWED"
+    },
+    {
+      "sourceQid": 13,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-04",
+      "sourceSubUnitKey": "H22-C-04-COMPLEX_ROOT",
+      "sourceLevel": "중",
+      "sourceStudentText": "$x^3=1$의 한 허근을 $w$라 할 때, $\\dfrac{1}{w+1}+\\dfrac{1}{\\overline{w}+1}+\\dfrac{1}{w^{12}}$의 값은? (단, $\\overline{w}$는 $w$의 켤레복소수이다.) [4.1점]",
+      "sourceChoices": [
+        "$-2$",
+        "$-1$",
+        "0",
+        "1",
+        "2"
+      ],
+      "sourceAnswer": "⑤",
+      "sourceStudentSolution": "[키포인트] $w^3=1$과 $1+w+w^2=0$을 이용해 각 분수를 간단히 한다.\n조건 정리: $w$는 허근이므로 $\\overline{w}=w^2$, $w^{12}=1$이다. 또한 $w+1=-w^2$, $w^2+1=-w$이다.\n풀이 방향: 앞의 두 분수를 각각 $w$의 식으로 바꾼 뒤 마지막 항과 더한다.\n정석 풀이: $\\dfrac{1}{w+1}=\\dfrac{1}{-w^2}=-w$이고, $\\dfrac{1}{\\overline{w}+1}=\\dfrac{1}{w^2+1}=\\dfrac{1}{-w}=-w^2$이다. 따라서 앞의 두 항의 합은 $-(w+w^2)=1$이다. 또 $\\dfrac{1}{w^{12}}=1$이므로 전체 값은 $1+1=2$이다.\n따라서 정답은 ⑤이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "sourceStandardUnitOrder": 4,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "삼차방정식의 근 구조가 주된 목표이며 복소수는 이전 단원 선수개념",
+      "rpmPrimaryL3": "삼차·사차방정식",
+      "rpmCanonicalPrimaryL4": "인수분해형",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-172",
+      "rpmComparators": [
+        "H1-RPM-173",
+        "H1-RPM-157",
+        "H1-RPM-164"
+      ],
+      "primaryMethod": "x³-1을 실수 일차식·이차식으로 인수분해한 허근 w의 제약 w²+w+1=0과 w³=1을 사용",
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B03-Q13-R01",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "RPM_EXISTING",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "-1",
+          "decisiveStepSignature": "비실근 두 개의 합을 인수분해 이차식의 근계수로 환원",
+          "targetObjective": "비실근 두 개의 합을 인수분해 이차식의 근계수로 환원",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R01"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R02",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "-1",
+          "decisiveStepSignature": "거듭제곱 지수를 3의 나머지로 환원해 w+w² 구함",
+          "targetObjective": "거듭제곱 지수를 3의 나머지로 환원해 w+w² 구함",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R02"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R03",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "1",
+          "decisiveStepSignature": "두 허근의 이동 역수 합을 이차인수 관계로 유리화",
+          "targetObjective": "두 허근의 이동 역수 합을 이차인수 관계로 유리화",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R03"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R04",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "켤레 허근 쌍의 대칭곱 (1-w)(1-w²) 환원",
+          "targetObjective": "켤레 허근 쌍의 대칭곱 (1-w)(1-w²) 환원",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R04"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R05",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "자연수 지수 중 w^n이 실수인 경우를 주기조건으로 세기",
+          "targetObjective": "자연수 지수 중 w^n이 실수인 경우를 주기조건으로 세기",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R05"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R06",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "-3",
+          "decisiveStepSignature": "w-w²의 제곱을 대칭식으로 계산",
+          "targetObjective": "w-w²의 제곱을 대칭식으로 계산",
+          "conditionPattern": "EXISTING_L4_CONDITION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R06"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R07",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "1",
+          "decisiveStepSignature": "1+w의 거듭제곱을 -w²로 바꾸어 계산",
+          "targetObjective": "1+w의 거듭제곱을 -w²로 바꾸어 계산",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R07"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R08",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "실수계수 이차식의 다른 허근 w²를 추론하여 a,b 결정",
+          "targetObjective": "실수계수 이차식의 다른 허근 w²를 추론하여 a,b 결정",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R08"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-R09",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "인수분해형",
+          "rpmCanonicalRecordId": "H1-RPM-172",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "-1",
+          "decisiveStepSignature": "연속 거듭제곱 합을 3주기 블록과 잔여항으로 계산",
+          "targetObjective": "연속 거듭제곱 합을 3주기 블록과 잔여항으로 계산",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [
+            "켤레복소수: H22-C-04"
+          ],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q13-R09"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-X01",
+          "candidateKind": "EXCLUDED",
+          "disposition": "DUPLICATE",
+          "reason": "w^7+w^11을 지수만 바꾼 항으로 반복",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-X02",
+          "candidateKind": "EXCLUDED",
+          "disposition": "L3_DRIFT",
+          "reason": "삼차근 조건이 없이 임의 복소수 사칙연산 중심",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q13-X03",
+          "candidateKind": "EXCLUDED",
+          "disposition": "NO_VALID_MATH_STRUCTURE",
+          "reason": "실계수 및 허근 조건 없이 복소근에 실수계수 관계 강요",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "notExploredL4": [
+        {
+          "reason": "Exhaustive universal semantic novelty not provable; bounded RPM comparison complete for candidate design, independent review pending"
+        }
+      ],
+      "candidateCount": 9,
+      "sourceClosureReason": "Reviewed all relevant current RPM L4 and bounded high-quality extension proposals; each accepted B03 blueprint materially generated; independent semantic novelty and math review remain NOT_TESTED",
+      "candidateStatus": "CREATE_CANDIDATE_NOT_REVIEWED"
+    },
+    {
+      "sourceQid": 14,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-06",
+      "sourceSubUnitKey": "H22-C-06-INEQUALITY",
+      "sourceLevel": "중",
+      "sourceStudentText": "이차부등식 $x^2+2(3-k)x+11\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=9$일 때, 이차부등식의 해는 $1\\le x\\le11$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $x\\lt3-\\sqrt{11}$ 또는 $x\\gt3+\\sqrt{11}$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 21이다.</div>",
+      "sourceChoices": [
+        "(가)",
+        "(나)",
+        "(나),(다)",
+        "(가),(다)",
+        "(가),(나),(다)"
+      ],
+      "sourceAnswer": "④",
+      "sourceStudentSolution": "[키포인트] 각 설명을 판별식과 인수분해로 따로 확인한다.\n조건 정리: 이차식의 최고차항 계수는 양수이므로 부등식의 해가 존재하려면 판별식이 0 이상이어야 한다.\n풀이 방향: (가)는 직접 인수분해하고, (나)와 (다)는 판별식의 부호를 이용한다.\n정석 풀이: (가) $k=9$이면 $x^2-12x+11=(x-1)(x-11)$이므로 해는 $1\\le x\\le11$이고 참이다. (나) 판별식은 $4(3-k)^2-44$이므로 해가 존재할 조건은 $(k-3)^2\\ge11$, 즉 $k\\le3-\\sqrt{11}$ 또는 $k\\ge3+\\sqrt{11}$이다. 보기에는 등호가 없으므로 거짓이다. (다) 해가 존재하지 않을 조건은 $3-\\sqrt{11}\\lt k\\lt3+\\sqrt{11}$이다. 이 범위의 정수는 $0,1,2,3,4,5,6$이고 합은 21이므로 참이다. 따라서 옳은 것은 (가), (다)이다.\n따라서 정답은 ④이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "sourceStandardUnitOrder": 6,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "이차부등식",
+      "rpmCanonicalPrimaryL4": "근의 위치와 해",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-181",
+      "rpmComparators": [
+        "H1-RPM-180",
+        "H1-RPM-184"
+      ],
+      "primaryMethod": "상향 이차식 판별식 및 해집합의 부호 영역, 정수 매개변수 경계 포함 판정",
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B03-Q14-I01",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "유계 정수 매개변수 중 이차부등식 실근이 존재할 조건",
+          "targetObjective": "유계 정수 매개변수 중 이차부등식 실근이 존재할 조건",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I01"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I02",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "모든 실수에서 엄격히 양수인 조건을 판별식으로 판정",
+          "targetObjective": "모든 실수에서 엄격히 양수인 조건을 판별식으로 판정",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I02"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I03",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "실수해가 없게 하는 정수 매개변수의 정확한 합",
+          "targetObjective": "실수해가 없게 하는 정수 매개변수의 정확한 합",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I03"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I04",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "두 근 사이 정수해 개수가 정해질 때 경계 매개변수 역산",
+          "targetObjective": "두 근 사이 정수해 개수가 정해질 때 경계 매개변수 역산",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I04"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I05",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "실수해가 정확히 한 개가 되는 중근 조건",
+          "targetObjective": "실수해가 정확히 한 개가 되는 중근 조건",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I05"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I06",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "짝수 정수해가 3개가 되는 매개변수 k∈{6,7}의 개수",
+          "targetObjective": "짝수 정수해가 3개가 되는 매개변수 k∈{6,7}의 개수",
+          "conditionPattern": "EXISTING_L4_CONDITION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I06"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2,
+          "previousAuthorIntent": {
+            "answerValue": "5",
+            "decisiveStepSignature": "해집합이 공집합이 되는 매개변수 최소값"
+          },
+          "crossBatchRepair": {
+            "previous": "B02 Q05 I06 exact",
+            "repairId": "20261008-Q14-DUPLICATE_REPAIR",
+            "newMethod": "짝수 정수해가 3개가 되는 매개변수 k∈{6,7}의 개수"
+          }
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I07",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "지정 구간 전체가 해집합에 포함될 끝점 판정",
+          "targetObjective": "지정 구간 전체가 해집합에 포함될 끝점 판정",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I07"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I08",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "21",
+          "decisiveStepSignature": "정수해 정확히 3개를 갖는 여러 k의 합",
+          "targetObjective": "정수해 정확히 3개를 갖는 여러 k의 합",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I08"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I09",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "근의 위치와 해",
+          "rpmCanonicalRecordId": "H1-RPM-181",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "3의 배수가 정확히 2개 포함되는 해구간의 최소 끝점 k=6",
+          "targetObjective": "3의 배수가 정확히 2개 포함되는 해구간의 최소 끝점 k=6",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I09"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3,
+          "previousAuthorIntent": {
+            "answerValue": "5",
+            "decisiveStepSignature": "정수해 합으로 이동된 두 근 사이 매개변수 역산"
+          },
+          "crossBatchRepair": {
+            "previous": "B02 Q05 I06 exact",
+            "repairId": "20261008-Q14-DUPLICATE_REPAIR",
+            "newMethod": "3의 배수가 정확히 2개 포함되는 해구간의 최소 끝점 k=6"
+          }
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-I10",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "그래프를 이용한 해",
+          "rpmCanonicalRecordId": "H1-RPM-180",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "(가), (나)",
+          "decisiveStepSignature": "같은 이차부등식에서 매개변수를 바꾼 세 진술을 실근 유무/중근/해구간으로 판정",
+          "targetObjective": "복수 진술 판별식·해집합 참거짓 통합",
+          "conditionPattern": "MULTI_STATEMENT_DISCRIMINANT_ADJUDICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "판별식과 포함경계 혼동",
+            "중근의 한 해 무시",
+            "근의 구간 끝값 착오",
+            "복수진술의 일부만 확인"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q14-I10"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-X01",
+          "candidateKind": "EXCLUDED",
+          "disposition": "DUPLICATE",
+          "reason": "판별식 부호만 바뀌는 동형 숫자변형",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-X02",
+          "candidateKind": "EXCLUDED",
+          "disposition": "L3_DRIFT",
+          "reason": "이차함수 그래프 최대최소가 주된 문제",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q14-X03",
+          "candidateKind": "EXCLUDED",
+          "disposition": "CURRICULUM_VIOLATION",
+          "reason": "미분 도함수로 양수성 판정",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "notExploredL4": [
+        {
+          "reason": "Exhaustive universal semantic novelty not provable; bounded RPM comparison complete for candidate design, independent review pending"
+        }
+      ],
+      "candidateCount": 10,
+      "sourceClosureReason": "Reviewed all relevant current RPM L4 and bounded high-quality extension proposals; each accepted B03 blueprint materially generated; independent semantic novelty and math review remain NOT_TESTED",
+      "candidateStatus": "CREATE_CANDIDATE_NOT_REVIEWED"
+    },
+    {
+      "sourceQid": 16,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-06",
+      "sourceSubUnitKey": "H22-C-06-EQUATION_BASIC",
+      "sourceLevel": "상",
+      "sourceStudentText": "자연수 $n$에 대하여 사차방정식 $16x^4-8(n^2+4)x^2+(n^2-4)^2=0$이 서로 다른 네 개의 정수해를 갖도록 하는 20 이하 자연수 $n$의 개수는? [4.3점]",
+      "sourceChoices": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "sourceAnswer": "④",
+      "sourceStudentSolution": "[키포인트] 사차식을 두 이차식의 곱으로 인수분해하여 네 근을 직접 나타낸다.\n조건 정리: 주어진 식은 $[4x^2-(n+2)^2][4x^2-(n-2)^2]=0$으로 인수분해된다.\n풀이 방향: 네 근이 모두 정수이면서 서로 달라지도록 하는 $n$의 조건을 찾는다.\n정석 풀이: 근은 $x=\\pm\\dfrac{n+2}{2}$, $x=\\pm\\dfrac{n-2}{2}$이다. 네 근이 정수가 되려면 $n$은 짝수여야 한다. $n=2$이면 뒤의 두 근이 모두 0이 되어 서로 다른 근이 3개뿐이므로 제외한다. 따라서 20 이하에서 가능한 $n$은 $4,6,8,10,12,14,16,18,20$의 9개이다.\n따라서 정답은 ④이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "sourceStandardUnitOrder": 6,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "삼차·사차방정식",
+      "rpmCanonicalPrimaryL4": "치환형",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-173",
+      "rpmComparators": [
+        "H1-RPM-172",
+        "H1-RPM-176"
+      ],
+      "primaryMethod": "짝수 차수 사차식을 y=x² 이차식으로 치환·인수분해 후 근의 실수성·정수성·중복 여부 판정",
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B03-Q16-F01",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "11",
+          "decisiveStepSignature": "n범위에서 0근과 양/음근 겹침을 제외해 서로 다른 정수근 4개",
+          "targetObjective": "n범위에서 0근과 양/음근 겹침을 제외해 서로 다른 정수근 4개",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F01"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F02",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "9",
+          "decisiveStepSignature": "고정 완전제곱과 가변 완전제곱의 중복을 제외한 n수",
+          "targetObjective": "고정 완전제곱과 가변 완전제곱의 중복을 제외한 n수",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F02"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F03",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "36",
+          "decisiveStepSignature": "4개 정수근의 곱을 두 y근의 곱 제곱으로 계산",
+          "targetObjective": "4개 정수근의 곱을 두 y근의 곱 제곱으로 계산",
+          "conditionPattern": "EXISTING_L4_CONDITION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F03"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 5
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F04",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "10",
+          "decisiveStepSignature": "짝함수 4개 정수근의 제곱합을 계산",
+          "targetObjective": "짝함수 4개 정수근의 제곱합을 계산",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F04"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F05",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "정수근 4개를 가지도록 n이 완전제곱인 경우 선별",
+          "targetObjective": "정수근 4개를 가지도록 n이 완전제곱인 경우 선별",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 2,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F05"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F06",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "양의 완전제곱 y근만 정수근을 생성함을 판정",
+          "targetObjective": "양의 완전제곱 y근만 정수근을 생성함을 판정",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 5,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F06"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 2
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F07",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "-25",
+          "decisiveStepSignature": "두 양의 정수근의 합·곱에서 사차식 x²계수를 역산",
+          "targetObjective": "두 양의 정수근의 합·곱에서 사차식 x²계수를 역산",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 3,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F07"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 3
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F08",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "164",
+          "decisiveStepSignature": "짝으로 나오는 네 근의 네제곱 합을 계산",
+          "targetObjective": "짝으로 나오는 네 근의 네제곱 합을 계산",
+          "conditionPattern": "EXISTING_L4_CONDITION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 1,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F08"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 4
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-F09",
+          "targetRpmPrimaryL3": "삼차·사차방정식",
+          "targetRpmL4": "치환형",
+          "rpmCanonicalRecordId": "H1-RPM-173",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_EQUATION",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "반복된 이차인수로 표현된 사차식의 서로 다른 실근수",
+          "targetObjective": "반복된 이차인수로 표현된 사차식의 서로 다른 실근수",
+          "conditionPattern": "MATH_DECISIVE_GAP_OR_APPLICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "NATURAL_CHOICES_OR_STATEMENT_COMBINATIONS",
+          "distractorStrategy": [
+            "조건 누락",
+            "부호/경계 착오",
+            "중복선택 또는 중복근 과대계수",
+            "해석 대상과 수치 계산 혼동"
+          ],
+          "generatedUids": [
+            "ALITE-BSG26-B03-Q16-F09"
+          ],
+          "semanticNovelty": "REVIEW_REQUIRED",
+          "producedCandidateCount": 1,
+          "answerPositionActual": 1
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-X01",
+          "candidateKind": "EXCLUDED",
+          "disposition": "DUPLICATE",
+          "reason": "source factor 형태에서 n만 치환",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-X02",
+          "candidateKind": "EXCLUDED",
+          "disposition": "L3_DRIFT",
+          "reason": "사차식 계산을 수행하지 않고 미적분 극값으로 우회",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B03-Q16-X03",
+          "candidateKind": "EXCLUDED",
+          "disposition": "CURRICULUM_VIOLATION",
+          "reason": "복소수 네 근을 벡터 성분으로 모델링",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "notExploredL4": [
+        {
+          "reason": "Exhaustive universal semantic novelty not provable; bounded RPM comparison complete for candidate design, independent review pending"
+        }
+      ],
+      "candidateCount": 9,
+      "sourceClosureReason": "Reviewed all relevant current RPM L4 and bounded high-quality extension proposals; each accepted B03 blueprint materially generated; independent semantic novelty and math review remain NOT_TESTED",
+      "candidateStatus": "CREATE_CANDIDATE_NOT_REVIEWED"
+    }
+  ],
+  "review": "NOT_TESTED",
+  "mainPublished": false,
+  "designRevision": 3,
+  "designRevisionReason": "Restore original three-statement discriminant adjudication structure as distinct problem goal before q14 production",
+  "generatedCandidateCount": 38,
+  "semanticNoveltyConfirmedCount": 0,
+  "extensionL3ProposalCount": 0,
+  "extensionL4ProposalCount": 12,
+  "answerPositionHistogram": {
+    "①": 9,
+    "②": 7,
+    "③": 8,
+    "④": 8,
+    "⑤": 6
+  },
+  "sourceExpansionDoneQids": [
+    9,
+    13,
+    14,
+    16
+  ],
+  "sourceContinuationRequiredQids": [],
+  "independentMathReview": "NOT_TESTED",
+  "reviewRepairUids": [
+    "ALITE-BSG26-B03-Q14-I06",
+    "ALITE-BSG26-B03-Q14-I09"
+  ],
+  "reviewRepairStatus": "2_CROSS_BATCH_DUPLICATES_REPLACED_NO_EXTRA_TYPES"
+}
