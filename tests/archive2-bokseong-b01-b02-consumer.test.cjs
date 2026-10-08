@@ -15,15 +15,15 @@ function fingerprint(q){const s=JSON.stringify({content:q.content,choices:q.choi
 test('B01+B02 student-first A1 83 frozen, A2 83 exact; 83 registered with approved q11 semantics',()=>{
  assert.equal(frozen.length,83);assert.equal(frozenMap.size,83);
  assert.equal(comparison.scope,83);assert.equal(comparison.mathMismatch,0);assert.equal(comparison.storedAnswerAgreement,83);
- assert.equal(index.approvedCount,273);assert.equal(index.records.length,273);
- assert.equal(index.approvedBySchool['복성고'],181);assert.equal(index.approvedBySchool['효천고'],92);
+ assert.equal(index.approvedCount,283);assert.equal(index.records.length,283);
+ assert.equal(index.approvedBySchool['복성고'],191);assert.equal(index.approvedBySchool['효천고'],92);
  assert.equal(approved.length,83);
  assert.equal(approved.filter(x=>x.uid.includes('B01R2')).length,45);
  assert.equal(approved.filter(x=>x.uid.includes('B02')).length,38);
  const hold=Array.from({length:9},(_,i)=>'ALITE-BSG26-B02-Q11-A'+String(i+1).padStart(2,'0'));
  assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,0);
  assert.ok(hold.every(x=>index.records.some(r=>r.uid===x)));
- assert.equal(new Set(index.records.map(r=>r.uid)).size,273);
+ assert.equal(new Set(index.records.map(r=>r.uid)).size,283);
  assert.equal(gitSha(fs.readFileSync(path.join(root,srcOriginal))),originalSha);
 });
 test('74 review-approved consumer rows bind SHA-exact source JS, metadata, 5-option independent solution and original question',()=>{
