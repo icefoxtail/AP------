@@ -1,0 +1,878 @@
+{
+  "schemaVersion": "ALIVE_BSG26_B02_A1_STUDENT_ONLY_FROZEN_v1",
+  "reviewer": "GPT-6 independent solution",
+  "studentInputVisibility": "content+choices+problem image only, stored answer and solution not shown to model",
+  "beforeStoredAnswerComparison": true,
+  "sourceOriginalBlob": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "denominator": 38,
+  "sourceFiles": [
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "blobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "count": 6
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "blobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "count": 8
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "blobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "count": 7
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "blobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "count": 7
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_BASIC/shards/batch-BSG26-B02-q10-basic.js",
+      "blobSha": "a2a601e8de0a88ad7c5aeb5978cd749ccce2dc14",
+      "count": 1
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "blobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "count": 9
+    }
+  ],
+  "items": [
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M01",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}a&6\\\\9&12\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\3&4\\end{pmatrix}$에 대하여 $A=kB$일 때, $a$의 값은?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$6$",
+          "$9$",
+          "$12$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$6$",
+        "derivation": "k=6/2=3 ⇒a=2k=6"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M02",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "세 행렬 $A=\\begin{pmatrix}2&-1\\\\0&3\\end{pmatrix}$, $B=\\begin{pmatrix}1&b\\\\4&2\\end{pmatrix}$, $C=\\begin{pmatrix}7&1\\\\4&11\\end{pmatrix}$에 대하여 $kA+B=C$를 만족하는 실수 $k,b$가 있다. $b$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$4$",
+        "derivation": "2k+1=7⇒k=3;−k+b=1⇒b=4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M03",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}t&2\\\\3&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&4\\\\-2&1\\end{pmatrix}$에 대하여 $A+kB$의 $(1,1)$성분과 $(2,2)$성분이 모두 $0$이다. $k-t$의 값은?",
+        "choices": [
+          "$-2$",
+          "$-1$",
+          "$0$",
+          "$1$",
+          "$2$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$2$",
+        "derivation": "−1+k=0=>k=1;t+k=0=>t=−1;k−t=2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M04",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "행렬 $B=\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$의 실수배 $A=kB$가 있다. $A$의 네 성분의 합이 $18$일 때, $A$의 $(2,2)$성분은?",
+        "choices": [
+          "$3$",
+          "$6$",
+          "$9$",
+          "$12$",
+          "$18$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$9$",
+        "derivation": "ΣB=6,k=3,A22=9"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M05",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}1&2\\\\-1&3\\end{pmatrix}$, $B=\\begin{pmatrix}2&-3\\\\4&-1\\end{pmatrix}$에 대하여 $A+tB$의 첫째 열 성분의 합과 둘째 열 성분의 합이 같아지도록 하는 실수 $t$의 값은?",
+        "choices": [
+          "$-1$",
+          "$0$",
+          "$\\dfrac{1}{2}$",
+          "$1$",
+          "$\\dfrac{3}{2}$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$\\dfrac{1}{2}$",
+        "derivation": "first col=6t; second col=5−4t ⇒t=1/2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q03-M06",
+      "sourceQid": 3,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q03.js",
+      "sourceShardBlobSha": "a543dfaa049601fe796ee2c8f0008e59ae4907b6",
+      "studentInput": {
+        "content": "두 이차정사각행렬 $A,B$가 $A-B=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$, $2A+B=\\begin{pmatrix}5&4\\\\0&6\\end{pmatrix}$를 만족한다. 행렬 $A$의 $(2,1)$성분은?",
+        "choices": [
+          "$-1$",
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$1$",
+        "derivation": "3A=(A−B)+(2A+B), A21=1"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I01",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "이차부등식 $(x-2)(x-5)<0$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$",
+          "$10$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$2$",
+        "derivation": "2<x<5⇒integers3,4=2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I02",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "$1\\le x\\le10$인 정수 $x$ 중 이차부등식 $(x-2)(x-7)>0$을 만족시키는 것은 모두 몇 개인가?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$4$",
+        "derivation": "x<2 or x>7 within1..10⇒4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I03",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "이차부등식 $-(x-1)(x-5)\\ge0$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$5$",
+        "derivation": "[1,5] has5 integers"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I04",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "자연수 $k$에 대하여 이차부등식 $(x-k)(x-k-2)\\le0$을 만족시키는 모든 정수 $x$의 합이 $12$일 때, $k$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$12$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$3$",
+        "derivation": "k+(k+1)+(k+2)=12⇒k=3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I05",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "이차식 $x^2+(a-2)x+4$가 모든 실수 $x$에 대하여 항상 양수가 되도록 하는 정수 $a$의 개수는?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$9$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$7$",
+        "derivation": "(a−2)^2<16⇒−2<a<6⇒7 integer a"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I06",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "정수 $k$에 대하여 이차부등식 $x^2-4x+k\\le0$의 실수해가 존재하지 않도록 하는 $k$의 최솟값은?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$5$",
+        "derivation": "min at x=2:k−4>0 ⇒min integer k=5"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I07",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "연립부등식 $\\begin{cases}(x-1)(x-6)\\le0\\\\x\\ge4\\end{cases}$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$3$",
+        "derivation": "[1,6]∩[4,∞) includes4,5,6⇒3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q05-I08",
+      "sourceQid": 5,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02.js",
+      "sourceShardBlobSha": "14369238fd79e570b24f5dd1ad0d3122c1313016",
+      "studentInput": {
+        "content": "정수 $a<6$에 대하여 이차부등식 $(x-a)(x-6)\\le0$의 해집합이 구간 $2\\le x\\le5$의 모든 실수를 포함한다. 가능한 $a$의 최댓값은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$5$",
+          "$6$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$2$",
+        "derivation": "[2,5] subset [a,6] ⇒a≤2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C01",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $a,b$에 대하여 삼차방정식 $x^3+ax^2+bx+10=0$의 한 근이 $1+i$이다. $a+b$의 값은?",
+        "choices": [
+          "$-13$",
+          "$-8$",
+          "$-5$",
+          "$3$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$-5$",
+        "derivation": "roots1±i; third−5; a=3,b=−8⇒sum−5"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C02",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $a,b,c$에 대한 삼차방정식 $x^3+ax^2+bx+c=0$의 두 근이 $2+3i$와 $-1$이다. $c$의 값은?",
+        "choices": [
+          "$-13$",
+          "$-1$",
+          "$2$",
+          "$10$",
+          "$13$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$13$",
+        "derivation": "roots2±3i,−1 product−13⇒c=13"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C03",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $b,c$에 대하여 삼차방정식 $x^3-4x^2+bx+c=0$의 한 근이 $1+2i$이다. $c$의 값은?",
+        "choices": [
+          "$-20$",
+          "$-15$",
+          "$-10$",
+          "$-5$",
+          "$10$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$-10$",
+        "derivation": "roots1±2i and2; product10 ⇒c=−10"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C04",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $b,c$에 대하여 삼차방정식 $x^3-5x^2+bx+c=0$의 한 근이 $2+i$이다. $b$의 값은?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$8$",
+          "$9$",
+          "$13$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$9$",
+        "derivation": "roots2±i, third1; pairwise5+4=9"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C05",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $a,c$에 대한 삼차방정식 $x^3+ax^2+8x+c=0$의 한 근이 $1+i$일 때, $c$의 값은?",
+        "choices": [
+          "$-8$",
+          "$-6$",
+          "$-3$",
+          "$3$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$-6$",
+        "derivation": "roots1±i,r:2+2r=8⇒r=3;c=−6"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C06",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "최고차항의 계수가 1인 실수계수 삼차다항식 $f(x)$의 서로 다른 세 근이 $1+2i$, $1-2i$, $-2$이다. $f(1)$의 값은?",
+        "choices": [
+          "$0$",
+          "$2$",
+          "$10$",
+          "$12$",
+          "$14$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$12$",
+        "derivation": "f(1)=(−2i)(2i)·3=12"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q08-C07",
+      "sourceQid": 8,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/shards/batch-BSG26-B02-q08.js",
+      "sourceShardBlobSha": "31b5d5546fe1e71fe1712e41f7bd64950f89e62a",
+      "studentInput": {
+        "content": "실수 $a,b$에 대하여 삼차방정식 $x^3+ax^2+3x+b=0$의 한 근이 $2+i$이다. $a+b$의 값은?",
+        "choices": [
+          "$-4$",
+          "$-3$",
+          "$-2$",
+          "$-1$",
+          "$1$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$-1$",
+        "derivation": "roots2±i and−1/2 ⇒a=−7/2,b=5/2⇒sum−1"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D01",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "행렬 $A$는 $2\\times1$ 행렬이고 $B$는 $1\\times2$ 행렬이다. $AB$와 $BA$의 모든 성분의 개수의 합은?",
+        "choices": [
+          "$1$",
+          "$4$",
+          "$5$",
+          "$6$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$5$",
+        "derivation": "AB=2×2 gives4, BA=1×1 gives1 =>5"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D02",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "행렬 $A$가 $1\\times2$, 행렬 $B$가 $2\\times2$ 행렬일 때, 곱 $AB$의 모든 성분의 개수는?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$2$",
+        "derivation": "AB=1×2 has2 entries"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D03",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "행렬 $A,B,C$의 크기가 각각 $2\\times1$, $1\\times2$, $2\\times2$일 때, 곱 $ABC$의 모든 성분의 개수는?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$4$",
+        "derivation": "ABC has shape2×2 =>4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D04",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "행렬 $A$가 $2\\times2$, 행렬 $B$가 $2\\times1$일 때, $AB$, $BA$, $A+B$, $B+A$ 중 정의되는 것은 모두 몇 개인가?",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$1$",
+        "derivation": "only AB defined: BA and additions invalid ⇒1"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D06",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "$B=\\begin{pmatrix}2&-1\\\\0&3\\end{pmatrix}$이고 $O$는 이차 영행렬이다. $O-B$의 $(1,2)$성분과 $(2,2)$성분의 합은?",
+        "choices": [
+          "$-5$",
+          "$-3$",
+          "$-2$",
+          "$2$",
+          "$4$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$-2$",
+        "derivation": "(O−B)12=1,(O−B)22=−3⇒sum−2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D07",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "행렬 $A,B,C$의 크기가 각각 $2\\times2$, $2\\times1$, $1\\times2$이다. $AB$, $BA$, $BC$, $CB$, $AC$, $CA$ 중 정의되는 곱은 모두 몇 개인가?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$4$",
+        "derivation": "AB,BC,CB,CA defined ⇒4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D08",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B02-q10.js",
+      "sourceShardBlobSha": "dc86ba6ee24ad1db89f0d5295947dfdc022f0a80",
+      "studentInput": {
+        "content": "자연수 $m,n$에 대하여 $A$가 $m\\times2$, $B$가 $2\\times n$ 행렬이다. $AB$가 $1\\times2$ 행렬일 때, $m+n$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$3$",
+        "derivation": "AB=m×n=1×2 ⇒m+n=3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q10-D05",
+      "sourceQid": 10,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_BASIC/shards/batch-BSG26-B02-q10-basic.js",
+      "sourceShardBlobSha": "a2a601e8de0a88ad7c5aeb5978cd749ccce2dc14",
+      "studentInput": {
+        "content": "두 행렬 $\\begin{pmatrix}a&2\\\\3&b\\end{pmatrix}$와 $\\begin{pmatrix}5&2\\\\3&7\\end{pmatrix}$가 서로 같을 때, $a+b$의 값은?",
+        "choices": [
+          "$7$",
+          "$8$",
+          "$10$",
+          "$12$",
+          "$15$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$12$",
+        "derivation": "equal matrices a=5,b=7 ⇒12"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A01",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|x-1|+|x-5|\\le6$을 만족시키는 정수 $x$는 모두 몇 개인가?",
+        "choices": [
+          "$3$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$9$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$7$",
+        "derivation": "≤6 implies [0,6] integers0…6⇒7"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A02",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|x+2|+|x-4|\\le8$의 해가 $a\\le x\\le b$일 때, $a+b$의 값은?",
+        "choices": [
+          "$-2$",
+          "$0$",
+          "$1$",
+          "$2$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$2$",
+        "derivation": "distance6 between−2 and4, ≤8 ⇒[−3,5],sum2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A03",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|x+2|+|x-4|<6$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$0$",
+        "derivation": "minimal abs sum =6; strict <6 impossible⇒0"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A04",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|x-1|-|x-5|\\ge2$를 만족시키는 정수 $x$ 중 가장 작은 값은?",
+        "choices": [
+          "$-1$",
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$4$",
+        "derivation": "|x−1|−|x−5|=2x−6 on[1,5], first integer≥4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A05",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|2x-1|+|x+2|\\le7$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$5$",
+        "derivation": "piecewise −8/3≤x≤2 ⇒5 integers"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A06",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "자연수 $k$에 대하여 부등식 $|x-2|+|x+2|\\le2k$의 실수해가 존재하도록 하는 $k$의 최솟값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$2$",
+        "derivation": "minimum distance between−2,2=4 ⇒k=2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A07",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "부등식 $|x-1|+|x-5|\\le4$를 만족시키는 정수 $x$는 모두 몇 개인가?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$5$",
+        "derivation": "minimum sum=4 on[1,5] ⇒5 integers"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A08",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "연립부등식 $\\begin{cases}|x-1|+|x+3|\\le6\\\\x\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수는?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$6$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$3$",
+        "derivation": "[−4,2]∩[0,∞) yields 0,1,2 ⇒3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A09",
+      "sourceQid": 11,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-INEQUALITY/shards/batch-BSG26-B02-q11.js",
+      "sourceShardBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+      "studentInput": {
+        "content": "실수 $a$에 대하여 부등식 $|x-a|+|x-(a+4)|\\le6$의 해집합이 $p\\le x\\le q$이다. $p+q=10$일 때, $a$의 값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$3$",
+        "derivation": "interval[a−1,a+5], endpoints sum 2a+4=10 ⇒a=3"
+      }
+    }
+  ]
+}
