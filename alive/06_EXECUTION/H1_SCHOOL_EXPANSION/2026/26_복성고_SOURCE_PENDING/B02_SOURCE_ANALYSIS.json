@@ -91,7 +91,7 @@
       "sourceVisual": null,
       "sourceLevel": "중",
       "primaryMethodProposed": "실수계수 삼차식의 켤레 허근을 이차 실계수 인수로 묶고 나머지 실근/계수 추론",
-      "rpmL3Proposed": "EXT_L3_REVIEW_REAL_CUBIC_CONJUGATE_ROOT",
+      "rpmL3Proposed": "삼차·사차방정식",
       "rpmL4Comparator": [
         "켤레복소수",
         "복소수 근·계수 조건",
@@ -108,7 +108,15 @@
         "H22-C-05/H22-C-06의 미래 scope로 자동 retag 금지",
         "신규 L3 vs 기존 복소수 근/고차방정식의 CrossConcept 심사 필요"
       ],
-      "independentReview": "NOT_TESTED"
+      "independentReview": "NOT_TESTED",
+      "generatedTargetStandardUnitKey": "H22-C-06",
+      "generatedTargetL2": "H22-C-06-HIGHER_EQUATION",
+      "generatedTargetOrder": 6,
+      "prerequisiteConcepts": [
+        "켤레복소수"
+      ],
+      "rpmRecordId": "H1-RPM-172",
+      "classificationStatus": "RPM_PRIMARY_EXISTING_AFTER_ORDER_CORRECTION"
     },
     {
       "sourceQid": 10,
@@ -159,7 +167,7 @@
       "sourceVisual": null,
       "sourceLevel": "중",
       "primaryMethodProposed": "절댓값 안의 일차식이 0인 기준점들로 구간을 나누어 부등식 해집합/정수해/경계를 계산",
-      "rpmL3Proposed": "EXT_L3_REVIEW_ABSOLUTE_VALUE_LINEAR_INEQUALITY",
+      "rpmL3Proposed": null,
       "rpmL4Comparator": [
         "절댓값 구간분해",
         "두 점 사이 거리합",
@@ -174,7 +182,15 @@
         "RPM '절대부등식' L3(산술기하평균/코시)는 절댓값 포함 부등식과 다름",
         "GLOBAL ACTIVE PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY는 machine projection이지 RPM 의미 신규성 승인 근거가 아님"
       ],
-      "independentReview": "NOT_TESTED"
+      "independentReview": "NOT_TESTED",
+      "generatedTargetStandardUnitKey": "H22-C-06",
+      "generatedTargetL2": "H22-C-06-INEQUALITY",
+      "candidateL3": "절댓값을 포함한 부등식",
+      "candidateL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "classificationTablePath": "archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json",
+      "classificationStatus": "SEPARATE_L3_CANDIDATE_NOT_RPM"
     }
-  ]
+  ],
+  "classificationRevision": 2,
+  "orderAwareRule": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md"
 }
