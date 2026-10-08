@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_QID_DISCLOSURE_V1",
+  "stage": "R1",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "qidScope": [
+    16
+  ],
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.q16-clean.freeze.json",
+    "sha256": "f900337282a9b2e9f422f2ca679c0a0337ad109e5732bdada6a24a5a0225a186"
+  },
+  "freezeSha256": "f900337282a9b2e9f422f2ca679c0a0337ad109e5732bdada6a24a5a0225a186",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.student.q16-clean.final.v2.json",
+    "sha256": "3e328a60e26e140096b5f5037a757d1026292604dd6e00963d9a556dda153496"
+  },
+  "sourceRawSha256": "a91f8d3f18eaa69358893a62fbc87e41e10b8b8daf69b65f5514076a1f6877b8",
+  "studentParity": "EXACT_Q16",
+  "studentPayloadSha256": "6d9794865ab009141a0f0814a14ccb9d4a8348c96cdb9e12de6840743946670b",
+  "assetReads": [
+    {
+      "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q16.png",
+      "sha256": "31f35cf5ed43ec9a11179f2031deb918422bb3a9bfeeaba00272a1a6eb73d294",
+      "opened": true
+    }
+  ],
+  "rows": [
+    {
+      "qid": 16,
+      "answer": "③",
+      "solution": "직사각형의 밑변을 $u$라 두면 닮음에서 높이는 $v=\\alpha(1-\\dfrac{u}{\\beta})$이다.\n넓이는 $A(u)=uv=\\alpha u-\\dfrac{\\alpha}{\\beta}u^2$\n$=-\\dfrac{\\alpha}{\\beta}(u-\\dfrac{\\beta}{2})^2+\\dfrac{\\alpha\\beta}{4}$이다.\n제곱항은 0 이하이므로 최댓값은 $\\dfrac{\\alpha\\beta}{4}$이다. 근과 계수의 관계에서 $\\alpha\\beta=3$이므로 최댓값은 $\\dfrac34$이다. 정답은 ③이다.",
+      "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    }
+  ],
+  "disclosureMethod": "postfreeze current-source qid-limited extraction; generic postfreeze helper requires denominator-equal full bundle, so this receipt manually binds only the authorized one-qid clean freeze; answer fields were read only after freeze verification.",
+  "disclosedAt": "2026-10-08T07:31:15.182Z"
+}

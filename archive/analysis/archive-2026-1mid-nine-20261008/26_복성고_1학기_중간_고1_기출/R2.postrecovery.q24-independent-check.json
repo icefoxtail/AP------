@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_POSTRECOVERY_QID_ADJUDICATION_V1",
+  "stage": "R2",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "qid": 24,
+  "reviewerId": "r2_02",
+  "status": "INDEPENDENT_RESULT_CONFIRMED",
+  "sourceBinding": {
+    "sourceRawSha256": "d4622adf3f2d09191805189b042bf28fb5e44a671808462977c0e4351a936bfe",
+    "rawBufferGitBlobSha1": "e48f9cf88ebefb552cb10ba9f311d673368f6af8",
+    "studentBundleSha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be",
+    "freezePath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R2.postrecovery.clean.freeze.json",
+    "freezeSha256": "2c88c53045a4f7d511f51c12fd81c84074cffdf2da7abd1b50578c8efb315eb4"
+  },
+  "independentResult": "9",
+  "feasibilityWitness": {
+    "f": "2x^2-3x-2",
+    "g": "2x-2",
+    "Q": "2x-4",
+    "divisor": "x^2*g(x)-8 = 2x^3-2x^2-8",
+    "remainder": "-7*(g(x)-x)^2 = -7*(x-2)^2",
+    "identityCheck": "(x^2*g-8)*Q - 7*(g-x)^2 = 4x^4-12x^3+x^2+12x+4 = f(x)^2",
+    "divisibilityCheck": "g*Q = 4*(x-1)*(x-2)",
+    "inequalityCheck": "|g(1)|=0 < 2=|g(2)|",
+    "requestedValueCheck": "f(-1)=3, so f(-1)^2=9"
+  },
+  "maximumProof": {
+    "degreeReduction": "For deg(g)=d>=2, deg((g-x)^2)=2d >= d+2=deg(x^2*g-8), impossible for a Euclidean remainder. Constant g also fails the strict remainder-degree condition. Thus g=ux+v with u!=0 and Q=(4/u)x+s.",
+    "rootAssignment": "Because g and Q are nonzero linear polynomials and (x-1)(x-2) divides gQ, one has roots 1 and 2 split between them. The assignment g(2)=0,Q(1)=0 violates |g(1)|<|g(2)|. Thus g(1)=0,Q(2)=0, so v=-u and s=-8/u.",
+    "coefficientReduction": "Writing f=2x^2+px+r, coefficient comparison in f^2+7(g-x)^2=(x^2*g-8)Q yields p=-3, r=-(1+7(u-1)^2)/4, and 7u^3+14u^2-24u-64=0=(u-2)(7u^2+28u+32). The quadratic factor has discriminant -112, so the only real possibility is u=2. The constant coefficient equation then holds with v=-2,s=-4,r=-2.",
+    "uniqueness": "Every feasible real tuple is the displayed witness, so the feasible set is nonempty and its requested value is exactly 9; therefore its maximum is 9."
+  },
+  "originalFreezePreserved": true,
+  "r1AdjudicationClaimed": false
+}

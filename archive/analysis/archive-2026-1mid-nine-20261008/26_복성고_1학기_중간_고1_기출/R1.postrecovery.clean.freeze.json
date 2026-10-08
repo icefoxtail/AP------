@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1",
+  "stage": "R1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "r1_recovery_02"
+  },
+  "frozenAt": "2026-10-08T08:53:28.495Z",
+  "sourceRawSha256": "d4622adf3f2d09191805189b042bf28fb5e44a671808462977c0e4351a936bfe",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.scope-14,24@postrecovery.json",
+    "sha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be"
+  },
+  "bundleAdapterProvenance": {
+    "input": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.scope-14,24@postrecovery.json",
+      "sha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be"
+    },
+    "inputSchemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+    "legacyConverted": false,
+    "studentFieldsDropped": [],
+    "answersRead": false,
+    "originalBundleMutated": false
+  },
+  "studentQidOrder": [
+    14,
+    24
+  ],
+  "rows": [
+    {
+      "qid": 14,
+      "independentAnswer": "27 (choice 1)",
+      "reasoning": "The image confirms one card each labeled -3,-2,-1,0,1,2,3. In condition (가), sqrt(a) in the denominator forces a>0, and both radical arguments require bc>=0; for a>0 these conditions make the two sides equal. Condition (나) is equivalent to b>=c; because the cards are distinct, b>c. Thus for each a in {1,2,3}, choose an unordered pair {b,c} from the other six values with bc>=0; the ordering is then uniquely b>c. For each a there are 3 pairs of two negative numbers, 1 pair of two positive numbers, and 5 pairs involving 0, totaling 9. The three choices of a give 27 ordered triples. All five choices were checked: 27, 30, 39, 45, 54; only 27 matches."
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "No feasible real polynomials; the stated maximum is undefined (feasible-set cardinality 0).",
+      "reasoning": "Let h=g-x and D=x^2g-8. Polynomial division says f^2+7h^2=QD and deg(-7h^2)<deg(D). Since f has degree 2 and real leading coefficient 2, the sum of squares has degree max(4,2deg(h)); comparing degrees shows deg(h)<=1 (if deg(h)>=2 then the remainder degree is at least deg(D)). The constant-g case is impossible because the remainder (g-x)^2 has degree 2 while D has degree at most 2. Hence g=ux+v with u nonzero, D has degree 3, and Q has degree 1. Since (x-1)(x-2) divides gQ, the linear factors g and Q must account for the two distinct roots one each. The alternative g(2)=0, Q(1)=0 violates |g(1)|<|g(2)|, so g(1)=0 and Q(2)=0. Thus g=u(x-1), Q=A(x-2); leading terms give A=4/u. Writing f=2x^2+px+q and comparing coefficients in f^2+7u^2(x-1)^2=(4/u)(x-2)(ux^3-ux^2-8) yields p=-3, q=-(1+7u^2)/4, 7u^3-3u-64=0, and q^2+7u^2=64/u. Substituting the cubic into the constant equation gives 7u^2+u+5=0, whose discriminant is 1-140<0. Therefore no real u exists, so no real f,g satisfy the stated conditions and the requested maximum does not exist."
+    }
+  ],
+  "assetReads": [
+    {
+      "sha256": "c11b59d0a649818f1b6166887ac64d7313e9060d99cf1a192f12c4548b4a2e3c",
+      "opened": true,
+      "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q14.png"
+    }
+  ]
+}

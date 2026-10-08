@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R1_CLEAN_QID_INTEGRATION_V1",
+  "qid": 16,
+  "reviewerId": "r1_02",
+  "currentSourceRawSha256": "a91f8d3f18eaa69358893a62fbc87e41e10b8b8daf69b65f5514076a1f6877b8",
+  "freeze": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.q16-clean.freeze.json",
+    "sha256": "f900337282a9b2e9f422f2ca679c0a0337ad109e5732bdada6a24a5a0225a186",
+    "answer": "③",
+    "studentBundleSha256": "df0148ba0224de80f3c83803b9b2a3c8452c10d227c8d02832f3594860f2f166",
+    "sourceRawSha256": "a91f8d3f18eaa69358893a62fbc87e41e10b8b8daf69b65f5514076a1f6877b8",
+    "assetReads": [
+      {
+        "opened": true,
+        "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q16.png",
+        "sha256": "31f35cf5ed43ec9a11179f2031deb918422bb3a9bfeeaba00272a1a6eb73d294"
+      }
+    ]
+  },
+  "postfreezeDisclosure": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.q16-clean.postfreeze-disclosure.json",
+    "sha256": "9f0280e1516b5ea4689405431f074cdf9c89eae52699d029e8aedc0b9cbdca6f",
+    "studentParity": "EXACT_Q16",
+    "storedAnswer": "③",
+    "solutionSha256": "fbc9a2b1695ba79500919544047ac5a2d5c8d98e47390c943f5a612d99786d7b"
+  },
+  "asset": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/assets/images/26_복성고_1학기_중간_고1_기출/q16.png",
+    "sha256": "31f35cf5ed43ec9a11179f2031deb918422bb3a9bfeeaba00272a1a6eb73d294",
+    "opened": true,
+    "cleanupEvidencePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.q16-source-crop-cleanup.json",
+    "cleanupEvidenceSha256": "8c68362fa9aa1bb8d0d08c492802573a9a6538d2d3fc57764a801e0d36849692",
+    "printedMathFactsUnchanged": true
+  },
+  "answerReview": {
+    "independentAnswer": "③ (3/4)",
+    "storedAnswer": "③",
+    "compareResult": "MATCH",
+    "cardinality": 1,
+    "reason": "For rectangle width x on BC and height y on AB, AC gives x/β+y/α=1. Area xy has maximum αβ/4 at x=β/2; the roots have product αβ=3, so the maximum is 3/4."
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "status": "PASS",
+      "reason": "Content/choices are unchanged and exactly bound to the clean student bundle; diagram remains adjacent to its complete condition."
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "PASS",
+      "reason": "The three original literal backslash-n presentation markers are repaired to real JS newline escapes outside MathJax; setup, area quadratic, vertex and final value are separate."
+    },
+    "SMALL_BOARD": {
+      "status": "PASS",
+      "solutionSha256": "fbc9a2b1695ba79500919544047ac5a2d5c8d98e47390c943f5a612d99786d7b",
+      "reason": "Similar-triangle constraint, area expression, vertex, and αβ substitution are traceable."
+    },
+    "META": {
+      "status": "PASS",
+      "fields": {
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpmPath": "H1-RPM-171",
+      "reason": "Quadratic extrema modeled from an inscribed rectangle; CC_SIMILARITY is the decisive additional concept."
+    },
+    "VISUAL_SVG": {
+      "status": "PASS",
+      "disposition": "VISUAL_EXEMPT_PROBLEM_IMAGE_SUFFICIENT",
+      "reason": "Opened final clean source crop; it retains A,B,C,D, right angle, AC, the rectangle, AB/BC and beta label. The solution adds no geometric construction beyond the same similarity relation shown by the source diagram; no separate solution SVG is required."
+    }
+  },
+  "smallBoardContinuityStatus": "PASS",
+  "finalDisposition": "KEEP",
+  "invalidatedOriginalFreezeAttemptPreserved": true
+}

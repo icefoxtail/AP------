@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_QID_DISCLOSURE_V1",
+  "stage": "R1_R2_RECOVERY",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "qidScope": [
+    14,
+    24
+  ],
+  "currentSource": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/26_복성고_1학기_중간_고1_기출.js",
+    "rawSha256": "d4622adf3f2d09191805189b042bf28fb5e44a671808462977c0e4351a936bfe",
+    "rawBufferGitBlobSha1": "e48f9cf88ebefb552cb10ba9f311d673368f6af8"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출\\R1.scope-14,24@postrecovery.json",
+    "sha256": "f1efb3ff09a6325a1b467522e469ec46be82d4f14260059085a29867c582e3be"
+  },
+  "studentParity": "EXACT_Q14_Q24",
+  "currentFreezeRefs": [
+    {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.postrecovery.clean.freeze.json",
+      "sha256": "c0693d4597c78190d41acf87d7429c2b88fb5eb969232b8bc0acfff32f3ca88d",
+      "reviewerIdentity": {
+        "role": "archive_r1",
+        "reviewerId": "r1_recovery_02"
+      },
+      "studentQidOrder": [
+        14,
+        24
+      ]
+    },
+    {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R2.postrecovery.clean.freeze.json",
+      "sha256": "2c88c53045a4f7d511f51c12fd81c84074cffdf2da7abd1b50578c8efb315eb4",
+      "reviewerIdentity": {
+        "role": "archive_r2",
+        "reviewerId": "r2_recovery_02"
+      },
+      "studentQidOrder": [
+        14,
+        24
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "qid": 14,
+      "answer": "①",
+      "solution": "실수 범위에서 제곱근이 정의되어야 하므로\n$a>0,\\quad bc\\ge0.$\n\n따라서 $a$는 $1,2,3$ 중 하나이다.\n고정한 $a$마다 남은 카드는 음수 3장, 양수 2장, $0$ 한 장이다.\n\n조건 나에서 $b\\ge c$이다.\n\n$bc>0$인 경우:\n음수 카드 3장 중 2장을 고르면 순서가 정해져 $\\binom32=3$쌍이다.\n양수 카드는 남은 2장을 모두 골라 $1$쌍이다.\n\n$bc=0$인 경우:\n$0$과 나머지 카드 한 장을 고르면 $b\\ge c$를 만족하는 순서는 하나뿐이므로 $5$쌍이다.\n\n고정한 $a$에서 $3+1+5=9$쌍이다.\n$a$는 3가지이므로\n$3\\times9=27.$\n\n따라서 구하는 개수는 $27$이다.",
+      "decisiveStep": "a>0, bc>=0을 확인한 뒤 bc>0과 bc=0을 분리해 고정된 각 a에서 9쌍임을 세는 것."
+    },
+    {
+      "qid": 24,
+      "answer": "9",
+      "solution": "나머지의 차수는 제수의 차수보다 작아야 한다.\n$g$가 상수이면 나머지는 2차, 제수는 2차이므로 조건에 맞지 않는다.\n$\\deg g=m\\ge2$이면 나머지는 $2m$차이고 제수는 $(m+2)$차여서 $2m\\ge m+2$이다.\n따라서 $g$는 일차식이다.\n\n이때 제수는 3차이고 $\\{f(x)\\}^2$은 4차이므로 $Q(x)$는 일차식이다.\n조건 다에서 $g(2)\\ne0$이다.\n조건 나에 의해 $Q(2)=0$이므로 $Q(1)\\ne0$이다.\n또 $g(1)Q(1)=0$이므로 $g(1)=0$이다.\n\n$g(x)=k(x-1),\\quad Q(x)=\\dfrac4k(x-2)$라 두자.\n최고차항 계수를 비교하면 $k\\ne0$이고 $k\\cdot\\dfrac4k=4$이다.\n\n나눗셈 항등식은\n$\\{f(x)\\}^2=(kx^3-kx^2-8)\\dfrac4k(x-2)-7\\{(k-1)x-k\\}^2$이다.\n$f(x)=2x^2+rx+s$라 놓고 계수를 비교한다.\n\n$x^3$의 계수에서\n$4r=-12,\\quad r=-3.$\n\n$x^2$의 계수에서\n$9+4s=8-7(k-1)^2$\n$4s=-1-7(k-1)^2.$\n\n$x$의 계수에서\n$-6s=-\\dfrac{32}{k}+14k(k-1).$\n앞의 식을 대입해 정리하면\n$(k-2)(7k^2+28k+32)=0.$\n\n$7k^2+28k+32$의 판별식은\n$28^2-4\\cdot7\\cdot32=-112<0$이므로 $k=2$이다.\n따라서 $s=-2$이고 $f(x)=2x^2-3x-2$이다.\n\n실제로 $g(x)=2x-2$, $Q(x)=2x-4$이면\n$(x^2g(x)-8)Q(x)-7(g(x)-x)^2=(2x^2-3x-2)^2$\n이고, $gQ=4(x-1)(x-2)$ 및 $|g(1)|=0<2=|g(2)|$이다.\n\n$f(-1)=2+3-2=3$이므로\n$\\{f(-1)\\}^2=9.$",
+      "decisiveStep": "차수 조건과 gQ의 근 조건으로 g=k(x-1), Q=4(x-2)/k를 결정한 뒤 x^2 및 x 계수를 비교해 k=2를 유일하게 얻는 것."
+    }
+  ],
+  "assetReads": [
+    {
+      "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q14.png",
+      "sha256": "c11b59d0a649818f1b6166887ac64d7313e9060d99cf1a192f12c4548b4a2e3c",
+      "opened": true
+    }
+  ],
+  "disclosureMethod": "qid-limited postfreeze extraction after physical readback of both immutable clean freezes; the generic helper enforces whole-exam denominator and cannot consume this two-qid recovery bundle, so this explicit receipt compares the current whitelist student payload for only q14/q24 before disclosing their stored fields.",
+  "disclosedAt": "2026-10-08T09:01:05.444Z"
+}

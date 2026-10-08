@@ -31,9 +31,10 @@ def draft(prepared,layout):
     return '\n'.join(rows)+'\n'
 
 def compile_candidate(source,output_dir):
-    candidate_root=Path(__file__).resolve().parents[4]/'archive/_generated/geometry-visual-engine'
+    candidate_root=Path(__file__).resolve().parents[4]/'.tmp/archive'
     output_dir=Path(output_dir).resolve()
-    if not output_dir.is_relative_to(candidate_root.resolve()):raise ValueError('PRODUCTION_WRITE_FORBIDDEN')
+    relative=output_dir.relative_to(candidate_root.resolve()) if output_dir.is_relative_to(candidate_root.resolve()) else None
+    if relative is None or len(relative.parts)<3 or relative.parts[0] in {'.','..'} or relative.parts[1] in {'.','..'}:raise ValueError('PRODUCTION_WRITE_FORBIDDEN')
     xelatex,dvisvgm=shutil.which('xelatex'),shutil.which('dvisvgm')
     if not xelatex or not dvisvgm:
         return {'backend':'TIKZ','status':'DISABLED_MISSING_OPTIONAL_TOOLCHAIN','publishable':False}

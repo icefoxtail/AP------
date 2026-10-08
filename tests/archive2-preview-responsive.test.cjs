@@ -180,7 +180,7 @@ test("Archive2 output URLs carry an explicit context marker through every engine
     assert.equal(url.pathname, `/archive/${file}`);
     assert.equal(url.searchParams.get("archive2Context"), "archive2");
   }
-  assert.equal((archive2Workspace.match(/\bO\.engineUrl\(/g) || []).length, 4);
+  assert.equal((archive2Workspace.match(/\bO\.engineUrl\(/g) || []).length, 1, "workspace centralizes engine URL generation");
   assert.doesNotMatch(archive2Workspace, /new URL\(\s*["'](?:mixed_)?engine\.html["']/);
 });
 
@@ -346,7 +346,7 @@ test("Archive1 engine URLs retain the two-column answer layout without Archive2 
   }
 });
 
-test("Archive2 390px exam and q3 SVG use the available mobile width while Archive1 keeps legacy caps", { timeout: 300000 }, async () => {
+test("Archive2 and legacy qpp4 solution views use mobile width without changing answers or mixed-engine", { timeout: 300000 }, async () => {
   assert.ok(archive2QuestionCount >= 20);
   const svgPath = path.join(root, "archive/assets/images/26_매산고_1학기_중간_고2_기하/q3-solution.svg");
   const svg = fs.readFileSync(svgPath, "utf8");
@@ -399,17 +399,40 @@ test("Archive2 390px exam and q3 SVG use the available mobile width while Archiv
     const visual = await legacySolution.evaluate(() => {
       const image = [...document.querySelectorAll(".sol-image-wrap img")]
         .find((item) => item.getAttribute("src")?.includes("q3-solution.svg"));
+      const grid = image?.closest(".grid-container");
+      const wrapper = image?.closest(".sol-image-wrap");
       return {
         marker: document.documentElement.dataset.archive2Context || null,
+        qppDisplay: Boolean(document.querySelector("#qpp-display")),
+        columns: grid ? getComputedStyle(grid).gridTemplateColumns.trim().split(/\s+/).length : 0,
+        imageWidth: image?.getBoundingClientRect().width || 0,
+        wrapperWidth: wrapper?.getBoundingClientRect().width || 0,
         maxWidth: getComputedStyle(image).maxWidth,
         maxHeight: getComputedStyle(image).maxHeight,
       };
     });
     assert.equal(visual.marker, null);
-    assert.equal(visual.maxWidth, "72%");
-    assert.equal(visual.maxHeight, "145px");
+    assert.equal(visual.qppDisplay, true);
+    assert.equal(visual.columns, 1);
+    assert.ok(visual.imageWidth >= visual.wrapperWidth - 1, JSON.stringify(visual));
+    assert.equal(visual.maxWidth, "100%");
+    assert.equal(visual.maxHeight, "none");
   } finally {
     await legacySolution.close();
+  }
+
+  const markerFreeMixedSolution = await openEngine({ engine: "mixed_engine.html", mode: "sol", archive2: false });
+  try {
+    const layout = await markerFreeMixedSolution.evaluate(() => ({
+      marker: document.documentElement.dataset.archive2Context || null,
+      qppDisplay: Boolean(document.querySelector("#qpp-display")),
+      columns: getComputedStyle(document.querySelector("#print-area .grid-container")).gridTemplateColumns.trim().split(/\s+/).length,
+    }));
+    assert.equal(layout.marker, null);
+    assert.equal(layout.qppDisplay, false);
+    assert.equal(layout.columns, 2);
+  } finally {
+    await markerFreeMixedSolution.close();
   }
 });
 

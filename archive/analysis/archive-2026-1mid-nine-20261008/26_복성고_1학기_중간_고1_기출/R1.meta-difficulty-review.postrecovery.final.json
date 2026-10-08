@@ -1,0 +1,998 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R1_META_DIFFICULTY_REVIEW_V1",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "sourceBinding": {
+    "actualSourceSha": "a91f8d3f18eaa69358893a62fbc87e41e10b8b8daf69b65f5514076a1f6877b8",
+    "rawBufferGitBlobSha1": "568fb51549a2a1bed1f848f90058ab34586ff417"
+  },
+  "authorities": {
+    "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+    "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9",
+    "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md": "79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954",
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json": "88f4638304b1622086c19e116bd8b0e51fb4559f043e76915f81410408ccc536",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json": "3655220c4dd9f43933897f8a2101665e8a31a9a806ebfca78e92eb3fd5884743",
+    "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json": "2739505762fe6a84e9f5f66622345e5b85d9a7c23ee87ce345ab6f8eff4ee620",
+    "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json": "1bdcda79e96307d43f62ca530f4b52cea0a2c62cf1190e4e990a1c701c59536c",
+    "archive/data/meta-foundation/canonical/concepts/algebra.json": "f03efa1c26f38e1da0381fd630dad01e2b7ab731a7f32b8d2bc0b0baa2cf4766",
+    "archive/data/meta-foundation/canonical/concepts/plane-geometry.json": "c85cf03519365a99597b049768366fdc814e626ad0806282ee73ef283e6c521e",
+    "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json": "28378f642d085d30dabffb13176b998b56617188978acfe3f822d6da2eb1b531",
+    "archive/data/meta-foundation/canonical/concepts/number-theory.json": "47b6c805ae13556f9dea7e58e52915d1a6a8b251d9ae78c7a3733ef642fd193d"
+  },
+  "reviewMethod": "For each qid, independently re-derived primaryMethod/decisiveStep from source and verified solution, then checked current/lower-only RPM, crosswalk, GLOBAL ACTIVE taxonomy, exact bindings, condition keys, integration enum, difficulty rubric and legacy comparison.",
+  "rows": [
+    {
+      "qid": 1,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-168",
+        "path": "공통수학1/이차방정식과 이차함수/직선과 포물선/교점 개수",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Compare roots of each line-parabola intersection equation.",
+        "decisive": "Only y=−x+3 yields real roots."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Three easy intersection checks require repeated condition application; low legacy level is an accepted adjacent boundary."
+      }
+    },
+    {
+      "qid": 2,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 기본 연산",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-134",
+        "path": "공통수학1/다항식/다항식의 연산/차수·계수 정리",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Combine like polynomial terms.",
+        "decisive": "Compute 2A+B coefficientwise."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Single direct polynomial operation matches bucket 1 and low legacy level."
+      }
+    },
+    {
+      "qid": 3,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 기본 연산",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-134 + ACTIVE H1 L4 coefficient extraction",
+        "path": "공통수학1/다항식의 연산/다항식 전개 후 특정 계수 결정",
+        "status": "FINAL",
+        "projection": "BINDING_PENDING",
+        "method": "Expand the polynomial and equate the x coefficient and constant term.",
+        "decisive": "Solve for a,b then evaluate a−2b; global ACTIVE template exists but current RPM L4 binding is absent."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Coefficient extraction plus two parameter equations is a standard-entry transformation; low legacy level accepted at boundary."
+      }
+    },
+    {
+      "qid": 4,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+        "subUnit": "복소수의 뜻과 연산",
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-156",
+        "path": "공통수학1/복소수/복소수의 연산/사칙연산",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Evaluate each complex power and quotient in rectangular form.",
+        "decisive": "Combine real and imaginary parts, then compute a²+b²."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 5,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 기본 연산",
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-136",
+        "path": "공통수학1/다항식의 연산/다항식의 곱셈/곱셈공식",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Translate the three face-diagonal squares into edge-square sums.",
+        "decisive": "Use (a+b+c)² to recover ab+bc+ca and surface area.",
+        "crossConcepts": [
+          "CC_PYTHAGOREAN"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 6,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-141",
+        "path": "공통수학1/항등식/수치대입법",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Use values that zero one side factor and then compare remaining coefficients.",
+        "decisive": "Recover a,b,c and evaluate a+b−c."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 7,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-161",
+        "path": "공통수학1/이차방정식/이차방정식의 근/판별식",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Convert each no-intersection condition into a negative discriminant.",
+        "decisive": "Intersect both inequalities with integer k."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 8,
+      "metaBeforeFromPostfreezeCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-07",
+        "standardUnit": "합의 법칙과 곱의 법칙",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C-07-CORE",
+        "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "M1-RPM-012 (lower prerequisite)",
+        "path": "중1/최대공약수와 최소공배수의 활용/주기·배열·묶음 문제",
+        "status": "FINAL",
+        "projection": "UNMATERIALIZED",
+        "method": "Reduce a day count by its seven-day repeating cycle.",
+        "decisive": "Use 8≡1 (mod 7), then add 15 days.",
+        "reason": "No current H1 ACTIVE counting/cycle PT/TPL matches the decisive period arithmetic; preserve q8 current L1/L2 and record null PT/TPL debt rather than invent a key."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Null PT/TPL retained after current H1 and lower-prerequisite RPM lookup: cycle/day arithmetic has no unique current ACTIVE compatibility projection; semantic path M1-RPM-012 is RPM_ONLY.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "rationale": "The seven-day cycle is a one-strategy reduction rather than a multi-condition high-difficulty structure; bucket 3 retained at B23 with adjudicated strong legacy conflict."
+      }
+    },
+    {
+      "qid": 9,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-170",
+        "path": "공통수학1/이차방정식과 이차함수/최대·최소/구간 최대·최소",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Find the intersection interval from g−f=0 and maximize the difference quadratic.",
+        "decisive": "Its vertex lies inside the interval."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 10,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-143",
+        "path": "공통수학1/나머지정리/고차식 조건",
+        "status": "FINAL",
+        "projection": "BINDING_PENDING",
+        "method": "Apply the nested quotient/remainder relations at x=3.",
+        "decisive": "Evaluate Q(3) from its quadratic-divisor remainder, then f(3)."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 11,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-161",
+        "path": "공통수학1/이차방정식/판별식",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Require the discriminant to be nonnegative for every real k.",
+        "decisive": "The linear coefficient in k must vanish; bound integer b."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 12,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+        "subUnit": "복소수의 뜻과 연산",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-158",
+        "path": "공통수학1/복소수/i의 거듭제곱/주기성",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Recognize both unit-modulus terms and their periods.",
+        "decisive": "Both terms must equal 1; count n divisible by 8."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 13,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "independentSemanticReview": {
+        "rpm": "GLOBAL ACTIVE H1 quadratic reconstruction taxonomy",
+        "path": "공통수학1/이차함수/조건에 따른 축·근 구조 복원",
+        "status": "FINAL",
+        "projection": "BINDING_PENDING",
+        "method": "Recover the axis from the vertex value, then test candidates against positive roots.",
+        "decisive": "Only axis s=5 is compatible with both positive roots."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "rationale": "Vertex reconstruction with two candidate axes and positive-root selection is standard intermediate structure; bucket 3 retained at B34 with adjudicated strong legacy conflict."
+      }
+    },
+    {
+      "qid": 14,
+      "metaBeforeFromPostfreezeCandidate": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "순열",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "순열",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-189",
+        "path": "공통수학1/경우의 수/순열/특정 조건 배열",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Apply real-radical domain a>0 and bc≥0, then count distinct ordered card triples under b>c.",
+        "decisive": "The real domain removes undefined radicals; each fixed a contributes 9 valid pairs, so the unique total is 27.",
+        "crossConcepts": [
+          "CC_RADICAL_EXPRESSION"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Direct finite case count after one radical-domain check; consistent with the physical source level and course."
+      }
+    },
+    {
+      "qid": 15,
+      "metaBeforeFromPostfreezeCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C-08-COMBINATION",
+        "subUnit": "조합",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-194",
+        "path": "공통수학1/경우의 수/조합/선택 조건",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Factor the fixed product and choose admissible two-digit factors in increasing order.",
+        "decisive": "Enumerate the three distinct factor triples.",
+        "crossConcepts": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 16,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-171",
+        "path": "공통수학1/이차함수의 최대·최소/조건식 활용",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Use similarity in the right triangle to express rectangle area as a quadratic.",
+        "decisive": "Fresh solution applies similar-triangle constraint to area quadratic; current crop preserves the same printed geometry facts.",
+        "crossConcepts": [
+          "CC_SIMILARITY"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Bucket 4: geometry-to-quadratic model followed by a constrained area maximum; clean q16 reviewer confirms answer and source visual."
+      }
+    },
+    {
+      "qid": 17,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_QUADRATIC",
+        "subUnit": "복소수와 이차방정식",
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "crossConceptKeys": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-164",
+        "path": "공통수학1/이차방정식/복소수 근/허근",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Use the conjugate root and the complex condition to recover the real part.",
+        "decisive": "Apply Vieta for m and n.",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 18,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-168",
+        "path": "공통수학1/이차함수/직선과 포물선/교점 관계",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Find both intersections, compute S1 and S2, and impose their ratio.",
+        "decisive": "Select the positive parameter root.",
+        "crossConcepts": [
+          "CC_AREA"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Graph intersections and an area-ratio model require several standard steps but no novel reconstruction; bucket 4 at B45."
+      }
+    },
+    {
+      "qid": 19,
+      "metaBeforeFromPostfreezeCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "M3-RPM-157 (lower prerequisite)",
+        "path": "중3/원의 성질/원과 직선/중심거리와 현의 길이",
+        "status": "FINAL",
+        "projection": "BINDING_PENDING",
+        "method": "Use the circle center forced by two side tangencies and the chord endpoint BP=1.",
+        "decisive": "Choose the radius root whose center is inside the square, then evaluate the exact expression.",
+        "crossConcepts": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_SQUARE"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Circle chord setup, quadratic root selection, and exact substitution are structured but not top-tier open-ended; bucket 4 at B45."
+      }
+    },
+    {
+      "qid": 20,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-150",
+        "path": "공통수학1/인수분해/이차식",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Factor the quartic product into the two possible integer-leading quadratic factors.",
+        "decisive": "Use the order condition and zero discriminant for P(x)−Q(x+k).",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ]
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 5,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 21,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-163",
+        "path": "공통수학1/이차방정식/근과 계수의 관계/근으로 방정식 구성",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Compute sum and product of the cubed roots from the original Vieta values.",
+        "decisive": "Scale the monic transformed-root equation to x² coefficient 8."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 22,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-170",
+        "path": "공통수학1/이차함수/최대·최소/구간 최대·최소",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Test the vertex-inside interval case against the stated maximum.",
+        "decisive": "The contradiction forces the endpoint maximum; then compare endpoint values."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 23,
+      "metaBeforeFromPostfreezeCandidate": null,
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-170",
+        "path": "공통수학1/이차함수/최대·최소/구간 최대·최소",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Use the common maximum on nested intervals to locate p, then apply both minimum conditions.",
+        "decisive": "The endpoint-distance equations determine m,q and f(4)."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Independent source+verified-solution review supports the physical bucket; level compatibility is NORMAL."
+      }
+    },
+    {
+      "qid": 24,
+      "metaBeforeFromPostfreezeCandidate": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "metaFinal": {
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "independentSemanticReview": {
+        "rpm": "H1-RPM-143",
+        "path": "공통수학1/나머지정리/고차식 조건",
+        "status": "FINAL",
+        "projection": "REUSE",
+        "method": "Use division-degree constraints, divisibility roots, and coefficient comparison in the exact polynomial identity.",
+        "decisive": "A unique real witness satisfies every condition and gives f(−1)^2=9; the source candidate remains within H1 remainder theorem.",
+        "crossConcepts": []
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Requires degree bounds, root assignment, coefficient comparison, and a feasible-object maximum; consistent with the physical source level and course."
+      }
+    }
+  ],
+  "coverage": {
+    "denominator": 24,
+    "metaRows": 24,
+    "difficultyRows": 24,
+    "metaNullDebtQids": [
+      8
+    ],
+    "itemHoldQids": [
+      14,
+      24
+    ],
+    "freshCleanQidReviewPending": []
+  },
+  "q16FreshCleanFreezeSha256": "f900337282a9b2e9f422f2ca679c0a0337ad109e5732bdada6a24a5a0225a186",
+  "sourceRawSha256": "550d579f4470bf6d4613c7865fa3fc5da9175d999b50fc31a97377b28092afae",
+  "changedQids": [
+    14,
+    24
+  ]
+}
