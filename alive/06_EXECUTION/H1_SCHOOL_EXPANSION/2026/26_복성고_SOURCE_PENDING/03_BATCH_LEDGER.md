@@ -19,3 +19,9 @@
 | B06 | 18,19 | 0 | PLANNED |
 
 다음 사용자 지시 후 B02 A→B→C→D만 진행. 독립 REVIEW는 별도 채팅.
+
+### B01R2 원격 완료 증거
+
+- CREATE 후보 45 UID / L2 6개 **Git remote readback verified** against artifact commit `c8d990bab2bafae539a9e5de6d24b4616adcf129`.
+- 인덱스 blob `fb1b1d8a9d851320a254266c09494fd544eabd35`.
+- 기존 효천고 승인 manifest 8개 UID 유지. 이 CREATE의 새 UID는 검수 승인 0.
