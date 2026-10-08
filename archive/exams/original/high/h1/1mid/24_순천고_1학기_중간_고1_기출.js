@@ -420,7 +420,7 @@ window.questionBank = [
       "근호",
       "절댓값"
     ],
-    "content": "실수 $x$, $y$가 $\\sqrt{x-1}\\sqrt{y-2}=-\\sqrt{(x-1)(y-2)}$, $\\dfrac{\\sqrt{x+1}}{\\sqrt{y+1}}=-\\sqrt{\\dfrac{x+1}{y+1}}$를 만족시킬 때, $|x-2|+(\\sqrt{x})^2-|y-3|+\\sqrt{y^2}$을 간단히 한 것은? (단, $x\\ne-1$) [4점]",
+    "content": "실수 $x$, $y$가 $\\sqrt{x-1}\\sqrt{y-2}=-\\sqrt{(x-1)(y-2)}$, $\\dfrac{\\sqrt{x+1}}{\\sqrt{y+1}}=-\\sqrt{\\dfrac{x+1}{y+1}}$를 만족시킬 때, <br>$|x-2|+(\\sqrt{x})^2-|y-3|+\\sqrt{y^2}$을 간단히 한 것은? (단, $x\\ne-1$) [4점]",
     "choices": [
       "$2x-2y+1$",
       "$2x+5$",
@@ -576,7 +576,7 @@ window.questionBank = [
     "level": "중",
     "category": "인수분해",
     "originalCategory": "인수분해",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false
   },
   {
@@ -861,7 +861,7 @@ window.questionBank = [
     "level": "중",
     "category": "인수분해",
     "originalCategory": "인수분해",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": true
   },
   {
@@ -871,7 +871,7 @@ window.questionBank = [
       "서술형",
       "이차방정식"
     ],
-    "content": "$100$ 이하의 자연수 $n$에 대하여 $x$에 대한 이차방정식 $x^2-2(n+1)x+n^2+1=0$의 두 근이 모두 정수가 되도록 하는 $n$을 모두 구하는 풀이과정과 답을 상세히 서술하시오. [부분 점수 있음, 7점]",
+    "content": "$100$ 이하의 자연수 $n$에 대하여 $x$에 대한 <br>이차방정식 $x^2-2(n+1)x+n^2+1=0$의 두 근이 모두 정수가 되도록 하는 $n$을 모두 구하는 풀이과정과 답을 상세히 서술하시오. [부분 점수 있음, 7점]",
     "choices": [],
     "answer": "$n=2,8,18,32,50,72,98$",
     "solution": "이차방정식의 근은\n$x=(n+1)\\pm\\sqrt{(n+1)^2-(n^2+1)}$\n$=(n+1)\\pm\\sqrt{2n}$이다.\n두 근이 모두 정수가 되려면 $\\sqrt{2n}$이 정수여야 한다.\n$\\sqrt{2n}=m$이라 두면\n$2n=m^2$이다.\n$m^2$이 짝수이므로 $m$은 짝수이다. $m=2k$라 두면\n$n=2k^2$이다.\n또 $n\\le100$이므로\n$2k^2\\le100$, 즉 $k^2\\le50$이다.\n자연수 $k$는 $1,2,3,4,5,6,7$이다.\n따라서\n$n=2,8,18,32,50,72,98$이다.",

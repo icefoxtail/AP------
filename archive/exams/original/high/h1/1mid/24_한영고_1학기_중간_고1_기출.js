@@ -596,7 +596,7 @@ window.questionBank = [
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
     "questionType": "단답형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "단답형",
       "다항식",
@@ -632,7 +632,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
     "questionType": "단답형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "단답형",
       "연립부등식",
@@ -668,7 +668,7 @@ window.questionBank = [
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
     "questionType": "단답형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "단답형",
       "이차방정식",
@@ -704,7 +704,7 @@ window.questionBank = [
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
     "questionType": "단답형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "단답형",
       "삼차방정식",
@@ -740,7 +740,7 @@ window.questionBank = [
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "단답형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "단답형",
       "복소수",
@@ -776,7 +776,7 @@ window.questionBank = [
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "이차함수",
@@ -816,7 +816,7 @@ window.questionBank = [
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "복소수",
