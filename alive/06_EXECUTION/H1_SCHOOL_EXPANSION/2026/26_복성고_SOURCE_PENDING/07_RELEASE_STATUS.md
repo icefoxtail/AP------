@@ -16,3 +16,8 @@
 - 형님 승인 B03 **38 UID 전부** `archive/data/generated-lite-consumer/v1/index.json` 학생용 정적 DB와 4개 read-only shard에 등록. 기존 효천고 승인 92 UID는 그대로 보존하여 등록 분모는 **130**. 원본/RPM LOCKED 변경 0.
 - 학교 검색/선택 화면 `archive/generated-bank.html`을 다학교·동적 분모에 맞게 변경. q14 I10 조건박스의 HTML 태그는 학생 표시용 plain newline projection으로 안전하게 변환.
 - 실제 Chrome 및 배포 학생계정 조회 검증은 PR CI pending; 분리 상태 `STATIC_CONSUMER_DB_REGISTERED_BROWSER_SMOKE_PENDING`. 기록: `archive/data/generated-lite-consumer/v1/registration-receipt-bokseong-b03.json`.
+
+## 2026-10-08 Chrome 실검증 PASS — 최신 등록상태
+- GitHub Actions 실제 Chrome 실행 `37767090807`: **130 DB 항목 로드, 복성고 B03 38/38 전체 조회, q14 다중진술, 정답·해설, 선택 및 기존 효천고 92/보류 차단 PASS**.
+- 검증 증거: https://github.com/icefoxtail/AP------/actions/runs/37767090807 · 등록 확인 대상 SHA `871e03e8b94ad94ee0efb863323f39fbfde181bc`.
+- B03 승인 38/38, 정적 Consumer DB 등록 38/38, 실제 Chrome 조회 38/38. main에 본 등록 변경 PR을 병합한 뒤 최종 원격 SHA readback으로 닫는다.
