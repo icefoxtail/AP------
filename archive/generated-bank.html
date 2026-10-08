@@ -112,7 +112,15 @@ const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
 const status=message=>$("message").textContent=message;
 const unique=items=>new Set(items).size===items.length;
-const isSelectable=row=>Boolean(row&&row.sourceKind==="generated"&&row.consumerSelectable===true&&["REVIEW_APPROVED","USER_DIRECTED_OPERATING_APPROVED"].includes(row.approval)&&!excludedHoldUids.has(row.uid));
+const isSelectable=row=>{
+ if(!row||row.sourceKind!=="generated"||row.consumerSelectable!==true||excludedHoldUids.has(row.uid))return false;
+ const reviewed=row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS";
+ const directed=row.approval==="USER_DIRECTED_OPERATING_APPROVED"&&(
+  String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
+  row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
+ );
+ return reviewed||directed;
+};
 const unitName=row=>UNIT_LABELS[row.l2]||null;
 async function readJson(path){
  if(typeof path!=="string"||!/^data\/generated-lite-consumer\/v1\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.includes(".."))throw Error("등록 경로 불일치");
