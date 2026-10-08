@@ -112,25 +112,27 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "CREATE_CLOSED_REVIEW_PENDING_WITH_SEMANTIC_HOLDS",
+      "status": "CREATE_RECLASSIFIED_REVIEW_PENDING",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
       "candidateRegistryRequiredBeforeC": true,
       "generatedCandidateCount": 38,
       "blueprintExploredCount": 46,
       "acceptedBlueprintCount": 38,
       "extensionL4CandidateCount": 13,
-      "extensionL3CandidateCount": 2,
+      "extensionL3CandidateCount": 1,
       "sourceExpansionDoneQids": [
         3,
-        5
+        5,
+        8
       ],
       "sourceContinuationRequiredQids": [
-        8,
         10,
         11
       ],
       "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b02-create-index-v1.json",
-      "semanticExtensionIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v2.json"
+      "semanticExtensionIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v2.json",
+      "correctedPrimaryUnitQ08": "H22-C-06-HIGHER_EQUATION",
+      "separateL3CandidateQ11": "절댓값을 포함한 부등식"
     },
     {
       "id": "B03",
@@ -234,5 +236,7 @@
   "extensionDiscoveryContract": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
   "extensionCandidateIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json",
   "extensionDiscoveryMandatoryBeforeGeneration": true,
-  "extensionDiscoveryReason": "B01R2 showed same RPM L3/L4 labels can hide different decisive structures; next batches must explore new L3/L4 before C"
+  "extensionDiscoveryReason": "B01R2 showed same RPM L3/L4 labels can hide different decisive structures; next batches must explore new L3/L4 before C",
+  "classificationRevision": 2,
+  "unitOrderPolicy": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md"
 }

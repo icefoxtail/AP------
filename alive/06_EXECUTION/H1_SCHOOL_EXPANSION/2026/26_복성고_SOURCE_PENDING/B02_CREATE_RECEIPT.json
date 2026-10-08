@@ -14,17 +14,16 @@
   "sourceOriginalCount": 5,
   "sourceExpansionDoneQids": [
     3,
-    5
+    5,
+    8
   ],
   "sourceContinuationRequiredQids": [
-    8,
     10,
     11
   ],
   "sourceHoldReasons": {
-    "8": "Original target H22-C-04-COMPLEX_BASIC versus H22-C-05/H22-C-06 high degree root semantic; EXT L3 vs CrossConcept review",
     "10": "MATRIX_BASIC and MATRIX_OPERATION primary method boundary for dimension-validity reasoning",
-    "11": "Absolute-value linear inequality is not the same as AMGM/Cauchy-type canonical 절대부등식 L3"
+    "11": "절댓값을 포함한 부등식은 공통수학1 6단원 별도 L3 proposal; 절대부등식(AMGM/코시) 아님; canonical semantic REVIEW remains."
   },
   "blueprintExplored": 46,
   "blueprintAccept": 38,
@@ -54,11 +53,11 @@
   "answerPositionMaxRatio": 0.3157894736842105,
   "authorMathExactWitnessCount": 38,
   "authorMathVerificationStatus": "CREATOR_FORMULA_CHECK_ONLY_NOT_INDEPENDENT",
-  "rpmCurrentScopeDirectActiveCount": 8,
+  "rpmCurrentScopeDirectActiveCount": 15,
   "rpmCurrentScopeBindingGapCount": 14,
-  "rpmSemanticScopeGapCount": 7,
+  "rpmSemanticScopeGapCount": 0,
   "rpmSemanticCoverageGapCount": 9,
-  "extensionL3ProposalCount": 2,
+  "extensionL3ProposalCount": 1,
   "extensionL4ProposalCount": 13,
   "extensionCanonicalApprovedCount": 0,
   "visualRequiredCandidateCount": 0,
@@ -69,8 +68,8 @@
   "mainPublishedNewCount": 0,
   "consumerDbRegisteredNewCount": 0,
   "artifactCommitBeforeCloseout": "018572d58cd4c375fc2ed54afa7c01426b76d24b",
-  "indexReadbackSha": "3e310aadd03d64e48504e5d6ac0aef048193166f",
-  "extensionIndexReadbackSha": "2a1693eae6062557499a145e9d7ad739f340b39c",
+  "indexReadbackSha": "33f7552e42205468c94c9c6e17625317600405b0",
+  "extensionIndexReadbackSha": "0a9dcc20b9db31fcee2ffcf7e30595b211544e56",
   "rootManifestReadback": [
     {
       "l2": "H22-C-09-CORE",
@@ -89,14 +88,30 @@
       "totalStored": 17
     },
     {
-      "l2": "H22-C-04-COMPLEX_BASIC",
-      "rootManifest": "archive/generated/lite/v1/2022/H1/H22-C-04-COMPLEX_BASIC/manifest.json",
-      "sha": "6ab42ca74bf93d34bc71202a4149642c84391519",
+      "l2": "H22-C-06-HIGHER_EQUATION",
+      "rootManifest": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_EQUATION/manifest.json",
+      "sha": "9ae081917900190f4181d4310b197ea4000e7d38",
       "newB02ReviewPending": 7,
-      "priorApprovedRetained": 5,
-      "totalStored": 12
+      "priorApprovedRetained": 9,
+      "totalStored": 16
     }
   ],
-  "releaseStatus": "CREATE_CANDIDATE_REVIEW_PENDING",
-  "nextProductionBatch": "B03"
+  "releaseStatus": "CREATE_CANDIDATE_RECLASSIFIED_REVIEW_PENDING",
+  "nextProductionBatch": "B03",
+  "classificationCorrectionRevision": 2,
+  "orderAwarePrimaryClassificationRule": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md",
+  "priorQ08ScopeHoldResolved": {
+    "disposition": "CLOSED_BY_USER_DIRECTED_PRIMARY_CUBIC_RPM",
+    "originalSourceUnit": "H22-C-04",
+    "generatedPrimaryUnit": "H22-C-06",
+    "generatedPrimaryL2": "H22-C-06-HIGHER_EQUATION",
+    "rpmRecordId": "H1-RPM-172",
+    "uidCount": 7,
+    "priorConcept": "켤레복소수"
+  },
+  "classificationCorrection": {
+    "q8": "7 generated UIDs moved to 6th unit cubic L3; original remains H22-C-04 seed",
+    "q11": "9 generated UIDs mapped to 6th unit separate absolute-value inequality L3 candidate table",
+    "removedFalseL3ProposalCount": 1
+  }
 }
