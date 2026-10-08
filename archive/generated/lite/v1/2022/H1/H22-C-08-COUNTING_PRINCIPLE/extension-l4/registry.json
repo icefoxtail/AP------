@@ -7,7 +7,7 @@
   "l2": "H22-C-08-COUNTING_PRINCIPLE",
   "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
   "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "candidateCount": 7,
+  "candidateCount": 10,
   "candidates": [
     {
       "candidateL4Id": "EXT-H1-C08-DIST-MANDATORY-PICK",
@@ -199,8 +199,99 @@
       "reviewStatus": "DISCOVERED_UNREVIEWED",
       "canonicalPromoted": false,
       "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIGIT-DIVISIBILITY-SUFFIX",
+      "label": "배수 판정을 이용한 끝자리/끝 두 자리의 경우 분류",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "closestCanonicalL4": "경우를 나누어 세기 / 단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "targetOriginalL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "두 자리 수의 배수 조건을 먼저 분류하고 나머지 앞자리의 독립 선택을 곱함",
+      "contrastAgainstCanonicalL4": "기존 L4 경우 나누어 세기와 겹칠 수 있으므로 더 좁은 독립 L4인지 검토 필요",
+      "sourceSeedQids": [
+        15
+      ],
+      "sourceBlueprintIds": [
+        "BSG26-B01R2-Q15-H01",
+        "BSG26-B01R2-Q15-H02",
+        "BSG26-B01R2-Q15-H04",
+        "BSG26-B01R2-Q15-H05"
+      ],
+      "exampleUids": [],
+      "exampleOriginalQuestionBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "REUSE_EXISTING_L3_THEN_REVIEW_L4_REQUIRED",
+      "sourceSeedReviewStatus": "SOURCE_SOLUTION_READ_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIGIT-SUM-RESIDUE",
+      "label": "각 자릿수 합의 나머지로 가능한 수 구성",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "closestCanonicalL4": "경우를 나누어 세기 / 단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "targetOriginalL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "자릿수 선택의 합을 나머지 부류로 분할하여 허용 배열 수를 합함",
+      "contrastAgainstCanonicalL4": "일반 단계별 선택과 달리 전체 자리수 합 조건이 멀리 떨어진 자릿수를 결합",
+      "sourceSeedQids": [
+        15
+      ],
+      "sourceBlueprintIds": [
+        "BSG26-B01R2-Q15-H03"
+      ],
+      "exampleUids": [],
+      "exampleOriginalQuestionBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "REUSE_EXISTING_L3_THEN_REVIEW_L4_REQUIRED",
+      "sourceSeedReviewStatus": "SOURCE_SOLUTION_READ_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIGIT-MULTIPLE-MODULUS",
+      "label": "끝자리 짝홀·자릿수 합 조건의 동시 적용",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "closestCanonicalL4": "경우를 나누어 세기 / 단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "targetOriginalL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "서로 다른 나눗셈 조건(예: 2와 3의 배수)을 교차하여 자리수 조합을 선별",
+      "contrastAgainstCanonicalL4": "독립 두 조건을 곱셈법칙으로 잘못 처리하지 않도록 교집합 계산이 필요",
+      "sourceSeedQids": [
+        15
+      ],
+      "sourceBlueprintIds": [
+        "BSG26-B01R2-Q15-H06"
+      ],
+      "exampleUids": [],
+      "exampleOriginalQuestionBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "REUSE_EXISTING_L3_THEN_REVIEW_L4_REQUIRED",
+      "sourceSeedReviewStatus": "SOURCE_SOLUTION_READ_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
     }
   ],
   "reviewStatus": "NOT_REVIEWED",
-  "canonicalRPMModified": false
+  "canonicalRPMModified": false,
+  "note": "q15 generated UID=0; H22-C-07 earlier same-grade RPM semantic reuse is a proposal, not finalized classification."
 }
