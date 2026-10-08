@@ -23,9 +23,14 @@ test('Phase 2 final graph spec samples every frozen cubic/quartic feature and ig
 
 test('quadratic Phase 2 graphs retain the legacy canvas used by medium-profile typography',()=>{
   const plan={capability:'polynomial-spike-v1',caption:'이차함수',graphPlan:{
-    family:'polynomial',coefficients:['-1','0','3'],domain:[-2,2],viewport:[-2,2,-1,5],overviewFeatures:[]
+    family:'polynomial',coefficients:['-1','0','3'],domain:[-2,2],viewport:[-2,2,-1,5],overviewFeatures:[],requiredPoints:[{id:'vertex',x:0,y:-1}]
   }};
   const spec=specFor(plan,{},'quadratic-medium-profile');
   assert.equal(spec.viewport.width,384);
   assert.equal(spec.viewport.height,320);
+  assert.deepEqual(spec.objects.find(object=>object.id==='required-point-1'),{id:'required-point-1',kind:'POINT',at:[0,-1]});
+  const coordinate=spec.objects.find(object=>object.id==='required-point-1-coordinates');
+  assert.equal(coordinate.kind,'COORDINATE_LABEL');
+  assert.equal(coordinate.target,'required-point-1');
+  assert.deepEqual(coordinate.exact,['0','-1']);
 });
