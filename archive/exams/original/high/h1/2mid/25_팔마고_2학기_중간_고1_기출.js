@@ -366,11 +366,11 @@ window.questionBank = [
     "wide": false,
     "content": "두 조건 $p,q$에 대하여 다음 중 $p$는 $q$이기 위한 필요조건이지만 충분조건은 아닌 것을 고르시오. (단, $x,y$는 실수) [4.3점]",
     "choices": [
-      "$p: xy$가 홀수 / $q: x+y$가 짝수",
-      "$p: -1<x<1$ / $q: (x+3)(x-2)\\le0$",
-      "$p: |x|<|y|$ / $q: x<y$",
-      "$p: x^2+y^2=0$ / $q: |x|+|y|=0$",
-      "$p: xz=yz$ / $q: x=y$"
+      "$p: xy$가 홀수<br>$q: x+y$가 짝수",
+      "$p: -1<x<1$<br>$q: (x+3)(x-2)\\le0$",
+      "$p: |x|<|y|$<br>$q: x<y$",
+      "$p: x^2+y^2=0$<br>$q: |x|+|y|=0$",
+      "$p: xz=yz$<br>$q: x=y$"
     ],
     "answer": "",
     "solution": ""
