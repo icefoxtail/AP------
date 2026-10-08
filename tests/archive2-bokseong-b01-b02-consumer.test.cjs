@@ -12,18 +12,18 @@ const approved=index.records.filter(r=>r.uid.startsWith('ALITE-BSG26-B01R2-')||r
 const frozenMap=new Map(frozen.map(q=>[q.uid,q]));
 function gitSha(bytes){const b=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);return crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')}
 function fingerprint(q){const s=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});let n=14695981039346656037n;for(let i=0;i<s.length;i++)n=BigInt.asUintN(64,(n^BigInt(s.charCodeAt(i)))*1099511628211n);return 'fnv1a64-utf16:'+n.toString(16).padStart(16,'0')}
-test('B01+B02 student-first A1 83 frozen, A2 83 exact; 74 registered and 9 taxonomy holds never selectable',()=>{
+test('B01+B02 student-first A1 83 frozen, A2 83 exact; 83 registered with approved q11 semantics',()=>{
  assert.equal(frozen.length,83);assert.equal(frozenMap.size,83);
  assert.equal(comparison.scope,83);assert.equal(comparison.mathMismatch,0);assert.equal(comparison.storedAnswerAgreement,83);
- assert.equal(index.approvedCount,264);assert.equal(index.records.length,264);
- assert.equal(index.approvedBySchool['복성고'],172);assert.equal(index.approvedBySchool['효천고'],92);
- assert.equal(approved.length,74);
+ assert.equal(index.approvedCount,273);assert.equal(index.records.length,273);
+ assert.equal(index.approvedBySchool['복성고'],181);assert.equal(index.approvedBySchool['효천고'],92);
+ assert.equal(approved.length,83);
  assert.equal(approved.filter(x=>x.uid.includes('B01R2')).length,45);
- assert.equal(approved.filter(x=>x.uid.includes('B02')).length,29);
+ assert.equal(approved.filter(x=>x.uid.includes('B02')).length,38);
  const hold=Array.from({length:9},(_,i)=>'ALITE-BSG26-B02-Q11-A'+String(i+1).padStart(2,'0'));
- assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,9);
- assert.ok(hold.every(x=>!index.records.some(r=>r.uid===x)));
- assert.equal(new Set(index.records.map(r=>r.uid)).size,264);
+ assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,0);
+ assert.ok(hold.every(x=>index.records.some(r=>r.uid===x)));
+ assert.equal(new Set(index.records.map(r=>r.uid)).size,273);
  assert.equal(gitSha(fs.readFileSync(path.join(root,srcOriginal))),originalSha);
 });
 test('74 review-approved consumer rows bind SHA-exact source JS, metadata, 5-option independent solution and original question',()=>{
@@ -67,9 +67,9 @@ test('74 review-approved consumer rows bind SHA-exact source JS, metadata, 5-opt
   const m=meta.get(metaPath).find(x=>x.uid===row.uid);
   assert.ok(m&&m.studentSupplyEligible&&m.consumerDbRegistered,row.uid);
   assert.equal(m.independentMathReview,'PASS_STUDENT_FIRST_A1_A2',row.uid);
-  assert.equal(m.reviewApprovalStatus,'REVIEW_APPROVED_A1_A2_20261009',row.uid);
-  assert.equal(m.rpmCrosswalkId,row.rpmRecordId,row.uid);
+  assert.ok(['REVIEW_APPROVED_A1_A2_20261009','REVIEW_APPROVED_20261009'].includes(m.reviewApprovalStatus),row.uid);
+  assert.equal(m.rpmCrosswalkId||undefined,row.rpmRecordId||undefined,row.uid);
  }
- assert.equal(shards.size,11);assert.equal(sources.size,11);assert.equal(meta.size,11);
- assert.deepEqual(hist,{'①':11,'②':12,'③':23,'④':20,'⑤':8});
+ assert.equal(shards.size,12);assert.equal(sources.size,12);assert.equal(meta.size,12);
+ assert.deepEqual(hist,{'①':12,'②':14,'③':25,'④':23,'⑤':9});
 });

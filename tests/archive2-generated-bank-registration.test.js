@@ -35,12 +35,12 @@ function contentFingerprint(question) {
 test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 264);
+  assert.equal(index.records.length, 273);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
-  assert.equal(index.approvedBySchool['복성고'], 172);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 264);
+  assert.equal(index.approvedBySchool['복성고'],181);
+  assert.equal(new Set(index.records.map(r => r.uid)).size, 273);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
@@ -48,7 +48,7 @@ test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
   assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
-  assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 29);
+  assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
   assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
 });
 
@@ -130,7 +130,7 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('264 registered questions remain protected while exam-only UI prints exact original 23/26', async () => {
+test('273 registered questions remain protected while exam-only UI prints exact original 23/26', async () => {
   const nodes=Object.create(null);
   const document={
     getElementById:id=>nodes[id]??(nodes[id]=new Node()),
@@ -168,6 +168,6 @@ test('264 registered questions remain protected while exam-only UI prints exact 
   assert.equal(printed,2);
   assert.equal(el('paper-items').children.length,26);
   assert.match(el('paper-title').textContent,/효천고/);
-  assert.equal(index.records.length,264);
+  assert.equal(index.records.length,273);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
 });

@@ -13,15 +13,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|x-1|+|x-5|\\le6$을 만족시키는 정수 $x$는 모두 몇 개인가?",
@@ -34,7 +34,13 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 점 1과 5까지 거리의 합을 구간별로 계산한다.\n$1\\le x\\le5$에서는 거리합이 4이므로 모든 수가 조건을 만족한다.\n$x\\le1$이면 좌변은 $6-2x$이며 $6-2x\\le6$에서 $x\\ge0$이다.\n$x\\ge5$이면 좌변은 $2x-6$이며 $2x-6\\le6$에서 $x\\le6$이다.\n따라서 $0\\le x\\le6$이고 정수해는 $0,1,2,3,4,5,6$의 7개이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 2,
@@ -49,15 +55,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|x+2|+|x-4|\\le8$의 해가 $a\\le x\\le b$일 때, $a+b$의 값은?",
@@ -70,7 +76,13 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 기준점 $-2$와 4를 경계로 양끝 해를 구한다.\n$-2\\le x\\le4$에서 거리합은 6이므로 조건을 만족한다.\n$x\\le-2$에서는 좌변이 $2-2x$이므로 $2-2x\\le8$에서 $x\\ge-3$이다.\n$x\\ge4$에서는 좌변이 $2x-2$이므로 $2x-2\\le8$에서 $x\\le5$이다.\n따라서 해는 $-3\\le x\\le5$이고 $a+b=-3+5=2$이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 3,
@@ -85,15 +97,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|x+2|+|x-4|<6$을 만족시키는 정수 $x$의 개수는?",
@@ -106,7 +118,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 점에 이르는 거리의 합은 두 점 사이의 거리보다 작을 수 없다.\n수직선의 두 기준점 $-2$와 4 사이 거리는 6이다.\n모든 실수 $x$에 대하여 삼각부등식으로 $|x+2|+|x-4|\\ge6$이다.\n따라서 거리합이 6보다 엄격하게 작은 실수해는 전혀 존재하지 않는다.\n실수해가 없으므로 정수해도 없고 개수는 0개이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "rpmRecordId": "H1-RPM-184",
+    "rpmL3": "부등식의 활용",
+    "rpmL4": "최대·최소",
+    "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED"
   },
   {
     "id": 4,
@@ -121,15 +140,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|x-1|-|x-5|\\ge2$를 만족시키는 정수 $x$ 중 가장 작은 값은?",
@@ -142,7 +161,13 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 절댓값 속 식이 0이 되는 1과 5로 구간을 분할한다.\n$x\\le1$이면 좌변은 $-4$이므로 해가 없다.\n$1\\le x\\le5$이면 좌변이 $2x-6$이므로 $2x-6\\ge2$에서 $x\\ge4$이다.\n$x\\ge5$이면 좌변은 4로 조건을 항상 만족한다.\n전체 해는 $x\\ge4$이고 따라서 가장 작은 정수해는 4이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DIFFERENCE-SIGN",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 5,
@@ -157,15 +182,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|2x-1|+|x+2|\\le7$을 만족시키는 정수 $x$의 개수는?",
@@ -178,7 +203,13 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 기준점 $-2$와 $\\dfrac12$를 중심으로 세 구간을 살핀다.\n$x\\le-2$이면 좌변은 $-3x-1$이므로 $-3x-1\\le7$에서 $x\\ge-\\dfrac83$이다.\n$-2\\le x\\le\\dfrac12$이면 좌변은 $3-x$이므로 이 구간의 모든 수가 해이다.\n$x\\ge\\dfrac12$이면 좌변은 $3x+1$이므로 $x\\le2$이다.\n따라서 전체 해는 $-\\dfrac83\\le x\\le2$이고 정수는 $-2,-1,0,1,2$의 5개이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 6,
@@ -193,15 +224,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "자연수 $k$에 대하여 부등식 $|x-2|+|x+2|\\le2k$의 실수해가 존재하도록 하는 $k$의 최솟값은?",
@@ -214,7 +245,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 절댓값 거리합의 최솟값으로 해 존재 조건을 결정한다.\n두 기준점은 $-2$와 2이므로 두 점 사이의 거리는 4이다.\n모든 실수 $x$에서 $|x-2|+|x+2|\\ge4$이고, 두 점 사이에서는 정확히 4이다.\n따라서 부등식을 만족하는 실수해가 존재할 필요충분조건은 $2k\\ge4$이다.\n즉 $k\\ge2$이므로 자연수 $k$의 최솟값은 2이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "rpmRecordId": "H1-RPM-184",
+    "rpmL3": "부등식의 활용",
+    "rpmL4": "최대·최소",
+    "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED"
   },
   {
     "id": 7,
@@ -229,15 +267,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "부등식 $|x-1|+|x-5|\\le4$를 만족시키는 정수 $x$는 모두 몇 개인가?",
@@ -250,7 +288,13 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 점까지의 거리합의 최솟값과 같거나 작은 경우를 판단한다.\n두 기준점은 1과 5이고 이 둘 사이의 거리는 4이다.\n임의의 실수 $x$에 대해 $|x-1|+|x-5|\\ge4$가 성립한다.\n따라서 주어진 부등식 $|x-1|+|x-5|\\le4$가 성립하려면 거리합이 정확히 4여야 한다.\n이는 $1\\le x\\le5$인 경우이고 정수해는 $1,2,3,4,5$의 다섯 개이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 8,
@@ -265,15 +309,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "연립부등식 $\\begin{cases}|x-1|+|x+3|\\le6\\\\x\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수는?",
@@ -286,7 +330,13 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 절댓값 부등식 해집합과 주어진 일차조건의 교집합을 구한다.\n두 기준점은 $-3$과 1이고 두 점 사이에서는 거리합이 4이다.\n$x\\le-3$에서 거리합은 $-2x-2$이므로 $x\\ge-4$이다.\n$x\\ge1$에서 거리합은 $2x+2$이므로 $x\\le2$이다.\n따라서 첫 번째 부등식의 해는 $-4\\le x\\le2$이다.\n이를 $x\\ge0$과 교차하면 $0\\le x\\le2$이고 정수해는 $0,1,2$의 3개이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "extensionL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+    "extensionL3": "절댓값을 포함한 부등식",
+    "extensionL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+    "semanticClassificationStatus": "GENERATED_EXTENSION_REVIEW_APPROVED_NOT_RPM_CANONICAL"
   },
   {
     "id": 9,
@@ -301,15 +351,15 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
-    "subUnitConfidence": "CANDIDATE_L3_NOT_RPM_CANONICAL",
-    "subUnitClassificationDepth": "semantic_RPM_L3_granularity_review",
+    "subUnitConfidence": "INDEPENDENT_SEMANTIC_REVIEWED",
+    "subUnitClassificationDepth": "student_solution_decisive_step",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "절댓값",
       "부등식",
-      "L3 후보: 절댓값을 포함한 부등식"
+      "절댓값의 구간별 해법"
     ],
     "wide": false,
     "content": "실수 $a$에 대하여 부등식 $|x-a|+|x-(a+4)|\\le6$의 해집합이 $p\\le x\\le q$이다. $p+q=10$일 때, $a$의 값은?",
@@ -322,6 +372,13 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 거리합의 부등식으로 표현되는 해구간의 양끝을 문자 $a$로 나타낸다.\n$x\\le a$이면 좌변은 $2a+4-2x$이므로 $x\\ge a-1$이다.\n$x\\ge a+4$이면 좌변은 $2x-2a-4$이므로 $x\\le a+5$이다.\n두 기준점 사이에서는 거리합이 4로 조건을 만족한다.\n따라서 해집합은 $a-1\\le x\\le a+5$이고 $p+q=2a+4=10$이다.\n이를 풀면 $a=3$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+    "rpmRecordId": "H1-RPM-185",
+    "rpmL3": "부등식의 활용",
+    "rpmL4": "계수 조건",
+    "rpmSemanticSourceScope": "2022/공통수학1/H22-C-06-EQUATION_APPLICATION",
+    "semanticClassificationStatus": "EXISTING_RPM_REVIEW_APPROVED"
   }
 ];
