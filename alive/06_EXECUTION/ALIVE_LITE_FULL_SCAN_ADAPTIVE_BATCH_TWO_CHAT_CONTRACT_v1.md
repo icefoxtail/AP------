@@ -1,4 +1,9 @@
 # ALIVE LITE — 전체 스캔 선행·적응형 배치·2채팅 생산 검수 계약 v1
+
+## CURRENT ADDENDUM — 두 번째 채팅의 최종 종료 경계 (2026-10-08)
+- 제2채팅 REVIEW+MAIN은 독립 수학/보기/Meta 검수 및 핀포인트 수정 이후 **Archive 2.0 Generated Bank Consumer DB 물리 등록과 학생용 검색·불러오기·선택 검증**까지 반드시 직접 수행한다. 완료 조건은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`가 정한다.
+- 정상 리뷰 PASS / main 브랜치에 shard 저장만으로 최종 완료가 아니다. 기존 original qid_v1 consumer index는 ALITE UID용으로 직접 덮어쓰지 않는다. 미지원 adapter는 최소 범위 기술 구현 및 검증 후 완료; 불가 시 DB 미등록 기술 부채를 별도로 남긴다.
+
 날짜: 2026-10-08 KST
 상태: CURRENT / 이 문서가 기존 최대생산량 실험과 source-qid exhaustion의 **실행 순서**에 우선함. 기존 원본 Archive 검수계약은 그대로 유지.
 
@@ -62,3 +67,10 @@ D. L2별 생성 shard·metadata·uid index·manifest·batch ledger·receipts를 
 - D에서 원본별 탐색 L3/L4 분모, EXT candidate 수와 상태, 실제 완성 UID·상세해설·5지, 보류·제외 사유, extension index를 함께 원격 readback. 해당 원본의 viable EXT 구조 미생성/미분류 시 SOURCE_CONTINUATION_REQUIRED.
 - 신규 taxonomy 후보는 독립 REVIEW에서 수학+의미 신규성 검수 후 별도 canonical 승인. 정식 RPM 키·Meta pack·원본 source·DB를 CREATE가 임의 변경 금지.
 - 근거: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md, B01R2_EXTENSION_RETROSPECTIVE.md 및 bokseong-2026-1final-extension-candidate-index-v1.json.
+
+
+## CURRENT HARD — 단원 순서 기반 최종 Primary 분류 (2026-10-08)
+- B단계에서 각 필요 개념의 standardUnitOrder와 출제목표를 대조한다. **주된 평가 대상인 필수 뒤 단원 → Primary, 앞 단원 풀이 도구 → 선수개념**이다. 뒤 단원이 범위 밖이면 앞 단원으로 속여 분류하지 말고 curriculum eligibility HOLD를 기록한다.
+- 원본 category는 source seed provenance에만 남긴다. generated 문항의 표준단원키, 순서, 세부단원, RPM L3/L4, UID 경로를 분류에 맞춰 일관 수정한다.
+- q8 B02는 실수계수 삼차방정식(6단원) / 켤레복소수(4단원 prerequisite). q11은 6단원 별도 L3 제안 '절댓값을 포함한 부등식'이며 RPM 절대부등식(AMGM/Cauchy)과 다름.
+- 권위: docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md. 별도 분류표는 archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json.
