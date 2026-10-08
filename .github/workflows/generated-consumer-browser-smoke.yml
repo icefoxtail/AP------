@@ -30,13 +30,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 130 consumer rows, Git blob SHA and student finder in Node VM
-        run: node --test tests/archive2-generated-bank-registration.test.js
+      - name: Verify 165 consumer rows, B04/B05 source and student finder in Node VM
+        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
           chrome-version: stable
-      - name: B03 school filter, UID lookup, answer, selection and legacy protection
+      - name: B03+B04+B05 UID lookup, table, subjective selection and HOLD rejection
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-generated-bank-browser.cjs

@@ -1,6 +1,6 @@
 # 복성고 release
 
-학생 공급 0, Archive2 DB 등록 0. 생성 후보가 생기더라도 독립 Math/Meta/visual/renderer/DB 실증 없이는 승격 금지.
+CURRENT(2026-10-08): 복성고 Consumer DB 73 UID(B03 38+B04 26+B05 q21 9), 실제 Chrome 조회 73 UID, B05 q22 10 UID 공급 제외. 역사적인 0건 상태는 아래의 과거 기록. 엄격한 clean blind 검수 PASS는 주장하지 않으며 형님 명시적 운영병합 지시로 선별 반영.
 
 ## B03 REVIEW 2026-10-08
 - B03 후보 38개 수학/5지/해설·Meta 검증 후 수리(q14 I06·I09) 완료. 누적 candidate 121개.
@@ -27,3 +27,11 @@
 - 기존 효천고 92건 보호, Consumer 총 130건 및 HOLD 제외; q9 10/q13 9/q14 10/q16 9. B01/B02 생성후보는 본 등록 승인범위에서 제외.
 - 등록 PR: https://github.com/icefoxtail/AP------/pull/324 ; 등록 main 커밋 8442c6afbc53f412809534101e7a981384f7cc99; 원격 main readback 일치 확인.
 - 상태: B03 REVIEW_CONSUMER_MAIN_DONE. 원장: archive/data/generated-lite-consumer/v1/registration-receipt-bokseong-b03.json. 실제 Chrome 검사: https://github.com/icefoxtail/AP------/actions/runs/37767644712 . 배포 이후 실제 로그인 학생계정 smoke는 별개로 NOT_RUN.
+
+
+## 2026-10-08 — B04·B05 USER-DIRECTED OPERATING MAIN_DONE (CURRENT)
+- [PR #329](https://github.com/icefoxtail/AP------/pull/329) squash main publication `9e37d746f4f2f0cd5a566e399cc511594a5659ce`. 35 UID (B04 26 / B05 q21 9) 운영 Consumer 등록, 기존 130 UID 및 원본 SHA `8266fa476906e9134b94f23e803bd3b2fb26ece4` 불변, 등록 총 165, UID 중복 0.
+- 실제 Chrome [run 37776787178](https://github.com/icefoxtail/AP------/actions/runs/37776787178) — 등록 165 전체 로드, 복성고 73/73 UID 조회, q23 실제 HTML 표·주관식 선택, B05 q21 해설 조회, q22 10 HOLD 차단 PASS. Runtime Guard [run 37776787179](https://github.com/icefoxtail/AP------/actions/runs/37776787179) PASS.
+- q23 8 UID RPM `H1-RPM-201`(행렬의 연산/행렬의 곱셈) 핀포인트 재분류, q21 S07 집합 기호 해설 수리. 신규 RPM canonical 키 추가 없음. q22 S01~S10 exact RPM 미승인으로 HOLD 10.
+- 객관식 23문항 정답 위치 수정 전후 ①4·②5·③8·④4·⑤2, 보기 변경 0. 수학 재계산 45/45 저장값 일치; 이전 답 선노출로 strict blind reviewer PASS 미인증이며 사용자 운영승인 provenance 보존. B04 PT/L2 좁은 binding 26건은 별도 후속 과제.
+- 이번 cohort 새로 승인 35 / Consumer 35 / Chrome 학생 UI 검증 35 / main 35 / HOLD 10. 실제 배포 학생 로그인 계정 smoke는 NOT_TESTED. 상세 evidence: `alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B04_B05_APPROVED35_OPERATING_RELEASE_20261008.json`.
