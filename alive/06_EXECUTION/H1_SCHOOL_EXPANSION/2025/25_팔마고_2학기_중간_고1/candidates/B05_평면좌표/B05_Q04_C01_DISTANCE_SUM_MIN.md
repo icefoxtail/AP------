@@ -1,5 +1,9 @@
 # B05_Q04_C01_DISTANCE_SUM_MIN
 
+## 2026-10-09 GPT quality correction — 학습 목적 재판정
+- **교육 목적 A 반복 숙달(ORIGINAL_FIDELITY / 수치 인스턴스)**: 본 문항은 원본 q4와 동일한 두 점까지 거리 합의 최솟값 문제로, 삼각부등식과 선분 등호 조건이 결정적 풀이이다. 수치변형으로서 학습 가치는 인정하되 별도 신규 semantic Blueprint 또는 EXT-L4 확장 개수로 집계하지 않는다.
+- 아래 기존 EXT_L4_CANDIDATE·Unique semantic blueprint 주장은 **정정 전 생성 기록(HISTORY)**이다. 마스터 L3/L4에 신규 유형을 생성하거나 자동 승격시키지 않는다. 수학 정답 ④ 및 학생용 발문·해설은 그대로 유지한다.
+
 ## Draft and source
 - draftCandidateId: B05_Q04_C01_DISTANCE_SUM_MIN
 - sourceQid: 4
