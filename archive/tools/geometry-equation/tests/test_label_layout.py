@@ -130,6 +130,21 @@ class LayoutTests(unittest.TestCase):
         placed=result['labels'][0]
         self.assertEqual(placed['placement'],'AUTO_N')
         self.assertTrue(tick_box_respects_owner(Box(**placed['box']),item['at'],'x'))
+    def test_q13_tick_callout_keeps_exact_owner_and_leader_clearance(self):
+        tick={'id':'tick-x--3','kind':'line','role':'tick','axis':'x','value':-6,'geometry':[(100,156),(100,164)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(200,160)]}
+        curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,190),(140,220)]}
+        callout={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':'tick-x--3','axis':'x','value':-6,'sourceAt':[100,160],'offsetUser':[28,-22]}
+        item=label('tick-x--3-label',(100,160),'−6','TICK_LABEL',0,tickId='tick-x--3',tickAxis='x',tickValue=-6,tickDisplayValue='−6',directions=('S','N'),gaps=(8,12),tickLabelCallout=callout)
+        result=layout([item],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS',result['unresolved'])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        self.assertEqual(len(result['leaders']),1)
+        leader=result['leaders'][0]
+        self.assertEqual((leader['tickId'],leader['axis'],leader['value']),('tick-x--3','x',-6))
+        self.assertEqual(leader['from'],[100,160])
+        self.assertTrue(Box(**result['labels'][0]['box']).x<=leader['to'][0]<=Box(**result['labels'][0]['box']).right)
+        self.assertAlmostEqual(leader['to'][1],Box(**result['labels'][0]['box']).bottom)
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}
@@ -139,22 +154,17 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(result['status'],'POLISH_REQUIRED')
         self.assertEqual(result['unresolved'],[item['id']])
         self.assertEqual(result['suppressed'],[])
-    def test_required_tick_crossing_curve_uses_measured_label_knockout_without_relaxing_owner(self):
+    def test_required_tick_crossing_curve_never_passes_with_masking(self):
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}
         item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',tickValue=1,tickDisplayValue='1',directions=('S','N'),gaps=(8,12,16),allowSuppress=False)
         result=layout([item],[tick,axis,curve],Box(0,0,200,200),measurements={item['id']:(12,12)},require_measurements=True)
-        self.assertEqual(result['status'],'PASS')
+        self.assertEqual(result['status'],'POLISH_REQUIRED')
         self.assertEqual(result['suppressed'],[])
-        self.assertTrue(tick_box_respects_owner(Box(**result['labels'][0]['box']),item['at'],'x'))
-        self.assertEqual(result['labels'][0]['placement'],'TICK_LABEL_GRAPH_KNOCKOUT_N')
-        knockout=result['labels'][0]['tickLabelKnockout']
-        self.assertEqual(knockout['obstacleIds'],['f-branch-0'])
-        self.assertEqual(knockout['box'],result['labels'][0]['box'])
-        self.assertEqual(knockout['padding'],6.0)
-        self.assertEqual(result['trace'][0]['tickLabelKnockout'],knockout)
-    def test_tick_knockout_never_covers_a_point_or_axis_owner(self):
+        self.assertEqual(result['unresolved'],[item['id']])
+        self.assertFalse(any('tickLabelKnockout' in row for row in result['labels']+result['trace']))
+    def test_tick_with_curve_and_point_obstacles_remains_unresolved_without_mask(self):
         tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(200,100)]}
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(100,40),(100,160)]}

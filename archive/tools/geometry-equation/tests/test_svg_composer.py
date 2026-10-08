@@ -26,7 +26,7 @@ class ComposerTests(unittest.TestCase):
         self.assertIn('원과 접점',s);self.assertNotIn('\\frac',s)
     def test_layer_order(self):
         p,l=fixtures();s=compose(p,l,Viewport(-2,2,-2,2));self.assertLess(s.index('id="line"'),s.index('id="point"'));self.assertLess(s.index('id="point"'),s.index('id="label"'))
-    def test_measured_tick_knockout_is_painted_over_graph_and_under_label(self):
+    def test_tick_curve_mask_layout_is_rejected_before_composition(self):
         prepared={'title':'함수 그래프','primitives':[{'id':'f-branch-0','kind':'line','from':[20,20],'to':[180,180],'layer':50,'role':'curve'}]}
         label={'id':'tick-x-1-label','kind':'TICK_LABEL','text':'1','font':13,'math':True,'centered':True,
                'tickId':'tick-x-1','tickAxis':'x','tickValue':1,'tickDisplayValue':'1','owner':'tick-x-1',
@@ -35,14 +35,23 @@ class ComposerTests(unittest.TestCase):
                   'obstacleIds':['f-branch-0'],'box':label['box'],'padding':6.0,'clearancePx':'SVG_USER_SPACE','reason':'PRESERVED_GRAPH_STROKE_CLEARANCE'}
         layout={'labels':[{**label,'tickLabelKnockout':knockout}],
                 'trace':[{'id':label['id'],'fallback':'TICK_LABEL_GRAPH_KNOCKOUT_S','tickLabelKnockout':knockout}]}
-        svg=compose(prepared,layout,Viewport(-2,2,-2,2,width=200,height=200,panel=0))
-        root=ET.fromstring(svg)
-        mask=root.find('.//*[@data-role="tick-label-knockout"]')
-        self.assertIsNotNone(mask)
-        self.assertEqual(mask.attrib['data-owner-label'],label['id'])
-        self.assertEqual(mask.attrib['data-occluded-primitives'],'f-branch-0')
-        self.assertLess(svg.index('id="f-branch-0"'),svg.index('data-role="tick-label-knockout"'))
-        self.assertLess(svg.index('data-role="tick-label-knockout"'),svg.index('id="tick-x-1-label"'))
+        with self.assertRaisesRegex(ValueError,'TICK_LABEL_CURVE_MASK_FORBIDDEN'):
+            compose(prepared,layout,Viewport(-2,2,-2,2,width=200,height=200,panel=0))
+    def test_tick_owner_leader_is_short_bound_and_unmasked(self):
+        tick_id='tick-x--3';label_id=tick_id+'-label'
+        callout={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':'x','value':-6,'sourceAt':[100,160],'offsetUser':[28,-22]}
+        prepared={'title':'이차함수','primitives':[
+            {'id':'x-axis','kind':'line','from':[0,160],'to':[200,160],'layer':30,'role':'axis','axis':'x'},
+            {'id':tick_id,'kind':'line','from':[100,156],'to':[100,164],'layer':30,'role':'tick','axis':'x','value':-6,'token':'indicator'}
+        ]}
+        label={'id':label_id,'kind':'TICK_LABEL','text':'−6','font':11.5,'math':True,'centered':True,'tickId':tick_id,'tickAxis':'x','tickValue':-6,'tickDisplayValue':'−6','owner':tick_id,'at':(100,160),'baseline':[128,138],'box':{'x':114.5,'y':130,'width':27,'height':16},'tickLabelCallout':callout}
+        leader={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','id':label_id+'-owner-leader','from':[100,160],'to':[100+28*(1-8/22),146],'ownerLabelId':label_id,'tickId':tick_id,'axis':'x','value':-6}
+        svg=compose(prepared,{'labels':[label],'trace':[],'leaders':[leader]},Viewport(-2,2,-2,2,width=200,height=200,panel=0))
+        root=ET.fromstring(svg);line=root.find('.//*[@id="'+leader['id']+'"]');renderedLabel=root.find('.//*[@id="'+label_id+'"]')
+        self.assertIsNotNone(line);self.assertEqual(line.attrib['data-tick-owner'],tick_id);self.assertEqual(line.attrib['data-tick-axis'],'x');self.assertEqual(line.attrib['data-tick-value'],'-6')
+        self.assertEqual(line.attrib['stroke'],'#666');self.assertEqual(line.attrib['stroke-width'],'0.8');self.assertNotIn('marker-end',line.attrib);self.assertNotIn('marker-start',line.attrib)
+        self.assertEqual(renderedLabel.attrib['data-tick-callout'],'TICK_LABEL_OWNER_LEADER_v1')
+        self.assertNotIn('tick-label-knockout',svg)
     def test_duplicate_label(self):
         p,l=fixtures();l['labels'].append({**l['labels'][0],'id':'label2'})
         with self.assertRaisesRegex(ValueError,'DUPLICATE_SEMANTIC'):compose(p,l,Viewport(-2,2,-2,2))

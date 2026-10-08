@@ -79,6 +79,16 @@ def prepare(spec):
                     except (TypeError,ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis) from None
                     if not math.isfinite(value) or abs(value)<=1e-12:raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis)
                     if not (xmin<=value<=xmax if axis=='x' else ymin<=value<=ymax):raise ValueError('AXIS_TICK_VALUE_OUT_OF_VIEW:'+axis)
+        raw_tick_callouts=spec['displayFacts'].get('tickLabelCallouts',[])
+        if not isinstance(raw_tick_callouts,list):raise ValueError('INVALID_TICK_LABEL_CALLOUTS')
+        tick_callouts={}
+        for callout in raw_tick_callouts:
+            if (not isinstance(callout,dict) or set(callout)!={'axis','value','offsetUser'} or callout.get('axis')!='x'
+                or callout.get('value')!='-6' or callout.get('offsetUser')!=[28,-22]):
+                raise ValueError('INVALID_TICK_LABEL_CALLOUTS')
+            key=(callout['axis'],float(Fraction(callout['value'])))
+            if key in tick_callouts:raise ValueError('DUPLICATE_TICK_LABEL_CALLOUT')
+            tick_callouts[key]=callout
         unit_ticks=[]
         if axis_tick_values is None:
             if show_x and xmin<=1<=xmax:unit_ticks.append(('model-x-unit','x',1,(1,0),(0,4)))
@@ -115,7 +125,12 @@ def prepare(spec):
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
-                labels.append({'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True})
+                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True}
+                callout=tick_callouts.pop((axis,value),None)
+                if callout is not None:
+                    label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':axis,'value':value,'sourceAt':list(p),'offsetUser':list(callout['offsetUser'])}
+                labels.append(label)
+        if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
     if rational_features is not None:
         if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
@@ -261,6 +276,12 @@ def prepare(spec):
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             labels.append(label)
+    equation_centers=spec['displayFacts'].get('equationLabelCenters',{})
+    if not isinstance(equation_centers,dict):raise ValueError('INVALID_EQUATION_LABEL_CENTERS')
+    for label_id,center in equation_centers.items():
+        matches=[label for label in labels if label['id']==label_id and label['kind']=='EQUATION_LABEL']
+        if len(matches)!=1 or not isinstance(center,list) or len(center)!=2:raise ValueError('INVALID_EQUATION_LABEL_CENTER')
+        matches[0]['candidateCenters']=[[finite(value) for value in center]]
     prepared = {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))}
     if 'publication' in semantic:
         from .publication import decorate
