@@ -29,7 +29,10 @@ window.questionBank = [
     "solution": "1번에서 1번으로 가는 코스 1개, 1번에서 2번으로 2개, 2번에서 1번으로 1개, 2번에서 2번으로 0개이므로 $A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix}$이다.\n두 번 이동하는 경우는 $A^2=\\begin{pmatrix}3&2\\\\1&2\\end{pmatrix}$, 세 번 이동하는 경우는 $A^3=A^2A=\\begin{pmatrix}5&6\\\\3&2\\end{pmatrix}$이다.\n출발점과 도착점을 모두 고려하면 각 성분을 더한 $5+6+3+2=16$가지이다.\n따라서 구하는 값은 $A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -65,7 +68,10 @@ window.questionBank = [
     "solution": "$n$회 이동할 때 $(i,j)$성분은 $i$에서 출발해 $j$에 도착하는 연속 경로 수이다.\n$A^2=\\begin{pmatrix}2&2\\\\1&3\\end{pmatrix}$, $A^3=A^2A=\\begin{pmatrix}2&6\\\\3&5\\end{pmatrix}$이므로 $(1,2)$성분을 읽으면 $6$가지이다.\n따라서 정답은 ⑤이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -89,7 +95,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동해 1번에 도착하되, **첫 번째 이동 직후 반드시 2번 지점**에 있는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}0&2\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동해 1번에 도착하되, 첫 번째 이동 직후 반드시 2번 지점에 있는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$1$",
       "$2$",
@@ -101,13 +107,16 @@ window.questionBank = [
     "solution": "첫 번째 이동이 1번에서 2번으로 가는 코스는 $A_{12}=2$개이다.\n남은 두 번 이동으로 2번에서 1번에 도착하는 경우는 $(A^2)_{21}$개이다.\n$A^2=\\begin{pmatrix}2&2\\\\1&3\\end{pmatrix}$이므로 $(A^2)_{21}=1$이다.\n따라서 지정된 경유 조건을 만족하는 전체 경로는 $2\\times1=2$가지이다.\n따라서 정답은 ②이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
     "uid": "ALITE-BSG26-B04R2-Q23-S04",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "행렬의 활용",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -125,19 +134,22 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$이다. 1번에서 출발한 뒤 **세 번째 이동이 끝날 때 처음으로** 1번 지점에 돌아오는 경우의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$이다. 1번에서 출발한 뒤 세 번째 이동이 끝날 때 처음으로 1번 지점에 돌아오는 경우의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [],
     "answer": "$4$",
     "solution": "세 번째 이동 전까지 1번에 돌아오면 안 되므로 첫 번째와 두 번째 이동을 마친 지점은 모두 2번이어야 한다.\n가능한 지점 순서는 $1\\to2\\to2\\to1$ 하나뿐이다.\n이에 해당하는 코스 수는 $A_{12}A_{22}A_{21}=2\\times1\\times2=4$가지이다.\n따라서 구하는 값은 $4$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "uid": "ALITE-BSG26-B04R2-Q23-S05",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 활용",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -167,13 +179,16 @@ window.questionBank = [
     "solution": "1회 코스 수 행렬은 $A=\\begin{pmatrix}0&2\\\\3&0\\end{pmatrix}$이다.\n같은 지점으로 한 번에 이동하는 코스가 없으므로 지점 순서는 $1\\to2\\to1\\to2\\to1$로 확정된다.\n각 단계에서 코스를 고르는 방법은 $2,3,2,3$가지이므로 $2\\times3\\times2\\times3=36$가지이다.\n따라서 정답은 ⑤이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
     "uid": "ALITE-BSG26-B04R2-Q23-S06",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "행렬의 활용",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -203,7 +218,10 @@ window.questionBank = [
     "solution": "각 시점의 코스 수 행렬을 실제 이동 순서대로 곱해야 하므로 $BA^2$를 계산한다.\n$A^2=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$이고 $BA^2=\\begin{pmatrix}3&3\\\\3&2\\end{pmatrix}$이다.\n1번에서 출발해 2번에 도착하는 경우의 수는 $(1,2)$성분인 $3$가지이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -227,7 +245,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동한 뒤 1번에 도착하는 경로 중 **2번 지점을 한 번 이상 거치는** 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
+    "content": "두 지점의 코스 수 행렬이 $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$이다. 1번에서 출발하여 세 번 이동한 뒤 1번에 도착하는 경로 중 2번 지점을 한 번 이상 거치는 경우의 수는? (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [
       "$5$",
       "$8$",
@@ -239,7 +257,10 @@ window.questionBank = [
     "solution": "$A^2=\\begin{pmatrix}5&3\\\\3&2\\end{pmatrix}$, $A^3=\\begin{pmatrix}13&8\\\\8&5\\end{pmatrix}$이므로 1번에서 출발해 1번에 도착하는 모든 경로는 $13$개이다.\n그중 2번을 전혀 방문하지 않는 경로는 세 번 모두 1번에서 1번으로 가는 코스만 고른다. 각 단계에서 2가지이므로 $2^3=8$가지이다.\n따라서 2번을 한 번 이상 거치는 경로는 $13-8=5$가지이다.\n따라서 정답은 ①이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -263,12 +284,15 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "코스 수 행렬이 $A=\\begin{pmatrix}2&2\\\\1&1\\end{pmatrix}$인 두 지점에서 1번을 출발해 세 번 이동하고 다시 1번에 도착한다. **중간의 두 지점 중 정확히 한 곳만 2번**인 경로의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
+    "content": "코스 수 행렬이 $A=\\begin{pmatrix}2&2\\\\1&1\\end{pmatrix}$인 두 지점에서 1번을 출발해 세 번 이동하고 다시 1번에 도착한다. 중간의 두 지점 중 정확히 한 곳만 2번인 경로의 수를 구하시오. (단, 같은 코스를 여러 번 이용할 수 있다.)",
     "choices": [],
     "answer": "$8$",
     "solution": "세 번 이동에는 출발·중간1·중간2·도착의 지점이 정해진다. 중간 지점이 정확히 한 번 2번인 순서는 $1\\to2\\to1\\to1$, $1\\to1\\to2\\to1$ 두 가지이다.\n첫째 순서의 코스 수는 $2\\times1\\times2=4$이고, 둘째 순서 역시 $2\\times2\\times1=4$이다.\n둘은 서로 다른 경로 구조이므로 합은 $4+4=8$가지이다.\n따라서 구하는 값은 $8$이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

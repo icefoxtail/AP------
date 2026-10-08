@@ -35,13 +35,16 @@ window.questionBank = [
     "solution": "$A^4=\\begin{pmatrix}1&0\\\\8&1\\end{pmatrix}$, $B^3=\\begin{pmatrix}1&0\\\\9&1\\end{pmatrix}$이다.\n행렬을 곱하면 $A^4B^3=\\begin{pmatrix}1&0\\\\17&1\\end{pmatrix}$이므로 대각성분 $1$과 $1$, 왼쪽 아래 성분 $17$을 합하여 $19$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
     "uid": "ALITE-BSG26-B04R2-Q17-S05",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 거듭제곱",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -72,7 +75,10 @@ window.questionBank = [
     "solution": "$AB=\\begin{pmatrix}1&3\\\\2&7\\end{pmatrix}$이고 $BA=\\begin{pmatrix}7&3\\\\2&1\\end{pmatrix}$이다.\n따라서 $AB-BA=\\begin{pmatrix}-6&0\\\\0&6\\end{pmatrix}$이다.\n행렬곱은 순서를 바꾸면 일반적으로 결과가 달라지므로 $(1,1)$성분은 $-6$이다.\n따라서 정답은 ①이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -109,13 +115,16 @@ window.questionBank = [
     "solution": "$A^k=\\begin{pmatrix}1&0\\\\kt&1\\end{pmatrix}$임을 직접 행렬곱으로 확인할 수 있다.\n따라서 다섯 행렬의 대각 성분합은 $10$, $(2,1)$성분합은 $(1+2+3+4+5)t=15t$이다.\n$10+15t=55$에서 $15t=45$이므로 $t=3$이다.\n따라서 정답은 ②이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
     "uid": "ALITE-BSG26-B04R2-Q17-S07",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 거듭제곱",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -146,13 +155,16 @@ window.questionBank = [
     "solution": "직접 곱하면 $A^2=\\begin{pmatrix}1&0\\\\1&0\\end{pmatrix}=A$이다.\n따라서 $A^3=A^2A=A$이고 나머지 거듭제곱도 모두 $A$이다.\n일곱 행렬의 합은 $7A=\\begin{pmatrix}7&0\\\\7&0\\end{pmatrix}$이므로 성분합은 $14$이다.\n따라서 정답은 ④이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "uid": "ALITE-BSG26-B04R2-Q17-S08",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 거듭제곱",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -183,7 +195,10 @@ window.questionBank = [
     "solution": "$A^2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이므로 $A^3=A$, $A^4=I$처럼 홀수 거듭제곱은 $A$, 짝수 거듭제곱은 $I$이다.\n1부터 9까지 홀수는 5개, 짝수는 4개이므로 합은 $5A+4I=\\begin{pmatrix}4&5\\\\5&4\\end{pmatrix}$이다.\n따라서 모든 성분의 합은 $4+5+5+4=18$이다.\n따라서 정답은 ①이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -220,6 +235,9 @@ window.questionBank = [
     "solution": "$A^2=\\begin{pmatrix}4&0\\\\2&0\\end{pmatrix}=2A$이다.\n이에 따라 $A^3=4A$, $A^4=8A$, $A^5=16A$이므로 합은 $(1+2+4+8+16)A=31A$이다.\n$A$의 성분합이 $3$이므로 전체 성분합은 $31\\times3=93$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

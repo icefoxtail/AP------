@@ -34,7 +34,10 @@ window.questionBank = [
     "solution": "$A=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}+N$, $N=\\begin{pmatrix}0&0\\\\2&0\\end{pmatrix}$으로 놓으면 $N^2=O$이다.\n직접 곱하면 $A^2=\\begin{pmatrix}1&0\\\\4&1\\end{pmatrix}$이고, 이를 반복하면 $A^k=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이다.\n$A$부터 $A^6$까지 대각 성분의 합은 $12$이고, 왼쪽 아래 성분의 합은 $2(1+2+\\cdots+6)=42$이다.\n따라서 전체 성분의 합은 $12+42=54$이다.\n따라서 정답은 ④이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -70,7 +73,10 @@ window.questionBank = [
     "solution": "$A^2=\\begin{pmatrix}1&0\\\\6&1\\end{pmatrix}$, $A^3=\\begin{pmatrix}1&0\\\\9&1\\end{pmatrix}$으로 왼쪽 아래 성분이 거듭제곱할 때마다 $3$씩 증가한다.\n따라서 $A^n=\\begin{pmatrix}1&0\\\\3n&1\\end{pmatrix}$이다.\n조건에서 $3n=27$이므로 $n=9$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -106,6 +112,9 @@ window.questionBank = [
     "solution": "$A^k=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이므로 $(2,1)$성분은 $2k$이다.\n주어진 교대합의 $(2,1)$성분은 $2(1-2+3-4+5-6+7-8)$이다.\n인접한 두 항을 묶으면 $(-1)+(-1)+(-1)+(-1)=-4$이므로 전체는 $-8$이다.\n따라서 정답은 ②이다.",
     "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
     "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
