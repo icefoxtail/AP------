@@ -1,9 +1,14 @@
 {
   "schemaVersion": "ALIVE_LITE_EXTENSION_L3_CANDIDATES_v1",
-  "status": "DISCOVERED_WITH_GENERATED_EXAMPLES_REVIEW_PENDING",
+  "status": "HISTORICAL_SUPERSEDED_PARENT_EXISTS",
   "targetL2": "H22-C-04-COMPLEX_BASIC",
-  "candidateCount": 1,
-  "candidates": [
+  "candidateCount": 0,
+  "candidates": [],
+  "originalSourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "independentReview": "NOT_TESTED",
+  "canonicalRPMModified": false,
+  "generatedSampleEvidenceBound": false,
+  "supersededCandidates": [
     {
       "candidateL3Id": "EXT-H1-BSG26-REALCUBIC-CONJROOT-L3",
       "label": "실수계수 고차방정식에서 켤레 허근의 계수 관계",
@@ -26,15 +31,18 @@
         "ALITE-BSG26-B02-Q08-C01",
         "ALITE-BSG26-B02-Q08-C02"
       ],
-      "status": "L3_GRANULARITY_REVIEW_REQUIRED",
+      "status": "SUPERSEDED_PARENT_EXISTS",
       "canonicalPromoted": false,
       "consumerSelectable": false,
       "exampleUidCount": 2,
-      "reviewStatus": "DISCOVERED_UNREVIEWED"
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "reason": "User-directed: actual question primary is later-unit cubic equation H1-RPM-172, not new L3"
     }
   ],
-  "originalSourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "independentReview": "NOT_TESTED",
-  "canonicalRPMModified": false,
-  "generatedSampleEvidenceBound": true
+  "replacedBy": {
+    "rpmPrimaryL3": "삼차·사차방정식",
+    "rpmL4": "인수분해형",
+    "rpmRecordId": "H1-RPM-172",
+    "targetL2": "H22-C-06-HIGHER_EQUATION"
+  }
 }
