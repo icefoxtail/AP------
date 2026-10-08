@@ -1,0 +1,207 @@
+window.examTitle = "ALIVE_LITE_BSG26_B02_MATRIX_SCALAR";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B02-Q03-M01",
+    "level": "하",
+    "difficultyBucket": 2,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}a&6\\\\9&12\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\3&4\\end{pmatrix}$에 대하여 $A=kB$일 때, $a$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$6$",
+      "$9$",
+      "$12$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 두 행렬이 실수배 관계라면 대응 성분의 비가 같다.\n$(1,2)$성분에서 $6=2k$이므로 $k=3$이다.\n$(2,1)$, $(2,2)$성분도 각각 $9=3\\cdot3$, $12=3\\cdot4$로 일치한다.\n따라서 $(1,1)$성분에 의해 $a=2k=6$이다.\n따라서 정답은 ③이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B02-Q03-M02",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "세 행렬 $A=\\begin{pmatrix}2&-1\\\\0&3\\end{pmatrix}$, $B=\\begin{pmatrix}1&b\\\\4&2\\end{pmatrix}$, $C=\\begin{pmatrix}7&1\\\\4&11\\end{pmatrix}$에 대하여 $kA+B=C$를 만족하는 실수 $k,b$가 있다. $b$의 값은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$7$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 수치만 있는 성분에서 먼저 실수배 계수 $k$를 결정한다.\n$(1,1)$성분에서 $2k+1=7$이므로 $k=3$이다.\n이제 $(1,2)$성분에서 $-k+b=1$이므로 $-3+b=1$, 즉 $b=4$이다.\n나머지 성분도 $0\\cdot3+4=4$, $3\\cdot3+2=11$이어서 행렬 등식에 맞는다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 3,
+    "uid": "ALITE-BSG26-B02-Q03-M03",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}t&2\\\\3&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&4\\\\-2&1\\end{pmatrix}$에 대하여 $A+kB$의 $(1,1)$성분과 $(2,2)$성분이 모두 $0$이다. $k-t$의 값은?",
+    "choices": [
+      "$-2$",
+      "$-1$",
+      "$0$",
+      "$1$",
+      "$2$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 두 개의 서로 다른 성분 조건을 연립하여 매개변수들을 정한다.\n$A+kB$의 $(2,2)$성분은 $-1+k$이므로 $-1+k=0$에서 $k=1$이다.\n$(1,1)$성분은 $t+k$이므로 $t+k=0$에서 $t=-1$이다.\n따라서 $k-t=1-(-1)=2$이다.\n따라서 정답은 ⑤이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 4,
+    "uid": "ALITE-BSG26-B02-Q03-M04",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "행렬 $B=\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$의 실수배 $A=kB$가 있다. $A$의 네 성분의 합이 $18$일 때, $A$의 $(2,2)$성분은?",
+    "choices": [
+      "$3$",
+      "$6$",
+      "$9$",
+      "$12$",
+      "$18$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 행렬을 실수배하면 각 성분의 총합도 같은 배수만큼 변한다.\n$B$의 모든 성분의 합은 $2+0+1+3=6$이다.\n$A=kB$이므로 $A$의 성분합은 $6k=18$, 따라서 $k=3$이다.\n$B$의 $(2,2)$성분은 3이므로 $A$의 같은 성분은 $3k=9$이다.\n따라서 정답은 ③이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 5,
+    "uid": "ALITE-BSG26-B02-Q03-M05",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}2&5\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&-3\\\\4&0\\end{pmatrix}$에 대하여 $A+tB$의 첫째 행에 있는 두 성분의 합이 $0$이다. 실수 $t$의 값은?",
+    "choices": [
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{3}{2}$",
+      "$\\dfrac{5}{2}$",
+      "$\\dfrac{7}{2}$",
+      "$7$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 행렬 전체를 계산하기보다 조건이 걸린 첫째 행만 살핀다.\n$A+tB$의 첫째 행은 $(2+t,\\ 5-3t)$이다.\n두 성분의 합이 0이므로 $(2+t)+(5-3t)=7-2t=0$이다.\n따라서 $2t=7$이고 $t=\\dfrac{7}{2}$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 6,
+    "uid": "ALITE-BSG26-B02-Q03-M06",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-CORE",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 연산"
+    ],
+    "wide": false,
+    "content": "이차정사각행렬 $A,B$가 $A+B=\\begin{pmatrix}4&1\\\\0&2\\end{pmatrix}$, $A-B=\\begin{pmatrix}2&-1\\\\4&0\\end{pmatrix}$를 만족한다. $2A+B$의 $(1,1)$성분은?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$9$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 두 행렬의 합과 차를 결합하여 필요한 선형결합을 만든다.\n$P=A+B$, $Q=A-B$라고 하면 $A=\\dfrac{P+Q}{2}$이다.\n따라서 $2A+B=A+(A+B)=\\dfrac{P+Q}{2}+P=\\dfrac{3P+Q}{2}$이다.\n그러므로 $(1,1)$성분은 $\\dfrac{3\\cdot4+2}{2}=7$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  }
+];
