@@ -60,3 +60,11 @@
 - 보기 배열 순서만 무작위로 섞거나 ±등차 방식으로 틀린 보기를 추가하는 자동보정은 최종 PASS 불가. **수학적 오개념에 기반한 오답 재설계 + 보기의 자연스러운 질서 + answer/solution 동기화 + 5지 유일정답**을 확인할 것.
 - 효천고 수치형 19문항의 1차 위치 보정은 별도 repair branch의 미승인 초안이며, main 반영 전 품질 게이트가 필요함.
 - 정본: `alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md`.
+
+## CURRENT HARD — L3/L4 확장 탐색 선행 (2026-10-08, B01R2 실측 반영)
+- 신규 CREATE는 문제를 먼저 쓰기 전에 **현재 RPM L3/L4 → earlier same-grade/lower-only RPM → 기존 L3 아래 EXT L4 후보 → 정말 필요한 EXT L3 후보** 순서로 전수 탐색한다.
+- 단순 Condition·CrossConcept·Integration 변화를 자동 신규 L4로 세지 말고 기존 L4 대비 결정적 풀이 구조가 달라야만 후보로 기록한다.
+- 각 원본별 EXT L3/L4 candidate registry, canonicalComparator, disposition, 예시 UID, 미개척 이유를 B단계에서 Git 저장한 뒤 C 출제. 이번 실행 정본: alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md.
+- B01R2는 CREATE 45 UID, Blueprint 65 중 45 ACCEPT의 사실 기록. 추가 taxonomy 발견 등록은 **L4 후보 33, L3 세분화 검토 후보 3**, canonical 승인 유형 0. 기존 45의 REVIEW PASS/MAIN/DB는 0.
+- q15의 기존 L3 미확정 기록은 RPM 전체 부재로 해석 금지. H1-RPM-186/187의 H22-C-07-CORE 합·곱의 법칙 L3가 존재하여 prior same-grade semantic 재사용 및 EXT L4 적합성을 먼저 REVIEW한다.
+- 다음 미완료 생산 배치는 B02. B01 확장 후보 검토는 별도 독립 semantic REVIEW; 필요 시 완료된 B01 UID는 건드리지 않고 sidecar로 처리.
