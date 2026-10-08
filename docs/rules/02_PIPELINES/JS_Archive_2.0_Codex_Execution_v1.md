@@ -476,6 +476,12 @@ CLI는 읽기 전용으로 actual receipt SHA와 helper 결과를 JSON 출력하
 
 ### Stable worker completion maintenance — 2026-10-08
 
+추가 cross-run 도구는 `archive/tools/CODEX_MAINTENANCE.md`의 2026-10-08 upgrade 절을 따른다. 학생용 bundle adapter는 기존 questions/requiredAssets와 rows/student/assets를 안전하게 연결하고 object choice·공통 자료·표시 필드를 보존하며 알 수 없는 필드는 삭제하지 않고 FAIL한다. 새 freeze CLI는 assignment의 current raw SHA를 요구한다. postfreeze는 원 freeze SHA·전체 qid·현재 학생 필드/자산 parity를 확인한 뒤 명시한 qid의 저장 필드만 공개한다.
+
+CREATE의 정식 단원 순서 검사는 actual L1 master row/SHA로 앞단에서 수행하며 숫자 접미사나 legacy alias로 추정·자동 수정하지 않는다. 기존 등록 대상은 중복 거부를 완화하지 않고 별도 prepare/update 경로로 처리한다. 허용된 physical Meta 변경도 current R1 META PASS/source parity를 요구하고 영향 target의 runtime 승인 상태는 pending으로 돌려 이전 승인을 새 내용에 자동 승계하지 않는다. source item HOLD와 runtime pending을 혼동하지 않는다.
+
+ROOT publication은 bound checks 종료·exit code·현재 source/proofs/assets/baseline/main 입력을 immutable checkpoint로 확인하고 실패 단계부터 재개한다. main drift의 비겹침과 target overlap을 구분하고 무조건 재적용하지 않는다. dispatcher는 stage별 1개·새 pair fresh session·same-stage 기존 session 규칙과 sealed event 수납을 유지한다. preview cache는 source SHA·전체 변환 조건·도구 version에 결속하고 실제 reviewer 열람을 생략하지 않는다. Git remote bytes는 bounded binary batch로 읽으며 파일별 SHA/크기/누락/중복/잔여 bytes 검증은 유지한다. 이미 완료된 유효 시험지의 검수·receipt는 새 포맷을 위한 소급 재실행 없이 보존한다.
+
 신규 Codex stage는 `archive/tools/CODEX_MAINTENANCE.md`의 CREATE preflight 및 `archive-codex-stage-kit.mjs`를 사용한다. CREATE 출고 전 실제 HOLD count/reason, TeX 표기, 명시적 최종값과 선택기호의 불일치 후보를 먼저 표시하고 해당 worker가 원본·수학 근거로 처리한다. 정당한 CREATE HOLD는 R1/R2로 운반하고 R3의 남은 itemStatus HOLD는 release FAIL이다. 구조 lint는 source/수학/Visual 승인이 아니며 자동 발문 수정은 하지 않는다.
 
 기술 bind는 actual raw SHA-256·raw-buffer/clean-filter blob SHA·solution hash와 기존의 명시적 small-board 검수 필드만 결속한다. quality PASS/Meta 의미 판정/없는 reviewed field를 만들지 않는다. R1/R2 pre-freeze에서는 raw JS를 읽는 bind/preflight/seal을 금지하고 current student-only bundle과 실제 asset 열람 후 immutable freeze만 사용한다. original freeze는 exclusive-write로 보존하고 adjudication을 별도 파일로 기록한다.

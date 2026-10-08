@@ -16,7 +16,7 @@ export function readExam(file) {
 export function inside(root,relative) {
   const file=path.resolve(root,relative),rel=path.relative(path.resolve(root),file);
   if(rel==='..'||rel.startsWith('..'+path.sep)||path.isAbsolute(rel))throw Error('PATH_ESCAPE:'+relative);
-  if(fs.existsSync(file)){const real=fs.realpathSync(file),rr=path.relative(fs.realpathSync(root),real);if(rr==='..'||rr.startsWith('..'+path.sep)||path.isAbsolute(rr))throw Error('SYMLINK_ESCAPE:'+relative);}
+  let ancestor=file;while(!fs.existsSync(ancestor)){const parent=path.dirname(ancestor);if(parent===ancestor)throw Error('PATH_ANCESTOR_REQUIRED');ancestor=parent;}const real=fs.realpathSync(ancestor),rr=path.relative(fs.realpathSync(root),real);if(rr==='..'||rr.startsWith('..'+path.sep)||path.isAbsolute(rr))throw Error('SYMLINK_ESCAPE:'+relative);
   return file;
 }
 export function physical(file){return {path:path.resolve(file),sha256:sha256(fs.readFileSync(file))};}
@@ -31,11 +31,18 @@ export function artifactSnapshot({sourceFile,evidenceFile,assetRoot,questions}) 
 export function cleanFilterHash({root,productionPath,bytes}) {
   return execFileSync('git',['-C',root,'hash-object','--path='+productionPath,'--stdin'],{input:bytes,encoding:'utf8'}).trim();
 }
-export function gitBlobReader(root,revision){
-  const tree=execFileSync('git',['-C',root,'ls-tree','-r','-z',revision],{maxBuffer:128*1024*1024}).toString('utf8').split('\0').filter(Boolean);
-  const ids=new Map(tree.map(s=>{const n=s.indexOf('\t');return [s.slice(n+1),s.slice(0,n).split(' ')[2]];}));
-  return p=>{const oid=ids.get(p);if(!oid)throw Error('REMOTE_OBJECT_MISSING:'+p);return execFileSync('git',['-C',root,'cat-file','blob',oid],{maxBuffer:128*1024*1024});};
+export function parseGitBatch(bytes,expected){
+  let cursor=0;const out=new Map();
+  for(const item of expected){const e=bytes.indexOf(10,cursor);if(e<0)throw Error('GIT_BATCH_HEADER_TRUNCATED');const header=bytes.subarray(cursor,e).toString('ascii').match(/^([a-f0-9]+) blob (\d+)$/);if(!header||header[1]!==item.oid||Number(header[2])!==item.size)throw Error('GIT_BATCH_OBJECT_HEADER_MISMATCH');cursor=e+1;const end=cursor+item.size;if(end>=bytes.length||bytes[end]!==10)throw Error('GIT_BATCH_BODY_TRUNCATED');const body=bytes.subarray(cursor,end);if(gitBlobSha(body)!==item.oid)throw Error('GIT_BATCH_CONTENT_OBJECT_MISMATCH');out.set(item.oid,body);cursor=end+1;}
+  if(cursor!==bytes.length)throw Error('GIT_BATCH_TRAILING_BYTES');return out;
 }
-export function readGitObjects(root,revision,paths){
-  const read=gitBlobReader(root,revision);return paths.map(p=>({path:p,bytes:read(p)}));
+export function gitBlobReader(root,revision,preloadPaths=[]){
+  const tree=execFileSync('git',['-C',root,'ls-tree','-r','-l','-z',revision],{maxBuffer:128*1024*1024}).toString('utf8').split('\0').filter(Boolean);
+  const ids=new Map(tree.map(s=>{const n=s.indexOf('\t'),[mode,type,oid,size]=s.slice(0,n).trim().split(/\s+/);return [s.slice(n+1),{mode,type,oid,size:Number(size)}];})),cache=new Map();
+  function batch(paths){const items=[...new Map(paths.map(p=>{const item=ids.get(p);if(!item||item.type!=='blob'||!Number.isSafeInteger(item.size))throw Error('REMOTE_OBJECT_MISSING:'+p);if(item.size>128*1024*1024)throw Error('GIT_BLOB_EXCEEDS_BOUNDED_READ:'+p);return [item.oid,item];})).values()].filter(i=>!cache.has(i.oid));let chunk=[],size=0;
+    const flush=()=>{if(!chunk.length)return;const bytes=execFileSync('git',['-C',root,'cat-file','--batch'],{input:chunk.map(i=>i.oid+'\n').join(''),maxBuffer:Math.max(1024*1024,size+chunk.length*128+4096)});for(const [oid,body] of parseGitBatch(bytes,chunk))cache.set(oid,body);chunk=[];size=0;};
+    for(const item of items){if(chunk.length&&size+item.size>64*1024*1024)flush();chunk.push(item);size+=item.size;}flush();
+  }
+  const read=p=>{const item=ids.get(p);if(!item)throw Error('REMOTE_OBJECT_MISSING:'+p);if(!cache.has(item.oid))batch([p]);return cache.get(item.oid);};read.batch=paths=>{batch(paths);return paths.map(p=>({path:p,bytes:read(p)}));};if(preloadPaths.length)batch(preloadPaths);return read;
 }
+export function readGitObjects(root,revision,paths){return gitBlobReader(root,revision).batch(paths);}

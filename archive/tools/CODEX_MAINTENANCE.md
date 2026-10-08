@@ -6,7 +6,7 @@
 
 ```powershell
 node archive/tools/archive-codex-stage-kit.mjs bind --root . --exam <current-js> --evidence <draft.json> --reviewed-source-sha <current-raw-sha256> --production-path <final-production-js> --output <fresh-bound.json>
-node archive/tools/archive-codex-stage-kit.mjs freeze --root . --stage R1 --reviewer <actual-session-id> --bundle <current-student-only.json> --answers <independent-answers.json> --asset-reads <actual-opened-assets.json> --output <fresh-original-freeze.json>
+node archive/tools/archive-codex-stage-kit.mjs freeze --root . --stage R1 --reviewer <actual-session-id> --bundle <current-student-only.json> --expected-source-sha <assignment-current-raw-sha256> --answers <independent-answers.json> --asset-reads <actual-opened-assets.json> --output <fresh-original-freeze.json>
 node archive/tools/archive-codex-stage-kit.mjs adjudicate --root . --freeze <original-freeze.json> --corrections <qid-corrections.json> --output <fresh-adjudication.json>
 ```
 
@@ -25,6 +25,50 @@ node archive/tools/archive-codex-stage-kit.mjs intake --root . --state <current-
 The completion event returns next stage, freed slot and next roster together. ROOT verifies its delivered SHA and all bound files before freeing/routing the slot. Any post-PASS source/evidence/asset/report/declared-proof mutation invalidates the event; the same worker must preserve old proof, make the necessary correction/revalidation and seal a fresh event. Optional evidence refinements are completed before normal validation. Sealing stage PASS never asserts actual render PASS or MAIN_DONE; R3 actual render and existing publication/waiver gates remain separate. Historical valid unchanged receipts can follow the existing reuse path without rerunning quality solely to obtain the new event format.
 
 Git remote byte readback uses one revision's tree object IDs and `cat-file blob`, with a 128 MiB buffer, so deep Unicode evidence paths do not become Windows revision:path filename-stat failures.
+
+## Cross-run workflow upgrade — 2026-10-08
+
+The current readback reader now resolves one tree and uses bounded `cat-file --batch` chunks (64 MiB aggregate, 128 MiB maximum individual blob), de-duplicates object reads, checks object type/id/size/content, binary lengths and trailing bytes. `readGitObjects` is batched; canonical normal/waived closeout paths preload their required references. It does not drop files or loosen SHA checks.
+
+### Student bundle compatibility and disclosure
+
+`archive-student-bundle.mjs` accepts the existing `questions[].requiredAssets` and native `rows[].student/assets` forms. It preserves original strings, object choices (including the display alias `answer` inside a choice), shared material and `__apExamSubjectiveSpacing`; unknown fields fail rather than disappear. Target-level answer/solution/Meta fields are forbidden. Full qid order/denominator, source SHA, asset bytes and SVG dependencies are checked. Original bundles and freezes are never rewritten.
+
+```powershell
+node archive/tools/archive-student-bundle.mjs --input <old-or-native-student.json> --expected-source-sha <assignment-current-raw-sha256> --output <fresh-adapted.json>
+node archive/tools/archive-codex-stage-kit.mjs postfreeze --root . --exam <current-js> --bundle <original-student-bundle> --freeze <immutable-original-freeze> --freeze-sha <original-freeze-sha> --qids <explicit-qid-csv> --output <fresh-disclosure.json>
+```
+
+The freeze CLI adapts either bundle directly and requires `--expected-source-sha`. Postfreeze verifies original freeze/bundle binding and full current student parity before releasing only requested stored fields. Meta-only raw-source changes are allowed only with exact student parity; a changed student body fails for affected fresh-review routing, never by attaching a new SHA to an old bundle. Original calculation/token adjudications remain separate records.
+
+Only declared `currentAssetBindings:[{kind:'CURRENT_ASSET',ref,sha256}]` are supported by physical asset rebinding. A changed hash requires `bind --asset-root <parent> --reviewed-assets <reviewed-current-assets.json>` with exact `{ref,sha256,reviewed:true}` acknowledgement. Historical freeze/review/authority hashes are not traversed or replaced; before/after hashes are retained. This is not a new visual quality approval.
+
+### Canonical unit order early check
+
+CREATE preflight reads the actual `JS아카이브_표준단원키_마스터테이블.md` L1 rows and binds its SHA. A known key with a different order is reported before downstream stages; unknown/ambiguous authority is flagged, never inferred from a numeric suffix or silently corrected. `REVIEW_REQUIRED` still needs the worker's current source/Meta decision. The public `loadUnitOrders`/`inspectUnitOrders` API can be used by registration/bootstrap checks without changing source.
+
+### Existing registered targets: explicit separate update route
+
+New import `register-target-exam.mjs` still refuses an already registered target. For an existing target, supply a canonical candidate root and assignment-bound `JS_ARCHIVE_CURRENT_STAGE_PROOF_SET_V1` containing exact current R1/R2/R3 evidence path/raw SHA, source identity and original proof refs. The current validators must accept those proofs; arbitrary caller PASS/hash lists are insufficient.
+
+```powershell
+node archive/tools/prepare-existing-target-registration-update.mjs --root <root> --assignment <assignment> --candidate-root <candidate-root> --proof-manifest <proof-set> --output .tmp/archive/<runId>/<examUid>/registration-update.json
+node archive/tools/register-existing-target-exam-update.mjs --root <root> --assignment <assignment> --plan <registration-update.json> --plan-sha256 <emitted-plan-sha> --candidate-root <candidate-root> --proof-manifest <proof-set> --output-dir .tmp/archive/<runId>/<examUid>/registration-merge
+```
+
+Default is dry-run; ROOT adds `--apply` explicitly. All nine baselines, source/assets/proofs/HEAD, full ordinal/UID joins and target runtime tuples are bound. Non-target rows are deep-preserved; output JS parses before writes; rollback touches only writes this operation started. Actual physical Meta corrections require the exported `TARGET_META_DELTA_POLICY` allowlist, current qid-level R1 META PASS and exact current source parity. Changed target runtime approval/field states are reset to pending/non-selectable, not inherited or promoted. The old target metadata and proofs remain preserved. This runtime pending state is distinct from source item HOLD. Run normal post-apply registration validation and remote readback.
+
+### Publication checkpoints and Root dispatcher
+
+`archive-publication-checkpoint.mjs create|plan|record` persists fresh immutable checkpoints. Bound command completion/exit/stdout/stderr proofs are required before commit readiness. Failed/running checks block progression. Commit, push, readback and MAIN_DONE are recorded from actual ROOT operations; no Git action is executed by the planner. Unrelated main drift permits an explicit preserved rebind plan; overlapping target inputs fail for affected review. It never automatically force-replays or overwrites current main.
+
+`archive-codex-dispatcher.mjs init|plan|claim|resume|accept` uses a locked roster, state SHA/lock, one exam per stage, FIFO/fresh sessions and existing-session repairs. Only verified sealed events release slots and yield the next routing plan; stage duration is recorded. Plans expose Root roster references, not answer-bearing worker packets. ROOT still builds stage-safe absolute packets and performs actual spawns/Git/publication. R3 completion goes to `ROOT_PUBLICATION` with actual render/waiver gates still required, not automatic MAIN_DONE.
+
+### Conversion cache
+
+`archive-preview-cache.mjs get|store --root <root> --cache-root .tmp/archive/<runId>/<examUid>/preview-cache --source <pdf-or-svg> --parameters <full-transform-parameters.json> --tool-version <converter-version> [--preview <actual-converted-file>]` caches only byte-verified preview output. The key includes input SHA, all page/DPI/crop/font/backend parameters and tool version. Misses use the existing approved converter; an output SHA change fails. Cached output still requires actual reviewer opening; no source/visual/render PASS is inferred. Cache is scoped to assigned temporary exam paths, not generated paths.
+
+Finished exams keep their valid original receipts. Apply these tools to new or actually changed stages; no historical revalidation or retroactive conversion solely for this upgrade.
 
 These tools prepare machine evidence and target-only registration. They do not solve questions, approve Meta, review screenshots, publish, or declare MAIN_DONE.
 

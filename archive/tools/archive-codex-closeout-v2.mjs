@@ -151,7 +151,7 @@ export function validateCodexUserWaivedMainDoneReceipt({receipt,root}) {
     const main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
     if(execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==main)throw new Error('WORKING_HEAD_MAIN_PARITY_REQUIRED');
     if(main!==receipt.remoteMainSha)throw new Error('REMOTE_MAIN_SHA_MISMATCH');
-    const readBlob=gitBlobReader(root,main);
+    const readBlob=gitBlobReader(root,main,[receipt.productionPath,...receipt.assets.map(a=>'archive/'+a.ref)]);
     const production=readBlob(receipt.productionPath);
     if(gitBlobSha(production)!==receipt.artifactSha || hash(production)!==receipt.artifactRawSha256)throw new Error('REMOTE_PRODUCTION_ARTIFACT_MISMATCH');
     for(const asset of receipt.assets){
@@ -320,11 +320,12 @@ export function validateCodexRootWaivedMainDoneReceipt({receipt,root}){
     const main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
     if(execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==main)throw new Error('WORKING_HEAD_MAIN_PARITY_REQUIRED');
     if(main!==receipt.remoteMainSha)throw new Error('REMOTE_MAIN_SHA_MISMATCH');
-    const readBlob=gitBlobReader(root,main);
+    const waiverRefs=collectRootWaiverPhysicalRefs({receipt,root});
+    const readBlob=gitBlobReader(root,main,[receipt.productionPath,...receipt.assets.map(a=>'archive/'+a.ref),...waiverRefs.map(r=>r.path)]);
     const production=readBlob(receipt.productionPath);
     if(gitBlobSha(production)!==receipt.artifactSha||hash(production)!==receipt.artifactRawSha256)throw new Error('REMOTE_PRODUCTION_ARTIFACT_MISMATCH');
     for(const asset of receipt.assets)if(hash(readBlob('archive/'+asset.ref))!==asset.sha256)throw new Error('REMOTE_ASSET_SHA_MISMATCH:'+asset.ref);
-    for(const ref of collectRootWaiverPhysicalRefs({receipt,root}))if(hash(readBlob(ref.path))!==ref.sha256)throw new Error('REMOTE_WAIVER_EVIDENCE_SHA_MISMATCH:'+ref.path);
+    for(const ref of waiverRefs)if(hash(readBlob(ref.path))!==ref.sha256)throw new Error('REMOTE_WAIVER_EVIDENCE_SHA_MISMATCH:'+ref.path);
   }catch(error){issues.push(error.message);}
   return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',completionBasis:issues.length?undefined:'ROOT_DIRECTED_STATIC_COMPLETE',renderStatus:issues.length?undefined:receipt.renderStatus,issues};
 }
@@ -389,7 +390,7 @@ export function validateCodexMainDoneReceipt({receipt,root,renderReceipt,assets=
     const main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
     if(execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==main)throw new Error('WORKING_HEAD_MAIN_PARITY_REQUIRED');
     if(main!==receipt.remoteMainSha)throw new Error('REMOTE_MAIN_SHA_MISMATCH');
-    const readBlob=gitBlobReader(root,main);
+    const readBlob=gitBlobReader(root,main,[receipt.productionPath,...assets.filter(a=>a.ref.startsWith('assets/images/')&&!a.ref.includes('..')).map(a=>'archive/'+a.ref)]);
     if(gitBlobSha(readBlob(receipt.productionPath))!==receipt.artifactSha)throw new Error('REMOTE_PRODUCTION_BLOB_MISMATCH');
     for(const asset of assets){if(!asset.ref.startsWith('assets/images/') || asset.ref.includes('..'))throw new Error('REMOTE_ASSET_PATH_INVALID');if(hash(readBlob('archive/'+asset.ref))!==asset.sha256)throw new Error('REMOTE_ASSET_SHA_MISMATCH:'+asset.ref);}
   }catch(error){issues.push(error.message);}
