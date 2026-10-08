@@ -35,15 +35,16 @@ function contentFingerprint(question) {
 test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 165);
+  assert.equal(index.records.length, 190);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
-  assert.equal(index.approvedBySchool['복성고'], 73);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 165);
+  assert.equal(index.approvedBySchool['복성고'], 98);
+  assert.equal(new Set(index.records.map(r => r.uid)).size, 190);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
-  assert.ok(index.records.slice(130).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
+  assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
+  assert.ok(index.records.slice(165).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
   assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
   assert.ok(!index.records.some(r => r.uid.includes('BSG26-B01R2-') || r.uid.includes('BSG26-B02-')));
@@ -128,56 +129,44 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('student finder loads 165; school search, UID preview, answer, checkbox/print and hold rejection work', async () => {
-  const nodes = Object.create(null);
-  const document = {
-    getElementById: id => nodes[id] ||= new Node(),
-    createElement: tag => new Node(tag),
-    createDocumentFragment: () => new Node('fragment', true)
+test('190 registered questions remain protected while exam-only UI prints exact original 23/26', async () => {
+  const nodes=Object.create(null);
+  const document={
+    getElementById:id=>nodes[id]??(nodes[id]=new Node()),
+    createElement:tag=>new Node(tag),
+    createDocumentFragment:()=>new Node('fragment',true)
   };
-  let printed = 0;
-  const html = fs.readFileSync(path.join(archive, 'generated-bank.html'), 'utf8');
-  const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
-  const code = scripts.at(-1)?.[1];
-  assert.ok(code && code.includes('data/generated-lite-consumer/v1/index.json'));
-  assert.ok(!code.includes('data.records.length!==92'));
-  new vm.Script(code, { filename: 'generated-bank.inline.js' });
-  const fetchStub = async u => {
-    const file = path.join(archive, u);
-    if (!u.startsWith(prefix) || u.includes('..')) return { ok: false, status: 404 };
-    const raw = fs.readFileSync(file, 'utf8');
-    return { ok: true, json: async () => JSON.parse(raw) };
+  const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
+  assert.ok(!html.includes('개별 문항 검색')&&!html.includes('검수 승인'));
+  const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
+  const code=scripts.at(-1)?.[1];
+  assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
+  new vm.Script(code,{filename:'generated-bank.inline.js'});
+  const fetchStub=async u=>{
+    if(!u.startsWith(prefix)||u.includes('..'))return{ok:false,status:404};
+    const file=path.join(archive,u);
+    return{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
   };
-  const window = { print: () => { printed++; } };
-  vm.runInNewContext(code, { document, window, fetch: fetchStub, console, Map, Set, Promise }, { timeout: 2000 });
-  const wait = () => new Promise(resolve => setTimeout(resolve, 15));
-  await wait();
-  const el = id => document.getElementById(id);
-  assert.equal(el('count').textContent, 165);
-  assert.ok(el('school').children.some(x => x.value === '복성고'));
-  assert.ok(el('school').children.some(x => x.value === '효천고'));
-  el('school').value = '복성고'; el('school').listeners.change();
-  assert.equal(el('count').textContent, 73);
-  el('query').value = 'ALITE-BSG26-B03-Q14-I10'; el('query').listeners.input();
-  assert.equal(el('count').textContent, 1);
-  const selectedItem = el('items').children[0];
-  const choiceInput = selectedItem.children[0], previewButton = selectedItem.children[2];
-  await previewButton.onclick();
-  assert.equal(el('toggle-answer').disabled, false);
-  assert.ok(el('detail').children.some(x => x.textContent.includes('(가)') && x.textContent.includes('(다)')));
-  assert.ok(!el('detail').children.some(x => x.textContent.includes('<br')));
-  await el('toggle-answer').listeners.click();
-  assert.ok(el('detail').children.some(x => x.textContent.includes('정답: ④') && x.textContent.includes('[키포인트]')));
-  choiceInput.checked = true; choiceInput.listeners.change();
-  assert.equal(el('print').disabled, false);
-  await el('print').listeners.click();
-  assert.equal(printed, 1);
-  assert.equal(el('paper-items').children.length, 1);
-
-  el('school').value = ''; el('school').listeners.change();
-  el('query').value = 'ALITE-20261008-HYC26-Q10-001'; el('query').listeners.input();
-  assert.equal(el('count').textContent, 0);
-  el('query').value = ''; el('query').listeners.input();
-  el('school').value = '효천고'; el('school').listeners.change();
-  assert.equal(el('count').textContent, 92);
+  let printed=0;
+  vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
+  await new Promise(resolve=>setTimeout(resolve,25));
+  const el=id=>document.getElementById(id);
+  const cards=el('exam-cards').children;
+  assert.equal(cards.length,2);
+  assert.equal(el('print').disabled,true);
+  const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
+  const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
+  assert.ok(bok&&hyo);
+  assert.match(bok.children[1].textContent,/23문항/);
+  assert.match(hyo.children[1].textContent,/26문항/);
+  bok.onclick();await el('print').listeners.click();
+  assert.equal(printed,1);
+  assert.equal(el('paper-items').children.length,23);
+  assert.match(el('paper-title').textContent,/복성고/);
+  hyo.onclick();await el('print').listeners.click();
+  assert.equal(printed,2);
+  assert.equal(el('paper-items').children.length,26);
+  assert.match(el('paper-title').textContent,/효천고/);
+  assert.equal(index.records.length,190);
+  assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
 });
