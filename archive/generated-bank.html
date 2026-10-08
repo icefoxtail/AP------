@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archive 2.0 | 검수 완료 생성 문제은행</title>
+<style>
+:root{font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;color:#17263b;background:#f5f7fa}
+*{box-sizing:border-box}body{margin:0}header{background:#162d4c;color:white;padding:16px max(20px,calc((100vw - 1100px)/2))}
+header a{color:white;text-decoration:none}main{max-width:1100px;margin:25px auto;padding:0 16px}
+h1{font-size:23px;margin:4px 0 8px}h2{font-size:18px}.muted{color:#5a6e83}header .muted{color:#bed0e5}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.controls input,.controls select{font:inherit;padding:11px;border:1px solid #a4b4c5;border-radius:7px;background:white;min-width:175px;flex:1}
+button{cursor:pointer;padding:10px 15px;border:1px solid #7489a4;border-radius:7px;background:white;color:#162d4c;font:inherit}button.primary{background:#174b7d;color:white;border-color:#174b7d}button:disabled{opacity:.5;cursor:not-allowed}
+.panels{display:grid;grid-template-columns:minmax(270px,.85fr) minmax(400px,1.25fr);gap:16px}
+.panel{background:white;border:1px solid #dbe3ed;border-radius:10px;padding:17px;min-width:0}
+#items{max-height:650px;overflow:auto}.item{display:flex;gap:10px;align-items:center;border-bottom:1px solid #e8edf2;padding:12px 0}.item label{flex:1;min-width:0}.item button{padding:6px 10px;font-size:13px}
+#detail{min-height:260px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75}.choice{padding:6px 0}.item small{color:#596d83}
+img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain;border:1px solid #dce3ec;margin:12px 0}
+#message{padding:10px 0;font-size:14px}.answer{margin-top:14px;padding-top:12px;border-top:1px solid #e5eaf0;white-space:pre-wrap}
+#paper{display:none}.paper-question{margin-bottom:24px;break-inside:avoid;line-height:1.7;white-space:pre-wrap}
+@media(max-width:750px){.panels{grid-template-columns:1fr}.controls input,.controls select{min-width:130px}}
+@media print{header,.controls,#message,.panels,.no-print{display:none!important}main{max-width:none;margin:0;padding:0}#paper{display:block!important}#paper h1{font-size:19px}.paper-question{page-break-inside:avoid}body{background:white}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header><a href="workspace.html"><strong>Archive 2.0</strong> · 원래 화면으로</a><div class="muted">검수 승인 Generated Bank — 원본 기출과 분리된 등록 자료</div></header>
+<main><h1>효천고 2026 생성 문제은행</h1><p class="muted">승인된 문제만 표시합니다. 보류 문항은 검색·선택·인쇄에서 제외됩니다.</p>
+<div class="controls"><input id="query" aria-label="문항 검색" placeholder="UID·문항 번호·단원 검색"><select id="unit" aria-label="세부 단원"><option value="">전체 단원</option></select><button id="print" class="primary" disabled>선택 문항 인쇄 (0)</button><button id="clear">선택 비우기</button></div>
+<div id="message" role="status">검수 완료 등록 자료를 불러오는 중입니다.</div>
+<div class="panels"><section class="panel"><h2>등록 문항 <span id="count">0</span></h2><div id="items"></div></section><section class="panel"><h2>문항 미리보기</h2><div id="detail">왼쪽에서 문항을 선택하세요.</div><button id="toggle-answer" disabled>정답·해설 보기</button></section></div>
+<section id="paper"><h1>효천고 2026 생성 문제지</h1><div id="paper-items"></div></section></main>
+<script>
+"use strict";
+const INDEX="data/generated-lite-consumer/v1/index.json";
+let rows=[],selected=new Set(),shown=null,visible=[],showAnswer=false;
+const $=id=>document.getElementById(id), positions="①②③④⑤",cache=new Map();
+const status=message=>$("message").textContent=message;
+const unique=items=>new Set(items).size===items.length;
+async function readJson(path){
+ if(typeof path!=="string"||!/^data\/generated-lite-consumer\/v1\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.includes(".."))throw Error("등록 경로 불일치");
+ const response=await fetch(path,{cache:"no-cache"});
+ if(!response.ok)throw Error("등록 데이터 로드 실패: "+response.status);
+ return response.json();
+}
+function text(parent,value,tag="div",cls=""){const node=document.createElement(tag);if(cls)node.className=cls;node.textContent=String(value??"");parent.appendChild(node);return node;}
+async function math(){if(window.MathJax?.typesetPromise)try{await MathJax.typesetPromise();}catch(e){console.warn("수식 표시 확인 필요",e)}}
+async function questionFor(row){
+ if(!cache.has(row.shard)){
+  cache.set(row.shard,readJson(row.shard).catch(e=>{cache.delete(row.shard);throw e}));
+ }
+ const data=await cache.get(row.shard);
+ if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_SHARD_V1"||!Array.isArray(data.records))throw Error("문항 등록 스키마 오류");
+ const matches=data.records.filter(r=>r.generatedUid===row.uid&&r.localOrdinal===row.localOrdinal);
+ if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices)||matches[0].question.choices.length!==5)throw Error("문항 UID/보기 결속 오류");
+ return matches[0].question;
+}
+function figure(parent,q){
+ if(!q.image)return;
+ if(!/^assets\/generated-lite\/ALITE-[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("승인 자산 경로 오류");
+ const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
+}
+function questionMarkup(parent,q,row,answers=false){
+ text(parent,"원본 "+row.sourceQid+"번 파생 · "+row.l2,"div","muted");
+ text(parent,q.content,"div","stem");figure(parent,q);
+ q.choices.forEach((c,i)=>text(parent,positions[i]+" "+c,"div","choice"));
+ if(answers){text(parent,"정답: "+q.answer+"\n"+(q.solution||""),"div","answer");}
+}
+function filtered(){const q=$("query").value.trim().toLowerCase(),unit=$("unit").value;return rows.filter(x=>(!unit||x.l2===unit)&&(!q||[x.uid,String(x.sourceQid),x.l2,x.school].join(" ").toLowerCase().includes(q)))}
+function list(){
+ visible=filtered();$("count").textContent=visible.length;
+ const container=$("items");container.replaceChildren();
+ const frag=document.createDocumentFragment();
+ for(const r of visible){
+  const item=document.createElement("div");item.className="item";
+  const check=document.createElement("input");check.type="checkbox";check.checked=selected.has(r.uid);check.setAttribute("aria-label",r.uid+" 선택");
+  check.addEventListener("change",()=>{check.checked?selected.add(r.uid):selected.delete(r.uid);refreshPrint()});
+  item.appendChild(check);
+  const lab=document.createElement("label");text(lab,r.sourceQid+"번 파생 · "+r.l2.split("-").slice(2).join("-"),"div");
+  text(lab,r.uid,"small");item.appendChild(lab);
+  const btn=document.createElement("button");btn.textContent="보기";btn.onclick=()=>preview(r);item.appendChild(btn);
+  frag.appendChild(item);
+ }
+ container.appendChild(frag);status("검수 승인 "+rows.length+"문항 중 "+visible.length+"문항 표시 · 선택 "+selected.size+"문항");
+}
+function refreshPrint(){$("print").disabled=selected.size===0;$("print").textContent="선택 문항 인쇄 ("+selected.size+")";}
+async function preview(row){
+ $("detail").textContent="문항을 확인하고 있습니다.";shown=row;showAnswer=false;$("toggle-answer").disabled=true;
+ try{const q=await questionFor(row);if(shown!==row)return;
+ $("detail").replaceChildren();questionMarkup($("detail"),q,row,false);$("toggle-answer").disabled=false;await math();
+ }catch(e){$("detail").textContent=e.message;status(e.message)}
+}
+$("toggle-answer").addEventListener("click",async()=>{if(!shown)return;showAnswer=!showAnswer;const q=await questionFor(shown);$("detail").replaceChildren();questionMarkup($("detail"),q,shown,showAnswer);$("toggle-answer").textContent=showAnswer?"정답·해설 숨기기":"정답·해설 보기";await math()});
+$("query").addEventListener("input",list);$("unit").addEventListener("change",list);
+$("clear").addEventListener("click",()=>{selected.clear();refreshPrint();list()});
+$("print").addEventListener("click",async()=>{
+ if(!selected.size||selected.size>50){status("한 번에 1~50문항을 선택해 주세요.");return;}
+ $("print").disabled=true;status("선택 문항의 출력을 준비 중입니다.");
+ try{const panel=$("paper-items");panel.replaceChildren();
+ for(const r of rows.filter(x=>selected.has(x.uid))){const q=await questionFor(r);const part=document.createElement("section");part.className="paper-question";questionMarkup(part,q,r,false);panel.appendChild(part)}
+ await math();window.print();status("승인 문항 "+selected.size+"개 출력 화면을 열었습니다.");
+ }catch(e){status("출력 준비 실패: "+e.message)}finally{refreshPrint()}
+});
+(async()=>{
+ try{
+ const data=await readJson(INDEX);
+ if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length!==92)throw Error("등록 분모 불일치");
+ const ids=data.records.map(r=>r.uid);if(!unique(ids)||ids.some(id=>!/^ALITE-[A-Za-z0-9-]+$/.test(id)||data.excludedHoldUids.includes(id)))throw Error("UID 중복 또는 보류 문항 혼입");
+ rows=data.records;const units=[...new Set(rows.map(r=>r.l2))].sort();
+ for(const unit of units){const option=document.createElement("option");option.value=unit;option.textContent=unit;$("unit").appendChild(option)}
+ list();
+ }catch(e){status("등록 자료를 확인할 수 없습니다: "+e.message);$("items").textContent=e.message}
+})();
+</script>
+</body>
+</html>

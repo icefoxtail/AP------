@@ -16,6 +16,7 @@ import {
   verifyR1EvidenceBinding,
   verifyR1ReuseBinding,
 } from './prepare-target-registration-candidate.mjs';
+import core from '../archive2-core.js';
 
 const sourcePath = 'archive/exams/original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js';
 const examUid = '19_금당고_2학기_기말_고2_수학II';
@@ -27,6 +28,29 @@ test('uses only locked display aliases and roster grade/course for target DB ide
   assert.deepEqual(identity.displayAlias, { school: '금당고', year: 2019, semester: '2', examType: 'final', grade: '고2', subject: '수학II', contentType: '기출' });
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid, productionRelativePath: sourcePath, grade: 'h1', course }), /ROSTER_GRADE_ALIAS_MISMATCH/);
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid, productionRelativePath: sourcePath, grade: 'h2', course: 'geometry' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+});
+
+test('accepts the locked H1 math-upper display alias and rejects grade, path, or course contradictions', () => {
+  const h1ExamUid = '21_금당고_1학기_기말_고1_기출';
+  const h1Path = 'archive/exams/original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js';
+  const identity = parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: '수학(상)' });
+  assert.equal(identity.sourceFile, 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js');
+  assert.deepEqual(identity.displayAlias, { school: '금당고', year: 2021, semester: '1', examType: 'final', grade: '고1', subject: '수학(상)', contentType: '기출' });
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h2', course: '수학(상)' }), /ROSTER_GRADE_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: `archive/exams/original/high/h2/1final/${h1ExamUid}.js`, grade: 'h1', course: '수학(상)' }), /ROSTER_GRADE_SOURCE_PATH_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: 'math2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '21_금당고_1학기_기말_고2_수학(상)', productionRelativePath: 'archive/exams/original/high/h2/1final/21_금당고_1학기_기말_고2_수학(상).js', grade: 'h2', course: '수학(상)' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  const row = buildAuthorizedDbRow({
+    examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: '수학(상)',
+    bank: [{ id: 1, standardCourse: '수학(상)', standardUnitKey: 'H15-SA-01', standardUnit: '다항식의 연산', standardUnitOrder: 1 }],
+  });
+  assert.equal(row.grade, '고1');
+  assert.equal(row.subject, '수학(상)');
+  assert.equal(row.courseRanges[0].courseCode, 'H15-SA');
+  assert.deepEqual(core.Canonical.resolveSourceGrade({
+    registeredGrade: '고1', sourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
+    identitySourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
+  }), { status: 'VALID', grade: '고1', reason: '' });
 });
 
 test('builds DB course ranges from embedded approved Meta only', () => {
@@ -117,11 +141,129 @@ function writeR1Chain(root, { evidencePath, validationPath, examUid, row }) {
     artifactSha: assignment.validatorRawBufferBlobSha1,
     evidenceRef: evidenceAbs,
     denominator: 1, rowCount: 1, disposition: 'PASS', issues: [],
+    qualityContractVersion: 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006', executionLine: 'CODEX',
+    artifactContract: { active: true, disposition: 'PASS', qualityContractVersion: 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006', questionCount: 1, issues: [] },
   };
   const validationBytes = Buffer.from(JSON.stringify(validation));
   fs.writeFileSync(validationAbs, validationBytes);
   assignment.r1ValidationSha256 = crypto.createHash('sha256').update(validationBytes).digest('hex');
   return { assignment, evidence, validation, evidenceAbs, validationAbs };
+}
+
+function writeItemRecoveryR1Chain(root, { q18ItemStatus = 'CLEAR_AFTER_FRESH_SCOPED_R1_R2', q18SourceItemStatusPresent = true, q18MetaStatus = 'PASS', verdict = 'PASS_AFTER_ITEM_RECOVERY' } = {}) {
+  const examUid = '21_매산여고_1학기_기말_고1_기출';
+  const evidencePath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/R1.evidence.composed.json`;
+  const validationPath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/R1.raw-generic-report.rev3.json`;
+  const evidenceRoot = `archive/analysis/${examUid}/h1-final-five-pilot-20261008`;
+  const q18SourceBlobSha1 = 'b'.repeat(40);
+  const bank = Array.from({ length: 22 }, (_, index) => ({ id: index + 1, ...(index + 1 === 18 && q18SourceItemStatusPresent ? { itemStatus: q18ItemStatus } : {}) }));
+  const currentSourceBytes = Buffer.from(`window.questionBank = ${JSON.stringify(bank)};`);
+  const q18SourceRawSha256 = q18SourceItemStatusPresent ? 'a'.repeat(64) : crypto.createHash('sha256').update(currentSourceBytes).digest('hex');
+  const priorBank = bank.map(question => ({ ...question }));
+  if (!q18SourceItemStatusPresent) priorBank[17].itemStatus = 'HOLD';
+  const priorSourceBytes = Buffer.from(`window.questionBank = ${JSON.stringify(priorBank)};`);
+  const priorRawSha256 = q18SourceItemStatusPresent ? q18SourceRawSha256 : crypto.createHash('sha256').update(priorSourceBytes).digest('hex');
+  const evidenceAbs = path.join(root, ...evidencePath.split('/'));
+  const validationAbs = path.join(root, ...validationPath.split('/'));
+  fs.mkdirSync(path.dirname(evidenceAbs), { recursive: true });
+  const decisionPath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/ROOT.item-recovery.decision.json`;
+  const recoveryEvidencePath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.closed.evidence.json`;
+  const nonTargetPath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.non-target-invariance.json`;
+  const r1ScopePath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/R1.q18fresh.scoped-review-receipt.json`;
+  const r2ScopePath = `archive/analysis/${examUid}/h1-final-five-pilot-20261008/R2.q18fresh.scoped-comparison-receipt.json`;
+  const holdClearPath = `.tmp/archive/h1-final-five-pilot-20261008/${examUid}/evidence/ITEM_RECOVERY.q18.hold-clear-change.json`;
+  const historicalPath = `${evidenceRoot}/preserved-inputs/history/q18-hold-clear-preimage/${examUid}/${examUid}.js.source-evidence.json`;
+  const writeRef = (relative, value) => {
+    const file = path.join(root, ...relative.split('/'));
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    const bytes = Buffer.from(typeof value === 'string' ? value : JSON.stringify(value)); fs.writeFileSync(file, bytes);
+    return { path: relative, sha256: crypto.createHash('sha256').update(bytes).digest('hex') };
+  };
+  const r1Receipt = writeRef(r1ScopePath, 'synthetic scoped R1 review receipt bytes');
+  const r2Receipt = writeRef(r2ScopePath, 'synthetic scoped R2 comparison receipt bytes');
+  const decision = writeRef(decisionPath, {
+    schemaVersion: 'ROOT_POST_R2_BOUNDED_ITEM_RECOVERY_DECISION_V1', runId: 'h1-final-five-pilot-20261008', examUid,
+    decisionAuthority: 'ROOT_DELEGATED', scopeQids: [18], source: { sha256: '3'.repeat(64) }, remainingAfterR2: true,
+    sourceHoldRecordedInEvidence: true, physicalItemStatusNotPresent: true,
+  });
+  let holdClearRef = null;
+  let historicalRef = null;
+  if (!q18SourceItemStatusPresent) {
+    holdClearRef = writeRef(holdClearPath, {
+      schemaVersion: 'JS_ARCHIVE_Q18_HOLD_CLEAR_CHANGE_V1', runId: 'h1-final-five-pilot-20261008', examUid,
+      changedQids: [18], changedFields: ['itemStatus'], beforeRawSha256: priorRawSha256, afterRawSha256: q18SourceRawSha256,
+      priorItemStatus: 'HOLD', currentItemStatus: 'CLEARED_AFTER_FRESH_SCOPED_R1_R2', studentFieldsUnchanged: true,
+      answerSolutionMetaUnchanged: true, nonTargetParsedObjectMutationCount: 0, questionCount: 22,
+      r1: { path: path.resolve(root, ...r1ScopePath.split('/')), sha256: r1Receipt.sha256, verdict: 'PASS', scopeQids: [18] },
+      r2: { path: path.resolve(root, ...r2ScopePath.split('/')), sha256: r2Receipt.sha256, verdict: 'PASS', scopeQids: [18], answerComparison: 'MATCH' },
+    });
+    historicalRef = writeRef(historicalPath, {
+      schemaVersion: 'JS_ARCHIVE_HISTORICAL_SOURCE_BYTES_V1',
+      originalPath: `.tmp/archive/h1-final-five-pilot-20261008/${examUid}/history/q18-hold-clear-preimage/${examUid}/${examUid}.js`,
+      rawSha256: priorRawSha256, byteLength: priorSourceBytes.length, base64: priorSourceBytes.toString('base64'), usage: 'PROVENANCE_ONLY_NOT_RUNTIME_SOURCE',
+    });
+  }
+  const nonTargetMap = Object.fromEntries(priorBank.filter(question => question.id !== 18).map(question => [String(question.id), crypto.createHash('sha256').update(JSON.stringify(question)).digest('hex')]));
+  const nonTarget = writeRef(nonTargetPath, {
+    schemaVersion: 'JS_ARCHIVE_ITEM_RECOVERY_NON_TARGET_INVARIANCE_V1', runId: 'h1-final-five-pilot-20261008', examUid,
+    sourceBeforeRecoveryRawSha256: '3'.repeat(64), currentSourceRawSha256: q18SourceItemStatusPresent ? q18SourceRawSha256 : priorRawSha256,
+    allowedQids: [18], nonTargetQids: Array.from({ length: 22 }, (_, i) => i + 1).filter(qid => qid !== 18),
+    nonTargetQidCount: 21, nonTargetMutationCount: 0, currentQuestionCount: 22, changedQids: [18], nonTargetParsedObjectSha256: nonTargetMap,
+  });
+  const recovery = writeRef(recoveryEvidencePath, {
+    schemaVersion: 'JS_ARCHIVE_ITEM_RECOVERY_CLOSURE_EVIDENCE_V1', status: 'Q18_RECOVERY_CLOSED_SCOPED_REVIEW_COMPLETE',
+    runId: 'h1-final-five-pilot-20261008', examUid, allowedQids: [18], sourceMode: 'ALIVE_REPLACEMENT',
+    reviewStatus: { physicalItemStatus: 'CLEAR', r1Q18: 'PASS', r2Q18: 'MATCH', scopeQids: [18] },
+    closureAuthority: 'ROOT_DELEGATED', sourcePreservation: { originalSourceTextRemainsUnchanged: true },
+    technicalHashes: { rawSha256: q18SourceRawSha256, validatorRawBufferBlobSha1: q18SourceBlobSha1 },
+    nonTargetInvariant: { sha256: nonTarget.sha256, nonTargetQidCount: 21, nonTargetMutationCount: 0 },
+    closure: !q18SourceItemStatusPresent ? {
+      changeReport: { path: path.resolve(root, ...holdClearPath.split('/')), sha256: holdClearRef.sha256 },
+      studentAndProofBinding: { r1R2InputRawSha256: priorRawSha256, r1R2InputBlobSha1: 'c'.repeat(40), postClearRawSha256: q18SourceRawSha256, studentFieldsUnchanged: true, answerSolutionMetaUnchanged: true, originalR1R2FreezeFilesPreserved: true },
+    } : undefined,
+  });
+  if (!q18SourceItemStatusPresent) void historicalRef;
+  const rows = Array.from({ length: 22 }, (_, index) => {
+    const qid = index + 1;
+    if (qid !== 18) return { qid, independentAnswer: 'x', independentAnswerFrozenBeforeStoredAnswer: true, storedAnswer: 'x', compareResult: 'MATCH', verdict: 'PASS', axisEvidence: { META: { status: 'PASS' } } };
+    return {
+      qid, independentAnswer: 'q18-fresh-answer', independentAnswerFrozenBeforeStoredAnswer: true, storedAnswer: 'stored-answer', compareResult: 'MATCH',
+      verdict, itemStatus: q18ItemStatus, disposition: 'FRESH_Q18_R1_PASS_R2_MATCH_ALIVE_REPLACEMENT', repairApplied: true, sourceMode: 'ALIVE_REPLACEMENT',
+      axisEvidence: { META: { status: q18MetaStatus } },
+      provenanceEvidence: {
+        authorizedReplacement: {
+          sourceMode: 'ALIVE_REPLACEMENT',
+          rootDecision: { ...decision, authority: 'ROOT_DELEGATED', scopeQids: [18] },
+          itemRecoveryEvidence: recovery,
+          nonTargetInvariant: { ...nonTarget, nonTargetQidCount: 21, mutationCount: 0 },
+        },
+        freshScopeReviews: {
+          r1: { ...r1Receipt, reviewerIdentity: { role: 'archive_r1', reviewerId: '/root/r1_q18_clean' }, scopeQids: [18], fourAxisReview: { QUESTION_LAYOUT: { verdict: 'PASS' }, SOLUTION_LAYOUT: { verdict: 'PASS' }, META: { verdict: 'PASS' }, VISUAL_SVG: { verdict: 'VISUAL_EXEMPT' } } },
+          r2: { ...r2Receipt, reviewerIdentity: { role: 'archive_r2', reviewerId: '/root/r2_q18_clean' }, scopeQids: [18], comparison: { qid: 18, disposition: 'MATCH' } },
+        },
+      },
+    };
+  });
+  const assignment = {
+    artifactRawSha256: q18SourceRawSha256, validatorRawBufferBlobSha1: q18SourceBlobSha1,
+    r1EvidencePath: evidencePath, r1ValidationPath: validationPath,
+  };
+  const evidence = {
+    schemaVersion: 'JS_ARCHIVE_STAGE_EVIDENCE_v2', stage: 'R1', examUid, artifactSha: q18SourceBlobSha1,
+    artifactRawSha256: assignment.artifactRawSha256, artifactRawBufferBlobSha1: q18SourceBlobSha1,
+    qualityContractVersion: 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006', executionLine: 'CODEX', rows,
+  };
+  const evidenceBytes = Buffer.from(JSON.stringify(evidence)); fs.writeFileSync(evidenceAbs, evidenceBytes);
+  assignment.r1EvidenceSha256 = crypto.createHash('sha256').update(evidenceBytes).digest('hex');
+  const validation = {
+    ok: true, validatorMode: 'R1_V2', stage: 'R1', examUid, artifactSha: q18SourceBlobSha1, evidenceRef: evidenceAbs,
+    denominator: 22, rowCount: 22, disposition: 'PASS', issues: [],
+    qualityContractVersion: 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006', executionLine: 'CODEX',
+    artifactContract: { active: true, disposition: 'PASS', qualityContractVersion: 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006', questionCount: 22, issues: [] },
+  };
+  const validationBytes = Buffer.from(JSON.stringify(validation)); fs.writeFileSync(validationAbs, validationBytes);
+  assignment.r1ValidationSha256 = crypto.createHash('sha256').update(validationBytes).digest('hex');
+  return { evidencePath, validationPath, evidence, validation, assignment, bank };
 }
 
 test('binds a non-index0 R1 evidence path and the actual shared-validator PASS report', () => {
@@ -179,6 +321,120 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('accepts PASS_WITH_META_ONLY_DEBT only for an explicit approved template null-debt matching physical null', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-template-null-debt-'));
+  try {
+    const examUid = '22_테스트고_1학기_중간_고2_기하_기출';
+    const evidencePath = 'archive/analysis/template-debt/R1.evidence.json';
+    const validationPath = 'archive/analysis/template-debt/R1.validation.json';
+    const reason = 'No active template fits this reviewed task; preserve explicit null projection debt.';
+    const row = {
+      verdict: 'PASS', metaDebtFields: ['templateKey'], metaDebtReason: reason,
+      axisEvidence: { META: { status: 'PASS_WITH_META_ONLY_DEBT', physicalFieldCount: 17, templateKey: null, projectionStatus: 'TEMPLATE_UNMATERIALIZED', nullDebt: { fields: ['templateKey'], reason } } },
+    };
+    const fixture = writeR1Chain(root, { evidencePath, validationPath, examUid, row });
+    const accepted = verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: fixture.assignment, examUid, bank: [{ id: 1, templateKey: null }] });
+    assert.equal(accepted.validation.disposition, 'PASS');
+    assert.equal(accepted.evidence.rows[0].axisEvidence.META.status, 'PASS_WITH_META_ONLY_DEBT');
+    for (const { badRow, badQuestion } of [
+      { badRow: { ...row, metaDebtReason: '' }, badQuestion: { id: 1, templateKey: null } },
+      { badRow: { ...row, axisEvidence: { META: { ...row.axisEvidence.META, nullDebt: { fields: ['templateKey'], reason: '' } } } }, badQuestion: { id: 1, templateKey: null } },
+      { badRow: row, badQuestion: { id: 1, templateKey: 'TPL_UNREVIEWED' } },
+      { badRow: { ...row, metaDebtFields: ['templateKey', 'problemTypeKey'] }, badQuestion: { id: 1, templateKey: null } },
+    ]) {
+      const invalid = writeR1Chain(root, { evidencePath, validationPath, examUid, row: badRow });
+      assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalid.assignment, examUid, bank: [badQuestion] }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    }
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('accepts PASS_AFTER_ITEM_RECOVERY only with cleared source status, fresh scoped R1/R2 proof, and active current artifact PASS', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-item-recovery-'));
+  try {
+    const fixture = writeItemRecoveryR1Chain(root);
+    const bound = verifyR1EvidenceBinding({ root, evidencePath: fixture.evidencePath, validationPath: fixture.validationPath, assignment: fixture.assignment, examUid: fixture.evidence.examUid, bank: fixture.bank });
+    assert.equal(bound.validation.disposition, 'PASS');
+    assert.equal(bound.validation.artifactContract.active, true);
+    assert.equal(bound.evidence.rows[17].verdict, 'PASS_AFTER_ITEM_RECOVERY');
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('accepts a physically cleared q18 whose source marker was removed, only with exact scoped closure proof', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-item-recovery-removed-marker-'));
+  try {
+    const fixture = writeItemRecoveryR1Chain(root, { q18SourceItemStatusPresent: false });
+    const bound = verifyR1EvidenceBinding({ root, evidencePath: fixture.evidencePath, validationPath: fixture.validationPath, assignment: fixture.assignment, examUid: fixture.evidence.examUid, bank: fixture.bank });
+    assert.equal(Object.hasOwn(fixture.bank[17], 'itemStatus'), false);
+    assert.equal(bound.validation.disposition, 'PASS');
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('requires explicit physical-clear closure evidence when the source itemStatus marker is absent', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-item-recovery-clear-proof-'));
+  try {
+    const fixture = writeItemRecoveryR1Chain(root, { q18SourceItemStatusPresent: false });
+    const row = fixture.evidence.rows[17];
+    const recoveryRef = row.provenanceEvidence.authorizedReplacement.itemRecoveryEvidence;
+    const recoveryAbs = path.join(root, ...recoveryRef.path.split('/'));
+    const recovery = JSON.parse(fs.readFileSync(recoveryAbs, 'utf8'));
+    recovery.reviewStatus.physicalItemStatus = 'HOLD';
+    const bytes = Buffer.from(JSON.stringify(recovery)); fs.writeFileSync(recoveryAbs, bytes);
+    recoveryRef.sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+    const evidenceAbs = path.join(root, ...fixture.evidencePath.split('/'));
+    const evidenceBytes = Buffer.from(JSON.stringify(fixture.evidence)); fs.writeFileSync(evidenceAbs, evidenceBytes);
+    fixture.assignment.r1EvidenceSha256 = crypto.createHash('sha256').update(evidenceBytes).digest('hex');
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: fixture.evidencePath, validationPath: fixture.validationPath, assignment: fixture.assignment, examUid: fixture.evidence.examUid, bank: fixture.bank }), /R1_ITEM_RECOVERY_CLOSED_EVIDENCE_CLEAR_PROOF_REQUIRED/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('rejects a two-step clear chain when any original-map non-target hash differs from current parsed objects', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-item-recovery-two-step-invariant-'));
+  try {
+    const fixture = writeItemRecoveryR1Chain(root, { q18SourceItemStatusPresent: false });
+    const row = fixture.evidence.rows[17];
+    const invariantRef = row.provenanceEvidence.authorizedReplacement.nonTargetInvariant;
+    const invariantAbs = path.join(root, ...invariantRef.path.split('/'));
+    const invariant = JSON.parse(fs.readFileSync(invariantAbs, 'utf8'));
+    invariant.nonTargetParsedObjectSha256['1'] = 'f'.repeat(64);
+    const invariantBytes = Buffer.from(JSON.stringify(invariant)); fs.writeFileSync(invariantAbs, invariantBytes);
+    invariantRef.sha256 = crypto.createHash('sha256').update(invariantBytes).digest('hex');
+    const evidenceAbs = path.join(root, ...fixture.evidencePath.split('/'));
+    const evidenceBytes = Buffer.from(JSON.stringify(fixture.evidence)); fs.writeFileSync(evidenceAbs, evidenceBytes);
+    fixture.assignment.r1EvidenceSha256 = crypto.createHash('sha256').update(evidenceBytes).digest('hex');
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: fixture.evidencePath, validationPath: fixture.validationPath, assignment: fixture.assignment, examUid: fixture.evidence.examUid, bank: fixture.bank }), /R1_ITEM_RECOVERY_HOLD_CLEAR_NON_TARGET_OBJECTS_CHANGED/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('rejects item-recovery PASS when q18 still HOLD, META fails, R2 does not MATCH, or artifact PASS is absent', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-item-recovery-reject-'));
+  try {
+    const reject = ({ q18ItemStatus, q18MetaStatus, verdict, r2Disposition, artifactDisposition, artifactActive }) => {
+      const fixture = writeItemRecoveryR1Chain(root, { q18ItemStatus, q18MetaStatus, verdict });
+      if (r2Disposition) {
+        const q18 = fixture.evidence.rows[17]; q18.provenanceEvidence.freshScopeReviews.r2.comparison.disposition = r2Disposition;
+      }
+      if (r2Disposition || q18ItemStatus || q18MetaStatus || verdict || artifactDisposition || artifactActive !== undefined) {
+        const evidenceFile = path.join(root, ...fixture.evidencePath.split('/'));
+        const bytes = Buffer.from(JSON.stringify(fixture.evidence)); fs.writeFileSync(evidenceFile, bytes);
+        fixture.assignment.r1EvidenceSha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+        const report = JSON.parse(fs.readFileSync(path.join(root, ...fixture.validationPath.split('/')), 'utf8'));
+        report.artifactSha = fixture.assignment.validatorRawBufferBlobSha1;
+        if (artifactDisposition) report.artifactContract.disposition = artifactDisposition;
+        if (artifactActive === false) report.artifactContract.active = false;
+        const validationBytes = Buffer.from(JSON.stringify(report)); fs.writeFileSync(path.join(root, ...fixture.validationPath.split('/')), validationBytes);
+        fixture.assignment.r1ValidationSha256 = crypto.createHash('sha256').update(validationBytes).digest('hex');
+      }
+      assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: fixture.evidencePath, validationPath: fixture.validationPath, assignment: fixture.assignment, examUid: fixture.evidence.examUid, bank: fixture.bank }));
+    };
+    reject({ q18ItemStatus: 'HOLD' });
+    reject({ q18ItemStatus: 'PENDING' });
+    reject({ q18MetaStatus: 'HOLD' });
+    reject({ r2Disposition: 'MISMATCH' });
+    reject({ artifactDisposition: 'FAIL' });
+    reject({ artifactActive: false });
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
 });
 
 function writeJson(root, relative, value) {
