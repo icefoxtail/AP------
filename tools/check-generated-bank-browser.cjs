@@ -53,6 +53,14 @@ async function main(){
       throw Error('Real browser smoke failure: '+label);
     }
     await wait(count,'165','165 registered');
+    const unitUi=await ev("(()=>{const school=[...document.querySelectorAll('#school-cards button')].find(x=>x.textContent.includes('복성고'));if(!school)return false;school.click();const major=document.getElementById('major');return document.getElementById('count').textContent==='73'&&[...major.options].some(o=>o.textContent==='행렬')})()");
+    if(!unitUi)throw Error('School-first standard major unit picker failed');
+    await ev("(()=>{const m=document.getElementById('major');m.value='행렬';m.dispatchEvent(new Event('change'));const u=document.getElementById('unit');u.value='행렬';u.dispatchEvent(new Event('change'));document.getElementById('amount').value='10';window.__paperPrintCount=0;window.print=()=>window.__paperPrintCount++;document.getElementById('generate').click();return true})()");
+    await wait("window.__paperPrintCount",1,'school and L1/L2 one-click mock paper');
+    const paperUi=await ev("(()=>{const p=document.getElementById('paper-items');return {count:p.children.length,selected:selected.size,heading:document.querySelector('#paper h1').textContent,major:document.getElementById('major').value,unit:document.getElementById('unit').value}})()");
+    if(paperUi.count!==10||paperUi.selected!==10||paperUi.major!=='행렬'||paperUi.unit!=='행렬'||!paperUi.heading.includes('복성고'))throw Error('Mock paper scope/count mismatch '+JSON.stringify(paperUi));
+    await ev("(()=>{selected.clear();refreshPrint();const m=document.getElementById('major');m.value='';m.dispatchEvent(new Event('change'));return true})()");
+
     await ev("(()=>{const s=document.getElementById('school');s.value='복성고';s.dispatchEvent(new Event('change'));return true})()");
     await wait(count,'73','school filter');
     await ev("(()=>{const q=document.getElementById('query');q.value='ALITE-BSG26-B03-Q14-I10';q.dispatchEvent(new Event('input'));return true})()");
