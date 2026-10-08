@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "ALIVE_LITE_ADAPTIVE_BATCH_PLAN_v1",
+  "authorityCommit": "ca9d8f7a65d478eb76d569c525d7eec1a2dff29c",
+  "sourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "planRevision": 3,
+  "sourceQidCoverage": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "totalSources": 23,
+  "batchCount": 6,
+  "originalPilotExcluded": true,
+  "batches": [
+    {
+      "id": "B01",
+      "q": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        12,
+        15
+      ],
+      "risk": "BASIC_TO_STANDARD",
+      "reason": "확인형 조합·순열·행렬·부등식·자리수 계산을 다종 결합하여 폭넓은 L4 탐색 실험",
+      "order": 1,
+      "sourceCount": 7,
+      "sourceUnits": [
+        "H22-C-08",
+        "H22-C-01",
+        "H22-C-09",
+        "H22-C-06"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "CREATE_CLOSED_WITH_META_HOLD_REVIEW_PENDING",
+      "generatedCandidateCount": 45,
+      "blueprintExploredCount": 65,
+      "acceptedBlueprintCount": 45,
+      "sourceExpansionDoneQids": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        12
+      ],
+      "sourceHoldQids": [
+        15
+      ],
+      "receipt": "B01R2_CREATE_RECEIPT.json",
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-create-index-v2.json",
+      "taxonomyExtensionDiscovery": {
+        "L4Candidates": 33,
+        "L3GranularityCandidates": 3,
+        "independentlyApprovedL3": 0,
+        "independentlyApprovedL4": 0,
+        "status": "CANDIDATE_REGISTERED_REVIEW_REQUIRED",
+        "includesFutureSourceIdeas": [
+          19,
+          23
+        ],
+        "q15Fallback": [
+          "H1-RPM-186",
+          "H1-RPM-187"
+        ]
+      }
+    },
+    {
+      "id": "B02",
+      "q": [
+        3,
+        5,
+        8,
+        10,
+        11
+      ],
+      "risk": "STANDARD",
+      "reason": "행렬 크기판별, 이차부등식, 복소근, 절댓값의 조건·역구성 유형 중심",
+      "order": 2,
+      "sourceCount": 5,
+      "sourceUnits": [
+        "H22-C-09",
+        "H22-C-06",
+        "H22-C-04"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "REVIEW_REPAIR_STAGED_RELEASE_HOLD",
+      "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 38,
+      "blueprintExploredCount": 46,
+      "acceptedBlueprintCount": 38,
+      "extensionL4CandidateCount": 13,
+      "extensionL3CandidateCount": 1,
+      "sourceExpansionDoneQids": [
+        3,
+        5,
+        8
+      ],
+      "sourceContinuationRequiredQids": [
+        10,
+        11
+      ],
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b02-create-index-v1.json",
+      "semanticExtensionIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v2.json",
+      "correctedPrimaryUnitQ08": "H22-C-06-HIGHER_EQUATION",
+      "separateL3CandidateQ11": "절댓값을 포함한 부등식",
+      "productionShardCount": 6,
+      "distinctL2Count": 4,
+      "reviewRepairRevision": 1
+    },
+    {
+      "id": "B03",
+      "q": [
+        9,
+        13,
+        14,
+        16
+      ],
+      "risk": "COMPLEX",
+      "reason": "고난도 분기·복소근·매개변수 경계·정수근 구조를 독립적으로 설계",
+      "order": 3,
+      "sourceCount": 4,
+      "sourceUnits": [
+        "H22-C-08",
+        "H22-C-04",
+        "H22-C-06"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "CREATE_B03_COMPLETED_REVIEW_REPAIR_MATH_PASS_RELEASE_OPEN",
+      "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 38,
+      "blueprintExploredCount": 50,
+      "acceptedBlueprintCount": 38,
+      "extensionL4CandidateCount": 12,
+      "extensionL3CandidateCount": 0,
+      "productionShardCount": 4,
+      "sourceExpansionDoneQids": [
+        9,
+        13,
+        14,
+        16
+      ],
+      "reviewRepairedUids": [
+        "ALITE-BSG26-B03-Q14-I06",
+        "ALITE-BSG26-B03-Q14-I09"
+      ],
+      "reviewIssueDisposition": "CROSS_BATCH_EXACT_AND_NUMERIC_NEAR_DUPLICATES_REPAIRED",
+      "sourceUidsVerified": 38
+    },
+    {
+      "id": "B04",
+      "q": [
+        17,
+        20,
+        23
+      ],
+      "risk": "MATRIX_COMPLEX",
+      "reason": "행렬 누적·비가환 곱·전이행렬 표의 다단계 구조, 교육과정 확인",
+      "order": 4,
+      "sourceCount": 3,
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "PLANNED",
+      "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
+      "candidateRegistryRequiredBeforeC": true
+    },
+    {
+      "id": "B05",
+      "q": [
+        21,
+        22
+      ],
+      "risk": "EXTENDED_RESPONSE_COMPLEX",
+      "reason": "서논술형의 정수 제약·순위 조합·조건합 목표를 답형식 보존하며 확장",
+      "order": 5,
+      "sourceCount": 2,
+      "sourceUnits": [
+        "H22-C-08",
+        "H22-C-06"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "PLANNED",
+      "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
+      "candidateRegistryRequiredBeforeC": true
+    },
+    {
+      "id": "B06",
+      "q": [
+        18,
+        19
+      ],
+      "risk": "VISUAL_REQUIRED",
+      "reason": "원기둥 도형과 4영역 색칠의 시각 참조를 별도 확인한 뒤 확장",
+      "order": 6,
+      "sourceCount": 2,
+      "sourceUnits": [
+        "H22-C-06",
+        "H22-C-08"
+      ],
+      "L3L4Exploration": "RPM_CANONICAL_ENUMERATE_AT_BATCH_B",
+      "expectedVisualQids": [
+        18,
+        19
+      ],
+      "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
+      "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
+      "status": "PLANNED",
+      "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
+      "candidateRegistryRequiredBeforeC": true
+    }
+  ],
+  "nextBatchId": "B04",
+  "qualityStatus": "B03_MATH_REVIEWED_SOURCE_CANDIDATES_NOT_STUDENT_SUPPLY_VERIFIED",
+  "generatedCount": 121,
+  "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
+  "extensionDiscoveryContract": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
+  "extensionCandidateIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json",
+  "extensionDiscoveryMandatoryBeforeGeneration": true,
+  "extensionDiscoveryReason": "B01R2 showed same RPM L3/L4 labels can hide different decisive structures; next batches must explore new L3/L4 before C",
+  "classificationRevision": 2,
+  "unitOrderPolicy": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md"
+}

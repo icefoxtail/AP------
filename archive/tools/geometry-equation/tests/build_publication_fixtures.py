@@ -8,7 +8,7 @@ from visual_engine.engine import build, ROOT
 from audit_publication import audit
 
 FIXTURES = Path(__file__).parent/'publication-fixtures'
-OUT = ROOT/'archive/_generated/geometry-visual-engine/publication-tests'
+OUT = ROOT/'.tmp/archive/visual-engine-tests/publication-tests'
 
 
 def main():
