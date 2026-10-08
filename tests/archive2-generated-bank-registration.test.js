@@ -65,6 +65,14 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
     const got = matches[0], q = got.question;
     assert.equal(got.sourceKind, 'generated');
     assert.equal(got.l2, row.l2);
+    assert.equal(row.sourceExamPath, originalFile);
+    assert.equal(row.schoolMarker, '복성고');
+    assert.equal(row.l1, q.standardUnitKey);
+    assert.equal(row.rpmL3, got.rpmPrimary.l3);
+    assert.equal(row.rpmL4, got.rpmPrimary.l4);
+    assert.equal(row.rpmRecordId, got.rpmPrimary.recordId);
+    assert.equal(row.shardGitBlobSha, row.consumerShardGitSha);
+    assert.equal(row.reviewStatus, 'REVIEW_PASS');
     assert.equal(got.reviewApprovalMainSha, row.reviewFinalArtifactSha);
     assert.equal(got.sourceShardGitSha, row.sourceShardGitSha);
     assert.equal(got.sourceExamBlobSha, row.sourceExamBlobSha);
