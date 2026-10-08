@@ -54,3 +54,11 @@ D. L2별 생성 shard·metadata·uid index·manifest·batch ledger·receipts를 
 - 보기 배열 순서만 무작위로 섞거나 ±등차 방식으로 틀린 보기를 추가하는 자동보정은 최종 PASS 불가. **수학적 오개념에 기반한 오답 재설계 + 보기의 자연스러운 질서 + answer/solution 동기화 + 5지 유일정답**을 확인할 것.
 - 효천고 수치형 19문항의 1차 위치 보정은 별도 repair branch의 미승인 초안이며, main 반영 전 품질 게이트가 필요함.
 - 정본: `alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md`.
+
+## CURRENT HARD — taxonomy 공백 발견 및 EXT candidate registry 선행 (2026-10-08)
+- A 원본별 actual source+solution decisive step → B1 **2022 RPM current L3·전체 L4 및 이전 same-grade/lower-only prerequisite lookup** → B2 canonical comparator를 통한 CONDITION_ONLY / EXT_L4_CANDIDATE / EXT_L3_CANDIDATE / L3_DRIFT / PROJECTION_GAP 판정.
+- B3 extension-l3/extension-l4 registry를 target L2 아래 생성하고 해당 Batch Design, 선택지 오개념과 정답 위치 계획을 저장·푸시한 뒤 C 생산. 이전 설계 후보만 사후에 새 이름으로 붙여 본문 제작을 먼저 수행한 것처럼 소급 금지.
+- 기존 RPM L3로 풀이되는 경우 새 L3 발명 금지. L3 신설에는 현행+선행 RPM lookup의 부재 근거와 기존 L3 대비 실제로 다른 결정적 풀이가 필수. L4 역시 숫자/문형/조건만 다른 건 제외한다.
+- D에서 원본별 탐색 L3/L4 분모, EXT candidate 수와 상태, 실제 완성 UID·상세해설·5지, 보류·제외 사유, extension index를 함께 원격 readback. 해당 원본의 viable EXT 구조 미생성/미분류 시 SOURCE_CONTINUATION_REQUIRED.
+- 신규 taxonomy 후보는 독립 REVIEW에서 수학+의미 신규성 검수 후 별도 canonical 승인. 정식 RPM 키·Meta pack·원본 source·DB를 CREATE가 임의 변경 금지.
+- 근거: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md, B01R2_EXTENSION_RETROSPECTIVE.md 및 bokseong-2026-1final-extension-candidate-index-v1.json.

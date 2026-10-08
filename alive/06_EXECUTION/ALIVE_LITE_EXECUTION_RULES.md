@@ -42,3 +42,9 @@
 - 보기 배열 순서만 무작위로 섞거나 ±등차 방식으로 틀린 보기를 추가하는 자동보정은 최종 PASS 불가. **수학적 오개념에 기반한 오답 재설계 + 보기의 자연스러운 질서 + answer/solution 동기화 + 5지 유일정답**을 확인할 것.
 - 효천고 수치형 19문항의 1차 위치 보정은 별도 repair branch의 미승인 초안이며, main 반영 전 품질 게이트가 필요함.
 - 정본: `alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md`.
+
+## CURRENT HARD OVERRIDE — RPM 외 L3/L4 후보 발견 전제 (2026-10-08)
+- A/B에서 현재 RPM과 이미 이수한 이전/하위 RPM L3·모든 관련 L4를 우선 대조한다. RPM_ONLY/ACTIVE 바인딩 부족은 신규 L3로 오인하지 않는다.
+- B는 기존 L4, Condition-only, 신규 EXT L4, 정말 필요할 때의 EXT L3를 구분하고 canonical 대비 독립 풀이구조를 기록한다. 신규 EXT 유형 후보의 대상 원본·정의·예시 UID를 candidate registry에 먼저 Git 저장한다.
+- B design + extension registry를 freeze하고 C 문항을 생성한다. D는 후보 UID/manifest와 extension candidate index를 결속한다. 신규 L3/L4는 REVIEW 독립 심사 전 canonical/consumer 미등록.
+- 새 정본: alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md.

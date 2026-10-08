@@ -58,3 +58,9 @@
 
 ## 파일럿/기존 이력
 복성고 2026 1학기 기말(23 original qids)에서 본 계약 사용. 효천고 기존 후보 수(94 보고)는 이 계약으로 소급 `SOURCE_EXPANSION_DONE` 처리 불가; 원본별 Blueprint 탐색 ledger 없는 기존 건은 `EXPANSION_NOT_AUDITED`로 유지하고 후속 검토 시 gap 분석.
+
+## CURRENT ADDENDUM — L3/L4 외연 확장 포함 원본별 완료 게이트 (2026-10-08)
+- 기존 RPM 내 L4만 검사하고 탐색 완료로 끝내지 않는다. 현재 및 prior/lower-only RPM L3/L4 전체를 조회한 뒤, 실제 primaryMethod가 다른 경우에만 새 L3, 기존 L3 안의 다른 결정적 풀이 구조에는 새 L4 후보를 생성한다.
+- EXT candidate의 독립 REVIEW 상태와 CREATE 원본 탐색 완료는 분리하지만 **미발견·미분류·미생성 유효 EXT Blueprint가 남아 있으면 SOURCE_EXPANSION_DONE 금지**. 후보 등록만으로 canonical 인정 금지.
+- 각 source close에 기존 L4 coverage, EXT L3/L4 후보 ID·예시 UID·canonicalComparator, CONDITION_ONLY 수, 미개척 영역·stop reason을 ledger로 저장. RPM semantic과 PT/TPL machine projection gap 구별.
+- 신규 라우터: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md.
