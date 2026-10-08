@@ -71,5 +71,5 @@ test('74 review-approved consumer rows bind SHA-exact source JS, metadata, 5-opt
   assert.equal(m.rpmCrosswalkId,row.rpmRecordId,row.uid);
  }
  assert.equal(shards.size,11);assert.equal(sources.size,11);assert.equal(meta.size,11);
- assert.deepEqual(hist,{'①':12,'②':12,'③':24,'④':20,'⑤':6});
+ assert.deepEqual(hist,{'①':11,'②':12,'③':23,'④':20,'⑤':8});
 });
