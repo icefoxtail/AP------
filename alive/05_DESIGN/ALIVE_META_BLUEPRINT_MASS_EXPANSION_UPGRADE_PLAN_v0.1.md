@@ -1,10 +1,12 @@
-# ALIVE Meta Blueprint Mass Expansion Upgrade Plan v0.2
+# ALIVE Meta Blueprint Mass Expansion Upgrade Plan v0.3
 
-작성·설계 검토일: 2026-10-08 (Asia/Seoul)  
-상태: **DESIGN REVIEW INCORPORATED / SHADOW IMPLEMENTATION PROPOSED / NOT ACTIVE**  
-검토 기준 Git main: `c4a5655a9fc174a2ee7123556510777052b66fb0`  
-v0.1 원문 commit: `c4a5655a9fc174a2ee7123556510777052b66fb0`  
-저장 경로: 기존 `ALIVE_META_BLUEPRINT_MASS_EXPANSION_UPGRADE_PLAN_v0.1.md` 유지. 문서 내부 revision은 v0.2이며, v0.1 전문은 위 commit에 보존한다.
+작성·설계 검토일: 2026-10-08 (Asia/Seoul)\
+상태: **SECOND DESIGN REVIEW INCORPORATED / SHADOW IMPLEMENTATION PROPOSED / NOT ACTIVE**\
+이번 검토 기준 Git main: `92911a8aafb7af87d1479c1d89ca7b8be920c7cb`\
+v0.2 검토 기준 Git main: `c4a5655a9fc174a2ee7123556510777052b66fb0`\
+v0.1 원문 commit: `c4a5655a9fc174a2ee7123556510777052b66fb0`\
+v0.2 문서 commit: `92911a8aafb7af87d1479c1d89ca7b8be920c7cb`\
+저장 경로: 기존 `ALIVE_META_BLUEPRINT_MASS_EXPANSION_UPGRADE_PLAN_v0.1.md` 유지. 문서 내부 revision은 v0.3이며, 이전 전문은 각 commit에 보존한다.
 
 > 기존 ALIVE를 다시 만들지 않는다. Meta Foundation을 생산 설계 좌표로 활용하되, 현재 MODE·A/B/C proof·bounded solver·DifficultyVector·검수·직렬화·SEALED_LOCAL을 해당 지원 범위 안에서 재사용한다.
 >
@@ -33,6 +35,20 @@ v0.1 원문 commit: `c4a5655a9fc174a2ee7123556510777052b66fb0`
 
 Notion에서 작업 라우터 → Archive 시작 페이지 → 작업 생명주기를 조회하고 Git 기준선을 확인했다. Common Factory의 최신 제품 정책은 [Common Assessment Factory v0.13](https://app.notion.com/p/3f10e68bd69f8137b889c0868b3d85b2?pvs=204)의 2026-10-07 CURRENT를 참조했다. 이는 계획 상태의 확인이며 Factory 코드 구현 완료 판정이 아니다.
 
+위 Notion 조회는 **v0.2 검토 기록**이다. v0.3에서는 해당 페이지를 다시 조회하지 않았으며, 제품 정책의 이후 변경이나 실제 공급 API 구현을 인증하지 않는다. 이번 검토는 위 Git baseline의 파일·함수와 사용자 현재 작업 지시를 대조했다.
+
+### 1.1 v0.3에서 추가로 확인한 실행 간극
+
+| 근거 | 실제 확인 | 이번 보완 |
+|---|---|---|
+| `archive/tools/pipeline-core/AGENT_BUDGET.md` | whole-job FINAL_AUDIT, U1/U2/U3 격리, profile별 targeted recheck, token은 telemetry | §13.1에서 연결 가능성부터 qualification. 토큰 한도를 새 launch 차단 조건으로 만들지 않음. |
+| `archive/tools/meta-foundation/rpm-active-resolver.mjs` | UID/sourceFingerprint/solutionHash 결속, `validateBlindDifficulty`, 4필드 parity | parent seed 대신 **새 문항 identity**로 evidence 생성. legacy blind 필드명을 실제 비노출 주장으로 오인하지 않음. |
+| difficulty v1.3 및 공용 Resolver의 2026-10-03 CURRENT | prior 값 visibility 허용, decision authority 복사 금지 | 수학 blind와 Meta/difficulty current-pass를 분리. target difficulty도 결과의 판정 근거가 아님. |
+| `alive/engine/exact_verifier.py::verify_question` | 적용되는 부분 검사가 모두 PASS면 top-level PASS가 가능 | 부분 산술 PASS와 완전 solver coverage를 별도로 수납. |
+| 사용자 제공 `AGENTS.md` 및 현재 작업 폴더의 임시경로 정본 | 시험지 중간 JS·자산은 `.tmp/archive/<runId>/<examUid>/` | runtime 상태와 시험지 실물을 분리. 지정 정본은 위 원격 baseline에 없으므로 §15에 prerequisite debt를 기록. |
+
+이 표는 **계약·코드 정적 대조**다. 테스트나 provider 실행 결과가 아니다. 이번 문서 검토를 신규 생성 문항의 독립 수학검수로 집계하지 않는다.
+
 ---
 
 ## 2. 업그레이드 목표와 P0 보완
@@ -48,6 +64,8 @@ Notion에서 작업 라우터 → Archive 시작 페이지 → 작업 생명주�
 | P0 | 목표식 변환의 별도 계약 | 답만 정수로 만들고 출제 의도·조건을 훼손 |
 | P0 | 완전한 학생 입력 동결 후 통합 독립검수 | 보기·그림 추가 전의 낡은 blind PASS 재사용 |
 | P0 | 기존 seal까지 1-family 수직 연결 | 수십 문항 생성 뒤 마지막 호환성 실패 |
+| P0 | 실행 profile·입력 격리·identity qualification | legacy stage를 새 provider 호출 권한으로 착각하거나 원문 UID에 새 문항 증거 결속 |
+| P0 | planner 산출 형식·분모·재개 계약 | 생성 가능과 등록 가능 혼동, 재시도로 수량·예산 부풀림 |
 | P1 | 공급 부족 기반 planner·전역 중복·수요별 확장 | 쓰지 않을 문항과 의미상 복제의 대량 축적 |
 
 검사 항목을 늘리는 것과 AI 호출·worker를 늘리는 것은 다르다. 반복 비용은 family 단위 사전 검증과 immutable artifact 재사용으로 줄인다. 개별 문항의 필수 품질 증거를 허위 집계로 대체하지 않는다.
@@ -81,6 +99,8 @@ C라는 이유만으로 새 교차개념·경우 분기를 허용하지 않는�
 하나의 원문 seed에서 얻은 L3를 공유하더라도, 다른 L4 문항은 그 L4에 맞는 **검증된 construction recipe/reference**를 선택할 수 있다. seed는 출발 근거이고 construction reference는 실제 생성 구조의 근거다.
 
 두 참조와 SHA를 모두 보존한다. 새 reference를 사후에 만들어 실패한 fidelity를 통과시키지 않는다. TYPE_BANK의 기본형/Fingerprint와 구조변형 증거를 먼저 확립하고, A/B/C를 사용하는 하위 변형은 그 선언된 reference를 기준으로 증명한다. 이 연결이 미구현이면 해당 slot은 미지원이며 기존 VERIFIED_A/B/C ledger를 완화하지 않는다.
+
+**선택표는 dispatch 구현표가 아니다.** MODE를 선택했다고 해당 family의 command·proof·seal이 자동 연결되지는 않는다. 특히 TYPE_BANK 구조변형의 최초 기본형→구조변형 관계와, 그 구조변형을 reference로 삼는 A/B/C의 관계를 서로 다른 evidence로 기록한다. ABC-only ledger를 요구하는 경로에 최초 구조변형을 `VERIFIED_B`로 넣지 않는다. 최초 구조변형을 수납하는 경로가 없으면 새 구조 생성은 아직 실행 불가이며 계획 결과로만 반환한다.
 
 ---
 
@@ -151,6 +171,14 @@ family × difficulty × response/transform profile별로 `maxCoreSteps`, `maxCas
 
 임계값은 대표 기출·Golden의 해당 풀이 구조와 pilot trace로 정한다. 이 문서는 전 학년 공통 숫자 상한이나 근거 없는 가중합 점수를 새 canonical로 만들지 않는다.
 
+### 5.4 신규 문항의 level과 current-pass evidence
+
+새 문항의 `level`도 최종 풀이를 현재 3단계 규칙으로 판정한다. source의 level은 MODE의 상대 난도 비교 근거이지 새 문항으로 deep-copy할 값이 아니다. 기존 original의 historical level을 이번 생성 작업에서 수정하지 않는다. bucket을 보고 level을 역산하거나 target bucket에 맞춰 actual bucket을 고치지 않는다.
+
+2026-10-03 CURRENT에 따라 Meta/difficulty 재검은 prior level·bucket·verdict가 보였다는 사실만으로 무효가 되지 않는다. 검증된 최종 해설에서 구조를 다시 추출하고 current-pass 판단을 기록한 뒤 target/legacy와 비교한다. 수학 blind 입력의 비노출 계약은 별도로 유지한다. 같은 worker가 수행해도 semantic pass와 difficulty 판단은 서로 다른 evidence axis여야 한다.
+
+`validateBlindDifficulty`의 `blindPassStatus=FRESH_INDEPENDENT` 같은 기존 문자열은 현재 schema 호환값이다. 실제 수행 없이 채우거나, 그 문자열만으로 fresh agent·비노출·수학검수 완료를 주장하지 않는다. low confidence·boundary·legacy conflict는 현행 validator가 요구하는 재검/adjudication evidence로 닫는다. UNKNOWN 저장 가능성과 이번 신규 검증 완료 공급의 자격은 구별한다.
+
 ---
 
 ## 6. Answer Normalizer를 두 기능으로 분리한다
@@ -202,6 +230,8 @@ Pattern Bank는 긴 원문 문장의 복사본이 아니라 **조건·대상·�
 
 발문과 해설 조판은 현재 Archive 정본을 따른다. 글자 수·정규식에 따른 일괄 강제 줄바꿈, choices의 ①~⑤ 중복, 무단 wide/특수배치는 금지한다. 수학적으로 정확한데 문장만 부자연스러운 경우에도 해당 stem만 고치고 영향 evidence를 다시 결속한다.
 
+실제 해설 생성·수정 worker는 target 작업 전에 Golden 2~3개와 관련 Negative Sample을 판독한다. 해설은 **식 세우기 → 식 변형 → 중간값 → 대입 → 최종값**의 필요한 단계를 별도 줄/수식 블록으로 보여준다. 발문은 조건·질문·보기·공통자료의 의미 경계에서 나누되 수식·단위·조건의 결속을 유지한다. desktop/mobile 실제 화면의 수식 흐름과 줄바꿈을 판정하며 줄 수만으로 PASS를 만들지 않는다. 이번 설계 문서 수정은 학생용 해설 생성·수정이 아니므로 sample preflight나 해설 품질 PASS를 실행한 것으로 기록하지 않는다.
+
 ---
 
 ## 9. Reverse Stem Check와 완전한 학생 입력 동결
@@ -221,6 +251,8 @@ Pattern Bank는 긴 원문 문장의 복사본이 아니라 **조건·대상·�
 - 사용한 primaryMethod / decisiveStep와 실제 필수 조건
 
 동결 전에는 작성자의 target Blueprint, 정답, 해설, 기대 verdict를 제공하지 않는다. 동결 뒤 final spec·builder 결과를 공개하여 비교한다. 같은 입력을 읽는 Reverse 전용 agent와 Solver 전용 agent를 무조건 각각 신설하지 않는다.
+
+blind packet은 final student projection의 **허용 필드만 추출**한다. 경로·파일명·SVG title/desc·alt text·공통자료 metadata·sidecar 참조에도 hidden answer, target 분류, 해설용 보조선이 섞이지 않는지 확인한다. 참조 경로의 존재만으로 그림을 읽은 것으로 간주하지 않으며 실제 필요한 자산 판독과 hash를 기록한다. 렌더용 수학 라벨 등 학생에게 공개되는 내용은 보존한다.
 
 ### 9.3 비교 기준
 
@@ -250,6 +282,10 @@ CrossConcept는 실제 풀이에 쓰인 선수개념이어야 한다. 단어 등
 
 현행 Meta CURRENT는 current-pass 재판정을 요구하지만 Meta마다 fresh agent·비노출 session을 요구하지 않는다. 앞 절의 수학 blind 독립성과 이 규칙을 혼동하지 않는다. 동일 검수 worker가 verified solution 이후 Meta를 재판정할 수 있다.
 
+Resolver의 `sourceIdentity`는 이 단계에서는 **분류 대상인 생성 문항 자체**를 뜻한다. parent seed나 construction reference의 UID·contentHash·solutionHash를 대신 넣지 않는다. `generatedQuestionUid ↔ final consumer path/examId/qid ↔ resolver questionUid/sourceIdentityKey`의 일대일 대응을 먼저 고정하고 `questionUidForSource` 등 현행 identity 계약과 대조한다. parent lineage는 별도 sidecar로 보존한다. 재번호·export path 변경으로 identity가 바뀌면 대응표·resolver receipt·consumer parity를 새로 결속한다.
+
+`primaryMethod`와 `decisiveStep`만 적은 문장으로 resolver PASS를 대신하지 않는다. current source/solution fingerprint, authority 파일·실제 lookup row, semantic/projection evidence, difficulty evidence, `makeMetaValidatorReceipt` 또는 validator CLI의 유효 receipt까지 수납한다. 합법 projection debt도 실제 lookup과 populated key validity 증거가 있어야 한다.
+
 L3 mismatch는 현재 group에서 reject다. L4/CrossConcept/Condition/Integration mismatch도 자동으로 목표값을 고쳐 통과시키지 않는다. 수학적으로 좋은 off-target 후보를 살리려면 별도 requeue 사유·새 Blueprint revision·consumer 적합성을 기록한다. 원래 요청 slot의 충족 수에는 포함하지 않는다.
 
 ---
@@ -271,6 +307,8 @@ L3 mismatch는 현재 group에서 reject다. L4/CrossConcept/Condition/Integrati
 다양화 우선순위는 L4 → 실제 CrossConcept → 의미 있는 Condition/Integration → representation → parameter다. 우선순위는 품질을 훼손하는 의무 quota가 아니다. 같은 간결한 문형의 재사용보다 다른 핵심 학습 경험 확보가 우선이다.
 
 같은 batch뿐 아니라 이전 generated bank와 original source의 exact/구조 fingerprint도 조회한다. 조회 범위·버전·미확인 구간을 기록한다. 서로 다른 UID나 학교명만으로 독립 문항이라고 판정하지 않는다.
+
+정확한 bytes 중복과 구조 유사성은 다른 검사다. family별 정규화에서 변수명·기약분수·교환 가능한 조건/보기 순서만 다른 instance를 어떻게 처리하는지 정하고, 양성·음성 쌍으로 검증한다. 일반 문형이나 같은 정답값만으로 서로 다른 문항을 합치지 않는다. fingerprint의 미지원 비교는 서로 다름의 증명이 아니라 `비교 미확인`이다. 검색 범위가 불완전하면 전역 무중복·Common A/B 완전 독립을 보증하지 않는다.
 
 ---
 
@@ -312,6 +350,23 @@ v0.1의 B0~B16은 책임 목록으로 유지하되 17개 독립 worker/예약/�
 
 agent 수·동시성·launch/retry 권위는 기존 `archive/tools/pipeline-core/AGENT_BUDGET.md`와 선택 실행 경로를 따른다. 이 문서가 새 실행 토폴로지나 GPT 예약 라인을 신설하지 않는다.
 
+### 13.1 첫 생성 전 execution qualification
+
+Phase 1은 선택한 **generation entrypoint / execution profile / proof consumer / serializer / finalizer**를 실제 코드 경로로 적는다. MODE, family capability, 실행 profile은 서로 다른 축이다. 함수가 존재해도 필요한 receipt를 해당 finalizer가 소비하지 못하면 end-to-end 지원이 아니다.
+
+pipeline-core v2를 선택하면 사용자 요청 전체가 하나의 work batch 분모이며, Blueprint·family·문항·검수축마다 새 FINAL_AUDIT를 만들지 않는다. zero-model provider-preflight → plan-bound reserve/dispatch → 기존 launch의 terminal reconcile → whole-job audit 및 별도 release audit를 따른다. TARGETED_RECHECK 횟수는 선택 profile에 저장된 한도를 그대로 쓴다. 신규 expansion을 Past Exam이라고 임의 표시하여 세 번의 allowance를 얻지 않는다. legacy staged/FAST의 옛 dispatch는 새 호출 권한이 아니다.
+
+v2의 U1 SOURCE_ONLY, U2 ARTIFACT_ONLY, U3 CANDIDATE_ONLY를 §9의 작성자→독립 Solver→compare와 이름만 바꾸어 연결하지 않는다. 다음을 **실제 packet과 validator의 양성·음성 fixture**로 확인한다.
+
+- final generated student bundle의 blind 수학검수가 어느 승인된 input projection/axis에 속하는가. 원문만 푼 SOURCE 수학검수로 새 문항의 독립검수를 대신하지 않는가.
+- 세 packet은 freeze에서 독립적으로 seal되는가. U3에 계약상 제공되는 currentAnswer/currentSolution 검토와 student-only 풀이 증거를 구분하는가.
+- phase 간 auditor output을 입력으로 넘기지 않고 deterministic merger가 후단 비교하는가. 동일 session에서 답을 본 뒤 blind라고 재표시하지 않는가.
+- Meta/difficulty machine receipt, actual render witness, ABC 또는 해당 구조변형 proof, final seal을 선택 finalizer가 소비하는가.
+
+승인된 projection/consumer가 없으면 **연결 미지원으로 보고**하고 그 recipe의 자동 end-to-end 실행을 시작하지 않는다. 필드명·visibility label·임의 PASS로 연결을 가장하거나 extra solver agent를 자동 추가하지 않는다. 지원되는 다른 recipe의 계획·로컬 작업은 계속할 수 있다. 과거 SEALED_LOCAL 사례는 그 당시 범위의 근거이며 새 expansion profile의 qualification을 대신하지 않는다.
+
+machine capture와 semantic render review는 분리한다. 실제 render를 기본 파일럿 목표로 두되, 실행 라인의 명시적 waiver를 사용하는 경우 실제 권한·scope·사유·대체 검수·SHA를 적고 `NOT_RUN_ROOT_WAIVER` 등 그 라인의 상태를 유지한다. waiver 결과를 actual render qualification의 표본으로 세지 않는다.
+
 ---
 
 ## 14. Common Assessment Factory와의 접점
@@ -334,13 +389,19 @@ Common v0.13의 **일반 활용 가능성**과 **검증 완료 표시**를 분�
 
 ## 15. 저장 위치·identity·publication 경계
 
-후보는 기존 run별 `alive/runtime` 또는 명시적 staging root에 둔다. original production에 직접 쓰지 않는다. generated UID와 문항 revision은 source UID와 분리하고 parent source를 참조한다.
+IR·계획·run 상태는 기존 `alive/runtime` 계약을 사용한다. **Archive 시험지로 직렬화하는 신규 중간 JS·문제 이미지·해설 SVG·review shadow·render bundle은 `.tmp/archive/<runId>/<examUid>/`에 둔다.** JS basename은 처음부터 `<examUid>.js`, 설치용 참조는 `assets/images/<examUid>/<asset-name>`으로 고정한다. preview manifest가 임시 실물과 최종 상대 참조를 연결한다. 승격은 이름과 참조를 유지하고 위치만 바꾸는 것이 기본이다. `archive/_generated/`, `archive/exams/_generated/`는 역사 조회 전용이며 신규 생성·갱신·stage에 쓰지 않는다. original production에 직접 쓰지 않는다. generated UID와 문항 revision은 source UID와 분리하고 parent source를 참조한다.
+
+이 경로 지시는 사용자 현재 `AGENTS.md`가 이번 세션에서 명시한 authority다. 지정된 `docs/rules/02_PIPELINES/Archive_Exam_Temporary_Workspace_v1.md`는 최초 작업 폴더에서 읽었지만, 이번 검토의 원격 baseline `92911a8...`에는 없다. 그 local 문서·helper를 원격 구현 완료로 보고하지 않는다. Phase 2 전에 실행 checkout의 정본·preview/serializer/finalizer 경로 지원을 확인하고, 누락된 계약/도구는 해당 실행 prerequisite debt로 보고한다. 이번 계획서 변경에 다른 작업의 미커밋 파일을 섞어 넣지 않는다.
+
+위 local 정본의 이번 판독 SHA-256은 `6cf4e05a81eb7c43cdf84b3d6b04e88cf26913e4bdcd18b7a93e77921ee42d9c`다. 이는 현재 판독 provenance이며 Git 반영·엔진 지원 완료의 증명이 아니다.
 
 최종 JS의 `id`는 그 generated 시험지 안의 표시 번호다. `sourcePath|examId|qid` identity를 사용하는 consumer에는 별도 generated path/examId를 제공한다. 원문 q7과 새 시험지 q7은 같은 문항이 아니다. 배치 일부만 채택할 때 채택본의 새 denominator와 displayNo→generated UID 매핑을 동결한다.
 
 신규 Similar export는 current JS schema, Meta, difficulty 4필드와 필요한 자산을 실제로 포함해야 한다. 과거 similar 파일을 신규 schema의 기준으로 복사하지 않는다. 생성 provenance와 실제 source kind의 구체적 export는 consumer가 지원하는 필드로 adapter에서 확정한다.
 
 `SEALED_LOCAL ≠ PUBLISHED ≠ COMMON_VERIFIED_SUPPLY`다. 해당 artifact의 검증 상태와 소비자 등록·권한·readback을 별도로 확인한다. 기존 ALIVE seal만으로 original write, Common 서버 제품 생성, 접근 권한 변경이 허용되지 않는다.
+
+Phase 4의 publication adapter는 request/slot/artifact revision에 결속된 idempotency key, 등록 대상 snapshot, receipt와 readback을 정의한다. timeout/응답 유실이면 같은 key로 실제 등록 여부부터 조회·reconcile한다. 새 UID나 새 key로 재등록하여 중복 공급을 만들지 않는다. 자산 설치·JS 등록·index 갱신의 중간 실패와 rollback/reconcile 책임을 정하고, consumer의 실제 저장 bytes·자산 참조·Meta/difficulty가 봉인본과 같은지 확인한다. API가 아직 없으면 계약 후보와 미지원 상태로 기록한다.
 
 Common A/B 완전 분리에는 UID뿐 아니라 알려진 source lineage·construction family·구조 fingerprint 공유를 고려한다. 새 파일명을 여러 개 만들어 source cap을 우회하지 않는다. 공유 또는 미확인 관계를 숨기지 않으며 제품의 현재 허용 profile대로 표시한다. 학생용 제공에서 정답·해설 비공개, 서버 canonical 및 snapshot 계약도 유지한다.
 
@@ -365,6 +426,8 @@ v0.1의 `meta_blueprint.py`, `expansion_batch_planner.py`, `computation_budget.p
 ## 17. 파일럿 — 작게 만들되 끝까지 연결
 
 첫 family는 이름만 보고 정하지 않는다. 실제 등록된 bounded recipe와 완전 solver, current Meta 대응, 저시각/비시각의 지원 범위를 확인해 선택한다. 문서에서 전 과목 지원이나 family별 생산 수량을 선포하지 않는다.
+
+선택 근거는 solver domain/coverage, 현재 lookup 결과, 둘 이상의 의미 구조를 공급하는 실제 recipe, 저시각 경로, 승인된 review/export/seal 연결로 남긴다. 등록된 family에 숫자치환 A만 있으면 숫자 연습 파일럿은 가능해도 **Meta 의미 확장 성공**이라고 부르지 않는다. construction reference의 선정 근거와 holdout의 제외 범위를 생성 전에 고정한다.
 
 첫 수직 파일럿의 제안 목표는 **1 family / 실행 가능한 의미 Blueprint 2~3개 / 후보 5~10개 이내**다. 가능한 의미 Blueprint가 1개라면 숫자 instance를 3개 의미 설계로 세지 않는다. 해당 부족을 보고하고 다른 지원 recipe를 찾는다.
 
@@ -402,6 +465,12 @@ solver 증거는 domain·방법·coverage와 결속한다. 해 존재/유일성,
 | 동일 request 재실행·다른 batch의 동일 instance | 중복 저장·중복 publication 방지 |
 | 가족관계가 있는 Common A/B | 완전 독립으로 오표시하지 않음 |
 | raw/canonical/semantic hash 혼용 | evidence binding 오류 탐지 |
+| 부분 해설 산술만 PASS 또는 일부 method가 NOT_APPLICABLE | complete solver coverage로 승격 금지 |
+| parent UID로 생성 Meta receipt 결속 / export 재번호 | identity·fingerprint·4필드 parity 실패 탐지 및 영향 rebind |
+| prior bucket visibility 허용 vs target/legacy 값 복사 | 전자는 current-pass evidence 가능, 후자는 판정 근거 위반 |
+| recipe SUPPORTED지만 proof/finalizer 연결 없음 | 자동 end-to-end 불가. 구조변형을 VERIFIED_B로 위장 금지 |
+| blind packet 경로·alt/SVG metadata에 hidden answer | 입력 오염 탐지. 새 격리 검수 필요 |
+| publication timeout·동시 동일 slot 재개 | 동일 key/ownership reconcile, UID·등록 수 증가 없음 |
 
 fixture를 통과한 사실과 실제 학생 문항 qualification은 구분한다. 현재 문서 검토에서는 위 회귀를 실행하지 않았다.
 
@@ -422,17 +491,19 @@ fixture를 통과한 사실과 실제 학생 문항 qualification은 구분한�
 | Phase 4 | Similar/Common supply adapter | generated identity, lookup/export, 중복·lineage, 별도 publication authority·readback |
 | Phase 5 | 수요 기반 확대 | 검증된 family/recipe부터 확대. 기존 정상 bank·예약 변경 없음 |
 
-parameter trial, Blueprint revision, 모델 호출/비용에 유한한 run budget을 둔다. 시작 전에 설정하고 한도 도달 시 exact failure와 shortage를 반환한다. 오류를 감추기 위해 무한 재생성하거나 틀린 값을 고쳐 PASS를 만드는 loop는 금지한다.
+parameter trial과 Blueprint revision에는 시작 전에 유한한 계획 한도를 둔다. 한도 도달 시 마지막 실패 근거와 미충족 slot을 반환한다. 모델 launch·재검 횟수·동시성은 실행 authority의 allowance를 따르며 계획 한도를 이유로 새 workBatchId를 만들어 회복하지 않는다. pipeline-core v2의 `tokenBudget/maxTokens/usedTokens`는 telemetry이며 이 문서가 별도 token HOLD나 launch 거부를 만들지 않는다. 비용은 채택당 실측으로 보고하고 차기 요청량·recipe 선택에 활용한다. 오류를 감추기 위해 무한 재생성하거나 틀린 값을 고쳐 PASS를 만드는 loop는 금지한다.
 
 수학 실패는 해당 candidate의 재설계, 문형 실패는 해당 stem과 영향 검수, recipe 공통 결함은 영향 범위만 재점검한다. 실패한 한 slot이 다른 준비된 slot이나 기존 원본 활용을 멈추게 하지 않는다. 같은 artifact의 동일 검사 반복 실행으로 통과를 노리지 않는다.
 
 집계는 requested / feasible / attempted / accepted / rejected / shortage를 구분한다. 핵심 지표는 실제 semantic 다양성, 최초 통과율, 계산량 분포, stem 재작성률, Meta drift, 중복률, 채택 문항당 비용, 실제 공급 gap 해소다. 낮은 yield보다 잘못된 자동 PASS가 더 심각하지만, 낮은 yield의 원인을 측정하지 않는 무한 낭비도 허용하지 않는다.
 
+분모는 다음처럼 분리한다. `requestedSlotCount = satisfiedSlotCount + shortageSlotCount`는 완료된 요청 snapshot에서 성립한다. accepted artifact가 있어도 목표 consumer에 맞지 않거나 동일 slot에 두 번째 후보이면 satisfied를 늘리지 않는다. 실행 중 미결 slot은 unresolved로 따로 표시한다. `attemptedCandidateCount = acceptedCandidateCount + rejectedCandidateCount + unresolvedCandidateCount`로 후보/attempt 단위를 고정하고, deterministic parameter trial 횟수와 provider launch 수는 별도다. **requested=attempted 또는 rejected=shortage라고 가정하지 않는다.** off-target requeue는 원 slot shortage를 지우지 않는다. 최초 통과율의 분모는 최초 시도가 있었던 고유 slot이며 재시도로 증가시키지 않는다.
+
 ---
 
 ## 20. 원래 14개 검수 질문에 대한 답변
 
-| # | 질문 | v0.2 설계 판단 |
+| # | 질문 | v0.3 설계 판단 |
 |---|---|---|
 | 1 | ALIVE_EXPANSION은 신규 MODE인가? | 우선 generationPurpose다. 기존 MODE별 fidelity를 실제로 선택한다. |
 | 2 | L3 HARD LOCK을 어디에 적용하는가? | 각 same-L3 expansion group에 적용. 모든 Factory 제품·일반 practice의 전역 필터는 아님. |
@@ -442,12 +513,12 @@ parameter trial, Blueprint revision, 모델 호출/비용에 유한한 run budge
 | 6 | nice-number와 Normalizer가 겹치는가? | 수치 구성/재선정과 값 보존 정규화, 목표식 변환을 구분해 기존 nice-number 앞뒤에 연결. |
 | 7 | kS·k(a+b)는 어떻게 허용하는가? | quantity/domain·가역성·자연성·핵심 사고 보존을 recipe별 검증. 전역 multiplier whitelist 금지. |
 | 8 | Pattern Bank의 복제 경계는? | 일반 문형 재사용 허용, 긴 고유 원문·상황 복제는 탐지. slot과 출처·version 보존. |
-| 9 | Reverse Check에 새 reviewer가 필요한가? | 기존 독립 Solver의 student-only 판독과 통합 가능. 수학·해설·시각 검수를 대체하지 않음. |
+| 9 | Reverse Check에 새 reviewer가 필요한가? | 통합 가능하되 선택 profile의 실제 input projection·freeze·merger 연결을 먼저 qualification. Meta/difficulty current-pass에는 매번 새 비노출 reviewer가 필수인 것은 아님. |
 | 10 | Meta mismatch 후보를 살릴 수 있는가? | 기본 target reject. 좋은 off-target은 별도 requeue/revision으로만 살리고 원 slot 충족으로 세지 않음. |
 | 11 | Factory와 Planner owner 중복은? | Factory는 제품 수요/Recipe, ALIVE는 실행 가능 문항 생성. 이중 제품 builder 금지. |
 | 12 | 언제 sampled audit로 전환하는가? | 이번 단계에서는 전환하지 않음. family 증거 재사용과 item 필수 검수 생략은 별개. |
 | 13 | A/B/C와 Meta 다양성이 충돌하는가? | 충돌 가능. C는 새 개념 없는 전처리 1개이며 다른 L4 구조는 적합 MODE/recipe/proof를 별도 선택. |
-| 14 | 최소 shadow 경로는? | 계획 adapter → 1-family wrapper → 기존 독립검수/metadata export/seal adapter. capability 자동 승격 없음. |
+| 14 | 최소 shadow 경로는? | 읽기 전용 계획·execution qualification → 1-family wrapper → 새 문항 identity의 독립검수/metadata export/seal adapter. 실제 연결 없는 recipe는 미지원으로 보고. |
 
 ---
 
@@ -476,7 +547,7 @@ Factory/교사의 실제 공급 gap 또는 명시적 생성 요청
 
 ## 22. 이번 개정 범위와 미확인 사항
 
-v0.1의 핵심 목표와 14개 질문을 유지하면서 계약 충돌·수학적 목표 변환·완전 입력 동결·실행 비용·공급 경계를 보완했다. 현재 검토는 위에 명시한 문서와 핵심 함수의 설계 대조이며 **ALIVE 전체 코드·모든 family·모든 시험지의 전수 인증이 아니다.**
+v0.1의 핵심 목표와 14개 질문 및 v0.2의 보완을 유지했다. v0.3에서는 실행 profile 연결, 신규 문항 identity, difficulty CURRENT와 legacy evidence 문자열, 토큰 telemetry, 임시경로, 계획 결과·분모·재개 조건을 추가로 명확히 했다. 현재 검토는 위에 명시한 문서와 핵심 함수의 설계 대조이며 **ALIVE 전체 코드·모든 family·모든 시험지의 전수 인증이 아니다.**
 
 - engine code / operational canonical 변경: 0
 - production original / Similar Bank / Common 제품 변경: 0
@@ -486,3 +557,52 @@ v0.1의 핵심 목표와 14개 질문을 유지하면서 계약 충돌·수학�
 따라서 문서 반영 완료와 엔진 구현 완료, runtime qualification, 문항 품질 PASS를 구분한다. 설계 문서는 `alive/00_ALIVE_INDEX.md`의 경계대로 운영 manifest 대상에 추가하지 않는다.
 
 현재 ALIVE expansion pilot의 기본 제안은 실제 Archive 렌더까지 확인하는 것이다. 그렇다고 GPT_SCHEDULED의 기존 render 비필수 계약을 바꾸거나, CODEX의 명시적 정적 완료/waiver를 실제 RENDER_PASS로 표시하지 않는다. 실행 시 선택한 CURRENT와 해당 run의 실제 권한·증거가 우선한다.
+
+---
+
+## 23. 첫 구현에 넘길 최소 계약과 종료 조건
+
+아래 필드명·보고서 형식은 **신규 planner sidecar 제안**이다. 현재 runtime enum·API로 간주하지 않는다. 운영 정본의 상세 규칙은 복제하지 않고 source ref/hash로 연결한다.
+
+### 23.1 READ-ONLY planner의 입력과 결과
+
+입력은 request/slot identity, target curriculum/L1/L2/RPM L3, 요청 수량의 단위(의미 구조/숫자 instance/표현), 허용 MODE·난도·response/visual, 목표 consumer/profile, lineage seed와 construction reference, current 공급 inventory의 scope/snapshot을 받는다. 외부 공급 조회가 안 되면 **공급 부족 미확인**으로 표시한다. teacher 수요나 전역 bank 규모를 추측하지 않는다.
+
+결과는 slot별로 다음을 기록한다.
+
+| 묶음 | 최소 결과 |
+|---|---|
+| 고정 입력 | request/slot id, 입력 hash, START_SHA, 실제 소비한 rule/taxonomy/registry/recipe refs와 hashes |
+| 의미 목표 | RPM path·scope relation, target와 허용 변화, 요청 단위·수량 |
+| recipe 지원 | family/recipe/transform, parameter domain, solver coverage ref, 실제 adapter 함수/entrypoint와 version |
+| 실행 연결 | MODE/profile, 독립검수 projection, proof consumer, serializer/finalizer, 실제 qualification evidence 또는 누락 |
+| 저장·소비 | generated identity 계획, consumer 요구, Meta semantic/projection 및 difficulty 요구, 임시경로 지원 |
+| 판정 | recipe 지원 / end-to-end 연결 지원 / consumer 충족 가능을 별도 판정, shortage 또는 prerequisite debt 사유와 다음 동작 |
+
+recipe의 유효 parameter domain이 있다는 사실은 요청한 고유 instance 10개의 확보 증명이 아니다. Phase 1의 feasible 수량은 **계획상 가능 수량/상한**으로 표시하고, 실제 채택·공급 수량은 생성·검수 뒤에만 확정한다. 개별 key를 Cartesian product로 늘려 feasible Blueprint 수를 만들지 않는다. 이전 accepted 공급의 재사용도 목표 profile·consumer·중복/lineage 조건과 현행 evidence 유효성을 확인한다.
+
+Phase 1 완료는 동일 snapshot 입력의 동일 결과·정렬·사유, 양성/음성 계획 사례, **문항 생성·UID 할당·runtime 상태 mutation·provider launch·production write 0**으로 확인한다. 보고서 출력 파일 외 부작용은 없어야 한다. 관측된 registry 상태를 SUPPORTED로 변경하지 않는다.
+
+### 23.2 수정·재개 시 영향 범위
+
+| 변경 | 최소 재확인 |
+|---|---|
+| content/choices/problem visual/shared | student projection·자산 판독·독립 수학검수·cardinality/index·Reverse, 영향 Meta/difficulty·렌더 |
+| final target/domain/parameter/spec | complete solve·trace budget·fidelity부터 영향 student/review/export closure 전부 |
+| solution/solution visual | 수학 의미·교육과정·해설 품질·visual parity, verified solution hash를 소비하는 Meta/difficulty receipt |
+| Meta/difficulty 값·lookup authority | current-pass/lookup·validator receipt·export/consumer parity. 학생 입력이 같으면 독립 풀이 재사용 여부를 현행 receipt로 검증 |
+| displayNo/export path/asset reference | identity 대응·직렬화·참조·render impact·receipt hash, choices 순서가 바뀌면 answer-index 검수 |
+| 무관한 main 전진 | consumed refs/hash가 같으면 기존 증거 유지. baseline drift만으로 blanket 재생성하지 않음 |
+
+이 표는 자동 evidence reuse 허가가 아니다. 선택 경로의 실제 impact/reuse validator가 요구하는 직접 root receipt·current machine record를 충족한다. 숨은 답 노출·필수 그림 누락으로 실패한 freeze는 보존하고 유효한 새 격리 검수로만 닫는다. 공통자료·recipe·자산 변경은 해당 내용을 소비한 모든 slot을 영향 scope에 포함한다.
+
+요청 재개는 기존 slot ownership·attempt·freeze·provider state를 먼저 readback한다. DISPATCHED/등록 결과가 불명확하면 동일 identity로 reconcile하고 새 launch·새 UID를 만들지 않는다. 중단된 실행은 원 증거와 소비한 allowance를 보존한다. 공통 결함은 영향 recipe를 격리하고 무관한 정상 slot을 계속 처리한다.
+
+### 23.3 단계별 종료 산출물
+
+- **Phase 1:** 위 계획 보고서, 현재 실제 연결/미지원 목록, 첫 family 선택 근거. 현재 작업에서는 아직 구현하지 않음.
+- **Phase 2:** 처음 5~10개 후보 안에서 요청·시도·채택·부족 분모, 양성/음성 결과, immutable student freeze와 독립검수, 새 문항 resolver/difficulty receipt, desktop/mobile exam·solution·answer 실제 화면, 최종 JS/asset/sidecar·package hash와 유효 local seal. 실제 render가 면제되면 그 실행 상태를 별도로 보고하며 render qualification을 획득한 것으로 세지 않음.
+- **Phase 3:** 생성 전에 holdout scope를 동결하고 reference/pattern/budget calibration에 사용하지 않음. observed 결함을 수리하면 그 holdout은 해당 수정의 미관측 검증 사례로 더 이상 세지 않음. 3-family의 실제 지원 구조 수·최초 통과율·false accept 발견 사례·채택당 비용/미확인 비용·부족 원인을 보고.
+- **Phase 4:** actual consumer 계약, publication authority, 동일 key 재개·부분 실패 recovery, canonical 저장본/자산/Meta/difficulty readback. local seal 결과만으로 완료 처리하지 않음.
+
+Phase 2는 **채택본 HARD 0 + 실제 end-to-end closure + 실패/부족의 정직한 기록**으로 종료한다. 2~3개의 의미 Blueprint를 못 확보하면 수직 연결 성공과 의미 확장 미달을 나누어 보고한다. 수량을 채우려고 숫자 연습을 의미 구조로 재명명하거나 품질 gate를 낮추지 않는다. 엔진 구현·pilot 실행·운영 활성화는 각각의 후속 완료 근거가 있어야 한다.
