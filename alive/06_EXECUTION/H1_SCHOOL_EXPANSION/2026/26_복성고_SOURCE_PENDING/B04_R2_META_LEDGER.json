@@ -1,0 +1,577 @@
+{
+  "schemaVersion": "ALIVE_LITE_B04_META_R2",
+  "batchId": "B04",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "items": [
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S01",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-POWER_SUM",
+      "stemGoal": "거듭제곱 행렬합",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "POWER_SUM",
+      "misconceptionDistractors": [
+        "대각만 합산 12",
+        "비대각만 합산 42",
+        "합의 항수 누락 48",
+        "지수 끝값 오독 66"
+      ],
+      "answerValue": "54",
+      "answerIndex": 4,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S02",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-UNKNOWN_EXPONENT",
+      "stemGoal": "지수 역추론",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "UNKNOWN_EXPONENT",
+      "misconceptionDistractors": [
+        "누적 증가 놓침",
+        "n−1 처리",
+        "n+1 처리",
+        "거듭제곱값과 성분값 혼동"
+      ],
+      "answerValue": "9",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S03",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-ALTERNATING_SUM",
+      "stemGoal": "교대부호 상쇄",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "ALTERNATING_SUM",
+      "misconceptionDistractors": [
+        "교대부호 없이 합산",
+        "상쇄값 0 오판",
+        "부호 반전",
+        "계수 중복"
+      ],
+      "answerValue": "-8",
+      "answerIndex": 2,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S04",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-MIXED_PRODUCT",
+      "stemGoal": "서로 다른 행렬 거듭제곱 곱",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "MIXED_PRODUCT",
+      "misconceptionDistractors": [
+        "4+3만 계산",
+        "(2,1)성분만 계산",
+        "단위 성분을 3개로 오산",
+        "거듭제곱 합계 혼동"
+      ],
+      "answerValue": "19",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S05",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-ORDER_DIFFERENCE",
+      "stemGoal": "행렬곱의 비가환성",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "ORDER_DIFFERENCE",
+      "misconceptionDistractors": [
+        "차의 절댓값",
+        "곱 순서 교환",
+        "행렬곱 가환 착각",
+        "절댓값과 부호 반대"
+      ],
+      "answerValue": "-6",
+      "answerIndex": 1,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S06",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-UNKNOWN_COEFFICIENT",
+      "stemGoal": "전체 성분합으로 원행렬 복원",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "UNKNOWN_COEFFICIENT",
+      "misconceptionDistractors": [
+        "대각 보정 빠뜨림",
+        "등차합 대신 항수 사용",
+        "항수와 계수 혼동",
+        "전체 합 직접 나눔"
+      ],
+      "answerValue": "3",
+      "answerIndex": 2,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S07",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-IDEMPOTENT",
+      "stemGoal": "제곱해도 변화 없는 행렬",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "IDEMPOTENT",
+      "misconceptionDistractors": [
+        "한 번만 A 합산",
+        "대각만 더함",
+        "거듭제곱의 성분 증폭",
+        "7A의 열 합 오독"
+      ],
+      "answerValue": "14",
+      "answerIndex": 4,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S08",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-PERIODIC",
+      "stemGoal": "짝수·홀수 거듭제곱 구분",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "PERIODIC",
+      "misconceptionDistractors": [
+        "홀짝 4개씩 착각",
+        "A^2=A 혼동",
+        "둘 다 A 취급",
+        "성분 하나 이중합"
+      ],
+      "answerValue": "18",
+      "answerIndex": 1,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q17-S09",
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-SCALAR_RECURRENCE",
+      "stemGoal": "$A^2=2A$ 반복 구조",
+      "primaryMethod": "행렬의 연산",
+      "decisiveStep": "행렬의 곱셈",
+      "rpmCrosswalkId": "H1-RPM-201",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "SCALAR_RECURRENCE",
+      "misconceptionDistractors": [
+        "계수합만 제출",
+        "30A로 계산",
+        "2^5A를 합산",
+        "2배 추가 합산"
+      ],
+      "answerValue": "93",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S01",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-PROJECTION_FORWARD",
+      "stemGoal": "AB=CA·합 조건",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "PROJECTION_FORWARD",
+      "misconceptionDistractors": [
+        "B 합을 C 합에 사용",
+        "C12 부호 반전",
+        "B22 누락",
+        "C22만 채택"
+      ],
+      "answerValue": "3",
+      "answerIndex": 4,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S02",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-PROJECTION_REVERSE",
+      "stemGoal": "결과 성분을 이용해 조건 역산",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "PROJECTION_REVERSE",
+      "misconceptionDistractors": [
+        "C22만 보기",
+        "B21만 더함",
+        "전체 (2,2)성분 사용",
+        "B+C 전체합 오독"
+      ],
+      "answerValue": "4",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S03",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-DIAGONAL_COMMUTATION",
+      "stemGoal": "서로 다른 대각수와 가환",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "DIAGONAL_COMMUTATION",
+      "misconceptionDistractors": [
+        "두 대각성분 중 작은 값",
+        "합과 차를 바꿈",
+        "평균만 계산",
+        "합을 그대로 사용"
+      ],
+      "answerValue": "5",
+      "answerIndex": 4,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S04",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-JORDAN_COMMUTATION",
+      "stemGoal": "상삼각 행렬과 가환",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "JORDAN_COMMUTATION",
+      "misconceptionDistractors": [
+        "비대각성분만 사용",
+        "X11=X22 누락",
+        "2u=11 오판",
+        "전체합과 대각합 혼동"
+      ],
+      "answerValue": "4",
+      "answerIndex": 2,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S05",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-ZERO_PRODUCT",
+      "stemGoal": "영행렬곱의 성분 제약",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "ZERO_PRODUCT",
+      "misconceptionDistractors": [
+        "B21 오답",
+        "첫째 행 0 조건 부분 적용",
+        "곱의 성분합만 사용",
+        "B22에 B21을 중복 합산"
+      ],
+      "answerValue": "5",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S06",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-LEFT_MATRIX_EQUATION",
+      "stemGoal": "왼쪽 곱행렬 성분 방정식",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "LEFT_MATRIX_EQUATION",
+      "misconceptionDistractors": [
+        "X22만 선택",
+        "X21만 선택",
+        "빼기 오계산",
+        "AX와 XA 혼동"
+      ],
+      "answerValue": "4",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S07",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-RIGHT_MATRIX_EQUATION",
+      "stemGoal": "곱셈 순서에 따른 열 방정식",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "RIGHT_MATRIX_EQUATION",
+      "misconceptionDistractors": [
+        "한 성분만 취함",
+        "열 방정식 절반 오산",
+        "두 성분을 더하지 않음",
+        "XA를 AX처럼 전개"
+      ],
+      "answerValue": "2",
+      "answerIndex": 2,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S08",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-SWAP_COMMUTATION",
+      "stemGoal": "순서바꿈 행렬과 가환",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "SWAP_COMMUTATION",
+      "misconceptionDistractors": [
+        "대각성분 반환",
+        "행렬 전체합 절반",
+        "차를 합으로 오판",
+        "주어진 대각합 반환"
+      ],
+      "answerValue": "4",
+      "answerIndex": 1,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q20-S09",
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-EXISTENCE_CONDITION",
+      "stemGoal": "조건을 만족하는 행렬의 존재성",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "조건을 만족하는 행렬",
+      "rpmCrosswalkId": "H1-RPM-203",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [],
+      "conditionPattern": "EXISTENCE_CONDITION",
+      "misconceptionDistractors": [
+        "허용 구간 범위를 값으로 혼동",
+        "t=-1로 치환",
+        "대각조건 미사용",
+        "a를 t로 혼동"
+      ],
+      "answerValue": "0",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S01",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-ROUTE_TABLE",
+      "stemGoal": "코스 표의 행렬 표현과 세 단계 경로합",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "경우의 수",
+        "곱의 법칙"
+      ],
+      "conditionPattern": "ROUTE_TABLE",
+      "misconceptionDistractors": [],
+      "answerValue": "A=\\begin{pmatrix}1&2\\\\1&0\\end{pmatrix},\\ 16",
+      "answerIndex": null,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S02",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIXED_ENDPOINT",
+      "stemGoal": "고정 출발·도착점 경로수",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "경우의 수"
+      ],
+      "conditionPattern": "FIXED_ENDPOINT",
+      "misconceptionDistractors": [],
+      "answerValue": "6",
+      "answerIndex": 5,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S03",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIRST_STAGE_CONSTRAINT",
+      "stemGoal": "첫 번째 경유지 고정",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "곱의 법칙",
+        "조건부 경로"
+      ],
+      "conditionPattern": "FIRST_STAGE_CONSTRAINT",
+      "misconceptionDistractors": [],
+      "answerValue": "2",
+      "answerIndex": 2,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S04",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIRST_RETURN",
+      "stemGoal": "처음 귀환하는 이동 경로",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "경우의 수"
+      ],
+      "conditionPattern": "FIRST_RETURN",
+      "misconceptionDistractors": [],
+      "answerValue": "4",
+      "answerIndex": null,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S05",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-ALTERNATING_STATION",
+      "stemGoal": "고리 이동만 허용",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "곱의 법칙"
+      ],
+      "conditionPattern": "ALTERNATING_STATION",
+      "misconceptionDistractors": [],
+      "answerValue": "36",
+      "answerIndex": 5,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S06",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-STAGE_DEPENDENT",
+      "stemGoal": "단계별 이동행렬 곱의 순서",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "곱의 법칙"
+      ],
+      "conditionPattern": "STAGE_DEPENDENT",
+      "misconceptionDistractors": [],
+      "answerValue": "3",
+      "answerIndex": 3,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S07",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-VISIT_AT_LEAST_ONCE",
+      "stemGoal": "반드시 다른 지점 경유",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "여사건 세기"
+      ],
+      "conditionPattern": "VISIT_AT_LEAST_ONCE",
+      "misconceptionDistractors": [],
+      "answerValue": "5",
+      "answerIndex": 1,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    },
+    {
+      "uid": "ALITE-BSG26-B04R2-Q23-S08",
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-EXACT_ONE_VISIT",
+      "stemGoal": "중간 방문 횟수 제한",
+      "primaryMethod": "행렬의 성질",
+      "decisiveStep": "곱셈의 성질",
+      "rpmCrosswalkId": "H1-RPM-202",
+      "rpmStatus": "DIRECT_BINDING_GAP",
+      "crossConcepts": [
+        "경우 나누기"
+      ],
+      "conditionPattern": "EXACT_ONE_VISIT",
+      "misconceptionDistractors": [],
+      "answerValue": "8",
+      "answerIndex": null,
+      "studentSolutionReviewedByIndependent": false,
+      "status": "CREATOR_SELF_CHECK_PENDING"
+    }
+  ],
+  "sourceMetaWarnings": [
+    "q17/q20/q23 original H22-C-09-CORE label is 경우의 수 핵심 개념; do not propagate",
+    "q20 RPM Primary H1-RPM-203 vs previous q20 MATRIX_OPERATION"
+  ],
+  "sourcePerQid": {
+    "17": {
+      "l3": "행렬의 연산",
+      "rpm": "H1-RPM-201",
+      "alternate": "H1-RPM-202"
+    },
+    "20": {
+      "l3": "행렬의 성질",
+      "rpm": "H1-RPM-203"
+    },
+    "23": {
+      "l3": "행렬의 성질",
+      "rpm": "H1-RPM-202",
+      "crossConcept": "경우의 수"
+    }
+  }
+}
