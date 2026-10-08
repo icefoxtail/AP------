@@ -1,6 +1,6 @@
 {
   "schemaVersion": "ALIVE_LITE_EXTENSION_L4_CANDIDATES_v0.1",
-  "status": "EXTENSION_CANDIDATES_REVIEW_PENDING",
+  "status": "B03_EXTENSION_DESIGNED_BEFORE_C",
   "curriculum": "2022",
   "course": "공통수학1",
   "l1": "H22-C-06",
@@ -113,13 +113,164 @@
       "granularityDecision": "L4_VS_CONDITION_PATTERN_REVIEW_REQUIRED",
       "canonicalPromoted": false,
       "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-CUBIC-UNITY-SYMMETRIC",
+      "label": "삼차방정식 허근의 이동 역수·대칭곱 계산",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "parentRpmRecordId": "H1-RPM-172",
+      "existingCanonicalL4": "인수분해형",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-172"
+      ],
+      "decisiveStepSignature": "w²+w+1=0, w³=1과 켤레관계로 분수나 곱을 계산",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        13
+      ],
+      "sourceSeedL2": "H22-C-04-COMPLEX_ROOT",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "blueprintIds": [
+        "BSG26-B03-Q13-R03",
+        "BSG26-B03-Q13-R04",
+        "BSG26-B03-Q13-R06",
+        "BSG26-B03-Q13-R07"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-CUBIC-UNITY-COEFF-INVERSE",
+      "label": "비실수 세제곱근에서 실수계수 최소다항식 결정",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "parentRpmRecordId": "H1-RPM-172",
+      "existingCanonicalL4": "인수분해형",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-172"
+      ],
+      "decisiveStepSignature": "두 허근을 갖는 실수계수 이차식을 계수비교로 구성",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        13
+      ],
+      "sourceSeedL2": "H22-C-04-COMPLEX_ROOT",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "blueprintIds": [
+        "BSG26-B03-Q13-R08"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-QUARTIC-INTEGER-ROOT-PARAM",
+      "label": "짝차수 사차방정식 네 정수근의 매개변수 범위",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "parentRpmRecordId": "H1-RPM-173",
+      "existingCanonicalL4": "치환형",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-173"
+      ],
+      "decisiveStepSignature": "x² 치환으로 두 y근을 구해 0·중복·완전제곱 여부를 판정",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        16
+      ],
+      "sourceSeedL2": "H22-C-06-EQUATION_BASIC",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "blueprintIds": [
+        "BSG26-B03-Q16-F01",
+        "BSG26-B03-Q16-F02",
+        "BSG26-B03-Q16-F05",
+        "BSG26-B03-Q16-F06"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-QUARTIC-ROOT-SYMMETRY",
+      "label": "사차방정식의 대칭 정수근에서 대칭식 역추적",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "parentRpmRecordId": "H1-RPM-173",
+      "existingCanonicalL4": "치환형",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-173"
+      ],
+      "decisiveStepSignature": "±a,±b 네 근을 대칭적으로 묶어 계수·근의 제곱합·거듭제곱합을 결정",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        16
+      ],
+      "sourceSeedL2": "H22-C-06-EQUATION_BASIC",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "blueprintIds": [
+        "BSG26-B03-Q16-F03",
+        "BSG26-B03-Q16-F04",
+        "BSG26-B03-Q16-F07",
+        "BSG26-B03-Q16-F08"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-QUARTIC-DEGENERATE-ROOTS",
+      "label": "사차식 중근과 서로 다른 근의 개수 판정",
+      "proposedParentRPMPrimaryL3": "삼차·사차방정식",
+      "parentRpmRecordId": "H1-RPM-172",
+      "existingCanonicalL4": "인수분해형",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-172"
+      ],
+      "decisiveStepSignature": "이차인수의 제곱에서 근 중복도를 제거해 실근 수를 결정",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        16
+      ],
+      "sourceSeedL2": "H22-C-06-EQUATION_BASIC",
+      "targetL2": "H22-C-06-HIGHER_EQUATION",
+      "blueprintIds": [
+        "BSG26-B03-Q16-F09"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
     }
   ],
   "canonicalRPMModified": false,
   "lastBatchId": "B02-Q08",
-  "candidateCount": 5,
+  "candidateCount": 10,
   "newB02CandidateIds": [
     "EXT-H1-BSG26-CONJUGATE-CUBIC-VIETA",
     "EXT-H1-BSG26-CONJUGATE-CUBIC-RECONSTRUCT"
-  ]
+  ],
+  "canonicalPromoted": false,
+  "consumerSelectable": false
 }

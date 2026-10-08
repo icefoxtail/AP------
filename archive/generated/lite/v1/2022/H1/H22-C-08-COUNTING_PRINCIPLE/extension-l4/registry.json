@@ -1,13 +1,13 @@
 {
   "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
-  "status": "DRAFT_DISCOVERY_ONLY",
+  "status": "B03_EXTENSION_DESIGNED_BEFORE_C",
   "curriculum": "2022",
   "course": "공통수학1",
   "l1": "H22-C-08",
   "l2": "H22-C-08-COUNTING_PRINCIPLE",
   "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
   "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "candidateCount": 10,
+  "candidateCount": 14,
   "candidates": [
     {
       "candidateL4Id": "EXT-H1-C08-DIST-MANDATORY-PICK",
@@ -289,9 +289,126 @@
       "reviewStatus": "DISCOVERED_UNREVIEWED",
       "canonicalPromoted": false,
       "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-SELECTION-PARITY-SUM",
+      "label": "선택한 수의 합을 홀짝으로 제한한 조합",
+      "proposedParentRPMPrimaryL3": "조합의 활용",
+      "parentRpmRecordId": "H1-RPM-194",
+      "existingCanonicalL4": "선택 조건",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-194"
+      ],
+      "decisiveStepSignature": "합의 짝홀을 결정하는 홀수 선택 개수에 따라 경우의 수 분기",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        9
+      ],
+      "sourceSeedL2": "H22-C-08-COMBINATION",
+      "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "blueprintIds": [
+        "BSG26-B03-Q09-S02",
+        "BSG26-B03-Q09-S03",
+        "BSG26-B03-Q09-S09",
+        "BSG26-B03-Q09-S10"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-SELECTION-MINIMUM-FIXED",
+      "label": "선택한 집합의 최솟값 고정",
+      "proposedParentRPMPrimaryL3": "조합의 활용",
+      "parentRpmRecordId": "H1-RPM-194",
+      "existingCanonicalL4": "선택 조건",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-194"
+      ],
+      "decisiveStepSignature": "최솟값을 반드시 포함하고 나머지 대상은 그보다 큰 수에서 선택",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        9
+      ],
+      "sourceSeedL2": "H22-C-08-COMBINATION",
+      "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "blueprintIds": [
+        "BSG26-B03-Q09-S05"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-SELECTION-ATLEAST-COMPLEMENT",
+      "label": "필수 집단 적어도 하나 포함을 여사건으로 환원",
+      "proposedParentRPMPrimaryL3": "조합의 활용",
+      "parentRpmRecordId": "H1-RPM-194",
+      "existingCanonicalL4": "선택 조건",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-194"
+      ],
+      "decisiveStepSignature": "전체 선택에서 목표 집단을 전혀 뽑지 않은 경우를 제외",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        9
+      ],
+      "sourceSeedL2": "H22-C-08-COMBINATION",
+      "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "blueprintIds": [
+        "BSG26-B03-Q09-S07"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B03-SELECTION-MULTIPLE-THRESHOLD",
+      "label": "특정 배수 집단에서 적어도 지정 개수 선택",
+      "proposedParentRPMPrimaryL3": "조합의 활용",
+      "parentRpmRecordId": "H1-RPM-194",
+      "existingCanonicalL4": "선택 조건",
+      "canonicalComparatorRPMIds": [
+        "H1-RPM-194"
+      ],
+      "decisiveStepSignature": "특정 집단에서 지정 최소 개수를 선택하는 여러 사건을 합산",
+      "contrastAgainstCanonicalL4": "Named specialized target/decision signature may be independent L4 or condition-level pattern; semantic novelty still unverified",
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceQids": [
+        9
+      ],
+      "sourceSeedL2": "H22-C-08-COMBINATION",
+      "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "blueprintIds": [
+        "BSG26-B03-Q09-S08"
+      ],
+      "exampleUids": [],
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "novelL4OrCondition": "UNRESOLVED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "candidateOnly": true,
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT"
     }
   ],
   "reviewStatus": "NOT_REVIEWED",
   "canonicalRPMModified": false,
-  "note": "q15 generated UID=0; H22-C-07 earlier same-grade RPM semantic reuse is a proposal, not finalized classification."
+  "note": "q15 generated UID=0; H22-C-07 earlier same-grade RPM semantic reuse is a proposal, not finalized classification.",
+  "canonicalPromoted": false,
+  "consumerSelectable": false
 }
