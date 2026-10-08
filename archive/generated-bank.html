@@ -25,11 +25,11 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 </head>
 <body>
 <header><a href="workspace.html"><strong>Archive 2.0</strong> · 원래 화면으로</a><div class="muted">검수 승인 Generated Bank — 원본 기출과 분리된 등록 자료</div></header>
-<main><h1>효천고 2026 생성 문제은행</h1><p class="muted">승인된 문제만 표시합니다. 보류 문항은 검색·선택·인쇄에서 제외됩니다.</p>
-<div class="controls"><input id="query" aria-label="문항 검색" placeholder="UID·문항 번호·단원 검색"><select id="unit" aria-label="세부 단원"><option value="">전체 단원</option></select><button id="print" class="primary" disabled>선택 문항 인쇄 (0)</button><button id="clear">선택 비우기</button></div>
+<main><h1>2026 검수 완료 생성 문제은행</h1><p class="muted">승인된 문제만 표시합니다. 보류 문항은 검색·선택·인쇄에서 제외됩니다.</p>
+<div class="controls"><input id="query" aria-label="문항 검색" placeholder="UID·학교·문항 번호·단원 검색"><select id="school" aria-label="학교"><option value="">전체 학교</option></select><select id="unit" aria-label="세부 단원"><option value="">전체 단원</option></select><button id="print" class="primary" disabled>선택 문항 인쇄 (0)</button><button id="clear">선택 비우기</button></div>
 <div id="message" role="status">검수 완료 등록 자료를 불러오는 중입니다.</div>
 <div class="panels"><section class="panel"><h2>등록 문항 <span id="count">0</span></h2><div id="items"></div></section><section class="panel"><h2>문항 미리보기</h2><div id="detail">왼쪽에서 문항을 선택하세요.</div><button id="toggle-answer" disabled>정답·해설 보기</button></section></div>
-<section id="paper"><h1>효천고 2026 생성 문제지</h1><div id="paper-items"></div></section></main>
+<section id="paper"><h1>2026 선택 생성 문제지</h1><div id="paper-items"></div></section></main>
 <script>
 "use strict";
 const INDEX="data/generated-lite-consumer/v1/index.json";
@@ -61,12 +61,12 @@ function figure(parent,q){
  const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
 }
 function questionMarkup(parent,q,row,answers=false){
- text(parent,"원본 "+row.sourceQid+"번 파생 · "+row.l2,"div","muted");
+ text(parent,row.school+" · 원본 "+row.sourceQid+"번 파생 · "+row.l2,"div","muted");
  text(parent,q.content,"div","stem");figure(parent,q);
  q.choices.forEach((c,i)=>text(parent,positions[i]+" "+c,"div","choice"));
  if(answers){text(parent,"정답: "+q.answer+"\n"+(q.solution||""),"div","answer");}
 }
-function filtered(){const q=$("query").value.trim().toLowerCase(),unit=$("unit").value;return rows.filter(x=>(!unit||x.l2===unit)&&(!q||[x.uid,String(x.sourceQid),x.l2,x.school].join(" ").toLowerCase().includes(q)))}
+function filtered(){const q=$("query").value.trim().toLowerCase(),unit=$("unit").value,school=$("school").value;return rows.filter(x=>(!school||x.school===school)&&(!unit||x.l2===unit)&&(!q||[x.uid,String(x.sourceQid),x.l2,x.school].join(" ").toLowerCase().includes(q)))}
 function list(){
  visible=filtered();$("count").textContent=visible.length;
  const container=$("items");container.replaceChildren();
@@ -76,7 +76,7 @@ function list(){
   const check=document.createElement("input");check.type="checkbox";check.checked=selected.has(r.uid);check.setAttribute("aria-label",r.uid+" 선택");
   check.addEventListener("change",()=>{check.checked?selected.add(r.uid):selected.delete(r.uid);refreshPrint()});
   item.appendChild(check);
-  const lab=document.createElement("label");text(lab,r.sourceQid+"번 파생 · "+r.l2.split("-").slice(2).join("-"),"div");
+  const lab=document.createElement("label");text(lab,r.school+" · "+r.sourceQid+"번 파생 · "+r.l2.split("-").slice(2).join("-"),"div");
   text(lab,r.uid,"small");item.appendChild(lab);
   const btn=document.createElement("button");btn.textContent="보기";btn.onclick=()=>preview(r);item.appendChild(btn);
   frag.appendChild(item);
@@ -91,7 +91,7 @@ async function preview(row){
  }catch(e){$("detail").textContent=e.message;status(e.message)}
 }
 $("toggle-answer").addEventListener("click",async()=>{if(!shown)return;showAnswer=!showAnswer;const q=await questionFor(shown);$("detail").replaceChildren();questionMarkup($("detail"),q,shown,showAnswer);$("toggle-answer").textContent=showAnswer?"정답·해설 숨기기":"정답·해설 보기";await math()});
-$("query").addEventListener("input",list);$("unit").addEventListener("change",list);
+$("query").addEventListener("input",list);$("unit").addEventListener("change",list);$("school").addEventListener("change",list);
 $("clear").addEventListener("click",()=>{selected.clear();refreshPrint();list()});
 $("print").addEventListener("click",async()=>{
  if(!selected.size||selected.size>50){status("한 번에 1~50문항을 선택해 주세요.");return;}
@@ -104,9 +104,9 @@ $("print").addEventListener("click",async()=>{
 (async()=>{
  try{
  const data=await readJson(INDEX);
- if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length!==92)throw Error("등록 분모 불일치");
+ if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length<1)throw Error("등록 분모 불일치");
  const ids=data.records.map(r=>r.uid);if(!unique(ids)||ids.some(id=>!/^ALITE-[A-Za-z0-9-]+$/.test(id)||data.excludedHoldUids.includes(id)))throw Error("UID 중복 또는 보류 문항 혼입");
- rows=data.records;const units=[...new Set(rows.map(r=>r.l2))].sort();
+ rows=data.records;const schools=[...new Set(rows.map(r=>r.school))].sort();for(const name of schools){const option=document.createElement("option");option.value=name;option.textContent=name;$("school").appendChild(option)}const units=[...new Set(rows.map(r=>r.l2))].sort();
  for(const unit of units){const option=document.createElement("option");option.value=unit;option.textContent=unit;$("unit").appendChild(option)}
  list();
  }catch(e){status("등록 자료를 확인할 수 없습니다: "+e.message);$("items").textContent=e.message}

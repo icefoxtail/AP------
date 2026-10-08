@@ -1,0 +1,42 @@
+name: Generated Consumer Browser Smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'archive/generated-bank.html'
+      - 'archive/data/generated-lite-consumer/**'
+      - 'tools/check-generated-bank-browser.cjs'
+      - '.github/workflows/generated-consumer-browser-smoke.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'archive/generated-bank.html'
+      - 'archive/data/generated-lite-consumer/**'
+      - 'tools/check-generated-bank-browser.cjs'
+      - '.github/workflows/generated-consumer-browser-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Actual Chrome student lookup
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 130 consumer rows, Git blob SHA and student finder in Node VM
+        run: node --test tests/archive2-generated-bank-registration.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: B03 school filter, UID lookup, answer, selection and legacy protection
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-generated-bank-browser.cjs
