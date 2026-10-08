@@ -21,6 +21,7 @@ on:
       - "archive/data/r2e-intake/**/*.meta-review2.meta-v2.payload.json"
       - "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs"
       - "archive/tools/verify-archive-registration.mjs"
+      - "tests/archive2-meta-v2-semantic-authority.test.cjs"
       - ".github/workflows/archive-registration-sync.yml"
   push:
     branches: [main]
@@ -40,6 +41,7 @@ on:
       - "archive/data/r2e-intake/**/*.meta-review2.meta-v2.payload.json"
       - "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs"
       - "archive/tools/verify-archive-registration.mjs"
+      - "tests/archive2-meta-v2-semantic-authority.test.cjs"
       - ".github/workflows/archive-registration-sync.yml"
   workflow_dispatch:
 
@@ -118,4 +120,33 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore(archive): sync registration artifacts [skip ci]"
-          git push origin HEAD:main
+          if git push origin HEAD:main; then
+            exit 0
+          fi
+          # Another publication may advance main while the full scan runs.
+          # Rebuild from the new main; never force-push stale projections.
+          for attempt in 2 3 4; do
+            echo "Registration publish race; rebuilding latest main (attempt $attempt/4)"
+            git fetch --no-tags origin main
+            git reset --hard origin/main
+            node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write
+            python archive/build_db.py
+            node tests/archive-meta-v2-materializer.test.mjs
+            node tests/archive2-meta-v2-semantic-authority.test.cjs
+            node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
+            node tests/archive-question-identity-contract.test.mjs
+            node tests/archive-question-identity-runtime.test.mjs
+            node archive/tools/verify-archive-registration.mjs
+            git diff --check
+            git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json
+            if git diff --cached --quiet; then
+              echo "Latest main already has the generated registration."
+              exit 0
+            fi
+            git commit -m "chore(archive): sync registration artifacts [skip ci]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+          done
+          echo "Main advanced across all four non-force registration attempts" >&2
+          exit 1

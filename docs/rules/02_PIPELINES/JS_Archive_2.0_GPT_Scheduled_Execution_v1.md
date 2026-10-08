@@ -131,7 +131,7 @@ AND 해당 generation의 자기 stage PASS 조건
 lease key:
 campaignId + stream + examUid + stage + inputArtifactSha
 
-MASTER publication은 stream ownership은 유지하되 Git write 충돌 방지를 위해 A/B/C 공통 global GPT publish lease를 추가 사용한다.
+MASTER publication은 stream ownership을 유지하며 global PUBLISH_LEASE를 사용하지 않는다. target-only PR·expected head SHA와 merge 직전 main 재확인이 concurrency authority다.
 
 ## 7. CREATE
 
@@ -200,8 +200,7 @@ selector priority:
 continuation은 firstMissingClosureStep부터 exact technical closure만 닫는다.
 
 publication은:
-global GPT publish lease
-→ latest main 1회
+latest main 1회
 → same-exam overlap/drift
 → target-only final JS/asset 반영
 → 시험지 1건 = commit 1건
@@ -275,3 +274,44 @@ MASTER MAIN_DONE은 render 없이 다음 physical evidence를 요구한다.
 - origin/main의 production blob + asset parity
 
 이 closeout은 품질 의미판정을 다시 하지 않는다.
+
+
+## 16. CREATE/R1 semantic quality acceptance — 2026-10-08
+
+CREATE와 R1은 전 qid에 아래 3가지 학생 노출 품질을 확보한다. R2/R3/MASTER에 CREATE·R1의 전체 재검 책임을 전가하지 않는다.
+
+1. **Difficulty and Meta**: legacy `level`의 canonical `하|중|상` 문자열 필수(`null`·숫자 불허); `difficultyBucket` 1~5 별도 판정. L3/L4/RPM/crossConceptKeys/conditionKeys/integrationPattern은 실제 풀이 기반 semantic 판정.
+2. **Question layout**: `layoutTag`는 의미적 조판 단위에 맞춰 문항별 결정한다. `stack` 일괄 적용 및 기계적 줄바꿈을 금지한다. 다수 `stack`은 해당 문항별 재확인 신호이지 획일적인 비율 제한은 아니다.
+3. **Solution educational completeness**: 쉬운 문제도 조건→식 설정→중간 계산→정답 연결을 설명하고, 서술형은 결정적 논증과 풀이 전개를 보존한다. 평균 글자수는 진단 신호이지 품질 PASS 근거/고정 최소 자수 기준이 아니다.
+
+R1은 CREATE의 verdict를 독립 재확인하며 형식 유효성만으로 semantic PASS를 내리지 않는다. 신규 gate 구현 없이 실제 qid별 작업/evidence에 반영하고, 발견된 결함은 same-stage targeted repair로 처리한다. 2026-10-08 회귀 대상: 24 매산여고·24 금당고·24 매산고·24 여수고. 기존 PASS를 자동 무효화하거나 전체 rewind하지 않으며, 이 네 시험지는 별도 핀포인트 보정 대상으로 취급한다.
+
+
+## 17. NEXT-RUN QUALITY FLOOR — GPT CREATE/R1 execution hard (2026-10-08)
+
+**Effective immediately for the next unsealed exam/stage, A/B/C alike.** This GPT-only execution section takes priority over shorter generic CREATE/R1 summaries above when they conflict. It does not change frozen manifest, scheduler cadence, R2/R3 targeted scopes, or MASTER publication ownership. Existing completed exams are not blanket-rewound; known defects require target-only maintenance with new SHA-bound evidence.
+
+### 17.1 Actual order; output is not evidence
+
+1. **SOURCE / INPUT SNAPSHOT:** pin current generation/stream/examUid, exact source/final raw SHA, qid denominator, original choices/assets, curriculum and applicable Golden+Negative sample. Read the actual Golden example solution and relevant visual **before** authoring/review; record real example qid, SHA and observed board/layout rule. Never claim a preflight from a file name, boolean, or later reading.
+2. **CREATE 4 axes, every qid:** source/QUESTION_LAYOUT; student-facing solution/SMALL_BOARD; actual semantic Meta+level/difficulty; visual/SVG necessity and correctness. Independently derive mathematical answer and verify **all five choices** where present, correct answer cardinality, and grade-appropriate solution. Preserve exact original stem/choices unless authorized repair; do not mechanically line-break source text.
+3. **R1 independent 4-axis seal, every qid:** do not copy CREATE verdict. Read complete current *student-visible* input, including all required visual bytes, before independent mathematical judgment. When clean student-only material is available, freeze the pre-answer result and reasoning before looking at stored answer/solution; keep its input SHA and freeze timestamp/order. Never claim blind/frozen if answers were visible beforehand. In all cases actually independently rejudge every qid's four axes, including curricular method, full solution, Meta and visual necessity. A non-isolated attempt cannot be described as pre-disclosure independent; repair the input separation or leave precise stage continuation rather than fabricating R1 evidence.
+4. **Repair in place:** when one semantic locus is defective, MINIMAL_REPAIR; if genuinely unrecoverable under current policy, ALIVE_REPLACEMENT. Re-evaluate changed qid and direct dependencies only, refresh solution/Meta/difficulty/visual and SHA/evidence, preserve unchanged good qids. Do not restart an already sealed stage without identified drift.
+5. **Seal against real bytes:** record real qid dispositions and actual physical result of canonical V2 validator/active artifact contract, exact source/evidence/asset SHA, and actual PASS receipt; technical/missing tools are \`NOT_EXECUTED\` plus exact continuation, never PASS by inference. Failed raw validator must be repaired and rerun on the new revision, not re-labeled. R2/R3 may reuse unchanged valid evidence according to their own contracts.
+
+### 17.2 Four regression traps — qid-local decisions
+
+- **Difficulty / Meta:** legacy \`level\` must be exactly \`하|중|상\`, not number/null. \`difficultyBucket\` is separately judged 1..5, not mechanically mapped from level. For *every qid*, verify L3/L4/RPM primary, \`crossConceptKeys\`, \`conditionKeys\`, \`integrationPattern\` against decisive steps and actual conditions; empty/\`NONE\` only after affirmative semantic judgment. A whole exam with all empty relational metadata is a **mandatory investigation signal**, never an automatic nonzero quota or automatic FAIL.
+- **QUESTION_LAYOUT:** \`layoutTag\` is selected per stem/choices/complete math expression. Do not use \`stack\` in bulk or insert line breaks based on character counts, regex or formula fragments. Excess stack usage triggers targeted explanation of each affected qid; a large number itself is not an automatic FAIL. Keep original student stem and choices fidelity.
+- **Student solution / notation:** a short solution must still show why each essential expression follows, intermediate substitution/calculation and final answer; longer text alone is not a PASS. Every subjective item retains its assessable decisive proof/steps. Use engine-safe LaTeX delimiters and commands for nontrivial math expressions/fractions/powers/derivatives/integrals; do not substitute plain Unicode superscripts/prime glyphs as a blanket math-layout shortcut. Student-facing explanations should read like teacher boardwork, not prose-only or answer-only.
+- **Curriculum / source truth:** check *actual chosen solution method* against that exam's year, grade and course. A mathematically correct but out-of-scope method is defective (e.g. high-1 solution relying on double-angle tangent/advanced trigonometry); derive a permitted method by targeted repair. Never treat a Golden example from another curriculum as permission to transplant an advanced method.
+
+Regression examples: \`24_매산여고_1학기_중간\` numeric level; \`24_금당고_1학기_중간\` null level/short basics; \`24_매산고_1학기_중간\` repeated stack; \`24_여수고_1학기_중간\` short subjective solutions; historical \`22_강남여고_1학기_기말\` all-empty relational Meta and out-of-curriculum q20; Codex \`20_매산여고_2학기_기말_고2_수학II\` uses Unicode-style math as a **notation caution**, not a model output to copy. These are quality examples, not claims that each belongs to the current GPT2 campaign.
+
+### 17.3 Ownership and render separation
+
+CREATE authors complete student-facing output. R1 independently accepts/repairs it. R2 preserves blind math sweep; R3 targeted release/integrity; MASTER only same-stream continuation/publication. GPT does **not** recapture the Archive Engine; Codex's separate actual rendering/capture is an external observation and not a GPT worker execution prerequisite or a substitute for GPT CREATE/R1 quality. Do not claim \`RENDER_PASS\` from static GPT review. No arbitrary text-length thresholds, Meta quotas, or full rerun loops. Keep 1 exam/run, fixed stream, NONSTOP, and exact continuation when a real external capability is missing.
+
+### 17.4 Minimal auditable worker handoff
+
+For each completed CREATE/R1 deliver only existing canonical PASS/evidence plus a compact human-readable summary: \`examUid\`, \`input/finalArtifactSha\`, qid denominator, actual independent/Golden evidence refs where applicable, changed qids+direct dependencies, number and qids of structural/Meta/solution/curriculum findings (including fixed ones), actual validator raw status and first unresolved closure step. **Do not invent new PASS schema fields or claim a new machine gate has been implemented by this text change.**
