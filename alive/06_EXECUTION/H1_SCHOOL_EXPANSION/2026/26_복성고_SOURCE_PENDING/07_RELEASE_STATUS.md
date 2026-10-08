@@ -15,3 +15,10 @@
 - A source visual read, B 38 explored and 25 accepted design proposals frozen; EXT-L4 14 candidates unapproved.
 - CREATE_NOT_STARTED / REVIEW_NOT_TESTED / REAL_RENDER_NOT_RUN / MAIN_NOT_PUBLISHED / STUDENT_SUPPLY_ALLOWED=NO.
 - Existing B04/B05 R2 45 candidates and preceding 121 preserved.
+
+
+## B06 GENERATED CREATE ONLY — 2026-10-08
+- B06_NEW_UID_COUNT=25 / CREATOR_MATH_25_OF_25 / SVG_STATIC_QA_7 / ACTUAL_ENGINE_RENDER=NOT_RUN.
+- B06_INDEPENDENT_REVIEW=NOT_TESTED / B06_CONSUMER_DB=0 / B06_MAIN_PUBLISHED=NO / B06_STUDENT_SUPPLY_ALLOWED=NO.
+- Cumulative active generation candidates=191; do NOT interpret this as 191 student-eligible supplied items.
+- Next: separate independent math/Meta/visual release review and exact approved UID consumer registration. Prior source q15 classification HOLD and old q10/q11 continuation remain outside B06 scope.
