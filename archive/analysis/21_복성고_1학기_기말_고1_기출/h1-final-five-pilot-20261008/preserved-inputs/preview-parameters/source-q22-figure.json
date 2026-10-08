@@ -1,0 +1,14 @@
+{
+  "command": "magick <input.png> -crop 380x240+1020+310 +repage <output.png>",
+  "inputFormat": "PNG",
+  "renderer": "ImageMagick magick",
+  "operation": "crop source question figure",
+  "cropRect": {
+    "width": 380,
+    "height": 240,
+    "x": 1020,
+    "y": 310
+  },
+  "repage": true,
+  "outputFormat": "PNG"
+}
