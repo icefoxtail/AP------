@@ -28,3 +28,14 @@
 - q11 신규 9 UID는 **6단원 H22-C-06-INEQUALITY의 절댓값을 포함한 부등식 별도 L3 후보표**에 등록. AMGM/코시형 절대부등식과 합치지 않는다.
 - B02 EXT 후보 2026 현재: L3 1종 / L4 13종. B01 포함 누적 L3 4종 / L4 46종. 분류 변경 후에도 생성 UID 수 B02 38 / 누적 83 변함없음.
 - 소스 변경 0 / 신규 REVIEW PASS 0 / 신규 DB 등록 0 / main 반영 0. q8 새 경로로 실제 이동, 이전 폴더의 생성 q8 물리 파일 제거. 위 기록이 종전 q8 L3 미확정 및 후보 2종 문구를 대체함.
+
+
+## 2026-10-08 B03 CREATE — 실제 저장 결과
+
+- source qid **q9, q13, q14, q16** 총 4개. 설계 50개 중 ACCEPT 38개, 거절 12개(중복4/L3이탈4/교육과정위반3/수학구조무효1).
+- 신규 완성 UID **38개**(q9=10, q13=9, q14=10, q16=9), L2 3개·shard 4개. 수학 자체 계산 witness 38건 확인, 5지/answer/solution 기본 일치 38건.
+- 새 L3 후보 **0**, 새 L4 후보 **12**(승인 전). 기존 승인 없는 후보의 의미적 신규성을 과대 집계하지 않는다.
+- q13: 원본 복소수 4단원 seed → 생성된 삼차방정식 6단원 Primary, 앞 단원 복소수는 prerequisite. q14-I10 복수진술 판단형 포함.
+- 객관식 정답 분포 ①9 ②7 ③8 ④8 ⑤6. L2 manifest의 역사 승인 기록 보존.
+- 누적 생성 후보 **121개** (B01 45 + B02 38 + B03 38). 독립 REVIEW·main publication·student DB 등록 신규 승인 0.
+- 인덱스: `archive/data/generated-lite/bokseong-2026-1final-b03-create-index-v1.json`, 누적 v4, extension cumulative v3. 다음 배치 **B04(q17/q20/q23)**는 다음 사용자 지시가 있을 때만 실행.
