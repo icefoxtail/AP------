@@ -12,3 +12,9 @@
 
 ## 다른 창용 단문
 `origin/main fetch → alive/06_EXECUTION/ALIVE_LITE_CONTINUATION_CURRENT.md → ALIVE_LITE_EXECUTION_RULES.md → ALIVE_LITE_SCHOOL_ROSTER_LATEST_FIRST.md → NEXT 학교 폴더 00~07 → 첫 eligible 작업 1건을 실제로 마감 → Git remote readback 후 ledger 상태 갱신. SVG만 Codex 렌더. 기존 main 미커밋 변경 금지.`
+
+## CURRENT OVERRIDE — 단일 세션 최대 생산량 실측 (2026-10-08)
+- 복성고 2026 1학기 기말부터 CREATE 한 채팅은 원본 시험지 전체를 읽고 **실제 완료 가능한 문항까지 연속 대량 생산**한다.
+- 과거의 `원본 1~3 qid` 실행 상한은 이번 ALIVE capacity 파일럿에 적용하지 않는다. shard/checkpoint는 보존 목적이며 대화 분할 기준이 아니다.
+- 생성 채팅 = CREATE + candidate Git 저장. 별도 검수 채팅 = 독립 수학검수·수정·main 반영까지. SVG 개별 시각 렌더는 지금 bottleneck으로 만들지 않는다.
+- authority: `alive/06_EXECUTION/ALIVE_LITE_CREATE_CAPACITY_STRESS_PILOT_v0.1.md`.

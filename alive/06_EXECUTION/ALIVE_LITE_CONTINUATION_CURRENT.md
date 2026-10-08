@@ -30,3 +30,9 @@
 - source blob SHA: `8266fa476906e9134b94f23e803bd3b2fb26ece4`
 - 원본 파일의 question id 23개 관찰. 일부 파일 끝 후처리 코드 존재하므로 런타임 반영된 최종 bank/asset inventory는 생성 전 확인.
 - 상태: SOURCE_FOUND → source audit/자산 확인 → 생성 batch. 기존 SOURCE_PATH_UNVERIFIED/중간 파일 가정은 HISTORY로 취급.
+
+## CURRENT OVERRIDE — 단일 세션 최대 생산량 실측 (2026-10-08)
+- 복성고 2026 1학기 기말부터 CREATE 한 채팅은 원본 시험지 전체를 읽고 **실제 완료 가능한 문항까지 연속 대량 생산**한다.
+- 과거의 `원본 1~3 qid` 실행 상한은 이번 ALIVE capacity 파일럿에 적용하지 않는다. shard/checkpoint는 보존 목적이며 대화 분할 기준이 아니다.
+- 생성 채팅 = CREATE + candidate Git 저장. 별도 검수 채팅 = 독립 수학검수·수정·main 반영까지. SVG 개별 시각 렌더는 지금 bottleneck으로 만들지 않는다.
+- authority: `alive/06_EXECUTION/ALIVE_LITE_CREATE_CAPACITY_STRESS_PILOT_v0.1.md`.
