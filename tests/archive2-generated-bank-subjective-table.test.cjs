@@ -44,6 +44,14 @@ test('approved objective and subjective generated questions render safely; HOLD 
  await new Promise(resolve=>setTimeout(resolve,20));
  const el=id=>document.getElementById(id);
  assert.equal(el('count').textContent,2);
+ assert.equal(el('school-cards').children.length,1,'school card should summarize approved material');
+ el('school-cards').children[0].onclick();
+ assert.equal(el('school').value,'복성고');
+ assert.ok(el('major').children.some(n=>n.textContent==='행렬'),'standard major unit name is visible');
+ el('major').value='행렬';el('major').listeners.change();
+ assert.ok(el('unit').children.some(n=>n.textContent.includes('행렬 · 2문항')),'standard middle unit and count are visible');
+ el('unit').value='행렬';el('unit').listeners.change();
+ assert.equal(el('generate').disabled,false);
  el('query').value='ALITE-TEST-SUBJECTIVE';el('query').listeners.input();
  assert.equal(el('count').textContent,1);
  const item=el('items').children[0];
@@ -72,6 +80,13 @@ test('approved objective and subjective generated questions render safely; HOLD 
  assert.ok(oldStem.children.some(x=>x.textContent==='행렬곱의 값은?'));
  const c=el('detail').children.filter(x=>x.className==='choice');assert.equal(c.length,5);
  assert.ok(c[2].textContent.startsWith('③ '));
+ el('query').value='';el('query').listeners.input();
+ el('amount').value='20';
+ el('print').click=()=>el('print').listeners.click();
+ el('generate').listeners.click();
+ await new Promise(resolve=>setTimeout(resolve,35));
+ assert.equal(el('print').disabled,false);
+ assert.equal(printed,2,'single click creates and prints the requested mock paper');
 });
 test('table parser escapes HTML-like content instead of executing arbitrary tags',()=>{
  const nodes=Object.create(null);
