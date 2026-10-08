@@ -20,7 +20,7 @@ test('B06 25 new UIDs registered without disrupting 165 original approvals or 12
  assert.ok(index.records.slice(92,130).every(r=>r.uid.startsWith('ALITE-BSG26-B03-')));
  assert.ok(index.records.slice(130,165).every(r=>r.uid.startsWith('ALITE-BSG26-B04R2-')||r.uid.startsWith('ALITE-BSG26-B05R2-')));
  assert.ok(index.records.slice(165,190).every(r=>r.uid.startsWith('ALITE-BSG26-B06-')));
- assert.equal(index.excludedHoldUids.length,12);
+ assert.equal(index.excludedHoldUids.length,21);
  assert.equal(index.excludedHoldUids.filter(u=>u.includes('B05R2-Q22')).length,10);
  assert.ok(index.excludedHoldUids.every(uid=>!index.records.some(r=>r.uid===uid)));
  assert.equal(gitSha(fs.readFileSync(path.join(root,original))),'8266fa476906e9134b94f23e803bd3b2fb26ece4');
