@@ -1,5 +1,13 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT — Codex 3×3 문항 제작 품질 방향 (2026-10-09)
+- 원본마다 A 반복 숙달, B 사고 확장, C 실전 평가 중 필요한 교육 목적을 선택한다. 각 목적별 최대 3개, 총 9개는 생산 상한 예시이며 의무량이 아니다.
+- A 반복 숙달은 원본의 핵심 풀이를 보존하는 수치변형도 유효하다. 단, 새 의미적 Blueprint 수와 수치 인스턴스 수를 구분하고 실제 ALIVE MODE의 조건을 지킨다.
+- B는 새로운 결정적 판단 또는 풀이·조건 구조를 요구하며, C는 자연스러운 내신형 종합 판단과 오개념 선택지 설계를 우선한다. 계산량만 늘려 B/C를 주장하지 않는다.
+- 교육 목적 A/B/C와 ALIVE 런타임 MODE/검증 등급은 서로 다른 분류다. 기존 정본과 독립 검증 게이트를 유지한다.
+- 공통 품질: 발문이 요구하는 답의 종류와 보기 형식 일치, 한국어 학생 해설, 교과 용어 정확성, 필요한 그림/표 완결, 5지 정답 유일성 및 교육적 오답을 확인한다.
+- 신규 Consumer 등록은 정본 마스터의 키와 표기(labelKo)를 함께 대조한다. layoutTag는 현행 직렬화·표시 계약의 허용값을 확인한다. Chrome 표시 PASS는 콘텐츠 품질 PASS를 대신하지 않는다.
+
 ## CURRENT FINAL-CLOSURE OVERRIDE — REVIEW가 Consumer DB까지 마감 (2026-10-08)
 - REVIEW+MAIN 담당자는 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 읽는다. 독립 검수 → 정답 위치/5지 오개념 검수 → 필요 핀포인트 수리 → 승인 UID 확정 → Generated Consumer 등록·학생용 실제 검색/조회/선택 → main push·readback까지 한 채팅이 책임진다.
 - `generated UID main 저장` ≠ `consumer DB 등록` ≠ `student supply verified`. ALITE UID를 기존 original qid_v1 UID로 강제 변환하지 않는다. Consumer adapter 미지원 시 기술 구현/검증을 닫기 전 DONE 선언 금지.
