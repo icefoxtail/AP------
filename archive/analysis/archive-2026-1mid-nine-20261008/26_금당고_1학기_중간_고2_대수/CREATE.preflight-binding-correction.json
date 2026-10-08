@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_BINDING_CORRECTION_V1",
+  "examUid": "26_금당고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "initialPreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\CREATE.golden-negative-preflight.initial.json",
+    "sha256": "591c7ba13a576979c06689aedc6b59ec3898aa786a34bf4e79de812e719bf8a5",
+    "sampleReadBeforeSolutionAuthoring": true,
+    "observedBeforeAuthoring": "Golden solution samples and the Negative README/q7 SVG were opened and read before source authoring; direct observations are recorded in the initial calibration.",
+    "negativePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "negativeSha256RecordedInitially": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+    "negativeGitBlobShaRecordedInitially": "2a42b27f3c8ec316334b5c68421f4619b58cdae7"
+  },
+  "correctedPreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\CREATE.golden-negative-preflight.json",
+    "sha256": "8366f9d8e91fff0d2d65b170b7bd8a7fd41e092b7eddf4d9d34dd43e03dd7a33",
+    "negativeSha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "negativeGitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+  },
+  "correctionReason": "The initial serialization spread the failing SVG hash over the README Negative binding. The README had been read before authoring, but its recorded SHA/blob were accidentally replaced by the already-inspected SVG SHA/blob. The original byte snapshot is retained under initialPreflight; corrected binding is a later provenance repair and is not represented as pre-work bytes.",
+  "authoringStartedBeforeCorrection": true,
+  "semanticReviewChanged": false
+}

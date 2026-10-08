@@ -32,6 +32,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
       "file": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
       "school": "금당고",
       "topic": "",
@@ -120,6 +151,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-A-08",
           "rangeEndUnit": "수학적 귀납법",
           "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
+      "file": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "대수",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-A-01",
+      "rangeStartUnit": "지수와 로그",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-01",
+          "rangeStartUnit": "지수와 로그",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "대수"
@@ -3221,6 +3283,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-06",
+      "rangeEndUnit": "명제",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-06",
+          "rangeEndUnit": "명제",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     },
     {
       "file": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_CALIBRATION_V1",
+  "examUid": "26_순천고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": [
+    "fixed registry Golden 2-3",
+    "registry Negative README",
+    "target source pages 1-5"
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {
+            "qid": 4,
+            "solutionSha256": "871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7",
+            "observation": "수직 조건에서 기울기를 식으로 바꾸고, 거리식의 두 절댓값 경우를 분리한 뒤 b>0으로 한 값을 고른다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "observation": "원그래프의 기울기·절편 부호를 식과 연결하고, 새 직선의 x/y절편 및 사분면을 단계별로 판정한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75",
+            "visualGitBlobSha": "2fae97d45ae3bb70bc9fa657727657f4f78af936"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 8,
+            "solutionSha256": "c4c073520584482e1bff97912f36f72024c5125eaca5c9ffd126da7a21fee041",
+            "observation": "수선 조건을 기울기 식으로 세우고, 거리·수선의 발 좌표를 순서대로 정리한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "efa0e6c6ebf7966e025715922bfbf87d8d4295aa6f0c327d5813a642f0c22be4",
+            "visualGitBlobSha": "d822ca78787630d3daee59c7753feca1d8c080d8"
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "d5eb924d91802b5ffe0c564517765757fe7ea9feef3d661ba2f2e6de6b4021bd",
+            "observation": "각의 이등분선 정리의 비를 변 길이 계산으로 얻고, 내분점 좌표에 대입한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "7fa522e9ff8d0453c52acbe984d67fbd856888cb8d096211985553bedc2c59ab",
+            "visualGitBlobSha": "99cf66d3855eb02b53d3da6f8064e87ff541dc9a",
+            "visualObservation": "실제 SVG primitive에서 A, B, C와 수선발 D, BC, 수선/각이등분선 방향을 확인했다. 라벨 값은 해당 점·선에 붙어 있고, 현재 ImageMagick fallback에서는 한글 폰트 대체가 관찰되어 browser render PASS는 주장하지 않는다."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "items": [
+          {
+            "qid": 12,
+            "solutionSha256": "d7804138ca5964bbd84a9f1147bbae6c70eabbaaad399c9192148929d05e9426",
+            "observation": "원그래프의 부호 정보만으로 변환 직선의 기울기와 절편 부호를 분리해 결론을 낸다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "2f440fbb2f1e6df2bc549fe0d8c3ec4d1995ea5f7d545ee539ebca7109d76655",
+            "visualGitBlobSha": "163bc1fda1fa2300b757d9181b44aba6dcc1cc71"
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "61c8f11a6d5e63b1c96916105b53e8ee083003a69bd765642d30c6ad37df6ec6",
+            "observation": "a=3 예외를 먼저 확인한 뒤 일반 기울기 조건을 적용해 누락되는 수직선 경우를 막는다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "visualSha256": "b9fb4141d8ec59c956a31d7a07f09e6611881143ffa93ddf5bf9c89d866f4e2a",
+            "visualGitBlobSha": "1aec6ec29ceb921dec83cff76526bc5092a0a4f1",
+            "visualObservation": "실제 SVG source와 변환 PNG에서 수직선·수평선·사선의 case geometry를 확인했다. 오른쪽 풀이 panel 텍스트의 한글은 fallback에서 깨져 보여 font/render quality PASS는 주장하지 않는다."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "실제 false PASS regression: enumerated ㄱ/ㄴ/ㄷ/ㄹ를 한 문단에 붙이지 않고 각 판정을 독립 block으로 둔다; solution의 한글/TeX escape를 runtime 검사하며, SVG 라벨 문구만 보지 말고 actual coordinates와 topology를 expected relation에 대조한다."
+    }
+  },
+  "sampleVisualRead": {
+    "25_매산여고_q08": "SVG source and rendered PNG inspected; readable three-step sign relation and explicit excluded quadrant conclusion.",
+    "25_제일고_q12": "SVG source primitives inspected; sign-only lines shown on orthogonal equal-scale axes. ImageMagick fallback exposed a font-substitution limitation, so no browser-render PASS inferred.",
+    "25_효천고_q14": "q14 SVG opened and inspected; geometry primitives and label ownership reviewed; raster fallback font substitution recorded.",
+    "25_제일고_q14": "q14 SVG opened and inspected; graph line topology reviewed; raster fallback font substitution recorded."
+  },
+  "calibrationStatus": "PASS",
+  "qualityCompareCount": "24/24",
+  "solutionWorkMode": "NEW_SOURCE_ONLY",
+  "solutionAuthoringNotStartedAtPreflight": true
+}

@@ -1,0 +1,519 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RENDER_ENVIRONMENT_DRIFT_REUSE_V1",
+  "createdAt": "2026-10-08T11:27:03.199Z",
+  "examUid": "26_금당고_1학기_중간_고2_대수",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "stage": "R3",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "r3_06"
+  },
+  "disposition": "REUSE_SUPPORTED_UNCHANGED_RENDER_SCOPE",
+  "actualCurrentHeadCapturePerformed": false,
+  "newR3RenderPassAsserted": false,
+  "currentHead": {
+    "sha": "ce6102049b28b63fa3d7adfd820afbfa8a5f2b80",
+    "previousCapturedHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+    "sourceAndAssetBytesStable": true
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\26_금당고_1학기_중간_고2_대수.js",
+    "rawSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+    "rawBufferBlobSha1": "b83cb4191335f0c0093c8b29c05e9c38385be808",
+    "cleanFilterBlobSha1": "b83cb4191335f0c0093c8b29c05e9c38385be808"
+  },
+  "assets": [
+    {
+      "ref": "assets/images/26_금당고_1학기_중간_고2_대수/q08.png",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\assets\\images\\26_금당고_1학기_중간_고2_대수\\q08.png",
+      "sha256": "693400f9855066dab410baca3633261b740a93dd6b7d5ca5655d53a5c860a46d"
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "archive/engine.html",
+      "oldGitBlobSha1": "23c38c1eda340a2279bb069ab38d97652d7b3a82",
+      "newGitBlobSha1": "44448037fb7d52bd5942b4a6fa7dc424ded22f22",
+      "oldRawSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+      "newRawSha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5",
+      "change": "QRious v4.0.2 script source moved from pinned CDN URL to the existing byte-identical local vendor file."
+    },
+    {
+      "path": "archive/archive2-preview-mobile.css",
+      "oldGitBlobSha1": "6e835047ab744b6d444258651f88b8c532eeaf35",
+      "newGitBlobSha1": "e095da446ff619d2985bc59cd4143b34237fc455",
+      "oldRawSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+      "newRawSha256": "f09397f04fea96ed4980f0ba3cfd0e2670811365098ddf92a5a32a67fca3cd51",
+      "change": "Only legacy solution-flow CSS was appended; selectors require max-width 640px and html:not([data-archive2-context]) plus solution-box scope."
+    }
+  ],
+  "boundedDiff": {
+    "baseHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+    "currentHead": "ce6102049b28b63fa3d7adfd820afbfa8a5f2b80",
+    "diffSha256": "e30731ff30edea6371cebcd6f5fca7cfa4cc57ec113348a3adfacac15b7ce3e7",
+    "paths": [
+      "archive/engine.html",
+      "archive/archive2-preview-mobile.css"
+    ]
+  },
+  "qrDependency": {
+    "oldEngineScriptUrl": "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+    "newEngineScriptUrl": "archive/vendor/qrious/qrious.min.js",
+    "version": "4.0.2",
+    "oldVendorGitBlobAtBase": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+    "currentVendorGitBlob": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+    "currentVendorRawSha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+    "byteLength": 17579,
+    "byteEqualityToBaseVendor": true,
+    "pinnedCdnResponseReference": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\R3.render-environment-drift-reuse.ce610.json",
+      "sha256": "728293cf22fc983e5a602ba67d48ed48097e119f30dedb6a102331fe49b426c8",
+      "httpStatus": 200,
+      "byteLength": 17579,
+      "sha256OfResponse": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b"
+    },
+    "renderBranchImpact": "No captured output URL has solQr, submitQr, or osqr. Both QR injection paths require explicit QR state; solution and answer modes also fail the exam-mode guard. The six screenshots show no QR output."
+  },
+  "cssBranchImpact": {
+    "selectorPrefix": "html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready=\"true\"]",
+    "maxViewportWidth": 640,
+    "requiresSolutionBox": true,
+    "archive2AttributeAssignedByUnchangedEngineCode": true,
+    "cases": [
+      {
+        "caseId": "exam/desktop",
+        "viewportWidth": 1280,
+        "archive2Context": "archive2",
+        "mediaQueryActive": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      },
+      {
+        "caseId": "exam/mobile",
+        "viewportWidth": 390,
+        "archive2Context": "archive2",
+        "mediaQueryActive": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      },
+      {
+        "caseId": "sol/desktop",
+        "viewportWidth": 1280,
+        "archive2Context": "archive2",
+        "mediaQueryActive": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      },
+      {
+        "caseId": "sol/mobile",
+        "viewportWidth": 390,
+        "archive2Context": "archive2",
+        "mediaQueryActive": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      },
+      {
+        "caseId": "ans/desktop",
+        "viewportWidth": 1280,
+        "archive2Context": "archive2",
+        "mediaQueryActive": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      },
+      {
+        "caseId": "ans/mobile",
+        "viewportWidth": 390,
+        "archive2Context": "archive2",
+        "mediaQueryActive": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false
+      }
+    ],
+    "affectedReviewedCases": []
+  },
+  "captures": {
+    "caseIds": [
+      "exam/desktop",
+      "exam/mobile",
+      "sol/desktop",
+      "sol/mobile",
+      "ans/desktop",
+      "ans/mobile"
+    ],
+    "cases": [
+      {
+        "caseId": "exam/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\exam-desktop.png",
+          "sha256": "a6173bbda6eb0c2260027f2323d33b929e3f80576bab960076d1e2e939b9b6b5"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=exam&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=dc96ef93-56ff-47c4-84b6-223bfa652f27&outputOwnerId=1af5090d-0639-44fc-93b0-4adab33e8cdf&q=21&studio=1",
+        "mediaQueryMax640Active": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 1280,
+          "viewportWidth": 1280
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": [
+          {
+            "ref": "assets/images/26_금당고_1학기_중간_고2_대수/q08.png",
+            "sha256": "693400f9855066dab410baca3633261b740a93dd6b7d5ca5655d53a5c860a46d"
+          }
+        ]
+      },
+      {
+        "caseId": "exam/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\exam-mobile.png",
+          "sha256": "694e6c8f344c765ac6ae1005375c21aa8236e6f3ad6c722439570695e73be269"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=exam&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=a8fedf28-045f-4bfa-9ec4-5c03fb8d48f7&outputOwnerId=ca0bd77c-95f9-48c4-9e2b-546b920665c2&q=21&studio=1",
+        "mediaQueryMax640Active": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 390,
+          "viewportWidth": 390
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": [
+          {
+            "ref": "assets/images/26_금당고_1학기_중간_고2_대수/q08.png",
+            "sha256": "693400f9855066dab410baca3633261b740a93dd6b7d5ca5655d53a5c860a46d"
+          }
+        ]
+      },
+      {
+        "caseId": "sol/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\sol-desktop.png",
+          "sha256": "e66e27cdeef3c4db4005ea56827cece6389858b4afd8dd1317a2ca79526d8e3f"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=sol&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=2591f506-2936-437e-9a4b-50d9282f24af&outputOwnerId=ec60468e-20f1-4692-96d6-9affe427a5a8&q=21&studio=1",
+        "mediaQueryMax640Active": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 1280,
+          "viewportWidth": 1280
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": []
+      },
+      {
+        "caseId": "sol/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\sol-mobile.png",
+          "sha256": "7731b493b0514c5c08e9c24cfe9914e8ba3d790eede85dd4078b81563a14eb29"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=sol&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=522c2956-cfd4-4ea3-8767-fd1a1883cfd6&outputOwnerId=1215337f-64cc-40eb-8092-b0a0b909d330&q=21&studio=1",
+        "mediaQueryMax640Active": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 390,
+          "viewportWidth": 390
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": []
+      },
+      {
+        "caseId": "ans/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\ans-desktop.png",
+          "sha256": "c797ffa19748d18e9ba6267a8af305e5619d475eb11a5140f01c4d97ef0618bd"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=ans&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=690336dd-8f1f-40db-8374-34bee85a39f2&outputOwnerId=f1817767-9e82-43a8-82aa-b3622b4ebcc1&q=21&studio=1",
+        "mediaQueryMax640Active": false,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 1280,
+          "viewportWidth": 1280
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": []
+      },
+      {
+        "caseId": "ans/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "capture": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\ans-mobile.png",
+          "sha256": "e468586cdf1f8f291242cad9a12c2d1f87bb7935c9e237a9a1c3e666e2294e90"
+        },
+        "loadedJsSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "outputContractVersion": "archive2-output-envelope-v1",
+        "officialOutputUrl": "http://127.0.0.1:64607/archive/engine.html?fit=screen&qpp=4&mode=ans&data=exams%2F__codex_capture__%2F26_%EA%B8%88%EB%8B%B9%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=3b5d3a74-a46a-4db3-b662-c5e0068ab8f7&outputOwnerId=52893a65-e92c-49ee-b3a6-5f04a090c4ce&q=21&studio=1",
+        "mediaQueryMax640Active": true,
+        "archive2ContextAttributePresent": true,
+        "addedLegacyCssSelectorMatches": false,
+        "qrFlagsPresent": false,
+        "qrInjectionGuardActive": false,
+        "metrics": {
+          "mathErrors": 0,
+          "pageErrorCount": 0,
+          "scrollWidth": 390,
+          "viewportWidth": 390
+        },
+        "priorVisualReview": "PASS",
+        "loadedAssets": []
+      }
+    ]
+  },
+  "reusedProofs": {
+    "renderReceipt": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\R3.render-receipt.json",
+      "sha256": "b8ee2bc7e4d4ec265449612bc766a3351e654773e7b5bc5f47276dbf84da66cf",
+      "status": "RENDER_PASS",
+      "caseCount": 6
+    },
+    "r3CompletionEvent": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\R3.complete.event.json",
+      "sha256": "8adcef6830ac4fdf73b21acf41c8905e8390db3a5e0405aa75591d18d3883064",
+      "status": "STAGE_COMPLETE",
+      "verifyCompletion": "PASS"
+    },
+    "r3Validator": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\R3.generic-validator.raw.json",
+      "sha256": "22d37b974f443c6ebf9b21d9e0bb67f37b6ea009b388bf0dd49aabcded55a1c4",
+      "disposition": "PASS",
+      "issues": []
+    },
+    "captureReport": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\render\\durable\\capture-01\\machine-capture.json",
+      "sha256": "04287c630e7974b710a6ed2fe14c8ce37ec38ccfc69d88be02862255462083d5",
+      "status": "CAPTURED_REVIEW_REQUIRED"
+    },
+    "review": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\R3.capture-review.json",
+      "sha256": "c6159c2f2d339894996bd198e57e067838aee9d5c95a9bb1066f90c57f72eb7f"
+    },
+    "evidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\R3.evidence.json",
+      "sha256": "7ae07ec073be5864f73a1cc444ffd528d089656c322989a089180c58fef8b530"
+    },
+    "source4ImpactMethodReference": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\R3.render-environment-drift-reuse.ce610.json",
+      "sha256": "728293cf22fc983e5a602ba67d48ed48097e119f30dedb6a102331fe49b426c8"
+    }
+  },
+  "receiptValidation": {
+    "validator": "validateCodexRenderReceipt",
+    "ok": true,
+    "disposition": "PASS",
+    "issues": []
+  },
+  "conclusion": "The post-capture engine and CSS deltas do not match or execute in any of these six recorded contexts. The existing actual six-case RENDER_PASS receipt is reusable for the unchanged rendering scope. These captures loaded the recorded previous engine/CSS SHAs; no current-head render is claimed.",
+  "nextRequiredAction": "ROOT may proceed with assigned target-only publication/readback using this drift-impact receipt and the preserved RENDER_PASS. Recapture only if a later bounded engine/resource change reaches one of these case guards."
+}
