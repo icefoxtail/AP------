@@ -1,0 +1,167 @@
+# 복성고 B01/B02 생성 후보 검수 — 결함 원장 (2026-10-08)
+
+> **검수 대상 동결**: `pilot/alive-lite-bokseong-b01-blueprint-redesign-20261008` / 입력 `97ce8febc163941ef7203b7f786008eadc607b8c`  
+> **원본**: `archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js`, Git blob `8266fa476906e9134b94f23e803bd3b2fb26ece4`  
+> **상태**: `REVIEW_FINDINGS_RECORDED / RELEASE_HOLD` — 진짜 independent blind freeze 및 수정·재검 완료 전 FINAL PASS 불가.  
+> **작업 경계**: 원본 기출, 생성 JS 11개, RPM 정본, canonical master, DB, main 모두 변경하지 않음. 이 파일은 review finding only.
+
+## 1. 검수 분모 및 실제 확인
+
+- B01R2: **45**, B02: **38**, 합계 **83**. 11개 실제 JS shard와 통합 index v3; 83개 UID 유일, 각 객관식 보기 5개, 저장 정답 ↔ solution의 결론 **83/83 일치**.
+- 수학적 직접 재계산 결과 ↔ 저장 정답 **83/83 일치**; 객관식 정답 후보 유일성도 문항별로 대조했고 계산 충돌은 발견하지 못함.
+- **검수 독립성 한계:** 처음 확인한 B01 q1(5건), B02 q3(6건) 총 **11건**은 정답/해설 노출 후 재계산했다. 나머지 **72건**은 학생용 발문·보기만 먼저 읽어 답을 계산했지만 별도 물리적 SHA-bound blind freeze/독립 세션은 없으므로 형식상 `INDEPENDENT_BLIND_PASS` 미충족. 이 파일로 품질 인증을 소급 주장하지 않는다.
+- 생성자가 주장한 “45+38개의 ACCEPT Blueprint”는 **83개의 독립적인 수학 문제 구조를 입증하지 않는다.**
+- 공통 구조 정적 확인: 필수 core 필드, `level=하|중|상`, `layoutTag=grid`, `wide=false`, 각 후보의 선택지/결론 일치. 문법은 각 shard의 JSON 객체 파싱 성공 범위. 실제 Node VM 및 브라우저 렌더는 수행하지 않아 `NOT_TESTED`이다.
+
+## 2. 확정 결함: 다른 UID이나 사실상 동일한 문제 2쌍
+
+| 보존 권장 B01 | 재작업 B02 | 동일성 증거 |
+|---|---|---|
+| `ALITE-BSG26-B01R2-Q06-M03` | `ALITE-BSG26-B02-Q03-M06` | 동일한 `A+B`·`A-B` 수치 행렬, 동일한 `(2A+B)_(1,1)` 질문, 동일 정답 `7`. 마지막 오답 하나와 발문 문구만 다름 |
+| `ALITE-BSG26-B01R2-Q06-M06` | `ALITE-BSG26-B02-Q03-M05` | 동일한 `A,B` 행렬, 동일한 첫째 행 성분합 `0` 제약, 동일 정답 `7/2`. 보기 번호만 다름 |
+
+- `DUPLICATE/REGENERATE` 2건(B02). 서로 다른 UID·문항번호/보기만으로 출제 Blueprint 신규성을 인정하면 안 됨. B01 문항 유지, B02 유효 신규 구조로 핀포인트 대체 후 새 evidence.
+
+## 3. 확정 구조/메타 결함: 14문항
+
+- B02 `Q03-M01..M06` **6건**, `Q10-D01..D08` **8건**의 `subUnitKey=H22-C-09-CORE`.
+- JS의 `subUnit`은 q3=‘행렬의 연산’, q10=‘행렬의 뜻’인데 공식 **Markdown canonical master와 compiled JSON**의 `H22-C-09-CORE` 라벨은 모두 ‘경우의 수 핵심 개념’이다. 일관된 **parent-label 매핑 불일치 14건**; 단순 라벨 덮어쓰기 금지.
+- 이미 canonical에 `H22-C-09-MATRIX_OPERATION` (행렬의 연산)과 `H22-C-09-MATRIX_BASIC` (행렬의 뜻과 표현)이 존재한다. **신규 taxonomy 키 필요 없음**. q3 6건 → MATRIX_OPERATION. q10 D05(동일 행렬 성분 비교) → MATRIX_BASIC, 나머지 7건(곱셈 정의/차/행렬 연산) → MATRIX_OPERATION이 실제 풀이에 맞는 최소 후보. 단, 아래 교육과정 범위 이탈 5건은 우선 재설계 후 재매핑한다.
+- B02 q10 D01·D02·D03·D04·D06·D07·D08 **7건**은 RPM `행렬의 뜻`보다 `행렬의 연산`을 주개념으로 사용한다. `H1-RPM-198` vs `H1-RPM-200/201` 실제 풀이 대조상 L3 분류 수정 검토.
+- B01 45건은 이번 compiled subUnit master의 key·parent·label 검증에서 45/45 일치.
+
+## 4. 교육과정 범위 이탈 — B02 q10 5건 재설계
+
+`[10공수1-04-02]`의 **행렬 곱셈은 행과 열이 각각 2 이하인 범위**를 다루는 성취기준 해설에 근거한다 (수학과 교육과정 공개 전재본: https://innovalley.tistory.com/33).
+
+| UID suffix | 범위 문제 |
+|---|---|
+| Q10-D01 | `2×3` 및 `3×2`의 곱, `3×3` 결과 |
+| Q10-D02 | `1×3` 포함, 결과 `2×3` |
+| Q10-D03 | `2×3`·`3×4`·`4×2` 세 행렬의 연속 곱 |
+| Q10-D07 | `2×3`·`3×2` 행렬을 포함하는 곱셈 정의 판정 |
+| Q10-D08 | `m×3`, `3×n`의 곱과 `2×4` 결과 |
+
+- 실제 수치 행렬의 모든 성분을 곱하지 않더라도 행렬곱 자체의 크기/적합성을 묻는 문항이므로 **공통수학1 출제 범위 관점에서 `CURRICULUM_REDESIGN_REQUIRED`**. 단순 PASS 금지. 2×2 이하 사례로 다시 설계하고 보기·정답·해설 및 Blueprint 신규성 동시 재검.
+- B02 q10 D04(2×2,2×1), D05(같은 행렬), D06(영행렬의 차)은 이 특정 크기 상한 문제에는 해당하지 않는다.
+
+## 5. EXT L3/L4 의미 심사 — 정식 승격 0 유지
+
+- B02 q8 7문항: ‘실수계수 삼차방정식의 켤레 허근’은 기존 RPM `복소수 근`(`H1-RPM-164`)와 `삼차·사차방정식`(`H1-RPM-172`)을 결합한 구조임. 새 L3 확정 근거가 부족하므로 **`CROSS_CONCEPT / L3_GRANULARITY_REVIEW`**, 자동 확장 금지. 현 source L2 `H22-C-04-COMPLEX_BASIC`은 공식 라벨과는 일치하지만 실제 고차방정식 주풀이를 ‘복소수의 뜻과 표현’에 두는 것이 적합한지는 별도 검토.
+- q8 C01~C05·C07은 세 근의 합·쌍곱합·곱 관계를 공식처럼 쓰므로, 고1 학생 해설로는 켤레근의 이차인수를 구성하고 `(x²-2ux+(u²+v²))(x-r)`을 전개한 뒤 계수 대조를 보여주면 교육적으로 더 안전하다. **해설 보강 권고**이지 정답 오류는 아님. C06은 이미 인수 전개를 적음.
+- B02 q11 9문항: `|ax+b|±|cx+d|`의 구간별 풀이와 기존 RPM L3 ‘절대부등식’(산술기하·코시 등)은 다른 의미. `EXT_L3` 후보는 **유효한 심사 대상**일 수 있으나 q11 A01·A02·A07처럼 경계/계수를 달리한 변형을 독립 L4 여러 종으로 과대 계상하지 말 것. 현재 상태 `UNREVIEWED` 유지.
+- B01 및 B02 전체 extension proposal(각각 L3=3/2, L4=33/13)은 ‘발견 후보’이지 검증된 유형 수가 아님. canonical RPM 승격 0 유지.
+
+## 6. 보기 품질·정답 위치 필수 리포트
+
+| 배치 | 객관식 분모 | ① | ② | ③ | ④ | ⑤ | 단일 번호 최댓값 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| B01 | 45 | 9 (20.0%) | 8 (17.8%) | 12 (26.7%) | 11 (24.4%) | 5 (11.1%) | 26.7% |
+| B02 | 38 | 3 (7.9%) | 5 (13.2%) | 12 (31.6%) | 12 (31.6%) | 6 (15.8%) | 31.6% |
+| 합계 | 83 | 12 (14.5%) | 13 (15.7%) | 24 (28.9%) | 23 (27.7%) | 11 (13.3%) | 28.9% |
+
+- 어떤 배치도 한 자리 **40% 초과 아님**. 이번 검수에서 **보기 재설계 0**, 정답 위치 before/after **동일**, `CHOICE_ORDER_LOCKED` 수는 문항별 근거 미확정이므로 **NOT_TESTED**.
+- 거의 모든 수치형 선택지가 오름차순이며, B02 B설계의 `distractorStrategy`는 행렬/절댓값/복소수 문항에 공통적인 포괄 문구를 재사용한다. **오답 네 개 각각에 대한 문항 고유 오개념 유도 근거는 생산 기록만으로 입증되지 않음**. 정답 위치만 섞는 방식으로 처리하지 말고 높은 품질을 요구하는 최종 REVIEW 시 문항별로 진짜 오개념을 비교해야 한다.
+
+## 7. 83문항 검수 원장
+
+표의 답은 정답 번호 기준 직접 재계산 대조 결과 및 현재 저장 상태가 일치한 것을 기록한다. `NO_DEFECT_FOUND`는 이 범위에서 발견되지 않았다는 의미이며 전체 정식 QUALITY PASS가 아니다.
+
+| UID | 계산 대조 번호 | 저장 번호 | 블라인드 증거 한계 | 주요 finding |
+|---|---|---|---|---|
+| ALITE-BSG26-B01R2-Q01-C01 | ③ | ③ | PREVIOUS_SOLUTION_EXPOSED | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q01-C02 | ② | ② | PREVIOUS_SOLUTION_EXPOSED | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q01-C03 | ④ | ④ | PREVIOUS_SOLUTION_EXPOSED | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q01-C04 | ③ | ③ | PREVIOUS_SOLUTION_EXPOSED | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q01-C05 | ③ | ③ | PREVIOUS_SOLUTION_EXPOSED | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P01 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P02 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P03 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P04 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P05 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P06 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P07 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P08 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P09 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q02-P10 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W01 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W02 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W03 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W04 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W05 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q04-W06 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M01 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M02 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M03 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M04 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M05 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M06 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M07 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M08 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q06-M09 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S01 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S02 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S03 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S04 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S05 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q07-S06 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F01 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F02 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F03 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F04 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F05 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F06 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F07 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F08 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B01R2-Q12-F09 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q03-M01 | ③ | ③ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH |
+| ALITE-BSG26-B02-Q03-M02 | ④ | ④ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH |
+| ALITE-BSG26-B02-Q03-M03 | ⑤ | ⑤ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH |
+| ALITE-BSG26-B02-Q03-M04 | ③ | ③ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH |
+| ALITE-BSG26-B02-Q03-M05 | ④ | ④ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH · SEMANTIC_DUPLICATE_OF_B01R2-Q06-M06 |
+| ALITE-BSG26-B02-Q03-M06 | ④ | ④ | PREVIOUS_SOLUTION_EXPOSED | META_SUBUNIT_LABEL_MISMATCH · SEMANTIC_DUPLICATE_OF_B01R2-Q06-M03 |
+| ALITE-BSG26-B02-Q05-I01 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I02 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I03 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I04 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I05 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I06 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I07 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q05-I08 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | NO_DEFECT_FOUND |
+| ALITE-BSG26-B02-Q08-C01 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q08-C02 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q08-C03 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q08-C04 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q08-C05 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q08-C06 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q08-C07 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED · PEDAGOGY_CUBIC_VIETA_DERIVATION_REVIEW |
+| ALITE-BSG26-B02-Q10-D01 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · CURRICULUM_MATRIX_GT2_REDESIGN · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D02 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · CURRICULUM_MATRIX_GT2_REDESIGN · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D03 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · CURRICULUM_MATRIX_GT2_REDESIGN · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D04 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D05 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH |
+| ALITE-BSG26-B02-Q10-D06 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D07 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · CURRICULUM_MATRIX_GT2_REDESIGN · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q10-D08 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | META_SUBUNIT_LABEL_MISMATCH · CURRICULUM_MATRIX_GT2_REDESIGN · RPM_PRIMARY_L3_MATRIX_OPERATION |
+| ALITE-BSG26-B02-Q11-A01 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A02 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A03 | ① | ① | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A04 | ⑤ | ⑤ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A05 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A06 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A07 | ④ | ④ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A08 | ② | ② | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+| ALITE-BSG26-B02-Q11-A09 | ③ | ③ | SOURCE_FIRST_NO_PHYSICAL_FREEZE | RPM_L3_NEWNESS_UNAPPROVED |
+
+## 8. 최종 분기
+
+- **수학 산술 검산:** 83/83 저장값 일치 (자격: SELF+RECALC 보조 증거, formal blind freeze 없음).
+- **메타 게이트:** FAIL/14 (`H22-C-09-CORE`).
+- **교육과정 게이트:** FAIL/5 (matrix dimension >2).
+- **Blueprint 유일성:** FAIL/2 (B02 semantic duplicates).
+- **RPM 정식 신규유형:** 승인 0; q8·q11 및 관련 2022 RPM comparator 직접 독립 심사 필요.
+- **시각·브라우저 엔진 렌더:** NOT_TESTED; SVG 필수 여부와 실제 지원/캡처는 별도 gate. PDF 원본 source fidelity는 이번 신규 생성 후보 검수 scope와 구분.
+- **배치 릴리스:** `RELEASE_HOLD`, **main merge 0 / DB·consumer 등록 0**.
+- **수정 요청:** 위 2 duplicate, 5 curriculum, 14 subUnit, q10 L3, q8 pedagogical warning을 **겹치는 대상 기준으로 핀포인트 수정**. 변경된 UID만 필요한 수학/메타/중복 재검하고 독립 blind freeze evidence를 별도 fresh review 세션에서 확보한 후 출고 판단. 정상 B01 source·기존 원본·RPM master 보호.
+
+> 작성 범위: 형님이 요청한 `B01~B02 검수`. B03 생산 미착수.
