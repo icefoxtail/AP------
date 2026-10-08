@@ -93,13 +93,13 @@ window.questionBank = [
     ],
     "content": "이차함수 $y=x^2+2x+5$와 직선 $y=4x+k$의 그래프가 오직 한 점에서 만날 때, 상수 $k$의 값은?",
     "choices": [
-      "2",
+      "-2",
+      "-1",
+      "1",
       "3",
-      "4",
-      "5",
-      "6"
+      "4"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 직선과 포물선의 교점이 하나라는 것은 연립 이차방정식이 중근을 갖는다는 뜻이다.\n$x^2+2x+5=4x+k$를 정리하면 $x^2-2x+5-k=0$이다.\n$(x-1)^2=k-4$가 중근을 가지려면 $k-4=0$이어야 한다.\n따라서 $k=4$이다.",
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
@@ -163,13 +163,13 @@ window.questionBank = [
     ],
     "content": "이차함수 $y=x^2-4x+2$와 직선 $y=2x+k$의 두 교점의 $x$좌표를 $\\alpha,\\beta$라 하자. $|\\alpha-\\beta|=4$일 때, 상수 $k$의 값은?",
     "choices": [
-      "-5",
-      "-4",
+      "$-\\frac{9}{2}$",
       "-3",
-      "-2",
-      "-1"
+      "$-\\frac{3}{2}$",
+      "0",
+      "2"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] 두 교점의 $x$좌표는 연립 이차방정식의 두 근이므로 완전제곱식으로 근 사이 간격을 구한다.\n$x^2-4x+2=2x+k$에서 $x^2-6x+2-k=0$이다.\n$(x-3)^2=k+7$이므로 두 근은 $3\\pm\\sqrt{k+7}$이다.\n$|\\alpha-\\beta|=2\\sqrt{k+7}=4$이므로 $k+7=4$, 즉 $k=-3$이다.",
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
@@ -198,13 +198,13 @@ window.questionBank = [
     ],
     "content": "이차함수 $y=x^2+2x+3$과 직선 $y=mx+1$이 오직 한 점에서 만나도록 하는 모든 실수 $m$의 값의 합은?",
     "choices": [
-      "0",
-      "2",
       "4",
       "6",
-      "8"
+      "10",
+      "14",
+      "16"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[키포인트] 기울기 $m$을 미지수로 두고 중근 조건을 사용한다. 미분은 필요하지 않다.\n$x^2+2x+3=mx+1$에서 $x^2+(2-m)x+2=0$이다.\n중근 조건은 $(2-m)^2-8=0$이므로 $m=2\\pm2\\sqrt2$이다.\n따라서 모든 $m$의 합은 $4$이다.",
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
