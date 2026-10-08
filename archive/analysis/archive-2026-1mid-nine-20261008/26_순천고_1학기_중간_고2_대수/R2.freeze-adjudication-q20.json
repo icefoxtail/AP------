@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\R2.stage-kit-freeze.json",
+    "sha256": "49fd0395e830d8c57e4177d86da22c079652b794a1cffa392905dfa489f030bd"
+  },
+  "createdAt": "2026-10-08T09:25:46.035Z",
+  "corrections": [
+    {
+      "qid": 20,
+      "correctedAnswer": "9 (choice 3)",
+      "reason": "After the original freeze, I rechecked h(x)=log_(1/2)(x−2)+1=1−log₂(x−2). At x=3, h(3)=1 and f₁(3)=1, so this is one intersection for n=1. For n=2,3,4 the increasing left branch crosses once (h tends to +∞ at 2+ while f_n stays finite, then f_n(4)>h(4)). On each decreasing right branch the difference f_n−h is decreasing for x≥4; it remains positive through the endpoint for n=1,2,3,4, so there are no right-branch intersections. Thus b=1+1+1+1=4. The g counts remain a=5, hence a+b=9. The original frozen 8 was an arithmetic/counting error; preserve it and adjudicate only q20.",
+      "originalAnswer": "8 (choice 2)"
+    }
+  ],
+  "originalFreezeMutated": false
+}

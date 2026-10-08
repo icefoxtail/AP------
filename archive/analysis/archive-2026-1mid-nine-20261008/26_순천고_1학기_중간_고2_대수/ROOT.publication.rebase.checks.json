@@ -1,0 +1,44 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "node tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "000e549f30cb64a49946cebb3a71171c5af4cf34cff663ace3795510c458cd8f",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "canonicalCatalogCheck",
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "000e549f30cb64a49946cebb3a71171c5af4cf34cff663ace3795510c458cd8f",
+    "stdoutSha256": "52b888de99d14192863cbfcb57bc0fbc46c5af7e3eab89e320bee567f636510e",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/registration-rebase-final/postcopy-validators/catalog-check-03/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "registrationParity",
+    "command": "node archive/tools/verify-archive-registration.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "000e549f30cb64a49946cebb3a71171c5af4cf34cff663ace3795510c458cd8f",
+    "stdoutSha256": "3cc5af73301dfb5660e6a6b14c3fe29541c96ec6f68cab7d953fedfe9b1c7baa",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/registration-rebase-final/postcopy-validators/registration-parity-03/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "identityRuntimeTests",
+    "command": "node --test tests/archive-question-identity-contract.test.mjs tests/archive-question-identity-runtime.test.mjs tests/archive-question-identity-collision-regression.test.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "000e549f30cb64a49946cebb3a71171c5af4cf34cff663ace3795510c458cd8f",
+    "stdoutSha256": "c12e044b16a2a4578c90ccf1713ccc34990a4bf42487d50ee405dc19ca1a0775",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/registration-rebase-final/postcopy-validators/identity-runtime-tests-02/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  }
+]

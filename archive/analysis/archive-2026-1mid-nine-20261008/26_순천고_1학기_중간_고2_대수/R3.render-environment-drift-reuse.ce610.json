@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RENDER_ENVIRONMENT_DRIFT_REUSE_V1",
+  "createdAt": "2026-10-08T11:21:16.043Z",
+  "examUid": "26_순천고_1학기_중간_고2_대수",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "stage": "R3",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "r3_04"
+  },
+  "disposition": "REUSE_SUPPORTED_UNCHANGED_RENDER_SCOPE",
+  "actualCurrentHeadCapturePerformed": false,
+  "newR3RenderPassAsserted": false,
+  "currentHead": {
+    "sha": "ce6102049b28b63fa3d7adfd820afbfa8a5f2b80",
+    "previousCapturedHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+    "sourceAndAssetBytesStable": true
+  },
+  "source": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/26_순천고_1학기_중간_고2_대수.js",
+    "rawSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+    "rawBufferBlobSha1": "8c0ba378b0cad4b912876fd1cedd518125a9f38b",
+    "cleanFilterBlobSha1": "8c0ba378b0cad4b912876fd1cedd518125a9f38b"
+  },
+  "assets": [
+    {
+      "ref": "assets/images/26_순천고_1학기_중간_고2_대수/q05.png",
+      "sha256": "bd00ad5053f3446f71375c0d49f0a65a379b8e2a965349031e4e9b07f3f9e451"
+    },
+    {
+      "ref": "assets/images/26_순천고_1학기_중간_고2_대수/q15.png",
+      "sha256": "cd1b302a036e3490cab6d8f7e941505aa8cc9ef5906d6080ab91c935a3a3bc61"
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "archive/engine.html",
+      "oldGitBlobSha1": "23c38c1eda340a2279bb069ab38d97652d7b3a82",
+      "newGitBlobSha1": "44448037fb7d52bd5942b4a6fa7dc424ded22f22",
+      "oldRawSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+      "newRawSha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5",
+      "change": "Only the QRious script source URL changed from pinned cdnjs URL to the existing local vendor file."
+    },
+    {
+      "path": "archive/archive2-preview-mobile.css",
+      "oldGitBlobSha1": "6e835047ab744b6d444258651f88b8c532eeaf35",
+      "newGitBlobSha1": "e095da446ff619d2985bc59cd4143b34237fc455",
+      "oldRawSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+      "newRawSha256": "f09397f04fea96ed4980f0ba3cfd0e2670811365098ddf92a5a32a67fca3cd51",
+      "change": "Only a legacy mobile solution-flow ruleset was appended."
+    }
+  ],
+  "boundedDiff": {
+    "baseHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+    "currentHead": "ce6102049b28b63fa3d7adfd820afbfa8a5f2b80",
+    "diffSha256": "e30731ff30edea6371cebcd6f5fca7cfa4cc57ec113348a3adfacac15b7ce3e7",
+    "paths": [
+      "archive/engine.html",
+      "archive/archive2-preview-mobile.css"
+    ]
+  },
+  "qrDependency": {
+    "oldEngineScriptUrl": "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+    "newEngineScriptUrl": "archive/vendor/qrious/qrious.min.js",
+    "version": "4.0.2",
+    "oldVendorGitBlobAtBase": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+    "currentVendorGitBlob": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+    "currentVendorRawSha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+    "pinnedCdnResponseCurrentCheck": {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+      "httpStatus": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "byteLength": 17579,
+      "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b"
+    },
+    "byteEqualityPinnedCdnToVendoredFile": true,
+    "oldCaptureDidNotPersistExternalResponseBody": true,
+    "renderBranchImpact": "QRious is only invoked by QR injection branches. Previous desktop captures used preview mode, which disables both QR branches. Fresh mobile cases have no solQr/submitQr/osqr query flags; solution/answer modes also fail the exam-only guard. No QR output is present in the six reviewed captures."
+  },
+  "cssBranchImpact": {
+    "newSelectorPrefix": "html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready=\"true\"]",
+    "maxViewportWidth": 640,
+    "requiresSolutionBox": ".q-box.sol-box",
+    "currentMobileCases": {
+      "archive2Context": "archive2",
+      "selectorMatches": false
+    },
+    "desktopCases": {
+      "viewportWidth": 1280,
+      "mediaQueryMatches": false
+    },
+    "affectedReviewedCases": []
+  },
+  "captures": {
+    "caseIds": [
+      "exam/desktop",
+      "sol/desktop",
+      "ans/desktop",
+      "exam/mobile",
+      "sol/mobile",
+      "ans/mobile"
+    ],
+    "cases": [
+      {
+        "caseId": "exam/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-01/exam-desktop.png",
+        "captureSha256": "1fcdde67d3f15a82b1c74a6d12c98e373a4231e15a0d86308223af6cb5133ba7",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": null,
+        "archive2Context": null,
+        "officialOutputUrl": null,
+        "visuallyReviewedPass": true
+      },
+      {
+        "caseId": "sol/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-01/sol-desktop.png",
+        "captureSha256": "d3b200f963efa9eacf0d94acd04b7c00f8df9da205e9781e2f48e6e9248b0b6d",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": null,
+        "archive2Context": null,
+        "officialOutputUrl": null,
+        "visuallyReviewedPass": true
+      },
+      {
+        "caseId": "ans/desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 1000
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-01/ans-desktop.png",
+        "captureSha256": "b2510fe0cab8482e86d2ccf5777cc2b6fe1779cabf42213f43324fd921468379",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": null,
+        "archive2Context": null,
+        "officialOutputUrl": null,
+        "visuallyReviewedPass": true
+      },
+      {
+        "caseId": "exam/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-06/exam-mobile.png",
+        "captureSha256": "7424545a3798f556b19e02943d74de82cd6435298d8e05d895c5d41a98be2b20",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "officialOutputUrl": "http://127.0.0.1:63618/archive/engine.html?fit=screen&qpp=4&mode=exam&data=exams%2F__codex_capture__%2F26_%EC%88%9C%EC%B2%9C%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=c713b392-8c3a-42e5-9457-65c54851abd9&outputOwnerId=902eced8-7aa8-4027-85d1-be1498957d70&q=24&studio=1",
+        "visuallyReviewedPass": true
+      },
+      {
+        "caseId": "sol/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-06/sol-mobile.png",
+        "captureSha256": "05804f79805220af1b5b8192db544286684e6a6e1d60cee1c253ea055d3b6a14",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "officialOutputUrl": "http://127.0.0.1:63618/archive/engine.html?fit=screen&qpp=4&mode=sol&data=exams%2F__codex_capture__%2F26_%EC%88%9C%EC%B2%9C%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=55e0f302-cd4e-481c-a13e-b46a81568ad9&outputOwnerId=e8925bb7-83e6-4a92-91b0-c39c66e2cb7a&q=24&studio=1",
+        "visuallyReviewedPass": true
+      },
+      {
+        "caseId": "ans/mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "capturePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/capture-06/ans-mobile.png",
+        "captureSha256": "323a11cb315cba3e42ef66d30b6fa10f7daf0925b90388d4203b945dc4915184",
+        "loadedJsSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+        "preDriftLoadedEngineSha256": "07842ee5110d09d2d44b22d6fc5bacd220033d58b2d31fa1863b235b835aff83",
+        "preDriftLoadedMobileStylesheetSha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+        "archive2Context": "archive2",
+        "officialOutputUrl": "http://127.0.0.1:63618/archive/engine.html?fit=screen&qpp=4&mode=ans&data=exams%2F__codex_capture__%2F26_%EC%88%9C%EC%B2%9C%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EB%8C%80%EC%88%98.js&archive2Context=archive2&archive2OutputContract=archive2-output-envelope-v1&v=20261003-student-output-s4-1&outputRequestId=21883f3f-ab5a-4387-bbde-e5d0a750129d&outputOwnerId=16290786-7453-4e7d-9d49-620f6b9bbf8f&q=24&studio=1",
+        "visuallyReviewedPass": true
+      }
+    ]
+  },
+  "reusedProofs": {
+    "renderReceipt": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R3.render-receipt.archive2-recheck-01.json",
+      "sha256": "3cde94a825abd7415f7ff6b7ade7b1f76bc3f928eaa3269f5d70090ac9bec146",
+      "status": "RENDER_PASS",
+      "caseCount": 6
+    },
+    "r3CompletionEvent": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R3.complete.event.archive2-recheck-01.json",
+      "sha256": "a92e7f588938315041d8e4164e88ca17fbf2f61269ec1a8f01cc0b01b75cab34",
+      "status": "STAGE_COMPLETE"
+    },
+    "r3Validator": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R3.generic-validator.archive2-recheck-01.raw.json",
+      "sha256": "abf10399e21f81a0d856b01eddd950ac664c7476c3d682d7a2c20a9ad352a63f",
+      "disposition": "PASS",
+      "issues": []
+    },
+    "captureComposite": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/render/R3.composite-capture.json",
+      "sha256": "a175c96f985d4797672b52bfb47d73a6a2bc3df656a261b2650599fcf3741ebd"
+    },
+    "review": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R3.capture-review.archive2-recheck-01.json",
+      "sha256": "54a5ad95a010f2321f0da78e9779cf5917a9c2971593046be50defc2c6198d50"
+    },
+    "evidence": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_순천고_1학기_중간_고2_대수/R3.evidence.archive2-recheck-01.json",
+      "sha256": "e335918dce852f73a45c8023f1eefb6f9abd6bbe4e5c7ebf8c0ef60564c5f12c"
+    }
+  },
+  "conclusion": "The two post-capture source changes do not alter any branch/pixel in the six recorded cases. Reuse the existing actual six-case RENDER_PASS receipt as unchanged-scope evidence. This is a static impact conclusion over exact code/resource hashes; no claim is made that captures loaded the post-drift engine bytes.",
+  "nextRequiredAction": "ROOT may continue source4 publication rebase/push using this SHA-bound unchanged-render impact receipt and the existing RENDER_PASS receipt; no new source review or capture is required unless the bounded diff scope changes."
+}

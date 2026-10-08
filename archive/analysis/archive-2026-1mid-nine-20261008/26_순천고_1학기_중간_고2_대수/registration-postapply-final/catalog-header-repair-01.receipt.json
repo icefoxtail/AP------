@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "ROOT_POSTAPPLY_CANONICAL_CATALOG_MANIFEST_REPAIR_V1",
+  "status": "APPLIED_CANONICAL_HEADER_ONLY_REPAIR",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_순천고_1학기_중간_고2_대수",
+  "head": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+  "firstFailure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\catalog-check-01\\result.json",
+    "sha256": "aaa3eb655b472d7a610ed2cf63049373ae0b74da9deac3ee83e1fa7a4e0f2159",
+    "disposition": "FAIL",
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "issue": "Archive 2.0 catalog projection is stale"
+  },
+  "canonicalRebuild": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\catalog-rebuild-02\\result.json",
+    "sha256": "ca58856833d59d045f3bcd63c7079c974c90cb391703b67ec32720a88d47f9e7",
+    "disposition": "PASS",
+    "indexVersion": "b35f11b9e845a1308bbb0c050de8d3c237fdad978c9cb3d509948f2d8c0042fe"
+  },
+  "decodedPackingParity": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\catalog-payload-parity.json",
+    "sha256": "7a19136ba2b20f455d6adef855a4004d8398de0a637b283752b6aa42b01ab39e",
+    "targetCount": 24,
+    "targetRecordsEqual": true,
+    "nonTargetCount": 12942,
+    "nonTargetRecordsEqual": true,
+    "allRecordsEqual": true,
+    "columnsEqual": true,
+    "stringsEqual": true,
+    "encodedRowsEqual": true,
+    "topLevelDifferentKeys": [
+      "indexVersion"
+    ],
+    "sourceHashDiffCount": 0,
+    "targetSourceHashMatchesCleanLf": true
+  },
+  "changedFiles": [
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "beforeSha256": "052300f4fe95677848f142877f09cbe1b9bcc033e885d385bc374ca00fbf1d49",
+      "afterSha256": "d77624efd349cf4e9e51b97f3c802b5f0e8f88f4f48b888dc57756bd1baa1352"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "e61632869e5319e3527c9575821de4f0d3ca683e9f74202a1c7f63fa1f6e65e8",
+      "afterSha256": "ab636cad8dee0904350599d7e570b93e2a72a2b6ee4a39e0295fb9f89add2cc3"
+    }
+  ],
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\exams\\original\\high\\h2\\1mid\\26_순천고_1학기_중간_고2_대수.js",
+    "rawSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+    "gitBlobSha1": "8c0ba378b0cad4b912876fd1cedd518125a9f38b",
+    "cleanLfSha256": "e7f9df6cc5f838a9dd3b4e4c0f0587c39d5cfc0e118f10bb185387c539bcd664",
+    "sourceBytesChanged": false,
+    "assetBytesChanged": false
+  },
+  "repairLocus": {
+    "catalog": [
+      "indexVersion"
+    ],
+    "manifest": [
+      "generatedFromCatalogIndexVersion",
+      "projectionVersion",
+      "files[data/archive2-catalog.json].sha256"
+    ],
+    "targetSourceHashesChanged": false,
+    "nonTargetDecodedRowsChanged": false
+  },
+  "validators": {
+    "catalogCheck": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\catalog-check-02\\result.json",
+      "sha256": "b524ad000da67cc3186bc969032c44c207a3968604d22ea396737f2b314b025b",
+      "disposition": "PASS"
+    },
+    "registrationParity": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\registration-parity-02\\result.json",
+      "sha256": "2008bca4cb4ab8f172c18d5afb55798c01fcd9a7d642ddd6f1110cf6390e0b2c",
+      "disposition": "PASS"
+    },
+    "identityRuntimeTests": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration-postapply-final\\identity-runtime-tests-01\\result.json",
+      "sha256": "ef6ed85038f8ff54e5835ae7a611e46f1c04de9cbc74e9c77179e6ada35a3dd0",
+      "disposition": "PASS"
+    }
+  },
+  "rootApply": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_순천고_1학기_중간_고2_대수\\registration\\root-apply\\target-registration.receipt.json",
+    "sha256": "67c60121ff2760e3594021955036929a1543f44721005cefab2d80d506495561",
+    "status": "APPLIED_PENDING_VALIDATORS"
+  }
+}

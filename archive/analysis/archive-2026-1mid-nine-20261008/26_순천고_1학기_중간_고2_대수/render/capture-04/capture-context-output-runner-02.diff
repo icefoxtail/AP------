@@ -1,0 +1,58 @@
+diff --git "a/C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\tools\\capture-codex-exam.mjs" "b/C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_\354\210\234\354\262\234\352\263\240_1\355\225\231\352\270\260_\354\244\221\352\260\204_\352\263\2402_\353\214\200\354\210\230\\capture-context-output-runner-02.mjs"
+index d51100098..86de47706 100644
+--- "a/C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\tools\\capture-codex-exam.mjs"
++++ "b/C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_\354\210\234\354\262\234\352\263\240_1\355\225\231\352\270\260_\354\244\221\352\260\204_\352\263\2402_\353\214\200\354\210\230\\capture-context-output-runner-02.mjs"
+@@ -4,11 +4,13 @@ import http from 'node:http';
+ import vm from 'node:vm';
+ import {createHash} from 'node:crypto';
+ import {createRequire} from 'node:module';
+-import {gitBlobSha} from './archive-stage-validator.mjs';
++import {gitBlobSha} from '../../../../archive/tools/archive-stage-validator.mjs';
+ 
+ const args={channel:'chrome'};
+-for(let i=2;i<process.argv.length;i++){const k=process.argv[i];if(k==='--preflight')args.preflight=true;else if(['--root','--exam','--asset-root','--output','--node-modules','--channel'].includes(k))args[k.slice(2)]=process.argv[++i];else throw Error('UNKNOWN_ARGUMENT:'+k);}
++for(let i=2;i<process.argv.length;i++){const k=process.argv[i];if(k==='--preflight')args.preflight=true;else if(['--root','--exam','--asset-root','--output','--node-modules','--channel','--cases'].includes(k))args[k.slice(2)]=process.argv[++i];else throw Error('UNKNOWN_ARGUMENT:'+k);}
+ for(const k of ['root','output'])if(!args[k])throw Error('REQUIRED_ARGUMENT:'+k);
++const selectedCases=args.cases?new Set(args.cases.split(',').map(v=>v.trim()).filter(Boolean)):null;
++if(selectedCases&&[...selectedCases].some(v=>!['exam/mobile','sol/mobile','ans/mobile'].includes(v)))throw Error('UNAUTHORIZED_SELECTED_CASE:'+([...selectedCases].join(',')));
+ const root=fs.realpathSync(path.resolve(args.root));
+ function within(base,p){const absolute=path.resolve(base,p),rel=path.relative(base,absolute);if(rel.startsWith('..')||path.isAbsolute(rel))throw Error('PATH_ESCAPE:'+p);return absolute;}
+ const out=within(path.join(root,'.tmp/archive'),path.resolve(root,args.output));
+@@ -53,6 +55,7 @@ try{
+     const origin='http://127.0.0.1:'+server.address().port;
+     report.engine=ref(path.join(root,'archive/engine.html'));
+     for(const mode of ['exam','sol','ans'])for(const profile of ['desktop','mobile']){
++      if(selectedCases&&!selectedCases.has(mode+'/'+profile))continue;
+       const viewport={width:profile==='mobile'?390:1280,height:profile==='mobile'?844:1000};
+       const context=await browser.newContext({viewport,deviceScaleFactor:1}),page=await context.newPage();
+       const responses=new Map(),pending=[],errors=[];
+@@ -64,15 +67,24 @@ try{
+           const body=await response.body();responses.set(responsePath,{url:response.url(),status:response.status(),sha256:hash(body)});
+         })().catch(e=>errors.push('RESPONSE_BODY:'+e.message)));
+       });
+-      const url=origin+'/archive/engine.html?preview=1&fit=screen&qpp=4&mode='+mode+'&data='+encodeURIComponent(virtual.slice('/archive/'.length));
++      const url=origin+'/archive/engine.html?fit=screen&qpp=4&mode=exam&data='+encodeURIComponent(virtual.slice('/archive/'.length));
+       await page.goto(url,{waitUntil:'load',timeout:60000});
++      await page.waitForFunction(count=>new Set([...document.querySelectorAll('#print-area .q-box[data-source-ref]')].map(n=>n.dataset.sourceRef).filter(Boolean)).size===count,bank.length,{timeout:60000});
++      const modeTargets=mode==='exam'?['sol','exam']:[mode];
++      let modeChange;
++      for(const targetMode of modeTargets){
++        modeChange=await page.evaluate(async requestedMode=>await window.switchMode(requestedMode),targetMode);
++        if(!modeChange?.ok)throw Error('OFFICIAL_MODE_CHANGE_FAILED:'+targetMode+':'+JSON.stringify(modeChange));
++      }
++      await page.waitForFunction(({targetMode,count})=>{const p=new URLSearchParams(location.search);return p.get('archive2Context')==='archive2'&&p.get('archive2OutputContract')==='archive2-output-envelope-v1'&&p.has('outputRequestId')&&p.has('outputOwnerId')&&p.get('mode')===targetMode&&Number(p.get('q'))===count}, {targetMode:mode,count:bank.length},{timeout:60000});
++      const officialOutputUrl=page.url();
++      await page.goto(officialOutputUrl,{waitUntil:'load',timeout:60000});
+       const selector=mode==='ans'?'#print-area .ans-n':'#print-area .q-box[data-source-ref]';
+       await page.waitForFunction(({selector,count,mode})=>{
+         const nodes=[...document.querySelectorAll(selector)];
+-        if(mode==='ans')return nodes.length===count;
+-        return new Set(nodes.map(node=>node.dataset.sourceRef).filter(Boolean)).size===count;
+-      },{selector,count:bank.length,mode},{timeout:60000});
+-      await page.evaluate(async()=>{await document.fonts.ready;if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;});
++        if(mode==='ans')return nodes.length===count&&document.documentElement.dataset.archive2Context==='archive2';
++        return new Set(nodes.map(node=>node.dataset.sourceRef).filter(Boolean)).size===count&&document.documentElement.dataset.archive2Context==='archive2'&&window.__AP_OUTPUT_RENDER_READY__?.pageCount>0;
++      },{selector,count:bank.length,mode},{timeout:60000});      await page.evaluate(async()=>{await document.fonts.ready;if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;});
+       await page.waitForFunction(()=>[...document.querySelectorAll('#print-area img')].every(i=>i.complete),{},{timeout:30000});
+       await Promise.all(pending);
+       if(responses.get(virtual)?.sha256!==report.loadedJs.sha256)throw Error('LOADED_JS_SHA_MISMATCH');

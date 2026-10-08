@@ -52,9 +52,9 @@ async function main(){
       for(let i=0;i<100;i++){try{if((await ev(expression))===value)return;}catch(e){if(i>85)throw e;}await sleep(100);}
       throw Error('Real browser smoke failure: '+label);
     }
-    await wait(count,'130','130 registered');
+    await wait(count,'165','165 registered');
     await ev("(()=>{const s=document.getElementById('school');s.value='복성고';s.dispatchEvent(new Event('change'));return true})()");
-    await wait(count,'38','school filter');
+    await wait(count,'73','school filter');
     await ev("(()=>{const q=document.getElementById('query');q.value='ALITE-BSG26-B03-Q14-I10';q.dispatchEvent(new Event('input'));return true})()");
     await wait(count,'1','UID search');
     await ev("(()=>{document.querySelector('#items .item button').click();return true})()");
@@ -63,13 +63,33 @@ async function main(){
     await ev("(()=>{document.getElementById('toggle-answer').click();return true})()");
     await wait("document.getElementById('detail').innerText.includes('정답: ④')",true,'answer and solution');
     if(!(await ev("(()=>{document.querySelector('#items .item input[type=checkbox]').click();return !document.getElementById('print').disabled})()")))throw Error('Selection failed');
-    const all=await ev("(async()=>{const r=rows.filter(x=>x.school==='복성고');const t=await Promise.all(r.map(async x=>{const q=await questionFor(x);return x.uid===q.uid&&q.choices.length===5&&q.solution.endsWith('정답은 '+q.answer+'이다.')}));return [r.length,t.filter(Boolean).length]})()");
-    if(all[0]!==38||all[1]!==38)throw Error('B03 lookup mismatch '+JSON.stringify(all));
+    const all=await ev("(async()=>{const r=rows.filter(x=>x.school==='복성고');const t=await Promise.all(r.map(async x=>{const q=await questionFor(x);return x.uid===q.uid&&((q.choices.length===5&&q.solution.endsWith('정답은 '+q.answer+'이다.'))||(q.choices.length===0&&q.answer.length>0&&q.solution.length>0))}));return [r.length,t.filter(Boolean).length]})()");
+    if(all[0]!==73||all[1]!==73)throw Error('B04/B05 plus B03 lookup mismatch '+JSON.stringify(all));
+    // Real registered B04/B05 UID smoke, including the actual student-facing table and non-objective answers.
+    await ev("(()=>{const q=document.getElementById('query');q.value='ALITE-BSG26-B04R2-Q23-S01';q.dispatchEvent(new Event('input'));return true})()");
+    await wait(count,'1','B04 HTML table UID search');
+    await ev("(()=>{document.querySelector('#items .item button').click();return true})()");
+    await wait("!document.getElementById('toggle-answer').disabled",true,'B04 table preview');
+    const tableOk=await ev("(()=>{const p=document.getElementById('detail');return p.querySelectorAll('table.question-table').length===1&&p.querySelectorAll('tr').length===3&&!p.textContent.includes('<table')})()");
+    if(!tableOk)throw Error('Actual B04 q23 source table DOM was not preserved');
+    await ev("(()=>{document.getElementById('toggle-answer').click();return true})()");
+    await wait("document.querySelector('#detail .answer')!==null",true,'B04 subject answer view');
+    if(!(await ev("(()=>{document.querySelector('#items .item input[type=checkbox]').click();return !document.getElementById('print').disabled})()")))throw Error('B04 subjective selection failed');
+    await ev("(()=>{const q=document.getElementById('query');q.value='ALITE-BSG26-B05R2-Q21-S07';q.dispatchEvent(new Event('input'));return true})()");
+    await wait(count,'1','B05 combination UID search');
+    await ev("(()=>{document.querySelector('#items .item button').click();return true})()");
+    await wait("!document.getElementById('toggle-answer').disabled",true,'B05 q21 subjective preview');
+    await ev("(()=>{document.getElementById('toggle-answer').click();return true})()");
+    await wait("document.querySelector('#detail .answer')!==null",true,'B05 q21 answer view');
+    await ev("(()=>{const q=document.getElementById('query');q.value='ALITE-BSG26-B05R2-Q22-S01';q.dispatchEvent(new Event('input'));return true})()");
+    await wait(count,'0','B05 q22 RPM HOLD must not be selectable');
     await ev("(()=>{const s=document.getElementById('school');s.value='';s.dispatchEvent(new Event('change'));const q=document.getElementById('query');q.value='ALITE-20261008-HYC26-Q10-001';q.dispatchEvent(new Event('input'));return true})()");
     await wait(count,'0','HOLD excluded');
     await ev("(()=>{const q=document.getElementById('query');q.value='';q.dispatchEvent(new Event('input'));const s=document.getElementById('school');s.value='효천고';s.dispatchEvent(new Event('change'));return true})()");
     await wait(count,'92','legacy Hyocheon count');
-    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({registered:130,b03Available:38,b03LookupVerified:38,preview:true,answer:true,selected:true,excludedHold:true,oldHyocheon:92}));
+    const synthetic=await ev("(async()=>{const row={uid:'ALITE-BSG26-B04R2-Q23-S01',sourceQid:23,school:'복성고',l2:'H22-C-09-MATRIX_APPLICATION',localOrdinal:1,shard:'data/generated-lite-consumer/v1/shards/synthetic-subjective.json'};const question={questionType:'서술형',content:'코스 표.<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>코스</th><th>가</th></tr></thead><tbody><tr><th>출발</th><td>1</td></tr></tbody></table></div>경로 수?',choices:[],answer:'$8$',solution:'8가지.'};cache.set(row.shard,Promise.resolve({schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:[{sourceKind:'generated',generatedUid:row.uid,localOrdinal:1,question}]}));const q=await questionFor(row);const panel=document.createElement('div');questionMarkup(panel,q,row,true);return {subjective:q.choices.length===0,tableCount:panel.querySelectorAll('table').length,tableRows:panel.querySelectorAll('tr').length,rawMarkup:panel.textContent.includes('<table'),answer:panel.textContent.includes('정답: $8$')};})()");
+    if(!synthetic.subjective||synthetic.tableCount!==1||synthetic.tableRows!==2||synthetic.rawMarkup||!synthetic.answer)throw Error('Subjective/table Chrome compatibility failed: '+JSON.stringify(synthetic));
+    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({registered:165,bokseongAvailable:73,bokseongLookupVerified:73,b04b05New:35,actualB04Table:true,actualB05Subjective:true,q22HoldExcluded:true,preview:true,answer:true,selected:true,excludedHold:true,oldHyocheon:92}));
   }finally{
     if(ws)ws.close();
     browser.kill('SIGTERM');
