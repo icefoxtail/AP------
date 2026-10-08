@@ -25,12 +25,12 @@ window.questionBank = [
     "content": "이차함수 $f(x)$의 서로 다른 두 영점은 $-1,3$이다. 방정식 $f(x-a)=0$의 두 근의 곱이 $a^2+7$일 때, $a$의 값은?",
     "choices": [
       "1",
+      "2",
       "3",
-      "5",
-      "7",
-      "9"
+      "4",
+      "5"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 이동한 두 근은 $a-1,a+3$이다.\\n두 근의 곱 $(a-1)(a+3)=a^2+2a-3$이 $a^2+7$과 같으므로 $2a=10$이다. 따라서 $a=5$이다.",
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY"
