@@ -43,7 +43,8 @@ test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and
   assert.equal(new Set(index.records.map(r => r.uid)).size, 190);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
-  assert.ok(index.records.slice(130).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
+  assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
+  assert.ok(index.records.slice(165).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
   assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
   assert.ok(!index.records.some(r => r.uid.includes('BSG26-B01R2-') || r.uid.includes('BSG26-B02-')));
