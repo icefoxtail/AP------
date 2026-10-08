@@ -21,3 +21,9 @@
 - GitHub Actions 실제 Chrome 실행 `37767090807`: **130 DB 항목 로드, 복성고 B03 38/38 전체 조회, q14 다중진술, 정답·해설, 선택 및 기존 효천고 92/보류 차단 PASS**.
 - 검증 증거: https://github.com/icefoxtail/AP------/actions/runs/37767090807 · 등록 확인 대상 SHA `871e03e8b94ad94ee0efb863323f39fbfde181bc`.
 - B03 승인 38/38, 정적 Consumer DB 등록 38/38, 실제 Chrome 조회 38/38. main에 본 등록 변경 PR을 병합한 뒤 최종 원격 SHA readback으로 닫는다.
+
+## 2026-10-08 B03 REVIEW → Consumer DB → MAIN 최종 닫힘 (CURRENT)
+- 형님 직접 REVIEW 승인 38/38, 독립성 예외 승인 4건 원형 보존. 동일 38 UID 학생용 정적 Consumer DB 등록 38/38, 학생용 실제 Chrome 조회/정답/선택 검증 38/38.
+- 기존 효천고 92건 보호, Consumer 총 130건 및 HOLD 제외; q9 10/q13 9/q14 10/q16 9. B01/B02 생성후보는 본 등록 승인범위에서 제외.
+- 등록 PR: https://github.com/icefoxtail/AP------/pull/324 ; 등록 main 커밋 8442c6afbc53f412809534101e7a981384f7cc99; 원격 main readback 일치 확인.
+- 상태: B03 REVIEW_CONSUMER_MAIN_DONE. 원장: archive/data/generated-lite-consumer/v1/registration-receipt-bokseong-b03.json. 실제 Chrome 검사: https://github.com/icefoxtail/AP------/actions/runs/37767644712 . 배포 이후 실제 로그인 학생계정 smoke는 별개로 NOT_RUN.
