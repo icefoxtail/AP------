@@ -30,13 +30,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 264 approved consumer rows with existing and B06 source SHA and student finder
-        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs
+      - name: Verify 273 approved consumer rows with existing and B06 source SHA and student finder
+        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
           chrome-version: stable
-      - name: B03-B06 new SVG original PNG wrapper and 264 UID lookup with HOLD rejection
+      - name: B03-B06 new SVG original PNG wrapper and 273 UID lookup with HOLD rejection
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-generated-bank-browser.cjs
