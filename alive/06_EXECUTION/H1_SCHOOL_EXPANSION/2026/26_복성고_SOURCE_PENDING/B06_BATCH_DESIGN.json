@@ -1,0 +1,1412 @@
+{
+  "schemaVersion": "ALIVE_LITE_B06_BLUEPRINT_DESIGN_v1",
+  "status": "DESIGN_FROZEN_NO_GENERATION",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceQids": [
+    18,
+    19
+  ],
+  "blueprintCount": 38,
+  "acceptedDesignBlueprintCount": 25,
+  "uniqueSemanticTargetCount": "UNAPPROVED_RPM_EXTENSION_NOT_A_CLAIM_OF_25_NEW_L4",
+  "countsBySource": {
+    "18": {
+      "explored": 16,
+      "accept": 10,
+      "rest": 6
+    },
+    "19": {
+      "explored": 22,
+      "accept": 15,
+      "rest": 7
+    }
+  },
+  "objectivePlannedCount": 22,
+  "designOnly": true,
+  "sourceVisualEvidence": "B06_SOURCE_VISUAL_AUDIT.json",
+  "designMathEvidence": "B06_DESIGN_MATH_WITNESSES.json",
+  "primaryLocks": {
+    "q18": {
+      "standardUnitKey": "H22-C-06",
+      "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+      "rpmL3": "방정식의 활용",
+      "rpmL4": "도형·함수 결합",
+      "rpmId": "H1-RPM-177",
+      "semanticScope": "same-grade current"
+    },
+    "q19": {
+      "standardUnitKey": "H22-C-08",
+      "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+      "rpmL3": "합·곱의 법칙",
+      "rpmL4": "단계별 선택",
+      "rpmId": "H1-RPM-187",
+      "semanticScope": "earlier same-grade H22-C-07-CORE",
+      "crossConcepts": [
+        "경계선 인접 판독"
+      ]
+    }
+  },
+  "qualityPlan": {
+    "sourceTruth": "exact PNG binary from GitHub blob; no source replacement",
+    "preCreateReverseStemCheck": [
+      "q18 through/blind/multiple holes exact visual and number of exposed walls",
+      "q19 adjacency list from final stem+image, not from stored RPM label",
+      "L3 remains primary after final question restatement",
+      "all distinct Blueprint decisiveStep remains distinguishable by student solution"
+    ],
+    "answerValueFirst": true,
+    "distractors": {
+      "q18": [
+        "윗면/아랫면 공제 누락",
+        "내부 네 벽면 미계산",
+        "관통형/비관통형 혼동",
+        "양수·실수/유리수 조건 누락"
+      ],
+      "q19": [
+        "비인접 BD를 인접한 것으로 오판",
+        "AC를 비인접으로 착각",
+        "독립 B,D 선택을 한 번만 곱함",
+        "전체 색 수와 실제 사용 색 수 혼동"
+      ]
+    },
+    "targetAnswerPositionsNote": "Tentative positions are NOT forced uniform; fixed sorted choices can override; no mathematical answer manipulations",
+    "numericExamples": "DESIGN_WITNESSES_ONLY not final exam or validator",
+    "defaultGenerationPurpose": "ALIVE_EXPANSION (design field only, not new runtime enum)",
+    "runtimeModeAssumption": "TYPE_BANK structure variant candidate until family verified; never claim VERIFIED_B/C",
+    "svgProvision": "Source image reused only for unchanged graph/through-hole; changed geometry requires a new exact problem image; Codex actual render later",
+    "computationBudget": {
+      "q18": "3-7 meaningful math steps depending on geometry, count faces before solving",
+      "q19": "3-7 meaningful case/count steps, no mere repeated substitution"
+    },
+    "difficultySeparation": "thinking depth and arithmetic volume independent",
+    "release": "CREATE future only; Independent REVIEW+Consumer DB will follow separately"
+  },
+  "candidates": [
+    {
+      "blueprintId": "BSG26-B06-Q18-SURFACE_COEFFICIENT_INVERSION",
+      "sourceQid": 18,
+      "label": "겉넓이의 π계수·유리수계수로 a,b 역산",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "4개 내부벽+상하면 공제 → π계수와 유리수계수 분리 → 이차방정식 양수근 선택",
+      "sampleWitness": {
+        "a": 5,
+        "b": 2,
+        "surface": "70π+8",
+        "target": "a-b=3"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "RATIONALITY_AND_POSITIVE_ROOT",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 3,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-SURFACE_DIFFERENCE",
+      "sourceQid": 18,
+      "label": "뚫기 전후 겉넓이 변화로 구멍 한 변 찾기",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "S_after-S_before=+2b²; 제거면과 새 노출면의 순증가 판정",
+      "sampleWitness": {
+        "b": 2,
+        "netDelta": 8,
+        "target": "b=2"
+      },
+      "visualPolicy": "MINIMAL_DIFFERENCE_FACES",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "단답형",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 2,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-VOLUME_AFTER_TUNNEL",
+      "sourceQid": 18,
+      "label": "겉넓이에서 수치를 복원해 남은 부피 결정",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "표면 정보로 a,b 복원 → 제거 정육면체 부피 b³ 공제",
+      "sampleWitness": {
+        "a": 5,
+        "b": 2,
+        "surface": "70π+8",
+        "target": "50π-8"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [
+        "중등 입체도형 부피"
+      ],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "서술형",
+      "difficultyAxis": {
+        "conceptualLoad": 4,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CAVITY_WALL_VOLUME_COMBINED",
+      "sourceQid": 18,
+      "label": "내부벽 넓이와 잔여 부피의 독립 조건으로 a,b 결정",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "4b²=16 → b=2; V=πa²b−b³=50π−8 → a=5",
+      "sampleWitness": {
+        "innerWallArea": 16,
+        "volume": "50π-8",
+        "target": "a+b=7"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": "두 측정값을 교차 사용",
+      "plannedQuestionType": "단답형",
+      "difficultyAxis": {
+        "conceptualLoad": 4,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-INDEPENDENT_PRISM_SIDE",
+      "sourceQid": 18,
+      "label": "원기둥 높이 h와 정사각형 관통구멍 변 s를 분리",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "S=2πa(a+h)+4hs−2s²; 0<s<h로 이차근 2·6 중 2만 선택",
+      "sampleWitness": {
+        "a": 6,
+        "h": 4,
+        "s": 2,
+        "area": "120π+24",
+        "roots": [
+          2,
+          6
+        ],
+        "target": "s=2"
+      },
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [
+        "도형의 적합성",
+        "이차방정식 두 근"
+      ],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 5,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": "NEW_PROBLEM_IMAGE_SQUARE_PRISM_THROUGH_HOLE",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-BLIND_CUBIC_CAVITY",
+      "sourceQid": 18,
+      "label": "관통하지 않는 정육면체형 홈의 바닥면 노출",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "윗면 공제 s²와 홈 바닥 s²가 상쇄됨 → 새 내부벽 4s²만 순증가",
+      "sampleWitness": {
+        "a": 6,
+        "h": 5,
+        "s": 2,
+        "area": "132π+16",
+        "target": "s=2"
+      },
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 5,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": "NEW_DIAGRAM_BLIND_CAVITY_WITH_FLOOR_AND_DEPTH_LT_HEIGHT",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-TWO_SEPARATE_TUNNELS",
+      "sourceQid": 18,
+      "label": "서로 겹치지 않는 두 사각 관통구멍의 겉넓이",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "S=2πa(a+h)+Σ(4hs_i−2s_i²); 이미 아는 s1과 0<s2<h로 두 번째 근 선택",
+      "sampleWitness": {
+        "a": 10,
+        "h": 4,
+        "s1": 2,
+        "s2": 3,
+        "area": "280π+54",
+        "target": "s1+s2=5"
+      },
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 5,
+        "calculationLoad": 4,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": "NONOVERLAPPING_TUNNEL_PLACEMENT_AND_CIRCLE_FIT_VISUAL_EVIDENCE",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CIRCULAR_TUNNEL",
+      "sourceQid": 18,
+      "label": "정사각형이 아닌 원형 관통구멍으로 곡면 노출 비교",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "원형 입구 둘 면 공제 2πr², 내부 곡면 2πrh 새로 노출",
+      "sampleWitness": {
+        "a": 6,
+        "h": 4,
+        "r": 2,
+        "area": "128π",
+        "target": "r=2",
+        "constraint": "0<r<h"
+      },
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 4,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": "CIRCULAR_THROUGH_BORE_DIAGRAM_R_LT_A",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-ROOT_ADMISSIBILITY",
+      "sourceQid": 18,
+      "label": "방정식에서 나온 여러 근 중 양의 길이·구멍 적합성을 만족하는 해만 선택",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "도형조건과 근 조건을 동시에 적용하여 가짜 음수/지나치게 큰 구멍 반례 배제",
+      "sampleWitness": {
+        "a": 5,
+        "b": 2,
+        "quadratic": "a²+2a−35=0",
+        "roots": [
+          5,
+          -7
+        ],
+        "target": "a=5"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "ROOT_AND_GEOMETRY_FEASIBILITY",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 4,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-COMPARE_TWO_HOLE_SIZES",
+      "sourceQid": 18,
+      "label": "공통 원기둥에서 구멍 크기만 달라졌을 때 겉넓이 차로 역산",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "공통 2πa(a+h) 항 소거 → 4h(s1−s2)−2(s1²−s2²)으로 제한된 해 선택",
+      "sampleWitness": {
+        "h": 5,
+        "s1": 2,
+        "s2": 3,
+        "areaDiff": "-10",
+        "target": "s2=3",
+        "constraint": "0<s2<h"
+      },
+      "visualPolicy": "TWO_CASE_COMPARATIVE_PANEL",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 5,
+        "calculationLoad": 4,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": "TWO_INDEPENDENT_NONOVERLAPPING_DIAGRAMS_DIFFERENT_PRISM_SIZE",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-OUTPUT_RENAME_ONLY",
+      "sourceQid": 18,
+      "label": "a-b 대신 a+b만 묻기",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DUPLICATE",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "겉넓이 계수분리와 양수근 결정 과정 동일",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "문항 목표 표현만 바뀌고 핵심 판단과 풀이구조 동일",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-ROTATED_SQUARE_TUNNEL",
+      "sourceQid": 18,
+      "label": "동일 정사각형 구멍의 회전",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DUPLICATE",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "정사각형 회전은 단면적·둘레·새 노출면을 바꾸지 않음",
+      "sampleWitness": "NONE",
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "동일 겉넓이 관계, 신규 L4/Blueprint로 집계 금지",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-FIT_ONLY_INEQUALITY",
+      "sourceQid": 18,
+      "label": "정사각형이 원 안에 들어가는 조건만 묻기",
+      "candidateKind": "L3_DRIFT",
+      "disposition": "L3_DRIFT",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "s√2≤2a 부등식의 범위만 판정",
+      "sampleWitness": "NONE",
+      "visualPolicy": "GEOMETRY_ONLY",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "방정식의 활용이 아니라 부등식·기하적 조건 판정이 primary method",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-SLANTED_TUNNEL",
+      "sourceQid": 18,
+      "label": "비스듬한 입체 구멍의 옆면 넓이",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "HOLD",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "정확한 절단면·내부 경계가 정해져 있지 않음",
+      "sampleWitness": "NONE",
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "source geometry and mathematical surface formula not defined",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CALCULUS_EXTREMUM",
+      "sourceQid": 18,
+      "label": "부피를 미분으로 최적화",
+      "candidateKind": "L3_DRIFT",
+      "disposition": "CURRICULUM_VIOLATION",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "미분 기반 최적화",
+      "sampleWitness": "NONE",
+      "visualPolicy": "NONE",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "고1 공통수학1 범위 밖 방법 강제",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-TRIANGULAR_TUNNEL",
+      "sourceQid": 18,
+      "label": "정삼각기둥 관통과 π·√3 비교",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "HOLD",
+      "primaryRpmL3": "방정식의 활용",
+      "primaryRpmId": "H1-RPM-177",
+      "comparatorRpmIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "decisiveStepSignature": "√3 단면과 π 항의 동시 분리 및 새 그림 필요",
+      "sampleWitness": "NONE",
+      "visualPolicy": "NEW_GEOMETRY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "new geometry/calculation budget/semantic independence unqualified",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-INVERSE_K",
+      "sourceQid": 19,
+      "label": "전체 색칠 수로 색의 종류 k 역추론",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A,C 순서쌍 k(k−1), B,D 각 k−2로 P(k) 역산",
+      "sampleWitness": {
+        "k": 6,
+        "count": 480,
+        "target": "k=6"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 2,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_THREE",
+      "sourceQid": 19,
+      "label": "B=D인 정확히 3색 색칠",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "K4−BD에서 정확히 세 색이면 비인접 B=D 필요충분",
+      "sampleWitness": {
+        "k": 6,
+        "count": 120,
+        "target": "120"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "EXACT_3_DISTINCT",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 4,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_FOUR",
+      "sourceQid": 19,
+      "label": "B≠D인 정확히 4색 색칠",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "모든 네 영역 색 달라야 함 → k(k−1)(k−2)(k−3)",
+      "sampleWitness": {
+        "k": 6,
+        "count": 360,
+        "target": "360"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "EXACT_4_DISTINCT",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 1,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-FIXED_A",
+      "sourceQid": 19,
+      "label": "A 영역 색이 미리 지정됐을 때",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A 선택 1로 고정, C/B/D 순차 독립 선택",
+      "sampleWitness": {
+        "k": 6,
+        "count": 80,
+        "target": "80"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "A_FIXED_NAMED_COLOR",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 5,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-AC_SUBPALETTE",
+      "sourceQid": 19,
+      "label": "A와 C에 허용된 색 집합 크기가 t일 때",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A,C는 t(t−1)쌍, B,D는 k−2씩",
+      "sampleWitness": {
+        "k": 6,
+        "t": 3,
+        "count": 96,
+        "target": "96"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "AC_ALLOWED_SUBSET",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 3,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-B_FORBID_COLOR",
+      "sourceQid": 19,
+      "label": "B에서만 빨강 금지·A/C가 빨강인 경우 분기",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A/C 중 빨강 포함 여부로 경우 나눔 → (k−1)²(k−2)²",
+      "sampleWitness": {
+        "k": 6,
+        "count": 400,
+        "target": "400"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "DISTINGUISHED_FORBIDDEN_COLOR_ON_B",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 1,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-BD_FORBID_COLOR",
+      "sourceQid": 19,
+      "label": "B와 D 모두 빨강 금지·A/C 경우 나누기",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A/C 중 빨강 포함 여부에 따라 (k−2) 또는 (k−3) 선택",
+      "sampleWitness": {
+        "k": 6,
+        "count": 340,
+        "target": "340"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "DISTINGUISHED_FORBIDDEN_COLOR_ON_BD",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 4,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_ONE_BD_RED",
+      "sourceQid": 19,
+      "label": "비인접 B,D 중 정확히 한 영역만 빨강",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "빨강 위치 2가지 × A/C 비빨강 서로 다르게 × 나머지 비빨강 선택",
+      "sampleWitness": {
+        "k": 6,
+        "count": 120,
+        "target": "120"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "EXACT_ONE_DISTINGUISHED_COLOR_BD",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 2,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-BD_SAME_FIXED_RED",
+      "sourceQid": 19,
+      "label": "B와 D가 둘 다 지정된 빨강을 사용",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "B=D=빨강 고정, A/C는 서로 다른 다른 색 선택",
+      "sampleWitness": {
+        "k": 6,
+        "count": 20,
+        "target": "20"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "BD_EQUAL_NAMED_COLOR",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 5,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-RED_EXACT_ONCE",
+      "sourceQid": 19,
+      "label": "지정된 색 빨강이 전체 네 영역 중 정확히 한 번 등장",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "빨강이 A/C인 경우 또는 B/D 단독인 경우로 분리, 중복 배제",
+      "sampleWitness": {
+        "k": 6,
+        "count": 280,
+        "target": "280"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "RED_APPEARS_EXACTLY_ONCE",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 3,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-RED_AT_LEAST_ONCE",
+      "sourceQid": 19,
+      "label": "지정된 색이 한 번 이상 등장",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "전체 색칠 수 − 그 색을 전혀 쓰지 않는 (k−1)-색 칠하기",
+      "sampleWitness": {
+        "k": 6,
+        "count": 300,
+        "target": "300"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "AT_LEAST_ONE_NAMED_COLOR",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 1,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-OVERLAP_PALETTES",
+      "sourceQid": 19,
+      "label": "A/C 서로 겹치는 허용 색 집합에서 같은 색 제외",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "허용 순서쌍 |T||U|−|T∩U|, B/D는 각각 k−2",
+      "sampleWitness": {
+        "k": 6,
+        "T": [
+          0,
+          1,
+          2
+        ],
+        "U": [
+          1,
+          2,
+          3
+        ],
+        "count": 112,
+        "target": "112"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "AC_OVERLAPPING_ALLOWED_PALETTES",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 4,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-ADD_BD_EDGE",
+      "sourceQid": 19,
+      "label": "B-D 경계선을 새로 추가한 그림으로 색칠 비교",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "새 그래프 K4: B,D도 서로 다른 색 필수, k(k−1)(k−2)(k−3)",
+      "sampleWitness": {
+        "k": 6,
+        "count": 360,
+        "target": "360"
+      },
+      "visualPolicy": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": "EDGE_INSERTION",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 2,
+      "materializationGate": "NEW_IMAGE_EDGE_LIST_INCLUDES_BD; source image cannot be reused",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-REMOVE_AC_EDGE",
+      "sourceQid": 19,
+      "label": "A-C 경계선을 제거한 그림으로 색칠 분기",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "A=C인 경우 k(k−1)² + A≠C인 경우 k(k−1)(k−2)²",
+      "sampleWitness": {
+        "k": 6,
+        "count": 630,
+        "target": "630"
+      },
+      "visualPolicy": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "crossConcepts": [],
+      "conditionPattern": "EDGE_DELETION_CASE_SPLIT",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 5,
+      "materializationGate": "NEW_IMAGE_EDGE_LIST_EXCLUDES_AC; exact region topology must be explicitly reconstructed",
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-MINIMUM_K_THRESHOLD",
+      "sourceQid": 19,
+      "label": "전체 색칠 수가 특정 수 이상이 되는 최소 k",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "ACCEPT",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "P(k) 단조증가와 이웃한 두 k 비교",
+      "sampleWitness": {
+        "targetCount": 480,
+        "previous": {
+          "k": 5,
+          "count": 180
+        },
+        "first": {
+          "k": 6,
+          "count": 480
+        },
+        "target": "k=6"
+      },
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": "COUNT_THRESHOLD_INVERSION",
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": 3,
+      "materializationGate": null,
+      "exclusionReason": null,
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-AT_MOST_THREE",
+      "sourceQid": 19,
+      "label": "세 색 이하로 칠하기",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DUPLICATE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "삼각형 A-B-C 때문에 최소 세 색 필요 → 정확히 세 색과 동일",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "EXACT_THREE와 동일한 경우 집합",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-A_EQUALS_C",
+      "sourceQid": 19,
+      "label": "A와 C를 같은 색으로",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "NO_VALID_MATH_STRUCTURE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "AC는 원본 인접경계 공유",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "원본 그래프에 바로 위배",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-BD_ADJACENT_SAME_IMAGE",
+      "sourceQid": 19,
+      "label": "원본 그대로 B,D가 인접한 것으로 가정",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "NO_VALID_MATH_STRUCTURE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "BD는 점접촉만, 경계선 공유 없음",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "허위 인접관계; 재도형 필요 시 ADD_BD_EDGE를 사용",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-UNLABELED_COLOR_QUOTIENT",
+      "sourceQid": 19,
+      "label": "색의 이름을 구별하지 않고 동치류로 셈",
+      "candidateKind": "L3_DRIFT",
+      "disposition": "HOLD",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "색 이름 치환에 의한 동치류/대칭 계산",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "원문 색은 구별되는 팔레트; 개념적 목표·교육과정 적합성 별도 심사",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-FORCE_BD_DIFFERENT",
+      "sourceQid": 19,
+      "label": "B,D를 서로 다르게 칠하라는 추가 조건",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DUPLICATE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "정확히 네 색 쓰기(EXACT_FOUR)와 동일 집합",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "색 구별 수 조건의 중복 세분",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-K4_ALL_DISTINCT",
+      "sourceQid": 19,
+      "label": "k=4일 때 전부 다른 색",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DUPLICATE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "EXACT_FOUR에 k 수치 대입한 인스턴스",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "숫자변형 1개를 새 Blueprint로 과대집계 금지",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-ONLY_TWO_COLORS",
+      "sourceQid": 19,
+      "label": "전체 두 색만으로 영역 칠하기",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "NO_VALID_MATH_STRUCTURE",
+      "primaryRpmL3": "합·곱의 법칙",
+      "primaryRpmId": "H1-RPM-187",
+      "comparatorRpmIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "decisiveStepSignature": "원본에 A-B-C 삼각형 있어 최소 세 색 필요",
+      "sampleWitness": "NONE",
+      "visualPolicy": "SOURCE_RASTER_KEEP",
+      "crossConcepts": [],
+      "conditionPattern": null,
+      "integrationPattern": null,
+      "plannedQuestionType": "객관식",
+      "difficultyAxis": {
+        "conceptualLoad": 3,
+        "calculationLoad": 3,
+        "distinct": false
+      },
+      "distractorStrategies": [],
+      "targetAnswerPosition": null,
+      "materializationGate": null,
+      "exclusionReason": "가능한 색칠 0개, 일반 objective variation value floor와 충돌",
+      "canonicalPromoted": false,
+      "studentSupplyEligible": false
+    }
+  ]
+}
