@@ -67,18 +67,25 @@ try{
       const url=origin+'/archive/engine.html?preview=1&fit=screen&qpp=4&mode='+mode+'&data='+encodeURIComponent(virtual.slice('/archive/'.length));
       await page.goto(url,{waitUntil:'load',timeout:60000});
       const selector=mode==='ans'?'#print-area .ans-n':'#print-area .q-box[data-source-ref]';
-      await page.waitForFunction(({selector,count})=>document.querySelectorAll(selector).length===count,{selector,count:bank.length},{timeout:60000});
+      await page.waitForFunction(({selector,count,mode})=>{
+        const nodes=[...document.querySelectorAll(selector)];
+        if(mode==='ans')return nodes.length===count;
+        return new Set(nodes.map(node=>node.dataset.sourceRef).filter(Boolean)).size===count;
+      },{selector,count:bank.length,mode},{timeout:60000});
       await page.evaluate(async()=>{await document.fonts.ready;if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;});
       await page.waitForFunction(()=>[...document.querySelectorAll('#print-area img')].every(i=>i.complete),{},{timeout:30000});
       await Promise.all(pending);
       if(responses.get(virtual)?.sha256!==report.loadedJs.sha256)throw Error('LOADED_JS_SHA_MISMATCH');
-      const metrics=await page.evaluate(selector=>({
-        count:document.querySelectorAll(selector).length,width:innerWidth,height:innerHeight,
+      const metrics=await page.evaluate(({selector,mode})=>{
+        const nodes=[...document.querySelectorAll(selector)];
+        const sourceRefs=nodes.map(n=>n.dataset.sourceRef||n.textContent.trim());
+        return {
+        count:mode==='ans'?nodes.length:new Set(sourceRefs).size,renderedBoxCount:nodes.length,width:innerWidth,height:innerHeight,
         mathJaxPresent:!!window.MathJax,mathErrors:document.querySelectorAll('mjx-merror,[data-mjx-error]').length,
         images:[...document.querySelectorAll('#print-area img')].map(i=>({url:i.currentSrc||i.src,decoded:i.complete&&i.naturalWidth>0})),
-        sourceRefs:[...document.querySelectorAll(selector)].map(n=>n.dataset.sourceRef||n.textContent.trim()),
+        sourceRefs,
         scrollWidth:document.documentElement.scrollWidth
-      }),selector);
+      }},{selector,mode});
       const assets=[];
       for(const i of metrics.images){
         const u=new URL(i.url);
