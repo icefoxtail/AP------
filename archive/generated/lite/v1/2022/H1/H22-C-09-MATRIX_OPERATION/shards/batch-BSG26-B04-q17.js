@@ -25,14 +25,14 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$에 대하여 $A+A^2+\\cdots+A^8$의 모든 성분의 합은?",
     "choices": [
-      "$80$",
-      "$84$",
       "$88$",
-      "$92$",
-      "$96$"
+      "$90$",
+      "$96$",
+      "$104$",
+      "$108$"
     ],
-    "answer": "③",
-    "solution": "$N=A-I=\\begin{pmatrix}0&0\\\\2&0\\end{pmatrix}$라 놓으면 $N^2=O$이다. 따라서 $A^k=I+kN=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이다. 대각 성분합은 $16$, $(2,1)$성분합은 $2(1+\\cdots+8)=72$이므로 전체 합은 $88$이다.\n따라서 정답은 ③이다.",
+    "answer": "①",
+    "solution": "$N=A-I=\\begin{pmatrix}0&0\\\\2&0\\end{pmatrix}$라 놓으면 $N^2=O$이다. 따라서 $A^k=I+kN=\\begin{pmatrix}1&0\\\\2k&1\\end{pmatrix}$이다. 대각 성분합은 $16$, $(2,1)$성분합은 $2(1+\\cdots+8)=72$이므로 전체 합은 $88$이다.\n따라서 정답은 ①이다.",
     "sourceType": "generated"
   },
   {
@@ -60,14 +60,14 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix}$에 대하여 $A^n$의 $(2,1)$성분이 $21$이다. 자연수 $n$의 값은?",
     "choices": [
-      "$5$",
       "$6$",
       "$7$",
       "$8$",
-      "$9$"
+      "$9$",
+      "$10$"
     ],
-    "answer": "③",
-    "solution": "$N=A-I$이면 $N^2=O$이므로 $A^n=I+nN=\\begin{pmatrix}1&0\\\\3n&1\\end{pmatrix}$이다. $3n=21$에서 $n=7$이다.\n따라서 정답은 ③이다.",
+    "answer": "②",
+    "solution": "$N=A-I$이면 $N^2=O$이므로 $A^n=I+nN=\\begin{pmatrix}1&0\\\\3n&1\\end{pmatrix}$이다. $3n=21$에서 $n=7$이다.\n따라서 정답은 ②이다.",
     "sourceType": "generated"
   },
   {
@@ -130,14 +130,14 @@ window.questionBank = [
     "wide": false,
     "content": "행렬 $A=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$에 대하여 $A^3A^5$의 $(2,1)$성분은?",
     "choices": [
+      "$8$",
       "$12$",
       "$14$",
       "$16$",
-      "$18$",
       "$20$"
     ],
-    "answer": "③",
-    "solution": "$A^3A^5=A^8$이다. $A=I+N$, $N^2=O$이므로 $A^8=I+8N=\\begin{pmatrix}1&0\\\\16&1\\end{pmatrix}$이다. 따라서 구하는 성분은 $16$이다.\n따라서 정답은 ③이다.",
+    "answer": "④",
+    "solution": "$A^3A^5=A^8$이다. $A=I+N$, $N^2=O$이므로 $A^8=I+8N=\\begin{pmatrix}1&0\\\\16&1\\end{pmatrix}$이다. 따라서 구하는 성분은 $16$이다.\n따라서 정답은 ④이다.",
     "sourceType": "generated"
   }
 ];
