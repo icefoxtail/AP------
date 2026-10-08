@@ -1,0 +1,17 @@
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto');
+const file=process.argv[2], expectedBefore=process.argv[3];
+const source=fs.readFileSync(file,'utf8');
+const box={window:{}};vm.createContext(box);vm.runInContext(source,box);
+const q=box.window.questionBank.find(x=>Number(x.id)===17);
+if(!q||q.difficultyBucket!==4||q.level!=='중') throw new Error('Q17_EXPECTED_META_MISMATCH_NOT_FOUND');
+const start=source.indexOf('"id": 17');
+const next=source.indexOf('"id": 18',start+1);
+const field=source.indexOf('"difficultyBucket"',start);
+if(start<0||field<0||(next>=0&&field>=next)) throw new Error('Q17_FIELD_SCOPE_NOT_FOUND');
+const colon=source.indexOf(':',field)+1;
+const match=source.slice(colon).match(/^(\s*)4\b/);
+if(!match) throw new Error('Q17_BUCKET_VALUE_NOT_FOUR');
+const valueStart=colon+match[1].length;
+const updated=source.slice(0,valueStart)+'3'+source.slice(valueStart+1);
+fs.writeFileSync(file,updated,'utf8');
+console.log(JSON.stringify({qid:17,beforeBucket:4,afterBucket:3,beforeRawSha256:expectedBefore,afterRawSha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),changedField:'difficultyBucket'},null,2));

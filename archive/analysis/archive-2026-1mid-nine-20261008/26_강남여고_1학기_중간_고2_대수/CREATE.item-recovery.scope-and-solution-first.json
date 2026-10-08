@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SCOPE_V1",
+  "reviewerId": "recovery_03",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "initialHead": "044c41a26f5bed0708ad42709ed2932be314e55a",
+  "sourceRawSha256": "2e3c6e27f34ca7e3ef559ea5f636132b09d9f1c3c483afaf074dccb48e4cf891",
+  "sourcePdfSha256": "3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f",
+  "sourceFirstAssessmentRef": "CREATE.item-recovery.source-first-assessment.json",
+  "calibrationRef": "CREATE.item-recovery.solution-calibration.json",
+  "preflightResult": "PASS",
+  "changedQids": [
+    1,
+    10
+  ],
+  "qids": [
+    {
+      "qid": 1,
+      "independentSourceVerdict": "TRUE_ITEM_HOLD_SOURCE_AMBIGUOUS",
+      "decisiveMissingFacts": [
+        "실수 네제곱근 ±2가 모두 16의 네제곱근이다.",
+        "실수 세제곱근 중 -1의 세제곱근은 -1 하나이다."
+      ],
+      "alternateEvidenceChecked": [
+        "4쪽 source PDF 전 페이지를 렌더·열람했다.",
+        "q1 page 1 full page and high-resolution crop를 직접 확인했다.",
+        "제공된 PDF와 별도 authoritative answer key가 없다."
+      ],
+      "fullPageLookupResult": "assignment SHA에 결속된 4-page PDF의 page 1에서 q1을 확인했다.",
+      "whyTruthStillNonDeterministic": "두 수학적으로 참인 문장 중 어떤 문장이 출제자의 오기였는지 정하는 외부 근거가 없다. 부호나 숫자를 임의로 고치면 source intent 추측이다.",
+      "repairAttempted": "최소 단일 claim edit 가능성을 검토했지만, 어느 claim을 바꿀지 source로 결정할 수 없어 복구 불가로 판정했다.",
+      "replacementDecision": "QUESTION_REPLACEMENT",
+      "replacementScope": "QUESTION_ONLY",
+      "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+      "originalSourceRef": "D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf p.1; SHA256 3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f",
+      "solutionFirstCore": {
+        "derivation": "r=\\sqrt[5]{-32}는 r^5=-32를 만족하는 유일한 실수이다. (−2)^5=−32이므로 r=−2.",
+        "frozenBeforeFinalChoiceSet": true,
+        "targetClaim": "\\sqrt[5]{-32}=-2",
+        "discardedProvisionalIdeas": true,
+        "candidateStem": "실수 범위에서\n다음 중 옳은 것은? (3점)",
+        "concept": "실수의 거듭제곱근: 홀수 제곱근의 부호와 짝수 제곱근의 principal value"
+      },
+      "difficultyExposureNote": "The prior candidate level/bucket was visible during working-file inspection. The final fresh classification will not use those values as authority and is not claimed blind."
+    },
+    {
+      "qid": 10,
+      "independentSourceVerdict": "TRUE_ITEM_HOLD_MINIMALLY_REPAIRABLE",
+      "decisiveSourceFacts": [
+        "f(n)=∛(a·√(a^(n+1))이다.",
+        "직접 계산하면 f(1)f(2)/f(3)=√a이다.",
+        "현재 첫 보기는 ⁴√a로서 √a와 다르다."
+      ],
+      "alternateEvidenceChecked": [
+        "4쪽 source PDF 전 페이지를 렌더·열람했다.",
+        "q10 page 2 full page and high-resolution crop를 직접 확인했다.",
+        "제공된 PDF와 별도 authoritative answer key가 없다."
+      ],
+      "fullPageLookupResult": "assignment SHA에 결속된 4-page PDF의 page 2에서 q10을 확인했다.",
+      "minimalSourceFaithfulRepair": "첫 선택지만 ⁴√a에서 √a로 고친다. 발문과 나머지 네 선택지는 보존한다.",
+      "solutionCorrection": "계산은 유지하고, 첫 선택지와 같은 값임을 확인한 뒤 정답 ①로 결론을 바꾼다.",
+      "replacementDecision": "NONE_SOURCE_FAITHFUL_REPAIR",
+      "freshR1R2Required": true
+    }
+  ],
+  "qualityPassAsserted": false,
+  "freshAffectedR1R2Complete": false,
+  "createdUtc": "2026-10-08T13:28:53.4641574Z",
+  "sourceFirstAssessmentSha256": "114aea3830fde48a97a65c66faf6f5bc281e269c5c4e86c2746cfb8a99372e85",
+  "calibrationSha256": "63e0980f90d5c3c438ab41eb49acf3bde83d0adaf8bad28658d8dee5a0660b7d"
+}

@@ -1,0 +1,11 @@
+file:///C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/tools/archive-create-preflight.mjs:31
+  const args={};for(let i=2;i<process.argv.length;i++){const k=process.argv[i];if(!['--exam','--evidence','--root'].includes(k))throw Error('UNKNOWN_ARGUMENT:'+k);args[k.slice(2)]=process.argv[++i];}if(!args.exam)throw Error('EXAM_REQUIRED');const exam=readExam(args.exam),report=inspectCreateCandidate({questions:exam.questions,evidence:args.evidence?JSON.parse(fs.readFileSync(args.evidence)):undefined,unitMaster:loadUnitOrders(path.resolve(args.root||'.'))});console.log(JSON.stringify({...report,artifactRawSha256:sha256(exam.bytes),artifactSha:exam.rawBufferGitBlobSha1},null,2));process.exitCode=report.findings.length?1:0;
+                                                                                                                                      ^
+
+Error: UNKNOWN_ARGUMENT:--json
+    at file:///C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/tools/archive-create-preflight.mjs:31:135
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

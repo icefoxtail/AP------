@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "ROOT_SOURCE3_REGISTRATION_CANDIDATE_CHECKOUT_ATTEMPT_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "attempt": 1,
+  "status": "FAIL_RECOVERED_OPERATIONAL",
+  "command": "git clone --shared --no-checkout <git-common-dir> <worktree>/.tmp/rc3 ; git -C <candidate> checkout --detach 47dfa12159d2ffa29572139183312b1b55366706",
+  "exitCode": 1,
+  "observedOutput": [
+    "error: unable to create file .../21_매산고_1학기_기말_고1_기출/...: Filename too long",
+    "error: unable to create file .../21_매산고_1학기_기말_고1_기출/...: Filename too long",
+    "fatal: cannot create directory at .../21_매산여고_2학기_기말_고2_수학II/...: Filename too long"
+  ],
+  "repair": "Configured candidate core.longpaths=true/core.autocrlf=false, completed checkout at assigned HEAD, and copied only exact nine current registry baseline files into isolated candidate; final baseline check PASS."
+}

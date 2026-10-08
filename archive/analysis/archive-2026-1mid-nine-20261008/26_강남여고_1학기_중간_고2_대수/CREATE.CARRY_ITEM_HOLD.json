@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CARRY_ITEM_HOLD_V1",
+  "status": "CARRY_ITEM_HOLD",
+  "examUid": "26_강남여고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "firstMissingClosureStep": "R1 full-qid independent review with q1/q10 HOLD carried; continue R2 independent resolution before any R3 release",
+  "paths": {
+    "artifact": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/26_강남여고_1학기_중간_고2_대수.js",
+      "sha256": "fbf5c8c8bd831a9eec1f9822a22bad78bf0251ddc131ec110f1c930d2f1da5ee",
+      "validatorRawBufferBlobSha1": "0c1b666281cf446b9e47a6f8a03c6c8e148148e4"
+    },
+    "evidence": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/CREATE.evidence.json",
+      "sha256": "dbf4d975701b7faeb419c03eb9e4f9d09c2ecac0896a7d84f5d8a163e30e2d9c"
+    },
+    "preflight": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/CREATE.preflight.raw.json",
+      "sha256": "ba73f0d7af9494d734df9c322a57d3884a7b6c9270b67cad689e64716eea6b1d"
+    },
+    "validatorInitial": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/CREATE.generic-validator.fail-01.raw.json",
+      "sha256": "3a6e528a4af61ef23760237d3bab19c99461ec1cd91b4531bb517ca11ed16810"
+    },
+    "validatorFinal": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/CREATE.generic-validator.fail-02.raw.json",
+      "sha256": "34b84c594b052770e6dc06f7db7b540a3469c3f0d9c2d9a8d81503d4a2d7655e"
+    },
+    "source": {
+      "absolute": "D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf",
+      "sha256": "3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f"
+    },
+    "asset": {
+      "absolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고2_대수/assets/images/26_강남여고_1학기_중간_고2_대수/q19.png",
+      "sha256": "edcad8201e06a4ab6a7aa40c78f638f409c871ffefcdd7a34d2db9f7f16d95b9"
+    }
+  },
+  "source": {
+    "pageCount": 4,
+    "questionCount": 25,
+    "multipleChoiceCount": 21,
+    "subjectiveCount": 4,
+    "sha256": "3b917c45f0b81c9cf32133471a2044e5887e91b0ea409e4a6c5009bf96450b2f"
+  },
+  "asset": {
+    "ref": "assets/images/26_강남여고_1학기_중간_고2_대수/q19.png",
+    "sha256": "edcad8201e06a4ab6a7aa40c78f638f409c871ffefcdd7a34d2db9f7f16d95b9",
+    "sourcePage": 3,
+    "observed": true
+  },
+  "validator": {
+    "executionLine": "CODEX",
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "ok": false,
+    "disposition": "FAIL",
+    "validatorMode": "CREATE_V2",
+    "denominator": 25,
+    "rowCount": 25,
+    "issues": [
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q1",
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q10"
+    ],
+    "commonIssues": [],
+    "artifactIssues": [
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q1",
+      "ARTIFACT_SMALL_BOARD_CONTINUITY_REQUIRED:q10"
+    ]
+  },
+  "preflight": {
+    "status": "CARRY_ITEM_HOLD",
+    "itemHoldCount": 2,
+    "holds": [
+      {
+        "qid": 1,
+        "reason": "둘 이상의 보기가 옳아 정답 선택이 유일하지 않음"
+      },
+      {
+        "qid": 10,
+        "reason": "수식 계산 결과와 다섯 선택지가 일치하지 않음"
+      }
+    ],
+    "unitOrderFindings": []
+  },
+  "itemHolds": [
+    {
+      "qid": 1,
+      "reason": "원문 선택지 ①은 16의 실수 네제곱근 ±2로 참이고 ⑤의 -1 실수 세제곱근도 -1뿐이어서 정답이 두 개다.",
+      "decisiveMissingFacts": "원문 선택지 ①은 16의 실수 네제곱근 ±2로 참이고 ⑤의 -1 실수 세제곱근도 -1뿐이어서 정답이 두 개다.",
+      "alternateEvidenceChecked": "4쪽 전체와 해당 문항 고해상도 구간 확인; 제공된 시험지 PDF 밖의 별도 정답지 없음",
+      "fullPageLookupResult": "source D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf; 4 pages rendered/read; source page 1 inspected",
+      "repairAttempted": "정확한 본문·보기를 대수적으로 직접 확인; source correction 없이 answer guess를 피함",
+      "whyDeterministicClosureImpossible": "원문 자체의 정답 수 또는 보기 누락 결함이라 원문만으로 unique answer를 확정할 수 없음",
+      "nextRequiredEvidenceOrCapability": "R1/R2 student-only 독립 판정; root가 available authoritative key/source repair evidence를 확인하고 genuine hold recovery/ replacement path 결정"
+    },
+    {
+      "qid": 10,
+      "reason": "원문 정의로 f(1)f(2)/f(3)=√a이나 원문 다섯 선택지에 √a가 없다. 정확한 본문·보기를 보존하고 답을 임의 교정하지 않는다.",
+      "decisiveMissingFacts": "원문 정의로 f(1)f(2)/f(3)=√a이나 원문 다섯 선택지에 √a가 없다. 정확한 본문·보기를 보존하고 답을 임의 교정하지 않는다.",
+      "alternateEvidenceChecked": "4쪽 전체와 해당 문항 고해상도 구간 확인; 제공된 시험지 PDF 밖의 별도 정답지 없음",
+      "fullPageLookupResult": "source D:/2026_1학기중간_/대수/26_강남여고_1학기_중간_고2_대수.pdf; 4 pages rendered/read; source page 2 inspected",
+      "repairAttempted": "정확한 본문·보기를 대수적으로 직접 확인; source correction 없이 answer guess를 피함",
+      "whyDeterministicClosureImpossible": "원문 자체의 정답 수 또는 보기 누락 결함이라 원문만으로 unique answer를 확정할 수 없음",
+      "nextRequiredEvidenceOrCapability": "R1/R2 student-only 독립 판정; root가 available authoritative key/source repair evidence를 확인하고 genuine hold recovery/ replacement path 결정"
+    }
+  ],
+  "changedLocus": {
+    "candidateCreated": true,
+    "sourceTextChanges": [],
+    "answerCorrections": [],
+    "layoutQids": [],
+    "assetQids": [
+      19
+    ],
+    "holdQids": [
+      1,
+      10
+    ]
+  },
+  "renderStatus": "NOT_RUN_ROOT_STAGE_OWNER",
+  "actualRenderPassAsserted": false,
+  "nextRosterTarget": "26_순천고_1학기_중간_고2_대수"
+}
