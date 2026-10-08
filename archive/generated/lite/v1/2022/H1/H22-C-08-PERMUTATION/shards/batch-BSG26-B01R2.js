@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_PERMUTATION";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_H22-C-08-PERMUTATION";
 window.questionBank = [
   {
     "id": 1,
@@ -32,7 +32,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 남학생을 먼저 배열하고 여학생을 서로 다른 틈에 넣는다.\n남학생 네 명의 순서를 정하는 경우는 $4!=24$가지이다.\n남학생 사이 세 곳과 양끝 두 곳, 모두 다섯 틈 중 세 곳을 선택하는 경우는 $\\binom53=10$가지이다.\n여학생 세 명을 그 자리에 넣는 순서는 $3!=6$가지이므로 $24\\times10\\times6=1440$가지이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 2,
@@ -66,7 +69,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 양 끝의 배치와 남은 가운데 세 자리 배치를 분리한다.\n서로 다른 여학생 두 명을 양 끝에 세우는 순서는 $2!=2$가지이다.\n가운데 세 자리에 남학생 세 명을 배열하는 순서는 $3!=6$가지이다.\n전체는 $2\\times6=12$가지이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 3,
@@ -100,7 +106,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 지정 학생의 자리 번호 차이가 2임을 이용한다.\n두 자리가 될 수 있는 위치쌍은 $(1,3),(2,4),(3,5),(4,6)$의 네 가지이다.\n각 위치쌍에 $A,B$를 배치하는 순서는 2가지이며 나머지 네 명은 남은 네 자리에 $4!=24$가지로 배열된다.\n따라서 $4\\times2\\times24=192$가지이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 4,
@@ -134,7 +143,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 겹치지 않는 두 쌍을 각각 한 묶음으로 다룬다.\n$(A,B)$ 묶음, $(C,D)$ 묶음, 학생 $E,F$의 네 대상을 배열하는 경우는 $4!=24$가지이다.\n각 묶음 내부는 2가지씩 순서를 바꿀 수 있다.\n따라서 $24\\times2\\times2=96$가지이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 5,
@@ -168,7 +180,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $A$의 자리를 고정한 뒤 남은 사람들의 인접 조건을 처리한다.\n$A$를 맨 왼쪽에 세운 후 남학생 3명과 여학생 묶음 하나를 배열하면 $4!=24$가지이다.\n여학생 두 명이 묶음 안에서 서는 순서는 $2!=2$가지이다.\n따라서 $24\\times2=48$가지이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 6,
@@ -202,7 +217,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 이웃하는 여학생을 묶은 뒤 남학생의 상대적 순서를 제한한다.\n남학생 3명과 여학생 묶음 1개를 배열하는 경우는 $4!$가지이고 묶음 내부 배열은 $2!$가지이다.\n$A$가 $B$보다 왼쪽인 경우와 오른쪽인 경우는 서로 짝지을 수 있어 각각 절반이다.\n따라서 $\\dfrac{4!\\times2!}{2}=24$가지이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 7,
@@ -236,7 +254,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 전체에서 인접쌍이 전혀 없는 경우와 여학생 3명이 모두 붙는 경우를 제외한다.\n전체 배치는 $6!=720$가지이다.\n인접한 여학생 쌍이 없는 경우는 남학생 배열 $3!$, 네 틈 중 세 틈 선택 $\\binom43$, 여학생 배열 $3!$을 곱한 $144$가지이다.\n여학생 셋이 모두 붙는 경우도 네 대상의 배열과 여학생 묶음 내부 배열로 $4!\\times3!=144$가지이다.\n두 제외 사건은 서로 겹치지 않으므로 원하는 경우는 $720-144-144=432$가지이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 8,
@@ -270,7 +291,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 성별 배열의 시작을 먼저 고른다.\n남학생으로 시작하거나 여학생으로 시작하는 두 가지 성별 배열이 가능하다.\n각 성별의 세 자리를 해당 학생 세 명이 차지하는 순서는 각각 $3!=6$가지이다.\n따라서 전체 경우의 수는 $2\\times6\\times6=72$가지이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 9,
@@ -304,7 +328,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 네 자리의 순서를 구별하므로 순열을 적용한다.\n첫 자리에 설 학생은 6가지, 둘째는 5가지, 셋째는 4가지, 넷째는 3가지로 고를 수 있다.\n따라서 $6\\times5\\times4\\times3=360$가지이다.\n다른 방법으로 $\\dfrac{6!}{(6-4)!}=360$을 구해도 된다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   },
   {
     "id": 10,
@@ -338,6 +365,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 순서를 고려한 두 자리 배열의 경우의 수를 역으로 이용한다.\n첫 자리는 $n$가지, 둘째 자리는 남은 $n-1$가지이다.\n따라서 $n(n-1)=42$이고, 연속하는 자연수의 곱 $7\\times6=42$와 비교하면 $n=7$이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "sourceKind": "generated"
   }
 ];

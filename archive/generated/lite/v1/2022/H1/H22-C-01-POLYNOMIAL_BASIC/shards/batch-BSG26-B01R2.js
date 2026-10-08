@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_POLYNOMIAL";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_H22-C-01-POLYNOMIAL_BASIC";
 window.questionBank = [
   {
     "id": 1,
@@ -33,7 +33,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 세 괄호 가운데 정확히 하나에서 $y$가 포함된 항을 골라야 한다.\n첫째 괄호에서 $2y$를 고르면 계수는 2, 둘째에서 $3y$를 고르면 3, 셋째에서 $y$를 고르면 1이다.\n각 경우에는 나머지 괄호에서 $x$를 선택한다.\n따라서 구하는 계수는 $2+3+1=6$이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "sourceKind": "generated"
   },
   {
     "id": 2,
@@ -68,7 +71,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 네 괄호 중 두 괄호에서 $y$항을 골라 곱한 계수들을 합한다.\n$y$항의 계수는 차례로 $1,2,3,4$이다.\n두 계수를 선택하여 곱한 값은 $1\\cdot2,1\\cdot3,1\\cdot4,2\\cdot3,2\\cdot4,3\\cdot4$이다.\n따라서 $2+3+4+6+8+12=35$이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "sourceKind": "generated"
   },
   {
     "id": 3,
@@ -103,7 +109,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 먼저 $(x+y)(x-y)$에 곱셈공식을 적용한다.\n$(x+y)(x-y)=x^2-y^2$이다.\n여기에 $(x+2y)$를 곱하면 $x^3+2x^2y-xy^2-2y^3$이다.\n네 항은 차수가 달라 서로 동류항이 아니므로 계수가 0이 아닌 항은 4개이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "sourceKind": "generated"
   },
   {
     "id": 4,
@@ -138,7 +147,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $x^2$를 만들려면 세 괄호 중 정확히 하나에서 상수항을 고른다.\n첫 번째에서 상수 2를 고르거나, 두 번째에서 $a$를 고르거나, 세 번째에서 5를 고른다.\n따라서 $x^2$의 계수는 $2+a+5=a+7$이다.\n$a+7=12$이므로 $a=5$이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "sourceKind": "generated"
   },
   {
     "id": 5,
@@ -173,7 +185,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 세 괄호에서 각각 한 항을 고르는 모든 경우를 분리한다.\n$xyz$를 만드는 선택은 $(x,2y,z)$의 계수 2, $(y,x,z)$의 계수 1, $(z,x,y)$의 계수 1뿐이다.\n세 경우의 계수를 더하면 $2+1+1=4$이다.\n다른 선택은 필요한 문자 하나가 빠지거나 어떤 문자가 두 번 나타나므로 $xyz$가 되지 않는다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "sourceKind": "generated"
   },
   {
     "id": 6,
@@ -208,6 +223,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 부호가 반대인 두 인수씩 곱셈공식으로 묶는다.\n$(x+2)(x-2)=x^2-4$이고 $(x+3)(x-3)=x^2-9$이다.\n따라서 전체 곱은 $(x^2-4)(x^2-9)=x^4-13x^2+36$이다.\n구하는 $x^2$의 계수는 $-13$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "sourceKind": "generated"
   }
 ];
