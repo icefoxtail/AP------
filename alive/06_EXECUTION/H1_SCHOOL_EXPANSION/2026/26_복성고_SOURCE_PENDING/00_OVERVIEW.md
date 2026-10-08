@@ -1,6 +1,9 @@
-# ALIVE LITE 2026 복성고 B01 전체 재설계
+# 복성고 2026 고1 1학기 기말 ALIVE LITE — CURRENT CREATE
 
-- 최신 main을 기반으로 생성한 독립 CREATE 브랜치. 과거 B01 13개 후보는 이번 인덱스 및 생산 실적에서 제외한다.
-- 전수 스캔 23개 원본 및 adaptive 6배치 roster 승계. B01 q1,2,4,6,7,12,15 재탐색.
-- 완료 기준: 먼저 전체 의미 Blueprint 및 오개념 기반 5지·정답 위치 설계 저장, 다음 CREATE 후 Git readback.
-- REVIEW / main / DB 모두 별도.
+- main 원본 JS: `archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js` (`8266fa476906e9134b94f23e803bd3b2fb26ece4`)
+- 원본 23, 적응형 계획 6배치.
+- **B01 재설계:** 전체 Blueprint 65 / ACCEPT 45 / 6개 원본 신규 45 / q15 RPM 의미 분류 HOLD 6.
+- B01R2 신규 shard/metadata 및 L2 manifests 6개, UID index `archive/data/generated-lite/bokseong-2026-1final-create-index-v2.json`.
+- 이전 B01의 13개 후보는 현 브랜치에 반입하지 않았으며 계산에 포함하지 않음.
+- 45문항 모두 `CREATE_CANDIDATE`, 독립 REVIEW·main 출고·DB 등록 0.
+- 다음 B02 (q3·q5·q8·q10·q11), 사용자 다음 지시 대기.

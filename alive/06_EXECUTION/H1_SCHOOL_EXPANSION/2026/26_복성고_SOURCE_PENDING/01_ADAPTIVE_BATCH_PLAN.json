@@ -57,7 +57,23 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "REDESIGN_IN_PROGRESS"
+      "status": "CREATE_CLOSED_WITH_META_HOLD_REVIEW_PENDING",
+      "generatedCandidateCount": 45,
+      "blueprintExploredCount": 65,
+      "acceptedBlueprintCount": 45,
+      "sourceExpansionDoneQids": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        12
+      ],
+      "sourceHoldQids": [
+        15
+      ],
+      "receipt": "B01R2_CREATE_RECEIPT.json",
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-create-index-v2.json"
     },
     {
       "id": "B02",
@@ -170,7 +186,7 @@
       "status": "PLANNED"
     }
   ],
-  "nextBatchId": "B01",
+  "nextBatchId": "B02",
   "qualityStatus": "PLANNING_ONLY",
   "generatedCount": 0,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone"
