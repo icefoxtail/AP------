@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "ALIVE_LITE_L3_EXTENSION_CANDIDATES_v0.1",
+  "status": "GRANULARITY_PROPOSAL_ONLY",
+  "curriculum": "2022",
+  "course": "공통수학1",
+  "targetL2": "H22-C-08-COUNTING_PRINCIPLE",
+  "candidateCount": 2,
+  "candidates": [
+    {
+      "candidateL3Id": "EXT-H1-C08-L3-DIGIT-CONSTRUCTION",
+      "label": "배수·나머지 제약을 갖는 자리수 구성",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "closestCanonicalL3": "합·곱의 법칙",
+      "closestCanonicalL4": [
+        "경우를 나누어 세기",
+        "단계별 선택"
+      ],
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "definingDecisiveStep": "자릿수마다 선택을 분할한 뒤 배수·나머지 조건으로 가능한 문자열/수를 센다.",
+      "argumentForNewL3": "반복 허용 자릿수 생성과 합동조건을 동시에 다루는 문제군은 별도 교육적 분류가 유용할 수 있음.",
+      "argumentAgainstNewL3": "기존 합·곱의 법칙 L3로 핵심 풀이가 충분히 설명될 가능성이 높음. 우선 신규 L4/Condition 여부 심사.",
+      "sourceSeedQids": [
+        15
+      ],
+      "exampleUids": [],
+      "sourceVisualStatus": "TEXT_ONLY",
+      "reviewStatus": "L3_GRANULARITY_REVIEW_REQUIRED",
+      "course": "공통수학1",
+      "curriculum": "2022",
+      "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "independentMathReview": "NOT_TESTED",
+      "semanticReview": "NOT_TESTED",
+      "candidateOnly": true
+    },
+    {
+      "candidateL3Id": "EXT-H1-C08-L3-ADJACENCY-COLOR",
+      "label": "인접 영역 조건에 따른 색칠 경우의 수",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "closestCanonicalL3": "합·곱의 법칙",
+      "closestCanonicalL4": [
+        "경우를 나누어 세기",
+        "단계별 선택"
+      ],
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "definingDecisiveStep": "색칠 순서를 고른 뒤 인접 영역에서 금지된 색과 독립적으로 반복 가능한 색의 수를 구분한다.",
+      "argumentForNewL3": "인접 관계에서 선택 가능 수가 달라지는 구조가 반복 출제된다면 별도 L3 분류 검토 가능.",
+      "argumentAgainstNewL3": "기존 합·곱의 법칙으로 계산 가능하고, 조합의 활용/조건 패턴일 가능성 있음. 원본 그림을 직접 읽기 전 의미 확정 불가.",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "sourceVisualStatus": "SOURCE_VISUAL_UNREAD",
+      "reviewStatus": "BLOCKED_SOURCE_VISUAL_THEN_L3_GRANULARITY_REVIEW",
+      "course": "공통수학1",
+      "curriculum": "2022",
+      "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "independentMathReview": "NOT_TESTED",
+      "semanticReview": "NOT_TESTED",
+      "candidateOnly": true
+    }
+  ],
+  "canonicalRPMModified": false,
+  "note": "Any exact canonical RPM L3 reuse takes precedence; labels only, not approved taxonomy"
+}
