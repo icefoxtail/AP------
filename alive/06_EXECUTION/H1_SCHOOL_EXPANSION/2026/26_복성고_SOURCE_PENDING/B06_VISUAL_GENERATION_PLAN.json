@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "B06_VISUAL_GENERATION_PLAN_v1",
+  "phase": "B_DESIGN_ONLY",
+  "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceAssets": {
+    "q18": "d38aa7951dae6a72fa1b28e5162f5a428d2b3ae7",
+    "q19": "82353d1ab013d6aa1798c19513661836b74dd94a"
+  },
+  "sourceQids": [
+    18,
+    19
+  ],
+  "problemVisualRequirement": "REQUIRED",
+  "baselinePolicy": "Reuse original only when geometry/adjacency unchanged, record exact source asset SHA",
+  "newVisualPlans": [
+    {
+      "blueprintId": "BSG26-B06-Q18-SURFACE_DIFFERENCE",
+      "qid": 18,
+      "visualMode": "MINIMAL_DIFFERENCE_FACES",
+      "prerequisite": null,
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-INDEPENDENT_PRISM_SIDE",
+      "qid": 18,
+      "visualMode": "NEW_GEOMETRY_REQUIRED",
+      "prerequisite": "NEW_PROBLEM_IMAGE_SQUARE_PRISM_THROUGH_HOLE",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-BLIND_CUBIC_CAVITY",
+      "qid": 18,
+      "visualMode": "NEW_GEOMETRY_REQUIRED",
+      "prerequisite": "NEW_DIAGRAM_BLIND_CAVITY_WITH_FLOOR_AND_DEPTH_LT_HEIGHT",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-TWO_SEPARATE_TUNNELS",
+      "qid": 18,
+      "visualMode": "NEW_GEOMETRY_REQUIRED",
+      "prerequisite": "NONOVERLAPPING_TUNNEL_PLACEMENT_AND_CIRCLE_FIT_VISUAL_EVIDENCE",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CIRCULAR_TUNNEL",
+      "qid": 18,
+      "visualMode": "NEW_GEOMETRY_REQUIRED",
+      "prerequisite": "CIRCULAR_THROUGH_BORE_DIAGRAM_R_LT_A",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-COMPARE_TWO_HOLE_SIZES",
+      "qid": 18,
+      "visualMode": "TWO_CASE_COMPARATIVE_PANEL",
+      "prerequisite": "TWO_INDEPENDENT_NONOVERLAPPING_DIAGRAMS_DIFFERENT_PRISM_SIZE",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-ADD_BD_EDGE",
+      "qid": 19,
+      "visualMode": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "prerequisite": "NEW_IMAGE_EDGE_LIST_INCLUDES_BD; source image cannot be reused",
+      "renderStatus": "NOT_RUN"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-REMOVE_AC_EDGE",
+      "qid": 19,
+      "visualMode": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "prerequisite": "NEW_IMAGE_EDGE_LIST_EXCLUDES_AC; exact region topology must be explicitly reconstructed",
+      "renderStatus": "NOT_RUN"
+    }
+  ],
+  "mathFacts": "B06_SOURCE_VISUAL_AUDIT.json",
+  "sourceExistingSolutionVisualWarning": "q18-solution.svg is unrelated number line, not attached to original q18; never reuse",
+  "generatedSVGCount": 0,
+  "renderedCount": 0,
+  "independentVisualReview": "NOT_TESTED"
+}
