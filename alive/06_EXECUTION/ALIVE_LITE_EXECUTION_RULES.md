@@ -1,5 +1,11 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT FINAL-CLOSURE OVERRIDE — REVIEW가 Consumer DB까지 마감 (2026-10-08)
+- REVIEW+MAIN 담당자는 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 읽는다. 독립 검수 → 정답 위치/5지 오개념 검수 → 필요 핀포인트 수리 → 승인 UID 확정 → Generated Consumer 등록·학생용 실제 검색/조회/선택 → main push·readback까지 한 채팅이 책임진다.
+- `generated UID main 저장` ≠ `consumer DB 등록` ≠ `student supply verified`. ALITE UID를 기존 original qid_v1 UID로 강제 변환하지 않는다. Consumer adapter 미지원 시 기술 구현/검증을 닫기 전 DONE 선언 금지.
+- 효천고 94 후보/기존 92 기록은 ③ 편중 규칙 도입 전 snapshot. answer-position repair branch 수정은 별도 independent review 전까지 소비 불가. 최종 approved와 HOLD를 재확정한 뒤 등록.
+
+
 상위: `alive/05_DESIGN/ALIVE_GPT_LITE_GENERATION_FIRST_EXECUTION_v0.6.md`, `ALIVE_GPT_LITE_MASS_EXPANSION_WORKER_CONTRACT_v0.3.md`, `ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md`, `ALIVE_GPT_LITE_GRAPH_SVG_TWO_PASS_OPERATION_v0.1.md`.
 
 ## 최소 실행
