@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "ALIVE_LITE_B04_BLUEPRINT_v1",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "batch": "B04",
+  "sourceQids": [
+    17,
+    20,
+    23
+  ],
+  "analysis": [
+    {
+      "qid": 17,
+      "L2": "H22-C-09",
+      "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+      "L3": "행렬의 거듭제곱과 연산",
+      "decisive": "A=I+N,N²=O → A^k=I+kN",
+      "blueprints": [
+        "거듭제곱의 성분합",
+        "거듭제곱 지수 역추론",
+        "짝수 거듭제곱 합",
+        "거듭제곱 곱과 성분"
+      ]
+    },
+    {
+      "qid": 20,
+      "L2": "H22-C-09",
+      "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+      "L3": "행렬 곱의 성분 비교",
+      "decisive": "AB=CA의 대응성분 → B+C와 합 조건",
+      "blueprints": [
+        "C의 모든 성분합",
+        "C 특정 성분",
+        "B 특정 성분"
+      ]
+    },
+    {
+      "qid": 23,
+      "L2": "H22-C-09",
+      "subUnitKey": "H22-C-09-MATRIX_APPLICATION",
+      "L3": "행렬로 이동경로 세기",
+      "decisive": "A^n의 (i,j)성분=길이 n 경로 개수",
+      "blueprints": [
+        "3회 이동 총경로",
+        "2회 이동 총경로",
+        "고정 출발·도착 경로",
+        "출발지 귀환 경로"
+      ]
+    }
+  ],
+  "status": "BLUEPRINT_COMPLETE_PENDING_C_D",
+  "notes": "Source q17/q20/q23 incorrectly have H22-C-09-CORE / 경우의 수 핵심 개념. Do not reuse. No new RPM canonical or new L3/L4 approved."
+}
