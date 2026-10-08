@@ -1,0 +1,31 @@
+name: B06 Actual Archive Engine Visual Review
+on:
+  push:
+    branches: [review/alive-lite-bokseong-b06-independent-20261008]
+    paths: ['.github/workflows/b06-actual-engine-visual-review.yml']
+permissions:
+  contents: read
+jobs:
+  actual-archive-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Inspect 25 actual exam and solution questions including original PNG and SVG images
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          B06_CAPTURE_DIR: ${{ runner.temp }}/b06-engine
+        run: node tools/check-b06-actual-engine-review.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: b06-actual-engine-render-captures
+          path: ${{ runner.temp }}/b06-engine/
+          if-no-files-found: warn
