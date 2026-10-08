@@ -21,7 +21,7 @@
     "ALITE-BSG26-B05R2-Q22-S10"
   ],
   "answerPositionRepairBranch": "1a8c7b6776c3a956aa12d82b3261b8ecc3035207",
-  "consumerStatus": "STATIC_REGISTERED_165_B04_B05_35_CHROME_PENDING",
+  "consumerStatus": "STATIC_REGISTERED_165_ACTUAL_CHROME_B04_B05_35_LOOKUP_PASS",
   "records": [
     {
       "uid": "ALITE-20261008-HYC26-Q05-001",
@@ -3399,7 +3399,7 @@
       "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
       "reviewApprovedCount": 26,
       "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B04_B05_APPROVED35_OPERATING_RELEASE_20261008.json",
-      "registrationStatus": "USER_DIRECTED_OPERATING_RELEASE_REAL_CHROME_PENDING",
+      "registrationStatus": "STATIC_REGISTERED_ACTUAL_CHROME_STUDENT_LOOKUP_PASS_USER_DIRECTED",
       "consumerShardCount": 4,
       "consumerShardGitSha": [
         {
@@ -3419,8 +3419,8 @@
           "gitBlobSha": "c196b7e77f679d1eeebdf687176ae9738330c4a6"
         }
       ],
-      "studentLookupVerifiedCount": 0,
-      "browserProofRun": null,
+      "studentLookupVerifiedCount": 26,
+      "browserProofRun": "https://github.com/icefoxtail/AP------/actions/runs/37776787178",
       "cleanBlindIndependentPass": false
     },
     {
@@ -3430,7 +3430,7 @@
       "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
       "reviewApprovedCount": 9,
       "reviewApprovalReceipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B04_B05_APPROVED35_OPERATING_RELEASE_20261008.json",
-      "registrationStatus": "USER_DIRECTED_OPERATING_RELEASE_REAL_CHROME_PENDING",
+      "registrationStatus": "STATIC_REGISTERED_ACTUAL_CHROME_STUDENT_LOOKUP_PASS_USER_DIRECTED",
       "consumerShardCount": 1,
       "consumerShardGitSha": [
         {
@@ -3438,8 +3438,8 @@
           "gitBlobSha": "1da0d60182d272e6f26d512e2f0bac49c634d874"
         }
       ],
-      "studentLookupVerifiedCount": 0,
-      "browserProofRun": null,
+      "studentLookupVerifiedCount": 9,
+      "browserProofRun": "https://github.com/icefoxtail/AP------/actions/runs/37776787178",
       "cleanBlindIndependentPass": false
     }
   ],
@@ -3456,5 +3456,21 @@
     "holdExcluded": "PASS",
     "existingHyocheon92": "PASS",
     "deployedStudentAccount": "NOT_TESTED"
+  },
+  "actualChromeBrowserEvidenceByBatch": {
+    "B04R2_B05R2_Q21": {
+      "testedGitHead": "9e37d746f4f2f0cd5a566e399cc511594a5659ce",
+      "workflowUrl": "https://github.com/icefoxtail/AP------/actions/runs/37776787178",
+      "registeredTotal": 165,
+      "newB04LookupVerified": 26,
+      "newB05LookupVerified": 9,
+      "newStudentLookupVerified": 35,
+      "studentTable": "PASS",
+      "subjectivePreviewSelection": "PASS",
+      "q22Hold10Excluded": "PASS",
+      "runtimeGuard": "https://github.com/icefoxtail/AP------/actions/runs/37776787179",
+      "deployedStudentAccount": "NOT_TESTED",
+      "cleanBlindMathReview": "NOT_CERTIFIED"
+    }
   }
 }
