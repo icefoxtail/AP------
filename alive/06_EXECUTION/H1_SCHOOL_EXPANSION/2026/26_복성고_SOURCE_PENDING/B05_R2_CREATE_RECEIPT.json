@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "ALIVE_LITE_BATCH_CREATE_RECEIPT_R2",
+  "batchId": "B05",
+  "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "blueprintAccepted": 19,
+  "blueprintRejected": 3,
+  "uidCount": 19,
+  "byQid": {
+    "21": 9,
+    "22": 10
+  },
+  "sourceStates": [
+    {
+      "qid": 21,
+      "status": "SOURCE_EXPANSION_DONE_BOUNDED",
+      "produced": 9
+    },
+    {
+      "qid": 22,
+      "status": "SOURCE_EXPANSION_DONE_BOUNDED_META_SEMANTIC_REVIEW",
+      "produced": 10
+    }
+  ],
+  "metaReviewDebt": [
+    {
+      "sourceQid": 22,
+      "category": "RPM_EXACT_L3_L4_GAP",
+      "proposal": "절댓값을 포함한 연립부등식 → 공통 정수해·매개변수",
+      "note": "Cannot reuse 연립일차부등식 exact RPM-179 due to quadratic inequality; not 절대부등식 AMGM."
+    }
+  ],
+  "independentReview": "NOT_TESTED",
+  "consumerDbRegistered": 0,
+  "mainPublished": false,
+  "oldCandidates": "SUPERSEDED_DO_NOT_PUBLISH",
+  "oldCandidateCount": 8
+}
