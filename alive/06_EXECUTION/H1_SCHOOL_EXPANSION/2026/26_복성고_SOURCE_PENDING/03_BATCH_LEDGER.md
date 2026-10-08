@@ -25,3 +25,13 @@
 - CREATE 후보 45 UID / L2 6개 **Git remote readback verified** against artifact commit `c8d990bab2bafae539a9e5de6d24b4616adcf129`.
 - 인덱스 blob `fb1b1d8a9d851320a254266c09494fd544eabd35`.
 - 기존 효천고 승인 manifest 8개 UID 유지. 이 CREATE의 새 UID는 검수 승인 0.
+
+## 2026-10-08 L3/L4 expansion discovery (CREATE sidecar, not canonical)
+
+- B01R2 45 generated UIDs remain CREATE_CANDIDATE; mathematical blind REVIEW 0 and main publication 0.
+- New L4 discovery proposals **33**: 30 backed by at least one existing B01R2 generated UID, 3 source-only q15 digit-counting proposals.
+- New L3 granularity proposals **3**: q15 digit constraints, q19 adjacency-coloring (SOURCE_VISUAL_UNREAD), q23 matrix path transitions. All unapproved; many may reduce to existing RPM L3 + new L4 or only Condition.
+- Existing semantic q15 fallback found: RPM H1-RPM-186/187, L3 합·곱의 법칙 at H22-C-07-CORE. Target original L2 H22-C-08-COUNTING_PRINCIPLE preserved.
+- Authoritative work doc: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md; registry source: archive/generated/lite/v1/2022/H1/<targetL2>/extension-l3 or extension-l4.
+- New global index: archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json. Candidate registry != RPM canonical approval; REVIEW required.
+- B02 and later MUST run RPM-first + EXT gap classification **before** producing problems; source q15 remains taxonomy resolution queue, not forced to an invented L3.
