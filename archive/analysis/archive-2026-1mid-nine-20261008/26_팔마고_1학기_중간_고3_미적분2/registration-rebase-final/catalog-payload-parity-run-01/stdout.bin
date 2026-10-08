@@ -1,0 +1,38 @@
+{
+  "status": "PASS_CANONICAL_HEADER_REPAIR_WITH_APPLIED_INPUT_BINDINGS",
+  "checks": {
+    "targetSourceHashMatchesCleanLf": true,
+    "targetCoverage22": true,
+    "targetCatalogRowsCurrentCanonical": true,
+    "targetRowsMatchPackage": true,
+    "nonTarget13010DeepParity": true,
+    "allDecodedRecordsCanonical": true,
+    "indexVersionOnlyDecodedHeaderDrift": true,
+    "packingColumnDictionaryParity": true,
+    "identityTarget22AndNonTargetParity": true,
+    "metadataTarget22AndNonTargetParity": true,
+    "manifestExpectedThreeInputDiffs": true,
+    "manifestOnlyAllowedTopLevelDiffs": true,
+    "mainManifestBindsCurrentInputs": true,
+    "candidateManifestBindsCandidateInputs": true,
+    "currentAndCandidateChangedInputHashesBound": true
+  },
+  "decodedTopLevelDifferences": [
+    "indexVersion"
+  ],
+  "manifestTopLevelDifferences": [
+    "generatedFromCatalogIndexVersion",
+    "projectionVersion",
+    "files"
+  ],
+  "manifestDiffPaths": [
+    "data/archive2-catalog.json",
+    "data/question_identity_map.json",
+    "data/question_metadata.json"
+  ],
+  "packedTopLevelDifferences": [
+    "indexVersion"
+  ],
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-rebase-final\\catalog-payload-parity.final.json",
+  "reportSha256": "daf23eb1b76ed724c50e2427c1da2fe3366052c97334a3ab8150bfa762855cc1"
+}
