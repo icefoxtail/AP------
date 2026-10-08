@@ -42,3 +42,12 @@ CURRENT(2026-10-08): 복성고 Consumer DB 73 UID(B03 38+B04 26+B05 q21 9), 실�
 - 독립 A1 freeze → A2 비교 25/25, 23/23 객관식 유일답. 발문 Markdown 10건, q19 S01/S15의 원본 동일문형 문제 수리 2건, S03 RPM 주개념 재결속 1건. 정답 위치 ①1·②9·③7·④3·⑤3. SVG 7개/원본 PNG 픽셀 보존 SVG 2개 검증.
 - 기존 원본 복성고 JS blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 보존, RPM canonical 수정 없음. 남은 별개 q22 HOLD 10 및 과거 q15 분류 관련 부채는 B06 승인에 포함하지 않음.
 - 상태: **B06 25 REVIEW_PASS / Consumer 등록 25 / Chrome 조회 25 / MAIN_DONE**. 배포 로그인 학생계정 별도 NOT_TESTED.
+
+
+## 2026-10-08 — B05 q22 10 UID RPM/H1 ACTIVE 의미 분류 재판정 (CURRENT META CORRECTION)
+- 전 대상: `ALITE-BSG26-B05R2-Q22-S01`~`S10`, 원본 2026 복성고 고1 1학기 기말 q22, 기존 original blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 보존.
+- 기존 사유 `EXACT_COMBINED_ABS_QUAD_RPM_MISSING`은 과잉 HOLD로 재판정했다. 기존 RPM L3/L4를 실제 주된 풀이에 따라 **8문항 H1-RPM-185 부등식의 활용/계수 조건, 1문항 S06 H1-RPM-184 부등식의 활용/최대·최소, 1문항 S07 H1-RPM-181 이차부등식/근의 위치와 해**로 수리했다.
+- 10문항 target L2 `H22-C-06-SYSTEM` 유지. 이전/다른 L2 RPM semantic을 같은 학년 선수 범위에서 재사용하고 `rpmSemanticSourceScope`에 명시. 절댓값 부등식, 이차부등식, 정수해 교집합은 CrossConcept/Condition 증거로 보존. `연립일차부등식`이나 AM-GM 의미상 허위 대응 없음.
+- Foundation target `H22-C-06-SYSTEM` 정확 ACTIVE PT binding 검증: S01~05,S06,S08~10 `PT_H1_INEQUALITY_APPLICATION`; S07 `PT_H1_QUADRATIC_INEQUALITY`. template 없음인 9문항은 `templateNullReason`과 비차단 projection 상태 보존. RPM LOCKED·ACTIVE canonical 직접 수정 0.
+- 수학 정수해 조합 직접 열거·계산값 비교 10/10 MATCH (기존 정답이 이미 보였으므로 formal clean blind PASS는 **주장하지 않음**). 본 수정은 10 UID metadata + manifest, source candidate shard 원형 보존, 증거 `B05_Q22_EXISTING_RPM_SEMANTIC_REBIND_20261008.json`에 결속.
+- **META CLASSIFICATION HOLD: RESOLVED 10/10**. 그러나 학생 Consumer 기존 excludedHold 10 UID는 독립 REVIEW·학생용 등록·실제 조회가 끝나기 전까지 안전하게 유지한다. 운영 MAIN_DONE 또는 10 UID 학생 공급 완료라는 뜻이 아니다.
