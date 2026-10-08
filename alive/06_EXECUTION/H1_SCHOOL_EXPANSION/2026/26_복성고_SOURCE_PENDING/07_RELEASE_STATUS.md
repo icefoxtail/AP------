@@ -1,5 +1,12 @@
 # 복성고 release
 
+## CURRENT — B02 q11 9문항 출시 완료 (2026-10-09)
+- **PR #348** main 운영병합 `a909d370cef7b12228108f974d90e41fd63ecc88`; 학생 발문·보기·정답·해설 보존, 기존 수학 독립검수 A1/A2 **9/9 MATCH**.
+- RPM **기존 유형 3문항**(A03·A06 → H1-RPM-184, A09 → H1-RPM-185)과 **Generated 전용 확장 유형 6문항**(EXT-H1-BSG26-ABS-PIECEWISE-L3)을 독립 구분·승인. RPM LOCKED 정본/원본 JS Git blob 변경 없음.
+- **신규 학생용 등록 9/9**, B02 총 38/38, 복성고 181, 효천고 92, Generated Bank 273문항. 기존 HOLD 12문항만 계속 제외. 중복 UID 없음.
+- [main Generated Consumer 실제 Chrome](https://github.com/icefoxtail/AP------/actions/runs/37818846039) PASS; [main Archive2 Runtime Guard](https://github.com/icefoxtail/AP------/actions/runs/37818846095) PASS; PR 단계 16/16 회귀검사 PASS. 실제 로그인 학생계정 배포 검증 별도 NOT_TESTED.
+- 완료 근거 `B02_Q11_REVIEW_CONSUMER_CLOSEOUT_20261009.json`. 이전 q11 HOLD 및 REVIEW 문구는 모두 역사 스냅샷이며 현행 등록 분모에 적용하지 않는다.
+
 ## CURRENT — 2026-10-09 B01·B02 83/83 독립 수학 REVIEW → 74 UID Consumer main 운영 완료
 - 원본 2026 복성고 고1 1학기 기말 23문항, original Git blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 불변.
 - B01 45 + B02 38 = 83 UID 학생용 발문·보기만 읽고 독립 풀이 A1을 각각 물리 동결(커밋 `8c0fcc32` / `035d9d07`)한 후 A2 저장 answer/solution 비교 83/83 일치, MATH mismatch 0.
