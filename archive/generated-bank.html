@@ -15,7 +15,7 @@ button{cursor:pointer;padding:10px 15px;border:1px solid #7489a4;border-radius:7
 #items{max-height:650px;overflow:auto}.item{display:flex;gap:10px;align-items:center;border-bottom:1px solid #e8edf2;padding:12px 0}.item label{flex:1;min-width:0}.item button{padding:6px 10px;font-size:13px}
 #detail{min-height:260px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75}.choice{padding:6px 0}.item small{color:#596d83}
 img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain;border:1px solid #dce3ec;margin:12px 0}
-#message{padding:10px 0;font-size:14px}.answer{margin-top:14px;padding-top:12px;border-top:1px solid #e5eaf0;white-space:pre-wrap}
+#message{padding:10px 0;font-size:14px}.question-table-wrap{max-width:100%;overflow-x:auto;margin:8px 0}.question-table{border-collapse:collapse;white-space:normal;font-size:13px}.question-table th,.question-table td{border:1px solid #9eabb9;padding:4px 7px;text-align:center}.answer{margin-top:14px;padding-top:12px;border-top:1px solid #e5eaf0;white-space:pre-wrap}
 #paper{display:none}.paper-question{margin-bottom:24px;break-inside:avoid;line-height:1.7;white-space:pre-wrap}
 @media(max-width:750px){.panels{grid-template-columns:1fr}.controls input,.controls select{min-width:130px}}
 @media print{header,.controls,#message,.panels,.no-print{display:none!important}main{max-width:none;margin:0;padding:0}#paper{display:block!important}#paper h1{font-size:19px}.paper-question{page-break-inside:avoid}body{background:white}}
@@ -52,17 +52,44 @@ async function questionFor(row){
  const data=await cache.get(row.shard);
  if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_SHARD_V1"||!Array.isArray(data.records))throw Error("문항 등록 스키마 오류");
  const matches=data.records.filter(r=>r.generatedUid===row.uid&&r.localOrdinal===row.localOrdinal);
- if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices)||matches[0].question.choices.length!==5)throw Error("문항 UID/보기 결속 오류");
- return matches[0].question;
+ if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices))throw Error("문항 UID/보기 결속 오류");
+ const question=matches[0].question;
+ const objective=question.questionType==="객관식"&&question.choices.length===5&&positions.includes(question.answer);
+ const subjective=["서술형","단답형","주관식"].includes(question.questionType)&&question.choices.length===0&&String(question.answer||"").trim()!=="";
+ if(!objective&&!subjective)throw Error("문항 형식/보기/정답 결속 오류");
+ return question;
 }
 function figure(parent,q){
  if(!q.image)return;
  if(!/^assets\/generated-lite\/ALITE-[A-Za-z0-9-]+\.svg$/.test(q.image))throw Error("승인 자산 경로 오류");
  const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";parent.appendChild(img);
 }
+function questionStem(parent,value){
+ const raw=String(value??""),container=document.createElement("div");container.className="stem";
+ const pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
+ let cursor=0,match;
+ while((match=pattern.exec(raw))!==null){
+  const inside=match[1],rows=[...inside.matchAll(/<tr>([\s\S]*?)<\/tr>/g)];
+  const outside=inside.replace(/<\/?(?:thead|tbody)>/g,"").replace(/<tr>[\s\S]*?<\/tr>/g,"").trim();
+  if(!rows.length||outside)continue;
+  const grid=rows.map(row=>{
+   const cells=[...row[1].matchAll(/<(th|td)>([^<>]*)<\/\1>/g)];
+   const rest=row[1].replace(/<(?:th|td)>[^<>]*<\/(?:th|td)>/g,"").trim();
+   return cells.length&&!rest?cells.map(c=>({tag:c[1],label:c[2]})):null;
+  });
+  if(grid.some(cells=>!cells))continue;
+  if(match.index>cursor)text(container,raw.slice(cursor,match.index),"span");
+  const wrap=document.createElement("div");wrap.className="question-table-wrap";
+  const table=document.createElement("table");table.className="question-table";
+  for(const cells of grid){const tr=document.createElement("tr");for(const cell of cells)text(tr,cell.label,cell.tag);table.appendChild(tr);}
+  wrap.appendChild(table);container.appendChild(wrap);cursor=pattern.lastIndex;
+ }
+ if(cursor<raw.length)text(container,raw.slice(cursor),"span");
+ parent.appendChild(container);
+}
 function questionMarkup(parent,q,row,answers=false){
  text(parent,row.school+" · 원본 "+row.sourceQid+"번 파생 · "+row.l2,"div","muted");
- text(parent,q.content,"div","stem");figure(parent,q);
+ questionStem(parent,q.content);figure(parent,q);
  q.choices.forEach((c,i)=>text(parent,positions[i]+" "+c,"div","choice"));
  if(answers){text(parent,"정답: "+q.answer+"\n"+(q.solution||""),"div","answer");}
 }
