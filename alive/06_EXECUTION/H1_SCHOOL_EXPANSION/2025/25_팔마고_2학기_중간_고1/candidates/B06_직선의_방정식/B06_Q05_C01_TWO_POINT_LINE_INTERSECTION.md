@@ -34,17 +34,11 @@ Source-qid close: SOURCE_EXPANSION_DONE for the examined line-equation and direc
 
 ## Exact answer and detailed student solution
 
-$P=\left(\dfrac43,\dfrac53\right)$, choice ④.
+**정답 ④** \(P=\left(\dfrac43,\dfrac53\right)\)
 
-The slope of $\ell$ is
-\[
-\dfrac{-1-5}{4-(-2)}=-1.
-\]
-Using $A(-2,5)$,
-\[
-y-5=-(x+2),\qquad x+y=3.
-\]
-Solve this with $2x-y=1$. Adding the equations gives $3x=4$, so $x=\dfrac43$. Then $y=3-\dfrac43=\dfrac53$. Thus $P=(\dfrac43,\dfrac53)$.
+두 점 \(A(-2,5)\), \(B(4,-1)\)을 지나는 직선 \(\ell\)의 기울기는 \(\dfrac{-1-5}{4-(-2)}=-1\)이다. 따라서
+\[y-5=-(x+2)\iff x+y=3.\]
+이를 \(m:2x-y=1\)과 연립하면 \(3x=4\), 즉 \(x=\dfrac43\)이다. \(y=3-\dfrac43=\dfrac53\)이므로 교점은 \(P=\left(\dfrac43,\dfrac53\right)\)이다. 정답은 ④이다.
 
 ## Meta and curriculum proposal
 
