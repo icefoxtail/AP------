@@ -1,13 +1,13 @@
 {
   "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
-  "status": "B03_PRODUCED_CANDIDATE_REGISTRY_REVIEW_PENDING",
+  "status": "B06_DESIGN_PROPOSALS_APPENDED_PRESERVE_PRIOR_14",
   "curriculum": "2022",
   "course": "공통수학1",
   "l1": "H22-C-08",
   "l2": "H22-C-08-COUNTING_PRINCIPLE",
   "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
   "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "candidateCount": 14,
+  "candidateCount": 22,
   "candidates": [
     {
       "candidateL4Id": "EXT-H1-C08-DIST-MANDATORY-PICK",
@@ -423,11 +423,261 @@
       "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
       "exampleUidCount": 1,
       "semanticNoveltyStatus": "L4_VS_CONDITION_PATTERN_REVIEW_PENDING"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-B_FORBID_COLOR",
+      "label": "B에서만 빨강 금지·A/C가 빨강인 경우 분기",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "A/C 중 빨강 포함 여부로 경우 나눔 → (k−1)²(k−2)²",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 400,
+        "target": "400"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-BD_FORBID_COLOR",
+      "label": "B와 D 모두 빨강 금지·A/C 경우 나누기",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "A/C 중 빨강 포함 여부에 따라 (k−2) 또는 (k−3) 선택",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 340,
+        "target": "340"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-EXACT_ONE_BD_RED",
+      "label": "비인접 B,D 중 정확히 한 영역만 빨강",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "빨강 위치 2가지 × A/C 비빨강 서로 다르게 × 나머지 비빨강 선택",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 120,
+        "target": "120"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-RED_EXACT_ONCE",
+      "label": "지정된 색 빨강이 전체 네 영역 중 정확히 한 번 등장",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "빨강이 A/C인 경우 또는 B/D 단독인 경우로 분리, 중복 배제",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 280,
+        "target": "280"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-RED_AT_LEAST_ONCE",
+      "label": "지정된 색이 한 번 이상 등장",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "전체 색칠 수 − 그 색을 전혀 쓰지 않는 (k−1)-색 칠하기",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 300,
+        "target": "300"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-OVERLAP_PALETTES",
+      "label": "A/C 서로 겹치는 허용 색 집합에서 같은 색 제외",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "허용 순서쌍 |T||U|−|T∩U|, B/D는 각각 k−2",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "T": [
+          0,
+          1,
+          2
+        ],
+        "U": [
+          1,
+          2,
+          3
+        ],
+        "count": 112,
+        "target": "112"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-ADD_BD_EDGE",
+      "label": "B-D 경계선을 새로 추가한 그림으로 색칠 비교",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "새 그래프 K4: B,D도 서로 다른 색 필수, k(k−1)(k−2)(k−3)",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 360,
+        "target": "360"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "NEW_IMAGE_EDGE_LIST_INCLUDES_BD; source image cannot be reused"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q19-REMOVE_AC_EDGE",
+      "label": "A-C 경계선을 제거한 그림으로 색칠 분기",
+      "parentRPMPrimaryL3": "합·곱의 법칙",
+      "proposedParentRPM": "H1-RPM-187",
+      "closestCanonicalL4": "단계별 선택",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-186",
+        "H1-RPM-187"
+      ],
+      "semanticSourceScope": "H22-C-07-CORE",
+      "proposedTargetL2": "H22-C-08-COUNTING_PRINCIPLE",
+      "definingDecisiveStep": "A=C인 경우 k(k−1)² + A≠C인 경우 k(k−1)(k−2)²",
+      "sourceSeedQids": [
+        19
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "k": 6,
+        "count": 630,
+        "target": "630"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "NEW_IMAGE_EDGE_LIST_EXCLUDES_AC; exact region topology must be explicitly reconstructed"
     }
   ],
-  "reviewStatus": "NOT_REVIEWED",
+  "reviewStatus": "DISCOVERED_UNREVIEWED",
   "canonicalRPMModified": false,
-  "note": "q15 generated UID=0; H22-C-07 earlier same-grade RPM semantic reuse is a proposal, not finalized classification.",
+  "note": "Preserved 14 existing candidates; appended 8 B06 q19 design-only proposals (no UID); prior-scope RPM H1-RPM-187 is primary semantic L3.",
   "canonicalPromoted": false,
   "consumerSelectable": false
 }

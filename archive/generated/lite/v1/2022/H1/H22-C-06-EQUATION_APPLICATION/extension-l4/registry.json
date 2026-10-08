@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
+  "status": "B06_DESIGN_ONLY_NO_GENERATED_ITEMS",
+  "curriculum": "2022",
+  "course": "공통수학1",
+  "l1": "H22-C-06",
+  "l2": "H22-C-06-EQUATION_APPLICATION",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "candidateCount": 6,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-CAVITY_WALL_VOLUME_COMBINED",
+      "label": "내부벽 넓이와 잔여 부피의 독립 조건으로 a,b 결정",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "4b²=16 → b=2; V=πa²b−b³=50π−8 → a=5",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "innerWallArea": 16,
+        "volume": "50π-8",
+        "target": "a+b=7"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "FRESH_FINAL_STEM_MATH_VISUAL"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-INDEPENDENT_PRISM_SIDE",
+      "label": "원기둥 높이 h와 정사각형 관통구멍 변 s를 분리",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "S=2πa(a+h)+4hs−2s²; 0<s<h로 이차근 2·6 중 2만 선택",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "a": 6,
+        "h": 4,
+        "s": 2,
+        "area": "120π+24",
+        "roots": [
+          2,
+          6
+        ],
+        "target": "s=2"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "NEW_PROBLEM_IMAGE_SQUARE_PRISM_THROUGH_HOLE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-BLIND_CUBIC_CAVITY",
+      "label": "관통하지 않는 정육면체형 홈의 바닥면 노출",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "윗면 공제 s²와 홈 바닥 s²가 상쇄됨 → 새 내부벽 4s²만 순증가",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "a": 6,
+        "h": 5,
+        "s": 2,
+        "area": "132π+16",
+        "target": "s=2"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "NEW_DIAGRAM_BLIND_CAVITY_WITH_FLOOR_AND_DEPTH_LT_HEIGHT"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-TWO_SEPARATE_TUNNELS",
+      "label": "서로 겹치지 않는 두 사각 관통구멍의 겉넓이",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "S=2πa(a+h)+Σ(4hs_i−2s_i²); 이미 아는 s1과 0<s2<h로 두 번째 근 선택",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "a": 10,
+        "h": 4,
+        "s1": 2,
+        "s2": 3,
+        "area": "280π+54",
+        "target": "s1+s2=5"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "NONOVERLAPPING_TUNNEL_PLACEMENT_AND_CIRCLE_FIT_VISUAL_EVIDENCE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-CIRCULAR_TUNNEL",
+      "label": "정사각형이 아닌 원형 관통구멍으로 곡면 노출 비교",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "원형 입구 둘 면 공제 2πr², 내부 곡면 2πrh 새로 노출",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "a": 6,
+        "h": 4,
+        "r": 2,
+        "area": "128π",
+        "target": "r=2",
+        "constraint": "0<r<h"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "CIRCULAR_THROUGH_BORE_DIAGRAM_R_LT_A"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-B06-Q18-COMPARE_TWO_HOLE_SIZES",
+      "label": "공통 원기둥에서 구멍 크기만 달라졌을 때 겉넓이 차로 역산",
+      "parentRPMPrimaryL3": "방정식의 활용",
+      "proposedParentRPM": "H1-RPM-177",
+      "closestCanonicalL4": "도형·함수 결합",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-176",
+        "H1-RPM-177"
+      ],
+      "semanticSourceScope": "H22-C-06-EQUATION_APPLICATION",
+      "proposedTargetL2": "H22-C-06-EQUATION_APPLICATION",
+      "definingDecisiveStep": "공통 2πa(a+h) 항 소거 → 4h(s1−s2)−2(s1²−s2²)으로 제한된 해 선택",
+      "sourceSeedQids": [
+        18
+      ],
+      "exampleUids": [],
+      "exampleMathWitness": {
+        "h": 5,
+        "s1": 2,
+        "s2": 3,
+        "areaDiff": "-10",
+        "target": "s2=3",
+        "constraint": "0<s2<h"
+      },
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceVisualRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
+      "classificationKind": "EXT_L4_CANDIDATE_REVIEW_VS_CONDITION",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "creationRequires": "TWO_INDEPENDENT_NONOVERLAPPING_DIAGRAMS_DIFFERENT_PRISM_SIZE"
+    }
+  ],
+  "reviewStatus": "DISCOVERED_UNREVIEWED",
+  "canonicalRPMModified": false,
+  "canonicalPromoted": false,
+  "consumerSelectable": false,
+  "note": "All 6 proposals need independent EXT vs Condition adjudication. RPM H1-RPM-177 remains semantic authority."
+}
