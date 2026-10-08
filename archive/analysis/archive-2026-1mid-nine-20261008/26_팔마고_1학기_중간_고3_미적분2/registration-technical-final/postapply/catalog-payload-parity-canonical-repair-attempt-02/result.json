@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "SOURCE7_REGISTRATION_VALIDATOR_RUN_V1",
+  "id": "catalogPayloadParityCanonicalRepairAttempt02",
+  "command": "C:\\Program Files\\nodejs\\node.exe \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-technical-final\\\\inputs\\\\verify-source7-canonical-catalog-parity.mjs\" \"C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\.tmp\\\\archive\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-root\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\.tmp\\\\archive\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-package-source7.json\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-technical-final\\\\postapply\\\\catalog-payload-parity-canonical-repair.final.json\"",
+  "cwd": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------",
+  "exitCode": 0,
+  "signal": null,
+  "status": "PASS",
+  "stdout": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\postapply\\catalog-payload-parity-canonical-repair-attempt-02\\stdout.bin",
+    "sha256": "f9b3db0e9d6ef36dda2d965b621cb18d5eba3b0d5ef72d0a26d51e92d33e73b6",
+    "bytes": 1494,
+    "text": "{\n  \"status\": \"PASS_CANONICAL_HEADER_REPAIR_WITH_APPLIED_INPUT_BINDINGS\",\n  \"checks\": {\n    \"targetSourceHashMatchesCleanLf\": true,\n    \"targetCoverage22\": true,\n    \"targetCatalogRowsCurrentCanonical\": true,\n    \"targetRowsMatchPackage\": true,\n    \"nonTarget12987DeepParity\": true,\n    \"allDecodedRecordsCanonical\": true,\n    \"indexVersionOnlyDecodedHeaderDrift\": true,\n    \"packingColumnDictionaryParity\": true,\n    \"identityTarget22AndNonTargetParity\": true,\n    \"metadataTarget22AndNonTargetParity\": true,\n    \"manifestExpectedThreeInputDiffs\": true,\n    \"manifestOnlyAllowedTopLevelDiffs\": true,\n    \"mainManifestBindsCurrentInputs\": true,\n    \"candidateManifestBindsCandidateInputs\": true,\n    \"currentAndCandidateChangedInputHashesBound\": true\n  },\n  \"decodedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"manifestTopLevelDifferences\": [\n    \"generatedFromCatalogIndexVersion\",\n    \"projectionVersion\",\n    \"files\"\n  ],\n  \"manifestDiffPaths\": [\n    \"data/archive2-catalog.json\",\n    \"data/question_identity_map.json\",\n    \"data/question_metadata.json\"\n  ],\n  \"packedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"reportPath\": \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-technical-final\\\\postapply\\\\catalog-payload-parity-canonical-repair.final.json\",\n  \"reportSha256\": \"d51d1e66d180145129b96f69abc668739d901cf7e97e3710748b02b68b80a8e6\"\n}\n"
+  },
+  "stderr": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\postapply\\catalog-payload-parity-canonical-repair-attempt-02\\stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "text": ""
+  },
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\postapply\\catalog-payload-parity-canonical-repair.final.json",
+  "reportSha256": "d51d1e66d180145129b96f69abc668739d901cf7e97e3710748b02b68b80a8e6"
+}

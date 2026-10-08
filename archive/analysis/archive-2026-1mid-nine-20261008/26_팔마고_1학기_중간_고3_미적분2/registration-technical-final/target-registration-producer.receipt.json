@@ -1,0 +1,379 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_CANDIDATE_PRODUCER_V1",
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "rosterIndex": 0,
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2",
+  "head": "044c41a26f5bed0708ad42709ed2932be314e55a",
+  "authority": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/producer-authority.json",
+    "sha256": "40160bf8d7b2810eafae655d521d62437123a28647f973f5b061bac7a76639e4",
+    "decisionAuthority": "ROOT_DELEGATED",
+    "authorityReference": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/ROOT.user-AGENTS.snapshot.md",
+      "sha256": "9f3403b4085e1e393ec35f986f8b226599a022d2625dc8c13fd54942dd9fff9f",
+      "sourceRawSha256": "9f3403b4085e1e393ec35f986f8b226599a022d2625dc8c13fd54942dd9fff9f",
+      "sourceGitBlobSha1": "4d3654504451ab2d4b5b0ecd2ce5694d53095924"
+    }
+  },
+  "roster": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/locked-roster.json",
+    "sha256": "2322fb505bf8d5e031d22fd04b48eb0a8f510e8edcb9160281673d91cf169652",
+    "rosterIndex": 0,
+    "examUid": "26_팔마고_1학기_중간_고3_미적분2",
+    "productionPath": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+    "grade": "h3",
+    "course": "미적분"
+  },
+  "assignment": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/registration.assignment.json",
+    "sha256": "d934497f1f2e9de28fd56438a11b6426a09b686e36937ebdefe5ec9ba5c5be8a",
+    "currentProductionRawSha256": "be0d7907814b518e6abe0f103b4d0deefd9310d15ccbacbfe459b8ee7171beae",
+    "currentProductionRawBufferBlobSha1": "da6c23b9bd477e3ac8e30072311352544d1fb4ff"
+  },
+  "r1MetaProof": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/R1.evidence.semantic-corrected.bound.json",
+    "rawSha256": "72a3c0ed4fdfb53ab2145cc46c792f6473f8faca34d4b4af0864bbcfe3d13e7f",
+    "validatorPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/R1.validation-report.semantic-corrected.json",
+    "validatorRawSha256": "bca7a21b0397f0291a3cfe676e3ded29766f834a60c3c9fd911a1d0fffe921d5",
+    "validatorMode": "R1_V2",
+    "validatorDisposition": "PASS",
+    "artifactSha": "da6c23b9bd477e3ac8e30072311352544d1fb4ff",
+    "artifactRawSha256": "be0d7907814b518e6abe0f103b4d0deefd9310d15ccbacbfe459b8ee7171beae",
+    "qidCount": 22,
+    "artifactDispositions": {
+      "artifactSha": "da6c23b9bd477e3ac8e30072311352544d1fb4ff",
+      "rows": [
+        {
+          "qid": 1,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다."
+        },
+        {
+          "qid": 2,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING)."
+        },
+        {
+          "qid": 3,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 4,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 5,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다."
+        },
+        {
+          "qid": 6,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다."
+        },
+        {
+          "qid": 7,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime."
+        },
+        {
+          "qid": 8,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다."
+        },
+        {
+          "qid": 9,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다."
+        },
+        {
+          "qid": 10,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다."
+        },
+        {
+          "qid": 11,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 12,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 13,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다."
+        },
+        {
+          "qid": 14,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다."
+        },
+        {
+          "qid": 15,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다."
+        },
+        {
+          "qid": 16,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 17,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다."
+        },
+        {
+          "qid": 18,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 19,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 20,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 21,
+          "metaDebtFields": [],
+          "metaDebtReason": ""
+        },
+        {
+          "qid": 22,
+          "metaDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "세 하위 문항 중 (1)(2)는 지수/로그 기본극한, (3)은 곡선 교점과 넓이의 점근으로 서로 다른 decisive L4를 요구한다. single primary를 임의 선택하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY로 META_ONLY_UNRESOLVED 기록한다."
+        }
+      ]
+    },
+    "noSemanticReclassification": true
+  },
+  "sourceQuestionCount": 22,
+  "currentPhysicalCourseBinding": {
+    "sourceField": "questionBank[].standardCourse",
+    "uniqueValues": [
+      "미적분"
+    ],
+    "questionCount": 22,
+    "sourceRawSha256": "be0d7907814b518e6abe0f103b4d0deefd9310d15ccbacbfe459b8ee7171beae"
+  },
+  "displayIdentity": {
+    "school": "팔마고",
+    "year": 2026,
+    "semester": "1",
+    "examType": "mid",
+    "grade": "고3",
+    "subject": "미적분",
+    "contentType": "기출"
+  },
+  "dbRow": {
+    "file": "original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+    "school": "팔마고",
+    "topic": "",
+    "grade": "고3",
+    "year": 2026,
+    "semester": "1",
+    "examType": "mid",
+    "subject": "미적분",
+    "contentType": "기출",
+    "qCount": 22,
+    "rangeStartUnitKey": "H15-CALC-01",
+    "rangeStartUnit": "수열의 극한",
+    "rangeStartUnitOrder": 1,
+    "rangeEndUnitKey": "H15-CALC-06",
+    "rangeEndUnit": "도함수의 활용",
+    "rangeEndUnitOrder": 6,
+    "courseRanges": [
+      {
+        "standardCourse": "미적분",
+        "courseCode": "H15-CALC",
+        "rangeStartUnitKey": "H15-CALC-01",
+        "rangeStartUnit": "수열의 극한",
+        "rangeStartUnitOrder": 1,
+        "rangeEndUnitKey": "H15-CALC-06",
+        "rangeEndUnit": "도함수의 활용",
+        "rangeEndUnitOrder": 6
+      }
+    ],
+    "primaryStandardCourse": "미적분"
+  },
+  "targetRows": {
+    "identity": 22,
+    "metadata": 22,
+    "questionIndex": 22,
+    "catalog": 22
+  },
+  "candidateRoot": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-root",
+    "head": "044c41a26f5bed0708ad42709ed2932be314e55a",
+    "allowedPreexistingRegistryChangeCount": 0,
+    "baselineHashesBefore": {
+      "archive/db.js": "d41e524b6bd0c5b331b6596395732740262bac156421a74590b6fda0745b6857",
+      "archive/data/question_identity_map.json": "acad3cc1ce31b402ee0590a911283a3d110e4b1e1b9e81e7f409f472ed52f737",
+      "archive/data/question_metadata.json": "adb352aad35050a599f27df3b64b24a109d9908b5ef5fbd7a2c2c45ef3b3b961",
+      "archive/question-identity.js": "c99caef5a333388e174498af11ef24971640ba1d0f5454d0a22625a2150e5c83",
+      "archive/question-index.js": "bd17a531a7b6305f3fafe9d94d686a5ce8fa91468457c6a913d0c3963b467f49",
+      "archive/question-index-report.md": "30e6de4eea3c945bd4eb19b74234dd18b693ed4ec0bbf71a2903e50c918a04e7",
+      "archive/question-index-audit.md": "d06666fc37ec361e09d2daa6a46ececaf1bbeec394476045f1ca8e3b909be247",
+      "archive/data/archive2-catalog.json": "19c3463defaee940f8c58d16a81e3fe29fb32dc5096700e4eb3a85fdde83a54b",
+      "archive/data/archive2-canonical-input-manifest.json": "ddca5f5d943d69597afea8693b49600eb7bec2f812ec6827e8ca380ca07df144"
+    },
+    "generatedCatalogSha256": "ca120927f707c29d6b62a8d0e87c3f88ca29e6fb8342b65dd90eceb407079cb2",
+    "generatedCatalogIndexVersion": "a5afd470bafbb5f4d12d6dd2f59b74cd655a7284473d3f8f44676ccaca571a4a"
+  },
+  "package": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-package-source7.json",
+    "sha256": "4f9570c8f8b559702442b4c42f548f77643f4a5fd018a81704991530031454a6",
+    "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_PACKAGE_V1"
+  },
+  "defaultDryRunReceipt": {
+    "path": "archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-registration.receipt.json",
+    "sha256": "b7819db8db62020b0ed0c903058de95723610304ab523ecd701102e2a0f93ada",
+    "schemaVersion": "JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1",
+    "status": "PLAN_VALIDATED_NOT_APPLIED",
+    "targetCounts": {
+      "identity": 22,
+      "metadata": 22,
+      "index": 22,
+      "catalog": 22,
+      "db": 1
+    },
+    "nonTargetInvariant": {
+      "dbExamRows": 545,
+      "identityRows": 12995,
+      "metadataRows": 12995,
+      "indexRows": 12987,
+      "catalogRows": 12987,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    }
+  },
+  "steps": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-index-root-attempt-04\\archive\\tools\\build-question-index.mjs"
+      ],
+      "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-index-root-attempt-04",
+      "exitCode": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-canonical-question-index.stdout.bin",
+      "stdoutSha256": "b0b8b2b5b4a3c421bff9881e8759ed7f23f03e6889e2e9553b98283101f953f6",
+      "stdoutBytes": 312,
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-canonical-question-index.stderr.bin",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-root\\archive\\tools\\build-archive2-catalog.mjs"
+      ],
+      "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-root",
+      "exitCode": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-canonical-archive2-catalog.stdout.bin",
+      "stdoutSha256": "3e133fb61df9e5475014008924c08e0954a186706e553b8148515ffe7f8734fd",
+      "stdoutBytes": 574,
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-canonical-archive2-catalog.stderr.bin",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\tools\\prepare-target-registration.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+        "--assignment",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/registration.assignment.json",
+        "--candidate-root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-root",
+        "--output",
+        ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-package-source7.json"
+      ],
+      "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+      "exitCode": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-prepare-target-registration.stdout.bin",
+      "stdoutSha256": "f96c9ed2616199da2566321a8b7b5ce6941452fe5287afc3298df6823df36eba",
+      "stdoutBytes": 520,
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-prepare-target-registration.stderr.bin",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\tools\\register-target-exam.mjs",
+        "--root",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+        "--assignment",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final/inputs/registration.assignment.json",
+        "--proposal",
+        ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-package-source7.json",
+        "--catalog-candidate",
+        "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-root\\archive\\data\\archive2-catalog.json",
+        "--evidence-root",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-technical-final"
+      ],
+      "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+      "exitCode": 0,
+      "stdoutPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-register-target-default-dry-run.stdout.bin",
+      "stdoutSha256": "cb3d5763ea3f3bf7b669468039037ca3c6763f6f1d5f57bc4357b8c74c5c6e02",
+      "stdoutBytes": 1168,
+      "stderrPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-technical-final\\target-index-0-register-target-default-dry-run.stderr.bin",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0
+    }
+  ],
+  "noApply": true,
+  "noMainRegistryWrites": true,
+  "previousFailureAttemptsPreserved": true
+}
