@@ -1,4 +1,9 @@
 # ALIVE LITE — REVIEW 정답 분포·보기 품질 보고 게이트 v0.1
+
+## CURRENT ADDENDUM — 정답 분포 통과 뒤 Consumer 등록/학생 readback까지 동일 REVIEW (2026-10-08)
+- 최종 보고에는 before/after ①~⑤(전체·승인·HOLD), 보기 재설계·CHOICE_ORDER_LOCKED, **실제 Consumer DB 등록 UID 및 학생 조회/선택 검증 UID**, 원격 main SHA를 함께 쓴다. 기술 계약은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`.
+- 기존 94/92 또는 19문항 1차 보정 보고는 current 독립검수/최종 등록 숫자가 아니다. phase1~4 변경 UID를 actual diff로 확정한 후 재검·필요 최소 보정하고 마지막에 DB로 공급한다.
+
 적용: 모든 신규 ALIVE Generated Bank의 REVIEW+MAIN 채팅. 기존 original 시험지 변경 금지.
 
 ## 모든 REVIEW에서 의무
