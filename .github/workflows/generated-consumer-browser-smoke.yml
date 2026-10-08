@@ -30,6 +30,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify 130 consumer rows, Git blob SHA and student finder in Node VM
+        run: node --test tests/archive2-generated-bank-registration.test.js
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
