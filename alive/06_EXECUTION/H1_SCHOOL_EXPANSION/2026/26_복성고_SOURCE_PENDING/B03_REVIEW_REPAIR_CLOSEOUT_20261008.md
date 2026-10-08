@@ -25,3 +25,10 @@
 - 이전 효천고 Consumer 92 UID·기존 Archive 원본·RPM LOCKED·B04 작업 파일 불변.
 
 자세한 38 UID별 수학 판정·상태: `B03_REVIEW_MATH_META_RECEIPT_20261008.json`.
+
+## CURRENT USER-DIRECTED APPROVAL — 2026-10-08
+- 형님 직접 지시: **“내 권한으로 패스해”**. 대상은 **B03 38문항 전체의 REVIEW PASS**이며, 그중 fresh blind 미완료 4문항(q9 S01/S02, q14 I06/I09)은 **USER_DIRECTED_OVERRIDE**로 예외 승인한다.
+- 이전 검수에서 이미 확인된 수학·5지·해설 정답 일치 38/38과 원본 34건의 독립 동결 증거를 보존한다. 예외 4건이 새로운 blind 검수에 통과했다고 소급 기록하지 않는다.
+- 검수 상태 **B03 REVIEW_PASS 38/38, REVIEW HOLD 0**. 생성 후보는 이미 main에 있고 현행 UID 38개 불변. 신규 RPM 정본 승격 0.
+- Consumer DB 등록 0, 실제 학생 검색/조회 및 브라우저 확인 0으로 유지. `REVIEW_PASSED_REGISTRATION_PENDING`; 이번 지시는 DB/브라우저 PASS 증거 면제까지 포함하지 않는다.
+- 물리 승인 원장: `B03_USER_AUTHORITY_PASS_20261008.json`.
