@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "ALIVE_LITE_BATCH_SEMANTIC_BLUEPRINT_R2",
+  "campaign": "BSG26-2026-1final",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "prevHeads": {
+    "B04": "d16e2898322db1137335549b5787527ec8dc4abf",
+    "B05": "3623dab3e43451c11f8c6c6cf793a5ec8cc1e8b4"
+  },
+  "designFirst": true,
+  "productionBeforeReview": false,
+  "identityPolicy": "R2 UID namespace; R1 originals remain on prior branches; remove old checkpoint shards and supersede old indexes in R2 branch",
+  "classify": {
+    "17": {
+      "L1": "H22-C-09",
+      "L2": "H22-C-09-MATRIX_OPERATION",
+      "rpmPrimary": "H1-RPM-201",
+      "rpmL3": "행렬의 연산",
+      "rpmL4": "행렬의 곱셈",
+      "otherRPM": [
+        "H1-RPM-202"
+      ],
+      "sourceDecisive": "2×2 lower unitriangular matrix powers",
+      "earlierDefect": "four candidates all exploit A=I+N"
+    },
+    "20": {
+      "L1": "H22-C-09",
+      "L2": "H22-C-09-MATRIX_APPLICATION",
+      "rpmPrimary": "H1-RPM-203",
+      "rpmL3": "행렬의 성질",
+      "rpmL4": "조건을 만족하는 행렬",
+      "otherRPM": [
+        "H1-RPM-201",
+        "H1-RPM-202"
+      ],
+      "sourceDecisive": "AB=CA and additional component conditions constrain B,C",
+      "earlierDefect": "three identical equations with changed constants"
+    },
+    "21": {
+      "L1": "H22-C-08",
+      "L2": "H22-C-08-COMBINATION",
+      "rpmPrimary": "H1-RPM-194",
+      "rpmL3": "조합의 활용",
+      "rpmL4": "선택 조건",
+      "crossConcepts": [
+        "순서 통계",
+        "정수 경계"
+      ],
+      "sourceDecisive": "fixed kth order statistic divides choice pool",
+      "earlierDefect": "only threshold n changed"
+    },
+    "22": {
+      "L1": "H22-C-06",
+      "L2": "H22-C-06-SYSTEM",
+      "rpmPrimary": null,
+      "rpmPrimaryDisposition": "EXACT_L3_L4_NOT_FOUND_HOLD_META_ONLY",
+      "nearestExisting": [
+        "H1-RPM-179 연립일차부등식/정수해 (not exact because quadratic)",
+        "H1-RPM-180 이차부등식/그래프를 이용한 해",
+        "H1-RPM-181 이차부등식/근의 위치와 해"
+      ],
+      "proposedL3": "절댓값을 포함한 연립부등식",
+      "proposedL4": "연립부등식의 공통 정수해·매개변수",
+      "crossConcepts": [
+        "이차부등식",
+        "절댓값 부등식",
+        "경우 나누기"
+      ],
+      "sourceDecisive": "intersection of integral solution intervals with moving absolute window",
+      "earlierDefect": "only target sum/count changed"
+    },
+    "23": {
+      "L1": "H22-C-09",
+      "L2": "H22-C-09-MATRIX_APPLICATION",
+      "rpmPrimary": "H1-RPM-202",
+      "rpmL3": "행렬의 성질",
+      "rpmL4": "곱셈의 성질",
+      "crossConcepts": [
+        "경우의 수",
+        "곱의 법칙"
+      ],
+      "extensionL4Proposal": "MATRIX_RESTRICTED_PATH_COUNT",
+      "sourceDecisive": "A^n entries count ordered n-stage courses",
+      "earlierDefect": "start/end/length substitutions only"
+    }
+  },
+  "specs": [
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-POWER_SUM",
+      "decisiveStep": "sum of A..A^m by term and arithmetic progression",
+      "rpmTarget": "H1-RPM-201",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-UNKNOWN_EXPONENT",
+      "decisiveStep": "solve exponent from a given matrix entry",
+      "rpmTarget": "H1-RPM-201",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-ALTERNATING_SUM",
+      "decisiveStep": "alternating signs cancel diagonal and pair lower entries",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-MIXED_PRODUCT",
+      "decisiveStep": "multiply powers of distinct lower triangular matrices",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-ORDER_DIFFERENCE",
+      "decisiveStep": "compute AB and BA; show noncommutativity",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-UNKNOWN_COEFFICIENT",
+      "decisiveStep": "recover an unknown matrix entry from sum of powers",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-IDEMPOTENT",
+      "decisiveStep": "recognize A^2=A from direct multiplication",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-PERIODIC",
+      "decisiveStep": "recognize A^2=I and separate odd/even powers",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 17,
+      "blueprintId": "BSG26-R2-Q17-SCALAR_RECURRENCE",
+      "decisiveStep": "recognize A^2=2A and sum geometric multiples",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-PROJECTION_FORWARD",
+      "decisiveStep": "AB=CA component zeroing plus C sum",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-PROJECTION_REVERSE",
+      "decisiveStep": "given target C22 retrieve B component-sum",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-DIAGONAL_COMMUTATION",
+      "decisiveStep": "AB=BA with distinct diagonal entries removes off-diagonal entries",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-JORDAN_COMMUTATION",
+      "decisiveStep": "upper unipotent matrix commutation forces equality of diagonal elements",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-ZERO_PRODUCT",
+      "decisiveStep": "AB=zero forces row constraints",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-LEFT_MATRIX_EQUATION",
+      "decisiveStep": "solve AX=B through ordered row equations",
+      "rpmTarget": "H1-RPM-201",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-RIGHT_MATRIX_EQUATION",
+      "decisiveStep": "solve XA=B through ordered column equations",
+      "rpmTarget": "H1-RPM-201",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-SWAP_COMMUTATION",
+      "decisiveStep": "swapping matrix constrains symmetric entries",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 20,
+      "blueprintId": "BSG26-R2-Q20-EXISTENCE_CONDITION",
+      "decisiveStep": "AB=CA and C11=C21 constrain input sum matrix for existence",
+      "rpmTarget": "H1-RPM-203",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-ROUTE_TABLE",
+      "decisiveStep": "reconstruct matrix from course table then square/cube",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIXED_ENDPOINT",
+      "decisiveStep": "extract exact start/end route count from matrix power",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIRST_STAGE_CONSTRAINT",
+      "decisiveStep": "fix first intermediate station; sum remaining stages",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-FIRST_RETURN",
+      "decisiveStep": "require no earlier return before final step",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-ALTERNATING_STATION",
+      "decisiveStep": "eliminate diagonal loops; repeated paired transfers",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-STAGE_DEPENDENT",
+      "decisiveStep": "multiply different stage matrices in correct order",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-VISIT_AT_LEAST_ONCE",
+      "decisiveStep": "subtract stay-at-first-station paths from total",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 23,
+      "blueprintId": "BSG26-R2-Q23-EXACT_ONE_VISIT",
+      "decisiveStep": "split cases for unique middle-station visit",
+      "rpmTarget": "H1-RPM-202",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-MINIMUM_N",
+      "decisiveStep": "rank fixed: threshold inequality for minimum selection universe",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-EXACT_RANK_COUNT",
+      "decisiveStep": "count selections with fixed kth entry",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-TWO_RANKS",
+      "decisiveStep": "two fixed order statistics partition three intervals",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-PARITY_BELOW",
+      "decisiveStep": "at least one even among values below fixed rank",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-NO_ADJACENCY",
+      "decisiveStep": "exclude neighbors of fixed pivot; nonadjacent selections",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-PAIR_SUM",
+      "decisiveStep": "pair below pivot must have specified sum",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-EXACT_CATEGORY_COUNT",
+      "decisiveStep": "exactly one selected below from special subset",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-UPPER_PARITY",
+      "decisiveStep": "sum parity condition among selected upper values",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 21,
+      "blueprintId": "BSG26-R2-Q21-UPPER_ZONES",
+      "decisiveStep": "one selected upper from each of two ranges",
+      "rpmTarget": "H1-RPM-194",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-SUM_TARGET",
+      "decisiveStep": "enumerate k giving target sum of common integer roots",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-COUNT_TARGET",
+      "decisiveStep": "count k yielding fixed number of common integer roots",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-SINGLETON_EDGE",
+      "decisiveStep": "exactly one common integer root at domain boundary",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-EMPTY_INTERSECTION",
+      "decisiveStep": "finite bounded k range; no common integer root",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-FIXED_SOLUTION_SET",
+      "decisiveStep": "deduce k from exact common integer root set",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-MAXIMUM_ROOT_SUM",
+      "decisiveStep": "maximize common roots' sum over a shifted moving window",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 1,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-DISCONNECTED_QUADRATIC",
+      "decisiveStep": "use exterior quadratic sign intervals intersected with bounded absolute window",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 3,
+      "choicePositionPlan": 2,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-INCLUSIVE_ENDPOINT",
+      "decisiveStep": "contrast |x-k|≤r with strict version and count boundary intersections",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 4,
+      "choicePositionPlan": 3,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-STRICT_QUADRATIC",
+      "decisiveStep": "use strict quadratic endpoints then intersect with absolute window",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 5,
+      "choicePositionPlan": 4,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    },
+    {
+      "sourceQid": 22,
+      "blueprintId": "BSG26-R2-Q22-EXTREME_ROOTS",
+      "decisiveStep": "derive parameter from minimum and maximum common roots",
+      "rpmTarget": "EXT_L3_REVIEW",
+      "disposition": "ACCEPT_DESIGN",
+      "difficultyTarget": 2,
+      "choicePositionPlan": 5,
+      "patternStatus": "NEW_SEMANTIC_BLUEPRINT_CANDIDATE_NOT_CANONICAL"
+    }
+  ],
+  "reject": [
+    {
+      "sourceQid": 17,
+      "idea": "3×3 matrix spectral decomposition",
+      "disposition": "CURRICULUM_VIOLATION",
+      "reason": "higher-dimensional matrix theorem outside H1"
+    },
+    {
+      "sourceQid": 20,
+      "idea": "derive adjugate/inverse determinant formula",
+      "disposition": "CURRICULUM_VIOLATION",
+      "reason": "inverse/determinant outside first semester scope"
+    },
+    {
+      "sourceQid": 23,
+      "idea": "unrestricted no-reuse of course edges counted solely by A^n",
+      "disposition": "NO_VALID_MATH_STRUCTURE",
+      "reason": "A^n permits edge reuse, requires new state"
+    },
+    {
+      "sourceQid": 21,
+      "idea": "alter n, fixed rank, target only",
+      "disposition": "DUPLICATE",
+      "reason": "same order-statistic threshold decision"
+    },
+    {
+      "sourceQid": 21,
+      "idea": "unconstrained permutation of selected numbers",
+      "disposition": "L3_DRIFT",
+      "reason": "selection with order artificially changed to arrangements"
+    },
+    {
+      "sourceQid": 22,
+      "idea": "label |x-k|<3 as AMGM/absolute inequality",
+      "disposition": "L3_DRIFT",
+      "reason": "absolute-value solution intersection is not AMGM or Cauchy"
+    }
+  ],
+  "deployment": {
+    "stage": "B_BLUEPRINTS_FROZEN",
+    "review": "NOT_TESTED",
+    "mainPublished": false,
+    "studentConsumerRegistered": false,
+    "oldCheckpointDisposition": "SUPERSEDED_ON_R2",
+    "createComplete": false
+  }
+}
