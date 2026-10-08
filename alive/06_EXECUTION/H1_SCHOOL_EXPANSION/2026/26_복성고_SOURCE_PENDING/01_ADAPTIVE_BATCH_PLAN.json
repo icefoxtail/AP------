@@ -2,7 +2,7 @@
   "schemaVersion": "ALIVE_LITE_ADAPTIVE_BATCH_PLAN_v1",
   "authorityCommit": "ca9d8f7a65d478eb76d569c525d7eec1a2dff29c",
   "sourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "planRevision": 6,
+  "planRevision": 7,
   "sourceQidCoverage": [
     1,
     2,
@@ -268,7 +268,7 @@
       ],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "B06_B_DESIGN_FROZEN_C_NOT_STARTED",
+      "status": "B06_CREATE_C_D_COMPLETE_CREATOR_QA_PASS_INDEPENDENT_REVIEW_AND_RENDER_PENDING",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
       "candidateRegistryRequiredBeforeC": true,
       "sourceQidsAudited": [
@@ -279,23 +279,48 @@
       "blueprintExploredCount": 38,
       "acceptedBlueprintDesignCount": 25,
       "blueprintExcludedOrHeld": 13,
-      "generatedCandidateCount": 0,
+      "generatedCandidateCount": 25,
       "designDoc": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_BATCH_DESIGN.json",
       "sourceAudit": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B06_SOURCE_VISUAL_AUDIT.json",
       "extensionCandidateRegistries": [
         "archive/generated/lite/v1/2022/H1/H22-C-06-EQUATION_APPLICATION/extension-l4/registry.json",
         "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/extension-l4/registry.json"
-      ]
+      ],
+      "sourceExpansionDoneQids": [
+        18,
+        19
+      ],
+      "sourceHoldQids": [],
+      "acceptedBlueprintCount": 25,
+      "rejectedBlueprintCount": 13,
+      "subjectiveCount": 2,
+      "objectiveCount": 23,
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b06-create-index-v1.json",
+      "receipt": "B06_CREATE_RECEIPT.json",
+      "manifestCount": 2,
+      "metadataShardCount": 2,
+      "generatedProblemVisualAssetCount": 7,
+      "physicalCreatorMathCheck": "25/25",
+      "independentReview": "NOT_TESTED",
+      "consumerDbRegistered": false,
+      "mainPublished": false,
+      "actualEngineRender": "NOT_RUN"
     }
   ],
-  "nextBatchId": "B06",
-  "qualityStatus": "B06_B_DESIGN_FROZEN_WAITING_FOR_SEPARATE_C_D_INSTRUCTION",
-  "generatedCount": 166,
+  "nextBatchId": null,
+  "qualityStatus": "SIX_BATCHES_CREATED_WITH_LEGACY_SOURCE_HOLD_AND_INDEPENDENT_REVIEW_RENDER_DEBTS",
+  "generatedCount": 191,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
   "extensionDiscoveryContract": "alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md",
   "extensionCandidateIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json",
   "extensionDiscoveryMandatoryBeforeGeneration": true,
   "extensionDiscoveryReason": "B01R2 showed same RPM L3/L4 labels can hide different decisive structures; next batches must explore new L3/L4 before C",
   "classificationRevision": 2,
-  "unitOrderPolicy": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md"
+  "unitOrderPolicy": "docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md",
+  "openSourceContinuationQids": [
+    10,
+    11,
+    15
+  ],
+  "noteB06": "25 new candidates physically produced, images added and static checked, but no independent reviewer approval or actual engine render. Do not use generated count as consumer-eligible count."
 }

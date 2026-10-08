@@ -57,3 +57,11 @@
 - 등록된 B06 extension-l4 제안은 q18 6 / q19 8, 미승인·비공급. q19 과거 EXT 14개 보존.
 - 설계 정본 B06_BATCH_DESIGN.json → B06_STEM_PATTERN_BANK.json → B06_VISUAL_GENERATION_PLAN.json / B06_SOURCE_VISUAL_AUDIT.json.
 - 사용자 별도 진행 지시 전에는 C 생성/D 저장 착수하지 않음. B01~B05 생성 후보 166 UID 보존.
+
+
+## CURRENT OVERRIDE — B06 C/D implemented (2026-10-08)
+- B06 q18 10문항 + q19 15문항 = **25 생성 후보**. 객관식 23·서답형 2, 정답 ①1/②9/③9/④2/⑤2 (한 위치 >40% 없음).
+- 원본 둘 다 실제 이미지 확인, 원본 래스터 재사용 또는 신규 수학 시각조건에 맞는 **새 문제용 SVG 7개** 제작 (q18 SVG 5 + q19 2). 새로운 q19 도형은 SVG polygon 공유경계에서 인접관계까지 별도 정적 계산 일치.
+- 창작자 별도 수학 재계산 25/25 PASS, 5지/정답 위치 기본 구조와 수식·해설 결론 검사. 독립 REVIEW, 실제 Codex 엔진 렌더, 학생용 DB 등록/출고 **미실행**.
+- CREATE 누적 물리 후보: 기존 B01~B05 166 + B06 25 = **191개의 고유 UID**. 원본 23개 중 실제 UID 생성 source는 22개; q15 이전 taxonomy unresolved/HOLD, 과거 q10·q11의 source continuation evidence는 계속 별도 확인 대상.
+- B06 index `archive/data/generated-lite/bokseong-2026-1final-b06-create-index-v1.json`; 누적 v6 `archive/data/generated-lite/bokseong-2026-1final-create-index-v6.json`; 실제 status는 CREATE만 완료.

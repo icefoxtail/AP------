@@ -93,3 +93,15 @@
 - 설계상 객관식 22 / 서답형 3. 정답 위치는 최종값 먼저 확정, 계획 위치는 가변이며 학생 오개념 4종 후보/Blueprint 및 Reverse Stem Check 계획을 B06_STEM_PATTERN_BANK.json에 저장.
 - 신규 EXT-L4 후보 q18 6종/q19 8종(독립 승인 전). SOURCE visual 및 예시 숫자 검산은 B06_SOURCE_VISUAL_AUDIT.json, B06_DESIGN_MATH_WITNESSES.json.
 - 현재 단계 `B06_B_DESIGN_FROZEN_C_NOT_STARTED`. 166 기존 후보 유지. 다음 C/D 진행은 사용자 추가 지시에 따름.
+
+
+## CURRENT OVERRIDE — B06 C/D 물리화 완료 (2026-10-08)
+| Source | 탐색 Blueprint | ACCEPT | 실제 UID | 객체유형 | 새 SVG |
+|---|---:|---:|---:|---|---:|
+| q18 | 16 | 10 | **10** | 객관식 8 / 서답 2 | 5 |
+| q19 | 22 | 15 | **15** | 객관식 15 | 2 |
+| **합계** | **38** | **25** | **25** | 객관식 23 / 서답 2 | **7** |
+- C: source 원본과 RPM L3 잠금 유지; 문항 25개 발문·해설·정답·5지(객관식), 신규 도형 및 오답 전략을 디자인 기준으로 생성. D: L2 shard 2, metadata 2, manifest 2, batch index, cumulative v6, receipt, math witness & SVG topology evidence를 Git CREATE branch에 물리화.
+- 신규 생성 UID 25/25 고유, 자체 수학 재계산 25/25 MATCH. SVG 7개 정적 구조 검사 및 q19 신구 그래프 인접변 일치. 실제 엔진 캡처/독립 수학 검수/Consumer DB 등록은 NOT_RUN.
+- 총 유효 생성 후보 **191** = B01 45+B02 38+B03 38+B04R2 26+B05R2 19+B06 25. 이전 B04 11+B05 8 초안은 여전히 superseded; 합산 금지.
+- `B06_CREATE_RECEIPT.json`와 `B06_REVIEW_HANDOFF.md` 참조. 6개 계획 배치를 생산했지만 q15 원본은 기존 분류 HOLD, 오래된 q10/q11 continuation 기록은 미해소 여부를 별도 검증.
