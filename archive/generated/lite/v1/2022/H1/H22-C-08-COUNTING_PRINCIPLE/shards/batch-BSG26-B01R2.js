@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_MOVIES";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_H22-C-08-COUNTING_PRINCIPLE";
 window.questionBank = [
   {
     "id": 1,
@@ -32,7 +32,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $A$는 이미 선택되었으므로 나머지 액션 영화를 하나만 고른다.\n액션의 나머지 한 편은 다른 액션 영화 4편 중 4가지이고, 코미디는 3가지, 공포는 2가지이다.\n따라서 영화 선택은 $4\\times3\\times2=24$가지이다.\n고른 네 영화는 모두 다르므로 시청 순서는 $4!=24$가지이다.\n따라서 총 $24\\times24=576$가지이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 2,
@@ -66,7 +67,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 먼저 영화 종류별 선택을 세고 로맨스 영화의 자리를 고정한다.\n선택 방법은 $\\binom42\\times\\binom31\\times\\binom21=6\\times3\\times2=36$가지이다.\n고른 로맨스 영화는 정확히 한 편이므로 첫 자리에 고정한다.\n남은 세 편의 시청 순서는 $3!=6$가지이므로 총 $36\\times6=216$가지이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 3,
@@ -100,7 +102,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 액션 영화 두 편을 선택한 뒤 한 묶음으로 취급한다.\n영화 선택은 $\\binom42\\times3\\times2=6\\times3\\times2=36$가지이다.\n액션 영화 두 편을 한 묶음으로 보면 묶음, 코미디, 공포의 세 대상을 배열하므로 $3!$가지이다.\n액션 묶음 내부 순서는 $2!$가지이므로 배열은 $3!\\times2!=12$가지이다.\n따라서 총 경우의 수는 $36\\times12=432$가지이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 4,
@@ -134,7 +137,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 장르별 영화 선택 수에 로맨스·공포 비인접 배열 수를 곱한다.\n선택은 $\\binom52\\times3\\times2=10\\times3\\times2=60$가지이다.\n네 편을 나열하는 전체 경우는 $4!=24$가지이다.\n로맨스와 공포가 이웃하면 두 편을 한 묶음으로 보고 세 대상을 나열하는 $3!$가지에 묶음 내부 $2!$가 곱해져 12가지이다.\n따라서 이웃하지 않는 배열도 $24-12=12$가지이고 총수는 $60\\times12=720$가지이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 5,
@@ -168,7 +172,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 장르별로 두 편씩 고른 뒤 번갈아 배치할 성별과 같은 역할의 장르 순서를 정한다.\n영화 선택 수는 $\\binom42\\times\\binom32=6\\times3=18$가지이다.\n배열할 장르의 순서는 액션-코미디-액션-코미디 또는 코미디-액션-코미디-액션의 2가지이다.\n각 장르의 두 작품은 각각 $2!$가지 순서로 배치되므로 배열은 $2\\times2!\\times2!=8$가지이다.\n전체는 $18\\times8=144$가지이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 6,
@@ -202,7 +207,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 선택된 공포 영화와 로맨스 영화는 각각 한 편이므로 양끝이 확정된다.\n선택 방법은 $\\binom42\\times3\\times2=36$가지이다.\n첫 자리는 공포, 마지막 자리는 로맨스로 고정하고 가운데 두 자리에 선택된 서로 다른 액션 두 편을 배치하면 $2!=2$가지이다.\n따라서 총 $36\\times2=72$가지이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 7,
@@ -236,7 +242,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 액션 영화 두 편의 상영 시간은 항상 서로 달라 선후관계 하나만 허용한다.\n종류별 영화 선택은 $\\binom42\\times3\\times2=36$가지이다.\n선택한 네 영화의 전체 배열은 $4!=24$가지이다.\n두 액션 영화의 상대 순서를 바꾸는 대응을 생각하면 짧은 액션이 먼저인 배열과 나중인 배열이 똑같이 많다.\n따라서 조건을 만족하는 배열은 $24\\div2=12$가지이고 총 경우의 수는 $36\\times12=432$가지이다.\n따라서 정답은 ⑤이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 8,
@@ -270,7 +277,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 이름이 없는 두 묶음을 구별하여 중복 계산하지 않아야 한다.\n먼저 한 묶음에 넣을 영화 세 편을 고르면 $\\binom63=20$가지이다.\n하지만 선택한 묶음과 남은 묶음을 서로 바꾸어도 동일한 분할이므로 모든 경우를 정확히 두 번씩 세었다.\n따라서 실제 경우의 수는 $20\\div2=10$가지이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+    "sourceKind": "generated"
   },
   {
     "id": 9,
@@ -304,6 +314,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 이름 있는 두 사람에게 분배하는 전체 경우에서 한 명만 모두 받는 경우를 제외한다.\n다섯 편 각각을 $A$ 또는 $B$에게 줄 수 있으므로 전체 분배는 $2^5=32$가지이다.\n하지만 전부 $A$에게 주거나 전부 $B$에게 주는 두 경우는 한 사람이 아무것도 받지 않아 제외해야 한다.\n따라서 $32-2=30$가지이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+    "sourceKind": "generated"
   }
 ];

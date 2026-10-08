@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_SYSTEM";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_H22-C-06-SYSTEM";
 window.questionBank = [
   {
     "id": 1,
@@ -33,7 +33,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 연속부등식을 두 부등식으로 분리하고 부등호의 등호 여부를 구별한다.\n$2x-3<5x+6$에서 $-9<3x$이므로 $x>-3$이다.\n$5x+6\\le3x+13$에서 $2x\\le7$이므로 $x\\le\\dfrac72$이다.\n따라서 가능한 정수는 $-2,-1,0,1,2,3$의 6개이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 2,
@@ -68,7 +69,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 두 부등식의 아래쪽 경계가 위쪽 경계보다 크지 않아야 한다.\n실수해가 하나라도 있으려면 $2k-1\\le5-k$가 필요충분조건이다.\n따라서 $3k\\le6$, 즉 $k\\le2$이다.\n자연수 $k$의 최댓값은 2이다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 3,
@@ -103,7 +105,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 오른쪽 끝점은 포함되지 않으므로 정수해를 실제로 나열한다.\n$k$가 자연수이므로 $1\\le x<k$를 만족하는 정수는 $1,2,\\ldots,k-1$이다.\n이들의 개수가 $k-1$이므로 $k-1=3$이다.\n따라서 $k=4$이며 정수해는 $1,2,3$이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 4,
@@ -138,7 +141,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 주어진 구간 전체가 해집합 안에 들어가려면 가장 작은 값 $x=1$도 만족해야 한다.\n위쪽 조건 $x\\le6$은 구간 $[1,4]$의 모든 수에 대해 이미 성립한다.\n아래쪽 조건 $x\\ge k-2$를 $x=1$에서 검사하면 $1\\ge k-2$이므로 $k\\le3$이다.\n따라서 가능한 정수 $k$의 최댓값은 3이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 5,
@@ -173,7 +177,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 음수 부분과 양수 부분의 합을 따로 계산한다.\n정수해는 $-2,-1,0,1,2,\\ldots,k$이고, $-2+(-1)+0=-3$이다.\n$1+2+\\cdots+k=\\dfrac{k(k+1)}2$이므로 정수해의 합은 $\\dfrac{k(k+1)}2-3$이다.\n이 합이 3이므로 $k(k+1)=12$이다. 자연수 $k=3$만 만족한다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   },
   {
     "id": 6,
@@ -208,6 +213,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 닫힌 구간의 경계가 정확히 같은 점에서 만날 때 실수해가 하나이다.\n공통 해가 정확히 한 점이려면 아래쪽 끝 $2k-1$과 위쪽 끝 $7-k$가 같아야 한다.\n따라서 $2k-1=7-k$이고 $3k=8$이다.\n그러므로 $k=\\dfrac83$이다.\n따라서 정답은 ①이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   }
 ];
