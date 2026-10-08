@@ -80,3 +80,16 @@
 - q20 주개념 RPM H1-RPM-203(조건을 만족하는 행렬). q22는 H1-RPM-179(연립**일차**부등식) 및 H1-RPM-182(AMGM)로 억지 귀속 금지; 신규 L3/L4 후보 독립 검토만 남김.
 - 제외 설계 6건 및 45개 Blueprint 근거: `B04_B05_R2_BLUEPRINT_DESIGN.json`. R2는 CREATE 후보이고 독립 REVIEW·실제 student consumer·main publication 모두 미실행.
 - next batch: B06(q18/q19) 도형·색칠 source 시각 근거 확인 후 착수.
+
+
+## CURRENT — B06 A/B 선설계 동결 (2026-10-08)
+| Source qid | Original visual status | Blueprint 탐색 | 설계 ACCEPT | 제외/보류 | 신규 UID |
+|---|---|---:|---:|---:|---:|
+| q18 | PNG 원기둥/정육면체 관통 원본 직접 확인 | 16 | 10 | 6 | 0 |
+| q19 | PNG 4영역 인접관계 직접 확인 | 22 | 15 | 7 | 0 |
+| **합계** | 실제 source image SHA 결속 | **38** | **25** | **13** | **0** |
+
+- q18 현재 주개념 방정식의 활용 RPM H1-RPM-177; q19 현재 주개념 합·곱의 법칙 RPM H1-RPM-187(이전 same-grade scope). 기존 original 메타를 맹목 복사하지 않음.
+- 설계상 객관식 22 / 서답형 3. 정답 위치는 최종값 먼저 확정, 계획 위치는 가변이며 학생 오개념 4종 후보/Blueprint 및 Reverse Stem Check 계획을 B06_STEM_PATTERN_BANK.json에 저장.
+- 신규 EXT-L4 후보 q18 6종/q19 8종(독립 승인 전). SOURCE visual 및 예시 숫자 검산은 B06_SOURCE_VISUAL_AUDIT.json, B06_DESIGN_MATH_WITNESSES.json.
+- 현재 단계 `B06_B_DESIGN_FROZEN_C_NOT_STARTED`. 166 기존 후보 유지. 다음 C/D 진행은 사용자 추가 지시에 따름.
