@@ -1,0 +1,168 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_GOLDEN_VISUAL_SUPPLEMENT_V1",
+  "timing": "POST_AUTHORING_VALIDATOR_FAIL_EVIDENCE_REPAIR; NOT_BACKDATED_TO_INITIAL_PREFLIGHT",
+  "goldenPath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+  "goldenRawSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+  "qid": 7,
+  "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+  "svgPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+  "svgSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+  "previewAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\source-pdf\\golden-preflight\\maesan-q07.png",
+  "previewSha256": "d1f0c26de2eb5a771879ed5d401880c90c17c91c3ac150fcac7311d4f76dcd14",
+  "previewOpened": true,
+  "converter": "ImageMagick 7.1.2-21 Q16-HDRI",
+  "parameters": "magick -background white <svg> <png>",
+  "expectedFacts": {
+    "centers": {
+      "C0": [
+        -3,
+        1
+      ],
+      "C1": [
+        -5,
+        2
+      ],
+      "C2": [
+        5,
+        -2
+      ]
+    },
+    "radius": 3,
+    "translationC0ToC1": [
+      -2,
+      1
+    ],
+    "originReflectionC1ToC2": [
+      5,
+      -2
+    ]
+  },
+  "coordinateModel": {
+    "originPx": [
+      222.5,
+      185
+    ],
+    "equalUnitScalePx": 20.8333333333333,
+    "yAxisInverted": true
+  },
+  "actualSvgPrimitives": {
+    "circles": [
+      {
+        "centerPx": [
+          160,
+          164.17
+        ],
+        "radiusPx": 62.5,
+        "stroke": "#777",
+        "dash": "6 4"
+      },
+      {
+        "centerPx": [
+          118.33,
+          143.33
+        ],
+        "radiusPx": 62.5,
+        "stroke": "#555",
+        "dash": "4 3"
+      },
+      {
+        "centerPx": [
+          326.67,
+          226.67
+        ],
+        "radiusPx": 62.5,
+        "stroke": "#111"
+      }
+    ],
+    "centerConnectors": [
+      [
+        [
+          160,
+          164.17
+        ],
+        [
+          118.33,
+          143.33
+        ]
+      ],
+      [
+        [
+          118.33,
+          143.33
+        ],
+        [
+          326.67,
+          226.67
+        ]
+      ]
+    ]
+  },
+  "observedFacts": {
+    "centers": {
+      "C0": [
+        -3,
+        1
+      ],
+      "C1": [
+        -5,
+        2
+      ],
+      "C2": [
+        5,
+        -2
+      ]
+    },
+    "radii": [
+      3,
+      3,
+      3
+    ],
+    "centerDeltas": [
+      [
+        -2,
+        1
+      ],
+      [
+        10,
+        -4
+      ]
+    ],
+    "reflectionC1ToC2": [
+      5,
+      -2
+    ]
+  },
+  "labelOwnerBindings": [
+    {
+      "label": "C₀",
+      "owner": "first source circle center"
+    },
+    {
+      "label": "C₁",
+      "owner": "translated circle center"
+    },
+    {
+      "label": "C₂",
+      "owner": "origin-reflected final circle center"
+    }
+  ],
+  "strokeBoundingBoxPx": {
+    "minX": 55.83,
+    "minY": 80.83,
+    "maxX": 389.17,
+    "maxY": 289.17,
+    "viewBox": [
+      0,
+      0,
+      640,
+      360
+    ],
+    "inside": true
+  },
+  "visualSemanticParity": "PASS",
+  "actualStaticObservation": "All three center coordinates, equal radius 3, translation delta (−2,1), and origin-reflection endpoint (5,−2) agree with the SVG circles/connectors and its solution. ImageMagick fallback preview displayed subscript-zero glyphs in boxes; this is recorded as converter font fallback and is not used as a geometry model.",
+  "axesReviewed": [
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_CREATE_GOLDEN_PREFLIGHT_V1",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "stage": "CREATE",
+  "preflightCompletedBeforeSolutionAuthoring": true,
+  "qualityAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "fixedGoldenSet": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "rawSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "readQids": [1, 2],
+      "observations": [
+        "q1: internal-section weighting is explained before coordinate formulas; x and y coordinates, midpoint, distance, and final choice are each written as separate mathematical steps.",
+        "q2: parallel slope is identified first, then point substitution determines the intercept; equation transformations and the final requested sum are visible on separate lines."
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "rawSha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "readQids": [1, 2],
+      "observations": [
+        "q1: coordinate differences are made explicit before substitution into the distance formula; radical simplification is shown stepwise.",
+        "q2: each line is first rewritten in slope-intercept form, then the perpendicular-slope condition is applied and solved without hiding the coefficient transformation."
+      ],
+      "visualSample": {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "rawSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+        "actualStaticPreview": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/source-pdf/golden-preflight/hyochoen-q02.png",
+        "expectedFacts": {
+          "labeledPoints": {"A": [-5, 3], "B": [1, -2]},
+          "labeledLine": {"slope": -5/6, "yIntercept": -7/6},
+          "axisPixelOrigin": [300, 210],
+          "pixelScale": 30
+        },
+        "observedPrimitiveFacts": {
+          "ApointPixel": [150, 135],
+          "BpointPixel": [330, 285],
+          "yInterceptPointPixel": [300, 245],
+          "lineEndpointsPixel": [[70, 82.5], [535, 340.8]],
+          "lineSlopeFromPixelFrameApprox": -0.556,
+          "lineYInterceptFromPixelFrameApprox": 0,
+          "AactualPixelMappedCoordinate": [-5, 2.5],
+          "BactualPixelMappedCoordinate": [1, -2.5]
+        },
+        "exception": "NEW_OBSERVED_VISUAL_EXCEPTION",
+        "disposition": "exclude_this_visual_primitive_as_a_model; preserve fixed Golden membership and source bytes",
+        "reason": "line primitive materially misses the labeled A and B point centers and does not pass through the labeled y-intercept; static preview confirms the coordinate mismatch."
+      }
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "rawSha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "actualRead": true,
+    "regressionsApplied": [
+      "A correct SVG label is insufficient; derive facts from actual geometry primitives and check their owners/topology.",
+      "Do not claim small-board PASS from counts; source enumerations and decisive steps must be separated in actual solution blocks.",
+      "Do not claim Meta PASS from an N/N tally; lookups and null reasons must be physically evidenced.",
+      "Check evaluated runtime strings for TeX/control escape damage, not only source literals."
+    ],
+    "failureSvgRead": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "rawSha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "actualStaticPreview": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/source-pdf/golden-preflight/negative-q1.png",
+      "observed": "The rendered axes show the red and blue lines with opposite visual slope roles from the explanatory key text; an SVG text label alone cannot establish slope correctness."
+    }
+  }
+}

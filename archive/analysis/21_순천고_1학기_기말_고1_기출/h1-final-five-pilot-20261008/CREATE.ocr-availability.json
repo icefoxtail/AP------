@@ -1,0 +1,37 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_OCR_CAPABILITY_CHECK_V1",
+  "status": "OCR_NOT_AVAILABLE_MANUAL_FULL_PAGE_SOURCE_READBACK",
+  "checkedAt": "2026-10-08T00:00:00+09:00",
+  "sourcePdfIsImageOnly": true,
+  "pdfplumberExtraction": {
+    "status": "RAN",
+    "sourceCharsByPage": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "companionCharsByPage": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "availableLocalOcr": {
+    "tesseractCommand": false,
+    "pdftotextCommand": false,
+    "pytesseract": false,
+    "easyocr": false,
+    "rapidocr_onnxruntime": false,
+    "paddleocr": false,
+    "doctr": false
+  },
+  "manualFallback": "All six original exam pages and all six companion pages were rendered at 160 dpi, opened and visually read item-by-item. PDF text extraction returned zero characters on every page. ROOT accepts this complete manual source readback for this target; no OCR engine installation/procurement is authorized. OCR execution/PASS is not claimed.",
+  "nextRequiredAction": "NONE_FOR_CREATE_SOURCE_CLOSURE_UNDER_ROOT_DECISION",
+  "rootDecisionRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.root-source-readback-decision.json"
+}

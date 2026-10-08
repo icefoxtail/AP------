@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "artifactSha": "c1b13c90db8893915a27e9067c38e3b147d25882",
+  "artifactRawSha256": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+  "reviewerId": "/root/create_suncheon2021_five",
+  "reviewSessionId": "/root/create_suncheon2021_five",
+  "reviewerModelOrAgent": "archive_create gpt-6-luna/high",
+  "startedAt": "2026-10-08T00:00:00+09:00",
+  "frozenAt": "2026-10-08T03:29:42.407Z",
+  "sourceMode": "ORIGINAL",
+  "sourceExtractionRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.source-extraction-freeze.json",
+  "answerAdjudicationRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.answer-adjudication.json",
+  "questionLayoutRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.question-layout.json",
+  "metaAuditRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.meta-physical-audit.json",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "The ratio weights and x/y point computations are written as separate steps before distance reduction.",
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "Parallel slope then point substitution are explicit; no decisive algebra step is omitted.",
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+          },
+          {
+            "qid": 7,
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Post-validator evidence repair: actual q7 solution SVG opened and its three circle centers, common radius, translation, and origin-reflection topology independently derived from final primitives. Supplement was completed after target authoring and is not represented as an initial preflight observation.",
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ],
+            "observation": "Coordinate differences are computed before the distance formula and radical simplification.",
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+          },
+          {
+            "qid": 2,
+            "axes": [
+              "SOLUTION_LAYOUT",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "observation": "Both line equations are converted to slope-intercept form before applying perpendicular slopes. No geometry visual defect is carried from this qid sample. Static preview was opened; actual point/line owner geometry was compared. NEW_OBSERVED_VISUAL_EXCEPTION: line primitive misses labeled A/B and y-intercept; fixed Golden membership retained, primitive excluded as a visual model.",
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the negative regression README and opened q1-solution.bad.svg actual static PNG. Verified the contract: labels cannot prove geometry; derive coordinate facts from final primitives. Also applied enumeration splitting and runtime-escape checks."
+    }
+  },
+  "ocrStatus": "NOT_RUN_TOOL_UNAVAILABLE; source PDF is image-only (pdfplumber returned 0 chars on all pages); all 6 exam and 6 companion page PNGs were visually checked.",
+  "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+  "sourceCompanionSha256": "2ed553d672b29c19d7c35ce0c32f5a2bd9b3b3c6cb7e4e9df7cedb481f7406a5",
+  "itemHoldCount": 0,
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d26c0ca20fc2c2262cc4b2897d39f69947ae7c48cba47749d98efd6d913d219b",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 1
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 1
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-08",
+          "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 1,
+          "contentSha256": "322255190e53aa41dbcf101abae8e877a9e15115fc3c382b972bfa67ddceb8d8",
+          "choicesSha256": "119a6d81cf8b830697ba7ba1e4042113a222c8a082c3619f03f917d8c647f06f",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "22a6b5d62b84d0ff3f818424d133c8fdc4108df8b05dc871516deae224c7533f",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 1
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 1
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-08",
+          "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+          "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+          "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 1,
+          "contentSha256": "7d10ce9914ee4ce0590b2d8a4520e692b4fef65dff17ba0ef34ca1481ab25e53",
+          "choicesSha256": "015237c472a7114f545e5d37d6fc47a9c78e6920c48cbddea2f32cfaceb7e28f",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7012911e6ff3d8b98bd0f8fabc21440ef09885bc9c34b27088bd3d77d6f966ee",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 1
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 1
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_DIRECT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 1,
+          "contentSha256": "5654546664089204f9fb3787baecd3164fa8ff4cdf0d4eb1b613e9f7e535d505",
+          "choicesSha256": "90f91a8c9923a97763ef3451bc5a987fcfc7d389a061e3acdcc95e8377a38dd8",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "89a5c705c2ed10b3622e24e94cff8e333ef8897939aa39c5b602a61d5bbe6257",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 1
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 1
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-10",
+          "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 1,
+          "contentSha256": "700eff569f793e590cdcfcbf0553db84b6836aedcaf9d5e138b98be5ce0d8fef",
+          "choicesSha256": "9b7fd860e44fb7baed2579b77359bf21b7bf1fd3b6480dcc3f2647ab0eaee9bd",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "80adcd6eb745906829d44b69b1bfe31e98144bede95d8fdcee20503714cfd912",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "MINIMAL_BOUNDARY_SPLIT",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 2
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 2
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-10",
+          "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 2,
+          "contentSha256": "1f16e2884e6844acb24b3b172be0ce3e4f08c2cb2c73a56d81e01f9269ed3fd1",
+          "choicesSha256": "1d7a1ff1c4776d84a6cbcaecbe91b15cf4eff3b2bb17ae49042b4b25c9ce975a",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "010dc2b6d9f6db1899d48d61797704d4ad3c3953937e1d491258cc0d8b6ae998",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 2
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 2
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 2,
+          "contentSha256": "2cdfa7e81f140e32657043b80c4e98d48b17d41fd17c0de6f71b2f6d299d9fb6",
+          "choicesSha256": "d0e015d604a51dba94a651eb2bacc5e6f7e90b525fe17a2d09b4813fcc08fcf1",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "84bc36a62dae4d1c35614543da6c0c8552e7ac29adda8887f1b8403bdd6ec12d",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 2
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 2
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 2,
+          "contentSha256": "28c72c6fc2ff04b3fb575e63b8e5c5e595115b81c662104a19cc4044c2a0be4a",
+          "choicesSha256": "9b9f1c933d2c434d23c08e847bc8757e03013eca52119506e7d5f56bb706b68f",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a293a7259d1073e8b903e679d31d9956b8009329c67c05fb84cb3c0c531b5d0b",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 2
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 2
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-13",
+          "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 2,
+          "contentSha256": "d44ae0d3e6f5517f9133c1556d04f5b84fb9baf49370005f9dfc75c9c3a360a0",
+          "choicesSha256": "7353a7c63c1c61992d55eef62eb503d5892a061c9db1c5bfc9dc232efd3da308",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a6a97da2b2679096339936b2405c115908428e9bd1e805da364fa9ae84917c7f",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "MINIMAL_BOUNDARY_SPLIT",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 3
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 3
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "problemTypeKey": "PT_COORD_SECTION",
+          "templateKey": "TPL_SECTION_BOTH",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 3,
+          "contentSha256": "1a3d1b4328cd9f2cd58b743e194307ffb13ec491b7afd6ee663b2d94089e157c",
+          "choicesSha256": "625110a8b69244f8e054abf2330fdd53a005c2c60f03a26eb1cc99f21cc205a7",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7b64ff91c0168c3e6d049e252431ebed1065cd48cd1cd7ef2e7d18f8923007f9",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 3
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 3
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "problemTypeKey": "PT_COORD_EQUIDISTANT",
+          "templateKey": "TPL_EQUIDISTANT_LINE",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 3,
+          "contentSha256": "5c8e60bc2bba731e17f83d52bec29b4d088f3e72af2ae0e0bd05a8fb346438e1",
+          "choicesSha256": "964271fd109cb43d7d2dd9be2319f7028acfa03f54a692534514537330345e2e",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8f63af9d229f3a229eacc4137473c736d546c564d4c03eb6518b2b09b8f048dc",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 3
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 3
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_POINT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 3,
+          "contentSha256": "43281e9979b9592653dd3903ea60766c88c417a3ae29eb827061c1085658bfba",
+          "choicesSha256": "feb185fb5c92202683d330b51cf091a835ffd2976e05cda3d6ff4137cd9d8c34",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "038916b0fcb1d1e8939170dd1fb96350da06102ed128d3c580929c577e4aa929",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 3
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 3
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_SECTION",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 3,
+          "contentSha256": "2855733a48b0aab0869817f7b25cbb70715ed43dca8f2d647b6c27e99a31f722",
+          "choicesSha256": "3b98ddea3207d3b20be40e6146f2af4178571abd1d97f14f8302033844fc0b7b",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a5217cc8a90e3b2687364afab3e09e3972942715f8cf9947f60ac8983515d757",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 4
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 4
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "templateKey": "TPL_CENTROID_APPLICATION",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "KEEP_SOURCE_CROP",
+          "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q13-source.png",
+          "sha256": "ed4d6f1ccc925fef1c83f7c25bd49eb55b53d265973515afe30696f126d8075f",
+          "sourcePage": 4
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 4,
+          "contentSha256": "1d1865813b09ad7b04b53c6ab82cff11717a7bb9dfb11ff56e40110da84016e0",
+          "choicesSha256": "0b932f09c138f3d144f230adf5f92fee2306dd2174352aa7236e7c6de39eab78",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a2c9bb9a711aed99466d285f8cfc78bb4211d7da1b34523fc9d92409840cc2cd",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 4
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 4
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_DIRECT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "KEEP_SOURCE_CROP",
+          "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q14-source.png",
+          "sha256": "4b5aeee1b3b80511bf9375b262730924c83e3b434971ff1ee6ad184c875bfaa2",
+          "sourcePage": 4
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 4,
+          "contentSha256": "5dbca7afda81e7ce1623fbb60ab14cd11b706c9c2071af0ed63f2883d52dd54e",
+          "choicesSha256": "ebb443eccdb14874856e0eb5c7b00fa4c968eb3566927473c4dc87d7b7b4719a",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6e5ae8ba6a9e678e2d7ef877fe0f2bd909caea1e60dfa3db6c860ccd73abdfec",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 4
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 4
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-TANGENT",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD",
+          "source": "independent solution SVG; actual PNG preview opened",
+          "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution.svg",
+          "reviewRef": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/preview-cache/1c385dd66d2ae01cf9946befd781754d3e58ce5cb82aa4b65fa14abecc603dbc/preview.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 4,
+          "contentSha256": "54c7d35f5263b12087c16bb47d5092963a1b660930468577fcc13a322b67d33b",
+          "choicesSha256": "d5257328cdc2b832fdcfcc94b0619234bd36372804d2b0cc3fa08b0beedf4030",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9d436536b444be2e62e3d2e313c776efe60a4e4af23ff4d1e1b49f91281fadc3",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 4
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 4
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD",
+          "source": "independent solution SVG; actual PNG preview opened",
+          "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution.svg",
+          "reviewRef": ".tmp/archive/h1-final-five-pilot-20261008/21_순천고_1학기_기말_고1_기출/preview-cache/e0bae64882c643fe1a8781b6d0db77456f45c53d5fd62516a82e5d5edd6222b2/preview.png"
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 4,
+          "contentSha256": "defe84bbc3987530939e4814949f4c63c557c7e4f15cff2e9293b265fd1dc5d9",
+          "choicesSha256": "7674bbd56aaf6a4278ac998df6eedd58f7a8dbf798f13796d8546c071e864a59",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7023a57a50af77b8eae3bcc06a983e0b0f74421483eb8430dc57456ff3cd2ec0",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 5
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 5
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "templateKey": "TM_CIRCLE_POINT_DISTANCE",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 5,
+          "contentSha256": "6a51460b8618deb71d42d6e66e505ace1608b28a0d98535246dbcde3d2131ea7",
+          "choicesSha256": "09604bf88f4b960aa76226444514c67cdd2fac435c06211a13ebd8a7ed6c439d",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e4639abcc36b3c4926912bd0544e95dbc4b0ea1888bf7e41ec06b4b2380df9c9",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 5
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 5
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-13",
+          "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 5,
+          "contentSha256": "2e7806700c89e8736a364750d5c20f8da43f01cba4b783db0b23b2b47aac40b5",
+          "choicesSha256": "847be914eccf06bbcaeb84281c1ff565c645785b9a7db7c3581f3c12f53cc1a6",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0d16393d603d22609d67f373f2c9b72a864ed32dec23af70bdf489dc769ed8c4",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "EXACT",
+          "sourcePage": 5
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 5
+        },
+        "meta": {
+          "status": "PASS_WITH_META_ONLY_DEBT",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+          "templateKey": null,
+          "projectionStatus": "TEMPLATE_UNMATERIALIZED",
+          "nullDebt": {
+            "fields": [
+              "templateKey"
+            ],
+            "reason": "Current ACTIVE PT_COORD_DISTANCE_OPTIMIZATION is bound for this L1/L2, but the ACTIVE template set offers distance-sum minimum, squared-sum minimum, vertex-squared-sum minimum, and product maximum; no exact template for maximizing AP−BP was found. Preserve the current source-semantic PT and leave template null for R1 adjudication."
+          }
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 5,
+          "contentSha256": "01810efbb61b4b36f4d19f72922ab9f4220334e3632bde876e74f732aabfa510",
+          "choicesSha256": "4e52600e4b06b1f47594ec9138cf3ac3152b9dd46bb41a21a44b54142183cab0",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "Current ACTIVE PT_COORD_DISTANCE_OPTIMIZATION is bound for this L1/L2, but the ACTIVE template set offers distance-sum minimum, squared-sum minimum, vertex-squared-sum minimum, and product maximum; no exact template for maximizing AP−BP was found. Preserve the current source-semantic PT and leave template null for R1 adjudication."
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3ce5df08318f9b9f2cdee7256f4a5220546be92c8ac43bec9dd156efdbf2ffe3",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "NOT_APPLICABLE",
+          "sourcePage": 6
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 6
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-11",
+          "subUnitKey": "H15-SA-11-TANGENT",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENCY_CONDITION",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 6,
+          "contentSha256": "447af730cba9e0bce546bac3b6d6db11765dac695e7ac742690cc40820451978",
+          "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e4ba37dbfa0366bd1a73f585d0847ecd077b88b9c84520629b2ba171e48569a7",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "MINIMAL_BOUNDARY_SPLIT",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "NOT_APPLICABLE",
+          "sourcePage": 6
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 6
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-08",
+          "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 6,
+          "contentSha256": "5224a828b7ee5f696c0425331dd5e44fe5801e2af977358129d65e9e58f725ea",
+          "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ad4bfdc6c3903eddc4a9f72f4d49fe382e4005771fb2c88a7a645856458eb078",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "parity": "SOURCE_TEXT_EXACT_PARITY",
+          "choicesParity": "NOT_APPLICABLE",
+          "sourcePage": 6
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "checks": [
+            "teacher-language purpose is explicit",
+            "decisive transformations and substitutions appear as separate lines",
+            "conditions and cases are applied before conclusion",
+            "final answer is explicit"
+          ],
+          "sourcePage": 6
+        },
+        "meta": {
+          "status": "PASS",
+          "physicalFieldCount": 17,
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-09",
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_DIRECT",
+          "projectionStatus": "ACTIVE_KEY_SELECTED",
+          "nullDebt": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "EXEMPT",
+          "rationale": "No source visual to preserve and a new visual adds no necessary decisive information for this item."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+          "sourcePage": 6,
+          "contentSha256": "80e9e6a7a86e5ee5cd14aae1843eccf705e677b59be06372be1e731f34a22c2d",
+          "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "manualVisualTranscriptionComparedToPage": true,
+          "companionCrosschecked": true
+        }
+      }
+    }
+  ],
+  "previewCacheEvidenceRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.preview-cache-evidence.json",
+  "visualStaticAuditRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.visual-static-audit.json",
+  "createPreflightRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.preflight.json",
+  "pdfTextExtractionRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.pdf-text-extraction.json",
+  "sourceOcrStatus": "OCR_NOT_AVAILABLE_MANUAL_FULL_PAGE_SOURCE_READBACK",
+  "ocrCapabilityRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.ocr-availability.json",
+  "metaResolutionCheckRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.meta-resolution-check.json",
+  "sourceExtractionFreezeRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.source-extraction-freeze.json",
+  "sourceReadbackDecisionRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.root-source-readback-decision.json",
+  "goldenCalibrationSupplement": {
+    "status": "POST_AUTHORING_VISUAL_EVIDENCE_REPAIR",
+    "reason": "First generic validator required a visual sample row for each selected Golden file containing any solution SVG. The initial preflight and target artifact were preserved; this supplement is not retroactively claimed as pre-authoring review.",
+    "ref": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.golden-q07-visual-review.json",
+    "sha256": "158e373419dc2f84bc58f7f7beef0fd5ca993e4bc0f5369298ca9e47c341b787"
+  },
+  "technicalHashes": {
+    "rawSha256": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+    "validatorRawBufferBlobSha1": "c1b13c90db8893915a27e9067c38e3b147d25882",
+    "gitCleanFilterBlobSha1": "c1b13c90db8893915a27e9067c38e3b147d25882"
+  }
+}
