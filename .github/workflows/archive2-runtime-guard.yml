@@ -40,3 +40,11 @@ jobs:
           node-version: 22
       - name: Verify original routes, response budgets, and storage failures
         run: node tools/check-archive2-runtime.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Verify finder desktop single row and mobile exam period in actual Chrome
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-archive2-finder-filter-browser.cjs
