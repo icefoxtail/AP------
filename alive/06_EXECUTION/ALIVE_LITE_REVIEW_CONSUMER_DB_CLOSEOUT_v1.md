@@ -3,6 +3,12 @@
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
+## CURRENT — 학생용 목적 적합성 및 canonical 표시 검증 (2026-10-09)
+- A 반복 숙달에는 조건을 만족한 수치변형을 허용하고 고유 Blueprint 수와 분리한다. B 사고 확장과 C 실전 평가에서는 학생이 실제 경험하는 새 판단·실전형 종합을 최종 발문으로 확인한다. 교육 목적 A/B/C는 ALIVE MODE 검증 계약과 별개다.
+- 수학 독립 풀이뿐 아니라 발문이 요구하는 답의 종류와 5지 보기 형식, 한국어 상세 해설, 교과 개념 용어, 응답 자연성, 그림·수식 완결성을 함께 확인한다.
+- Consumer 등록 시 canonical master에서 standardUnitKey/subUnitKey의 표시값(labelKo)을 대조하여 question.standardUnit/question.subUnit과 일치시킨다. 키가 활성화되어 있어도 표시 불일치가 자동으로 정당화되지는 않는다.
+- layoutTag는 해당 JS/Consumer 계약의 허용 목록으로 검사한다. 실제 Chrome 검색·선택 PASS와 콘텐츠/메타 품질 PASS는 서로 다른 상태다.
+
 ## 1. 책임과 완료의 정의
 - CREATE 채팅 = 전체 source 스캔·배치 A/B/C/D·생성 JS/Meta/SVG/UID/manifest/receipt 브랜치 저장. CREATE는 독립 수학 PASS·학생 공급·Consumer 등록을 선언하지 않는다.
 - **REVIEW+MAIN 채팅이 단일 완료 책임자**다. 생성 브랜치 readback → 독립 수학검수 → 선택지 품질/정답 위치 분석 → 핀포인트 수리 → 승인 UID 확정 → Archive 2.0 **실제 학생용 Consumer DB 등록** → 학생 검색·문항 조회/선택 검증 → main push/remote readback까지 같은 채팅에서 닫는다. 기술 구현이 필요하더라도 담당 역할을 다른 정상 검수 단계로 떠넘기지 않는다.
