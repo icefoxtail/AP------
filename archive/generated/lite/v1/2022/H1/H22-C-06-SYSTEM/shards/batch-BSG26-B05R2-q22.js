@@ -26,7 +26,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$8$",
     "solution": "$(x+2)(x-5)\\le0$에서 $-2\\le x\\le5$이므로 후보 정수는 $-2,-1,0,1,2,3,4,5$이다.\n$|x-k|\\lt3$에서 정수 $x$는 $k-2,k-1,k,k+1,k+2$의 다섯 정수에 속한다.\n공통 정수해가 있으려면 $-4\\le k\\le7$이다. 이 범위에서 정수해의 합을 조사하면 $k=1$일 때 $\\{-1,0,1,2,3\\}$으로 합이 $5$이고, $k=7$일 때 $\\{5\\}$로 합이 $5$이다.\n그 밖의 $k=-4,-3,-2,-1,0,2,3,4,5,6$에서는 합이 각각 $-2,-3,-3,-2,0,10,15,14,12,9$이므로 해당하지 않는다.\n따라서 가능한 $k$의 합은 $1+7=8$이다.\n따라서 구하는 값은 $8$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -54,7 +57,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$",
     "solution": "두 번째 부등식의 정수해는 $0,1,2,3,4,5,6$이다.\n$|x-k|\\lt2$를 만족하는 정수는 $k-1,k,k+1$의 세 개이다.\n공통 정수해가 세 개이려면 이 세 수가 모두 $0$ 이상 $6$ 이하여야 하므로 $k-1\\ge0$, $k+1\\le6$이다.\n따라서 $1\\le k\\le5$이고 가능한 정수 $k$는 $1,2,3,4,5$의 다섯 개이다.\n따라서 구하는 값은 $5$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -82,7 +88,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$3$",
     "solution": "이차부등식의 정수해는 $-1,0,1,2,3,4$이고 절댓값 부등식의 정수해는 $k-1,k,k+1$이다.\n공통해가 정확히 하나만 남으려면 움직이는 세 정수가 고정 구간의 왼쪽 끝 $-1$만 포함하거나 오른쪽 끝 $4$만 포함해야 한다.\n왼쪽에서는 $k=-2$일 때 $\\{-3,-2,-1\\}$과의 교집합이 $\\{-1\\}$이다. 오른쪽에서는 $k=5$일 때 $\\{4,5,6\\}$과의 교집합이 $\\{4\\}$이다.\n$k=-1$이나 $k=4$이면 공통 정수가 두 개 생기므로 제외된다. 가능한 $k$의 합은 $-2+5=3$이다.\n따라서 구하는 값은 $3$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -110,7 +119,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$3$",
     "solution": "$x(x-4)\\le0$의 정수해는 $0,1,2,3,4$이다.\n$|x-k|\\le1$의 정수해는 $k-1,k,k+1$이며, 두 집합이 서로 만나지 않으려면 $k-1>4$이거나 $k+1<0$이어야 한다.\n조건 $0\\le k\\le8$에서는 두 번째 가능성은 없고 $k>5$만 가능하므로 $k=6,7,8$이다.\n따라서 가능한 $k$는 세 개이다.\n따라서 구하는 값은 $3$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -138,7 +150,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$",
     "solution": "$(x-1)(x-5)\\le0$에서 정수해는 $1,2,3,4,5$이다.\n$|x-k|\\lt2$에서 정수해는 $k-1,k,k+1$의 세 연속된 정수이다.\n교집합이 $\\{4,5\\}$가 되려면 세 수가 $4,5,6$이어야 한다. 따라서 $k=5$이다.\n실제로 $k=5$이면 절댓값 부등식의 해가 $4,5,6$이고 고정 정수해와의 교집합은 $\\{4,5\\}$이므로 조건에 맞는다.\n따라서 구하는 값은 $5$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -166,13 +181,16 @@ window.questionBank = [
     "choices": [],
     "answer": "$12$",
     "solution": "고정된 정수해는 $1,2,3,4,5$이며 절댓값 부등식은 연속된 세 정수 $k-1,k,k+1$을 허용한다.\n모든 공통 정수해는 최대 세 개이므로, 합을 최대화하려면 고정 집합의 큰 수부터 세 개 $3,4,5$가 모두 포함되어야 한다.\n이 집합을 만드는 $k$는 $4$이고 이때 공통해는 $\\{3,4,5\\}$로 합이 $12$이다.\n두 개 이하의 공통해라면 합은 최대 $4+5=9$이므로 $12$를 넘을 수 없다.\n따라서 구하는 값은 $12$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
     "uid": "ALITE-BSG26-B05R2-Q22-S07",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "연립부등식",
     "originalCategory": "연립부등식",
     "standardCourse": "공통수학1",
@@ -194,7 +212,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$7$",
     "solution": "$x^2-4=(x-2)(x+2)\\ge0$이므로 $x\\le-2$ 또는 $x\\ge2$이다.\n$|x-1|\\lt4$는 $-3\\lt x\\lt5$이므로 가능한 정수는 $-2,-1,0,1,2,3,4$이다.\n두 조건을 동시에 만족하는 정수는 $-2,2,3,4$이므로 합은 $-2+2+3+4=7$이다.\n따라서 구하는 값은 $7$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -222,7 +243,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$2$",
     "solution": "$x(x-6)\\le0$의 정수해는 $0,1,2,3,4,5,6$이고, $|x-k|\\le2$의 정수해는 $k-2,k-1,k,k+1,k+2$이다.\n다섯 정수 중 정확히 네 개가 $0$ 이상 $6$ 이하가 되려면 왼쪽 끝에서 하나가 벗어나거나 오른쪽 끝에서 하나가 벗어나야 한다.\n왼쪽에서는 $k=1$일 때 $\\{-1,0,1,2,3\\}$ 중 $0,1,2,3$만 남고, 오른쪽에서는 $k=5$일 때 $\\{3,4,5,6,7\\}$ 중 $3,4,5,6$만 남는다.\n그 밖의 $k$는 교집합의 크기가 4가 아니므로 가능한 $k$는 두 개이다.\n따라서 구하는 값은 $2$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -250,7 +274,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$2$",
     "solution": "$(x+1)(x-5)\\lt0$에서 $-1\\lt x\\lt5$이므로 고정 정수해는 $0,1,2,3,4$이다.\n절댓값 부등식의 정수해는 $k-1,k,k+1$이다.\n구간 내부에서 세 수가 모두 남는 경우 합은 $3k$이므로 $3k=6$에서 $k=2$이다.\n실제로 $k=2$이면 공통 정수해는 $1,2,3$으로 합이 $6$이다. 양 끝에서 일부가 잘리는 경우의 합은 $k=-1,0,4,5$에서 각각 $0,1,7,4$이므로 다른 해는 없다.\n따라서 구하는 값은 $2$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -278,6 +305,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$3$",
     "solution": "고정된 정수해는 $-1,0,1,2,3,4$이고, 절댓값 조건의 정수해는 $k-2,k-1,k,k+1,k+2$이다.\n교집합의 최솟값이 $1$이려면 절댓값 조건에서 허용하는 가장 작은 정수가 $1$이어야 한다. 즉 $k-2=1$이다.\n여기서 $k=3$이고, 실제로 절댓값 조건의 정수해는 $1,2,3,4,5$이므로 고정 구간과의 교집합은 $1,2,3,4$가 된다.\n최솟값과 최댓값을 모두 만족하므로 답은 $3$이다.\n따라서 구하는 값은 $3$이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
