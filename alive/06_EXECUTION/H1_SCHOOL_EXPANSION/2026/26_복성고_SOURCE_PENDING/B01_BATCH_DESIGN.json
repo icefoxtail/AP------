@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "ALIVE_LITE_BATCH_DESIGN_v1",
+  "batchId": "B01",
+  "sourceQids": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    12,
+    15
+  ],
+  "authority": "rpm-primary-v1.0/high1.json",
+  "state": "B_DESIGN_FROZEN_FOR_PRODUCTION",
+  "sourceRows": [
+    {
+      "sourceQid": 1,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "조합의 뜻과 계산",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q01-BP01",
+          "targetL4": "조합 계산",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "순열·조합 연산식을 값 계산",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q01-BP02",
+          "targetL4": "순열과 조합 구별",
+          "rpmL4Status": "RPM_ONLY",
+          "decisiveStepSignature": "역으로 n 결정, factorial과 조합 비교",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q01-BP03",
+          "targetL4": "조합 계산",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "수치만 변경",
+          "disposition": "DUPLICATE",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 2,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "순열",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q02-BP01",
+          "targetL4": "특정 조건 배열",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "여학생 인접 블록화",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q02-BP02",
+          "targetL4": "특정 조건 배열",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "여학생 비인접 여사건",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q02-BP03",
+          "targetL4": "특정 조건 배열",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "양끝 여성 고정",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q02-BP04",
+          "targetL4": "일렬 배열",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "이름만 바뀐 단순 일렬배열",
+          "disposition": "L3_DRIFT",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 4,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "다항식의 곱셈",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q04-BP01",
+          "targetL4": "고차식 전개",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "겹치지 않는 문자항 개수",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q04-BP02",
+          "targetL4": "고차식 전개",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "동류항 중복제거·특정 계수",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q04-BP03",
+          "targetL4": "곱셈공식",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "정형 전개 단순 공식 암기",
+          "disposition": "L3_DRIFT",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 6,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "행렬의 연산",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q06-BP01",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "두 선형결합의 지정성분",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q06-BP02",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "선형결합 행렬 등식의 미지성분",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q06-BP03",
+          "targetL4": "행렬의 곱셈",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "행렬곱을 주연산으로 변경",
+          "disposition": "L3_DRIFT",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 7,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "연립일차부등식",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q07-BP01",
+          "targetL4": "해의 범위",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "동시 부등식 끝값",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q07-BP02",
+          "targetL4": "정수해",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "끝값과 정수해 집계",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q07-BP03",
+          "targetL4": "해의 범위",
+          "rpmL4Status": "RPM_CROSSWALK",
+          "decisiveStepSignature": "해집합의 여집합 부등식으로 변경",
+          "disposition": "L3_DRIFT",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 12,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "ANALYZED",
+      "rpmL3": "분할·분배",
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q12-BP01",
+          "targetL4": "선택 후 배치",
+          "rpmL4Status": "RPM_ONLY",
+          "decisiveStepSignature": "종류별 선택 이후 전체 순서",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q12-BP02",
+          "targetL4": "선택 후 배치",
+          "rpmL4Status": "RPM_ONLY",
+          "decisiveStepSignature": "종류별 선택 이후 특정 장르 첫째 제한",
+          "disposition": "ACCEPT",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q12-BP03",
+          "targetL4": "선택 후 배치",
+          "rpmL4Status": "RPM_ONLY",
+          "decisiveStepSignature": "장르 이름만 변경",
+          "disposition": "DUPLICATE",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    },
+    {
+      "sourceQid": 15,
+      "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceAnalysisStatus": "PRIMARY_L3_UNRESOLVED",
+      "rpmL3": null,
+      "blueprints": [
+        {
+          "id": "BSG26-B01-Q15-BP01",
+          "targetL4": "미확정",
+          "rpmL4Status": "HOLD",
+          "decisiveStepSignature": "4의 배수 끝 두 자리 계수·경우의 수",
+          "disposition": "HOLD",
+          "generatedUids": []
+        },
+        {
+          "id": "BSG26-B01-Q15-BP02",
+          "targetL4": "미확정",
+          "rpmL4Status": "HOLD",
+          "decisiveStepSignature": "6의 배수 자리수·반복 허용",
+          "disposition": "HOLD",
+          "generatedUids": []
+        }
+      ],
+      "sourceStatus": "SOURCE_CONTINUATION_REQUIRED",
+      "unexploredL4Reason": "Full semantic L4 branch space not exhausted at design phase. Each generation item will preserve continuation."
+    }
+  ]
+}
