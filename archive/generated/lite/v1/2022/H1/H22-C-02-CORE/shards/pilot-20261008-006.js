@@ -23,13 +23,13 @@ window.questionBank = [
     ],
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여 $\\{P(x)\\}^2+xP(x)=(x^2-2x+3)(x^2-x+3)$을 만족시킨다. $P(2)$의 값은?",
     "choices": [
+      "0",
+      "$\\frac12$",
       "1",
       "2",
-      "3",
-      "4",
-      "5"
+      "3"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 우변 두 인수의 차이가 $x$임을 이용한다.\n$Q(x)=x^2-2x+3$이라 하면 주어진 식은 $P(x)^2+xP(x)=Q(x)^2+xQ(x)$이다.\n따라서 $(P-Q)(P+Q+x)=0$이 항등식이므로 $P=Q$ 또는 $P=-Q-x$이다.\n후자는 최고차항의 계수가 음수이므로 제외한다.\n따라서 $P(x)=x^2-2x+3$이고 $P(2)=3$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
@@ -59,12 +59,12 @@ window.questionBank = [
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 $\\{P(x)\\}^2+2xP(x)=(x^2+x+1)(x^2+3x+1)$을 항등식으로 만족할 때, $P(-1)$의 값은?",
     "choices": [
       "-1",
-      "0",
       "1",
       "2",
-      "3"
+      "3",
+      "4"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] 두 인수의 차이를 확인하여 다항식을 복원한다.\n$Q(x)=x^2+x+1$로 놓으면 $P^2+2xP=Q(Q+2x)$이다.\n$(P-Q)(P+Q+2x)=0$이므로 $P=Q$ 또는 $P=-Q-2x$이다.\n최고차항이 양수인 경우는 $P=Q$뿐이다.\n따라서 $P(-1)=1-1+1=1$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
@@ -93,13 +93,13 @@ window.questionBank = [
     ],
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 $\\{P(x)\\}^2+(2x-2)P(x)=(x^2-3x+4)(x^2-x+2)$를 항등식으로 만족한다. $P(1)$의 값은?",
     "choices": [
-      "-2",
       "0",
-      "2",
-      "4",
-      "6"
+      "$\\frac12$",
+      "1",
+      "$\\frac32$",
+      "2"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 우변에 있는 두 인수의 차이로 $P(x)$를 판정한다.\n$Q(x)=x^2-3x+4$로 놓으면 우변은 $Q(Q+2x-2)$이다.\n양변의 차를 인수분해하면 $(P-Q)(P+Q+2x-2)=0$이다.\n최고차항의 계수가 양수인 다항식은 $P=Q$이므로 $P(1)=1-3+4=2$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
@@ -128,13 +128,13 @@ window.questionBank = [
     ],
     "content": "최고차항의 계수가 $1$인 이차다항식 $P(x)=x^2+ax+b$가 $\\{P(x)\\}^2+(x+2)P(x)=x^4+3x^3+6x^2+5x+3$을 항등식으로 만족할 때, $a+b$의 값은?",
     "choices": [
-      "0",
       "1",
       "2",
       "3",
-      "4"
+      "5",
+      "6"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] 양변의 동류항 계수를 비교한다.\n$P(x)^2=x^4+2ax^3+(a^2+2b)x^2+2abx+b^2$이다.\n$(x+2)P(x)=x^3+(a+2)x^2+(b+2a)x+2b$이다.\n$x^3$의 계수에서 $2a+1=3$이므로 $a=1$이다.\n$x^2$의 계수에서 $a^2+2b+a+2=6$이므로 $b=1$이다.\n따라서 $a+b=2$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
@@ -164,12 +164,12 @@ window.questionBank = [
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 $\\{P(x)\\}^2+xP(x)=(x^3-2x+1)(x^3-x+1)$을 항등식으로 만족할 때, $P(2)$의 값은?",
     "choices": [
       "1",
+      "2",
       "3",
-      "5",
-      "7",
-      "9"
+      "4",
+      "5"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 높은 차수에서도 우변 인수 차이와 최고차항 조건을 이용한다.\n$Q(x)=x^3-2x+1$이라 놓으면 우변은 $Q(Q+x)$이다.\n$(P-Q)(P+Q+x)=0$이므로 $P=Q$ 또는 $P=-Q-x$이다.\n두 번째는 최고차항의 계수가 음수이다.\n따라서 $P=x^3-2x+1$이고 $P(2)=8-4+1=5$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
@@ -198,13 +198,13 @@ window.questionBank = [
     ],
     "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 $\\{P(x)\\}^2-2xP(x)=(x^2+1)(x-1)^2$을 항등식으로 만족시킨다. $P(1)$의 값은?",
     "choices": [
-      "0",
-      "1",
       "2",
       "3",
-      "4"
+      "4",
+      "6",
+      "7"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[키포인트] 양변에 $x^2$을 더해 완전제곱식으로 만든다.\n$(P-x)^2=(x^2+1)(x-1)^2+x^2=(x^2-x+1)^2$이다.\n따라서 $P-x=\\pm(x^2-x+1)$이다.\n최고차항의 계수가 양수이므로 $P-x=x^2-x+1$이며 $P=x^2+1$이다.\n따라서 $P(1)=2$이다.",
     "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
     "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",

@@ -24,13 +24,13 @@ window.questionBank = [
     ],
     "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때, $(\\omega-1)(\\overline{\\omega}-1)$의 값은?",
     "choices": [
-      "1",
       "2",
       "3",
       "4",
-      "5"
+      "5",
+      "6"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] 두 켤레 허근의 합과 곱을 이용해 식을 전개한다.\n$\\omega$와 $\\overline{\\omega}$는 $x^2+x+1=0$의 두 근이므로 $\\omega+\\overline{\\omega}=-1$, $\\omega\\overline{\\omega}=1$이다.\n$(\\omega-1)(\\overline{\\omega}-1)=\\omega\\overline{\\omega}-(\\omega+\\overline{\\omega})+1$이다.\n따라서 $1-(-1)+1=3$이다.",
     "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
     "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM"

@@ -23,13 +23,13 @@ window.questionBank = [
     ],
     "content": "방정식 $(x^2-4x+1)(x^2-4x+7)=55$의 한 허근을 $\\omega$라 할 때, $\\omega^2-4\\omega$의 값은?",
     "choices": [
+      "-20",
+      "-18",
       "-16",
       "-14",
-      "-12",
-      "-10",
-      "-8"
+      "-12"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 공통부분 $t=x^2-4x$로 치환하고 허근에 해당하는 분기만 선택한다.\n$(t+1)(t+7)=55$이므로 $(t-4)(t+12)=0$이다.\n$t=4$는 $x^2-4x-4=0$으로 두 실근을 만든다.\n$t=-12$는 $x^2-4x+12=0$으로 판별식 $16-48<0$이어서 허근을 만든다.\n따라서 $\\omega^2-4\\omega=-12$이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
@@ -58,13 +58,13 @@ window.questionBank = [
     ],
     "content": "실수계수 방정식 $(x^2-2x+2)(x^2-2x+6)=77$의 한 허근을 $\\omega$라 할 때, $\\omega\\overline{\\omega}$의 값은?",
     "choices": [
-      "9",
       "11",
       "13",
       "15",
-      "17"
+      "19",
+      "21"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] 허근을 주는 이차방정식을 분리하여 근과 계수의 관계를 사용한다.\n$t=x^2-2x$로 놓으면 $(t+2)(t+6)=77$, 즉 $(t-5)(t+13)=0$이다.\n$t=5$는 실근을 만들고 $t=-13$은 $x^2-2x+13=0$으로 허근을 만든다.\n이차방정식의 두 허근은 켤레복소수이므로 $\\omega\\overline{\\omega}=13$이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
@@ -93,13 +93,13 @@ window.questionBank = [
     ],
     "content": "실수계수 방정식 $(x^2-2x+1)(x^2-2x+5)=32$의 한 허근을 $\\omega$라 할 때, $\\omega^2+\\overline{\\omega}^{\\,2}$의 값은?",
     "choices": [
+      "-22",
+      "-20",
       "-18",
       "-16",
-      "-14",
-      "-12",
-      "-10"
+      "-14"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 허근을 가진 이차방정식에서 두 켤레근의 합과 곱을 구한다.\n$t=x^2-2x$를 대입하면 $(t+1)(t+5)=32$에서 $(t-3)(t+9)=0$이다.\n$t=-9$에 대응하는 $x^2-2x+9=0$만 허근을 갖는다.\n따라서 $\\omega+\\overline{\\omega}=2$, $\\omega\\overline{\\omega}=9$이다.\n$\\omega^2+\\overline{\\omega}^{\\,2}=2^2-2\\cdot9=-14$이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
@@ -163,13 +163,13 @@ window.questionBank = [
     ],
     "content": "방정식 $(x^2-6x+2)(x^2-6x+8)=72$의 모든 실근의 합은?",
     "choices": [
-      "2",
-      "4",
       "6",
       "8",
-      "10"
+      "10",
+      "14",
+      "16"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[키포인트] 실근을 갖는 치환값을 판별식으로 선별한다.\n$t=x^2-6x$로 놓으면 $(t+2)(t+8)=72$에서 $(t-4)(t+14)=0$이다.\n$t=4$인 $x^2-6x-4=0$은 서로 다른 두 실근을 갖는다.\n$t=-14$인 $x^2-6x+14=0$은 판별식이 $36-56<0$이므로 실근이 없다.\n따라서 실근 전체의 합은 $6$이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
@@ -198,13 +198,13 @@ window.questionBank = [
     ],
     "content": "방정식 $(x^2-6x+3)(x^2-6x+9)=112$의 네 근의 곱은? (단, 허근도 포함한다.)",
     "choices": [
+      "-105",
+      "-100",
       "-95",
       "-90",
-      "-85",
-      "-80",
-      "-75"
+      "-85"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 치환 후 두 이차방정식의 근의 곱을 각각 계산한다.\n$t=x^2-6x$라 하면 $(t+3)(t+9)=112$에서 $(t-5)(t+17)=0$이다.\n$t=5$인 이차방정식은 $x^2-6x-5=0$으로 두 근의 곱은 $-5$이다.\n$t=-17$인 이차방정식은 $x^2-6x+17=0$으로 두 근의 곱은 $17$이다.\n따라서 네 근의 곱은 $(-5)\\times17=-85$이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
