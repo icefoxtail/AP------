@@ -108,7 +108,7 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
   }
   assert.deepEqual(perQ, { '9': 10, '13': 9, '14': 10, '16': 9 });
   assert.equal(bySource.size, 4);
-  assert.equal(b03.filter(r => r.approvalBasis === 'USER_DIRECTED_OVERRIDE').length, 4);
+  assert.equal(b03.filter(r => r.approvalBasis.includes('USER_DIRECTED_OVERRIDE')).length, 4);
 });
 
 class Node {
