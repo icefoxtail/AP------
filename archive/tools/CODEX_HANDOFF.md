@@ -97,6 +97,20 @@ node archive/tools/archive-codex-handoff.mjs scope-plan `
 
 Existing source freezes, failure records, completion events, and reports are never overwritten. Declared asset paths must resolve to the assigned asset-root/ref path; symlink escapes are rejected before the bundle adapter reads them. Missing assignment inputs, hash drift, missing assets, qid gaps, disclosure before a valid freeze, or outside-scope changes fail closed. A mathematical mismatch or open review remains a worker/ROOT decision; this helper cannot turn it into PASS.
 
+## Extracted source first (CODEX)
+
+After source intake, CREATE/R1/R2/R3 use current JS and actual required assets. The current policy is `docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md`. PDF availability is not a review trigger; arithmetic, answer encoding, TeX, solution SVG and receipt issues are handled from these inputs first. This does not change independent freezes or asset-viewing requirements.
+
+`preflightHandoff` requires `assignment.sourceReferencePolicyMetadata`, validates its stage and `EXTRACTED_JS_ASSETS / DEFECT_ONLY` policy, and returns the verified policy. Generate this metadata with the command below. A pending scoped original-source request blocks handoff until its technical review receipt is bound. Keep this metadata outside student-only bundles; it grants no mathematical PASS. Historical sealed receipts are not migrated through this new assignment preflight.
+
+```powershell
+node archive/tools/archive-source-reference-policy.mjs decide --stage CREATE --output <fresh-absolute-assignment-metadata.json>
+```
+
+For a real source-dependent defect, add `--source-defect <absolute-json>` containing category, exact positive integer qids, `scope: QID_ONLY`, nonblank reason and one nonblank finding per qid. Supported categories are MISSING_ASSET, UNCLEAR_CONDITION, TRANSCRIPTION_ERROR, JS_ASSET_CONFLICT and IDENTITY_CONFLICT. After scoped review, bind `--original-review-evidence <absolute-json>` containing `evidence: {path, sha256}`, `originalPdf: {path, sha256}`, `reviewedQids`, `reviewerId` and `reviewedAt`. Reused intake evidence uses `--intake-evidence <absolute-json>` with its path/SHA and is recorded separately from a new PDF review. Byte hashing is technical binding; the reviewer remains responsible for actual reading and findings. The helper neither renders PDFs nor asserts original fidelity from JS-only checks.
+
+Run `node --test archive/tools/archive-source-reference-policy.test.mjs archive/tools/archive-codex-handoff.test.mjs` for this integration.
+
 ## Tests and scope
 
 Run the bounded integration suite with:

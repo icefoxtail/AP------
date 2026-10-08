@@ -13,6 +13,7 @@ import {createDispatcher,claimSlot} from './archive-codex-dispatcher.mjs';
 import {QUALITY_CONTRACT_V2} from './archive-stage-validator-artifact-v2.mjs';
 import {validateR3Evidence} from './archive-stage-validator-r3-v2.mjs';
 import {readExam} from './archive-codex-artifact-io.mjs';
+import {buildSourceReferenceAssignmentMetadata} from './archive-source-reference-policy.mjs';
 
 const sha=b=>createHash('sha256').update(b).digest('hex');
 function fixture(){
@@ -35,7 +36,7 @@ function fixture(){
   const snap=artifactSnapshot({sourceFile:js,evidenceFile:evidencePath,assetRoot:archive});
   const report={ok:true,disposition:'PASS',stage:'R1',examUid:'exam-fixture',executionLine:'CODEX',qualityContractVersion:QUALITY_CONTRACT_V2,validatorMode:'R1_V2',artifactSha:blob,evidenceRef:evidencePath,issues:[],common:{commonValid:true},artifactContract:{active:true,disposition:'PASS',issues:[],questionCount:2},technicalBinding:snap};
   fs.writeFileSync(reportPath,JSON.stringify(report));
-  const assignmentPath=path.join(root,'assignment.json'),assignment={schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_V1',worktreeRootAbsolute:root,workingJsAbsolute:js,assetRootAbsolute:archive,evidenceRootAbsolute:root,evidenceAbsolute:evidencePath,rawReportAbsolute:reportPath,studentBundleAbsolute:bundlePath,expectedHead:head,expectedSourceRawSha256:sourceSha,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX',stage:'R1',examUid:'exam-fixture',questionCount:2,qids:[1,2],reviewerIdentity:{role:'archive_r1',reviewerId:'codex-r1-actor-8971',displayPrefix:'R1'},};fs.writeFileSync(assignmentPath,JSON.stringify(assignment));
+  const assignmentPath=path.join(root,'assignment.json'),assignment={schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_V1',worktreeRootAbsolute:root,workingJsAbsolute:js,assetRootAbsolute:archive,evidenceRootAbsolute:root,evidenceAbsolute:evidencePath,rawReportAbsolute:reportPath,studentBundleAbsolute:bundlePath,expectedHead:head,expectedSourceRawSha256:sourceSha,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX',stage:'R1',examUid:'exam-fixture',questionCount:2,qids:[1,2],sourceReferencePolicyMetadata:buildSourceReferenceAssignmentMetadata({stage:'R1'}),reviewerIdentity:{role:'archive_r1',reviewerId:'codex-r1-actor-8971',displayPrefix:'R1'},};fs.writeFileSync(assignmentPath,JSON.stringify(assignment));
   const receiptPath=path.join(root,'receipt.json');fs.writeFileSync(receiptPath,JSON.stringify({schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_RECEIPT_V1',assignmentSha256:physical(assignmentPath).sha256,worktreeRootAbsolute:root,expectedHead:head,actualHead:head,sourceRawSha256:sourceSha,sourceRawBufferBlobSha1:blob,reviewerCanonicalId:'codex-r1-actor-8971'}));
   return {root,archive,assets,assetPath,js,sourceSha,blob,bundlePath,bundle,assignmentPath,assignment,receiptPath,evidencePath,reportPath};
 }
@@ -58,6 +59,18 @@ test('preflight binds assignment, exact actor, full qids, real assets and actual
   const ev=JSON.parse(fs.readFileSync(f.evidencePath));ev.artifactSha=actualBlob;ev.technicalHashes={rawSha256:actualSha,validatorRawBufferBlobSha1:actualBlob,gitCleanFilterBlobSha1:null};replaceJson(f.evidencePath,ev);
   const report=JSON.parse(fs.readFileSync(f.reportPath));report.artifactSha=actualBlob;report.technicalBinding.source.sha256=actualSha;report.technicalBinding.source.rawBufferGitBlobSha1=actualBlob;report.technicalBinding.evidence.sha256=physical(f.evidencePath).sha256;replaceJson(f.reportPath,report);
   const out=pre(f);assert.equal(out.answerBearingSourceParsed,false);assert.deepEqual(out.qids,[1,2]);assert.equal(out.rawReportDisposition,'PASS');assert.equal(out.executionProvenance,'UNPROVEN');assert.equal(out.disposition,'STRUCTURE_BOUND');
+});
+
+test('handoff preflight requires SHA-bound source policy metadata and rejects silent parity claims',()=>{
+  const f=fixture();delete f.assignment.sourceReferencePolicyMetadata;replaceJson(f.assignmentPath,f.assignment);
+  replaceJson(f.receiptPath,{...JSON.parse(fs.readFileSync(f.receiptPath)),assignmentSha256:physical(f.assignmentPath).sha256});
+  assert.throws(()=>pre(f),/SOURCE_REFERENCE_ASSIGNMENT_METADATA_REQUIRED/);
+  const g=fixture();g.assignment.sourceReferencePolicyMetadata.sourceReferencePolicy.sourceParityBasis='SOURCE_TEXT_EXACT_PARITY';replaceJson(g.assignmentPath,g.assignment);
+  replaceJson(g.receiptPath,{...JSON.parse(fs.readFileSync(g.receiptPath)),assignmentSha256:physical(g.assignmentPath).sha256});
+  assert.throws(()=>pre(g),/SOURCE_REFERENCE_POLICY_DEFAULT_OR_HONESTY_MISMATCH|SOURCE_REFERENCE_POLICY_CONTENT_MISMATCH/);
+  const h=fixture();h.assignment.sourceReferencePolicyMetadata=buildSourceReferenceAssignmentMetadata({stage:'R1',sourceDefect:{category:'MISSING_ASSET',qids:[1],scope:'QID_ONLY',reason:'The extracted problem references an unavailable figure.',findings:[{qid:1,detail:'The declared assets/images/sample.svg file is missing.'}]}});replaceJson(h.assignmentPath,h.assignment);
+  replaceJson(h.receiptPath,{...JSON.parse(fs.readFileSync(h.receiptPath)),assignmentSha256:physical(h.assignmentPath).sha256});
+  assert.throws(()=>pre(h),/SCOPED_ORIGINAL_REFERENCE_REVIEW_REQUIRED/);
 });
 
 test('canonical validator capture preserves exact stdout/stderr/exit and never converts its result to PASS',()=>{
@@ -162,7 +175,7 @@ test('TEST-ONLY synthetic current R3 fixture passes the real canonical validator
   const run=runCanonicalValidatorCapture({root,workingJsFile:sourceFile,evidenceFile:evidencePath,bundleFile:bundlePath,assetRoot:archive,stage:'R3',expectedSourceRawSha256:exam.rawSha256,output:capturePath});
   assert.equal(run.exitCode,0,JSON.stringify(run.report));assert.equal(run.passAsserted,false);const capture=JSON.parse(fs.readFileSync(capturePath));
   assert.equal(capture.exitCode,0);const rawStdout=Buffer.from(capture.stdoutBase64,'base64').toString('utf8'),report=JSON.parse(rawStdout);assert.equal(report.disposition,'PASS');assert.equal(report.artifactContract.questionCount,1);assert.deepEqual(report.common.expectedQids,[1]);
-  const assignmentPath=path.join(root,'assignment.json'),assignment={schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_V1',worktreeRootAbsolute:root,workingJsAbsolute:sourceFile,assetRootAbsolute:archive,evidenceRootAbsolute:evidenceRoot,evidenceAbsolute:evidencePath,studentBundleAbsolute:bundlePath,validatorCaptureAbsolute:capturePath,expectedHead:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),expectedSourceRawSha256:exam.rawSha256,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX',stage:'R3',examUid,questionCount:1,qids:[1],reviewerIdentity:{role:'archive_r3',reviewerId:'TEST-ONLY-r3-canonical-id',displayPrefix:'R3'}};fs.writeFileSync(assignmentPath,JSON.stringify(assignment));
+  const assignmentPath=path.join(root,'assignment.json'),assignment={schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_V1',worktreeRootAbsolute:root,workingJsAbsolute:sourceFile,assetRootAbsolute:archive,evidenceRootAbsolute:evidenceRoot,evidenceAbsolute:evidencePath,studentBundleAbsolute:bundlePath,validatorCaptureAbsolute:capturePath,expectedHead:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),expectedSourceRawSha256:exam.rawSha256,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX',stage:'R3',examUid,questionCount:1,qids:[1],sourceReferencePolicyMetadata:buildSourceReferenceAssignmentMetadata({stage:'R3'}),reviewerIdentity:{role:'archive_r3',reviewerId:'TEST-ONLY-r3-canonical-id',displayPrefix:'R3'}};fs.writeFileSync(assignmentPath,JSON.stringify(assignment));
   const receiptPath=path.join(root,'receipt.json');fs.writeFileSync(receiptPath,JSON.stringify({schemaVersion:'JS_ARCHIVE_CODEX_HANDOFF_ASSIGNMENT_RECEIPT_V1',assignmentSha256:physical(assignmentPath).sha256,worktreeRootAbsolute:root,expectedHead:assignment.expectedHead,actualHead:assignment.expectedHead,sourceRawSha256:exam.rawSha256,sourceRawBufferBlobSha1:exam.rawBufferGitBlobSha1,reviewerCanonicalId:assignment.reviewerIdentity.reviewerId}));
   const checked=preflightHandoff({assignmentFile:assignmentPath,receiptFile:receiptPath,reviewerCanonicalId:assignment.reviewerIdentity.reviewerId});
   assert.equal(checked.executionProvenance,'PROCESS_CAPTURED');assert.equal(checked.disposition,'STRUCTURE_BOUND');assert.equal(checked.rawReportDisposition,'PASS');assert.deepEqual(checked.qids,[1]);assert.deepEqual(JSON.parse(Buffer.from(capture.stdoutBase64,'base64').toString('utf8')),report);

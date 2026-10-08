@@ -3,6 +3,10 @@
 status: CURRENT / TWO-LANE QUALITY FOUNDATION
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
+## CODEX input policy — DIRECT USER OVERRIDE 2026-10-09
+
+CODEX는 `Archive_Extracted_Source_First_v1.md`를 따른다. 최초 PDF source intake 이후 CREATE/R1/R2/R3의 기본 입력은 추출 JS·실제 문제 에셋이며, PDF 재대조는 원문 확인이 실제로 필요한 구체적 문항 결함의 범위로 한정한다. 기존 source parity/intake provenance는 SHA-bound 범위에서 재사용하며 실제 PDF 판독과 추출 baseline parity를 구분한다. PDF routine 전수 재열람을 품질 단계 시작 조건으로 두지 않는다. 독립 답안 freeze·필수 입력/에셋·품질·렌더·HOLD·publication 기준과 qualityContractVersion은 바꾸지 않는다. GPT 예약 라인 authority를 이 절로 변경하지 않는다.
+
 ## 1. Two execution lines, one quality contract
 
 JS Archive 2.0 keeps one product-quality contract and separates execution into two lines.
