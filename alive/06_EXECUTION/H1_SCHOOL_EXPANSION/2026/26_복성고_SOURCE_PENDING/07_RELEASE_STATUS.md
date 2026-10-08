@@ -1,5 +1,11 @@
 # 복성고 release
 
+## CURRENT — B05 q22 10문항 최종 학생용 출시 완료 (2026-10-09)
+- RPM 분류는 이전 완료분 재사용: **RPM185×8, RPM184×1, RPM181×1**; 생성 source·원본 시험지 문제/보기/정답/해설 SHA 불변. 정수해 직접 열거·계산 **10/10 MATCH**, 선답 노출 이력 때문에 formal clean blind는 **NOT_CERTIFIED** 그대로 보존하고 형님 직접 지시 운영승인으로 기록.
+- [PR #349](https://github.com/icefoxtail/AP------/pull/349) main `cb8b2fad226f555e8b4d1eb14cf17a14de279312` 운영병합, q22 서술형 **10 UID 학생용 DB 등록·실제 Chrome 조회 완료**. Generated Bank **283** = 복성고 **191** + 효천고 **92**. q22 HOLD 10 해제; 효천고 HOLD 2만 유지.
+- [main Chrome run 37821875975](https://github.com/icefoxtail/AP------/actions/runs/37821875975) PASS / [main Runtime Guard 37821875941](https://github.com/icefoxtail/AP------/actions/runs/37821875941) PASS. PR 정적 18/18 PASS 및 Chrome/Guard PASS. 학생 실로그인 계정 검증은 NOT_TESTED.
+- 최종 영수증 `B05_Q22_REVIEW_CONSUMER_CLOSEOUT_20261009.json`, 10 UID SHA와 Main Consumer index 원격 readback. 이 아래의 'B05 q22 HOLD 10'은 이전 출시 전 역사 기록으로 이번 CURRENT가 대체한다.
+
 ## CURRENT — B02 q11 9문항 출시 완료 (2026-10-09)
 - **PR #348** main 운영병합 `a909d370cef7b12228108f974d90e41fd63ecc88`; 학생 발문·보기·정답·해설 보존, 기존 수학 독립검수 A1/A2 **9/9 MATCH**.
 - RPM **기존 유형 3문항**(A03·A06 → H1-RPM-184, A09 → H1-RPM-185)과 **Generated 전용 확장 유형 6문항**(EXT-H1-BSG26-ABS-PIECEWISE-L3)을 독립 구분·승인. RPM LOCKED 정본/원본 JS Git blob 변경 없음.
