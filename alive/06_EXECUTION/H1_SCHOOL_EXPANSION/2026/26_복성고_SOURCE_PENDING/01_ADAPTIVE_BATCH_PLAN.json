@@ -112,9 +112,25 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED",
+      "status": "CREATE_CLOSED_REVIEW_PENDING_WITH_SEMANTIC_HOLDS",
       "extensionDiscoveryGate": "A source analysis; B1 exact/current and prior/lower-only RPM L3/L4; B2 EXT L3/L4 distinct reasoning with condition/crossconcept/integration; B3 registries Git freeze; C generation; D receipt+readback",
-      "candidateRegistryRequiredBeforeC": true
+      "candidateRegistryRequiredBeforeC": true,
+      "generatedCandidateCount": 38,
+      "blueprintExploredCount": 46,
+      "acceptedBlueprintCount": 38,
+      "extensionL4CandidateCount": 13,
+      "extensionL3CandidateCount": 2,
+      "sourceExpansionDoneQids": [
+        3,
+        5
+      ],
+      "sourceContinuationRequiredQids": [
+        8,
+        10,
+        11
+      ],
+      "candidateIndex": "archive/data/generated-lite/bokseong-2026-1final-b02-create-index-v1.json",
+      "semanticExtensionIndex": "archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v2.json"
     },
     {
       "id": "B03",
@@ -211,7 +227,7 @@
       "candidateRegistryRequiredBeforeC": true
     }
   ],
-  "nextBatchId": "B02",
+  "nextBatchId": "B03",
   "qualityStatus": "PLANNING_ONLY",
   "generatedCount": 0,
   "redesignReason": "13 candidate vs 13 blueprint one-to-one, old items not accepted, entire per-source L4 expansion to be redone",
