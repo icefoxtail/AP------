@@ -1,0 +1,92 @@
+{
+  "reviewPhase": 2,
+  "reviewedDenominator": 4,
+  "verdictSummary": {"PASS": 4, "REJECT": 0, "HOLD": 0},
+  "freeze": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review/B03_INDEPENDENT_FREEZE.md",
+    "sha256": "BCC64CD995EEDE834D4BE6BA87BA8512386CBB7548E316E0C2BDD32B42DE02D4",
+    "studentPacketPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/review-blind/B03_STUDENT_ONLY.md",
+    "studentPacketSha256": "5D23633A6ABD09E6C3E048942629DAF4896BC9527CF5A9A1ACBD8428AF2E1064"
+  },
+  "receipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/B03_RECEIPT.md",
+    "sha256": "F1C622FF0E7464AB36F9B78B0DECAD50077FA9AEC359FAEACB93699E6AB1C344",
+    "candidateSha256Matches": true
+  },
+  "renderStatus": "NOT_RUN",
+  "answerPositionHistogram": {"①": 1, "②": 1, "③": 0, "④": 0, "⑤": 1},
+  "items": [
+    {
+      "draftCandidateId": "ALITE-25PAL-B03-Q02-P01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/B03_Q02_P01_conjunction_complement.md",
+      "candidateSha256": "608A5AF37DA8B1DABA562C5A0E38291AA2BCC16246E662BF32FF41A8438E439F",
+      "verdict": "PASS",
+      "independentAnswer": "① x < -2 or x > 3",
+      "candidateAnswer": "①",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "② is p; ③ includes -2; ④ includes 3; ⑤ uses wrong outer endpoints; only ① is the complement.",
+      "solutionAudit": "[-2,4) intersect [-3,3] = [-2,3]; complement is the two exterior open rays.",
+      "curriculum": "Primary L1/L2 RPM_VERIFIED; L3/L4 진리집합 CANONICAL_DRAFT; current-scope fit.",
+      "blueprintDistinctness": "Conjunction -> intersection -> complement; distinct from P02's disjunction -> union -> complement by connective, operation, topology, and decisive step.",
+      "distractors": "P, endpoint inclusion mistakes, and incorrect conjunction negation; plausible.",
+      "difficultyMeta": "Bucket 2 appropriate; short interval intersection and complement.",
+      "solutionReadability": "Clear interval derivation and endpoint explanation.",
+      "visual": "Not required; unambiguous text-only problem."
+    },
+    {
+      "draftCandidateId": "ALITE-25PAL-B03-Q02-P02",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/B03_Q02_P02_disjunction_complement.md",
+      "candidateSha256": "207A78B9C3C6A1D9EB57315CEC613BA8C0A2F82EF749501D037447234B8DFE68",
+      "verdict": "PASS",
+      "independentAnswer": "⑤ -2 < x < 0 or x > 2",
+      "candidateAnswer": "⑤",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① includes -2; ② includes 0; ③ repeats p; ④ includes 2; only ⑤ matches the complement.",
+      "solutionAudit": "Truth set (-infinity,-2] union [0,2]; complement (-2,0) union (2,infinity).",
+      "curriculum": "Primary L1/L2 RPM_VERIFIED; L3/L4 진리집합 CANONICAL_DRAFT; current-scope fit.",
+      "blueprintDistinctness": "Disjunction -> union -> complement, yielding gap plus ray; materially distinct from P01's conjunction/intersection/exterior rays.",
+      "distractors": "Boundary inclusion errors and failure to negate; plausible, with related endpoint-error family.",
+      "difficultyMeta": "Bucket 2 reasonable; absolute-value interval and complement.",
+      "solutionReadability": "Clear derivation with all boundary values addressed.",
+      "visual": "Not required; unambiguous text-only problem."
+    },
+    {
+      "draftCandidateId": "ALITE-25PAL-B03-Q14-P01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/B03_Q14_P01_universal_quadratic_truth.md",
+      "candidateSha256": "13803E51FD8220B4617852BB2D63F1F9E7BE59A4ED338BAFCB5C6A7DD7F96851",
+      "verdict": "PASS",
+      "independentAnswer": "② (1-sqrt(13))/2 <= a <= (1+sqrt(13))/2",
+      "candidateAnswer": "②",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① reversed outside interval; ③ omits valid endpoints; ④ wrong linear sign; ⑤ assumes leading coefficient alone suffices; only ② is full range.",
+      "solutionAudit": "Minimum -a^2+a+3 >= 0 yields a^2-a-3 <= 0 and the closed root interval.",
+      "curriculum": "Primary L1/L2 RPM_VERIFIED; L3 명제와 조건 and L4 명제의 참·거짓 CANONICAL_DRAFT; prior algebra technique, current scope.",
+      "blueprintDistinctness": "Direct universal nonnegativity via minimum differs from candidate-described source's negated universal/maximum route.",
+      "distractors": "Inequality reversal, endpoint exclusion, sign error, leading-coefficient misconception; plausible.",
+      "difficultyMeta": "Bucket 3 appropriate; universal statement and parameter range.",
+      "solutionReadability": "Complete-square derivation clearly explains inclusive roots.",
+      "visual": "Not required; unambiguous text-only problem."
+    },
+    {
+      "draftCandidateId": "ALITE-25PAL-B03-Q21-P01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B03_명제/B03_Q21_P01_parameter_interval_relation.md",
+      "candidateSha256": "5561343096849470BFBFBACC6CE54494E3E34991C997246B2120471E50FD6326",
+      "verdict": "PASS",
+      "independentAnswer": "P=[2,4], Q=(a-2,a+2), 2<a<4",
+      "candidateAnswer": "P=[2,4], Q=(a-2,a+2), 2<a<4",
+      "answerMatches": true,
+      "uniqueChoice": null,
+      "responseCardinality": "Constructed response; no choices.",
+      "solutionAudit": "P subset Q gives 2<a<4. x=a/2 has |x-a|=a/2<2 and x<2, so it lies in Q\\P throughout the range.",
+      "curriculum": "Primary L1/L2 RPM_VERIFIED; L3 필요조건·충분조건 and L4 매개변수 CANONICAL_DRAFT; current-scope fit.",
+      "blueprintDistinctness": "Parameterized strict interval containment plus a witness differs from candidate-described fixed-set/source negated-condition relation.",
+      "distractors": "Constructed response; rubric identifies reversed inclusion, closed-endpoint errors, and missing converse counterexample.",
+      "difficultyMeta": "Bucket 3 appropriate; interval conversion, containment, and witness.",
+      "solutionReadability": "Clear interval argument and valid uniform witness.",
+      "visual": "Not required; explicit response conditions and no figure."
+    }
+  ]
+}
