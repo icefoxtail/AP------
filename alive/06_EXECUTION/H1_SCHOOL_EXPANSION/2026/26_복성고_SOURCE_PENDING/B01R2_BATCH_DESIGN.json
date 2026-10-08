@@ -6,15 +6,15 @@
   "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
   "sourceRoot": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
   "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-  "stage": "B_BLUEPRINT_DESIGN_FROZEN_FOR_CREATE",
+  "stage": "B_REVISITED_UNEXPLORED_L4_BEFORE_C_ADDITIONS",
   "answerPositionDesignAuthority": "alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_DESIGN_CONTRACT_v0.1.md",
   "counts": {
     "examSourceDenominator": 23,
     "batchSourceDenominator": 7,
-    "blueprintExplored": 59,
-    "accept": 38,
+    "blueprintExplored": 65,
+    "accept": 45,
     "duplicate": 6,
-    "l3Drift": 8,
+    "l3Drift": 7,
     "curriculum": 1,
     "hold": 6
   },
@@ -435,6 +435,52 @@
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q02-P09",
+          "targetL4": "일렬 배열",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "6명 중 4명을 고르고 네 자리에 순서있게 배치",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 일렬 배열; 6명 중 4명을 고르고 네 자리에 순서있게 배치",
+          "intendedAnswerValue": 360,
+          "rpmCrosswalkId": "H1-RPM-188",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q02-P10",
+          "targetL4": "일렬 배열",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "nP2=42 역산하여 인원수 결정",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 일렬 배열; nP2=42 역산하여 인원수 결정",
+          "intendedAnswerValue": 7,
+          "rpmCrosswalkId": "H1-RPM-188",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
+          "generatedUids": [],
+          "numericInstanceCount": 0
         }
       ],
       "notExploredL4": [
@@ -789,19 +835,71 @@
           "numericInstanceCount": 0
         },
         {
-          "blueprintId": "BSG26-B01R2-Q06-X02",
+          "blueprintId": "BSG26-B01R2-Q06-M07",
           "targetL4": "행렬의 곱셈",
-          "targetL4Authority": "NOT_ADOPTED",
-          "decisiveStepSignature": "AB 또는 BA의 곱과 교환법칙",
-          "conditionPattern": null,
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "행렬곱 AB의 지정 성분을 행·열 내적으로 계산",
+          "conditionPattern": "NEW_L4_COVERAGE",
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "L3_DRIFT",
-          "reason": "RPM 행렬 곱 L4와 별도 결정적 연산",
-          "intendedAnswerValue": null,
-          "distractorStrategy": [],
+          "disposition": "ACCEPT",
+          "reason": "RPM H1-RPM-201 is the same primary L3 행렬의 연산; earlier L3_DRIFT label was incorrect",
+          "intendedAnswerValue": 11,
+          "distractorStrategy": [
+            "성분별 원소 곱 오인",
+            "행렬 곱 계산 순서 혼동",
+            "성분 누락",
+            "부호 오류"
+          ],
           "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
+          "generatedUids": [],
+          "numericInstanceCount": 0,
+          "rpmCrosswalkId": "H1-RPM-201"
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q06-M08",
+          "targetL4": "행렬의 곱셈",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "AB와 BA를 별도 계산한 후 합의 지정 성분을 구함",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 행렬의 곱셈; AB와 BA를 별도 계산한 후 합의 지정 성분을 구함",
+          "intendedAnswerValue": 6,
+          "rpmCrosswalkId": "H1-RPM-201",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q06-M09",
+          "targetL4": "행렬의 곱셈",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "AB의 한 성분을 주고 A의 미지 성분을 역산",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 행렬의 곱셈; AB의 한 성분을 주고 A의 미지 성분을 역산",
+          "intendedAnswerValue": 5,
+          "rpmCrosswalkId": "H1-RPM-201",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
           "generatedUids": [],
           "numericInstanceCount": 0
         }
@@ -1195,6 +1293,52 @@
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q12-F08",
+          "targetL4": "조합을 이용한 경우의 수",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "이름 없는 두 모둠에 영화 6편을 3편씩 분할하고 이중계수를 제거",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 조합을 이용한 경우의 수; 이름 없는 두 모둠에 영화 6편을 3편씩 분할하고 이중계수를 제거",
+          "intendedAnswerValue": 10,
+          "rpmCrosswalkId": "H1-RPM-197",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B01R2-Q12-F09",
+          "targetL4": "조합을 이용한 경우의 수",
+          "targetL4Authority": "RPM_LOCKED",
+          "decisiveStepSignature": "서로 다른 영화 5편을 이름 있는 두 사람에게 비공집합 분배",
+          "conditionPattern": "NEW_L4_COVERAGE",
+          "crossConcept": "NONE",
+          "integrationPattern": "SOURCE_L3_PRESERVED",
+          "disposition": "ACCEPT",
+          "reason": "Same RPM primary L3, underexplored active L4 조합을 이용한 경우의 수; 서로 다른 영화 5편을 이름 있는 두 사람에게 비공집합 분배",
+          "intendedAnswerValue": 30,
+          "rpmCrosswalkId": "H1-RPM-197",
+          "distractorStrategy": [
+            "핵심 순서의 유무",
+            "중복 배정",
+            "정의역의 크기",
+            "역조건 부등식 또는 자리수 오판"
+          ],
+          "choicePlacementPlan": null,
+          "placementConstraint": "NATURAL_CHOICE_ORDER",
+          "generatedUids": [],
+          "numericInstanceCount": 0
         }
       ],
       "notExploredL4": [
@@ -1345,5 +1489,7 @@
       ],
       "sourceStatus": "SOURCE_CONTINUATION_REQUIRED"
     }
-  ]
+  ],
+  "designRevision": 2,
+  "designRevisionReason": "Same L3 L4s missed: permutation 일렬 배열, matrix multiplication, division-distribution combination; correct mislabeled matrix L3 drift."
 }
