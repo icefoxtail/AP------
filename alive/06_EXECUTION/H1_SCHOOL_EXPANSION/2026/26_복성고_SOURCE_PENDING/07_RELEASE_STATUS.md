@@ -11,3 +11,8 @@
 - formal fresh blind evidence는 34건, 4건은 검수자 재작성·선노출 예외다. 수학 정답·5지·Meta static PASS 기존 근거 유지.
 - **학생용 Consumer DB 등록·실제 학생 조회/브라우저 검증은 별도 미완료 상태(등록 0/조회 0)**. StudentSupplyVerified 및 REVIEW_CONSUMER_MAIN_DONE은 아직 아님.
 - 상태 정본: `B03_USER_AUTHORITY_PASS_20261008.json`.
+
+## 2026-10-08 Consumer 정적 DB 등록 진행 — CURRENT
+- 형님 승인 B03 **38 UID 전부** `archive/data/generated-lite-consumer/v1/index.json` 학생용 정적 DB와 4개 read-only shard에 등록. 기존 효천고 승인 92 UID는 그대로 보존하여 등록 분모는 **130**. 원본/RPM LOCKED 변경 0.
+- 학교 검색/선택 화면 `archive/generated-bank.html`을 다학교·동적 분모에 맞게 변경. q14 I10 조건박스의 HTML 태그는 학생 표시용 plain newline projection으로 안전하게 변환.
+- 실제 Chrome 및 배포 학생계정 조회 검증은 PR CI pending; 분리 상태 `STATIC_CONSUMER_DB_REGISTERED_BROWSER_SMOKE_PENDING`. 기록: `archive/data/generated-lite-consumer/v1/registration-receipt-bokseong-b03.json`.
