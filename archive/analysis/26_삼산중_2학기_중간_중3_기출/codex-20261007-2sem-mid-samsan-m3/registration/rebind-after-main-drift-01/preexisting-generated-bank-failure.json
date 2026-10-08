@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_PREEXISTING_VALIDATOR_FAILURE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "status": "PRESERVED_NON_TARGET_BASELINE_FAILURE",
+  "currentMainSha": "b3c373b43f8932fa42792987663729730d4b4768",
+  "command": "node tests/archive2-generated-bank-registration.test.js",
+  "currentMainResult": {
+    "schemaVersion": "JS_ARCHIVE_ROOT_NON_TARGET_TEST_OBSERVATION_V1",
+    "name": "generated-bank-registration",
+    "command": "node tests/archive2-generated-bank-registration.test.js",
+    "status": "FAILED_NON_TARGET_BASELINE",
+    "exitCode": 1,
+    "outputEnvelopePath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-01/checks/generated-bank-registration.raw-output.json",
+    "outputEnvelopeSha256": "b96647bd6ffbba15fa05dfbe73a4e03c7d4778c335b4601b5870c1a2ef89e3b1",
+    "stdoutRawSha256": "1806ed10231c771f4ce962aa1d8bcb9859ece7e623a6853ed544ab62608b6b05",
+    "stderrRawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "currentMainSha": "b3c373b43f8932fa42792987663729730d4b4768",
+    "isCurrentImportPublicationGate": false
+  },
+  "cleanBase63e": {
+    "head": "63e49b275317a9a6ac01de5781b437f31b3942ea",
+    "exitCode": 1,
+    "stdoutPath": "archive/analysis/codex-20261007-2sem-mid-import/baseline-checks-63e49b2/generated-bank-registration-test.stdout.txt",
+    "stdoutSha256": "9585f1f3299ed47448241f12c4d954871a34cc83710a686843d244e2763089bb"
+  },
+  "unchangedLatestMainInputs": [
+    {
+      "path": "tests/archive2-generated-bank-registration.test.js",
+      "rawSha256": "1a411b922869dcd13ea2178b807fe88cdfce66c7a5600f854c8ed9948b9378ef",
+      "matchesOriginMain": true
+    },
+    {
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "rawSha256": "3e80c270aba587f0433543daf090f141fbdc296a7a42d25bc756a6a29d427367",
+      "matchesOriginMain": true
+    },
+    {
+      "path": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "rawSha256": "efa8f2dbcaf75332ffbfd6bc182f50853ef0a8199157255198937c20d6c27f71",
+      "matchesOriginMain": true
+    },
+    {
+      "path": "archive/data/generated-lite-consumer/v1/shards/H22-C-08-COUNTING_PRINCIPLE/bokseong-2026-1final-B03-q09.json",
+      "rawSha256": "c43a2e9486ebf595a4cea8623e73baed0d2d9f95ca2a675719e89e0fd77ade3f",
+      "matchesOriginMain": true
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B03-q09.js",
+      "rawSha256": "8aade7cdef4171fc6b9c8ca1c4dd5d0f40787de3a00d3ab8f5aa47f00b51d931",
+      "matchesOriginMain": true
+    }
+  ],
+  "scope": "Existing Bokseong generated-lite consumer data. No file above is touched by this roster; current target registration invariants and required current-import checks pass.",
+  "disposition": "Exclude from this target registration checkpoint as a non-target preexisting failure; preserve raw output and do not modify unrelated data/tests or claim PASS."
+}

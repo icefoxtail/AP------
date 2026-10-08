@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOLUTION_FIRST_FREEZE_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qid": 8,
+  "stage": "ITEM_RECOVERY",
+  "replacementScope": "QUESTION_ONLY",
+  "rootDecisionSha256": "04bef685630947f7b53ff19e9783c83118e72e4a433cc7c05d5794b62f819319",
+  "createdAtUtc": "2026-10-08T05:57:19.645Z",
+  "baselineArtifact": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\26_삼산중_2학기_중간_중3_기출.js",
+    "rawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "gitBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386",
+    "preservedCopyPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.baseline-candidate.before-replacement.js",
+    "preservedCopyRawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "preservedCopyBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386"
+  },
+  "design": {
+    "courseRole": "중3 삼각비; 직각삼각형에서 주어진 각의 사인비로 특정 변의 길이를 표현하는 4점 객관식.",
+    "responseForm": "5-choice MCQ",
+    "stem": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+    "diagramFacts": [
+      "∠C=90°",
+      "AB=√13 is the hypotenuse",
+      "∠A=a°",
+      "BC is opposite ∠A"
+    ],
+    "target": "BC",
+    "solutionFirst": true,
+    "solution": "그림에서 AB는 빗변이고 BC는 ∠A=a°의 맞은편 변이다.\n따라서 사인비를 이용하면\n$\\sin a^\\circ=\\dfrac{BC}{AB}=\\dfrac{BC}{\\sqrt{13}}$이다.\n양변에 $\\sqrt{13}$을 곱하면\n$BC=\\sqrt{13}\\sin a^\\circ$이다.\n그러므로 정답은 ④이다.",
+    "canonicalAnswerExpression": "BC=√13 sin a°",
+    "answerChoiceNumberDeferredUntilAfterChoiceDesign": true,
+    "curriculumMethodInventory": {
+      "concepts": [
+        {
+          "item": "직각삼각형에서 사인비",
+          "status": "ALLOWED",
+          "authority": "중3 수학 M3-05 삼각비"
+        }
+      ],
+      "formulas": [
+        {
+          "item": "sin a°=맞은편 변/빗변",
+          "status": "ALLOWED",
+          "authority": "중3 수학 M3-05 삼각비"
+        }
+      ],
+      "notations": [
+        {
+          "item": "∠A=a°",
+          "status": "ALLOWED",
+          "authority": "중3 각의 기호와 도 단위"
+        }
+      ],
+      "methods": [
+        {
+          "item": "사인비를 변의 길이 식으로 정리",
+          "status": "ALLOWED",
+          "authority": "중3 수학 M3-05 삼각비"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "curriculumStatus": "PASS"
+    },
+    "visualPlan": {
+      "problemVisual": "REQUIRED: labels establish vertex, right angle, hypotenuse, angle and target-side orientation.",
+      "solutionVisual": "NOT_REQUIRED: one direct sine-ratio substitution is fully reproducible from the problem visual.",
+      "solutionSvg": null
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "stage": "R1",
+  "scope": "Q8_SOLUTION_CORRECTION_REVIEW_ONLY",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "calibrationStatus": "PASS",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\c",
+          "observation": "Separates ratio formula, substitutions, reductions and final distance so each point is reproducible."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "observation": "Tracks the center through translation and origin reflection, preserving radius. SVG centers are C₀=(−3,1), C₁=(−5,2), C₂=(5,−2) at equal x/y scale; each displayed circle radius is the same and the final equation matches C₂,r=3.",
+          "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "visualObservation": "Actual circle centers follow C0→C1→C2; SVG circles share radius 62.5 and coordinate labels match the stated translation and reflection."
+        }
+      ]
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n",
+          "observation": "Shows coordinate differences, substitutes into distance formula and simplifies the radical in explicit steps."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$",
+          "observation": "Rearranges both equations before perpendicular-slope use; SVG line primitives/data confirm slopes −1/3 and 3.",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualObservation": "Actual line equations give slopes −1/3 and 3; the geometry agrees with the perpendicular-line solution."
+        }
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Reviewed false-PASS regressions: recompute SVG geometry from actual coordinates/topology, inspect physical small-board blocks and runtime escaping; self-reported counts do not substitute."
+    }
+  ],
+  "sampleReadBeforeCorrectionReview": true,
+  "sampleReadBeforeInitialStoredSolutionDisclosure": false,
+  "initialDisclosureOrderFailurePreserved": {
+    "path": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/failed-attempt/R1-q8-preflight-order-failure-01.json",
+    "sha256": "ebd23d952de890abffe3683bec2043d58576f39a32def32085d77f9c433ad75d"
+  },
+  "sampleReadBeforeWork": true,
+  "solutionWorkMode": "R1_Q8_CORRECTION_REVIEW_AFTER_ORDER_FAILURE",
+  "qualityCompareCount": "1/1",
+  "calibrationOrder": "answer freeze → postfreeze solution disclosure before sample calibration (failed attempt captured) → Golden/Negative preflight → q8 solution correction-review and current-source compare",
+  "answerFreezePath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/item-recovery-q8/q8.R1.independent-freeze.json",
+  "answerFreezeSha256": "9418460612656a6ca174e380dbc762a0554dec14da8a149f0a817de193a17a43",
+  "reviewedAtUtc": "2026-10-08T06:30:00Z"
+}

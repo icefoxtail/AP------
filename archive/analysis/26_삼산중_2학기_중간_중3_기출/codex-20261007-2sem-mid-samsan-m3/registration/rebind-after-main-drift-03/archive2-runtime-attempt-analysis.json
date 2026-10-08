@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_RUNTIME_GUARD_FAILURE_ANALYSIS_V1",
+  "currentMainSha": "0ee236041e3818ba11b59da7d86685c25e4c9f27",
+  "status": "PRESERVED_TIMING_FAILURE_UNDER_SYSTEM_LOAD",
+  "failure": {
+    "exitCode": 1,
+    "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-03/checks/archive2-runtime-serial.stdout.txt",
+    "stdoutSha256": "918b8b571d4fcc97811a76288d6b3857e80d3c989c2c0232578dceb6305fe940",
+    "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-03/checks/archive2-runtime-serial.stderr.txt",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diagnostics": [
+      "compose blocks input for 773.8ms",
+      "select-all blocks input for 690.8ms"
+    ]
+  },
+  "systemLoadObservation": {
+    "processId": 8852,
+    "process": "git.exe",
+    "command": "git grep -in -m 2 source.*exam.*id.*registry origin/main -- archive docs .tmp",
+    "workingSetBytes": 1131769856,
+    "cpuSecondsAtObservation": 98969.91,
+    "parentProcessId": 13888
+  },
+  "serialComparison": {
+    "baseMainSha": "526966031dfc426adcd54e246f8f65c38f022253",
+    "exitCode": 0,
+    "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-02/checks/archive2-runtime-serial.stdout.txt",
+    "stdoutSha256": "a1b080c346623aa8b6d8836c4d3c841b2091a7f603d07da7bc73a4f9372cbb23",
+    "curriculumAllMs": 359.9
+  },
+  "codeChangedByCurrentMain": false,
+  "finding": "The guard failed while a separate high-memory git grep scanned archive/docs/.tmp. This is consistent with shared executor contention; no runtime code changed."
+}
