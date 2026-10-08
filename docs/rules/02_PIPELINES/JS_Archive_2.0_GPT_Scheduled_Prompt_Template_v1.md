@@ -260,3 +260,14 @@ R1 INDEPENDENT:
 - 기본 문항 포함 학생이 해설만 보고 재현 가능한지, 서술형은 결정적 중간식/추론이 있는지를 확인한다. 평균 글자수로 면책하지 않는다.
 - 발견 결함은 same-stage MINIMAL_REPAIR, 필요시 ALIVE_REPLACEMENT 후 changed qid와 direct dependency만 재확인하고 evidence/SHA를 재결속한다. 전 시험지 중복 재검은 하지 않는다.
 - R1 PASS는 위 점검 결과를 전 qid verdict에 실제 반영했을 때만 발행한다.
+
+
+## 11. IMMEDIATE CREATE/R1 RUN PROMPT OVERRIDE — 2026-10-08
+
+For every active \`CREATE-{STREAM}\` and \`R1-{STREAM}\`, execute **Scheduled Execution §17 NEXT-RUN QUALITY FLOOR** after its existing role block. This overrides weaker generic wording; retain all original selector/stream/campaign/generation/validator/lease/one-exam/NONSTOP requirements.
+
+**CREATE executable short order:** source SHA+qid inventory → genuinely view GPT Golden+Negative actual qid/solution/visual before editing → all qids source/layout, math/answer/5 choices, small-board student solution, Meta/difficulty, visuals, curriculum → minimal repair → actual V2 raw validator/active artifact gate → SHA-bound CREATE PASS and concise qid findings. Never bulk fill \`level\`, \`integrationPattern=NONE\`, empty relational arrays, \`layoutTag=stack\`, or Unicode math notation. All formulas of nontrivial math use engine-safe LaTeX. Easy/subjective solutions must expose decisive intermediate reasoning, not merely a final answer.
+
+**R1 executable short order:** current student-only qid contents+choices+opened required pictures → pre-answer independent math result and real freeze if clean isolation exists → reveal stored answer/solution only afterwards → independent four-axis qid-by-qid quality judgment, including curriculum, semantic Meta, real stem layout, educational board flow and visual needs → fix changed qid/direct dependencies → raw validator/active artifact proof + SHA-bound R1 seal. Do not write an imaginary blind-freeze observation if answer was exposed; do not take CREATE's all-NONE/empty Meta as already judged. Check every \`level\` type/value and every actual \`stack\` usage.
+
+**Technical truth:** a manual checklist does not replace the generic V2 CLI/raw report. If executable verification or safe isolation truly unavailable, state the exact failed prerequisite and same-stage continuation; keep the lane ON and process the next eligible same-stream exam. Don't fabricate PASS, don't retroactively upgrade older PASS. Golden comparison is about student-facing presentation; school year/course canonical governs math methods and Meta. Codex separately handles optional actual render/capture, so GPT never waits for it or impersonates it.
