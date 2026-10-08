@@ -35,3 +35,10 @@ CURRENT(2026-10-08): 복성고 Consumer DB 73 UID(B03 38+B04 26+B05 q21 9), 실�
 - q23 8 UID RPM `H1-RPM-201`(행렬의 연산/행렬의 곱셈) 핀포인트 재분류, q21 S07 집합 기호 해설 수리. 신규 RPM canonical 키 추가 없음. q22 S01~S10 exact RPM 미승인으로 HOLD 10.
 - 객관식 23문항 정답 위치 수정 전후 ①4·②5·③8·④4·⑤2, 보기 변경 0. 수학 재계산 45/45 저장값 일치; 이전 답 선노출로 strict blind reviewer PASS 미인증이며 사용자 운영승인 provenance 보존. B04 PT/L2 좁은 binding 26건은 별도 후속 과제.
 - 이번 cohort 새로 승인 35 / Consumer 35 / Chrome 학생 UI 검증 35 / main 35 / HOLD 10. 실제 배포 학생 로그인 계정 smoke는 NOT_TESTED. 상세 evidence: `alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B04_B05_APPROVED35_OPERATING_RELEASE_20261008.json`.
+
+## B06 25 UID — REVIEW → Consumer → MAIN_DONE (2026-10-08)
+- PR #334 squash main: `6c208f5e53ad4db864ce5ab7262a05a637a4e4e8`; Git 원격 190/190 Consumer UID(복성고 98/효천고 92) readback, B06 25개 신규 승인(원본 q18 10·q19 15), 기존 165 보존, 12 HOLD 유지.
+- 학생용 실제 Chrome PR 검증: https://github.com/icefoxtail/AP------/actions/runs/37788106562 PASS; Archive2 Runtime Guard https://github.com/icefoxtail/AP------/actions/runs/37788106580 PASS; 원본 엔진 실렌더 https://github.com/icefoxtail/AP------/actions/runs/37780560087 PASS.
+- 독립 A1 freeze → A2 비교 25/25, 23/23 객관식 유일답. 발문 Markdown 10건, q19 S01/S15의 원본 동일문형 문제 수리 2건, S03 RPM 주개념 재결속 1건. 정답 위치 ①1·②9·③7·④3·⑤3. SVG 7개/원본 PNG 픽셀 보존 SVG 2개 검증.
+- 기존 원본 복성고 JS blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 보존, RPM canonical 수정 없음. 남은 별개 q22 HOLD 10 및 과거 q15 분류 관련 부채는 B06 승인에 포함하지 않음.
+- 상태: **B06 25 REVIEW_PASS / Consumer 등록 25 / Chrome 조회 25 / MAIN_DONE**. 배포 로그인 학생계정 별도 NOT_TESTED.
