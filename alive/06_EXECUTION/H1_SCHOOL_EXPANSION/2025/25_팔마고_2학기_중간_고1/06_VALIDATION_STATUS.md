@@ -1,6 +1,6 @@
 # Validation status
 
-- Latest-main base and skill verification: PASS (`330394489f6e90c5c7d5c7ae28623ab52ca824b9`; `node tools/skills/verify-skills.mjs`).
+- Initial latest-main base and skill verification: PASS (`330394489f6e90c5c7d5c7ae28623ab52ca824b9`; `node tools/skills/verify-skills.mjs`). Before publication, fetched and merged the newer `origin/main` `5c63a37e9f247267ac54aaf060007fb0bc3f68e4`; its current generated-bank changes were preserved and revalidated.
 - Locked source inventory: PASS, 23 unique ordered IDs, all referenced student PNGs opened and all nine image/SVG source bytes hash checked; PDF parity NOT_TESTED (no PDF supplied).
 - L2 plan coverage: PASS, 7 groups cover qids 1–23 exactly once, no duplicates/missing.
 - Candidate Markdown denominator: 27; independent review PASS 26, REJECT 0, HOLD 1 (q10 render).

@@ -9,6 +9,6 @@
 - Runtime UI change: approved generated-question search/open/select added; targeted test PASS 4/4; Archive2 Runtime Guard PASS 42/42; Chrome print-media DOM displayed all four selected questions without answer/solution, with native print dialog interception recorded.
 - Answer position audit: unchanged before/after. Full pool 23 MC: ①–⑤ = 4/6/3/6/4; approved 4 MC = 0/1/1/1/1; held 19 MC = 4/5/2/5/3. Four constructed-response candidates excluded. See `review/ANSWER_POSITION_DISTRIBUTION.json`.
 - Branch: `codex/alive-palma-25-h1-2mid`; UI code commit remote-readback previously completed at `3cd654e07448894a2c51c03cfc2c03b3993383ab`.
-- Main publication: PENDING final scoped commit/push and `origin/main` readback; user limited scope to Palma and requested a pause for quality review after this exam.
+- Main publication: `MAIN_DONE` at `26ab0d83dc0f6cbe393f038ace280c712b8d9e5b` (fast-forwarded from `5c63a37e9f247267ac54aaf060007fb0bc3f68e4` after merging latest `origin/main` into the branch). Branch and `origin/main` remote readback match; Consumer index, Consumer shard, generated L2 JS/Meta, and unchanged original source bytes were compared and matched. User limited scope to Palma and requested a pause for quality review after this exam.
 
-Release remains pending final scoped commit/push and main remote readback by ROOT. The B02 q10 render HOLD remains excluded from student supply.
+The B02 q10 render HOLD remains excluded from student supply. This exam is closed; later exams remain deferred until the user resumes.
