@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pythonWorker} from '../production/worker.mjs';
 import {reconstruct,compareReconstruction} from '../production/cindy-observer.mjs';
-import {verifyConstructionConditionBindings} from '../production/phase2.mjs';
+import {showConstructionCircles,specFor,verifyConstructionConditionBindings} from '../production/phase2.mjs';
 import {constructionV1Graph,int} from './construction-v1-fixture.mjs';
 
 test('bounded V1 constructions rebuild parallel, angle bisectors, circles, tangents and explicit intersections in Cindy',async()=>{
@@ -20,6 +20,18 @@ test('bounded V1 constructions rebuild parallel, angle bisectors, circles, tange
   assert.equal(model.pointSets.contacts.length,2);
   assert.ok(Math.abs(model.scalars.ratio.approximation-4/3)<1e-12);
   assert.equal(model.conditionAudits.length,11);
+  const labelSpec=specFor({caption:'source point labels',mathPlan:constructionV1Graph,coordinateLabels:['A','B']},model,'source-point-labels');
+  for(const id of ['A','B']){
+    assert.deepEqual(labelSpec.objects.find(object=>object.id===id+'-name'),{id:id+'-name',kind:'POINT_NAME',target:id,text:id,priority:0});
+    assert.equal(labelSpec.objects.find(object=>object.id===id+'-coordinate').kind,'COORDINATE_LABEL');
+  }
+  const sssPlan={caption:'SSS realization',mathPlan:{...constructionV1Graph,realization:{recipeId:'SSS_POSITIVE_SIDE_v1',unit:'source-length',reflectionEquivalent:true}}};
+  const sssSpec=specFor(sssPlan,model,'sss-realization');
+  assert.equal(showConstructionCircles(sssPlan),false);
+  assert.equal(sssSpec.objects.some(object=>object.kind==='CIRCLE'),false);
+  const ordinarySpec=specFor({caption:'circle construction',mathPlan:constructionV1Graph},model,'ordinary-construction');
+  assert.equal(showConstructionCircles({mathPlan:constructionV1Graph}),true);
+  assert.equal(ordinarySpec.objects.some(object=>object.kind==='CIRCLE'),true);
 });
 
 test('degenerate Construction V1 inputs remain explicit errors',async()=>{
