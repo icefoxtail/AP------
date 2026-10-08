@@ -1,6 +1,7 @@
 # Palma 2025 H1 2mid — Chrome student-supply smoke
 
 - Date: 2026-10-09 KST.
+- Worktree revision: `26ab0d83dc0f6cbe393f038ace280c712b8d9e5b`, after merging the then-current `origin/main`.
 - Browser: headed Google Chrome channel via Playwright CLI; local read-only HTTP server at `127.0.0.1:8877` served this worktree.
 - Page: `/archive/generated-bank.html`; Consumer index and referenced shard were read from the current worktree bytes.
 - Each of the four APPROVED UIDs was searched individually. Each query returned exactly one row; each row opened and selected.
