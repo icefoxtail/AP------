@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_COMBINATION";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_H22-C-08-COMBINATION";
 window.questionBank = [
   {
     "id": 1,
@@ -32,7 +32,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 조합의 정의로 자연수 $n$을 구한다.\n$\\binom{n}{2}=\\dfrac{n(n-1)}2=28$이므로 $n(n-1)=56$이다.\n연속한 두 자연수의 곱이 $8\\times7=56$이므로 $n=8$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "sourceKind": "generated"
   },
   {
     "id": 2,
@@ -66,7 +69,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 파스칼의 조합 관계를 이용한다.\n$\\binom94=\\binom84+\\binom83$이므로 주어진 식은 $\\binom83$과 같다.\n$\\binom83=\\dfrac{8\\times7\\times6}{3\\times2\\times1}=56$이다.\n직접 계산해도 $126-70=56$으로 일치한다.\n따라서 정답은 ②이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "sourceKind": "generated"
   },
   {
     "id": 3,
@@ -100,7 +106,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 인접한 두 조합의 비를 정리한다.\n$\\dfrac{\\binom n3}{\\binom n2}=\\dfrac{n-2}{3}$이므로 $\\dfrac{n-2}{3}=4$이다.\n따라서 $n-2=12$이고 $n=14$이다.\n따라서 정답은 ④이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "sourceKind": "generated"
   },
   {
     "id": 4,
@@ -134,7 +143,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 조합의 대칭성과 선택 개수의 관계를 살핀다.\n$\\binom nr=\\binom n{n-r}$이다. $n\\ge5$에서 $\\binom n2=\\binom n5$가 성립하려면 대칭인 두 개수가 $2$와 $5$가 되어 $n-2=5$이다.\n따라서 $n=7$이고 실제로 $\\binom72=\\binom75=21$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "sourceKind": "generated"
   },
   {
     "id": 5,
@@ -168,6 +180,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 순서를 구별하는지에 따라 순열과 조합을 구분한다.\n대표만 두 명 고르면 $a=\\binom82=\\dfrac{8\\times7}{2}=28$이다.\n역할이 다른 회장과 부회장을 정하면 $b=8\\times7=56$이다.\n따라서 $b-a=56-28=28$이다.\n따라서 정답은 ③이다.",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "sourceKind": "generated"
   }
 ];
