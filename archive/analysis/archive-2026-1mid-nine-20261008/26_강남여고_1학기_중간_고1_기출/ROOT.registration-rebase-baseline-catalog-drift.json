@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "ROOT_REGISTRATION_REBASE_BASELINE_CATALOG_DRIFT_V1",
+  "head": "aaabb1d08833fb0485ea6644b524b39f2c62cb32",
+  "check": {
+    "path": "archive/analysis/26_강남여고_1학기_중간_고1_기출/rebase-baseline-check-aaabb/result.json",
+    "rawSha256": "7fa368ebb5b1c94dbbf684727a122779bd77f3ebd4365e9ba7cf4d339f4b8ce4",
+    "exitCode": 1,
+    "actualError": "Archive 2.0 catalog projection is stale"
+  },
+  "canonicalProjection": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-catalog-diagnosis-latest-baseline/archive/data/archive2-catalog.json",
+    "rawSha256": "3b7b15c2849f39dbc9fd60cfdea9f72b7f12069bfd4fabdfffc02a060ed90470",
+    "generatedManifestSha256": "fe07a8353dd771c938777ad85cb8805f8dd000447a7e2055f0761ec93c5cf6a8"
+  },
+  "actualBaseline": {
+    "catalogRawSha256": "0cf922ab6ecf4f1ebd99b3b8167095440769ceb36a7bed1b669b9c6ce5c99617",
+    "manifestRawSha256": "9bb921f66d1a4a73981372138ccf4abba66e1b52c2d0eea3b54832e0538b1360"
+  },
+  "decodedDiff": {
+    "actualRecords": 12894,
+    "expectedRecords": 12894,
+    "actualExams": 541,
+    "expectedExams": 541,
+    "recordDiffs": 0,
+    "examDiffs": 0,
+    "packedColumnsEqual": true,
+    "packedStringsEqual": true,
+    "packedRowsEqual": true,
+    "onlySourceHashDifference": {
+      "path": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
+      "actual": "dfd775566aa5c1b14342806fd8a2a39ea86d86590aa5cf7321186e629b970f2b",
+      "canonicalCurrentBytes": "76590f6ca6b62b2be3d64c7e85271a34fc91748785bb09f5bc65e8590232317c"
+    },
+    "actualIndexVersion": "4d3579ef590d34e27a0afa4f3e208539aa5e844afe48371c3f85a9eb4d3d24b3",
+    "canonicalIndexVersion": "de3be122ea237453100aee5ceaae0ffab921d639de1c9a693d4adb3174f092ea",
+    "manifestNonCatalogInputDiffs": 0
+  },
+  "scope": "pre-existing latest-baseline drift unrelated to the assigned new target; preserved without rewriting non-target source/catalog rows"
+}
