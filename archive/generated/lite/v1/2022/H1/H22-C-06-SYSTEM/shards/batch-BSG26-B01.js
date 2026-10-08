@@ -1,0 +1,65 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01-Q07-BP01",
+    "level": "중",
+    "category": "여러 가지 방정식과 부등식",
+    "originalCategory": "연립일차부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "연속부등식 $3x-4\\le2x+2\\le4x+6$의 해가 $a\\le x\\le b$일 때, $a+b$는?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "③",
+    "solution": "$3x-4\\le2x+2$에서 $x\\le6$이다. 또 $2x+2\\le4x+6$에서는 $-4\\le2x$, 즉 $x\\ge-2$이다. 두 부등식의 공통 해는 $-2\\le x\\le6$이다. 따라서 $a=-2$, $b=6$이고 $a+b=4$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnit": "연립방정식과 연립부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01-Q07-BP02",
+    "level": "중",
+    "category": "여러 가지 방정식과 부등식",
+    "originalCategory": "연립일차부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "연속부등식 $2x-1\\le5x+8\\le3x+14$를 만족시키는 정수 $x$의 개수는?",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
+    ],
+    "answer": "③",
+    "solution": "$2x-1\\le5x+8$에서 $-9\\le3x$이므로 $x\\ge-3$이다. 또한 $5x+8\\le3x+14$에서 $2x\\le6$이므로 $x\\le3$이다. 따라서 가능한 정수는 $-3,-2,-1,0,1,2,3$의 7개이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnit": "연립방정식과 연립부등식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  }
+];

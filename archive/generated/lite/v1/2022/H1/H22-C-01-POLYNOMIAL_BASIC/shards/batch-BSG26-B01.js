@@ -1,0 +1,65 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01-Q04-BP01",
+    "level": "중",
+    "category": "다항식의 연산",
+    "originalCategory": "다항식의 곱셈",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "다항식 $(a+b+c)(p+q)(x+y+z+w)$를 전개했을 때 서로 다른 항의 개수는? (단, 모든 문자는 서로 다르다.)",
+    "choices": [
+      "$12$",
+      "$18$",
+      "$24$",
+      "$30$",
+      "$36$"
+    ],
+    "answer": "③",
+    "solution": "전개한 한 항은 세 괄호 각각에서 항 하나를 골라 곱한 것이다. 선택 방법은 첫째 괄호 3가지, 둘째 2가지, 셋째 4가지이다. 서로 다른 문자로 이루어져 두 선택 결과가 같은 항이 되지 않으므로 항의 개수는 $3\\times2\\times4=24$개이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01-Q04-BP02",
+    "level": "중",
+    "category": "다항식의 연산",
+    "originalCategory": "다항식의 곱셈",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "다항식 $(x+2y)(x+3y)(x+y)$를 전개했을 때 $x^2y$의 계수는?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "③",
+    "solution": "$x^2y$를 얻으려면 세 괄호 중 하나에서만 $y$가 든 항을 고르고 나머지 두 괄호에서는 $x$를 선택해야 한다. 첫 번째 괄호에서 선택한 경우 계수는 2, 두 번째는 3, 세 번째는 1이다. 따라서 합은 $2+3+1=6$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  }
+];
