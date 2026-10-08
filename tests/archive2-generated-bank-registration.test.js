@@ -14,6 +14,7 @@ const prefix = 'data/generated-lite-consumer/v1/';
 const b03 = index.records.filter(r => r.uid.startsWith('ALITE-BSG26-B03-'));
 const hyocheon = index.records.filter(r => r.school === '효천고');
 const holdUids = new Set(index.excludedHoldUids);
+const selectableCount = value => value.records.filter(r => r.consumerSelectable === true).length;
 const originalFile = 'archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 
 function gitSha(bytes) {
@@ -130,7 +131,7 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('283 registered questions remain protected while exam-only UI prints exact original 23/26', async () => {
+test('consumer UI lists only selectable generated rows, searches individual questions, and preserves approved paper printing', async () => {
   const nodes=Object.create(null);
   const document={
     getElementById:id=>nodes[id]??(nodes[id]=new Node()),
@@ -138,7 +139,8 @@ test('283 registered questions remain protected while exam-only UI prints exact 
     createDocumentFragment:()=>new Node('fragment',true)
   };
   const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
-  assert.ok(!html.includes('개별 문항 검색')&&!html.includes('검수 승인'));
+  assert.ok(html.includes('생성 문항 검색·선택'));
+  assert.ok(html.includes('consumerSelectable'));
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
@@ -153,21 +155,36 @@ test('283 registered questions remain protected while exam-only UI prints exact 
   await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,2);
+  assert.equal(cards.length,1);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
-  assert.ok(bok&&hyo);
+  assert.ok(bok);
+  assert.equal(hyo,undefined);
   assert.match(bok.children[1].textContent,/23문항/);
-  assert.match(hyo.children[1].textContent,/26문항/);
   bok.onclick();await el('print').listeners.click();
   assert.equal(printed,1);
   assert.equal(el('paper-items').children.length,23);
   assert.match(el('paper-title').textContent,/복성고/);
-  hyo.onclick();await el('print').listeners.click();
+  const search=el('generated-search');
+  search.value='효천고';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  search.value='복성고';search.listeners.input();
+  assert.ok(el('generated-results').children.length>0);
+  const card=el('generated-results').children[0];
+  const actions=card.children.find(x=>x.className==='generated-actions');
+  const open=actions.children.find(x=>x.textContent==='문항 열기');
+  const choose=actions.children.find(x=>x.textContent==='시험지에 선택');
+  await open.listeners.click();
+  assert.equal(el('generated-preview').hidden,false);
+  choose.listeners.click();
+  assert.match(el('generated-selection-summary').textContent,/1개 문항/);
+  await el('generated-print').listeners.click();
   assert.equal(printed,2);
-  assert.equal(el('paper-items').children.length,26);
-  assert.match(el('paper-title').textContent,/효천고/);
+  assert.equal(el('paper-items').children.length,1);
+  const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
+  assert.ok(!textOf(el('paper-items')).includes('정답:'));
   assert.equal(index.records.length,283);
+  assert.equal(selectableCount(index),191);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
 });
