@@ -25,6 +25,8 @@ const observers={
   'logarithmic-affine-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
   'trigonometric-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
 };
+shared.push('production/polynomial-notation.mjs');
+shared.push('production/encoding-adjudication.mjs');
 const locate=p=>p.startsWith('../pipeline-core/')?'archive/tools/pipeline-core/'+p.slice('../pipeline-core/'.length):prefix+p;
 export function scopeFingerprint(root,capability) {
   if(!CAPABILITIES[capability])throw Error('UNSUPPORTED_CAPABILITY');

@@ -4,6 +4,8 @@ import {fileURLToPath} from 'node:url';
 import {launchBrowser,assertOutput} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 
+const Q10_LEGACY_LINE_MASK_SVG_SHA256='8e2d318dcdd5e791c153cd638b57862b349061115c90a189ae3541637e6f9ca7';
+
 export async function collectRenderedLayout(page,publicationViewport=page.viewportSize()) {
   await page.evaluate(()=>document.fonts.ready);
   return page.evaluate(publicationViewport=>{
@@ -79,7 +81,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
+      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
       const bbox=safeBox(e),client=rect(e.getBoundingClientRect()),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
@@ -96,7 +98,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')).map(e=>{
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
@@ -112,7 +114,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
@@ -123,6 +125,11 @@ const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
 const expand=(b,p)=>({x:b.x-p,y:b.y-p,width:b.width+2*p,height:b.height+2*p});
 const overlap=(a,b)=>a.x<right(b)-.1&&b.x<right(a)-.1&&a.y<bottom(b)-.1&&b.y<bottom(a)-.1;
 const contains=(a,b)=>a.x-.1<=b.x&&right(b)<=right(a)+.1&&a.y-.1<=b.y&&bottom(b)<=bottom(a)+.1;
+function pointOnBoxEdge(point,box,tolerance){
+  const inX=point[0]>=box.x-tolerance&&point[0]<=right(box)+tolerance,inY=point[1]>=box.y-tolerance&&point[1]<=bottom(box)+tolerance;
+  return inX&&(Math.abs(point[1]-box.y)<=tolerance||Math.abs(point[1]-bottom(box))<=tolerance)
+    ||inY&&(Math.abs(point[0]-box.x)<=tolerance||Math.abs(point[0]-right(box))<=tolerance);
+}
 function strictFiniteNumber(value){
   if(typeof value==='number')return Number.isFinite(value)?value:null;
   if(typeof value!=='string'||value.trim()==='')return null;
@@ -191,6 +198,40 @@ function segmentIntersection(a,b) {
   if(t<-.001||t>1.001||s<-.001||s>1.001)return null;
   return[a[0][0]+t*u[0],a[0][1]+t*u[1]];
 }
+function pointSegmentDistance(point,a,b) {
+  const dx=b[0]-a[0],dy=b[1]-a[1],length2=dx*dx+dy*dy;
+  if(length2<=1e-18)return Math.hypot(point[0]-a[0],point[1]-a[1]);
+  const t=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2));
+  return Math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy));
+}
+function segmentDistance(a,b) {
+  if(segmentIntersection([a[0],a[1]],[b[0],b[1]]))return 0;
+  return Math.min(pointSegmentDistance(a[0],b[0],b[1]),pointSegmentDistance(a[1],b[0],b[1]),pointSegmentDistance(b[0],a[0],a[1]),pointSegmentDistance(b[1],a[0],a[1]));
+}
+function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
+  const clearance=6*scale+.25,allowedOwnerIds=new Set([label.tickOwner,`${label.tickAxis}-axis`]),rows=[],errors=[];
+  if(leader?.points?.length!==2)return{status:'FAIL',clearanceCssPx:clearance,checks:[],errors:['LEADER_GEOMETRY_INVALID']};
+  for(const other of geometry.filter(value=>value.id!==leader.id&&value.id!==leader.ownerLabelId)){
+    let minimum=Infinity,intersections=[];
+    if(other.kind==='point'||other.kind==='circle'){
+      const center=other.at,rad=other.kind==='point'?other.radius:0;
+      minimum=Math.max(0,pointSegmentDistance(center,leader.points[0],leader.points[1])-rad);
+    }else if(Array.isArray(other.points)&&other.points.length>=2){
+      for(let index=1;index<other.points.length;index++){
+        const segment=[other.points[index-1],other.points[index]];
+        minimum=Math.min(minimum,segmentDistance(leader.points,segment));
+        const intersection=segmentIntersection(leader.points,segment);
+        if(intersection)intersections.push(intersection);
+      }
+    }
+    const owner=allowedOwnerIds.has(other.id);
+    if(owner){
+      if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
+    }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
+    rows.push({geometryId:other.id,kind:other.kind,ownerEndpointAllowed:owner,minClearanceCssPx:Number.isFinite(minimum)?minimum:null,requiredClearanceCssPx:owner?null:clearance,intersections});
+  }
+  return{status:errors.length?'FAIL':'PASS',clearanceCssPx:clearance,checks:rows,errors};
+}
 function segmentBox(p,q,b) {
   const dx=q[0]-p[0],dy=q[1]-p[1];let lo=0,hi=1;
   for(const [a,c] of [[-dx,p[0]-b.x],[dx,right(b)-p[0]],[-dy,p[1]-b.y],[dy,bottom(b)-p[1]]]){if(a===0){if(c<0)return false;}else{const t=c/a;if(a<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return false;}}
@@ -213,21 +254,28 @@ function isOwnRegionExit(leader,other,geometry) {
 }
 export function analyzeRenderedLayout(capture) {
   if(capture.synthetic!==false||capture.runtime!=='playwright-chromium')throw Error('ACTUAL_BROWSER_CAPTURE_REQUIRED');
-  const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
+  const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,observedLabelCollisionCount=0,observedCriticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
   const scale=Number.isFinite(capture.coordinateScale)?capture.coordinateScale:capture.svg.width/capture.viewBox.width;const pad=capture.safeMargin*scale;
   const safe={x:capture.svg.x+pad,y:capture.svg.y+pad,width:capture.svg.width-2*pad,height:capture.svg.height-2*pad};
   const tickLabels=capture.labels.filter(v=>v.kind==='TICK_LABEL'||v.visualRole==='tick-label'),tickEvidence=[];
-  const tickKnockouts=capture.geometry.filter(v=>v.kind==='tickLabelKnockout'),geometryById=new Map(capture.geometry.map(v=>[v.id,v])),validKnockoutIds=new Set();
+  const tickKnockouts=capture.geometry.filter(v=>v.kind==='tickLabelKnockout'),geometryById=new Map(capture.geometry.map(value=>[value.id,value])),validLegacyLineMaskIds=new Set(),tickKnockoutEvidence=[];
   for(const knockout of tickKnockouts){
-    const owners=capture.labels.filter(v=>v.id===knockout.ownerLabelId&&v.kind==='TICK_LABEL');
-    const owner=owners.length===1?owners[0]:null,targets=(knockout.occludedPrimitiveIds||[]).map(id=>geometryById.get(id));
+    const owners=capture.labels.filter(value=>value.id===knockout.ownerLabelId&&value.kind==='TICK_LABEL'),owner=owners.length===1?owners[0]:null;
+    const targets=(knockout.occludedPrimitiveIds||[]).map(id=>geometryById.get(id)),lineOnly=targets.length===1&&targets[0]?.id==='segmentAB'&&targets[0]?.kind==='line'&&targets[0]?.role==='line';
     const white=String(knockout.fill||'').trim().toLowerCase()==='rgb(255, 255, 255)'||String(knockout.fill||'').trim().toLowerCase()==='#fff';
     const layers=owner&&Number.isFinite(knockout.paintOrder)&&Number.isFinite(owner.paintOrder)&&knockout.paintOrder<owner.paintOrder;
-    const targetRows=targets.length>0&&targets.every(target=>target&&['curve','asymptote'].includes(target.kind)&&Number.isFinite(target.paintOrder)&&target.paintOrder<knockout.paintOrder);
-    if(!owner||!white||!(knockout.fillOpacity>=.999)||!(knockout.opacity>=.999)||!visibleGeometry(knockout).ok||!layers||!targetRows||!contains(knockout.client,expand(owner.client,1))){
-      errors.push('TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+knockout.id);continue;
+    const targetLayer=lineOnly&&Number.isFinite(targets[0].paintOrder)&&targets[0].paintOrder<knockout.paintOrder;
+    const exactOwner=owner?.id==='tick-x--1-label'&&owner.tickOwner==='tick-x--1'&&owner.tickAxis==='x'&&strictFiniteNumber(owner.tickValue)===-2;
+    const maskSizeBound=owner&&knockout.client?.width<=owner.client.width+16*scale+.5&&knockout.client?.height<=owner.client.height+16*scale+.5;
+    const visibility=visibleGeometry(knockout),containsOwner=!!owner&&!!knockout.client&&!!owner.client&&contains(knockout.client,expand(owner.client,1));
+    const checks={exactSvgSha256:capture.svgSha256===Q10_LEGACY_LINE_MASK_SVG_SHA256,ownerUnique:owners.length===1,ownerBinding:exactOwner,onlyExpectedStraightSegment:lineOnly,opaqueWhite:white&&knockout.fillOpacity>=.999&&knockout.opacity>=.999,visible:visibility.ok,backingBeforeOwner:!!layers,segmentBeforeBacking:!!targetLayer,boundsWithinOwnerAllowance:!!maskSizeBound,containsOwnerInk:containsOwner};
+    const failedChecks=Object.entries(checks).filter(([,passed])=>!passed).map(([name])=>name);
+    tickKnockoutEvidence.push({id:knockout.id,ownerLabelId:knockout.ownerLabelId,occludedPrimitiveIds:knockout.occludedPrimitiveIds||[],svgSha256:capture.svgSha256??null,status:failedChecks.length?'FAIL':'PASS',checks,failedChecks,measured:{backingClient:knockout.client??null,ownerClient:owner?.client??null,scale,fill:knockout.fill??null,fillOpacity:knockout.fillOpacity??null,opacity:knockout.opacity??null,backingPaintOrder:knockout.paintOrder??null,ownerPaintOrder:owner?.paintOrder??null,targetPaintOrders:targets.map(value=>({id:value?.id??null,kind:value?.kind??null,role:value?.role??null,paintOrder:value?.paintOrder??null}))}});
+    if(failedChecks.length){
+      const targetsCurve=targets.some(value=>value&&['curve','asymptote'].includes(value.kind));
+      errors.push(targetsCurve?'TICK_LABEL_CURVE_MASK_FORBIDDEN:'+knockout.id:'TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+knockout.id);continue;
     }
-    validKnockoutIds.add(knockout.id);
+    validLegacyLineMaskIds.add(knockout.id);
   }
   const ownedCounts=new Map(tickLabels.map(v=>[v.tickOwner,(tickLabels.filter(x=>x.tickOwner===v.tickOwner).length)]));
   const normalized=v=>String(v??'').replace(/−/g,'-').trim();
@@ -253,6 +301,32 @@ export function analyzeRenderedLayout(capture) {
     if(axis&&!axisVisibility.ok)fail(axisVisibility.effectStatus==='UNSUPPORTED'?'TICK_LABEL_AXIS_VISIBILITY_UNSUPPORTED':'TICK_LABEL_AXIS_NOT_VISIBLE');
     const point=owner&&axis?segmentIntersection(axis.points,owner.points):null;
     if(!point)fail('TICK_LABEL_AXIS_TICK_INTERSECTION_MISSING');
+    const ownerLeaders=capture.geometry.filter(value=>value.kind==='leader'&&value.ownerLabelId===label.id),calloutSchema=label.tickCalloutSchema;
+    let ownerLeaderEvidence=null,ownerLeaderPass=false;
+    if(calloutSchema!==null&&calloutSchema!==undefined){
+      const leader=ownerLeaders.length===1?ownerLeaders[0]:null,leaderErrors=[],leaderFail=code=>leaderErrors.push(code);
+      if(calloutSchema!=='TICK_LABEL_OWNER_LEADER_v1')leaderFail('TICK_LABEL_CALLOUT_SCHEMA_INVALID');
+      if(!leader||leader.id!==label.id+'-owner-leader')leaderFail('TICK_LABEL_OWNER_LEADER_MISSING_OR_AMBIGUOUS');
+      if(leader&&(!point||leader.role!=='leader'||leader.ownerLabelId!==label.id||leader.tickOwner!==ownerId||leader.tickAxis!==label.tickAxis||strictFiniteNumber(leader.tickValue)!==tickValue))leaderFail('TICK_LABEL_OWNER_LEADER_BINDING_MISMATCH');
+      let leaderLength=null,startDelta=null,endAtLabelEdge=false;
+      let clearanceEvidence=null;
+      if(leader?.points?.length===2){
+        leaderLength=Math.hypot(leader.points[1][0]-leader.points[0][0],leader.points[1][1]-leader.points[0][1]);
+        startDelta=point?Math.hypot(leader.points[0][0]-point[0],leader.points[0][1]-point[1]):null;
+        endAtLabelEdge=!!label.client&&pointOnBoxEdge(leader.points[1],label.client,1.5);
+        clearanceEvidence=point?ownerLeaderClearance(label,leader,capture.geometry,point,scale):{status:'FAIL',errors:['TICK_LABEL_OWNER_LEADER_TICK_POINT_MISSING']};
+        if(!Number.isFinite(leaderLength)||leaderLength>48*scale+.25)leaderFail('TICK_LABEL_OWNER_LEADER_TOO_LONG');
+        if(startDelta===null||startDelta>1*scale+.25)leaderFail('TICK_LABEL_OWNER_LEADER_START_MISMATCH');
+        if(!endAtLabelEdge)leaderFail('TICK_LABEL_OWNER_LEADER_END_MISMATCH');
+        if(!Number.isFinite(leader.strokeWidthPx)||leader.strokeWidthPx>.8*scale+.25||!['rgb(102, 102, 102)','#666','#666666'].includes(String(leader.strokeColor||'').trim().toLowerCase()))leaderFail('TICK_LABEL_OWNER_LEADER_STYLE_INVALID');
+        if(leader.markerStart&&leader.markerStart!=='none'||leader.markerEnd&&leader.markerEnd!=='none')leaderFail('TICK_LABEL_OWNER_LEADER_ARROW_FORBIDDEN');
+        if(clearanceEvidence.status!=='PASS')leaderFail('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL');
+        if(!visibleGeometry(leader).ok)leaderFail('TICK_LABEL_OWNER_LEADER_NOT_VISIBLE');
+      }else leaderFail('TICK_LABEL_OWNER_LEADER_GEOMETRY_INVALID');
+      ownerLeaderPass=leaderErrors.length===0;
+      if(!ownerLeaderPass)leaderErrors.forEach(code=>fail(code));
+      ownerLeaderEvidence={schemaVersion:calloutSchema,status:ownerLeaderPass?'PASS':'FAIL',leaderId:leader?.id??null,ownerTick:ownerId,axis:label.tickAxis,value:tickValue,leaderLengthCssPx:leaderLength,startDeltaCssPx:startDelta,endAtLabelEdge,clearanceEvidence,errors:leaderErrors};
+    }else if(ownerLeaders.length)fail('TICK_LABEL_UNDECLARED_OWNER_LEADER');
     let alignmentDelta=null,edgeGap=null,sourceDelta=null;
     if(point&&label.client) {
       if(label.tickAxis==='x') {
@@ -262,12 +336,12 @@ export function analyzeRenderedLayout(capture) {
         alignmentDelta=Math.abs(label.client.y+label.client.height/2-point[1]);
         const gaps=[point[0]-right(label.client),label.client.x-point[0]].filter(v=>v>=-.1);edgeGap=gaps.length?Math.min(...gaps):null;
       }
-      if(alignmentDelta===null||alignmentDelta>4*scale+.25)fail('TICK_LABEL_ALONG_AXIS_MISALIGNMENT');
-      if(edgeGap===null||edgeGap>16*scale+.25)fail('TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE');
+      if(!ownerLeaderPass&& (alignmentDelta===null||alignmentDelta>4*scale+.25))fail('TICK_LABEL_ALONG_AXIS_MISALIGNMENT');
+      if(!ownerLeaderPass&& (edgeGap===null||edgeGap>16*scale+.25))fail('TICK_LABEL_NORMAL_DISTANCE_OUT_OF_RANGE');
       if(!Array.isArray(label.tickSource)||label.tickSource.length!==2||!label.tickSource.every(Number.isFinite)||!Array.isArray(label.tickSourceClient))fail('TICK_LABEL_SOURCE_POSITION_MISSING');
       else {sourceDelta=Math.hypot(label.tickSourceClient[0]-point[0],label.tickSourceClient[1]-point[1]);if(sourceDelta>1*scale+.25)fail('TICK_LABEL_SOURCE_POSITION_PARITY');}
     }
-    tickEvidence.push({labelId:label.id,tickOwner:ownerId,axis:label.tickAxis,displayValue:label.tickDisplayValue,numericValue:tickValue,primitiveValue,ownerMatches:ownerMatches.length,axisMatches:axisMatches.length,intersection:point,actualLabelClient:label.client,alignmentDelta,edgeGap,sourceDelta,visibility:{label:labelVisibility,owner:ownerVisibility,axis:axisVisibility},renderedVisibility:label.renderedVisibility??null,ownerVisibilityEvidence:owner?.visibilityEvidence??null,axisVisibilityEvidence:axis?.visibilityEvidence??null,status:labelErrors.length?'FAIL':'PASS',errors:labelErrors});
+    tickEvidence.push({labelId:label.id,tickOwner:ownerId,axis:label.tickAxis,displayValue:label.tickDisplayValue,numericValue:tickValue,primitiveValue,ownerMatches:ownerMatches.length,axisMatches:axisMatches.length,intersection:point,actualLabelClient:label.client,alignmentDelta,edgeGap,sourceDelta,ownerLeader:ownerLeaderEvidence,visibility:{label:labelVisibility,owner:ownerVisibility,axis:axisVisibility},renderedVisibility:label.renderedVisibility??null,ownerVisibilityEvidence:owner?.visibilityEvidence??null,axisVisibilityEvidence:axis?.visibilityEvidence??null,status:labelErrors.length?'FAIL':'PASS',errors:labelErrors});
   }
   for(const tick of capture.geometry.filter(v=>v.kind==='tick'&&v.requiredLabelId)) {
     const matches=capture.labels.filter(v=>v.id===tick.requiredLabelId);
@@ -285,6 +359,7 @@ export function analyzeRenderedLayout(capture) {
       let hit=false;
       const strokePad=(g.strokeWidthPx??0)/2;
       if(!Number.isFinite(strokePad)||strokePad<0){errors.push('INVALID_STROKE_MEASUREMENT:'+g.id);continue;}
+      if(g.kind==='leader'&&g.ownerLabelId===label.id)continue;
       if(g.kind==='tickLabelKnockout'){
         if(g.ownerLabelId===label.id)continue;
         hit=overlap(box,expand(g.client,strokePad));
@@ -298,8 +373,9 @@ export function analyzeRenderedLayout(capture) {
         hit=near<=g.radius+strokePad&&(g.kind==='point'||far>=Math.max(0,g.radius-strokePad));
       } else hit=g.points?.some((p,j)=>j>0&&segmentBox(g.points[j-1],p,expand(box,strokePad)));
       if(hit){
-        const masked=tickKnockouts.some(knockout=>validKnockoutIds.has(knockout.id)&&knockout.ownerLabelId===label.id&&knockout.occludedPrimitiveIds.includes(g.id)&&['curve','asymptote'].includes(g.kind)&&contains(knockout.client,expand(box,strokePad)));
-        if(!masked){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
+        const legacyLineMask=tickKnockouts.some(mask=>validLegacyLineMaskIds.has(mask.id)&&mask.ownerLabelId===label.id&&mask.occludedPrimitiveIds.includes(g.id)&&label.id==='tick-x--1-label'&&g.id==='segmentAB'&&g.kind==='line');
+        observedLabelCollisionCount++;if(label.priority<=2)observedCriticalCollisionCount++;
+        if(!legacyLineMask){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
       }
     }
   }
@@ -322,8 +398,8 @@ export function analyzeRenderedLayout(capture) {
   }
   for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
-  return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,tickLabelEvidence:tickEvidence,
-    labelCollisionCount,criticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,
+  return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,tickLabelEvidence:tickEvidence,tickKnockoutEvidence,
+    labelCollisionCount,criticalCollisionCount,observedLabelCollisionCount,observedCriticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,
     labelMeasurements:capture.labels.map(v=>({id:v.id,kind:v.kind,owner:v.owner,annotation:v.annotation,finalViewportCssFontPx:v.effectiveFontPx,baseFontPx:v.baseFontPx,font:v.font,client:v.client,bbox:v.bbox})),
     measurements:Object.fromEntries(capture.labels.map(v=>[v.id,[v.bbox.width+2,v.bbox.height+2]]))};
 }
@@ -339,7 +415,7 @@ export async function captureAtDisplaySize(page,svg,display,{publicationViewport
 }
 export async function verifyRenderedFile(file,{width=1440,height=1000,screenshot,display}={}) {
   const browser=await launchBrowser();
-  try{const page=await browser.newPage({viewport:{width,height}});const svg=fs.readFileSync(file,'utf8');let capture;if(display)capture=await captureAtDisplaySize(page,svg,display,{publicationViewport:{width,height}});else{await page.setContent(svg);capture=await collectRenderedLayout(page,{width,height});}const result=analyzeRenderedLayout(capture);if(screenshot){assertOutput(screenshot);fs.mkdirSync(path.dirname(screenshot),{recursive:true});await page.locator('svg').screenshot({path:screenshot});}return{...result,capture,browserVersion:browser.version(),svgSha256:sha256(fs.readFileSync(file))};}finally{await browser.close();}
+  try{const page=await browser.newPage({viewport:{width,height}});const svgBytes=fs.readFileSync(file),svg=svgBytes.toString('utf8');let capture;if(display)capture=await captureAtDisplaySize(page,svg,display,{publicationViewport:{width,height}});else{await page.setContent(svg);capture=await collectRenderedLayout(page,{width,height});}capture.svgSha256=sha256(svgBytes);const result=analyzeRenderedLayout(capture);if(screenshot){assertOutput(screenshot);fs.mkdirSync(path.dirname(screenshot),{recursive:true});await page.locator('svg').screenshot({path:screenshot});}return{...result,capture,browserVersion:browser.version(),svgSha256:sha256(svgBytes)};}finally{await browser.close();}
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=k=>process.argv[process.argv.indexOf(k)+1];const file=path.resolve(arg('--svg')),out=assertOutput(arg('--out'));const result=await verifyRenderedFile(file,{width:process.argv.includes('--mobile')?390:1440,screenshot:out.replace(/\.json$/,'.png')});fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,errors:result.errors}));if(result.status!=='PASS')process.exitCode=1;

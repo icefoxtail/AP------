@@ -6,7 +6,7 @@ import {invokeVisualContinuation,nativeImageInput} from '../../../../alive/runti
 import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {questionUidV2} from '../../pipeline-core/question-uid.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
-import {recordArchiveEvidence,measureArchiveDisplayEnvelope} from '../record-visual-browser-evidence.mjs';
+import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImageUrlPath} from '../record-visual-browser-evidence.mjs';
 import {assetIdentity,planHash} from './contracts.mjs';
 import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
@@ -14,6 +14,9 @@ import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
 import {dependency,dependencyRoot} from './dependencies.mjs';
 import {typesetter} from './typography.mjs';
 import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
+import {quadraticVertexNotation} from './polynomial-notation.mjs';
+import {bindNativeSolutionOverlayCandidate,compareSolutionTokenParity} from './native-solution-overlay.mjs';
+import {validateSolutionEncodingAdjudication} from './encoding-adjudication.mjs';
 import {captureDisplayProfiles} from './display-profile-audit.mjs';
 import {planDisplayEnvelope,qualifyDisplayEnvelope,compareActualDisplayEnvelope,requestedProfileTypographyPolicy} from './display-envelope.mjs';
 import {RepairBudget} from './repair-budget.mjs';
@@ -22,21 +25,65 @@ import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
 import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
-import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding} from './blinded-review.mjs';
+import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
 
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
 const QUADRATIC_OVERVIEW_CANVAS=Object.freeze({width:384,height:320,panel:140});
+const QUADRATIC_HEADER_CANVAS=Object.freeze({width:512,height:400,panel:0,topInset:80});
 const RATIONAL_OVERVIEW_CANVAS=Object.freeze({width:520,height:420,panel:140});
 const graphViewport=(values,canvas=GRAPH_OVERVIEW_CANVAS)=>({
   xMin:values[0],xMax:values[1],yMin:values[2],yMax:values[3],
   width:canvas.width,height:canvas.height,panel:canvas.panel
 });
 export function showConstructionCircles(plan){return plan?.mathPlan?.realization?.recipeId!=='SSS_POSITIVE_SIDE_v1';}
+export function normalizeScalarLabelPrefix(value){
+  if(typeof value!=='string')throw Error('SCALAR_LABEL_PREFIX_REQUIRED');
+  const prefix=value.replace(/\s/g,'').replace(/=+$/,'').replaceAll('²','^2').replaceAll('³','^3');
+  if(prefix&&!/^[A-Za-z]{1,2}(?:\^[23])?$/.test(prefix))throw Error('UNSUPPORTED_SCALAR_LABEL_PREFIX');
+  return prefix;
+}
 function axisTickDisplayFacts(graphPlan){
   const values=graphPlan.axisTickValues;
-  if(values===undefined)return{};
-  if(!values||Object.keys(values).sort().join(',')!=='x,y'||['x','y'].some(axis=>!Array.isArray(values[axis])))throw Error('INVALID_GRAPH_AXIS_TICK_VALUES');
-  return {axisTickValues:values};
+  const facts={};
+  if(values!==undefined){
+    if(!values||Object.keys(values).sort().join(',')!=='x,y'||['x','y'].some(axis=>!Array.isArray(values[axis])))throw Error('INVALID_GRAPH_AXIS_TICK_VALUES');
+    facts.axisTickValues=values;
+  }
+  if(graphPlan.tickLabelCallouts!==undefined){
+    const callouts=graphPlan.tickLabelCallouts;
+    if(!Array.isArray(callouts)||callouts.length!==1)throw Error('INVALID_TICK_LABEL_CALLOUTS');
+    const callout=callouts[0];
+    if(!callout||Object.keys(callout).sort().join(',')!=='axis,offsetUser,value'||callout.axis!=='x'||callout.value!=='-6'||!Array.isArray(callout.offsetUser)||callout.offsetUser.length!==2||callout.offsetUser[0]!==28||callout.offsetUser[1]!==-22)throw Error('INVALID_TICK_LABEL_CALLOUTS');
+    facts.tickLabelCallouts=callouts;
+  }
+  return facts;
+}
+export function displayGeometryInventory(plan,model){
+  const select=(field,available,type,defaults=null)=>{
+    const ids=plan[field]??defaults??Object.keys(available||{});
+    if(!Array.isArray(ids)||new Set(ids).size!==ids.length||ids.some(id=>!Object.hasOwn(available||{},id)))throw Error('INVALID_DISPLAY_GEOMETRY_INVENTORY:'+field);
+    const mandatory=plan.mathPlan.nodes.filter(n=>n.outputType===type&&(n.op==='SOURCE_POINT'||['GIVEN','CONCLUSION'].includes(n.factRole))).map(n=>n.id);
+    if(mandatory.some(id=>!ids.includes(id)))throw Error('REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED:'+field);
+    return Object.fromEntries(ids.map(id=>[id,available[id]]));
+  };
+  const points=select('displayPoints',model.points,'POINT'),lines=select('displayLines',model.lines,'LINE');
+  for(const id of [...(plan.coordinateLabels||[]),...(plan.displaySegments||[]).flatMap(s=>s.refs),...(plan.rightAngles||[]).flatMap(a=>a.refs)])if(!Object.hasOwn(points,id))throw Error('DISPLAY_ANNOTATION_POINT_NOT_VISIBLE:'+id);
+  const axisHelperCircles=plan.mathPlan.realization?.recipeId==='SOURCE_COORDINATE_AXES_v1'?plan.mathPlan.nodes.filter(n=>n.outputType==='CIRCLE'&&['GIVEN','CONCLUSION'].includes(n.factRole)).map(n=>n.id):null;
+  return {points,lines,circles:showConstructionCircles(plan)?select('displayCircles',model.circles,'CIRCLE',axisHelperCircles):{}};
+}
+export function compileConstructionWirePlan(input){
+  if(!input.mathPlan?.conditionAudits)return input;
+  const plan=JSON.parse(JSON.stringify(input));
+  plan.mathPlan.conditionAudits=plan.mathPlan.conditionAudits.map((audit,index)=>{
+    if(!audit||typeof audit!=='object'||Array.isArray(audit))throw Error('CONDITION_AUDIT_INVALID');
+    if(audit.type!==undefined&&audit.kind!==undefined&&audit.type!==audit.kind)throw Error('CONDITION_AUDIT_TYPE_ALIAS_CONFLICT');
+    const kind=audit.kind??audit.type;
+    if(typeof kind!=='string'||!kind)throw Error('CONDITION_AUDIT_KIND_REQUIRED');
+    if(audit.id!==undefined&&(typeof audit.id!=='string'||!audit.id))throw Error('CONDITION_AUDIT_ID_INVALID');
+    const normalized={...audit,id:audit.id??'conditionAudit'+(index+1),kind};delete normalized.type;return normalized;
+  });
+  if(new Set(plan.mathPlan.conditionAudits.map(audit=>audit.id)).size!==plan.mathPlan.conditionAudits.length)throw Error('CONDITION_AUDIT_ID_DUPLICATE');
+  return plan;
 }
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
@@ -243,10 +290,18 @@ export function specFor(plan,model,id){
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
-    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),canvas=degree>=3?GRAPH_OVERVIEW_CANVAS:QUADRATIC_OVERVIEW_CANVAS;
+    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),canvas=degree>=3?GRAPH_OVERVIEW_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
+    if(degree<=2&&(!Number.isSafeInteger(canvas.height)||canvas.height<400||canvas.height>600))throw Error('POLYNOMIAL_OVERVIEW_CANVAS_HEIGHT_INVALID');
     const framedCriticalX=(p.overviewFeatures||[]).filter(feature=>feature.kind==='POLYNOMIAL_FEATURE').map(feature=>feature.x);
     const criticalX=[...new Set([...(p.requiredPoints||[]).map(point=>point.x),...framedCriticalX])];
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}];
+    const displayedExpression=quadraticVertexNotation(p.coefficients)?.expression??expr;
+    if(p.tickLabelCallouts!==undefined){
+      const q13Quadratic=p.family==='polynomial'&&p.coefficients.join(',')==='-1/2,3,1/2'&&p.overviewCanvasHeight===600&&(p.requiredPoints||[]).some(point=>point.x===-3&&point.y===-5);
+      if(!q13Quadratic||!Array.isArray(p.tickLabelCallouts)||p.tickLabelCallouts.length!==1)throw Error('TICK_LABEL_CALLOUT_Q13_ONLY');
+      const callout=p.tickLabelCallouts[0];
+      if(!callout||Object.keys(callout).sort().join(',')!=='axis,offsetUser,value'||callout.axis!=='x'||callout.value!=='-6'||!Array.isArray(callout.offsetUser)||callout.offsetUser.length!==2||callout.offsetUser[0]!==28||callout.offsetUser[1]!==-22)throw Error('TICK_LABEL_CALLOUT_Q13_BINDING_INVALID');
+    }
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+displayedExpression,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}];
     for(const [index,point] of (p.requiredPoints||[]).entries()){
       if(!point||typeof point.id!=='string'||!point.id||!Number.isFinite(point.x)||!Number.isFinite(point.y))throw Error('POLYNOMIAL_REQUIRED_POINT_INVALID');
       const markerId='required-point-'+(index+1);objects.push({id:markerId,kind:'POINT',at:[point.x,point.y]});
@@ -254,38 +309,52 @@ export function specFor(plan,model,id){
         objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:[String(point.x),String(point.y)]});
       }
     }
-    return {id,visualType:'function_graph',viewport:graphViewport(v,canvas),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:axisTickDisplayFacts(p),objects};
+    return {id,visualType:'function_graph',viewport:{...graphViewport(v,canvas),...(degree<=2?{topInset:80}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{})},objects};
   }
-  const points=model.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
+  const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1),pad=span*.35;
   const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation}));const notationByLabel={},factRolesByLabel={};
   for(const node of plan.mathPlan.nodes){
-    if(node.outputType==='LINE'){
+    if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);
       objects.push({id:node.id,kind:'LINE',coefficients:fact.approximation});
-    }else if(node.outputType==='CIRCLE'&&showConstructionCircles(plan)){
+    }else if(node.outputType==='CIRCLE'&&Object.hasOwn(displayed.circles,node.id)){
       const fact=model.circles?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_CIRCLE_FACT_REQUIRED:'+node.id);
       objects.push({id:node.id,kind:'CIRCLE',center:fact.approximation.slice(0,2),radius:fact.approximation[2]});
     }
   }
   for(const s of plan.displaySegments||[]){if(!points[s.refs[0]]||!points[s.refs[1]])throw Error('DISPLAY_SEGMENT_UNKNOWN_REF');objects.push({id:s.id,kind:'SEGMENT',from:points[s.refs[0]].approximation,to:points[s.refs[1]].approximation});}
-  for(const id of plan.coordinateLabels||[]){const node=plan.mathPlan.nodes.find(n=>n.id===id);if(node?.op!=='SOURCE_POINT')throw Error('ONLY_SOURCE_COORDINATE_LABEL_SUPPORTED');objects.push({id:id+'-name',kind:'POINT_NAME',target:id,text:id,priority:0});objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:node.args.coordinates.map(v=>v.kind==='integer'?v.value:v.kind==='rational'?v.numerator+'/'+v.denominator:(()=>{throw Error('UNSUPPORTED_COORDINATE_NOTATION');})())});}
+  for(const id of plan.coordinateLabels||[]){
+    const node=plan.mathPlan.nodes.find(n=>n.id===id),point=points[id];
+    if(!node||node.outputType!=='POINT'||!point?.exact?.length)throw Error('VERIFIED_POINT_COORDINATE_REQUIRED:'+id);
+    // Derived coordinates come exclusively from the independently rebuilt
+    // exact model, never from planner-authored approximate coordinates.
+    const coordinates=node.op==='SOURCE_POINT'?node.args.coordinates:point.exact;
+    objects.push({id:id+'-name',kind:'POINT_NAME',target:id,text:id,priority:0});
+    objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:coordinates.map(scalarExpression)});
+    factRolesByLabel[id+'-coordinate']=node.factRole;
+  }
   for(const label of plan.scalarLabels||[]){
     const scalar=model.scalars[label.nodeId];if(!scalar)throw Error('SCALAR_LABEL_UNKNOWN_NODE');
     const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment)throw Error('SCALAR_LABEL_OWNER_MISSING');
     const [a,b]=segment.refs.map(r=>points[r].approximation);
-    const role=plan.mathPlan.nodes.find(n=>n.id===label.nodeId).factRole;
-    const sourceLength=!!label.unit&&role!=='CONCLUSION';
-    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength?'':label.prefix+'=')+scalarExpression(scalar.exact),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    const scalarNode=plan.mathPlan.nodes.find(n=>n.id===label.nodeId),role=scalarNode.factRole;
+    const sourceLength=(!!label.unit||(!label.prefix&&scalarNode.op==='SEGMENT_LENGTH'))&&role!=='CONCLUSION';
+    const prefix=normalizeScalarLabelPrefix(label.prefix);
+    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength||!prefix?'':prefix+'=')+scalarExpression(scalar.exact),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[id]={...(!sourceLength&&/^[A-Z]{2}$/.test(label.prefix)?{entity:label.prefix}:{}),...(label.unit?{unit:label.unit}:{})};factRolesByLabel[id]=role;
   }
   for(const label of plan.segmentLabels||[]){
     const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment||!/^[A-Za-z]$/.test(label.variable))throw Error('UNSUPPORTED_SEGMENT_NOTATION');
-    const [a,b]=segment.refs.map(r=>points[r].approximation);objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    const [a,b]=segment.refs.map(r=>points[r].approximation);
+    objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;
   }
   for(const angle of plan.rightAngles||[])objects.push({id:angle.id,kind:'ANGLE_MARK',refs:angle.refs,value:90});
-  return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:384,height:320,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
+  const coordinateCanvas=plan.coordinateCanvas??{width:384,height:320};
+  if(plan.coordinateCanvas!==undefined&&model.coordinateMode!=='SOURCE_COORDINATES')throw Error('COORDINATE_CANVAS_SOURCE_FRAME_REQUIRED');
+  if(!Number.isSafeInteger(coordinateCanvas.width)||coordinateCanvas.width<384||coordinateCanvas.width>720||!Number.isSafeInteger(coordinateCanvas.height)||coordinateCanvas.height<320||coordinateCanvas.height>600)throw Error('COORDINATE_CANVAS_BOUNDS_INVALID');
+  return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:coordinateCanvas.width,height:coordinateCanvas.height,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
 }
 
 export async function runPhase2(options){
@@ -295,7 +364,102 @@ export async function runPhase2(options){
   return withWorkRoot(workspace.workRoot,()=>runPhase2InWorkspace({...options,requestedUid,workspace}));
 }
 
-async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false,requestedUid,workspace,signal,onArchiveProgress}){
+function readResultStage(root,result,stageName){
+  const stages=(result.stages||[]).map(ref=>{
+    const {receiptSha256,...manifest}=JSON.parse(readBoundFile(root,ref));
+    if(objectSha(manifest)!==receiptSha256)throw Error('NATIVE_OVERLAY_STAGE_RECEIPT_INVALID:'+manifest.stage);
+    for(const output of manifest.outputs||[])readBoundFile(root,output);
+    return{ref,manifest};
+  }).filter(row=>row.manifest.stage===stageName);
+  if(!stages.length)throw Error('NATIVE_OVERLAY_BASE_STAGE_REQUIRED:'+stageName);
+  return stages.at(-1);
+}
+
+// Re-review a native Archive solution text change while reusing the exact
+// previously approved SVG bytes. This route never rebuilds or patches SVG.
+export async function recordNativeSolutionOverlay({questionUid,sourceRegistryRef,baseResultRef,solutionPatchRef,runId,signal,onProgress}){
+  if(!runId||!sourceRegistryRef||!baseResultRef||!solutionPatchRef)throw Error('NATIVE_SOLUTION_OVERLAY_INPUTS_REQUIRED');
+  if(questionUid!=='24_제일고_1학기_중간_고1_기출|10')throw Error('NATIVE_SOLUTION_OVERLAY_Q10_ONLY');
+  const workspace=bindRunWorkspace(root,{questionUid,runId});
+  return withWorkRoot(workspace.workRoot,async()=>{
+    const baseResult=JSON.parse(readBoundFile(root,baseResultRef)),authority=resolveQuestion(root,{questionUid,sourceRegistryRef});
+    if(baseResult.status!=='UNRESOLVED'||baseResult.identity?.questionUid!==questionUid||baseResult.sourceRef?.sha256!==authority.sourceRef.sha256||!String(baseResult.error||'').includes('INDEPENDENT_VISUAL_REVIEW_FAIL')||!String(baseResult.error||'').includes('native 해설')||!String(baseResult.error||'').includes('한 줄'))throw Error('NATIVE_OVERLAY_BASE_FAILURE_SCOPE_INVALID');
+    const ordinal=Number(questionUid.split('|').at(-1)),question=authority.question,patch=JSON.parse(readBoundFile(root,solutionPatchRef));
+    if(patch.schemaVersion!=='PHASE5_NATIVE_SOLUTION_PATCH_v1'||patch.questionUid!==questionUid||patch.sourceRef?.path!==authority.sourceRef.path||patch.sourceRef?.sha256!==authority.sourceRef.sha256||patch.baseSolutionSha256!==bytesSha(Buffer.from(question.solution,'utf8')))throw Error('NATIVE_OVERLAY_PATCH_NOT_CURRENT');
+    const tokenParity=compareSolutionTokenParity(question.solution,patch.patchedSolution);
+    if(tokenParity.status!=='PASS')throw Error('NATIVE_OVERLAY_SOLUTION_TOKEN_PARITY_FAIL');
+    const basePlanStage=readResultStage(root,baseResult,'PLAN'),frozenPlan=JSON.parse(readBoundFile(root,basePlanStage.manifest.outputs[0]));
+    if(planHash(frozenPlan)!==frozenPlan.planSha256||frozenPlan.questionUid!==questionUid||frozenPlan.sourceRef?.sha256!==authority.sourceRef.sha256)throw Error('NATIVE_OVERLAY_BASE_PLAN_INVALID');
+    const {schemaVersion:planVersion,questionUid:planUid,visualAssetKey,sourceRef:planSourceRef,solutionRef:planSolutionRef,verifiedSolutionRef,verifiedSolutionPolicySha256,sourceReviewInputSha256,sourceReviewPolicySha256,sourceRegistryRef:priorRegistryRef,planSha256,...semanticPlan}=frozenPlan;
+    if(planUid!==questionUid||semanticPlan.capability!=='construction-spike-v1'||!semanticPlan.mathPlan)throw Error('NATIVE_SOLUTION_OVERLAY_PLAN_SCOPE_INVALID');
+    const sourceOnly={content:question.content,choices:question.choices??null,sourceImageRequired:!!question.image};
+    const images=[];for(const imagePath of [question.image].filter(Boolean)){const bytes=readBoundFile(root,fileRef(root,'archive/'+imagePath));images.push('data:image/'+(imagePath.endsWith('.svg')?'svg+xml':imagePath.endsWith('.jpg')?'jpeg':'png')+';base64,'+bytes.toString('base64'));}
+    const overlayFolderRelative=currentWorkRoot()+'/native-solution-overlay';
+    const overlayFolder=generatedPath(root,overlayFolderRelative);
+    if(fs.existsSync(overlayFolder))throw Error('NATIVE_SOLUTION_OVERLAY_EXISTS');
+    fs.mkdirSync(overlayFolder,{recursive:true});
+    const reviewFreeze=(stage,value)=>freeze(stage,value,{identity:assetIdentity(questionUid,'SOLUTION_VISUAL'),sourceRef:authority.sourceRef,baseResultRef,solutionPatchRef});
+    const verifyPolicy=verifiedSolutionPolicyFingerprint(root),verificationInputSha256=verificationBinding({sourceRef:authority.sourceRef,source:sourceOnly,images,answer:question.answer,solution:question.solution,policySha256:verifyPolicy});
+    let verified=JSON.parse(readBoundFile(root,verifiedSolutionRef));
+    if(verifiedSolutionPolicySha256!==verifyPolicy||!validateReviewLineage(root,verified,'SOLUTION',verifyPolicy,verificationInputSha256)){
+      verified=await blindThenCompare({root,kind:'SOLUTION',source:sourceOnly,images,comparison:{answer:question.answer,solution:question.solution},policySha256:verifyPolicy,inputBindingSha256:verificationInputSha256,call:(purpose,packet,pixels)=>provider(purpose,packet,pixels,overlayFolder,true),freeze:reviewFreeze});
+    }
+    if(!verificationClosed(verified))throw Error('NATIVE_OVERLAY_VERIFIED_SOLUTION_NOT_CLOSED');
+    const verifiedReceipt=reviewFreeze('NATIVE_OVERLAY_VERIFIED_SOLUTION',verified);
+    const currentSourcePolicy=sourcePolicyFingerprint(root),currentConditionBinding=conditionBinding({sourceRef:authority.sourceRef,source:sourceOnly,images,plan:semanticPlan,policySha256:currentSourcePolicy});
+    const currentSourceReview=await blindThenCompare({root,kind:'CONDITIONS',source:sourceOnly,images,comparison:{proposedPlan:semanticPlan},policySha256:currentSourcePolicy,inputBindingSha256:currentConditionBinding,call:(purpose,packet,pixels)=>provider(purpose,packet,pixels,overlayFolder,true),freeze:reviewFreeze});
+    if(!sourceReviewClosed(currentSourceReview))throw Error('NATIVE_OVERLAY_CURRENT_SOURCE_REVIEW_NOT_CLOSED');
+    const sourceReviewReceipt=reviewFreeze('NATIVE_OVERLAY_SOURCE_REVIEW',currentSourceReview);
+    const currentPlanReceipt=receipt('NATIVE_OVERLAY_PLAN',{'plan.json':canonicalJson(semanticPlan)},{identity:assetIdentity(questionUid,'SOLUTION_VISUAL'),sourceRef:authority.sourceRef,baseResultRef});
+    const currentFingerprint=scopeFingerprint(root,semanticPlan.capability);
+    const currentMath=await worker({action:'construction',graph:semanticPlan.mathPlan});
+    const currentPeer=reconstruct(semanticPlan.mathPlan),currentMathAudit={...compareReconstruction(currentMath,currentPeer),peer:currentPeer};
+    if(currentMathAudit.status!=='PASS')throw Error('NATIVE_OVERLAY_CURRENT_MATH_NOT_CLOSED');
+    const currentMathReceipt=reviewFreeze('NATIVE_OVERLAY_MATH_REVIEW',currentMathAudit);
+    const archiveBankStage=readResultStage(root,baseResult,'ARCHIVE_BANK');
+    const baseCandidateRef=archiveBankStage.manifest.outputs.find(ref=>ref.path.endsWith('/'+workspace.examUid+'.js'));
+    if(!baseCandidateRef)throw Error('NATIVE_OVERLAY_BASE_CANDIDATE_REQUIRED');
+    const baseCandidateCode=readBoundFile(root,baseCandidateRef).toString('utf8'),baseBank=loadBank(baseCandidateCode),baseQuestion=baseBank.find(item=>item.id===ordinal);
+    if(!baseQuestion||baseQuestion.solution!==question.solution||baseQuestion.answer!==question.answer||baseQuestion.content!==question.content)throw Error('NATIVE_OVERLAY_BASE_CANDIDATE_SOURCE_PARITY_FAIL');
+    const buildStage=readResultStage(root,baseResult,'BUILD'),svgRef=buildStage.manifest.outputs.find(ref=>ref.path.endsWith('.svg'));
+    if(!svgRef)throw Error('NATIVE_OVERLAY_APPROVED_SVG_REF_MISMATCH');
+    const actualStage=readResultStage(root,baseResult,'DISPLAY_ENVELOPE_ACTUAL'),actualBase=JSON.parse(readBoundFile(root,actualStage.manifest.outputs.find(ref=>ref.path.endsWith('/actual-archive.json'))));
+    const archiveAssetPath=baseQuestion.solutionImage;
+    if(!archiveAssetPath||actualBase.archiveAssetPath!==archiveAssetPath||actualBase.candidateSvgRef?.sha256!==svgRef.sha256)throw Error('NATIVE_OVERLAY_BASE_ASSET_BINDING_MISMATCH');
+    const identity=assetIdentity(questionUid,'SOLUTION_VISUAL');
+    const folderRelative=overlayFolderRelative,folder=overlayFolder;
+    const candidateCode=baseCandidateCode+'\n;window.questionBank.find(q=>q.id==='+ordinal+').solution = '+JSON.stringify(patch.patchedSolution)+';\n';
+    const candidateRelative=folderRelative+'/'+workspace.examUid+'.js',candidatePath=generatedPath(root,candidateRelative);
+    fs.writeFileSync(candidatePath,candidateCode,{flag:'wx'});
+    const candidateRef=fileRef(root,candidateRelative),candidateBank=loadBank(candidateCode),candidateQuestion=candidateBank.find(item=>item.id===ordinal);
+    if(!candidateQuestion||candidateQuestion.solution!==patch.patchedSolution||candidateQuestion.answer!==question.answer||candidateQuestion.content!==question.content||candidateQuestion.solutionImage!==baseQuestion.solutionImage||candidateQuestion.solutionImageSize!==baseQuestion.solutionImageSize||candidateQuestion.solutionImageAlt!==baseQuestion.solutionImageAlt)throw Error('NATIVE_OVERLAY_CANDIDATE_PARITY_FAIL');
+    for(let index=0;index<baseBank.length;index++){
+      const before={...baseBank[index]},after={...candidateBank[index]};
+      if(before.id===ordinal){delete before.solution;delete after.solution;}
+      if(canonicalJson(before)!==canonicalJson(after))throw Error('NATIVE_OVERLAY_UNEXPECTED_CANDIDATE_FIELD_CHANGE');
+    }
+    const bankInfo={id:identity.assetId,sourcePath:authority.sourceRef.path,sourceSha256:authority.sourceRef.sha256.slice(7),candidatePath:candidateRef.path,candidateSha256:candidateRef.sha256.slice(7),questionCount:baseBank.length,protectedFieldParity:'PASS',assets:[{id:identity.assetId,path:svgRef.path,archivePath:archiveAssetPath,sha256:svgRef.sha256.slice(7),questionId:ordinal,sizeClass:baseQuestion.solutionImageSize}]};
+    const engineRef=fileRef(root,'archive/engine.html');
+    const matrix={schemaVersion:'GEOMETRY_ARCHIVE_RENDER_MATRIX_v1',runtime:'actual archive/engine.html',synthetic:false,engineSha256:engineRef.sha256.slice(7),sources:[bankInfo],rows:[{...bankInfo,mode:'sol',viewport:'desktop',width:1440,height:1000,requireLocalResources:true,requireQrRenderer:true,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(authority.sourceRef.path.replace(/^archive\//,''))}]};
+    fs.writeFileSync(generatedPath(root,folderRelative+'/archive-render-matrix.json'),canonicalJson(matrix),{flag:'wx'});
+    process.env.GEOMETRY_NODE_MODULES||=path.join(dependencyRoot,'node_modules');
+    const archive=await recordArchiveEvidence({run:folder,attempt:'attempt-01',signal,onProgress,blockExternalRequests:true});
+    const captureFolder=path.join(folder,'archive-render','attempt-01'),prefix=identity.assetId+'-sol-desktop';
+    const rowRef=fileRef(root,path.relative(root,path.join(captureFolder,prefix+'.json')).replaceAll('\\','/'));
+    const screenshotRef=fileRef(root,path.relative(root,path.join(captureFolder,prefix+'-'+identity.assetId+'.png')).replaceAll('\\','/'));
+    const nativeContextScreenshotRef=fileRef(root,path.relative(root,path.join(captureFolder,prefix+'-'+identity.assetId+'-context.png')).replaceAll('\\','/'));
+    const row=JSON.parse(readBoundFile(root,rowRef));
+    if(row.synthetic!==false||row.runtime!=='playwright-chromium'||row.mode!=='sol'||row.viewport!=='desktop'||row.candidateSha256!==candidateRef.sha256.slice(7)||row.sourceSha256!==authority.sourceRef.sha256.slice(7)||row.engineSha256!==engineRef.sha256.slice(7))throw Error('NATIVE_OVERLAY_CAPTURE_BINDING_FAIL');
+    const target=row.state?.targets?.find(value=>value.id===identity.assetId);
+    if(!target?.loaded||normalizeArchiveImageUrlPath(target.src)!=='/archive/'+archiveAssetPath||row.status!=='PASS'||archive.status!=='PASS')throw Error('NATIVE_OVERLAY_ARCHIVE_CAPTURE_FAIL');
+    const evidence=bindNativeSolutionOverlayCandidate({schemaVersion:'PHASE5_NATIVE_SOLUTION_PRESENTATION_OVERLAY_v1',status:'READY_FOR_R3_REVIEW',questionUid,sourceRef:authority.sourceRef,sourceRegistryRef,baseResultRef,baseResultStatus:baseResult.status,baseResultError:baseResult.error,basePlanRef:basePlanStage.manifest.outputs[0],baseCandidateRef,baseFinalSvgRef:svgRef,finalSvgRef:svgRef,finalSvgUnchanged:true,archiveAssetPath,solutionPatchRef,baseSolutionSha256:patch.baseSolutionSha256,patchedSolutionSha256:bytesSha(Buffer.from(patch.patchedSolution,'utf8')),tokenParity,currentScopeFingerprint:currentFingerprint,currentSourcePolicySha256:currentSourcePolicy,currentConditionBindingSha256:currentConditionBinding,currentPlanRef:currentPlanReceipt.outputs[0],currentSolutionReviewRef:verifiedReceipt.outputs[0],currentSourceReviewRef:sourceReviewReceipt.outputs[0],currentMathReviewRef:currentMathReceipt.outputs[0],archive:{status:archive.status,runtime:archive.runtime,synthetic:archive.synthetic,matrixSha256:archive.matrixSha256,engineRef,rowRef,screenshotRef,nativeContextScreenshotRef,target:{id:target.id,loaded:target.loaded,src:target.src,rect:target.rect,naturalWidth:target.naturalWidth,naturalHeight:target.naturalHeight}},r3ReviewRequired:true,productionAuthorized:false},candidateRef);
+    const evidencePath=generatedPath(root,folderRelative+'/overlay.json');
+    fs.writeFileSync(evidencePath,canonicalJson(evidence),{flag:'wx'});
+    return{status:evidence.status,archiveStatus:archive.status,workspace:workspace.workRoot,overlayRef:fileRef(root,folderRelative+'/overlay.json'),candidateRef,finalSvgRef:svgRef,rowRef,screenshotRef,nativeContextScreenshotRef};
+  });
+}
+
+async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,failedAttemptRef=null,encodingAdjudicationRef=null,experimentalLocator=false,requestedUid,workspace,signal,onArchiveProgress}){
   let authority=null;
   if(sourceRegistryRef){
     if(isEngineOutputPath(sourceRegistryRef.path))throw Error('ENGINE_SCOPED_REGISTRY_NOT_AUTHORITY');
@@ -309,8 +473,16 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
   if(!question)throw Error('SOURCE_QUESTION_NOT_FOUND');
   const uid=authority?.questionUid||requestedUid,identity=assetIdentity(uid,'SOLUTION_VISUAL');
   const journal=currentWorkRoot()+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
-  const provenance={identity,sourceRef};let stages=[],result,repairBudget=new RepairBudget();
+  const provenance={identity,sourceRef};let stages=[],result,repairBudget=new RepairBudget(),recoveredPlanner=null;
   try{
+    if(failedAttemptRef){
+      const failed=JSON.parse(readBoundFile(root,failedAttemptRef));
+      if(!['UNRESOLVED','UNSUPPORTED_DISPLAY_ENVELOPE'].includes(failed.status)||failed.identity?.questionUid!==uid||failed.sourceRef?.sha256!==sourceRef.sha256||!Array.isArray(failed.repairLedger))throw Error('FAILED_ATTEMPT_RECOVERY_MISMATCH');
+      repairBudget=new RepairBudget(failed.repairLedger);
+      const captured=failed.stages.map(ref=>({ref,value:JSON.parse(readBoundFile(root,ref))})).findLast(s=>s.value.stage==='PLANNER');
+      if(captured){recoveredPlanner=JSON.parse(readBoundFile(root,captured.value.outputs[0]));stages.push(freeze('RECOVERED_PLANNER',{failedAttemptRef,capturedPlannerRef:captured.value.outputs[0],sourceRecheckRequired:true},provenance));}
+      stages.push(freeze('FAILED_ATTEMPT_RECOVERY',{failedAttemptRef,preservedLedger:failed.repairLedger,currentSourceRef:sourceRef,currentProducerRef:fileRef(root,'archive/tools/geometry-equation/production/phase2.mjs'),budgetReset:false},provenance));
+    }
     if(authority)stages.push(freeze('UID_AUTHORITY',{sourceRegistryRef,entry:authority.sourceRegistryEntry,status:'CANONICAL_CURRENT'},provenance));
     else stages.push(freeze('SOURCE_LOCATOR',{sourceRef,status:'EXPERIMENTAL_LOCATOR',authority:false},provenance));
     const images=[];for(const imagePath of [question.image].filter(Boolean)){const relative='archive/'+imagePath;const bytes=readBoundFile(root,fileRef(root,relative));images.push('data:image/'+(imagePath.endsWith('.svg')?'svg+xml':imagePath.endsWith('.jpg')?'jpeg':'png')+';base64,'+bytes.toString('base64'));}
@@ -320,6 +492,12 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     const reviewCall=(purpose,packet,pixels)=>provider(purpose,packet,pixels,folder,true);
     const reviewFreeze=(stage,value)=>{const r=freeze(stage,value,provenance);stages.push(r);return r;};
     const verify=async()=>{
+      if(encodingAdjudicationRef){
+        const record=JSON.parse(readBoundFile(root,encodingAdjudicationRef));
+        if(record.questionUid!==uid||record.sourceRef.sha256!==sourceRef.sha256||!validateSolutionEncodingAdjudication(root,record,verifyPolicy,verificationInputSha256))throw Error('ENCODING_ADJUDICATION_NOT_CURRENT');
+        reviewFreeze('SOLUTION_ENCODING_ADJUDICATION',record);
+        return{record,receipt:reviewFreeze('VERIFIED_SOLUTION',record)};
+      }
       const record=await blindThenCompare({root,kind:'SOLUTION',source:sourceOnly,images,comparison:{answer:question.answer,solution:question.solution},policySha256:verifyPolicy,inputBindingSha256:verificationInputSha256,call:reviewCall,freeze:reviewFreeze});
       const r=reviewFreeze('VERIFIED_SOLUTION',record);
       if(!verificationClosed(record))throw Error('VERIFIED_SOLUTION_COMPARE_FAIL');
@@ -366,6 +544,9 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     console.log(JSON.stringify({stage:'PLANNER',uid}));
     let extendedContract=compilerContract+' Also supported: SEGMENT_LENGTH(inputs two POINT, args{}, outputType SCALAR), SCALAR_SQUARE(inputs one SCALAR,args{},outputType SCALAR), and SCALAR_RATIO(inputs two SCALAR,args{},outputType SCALAR). Supported bounded construction operations: PARALLEL_THROUGH(inputs POINT,LINE), ANGLE_BISECTOR(inputs ordered points [A,V,B], args {mode:INTERNAL|EXTERNAL}), CIRCLE_THROUGH_3(inputs three non-collinear POINT), CIRCLE_THROUGH_POINT(inputs center,boundary POINT), TANGENT_AT_POINT(inputs CIRCLE,POINT on the circle), and LINE_INTERSECTION(inputs two nonparallel LINE) for a unique point. Use INTERSECTION plus SELECT_POINT for multiple circle-line/circle-circle roots and declare the oriented source branch. mathPlan.conditionAudits may contain only typed checks with exact refs and a required sourceConditionId that matches one top-level sourceConditions.id: INCIDENCE_POINT_ON_LINE(POINT,LINE), DISTANCE_EQUALS(POINT,POINT,expected:typedScalar), EQUAL_DISTANCE(POINT,POINT,POINT,POINT), MIDPOINT_RATIO(start,middle,end,expected:typedScalar), PERPENDICULAR(LINE,LINE), PARALLEL(LINE,LINE), CIRCLE_MEMBERSHIP(CIRCLE,POINT), TANGENCY_AT_POINT(CIRCLE,POINT,LINE), ORIENTED_SIDE(start,end,point,sign:+1|-1). Every check must bind to a stated source condition; do not invent coordinates or substitute general constraint solving. Geometry must calculate decisive lengths and relations using nodes when relevant; scalarLabels:[{nodeId,ownerSegment,prefix,unit?:string}] displays exact results near the owner segment. Also supported rightAngles:[{id,refs:[rayPoint,vertex,rayPoint],factRole:GIVEN|DERIVED_INTERMEDIATE}] and segmentLabels:[{id,ownerSegment,variable:single-letter,unit?:cm|m,factRole:GIVEN}]. Do not create duplicate labels with the same owner and content. Avoid unnecessary construction nodes when a display segment suffices. All scalar node dependencies may follow SELECT_POINT. Display segments use IDs distinct from mathPlan point/scalar IDs. Original question content, score, choices, answer and solution remain unchanged in the actual Archive bank; map these conditions to PRESERVED_ARCHIVE_BANK.';
     extendedContract+=CUBIC_QUARTIC_CONTRACT;
+    extendedContract+=' In an explicitly supplied coordinate plane, NORMALIZATION_ORIGIN and unit NORMALIZATION_AXIS may be coordinate-axis references: declare mathPlan.realization:{recipeId:"SOURCE_COORDINATE_AXES_v1",unit:"source-coordinate",reflectionEquivalent:false}; axis length must be exactly 1. Retain every SOURCE_POINT in its original coordinate frame. This is not SSS normalization or a license to invent derived coordinates.';
+    extendedContract+=' The mathematical DAG may contain internal axis/projection helpers. Explicit optional displayPoints:[point IDs] and displayLines:[line IDs] select the final educational drawing; retain all original SOURCE_POINT nodes, GIVEN/CONCLUSION geometry and every annotation/segment endpoint. For the x-axis equidistance construction, show the source A,B and derived P, segments PA and PB and their equal lengths; axis/projection helper points and auxiliary lines may stay in the exact DAG without cluttering the drawing. Use short mathematical point IDs, and use prefix:"" for a pure length value without an equation prefix.';
+    extendedContract+=' For source-coordinate geometry only, coordinateCanvas:{width,height} may enlarge the composition with width 384–720 and height 320–600; this changes framing only and must preserve all source coordinates, exact derived coordinates, labels and their owners. For a quadratic overview only, overviewCanvasHeight may increase the plot height between 400 and 600 SVG units; keep all required roots, vertex, source ticks and both curve arms visible.';
     extendedContract+=RATIONAL_CONTRACT;
     extendedContract+=SQRT_AFFINE_CONTRACT;
     extendedContract+=ABSOLUTE_VALUE_CONTRACT;
@@ -373,7 +554,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     extendedContract+=EXPONENTIAL_AFFINE_CONTRACT;
     extendedContract+=LOGARITHMIC_AFFINE_CONTRACT;
     extendedContract+=TRIGONOMETRIC_CONTRACT;
-    let planner=await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);
+    let planner=recoveredPlanner??await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);
     plan=planner.payload;
     stages.push(freeze('PLANNER',planner,provenance));
     if(!plan.sourceConditions?.length||!plan.newVisualInformation?.length){
@@ -387,6 +568,9 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     console.log(JSON.stringify({stage:'INDEPENDENT_SOURCE_CONDITIONS',uid}));
     let sourceReview;
     for(let revision=0;revision<=3;revision++){
+      const wirePlan=compileConstructionWirePlan(plan);
+      if(objectSha(wirePlan)!==objectSha(plan))stages.push(freeze('PLAN_WIRE_NORMALIZATION',{beforeSha256:objectSha(plan),afterSha256:objectSha(wirePlan),rule:'Condition audit type/kind aliases and technical IDs only; no mathematical input or condition changes.'},provenance));
+      plan=wirePlan;
       stages.push(freeze('PLANNER',planner,provenance));
       if(plan.mathPlan){
         const normalized=await pythonWorker({action:'construction',graph:plan.mathPlan});
@@ -396,6 +580,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
           const repair=repairBudget.consume('NORMALIZER',objectSha(plan),normalized.result.code);
           planner=await provider('REPAIR_TYPED_PLAN',{instruction:extendedContract+' IMPORTANT SELECT_POINT must have args:{} and branch:{kind,refs,sign} at the NODE TOP LEVEL. Never put branch inside args. Return full corrected plan.',source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,normalizerError:normalized.result},images,folder);plan=planner.payload;repairBudget.complete(repair,objectSha(plan));continue;
         }
+        if(failedAttemptRef)for(const pending of repairBudget.ledger.filter(r=>r.stage==='NORMALIZER'&&r.outputSha===null&&r.reason==='REALIZATION_RECIPE_REQUIRED'))repairBudget.complete(pending,objectSha(plan));
       }
       sourceReview=await reviewConditions(plan);
       stages.push(freeze('SOURCE_REVIEW',sourceReview,provenance));
@@ -425,12 +610,17 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     if(plan.mathPlan){const peer=reconstruct(plan.mathPlan);reconstruction={...compareReconstruction(model,peer),peer};}
     else reconstruction=await workerGraphAudit(materialPlan.graphPlan,model.svg,model.transform);
     stages.push(freeze('MATH_REVIEW',reconstruction,provenance));if(reconstruction.status!=='PASS')throw Error('MATH_RECONSTRUCTION_FAIL');
+    if(materialPlan.graphPlan?.tickLabelCallouts!==undefined&&uid!=='25_연향중_1학기_기말_중3_기출c|13')throw Error('TICK_LABEL_CALLOUT_Q13_ONLY');
     let spec=specFor(materialPlan,model,identity.assetId);stages.push(freeze('NORMALIZE',spec,provenance));
     let prepared=await worker({action:'prepare',spec});
     const envelopePreflight=await actualArchiveEnvelopePreflight({identity,folder,questionUid:uid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},sourceAuthorityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',signal,onProgress:onArchiveProgress});
     stages.push(...envelopePreflight.stages);
-    const requestedSizeClass=question.solutionImageSize||'medium';
-    const typographyPolicy=requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},observation:envelopePreflight.observation,fontFloorCssPx:11});
+    const sourceRequestedSizeClass=question.solutionImageSize||'medium';
+    // Allocate actual space before choosing the glyph scale; preserve all
+    // axis-normal ticks and owner-bound coordinate labels.
+    const requestedSizeClass=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'?'full':sourceRequestedSizeClass;
+    stages.push(freeze('DISPLAY_REQUESTED_PROFILE',{sourceRequestedSizeClass,requestedSizeClass,reason:requestedSizeClass===sourceRequestedSizeClass?'SOURCE_PROFILE':'SOURCE_COORDINATE_GEOMETRY_SPACE'},provenance));
+    const typographyPolicy=requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},observation:envelopePreflight.observation,fontFloorCssPx:11,...(spec.displayFacts.formulaPlacement==='HEADER_BAND'?{minimumBaseFontPx:21}:{})});
     stages.push(freeze('DISPLAY_TYPOGRAPHY_POLICY',typographyPolicy,{...provenance,requestedSizeClass,preflightEvidence:envelopePreflight.preflightEvidence}));
     const candidateLabelInventory=prepared.labels.map(label=>({id:label.id,fontPx:typographyPolicy.baseFontPx}));
     const displayEnvelopePlan=planDisplayEnvelope({root,questionUid:uid,requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},candidateLabelInventory,observation:envelopePreflight.observation,preflightEvidence:envelopePreflight.preflightEvidence,archiveEngineSha256:envelopePreflight.archiveEngineSha256,sourceRef,solutionRef,policyRefs:envelopePreflight.policyRefs,fontFloorCssPx:11,typographyPolicy});
@@ -446,7 +636,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     const browser=await dependency('playwright').chromium.launch({channel:'chrome',headless:true});const measurements={};
     try{const page=await browser.newPage();for(const [id,fragment] of Object.entries(fragments)){await page.setContent(fragment.svg);const bbox=await page.locator('svg').first().evaluate(e=>{const b=e.getBBox(),r=e.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height,viewportWidth:r.width,viewportHeight:r.height};});if(bbox.width<=0||bbox.height<=0)throw Error('FRAGMENT_BROWSER_MEASUREMENT_MISSING');measurements[id]=[bbox.viewportWidth,bbox.viewportHeight];fragment.observedBBox=bbox;}}finally{await browser.close();}
     const measurementReceipt=freeze('MEASURE',{measurements,observedFragments:fragments,displayEnvelope:displayEnvelopePlan,preflightEvidence:envelopePreflight.preflightEvidence},provenance);stages.push(measurementReceipt);
-    if(materialPlan.graphPlan){
+    if(materialPlan.graphPlan&&spec.displayFacts.formulaPlacement!=='HEADER_BAND'){
       const formulaId=prepared.labels.find(label=>label.kind==='EQUATION_LABEL')?.id;
       const measuredFormula=measurements[formulaId];
       if(formulaId&&measuredFormula){
@@ -521,8 +711,12 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
         }
       }finally{if(repairAuditBrowser)await repairAuditBrowser.close();}
     }
-    const displayedCircles=showConstructionCircles(plan)?(reconstruction.peer?.circles??null):{};
-    const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:reconstruction.peer?.points??null,lines:reconstruction.peer?.lines??null,circles:displayedCircles,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
+    const displayedGeometry=plan.mathPlan?displayGeometryInventory(plan,model):null;
+    const displayedCircles=displayedGeometry?.circles??null;
+    const peerPoints=displayedGeometry?Object.fromEntries(Object.keys(displayedGeometry.points).map(id=>[id,reconstruction.peer.points[id]])):null;
+    const peerLines=displayedGeometry?Object.fromEntries(Object.keys(displayedGeometry.lines).map(id=>[id,reconstruction.peer.lines[id]])):null;
+    const peerCircles=displayedGeometry?Object.fromEntries(Object.keys(displayedGeometry.circles).map(id=>[id,reconstruction.peer.circles[id]])):null;
+    const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:peerPoints,lines:peerLines,circles:peerCircles,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
     staticAudit.measuredOwnerLayoutRepairAudits=measuredOwnerLayoutRepairAudits;
     if(measuredOwnerLayoutRepairAudits.some(value=>value.status!=='PASS')){staticAudit.status='FAIL';staticAudit.errors=[...(staticAudit.errors||[]),'MEASURED_OWNER_LAYOUT_REPAIR_AUDIT_FAIL'];}
     if(plan.graphPlan){
@@ -530,7 +724,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       staticAudit.graphCompositionBinding={phase:'POST_COMPOSITION_BUILD',candidateSvgRef:asset,candidateSvgSha256:asset.sha256,graphPlanSha256:objectSha(materialPlan.graphPlan),...(finalCompositionBinding||{})};
     }
     stages.push(freeze('STATIC_AUDIT',staticAudit,provenance));if(staticAudit.status!=='PASS'||staticAudit.graph&&staticAudit.graph.status!=='PASS')throw Error('STATIC_AUDIT_FAIL:'+JSON.stringify(staticAudit.errors));
-    const expectedPrimitiveIds=[...Object.keys(reconstruction.peer?.points||{}),...Object.keys(reconstruction.peer?.lines||{}),...Object.keys(displayedCircles||{}),...(plan.displaySegments||[]).map(value=>value.id),...(plan.rightAngles||[]).map(value=>value.id)];
+    const expectedPrimitiveIds=[...Object.keys(peerPoints||{}),...Object.keys(peerLines||{}),...Object.keys(displayedCircles||{}),...(plan.displaySegments||[]).map(value=>value.id),...(plan.rightAngles||[]).map(value=>value.id)];
     const profileAudit=await auditCandidateProfiles({svg:built.svg,plan:displayEnvelopePlan,candidateSvgRef:asset,sourceRef,solutionRef,policyRefs:displayEnvelopePlan.policyRefs,identity,provenance,graphPlan:materialPlan.graphPlan??null,geometryStaticAudit:staticAudit,coordinateModel:built.witness.coordinateModel,expectedPrimitiveIds});
     stages.push(...profileAudit.stageReceipts);
     const finalDisplayEnvelope=profileAudit.envelope;

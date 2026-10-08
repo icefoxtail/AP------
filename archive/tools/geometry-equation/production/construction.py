@@ -125,7 +125,14 @@ def validate(graph):
     except CycleError: raise ValueError('CONSTRUCTION_CYCLE') from None
     if any(n['op'].startswith('NORMALIZATION_') for n in nodes.values()):
         recipe=graph.get('realization',{})
-        if recipe.get('recipeId')!='SSS_POSITIVE_SIDE_v1' or recipe.get('unit')!='source-length' or recipe.get('reflectionEquivalent') is not True: raise ValueError('REALIZATION_RECIPE_REQUIRED')
+        source_axes=recipe.get('recipeId')=='SOURCE_COORDINATE_AXES_v1' and recipe.get('unit')=='source-coordinate' and recipe.get('reflectionEquivalent') is False
+        if source_axes:
+            if not any(n['op']=='SOURCE_POINT' for n in nodes.values()):raise ValueError('SOURCE_COORDINATE_POINTS_REQUIRED')
+            origins=[n for n in nodes.values() if n['op']=='NORMALIZATION_ORIGIN']
+            axes=[n for n in nodes.values() if n['op']=='NORMALIZATION_AXIS']
+            if len(origins)!=1 or len(axes)!=1:raise ValueError('SOURCE_COORDINATE_FRAME_REFERENCES_REQUIRED')
+            if scalar(axes[0]['args']['length'])!=1:raise ValueError('SOURCE_COORDINATE_UNIT_AXIS_REQUIRED')
+        elif recipe.get('recipeId')!='SSS_POSITIVE_SIDE_v1' or recipe.get('unit')!='source-length' or recipe.get('reflectionEquivalent') is not True: raise ValueError('REALIZATION_RECIPE_REQUIRED')
     return nodes,deps,order
 
 def execute(graph):
@@ -250,4 +257,5 @@ def execute(graph):
         if expected is not None:row['expected']=exact(expected)
         if kind=='ORIENTED_SIDE':row['sign']=condition['sign']
         condition_rows.append(row)
-    return {'engine':'SymPy','version':S.__version__,'points':points,'scalars':scalars,'lines':lines,'circles':circles,'pointSets':point_sets,'conditionAudits':condition_rows,'transcript':transcript,'order':order,'coordinateMode':'CONSTRUCTED_REALIZATION' if 'realization' in graph else 'SOURCE_COORDINATES'}
+    source_axes=graph.get('realization',{}).get('recipeId')=='SOURCE_COORDINATE_AXES_v1'
+    return {'engine':'SymPy','version':S.__version__,'points':points,'scalars':scalars,'lines':lines,'circles':circles,'pointSets':point_sets,'conditionAudits':condition_rows,'transcript':transcript,'order':order,'coordinateMode':'CONSTRUCTED_REALIZATION' if 'realization' in graph and not source_axes else 'SOURCE_COORDINATES'}

@@ -5,6 +5,7 @@ import {qualifyDisplayEnvelope,compareActualDisplayEnvelope} from './display-env
 import {sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint} from './source-policy.mjs';
 import {validateReviewLineage} from './blinded-review.mjs';
 import {resolveQuestion} from './resolve-request.mjs';
+import {validateSolutionEncodingAdjudication} from './encoding-adjudication.mjs';
 export function auditSlice(root,resultRef){
   const result=JSON.parse(readBoundFile(root,resultRef)),errors=[],stages=[];
   if(result.identityStatus!=='CANONICAL_CURRENT'||!result.sourceRegistryRef)errors.push('CANONICAL_UID_AUTHORITY_REQUIRED');
@@ -25,7 +26,8 @@ export function auditSlice(root,resultRef){
   }
   if(plan.sourceReviewPolicySha256!==sourcePolicyFingerprint(root))errors.push('STALE_SOURCE_REVIEW_POLICY');
   const verification=JSON.parse(readBoundFile(root,plan.verifiedSolutionRef));
-  if(plan.verifiedSolutionPolicySha256!==verifiedSolutionPolicyFingerprint(root)||!validateReviewLineage(root,verification,'SOLUTION',plan.verifiedSolutionPolicySha256,plan.verificationInputSha256))errors.push('STALE_OR_UNBLINDED_SOLUTION_VERIFICATION');
+  const solutionLineage=validateReviewLineage(root,verification,'SOLUTION',plan.verifiedSolutionPolicySha256,plan.verificationInputSha256)||validateSolutionEncodingAdjudication(root,verification,plan.verifiedSolutionPolicySha256,plan.verificationInputSha256);
+  if(plan.verifiedSolutionPolicySha256!==verifiedSolutionPolicyFingerprint(root)||!solutionLineage)errors.push('STALE_OR_UNBLINDED_SOLUTION_VERIFICATION');
   const sourceReview=stages.filter(s=>s.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.outputs[0]))).find(r=>r.inputSha256===plan.sourceReviewInputSha256);
   const visual=JSON.parse(readBoundFile(root,result.independentVisualReviewRef));
   if(!sourceReview||!validateReviewLineage(root,sourceReview,'CONDITIONS',plan.sourceReviewPolicySha256,sourceReview.inputBindingSha256))errors.push('SOURCE_REVIEW_BLIND_FREEZE_COMPARE_REQUIRED');

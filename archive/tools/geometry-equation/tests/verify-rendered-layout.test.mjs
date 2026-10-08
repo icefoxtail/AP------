@@ -37,7 +37,7 @@ test('leader crossing a core line is a hard rendered failure',()=>{const c=captu
 function tickCapture({id='tick-x--2',axis='x',value=-2,point=[34.84,160],box={x:27.84,y:172,width:14,height:12},extraTicks=[]}={}) {
   const [x,y]=point,labelId=id+'-label';const axisClient=axis==='x'?{x:0,y,width:300,height:0}:{x,y:0,width:0,height:300};const tickClient=axis==='x'?{x,y:y-4,width:0,height:8}:{x:x-4,y,width:8,height:0};return{...capture(),safeMargin:0,labels:[{id:labelId,kind:'TICK_LABEL',priority:0,value:value<0?'−'+Math.abs(value):String(value),owner:id,tickOwner:id,tickAxis:axis,tickValue:String(value),tickDisplayValue:value<0?'−'+Math.abs(value):String(value),tickSource:[x,y],tickSourceClient:[x,y],client:box,bbox:{x:box.x,y:box.y,width:box.width,height:box.height},missingGlyphCount:0,font:'serif',baseFontPx:12,effectiveFontPx:12,renderedVisibility:visibleMeasurement(labelId,box)}],geometry:[{id:axis+'-axis',kind:'axis',axis,points:axis==='x'?[[0,y],[300,y]]:[[x,0],[x,300]],client:axisClient,strokeWidthPx:0,visibilityEvidence:visibleGeometryMeasurement(axis+'-axis',axisClient)},{id,kind:'tick',axis,value:String(value),points:axis==='x'?[[x,y-4],[x,y+4]]:[[x-4,y],[x+4,y]],client:tickClient,strokeWidthPx:0,visibilityEvidence:visibleGeometryMeasurement(id,tickClient)},...extraTicks]};
 }
-test('curve clearance is accepted only with a visible measured white knockout between curve and tick label',()=>{
+test('curve masking cannot make a tick-label collision pass',()=>{
   const c=tickCapture({id:'tick-x-1',value:1,point:[100,160],box:{x:93,y:172,width:14,height:12}}),label=c.labels[0],maskBox={x:87,y:166,width:26,height:24};
   const curve={id:'f-branch-0',kind:'curve',role:'curve',points:[[100,100],[100,220]],client:{x:100,y:100,width:0,height:120},strokeWidthPx:.8,paintOrder:1};
   const rectNode={tag:'rect',id:'tick-x-1-label-knockout-background',display:'inline',visibility:'visible',opacity:1,clipPath:'none',mask:'none',clipPathState:{status:'CLEAR'},maskState:{status:'CLEAR'}};
@@ -45,9 +45,36 @@ test('curve clearance is accepted only with a visible measured white knockout be
   const mask={id:'tick-x-1-label-knockout-background',kind:'tickLabelKnockout',role:'tick-label-knockout',ownerLabelId:label.id,occludedPrimitiveIds:['f-branch-0'],client:maskBox,fill:'rgb(255, 255, 255)',fillOpacity:1,opacity:1,strokeWidthPx:0,paintOrder:2,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:[rectNode,svgNode],content:[{tag:'rect',id:rectNode.id,bbox:maskBox,client:maskBox,ancestors:[rectNode,svgNode],fill:'#fff',fillOpacity:1,stroke:'none',strokeOpacity:1,strokeWidth:0}]}};
   label.paintOrder=3;c.geometry.push(curve,mask);
   const result=analyzeRenderedLayout(c);
-  assert.equal(result.status,'PASS',JSON.stringify(result.errors));assert.equal(result.labelCollisionCount,0);
-  const invalid={...c,geometry:c.geometry.map(item=>item===mask?{...mask,fill:'rgb(255, 0, 0)'}:item)};
-  assert.ok(analyzeRenderedLayout(invalid).errors.includes('TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+mask.id));
+  assert.equal(result.status,'FAIL');
+  assert.ok(result.errors.includes('TICK_LABEL_CURVE_MASK_FORBIDDEN:'+mask.id));
+  assert.ok(result.errors.includes('LABEL_GEOMETRY_COLLISION:'+label.id+':'+curve.id));
+});
+test('only the exact legacy q10 straight-segment tick mask remains inspectable',()=>{
+  const point=[122.3552045164009,97.5114545164009],box={x:113.7421646118164,y:79.69046783447266,width:17.748695373535156,height:10.341751098632812};
+  const c=tickCapture({id:'tick-x--1',value:-2,point,box}),label=c.labels[0];
+  c.svg={x:0,y:0,width:298.140625,height:248.453125};c.viewBox={x:0,y:0,width:384,height:320};c.coordinateScale=298.140625/384;c.safeMargin=12;c.publicationProfile='fragment-publication-spike-v1';c.publicationViewport={width:1440,height:1000};c.fontStatus='loaded';
+  c.svgSha256='8e2d318dcdd5e791c153cd638b57862b349061115c90a189ae3541637e6f9ca7';
+  label.paintOrder=25;label.font='FROZEN_OUTLINE';label.value='sha256:4c1ff71e87095ea3098c304eef5710f89046a21f9665bcdfc43a778b6d77edf7';label.baseFontPx=20;label.effectiveFontPx=15.32;label.tickSource=[157.591397849,125.591397849];label.tickSourceClient=point;label.renderedVisibility=visibleMeasurement(label.id,box,'OUTLINE');
+  const axis=c.geometry.find(value=>value.id==='x-axis');axis.points=[[76.40521240234375,point[1]],[221.73541259765625,point[1]]];axis.client={x:76.40521240234375,y:point[1],width:145.3302001953125,height:0};axis.paintOrder=5;axis.visibilityEvidence.content[0].client={...axis.client};
+  const tick=c.geometry.find(value=>value.id==='tick-x--1');tick.points=[point,[point[0],point[1]+3.1056365966796875]];tick.client={x:point[0],y:point[1],width:0,height:3.1056365966796875};tick.paintOrder=10;tick.visibilityEvidence.content[0].client={...tick.client};
+  const line={id:'segmentAB',kind:'line',role:'line',points:[[95.64009296600825,44.07993111529085],[202.50053203399173,204.37058971804245]],client:{x:95.64009296600825,y:44.07993111529085,width:106.86043906798348,height:160.2906586027516},strokeWidthPx:1.2422526041666666,paintOrder:15};
+  const maskBox={x:107.77935796790645,y:75.03071631802446,width:29.151689529418945,height:20.926618576049805},rectNode={tag:'rect',id:'tick-x--1-label-knockout-background',display:'inline',visibility:'visible',opacity:1,clipPath:'none',mask:'none',clipPathState:{status:'CLEAR'},maskState:{status:'CLEAR'}};
+  const svgNode={tag:'svg',id:null,display:'block',visibility:'visible',opacity:1,clipPath:'none',mask:'none',clipPathState:{status:'CLEAR'},maskState:{status:'CLEAR'}};
+  const mask={id:'tick-x--1-label-knockout-background',kind:'tickLabelKnockout',role:'tick-label-knockout',ownerLabelId:label.id,occludedPrimitiveIds:['segmentAB'],client:maskBox,fill:'rgb(255, 255, 255)',fillOpacity:1,opacity:1,strokeWidthPx:0,paintOrder:20,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:[rectNode,svgNode],content:[{tag:'rect',id:rectNode.id,bbox:{x:138.817960349,y:96.638272849,width:37.546875,height:26.953125},client:maskBox,ancestors:[rectNode,svgNode],fill:'rgb(255, 255, 255)',fillOpacity:1,stroke:'none',strokeOpacity:1,strokeWidth:0}]}};
+  c.geometry.push(line,mask);
+  const result=analyzeRenderedLayout(c);
+  assert.equal(result.status,'PASS',JSON.stringify(result.errors));
+  assert.equal(result.labelCollisionCount,0);
+  assert.equal(result.criticalCollisionCount,0);
+  assert.equal(result.observedLabelCollisionCount,1);
+  assert.equal(result.observedCriticalCollisionCount,1);
+  assert.equal(result.tickKnockoutEvidence[0].status,'PASS');
+  assert.equal(result.tickKnockoutEvidence[0].checks.exactSvgSha256,true);
+  const altered=structuredClone(c);altered.geometry.find(value=>value.id===mask.id).client.width=20;
+  const rejected=analyzeRenderedLayout(altered);
+  assert.ok(rejected.errors.includes('TICK_LABEL_KNOCKOUT_EVIDENCE_INVALID:'+mask.id));
+  assert.equal(rejected.observedCriticalCollisionCount,1);
+  assert.equal(rejected.criticalCollisionCount,1);
 });
 function visibleMeasurement(id,bbox,kind='TEXT') {
   const tag=kind==='TEXT'?'text':'g',contentTag=kind==='TEXT'?'text':'path';
@@ -62,6 +89,28 @@ function visibleGeometryMeasurement(id,client) {
   return{kind:'GEOMETRY',elementAncestors:[node,svgNode],content:[{tag:'line',id,bbox:{x:client.x,y:client.y,width:Math.max(client.width,1),height:Math.max(client.height,1)},client:{x:client.x,y:client.y,width:Math.max(client.width,1),height:Math.max(client.height,1)},ancestors:[node,svgNode],fill:'none',fillOpacity:1,stroke:'#111',strokeOpacity:1,strokeWidth:1}]};
 }
 test('normal cubic x=-2 tick label placement passes owner geometry and displayed value checks',()=>{const r=analyzeRenderedLayout(tickCapture());assert.equal(r.status,'PASS');assert.equal(r.tickLabelEvidence[0].status,'PASS');assert.deepEqual(r.tickLabelEvidence[0].intersection,[34.84,160]);});
+test('q13 tick callout recomputes exact owner and full leader endpoints',()=>{
+  const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+  label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+  const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+  c.geometry.push(leader);
+  const result=analyzeRenderedLayout(c);
+  assert.equal(result.status,'PASS',JSON.stringify(result.errors));
+  assert.equal(result.tickLabelEvidence[0].ownerLeader.status,'PASS');
+  assert.equal(result.tickLabelEvidence[0].ownerLeader.ownerTick,'tick-x--3');
+  assert.equal(result.tickLabelEvidence[0].ownerLeader.endAtLabelEdge,true);
+});
+test('q13 owner leader fails if it crosses the curve or has the wrong owner value',()=>{
+  const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+  label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+  const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+  const curve={id:'curve-near-callout',kind:'curve',role:'curve',points:[[110,150],[140,120]],client:{x:110,y:120,width:30,height:30},strokeWidthPx:1,paintOrder:1};
+  c.geometry.push(leader,curve);
+  const result=analyzeRenderedLayout(c);
+  assert.ok(result.errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
+  const wrong={...c,geometry:c.geometry.map(item=>item===leader?{...leader,tickValue:'-4'}:item)};
+  assert.ok(analyzeRenderedLayout(wrong).errors.includes('TICK_LABEL_OWNER_LEADER_BINDING_MISMATCH:tick-x--3-label'));
+});
 test('cubic reproduction with x=-2 label moved to the upper-right panel fails',()=>{const r=analyzeRenderedLayout(tickCapture({box:{x:182.3,y:32,width:14,height:12}}));assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});
 test('normal quartic tick label placement passes',()=>{const c=tickCapture({id:'tick-x-3',value:3,point:[300,200],box:{x:293,y:212,width:14,height:12}});assert.equal(analyzeRenderedLayout(c).status,'PASS');});
 test('adjacent-tick confusion fails even when owner metadata names a real tick',()=>{const second={id:'tick-x--1',kind:'tick',axis:'x',value:'-1',points:[[70,156],[70,164]],client:{x:70,y:156,width:0,height:8},strokeWidthPx:0};const c=tickCapture({box:{x:63,y:172,width:14,height:12},extraTicks:[second]});const r=analyzeRenderedLayout(c);assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});

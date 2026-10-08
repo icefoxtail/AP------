@@ -71,6 +71,53 @@ def candidate(at,width,height,direction,gap):
     return Box(x+gap if dx>0 else x-gap-width if dx<0 else x-width/2,
                y+gap if dy>0 else y-gap-height if dy<0 else y-height/2,width,height)
 
+def owner_leader_endpoint(box,start,center):
+    dx,dy=center[0]-start[0],center[1]-start[1]
+    if math.hypot(dx,dy)<=1e-9:raise ValueError('TICK_LABEL_CALLOUT_ZERO_LENGTH')
+    tx=math.inf if abs(dx)<=1e-12 else (box.width/2)/abs(dx)
+    ty=math.inf if abs(dy)<=1e-12 else (box.height/2)/abs(dy)
+    fraction=min(tx,ty)
+    return [center[0]-dx*fraction,center[1]-dy*fraction]
+
+def point_segment_distance(point,start,end):
+    dx,dy=end[0]-start[0],end[1]-start[1]
+    length2=dx*dx+dy*dy
+    if length2<=1e-18:return math.dist(point,start)
+    t=max(0.0,min(1.0,((point[0]-start[0])*dx+(point[1]-start[1])*dy)/length2))
+    return math.hypot(point[0]-(start[0]+t*dx),point[1]-(start[1]+t*dy))
+
+def segment_segment_distance(a,b,c,d):
+    if segment_hits_box(a,b,Box(min(c[0],d[0]),min(c[1],d[1]),abs(d[0]-c[0]),abs(d[1]-c[1]))):
+        # The bounding-box test is only a fast filter; use orientations to
+        # distinguish crossing segments from disjoint diagonals.
+        cross=lambda u,v:u[0]*v[1]-u[1]*v[0]
+        ab=(b[0]-a[0],b[1]-a[1]);cd=(d[0]-c[0],d[1]-c[1]);ac=(c[0]-a[0],c[1]-a[1]);ad=(d[0]-a[0],d[1]-a[1]);ca=(a[0]-c[0],a[1]-c[1]);cb=(b[0]-c[0],b[1]-c[1])
+        if cross(ab,ac)*cross(ab,ad)<=1e-12 and cross(cd,ca)*cross(cd,cb)<=1e-12:return 0.0
+    return min(point_segment_distance(a,c,d),point_segment_distance(b,c,d),point_segment_distance(c,a,b),point_segment_distance(d,a,b))
+
+def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
+    def intersection_points(a,b,c,d):
+        cross=lambda u,v:u[0]*v[1]-u[1]*v[0]
+        r=(b[0]-a[0],b[1]-a[1]);s=(d[0]-c[0],d[1]-c[1]);den=cross(r,s);q=(c[0]-a[0],c[1]-a[1])
+        if abs(den)<=1e-12:return []
+        t=cross(q,s)/den;u=cross(q,r)/den
+        return [[a[0]+t*r[0],a[1]+t*r[1]]] if -1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9 else []
+    for obstacle in obstacles:
+        kind=obstacle.get('kind');geometry=obstacle.get('geometry');owner=obstacle.get('id') in owner_ids
+        if kind in {'point','circle'}:
+            x,y,radius=geometry;distance=point_segment_distance((x,y),start,end)
+            if kind=='point' and distance<=radius+clearance:return False
+            if kind=='circle' and abs(distance-radius)<=clearance:return False
+            continue
+        if kind not in {'line','axis','auxiliary','leader','curve','tick','indicator'} or not isinstance(geometry,(list,tuple)) or len(geometry)<2:continue
+        segments=list(zip(geometry,geometry[1:]))
+        if owner:
+            points=[point for c,d in segments for point in intersection_points(start,end,c,d)]
+            if any(math.dist(point,start)>1e-4 for point in points):return False
+            continue
+        if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in segments):return False
+    return True
+
 def point_box_has_unambiguous_owner(box,owner,competitors):
     """Require every measured box corner to stay inside its owner's Voronoi cell."""
     ox,oy=owner['geometry'][:2]
@@ -112,7 +159,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     needed. Critical point names remain at their marker or require polishing.
     """
     if require_measurements and not isinstance(measurements,dict):raise ValueError('BROWSER_MEASUREMENTS_REQUIRED')
-    measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[]
+    measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[];leaders=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
     for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
@@ -149,41 +196,56 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
-        chosen=None;method=None;tick_knockout=None
+        chosen=None;method=None;tick_callout=label.get('tickLabelCallout')
+        if tick_callout is not None:
+            if (tick_owner is None or not isinstance(tick_callout,dict)
+                or set(tick_callout)!={'schemaVersion','tickId','axis','value','sourceAt','offsetUser'}
+                or tick_callout.get('schemaVersion')!='TICK_LABEL_OWNER_LEADER_v1'
+                or tick_callout.get('tickId')!=tick_owner.get('id') or tick_callout.get('axis')!=label.get('tickAxis')
+                or tick_callout.get('value')!=label.get('tickValue') or tick_callout.get('sourceAt')!=list(label['at'])
+                or tick_callout.get('offsetUser')!=[28,-22]):
+                raise ValueError('TICK_LABEL_CALLOUT_BINDING_INVALID:'+label['id'])
         def acceptable(box):
             return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
                 and (owner_marker is None or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
-                and (tick_owner is None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
-        def tick_knockout_conflicts(box):
-            if tick_owner is None or not safe_area.contains(box):return None
-            if not tick_box_respects_owner(box,label['at'],label['tickAxis']):return None
-            conflicts=[obstacle for obstacle in occupied if collision(box,obstacle)]
-            if not conflicts:return None
-            # Keep the regular six-unit clearance by painting a measured white
-            # backing only when a graph stroke enters that clearance. Owner,
-            # axis, normal distance, font and graph primitive stay fixed;
-            # ticks, axes, points and other labels remain hard blockers.
-            if not all(obstacle.get('kind')=='curve' or obstacle.get('role')=='asymptote' for obstacle in conflicts):return None
-            return conflicts
+                and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
             allowed=('N','S') if label['tickAxis']=='x' else ('W','E')
             directions=((preferred,) if preferred in allowed else ())+tuple(v for v in allowed if v!=preferred)
             default_gaps=TICK_LABEL_GAPS
         else:default_gaps=() if 'candidateCenters' in label else tuple(label.get('gaps',(12,8,20,32,48)))
-        if 'candidateCenters' in label:
-            from .publication import box_owned
-            for x, y in label['candidateCenters']:
-                box = Box(x-w/2, y-h/2, w, h)
-                if acceptable(box) and box_owned(label, box):
-                    chosen=box;method='OWNER_BOUND_RELOCATION';break
-        for gap in default_gaps:
-            for direction in directions:
-                box=candidate(label['at'],w,h,direction,gap)
-                if acceptable(box):
-                    chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
-                    break
-            if chosen:break
+        if tick_callout is not None:
+            offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
+            box=Box(center[0]-w/2,center[1]-h/2,w,h)
+            if acceptable(box):
+                chosen=box;method='OWNER_BOUND_TICK_LEADER'
+                end=owner_leader_endpoint(box,label['at'],center)
+                owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}
+                if not leader_clear(label['at'],end,occupied,owner_ids):
+                    chosen=None;method=None
+                    trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})
+                    unresolved.append(label['id'])
+                    continue
+                leader_id=label['id']+'-owner-leader'
+                leaders.append({'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','id':leader_id,
+                    'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'tickId':tick_owner['id'],
+                    'axis':label['tickAxis'],'value':label['tickValue']})
+                occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
+        else:
+            if 'candidateCenters' in label:
+                from .publication import box_owned
+                for x, y in label['candidateCenters']:
+                    box = Box(x-w/2, y-h/2, w, h)
+                    if acceptable(box) and box_owned(label, box):
+                        chosen=box;method='OWNER_BOUND_RELOCATION';break
+            for gap in default_gaps:
+                for direction in directions:
+                    box=candidate(label['at'],w,h,direction,gap)
+                    if acceptable(box):
+                        chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
+                        break
+                if chosen:break
         repair=None
         if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
             and not label.get('candidateCenters') and isinstance(label.get('measuredFragmentSha256'),str)
@@ -206,22 +268,9 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                             'ownerPolicy':'EXACT_POINT_VORONOI_BOX_CORNERS','tolerancePxSquared':POINT_OWNER_DISTANCE_TOLERANCE_PX2}
                         repairs.append(repair);break
                 if chosen:break
-        if chosen is None and tick_owner is not None:
-            for gap in default_gaps:
-                for direction in directions:
-                    box=candidate(label['at'],w,h,direction,gap)
-                    conflicts=tick_knockout_conflicts(box)
-                    if conflicts:
-                        chosen=box;method='TICK_LABEL_GRAPH_KNOCKOUT_'+direction
-                        tick_knockout={'schemaVersion':'TICK_LABEL_GRAPH_KNOCKOUT_v1','labelId':label['id'],
-                            'tickOwner':label['tickId'],'axis':label['tickAxis'],'value':label['tickValue'],
-                            'obstacleIds':sorted(obstacle['id'] for obstacle in conflicts),'box':asdict(box),
-                            'padding':6.0,'clearancePx':'SVG_USER_SPACE','reason':'PRESERVED_GRAPH_STROKE_CLEARANCE'}
-                        break
-                if chosen:break
         if chosen is None and tick_owner is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
-        if chosen is None and tick_owner is None and panel is not None and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
+        if chosen is None and tick_owner is None and panel is not None and panel.width>0 and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
             text=label.get('panelText',label['text'])
             if require_measurements:
                 if text!=label['text'] or label.get('panelPrefix'):raise ValueError('BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:'+label['id'])
@@ -236,12 +285,10 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
         placed_label={**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method}
-        if tick_knockout is not None:placed_label['tickLabelKnockout']=tick_knockout
         placed.append(placed_label)
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})
         trace_row={'id':label['id'],'fallback':method}
         if repair is not None:trace_row['repair']=repair
-        if tick_knockout is not None:trace_row['tickLabelKnockout']=tick_knockout
         trace.append(trace_row)
-    return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,'repairs':repairs,
+    return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,'repairs':repairs,'leaders':leaders,
         'status':'POLISH_REQUIRED' if unresolved else 'PASS','basis':'APPROXIMATE_BUILD_SIDE_ONLY'}

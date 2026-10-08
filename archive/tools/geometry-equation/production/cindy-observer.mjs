@@ -33,10 +33,16 @@ export function scalar(v,depth=0) {
 }
 export function reconstruct(graph) {
   if(graph.schemaVersion!=='construction-spike-v1')throw Error('UNSUPPORTED_CINDY_GRAPH');
+  if(graph.realization?.recipeId==='SOURCE_COORDINATE_AXES_v1'){
+    if(graph.realization.unit!=='source-coordinate'||graph.realization.reflectionEquivalent!==false||!graph.nodes.some(n=>n.op==='SOURCE_POINT'))throw Error('CINDY_SOURCE_COORDINATE_FRAME_INVALID');
+    const origins=graph.nodes.filter(n=>n.op==='NORMALIZATION_ORIGIN'),axes=graph.nodes.filter(n=>n.op==='NORMALIZATION_AXIS');
+    if(origins.length!==1||axes.length!==1)throw Error('CINDY_SOURCE_COORDINATE_FRAME_REFERENCES_REQUIRED');
+    if(scalar(axes[0].args.length)!==1)throw Error('CINDY_SOURCE_COORDINATE_UNIT_AXIS_INVALID');
+  }
   const Cindy=dependency('cindyjs/build/js/Cindy.js');
   const nodes=new Map(graph.nodes.map(n=>[n.id,n]));
   if(nodes.size!==graph.nodes.length)throw Error('DUPLICATE_NODE');
-  const done=new Set(),geometry=[],pointIds=[],selections=[],angleBisectors=[],scalarNodes=[],pointSetIds=[],lineLineSets=new Set(),geometryNames=new Set();
+  const done=new Set(),geometry=[],pointIds=[],branchEvents=[],scalarNodes=[],pointSetIds=[],lineLineSets=new Set(),geometryNames=new Set();
   const addGeometry=value=>{if(geometryNames.has(value.name))throw Error('DUPLICATE_CINDY_GEOMETRY:'+value.name);geometryNames.add(value.name);geometry.push(value);};
   let pending=[...nodes.values()].sort((a,b)=>a.id.localeCompare(b.id));
   while(pending.length) {
@@ -54,7 +60,7 @@ export function reconstruct(graph) {
       else if(n.op==='ANGLE_BISECTOR'){
         const [first,vertex,last]=n.inputs,rayA='Z'+n.id+'RayA',rayB='Z'+n.id+'RayB',set='Z'+n.id+'Bisectors';
         addGeometry({name:rayA,type:'Join',args:[vertex,first]});addGeometry({name:rayB,type:'Join',args:[vertex,last]});
-        addGeometry({name:set,type:'AngleBisector',args:[rayA,rayB,vertex]});addGeometry({...base,type:'SelectL',args:[set],index:1});angleBisectors.push({node:n,set,first,vertex,last});
+        addGeometry({name:set,type:'AngleBisector',args:[rayA,rayB,vertex]});addGeometry({...base,type:'SelectL',args:[set],index:1});branchEvents.push({kind:'ANGLE_BISECTOR',node:n,set,first,vertex,last});
       }
       else if(n.op==='PERPENDICULAR_FOOT'){
         const helper='Z'+n.id+'Perp';addGeometry({name:helper,type:'Perp',args:[n.inputs[1],n.inputs[0]]});
@@ -78,7 +84,7 @@ export function reconstruct(graph) {
         // Expose both roots and a provisional branch-selected point. The final
         // Cindy pass pins its index from the independently checked side test.
         for(const index of [1,2])addGeometry({name:n.id+'Root'+index,type:'SelectP',args:n.inputs,index});
-        addGeometry({...base,type:'SelectP',index:1});selections.push(n);pointSetIds.push(n.inputs[0]);
+        addGeometry({...base,type:'SelectP',index:1});branchEvents.push({kind:'SELECT_POINT',node:n});pointSetIds.push(n.inputs[0]);
       }
       else throw Error('UNSUPPORTED_CINDY_OPERATION');
       if(n.outputType==='POINT')pointIds.push(n.id);
@@ -109,36 +115,37 @@ export function reconstruct(graph) {
       if(value.ctype!=='list'||value.value.length!==3||value.value.some(n=>n.ctype!=='number'||Math.abs(n.value.imag)>1e-9||!Number.isFinite(n.value.real)))throw Error('CINDY_LINE_NOT_FINITE');
       return value.value.map(n=>n.value.real);
     }
-    function pointSet(name){
-      return [point(name+'Root1'),point(name+'Root2')];
+    function pointSet(name){return[point(name+'Root1'),point(name+'Root2')];}
+    // Resolve branch choices before evaluating downstream points. Otherwise a
+    // dependent LINE_INTERSECTION can be read while two SELECT_POINT nodes
+    // still hold their provisional identical branch, yielding a false point
+    // at infinity even though both final branches intersect finitely.
+    for(const event of branchEvents){
+      if(event.kind==='SELECT_POINT'){
+        const n=event.node,[p,q]=n.branch.refs.map(point),roots=[point(n.id+'Root1'),point(n.id+'Root2')];
+        const matches=roots.map((v,index)=>({v,index:index+1,cross:((q[0]-p[0])*(v[1]-p[1])-(q[1]-p[1])*(v[0]-p[0]))*n.branch.sign})).filter(row=>row.cross>1e-10);
+        if(matches.length!==1)throw Error('AMBIGUOUS_CINDY_BRANCH');
+        const selected=geometry.find(value=>value.name===n.id);selected.index=matches[0].index;selected.param=matches[0].index-1;
+      }else if(event.kind==='ANGLE_BISECTOR'){
+        const row=event,p=point(row.vertex),a=point(row.first),b=point(row.last),u=[a[0]-p[0],a[1]-p[1]],v=[b[0]-p[0],b[1]-p[1]],nu=Math.hypot(...u),nv=Math.hypot(...v);
+        if(nu<=1e-10||nv<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_RAY');
+        const mode=row.node.args.mode,d=[u[0]/nu+(mode==='INTERNAL'?1:-1)*v[0]/nv,u[1]/nu+(mode==='INTERNAL'?1:-1)*v[1]/nv];
+        if(Math.hypot(...d)<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_BISECTOR');
+        const expected=[-d[1],d[0],d[1]*p[0]-d[0]*p[1]],setObject=activeGeometry.find(value=>value.name===row.set),candidates=setObject?.results?.value;
+        if(!Array.isArray(candidates)||candidates.length!==2)throw Error('CINDY_ANGLE_BISECTOR_SET_INVALID');
+        const residual=candidate=>{
+          if(candidate.ctype!=='list'||candidate.value.length!==3||candidate.value.some(value=>value.ctype!=='number'||Math.abs(value.value.imag)>1e-9))return Infinity;
+          const values=candidate.value.map(value=>value.value.real),magnitude=Math.hypot(...values),targetMagnitude=Math.hypot(...expected);
+          if(magnitude<=1e-12||targetMagnitude<=1e-12)return Infinity;
+          const normalized=values.map(value=>value/magnitude),target=expected.map(value=>value/targetMagnitude);
+          return Math.min(Math.hypot(...normalized.map((value,index)=>value-target[index])),Math.hypot(...normalized.map((value,index)=>value+target[index])));
+        };
+        const deltas=candidates.map(residual),index=deltas[0]<=deltas[1]?1:2;
+        if(!Number.isFinite(deltas[index-1])||deltas[index-1]>1e-7||Math.abs(deltas[0]-deltas[1])<1e-8)throw Error('AMBIGUOUS_CINDY_ANGLE_BISECTOR_KIND');
+        const selected=geometry.find(value=>value.name===row.node.id);selected.index=index;selected.param=index-1;
+      }
+      instance.shutdown();instance=instanceFor();
     }
-    const points=Object.fromEntries(pointIds.map(id=>[id,point(id)]));
-    for(const n of selections){
-      const [p,q]=n.branch.refs.map(id=>points[id]);
-      const roots=[point(n.id+'Root1'),point(n.id+'Root2')];
-      const matches=roots.map((v,index)=>({v,index:index+1,cross:((q[0]-p[0])*(v[1]-p[1])-(q[1]-p[1])*(v[0]-p[0]))*n.branch.sign})).filter(row=>row.cross>1e-10);
-      if(matches.length!==1)throw Error('AMBIGUOUS_CINDY_BRANCH');
-      const selected=geometry.find(value=>value.name===n.id);selected.index=matches[0].index;selected.param=matches[0].index-1;
-    }
-    for(const row of angleBisectors){
-      const p=points[row.vertex],a=points[row.first],b=points[row.last],u=[a[0]-p[0],a[1]-p[1]],v=[b[0]-p[0],b[1]-p[1]],nu=Math.hypot(...u),nv=Math.hypot(...v);
-      if(nu<=1e-10||nv<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_RAY');
-      const mode=row.node.args.mode,d=[u[0]/nu+(mode==='INTERNAL'?1:-1)*v[0]/nv,u[1]/nu+(mode==='INTERNAL'?1:-1)*v[1]/nv];
-      if(Math.hypot(...d)<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_BISECTOR');
-      const expected=[-d[1],d[0],d[1]*p[0]-d[0]*p[1]],setObject=activeGeometry.find(value=>value.name===row.set),candidates=setObject?.results?.value;
-      if(!Array.isArray(candidates)||candidates.length!==2)throw Error('CINDY_ANGLE_BISECTOR_SET_INVALID');
-      const residual=candidate=>{
-        if(candidate.ctype!=='list'||candidate.value.length!==3||candidate.value.some(value=>value.ctype!=='number'||Math.abs(value.value.imag)>1e-9))return Infinity;
-        const values=candidate.value.map(value=>value.value.real),magnitude=Math.hypot(...values),targetMagnitude=Math.hypot(...expected);
-        if(magnitude<=1e-12||targetMagnitude<=1e-12)return Infinity;
-        const normalized=values.map(value=>value/magnitude),target=expected.map(value=>value/targetMagnitude);
-        return Math.min(Math.hypot(...normalized.map((value,index)=>value-target[index])),Math.hypot(...normalized.map((value,index)=>value+target[index])));
-      };
-      const deltas=candidates.map(residual),index=deltas[0]<=deltas[1]?1:2;
-      if(!Number.isFinite(deltas[index-1])||deltas[index-1]>1e-7||Math.abs(deltas[0]-deltas[1])<1e-8)throw Error('AMBIGUOUS_CINDY_ANGLE_BISECTOR_KIND');
-      const selected=geometry.find(value=>value.name===row.node.id);selected.index=index;selected.param=index-1;
-    }
-    if(selections.length||angleBisectors.length){instance.shutdown();instance=instanceFor();}
     const finalPoints=Object.fromEntries(pointIds.map(id=>[id,point(id)]));
     const pointSets=Object.fromEntries([...new Set(pointSetIds)].map(id=>[id,pointSet(id)]));
     const scalars={};

@@ -8,6 +8,14 @@ from .style_tokens import load
 def esc(value):return html.escape(str(value),quote=True)
 def num(value):return f'{value:.9f}'.rstrip('0').rstrip('.') or '0'
 
+def callout_leader_end(box,start,center):
+    dx,dy=center[0]-start[0],center[1]-start[1]
+    if math.hypot(dx,dy)<=1e-9:raise ValueError('TICK_LABEL_OWNER_LEADER_BINDING_INVALID')
+    tx=math.inf if abs(dx)<=1e-12 else (box['width']/2)/abs(dx)
+    ty=math.inf if abs(dy)<=1e-12 else (box['height']/2)/abs(dy)
+    fraction=min(tx,ty)
+    return [center[0]-dx*fraction,center[1]-dy*fraction]
+
 def safe_math_markup(value):
     root=ET.fromstring('<text>'+value+'</text>')
     for child in root.iter():
@@ -44,6 +52,8 @@ def validate_fragment_font(root,font_px):
 
 def compose(prepared,layout,viewport,fragments=None):
     tokens=load();seen={'visual-title','visual-desc'};semantic_labels=set();layers=[]
+    if any('tickLabelKnockout' in row for row in layout.get('labels',[])) or any('tickLabelKnockout' in row for row in layout.get('trace',[])):
+        raise ValueError('TICK_LABEL_CURVE_MASK_FORBIDDEN')
     def element_id(value):
         if value in seen:raise ValueError('DUPLICATE_SVG_ID:'+value)
         seen.add(value);return esc(value)
@@ -70,28 +80,39 @@ def compose(prepared,layout,viewport,fragments=None):
         elif kind=='path':svg=f'<path {attrs} d="{esc(p["d"])}"/>'
         else:raise ValueError('UNKNOWN_COMPOSER_PRIMITIVE')
         layers.append((p['layer'],index,svg))
-    for index,row in enumerate(layout.get('trace',[])):
-        knockout=row.get('tickLabelKnockout')
-        if knockout is None:continue
-        owner=next((value for value in layout['labels'] if value['id']==knockout.get('labelId')),None)
-        primitives={value['id']:value for value in prepared['primitives']}
-        if (knockout.get('schemaVersion')!='TICK_LABEL_GRAPH_KNOCKOUT_v1'
-            or knockout.get('labelId')!=row.get('id') or not knockout.get('obstacleIds')
-            or owner is None or owner.get('kind')!='TICK_LABEL' or owner.get('tickId')!=knockout.get('tickOwner')
-            or knockout.get('box')!=owner.get('box')
-            or any(not isinstance(value,str) or not value or value not in primitives
-                   or primitives[value].get('role') not in {'curve','asymptote'} for value in knockout['obstacleIds'])):
-            raise ValueError('INVALID_TICK_LABEL_GRAPH_KNOCKOUT')
-        box=knockout['box'];padding=float(knockout['padding'])
-        if not math.isfinite(padding) or padding<0:raise ValueError('INVALID_TICK_LABEL_GRAPH_KNOCKOUT_PADDING')
-        rect_id=element_id(knockout['labelId']+'-knockout-background')
-        svg=(f'<rect id="{rect_id}" data-role="tick-label-knockout" '
-             f'data-owner-label="{esc(knockout["labelId"])}" '
-             f'data-occluded-primitives="{esc(" ".join(knockout["obstacleIds"]))}" '
-             f'x="{num(box["x"]-padding)}" y="{num(box["y"]-padding)}" '
-             f'width="{num(box["width"]+2*padding)}" height="{num(box["height"]+2*padding)}" '
-             'fill="#fff" stroke="none"/>')
-        layers.append((89,index,svg))
+    for index,leader in enumerate(layout.get('leaders',[])):
+        owner=next((value for value in layout['labels'] if value.get('id')==leader.get('ownerLabelId')),None)
+        tick=next((value for value in prepared['primitives'] if value.get('id')==leader.get('tickId')),None)
+        binding=owner.get('tickLabelCallout') if owner else None
+        if (leader.get('schemaVersion')!='TICK_LABEL_OWNER_LEADER_v1'
+            or set(leader)!={'schemaVersion','id','from','to','ownerLabelId','tickId','axis','value'}
+            or not owner or owner.get('kind')!='TICK_LABEL' or not binding
+            or binding.get('schemaVersion')!='TICK_LABEL_OWNER_LEADER_v1'
+            or binding.get('tickId')!=leader.get('tickId') or binding.get('axis')!=leader.get('axis')
+            or binding.get('value')!=leader.get('value') or binding.get('sourceAt')!=leader.get('from')
+            or list(owner.get('at',[]))!=leader.get('from') or not tick or tick.get('role')!='tick'
+            or tick.get('axis')!=leader.get('axis') or abs(float(tick.get('value'))-float(leader.get('value')))>1e-9
+            or not isinstance(leader.get('from'),list) or len(leader['from'])!=2
+            or not isinstance(leader.get('to'),list) or len(leader['to'])!=2):
+            raise ValueError('TICK_LABEL_OWNER_LEADER_BINDING_INVALID')
+        try:x1,y1,x2,y2=(*(float(value) for value in leader['from']),*(float(value) for value in leader['to']))
+        except (TypeError,ValueError):raise ValueError('TICK_LABEL_OWNER_LEADER_COORDINATE_INVALID') from None
+        if not all(math.isfinite(value) for value in (x1,y1,x2,y2)) or math.hypot(x2-x1,y2-y1)<=1e-6 or math.hypot(x2-x1,y2-y1)>48:
+            raise ValueError('TICK_LABEL_OWNER_LEADER_COORDINATE_INVALID')
+        offset=binding.get('offsetUser')
+        if offset!=[28,-22] or not isinstance(owner.get('box'),dict):raise ValueError('TICK_LABEL_OWNER_LEADER_BINDING_INVALID')
+        center=[leader['from'][0]+offset[0],leader['from'][1]+offset[1]]
+        box=owner['box']
+        expected_box={'x':center[0]-box['width']/2,'y':center[1]-box['height']/2,'width':box['width'],'height':box['height']}
+        if any(abs(expected_box[key]-box[key])>1e-6 for key in ('x','y','width','height')):raise ValueError('TICK_LABEL_OWNER_LEADER_LABEL_CENTER_INVALID')
+        expected_end=callout_leader_end(box,leader['from'],center)
+        if math.hypot(expected_end[0]-x2,expected_end[1]-y2)>1e-6:raise ValueError('TICK_LABEL_OWNER_LEADER_ENDPOINT_INVALID')
+        oid=element_id(leader['id'])
+        svg=(f'<line id="{oid}" data-role="leader" data-owner-label="{esc(leader["ownerLabelId"])}" '
+             f'data-tick-owner="{esc(leader["tickId"])}" data-tick-axis="{esc(leader["axis"])}" '
+             f'data-tick-value="{esc(leader["value"])}" x1="{num(x1)}" y1="{num(y1)}" '
+             f'x2="{num(x2)}" y2="{num(y2)}" stroke="#666" stroke-width="0.8" fill="none"/>')
+        layers.append((85,index,svg))
     for index,label in enumerate(layout['labels']):
         oid=element_id(label['id']);key=(label['kind'],label.get('owner',label.get('target')),label['text'])
         if key in semantic_labels:raise ValueError('DUPLICATE_SEMANTIC_LABEL')
@@ -107,7 +128,7 @@ def compose(prepared,layout,viewport,fragments=None):
             if root.tag.split('}')[-1]!='svg' or any(n.tag.split('}')[-1] not in {'svg','g','path','rect','defs','title','desc'} for n in root.iter()):raise ValueError('UNSAFE_FROZEN_FRAGMENT')
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
-            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"')
+            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
             role=' data-visual-role="tick-label"' if label['kind']=='TICK_LABEL' else ''
             layers.append((90,index,f'<g id="{oid}" data-label-kind="{esc(label["kind"])}"{role} data-priority="{label.get("priority",2)}" data-font-px="{num(fragment["fontPx"])}" data-owner="{esc(fragment["owner"])}" data-fragment-sha="{esc(fragment["fragmentSha256"])}"{binding} transform="translate({num(box["x"])} {num(box["y"])})">'+fragment['svg']+'</g>'))
             continue
@@ -115,6 +136,7 @@ def compose(prepared,layout,viewport,fragments=None):
         attrs+=owner_attrs(label)
         if label['kind']=='TICK_LABEL':
             attrs+=f' data-visual-role="tick-label" data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'
+            if label.get('tickLabelCallout'):attrs+=f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"'
         if label.get('centered'):attrs+=' text-anchor="middle" dominant-baseline="central"'
         if label.get('math') or label.get('hasMath'):attrs+=' data-math="true"'
         if label['kind']=='POINT_NAME':attrs+=' font-style="italic"'

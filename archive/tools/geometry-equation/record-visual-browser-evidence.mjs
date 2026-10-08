@@ -12,6 +12,11 @@ export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
 }
 
+export function archiveAssetSha256(value){
+  if(typeof value!=='string'||!/^[a-f0-9]{64}$/.test(value))throw Error('ARCHIVE_ASSET_SHA256_INVALID');
+  return value;
+}
+
 function writeArchiveAbortEvidence(run,attempt,cleanup){
   const folder=assertOutput(path.join(run,'archive-render',attempt));fs.mkdirSync(folder,{recursive:true});
   const evidence={schemaVersion:'ARCHIVE_BROWSER_CAPTURE_ABORTED_v1',status:'ABORTED',attempt,reason:'ARCHIVE_CAPTURE_CANCELLED',cleanup};
@@ -43,7 +48,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
     if(!/^assets\/images\/[\p{L}\p{N}_.\/-]+$/u.test(asset.archivePath)||asset.archivePath.split('/').some(part=>!part||part==='.'||part==='..'))throw Error('INVALID_ARCHIVE_ASSET_REFERENCE');
     overrides.set('/archive/'+asset.archivePath,assertOutput(path.join(repoRoot,asset.path)));
   }
-  for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(assertOutput(path.join(repoRoot,source.candidatePath))))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets||[])if(sha256(fs.readFileSync(assertOutput(path.join(repoRoot,asset.path))))!==asset.sha256)throw Error('STALE_ASSET_MATRIX');}
+  for(const source of matrix.sources){if(sha256(fs.readFileSync(path.join(repoRoot,source.sourcePath)))!==source.sourceSha256||sha256(fs.readFileSync(assertOutput(path.join(repoRoot,source.candidatePath))))!==source.candidateSha256)throw Error('STALE_SOURCE_MATRIX');for(const asset of source.assets||[])if(sha256(fs.readFileSync(assertOutput(path.join(repoRoot,asset.path))))!==archiveAssetSha256(asset.sha256))throw Error('STALE_ASSET_MATRIX');}
   const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.woff':'font/woff','.woff2':'font/woff2','.ico':'image/x-icon'};
   const server=http.createServer((req,res)=>{
     try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname);const extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[extension],'Cache-Control':'no-store'});res.end(fs.readFileSync(file));}catch(error){res.writeHead(400);res.end();}
@@ -145,7 +150,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
           if(!target.loaded){errors.push('TARGET_SVG_LOAD_FAIL:'+target.id);continue;}
           const asset=item.assets.find(v=>v.id===target.id);
           const inspector=await browser.newPage({viewport:{width:Math.max(1,Math.ceil(target.rect.width)),height:Math.max(1,Math.ceil(target.rect.height))}});
-          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
+          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect,{publicationViewport:{width:item.width,height:item.height}});capture.svgSha256=archiveAssetSha256(asset.sha256);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
           await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
           const expectedImagePath=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
           const imageNodes=page.locator('#print-area .sol-image-wrap img');
@@ -161,11 +166,11 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
       await Promise.allSettled(responsePromises);
       checkCancelled();
-        if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===asset?.sha256))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
+        if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!asset||!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===archiveAssetSha256(asset.sha256)))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
       if(item.mode==='sol')for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
       const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,network:{policy:blockExternalRequests?'LOCAL_ONLY':'DEFAULT',localOrigin:base,externalRequests},
-        capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
+        capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),observedLabelCollisionCount:layouts.reduce((s,v)=>s+(v.observedLabelCollisionCount??v.labelCollisionCount),0),observedCriticalCollisionCount:layouts.reduce((s,v)=>s+(v.observedCriticalCollisionCount??v.criticalCollisionCount),0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,observedLabelCollisionCount:null,observedCriticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();checkCancelled();
     }
     checkCancelled();

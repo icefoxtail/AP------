@@ -11,10 +11,11 @@ export class RepairBudget {
     const row={iteration:this.ledger.length+1,stage,inputSha,reason,outputSha:null};this.ledger.push(row);return row;
   }
   complete(row,outputSha){
-    if(!this.ledger.includes(row)||!HASH_PATTERN.test(outputSha))throw Error('INVALID_REPAIR_OUTPUT');
-    row.outputSha=outputSha;
+    if(!this.ledger.includes(row)||!HASH_PATTERN.test(outputSha)||row.outputSha!==null)throw Error('INVALID_REPAIR_OUTPUT');
     const signature=r=>objectSha({stage:r.stage,inputSha:r.inputSha,reason:r.reason,outputSha:r.outputSha});
-    if(this.ledger.slice(0,-1).some(r=>signature(r)===signature(row)))throw Error('REPAIR_STAGNATION');
+    const candidate=objectSha({stage:row.stage,inputSha:row.inputSha,reason:row.reason,outputSha});
+    if(this.ledger.some(r=>r!==row&&r.outputSha!==null&&signature(r)===candidate))throw Error('REPAIR_STAGNATION');
+    row.outputSha=outputSha;
   }
   record(stage,inputSha,reason,outputSha){
     if(!HASH_PATTERN.test(outputSha))throw Error('INVALID_REPAIR_OUTPUT');
