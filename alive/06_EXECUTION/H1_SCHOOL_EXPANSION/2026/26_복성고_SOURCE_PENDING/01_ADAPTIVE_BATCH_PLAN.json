@@ -57,7 +57,11 @@
       "expectedVisualQids": [],
       "gate": "A_SOURCE_MATH_META → B_BLUEPRINT_ALL_WITH_DISPOSITIONS → C_COMPLETE_ITEMS → D_SHARD_INDEX_MANIFEST_LEDGER_REMOTE_READBACK",
       "completion": "each source qid SOURCE_EXPANSION_DONE or SOURCE_CONTINUATION_REQUIRED with explored/accepted/rejected and nonexplored L4 reasons",
-      "status": "PLANNED"
+      "status": "CREATE_GENERATED_REVIEW_PENDING",
+      "generatedCandidateCount": 13,
+      "sourceHold": [
+        15
+      ]
     },
     {
       "id": "B02",
@@ -170,7 +174,7 @@
       "status": "PLANNED"
     }
   ],
-  "nextBatchId": "B01",
+  "nextBatchId": "B02",
   "qualityStatus": "PLANNING_ONLY",
   "generatedCount": 0
 }
