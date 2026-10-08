@@ -298,8 +298,8 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "[핵심] 각 선분의 내분점을 구한 뒤, 세 점의 좌표를 평균하여 무게중심을 구한다.\n$OC:CA=3:1$이므로 $C=\\left(\\dfrac{3\\cdot6+1\\cdot0}{4},0\\right)=\\left(\\dfrac92,0\\right)$이다.\n$AD:DB=3:1$이므로\n$D=\\left(\\dfrac{1\\cdot6+3\\cdot3}{4},\\dfrac{1\\cdot0+3\\cdot6}{4}\\right)=\\left(\\dfrac{15}{4},\\dfrac92\\right)$이다.\n$BE:EO=3:1$이므로\n$E=\\left(\\dfrac{1\\cdot3+3\\cdot0}{4},\\dfrac{1\\cdot6+3\\cdot0}{4}\\right)=\\left(\\dfrac34,\\dfrac32\\right)$이다.\n따라서 삼각형 $CDE$의 무게중심은\n$G=\\left(\\dfrac{\\frac92+\\frac{15}4+\\frac34}{3},\\dfrac{0+\\frac92+\\frac32}{3}\\right)=(3,2)$이다.\n그러므로 $a+b=3+2=5$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q09.png",
     "imageAlt": "삼각형 OAB와 세 변의 내분점 C D E",
     "imageSize": "medium"
@@ -335,8 +335,8 @@ window.questionBank = [
       "$A\\cap(B-C)$",
       "$A\\cap(C-B)$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "[핵심] 그림의 색칠한 부분은 $A$와 $B$에 속하면서 $C$에는 속하지 않는 영역이다.\n이 영역은 먼저 $B$에서 $C$를 제외한 $B-C$를 구한 후, 그중 $A$에 속하는 부분을 택한 것이다.\n따라서 색칠한 영역은\n$A\\cap(B-C)=A\\cap B\\cap C^C$이다.\n④가 이 집합을 그대로 나타낸다.\n그러므로 정답은 ④이다.",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q10.png",
     "imageAlt": "전체집합 U와 집합 A B C, A와 B에만 속하는 부분을 음영으로 표시한 벤다이어그램",
     "imageSize": "medium"
@@ -372,8 +372,8 @@ window.questionBank = [
       "$p: x^2+y^2=0$<br>$q: |x|+|y|=0$",
       "$p: xz=yz$<br>$q: x=y$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "[핵심] '$p$는 $q$이기 위한 필요조건'이면 $q\\Rightarrow p$가 참이어야 한다.\n충분조건은 아니므로 $p\\Rightarrow q$는 거짓이 되는 반례가 있어야 한다.\n⑤의 $q:x=y$가 성립하면 양변에 같은 수 $z$를 곱해 $xz=yz$이므로 $q\\Rightarrow p$가 참이다.\n그러나 $z=0$, $x=1$, $y=2$로 두면 $xz=yz=0$이지만 $x\\ne y$이다.\n따라서 $p\\Rightarrow q$는 항상 참이 아니다.\n다른 보기에서 ④는 두 조건 모두 $x=y=0$과 동치이므로 필요충분조건이고, 나머지는 필요한 함의가 성립하지 않는다.\n그러므로 정답은 ⑤이다."
   },
   {
     "id": 12,
@@ -406,8 +406,8 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "②",
+    "solution": "[핵심] 두 접점을 잇는 현 $PQ$의 방정식을 먼저 구한다.\n원 $x^2+y^2=10$ 위의 점 $(u,v)$에서 접선의 방정식은 $ux+vy=10$이다.\n이 접선이 외부의 점 $(-3,4)$를 지나므로 $-3u+4v=10$이어야 한다.\n두 접점 $P,Q$의 좌표는 모두 $-3x+4y=10$을 만족한다.\n따라서 직선 $PQ$의 방정식은 $-3x+4y-10=0$이다.\n원점 $(0,0)$에서 이 직선까지의 거리는\n$d=\\dfrac{|-10|}{\\sqrt{(-3)^2+4^2}}=\\dfrac{10}{5}=2$이다.\n따라서 정답은 ②이다."
   },
   {
     "id": 13,
@@ -440,8 +440,8 @@ window.questionBank = [
       "$127$",
       "$128$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "[핵심] 집합에 들어갈 수 있는 수를 먼저 제한한 뒤, 음수의 개수로 곱의 부호를 판단한다.\n$\\dfrac6x$가 정수이고 $x$가 정수이려면 $x$는 $6$의 영이 아닌 정수 약수이다.\n따라서 가능한 원소는 $\\{-6,-3,-2,-1,1,2,3,6\\}$이다.\n선택한 원소의 곱이 양수이려면 선택된 음수의 개수가 짝수여야 한다.\n음수 네 개 중 짝수 개를 택하는 방법은\n$\\binom40+\\binom42+\\binom44=1+6+1=8$가지이다.\n양수 네 개의 선택 여부는 각각 자유로우므로 $2^4=16$가지이다.\n이렇게 구한 $8\\cdot16=128$가지에는 아무 원소도 택하지 않은 공집합 한 개가 포함된다.\n문제에서 공집합이 아니어야 하므로 $128-1=127$가지이다.\n따라서 정답은 ④이다."
   },
   {
     "id": 14,
@@ -473,8 +473,8 @@ window.questionBank = [
       "$-2\\sqrt5<a<2\\sqrt5$",
       "$-5\\le a\\le5$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "①",
+    "solution": "[핵심] '모든 $x$에 대하여 $f(x)<0$'의 부정은 '어떤 $x$에 대하여 $f(x)\\ge0$'이다.\n$f(x)=-x^2+ax-5$라 하자.\n완전제곱식으로 고치면\n$f(x)=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-5$이다.\n이 이차식의 최댓값은 $x=\\dfrac a2$일 때의 $\\dfrac{a^2}{4}-5$이다.\n부정 명제가 참이려면 $f(x)\\ge0$인 실수가 하나라도 있어야 하므로\n$\\dfrac{a^2}{4}-5\\ge0$이어야 한다.\n따라서 $a^2\\ge20$이고,\n$a\\le-2\\sqrt5$ 또는 $a\\ge2\\sqrt5$이다.\n등호일 때도 $f(x)=0$인 실수가 있으므로 포함한다.\n따라서 정답은 ①이다."
   },
   {
     "id": 15,
@@ -507,8 +507,8 @@ window.questionBank = [
       "ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "[핵심] 첫째 원의 중심을 각 식의 좌표 치환으로 어디에 보내는지 확인한다.\n그림에서 $f(x,y)=0$은 중심 $(0,1)$, 반지름 $1$인 원이고,\n$g(x,y)=0$은 중심 $(1,-1)$, 반지름 $1$인 원이다.\n\nㄱ. $f(x-1,y+2)=0$은 원래 원을 오른쪽 $1$, 아래쪽 $2$만큼 평행이동한다.\n중심 $(0,1)\\to(1,-1)$이므로 참이다.\n\nㄴ. $f(-x-1,-y)=0$에서 원래 중심이 되려면 $-x-1=0$, $-y=1$이어야 한다.\n따라서 새 중심은 $(-1,-1)$로, 그림과 달라 거짓이다.\n\nㄷ. $f(y+1,x)=0$에서 $y+1=0$, $x=1$이므로 새 중심은 $(1,-1)$이다.\n반지름도 같으므로 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q15.png",
     "imageAlt": "두 좌표평면과 원, 첫째 중심 0 1 반지름 1, 둘째 중심 1 -1 반지름 1",
     "imageSize": "medium"
@@ -544,8 +544,8 @@ window.questionBank = [
       "ㄴ, ㄷ",
       "ㄴ, ㄹ"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "[핵심] 주어진 포함관계를 먼저 드모르간의 법칙으로 간단히 만든다.\n$U-(A^C\\cup B^C)=(A^C\\cup B^C)^C=A\\cap B$이다.\n따라서 조건 $B\\subset A\\cap B$에서 모든 $B$의 원소가 $A$에도 속하므로 $B\\subseteq A$이다.\n이 사실로 각 보기를 확인한다.\n\nㄱ. $A\\cap B=B$이므로 $(A\\cap B)^C=B^C=U-B$이다. 참이다.\n\nㄴ. $A\\cap(A-B)^C=A\\cap(A^C\\cup B)=A\\cap B=B$이다.\n항상 $A$인 것은 아니므로 거짓이다.\n\nㄷ. $(A^C\\cup B)^C=A\\cap B^C=A-B$이다.\n$A-B$는 공집합이라고 단정할 수 없으므로 거짓이다.\n\nㄹ. $B-A=\\varnothing$이고\n$A^C-B^C=A^C\\cap B=B-A=\\varnothing$이다.\n따라서 두 집합의 합집합도 공집합이므로 참이다.\n옳은 것은 ㄱ, ㄹ이므로 정답은 ③이다."
   },
   {
     "id": 17,
