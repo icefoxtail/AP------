@@ -1,0 +1,110 @@
+window.examTitle = "ALIVE_LITE_HYOCHEON_BATCH009";
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "그래프와 근",
+    "originalCategory": "그래프와 근",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "그래프와 근",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "그래프와 근",
+    "subUnitConfidence": "HIGH",
+    "subUnitClassificationDepth": "L2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "그래프와 근",
+      "x축과의 교점"
+    ],
+    "content": "이차함수 $f(x)$의 서로 다른 두 영점은 $-1,3$이다. 방정식 $f(x-a)=0$의 두 근의 곱이 $a^2+7$일 때, $a$의 값은?",
+    "choices": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 이동한 두 근은 $a-1,a+3$이다.\\n두 근의 곱 $(a-1)(a+3)=a^2+2a-3$이 $a^2+7$과 같으므로 $2a=10$이다. 따라서 $a=5$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY"
+  },
+  {
+    "id": 2,
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "그래프와 근",
+    "originalCategory": "그래프와 근",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "그래프와 근",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "그래프와 근",
+    "subUnitConfidence": "HIGH",
+    "subUnitClassificationDepth": "L2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "그래프와 근",
+      "x축과의 교점"
+    ],
+    "content": "그림은 이차함수 $y=f(x)$의 그래프이다. $f(x-a)=0$의 서로 다른 두 근의 곱이 $a^2+7$일 때, $a$의 값은?",
+    "choices": [
+      "-1",
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 그래프의 $x$절편은 $1,3$이다.\\n이동된 두 근은 $a+1,a+3$이고 곱은 $a^2+4a+3$이다. 조건과 비교하면 $4a+3=7$이므로 $a=1$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "image": "assets/generated-lite/ALITE-20261008-HYC26-Q15-003.svg"
+  },
+  {
+    "id": 3,
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "그래프와 근",
+    "originalCategory": "그래프와 근",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "그래프와 근",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "그래프와 근",
+    "subUnitConfidence": "HIGH",
+    "subUnitClassificationDepth": "L2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "tags": [
+      "객관식",
+      "그래프와 근",
+      "x축과의 교점"
+    ],
+    "content": "그림은 이차함수 $y=f(x)$의 그래프이다. $f(x-a)=0$의 큰 근이 작은 근의 두 배가 되도록 하는 $a$의 값은?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 그래프의 두 영점은 $-2,4$이다.\\n이동된 두 근은 $a-2,a+4$이다. 큰 근이 작은 근의 두 배이므로 $a+4=2(a-2)$이고 $a=8$이다.",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "image": "assets/generated-lite/ALITE-20261008-HYC26-Q15-004.svg"
+  }
+];
