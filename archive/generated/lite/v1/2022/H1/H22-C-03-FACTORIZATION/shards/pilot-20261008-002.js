@@ -24,13 +24,13 @@ window.questionBank = [
     "wide": false,
     "content": "$\\dfrac{1003^3-1}{1003^2+1003+1}$의 값은?",
     "choices": [
+      "999",
       "1000",
       "1001",
       "1002",
-      "1003",
-      "1004"
+      "1003"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "[키포인트] $1003^3-1=(1003-1)(1003^2+1003+1)$이므로 값은 $1002$이다.",
     "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "templateKey": "TPL_H1_FACTORIZATION_APPLICATION"
@@ -59,13 +59,13 @@ window.questionBank = [
     "wide": false,
     "content": "$\\dfrac{1234^2-766^2}{468}$의 값은?",
     "choices": [
-      "1800",
-      "1900",
       "2000",
       "2100",
-      "2200"
+      "2200",
+      "2300",
+      "2400"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[키포인트] $1234^2-766^2=(1234-766)(1234+766)=468\\times2000$이므로 값은 $2000$이다.",
     "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "templateKey": "TPL_H1_FACTORIZATION_APPLICATION"
@@ -94,13 +94,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $a,b$에 대하여 $a+b=8$, $a^2+b^2=34$일 때, $a^3+b^3$의 값은?",
     "choices": [
+      "112",
+      "122",
       "132",
       "142",
-      "152",
-      "162",
-      "172"
+      "152"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] $(a+b)^2=a^2+b^2+2ab$에서 $ab=15$이다. 따라서 $a^3+b^3=(a+b)^3-3ab(a+b)=512-360=152$이다.",
     "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "templateKey": "TPL_H1_FACTORIZATION_APPLICATION"
@@ -129,13 +129,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $a,b$가 $a-b=4$, $ab=5$를 만족할 때, $a^3-b^3$의 값은?",
     "choices": [
-      "104",
       "114",
       "124",
       "134",
-      "144"
+      "144",
+      "154"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] $a^3-b^3=(a-b)((a-b)^2+3ab)=4(16+15)=124$이다.",
     "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "templateKey": "TPL_H1_FACTORIZATION_APPLICATION"
@@ -269,13 +269,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $a,b$에 대하여 $a+b=5$, $a^3+b^3=35$일 때, $a^2+b^2$의 값은?",
     "choices": [
+      "10",
       "11",
       "12",
       "13",
-      "14",
-      "15"
+      "14"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "[키포인트] $35=125-15ab$에서 $ab=6$이다. 따라서 $a^2+b^2=25-2ab=13$이다.",
     "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
     "templateKey": "TPL_H1_FACTORIZATION_APPLICATION"

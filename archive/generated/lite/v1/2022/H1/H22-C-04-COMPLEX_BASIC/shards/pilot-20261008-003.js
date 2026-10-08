@@ -91,13 +91,13 @@ window.questionBank = [
     "wide": false,
     "content": "실수 $a$에 대하여 $z=(a^2-4)+(a-2)i$가 $0$이 아닌 순허수가 되도록 하는 $a$의 값은?",
     "choices": [
+      "-5",
       "-4",
       "-3",
       "-2",
-      "2",
-      "4"
+      "-1"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "[키포인트] 순허수이려면 실수부가 $0$, 허수부가 $0$이 아니어야 한다. $a^2-4=0$에서 $a=\\pm2$이다. $a=2$이면 허수부도 $0$이므로 제외한다. 따라서 $a=-2$이다.",
     "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
     "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION"
