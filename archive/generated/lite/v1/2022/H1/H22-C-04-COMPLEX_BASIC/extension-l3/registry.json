@@ -1,6 +1,6 @@
 {
   "schemaVersion": "ALIVE_LITE_EXTENSION_L3_CANDIDATES_v1",
-  "status": "B02_DISCOVERY_FROZEN_BEFORE_PRODUCTION",
+  "status": "DISCOVERED_WITH_GENERATED_EXAMPLES_REVIEW_PENDING",
   "targetL2": "H22-C-04-COMPLEX_BASIC",
   "candidateCount": 1,
   "candidates": [
@@ -22,13 +22,19 @@
       "sourceSeedQids": [
         8
       ],
-      "exampleUids": [],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q08-C01",
+        "ALITE-BSG26-B02-Q08-C02"
+      ],
       "status": "L3_GRANULARITY_REVIEW_REQUIRED",
       "canonicalPromoted": false,
-      "consumerSelectable": false
+      "consumerSelectable": false,
+      "exampleUidCount": 2,
+      "reviewStatus": "DISCOVERED_UNREVIEWED"
     }
   ],
   "originalSourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
   "independentReview": "NOT_TESTED",
-  "canonicalRPMModified": false
+  "canonicalRPMModified": false,
+  "generatedSampleEvidenceBound": true
 }
