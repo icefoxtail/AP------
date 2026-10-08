@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
+  "status": "DRAFT_DISCOVERY_ONLY",
+  "course": "공통수학1",
+  "curriculum": "2022",
+  "l1": "H22-C-08",
+  "l2": "H22-C-08-PERMUTATION",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "reviewStatus": "NOT_REVIEWED",
+  "candidateCount": 7,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-GAP",
+      "label": "서로 이웃하지 않는 대상의 틈 배치",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "기준 집단 선배열 → 선택 가능한 틈 조합 → 구별되는 객체 배열",
+      "contrastAgainstCanonicalL4": "단순 묶음 배치와 달리 틈을 서로 다르게 선택해야 함",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P01"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-DISTANCE",
+      "label": "지정 인물 사이 정확한 간격",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "가능한 자리쌍의 거리 차를 먼저 고정하고 나머지 순열 계산",
+      "contrastAgainstCanonicalL4": "인접성 이분법과 달리 정확한 양의 간격을 제한",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P03"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-MULTIBLOCK",
+      "label": "서로 독립인 두 묶음의 동시 배치",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "서로 겹치지 않는 두 블록을 각각 단위화해 외부·내부 배열 곱",
+      "contrastAgainstCanonicalL4": "한 묶음 처리와 달리 여러 블록의 독립 여부가 추가",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P04",
+        "ALITE-BSG26-B01R2-Q02-P05"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-ORDER-SYMMETRY",
+      "label": "지정 인물의 좌우순서 절반 원리",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "조건을 보존하는 사람쌍 교환 대응으로 상대순서를 반분",
+      "contrastAgainstCanonicalL4": "별도 특정 위치 조건이 아니라 해집합의 순서 대칭",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P06"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-EXACT-ADJ",
+      "label": "정확히 한 인접쌍의 여사건 분할",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "전체 - 인접쌍 0개 - 3명 연속으로 정확히 한 쌍 선택",
+      "contrastAgainstCanonicalL4": "단순 이웃/비이웃보다 정확한 횟수 분류가 결정적",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P07"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-ALTERNATE",
+      "label": "두 집단의 교대배열",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "특정 조건 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "집단 시작 종류 선택 후 집단별 순열을 배정",
+      "contrastAgainstCanonicalL4": "일부 인접 금지와 달리 모든 인접 위치가 교대로 제한",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P08"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-PERM-INVERSE-N",
+      "label": "순열값을 통한 인원수 역추적",
+      "parentRPMPrimaryL3": "순열",
+      "closestCanonicalL4": "일렬 배열",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-188",
+        "H1-RPM-189"
+      ],
+      "definingDecisiveStep": "자리수의 순열값을 알려주고 인원수 n의 유일한 자연수해 결정",
+      "contrastAgainstCanonicalL4": "직접 배열 개수와 달리 역산이 목표",
+      "sourceSeedQids": [
+        2
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q02-P10"
+      ],
+      "semanticSourceScope": "H22-C-08-PERMUTATION",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "canonicalRPMModified": false
+}

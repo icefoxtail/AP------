@@ -1,0 +1,22 @@
+{
+  "schemaVersion":"JS_ARCHIVE_CODEX_R1_GOLDEN_NEGATIVE_CORRECTION_REVIEW_V1",
+  "examUid":"26_복성고_1학기_중간_고1_기출",
+  "date":"2026-10-08",
+  "status":"SUPPLEMENTAL_ACTUAL_READ_AND_CHANGED_LOCUS_REVIEW_COMPLETE",
+  "initialPreflightPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.golden-negative-preflight.json",
+  "initialPreflightSha256":"5cf693b370241dae327ba8180f5865694f5033018b7f5e8c926bdcbe96f876a6",
+  "validatorFailurePath":"archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/R1.validator.raw.json",
+  "validatorFailureSha256":"07b3544c96aa5f4a255654580f741ad14e51b11fb47e7a65f5105eb17f34802b",
+  "validatorIssue":"ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED; sample JS files contain solutionImage items and the chosen representative items must include an actual-read visual binding.",
+  "preflightNotRetroactivelyClaimed":true,
+  "additionalSampleRead":{"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","rawSha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionImage":"assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg","visualSha256":"c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8","observation":"Read the actual SVG source. The equal-scale axes place C0 at (−3,1), C1 at (−5,2), C2 at (5,−2); the three radius circles share radius 3. Translation and origin-reflection arrows match the solution's order, and the final equation label is (x−5)^2+(y+2)^2=9. SVG coordinates/topology and solution agree."},
+  "finalValidatorGoldenSelection":{"goldenCalibrationSet":["archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"],"reason":"The two selected samples both include a representative qid with a solutionImage and actual visual SHA/geometry observation; both sets also include a second solution representative."},
+  "changedLocusCorrectionReview":[
+    {"qid":16,"solutionSha256":"fbc9a2b1695ba79500919544047ac5a2d5c8d98e47390c943f5a612d99786d7b","review":"Clean q16 freeze confirms x/β+y/α=1; area is a concave quadratic, maximum αβ/4=3/4. Three repaired newline markers divide setup, area quadratic, vertex, and final substitution. The source-preserving crop preserves all printed facts; only the isolated margin mark was removed."},
+    {"qid":18,"solutionSha256":"cf8f7343bdebef3e365b5d93e76b48635330f5b163f78a332bf790db4a4668cd","review":"Four repaired markers split intersection derivation, S1, S2, ratio equation, and positive root into a top-to-bottom board flow; equations and answer remain unchanged."},
+    {"qid":23,"solutionSha256":"2120d822850fc18608a301d331dee80bc20e6f2f045eea04b50d9dc21e96313f","review":"Three repaired markers separate first-interval endpoint minimum, p selection, second interval endpoint relation, and f(4); conditions and result remain unchanged."},
+    {"qid":24,"solutionSha256":"9350b4e336875cef2367d06e14e95cbdc79fd2c3f9ea3ae44fb5a67b1086de90","review":"Two repaired markers separate degree restriction, divisibility branches, and contradiction; retain CARRY_ITEM_HOLD because no admissible f,g exist."}
+  ],
+  "targetContentChangedDuringCorrectionReview":false,
+  "targetAssetChangedDuringCorrectionReview":false
+}

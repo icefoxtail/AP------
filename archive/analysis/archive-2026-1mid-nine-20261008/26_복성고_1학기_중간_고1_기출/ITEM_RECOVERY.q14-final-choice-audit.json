@@ -1,0 +1,20 @@
+{
+  "schemaVersion":"ITEM_RECOVERY_Q14_FINAL_CHOICE_AUDIT_V1",
+  "answerFrozenBeforeChoices":"27",
+  "finalChoicesAscending":["27","30","39","45","54"],
+  "answer":"①",
+  "choiceAudit":{
+    "27":"Correct: 9 admissible pairs for each a=1,2,3.",
+    "30":"Incorrectly permits drawing the zero card twice as (b,c)=(0,0), adding one per a.",
+    "39":"For bc>0 counts both orders of all same-sign pairs (8) but still counts the five zero pairs only once, yielding 13 per a.",
+    "45":"Incorrectly allows replacement for b,c: six negative multisets, three positive multisets, and six zero pairs per a.",
+    "54":"Ignores b>=c for every distinct admissible pair; all 9 unordered pairs per a are doubled."
+  },
+  "positionReview":{
+    "nonTargetAnswerDistribution":{"①":4,"②":4,"③":4,"④":3,"⑤":4},
+    "neighborAnswers":{"q13":"④","q15":"②"},
+    "decision":"With ascending numeric choices, placing 27 first is the only endpoint placement that avoids the adjacent answer positions while keeping ③ out of the default slot; the distractors are plausible and numerically coherent."
+  },
+  "visualOutlierReview":"The options form a rising numeric scale 27,30,39,45,54; no single choice is an isolated extreme.",
+  "status":"FINAL"
+}

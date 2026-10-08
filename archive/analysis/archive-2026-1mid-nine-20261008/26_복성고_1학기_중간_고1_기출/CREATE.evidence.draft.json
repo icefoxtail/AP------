@@ -1,0 +1,1605 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "artifactSha": "97b180764054458c8e9605f8d7720c166e860780",
+  "artifactRawSha256": "d2385bf36b8830eda12426bb45fdf09be1c3fa3fae058669c0f19e3a08609d69",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceInput": {
+    "path": "D:/2026_1학기중간_/고1/복성고",
+    "sourceEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출/CREATE.assignment.json",
+    "files": [
+      {
+        "page": 1,
+        "sha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "size": 3062632
+      },
+      {
+        "page": 2,
+        "sha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "size": 2474896
+      },
+      {
+        "page": 3,
+        "sha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "size": 2706912
+      },
+      {
+        "page": 4,
+        "sha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "size": 2295328
+      },
+      {
+        "page": 5,
+        "sha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "size": 2557528
+      }
+    ],
+    "sourcePdfAvailable": false,
+    "answerKeyEvidenceAvailable": false,
+    "answerKeyAuthorityNote": "Only the five assigned scanned JPGs are present; handwritten answer marks are source annotations and were not used as answer authority."
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7F283C40CCF322A73079324F53B161315AB142579B80790DE4469008330BE156",
+        "observation": "q1 separates ratio setup, coordinate computations, midpoint, distance substitution and radical simplification; q7 SVG coordinates show actual center translations and equal-radius circles.",
+        "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "visualSha256": "C9765E63093F01D8AE0BD958C2925798DFEAF0E0B451538F63B4D3C1EEA986B8",
+        "visualObservation": "Read SVG source geometry and checked center coordinates against labels."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3EB164F35C323520BBC2C77825C5976B09BD919B9D1B50C91842AC94EA225B99",
+        "observation": "q2 derives both slopes and the perpendicular product on separate lines.",
+        "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "visualSha256": "8914784B537211D08CFB237A460CE7067211B6EA9F87486906DA4831D94FAC30",
+        "visualObservation": "Read actual line equations and coordinates; they match slopes -1/3 and 3."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "C0D195B36579CCD28657C48A415AB6AB7A39ADE5F862CC05F490381335B30665",
+        "observation": "q1 checks each membership/subset statement separately; known q18 visual exception excluded."
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "DBF9F3D1E6CBEDBB0DF8B0072E7682A60643D3C94578CD1D99E63DFA444ADB23",
+      "observation": "Reject q2/q17 enumeration compressed into one paragraph, SVG labels without coordinate validation, omitted exact ACTIVE Meta projections and doubled TeX escapes.",
+      "svgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "svgSha256": "240DADE5ECD6991B156F456FE7036883A59E43DF3117D0F2A25B3C790A39EAA4",
+      "svgObservation": "The polyline misses the labeled parabola points; actual geometry contradicts annotations."
+    },
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "solutionWorkMode": "SOURCE_ONLY_FRESH",
+    "calibrationStatus": "PASS",
+    "calibrationOrder": [
+      "assignment",
+      "golden_and_negative_read",
+      "fresh_source_solve"
+    ]
+  },
+  "sourceReview": {
+    "questionCount": 24,
+    "sourcePages": [
+      {
+        "page": 1,
+        "sha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "size": 3062632
+      },
+      {
+        "page": 2,
+        "sha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "size": 2474896
+      },
+      {
+        "page": 3,
+        "sha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "size": 2706912
+      },
+      {
+        "page": 4,
+        "sha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "size": 2295328
+      },
+      {
+        "page": 5,
+        "sha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15",
+        "path": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "size": 2557528
+      }
+    ],
+    "transcriptionBasis": "Opened all five full JPGs; reread q14 radical and fraction bars, both conditions and answer choices at crop resolution.",
+    "q14ConditionReviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출/source-q14-condition-review.png",
+    "q14ConditionReviewSha256": "34247FD3B71F6E2009E0E61A0F7E4D16789A8A3E14D6B10788242E0022C25460",
+    "q17ConditionReviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출/source-q17-condition-review.png",
+    "q24ConditionReviewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출/source-q24-condition-review.png",
+    "sourceAnswerKeyUsed": false,
+    "q17ConditionReviewSha256": "DB8CD33585D5716DE0471811A4D081046C1A31D6D7B100C1B9B0E457CDB8E400",
+    "q24ConditionReviewSha256": "E2890BB6F5575098622364CE6703271D0DFC977EA4496B95E5A6A5D7B1EC17AA"
+  },
+  "createPreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_복성고_1학기_중간_고1_기출/CREATE.preflight.report.json",
+    "sha256": "B82FA9BBA1B94C9470FC99EFB7589A8E2D860894F03796EC8EA8025D51B36BF7",
+    "status": "CARRY_ITEM_HOLD",
+    "questionCount": 24,
+    "itemHoldCount": 2,
+    "holds": [
+      {
+        "qid": 14,
+        "reason": "The exact source reads sqrt(bc)/sqrt(a) = -sqrt(bc/a) and |b-c|=b-c, without a real-domain or complex-branch convention. The real-domain count is 15; principal complex roots admit 42. Neither count matches the choices."
+      },
+      {
+        "qid": 24,
+        "reason": "The exact source conditions conflict with polynomial remainder degree and coefficient comparison; no f,g satisfy them, so the requested maximum is undefined."
+      }
+    ],
+    "findings": [],
+    "unitOrderFindings": [],
+    "unitMasterPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "unitMasterSha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+    "artifactRawSha256": "d2385bf36b8830eda12426bb45fdf09be1c3fa3fae058669c0f19e3a08609d69",
+    "artifactGitBlobSha1": "97b180764054458c8e9605f8d7720c166e860780"
+  },
+  "summary": {
+    "questionCount": 24,
+    "itemHoldCount": 2,
+    "sourceRepairCount": 0,
+    "questionLayoutCoverage": "24/24",
+    "solutionLayoutCoverage": "22 PASS / 2 HOLD",
+    "metaCoverage": "24/24",
+    "visualSvgCoverage": "24/24",
+    "sourceTextExactParity": "24/24",
+    "choicesExactParity": "20/20"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 1,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Compare each line with y=x²+1 using real-root/discriminant checks.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Compare each line with y=x²+1 using real-root/discriminant checks.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 2,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Collect like terms in 2A+B.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Collect like terms in 2A+B.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-01",
+          "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+          "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+          "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 3,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Extract the x coefficient and constant term after expansion.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Extract the x coefficient and constant term after expansion.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-01",
+          "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+          "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+          "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 4,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Reduce each complex quotient/power before identifying a and b.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Reduce each complex quotient/power before identifying a and b.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-04",
+          "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+          "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+          "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 5,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use the three face-diagonal squares to obtain ab+bc+ca and the surface area.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use the three face-diagonal squares to obtain ab+bc+ca and the surface area.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-01",
+          "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+          "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+          "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "sourceVisual": "ORIGINAL_CROP",
+          "sourceAsset": {
+            "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q05.png",
+            "sha256": "F7CDE0780B159C1B9257672976EBA9BCD1D9CD7DEB140E38521F7374F2879066",
+            "opened": true,
+            "kind": "ORIGINAL_PROBLEM_CROP"
+          },
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Opened the original-page crop and checked that the figure/card data are preserved; the solution equations make a separate solution SVG unnecessary.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 6,
+        "sourcePage": 1,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0001.jpg",
+        "sourcePageSha256": "b0fb7e41f21a2e01ca92bacfd4d88fb9c7ddfaaf415f4c619d83ef70ccb487a3"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Compare coefficients in the identity.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Compare coefficients in the identity.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 7,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Impose negative discriminants for both line-parabola equations.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Impose negative discriminants for both line-parabola equations.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 8,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Reduce 8⁷+15 modulo the seven-day period.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Reduce 8⁷+15 modulo the seven-day period.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "META_ONLY",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-07",
+          "subUnitKey": "H22-C-07-CORE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": null,
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 9,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Find the intersection interval and evaluate h at its in-interval vertex.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Find the intersection interval and evaluate h at its in-interval vertex.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 10,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Evaluate Q(3) from its remainder, then use f(3)=R(3).",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Evaluate Q(3) from its remainder, then use f(3)=R(3).",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 11,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Force the coefficient of k in the discriminant to vanish, then maximize b.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Force the coefficient of k in the discriminant to vanish, then maximize b.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 12,
+        "sourcePage": 2,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0002.jpg",
+        "sourcePageSha256": "70f0362864d8b35a8a51172870fb564b3c9dfcce47b9550c6bc1986f3dd50ac4"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Require both unit complex powers to equal 1.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Require both unit complex powers to equal 1.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-04",
+          "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+          "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+          "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 13,
+        "sourcePage": 3,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "sourcePageSha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use the positive-root condition to select the midpoint of the roots.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use the positive-root condition to select the midpoint of the roots.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 14,
+        "sourcePage": 3,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "sourcePageSha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "LAYOUT_POLISH",
+      "smallBoardContinuityStatus": "HOLD",
+      "decisiveStep": "Resolve the unspecified square-root domain/branch before counting; the stated data do not determine an answer among the choices.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "smallBoardContinuityStatus": "HOLD",
+          "decisiveStep": "Resolve the unspecified square-root domain/branch before counting; the stated data do not determine an answer among the choices.",
+          "reason": "The exact source reads sqrt(bc)/sqrt(a) = -sqrt(bc/a) and |b-c|=b-c, without a real-domain or complex-branch convention. The real-domain count is 15; principal complex roots admit 42. Neither count matches the choices."
+        },
+        "meta": {
+          "status": "META_ONLY",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-08",
+          "subUnitKey": "H22-C-08-COMBINATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": null,
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "sourceVisual": "ORIGINAL_CROP",
+          "sourceAsset": {
+            "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q14.png",
+            "sha256": "C11B59D0A649818F1B6166887AC64D7313E9060D99CF1A192F12C4548B4A2E3C",
+            "opened": true,
+            "kind": "ORIGINAL_PROBLEM_CROP"
+          },
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Opened the original-page crop and checked that the figure/card data are preserved; the solution equations make a separate solution SVG unnecessary.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": "The exact source reads sqrt(bc)/sqrt(a) = -sqrt(bc/a) and |b-c|=b-c, without a real-domain or complex-branch convention. The real-domain count is 15; principal complex roots admit 42. Neither count matches the choices."
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 15,
+        "sourcePage": 3,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "sourcePageSha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Enumerate the two-digit factor triples of 28908.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Enumerate the two-digit factor triples of 28908.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "META_ONLY",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-08",
+          "subUnitKey": "H22-C-08-COMBINATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": null,
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 16,
+        "sourcePage": 3,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg",
+        "sourcePageSha256": "8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Complete the square in the rectangle area as a function of its base.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Complete the square in the rectangle area as a function of its base.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "sourceVisual": "ORIGINAL_CROP",
+          "sourceAsset": {
+            "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q16.png",
+            "sha256": "B684AE243BFC13AB50072A7C560E38E9ED69A49CA09AC8DC44937927292B8C69",
+            "opened": true,
+            "kind": "ORIGINAL_PROBLEM_CROP"
+          },
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Opened the original-page crop and checked that the figure/card data are preserved; the solution equations make a separate solution SVG unnecessary.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 17,
+        "sourcePage": 4,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "sourcePageSha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "LAYOUT_POLISH",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use conjugate roots and the real/imaginary constraints.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use conjugate roots and the real/imaginary constraints.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-04",
+          "subUnitKey": "H22-C-04-COMPLEX_QUADRATIC",
+          "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+          "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 18,
+        "sourcePage": 4,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "sourcePageSha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Find C,D, compute both areas, and solve their ratio.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Find C,D, compute both areas, and solve their ratio.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "sourceVisual": "ORIGINAL_CROP",
+          "sourceAsset": {
+            "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q18.png",
+            "sha256": "A53F0419DD705F4EF7DA99CF42AD4C49E676F1A380270A692C61953D7EC99C17",
+            "opened": true,
+            "kind": "ORIGINAL_PROBLEM_CROP"
+          },
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Opened the original-page crop and checked that the figure/card data are preserved; the solution equations make a separate solution SVG unnecessary.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 19,
+        "sourcePage": 4,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "sourcePageSha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use the center coordinates and BP=1 to solve for the radius.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use the center coordinates and BP=1 to solve for the radius.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "META_ONLY",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": null,
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "sourceVisual": "ORIGINAL_CROP",
+          "sourceAsset": {
+            "ref": "assets/images/26_복성고_1학기_중간_고1_기출/q19.png",
+            "sha256": "5FE6F964FBD4F9E62948885E64E56DB7B17AF1743A74B798C30F6E403C7E54D2",
+            "opened": true,
+            "kind": "ORIGINAL_PROBLEM_CROP"
+          },
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "Opened the original-page crop and checked that the figure/card data are preserved; the solution equations make a separate solution SVG unnecessary.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 20,
+        "sourcePage": 4,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0004.jpg",
+        "sourcePageSha256": "899a999a990e9a5a50f57d1f701395aec4c50d0ce6c27656f8b18c443cd8c60c"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Factor PQ, use P(2)<Q(2), then set the shifted quadratic discriminant to zero.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Factor PQ, use P(2)<Q(2), then set the shifted quadratic discriminant to zero.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-03",
+          "subUnitKey": "H22-C-03-FACTORIZATION",
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 21,
+        "sourcePage": 5,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "sourcePageSha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use Vieta to find the sum and product of α³,β³.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use Vieta to find the sum and product of α³,β³.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 22,
+        "sourcePage": 5,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "sourcePageSha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Locate the maximum on [1,4], determine a, then compare endpoint values for the minimum.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Locate the maximum on [1,4], determine a, then compare endpoint values for the minimum.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 23,
+        "sourcePage": 5,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "sourcePageSha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "LAYOUT_POLISH",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Use equal maxima to locate p, then substitute the two minima conditions.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "LAYOUT_POLISH",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "decisiveStep": "Use equal maxima to locate p, then substitute the two minima conditions.",
+          "reason": "Checked the actual solution text for the setup, transformations, intermediate values, condition use and conclusion on visible separate mathematical lines."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": "Current source demand and the fresh derivation support the selected H1 course/unit/subunit and active PT/TPL fields; difficulty reflects the linked solution decisions.",
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": null
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "examUid": "26_복성고_1학기_중간_고1_기출",
+        "sourceOrdinal": 24,
+        "sourcePage": 5,
+        "sourcePagePath": "D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg",
+        "sourcePageSha256": "20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15"
+      },
+      "sourceFidelityStatus": "PASS",
+      "beforeDisposition": "KEEP",
+      "finalDisposition": "KEEP",
+      "smallBoardContinuityStatus": "HOLD",
+      "decisiveStep": "Check the divisor/remainder degree and compare coefficients; the printed conditions are inconsistent.",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": true,
+          "choicesExactParity": true,
+          "reason": "Compared source wording, mathematical tokens, condition grouping and choice order against the assigned page image.",
+          "renderStatus": "NOT_RUN"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "smallBoardContinuityStatus": "HOLD",
+          "decisiveStep": "Check the divisor/remainder degree and compare coefficients; the printed conditions are inconsistent.",
+          "reason": "The exact source conditions conflict with polynomial remainder degree and coefficient comparison; no f,g satisfy them, so the requested maximum is undefined."
+        },
+        "meta": {
+          "status": "META_ONLY",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 5,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "UNKNOWN",
+          "rationale": null,
+          "nullReason": null
+        },
+        "visualSvg": {
+          "status": "NOT_REQUIRED",
+          "sourceVisual": "NONE",
+          "sourceAsset": null,
+          "solutionSvg": "NOT_REQUIRED",
+          "reason": "No printed graph, table, or diagram is required to reproduce this solution; a separate solution SVG is not required.",
+          "actualRenderStatus": "NOT_RUN"
+        }
+      },
+      "itemHoldReason": "The exact source conditions conflict with polynomial remainder degree and coefficient comparison; no f,g satisfy them, so the requested maximum is undefined."
+    }
+  ],
+  "itemHoldCount": 2,
+  "itemHolds": {
+    "count": 2,
+    "qids": [
+      14,
+      24
+    ]
+  },
+  "artifactDispositions": {
+    "artifactSha": "97b180764054458c8e9605f8d7720c166e860780",
+    "rows": [
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": null
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": null
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "nullReason": null
+      }
+    ]
+  },
+  "renderStatus": "NOT_RUN_R3_OWNS_ACTUAL_ENGINE_REVIEW",
+  "nextRequiredAction": "R1 independently reviews the current 24-q student bundle and q14/q24 source holds."
+}

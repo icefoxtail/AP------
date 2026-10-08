@@ -1,0 +1,44 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "node tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "642de4d2c0ad76f555710662ddf792c3b64e9de16ea5ce6cf99ae6b5a7d02331",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "catalogCheck",
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "642de4d2c0ad76f555710662ddf792c3b64e9de16ea5ce6cf99ae6b5a7d02331",
+    "stdoutSha256": "0af638b6f3542c9b58df2510c335be96e28144ac8fea7c063554920ac74f5d3b",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/registration-postapply-bridge-05/catalog-check-02/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "registrationParity",
+    "command": "node archive/tools/verify-archive-registration.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "642de4d2c0ad76f555710662ddf792c3b64e9de16ea5ce6cf99ae6b5a7d02331",
+    "stdoutSha256": "8541e4c92c79346d8e8df3afa23423ee46c5bc9af5cd2ac0d7e5aa5929a25473",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/registration-postapply-bridge-05/registration-parity-01/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "identityTests",
+    "command": "node --test tests/archive-question-identity-contract.test.mjs tests/archive-question-identity-runtime.test.mjs tests/archive-question-identity-collision-regression.test.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "642de4d2c0ad76f555710662ddf792c3b64e9de16ea5ce6cf99ae6b5a7d02331",
+    "stdoutSha256": "50f525de76081318d076351ef02792a94fd3251577257321b946fc9a0221518f",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_복성고_1학기_중간_고1_기출/registration-postapply-bridge-05/identity-tests-01/result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  }
+]

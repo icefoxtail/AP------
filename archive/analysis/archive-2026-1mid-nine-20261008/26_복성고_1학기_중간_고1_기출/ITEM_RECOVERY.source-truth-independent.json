@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "ITEM_RECOVERY_SOURCE_TRUTH_INDEPENDENT_V1",
+  "stage": "CREATE/ITEM_RECOVERY",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "qids": [14, 24],
+  "sourceArtifactRawSha256": "a91f8d3f18eaa69358893a62fbc87e41e10b8b8daf69b65f5514076a1f6877b8",
+  "studentBundleSha256": "e445776bce87e5855d5cc7a8b6eb9b33ac7cb34a06ae6c1f0c67d1c250880963",
+  "sourcePageRefs": [
+    {"path":"D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0003.jpg","sha256":"8a2f97c3614b40028857d58a2fabcd178c7a368d6ca034e3d697200d57cee38a","visualRead":"Full page 5-3; q14 source, radical grouping, card labels, draw sequence, and all five choices read. Handwritten marks excluded as answer authority."},
+    {"path":"D:/2026_1학기중간_/고1/복성고/S28BW-826042714110_0005.jpg","sha256":"20b2f0f9133fc4b76fdd28ef1432ea09930992d50be6de9d3131c2be33f02a15","visualRead":"Full page 5-5; q24 source, every divisor/remainder exponent, divisibility condition, absolute-value comparison, leading coefficient, and objective read. Handwritten marks excluded as answer authority."}
+  ],
+  "q14": {
+    "studentPayloadSha256":"e269e8d37259236715356fd63e22ab7d6fb0ca5e3058aa9944f982534f5fe0c6",
+    "sourceImageRef":"assets/images/26_복성고_1학기_중간_고1_기출/q14.png",
+    "sourceImageSha256":"c11b59d0a649818f1b6166887ac64d7313e9060d99cf1a192f12c4548b4a2e3c",
+    "interpretation":"Cards are distinct and drawn without replacement; a,b,c are ordered draw values. Real principal square roots require a>0 and bc>=0. Equality of the nonnegative left side and nonpositive right side forces bc=0. |b-c|=b-c means b>=c. For each a in {1,2,3}, valid pairs are (0,-3),(0,-2),(0,-1), and (p,0) for two positive p values other than a. Total 5 per a, hence 15 ordered triples. Original choices are 26–30; none is correct.",
+    "sourceTruthStatus":"TRUE_SOURCE_CONTRADICTION",
+    "minimalRepair":"No crop or deterministic transcription repair: source text and choices visibly agree with the student bundle, but no offered count follows under real-radical semantics."
+  },
+  "q24": {
+    "studentPayloadSha256":"21d9f54eb2fb970df5b292b41d9437962999520f1ba2c96eb213ad3b8819832d",
+    "interpretation":"Let m=deg g. The strict |g(1)|<|g(2)| excludes g=0. For m>=2, deg(g-x)^3=3m is not below deg(x^2g-1)=m+2, so it cannot be the Euclidean remainder; thus deg g<=1. The divisibility gives g(1)Q(1)=g(2)Q(2)=0. Since g(2)=0 contradicts the strict inequality and Q cannot vanish at both 1 and 2 (Q has degree 1 while f^2 has degree 4), g(1)=0 and Q(2)=0. Write g=k(x-1), Q=u(x-2) with ku=4. At x=2, f(2)^2=(k-2)^3, so k>=2. Yet deg(g-x)^3<3 forces k=1, contradiction. No f,g satisfy the source conditions.",
+    "sourceTruthStatus":"TRUE_SOURCE_INCONSISTENCY",
+    "minimalRepair":"No source typo, lost label, or image repair can make the stated polynomial remainder and conditions consistent; replacement is needed if companion source confirms this full-page reading."
+  },
+  "scope":"Independent source-truth assessment only. No upstream hold reason, answer, or solution consulted. Original handwritten choices ignored."
+}
