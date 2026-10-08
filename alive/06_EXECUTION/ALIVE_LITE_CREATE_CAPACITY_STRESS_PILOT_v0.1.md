@@ -32,3 +32,9 @@
 - 문항 개수만 높이려고 의미 없는 복붙·교육과정 위반·오답·미완성 해설·거짓 Meta를 만들지 않는다.
 - 기존 JS아카이브 원본 시험지 R1/R2/R3 운영·필수 actual render 계약은 그대로 유지. 이 규정은 ALIVE 생성 공급에만 적용.
 - 이 문서의 생성만으로 테스트가 실행됐다고 주장하지 않는다.
+
+## CURRENT HARD OVERRIDE — source qid별 Blueprint 탐색 게이트 (2026-10-08)
+- **하나의 채팅 세션은 시험지 전체를 연속 생산하지만, source qid 하나를 완료로 판정하기 전에 탐색-출제 2단계를 분리한다.**
+- source 이해 → 관련 RPM L4/extension·CrossConcept/Condition/Integration Blueprint 우선 탐색 → 후보 disposition(ACCEPT/DUPLICATE/L3_DRIFT/CURRICULUM_VIOLATION/NO_VALID_MATH_STRUCTURE/HOLD) → ACCEPT 문항 발문/해설/Meta 원패스 → 미개척 L4 사유와 generated UID ledger 동결 → 다음 원본.
+- **4~6문항 제작 또는 생산량 목표 달성만으로 source 완료 금지.** 확장 미완료인 경우 SOURCE_CONTINUATION_REQUIRED.
+- 정본: `alive/06_EXECUTION/ALIVE_LITE_SOURCE_BLUEPRINT_EXHAUSTION_CONTRACT_v0.1.md`.
