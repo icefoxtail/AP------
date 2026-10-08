@@ -1,87 +1,70 @@
 'use strict';
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
-const html = fs.readFileSync(path.join(__dirname, '../archive/generated-bank.html'), 'utf8');
-const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
-const code = scripts.at(-1)?.[1];
-const base = 'data/generated-lite-consumer/v1/';
-const index = {
- schemaVersion:'ALIVE_GENERATED_CONSUMER_INDEX_V1',sourceKind:'generated',approvedCount:2,
- excludedHoldUids:['ALITE-BSG26-B05R2-Q22-S01'],
- records:[
-  {uid:'ALITE-TEST-OBJECTIVE',school:'복성고',sourceQid:20,l2:'H22-C-09-MATRIX_APPLICATION',localOrdinal:1,shard:base+'shards/test-objective.json'},
-  {uid:'ALITE-TEST-SUBJECTIVE',school:'복성고',sourceQid:23,l2:'H22-C-09-MATRIX_APPLICATION',localOrdinal:1,shard:base+'shards/test-subjective.json'}
- ]
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const html=fs.readFileSync(path.join(__dirname,'../archive/generated-bank.html'),'utf8');
+const inline=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].at(-1)?.[1];
+const base='data/generated-lite-consumer/v1/',bs='8266fa476906e9134b94f23e803bd3b2fb26ece4',hy='69ad80ffa9ec80b2592bee26ffce247f8d7013d1';
+const table='<div class="question-table-wrap"><table class="question-table"><thead><tr><th>코스</th><th>가</th></tr></thead><tbody><tr><th>출발</th><td>1</td></tr></tbody></table></div>';
+const fixture=()=>{
+ const records=[],shards={};
+ for(const [school,sourceSha,count,shardName] of [['복성고',bs,23,'bsg'],['효천고',hy,26,'hyc']]){
+  const shard=base+'shards/'+shardName+'.json',items=[];
+  for(let i=1;i<=count;i++){
+   const uid='ALITE-TEST-'+shardName.toUpperCase()+'-'+String(i).padStart(3,'0');
+   const subjective=school==='복성고'&&i===23;
+   records.push({uid,school,year:2026,grade:'고1',subject:'공통수학1',sourceQid:i,sourceExamBlobSha:sourceSha,localOrdinal:i,shard,sourceKind:'generated'});
+   items.push({generatedUid:uid,localOrdinal:i,sourceKind:'generated',question:{questionType:subjective?'서술형':'객관식',content:subjective?'표를 확인하세요. '+table+'경우의 수를 구하시오.':'값을 구하시오.',choices:subjective?[]:['1','2','3','4','5'],answer:subjective?'$8$':'③',solution:'해설'}});
+  }
+  shards[shard]={schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:items};
+ }
+ return {index:{schemaVersion:'ALIVE_GENERATED_CONSUMER_INDEX_V1',sourceKind:'generated',approvedCount:49,excludedHoldUids:['ALITE-TEST-HOLD'],records},shards};
 };
-const table='<div class="question-table-wrap"><table class="question-table"><thead><tr><th>코스</th><th>가</th><th>나</th></tr></thead><tbody><tr><th>출발</th><td>1</td><td>2</td></tr></tbody></table></div>';
-const sample = {
- [base+'shards/test-objective.json']:{schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:[{generatedUid:'ALITE-TEST-OBJECTIVE',localOrdinal:1,sourceKind:'generated',question:{questionType:'객관식',content:'행렬곱의 값은?',choices:['1','2','3','4','5'],answer:'③',solution:'3이다.'}}]},
- [base+'shards/test-subjective.json']:{schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:[{generatedUid:'ALITE-TEST-SUBJECTIVE',localOrdinal:1,sourceKind:'generated',question:{questionType:'서술형',content:'코스를 확인하시오.'+table+'경우의 수를 구하시오.',choices:[],answer:'$8$',solution:'경우를 나누어 8을 얻는다.'}}]}
-};
-class Node {
- constructor(tag='div',fragment=false){this.tag=tag;this.fragment=fragment;this.children=[];this.listeners=Object.create(null);this.textContent='';this.value='';this.checked=false;this.disabled=false;}
- appendChild(child){if(child.fragment)this.children.push(...child.children);else this.children.push(child);return child;}
+class Node{
+ constructor(tag='div',fragment=false){this.tag=tag;this.fragment=fragment;this.children=[];this.listeners={};this.textContent='';this.disabled=false;this.attributes={};}
+ appendChild(node){if(node.fragment)this.children.push(...node.children);else this.children.push(node);return node;}
  replaceChildren(...nodes){this.children=[];this.textContent='';for(const n of nodes)this.appendChild(n);}
- addEventListener(kind,fn){this.listeners[kind]=fn;}
- setAttribute(key,val){this[key]=val;}
+ addEventListener(type,fn){this.listeners[type]=fn;}
+ setAttribute(key,value){this.attributes[key]=value;}
 }
-test('approved objective and subjective generated questions render safely; HOLD excluded',async()=>{
- assert.ok(code);
- new vm.Script(code);
- const nodes=Object.create(null);
- const document={
-  getElementById:id=>nodes[id]??(nodes[id]=new Node()),
-  createElement:tag=>new Node(tag),
-  createDocumentFragment:()=>new Node('fragment',true)
- };
- let printed=0;
- const fetch=async url=>({ok:url===base+'index.json'||!!sample[url],status:404,json:async()=>url===base+'index.json'?index:sample[url]});
- const context=vm.createContext({document,fetch,window:{print:()=>printed++},Map,Set,Promise,console});
- vm.runInContext(code,context,{timeout:2000});
- await new Promise(resolve=>setTimeout(resolve,20));
- const el=id=>document.getElementById(id);
- assert.equal(el('count').textContent,2);
- el('query').value='ALITE-TEST-SUBJECTIVE';el('query').listeners.input();
- assert.equal(el('count').textContent,1);
- const item=el('items').children[0];
- await item.children[2].onclick();
- assert.equal(el('toggle-answer').disabled,false);
- const stem=el('detail').children.find(x=>x.className==='stem');
- assert.ok(stem);
- const wrap=stem.children.find(x=>x.className==='question-table-wrap');
- assert.ok(wrap,'must render a real table, not raw HTML tags');
- const t=wrap.children[0];assert.equal(t.tag,'table');assert.equal(t.children.length,2);
- assert.equal(t.children[0].children[0].textContent,'코스');
- assert.equal(t.children[1].children[1].textContent,'1');
- assert.ok(stem.children.some(x=>x.textContent.includes('경우의 수를 구하시오.')));
- assert.ok(!stem.children.some(x=>x.textContent.includes('<table')));
- await el('toggle-answer').listeners.click();
- assert.ok(el('detail').children.some(x=>x.textContent.includes('정답: $8$')));
- item.children[0].checked=true;item.children[0].listeners.change();
- await el('print').listeners.click();assert.equal(printed,1);
- el('query').value='ALITE-BSG26-B05R2-Q22-S01';el('query').listeners.input();
- assert.equal(el('count').textContent,0);
- el('query').value='ALITE-TEST-OBJECTIVE';el('query').listeners.input();
- assert.equal(el('count').textContent,1);
- await el('items').children[0].children[2].onclick();
- assert.equal(el('toggle-answer').disabled,false);
- const oldStem=el('detail').children.find(x=>x.className==='stem');
- assert.ok(oldStem.children.some(x=>x.textContent==='행렬곱의 값은?'));
- const c=el('detail').children.filter(x=>x.className==='choice');assert.equal(c.length,5);
- assert.ok(c[2].textContent.startsWith('③ '));
-});
-test('table parser escapes HTML-like content instead of executing arbitrary tags',()=>{
- const nodes=Object.create(null);
+function runFixture(){
+ const {index,shards}=fixture(),nodes={};
  const document={getElementById:id=>nodes[id]??(nodes[id]=new Node()),createElement:tag=>new Node(tag),createDocumentFragment:()=>new Node('fragment',true)};
- const fetch=async()=>({ok:true,json:async()=>({...index,approvedCount:1,records:index.records.slice(0,1)})});
- const context=vm.createContext({document,fetch,window:{print:()=>{}},Map,Set,Promise,console});
- vm.runInContext(code,context,{timeout:2000});
- const box=new Node();
- context.__parent=box;
- vm.runInContext("questionStem(__parent,'앞<span onmouseover=alert(1)>오염</span>뒤')",context,{timeout:2000});
- assert.ok(box.children[0].children.every(n=>n.tag==='span'));
- assert.equal(box.children[0].children[0].textContent,'앞<span onmouseover=alert(1)>오염</span>뒤');
+ let printed=0;
+ const fetch=async url=>({ok:url===base+'index.json'||!!shards[url],status:404,json:async()=>url===base+'index.json'?index:shards[url]});
+ const context=vm.createContext({document,fetch,window:{print:()=>printed++},Map,Set,Promise,console});
+ vm.runInContext(inline,context,{timeout:2000});
+ return {el:id=>document.getElementById(id),context,getPrinted:()=>printed};
+}
+test('only exam selection and print appear; source counts match 23/26',async()=>{
+ assert.ok(inline);new vm.Script(inline);
+ assert.ok(!html.includes('개별 문항 검색'));assert.ok(!html.includes('검수 승인'));assert.ok(!html.includes('id="advanced"'));
+ const {el,getPrinted}=runFixture();await new Promise(resolve=>setTimeout(resolve,25));
+ assert.equal(el('exam-cards').children.length,2);
+ assert.equal(el('print').disabled,true);
+ const cards=el('exam-cards').children;
+ const bok=cards.find(c=>c.children[0]?.textContent.includes('복성고'));
+ const hyo=cards.find(c=>c.children[0]?.textContent.includes('효천고'));
+ assert.ok(bok&&hyo);
+ assert.match(bok.children[1].textContent,/23문항/);
+ assert.match(hyo.children[1].textContent,/26문항/);
+ bok.onclick();await el('print').listeners.click();
+ assert.equal(getPrinted(),1);
+ assert.equal(el('paper-items').children.length,23);
+ assert.match(el('paper-title').textContent,/복성고/);
+ assert.equal(el('paper-items').children.at(-1).children.some(c=>c.className==='stem'),true);
+ hyo.onclick();await el('print').listeners.click();
+ assert.equal(getPrinted(),2);
+ assert.equal(el('paper-items').children.length,26);
+ assert.match(el('paper-title').textContent,/효천고/);
+});
+test('subjective HTML table is parsed as safe real table; unknown tags are escaped',()=>{
+ const {context}=runFixture(),p=new Node();
+ context.__p=p;context.__table=table;
+ vm.runInContext("questionStem(__p,'표 '+__table+' 답하시오.')",context,{timeout:2000});
+ const stem=p.children[0],wrap=stem.children.find(c=>c.className==='question-table-wrap');
+ assert.ok(wrap);assert.equal(wrap.children[0].tag,'table');
+ assert.equal(wrap.children[0].children.length,2);
+ const p2=new Node();context.__p2=p2;
+ vm.runInContext("questionStem(__p2,'앞<span onmouseover=alert(1)>오염</span>뒤')",context,{timeout:2000});
+ assert.ok(p2.children[0].children.every(c=>c.tag==='span'));
+ assert.match(p2.children[0].children[0].textContent,/onmouseover/);
 });

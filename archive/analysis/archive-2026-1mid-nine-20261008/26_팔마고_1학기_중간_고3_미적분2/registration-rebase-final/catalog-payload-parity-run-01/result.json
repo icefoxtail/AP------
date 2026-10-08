@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "SOURCE7_REBASE_VALIDATOR_RUN_V1",
+  "id": "catalogPayloadParityFinal",
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2",
+  "command": "C:\\Program Files\\nodejs\\node.exe \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase-final\\\\inputs\\\\verify-source7-rebase-catalog-parity.mjs\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\.tmp\\\\archive\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase\\\\root-checkout\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\.tmp\\\\archive\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase\\\\root-checkout\\\\.tmp\\\\candidate-03\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\.tmp\\\\archive\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase\\\\root-checkout\\\\.tmp\\\\registration-package.rebase-04.json\" \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase-final\\\\catalog-payload-parity.final.json\"",
+  "cwd": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-rebase\\root-checkout",
+  "exitCode": 0,
+  "signal": null,
+  "status": "PASS",
+  "stdout": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-rebase-final\\catalog-payload-parity-run-01\\stdout.bin",
+    "sha256": "99eb818865cbe7a445128790ecb3ccad42c2e78581cfc9625850f2de794b3c06",
+    "bytes": 1463,
+    "text": "{\n  \"status\": \"PASS_CANONICAL_HEADER_REPAIR_WITH_APPLIED_INPUT_BINDINGS\",\n  \"checks\": {\n    \"targetSourceHashMatchesCleanLf\": true,\n    \"targetCoverage22\": true,\n    \"targetCatalogRowsCurrentCanonical\": true,\n    \"targetRowsMatchPackage\": true,\n    \"nonTarget13010DeepParity\": true,\n    \"allDecodedRecordsCanonical\": true,\n    \"indexVersionOnlyDecodedHeaderDrift\": true,\n    \"packingColumnDictionaryParity\": true,\n    \"identityTarget22AndNonTargetParity\": true,\n    \"metadataTarget22AndNonTargetParity\": true,\n    \"manifestExpectedThreeInputDiffs\": true,\n    \"manifestOnlyAllowedTopLevelDiffs\": true,\n    \"mainManifestBindsCurrentInputs\": true,\n    \"candidateManifestBindsCandidateInputs\": true,\n    \"currentAndCandidateChangedInputHashesBound\": true\n  },\n  \"decodedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"manifestTopLevelDifferences\": [\n    \"generatedFromCatalogIndexVersion\",\n    \"projectionVersion\",\n    \"files\"\n  ],\n  \"manifestDiffPaths\": [\n    \"data/archive2-catalog.json\",\n    \"data/question_identity_map.json\",\n    \"data/question_metadata.json\"\n  ],\n  \"packedTopLevelDifferences\": [\n    \"indexVersion\"\n  ],\n  \"reportPath\": \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP-worktrees\\\\archive-2026-1mid-nine\\\\AP------\\\\archive\\\\analysis\\\\archive-2026-1mid-nine-20261008\\\\26_팔마고_1학기_중간_고3_미적분2\\\\registration-rebase-final\\\\catalog-payload-parity.final.json\",\n  \"reportSha256\": \"daf23eb1b76ed724c50e2427c1da2fe3366052c97334a3ab8150bfa762855cc1\"\n}\n"
+  },
+  "stderr": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-rebase-final\\catalog-payload-parity-run-01\\stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "text": ""
+  },
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\registration-rebase-final\\catalog-payload-parity.final.json",
+  "reportSha256": "daf23eb1b76ed724c50e2427c1da2fe3366052c97334a3ab8150bfa762855cc1"
+}

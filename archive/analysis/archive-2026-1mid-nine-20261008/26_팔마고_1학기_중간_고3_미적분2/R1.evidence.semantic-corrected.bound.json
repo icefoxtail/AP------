@@ -1,0 +1,4035 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "26_팔마고_1학기_중간_고3_미적분2",
+  "artifactSha": "da6c23b9bd477e3ac8e30072311352544d1fb4ff",
+  "artifactRawSha256": "be0d7907814b518e6abe0f103b4d0deefd9310d15ccbacbfe459b8ee7171beae",
+  "expectedHead": "51070f1e34d5d6f798432471f58fdef5d06764ac",
+  "assignmentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.assignment.json",
+  "assignmentSha256": "66f8d8af92a7e8c17328d8ec4b1b29424d982973cdfce89fe8ad753a2fc97243",
+  "denominator": 22,
+  "qidOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 1,
+      "questionUid": null,
+      "contentHash": "21741f27779708d2519f09faf8e965ac7bfed4f3bddb9fa310984f3757cfd5c3",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "5be2a16cfdf46c86927061a882dab81bf75934fe16dca9db0f5f18a097282dcc",
+      "sourceIdentityFingerprint": "889f7df151e1f7ab6b3570e25f4312cca0b8fdc058b40495969f001b48a7c1f0",
+      "beforeSolutionHash": "8750552124856ad3b23423bf99710cd611f50a34733b17709f7f09f54e674c65",
+      "afterSolutionHash": "8750552124856ad3b23423bf99710cd611f50a34733b17709f7f09f54e674c65",
+      "independentAnswer": "2",
+      "initialFrozenIndependentAnswer": "2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "②",
+      "storedAnswerMeaning": "② (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "짧은 극한 조건과 계수 요구가 한 흐름으로 읽히며 choices 5개는 자동 배치에 둔다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "수열의 유한 극한에서 최고차항 계수를 먼저 소거하고 남은 계수를 비교한다.",
+          "decisiveSteps": [
+            "유한 극한이면 a=0",
+            "그 뒤 b/2=1"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "수열의 유한 극한에서 최고차항 계수를 먼저 소거하고 남은 계수를 비교한다.",
+          "decisiveStep": [
+            "유한 극한이면 a=0",
+            "그 뒤 b/2=1"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "짧은 극한 조건과 계수 요구가 한 흐름으로 읽히며 choices 5개는 자동 배치에 둔다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "수열의 유한 극한에서 최고차항 계수를 먼저 소거하고 남은 계수를 비교한다.",
+        "decisiveSteps": [
+          "유한 극한이면 a=0",
+          "그 뒤 b/2=1"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "수열의 유한 극한에서 최고차항 계수를 먼저 소거하고 남은 계수를 비교한다.",
+        "decisiveStep": [
+          "유한 극한이면 a=0",
+          "그 뒤 b/2=1"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다."
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "극한 조건의 최고차항 소거와 계수 비교가 즉시 정해지는 직접 적용."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다.",
+      "solutionSha256": "8750552124856ad3b23423bf99710cd611f50a34733b17709f7f09f54e674c65"
+    },
+    {
+      "qid": 2,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 2,
+      "questionUid": null,
+      "contentHash": "789b33ef1a563b72e0224291a75d63621b8a73783da48a3c39a690d0d028c4b3",
+      "choicesHash": "d8ea49a123fca80f5b92435ef940fe20dff43777a306c8e914cd77b7ca191ef7",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "a970cdea5162e66d7e0f9d0fc47961259f7135030a48d4e63e679bbdf03b6364",
+      "sourceIdentityFingerprint": "2b11e8c83bf20d875641e3866ceab20e99f260ca4b661979ad594f2e4147ab29",
+      "beforeSolutionHash": "9a84c309b72f2c9a796bb25293490bb8dc99bdae6fcfbb206ace80c4e0f7cfee",
+      "afterSolutionHash": "9a84c309b72f2c9a796bb25293490bb8dc99bdae6fcfbb206ace80c4e0f7cfee",
+      "independentAnswer": "1/5",
+      "initialFrozenIndependentAnswer": "1/5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "①",
+      "storedAnswerMeaning": "① (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "급수 식이 발문과 분리되어 있고 선택지는 짧아 기본 grid가 적절하다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "첫항과 공비를 확인해 무한등비급수 합 공식을 적용한다.",
+          "decisiveSteps": [
+            "공비 -1/4의 절댓값은 1보다 작다",
+            "등비급수 합은 1/5"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "첫항과 공비를 확인해 무한등비급수 합 공식을 적용한다.",
+          "decisiveStep": [
+            "공비 -1/4의 절댓값은 1보다 작다",
+            "등비급수 합은 1/5"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING).",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "급수 식이 발문과 분리되어 있고 선택지는 짧아 기본 grid가 적절하다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "첫항과 공비를 확인해 무한등비급수 합 공식을 적용한다.",
+        "decisiveSteps": [
+          "공비 -1/4의 절댓값은 1보다 작다",
+          "등비급수 합은 1/5"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "첫항과 공비를 확인해 무한등비급수 합 공식을 적용한다.",
+        "decisiveStep": [
+          "공비 -1/4의 절댓값은 1보다 작다",
+          "등비급수 합은 1/5"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING).",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING)."
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "무한등비급수의 합 공식에 첫항·공비를 바로 대입."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnit": "급수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnit": "급수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING).",
+      "solutionSha256": "9a84c309b72f2c9a796bb25293490bb8dc99bdae6fcfbb206ace80c4e0f7cfee"
+    },
+    {
+      "qid": 3,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 3,
+      "questionUid": null,
+      "contentHash": "87233adfe8548b1de6859da4741eeea10ee37d003676f9e95498c17c234e18cc",
+      "choicesHash": "4abd5f170c16dbc51bb20eb3df951152f2acd16f104a01ad8d7becfa94de4d15",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "777cbaa4cd6226734ac1946e484e86f6f9c045b8cfff74f37694a33de706febd",
+      "sourceIdentityFingerprint": "c42af47762d1b17274e406eef08accee84682ec3c50fa363677fc762540852c4",
+      "beforeSolutionHash": "992943a88292e422d7118ec68079e186b4801fb4efa06fa197e7d5822203104c",
+      "afterSolutionHash": "992943a88292e422d7118ec68079e186b4801fb4efa06fa197e7d5822203104c",
+      "independentAnswer": "4/3",
+      "initialFrozenIndependentAnswer": "4/3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "④",
+      "storedAnswerMeaning": "④ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Assigned ACTIVE derivative-definition/limit-reduction projection; bucket reduced to direct bucket 1 after source method review.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "지수 극한 한 식과 요구값으로 구성되어 별도 개행이나 layout override가 필요 없다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "e^{3x}-1의 기본 극한으로 환원한다.",
+          "decisiveSteps": [
+            "3x/(e^{3x}-1)로 정규화",
+            "기본 극한 1을 적용"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "e^{3x}-1의 기본 극한으로 환원한다.",
+          "decisiveStep": [
+            "3x/(e^{3x}-1)로 정규화",
+            "기본 극한 1을 적용"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "지수 극한 한 식과 요구값으로 구성되어 별도 개행이나 layout override가 필요 없다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "e^{3x}-1의 기본 극한으로 환원한다.",
+        "decisiveSteps": [
+          "3x/(e^{3x}-1)로 정규화",
+          "기본 극한 1을 적용"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "e^{3x}-1의 기본 극한으로 환원한다.",
+        "decisiveStep": [
+          "3x/(e^{3x}-1)로 정규화",
+          "기본 극한 1을 적용"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "기본 지수 극한에 상수배를 정리하는 한 단계 직접 적용."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "standardUnit": "지수함수와 로그함수의 미분",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "subUnit": "지수함수와 로그함수의 미분",
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "992943a88292e422d7118ec68079e186b4801fb4efa06fa197e7d5822203104c"
+    },
+    {
+      "qid": 4,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 4,
+      "questionUid": null,
+      "contentHash": "5422c968cc189593745db327d3fc62e072bb9f273db0b5c376f3247870d1329f",
+      "choicesHash": "119a6d81cf8b830697ba7ba1e4042113a222c8a082c3619f03f917d8c647f06f",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "c7fe4c9012c8aefa891c84c7d4ef94d4cca2046baac44428cf5624282cf896b5",
+      "sourceIdentityFingerprint": "dd5ce4a9e1d85183195d6098807c568d1fe86b6bb4be1058593a801bc374fa9b",
+      "beforeSolutionHash": "270bbc82574b1737cf2772125abfbc73b48703b0f82472b811fe7e933c383194",
+      "afterSolutionHash": "270bbc82574b1737cf2772125abfbc73b48703b0f82472b811fe7e933c383194",
+      "independentAnswer": "10",
+      "initialFrozenIndependentAnswer": "10",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "⑤",
+      "storedAnswerMeaning": "⑤ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Bucket set to direct application bucket 1 after quotient-rule method review.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "유리함수와 도함수 계수 질문이 연결되어 있고 완결 수식을 쪼갤 지점이 없다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "몫의 미분법으로 분자 다항식을 전개해 계수 합을 읽는다.",
+          "decisiveSteps": [
+            "몫의 미분 분자 전개",
+            "계수 2,2,6의 합"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "몫의 미분법으로 분자 다항식을 전개해 계수 합을 읽는다.",
+          "decisiveStep": [
+            "몫의 미분 분자 전개",
+            "계수 2,2,6의 합"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "유리함수와 도함수 계수 질문이 연결되어 있고 완결 수식을 쪼갤 지점이 없다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "몫의 미분법으로 분자 다항식을 전개해 계수 합을 읽는다.",
+        "decisiveSteps": [
+          "몫의 미분 분자 전개",
+          "계수 2,2,6의 합"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "몫의 미분법으로 분자 다항식을 전개해 계수 합을 읽는다.",
+        "decisiveStep": [
+          "몫의 미분 분자 전개",
+          "계수 2,2,6의 합"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "몫의 미분법을 적용해 계수 세 개를 읽는 직선적 계산."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnit": "여러 가지 미분법",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "subUnit": "여러 가지 미분법",
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "270bbc82574b1737cf2772125abfbc73b48703b0f82472b811fe7e933c383194"
+    },
+    {
+      "qid": 5,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 5,
+      "questionUid": null,
+      "contentHash": "09e34a5c30027a7a2cc28c401ccebf08882053c1c6b118b74096c814b36dc43f",
+      "choicesHash": "f0aa134dcc6a989dccd93df75316c236a07fca04f5369c91dca4aeef464d3d2f",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "b1f5d09f08a03f21b74a15bc9061bdfa3f01be6ff0b51b34fe809294ec88a0e4",
+      "sourceIdentityFingerprint": "9cb2213e13ecb662a17ac3f8b0baa8e0464e88b75958178e687a0d24b4476173",
+      "beforeSolutionHash": "5029a0ce70ef6114b8b469517d21dd605f2a16f027eccc888e38bcb7fc8e3f0c",
+      "afterSolutionHash": "5029a0ce70ef6114b8b469517d21dd605f2a16f027eccc888e38bcb7fc8e3f0c",
+      "independentAnswer": "1/6",
+      "initialFrozenIndependentAnswer": "1/6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "①",
+      "storedAnswerMeaning": "① (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Bucket set to direct application bucket 1 after normalization review.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "주어진 수열 극한과 단서 조건이 구분되어 있으며 마지막 극한식도 독립 블록이다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "주어진 극한에서 a_n의 수렴값을 구한 뒤 n차 항으로 나눠 목표식을 극한 처리한다.",
+          "decisiveSteps": [
+            "a_n→3",
+            "n으로 나눈 식의 유한 항만 남김"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "주어진 극한에서 a_n의 수렴값을 구한 뒤 n차 항으로 나눠 목표식을 극한 처리한다.",
+          "decisiveStep": [
+            "a_n→3",
+            "n으로 나눈 식의 유한 항만 남김"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "주어진 수열 극한과 단서 조건이 구분되어 있으며 마지막 극한식도 독립 블록이다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "주어진 극한에서 a_n의 수렴값을 구한 뒤 n차 항으로 나눠 목표식을 극한 처리한다.",
+        "decisiveSteps": [
+          "a_n→3",
+          "n으로 나눈 식의 유한 항만 남김"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "주어진 극한에서 a_n의 수렴값을 구한 뒤 n차 항으로 나눠 목표식을 극한 처리한다.",
+        "decisiveStep": [
+          "a_n→3",
+          "n으로 나눈 식의 유한 항만 남김"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "수열 극한에서 a_n을 먼저 구한 뒤 목표식을 정규화하는 직접 절차."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다.",
+      "solutionSha256": "5029a0ce70ef6114b8b469517d21dd605f2a16f027eccc888e38bcb7fc8e3f0c"
+    },
+    {
+      "qid": 6,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 6,
+      "questionUid": null,
+      "contentHash": "8a69e50816e36ce1e98cbd4f33e36061f3ba2faeaa3afd2854c12304bc81faa2",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "58621d106b4cf2b16d05bfb77bd66a934e4f0de802cb371fe5df83f992be1fbe",
+      "sourceIdentityFingerprint": "1bac3b2b7a90056f57643a4b4893255b6d9c74c00b8d43c32c692650b971ca69",
+      "beforeSolutionHash": "1861a019068762e35ff9c4e33b2feaf1d14e3a2d44f381ff66e7b3ed8e30bb57",
+      "afterSolutionHash": "1861a019068762e35ff9c4e33b2feaf1d14e3a2d44f381ff66e7b3ed8e30bb57",
+      "independentAnswer": "3",
+      "initialFrozenIndependentAnswer": "3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "③",
+      "storedAnswerMeaning": "③ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Category/tags corrected from sequence limit to series, matching actual infinite-series source and H15-CALC-02.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "등차수열 조건과 급수 식이 연속적으로 제시되어 있어 grid에서 의미 단위가 유지된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "급수 항의 영점 조건으로 p를 정하고 이후 항을 망원합으로 바꾼다.",
+          "decisiveSteps": [
+            "일반항→0에서 p=2",
+            "나머지는 1/[n(n+1)]로 망원합"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "급수 항의 영점 조건으로 p를 정하고 이후 항을 망원합으로 바꾼다.",
+          "decisiveStep": [
+            "일반항→0에서 p=2",
+            "나머지는 1/[n(n+1)]로 망원합"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "등차수열 조건과 급수 식이 연속적으로 제시되어 있어 grid에서 의미 단위가 유지된다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "급수 항의 영점 조건으로 p를 정하고 이후 항을 망원합으로 바꾼다.",
+        "decisiveSteps": [
+          "일반항→0에서 p=2",
+          "나머지는 1/[n(n+1)]로 망원합"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "급수 항의 영점 조건으로 p를 정하고 이후 항을 망원합으로 바꾼다.",
+        "decisiveStep": [
+          "일반항→0에서 p=2",
+          "나머지는 1/[n(n+1)]로 망원합"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "급수 항의 필요조건으로 p를 찾고 망원합을 계산해야 하므로 방향 선택이 한 번 필요."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnit": "급수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnit": "급수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다.",
+      "solutionSha256": "1861a019068762e35ff9c4e33b2feaf1d14e3a2d44f381ff66e7b3ed8e30bb57"
+    },
+    {
+      "qid": 7,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 7,
+      "questionUid": null,
+      "contentHash": "c0f773c8a24ec26872352b5966ab47f66d635e65484a67786185848844415a3a",
+      "choicesHash": "c7b879e8930a18c331e7fc93e11603d77f63dee2caded2ac22ee7443dd7cd7d1",
+      "imageRefHash": "8ad056eadded12cfac115bc4bfc111eef23d3eb5788ff9c776e6df9572af175e",
+      "sourceFingerprint": "2a50d2745a5682a719f155315b9def681491a6820b4fb61ec082c795c5c4d196",
+      "sourceIdentityFingerprint": "6bd8d93c4dc6baa44fa1836c0c5692c257db92ac1f437d464cf75fbf4acf30bb",
+      "beforeSolutionHash": "5ceeaf45f1f09bffdd2d94bc860250c05380ab8c50da5895d51acc7f48eef24e",
+      "afterSolutionHash": "5ceeaf45f1f09bffdd2d94bc860250c05380ab8c50da5895d51acc7f48eef24e",
+      "independentAnswer": "(4sqrt(3)-3)/10",
+      "initialFrozenIndependentAnswer": "(-3+4sqrt(3))/10",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "⑤",
+      "storedAnswerMeaning": "⑤ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "직사각형 조건 뒤 그림이 바로 붙고 점·각 라벨이 텍스트의 점 이름과 대응한다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "그림의 선 방향을 단위벡터로 나타내고 내적으로 각의 코사인을 계산한다.",
+          "decisiveSteps": [
+            "PE 방향 단위벡터",
+            "PC 방향 단위벡터와 내적"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "Rectangle line directions are converted to unit vectors; their dot product gives the cosine of angle EPC.",
+          "decisiveStep": "u_PE=(√3/2,1/2), u_PC=(4/5,−3/5); dot product=(4√3−3)/10.",
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true,
+          "rpmPrimaryPath": "2015/H15-GV-06/L2-2.2/L3-2.2.2/L4-2.2.2.2",
+          "rpmL3": "L3-2.2.2 내적",
+          "rpmL4": "L4-2.2.2.2 두 벡터의 각",
+          "semanticSourceScope": "2015 High 2 Geometry prerequisite",
+          "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE"
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q7.png",
+              "sha256": "d545e443dad7e5277473e7e6e80e14203caf256b5dd07f5b16b318fc2d1a2b80",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "직사각형 AB=3, BC=4, E on CD, ∠EBC=π/6, P=AC∩BE labels are visible and agree with prompt."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "직사각형 조건 뒤 그림이 바로 붙고 점·각 라벨이 텍스트의 점 이름과 대응한다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "그림의 선 방향을 단위벡터로 나타내고 내적으로 각의 코사인을 계산한다.",
+        "decisiveSteps": [
+          "PE 방향 단위벡터",
+          "PC 방향 단위벡터와 내적"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "Rectangle line directions are converted to unit vectors; their dot product gives the cosine of angle EPC.",
+        "decisiveStep": "u_PE=(√3/2,1/2), u_PC=(4/5,−3/5); dot product=(4√3−3)/10.",
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "실제 방법은 기본 기하의 방향벡터/내적이다. H15-CALC-04 삼각함수 미분으로 강제하지 않으며 동일 학년 타과목을 prerequisite로 자동 연결할 binding도 확인되지 않았다. META_ONLY_UNRESOLVED; item mathematical answer/layout remains reviewable; non-auto use.",
+        "rpmPrimaryPath": "2015/H15-GV-06/L2-2.2/L3-2.2.2/L4-2.2.2.2",
+        "rpmL3": "L3-2.2.2 내적",
+        "rpmL4": "L4-2.2.2.2 두 벡터의 각",
+        "semanticSourceScope": "2015 High 2 Geometry prerequisite",
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE"
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "도형에서 선 방향을 재구성한 뒤 단위벡터 내적으로 옮기는 표준 변환."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "standardUnit": "삼각함수의 미분",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "subUnit": "삼각함수의 미분",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime.",
+      "solutionSha256": "5ceeaf45f1f09bffdd2d94bc860250c05380ab8c50da5895d51acc7f48eef24e"
+    },
+    {
+      "qid": 8,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 8,
+      "questionUid": null,
+      "contentHash": "eb3977992cb182f2b739fef512a9fa19a311632f2738d9d3a440546f1f29b122",
+      "choicesHash": "8e4cc0b0a92eb44a544415fb1771a631f290f7c92c86e7938959a568b37f6300",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "f1f51b9fd7e3f49ebe18b5863f4cd35509f6ad15ce0d1832aba3538e607b7aa5",
+      "sourceIdentityFingerprint": "65e38375abfb86d109d2bb0989dda4ed3f3db912a65185c03290fcd67ec5a435",
+      "beforeSolutionHash": "1daff91232cf069f7743524dcaf809b4ebba2eb185f81f123fb568772f317535",
+      "afterSolutionHash": "1daff91232cf069f7743524dcaf809b4ebba2eb185f81f123fb568772f317535",
+      "independentAnswer": "3/4",
+      "initialFrozenIndependentAnswer": "3/4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "③",
+      "storedAnswerMeaning": "③ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "극한으로 정의된 함수와 세 대입점이 한 문장 안에서 구분되어 choices와 함께 읽힌다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "x의 크기별로 점별 수열 극한을 계산해 세 값을 더한다.",
+          "decisiveSteps": [
+            "|x|<1, x=1, x>1 구분",
+            "각 함수값 합산"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "x의 크기별로 점별 수열 극한을 계산해 세 값을 더한다.",
+          "decisiveStep": [
+            "|x|<1, x=1, x>1 구분",
+            "각 함수값 합산"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "극한으로 정의된 함수와 세 대입점이 한 문장 안에서 구분되어 choices와 함께 읽힌다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "x의 크기별로 점별 수열 극한을 계산해 세 값을 더한다.",
+        "decisiveSteps": [
+          "|x|<1, x=1, x>1 구분",
+          "각 함수값 합산"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "x의 크기별로 점별 수열 극한을 계산해 세 값을 더한다.",
+        "decisiveStep": [
+          "|x|<1, x=1, x>1 구분",
+          "각 함수값 합산"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "입력 x별 수렴 regime을 분리하고 합산해야 해 조건 관계 판정이 필요."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다.",
+      "solutionSha256": "1daff91232cf069f7743524dcaf809b4ebba2eb185f81f123fb568772f317535"
+    },
+    {
+      "qid": 9,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 9,
+      "questionUid": null,
+      "contentHash": "9964f8ce8d086e1e512d3d83aff7ce9ae3a00df189a1bce1b99b79e6164c66ad",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "0a7d5cf640851731ea87d49866a70d74e87de0c2e34049326baa9701d489595d",
+      "sourceIdentityFingerprint": "ae67533b7d92b45652ce598cc92d2ad9ad301979ecd5b7ea79a3d2e1a018fd08",
+      "beforeSolutionHash": "98d608671f56e0f82fd9faa45ec2fb6a86db57b0f47a58ba7d5f5f215a0f1268",
+      "afterSolutionHash": "98d608671f56e0f82fd9faa45ec2fb6a86db57b0f47a58ba7d5f5f215a0f1268",
+      "independentAnswer": "2",
+      "initialFrozenIndependentAnswer": "2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "②",
+      "storedAnswerMeaning": "② (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "급수 수렴 조건 뒤 목표 극한이 별도 수식으로 제시되어 질문 경계가 보인다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "급수 수렴의 필요조건으로 a_n/n²의 극한을 얻고 목표 비에 대입한다.",
+          "decisiveSteps": [
+            "급수의 일반항→0",
+            "a_n/n²→5 후 비의 극한"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "급수 수렴의 필요조건으로 a_n/n²의 극한을 얻고 목표 비에 대입한다.",
+          "decisiveStep": [
+            "급수의 일반항→0",
+            "a_n/n²→5 후 비의 극한"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "급수 수렴 조건 뒤 목표 극한이 별도 수식으로 제시되어 질문 경계가 보인다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "급수 수렴의 필요조건으로 a_n/n²의 극한을 얻고 목표 비에 대입한다.",
+        "decisiveSteps": [
+          "급수의 일반항→0",
+          "a_n/n²→5 후 비의 극한"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "급수 수렴의 필요조건으로 a_n/n²의 극한을 얻고 목표 비에 대입한다.",
+        "decisiveStep": [
+          "급수의 일반항→0",
+          "a_n/n²→5 후 비의 극한"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "급수의 필요조건을 목표 유리식의 점근비로 연결한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnit": "급수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnit": "급수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다.",
+      "solutionSha256": "98d608671f56e0f82fd9faa45ec2fb6a86db57b0f47a58ba7d5f5f215a0f1268"
+    },
+    {
+      "qid": 10,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 10,
+      "questionUid": null,
+      "contentHash": "0bb3ad573fdf3e4fec1d189ddc22742273b1b2ff77bc0c26d29d8050469ac113",
+      "choicesHash": "dcd12f98bf3b43f75cf32e4097e6e73a3e7cf4bd9e9eccec4502e489be0941a2",
+      "imageRefHash": "839ffe1b78813a30bb308a22c89cb4b5984ff775718b839a9d9fc2f39edfc22c",
+      "sourceFingerprint": "1f596bc019646909c2b35083a7fccf2ce0c7795ccc681bdcd4eeaa1f328ca557",
+      "sourceIdentityFingerprint": "de58a0f7895b09eb548b1c451a3b2c1970b9a80d4665670b7c11acff35c1d927",
+      "beforeSolutionHash": "34980b79bb26892fe40102395bf45f94edd2a36231d1012e31d7d734786afc3d",
+      "afterSolutionHash": "34980b79bb26892fe40102395bf45f94edd2a36231d1012e31d7d734786afc3d",
+      "independentAnswer": "3/4",
+      "initialFrozenIndependentAnswer": "3/4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "⑤",
+      "storedAnswerMeaning": "⑤ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Bucket set to standard bucket 2 for two direct geometric coordinate sums.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "이동 규칙 설명과 좌표 목표가 명확하고 참조 그림이 P1→P2→P3 진행을 보완한다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "수평/수직 길이 증가량을 각각 등비급수로 합해 좌표 차를 계산한다.",
+          "decisiveSteps": [
+            "수평/수직 증가량을 분리",
+            "두 등비합의 차"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "수평/수직 길이 증가량을 각각 등비급수로 합해 좌표 차를 계산한다.",
+          "decisiveStep": [
+            "수평/수직 증가량을 분리",
+            "두 등비합의 차"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q10.png",
+              "sha256": "fea439fac925f22d541eb9713671c05d136489f7ccd177641adc7f62b2e6f257",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "P1 starts on positive x axis; diagram depicts vertical P1→P2 then horizontal P2→P3 consistent with alternating rule."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "이동 규칙 설명과 좌표 목표가 명확하고 참조 그림이 P1→P2→P3 진행을 보완한다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "수평/수직 길이 증가량을 각각 등비급수로 합해 좌표 차를 계산한다.",
+        "decisiveSteps": [
+          "수평/수직 증가량을 분리",
+          "두 등비합의 차"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "수평/수직 길이 증가량을 각각 등비급수로 합해 좌표 차를 계산한다.",
+        "decisiveStep": [
+          "수평/수직 증가량을 분리",
+          "두 등비합의 차"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "교대 이동에서 두 좌표 수열을 나눠 각각 등비합으로 처리한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다.",
+      "solutionSha256": "34980b79bb26892fe40102395bf45f94edd2a36231d1012e31d7d734786afc3d"
+    },
+    {
+      "qid": 11,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 11,
+      "questionUid": null,
+      "contentHash": "26a462ef1562c2f1001115250bb3a0bc40c12b28ca058c79d4a8539ea6134d70",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "3dff25b29248b8175ea5b6b85a6f83318b36db278c79c3cda2e8112e2e3d4047",
+      "sourceIdentityFingerprint": "8887c5cf24bdbb951c613e8503e2c74aeb0a2d62db4cb03517dc59ba2bb28385",
+      "beforeSolutionHash": "5b69ea017cfd26c30c302c72c18fd7f279b2a6ab834bb5e205c07c93fd0a88f2",
+      "afterSolutionHash": "5b69ea017cfd26c30c302c72c18fd7f279b2a6ab834bb5e205c07c93fd0a88f2",
+      "independentAnswer": "4",
+      "initialFrozenIndependentAnswer": "4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "④",
+      "storedAnswerMeaning": "④ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Reclassified PT/TPL to differentiability point condition; bucket set to direct bucket 1.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "구간별 함수가 완결 cases 수식으로 제시되어 inline 수식 분할이 없다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "연속성으로 b를 정하고 좌우 미분계수 일치로 a를 정한다.",
+          "decisiveSteps": [
+            "f(0)=b=2",
+            "양쪽 미분계수 a와 b 일치"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "연속성으로 b를 정하고 좌우 미분계수 일치로 a를 정한다.",
+          "decisiveStep": [
+            "f(0)=b=2",
+            "양쪽 미분계수 a와 b 일치"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "구간별 함수가 완결 cases 수식으로 제시되어 inline 수식 분할이 없다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "연속성으로 b를 정하고 좌우 미분계수 일치로 a를 정한다.",
+        "decisiveSteps": [
+          "f(0)=b=2",
+          "양쪽 미분계수 a와 b 일치"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "연속성으로 b를 정하고 좌우 미분계수 일치로 a를 정한다.",
+        "decisiveStep": [
+          "f(0)=b=2",
+          "양쪽 미분계수 a와 b 일치"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "연속과 좌우 미분 가능 조건을 함께 사용하나 접근은 직접 결정된다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnit": "여러 가지 미분법",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "subUnit": "여러 가지 미분법",
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "5b69ea017cfd26c30c302c72c18fd7f279b2a6ab834bb5e205c07c93fd0a88f2"
+    },
+    {
+      "qid": 12,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 12,
+      "questionUid": null,
+      "contentHash": "b54a658918aa054303965c453f8e7f77f1f896c8bd73cca2f5b985b2fac64245",
+      "choicesHash": "1da35ca8bb317762d9de79d2ab23a6c86b8d3fb800041fdd1c5dea18984e699c",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "c49ac91012cd3cf1df28c25d4e988b22a22ee1133cfa6ade7fb08b4523b26f17",
+      "sourceIdentityFingerprint": "9b9d0e8915e45fd7a4fa5ce29a5c4f0f0a1be34f6531f13d9914b26d849f43a9",
+      "beforeSolutionHash": "8a4f3d3171cd21ff7f6b0b8d4f691f158030a0a26b9683cd5b06ce35f871540f",
+      "afterSolutionHash": "8a4f3d3171cd21ff7f6b0b8d4f691f158030a0a26b9683cd5b06ce35f871540f",
+      "independentAnswer": "9",
+      "initialFrozenIndependentAnswer": "9",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "①",
+      "storedAnswerMeaning": "① (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Bucket set to standard bucket 2 for direct logarithmic derivative evaluation.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "로그함수 정의와 f'(0) 조건, n 요구가 한 구조로 읽힌다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "로그의 미분을 합성함수에 적용하고 x=0에서 산술합을 계산한다.",
+          "decisiveSteps": [
+            "g(0),g'(0) 계산",
+            "f'(0)=(n+1)/2"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "로그의 미분을 합성함수에 적용하고 x=0에서 산술합을 계산한다.",
+          "decisiveStep": [
+            "g(0),g'(0) 계산",
+            "f'(0)=(n+1)/2"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "로그함수 정의와 f'(0) 조건, n 요구가 한 구조로 읽힌다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "로그의 미분을 합성함수에 적용하고 x=0에서 산술합을 계산한다.",
+        "decisiveSteps": [
+          "g(0),g'(0) 계산",
+          "f'(0)=(n+1)/2"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "로그의 미분을 합성함수에 적용하고 x=0에서 산술합을 계산한다.",
+        "decisiveStep": [
+          "g(0),g'(0) 계산",
+          "f'(0)=(n+1)/2"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "로그 합성 미분과 정수 n 산술합을 연결한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "standardUnit": "지수함수와 로그함수의 미분",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "subUnit": "지수함수와 로그함수의 미분",
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "8a4f3d3171cd21ff7f6b0b8d4f691f158030a0a26b9683cd5b06ce35f871540f"
+    },
+    {
+      "qid": 13,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 13,
+      "questionUid": null,
+      "contentHash": "7aebfe279d51bc071a4cc433fac299b6ba4fd26e587212a438246d76d35bf4e6",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "da88e57c9dd55ae4f47d18b6e80ade8acfbc2f1e3ee66877a6864de5d78bda79",
+      "sourceIdentityFingerprint": "18d87e2e8514c9a78f969d0e481dc3a3d8c03e6a72e18af8123f64a17b0837d0",
+      "beforeSolutionHash": "c423fc0d0fd149ab7173d41b4045eed7b02d5ebd58c018bfee7980c232290615",
+      "afterSolutionHash": "c423fc0d0fd149ab7173d41b4045eed7b02d5ebd58c018bfee7980c232290615",
+      "independentAnswer": "3",
+      "initialFrozenIndependentAnswer": "3",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "③",
+      "storedAnswerMeaning": "③ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Bucket set to direct bucket 1 for direct partial-sum difference.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "부분합 공식 조건 뒤 항의 극한을 묻는 구조가 분리되어 있다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "홀수 합으로 S_n을 구하고 차분해 a_n의 최고차항을 얻는다.",
+          "decisiveSteps": [
+            "S_n=n³",
+            "S_n−S_{n−1}의 최고차항"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "홀수 합으로 S_n을 구하고 차분해 a_n의 최고차항을 얻는다.",
+          "decisiveStep": [
+            "S_n=n³",
+            "S_n−S_{n−1}의 최고차항"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "부분합 공식 조건 뒤 항의 극한을 묻는 구조가 분리되어 있다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "홀수 합으로 S_n을 구하고 차분해 a_n의 최고차항을 얻는다.",
+        "decisiveSteps": [
+          "S_n=n³",
+          "S_n−S_{n−1}의 최고차항"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "홀수 합으로 S_n을 구하고 차분해 a_n의 최고차항을 얻는다.",
+        "decisiveStep": [
+          "S_n=n³",
+          "S_n−S_{n−1}의 최고차항"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "하",
+        "finalBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "홀수 합 공식과 부분합 차분을 연결하는 직접 추론."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다.",
+      "solutionSha256": "c423fc0d0fd149ab7173d41b4045eed7b02d5ebd58c018bfee7980c232290615"
+    },
+    {
+      "qid": 14,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 14,
+      "questionUid": null,
+      "contentHash": "417fb7a3c341aa4561eb1105b20665029514238566a2ff4f4b9212bc07e4fd1a",
+      "choicesHash": "ebb443eccdb14874856e0eb5c7b00fa4c968eb3566927473c4dc87d7b7b4719a",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "0c51975baa73693f0384aa5ec06babe8dc68bafb767ad952375e12f698d4a114",
+      "sourceIdentityFingerprint": "547e9394a8622b1a2d9c69637bdf8fc263f142a8b7d8bdd9e14a525c7220811a",
+      "beforeSolutionHash": "6b143d71c6d2ee0f336b2386d374e780b2e60424d7060e4420166038697ee269",
+      "afterSolutionHash": "6b143d71c6d2ee0f336b2386d374e780b2e60424d7060e4420166038697ee269",
+      "independentAnswer": "6",
+      "initialFrozenIndependentAnswer": "6",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "②",
+      "storedAnswerMeaning": "② (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "(가)/(나) 조건과 최종 목표가 분리되어 조건 경계가 명확하다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "부등식으로 a_n/n을 고정하고 분자를 유리화해 b_n/n을 구한다.",
+          "decisiveSteps": [
+            "|a_n−3n|<1",
+            "유리화 뒤 b_n/n 결정"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "부등식으로 a_n/n을 고정하고 분자를 유리화해 b_n/n을 구한다.",
+          "decisiveStep": [
+            "|a_n−3n|<1",
+            "유리화 뒤 b_n/n 결정"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "(가)/(나) 조건과 최종 목표가 분리되어 조건 경계가 명확하다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "부등식으로 a_n/n을 고정하고 분자를 유리화해 b_n/n을 구한다.",
+        "decisiveSteps": [
+          "|a_n−3n|<1",
+          "유리화 뒤 b_n/n 결정"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "부등식으로 a_n/n을 고정하고 분자를 유리화해 b_n/n을 구한다.",
+        "decisiveStep": [
+          "|a_n−3n|<1",
+          "유리화 뒤 b_n/n 결정"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "수열의 거리 제한, 근호 유리화, b_n 추론의 연쇄 조건을 처리한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다.",
+      "solutionSha256": "6b143d71c6d2ee0f336b2386d374e780b2e60424d7060e4420166038697ee269"
+    },
+    {
+      "qid": 15,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 15,
+      "questionUid": null,
+      "contentHash": "e976d162dd16cdacad18e2ec9f01f412f15f94d11dca8059dc4d67eaee6717a0",
+      "choicesHash": "3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "f83db33b8122b6afbb843c9ec80ad6bfe159e41f149632805e5f745fa2c40e6e",
+      "sourceIdentityFingerprint": "06ebc73e60f3f0415c20a7012b6ebb28e27167bf6d3321ae9a1443e77ca049b0",
+      "beforeSolutionHash": "fbb77611ceb3e1536d4562b85a1785140382ffe751684303692e2d8018c33647",
+      "afterSolutionHash": "fbb77611ceb3e1536d4562b85a1785140382ffe751684303692e2d8018c33647",
+      "independentAnswer": "2",
+      "initialFrozenIndependentAnswer": "2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "②",
+      "storedAnswerMeaning": "② (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "홀수항·짝수항 규칙이 구분되고 목표 급수도 별도 문단이다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "홀수항 등비합과 짝수항 누적합 관계로 목표 급수를 홀수항 합으로 환원한다.",
+          "decisiveSteps": [
+            "a_{2n+2}=2a_{2n}+a_{2n+1}",
+            "나머지 홀수 급수는 2"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "홀수항 등비합과 짝수항 누적합 관계로 목표 급수를 홀수항 합으로 환원한다.",
+          "decisiveStep": [
+            "a_{2n+2}=2a_{2n}+a_{2n+1}",
+            "나머지 홀수 급수는 2"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "홀수항·짝수항 규칙이 구분되고 목표 급수도 별도 문단이다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "홀수항 등비합과 짝수항 누적합 관계로 목표 급수를 홀수항 합으로 환원한다.",
+        "decisiveSteps": [
+          "a_{2n+2}=2a_{2n}+a_{2n+1}",
+          "나머지 홀수 급수는 2"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "홀수항 등비합과 짝수항 누적합 관계로 목표 급수를 홀수항 합으로 환원한다.",
+        "decisiveStep": [
+          "a_{2n+2}=2a_{2n}+a_{2n+1}",
+          "나머지 홀수 급수는 2"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "중",
+        "finalBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "홀수/짝수 점화 조건을 재구성해 급수 항을 환원한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnit": "급수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnit": "급수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다.",
+      "solutionSha256": "fbb77611ceb3e1536d4562b85a1785140382ffe751684303692e2d8018c33647"
+    },
+    {
+      "qid": 16,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 16,
+      "questionUid": null,
+      "contentHash": "565aab581935e52810b0e0b05242619836a9a428843a841b3ca528707f4c68f9",
+      "choicesHash": "f40e21c0b8b4ea23f125cc8948a94c4ed09e2ae04df06e8414c94f8180b8dd9f",
+      "imageRefHash": "6fd55b4c8899faa04b3f29a3ee8395013f185bf527788ded32ef9413f4b6a8d1",
+      "sourceFingerprint": "7cb3edfd91fafe1092893ae27bdf11a004348506e12bc34bcd937c9522bb03ca",
+      "sourceIdentityFingerprint": "b34e646a5282e3b28a1cefb09aaa4beba3713f47b68927f429f3718533b410a9",
+      "beforeSolutionHash": "05d037016f5bb73bc8e3b0a5016039742a1ed11cf74b13b50c7872c6d042a4de",
+      "afterSolutionHash": "05d037016f5bb73bc8e3b0a5016039742a1ed11cf74b13b50c7872c6d042a4de",
+      "independentAnswer": "1/2",
+      "initialFrozenIndependentAnswer": "-1/2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "③",
+      "storedAnswerMeaning": "choice ③ equals +1/2",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "Original independent sign was corrected by same-stage adjudication; source choice ③ independently corresponds to +1/2.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Assigned active geometry-limit projection and adjudicated the independent sign error in a separate file; image and student input unchanged.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "기하 설정과 limit expression이 문단으로 나뉘고 그림에 A/B/P/Q/M 및 θ가 있다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "단위원 좌표에서 BM, OQ를 삼각함수로 나타내고 3차 근사를 취한다.",
+          "decisiveSteps": [
+            "BM=cosθ, OQ=cotθ",
+            "δ=θ−π/2의 3차항 부호"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "단위원 좌표에서 BM, OQ를 삼각함수로 나타내고 3차 근사를 취한다.",
+          "decisiveStep": [
+            "BM=cosθ, OQ=cotθ",
+            "δ=θ−π/2의 3차항 부호"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q16.png",
+              "sha256": "de96084eca5e016166e5d444b26833b4d7d4b8ecbfe9cc4ff9acf8f79fb5a4b8",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "Unit circle, A/B endpoints, P, Q on AP/y-axis, midpoint M on BP, and θ at B agree with text."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "기하 설정과 limit expression이 문단으로 나뉘고 그림에 A/B/P/Q/M 및 θ가 있다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "단위원 좌표에서 BM, OQ를 삼각함수로 나타내고 3차 근사를 취한다.",
+        "decisiveSteps": [
+          "BM=cosθ, OQ=cotθ",
+          "δ=θ−π/2의 3차항 부호"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "단위원 좌표에서 BM, OQ를 삼각함수로 나타내고 3차 근사를 취한다.",
+        "decisiveStep": [
+          "BM=cosθ, OQ=cotθ",
+          "δ=θ−π/2의 3차항 부호"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "도형 좌표화 후 삼각함수의 3차 점근 항을 잡는 상위 변환이 필요."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "standardUnit": "삼각함수의 미분",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "subUnit": "삼각함수의 미분",
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "adjudicationRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.adjudication.json",
+        "sha256": "39f035a41832247ada21cbd978611b648210d65ae311e882e2685915ee24f4e9"
+      },
+      "solutionSha256": "05d037016f5bb73bc8e3b0a5016039742a1ed11cf74b13b50c7872c6d042a4de"
+    },
+    {
+      "qid": 17,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 17,
+      "questionUid": null,
+      "contentHash": "6e46faa7f3e394e9295675f646ca7bf7200deae18818c4005b68787097f3b4d7",
+      "choicesHash": "b5c147f1347f2c0f0b4339919f68f8b1abd21e6a1fb0ad59cbfd6fc5d0700d2a",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "f7c6fc6bde7683a610b1ef326c1bba4bb99903e7490049e3c6ca86786b4b3b73",
+      "sourceIdentityFingerprint": "ceefdc5889e9dd80aefbba179ff0b29879341ef4160345b8757c3ceedab7aa3c",
+      "beforeSolutionHash": "9cd1ef7055aac6fa2949b12e1275f5fcb13c9acaab21de67a3dc7d89fad712a0",
+      "afterSolutionHash": "9cd1ef7055aac6fa2949b12e1275f5fcb13c9acaab21de67a3dc7d89fad712a0",
+      "independentAnswer": "6sqrt(2)",
+      "initialFrozenIndependentAnswer": "6sqrt(2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "④",
+      "storedAnswerMeaning": "④ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Category/tags corrected to series and integrationPattern set to sequential; solution mapping remains geometric series.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "두 변환 규칙과 초기점이 구분되고 무한합 대상이 선명하다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "반사/수평교점 규칙을 반복해 홀수점 좌표의 비를 얻고 길이 급수를 합한다.",
+          "decisiveSteps": [
+            "odd point map (x,y)→(x/3,x)",
+            "거리항을 등비급수로 합"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "반사/수평교점 규칙을 반복해 홀수점 좌표의 비를 얻고 길이 급수를 합한다.",
+          "decisiveStep": [
+            "odd point map (x,y)→(x/3,x)",
+            "거리항을 등비급수로 합"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNMATERIALIZED",
+          "projectionReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "두 변환 규칙과 초기점이 구분되고 무한합 대상이 선명하다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "반사/수평교점 규칙을 반복해 홀수점 좌표의 비를 얻고 길이 급수를 합한다.",
+        "decisiveSteps": [
+          "odd point map (x,y)→(x/3,x)",
+          "거리항을 등비급수로 합"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "REVIEWED_WITH_EXPLICIT_META_ONLY_DEBT",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "반사/수평교점 규칙을 반복해 홀수점 좌표의 비를 얻고 길이 급수를 합한다.",
+        "decisiveStep": [
+          "odd point map (x,y)→(x/3,x)",
+          "거리항을 등비급수로 합"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다."
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "반복 affine 변환에서 비율을 추출하고 무한합으로 연결한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnit": "급수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnit": "급수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다.",
+      "solutionSha256": "9cd1ef7055aac6fa2949b12e1275f5fcb13c9acaab21de67a3dc7d89fad712a0"
+    },
+    {
+      "qid": 18,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 18,
+      "questionUid": null,
+      "contentHash": "82b8f61f9b79ec4253edb7c57135652ebeba099679d0981f2780dd9f878f2ff1",
+      "choicesHash": "58c59f22e471e1b61c03150ca38ba4912202b832f512a9c5a43e2d1251367c16",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "fa0ceb006d8bacdc7cea1f2bc33a3ec24d2f7f31ce4aa096d4ed6f48589dd283",
+      "sourceIdentityFingerprint": "f2581d16475c711fb9275e1fdc9598a6becadd3d6d79a419154b1890182b3290",
+      "beforeSolutionHash": "7d2288f701c95a89f57835eaee638eea30d0aa23e58f7005c3f4229e15366507",
+      "afterSolutionHash": "7d2288f701c95a89f57835eaee638eea30d0aa23e58f7005c3f4229e15366507",
+      "independentAnswer": "-8",
+      "initialFrozenIndependentAnswer": "-8",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "⑤",
+      "storedAnswerMeaning": "⑤ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Assigned active limit-parameter/zero-multiplicity projection.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "연속 함수 식과 f(1)=0 조건, 목표값이 별도 문단으로 구분된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "분모 영점의 차수에 맞춰 분자 상수항과 이차항을 소거한다.",
+          "decisiveSteps": [
+            "g(1)=0",
+            "g(1+t)의 이차항도 0"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "분모 영점의 차수에 맞춰 분자 상수항과 이차항을 소거한다.",
+          "decisiveStep": [
+            "g(1)=0",
+            "g(1+t)의 이차항도 0"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "연속 함수 식과 f(1)=0 조건, 목표값이 별도 문단으로 구분된다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "분모 영점의 차수에 맞춰 분자 상수항과 이차항을 소거한다.",
+        "decisiveSteps": [
+          "g(1)=0",
+          "g(1+t)의 이차항도 0"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "분모 영점의 차수에 맞춰 분자 상수항과 이차항을 소거한다.",
+        "decisiveStep": [
+          "g(1)=0",
+          "g(1+t)의 이차항도 0"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "연속성 조건이 요구하는 분자 소거 차수를 재구성해 계수를 결정한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "standardUnit": "지수함수와 로그함수의 미분",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "subUnit": "지수함수와 로그함수의 미분",
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+        "templateKey": "TPL_LIMIT_ZERO_MULTIPLICITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "7d2288f701c95a89f57835eaee638eea30d0aa23e58f7005c3f4229e15366507"
+    },
+    {
+      "qid": 19,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 19,
+      "questionUid": null,
+      "contentHash": "8467044383489525fa33cb494509bd82656487408cd2796f5fdac1b4b57b52b7",
+      "choicesHash": "2e5c867f013c502faa0a73861dae6daf792e011bb8d3159e1989214f6d60e42a",
+      "imageRefHash": "1399b72eb9a36640ab2ed721cc14131aa38a22e1a6e88d6e5abd7214da3ad8e8",
+      "sourceFingerprint": "bde4a7d790aa3e529fe289af631086c80e61df509b68b55d3dce0893f0aeb7ea",
+      "sourceIdentityFingerprint": "613e2bd003426146e75a9ebee6240012d0e409a7c4c960ab3a7f11d4cac77d42",
+      "beforeSolutionHash": "ba4a166a346caaa1df1d61bc0e72f303ff8a51078450042fc4e269c80b4d07bb",
+      "afterSolutionHash": "ba4a166a346caaa1df1d61bc0e72f303ff8a51078450042fc4e269c80b4d07bb",
+      "independentAnswer": "8/7",
+      "initialFrozenIndependentAnswer": "8/7",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "①",
+      "storedAnswerMeaning": "① (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Assigned active geometry-parameterized limit projection.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "사각형·중점·교점 정의와 조건 및 극한 목표가 문단 단위로 읽힌다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "이등변삼각형 좌표화, 중점·각 조건, DR/DC 조건을 차례로 식으로 바꿔 DC의 점근 전개를 한다.",
+          "decisiveSteps": [
+            "R은 AC 중점, DQ∥AB",
+            "비율 방정식의 바깥쪽 근 선택 후 상수항 전개"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "이등변삼각형 좌표화, 중점·각 조건, DR/DC 조건을 차례로 식으로 바꿔 DC의 점근 전개를 한다.",
+          "decisiveStep": [
+            "R은 AC 중점, DQ∥AB",
+            "비율 방정식의 바깥쪽 근 선택 후 상수항 전개"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q19.png",
+              "sha256": "3b8a093fa9f91ff4a06ea582b833be0b414bd6dac78e111f2ef9a21b5b6fc685",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "Quadrilateral labels A/B/C/D, midpoint P on AB, midpoint Q on BC, intersection R=AC∩DQ agree with text."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "사각형·중점·교점 정의와 조건 및 극한 목표가 문단 단위로 읽힌다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "이등변삼각형 좌표화, 중점·각 조건, DR/DC 조건을 차례로 식으로 바꿔 DC의 점근 전개를 한다.",
+        "decisiveSteps": [
+          "R은 AC 중점, DQ∥AB",
+          "비율 방정식의 바깥쪽 근 선택 후 상수항 전개"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "이등변삼각형 좌표화, 중점·각 조건, DR/DC 조건을 차례로 식으로 바꿔 DC의 점근 전개를 한다.",
+        "decisiveStep": [
+          "R은 AC 중점, DQ∥AB",
+          "비율 방정식의 바깥쪽 근 선택 후 상수항 전개"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 5,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "중점·각·거리비를 연쇄하여 이차식을 만들고 상수항 점근까지 처리한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "standardUnit": "수열의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnit": "수열의 극한",
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "ba4a166a346caaa1df1d61bc0e72f303ff8a51078450042fc4e269c80b4d07bb"
+    },
+    {
+      "qid": 20,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 20,
+      "questionUid": null,
+      "contentHash": "65c400a040bef4b8f33a36e25acc2ea3ecaae30e835081cbbebe67d814a888e7",
+      "choicesHash": "d8ea49a123fca80f5b92435ef940fe20dff43777a306c8e914cd77b7ca191ef7",
+      "imageRefHash": "51abc2d23fd4d1af7a347eceb47175b3db9ca1240bbd56d71553ac3f8511b530",
+      "sourceFingerprint": "1d0d6a5e06976ac15c9755aa59b6eb5c4d1e00b14676e3d58aa1965c447a74dc",
+      "sourceIdentityFingerprint": "81d4806d6b21c5ff82156ed828934d2d934250b85066b1345d8f6197e1d1a635",
+      "beforeSolutionHash": "5ce6f06e0dad42af1622923709256a0db007da9cc24070ecd125197104733e20",
+      "afterSolutionHash": "5ce6f06e0dad42af1622923709256a0db007da9cc24070ecd125197104733e20",
+      "independentAnswer": "4/5",
+      "initialFrozenIndependentAnswer": "4/5",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "④",
+      "storedAnswerMeaning": "④ (stored choice marker)",
+      "compareResult": "MATCH",
+      "answerCardinality": "SINGLE_CHOICE",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Assigned active geometry-parameterized limit projection.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "구성점/호/영역 정의가 문단으로 분리되고 S1/S2가 도형에 표시된다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "원의 좌표화와 shoelace 합으로 S1 선도항을 구하고 S2가 3차 이하임을 비교한다.",
+          "decisiveSteps": [
+            "경계 다각형 선도 면적 4θ/5",
+            "S2=O(θ³), OH~θ"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "원의 좌표화와 shoelace 합으로 S1 선도항을 구하고 S2가 3차 이하임을 비교한다.",
+          "decisiveStep": [
+            "경계 다각형 선도 면적 4θ/5",
+            "S2=O(θ³), OH~θ"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q20.png",
+              "sha256": "de49274798d7aec487708cf904eaf96101a4a4ef24418c02445d62d4dcedc866",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "Semicircle endpoints A/B, center O, P/Q/R/T/H and S1/S2 regions are visible and agree with the described constructions."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "구성점/호/영역 정의가 문단으로 분리되고 S1/S2가 도형에 표시된다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "원의 좌표화와 shoelace 합으로 S1 선도항을 구하고 S2가 3차 이하임을 비교한다.",
+        "decisiveSteps": [
+          "경계 다각형 선도 면적 4θ/5",
+          "S2=O(θ³), OH~θ"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "원의 좌표화와 shoelace 합으로 S1 선도항을 구하고 S2가 3차 이하임을 비교한다.",
+        "decisiveStep": [
+          "경계 다각형 선도 면적 4θ/5",
+          "S2=O(θ³), OH~θ"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 5,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "두 곡선/호와 영역의 관계를 좌표화해 선도 면적 차수를 비교한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-04",
+        "standardUnit": "삼각함수의 미분",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+        "subUnit": "삼각함수의 미분",
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "solutionSha256": "5ce6f06e0dad42af1622923709256a0db007da9cc24070ecd125197104733e20"
+    },
+    {
+      "qid": 21,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 21,
+      "questionUid": null,
+      "contentHash": "93fdb75f27c0c03ca8f1bddf5e01e1461086cb2b94db9f84871f39c30027602d",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "ed0b618eeb78ff2068cfda0f7c2af01a626e6e7fecc13facc081b8d3f90c7bcf",
+      "sourceFingerprint": "4937a57046ffb085b11996c11bcc2c986206a4871c9c699a0a374bd12fddc2c0",
+      "sourceIdentityFingerprint": "59c015b77808f807836742c579ac47d2141e276e6014148c894afcaf8226d8a4",
+      "beforeSolutionHash": "69586c33fbdc1865913abc0dc499f46394b5a0a5c1453a713312385392d852e6",
+      "afterSolutionHash": "69586c33fbdc1865913abc0dc499f46394b5a0a5c1453a713312385392d852e6",
+      "independentAnswer": "(1) $\\frac{3n}{4}-3n^3$, (2) $\\frac{4n}{4n^2+1}$, (3) $3$",
+      "initialFrozenIndependentAnswer": "(1) 3n/4-3n^3; (2) 4n/(4n^2+1); (3) 3/2",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "(1) $\\frac{3n}{4}-3n^3$, (2) $\\frac{4n}{4n^2+1}$, (3) $3$",
+      "storedAnswerMeaning": "(1) $\\frac{3n}{4}-3n^3$, (2) $\\frac{4n}{4n^2+1}$, (3) $3$",
+      "compareResult": "MATCH",
+      "answerCardinality": "OPEN_RESPONSE_PARTS",
+      "answerComparisonEvidence": "Runtime answer was corrected from form-feed TeX escape to literal \\frac; final answer now matches the independent part results.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": true,
+      "disposition": "Repaired q21 answer TeX escape only; solution, prompt, choices, image unchanged.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "서답형 3개 하위 문항이 각각 표시되고 그림이 tangent/축 교점을 뒷받침한다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "접선 방정식, 등거리 조건, 삼각형 넓이/외접반지름 공식을 순서대로 적용한다.",
+          "decisiveSteps": [
+            "y=−2nx+3n²",
+            "C, sinθ, R_n 순서로 계산"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "PASS",
+          "rpmSemanticStatus": "FINAL",
+          "primaryMethod": "접선 방정식, 등거리 조건, 삼각형 넓이/외접반지름 공식을 순서대로 적용한다.",
+          "decisiveStep": [
+            "y=−2nx+3n²",
+            "C, sinθ, R_n 순서로 계산"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+          "semanticStatus": "FINAL",
+          "manualNonAutoRuntime": true
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "REQUIRED",
+          "problemVisualStatus": "OPENED_AND_SEMANTICALLY_MATCHED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [
+            {
+              "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q21.png",
+              "sha256": "70d80e8cd8c98ddd594ecf137e459962e3d9b2a6ce81fac3be0ae93336360c8c",
+              "opened": true,
+              "actualInspection": "Opened at original resolution before independent freeze; labels/topology compared to the prompt."
+            }
+          ],
+          "reason": "Parabola vertex/tangent, axes, intercepts A/B and left-axis point C agree with the text; labels are legible."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "서답형 3개 하위 문항이 각각 표시되고 그림이 tangent/축 교점을 뒷받침한다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "접선 방정식, 등거리 조건, 삼각형 넓이/외접반지름 공식을 순서대로 적용한다.",
+        "decisiveSteps": [
+          "y=−2nx+3n²",
+          "C, sinθ, R_n 순서로 계산"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "PASS",
+        "rpmSemanticStatus": "FINAL",
+        "primaryMethod": "접선 방정식, 등거리 조건, 삼각형 넓이/외접반지름 공식을 순서대로 적용한다.",
+        "decisiveStep": [
+          "y=−2nx+3n²",
+          "C, sinθ, R_n 순서로 계산"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "semanticStatus": "FINAL",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "접선·등거리 기하·삼각비·외접반지름을 다문항 순서로 결합한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-CALC-06",
+        "subUnit": "도함수의 활용",
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "templateKey": "TPL_TANGENT_CONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [],
+      "answerEncodingRepairRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.source-correction-log.json",
+        "sha256": "aadaaf204a67383dfb221b0e8182a5fd4608312cdf41af61041de56b7c029f3e"
+      },
+      "solutionSha256": "69586c33fbdc1865913abc0dc499f46394b5a0a5c1453a713312385392d852e6"
+    },
+    {
+      "qid": 22,
+      "sourceArchiveFile": "archive/exams/original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+      "sourceOrdinal": 22,
+      "questionUid": null,
+      "contentHash": "672891830e710925ff48d9f50307ee6d2a91bf113c70c600b5d868d26972c0bd",
+      "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "imageRefHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "9527091dd37df1c236a0fc2448868f4733201228019e25d60230946716df28c7",
+      "sourceIdentityFingerprint": "2d5137986f02c942823c8c0f7e0046920da70c441b24785d2596d0352ac2d73a",
+      "beforeSolutionHash": "f4d5742a46e81517120640553482d6f7007a5cd2328289ed9a4470fa41f059b9",
+      "afterSolutionHash": "f4d5742a46e81517120640553482d6f7007a5cd2328289ed9a4470fa41f059b9",
+      "independentAnswer": "(1) e=lim(1+x)^(1/x); (2) 2/3; (3) 5/2(sqrt(5)-1)",
+      "initialFrozenIndependentAnswer": "(1) e=lim_{x→0}(1+x)^{1/x}; (2) 2/3; (3) (5/2)(sqrt(5)-1)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "originalFreezeSha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+      "storedAnswer": "(1) $e=\\lim_{x\\to0}(1+x)^{1/x}=\\lim_{x\\to\\infty}(1+\\frac1x)^x$; (2) $\\frac23$; (3) $\\frac52(\\sqrt5-1)$",
+      "storedAnswerMeaning": "(1) $e=\\lim_{x\\to0}(1+x)^{1/x}=\\lim_{x\\to\\infty}(1+\\frac1x)^x$; (2) $\\frac23$; (3) $\\frac52(\\sqrt5-1)$",
+      "compareResult": "MATCH",
+      "answerCardinality": "OPEN_RESPONSE_PARTS",
+      "answerComparisonEvidence": "All choices/parts were derived from the complete frozen student body and opened assets.",
+      "verdict": "PASS_WITH_EXPLICIT_META_ONLY_DEBT",
+      "repairApplied": false,
+      "disposition": "KEEP: current result and source fields verified.",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "세 서답형 하위 문항이 각각 별도 줄/문단이며 마지막 곡선 상황도 독립 단위다."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+          "primaryMethod": "e 및 로그 기본극한과 두 교점의 x좌표 점근으로 넓이 극한을 계산한다.",
+          "decisiveSteps": [
+            "x_A, x_B의 √t 계수",
+            "면적 계수 5/2를 곱함"
+          ],
+          "calculationOmissions": [],
+          "languageIssues": [],
+          "linebreakIssues": [],
+          "solutionRenderStatus": "NOT_RUN_R3_RENDER_OWNER",
+          "reason": "Current qid source, all solution blocks, and any required source image were read directly; each inference/calculation and conclusion is reproducible. No post-answer verification paragraph or operating note."
+        },
+        "META": {
+          "status": "META_ONLY_MULTI_L4_UNRESOLVED",
+          "rpmSemanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+          "primaryMethod": "e 및 로그 기본극한과 두 교점의 x좌표 점근으로 넓이 극한을 계산한다.",
+          "decisiveStep": [
+            "x_A, x_B의 √t 계수",
+            "면적 계수 5/2를 곱함"
+          ],
+          "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+          "projectionStatus": "UNRESOLVED_MULTI_L4",
+          "projectionReason": "The explicit independent subparts require distinct decisive L4 paths; canonical Meta Foundation §1.4 rule 9 prohibits forcing one primary. This is Meta-only unresolved, not an answer, math, or item HOLD.",
+          "semanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+          "manualNonAutoRuntime": true,
+          "rpmPrimaryPath": null,
+          "subquestionSemanticPaths": [
+            {
+              "part": 1,
+              "semantic": "exponential defining limit for e"
+            },
+            {
+              "part": 2,
+              "semantic": "logarithmic fundamental limit using part (1)"
+            },
+            {
+              "part": 3,
+              "semantic": "geometry-parameterized small-t area limit"
+            }
+          ]
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNecessity": "NOT_REQUIRED",
+          "problemVisualStatus": "NO_VISUAL_NEEDED",
+          "solutionVisualStatus": "NOT_REQUIRED",
+          "solutionSvgStatus": "NO_SOLUTION_SVG_IN_SOURCE",
+          "assets": [],
+          "reason": "학생 지문은 수식·대수 조건만으로 충분하며 필수 problem image/표/SVG가 없다."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+      "solutionIdentityAlignmentEvidence": "Question identity uses source file + qid + exact content/choices/image payload fingerprint; current solution was read against the same qid and source method.",
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+        "reason": "세 서답형 하위 문항이 각각 별도 줄/문단이며 마지막 곡선 상황도 독립 단위다."
+      },
+      "solutionLayout": {
+        "disposition": "KEEP",
+        "primaryMethod": "e 및 로그 기본극한과 두 교점의 x좌표 점근으로 넓이 극한을 계산한다.",
+        "decisiveSteps": [
+          "x_A, x_B의 √t 계수",
+          "면적 계수 5/2를 곱함"
+        ],
+        "calculationOmissions": [],
+        "reason": "Actual small-board blocks preserve derivation, conditions, intermediate arithmetic and student-facing conclusion."
+      },
+      "semanticReview": {
+        "status": "META_ONLY_MULTI_L4_UNRESOLVED",
+        "rpmSemanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "primaryMethod": "e 및 로그 기본극한과 두 교점의 x좌표 점근으로 넓이 극한을 계산한다.",
+        "decisiveStep": [
+          "x_A, x_B의 √t 계수",
+          "면적 계수 5/2를 곱함"
+        ],
+        "l1l2Reason": "Current standardCourse/standardUnitKey/subUnitKey and displayed labels were checked against the 2015 Calculus master rows; the current course order/label pair is retained.",
+        "projectionStatus": "UNRESOLVED_MULTI_L4",
+        "projectionReason": "The explicit independent subparts require distinct decisive L4 paths; canonical Meta Foundation §1.4 rule 9 prohibits forcing one primary. This is Meta-only unresolved, not an answer, math, or item HOLD.",
+        "semanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "manualNonAutoRuntime": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "세 하위 문항 중 (1)(2)는 지수/로그 기본극한, (3)은 곡선 교점과 넓이의 점근으로 서로 다른 decisive L4를 요구한다. single primary를 임의 선택하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY로 META_ONLY_UNRESOLVED 기록한다.",
+        "rpmPrimaryPath": null,
+        "subquestionSemanticPaths": [
+          {
+            "part": 1,
+            "semantic": "exponential defining limit for e"
+          },
+          {
+            "part": 2,
+            "semantic": "logarithmic fundamental limit using part (1)"
+          },
+          {
+            "part": 3,
+            "semantic": "geometry-parameterized small-t area limit"
+          }
+        ]
+      },
+      "difficultyReview": {
+        "previousLevel": "상",
+        "finalBucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "두 독립 기본극한과 면적 점근을 포함한 서답형 3부분을 수행한다."
+      },
+      "currentMeta": {
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-03",
+        "standardUnit": "지수함수와 로그함수의 미분",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+        "subUnit": "지수함수와 로그함수의 미분",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "세 하위 문항 중 (1)(2)는 지수/로그 기본극한, (3)은 곡선 교점과 넓이의 점근으로 서로 다른 decisive L4를 요구한다. single primary를 임의 선택하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY로 META_ONLY_UNRESOLVED 기록한다.",
+      "solutionSha256": "f4d5742a46e81517120640553482d6f7007a5cd2328289ed9a4470fa41f059b9"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "da6c23b9bd477e3ac8e30072311352544d1fb4ff",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current RPM H15-CALC-01는 sequence-limit semantic이며 crosswalk에 unique active PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING). PT/TPL null을 유지하고 수동/비자동 분류한다.",
+        "primaryMethod": "수열의 유한 극한에서 최고차항 계수를 먼저 소거하고 남은 계수를 비교한다.",
+        "decisiveStep": [
+          "유한 극한이면 a=0",
+          "그 뒤 b/2=1"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING).",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current RPM H15-CALC-02의 무한등비급수 semantic에 대응하는 unique ACTIVE shared PT/TPL projection이 없다(RPM_ONLY/NO_ACTIVE_MAPPING).",
+        "primaryMethod": "첫항과 공비를 확인해 무한등비급수 합 공식을 적용한다.",
+        "decisiveStep": [
+          "공비 -1/4의 절댓값은 1보다 작다",
+          "등비급수 합은 1/5"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "e^{3x}-1의 기본 극한으로 환원한다.",
+        "decisiveStep": [
+          "3x/(e^{3x}-1)로 정규화",
+          "기본 극한 1을 적용"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "몫의 미분법으로 분자 다항식을 전개해 계수 합을 읽는다.",
+        "decisiveStep": [
+          "몫의 미분 분자 전개",
+          "계수 2,2,6의 합"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "현재 결정 단계는 수열 극한의 대입/정규화이며 sequence semantic과 exact active course projection binding이 없다.",
+        "primaryMethod": "주어진 극한에서 a_n의 수렴값을 구한 뒤 n차 항으로 나눠 목표식을 극한 처리한다.",
+        "decisiveStep": [
+          "a_n→3",
+          "n으로 나눈 식의 유한 항만 남김"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "급수 수렴의 필요조건과 망원합 semantic을 표현하는 current ACTIVE PT/TPL projection이 없다.",
+        "primaryMethod": "급수 항의 영점 조건으로 p를 정하고 이후 항을 망원합으로 바꾼다.",
+        "decisiveStep": [
+          "일반항→0에서 p=2",
+          "나머지는 1/[n(n+1)]로 망원합"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "Current semantic is resolved from source+verified solution to prior-grade H15-GV-06 (2015 high2 Geometry): plane-vector components/dot product → angle between two vectors. The H15-CALC-04 target L1/L2 fields remain unchanged. The high2-geometry crosswalk lists H15-GV-06 as RPM_ONLY/NO_ACTIVE_MAPPING and active geometry-equations has no exact vector-angle PT/TPL, so null PT/TPL are projection-only debt with manual/non-auto runtime.",
+        "primaryMethod": "그림의 선 방향을 단위벡터로 나타내고 내적으로 각의 코사인을 계산한다.",
+        "decisiveStep": [
+          "PE 방향 단위벡터",
+          "PC 방향 단위벡터와 내적"
+        ],
+        "manualNonAutoRuntime": true,
+        "rpmPrimaryPath": "2015/H15-GV-06/L2-2.2/L3-2.2.2/L4-2.2.2.2",
+        "rpmL3": "L3-2.2.2 내적",
+        "rpmL4": "L4-2.2.2.2 두 벡터의 각",
+        "semanticSourceScope": "2015 High 2 Geometry prerequisite",
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE"
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "점별 수열 극한의 구간 분류 semantic에 현재 scope의 unique active PT/TPL mapping이 없다.",
+        "primaryMethod": "x의 크기별로 점별 수열 극한을 계산해 세 값을 더한다.",
+        "decisiveStep": [
+          "|x|<1, x=1, x>1 구분",
+          "각 함수값 합산"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "급수 수렴 필요조건으로 수열 점근식을 얻는 semantic의 current active projection이 없다.",
+        "primaryMethod": "급수 수렴의 필요조건으로 a_n/n²의 극한을 얻고 목표 비에 대입한다.",
+        "decisiveStep": [
+          "급수의 일반항→0",
+          "a_n/n²→5 후 비의 극한"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "좌표 증가량의 두 수열 극한 합산은 current RPM sequence semantic이며 exact active PT/TPL projection이 없다.",
+        "primaryMethod": "수평/수직 길이 증가량을 각각 등비급수로 합해 좌표 차를 계산한다.",
+        "decisiveStep": [
+          "수평/수직 증가량을 분리",
+          "두 등비합의 차"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "연속성으로 b를 정하고 좌우 미분계수 일치로 a를 정한다.",
+        "decisiveStep": [
+          "f(0)=b=2",
+          "양쪽 미분계수 a와 b 일치"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "로그의 미분을 합성함수에 적용하고 x=0에서 산술합을 계산한다.",
+        "decisiveStep": [
+          "g(0),g'(0) 계산",
+          "f'(0)=(n+1)/2"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "부분합 차분으로 일반항의 수열 극한을 구하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "primaryMethod": "홀수 합으로 S_n을 구하고 차분해 a_n의 최고차항을 얻는다.",
+        "decisiveStep": [
+          "S_n=n³",
+          "S_n−S_{n−1}의 최고차항"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "부등식으로 수열 점근을 고정하는 current sequence RPM semantic에 unique active projection이 없다.",
+        "primaryMethod": "부등식으로 a_n/n을 고정하고 분자를 유리화해 b_n/n을 구한다.",
+        "decisiveStep": [
+          "|a_n−3n|<1",
+          "유리화 뒤 b_n/n 결정"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "홀수항 등비급수와 누적 짝수항 관계를 다루는 series RPM semantic에 active PT/TPL projection이 없다.",
+        "primaryMethod": "홀수항 등비합과 짝수항 누적합 관계로 목표 급수를 홀수항 합으로 환원한다.",
+        "decisiveStep": [
+          "a_{2n+2}=2a_{2n}+a_{2n+1}",
+          "나머지 홀수 급수는 2"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "단위원 좌표에서 BM, OQ를 삼각함수로 나타내고 3차 근사를 취한다.",
+        "decisiveStep": [
+          "BM=cosθ, OQ=cotθ",
+          "δ=θ−π/2의 3차항 부호"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다.",
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "반복된 좌표 변환 뒤 거리의 무한합을 구하는 series semantic에 current ACTIVE PT/TPL mapping이 없다.",
+        "primaryMethod": "반사/수평교점 규칙을 반복해 홀수점 좌표의 비를 얻고 길이 급수를 합한다.",
+        "decisiveStep": [
+          "odd point map (x,y)→(x/3,x)",
+          "거리항을 등비급수로 합"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "분모 영점의 차수에 맞춰 분자 상수항과 이차항을 소거한다.",
+        "decisiveStep": [
+          "g(1)=0",
+          "g(1+t)의 이차항도 0"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "이등변삼각형 좌표화, 중점·각 조건, DR/DC 조건을 차례로 식으로 바꿔 DC의 점근 전개를 한다.",
+        "decisiveStep": [
+          "R은 AC 중점, DQ∥AB",
+          "비율 방정식의 바깥쪽 근 선택 후 상수항 전개"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "원의 좌표화와 shoelace 합으로 S1 선도항을 구하고 S2가 3차 이하임을 비교한다.",
+        "decisiveStep": [
+          "경계 다각형 선도 면적 4θ/5",
+          "S2=O(θ³), OH~θ"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [],
+        "semanticStatus": "FINAL",
+        "rpmSemanticStatus": "FINAL",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Current ACTIVE PT/TPL key and parent were checked; exact H15-CALC curriculum binding remains pending and is not hidden as a semantic PASS.",
+        "primaryMethod": "접선 방정식, 등거리 조건, 삼각형 넓이/외접반지름 공식을 순서대로 적용한다.",
+        "decisiveStep": [
+          "y=−2nx+3n²",
+          "C, sinθ, R_n 순서로 계산"
+        ],
+        "manualNonAutoRuntime": true
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "세 하위 문항 중 (1)(2)는 지수/로그 기본극한, (3)은 곡선 교점과 넓이의 점근으로 서로 다른 decisive L4를 요구한다. single primary를 임의 선택하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY로 META_ONLY_UNRESOLVED 기록한다.",
+        "semanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "rpmSemanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "projectionStatus": "UNRESOLVED_MULTI_L4",
+        "projectionReason": "Explicit independent subparts require distinct L4 paths; no unique primary.",
+        "primaryMethod": "e 및 로그 기본극한과 두 교점의 x좌표 점근으로 넓이 극한을 계산한다.",
+        "decisiveStep": [
+          "x_A, x_B의 √t 계수",
+          "면적 계수 5/2를 곱함"
+        ],
+        "manualNonAutoRuntime": true,
+        "subquestionSemanticPaths": [
+          {
+            "part": 1,
+            "semantic": "exponential defining limit for e"
+          },
+          {
+            "part": 2,
+            "semantic": "logarithmic fundamental limit using part (1)"
+          },
+          {
+            "part": 3,
+            "semantic": "geometry-parameterized small-t area limit"
+          }
+        ]
+      }
+    ]
+  },
+  "independentFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.original-freeze.json",
+    "sha256": "aaa57affdab897d268867c386d00f0af8c91778f2d37540d3683d98b7f848ada",
+    "sourceRawSha256": "2ede3a5508cb0f184c6eeb50847aada97cc48279109c7e40e8af0797b6911a52",
+    "qidCount": 22,
+    "preFreezeAssetCoverage": 6,
+    "freezeMutated": false
+  },
+  "postfreezeDisclosures": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.postfreeze-disclosure.json",
+      "sha256": "831926df7a666018b1622e54f93caa51b89e21969b87abfb2eb6bddd7ba9afa0",
+      "qids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "studentParity": "EXACT"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.postfreeze-final-q21.json",
+      "sha256": "d075a004d5db59434ae67f71fdb586dfc932967ebcba445dd06b6ce41084ef68",
+      "qids": [
+        21
+      ],
+      "studentParity": "EXACT"
+    }
+  ],
+  "adjudication": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.adjudication.json",
+    "sha256": "39f035a41832247ada21cbd978611b648210d65ae311e882e2685915ee24f4e9",
+    "originalFreezeMutated": false,
+    "correctedQids": [
+      16
+    ]
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.student.json",
+    "sha256": "ebd3c88a0d9e9884e07331dcb4b94c2f03ad46d0da6cc969c1affce6c614b003",
+    "sourceRawSha256": "2ede3a5508cb0f184c6eeb50847aada97cc48279109c7e40e8af0797b6911a52",
+    "studentParity": "EXACT",
+    "questionCount": 22
+  },
+  "currentAssetBindings": [
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q7.png",
+      "sha256": "d545e443dad7e5277473e7e6e80e14203caf256b5dd07f5b16b318fc2d1a2b80"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q10.png",
+      "sha256": "fea439fac925f22d541eb9713671c05d136489f7ccd177641adc7f62b2e6f257"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q16.png",
+      "sha256": "de96084eca5e016166e5d444b26833b4d7d4b8ecbfe9cc4ff9acf8f79fb5a4b8"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q19.png",
+      "sha256": "3b8a093fa9f91ff4a06ea582b833be0b414bd6dac78e111f2ef9a21b5b6fc685"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q20.png",
+      "sha256": "de49274798d7aec487708cf904eaf96101a4a4ef24418c02445d62d4dcedc866"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q21.png",
+      "sha256": "70d80e8cd8c98ddd594ecf137e459962e3d9b2a6ce81fac3be0ae93336360c8c"
+    }
+  ],
+  "assetReview": {
+    "requiredAssetCount": 6,
+    "openedAssetCount": 6,
+    "allRequiredAssetsHashMatched": true,
+    "allRequiredAssetsActuallyOpened": true,
+    "assetRefs": [
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q7.png",
+        "sha256": "d545e443dad7e5277473e7e6e80e14203caf256b5dd07f5b16b318fc2d1a2b80",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q10.png",
+        "sha256": "fea439fac925f22d541eb9713671c05d136489f7ccd177641adc7f62b2e6f257",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q16.png",
+        "sha256": "de96084eca5e016166e5d444b26833b4d7d4b8ecbfe9cc4ff9acf8f79fb5a4b8",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q19.png",
+        "sha256": "3b8a093fa9f91ff4a06ea582b833be0b414bd6dac78e111f2ef9a21b5b6fc685",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q20.png",
+        "sha256": "de49274798d7aec487708cf904eaf96101a4a4ef24418c02445d62d4dcedc866",
+        "opened": true
+      },
+      {
+        "ref": "assets/images/26_팔마고_1학기_중간_고3_미적분2/q21.png",
+        "sha256": "70d80e8cd8c98ddd594ecf137e459962e3d9b2a6ce81fac3be0ae93336360c8c",
+        "opened": true
+      }
+    ]
+  },
+  "sourceCorrectionProvenance": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.source-correction-log.json",
+    "sha256": "aadaaf204a67383dfb221b0e8182a5fd4608312cdf41af61041de56b7c029f3e",
+    "note": "Includes answer escape and metadata/difficulty loci; freeze and student inputs preserved."
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "preflightTimingUtc": {
+      "startedAt": "2026-10-08T11:22:49.4077287Z",
+      "completedAt": "2026-10-08T11:24:26.3497333Z",
+      "recordedBeforeTargetCorrectionLocusRecheck": true
+    },
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "README와 q20 failed SVG를 실제 확인. Text label 3x+4y−8=0 gives slope −3/4, but SVG line endpoints (60,350)→(570,−32.5) have screen-coordinate slope −0.75 (math-coordinate +0.75); it contradicts the stated normality/line fact. Judge actual primitive coordinates/topology, not labels."
+    },
+    "negativeVisual": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+      "sha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+      "observation": "실제 line endpoints, P and H coordinates, and claimed slope were compared; preserve as negative fixture, never promote."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "내분비 공식을 좌표별로 펼쳐 P를 구하고 중점 M, 거리공식까지 중간 계산을 보이는 재현성 표본."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "평행선의 기울기 결정과 점 좌표 대입을 separate blocks로 진행하며 answer conclusion을 source에 결속."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Actual q7 SVG rendered with Chrome and opened at original resolution. Dashed circles show initial center (−3,1), translated center (−5,2), and final center (5,−2), radius 3; panel equation (x−5)^2+(y+2)^2=9 matches the written center tracking and the geometry."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "좌표 차이를 각각 계산하고 거리공식 대입·제곱합·근호 정리를 순서대로 보여줌."
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "집합 동일성의 필수 원소 3으로 a를 먼저 정하고 남은 원소 비교로 b를 결정."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "observation": "Opened the current q2 solution and rendered its SVG with Chrome. The red line has slope 3 and intercept −1/2; the blue line has slope −1/3 and intercept −2/3. Axes use equal scale, the plotted intersection/labels are legible, and the panel states k=6 consistently with the independent line calculations."
+          }
+        ]
+      }
+    ],
+    "visualReview": {
+      "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "svgSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "renderPath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/golden-hyocheon-q2-chrome.png",
+      "renderSha256": "525b1cd62a8665035d1b4c6adb77a3e00e331c5da5ddb3ad8e7b7be195cf8f40",
+      "renderer": "Chrome headless screenshot reviewed at original resolution",
+      "observation": "MathJax/labels render legibly; actual line primitives and equal-axis geometry match the displayed equations."
+    },
+    "visualReviews": [
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "svgSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+        "renderPath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/golden-hyocheon-q2-chrome.png",
+        "renderSha256": "525b1cd62a8665035d1b4c6adb77a3e00e331c5da5ddb3ad8e7b7be195cf8f40",
+        "renderer": "Chrome headless screenshot reviewed at original resolution",
+        "observation": "Line primitives show slopes 3 and −1/3 with equal axis scale; labels and k=6 panel agree with the displayed equations."
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "svgSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+        "renderPath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/golden-maesan-q7-chrome.png",
+        "renderSha256": "890ebd7f52131fe6c85a47e1a16a77b3c822ec25c5b9a409760148ee0058d406",
+        "renderer": "Chrome headless screenshot reviewed at original resolution",
+        "observation": "Dashed original/translated circles and final circle center/radius agree with the center movement and final equation."
+      }
+    ]
+  },
+  "authorityRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "sha256": "670645d73151fa69debc43b4bb1c6f6d0d84f58047c07f340f4cff1ec2a88833"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md",
+      "sha256": "b592921444db8bfeb32d19e0a3554f4ca1718b738eb8a8aa0dd14c30ecd61fe9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "sha256": "80c6ac583351320043e50fe504456b0383140b75d51ba7a9b579357e725bcff9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/미적분.md",
+      "sha256": "18aeb1f7662e4e4902673c69923eb4f90439eb5948d2db166a3251afe01de1c6"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json",
+      "sha256": "ae6caf77e1205e4f7b1ad201af0202d4bbdf880ceee25a526a9cfbd1976aa182"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+      "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+    },
+    {
+      "path": "archive/data/codex-quality-calibration-registry-v2.json",
+      "sha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+      "sha256": "4ee9c77e58af0002616d8c460c702cb5ee7603167bd3f102f247a2126f48c264"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+      "sha256": "5426b4c3be737d86fc5082e89604f976a8258d2287732ebb7cef29f101953d13"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+    }
+  ],
+  "reviewMode": "R1_DEEP_FRESH_ALL22",
+  "staticReviewOnly": true,
+  "actualRenderClaim": false,
+  "renderStatus": "NOT_RUN_R3_RENDER_OWNER",
+  "aggregate": {
+    "qidDenominator": 22,
+    "independentAnswerCoverage": "22/22",
+    "questionLayoutCoverage": "22/22",
+    "solutionLayoutCoverage": "22/22",
+    "metaSemanticCoverage": "22/22",
+    "visualSvgCoverage": "22/22",
+    "requiredVisualAssetsOpened": "6/6",
+    "itemHoldCount": 0,
+    "metaOnlyProjectionDebtCount": 12,
+    "metaOnlyUnresolvedCount": 1,
+    "answerMismatchAfterAdjudication": 0,
+    "studentBodyChanged": false,
+    "solutionChanged": false,
+    "metaDebtFieldQidCount": 13,
+    "actualSemanticHoldCount": 0,
+    "heldQids": []
+  },
+  "priorValidatorAttempt": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.validation-report.json",
+    "sha256": "5f6c2e05df62db40a3f94e1eaea0ba7390b599e3dbe766e1de977970f7fd4c31",
+    "disposition": "FAIL",
+    "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED",
+    "resolution": "Preserve failed report; added actual q2 SVG visual read to registered Hyocheon sample."
+  },
+  "priorValidatorAttempts": [
+    {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/R1.validation-report.json",
+      "sha256": "5f6c2e05df62db40a3f94e1eaea0ba7390b599e3dbe766e1de977970f7fd4c31",
+      "disposition": "FAIL",
+      "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED",
+      "repair": "Added current Hyocheon q2 actual SVG render/read to its Golden sample."
+    },
+    {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/R1.validation-report.final2.json",
+      "sha256": "77fc6cea6a5dcab17c1230479578e86dd41f81032967a5f71e323954face39b1",
+      "disposition": "FAIL",
+      "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED",
+      "repair": "Added current Maesan q7 actual SVG render/read to its Golden sample."
+    }
+  ],
+  "metaClassificationSummary": {
+    "projectionOnlyDebtQids": [
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      17
+    ],
+    "metaOnlyUnresolvedQids": [
+      22
+    ],
+    "actualSemanticHoldQids": [],
+    "itemHoldQids": [],
+    "q7ResolvedPath": "2015/H15-GV-06/L2-2.2/L3-2.2.2/L4-2.2.2.2",
+    "q22CanonicalDisposition": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+    "manualNonAutoRuntime": true
+  },
+  "metaSemanticCorrectionReceipt": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.meta-semantic-correction.json",
+    "sha256": "2c6d1116def66f447e6b2f0a17febde319fdea55010ea25a3cf14ae3ff36119d"
+  },
+  "lateVisualCorrectionReview": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_팔마고_1학기_중간_고3_미적분2\\R1.late-visual-correction-review.json",
+    "sha256": "b4ac19a52cc178dd1843e3297c3e0cfe59f69b0c106a3aee683cda408c62de66",
+    "reviewedQids": [
+      7,
+      10,
+      16,
+      19,
+      20,
+      21
+    ],
+    "changedFields": [],
+    "actualRenderClaim": false
+  },
+  "technicalHashes": {
+    "rawSha256": "be0d7907814b518e6abe0f103b4d0deefd9310d15ccbacbfe459b8ee7171beae",
+    "validatorRawBufferBlobSha1": "da6c23b9bd477e3ac8e30072311352544d1fb4ff",
+    "gitCleanFilterBlobSha1": "da6c23b9bd477e3ac8e30072311352544d1fb4ff"
+  }
+}
