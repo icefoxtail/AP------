@@ -625,7 +625,7 @@ window.questionBank = [
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",

@@ -718,7 +718,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "$x^3-2x^2+3x-4$를 $a(x-1)^3+b(x-1)^2+c(x-1)+d$로 정리할 때 $abcd$는? [4.3점]",
+    "content": "$x^3-2x^2+3x-4$를 <br>$a(x-1)^3+b(x-1)^2+c(x-1)+d$로 정리할 때 $abcd$는? [4.3점]",
     "choices": [
       "-6",
       "-4",

@@ -263,7 +263,7 @@ window.questionBank = [
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "항등식",
@@ -488,7 +488,7 @@ window.questionBank = [
       "자연수"
     ],
     "wide": false,
-    "content": "자연수 $m$에 대하여 이차함수 $y=x^2+(m+k)x+(m-k)^2$이 직선 $x$축과 한 점에서 만나도록 하는 양의 실수 $k$의 최솟값은? [4.7점]",
+    "content": "자연수 $m$에 대하여 이차함수 <br>$y=x^2+(m+k)x+(m-k)^2$이 직선 $x$축과 한 점에서 만나도록 하는 양의 실수 $k$의 최솟값은? [4.7점]",
     "choices": [
       "$1$",
       "$\\dfrac{1}{2}$",
@@ -673,7 +673,7 @@ window.questionBank = [
       "실근"
     ],
     "wide": false,
-    "content": "$x$에 대한 이차방정식 $x^2+2(k-3)x+k^2-4k-1=0$이 서로 다른 두 실근을 갖도록 하는 모든 자연수 $k$의 값의 합을 구하시오. [4점]",
+    "content": "$x$에 대한 이차방정식 <br>$x^2+2(k-3)x+k^2-4k-1=0$이 서로 다른 두 실근을 갖도록 하는 모든 자연수 $k$의 값의 합을 구하시오. [4점]",
     "choices": [],
     "answer": "10",
     "solution": "서로 다른 두 실근을 가지려면 판별식이 양수여야 한다.\n판별식은\n$D=\\{2(k-3)\\}^2-4(k^2-4k-1)$\n$=8(5-k)$이다.\n따라서 $D>0$에서 $k<5$이다.\n$k$가 자연수이므로\n$k=1,2,3,4$이고 그 합은\n$1+2+3+4=10$이다.\n따라서 답은 $10$이다.",

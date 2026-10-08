@@ -282,7 +282,7 @@ window.questionBank = [
     "level": null,
     "category": "항등식",
     "originalCategory": "항등식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false
   },
   {
@@ -373,7 +373,7 @@ window.questionBank = [
       "객관식",
       "연립일차방정식"
     ],
-    "content": "$x-2y=1$을 만족시키는 모든 실수 $x$, $y$에 대하여 $2ax+3by=6$이 항상 성립할 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은? [4.4점]",
+    "content": "$x-2y=1$을 만족시키는 모든 실수 $x$, $y$에 대하여 <br>$2ax+3by=6$이 항상 성립할 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은? [4.4점]",
     "choices": [
       "$-3$",
       "$-1$",
@@ -445,7 +445,7 @@ window.questionBank = [
     "level": null,
     "category": "다항식의 전개",
     "originalCategory": "다항식의 전개",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false
   },
   {
@@ -485,7 +485,7 @@ window.questionBank = [
     "level": null,
     "category": "복소수의 거듭제곱",
     "originalCategory": "복소수의 거듭제곱",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false
   },
   {
