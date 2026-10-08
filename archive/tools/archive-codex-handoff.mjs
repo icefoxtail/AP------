@@ -7,6 +7,7 @@ import {gitBlobSha} from './archive-stage-validator-compat-v1.mjs';
 import {disclosePostfreeze, normalizeStudentBundle, studentAssetRefs, STUDENT_FIELDS} from './archive-student-bundle.mjs';
 import {acceptStage, transitionFile} from './archive-codex-dispatcher.mjs';
 import {inside, physical, readExam, sha256, writeFresh} from './archive-codex-artifact-io.mjs';
+import {validateSourceReferenceAssignmentMetadata} from './archive-source-reference-policy.mjs';
 
 const stages = new Set(['CREATE','R1','R2','R3']);
 const absolute = (p, label) => { if(typeof p!=='string'||!path.isAbsolute(p)) throw Error(`${label}_ABSOLUTE_PATH_REQUIRED`); return path.resolve(p); };
@@ -147,6 +148,8 @@ export function preflightHandoff({assignmentFile, receiptFile, root:rootArg, wor
   if(receipt.worktreeRootAbsolute!==root||receipt.expectedHead!==assignment.expectedHead||receipt.sourceRawSha256!==assignment.expectedSourceRawSha256) throw Error('ASSIGNMENT_RECEIPT_IDENTITY_MISMATCH');
   const head=currentHead(root); if(head!==assignment.expectedHead||receipt.actualHead!==head) throw Error('ASSIGNED_HEAD_MISMATCH');
   if(!stages.has(assignment.stage)||!assignment.examUid||assignment.qualityContractVersion!==QUALITY_CONTRACT_V2||assignment.executionLine!=='CODEX') throw Error('CURRENT_CODEX_ASSIGNMENT_REQUIRED');
+  const sourceReferencePolicy=validateSourceReferenceAssignmentMetadata(assignment.sourceReferencePolicyMetadata,{stage:assignment.stage});
+  if(sourceReferencePolicy.originalReferencePlan?.required) throw Error('SCOPED_ORIGINAL_REFERENCE_REVIEW_REQUIRED');
   const role='archive_'+assignment.stage.toLowerCase();
   if(assignment.reviewerIdentity?.role!==role||!assignment.reviewerIdentity?.reviewerId||assignment.reviewerIdentity.reviewerId!==reviewerCanonicalId||receipt.reviewerCanonicalId!==reviewerCanonicalId) throw Error('CANONICAL_REVIEWER_ID_MISMATCH');
   if(assignment.reviewerIdentity.displayPrefix&&assignment.reviewerIdentity.displayPrefix===reviewerCanonicalId) throw Error('DISPLAY_PREFIX_CANNOT_AUTHORIZE_REVIEWER');
@@ -182,7 +185,7 @@ export function preflightHandoff({assignmentFile, receiptFile, root:rootArg, wor
     if(!same(parsed,report)) throw Error('CAPTURED_RAW_REPORT_BYTES_MISMATCH');
     executionProvenance='PROCESS_CAPTURED';
   }
-  return {ok:true,disposition:'STRUCTURE_BOUND',stage:assignment.stage,examUid:assignment.examUid,head,sourceRawSha256:src.sha256,sourceRawBufferBlobSha1:blob,cleanFilterBlobSha1:ev.technicalHashes?.gitCleanFilterBlobSha1??null,qids:bundle.qids,questionCount:bundle.questionCount,requiredAssets:[...new Set(bundle.rows.flatMap(r=>r.assets.map(a=>a.ref)))],reviewerCanonicalId,rawReport:reportPath?physical(reportPath):{path:capturePath,sha256:sha256(reportBytes),capturedStdout:true},rawReportDisposition:report.disposition,executionProvenance,semanticVerdictCreated:false,answerBearingSourceParsed:false};
+  return {ok:true,disposition:'STRUCTURE_BOUND',stage:assignment.stage,examUid:assignment.examUid,head,sourceRawSha256:src.sha256,sourceRawBufferBlobSha1:blob,cleanFilterBlobSha1:ev.technicalHashes?.gitCleanFilterBlobSha1??null,qids:bundle.qids,questionCount:bundle.questionCount,requiredAssets:[...new Set(bundle.rows.flatMap(r=>r.assets.map(a=>a.ref)))],sourceReferencePolicy,reviewerCanonicalId,rawReport:reportPath?physical(reportPath):{path:capturePath,sha256:sha256(reportBytes),capturedStdout:true},rawReportDisposition:report.disposition,executionProvenance,semanticVerdictCreated:false,answerBearingSourceParsed:false};
 }
 
 /** One shot only. Captured process output is one immutable file; this does not retry or bless a failed report. */

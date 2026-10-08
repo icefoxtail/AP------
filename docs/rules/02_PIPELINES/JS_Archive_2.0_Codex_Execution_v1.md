@@ -7,6 +7,10 @@ historical authority: Canary / Phase 10 / 5시험지 qualification 기록은 역
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 parent quality authority: `JS_Archive_2.0_Common_Quality_Contract_v1.md`
 
+## 2026-10-09 DIRECT USER OVERRIDE — 추출 JS·에셋 우선
+
+`Archive_Extracted_Source_First_v1.md`를 따른다. 발문·보기·수식·문제 에셋의 source intake가 끝나면 CREATE부터 기존 JS·실제 에셋으로 제작·검수하며 PDF routine 재열람·전 페이지 대조는 하지 않는다. 원문 확인이 필요한 구체적인 문항 결함이 있을 때만 해당 qid와 직접 의존 범위의 PDF를 확인한다. 단순 답 불일치/계산·조판·SVG·receipt 오류는 먼저 JS·에셋으로 처리한다. source identity와 원문 충실도 근거는 intake provenance와 현재 JS/asset SHA로 재사용하고, 실제 하지 않은 PDF 대조나 원문 parity PASS를 만들지 않는다. R1/R2 freeze 전 PDF·답안·upstream 풀이 비노출, 완전한 필수 입력과 실제 자산 열람, 독립 검수, 실제 렌더·zero item HOLD·publication 기준은 유지한다. 이 사용자 지시는 아래의 기존 routine PDF 확인/전 페이지 대조 문구보다 우선한다.
+
 ## 1. 목적
 
 이 문서는 JS Archive 2.0의 **Codex 실행 라인만** 정의한다.
@@ -354,7 +358,7 @@ ROOT는 검증된 safe extractor를 실행·인계할 수 있으나 문항을 �
 
 CREATE의 item HOLD를 시험지 최종 완료로 집계하지 않는다. 각 stage는 전체 denominator를 검수하고 held qid를 다음 독립 검수에 운반한다. generic validator가 HOLD row 때문에 FAIL이면 `PASS`를 만들지 않고 exact issue/coverage를 기록한다. 다른 serialization/hash/debt 결함은 먼저 수리해 실제 item hold와 구분한다.
 
-1. 로컬 원본 PDF/scan과 필요한 답안 evidence를 찾아 source truth를 확인한다.
+1. 먼저 현재 추출 JS·실제 문제 에셋과 기존 intake evidence로 해당 HOLD의 조건·입력·수학을 확인한다. 원문 누락·오독·그림 충돌처럼 원본 확인이 실제로 필요한 결함만 qid와 확인할 사실을 명시해 로컬 PDF/scan의 해당 영역을 대조한다. PDF·답안 전수 재열람을 자동 선행 조건으로 두지 않는다.
 2. `수정프로토콜.md`의 REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR / AUDITED_SOURCE_REPAIR를 적용하고 worker가 changed locus를 재검한다. 근거 없는 조건 추가로 정답을 만들지 않는다.
 3. R1/R2는 upstream HOLD를 정답으로 삼지 않고 student bundle에서 독립 재판정한다.
 4. R2 뒤에도 true item HOLD가 남고 최소복구가 불가능하면 `Archive_Final_Item_Direct_Replacement_v1.md`에 따라 held qid만 직접 대체한다. 사용자 허용 custom author role을 사용하고 임의 새 role/ALIVE 전면 pipeline을 열지 않는다.
@@ -439,7 +443,7 @@ actual 경로와 면제 경로의 gate를 구별하고 publish 전에 실제 hel
 ### 25.4 HOLD 복구·해제의 실행 순서
 
 1. 콘텐츠 item HOLD, evidence/receipt/hash 전송 오류, run 공통 render/capture blocker를 각각 원인과 영향 범위로 기록한다. CREATE의 미완료·WAIT·CONTINUATION을 시험지 최종 HOLD로 종결하지 않는다.
-2. 콘텐츠는 바탕화면 기출의 문제·정답 PDF 전 페이지와 source evidence를 대조한다. 복원 근거가 있으면 수정프로토콜의 단일 의미 locus·최소 수정부터 적용한다. 원 freeze/실패/원문·수정 provenance를 보존하고 관련 JS/answer/solution/decisiveStep/Meta/visual/evidence를 동기화한다.
+2. 콘텐츠는 먼저 현재 추출 JS·문제 에셋·기존 source evidence로 검수한다. 원문 확인이 필요한 실제 결함만 관련 문제·공통 자료의 PDF 영역을 대조하며, 정답 자료는 freeze 후에도 원본 의존 문제 해결에 필요한 경우에만 참조한다. 전 페이지 대조를 자동 요구하지 않는다. 복원 근거가 있으면 수정프로토콜의 단일 의미 locus·최소 수정부터 적용한다. 원 freeze/실패/원문·수정 provenance를 보존하고 관련 JS/answer/solution/decisiveStep/Meta/visual/evidence를 동기화한다.
 3. R1/R2 뒤에도 true item HOLD이면 직접 문항 대체 규칙으로 해당 qid의 완제품을 작성하고 변경 학생 입력의 영향 qid만 fresh R1/R2 검수한다. ROOT가 이 복구·대체를 승인 범위에서 자율 dispatch하며 같은 적용 여부를 재질문하지 않는다.
 4. 유효한 완전 입력 freeze 뒤 발견된 계산·선택기호·단위 encoding 오류는 같은 stage에서 최소 adjudication한다. 학생 body/필수 그림이 바뀐 경우 freeze 유효성은 worker가 판정한다. unchanged qid를 다시 풀거나 다시 capture하지 않는다.
 5. 기술 오류는 raw generic V2/CODEX report, 실제 자산 root, mode별 필요한 decoded set, raw/clean-filter hash, Git index/remote bytes, durable physical ref 및 reviewer 결속을 항목별로 복구한다. 원래 정상 validator 1회 규칙은 실제 수정 이후 필요한 재검증을 막지 않는다.
