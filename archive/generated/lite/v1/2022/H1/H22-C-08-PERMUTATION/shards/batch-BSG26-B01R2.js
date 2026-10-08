@@ -271,5 +271,73 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 성별 배열의 시작을 먼저 고른다.\n남학생으로 시작하거나 여학생으로 시작하는 두 가지 성별 배열이 가능하다.\n각 성별의 세 자리를 해당 학생 세 명이 차지하는 순서는 각각 $3!=6$가지이다.\n따라서 전체 경우의 수는 $2\\times6\\times6=72$가지이다.\n따라서 정답은 ③이다.",
     "sourceType": "generated"
+  },
+  {
+    "id": 9,
+    "uid": "ALITE-BSG26-B01R2-Q02-P09",
+    "level": "하",
+    "difficultyBucket": 2,
+    "category": "순열",
+    "originalCategory": "순열",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "subUnitKey": "H22-C-08-PERMUTATION",
+    "subUnit": "순열",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "순열"
+    ],
+    "wide": false,
+    "content": "서로 다른 학생 6명 중 4명을 골라 일렬로 4자리에 세우는 경우의 수는?",
+    "choices": [
+      "$120$",
+      "$180$",
+      "$240$",
+      "$360$",
+      "$720$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 네 자리의 순서를 구별하므로 순열을 적용한다.\n첫 자리에 설 학생은 6가지, 둘째는 5가지, 셋째는 4가지, 넷째는 3가지로 고를 수 있다.\n따라서 $6\\times5\\times4\\times3=360$가지이다.\n다른 방법으로 $\\dfrac{6!}{(6-4)!}=360$을 구해도 된다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 10,
+    "uid": "ALITE-BSG26-B01R2-Q02-P10",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "순열",
+    "originalCategory": "순열",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "subUnitKey": "H22-C-08-PERMUTATION",
+    "subUnit": "순열",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "순열"
+    ],
+    "wide": false,
+    "content": "서로 다른 학생 $n$명 중 2명을 골라 앞뒤 두 자리에 세우는 방법이 42가지이다. 자연수 $n$의 값은?",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$14$",
+      "$42$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 순서를 고려한 두 자리 배열의 경우의 수를 역으로 이용한다.\n첫 자리는 $n$가지, 둘째 자리는 남은 $n-1$가지이다.\n따라서 $n(n-1)=42$이고, 연속하는 자연수의 곱 $7\\times6=42$와 비교하면 $n=7$이다.\n따라서 정답은 ②이다.",
+    "sourceType": "generated"
   }
 ];
