@@ -1,0 +1,39 @@
+✔ preflight binds assignment, exact actor, full qids, real assets and actual raw report without parsing JS (780.3736ms)
+✔ canonical validator capture preserves exact stdout/stderr/exit and never converts its result to PASS (753.1985ms)
+✔ R3 coverage accepts targeted reviewer rows plus full artifact dispositions (635.7894ms)
+✔ R1 freeze rebind accepts only unchanged student fields and required asset hashes after source-byte edits (2075.3343ms)
+✔ rejects display prefix instead of canonical reviewer id (696.86ms)
+✔ rejects asset directory in place of its parent (612.0531ms)
+✔ rejects source tampering and stale evidence/report binding (721.6394ms)
+✔ rejects tampered evidence and student bundle qid omissions (1432.8551ms)
+✔ rejects raw report schema/PASS synthesis and missing qid denominator (1445.8006ms)
+✔ student packet rejects answer leak and missing/tampered required asset (1404.3272ms)
+✔ rejects declared asset paths whose symlink target escapes the assigned assets root (669.8303ms)
+✔ ROOT packet extraction keeps rich student fields and transitive assets, rejecting relabeled stale content (763.4348ms)
+✔ postfreeze disclosure requires exact freeze SHA/parity and preserves the original freeze (829.2995ms)
+✔ scope plan preserves freeze identity and rejects outside-scope changes (701.7662ms)
+✔ accept is atomic through dispatcher and stale repeat cannot double-accept (736.9309ms)
+✔ TEST-ONLY synthetic current R3 fixture passes the real canonical validator and PROCESS_CAPTURED preflight (910.9419ms)
+✔ preflight finds stale HOLD, damaged TeX and explicit numeric marker mismatch without fixing source (2.6965ms)
+✔ legitimate HOLD is carried; prose and correctly escaped math are not rewritten or flagged (0.7991ms)
+✔ physical binding fixes raw/blob mixup and copies only explicitly reviewed continuity (7.3281ms)
+✔ freeze enforces full coverage and actual asset acknowledgement; adjudication never mutates original bytes (19.4285ms)
+✔ actual generic report seals stable handoff; post-PASS evidence/source edits invalidate event (28.1215ms)
+✔ event tampering and retained item HOLD cannot become release completion (18.0255ms)
+✔ ROOT intake routes only the verified stable event and rejects the wrong active stage (25.5213ms)
+✔ object-ID Git readback supports long Unicode paths and blobs exceeding default child buffer (678.3937ms)
+✔ unpaired inline and display delimiters report the qid, field, exact token and reason (2.9797ms)
+✔ unpaired parenthesis and bracket wrappers are located without source mutation (0.3046ms)
+✔ choice object text/content/value/answer fields are inspected and preserved (0.3384ms)
+✔ paired inline/display wrappers, escaped dollars, plain math operators and code samples stay clear (0.2455ms)
+✔ a closed HTML code sample does not mask later visible TeX (0.1811ms)
+✔ existing --exam CLI emits the expanded review finding and keeps its exit status contract (95.1228ms)
+✔ legacy findings and explicit choice-value checks remain active (0.33ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15299.6999

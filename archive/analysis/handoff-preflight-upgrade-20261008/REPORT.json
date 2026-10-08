@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "ARCHIVE_CODEX_TOOL_UPGRADE_REPORT_V1",
+  "runId": "handoff-preflight-upgrade-20261008",
+  "baseMainSha": "06d61a1f124805ce39756dc89fcd912d474e029b",
+  "scope": "ROOT handoff, receipt preflight, unchanged-freeze scope planning and CREATE TeX candidates",
+  "tests": {
+    "combinedPassed": 31,
+    "combinedFailed": 0,
+    "combinedSkipped": 0,
+    "runtimeGuardPassed": 42,
+    "runtimeGuardFailed": 0,
+    "runtimeContract": "ARCHIVE2_RUNTIME_CONTRACT_V1_20261006",
+    "chromeAudit": "NOT_RUN_NO_UI_ENGINE_STORAGE_FLOW_CHANGE"
+  },
+  "productionExamsChanged": 0,
+  "historicalReceiptsRevalidated": 0,
+  "automaticAgentSpawn": false,
+  "backgroundScheduler": false,
+  "qualityVerdictsSynthesized": false,
+  "evidence": [
+    {
+      "path": "archive/analysis/handoff-preflight-upgrade-20261008/final-combined-tests.stdout.txt",
+      "sha256": "27cf90c5a4d3e0888436bba23763f1001bfc704ece909fd24752776e5f027ac6"
+    },
+    {
+      "path": "archive/analysis/handoff-preflight-upgrade-20261008/final-combined-tests.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "archive/analysis/handoff-preflight-upgrade-20261008/post-drift-runtime-guard.stdout.txt",
+      "sha256": "eeb341424a211e2c19428d0eb23880b1fd089b4bf4bd1eecdaa86decb2758d6f"
+    },
+    {
+      "path": "archive/analysis/handoff-preflight-upgrade-20261008/post-drift-runtime-guard.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "archive/analysis/handoff-preflight-upgrade-20261008/first-root-input-receipt.json",
+      "sha256": "74f7ce40529f74968768e5895143e4642db8022b4f1b5399ffbc9f301e2167ae"
+    }
+  ],
+  "files": [
+    {
+      "path": "archive/tools/archive-codex-handoff.mjs",
+      "sha256": "2c50d4f6d58e6ce3556e3f175e93d19e0d12c257689758a5b279e41f5997150b"
+    },
+    {
+      "path": "archive/tools/archive-codex-handoff.test.mjs",
+      "sha256": "9bfdee13729f26aff3ca04e7822ac43c831765e64750a6c6d50857cabf60d75e"
+    },
+    {
+      "path": "archive/tools/CODEX_HANDOFF.md",
+      "sha256": "8c7c35e87d787e46d6147d5ed7d8faba0685a63b8da5798d78d14a8380c3f7d3"
+    },
+    {
+      "path": "archive/tools/archive-create-preflight.mjs",
+      "sha256": "a5bff02b10d15ed738bb064ea0b4587b115dd24d35444be1fbc648fa5767d47e"
+    },
+    {
+      "path": "tests/archive-create-preflight.test.mjs",
+      "sha256": "8de026e761be4d398aecb442c5dc4cb6ad060a6ab35d822fb4985bc9dc9b2e9a"
+    },
+    {
+      "path": "archive/tools/CREATE_TEX_PREFLIGHT.md",
+      "sha256": "78df95e38f9599dabe798022c533e87eaf9105f2544cd1a75d083d2411be8201"
+    },
+    {
+      "path": "archive/tools/CODEX_MAINTENANCE.md",
+      "sha256": "4f2f76874d533923834989adb322c9eeb8fa920f5c4412fb54953297940d6c43"
+    }
+  ],
+  "limitations": [
+    "Wrapper returns routing plans; ROOT must remain active to dispatch workers.",
+    "Presentation changes require qualified worker freeze-validity review.",
+    "Schema-only report validation cannot prove execution; process capture is distinct.",
+    "Whole-run speedup not measured; regression tests verify reduced manual handoff paths, not pilot wall time."
+  ],
+  "recordedAt": "2026-10-08T14:54:23.951Z"
+}

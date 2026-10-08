@@ -1,5 +1,15 @@
 # Codex capture and scoped registration tools
 
+## 2026-10-08 — Handoff and notation preflight
+
+Use [CODEX_HANDOFF.md](CODEX_HANDOFF.md) for the ROOT-side `archive-codex-handoff.mjs` commands. They bind explicit absolute assignments, canonical reviewer IDs, real asset-parent directories, immutable freezes and actual validator process output. Verified completion acceptance releases the dispatcher slot and returns the next roster plan together. ROOT still performs agent dispatch and publication; the helper does not keep a chat running after its turn ends.
+
+`prepare-student` extracts student fields and asset dependencies from the actual current source. `scope-plan` preserves the old freeze identity and checks exact outside-scope student/asset parity; it emits a review plan, not a mathematical verdict. R1/R2 original freezes can be reused after source-byte changes only when the frozen and current student inputs remain valid. R3 targeted rows remain distinct from full artifact dispositions. Completed historical exams are not revalidated just to adopt these commands.
+
+The one-shot validator capture preserves stdout, stderr and exit status together. File-only report inspection establishes schema and physical binding, not proof that the validator process ran. Mathematical mismatches, unresolved reviews and item HOLDs remain worker/ROOT decisions and cannot become PASS through this helper.
+
+CREATE also uses the read-only [notation preflight](CREATE_TEX_PREFLIGHT.md) to flag unpaired math delimiters and bare TeX commands in content, solution and supported choice-object text fields. These findings require source/worker review; source text, choices and layout are never automatically rewritten. Actual Archive Engine render remains required under the current contract.
+
 ## CREATE preflight, immutable freeze, and stable completion
 
 `archive-create-preflight.mjs --exam <current-js> --evidence <draft-evidence>` reports actual item HOLD counts/reasons, missing TeX command backslashes inside math, bare math environments, and explicit simple final-value/choice-marker inconsistencies. `REVIEW_REQUIRED` requires the stage worker's source/math review; it never rewrites source or solves a question. A reasoned genuine HOLD is `CARRY_ITEM_HOLD`, preserving the CREATE→R1→R2 recovery path. R3 artifact validation rejects remaining `itemStatus:HOLD`. Initial preflight is separate from the one normal end-of-stage generic validator.
