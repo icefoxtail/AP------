@@ -94,13 +94,13 @@ window.questionBank = [
     ],
     "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 한다. $1\\le n\\le20$인 자연수 $n$ 중에서 $\\omega^n+\\overline{\\omega}^{\\,n}=2$를 만족하는 $n$의 개수는?",
     "choices": [
-      "4",
-      "5",
-      "6",
-      "7",
-      "8"
+      "2개",
+      "3개",
+      "4개",
+      "5개",
+      "6개"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] 켤레 허근의 거듭제곱도 주기가 $3$이다.\n$n$이 $3$의 배수이면 $\\omega^n=\\overline{\\omega}^{\\,n}=1$이므로 합이 $2$이다.\n그 외의 경우 두 거듭제곱은 $\\omega,\\overline{\\omega}$를 순서만 바꾸어 나타내므로 합은 $-1$이다.\n따라서 $1$부터 $20$까지 조건에 맞는 자연수는 $3,6,9,12,15,18$이고 개수는 $6$개이다.",
     "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
     "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
