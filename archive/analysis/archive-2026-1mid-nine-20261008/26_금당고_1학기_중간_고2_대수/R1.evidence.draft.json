@@ -1,0 +1,2465 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "26_금당고_1학기_중간_고2_대수",
+  "artifactSha": null,
+  "artifactRawSha256": null,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerId": "r1_06",
+  "workingPath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/26_금당고_1학기_중간_고2_대수.js",
+  "productionPath": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+  "assetRootAbsolute": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수",
+  "denominator": 21,
+  "expectedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "0027addc473516a231c606f235569722cafcc3a8d9b0c92bc29213f0aad45459",
+      "independentAnswer": "5 (choice ⑤; b^6)",
+      "originalFrozenIndependentAnswer": "5 (choice ⑤; b^6)",
+      "independentReasoning": "(b^3/a^2)^2=b^6/a^4 and (cube_root(a^4))^3=a^4 for a>0, so the product is b^6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "계산식의 양쪽 거듭제곱 변환과 최종 소거가 분리돼 있다.",
+      "solutionSha256": "ce60bbcc286346cdff4c74ac861dbbb1593e596420d53c7f3ab1a66e17b63705",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "직접 거듭제곱 법칙을 적용하는 기초 한 단계 계산이라 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ce60bbcc286346cdff4c74ac861dbbb1593e596420d53c7f3ab1a66e17b63705",
+          "decisiveStep": "지수법칙과 거듭제곱근 변환으로 공통 인수를 소거한다.",
+          "physicalStructure": "계산식의 양쪽 거듭제곱 변환과 최종 소거가 분리돼 있다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "직접 거듭제곱 법칙을 적용하는 기초 한 단계 계산이라 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "지수법칙과 거듭제곱근 변환으로 공통 인수를 소거한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "002c38e6229b6e3d85ca1cfaa63bfec2978278dcb126dc2980849a7a17436818",
+      "independentAnswer": "2 (choice ②; 1)",
+      "originalFrozenIndependentAnswer": "2 (choice ②; 1)",
+      "independentReasoning": "log_3 6+log_3 5=log_3 30 and 1/log_10 3=log_3 10; the difference is log_3 3=1.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "역수 항등식, 로그 결합, 최종값을 단계별로 제시한다.",
+      "solutionSha256": "623952e80e6b027f4fbfd879ac16dcab62564d285234d9e2df985d3e9e59cd97",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "역수·로그 성질을 바로 적용하는 직접형이라 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "623952e80e6b027f4fbfd879ac16dcab62564d285234d9e2df985d3e9e59cd97",
+          "decisiveStep": "로그의 곱셈 성질과 역수 관계로 하나의 밑으로 합친다.",
+          "physicalStructure": "역수 항등식, 로그 결합, 최종값을 단계별로 제시한다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "역수·로그 성질을 바로 적용하는 직접형이라 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "로그의 곱셈 성질과 역수 관계로 하나의 밑으로 합친다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "3815d1de183b723c81620a1e9a55a5573280b284a6f91e3996fdc3bc65b72332",
+      "independentAnswer": "1 (choice ①; a=1/3)",
+      "originalFrozenIndependentAnswer": "1 (choice ①; a=1/3)",
+      "independentReasoning": "The inverse of y=(1/3)^x is y=log_(1/3) x, so a=1/3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "지수식의 변수 교환과 로그 역함수 표기가 드러난다.",
+      "solutionSha256": "a5fe940d9fe4e74ed97ac11d16470cd60031516c854b5d78eebee9e42d348a40",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "역함수의 밑 보존 정의를 즉시 적용하므로 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "a5fe940d9fe4e74ed97ac11d16470cd60031516c854b5d78eebee9e42d348a40",
+          "decisiveStep": "지수함수와 같은 밑 로그함수의 역함수 관계를 쓴다.",
+          "physicalStructure": "지수식의 변수 교환과 로그 역함수 표기가 드러난다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-02",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H22-A-02-FUNCTION_INVERSE",
+          "subUnit": "역함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "역함수의 밑 보존 정의를 즉시 적용하므로 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "지수함수와 같은 밑 로그함수의 역함수 관계를 쓴다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "4396f2a143ca629712404191e476207c89f74258268e9ca185db9d243359494d",
+      "independentAnswer": "3 (choice ③; sqrt(3)/2)",
+      "originalFrozenIndependentAnswer": "3 (choice ③; sqrt(3)/2)",
+      "independentReasoning": "13pi/6=2pi+pi/6, hence cos(13pi/6)=cos(pi/6)=sqrt(3)/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "각 분해와 특수각 코사인값이 분리돼 있다.",
+      "solutionSha256": "863ea1fd12f8f0197f02e776328963a5cfb6e8b09e566d726d190d8ab847d203",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "주기성으로 한 바퀴를 제거하고 기본값을 쓰는 직접형이라 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "863ea1fd12f8f0197f02e776328963a5cfb6e8b09e566d726d190d8ab847d203",
+          "decisiveStep": "주기성을 이용해 기본 특수각으로 줄인다.",
+          "physicalStructure": "각 분해와 특수각 코사인값이 분리돼 있다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "주기성으로 한 바퀴를 제거하고 기본값을 쓰는 직접형이라 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "주기성을 이용해 기본 특수각으로 줄인다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "897f029c16482341b2cae6e21362315358517bf7f51707519f1971d4c8bf3b47",
+      "independentAnswer": "4 (choice ④; 2<=y<=4)",
+      "originalFrozenIndependentAnswer": "4 (choice ④; 2<=y<=4)",
+      "independentReasoning": "sin(2x) ranges from -1 to 1. Adding 3 gives range [2,4].",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "기본 범위, 상수 이동, 치역 결론이 순서대로 보인다.",
+      "solutionSha256": "4d69c240757aebc336251ff23dd72a2a9069ec60ad374c3c62a9425f4f6770dc",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "기본 사인 범위에 상수 이동만 적용하므로 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "4d69c240757aebc336251ff23dd72a2a9069ec60ad374c3c62a9425f4f6770dc",
+          "decisiveStep": "기본 사인 범위에 상수 이동을 적용한다.",
+          "physicalStructure": "기본 범위, 상수 이동, 치역 결론이 순서대로 보인다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+          "subUnit": "삼각함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "기본 사인 범위에 상수 이동만 적용하므로 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "기본 사인 범위에 상수 이동을 적용한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "192ffc4ba097df27ec54af69f9217a7918b5dfe99b82e108fafa0d99827f05f5",
+      "independentAnswer": "2 (choice ②; 360 degrees*n+20 degrees)",
+      "originalFrozenIndependentAnswer": "2 (choice ②; 360 degrees*n+20 degrees)",
+      "independentReasoning": "740=2*360+20, so the coterminal general-angle form is 360n+20 degrees.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "740도 분해와 일반각 결론을 차례로 제시한다.",
+      "solutionSha256": "2fc721ded3c20c37cef67f6ce812ba497f5795989bb288bc6a7bbf0427d5f791",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "reason": "360도 주기와 나머지 계산을 바로 적용하므로 bucket 1."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "2fc721ded3c20c37cef67f6ce812ba497f5795989bb288bc6a7bbf0427d5f791",
+          "decisiveStep": "360도 주기의 정수배와 나머지 각을 구한다.",
+          "physicalStructure": "740도 분해와 일반각 결론을 차례로 제시한다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "하",
+            "bucket": 1,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "360도 주기와 나머지 계산을 바로 적용하므로 bucket 1."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "360도 주기의 정수배와 나머지 각을 구한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "dd3a0685136f456961b0a07afc0042522c7f94c4d9dc3a6aa580db18f49c2946",
+      "independentAnswer": "1 (choice ①; 5)",
+      "originalFrozenIndependentAnswer": "1 (choice ①; 5)",
+      "independentReasoning": "For n=3, -2n^2+9n=9 gives one real cube root. For n=4 it is 4, giving two real fourth roots; n=5 it is -5, giving one real fifth root; n=6 it is -18, giving none; n=7 it is -35, giving one real seventh root. The sum is 1+2+1+0+1=5.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "다섯 n값이 각각 별도 줄에 계산되고 합산은 마지막 블록이다.",
+      "solutionSha256": "d79fefcc44265165b1b4404fbe4965a6abc79a661b75a6af01bfaf736179243c",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "홀짝·부호를 다섯 사례에 반복 적용하고 합산하는 표준 추론이라 bucket 3."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d79fefcc44265165b1b4404fbe4965a6abc79a661b75a6af01bfaf736179243c",
+          "decisiveStep": "radicand 부호와 지수 홀짝별로 실근 수를 센다.",
+          "physicalStructure": "다섯 n값이 각각 별도 줄에 계산되고 합산은 마지막 블록이다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "홀짝·부호를 다섯 사례에 반복 적용하고 합산하는 표준 추론이라 bucket 3."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "radicand 부호와 지수 홀짝별로 실근 수를 센다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "9ef6d2a963d30087b1651e52048163cb5e24aa8ee5d6c33bfae72ae55f0723d5",
+      "independentAnswer": "2 (choice ②; 3)",
+      "originalFrozenIndependentAnswer": "2 (choice ②; 3)",
+      "independentReasoning": "From y=2^x, at x=1 the ordinate is a=2. The marked ordinate 32 occurs at b=5. Thus b-a=5-2=3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "a,b를 각각 지수식으로 확인한 뒤 차를 계산한다.",
+      "solutionSha256": "a317c07f7f171115d079263c42a5cb9e0f32ff695032735d855e4c18a25c1da7",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "지수 그래프에서 두 대응값을 읽는 표준 전략이라 bucket 3 유지."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "a317c07f7f171115d079263c42a5cb9e0f32ff695032735d855e4c18a25c1da7",
+          "decisiveStep": "그래프에서 x=1과 y=32의 대응값을 읽는다.",
+          "physicalStructure": "a,b를 각각 지수식으로 확인한 뒤 차를 계산한다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-02",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+          "subUnit": "지수함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "지수 그래프에서 두 대응값을 읽는 표준 전략이라 bucket 3 유지."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "그래프에서 x=1과 y=32의 대응값을 읽는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "REQUIRED_PROBLEM_IMAGE_PRESERVED",
+          "assetRef": "assets/images/26_금당고_1학기_중간_고2_대수/q08.png",
+          "assetSha256": "693400f9855066dab410baca3633261b740a93dd6b7d5ca5655d53a5c860a46d",
+          "reason": "문제에서 값을 읽는 데 필요한 그래프 이미지이며 실제 파일을 열어 라벨·곡선·축의 연결을 확인하고 보존했다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "eb738a3a73720218c5647c9cfc60a064f904e0baf74495a3bcb08ac1e95c28a5",
+      "independentAnswer": "4 (choice ④; 1/2)",
+      "originalFrozenIndependentAnswer": "4 (choice ④; 1/2)",
+      "independentReasoning": "The vertical asymptote is x=-a=-2, so a=2. Substituting (6,0) gives 0=log_4(8)+b=3/2+b, hence b=-3/2 and a+b=1/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "점근선으로 a, 점 대입으로 b, 합 계산이 분리된다.",
+      "solutionSha256": "1faa285e0e2f1a80bbedc7cc996e98f8a85a1d701a1eb5cfbb23cf6f9606fbe2",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "점근선과 점의 두 조건을 연결하는 표준 문제라 bucket 3 유지."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "1faa285e0e2f1a80bbedc7cc996e98f8a85a1d701a1eb5cfbb23cf6f9606fbe2",
+          "decisiveStep": "점근선과 주어진 점으로 매개변수를 차례로 정한다.",
+          "physicalStructure": "점근선으로 a, 점 대입으로 b, 합 계산이 분리된다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-03",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+          "subUnit": "로그함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "점근선과 점의 두 조건을 연결하는 표준 문제라 bucket 3 유지."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "점근선과 주어진 점으로 매개변수를 차례로 정한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "5d29235880ebdd7f8b205a339fa987c6be64dff689dff866e28d98c2d3c891b9",
+      "independentAnswer": "5 (choice ⑤; 7/8)",
+      "originalFrozenIndependentAnswer": "5 (choice ⑤; 7/8)",
+      "independentReasoning": "(sin^2+cos^2)^2=1, so sin^4+cos^4=1-2sin^2cos^2=1-2(1/16)=7/8.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "항등식, 조건 대입, 최종값을 단계별로 추적한다.",
+      "solutionSha256": "3071f0ef30bbbbaebc61a6dabcbc583ac1d6836330faabd560b8ef6f397f49d4",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "항등식 변형과 곱 조건을 결합하는 표준 응용이라 bucket 3 유지."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3071f0ef30bbbbaebc61a6dabcbc583ac1d6836330faabd560b8ef6f397f49d4",
+          "decisiveStep": "네제곱합 항등식과 주어진 곱을 연결한다.",
+          "physicalStructure": "항등식, 조건 대입, 최종값을 단계별로 추적한다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "항등식 변형과 곱 조건을 결합하는 표준 응용이라 bucket 3 유지."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "네제곱합 항등식과 주어진 곱을 연결한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "83e77adfe48066c3bec93331e1a96243a3e5521030f0888ef7a9423a47791e33",
+      "independentAnswer": "3 (choice ③; 6pi/5)",
+      "originalFrozenIndependentAnswer": "3 (choice ③; 6pi/5)",
+      "independentReasoning": "sin(theta)cos(theta)>0 puts theta in quadrant I or III. The sum sin(theta)+cos(theta) is negative only in quadrant III. Of the choices, 6pi/5 lies in quadrant III.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "부호 조건, 제3사분면, 선택지 비교가 분리돼 있다.",
+      "solutionSha256": "e60dbaa7fa2dae3cc9ee4184ca305b087b02061dbdb0e4951c2f8b5c523dbc33",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "두 부호 조건을 사분면으로 연결하는 표준 추론이라 bucket 3 유지."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e60dbaa7fa2dae3cc9ee4184ca305b087b02061dbdb0e4951c2f8b5c523dbc33",
+          "decisiveStep": "곱·합 부호를 사분면 조건으로 바꾼다.",
+          "physicalStructure": "부호 조건, 제3사분면, 선택지 비교가 분리돼 있다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "두 부호 조건을 사분면으로 연결하는 표준 추론이라 bucket 3 유지."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "곱·합 부호를 사분면 조건으로 바꾼다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "93fde368e128d301dc206eef761d8ea4c193a34280c341848de5fbf94fe70b1a",
+      "independentAnswer": "1 (choice ①; theta=2)",
+      "originalFrozenIndependentAnswer": "1 (choice ①; theta=2)",
+      "independentReasoning": "The perimeter condition gives r(theta+2)=12. The area is A=(1/2)r^2 theta=72theta/(theta+2)^2, which is maximized for theta=2 (differentiate, or use symmetry of theta and 2).",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "둘레식·넓이식·완전제곱 부등식·등호 결론이 이어진다.",
+      "solutionSha256": "44aad6ffcbeadfe7480f4d4922e4952af00c3e3750f2a5f8d038f7acc8c61173",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "reason": "제약식 아래 넓이 최댓값을 증명하는 표준 최적화라 bucket 3 유지."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "44aad6ffcbeadfe7480f4d4922e4952af00c3e3750f2a5f8d038f7acc8c61173",
+          "decisiveStep": "둘레 조건을 넓이에 대입하고 최대 등호를 찾는다.",
+          "physicalStructure": "둘레식·넓이식·완전제곱 부등식·등호 결론이 이어진다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "중",
+            "bucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "제약식 아래 넓이 최댓값을 증명하는 표준 최적화라 bucket 3 유지."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "둘레 조건을 넓이에 대입하고 최대 등호를 찾는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "5a5668ca39f2afa9827813e5a2abbd601e7fa4cdac2b6d6fc807473dccb9f4d1",
+      "independentAnswer": "3 (choice ③; a+b=11)",
+      "originalFrozenIndependentAnswer": "3 (choice ③; a+b=11)",
+      "independentReasoning": "For n/3 to be a square, exponent a of 2 is even and b-1 is even, so b is odd. For n/2 to be a fifth power, a-1 and b are multiples of 5. The least compatible exponents are a=6 and b=5; a+b=11.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "두 소인수 지수 조건과 최소 지수가 실제 식으로 제시된다.",
+      "solutionSha256": "28fa009a7b92c913d7df5b0e845f3d2e60b979903d0917021aa8f7a42b585b0f",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "서로 다른 거듭제곱 조건을 소인수 지수 합동으로 구조화하므로 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "28fa009a7b92c913d7df5b0e845f3d2e60b979903d0917021aa8f7a42b585b0f",
+          "decisiveStep": "제곱수·다섯제곱수의 소인수 지수 조건을 동시에 맞춘다.",
+          "physicalStructure": "두 소인수 지수 조건과 최소 지수가 실제 식으로 제시된다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "서로 다른 거듭제곱 조건을 소인수 지수 합동으로 구조화하므로 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "제곱수·다섯제곱수의 소인수 지수 조건을 동시에 맞춘다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "1cdcb98a842d7d4b4ec45b28a5b5aa1525227bf3ba7d068857095431b1c7c99e",
+      "independentAnswer": "3 (choice ③; 4 digits)",
+      "originalFrozenIndependentAnswer": "3 (choice ③; 4 digits)",
+      "independentReasoning": "10^6<=a^4<10^7 implies 32<=a<=56. Since 10^12<=a*b^3<10^13 and a is in that range, b is between roughly 2.6 thousand and 6.8 thousand; therefore b has 4 digits.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "두 자릿수 범위와 b 범위의 부등식이 따로 보인다.",
+      "solutionSha256": "f455022de1fa1066a40e7e356a4b058cc355f7ad53df2504cd4adf4b8e891ebb",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "두 자릿수 제약을 연쇄 적용해 크기를 판정하는 구조화 문제라 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "f455022de1fa1066a40e7e356a4b058cc355f7ad53df2504cd4adf4b8e891ebb",
+          "decisiveStep": "두 자릿수 조건을 연쇄 부등식으로 바꾼다.",
+          "physicalStructure": "두 자릿수 범위와 b 범위의 부등식이 따로 보인다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "두 자릿수 제약을 연쇄 적용해 크기를 판정하는 구조화 문제라 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "두 자릿수 조건을 연쇄 부등식으로 바꾼다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "71fbb7355806ee02a7a7a7617d798d6c492ce2b982db1bbdba514f106ed3c3ad",
+      "independentAnswer": "4 (choice ④; 1/16)",
+      "originalFrozenIndependentAnswer": "4 (choice ④; 1/16)",
+      "independentReasoning": "Let t=log_2 x and A=log_2 a. The expression is (t-A)(2t-A)+2=2t^2-3At+A^2+2. Nonnegativity for all real t requires its discriminant 9A^2-8(A^2+2)=A^2-16<=0, so |A|<=4. The least a is 2^-4=1/16.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "치환, 판별식, A범위, 최소 a가 연결된다.",
+      "solutionSha256": "1e590d1ff074f79ce8c68fd18d61e48a9d24d989f2c3ecbfa655c52adffd9cf2",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "전구간 조건을 매개 이차식 판별식으로 바꾸는 상위 문제라 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "1e590d1ff074f79ce8c68fd18d61e48a9d24d989f2c3ecbfa655c52adffd9cf2",
+          "decisiveStep": "로그변수 치환과 판별식으로 전구간 부등식을 푼다.",
+          "physicalStructure": "치환, 판별식, A범위, 최소 a가 연결된다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-03",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+          "subUnit": "로그함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "전구간 조건을 매개 이차식 판별식으로 바꾸는 상위 문제라 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "로그변수 치환과 판별식으로 전구간 부등식을 푼다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "3bd6e71a23c82adb56dbc4a928f5388c838b9c4c0ebd65bddec1dc65a79a0b26",
+      "independentAnswer": "4 (choice ④; sqrt(3))",
+      "originalFrozenIndependentAnswer": "4 (choice ④; sqrt(3))",
+      "independentReasoning": "For P=(x,sqrt(x)), tan(theta)=1/sqrt(x), so sin^2(theta)=1/(x+1) and cos^2(theta)=x/(x+1). The condition gives (3x-1)/(x+1)=2, hence x=3 and the y-coordinate is sqrt(3).",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "사분면, 삼각비, 기울기, 좌표 결론이 순서대로 전개된다.",
+      "solutionSha256": "ec0b9827c5f12f1e974fdd587669170c22e01fedb4c67be7cf5475cdb1319f02",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "삼각비와 좌표 곡선 관계를 결합하는 복합 조건 문제라 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ec0b9827c5f12f1e974fdd587669170c22e01fedb4c67be7cf5475cdb1319f02",
+          "decisiveStep": "삼각비 조건을 곡선 위 좌표의 기울기와 연결한다.",
+          "physicalStructure": "사분면, 삼각비, 기울기, 좌표 결론이 순서대로 전개된다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-04",
+          "standardUnit": "삼각함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+          "subUnit": "삼각함수의 기본",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "삼각비와 좌표 곡선 관계를 결합하는 복합 조건 문제라 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "삼각비 조건을 곡선 위 좌표의 기울기와 연결한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "80ed8bff48b5d7214d2f63c6cf7aab2e412ee937efa8377ad2081630c2ede832",
+      "independentAnswer": "5 (choice ⑤; ㄱ, ㄷ)",
+      "originalFrozenIndependentAnswer": "5 (choice ⑤; ㄱ, ㄷ)",
+      "independentReasoning": "A_m consists of m^j<=100 for positive integers j. For m=3 there are 4 values (3,9,27,81), so ㄱ is true. For p=4, n(A_p)=3, an odd number despite p being even, so ㄴ is false. n(A_m)=1 exactly for integers 11<=m<=100, which gives 90 values; ㄷ is true.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "ㄱ·ㄴ·ㄷ이 실제 별도 문단으로 분리돼 있다.",
+      "solutionSha256": "30b94de1ad7bcfed09985bfbeb419c8b336da0819731a2e9af02d720c39297fc",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "유한 집합 개수와 일반 명제를 세 갈래로 판정하는 구조화 문제라 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Shared conditions remain grouped inside the note-box; current automatic grid disposition remains. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "30b94de1ad7bcfed09985bfbeb419c8b336da0819731a2e9af02d720c39297fc",
+          "decisiveStep": "A_m 원소의 거듭제곱 형태로 ㄱ·ㄴ·ㄷ을 각각 판정한다.",
+          "physicalStructure": "ㄱ·ㄴ·ㄷ이 실제 별도 문단으로 분리돼 있다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-LOGARITHMIC_FUNCTION",
+          "subUnit": "로그함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "유한 집합 개수와 일반 명제를 세 갈래로 판정하는 구조화 문제라 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "A_m 원소의 거듭제곱 형태로 ㄱ·ㄴ·ㄷ을 각각 판정한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "ac65c4003ee9a59b5513d732a7cd6868d03174f1a72425846c0a03aeda4ddbf6",
+      "independentAnswer": "2 (choice ②; -18)",
+      "originalFrozenIndependentAnswer": "2 (choice ②; -18)",
+      "independentReasoning": "f has asymptote x=4. Equality of the horizontal distances from x=4 for every y=t forces the logarithmic distance laws 2^t/3 and a^(-t)/|b| to agree for all t, hence a=1/2 and |b|=3. The shared asymptote gives c=-4b. Thus abc=(1/2)*b*(-4b)=-2b^2=-18.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "수평 교점 좌표와 절대거리 등식을 보이고 |b|를 보존하도록 수정됐다.",
+      "solutionSha256": "7fa7b568a8ce377bfaac342206dc6bf7d7047d6f6f1a95d8f2458486bfa7ac62",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "전 높이 거리 조건에서 지수 항등성으로 로그 매개변수를 식별하므로 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Shared conditions remain grouped inside the note-box; current automatic grid disposition remains. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7fa7b568a8ce377bfaac342206dc6bf7d7047d6f6f1a95d8f2458486bfa7ac62",
+          "decisiveStep": "모든 높이에서의 수평 거리 일치로 로그 매개변수를 찾는다.",
+          "physicalStructure": "수평 교점 좌표와 절대거리 등식을 보이고 |b|를 보존하도록 수정됐다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-03",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+          "subUnit": "로그함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "전 높이 거리 조건에서 지수 항등성으로 로그 매개변수를 식별하므로 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "모든 높이에서의 수평 거리 일치로 로그 매개변수를 찾는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "90ba001984d5608b119647ce5e8f288a0977b668eac640c3d8f461bf777b133d",
+      "independentAnswer": "3 (choice ⑤)",
+      "originalFrozenIndependentAnswer": "-6 (no matching choice)",
+      "independentReasoning": "The piecewise definition gives g(x)=a^{|f(x)|}. Since g(1)=16, the level equation g(x)=16 is |f(x)|=|f(1)|=d. The equation ||x-k|-4|=d has 3 real solutions only when d=4: the distance radii from k are 0 and 8, giving one point and two points. Thus ||1-k|-4|=4, so |1-k|=0 or 8 and k=1 or -7. Their sum is -6, which is absent from the listed choices.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerAdjudication": {
+        "originalAnswer": "-6 (no matching choice)",
+        "correctedAnswer": "3 (choice ⑤)",
+        "reason": "Complete student input was frozen before stored-answer disclosure. On postfreeze comparison, the condition ||1-k|-4|=4 gives |1-k|=0 or 8, hence k=1, -7, or 9. The original independent sum -6 omitted k=9; corrected sum is 1-7+9=3. Original freeze remains immutable; this is a same-stage calculation adjudication.",
+        "adjudicationSha256": "764357e82c49950c8514fc9908de3acdfbdf72789e8f62ca3543711f3fd538d1"
+      },
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "절댓값 레벨별 교점 수와 세 k 후보가 드러난다.",
+      "solutionSha256": "8223e12fcd3e6bb118c0c24dd368b0d421cd932cfa645f1fa6b0662119816269",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "절댓값 지수함수의 레벨 교점 수와 조건으로 매개변수를 회수하므로 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "8223e12fcd3e6bb118c0c24dd368b0d421cd932cfa645f1fa6b0662119816269",
+          "decisiveStep": "절댓값 함수의 level 교점 수를 세어 k 후보를 찾는다.",
+          "physicalStructure": "절댓값 레벨별 교점 수와 세 k 후보가 드러난다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-02",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+          "subUnit": "지수함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "절댓값 지수함수의 레벨 교점 수와 조건으로 매개변수를 회수하므로 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "절댓값 함수의 level 교점 수를 세어 k 후보를 찾는다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "2803665854bdbdf6d26125d0e1ac6a8f7c226ac08a825aaebc3652b4445e44db",
+      "independentAnswer": "13 ordered pairs",
+      "originalFrozenIndependentAnswer": "13 ordered pairs",
+      "independentReasoning": "The expression equals log_10(a+1)+log_10(b+1)=log_10((a+1)(b+1)). It is a natural number exactly when the product is 10, 100, or 1000, as 2<=a+1,b+1<=51. These give respectively 2, 7, and 4 ordered factor pairs, for a total of 13.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "13",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "로그변환과 10·100·1000의 ordered factor count가 보인다.",
+      "solutionSha256": "6c913e558cada43e185462782cec7f93e5f58a7de7e3f7c4e7ba51aca65c21cc",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "로그 정수 조건을 제한된 ordered divisor enumeration으로 바꾸므로 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6c913e558cada43e185462782cec7f93e5f58a7de7e3f7c4e7ba51aca65c21cc",
+          "decisiveStep": "로그 정수값을 10의 거듭제곱과 ordered factor pairs로 바꾼다.",
+          "physicalStructure": "로그변환과 10·100·1000의 ordered factor count가 보인다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-01",
+          "standardUnit": "지수와 로그",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H22-A-01-EXPONENT_LOG",
+          "subUnit": "지수와 로그",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "로그 정수 조건을 제한된 ordered divisor enumeration으로 바꾸므로 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "로그 정수값을 10의 거듭제곱과 ordered factor pairs로 바꾼다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityFingerprint": "63d52192f8538ad64c8604350a732ad74484f7ca9f9a56fc03878ccaae108d14",
+      "independentAnswer": "83/2",
+      "originalFrozenIndependentAnswer": "83/2",
+      "independentReasoning": "Put u=3^t>0. The vertical difference is D=3u^2-u+3^-k. For exactly two t-values with |D|=7/27, the level D=7/27 must have two positive roots; this requires 3^-k>7/27, so the natural k is 1. The roots have product (3^-1-7/27)/3=2/81, so p=log_3(2/81). Then (1/3)^p=3^-p=81/2 and k+3^-p=83/2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "frozenBeforeStoredAt": "2026-10-08T10:36:35.502Z",
+      "originalFreezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+      "storedAnswer": "83/2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "smallBoardContinuityReason": "치환, 두 level equation, 양의 근, p와 최종값이 분리된다.",
+      "solutionSha256": "ceb35455257b108ab78f1fe605386f76919ff859e59280d73f755893aa087044",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+      "difficultyReview": {
+        "status": "PASS",
+        "currentBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "reason": "지수 치환 뒤 교점 수와 양의 근 조건을 함께 추론하므로 bucket 4."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParityStatus": "PASS",
+          "choicesExactParityStatus": "PASS",
+          "reason": "Safe current student fields and choices match exactly. Complete formula/condition boundaries and automatic grid remain. Actual screen review stays with R3."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ceb35455257b108ab78f1fe605386f76919ff859e59280d73f755893aa087044",
+          "decisiveStep": "u=3^t 치환으로 두 교점 조건을 양의 이차근으로 해석한다.",
+          "physicalStructure": "치환, 두 level equation, 양의 근, p와 최종값이 분리된다."
+        },
+        "META": {
+          "status": "PASS_WITH_NULL_PROJECTION_DEBT",
+          "standardCourse": "대수",
+          "standardUnitKey": "H22-A-02",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+          "subUnit": "지수함수",
+          "subUnitConfidence": "category_or_cue_inferred",
+          "subUnitClassificationDepth": "complete_category",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SINGLE_TOPIC",
+          "difficulty": {
+            "level": "상",
+            "bucket": 4,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reason": "지수 치환 뒤 교점 수와 양의 근 조건을 함께 추론하므로 bucket 4."
+          },
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "archive/data/question_metadata.json",
+            "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+            "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+            "archive/data/master_tables/js_archive_tag_master.json"
+          ],
+          "projectionDisposition": "NO_EXACT_ACTIVE_H22_PROJECTION",
+          "nullReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+          "decisiveStep": "u=3^t 치환으로 두 교점 조건을 양의 이차근으로 해석한다."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "visualDisposition": "NO_SOLUTION_SVG_REQUIRED",
+          "assetRef": null,
+          "assetSha256": null,
+          "reason": "문제와 풀이의 수학적 의미를 텍스트·수식으로 확인할 수 있어 별도 풀이 SVG는 필요하지 않다."
+        }
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": null,
+    "rows": [
+      {
+        "qid": 1,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 2,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 3,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 4,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 5,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 6,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 7,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 8,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 9,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 10,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 11,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 12,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 13,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 14,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 15,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 16,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 17,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 18,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 19,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 20,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      {
+        "qid": 21,
+        "artifactSha": null,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "현재 high2 2022 개정 Algebra H22-A-01..04 범위의 question_metadata projection은 PT/TPL을 manual_review_pending으로 두고, 현재 runtime taxonomy에 이 범위의 exact active binding이 없다. 임의 nearest-match를 만들지 않고 실제 null projection debt를 보존한다.",
+        "problemTypeKey": null,
+        "templateKey": null
+      }
+    ]
+  },
+  "sourceBinding": {
+    "studentBundle": ".tmp/archive/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.student.json",
+    "studentBundleSha256": "4c90165da695a0f9e64098915a170c8a11142a1864cc6dff63baf239a08222bf",
+    "sourceRawSha256AtFreeze": "b8ee97d528afde38ec4727d280b904842c2ab434e5ce71e01d5353e855c1cb13",
+    "sourceRawSha256Current": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+    "studentParity": "EXACT",
+    "currentStudentParity": "EXACT",
+    "freezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.original-freeze.json",
+    "freezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+    "postfreezeDisclosure": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.postfreeze-disclosure.json",
+    "postfreezeDisclosureSha256": "0ca09c18871398d99df43b6481db00f38eae426137efec7112fe04b4b93b0591",
+    "adjudication": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.adjudication.json",
+    "adjudicationSha256": "764357e82c49950c8514fc9908de3acdfbdf72789e8f62ca3543711f3fd538d1",
+    "correctionDisclosure": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.postfreeze-disclosure-r1.json",
+    "correctionDisclosureSha256": "972c369683b8a3860a5c1467e3865f99b4044bd598981e66c88483cf5c197c7d"
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "fullIndependentAnswerFreeze": true,
+    "studentBundleSourceBound": true,
+    "freezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/R1.original-freeze.json",
+    "freezeSha256": "956d2377bdbaf2fc07b953f3735bda3b52e4a6f70c443c088ea6a69e34ecbaf6",
+    "studentParity": "EXACT",
+    "postfreezeQidLimitedDisclosure": true,
+    "postfreezeQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "postfreezeAdjudicationQids": [
+      19
+    ],
+    "noNewBlindSessionRequired": true
+  },
+  "sourceReview": {
+    "status": "CURRENT_STUDENT_BUNDLE_PARITY",
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "questionCount": 21,
+    "sourceRawSha256AtFreeze": "b8ee97d528afde38ec4727d280b904842c2ab434e5ce71e01d5353e855c1cb13",
+    "currentRawSha256": "48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+    "studentParity": "EXACT"
+  },
+  "answerReview": {
+    "status": "PASS_AFTER_ADJUDICATION",
+    "frozenQidCount": 21,
+    "matchedCount": 21,
+    "adjudicatedQids": [
+      19
+    ],
+    "heldQids": [],
+    "adjudicationReason": "Postfreeze calculation correction for omitted k=9; original freeze preserved."
+  },
+  "itemHoldCount": 0,
+  "itemHolds": [],
+  "changedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    18
+  ],
+  "directDependencyQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    18
+  ],
+  "openQids": [],
+  "nextRequiredAction": "R2 full blind answer sweep",
+  "qualityCompareCount": "21/21",
+  "solutionWorkMode": "INDEPENDENT_REVIEW",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$",
+        "observation": "Completes the square through explicit intermediate equalities, then tracks the center through each transformation while stating radius invariance before the final equation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 18,
+        "solutionSha256": "sha256:fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+        "solutionExcerpt": "먼저 조건 (가)\n$A\\cap X=X\\cup B$\n가 뜻하는 포함관계를 정리한다.",
+        "observation": "Turns set equality into nested inclusions, fixes the forced points, then counts valid subsets by subtracting the excluded case with visible powers and arithmetic."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:c4c073520584482e1bff97912f36f72024c5125eaca5c9ffd126da7a21fee041",
+        "solutionExcerpt": "빈칸은 앞에서 얻은 관계를 순서대로 따라가면 결정할 수 있다.\n점 $P(x_1,y_1)$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라고 하자.\n직선 $PH$의 기울기는",
+        "observation": "Defines coordinate variables, derives perpendicular slope and distance in separate equations, and carries the absolute value into the final distance expression."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 17,
+        "solutionSha256": "sha256:d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+        "solutionExcerpt": "먼저 주어진 직선을 평행이동한 뒤의 식을 구한다.\n원래 직선은\n$y=k(x+3)-5$이다.",
+        "observation": "Applies the translation by explicit variable substitution, simplifies line-by-line, then uses the common point to constrain the circle center and solves both coordinates."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+        "sha256": "sha256:5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+        "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "21/21",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  },
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$",
+            "observation": "Actual SVG centers and radii agree with the solution: (-3,1)→(-5,2)→(5,-2), same radius 62.5px and final equation.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "visualSha256": "sha256:c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualGitBlobSha": "d6922fb8bf801d2ef4fcb19fadea40f57bcbe778",
+            "visualObservation": "Actual SVG centers and radii agree with the solution: (-3,1)→(-5,2)→(5,-2), same radius 62.5px and final equation."
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.",
+            "observation": "The solution derives coefficient signs from the source graph then uses slope/intercepts; the three SVG boxes preserve that same sequence.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+            "visualSha256": "sha256:8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75",
+            "visualGitBlobSha": "2fae97d45ae3bb70bc9fa657727657f4f78af936",
+            "visualObservation": "The solution derives coefficient signs from the source graph then uses slope/intercepts; the three SVG boxes preserve that same sequence."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 8,
+            "solutionSha256": "sha256:c4c073520584482e1bff97912f36f72024c5125eaca5c9ffd126da7a21fee041",
+            "solutionExcerpt": "빈칸은 앞에서 얻은 관계를 순서대로 따라가면 결정할 수 있다.\n점 $P(x_1,y_1)$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라고 하자.\n직선 $PH$의 기울기는",
+            "observation": "Coordinate differences define the perpendicular foot and distance formula; the actual SVG connects P-H, the line, and projection guides.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
+            "visualSha256": "sha256:efa0e6c6ebf7966e025715922bfbf87d8d4295aa6f0c327d5813a642f0c22be4",
+            "visualGitBlobSha": "d822ca78787630d3daee59c7753feca1d8c080d8",
+            "visualObservation": "Coordinate differences define the perpendicular foot and distance formula; the actual SVG connects P-H, the line, and projection guides."
+          },
+          {
+            "qid": 17,
+            "solutionSha256": "sha256:d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+            "solutionExcerpt": "먼저 주어진 직선을 평행이동한 뒤의 식을 구한다.\n원래 직선은\n$y=k(x+3)-5$이다.",
+            "observation": "The three translated lines pass through (2,3); circle center, radius sqrt(13), and ab=4 agree with their coordinate data.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q17-solution.svg",
+            "visualSha256": "sha256:b0c7e00130a0213f97cf9865cff041ecc9439eab8a3a344b94eaf5f8592d0269",
+            "visualGitBlobSha": "335599fc17c6fe556f22c057d1cf27dcc938942f",
+            "visualObservation": "The three translated lines pass through (2,3); circle center, radius sqrt(13), and ab=4 agree with their coordinate data."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "The false-PASS fixture shows aggregate counts do not prove separately structured ㄱ/ㄴ/ㄷ blocks and that SVG labels must be checked against geometry.",
+      "svgPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "svgSha256": "sha256:5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+      "svgGitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52",
+      "svgObservation": "The labeled line and contact marker do not establish a true tangent from the actual line primitive coordinates."
+    }
+  },
+  "renderStatus": "NOT_RUN_R3_OWNER",
+  "actualRenderPassAsserted": false
+}

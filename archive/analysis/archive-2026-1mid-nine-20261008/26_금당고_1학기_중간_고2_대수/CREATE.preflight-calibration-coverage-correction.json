@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_COVERAGE_CORRECTION_V1",
+  "examUid": "26_금당고_1학기_중간_고2_대수",
+  "initialPreflightRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/CREATE.golden-negative-preflight.initial.json",
+  "initialPreflightSha256": "591c7ba13a576979c06689aedc6b59ec3898aa786a34bf4e79de812e719bf8a5",
+  "intermediateCalibrationRef": "archive/analysis/archive-2026-1mid-nine-20261008/26_금당고_1학기_중간_고2_대수/CREATE.golden-negative-preflight.after-negative-binding.json",
+  "correctionReviewRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\CREATE.golden-negative-preflight.json",
+  "correctionReviewSha256": "455b18cf7bd1ee53da70bfa0886ec081b719d6d72821a84c61ad7a55c984e15a",
+  "performedAfterAuthoringStarted": true,
+  "supplementalReadBeforeTargetReview": true,
+  "addedBindings": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qids": [
+        4,
+        8
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qids": [
+        8,
+        14
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qids": [
+        12,
+        14
+      ]
+    }
+  ],
+  "reason": "The initial pre-work calibration read one representative item per Golden. Current V2 requires at least two distinct question bindings per Golden file. Its initial Maesan q4 row also carried the q8 visual ref despite q4 having no solution image. This revision adds the missing actually read item rows and puts each visual binding on the matching qid; original preflight bytes are preserved separately.",
+  "intermediateCalibrationSha256": "8366f9d8e91fff0d2d65b170b7bd8a7fd41e092b7eddf4d9d34dd43e03dd7a33",
+  "firstBindingCorrectionReceiptSha256": "5fd4b2db6c92c5313e6db2fabced289225741dd9e6803233d678ff441a381260"
+}

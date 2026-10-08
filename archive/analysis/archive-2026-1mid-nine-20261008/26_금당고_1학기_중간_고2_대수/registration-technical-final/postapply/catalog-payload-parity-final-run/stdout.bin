@@ -1,0 +1,31 @@
+{
+  "status": "PASS_CANONICAL_HEADER_REPAIR_ONLY",
+  "checks": {
+    "targetSourceHashMatchesCleanLf": true,
+    "targetCoverage21": true,
+    "targetCanonicalAndPackageParity": true,
+    "nonTarget12966DeepParity": true,
+    "allDecodedRecordsCanonical": true,
+    "packingColumnDictionaryParity": true,
+    "indexVersionOnlyDecodedHeaderDrift": true,
+    "manifestIndexProjectionAndCatalogDigestRepairOnly": true
+  },
+  "decodedTopLevelDifferences": [
+    "indexVersion"
+  ],
+  "manifestTopLevelDifferences": [
+    "generatedFromCatalogIndexVersion",
+    "projectionVersion",
+    "files"
+  ],
+  "manifestFileDiffPaths": [
+    "data/archive2-catalog.json"
+  ],
+  "packedTopLevelDifferences": [
+    "indexVersion"
+  ],
+  "currentCatalogSha256": "e0125e501b4331603b14ad6edbdec22f4733d11ea1b4a2f5571bdb88c0b46ede",
+  "candidateCatalogSha256": "bdf683da747af521f9e0ff78052de5bf43e2565655a1d03473837bf2033e9235",
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_금당고_1학기_중간_고2_대수\\registration-technical-final\\catalog-payload-parity.final.json",
+  "reportSha256": "6c271e8103cdcb8bece4ec6255a1f3931a27203c6170c0ae6d9bd054ef6d0a03"
+}
