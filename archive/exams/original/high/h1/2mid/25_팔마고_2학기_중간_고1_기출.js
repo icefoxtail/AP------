@@ -2,17 +2,13 @@ window.examTitle = "25_팔마고_2학기_중간_고1_기출";
 window.questionBank = [
   {
     "id": 1,
-    "level": "하",
+    "level": "중",
     "category": "집합",
     "originalCategory": "집합",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -23,7 +19,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 집합을 말한 학생은? [3.5점]",
     "choices": [
-      "차은: 축구를 잘하는 학생의 모임",
+      "치은: 축구를 잘하는 학생의 모임",
       "서진: 0보다 작은 정수의 모임",
       "수지: 날개가 아름다운 새들의 모임",
       "태호: 1에 가까운 수의 모임",
@@ -34,57 +30,47 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "level": "하",
+    "level": "중",
     "category": "명제",
     "originalCategory": "명제",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-06",
     "standardUnit": "명제",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C2-06-CORE",
-    "subUnit": "명제 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "명제",
-      "조건",
-      "부정"
+      "조건의 부정"
     ],
     "wide": false,
-    "content": "다음 중 조건 $p: |x|>2$의 부정으로 옳은 것을 고르시오. [3.5점]",
+    "content": "다음 중 조건 $p:|x|>2$의 부정으로 옳은 것을 고르시오. [3.5점]",
     "choices": [
-      "$\\sim p: |x|<2$",
-      "$\\sim p: |x|\\le 2$",
-      "$\\sim p: |x|\\ge 2$",
-      "$\\sim p: |x|<-2$",
-      "$\\sim p: |x|\\le -2$"
+      "$\\sim p:|x|<2$",
+      "$\\sim p:|x|\\le2$",
+      "$\\sim p:|x|\\ge2$",
+      "$\\sim p:|x|<-2$",
+      "$\\sim p:|x|\\le-2$"
     ],
     "answer": "",
     "solution": ""
   },
   {
     "id": 3,
-    "level": "하",
+    "level": "중",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 방정식",
-      "원",
-      "중심",
+      "원의 중심",
       "반지름"
     ],
     "wide": false,
@@ -108,17 +94,13 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
-    "subUnit": "평면좌표와 거리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "평면좌표",
       "두 점 사이의 거리",
-      "최솟값"
+      "삼각부등식"
     ],
     "wide": false,
     "content": "두 실수 $a,b$에 대하여 $\\sqrt{(a+1)^2+(b-2)^2}+\\sqrt{(2-a)^2+(6-b)^2}$의 최솟값은? [3.7점]",
@@ -134,25 +116,20 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "하",
+    "level": "중",
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "subUnitKey": "H22-C2-02-RELATION",
-    "subUnit": "두 직선의 관계",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "직선의 방정식",
       "수직이등분선",
-      "두 점",
-      "선분"
+      "중점"
     ],
     "wide": false,
     "content": "두 점 $A(4,-1)$, $B(-2,2)$를 잇는 선분 $AB$의 수직이등분선의 방정식을 구하시오. [3.7점]",
@@ -168,24 +145,20 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "하",
+    "level": "중",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 방정식",
-      "원과 직선",
-      "교점"
+      "원과 직선의 위치 관계",
+      "정수 범위"
     ],
     "wide": false,
     "content": "원 $x^2+y^2=5$와 직선 $x-2y+a=0$이 만날 때, 정수 $a$의 개수를 구하시오. [3.7점]",
@@ -208,21 +181,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
     "standardUnitOrder": 4,
-    "subUnitKey": "H22-C2-04-CORE",
-    "subUnit": "도형의 이동 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형의 이동",
-      "원",
-      "평행이동",
-      "이등분선"
+      "원의 평행이동",
+      "원의 중심"
     ],
     "wide": false,
-    "content": "원 $C_1: x^2+(y-1)^2=1$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $6$만큼 평행이동한 원을 $C_2$라고 하자. 두 원 $C_1$, $C_2$의 넓이를 동시에 이등분하는 직선 $l$의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은? (단, $m,n$은 상수이다.) [4점]",
+    "content": "원 $C_1:x^2+(y-1)^2=1$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $6$만큼 평행이동한 원을 $C_2$라고 하자. 두 원 $C_1,C_2$의 넓이를 동시에 이등분하는 직선 $l$의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은? (단, $m,n$은 상수이다.) [4점]",
     "choices": [
       "$1$",
       "$2$",
@@ -242,10 +210,6 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -256,7 +220,7 @@ window.questionBank = [
       "원소의 개수"
     ],
     "wide": false,
-    "content": "전체집합 $U=\\{x\\mid x\\text{는 }100\\text{ 이하의 자연수}\\}$의 부분집합 $A_k=\\{x\\mid x\\text{는 자연수 }k\\text{의 배수}\\}$에 대하여 $n(A_6\\cup A_9)$을 구하시오. (단, $n(A)$는 집합 $A$의 원소의 개수이다.) [4점]",
+    "content": "전체집합 $U=\\{x\\mid x$는 $100$ 이하의 자연수$\\}$의 부분집합 $A_k=\\{x\\mid x$는 자연수 $k$의 배수$\\}$에 대하여 $n(A_6\\cup A_9)$를 구하시오. (단, $n(A)$는 집합 $A$의 원소의 개수이다.) [4점]",
     "choices": [
       "$5$",
       "$11$",
@@ -276,18 +240,13 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
-    "subUnit": "평면좌표와 거리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "평면좌표",
-      "내분점",
-      "무게중심",
-      "삼각형"
+      "선분의 내분점",
+      "무게중심"
     ],
     "wide": false,
     "content": "다음 그림과 같이 좌표평면 위의 세 점 $O(0,0)$, $A(6,0)$, $B(3,6)$에 대하여 세 선분 $OA$, $AB$, $BO$를 각각 $3:1$로 내분하는 점을 $C$, $D$, $E$라고 하자. 삼각형 $CDE$의 무게중심을 $(a,b)$라고 할 때, $a+b$의 값은? [4점]",
@@ -301,8 +260,8 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q09.svg",
-    "imageAlt": "삼각형 OAB와 세 변의 내분점 C D E",
-    "imageSize": "medium"
+    "imageAlt": "9번 문항 원본의 도형·그래프를 원문 좌표와 집합 관계대로 재구성한 그림",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -313,10 +272,6 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -338,8 +293,8 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q10.svg",
-    "imageAlt": "전체집합 U와 집합 A B C, A와 B에만 속하는 부분을 음영으로 표시한 벤다이어그램",
-    "imageSize": "medium"
+    "imageAlt": "10번 문항 원본의 도형·그래프를 원문 좌표와 집합 관계대로 재구성한 그림",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -350,27 +305,22 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-06",
     "standardUnit": "명제",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C2-06-CORE",
-    "subUnit": "명제 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "명제",
       "필요조건",
-      "충분조건",
-      "조건"
+      "충분조건"
     ],
     "wide": false,
     "content": "두 조건 $p,q$에 대하여 다음 중 $p$는 $q$이기 위한 필요조건이지만 충분조건은 아닌 것을 고르시오. (단, $x,y$는 실수) [4.3점]",
     "choices": [
-      "$p: xy$가 홀수<br>$q: x+y$가 짝수",
-      "$p: -1<x<1$<br>$q: (x+3)(x-2)\\le0$",
-      "$p: |x|<|y|$<br>$q: x<y$",
-      "$p: x^2+y^2=0$<br>$q: |x|+|y|=0$",
-      "$p: xz=yz$<br>$q: x=y$"
+      "$p:xy$가 홀수<br>$q:x+y$가 짝수",
+      "$p:-1<x<1$<br>$q:(x+3)(x-2)\\le0$",
+      "$p:|x|<|y|$<br>$q:x<y$",
+      "$p:x^2+y^2=0$<br>$q:|x|+|y|=0$",
+      "$p:xz=yz$<br>$q:x=y$"
     ],
     "answer": "",
     "solution": ""
@@ -384,21 +334,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 방정식",
       "접선",
-      "현",
-      "점과 직선 사이의 거리"
+      "접점의 현"
     ],
     "wide": false,
-    "content": "점 $(-3,4)$에서 원 $x^2+y^2=10$에 그은 두 접선이 원과 만나는 점을 각각 $P$, $Q$라고 할 때 원의 중심과 직선 $PQ$ 사이의 거리는? [4.3점]",
+    "content": "점 $(-3,4)$에서 원 $x^2+y^2=10$에 그은 두 접선이 원과 만나는 점을 각각 $P,Q$라고 할 때, 원의 중심과 직선 $PQ$ 사이의 거리는? [4.3점]",
     "choices": [
       "$1$",
       "$2$",
@@ -418,21 +363,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "집합",
-      "조건",
-      "집합의 개수",
+      "조건을 만족하는 집합",
       "부분집합"
     ],
     "wide": false,
-    "content": "정수 전체의 집합의 공집합이 아닌 부분집합 중 다음 &lt;조건&gt;을 만족시키는 집합 $A$의 개수를 구하시오. [4.5점]<br><br>〈조건〉<br>ㄱ. 집합 $A$의 모든 원소의 곱은 양수이다.<br>ㄴ. $x\\in A$이면 $\\dfrac{6}{x}$는 정수이다.",
+    "content": "정수 전체의 집합의 공집합이 아닌 부분집합 중 다음 <조건>을 만족시키는 집합 $A$의 개수를 구하시오. [4.5점]<div style=\"border:1px solid #555;padding:9px;margin-top:10px\"><strong>〈조건〉</strong><br>ㄱ. 집합 $A$의 모든 원소의 곱은 양수이다.<br>ㄴ. $x\\in A$이면 $\\dfrac6x$는 정수이다.</div>",
     "choices": [
       "$15$",
       "$16$",
@@ -452,20 +392,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-06",
     "standardUnit": "명제",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C2-06-CORE",
-    "subUnit": "명제 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "명제",
       "명제의 부정",
-      "이차부등식"
+      "이차함수"
     ],
     "wide": false,
-    "content": "명제 ‘모든 $x$에 대하여 $-x^2+ax-5<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위를 구하시오. [4.5점]",
+    "content": "명제 '모든 $x$에 대하여 $-x^2+ax-5<0$이다.'의 부정이 참이 되도록 하는 실수 $a$의 값의 범위를 구하시오. [4.5점]",
     "choices": [
       "$a\\le-2\\sqrt5$ 또는 $a\\ge2\\sqrt5$",
       "$-2\\sqrt5\\le a\\le2\\sqrt5$",
@@ -485,21 +421,16 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-04",
     "standardUnit": "도형의 이동",
     "standardUnitOrder": 4,
-    "subUnitKey": "H22-C2-04-CORE",
-    "subUnit": "도형의 이동 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형의 이동",
-      "원",
-      "평행이동",
+      "원의 평행이동",
       "대칭이동"
     ],
     "wide": false,
-    "content": "두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 각각 그림과 같은 원일 때, &lt;보기&gt;에서 옳은 것을 모두 고른 것은? [4.5점]<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x-1,y+2)$<br>ㄴ. $g(x,y)=f(-x-1,-y)$<br>ㄷ. $g(x,y)=f(y+1,x)$",
+    "content": "두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 각각 그림과 같은 원일 때, 보기에서 옳은 것을 모두 고른 것은? [4.5점]<div style=\"border:1px solid #555;padding:9px;margin-top:10px\"><strong>〈보기〉</strong><br>ㄱ. $g(x,y)=f(x-1,y+2)$<br>ㄴ. $g(x,y)=f(-x-1,-y)$<br>ㄷ. $g(x,y)=f(y+1,x)$</div>",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -510,8 +441,8 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q15.svg",
-    "imageAlt": "두 좌표평면과 원, 첫째 중심 0 1 반지름 1, 둘째 중심 1 -1 반지름 1",
-    "imageSize": "medium"
+    "imageAlt": "15번 문항 원본의 도형·그래프를 원문 좌표와 집합 관계대로 재구성한 그림",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -522,10 +453,6 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -533,10 +460,10 @@ window.questionBank = [
       "집합",
       "부분집합",
       "여집합",
-      "차집합"
+      "드모르간의 법칙"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $B\\subset\\{U-(A^C\\cup B^C)\\}$일 때, 다음 보기 중 항상 옳은 것을 모두 고르시오. [4.8점]<br><br>〈보기〉<br>ㄱ. $(A\\cap B)^C=U-B$<br>ㄴ. $A\\cap(A-B)^C=A$<br>ㄷ. $(A^C\\cup B)^C=\\varnothing$<br>ㄹ. $(B-A)\\cup(A^C-B^C)=\\varnothing$",
+    "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $B\\subset\\{U-(A^C\\cup B^C)\\}$일 때, 다음 보기 중 항상 옳은 것을 모두 고르시오. [4.8점]<div style=\"border:1px solid #555;padding:9px;margin-top:10px\"><strong>〈보기〉</strong><br>ㄱ. $(A\\cap B)^C=U-B$<br>ㄴ. $A\\cap(A-B)^C=A$<br>ㄷ. $(A^C\\cup B)^C=\\varnothing$<br>ㄹ. $(B-A)\\cup(A^C-B^C)=\\varnothing$</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -556,21 +483,17 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 방정식",
-      "원",
-      "삼각형",
-      "최솟값"
+      "원의 방정식",
+      "최단거리",
+      "삼각형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 원 $x^2+y^2=4$에 대하여 원과 $x$축의 교점 중 하나를 $A(2,0)$, 원과 직선 $y=x$의 교점 중 하나를 $B(\\sqrt2,\\sqrt2)$라고 하자. 선분 $AB$ 위를 움직이는 점을 $P$, 선분 $OB$ 위를 움직이는 점을 $Q$, 선분 $OA$ 위를 움직이는 점을 $R$라고 할 때, 삼각형 $PQR$의 둘레의 길이에 대한 최솟값을 구하시오. (단, $O$는 원점) [4.8점]",
+    "content": "다음 그림과 같은 원 $x^2+y^2=4$에 대하여 원과 $x$축의 교점 중 하나를 $A(2,0)$, 원과 직선 $y=x$의 교점 중 하나를 $B(\\sqrt2,\\sqrt2)$라고 하자. 호 $AB$ 위를 움직이는 점을 $P$, 선분 $OB$ 위를 움직이는 점을 $Q$, 선분 $OA$ 위를 움직이는 점을 $R$라고 할 때, 삼각형 $PQR$의 둘레의 길이에 대한 최솟값을 구하시오. (단, $O$는 원점) [4.8점]",
     "choices": [
       "$\\sqrt2$",
       "$2$",
@@ -581,22 +504,18 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q17.svg",
-    "imageAlt": "원 x제곱 더하기 y제곱은 4, 직선 y=x, A B P Q R의 위치",
-    "imageSize": "large"
+    "imageAlt": "17번 문항 원본의 도형·그래프를 원문 좌표와 집합 관계대로 재구성한 그림",
+    "imageSize": "full"
   },
   {
     "id": 18,
-    "level": "상",
+    "level": "중",
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
-    "subUnit": "평면좌표와 거리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -620,30 +539,26 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "상",
+    "level": "중",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 방정식",
-      "원",
-      "반원",
-      "직선과 곡선의 교점"
+      "원과 직선",
+      "교점의 개수",
+      "반원"
     ],
     "wide": false,
     "content": "그림과 같이 좌표평면 위에 원 $x^2+y^2=16$과 반지름의 길이가 $2$인 반원 두 개로 이루어진 태극문양이 있다. 태극문양과 직선 $y=m(x+2)$이 서로 다른 다섯 개의 점에서 만나게 되는 실수 $m$의 값의 범위는? [5.2점]",
     "choices": [
-      "$0<m<\\dfrac{\\sqrt3}{3}$",
+      "$0<m<\\dfrac{\\sqrt3}3$",
       "$0<m<1$",
       "$0<m<\\sqrt3$",
       "$-\\sqrt3<m<0$",
@@ -652,8 +567,8 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "image": "assets/images/25_팔마고_2학기_중간_고1_기출/q19.svg",
-    "imageAlt": "좌표축과 원 x제곱 더하기 y제곱 16 및 좌우 두 반원으로 이루어진 태극 문양",
-    "imageSize": "medium"
+    "imageAlt": "19번 문항 원본의 도형·그래프를 원문 좌표와 집합 관계대로 재구성한 그림",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -664,10 +579,6 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-05",
     "standardUnit": "집합",
     "standardUnitOrder": 5,
-    "subUnitKey": "H22-C2-05-CORE",
-    "subUnit": "집합 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -675,11 +586,10 @@ window.questionBank = [
       "집합",
       "합집합",
       "교집합",
-      "최솟값",
-      "최댓값"
+      "포함배제"
     ],
     "wide": false,
-    "content": "[서술형1] 마팔고 1학년 9반 학생들 30명을 대상으로 영어 학원과 수학 학원을 다니는지 조사하였다. 영어 학원을 다니는 학생이 17명, 수학 학원을 다니는 학생이 20명이었다. 영어 학원과 수학 학원을 모두 다니는 학생 수의 최솟값과 최댓값을 각각 구하고, 그 과정과 함께 서술하시오. [4점]",
+    "content": "[서술형1] 마팔고 1학년 9반 학생들 $30$명을 대상으로 영어 학원과 수학 학원을 다니는지 조사하였더니, 영어 학원을 다니는 학생이 $17$명, 수학 학원을 다니는 학생이 $20$명이었다. 영어 학원과 수학 학원을 모두 다니는 학생 수의 최솟값과 최댓값을 각각 구하고, 그 과정과 함께 서술하시오. [4점]",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -693,76 +603,62 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-06",
     "standardUnit": "명제",
     "standardUnitOrder": 6,
-    "subUnitKey": "H22-C2-06-CORE",
-    "subUnit": "명제 핵심 개념",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
       "명제",
       "진리집합",
-      "필요충분조건",
-      "명제의 역"
+      "필요충분조건"
     ],
     "wide": false,
-    "content": "[서술형2] 두 조건 $p,q$가 다음과 같을 때, 다음 물음에 답하시오. (단, $x$는 실수이다.)<br><br>$p:x^2+4x-5\\le0$, $q:|x-2|<1$ [총 5점]<br><br>1) 두 조건 $p,q$의 진리집합을 각각 $P,Q$라고 할 때, 집합 $P,Q$를 각각 구하시오. [2점]<br><br>2) 명제 ‘$r$이면 $\\sim p$이다.’가 참이고 그 역도 참일 때, $r$은 $q$이기 위한 어떤 조건인지 쓰고 그 근거를 서술하시오. [3점]",
+    "content": "[서술형2] 두 조건 $p,q$가 다음과 같을 때, 다음 물음에 답하시오. (단, $x$는 실수이다.)<div style=\"margin:8px 0\">$p:x^2+4x-5\\le0,\\quad q:|x-2|<1$</div>[총 5점]<div style=\"margin-top:12px\">1) 두 조건 $p,q$의 진리집합을 각각 $P,Q$라고 할 때, 집합 $P,Q$를 각각 구하시오. [2점]</div><div style=\"margin-top:14px\">2) 명제 '$r$이면 $\\sim p$이다.'가 참이고 그 역도 참일 때, $r$은 $q$이기 위한 어떤 조건인지 쓰고 그 근거를 서술하시오. [3점]</div>",
     "choices": [],
     "answer": "",
     "solution": ""
   },
   {
     "id": 22,
-    "level": "상",
-    "category": "원의 방정식",
-    "originalCategory": "원의 방정식",
-    "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-03",
-    "standardUnit": "원의 방정식",
-    "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
-    "questionType": "서술형",
-    "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "원의 방정식",
-      "세 직선",
-      "외접원",
-      "원의 방정식"
-    ],
-    "wide": false,
-    "content": "[서술형3] 세 직선<br>$l:x-3y=0$, $m:3x+y=0$, $n:x+2y-10=0$으로 둘러싸인 삼각형의 외접원의 방정식을 풀이 과정과 함께 서술하시오. [5점]",
-    "choices": [],
-    "answer": "",
-    "solution": ""
-  },
-  {
-    "id": 23,
-    "level": "상",
+    "level": "중",
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "subUnitKey": "H22-C2-02-RELATION",
-    "subUnit": "두 직선의 관계",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
       "직선의 방정식",
+      "세 직선",
+      "외접원"
+    ],
+    "wide": false,
+    "content": "[서술형3] 세 직선 $l:x-3y=0$, $m:3x+y=0$, $n:x+2y-10=0$으로 둘러싸인 삼각형의 외접원의 방정식을 풀이 과정과 함께 서술하시오. [5점]",
+    "choices": [],
+    "answer": "",
+    "solution": ""
+  },
+  {
+    "id": 23,
+    "level": "중",
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "평면좌표",
       "점과 직선 사이의 거리",
       "사각형 넓이"
     ],
     "wide": false,
-    "content": "[서술형4] 서로 다른 네 점 $P_1,P_2,P_3,P_4$가 있다. $4$이하의 모든 자연수 $n$에 대하여 점 $P_n$과 두 직선 $x=0$, $y=\\dfrac43x$사이의 거리가 모두 $2$일 때, 네 점 $P_1,P_2,P_3,P_4$를 꼭짓점으로 하는 사각형의 넓이를 풀이 과정과 함께 서술하시오. [6점]",
+    "content": "[서술형4] 서로 다른 네 점 $P_1,P_2,P_3,P_4$가 있다. $4$ 이하의 모든 자연수 $n$에 대하여 점 $P_n$과 두 직선 $x=0$, $y=\\dfrac43 x$ 사이의 거리가 모두 $2$일 때, 네 점 $P_1,P_2,P_3,P_4$를 꼭짓점으로 하는 사각형의 넓이를 풀이 과정과 함께 서술하시오. [6점]",
     "choices": [],
     "answer": "",
     "solution": ""
