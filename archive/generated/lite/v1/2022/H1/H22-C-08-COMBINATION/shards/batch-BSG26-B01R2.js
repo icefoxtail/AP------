@@ -59,7 +59,7 @@ window.questionBank = [
       "조합"
     ],
     "wide": false,
-    "content": "$\\binom94-\\binom84$의 값은?",
+    "content": "$\\binom{9}{4}-\\binom{8}{4}$의 값은?",
     "choices": [
       "$35$",
       "$56$",
@@ -68,7 +68,7 @@ window.questionBank = [
       "$126$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 파스칼의 조합 관계를 이용한다.\n$\\binom94=\\binom84+\\binom83$이므로 주어진 식은 $\\binom83$과 같다.\n$\\binom83=\\dfrac{8\\times7\\times6}{3\\times2\\times1}=56$이다.\n직접 계산해도 $126-70=56$으로 일치한다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 파스칼의 조합 관계를 이용한다.\n$\\binom{9}{4}=\\binom{8}{4}+\\binom{8}{3}$이므로 주어진 식은 $\\binom{8}{3}$과 같다.\n$\\binom{8}{3}=\\dfrac{8\\times7\\times6}{3\\times2\\times1}=56$이다.\n직접 계산해도 $126-70=56$으로 일치한다.\n따라서 정답은 ②이다.",
     "sourceType": "generated",
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
@@ -96,7 +96,7 @@ window.questionBank = [
       "조합"
     ],
     "wide": false,
-    "content": "자연수 $n\\ge3$에 대하여 $\\binom n3=4\\binom n2$일 때, $n$의 값은?",
+    "content": "자연수 $n\\ge3$에 대하여 $\\binom{n}{3}=4\\binom{n}{2}$일 때, $n$의 값은?",
     "choices": [
       "$8$",
       "$11$",
@@ -105,7 +105,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 인접한 두 조합의 비를 정리한다.\n$\\dfrac{\\binom n3}{\\binom n2}=\\dfrac{n-2}{3}$이므로 $\\dfrac{n-2}{3}=4$이다.\n따라서 $n-2=12$이고 $n=14$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 인접한 두 조합의 비를 정리한다.\n$\\dfrac{\\binom{n}{3}}{\\binom{n}{2}}=\\dfrac{n-2}{3}$이므로 $\\dfrac{n-2}{3}=4$이다.\n따라서 $n-2=12$이고 $n=14$이다.\n따라서 정답은 ④이다.",
     "sourceType": "generated",
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
@@ -133,7 +133,7 @@ window.questionBank = [
       "조합"
     ],
     "wide": false,
-    "content": "자연수 $n\\ge5$가 $\\binom n2=\\binom n5$를 만족할 때, $n$의 값은?",
+    "content": "자연수 $n\\ge5$가 $\\binom{n}{2}=\\binom{n}{5}$를 만족할 때, $n$의 값은?",
     "choices": [
       "$5$",
       "$6$",
@@ -142,7 +142,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 조합의 대칭성과 선택 개수의 관계를 살핀다.\n$\\binom nr=\\binom n{n-r}$이다. $n\\ge5$에서 $\\binom n2=\\binom n5$가 성립하려면 대칭인 두 개수가 $2$와 $5$가 되어 $n-2=5$이다.\n따라서 $n=7$이고 실제로 $\\binom72=\\binom75=21$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 조합의 정의를 전개하여 자연수 $n$을 결정한다.\n$\\binom{n}{2}=\\binom{n}{5}$의 양변을 계승으로 나타내고, 양수 $\\binom{n}{2}$로 나누면\n$\\dfrac{(n-2)(n-3)(n-4)}{60}=1$이다.\n$n\\ge5$에서 왼쪽 분자는 $n$이 커질수록 엄격하게 증가한다.\n$n=7$이면 $5\\times4\\times3=60$이므로 유일한 자연수해는 $n=7$이다.\n따라서 정답은 ③이다.",
     "sourceType": "generated",
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
@@ -179,7 +179,7 @@ window.questionBank = [
       "$64$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 순서를 구별하는지에 따라 순열과 조합을 구분한다.\n대표만 두 명 고르면 $a=\\binom82=\\dfrac{8\\times7}{2}=28$이다.\n역할이 다른 회장과 부회장을 정하면 $b=8\\times7=56$이다.\n따라서 $b-a=56-28=28$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 순서를 구별하는지에 따라 순열과 조합을 구분한다.\n대표만 두 명 고르면 $a=\\binom{8}{2}=\\dfrac{8\\times7}{2}=28$이다.\n역할이 다른 회장과 부회장을 정하면 $b=8\\times7=56$이다.\n따라서 $b-a=56-28=28$이다.\n따라서 정답은 ③이다.",
     "sourceType": "generated",
     "sourceKind": "generated"
   }
