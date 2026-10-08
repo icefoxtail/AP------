@@ -158,7 +158,7 @@ test('student finder loads 130; school search, UID preview, answer, checkbox/pri
   assert.ok(el('detail').children.some(x => x.textContent.includes('(가)') && x.textContent.includes('(다)')));
   assert.ok(!el('detail').children.some(x => x.textContent.includes('<br')));
   await el('toggle-answer').listeners.click();
-  assert.ok(el('detail').children.some(x => x.textContent.includes('정답: ④') && x.textContent.includes('해설')));
+  assert.ok(el('detail').children.some(x => x.textContent.includes('정답: ④') && x.textContent.includes('[키포인트]')));
   choiceInput.checked = true; choiceInput.listeners.change();
   assert.equal(el('print').disabled, false);
   await el('print').listeners.click();
