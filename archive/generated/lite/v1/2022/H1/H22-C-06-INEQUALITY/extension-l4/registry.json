@@ -1,0 +1,369 @@
+{
+  "schemaVersion": "ALIVE_LITE_EXTENSION_L4_CANDIDATES_v1",
+  "status": "B02_DISCOVERY_FROZEN_BEFORE_PRODUCTION",
+  "curriculum": "2022",
+  "course": "공통수학1",
+  "targetL2": "H22-C-06-INEQUALITY",
+  "kind": "L4",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "proposals": [
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-INTEGER-SUM-INVERSE",
+      "label": "정수해의 합으로 이차부등식 매개변수 역산",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-181"
+      ],
+      "decisiveStepSignature": "정수근이 정하는 연속된 정수해의 합을 역으로 복원",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I04"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-GLOBAL-SOLVABILITY",
+      "label": "모든 실수 또는 공집합 조건으로 계수 판정",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-180"
+      ],
+      "decisiveStepSignature": "판별식과 계수 부호로 전체 실수/공집합을 구분",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I05",
+        "BSG26-B02-Q05-I06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-INTERVAL-POSITION",
+      "label": "해구간 포함 및 다른 조건과 교집합",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-181"
+      ],
+      "decisiveStepSignature": "해구간의 포함 관계 또는 추가 조건을 끝점으로 변환",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I07",
+        "BSG26-B02-Q05-I08"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+      "label": "두 절댓값 거리합이 만드는 해구간",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178",
+        "H1-RPM-182"
+      ],
+      "decisiveStepSignature": "두 기준점 사이 평탄구간과 바깥 구간 경계 도출",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A01",
+        "BSG26-B02-Q11-A02",
+        "BSG26-B02-Q11-A05",
+        "BSG26-B02-Q11-A07"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-GLOBAL-MINIMUM",
+      "label": "절댓값 합의 최솟값으로 해의 존재를 판정",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-182"
+      ],
+      "decisiveStepSignature": "두 기준점 사이 최소 거리합을 이용하여 엄격조건/매개변수 판정",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A03",
+        "BSG26-B02-Q11-A06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-DIFFERENCE-SIGN",
+      "label": "절댓값 차의 구간별 부호 전환",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178"
+      ],
+      "decisiveStepSignature": "차의 상수 꼬리/중간 기울기로 반직선 해를 결정",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A04"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-PARAMETER-INVERSE",
+      "label": "거리합의 해구간 끝점으로 변수 역산",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178"
+      ],
+      "decisiveStepSignature": "이동된 두 중심이 만드는 해구간의 양끝 합을 역으로 추적",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A09"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "candidateCount": 7,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-INTEGER-SUM-INVERSE",
+      "label": "정수해의 합으로 이차부등식 매개변수 역산",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-181"
+      ],
+      "decisiveStepSignature": "정수근이 정하는 연속된 정수해의 합을 역으로 복원",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I04"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-GLOBAL-SOLVABILITY",
+      "label": "모든 실수 또는 공집합 조건으로 계수 판정",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-180"
+      ],
+      "decisiveStepSignature": "판별식과 계수 부호로 전체 실수/공집합을 구분",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I05",
+        "BSG26-B02-Q05-I06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-QUAD-INTERVAL-POSITION",
+      "label": "해구간 포함 및 다른 조건과 교집합",
+      "proposedParentRPMPrimaryL3": "이차부등식",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-181"
+      ],
+      "decisiveStepSignature": "해구간의 포함 관계 또는 추가 조건을 끝점으로 변환",
+      "sourceSeedQids": [
+        5
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q05-I07",
+        "BSG26-B02-Q05-I08"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-DISTANCE-SUM-INTERVAL",
+      "label": "두 절댓값 거리합이 만드는 해구간",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178",
+        "H1-RPM-182"
+      ],
+      "decisiveStepSignature": "두 기준점 사이 평탄구간과 바깥 구간 경계 도출",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A01",
+        "BSG26-B02-Q11-A02",
+        "BSG26-B02-Q11-A05",
+        "BSG26-B02-Q11-A07"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-GLOBAL-MINIMUM",
+      "label": "절댓값 합의 최솟값으로 해의 존재를 판정",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-182"
+      ],
+      "decisiveStepSignature": "두 기준점 사이 최소 거리합을 이용하여 엄격조건/매개변수 판정",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A03",
+        "BSG26-B02-Q11-A06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-DIFFERENCE-SIGN",
+      "label": "절댓값 차의 구간별 부호 전환",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178"
+      ],
+      "decisiveStepSignature": "차의 상수 꼬리/중간 기울기로 반직선 해를 결정",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A04"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-ABS-PARAMETER-INVERSE",
+      "label": "거리합의 해구간 끝점으로 변수 역산",
+      "proposedParentRPMPrimaryL3": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-178"
+      ],
+      "decisiveStepSignature": "이동된 두 중심이 만드는 해구간의 양끝 합을 역으로 추적",
+      "sourceSeedQids": [
+        11
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q11-A09"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "independentReview": "NOT_TESTED",
+  "canonicalRPMModified": false,
+  "canonicalPromoted": false,
+  "consumerSelectable": false
+}

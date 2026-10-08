@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "ALIVE_LITE_EXTENSION_L4_CANDIDATES_v1",
+  "status": "B02_DISCOVERY_FROZEN_BEFORE_PRODUCTION",
+  "curriculum": "2022",
+  "course": "공통수학1",
+  "targetL2": "H22-C-09-CORE",
+  "kind": "L4",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "proposals": [
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SCALAR-INVERSE",
+      "label": "행렬의 대응성분 제약으로 실수배 역결정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "다수 대응성분 0/동일 조건 또는 미지계수를 한꺼번에 결합",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M02",
+        "BSG26-B02-Q03-M03"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-COMPONENT-AGGREGATION",
+      "label": "행렬의 행합·성분총합 제약",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "전체 합/특정 행합의 선형성을 이용해 실수배를 역산",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M04",
+        "BSG26-B02-Q03-M05"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SUMDIFF-INVERSION",
+      "label": "행렬합과 차로 다른 선형결합 역산",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "A+B,A-B의 구조로 2A+B 지정성분 환원",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-PRODUCT-DIMENSION",
+      "label": "행렬곱의 크기와 호환성을 복합 판정",
+      "proposedParentRPMPrimaryL3": "행렬의 뜻",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-198",
+        "H1-RPM-201"
+      ],
+      "decisiveStepSignature": "여러 행렬의 크기로 곱의 정의와 결과 크기/성분 수를 판정",
+      "sourceSeedQids": [
+        10
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q10-D01",
+        "BSG26-B02-Q10-D02",
+        "BSG26-B02-Q10-D03",
+        "BSG26-B02-Q10-D04",
+        "BSG26-B02-Q10-D07",
+        "BSG26-B02-Q10-D08"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "candidateCount": 4,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SCALAR-INVERSE",
+      "label": "행렬의 대응성분 제약으로 실수배 역결정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "다수 대응성분 0/동일 조건 또는 미지계수를 한꺼번에 결합",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M02",
+        "BSG26-B02-Q03-M03"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-COMPONENT-AGGREGATION",
+      "label": "행렬의 행합·성분총합 제약",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "전체 합/특정 행합의 선형성을 이용해 실수배를 역산",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M04",
+        "BSG26-B02-Q03-M05"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SUMDIFF-INVERSION",
+      "label": "행렬합과 차로 다른 선형결합 역산",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "A+B,A-B의 구조로 2A+B 지정성분 환원",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M06"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-PRODUCT-DIMENSION",
+      "label": "행렬곱의 크기와 호환성을 복합 판정",
+      "proposedParentRPMPrimaryL3": "행렬의 뜻",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-198",
+        "H1-RPM-201"
+      ],
+      "decisiveStepSignature": "여러 행렬의 크기로 곱의 정의와 결과 크기/성분 수를 판정",
+      "sourceSeedQids": [
+        10
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q10-D01",
+        "BSG26-B02-Q10-D02",
+        "BSG26-B02-Q10-D03",
+        "BSG26-B02-Q10-D04",
+        "BSG26-B02-Q10-D07",
+        "BSG26-B02-Q10-D08"
+      ],
+      "exampleUids": [],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "independentReview": "NOT_TESTED",
+  "canonicalRPMModified": false,
+  "canonicalPromoted": false,
+  "consumerSelectable": false
+}

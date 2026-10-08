@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "ALIVE_LITE_EXTENSION_L3_CANDIDATES_v1",
+  "status": "B02_DISCOVERY_FROZEN_BEFORE_PRODUCTION",
+  "targetL2": "H22-C-06-INEQUALITY",
+  "candidateCount": 1,
+  "candidates": [
+    {
+      "candidateL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "label": "절댓값을 포함한 일차부등식의 구간별 풀이",
+      "closestCanonicalL3": [
+        "연립일차부등식",
+        "절대부등식"
+      ],
+      "closestCanonicalRPMRecords": [
+        "H1-RPM-178",
+        "H1-RPM-182",
+        "H1-RPM-183"
+      ],
+      "machineComparator": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY is ACTIVE PT, not proof of RPM semantic equivalence",
+      "definingDecisiveStep": "절댓값 내부 일차식의 영점으로 구간을 분할하여 좌변을 구간별 일차식으로 변환",
+      "newL3Argument": "현 RPM 절대부등식은 산술기하평균/코시형이며 |ax+b| 합·차 부등식을 설명하지 않는다",
+      "againstNewL3": "기존 연립일차부등식 및 부등식의 활용의 Condition Pattern으로 흡수될 여지 심사",
+      "sourceSeedQids": [
+        11
+      ],
+      "exampleUids": [],
+      "status": "L3_GRANULARITY_REVIEW_REQUIRED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "originalSourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "independentReview": "NOT_TESTED",
+  "canonicalRPMModified": false
+}
