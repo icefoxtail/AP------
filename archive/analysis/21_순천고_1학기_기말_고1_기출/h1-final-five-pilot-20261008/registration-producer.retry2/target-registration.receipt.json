@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1",
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "head": "42acf2783db712e38ca703234ee25707c91d0e24",
+  "sourceArtifactSha256": "21d86eab5f8985e9ba4bb9a2dc7e118a86dc0ee0343ffb00418ffea632f4a954",
+  "sourceArtifactBlobSha1": "c4f9829fdc2877c75b29df4dc6acfab1b83f1828",
+  "targetQidSet": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "targetCounts": {
+    "identity": 22,
+    "metadata": 22,
+    "index": 22,
+    "catalog": 22,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 540,
+    "identityRows": 12880,
+    "metadataRows": 12880,
+    "indexRows": 12872,
+    "catalogRows": 12872,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "metaProjection": {
+    "targetFieldStatusCounts": {
+      "standardUnit=approved_source": 22,
+      "subUnit=approved_source": 22,
+      "concept=manual_review_pending": 22,
+      "problemType=approved_source": 22,
+      "template=approved_source": 20,
+      "difficulty=approved_source": 22,
+      "template=manual_review_pending": 2
+    },
+    "targetNullProblemType": 0,
+    "targetNullTemplate": 2,
+    "semanticFieldsCopiedUnchanged": true
+  },
+  "catalog": {
+    "records": 12894,
+    "exams": 541,
+    "identityDigest": "29ed9f02e1362d353e98abc43eae900796b1056a5a782523367713aba2650933",
+    "indexVersion": "30afb8facdb15a8328ac3fa67fcf3dd0cfe75f7c4b3f80cb1a78dd5d185cacd5",
+    "projectionVersion": "archive2-canonical-v1:0584421e1b7b0e6c3d0ef5ef6a5b270896c2d38f5731f2b89ba0b3b47ff74024",
+    "targetAutomaticCount": 0
+  },
+  "assets": [
+    {
+      "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q13-source.png",
+      "sha256": "ed4d6f1ccc925fef1c83f7c25bd49eb55b53d265973515afe30696f126d8075f",
+      "expectedSha256": "ed4d6f1ccc925fef1c83f7c25bd49eb55b53d265973515afe30696f126d8075f"
+    },
+    {
+      "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q14-source.png",
+      "sha256": "4b5aeee1b3b80511bf9375b262730924c83e3b434971ff1ee6ad184c875bfaa2",
+      "expectedSha256": "4b5aeee1b3b80511bf9375b262730924c83e3b434971ff1ee6ad184c875bfaa2"
+    },
+    {
+      "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution.svg",
+      "sha256": "69f8721adc9aba4ddd102f1e336cd9980ce2526d216ac473506b23185bf5c2ea",
+      "expectedSha256": "69f8721adc9aba4ddd102f1e336cd9980ce2526d216ac473506b23185bf5c2ea"
+    },
+    {
+      "ref": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution.svg",
+      "sha256": "89a93be123a7799a6ef6fd16fad62fb9545a1554f30f3cf4f12f00478d202cd4",
+      "expectedSha256": "89a93be123a7799a6ef6fd16fad62fb9545a1554f30f3cf4f12f00478d202cd4"
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "archive/db.js",
+      "beforeSha256": "6a3dfaf77c9a24de3b42ca6ecb187d9c3d66909ef087a9951c8bee6a661c23b9",
+      "afterSha256": "d556f93d59902522090d3b22d99a49fb302231159116195f93a65b010da32fef"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeSha256": "2f77463b82d3c36ad2dd35f8a269d66c49cf1d6e650c4e6cf91c47132e4fd8b6",
+      "afterSha256": "ebfd14ed364b65991a7d79a38a8272aa9a9b5629bb738d369f10e41f1d0013b0"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeSha256": "d4c66ef6b285650ab41ebc4bcb5a5c413c0a62f34a0fb4004047539c6c40ef25",
+      "afterSha256": "ce2ef44cad97f3d155bc5c47d98dbaf836dfa940fc4af59d4d32844bae93a99e"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "beforeSha256": "b74a0f1b21adb61a6799dda7abc6dba31c7d5b6f62101dd5c17db327096e759e",
+      "afterSha256": "22f2adb6ab3b8e79c1022eb47dae6f381cdf40fdecaa52a7981f37d579beb7df"
+    },
+    {
+      "path": "archive/question-index.js",
+      "beforeSha256": "b6a18260cd62f1e1cdfb850b2107dff11b4b347c3e77e33a051916feefbcca1a",
+      "afterSha256": "2bd7ad61e1e8cee085da316e39ad8aefa924498b4fa276013f96722cb4eea220"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "beforeSha256": "b2332fb2244f6db5acfe7ac4115af362835673ac5ce44d18d7da066113b0b3df",
+      "afterSha256": "28e0b0fa61d5f7285ec5c29903743ed59606211af0f63dc466f838da66ac46a5"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "beforeSha256": "110e3628f88b86a8ceeebf442a0ea109cedf8bb5c8ab23856668d61d61341b97",
+      "afterSha256": "c9bfb39e23f9870ec8abcd34777ac15005c7ebe0729e508c2e36802686a28d7d"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "beforeSha256": "d48ab937c129a6764beffbf1041dce6e5352ebbb70b905688daa3180afdb6c49",
+      "afterSha256": "aeeba682e1a2bfc5227d0dd556674c07bd4ca7bdfc7601d459ceb918db79639b"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "439f573cb0c9aefe8e4c771525a3610ea68f4f1b1d2417e9a7b77b4b63dd978e",
+      "afterSha256": "4f51c2972c6c387d62a5c9a8ba22d94d11b5caaf38e6a1e1c2b71f3844fdf25f"
+    }
+  ],
+  "checks": {
+    "baselineSnapshotExact": true,
+    "targetOrdinalCoverage": true,
+    "nonTargetRowsUnchanged": true,
+    "sourceAssetHashesMatch": true,
+    "sourceStatusVerified": true,
+    "manifestGeneratedFromCurrentCatalog": true
+  },
+  "createdAt": "2026-10-08T07:54:49.830Z"
+}

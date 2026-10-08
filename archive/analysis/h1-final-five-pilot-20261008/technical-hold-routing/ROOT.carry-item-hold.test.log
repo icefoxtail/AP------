@@ -1,0 +1,13 @@
+✔ carries exact source HOLD through CREATE→R1 and R1→R2 without creating PASS or stage completion (76.4378ms)
+✔ routes an R2 hold only to ROOT_ITEM_RECOVERY (31.7351ms)
+✔ preflight validates all proof bindings without writing a receipt or releasing the dispatcher slot (25.2814ms)
+✔ rejects any unrelated generic or artifact issue even when the source item remains HOLD (56.1482ms)
+✔ rejects stale source/evidence hashes, wrong stage owner, or a changed full-qid report binding (26.7991ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 331.6719
