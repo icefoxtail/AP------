@@ -4,7 +4,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {verifyRenderedFile} from '../verify-rendered-layout.mjs';
 import {repoRoot} from '../visual-browser-runtime.mjs';
-const run=path.join(repoRoot,'archive/_generated/geometry-visual-engine/publication-tests');
+const run=path.join(repoRoot,'.tmp/archive/visual-engine-tests/publication-tests');
 const fixtures=JSON.parse(fs.readFileSync(path.join(run,'manifest.json'),'utf8'));
 const rows=[];
 for(const f of fixtures)for(const width of [390]){
