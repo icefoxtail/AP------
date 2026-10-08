@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
+  "status": "DRAFT_DISCOVERY_ONLY",
+  "course": "공통수학1",
+  "curriculum": "2022",
+  "l1": "H22-C-01",
+  "l2": "H22-C-01-POLYNOMIAL_BASIC",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "reviewStatus": "NOT_REVIEWED",
+  "candidateCount": 3,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-C01-POLY-MONOMIAL-COEFF",
+      "label": "선택 경로별 특정 단항식 계수",
+      "parentRPMPrimaryL3": "다항식의 곱셈",
+      "closestCanonicalL4": "고차식 전개",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-136",
+        "H1-RPM-137"
+      ],
+      "definingDecisiveStep": "목표 단항식 차수에 맞는 괄호별 선택 패턴들을 만들고 기여계수 합산",
+      "contrastAgainstCanonicalL4": "전개 전체를 나열하지 않고 목표항의 생성경로 분할",
+      "sourceSeedQids": [
+        4
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q04-W01",
+        "ALITE-BSG26-B01R2-Q04-W02",
+        "ALITE-BSG26-B01R2-Q04-W05"
+      ],
+      "semanticSourceScope": "H22-C-01-POLYNOMIAL_BASIC",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C01-POLY-COEFF-INVERSE",
+      "label": "전개식의 계수 조건을 이용한 미지수 역산",
+      "parentRPMPrimaryL3": "다항식의 곱셈",
+      "closestCanonicalL4": "고차식 전개",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-136",
+        "H1-RPM-137"
+      ],
+      "definingDecisiveStep": "목표항 계수를 미지수식으로 만들고 주어진 계수와 같게 둠",
+      "contrastAgainstCanonicalL4": "정방향 계수 합산이 아니라 계수값으로 미지수를 추정",
+      "sourceSeedQids": [
+        4
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q04-W04"
+      ],
+      "semanticSourceScope": "H22-C-01-POLYNOMIAL_BASIC",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C01-POLY-SYMMETRIC-PAIRS",
+      "label": "대칭인수·차의 제곱을 이용한 계수 구조 단순화",
+      "parentRPMPrimaryL3": "다항식의 곱셈",
+      "closestCanonicalL4": "곱셈공식",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-136",
+        "H1-RPM-137"
+      ],
+      "definingDecisiveStep": "부호가 반대인 인수쌍을 먼저 결합하고 남은 짝수차항 계수/항수를 판단",
+      "contrastAgainstCanonicalL4": "일반 고차식 전개에서 구조적 소거·부호 교체를 이용",
+      "sourceSeedQids": [
+        4
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q04-W03",
+        "ALITE-BSG26-B01R2-Q04-W06"
+      ],
+      "semanticSourceScope": "H22-C-01-POLYNOMIAL_BASIC",
+      "educationalScope": "2022 공통수학1",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "canonicalRPMModified": false
+}

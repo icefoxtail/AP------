@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import test from 'node:test';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..');
-const generated=path.join(root,'archive/_generated/geometry-visual-engine/adapter-node-regression');
+const generated=path.join(root,'.tmp/archive/adapter-node-regression/node-adapter-q01/visual-engine/production');
 const command=path.join(root,'archive/tools/past-exam-pipeline/build-visual-candidate.mjs');
 const bundle=()=>({schemaVersion:'past-exam-expected-facts-v1',questionUid:'node-adapter-q01',route:'STANDARD',visualType:'coordinate_geometry',viewport:{xMin:-3,xMax:3,yMin:-3,yMax:3},sourceFacts:{A:[0,0],B:[2,0],xAxis:[0,1,0],yAxis:[1,0,0]},derivedFacts:{},displayFacts:{},objects:[{id:'A',kind:'POINT',at:[0,0]},{id:'B',kind:'POINT',at:[2,0]},{id:'xAxis',kind:'LINE',coefficients:[0,1,0]},{id:'yAxis',kind:'LINE',coefficients:[1,0,0]},{id:'origin',kind:'INTERSECTION',refs:['xAxis','yAxis'],target:'A'}],axes:true});
 const run=(input,extra=[])=>{
@@ -15,13 +15,13 @@ const run=(input,extra=[])=>{
   return spawnSync(process.execPath,[command,'--facts',facts,'--run-id','adapter-node-regression',...extra],{cwd:root,encoding:'utf8'});
 };
 
-test('Past Exam V3 adapter builds a hash-bound candidate below ignored generated root',()=>{
+test('Past Exam V3 adapter builds a hash-bound candidate below its Archive temporary workspace',()=>{
   const input=bundle(),before=JSON.stringify(input),result=run(input);
   assert.equal(result.status,0,result.stderr);
   assert.equal(JSON.stringify(input),before);
   const emitted=JSON.parse(result.stdout.trim());
   assert.equal(emitted.route,'STANDARD');
-  assert.equal(emitted.path,'archive/_generated/geometry-visual-engine/adapter-node-regression/candidate/node-adapter-q01');
+  assert.equal(emitted.path,'.tmp/archive/adapter-node-regression/node-adapter-q01/visual-engine/production/candidate/node-adapter-q01');
   const folder=path.join(root,emitted.path),spec=JSON.parse(fs.readFileSync(path.join(folder,'visualSpec.json'))),witness=JSON.parse(fs.readFileSync(path.join(folder,'witness.json')));
   assert.equal(spec.sourceFacts.independentFactHash,emitted.independentFactHash);
   assert.equal(witness.independentFactHash,emitted.independentFactHash);
