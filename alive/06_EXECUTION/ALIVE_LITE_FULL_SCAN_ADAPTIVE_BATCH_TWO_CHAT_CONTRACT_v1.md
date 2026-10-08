@@ -43,3 +43,8 @@ D. L2별 생성 shard·metadata·uid index·manifest·batch ledger·receipts를 
 
 ## 5. 다른 채팅의 첫 프롬프트
 `origin/main fetch → AGENTS/nested → alive/06_EXECUTION/ALIVE_LITE_CONTINUATION_CURRENT.md → 본 계약 → 학교 00~07 → 현재 phase 결정. 최초 “1단계”면 시험지 전체 scan/적응형 batch plan 저장만. “다음 진행해”면 next planned batch A→B→C→D 완결·branch readback. 2차 채팅은 REVIEW+MAIN.`
+
+## CURRENT HARD — 정답 위치 설계 및 ③ 편중 금지 (2026-10-08)
+- B Blueprint 설계 때 수학 정답값·오개념 오답·**①~⑤ 목표 정답 위치 분포**를 먼저 잡는다. C 제작 시 수학 정답을 변경하지 않고 적절한 보기 순서/정답 기호를 반영한다. 수의 오름차순 등 보기 순서 고정 사유는 예외로 기록.
+- D batch 저장시 answer position histogram + 5지 유일정답 확인. 조정 가능한 신규 객관식에서 한 자리 정답 비중 >40%면 재검토 경고.
+- 실제 효천고 파일럿 94개에서 **③ 63개(67.0%)** 발견: 정본 `alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_DESIGN_CONTRACT_v0.1.md` 참조. REVIEW+MAIN에서 별도 정답 독립검수와 함께 핀포인트 보기·정답기호·해설 참조 수정.
