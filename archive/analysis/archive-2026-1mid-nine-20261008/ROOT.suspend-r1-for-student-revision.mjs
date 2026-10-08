@@ -1,0 +1,11 @@
+import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';
+import {inside,physical,writeFresh} from '../../tools/archive-codex-artifact-io.mjs';
+import {transitionFile} from '../../tools/archive-codex-dispatcher.mjs';
+const root=execFileSync('git',['rev-parse','--show-toplevel'],{encoding:'utf8'}).trim(),run='archive-2026-1mid-nine-20261008',base=path.join(root,'archive/analysis',run);
+const row=JSON.parse(fs.readFileSync(path.join(base,'roster.json')))[Number(process.argv[2])-1],session=process.argv[3],reportPath=inside(root,process.argv[4]),reportHash=process.argv[5];
+if(physical(reportPath).sha256!==reportHash)throw Error('ACTUAL_FAILURE_REPORT_REQUIRED');
+const report=JSON.parse(fs.readFileSync(reportPath));if(report.stage!=='R1'||report.examUid!==row.examUid||report.disposition!=='FAIL')throw Error('ACTUAL_R1_FAILURE_REQUIRED');
+const file=path.join(base,'dispatcher.json');
+const result=transitionFile({stateFile:file,expectedStateSha256:physical(file).sha256,mutate:s=>{const n=structuredClone(s);if(n.slots.R1?.examUid!==row.examUid||n.slots.R1.sessionId!==session)throw Error('EXACT_R1_OWNER_REQUIRED');
+ const previousSlot=n.slots.R1;n.slots.R1=null;n.events.push({type:'ROOT_R1_OWNER_WAITING_FRESH_STUDENT_REVISION',examUid:row.examUid,sessionId:session,previousSlot,failureReport:physical(reportPath),qualityPassAsserted:false,freshAffectedReviewRequired:true,at:new Date().toISOString()});n.revision++;return n;}});
+console.log(JSON.stringify(writeFresh(path.join(row.evidenceRootAbsolute,'ROOT.R1.student-revision-slot-release.json'),{schemaVersion:'ROOT_R1_STUDENT_REVISION_SLOT_RELEASE_V1',examUid:row.examUid,sessionId:session,failureReport:physical(reportPath),qualityPassAsserted:false,freshAffectedReviewRequired:true,stateRef:result.stateRef})));
