@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "BOKSEONG_B02_Q11_INDEPENDENT_SEMANTIC_REVIEW_v1",
+  "asOf": "2026-10-09",
+  "authority": "origin/main d662174093b30a0f91ac0feb045e33f0afac2cf6",
+  "sourceOriginalGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceShardGitBlobSha": "d9bb930ee5e112bca09f03146be3de4ac82f9360",
+  "scope": "B02 Q11 nine items",
+  "mathEvidence": "B02_A1_STUDENT_ONLY_INDEPENDENT_FREEZE_20261009.json + B01_B02_A2_INDEPENDENT_COMPARE_20261009.json",
+  "mathStoredMatch": "9/9",
+  "reviewSummary": {
+    "candidateExistingRpm": 3,
+    "distinctL3Required": 6,
+    "canonicalPromotionAuthorized": false,
+    "consumerSelectable": 0
+  },
+  "notEquivalentTo": [
+    "RPM 절대부등식 산술기하평균",
+    "RPM 절대부등식 코시형",
+    "연립일차부등식 전체로 일괄 분류"
+  ],
+  "items": [
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A01",
+      "sourceQid": 11,
+      "decisiveStepSignature": "거리합 해구간과 정수해 계수",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 거리합의 해구간",
+      "evidence": "기존 RPM 178/179는 연립일차부등식, RPM182/183은 AMGM/코시로 미동치",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A02",
+      "sourceQid": 11,
+      "decisiveStepSignature": "절댓값 거리합 해구간 끝점 합",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 거리합의 해구간",
+      "evidence": "최솟값 자체보다 양끝점 산출이 핵심; RPM184 최대·최소와 별개",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A03",
+      "sourceQid": 11,
+      "decisiveStepSignature": "기준점 사이 거리합의 최솟값과 엄격부등식 해 존재",
+      "classificationDisposition": "RPM_EXISTING_REBIND_CANDIDATE",
+      "semantics": "H1-RPM-184 / 부등식의 활용 / 최대·최소",
+      "evidence": "주어진 하한보다 작게 할 수 없음을 최솟값으로 판단; ACTIVE PT exact binding",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A04",
+      "sourceQid": 11,
+      "decisiveStepSignature": "절댓값 거리차 부호분기",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 차의 구간별 부호 전환",
+      "evidence": "기존 RPM의 연립일차·이차·절대부등식과 불일치",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A05",
+      "sourceQid": 11,
+      "decisiveStepSignature": "계수가 다른 절댓값 두 항의 구간분기 정수해",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 거리합의 해구간",
+      "evidence": "L3 결정적 행위는 두 절댓값 안의 영점에 따라 부호별 일차부등식으로 풀이",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A06",
+      "sourceQid": 11,
+      "decisiveStepSignature": "절댓값 거리합 하한을 이용한 매개변수 최소",
+      "classificationDisposition": "RPM_EXISTING_REBIND_CANDIDATE",
+      "semantics": "H1-RPM-184 / 부등식의 활용 / 최대·최소",
+      "evidence": "거리합 최솟값 4에 의해 2k≥4, 자연수 k 최소 2; ACTIVE PT exact binding",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A07",
+      "sourceQid": 11,
+      "decisiveStepSignature": "절댓값 거리합의 동등식 해구간",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 거리합의 해구간",
+      "evidence": "최솟값에 도달하는 x의 모든 범위를 찾는 문제; 단일 최대·최소값을 묻지 않음",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A08",
+      "sourceQid": 11,
+      "decisiveStepSignature": "절댓값 해구간과 추가 조건 교집합",
+      "classificationDisposition": "EXT_L3_REQUIRED",
+      "semantics": "절댓값 해구간과 연립조건 교집합",
+      "evidence": "연립일차부등식 단독으로 환원 불가: 절댓값 처리 우선",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    },
+    {
+      "uid": "ALITE-BSG26-B02-Q11-A09",
+      "sourceQid": 11,
+      "decisiveStepSignature": "해구간 양끝 조건에서 매개변수 역산",
+      "classificationDisposition": "RPM_EXISTING_REBIND_CANDIDATE",
+      "semantics": "H1-RPM-185 / 부등식의 활용 / 계수 조건",
+      "evidence": "p=a−1, q=a+5, p+q=10으로 a=3 조건 역산",
+      "activeProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "activeBinding": "2022/공통수학1/H22-C-06/H22-C-06-INEQUALITY",
+      "canonicalRpmModified": false,
+      "studentSupplyEligible": false
+    }
+  ],
+  "reviewStatus": "INDEPENDENT_SEMANTIC_DISPOSITION_COMPLETE_RELEASE_NOT_AUTHORIZED",
+  "nextGate": "Review and approve exact existing RPM candidate rebinding (3), separately approve new taxonomy L3/L4 proposal for six. Current canonical locked and current consumer 264 remains protected."
+}
