@@ -14,8 +14,8 @@
   "priorB01B02CandidatesNotRegenerated": true,
   "denominators": {
     "source": 4,
-    "explored": 49,
-    "accepted": 37,
+    "explored": 50,
+    "accepted": 38,
     "excluded": 12,
     "extensions": "DISCOVERY_REGISTRY_SEPARATE"
   },
@@ -912,6 +912,31 @@
           "semanticNovelty": "REVIEW_REQUIRED"
         },
         {
+          "blueprintId": "BSG26-B03-Q14-I10",
+          "targetRpmPrimaryL3": "이차부등식",
+          "targetRpmL4": "그래프를 이용한 해",
+          "rpmCanonicalRecordId": "H1-RPM-180",
+          "semanticSourceScope": "2022/공통수학1/H22-C-06-HIGHER_INEQUALITY",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "disposition": "ACCEPT",
+          "intendedAnswerValue": "(가), (나)",
+          "decisiveStepSignature": "같은 이차부등식에서 매개변수를 바꾼 세 진술을 실근 유무/중근/해구간으로 판정",
+          "targetObjective": "복수 진술 판별식·해집합 참거짓 통합",
+          "conditionPattern": "MULTI_STATEMENT_DISCRIMINANT_ADJUDICATION",
+          "crossConcept": [],
+          "integrationPattern": "SOURCE_PRIMARY_L3_LOCKED_ON_GENERATED",
+          "answerPlacementPlan": 4,
+          "answerPlacementConstraint": "STATEMENT_COMBINATION_FIXED",
+          "distractorStrategy": [
+            "판별식과 포함경계 혼동",
+            "중근의 한 해 무시",
+            "근의 구간 끝값 착오",
+            "복수진술의 일부만 확인"
+          ],
+          "generatedUids": [],
+          "semanticNovelty": "REVIEW_REQUIRED"
+        },
+        {
           "blueprintId": "BSG26-B03-Q14-X01",
           "candidateKind": "EXCLUDED",
           "disposition": "DUPLICATE",
@@ -1227,5 +1252,7 @@
     }
   ],
   "review": "NOT_TESTED",
-  "mainPublished": false
+  "mainPublished": false,
+  "designRevision": 2,
+  "designRevisionReason": "Restore original three-statement discriminant adjudication structure as distinct problem goal before q14 production"
 }
