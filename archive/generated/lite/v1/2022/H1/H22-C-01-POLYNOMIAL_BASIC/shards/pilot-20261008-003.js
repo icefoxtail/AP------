@@ -23,13 +23,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $x,y$가 $x-y=3$, $xy=10$을 만족할 때, $x^3-y^3$의 값은?",
     "choices": [
-      "99",
-      "108",
       "117",
       "126",
-      "135"
+      "135",
+      "144",
+      "153"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[키포인트] $x^3-y^3=(x-y)^3+3xy(x-y)$이므로 $3^3+3\\cdot10\\cdot3=117$이다.",
     "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
     "templateKey": "TPL_H1_FORMULA_SYMMETRIC"
@@ -57,13 +57,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $x,y$에 대하여 $x-y=2$, $x^2+y^2=20$일 때, $x^3-y^3$의 값은?",
     "choices": [
+      "32",
+      "38",
       "44",
       "50",
-      "56",
-      "62",
-      "68"
+      "56"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[키포인트] $(x-y)^2=x^2+y^2-2xy$이므로 $4=20-2xy$, $xy=8$이다. 따라서 $x^3-y^3=(x-y)((x-y)^2+3xy)=2(4+24)=56$이다.",
     "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
     "templateKey": "TPL_H1_FORMULA_SYMMETRIC"
@@ -125,13 +125,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $x,y$가 $x-y=4$, $x^3-y^3=148$을 만족할 때, $xy$의 값은?",
     "choices": [
-      "5",
       "6",
       "7",
       "8",
-      "9"
+      "9",
+      "10"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[키포인트] $x^3-y^3=(x-y)^3+3xy(x-y)$이므로 $148=64+12xy$이다. 따라서 $xy=7$이다.",
     "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
     "templateKey": "TPL_H1_FORMULA_SYMMETRIC"
