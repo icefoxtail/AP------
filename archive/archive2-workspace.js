@@ -69,6 +69,13 @@
         new URL("workspace.html?view=find&material=exam", location.href).href,
     }),
     Object.freeze({
+      productKey: "generated-bank",
+      label: "검수 완료 생성문제",
+      availability: true,
+      routeOwner: "generated-consumer",
+      routeResolver: () => new URL("generated-bank.html", location.href).href,
+    }),
+    Object.freeze({
       productKey: "five-minute-test",
       label: "5분 테스트",
       availability: false,
