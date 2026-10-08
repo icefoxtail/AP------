@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "B06_SOURCE_VISUAL_AUDIT_v1",
+  "stage": "A_SOURCE_FACT_FREEZE",
+  "sourceFile": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "assetsInspectedFromGitHubBase64": true,
+  "items": [
+    {
+      "sourceQid": 18,
+      "image": "archive/assets/images/26_복성고_1학기_기말_고1_기출/q18.png",
+      "imageBlobSha": "d38aa7951dae6a72fa1b28e5162f5a428d2b3ae7",
+      "observed": [
+        "radius a, height b cylindrical body",
+        "square through-tunnel side b (removed cube)",
+        "top/bottom openings",
+        "four inner wall faces; hidden edges dashed"
+      ],
+      "mathFacts": {
+        "a": "positive rational",
+        "b": "positive rational",
+        "fit": "b<sqrt(2)a",
+        "lateral": "2*pi*a*b",
+        "ends": "2*(pi*a*a-b*b)",
+        "innerWall": "4*b*b",
+        "exposedSurface": "2*pi*a*(a+b)+2*b*b",
+        "volume": "pi*a*a*b-b^3",
+        "sourceArea": "140*pi+18",
+        "sourceAnswer": "a-b=4",
+        "rationalityForPiCoefficientSeparation": true
+      },
+      "primary": "H1-RPM-177 / 방정식의 활용 / 도형·함수 결합",
+      "targetSubUnitKey": "H22-C-06-EQUATION_APPLICATION",
+      "orphanAssetWarning": {
+        "path": "archive/assets/images/26_복성고_1학기_기말_고1_기출/q18-solution.svg",
+        "sha": "e9b6b7b91add6bc687945519eb7666a680e55326",
+        "observedTitle": "부등식·매개변수 해집합 수직선",
+        "linkedInSourceJs": false,
+        "disposition": "NOT_REUSABLE_FOR_Q18"
+      }
+    },
+    {
+      "sourceQid": 19,
+      "image": "archive/assets/images/26_복성고_1학기_기말_고1_기출/q19.png",
+      "imageBlobSha": "82353d1ab013d6aa1798c19513661836b74dd94a",
+      "observed": [
+        "four labeled regions A,B,C,D",
+        "A and C share a nonzero-length border",
+        "B and D meet at a point but share no border",
+        "B and D may receive equal colors"
+      ],
+      "adjacency": {
+        "vertices": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "A",
+            "D"
+          ],
+          [
+            "B",
+            "C"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "nonedges": [
+          [
+            "B",
+            "D"
+          ]
+        ],
+        "graph": "K4 minus BD",
+        "labelsFixed": true,
+        "colorsDistinguishable": true,
+        "sourceTopologyLock": true
+      },
+      "mathFacts": {
+        "colorings": "k*(k-1)*(k-2)^2",
+        "sourceColorCount": 480,
+        "sourceK": 6,
+        "exactly3ColorsAtK6": 120,
+        "exactly4ColorsAtK6": 360
+      },
+      "primary": "H1-RPM-187 / 합·곱의 법칙 / 단계별 선택",
+      "secondary": "H1-RPM-186 / 경우를 나누어 세기",
+      "semanticSourceScope": "H22-C-07-CORE (prior same grade)",
+      "targetSubUnitKey": "H22-C-08-COUNTING_PRINCIPLE"
+    }
+  ],
+  "generationGuards": [
+    "B06 DESIGN ONLY — no generated UID or student shard",
+    "Source images keep original authority",
+    "New geometric figure/new adjacency graph requires independently confirmed expected facts and new problem visual at C",
+    "No problem visual replaced by orphan solution SVG",
+    "RPM/L3 frozen per qid; other concept belongs to CrossConcept or L3_DRIFT",
+    "No graph coloring label symmetry quotient",
+    "q18 rational a,b required when equating pi and rational coefficients",
+    "source visual facts are observations, not candidate SVG render PASS"
+  ]
+}

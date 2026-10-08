@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "B06_DESIGN_MATH_WITNESSES_v1",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "stage": "DESIGN_NUMERIC_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "imageSha": {
+    "18": "d38aa7951dae6a72fa1b28e5162f5a428d2b3ae7",
+    "19": "82353d1ab013d6aa1798c19513661836b74dd94a"
+  },
+  "examples": [
+    {
+      "case": "ORIGINAL",
+      "a": 7,
+      "b": 3,
+      "s": 3,
+      "h": 3,
+      "piPart": 140,
+      "constPart": 18,
+      "volumePi": 147,
+      "volumeConst": -27
+    },
+    {
+      "case": "THROUGH_SQUARE_NEW",
+      "a": 5,
+      "b": 2,
+      "s": 2,
+      "h": 2,
+      "piPart": 70,
+      "constPart": 8,
+      "volumePi": 50,
+      "volumeConst": -8
+    },
+    {
+      "case": "THROUGH_PRISM_SIDE_FREE",
+      "a": 6,
+      "h": 4,
+      "s": 2,
+      "piPart": 120,
+      "constPart": 24,
+      "volumePi": 144,
+      "volumeConst": -16
+    },
+    {
+      "case": "BLIND_CAVITY",
+      "a": 6,
+      "h": 5,
+      "s": 2,
+      "piPart": 132,
+      "constPart": 16,
+      "note": "cavity floor replaces removed opening; 4s² inner walls"
+    },
+    {
+      "case": "TWO_NONOVERLAPPING_PRISMS",
+      "a": 10,
+      "h": 4,
+      "s1": 2,
+      "s2": 3,
+      "piPart": 280,
+      "constPart": 54,
+      "note": "requires diagram proving nonintersection"
+    }
+  ],
+  "coloring": {
+    "k": 6,
+    "edges": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "A",
+        "C"
+      ],
+      [
+        "A",
+        "D"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "D"
+      ]
+    ],
+    "counts": {
+      "base": 480,
+      "exact3": 120,
+      "exact4": 360,
+      "sameBD": 120,
+      "diffBD": 360,
+      "fixedA": 80,
+      "ACSubset3": 96,
+      "BNoRed": 400,
+      "BDNoRed": 340,
+      "exactOneBDRed": 120,
+      "bothBDRed": 20,
+      "redExactlyOnce": 280,
+      "redAtLeastOnce": 300,
+      "ACOverlapPalettes": 112,
+      "addBD": 360,
+      "removeAC": 630
+    }
+  },
+  "checks": {
+    "originalArea": true,
+    "originalColor": true,
+    "colorCaseSplit": true,
+    "formula": true,
+    "BForbiddenRed": true
+  }
+}
