@@ -34,15 +34,11 @@ Source-qid close: SOURCE_EXPANSION_DONE for the examined line-equation and direc
 
 ## Exact answer and detailed student solution
 
-$3x-2y-7=0$, choice ②.
+**정답 ②** \(3x-2y-7=0\)
 
-From $x-y=2$, $y=x-2$. Substitution into $2x+y=7$ gives $3x=9$, so $P=(3,1)$.
-
-The line $m:3x-2y+1=0$ is $y=\dfrac32x+\dfrac12$, so its slope is $\dfrac32$. A parallel line through $P$ is
-\[
-y-1=\dfrac32(x-3).
-\]
-Rearranging gives $3x-2y-7=0$. This is the unique line with that slope through $P$.
+\(x-y=2\)에서 \(y=x-2\)이다. 이를 \(2x+y=7\)에 대입하면 \(3x=9\)이므로 교점은 \(P=(3,1)\)이다.
+직선 \(m:3x-2y+1=0\)에 평행한 직선은 \(3x-2y+c=0\)으로 나타낼 수 있다. 이 직선이 \(P=(3,1)\)을 지나므로 \(9-2+c=0\), 따라서 \(c=-7\)이다.
+구하는 직선은 \(3x-2y-7=0\)이며 정답은 ②이다.
 
 ## Meta and curriculum proposal
 
