@@ -315,3 +315,9 @@ CREATE authors complete student-facing output. R1 independently accepts/repairs 
 ### 17.4 Minimal auditable worker handoff
 
 For each completed CREATE/R1 deliver only existing canonical PASS/evidence plus a compact human-readable summary: \`examUid\`, \`input/finalArtifactSha\`, qid denominator, actual independent/Golden evidence refs where applicable, changed qids+direct dependencies, number and qids of structural/Meta/solution/curriculum findings (including fixed ones), actual validator raw status and first unresolved closure step. **Do not invent new PASS schema fields or claim a new machine gate has been implemented by this text change.**
+
+## 2026-10-08 — DIRECT USER ASSIGNMENT AUTO-RELEASE HARD
+
+형님이 특정 시험지 또는 Archive 작업의 제작·수정·해설·Meta·시각자료·등록·검수를 직접 진행하라고 지시하면 작업자는 해당 지시 범위의 실제 작업을 끝낸 다음, 사용자에게 출시 인증·운영병합을 다시 요청하거나 승인 대기하지 않는다. 해당 작업의 정식 출시 인증(현재 적용되는 R1/R2/R3, validator/receipt 및 필요한 실제 렌더 또는 근거 있는 허용된 면제), 등록(Archive 1 DB와 해당하는 Archive 2.0 question-index/identity/metadata/catalog), production publish, main 운영병합, remote readback과 MAIN_DONE closure까지 하나의 완료 목표로 연속 실행한다.
+
+사용자가 발문 우선/해설 후속처럼 단계별 범위를 명시했다면 그 지시 범위만 출시·등록한다. 변경하지 않은 범위를 불필요하게 재검하거나 다른 시험지의 인증을 되감지 않는다. 검증하지 않은 PASS, 실행하지 않은 렌더 PASS, 미등록·미병합 상태의 MAIN_DONE 또는 품질 게이트 임의 우회는 금지한다. 기술 장애가 생기면 허용된 대체 경로로 수리한 뒤 결과를 재조회하며, 물리적으로 닫지 못한 단계는 정확한 결손과 재개 위치를 기록한다. 별도의 중지·보류·제외를 명시한 형님 최신 지시가 이 기본값보다 우선한다.
