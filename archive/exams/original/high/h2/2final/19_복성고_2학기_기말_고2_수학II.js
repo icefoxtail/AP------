@@ -939,7 +939,7 @@ window.questionBank = [
       "정적분으로 정의된 함수",
       "부정적분"
     ],
-    "content": "서술형 문제 3. [6점]\n함수 $f(x)=\\begin{cases}3x+2&(x\\ge1)\\5&(x<1)\\end{cases}$에 대하여 함수 $g(x)=\\displaystyle\\int_{-1}^x(t-2)f(t),dt$이다.\n$g(x)=\\begin{cases}(가)&(x\\ge1)\\(나)&(x<1)\\end{cases}$일 때, (가)와 (나)를 구하시오.",
+    "content": "서술형 문제 3. [6점]\n함수 $f(x)=\\begin{cases}3x+2&(x\\ge1)\\\\5&(x<1)\\end{cases}$에 대하여 함수 $g(x)=\\displaystyle\\int_{-1}^x(t-2)f(t),dt$이다.\n$g(x)=\\begin{cases}(가)&(x\\ge1)\\\\(나)&(x<1)\\end{cases}$일 때, (가)와 (나)를 구하시오.",
     "choices": [],
     "answer": "(가) $x^3-2x^2-4x-15$, (나) $\\dfrac52x^2-10x-\\dfrac{25}{2}$",
     "solution": "먼저 $x<1$이면 적분 구간에서 $f(t)=5$이다.\n$g(x)=5\\displaystyle\\int_{-1}^x(t-2)\\,dt$\n$=5\\left[\\dfrac{t^2}{2}-2t\\right]_{-1}^x$\n$=\\dfrac52x^2-10x-\\dfrac{25}{2}$\n따라서 이것이 (나)이다.\n$x=1$에서\n$g(1)=\\dfrac52-10-\\dfrac{25}{2}=-20$\n$x\\ge1$에서는 $f(t)=3t+2$인 구간을 더 적분한다.\n$g(x)=g(1)+\\displaystyle\\int_1^x(t-2)(3t+2)\\,dt$\n$=-20+\\displaystyle\\int_1^x(3t^2-4t-4)\\,dt$\n$=-20+[t^3-2t^2-4t]_1^x$\n$=x^3-2x^2-4x-15$\n따라서 이것이 (가)이다.",
