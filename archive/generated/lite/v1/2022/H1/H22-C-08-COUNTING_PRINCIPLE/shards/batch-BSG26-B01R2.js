@@ -1,4 +1,4 @@
-window.examTitle = "ALIVE_LITE_BSG26_B01R2_SELECTED_MOVIES";
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_MOVIES";
 window.questionBank = [
   {
     "id": 1,
@@ -236,6 +236,74 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 액션 영화 두 편의 상영 시간은 항상 서로 달라 선후관계 하나만 허용한다.\n종류별 영화 선택은 $\\binom42\\times3\\times2=36$가지이다.\n선택한 네 영화의 전체 배열은 $4!=24$가지이다.\n두 액션 영화의 상대 순서를 바꾸는 대응을 생각하면 짧은 액션이 먼저인 배열과 나중인 배열이 똑같이 많다.\n따라서 조건을 만족하는 배열은 $24\\div2=12$가지이고 총 경우의 수는 $36\\times12=432$가지이다.\n따라서 정답은 ⑤이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 8,
+    "uid": "ALITE-BSG26-B01R2-Q12-F08",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "분할·분배",
+    "originalCategory": "순열과 조합",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "분할·분배"
+    ],
+    "wide": false,
+    "content": "서로 다른 영화 6편을 각각 3편씩 담은 두 묶음으로 나누려 한다. 두 묶음의 이름이나 순서를 구별하지 않을 때, 나누는 방법의 수는?",
+    "choices": [
+      "$5$",
+      "$10$",
+      "$20$",
+      "$36$",
+      "$60$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 이름이 없는 두 묶음을 구별하여 중복 계산하지 않아야 한다.\n먼저 한 묶음에 넣을 영화 세 편을 고르면 $\\binom63=20$가지이다.\n하지만 선택한 묶음과 남은 묶음을 서로 바꾸어도 동일한 분할이므로 모든 경우를 정확히 두 번씩 세었다.\n따라서 실제 경우의 수는 $20\\div2=10$가지이다.\n따라서 정답은 ②이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 9,
+    "uid": "ALITE-BSG26-B01R2-Q12-F09",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "분할·분배",
+    "originalCategory": "순열과 조합",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+    "subUnit": "경우의 수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "분할·분배"
+    ],
+    "wide": false,
+    "content": "서로 다른 영화 5편을 두 사람 $A,B$에게 빠짐없이 나누어 준다. 각 영화는 정확히 한 사람에게 주고, 두 사람 모두 적어도 한 편씩 받도록 할 때 나누는 방법의 수는?",
+    "choices": [
+      "$10$",
+      "$20$",
+      "$30$",
+      "$31$",
+      "$32$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 이름 있는 두 사람에게 분배하는 전체 경우에서 한 명만 모두 받는 경우를 제외한다.\n다섯 편 각각을 $A$ 또는 $B$에게 줄 수 있으므로 전체 분배는 $2^5=32$가지이다.\n하지만 전부 $A$에게 주거나 전부 $B$에게 주는 두 경우는 한 사람이 아무것도 받지 않아 제외해야 한다.\n따라서 $32-2=30$가지이다.\n따라서 정답은 ③이다.",
     "sourceType": "generated"
   }
 ];
