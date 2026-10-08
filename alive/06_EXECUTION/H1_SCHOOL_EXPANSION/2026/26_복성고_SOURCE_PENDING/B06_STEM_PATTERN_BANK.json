@@ -1,0 +1,808 @@
+{
+  "schemaVersion": "B06_STEM_REALIZER_DESIGN_v1",
+  "stage": "B_DESIGN_ONLY",
+  "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "patterns": [
+    {
+      "blueprintId": "BSG26-B06-Q18-SURFACE_COEFFICIENT_INVERSION",
+      "sourceQid": 18,
+      "stemPattern": "같은 원기둥·정육면체 관통구멍의 겉넓이 Pπ+Q와 양의 유리수 조건에서 a,b를 구한 뒤 a−b를 묻는다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "a-b=3",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "양의 길이·유리수·그림 적합 조건 없이 이차방정식 근 선택"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-SURFACE_DIFFERENCE",
+      "sourceQid": 18,
+      "stemPattern": "뚫기 전후 겉넓이 차이를 제시하고 제거된 두 정사각형 면과 새 내부 4벽면의 순증가로 b를 구한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "b=2",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "단답형",
+      "tentativeChoicePosition": null,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "양의 길이·유리수·그림 적합 조건 없이 이차방정식 근 선택"
+      ],
+      "expectedMathVisualDependency": "MINIMAL_DIFFERENCE_FACES",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 2
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-VOLUME_AFTER_TUNNEL",
+      "sourceQid": 18,
+      "stemPattern": "겉넓이로 a,b를 구한 다음 원기둥 부피에서 정육면체 부피를 빼어 남은 부피를 묻는다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "50π-8",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "서술형",
+      "tentativeChoicePosition": null,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "양의 길이·유리수·그림 적합 조건 없이 이차방정식 근 선택"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 4,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CAVITY_WALL_VOLUME_COMBINED",
+      "sourceQid": 18,
+      "stemPattern": "내부 네 벽의 넓이와 남은 부피를 서로 독립 조건으로 제시해 a,b를 결정한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "a+b=7",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "단답형",
+      "tentativeChoicePosition": null,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "부피에서 구멍의 b³를 공제하지 않음"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 4,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-INDEPENDENT_PRISM_SIDE",
+      "sourceQid": 18,
+      "stemPattern": "원기둥 높이 h, 정사각형 관통 기둥 한 변 s를 분리하고 0<s<h 및 S로 s를 구한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "s=2",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "구멍 한 변 s를 높이 h와 동일하다고 둠"
+      ],
+      "expectedMathVisualDependency": "NEW_GEOMETRY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 5,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": "NEW_PROBLEM_IMAGE_SQUARE_PRISM_THROUGH_HOLE"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-BLIND_CUBIC_CAVITY",
+      "sourceQid": 18,
+      "stemPattern": "윗면에서 깊이 s만 파인 정육면체형 홈을 별도 그림으로 보여주고 바닥면-윗면 상쇄를 이용한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "s=2",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 2,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "홈의 바닥을 공제로만 처리"
+      ],
+      "expectedMathVisualDependency": "NEW_GEOMETRY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 5,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": "NEW_DIAGRAM_BLIND_CAVITY_WITH_FLOOR_AND_DEPTH_LT_HEIGHT"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-TWO_SEPARATE_TUNNELS",
+      "sourceQid": 18,
+      "stemPattern": "분리된 두 정사각기둥 관통 구멍을 새 그림으로 제시하고 첫 구멍 한 변·전체 S로 두 번째 변을 역산한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "s1+s2=5",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 4,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "두 번째 구멍의 면을 겹치거나 중복 집계"
+      ],
+      "expectedMathVisualDependency": "NEW_GEOMETRY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 5,
+        "calculationLoad": 4
+      },
+      "creationPrerequisite": "NONOVERLAPPING_TUNNEL_PLACEMENT_AND_CIRCLE_FIT_VISUAL_EVIDENCE"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-CIRCULAR_TUNNEL",
+      "sourceQid": 18,
+      "stemPattern": "정사각형이 아닌 원형 관통구멍을 도식화하여 안쪽 곡면과 원형 개구 면적을 구별한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "r=2",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 1,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "관통구멍의 원형 개구를 원기둥 상하면에서 빼지 않음"
+      ],
+      "expectedMathVisualDependency": "NEW_GEOMETRY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 4,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": "CIRCULAR_THROUGH_BORE_DIAGRAM_R_LT_A"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-ROOT_ADMISSIBILITY",
+      "sourceQid": 18,
+      "stemPattern": "겉넓이 유도 이차방정식의 후보 근을 양의 길이·구멍 적합 조건으로 걸러 유일해를 정한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "a=5",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 5,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "양의 길이·유리수·그림 적합 조건 없이 이차방정식 근 선택"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 4,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q18-COMPARE_TWO_HOLE_SIZES",
+      "sourceQid": 18,
+      "stemPattern": "동일 원기둥에 크기가 다른 두 구멍이 있는 별개 그림을 비교해 공통 겉넓이 항을 소거한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "s2=3",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "위아래 제거 정사각형 두 면 중 한 면을 누락",
+        "새로 노출된 내부 벽면 네 개를 누락",
+        "관통형과 막힌 홈의 바닥면을 혼동",
+        "양의 길이·유리수·그림 적합 조건 없이 이차방정식 근 선택"
+      ],
+      "expectedMathVisualDependency": "TWO_CASE_COMPARATIVE_PANEL",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 5,
+        "calculationLoad": 4
+      },
+      "creationPrerequisite": "TWO_INDEPENDENT_NONOVERLAPPING_DIAGRAMS_DIFFERENT_PRISM_SIZE"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-INVERSE_K",
+      "sourceQid": 19,
+      "stemPattern": "원본과 같은 5개 인접선 그림 및 k종 구별된 색으로 칠하는 수를 제시해 k를 역산한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "k=6",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 2,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "RPM_EXISTING",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_THREE",
+      "sourceQid": 19,
+      "stemPattern": "원본 인접그래프에서 정확히 서로 다른 3색을 사용하도록 하고 B=D 조건을 독립적으로 확인한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "120",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 4,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_FOUR",
+      "sourceQid": 19,
+      "stemPattern": "원본 인접그래프에서 정확히 4색 사용은 비인접 BD까지 서로 다르게 칠하는 경우임을 묻는다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "360",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 1,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-FIXED_A",
+      "sourceQid": 19,
+      "stemPattern": "A를 지정된 색으로 고정한 원본 인접그래프의 색칠 수를 묻는다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "80",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 5,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-AC_SUBPALETTE",
+      "sourceQid": 19,
+      "stemPattern": "A,C만 서로 같은 허용 팔레트 T(크기 t)에서 고르게 하고 B,D는 전체 k색에서 고르게 한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "96",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-B_FORBID_COLOR",
+      "sourceQid": 19,
+      "stemPattern": "B에서만 빨강을 금지하되 A,C에 빨강이 사용됐는지에 따라 경우를 나눈다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "400",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 1,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "B의 빨강 금지를 A,C에도 적용"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-BD_FORBID_COLOR",
+      "sourceQid": 19,
+      "stemPattern": "B,D 모두 빨강 사용 불가 조건에서 A,C가 빨강을 사용한 경우와 안 한 경우를 나눠 센다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "340",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 4,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "A/C가 이미 빨강인 경우에도 B/D에서 또 하나 빼버림"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-EXACT_ONE_BD_RED",
+      "sourceQid": 19,
+      "stemPattern": "B,D 중 정확히 하나만 빨강, A,C는 빨강이 아님을 이용한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "120",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 2,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "B/D 둘 다 빨강인 경우까지 포함"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-BD_SAME_FIXED_RED",
+      "sourceQid": 19,
+      "stemPattern": "B,D가 모두 빨강을 공유하지만 이웃하지 않으므로 허용되고 A,C는 서로 다른 나머지 색을 쓴다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "20",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 5,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-RED_EXACT_ONCE",
+      "sourceQid": 19,
+      "stemPattern": "전체 네 영역 중 지정된 빨강의 등장횟수가 정확히 한 번인 경우를 A/C 또는 B/D 위치별로 분할한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "280",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "BD 두 군데 모두 빨강인 중복 등장까지 포함"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-RED_AT_LEAST_ONCE",
+      "sourceQid": 19,
+      "stemPattern": "전체 칠하기에서 빨강을 전혀 쓰지 않는 칠하기를 빼어 적어도 한 번을 센다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "300",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 1,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "전체 경우에서 빨강 없는 경우 대신 빨강 1회 경우만 뺌"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-OVERLAP_PALETTES",
+      "sourceQid": 19,
+      "stemPattern": "A의 허용집합 T와 C의 허용집합 U가 겹치므로 두 영역이 같은 색인 순서쌍을 제거한다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "112",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 4,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "T와 U의 교집합에서 A=C인 쌍을 빼지 않음"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-ADD_BD_EDGE",
+      "sourceQid": 19,
+      "stemPattern": "새 그림에 BD 공유 경계선을 분명히 추가하고 기존 그림과 비교하여 6색 색칠 수를 센다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "360",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 2,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "추가된 BD 공유경계를 무시"
+      ],
+      "expectedMathVisualDependency": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": "NEW_IMAGE_EDGE_LIST_INCLUDES_BD; source image cannot be reused"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-REMOVE_AC_EDGE",
+      "sourceQid": 19,
+      "stemPattern": "AC 공유 경계를 제거한 새 그림을 쓰고 A=C, A≠C를 나누어 센다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "630",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 5,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "AC 경계 삭제 후에도 A≠C라고 가정"
+      ],
+      "expectedMathVisualDependency": "NEW_DIAGRAM_TOPOLOGY_REQUIRED",
+      "candidateKind": "EXT_L4_CANDIDATE",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": "NEW_IMAGE_EDGE_LIST_EXCLUDES_AC; exact region topology must be explicitly reconstructed"
+    },
+    {
+      "blueprintId": "BSG26-B06-Q19-MINIMUM_K_THRESHOLD",
+      "sourceQid": 19,
+      "stemPattern": "원본 인접그래프 P(k)의 단조 증가와 P(k−1),P(k) 대조로 정해진 색칠 수 이상이 되는 최소 k를 찾는다.",
+      "originalToGeneratedLink": "same source-qid primary L3, materially changed L4/Condition/CrossConcept",
+      "targetMathAnswerOrStructure": "k=6",
+      "answerValueImmutable": true,
+      "plannedQuestionType": "객관식",
+      "tentativeChoicePosition": 3,
+      "placementConstraint": "Actual natural distractor ordering or source semantics override tentative position; never alter math answer to match placement",
+      "distractorStrategies": [
+        "BD의 점 접촉을 변 공유로 혼동해 불필요하게 색이 다르도록 계산",
+        "인접 A,C가 같은 색이어도 된다고 오판",
+        "B,D의 선택을 독립적으로 세지 않아 (k−2)를 한 번만 곱함",
+        "사용 가능한 팔레트 k색과 실제 칠하는 데 사용한 색의 수를 혼동"
+      ],
+      "expectedMathVisualDependency": "SOURCE_RASTER_KEEP",
+      "candidateKind": "CONDITION_PATTERN_ONLY",
+      "disposition": "DESIGN_READY_CREATION_NOT_RUN",
+      "reverseStemCheck": [
+        "후보 발문만 읽어도 원본과 동일한 주 L3로 풀이 가능한가?",
+        "도형/인접 조건에서 중요한 원본 사실을 유지 또는 명시적으로 교체했는가?",
+        "풀이 결정 단계가 blueprint와 실제로 다른가?"
+      ],
+      "answerNormalizer": "Canonical mathematical value first; do not hide fractions/radicals by changing the task; choose sample parameters only if all branches valid",
+      "difficultyDesign": {
+        "reasoningLoad": 3,
+        "calculationLoad": 3
+      },
+      "creationPrerequisite": null
+    }
+  ],
+  "counts": {
+    "total": 25,
+    "q18": 10,
+    "q19": 15,
+    "objective": 22,
+    "nonObjective": 3,
+    "tentativeAnswerPositionHistogram": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 4,
+      "5": 4
+    }
+  },
+  "groundingFiles": [
+    "B06_SOURCE_VISUAL_AUDIT.json",
+    "B06_DESIGN_MATH_WITNESSES.json",
+    "B06_BATCH_DESIGN.json"
+  ],
+  "hardLocks": [
+    "No generated item or UID at this stage",
+    "No visual topology inference from answer options",
+    "R3 solution visual orphan q18-solution.svg never reused",
+    "Independent review not claimed",
+    "A/B/C model legacy verifier not automatically authorized for new L4 recipes"
+  ]
+}
