@@ -1,5 +1,11 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT FINAL-CLOSURE OVERRIDE — REVIEW가 Consumer DB까지 마감 (2026-10-08)
+- REVIEW+MAIN 담당자는 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 읽는다. 독립 검수 → 정답 위치/5지 오개념 검수 → 필요 핀포인트 수리 → 승인 UID 확정 → Generated Consumer 등록·학생용 실제 검색/조회/선택 → main push·readback까지 한 채팅이 책임진다.
+- `generated UID main 저장` ≠ `consumer DB 등록` ≠ `student supply verified`. ALITE UID를 기존 original qid_v1 UID로 강제 변환하지 않는다. Consumer adapter 미지원 시 기술 구현/검증을 닫기 전 DONE 선언 금지.
+- 효천고 94 후보/기존 92 기록은 ③ 편중 규칙 도입 전 snapshot. answer-position repair branch 수정은 별도 independent review 전까지 소비 불가. 최종 approved와 HOLD를 재확정한 뒤 등록.
+
+
 상위: `alive/05_DESIGN/ALIVE_GPT_LITE_GENERATION_FIRST_EXECUTION_v0.6.md`, `ALIVE_GPT_LITE_MASS_EXPANSION_WORKER_CONTRACT_v0.3.md`, `ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md`, `ALIVE_GPT_LITE_GRAPH_SVG_TWO_PASS_OPERATION_v0.1.md`.
 
 ## 최소 실행
@@ -48,3 +54,11 @@
 - B는 기존 L4, Condition-only, 신규 EXT L4, 정말 필요할 때의 EXT L3를 구분하고 canonical 대비 독립 풀이구조를 기록한다. 신규 EXT 유형 후보의 대상 원본·정의·예시 UID를 candidate registry에 먼저 Git 저장한다.
 - B design + extension registry를 freeze하고 C 문항을 생성한다. D는 후보 UID/manifest와 extension candidate index를 결속한다. 신규 L3/L4는 REVIEW 독립 심사 전 canonical/consumer 미등록.
 - 새 정본: alive/06_EXECUTION/ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md.
+
+## CURRENT HARD — 단원 순서에 따른 주개념 우선 (2026-10-08, 사용자 직접 지시)
+- 신규 문항을 분류할 때 필수 결정적 풀이·출제목표를 중심으로 표준단원 순서를 비교한다. 뒤 단원 개념이 주된 평가 대상이면 뒤 단원 Primary를 선택하고, 앞 단원의 필수 도구는 선수개념/CrossConcept로 기록한다. 단순 용어 등장에 따른 기계식 최신단원 선택은 금지.
+- **복성고 B02 q8:** seed H22-C-04 복소수는 source provenance, 생성 문항의 주분류는 H22-C-06-HIGHER_EQUATION / RPM L3 삼차·사차방정식 / H1-RPM-172. 켤레허근은 선수개념. 잘못된 EXT L3 후보를 철회한다.
+- **복성고 B02 q11:** H22-C-06-INEQUALITY 아래 절댓값을 포함한 부등식 L3는 별도 taxonomy candidate table로 분리하며, RPM '절대부등식'(산술기하평균/코시)과 동일시하지 않는다. 독립 검수 전 official RPM으로 등록 금지.
+- 신설 운영 규정: docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md
+- 후보 분류표: archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json
+- source 원본 바이트 불변, generated shard/meta/index/manifest/receipt 및 EXT registry는 한 분류로 일관 결속한다.
