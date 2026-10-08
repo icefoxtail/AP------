@@ -242,3 +242,21 @@ artifact gate가 요구하는 기본 schema, difficulty enum, actual asset/SVG d
 R3는 targeted rows와 full-artifact Meta disposition을 분리한다. 미변경 qid의 합법적 PT/TPL null debt는 `artifactDispositions.artifactSha == finalArtifactSha`인 별도 rows로 결속한다.
 
 MASTER MAIN_DONE은 `archive-gpt-closeout-v2` 계약과 같은 evidence를 만든다: R3 validation ref+SHA / artifactSha / asset SHA / productionPath / remoteMainSha. origin/main production blob 및 asset parity가 맞기 전 MAIN_DONE 금지.
+
+
+## 10. CREATE/R1 FOUR-CASE QUALITY HARD — 2026-10-08
+
+적용: CREATE-A/B/C 및 R1-A/B/C의 이후 작업. 24 매산여고(level 숫자형), 24 금당고(level null·짧은 해설), 24 매산고(layoutTag stack 다수), 24 여수고(짧은 서술형 해설)는 회귀 사례이지 정상 샘플이 아니다.
+
+CREATE:
+- 전 qid의 difficulty 4필드를 의미 기반 판정하고 legacy `level`은 반드시 `하|중|상` 문자열로 확정한다. `null`, 숫자 1/2/3, 필드 누락 금지. `difficultyBucket`은 독립 1~5 수치이고 `level`로 대체하지 않는다. 숫자→한글 일괄 치환만으로 난이도 판정을 완료했다고 주장하지 않는다.
+- QUESTION_LAYOUT은 실제 문장·수식·보기·표의 의미적 묶음을 기준으로 정한다. `layoutTag: "stack"`은 개수나 비율로 일괄 배정하지 않고 각 qid의 줄 구성 근거가 있을 때만 쓴다. 많은 stack이 발견되면 각 해당 qid를 다시 살핀다. 기계적 줄바꿈·줄마다 수식 분리 금지.
+- 해설은 짧은 정답 선언이나 식 한두 줄만으로 PASS 금지. 쉬운 문항에도 핵심 조건→식 설정→필요 중간 계산→정답 연결을 독자가 따라갈 수 있게 쓰고, 서술형은 결정적 논증 및 채점 가능한 전개를 누락하지 않는다. 글자수·평균길이만으로 PASS/FAIL 판정하지 않는다.
+- Meta와 조판·해설 품질은 qid별로 실제 확인하고 근거 없이 일괄 PASS 금지. 기존 Golden/engine 조판 규칙을 우선한다.
+
+R1 INDEPENDENT:
+- CREATE의 level·difficultyBucket·layoutTag·해설 완성도를 그대로 승인하지 말고 전 qid 별도 판정한다. `level` 타입/허용값 및 difficultyBucket 의미를 전수 확인한다.
+- 모든 `stack` 문항의 실제 문장·수식 묶음과 줄바꿈 의도를 확인한다. 과다 사용은 조사 신호이며 자동 FAIL 사유는 아니다.
+- 기본 문항 포함 학생이 해설만 보고 재현 가능한지, 서술형은 결정적 중간식/추론이 있는지를 확인한다. 평균 글자수로 면책하지 않는다.
+- 발견 결함은 same-stage MINIMAL_REPAIR, 필요시 ALIVE_REPLACEMENT 후 changed qid와 direct dependency만 재확인하고 evidence/SHA를 재결속한다. 전 시험지 중복 재검은 하지 않는다.
+- R1 PASS는 위 점검 결과를 전 qid verdict에 실제 반영했을 때만 발행한다.
