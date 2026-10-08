@@ -8,7 +8,7 @@ async function main(){
   const server=http.createServer((req,res)=>{
     try{const n=decodeURIComponent(new URL(req.url,'http://localhost').pathname),p=path.resolve(root,'.'+n);
       if(!p.startsWith(root+path.sep)||!fs.existsSync(p)||fs.statSync(p).isDirectory()){res.writeHead(404);res.end();return;}
-      res.writeHead(200,{'Content-Type':(n.endsWith('.json')?'application/json':'text/html')+'; charset=utf-8'});
+      res.writeHead(200,{'Content-Type':(n.endsWith('.json')?'application/json':n.endsWith('.svg')?'image/svg+xml':n.endsWith('.png')?'image/png':n.endsWith('.js')?'text/javascript':'text/html')+'; charset=utf-8'});
       fs.createReadStream(p).pipe(res);
     }catch(e){res.writeHead(500);res.end(String(e));}
   });
