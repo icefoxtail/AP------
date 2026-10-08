@@ -35,12 +35,12 @@ function contentFingerprint(question) {
 test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 165);
+  assert.equal(index.records.length, 190);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
-  assert.equal(index.approvedBySchool['복성고'], 73);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 165);
+  assert.equal(index.approvedBySchool['복성고'], 98);
+  assert.equal(new Set(index.records.map(r => r.uid)).size, 190);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
@@ -128,7 +128,7 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('student finder loads 165; school search, UID preview, answer, checkbox/print and hold rejection work', async () => {
+test('student finder loads 190; school search, UID preview, answer, checkbox/print and hold rejection work', async () => {
   const nodes = Object.create(null);
   const document = {
     getElementById: id => nodes[id] ||= new Node(),
@@ -153,11 +153,11 @@ test('student finder loads 165; school search, UID preview, answer, checkbox/pri
   const wait = () => new Promise(resolve => setTimeout(resolve, 15));
   await wait();
   const el = id => document.getElementById(id);
-  assert.equal(el('count').textContent, 165);
+  assert.equal(el('count').textContent, 190);
   assert.ok(el('school').children.some(x => x.value === '복성고'));
   assert.ok(el('school').children.some(x => x.value === '효천고'));
   el('school').value = '복성고'; el('school').listeners.change();
-  assert.equal(el('count').textContent, 73);
+  assert.equal(el('count').textContent, 98);
   el('query').value = 'ALITE-BSG26-B03-Q14-I10'; el('query').listeners.input();
   assert.equal(el('count').textContent, 1);
   const selectedItem = el('items').children[0];
