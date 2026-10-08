@@ -290,6 +290,37 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h1/1mid/26_강남여고_1학기_중간_고1_기출.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H22-C-01",
+      "rangeStartUnit": "다항식의 연산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C-05",
+      "rangeEndUnit": "이차방정식과 이차함수",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학1",
+          "courseCode": "H22-C",
+          "rangeStartUnitKey": "H22-C-01",
+          "rangeStartUnit": "다항식의 연산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C-05",
+          "rangeEndUnit": "이차방정식과 이차함수",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
       "school": "광양제철고",
       "topic": "",
@@ -12553,6 +12584,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-07",
+      "rangeStartUnit": "여러 가지 방정식",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H15-SA-13",
+      "rangeEndUnit": "이차함수",
+      "rangeEndUnitOrder": 13,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-07",
+          "rangeStartUnit": "여러 가지 방정식",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H15-SA-13",
+          "rangeEndUnit": "이차함수",
+          "rangeEndUnitOrder": 13
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
       "school": "금당고",
       "topic": "",
@@ -12582,6 +12644,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/1final/21_매산고_1학기_기말_고1_기출.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-SA-08",
+      "rangeStartUnit": "여러 가지 부등식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-08",
+          "rangeStartUnit": "여러 가지 부등식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
@@ -12615,6 +12708,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(하)"
     },
     {
+      "file": "original/high/h1/1final/21_매산여고_1학기_기말_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-06",
+      "rangeStartUnit": "이차방정식의 근과 계수",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H15-SA-12",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 12,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-06",
+          "rangeStartUnit": "이차방정식의 근과 계수",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-SA-12",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 12
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
+    },
+    {
       "file": "original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js",
       "school": "복성고",
       "topic": "",
@@ -12644,6 +12768,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-04",
+      "rangeStartUnit": "복소수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-SA-10",
+      "rangeEndUnit": "직선의 방정식",
+      "rangeEndUnitOrder": 10,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-04",
+          "rangeStartUnit": "복소수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-SA-10",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 10
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
@@ -12716,6 +12871,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/1final/21_순천고_1학기_기말_고1_기출.js",
+      "school": "순천고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-SA-08",
+      "rangeStartUnit": "여러 가지 부등식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H15-SA-13",
+      "rangeEndUnit": "이차함수",
+      "rangeEndUnitOrder": 13,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(상)",
+          "courseCode": "H15-SA",
+          "rangeStartUnitKey": "H15-SA-08",
+          "rangeStartUnit": "여러 가지 부등식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H15-SA-13",
+          "rangeEndUnit": "이차함수",
+          "rangeEndUnitOrder": 13
+        }
+      ],
+      "primaryStandardCourse": "수학(상)"
     },
     {
       "file": "original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
@@ -17142,192 +17328,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js",
-      "school": "금당고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2021,
-      "semester": "1",
-      "examType": "final",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H15-SA-07",
-      "rangeStartUnit": "여러 가지 방정식",
-      "rangeStartUnitOrder": 7,
-      "rangeEndUnitKey": "H15-SA-13",
-      "rangeEndUnit": "이차함수",
-      "rangeEndUnitOrder": 13,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-07",
-          "rangeStartUnit": "여러 가지 방정식",
-          "rangeStartUnitOrder": 7,
-          "rangeEndUnitKey": "H15-SA-13",
-          "rangeEndUnit": "이차함수",
-          "rangeEndUnitOrder": 13
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "original/high/h1/1final/21_매산고_1학기_기말_고1_기출.js",
-      "school": "매산고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2021,
-      "semester": "1",
-      "examType": "final",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 20,
-      "rangeStartUnitKey": "H15-SA-08",
-      "rangeStartUnit": "여러 가지 부등식",
-      "rangeStartUnitOrder": 8,
-      "rangeEndUnitKey": "H15-SA-12",
-      "rangeEndUnit": "도형의 이동",
-      "rangeEndUnitOrder": 12,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-08",
-          "rangeStartUnit": "여러 가지 부등식",
-          "rangeStartUnitOrder": 8,
-          "rangeEndUnitKey": "H15-SA-12",
-          "rangeEndUnit": "도형의 이동",
-          "rangeEndUnitOrder": 12
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "original/high/h1/1final/21_매산여고_1학기_기말_고1_기출.js",
-      "school": "매산여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2021,
-      "semester": "1",
-      "examType": "final",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H15-SA-06",
-      "rangeStartUnit": "이차방정식의 근과 계수",
-      "rangeStartUnitOrder": 6,
-      "rangeEndUnitKey": "H15-SA-12",
-      "rangeEndUnit": "도형의 이동",
-      "rangeEndUnitOrder": 12,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-06",
-          "rangeStartUnit": "이차방정식의 근과 계수",
-          "rangeStartUnitOrder": 6,
-          "rangeEndUnitKey": "H15-SA-12",
-          "rangeEndUnit": "도형의 이동",
-          "rangeEndUnitOrder": 12
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
-      "school": "복성고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2021,
-      "semester": "1",
-      "examType": "final",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H15-SA-04",
-      "rangeStartUnit": "복소수",
-      "rangeStartUnitOrder": 4,
-      "rangeEndUnitKey": "H15-SA-10",
-      "rangeEndUnit": "직선의 방정식",
-      "rangeEndUnitOrder": 10,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-04",
-          "rangeStartUnit": "복소수",
-          "rangeStartUnitOrder": 4,
-          "rangeEndUnitKey": "H15-SA-10",
-          "rangeEndUnit": "직선의 방정식",
-          "rangeEndUnitOrder": 10
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "original/high/h1/1final/21_순천고_1학기_기말_고1_기출.js",
-      "school": "순천고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2021,
-      "semester": "1",
-      "examType": "final",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H15-SA-08",
-      "rangeStartUnit": "여러 가지 부등식",
-      "rangeStartUnitOrder": 8,
-      "rangeEndUnitKey": "H15-SA-13",
-      "rangeEndUnit": "이차함수",
-      "rangeEndUnitOrder": 13,
-      "courseRanges": [
-        {
-          "standardCourse": "수학(상)",
-          "courseCode": "H15-SA",
-          "rangeStartUnitKey": "H15-SA-08",
-          "rangeStartUnit": "여러 가지 부등식",
-          "rangeStartUnitOrder": 8,
-          "rangeEndUnitKey": "H15-SA-13",
-          "rangeEndUnit": "이차함수",
-          "rangeEndUnitOrder": 13
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
-    },
-    {
-      "file": "original/high/h1/1mid/26_강남여고_1학기_중간_고1_기출.js",
-      "school": "강남여고",
-      "topic": "",
-      "grade": "고1",
-      "year": 2026,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "수학(상)",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "H22-C-01",
-      "rangeStartUnit": "다항식의 연산",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C-05",
-      "rangeEndUnit": "이차방정식과 이차함수",
-      "rangeEndUnitOrder": 5,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학1",
-          "courseCode": "H22-C",
-          "rangeStartUnitKey": "H22-C-01",
-          "rangeStartUnit": "다항식의 연산",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C-05",
-          "rangeEndUnit": "이차방정식과 이차함수",
-          "rangeEndUnitOrder": 5
-        }
-      ],
-      "primaryStandardCourse": "수학(상)"
     }
   ]
 };
