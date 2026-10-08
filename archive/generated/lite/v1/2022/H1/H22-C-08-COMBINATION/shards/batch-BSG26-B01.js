@@ -1,0 +1,65 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01-Q01-BP01",
+    "level": "중",
+    "category": "순열과 조합",
+    "originalCategory": "조합의 뜻과 계산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "$\\dfrac{6!}{3!}+{}_8C_2$의 값은?",
+    "choices": [
+      "$146$",
+      "$147$",
+      "$148$",
+      "$149$",
+      "$150$"
+    ],
+    "answer": "③",
+    "solution": "$\\dfrac{6!}{3!}=6\\times5\\times4=120$이고 ${}_8C_2=\\dfrac{8\\times7}{2}=28$이다. 따라서 전체 값은 $120+28=148$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-08-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01-Q01-BP02",
+    "level": "중",
+    "category": "순열과 조합",
+    "originalCategory": "조합의 뜻과 계산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-08",
+    "standardUnit": "순열과 조합",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "자연수 $n$에 대하여 $n!+{}_6C_2=135$일 때, $n$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "③",
+    "solution": "${}_6C_2=\\dfrac{6\\times5}{2}=15$이므로 $n!=135-15=120$이다. $4!=24$, $5!=120$이므로 $n=5$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H22-C-08-COMBINATION",
+    "subUnit": "조합",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "sourceType": "generated"
+  }
+];
