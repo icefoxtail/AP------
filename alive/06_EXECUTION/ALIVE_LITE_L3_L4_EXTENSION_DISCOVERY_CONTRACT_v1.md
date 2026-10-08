@@ -66,3 +66,11 @@ q15는 주사위 3회의 눈을 세 자리 숫자로 읽어 4의 배수를 센�
 REVIEW 채팅에서 전 candidate 학생용 입력을 blind 독립 풀이하고 정답·5지·해설·교육과정·RPM semantic과 신규성(실제 L3/L4 단계 차이)을 재판정한다. 신규 L3/L4는 독립 meta-review 증거를 제출하되 APPROVED 후보만 별도 taxonomy 승격 제안 대상으로 삼는다. **user 승인 전 canonical 승격 없음**. CREATE 후보 수·L3/L4 후보 수·독립 심사 통과 유형 수·학생 공급 수를 분리한다.
 
 다음 배치 B02부터 강제 순서: A 원본 독해 → B1 RPM 범위 전수+prior/lower lookup → B2 EXT L3/L4 gap와 관계축 탐색 → B3 registry/triage/오개념 5지 및 답 위치 설계 Git 선저장 → C ACCEPT 제작 → D UID/shard/L2 manifest/receipt/extension registry readback. 독립 REVIEW는 별도 채팅.
+
+## 8. CURRENT HARD — 원본 seed 단원보다 실제 해결 주개념의 뒤 단원 우선
+
+- RPM Primary semantic lookup 전에 교과서 표준단원 순서와 실제 질문·결정적 풀이 구조를 먼저 비교한다. 앞 단원의 켤레복소수 등을 이용하더라도 최종 평가 목표가 삼차방정식의 계수/근인 경우 Primary는 더 뒤 단원인 삼차·사차방정식이다.
+- source original standardUnitKey는 provenance로 보존하고, 신규 generated UID의 target standardUnitKey/standardUnitOrder/subUnitKey/Primary L3·L4를 뒤 단원 기준으로 바로잡는다. 아직 안 배운 뒤 단원은 학생 공급 scope를 제한한다.
+- 복성고 q8: original H22-C-04-COMPLEX_BASIC, generated H22-C-06-HIGHER_EQUATION / H1-RPM-172. 허근쌍을 이용한 세부 전략만 EXT L4 검토, EXT L3 오판은 superseded.
+- 복성고 q11: H22-C-06-INEQUALITY 아래 '절댓값을 포함한 부등식' L3 후보를 별도 분류표로 관리. 기존 RPM '절대부등식'은 AMGM/Cauchy여서 다르다. taxonomy 정식 승격은 별도 승인.
+- 정본: docs/rules/01_CANONICAL/JS아카이브_단원순서_주개념분류_운영규정_v1.md. 새 분류표: archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json.
