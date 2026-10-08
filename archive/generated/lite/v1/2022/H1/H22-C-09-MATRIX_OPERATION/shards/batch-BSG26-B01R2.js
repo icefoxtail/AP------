@@ -203,5 +203,107 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 필요한 행의 두 성분만 계산한다.\n$A+tB$의 첫째 행은 $(2+t,\\ 5-3t)$이다.\n두 성분의 합이 0이므로 $(2+t)+(5-3t)=7-2t=0$이다.\n따라서 $2t=7$이고 $t=\\dfrac72$이다.\n따라서 정답은 ③이다.",
     "sourceType": "generated"
+  },
+  {
+    "id": 7,
+    "uid": "ALITE-BSG26-B01R2-Q06-M07",
+    "level": "하",
+    "difficultyBucket": 2,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 곱셈"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}2&1\\\\3&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&4\\\\-2&3\\end{pmatrix}$에 대하여 $AB$의 $(1,2)$성분은?",
+    "choices": [
+      "$5$",
+      "$8$",
+      "$11$",
+      "$14$",
+      "$17$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 행렬곱의 $(1,2)$성분은 $A$의 첫째 행과 $B$의 둘째 열을 대응시켜 곱한 뒤 더한다.\n$A$의 첫째 행은 $(2,1)$, $B$의 둘째 열은 $(4,3)$이다.\n따라서 $(AB)_{12}=2\\times4+1\\times3=11$이다.\n따라서 정답은 ③이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 8,
+    "uid": "ALITE-BSG26-B01R2-Q06-M08",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 곱셈"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}2&0\\\\3&1\\end{pmatrix}$에 대하여 $AB+BA$의 $(1,2)$성분은?",
+    "choices": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 곱하는 순서를 바꾸면 다른 행렬이 될 수 있으므로 $AB$와 $BA$를 별도로 계산한다.\n$(AB)_{12}=1\\times0+2\\times1=2$이고 $(BA)_{12}=2\\times2+0\\times1=4$이다.\n두 행렬을 더할 때 대응하는 성분끼리 더하므로 구하는 값은 $2+4=6$이다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 9,
+    "uid": "ALITE-BSG26-B01R2-Q06-M09",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬의 곱셈"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}a&2\\\\1&0\\end{pmatrix}$, $B=\\begin{pmatrix}3&1\\\\2&4\\end{pmatrix}$에 대하여 $AB$의 $(1,1)$성분이 19이다. 실수 $a$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 행렬곱의 지정 성분을 $a$에 대한 식으로 표현한다.\n$A$의 첫째 행 $(a,2)$와 $B$의 첫째 열 $(3,2)$에서 $(AB)_{11}=3a+4$이다.\n이 성분이 19이므로 $3a+4=19$, $3a=15$이다.\n따라서 $a=5$이다.\n따라서 정답은 ③이다.",
+    "sourceType": "generated"
   }
 ];
