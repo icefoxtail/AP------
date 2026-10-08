@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "ALIVE_LITE_L4_EXTENSION_CANDIDATES_v0.2",
+  "status": "DRAFT_DISCOVERY_ONLY",
+  "curriculum": "2022",
+  "course": "공통수학1",
+  "l1": "H22-C-08",
+  "l2": "H22-C-08-COUNTING_PRINCIPLE",
+  "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "candidateCount": 7,
+  "candidates": [
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-MANDATORY-PICK",
+      "label": "필수 객체를 포함한 종류별 선택 후 배열",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "선택 후 배치",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "특정 객체를 선선택한 후 남은 선발 수를 수정하고 배열",
+      "contrastAgainstCanonicalL4": "자유 선택 후 전체 순서와 달리 강제 포함 수와 자유 선택 수의 분리",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F01"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-ENDPOINTS",
+      "label": "선택된 집단의 고정 위치 제약",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "선택 후 배치",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "장르별 선택을 마친 뒤 유일 장르의 첫 자리나 양끝을 고정",
+      "contrastAgainstCanonicalL4": "선택 이후 전체 순열과 달리 특정 장르의 슬롯이 먼저 확정",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F02",
+        "ALITE-BSG26-B01R2-Q12-F06"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-ADJACENCY",
+      "label": "선택 후 인접·비인접 대상 구별",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "선택 후 배치",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "장르별 선택 경우의 수에 묶음 배열 또는 여사건 조건 배열 곱",
+      "contrastAgainstCanonicalL4": "선택과 배열을 복합하는 기존 L4 내부에서 인접성 제약이 추가",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F03",
+        "ALITE-BSG26-B01R2-Q12-F04"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-ALTERNATING",
+      "label": "집단별 선택 후 교대배열",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "선택 후 배치",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "집단별 선발 후 두 집단의 교대 시작 조건과 집단내 순서 계산",
+      "contrastAgainstCanonicalL4": "단순 장르 제한이 아니라 전체 자리 패턴을 미리 선택",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F05"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-RELATIVE-ORDER",
+      "label": "선택 후 집단 내 상대선후 관계",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "선택 후 배치",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "선발된 두 객체의 속성에 따라 상대 순서를 하나로 선택하고 대칭 쌍 반분",
+      "contrastAgainstCanonicalL4": "고정 위치 없이 교환대칭으로 배열 수가 절반",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F07"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-UNLABELED-PARTITION",
+      "label": "이름 없는 동일 크기 묶음으로 분할",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "조합을 이용한 경우의 수",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "한 묶음 선택 후 두 묶음 교환 동치를 반영해 중복수로 나눔",
+      "contrastAgainstCanonicalL4": "일반 선발과 달리 묶음의 라벨 부재 때문에 동일 분할을 중복 셈",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F08"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C08-DIST-NONEMPTY-LABELED",
+      "label": "이름 있는 집단으로 비공집합 분배",
+      "parentRPMPrimaryL3": "분할·분배",
+      "closestCanonicalL4": "조합을 이용한 경우의 수",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-196",
+        "H1-RPM-197"
+      ],
+      "definingDecisiveStep": "독립 할당의 전체 경우에서 한 집단이 빈 경우를 여사건으로 제외",
+      "contrastAgainstCanonicalL4": "순서없는 분할 F08과 달리 수령자 이름은 구별되고 비공집합 조건 필수",
+      "sourceSeedQids": [
+        12
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q12-F09"
+      ],
+      "semanticSourceScope": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    }
+  ],
+  "reviewStatus": "NOT_REVIEWED",
+  "canonicalRPMModified": false
+}
