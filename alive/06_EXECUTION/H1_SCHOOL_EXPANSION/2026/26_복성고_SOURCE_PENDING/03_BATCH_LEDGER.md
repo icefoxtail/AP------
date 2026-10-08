@@ -80,3 +80,12 @@
 - q20 주개념 RPM H1-RPM-203(조건을 만족하는 행렬). q22는 H1-RPM-179(연립**일차**부등식) 및 H1-RPM-182(AMGM)로 억지 귀속 금지; 신규 L3/L4 후보 독립 검토만 남김.
 - 제외 설계 6건 및 45개 Blueprint 근거: `B04_B05_R2_BLUEPRINT_DESIGN.json`. R2는 CREATE 후보이고 독립 REVIEW·실제 student consumer·main publication 모두 미실행.
 - next batch: B06(q18/q19) 도형·색칠 source 시각 근거 확인 후 착수.
+
+## 2026-10-08 B04/B05 R2 핀포인트 품질보정 — 사용자 직접 지시
+- repair branch: `repair/alive-lite-bokseong-b04-b05-r2-quality-20261008`; 원본 source blob `8266fa476906e9134b94f23e803bd3b2fb26ece4` 불변.
+- q23 파생 4 UID의 학생용 `**` 조판 오염 제거, q21 3 UID에 `서로 다른` 선택 조건 명시; content 의미와 answer 불변.
+- q21 9 UID는 원래 R2 Blueprint/직접 RPM H1-RPM-194의 `조합의 활용`에 따라 공식 `H22-C-08-COMBINATION`으로 shard+metadata+manifest+index 함께 이전. 기존 `COUNTING_PRINCIPLE` 소속·파일 제거.
+- 45/45 난이도 current-pass: bucket 변경 16, legacy level 변경 7. 네 개 난이도 메타 필드를 모두 물리화. original difficultyTarget은 `initialDifficultyTarget`, original answer-position plan은 `historicalChoicePositionPlan`으로 보존; 실현 값을 post-create reconciliation으로 별도 명시(원래 predesign compliance를 소급 주장하지 않음).
+- 기존 Blueprint 객관식 위치 불일치 21/23, 주관식 위치 계획 오입력 22/22은 실현 선택지 23개 ①4·②5·③8·④4·⑤2를 그대로 유지해 처리. 수학 정답/보기 재배열 없음, 단일 자리 최대 34.8%로 40% 경보 미달.
+- 신구 생성 UID 수 동일: B04 26/B05 19, 누적 166. q22 파생 10건 `EXT L3/L4 PROPOSED`는 canonical 승인 불가로 계속 Meta review, REVIEW/consumer DB/MAIN publication 미수행.
+- stage reviewer는 `B04_B05_R2_PINPOINT_REPAIR_20261008.md` 및 현재 shard·index·manifest 바이트로 확정. 등록은 독립 학생 입력/수학/메타 검수 후 별도.
