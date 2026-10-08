@@ -80,7 +80,8 @@ test('table parser escapes HTML-like content instead of executing arbitrary tags
  const context=vm.createContext({document,fetch,window:{print:()=>{}},Map,Set,Promise,console});
  vm.runInContext(code,context,{timeout:2000});
  const box=new Node();
- vm.runInContext("questionStem(__parent,'앞<span onmouseover=alert(1)>오염</span>뒤')",vm.createContext({...context,__parent:box}),{timeout:2000});
+ context.__parent=box;
+ vm.runInContext("questionStem(__parent,'앞<span onmouseover=alert(1)>오염</span>뒤')",context,{timeout:2000});
  assert.ok(box.children[0].children.every(n=>n.tag==='span'));
  assert.equal(box.children[0].children[0].textContent,'앞<span onmouseover=alert(1)>오염</span>뒤');
 });
