@@ -1,0 +1,1061 @@
+{
+  "schemaVersion": "ALIVE_LITE_B02_PRE_PRODUCTION_BLUEPRINT_DESIGN_v1",
+  "batchId": "B02",
+  "sourcePath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "baseMain": "5ebb3fd6058a19a872f1d83a7ce048e012adaa48",
+  "branch": "pilot/alive-lite-bokseong-b01-blueprint-redesign-20261008",
+  "sourceQids": [
+    3,
+    5,
+    8,
+    10,
+    11
+  ],
+  "state": "B_DESIGN_FROZEN_BEFORE_C",
+  "counts": {
+    "original": 5,
+    "explored": 46,
+    "accept": 38,
+    "duplicate": 3,
+    "l3Drift": 4,
+    "curriculum": 1
+  },
+  "rows": [
+    {
+      "sourceQid": 3,
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "originalTargetL1": "H22-C-09",
+      "originalTargetL2": "H22-C-09-CORE",
+      "proposedPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRPM": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "relatedRPMExistingL4": [
+        "덧셈·뺄셈·실수배",
+        "행렬의 곱셈"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "decisiveSourceMethod": "대응 성분별 행렬 등식에서 실수배/선형결합 계수를 결정",
+      "sourceScopeRisks": [
+        "원본 subUnit CORE는 RPM L3 머신 L2와 불일치; target unit 그대로 유지"
+      ],
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B02-Q03-M01",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "비례하는 두 행렬에서 미지 성분 역산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-M02",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "kA+B=C 행렬 방정식에서 상수배와 추가 미지수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-M03",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "두 대응 성분 0을 동시에 만드는 매개변수 조건",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-M04",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "9",
+          "decisiveStepSignature": "성분 총합의 실수배에서 지정 성분 역산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-M05",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "7/2",
+          "decisiveStepSignature": "실수배 후 첫 행의 성분합 0 제약",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-M06",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "덧셈·뺄셈·실수배",
+          "rpmComparatorId": "H1-RPM-200",
+          "intendedAnswerValue": "7",
+          "decisiveStepSignature": "A+B 및 A-B를 알 때 2A+B의 지정 성분 복원",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-X01",
+          "disposition": "DUPLICATE",
+          "reason": "단순 A=kB 대응성분 숫자 치환만 반복",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B02-Q03-X02",
+          "disposition": "L3_DRIFT",
+          "reason": "행렬의 연산 대신 행렬식 공식 사용",
+          "generatedUids": []
+        }
+      ],
+      "status": "SOURCE_CONTINUATION_REQUIRED",
+      "notExploredL4": [
+        {
+          "reason": "Validated production recipes and independently distinguished EXT granularity still require REVIEW; no universal exhaustion claim"
+        }
+      ]
+    },
+    {
+      "sourceQid": 5,
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "originalTargetL1": "H22-C-06",
+      "originalTargetL2": "H22-C-06-INEQUALITY",
+      "proposedPrimaryL3": "이차부등식",
+      "canonicalComparatorRPM": [
+        "H1-RPM-180",
+        "H1-RPM-181"
+      ],
+      "relatedRPMExistingL4": [
+        "그래프를 이용한 해",
+        "근의 위치와 해"
+      ],
+      "semanticSourceScope": "H22-C-06-HIGHER_INEQUALITY",
+      "decisiveSourceMethod": "이차식의 근·부호구간을 결정하고 정수/매개변수 목표를 판정",
+      "sourceScopeRisks": [
+        "수치형 정수해 개수의 단순 반복은 신규 L4로 계상하지 않는다"
+      ],
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B02-Q05-I01",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-181",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "엄격부등식 두 근 사이의 정수해 개수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I02",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-181",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "두 근 바깥의 정수해를 유한 범위와 교차해 계산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I03",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-180",
+          "intendedAnswerValue": "5",
+          "decisiveStepSignature": "음의 최고차항에서 해 구간 방향 뒤집기",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I04",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-181",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "두 정수근 사이 정수해의 합으로 근의 매개변수 역산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I05",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-180",
+          "intendedAnswerValue": "7",
+          "decisiveStepSignature": "모든 실수에 양수인 이차식의 판별식 조건 정수계수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I06",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-180",
+          "intendedAnswerValue": "5",
+          "decisiveStepSignature": "해집합 공집합이 되도록 하는 정수상수 최소",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I07",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-181",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "이차부등식 해구간과 추가 일차조건의 교집합 정수해",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-I08",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "근의 위치와 해",
+          "rpmComparatorId": "H1-RPM-181",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "지정 구간이 이차부등식 해집합에 포함되도록 끝점 비교",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-X01",
+          "disposition": "DUPLICATE",
+          "reason": "원본의 근만 바꾼 정수해 수",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B02-Q05-X02",
+          "disposition": "CURRICULUM_VIOLATION",
+          "reason": "미분 도함수로 부등식 성질을 결정",
+          "generatedUids": []
+        }
+      ],
+      "status": "SOURCE_CONTINUATION_REQUIRED",
+      "notExploredL4": [
+        {
+          "reason": "Validated production recipes and independently distinguished EXT granularity still require REVIEW; no universal exhaustion claim"
+        }
+      ]
+    },
+    {
+      "sourceQid": 8,
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "originalTargetL1": "H22-C-04",
+      "originalTargetL2": "H22-C-04-COMPLEX_BASIC",
+      "proposedPrimaryL3": "EXT_L3_REVIEW_REAL_CUBIC_CONJUGATE_ROOT",
+      "canonicalComparatorRPM": [
+        "H1-RPM-157",
+        "H1-RPM-164",
+        "H1-RPM-165",
+        "H1-RPM-172"
+      ],
+      "relatedRPMExistingL4": [
+        "켤레복소수",
+        "복소수 근·계수 조건",
+        "고차방정식 인수분해형"
+      ],
+      "semanticSourceScope": "SOURCE_SCOPE_GAP_H22-C-04_VS_H22-C-05_06",
+      "decisiveSourceMethod": "실수계수 삼차식의 켤레 허근을 이차 실계수 인수로 묶고 나머지 실근/계수 추론",
+      "sourceScopeRisks": [
+        "원본 H22-C-04-COMPLEX_BASIC에는 현행 exact RPM cubic conjugate L3 없음",
+        "H22-C-05/H22-C-06의 미래 scope로 자동 retag 금지",
+        "신규 L3 vs 기존 복소수 근/고차방정식의 CrossConcept 심사 필요"
+      ],
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B02-Q08-C01",
+          "candidateKind": "EXT_L3_CANDIDATE",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "-5",
+          "decisiveStepSignature": "허근 1+i를 가진 계수 b, 상수항에서 남은 실근 역산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C02",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "13",
+          "decisiveStepSignature": "비실수 근 쌍과 제시된 실근으로 상수항 계산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C03",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "-10",
+          "decisiveStepSignature": "켤레쌍 합으로 실근 결정해 상수항 도출",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C04",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "9",
+          "decisiveStepSignature": "켤레쌍의 합·곱으로 세 근의 두근곱합 구성",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C05",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "-6",
+          "decisiveStepSignature": "x 계수에서 나머지 실근을 찾아 삼차식 상수항 계산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C06",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "12",
+          "decisiveStepSignature": "허근쌍과 실근으로 삼차식 전체 재구성 후 함수값",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-C07",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "EXT_REAL_COEFFICIENT_CONJUGATE_CUBIC",
+          "rpmComparatorId": "H1-RPM-172",
+          "intendedAnswerValue": "-1",
+          "decisiveStepSignature": "비정수 실근과 분수 계수를 포함한 계수 조합 역추적",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q08-X01",
+          "disposition": "L3_DRIFT",
+          "reason": "복소수 직접 사칙연산만 묻고 실수계수 삼차식 핵심 소실",
+          "generatedUids": []
+        }
+      ],
+      "status": "SOURCE_CONTINUATION_REQUIRED",
+      "notExploredL4": [
+        {
+          "reason": "Validated production recipes and independently distinguished EXT granularity still require REVIEW; no universal exhaustion claim"
+        }
+      ]
+    },
+    {
+      "sourceQid": 10,
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "originalTargetL1": "H22-C-09",
+      "originalTargetL2": "H22-C-09-CORE",
+      "proposedPrimaryL3": "행렬의 뜻",
+      "canonicalComparatorRPM": [
+        "H1-RPM-198",
+        "H1-RPM-199",
+        "H1-RPM-201"
+      ],
+      "relatedRPMExistingL4": [
+        "행·열·성분",
+        "같은 행렬"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_BASIC",
+      "decisiveSourceMethod": "행렬의 차원·같은 행렬의 대응 성분·곱셈 정의여부를 실제 행열 크기로 판별",
+      "sourceScopeRisks": [
+        "행렬의 곱셈이 풀이의 핵심이 되면 행렬의 연산 L3로 이탈 가능; REVIEW 대비 근거 필요"
+      ],
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B02-Q10-D01",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "13",
+          "decisiveStepSignature": "AB·BA가 각각 다른 크기일 때 성분수의 합",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D02",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "열벡터와 행벡터의 곱 정의 및 결과의 성분수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D03",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "세 행렬 연쇄곱 ABC의 가능성과 결과 크기",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D04",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "1",
+          "decisiveStepSignature": "곱셈 및 덧셈의 정의여부 4개를 비교해 정의되는 것의 개수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D05",
+          "candidateKind": "RPM_EXISTING",
+          "targetL4": "같은 행렬",
+          "rpmComparatorId": "H1-RPM-199",
+          "intendedAnswerValue": "12",
+          "decisiveStepSignature": "같은 행렬의 대응 성분 비교로 변수 합",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D06",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "-2",
+          "decisiveStepSignature": "영행렬과 음행렬의 두 성분 합",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D07",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "여섯 개 순서 있는 곱에서 정의되는 것만 선별",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-D08",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "행·열·성분",
+          "rpmComparatorId": "H1-RPM-198",
+          "intendedAnswerValue": "6",
+          "decisiveStepSignature": "곱행렬의 크기로 양 행렬의 행·열 크기 역결정",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q10-X01",
+          "disposition": "L3_DRIFT",
+          "reason": "구체적 AB 성분 곱을 직접 계산해 행렬의 연산이 주개념으로 이동",
+          "generatedUids": []
+        }
+      ],
+      "status": "SOURCE_CONTINUATION_REQUIRED",
+      "notExploredL4": [
+        {
+          "reason": "Validated production recipes and independently distinguished EXT granularity still require REVIEW; no universal exhaustion claim"
+        }
+      ]
+    },
+    {
+      "sourceQid": 11,
+      "sourceExamBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "originalTargetL1": "H22-C-06",
+      "originalTargetL2": "H22-C-06-INEQUALITY",
+      "proposedPrimaryL3": "EXT_L3_REVIEW_ABSOLUTE_VALUE_LINEAR_INEQUALITY",
+      "canonicalComparatorRPM": [
+        "H1-RPM-178",
+        "H1-RPM-182",
+        "H1-RPM-183"
+      ],
+      "relatedRPMExistingL4": [
+        "절댓값 구간분해",
+        "두 점 사이 거리합",
+        "정수해와 매개변수"
+      ],
+      "semanticSourceScope": "H22-C-06_2022_NO_EXACT_RPM_ABSOLUTE_VALUE_INEQUALITY",
+      "decisiveSourceMethod": "절댓값 안의 일차식이 0인 기준점들로 구간을 나누어 부등식 해집합/정수해/경계를 계산",
+      "sourceScopeRisks": [
+        "RPM '절대부등식' L3(산술기하평균/코시)는 절댓값 포함 부등식과 다름",
+        "GLOBAL ACTIVE PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY는 machine projection이지 RPM 의미 신규성 승인 근거가 아님"
+      ],
+      "blueprints": [
+        {
+          "blueprintId": "BSG26-B02-Q11-A01",
+          "candidateKind": "EXT_L3_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "7",
+          "decisiveStepSignature": "두 거리합의 닫힌 해구간에서 정수해 세기",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A02",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "거리합의 해구간 양끝을 도출하여 합하기",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A03",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-182",
+          "intendedAnswerValue": "0",
+          "decisiveStepSignature": "삼각부등식 최소 거리로 엄격부등식 불능 판정",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A04",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "4",
+          "decisiveStepSignature": "절댓값 차이의 부호·구간 변화에서 최소 정수해",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A05",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "5",
+          "decisiveStepSignature": "서로 다른 기울기의 두 절댓값 합의 정수해",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 5,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A06",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-182",
+          "intendedAnswerValue": "2",
+          "decisiveStepSignature": "두 절댓값의 합 최소값으로 매개변수 해 존재판정",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 3,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A07",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "5",
+          "decisiveStepSignature": "거리합의 최솟값에 등호 성립하는 실수 구간의 정수수",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 1,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A08",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "절댓값 부등식 해집합에 별도 일차조건을 교차",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 4,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-A09",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "targetL4": "EXT_ABSOLUTE_LINEAR_INEQUALITY",
+          "rpmComparatorId": "H1-RPM-178",
+          "intendedAnswerValue": "3",
+          "decisiveStepSignature": "해구간 양끝의 합으로 이동중심 매개변수 역산",
+          "conditionPattern": "DECISIVE_STRUCTURE_SPECIFIC",
+          "crossConcept": "NONE_UNLESS_VERIFIED",
+          "integrationPattern": "PRIMARY_L3_PRESERVED_OR_PENDING_REVIEW",
+          "distractorStrategy": [
+            "정의·방향 조건 착오",
+            "경계/성분/켤레 개념 누락",
+            "수식 부호 및 곱셈 순서 오류",
+            "부분값만 계산한 중간 결과"
+          ],
+          "choicePlacementPlan": 2,
+          "placementConstraint": "PREFER_NATURAL_NUMERIC_OR_SYMBOL_ORDER; can revise with reason",
+          "disposition": "ACCEPT",
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-X01",
+          "disposition": "DUPLICATE",
+          "reason": "원본 계수만 교체하여 동일한 기준점과 구간합 반복",
+          "generatedUids": []
+        },
+        {
+          "blueprintId": "BSG26-B02-Q11-X02",
+          "disposition": "L3_DRIFT",
+          "reason": "산술·기하평균 이용 절대부등식으로 교체",
+          "generatedUids": []
+        }
+      ],
+      "status": "SOURCE_CONTINUATION_REQUIRED",
+      "notExploredL4": [
+        {
+          "reason": "Validated production recipes and independently distinguished EXT granularity still require REVIEW; no universal exhaustion claim"
+        }
+      ]
+    }
+  ],
+  "qualityBoundary": "CREATE only, no independent math / semantic approval, no main DB",
+  "oldB01Preserved": true
+}
