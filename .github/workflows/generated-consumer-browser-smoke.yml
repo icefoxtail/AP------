@@ -1,4 +1,4 @@
-name: Generated Consumer Browser Smoke
+name: Generated Mock Exam Browser Smoke
 
 on:
   push:
@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   smoke:
-    name: Actual Chrome student lookup
+    name: Actual Chrome 23/26 mock exam print
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -30,13 +30,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify 165 consumer rows, B04/B05 source and student finder in Node VM
+      - name: Verify registered 165 and original 23/26 mock paper flow
         run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
           chrome-version: stable
-      - name: B03+B04+B05 UID lookup, table, subjective selection and HOLD rejection
+      - name: Verify 23/26 papers, math table, and HOLD exclusion in Chrome
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tools/check-generated-bank-browser.cjs
