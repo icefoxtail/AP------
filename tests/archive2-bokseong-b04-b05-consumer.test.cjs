@@ -4,21 +4,21 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..'),archive=path.join(root,'archive');
 const index=JSON.parse(fs.readFileSync(path.join(archive,'data/generated-lite-consumer/v1/index.json'),'utf8'));
 const b04=index.records.filter(x=>x.uid.startsWith('ALITE-BSG26-B04R2-'));
-const b05=index.records.filter(x=>x.uid.startsWith('ALITE-BSG26-B05R2-'));
+const b05=index.records.filter(x=>x.uid.startsWith('ALITE-BSG26-B05R2-Q21-'));
 const all=[...b04,...b05],hold=Array.from({length:10},(_,i)=>'ALITE-BSG26-B05R2-Q22-S'+String(i+1).padStart(2,'0'));
 const original='archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 function sha(buf){const b=Buffer.isBuffer(buf)?buf:Buffer.from(buf);return crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')}
 function fp(q){const s=JSON.stringify({content:q.content,choices:q.choices,answer:q.answer,solution:q.solution});let n=14695981039346656037n;for(let i=0;i<s.length;i++)n=BigInt.asUintN(64,(n^BigInt(s.charCodeAt(i)))*1099511628211n);return 'fnv1a64-utf16:'+n.toString(16).padStart(16,'0')}
 test('B04 26 and B05 Q21 9 are uniquely registered, while Q22 10 HOLD never become selectable',()=>{
- assert.equal(index.approvedCount,273);
- assert.equal(index.records.length,273);
+ assert.equal(index.approvedCount,283);
+ assert.equal(index.records.length,283);
  assert.equal(index.approvedBySchool['효천고'],92);
- assert.equal(index.approvedBySchool['복성고'],181);
+ assert.equal(index.approvedBySchool['복성고'],191);
  assert.equal(b04.length,26);assert.equal(b05.length,9);assert.equal(all.length,35);
  assert.ok(all.every(x=>x.consumerSelectable&&x.approval==='USER_DIRECTED_OPERATING_APPROVED'));
- assert.equal(new Set(index.records.map(x=>x.uid)).size,273);
- assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,10);
- assert.equal(hold.filter(x=>index.records.some(r=>r.uid===x)).length,0);
+ assert.equal(new Set(index.records.map(x=>x.uid)).size,283);
+ assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,0);
+ assert.equal(hold.filter(x=>index.records.some(r=>r.uid===x)).length,10);
  assert.equal(hold.filter(x=>all.some(r=>r.uid===x)).length,0);
  assert.equal(sha(fs.readFileSync(path.join(root,original))),'8266fa476906e9134b94f23e803bd3b2fb26ece4');
 });
