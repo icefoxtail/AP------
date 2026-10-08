@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": "ALIVE_BSG26_B01_A1_STUDENT_ONLY_FROZEN_v1",
+  "reviewer": "GPT-6 independent solution",
+  "studentInputVisibility": "content+choices+problem image only, stored answer and solution not shown to model",
+  "beforeStoredAnswerComparison": true,
+  "sourceOriginalBlob": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "denominator": 45,
+  "sourceFiles": [
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "blobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "count": 5
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "blobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "count": 10
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "blobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "count": 6
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "blobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "count": 9
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "blobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "count": 6
+    },
+    {
+      "path": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "blobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "count": 9
+    }
+  ],
+  "items": [
+    {
+      "uid": "ALITE-BSG26-B01R2-Q01-C01",
+      "sourceQid": 1,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "studentInput": {
+        "content": "자연수 $n$에 대하여 $\\binom{n}{2}=28$일 때, $n$의 값은?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$8$",
+          "$9$",
+          "$28$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$8$",
+        "derivation": "n(n−1)/2=28=>8"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q01-C02",
+      "sourceQid": 1,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "studentInput": {
+        "content": "$\\binom{9}{4}-\\binom{8}{4}$의 값은?",
+        "choices": [
+          "$35$",
+          "$56$",
+          "$70$",
+          "$84$",
+          "$126$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$56$",
+        "derivation": "126−70=56"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q01-C03",
+      "sourceQid": 1,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "studentInput": {
+        "content": "자연수 $n\\ge3$에 대하여 $\\binom{n}{3}=4\\binom{n}{2}$일 때, $n$의 값은?",
+        "choices": [
+          "$8$",
+          "$11$",
+          "$12$",
+          "$14$",
+          "$16$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$14$",
+        "derivation": "(n−2)/3=4=>14"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q01-C04",
+      "sourceQid": 1,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "studentInput": {
+        "content": "자연수 $n\\ge5$가 $\\binom{n}{2}=\\binom{n}{5}$를 만족할 때, $n$의 값은?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$",
+          "$10$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$7$",
+        "derivation": "C(7,2)=C(7,5)=21"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q01-C05",
+      "sourceQid": 1,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COMBINATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "f707a682d84f115151866c52eb70296fa10767aa",
+      "studentInput": {
+        "content": "서로 다른 학생 8명 중 대표 두 명을 순서 없이 뽑는 경우의 수를 $a$, 회장과 부회장을 한 명씩 정하는 경우의 수를 $b$라 하자. $b-a$의 값은?",
+        "choices": [
+          "$2$",
+          "$8$",
+          "$28$",
+          "$56$",
+          "$64$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$28$",
+        "derivation": "8·7−28=28"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P01",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "모두 서로 다른 남학생 4명과 여학생 3명이 한 줄로 설 때, 어느 두 여학생도 이웃하지 않는 경우의 수는?",
+        "choices": [
+          "$240$",
+          "$720$",
+          "$960$",
+          "$1440$",
+          "$2880$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$1440$",
+        "derivation": "4!·C(5,3)·3!=1440"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P02",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 남학생 3명과 여학생 2명이 한 줄로 설 때, 맨 왼쪽과 맨 오른쪽에 각각 여학생이 서는 경우의 수는?",
+        "choices": [
+          "$6$",
+          "$12$",
+          "$18$",
+          "$24$",
+          "$36$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$12$",
+        "derivation": "2!·3!=12"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P03",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 학생 6명 중 두 학생 $A,B$가 있다. 6명을 일렬로 세울 때 $A$와 $B$ 사이에 정확히 한 명이 서는 경우의 수는?",
+        "choices": [
+          "$48$",
+          "$96$",
+          "$120$",
+          "$192$",
+          "$240$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$192$",
+        "derivation": "4·2·4!=192"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P04",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 학생 $A,B,C,D,E,F$를 일렬로 세울 때 $A,B$는 이웃하고, 동시에 $C,D$도 이웃하는 경우의 수는?",
+        "choices": [
+          "$24$",
+          "$48$",
+          "$96$",
+          "$144$",
+          "$192$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$96$",
+        "derivation": "4!·2·2=96"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P05",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 남학생 4명과 여학생 2명이 일렬로 선다. 지정된 남학생 $A$가 맨 왼쪽에 서고, 여학생 두 명이 서로 이웃하는 경우의 수는?",
+        "choices": [
+          "$12$",
+          "$24$",
+          "$36$",
+          "$48$",
+          "$96$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$48$",
+        "derivation": "fixed A;4!·2=48"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P06",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 남학생 $A,B,C$와 서로 다른 여학생 2명이 일렬로 설 때, 여학생 두 명은 이웃하고 $A$가 $B$보다 왼쪽에 서는 경우의 수는?",
+        "choices": [
+          "$12$",
+          "$24$",
+          "$36$",
+          "$48$",
+          "$96$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$24$",
+        "derivation": "4!·2/2=24"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P07",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 남학생 3명과 여학생 3명이 일렬로 설 때, 서로 이웃한 여학생 쌍이 정확히 한 쌍인 경우의 수는?",
+        "choices": [
+          "$144$",
+          "$288$",
+          "$360$",
+          "$432$",
+          "$576$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$432$",
+        "derivation": "3!·C(4,2)·2·3!=432"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P08",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 남학생 3명과 여학생 3명이 일렬로 설 때, 남학생과 여학생이 번갈아 서는 경우의 수는?",
+        "choices": [
+          "$36$",
+          "$48$",
+          "$72$",
+          "$144$",
+          "$216$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$72$",
+        "derivation": "2·3!·3!=72"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P09",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 학생 6명 중 4명을 골라 일렬로 4자리에 세우는 경우의 수는?",
+        "choices": [
+          "$120$",
+          "$180$",
+          "$240$",
+          "$360$",
+          "$720$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$360$",
+        "derivation": "6P4=360"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q02-P10",
+      "sourceQid": 2,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-PERMUTATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "6c0114437aa9cb6581c2647796ed5e51119e0c0b",
+      "studentInput": {
+        "content": "서로 다른 학생 $n$명 중 2명을 골라 앞뒤 두 자리에 세우는 방법이 42가지이다. 자연수 $n$의 값은?",
+        "choices": [
+          "$6$",
+          "$7$",
+          "$8$",
+          "$14$",
+          "$42$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$7$",
+        "derivation": "n(n−1)=42=>7"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W01",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "다항식 $(x+2y)(x+3y)(x+y)$를 전개했을 때 $x^2y$의 계수는?",
+        "choices": [
+          "$6$",
+          "$8$",
+          "$9$",
+          "$12$",
+          "$18$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$6$",
+        "derivation": "2+3+1=6"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W02",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "다항식 $(x+y)(x+2y)(x+3y)(x+4y)$를 전개했을 때 $x^2y^2$의 계수는?",
+        "choices": [
+          "$10$",
+          "$24$",
+          "$30$",
+          "$35$",
+          "$50$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$35$",
+        "derivation": "e2(1,2,3,4)=35"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W03",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "다항식 $(x+y)(x-y)(x+2y)$를 전개하여 동류항끼리 정리했을 때, 계수가 0이 아닌 서로 다른 항은 몇 개인가?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$8$",
+          "$9$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$4$",
+        "derivation": "4 monomials after expansion"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W04",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "실수 $a$에 대하여 $(x+2)(x+a)(x+5)$를 전개했을 때 $x^2$의 계수가 12이다. $a$의 값은?",
+        "choices": [
+          "$5$",
+          "$7$",
+          "$10$",
+          "$12$",
+          "$17$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$5$",
+        "derivation": "2+a+5=12=>a=5"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W05",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "다항식 $(x+y+z)(x+2y)(y+z)$를 전개했을 때 $xyz$의 계수는?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$8$",
+          "$12$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$4$",
+        "derivation": "xyz terms 2+1+1=4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q04-W06",
+      "sourceQid": 4,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-01-POLYNOMIAL_BASIC/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "84f975a8abb2dd3cd780130035690b419dc537d2",
+      "studentInput": {
+        "content": "다항식 $(x+2)(x-2)(x+3)(x-3)$을 전개했을 때 $x^2$의 계수는?",
+        "choices": [
+          "$-36$",
+          "$-25$",
+          "$-13$",
+          "$0$",
+          "$13$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$-13$",
+        "derivation": "(x²−4)(x²−9):−13"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M01",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}a&2\\\\3&b\\end{pmatrix}$, $B=\\begin{pmatrix}2&-1\\\\1&4\\end{pmatrix}$가 $3A-2B=\\begin{pmatrix}8&8\\\\7&7\\end{pmatrix}$를 만족할 때, $a+b$의 값은?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$7$",
+          "$9$",
+          "$17$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$9$",
+        "derivation": "3a−4=8;3b−8=7=>sum9"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M02",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}2&5\\\\1&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&-2\\\\4&3\\end{pmatrix}$에 대하여 $A+tB$의 $(1,2)$성분과 $(2,1)$성분이 같아지도록 하는 실수 $t$의 값은?",
+        "choices": [
+          "$-2$",
+          "$-1$",
+          "$0$",
+          "$\\dfrac{2}{3}$",
+          "$2$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$\\dfrac{2}{3}$",
+        "derivation": "5−2t=1+4t=>2/3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M03",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 이차정사각행렬 $A,B$가 $A+B=\\begin{pmatrix}4&1\\\\0&2\\end{pmatrix}$, $A-B=\\begin{pmatrix}2&-1\\\\4&0\\end{pmatrix}$를 만족한다. 행렬 $2A+B$의 $(1,1)$성분은?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$7$",
+        "derivation": "A11=3,B11=1 =>7"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M04",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 이차정사각행렬 $A,B$에서 $A$의 모든 성분의 합은 6이고 $B$의 모든 성분의 합은 $-2$이다. 행렬 $3A-2B$의 모든 성분의 합은?",
+        "choices": [
+          "$-22$",
+          "$10$",
+          "$14$",
+          "$18$",
+          "$22$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$22$",
+        "derivation": "3·6−2·(−2)=22"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M05",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\2&3\\end{pmatrix}$, $B=\\begin{pmatrix}2&-1\\\\b&1\\end{pmatrix}$에 대하여 $A+2B$의 $(1,2)$성분과 $(2,1)$성분이 모두 6이다. $a+b$의 값은?",
+        "choices": [
+          "$4$",
+          "$6$",
+          "$8$",
+          "$10$",
+          "$12$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 4,
+        "choiceText": "$10$",
+        "derivation": "a−2=6;2+2b=6 =>10"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M06",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}2&5\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&-3\\\\4&0\\end{pmatrix}$에 대하여 $A+tB$의 첫째 행에 있는 모든 성분의 합이 0이 되도록 하는 실수 $t$의 값은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$\\dfrac{7}{2}$",
+          "$4$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$\\dfrac{7}{2}$",
+        "derivation": "7−2t=0=>7/2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M07",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}2&1\\\\3&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&4\\\\-2&3\\end{pmatrix}$에 대하여 $AB$의 $(1,2)$성분은?",
+        "choices": [
+          "$5$",
+          "$8$",
+          "$11$",
+          "$14$",
+          "$17$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$11$",
+        "derivation": "(AB)12=8+3=11"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M08",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}2&0\\\\3&1\\end{pmatrix}$에 대하여 $AB+BA$의 $(1,2)$성분은?",
+        "choices": [
+          "$6$",
+          "$8$",
+          "$10$",
+          "$12$",
+          "$14$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$6$",
+        "derivation": "(AB+BA)12=2+4=6"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q06-M09",
+      "sourceQid": 6,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-09-MATRIX_OPERATION/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "5272f17f39a9ca5d5c9e5630c3b0592788f3ca4a",
+      "studentInput": {
+        "content": "두 행렬 $A=\\begin{pmatrix}a&2\\\\1&0\\end{pmatrix}$, $B=\\begin{pmatrix}3&1\\\\2&4\\end{pmatrix}$에 대하여 $AB$의 $(1,1)$성분이 19이다. 실수 $a$의 값은?",
+        "choices": [
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$5$",
+        "derivation": "3a+4=19=>a=5"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S01",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "연속부등식 $2x-3<5x+6\\le3x+13$을 만족시키는 정수 $x$는 모두 몇 개인가?",
+        "choices": [
+          "$6$",
+          "$7$",
+          "$8$",
+          "$9$",
+          "$10$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$6$",
+        "derivation": "−3<x≤3.5, integers −2…3 =6"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S02",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "자연수 $k$에 대하여 연립부등식 $\\begin{cases}x\\ge2k-1\\\\x\\le5-k\\end{cases}$의 실수해가 존재하도록 하는 $k$의 최댓값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$2$",
+        "derivation": "2k−1≤5−k=>k≤2"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S03",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "자연수 $k$에 대하여 연립부등식 $\\begin{cases}x\\ge1\\\\x<k\\end{cases}$을 만족시키는 정수 $x$가 정확히 3개일 때, $k$의 값은?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$4$",
+        "derivation": "1≤x<k has 3 integer solutions =>k=4"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S04",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "정수 $k$에 대하여 연립부등식 $\\begin{cases}x\\ge k-2\\\\x\\le6\\end{cases}$의 해집합이 구간 $1\\le x\\le4$의 모든 실수를 포함하도록 하는 $k$의 최댓값은?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$3$",
+        "derivation": "[1,4] subset [k−2,6]=>k≤3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S05",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "자연수 $k$에 대하여 연립부등식 $\\begin{cases}x\\ge-2\\\\x\\le k\\end{cases}$를 만족시키는 모든 정수 $x$의 합이 3이다. $k$의 값은?",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$3$",
+        "derivation": "integers −2..3 sum 3=>k=3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q07-S06",
+      "sourceQid": 7,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-06-SYSTEM/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "e26c3625181fe0f23f64394c17be2ea96fb0f4e2",
+      "studentInput": {
+        "content": "실수 $k$에 대하여 연립부등식 $\\begin{cases}x\\ge2k-1\\\\x\\le7-k\\end{cases}$의 실수해가 정확히 하나만 존재할 때, $k$의 값은?",
+        "choices": [
+          "$\\dfrac{8}{3}$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$8$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$\\dfrac{8}{3}$",
+        "derivation": "2k−1=7−k=>k=8/3"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F01",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 5편(그중 한 편은 $A$), 코미디 영화 3편, 공포 영화 2편이 있다. 액션 2편, 코미디 1편, 공포 1편을 골라 네 편을 모두 한 번씩 시청할 때, 액션 영화 $A$를 반드시 포함하는 선택과 시청 순서의 총수는?",
+        "choices": [
+          "$24$",
+          "$144$",
+          "$216$",
+          "$432$",
+          "$576$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$576$",
+        "derivation": "4·3·2·4!=576"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F02",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 4편, 로맨스 영화 3편, 공포 영화 2편 중 액션 2편, 로맨스 1편, 공포 1편을 고른다. 고른 네 영화 중 로맨스 영화를 맨 먼저 시청하는 선택 및 시청 순서의 총수는?",
+        "choices": [
+          "$72$",
+          "$144$",
+          "$216$",
+          "$288$",
+          "$432$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$216$",
+        "derivation": "C(4,2)·3·2·3!=216"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F03",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 4편, 코미디 영화 3편, 공포 영화 2편에서 액션 2편, 코미디 1편, 공포 1편을 선택한다. 고른 액션 영화 두 편을 서로 이어서 시청할 때 가능한 선택과 순서의 총수는?",
+        "choices": [
+          "$72$",
+          "$144$",
+          "$216$",
+          "$288$",
+          "$432$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$432$",
+        "derivation": "C(4,2)·3·2·3!·2=432"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F04",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 5편, 로맨스 영화 3편, 공포 영화 2편에서 액션 2편, 로맨스 1편, 공포 1편을 고른다. 고른 로맨스 영화와 공포 영화가 서로 이웃하지 않도록 네 편을 시청하는 선택 및 순서의 총수는?",
+        "choices": [
+          "$360$",
+          "$720$",
+          "$960$",
+          "$1200$",
+          "$1440$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$720$",
+        "derivation": "C(5,2)·3·2·(4!−2·3!)=720"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F05",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 4편과 코미디 영화 3편 중 액션 2편과 코미디 2편을 선택해 네 편을 한 번씩 시청한다. 액션과 코미디를 번갈아 시청하는 선택 및 순서의 총수는?",
+        "choices": [
+          "$18$",
+          "$36$",
+          "$72$",
+          "$108$",
+          "$144$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$144$",
+        "derivation": "C(4,2)·C(3,2)·2·2!·2!=144"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F06",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 4편, 로맨스 영화 3편, 공포 영화 2편 중 액션 2편, 로맨스 1편, 공포 1편을 고른다. 공포 영화를 첫째로, 로맨스 영화를 마지막으로 시청할 때 선택과 순서의 총수는?",
+        "choices": [
+          "$72$",
+          "$108$",
+          "$144$",
+          "$216$",
+          "$432$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 1,
+        "choiceText": "$72$",
+        "derivation": "C(4,2)·3·2·2!=72"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F07",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 액션 영화 4편, 코미디 영화 3편, 공포 영화 2편 중 액션 2편, 코미디 1편, 공포 1편을 고른다. 모든 액션 영화의 상영 시간은 서로 다르다고 할 때, 선택한 액션 영화 두 편 중 상영 시간이 짧은 영화를 더 먼저 시청하는 경우의 수는?",
+        "choices": [
+          "$72$",
+          "$144$",
+          "$216$",
+          "$288$",
+          "$432$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 5,
+        "choiceText": "$432$",
+        "derivation": "C(4,2)·3·2·4!/2=432"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F08",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 영화 6편을 각각 3편씩 담은 두 묶음으로 나누려 한다. 두 묶음의 이름이나 순서를 구별하지 않을 때, 나누는 방법의 수는?",
+        "choices": [
+          "$5$",
+          "$10$",
+          "$20$",
+          "$36$",
+          "$60$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 2,
+        "choiceText": "$10$",
+        "derivation": "C(6,3)/2=10"
+      }
+    },
+    {
+      "uid": "ALITE-BSG26-B01R2-Q12-F09",
+      "sourceQid": 12,
+      "sourceShardPath": "archive/generated/lite/v1/2022/H1/H22-C-08-COUNTING_PRINCIPLE/shards/batch-BSG26-B01R2.js",
+      "sourceShardBlobSha": "c7e145301fad0cc6dd303280c92eee4c3a03a9f3",
+      "studentInput": {
+        "content": "서로 다른 영화 5편을 두 사람 $A,B$에게 빠짐없이 나누어 준다. 각 영화는 정확히 한 사람에게 주고, 두 사람 모두 적어도 한 편씩 받도록 할 때 나누는 방법의 수는?",
+        "choices": [
+          "$10$",
+          "$20$",
+          "$30$",
+          "$31$",
+          "$32$"
+        ],
+        "image": null
+      },
+      "independentAnswer": {
+        "choiceIndex": 3,
+        "choiceText": "$30$",
+        "derivation": "2^5−2=30"
+      }
+    }
+  ]
+}
