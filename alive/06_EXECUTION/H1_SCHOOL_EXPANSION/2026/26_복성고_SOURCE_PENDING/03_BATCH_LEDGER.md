@@ -35,3 +35,15 @@
 - Authoritative work doc: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md; registry source: archive/generated/lite/v1/2022/H1/<targetL2>/extension-l3 or extension-l4.
 - New global index: archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json. Candidate registry != RPM canonical approval; REVIEW required.
 - B02 and later MUST run RPM-first + EXT gap classification **before** producing problems; source q15 remains taxonomy resolution queue, not forced to an invented L3.
+
+
+## B02 — 2026-10-08 CREATE closure
+
+- q3, q5, q8, q10, q11: **5/5 original source analysis**, 46 blueprint explored, 38 ACCEPT → **38 fully written CREATE candidates**, 3 DUPLICATE / 4 L3_DRIFT / 1 CURRICULUM reject.
+- 생성 분포 q3=6 / q5=8 / q8=7 / q10=8 / q11=9. L2 3개, shard 5개, UID unique 38/38.
+- 확장 후보 **EXT L3 2개, EXT L4 13개**. 후보만 등록, canonical 승격/학생공급 0.
+- q8 original L2↔RPM later scope, q10 dimension/operation L3 boundary, q11 절댓값 부등식 vs 절대부등식 semantic gap는 REVIEW disposition.
+- 정답 위치 ①3 ②5 ③12 ④12 ⑤6 (max 31.6%, 과밀 경보 없음); 5지·정답기호·해설 정합 38/38; self-math witness 38개는 생성자 자체점검.
+- 기존 B01 45건 유지 → cumulative 83 generated UIDs. 원본 23개 전체 중 11개 source에서 generated 후보 확보; q15는 B01 taxonomy hold 유지.
+- 독립 REVIEW PASS 0 / B02 main publication 0 / consumer DB 0. 다음 생성 **B03**(q9,13,14,16), 사용자 별도 지시 전 착수 금지.
+- B02 index `archive/data/generated-lite/bokseong-2026-1final-b02-create-index-v1.json`; extension index v2.

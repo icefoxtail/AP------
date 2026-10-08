@@ -17,3 +17,6 @@
 - Authoritative work doc: ALIVE_LITE_L3_L4_EXTENSION_DISCOVERY_CONTRACT_v1.md; registry source: archive/generated/lite/v1/2022/H1/<targetL2>/extension-l3 or extension-l4.
 - New global index: archive/data/generated-lite/bokseong-2026-1final-extension-candidate-index-v1.json. Candidate registry != RPM canonical approval; REVIEW required.
 - B02 and later MUST run RPM-first + EXT gap classification **before** producing problems; source q15 remains taxonomy resolution queue, not forced to an invented L3.
+
+## B02 CREATE 결과
+- 2026년 10월 8일: B02 q3/5/8/10/11 원본 5개에서 38개 생성 후보 Git 반영, 원격 readback 완료. 46개 Blueprint 후보/ACCEPT 38; L3 후보2·L4 후보13. q8·q10·q11 semantic REVIEW 필요. 다음 B03.
