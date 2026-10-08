@@ -6,16 +6,16 @@
   "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
   "sourceRoot": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
   "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
-  "stage": "B_BLUEPRINT_DESIGNED_BEFORE_C",
+  "stage": "B_BLUEPRINT_DESIGN_FROZEN_FOR_CREATE",
   "answerPositionDesignAuthority": "alive/06_EXECUTION/ALIVE_LITE_ANSWER_POSITION_DESIGN_CONTRACT_v0.1.md",
   "counts": {
     "examSourceDenominator": 23,
     "batchSourceDenominator": 7,
     "blueprintExplored": 59,
-    "accept": 53,
-    "duplicate": 0,
-    "l3Drift": 0,
-    "curriculum": 0,
+    "accept": 38,
+    "duplicate": 6,
+    "l3Drift": 8,
+    "curriculum": 1,
     "hold": 6
   },
   "sourceRows": [
@@ -142,21 +142,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q01-X01",
           "targetL4": "조합 계산",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "팩토리얼+조합 직접 계산",
-          "conditionPattern": "원문 수치 변형",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 1,
+          "disposition": "DUPLICATE",
+          "reason": "원문 수치 변형",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -164,21 +159,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q01-X02",
           "targetL4": "선택 조건",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "조합을 이용한 복잡한 팀 구성",
-          "conditionPattern": "조합의 활용/다른 L3가 결정적",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 4,
+          "disposition": "L3_DRIFT",
+          "reason": "조합의 활용/다른 L3가 결정적",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -186,21 +176,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q01-X03",
           "targetL4": "조합 계산",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "이항정리에서 일반항 공식",
-          "conditionPattern": "현재 범위 밖 공식을 핵심에 사용",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "CURRICULUM_VIOLATION",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 2,
+          "disposition": "CURRICULUM_VIOLATION",
+          "reason": "현재 범위 밖 공식을 핵심에 사용",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -241,7 +226,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 1,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -263,7 +248,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -285,7 +270,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 1,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -307,7 +292,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 4,
+          "choicePlacementPlan": 5,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -329,7 +314,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 2,
+          "choicePlacementPlan": 3,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -351,7 +336,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 1,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -373,7 +358,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -395,7 +380,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 1,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -403,21 +388,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q02-X01",
           "targetL4": "특정 조건 배열",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "단순 여학생 인접 원문 숫자갈이",
-          "conditionPattern": "원문 핵심 구조 그대로",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 4,
+          "disposition": "DUPLICATE",
+          "reason": "원문 핵심 구조 그대로",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -425,21 +405,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q02-X02",
           "targetL4": "원형 배열",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "원탁 배열",
-          "conditionPattern": "RPM은 중복·원순열 기초 L3",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 2,
+          "disposition": "L3_DRIFT",
+          "reason": "RPM은 중복·원순열 기초 L3",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -447,21 +422,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q02-X03",
           "targetL4": "같은 것이 있는 배열",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "같은 문자를 동질로 취급하는 단어배열",
-          "conditionPattern": "순열과 다른 RPM L3",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 5,
+          "disposition": "L3_DRIFT",
+          "reason": "순열과 다른 RPM L3",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -502,7 +472,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 5,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -524,7 +494,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 1,
+          "choicePlacementPlan": 3,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -546,7 +516,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 4,
+          "choicePlacementPlan": 1,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -568,7 +538,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 2,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -590,7 +560,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -612,7 +582,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 5,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -620,21 +590,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q04-X01",
           "targetL4": "고차식 전개",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "서로 독립인 괄호 수만 바꿔 항 개수",
-          "conditionPattern": "원문과 같은 곱의 법칙",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 1,
+          "disposition": "DUPLICATE",
+          "reason": "원문과 같은 곱의 법칙",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -642,21 +607,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q04-X02",
           "targetL4": "다항식의 덧셈·뺄셈",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "두 전개식을 그대로 덧셈하여 차수",
-          "conditionPattern": "결정적 처리단계가 다른 L3",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 4,
+          "disposition": "L3_DRIFT",
+          "reason": "결정적 처리단계가 다른 L3",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -696,7 +656,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 2,
+          "choicePlacementPlan": 3,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -718,7 +678,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 1,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -740,7 +700,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -762,7 +722,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 1,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -784,7 +744,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 4,
+          "choicePlacementPlan": 5,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -806,7 +766,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 2,
+          "choicePlacementPlan": 3,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -814,21 +774,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q06-X01",
           "targetL4": "덧셈·뺄셈·실수배",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "행렬 단일성분 선형결합의 숫자갈이",
-          "conditionPattern": "원문의 성분 직접대입 동일",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 5,
+          "disposition": "DUPLICATE",
+          "reason": "원문의 성분 직접대입 동일",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -836,21 +791,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q06-X02",
           "targetL4": "행렬의 곱셈",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "AB 또는 BA의 곱과 교환법칙",
-          "conditionPattern": "RPM 행렬 곱 L4와 별도 결정적 연산",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 3,
+          "disposition": "L3_DRIFT",
+          "reason": "RPM 행렬 곱 L4와 별도 결정적 연산",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1009,21 +959,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q07-X01",
           "targetL4": "해의 범위",
-          "targetL4Authority": "RPM_LOCKED",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "원문 해의 양 끝 가중합 숫자갈이",
-          "conditionPattern": "원본 목표/단계 동일",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 4,
+          "disposition": "DUPLICATE",
+          "reason": "원본 목표/단계 동일",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1031,21 +976,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q07-X02",
           "targetL4": "절댓값 부등식",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "절댓값 분기점 포함",
-          "conditionPattern": "본 qid primary L3와 불일치",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 2,
+          "disposition": "L3_DRIFT",
+          "reason": "본 qid primary L3와 불일치",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1085,7 +1025,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1107,7 +1047,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1129,7 +1069,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 1,
+          "choicePlacementPlan": 5,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1151,7 +1091,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 4,
+          "choicePlacementPlan": 3,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1173,7 +1113,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 2,
+          "choicePlacementPlan": 1,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1195,7 +1135,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 5,
+          "choicePlacementPlan": 4,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1217,7 +1157,7 @@
             "경계/부호/계수 해석 실수",
             "일부 단계만 계산"
           ],
-          "choicePlacementPlan": 3,
+          "choicePlacementPlan": 2,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1225,21 +1165,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q12-X01",
           "targetL4": "선택 후 배치",
-          "targetL4Authority": "RPM_ONLY",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "원문 장르 이름과 수치 바꿔 동일 조합·순열 곱",
-          "conditionPattern": "원문의 선택 이후 4!과 동일",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "DUPLICATE",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 1,
+          "disposition": "DUPLICATE",
+          "reason": "원문의 선택 이후 4!과 동일",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1247,21 +1182,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q12-X02",
           "targetL4": "선택 조건",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "선택만 하고 시청순서 배제",
-          "conditionPattern": "조합의 활용이 결정적 L3",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 4,
+          "disposition": "L3_DRIFT",
+          "reason": "조합의 활용이 결정적 L3",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
@@ -1392,21 +1322,16 @@
         {
           "blueprintId": "BSG26-B01R2-Q15-X01",
           "targetL4": "중복·원순열 기초",
-          "targetL4Authority": "EXTENSION_CANDIDATE",
+          "targetL4Authority": "NOT_ADOPTED",
           "decisiveStepSignature": "독립 주사위 3회와 원순열/동일물체배열을 동일 취급",
-          "conditionPattern": "중복 독립선택과 같은것의 순열은 다름",
+          "conditionPattern": null,
           "crossConcept": "LOWER_SCOPE_ONLY_IF_NECESSARY",
           "integrationPattern": "SOURCE_L3_PRESERVED",
-          "disposition": "ACCEPT",
-          "reason": "Distinct decisive counting/algebra or inverse condition structure within declared source L3; independence unverified",
-          "intendedAnswerValue": "L3_DRIFT",
-          "distractorStrategy": [
-            "핵심 조건 누락",
-            "순서/중복 처리 착오",
-            "경계/부호/계수 해석 실수",
-            "일부 단계만 계산"
-          ],
-          "choicePlacementPlan": 2,
+          "disposition": "L3_DRIFT",
+          "reason": "중복 독립선택과 같은것의 순열은 다름",
+          "intendedAnswerValue": null,
+          "distractorStrategy": [],
+          "choicePlacementPlan": null,
           "placementConstraint": "NUMERIC_NATURAL_ASCENDING_PREFERRED",
           "generatedUids": [],
           "numericInstanceCount": 0
