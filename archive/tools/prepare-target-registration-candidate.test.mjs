@@ -16,6 +16,7 @@ import {
   verifyR1EvidenceBinding,
   verifyR1ReuseBinding,
 } from './prepare-target-registration-candidate.mjs';
+import core from '../archive2-core.js';
 
 const sourcePath = 'archive/exams/original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js';
 const examUid = '19_금당고_2학기_기말_고2_수학II';
@@ -27,6 +28,29 @@ test('uses only locked display aliases and roster grade/course for target DB ide
   assert.deepEqual(identity.displayAlias, { school: '금당고', year: 2019, semester: '2', examType: 'final', grade: '고2', subject: '수학II', contentType: '기출' });
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid, productionRelativePath: sourcePath, grade: 'h1', course }), /ROSTER_GRADE_ALIAS_MISMATCH/);
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid, productionRelativePath: sourcePath, grade: 'h2', course: 'geometry' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+});
+
+test('accepts the locked H1 math-upper display alias and rejects grade, path, or course contradictions', () => {
+  const h1ExamUid = '21_금당고_1학기_기말_고1_기출';
+  const h1Path = 'archive/exams/original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js';
+  const identity = parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: '수학(상)' });
+  assert.equal(identity.sourceFile, 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js');
+  assert.deepEqual(identity.displayAlias, { school: '금당고', year: 2021, semester: '1', examType: 'final', grade: '고1', subject: '수학(상)', contentType: '기출' });
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h2', course: '수학(상)' }), /ROSTER_GRADE_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: `archive/exams/original/high/h2/1final/${h1ExamUid}.js`, grade: 'h1', course: '수학(상)' }), /ROSTER_GRADE_SOURCE_PATH_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: 'math2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '21_금당고_1학기_기말_고2_수학(상)', productionRelativePath: 'archive/exams/original/high/h2/1final/21_금당고_1학기_기말_고2_수학(상).js', grade: 'h2', course: '수학(상)' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  const row = buildAuthorizedDbRow({
+    examUid: h1ExamUid, productionRelativePath: h1Path, grade: 'h1', course: '수학(상)',
+    bank: [{ id: 1, standardCourse: '수학(상)', standardUnitKey: 'H15-SA-01', standardUnit: '다항식의 연산', standardUnitOrder: 1 }],
+  });
+  assert.equal(row.grade, '고1');
+  assert.equal(row.subject, '수학(상)');
+  assert.equal(row.courseRanges[0].courseCode, 'H15-SA');
+  assert.deepEqual(core.Canonical.resolveSourceGrade({
+    registeredGrade: '고1', sourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
+    identitySourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
+  }), { status: 'VALID', grade: '고1', reason: '' });
 });
 
 test('builds DB course ranges from embedded approved Meta only', () => {

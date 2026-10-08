@@ -74,7 +74,7 @@ function runVmSource(sourcePath) {
 export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course }) {
   assert(nonempty(examUid) && nonempty(productionRelativePath), 'DISPLAY_IDENTITY_REQUIRED');
   const file = core.normalizeFile(String(productionRelativePath).replace(/^archive\/exams\//, ''));
-  assert(/^original\/high\/h2\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
+  assert(/^original\/high\/(h1|h2)\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
   assert(path.basename(file, '.js') === examUid, 'EXAM_UID_PATH_PARITY_REQUIRED', examUid);
   const match = /^(\d{2})_([^_]+)_([12])학기_(중간|기말)_(고[123])_(.+)$/.exec(examUid);
   assert(match, 'LOCKED_DISPLAY_ALIAS_FORMAT_UNSUPPORTED', examUid);
@@ -82,15 +82,21 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
   const rosterGrade = String(grade || '').toLowerCase();
   const gradeDisplay = ({ h1: '고1', h2: '고2', h3: '고3' })[rosterGrade];
   assert(gradeDisplay && uidGrade === gradeDisplay, 'ROSTER_GRADE_ALIAS_MISMATCH', examUid);
+  assert(file.startsWith(`original/high/${rosterGrade}/`), 'ROSTER_GRADE_SOURCE_PATH_MISMATCH', `${rosterGrade}|${file}`);
   const courseCode = String(course || '');
   const suffixParts = suffix.split('_');
   const hasPastExamSuffix = suffixParts.at(-1) === '기출';
-  const subject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
+  const uidSubject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
+  // H1's canonical Archive DB stores first-term finals with the locked exam UID ending in `_기출`;
+  // the existing DB's subject/primaryStandardCourse fields supply the display alias.
+  const subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
   const acceptedSubjects = courseCode === 'math2'
     ? new Set(['수학II', '수학Ⅱ'])
     : courseCode === 'geometry'
       ? new Set(['기하', '기하와벡터', '기하와 벡터'])
-      : new Set();
+      : rosterGrade === 'h1' && courseCode === '수학(상)'
+        ? new Set(['수학(상)'])
+        : new Set();
   assert(acceptedSubjects.has(subject), 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
   return {
     sourceFile: file,
@@ -633,15 +639,17 @@ async function main() {
   assert(authorizedRow && rosterRow && authorizedRow.examUid === rosterRow.examUid && authorizedRow.productionPath === rosterRow.productionPath, 'AUTHORIZED_ROSTER_ROW_MISMATCH');
   assert(assignment.examUid === authorizedRow.examUid && assignment.productionRelativePath === authorizedRow.productionPath, 'ASSIGNMENT_AUTHORITY_ROW_MISMATCH');
   const targetFile = core.normalizeFile(authorizedRow.productionPath.replace(/^archive\/exams\//, ''));
-  assert(assignment.productionRelativePath.startsWith('archive/exams/original/high/h2/'), 'TARGET_PRODUCTION_PATH_REQUIRED');
+  assert(/^archive\/exams\/original\/high\/(h1|h2)\//.test(assignment.productionRelativePath), 'TARGET_PRODUCTION_PATH_REQUIRED');
   const assignmentAbs = safe(assignment.productionRelativePath);
   const sourceBytes = fs.readFileSync(assignmentAbs);
   const sourceRawSha256 = sha256(sourceBytes), sourceBlobSha1 = gitBlobSha(sourceBytes);
   assert(sourceRawSha256 === assignment.artifactRawSha256 && sourceBlobSha1 === assignment.validatorRawBufferBlobSha1, 'TARGET_SOURCE_HASH_BINDING_MISMATCH');
   const sourceStatus = execFileSync('git', ['-C', root, 'status', '--short', '--', assignment.productionRelativePath], { encoding: 'utf8' }).trim();
   assert(!sourceStatus, 'TARGET_SOURCE_DIRTY');
-  const registered = core.Canonical.resolveSourceGrade({ registeredGrade: ({ h2: '고2' })[authorizedRow.grade], sourceFile: targetFile, identitySourceFile: targetFile });
-  assert(registered.status === 'VALID' && registered.grade === '고2', 'ROSTER_GRADE_SOURCE_PARITY_FAIL');
+  const registeredGrade = ({ h1: '고1', h2: '고2' })[authorizedRow.grade];
+  assert(registeredGrade, 'ROSTER_GRADE_UNSUPPORTED', String(authorizedRow.grade));
+  const registered = core.Canonical.resolveSourceGrade({ registeredGrade, sourceFile: targetFile, identitySourceFile: targetFile });
+  assert(registered.status === 'VALID' && registered.grade === registeredGrade, 'ROSTER_GRADE_SOURCE_PARITY_FAIL');
   const sourceContext = runVmSource(assignmentAbs);
   const bank = sourceContext.bank;
   if (assignment.questionCount !== undefined) assert(Number(assignment.questionCount) === bank.length, 'ASSIGNMENT_QCOUNT_MISMATCH');
