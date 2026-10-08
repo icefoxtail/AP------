@@ -1,0 +1,207 @@
+window.examTitle = "ALIVE_LITE_BSG26_B01R2_MATRIX";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-BSG26-B01R2-Q06-M01",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}a&2\\\\3&b\\end{pmatrix}$, $B=\\begin{pmatrix}2&-1\\\\1&4\\end{pmatrix}$가 $3A-2B=\\begin{pmatrix}8&8\\\\7&7\\end{pmatrix}$를 만족할 때, $a+b$의 값은?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$7$",
+      "$9$",
+      "$17$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 두 행렬이 같으면 대응하는 모든 성분이 같다.\n$(1,1)$성분을 비교하면 $3a-2\\cdot2=8$이므로 $3a=12$, $a=4$이다.\n$(2,2)$성분에서는 $3b-2\\cdot4=7$이므로 $3b=15$, $b=5$이다.\n남은 성분도 $6-2(-1)=8$, $9-2=7$로 일치한다. 따라서 $a+b=9$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-BSG26-B01R2-Q06-M02",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}2&5\\\\1&-1\\end{pmatrix}$, $B=\\begin{pmatrix}1&-2\\\\4&3\\end{pmatrix}$에 대하여 $A+tB$의 $(1,2)$성분과 $(2,1)$성분이 같아지도록 하는 실수 $t$의 값은?",
+    "choices": [
+      "$-2$",
+      "$-1$",
+      "$0$",
+      "$\\dfrac{2}{3}$",
+      "$2$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 서로 같은 값을 가져야 할 두 성분을 각각 식으로 나타낸다.\n$A+tB$의 $(1,2)$성분은 $5-2t$이고 $(2,1)$성분은 $1+4t$이다.\n조건에 따라 $5-2t=1+4t$이므로 $6t=4$이다.\n따라서 $t=\\dfrac23$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 3,
+    "uid": "ALITE-BSG26-B01R2-Q06-M03",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 이차정사각행렬 $A,B$가 $A+B=\\begin{pmatrix}4&1\\\\0&2\\end{pmatrix}$, $A-B=\\begin{pmatrix}2&-1\\\\4&0\\end{pmatrix}$를 만족한다. 행렬 $2A+B$의 $(1,1)$성분은?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 두 행렬식의 합과 차를 이용하여 필요한 성분을 소거한다.\n$A+B=P$, $A-B=Q$라 두면 $2A=P+Q$이므로 $A=\\dfrac{P+Q}2$이다.\n$2A+B=A+(A+B)=\\dfrac{P+Q}2+P=\\dfrac{3P+Q}2$이다.\n따라서 $(1,1)$성분은 $\\dfrac{3\\cdot4+2}{2}=7$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 4,
+    "uid": "ALITE-BSG26-B01R2-Q06-M04",
+    "level": "하",
+    "difficultyBucket": 2,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 이차정사각행렬 $A,B$에서 $A$의 모든 성분의 합은 6이고 $B$의 모든 성분의 합은 $-2$이다. 행렬 $3A-2B$의 모든 성분의 합은?",
+    "choices": [
+      "$-22$",
+      "$10$",
+      "$14$",
+      "$18$",
+      "$22$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 행렬의 각 성분에 똑같이 선형 연산하므로 성분의 전체 합에도 분배할 수 있다.\n$3A$의 모든 성분 합은 $3\\times6=18$이고 $-2B$의 모든 성분 합은 $-2\\times(-2)=4$이다.\n따라서 $3A-2B$의 모든 성분의 합은 $18+4=22$이다.\n따라서 정답은 ⑤이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 5,
+    "uid": "ALITE-BSG26-B01R2-Q06-M05",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\2&3\\end{pmatrix}$, $B=\\begin{pmatrix}2&-1\\\\b&1\\end{pmatrix}$에 대하여 $A+2B$의 $(1,2)$성분과 $(2,1)$성분이 모두 6이다. $a+b$의 값은?",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 서로 다른 두 성분에서 미지수 $a,b$를 각각 구한다.\n$(1,2)$성분은 $a+2(-1)=a-2$이므로 $a-2=6$에서 $a=8$이다.\n$(2,1)$성분은 $2+2b$이므로 $2+2b=6$에서 $b=2$이다.\n따라서 $a+b=8+2=10$이다.\n따라서 정답은 ④이다.",
+    "sourceType": "generated"
+  },
+  {
+    "id": 6,
+    "uid": "ALITE-BSG26-B01R2-Q06-M06",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "행렬의 연산",
+    "originalCategory": "행렬의 연산",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-09",
+    "standardUnit": "행렬과 그 연산",
+    "standardUnitOrder": 9,
+    "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+    "subUnit": "행렬의 연산",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "행렬"
+    ],
+    "wide": false,
+    "content": "두 행렬 $A=\\begin{pmatrix}2&5\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&-3\\\\4&0\\end{pmatrix}$에 대하여 $A+tB$의 첫째 행에 있는 모든 성분의 합이 0이 되도록 하는 실수 $t$의 값은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$\\dfrac{7}{2}$",
+      "$4$",
+      "$7$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 필요한 행의 두 성분만 계산한다.\n$A+tB$의 첫째 행은 $(2+t,\\ 5-3t)$이다.\n두 성분의 합이 0이므로 $(2+t)+(5-3t)=7-2t=0$이다.\n따라서 $2t=7$이고 $t=\\dfrac72$이다.\n따라서 정답은 ③이다.",
+    "sourceType": "generated"
+  }
+];
