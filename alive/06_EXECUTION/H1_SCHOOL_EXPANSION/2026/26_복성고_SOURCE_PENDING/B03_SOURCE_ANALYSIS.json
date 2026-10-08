@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "ALIVE_LITE_B03_SOURCE_ANALYSIS_v1",
+  "batchId": "B03",
+  "sourcePath": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "sourceSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "sourceQuestionDenominator": 23,
+  "sourceQids": [
+    9,
+    13,
+    14,
+    16
+  ],
+  "mainAtStart": "d972a82d2a03b8b63093eec88b87424fb0ebbd95",
+  "sourceRows": [
+    {
+      "sourceQid": 9,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-08",
+      "sourceSubUnitKey": "H22-C-08-COMBINATION",
+      "sourceLevel": "중",
+      "sourceStudentText": "1부터 7까지 숫자가 적힌 공 중 3개를 동시에 꺼낸다. 소수가 적힌 공 2개와 소수가 아닌 수가 적힌 공 1개를 꺼내는 경우의 수를 $a$, 세 자연수의 합이 홀수인 경우의 수를 $b$라 할 때 $a+b$는? [4점]",
+      "sourceChoices": [
+        "26",
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "sourceAnswer": "⑤",
+      "sourceStudentSolution": "[키포인트] 두 경우의 수 $a,b$를 각각 조건에 맞게 나누어 센다.\n조건 정리: 1부터 7까지의 소수는 $2,3,5,7$의 4개이고, 소수가 아닌 수는 $1,4,6$의 3개이다. 홀수는 4개, 짝수는 3개이다.\n풀이 방향: $a$는 소수와 소수가 아닌 수의 선택을 곱하고, $b$는 합이 홀수가 되는 홀수의 개수에 따라 나눈다.\n정석 풀이: $a={}_4C_2\\times{}_3C_1=6\\times3=18$이다. 세 수의 합이 홀수이려면 홀수를 1개 또는 3개 골라야 한다. 따라서 $b={}_4C_1{}_3C_2+{}_4C_3=4\\times3+4=16$이다. 그러므로 $a+b=18+16=34$이다.\n따라서 정답은 ⑤이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-08",
+      "targetSubUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+      "sourceStandardUnitOrder": 8,
+      "targetStandardUnitOrder": 8,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "조합의 활용",
+      "rpmCanonicalPrimaryL4": "선택 조건",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-194",
+      "rpmComparators": [
+        "H1-RPM-192",
+        "H1-RPM-195",
+        "H1-RPM-196"
+      ],
+      "primaryMethod": "분류된 유한집합에서 동시 선택하고 합집합·여집합·합의 짝홀·최솟값을 제약하는 조합"
+    },
+    {
+      "sourceQid": 13,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-04",
+      "sourceSubUnitKey": "H22-C-04-COMPLEX_ROOT",
+      "sourceLevel": "중",
+      "sourceStudentText": "$x^3=1$의 한 허근을 $w$라 할 때, $\\dfrac{1}{w+1}+\\dfrac{1}{\\overline{w}+1}+\\dfrac{1}{w^{12}}$의 값은? (단, $\\overline{w}$는 $w$의 켤레복소수이다.) [4.1점]",
+      "sourceChoices": [
+        "$-2$",
+        "$-1$",
+        "0",
+        "1",
+        "2"
+      ],
+      "sourceAnswer": "⑤",
+      "sourceStudentSolution": "[키포인트] $w^3=1$과 $1+w+w^2=0$을 이용해 각 분수를 간단히 한다.\n조건 정리: $w$는 허근이므로 $\\overline{w}=w^2$, $w^{12}=1$이다. 또한 $w+1=-w^2$, $w^2+1=-w$이다.\n풀이 방향: 앞의 두 분수를 각각 $w$의 식으로 바꾼 뒤 마지막 항과 더한다.\n정석 풀이: $\\dfrac{1}{w+1}=\\dfrac{1}{-w^2}=-w$이고, $\\dfrac{1}{\\overline{w}+1}=\\dfrac{1}{w^2+1}=\\dfrac{1}{-w}=-w^2$이다. 따라서 앞의 두 항의 합은 $-(w+w^2)=1$이다. 또 $\\dfrac{1}{w^{12}}=1$이므로 전체 값은 $1+1=2$이다.\n따라서 정답은 ⑤이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "sourceStandardUnitOrder": 4,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "삼차방정식의 근 구조가 주된 목표이며 복소수는 이전 단원 선수개념",
+      "rpmPrimaryL3": "삼차·사차방정식",
+      "rpmCanonicalPrimaryL4": "인수분해형",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-172",
+      "rpmComparators": [
+        "H1-RPM-173",
+        "H1-RPM-157",
+        "H1-RPM-164"
+      ],
+      "primaryMethod": "x³-1을 실수 일차식·이차식으로 인수분해한 허근 w의 제약 w²+w+1=0과 w³=1을 사용"
+    },
+    {
+      "sourceQid": 14,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-06",
+      "sourceSubUnitKey": "H22-C-06-INEQUALITY",
+      "sourceLevel": "중",
+      "sourceStudentText": "이차부등식 $x^2+2(3-k)x+11\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=9$일 때, 이차부등식의 해는 $1\\le x\\le11$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $x\\lt3-\\sqrt{11}$ 또는 $x\\gt3+\\sqrt{11}$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 21이다.</div>",
+      "sourceChoices": [
+        "(가)",
+        "(나)",
+        "(나),(다)",
+        "(가),(다)",
+        "(가),(나),(다)"
+      ],
+      "sourceAnswer": "④",
+      "sourceStudentSolution": "[키포인트] 각 설명을 판별식과 인수분해로 따로 확인한다.\n조건 정리: 이차식의 최고차항 계수는 양수이므로 부등식의 해가 존재하려면 판별식이 0 이상이어야 한다.\n풀이 방향: (가)는 직접 인수분해하고, (나)와 (다)는 판별식의 부호를 이용한다.\n정석 풀이: (가) $k=9$이면 $x^2-12x+11=(x-1)(x-11)$이므로 해는 $1\\le x\\le11$이고 참이다. (나) 판별식은 $4(3-k)^2-44$이므로 해가 존재할 조건은 $(k-3)^2\\ge11$, 즉 $k\\le3-\\sqrt{11}$ 또는 $k\\ge3+\\sqrt{11}$이다. 보기에는 등호가 없으므로 거짓이다. (다) 해가 존재하지 않을 조건은 $3-\\sqrt{11}\\lt k\\lt3+\\sqrt{11}$이다. 이 범위의 정수는 $0,1,2,3,4,5,6$이고 합은 21이므로 참이다. 따라서 옳은 것은 (가), (다)이다.\n따라서 정답은 ④이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+      "sourceStandardUnitOrder": 6,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "이차부등식",
+      "rpmCanonicalPrimaryL4": "근의 위치와 해",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-181",
+      "rpmComparators": [
+        "H1-RPM-180",
+        "H1-RPM-184"
+      ],
+      "primaryMethod": "상향 이차식 판별식 및 해집합의 부호 영역, 정수 매개변수 경계 포함 판정"
+    },
+    {
+      "sourceQid": 16,
+      "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "sourceStandardUnitKey": "H22-C-06",
+      "sourceSubUnitKey": "H22-C-06-EQUATION_BASIC",
+      "sourceLevel": "상",
+      "sourceStudentText": "자연수 $n$에 대하여 사차방정식 $16x^4-8(n^2+4)x^2+(n^2-4)^2=0$이 서로 다른 네 개의 정수해를 갖도록 하는 20 이하 자연수 $n$의 개수는? [4.3점]",
+      "sourceChoices": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "sourceAnswer": "④",
+      "sourceStudentSolution": "[키포인트] 사차식을 두 이차식의 곱으로 인수분해하여 네 근을 직접 나타낸다.\n조건 정리: 주어진 식은 $[4x^2-(n+2)^2][4x^2-(n-2)^2]=0$으로 인수분해된다.\n풀이 방향: 네 근이 모두 정수이면서 서로 달라지도록 하는 $n$의 조건을 찾는다.\n정석 풀이: 근은 $x=\\pm\\dfrac{n+2}{2}$, $x=\\pm\\dfrac{n-2}{2}$이다. 네 근이 정수가 되려면 $n$은 짝수여야 한다. $n=2$이면 뒤의 두 근이 모두 0이 되어 서로 다른 근이 3개뿐이므로 제외한다. 따라서 20 이하에서 가능한 $n$은 $4,6,8,10,12,14,16,18,20$의 9개이다.\n따라서 정답은 ④이다.",
+      "sourceVisualStatus": "TEXT_ONLY_OR_CONDITION_BOX_TEXT_READ",
+      "targetStandardUnitKey": "H22-C-06",
+      "targetSubUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "sourceStandardUnitOrder": 6,
+      "targetStandardUnitOrder": 6,
+      "orderAwareRationale": "generated decisive step primary within current target unit",
+      "rpmPrimaryL3": "삼차·사차방정식",
+      "rpmCanonicalPrimaryL4": "치환형",
+      "rpmCanonicalPrimaryRecordId": "H1-RPM-173",
+      "rpmComparators": [
+        "H1-RPM-172",
+        "H1-RPM-176"
+      ],
+      "primaryMethod": "짝수 차수 사차식을 y=x² 이차식으로 치환·인수분해 후 근의 실수성·정수성·중복 여부 판정"
+    }
+  ],
+  "status": "A_SOURCE_READ"
+}
