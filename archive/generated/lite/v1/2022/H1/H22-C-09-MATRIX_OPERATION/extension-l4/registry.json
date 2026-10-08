@@ -7,7 +7,7 @@
   "l2": "H22-C-09-MATRIX_OPERATION",
   "sourceExam": "26_복성고_1학기_기말_고1_기출.js",
   "sourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
-  "candidateCount": 6,
+  "candidateCount": 10,
   "candidates": [
     {
       "candidateL4Id": "EXT-H1-C09-MATRIX-ENTRY-INVERSE",
@@ -172,8 +172,428 @@
       "reviewStatus": "DISCOVERED_UNREVIEWED",
       "canonicalPromoted": false,
       "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SCALAR-INVERSE",
+      "label": "행렬의 대응성분 제약으로 실수배 역결정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "다수 대응성분 0/동일 조건 또는 미지계수를 한꺼번에 결합",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M02",
+        "BSG26-B02-Q03-M03"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M02",
+        "ALITE-BSG26-B02-Q03-M03"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 2,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-COMPONENT-AGGREGATION",
+      "label": "행렬의 행합·성분총합 제약",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "전체 합/특정 행합의 선형성을 이용해 실수배를 역산",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M04",
+        "BSG26-B02-Q03-M05"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M04",
+        "ALITE-BSG26-B02-Q03-M05"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 2,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SUMDIFF-INVERSION",
+      "label": "행렬합과 차로 다른 선형결합 역산",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "A+B,A-B의 구조로 2A+B 지정성분 환원",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M06"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M06"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 1,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-PRODUCT-DIMENSION",
+      "label": "행렬곱의 크기와 호환성을 복합 판정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-198",
+        "H1-RPM-201"
+      ],
+      "decisiveStepSignature": "여러 행렬의 크기로 곱의 정의와 결과 크기/성분 수를 판정",
+      "sourceSeedQids": [
+        10
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q10-D01",
+        "BSG26-B02-Q10-D02",
+        "BSG26-B02-Q10-D03",
+        "BSG26-B02-Q10-D04",
+        "BSG26-B02-Q10-D07",
+        "BSG26-B02-Q10-D08"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q10-D01",
+        "ALITE-BSG26-B02-Q10-D02",
+        "ALITE-BSG26-B02-Q10-D03",
+        "ALITE-BSG26-B02-Q10-D04",
+        "ALITE-BSG26-B02-Q10-D07",
+        "ALITE-BSG26-B02-Q10-D08"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 6,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
     }
   ],
-  "reviewStatus": "NOT_REVIEWED",
-  "canonicalRPMModified": false
+  "reviewStatus": "B01_B02_CANDIDATES_REVIEW_PENDING",
+  "canonicalRPMModified": false,
+  "proposals": [
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-ENTRY-INVERSE",
+      "label": "선형 행렬등식에서 미지 성분 결정",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "덧셈·뺄셈·실수배",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "등식의 여러 대응 성분으로 미지수를 구하고 다른 성분의 일관성도 확인",
+      "contrastAgainstCanonicalL4": "계산된 행렬의 성분을 읽는 정방향 계산과 다르게 성분 조건에서 미지수 역산",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M01",
+        "ALITE-BSG26-B01R2-Q06-M05"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-ENTRY-FUNCTIONAL",
+      "label": "행렬 성분의 선형관계로 실수배 결정",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "덧셈·뺄셈·실수배",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "행합 0 또는 서로 다른 두 성분 일치 조건을 실수배 미지수식으로 전환",
+      "contrastAgainstCanonicalL4": "대응성분의 값을 바로 구하는 L4와 달리 성분 간 관계를 만족시키는 매개변수 결정",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M02",
+        "ALITE-BSG26-B01R2-Q06-M06"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-SUM-DIFFERENCE",
+      "label": "행렬 합·차를 통한 선형결합 역구성",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "덧셈·뺄셈·실수배",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "A+B와 A-B로부터 요구한 2A+B를 직접 대수적으로 재구성",
+      "contrastAgainstCanonicalL4": "두 행렬을 알려준 뒤 가감만 하는 기존 L4와 다르게 미지 행렬의 관계를 소거",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M03"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-AGGREGATE",
+      "label": "행렬의 성분 전체합과 선형성",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "덧셈·뺄셈·실수배",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "각 행렬의 성분 전체합만으로 선형결합의 전체합을 계산",
+      "contrastAgainstCanonicalL4": "행렬의 실제 개별 성분 없이 선형 함수의 성질로 목표 계산",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M04"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-ORDERED-PRODUCT-SUM",
+      "label": "AB·BA의 곱셈 순서를 구별한 결합",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "행렬의 곱셈",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "AB와 BA의 지정 성분을 각각 계산한 뒤 합으로 결합",
+      "contrastAgainstCanonicalL4": "한 곱의 단일 성분과 달리 교환 불가능성을 의식한 두 곱 연산",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M08"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-C09-MATRIX-PRODUCT-INVERSE",
+      "label": "행렬곱의 지정성분 역조건",
+      "parentRPMPrimaryL3": "행렬의 연산",
+      "closestCanonicalL4": "행렬의 곱셈",
+      "canonicalRPMComparatorRecordIds": [
+        "H1-RPM-200",
+        "H1-RPM-201"
+      ],
+      "definingDecisiveStep": "행·열 내적의 결과값을 고정하고 미지 행렬 성분을 역으로 결정",
+      "contrastAgainstCanonicalL4": "곱의 성분 정방향 계산 M07과 대비되는 역수식 구성",
+      "sourceSeedQids": [
+        6
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B01R2-Q06-M09"
+      ],
+      "semanticSourceScope": "H22-C-09-MATRIX_OPERATION",
+      "sourceOriginalBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022 공통수학1",
+      "classificationKind": "EXT_L4_CANDIDATE_OR_CONDITION_PATTERN",
+      "granularityDecision": "INDEPENDENT_REVIEW_REQUIRED",
+      "curriculumGate": "CREATOR_PRELIMINARY_NOT_INDEPENDENT",
+      "reviewStatus": "DISCOVERED_UNREVIEWED",
+      "canonicalPromoted": false,
+      "consumerSelectable": false
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SCALAR-INVERSE",
+      "label": "행렬의 대응성분 제약으로 실수배 역결정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "다수 대응성분 0/동일 조건 또는 미지계수를 한꺼번에 결합",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M02",
+        "BSG26-B02-Q03-M03"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M02",
+        "ALITE-BSG26-B02-Q03-M03"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 2,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-COMPONENT-AGGREGATION",
+      "label": "행렬의 행합·성분총합 제약",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "전체 합/특정 행합의 선형성을 이용해 실수배를 역산",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M04",
+        "BSG26-B02-Q03-M05"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M04",
+        "ALITE-BSG26-B02-Q03-M05"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 2,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-SUMDIFF-INVERSION",
+      "label": "행렬합과 차로 다른 선형결합 역산",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-200"
+      ],
+      "decisiveStepSignature": "A+B,A-B의 구조로 2A+B 지정성분 환원",
+      "sourceSeedQids": [
+        3
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q03-M06"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q03-M06"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 1,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    },
+    {
+      "candidateL4Id": "EXT-H1-BSG26-MATRIX-PRODUCT-DIMENSION",
+      "label": "행렬곱의 크기와 호환성을 복합 판정",
+      "proposedParentRPMPrimaryL3": "행렬의 연산",
+      "canonicalComparatorRecordIds": [
+        "H1-RPM-198",
+        "H1-RPM-201"
+      ],
+      "decisiveStepSignature": "여러 행렬의 크기로 곱의 정의와 결과 크기/성분 수를 판정",
+      "sourceSeedQids": [
+        10
+      ],
+      "blueprintIds": [
+        "BSG26-B02-Q10-D01",
+        "BSG26-B02-Q10-D02",
+        "BSG26-B02-Q10-D03",
+        "BSG26-B02-Q10-D04",
+        "BSG26-B02-Q10-D07",
+        "BSG26-B02-Q10-D08"
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q10-D01",
+        "ALITE-BSG26-B02-Q10-D02",
+        "ALITE-BSG26-B02-Q10-D03",
+        "ALITE-BSG26-B02-Q10-D04",
+        "ALITE-BSG26-B02-Q10-D07",
+        "ALITE-BSG26-B02-Q10-D08"
+      ],
+      "evidenceSourceGitBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+      "curriculum": "2022",
+      "course": "공통수학1",
+      "contrastAgainstCanonicalL4": "Target/branch-specific decisive step needs independent semantic comparison against RPM record; could reduce to Condition pattern",
+      "reviewStatus": "CANDIDATE_RECLASSIFIED_STILL_NOT_APPROVED",
+      "granularityDecision": "PENDING_L4_VS_CONDITION",
+      "canonicalPromoted": false,
+      "consumerSelectable": false,
+      "exampleUidCount": 6,
+      "originalRegistryTargetL2": "H22-C-09-CORE"
+    }
+  ]
 }
