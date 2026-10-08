@@ -34,7 +34,10 @@ window.questionBank = [
     "solution": "$B=\\begin{pmatrix}b&c\\\\d&e\\end{pmatrix}$, $C=\\begin{pmatrix}f&g\\\\h&i\\end{pmatrix}$로 놓으면 $AB=CA$에서 $b=f$, $c=h=0$이다.\n$f=h$이므로 $b=f=h=0$이고, $B+C$를 대조하면 $d=2$, $g=-4$, $e+i=5$이다.\n$B$의 성분합이 $0$이므로 $2+e=0$, 즉 $e=-2$이고 $i=7$이다.\n따라서 $C$의 성분합은 $0-4+0+7=3$이다.\n따라서 정답은 ④이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -70,7 +73,10 @@ window.questionBank = [
     "solution": "$AB=CA$의 대응 성분을 비교하면 $B_{11}=C_{11}$, $B_{12}=0$, $C_{21}=0$이다.\n$C_{11}=C_{21}$이므로 $B_{11}=C_{11}=0$이다.\n$B+C=\\begin{pmatrix}0&1\\\\3&5\\end{pmatrix}$에서 $B_{21}=3$이고 $B_{22}=5-C_{22}=1$이다.\n따라서 $B$의 성분합은 $0+0+3+1=4$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -106,7 +112,10 @@ window.questionBank = [
     "solution": "$B=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$로 두면 $AB=\\begin{pmatrix}2u&2v\\\\w&z\\end{pmatrix}$, $BA=\\begin{pmatrix}2u&v\\\\2w&z\\end{pmatrix}$이다.\n두 행렬이 같으므로 $2v=v$, $w=2w$이며 $v=w=0$이다.\n대각성분에 대해 $u+z=7$, $u-z=3$이다. 두 식을 더하면 $2u=10$이므로 $u=5$이다.\n따라서 정답은 ④이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -142,13 +151,16 @@ window.questionBank = [
     "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}u+w&v+z\\\\w&z\\end{pmatrix}$, $XA=\\begin{pmatrix}u&u+v\\\\w&w+z\\end{pmatrix}$이다.\n대응 성분을 비교하면 $w=0$, $z=u$이다.\n$v=3$이므로 $X$의 성분합은 $u+3+0+u=2u+3=11$이다.\n따라서 $u=4$이다.\n따라서 정답은 ②이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "uid": "ALITE-BSG26-B04R2-Q20-S05",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 성질",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -178,13 +190,16 @@ window.questionBank = [
     "solution": "$B=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$이면 $AB=\\begin{pmatrix}u&v\\\\0&0\\end{pmatrix}$이다.\n$AB=O$이므로 첫째 행의 두 성분 $u=v=0$이다.\n주어진 $w=2$와 성분합 $u+v+w+z=7$을 대입하면 $0+0+2+z=7$이다.\n따라서 $z=5$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
     "uid": "ALITE-BSG26-B04R2-Q20-S06",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 성질",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -214,13 +229,16 @@ window.questionBank = [
     "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}u&v\\\\2u+w&2v+z\\end{pmatrix}$이다.\n주어진 행렬과 비교하여 $u=3$, $v=1$, $2u+w=8$, $2v+z=4$이다.\n따라서 $w=2$, $z=2$이므로 $X_{21}+X_{22}=4$이다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
     "uid": "ALITE-BSG26-B04R2-Q20-S07",
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "category": "행렬의 성질",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -250,13 +268,16 @@ window.questionBank = [
     "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 놓으면 $XA=\\begin{pmatrix}u&2u+v\\\\w&2w+z\\end{pmatrix}$이다.\n성분 비교에서 $u=3$, $w=2$, $2u+v=7$, $2w+z=5$이므로 $v=1$, $z=1$이다.\n따라서 $X_{12}+X_{22}=1+1=2$이다.\n따라서 정답은 ②이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
     "uid": "ALITE-BSG26-B04R2-Q20-S08",
-    "level": "상",
-    "difficultyBucket": 4,
+    "level": "중",
+    "difficultyBucket": 3,
     "category": "행렬의 성질",
     "originalCategory": "행렬",
     "standardCourse": "공통수학1",
@@ -286,7 +307,10 @@ window.questionBank = [
     "solution": "$X=\\begin{pmatrix}u&v\\\\w&z\\end{pmatrix}$라 두면 $AX=\\begin{pmatrix}w&z\\\\u&v\\end{pmatrix}$, $XA=\\begin{pmatrix}v&u\\\\z&w\\end{pmatrix}$이다.\n따라서 $u=z$, $v=w$이므로 $X=\\begin{pmatrix}u&v\\\\v&u\\end{pmatrix}$이다.\n대각 성분의 합 $2u=12$에서 $u=6$, 전체 성분합 $2u+2v=20$에서 $2v=8$이다.\n따라서 $v=4$이다.\n따라서 정답은 ①이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -322,6 +346,9 @@ window.questionBank = [
     "solution": "$AB=CA$에서 $a\\ne0$이므로 $B_{11}=C_{11}$, $B_{12}=0$, $C_{21}=0$이다.\n$C_{11}=C_{21}$에서 $C_{11}=B_{11}=0$이다.\n따라서 $B+C$의 $(1,1)$성분은 $0$이어야 하므로 $t=0$이다.\n역으로 $t=0$일 때 $B=\\begin{pmatrix}0&0\\\\1&0\\end{pmatrix}$, $C=\\begin{pmatrix}0&2\\\\0&4\\end{pmatrix}$를 택하면 조건을 모두 만족하므로 실제로 존재한다.\n따라서 정답은 ③이다.",
     "problemTypeKey": "PT_H1_MATRIX_EQUATION",
     "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
-    "sourceType": "generated"
+    "sourceType": "generated",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
