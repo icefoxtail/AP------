@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_R1_STATUS_CLEAR_APPLICATION_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactBefore": {
+    "rawBufferBlobSha1": "b677fcfb7dca704aa461e3aacc69954856b51244",
+    "rawSha256": "bf01f97280750894b99b631e501f8990d40a14a82133def913b85c2f3d6f7e52"
+  },
+  "artifactAfter": {
+    "rawBufferBlobSha1": "0d349890f38865c5408906106b76d669cde344b4",
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/26_동산중_1학기_중간_중2_기출.js",
+    "rawSha256": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b"
+  },
+  "authority": {
+    "statusChangesAuthorized": "ONLY qid 19-21 itemStatus/reviewStatus; q20/q21 answerStatus/solutionStatus/HOLD reason",
+    "path": "ROOT direct status-clear instruction after integrated R1 finding"
+  },
+  "integratedR1QualityReview": {
+    "scope": "q19-q21 four-axis and small-board PASS; 3/3 independent matches; no substantive defects",
+    "currentFinalRawRecertification": "PENDING_ROOT_R1",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\review\\R1.recovery-19-21.quality-review.json",
+    "sha256": "5c5f1067682e7a68fecab8f09ece475ff345f4fb8fa744d915e77fd3980907cf"
+  },
+  "originalHoldHistory": [
+    {
+      "preserveOriginalQidHoldReasons": true,
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.evidence.json",
+      "sha256": "cc136ad52ca64c3e1587fa21d5157c1dce913610bb3d4802d0d784303133c8b7"
+    },
+    {
+      "preserveOriginalCarry": true,
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\ROOT.R2-carry-item-hold-routing.proof.json",
+      "sha256": "4e7b5010b8bd448342a3e8a32b5e0ecf908f8096b5066ade65fbd64ca2efb717"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.source-first-assessment.locked.json",
+      "sha256": "d7d895bc88402cdfd4316acdcd430ff82dd27ac63130b8540b8502c2eff524",
+      "sourcePixelsStillDamaged": "TRUE_REPLACEMENT_PROVENANCE"
+    }
+  ],
+  "changes": [
+    {
+      "qid": 19,
+      "removedFields": [
+        "itemStatus",
+        "itemHoldReason",
+        "holdReason"
+      ],
+      "answerSolutionWereAlreadyVerifiedAndCreated": true,
+      "answerStatus": "verified",
+      "solutionStatus": "created",
+      "reviewStatus": "reviewed_pass"
+    },
+    {
+      "solutionStatus": "created",
+      "qid": 20,
+      "removedFields": [
+        "itemStatus",
+        "itemHoldReason",
+        "holdReason"
+      ],
+      "reviewStatus": "reviewed_pass",
+      "answerStatus": "verified"
+    },
+    {
+      "solutionStatus": "created",
+      "qid": 21,
+      "removedFields": [
+        "itemStatus",
+        "itemHoldReason",
+        "holdReason"
+      ],
+      "reviewStatus": "reviewed_pass",
+      "answerStatus": "verified"
+    }
+  ],
+  "preserved": {
+    "answersSolutionsAndMetaDifficultyAfterR1Meta": true,
+    "assetsAddedOrChanged": [],
+    "studentFields": [
+      "id",
+      "sourceQuestionNo",
+      "content",
+      "choices",
+      "image",
+      "layoutTag",
+      "wide"
+    ],
+    "nonTargetProof": {
+      "sha256": "2e3f133aebc7a713d90ceaab9acd684cc92ac590006dde0313984bde7a8b0264",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.status-clear.non-target-invariance.json"
+    },
+    "other21QuestionsByteExact": true
+  },
+  "preflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.create-preflight.r1-status-clear.raw.json",
+    "unitOrderFindings": 0,
+    "semanticApproval": false,
+    "status": "STRUCTURAL_PREFLIGHT_CLEAR",
+    "findings": 0,
+    "sha256": "216196ff77d7a86500cbde072100fddd655a0eb73af953309fb3a1b29e567c18",
+    "itemHoldCount": 0,
+    "exitCode": 0
+  },
+  "stageClosure": {
+    "integratedR1EvidencePending": true,
+    "nextRequiredAction": "R1 recertify exact current final raw c756...; then ROOT/CREATE will finalize full 24-qid evidence, run generic V2/CODEX validator once, and seal stable completion.",
+    "completionSealRun": false,
+    "genericValidatorRun": false,
+    "itemHoldCleared": false
+  }
+}

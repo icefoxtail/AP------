@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_PROPOSAL_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "qid": 21,
+  "scope": "R1.scope-21@recovery-02",
+  "sourceRawSha256": "3546fb48c2bba3e18be75da0118defa83189bb3f9a741b2b36c28d57ce71c121",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\R1.scope-21@recovery-02.json",
+    "sha256": "3d7141116b3971f79ede0e49a0cc0a115c35bde017b84f2fdeab2afd613a6107"
+  },
+  "answerFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\R1.scope-21@recovery-02.freeze.json",
+    "sha256": "865a04c8fb3329f4f9aaf9a6d04f09e0a47884a117509ca16ddc0ffc0ef0b060",
+    "storedAnswerCompared": false,
+    "postfreezeDisclosureRun": false
+  },
+  "difficultyProposal": {
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rationale": "익숙한 할인·이익률 조건을 한 번 해석해 0.8x ≥ 8,800의 일차부등식으로 세우면 풀이법이 바로 정해진다. 조건 해석과 간단한 부등식 구성은 필요하지만 전략 선택이나 개념 결합 부담은 작다.",
+    "basis": "current student question and choices only; existing level/bucket not inspected"
+  },
+  "semanticMetaProposal": {
+    "proposalStatus": "SEMANTIC_PROPOSAL_ONLY",
+    "curriculumScope": "UNRESOLVED_FROM_STUDENT_BUNDLE",
+    "standardUnitLabelCandidate": "일차부등식",
+    "subUnitLabelCandidate": "일차부등식의 활용",
+    "primaryMethod": "원가 대비 최소 이익 조건과 할인 후 판매가를 연결해 정가의 하한을 일차부등식으로 모델링",
+    "decisiveStep": "0.8x ≥ 1.1×8,000 = 8,800에서 x ≥ 11,000 도출",
+    "conditions": [
+      "원가 8,000원",
+      "정가 대비 20% 할인",
+      "원가 대비 이익률 10% 이상"
+    ],
+    "supportingConcepts": [
+      "백분율을 곱셈식으로 표현"
+    ],
+    "integrationPattern": "NONE",
+    "machineKeys": "NOT_PROPOSED",
+    "projectionStatus": "PENDING_CURRENT_CURRICULUM_AND_EXACT_ACTIVE_TAXONOMY_LOOKUP",
+    "reason": "학생 전용 입력에는 현재 source Meta의 curriculum binding이 없고, 지정 범위는 source/Meta 자동 수정이나 기존 Meta 판정 승계를 허용하지 않는다. 의미를 보존한 채 machine-key 투영과 PASS는 보류한다."
+  },
+  "axisLimitations": {
+    "questionLayout": "static student text/choice structure reviewed; actual engine render not inspected",
+    "solutionLayout": "not assessed in this freeze-only handoff",
+    "visualSvg": "no referenced asset in assigned bundle; no visual required by supplied input",
+    "meta": "semantic proposal only; no source Meta comparison or approval"
+  }
+}

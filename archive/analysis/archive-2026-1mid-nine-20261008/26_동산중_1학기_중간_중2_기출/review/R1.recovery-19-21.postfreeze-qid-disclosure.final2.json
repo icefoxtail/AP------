@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_RECOVERY_QID_POSTFREEZE_DISCLOSURE_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_08",
+  "currentSource": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/26_동산중_1학기_중간_중2_기출.js",
+    "rawSha256": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b",
+    "rawBufferGitBlobSha1": "0d349890f38865c5408906106b76d669cde344b4"
+  },
+  "currentStudentBundle": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.current-full24.student.final.json",
+    "sha256": "3d66775efc33b2e01369d0c2bd961d1b88a99cd42f0cc3044424e24841c86da6",
+    "parityProofPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.final-full24-student-parity.json",
+    "parityProofSha256": "e783b79708098ef27f5ca3451d09c8acb81ef8d6e980f46a69dcb9846ea6e517"
+  },
+  "scopeRules": {
+    "recovery01FreezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-19,20,21@recovery-01.freeze.json",
+    "recovery01FreezeSha256": "b63dd4306d9dd64391c77f7cf0df9ef53f9fe00861a91b0194f7df93acca44a8",
+    "recovery01BundlePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-19,20,21@recovery-01.json",
+    "recovery01BundleSha256": "40ed3b7603d7c3750cdcf5ae7a4b2a45b4520f8a1f045f6b33e101d48b83e16f",
+    "recovery01UsableQids": [
+      19,
+      20
+    ],
+    "recovery01SupersededQids": [
+      21
+    ],
+    "recovery02FreezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-21@recovery-02.freeze.json",
+    "recovery02FreezeSha256": "865a04c8fb3329f4f9aaf9a6d04f09e0a47884a117509ca16ddc0ffc0ef0b060",
+    "recovery02BundlePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.scope-21@recovery-02.json",
+    "recovery02BundleSha256": "3d7141116b3971f79ede0e49a0cc0a115c35bde017b84f2fdeab2afd613a6107",
+    "exactStudentParityByQid": "PASS; q19/q20 payload hashes match recovery01 freeze bundle, q21 matches recovery02 fresh bundle. The superseded recovery01 q21 row was excluded."
+  },
+  "invarianceProofs": {
+    "rootNonTargetPreimagePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/ROOT.recovery.non-target-preimage.json",
+    "rootNonTargetPreimageSha256": "0b41a0c9913d9e657a214d092ec53a620189b01d095ee4211e940911f64ec6af",
+    "source8NonTargetProofPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/CREATE.item-recovery.non-target-invariance.json",
+    "source8NonTargetProofSha256": "edcfce8358d14a6d428bef28ed154b085f59bb04662bd9ddec01d5dda6a6c79f",
+    "q21Revision2ProofPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/CREATE.item-recovery.q21.revision2.exact-invariance.json",
+    "q21Revision2ProofSha256": "e95a3a379f0273aa30bf62e22772a8bc155a2afda109f74e714a76ac9bf9231b",
+    "q21Revision2ChangedQids": [
+      21
+    ],
+    "allOtherObjectsByteExact": true,
+    "assetsAddedOrChanged": []
+  },
+  "rows": [
+    {
+      "qid": 19,
+      "independentAnswer": {
+        "choice": 2,
+        "text": "$x\\le5$",
+        "cardinality": 1
+      },
+      "independentReasoning": "5x−7≤2x+8 gives 3x≤15 and x≤5; choice ②.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "compareBasis": "Current source q19 answer symbol ② matches frozen choice 2; full current student payload hash is exact against the freeze scope row.",
+      "solutionSha256": "880c8efb155078e1504364cb707f43e43557bc502c69b83d528d8193e30f0fc6"
+    },
+    {
+      "qid": 20,
+      "independentAnswer": {
+        "choice": 3,
+        "text": "7",
+        "cardinality": 1
+      },
+      "independentReasoning": "4x−7<2x+9 gives x<8; among x≥1 natural numbers, 1 through 7 satisfy it; choice ③.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "compareBasis": "Current source q20 answer symbol ③ matches frozen choice 3/text 7; full current student payload hash is exact against the freeze scope row.",
+      "solutionSha256": "d481db858757a7b7d11f6acc97ef233cf4dcea4f8059270db67df91e1ffea3c4"
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "③ (11,000원)",
+      "independentReasoning": "An 8,000원 cost requires 800원 profit for 10%; with a 20% discount, 0.8p−8,000≥800, so p≥11,000; choice ③.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "compareBasis": "Current source q21 answer symbol ③ matches the clean recovery02 freeze; current full student payload hash equals recovery02 q21 payload.",
+      "solutionSha256": "b9c341b0f4aba46a5c771f2d18a9de3d173b92af5d0a46fd8a6f13f19b490ee4"
+    }
+  ],
+  "disclosureScope": [
+    19,
+    20,
+    21
+  ],
+  "noFullExamResolve": true,
+  "noSolutionRepairOrEncodingCorrection": true,
+  "actualRenderClaimed": false,
+  "completionSealCreated": false,
+  "postMetaStatusUpdate": {
+    "priorSourceRawSha256": "bf01f97280750894b99b631e501f8990d40a14a82133def913b85c2f3d6f7e52",
+    "finalSourceRawSha256": "c75629caaa40b9c792ef3670dc2d37b1a5f3d8f28ed932859ea57f798f76252b",
+    "studentAnswerSolutionBytesUnchanged": true,
+    "qidScope": [
+      19,
+      20,
+      21
+    ],
+    "evidenceBasis": "Creator preserved student, answer, and solution bytes; current 24-qid student parity was re-run after the status-only source update."
+  }
+}

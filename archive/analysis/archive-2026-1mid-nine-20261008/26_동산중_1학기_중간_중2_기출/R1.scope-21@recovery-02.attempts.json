@@ -1,0 +1,26 @@
+{
+  "scope": "R1.scope-21@recovery-02",
+  "attempts": [
+    {
+      "note": "freeze CLI expects top-level answers array; preserved original packet",
+      "input": "R1.scope-21@recovery-02.answers.json",
+      "error": "FULL_INDEPENDENT_FREEZE_REQUIRED",
+      "attempt": 1,
+      "status": "FAILED_INPUT_SHAPE"
+    },
+    {
+      "note": "single row serialized as object; preserved original packet",
+      "input": "R1.scope-21@recovery-02.freeze-input.json",
+      "error": "FULL_INDEPENDENT_FREEZE_REQUIRED",
+      "attempt": 2,
+      "status": "FAILED_INPUT_SHAPE"
+    },
+    {
+      "freeze": "R1.scope-21@recovery-02.freeze.json",
+      "input": "R1.scope-21@recovery-02.freeze-input-array.json",
+      "attempt": 3,
+      "status": "FROZEN"
+    }
+  ],
+  "schemaVersion": "JS_ARCHIVE_R1_TECHNICAL_ATTEMPT_LOG_V1"
+}

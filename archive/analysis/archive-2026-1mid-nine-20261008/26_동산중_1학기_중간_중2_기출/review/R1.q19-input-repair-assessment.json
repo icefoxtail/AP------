@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q19_INPUT_REPAIR_ASSESSMENT_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "R1",
+  "reviewerId": "r1_08",
+  "disposition": "NO_SAFE_ORIGINAL_PIXEL_REPAIR_SOURCE_HOLD",
+  "sourceAuthority": {
+    "assignment": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.assignment.json", "sha256": "1c80005d35c38302a06499372ed000ede7c187b5e527162ac1ac1f7297bfad4a"},
+    "workingJs": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/26_동산중_1학기_중간_중2_기출.js", "rawSha256": "82c9f8a8a39ba22b644a18f9786cf50b90c1573edbb3b621fe0d4df1a3023186", "validatorRawBufferBlobSha1": "ae7cc2a4e77727d779c39fcc62f8d5393f193bc4", "modified": false},
+    "studentBundle": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.student.json", "sha256": "4280cc9ae7ef1b113fe33367950b167cc32dd204f951327b6fd31c369130d78e", "q19ImageField": "ABSENT", "q19ImageRefs": [], "currentChoices": ["x<2", "x>2", "x≤2", "x≥2", "x≥6"], "modified": false},
+    "originalFreeze": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/review/R1.independent-freeze.json", "sha256": "3a29f2b1ff42a7d6c519e1c34ceb120a858406c91368a9cb1517b5928f43c141", "preserved": true, "q19ValidForPass": false},
+    "failedInput": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/R1.student.json", "sha256": "4280cc9ae7ef1b113fe33367950b167cc32dd204f951327b6fd31c369130d78e", "preserved": true}
+  },
+  "canonical": {"path": "docs/rules/04_VISUAL/도형추출.md", "section": "0-A", "ruleApplied": "Preserve original problem pixels; crop/cleanup source first; no SVG or synthetic redraw replacement."},
+  "sourceInventory": {"assignedEvidenceRoot": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출", "availableOriginalImages": ["source-crops/q19.png"], "cleanUnmarkedFullPageOrOriginalScanLocated": false},
+  "sourceImage": {"path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/source-crops/q19.png", "sha256": "bad0958e56ea925ecd13dcc231a2d670c8b4bda360edb26d936ac81f8d5e292a", "pixelSize": {"width": 2450, "height": 1850}, "sourceStatus": "teacher-marked crop", "opened": true},
+  "visualAssessment": {
+    "printedChoiceDiagramFieldApproxBBoxPx": {"x": 530, "y": 560, "width": 1810, "height": 1080},
+    "manualAnnotationZones": [
+      {"kind": "handwritten oval/strokes", "approxBBoxPx": {"x": 850, "y": 320, "width": 1510, "height": 1370}, "crossesPrintedFeatures": ["number-line axes/arrows", "shaded intervals", "at least two endpoint regions"]},
+      {"kind": "handwritten mark beside a printed choice label", "approxBBoxPx": {"x": 365, "y": 765, "width": 220, "height": 205}, "containsAnswerHint": true},
+      {"kind": "handwriting around upper-right choice label and shaded region", "approxBBoxPx": {"x": 1375, "y": 320, "width": 610, "height": 285}, "overlapWithPrintedPixels": true}
+    ],
+    "cleanupPossible": false,
+    "changedPixels": 0,
+    "printedPixelInvarianceProven": false,
+    "annotationBoundaryCanBeSeparatedWithoutTouchingPrintedStrokes": false,
+    "reason": "The teacher mark intersects printed number-line axes/shading/endpoints in the lower option rows and intrudes into a printed choice region above. A crop containing all five options retains answer-marking strokes; removing those strokes would require overwriting or reconstructing original printed pixels/topology. No clean unmarked source scan is present in the assigned evidence root."
+  },
+  "assetOutcome": {"newAssetCreated": false, "currentJsImageRefsChanged": false, "studentBundleChanged": false, "assetPath": null, "actualRenderPerformed": false},
+  "handoff": {"nextAction": "Keep q19 current item HOLD for ROOT post-R2 source recovery. Use a clean, unmarked original source scan if one becomes available; otherwise maintain source HOLD. Do not promote the contaminated original freeze.", "scope": "q19 only; q20/q21 source-HOLD findings and unaffected qids remain as in prior R1 evidence."}
+}
