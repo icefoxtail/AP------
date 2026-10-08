@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_EVIDENCE_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "ITEM_RECOVERY",
+  "status": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산여고_1학기_기말_고1_기출",
+  "allowedQids": [
+    18
+  ],
+  "nonTargetQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    22
+  ],
+  "reviewerIdentity": {
+    "role": "archive_create",
+    "reviewerId": "/root/create_maesangirls2021_five"
+  },
+  "sourceMode": "ALIVE_REPLACEMENT",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "rootDecision": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/ROOT.item-recovery.decision.json",
+    "sha256": "277cddb8d5a1877697b93a94cc0f3d1daa71dde1ec22a818bbf86ccd0ceecbf4"
+  },
+  "sourceSufficiency": {
+    "status": "SOURCE_UNDERDETERMINED_FOR_ALL_ALLOWED_PARAMETERS",
+    "independentReadBeforeUpstreamReasons": true,
+    "printedCondition": "a>0, b>0",
+    "counterexample": "a=b>0",
+    "reason": "At a=b, every one of ㉠–㉣ has center-coordinate absolute values equal to its radius, so every circle touches both axes. Thus no displayed choice is x-axis-only over the entire printed parameter domain. The official ㉡ answer does not resolve the omitted case.",
+    "sourceAnswerNotAcceptedAsTruth": "The answer key’s ㉡ only reflects the intended generic case; it does not impose a≠b."
+  },
+  "originalSource": {
+    "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매여고1_1기말.pdf",
+    "pdfSha256": "f95fa60bc9be39355266ba6b2e5870bc6a205332d7075e5f4316c358dfc28585",
+    "answerKeyPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매여고1_1기말_정답.hwp",
+    "answerKeySha256": "59aaac9d21c3195e61bb7f96bc6ad50963c48a0fd3232a5148626feadea79427",
+    "officialSolutionPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매여고1_1기말_해설.pdf",
+    "officialSolutionSha256": "673a5967e4b8dfe03a759311068525b6ce23ce18af9b441255b6789bfa6b6507",
+    "sourcePosition": {
+      "page": 5,
+      "region": "left-lower"
+    },
+    "sourceTextFreezeRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/SOURCE_TEXT_FREEZE.json",
+    "originalFrozenQ18": {
+      "content": "[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에만 접하는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$",
+      "choices": [],
+      "contentSha256": "a8129e1f4df8f31360e2d503408c997ddf21504feff1416508320012c7132be8",
+      "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "originalSourcePreserved": true,
+    "originalFreezeEvidencePreserved": true
+  },
+  "upstreamHold": {
+    "r1": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R1.evidence.final4.json",
+      "sha256": "706979c78ca4c9d68b9ad9a1dc45a472a4db43fb3dbd0ed21e2c00da81eb7ee3",
+      "verdict": "R1_COMPLETE_HOLD_CARRIED_TO_R2",
+      "itemStatus": "HOLD",
+      "issueCodes": [
+        "SOURCE_STUDENT_ITEM_AMBIGUITY"
+      ]
+    },
+    "r2": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R2.evidence.final.json",
+      "sha256": "9597571eb27084eddf11b84504bee871cd08092e331f23aae314f2293117399e",
+      "verdict": "SOURCE_HOLD",
+      "itemStatus": "HOLD"
+    }
+  },
+  "replacement": {
+    "kind": "DIRECT_AUTHORING_REPLACEMENT",
+    "reason": "The printed parameter domain admits a=b, but the intended ㉡ answer is x-axis-only only when a≠b. Explicitly state both x-axis tangency and y-axis non-tangency and exclude a=b; do not claim this condition was in the source.",
+    "changedFields": [
+      "content",
+      "answer",
+      "solution",
+      "sourceMode",
+      "itemStatus"
+    ],
+    "content": "[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에 접하고 $y$축에는 접하지 않는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이고 $a\\ne b$이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$",
+    "answer": "㉡, $b$",
+    "answerDerivation": "㉠ and ㉣ touch both axes. ㉡ has center (a,b), radius b; b>0 gives x-axis tangency and a≠b prevents y-axis tangency. ㉢ needs a=b for x-axis tangency, excluded. Exactly one response: ㉡ and radius b.",
+    "solution": "원의 중심이 $(h,k)$이고 반지름이 $r$인 원은\n$x$축에 접할 조건이 $|k|=r$이고,\n$y$축에 접할 조건이 $|h|=r$이다.\n\n㉠의 중심은 $(a,a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n㉡의 중심은 $(a,b)$, 반지름은 $b$이다.\n$b>0$이므로 $|b|=b$여서 $x$축에 접한다.\n$y$축에 접하려면 $|a|=b$, 즉 $a=b$여야 한다.\n조건 $a\\ne b$에 따라 $y$축에는 접하지 않는다.\n\n㉢의 중심은 $(a,b)$, 반지름은 $a$이다.\n$x$축에 접하려면 $b=a$여야 하므로 조건에 맞지 않는다.\n\n㉣의 중심은 $(a,-a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n따라서 $x$축에만 접하는 원은 ㉡이고, 반지름은 $b$이다.",
+    "solutionSha256": "0327165873fb7bacd3cc0724eb622fd1505e743cc42ad8ce7341191f8c9aa78c",
+    "answerCardinality": {
+      "status": "AUTHOR_SELF_CHECK_ONLY_PENDING_R1_R2",
+      "count": 1,
+      "answer": "㉡, $b$"
+    },
+    "studentResponseForm": "단답형: 기호와 반지름 길이",
+    "formulaChoicesPreservedInOrder": [
+      "㉠",
+      "㉡",
+      "㉢",
+      "㉣"
+    ]
+  },
+  "physicalItemStatus": "HOLD",
+  "independentReviewStatus": "PENDING_CLEAN_Q18_ONLY_R1_THEN_R2",
+  "axisEvidence": {
+    "questionLayout": {
+      "status": "PENDING_INDEPENDENT_REVIEW",
+      "sourceTextExactParity": "NOT_APPLICABLE_ALIVE_REPLACEMENT",
+      "formulaChoiceOrder": "PRESERVED_㉠_㉡_㉢_㉣"
+    },
+    "solutionLayout": {
+      "status": "PENDING_INDEPENDENT_REVIEW",
+      "smallBoardContinuityStatus": "NOT_REVIEWED",
+      "solutionSha256": "0327165873fb7bacd3cc0724eb622fd1505e743cc42ad8ce7341191f8c9aa78c"
+    },
+    "meta": {
+      "status": "PENDING_TARGETED_R1_CONFIRMATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "standardUnitOrder": 11,
+      "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+      "disposition": "PRESERVE_CURRENT_SCOPE_FIELDS_NO_RECLASSIFICATION"
+    },
+    "difficulty": {
+      "status": "PRESERVED_PENDING_TARGETED_R1_CONFIRMATION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "visualSvg": {
+      "status": "NOT_REQUIRED_PENDING_R1_CONFIRMATION",
+      "disposition": "SOLUTION_SVG_NOT_REQUIRED",
+      "problemImage": null,
+      "reason": "The four coordinate-circle equations are fully classified by centers, radii, and axis-distance equations; a separate visual adds no required fact."
+    }
+  },
+  "candidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출/21_매산여고_1학기_기말_고1_기출.js",
+    "rawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+    "rawBufferGitBlobSha1": "PENDING_BIND_HELPER",
+    "questionCount": 22,
+    "changedQids": [
+      18
+    ],
+    "nonTargetMutationCount": 0,
+    "nonTargetInvariantRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출/evidence/ITEM_RECOVERY.q18.non-target-invariance.v2.json",
+    "studentOnlyRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출/evidence/ITEM_RECOVERY.q18.student-only.json"
+  },
+  "nextRequiredAction": "Fresh clean q18-only R1, then q18-only R2. Preserve original source text, answer key, solution, q18 holds/freezes, and all q1–q17/q19–q22 evidence."
+}

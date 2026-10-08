@@ -1,0 +1,13 @@
+import fs from 'node:fs';import vm from 'node:vm';import crypto from 'node:crypto';
+const tmp=process.argv[2],uid='21_매산여고_1학기_기말_고1_기출',p=tmp+'/'+uid+'.js';
+const sha=s=>crypto.createHash('sha256').update(s,'utf8').digest('hex');
+const load=()=>{const w={};vm.runInNewContext(fs.readFileSync(p,'utf8'),{window:w});return w;};
+const before=load(),beforeBy=new Map(before.questionBank.map(q=>[q.id,sha(JSON.stringify(q))]));
+const q=before.questionBank.find(x=>x.id===18);if(!q)throw Error('Q18_REQUIRED');
+q.content='[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에 접하고 $y$축에는 접하지 않는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이고 $a\\ne b$이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$';
+q.answer='㉡, $b$';
+q.solution='원의 중심이 $(h,k)$이고 반지름이 $r$인 원은\n$x$축에 접할 조건이 $|k|=r$이고,\n$y$축에 접할 조건이 $|h|=r$이다.\n\n㉠의 중심은 $(a,a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n㉡의 중심은 $(a,b)$, 반지름은 $b$이다.\n$b>0$이므로 $|b|=b$여서 $x$축에 접한다.\n$y$축에 접하려면 $|a|=b$, 즉 $a=b$여야 한다.\n조건 $a\\ne b$에 따라 $y$축에는 접하지 않는다.\n\n㉢의 중심은 $(a,b)$, 반지름은 $a$이다.\n$x$축에 접하려면 $b=a$여야 하므로 조건에 맞지 않는다.\n\n㉣의 중심은 $(a,-a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n따라서 $x$축에만 접하는 원은 ㉡이고, 반지름은 $b$이다.';
+fs.writeFileSync(p,`window.examTitle = ${JSON.stringify(uid)};\n\nwindow.questionBank = ${JSON.stringify(before.questionBank,null,2)};\n`);
+const after=load(),by=new Map(after.questionBank.map(x=>[x.id,sha(JSON.stringify(x))]));const diffs=[];for(const [id,h] of beforeBy){if(id===18)continue;if(by.get(id)!==h)diffs.push(id);}if(diffs.length)throw Error('NON_TARGET_QID_MUTATED:'+diffs.join(','));
+const report={schemaVersion:'JS_ARCHIVE_ITEM_RECOVERY_NON_TARGET_INVARIANCE_V1',examUid:uid,allowedQids:[18],nonTargetQids:after.questionBank.filter(x=>x.id!==18).map(x=>x.id),nonTargetParsedObjectSha256:Object.fromEntries(after.questionBank.filter(x=>x.id!==18).map(x=>[x.id,by.get(x.id)])),nonTargetMutationCount:diffs.length,originalQuestionCount:before.questionBank.length,currentQuestionCount:after.questionBank.length,changedQid:18,changedFields:['content','answer','solution'],preImageJsSha256:sha(fs.readFileSync(tmp+'/history/pre-item-recovery/'+uid+'/'+uid+'.js','utf8')),currentJsSha256:sha(fs.readFileSync(p,'utf8'))};
+fs.writeFileSync(tmp+'/evidence/ITEM_RECOVERY.q18.non-target-invariance.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({rawSha256:sha(fs.readFileSync(p,'utf8')),qCount:after.questionBank.length,nonTargetMutationCount:diffs.length,changedQid:18,changedFields:report.changedFields,answer:q.answer},null,2));

@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_CLOSURE_EVIDENCE_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "ITEM_RECOVERY",
+  "status": "Q18_RECOVERY_CLOSED_SCOPED_REVIEW_COMPLETE",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산여고_1학기_기말_고1_기출",
+  "allowedQids": [
+    18
+  ],
+  "sourceMode": "ALIVE_REPLACEMENT",
+  "reviewerIdentity": {
+    "role": "archive_create",
+    "reviewerId": "/root/create_maesangirls2021_five"
+  },
+  "rootDecision": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/ROOT.item-recovery.decision.json",
+    "sha256": "277cddb8d5a1877697b93a94cc0f3d1daa71dde1ec22a818bbf86ccd0ceecbf4",
+    "authority": "ROOT_DELEGATED",
+    "scopeQids": [
+      18
+    ]
+  },
+  "sourceSufficiency": {
+    "readOrder": "CURRENT_HELD_SOURCE_FIRST_THEN_ORIGINAL_PDF_AND_COMPANIONS_BEFORE_R1_R2_HOLD_REASON",
+    "assessedBeforeUpstreamHoldReasons": true,
+    "originalSourcePdfSha256": "f95fa60bc9be39355266ba6b2e5870bc6a205332d7075e5f4316c358dfc28585",
+    "page": 5,
+    "originalText": "[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에만 접하는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$",
+    "positiveParameterDomain": "a>0,b>0",
+    "counterexampleAt": "a=b>0",
+    "classification": {
+      "circle1": {
+        "center": "(a,a)",
+        "radius": "a",
+        "xAxis": true,
+        "yAxis": true
+      },
+      "circle2": {
+        "center": "(a,b)",
+        "radius": "b",
+        "xAxis": true,
+        "yAxis": "true when a=b"
+      },
+      "circle3": {
+        "center": "(a,b)",
+        "radius": "a",
+        "xAxis": "true when a=b",
+        "yAxis": true
+      },
+      "circle4": {
+        "center": "(a,-a)",
+        "radius": "a",
+        "xAxis": true,
+        "yAxis": true
+      }
+    },
+    "finding": "The source does not determine one x-axis-only answer over its full printed parameter domain. At a=b, all four options touch both axes; for a≠b, only ㉡ touches the x-axis without touching the y-axis.",
+    "officialMaterial": {
+      "answerKeyPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매여고1_1기말_정답.hwp",
+      "answerKeySha256": "59aaac9d21c3195e61bb7f96bc6ad50963c48a0fd3232a5148626feadea79427",
+      "answerKeySymbol": "㉡",
+      "officialSolutionPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_매여고1_1기말_해설.pdf",
+      "officialSolutionSha256": "673a5967e4b8dfe03a759311068525b6ce23ce18af9b441255b6789bfa6b6507",
+      "officialSolutionRadius": "b",
+      "note": "The companion’s intended answer supplies no missing a≠b condition; it cannot resolve the source counterexample."
+    }
+  },
+  "upstreamHold": {
+    "r1": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R1.evidence.final4.json",
+      "sha256": "706979c78ca4c9d68b9ad9a1dc45a472a4db43fb3dbd0ed21e2c00da81eb7ee3",
+      "verdict": "R1_COMPLETE_HOLD_CARRIED_TO_R2",
+      "itemStatus": "HOLD",
+      "issueCodes": [
+        "SOURCE_STUDENT_ITEM_AMBIGUITY"
+      ],
+      "decisiveStep": "OPEN/HOLD: if a=b, all four displayed circles touch both axes; if a≠b, ㉡ alone is x-axis-only."
+    },
+    "r2": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R2.evidence.final.json",
+      "sha256": "9597571eb27084eddf11b84504bee871cd08092e331f23aae314f2293117399e",
+      "verdict": "SOURCE_HOLD",
+      "itemStatus": "HOLD"
+    }
+  },
+  "replacement": {
+    "kind": "DIRECT_AUTHORING_REPLACEMENT",
+    "content": "[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에 접하고 $y$축에는 접하지 않는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이고 $a\\ne b$이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$",
+    "contentSha256": "4a9b5ddc5a4612ced564de7c2458132a90d179c8c4b5a15e0e7d68d5b8ca74f3",
+    "answer": "㉡, $b$",
+    "solution": "원의 중심이 $(h,k)$이고 반지름이 $r$인 원은\n$x$축에 접할 조건이 $|k|=r$이고,\n$y$축에 접할 조건이 $|h|=r$이다.\n\n㉠의 중심은 $(a,a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n㉡의 중심은 $(a,b)$, 반지름은 $b$이다.\n$b>0$이므로 $|b|=b$여서 $x$축에 접한다.\n$y$축에 접하려면 $|a|=b$, 즉 $a=b$여야 한다.\n조건 $a\\ne b$에 따라 $y$축에는 접하지 않는다.\n\n㉢의 중심은 $(a,b)$, 반지름은 $a$이다.\n$x$축에 접하려면 $b=a$여야 하므로 조건에 맞지 않는다.\n\n㉣의 중심은 $(a,-a)$, 반지름은 $a$이다.\n두 축까지 거리가 모두 $a$이므로 두 축에 모두 접한다.\n\n따라서 $x$축에만 접하는 원은 ㉡이고, 반지름은 $b$이다.",
+    "solutionSha256": "0327165873fb7bacd3cc0724eb622fd1505e743cc42ad8ce7341191f8c9aa78c",
+    "responseForm": "Short answer: symbol and radius",
+    "optionsOrder": [
+      "㉠",
+      "㉡",
+      "㉢",
+      "㉣"
+    ],
+    "explicitAddedConstraint": "a≠b",
+    "exactReason": "The original source allows a=b, making all four formulas tangent to both axes; the added constraint is new authored replacement content, not represented as source transcription.",
+    "authorSolve": {
+      "status": "AUTHOR_SELF_CHECK_ONLY",
+      "answerCardinality": 1,
+      "answer": "㉡, b",
+      "derivation": "For ㉠ and ㉣ both center-coordinate magnitudes equal r. For ㉡, b>0 gives x-axis tangency and a≠b blocks y-axis tangency. For ㉢, x-axis tangency requires b=a, which is excluded."
+    }
+  },
+  "sourcePreservation": {
+    "originalSourceTextFreezeRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/SOURCE_TEXT_FREEZE.json",
+    "originalQuestionContent": "[주관식1 (단답형)] 다음 원의 방정식 중 $x$축에만 접하는 원을 찾아 그 기호를 쓰고, 그 반지름의 길이를 구하여라. (단, $a,b$는 모두 양수이다.) [4점]\n㉠ $(x-a)^2+(y-a)^2=a^2$  ㉡ $(x-a)^2+(y-b)^2=b^2$\n㉢ $(x-a)^2+(y-b)^2=a^2$  ㉣ $(x-a)^2+(y+a)^2=a^2$",
+    "originalSourceTextRemainsUnchanged": true,
+    "originalAnswerKeyAndSolutionPreserved": true,
+    "originalR1R2EvidencePreserved": true
+  },
+  "currentMetaAndDifficulty": {
+    "status": "PRESERVE_CURRENT_FIELDS_NO_RECLASSIFICATION",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 11,
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "lookupRef": "Current H15-SA-11 master order 11 and active circle-axis-tangency mapping retained."
+  },
+  "visual": {
+    "solutionSvg": "NOT_REQUIRED",
+    "problemImage": null,
+    "reason": "All four circle forms are classified by center, radius and axis-distance equations; no additional visual fact is needed."
+  },
+  "reviewStatus": {
+    "physicalItemStatus": "CLEAR",
+    "r1Q18": "PASS",
+    "r2Q18": "MATCH",
+    "scopeQids": [
+      18
+    ],
+    "fullExamR1Pass": false,
+    "fullExamR2Pass": false,
+    "renderPassClaimed": false
+  },
+  "studentOnlyPacket": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.student-only.json",
+    "sha256": "f3cc92b682f20a36e5546f2a9b42ded856a556d81aa4fc6b35b8e94dbe2c07f9",
+    "scopeQids": [
+      18
+    ],
+    "answerOrSolutionIncluded": false
+  },
+  "nonTargetInvariant": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/ITEM_RECOVERY.q18.non-target-invariance.json",
+    "sha256": "4978288de96570ffa2b82a98a99ed332bb0acda669e7ebcccbd09f71d473bf43",
+    "nonTargetQidCount": 21,
+    "nonTargetMutationCount": 0
+  },
+  "candidateArtifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출/21_매산여고_1학기_기말_고1_기출.js",
+    "rawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+    "rawBufferGitBlobSha1": "PENDING_BIND",
+    "questionCount": 22,
+    "changedQids": [
+      18
+    ],
+    "changedFields": [
+      "itemStatus"
+    ]
+  },
+  "nextRequiredAction": "Original R1/R2 owners compose current full-22 evidence; reuse unchanged q1–q17/q19–q22 proofs. No additional semantic review is claimed here.",
+  "artifactSha": "9ccc7075e8938c7a28b7fa9138703a14d78ada6f",
+  "artifactRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+  "technicalHashes": {
+    "rawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+    "validatorRawBufferBlobSha1": "9ccc7075e8938c7a28b7fa9138703a14d78ada6f",
+    "gitCleanFilterBlobSha1": null
+  },
+  "closureAuthority": "ROOT_DELEGATED",
+  "physicalItemStatus": "CLEAR",
+  "independentReviewStatus": "Q18_R1_PASS_R2_MATCH",
+  "closure": {
+    "qids": [
+      18
+    ],
+    "scopedHoldCount": 0,
+    "changedQids": [
+      18
+    ],
+    "changedFields": [
+      "itemStatus"
+    ],
+    "changeReport": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출/evidence/ITEM_RECOVERY.q18.hold-clear-change.json",
+      "sha256": "c55324b5d657cf08c82b0508d09af0e03f87bf98e76cf93492b2e180e5d7f66f"
+    },
+    "r1": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R1.q18fresh.scoped-review-receipt.json",
+      "sha256": "0597c93b593d86372d87bf65fdf8a8a08ecebfb7c37f15364ac456512fb8130d",
+      "reviewerIdentity": {
+        "role": "archive_r1",
+        "reviewerId": "/root/r1_maesangirls2021_q18fresh",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "high"
+      },
+      "scopeQids": [
+        18
+      ],
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "verdict": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "findings": "The prompt, condition (단, a,b>0 and a≠b), score, and four labeled complete circle equations remain in source order. A newline separates prompt from options; the compact option row keeps labels attached to complete equations. No text or choices were changed. Static source review only; no viewport/render claim.",
+          "dependenciesRead": [
+            18
+          ]
+        },
+        "SOLUTION_LAYOUT": {
+          "verdict": "PASS",
+          "disposition": "SOLUTION_KEEP",
+          "findings": "Stored solution states the center/radius tangency tests, checks all four options, applies b>0 and a≠b at the relevant steps, and separates each option and the conclusion with line breaks. The decisive reasoning and final radius are explicit; no compressed calculation or missing condition application found.",
+          "dependenciesRead": [
+            18
+          ]
+        },
+        "META": {
+          "verdict": "PASS",
+          "findings": "Read q18 current stored fields: 수학(상), H15-SA-11 / 원의 방정식, H15-SA-11-CIRCLE_EQUATION / 원의 방정식, PT_CIRCLE_EQUATION, TM_CIRCLE_AXIS_TANGENT, difficultyBucket 2, difficultyConfidence high, difficultyBoundaryFlag NONE, legacyLevelCompatibility NORMAL. Course/unit and problem/template keys match the circle-equation task; no semantic mismatch found.",
+          "dependenciesRead": [
+            18
+          ]
+        },
+        "VISUAL_SVG": {
+          "verdict": "VISUAL_EXEMPT",
+          "findings": "The q18 student row has no referenced problem assets and disclosed solutionAssets is empty. The task is fully specified by the circle equations and axis-tangency conditions; a diagram is not needed to determine or explain the answer. No SVG asset exists or was required; no asset preview was applicable.",
+          "dependenciesRead": [
+            18
+          ]
+        }
+      },
+      "stagePassClaimed": false
+    },
+    "r2": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008/R2.q18fresh.scoped-comparison-receipt.json",
+      "sha256": "afd17c3694fbee827fd3c12dc4902f038e3c5db992ecf4842c710097579a5d96",
+      "reviewerIdentity": {
+        "role": "archive_r2",
+        "reviewerId": "/root/r2_maesangirls2021_q18fresh"
+      },
+      "scopeQids": [
+        18
+      ],
+      "qidComparisons": [
+        {
+          "qid": 18,
+          "disposition": "MATCH",
+          "independentAnswer": "㉡, 반지름의 길이 b",
+          "storedAnswer": "㉡, $b$",
+          "calculationOrEncodingAdjudication": "NONE"
+        }
+      ],
+      "issueCount": 0,
+      "stagePassClaimed": false
+    },
+    "holdClearRationale": "Fresh q18-only R1 passed QUESTION_LAYOUT/SOLUTION_LAYOUT/META with VISUAL_EXEMPT; fresh q18-only R2 independently MATCHed one answer. The only post-review source mutation removes administrative itemStatus=HOLD. The checked proof confirms q18 content/choices/answer/solution/Meta are byte-identical and q1–q17/q19–q22 parsed objects are unchanged.",
+    "studentAndProofBinding": {
+      "r1R2InputRawSha256": "1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9",
+      "r1R2InputBlobSha1": "9ccc7075e8938c7a28b7fa9138703a14d78ada6f",
+      "postClearRawSha256": "e85636985754fda04a6fecc0aaa842d22417aee4a33402cda7e3fbe5b2d38bcd",
+      "studentFieldsUnchanged": true,
+      "answerSolutionMetaUnchanged": true,
+      "originalR1R2FreezeFilesPreserved": true
+    }
+  }
+}
