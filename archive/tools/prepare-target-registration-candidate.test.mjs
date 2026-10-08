@@ -57,7 +57,7 @@ test('derives target identity with the canonical UID and source fingerprint cont
 test('copies embedded metadata values, preserves nullable projection, and marks empty advanced fields pending', () => {
   const sourceFile = 'original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js';
   const bank = [{
-    id: 1, standardCourse: '기하와 벡터', standardUnitKey: 'H15-GV-01', standardUnit: '포물선',
+    id: 1, standardCourse: '기하와 벡터', standardUnitKey: 'H15-GV-01', standardUnit: '포물선', standardUnitOrder: 2,
     subUnitKey: null, subUnit: '초점과 준선', problemTypeKey: null, templateKey: null,
     difficultyBucket: 2, difficultyConfidence: 'medium', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL',
   }];
@@ -65,6 +65,7 @@ test('copies embedded metadata values, preserves nullable projection, and marks 
   const rows = makeTargetMetadataRows({ sourceFile, bank, identityRows: identity, r1EvidencePath: 'archive/analysis/example/R1.stage-evidence.json' });
   assert.equal(rows[0].subUnitKey, null);
   assert.equal(rows[0].subUnit, '초점과 준선');
+  assert.equal(rows[0].standardUnitOrder, 2);
   assert.equal(rows[0].problemTypeKey, null);
   assert.equal(rows[0].templateKey, null);
   assert.equal(rows[0].fieldStatus.subUnit, 'approved_source');

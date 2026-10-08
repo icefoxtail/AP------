@@ -4,8 +4,9 @@ import {fileURLToPath} from 'node:url';
 import {readExam,sha256,physical,writeFresh,inside,artifactSnapshot,cleanFilterHash} from './archive-codex-artifact-io.mjs';
 import {solutionSha256,QUALITY_CONTRACT_V2} from './archive-stage-validator-artifact-v2.mjs';
 import {consumeValidationPass,buildStageState} from './archive-stage-runtime-v2.mjs';
+import {normalizeStudentBundle,STUDENT_FIELDS,studentAssetRefs,disclosePostfreeze} from './archive-student-bundle.mjs';
 
-export function bindEvidence({sourceFile,evidence,reviewedSourceRawSha256,root,productionPath}){
+export function bindEvidence({sourceFile,evidence,reviewedSourceRawSha256,root,productionPath,assetRoot,reviewedCurrentAssets=[]}){
   const exam=readExam(sourceFile),out=structuredClone(evidence);
   if(out.qualityContractVersion!==QUALITY_CONTRACT_V2||out.executionLine!=='CODEX')throw Error('CODEX_CURRENT_EVIDENCE_REQUIRED');
   if(out.artifactSha!==exam.rawBufferGitBlobSha1&&out.artifactSha!==exam.rawSha256&&reviewedSourceRawSha256!==exam.rawSha256)throw Error('CURRENT_SOURCE_REVIEW_AUTHORIZATION_REQUIRED');
@@ -15,19 +16,22 @@ export function bindEvidence({sourceFile,evidence,reviewedSourceRawSha256,root,p
   const byId=new Map(exam.questions.map(q=>[Number(q.id),q])),missingReviewedFields=[];
   for(const row of out.rows||[]){const q=byId.get(Number(row.qid));if(!q)throw Error('EVIDENCE_UNKNOWN_QID:'+row.qid);row.solutionSha256=solutionSha256(q.solution);
     if(['CREATE','R1'].includes(out.stage)&&row.smallBoardContinuityStatus===undefined){const status=row.solutionLayout?.smallBoardContinuityStatus??row.axisEvidence?.SOLUTION_LAYOUT?.smallBoardContinuityStatus;if(status!==undefined)row.smallBoardContinuityStatus=status;else missingReviewedFields.push({qid:row.qid,field:'smallBoardContinuityStatus'});}}
-  return {evidence:out,missingReviewedFields,semanticVerdictCreated:false};
+  const assetBindingChanges=[];
+  if(out.currentAssetBindings!==undefined){if(!assetRoot||!Array.isArray(out.currentAssetBindings))throw Error('DECLARED_CURRENT_ASSET_BINDING_SCHEMA_REQUIRED');for(const binding of out.currentAssetBindings){if(binding.kind!=='CURRENT_ASSET'||!binding.ref?.startsWith('assets/images/'))throw Error('HISTORICAL_OR_UNKNOWN_BINDING_NOT_REWRITTEN');const current=physical(inside(assetRoot,binding.ref));if(binding.sha256!==current.sha256){if(!reviewedCurrentAssets.some(r=>r.ref===binding.ref&&r.sha256===current.sha256&&r.reviewed===true))throw Error('CHANGED_ASSET_REVIEW_AUTHORIZATION_REQUIRED:'+binding.ref);assetBindingChanges.push({ref:binding.ref,previousSha256:binding.sha256,currentSha256:current.sha256});binding.sha256=current.sha256;}}}
+  if(assetBindingChanges.length)out.assetBindingCorrectionProvenance=assetBindingChanges;
+  return {evidence:out,missingReviewedFields,assetBindingChanges,semanticVerdictCreated:false};
 }
-const studentFields=new Set(['id','sourceQuestionNo','displayNo','content','question','choices','image','imageSize','choiceColumns','layoutTag','wide','preserveChoicePrefixes']);
-export function freezeAnswers({studentBundleFile,answers,assetReads=[],stage,reviewerIdentity,output}){
+const studentFields=STUDENT_FIELDS;
+export function freezeAnswers({studentBundleFile,answers,assetReads=[],stage,reviewerIdentity,expectedSourceRawSha256,output}){
   if(!['R1','R2'].includes(stage)||!reviewerIdentity?.reviewerId||reviewerIdentity.role!=='archive_'+stage.toLowerCase())throw Error('BLIND_STAGE_REVIEWER_REQUIRED');
-  const bundle=JSON.parse(fs.readFileSync(studentBundleFile));if(!/^[a-f0-9]{64}$/.test(bundle.sourceRawSha256||'')||!Array.isArray(bundle.rows)||!bundle.rows.length)throw Error('CURRENT_STUDENT_BUNDLE_REQUIRED');
+  const bundle=normalizeStudentBundle(JSON.parse(fs.readFileSync(studentBundleFile)),{inputFile:studentBundleFile,expectedSourceRawSha256});
   const qids=bundle.rows.map(r=>Number(r.qid));if(new Set(qids).size!==qids.length||qids.some(q=>!Number.isInteger(q)))throw Error('BUNDLE_QID_INVALID');
   if(!Array.isArray(answers)||answers.length!==qids.length||new Set(answers.map(r=>r.qid)).size!==qids.length||answers.some(r=>!qids.includes(r.qid)||r.independentAnswer===undefined||typeof r.reasoning!=='string'||!r.reasoning.trim()))throw Error('FULL_INDEPENDENT_FREEZE_REQUIRED');
   for(const row of bundle.rows){if(Object.keys(row.student||{}).some(k=>!studentFields.has(k)))throw Error('STUDENT_BUNDLE_FORBIDDEN_FIELD');
-    const required=new Set(row.student?.image?[row.student.image]:[]);for(const text of [row.student?.content,row.student?.question,...(row.student?.choices||[])])if(typeof text==='string')for(const m of text.matchAll(/<img\b[^>]*src\s*=\s*["']([^"']+)/gi))if(!/^(?:data:|#)/.test(m[1]))required.add(m[1]);
+    const required=new Set(studentAssetRefs(row.student));
     for(const ref of required)if(!(row.assets||[]).some(a=>a.ref===ref))throw Error('STUDENT_ASSET_BUNDLE_INCOMPLETE:'+ref);
     for(const a of row.assets||[]){if(sha256(fs.readFileSync(a.path))!==a.sha256)throw Error('STUDENT_ASSET_SHA_CHANGED:'+a.ref);if(!assetReads.some(r=>r.ref===a.ref&&r.sha256===a.sha256&&r.opened===true))throw Error('ACTUAL_ASSET_READ_ACK_REQUIRED:'+a.ref);}}
-  const value={schemaVersion:'JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1',stage,reviewerIdentity,frozenAt:new Date().toISOString(),sourceRawSha256:bundle.sourceRawSha256,studentBundle:physical(studentBundleFile),rows:structuredClone(answers),assetReads};
+  const value={schemaVersion:'JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1',stage,reviewerIdentity,frozenAt:new Date().toISOString(),sourceRawSha256:bundle.sourceRawSha256,studentBundle:physical(studentBundleFile),bundleAdapterProvenance:bundle.adapterProvenance,studentQidOrder:bundle.qids,rows:structuredClone(answers),assetReads};
   return {freeze:value,ref:writeFresh(output,value)};
 }
 export function recordAdjudication({freezeFile,corrections,output}){
@@ -57,11 +61,12 @@ export function consumeStableCompletion({root,eventFile,expectedEventSha256,stat
   return {verified,consumed,nextRosterTarget:event.nextRosterTarget,freedSlot:event.freedSlot};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  const [command,...argv]=process.argv.slice(2),a={},proof=[];for(let i=0;i<argv.length;i++){const k=argv[i];if(!['--root','--exam','--evidence','--output','--reviewed-source-sha','--production-path','--bundle','--answers','--asset-reads','--stage','--reviewer','--freeze','--corrections','--report','--asset-root','--next-roster','--proof','--event','--event-sha','--state'].includes(k))throw Error('UNKNOWN_ARGUMENT:'+k);if(k==='--proof')proof.push(argv[++i]);else a[k.slice(2)]=argv[++i];}
+  const [command,...argv]=process.argv.slice(2),a={},proof=[];for(let i=0;i<argv.length;i++){const k=argv[i];if(!['--root','--exam','--evidence','--output','--reviewed-source-sha','--expected-source-sha','--production-path','--bundle','--answers','--asset-reads','--reviewed-assets','--stage','--reviewer','--freeze','--freeze-sha','--qids','--corrections','--report','--asset-root','--next-roster','--proof','--event','--event-sha','--state'].includes(k))throw Error('UNKNOWN_ARGUMENT:'+k);if(k==='--proof')proof.push(argv[++i]);else a[k.slice(2)]=argv[++i];}
   const root=path.resolve(a.root||'.'),resolve=p=>inside(root,p),json=p=>JSON.parse(fs.readFileSync(resolve(p)));let result;
-  if(command==='bind'){const bound=bindEvidence({sourceFile:resolve(a.exam),evidence:json(a.evidence),reviewedSourceRawSha256:a['reviewed-source-sha'],root,productionPath:a['production-path']});result={ref:writeFresh(resolve(a.output),bound.evidence),missingReviewedFields:bound.missingReviewedFields};}
-  else if(command==='freeze')result=freezeAnswers({studentBundleFile:resolve(a.bundle),answers:json(a.answers),assetReads:a['asset-reads']?json(a['asset-reads']):[],stage:a.stage,reviewerIdentity:{role:'archive_'+String(a.stage).toLowerCase(),reviewerId:a.reviewer},output:resolve(a.output)});
+  if(command==='bind'){const bound=bindEvidence({sourceFile:resolve(a.exam),evidence:json(a.evidence),reviewedSourceRawSha256:a['reviewed-source-sha'],root,productionPath:a['production-path'],assetRoot:a['asset-root']?resolve(a['asset-root']):undefined,reviewedCurrentAssets:a['reviewed-assets']?json(a['reviewed-assets']):[]});result={ref:writeFresh(resolve(a.output),bound.evidence),missingReviewedFields:bound.missingReviewedFields,assetBindingChanges:bound.assetBindingChanges};}
+  else if(command==='freeze'){if(!a['expected-source-sha'])throw Error('ASSIGNMENT_CURRENT_SOURCE_SHA_REQUIRED');result=freezeAnswers({studentBundleFile:resolve(a.bundle),answers:json(a.answers),assetReads:a['asset-reads']?json(a['asset-reads']):[],stage:a.stage,reviewerIdentity:{role:'archive_'+String(a.stage).toLowerCase(),reviewerId:a.reviewer},expectedSourceRawSha256:a['expected-source-sha'],output:resolve(a.output)});}
   else if(command==='adjudicate')result=recordAdjudication({freezeFile:resolve(a.freeze),corrections:json(a.corrections),output:resolve(a.output)});
+  else if(command==='postfreeze')result=disclosePostfreeze({sourceFile:resolve(a.exam),studentBundleFile:resolve(a.bundle),freezeFile:resolve(a.freeze),freezeSha256:a['freeze-sha'],qids:a.qids?a.qids.split(',').map(Number):undefined,output:resolve(a.output)});
   else if(command==='seal')result=sealCompletion({root,sourceFile:resolve(a.exam),evidenceFile:resolve(a.evidence),reportFile:resolve(a.report),assetRoot:resolve(a['asset-root']||'archive'),reviewerIdentity:{role:'archive_'+String(a.stage).toLowerCase(),reviewerId:a.reviewer},nextRosterTarget:a['next-roster'],extraFiles:proof.map(resolve),output:resolve(a.output)});
   else if(command==='verify-complete')result=verifyCompletion({root,eventFile:resolve(a.event),expectedEventSha256:a['event-sha']});
   else if(command==='intake'){const consumed=consumeStableCompletion({root,eventFile:resolve(a.event),expectedEventSha256:a['event-sha'],state:json(a.state)});result=a.output?{ref:writeFresh(resolve(a.output),consumed)}:consumed;}

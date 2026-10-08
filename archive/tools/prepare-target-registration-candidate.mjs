@@ -239,6 +239,7 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
       standardCourse: sourceValue(question, 'standardCourse', sourceValue(question, 'course')),
       standardUnitKey: sourceValue(question, 'standardUnitKey'),
       standardUnit: sourceValue(question, 'standardUnit'),
+      standardUnitOrder: sourceValue(question, 'standardUnitOrder'),
       subUnitKey: sourceValue(question, 'subUnitKey', null),
       subUnit: sourceValue(question, 'subUnit'),
       conceptClusterKey: sourceValue(question, 'conceptClusterKey', null),
@@ -260,7 +261,7 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
       metadataRevision: sourceValue(question, 'metadataRevision', 'archive-registration-target-source-projection-v1'),
       approvalEvidence: [...new Set([...(Array.isArray(question.approvalEvidence) ? question.approvalEvidence.filter(nonempty) : []), r1EvidencePath])],
     };
-    for (const optional of ['curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability', 'defaultSelectable', 'reviewStatus']) {
+    for (const optional of ['subUnitConfidence', 'subUnitClassificationDepth', 'conceptClusterKey', 'curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4', 'secondaryConceptKeys', 'curriculumApplicability', 'defaultSelectable', 'reviewStatus']) {
       if (hasOwn(question, optional)) row[optional] = jsonClone(question[optional]);
     }
     return row;
