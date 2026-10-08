@@ -1,5 +1,12 @@
 # ALIVE LITE — 전체 스캔 선행·적응형 배치·2채팅 생산 검수 계약 v1
 
+## CURRENT — 3×3 목적형 제작 보강 (2026-10-09)
+- B(Blueprint 설계) 전에 원본별 A 반복 숙달 / B 사고 확장 / C 실전 평가 목적과 실제 학생의 사고 경험을 선택한다. 각 목적에서 최대 3개(원본당 최대 9개)는 구성의 상한이며 필수 생산량이 아니다.
+- A는 원본 사고·풀이를 유지한 유효 수치변형도 교육적으로 가치 있다. 단순 수치변형은 고유 Blueprint가 아니라 해당 유형의 별도 instance로 집계한다. 선택한 ALIVE MODE와 STRICT_VARIANT 증거 요건은 그대로 준수한다.
+- B는 새로운 판단·발문 목표·풀이 진입점이 필요하고, C는 교육과정 내 실전 변별력과 자연스러운 조건 종합을 요구한다. A/B/C 목적 태그와 ALIVE 런타임 proof class는 별개다.
+- B와 C에서 RPM L4 명칭에 특정 풀이가 없다는 사실만으로 새 유형을 인정하지 않는다. 원본과 최종 발문의 질문 대상·결정적 단계·조건을 비교한다.
+- C 완성 시 한국어 상세 해설, 개념 용어, 발문과 선택지의 답 형식 일치, 오개념에 기초한 5지 오답, 필요한 시각자료를 확인한다. 최종 UID와 기존 Blueprint 수/수치 instance 수는 각각 기록한다.
+
 ## CURRENT ADDENDUM — 두 번째 채팅의 최종 종료 경계 (2026-10-08)
 - 제2채팅 REVIEW+MAIN은 독립 수학/보기/Meta 검수 및 핀포인트 수정 이후 **Archive 2.0 Generated Bank Consumer DB 물리 등록과 학생용 검색·불러오기·선택 검증**까지 반드시 직접 수행한다. 완료 조건은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`가 정한다.
 - 정상 리뷰 PASS / main 브랜치에 shard 저장만으로 최종 완료가 아니다. 기존 original qid_v1 consumer index는 ALITE UID용으로 직접 덮어쓰지 않는다. 미지원 adapter는 최소 범위 기술 구현 및 검증 후 완료; 불가 시 DB 미등록 기술 부채를 별도로 남긴다.
