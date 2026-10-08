@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_ANSWER_ENCODING_PATCH_PROPOSAL_V1",
+  "status": "PROPOSAL_ONLY_WAITING_R1_CONFIRMATION",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "reviewerId": "r3_05",
+  "sourcePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\26_효천고_1학기_중간_고2_대수.js",
+  "sourceRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+  "sourceGitBlobSha1": "e608fcfbb88f9536edfdbf1f0ea6540b7ff0affd",
+  "capture01MachineReportSha256": "865c1f8c15ceadefd865a2124438d54872e0a1e07f0840ca5e8a318cce5abe2a",
+  "capture01FindingReviewSha256": "6bf3d395bb3ec377d8f5854e9fd847a83c0793a3953a40aa2ba7bebb4d92a256",
+  "openedR3ScopeQids": [
+    13,
+    17,
+    19,
+    20,
+    22,
+    23
+  ],
+  "proposedChanges": [
+    {
+      "qid": 19,
+      "field": "answer",
+      "before": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+      "after": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
+      "beforeUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+      "afterUtf8Sha256": "61f6155bca431b200469ed4033c25b807fe02588e5839490e91c5170fa23b02e",
+      "unchangedInnerTex": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+      "innerTexUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+      "semanticEdit": false,
+      "studentField": false,
+      "choicesChanged": false,
+      "solutionChanged": false,
+      "fieldLocation": {
+        "container": "window.questionBank",
+        "qid": 19,
+        "field": "answer",
+        "line": 788
+      }
+    },
+    {
+      "qid": 20,
+      "field": "answer",
+      "before": "\\frac12<x<\\frac{17}2",
+      "after": "$\\frac12<x<\\frac{17}2$",
+      "beforeUtf8Sha256": "1b6b2f8dbde4aab82eb270000c6dd146aa2c04b38433b5b17ef6e9cecf463d6a",
+      "afterUtf8Sha256": "411a9efda0762b3814d953138ad4b3155d55e401f5850605e452d5c5a4ac0b4e",
+      "unchangedInnerTex": "\\frac12<x<\\frac{17}2",
+      "innerTexUtf8Sha256": "1b6b2f8dbde4aab82eb270000c6dd146aa2c04b38433b5b17ef6e9cecf463d6a",
+      "semanticEdit": false,
+      "studentField": false,
+      "choicesChanged": false,
+      "solutionChanged": false,
+      "fieldLocation": {
+        "container": "window.questionBank",
+        "qid": 20,
+        "field": "answer",
+        "line": 824
+      }
+    },
+    {
+      "qid": 22,
+      "field": "answer",
+      "before": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+      "after": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
+      "beforeUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+      "afterUtf8Sha256": "61f6155bca431b200469ed4033c25b807fe02588e5839490e91c5170fa23b02e",
+      "unchangedInnerTex": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+      "innerTexUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+      "semanticEdit": false,
+      "studentField": false,
+      "choicesChanged": false,
+      "solutionChanged": false,
+      "fieldLocation": {
+        "container": "window.questionBank",
+        "qid": 22,
+        "field": "answer",
+        "line": 896
+      }
+    }
+  ],
+  "guardrails": {
+    "applied": false,
+    "requiresR1SameSessionConfirmation": true,
+    "requiresRootSingleWriterAuthorization": true,
+    "studentFieldsUnchanged": true,
+    "choicesUnchanged": true,
+    "solutionTextUnchanged": true,
+    "answerInnerTexUnchanged": true
+  },
+  "captureLoci": [
+    {
+      "qids": [
+        19,
+        20,
+        22
+      ],
+      "caseIds": [
+        "sol/desktop",
+        "sol/mobile",
+        "ans/desktop",
+        "ans/mobile"
+      ],
+      "observation": "Capture-01 solution answer header and answer table visibly expose bare TeX commands in the answer field; exam body itself remains typeset."
+    }
+  ],
+  "requiredNextAction": "Await same-session R1 owner confirmation that these are bare math answers and inline delimiter placement is canonical. Do not edit JS until ROOT explicitly authorizes application."
+}

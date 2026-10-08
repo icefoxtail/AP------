@@ -1,0 +1,35 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","gitBlobSha":"eb8776d19989f8f4219f4b80db0daf72310109cd"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":7,"solutionSha256":"sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionExcerpt":"원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.","observation":"실제 solution의 중심→평행이동→원점대칭→완성된 원 식 흐름을 판독했다. 연결된 q7 solution SVG raster도 열어 중심 C0,C1,C2 이동을 비교했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":8,"solutionSha256":"sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b","solutionExcerpt":"먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.","observation":"실제 solution에서 그래프 부호→계수 부호→새 직선의 기울기·절편 순서를 판독했다. q8 source graph와 연결 q8 solution diagram을 실제로 열어 부호 설명의 시각 연결을 확인했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":1,"solutionSha256":"sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","solutionExcerpt":"두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.","observation":"실제 거리 풀이에서 두 좌표 차를 분리한 뒤 제곱합과 길이를 연결하는 판서 순서를 확인했다."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":10,"solutionSha256":"sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c","solutionExcerpt":"주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.","observation":"실제 solution에서 조건→포함관계→선택지별 판단→반례 경계 순서를 판독했다. q10 solution SVG도 실제로 열어 B⊆A 및 여집합 방향 반전 시각을 확인했다."}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","gitBlobSha":"f06387b8bbb5adce4244fbb576c0bd500ab282fa","observation":"README 회귀 사례와 q7 bad SVG를 실제 판독했다. 라벨 텍스트가 곡선의 실제 좌표·점 토폴로지를 보증하지 않으며, 세 점의 배치와 AC:CB=4:1 주장이 실제 primitive와 맞지 않는 것을 raster에서 확인했다."}
+    ],
+    "qualityCompareCount": "NOT_RUN_PREFLIGHT_ONLY",
+    "preflightAt": "2026-10-08T23:58:17+09:00"
+  },
+  "visualWitnesses": [
+    {"role":"TARGET_STUDENT_SOURCE_GRAPH","path":".tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/assets/images/26_효천고_1학기_중간_고2_대수/q23.png","sha256":"519084d53b17eb4da2c8a90ada32354e787394c5781af5f63e4f88d7d5cdb933","opened":true,"observation":"Original student graph is present and legible: y=3^x, y=log_3x, descending slope -1 line, A/B, horizontal through B, C, axes and O."},
+    {"role":"GOLDEN_MAESAN_Q8_SOURCE_IMAGE","path":"archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8.png","sha256":"adf33b45581c72f08efb4ea6c3b0d9f2a141b9b66b6384bf6507ccf64c62b999","opened":true,"observation":"Rising line crosses the y-axis below the origin; sign conditions read from the actual pixels."},
+    {"role":"GOLDEN_MAESAN_Q8_SOLUTION_SVG","path":"archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg","sha256":"8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75","rasterPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/golden-maesan-q8-solution.png","rasterSha256":"da377075cd1f41d4d4ce5af0817df3291932674e879a6198e5e0065dc69a7837","opened":true,"observation":"Diagram connects original graph sign facts to coefficient signs and the final line-quadrant conclusion."},
+    {"role":"GOLDEN_MAESAN_Q7_SOLUTION_SVG","path":"archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg","sha256":"c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8","rasterPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/golden-maesan-q7-solution.png","rasterSha256":"ef29b115b9fd61842e33ca2af352cce367c0d5f3cd1ea9d46fb8c3ebcbf886fa","opened":true,"observation":"Actual SVG and raster show successive translated/reflected circle centers and the final circle."},
+    {"role":"GOLDEN_HYOCHYEON_Q10_SOLUTION_SVG","path":"archive/assets/images/25_효천고_2학기_중간_고1_기출/q10-solution.svg","sha256":"aaf0a79f61ef32e568ae299605519096a5a92674aa6f13ef1c03d15e75e6c78c","rasterPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/golden-hyocheon-q10-solution.png","rasterSha256":"e3fad74de1b6f6cd2b62d97bdf660a1ae16d3245586314896110124bab9a0960","opened":true,"observation":"Diagram explicitly shows B inside A and states the complement inclusion reversal; some subscripts require the original SVG text/engine for full typography."},
+    {"role":"NEGATIVE_BOKSEONG_Q7_BAD_SVG","path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg","sha256":"240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4","rasterPath":"archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/negative-bokseong-q7.png","rasterSha256":"c86fa96e42b19aa6e2b996b23c00e8d3d8ca5e09483bad2c21c98684fd6c4fac","opened":true,"observation":"Actual curve is not verified by matching its labeled coordinates; do not trust labels without recomputing from primitives."}
+  ]
+}
+

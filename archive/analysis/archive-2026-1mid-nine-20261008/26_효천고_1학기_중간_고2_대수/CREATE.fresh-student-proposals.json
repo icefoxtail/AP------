@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FRESH_STUDENT_ONLY_PROPOSALS_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "createdAt": "2026-10-09T00:01:42+09:00",
+  "sourceSha256": "03bfbf534577b98f121c6960f64d16a137c5d959e3b3651fcf74f8f3d1a743f5",
+  "proposalBasis": "Original source crops and corrected student-only wording; no previous answer, solution, level, difficulty bucket, prior rationale, or Meta field values used.",
+  "oldLevelOrBucketFieldsRead": false,
+  "q13": {
+    "candidateContent": "자연수 $n$에 대하여 $\\frac{2\\log_2 n+1}{3}$의 값이 6이하의 자연수가 되도록 하는 모든 $n$의 값의 합은? [4.7점]",
+    "choices": [
+      "$136$",
+      "$141$",
+      "$146$",
+      "$151$",
+      "$156$"
+    ],
+    "sourceRepair": {
+      "originalValue": "60이하",
+      "repairedValue": "6이하",
+      "method": "AUDITED_REPAIR / AUDITED_SOURCE_REPAIR",
+      "repairReason": "One trailing zero makes the printed answer set incompatible. The single-character deletion yields exactly one listed choice: for k=(2log_2 n+1)/3=1..6, n natural forces k=1,3,5 and n=2,16,128, whose sum is 146 (choice ③). The printed source remains explicitly recorded as 60; PDF is not claimed to read 6."
+    },
+    "freshDifficultyProposal": {
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "structureEvidence": {
+        "conceptCount": 2,
+        "conditionInterpretation": "medium",
+        "strategyChoice": false,
+        "nonRoutineTransformation": false,
+        "caseBranching": false,
+        "rangeConstraint": true,
+        "integerConstraint": true,
+        "existenceCheck": true,
+        "decisiveInsight": false,
+        "executionBurden": "low"
+      },
+      "reason": "The route is standard once the natural-number output is named: convert to an exponential equation, apply the parity/integrality restriction, enumerate three values, and add. A small B23 boundary remains because the integer restriction is central."
+    },
+    "freshMetaProposal": {
+      "standardCourse": "대수",
+      "standardUnitKey": "H22-A-03",
+      "standardUnit": "로그함수",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "subUnit": "로그함수",
+      "primaryMethod": "로그식을 지수식으로 바꾸고 출력값의 범위와 자연수 조건을 교차 적용한다",
+      "decisiveStep": "k가 1..6의 자연수이고 n=2^((3k-1)/2)가 자연수여야 하므로 k는 홀수뿐이다",
+      "candidateConceptCluster": "지수와 로그의 자연수 조건 활용",
+      "problemTypeTemplate": "Do not assign without exact ACTIVE RPM/compatibility resolver binding",
+      "crossConceptKeys": [],
+      "conditionCandidates": [
+        "자연수 조건",
+        "유한 범위"
+      ],
+      "integrationPattern": "NONE",
+      "status": "PROPOSAL_ONLY_PENDING_CANONICAL_LOOKUP"
+    }
+  },
+  "q23": {
+    "candidateContent": "그림과 같이 기울기가 $-1$인 직선이 두 곡선 $y=3^x$, $y=\\log_3x$와 만나는 두 점을 각각 $A$, $B$라 하고, 점 $B$를 지나고 $x$축과 평행한 직선이 곡선 $y=3^x$와 만나는 점을 $C$라 하자. 선분 $AB$의 길이가 $24\\sqrt2$, 삼각형 $ABC$의 넓이가 $312$이다. 점 $A$의 $x$좌표를 $\\alpha$라 할 때, $\\alpha-\\log_3\\alpha$의 값을 구하고 그 과정을 서술하시오. (단, $O$는 원점이다.) [7점]",
+    "sourceRepair": {
+      "currentValue": "3120이다",
+      "sourceValue": "312이다",
+      "method": "AUDITED_REPAIR",
+      "repairReason": "Source crop shows three digits 312 followed by Korean copula 이다; current student text inserted an extra Arabic zero. Remove the extra zero only."
+    },
+    "freshDifficultyProposal": {
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "structureEvidence": {
+        "conceptCount": 3,
+        "conditionInterpretation": "medium",
+        "strategyChoice": true,
+        "nonRoutineTransformation": false,
+        "caseBranching": false,
+        "rangeConstraint": false,
+        "integerConstraint": false,
+        "existenceCheck": true,
+        "decisiveInsight": false,
+        "executionBurden": "medium"
+      },
+      "reason": "A standard but linked geometry/function route is required: read directional coordinate differences from slope/length, use the area to determine the horizontal base, then use the inverse relation of the exponential and logarithmic curves to resolve coordinates."
+    },
+    "freshMetaProposal": {
+      "standardCourse": "대수",
+      "standardUnitKey": "H22-A-02",
+      "standardUnit": "지수함수",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "subUnit": "지수함수",
+      "primaryMethod": "기울기와 길이로 좌표 차를 고정하고 넓이로 밑변을 구한 뒤 역함수 관계로 좌표를 결정한다",
+      "decisiveStep": "y=3^x와 y=log_3 x가 서로 역함수이므로 교점의 좌표를 서로 바꾼 점으로 연결한다",
+      "candidateConceptCluster": "지수함수와 로그함수의 역함수 관계 및 좌표기하",
+      "problemTypeTemplate": "Do not assign without exact ACTIVE RPM/compatibility resolver binding",
+      "crossConceptCandidates": [
+        "지수함수와 로그함수의 역함수 관계",
+        "좌표기하"
+      ],
+      "conditionCandidates": [
+        "직선의 기울기와 길이",
+        "삼각형 넓이"
+      ],
+      "integrationPattern": "NONE",
+      "status": "PROPOSAL_ONLY_PENDING_CANONICAL_LOOKUP"
+    }
+  },
+  "d2MetaFreeze": true
+}

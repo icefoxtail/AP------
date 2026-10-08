@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "ROOT_REGISTRATION_D662_CATALOG_HEADER_REPAIR_PLAN_V1",
+  "status": "CANONICAL_TWO_FILE_REPAIR_DERIVED_NOT_APPLIED",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "head": "d662174093b30a0f91ac0feb045e33f0afac2cf6",
+  "baselineCatalogCheck": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-root-apply/d662-baseline/catalog-check.result.json",
+    "sha256": "8d8c52bcc384e1cb52e82741228b4362cf29a72b751c2c50ef4484dffbc0daed",
+    "exitCode": 0
+  },
+  "applyReceipt": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/target-registration.receipt.json",
+    "sha256": "813fcddb0fc8d91e68d98c0e3bff6d5292a8e526199e678ab9ff82a30586f1e9",
+    "status": "APPLIED_PENDING_VALIDATORS",
+    "targetCounts": {
+      "identity": 23,
+      "metadata": 23,
+      "index": 23,
+      "catalog": 23,
+      "db": 1
+    },
+    "nonTargetInvariant": {
+      "dbExamRows": 549,
+      "identityRows": 13087,
+      "metadataRows": 13087,
+      "indexRows": 13079,
+      "catalogRows": 13079,
+      "allPreservedByDeepComparison": true,
+      "identityRuntimeTuplesPreserved": true
+    }
+  },
+  "repairFiles": [
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "rootBeforeRawSha256": "41db2ef10ff80be23645309a05df348939dba9cc858a55d3a2d6da9555a47d98",
+      "rootBeforeRawBufferBlobSha1": "71a80d88e022997175491f578f11fc096d898e98",
+      "candidateCanonicalPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rd6/archive/data/archive2-catalog.json",
+      "candidateRawSha256": "dca0b8db8a6fbe1bc0f135fca31bf51f44982d5930c3c863b5763575102f8d17",
+      "fieldDifferenceOnly": "indexVersion",
+      "actualIndexVersion": "a7570468df6abf4b374af5ec2ab5b401bcb2b1847e7fc4115facfcc85f5e0c15",
+      "expectedIndexVersion": "30daf3fff7920ea1f4eb1661caeff1e6945ac05a367ec8adebeb2933951e55da"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "rootBeforeRawSha256": "4140eb6b218a3ba18daeeefe519b52e0cd810cf9827530f9004d669595d69689",
+      "rootBeforeRawBufferBlobSha1": "cda2d31f376657145cb4a3529474bf47c98d8ef2",
+      "candidateCanonicalPath": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rd6/archive/data/archive2-canonical-input-manifest.json",
+      "candidateRawSha256": "cc5ddbb7b5a0b06e483b115aaed8c9248ed3d93278557b15cd1d3d01b71c84ea",
+      "derivedFields": [
+        "generatedFromCatalogIndexVersion",
+        "projectionVersion",
+        "files[data/archive2-catalog.json].sha256"
+      ],
+      "manifestEntryDiffs": [
+        {
+          "path": "data/archive2-catalog.json",
+          "actualSha256": "41db2ef10ff80be23645309a05df348939dba9cc858a55d3a2d6da9555a47d98",
+          "expectedSha256": "dca0b8db8a6fbe1bc0f135fca31bf51f44982d5930c3c863b5763575102f8d17"
+        }
+      ]
+    }
+  ],
+  "canonicalComparison": {
+    "catalogOnlyIndexVersionDiff": true,
+    "packedColumnsEqual": true,
+    "packedStringsEqual": true,
+    "packedRecordsEqual": true,
+    "healthEqual": true,
+    "examRowsEqual": true,
+    "expectedCatalogSha256": "dca0b8db8a6fbe1bc0f135fca31bf51f44982d5930c3c863b5763575102f8d17",
+    "expectedManifestSha256": "cc5ddbb7b5a0b06e483b115aaed8c9248ed3d93278557b15cd1d3d01b71c84ea"
+  },
+  "checksAlreadyPass": {
+    "registrationParity": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/checks/registration-parity-01.result.json",
+      "sha256": "58343cab3311a9c0b6f94764f45982587df4bb86c465d9c9d04000570c1c1564",
+      "disposition": "PASS"
+    },
+    "targetIdentityRuntime": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/registration-d662-root-apply/checks/target-identity-runtime-01.result.json",
+      "sha256": "67991790e5d2f5e396ecce30c2f464553b8c351cf33259d3c8bca42356457c8e",
+      "disposition": "PASS"
+    }
+  },
+  "nineCurrentHashes": [
+    {
+      "relativePath": "archive/db.js",
+      "rawSha256": "69579e1d1832af1e1824f6e9c11e03053b22e1277de52aa6f3444910b2140df3",
+      "rawBufferBlobSha1": "daa934eca7a52f685744caac4cd56d9d51b0d4c2",
+      "cleanFilterBlobSha1": "daa934eca7a52f685744caac4cd56d9d51b0d4c2",
+      "d662HeadBlobSha1": "09372149f0068e1d0f0277884fe581f36af49aaa"
+    },
+    {
+      "relativePath": "archive/data/question_identity_map.json",
+      "rawSha256": "06b6e1ec8f6fd53dd6c79f65f8d6dbe3c14447b7453050848e1ea0daa73ec786",
+      "rawBufferBlobSha1": "04c250c207924467123a3354a9260f4e75161fb4",
+      "cleanFilterBlobSha1": "04c250c207924467123a3354a9260f4e75161fb4",
+      "d662HeadBlobSha1": "06237d99a52481957d35c07d43edf1deecb587aa"
+    },
+    {
+      "relativePath": "archive/data/question_metadata.json",
+      "rawSha256": "414f121523d50fccbcb0a120337b692bea5595235b75b2d4cc97e443dda333be",
+      "rawBufferBlobSha1": "be3e232dade3a6de20163fc04beef18daa9fe968",
+      "cleanFilterBlobSha1": "be3e232dade3a6de20163fc04beef18daa9fe968",
+      "d662HeadBlobSha1": "daa186fa128220ced0f0c328b3c63b1fb5cf2509"
+    },
+    {
+      "relativePath": "archive/question-identity.js",
+      "rawSha256": "4b74ab304cfbcedac9143eb96ac6cc85f470e01e021cf9a21c3744965b871b6d",
+      "rawBufferBlobSha1": "5f3bdca1339dd12177019882422cbb06becd9775",
+      "cleanFilterBlobSha1": "5f3bdca1339dd12177019882422cbb06becd9775",
+      "d662HeadBlobSha1": "9def4d8c2d448a32d4507fafeb9ad812a93acee2"
+    },
+    {
+      "relativePath": "archive/question-index.js",
+      "rawSha256": "48973242d95b890c285be891d4faa6991edf684c86d281e5f5ace3c4d36cd05b",
+      "rawBufferBlobSha1": "e682b4b485d3fced67b0415a0d7e5df026e251ee",
+      "cleanFilterBlobSha1": "e682b4b485d3fced67b0415a0d7e5df026e251ee",
+      "d662HeadBlobSha1": "da3aa4e9ee016c034bd8a42270f451a6a49d6203"
+    },
+    {
+      "relativePath": "archive/question-index-report.md",
+      "rawSha256": "df41ee6deebb460bbdde7406e226abedda0e4a05058ced2e10ebd081d8c180ed",
+      "rawBufferBlobSha1": "9b2637617d371d5379158b0aec534e99eae25dce",
+      "cleanFilterBlobSha1": "9b2637617d371d5379158b0aec534e99eae25dce",
+      "d662HeadBlobSha1": "81432ded3d966b018c46a39974b8e3b077a20388"
+    },
+    {
+      "relativePath": "archive/question-index-audit.md",
+      "rawSha256": "d33c38f24dad856759243a3d4e6d99fd0431af1482559b77da26e65686ceb968",
+      "rawBufferBlobSha1": "7b6fc73eee00e9b66fb293ee8317e5506734309a",
+      "cleanFilterBlobSha1": "7b6fc73eee00e9b66fb293ee8317e5506734309a",
+      "d662HeadBlobSha1": "c70ede0e741a45ea78bdaeef535a21f9cb86f130"
+    },
+    {
+      "relativePath": "archive/data/archive2-catalog.json",
+      "rawSha256": "41db2ef10ff80be23645309a05df348939dba9cc858a55d3a2d6da9555a47d98",
+      "rawBufferBlobSha1": "71a80d88e022997175491f578f11fc096d898e98",
+      "cleanFilterBlobSha1": "71a80d88e022997175491f578f11fc096d898e98",
+      "d662HeadBlobSha1": "3f7289637c1c2df8c67b04525a684fd85d1ffd08"
+    },
+    {
+      "relativePath": "archive/data/archive2-canonical-input-manifest.json",
+      "rawSha256": "4140eb6b218a3ba18daeeefe519b52e0cd810cf9827530f9004d669595d69689",
+      "rawBufferBlobSha1": "cda2d31f376657145cb4a3529474bf47c98d8ef2",
+      "cleanFilterBlobSha1": "cda2d31f376657145cb4a3529474bf47c98d8ef2",
+      "d662HeadBlobSha1": "467726b074c6fd156bfb13cf16076862d62c361f"
+    }
+  ],
+  "stageProofsAllMatch": true,
+  "q24Preserved": {
+    "sourceSha256": "56bcf54f117295e23b8f68c9fef4100b7dfedbb7d6c1a06d13bcf9a4590eb51f",
+    "d662CatalogHoldQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "metadataDispositionUnchanged": true
+  },
+  "copyInstructions": [
+    {
+      "from": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rd6/archive/data/archive2-catalog.json",
+      "to": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-catalog.json",
+      "expectedRawSha256": "dca0b8db8a6fbe1bc0f135fca31bf51f44982d5930c3c863b5763575102f8d17"
+    },
+    {
+      "from": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/rd6/archive/data/archive2-canonical-input-manifest.json",
+      "to": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/archive/data/archive2-canonical-input-manifest.json",
+      "expectedRawSha256": "cc5ddbb7b5a0b06e483b115aaed8c9248ed3d93278557b15cd1d3d01b71c84ea"
+    }
+  ],
+  "nextRequiredAction": "ROOT copies only the two canonical files, then run build-archive2-catalog.mjs --check and preserve its actual stdout/stderr; rerun final nine hashes and publication-compatible closeout."
+}

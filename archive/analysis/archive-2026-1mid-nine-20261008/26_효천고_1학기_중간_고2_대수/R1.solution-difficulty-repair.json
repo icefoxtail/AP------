@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_DIFFICULTY_REPAIR_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceFile": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\26_효천고_1학기_중간_고2_대수.js",
+  "sourceBefore": {
+    "rawSha256": "40351571fc38bd014c23ca5d871540a8b2a27d64ed74cfef2cb7b6ed2e72326b",
+    "rawBufferBlobSha1": "611c1a5eb1cd19bc3dfc077d3607621b360aec7c",
+    "snapshot": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.source-before-solution-difficulty-repair.raw",
+    "snapshotSha256": "40351571fc38bd014c23ca5d871540a8b2a27d64ed74cfef2cb7b6ed2e72326b"
+  },
+  "sourceAfter": {
+    "rawSha256": "6d13a8f9d473cdae447c5e93a93448cd6a25f63148746541a7624bc90428084a",
+    "rawBufferBlobSha1": "cfc6bc6c3dabe2b61091c23fffbb6fa1d5fd79df"
+  },
+  "solutionCorrections": [
+    {
+      "qid": 7,
+      "field": "solution",
+      "beforeSha256": "dd11c87ae9bbe0881318ba1e3243ebfecbc56cf5d1d0f952cf7ffa7f210a12a6",
+      "afterSha256": "713b8bf2d901165239d07f603e1ac3b46074a46096bbdb8c048c0dcee073b818",
+      "changedTokens": [
+        "nmid8→n\\mid8",
+        "n+1mid18→n+1\\mid18"
+      ]
+    },
+    {
+      "qid": 13,
+      "field": "solution",
+      "beforeSha256": "0246e4ad8bd96bc41798a8e7d81cb866a418e20944208d517cdee9a69620a34a",
+      "afterSha256": "5c6bc38aa79aa4cb33c16b990960407653d5dee78d46b9cd506165980ffff02f",
+      "changedTokens": [
+        "ldots→\\ldots"
+      ]
+    },
+    {
+      "qid": 14,
+      "field": "solution",
+      "beforeSha256": "f6ec4e315797227d756cf9b20fc1acec45e826f374a5dcccd0fcaf8d28baee69",
+      "afterSha256": "b74e11ca601d96acd0f55e7b0c93e2a1e459483926a56d802a1f741686ff79d1",
+      "changedTokens": [
+        "ldots→\\ldots"
+      ]
+    },
+    {
+      "qid": 17,
+      "field": "solution",
+      "beforeSha256": "a32b2e72d468f31ecc9f19fcf120d2201c657d13a28f724b59d7cee5d96fed13",
+      "afterSha256": "88a8a796867838f93f3f12ecdb299fb2afd3e630bbf0f8ae7330908e3ebd29e4",
+      "changedTokens": [
+        "infty→\\infty",
+        "log_2→\\log_2"
+      ]
+    }
+  ],
+  "difficultyCorrection": {
+    "qid": 20,
+    "original": {
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "final": {
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
+    },
+    "preservedLevel": "상",
+    "reason": "The actual problem is a direct base-2 logarithmic inequality: one positive-argument domain condition plus monotonicity, with no strategy selection, branching, integer search, or compound condition. Bucket 2 fits the v1.3 familiar-method/one-condition standard; B12 and medium record the simple boundary judgement. The legacy level maps to upper while bucket 2 maps to middle, so STRONG_CONFLICT is retained for the historical mismatch.",
+    "canonical": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md §§2–4.2, §2.1/§2.2; no point-value/form-only rationale."
+  },
+  "allOtherFieldsChanged": false,
+  "allStudentFieldsUnchanged": true,
+  "answersUnchanged": true,
+  "oldFreezePreserved": true,
+  "preflightEvidence": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.calibration-preflight.json",
+  "pendingFreshReviewQids": [
+    4,
+    10,
+    18
+  ],
+  "postRepairGenericValidator": "NOT_RUN_PENDING_FRESH_QID_REVIEW"
+}

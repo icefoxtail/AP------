@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_FIRST_ITEM_RECOVERY_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "substage": "POST_R2_ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceFirst": true,
+  "sourceAssessmentAt": "2026-10-08T23:53:34+09:00",
+  "sourcePdf": {
+    "path": "D:/2026_1학기중간_/대수/26_효천고_1학기_중간_고2_대수.pdf",
+    "sha256": "03bfbf534577b98f121c6960f64d16a137c5d959e3b3651fcf74f8f3d1a743f5"
+  },
+  "sourceCrops": [
+    {
+      "qid": 13,
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/q13-source-crop.png",
+      "pdfPage": 3,
+      "cropMethod": "150dpi page 3 rendered, then 300dpi page-3 raster crop normalized to x=2%-50%, y=5%-30% of 2480x3508; untouched source pixels",
+      "sha256": "7be05d881fa123d680e0f14f44114a721b00eaea6f3759123f93dd1ec3f85f3c"
+    },
+    {
+      "qid": 23,
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/source-pages/q23-source-crop.png",
+      "pdfPage": 5,
+      "cropMethod": "150dpi page 5 rendered, then 300dpi page-5 raster crop normalized to x=50%-98%, y=3%-55% of 2480x3508; untouched source pixels, including printed graph",
+      "sha256": "e91fd54e990a25ac382a9f2c90e645b61d164c83953942f5b9a61d375cc17d3a"
+    }
+  ],
+  "sourceFirstOrder": [
+    13,
+    23
+  ],
+  "upstreamHoldReasonsOrAnswerSolutionFieldsReadBeforeAssessment": false,
+  "q13": {
+    "sourceTranscription": "$\\frac{2\\log_2 n+1}{3}$의 값이 60이하의 자연수가 되도록 하는 모든 $n$의 값의 합은?",
+    "independentSolve": "Let k=(2 log_2 n+1)/3 in {1,...,60}. Then log_2 n=(3k-1)/2. Since n is a natural integer, k must be odd; k=1,3,...,59 gives n=2^(1+3j), j=0,...,29. The sum is 2(8^30-1)/7, far outside every printed choice 136,141,146,151,156.",
+    "sourceVerdict": "SOURCE_TEXT_AND_CHOICES_MATHEMATICALLY_INCONSISTENT; no source-faithful minimal correction identified from the complete original question crop",
+    "answerFreezeStatus": "FROZEN_SOURCE_FIRST_INCONSISTENCY",
+    "sourceImageDisposition": "No figure/table/diagram in source"
+  },
+  "q23": {
+    "sourceTranscription": "기울기 -1인 직선이 y=3^x, y=log_3 x와 만나는 점을 A,B; B를 지나고 x축과 평행한 직선이 y=3^x와 만나는 점을 C. AB=24√2, area(ABC)=312이다. A의 x좌표 α에 대해 α-log_3 α를 구한다.",
+    "independentSolve": "The source graph and inverse-curve symmetry support A=(3,27), B=(27,3), C=(1,3): A and B lie on x+y=30, AB has coordinate differences (24,-24), and C is the point of y=3^x with y=3. The triangle has base CB=26 and height 24, hence area 312. α=3 and α-log_3 α=3-1=2.",
+    "answerFreezeStatus": "FROZEN_SOURCE_FIRST_ANSWER_2",
+    "visualRead": "The original printed source graph was opened and read in the q23 crop; curve labels y=3^x and y=log_3 x, axes/origin O, points A/B/C, descending slope -1 line and horizontal line through B were present and legible.",
+    "sourceImageDisposition": "Preserve original pixels; existing referenced image must remain source-derived"
+  },
+  "freshDifficultyAndMetaProposals": {
+    "frozenBeforeReadingAnyExistingLevelOrDifficultyFields": true,
+    "frozenAt": "2026-10-08T23:53:34+09:00",
+    "q13": {
+      "difficultyProposal": "D3 / medium / B23 (provisional; source/choice conflict means not eligible for reviewed_pass)",
+      "difficultyReason": "Discrete logarithm condition, parity/integrality restriction, and finite-set sum; the source inconsistency dominates final disposition.",
+      "metaProposal": "H2 Algebra; exponent/logarithm concepts; candidate L2: logarithm equations and integer conditions; L3/L4 candidate: log-expression natural-number constraint / discrete solution set; integration NONE unless active canonical binding requires another value. Exact active keys still require canonical resolver check.",
+      "status": "PROVISIONAL_SOURCE_ONLY"
+    },
+    "q23": {
+      "difficultyProposal": "D3 / medium / B23 (provisional pending finalized corrected student statement and solution)",
+      "difficultyReason": "Inverse exponential/logarithm curves, slope/length geometry, horizontal intersection, and triangle-area relation are linked in a short derivation.",
+      "metaProposal": "H2 Algebra; exponential/logarithmic functions; candidate L2: exponential and logarithmic functions; L3/L4 candidate: intersection of inverse curves with a line / coordinate geometry application; cross-concept candidates: exponential-logarithmic inverse relation and coordinate geometry; exact active keys still require canonical resolver check.",
+      "status": "PROVISIONAL_SOURCE_ONLY"
+    }
+  },
+  "studentOnlyParityAfterSourceFreeze": {
+    "q13": "Current working student fields match source transcription and all five printed choice values.",
+    "q23": "Current working student text says 3120, while the original source crop reads 312; source-faithful repair locus is q23.content only, 3120→312. The existing image reference is present and the source graph was inspected.",
+    "fieldsInspected": [
+      "id",
+      "content",
+      "choices",
+      "image",
+      "visual",
+      "sourceMode",
+      "sharedMaterial"
+    ],
+    "answerSolutionAndDifficultyFieldsInspected": false
+  }
+}

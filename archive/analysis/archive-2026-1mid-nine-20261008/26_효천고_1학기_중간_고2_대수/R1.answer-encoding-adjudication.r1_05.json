@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_ANSWER_ENCODING_ADJUDICATION_V1",
+  "stage": "R1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "r1_05"
+  },
+  "status": "R1_PATCH_PROPOSAL_PHYSICALLY_AND_SEMANTICALLY_APPROVED_R3_SOLE_WRITER",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "sourceBefore": {
+    "rawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "blobSha1": "e608fcfbb88f9536edfdbf1f0ea6540b7ff0affd"
+  },
+  "priorR1CompletionEvent": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.recovery.r1_05.complete.event.correct-roster.json",
+    "sha256": "f51660b59995341d096d02110edfd5aab6da069e7c8215c5449b6289c40e30e2"
+  },
+  "priorR1Evidence": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.recovery.r1_05.evidence-04.json",
+    "sha256": "a1c87461de151409d069315903ba14ea23e5003dcfde322738c39374b83f9af0"
+  },
+  "currentStudentBundle": {
+    "path": ".tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.current-full23.student.recovery-03.json",
+    "sha256": "a5d2f3df58e61f1787d930f5d8f1e40e3add1d683ed377e6670a514c8feb03e6",
+    "sourceRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "studentParityAfterAnswerOnlyPatchExpected": "EXACT_23_OF_23"
+  },
+  "captureReview": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/render/R3.capture-review.capture-01.findings.json",
+    "sha256": "6bf3d395bb3ec377d8f5854e9fd847a83c0793a3953a40aa2ba7bebb4d92a256",
+    "findingReviewSha256": "6bf3d395bb3ec377d8f5854e9fd847a83c0793a3953a40aa2ba7bebb4d92a256",
+    "decision": "Observed bare TeX in answer table and red solution answer headers on actual desktop/mobile renders; answer strings require MathJax delimiters."
+  },
+  "proposal": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R3.answer-encoding-patch-proposal.json",
+    "sha256": "30a711ce26822f2c10e71373b84155f08e3d342edf7b2a202dea1eb1e70f6f2e",
+    "rows": [
+      {
+        "qid": 19,
+        "field": "answer",
+        "before": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+        "after": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
+        "beforeUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+        "afterUtf8Sha256": "61f6155bca431b200469ed4033c25b807fe02588e5839490e91c5170fa23b02e",
+        "innerTex": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+        "innerTexUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+        "freezeAnswer": "log_(1/a)b < log_a(a/b) < log_a b < log_b a",
+        "freezeReasoning": "Direct evaluation at a=1/3,b=1/2 gives approximate values -0.631,0.369,0.631,1.585.",
+        "freezeRef": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.freeze.json",
+          "sha256": "1a7f6289660e6edc511aff45c65d539f676a9642d31fdaaa44ddbc299c3c6b50"
+        },
+        "studentPayloadSha256": "a77bae6fd6254b7f5f076212e7a24413fb7f52257be6484538d94ff20de899ea",
+        "studentPayloadParityToR1Evidence": true,
+        "solutionSha256Before": "313d75600741269ccb9f190e4fb75ef851dc9d0a03093fd16a9a1e9d28480080",
+        "answerHtmlPresent": false,
+        "semanticEdit": false,
+        "studentFieldsChanged": false,
+        "choicesChanged": false,
+        "solutionChanged": false,
+        "metaChanged": false,
+        "disposition": "APPROVE_EXACT_WHOLE_MATH_ANSWER_WRAPPER"
+      },
+      {
+        "qid": 20,
+        "field": "answer",
+        "before": "\\frac12<x<\\frac{17}2",
+        "after": "$\\frac12<x<\\frac{17}2$",
+        "beforeUtf8Sha256": "1b6b2f8dbde4aab82eb270000c6dd146aa2c04b38433b5b17ef6e9cecf463d6a",
+        "afterUtf8Sha256": "411a9efda0762b3814d953138ad4b3155d55e401f5850605e452d5c5a4ac0b4e",
+        "innerTex": "\\frac12<x<\\frac{17}2",
+        "innerTexUtf8Sha256": "1b6b2f8dbde4aab82eb270000c6dd146aa2c04b38433b5b17ef6e9cecf463d6a",
+        "freezeAnswer": "1/2 < x < 17/2",
+        "freezeReasoning": "Domain 2x-1>0 and monotonicity of log base 2 gives 2x-1<16.",
+        "freezeRef": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.freeze.json",
+          "sha256": "1a7f6289660e6edc511aff45c65d539f676a9642d31fdaaa44ddbc299c3c6b50"
+        },
+        "studentPayloadSha256": "40d681cbb59e03525e1a962aaddb2d33603d3e58874b26509a5d2c67ed4b183f",
+        "studentPayloadParityToR1Evidence": true,
+        "solutionSha256Before": "958dcc5ca941a5cf27a47a2ff290aac13a3fcaef48a770529f24630368d38b36",
+        "answerHtmlPresent": false,
+        "semanticEdit": false,
+        "studentFieldsChanged": false,
+        "choicesChanged": false,
+        "solutionChanged": false,
+        "metaChanged": false,
+        "disposition": "APPROVE_EXACT_WHOLE_MATH_ANSWER_WRAPPER"
+      },
+      {
+        "qid": 22,
+        "field": "answer",
+        "before": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+        "after": "$\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b$",
+        "beforeUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+        "afterUtf8Sha256": "61f6155bca431b200469ed4033c25b807fe02588e5839490e91c5170fa23b02e",
+        "innerTex": "\\log_b a>\\log_a b>\\log_a\\frac ab>\\log_{1/a}b",
+        "innerTexUtf8Sha256": "fec06ae45b888c22c3f3cbcf8f01074b75a4a87ecc4edbe601fecafd5664bab1",
+        "freezeAnswer": "log_(1/a)b < log_a(a/b) < log_a b < log_b a",
+        "freezeReasoning": "0<b^2<a<b implies 0<b<1 and 1/2<log_a b<1; compare its negative, complement, and reciprocal.",
+        "freezeRef": {
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.freeze.json",
+          "sha256": "1a7f6289660e6edc511aff45c65d539f676a9642d31fdaaa44ddbc299c3c6b50"
+        },
+        "studentPayloadSha256": "d1096e906121b19e2c3782d78c479181c6e367802bb342d2b3f986f6b48b5f9c",
+        "studentPayloadParityToR1Evidence": true,
+        "solutionSha256Before": "328d3bc076f331a2f4bacee16d57a774ee8b20a925aad49aa6de6b2bcecd9546",
+        "answerHtmlPresent": false,
+        "semanticEdit": false,
+        "studentFieldsChanged": false,
+        "choicesChanged": false,
+        "solutionChanged": false,
+        "metaChanged": false,
+        "disposition": "APPROVE_EXACT_WHOLE_MATH_ANSWER_WRAPPER"
+      }
+    ]
+  },
+  "canonicalTypesettingAuthority": {
+    "path": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md",
+    "sha256": "b592921444db8bfeb32d19e0a3554f4ca1718b738eb8a8aa0dd14c30ecd61fe9",
+    "ruleApplication": "Whole-expression inline math delimiters are canonical for these pure math answer strings; no HTML or prose exists, so wrapping the complete expression leaves the TeX payload exact and keeps markup outside TeX."
+  },
+  "semanticReview": {
+    "q19": "Original independent freeze is ascending: log_(1/a)b < log_a(a/b) < log_a b < log_b a. The stored answer is its mathematically equivalent reverse descending order; current freeze and source solution remain unchanged.",
+    "q20": "Original independent freeze is 1/2 < x < 17/2. The source answer TeX \frac12<x<\frac{17}2 is the same interval; wrapping preserves all tokens.",
+    "q22": "Original independent freeze derives 1/t>t>1−t>−t for 1/2<t<1, matching the stored descending relation log_b a>log_a b>log_a(a/b)>log_(1/a)b. Wrapping preserves all tokens."
+  },
+  "originalAnswerFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.freeze.json",
+    "sha256": "1a7f6289660e6edc511aff45c65d539f676a9642d31fdaaa44ddbc299c3c6b50",
+    "mutated": false,
+    "answerRereadOrRefrozen": false
+  },
+  "scope": {
+    "qids": [
+      19,
+      20,
+      22
+    ],
+    "allowedChangedField": "answer delimiters only",
+    "studentContentOrChoicesChanges": false,
+    "solutionStringChanges": false,
+    "MetaChanges": false
+  },
+  "writerBoundary": "R3 is the sole authorized JS writer for this answer-only repair; R1 made no source change. After R3 application, R1 will rebuild current source-bound student bundle, verify exact student parity and reuse the immutable answer freeze, then update current raw/blob evidence and rerun generic V2 validator/seal."
+}

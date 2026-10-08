@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_META_CURRENT_DISPOSITIONS_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+  "artifactSha": "e608fcfbb88f9536edfdbf1f0ea6540b7ff0affd",
+  "sourceBinding": {
+    "initialAssignmentRawSha256": "d2051b55316ac61e8dbc1dc5d4d6feb2cc3155a9d877eab68f590c3d8d5f9006",
+    "currentStudentCandidateRawSha256BeforeMetaOnlyEdits": "5afa167857f4e23734358717db89876b07363a3a555292acc523f65476d57d43",
+    "currentSourcePath": ".tmp/archive/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/26_효천고_1학기_중간_고2_대수.js",
+    "studentOnlyParityAfterAllMetaEdits": "PASS q13/q23; current question bodies, choices, q23 image reference and referenced image SHA unchanged"
+  },
+  "reviewBasis": {
+    "independentAffectedR1FreezePath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-clean-02.original-freeze.json",
+    "independentAffectedR1FreezeSha256": "ca23a06ac85d4f172053c2a08162c076e5fd98c2ff8cb6505c92d893205dfeb9",
+    "independentBlindProposalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-clean-02.blind-proposals.json",
+    "independentBlindProposalSha256": "919b00a4969e036d8360564e5f1b035e8195a5df1bd5ac634371f00a0d6e2a51",
+    "priorDifficultyExposure": "Recorded in CREATE.item-recovery.adjudication.json; source-only proposal was frozen before exposure, final fields follow the independent affected R1 review.",
+    "taxonomyFinal": "NOT_ASSERTED; RPM paths remain reviewed semantic proposals pending formal resolver finalization."
+  },
+  "authorityRefs": [
+    {"path":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md","sha256":"89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e","result":"Actual L1 row/order preflight: no unit-order findings; q13 H22-A-03 order 3, q23 H22-A-02 order 2."},
+    {"path":"docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/대수.md","sha256":"e422e8963dd2ecb0a5a169a5bf187fe43409b9c23c065e6e28512cd2991f05fe","result":"R1 reviewed RPM paths: q13 L1 지수함수와 로그함수 → L2 로그함수 → L3 로그방정식 → L4 치환; q23 L1 지수함수와 로그함수 → L2 지수함수 → L3 지수함수의 활용 → L4 그래프 교점. These are semantic path proposals; no taxonomy-final PASS claimed."},
+    {"path":"archive/data/meta-foundation/canonical/registry_index.json","sha256":"5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6","result":"Current ACTIVE packs and concept shards registry index."},
+    {"path":"archive/data/meta-foundation/canonical/metadata_rules.json","sha256":"72cc1f7be577667c2f166183017041ae2eeeaff74a8ef3167a64ed1380c6325e","result":"INTERDEPENDENT is an allowed canonical integrationPattern value."},
+    {"path":"archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json","sha256":"c1188bf7542d2f23e91b2880de050c5a48b23ece3a4ce165656f41e738a58ab4","result":"PT_FUNCTION_GRAPH_INTERSECTION is ACTIVE; definition covers function/function or function/line intersections. TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS is an exact two-function-curve pattern and does not match q23's line separately intersecting each curve."},
+    {"path":"archive/data/meta-foundation/compiled/taxonomy_registry.json","sha256":"469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b","result":"Current compiled ACTIVE PT/TPL registry."},
+    {"path":"archive/data/meta-foundation/compiled/curriculum_bindings.json","sha256":"a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248","result":"PT_FUNCTION_GRAPH_INTERSECTION has a 2022 binding only for H22-C2-09 / 공통수학2; no H22-A-02 / 대수 exact binding. Do not substitute H22-C2-09."},
+    {"path":"archive/data/meta-foundation/compiled/concept_registry.json","sha256":"c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0","result":"CC_SLOPE and CC_TRIANGLE_AREA are ACTIVE globally; R1 kept only CC_TRIANGLE_AREA as the decisive cross-concept for q23. CC_INVERSE_FUNCTION is scoped to LIMIT_CONTINUITY and was not applied."},
+    {"path":"archive/data/meta-foundation/compiled/condition_registry.json","sha256":"2800ec15d1dd9c15c51d5f18b48d399b233fbe33ff8eebfdf89a49c4ba98ae5f","result":"COND_NATURAL_NUMBER, COND_RANGE and COND_POSITIVE are ACTIVE; q13 uses natural/range only, q23 uses positive-domain condition."}
+  ],
+  "rows": [
+    {
+      "qid": 13,
+      "currentFields": {"standardUnitKey":"H22-A-03","subUnitKey":"H22-A-03-LOGARITHMIC_FUNCTION","problemTypeKey":null,"templateKey":null,"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER","COND_RANGE"],"integrationPattern":"NONE","difficultyBucket":2,"difficultyConfidence":"medium","difficultyBoundaryFlag":"NONE","legacyLevelCompatibility":"STRONG_CONFLICT"},
+      "rpmPathProposal": {"curriculum":"2022","scope":"대수","majorUnit":"지수함수와 로그함수","midUnit":"로그함수","l3":"로그방정식","l4":"치환"},
+      "projectionStatus":"PROJECTION_UNMATERIALIZED",
+      "metaDebtFields":["problemTypeKey","templateKey"],
+      "metaDebtReason":"Current H22-A-03/LOGARITHMIC_FUNCTION active lookup has no exact problemType/template mapping for the natural-integer log-sum structure. Preserve null fields; no nearest-key mapping was selected."
+    },
+    {
+      "qid": 23,
+      "currentFields": {"standardUnitKey":"H22-A-02","subUnitKey":"H22-A-02-EXPONENTIAL_FUNCTION","problemTypeKey":null,"templateKey":null,"crossConceptKeys":["CC_TRIANGLE_AREA"],"conditionKeys":["COND_POSITIVE"],"integrationPattern":"INTERDEPENDENT","difficultyBucket":4,"difficultyConfidence":"medium","difficultyBoundaryFlag":"B34","legacyLevelCompatibility":"NORMAL"},
+      "rpmPathProposal": {"curriculum":"2022","scope":"대수","majorUnit":"지수함수와 로그함수","midUnit":"지수함수","l3":"지수함수의 활용","l4":"그래프 교점"},
+      "projectionStatus":"PROJECTION_BINDING_PENDING",
+      "metaDebtFields":["problemTypeKey","templateKey"],
+      "metaDebtReason":"Global PT_FUNCTION_GRAPH_INTERSECTION is ACTIVE and semantically applicable, but compiled curriculum_bindings has no exact H22-A-02/대수 row. TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS requires two function curves to intersect each other; q23 uses a line to meet each curve separately. Preserve both nullable source fields and do not substitute the unrelated H22-C2-09 binding."
+    }
+  ],
+  "notAsserted": ["RPM taxonomy finalization","exact H22 PT binding for q23","exact templateKey for q23","CREATE/R1/R2 generic PASS"],
+  "nextRequired": ["Current full23 R1 integration evidence", "normal generic V2/CODEX CREATE validator once all required evidence is complete", "stable CREATE completion seal after validator report"],
+  "executionLine": "CODEX"
+}

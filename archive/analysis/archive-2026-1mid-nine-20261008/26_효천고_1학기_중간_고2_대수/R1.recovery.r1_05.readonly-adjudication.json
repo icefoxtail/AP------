@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_RECOVERY_READONLY_ADJUDICATION_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "stage": "R1",
+  "reviewerId": "r1_05",
+  "readOnly": true,
+  "sourceCandidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\26_효천고_1학기_중간_고2_대수.js",
+    "rawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "rawBufferBlobSha1": "e608fcfbb88f9536edfdbf1f0ea6540b7ff0affd",
+    "head": "47dfa12159d2ffa29572139183312b1b55366706"
+  },
+  "freshFreezeEvidence": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-clean-02.original-freeze.json",
+    "sha256": "ca23a06ac85d4f172053c2a08162c076e5fd98c2ff8cb6505c92d893205dfeb9"
+  },
+  "freshBlindProposal": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/R1.scope-13,23@recovery-clean-02.blind-proposals.json",
+    "sha256": "919b00a4969e036d8360564e5f1b035e8195a5df1bd5ac634371f00a0d6e2a51"
+  },
+  "frozenSourceRawSha256": "5afa167857f4e23734358717db89876b07363a3a555292acc523f65476d57d43",
+  "frozenStudentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.scope-13,23@recovery-01.json",
+    "sha256": "65cb797ded432490f582e9cde0748c2be69a8aabfae23d194a0e6d509653127a",
+    "qids": [
+      13,
+      23
+    ],
+    "studentParityAgainstCurrentSource": {
+      "13": true,
+      "23": true
+    }
+  },
+  "freshIndependentAnswers": [
+    {
+      "qid": 13,
+      "independentAnswer": "146",
+      "reasoning": "Let k=(2log_2 n+1)/3. Since k is a natural number at most 6, k∈{1,2,3,4,5,6}, and log_2 n=(3k−1)/2. For n to be a natural number, this exponent must be an integer, so k is odd: k=1,3,5. The corresponding n are 2,16,128, whose sum is 146. Thus choice ③.",
+      "answerCardinality": 1
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "2",
+      "reasoning": "Write B=(b,log_3 b). Since A and B lie on a line of slope −1, x+y has the same value at both. The function h(x)=x+3^x is strictly increasing; reflecting B across y=x gives (log_3 b,b), also on y=3^x and with the same coordinate sum, so A=(log_3 b,b). Put t=log_3 b>0. Then AB=√2(b−t)=24√2, hence b−t=24 and the vertical height from A to horizontal BC is 24. The area 312 gives BC=2·312/24=26. As C=(log_3 t,t), b−log_3 t=26; subtract b−t=24 to get t−log_3 t=2. Since b=3^t and b−t=24, t satisfies 3^t−t=24. For t>0 this function is strictly increasing (derivative ln(3)·3^t−1>0), so its unique solution is t=3. Then b=27 and log_3 t=1. Finally α=x_A=t=3, so α−log_3 α=3−1=2.",
+      "answerCardinality": 1
+    }
+  ],
+  "recoverySourceCorrections": {
+    "sourceFirstEvidence": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.source-first.item-recovery.json",
+      "sha256": "38ae29f553ee36f7c671ee582003d776e83833d37fad86729788376802b8cac2"
+    },
+    "itemAdjudication": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.item-recovery.adjudication.json",
+      "sha256": "ac4c0549752a69310fefa44e55709ffa0a189ae1b69cc2ead339ff797152cfb3"
+    },
+    "nonTargetInvariance": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/CREATE.item-recovery.invariance.json",
+      "sha256": "7d60dd093ad8084b46739a6745af487d8bcedf741ef19d2155a9c8f6d7b65c9f"
+    },
+    "rootPreimage": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_효천고_1학기_중간_고2_대수/ROOT.recovery.non-target-preimage.json",
+      "sha256": "b2819add256b9a0f1aa1606d605caf56bb7ec3904d372bd968b4cc863e84e6dd"
+    },
+    "changedStudentLoci": {
+      "q13": "printed bound 60→6",
+      "q23": "printed triangle area 3120→312"
+    },
+    "nonTargetCount": 21,
+    "nonTargetIdentical": true,
+    "q23AssetSha256": "519084d53b17eb4da2c8a90ada32354e787394c5781af5f63e4f88d7d5cdb933"
+  },
+  "currentMetaFields": [
+    {
+      "qid": 13,
+      "fields": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "level": "상",
+        "itemStatus": "PASS_AFTER_REPAIR"
+      }
+    },
+    {
+      "qid": 23,
+      "fields": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "상",
+        "itemStatus": "PASS_AFTER_REPAIR"
+      }
+    }
+  ],
+  "currentCanonicalLookups": {
+    "questionMetadata": {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "e4642aaafe7d5df9398469c960d1479f7ce25523f177aa8fa4dd2df9238b2958"
+    },
+    "questionMetadataUnitRows": [
+      {
+        "qid": 13,
+        "standardUnitKey": "H22-A-03",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "rowCount": 63,
+        "existingPopulatedProjectionRows": [
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+            "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+            "sourceOrdinal": 20,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+            "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+            "sourceOrdinal": 5,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+            "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+            "sourceOrdinal": 22,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          }
+        ],
+        "allRowsLackExplicitCurriculum": true
+      },
+      {
+        "qid": 23,
+        "standardUnitKey": "H22-A-02",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "rowCount": 64,
+        "existingPopulatedProjectionRows": [
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+            "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+            "sourceOrdinal": 11,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+            "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+            "sourceOrdinal": 15,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+            "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+            "sourceOrdinal": 24,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+            "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+            "sourceOrdinal": 14,
+            "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js"
+          }
+        ],
+        "allRowsLackExplicitCurriculum": true
+      }
+    ],
+    "compiledTaxonomyRegistry": {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+    },
+    "activeProblemType": {
+      "key": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "label": "함수 그래프의 교점",
+      "definition": "두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.",
+      "status": "ACTIVE"
+    },
+    "activeTemplate": {
+      "key": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "label": "두 함수 그래프의 교점",
+      "definition": "`함수 그래프의 교점` 안에서 '두 함수 그래프의 교점'을 핵심 풀이 골격으로 사용하는 유형.",
+      "status": "ACTIVE",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION"
+    },
+    "compiledCurriculumBindings": {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+    },
+    "h22IntersectionBindings": [
+      {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-09",
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "status": "ACTIVE"
+      }
+    ],
+    "compiledConditionRegistry": {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "sha256": "2800ec15d1dd9c15c51d5f18b48d399b233fbe33ff8eebfdf89a49c4ba98ae5f"
+    },
+    "relevantActiveConditions": [
+      {
+        "conditionKey": "COND_NATURAL_NUMBER",
+        "canonicalLabelKo": "자연수 조건",
+        "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "usageInGeometryEquationsPilot": 6
+      },
+      {
+        "conditionKey": "COND_RANGE",
+        "canonicalLabelKo": "범위 조건",
+        "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "usageInGeometryEquationsPilot": 5
+      },
+      {
+        "conditionKey": "COND_POSITIVE",
+        "canonicalLabelKo": "양수 조건",
+        "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "usageInGeometryEquationsPilot": 5
+      }
+    ],
+    "compiledConceptRegistry": {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "sha256": "c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0"
+    },
+    "relevantActiveConcepts": [
+      {
+        "conceptKey": "CC_TRIANGLE_AREA",
+        "canonicalLabelKo": "삼각형의 넓이",
+        "definition": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+        "aliases": [
+          "삼각형 넓이"
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_0526f952c7b13ef6ccb6421905531268dfc2ea5651ef348c262e16f6a4e9ca4b",
+          "qid_v1_0805ae84c3e5172d1cb0a15052fdbdf1721d27368cbac8b2fa56b9036d66dc62",
+          "qid_v1_1112cba4630914cee5e7bc68d03ea93b0485c02f6a95b1586bf0711e37f70a07",
+          "qid_v1_112510787049b446f715c9de67236cd9bd059c243eee742430bc5e33a8c23e03",
+          "qid_v1_1b35dc663ac244483e5a43e37c9007e9ca8a0ac0a82d91fcea00e288bf24ac0e",
+          "qid_v1_29171910470c6a5e841f8c6b67c20cb135f649ac53296ac892d467395bd2e051",
+          "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
+          "qid_v1_29507af1f3906e000d933db91b26bae14089dd35303ff3a6230cbfa3cb404749",
+          "qid_v1_3448a94931b7dac3f99e5e359e2e28ef344ae03204e5a47da7483d141b614410",
+          "qid_v1_35eaba599a897f5b789da435420f3c58d936a2c19a8fc2f38f62cb0485b9a2a0",
+          "qid_v1_363c98e4a9f3f7e9b1be969f929664a90d2f735c4af32f61cf388db7cd07290b",
+          "qid_v1_37e097d41e54a934fbf42204fdb49c20564080760bf877527275e2fcce2af2c8",
+          "qid_v1_3b9da4e442cc5a3b0efc7812c0bfa4c8080345939502a5f130a84396a62b7383",
+          "qid_v1_4d53d33d38add18a552574ece87928147154cba41357234e44e1f3be6ff52e47",
+          "qid_v1_598536c5ccdf614048f6560b28642782afde98585f94f868b94bbeed855693a2",
+          "qid_v1_68101d8b3835f00f8720fc730b6eb740fba7419d0cb46928e2906f276c56e855",
+          "qid_v1_6a9797111d98876b278c493f186e497d827a31453bf080fe7b679a1a93da2169",
+          "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+          "qid_v1_702aad912dc65d345d0eb348dabc87f8501c81033ceb01429fe0a9a1aa38e524",
+          "qid_v1_731546a00cbcc181ebe1101d0df5ba06e576b97682f7b9d0db1f3edf4680d604",
+          "qid_v1_7cabe3d419d5ac72199a5bf59d44072c0e4f57bd7f88cd1ba3e7a77f7cea6339",
+          "qid_v1_8506876d2e28e1312883af8ce919a9f8732fac0fa400c4c7f724bdb4b9db1bb5",
+          "qid_v1_85389d82c137685840d62153ce084759a0e799f9ac08857bd6e88e00d24f72f3",
+          "qid_v1_90a565124789a4cb8d86a22e59ed80f741d6a20d8c6749671a7495e9e09d2c64",
+          "qid_v1_98ca0a2920e97e0f75874146d90b5a8c64f6d5503c19524a4a0d4f3e9d6ed953",
+          "qid_v1_a82493d13fb0c371620017becc4660a805bdf1a2b0360603f52cfe11f7d596a5",
+          "qid_v1_c4c5080ce1a508c5b9a321c8b4721ff9c85bd0f1251bb0119fe93d99a8dc1d57",
+          "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3",
+          "qid_v1_c714107d0e3d49f83bd04e844d4b1639eb35a8edf18cd59c028fd4937bf2207f",
+          "qid_v1_d78b001aaecc9717af2222109108dc26792cf059c7bfd90e2e75332db69ac117",
+          "qid_v1_d8694c5a71d41abb320387c806e52dfc671b10d5faec2cd03a1f3b072aef4d84",
+          "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
+          "qid_v1_f18e4173995d1bdeaf83f956ff26cb49eb13a560828eb55585bdb1e041553716",
+          "qid_v1_f8f733c11604d641e07a8e37f03df4947b0e864395aee187c2e01ebb98a5813a",
+          "qid_v1_1a9d60400a9432e1342b658102d2125eaca358194f17d5edbbf800ea95d699d3"
+        ],
+        "supportingItemCount": 35,
+        "sourceUnits": [
+          "CIRCLE_EQUATION",
+          "FIGURE_TRANSFORM",
+          "LINE_EQUATION",
+          "PLANE_COORDINATE",
+          "PROPOSITION"
+        ],
+        "legacyKeys": [],
+        "status": "ACTIVE",
+        "evidenceProvenance": [
+          {
+            "sourceUnit": "PLANE_COORDINATE",
+            "evidence": {
+              "evidenceType": "TEXTBOOK",
+              "evidence": "중·고등학교 도형 단원의 표준 용어이며 supporting solution에서 직접 사용됨.",
+              "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+              "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+            }
+          },
+          {
+            "sourceUnit": "LINE_EQUATION",
+            "evidence": [
+              {
+                "evidenceType": "TEXTBOOK_STANDARD_TERM",
+                "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+                "curriculum": "중학교/고등학교 공통",
+                "course": "기하·좌표 활용",
+                "term": "삼각형의 넓이"
+              }
+            ]
+          },
+          {
+            "sourceUnit": "FIGURE_TRANSFORM",
+            "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+          },
+          {
+            "sourceUnit": "SETS_PROPOSITIONS",
+            "evidence": {
+              "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+              "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+              "supportingQuestionUids": [
+                "qid_v1_1a9d60400a9432e1342b658102d2125eaca358194f17d5edbbf800ea95d699d3"
+              ]
+            }
+          }
+        ],
+        "taxonomyRefs": [
+          "PT_CIRCLE_EQUATION",
+          "PT_CIRCLE_LINE_RELATION",
+          "PT_CIRCLE_TANGENT",
+          "PT_COORD_SECTION",
+          "PT_LINE_ANGLE_BISECTOR",
+          "PT_LINE_DISTANCE_EXTREMUM",
+          "PT_LINE_FAMILY_COMMON_POINT",
+          "PT_MOVE_COMPOSITE",
+          "PT_MOVE_FOLDING_REFLECTION",
+          "PT_MOVE_POINT_REFLECTION",
+          "PT_PERPENDICULAR_FOOT_ALTITUDE",
+          "PT_TWO_CIRCLES",
+          "PT_ABSOLUTE_INEQUALITY_EXTREMUM"
+        ],
+        "curriculumRefs": [
+          "2015:수학(상):H15-SA-09",
+          "2015:수학(상):H15-SA-10",
+          "2015:수학(상):H15-SA-11",
+          "2015:수학(상):H15-SA-12",
+          "2022:공통수학2:H22-C2-01",
+          "2022:공통수학2:H22-C2-02",
+          "2022:공통수학2:H22-C2-03",
+          "2022:공통수학2:H22-C2-04",
+          "2015:수학(하):H15-SB-02"
+        ],
+        "ownerConceptShard": "PLANE_GEOMETRY"
+      }
+    ],
+    "metadataRules": {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "sha256": "72cc1f7be577667c2f166183017041ae2eeeaff74a8ef3167a64ed1380c6325e"
+    },
+    "rpmPrimaryText": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/대수.md",
+      "sha256": "e422e8963dd2ecb0a5a169a5bf187fe43409b9c23c065e6e28512cd2991f05fe"
+    },
+    "difficultyCanonical": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    "metaCanonical": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    }
+  },
+  "adjudications": {
+    "q13": {
+      "taxonomy": {
+        "rpmPath": {
+          "qid": 13,
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/대수.md",
+          "l1": "L1-1 지수함수와 로그함수",
+          "l2": "L2-1.4 로그함수",
+          "l3": "L3-1.4.2 로그방정식",
+          "l4": "L4-1.4.2.2 치환",
+          "pathStatus": "R1_REVIEWED_PROPOSAL_PENDING_RESOLVER_FINAL",
+          "rationale": "The value condition is set to m, the logarithmic equation is rearranged for log2(n), and the natural-number restriction forces an integer exponent."
+        },
+        "projection": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "nullReason": "No exact ACTIVE H22-A-03 logarithmic-integer-sum PT/TPL pair exists. Current same-subunit materialized rows are graph intersection, graph transform and function extremum, which do not match this item; do not select a nearest key."
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "legacyLevel": "상",
+        "rationale": "Fresh answer 146 requires setting the natural expression value m, rearranging for log2(n), enforcing integer exponent parity, and summing 2,16,128. The strategy is direct and fits Bucket 2. Difficulty v1.3 §11 maps bucket2 to middle and classifies legacy level 상 + bucket2 as STRONG_CONFLICT; preserve level and record the conflict after current independent recheck."
+      }
+    },
+    "q23": {
+      "taxonomy": {
+        "rpmPath": {
+          "qid": 23,
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/대수.md",
+          "l1": "L1-1 지수함수와 로그함수",
+          "l2": "L2-1.3 지수함수",
+          "l3": "L3-1.3.4 지수함수의 활용",
+          "l4": "L4-1.3.4.2 그래프 교점",
+          "pathStatus": "R1_REVIEWED_PROPOSAL_PENDING_RESOLVER_FINAL",
+          "rationale": "The target L2 is H22-A-02; the fresh solution uses inverse-curve symmetry and locates the graph/line intersections through their coupled length/area conditions."
+        },
+        "projection": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "nullReason": "GLOBAL ACTIVE graph-intersection/inverse-graph PTs exist, but compiled curriculum_bindings has no H22-A-02/대수 binding. The only 2022 binding for PT_FUNCTION_GRAPH_INTERSECTION is H22-C2-09/공통수학2; do not reuse a different course binding. TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS is not an exact template because the given line separately intersects each curve."
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "rationale": "Fresh answer 2 uses inverse-curve reflection to parameterize A/B, then couples AB length and triangle area to determine the horizontal base and solve a monotonicity/uniqueness condition. The nonroutine symmetry and multiple conditions are central, so bucket4 rather than the initial bucket3 proposal; B34 records the boundary. Level 상 maps normally to bucket4."
+      }
+    }
+  },
+  "creatorCurrentFieldCheck": {
+    "sourceMetaMatchesExpected": true,
+    "sourceRawSha256": "b4398daa976df00582af6670f2e352b28fc7670c8d0a0ed76b08c99b06da7cc6",
+    "sourceDiffExpectedNoWrites": true,
+    "fullValidatorOrSealNotRun": true,
+    "awaitRootFinalSourceSha": true
+  }
+}

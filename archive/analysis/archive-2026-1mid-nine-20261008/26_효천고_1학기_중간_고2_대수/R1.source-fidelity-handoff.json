@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOURCE_FIDELITY_HANDOFF_V1",
+  "examUid": "26_효천고_1학기_중간_고2_대수",
+  "stage": "R1",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\26_효천고_1학기_중간_고2_대수.js",
+  "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\assets",
+  "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수",
+  "currentSourceRawSha256": "a98b3fb3f7a7a3152894ededaaabb525158898e4019c3145436850b4f60df17b",
+  "studentBundleAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.student.json",
+  "studentBundleSha256": "ee09fda98839f35c296d30441b34b6d25b90b60110b1af40ba783a4e1960ba05",
+  "immutableFreezeAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\R1.freeze.json",
+  "immutableFreezeSha256": "1a7f6289660e6edc511aff45c65d539f676a9642d31fdaaa44ddbc299c3c6b50",
+  "postfreezeParity": "EXACT",
+  "sourcePdfAbsolute": "D:\\2026_1학기중간_\\대수\\26_효천고_1학기_중간_고2_대수.pdf",
+  "sourcePdfSha256": "03bfbf534577b98f121c6960f64d16a137c5d959e3b3651fcf74f8f3d1a743f5",
+  "pdfPageEvidence": [
+    {
+      "render": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\source-page-2.png",
+      "qid": 10,
+      "renderSha256": "ad3fd3ce07e48a81341b0136e56c0420355ea584652bb97cb877d7da8e518009",
+      "page": 2
+    },
+    {
+      "render": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_효천고_1학기_중간_고2_대수\\source-page-4.png",
+      "qid": 18,
+      "renderSha256": "034e34b2cd1039400d1a454ca928d292d5bb4381f5cc9d50bbe7ae8f683e7b94",
+      "page": 4
+    }
+  ],
+  "sourceFidelityFindings": [
+    {
+      "printedSymbols": "theta (θ)",
+      "fields": [
+        "content",
+        "solution"
+      ],
+      "qid": 10,
+      "currentBodyHasMalformedTeX": true,
+      "minimumCorrectionScope": "Restore the printed θ token in both sum/difference expressions from the original PDF; preserve all surrounding text and fields."
+    },
+    {
+      "printedSymbols": "sin θ > 0, tan θ < 0",
+      "fields": [
+        "content",
+        "solution"
+      ],
+      "qid": 18,
+      "currentBodyHasMalformedTeX": true,
+      "minimumCorrectionScope": "Restore the printed θ and tan tokens from the original PDF; preserve all surrounding text and fields."
+    }
+  ],
+  "freshReviewRequired": {
+    "requirement": "After minimum source/body correction, invalidate affected old freeze scope and conduct a clean R1 independent math/answer/cardinality review for q10 and q18 from the complete corrected current student inputs before answer disclosure.",
+    "qids": [
+      10,
+      18
+    ]
+  },
+  "preserve": {
+    "preR2QuestionReplacement": false,
+    "CREATEAnswerAuthority": false,
+    "oldFreezeMutation": false,
+    "productionOrRegistryMutation": false
+  },
+  "parentDirective": "ROOT: apply the authorized minimum correction or route it to the already authorized repair path; preserve exact PDF provenance and original frozen artifacts; then assign only q10/q18 to a fresh R1 session. Do not disclose old stored answer summaries in that fresh packet."
+}
