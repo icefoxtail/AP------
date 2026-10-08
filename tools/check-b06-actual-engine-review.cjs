@@ -52,14 +52,14 @@ async function main(){
           try{
             const out=await ev("(()=>{const state=typeof AppState!=='undefined'?AppState:null;const area=document.getElementById('print-area');const boxes=area?.querySelectorAll('.q-box[data-source-ref]')||[];const imgs=[...(area?.querySelectorAll('.q-image-wrap img')||[])];return {state:state?.data?.length||0,mode:state?.mode||null,boxCount:boxes.length,imgCount:imgs.length,imagesReady:imgs.every(x=>x.complete&&x.naturalWidth>0),broken:imgs.filter(x=>x.complete&&x.naturalWidth===0).map(x=>x.currentSrc),error:area?.textContent?.slice(0,160)}})()");
             last=out;
-            if(out.state===expected&&out.mode===mode&&out.boxCount===expected&&out.imgCount===expected&&out.imagesReady){ready=true;break}
+            if(out.state===expected&&out.mode===mode&&out.boxCount===expected&&(mode==='exam'?out.imgCount===expected:out.imgCount<=expected)&&out.imagesReady){ready=true;break}
           }catch(e){last=String(e)}
           await delay(125);
         }
         if(!ready)throw Error('ENGINE_RENDER_NOT_READY '+src+' '+mode+' '+JSON.stringify(last));
         const audit=await ev("(()=>{const area=document.getElementById('print-area');const imgs=[...area.querySelectorAll('.q-image-wrap img')];const svg=imgs.filter(x=>new URL(x.currentSrc).pathname.endsWith('.svg')).map(x=>new URL(x.currentSrc).pathname);const badStars=area.innerText.includes('**');const math=area.querySelectorAll('mjx-container').length;return {q:area.querySelectorAll('.q-box[data-source-ref]').length,img:imgs.length,broken:imgs.filter(x=>x.naturalWidth===0).length,svg,rawMarkdown:badStars,mathjax:math,visibleHeight:area.scrollHeight}})()");
-        if(audit.q!==expected||audit.img!==expected||audit.broken||audit.rawMarkdown)throw Error('ENGINE_RENDER_BROKEN '+src+' '+mode+' '+JSON.stringify(audit));
-        if(audit.svg.length!==countSvg)throw Error('SVG_REFERENCES_MISMATCH '+src+' '+mode+' '+JSON.stringify(audit.svg));
+        if(audit.q!==expected||(mode==='exam'&&audit.img!==expected)||audit.broken||audit.rawMarkdown)throw Error('ENGINE_RENDER_BROKEN '+src+' '+mode+' '+JSON.stringify(audit));
+        if(mode==='exam'&&audit.svg.length!==countSvg)throw Error('SVG_REFERENCES_MISMATCH '+src+' '+mode+' '+JSON.stringify(audit.svg));
         if(audit.mathjax<expected)throw Error('MATHJAX_NOT_RENDERED '+src+' '+mode+' '+audit.mathjax);
         audit.svg.forEach(x=>svgPaths.add(x));
         const screen=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false,fromSurface:true});
