@@ -1,0 +1,49 @@
+archive canonical identity propagation checks passed
+✔ tests\archive-canonical-identity-propagation.test.js (83.4958ms)
+{
+  "recordCount": 12926,
+  "canonicalResolved": 12926,
+  "ordinalResolved": 12926,
+  "legacyUnambiguous": 12926,
+  "legacyAmbiguous": 0,
+  "status": "PASS"
+}
+✔ tests\archive-question-identity-contract.test.mjs (210.6783ms)
+{
+  "uidResolved": 12926,
+  "ordinalResolved": 12926,
+  "ambiguous": 0,
+  "runtimeBytes": 3294584,
+  "status": "PASS"
+}
+✔ tests\archive-question-identity-runtime.test.mjs (243.995ms)
+✔ catalog resolution does not promote raw labels into BASIC taxonomy or source-created cards (2.7726ms)
+✔ only a fingerprint-bound assignment with current canonical membership attaches to its parent (0.6529ms)
+✔ final resolver decodes the same packed catalog that browser and Worker deploy (0.6314ms)
+✔ catalogSeed cannot add an item without registered source grade and identity (0.3528ms)
+✔ workspace loads the shared canonical validator before core and runtime (1.326ms)
+✔ Compose consumes only the resolved catalog from the verified version bundle (1.2746ms)
+✔ browser runtime resolves the exact catalog and version bundle through the shared validator (1391.1039ms)
+✔ reviewed item override requires exact identity/fingerprint/evidence and preserves BASIC plus valid advanced capability (0.886ms)
+✔ built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment (210.3095ms)
+✔ reviewed item overrides are aggregated with source-file digests for one shared browser/Worker input (2.2463ms)
+✔ high1 curriculum projection uses exact version-bound allowlist entries and never RAW or M3 keys (0.3669ms)
+▶ input bundle rejects mixed bytes, an old browser version, and missing canonical authority
+  ✔ stale browser (0.669ms)
+  ✔ CRLF transport normalizes to the same canonical input bytes (1.865ms)
+  ✔ stale resolver code (0.2093ms)
+  ✔ incomplete manifest (0.6567ms)
+  ✔ missing digest-only generatedFrom evidence (1.9455ms)
+  ✔ mixed file bytes (1.6233ms)
+  ✔ missing master (1.6662ms)
+✔ input bundle rejects mixed bytes, an old browser version, and missing canonical authority (13.4886ms)
+✔ runtime canonical bootstrap keeps all 57 authority digests while fetching only resolver inputs (502.9107ms)
+✔ canonical manifest digests use stable LF authority bytes in CRLF worktrees (414.6564ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2742.9568

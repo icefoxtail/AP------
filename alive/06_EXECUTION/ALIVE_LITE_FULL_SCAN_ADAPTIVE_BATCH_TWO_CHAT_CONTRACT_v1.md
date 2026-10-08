@@ -1,4 +1,9 @@
 # ALIVE LITE — 전체 스캔 선행·적응형 배치·2채팅 생산 검수 계약 v1
+
+## CURRENT ADDENDUM — 두 번째 채팅의 최종 종료 경계 (2026-10-08)
+- 제2채팅 REVIEW+MAIN은 독립 수학/보기/Meta 검수 및 핀포인트 수정 이후 **Archive 2.0 Generated Bank Consumer DB 물리 등록과 학생용 검색·불러오기·선택 검증**까지 반드시 직접 수행한다. 완료 조건은 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`가 정한다.
+- 정상 리뷰 PASS / main 브랜치에 shard 저장만으로 최종 완료가 아니다. 기존 original qid_v1 consumer index는 ALITE UID용으로 직접 덮어쓰지 않는다. 미지원 adapter는 최소 범위 기술 구현 및 검증 후 완료; 불가 시 DB 미등록 기술 부채를 별도로 남긴다.
+
 날짜: 2026-10-08 KST
 상태: CURRENT / 이 문서가 기존 최대생산량 실험과 source-qid exhaustion의 **실행 순서**에 우선함. 기존 원본 Archive 검수계약은 그대로 유지.
 

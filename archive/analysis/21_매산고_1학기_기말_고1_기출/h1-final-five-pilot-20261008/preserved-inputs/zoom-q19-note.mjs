@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {readPreview,storePreview} from '../../../../archive/tools/archive-preview-cache.mjs';
+const root='C:/Users/USER/Desktop/AP-worktrees/archive-gates/AP------';
+const base=path.join(root,'.tmp/archive/h1-final-five-pilot-20261008/21_매산고_1학기_기말_고1_기출');
+const cacheRoot=path.join(base,'preview-cache');
+const input=path.join(base,'source-crops/q19-source.png');
+const output=path.join(base,'source-crops/q19-note-zoom.png');
+const crop='900x180+0+430'; const parameters={crop,format:'png',backend:'ImageMagick magick',page:6,role:'q19-note-zoom'};
+const paramFile=path.join(base,'q19-note-zoom-params.json'); fs.writeFileSync(paramFile,JSON.stringify(parameters,null,2));
+const options={cacheRoot,sourceFile:input,parameters,toolVersion:'ImageMagick 7.1.2-Q16-HDRI'};
+let result=readPreview(options);
+if(result.status==='CACHE_MISS'){const proc=spawnSync('C:/Program Files/ImageMagick-7.1.2-Q16-HDRI/magick.exe',[input,'-crop',crop,'+repage',output],{encoding:'utf8'});if(proc.status!==0)throw Error(proc.stderr);result=storePreview({...options,previewFile:output});}else fs.copyFileSync(result.preview.path,output);
+console.log(JSON.stringify({status:result.status,sha256:result.preview.sha256,path:output}));

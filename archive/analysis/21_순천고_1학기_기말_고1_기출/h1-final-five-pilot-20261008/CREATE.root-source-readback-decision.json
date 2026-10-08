@@ -1,0 +1,25 @@
+{
+  "schema": "JS_ARCHIVE_ROOT_SOURCE_READBACK_DECISION_V1",
+  "authority": "ROOT",
+  "decisionAt": "2026-10-08",
+  "scope": {
+    "examUid": "21_순천고_1학기_기말_고1_기출",
+    "stage": "CREATE",
+    "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+    "companionPdfSha256": "2ed553d672b29c19d7c35ce0c32f5a2bd9b3b3c6cb7e4e9df7cedb481f7406a5"
+  },
+  "decision": "OCR_NOT_AVAILABLE_MANUAL_FULL_PAGE_SOURCE_READBACK",
+  "basis": "The source requirement is actual original PDF reading and fidelity crosscheck; the OCR result is an additional comparison method, and OCR alone cannot establish truth. No OCR tool installation/procurement is authorized or needed. Accept the completed manual visual readback of all six original exam pages and all six companion pages as source closure for this target. Do not claim OCR execution or OCR PASS.",
+  "requiredEvidence": [
+    "full original PDF SHA and six-page render references",
+    "qid-to-page/region provenance",
+    "manual exact content/choices/formula/unit/condition/diagram readback",
+    "companion comparison and independently adjudicated answer conflicts"
+  ],
+  "completionConditions": [
+    "all source items are visually legible",
+    "all qid source fields and referenced figures are captured",
+    "independent answer reasoning is preserved",
+    "unresolved genuine source ambiguity is carried as item HOLD"
+  ]
+}

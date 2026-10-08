@@ -1,0 +1,35 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "C:\\Program Files\\nodejs\\node.exe tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "a57277c58b28202d8f226dafa1849d3e33298cab003603b9eae405e95ab3ef41",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/publication-checks/workspace-policy.stdout.bin",
+    "stderr": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/publication-checks/workspace-policy.stderr.bin"
+  },
+  {
+    "name": "canonical-current-version",
+    "command": "C:\\Program Files\\nodejs\\node.exe --test tests/archive2-canonical-projection.test.mjs tests/archive-canonical-identity-propagation.test.js",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "a57277c58b28202d8f226dafa1849d3e33298cab003603b9eae405e95ab3ef41",
+    "stdoutSha256": "e0fce1880d89e252ace191ee9ed3e6bf3367447fb2fcc2bf05e406682a7fbbc3",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/publication-checks/canonical-current-version.stdout.bin",
+    "stderr": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/publication-checks/canonical-current-version.stderr.bin"
+  },
+  {
+    "name": "catalog-materializer",
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "a57277c58b28202d8f226dafa1849d3e33298cab003603b9eae405e95ab3ef41",
+    "stdoutSha256": "09b2d985e994c39a0a6e6ea633d11c4dd940a623408f1d6bb9b5f9234275bf13",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_강남여고_1학기_중간_고1_기출\\catalog-correction-attempt-02\\check\\result.json",
+    "reuseBasis": "Exact current catalog/manifest, source, row payloads and canonical inputs unchanged since successful technical correction check"
+  }
+]

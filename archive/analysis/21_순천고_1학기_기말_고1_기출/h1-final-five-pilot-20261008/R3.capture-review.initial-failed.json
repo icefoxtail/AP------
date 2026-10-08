@@ -1,0 +1,240 @@
+{
+  "status": "FAIL",
+  "cases": [
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [
+        {
+          "qid": 2,
+          "description": "Choices ③ and ④ expose literal TeX \\dfrac tokens because the choice strings lack math delimiters; the fractions are not typeset on the exam page.",
+          "category": "MATH_MARKUP_RENDER"
+        }
+      ],
+      "layoutReviewStatus": "FAIL",
+      "id": "exam/desktop",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "d3e3b059d7211f28c780bc212e6209084a670eb27549c36339ac08fb846a9818"
+      ]
+    },
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [
+        {
+          "qid": 2,
+          "description": "Choices ③ and ④ expose literal TeX \\dfrac tokens because the choice strings lack math delimiters; the fractions are not typeset on the exam page.",
+          "category": "MATH_MARKUP_RENDER"
+        }
+      ],
+      "layoutReviewStatus": "FAIL",
+      "id": "exam/mobile",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "fee5e32c7dc5555a43eb431475f7c7edc72b2306d2c350c73d620f04bbe149a6"
+      ]
+    },
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [],
+      "layoutReviewStatus": "PASS",
+      "id": "sol/desktop",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "72712faddb412ad6cb2f76a682bbafa93c4b663512b90bff5b2b9bb95b88152b"
+      ]
+    },
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [],
+      "layoutReviewStatus": "PASS",
+      "id": "sol/mobile",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "07abe1ceac13a445d013207f9ceef20d5e57f0daf0263bcde908fcf4010516e3"
+      ]
+    },
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [],
+      "layoutReviewStatus": "PASS",
+      "id": "ans/desktop",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "66055b929c60b1e682be7897df106d5e78260d0a726adebfad93c1a0febcf1bd"
+      ]
+    },
+    {
+      "assetDecodeStatus": "PASS",
+      "reviewedQids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "findings": [],
+      "layoutReviewStatus": "PASS",
+      "id": "ans/mobile",
+      "mathJaxStatus": "PASS",
+      "reviewedCaptureSha256s": [
+        "cbe9c79fb3226ad0a65f9c5f33f4221bcd73675aa4b8bc99272255b5915ed003"
+      ]
+    }
+  ],
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "artifactSha": "7b29045179947c283432293655dcdcc017d7ee05",
+  "captureReportSha256": "6b9509ae4a25afc90cdae8182d58e51eaa6d128cb964d7ca47197219282f84dc",
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_CAPTURE_REVIEW_V1",
+  "executionLine": "CODEX",
+  "reviewerIdentity": {
+    "reviewerId": "/root/r3_suncheon2021_five",
+    "role": "archive_r3"
+  },
+  "notes": [
+    "All six actual captures opened and reviewed. Exam, solution and answer views cover qids 1-22; q22 is visible in the final section.",
+    "All six machine cases report 22 qids, MathJax present, zero MathJax errors, decoded loaded assets where applicable, and no page errors.",
+    "Exam q2 choices ③/④ are a visible formatting defect; no RENDER_PASS receipt is claimed."
+  ],
+  "coverage": {
+    "allQidsReviewed": true,
+    "desktopMobileExamSolAns": "actual six cases",
+    "lastQid": 22
+  }
+}

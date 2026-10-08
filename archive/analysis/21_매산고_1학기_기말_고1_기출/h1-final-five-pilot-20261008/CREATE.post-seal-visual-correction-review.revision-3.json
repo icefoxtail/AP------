@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_POST_SEAL_VISUAL_CORRECTION_REVIEW_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "priorEvents": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.complete-event.json",
+      "sha256": "ece8b5aab7e06b7f7281a4467e806be9966989235f5b13c850d11ba9c04197a6",
+      "superseded": true,
+      "preserved": true
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.complete-event.revision-2.json",
+      "sha256": "8f76272e3073beea51bcdd75200898567397f692ccc2e7ce0cd54cc9ccc35e54",
+      "superseded": true,
+      "preserved": true
+    }
+  ],
+  "preservedPreRepairCandidate": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\history\\pre-visual-reference-repair\\21_매산고_1학기_기말_고1_기출.js",
+    "sha256": "4e41815d91ea1c138915838effe452968c92c3a5d55cdce407577c9bc74559c1"
+  },
+  "correction": {
+    "qid": 1,
+    "reason": "The referenced q1 solution SVG showed endpoint markers but lacked the blue segment representing the solution interval [1,2).",
+    "previousSvg": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\history\\pre-visual-reference-repair\\q1-solution.pre-interval-segment.svg",
+      "sha256": "a6609dfa2b495108fa1d7f126862ca722654110e16c21a0e982905333cc61651"
+    },
+    "currentSvg": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q1-solution.svg",
+      "sha256": "6bead3ee6d59b8e476f006213424be232a745eea3859dd7d6c5a4e2c38a950f7"
+    },
+    "artifactRawSha256": "e2fc9978a60dc3acf7d161b427c888673c913589ffacf1e630d5f6b76dd933b8",
+    "semanticAnswerUnchanged": true,
+    "staticPrimitiveAudit": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\CREATE.visual-svg-primitive-audit.revision-3.json",
+      "sha256": "fdea590481e14e676652d65239fc385fa68d3856a85d3df946ef5927a712f03f",
+      "qid1Status": "STATIC_MATH_PASS",
+      "checks": [
+        {
+          "name": "left endpoint closed at 1",
+          "status": "PASS"
+        },
+        {
+          "name": "right endpoint open at 2",
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "affectedReferenceIntegrity": {
+    "qids": [
+      1,
+      9,
+      12
+    ],
+    "allReferencedInCurrentJs": true,
+    "intervalPrimitiveStatuses": [
+      {
+        "qid": 1,
+        "status": "STATIC_MATH_PASS",
+        "checks": [
+          {
+            "name": "left endpoint closed at 1",
+            "status": "PASS"
+          },
+          {
+            "name": "right endpoint open at 2",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "qid": 9,
+        "status": "STATIC_MATH_PASS",
+        "checks": [
+          {
+            "name": "both interval endpoints closed",
+            "status": "PASS"
+          },
+          {
+            "name": "integer solutions 2 and 3 labeled",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "qid": 12,
+        "status": "STATIC_MATH_PASS",
+        "checks": [
+          {
+            "name": "strict first root and included second root topology",
+            "status": "PASS"
+          },
+          {
+            "name": "intersection (-3,0] shown",
+            "status": "PASS"
+          }
+        ]
+      }
+    ]
+  },
+  "currentR1R2Holds": [
+    17,
+    20
+  ],
+  "actualArchiveRenderStatus": "NOT_RUN; assigned downstream R3",
+  "genericValidatorRequiredAfterCorrection": true
+}

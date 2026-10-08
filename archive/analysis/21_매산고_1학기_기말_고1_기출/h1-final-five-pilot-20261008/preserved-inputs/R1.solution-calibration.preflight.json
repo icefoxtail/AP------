@@ -1,0 +1,83 @@
+{
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+      },
+      {
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+      },
+      {
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "observation": "학생이 따라갈 수 있도록 좌표 설정, 중간값, 거리 계산을 줄마다 전개한다.",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "qid": 1
+      },
+      {
+        "observation": "접하는 경계 포함을 문장과 식으로 연결해 조건 해석을 재현 가능하게 한다.",
+        "solutionExcerpt": "원과 직선이 만나려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:622be786ec1bbc6a9336a8ec6edd91599cf8caff7a36e9334b15951a8a902b60",
+        "qid": 10
+      },
+      {
+        "observation": "거리 조건에서 접선 방정식과 점 좌표까지 중간식을 단계적으로 제시한다.",
+        "solutionExcerpt": "직선이 원에 접하려면 원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "qid": 4
+      },
+      {
+        "observation": "변환 규칙을 먼저 밝히고 대입식과 정리 결과를 따로 쓴다.",
+        "solutionExcerpt": "원래 직선은",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:d46956c801f4bc2521d8ef9276cf1bbbd7d65c93b9a53389b223bd478fbeeb58",
+        "qid": 17
+      },
+      {
+        "observation": "세기 논리를 먼저 세우고 전체 합을 별도 수식으로 연결한다.",
+        "solutionExcerpt": "각 원소가 세 원소짜리 부분집합에 몇 번 들어가는지 센다.",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:093fba9886d141f2136ce98a7854553020ebdbf4320d9683427d51dd4032f373",
+        "qid": 7
+      },
+      {
+        "observation": "기하 조건을 좌표식으로 바꾼 뒤 각각의 결과를 연립해 결론을 낸다.",
+        "solutionExcerpt": "정사각형의 꼭짓점은",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "solutionSha256": "sha256:7ad772dbb8b898c7acc688edbc2055805a5f16525761454d84e3105c22844c61",
+        "qid": 18
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+      }
+    ]
+  }
+}

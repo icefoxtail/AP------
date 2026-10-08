@@ -1,0 +1,80 @@
+{
+  "disposition": "TARGET_ONLY_PASS_WITH_INHERITED_GLOBAL_CATALOG_HASH_DEBT",
+  "head": "aaabb1d08833fb0485ea6644b524b39f2c62cb32",
+  "examUid": "26_강남여고_1학기_중간_고1_기출",
+  "apply": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-apply-rebase-aaabb-02/target-registration.receipt.json",
+    "sha256": "3ce29f553ecdda6d772b64a29636ebb1daa72f4965cc69fd7faa35fd85ee055d"
+  },
+  "source": {
+    "path": "archive/exams/original/high/h1/1mid/26_강남여고_1학기_중간_고1_기출.js",
+    "rawSha256": "7b4ec0b5141141663eebf2df09ffcce88a462ab94b013658dc90e56fef7a4b00",
+    "rawBufferGitBlobSha1": "7986be54a1844b97cacb38b8db3df45c753c5fb4"
+  },
+  "asset": {
+    "path": "archive/assets/images/26_강남여고_1학기_중간_고1_기출/q07.png",
+    "sha256": "24db6c08a49b658f646a2690c5a4a93f25c71498e9456621a1f3b4b61abc8755"
+  },
+  "qids": {
+    "expected": 24,
+    "observed": {
+      "db": 24,
+      "identity": 24,
+      "metadata": 24,
+      "index": 24,
+      "catalog": 24
+    }
+  },
+  "catalogProjection": {
+    "actualRawSha256": "8e1c76dcb04a3aedb8ca14ce142dbaaaad442eeb14ea8e8bab2c5cd201beffbb",
+    "canonicalExpectedRawSha256": "1c4d733469850a66d1ad5f2ad2641ba4c1d47648177a7682f3d3dc69c5f2ee96",
+    "decodedRecords": 12918,
+    "examRows": 542,
+    "decodedRecordDiffCount": 0,
+    "examDiffCount": 0,
+    "taxonomyHealthEqual": true,
+    "packedColumnsStringsAndRowsEqual": true,
+    "targetSourceHashEqual": true,
+    "inheritedNonTargetSourceHashDebt": [
+      {
+        "path": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
+        "actual": "dfd775566aa5c1b14342806fd8a2a39ea86d86590aa5cf7321186e629b970f2b",
+        "canonical": "76590f6ca6b62b2be3d64c7e85271a34fc91748785bb09f5bc65e8590232317c"
+      }
+    ]
+  },
+  "manifestProjection": {
+    "actualRawSha256": "e1fd3f841c859d0d098cb435788a3f62fc434f9f54c1181edfacf5440f853574",
+    "canonicalExpectedRawSha256": "e06e6d45ecdc444313be8e0cca262b2d30d2cbd8afdc0bfdfee7271cee9ff430",
+    "nonCatalogManifestInputDiffs": [
+      {
+        "path": "data/archive2-catalog.json",
+        "actual": "8e1c76dcb04a3aedb8ca14ce142dbaaaad442eeb14ea8e8bab2c5cd201beffbb",
+        "canonical": "1c4d733469850a66d1ad5f2ad2641ba4c1d47648177a7682f3d3dc69c5f2ee96"
+      }
+    ]
+  },
+  "validators": {
+    "globalCatalogCheck": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-postapply-catalog-check-aaabb-02/result.json",
+      "exitCode": 1,
+      "stderrSha256": "b12a92e64e22ff2b284fa5483223269d58e834ae91d85265e3a47daf586509e5"
+    },
+    "baselineCatalogCheck": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/rebase-baseline-check-aaabb/result.json",
+      "exitCode": 1
+    },
+    "globalRegistrationParity": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-postapply-global-parity-aaabb-02/result.json",
+      "exitCode": 0,
+      "stdoutSha256": "5d55ecb64a5d0a7724ce83b1238390fe05fb0a1873738de7565dcb1bdb59ddde"
+    },
+    "producerContractTests": {
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_강남여고_1학기_중간_고1_기출/registration-postapply-producer-tests-aaabb-02/result.json",
+      "exitCode": 0,
+      "stdoutSha256": "a8a769df507a1802531f5283ee6aff2ac4bf41f7a38f3cb84e8f1c78b4b4f23b"
+    }
+  },
+  "remainingRebaseConflictCount": 9,
+  "stagingOrRebaseContinuationPerformed": false
+}

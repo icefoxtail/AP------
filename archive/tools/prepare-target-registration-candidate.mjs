@@ -71,10 +71,20 @@ function runVmSource(sourcePath) {
   return { window: context.window, bank: bank.map(question => jsonClone(question)) };
 }
 
+function runVmSourceBytes(sourceBytes, filename) {
+  const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  context.globalThis = context;
+  vm.createContext(context);
+  vm.runInContext(Buffer.from(sourceBytes).toString('utf8'), context, { filename, timeout: 5000 });
+  const bank = context.window.questionBank || context.window.questions || context.questionBank || context.questions;
+  assert(Array.isArray(bank) && bank.length > 0, 'SOURCE_PROOF_BANK_REQUIRED', filename);
+  return bank.map(question => jsonClone(question));
+}
+
 export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course }) {
   assert(nonempty(examUid) && nonempty(productionRelativePath), 'DISPLAY_IDENTITY_REQUIRED');
   const file = core.normalizeFile(String(productionRelativePath).replace(/^archive\/exams\//, ''));
-  assert(/^original\/high\/h2\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
+  assert(/^original\/high\/(h1|h2)\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
   assert(path.basename(file, '.js') === examUid, 'EXAM_UID_PATH_PARITY_REQUIRED', examUid);
   const match = /^(\d{2})_([^_]+)_([12])학기_(중간|기말)_(고[123])_(.+)$/.exec(examUid);
   assert(match, 'LOCKED_DISPLAY_ALIAS_FORMAT_UNSUPPORTED', examUid);
@@ -82,15 +92,21 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
   const rosterGrade = String(grade || '').toLowerCase();
   const gradeDisplay = ({ h1: '고1', h2: '고2', h3: '고3' })[rosterGrade];
   assert(gradeDisplay && uidGrade === gradeDisplay, 'ROSTER_GRADE_ALIAS_MISMATCH', examUid);
+  assert(file.startsWith(`original/high/${rosterGrade}/`), 'ROSTER_GRADE_SOURCE_PATH_MISMATCH', `${rosterGrade}|${file}`);
   const courseCode = String(course || '');
   const suffixParts = suffix.split('_');
   const hasPastExamSuffix = suffixParts.at(-1) === '기출';
-  const subject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
+  const uidSubject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
+  // H1's canonical Archive DB stores first-term finals with the locked exam UID ending in `_기출`;
+  // the existing DB's subject/primaryStandardCourse fields supply the display alias.
+  const subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
   const acceptedSubjects = courseCode === 'math2'
     ? new Set(['수학II', '수학Ⅱ'])
     : courseCode === 'geometry'
       ? new Set(['기하', '기하와벡터', '기하와 벡터'])
-      : new Set();
+      : rosterGrade === 'h1' && courseCode === '수학(상)'
+        ? new Set(['수학(상)'])
+        : new Set();
   assert(acceptedSubjects.has(subject), 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
   return {
     sourceFile: file,
@@ -339,7 +355,7 @@ function mergeMetadata(base, targetRows, identityText) {
   return next;
 }
 
-function verifyR1MetaProof(evidence, assignment, examUid, bank) {
+function verifyR1MetaProof(evidence, assignment, examUid, bank, root) {
   assert(evidence?.stage === 'R1' && evidence.examUid === examUid && evidence.qualityContractVersion === 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006' && evidence.executionLine === 'CODEX', 'R1_META_PROOF_IDENTITY_INVALID');
   assert(evidence.artifactSha === assignment.validatorRawBufferBlobSha1, 'R1_META_PROOF_ARTIFACT_SHA_MISMATCH');
   if (evidence.artifactRawSha256 !== undefined) assert(evidence.artifactRawSha256 === assignment.artifactRawSha256, 'R1_META_PROOF_RAW_SHA_MISMATCH');
@@ -348,11 +364,148 @@ function verifyR1MetaProof(evidence, assignment, examUid, bank) {
   const expected = bank.map((_, index) => index + 1);
   const actual = evidence.rows.map(row => Number(row.qid)).sort((a, b) => a - b);
   assert(JSON.stringify(actual) === JSON.stringify(expected), 'R1_META_PROOF_QID_SET_MISMATCH');
-  assert(evidence.rows.every(row => isAcceptedR1Verdict(row.verdict) && hasAcceptedMetaDisposition(row)), 'R1_META_PROOF_META_PASS_REQUIRED');
+  assert(evidence.rows.every(row => isAcceptedR1Verdict(row.verdict) && hasAcceptedMetaDisposition(row, bank[Number(row.qid) - 1])), 'R1_META_PROOF_META_PASS_REQUIRED');
+  const itemRecoveryRows = evidence.rows.filter(row => row.verdict === 'PASS_AFTER_ITEM_RECOVERY');
+  assert(itemRecoveryRows.every(row => verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment })), 'R1_ITEM_RECOVERY_VERDICT_PROOF_REQUIRED');
 }
 
 function isAcceptedR1Verdict(value) {
-  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR';
+  return value === 'PASS' || value === 'PASS_AFTER_ADJUDICATION' || value === 'PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION' || value === 'PASS_AFTER_REPAIR' || value === 'PASS_AFTER_ITEM_RECOVERY';
+}
+
+function verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment }) {
+  assert(Number(row.qid) === 18 && examUid === '21_매산여고_1학기_기말_고1_기출', 'R1_ITEM_RECOVERY_Q18_SCOPE_REQUIRED');
+  const currentQuestion = bank.find(question => Number(question?.id) === 18);
+  assert(row.itemStatus === 'CLEAR_AFTER_FRESH_SCOPED_R1_R2', 'R1_ITEM_RECOVERY_EVIDENCE_NOT_CLEARED');
+  assert(currentQuestion, 'R1_ITEM_RECOVERY_SOURCE_QID_MISSING');
+  if (hasOwn(currentQuestion, 'itemStatus')) {
+    assert(currentQuestion.itemStatus === 'CLEAR_AFTER_FRESH_SCOPED_R1_R2', 'R1_ITEM_RECOVERY_SOURCE_NOT_CLEARED');
+  }
+  assert(row.disposition === 'FRESH_Q18_R1_PASS_R2_MATCH_ALIVE_REPLACEMENT' && row.repairApplied === true && row.sourceMode === 'ALIVE_REPLACEMENT', 'R1_ITEM_RECOVERY_DISPOSITION_REQUIRED');
+  const proof = row.provenanceEvidence?.authorizedReplacement;
+  assert(proof?.sourceMode === 'ALIVE_REPLACEMENT', 'R1_ITEM_RECOVERY_PROVENANCE_REQUIRED');
+  const rootDecision = proof.rootDecision;
+  assert(rootDecision?.authority === 'ROOT_DELEGATED' && Array.isArray(rootDecision.scopeQids) && rootDecision.scopeQids.length === 1 && Number(rootDecision.scopeQids[0]) === 18, 'R1_ITEM_RECOVERY_ROOT_DECISION_BINDING_REQUIRED');
+  const rootReal = fs.realpathSync(root);
+  const readProofRef = (ref, expectedRelative, code) => {
+    assert(ref?.path === expectedRelative && /^[a-f0-9]{64}$/.test(ref.sha256 || ''), code + '_REFERENCE_REQUIRED');
+    const candidate = path.resolve(rootReal, expectedRelative);
+    assert(isWithin(rootReal, candidate), code + '_PATH_OUTSIDE_ROOT');
+    const real = fs.realpathSync(candidate);
+    assert(isWithin(rootReal, real), code + '_SYMLINK_OUTSIDE_ROOT');
+    const bytes = fs.readFileSync(real);
+    assert(sha256(bytes) === ref.sha256, code + '_SHA256_MISMATCH');
+    return { path: real, bytes };
+  };
+  const evidenceRoot = `archive/analysis/${examUid}/h1-final-five-pilot-20261008`;
+  const decisionPath = `${evidenceRoot}/ROOT.item-recovery.decision.json`;
+  const decisionRef = readProofRef(rootDecision, decisionPath, 'R1_ITEM_RECOVERY_ROOT_DECISION');
+  const decision = JSON.parse(decisionRef.bytes.toString('utf8').replace(/^\uFEFF/, ''));
+  assert(decision.schemaVersion === 'ROOT_POST_R2_BOUNDED_ITEM_RECOVERY_DECISION_V1' && decision.runId === 'h1-final-five-pilot-20261008' && decision.examUid === examUid && decision.decisionAuthority === 'ROOT_DELEGATED' && decision.remainingAfterR2 === true && decision.sourceHoldRecordedInEvidence === true && decision.physicalItemStatusNotPresent === true && Array.isArray(decision.scopeQids) && decision.scopeQids.length === 1 && Number(decision.scopeQids[0]) === 18, 'R1_ITEM_RECOVERY_ROOT_DECISION_INVALID');
+  const recoveryRef = readProofRef(proof.itemRecoveryEvidence, `${evidenceRoot}/ITEM_RECOVERY.q18.closed.evidence.json`, 'R1_ITEM_RECOVERY_CLOSED_EVIDENCE');
+  let recoveryEvidence;
+  try { recoveryEvidence = JSON.parse(recoveryRef.bytes.toString('utf8').replace(/^\uFEFF/, '')); }
+  catch { throw new Error('R1_ITEM_RECOVERY_CLOSED_EVIDENCE_JSON_INVALID'); }
+  assert(recoveryEvidence.schemaVersion === 'JS_ARCHIVE_ITEM_RECOVERY_CLOSURE_EVIDENCE_V1'
+    && recoveryEvidence.status === 'Q18_RECOVERY_CLOSED_SCOPED_REVIEW_COMPLETE'
+    && recoveryEvidence.runId === 'h1-final-five-pilot-20261008' && recoveryEvidence.examUid === examUid
+    && Array.isArray(recoveryEvidence.allowedQids) && recoveryEvidence.allowedQids.length === 1 && Number(recoveryEvidence.allowedQids[0]) === 18
+    && recoveryEvidence.sourceMode === 'ALIVE_REPLACEMENT'
+    && recoveryEvidence.reviewStatus?.physicalItemStatus === 'CLEAR'
+    && recoveryEvidence.reviewStatus?.r1Q18 === 'PASS' && recoveryEvidence.reviewStatus?.r2Q18 === 'MATCH'
+    && recoveryEvidence.closureAuthority === 'ROOT_DELEGATED'
+    && recoveryEvidence.sourcePreservation?.originalSourceTextRemainsUnchanged === true,
+  'R1_ITEM_RECOVERY_CLOSED_EVIDENCE_CLEAR_PROOF_REQUIRED');
+  let holdClearPriorBank;
+  if (!hasOwn(currentQuestion, 'itemStatus')) {
+    assert(decision.physicalItemStatusNotPresent === true && recoveryEvidence.reviewStatus.physicalItemStatus === 'CLEAR', 'R1_ITEM_RECOVERY_SOURCE_NOT_CLEARED');
+    const binding = recoveryEvidence.closure?.studentAndProofBinding;
+    assert(binding?.studentFieldsUnchanged === true && binding?.answerSolutionMetaUnchanged === true
+      && binding?.originalR1R2FreezeFilesPreserved === true
+      && binding?.postClearRawSha256 === assignment.artifactRawSha256
+      && /^[a-f0-9]{64}$/.test(binding.r1R2InputRawSha256 || '')
+      && /^[a-f0-9]{40}$/.test(binding.r1R2InputBlobSha1 || ''),
+    'R1_ITEM_RECOVERY_HOLD_CLEAR_BINDING_REQUIRED');
+    const holdClearRelative = `.tmp/archive/h1-final-five-pilot-20261008/${examUid}/evidence/ITEM_RECOVERY.q18.hold-clear-change.json`;
+    const holdClearRef = recoveryEvidence.closure?.changeReport;
+    const holdClearAbsolute = path.resolve(rootReal, holdClearRelative);
+    assert(holdClearRef?.sha256 && /^[a-f0-9]{64}$/.test(holdClearRef.sha256)
+      && path.resolve(holdClearRef.path || '') === holdClearAbsolute, 'R1_ITEM_RECOVERY_HOLD_CLEAR_CHANGE_REFERENCE_REQUIRED');
+    const holdClearReal = fs.realpathSync(holdClearAbsolute);
+    assert(isWithin(rootReal, holdClearReal), 'R1_ITEM_RECOVERY_HOLD_CLEAR_CHANGE_PATH_OUTSIDE_ROOT');
+    const holdClearBytes = fs.readFileSync(holdClearReal);
+    assert(sha256(holdClearBytes) === holdClearRef.sha256, 'R1_ITEM_RECOVERY_HOLD_CLEAR_CHANGE_SHA256_MISMATCH');
+    let holdClear;
+    try { holdClear = JSON.parse(holdClearBytes.toString('utf8').replace(/^\uFEFF/, '')); }
+    catch { throw new Error('R1_ITEM_RECOVERY_HOLD_CLEAR_CHANGE_JSON_INVALID'); }
+    assert(holdClear.schemaVersion === 'JS_ARCHIVE_Q18_HOLD_CLEAR_CHANGE_V1' && holdClear.runId === 'h1-final-five-pilot-20261008'
+      && holdClear.examUid === examUid && JSON.stringify(holdClear.changedQids) === '[18]'
+      && JSON.stringify(holdClear.changedFields) === '[\"itemStatus\"]'
+      && holdClear.beforeRawSha256 === binding.r1R2InputRawSha256 && holdClear.afterRawSha256 === assignment.artifactRawSha256
+      && holdClear.priorItemStatus === 'HOLD' && holdClear.currentItemStatus === 'CLEARED_AFTER_FRESH_SCOPED_R1_R2'
+      && holdClear.studentFieldsUnchanged === true && holdClear.answerSolutionMetaUnchanged === true
+      && holdClear.nonTargetParsedObjectMutationCount === 0 && holdClear.questionCount === bank.length
+      && holdClear.r1?.verdict === 'PASS' && holdClear.r2?.verdict === 'PASS' && holdClear.r2?.answerComparison === 'MATCH'
+      && JSON.stringify(holdClear.r1?.scopeQids) === '[18]' && JSON.stringify(holdClear.r2?.scopeQids) === '[18]',
+    'R1_ITEM_RECOVERY_HOLD_CLEAR_CHANGE_INVALID');
+    assert(path.resolve(rootReal, holdClear.r1?.path || '') === path.resolve(rootReal, `${evidenceRoot}/R1.q18fresh.scoped-review-receipt.json`)
+      && path.resolve(rootReal, holdClear.r2?.path || '') === path.resolve(rootReal, `${evidenceRoot}/R2.q18fresh.scoped-comparison-receipt.json`), 'R1_ITEM_RECOVERY_HOLD_CLEAR_REVIEW_BINDING_INVALID');
+    const freshScopeRefs = row.provenanceEvidence?.freshScopeReviews;
+    assert(holdClear.r1?.sha256 === freshScopeRefs?.r1?.sha256 && holdClear.r2?.sha256 === freshScopeRefs?.r2?.sha256,
+      'R1_ITEM_RECOVERY_HOLD_CLEAR_REVIEW_SHA_MISMATCH');
+    const historicalPath = `${evidenceRoot}/preserved-inputs/history/q18-hold-clear-preimage/${examUid}/${examUid}.js.source-evidence.json`;
+    const historicalReal = fs.realpathSync(path.resolve(rootReal, historicalPath));
+    assert(isWithin(rootReal, historicalReal), 'R1_ITEM_RECOVERY_HOLD_CLEAR_PREIMAGE_PATH_OUTSIDE_ROOT');
+    const historicalBytes = fs.readFileSync(historicalReal);
+    const historical = JSON.parse(historicalBytes.toString('utf8').replace(/^\uFEFF/, ''));
+    assert(historical.schemaVersion === 'JS_ARCHIVE_HISTORICAL_SOURCE_BYTES_V1'
+      && historical.originalPath === `.tmp/archive/h1-final-five-pilot-20261008/${examUid}/history/q18-hold-clear-preimage/${examUid}/${examUid}.js`
+      && historical.rawSha256 === binding.r1R2InputRawSha256 && typeof historical.base64 === 'string', 'R1_ITEM_RECOVERY_HOLD_CLEAR_PREIMAGE_REQUIRED');
+    const priorSourceBytes = Buffer.from(historical.base64, 'base64');
+    assert(priorSourceBytes.length > 0 && sha256(priorSourceBytes) === historical.rawSha256, 'R1_ITEM_RECOVERY_HOLD_CLEAR_PREIMAGE_SHA_MISMATCH');
+    const priorBank = runVmSourceBytes(priorSourceBytes, historical.originalPath);
+    assert(priorBank.length === bank.length, 'R1_ITEM_RECOVERY_HOLD_CLEAR_PREIMAGE_QCOUNT_MISMATCH');
+    const priorQuestion = priorBank.find(question => Number(question?.id) === 18);
+    const priorComparable = jsonClone(priorQuestion), currentComparable = jsonClone(currentQuestion);
+    delete priorComparable.itemStatus;
+    delete currentComparable.itemStatus;
+    assert(hashJson(priorComparable) === hashJson(currentComparable), 'R1_ITEM_RECOVERY_HOLD_CLEAR_Q18_FIELDS_CHANGED');
+    holdClearPriorBank = priorBank;
+  }
+  assert(proof.nonTargetInvariant?.nonTargetQidCount === bank.length - 1 && proof.nonTargetInvariant.mutationCount === 0, 'R1_ITEM_RECOVERY_NON_TARGET_SUMMARY_REQUIRED');
+  const invarianceRef = readProofRef(proof.nonTargetInvariant, `${evidenceRoot}/ITEM_RECOVERY.q18.non-target-invariance.json`, 'R1_ITEM_RECOVERY_NON_TARGET_INVARIANCE');
+  const invariance = JSON.parse(invarianceRef.bytes.toString('utf8').replace(/^\uFEFF/, ''));
+  assert(invariance.schemaVersion === 'JS_ARCHIVE_ITEM_RECOVERY_NON_TARGET_INVARIANCE_V1' && invariance.runId === 'h1-final-five-pilot-20261008' && invariance.examUid === examUid, 'R1_ITEM_RECOVERY_NON_TARGET_PROOF_REQUIRED');
+  if (holdClearPriorBank) {
+    const priorOutside = Object.fromEntries(holdClearPriorBank.filter(question => Number(question?.id) !== 18).map(question => [String(question.id), hashJson(question)]));
+    const currentOutside = Object.fromEntries(bank.filter(question => Number(question?.id) !== 18).map(question => [String(question.id), hashJson(question)]));
+    const expectedOutsideQids = bank.map((_, index) => index + 1).filter(qid => qid !== 18);
+    assert(expectedOutsideQids.every(qid => invariance.nonTargetParsedObjectSha256?.[String(qid)] === priorOutside[String(qid)]
+      && invariance.nonTargetParsedObjectSha256?.[String(qid)] === currentOutside[String(qid)]), 'R1_ITEM_RECOVERY_HOLD_CLEAR_NON_TARGET_OBJECTS_CHANGED');
+  }
+  const expectedNonTargetQids = bank.map((_, index) => index + 1).filter(qid => qid !== 18);
+  assert(Array.isArray(invariance.allowedQids) && invariance.allowedQids.length === 1 && Number(invariance.allowedQids[0]) === 18 && Array.isArray(invariance.changedQids) && invariance.changedQids.length === 1 && Number(invariance.changedQids[0]) === 18 && invariance.currentQuestionCount === bank.length && invariance.nonTargetMutationCount === 0, 'R1_ITEM_RECOVERY_NON_TARGET_INVARIANCE_INVALID');
+  assert(Array.isArray(invariance.nonTargetQids) && invariance.nonTargetQids.length === expectedNonTargetQids.length
+    && JSON.stringify(invariance.nonTargetQids.map(Number)) === JSON.stringify(expectedNonTargetQids)
+    && invariance.nonTargetParsedObjectSha256 && Object.keys(invariance.nonTargetParsedObjectSha256).length === expectedNonTargetQids.length,
+  'R1_ITEM_RECOVERY_NON_TARGET_QID_MAP_INVALID');
+  const holdClearBinding = recoveryEvidence.closure?.studentAndProofBinding;
+  assert(invariance.sourceBeforeRecoveryRawSha256 === decision.source?.sha256
+    && (invariance.currentSourceRawSha256 === assignment.artifactRawSha256
+      || (holdClearBinding?.r1R2InputRawSha256 === invariance.currentSourceRawSha256
+        && holdClearBinding?.postClearRawSha256 === assignment.artifactRawSha256)), 'R1_ITEM_RECOVERY_NON_TARGET_SOURCE_SHA_MISMATCH');
+
+  const reviews = row.provenanceEvidence?.freshScopeReviews;
+  assert(reviews?.r1?.reviewerIdentity?.role === 'archive_r1' && reviews?.r2?.reviewerIdentity?.role === 'archive_r2', 'R1_ITEM_RECOVERY_FRESH_R1_R2_REVIEWS_REQUIRED');
+  assert(reviews.r1.reviewerIdentity.reviewerId && reviews.r2.reviewerIdentity.reviewerId && reviews.r1.reviewerIdentity.reviewerId !== reviews.r2.reviewerIdentity.reviewerId, 'R1_ITEM_RECOVERY_REVIEWER_IDENTITY_REQUIRED');
+  assert(Array.isArray(reviews.r1.scopeQids) && reviews.r1.scopeQids.length === 1 && Number(reviews.r1.scopeQids[0]) === 18 && Array.isArray(reviews.r2.scopeQids) && reviews.r2.scopeQids.length === 1 && Number(reviews.r2.scopeQids[0]) === 18, 'R1_ITEM_RECOVERY_FRESH_SCOPE_Q18_REQUIRED');
+  const r1ReceiptPath = `${evidenceRoot}/R1.q18fresh.scoped-review-receipt.json`, r2ReceiptPath = `${evidenceRoot}/R2.q18fresh.scoped-comparison-receipt.json`;
+  readProofRef(reviews.r1, r1ReceiptPath, 'R1_ITEM_RECOVERY_FRESH_R1_RECEIPT');
+  readProofRef(reviews.r2, r2ReceiptPath, 'R1_ITEM_RECOVERY_FRESH_R2_RECEIPT');
+  const r1Axes = reviews.r1.fourAxisReview;
+  assert(r1Axes?.QUESTION_LAYOUT?.verdict === 'PASS' && r1Axes?.SOLUTION_LAYOUT?.verdict === 'PASS' && r1Axes?.META?.verdict === 'PASS' && ['PASS', 'VISUAL_EXEMPT'].includes(r1Axes?.VISUAL_SVG?.verdict), 'R1_ITEM_RECOVERY_FRESH_R1_AXES_PASS_REQUIRED');
+  assert(reviews.r2.comparison?.qid === 18 && reviews.r2.comparison.disposition === 'MATCH', 'R1_ITEM_RECOVERY_FRESH_R2_MATCH_REQUIRED');
+  return true;
 }
 
 const acceptedMetaPassValues = new Set([
@@ -382,9 +535,20 @@ function metaProofValues(row) {
   return values;
 }
 
-function hasAcceptedMetaDisposition(row) {
+function hasAcceptedMetaDisposition(row, question) {
   const values = metaProofValues(row);
-  return values.some(value => acceptedMetaPassValues.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION');
+  if (values.some(value => acceptedMetaPassValues.has(value) || value === 'REVIEWED_CURRENT_META_DISPOSITION')) return true;
+  const axis = row?.axisEvidence?.META ?? row?.axisEvidence?.meta;
+  if (axis?.status !== 'PASS_WITH_META_ONLY_DEBT') return false;
+  const debtFields = axis.nullDebt?.fields;
+  const rowDebtFields = row?.metaDebtFields;
+  const exactTemplateDebt = Array.isArray(debtFields) && debtFields.length === 1 && debtFields[0] === 'templateKey'
+    && Array.isArray(rowDebtFields) && rowDebtFields.length === 1 && rowDebtFields[0] === 'templateKey'
+    && typeof axis.nullDebt?.reason === 'string' && axis.nullDebt.reason.trim().length > 0
+    && row.metaDebtReason === axis.nullDebt.reason
+    && axis.projectionStatus === 'TEMPLATE_UNMATERIALIZED'
+    && question && hasOwn(question, 'templateKey') && question.templateKey === null;
+  return exactTemplateDebt;
 }
 
 export function verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment, examUid, bank }) {
@@ -407,7 +571,7 @@ export function verifyR1EvidenceBinding({ root, evidencePath, validationPath, as
   } catch {
     throw new Error('R1_EVIDENCE_JSON_INVALID');
   }
-  verifyR1MetaProof(evidence, assignment, examUid, bank);
+  verifyR1MetaProof(evidence, assignment, examUid, bank, rootReal);
   const validationCandidate = path.resolve(rootReal, validationPath || '');
   assert(nonempty(validationPath) && isWithin(rootReal, validationCandidate), 'R1_VALIDATION_PATH_OUTSIDE_ROOT');
   const validationReal = fs.realpathSync(validationCandidate);
@@ -422,6 +586,11 @@ export function verifyR1EvidenceBinding({ root, evidencePath, validationPath, as
   catch { throw new Error('R1_VALIDATION_JSON_INVALID'); }
   assert(validation?.ok === true && validation?.disposition === 'PASS' && validation?.validatorMode === 'R1_V2', 'R1_VALIDATION_NOT_PASS');
   assert(validation.stage === 'R1' && validation.examUid === examUid, 'R1_VALIDATION_IDENTITY_MISMATCH');
+  assert(validation.qualityContractVersion === 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006' && validation.executionLine === 'CODEX'
+    && validation.artifactContract?.active === true && validation.artifactContract.disposition === 'PASS'
+    && validation.artifactContract.qualityContractVersion === 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006'
+    && validation.artifactContract.questionCount === bank.length && Array.isArray(validation.artifactContract.issues) && validation.artifactContract.issues.length === 0,
+  'R1_VALIDATED_CURRENT_ARTIFACT_PASS_REQUIRED');
   assert(validation.artifactSha === evidence.artifactSha && validation.artifactSha === assignment.validatorRawBufferBlobSha1, 'R1_VALIDATION_ARTIFACT_SHA_MISMATCH');
   assert(validation.denominator === bank.length && validation.rowCount === bank.length && Array.isArray(validation.issues) && validation.issues.length === 0, 'R1_VALIDATION_DENOMINATOR_OR_ISSUES');
   const expectedEvidenceRef = path.resolve(rootReal, relative).replace(/\\/g, '/');
@@ -633,15 +802,17 @@ async function main() {
   assert(authorizedRow && rosterRow && authorizedRow.examUid === rosterRow.examUid && authorizedRow.productionPath === rosterRow.productionPath, 'AUTHORIZED_ROSTER_ROW_MISMATCH');
   assert(assignment.examUid === authorizedRow.examUid && assignment.productionRelativePath === authorizedRow.productionPath, 'ASSIGNMENT_AUTHORITY_ROW_MISMATCH');
   const targetFile = core.normalizeFile(authorizedRow.productionPath.replace(/^archive\/exams\//, ''));
-  assert(assignment.productionRelativePath.startsWith('archive/exams/original/high/h2/'), 'TARGET_PRODUCTION_PATH_REQUIRED');
+  assert(/^archive\/exams\/original\/high\/(h1|h2)\//.test(assignment.productionRelativePath), 'TARGET_PRODUCTION_PATH_REQUIRED');
   const assignmentAbs = safe(assignment.productionRelativePath);
   const sourceBytes = fs.readFileSync(assignmentAbs);
   const sourceRawSha256 = sha256(sourceBytes), sourceBlobSha1 = gitBlobSha(sourceBytes);
   assert(sourceRawSha256 === assignment.artifactRawSha256 && sourceBlobSha1 === assignment.validatorRawBufferBlobSha1, 'TARGET_SOURCE_HASH_BINDING_MISMATCH');
   const sourceStatus = execFileSync('git', ['-C', root, 'status', '--short', '--', assignment.productionRelativePath], { encoding: 'utf8' }).trim();
   assert(!sourceStatus, 'TARGET_SOURCE_DIRTY');
-  const registered = core.Canonical.resolveSourceGrade({ registeredGrade: ({ h2: '고2' })[authorizedRow.grade], sourceFile: targetFile, identitySourceFile: targetFile });
-  assert(registered.status === 'VALID' && registered.grade === '고2', 'ROSTER_GRADE_SOURCE_PARITY_FAIL');
+  const registeredGrade = ({ h1: '고1', h2: '고2' })[authorizedRow.grade];
+  assert(registeredGrade, 'ROSTER_GRADE_UNSUPPORTED', String(authorizedRow.grade));
+  const registered = core.Canonical.resolveSourceGrade({ registeredGrade, sourceFile: targetFile, identitySourceFile: targetFile });
+  assert(registered.status === 'VALID' && registered.grade === registeredGrade, 'ROSTER_GRADE_SOURCE_PARITY_FAIL');
   const sourceContext = runVmSource(assignmentAbs);
   const bank = sourceContext.bank;
   if (assignment.questionCount !== undefined) assert(Number(assignment.questionCount) === bank.length, 'ASSIGNMENT_QCOUNT_MISMATCH');

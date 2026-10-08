@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "ROOT_POST_R2_BOUNDED_ITEM_RECOVERY_DECISION_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "authority": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\docs\\rules\\02_PIPELINES\\JS_Archive_2.0_Codex_Execution_v1.md",
+    "sha256": "9a85de017be3c72220a798d0a4cb82301758fdf1789532d2c67abe4ff718d558"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\21_매산고_1학기_기말_고1_기출.js",
+    "sha256": "37aa02556959821382042d0f8aa7104c4fe969a899016e397cd64e18328af4d9"
+  },
+  "heldQids": [
+    17,
+    20
+  ],
+  "completedStages": [
+    "CREATE",
+    "R1",
+    "R2"
+  ],
+  "normalMechanicalStageReportsDoNotClearSourceHolds": true,
+  "qualityBasis": {
+    "r1": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.evidence.revision-1.json",
+      "sha256": "ccdb6cf2dc5058bdc55a797e55c834f69528bb53ab42365db2810a827bcd72c7"
+    },
+    "r2": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.evidence.json",
+      "sha256": "727df8ecaeb3d80c05bc25fc74727173a2816839a93b67f913787dbe5701545a"
+    },
+    "r2SourceAdjudication": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.source-adjudication.json",
+      "sha256": "c8097f5e23778eb1031f5be6fe8bfb5e52ffdfc5cdf60451d0c102cb1e9bfc9b"
+    }
+  },
+  "decision": "Source-first revalidation and deterministic minimal recovery; if true source non-determinacy remains, directly replace only q17/q20 preserving response form, grade/concept/difficulty role, original source/failure/freeze provenance; fresh clean affected-qid R1/R2 required before R3",
+  "sourceJudgmentByRoot": false,
+  "nextStage": "ROOT_ITEM_RECOVERY",
+  "decidedAt": "2026-10-08T03:41:08.537Z"
+}

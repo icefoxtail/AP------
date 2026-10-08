@@ -1,0 +1,2004 @@
+{
+  "schemaVersion": "R1_FINAL_QUALITY_DECISION_V1",
+  "reviewerIdentity": "/root/r1_suncheon2021_five",
+  "examUid": "21_순천고_1학기_기말_고1_기출",
+  "sourceRawSha256": "1d5fe75302366c1cda1d41ef28cef3774ab696c1a4e9b62eb5007e7815253831",
+  "artifactSha": "7b29045179947c283432293655dcdcc017d7ee05",
+  "qualityCompareCount": "22/22",
+  "sourcePdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+  "sourceCompanionSha256": "2ed553d672b29c19d7c35ce0c32f5a2bd9b3b3c6cb7e4e9df7cedb481f7406a5",
+  "originalFreezeSha256": "c12ff4ddf9fc48d63c94d85890b38b2105d330791b65cd6652e666c85273aa24",
+  "adjudications": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.adjudication.json",
+      "sha256": "cb58d392382e4260c410a4b5e804b3533e87d767ad348af6be42929c607c6b7d"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q8.adjudication.json",
+      "sha256": "87d6f6293c22a17a41dd164748706efaae443747676b4c45ff571007b34f517a"
+    }
+  ],
+  "preflightStatus": "PASS",
+  "preflightRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.calibration-gate.json",
+  "rows": [
+    {
+      "qid": 1,
+      "sourcePage": 1,
+      "answer": "6",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p1 text and choices are exact; compact single-item form is legible."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "d26c0ca20fc2c2262cc4b2897d39f69947ae7c48cba47749d98efd6d913d219b",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Absolute-value boundaries x=2,7 are separated; each resulting inequality feeds the integer interval and sum.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "primaryMethod": "절댓값 구간 분리 후 정수 합",
+        "decisiveStep": "ABSOLUTE_VALUE_CASE_SPLIT",
+        "problemTypeLabel": "절댓값 방정식과 부등식",
+        "templateLabel": "절댓값의 구간별 분기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "One absolute-value split plus an interval sum."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Algebraic interval reasoning is complete; a plot adds no decisive information."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:831dbf6b557ae787caa71c828539e710663572af55a5e75631da5960053cd856",
+        "solutionSha256": "d26c0ca20fc2c2262cc4b2897d39f69947ae7c48cba47749d98efd6d913d219b",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 2,
+      "sourcePage": 1,
+      "answer": "해가 없다",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p1 coefficients, interval, choices and order match; no manual split needed."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "22a6b5d62b84d0ff3f818424d133c8fdc4108df8b05dc871516deae224c7533f",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The first inequality fixes roots and coefficients; discriminant and positive leading coefficient establish no real solution.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "primaryMethod": "근의 구간에서 계수 복원, 판별식으로 해 없음 판정",
+        "decisiveStep": "QUADRATIC_INEQUALITY_PARAMETER",
+        "problemTypeLabel": "이차부등식과 부호 조건",
+        "templateLabel": "항상 성립·해 없음의 매개변수",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Parameter recovery plus one discriminant test."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Root recovery and discriminant fully determine the solution set."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:9a997e65abcaa4edfe759f2fb158e24b809ff78ac91e6ca6d9d7bfe1d292eadf",
+        "solutionSha256": "22a6b5d62b84d0ff3f818424d133c8fdc4108df8b05dc871516deae224c7533f",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 3,
+      "sourcePage": 1,
+      "answer": "-4",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p1 coordinate labels and choices match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "7012911e6ff3d8b98bd0f8fabc21440ef09885bc9c34b27088bd3d77d6f966ee",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Centroid x and y coordinates are computed separately, then multiplied.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_DIRECT",
+        "primaryMethod": "무게중심 좌표 계산",
+        "decisiveStep": "CENTROID_COORDINATE",
+        "problemTypeLabel": "삼각형의 무게중심",
+        "templateLabel": "세 꼭짓점으로 무게중심 구하기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 1,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Direct coordinate averaging."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Coordinate averaging is direct and no visual relation is hidden."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:0be6c460ac52b3d7084c67f0bfa241f44202d10bdf85e707bf21db171eae1339",
+        "solutionSha256": "7012911e6ff3d8b98bd0f8fabc21440ef09885bc9c34b27088bd3d77d6f966ee",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 4,
+      "sourcePage": 1,
+      "answer": "y=2x+1",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p1 endpoints, object and five choices match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "89a5c705c2ed10b3622e24e94cff8e333ef8897939aa39c5b602a61d5bbe6257",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The midpoint, AB slope, perpendicular slope, and final point-slope equation are separate steps.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-10",
+        "standardUnitOrder": 10,
+        "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+        "primaryMethod": "중점과 수직 기울기로 직선 결정",
+        "decisiveStep": "PERPENDICULAR_BISECTOR",
+        "problemTypeLabel": "두 직선의 위치 관계",
+        "templateLabel": "두 직선의 수직 조건",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Midpoint and perpendicular-slope substitution."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Midpoint and slopes are explicit; a diagram adds no new decisive fact."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:9f1a88945eb660a43d638041144713af15aaf4be9f0b172dca630ea3e3a8ad3f",
+        "solutionSha256": "89a5c705c2ed10b3622e24e94cff8e333ef8897939aa39c5b602a61d5bbe6257",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 5,
+      "sourcePage": 2,
+      "answer": "ㄴ, ㄷ",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p2 nested 보기 statements are separately line-broken; choices match."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "ff104f01d080d2e8ddb866650e4f9d50643414a60aeb2873cae914e83d586a7e",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Each of the four listed lines gets an individual distance check; the correct pair is identified explicitly.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-10",
+        "standardUnitOrder": 10,
+        "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+        "primaryMethod": "점과 직선 거리로 네 보기 각각 판정",
+        "decisiveStep": "POINT_LINE_DISTANCE",
+        "problemTypeLabel": "점과 직선 사이의 거리",
+        "templateLabel": "점과 직선 사이의 거리 구하기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Four routine point-line distance checks."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Four point-line distances are the decisive facts and are computed individually."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:c290376703b57ba18af516b06a0216aa374f04ac4eca223ff9ee990d58164a2a",
+        "solutionSha256": "ff104f01d080d2e8ddb866650e4f9d50643414a60aeb2873cae914e83d586a7e",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 6,
+      "sourcePage": 2,
+      "answer": "k<10",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p2 equation and strict circle condition match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "010dc2b6d9f6db1899d48d61797704d4ad3c3953937e1d491258cc0d8b6ae998",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Completing squares yields radius squared; strict positivity gives k<10.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
+        "primaryMethod": "완전제곱과 양의 반지름 조건",
+        "decisiveStep": "CIRCLE_REALITY_CONDITION",
+        "problemTypeLabel": "원의 방정식",
+        "templateLabel": "방정식이 원을 나타내기 위한 조건",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Complete square and positive-radius condition."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Circle existence is determined by radius squared."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:6fb511c05702268459ad9cd498b10e681a0b179ee741ecdc2dc36aea0c432f6e",
+        "solutionSha256": "010dc2b6d9f6db1899d48d61797704d4ad3c3953937e1d491258cc0d8b6ae998",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 7,
+      "sourcePage": 2,
+      "answer": "4√2",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p2 point/axis condition and five choices match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "84bc36a62dae4d1c35614543da6c0c8552e7ac29adda8887f1b8403bdd6ec12d",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The four sign cases for axis-tangent centers are separated; positive-radius roots and center distance are explicit.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+        "primaryMethod": "축 접촉 중심을 부호별로 두고 원 조건을 풀이",
+        "decisiveStep": "TWO_AXIS_TANGENT_CIRCLES",
+        "problemTypeLabel": "원의 방정식",
+        "templateLabel": "좌표축에 접하는 원의 방정식",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Exhaustive sign cases and quadratic roots."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "A diagram would show only selected sign cases and could obscure exhaustive coordinate cases."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:98512e7df679ea03076a85966e1b03a11789ea75f5f176522055a48554e95b6f",
+        "solutionSha256": "84bc36a62dae4d1c35614543da6c0c8552e7ac29adda8887f1b8403bdd6ec12d",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 8,
+      "sourcePage": 2,
+      "answer": "15",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p2 all-real condition and integer-count question match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "24fb380431edd340f912268dc9dbd143c7cf7a5381c4a23666ce6c4ab24657f9",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The k=1 degenerate linear case is excluded because the source requires a quadratic function; for k>1, discriminant and integer interval give 15.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-13",
+        "standardUnitOrder": 13,
+        "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "primaryMethod": "차함수의 계수 0 경계와 판별식 조건 분리",
+        "decisiveStep": "QUADRATIC_ABOVE_LINE_ALL_REAL",
+        "problemTypeLabel": "이차함수의 그래프와 교점",
+        "templateLabel": "교점 좌표와 그래프·도형 관계",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Degenerate-coefficient exclusion, global discriminant and integer count."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Global positivity is determined exactly by coefficient and discriminant cases."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:c45937b1787ae51178a2de3373016966213eb9604e3412ee5a895318ebb1a928",
+        "solutionSha256": "24fb380431edd340f912268dc9dbd143c7cf7a5381c4a23666ce6c4ab24657f9",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion ① 15 confirms exclusion of k=1 because the coefficient of x² is zero."
+    },
+    {
+      "qid": 9,
+      "sourcePage": 3,
+      "answer": "ㄱ",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "wide",
+        "wide": true,
+        "reason": "PDF p3 assumptions m≠n,m,n>0 and three 보기 statements are preserved; wide layout groups data clearly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "f1fcc492aa8ba5348bc4cd0fc3e222f7f2a85da05e87b622e73f2c27aad25e1b",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Internal/external division formulas are equated; each statement is tested and ㄴ has a valid counterexample without assuming an order.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_BOTH",
+        "primaryMethod": "내분·외분 좌표를 동등식으로 풀고 무조건 명제를 반례로 판정",
+        "decisiveStep": "INTERNAL_EXTERNAL_DIVISION",
+        "problemTypeLabel": "선분의 내분과 외분",
+        "templateLabel": "내분점과 외분점 함께 다루기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Division formula derivation and universal-statement counterexample."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "A number-line sketch could falsely suggest an unstated A<B order; algebra plus counterexample is safer."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:11c157cec2edc07a192fb99bd51e98f05f4f2915fe6383d04fd49d971282d51a",
+        "solutionSha256": "f1fcc492aa8ba5348bc4cd0fc3e222f7f2a85da05e87b622e73f2c27aad25e1b",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion ③ is inconsistent; source has no a<b, counterexample disproves ㄴ; retain answer ①."
+    },
+    {
+      "qid": 10,
+      "sourcePage": 3,
+      "answer": "11",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p3 equal-distance/line conditions and question are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "7b64ff91c0168c3e6d049e252431ebed1065cd48cd1cd7ef2e7d18f8923007f9",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Equal-distance expansion, substitution into the line, and a−b are separate.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+        "problemTypeKey": "PT_COORD_EQUIDISTANT",
+        "templateKey": "TPL_EQUIDISTANT_LINE",
+        "primaryMethod": "등거리 조건을 전개한 뒤 주어진 직선과 연립",
+        "decisiveStep": "EQUIDISTANT_POINT_LINE",
+        "problemTypeLabel": "두 점에서 같은 거리에 있는 점",
+        "templateLabel": "직선 위의 등거리점",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "One squared-distance equation and line substitution."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Equidistance and line intersection are fully represented by equations."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:af61df278493529e8f903b2bb7e61789413de2728903b525c8d7642d64af311f",
+        "solutionSha256": "7b64ff91c0168c3e6d049e252431ebed1065cd48cd1cd7ef2e7d18f8923007f9",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 11,
+      "sourcePage": 3,
+      "answer": "6",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p3 연장선 and area ratio condition are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "8f63af9d229f3a229eacc4137473c736d546c564d4c03eb6518b2b09b8f048dc",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Area ratio is reduced to |1−t|:|t|; both extension branches are considered before coordinates.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_POINT",
+        "primaryMethod": "면적비를 행렬식으로 바꿔 선분 매개변수와 외부 가지 결정",
+        "decisiveStep": "AREA_RATIO_ON_LINE_EXTENSION",
+        "problemTypeLabel": "좌표를 이용한 삼각형의 넓이",
+        "templateLabel": "넓이 조건으로 점의 좌표 구하기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Area ratio, extension branches, and coordinate evaluation."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The parameter and area ratio are handled directly; a schematic adds no decisive relation."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:4fe70b770539082884cbf258ddd4a4e19d9db94f6e457a99abfcbce197afcdb8",
+        "solutionSha256": "8f63af9d229f3a229eacc4137473c736d546c564d4c03eb6518b2b09b8f048dc",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 12,
+      "sourcePage": 3,
+      "answer": "y=2x+1",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p3 points, segment, equal-area condition and choices are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "038916b0fcb1d1e8939170dd1fb96350da06102ed128d3c580929c577e4aa929",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Equal heights reduce equal areas to D as midpoint; coordinates and line equation follow.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_SECTION",
+        "primaryMethod": "같은 높이에서 넓이 같음을 중점 조건으로 바꿈",
+        "decisiveStep": "EQUAL_TRIANGLE_AREA_MIDPOINT",
+        "problemTypeLabel": "좌표를 이용한 삼각형의 넓이",
+        "templateLabel": "내분점을 이용한 삼각형의 넓이",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Equal-area height argument and midpoint line."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "Equal height and segment midpoint are explicit in the coordinates."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:d997f00d8877c59f1b1bfc0af6b8cb93861447314e0705cc17e305f4ef3bf330",
+        "solutionSha256": "038916b0fcb1d1e8939170dd1fb96350da06102ed128d3c580929c577e4aa929",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 13,
+      "sourcePage": 4,
+      "answer": "5",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "ENCODING_REPAIR",
+        "finalDisposition": "KEEP_AFTER_DELIMITER_CORRECTION",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p4 image and text match; delimiter-only correction closes B(n,2) math span without changing its atoms."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "a5217cc8a90e3b2687364afab3e09e3972942715f8cf9947f60ac8983515d757",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The perpendicular slopes determine n=5; right-angle circumcenter is midpoint AB, giving ab=5.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS_WITH_META_ONLY_DEBT",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+        "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+        "templateKey": null,
+        "primaryMethod": "수직 기울기 조건과 직각삼각형 외심 성질",
+        "decisiveStep": "RIGHT_TRIANGLE_CIRCUMCENTER",
+        "problemTypeLabel": "좌표를 이용한 도형의 성질",
+        "templateLabel": null,
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "TEMPLATE_UNMATERIALIZED",
+        "nullDebt": {
+          "fields": [
+            "templateKey"
+          ],
+          "reason": "No active template under PT_COORD_FIGURE_PROPERTIES describes right-triangle circumcenter; preserve null template as explicit projection debt. ACTIVE H1 binding is exact for H15-SA-09/COORDINATE_METRIC."
+        },
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Perpendicular slopes plus a right-triangle center property."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_REQUIRED",
+        "action": "KEEP",
+        "asset": "assets/images/21_순천고_1학기_기말_고1_기출/q13-source.png",
+        "assetSha256": "ed4d6f1ccc925fef1c83f7c25bd49eb55b53d265973515afe30696f126d8075f",
+        "reason": "Source diagram communicates the two perpendicular lines and their meeting point P."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:a8a4bd103908ac191284bf4bf84e9061c58bd1581859898ba67de0584bc68e24",
+        "solutionSha256": "a5217cc8a90e3b2687364afab3e09e3972942715f8cf9947f60ac8983515d757",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 14,
+      "sourcePage": 4,
+      "answer": "8",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p4 figure, line equation and triangle-area question match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "a2c9bb9a711aed99466d285f8cfc78bb4211d7da1b34523fc9d92409840cc2cd",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Parallel-line separation supplies height; base and area are shown.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT",
+        "primaryMethod": "평행선 간 거리로 밑변 높이 확보",
+        "decisiveStep": "PARALLEL_LINE_TRIANGLE_AREA",
+        "problemTypeLabel": "좌표를 이용한 삼각형의 넓이",
+        "templateLabel": "좌표를 이용한 삼각형의 넓이 구하기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Parallel-line distance and area formula."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_REQUIRED",
+        "action": "KEEP",
+        "asset": "assets/images/21_순천고_1학기_기말_고1_기출/q14-source.png",
+        "assetSha256": "4b5aeee1b3b80511bf9375b262730924c83e3b434971ff1ee6ad184c875bfaa2",
+        "reason": "Source diagram is part of the stated triangle configuration and helps locate P relative to OA."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:9e1bed9a5578523b170174fb0950581ad1e009f56ab56d7dc2166bfe14bc90f4",
+        "solutionSha256": "a2c9bb9a711aed99466d285f8cfc78bb4211d7da1b34523fc9d92409840cc2cd",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 15,
+      "sourcePage": 4,
+      "answer": "4√3π",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p4 tangent-angle condition and choices match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "6e5ae8ba6a9e678e2d7ef877fe0f2bd909caea1e60dfa3db6c860ccd73abdfec",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Tangent radii, the 120° tangent angle, locus radius, and circumference are connected.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-TANGENT",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+        "primaryMethod": "접점 반지름과 접선의 직각 조건에서 P의 자취 반지름",
+        "decisiveStep": "TANGENT_ANGLE_LOCUS",
+        "problemTypeLabel": "원의 접선",
+        "templateLabel": "원 밖의 한 점에서 그은 접선의 방정식",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Tangent-angle geometry and locus circumference."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_REQUIRED",
+        "action": "KEEP",
+        "asset": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution.svg",
+        "assetSha256": "69f8721adc9aba4ddd102f1e336cd9980ce2526d216ac473506b23185bf5c2ea",
+        "reason": "Solution SVG shows both tangents, contact radii, 120° wedge and the locus circle."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:358c839c5f999d2d88283ace1f93f437dc0de487ccef7f08531697abb8cab505",
+        "solutionSha256": "6e5ae8ba6a9e678e2d7ef877fe0f2bd909caea1e60dfa3db6c860ccd73abdfec",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 16,
+      "sourcePage": 4,
+      "answer": "42",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p4 angle, two distinct points P,Q and line condition are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "959feaa670dbadd92aab91fc4dc451c0d7a47d6197c9481309f60e49f7deb12d",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Thales circle, center-to-line distance, chord-length formula, and TeX notation are separated; runtime TeX was repaired.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-INTERSECTION",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "primaryMethod": "지름 원과 직선의 교점이 이루는 현 길이",
+        "decisiveStep": "DIAMETER_CIRCLE_CHORD_LENGTH",
+        "problemTypeLabel": "원과 직선",
+        "templateLabel": "현의 길이",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Thales circle, irrational endpoints and chord length."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_REQUIRED",
+        "action": "KEEP",
+        "asset": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution.svg",
+        "assetSha256": "89a93be123a7799a6ef6fd16fad62fb9545a1554f30f3cf4f12f00478d202cd4",
+        "reason": "Solution SVG shows the diameter circle and the line chord with right-angle endpoints."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:65b869cdf84685f4e68aab2b7b6ced798243f0e14d7c12a60276605eda27dbf6",
+        "solutionSha256": "959feaa670dbadd92aab91fc4dc451c0d7a47d6197c9481309f60e49f7deb12d",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 17,
+      "sourcePage": 5,
+      "answer": "136",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p5 distance-square notation, fixed circle, min/max target and choices match exactly."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "7023a57a50af77b8eae3bcc06a983e0b0f74421483eb8430dc57456ff3cd2ec0",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The squared-distance identity reduces to distance from M; circle center distance and radius yield both extrema.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_POINT_DISTANCE",
+        "primaryMethod": "평행이동 항등식으로 두 거리 제곱을 중심 거리의 범위로 환원",
+        "decisiveStep": "SUM_SQUARED_DISTANCES_ON_CIRCLE",
+        "problemTypeLabel": "원의 방정식",
+        "templateLabel": "원 위의 점과 한 점 사이의 거리",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Distance-square identity and two extrema."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_OPTIONAL",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The circle/center distance is clear from the algebra; no distinct concept anchor is needed for this item."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:f53985633513babbfebb5a8581b3c3d4edaca16623502bf29b8cb8ea2fcb4fab",
+        "solutionSha256": "7023a57a50af77b8eae3bcc06a983e0b0f74421483eb8430dc57456ff3cd2ec0",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 18,
+      "sourcePage": 5,
+      "answer": "2/3",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p5 two-intersection and centroid definitions plus maximization are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "e4639abcc36b3c4926912bd0544e95dbc4b0ea1888bf7e41ec06b4b2380df9c9",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Vieta sums, centroid coordinates, complete-square maximum, and final absolute value are distinct.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-13",
+        "standardUnitOrder": 13,
+        "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "primaryMethod": "교점 근과 꼭짓점을 이용해 무게중심 차를 완전제곱",
+        "decisiveStep": "CENTROID_OF_INTERSECTION_TRIANGLE",
+        "problemTypeLabel": "이차함수의 그래프와 교점",
+        "templateLabel": "교점 좌표와 그래프·도형 관계",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Vieta identities and a parameter maximum."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_EXEMPT",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The varying intersection configuration is handled cleanly by Vieta; a fixed sketch could mislead."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:88ec4cb767e400776141fd9a2a64a821c99ed099383d272021a5771596dcb8e3",
+        "solutionSha256": "e4639abcc36b3c4926912bd0544e95dbc4b0ea1888bf7e41ec06b4b2380df9c9",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 19,
+      "sourcePage": 5,
+      "answer": "38",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p5 directed distance difference and x-axis coordinate condition are exact."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "0d16393d603d22609d67f373f2c9b72a864ed32dec23af70bdf489dc769ed8c4",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Triangle inequality gives the upper bound; equality collinearity and the x-axis intersection determine P.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS_WITH_META_ONLY_DEBT",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+        "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+        "templateKey": null,
+        "primaryMethod": "삼각형 부등식의 등호 조건과 x축 교점",
+        "decisiveStep": "DISTANCE_DIFFERENCE_MAXIMUM",
+        "problemTypeLabel": "거리의 최댓값과 최솟값",
+        "templateLabel": null,
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "TEMPLATE_UNMATERIALIZED",
+        "nullDebt": {
+          "fields": [
+            "templateKey"
+          ],
+          "reason": "Existing source-semantic PT_COORD_DISTANCE_OPTIMIZATION remains; current active templates cover distance-sum minimum, squared-sum minimum, vertex-squared-sum minimum, and product maximum, but not maximizing AP−BP. Preserve existing null template debt."
+        },
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Triangle-inequality equality characterization."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_OPTIONAL",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The equality case is stated and solved by collinearity; no extra visual fact is needed."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:34ef7aba2541a3aaff488ac0ec25ce3556c9ad423e48f5250b0fa3084c39e289",
+        "solutionSha256": "0d16393d603d22609d67f373f2c9b72a864ed32dec23af70bdf489dc769ed8c4",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 20,
+      "sourcePage": 6,
+      "answer": "4",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "NOT_APPLICABLE",
+        "layoutTag": "grid",
+        "wide": false,
+        "reason": "PDF p6 short-answer body is exact; no choices are present."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "3ce5df08318f9b9f2cdee7256f4a5220546be92c8ac43bec9dd156efdbf2ffe3",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "Tangent equation, center-line distance, radius, and k are shown in order.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-11",
+        "standardUnitOrder": 11,
+        "subUnitKey": "H15-SA-11-TANGENT",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENCY_CONDITION",
+        "primaryMethod": "접선 방정식과 점-직선 거리로 반지름 결정",
+        "decisiveStep": "TANGENT_CIRCLE_LINE_DISTANCE",
+        "problemTypeLabel": "원의 접선",
+        "templateLabel": "원과 직선이 접할 조건",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 2,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Tangent equation and center-to-line distance."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_OPTIONAL",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The center-to-line distance computation carries the tangency condition directly."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:69bb9c89a30a5a23daaf1eec4d622ba2923fcc5fce79a565915937a5c155cccc",
+        "solutionSha256": "3ce5df08318f9b9f2cdee7256f4a5220546be92c8ac43bec9dd156efdbf2ffe3",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 21,
+      "sourcePage": 6,
+      "answer": "14",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "NOT_APPLICABLE",
+        "layoutTag": "wide",
+        "wide": true,
+        "reason": "PDF p6 conditions (가)/(나), bounds and integer count are exact; wide layout keeps conditions grouped."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "e4ba37dbfa0366bd1a73f585d0847ecd077b88b9c84520629b2ba171e48569a7",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "The x interval is established; q cases and p counts are enumerated explicitly.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+        "primaryMethod": "q별 정수 구간 교집합을 나눠 p를 열거",
+        "decisiveStep": "INTEGER_PAIR_INTERVAL_COUNT",
+        "problemTypeLabel": "일차·연립부등식",
+        "templateLabel": "정수 개수·매개변수 조건",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 4,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Discrete parameter interval case count."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_OPTIONAL",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The integer interval cases are enumerated explicitly; number-line drawing adds no new relation."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:aa14202a72425306ac81e29ac80aa73ad2c11081dede0abfe4e6515d68ecf345",
+        "solutionSha256": "e4ba37dbfa0366bd1a73f585d0847ecd077b88b9c84520629b2ba171e48569a7",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    },
+    {
+      "qid": 22,
+      "sourcePage": 6,
+      "answer": "14",
+      "answerCompare": "MATCH",
+      "questionLayout": {
+        "status": "PASS",
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "NOT_APPLICABLE",
+        "layoutTag": "wide",
+        "wide": true,
+        "reason": "PDF p6 three line equations and triangle-area request are exact; wide layout is appropriate."
+      },
+      "solutionLayout": {
+        "status": "PASS",
+        "smallBoardContinuityStatus": "PASS",
+        "solutionSha256": "ad4bfdc6c3903eddc4a9f72f4d49fe382e4005771fb2c88a7a645856458eb078",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "reason": "All three pairwise intersections precede the determinant area calculation.",
+        "actualRender": "NOT_RUN_R3_OWNER"
+      },
+      "meta": {
+        "status": "PASS",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-09",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT",
+        "primaryMethod": "세 교점 계산 후 행렬식으로 삼각형 넓이",
+        "decisiveStep": "THREE_LINE_TRIANGLE_AREA",
+        "problemTypeLabel": "좌표를 이용한 삼각형의 넓이",
+        "templateLabel": "좌표를 이용한 삼각형의 넓이 구하기",
+        "curriculumBindingStatus": "ACTIVE",
+        "projectionStatus": "ACTIVE_KEY_SELECTED",
+        "nullDebt": null,
+        "authorityRefs": [
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          },
+          {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+            "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+          },
+          {
+            "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.meta-resolution-audit.final.json",
+            "sha256": "e0cc4179317a6391b02b1f82454560b678112964b3c7bc087105623840fd33a8"
+          }
+        ]
+      },
+      "difficulty": {
+        "status": "PASS",
+        "recheckBucket": 3,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Three line intersections and determinant."
+      },
+      "visualSvg": {
+        "status": "PASS",
+        "necessity": "VISUAL_OPTIONAL",
+        "action": "EXEMPT",
+        "asset": null,
+        "assetSha256": null,
+        "reason": "The three vertices and determinant fully encode the area."
+      },
+      "identityAlignment": {
+        "currentContentChoicesImageFingerprint": "sha256:d15d151fddcc66c0a226f8604ba66c24e00b885d71b5d4351bbf44cc50dcdd44",
+        "solutionSha256": "ad4bfdc6c3903eddc4a9f72f4d49fe382e4005771fb2c88a7a645856458eb078",
+        "alignmentStatus": "PASS"
+      },
+      "companionObservation": "Companion reviewed; no unresolved answer mismatch."
+    }
+  ],
+  "summary": {
+    "qidCount": 22,
+    "questionLayout": "PASS 22/22",
+    "solutionLayout": "PASS 22/22",
+    "meta": "PASS 22/22 with q13/q19 template-only debt bound",
+    "visual": "PASS 22/22; all four referenced assets inspected",
+    "difficulty": "PASS 22/22",
+    "zeroItemHold": true,
+    "r3Render": "NOT_RUN_R3_OWNER",
+    "documentedCompanionDiscrepancy": "q9 companion mark ③ retained as an official-solution error; current answer ① independently proved"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "R1_QID_SOURCE_ENCODING_PARITY_REVIEW_V1",
+  "qid": 13,
+  "reviewerIdentity": "/root/r1_suncheon2021_five",
+  "classification": "PRESENTATION_ENCODING_ONLY",
+  "freezeValidity": "REUSE_SEMANTICALLY_IDENTICAL_INPUT",
+  "sourcePreimage": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\21_순천고_1학기_기말_고1_기출.js",
+    "rawSha256": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+    "studentContentBefore": "자연수 $n$에 대하여 좌표평면에서 점 $A(0,2)$를 지나는 직선과 점 $B(n,2)를 지나는 직선이 서로 수직으로 만나는 점을 $P$라 하자. 점 $P$의 좌표가 $(4,4)$일 때, 삼각형 $ABP$의 외심의 좌표를 $(a,b)$라 하자. $ab$의 값은? (4.7점)",
+    "studentContentBeforeSha256": "1d1865813b09ad7b04b53c6ab82cff11717a7bb9dfb11ff56e40110da84016e0"
+  },
+  "proposedCorrection": {
+    "studentContentAfter": "자연수 $n$에 대하여 좌표평면에서 점 $A(0,2)$를 지나는 직선과 점 $B(n,2)$를 지나는 직선이 서로 수직으로 만나는 점을 $P$라 하자. 점 $P$의 좌표가 $(4,4)$일 때, 삼각형 $ABP$의 외심의 좌표를 $(a,b)$라 하자. $ab$의 값은? (4.7점)",
+    "studentContentAfterSha256": "47f60a47792e6e985bf7290912432c2a2f0ad78ca7ee6abe9e0462c96f7980d0",
+    "exactEdit": "insert one closing $ immediately after B(n,2)",
+    "removedAtoms": [],
+    "addedMathOrChoiceAtoms": [],
+    "conditionChoiceQuestionUnitOrderChanged": false
+  },
+  "frozenInputImpact": {
+    "mathSymbolsAndValuesUnchanged": [
+      "A(0,2)",
+      "B(n,2)",
+      "P(4,4)",
+      "natural n",
+      "perpendicular lines",
+      "circumcenter G(a,b)",
+      "ask ab"
+    ],
+    "imageRefUnchanged": "assets/images/21_순천고_1학기_기말_고1_기출/q13-source.png",
+    "assetSha256": "ed4d6f1ccc925fef1c83f7c25bd49eb55b53d265973515afe30696f126d8075f",
+    "choicesExactParity": true,
+    "answerInterpretationChanged": false
+  },
+  "sourceTruth": {
+    "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_순천고1_1기말.pdf",
+    "pdfSha256": "3eb8b4b530f5f269487d07e87281e6784f97c398e29bb377cc0ea567503b0f37",
+    "page": 4,
+    "observation": "Rendered source states “점 B(n,2)를 지나는 직선”; closing math delimiter is JS/MathJax encoding, not source wording."
+  },
+  "originalFreeze": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-gates/AP------/archive/analysis/21_순천고_1학기_기말_고1_기출/h1-final-five-pilot-20261008/R1.original-freeze.json",
+    "sha256": "c12ff4ddf9fc48d63c94d85890b38b2105d330791b65cd6652e666c85273aa24",
+    "mutated": false
+  },
+  "qualifiedReviewConclusion": "The only difference is one TeX closing delimiter; stripping math delimiters yields the identical student-visible token sequence. It does not alter any mathematical input, choices, units, conditions, or image. Preserve the complete original q13 freeze and apply its arithmetic correction through the separate adjudication; no q13 fresh blind solve is required. Post-correction current-source binding must carry this exact parity evidence."
+}

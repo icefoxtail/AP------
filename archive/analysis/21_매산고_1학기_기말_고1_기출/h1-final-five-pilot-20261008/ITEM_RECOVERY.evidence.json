@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_DIRECT_AUTHORING_EVIDENCE_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산고_1학기_기말_고1_기출",
+  "stage": "ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "sessionIdentity": "/root/create_maesan2021_five",
+  "currentArtifact": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\21_매산고_1학기_기말_고1_기출.js",
+    "rawSha256": "570e05282de12c00a390b2320424e3e22f3280b0f2f7f2c4c540c689171b2ab1",
+    "gitBlobSha1": "d7e8a68198cc8df2a5dc34722bf9e6682e3acd3a",
+    "questionCount": 20,
+    "targetHoldQids": [],
+    "targetItemHoldCount": 0,
+    "wholeExamVerdict": "NOT_CLAIMED"
+  },
+  "sourceFirstSufficiency": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\ITEM_RECOVERY.source-sufficiency.json",
+    "sha256": "350b9c89277d4b802194ca3976bad151d012ec0d71df31da87476ae03883d775",
+    "sourcePdfSha256": "dcd12fa9fb1fd1b9ecc5fd23d5d33394bb4ff66de327c1dfb441c4701c2f5dab",
+    "pagesActuallyRead": [
+      5,
+      6
+    ],
+    "solutionPdfSha256": "d5576f9f116557aef5550ca38b60fce7ca164c625cfec3c9bfb32b2d4fd6db0a",
+    "answerHwpSha256": "11575577b29d511c32ea19bef3433039b5cdf0dda0397dec9d26c84f2e171e99",
+    "answerHwpContentRead": false,
+    "conclusion": "TRUE_ITEM_HOLD_BOTH_QIDS_NO_DETERMINISTIC_MINIMAL_SOURCE_REPAIR"
+  },
+  "upstreamComparison": {
+    "rootDecisionPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\ROOT.item-recovery.decision.json",
+    "rootDecisionSha256": "6d2020d2d4b443a14dadda20ba57f3db805ec2105c1594be6590e4d623df7b8c",
+    "r1EvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.evidence.revision-1.json",
+    "r2EvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.evidence.json",
+    "r2SourceAdjudicationPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.source-adjudication.json",
+    "readAfterSufficiencyAssessment": true,
+    "oldFreezeDisposition": "INVALIDATED_BY_REPLACEMENT_FRESH_QID_ONLY_R1_R2_REQUIRED",
+    "sourceCompanionAssessment": {
+      "qid17": {
+        "independentSourceDecisionRetained": "TRUE_HOLD",
+        "evidence": "R1 freeze adjudication cross-check states finite nonzero m excludes both (0,0) and (2,6); the original answer 14 assumed only (0,0), so companion answer cannot uniquely repair the source condition."
+      },
+      "qid20": {
+        "independentSourceDecisionRetained": "TRUE_HOLD",
+        "evidence": "R1/R2 source adjudications reviewed PDF p6 plus handwritten correction 상수 c→양수 c; HWP preview answer “3개” does not specify c as fixed/common or per-pair existential. R2 per-pair existential count 24 and R1 count 23 (missed (3,17)); neither establishes a unique source interpretation. No deterministic source repair."
+      },
+      "sourceRepairConclusion": "NO_DETERMINISTIC_MINIMAL_REPAIR_AFTER_SOURCE_AND_AVAILABLE_COMPANION_REVIEW_DIRECT_REPLACEMENT_USED"
+    }
+  },
+  "goldenCalibration": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\ITEM_RECOVERY.calibration.json",
+    "sha256": "91c77a5380c0e2bb1c1de1afc56e756c0bc954009df46199b7680bc6cf8afdc8",
+    "preflightResult": "PASS",
+    "actualSamples": [
+      "25_매산여고_2학기_중간_고1_기출.js:q7,q8",
+      "25_효천고_2학기_중간_고1_기출.js:q3,q10"
+    ],
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "visualSamples": [
+      {
+        "sample": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "svgSha256": "sha256:c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+        "previewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_매산여고_2학기_중간_고1_기출-q7.png",
+        "previewSha256": "sha256:32701c0376a86f398fcc3d7393f0887ac73306f9627084427caa42b30b67bbbd",
+        "actualVisualOpened": true
+      },
+      {
+        "sample": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "svgSha256": "sha256:8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75",
+        "previewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_매산여고_2학기_중간_고1_기출-q8.png",
+        "previewSha256": "sha256:aa800fbc1a5b2a73ff880a9ed6bed6e5e9ade096c7fff90fa9c859ef4ce381c6",
+        "actualVisualOpened": true
+      },
+      {
+        "sample": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "svgSha256": "sha256:3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+        "previewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_효천고_2학기_중간_고1_기출-q3.png",
+        "previewSha256": "sha256:fa7bbba22d63ca0aaea8c56c456692ef77883710873f77fc36e04c723254bce1",
+        "actualVisualOpened": true
+      },
+      {
+        "sample": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "svgSha256": "sha256:aaf0a79f61ef32e568ae299605519096a5a92674aa6f13ef1c03d15e75e6c78c",
+        "previewPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-golden-previews\\25_효천고_2학기_중간_고1_기출-q10.png",
+        "previewSha256": "sha256:e251f1accdad57af66f29ae968c3600170ea39450b14eda786a0e0d2f3ccde80",
+        "actualVisualOpened": true
+      }
+    ]
+  },
+  "scope": {
+    "recoveryType": "QUESTION_REPLACEMENT",
+    "method": "CODEX_DIRECT_AUTHORING",
+    "replacementScope": "QUESTION_ONLY",
+    "replacedQids": [
+      17,
+      20
+    ],
+    "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+    "nonTargetQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19
+    ],
+    "nonTargetParsedQuestionObjectsUnchanged": true,
+    "nonTargetAssetsUnchanged": true,
+    "allExamHoldQids": []
+  },
+  "rows": [
+    {
+      "qid": 17,
+      "sourcePage": 5,
+      "originalSourceRef": "2021_매산고1_1기말.pdf#page=5",
+      "responseForm": "단답형",
+      "answer": "14",
+      "directResolve": "PASS",
+      "answerUniqueness": "PASS",
+      "decisiveStep": "Perpendicular slopes imply ∠APB=90°, hence the points P lie on the unique circle with diameter A(2,0)B(0,6).",
+      "questionLayout": {
+        "staticDisposition": "PASS",
+        "semanticBreaks": [
+          "problem setup/formulas",
+          "requested value"
+        ],
+        "formulaUnitsKeptIntact": true,
+        "engineRender": "NOT_RUN"
+      },
+      "solutionBoardStatus": "STATIC_REVIEW_PASS",
+      "difficultyFresh": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two linked decisions (perpendicularity to diameter-circle, then midpoint/radius square) plus a short arithmetic finish; moderate multi-step burden, no case enumeration."
+      },
+      "metaFresh": {
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-10",
+        "standardUnit": "직선의 방정식",
+        "standardUnitOrder": 10,
+        "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+        "subUnit": "두 직선의 평행과 수직",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visual": {
+        "svg": {
+          "qid": 17,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q17-solution.svg",
+          "sha256": "d9c6c2ce0777e26a37b1ef348ecd615e74d4712b8dec33157be6ba84da5d1c1d",
+          "sizeBytes": 1318
+        },
+        "preview": {
+          "qid": 17,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-previews\\q17-solution.png",
+          "sha256": "02ac051ea824d2ca2acad9534b27edeb61b9a2fd4f1a2cf647b7e15e4c1dbbff",
+          "opened": true,
+          "cacheBackend": "ImageMagick 7.1.2-Q16-HDRI"
+        },
+        "geometry": {
+          "A": [
+            2,
+            0
+          ],
+          "B": [
+            0,
+            6
+          ],
+          "P": [
+            4,
+            2
+          ],
+          "center": [
+            1,
+            3
+          ],
+          "radiusSquared": 10,
+          "APdotBP": 0
+        },
+        "questionEngineRender": "NOT_RUN"
+      },
+      "reviewStatus": "PENDING_FRESH_R1_R2"
+    },
+    {
+      "qid": 20,
+      "sourcePage": 6,
+      "originalSourceRef": "2021_매산고1_1기말.pdf#page=6",
+      "responseForm": "서술형",
+      "answer": "16",
+      "directResolve": "PASS",
+      "answerUniqueness": "PASS",
+      "decisiveStep": "Explicit c fixes vertices O=(0,0), M=(a,b), N=(a+b,b−a), area=(a²+b²)/2; coprimality and integrality force both a,b odd.",
+      "questionLayout": {
+        "staticDisposition": "PASS",
+        "semanticBreaks": [
+          "given integer/natural constraints",
+          "explicit c definition and three line equations",
+          "requested count"
+        ],
+        "formulaUnitsKeptIntact": true,
+        "engineRender": "NOT_RUN"
+      },
+      "enumeration": {
+        "b5": [
+          3
+        ],
+        "b7": [
+          3,
+          5
+        ],
+        "b9": [
+          5,
+          7
+        ],
+        "b11": [
+          3,
+          5,
+          7,
+          9
+        ],
+        "b13": [
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "b15": [
+          7
+        ],
+        "b17": [
+          3
+        ],
+        "total": 16
+      },
+      "solutionBoardStatus": "STATIC_REVIEW_PASS",
+      "difficultyFresh": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Several linked line-intersection calculations, determinant area, coprime parity filter, bounded enumeration of seven odd b values; sustained high-school multi-step counting."
+      },
+      "metaFresh": {
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-10",
+        "standardUnit": "직선의 방정식",
+        "standardUnitOrder": 10,
+        "subUnitKey": "H15-SA-10-EQUATION_APPLICATION",
+        "subUnit": "방정식과 부등식의 활용",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY",
+          "CC_NUMBER_PRIME_COPRIME"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "visual": {
+        "svg": {
+          "qid": 20,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q20-solution.svg",
+          "sha256": "a7dea055e47fd4df2b32e6cae589d9448a78b4fdabbdcbbfef8452b74b7146e6",
+          "sizeBytes": 961
+        },
+        "preview": {
+          "qid": 20,
+          "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\item-recovery-previews\\q20-solution.png",
+          "sha256": "08764ef9f634b609756bd9c0708a7c9d773f96626db35445a7678085bd1f733e",
+          "opened": true,
+          "cacheBackend": "ImageMagick 7.1.2-Q16-HDRI"
+        },
+        "example": {
+          "pair": [
+            3,
+            5
+          ],
+          "O": [
+            0,
+            0
+          ],
+          "M": [
+            3,
+            5
+          ],
+          "N": [
+            8,
+            2
+          ],
+          "area": 17
+        },
+        "questionEngineRender": "NOT_RUN"
+      },
+      "reviewStatus": "PENDING_FRESH_R1_R2"
+    }
+  ],
+  "assets": [
+    {
+      "qid": 17,
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q17-solution.svg",
+      "sha256": "d9c6c2ce0777e26a37b1ef348ecd615e74d4712b8dec33157be6ba84da5d1c1d",
+      "sizeBytes": 1318
+    },
+    {
+      "qid": 20,
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\assets\\images\\21_매산고_1학기_기말_고1_기출\\q20-solution.svg",
+      "sha256": "a7dea055e47fd4df2b32e6cae589d9448a78b4fdabbdcbbfef8452b74b7146e6",
+      "sizeBytes": 961
+    }
+  ],
+  "studentOnlyPacket": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\ITEM_RECOVERY.student-only-q17-q20.json",
+    "sha256": "44a7663e6d0fb5d289041d784e8a4b7a8ba81b601e8a7f7f5a68a47f941ed965",
+    "sourceArtifactSha256": "570e05282de12c00a390b2320424e3e22f3280b0f2f7f2c4c540c689171b2ab1",
+    "answerAndSolutionExcluded": true,
+    "targetRows": 2
+  },
+  "preimage": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산고_1학기_기말_고1_기출\\history\\pre-item-recovery\\preimage-manifest.json",
+    "sha256": "7f4e9eda7d1ae951a1935091c8d0541caa735920fc412db0016f5752c873614f",
+    "exactOriginalJsAndAssetsPreserved": true
+  },
+  "worktreeHead": {
+    "assignmentHead": "5e711187f736e211e7b9ff0a4bf9a599b164eafd",
+    "headAtFinalVerification": "a2fd9f4c669315f31d0fce3e04ce87f39d264b5e",
+    "concurrentAdvanceObserved": true,
+    "ourCommits": 0
+  }
+}

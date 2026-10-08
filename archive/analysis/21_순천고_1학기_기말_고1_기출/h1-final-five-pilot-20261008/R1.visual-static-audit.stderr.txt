@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\AP-worktrees\archive-gates\AP------\.tmp\archive\h1-final-five-pilot-20261008\21_��õ��_1�б�_�⸻_��1_����\audit-solution-visuals.py", line 42, in <module>
+    print(json.dumps({'schema':'JS_ARCHIVE_CREATE_VISUAL_STATIC_AUDIT_V1','examUid':uid,'sourceExamRawSha256':sha(root/(uid+'.js')),'converter':'ImageMagick 7.1.2-Q16-HDRI','conversionParameters':'magick -background white <svg> <preview.png>','rows':rows},ensure_ascii=False,indent=2))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2212' in position 10493: illegal multibyte sequence

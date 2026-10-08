@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_GOLDEN_PREFLIGHT_V1",
+  "examUid": "21_매산여고_1학기_기말_고1_기출",
+  "completedBeforeSolutionAuthoring": true,
+  "completedAt": "2026-10-08T02:18:50.789Z",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "observation": "Read full solution: standard form by completing both squares, carry the center and radius through translation then origin reflection, final equation and answer-marker match. Opened q7 SVG; C0(-3,1) -> C1(-5,2) -> C2(5,-2), equal radius circles and displacement arrows match the written transforms.",
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "visualObservation": "Read SVG source geometry and labels; checked against the solution facts above."
+        },
+        {
+          "qid": 8,
+          "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "observation": "Read full solution: infer slope/intercept signs from source graph, derive coefficient sign relations, then check new line slope and both intercepts to exclude quadrant III. Opened q8 SVG; its proof-flow nodes encode those same sign relationships and conclusion.",
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "visualSha256": "8fdc0f044739aa811e7cfb3b02ba89941b94aa4ff888e11e439057d24d8ddb75",
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+          "visualObservation": "Read SVG source geometry and labels; checked against the solution facts above."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "items": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "Read full solution: convert both line forms to slopes and apply perpendicular product; arithmetic gives k=6. Opened q2 SVG; first line has coefficients (1,3,2), second (6,-2,-1), and their modeled slopes are -1/3 and 3.",
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "visualObservation": "Read SVG source geometry and labels; checked against the solution facts above."
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+          "observation": "Read full solution: complete squares and compare center/radius. Opened q3 SVG; circle centered (-1,3) with radius 2 is represented and labeled consistently.",
+          "axes": [
+            "SOLUTION_LAYOUT",
+            "SMALL_BOARD_STRUCTURE",
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+          "visualObservation": "Read SVG source geometry and labels; checked against the solution facts above."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Read the full fixture README and q7 bad SVG. It requires actual primitive coordinates/topology to be checked instead of trusting labels; also flags collapsed enumerated small-board steps, missing exact ACTIVE Meta mappings despite N/N claims, and doubled TeX escape/runtime checks."
+  },
+  "negativeSvg": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+    "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+    "observation": "Opened the preserved q7 bad SVG. The drawn curve/polyline and point/label coordinates do not satisfy the stated parabola incidence facts; preserve as negative regression, never copy to target."
+  }
+}

@@ -1,0 +1,32 @@
+archive canonical identity propagation checks passed
+✔ tests\archive-canonical-identity-propagation.test.js (79.9519ms)
+✔ catalog resolution does not promote raw labels into BASIC taxonomy or source-created cards (3.1396ms)
+✔ only a fingerprint-bound assignment with current canonical membership attaches to its parent (0.5399ms)
+✔ final resolver decodes the same packed catalog that browser and Worker deploy (0.5306ms)
+✔ catalogSeed cannot add an item without registered source grade and identity (0.3304ms)
+✔ workspace loads the shared canonical validator before core and runtime (0.9394ms)
+✔ Compose consumes only the resolved catalog from the verified version bundle (1.2134ms)
+✔ browser runtime resolves the exact catalog and version bundle through the shared validator (1365.6901ms)
+✔ reviewed item override requires exact identity/fingerprint/evidence and preserves BASIC plus valid advanced capability (0.8908ms)
+✔ built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment (206.993ms)
+✔ reviewed item overrides are aggregated with source-file digests for one shared browser/Worker input (2.3975ms)
+✔ high1 curriculum projection uses exact version-bound allowlist entries and never RAW or M3 keys (0.5443ms)
+▶ input bundle rejects mixed bytes, an old browser version, and missing canonical authority
+  ✔ stale browser (0.8135ms)
+  ✔ CRLF transport normalizes to the same canonical input bytes (2.0432ms)
+  ✔ stale resolver code (0.2724ms)
+  ✔ incomplete manifest (0.6794ms)
+  ✔ missing digest-only generatedFrom evidence (1.9934ms)
+  ✔ mixed file bytes (1.6911ms)
+  ✔ missing master (1.8353ms)
+✔ input bundle rejects mixed bytes, an old browser version, and missing canonical authority (16.3382ms)
+✔ runtime canonical bootstrap keeps all 57 authority digests while fetching only resolver inputs (467.1472ms)
+✔ canonical manifest digests use stable LF authority bytes in CRLF worktrees (405.2831ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2639.3844

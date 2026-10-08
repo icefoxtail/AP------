@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R2.original-freeze.json",
+    "sha256": "e2fcb6ecd59e8f40db6ae9a75b416c4c6d3a73f804b794b3eede9c0cec995c57"
+  },
+  "createdAt": "2026-10-08T03:35:16.705Z",
+  "corrections": [
+    {
+      "qid": 17,
+      "correctedAnswer": "OPEN/HOLD: both (0,0) and (2,6) are unattained for finite real m≠0; the source names only one excluded point, so the requested value is 14 or 6 depending on (p,q).",
+      "reason": "After complete student-input freeze, solving the two line equations gives P=((2m²+6m)/(m²+1),(6m²−2m)/(m²+1)) on the circle centered (1,3), radius √10. The two distinct points (0,0) and (2,6) are both omitted from the finite nonzero parameter range: the first is only a limit at m→0, the second only at m→∞. The original singular (p,q) cannot describe both. The source PDF p5 and official solution p6 were visually reviewed; the solution selects (p,q)=(2,6) and answer 6 but leaves the other omission unresolved. The answer-key preview leaves 단답형2 blank. No source edit attempted.",
+      "originalAnswer": "14"
+    },
+    {
+      "qid": 20,
+      "correctedAnswer": "OPEN/HOLD: pairwise existential c yields 24; a single fixed unspecified positive real c yields a count that depends on c.",
+      "reason": "After complete student-input freeze, with D=a²+b² and t=bc/D, the three triangle vertices are (0,0), (at,bt), ((a+b)t,(b−a)t); integer vertices are equivalent to t∈N and area is t²D/2. If c may be chosen separately for each pair, valid coprime pairs count 24: 16 odd-odd pairs with D≤300 and 8 mixed-parity pairs with D≤75 (including (3,17), area 149). If c is one fixed unspecified positive real, the count varies: c=1 gives no pairs because 0<bc/D<1, while c=34/5 allows (a,b)=(3,5), t=1, area 17. The source p6 correction reads “양수 c” (not a value or pairwise quantifier); official solution p8 and answer-key preview “서술형2. 3개” do not supply that missing scope and their derivation imposes an unstated restriction. No source edit attempted.",
+      "originalAnswer": "24"
+    }
+  ],
+  "originalFreezeMutated": false
+}

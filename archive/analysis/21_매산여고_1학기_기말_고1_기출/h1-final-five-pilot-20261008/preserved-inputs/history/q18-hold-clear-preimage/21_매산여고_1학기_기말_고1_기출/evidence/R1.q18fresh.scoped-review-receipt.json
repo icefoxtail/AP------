@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "ROOT_FRESH_Q18_SCOPE_REVIEW_V1",
+  "runId": "h1-final-five-pilot-20261008",
+  "examUid": "21_매산여고_1학기_기말_고1_기출",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "actualReviewerIdentity": {"role":"archive_r1","reviewerId":"/root/r1_maesangirls2021_q18fresh","model":"gpt-6-luna","reasoningEffort":"high"},
+  "currentArtifact": {"path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출\\21_매산여고_1학기_기말_고1_기출.js","rawSha256":"1e1ec528a66ee8ce293bd33d67a1e89a05b8da6f622103e44dc513dc890d63a9","rawBufferGitBlobSha1":"9ccc7075e8938c7a28b7fa9138703a14d78ada6f"},
+  "currentFull22StudentBundle": {"path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_매산여고_1학기_기말_고1_기출\\ITEM_RECOVERY.q18.full-current-student-bundle.json","sha256":"225c2a75e930e368290a6d3d40bc448e18ea2886b5c6a7b76429f20bd942b759","fullDenominator":22,"qidOrder":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]},
+  "originalScopeFreeze": {"path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q18fresh.original-scope-freeze.json","sha256":"428c6be317c75635a08ce910595f187eb03385ba80a9340cc5b4ccfa5e07ae09","preserved":true},
+  "independentAnswerEvidence": {"path":"C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산여고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.q18fresh.answers.revision2.json","sha256":"197aa1639b65de2f70cb0554fc2ce25b91335a62621359c2369462ad345e3a7e"},
+  "scopeQids": [18],
+  "scopeDependenciesQids": [18],
+  "independentStoredComparison": {"independentAnswer":"㉡, $b$","storedAnswer":"㉡, $b$","result":"MATCH","cardinality":"ONE","reasoningCheck":"For each circle, x-axis tangency requires |k|=r and y-axis tangency requires |h|=r. ㉡ has center (a,b), radius b; b>0 gives x-axis tangency and a!=b gives |a|!=b, so no y-axis tangency. ㉠ and ㉣ touch both axes; ㉢ fails x-axis tangency. Independent result and stored answer/solution agree."},
+  "fourAxisReview": {
+    "QUESTION_LAYOUT": {"verdict":"PASS","disposition":"LAYOUT_KEEP","findings":"The prompt, condition (단, a,b>0 and a≠b), score, and four labeled complete circle equations remain in source order. A newline separates prompt from options; the compact option row keeps labels attached to complete equations. No text or choices were changed. Static source review only; no viewport/render claim.","dependenciesRead":[18]},
+    "SOLUTION_LAYOUT": {"verdict":"PASS","disposition":"SOLUTION_KEEP","findings":"Stored solution states the center/radius tangency tests, checks all four options, applies b>0 and a≠b at the relevant steps, and separates each option and the conclusion with line breaks. The decisive reasoning and final radius are explicit; no compressed calculation or missing condition application found.","dependenciesRead":[18]},
+    "META": {"verdict":"PASS","findings":"Read q18 current stored fields: 수학(상), H15-SA-11 / 원의 방정식, H15-SA-11-CIRCLE_EQUATION / 원의 방정식, PT_CIRCLE_EQUATION, TM_CIRCLE_AXIS_TANGENT, difficultyBucket 2, difficultyConfidence high, difficultyBoundaryFlag NONE, legacyLevelCompatibility NORMAL. Course/unit and problem/template keys match the circle-equation task; no semantic mismatch found.","dependenciesRead":[18]},
+    "VISUAL_SVG": {"verdict":"VISUAL_EXEMPT","findings":"The q18 student row has no referenced problem assets and disclosed solutionAssets is empty. The task is fully specified by the circle equations and axis-tangency conditions; a diagram is not needed to determine or explain the answer. No SVG asset exists or was required; no asset preview was applicable.","dependenciesRead":[18]}
+  },
+  "scopedTrueItemHoldCount": 0,
+  "actualRender": {"status":"NOT_RUN","renderPassClaimed":false,"note":"This receipt records static q18 review only and does not claim an actual render result."},
+  "stagePass": false,
+  "fullStageValidatorNotRun": true,
+  "scopeOnly": true
+}

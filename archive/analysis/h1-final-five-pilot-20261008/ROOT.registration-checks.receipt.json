@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_REGISTRATION_VALIDATOR_CLOSEOUT_V1",
+  "at": "2026-10-08T07:55:46.446Z",
+  "head": "42acf2783db712e38ca703234ee25707c91d0e24",
+  "scope": "Five locked school targets applied with non-target invariance; current canonical registration checks",
+  "ok": true,
+  "results": [
+    {
+      "label": "materializer-test",
+      "command": [
+        "node",
+        "tests/archive-meta-v2-materializer.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.materializer-test.stdout.log",
+        "sha256": "cc67fcb4d2dc9667353c286ce83c2f07f276cb6cbfd1681da6f51fd8efd36ba0"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.materializer-test.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "semantic-authority",
+      "command": [
+        "node",
+        "tests/archive2-meta-v2-semantic-authority.test.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.semantic-authority.stdout.log",
+        "sha256": "1e029e1baac393a34c36f3bd9f92672c22723b9dbb6712474fdcbbc4ba612c02"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.semantic-authority.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "materializer-check",
+      "command": [
+        "node",
+        "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.materializer-check.stdout.log",
+        "sha256": "a2f4e84453663689ff6e785cf6dbeda9e6f37aad05b86c11b0744496e56b9e47"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.materializer-check.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "identity-contract",
+      "command": [
+        "node",
+        "tests/archive-question-identity-contract.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.identity-contract.stdout.log",
+        "sha256": "6cc4dd1b0ec5ff35450295871e5b1db116a4217ed2373763362d74265287f9e7"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.identity-contract.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "identity-runtime",
+      "command": [
+        "node",
+        "tests/archive-question-identity-runtime.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.identity-runtime.stdout.log",
+        "sha256": "e076b5923e28f8209730916136e9dca03da1477348df56222f53fe596565bd90"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.identity-runtime.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "registration-parity",
+      "command": [
+        "node",
+        "archive/tools/verify-archive-registration.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.registration-parity.stdout.log",
+        "sha256": "fb0a37d91b1e2f730fc26cac82bc62a7de8c1cdff5fd367ad0a7027fc9b8530c"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.registration-parity.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "registration-sync",
+      "command": [
+        "node",
+        "tests/archive2-registration-sync.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.registration-sync.stdout.log",
+        "sha256": "a455b263a9894154f112c1d0fe5cb19dfdce54492c31e836466a3af09e9f0ff4"
+      },
+      "stderr": {
+        "path": "archive/analysis/h1-final-five-pilot-20261008/ROOT.registration-check.registration-sync.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "registryBindings": [
+    {
+      "path": "archive/db.js",
+      "sha256": "d556f93d59902522090d3b22d99a49fb302231159116195f93a65b010da32fef"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "3fc4fabd59e065de263dd30ea220c7e07c7f24ba31797ed6d1113a9836e8bcf6"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "662ea8c318b664ad103cc8c72530dacc3f14ef0633a16473833f80d435481fbd"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "sha256": "22f2adb6ab3b8e79c1022eb47dae6f381cdf40fdecaa52a7981f37d579beb7df"
+    },
+    {
+      "path": "archive/question-index.js",
+      "sha256": "2bd7ad61e1e8cee085da316e39ad8aefa924498b4fa276013f96722cb4eea220"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "sha256": "28e0b0fa61d5f7285ec5c29903743ed59606211af0f63dc466f838da66ac46a5"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "sha256": "c9bfb39e23f9870ec8abcd34777ac15005c7ebe0729e508c2e36802686a28d7d"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "sha256": "0cf922ab6ecf4f1ebd99b3b8167095440769ceb36a7bed1b669b9c6ce5c99617"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "sha256": "9bb921f66d1a4a73981372138ccf4abba66e1b52c2d0eea3b54832e0538b1360"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_순천고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.original-freeze.json",
+    "sha256": "c12ff4ddf9fc48d63c94d85890b38b2105d330791b65cd6652e666c85273aa24"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\.tmp\\archive\\h1-final-five-pilot-20261008\\21_순천고_1학기_기말_고1_기출\\R1.student-bundle.json",
+    "sha256": "763728ec8fdf743115ab1398abfad1f2d936e04b5d7630358efaf8a89459df86"
+  },
+  "sourceRawSha256": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+  "originalFreezeSourceRawSha256": "d3d55ae58381cc774ad5a7b1d303f2716c945a5c59a244531deb1a0e7a5a4122",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 1,
+      "answer": "①",
+      "solution": "절댓값 식은 경계 $x=2$, $x=7$에서 나누어 푼다.\n$x<2$이면 $7-x\\ge6-3x$이므로 $x\\ge-\\dfrac12$이다.\n$2\\le x<7$이면 $7-x\\ge3x-6$이므로 $x\\le\\dfrac{13}4$이다.\n$x\\ge7$이면 $x-7\\ge3x-6$에서 $x\\le-\\dfrac12$가 되어 이 구간에는 해가 없다.\n따라서 $-\\dfrac12\\le x\\le\\dfrac{13}4$이고 정수해는 $0,1,2,3$이다.\n$0+1+2+3=6$\n정답은 ①이다.",
+      "decisiveStep": "ABSOLUTE_VALUE_CASE_SPLIT"
+    },
+    {
+      "qid": 2,
+      "answer": "⑤",
+      "solution": "첫 이차식은 위로 열린 포물선이고 음수인 구간이 $(-2,3)$이므로 두 근은 $-2,3$이다.\n$x^2-ax-b=(x+2)(x-3)=x^2-x-6$\n$a=1,\\quad b=6$\n두 번째 식은\n$6x^2+x+1$\n판별식은\n$D=1^2-4\\cdot6\\cdot1=-23<0$\n최고차항 계수가 양수이고 실근이 없으므로 모든 실수에서 양수이다.\n따라서 부등식의 해는 없다. 정답은 ⑤이다.",
+      "decisiveStep": "QUADRATIC_INEQUALITY_PARAMETER"
+    },
+    {
+      "qid": 3,
+      "answer": "②",
+      "solution": "삼각형의 무게중심은 세 꼭짓점 좌표의 평균이다.\n$a=\\dfrac{7+(-1)+6}{3}=\\dfrac{12}{3}=4$\n$b=\\dfrac{2+(-5)+0}{3}=\\dfrac{-3}{3}=-1$\n$ab=4\\cdot(-1)=-4$\n정답은 ②이다.",
+      "decisiveStep": "CENTROID_COORDINATE"
+    },
+    {
+      "qid": 4,
+      "answer": "⑤",
+      "solution": "수직이등분선은 $AB$의 중점을 지나고 $AB$에 수직이다.\n중점은\n$M=\\left(\\dfrac{-3+5}{2},\\dfrac{5+1}{2}\\right)=(1,3)$\n$AB$의 기울기는\n$\\dfrac{1-5}{5-(-3)}=-\\dfrac12$\n수직인 직선의 기울기는 $2$이다.\n$y-3=2(x-1)$\n$y=2x+1$\n정답은 ⑤이다.",
+      "decisiveStep": "PERPENDICULAR_BISECTOR"
+    },
+    {
+      "qid": 5,
+      "answer": "④",
+      "solution": "ㄱ의 직선은 $3x-2y=0$이다. 점 $(1,3)$까지의 거리는\n$\\dfrac{|3-6|}{\\sqrt{3^2+(-2)^2}}=\\dfrac3{\\sqrt{13}}\\ne1$이다.\nㄴ의 직선은 $4x-3y=0$이고 거리는\n$\\dfrac{|4-9|}{\\sqrt{4^2+(-3)^2}}=\\dfrac55=1$이다.\nㄷ $x=0$까지의 거리는 $|1|=1$이다.\nㄹ $y=0$까지의 거리는 $|3|=3$이다.\n따라서 ㄴ, ㄷ이 옳고 정답은 ④이다.",
+      "decisiveStep": "POINT_LINE_DISTANCE"
+    },
+    {
+      "qid": 6,
+      "answer": "②",
+      "solution": "완전제곱식으로 고치면\n$(x+1)^2+(y-3)^2=10-k$\n원의 반지름의 제곱은 $10-k$이다.\n실제 원이 되려면 반지름이 양수이므로\n$10-k>0$\n$k<10$\n정답은 ②이다.",
+      "decisiveStep": "CIRCLE_REALITY_CONDITION"
+    },
+    {
+      "qid": 7,
+      "answer": "②",
+      "solution": "중심이 두 축에 접하는 원은 $(\\epsilon r,\\delta r)$, 반지름 $r>0$로 둘 수 있다. $(\\epsilon,\\delta)$는 각각 $1$ 또는 $-1$이다.\n점 $(2,1)$을 지나므로\n$(2-\\epsilon r)^2+(1-\\delta r)^2=r^2$\n$r^2-(4\\epsilon+2\\delta)r+5=0$\n$(\\epsilon,\\delta)=(1,1)$이면\n$r^2-6r+5=0$, 따라서 $r=1$ 또는 $5$이다.\n$(1,-1)$ 또는 $(-1,1)$이면 $r^2\\mp2r+5=0$이고 판별식은 $-16$이라 실근이 없다.\n$(-1,-1)$이면 $r^2+6r+5=0$의 근은 $-1,-5$라 $r>0$에 맞지 않는다.\n따라서 두 중심은 $(1,1)$, $(5,5)$이다.\n$d=\\sqrt{(5-1)^2+(5-1)^2}=4\\sqrt2$\n정답은 ②이다.",
+      "decisiveStep": "TWO_AXIS_TANGENT_CIRCLES"
+    },
+    {
+      "qid": 8,
+      "answer": "②",
+      "solution": "두 그래프의 차가 모든 실수에서 양수여야 한다.\n$(k-1)x^2+x+1-(kx-3)=(k-1)x^2+(1-k)x+4$\n$k=1$이면 차는 항상 $4$이므로 조건을 만족한다.\n$k<1$이면 이차항 계수가 음수여서 큰 $|x|$에서 음수가 되므로 불가능하다.\n$k>1$이면 위로 열린 이차식이므로 판별식이 음수여야 한다.\n$D=(1-k)^2-16(k-1)=(k-1)(k-17)<0$\n따라서 $1<k<17$이다. 정수는 $2,3,\\ldots,16$으로 15개이다.\n$k=1$도 포함하므로 모두 16개이다. 정답은 ②이다.",
+      "decisiveStep": "QUADRATIC_ABOVE_LINE_ALL_REAL"
+    },
+    {
+      "qid": 9,
+      "answer": "①",
+      "solution": "내분점 좌표와 외분점 좌표를 각각 쓴다.\n$p=\\dfrac{na+mc}{m+n}=\\dfrac{nb-mc}{n-m}$\n두 식을 정리하면\n$c=\\dfrac{(m+n)b+(m-n)a}{2m}$,\\quad $p=\\dfrac{a+b}{2}$\nㄱ에서\n$c=\\dfrac{3\\cdot5+(-1)\\cdot1}{2}=7$이므로 참이다.\nㄴ은 $a>b$인 경우 반례가 있다. 예를 들어 $a=5,b=1,m=2,n=1$이면 $p=3,c=2$이므로 $a<p<c<b$가 성립하지 않는다. 거짓이다.\nㄷ의 식은 일반적으로 $(a+b)/2$이므로 거짓이다.\n따라서 ㄱ만 옳아 정답은 ①이다.",
+      "decisiveStep": "INTERNAL_EXTERNAL_DIVISION"
+    },
+    {
+      "qid": 10,
+      "answer": "①",
+      "solution": "$PA=PB$이므로 좌표를 대입해 정리한다.\n$(x+2)^2+(y-1)^2=(x-3)^2+(y-5)^2$\n$10x+8y-29=0$\n또 $y=-x+2$이므로\n$10x+8(-x+2)-29=0$\n$2x-13=0$, 따라서 $a=x=\\dfrac{13}{2}$이다.\n$b=-\\dfrac{13}{2}+2=-\\dfrac92$\n$a-b=\\dfrac{13}{2}+\\dfrac92=11$\n정답은 ①이다.",
+      "decisiveStep": "EQUIDISTANT_POINT_LINE"
+    },
+    {
+      "qid": 11,
+      "answer": "④",
+      "solution": "$P=A+t(B-A)$로 놓는다.\n두 넓이의 비는 원점을 기준으로 한 행렬식의 절댓값 비이다.\n$[OBP]:[OAP]=|1-t|:|t|=4:1$\n$P$가 선분의 연장선 위이므로 $t<0$ 또는 $t>1$이다.\n$t>1$이면 $|1-t|/|t|<1$이므로 불가능하다.\n$t<0$이면 $(1-t)/(-t)=4$에서 $t=-\\dfrac13$이다.\n$P=(-3,2)-\\dfrac13(5,2)=\\left(-\\dfrac{14}{3},\\dfrac43\\right)$\n$b-a=\\dfrac43+\\dfrac{14}{3}=6$\n정답은 ④이다.",
+      "decisiveStep": "AREA_RATIO_ON_LINE_EXTENSION"
+    },
+    {
+      "qid": 12,
+      "answer": "③",
+      "solution": "두 삼각형은 꼭짓점 $A$에서 직선 $BC$로 내린 높이가 같다.\n넓이가 같으므로 밑변 길이 $BD=DC$이고 $D$는 $BC$의 중점이다.\n$D=\\left(\\dfrac{3+(-1)}2,\\dfrac{4+2}2\\right)=(1,3)$\n$A(5,11)$, $D(1,3)$을 지나는 직선의 기울기는\n$\\dfrac{11-3}{5-1}=2$\n$y-3=2(x-1)$\n$y=2x+1$\n정답은 ③이다.",
+      "decisiveStep": "EQUAL_TRIANGLE_AREA_MIDPOINT"
+    },
+    {
+      "qid": 13,
+      "answer": "③",
+      "solution": "그림에서 $A(0,2)$, $B(n,2)$, $P(4,4)$이고 두 직선 $AP$, $BP$가 수직이다.\n$AP$의 기울기는 $\\dfrac{4-2}{4-0}=\\dfrac12$이다.\n$BP$의 기울기는 $\\dfrac{4-2}{4-n}=\\dfrac{2}{4-n}$이다.\n수직 조건을 적용하면\n$\\dfrac12\\cdot\\dfrac{2}{4-n}=-1$\n$4-n=-1$, 따라서 $n=5$이다.\n삼각형 $ABP$는 $P$에서 직각이므로 외심은 빗변 $AB$의 중점이다.\n$(a,b)=\\left(\\dfrac{0+5}{2},\\dfrac{2+2}{2}\\right)=\\left(\\dfrac52,2\\right)$\n$ab=\\dfrac52\\cdot2=5$\n정답은 ③이다.",
+      "decisiveStep": "RIGHT_TRIANGLE_CIRCUMCENTER"
+    },
+    {
+      "qid": 14,
+      "answer": "④",
+      "solution": "직선 $OA$의 방정식은 $3x-4y=0$이므로 주어진 직선과 평행하다.\n$OA=\\sqrt{4^2+3^2}=5$\n평행한 두 직선 사이의 거리는\n$\\dfrac{|16-0|}{\\sqrt{3^2+(-4)^2}}=\\dfrac{16}{5}$\n이는 점 $P$에서 밑변 $OA$까지의 높이이다.\n$[OAP]=\\dfrac12\\cdot5\\cdot\\dfrac{16}{5}=8$\n정답은 ④이다.",
+      "decisiveStep": "PARALLEL_LINE_TRIANGLE_AREA"
+    },
+    {
+      "qid": 15,
+      "answer": "③",
+      "solution": "원의 중심을 $O$, 접점을 $T_1,T_2$라 하면 $OT_1=OT_2=3$이고 반지름과 접선은 수직이다.\n두 접선이 이루는 둔각이 $120^\\circ$이므로 삼각형 $OPT_1$에서 꼭짓점 $P$의 각은 $60^\\circ$이다.\n$\\sin60^\\circ=\\dfrac{OT_1}{OP}=\\dfrac3{OP}$\n$OP=2\\sqrt3$\n점 $P$의 자취는 중심 $O$, 반지름 $2\\sqrt3$인 원이다.\n둘레는 $2\\pi\\cdot2\\sqrt3=4\\sqrt3\\pi$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q15-solution.svg",
+      "solutionImageAlt": "접선 두 개가 이루는 각과 점 P의 자취 원",
+      "solutionImageCaption": "접선 각 120°일 때 OP=2√3",
+      "solutionImageSize": "full",
+      "decisiveStep": "TANGENT_ANGLE_LOCUS"
+    },
+    {
+      "qid": 16,
+      "answer": "⑤",
+      "solution": "$\\angle APB=90^circ$이므로 $P$는 지름이 $AB$인 원 위에 있다. $Q$도 같은 원 위에 있다.\n원의 중심은 $AB$의 중점\n$M=\\left(0,1\\right)$\n반지름의 제곱은\n$MA^2=(-\\sqrt6)^2+(-3)^2=15$\n직선은 $x-y-2=0$이므로 중심 $M$에서 직선까지의 거리는\n$d=\\dfrac{|0-1-2|}{\\sqrt{1^2+(-1)^2}}=\\dfrac3{\\sqrt2}$\n반지름 $r=\\sqrt{15}$인 원에서 이 직선이 자르는 현의 길이는\n$l^2=4(r^2-d^2)=4\\left(15-\\dfrac92\\right)=42$\n정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q16-solution.svg",
+      "solutionImageAlt": "지름 AB인 원과 직선 위의 교점 P, Q가 만드는 현",
+      "solutionImageCaption": "직선 y=x−2가 지름 AB의 원을 자르는 현 PQ",
+      "solutionImageSize": "full",
+      "decisiveStep": "DIAMETER_CIRCLE_CHORD_LENGTH"
+    },
+    {
+      "qid": 17,
+      "answer": "①",
+      "solution": "두 거리 제곱을 좌표로 전개한다. $P=(x,y)$라 하면\n$AP^2+BP^2=x^2+(y-5)^2+(x+2)^2+(y-1)^2$\n$=2x^2+4x+2y^2-12y+30$\n중점 $M=(-1,3)$이므로\n$2PM^2+\\dfrac{AB^2}{2}=2\\{(x+1)^2+(y-3)^2\\}+10$\n$=2x^2+4x+2y^2-12y+30$\n따라서 $AP^2+BP^2=2PM^2+\\dfrac{AB^2}{2}$이다.\n주어진 원은\n$(x-3)^2+y^2=4$\n중심 $C=(3,0)$, 반지름 $2$이고 $CM=\\sqrt{4^2+(-3)^2}=5$이다.\n원 위 점과 $M$ 사이 거리의 최솟값은 $5-2=3$, 최댓값은 $5+2=7$이다.\n$AP^2+BP^2$의 최솟값은 $2\\cdot3^2+10=28$\n최댓값은 $2\\cdot7^2+10=108$\n합은 $28+108=136$\n정답은 ①이다.",
+      "decisiveStep": "SUM_SQUARED_DISTANCES_ON_CIRCLE"
+    },
+    {
+      "qid": 18,
+      "answer": "②",
+      "solution": "직선은 $y=a(x-3)+4=ax-3a+4$이다. 교점의 $x$좌표를 $x_1,x_2$라 하자.\n$\\dfrac12x^2-2x+3=ax-3a+4$\n$x^2-2(a+2)x+6a-2=0$\n따라서 $x_1+x_2=2a+4$이다.\n꼭짓점 $C=(2,1)$이므로\n$m=\\dfrac{x_1+x_2+2}{3}=\\dfrac{2a+6}{3}$\n또 $y_i=ax_i-3a+4$이므로\n$y_1+y_2=a(2a+4)-6a+8=2a^2-2a+8$\n$n=\\dfrac{y_1+y_2+1}{3}=\\dfrac{2a^2-2a+9}{3}$\n$m-n=\\dfrac{-2a^2+4a-3}{3}=-\\dfrac23(a-1)^2-\\dfrac13$\n따라서 최댓값 $k=-\\dfrac13$이고\n$|k+1|=\\dfrac23$\n정답은 ②이다.",
+      "decisiveStep": "CENTROID_OF_INTERSECTION_TRIANGLE"
+    },
+    {
+      "qid": 19,
+      "answer": "⑤",
+      "solution": "삼각형 부등식에서\n$AP\\le AB+BP$이므로 $AP-BP\\le AB$이다.\n$AB=\\sqrt{(5-0)^2+(3-15)^2}=\\sqrt{25+144}=13$\n등호는 $A,B,P$가 일직선이고 $P$가 $B$의 바깥쪽에 있을 때 성립한다.\n직선 $AB$의 기울기는 $-\\dfrac{12}{5}$이므로\n$y=15-\\dfrac{12}{5}x$\n$x$축과 만나는 점은 $P=\\left(\\dfrac{25}{4},0\\right)$이다.\n따라서 $a=13$, $(b,c)=\\left(\\dfrac{25}{4},0\\right)$이고\n$a+4b+16c=13+25=38$\n정답은 ⑤이다.",
+      "decisiveStep": "DISTANCE_DIFFERENCE_MAXIMUM"
+    },
+    {
+      "qid": 20,
+      "answer": "4",
+      "solution": "첫 번째 원의 중심은 $O=(0,0)$이고 반지름은 $5$이다.\n점 $(4,3)$에서의 접선은 반지름 $(4,3)$에 수직이므로\n$4x+3y=25$\n두 번째 원의 중심은 $C=(3,1)$이다. 중심에서 접선까지의 거리는\n$d=\\dfrac{|4\\cdot3+3\\cdot1-25|}{\\sqrt{4^2+3^2}}=\\dfrac{10}{5}=2$\n접할 때 반지름은 이 거리와 같으므로 $\\sqrt{k}=2$\n$k=4$이다.",
+      "decisiveStep": "TANGENT_CIRCLE_LINE_DISTANCE"
+    },
+    {
+      "qid": 21,
+      "answer": "14",
+      "solution": "첫 번째 부등식은\n$(x+7)(x-1)\\le0$\n$-7\\le x\\le1$\n이므로 가능한 정수는 $-7,-6,\\ldots,1$이다.\n두 번째 부등식은\n$-q-p\\le x\\le q-p$\n이다. 이 구간과 $[-7,1]$의 정수 교집합이 7개가 되도록 센다.\n$q=1,2$이면 두 번째 구간의 정수 개수가 각각 3,5개라 불가능하다.\n$q=3$이면 구간 길이가 7개이므로 $p=2,3,4$에서 가능하여 3개이다.\n$q=4,5,6,7,8$에서는 한쪽 끝에서 두 정수만 잘리도록 $p=5-q$ 또는 $p=q+1$이고, 각 $q$마다 2개씩이다.\n$q=9$에서는 $p=5-9=-4$만 허용된다. $p=q+1=10$은 $p\\le9$에 어긋난다.\n전체는 $3+5\\cdot2+1=14$개이다.",
+      "decisiveStep": "INTEGER_PAIR_INTERVAL_COUNT"
+    },
+    {
+      "qid": 22,
+      "answer": "14",
+      "solution": "세 교점을 구한다.\n$x-y=0$과 $x+3y+4=0$에서 $y=x$이므로 $4x+4=0$, 교점은 $(-1,-1)$이다.\n$x-y=0$과 $2x-y-6=0$에서 $y=x$이므로 $x-6=0$, 교점은 $(6,6)$이다.\n$x+3y+4=0$과 $2x-y-6=0$을 풀면 $y=2x-6$, $7x-14=0$이므로 교점은 $(2,-2)$이다.\n$(-1,-1)$을 기준으로 한 두 변의 벡터는 $(7,7)$, $(3,-1)$이다.\n삼각형 넓이는\n$\\dfrac12|7\\cdot(-1)-7\\cdot3|=14$\n답은 14이다.",
+      "decisiveStep": "THREE_LINE_TRIANGLE_AREA"
+    }
+  ],
+  "disclosedAt": "2026-10-08T05:59:14.590Z"
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-gates\\AP------\\archive\\analysis\\21_매산고_1학기_기말_고1_기출\\h1-final-five-pilot-20261008\\R1.independent-freeze.json",
+    "sha256": "0b5456fd13e028cfa1dd0d5d7bc814aca607c83e71c5ac004ad32518b906dc69"
+  },
+  "createdAt": "2026-10-08T02:41:06.703Z",
+  "corrections": [
+    {
+      "correctedAnswer": "OPEN/HOLD: the omitted point is not unique; the two unattained points (0,0) and (2,6) yield 14 and 6",
+      "reason": "After freeze, source and companion review confirmed that for finite real m≠0, P=(0,0) occurs only at m=0 and P=(2,6) only at the m→∞ limit. The source designates only one excluded point (p,q), while two parameter values are excluded; the resulting expression is 14 or 6 depending on the designation. Original independent answer 14 over-assumed (p,q)=(0,0). Preserve original freeze; carry true source HOLD to R2.",
+      "qid": 17,
+      "originalAnswer": "14"
+    },
+    {
+      "correctedAnswer": "97/4",
+      "reason": "Correction after full-input freeze: h(x)=max(f(x),g(x)); f(x)=a(x−2)^2+d with d≥0 gives a≤20 from f(3/2)≤5. On [3/2,5/2], g has its maximum at 3/2, so b+3/4≤5 and b≤17/4. Equality f=20(x−2)^2,b=17/4 satisfies all conditions. My frozen 24 used the incorrect value g(2)=b+1; in fact g(2)=b. Stored 97/4 and solution are correct. Original freeze remains immutable.",
+      "qid": 18,
+      "originalAnswer": "24"
+    },
+    {
+      "correctedAnswer": "OPEN/HOLD: under per-pair existential c the count is 23; a fixed unspecified c makes the count depend on c",
+      "reason": "After review of PDF p6 and handwritten correction of “상수 c” to “양수 c”, the vertex integrality condition is t=bc/(a²+b²)∈N and area=t²(a²+b²)/2. If each pair may choose a positive c, 15 odd-odd pairs with a²+b²≤300 and 8 mixed-parity pairs with a²+b²≤75 qualify, for 23. The source does not explicitly fix whether c is per-pair existential or one common parameter across the counted pairs; the companion handwriting restricts c to multiples of a²+b², which is sufficient but not necessary. Preserve original freeze; carry true source HOLD to R2 rather than replace.",
+      "qid": 20,
+      "originalAnswer": "15"
+    }
+  ],
+  "originalFreezeMutated": false
+}
