@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify 264 approved consumer rows with existing and B06 source SHA and student finder
-        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs
+        run: node --test tests/archive2-generated-bank-registration.test.js tests/archive2-generated-bank-subjective-table.test.cjs tests/archive2-bokseong-b04-b05-consumer.test.cjs tests/archive2-bokseong-b06-consumer.test.cjs tests/archive2-bokseong-b01-b02-consumer.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
