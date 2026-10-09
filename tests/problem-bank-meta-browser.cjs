@@ -30,7 +30,15 @@ const server=http.createServer((req,res)=>{
   for(const bucket of ['1','2','3','4','5','UNKNOWN']){
    await page.selectOption('#difficulty',bucket);
    assert.equal(await page.evaluate(b=>matching.every(r=>r.difficultyBucket===(b==='UNKNOWN'?null:Number(b))),bucket),true);
+   if(await page.locator('#results article button').count()){
+    await page.locator('#results article button').first().click();
+    await page.waitForFunction(()=>!document.querySelector('#results article button').disabled);
+    const rendered=await page.locator('#preview').textContent();
+    assert.ok(rendered.length>30&&!/GENERATED_|불러오는 중|오류/.test(rendered),rendered);
+   }
   }
+  const safeTable=await page.evaluate(()=>{const host=document.createElement('div');safeStem(host,'before<div class="question-table-wrap"><table class="question-table"><tr><th>A</th><td>1</td></tr></table></div>after<script>bad()</script>');return {tables:host.querySelectorAll('table').length,cells:host.querySelectorAll('th,td').length,scripts:host.querySelectorAll('script').length,text:host.textContent};});
+  assert.equal(safeTable.tables,1);assert.equal(safeTable.cells,2);assert.equal(safeTable.scripts,0);assert.ok(safeTable.text.includes('before')&&safeTable.text.includes('after'));
   await page.selectOption('#difficulty','UNKNOWN');
   assert.equal(await page.evaluate(()=>matching.length),7);
   await page.selectOption('#difficulty','');

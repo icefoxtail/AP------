@@ -19,7 +19,9 @@
     const directed = row.approval === 'USER_DIRECTED_OPERATING_APPROVED' &&
       (String(row.reviewApprovalBasis || '').startsWith('USER_DIRECTED_OPERATING_APPROVAL_') ||
        row.reviewApprovalBasis === 'USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008');
-    return reviewed || directed;
+    const userQuality = row.approval === 'USER_DIRECTED_QUALITY_APPROVED' &&
+      String(row.reviewApprovalBasis || '').startsWith('USER_DIRECTED_QUALITY_APPROVED');
+    return reviewed || directed || userQuality;
   }
   function project(record, generated, consumer, holds) {
     const q = consumer?.question || {};
@@ -64,12 +66,22 @@
     } : {sourceFile: record.sourceFile ?? null, sourceOrdinal: record.sourceOrdinal ?? null,
       sourceFingerprint: record.sourceFingerprint ?? null, status: record.sourceFingerprint ? 'RECORDED' : 'UNKNOWN'};
     view.metaCompleteness = FIELDS.every(k => known(view[k])) ? 'RECORDED_COMPLETE' : 'EVIDENCE_DEBT';
+    const browse = generated && record.metaBrowsePath;
+    if (browse?.status === 'EXACT_AUTHORITY_ALIAS' &&
+        browse.metaFinalSha256 === record.metaFinalSha256 && record.metaFinalSha256) {
+      for (const key of ['L1', 'L2', 'L3', 'L4']) {
+        if (typeof browse[key] === 'string' && browse[key].trim()) view[key] = browse[key];
+      }
+    }
     view.directSelectable = generated ? isGeneratedSelectable(record, holds) : true;
     // Completeness, recorded approval and hash strings alone never certify a paper.
     const verification = record.metaVerification;
+    const verificationBindingsCurrent = verification?.metaFinalSha256 === record.metaFinalSha256 &&
+      verification?.sourceShardGitSha === record.sourceShardGitSha &&
+      verification?.reviewEvidenceSha256 === record.metaReviewEvidenceSha256;
     view.verifiedEligible = view.directSelectable && view.metaCompleteness === 'RECORDED_COMPLETE' &&
       verification?.status === 'VERIFIED_CURRENT_SOURCE' && verification?.sourceBound === true &&
-      verification?.reviewBytesBound === true && !Object.values(view.metaStatus)
+      verification?.reviewBytesBound === true && verificationBindingsCurrent && !Object.values(view.metaStatus)
         .some(s => ['UNKNOWN', 'STALE', 'INVALID', 'EVIDENCE_DEBT'].includes(s));
     view.metaViewVersion = VERSION;
     return view;

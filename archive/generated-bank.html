@@ -123,7 +123,8 @@ const isSelectable=row=>{
   String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
   row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
  );
- return reviewed||directed;
+ const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
+ return reviewed||directed||userQuality;
 };
 const unitName=row=>UNIT_LABELS[row.l2]||null;
 async function readJson(path){

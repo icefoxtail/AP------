@@ -21,12 +21,19 @@ test('Compose and shared recipes use one Meta query with manual and verified pro
     secondaryConceptKeys: [], crossConceptKeys: [], conditionKeys: [], integrationPattern: 'NONE',
     problemTypeKey: 'PT_SAMPLE', templateKey: 'TPL_SAMPLE',
     variantGroupKey: 'family-1',
-    metaVerification: { status: 'VERIFIED_CURRENT_SOURCE', sourceBound: true, reviewBytesBound: true },
+    metaFinalSha256: 'a'.repeat(64), sourceShardGitSha: 'b'.repeat(40), metaReviewEvidenceSha256: 'c'.repeat(64),
+    metaVerification: { status: 'VERIFIED_CURRENT_SOURCE', sourceBound: true, reviewBytesBound: true,
+      metaFinalSha256: 'a'.repeat(64), sourceShardGitSha: 'b'.repeat(40), reviewEvidenceSha256: 'c'.repeat(64) },
   });
   const index = meta.buildIndex([original], [generated]);
   const direct = meta.query(index, { rpmL3: '방정식', difficultyBuckets: [3] }, { profile: 'DIRECT' });
   assert.deepEqual(direct.map(row => row.uid), ['qid_v1_original', 'ALITE-SAMPLE-01']);
   assert.deepEqual(meta.query(index, { rpmL3: '방정식' }, { profile: 'VERIFIED' }).map(row => row.uid), ['ALITE-SAMPLE-01']);
+  for (const patch of [
+    { metaFinalSha256: 'd'.repeat(64) },
+    { sourceShardGitSha: 'e'.repeat(40) },
+    { metaReviewEvidenceSha256: 'f'.repeat(64) },
+  ]) assert.equal(meta.projectGenerated({ ...generated, ...patch }).verifiedEligible, false);
   const expected = { FIVE_MINUTE: 4, SUBUNIT: 12, UNIT: 20, MONTHLY: 24 };
   for (const [key, count] of Object.entries(expected)) {
     const result = recipes.queryRecipe(index, key, { rpmL3: '방정식' }, { uniqueFamilies: true });
@@ -49,23 +56,25 @@ test('Compose and shared recipes use one Meta query with manual and verified pro
   assert.equal(familyGap.coverage.familyShortage, 4);
 });
 
-test('Generated restoration binds approved UID and localOrdinal to the exact consumer question', () => {
+test('Generated restoration binds approved UID, localOrdinal, and declared fingerprint contract', async () => {
   const consumerIndex = JSON.parse(fs.readFileSync(
     path.join(root, 'archive/data/generated-lite-consumer/v1/index.json'), 'utf8'));
   const indexRow = consumerIndex.records.find(row => row.uid === 'ALITE-BSG26-B03-Q13-R01');
   const shard = JSON.parse(fs.readFileSync(path.join(root, 'archive', indexRow.shard), 'utf8'));
-  const question = source.restoreGenerated(indexRow, shard, consumerIndex.excludedHoldUids);
+  const question = await source.restoreGenerated(indexRow, shard, consumerIndex.excludedHoldUids);
   assert.equal(question.questionUid, indexRow.uid);
   assert.equal(question.localOrdinal, indexRow.localOrdinal);
   assert.equal(question.sourceKind, 'generated');
   assert.equal(question.sourceFingerprint, indexRow.contentFingerprint);
+  assert.equal(question.contentFingerprintAlgorithm, 'FNV1A64_UTF16_STUDENT_FIELDS_V1');
+  assert.equal(question.contentFingerprintStatus, 'CONFIRMED');
   assert.equal(question.metaProjection.storageBucketKey, indexRow.l2);
   assert.equal(question.content, shard.records.find(row => row.generatedUid === indexRow.uid).question.content);
 
-  assert.throws(() => source.restoreGenerated(indexRow, {
+  await assert.rejects(() => source.restoreGenerated(indexRow, {
     ...shard, records: [...shard.records, shard.records.find(row => row.generatedUid === indexRow.uid)],
   }, consumerIndex.excludedHoldUids), /GENERATED_UID_ORDINAL_NOT_UNIQUE/);
-  assert.throws(() => source.restoreGenerated(indexRow, shard, [indexRow.uid]), /GENERATED_QUESTION_NOT_SELECTABLE/);
+  await assert.rejects(() => source.restoreGenerated(indexRow, shard, [indexRow.uid]), /GENERATED_QUESTION_NOT_SELECTABLE/);
 
   const legacyIndex = {
     uid: 'ALITE-LEGACY-01', localOrdinal: 4, sourceKind: 'generated', consumerSelectable: true,
@@ -75,8 +84,36 @@ test('Generated restoration binds approved UID and localOrdinal to the exact con
     generatedUid: legacyIndex.uid, localOrdinal: 4, sourceKind: 'generated',
     question: { content: 'legacy', choices: ['1', '2', '3', '4', '5'], answer: '①', solution: 'solution' },
   }] };
-  const legacyQuestion = source.restoreGenerated(legacyIndex, legacyShard);
+  const legacyQuestion = await source.restoreGenerated(legacyIndex, legacyShard);
   assert.equal(legacyQuestion.questionUid, legacyIndex.uid);
   assert.equal(legacyQuestion.contentFingerprintStatus, 'UNKNOWN');
+  assert.equal(legacyQuestion.contentFingerprintAlgorithm, 'UNKNOWN_MISSING');
   assert.equal(legacyQuestion.sourceFingerprint, null);
+
+  legacyIndex.contentFingerprint = 'sha3:historical-unknown';
+  legacyShard.records[0].contentFingerprint = legacyIndex.contentFingerprint;
+  const unknownAlgorithmQuestion = await source.restoreGenerated(legacyIndex, legacyShard);
+  assert.equal(unknownAlgorithmQuestion.contentFingerprintStatus, 'UNKNOWN');
+  assert.equal(unknownAlgorithmQuestion.contentFingerprintAlgorithm, 'UNKNOWN_UNSUPPORTED');
+});
+
+test('historical B07 SHA-256 student payload validates only under its exact producer contract', async () => {
+  const consumerIndex = JSON.parse(fs.readFileSync(
+    path.join(root, 'archive/data/generated-lite-consumer/v1/index.json'), 'utf8'));
+  const holds = consumerIndex.excludedHoldUids;
+  for (const uid of [
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+  ]) {
+    const indexRow = consumerIndex.records.find(row => row.uid === uid);
+    const shard = JSON.parse(fs.readFileSync(path.join(root, 'archive', indexRow.shard), 'utf8'));
+    const question = await source.restoreGenerated(indexRow, shard, holds);
+    assert.equal(question.contentFingerprintAlgorithm, 'SHA256_JSON_UID_STUDENT_FIELDS_IMAGE_V1', uid);
+    assert.equal(question.contentFingerprintStatus, 'CONFIRMED', uid);
+  }
+  const repaired = consumerIndex.records.find(row => row.uid === 'ALITE-PALMA25-H1-2MID-B07-Q01-BP01');
+  assert.equal(repaired.contentFingerprint,
+    'sha256:4c3959784820693e29b3bc959249721d3c52ed97bddd07c31d9080934d63a576');
 });

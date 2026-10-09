@@ -53,7 +53,17 @@
       hash = BigInt.asUintN(64, (hash ^ BigInt(value.charCodeAt(i))) * 1099511628211n);
     return "fnv1a64-utf16:" + hash.toString(16).padStart(16, "0");
   }
-  function restoreGenerated(indexRow, shard, excludedHoldUids = []) {
+  async function generatedStudentPayloadSha256(question) {
+    return "sha256:" + await digest(JSON.stringify({
+      uid: question.uid,
+      content: question.content,
+      choices: question.choices,
+      answer: question.answer,
+      solution: question.solution,
+      image: question.image,
+    }));
+  }
+  async function restoreGenerated(indexRow, shard, excludedHoldUids = []) {
     if (!problemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
     if (!problemBankMeta.isGeneratedSelectable(indexRow, excludedHoldUids))
       throw new Error("GENERATED_QUESTION_NOT_SELECTABLE");
@@ -71,11 +81,28 @@
     if (!question || !Array.isArray(question.choices) || question.answer == null ||
         question.content == null || question.solution == null)
       throw new Error("GENERATED_QUESTION_PAYLOAD_INCOMPLETE");
-    const fingerprint = generatedContentFingerprint(question);
-    const expectedFingerprint = consumerRecord.contentFingerprint || indexRow.contentFingerprint || "";
-    if ((consumerRecord.contentFingerprint && consumerRecord.contentFingerprint !== fingerprint) ||
-        (indexRow.contentFingerprint && indexRow.contentFingerprint !== fingerprint))
-      throw new Error("GENERATED_CONTENT_FINGERPRINT_MISMATCH");
+    const fingerprints = [consumerRecord.contentFingerprint, indexRow.contentFingerprint]
+      .filter(value => typeof value === "string" && value.length > 0);
+    if (new Set(fingerprints).size > 1)
+      throw new Error("GENERATED_INDEX_SHARD_CONFLICT:contentFingerprint");
+    const expectedFingerprint = fingerprints[0] || "";
+    let contentFingerprintAlgorithm = "UNKNOWN_MISSING";
+    let contentFingerprintStatus = "UNKNOWN";
+    if (expectedFingerprint.startsWith("fnv1a64-utf16:")) {
+      contentFingerprintAlgorithm = "FNV1A64_UTF16_STUDENT_FIELDS_V1";
+      const actual = generatedContentFingerprint(question);
+      if (actual !== expectedFingerprint) throw new Error("GENERATED_CONTENT_FINGERPRINT_MISMATCH");
+      contentFingerprintStatus = "CONFIRMED";
+    } else if (/^sha256:[a-f0-9]{64}$/i.test(expectedFingerprint)) {
+      contentFingerprintAlgorithm = "SHA256_JSON_UID_STUDENT_FIELDS_IMAGE_V1";
+      const actual = await generatedStudentPayloadSha256(question);
+      if (actual.toLowerCase() !== expectedFingerprint.toLowerCase())
+        throw new Error("GENERATED_CONTENT_FINGERPRINT_MISMATCH");
+      contentFingerprintStatus = "CONFIRMED";
+    } else if (expectedFingerprint) {
+      // Historical prefixes with no registered producer contract stay explicit UNKNOWN.
+      contentFingerprintAlgorithm = "UNKNOWN_UNSUPPORTED";
+    }
     for (const field of ["sourceExamBlobSha", "sourceQid", "l2"]) {
       if (indexRow[field] != null && consumerRecord[field] != null &&
           indexRow[field] !== consumerRecord[field])
@@ -105,9 +132,10 @@
       sourceShard: consumerRecord.sourceShard || "",
       sourceShardGitSha: consumerRecord.sourceShardGitSha || "",
       consumerShardGitSha: indexRow.consumerShardGitSha || "",
-      sourceFingerprint: expectedFingerprint || null,
-      restoredContentFingerprint: fingerprint,
-      contentFingerprintStatus: expectedFingerprint ? "CONFIRMED" : "UNKNOWN",
+      sourceFingerprint: contentFingerprintStatus === "CONFIRMED" ? expectedFingerprint : null,
+      restoredContentFingerprint: expectedFingerprint ? null : generatedContentFingerprint(question),
+      contentFingerprintAlgorithm,
+      contentFingerprintStatus,
       metaProjection,
     };
   }
