@@ -36,3 +36,12 @@
 - C1 ⑤ 상/4 H1-RPM-242 역방향 집합식에서 숨은 포함관계를 찾아 검증
 - C2 ② 상/4 H1-RPM-242 두 집합의 분해와 공통영역의 중복 제거를 연결
 - C3 ④ 상/4 H1-RPM-241 서로소인 여집합 영역과 겹치는 영역의 합집합 크기 계산
+
+## META-FIRST 영구보존 준비 — q16 신규 후보
+
+- Primary RPM L3 `집합의 연산법칙`, record `H1-RPM-241/242`, PT·TPL은 이미 ACTIVE인 canonical을 재사용.
+- canonical `COND_RANGE`: B2/B3/C3의 유한 원소범위에 실제 적용.
+- Generated-only 조건 `EXT-COND-H1-Q16-SUBSET-INCLUSION`: A1/A2/A3/B1/B3/C1 포함관계의 방향이 판정의 핵심인 6 UID.
+- Generated-only 조건 `EXT-COND-H1-Q16-UNION-COVER`: C2의 `A∪B=U`와 유한 원소 수 조건 1 UID.
+- Generated-only 교차개념 `EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES`: C3의 정수 배수/공배수 계산 1 UID.
+- registry: `archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json`. `9 UID × meta.conditionKeys/crossConceptKeys`를 Source candidate에 결속. RPM LOCKED 변경 없음, Consumer/index는 독립 품질승인과 기술 출고 전까지 미등록.

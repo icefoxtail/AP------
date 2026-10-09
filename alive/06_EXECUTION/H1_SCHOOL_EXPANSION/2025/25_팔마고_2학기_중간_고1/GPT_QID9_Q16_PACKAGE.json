@@ -34,8 +34,19 @@
     "taxonomy": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "noExternalConceptKeysNeeded": "ALL_ITEMS_SOLVABLE_WITHIN_SET_OPERATIONS_AND_BASIC_FINITE_SET_COUNT",
-    "rpmLockedPreserved": true
+    "rpmLockedPreserved": true,
+    "conditionRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+    "generatedConditionKeys": [
+      "EXT-COND-H1-Q16-SUBSET-INCLUSION",
+      "EXT-COND-H1-Q16-UNION-COVER"
+    ],
+    "generatedCrossConceptKeys": [
+      "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+    ],
+    "canonicalConditionKeysReused": [
+      "COND_RANGE"
+    ]
   },
   "experiencePlan": {
     "A": "원본형의 숨은 포함관계를 정리하고 네 개의 집합식을 판정",
@@ -66,7 +77,8 @@
     "actualBrowserRender": "NOT_TESTED",
     "originalSourceConflict": "ISOLATED_NOT_SILENTLY_CORRECTED",
     "independentGptQualityReview": "NOT_RUN",
-    "technicalFormattingPatch": "STEM_HTML_BREAKS_AND_DISTRACTOR_4_OF_4_CLEAN"
+    "technicalFormattingPatch": "STEM_HTML_BREAKS_AND_DISTRACTOR_4_OF_4_CLEAN",
+    "metaChecked": "UID_9_OF_9_PARENT_CANONICAL_AND_EXT_REFS_BOUND"
   },
   "items": [
     {
@@ -145,14 +157,22 @@
         "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "B⊆A가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: B가 A∩B에 포함. 묻는 것: 네 식의 참거짓. 핵심: B⊆A 추론·집합항등식 판정",
@@ -160,7 +180,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-A2",
@@ -238,14 +262,22 @@
         "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "A⊆B가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: A⊆B. 묻는 것: 항상 성립하는 집합식. 핵심: 두 차집합의 방향 구별",
@@ -253,7 +285,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-A3",
@@ -331,14 +367,22 @@
         "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "Q⊆P가 집합 연산식의 모든 참/거짓을 결정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: Q⊆P. 묻는 것: 네 집합 항등식. 핵심: 합집합·교집합의 흡수와 차집합",
@@ -346,7 +390,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-B1",
@@ -424,14 +472,22 @@
         "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 3,
         "level": "중",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "B⊆A에 따라 차집합을 합쳐 전체 A를 복원"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: B⊆A. 묻는 것: 단 하나의 항상 참인 등식. 핵심: 차집합과 합집합의 복원",
@@ -439,7 +495,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-B2",
@@ -517,14 +577,22 @@
         "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 3,
         "level": "중",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,10}의 범위 안에서 여집합의 원소수를 확정"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: 유한집합 A,B. 묻는 것: 복합식의 원소 수. 핵심: 여집합 변환 후 실제 원소 선정",
@@ -532,7 +600,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-B3",
@@ -610,14 +682,23 @@
         "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,12}, B⊆A를 결합하여 복합식을 역산"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: B⊆A와 복합식의 원소. 묻는 것: |B|. 핵심: 드모르간 변환·흡수·원소수",
@@ -625,7 +706,12 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-C1",
@@ -703,14 +789,22 @@
         "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "복합 집합식의 항등관계가 A⊆B와 동치임을 역으로 도출"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: A∩(A−B)^c=A. 묻는 것: 필연적 등식. 핵심: A⊆B로 환원",
@@ -718,7 +812,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-SUBSET-INCLUSION"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-C2",
@@ -796,14 +894,22 @@
         "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
         "crossConceptKeys": [],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "EXT-COND-H1-Q16-UNION-COVER"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "A∪B=U라는 전제와 크기 12·8·7에서 교집합·서로소영역을 계산"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: 합집합=전체집합과 원소 수. 묻는 것: 공통 원소를 제외한 합집합 크기. 핵심: 포함배제 후 집합식 변형",
@@ -811,7 +917,11 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q16-UNION-COVER"
+      ],
+      "crossConceptKeys": []
     },
     {
       "uid": "ALITE-PALMA25-2MID-Q16-C3",
@@ -888,15 +998,27 @@
         "problemTypeKey": "PT_SET_OPERATION_LAW",
         "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
         "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
-        "crossConceptKeys": [],
-        "conditionKeys": [],
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "CONDITION_COMPOSITE",
         "difficultyBucket": 4,
         "level": "상",
         "sourceQid": 16,
         "sourceType": "GENERATED_ALIVE_QID9",
         "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
-        "requiredStudentAsset": "NONE"
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "U={1,...,20}의 범위와 배수의 공배수(최소공배수 6) 계산을 결합"
+        ],
+        "crossConceptEvidenceLabels": [
+          "6의 배수로 2와 3의 공통배수를 직접 계수"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json",
+        "metaRegistryBasis": "ACTIVE_CANONICAL_AND_GENERATED_EXT_FOR_AUTHOR_CANDIDATE"
       },
       "creatorSelfReview": "KEEP",
       "authorReverseStemReading": "주어진 것: 2·3의 배수 집합. 묻는 것: 여집합과 교집합을 결합한 집합 크기. 핵심: 포함배제·서로소 합",
@@ -904,9 +1026,16 @@
       "remainingRisk": "ORIGINAL_SOURCE_Q16_BRACE_TRANSCRIPTION_UNVERIFIED; GPT_OPEN_BOOK_CONTENT_REVIEW_NOT_RUN",
       "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "consumerStatus": "NOT_REGISTERED"
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q16-DIVISIBILITY-MULTIPLES"
+      ]
     }
   ],
   "nextSourceQid": 14,
-  "publication": "CREATOR_DRAFT_NOT_APPROVED_NOT_IN_STUDENT_CONSUMER"
+  "publication": "CREATOR_DRAFT_NOT_APPROVED_NOT_IN_STUDENT_CONSUMER",
+  "generatedMetaRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json"
 }
