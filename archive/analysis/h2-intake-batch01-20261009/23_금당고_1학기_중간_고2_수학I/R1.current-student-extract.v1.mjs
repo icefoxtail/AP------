@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const artifact = await import(pathToFileURL(path.resolve('archive/tools/archive-codex-artifact-io.mjs')));
+const adapter = await import(pathToFileURL(path.resolve('archive/tools/archive-student-bundle.mjs')));
+const {readExam,sha256,physical,writeFresh}=artifact;
+const {STUDENT_FIELDS,normalizeStudentBundle,studentAssetRefs}=adapter;
+const sourceFile='.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/23_금당고_1학기_중간_고2_수학I.js';
+const assetRoot='.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I';
+const output='archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.current-student-meta-repair.v1.json';
+const exam=readExam(sourceFile);
+const rows=exam.questions.map(q=>{
+ const student=Object.fromEntries([...STUDENT_FIELDS].filter(k=>Object.hasOwn(q,k)).map(k=>[k,q[k]]));
+ const refs=studentAssetRefs(student);
+ const assets=refs.map(ref=>{if(!ref.startsWith('assets/images/'))throw new Error('UNSUPPORTED_ASSET_REF:'+ref);const file=path.resolve(assetRoot,ref);return {ref,path:file,sha256:sha256(fs.readFileSync(file))};});
+ return {qid:Number(q.id),student,assets};
+});
+const input={schemaVersion:'JS_ARCHIVE_STUDENT_BUNDLE_V2',sourceRawSha256:exam.rawSha256,sourceRawBlobSha1:exam.rawBufferGitBlobSha1,questionCount:rows.length,qids:rows.map(r=>r.qid),rows};
+const bundle=normalizeStudentBundle(input,{expectedSourceRawSha256:exam.rawSha256});
+const ref=writeFresh(output,bundle);
+console.log(JSON.stringify({source:physical(sourceFile),bundle:ref,questionCount:bundle.questionCount,qids:bundle.qids,assetRefs:bundle.rows.flatMap(r=>r.assets.map(a=>({qid:r.qid,ref:a.ref,sha256:a.sha256}))),adapterProvenance:bundle.adapterProvenance},null,2));
