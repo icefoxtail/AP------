@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "ROOT_REMOTE_READBACK_TECHNICAL_RECOVERY_V1",
+  "failedAttempt": {
+    "operation": "git cat-file --batch remote main raw byte parity",
+    "remoteMainSha": "e019d3cfec4555f286f3cb48bb0ecc4e6b3ea6c7",
+    "examUid": "23_강남여고_1학기_중간_고2_수학I",
+    "error": "ENOBUFS",
+    "maxBuffer": 300000000,
+    "receivedBytesAtFailure": 300015108,
+    "passClaimed": false
+  },
+  "recovery": {
+    "method": "Batch all requested files into groups bounded by 100 MB local file size; independently parse every remote blob and compare raw SHA-256",
+    "fileDenominatorReduced": false,
+    "sourceOrEvidenceBytesModified": false,
+    "allFilesIncludedAsserted": true,
+    "helper": ".tmp/archive/h2-intake-batch01-20261009/ROOT.remote-parity.mjs"
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_R1_META_CORE_DEBT_ADMISSION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "status": "ROOT_AUTHORIZED_BOUNDED_ADMISSION",
+  "rootAuthorityReference": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/ROOT.target-registration-producer-authority.v1.json",
+    "sha256": "ac7b1d049830c63b65dec2c8e5d0ea155356e5e62785f84cf98dac1c6dc355ea",
+    "decisionAuthority": "ROOT_DELEGATED"
+  },
+  "scope": {
+    "runId": "h2-intake-batch01-20261009",
+    "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+    "productionPath": "archive/exams/original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+    "grade": "h2",
+    "course": "H15-PS",
+    "questionCount": 22,
+    "allowedQids": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sourceRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "sourceGitBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "lockedRosterSha256": "fd19e8ac54992aedafc3fbaa35b6f21b05b70fd90c52d02a9c36839be28b3d62"
+  },
+  "r1Evidence": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.evidence.bound.json",
+    "sha256": "f39ba789c807950350a45badb7c8cb1a0e08f6fd5e908490c5390f310f0b8b24",
+    "artifactSha": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "artifactRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "questionCount": 22
+  },
+  "r1Validation": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.generic-validator.raw.json",
+    "sha256": "499284b4d14b41992b2f2c31bcae92fa5941d35c8621f98a62a6e9727f8b7f52",
+    "validatorMode": "R1_V2",
+    "disposition": "PASS",
+    "ok": true,
+    "issues": [],
+    "artifactContract": {
+      "active": true,
+      "disposition": "PASS",
+      "questionCount": 22,
+      "issues": []
+    }
+  },
+  "metaCoreDebtSupplement": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/test-fixtures/r1-meta-citation-current-v1/R1.recovery.meta-core-debt-supplement.current-citations.v1.json",
+    "sha256": "911867336460975f63f87d997c95760225248941246314632bf8a4f58efa70f6",
+    "schemaVersion": "JS_ARCHIVE_R1_META_CORE_DEBT_SUPPLEMENT_V1",
+    "sourceRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "sourceRawBufferBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "scopeQids": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ],
+    "fullArtifactDenominator": 22,
+    "overallConclusion": "The required core course/unit/registered L2/difficulty values are resolved and valid for all five qids. The only detected debt is PT/TPL projection: q1 remains explicitly META_ONLY_UNRESOLVED/PROJECTION_UNMATERIALIZED with no unique primary; q6-q9 retain active parent-compatible PT/TPL but the exact current legacy L2 binding is missing. Do not promote these rows to overall semantic Meta PASS, fill nulls, relabel statuses, or alter source fields."
+  },
+  "admissionPolicy": {
+    "allowedMetaDebtFields": [
+      "problemTypeKey",
+      "templateKey"
+    ],
+    "coreFieldsMustMatchSource": [
+      "standardCourse",
+      "standardUnitKey",
+      "standardUnit",
+      "standardUnitOrder",
+      "subUnitKey",
+      "subUnit",
+      "difficultyBucket",
+      "difficultyConfidence",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility",
+      "level"
+    ],
+    "requireRegisteredL2": true,
+    "requireDifficultyCurrentEqualsIndependent": true,
+    "requireReviewStatusManual": true,
+    "requireR1V2ActiveArtifactPass": true,
+    "requireFullQuestionDenominator": true,
+    "rows": [
+      {
+        "qid": 1,
+        "expectedR1Verdict": "PASS_WITH_META_DEBT",
+        "expectedR1MetaReviewStatus": "META_ONLY_UNRESOLVED",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current q1 fields are null and projectionStatus is PROJECTION_UNMATERIALIZED. The three independent truth checks require distinct arrangement, combination and repeated-combination semantics; GLOBAL ACTIVE taxonomy and exact binding lookup did not yield a unique primary. Preserve the existing unresolved projection; do not invent a mixed key.",
+        "expectedProjectionDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "coreMetaAssessment": {
+          "standardCourseValid": true,
+          "standardUnitValid": true,
+          "standardUnitOrderValid": true,
+          "registeredL2Valid": true,
+          "difficultyFieldsValid": true,
+          "difficultyLevelMappingValid": true,
+          "priorR1DifficultyReview": {
+            "currentBucket": 2,
+            "independentBucket": 2,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reasoning": "Three familiar formula checks are direct and each result is substituted immediately; low strategy-selection burden."
+          }
+        },
+        "registeredL2": {
+          "status": "active",
+          "key": "H15-PS-01-COUNTING_APPLICATION",
+          "standardUnitKey": "H15-PS-01"
+        },
+        "projectionAssessment": {
+          "status": "PROJECTION_UNMATERIALIZED",
+          "disposition": "META_ONLY_UNRESOLVED_NO_SINGLE_PRIMARY; do not claim semantic PASS",
+          "retainedKeysActiveAndSameParent": null,
+          "exactCurrentL2BindingCount": null,
+          "currentProblemTypeKey": null,
+          "currentTemplateKey": null
+        }
+      },
+      {
+        "qid": 6,
+        "expectedR1Verdict": "PASS",
+        "expectedR1MetaReviewStatus": "PROJECTION_BINDING_PENDING",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "expectedProjectionDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "coreMetaAssessment": {
+          "standardCourseValid": true,
+          "standardUnitValid": true,
+          "standardUnitOrderValid": true,
+          "registeredL2Valid": true,
+          "difficultyFieldsValid": true,
+          "difficultyLevelMappingValid": true,
+          "priorR1DifficultyReview": {
+            "currentBucket": 3,
+            "independentBucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reasoning": "Two binomial coefficients are extracted and combined into an equation with a positivity filter."
+          }
+        },
+        "registeredL2": {
+          "status": "active",
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "standardUnitKey": "H15-PS-02"
+        },
+        "projectionAssessment": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+          "retainedKeysActiveAndSameParent": true,
+          "exactCurrentL2BindingCount": 0,
+          "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+          "currentTemplateKey": "TPL_BINOMIAL_TERM_COEFFICIENT"
+        }
+      },
+      {
+        "qid": 7,
+        "expectedR1Verdict": "PASS",
+        "expectedR1MetaReviewStatus": "PROJECTION_BINDING_PENDING",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "expectedProjectionDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "coreMetaAssessment": {
+          "standardCourseValid": true,
+          "standardUnitValid": true,
+          "standardUnitOrderValid": true,
+          "registeredL2Valid": true,
+          "difficultyFieldsValid": true,
+          "difficultyLevelMappingValid": true,
+          "priorR1DifficultyReview": {
+            "currentBucket": 3,
+            "independentBucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reasoning": "The product requires finding two separate exponent contributions and recognizing their cancellation."
+          }
+        },
+        "registeredL2": {
+          "status": "active",
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "standardUnitKey": "H15-PS-02"
+        },
+        "projectionAssessment": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+          "retainedKeysActiveAndSameParent": true,
+          "exactCurrentL2BindingCount": 0,
+          "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+          "currentTemplateKey": "TPL_BINOMIAL_TERM_COEFFICIENT"
+        }
+      },
+      {
+        "qid": 8,
+        "expectedR1Verdict": "PASS",
+        "expectedR1MetaReviewStatus": "PROJECTION_BINDING_PENDING",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "expectedProjectionDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "coreMetaAssessment": {
+          "standardCourseValid": true,
+          "standardUnitValid": true,
+          "standardUnitOrderValid": true,
+          "registeredL2Valid": true,
+          "difficultyFieldsValid": true,
+          "difficultyLevelMappingValid": true,
+          "priorR1DifficultyReview": {
+            "currentBucket": 3,
+            "independentBucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reasoning": "Three blanks require matching two proof methods to a binomial identity and coefficient symmetry."
+          }
+        },
+        "registeredL2": {
+          "status": "active",
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "standardUnitKey": "H15-PS-02"
+        },
+        "projectionAssessment": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+          "retainedKeysActiveAndSameParent": true,
+          "exactCurrentL2BindingCount": 0,
+          "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+          "currentTemplateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+        }
+      },
+      {
+        "qid": 9,
+        "expectedR1Verdict": "PASS",
+        "expectedR1MetaReviewStatus": "PROJECTION_BINDING_PENDING",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "expectedProjectionDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "coreMetaAssessment": {
+          "standardCourseValid": true,
+          "standardUnitValid": true,
+          "standardUnitOrderValid": true,
+          "registeredL2Valid": true,
+          "difficultyFieldsValid": true,
+          "difficultyLevelMappingValid": true,
+          "priorR1DifficultyReview": {
+            "currentBucket": 3,
+            "independentBucket": 3,
+            "confidence": "high",
+            "boundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "reasoning": "The binomial sum is transformed, bounded between powers of two, and solved again as an equation."
+          }
+        },
+        "registeredL2": {
+          "status": "active",
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "standardUnitKey": "H15-PS-02"
+        },
+        "projectionAssessment": {
+          "status": "PROJECTION_BINDING_PENDING",
+          "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+          "retainedKeysActiveAndSameParent": true,
+          "exactCurrentL2BindingCount": 0,
+          "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+          "currentTemplateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+        }
+      }
+    ],
+    "q1MetaOnlyException": {
+      "qid": 1,
+      "r1Verdict": "PASS_WITH_META_DEBT",
+      "r1MetaReviewStatus": "META_ONLY_UNRESOLVED",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "mustPreserveNoSinglePrimaryReason": true,
+      "notSemanticPass": true
+    },
+    "q6to9ProjectionPending": {
+      "qids": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "r1Verdict": "PASS",
+      "r1MetaReviewStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "retainCurrentProblemTypeAndTemplate": true,
+      "retainedKeysActiveAndSameParent": true,
+      "exactCurrentL2BindingCount": 0
+    },
+    "onlyQ1MetaOnlyUnresolvedAllowed": true,
+    "allOtherMetaOnlyUnresolvedRejected": true
+  },
+  "outputConstraints": {
+    "reviewStatus": "manual_review",
+    "metadataStatus": "approved_partial_with_explicit_holds",
+    "fieldStatusForDebtFields": "manual_review_pending",
+    "projectionStatusCopied": true,
+    "metaDebtFieldsAndReasonCopied": true,
+    "semanticPassClaim": false,
+    "sourceValuesUnchanged": true,
+    "automaticEligibilityPromoted": false
+  },
+  "excludedScope": {
+    "allOtherQids": true,
+    "otherExamUids": true,
+    "otherSourceRawShas": true,
+    "otherMetaDebtFields": true,
+    "missingCoreOrL2Authority": true,
+    "semanticPassPromotion": true,
+    "sourceMutation": true,
+    "r1EvidenceMutation": true,
+    "globalRegistryMutation": true
+  }
+}

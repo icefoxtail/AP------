@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_META_CITATION_TEST_FIXTURE_REBIND_V1",
+  "executionLine": "CODEX",
+  "origin": {
+    "admissionPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/producer-v1/ROOT.r1-meta-core-debt-admission.v3.json",
+    "admissionSha256": "55c22f78e58c306d1d2d801803689ebc841b226e3cf32bf648b53c95bbcded53",
+    "supplementPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.meta-core-debt-supplement.json",
+    "supplementSha256": "98aaf38b67810a7bba8d6b1fbd4bcb5af5a97e9a317bb21f859abd1267d629a8"
+  },
+  "rebound": {
+    "admissionPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/test-fixtures/r1-meta-citation-current-v1/ROOT.r1-meta-core-debt-admission.v3-current-citations.v1.json",
+    "admissionSha256": "b55f213024f0217c860dc4cdf59e0d8985c14491da2869ce8044382cfb45c923",
+    "supplementPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/test-fixtures/r1-meta-citation-current-v1/R1.recovery.meta-core-debt-supplement.current-citations.v1.json",
+    "supplementSha256": "911867336460975f63f87d997c95760225248941246314632bf8a4f58efa70f6"
+  },
+  "changedCitationFiles": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "beforeSha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+      "currentSha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "beforeSha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+      "currentSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec"
+    }
+  ],
+  "unchangedSemantics": {
+    "admissionScope": true,
+    "rootAuthorityReference": true,
+    "r1Evidence": true,
+    "r1Validation": true,
+    "admissionPolicy": true,
+    "outputConstraints": true,
+    "supplementRows": true,
+    "canonicalCitations": true,
+    "onlyCitationShaFieldsChanged": true
+  },
+  "negativeChecksPreserved": "Existing test still corrupts the supplement SHA/rows and appends bytes to a live citation and requires rejection."
+}
