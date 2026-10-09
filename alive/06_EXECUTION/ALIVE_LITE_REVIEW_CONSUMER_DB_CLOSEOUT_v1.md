@@ -3,6 +3,11 @@
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
+## CURRENT HARD 2026-10-09 — 원본 1문항 단위 GPT 독립검수 (이전 두 채팅 운영 배치 기준 우선)
+- 신규 QID9 한 세트(원본 qid 1개, A1~C3 최대 9개 초안)를 **별도 GPT 검수 단계**가 하나씩 독립 풀고 먼저 동결한다. 이후 저장 정답·한국어 해설·오개념 선지·교육 목적·RPM/Meta·그림 필요성을 대조한다. CREATE의 자가 계산을 독립 REVIEW로 인정하지 않는다.
+- 9개 생산 시도는 필수지만 출판할 문항 9개 PASS 강제는 아니다. 미완료 슬롯·수리·보류는 sourceQid별 HANDOFF에 기록하며, 다음 qid를 무단 개시하지 않는다. Codex가 품질을 재판정하거나 문항을 자체 제작하지 않는다.
+- 출판 가능 UID는 GPT가 승인하고 exact active RPM mapping, canonical label parity, student-visible asset 및 Chrome/DB readback을 별도 확인한다. Codex는 지정 Git 변경의 commit/push/main merge/readback만 담당한다. 본 변경은 기존 27 candidate HOLD 23을 자동 해제하지 않는다.
+
 ## CURRENT USER OVERRIDE — GPT 품질·공급 판단 / Codex Git 병합 전용 (2026-10-09)
 - ALIVE 신규 생성문항의 독립 수학 검수, 발문·5지·한국어 해설·Meta·Visual 평가, 수정, Consumer 공급 승인 판단 및 필요한 등록 데이터 완성은 GPT가 직접 담당한다. Codex는 품질 판단을 하지 않고 GPT가 확정한 변경분의 Git 커밋·운영병합·remote readback만 담당한다.
 - 본 기존 계약의 단계별 proof/validator/등록/Chrome 게이트는 유효하며 미실행을 PASS로 선언하지 않는다. 기존 후보 자동 삭제나 재설계 대상 폐기 지시는 이 문서에 두지 않는다.
