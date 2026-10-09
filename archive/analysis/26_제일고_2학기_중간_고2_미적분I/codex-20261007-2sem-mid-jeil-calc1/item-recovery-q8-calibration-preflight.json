@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "stage": "ITEM_RECOVERY",
+  "examPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-jeil-calc1\\26_제일고_2학기_중간_고2_미적분I\\candidate\\26_제일고_2학기_중간_고2_미적분I.js",
+  "scope": {
+    "qid": 8
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+        "solutionExcerpt": "원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.\n주어진 식은\n$x^2+y^2-6x+4y+9=0$이다.\n먼저 상수항 $9$를 오른쪽으로 옮겨\n$x$에 대한 항과 $y$에 대",
+        "observation": "Read the complete representative solution from current JS bytes. It names the quantity/condition first, displays the intermediate algebra actually used, and states the conclusion after the calculation; judge as small-board flow reference only, not as answer or method authority for Jeil q8."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2",
+        "observation": "Read the complete representative solution from current JS bytes. It names the quantity/condition first, displays the intermediate algebra actually used, and states the conclusion after the calculation; judge as small-board flow reference only, not as answer or method authority for Jeil q8."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2",
+        "observation": "Read the complete representative solution from current JS bytes. It names the quantity/condition first, displays the intermediate algebra actually used, and states the conclusion after the calculation; judge as small-board flow reference only, not as answer or method authority for Jeil q8."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+        "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfra",
+        "observation": "Read the complete representative solution from current JS bytes. It names the quantity/condition first, displays the intermediate algebra actually used, and states the conclusion after the calculation; judge as small-board flow reference only, not as answer or method authority for Jeil q8."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read failure-family descriptions for actual SVG geometry, enumerated small-board blocks, null-but-resolvable Meta, and runtime escape regression. This q8 repair uses no visual asset; preserve source truth and inspect final runtime content/solution escapes."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "qualityCompareCount": "0/1",
+    "completedAt": "2026-10-08T06:16:35.065Z"
+  }
+}

@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import crypto from 'node:crypto';
+const examPath = process.argv[2];
+const raw = fs.readFileSync(examPath, 'utf8');
+const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
+vm.runInNewContext(raw, context, { timeout: 3000, filename: 'postfreeze-current-final-exam.js' });
+const bank = context.window.questionBank;
+const qids = Array.from({length: 22}, (_, i) => i + 1);
+if (!Array.isArray(bank)) throw new Error('questionBank unavailable');
+const rows = bank.filter(q => qids.includes(Number(q?.id))).map(q => ({ qid:Number(q.id), content:q.content, choices:q.choices, answer:q.answer, solution:q.solution, image:q.image ?? null, tags:q.tags ?? null, standardCourse:q.standardCourse ?? null, standardUnitKey:q.standardUnitKey ?? null, standardUnit:q.standardUnit ?? null, subUnitKey:q.subUnitKey ?? null, subUnit:q.subUnit ?? null, subUnitConfidence:q.subUnitConfidence ?? null, subUnitClassificationDepth:q.subUnitClassificationDepth ?? null, conceptClusterKey:q.conceptClusterKey ?? null, problemTypeKey:q.problemTypeKey ?? null, templateKey:q.templateKey ?? null, crossConceptKeys:q.crossConceptKeys ?? null, conditionKeys:q.conditionKeys ?? null, integrationPattern:q.integrationPattern ?? null, difficultyBucket:q.difficultyBucket ?? null, difficultyConfidence:q.difficultyConfidence ?? null, difficultyBoundaryFlag:q.difficultyBoundaryFlag ?? null, legacyLevelCompatibility:q.legacyLevelCompatibility ?? null, tagConfidence:q.tagConfidence ?? null, tagStatus:q.tagStatus ?? null, sourceType:q.sourceType ?? null, imageStatus:q.imageStatus ?? null, answerStatus:q.answerStatus ?? null, solutionStatus:q.solutionStatus ?? null, reviewStatus:q.reviewStatus ?? null, questionType:q.questionType ?? null, layoutTag:q.layoutTag ?? null, wide:q.wide ?? null }));
+if (rows.length !== 22 || rows.some((r, i) => r.qid !== qids[i])) throw new Error('qid coverage mismatch');
+process.stdout.write(JSON.stringify({ artifactRawSha256:crypto.createHash('sha256').update(raw).digest('hex'), qids, rows }, null, 2));
