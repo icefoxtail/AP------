@@ -196,7 +196,7 @@ function validateAuthorityBinding(root,meta,question,uid){
     if(candidateMatches.length!==1)issues.push('GENERATED_L4_CANDIDATE_NOT_UNIQUE');
     else{
      const candidate=candidateMatches[0];
-     const parent=candidate.proposedParentRPMPrimaryL3||candidate.parentRPMPrimaryL3||candidate.parentL3;
+     const parent=candidate.proposedParentRPMPrimaryL3||candidate.parentRPMPrimaryL3||candidate.parentPrimaryL3||candidate.parentL3;
      if(parent!==meta.rpmL3&&parent!==authorityCode(meta.rpmL3)&&parent!==authorityLabel(meta.rpmL3)&&parent!==primaryRecord?.rpmPath?.l3)
       issues.push('GENERATED_L4_PARENT_L3_MISMATCH');
      if(candidate.sourceUid&&candidate.sourceUid!==uid&&!(candidate.exampleUids||[]).includes(uid))issues.push('GENERATED_L4_UID_SCOPE_MISMATCH');

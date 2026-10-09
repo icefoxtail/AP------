@@ -1,5 +1,11 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
+- 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
+- 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
+- 원장 직접 Generated 품질 지시의 별도 인증은 생략. **main 병합 이후 필요한 실제 Chrome 학생 조회/출력 등 기술 검사는 수정 AI가 끝까지 진행**한다. main write만으로 MAIN_DONE이 아니며, 실패하면 본 작업의 수리 대상으로 처리한다. 실제 미실행을 PASS로 꾸미지 않는다. 예외적 막힘은 시도·정확한 blockers·주체를 ledger에 남기되 재승인 요청/보고만 하고 끝내지 않는다.
+
+
 ## CURRENT HARD — 원장 직접 검수·main 반영 지시 = 품질 최종 승인 (2026-10-09 최신 사용자 지시)
 - **원장이 특정 Generated/ALIVE 문항·배치에 대해 "검수하고 main에 반영", "검수 후 운영병합", "main에 반영" 등 품질 확인과 출시를 직접 지시하면, 그 명시한 범위의 품질 승인 authority는 `USER_DIRECTED_QUALITY_APPROVED`로 충족한다.** 추가로 새 GPT 세션의 "정식 품질검수", 별도 독립검수 인증, open-book review PASS, 재승인·배치 대기를 요구하지 않는다. 원장 지시를 받았는데 formal GPT REVIEW 0건이라는 이유로 QUALITY_PENDING으로 표시하거나 출시를 보류하지 않는다.
 - 지시 범위와 최종 파일/UID를 결속해 `approvalBasis=USER_DIRECTED_QUALITY_APPROVED`(또는 현재 스키마의 기존 `USER_DIRECTED_OPERATING_APPROVED` 및 실제 원장 지시 evidence)를 남긴다. **실제로 수행하지 않은 독립 GPT 검사를 PASS했다고 꾸미지 않으며**, 이력의 `openBookQualityReviewed:0` 같은 계수는 독립 검수 이력일 뿐 사용자 승인 취소 근거가 아니다.
