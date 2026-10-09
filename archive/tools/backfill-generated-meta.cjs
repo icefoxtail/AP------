@@ -57,7 +57,9 @@ function deriveMetaBrowsePath(input, records) {
   if (!['RPM_LOCKED', 'RPM_EXISTING_DRAFT'].includes(input?.rpmL4Namespace)) return { status: 'UNKNOWN', reason: 'RPM_NAMESPACE_UNKNOWN' };
   if (input.rpmL4Namespace === 'RPM_LOCKED' && authority.status !== 'LOCKED') return { status: 'UNKNOWN', reason: 'RPM_LOCKED_AUTHORITY_UNVERIFIED' };
   if (input.rpmL4Namespace === 'RPM_EXISTING_DRAFT' &&
-      (!/CANONICAL_DRAFT/i.test(authority.policyL3L4 || '') || !input.rpmDraftAuthorityRef || !/^[a-f0-9]{64}$/i.test(input.rpmDraftAuthoritySha256 || '')))
+      (!/CANONICAL_DRAFT/i.test(authority.policyL3L4 || '') ||
+       input.rpmDraftAuthorityRef !== authority.ref || input.rpmDraftAuthoritySha256 !== authority.sha256 ||
+       !/^[a-f0-9]{64}$/i.test(input.rpmDraftAuthoritySha256 || '')))
     return { status: 'UNKNOWN', reason: 'RPM_DRAFT_AUTHORITY_UNVERIFIED' };
   const matches = rows.filter(row => row.id === input?.rpmPrimaryRecordId || row.id === input?.recordId);
   if (matches.length !== 1) return { status: 'UNKNOWN', reason: matches.length ? 'RPM_RECORD_ID_AMBIGUOUS' : 'RPM_RECORD_ID_NOT_FOUND' };
@@ -219,9 +221,10 @@ function createProjection({ uid, row, record, consumerQuestion, sourceQuestion, 
   return { projection, fieldEvidence: fullEvidence, mappingAttempt };
 }
 
-function build({ write = false } = {}) {
+function build({ write = false, indexDocument = null } = {}) {
   const indexBytes = fs.readFileSync(path.join(ROOT, INDEX_REL));
-  const index = JSON.parse(indexBytes.toString('utf8'));
+  if (write && indexDocument) throw new Error('INDEX_DOCUMENT_OVERRIDE_IS_DRY_RUN_ONLY');
+  const index = indexDocument || JSON.parse(indexBytes.toString('utf8'));
   const previousLedger = fs.existsSync(path.join(ROOT, LEDGER_REL)) ? readJson(LEDGER_REL) : null;
   const previousRowsByUid = new Map((previousLedger?.records || []).map(row => [row.uid, row]));
   const cutover = readJson(CUTOVER_REL);
@@ -313,9 +316,14 @@ function build({ write = false } = {}) {
     projected++;
     shardEntry.changed = true;
   }
-  const missing = cutover.legacyUids.filter(uid => !seen.has(uid));
-  if (missing.length) throw new Error(`LEGACY_UIDS_MISSING_FROM_INDEX:${missing.slice(0, 5).join(',')}`);
-  if (projected !== 323) throw new Error(`LEGACY_PROJECTION_COUNT_INVALID:${projected}`);
+  const indexUids = new Set(index.records.map(row => row.uid));
+  const missing = cutover.legacyUids.filter(uid => !indexUids.has(uid));
+  for (const uid of missing) {
+    const previous = previousRowsByUid.get(uid);
+    if (!previous) throw new Error(`WITHDRAWN_LEGACY_UID_WITHOUT_PRIOR_EVIDENCE:${uid}`);
+    ledgerRows.push({ ...previous, status: 'LEGACY_NOT_RECERTIFIED', consumerDisposition: 'INACTIVE_WITHDRAWN_FROM_INDEX', withdrawalReason: 'UID_NOT_PRESENT_IN_CURRENT_CONSUMER_INDEX' });
+  }
+  if (projected + missing.length !== 323) throw new Error(`LEGACY_PROJECTION_COUNT_INVALID:${projected}+${missing.length}`);
   const consumerHashes = new Map();
   for (const entry of shardCache.values()) if (entry.changed) {
     const bytes = Buffer.from(`${JSON.stringify(entry.data, null, 2)}\n`);
@@ -330,6 +338,7 @@ function build({ write = false } = {}) {
   }
   for (const item of ledgerRows) {
     const indexRow = index.records.find(row => row.uid === item.uid);
+    if (!indexRow) continue; // withdrawn historical UID retains its last sealed consumer hash evidence
     item.sourceEvidence.consumerShardAfter = consumerHashes.get(indexRow.shard).ref;
   }
   const ledger = {
@@ -343,6 +352,8 @@ function build({ write = false } = {}) {
     scope: 'EXACT_323_CUTOVER_UIDS_METADATA_ONLY',
     approvalMeaning: 'LEGACY_NOT_RECERTIFIED; approval fields reflect existing Consumer state only',
     projectedCount: projected,
+    historicalRosterCount: 323,
+    inactiveWithdrawnCount: missing.length,
     records: ledgerRows
   };
   if (write) {

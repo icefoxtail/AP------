@@ -27,6 +27,27 @@ test('legacy backfill is exact-roster, rerunnable, partial, and non-recertifying
   }
 });
 
+test('legacy roster ignores future UIDs and preserves withdrawn history as inactive evidence', () => {
+  const source = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+  const future = structuredClone(source);
+  future.records.push({ uid: 'ALITE-SYNTHETIC-FUTURE-0347', sourceKind: 'generated', consumerSelectable: true });
+  future.approvedCount = future.records.length;
+  const futureRun = build({ write: false, indexDocument: future });
+  assert.equal(futureRun.projected, 323);
+  assert.equal(futureRun.ledger.records.some(row => row.uid === 'ALITE-SYNTHETIC-FUTURE-0347'), false);
+
+  const withdrawnUid = 'ALITE-20261008-HYC26-Q05-001';
+  const withdrawn = structuredClone(source);
+  withdrawn.records = withdrawn.records.filter(row => row.uid !== withdrawnUid);
+  withdrawn.approvedCount = withdrawn.records.length;
+  const withdrawnRun = build({ write: false, indexDocument: withdrawn });
+  const ledgerRow = withdrawnRun.ledger.records.find(row => row.uid === withdrawnUid);
+  assert.equal(withdrawnRun.projected, 322);
+  assert.equal(withdrawnRun.ledger.inactiveWithdrawnCount, 1);
+  assert.equal(ledgerRow.consumerDisposition, 'INACTIVE_WITHDRAWN_FROM_INDEX');
+  assert.equal(ledgerRow.status, 'LEGACY_NOT_RECERTIFIED');
+});
+
 test('backfilled projections preserve unknowns and keep physical bucket distinct from RPM L2', () => {
   const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
   const cutover = JSON.parse(fs.readFileSync(cutoverPath, 'utf8'));
@@ -111,7 +132,7 @@ test('the seven audited difficulty gaps remain UNKNOWN without conversion from l
 test('RPM browse alias requires unique exact authority and exact parents/labels/bucket', () => {
   const records = [{ id: 'R-1', standardCourse: 'C', standardUnitKey: 'U', subUnitKey: 'S', rpmPath: { majorUnit: 'M1', midUnit: 'M2', l3: 'M3', l4: 'M4' } }];
   const base = { recordId: 'R-1', standardCourse: 'C', standardUnitKey: 'U', subUnitKey: 'S', rpmL1: 'code1|M1', rpmL2: 'code2|M2', rpmL3: 'code3|M3', rpmL4: 'code4|M4', rpmL4Namespace: 'RPM_EXISTING_DRAFT', rpmDraftAuthorityRef: 'docs/rules/authority.json', rpmDraftAuthoritySha256: 'a'.repeat(64), difficultyBucket: 3, expectedDifficultyBucket: 3 };
-  const draftAuthority = { policyL3L4: 'CANONICAL_DRAFT normalized for archive' };
+  const draftAuthority = { policyL3L4: 'CANONICAL_DRAFT normalized for archive', ref: base.rpmDraftAuthorityRef, sha256: base.rpmDraftAuthoritySha256 };
   const result = deriveMetaBrowsePath(base, records, draftAuthority);
   assert.equal(result.status, 'EXACT_AUTHORITY_ALIAS');
   assert.deepEqual(result.metaBrowsePath, { L1: 'M1', L2: 'M2', L3: 'M3', L4: 'M4' });
