@@ -57,7 +57,12 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
   assert.ok(index.records.slice(165,273).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
-  assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
+  // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
+  const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
+  const historical=index.records.filter(r=>legacyIds.has(r.uid));
+  assert.equal(historical.length,6);
+  assert.ok(historical.every(r=>r.school==='팔마고'&&r.year===2025&&r.sourceKind==='generated'&&r.approval==='REVIEW_APPROVED'&&r.reviewStatus==='REVIEW_PASS'&&r.consumerSelectable===true));
+  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&(/^ALITE-[A-Za-z0-9-]+$/.test(r.uid)||legacyIds.has(r.uid))));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
   assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
