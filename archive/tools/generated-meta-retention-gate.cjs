@@ -13,6 +13,8 @@ const sortValue=v=>Array.isArray(v)?v.map(sortValue):v&&typeof v==='object'
   ?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sortValue(v[k])])):v;
 const canonical=v=>JSON.stringify(sortValue(v));
 const sha256=v=>crypto.createHash('sha256').update(canonical(v)).digest('hex');
+const sha256Bytes=v=>crypto.createHash('sha256').update(v).digest('hex');
+const gitBlobSha=v=>crypto.createHash('sha1').update(`blob ${v.length}\0`).update(v).digest('hex');
 const nonempty=v=>typeof v==='string'&&v.trim()!==''&&v===v.trim();
 const sha64=v=>typeof v==='string'&&/^[a-f0-9]{64}$/i.test(v);
 const uniqueStrings=a=>Array.isArray(a)&&a.every(nonempty)&&new Set(a).size===a.length;
@@ -64,6 +66,26 @@ function contained(root,rel,prefix){
  return full;
 }
 function readJson(file){return JSON.parse(fs.readFileSync(file,'utf8'));}
+function validateReviewBinding(root,binding,uid,expectedMetaSha,expectedStatus){
+ const issues=[];
+ if(!binding||typeof binding!=='object'||!nonempty(binding.path)||!sha64(binding.sha256))return ['REVIEW_EVIDENCE_BINDING_MISSING'];
+ try{
+ const evidencePrefix=['alive/06_EXECUTION/','archive/analysis/'].find(prefix=>binding.path.startsWith(prefix));
+ if(!evidencePrefix)return ['REVIEW_EVIDENCE_PATH_OUT_OF_SCOPE'];
+ const evidenceFile=contained(root,binding.path,evidencePrefix);
+  const bytes=fs.readFileSync(evidenceFile);
+  if(sha256Bytes(bytes).toLowerCase()!==binding.sha256.toLowerCase())issues.push('REVIEW_EVIDENCE_BYTES_MISMATCH');
+  const doc=JSON.parse(bytes.toString('utf8'));
+  if(doc.schemaVersion!=='GENERATED_META_REVIEW_EVIDENCE_V1'||!Array.isArray(doc.items))return [...issues,'REVIEW_EVIDENCE_SCHEMA_INVALID'];
+  const matches=doc.items.filter(x=>x?.uid===uid);
+  if(matches.length!==1)return [...issues,'REVIEW_EVIDENCE_UID_NOT_UNIQUE'];
+  const item=matches[0];
+  if(!['REVIEW_PASS','REVIEW_APPROVED','USER_DIRECTED_OPERATING_APPROVED'].includes(item.reviewStatus))issues.push('REVIEW_EVIDENCE_STATUS_NOT_APPROVED');
+  if(binding.reviewStatus!==item.reviewStatus||item.reviewStatus!==expectedStatus)issues.push('REVIEW_EVIDENCE_STATUS_MISMATCH');
+  if(item.metaFinalSha256!==expectedMetaSha)issues.push('REVIEW_EVIDENCE_META_SHA_MISMATCH');
+ }catch(e){issues.push('REVIEW_EVIDENCE_INSPECTION_ERROR:'+e.message);}
+ return issues;
+}
 function audit(root){
  const consumerPrefix='archive/data/generated-lite-consumer/v1/';
  const sourcePrefix='archive/generated/lite/v1/';
@@ -76,6 +98,13 @@ function audit(root){
  if(!Array.isArray(idx.records)||idx.approvedCount!==idx.records?.length)
   errors.push('CONSUMER_APPROVED_COUNT_INVALID');
  const legacy=new Set(cutover.legacyUids||[]);
+ const historicalRows=cutover.historicalMetaEvidenceCompatibility||[];
+ const historicalEvidenceCompat=new Map(historicalRows.map(item=>[item?.uid,item]));
+ if(historicalEvidenceCompat.size!==historicalRows.length||
+   [...historicalEvidenceCompat.keys()].some(uid=>legacy.has(uid))||
+   !Number.isInteger(cutover.historicalMetaEvidenceCompatibilityCount)||historicalEvidenceCompat.size!==cutover.historicalMetaEvidenceCompatibilityCount||
+   historicalRows.some(item=>!nonempty(item?.uid)||!sha64(item?.metaFinalSha256)||!sha64(item?.metaReviewEvidenceSha256)||!(/^[a-f0-9]{40}$/i.test(item?.sourceShardGitSha||''))))
+  errors.push('HISTORICAL_EVIDENCE_COMPAT_ROSTER_INVALID');
  const holds=new Set(idx.excludedHoldUids||[]);
  const seen=new Set();
  const shardCache=new Map(),sourceCache=new Map(),metaCache=new Map();
@@ -112,6 +141,10 @@ function audit(root){
     source=sandbox.window.questionBank;
     sourceCache.set(sourceRel,source);
    }
+   const sourceBytes=fs.readFileSync(sourceFile);
+   const sourceBlob=gitBlobSha(sourceBytes);
+   if(row.sourceShardGitSha!==sourceBlob||record.sourceShardGitSha!==sourceBlob)
+    issue('SOURCE_SHARD_BYTES_SHA_MISMATCH');
    const sourceQs=source.filter(x=>x.uid===uid);
    if(sourceQs.length!==1){issue('SOURCE_UID_NOT_UNIQUE');continue;}
    const metaRel=sourceRel.replace('/shards/','/metadata/').replace(/\.js$/,'.json');
@@ -132,6 +165,16 @@ function audit(root){
       authority:m.metaReviewEvidenceSha256}
    });
    for(const item of checks)issue(item);
+   const expectedReviewStatus=row.reviewStatus||row.approval;
+   const reviewBinding=m.reviewEvidenceBinding||null;
+   if(reviewBinding){
+    for(const item of validateReviewBinding(root,reviewBinding,uid,sha256(m.meta),expectedReviewStatus))issue(item);
+    if(bindingDigestMismatch(row,record,q,sourceQs[0],m,reviewBinding))issue('REVIEW_EVIDENCE_BINDING_PROJECTION_MISMATCH');
+   }else{
+    const prior=historicalEvidenceCompat.get(uid);
+    if(!prior||prior.metaFinalSha256!==sha256(m.meta)||prior.metaReviewEvidenceSha256!==m.metaReviewEvidenceSha256||prior.sourceShardGitSha!==sourceBlob)
+     issue('REVIEW_EVIDENCE_BINDING_MISSING_OR_HISTORICAL_BYTES_CHANGED');
+   }
    if(q.difficultyBucket!==m.meta?.difficultyBucket||q.level!==m.meta?.level||
       q.standardUnitKey!==sourceQs[0].standardUnitKey||q.subUnitKey!==sourceQs[0].subUnitKey)
     issue('SOURCE_QUESTION_STANDARD_OR_DIFFICULTY_MISMATCH');
@@ -151,9 +194,14 @@ function audit(root){
    legacyExemptNotRecertified:exempt,newUidChecked:checked,total:seen.size,
    failures:errors.length,errors};
 }
+function bindingDigestMismatch(row,record,q,sourceQuestion,approved,binding){
+ const stable={path:binding.path,sha256:binding.sha256.toLowerCase(),reviewStatus:binding.reviewStatus,uid:row.uid};
+ return [row.metaReviewEvidence,record.metaReviewEvidence,q.metaReviewEvidence,sourceQuestion.metaReviewEvidence]
+  .some(value=>canonical(value)!==canonical(stable));
+}
 if(require.main===module){
  const result=audit(path.resolve(__dirname,'../..'));
  console.log(JSON.stringify(result,null,2));
  if(result.failures)process.exitCode=1;
 }
-module.exports={validateMeta,validateProjection,audit,sha256};
+module.exports={validateMeta,validateProjection,validateReviewBinding,audit,sha256};
