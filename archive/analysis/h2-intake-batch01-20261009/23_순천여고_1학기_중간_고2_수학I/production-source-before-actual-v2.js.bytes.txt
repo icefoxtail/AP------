@@ -1385,7 +1385,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "standardCourse": "수학I",
     "standardUnitKey": "H15-M1-04",
     "standardUnit": "로그함수",

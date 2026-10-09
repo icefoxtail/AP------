@@ -17,6 +17,7 @@ import {
   serializeR1MetaProofSummary,
   verifyR1MetaCoreDebtAdmission,
   verifyR1EvidenceBinding,
+  verifyBoundR1MetaBindingPendingAdmission,
   verifyR1ReuseBinding,
 } from './prepare-target-registration-candidate.mjs';
 import core from '../archive2-core.js';
@@ -148,10 +149,21 @@ test('accepts legacy H15-M1 display alias only with matching ROOT roster scope a
       examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', questionCount: 25,
       artifactRawSha256: sourceRawSha256, validatorRawBufferBlobSha1: sourceGitBlobSha1,
     };
-    const verify = (authorityAdmission = admission, rosterAdmission = admission, extra = {}) => verifyBoundLegacyDisplayAliasAdmission({
-      root: tempRoot, authorityAdmission, rosterAdmission, assignment, examUid: targetUid,
-      productionRelativePath, grade: 'h2', course: 'H15-M1', sourceBytes, bank, ...extra,
-    });
+    const verify = (authorityAdmission = admission, rosterAdmission = admission, extra = {}) => {
+      const rowFor = legacyDisplayAliasAdmission => ({
+        examUid: legacyDisplayAliasAdmission.examUid,
+        productionPath: legacyDisplayAliasAdmission.productionPath,
+        grade: legacyDisplayAliasAdmission.grade,
+        course: legacyDisplayAliasAdmission.course,
+        questionCount: legacyDisplayAliasAdmission.questionCount,
+        legacyDisplayAliasAdmission,
+      });
+      return verifyBoundLegacyDisplayAliasAdmission({
+        root: tempRoot, authorityAdmission, rosterAdmission,
+        authorizedRow: rowFor(authorityAdmission), rosterRow: rowFor(rosterAdmission),
+        assignment, examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', sourceBytes, bank, ...extra,
+      });
+    };
     const token = verify();
     const identity = parseAuthorizedDisplayIdentity({
       examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', verifiedLegacyDisplayAlias: token,
@@ -182,6 +194,11 @@ test('accepts legacy H15-M1 display alias only with matching ROOT roster scope a
     const staleAttestation = changed('attestation', { path: attestationRelativePath, sha256: '0'.repeat(64) });
     assert.throws(() => verify(staleAttestation, staleAttestation), /R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_SHA256_MISMATCH/);
     assert.throws(() => verify(admission, { ...admission, course: 'math2' }), /ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_ROW_MISMATCH/);
+    const validAuthorityRow = { ...admission, legacyDisplayAliasAdmission: admission };
+    const wrongAuthorityRow = { ...validAuthorityRow, course: 'math2' };
+    assert.throws(() => verify(admission, admission, { authorizedRow: wrongAuthorityRow }), /ROOT_LEGACY_DISPLAY_ALIAS_AUTHORITY_ROW_SCOPE_MISMATCH/);
+    const wrongRosterRow = { ...validAuthorityRow, grade: 'h1' };
+    assert.throws(() => verify(admission, admission, { rosterRow: wrongRosterRow }), /ROOT_LEGACY_DISPLAY_ALIAS_ROSTER_ROW_SCOPE_MISMATCH/);
     const wrongSourceSha = changed('sourceRawSha256', '0'.repeat(64));
     assert.throws(() => verify(wrongSourceSha, wrongSourceSha), /ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_RAW_SHA_MISMATCH/);
     const wrongSourceBlob = changed('sourceGitBlobSha1', '0'.repeat(40));
@@ -194,6 +211,205 @@ test('accepts legacy H15-M1 display alias only with matching ROOT roster scope a
     assert.throws(() => verify(outsideRoot, outsideRoot), /R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_PATH_OUTSIDE_ROOT/);
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
+});
+
+test('preserves only the ROOT/R1-bound seven H15-M1 binding-pending PT/TPL fields as manual without changing source values', () => {
+  const root = process.cwd();
+  const examUid = '24_강남여고_1학기_중간_고2_대수';
+  const productionRelativePath = `archive/exams/original/high/h2/1mid/${examUid}.js`;
+  const r1EvidencePath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/R1.evidence.r1_10.20261009.rev6.bound.json`;
+  const sourceBytes = fs.readFileSync(productionRelativePath);
+  const sourceRawSha256 = crypto.createHash('sha256').update(sourceBytes).digest('hex');
+  const sourceGitBlobSha1 = crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${sourceBytes.length}\0`), sourceBytes])).digest('hex');
+  const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  sourceContext.globalThis = sourceContext;
+  vm.createContext(sourceContext);
+  vm.runInContext(sourceBytes.toString('utf8'), sourceContext, { filename: productionRelativePath, timeout: 5000 });
+  const bank = sourceContext.window.questionBank || sourceContext.window.questions || sourceContext.questionBank || sourceContext.questions;
+  const evidenceBytes = fs.readFileSync(r1EvidencePath);
+  const evidenceSha256 = crypto.createHash('sha256').update(evidenceBytes).digest('hex');
+  const evidence = JSON.parse(evidenceBytes.toString('utf8'));
+  const admission = {
+    schemaVersion: 'ROOT_TARGET_REGISTRATION_META_BINDING_PENDING_ADMISSION_V1',
+    examUid,
+    sourceRawSha256,
+    sourceGitBlobSha1,
+    questionCount: 25,
+    r1EvidencePath,
+    r1EvidenceSha256: evidenceSha256,
+    qids: [9, 17, 18, 19, 20, 21, 24],
+    fieldNames: ['problemTypeKey', 'templateKey'],
+    disposition: 'PRESERVE_CURRENT_VALUES_AS_MANUAL_REVIEW_PENDING',
+  };
+  const assignment = {
+    examUid, artifactRawSha256: sourceRawSha256, validatorRawBufferBlobSha1: sourceGitBlobSha1,
+    r1EvidencePath, r1EvidenceSha256: evidenceSha256,
+  };
+  const evidenceBinding = { relative: r1EvidencePath, evidenceSha256, evidence };
+  const verify = (authorityAdmission = admission, rosterAdmission = admission, extra = {}) => verifyBoundR1MetaBindingPendingAdmission({
+    authorityAdmission, rosterAdmission, assignment, examUid, sourceRawSha256, sourceGitBlobSha1, r1EvidenceBinding: evidenceBinding, bank, ...extra,
+  });
+  const admitted = verify();
+  assert.deepEqual(admitted.map(row => row.qid), admission.qids);
+  const sourceFile = core.normalizeFile(productionRelativePath.replace(/^archive\/exams\//, ''));
+  const identityRows = makeTargetIdentityRows(sourceFile, bank);
+  const outputRows = makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath, r1MetaBindingPendingRows: admitted });
+  const pendingQids = new Set(admission.qids);
+  let sourceNullRows = 0;
+  for (const [index, question] of bank.entries()) {
+    const qid = index + 1;
+    const output = outputRows[index];
+    assert.equal(output.problemTypeKey, question.problemTypeKey ?? null);
+    assert.equal(output.templateKey, question.templateKey ?? null);
+    assert.equal(output.standardCourse, question.standardCourse);
+    assert.equal(output.standardUnitKey, question.standardUnitKey);
+    assert.equal(output.standardUnit, question.standardUnit);
+    assert.equal(output.subUnitKey, question.subUnitKey ?? null);
+    assert.equal(output.subUnit, question.subUnit);
+    assert.equal(output.conceptClusterKey, question.conceptClusterKey ?? null);
+    assert.equal(output.difficultyBucket, question.difficultyBucket ?? null);
+    if (question.problemTypeKey == null) {
+      sourceNullRows += 1;
+      assert.equal(output.fieldStatus.problemType, 'manual_review_pending');
+    }
+    if (question.templateKey == null) assert.equal(output.fieldStatus.template, 'manual_review_pending');
+    if (pendingQids.has(qid)) {
+      assert.equal(output.fieldStatus.problemType, 'manual_review_pending');
+      assert.equal(output.fieldStatus.template, 'manual_review_pending');
+    }
+  }
+  assert.equal(sourceNullRows, 18);
+
+  const wrong = (field, value) => ({ ...admission, [field]: value });
+  for (const [field, value] of [
+    ['examUid', '24_다른여고_1학기_중간_고2_대수'],
+    ['sourceRawSha256', '0'.repeat(64)],
+    ['sourceGitBlobSha1', '0'.repeat(40)],
+    ['r1EvidencePath', 'archive/analysis/stale-evidence.json'],
+    ['r1EvidenceSha256', '0'.repeat(64)],
+    ['qids', [9, 17, 18, 19, 20, 21]],
+    ['fieldNames', ['problemTypeKey']],
+  ]) {
+    const changed = wrong(field, value);
+    assert.throws(() => verify(changed, changed), /ROOT_R1_META_BINDING_PENDING_/ , field);
+  }
+  assert.throws(() => verify(admission, { ...admission, sourceRawSha256: '0'.repeat(64) }), /ROOT_R1_META_BINDING_PENDING_SCOPE_ROW_MISMATCH/);
+  const changedBank = bank.map(question => ({ ...question }));
+  changedBank[8].problemTypeKey = 'PT_MUTATED';
+  assert.throws(() => verify(admission, admission, { bank: changedBank }), /ROOT_R1_META_BINDING_PENDING_SOURCE_VALUE_PARITY_FAIL/);
+});
+
+test('preserves only the ROOT/R1-bound q16 and seven qid projection-pending PT/TPL scopes for exams 07/09', () => {
+  const cases = [
+    {
+      examUid: '23_매산여고_1학기_중간_고2_수학I',
+      sourceRawSha256: '339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9',
+      sourceGitBlobSha1: 'c6d691872f370d518f64d309b7bf27707cbffbc0',
+      questionCount: 23,
+      qids: [16],
+      axisStatus: 'CURRENT_FIELDS_REVIEWED',
+      metaField: 'currentFields',
+      projectionStatus: 'BINDING_PENDING',
+    },
+    {
+      examUid: '23_순천여고_1학기_중간_고2_수학I',
+      sourceRawSha256: '9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757',
+      sourceGitBlobSha1: 'ec2da748583fdf29443495c6a9b05fc3319c733c',
+      questionCount: 23,
+      qids: [7, 13, 16, 19, 20, 22, 23],
+      axisStatusesByQid: {
+        7: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS', 13: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+        16: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS', 19: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+        20: 'REVIEWED_BINDING_PENDING', 22: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+        23: 'REVIEWED_CURRENT_META_DISPOSITION',
+      },
+      metaField: 'currentMeta',
+      projectionStatus: 'PROJECTION_BINDING_PENDING',
+    },
+  ];
+  for (const scope of cases) {
+    const r1EvidencePath = `archive/analysis/h2-intake-batch01-20261009/${scope.examUid}/current-r1-proof.json`;
+    const r1EvidenceSha256 = 'a'.repeat(64);
+    const bank = Array.from({ length: scope.questionCount }, (_, index) => ({
+      id: index + 1,
+      standardCourse: '수학I', standardUnitKey: 'H15-M1-01', standardUnit: '지수의 뜻과 성질', standardUnitOrder: 1,
+      subUnitKey: 'H15-M1-01-EXPONENT', subUnit: '지수의 뜻과 성질', conceptClusterKey: null,
+      problemTypeKey: null, templateKey: null, difficultyBucket: 1,
+    }));
+    for (const qid of scope.qids) {
+      bank[qid - 1].problemTypeKey = `PT_SOURCE_${qid}`;
+      bank[qid - 1].templateKey = `TPL_SOURCE_${qid}`;
+    }
+    const rows = bank.map((question, index) => {
+      const qid = index + 1;
+      const metaValues = {
+        problemTypeKey: question.problemTypeKey,
+        templateKey: question.templateKey,
+        metaDebtFields: [],
+        projectionStatus: scope.qids.includes(qid) ? scope.projectionStatus : 'CURRENT_FIELDS',
+      };
+      const axisMeta = scope.metaField
+        ? { status: scope.qids.includes(qid) ? (scope.axisStatusesByQid?.[qid] ?? scope.axisStatus) : 'PASS', [scope.metaField]: metaValues }
+        : { status: scope.qids.includes(qid) ? (scope.axisStatusesByQid?.[qid] ?? scope.axisStatus) : 'PASS', ...metaValues };
+      return {
+        qid, verdict: 'PASS', axisEvidence: { META: axisMeta },
+        fourAxisReview: { META: { disposition: 'CURRENT_FIELDS_RETAINED', evidence: `R1 retained current qid ${qid} fields.` } },
+      };
+    });
+    const evidence = { examUid: scope.examUid, artifactRawSha256: scope.sourceRawSha256, rows };
+    const assignment = {
+      examUid: scope.examUid, artifactRawSha256: scope.sourceRawSha256, validatorRawBufferBlobSha1: scope.sourceGitBlobSha1,
+      r1EvidencePath, r1EvidenceSha256,
+    };
+    const evidenceBinding = { relative: r1EvidencePath, evidenceSha256: r1EvidenceSha256, evidence };
+    const admission = {
+      schemaVersion: 'ROOT_TARGET_REGISTRATION_META_BINDING_PENDING_ADMISSION_V1',
+      examUid: scope.examUid, sourceRawSha256: scope.sourceRawSha256, sourceGitBlobSha1: scope.sourceGitBlobSha1,
+      questionCount: scope.questionCount, r1EvidencePath, r1EvidenceSha256,
+      qids: scope.qids, fieldNames: ['problemTypeKey', 'templateKey'],
+      disposition: 'PRESERVE_CURRENT_VALUES_AS_MANUAL_REVIEW_PENDING',
+    };
+    const verify = (authorityAdmission = admission, rosterAdmission = admission, extra = {}) => verifyBoundR1MetaBindingPendingAdmission({
+      authorityAdmission, rosterAdmission, assignment, examUid: scope.examUid,
+      sourceRawSha256: scope.sourceRawSha256, sourceGitBlobSha1: scope.sourceGitBlobSha1,
+      r1EvidenceBinding: evidenceBinding, bank, ...extra,
+    });
+    const admitted = verify();
+    assert.deepEqual(admitted.map(row => row.qid), scope.qids);
+    const sourceFile = core.normalizeFile(`archive/exams/original/high/h2/1mid/${scope.examUid}.js`.replace(/^archive\/exams\//, ''));
+    const identityRows = makeTargetIdentityRows(sourceFile, bank);
+    const outputRows = makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath, r1MetaBindingPendingRows: admitted });
+    for (const qid of scope.qids) {
+      const source = bank[qid - 1], output = outputRows[qid - 1];
+      assert.equal(output.problemTypeKey, source.problemTypeKey);
+      assert.equal(output.templateKey, source.templateKey);
+      assert.equal(output.fieldStatus.problemType, 'manual_review_pending');
+      assert.equal(output.fieldStatus.template, 'manual_review_pending');
+    }
+    for (const qid of [1, 2, 3, 4, 5, 6].filter(qid => !scope.qids.includes(qid))) {
+      assert.equal(outputRows[qid - 1].fieldStatus.problemType, 'manual_review_pending');
+      assert.equal(outputRows[qid - 1].fieldStatus.template, 'manual_review_pending');
+    }
+
+    const wrong = (field, value) => ({ ...admission, [field]: value });
+    for (const [field, value] of [
+      ['examUid', 'wrong-uid'], ['sourceRawSha256', '0'.repeat(64)], ['sourceGitBlobSha1', '0'.repeat(40)],
+      ['r1EvidencePath', 'archive/analysis/stale.json'], ['r1EvidenceSha256', '0'.repeat(64)],
+      ['qids', [...scope.qids, 1]], ['fieldNames', ['problemTypeKey']],
+    ]) {
+      const changed = wrong(field, value);
+      assert.throws(() => verify(changed, changed), /ROOT_R1_META_BINDING_PENDING_/ , `${scope.examUid}:${field}`);
+    }
+    assert.throws(() => verify(admission, { ...admission, examUid: 'wrong-uid' }), /ROOT_R1_META_BINDING_PENDING_SCOPE_ROW_MISMATCH/);
+    const extraPendingEvidence = {
+      ...evidence,
+      rows: evidence.rows.map(row => row.qid === 1 ? { ...row, axisEvidence: { META: { status: scope.axisStatus, projectionStatus: scope.projectionStatus } } } : row),
+    };
+    assert.throws(() => verify(admission, admission, { r1EvidenceBinding: { ...evidenceBinding, evidence: extraPendingEvidence } }), /ROOT_R1_META_BINDING_PENDING_EVIDENCE_SCOPE_MISMATCH/);
+    const changedBank = bank.map(question => ({ ...question }));
+    changedBank[scope.qids[0] - 1].templateKey = 'TPL_MUTATED';
+    assert.throws(() => verify(admission, admission, { bank: changedBank }), /ROOT_R1_META_BINDING_PENDING_SOURCE_VALUE_PARITY_FAIL/);
   }
 });
 

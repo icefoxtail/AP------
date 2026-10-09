@@ -1,0 +1,1935 @@
+{
+  "schemaVersion": "R1_CURRENT_META_CORE_CERTIFICATE_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "scope": {
+    "qids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "allCurrentRows": true,
+    "semanticReclassification": false,
+    "automaticTagging": false,
+    "overallMetaSemanticPassAsserted": false
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+    "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+  },
+  "authority": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json",
+      "sha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+      "role": "active L1/L2 parent-child authority"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "role": "Meta projection / RPM semantic authority"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "role": "difficulty / adjacent legacy compatibility authority"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+      "role": "GLOBAL ACTIVE PT/TPL registry"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+      "role": "exact curriculum binding lookup"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+      "role": "H2 Math I RPM crosswalk/null projection authority"
+    }
+  ],
+  "priorQualifiedMetaClosure": {
+    "path": "R1.meta-subunit-closure.r1_09.revision1.json",
+    "sha256": "9833a3cf1f7fcc981078e35bd10dd316785bbcb6b5a172f482408c6fb2d3f9ac",
+    "note": "Prior qid L2 closure retained as evidence; current all-qid L2 bindings rechecked against current source and active compiled master."
+  },
+  "currentMetaDecision": "CURRENT_FIELDS_RETAINED_OR_CURRENT_NULL_DEBT_PRESERVED",
+  "counts": {
+    "rows": 23,
+    "currentNullDebtPreserved": 16,
+    "currentFieldsRetained": 7
+  },
+  "limitations": [
+    "This certificate records current metadata fields and canonical bindings only. It does not claim new mathematics/answer review, an overall semantic Meta PASS, new PT/TPL materialization, new tags, PDF comparison, or render PASS.",
+    "All non-null PT/TPL values, projection statuses and difficulty buckets are retained; only q23 legacyLevelCompatibility is updated from BORDERLINE_REVIEW to BORDERLINE_ACCEPTABLE based on the scoped independent adjacent-boundary recheck."
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "parentKey": "H15-M1-05",
+          "standardUnitKey": "H15-M1-05",
+          "labelKo": "삼각함수의 뜻과 값",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "부채꼴 넓이 공식에 라디안 중심각을 대입",
+        "decisiveStep": "S=½r²θ=½·64·π/4=8π",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "일반각과 호도법",
+          "l4": "호도법"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 1 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-030",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "rpmPath": {
+            "majorUnit": "삼각함수",
+            "midUnit": "삼각함수",
+            "l3": "일반각과 호도법",
+            "l4": "호도법"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 2,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-01-EXPONENT",
+          "parentKey": "H15-M1-01",
+          "standardUnitKey": "H15-M1-01",
+          "labelKo": "지수의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "거듭제곱 지수법칙으로 각 항을 정리",
+        "decisiveStep": "(2^√3)^√3=8, 2^(3/2)/√2=2",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수",
+          "l3": "지수법칙",
+          "l4": "지수식 계산"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 2 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-005",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "지수",
+            "l3": "지수법칙",
+            "l4": "지수식 계산"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 3,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "로그 밑변환으로 로그 비를 계산",
+        "decisiveStep": "log_a b=log b/log a=5/3",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그",
+          "l3": "로그의 성질",
+          "l4": "밑의 변환"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 3 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-010",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그",
+            "l3": "로그의 성질",
+            "l4": "밑의 변환"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 4,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_documented",
+        "registeredChild": {
+          "key": "H15-M1-01-EXPONENT",
+          "parentKey": "H15-M1-01",
+          "standardUnitKey": "H15-M1-01",
+          "labelKo": "지수의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "각 n제곱근 방정식의 실수해 개수를 홀수·짝수 차수와 피제곱수의 부호에 따라 판정한다.",
+        "decisiveStep": "홀수 차수는 실근 1개이고, 짝수 차수는 양수에서 실근 2개·음수에서 실근 0개이다.",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수",
+          "l3": "거듭제곱근",
+          "l4": "실수 조건"
+        },
+        "rpmL3": "거듭제곱근",
+        "rpmL4": "실수 조건",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "하",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 4 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-002",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "지수",
+            "l3": "거듭제곱근",
+            "l4": "실수 조건"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 5,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "로그의 합을 곱으로 바꾸고 진수 조건을 적용",
+        "decisiveStep": "(x+1)(x−2)=4, x>2이면 x=3",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그방정식",
+          "l4": "진수 조건"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 5 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-023",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "subUnitKey": null,
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그함수",
+            "l3": "로그방정식",
+            "l4": "진수 조건"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 6,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "parentKey": "H15-M1-05",
+          "standardUnitKey": "H15-M1-05",
+          "labelKo": "삼각함수의 뜻과 값",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "음의 각과 기준각으로 특수각 삼각함수를 계산",
+        "decisiveStep": "−1/2−(−1/2)+1=1",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "삼각함수의 뜻",
+          "l4": "삼각함수 값"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 6 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-032",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "rpmPath": {
+            "majorUnit": "삼각함수",
+            "midUnit": "삼각함수",
+            "l3": "삼각함수의 뜻",
+            "l4": "삼각함수 값"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 7,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "parentKey": "H15-M1-03",
+          "standardUnitKey": "H15-M1-03",
+          "labelKo": "지수함수의 활용",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "밑이 0과 1 사이인 지수함수의 끝점 최댓값",
+        "decisiveStep": "0<a/(a+2)<1이므로 최댓값은 x=−2",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수함수",
+          "l3": "지수함수의 활용",
+          "l4": "최대·최소"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 7 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXISTING_PROJECTION_STATUS",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_EXTREMUM",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 8,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "상용로그의 지수 차로 소리 크기의 비를 구함",
+        "decisiveStep": "Dwhisper=20 gives k=10; Dhammer=60",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그",
+          "l3": "로그의 성질",
+          "l4": "곱·몫·거듭제곱"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 8 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-009",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그",
+            "l3": "로그의 성질",
+            "l4": "곱·몫·거듭제곱"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 9,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "역수와 로그 밑변환으로 합을 한 로그로 결합",
+        "decisiveStep": "1/a+1/b=log_144(12)=1/2",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그",
+          "l3": "로그의 성질",
+          "l4": "밑의 변환"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 9 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-010",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그",
+            "l3": "로그의 성질",
+            "l4": "밑의 변환"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 10,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "로그 밑이 0과 1 사이인 부등식에서 방향을 바꾸고 정의역 교집합",
+        "decisiveStep": "4<x<5",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그부등식",
+          "l4": "정의역·밑 조건"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 10 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-025",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "subUnitKey": null,
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그함수",
+            "l3": "로그부등식",
+            "l4": "정의역·밑 조건"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 11,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "parentKey": "H15-M1-03",
+          "standardUnitKey": "H15-M1-03",
+          "labelKo": "지수함수의 활용",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "이차식의 판별식 음수와 지수 범위를 결합",
+        "decisiveStep": "D/4=(3^k−9)(3^k+2)<0 iff k<2",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수함수",
+          "l3": "지수부등식",
+          "l4": "밑의 범위에 따른 부등호"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 11 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-017",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "subUnitKey": null,
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "지수함수",
+            "l3": "지수부등식",
+            "l4": "밑의 범위에 따른 부등호"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 12,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+        "subUnit": "삼각함수의 관계",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "parentKey": "H15-M1-05",
+          "standardUnitKey": "H15-M1-05",
+          "labelKo": "삼각함수의 관계",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "사인 대칭값을 묶어 집합 원소 수를 셈",
+        "decisiveStep": "sin(π−t)=sin t yields three pairs",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "삼각함수의 성질",
+          "l4": "주기·대칭"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 12 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-033",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "rpmPath": {
+            "majorUnit": "삼각함수",
+            "midUnit": "삼각함수",
+            "l3": "삼각함수의 성질",
+            "l4": "주기·대칭"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 13,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "parentKey": "H15-M1-04",
+          "standardUnitKey": "H15-M1-04",
+          "labelKo": "로그함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "x축 대칭 후 y=2 대칭 조건을 식으로 비교",
+        "decisiveStep": "−log₂x+m=4−log₂x gives m=4",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "평행이동"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 13 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXISTING_PROJECTION_STATUS",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_GRAPH_TRANSLATION",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 14,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+        "subUnit": "지수함수의 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+          "parentKey": "H15-M1-03",
+          "standardUnitKey": "H15-M1-03",
+          "labelKo": "지수함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "절댓값 지수방정식의 두 후보를 양·음근 조건으로 분류",
+        "decisiveStep": "5−k∈(0,3) iff 2<k<5; integers 3,4",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수함수",
+          "l3": "지수방정식",
+          "l4": "치환"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 14 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-016",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "subUnitKey": null,
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "지수함수",
+            "l3": "지수방정식",
+            "l4": "치환"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 15,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "parentKey": "H15-M1-04",
+          "standardUnitKey": "H15-M1-04",
+          "labelKo": "로그함수의 활용",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "자연수 로그값별 이차방정식의 실근 개수를 판별식으로 셈",
+        "decisiveStep": "The fifth total root count occurs when the third level is tangent: max=27, a=10",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그방정식",
+          "l4": "치환"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "상",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 15 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-024",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "subUnitKey": null,
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그함수",
+            "l3": "로그방정식",
+            "l4": "치환"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 16,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "parentKey": "H15-M1-04",
+          "standardUnitKey": "H15-M1-04",
+          "labelKo": "로그함수의 활용",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "등간격과 로그함수의 감소성을 적용",
+        "decisiveStep": "ㄱ and ㄴ true; log base 1/2 reverses the ratio comparison in ㄷ",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "증가·감소"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 16 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXISTING_PROJECTION_STATUS",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 17,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "로그비 등식에서 양수성으로 제곱근 관계를 확정한 뒤 자연수 쌍을 셈",
+        "decisiveStep": "log a=log√b gives b=a²; a=2…7",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그",
+          "l3": "로그의 뜻",
+          "l4": "로그와 지수 관계"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 17 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-007",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그",
+            "l3": "로그의 뜻",
+            "l4": "로그와 지수 관계"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 18,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-02-LOGARITHM",
+          "parentKey": "H15-M1-02",
+          "standardUnitKey": "H15-M1-02",
+          "labelKo": "로그의 뜻과 성질",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "30-60-90 삼각형과 중점 투영으로 길이를 정하고 로그 조건에서 크기 결정",
+        "decisiveStep": "AR=3L/8, OR=L/8, area=72√[6]3",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그",
+          "l3": "로그의 성질",
+          "l4": "곱·몫·거듭제곱"
+        },
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "상",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 18 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-009",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "rpmPath": {
+            "majorUnit": "지수함수와 로그함수",
+            "midUnit": "로그",
+            "l3": "로그의 성질",
+            "l4": "곱·몫·거듭제곱"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 19,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "parentKey": "H15-M1-04",
+          "standardUnitKey": "H15-M1-04",
+          "labelKo": "로그함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "로그 그래프 교점과 역함수 식을 직선과 연립",
+        "decisiveStep": "A=(−5,1), B=(11,1), C=(1,11), area 80",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그함수의 활용",
+          "l4": "그래프 교점"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "상",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 19 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXISTING_PROJECTION_STATUS",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 20,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-06",
+        "standardUnit": "삼각함수의 그래프",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "L2",
+        "registeredChild": {
+          "key": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "parentKey": "H15-M1-06",
+          "standardUnitKey": "H15-M1-06",
+          "labelKo": "삼각함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "코사인 치역과 절댓값 함수의 최댓값·최솟값을 범위로 판정",
+        "decisiveStep": "ㄱ true; ㄴ false for arbitrary real k; ㄷ yields product 0, not −1",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수의 그래프",
+          "l3": "기본 그래프",
+          "l4": "sin·cos"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "상",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 20 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_BINDING_PENDING",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 21,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+        "subUnit": "삼각함수의 관계",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_documented",
+        "registeredChild": {
+          "key": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "parentKey": "H15-M1-05",
+          "standardUnitKey": "H15-M1-05",
+          "labelKo": "삼각함수의 관계",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "삼각함수의 보각 관계로 식을 부호가 분명한 두 변수의 차로 나타내고 제곱합에서 곱을 구한다.",
+        "decisiveStep": "x=-sinθ, y=-cosθ로 두면 x-y=1/3 및 x²+y²=1이므로 xy=4/9이다.",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "삼각함수의 성질",
+          "l4": "삼각함수 관계"
+        },
+        "rpmL3": "삼각함수의 성질",
+        "rpmL4": "삼각함수 관계",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "중",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_NULL_DEBT_PRESERVED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 21 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Null problemTypeKey/templateKey are retained with explicit projection status/reason; no semantic PASS, generated key, or auto-tag is asserted.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXPLICIT_PROJECTION_DEBT",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_NULL_DEBT_PRESERVED",
+        "rpmCrosswalk": {
+          "id": "H2-M1-RPM-034",
+          "curriculum": "2015",
+          "scope": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "rpmPath": {
+            "majorUnit": "삼각함수",
+            "midUnit": "삼각함수",
+            "l3": "삼각함수의 성질",
+            "l4": "삼각함수 관계"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING"
+        },
+        "lookupAuthority": {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1"
+        },
+        "noProjectionMaterialized": true
+      }
+    },
+    {
+      "qid": 22,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+        "subUnit": "지수함수의 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+          "parentKey": "H15-M1-03",
+          "standardUnitKey": "H15-M1-03",
+          "labelKo": "지수함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "외분비로 B의 좌표를 정하고 두 지수함수 교점 조건을 대입",
+        "decisiveStep": "A=(0,8), B=(3/2,5), C=(2,4), so a=−1,k=8",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "지수함수",
+          "l3": "지수함수의 활용",
+          "l4": "그래프 교점"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "level": "상",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 22 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_EXISTING_PROJECTION_STATUS",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    },
+    {
+      "qid": 23,
+      "sourceArtifact": {
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "rawBufferBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "l1l2": {
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "registeredChild": {
+          "key": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "parentKey": "H15-M1-04",
+          "standardUnitKey": "H15-M1-04",
+          "labelKo": "로그함수의 그래프",
+          "status": "active"
+        }
+      },
+      "semanticProjection": {
+        "primaryMethod": "세 로그 그래프 교점을 로그 밑변환으로 계산해 무게중심을 구함",
+        "decisiveStep": "k=3; xA=−2, xB=√10, xC=6",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "지수함수와 로그함수",
+          "midUnit": "로그함수",
+          "l3": "로그함수의 활용",
+          "l4": "그래프 교점"
+        },
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "level": "상",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "metaDisposition": "CURRENT_FIELDS_RETAINED",
+      "evidence": "Current source SHA 9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757; current metadata and registered active L1/L2 child were checked against C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json SHA 4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec. Prior qid 23 R1 Meta row is carried forward from v5 evidence; current all-qid L2 bindings are exact active parent-child matches. Existing non-null PT/TPL and projection/binding status are retained without reclassification.",
+      "priorAxisMetaStatus": "REVIEWED_WITH_DIFFICULTY_BOUNDARY_REVIEW",
+      "priorMetaProofRef": {
+        "path": "R1.evidence.r1_09.recovery.v5.bound.json",
+        "sha256": "5ff5266a2185f076c89ef56335d710fc29fad51e5a4dad9a60a334259eafff90"
+      },
+      "difficultyCompatibilityReview": {
+        "path": "R1.q23-difficulty-compatibility-recheck.r1_09.json",
+        "sha256": "4359ae3b317051cf6804fadc5217a0d5e819cbc3329cb1765cae0fcd5fc6cee3",
+        "afterProof": {
+          "path": "R1.q23-difficulty-compatibility.after.r1_09.json",
+          "sha256": "6936834949a73f8be78228af98d55c914dc3f919fae3c8e9cb8f0fefd7559c8d"
+        },
+        "decision": "BORDERLINE_ACCEPTABLE",
+        "reason": "Adjacent legacy level 상 with bucket 3 is permitted after independent recheck. The multi-function intersection, log-base conversion, x-domain filtering and centroid aggregation support bucket 3 while the legacy upper-level label remains a reasonable adjacent boundary classification."
+      },
+      "projectionLookup": {
+        "disposition": "CURRENT_FIELDS_RETAINED",
+        "problemType": {
+          "key": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "status": "ACTIVE",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "template": {
+          "key": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "status": "ACTIVE",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "ownerPack": "FUNCTIONS_GRAPHS"
+        },
+        "exactCurriculumBindings": [],
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "lookupAuthorities": {
+          "taxonomy": {
+            "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+          },
+          "bindings": {
+            "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+          }
+        },
+        "noReclassification": true
+      }
+    }
+  ],
+  "supersedes": {
+    "path": "R1.current-meta-core-certificate.r1_09.revision1.json",
+    "sha256": "502ee9e9ddf586d86bbf9e56ba58ae66069525de1d049094df48e2aae8ec8d83"
+  },
+  "projectionCounts": {
+    "nullRows": 16,
+    "activePtTplRetainedRows": 7,
+    "nonNullExactBindings": 0
+  }
+}
