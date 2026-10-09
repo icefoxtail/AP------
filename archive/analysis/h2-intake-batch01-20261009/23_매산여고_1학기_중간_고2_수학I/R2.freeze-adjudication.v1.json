@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R2.independent-freeze.v1.json",
+    "sha256": "a6208d966ef1b1610486ceeaa85d5eed76324a19d0cacd0d0e818cc62e8d86a0"
+  },
+  "createdAt": "2026-10-09T11:22:38.116Z",
+  "corrections": [
+    {
+      "correctedAnswer": "9 (choice 2)",
+      "qid": 17,
+      "reason": "Same-session postfreeze recalculation: AB and AD share the same vertical difference 2y_B. Their horizontal differences are (t+1)/2 and 1/2 for B=(t,3^(-t)), so equality gives t=-2 (t=0 excluded by y_B>1). Then B=(-2,9), A=(-3/2,27), D=(-1,9), and area ABD=9. Original freeze incorrectly treated AD as only its horizontal component.",
+      "originalAnswer": null
+    },
+    {
+      "correctedAnswer": "(1) 3sqrt(2); (2) A=(1,4), a=4",
+      "qid": 21,
+      "reason": "Same-session postfreeze recalculation: for A=(p,5-p), B=(5-p,p), C=(0,1), D=(1,0), shoelace area is |24-8p|/2=|12-4p|. Area 8 gives p=1 or 5; p=5 places A on the x-axis and violates first-quadrant membership. Thus A=(1,4), B=(4,1), a=4, and AB=3sqrt(2). Original freeze had an arithmetic error in the shoelace cross-sum.",
+      "originalAnswer": "(1) 11sqrt(2)/4; (2) A=(9/8,31/8), a=(31/8)^(8/9)"
+    }
+  ],
+  "originalFreezeMutated": false
+}

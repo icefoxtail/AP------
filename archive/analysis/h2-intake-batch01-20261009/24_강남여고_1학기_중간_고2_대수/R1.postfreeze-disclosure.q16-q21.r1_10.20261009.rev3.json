@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\R1.immutable-freeze.r1_10.20261009.json",
+    "sha256": "da9fe18ba0f366224b4f09aec222b602490cc1da2205e56f5ad02f0c577aac9c"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\R1.student-only.json",
+    "sha256": "64ceaa4da7ad14b6b8602fc6bab6bc2a8dc961201905ee17569c15bd3d663eb1"
+  },
+  "sourceRawSha256": "4f1529eeefac76a5aa37d24609322f3a331f43ca4570ed7c0696fd8c387f42ea",
+  "originalFreezeSourceRawSha256": "a0f58a6705144669b779e29deb21baa610b8bfe01866649430c995ab677ed664",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 16,
+      "answer": "①",
+      "solution": "그림에서 포물선은 꼭짓점 $(0,-4)$를 지나고 $x$절편이 $-8,8$이므로 $f(x)=\\dfrac{x^2}{16}-4$이다. 직선은 $x$절편 $-4$와 두 그래프의 교점의 $x$좌표 $16$을 지나므로 $g(x)=\\dfrac35x+\\dfrac{12}{5}$이다.\n밑이 $\\dfrac12$인 로그함수는 감소하므로 주어진 부등식은 $0<|f(x)|<|g(x)|$이다. 로그의 진수 조건까지 포함하면 $|f(x)|<|g(x)|$와 $f(x)\\ne0$을 함께 확인해야 한다.\n$|f(x)|<|g(x)|$는 $(f(x)-g(x))(f(x)+g(x))<0$과 같다. 경계는 $f=g$ 또는 $f=-g$에서 생긴다.\n$f=g$의 해는 $x=-\\dfrac{32}{5},16$이고, $f=-g$의 해는 $x=\\dfrac{-24\\pm8\\sqrt{19}}5$이다.\n$f=-g$의 작은 근을 $r_1=-\\dfrac{24+8\\sqrt{19}}5$, 큰 근을 $r_3=\\dfrac{-24+8\\sqrt{19}}5$라 하고, $f=g$의 근을 $r_2=-\\dfrac{32}{5}$, $r_4=16$이라 하면 $r_1<r_2<r_3<r_4$이다. 두 이차식 $f-g$, $f+g$는 모두 위로 열린다. 따라서 $f-g<0$인 구간은 $(r_2,r_4)$이고 $f+g<0$인 구간은 $(r_1,r_3)$이다. 두 식의 부호가 다른 구간은 $(r_1,r_2)$와 $(r_3,r_4)$이다.\n첫 구간의 정수는 $-11,-10,-9,-8,-7$이고, $x=-8$에서는 $f(x)=0$이어서 로그의 진수가 0이 되므로 제외한다. 따라서 첫 구간에서는 4개이다.\n둘째 구간의 정수는 $3$부터 $15$까지이고, $x=8$에서도 $f(x)=0$이므로 제외한다. 따라서 둘째 구간에서는 12개이다.\n모두 $4+12=16$개이므로 정답은 ①이다.",
+      "decisiveStep": "|f|<|g| 경계 f=±g의 정수구간에서 영점 로그 불가값을 뺀다."
+    },
+    {
+      "qid": 21,
+      "answer": "⑤",
+      "solution": "함수 $f(x)=a\\sin2x+b$에서 $u=\\dfrac{t-b}{a}$라 두면 $\\sin2x=u$의 해가 교점의 $x$좌표가 된다.\n$0<u<1$일 때 네 교점의 $x$좌표의 합은 $3\\pi$이고, $-1<u<0$일 때는 $5\\pi$이다. $u=0$이면 $x=0,\\dfrac{\\pi}{2},\\pi,\\dfrac{3\\pi}{2},2\\pi$이므로 $g(b)=5\\pi$이다.\n하한 $u=-1$에서는 두 교점의 합이 $\\dfrac{5\\pi}{2}$이고, 상한 $u=1$에서는 두 교점의 합이 $\\dfrac{3\\pi}{2}$이다. 따라서 $g(t)$의 최솟값은 상한 $t=a+b$에서 얻으며, 조건 (나)에서 $a+b=10$이다.\n조건 (가)의 합 $\\dfrac{15\\pi}{2}$는 $\\dfrac{5\\pi}{2}+5\\pi$이어야 하므로 $t=2$ 또는 $t=3$이 하한이어야 한다. 하한이 $3$이면 $t=2$는 정의역 밖이므로 불가능하다. 하한이 $2$일 때 $t=3$이 중심 $b$라면 $b=3$, $a=1$이 되어 $a+b=4$이므로 조건 (나)와 모순이다. 따라서 $b-a=2$이고 $t=3$은 음수 내부값이다.\n$a+b=10$, $b-a=2$를 풀면 $a=4$, $b=6$이다. 실제로 $t=3$에서 $u=(3-6)/4=-3/4$이므로 음수 내부이고, 조건 (가)도 만족한다.\n따라서 $ab=24$이고 정답은 ⑤이다.",
+      "decisiveStep": "최소 g(t)는 t=a+b=10, 식 (가)로 b−a=2를 얻는다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T05:12:12.800Z"
+}

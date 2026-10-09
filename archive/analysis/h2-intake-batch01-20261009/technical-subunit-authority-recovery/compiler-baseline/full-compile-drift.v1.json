@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "ROOT_TAG_MASTER_PREEXISTING_FULL_COMPILE_DRIFT_V1",
+  "capturedAt": "2026-10-09",
+  "baselineSource": {
+    "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+  },
+  "compiledBaseline": {
+    "path": "archive/data/master_tables/js_archive_tag_master.json",
+    "sha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+    "recordCount": 1100
+  },
+  "compiler": {
+    "path": "archive/tools/intelligence/build-tag-master-v1.mjs",
+    "preFixSha256": "3336efe36670308b2bc64c7eec741fa8c34cf6652213d38464d58782998790f8",
+    "currentSha256": "7acc05dde7b652c0c75db26c782e116048378d8ecee73ec059435c6c7583f2ab",
+    "preFixInvocationFailure": {
+      "command": "node archive/tools/intelligence/build-tag-master-v1.mjs",
+      "exitCode": 1,
+      "stderrPath": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/compiler-baseline/build-tag-master-v1.stderr.raw.txt",
+      "stderrSha256": "d5a6223faf0e5e2c1b774e82532dfbfc3f1ffc6ed596b16533b831e40947c11d",
+      "reason": "configured legacy docs/rules/JS아카이브_표준단원키_마스터테이블.md path is absent"
+    }
+  },
+  "defaultFullCompileCandidate": {
+    "sourceDocument": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "recordCount": 1108,
+    "changedExistingRows": [
+      {
+        "key": "conceptClusterKey:H22-PS-01-CORE",
+        "changedFields": [
+          "labelKo"
+        ],
+        "before": {
+          "labelKo": "순열 핵심 개념"
+        },
+        "after": {
+          "labelKo": "순열과 조합 핵심 개념"
+        }
+      },
+      {
+        "key": "conceptClusterKey:H22-PS-02-CORE",
+        "changedFields": [
+          "labelKo"
+        ],
+        "before": {
+          "labelKo": "조합 핵심 개념"
+        },
+        "after": {
+          "labelKo": "이항정리 핵심 개념"
+        }
+      },
+      {
+        "key": "subUnitKey:H22-PS-01-CORE",
+        "changedFields": [
+          "labelKo",
+          "subUnit"
+        ],
+        "before": {
+          "labelKo": "순열 핵심 개념",
+          "subUnit": "순열 핵심 개념"
+        },
+        "after": {
+          "labelKo": "순열과 조합 핵심 개념",
+          "subUnit": "순열과 조합 핵심 개념"
+        }
+      },
+      {
+        "key": "subUnitKey:H22-PS-02-CORE",
+        "changedFields": [
+          "labelKo",
+          "subUnit"
+        ],
+        "before": {
+          "labelKo": "조합 핵심 개념",
+          "subUnit": "조합 핵심 개념"
+        },
+        "after": {
+          "labelKo": "이항정리 핵심 개념",
+          "subUnit": "이항정리 핵심 개념"
+        }
+      }
+    ],
+    "changedExistingRowCount": 4,
+    "newRows": [
+      "conceptClusterKey:EXPONENTIAL_FUNCTION_APPLICATION",
+      "conceptClusterKey:EXPONENTIAL_FUNCTION_GRAPH",
+      "conceptClusterKey:LOGARITHMIC_FUNCTION_APPLICATION",
+      "conceptClusterKey:LOGARITHMIC_FUNCTION_GRAPH",
+      "subUnitKey:H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "subUnitKey:H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+      "subUnitKey:H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "subUnitKey:H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH"
+    ]
+  },
+  "appendOnlyDisposition": "The exact four H22-PS label/subUnit drift records remain unchanged in the compiled master; the approved append-only mode adds only the four ROOT/R1-approved H15-M1 subUnit rows and their four generated concept records."
+}

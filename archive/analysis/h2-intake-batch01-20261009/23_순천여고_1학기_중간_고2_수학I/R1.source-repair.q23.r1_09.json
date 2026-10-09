@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_AUDITED_SOURCE_REPAIR_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "qid": 23,
+  "repairKind": "AUDITED_SOURCE_REPAIR",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourceComparison": {
+    "factChecked": "q23 supplied DE condition uses logarithm base 3 for log_3 6",
+    "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_순여고2_수1_1중간.pdf",
+    "pdfSha256": "c7bebac4da715f2c4cc4a9e7a93dcf6455c8b2b20e8d8d5e761d5afc7c4708da",
+    "page": 5,
+    "scope": "q23 only; directly rendered original-PDF crop; no full-page text review",
+    "cropPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.q23.pdf-scope.png",
+    "cropSha256": "3071770b6efb10b5d900c6143e76b464d1ceba812fe3fb3ed616745323803666"
+  },
+  "change": {
+    "fieldPaths": [
+      "qid=23.content",
+      "qid=23.question"
+    ],
+    "beforeToken": "\\log_2 6",
+    "afterToken": "\\log_3 6",
+    "studentFieldsChangedOnly": true,
+    "allOtherQidsStudentFieldsUnchanged": true,
+    "answerSolutionDecisiveStepUnchanged": true,
+    "beforeStudentPayloadSha256": "204db12da947423fb662e8c687ad22aab4206db7e3a51af00ddeed1db6b32782",
+    "afterStudentPayloadSha256": "9f132617fa520fdd6d607c55e6ef478012dfe051dd6a4574def7798de78a5b43"
+  },
+  "oldSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17",
+    "preservedCopy": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.source-before-q23-repair.js",
+    "preservedCopySha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17"
+  },
+  "newSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "974c20e8f618e82788aa55ef9b95d9a96d49759057c059ae757e53be652299c6"
+  },
+  "oldFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.blind-freeze.r1_09.json",
+    "sha256": "9e1620dcb2d7b14a00c846e1c7e57c37bc458da48bbf4344451f84a479320cbd",
+    "preserved": true,
+    "validQidsAfterRepair": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "invalidQidsAfterRepair": [
+      23
+    ],
+    "invalidityReason": "student-visible source base changed 2→3; old freeze answers the previous body"
+  },
+  "freshR1Required": {
+    "qids": [
+      23
+    ],
+    "freshSolveFromCorrectedStudentBody": true,
+    "carryForwardOldIndependentAnswer": false,
+    "solutionAndAnswerNotEdited": true
+  }
+}

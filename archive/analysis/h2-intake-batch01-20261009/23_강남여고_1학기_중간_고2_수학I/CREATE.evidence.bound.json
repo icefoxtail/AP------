@@ -1,0 +1,2067 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "23_강남여고_1학기_중간_고2_수학I",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "317b63a257ae1bf5f833a2bfd6a66ddd5d13e202",
+  "artifactRawSha256": "6a9eade7e40cc6ff17a6a6c8acbc84ac054257c2f876bf4e2d96ffad6b594dcd",
+  "sourceMode": "EXTRACTED_JS_ASSETS",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourceProvenanceLimitations": [
+    "INTAKE_PDF_SHA_UNAVAILABLE"
+  ],
+  "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946",
+  "sourceBaseline": {
+    "path": "extracted-baseline.js",
+    "rawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+    "qidCount": 25,
+    "contentChoicesExactParity": true,
+    "pdfPathCandidate": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_강남고2_수1_1중간.pdf",
+    "pdfActuallyReviewed": false
+  },
+  "technicalFindings": [
+    {
+      "type": "IMAGE_REF_EXTRA_ARCHIVE_PREFIX",
+      "action": "NORMALIZED_CANONICAL_ALIAS",
+      "sourceRefs": [
+        "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+        "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+        "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png"
+      ],
+      "finalRefs": [
+        "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+        "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+        "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png"
+      ],
+      "sourceTextChanged": false,
+      "aliasBytesVerifiedEqual": true
+    }
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the complete false-PASS regression README. The fixture demonstrates that visual claims require checking SVG coordinates/topology, enumerated small-board steps must be physically separated, current canonical Meta values must be looked up rather than self-reported, and runtime escape behavior must be checked."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Read the complete worked solution; checked that each claim is followed by the formula substitution and arithmetic needed to reproduce the result."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Read the complete worked solution; checked the equation rewrite, sign handling, and final evaluation at the given point."
+          },
+          {
+            "qid": 23,
+            "solutionSha256": "309880c00afd7d04fd63b9827e9a7536ea3167c345e9db40adc1298fd0a2215c",
+            "observation": "Read the complete worked solution and its referenced SVG source; confirmed the result is tied to explicit intermediate coordinates and an independently bound visual asset.",
+            "visualSha256": "922c53aae95955749d95d83cd9124e75abff0accd5f3e92088a1669b32f8de13",
+            "axes": [
+              "VISUAL_SVG_CODE"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Read the complete worked solution; checked that each claim is followed by the formula substitution and arithmetic needed to reproduce the result."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read the complete worked solution; checked the equation rewrite, sign handling, and final evaluation at the given point.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "axes": [
+              "VISUAL_SVG_CODE"
+            ]
+          },
+          {
+            "qid": 23,
+            "solutionSha256": "3dc2f460505f1be7605b8c0d8aa3a414c469a3d7057904646969ffdcfe6688cd",
+            "observation": "Read the complete worked solution and its referenced SVG source; confirmed the result is tied to explicit intermediate coordinates and an independently bound visual asset.",
+            "visualSha256": "3e8ef0ef80c34be00cf2fc4803554c2647f59135f22a16d6a431016b2e3cbe3d",
+            "axes": [
+              "VISUAL_SVG_CODE"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "standardUnit": "지수의 뜻과 성질",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "subUnit": "지수의 뜻과 성질",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 1,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "6",
+      "solutionSha256": "9ff449a1e27d8c8cdf65d2d765501be8b93a253809a6064465c3ca1c5ece3ac0"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 2,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "e62cf9b68543ce2142558b3d1a977a47d5449d4ff4fce48bcf9b1a3180094ef8"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 3,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "2c8f1f4680d9cf7491528a22d1260a9ded6a89c5e946450eba6a4d13bea0d452"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 4,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "7",
+      "solutionSha256": "b8d923e7743974aeef9272e167cef73eda6f8ee3917239bb9c0fb339b6f9b0a6"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03",
+          "subUnit": "지수함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 5,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "15b6e2aa76880893d5be64d86bed4cd650d20fbee01daddd02986127b51ebfb7"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04",
+          "subUnit": "로그함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 6,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "9",
+      "solutionSha256": "b647effdb0492b87649e5f88947a46f60bf0c13f0bf768ffa836f1b1ef837ae1"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "subUnit": "삼각함수의 관계",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 7,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "f08e15f4db87ffe7e6cedcc605ea9ff8a29400d830fffa41cc292dc44c6d3852"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03",
+          "subUnit": "지수함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 8,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "8",
+      "solutionSha256": "11c682c58499a6f11d0c041609dc787693415b8639104b1cbb8a622142650f16"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "subUnit": "삼각함수의 관계",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 9,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "12",
+      "solutionSha256": "3ed5ef6c4e2f897c5663a00170245f94caca8f100f4c099c6a123d5a8c077146"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-07",
+          "standardUnit": "삼각방정식과 삼각부등식",
+          "standardUnitOrder": 7,
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+          "subUnit": "삼각부등식",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 10,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "9897384bce64d7b9f518dda78c9f5cfd2a24fa1b706bd4d19e984a21979c8c68"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "PROBLEM_ASSET_OPENED",
+          "problemAsset": {
+            "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+            "sha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96",
+            "opened": true,
+            "observation": "Opened the assigned PNG. The visible graph/diagram matches the stated problem setup and labels."
+          },
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The supplied problem visual contains the full graph/geometry needed; the solution gives the decisive quantities in equations and does not need a second diagram."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 11,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "PROBLEM_ASSET_OPENED",
+      "solutionSha256": "13f003c2fb306dcc116259a4df8dad9f227adbc9e4a88f538fc568ef148f7e35"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-07",
+          "standardUnit": "삼각방정식과 삼각부등식",
+          "standardUnitOrder": 7,
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "subUnit": "삼각방정식",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 12,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "6",
+      "solutionSha256": "3b444eea367ba3a12ee56b04031baa8b3248366bdc9ab91bfd0b482e5e7e306f"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-01",
+          "standardUnit": "지수의 뜻과 성질",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "subUnit": "지수의 뜻과 성질",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 13,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "4",
+      "solutionSha256": "9496d3f9f5ffd65dc7f17d6f202c2a3615b1bf54ea57ed2c1410cb0d93c0652e"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 14,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "5",
+      "solutionSha256": "eff20bec97efa98986596c5519881187896098309d4c53862dc27488f20374ed"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 15,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "0ee9a7a7d2e442c5f64b8394233a026777c05354b6707cec46d89ceeb4322597"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04",
+          "subUnit": "로그함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 16,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "9cb806c1aa3f2ebab96516792ec90afc11408a83df5e923ba4e12d56469db666"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "subUnit": "지수와 로그의 활용",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 17,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "2d145ee9be1c4b321d5d47ac2569b7b8c0a9d5f9c324961388c16d58e6578169"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "standardUnitOrder": 3,
+          "subUnitKey": "H15-M1-03",
+          "subUnit": "지수함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "PROBLEM_ASSET_OPENED",
+          "problemAsset": {
+            "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+            "sha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c",
+            "opened": true,
+            "observation": "Opened the assigned PNG. The visible graph/diagram matches the stated problem setup and labels."
+          },
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The supplied problem visual contains the full graph/geometry needed; the solution gives the decisive quantities in equations and does not need a second diagram."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 18,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "PROBLEM_ASSET_OPENED",
+      "derivedFinalValue": "4.5",
+      "solutionSha256": "3163209f1d63f990e80920a675184587f6fb6c382c7f711140c5659ea78ed9be"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 19,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "derivedFinalValue": "9",
+      "solutionSha256": "477b7b229aa0a272c8162005f546cf167503c212a6b7101b5b272713da2a6a0f"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "standardUnitOrder": 4,
+          "subUnitKey": "H15-M1-04",
+          "subUnit": "로그함수",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 20,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "e3cb4a770455a3f0a07e2e4aedaa76abdbcc66a0231ea6c3c06070eb4f5656cc"
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "subUnit": "삼각함수의 뜻과 값",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "PROBLEM_ASSET_OPENED",
+          "problemAsset": {
+            "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+            "sha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102",
+            "opened": true,
+            "observation": "Opened the assigned PNG. The visible graph/diagram matches the stated problem setup and labels."
+          },
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The supplied problem visual contains the full graph/geometry needed; the solution gives the decisive quantities in equations and does not need a second diagram."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 21,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "PROBLEM_ASSET_OPENED",
+      "solutionSha256": "919ae8fd0312de953015fc5e90a05d3fa214be994db867d8fe151ea944e323d3"
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 22,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "b2f0926661ae4d4f75740b96f7207d112340d7eb7d6847611fe05cac13ebca70"
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "standardUnitOrder": 2,
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "subUnit": "지수와 로그의 활용",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 23,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "4a59b04d104ae725cd1d79b55434524256ddb3c9f30e2bdb9900dc583c0fa6dc"
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "subUnit": "삼각함수의 관계",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 24,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "261d76ba2b009bb1a73496937cbc278b809f05f5dcfcf400a6cf3853227eed12"
+    },
+    {
+      "qid": 25,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "AUTO_FIRST_KEEP",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "basis": "Source question text and choices preserved exactly from extracted-baseline.js. Static CREATE disposition only; actual engine render belongs to R3."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "basis": "Fresh solution explicitly shows the decisive transformation, intermediate calculation, and final result in student-readable order."
+        },
+        "meta": {
+          "status": "L1_L2_ASSIGNED_WITH_EXPLICIT_L3_L4_DEBT",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-05",
+          "standardUnit": "삼각함수의 뜻과 값",
+          "standardUnitOrder": 5,
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "subUnit": "삼각함수의 관계",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "reason": "Current L1/L2 master values were assigned from the source math. The current active Foundation lookup did not establish a unique exact ACTIVE L3/L4 match for this item; no semantic key was invented. Both fields remain explicit null with row debt evidence."
+        },
+        "visualSvg": {
+          "status": "NO_PROBLEM_ASSET_REQUIRED",
+          "solutionAsset": {
+            "status": "NOT_NEEDED",
+            "reason": "The reasoning is completely represented by the displayed algebra and no unprovided spatial relationship must be inferred."
+          }
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "mode": "EXTRACTED_JS_ASSETS",
+          "baselineFile": "extracted-baseline.js",
+          "baselineRawSha256": "88c3578104ce99e4eefb77da3ef12485b78999998974466faca559e385748ebc",
+          "itemId": 25,
+          "contentAndChoicesExactParity": true,
+          "pdfReviewMode": "DEFECT_ONLY",
+          "sourceProvenanceLimitations": [
+            "INTAKE_PDF_SHA_UNAVAILABLE"
+          ],
+          "intakeEvidenceSha256": "ada1a7ffc35ca50814179476278e33eaf30594f1e2fec9f90e1893676ff00946"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated.",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Exact source text/choice parity; static review found no justified change."
+      },
+      "visualDisposition": "NO_PROBLEM_ASSET_REQUIRED",
+      "solutionSha256": "b65865404546dcdba8702d832b481bff77cd41b1e98ea9c037b97665a96c8248"
+    }
+  ],
+  "currentAssetBindings": [
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+      "sha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+      "sha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+      "sha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "317b63a257ae1bf5f833a2bfd6a66ddd5d13e202",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      },
+      {
+        "qid": 25,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "No unique exact ACTIVE problemTypeKey/templateKey was established from the current Foundation lookup for this question. Values are left explicitly null; no candidate key or semantic classification is fabricated."
+      }
+    ]
+  },
+  "technicalHashes": {
+    "rawSha256": "6a9eade7e40cc6ff17a6a6c8acbc84ac054257c2f876bf4e2d96ffad6b594dcd",
+    "validatorRawBufferBlobSha1": "317b63a257ae1bf5f833a2bfd6a66ddd5d13e202",
+    "gitCleanFilterBlobSha1": "317b63a257ae1bf5f833a2bfd6a66ddd5d13e202"
+  }
+}

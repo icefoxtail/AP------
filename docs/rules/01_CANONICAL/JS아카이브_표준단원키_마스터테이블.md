@@ -1110,3 +1110,17 @@ PROPOSED-{KEY}
 - master gap: formal 0건, raw/unmapped 0건 (`action: closed`)
 - question identity: `e30d41608477e39761fb1fcc919819605387014beb9a2b2e6e8f8dbbddbe88b7` (10,576건 고유; legacy qKey 충돌 0건)
 - 최종 검토·적용·QA 보고서는 동일 phase3 디렉터리의 `archive-complete-subunit-exception-review-v1.json`, `archive-complete-subunit-exception-apply-v1.json`, `archive-complete-subunit-operational-qa-v1.json`을 기준으로 한다.
+
+
+## ROOT/R1-approved 2015 수학I 세부단원 등록 (2026-10-09)
+
+아래 네 개 자식 키는 승인된 개념 정의만 등록한다. 이 표는 다른 시험지의 문항별 L1/L2 판정을 승인하지 않는다.
+- R1 graph authority: archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json SHA-256 49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c
+- R1 application authority: archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json SHA-256 a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21
+
+| standardUnitKey | subUnitKey | subUnit | conceptClusterKey |
+|---|---|---|---|
+| H15-M1-03 | H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION | 지수함수의 활용 | EXPONENTIAL_FUNCTION_APPLICATION |
+| H15-M1-03 | H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH | 지수함수의 그래프 | EXPONENTIAL_FUNCTION_GRAPH |
+| H15-M1-04 | H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION | 로그함수의 활용 | LOGARITHMIC_FUNCTION_APPLICATION |
+| H15-M1-04 | H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH | 로그함수의 그래프 | LOGARITHMIC_FUNCTION_GRAPH |

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "JS_ARCHIVE_FREEZE_ADJUDICATION_V1",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R2.original-freeze.json",
+    "sha256": "b96c5a2fa90e12497caa9b72632d61e55cf9c76322e9d6f26b56ac3e28fb79a8"
+  },
+  "createdAt": "2026-10-09T11:28:09.654Z",
+  "corrections": [
+    {
+      "qid": 18,
+      "witnessRef": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R2.q18-enumeration-witness.json",
+      "witnessSha256": "d018f91deb591af7db2ea4139c813068a73b77e3a9fa5e0d20e6b69972536bc7",
+      "reason": "Original blind freeze answer 85 is corrected to 74 based on an exhaustive same-input recheck. For m<=12, the condition is m>=3n, giving 22 pairs; for m>=12, mn<=48, giving 56 pairs. Their shared m=12,n=1..4 row has 4 pairs, so the union is 22+56-4=74. Exact derived pairs match an independent natural-log enumeration in the bound 1<=m<=48,1<=n<=4. The earlier high-case subtotal 67 was wrong: floor(48/m)=3 only for m=13..16 (besides m=12 count 4), and equals 2 for m=17..24; the correct high-case total is 56. Original source choices still omit 74, so q18 remains a true source item HOLD. Original freeze bytes are preserved.",
+      "correctionType": "SAME_COMPLETE_STUDENT_INPUT_POSTCOMPARISON_ARITHMETIC_CORRECTION",
+      "sourceStudentPayloadSha256": "a7ff5fc4d22748cd9238a76a0fd4df7ca9bc42da6bb4789836e2daf72ffeb2d7",
+      "correctedAnswer": "74 (not listed)",
+      "originalAnswer": "85 (not listed)"
+    }
+  ],
+  "originalFreezeMutated": false
+}

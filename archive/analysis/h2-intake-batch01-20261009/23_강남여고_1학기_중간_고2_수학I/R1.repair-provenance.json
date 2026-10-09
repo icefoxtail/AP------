@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_REPAIR_PROVENANCE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_강남여고_1학기_중간_고2_수학I",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_02"
+  },
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+    "sha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1"
+  },
+  "preRepairArtifactRawSha256": "c1ec44c3ace84396971940f81d5ec3a287586f1bd06c341319e3a3c9a95d0d54",
+  "currentArtifactRawSha256": "5b2a0f121f5bf87a4a92df7f521a3c4d5f736e56e98bcb0a15b944d5df1500f8",
+  "changes": [
+    {
+      "qid": 13,
+      "field": "solution",
+      "before": "정답은 ④이다.",
+      "after": "정답은 ②이다.",
+      "reason": "Independent arithmetic yields 4; stored answer is choice ②, so only terminal answer encoding was corrected."
+    },
+    {
+      "qid": 21,
+      "field": "solution",
+      "before": "}cdot\\frac",
+      "after": "}\\cdot\\frac",
+      "reason": "Restore missing leading TeX command backslash in the triangle-area product."
+    }
+  ],
+  "targetedRecheck": [
+    {
+      "qid": 13,
+      "contentExact": true,
+      "choicesExact": true,
+      "solutionSha256": "sha256:4aaf4d87182306587071de57b856814a912480951c2a8b0050799cca55f40e18",
+      "locusPass": true,
+      "runtimeCdots": 1
+    },
+    {
+      "qid": 21,
+      "contentExact": true,
+      "choicesExact": true,
+      "solutionSha256": "sha256:0eadd92cf90e7275aa6f7f9a19f63a89410ca53fd9bb2e557ea0390da9a97f2c",
+      "locusPass": true,
+      "runtimeCdots": 3
+    }
+  ],
+  "sourceContentAndChoicesParity": "EXACT",
+  "originalFreezeMutated": false
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "ROOT_POSTAPPLY_CATALOG_REPAIR_COMPARISON_V1",
+  "createdAtUtc": "2026-10-09T13:34:54.852Z",
+  "head": "96094e378b89a930688335f956965bab13824d74",
+  "candidateRoot": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration-canonical-root",
+  "generator": {
+    "command": "node archive/tools/build-archive2-catalog.mjs",
+    "exitCode": 0,
+    "stdoutSha256": "8cfb7d5928243fb1665ad7b9f0972715a54ea3e10b62c593e433ee677244e656",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "primaryCheck": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 0,
+    "stdoutSha256": "8cfb7d5928243fb1665ad7b9f0972715a54ea3e10b62c593e433ee677244e656",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "catalog": {
+    "primaryRawSha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+    "candidateRegeneratedRawSha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+    "decodedRecordCountPrimary": 13378,
+    "decodedRecordCountCandidate": 13378,
+    "allDecodedRecordsEqual": true,
+    "changedTopLevelFields": [],
+    "targetSourceFile": "original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+    "targetRowCountPrimary": 20,
+    "targetRowCountCandidate": 20,
+    "targetRowsEqual": true,
+    "nonTargetRowCountPrimary": 13358,
+    "nonTargetRowCountCandidate": 13358,
+    "nonTargetRowsEqual": true
+  },
+  "manifest": {
+    "primaryRawSha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+    "candidateRegeneratedRawSha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+    "byteEqual": true,
+    "changedFields": [],
+    "sameFileList": true,
+    "nonCatalogManifestEntriesEqual": true
+  },
+  "sevenOtherRegistryFiles": [
+    {
+      "path": "archive/db.js",
+      "primarySha256": "ad8ccde1ed85077839ae5df48510de15ec781bd630d0b95b72b2d6ce0d15566a",
+      "candidateSha256": "ad8ccde1ed85077839ae5df48510de15ec781bd630d0b95b72b2d6ce0d15566a",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "primarySha256": "cff3383b56755e087b5fadf6f84e5271d1b5cc23584c9a33d3497e8edc1e2bfb",
+      "candidateSha256": "cff3383b56755e087b5fadf6f84e5271d1b5cc23584c9a33d3497e8edc1e2bfb",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "primarySha256": "690bfee3ea2aed049b48244885bbfbfaa6c21e22d664765307ef2d059f260575",
+      "candidateSha256": "690bfee3ea2aed049b48244885bbfbfaa6c21e22d664765307ef2d059f260575",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/question-identity.js",
+      "primarySha256": "8db7a89d109100b45589a60f1e86f345c5d50a7cb50903418d68152b696190ba",
+      "candidateSha256": "8db7a89d109100b45589a60f1e86f345c5d50a7cb50903418d68152b696190ba",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/question-index.js",
+      "primarySha256": "43bfac34fa42b04174b621bd8730ce94aad6b3d86be8aebaf4729da8258262ff",
+      "candidateSha256": "43bfac34fa42b04174b621bd8730ce94aad6b3d86be8aebaf4729da8258262ff",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "primarySha256": "7792a16ee4c4c61ae0cd66a200b34ba37cc6135953057181c3ea37b3f1cd2867",
+      "candidateSha256": "7792a16ee4c4c61ae0cd66a200b34ba37cc6135953057181c3ea37b3f1cd2867",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "primarySha256": "67dc8b1f381f4a727c283ab682bf673f551d0e9d7dc8d6877b0195cb4f3ce373",
+      "candidateSha256": "67dc8b1f381f4a727c283ab682bf673f551d0e9d7dc8d6877b0195cb4f3ce373",
+      "byteEqual": true
+    }
+  ],
+  "allowedPair": [
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "primarySha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "candidateSha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "byteEqual": true,
+      "preSnapshotPrimarySha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "preSnapshotCandidateSha256": "e7a031c90689ccb930e81c4b828606df115fb37635c218e439f41c4fae398694"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "primarySha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+      "candidateSha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+      "byteEqual": true,
+      "preSnapshotPrimarySha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+      "preSnapshotCandidateSha256": "e224f4a5f36a5c8e8c321b980ce6d534d42af9237fa5f9d863201005408f61e7"
+    }
+  ],
+  "primaryFilesAlreadyEqualToRegeneratedCandidate": true,
+  "primaryWritesByThisContinuation": [],
+  "allRequiredPredicates": true
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion":"JS_ARCHIVE_R1_SOLUTION_CORRECTION_REVIEW_V1",
+  "stage":"R1",
+  "executionLine":"CODEX",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "recordedAt":"2026-10-09T04:45:28Z",
+  "reviewerId":"r1_07",
+  "reviewOrder":"SUPPLEMENTAL_FIXED_GOLDEN_AND_ACTUAL_SVGS_READ_FIRST; CHANGED_TARGET_SOLUTIONS_RECHECKED_AFTERWARD",
+  "calibrationEvidence":{"path":"archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/R1.correction-review-calibration.corrected.v1.json","sha256":"a8860b5850c352509d3636ec3964e73a4436c4df34043613775c6fcc5d5972aa"},
+  "priorValidatorFailure":{"path":"archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/R1.generic-v2-report.raw.json","sha256":"90e2008ea8961643afd7d3e537ce2fb7facb0f06d1985f480469e44edfaa482","preserved":true},
+  "source":{"path":".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/23_매산여고_1학기_중간_고2_수학I.js","rawSha256":"4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485","rawBufferBlobSha1":"76ed818fe28f5c0b0fbb9012abd13dfef8e1323a"},
+  "changedSolutionLociReviewed":[
+    {"qid":13,"solutionSha256":"b4c60d01f9f8b02f14e32b1bdee4e71c8afe4654b079e7e1406c902288a38a3e","review":"The left side is 0 when sin(theta)>=0 and -2sin(theta) otherwise; the right side is 0 when cos(theta)>=0 and -2cos(theta) otherwise. This yields the first-quadrant interval plus theta=5pi/4 only, then the stated B interval and union. No further correction is needed."},
+    {"qid":21,"solutionSha256":"e2b2a56edfeeb0a82c517d5e25457bb4ab1a42837131979674ffe372cbbdd5d9","review":"The shoelace sum is p-1+p+(5-p)^2-p^2=24-8p; halving its absolute value gives |12-4p|. Area 8 gives p=1 or 5, and the first-quadrant condition excludes 5. A=(1,4), a=4 and AB=3sqrt(2). No further correction is needed."}
+  ],
+  "otherQidsReopened":false,
+  "fullMathSweepRepeated":false,
+  "studentBodyChanged":false,
+  "currentAssetChangedDuringThisCorrectionReview":false,
+  "actualPdfOpenedByR1":false,
+  "decision":"UNCHANGED_TARGET_SOLUTION_HASHES_VERIFIED_AFTER_SUPPLEMENTAL_SAMPLE_READ; NO_NEW_SOURCE_EDIT"
+}

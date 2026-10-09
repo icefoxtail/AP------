@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CORRECTION_REVIEW_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "qids": [
+    16,
+    21
+  ],
+  "status": "PASS",
+  "freshGoldenPreflightPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.golden-preflight.r1_10.20261009.rev2.json",
+  "postfreezeDisclosurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.postfreeze-disclosure.q16-q21.r1_10.20261009.rev3.json",
+  "priorFailedAttemptPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.q16-q21-solution-review-attempt1-failure.r1_10.20261009.json",
+  "currentSourceRawSha256": "4f1529eeefac76a5aa37d24609322f3a331f43ca4570ed7c0696fd8c387f42ea",
+  "studentPayloadParity": "EXACT",
+  "answerFreezeStillValid": true,
+  "changes": [
+    {
+      "answer": "①",
+      "qid": 16,
+      "correction": "Adds explicit sign intervals of f−g and f+g to derive accepted |f|<|g| ranges and count integer points after excluding log-invalid zeros.",
+      "field": "solution",
+      "finalSha256": "a8571421ee986d6ba718c3ea33c338c57a8678e25e9d6fd36ab097c61f61d53f",
+      "beforeSha256": "15d391e1d1774719b8cbe1657173983534295f65d066710b7f18728c21016c48"
+    },
+    {
+      "answer": "⑤",
+      "qid": 21,
+      "correction": "Adds u=0 root-sum case and rules out the center/lower-endpoint alternative before solving a+b=10 and b−a=2; runtime line breaks and MathJax display fractions checked.",
+      "field": "solution",
+      "finalSha256": "65409adf5aa99b0684d6ea566d1bb3910602d3228a8bf873ee515db30f4ab874",
+      "beforeSha256": "878773c043c72862923a7dbdf1f900bf0b48f893c79a76cc37d8670340b3bffb"
+    }
+  ]
+}

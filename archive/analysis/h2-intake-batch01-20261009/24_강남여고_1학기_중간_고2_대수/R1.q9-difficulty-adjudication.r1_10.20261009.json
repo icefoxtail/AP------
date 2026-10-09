@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_DIFFICULTY_ADJUDICATION_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "qid": 9,
+  "currentRawShaAtReview": "55c755d9cd5873a89a2b1a2e0b637b40e9506eea750165358e24c7dc31beb539",
+  "finalCurrentArtifactRawSha256": "4f1529eeefac76a5aa37d24609322f3a331f43ca4570ed7c0696fd8c387f42ea",
+  "sourceFieldOnlyChanges": [
+    "difficultyBucket",
+    "difficultyConfidence"
+  ],
+  "prior": {
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyBoundaryFlag": "NONE"
+  },
+  "independentReview": {
+    "executionBurden": "low",
+    "strategyChoice": "no",
+    "reason": "The prompt directly names the two asymptotes. Apply the horizontal asymptote y=a and the logarithmic vertical asymptote x=b/2 to (3,3), then add a+b. There is one familiar condition translation and no choice among strategies; calculation length does not move this to bucket 3.",
+    "conditionInterpretation": "low",
+    "existenceCheck": "no",
+    "rangeConstraint": "no",
+    "caseBranching": "no",
+    "integerConstraint": "no",
+    "decisiveInsight": "no",
+    "legacyLevelCompatibility": "NORMAL",
+    "conceptCount": 2,
+    "nonRoutineTransformation": "no",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2
+  },
+  "postfreezeSourceEvidence": {
+    "storedAnswer": "⑤",
+    "studentParity": "EXACT",
+    "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.postfreeze-disclosure.q9.r1_10.20261009.json",
+    "sha256": "05a276ae12aa58ab683cd10665e0aacdafd095af7dead642a0b6c9651db27205"
+  },
+  "independentAnswerFreezeStillValid": true,
+  "metaDebtRetained": {
+    "reason": "H15-M1-03 has no current canonical subUnit child; preserved as separate authority pending rather than projected or invented.",
+    "fields": [
+      "subUnitKey"
+    ]
+  }
+}

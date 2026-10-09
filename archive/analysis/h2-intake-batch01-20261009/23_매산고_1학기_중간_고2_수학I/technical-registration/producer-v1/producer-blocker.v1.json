@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_PRODUCER_BLOCKER_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산고_1학기_중간_고2_수학I",
+  "head": "73a8f8a791312ce3a209ba598f1442bebe58e8ad",
+  "authorityPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/ROOT.target-registration-producer-authority.v1.json",
+  "authoritySha256": "9d24580525d7f5722d53ce172376b179414ea7bd8b2dc6118eb0dff437baaa6a",
+  "rosterPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/registration-subroster.v1.json",
+  "rosterSha256": "75a1fa3a7a441007b180161cb3dc441acdcbf912e1eca609d1dea668413226d8",
+  "assignmentPath": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration.assignment.v1.json",
+  "assignmentSha256": "445ec861ac4811daf4d49e7ec4e9a862d87d682e24294522b24441527497f700",
+  "currentProduction": {
+    "path": "archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+    "rawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+    "status": "UNTRACKED_IN_ASSIGNED_WORKTREE"
+  },
+  "candidate": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration-canonical-root",
+    "head": "73a8f8a791312ce3a209ba598f1442bebe58e8ad",
+    "clean": true,
+    "nineRegistryBaselineFilesMatchAssignedWorktree": true
+  },
+  "producerAttempt": {
+    "command": "node archive/tools/prepare-target-registration-candidate.mjs --root . --authority <authority> --roster <subroster> --roster-index 0 --assignment <assignment> --r1-evidence archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R1.evidence.meta-recovery.bound.rev2.json --r1-validation archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R1.generic-validator.meta-recovery-rev3.raw.json --candidate-root <isolated candidate> --index-root <fresh index root> --evidence-root <producer-v1> --package-output <registration-package.v1.json>",
+    "exitCode": 1,
+    "firstFailure": "TARGET_SOURCE_DIRTY",
+    "failureLocus": "archive/tools/prepare-target-registration-candidate.mjs:1066",
+    "stdout": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v1/producer-wrapper.stdout.bin", "bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    "stderr": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v1/producer-wrapper.stderr.bin", "bytes": 701, "sha256": "ceafabadd14d0c73f1fc46bb50c671dab4676278543faa4baef202f342239532"},
+    "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v1/producer-wrapper.process-capture.json",
+    "processCaptureSha256": "389ef51131f54aecbc2f846785749287e1db58ec06fbbcda302632c81e33a0ab",
+    "packageExists": false,
+    "indexRootExists": false
+  },
+  "noChangesByTechnicalProducer": true,
+  "nextPrerequisite": "ROOT must make the already-authorized production source clean/committed and rebind the assignment to the resulting exact HEAD before retry; source, Git index/HEAD, registries, and producer semantics were not changed here."
+}

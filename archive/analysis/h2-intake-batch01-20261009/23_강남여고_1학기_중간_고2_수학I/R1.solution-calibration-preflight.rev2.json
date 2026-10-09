@@ -1,0 +1,21 @@
+{
+  "schemaVersion":"JS_ARCHIVE_R1_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "solutionQualityCalibration":{
+    "sampleReadBeforeWork":true,
+    "calibrationStatus":"PASS",
+    "solutionWorkMode":"INDEPENDENT_REVIEW",
+    "calibrationOrder":"SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes":["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+    "goldenSampleRefs":[
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","gitBlobSha":"95f7e733fd3f786b6bcb98f9662a6ae568f82949"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","gitBlobSha":"eb8776d19989f8f4219f4b80db0daf72310109cd"}
+    ],
+    "goldenSampleQuestionRefs":[
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":2,"solutionSha256":"sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba","solutionExcerpt":"두 직선이 평행하므로 기울기가 서로 같다.","observation":"The solution identifies parallel slopes, substitutes the point, and shows the resulting value step by step."},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f","solutionExcerpt":"$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.","observation":"Set equality is converted into element conditions, then substitutions and the final parameter sum are explicit."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":1,"solutionSha256":"sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682","solutionExcerpt":"두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.","observation":"The coordinate differences, distance formula, and each simplification are independently reproducible."},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":5,"solutionSha256":"sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109","solutionExcerpt":"두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.","observation":"The common element fixes one parameter before the remaining element and final sum are solved."}
+    ],
+    "negativeSampleRefs":[{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","gitBlobSha":"f06387b8bbb5adce4244fbb576c0bd500ab282fa"}]
+  }
+}

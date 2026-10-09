@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GOLDEN_PREFLIGHT_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Actual negative regression instructions emphasize coordinate/topology checking, physically separated enumerated solution blocks, exact Meta lookup, and runtime TeX after sandbox evaluation.",
+    "renderedSvgs": [
+      {
+        "sha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+        "preview": "calibration-renders/negative-bokseong-q1.png",
+        "previewSha256": "0845f220e88c89f0544199fada8830b87037bb06e28851ab676fcc8ca07b926e",
+        "observation": "Displayed line primitive misses its labeled A/B points and labeled slope/intercept.",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg"
+      },
+      {
+        "sha256": "7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+        "preview": "calibration-renders/negative-bokseong-q3.png",
+        "previewSha256": "63ad323e8f4f55739d912d7510e1f1093d9e8b407a4e390a3d5ab72bc2e9c0e8",
+        "observation": "Primitive slope conflicts with 7x+y−15=0 and PH perpendicular label.",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg"
+      },
+      {
+        "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+        "preview": "calibration-renders/negative-bokseong-q7.png",
+        "previewSha256": "369342e301137decd53c4dd648922a9b7a84acf4a0d543da57983cb0940c19b",
+        "observation": "Primitive parabola misses labeled A and B.",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg"
+      },
+      {
+        "sha256": "5082ba76d12ffc1ceaca34ba7f215607515a5c8378331ab54baed859e5120e5",
+        "preview": "calibration-renders/negative-bokseong-q8.png",
+        "previewSha256": "87008d01194046f45c49f6e1cf229b83c9b95efe408a838ad7a00755391536",
+        "observation": "Actual point/line geometry conflicts with the stated tangent facts.",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg"
+      },
+      {
+        "sha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+        "preview": "calibration-renders/negative-bokseong-q20.png",
+        "previewSha256": "1dabf518fb94618620d55b7fe657720c3643f9742dac23aa827129e601ad5c1b",
+        "observation": "Primitive line slope +3/4 conflicts with 3x+4y−8=0 (slope −3/4).",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg"
+      }
+    ]
+  },
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 7,
+          "observation": "Circle solution derives the original center/radius, carries the center through each move, and gives the final equation; actual SVG visibly shows the three circle states and center path, with ImageMagick math-font fallback recorded.",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9"
+        },
+        {
+          "qid": 1,
+          "observation": "Internal-division solution explicitly computes P, midpoint M, coordinate differences, and distance; no solutionImage.",
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+    },
+    {
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "items": [
+        {
+          "qid": 4,
+          "observation": "Tangent solution sets y=x+b, uses center-to-line distance, obtains both intercepts, and computes AB; actual SVG shows the circle, parallel tangents, normal cue, and A/B points, with ImageMagick font-fallback limitation recorded.",
+          "visualSha256": "e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a",
+          "solutionSha256": "acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf"
+        },
+        {
+          "qid": 1,
+          "observation": "Distance solution states both coordinate differences, substitutes into the distance formula, and simplifies to 5√2; no solutionImage.",
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    },
+    {
+      "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "items": [
+        {
+          "qid": 6,
+          "observation": "Set solution derives the minimum intersection by inclusion-exclusion, then constructs a feasible partition; actual Venn SVG shows two sets and the overlap variable, with ImageMagick set-glyph fallback boxes recorded.",
+          "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af"
+        },
+        {
+          "qid": 1,
+          "observation": "Set-membership solution treats all five options separately, distinguishing element membership from subset relation; no solutionImage.",
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9"
+        }
+      ],
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+    }
+  ],
+  "sampleReadChronology": [
+    "Initial partial Golden/Negative pass opened the three fixed Golden source files and representative solutionImage SVGs and read the Negative README plus all five failing SVGs.",
+    "The q25 repair occurred after this partial read; it is preserved as a failed-order attempt.",
+    "After reading the actual validator contract requiring at least two item rows per selected source file, read a second target qid from each Golden bank (Maesan/Hyochon/Jeil q1) with actual solution SHA; these q1 items have no solutionImage.",
+    "Fresh complete preflight now binds two actual qids per fixed Golden bank, all exact source/solution SHA, each selected image SHA where present, and all Negative sample references."
+  ],
+  "renderer": "ImageMagick 7.1.2 Q16-HDRI",
+  "rendererWarning": "STIX Two Math/Cambria Math unavailable; Sans fallback; some math glyphs displayed as boxes.",
+  "browserUrlAttempt": "file protocol blocked by explicit browser policy; no alternate browser surface/workaround",
+  "browserRender": "NOT_RUN",
+  "archiveEngineRender": "NOT_RUN",
+  "targetSolutionCorrectionReview": "PENDING_AFTER_THIS_PREFLIGHT",
+  "solutionChangesSincePreviousPreflight": "q25 solution-only revisions preserved in source hashes in failure record; correction review pending."
+}

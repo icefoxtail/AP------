@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_MINIMAL_REPAIR_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "qid": 21,
+  "locus": "answer",
+  "cause": "The second math expression began with $ but had no closing $; the answer sheet rendered the delimiter literally.",
+  "previousSourceRawSha256": "aab9880f37c251426c7b99ec15dc78ea25d8a0c97ccef4e4a416c7f3ea14b240",
+  "currentSourceRawSha256": "339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9",
+  "previousAnswer": "(1) $3\\sqrt2$, (2) $A=(1,4),\\ a=4",
+  "currentAnswer": "(1) $3\\sqrt2$, (2) $A=(1,4),\\ a=4$",
+  "changedBytes": "One trailing TeX delimiter only.",
+  "studentBodyAndAssetParity": "EXACT; previous/current 23-qid student payload hashes and asset refs/SHA match.",
+  "originalPdfReviewed": false,
+  "postRepairCapture": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R3.capture-02\\machine-capture.json",
+    "sha256": "0ba91883c2b249155a65f659828eb79b31001c16bed82598d6d3824fe0d4f98d"
+  },
+  "postRepairReview": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R3.capture-review.v1.json",
+    "sha256": "1f9bc8cad3ed57fc44212d91467dbbb904cd2d2c0519ed09ed3a66a944738f1b"
+  },
+  "originalAttemptCapture": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R3.capture-01\\machine-capture.json",
+    "sha256": "93542af8b7fba94201e745dc48a289e628947945b1eff97e560d5c24e6abc791"
+  },
+  "reasoning": "Actual answer-sheet render showed a literal unmatched delimiter; exact JS locus identified and corrected, then all six actual render cases were rerun and opened."
+}

@@ -1,0 +1,3861 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "23_강남여고_1학기_중간_고2_수학I",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "77ed380a569f448997e82db5a3d84f330c9ecd0d",
+  "artifactRawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+  "sourceMode": "EXTRACTED_JS_ASSETS",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourceProvenanceLimitations": [
+    "INTAKE_PDF_SHA_UNAVAILABLE"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the full false-PASS regression README; checked that evidence requires physical small-board inspection, actual canonical Meta lookup, runtime TeX validation, and coordinates/topology for visual claims."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Read full solution; governing parallel condition, point substitution and final value are explicit."
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f",
+            "observation": "Read full solution; element conditions, substitutions and final parameter sum are explicit."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read full solution and opened its SVG; center transitions are explicit and the visual tracks C0 to C2 without clipping.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Read full solution; coordinate differences, distance formula and each simplification are reproducible."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Read full solution and opened its SVG; center, radius and marked point agree and are readable.",
+            "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8"
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "Read full solution; the common element determines one parameter before the remaining value and sum."
+          }
+        ]
+      }
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "The solution identifies parallel slopes, substitutes the point, and shows the resulting value step by step."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:5cec67e22a9be1c7667c879d80ae639baf011e44574e6963243d3d987324554f",
+        "solutionExcerpt": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.",
+        "observation": "Set equality is converted into element conditions, then substitutions and the final parameter sum are explicit."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "Read the full solution and opened the bound SVG: the center transitions are explicit and the visual tracks C0 to C2 without clipping."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "The coordinate differences, distance formula, and each simplification are independently reproducible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "Read the full solution and opened the bound SVG; the center, radius, and marked point are visually consistent and readable."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+        "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.",
+        "observation": "The common element fixes one parameter before the remaining element and final sum are solved."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "qualityCompareCount": "25/25"
+  },
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_02"
+  },
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+    "sha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1"
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.postfreeze-disclosure.meta-closure.json",
+    "sha256": "sha256:6e71001ea2d57f4027f543a5988543c4c1e63461fd3aee4efab3ecf6cae1594a"
+  },
+  "studentBundle": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R1.student-only.json",
+    "sha256": "sha256:90ca18cbddc81770331315b009560ac6ea392c30edec51f948f0ce4ea05f6763",
+    "gitBlobSha": "6816f64f38ae42ad76e8dba3c60376b2fd59c32a"
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false
+  },
+  "questionCount": 25,
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "⑤ (6)",
+      "independentReasoning": "√{(-2)^2}=2이고 (√3)^2=3이므로 곱은 6이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "⑤ (6)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "31770b5313f95c5dce95f05d645ffabefce2eaaea0c0dc31434097ed490f7d87",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "① (-√5/3)",
+      "independentReasoning": "cos²θ=1−4/9=5/9이고 θ는 제3사분면이므로 cosθ=−√5/3이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "① (-√5/3)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "e62cf9b68543ce2142558b3d1a977a47d5449d4ff4fce48bcf9b1a3180094ef8",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "④ (8π)",
+      "independentReasoning": "호의 길이는 rθ=12·(2π/3)=8π cm이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "④ (8π)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "2c8f1f4680d9cf7491528a22d1260a9ded6a89c5e946450eba6a4d13bea0d452",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "③ (7)",
+      "independentReasoning": "log₅3·log₃7=log₅7이므로 거듭제곱은 5^(log₅7)=7이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "③ (7)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "b8d923e7743974aeef9272e167cef73eda6f8ee3917239bb9c0fb339b6f9b0a6",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION (지수함수의 활용) under current H15-M1-03 parent; see per-qid source/solution basis. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "② (1/2)",
+      "independentReasoning": "2^(1+k)=8=2³에서 k=2이며 f(−3)=2^(−1)=1/2이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "② (1/2)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "15b6e2aa76880893d5be64d86bed4cd650d20fbee01daddd02986127b51ebfb7",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH (로그함수의 그래프) under current H15-M1-04 parent; see per-qid source/solution basis. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "① (9)",
+      "independentReasoning": "첫 그래프의 점근선은 x=3/2이다. 이를 둘째 식에 대입하면 y=log₃3+2=3이므로 2ab=2·(3/2)·3=9이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "① (9)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "b647effdb0492b87649e5f88947a46f60bf0c13f0bf768ffa836f1b1ef837ae1",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "③ (√3/3)",
+      "independentReasoning": "tan(−5π/4)=−1이고 sin(5π/3)+cos(5π/6)=−√3이므로 몫은 1/√3=√3/3이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "③ (√3/3)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "f08e15f4db87ffe7e6cedcc605ea9ff8a29400d830fffa41cc292dc44c6d3852",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION (지수함수의 활용) under current H15-M1-03 parent; see per-qid source/solution basis. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "② (8)",
+      "independentReasoning": "(1/2)^(x/4)≤(1/2)²에서 x/4≥2이므로 최소 수심은 8 m이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "② (8)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "11c682c58499a6f11d0c041609dc787693415b8639104b1cbb8a622142650f16",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "⑤ (12)",
+      "independentReasoning": "통분한 좌변은 (−1−3sin²θ)/cos²θ=3−4/cos²θ이므로 a=3,b=4, ab=12이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "⑤ (12)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "3ed5ef6c4e2f897c5663a00170245f94caca8f100f4c099c6a123d5a8c077146",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "① (π/4)",
+      "independentReasoning": "sin x<−√2/2는 (5π/4,7π/4)이고 tan x>0와 교집합은 (5π/4,3π/2)이므로 폭은 π/4이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "① (π/4)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "9897384bce64d7b9f518dda78c9f5cfd2a24fa1b706bd4d19e984a21979c8c68",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "Opened and reviewed the exact bound raster problem asset; no student-facing solution SVG exists or is required."
+        }
+      },
+      "independentAnswer": "③ (11/3)",
+      "independentReasoning": "실제 열린 그래프에서 최댓값 3, 최솟값 −1이므로 진폭 a=2, 중심선 c=1이다. 같은 방향 영점이 x=1,4여서 주기는 3, 따라서 2/b=3 및 b=2/3. 합은 11/3이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "③ (11/3)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "13f003c2fb306dcc116259a4df8dad9f227adbc9e4a88f538fc568ef148f7e35",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "REQUIRED_PROBLEM_RASTER_OPENED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "④ (6)",
+      "independentReasoning": "t=6x는 [0,6π)에서 sin t=−1/2가 한 2π 주기마다 서로 다른 두 근을 가지므로 총 6개이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "④ (6)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "3b444eea367ba3a12ee56b04031baa8b3248366bdc9ab91bfd0b482e5e7e306f",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "② (4)",
+      "independentReasoning": "곱은 3^(1/3)·2^(3/4)이다. n제곱이 자연수가 되려면 3과 4를 모두 나누는 분모 조건상 12|n이어야 한다. 2≤n≤50의 배수는 12,24,36,48로 4개이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "② (4)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "4aaf4d87182306587071de57b856814a912480951c2a8b0050799cca55f40e18",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "③ (5)",
+      "independentReasoning": "로그의 일대일성으로 N=2^(2α)3^(2β)≤36이다. 가능한 값은 (α,β)=(0,0),(1,0),(2,0),(0,1),(1,1), 즉 1,4,16,9,36의 5개이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "③ (5)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "eff20bec97efa98986596c5519881187896098309d4c53862dc27488f20374ed",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "① (−√13/4)",
+      "independentReasoning": "제1사분면에서 cosα=√(1−3/16)=√13/4이고 원점 대칭은 각을 π만큼 더하므로 cosβ=−√13/4이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "① (−√13/4)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "0ee9a7a7d2e442c5f64b8394233a026777c05354b6707cec46d89ceeb4322597",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 1,
+        "storedBucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION (로그함수의 활용) under current H15-M1-04 parent; see per-qid source/solution basis. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "② ((가),(나))",
+      "independentReasoning": "(가)는 log₂8=3으로 참. (나)는 밑 a≥2라 로그가 증가하여 함수값 범위가 [2,5], 합 7이라 참. (다)는 밑 1/2에서 최댓값 log_(1/2)4=−2이므로 거짓이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "② ((가),(나))",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "9cb806c1aa3f2ebab96516792ec90afc11408a83df5e923ba4e12d56469db666",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "④ (10^6)",
+      "independentReasoning": "두 번째 원소가 자연수 n이면 log a=3n−3/2이다. 이 원소는 B에 들려면 n≥2log a=6n−3, 즉 n≤3/5여야 하므로 항상 제외된다. 9∈B 조건은 9≥2log a, 즉 n≤2이다. n=1,2의 a는 10^(3/2),10^(9/2)이고 곱은 10^6이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "④ (10^6)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "2d145ee9be1c4b321d5d47ac2569b7b8c0a9d5f9c324961388c16d58e6578169",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH (지수함수의 그래프) under H15-M1-03; the decisive demand is line–curve intersection geometry. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "Opened and reviewed the exact bound raster problem asset; no student-facing solution SVG exists or is required."
+        }
+      },
+      "independentAnswer": "② (9/2)",
+      "independentReasoning": "B가 AC를 AB:BC=4:1로 나누고 AOB 넓이가 12이므로 좌표를 A=(a−u,u), B=(a−u/5,u/5), C=(a,0)로 두면 2au/5=12, 즉 au=30. a=6,u=5,b=1이면 A=(1,5)는 지수곡선, B=(5,1)는 로그곡선 위이고 조건을 모두 만족한다. D=(0,3), E=(3,0)이므로 DOE 넓이는 9/2이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "② (9/2)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "3163209f1d63f990e80920a675184587f6fb6c382c7f711140c5659ea78ed9be",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "REQUIRED_PROBLEM_RASTER_OPENED",
+      "difficultySnapshot": {
+        "independentBucket": 5,
+        "storedBucket": 5,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "③ (9)",
+      "independentReasoning": "[0,2a]에서 g(x)=−b/2인 두 점은 x=1+2a/3, 1+4a/3이어서 AB=2a/3=2, a=3이다. 중점 x=4 위의 정삼각형 꼭짓점은 높이 √3만큼 위이고 f(4)=sin(2π/3)=√3/2이므로 −b/2+√3=√3/2, b=√3. 따라서 ab²=9이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "③ (9)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "477b7b229aa0a272c8162005f546cf167503c212a6b7101b5b272713da2a6a0f",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "R1 independently applied the registered ACTIVE child H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH (로그함수의 그래프) under current H15-M1-04 parent; see per-qid source/solution basis. Existing null PT/TPL projection debt remains explicitly bound; no machine key was invented."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "⑤ (25/12)",
+      "independentReasoning": "수평선과 수직점근선 교점 간 간격은 3k/2이다. 왼쪽 로그 교점부터 첫 점근선까지는 2^m/2이므로 2^m=3k. 두 번째 점근선에서 오른쪽 로그 교점까지는 2·4^m이므로 4·4^m=3k. 연립하면 2^m=1/4, m=−2, k=1/12, k−m=25/12이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "⑤ (25/12)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing problemTypeKey/templateKey remain explicit null because the current H2 Math I crosswalk does not yield a unique exact ACTIVE binding; this projection debt is preserved separately from the resolved L2 child.",
+      "solutionSha256": "e3cb4a770455a3f0a07e2e4aedaa76abdbcc66a0231ea6c3c06070eb4f5656cc",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 4,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "Opened and reviewed the exact bound raster problem asset; no student-facing solution SVG exists or is required."
+        }
+      },
+      "independentAnswer": "④ (5/4)",
+      "independentReasoning": "반지름을 r라 하면 삼각형 QAO의 직각변은 AQ=√3r/2, OQ=r/2여서 넓이 r²√3/8=3^(3/4)/2이고 r²=4·3^(1/4)이다. AR=3r/2, BR=r/2이므로 AR·BR=3r²/4=3·3^(1/4), 따라서 로그값은 5/4이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "④ (5/4)",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "0eadd92cf90e7275aa6f7f9a19f63a89410ca53fd9bb2e557ea0390da9a97f2c",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "REQUIRED_PROBLEM_RASTER_OPENED",
+      "difficultySnapshot": {
+        "independentBucket": 4,
+        "storedBucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "6",
+      "independentReasoning": "정의역 x>1에서 로그 단조성으로 (x−1)²≤2(x+11), 즉 (x+3)(x−7)≤0이다. 정수해는 2,3,4,5,6,7의 6개이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "6",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "6",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "b2f0926661ae4d4f75740b96f7207d112340d7eb7d6847611fe05cac13ebca70",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "5",
+      "independentReasoning": "역수들을 로그로 바꾸면 1/x=log₅4, 2/y=−log₅20, 3/z=−log₅p이다. 합 조건은 log₅(4/(20p))=−2이므로 4/(20p)=1/25, p=5이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "5",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "5",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "4a59b04d104ae725cd1d79b55434524256ddb3c9f30e2bdb9900dc583c0fa6dc",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 3,
+        "storedBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "9/4",
+      "independentReasoning": "t=sin x∈[−1,1]로 두면 y=2−t²−t이다. 최댓값은 꼭짓점 t=−1/2에서 9/4, 최솟값은 t=1에서 0이므로 M+m=9/4이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "9/4",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "9/4",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "261d76ba2b009bb1a73496937cbc278b809f05f5dcfcf400a6cf3853227eed12",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    },
+    {
+      "qid": 25,
+      "sourceMode": "ORIGINAL",
+      "beforeDisposition": "INDEPENDENT_REVIEW",
+      "finalDisposition": "KEEP",
+      "sourceParityStatus": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "questionLayoutStatus": "KEEP",
+      "solutionLayoutStatus": "PASS",
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "disposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "evidence": "Current student fields and asset refs match the SHA-bound current student bundle exactly; AUTO-FIRST grid remains appropriate. No layoutTag/wide override."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "evidence": "Independently reconstructed solution is sequential and reproducible; q13 terminal marker corrected from ④ to ②, q21 missing TeX backslash restored."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "Current source L1/L2 values were checked against current standard-unit and compiled child masters; existing null PT/TPL projection is preserved without key invention."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "evidence": "No problem image, visual dependency, or solution SVG is required for this item."
+        }
+      },
+      "independentAnswer": "√6/2",
+      "independentReasoning": "로그식을 정리하면 sin²θ cos²θ=1/16이고 양수 범위이므로 sinθcosθ=1/4. 따라서 (sinθ+cosθ)²=1+2sinθcosθ=3/2이고 값은 √6/2이다.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.original-freeze.json",
+      "freezeSha256": "sha256:f53ea787f839d5ed7d4265afc359b73d5147ffa7423b0e971524a61a13659bf1",
+      "storedAnswer": "\\frac{\\sqrt6}{2}",
+      "compareResult": "MATCH",
+      "answerMatchBasis": "√6/2",
+      "verdict": "PASS",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk.",
+      "solutionSha256": "b65865404546dcdba8702d832b481bff77cd41b1e98ea9c037b97665a96c8248",
+      "layoutEvidence": {
+        "status": "KEEP",
+        "basis": "Full qid static review; default grid and original text/choice stream retained. Render remains R3 responsibility."
+      },
+      "visualDisposition": "NOT_REQUIRED",
+      "difficultySnapshot": {
+        "independentBucket": 2,
+        "storedBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "reason": "Bucket independently selected from reasoning depth and structural demand; prior level/bucket not used as decision authority."
+      },
+      "smallBoardEvidence": "Decision step, transformation, intermediate result and final answer were read in displayed order."
+    }
+  ],
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-03 and unit label/order checked; registered child H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION (지수함수의 활용) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-04 and unit label/order checked; registered child H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH (로그함수의 그래프) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-03 and unit label/order checked; registered child H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION (지수함수의 활용) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem raster physically opened and checked; no solution SVG needed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Arithmetic/count is 4 and stored choice marker corrected to ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 1 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-04 and unit label/order checked; registered child H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION (로그함수의 활용) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 4 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-03 and unit label/order checked; registered child H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH (지수함수의 그래프) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem raster physically opened and checked; no solution SVG needed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 5 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 4 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "standardCourse 수학I, parent H15-M1-04 and unit label/order checked; registered child H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH (로그함수의 그래프) has this exact parent."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Applied active registered key H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH based on current student item and independently verified solution. PT/TPL projection ambiguity remains null/debt; no reclassification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 4 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Projection/product/log derivation independently verified; missing TeX command slash repaired."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem raster physically opened and checked; no solution SVG needed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 4 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 3 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    },
+    {
+      "qid": 25,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Postfreeze current student parity is EXACT against the source-SHA-bound 25-qid bundle."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent full-qid reasoning and answer were frozen before stored-answer disclosure; stored answer matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent derivation matches disclosed stored answer and final value."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Displayed derivation exposes the decisive step and intermediate transformations in order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Current standardUnit key, label, and order checked directly against canonical master."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No visual input is required; source is fully textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Existing source L1/L2 checked against the actual master; PT/TPL explicit nulls preserved as projection debt with no invented classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Independently reviewed bucket 2 with high confidence and no boundary; evidence records current stored field for final compare."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated current JS has no unsupported control escape or unescaped TeX command after q21 correction."
+      }
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "Evaluate principal square root and integer powers.",
+      "decisiveStep": "Compute both powered terms before multiplying.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "Use Pythagorean identity and quadrant sign.",
+      "decisiveStep": "Choose the negative cosine value in quadrant III.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "Apply radian arc-length formula.",
+      "decisiveStep": "Multiply the radius by the central angle in radians.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "Use logarithm product identity.",
+      "decisiveStep": "Collapse the logarithm product to log_5 7.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "Determine exponential-function parameter and value from f(1).",
+      "decisiveStep": "Use the given function value to fix k before evaluating f(-3).",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "Use logarithmic graph asymptote and intersection.",
+      "decisiveStep": "Find x=3/2 from the first asymptote, then evaluate the second graph at that x.",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "Evaluate special-angle trigonometric quotient.",
+      "decisiveStep": "Reduce the tangent angle and sum the denominator terms.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "Model exponential decay and solve a threshold inequality.",
+      "decisiveStep": "Compare the decay factor to 25% and account for a base below one.",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "Algebraically combine a trigonometric rational expression.",
+      "decisiveStep": "Combine over cos²θ and identify a,b.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "Intersect tangent-sign and sine-value intervals.",
+      "decisiveStep": "Take the intersection of the two angle ranges.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "Read sinusoidal amplitude, midline, and period from graph.",
+      "decisiveStep": "Extract a,c from extrema and b from the period.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_DIRECT_BINDING_GAP",
+      "projectionDisposition": "DIRECT_BINDING_GAP",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "Count periodic sine roots over a half-open interval.",
+      "decisiveStep": "Count two roots per 2π cycle over three cycles.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "Apply rational-exponent integrality and divisibility.",
+      "decisiveStep": "Require both prime-exponent denominators to divide n.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "Enumerate exponent pairs under a numerical bound.",
+      "decisiveStep": "List all allowed nonnegative exponent pairs.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "Use quadrant and origin-symmetry cosine signs.",
+      "decisiveStep": "Negate cosα under a rotation by π.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "Apply logarithmic monotonicity, domain and extrema to three claims.",
+      "decisiveStep": "Check each claim using the domain minimum and monotonicity at the stated base.",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "Translate natural-number membership and intersection cardinality into logarithmic bounds.",
+      "decisiveStep": "Exclude the second A element from B and bound 9 membership.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "Use intersections of exponential/logarithmic curves with a line, then division and area.",
+      "decisiveStep": "Use the 4:1 division to derive as=30, then combine both curve-intersection equations.",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "Use cosine-level roots, period spacing, and equilateral altitude.",
+      "decisiveStep": "Find the two cosine-level intersections and evaluate f at the midpoint.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_DIRECT_BINDING_GAP",
+      "projectionDisposition": "DIRECT_BINDING_GAP",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "Use two logarithmic graph asymptotes and horizontal intersections.",
+      "decisiveStep": "Set the three consecutive horizontal distances from graph/asymptote coordinates equal.",
+      "rpmDisposition": "RPM_SEMANTIC_REVIEWED_L2_ASSIGNED",
+      "projectionDisposition": "ACTIVE_L2_REGISTERED_PT_TPL_NULL_DEBT_RETAINED",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the source. Current crosswalk/ACTIVE binding lookup does not give a unique exact PT/TPL mapping; retain this projection debt without changing keys.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "observation": "Confirmed the exact ACTIVE child key, label and H15-M1-03/04 parent."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked RPM/curriculum projection; PT/TPL exact binding debt remains explicit."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Verified current canonical/registration authority."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.r1_10.20261009.rev2.json",
+          "sha256": "sha256:49e2b3e3f28ced970c0b19e244c3b7ce75b8fd1d58ecf7e47354ea62ddb13a7c",
+          "observation": "Applied the approved graph boundary for graph intersection/asymptote demands."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.meta-subunit-authority.application-children.rev1.json",
+          "sha256": "sha256:a96fa514519c5dd48ae25de1e7f55bf89baf93ad7411db94726f7ddab4713e21",
+          "observation": "Applied the approved exponential/logarithmic application boundaries only where the target’s decisive demand matches."
+        },
+        {
+          "path": "archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/technical-registration-closeout.v1.json",
+          "sha256": "sha256:b8a19463154eac1332687c9f805adc3ca2bf6dda717d9c04ff17b66e52dc3651",
+          "observation": "Verified current canonical/registration authority."
+        }
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "Use semicircle coordinates, projections, and logarithms.",
+      "decisiveStep": "Compute the orthogonal projections from the chosen coordinates.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "Apply logarithm domain, monotonicity, and integer counting.",
+      "decisiveStep": "Reduce to (x+3)(x−7)≤0 with x>1.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "Convert reciprocal exponent variables into base-5 logarithms.",
+      "decisiveStep": "Combine all reciprocal terms into log_5(1/(5p)).",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "Optimize a quadratic over the sine range.",
+      "decisiveStep": "Write y=9/4−(t+1/2)² on t∈[−1,1].",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    },
+    {
+      "qid": 25,
+      "result": "PASS",
+      "primaryMethod": "Combine logarithm identities, sine-cosine product, and positivity.",
+      "decisiveStep": "Find sinθcosθ=1/4, then use the squared sum.",
+      "rpmDisposition": "RPM_PRIMARY_REVIEWED_RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "nullReason": "problemTypeKey/templateKey are explicitly null in the current artifact. The H2 Math I crosswalk has no unique exact ACTIVE curriculum binding for this source/decisive step; projection debt is retained without semantic remapping.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+          "observation": "Confirmed standard unit labels and ordinal values directly."
+        },
+        {
+          "path": "archive/data/master_tables/js_archive_tag_master.json",
+          "sha256": "sha256:68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a",
+          "observation": "Checked actual ACTIVE child subUnitKey records."
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "sha256:ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1",
+          "observation": "Checked H2 Math I crosswalk status and subUnitKey projection."
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "observation": "Confirmed current Meta Foundation registry is ACTIVE."
+        }
+      ]
+    }
+  ],
+  "visualRows": [],
+  "currentAssetBindings": [
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+      "sha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+      "sha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+      "sha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "77ed380a569f448997e82db5a3d84f330c9ecd0d",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      },
+      {
+        "qid": 25,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current production artifact stores explicit null projection fields; preserve without semantic reclassification because no unique exact ACTIVE mapping is established in the bound H2 Math I crosswalk."
+      }
+    ]
+  },
+  "summary": {
+    "questionCount": 25,
+    "questionEvidenceRows": 25,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 25,
+    "itemHoldCount": 0
+  },
+  "changeProvenance": {
+    "originalSourceRawSha256": "c1ec44c3ace84396971940f81d5ec3a287586f1bd06c341319e3a3c9a95d0d54",
+    "currentSourceRawSha256": "5b2a0f121f5bf87a4a92df7f521a3c4d5f736e56e98bcb0a15b944d5df1500f8",
+    "preRepairCopy": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R1.source-before-repair.js",
+      "sha256": "sha256:c1ec44c3ace84396971940f81d5ec3a287586f1bd06c341319e3a3c9a95d0d54",
+      "gitBlobSha": "f410f2f0108be53cb9ef4e3b1786af6f33bb8fc6"
+    },
+    "changedQids": [
+      13,
+      21
+    ],
+    "changedFields": [
+      "q13.solution terminal answer marker ④→②",
+      "q21.solution TeX backslash restored before cdot"
+    ],
+    "originalFreezeMutated": false
+  },
+  "technicalHashes": {
+    "rawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+    "validatorRawBufferBlobSha1": "77ed380a569f448997e82db5a3d84f330c9ecd0d",
+    "gitCleanFilterBlobSha1": null
+  },
+  "examPath": ".tmp/archive/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/23_강남여고_1학기_중간_고2_수학I.js",
+  "examSha256": "sha256:b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+  "physicalReviewEvidenceRef": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.physical-review.meta-closure.json",
+    "sha256": "sha256:cc99a8c8257bf3d521799b5ad41ee112e9690d2ef05cf4202da6790c4b7980cc"
+  },
+  "repairProvenance": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.repair-provenance.json",
+    "sha256": "sha256:62b0e20c38edf9f055ce1d62a5bf3426398e88e3b16dcad7e31ae7aac17cf5e1"
+  },
+  "metaProjectionGap": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.meta-projection-gap.json",
+    "sha256": "sha256:221438fd6e075af1e7d70c5fc8b134d2ad3fe67ab12e278b27d68ba062ae01af"
+  },
+  "physicalReviewReport": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.physical-review.raw.meta-closure.json",
+    "sha256": "sha256:ad76a381c562735ff535a889cda48dac2787d3e94f849e172d2a848086b0a6f7"
+  },
+  "freezeToolAttempts": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.freeze-cli-attempts.json",
+    "sha256": "sha256:329eb48e4ca681aaa944d9a9d97f290c1ecfb459528b5ef196020b1588c79246"
+  },
+  "solutionCalibrationPreflight": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.solution-calibration-preflight.rev3.json",
+    "sha256": "sha256:ed9bfdcd71277710c21d25356076c71df2369799af63906820ada4228e596ebe"
+  },
+  "physicalReviewProcessCapture": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.physical-review.process-capture.meta-closure.json",
+    "sha256": "sha256:11b8c2b64b241cb5e6e7aad9cd0d225969c3e987db672a5f00adb5c2bd964418"
+  },
+  "currentStudentMetaAuthority": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\ROOT.current-student-meta-authority.v1.json",
+    "sha256": "sha256:c17ddaff3182630d8cb414d286d4e233f6427064a2fd0da276d961c29fc92308",
+    "sourceRawSha256": "5b2a0f121f5bf87a4a92df7f521a3c4d5f736e56e98bcb0a15b944d5df1500f8",
+    "studentParityAfterMetaChange": "EXACT"
+  },
+  "metaProjectionClosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_강남여고_1학기_중간_고2_수학I\\R1.meta-projection-closure.rev1.json",
+    "sha256": "sha256:322c9c1c836c239b9fdc8b3489ba568be4e57cec2aee493cce4b3ec16313c507"
+  }
+}

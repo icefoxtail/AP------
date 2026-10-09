@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_SOURCE_REPAIR_V1",
+  "stage": "R1",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "preChangeSource": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R1.source-before-decisiveStep-rebind.js",
+    "sha256": "a4ca5eed986a9231e02ce56d507986bdff6191722511baabdf9b9166e60047d7"
+  },
+  "preChangeSourceSha256": "a4ca5eed986a9231e02ce56d507986bdff6191722511baabdf9b9166e60047d7",
+  "postChangeSourceSha256": "90f604a69d0648625fd9da944242959b86c6d320884269388e36fc60fb9d7bd6",
+  "postChangeRawBufferBlobSha1": "e96a97569f37b14713a8131fb5b8a9c6e188e11d",
+  "calibrationEvidence": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.solution-calibration-preflight.json",
+    "sha256": "851d50bb0fdb49a37363ab10a8eb96f6e4da083199bf8d079074c7f94b2efb4a",
+    "gateStatus": "PASS"
+  },
+  "changedQids": [
+    5,
+    7
+  ],
+  "changedFields": [
+    "answer",
+    "solution",
+    "decisiveStep"
+  ],
+  "rows": [
+    {
+      "qid": 5,
+      "answer": "⑤",
+      "solutionSha256": "sha256:a79f24665bb56c8142ba8d916a6dc711840e2f47eb79b20162ecf9ecaf18ade3",
+      "decisiveStep": "t=log_2 x로 치환해 부등식 구간을 구한 뒤, 자연수 x=2,3,4,5,6,7,8을 모두 센다.",
+      "reason": "Stored solution counted only powers of 2, but every natural integer 2 through 8 satisfies the inequality; answer is 7 (choice ⑤)."
+    },
+    {
+      "qid": 7,
+      "answer": "⑤",
+      "solutionSha256": "sha256:b985fba36ebc486729b297d20af816f6a3eafca1b59d893694188ef2036b29c8",
+      "decisiveStep": "점선이 주는 a=2를 먼저 정하고, 지수와 로그가 역함수인 점을 이용해 c=4, b=16, d=2^16을 차례로 구한다.",
+      "reason": "Filled the uniquely determined value from the actually opened source figure."
+    }
+  ],
+  "itemStatusChanged": false,
+  "decisiveStepCorrection": {
+    "reason": "Post-patch physical check found q05 decisiveStep did not reflect the corrected natural-integer count and q07 had no stored decisiveStep; updated both to match final solutions."
+  }
+}

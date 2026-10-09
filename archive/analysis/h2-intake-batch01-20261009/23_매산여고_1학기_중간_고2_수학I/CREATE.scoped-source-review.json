@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SCOPED_SOURCE_REVIEW_V1",
+  "stage": "CREATE",
+  "reviewerId": "/root/create_07",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "originalPdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_매여고2_수1_1중간.pdf",
+    "sha256": "361c3999b49074e71edc520fc363842eca1d1541a72cfafa311a39b743572199",
+    "intakeSha256": "361c3999b49074e71edc520fc363842eca1d1541a72cfafa311a39b743572199"
+  },
+  "scope": "QID_ONLY",
+  "reviewedQids": [
+    16,
+    17
+  ],
+  "pages": [
+    {
+      "qid": 16,
+      "page": 4,
+      "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\scoped-source-review-q16-q17\\p4-4.png",
+      "renderSha256": "8e889145c2c23b3b83da79cde6402c0d9b4eb4f0a59379fa2fb9acc614cadb5a",
+      "finding": "PDF p4 confirms the printed f(x)=log_{sqrt(3)}(x/3) and g(x)=x^2-2x. The first strict inequality alone implies 3<x<9, hence only five integer x values (4,5,6,7,8); the requested count six is impossible for every c. Source condition matches extracted JS; no repair inferred."
+    },
+    {
+      "qid": 17,
+      "page": 5,
+      "renderPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\scoped-source-review-q16-q17\\p5-5.png",
+      "renderSha256": "1c9a4ba764d5203badafd8a96c32cae0697442ae618695b2c7679c3da0d4ed76",
+      "finding": "PDF p5 confirms the extracted exponent curves, point incidence, ratio and equality statements. A first suspected contradiction was rejected after coordinate derivation: t=x_B=-2 satisfies the conditions and gives area 9, choice ②. No source defect."
+    }
+  ],
+  "reviewedAt": "2026-10-09T01:39:29.224Z",
+  "sourceRepair": "NONE",
+  "pdfScopeReason": "Two concrete mathematical/source-defect checks only; no routine full-page parity review."
+}

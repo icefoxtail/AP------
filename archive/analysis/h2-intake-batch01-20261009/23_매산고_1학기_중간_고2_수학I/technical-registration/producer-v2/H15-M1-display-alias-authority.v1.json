@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_H2_H15_M1_DISPLAY_ALIAS_TECHNICAL_AUTHORITY_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산고_1학기_중간_고2_수학I",
+  "rootAssignment": {
+    "head": "96094e378b89a930688335f956965bab13824d74",
+    "authorityPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/ROOT.target-registration-producer-authority.v2.json",
+    "authoritySha256": "486d79d2358e2c9a32f6477ab5da76b195f5decc3e2173076b32a5dba27acd61",
+    "assignmentPath": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration.assignment.v2.json",
+    "assignmentSha256": "44c3d8a98a9fd25a33eb39186b80a7b79ea19fb66f683a4034afb82491967d8f",
+    "lockedRosterPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/registration-subroster.v2.json",
+    "lockedRosterSha256": "2b91ea077791ec947b1149e4ac500fd9a39ba7e53358f4c2e0faeb3b5ad9629a"
+  },
+  "canonicalCourseAuthority": {
+    "sourcePath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "sourceSha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+    "section": "### 수학I (H15-M1)",
+    "meaning": "Canonical H2 Math I course code H15-M1 displays as 수학I."
+  },
+  "existingDbAliasAuthority": {
+    "path": "archive/db.js",
+    "sha256": "d1d55964fe3c80ef5b69a9b7942c586bca7003633800f1ac957179d91da246e5",
+    "exampleRow": {
+      "file": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js",
+      "grade": "고2",
+      "subject": "수학I",
+      "primaryStandardCourse": "수학I",
+      "courseRangesCourseCode": "H15-M1"
+    }
+  },
+  "producerFailureEvidence": {
+    "attemptPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v2/producer-wrapper.process-capture.json",
+    "processCaptureSha256": "077cf6127f0082a73f5d7a9f38b7983fa9ea410bbdd55be7c3dbe23e0d7ae2a1",
+    "stderrPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v2/producer-wrapper.stderr.bin",
+    "stderrSha256": "2412971fdb8c0c7611d147b193e3a056f342ae7d857e4257e5dbb6e2353eb692",
+    "exitCode": 1,
+    "exactError": "ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH:H15-M1|수학I"
+  },
+  "authorizedRepair": {
+    "helperPath": "archive/tools/prepare-target-registration-candidate.mjs",
+    "helperSha256": "04a68009f79f8eda57a8310ed3192ccc85dfd9371793435559b882c065b276f2",
+    "testPath": "archive/tools/prepare-target-registration-candidate.test.mjs",
+    "testSha256": "e0b030a193d7a655bedf04dfbc55f5b407ee2a54f5fabd0c12b5f43d4a094ea2",
+    "change": "Added only grade h2 + course H15-M1 + subject 수학I to the locked display-alias allowlist. Other identity checks remain unchanged.",
+    "tests": {
+      "command": "node --test --test-name-pattern='locked display aliases|H1 math-upper|H2 probability-statistics|H2 H15-M1' archive/tools/prepare-target-registration-candidate.test.mjs",
+      "exitCode": 0,
+      "passed": 4,
+      "failed": 0,
+      "coverage": ["canonical H2 alias/display result", "DB output matches existing H15-M1 alias", "wrong grade rejects", "wrong course rejects", "wrong UID subject rejects", "existing math2/geometry/H1/PS aliases remain covered"]
+    },
+    "syntaxChecks": {"helperNodeCheckExitCode": 0, "testNodeCheckExitCode": 0},
+    "scopedDiffCheck": {"command": "git diff --check -- archive/tools/prepare-target-registration-candidate.mjs archive/tools/prepare-target-registration-candidate.test.mjs", "exitCode": 0}
+  },
+  "fullTestFileAttempt": {
+    "command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs",
+    "exitCode": 1,
+    "passCount": 20,
+    "failCount": 1,
+    "failingTest": "admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while keeping source values and manual holds",
+    "error": "R1_META_CORE_ADMISSION_LIVE_CITATION_SHA256_MISMATCH",
+    "scopeNote": "The failure occurred in the existing live-citation binding test, not the display-alias branch. No citation, admission, Meta, validator, or gate was modified."
+  },
+  "noRegistryOrSourceChanges": true,
+  "nextStep": "Run the target registration producer again with fresh producer-v3 evidence/index/package paths; do not apply the package."
+}

@@ -1,0 +1,3028 @@
+{
+  "schemaVersion": "ROOT_POST_MAIN_TECHNICAL_QA_EQUIVALENCE_PROOF_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "status": "TECHNICAL_VIEW_EQUIVALENCE_PASS_EXISTING_E019_CHROME_RECEIPTS_RETAINED",
+  "oldMainSha": "e019d3cfec4555f286f3cb48bb0ecc4e6b3ea6c7",
+  "currentMainSha": "a67da79b534bce799c9cd465d9690cd6201e7c15",
+  "currentOriginMainSha": "a67da79b534bce799c9cd465d9690cd6201e7c15",
+  "newActualChromeCapturePerformed": false,
+  "newActualChromePassClaimedForCurrentMain": false,
+  "reason": "All decoded catalog records keyed by sourceFile/sourceOrdinal and exam rows keyed by file are equal. The array order changed; current target source/assets, target DB/index/identity joins, active core filter options, and main search/engine page dependency blobs remain unchanged. Existing actual Chrome receipts were captured on e019 and qualify only for this proven semantically equal a67 derived-main state.",
+  "catalog": {
+    "oldFileSha256": "fbab5eb94707ef39c45454e0ac9b7f2a63a236e42144c4903d4956bf7e16ebd8",
+    "currentFileSha256": "99c68023d8836d8d6dd5a704a81adfd015d77d771b8315b254c503c7e63f989e",
+    "decodedRecordCountOld": 13494,
+    "decodedRecordCountCurrent": 13494,
+    "decodedExamCountOld": 567,
+    "decodedExamCountCurrent": 567,
+    "decodedRecordsEqualBySourceOrdinal": true,
+    "decodedExamsEqualByFile": true,
+    "recordArrayOrderEqual": false,
+    "examArrayOrderEqual": false,
+    "coreMetaFilterOptionsSha256Old": "67f5515452caf2ae7a0131efdc341d6c463ae91ae65b68b7ef019b843a4aa933",
+    "coreMetaFilterOptionsSha256Current": "67f5515452caf2ae7a0131efdc341d6c463ae91ae65b68b7ef019b843a4aa933",
+    "coreMetaFilterOptionsEqual": true,
+    "standardUnitFilterCount": 143,
+    "subUnitFilterCount": 466,
+    "activeFourOptions": [
+      {
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "label": "지수함수의 활용",
+        "displayLabel": "지수함수의 활용 · H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardCourses": [
+          "수학I"
+        ]
+      },
+      {
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+        "label": "지수함수의 그래프",
+        "displayLabel": "지수함수의 그래프 · H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardCourses": [
+          "수학I"
+        ]
+      },
+      {
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "label": "로그함수의 활용",
+        "displayLabel": "로그함수의 활용 · H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardCourses": [
+          "수학I"
+        ]
+      },
+      {
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "label": "로그함수의 그래프",
+        "displayLabel": "로그함수의 그래프 · H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardCourses": [
+          "수학I"
+        ]
+      }
+    ],
+    "activeFourOptionsEqual": true,
+    "focusedFilterProof": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/R3.post-main-meta-filter.focused.final-main-e019d3cf.archive_r3_06.json",
+      "sha256": "ac2e2e5dd921f4d6182ab40554a4a4873de4650c4f695d8338118c9c352299d9",
+      "status": "PASS",
+      "allFourOptions": [
+        {
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "displayName": "지수함수의 활용",
+          "optionCount": 1,
+          "optionLabel": "지수함수의 활용 · H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "activeParentRows": [
+            {
+              "standardUnitKey": "H15-M1-03",
+              "standardCourses": [
+                "수학I"
+              ],
+              "displayLabel": "지수함수의 활용 · H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION"
+            }
+          ]
+        },
+        {
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+          "displayName": "지수함수의 그래프",
+          "optionCount": 1,
+          "optionLabel": "지수함수의 그래프 · H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+          "activeParentRows": [
+            {
+              "standardUnitKey": "H15-M1-03",
+              "standardCourses": [
+                "수학I"
+              ],
+              "displayLabel": "지수함수의 그래프 · H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH"
+            }
+          ]
+        },
+        {
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "displayName": "로그함수의 활용",
+          "optionCount": 1,
+          "optionLabel": "로그함수의 활용 · H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "activeParentRows": [
+            {
+              "standardUnitKey": "H15-M1-04",
+              "standardCourses": [
+                "수학I"
+              ],
+              "displayLabel": "로그함수의 활용 · H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION"
+            }
+          ]
+        },
+        {
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "displayName": "로그함수의 그래프",
+          "optionCount": 1,
+          "optionLabel": "로그함수의 그래프 · H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "activeParentRows": [
+            {
+              "standardUnitKey": "H15-M1-04",
+              "standardCourses": [
+                "수학I"
+              ],
+              "displayLabel": "로그함수의 그래프 · H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      ],
+      "assignedQidFilterResults": [
+        {
+          "examUid": "23_강남여고_1학기_중간_고2_수학I",
+          "sourceRawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+          "qidCount": 25,
+          "activeChildAssignments": [
+            {
+              "qid": 5,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 6,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 8,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 16,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 18,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 20,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                5,
+                8
+              ],
+              "actualQids": [
+                5,
+                8
+              ],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [
+                18
+              ],
+              "actualQids": [
+                18
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                16
+              ],
+              "actualQids": [
+                16
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                6,
+                20
+              ],
+              "actualQids": [
+                6,
+                20
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 25,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        },
+        {
+          "examUid": "23_금당고_1학기_중간_고2_수학I",
+          "sourceRawSha256": "41e536055918cf8fde660a2fc7bd32dcea3683adaeb49fa9a853d9cc2c7643dc",
+          "qidCount": 20,
+          "activeChildAssignments": [
+            {
+              "qid": 4,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+              "sourceTemplateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+            },
+            {
+              "qid": 6,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+            },
+            {
+              "qid": 7,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 12,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+              "sourceTemplateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+            },
+            {
+              "qid": 17,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 18,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 19,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION"
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                19
+              ],
+              "actualQids": [
+                19
+              ],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [
+                6,
+                7,
+                12,
+                17
+              ],
+              "actualQids": [
+                6,
+                7,
+                12,
+                17
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                18
+              ],
+              "actualQids": [
+                18
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                4
+              ],
+              "actualQids": [
+                4
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 14,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        },
+        {
+          "examUid": "23_매산고_1학기_중간_고2_수학I",
+          "sourceRawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+          "qidCount": 20,
+          "activeChildAssignments": [
+            {
+              "qid": 10,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+              "sourceTemplateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+            },
+            {
+              "qid": 12,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 18,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                10
+              ],
+              "actualQids": [
+                10
+              ],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [],
+              "actualQids": [],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                18
+              ],
+              "actualQids": [
+                18
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                12
+              ],
+              "actualQids": [
+                12
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 14,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        },
+        {
+          "examUid": "23_매산여고_1학기_중간_고2_수학I",
+          "sourceRawSha256": "339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9",
+          "qidCount": 23,
+          "activeChildAssignments": [
+            {
+              "qid": 7,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+            },
+            {
+              "qid": 9,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+            },
+            {
+              "qid": 15,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 16,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": "PT_COMPOSITION_EQUATION",
+              "sourceTemplateKey": "TPL_COMPOSITION_INEQUALITY"
+            },
+            {
+              "qid": 17,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 18,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 21,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                15
+              ],
+              "actualQids": [
+                15
+              ],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [
+                7,
+                9,
+                17,
+                21
+              ],
+              "actualQids": [
+                7,
+                9,
+                17,
+                21
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                16
+              ],
+              "actualQids": [
+                16
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                18
+              ],
+              "actualQids": [
+                18
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 15,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        },
+        {
+          "examUid": "23_순천여고_1학기_중간_고2_수학I",
+          "sourceRawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+          "qidCount": 23,
+          "activeChildAssignments": [
+            {
+              "qid": 7,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+              "sourceTemplateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+            },
+            {
+              "qid": 11,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 13,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+            },
+            {
+              "qid": 14,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 15,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": null,
+              "sourceTemplateKey": null
+            },
+            {
+              "qid": 16,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+            },
+            {
+              "qid": 19,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 22,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 23,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                7,
+                11
+              ],
+              "actualQids": [
+                7,
+                11
+              ],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [
+                14,
+                22
+              ],
+              "actualQids": [
+                14,
+                22
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [
+                15,
+                16
+              ],
+              "actualQids": [
+                15,
+                16
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                13,
+                19,
+                23
+              ],
+              "actualQids": [
+                13,
+                19,
+                23
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 16,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        },
+        {
+          "examUid": "24_강남여고_1학기_중간_고2_대수",
+          "sourceRawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+          "qidCount": 25,
+          "activeChildAssignments": [
+            {
+              "qid": 9,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 17,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+              "sourceTemplateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL"
+            },
+            {
+              "qid": 18,
+              "standardUnitKey": "H15-M1-04",
+              "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+              "sourceTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+            },
+            {
+              "qid": 19,
+              "standardUnitKey": "H15-M1-03",
+              "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+              "sourceProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+              "sourceTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+            }
+          ],
+          "childFilters": {
+            "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION": {
+              "expectedQids": [],
+              "actualQids": [],
+              "exact": true
+            },
+            "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH": {
+              "expectedQids": [
+                9,
+                17,
+                19
+              ],
+              "actualQids": [
+                9,
+                17,
+                19
+              ],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION": {
+              "expectedQids": [],
+              "actualQids": [],
+              "exact": true
+            },
+            "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH": {
+              "expectedQids": [
+                18
+              ],
+              "actualQids": [
+                18
+              ],
+              "exact": true
+            }
+          },
+          "activeCoreMismatches": [],
+          "manualNullPairCount": 18,
+          "manualNullVerifiedCount": 0,
+          "autoValueCount": 0
+        }
+      ]
+    }
+  },
+  "registrySourceBindings": {
+    "questionMetadataSha256Old": "b27e97d01b9d1977cba67e5a8b1db7c5c1376ab09c6928e4a11aab03ad8a2b98",
+    "questionMetadataSha256Current": "b27e97d01b9d1977cba67e5a8b1db7c5c1376ab09c6928e4a11aab03ad8a2b98",
+    "questionMetadataByteEqual": true,
+    "questionIdentityMapSha256Old": "8f2282b5ecca3e0d0ea32ee57f44b07d40e2f0b7358ae4e2a5fcaeba5d31ac94",
+    "questionIdentityMapSha256Current": "8f2282b5ecca3e0d0ea32ee57f44b07d40e2f0b7358ae4e2a5fcaeba5d31ac94",
+    "questionIdentityMapByteEqual": true
+  },
+  "unchangedPageDependencies": [
+    {
+      "path": "archive/answer-render-executor.js",
+      "oldBlobSha1": "8133a9ea970ab382ca77c0f1191c9cffbc0cc99f",
+      "currentBlobSha1": "8133a9ea970ab382ca77c0f1191c9cffbc0cc99f",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive-home.js",
+      "oldBlobSha1": "35bbed9288cad93176380341ed53de49dee6c024",
+      "currentBlobSha1": "35bbed9288cad93176380341ed53de49dee6c024",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive-session.js",
+      "oldBlobSha1": "6d6f5a9f2dc47c8c5b7e0b19bfdb9f7209268456",
+      "currentBlobSha1": "6d6f5a9f2dc47c8c5b7e0b19bfdb9f7209268456",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "oldBlobSha1": "31df7fc18db5cb9f4a6923984ef5cb5dab93640f",
+      "currentBlobSha1": "31df7fc18db5cb9f4a6923984ef5cb5dab93640f",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-core.js",
+      "oldBlobSha1": "ef62b21038f91abd5f4f2e006b0310ee8cf8f98c",
+      "currentBlobSha1": "ef62b21038f91abd5f4f2e006b0310ee8cf8f98c",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-entry.js",
+      "oldBlobSha1": "a1d2153c434d25cad77a834498c69bb82f06bb11",
+      "currentBlobSha1": "a1d2153c434d25cad77a834498c69bb82f06bb11",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-history.js",
+      "oldBlobSha1": "17c1bda926a8d28991c6b06875f0dd02c21873b2",
+      "currentBlobSha1": "17c1bda926a8d28991c6b06875f0dd02c21873b2",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-output-contract.js",
+      "oldBlobSha1": "c8c6c9144444d2b997fd259b6578bd06a2e08459",
+      "currentBlobSha1": "c8c6c9144444d2b997fd259b6578bd06a2e08459",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-output.js",
+      "oldBlobSha1": "cab47e886a267fffeba7b9cf5a8f223346db73b0",
+      "currentBlobSha1": "cab47e886a267fffeba7b9cf5a8f223346db73b0",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-pdf-readiness.js",
+      "oldBlobSha1": "d7ad24de865f13781700e4b6c969b6234aa4f730",
+      "currentBlobSha1": "d7ad24de865f13781700e4b6c969b6234aa4f730",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-preview-mobile.css",
+      "oldBlobSha1": "e095da446ff619d2985bc59cd4143b34237fc455",
+      "currentBlobSha1": "e095da446ff619d2985bc59cd4143b34237fc455",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-reader-controls.css",
+      "oldBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+      "currentBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-reader-controls.js",
+      "oldBlobSha1": "c5dbdb66a5fce2ea8472161279239daad99aa767",
+      "currentBlobSha1": "c5dbdb66a5fce2ea8472161279239daad99aa767",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-review.css",
+      "oldBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+      "currentBlobSha1": "1ae094eaa5465dc4affa1e936643b788184a30ee",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-review.js",
+      "oldBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+      "currentBlobSha1": "ffaadeababca6797270f1bae6482ed1a4d0a9949",
+      "unchanged": true
+    },
+    {
+      "path": "archive/archive2-source.js",
+      "oldBlobSha1": "67144198254d6e3b3258be941b615b4cf603ae12",
+      "currentBlobSha1": "67144198254d6e3b3258be941b615b4cf603ae12",
+      "unchanged": true
+    },
+    {
+      "path": "archive/concept_map.js",
+      "oldBlobSha1": "ec34be175c586437acff1c9e0b9caf9b7fbef349",
+      "currentBlobSha1": "ec34be175c586437acff1c9e0b9caf9b7fbef349",
+      "unchanged": true
+    },
+    {
+      "path": "archive/css/js-archive-theme-override.css",
+      "oldBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+      "currentBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+      "unchanged": true
+    },
+    {
+      "path": "archive/engine.html",
+      "oldBlobSha1": "44448037fb7d52bd5942b4a6fa7dc424ded22f22",
+      "currentBlobSha1": "44448037fb7d52bd5942b4a6fa7dc424ded22f22",
+      "unchanged": true
+    },
+    {
+      "path": "archive/equal-slot-engine.css",
+      "oldBlobSha1": "7b3cf785367b628a05bdf08f634ecd86f2c7c4eb",
+      "currentBlobSha1": "7b3cf785367b628a05bdf08f634ecd86f2c7c4eb",
+      "unchanged": true
+    },
+    {
+      "path": "archive/equal-slot-engine.js",
+      "oldBlobSha1": "2dfcaaa76549edfcd931573d030bd0473be2596d",
+      "currentBlobSha1": "2dfcaaa76549edfcd931573d030bd0473be2596d",
+      "unchanged": true
+    },
+    {
+      "path": "archive/exam-render-executor.js",
+      "oldBlobSha1": "89bafa71cedc1c7dbc41e489cfeca0c93c566caf",
+      "currentBlobSha1": "89bafa71cedc1c7dbc41e489cfeca0c93c566caf",
+      "unchanged": true
+    },
+    {
+      "path": "archive/generated-bank.html",
+      "oldBlobSha1": "aee199cb4c382de53504ca730ca3ad8f07300d2c",
+      "currentBlobSha1": "aee199cb4c382de53504ca730ca3ad8f07300d2c",
+      "unchanged": true
+    },
+    {
+      "path": "archive/index.html",
+      "oldBlobSha1": "b84f92c6f9b68d9005a61a1f5ca23b9778b07195",
+      "currentBlobSha1": "b84f92c6f9b68d9005a61a1f5ca23b9778b07195",
+      "unchanged": true
+    },
+    {
+      "path": "archive/layout-authority.js",
+      "oldBlobSha1": "918e5623806e7b62da6b4ed3d3c8fc959b34c1d6",
+      "currentBlobSha1": "918e5623806e7b62da6b4ed3d3c8fc959b34c1d6",
+      "unchanged": true
+    },
+    {
+      "path": "archive/layout-materializer.js",
+      "oldBlobSha1": "fd94cf60117b6b5d193eda4d030cfa44409f959e",
+      "currentBlobSha1": "fd94cf60117b6b5d193eda4d030cfa44409f959e",
+      "unchanged": true
+    },
+    {
+      "path": "archive/mathjax_render_loop.js",
+      "oldBlobSha1": "2f1843d6649b14307fb7813ff11f33949208def1",
+      "currentBlobSha1": "2f1843d6649b14307fb7813ff11f33949208def1",
+      "unchanged": true
+    },
+    {
+      "path": "archive/mixer-selector.js",
+      "oldBlobSha1": "f305121101fc8ade197f07d5cf0482199a816e5f",
+      "currentBlobSha1": "f305121101fc8ade197f07d5cf0482199a816e5f",
+      "unchanged": true
+    },
+    {
+      "path": "archive/native_print.js",
+      "oldBlobSha1": "3ee0c4cc26e40239fac3db5c8807a47f2dce82ab",
+      "currentBlobSha1": "3ee0c4cc26e40239fac3db5c8807a47f2dce82ab",
+      "unchanged": true
+    },
+    {
+      "path": "archive/print-contract.js",
+      "oldBlobSha1": "26294a81f1d7ce986a420d16794bb1fd57630117",
+      "currentBlobSha1": "26294a81f1d7ce986a420d16794bb1fd57630117",
+      "unchanged": true
+    },
+    {
+      "path": "archive/print-runtime.js",
+      "oldBlobSha1": "e74bdfc75b6fe4c0d5aa23c70849586993bc3739",
+      "currentBlobSha1": "e74bdfc75b6fe4c0d5aa23c70849586993bc3739",
+      "unchanged": true
+    },
+    {
+      "path": "archive/print_image_optimizer.js",
+      "oldBlobSha1": "838e6a1407cb15451c3a23bad5935a2c3b656d03",
+      "currentBlobSha1": "838e6a1407cb15451c3a23bad5935a2c3b656d03",
+      "unchanged": true
+    },
+    {
+      "path": "archive/problem-bank-meta.js",
+      "oldBlobSha1": "814381cc75f9e873559b3ba8a6e5b42aaf8bd95d",
+      "currentBlobSha1": "814381cc75f9e873559b3ba8a6e5b42aaf8bd95d",
+      "unchanged": true
+    },
+    {
+      "path": "archive/problem-bank-search.html",
+      "oldBlobSha1": "dcadc6ca63e17828fb4e917053ec07d2aff80c92",
+      "currentBlobSha1": "dcadc6ca63e17828fb4e917053ec07d2aff80c92",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-image-readiness.js",
+      "oldBlobSha1": "d22b00e2b8a6f1182194e83a23c985cf1fa6196a",
+      "currentBlobSha1": "d22b00e2b8a6f1182194e83a23c985cf1fa6196a",
+      "unchanged": true
+    },
+    {
+      "path": "archive/question-meta.js",
+      "oldBlobSha1": "9186e9cfe6d07f74f788a7972fbe7303b06933e0",
+      "currentBlobSha1": "9186e9cfe6d07f74f788a7972fbe7303b06933e0",
+      "unchanged": true
+    },
+    {
+      "path": "archive/render-authority.js",
+      "oldBlobSha1": "b152708a6cc4e8ba55eddd87e752dae8f4cf1c3f",
+      "currentBlobSha1": "b152708a6cc4e8ba55eddd87e752dae8f4cf1c3f",
+      "unchanged": true
+    },
+    {
+      "path": "archive/render-state-normalizer.js",
+      "oldBlobSha1": "526e5f0d6e60ba37c2917736b75ca1288ee62991",
+      "currentBlobSha1": "526e5f0d6e60ba37c2917736b75ca1288ee62991",
+      "unchanged": true
+    },
+    {
+      "path": "archive/review-preview-bridge.js",
+      "oldBlobSha1": "77e5be38f9e4a2ad280108d7a697e9adb6ce2c93",
+      "currentBlobSha1": "77e5be38f9e4a2ad280108d7a697e9adb6ce2c93",
+      "unchanged": true
+    },
+    {
+      "path": "archive/screen-runtime-adapter.js",
+      "oldBlobSha1": "78bb85c77f528970bcecc34eacd9daab24fbc985",
+      "currentBlobSha1": "78bb85c77f528970bcecc34eacd9daab24fbc985",
+      "unchanged": true
+    },
+    {
+      "path": "archive/screen-runtime.js",
+      "oldBlobSha1": "6195d69b2fc6f145d839b2dc6a184b63d211143a",
+      "currentBlobSha1": "6195d69b2fc6f145d839b2dc6a184b63d211143a",
+      "unchanged": true
+    },
+    {
+      "path": "archive/side-effect-ledger.js",
+      "oldBlobSha1": "cbafe31d265b473738c68539223e774592c6c2d5",
+      "currentBlobSha1": "cbafe31d265b473738c68539223e774592c6c2d5",
+      "unchanged": true
+    },
+    {
+      "path": "archive/snapshot-contract.js",
+      "oldBlobSha1": "fc107a97f2c29d6d42e8f79371a40f7baaef4fec",
+      "currentBlobSha1": "fc107a97f2c29d6d42e8f79371a40f7baaef4fec",
+      "unchanged": true
+    },
+    {
+      "path": "archive/solution-render-executor.js",
+      "oldBlobSha1": "37cb18186b639086c55086efc22dd8c5d3839713",
+      "currentBlobSha1": "37cb18186b639086c55086efc22dd8c5d3839713",
+      "unchanged": true
+    },
+    {
+      "path": "archive/vendor/html2canvas/html2canvas.min.js",
+      "oldBlobSha1": "aed6bfd70defa322824e5cba11b3ad5d6061ee28",
+      "currentBlobSha1": "aed6bfd70defa322824e5cba11b3ad5d6061ee28",
+      "unchanged": true
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+      "oldBlobSha1": "cb684fe45eac8761d91e57ddc26358b4e45cb28d",
+      "currentBlobSha1": "cb684fe45eac8761d91e57ddc26358b4e45cb28d",
+      "unchanged": true
+    },
+    {
+      "path": "archive/vendor/qrious/qrious.min.js",
+      "oldBlobSha1": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+      "currentBlobSha1": "5735ea62de51b593f7bb12376aacc0bd2f0dd0ff",
+      "unchanged": true
+    },
+    {
+      "path": "archive/workspace.html",
+      "oldBlobSha1": "7bb4bf641071957f18663a22b80fa56aca179deb",
+      "currentBlobSha1": "7bb4bf641071957f18663a22b80fa56aca179deb",
+      "unchanged": true
+    }
+  ],
+  "targets": [
+    {
+      "examUid": "23_강남여고_1학기_중간_고2_수학I",
+      "sourceFile": "original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학I.js",
+      "questionCount": 25,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.promotion.actual-v1.json",
+        "sha256": "4f95ea9b36ed577af71b9dfcadb64418aae7c28201aa47bed312858d5a4b8b61",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+        "artifactBlobSha1": "77ed380a569f448997e82db5a3d84f330c9ecd0d"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학I.js",
+        "rawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+        "oldBlobSha1": "77ed380a569f448997e82db5a3d84f330c9ecd0d",
+        "currentBlobSha1": "77ed380a569f448997e82db5a3d84f330c9ecd0d"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+          "expectedSha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96",
+          "physicalSha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96",
+          "shaMatches": true,
+          "oldBlobSha1": "3745621861b3dbef758488f3ac776b588a164c84",
+          "newBlobSha1": "3745621861b3dbef758488f3ac776b588a164c84",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+          "expectedSha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c",
+          "physicalSha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c",
+          "shaMatches": true,
+          "oldBlobSha1": "87d01401479004cbfbb72f834f28f2f162c5cd12",
+          "newBlobSha1": "87d01401479004cbfbb72f834f28f2f162c5cd12",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+          "expectedSha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102",
+          "physicalSha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102",
+          "shaMatches": true,
+          "oldBlobSha1": "c25a7b047bba40f8de4d17fd0deff98d3b88eb72",
+          "newBlobSha1": "c25a7b047bba40f8de4d17fd0deff98d3b88eb72",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v1.json",
+        "sha256": "0e599fde6fd2c334588e556e8cb0ddfaeea62f59c704f5728aa0338abe3d57fb",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "4301896a3ed444d63bae9ea61fac01174e91c55882ad7f90896d9e1da192f3f5",
+            "actualSha256": "4301896a3ed444d63bae9ea61fac01174e91c55882ad7f90896d9e1da192f3f5",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "282628ed3a5b2d1c6afbb068a5dce77baed9c636596ce025d21d2ed8d7c86f53",
+            "actualSha256": "282628ed3a5b2d1c6afbb068a5dce77baed9c636596ce025d21d2ed8d7c86f53",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "c264be3853d8b99e17bfdf0777e1424546ac41491ce03e4423ccea8f6dc28dcd",
+            "actualSha256": "c264be3853d8b99e17bfdf0777e1424546ac41491ce03e4423ccea8f6dc28dcd",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "3886128922680e4c34a7451c35f1667afeaea27fb2a7865bf2b051b3a73a3703",
+            "actualSha256": "3886128922680e4c34a7451c35f1667afeaea27fb2a7865bf2b051b3a73a3703",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "5d375b423b4b19c79ade9c3b1cc13d6d37a4aecabde08f39556e56213737b143",
+            "actualSha256": "5d375b423b4b19c79ade9c3b1cc13d6d37a4aecabde08f39556e56213737b143",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "52cf46ceaf7d08a0ca9e046255c8c7f4a56236181ca75e9d80173aeddfe135cf",
+            "actualSha256": "52cf46ceaf7d08a0ca9e046255c8c7f4a56236181ca75e9d80173aeddfe135cf",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 25,
+        "catalogRecordCountCurrent": 25,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 25,
+        "questionIndexCountCurrent": 25,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_강남여고_1학기_중간_고2_확률과통계",
+      "sourceFile": "original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률과통계.js",
+      "questionCount": 25,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/ROOT.promotion.actual-v1.json",
+        "sha256": "90b057e88263ade9c78268357d3dec051583d48c879493b4aff8750b83ab61a2",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "05d98359c9c889518a3ecf8cc30057c1b3b42c5fcb7aaf25538bd113183fa598",
+        "artifactBlobSha1": "3d4d07a3270d939cc69a260720177943ff940862"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률과통계.js",
+        "rawSha256": "05d98359c9c889518a3ecf8cc30057c1b3b42c5fcb7aaf25538bd113183fa598",
+        "oldBlobSha1": "3d4d07a3270d939cc69a260720177943ff940862",
+        "currentBlobSha1": "3d4d07a3270d939cc69a260720177943ff940862"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14-solution.svg",
+          "expectedSha256": "684f936192b176e90661c0c99739c5d95eee8a27b07de66107e7a2902468a71f",
+          "physicalSha256": "684f936192b176e90661c0c99739c5d95eee8a27b07de66107e7a2902468a71f",
+          "shaMatches": true,
+          "oldBlobSha1": "08ca37ce40a0811562e04892ffce20b5841359c5",
+          "newBlobSha1": "08ca37ce40a0811562e04892ffce20b5841359c5",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q14.png",
+          "expectedSha256": "23ab9fd18de7ecd256449f8d4bd00ecb381d38a6001b9a54b7229b991f7540bb",
+          "physicalSha256": "23ab9fd18de7ecd256449f8d4bd00ecb381d38a6001b9a54b7229b991f7540bb",
+          "shaMatches": true,
+          "oldBlobSha1": "37bbc55e0ad0713ecac9053be5cc3aa04b6e498c",
+          "newBlobSha1": "37bbc55e0ad0713ecac9053be5cc3aa04b6e498c",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+          "expectedSha256": "a9b2fb41975a93358ee5152f1c5929a06001f0cba4bf803b68128ee5ab4c1782",
+          "physicalSha256": "a9b2fb41975a93358ee5152f1c5929a06001f0cba4bf803b68128ee5ab4c1782",
+          "shaMatches": true,
+          "oldBlobSha1": "6d9010cdcf85a5c2a97e282e9d466466374fcc52",
+          "newBlobSha1": "6d9010cdcf85a5c2a97e282e9d466466374fcc52",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q17.png",
+          "expectedSha256": "7681254c4b0e134ba6059fb8cc12f3991c2b0086ec62e30e08e790d0f210f028",
+          "physicalSha256": "7681254c4b0e134ba6059fb8cc12f3991c2b0086ec62e30e08e790d0f210f028",
+          "shaMatches": true,
+          "oldBlobSha1": "c05317346682e1be741fe9e2b592b2a3b62bf744",
+          "newBlobSha1": "c05317346682e1be741fe9e2b592b2a3b62bf744",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+          "expectedSha256": "6ed1be254e68a750314f0ff837fa700a0b70af38a970537c86c985fc79de6f21",
+          "physicalSha256": "6ed1be254e68a750314f0ff837fa700a0b70af38a970537c86c985fc79de6f21",
+          "shaMatches": true,
+          "oldBlobSha1": "4456affcfada64a6dc3d43d2a004e13e92875207",
+          "newBlobSha1": "4456affcfada64a6dc3d43d2a004e13e92875207",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21.png",
+          "expectedSha256": "8f4fa03bdcfbf59979bd75e5ecf6707cc0cfd6a20722b4b7614435d826fe0914",
+          "physicalSha256": "8f4fa03bdcfbf59979bd75e5ecf6707cc0cfd6a20722b4b7614435d826fe0914",
+          "shaMatches": true,
+          "oldBlobSha1": "c71a18ef55c3f7119eda2d1851d7ed5e8750707d",
+          "newBlobSha1": "c71a18ef55c3f7119eda2d1851d7ed5e8750707d",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/ROOT.render-receipt.durable-v1.json",
+        "sha256": "b13c394e28c206f019bba0a0eec28a201812152200bd3a206f0287059050e139",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "e9dd36f2b67d5b44c3c3616886af2ebef70b4165cc8d34618144ac04e9741058",
+            "actualSha256": "e9dd36f2b67d5b44c3c3616886af2ebef70b4165cc8d34618144ac04e9741058",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "3ad27e02ec1414c9cb864eb9abb26988498bdc28797f88e27d079bb3862509e8",
+            "actualSha256": "3ad27e02ec1414c9cb864eb9abb26988498bdc28797f88e27d079bb3862509e8",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "8699a241960d90ec18a245cc487071cb92a1a871f96d89762da1f397d6451bac",
+            "actualSha256": "8699a241960d90ec18a245cc487071cb92a1a871f96d89762da1f397d6451bac",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "b24387abb41ad18b43aa272a6ff10ef8bdf28aecbee41440a2ea8168c44323eb",
+            "actualSha256": "b24387abb41ad18b43aa272a6ff10ef8bdf28aecbee41440a2ea8168c44323eb",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "7ffadd90da399368832dbc7d92a50a7b5443e010ad6d17533f29ec2a2aa45b0f",
+            "actualSha256": "7ffadd90da399368832dbc7d92a50a7b5443e010ad6d17533f29ec2a2aa45b0f",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "5ddeb6fcc4921e9cb2087d716299c7b0ef43e34630ef1afc5843ee4e2ab2dd5a",
+            "actualSha256": "5ddeb6fcc4921e9cb2087d716299c7b0ef43e34630ef1afc5843ee4e2ab2dd5a",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 25,
+        "catalogRecordCountCurrent": 25,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 25,
+        "questionIndexCountCurrent": 25,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [],
+          "manualTemplateQids": [],
+          "nullProblemTypeQids": [],
+          "nullTemplateQids": []
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_금당고_1학기_중간_고2_수학I",
+      "sourceFile": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학I.js",
+      "questionCount": 20,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ROOT.promotion.actual-v1.json",
+        "sha256": "913535042703b514e373a946abd6ae0456c59b70dab6d7b2ce157847cda50dbc",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "41e536055918cf8fde660a2fc7bd32dcea3683adaeb49fa9a853d9cc2c7643dc",
+        "artifactBlobSha1": "ca4f71316ecd593f7240fd6232c7797112b64488"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_금당고_1학기_중간_고2_수학I.js",
+        "rawSha256": "41e536055918cf8fde660a2fc7bd32dcea3683adaeb49fa9a853d9cc2c7643dc",
+        "oldBlobSha1": "ca4f71316ecd593f7240fd6232c7797112b64488",
+        "currentBlobSha1": "ca4f71316ecd593f7240fd6232c7797112b64488"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학I/q07.png",
+          "expectedSha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203",
+          "physicalSha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203",
+          "shaMatches": true,
+          "oldBlobSha1": "cead384b20473fcb36b21de263a556c8a7cace33",
+          "newBlobSha1": "cead384b20473fcb36b21de263a556c8a7cace33",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학I/q13.png",
+          "expectedSha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df",
+          "physicalSha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df",
+          "shaMatches": true,
+          "oldBlobSha1": "5caf357ace4850386912857a9cd87c42affd9f22",
+          "newBlobSha1": "5caf357ace4850386912857a9cd87c42affd9f22",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v1.json",
+        "sha256": "82e9517fcabb6c7c769f2c92b6d4814e132dd6143a02226ca08a907596f40881",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/exam-desktop.png",
+            "expectedSha256": "81bc7760afd8824e3f96fbf66658ff760e4586578830bdd6a40be2d54df6fc91",
+            "actualSha256": "81bc7760afd8824e3f96fbf66658ff760e4586578830bdd6a40be2d54df6fc91",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/exam-mobile.png",
+            "expectedSha256": "1beb3943a1bc033b1a0c25e03866867143819d271ce6b2968086b65c66b15b00",
+            "actualSha256": "1beb3943a1bc033b1a0c25e03866867143819d271ce6b2968086b65c66b15b00",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/sol-desktop.png",
+            "expectedSha256": "42a0bd626e94ae9980cb3a17309c300d0b711c4d134885110d2aa1dbe7f2db4c",
+            "actualSha256": "42a0bd626e94ae9980cb3a17309c300d0b711c4d134885110d2aa1dbe7f2db4c",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/sol-mobile.png",
+            "expectedSha256": "f2e83b207a1af6becbac28557d215f9066ff0134d0f5c2bfd8b32107a96d8b9b",
+            "actualSha256": "f2e83b207a1af6becbac28557d215f9066ff0134d0f5c2bfd8b32107a96d8b9b",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/ans-desktop.png",
+            "expectedSha256": "1cd10efc2a7964dc16b3c2d08c64467bb7ba6ea4c9f1d8f23730b872ba52770d",
+            "actualSha256": "1cd10efc2a7964dc16b3c2d08c64467bb7ba6ea4c9f1d8f23730b872ba52770d",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/render/actual-v1/six-cases/ans-mobile.png",
+            "expectedSha256": "b361b8fcb9fda7cbf867f1fe8bf0c2549faba276f0af4b106aa0079226f431bb",
+            "actualSha256": "b361b8fcb9fda7cbf867f1fe8bf0c2549faba276f0af4b106aa0079226f431bb",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 20,
+        "catalogRecordCountCurrent": 20,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 20,
+        "questionIndexCountCurrent": 20,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            18,
+            20
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            18,
+            20
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            18,
+            20
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            18,
+            20
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_금당고_1학기_중간_고2_수학II",
+      "sourceFile": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
+      "questionCount": 20,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/ROOT.promotion.actual-v1.json",
+        "sha256": "f46340add1f17ec2de2744a92985ab938137a004d31e16ec9b5a0977ebfd6a6a",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "3b905a30464f7f056c0e67bd4eb0bfc23b856caf90c84847aa4f618313ffaf9a",
+        "artifactBlobSha1": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
+        "rawSha256": "3b905a30464f7f056c0e67bd4eb0bfc23b856caf90c84847aa4f618313ffaf9a",
+        "oldBlobSha1": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c",
+        "currentBlobSha1": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q01.png",
+          "expectedSha256": "062730e915376a254bfb40bd1d8b7cf5a0482a4bf462f480f64156efc20021b1",
+          "physicalSha256": "062730e915376a254bfb40bd1d8b7cf5a0482a4bf462f480f64156efc20021b1",
+          "shaMatches": true,
+          "oldBlobSha1": "ee31812eacd071faed35cdc772b7533bd45ee924",
+          "newBlobSha1": "ee31812eacd071faed35cdc772b7533bd45ee924",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q11.png",
+          "expectedSha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc",
+          "physicalSha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc",
+          "shaMatches": true,
+          "oldBlobSha1": "38fe01c770cb07604413948b5777d8f227481437",
+          "newBlobSha1": "38fe01c770cb07604413948b5777d8f227481437",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q17-solution.svg",
+          "expectedSha256": "b5f2f717a629267192bd8df2030c757296f4eda5b90da0f755c56bb40940abbd",
+          "physicalSha256": "b5f2f717a629267192bd8df2030c757296f4eda5b90da0f755c56bb40940abbd",
+          "shaMatches": true,
+          "oldBlobSha1": "23632f908a8dfdd7ef85e805b1771fed6c49cdc1",
+          "newBlobSha1": "23632f908a8dfdd7ef85e805b1771fed6c49cdc1",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q17.png",
+          "expectedSha256": "478ef3be9ee37dd0f6604861ea7d92ad5f61ae43b1c7b69ab1aac2baa912ec99",
+          "physicalSha256": "478ef3be9ee37dd0f6604861ea7d92ad5f61ae43b1c7b69ab1aac2baa912ec99",
+          "shaMatches": true,
+          "oldBlobSha1": "b7e5af49d5fbbe5ad8506e66435f61144b50b94e",
+          "newBlobSha1": "b7e5af49d5fbbe5ad8506e66435f61144b50b94e",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution.svg",
+          "expectedSha256": "605654fddf9a6394585040f54fded0b9a767945760d86e9b216cde9c16488849",
+          "physicalSha256": "605654fddf9a6394585040f54fded0b9a767945760d86e9b216cde9c16488849",
+          "shaMatches": true,
+          "oldBlobSha1": "8d14b9f6a328e6f4b835b221d9c80dec2fe5cc98",
+          "newBlobSha1": "8d14b9f6a328e6f4b835b221d9c80dec2fe5cc98",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q20.png",
+          "expectedSha256": "3bffa5aede2af40dc96118e9d401d341238a7b58fc86f55f1726887c80b546a2",
+          "physicalSha256": "3bffa5aede2af40dc96118e9d401d341238a7b58fc86f55f1726887c80b546a2",
+          "shaMatches": true,
+          "oldBlobSha1": "a3ee80fc835929bedfc13c0b8338b0fb3c299982",
+          "newBlobSha1": "a3ee80fc835929bedfc13c0b8338b0fb3c299982",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/ROOT.render-receipt.durable-v1.json",
+        "sha256": "bcbb7edc445120e0bc3b4447b6049f5ae06003a9f974dbceef719a06ecc4391a",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "a9120500d4ce4429f797ef67076b7d66062e4c9de9b12007d943290eb4ebccb5",
+            "actualSha256": "a9120500d4ce4429f797ef67076b7d66062e4c9de9b12007d943290eb4ebccb5",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "2c072e3d521a08c52538a32380dd4e6d812106b9fe8fd253851d9ee41c6129f3",
+            "actualSha256": "2c072e3d521a08c52538a32380dd4e6d812106b9fe8fd253851d9ee41c6129f3",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "ed037fa1f4a723983ccbedcd5a6cb972333bc44e7c3b4d782f478b6ac6df2daa",
+            "actualSha256": "ed037fa1f4a723983ccbedcd5a6cb972333bc44e7c3b4d782f478b6ac6df2daa",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "eff7ebe4a19cac9c6e74c542c034780a172271553d07780b178ec841963c88e8",
+            "actualSha256": "eff7ebe4a19cac9c6e74c542c034780a172271553d07780b178ec841963c88e8",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "3f32ecaf1369645648ceb57e00281deccd86564fd332d1d0c8cf77efdcc1e8b8",
+            "actualSha256": "3f32ecaf1369645648ceb57e00281deccd86564fd332d1d0c8cf77efdcc1e8b8",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "368d90a82d3099c305e6d0ff201525de2e847d441a4fe5a0f4f97b9b88a3eea0",
+            "actualSha256": "368d90a82d3099c305e6d0ff201525de2e847d441a4fe5a0f4f97b9b88a3eea0",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 20,
+        "catalogRecordCountCurrent": 20,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 20,
+        "questionIndexCountCurrent": 20,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [],
+          "manualTemplateQids": [],
+          "nullProblemTypeQids": [],
+          "nullTemplateQids": []
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_매산고_1학기_중간_고2_수학I",
+      "sourceFile": "original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+      "questionCount": 20,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.promotion.actual-v1.json",
+        "sha256": "7099d9ff9523ad59d339e0a1c1e78e7c4ad48dce6b818d4f63845483b4e07ea3",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+        "artifactBlobSha1": "5b24e2e417f7d41044afed57267306fca2bd5e68"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+        "rawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+        "oldBlobSha1": "5b24e2e417f7d41044afed57267306fca2bd5e68",
+        "currentBlobSha1": "5b24e2e417f7d41044afed57267306fca2bd5e68"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_매산고_1학기_중간_고2_수학I/q04.png",
+          "expectedSha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2",
+          "physicalSha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2",
+          "shaMatches": true,
+          "oldBlobSha1": "64290757928c0cb2dc30a79b960f27807b39edc2",
+          "newBlobSha1": "64290757928c0cb2dc30a79b960f27807b39edc2",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산고_1학기_중간_고2_수학I/q14.png",
+          "expectedSha256": "6a0c59805c59729bd8ed2ab788a51bad77ec69cc171918127507f55a31199fba",
+          "physicalSha256": "6a0c59805c59729bd8ed2ab788a51bad77ec69cc171918127507f55a31199fba",
+          "shaMatches": true,
+          "oldBlobSha1": "201e50207bc02dfda56bcd36426d2dca3f5626c8",
+          "newBlobSha1": "201e50207bc02dfda56bcd36426d2dca3f5626c8",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg",
+          "expectedSha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766",
+          "physicalSha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766",
+          "shaMatches": true,
+          "oldBlobSha1": "ced35a91d2f034b4e9457bb695b8476b5ff302fc",
+          "newBlobSha1": "ced35a91d2f034b4e9457bb695b8476b5ff302fc",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg",
+          "expectedSha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13",
+          "physicalSha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13",
+          "shaMatches": true,
+          "oldBlobSha1": "f2fd66c2f4cf8cd01c341d8906d5877f30eacf93",
+          "newBlobSha1": "f2fd66c2f4cf8cd01c341d8906d5877f30eacf93",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v1.json",
+        "sha256": "504a2045d7febd18d2815203a7700e64fa827312e14b7f293fe94f9ed63732c4",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "4940af6026eaa55bee6bd7b980ddd0904ebed7b3ab1f88e95b635dcd3b0eb320",
+            "actualSha256": "4940af6026eaa55bee6bd7b980ddd0904ebed7b3ab1f88e95b635dcd3b0eb320",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "7b66cf8030dac65e6ae84aaf5c856bc467113f75df5ee1f216bc41cac6a8c925",
+            "actualSha256": "7b66cf8030dac65e6ae84aaf5c856bc467113f75df5ee1f216bc41cac6a8c925",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "c623ddc4992083bd235430f9d16f09f2e44591dce21a4e40bb6db7fe7d0d079b",
+            "actualSha256": "c623ddc4992083bd235430f9d16f09f2e44591dce21a4e40bb6db7fe7d0d079b",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "e894bb3bf5f781456ed3cd3a9b02d410149f1a5736fcdb5f098375ed754fe5bb",
+            "actualSha256": "e894bb3bf5f781456ed3cd3a9b02d410149f1a5736fcdb5f098375ed754fe5bb",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "5f9a1aa3e04037e20b55fe70a840112919f04883e6ba70b8efd4da2eac97caaf",
+            "actualSha256": "5f9a1aa3e04037e20b55fe70a840112919f04883e6ba70b8efd4da2eac97caaf",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "bbf3b5078e6a4023791854a0d16ef118986bbf6bb65f68d6300b83b7aa55ff13",
+            "actualSha256": "bbf3b5078e6a4023791854a0d16ef118986bbf6bb65f68d6300b83b7aa55ff13",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 20,
+        "catalogRecordCountCurrent": 20,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 20,
+        "questionIndexCountCurrent": 20,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_매산여고_1학기_중간_고2_수학I",
+      "sourceFile": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_수학I.js",
+      "questionCount": 23,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/ROOT.promotion.actual-v1.json",
+        "sha256": "1a10cbd0d2cfebb85f2e854ff23669ef9fce3aefcc162b09d82c3c05a1013ca0",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9",
+        "artifactBlobSha1": "c6d691872f370d518f64d309b7bf27707cbffbc0"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_매산여고_1학기_중간_고2_수학I.js",
+        "rawSha256": "339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9",
+        "oldBlobSha1": "c6d691872f370d518f64d309b7bf27707cbffbc0",
+        "currentBlobSha1": "c6d691872f370d518f64d309b7bf27707cbffbc0"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_매산여고_1학기_중간_고2_수학I/q17.png",
+          "expectedSha256": "995b54b497849c2bae4ae499c1870c20050f6ca06508f968bc3d4c01d16e4e73",
+          "physicalSha256": "995b54b497849c2bae4ae499c1870c20050f6ca06508f968bc3d4c01d16e4e73",
+          "shaMatches": true,
+          "oldBlobSha1": "e7e0ed378450b686e54d29d84abd1ce1fa6b8091",
+          "newBlobSha1": "e7e0ed378450b686e54d29d84abd1ce1fa6b8091",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산여고_1학기_중간_고2_수학I/q21.png",
+          "expectedSha256": "876c7ddfd7437841ad1067e03aa51515190d2b78bc2e3050877b2abcd084bc63",
+          "physicalSha256": "876c7ddfd7437841ad1067e03aa51515190d2b78bc2e3050877b2abcd084bc63",
+          "shaMatches": true,
+          "oldBlobSha1": "4b3ea167044eebbf553ec43bab079befce8550a4",
+          "newBlobSha1": "4b3ea167044eebbf553ec43bab079befce8550a4",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v1.json",
+        "sha256": "ae560c69cb076e58c5f2b5b1ffbd52a69d8191e024f67d3442767fdb16822de9",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "ffca11e230dd0bf92b0ae219947bbd704d507f7c796f00998fed7b7e7d634efb",
+            "actualSha256": "ffca11e230dd0bf92b0ae219947bbd704d507f7c796f00998fed7b7e7d634efb",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "ba428af8e51150a9363caef5c6e94a791efacf1bbeedddd0d5af027175e34469",
+            "actualSha256": "ba428af8e51150a9363caef5c6e94a791efacf1bbeedddd0d5af027175e34469",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "5ee789c26b8327d00fcdbb03a3f3df244e9f68625104088dbec058ce91e3b50e",
+            "actualSha256": "5ee789c26b8327d00fcdbb03a3f3df244e9f68625104088dbec058ce91e3b50e",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "b56c75b978be8b89de48539f896d1a1fb9649d198e8364c0a1427576679eb8a8",
+            "actualSha256": "b56c75b978be8b89de48539f896d1a1fb9649d198e8364c0a1427576679eb8a8",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "fe4f21eca994c21e40b1db1bae19b0d15da8d3a81039f6e55513549ca7e9b0a4",
+            "actualSha256": "fe4f21eca994c21e40b1db1bae19b0d15da8d3a81039f6e55513549ca7e9b0a4",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "d122039070dc3130f0592c2c4c911d229628c1ed08117894df93f3e41fce191d",
+            "actualSha256": "d122039070dc3130f0592c2c4c911d229628c1ed08117894df93f3e41fce191d",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 23,
+        "catalogRecordCountCurrent": 23,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 23,
+        "questionIndexCountCurrent": 23,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            23
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            19,
+            23
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            19,
+            23
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            19,
+            23
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+      "sourceFile": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+      "questionCount": 22,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/ROOT.promotion.actual-v1.json",
+        "sha256": "c2142b405cb4d48ea751826db6c07f2764e28f4cdc3d2a8322431e04684bc5d3",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+        "artifactBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+        "rawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+        "oldBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+        "currentBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q02.png",
+          "expectedSha256": "67b9268748d6b46cb0185d0f7e25c42b8b9ab4b4c84c4a5c41ea58d3b40bc0e1",
+          "physicalSha256": "67b9268748d6b46cb0185d0f7e25c42b8b9ab4b4c84c4a5c41ea58d3b40bc0e1",
+          "shaMatches": true,
+          "oldBlobSha1": "2aec5a8e94baa79b90ede1b090b0868a20dd343b",
+          "newBlobSha1": "2aec5a8e94baa79b90ede1b090b0868a20dd343b",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q11.png",
+          "expectedSha256": "e7cacbe166c3bc0eb5e935bf1713729ba83767e4a624dcc3003f52b5d681aafd",
+          "physicalSha256": "e7cacbe166c3bc0eb5e935bf1713729ba83767e4a624dcc3003f52b5d681aafd",
+          "shaMatches": true,
+          "oldBlobSha1": "b2cdca042ed054042369059263d9bfcab96fc2dd",
+          "newBlobSha1": "b2cdca042ed054042369059263d9bfcab96fc2dd",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q12.png",
+          "expectedSha256": "bdd3df8cc82fbc7eef3e9fba0a72b6c9482aa127cd877db3a78e9d4438fbbfcc",
+          "physicalSha256": "bdd3df8cc82fbc7eef3e9fba0a72b6c9482aa127cd877db3a78e9d4438fbbfcc",
+          "shaMatches": true,
+          "oldBlobSha1": "f228579f5eae58a4e0a8fc50dbdca4c48fe5e184",
+          "newBlobSha1": "f228579f5eae58a4e0a8fc50dbdca4c48fe5e184",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/ROOT.render-receipt.durable-v1.json",
+        "sha256": "90051abd79d51efb5def650317cf7a96058d398fc766860998e9f4a71611b52a",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/exam-desktop.png",
+            "expectedSha256": "af82d6b148b925024096c1f6870374a34cc4ca9dd6fd3e3d9135fe9e86218b54",
+            "actualSha256": "af82d6b148b925024096c1f6870374a34cc4ca9dd6fd3e3d9135fe9e86218b54",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/exam-mobile.png",
+            "expectedSha256": "fef1422df41f88ff757eadcadd0d1f6177ecc85d51797729fcc56062ab70e9fa",
+            "actualSha256": "fef1422df41f88ff757eadcadd0d1f6177ecc85d51797729fcc56062ab70e9fa",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/sol-desktop.png",
+            "expectedSha256": "a8a16d3159ae6dfd9a8baea6ec49d284491e31ce09c8a7b6b8f23a0923d0c4e0",
+            "actualSha256": "a8a16d3159ae6dfd9a8baea6ec49d284491e31ce09c8a7b6b8f23a0923d0c4e0",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/sol-mobile.png",
+            "expectedSha256": "38d32db6eaca6692f54b888c40c6861bcca23659fdf19a499a4accc41de5660a",
+            "actualSha256": "38d32db6eaca6692f54b888c40c6861bcca23659fdf19a499a4accc41de5660a",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/ans-desktop.png",
+            "expectedSha256": "bd2c72f5c1424463e1af66cce280158db97bf6b2d1ba4f6799601c356a475d85",
+            "actualSha256": "bd2c72f5c1424463e1af66cce280158db97bf6b2d1ba4f6799601c356a475d85",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R3.captures/ans-mobile.png",
+            "expectedSha256": "4d4b7467afbf22301ec4e368e81bf6c4392c1e09de54f5452a178d9586a2facf",
+            "actualSha256": "4d4b7467afbf22301ec4e368e81bf6c4392c1e09de54f5452a178d9586a2facf",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 22,
+        "catalogRecordCountCurrent": 22,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 22,
+        "questionIndexCountCurrent": 22,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            6,
+            7,
+            8,
+            9
+          ],
+          "manualTemplateQids": [
+            1,
+            6,
+            7,
+            8,
+            9
+          ],
+          "nullProblemTypeQids": [
+            1
+          ],
+          "nullTemplateQids": [
+            1
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_순천여고_1학기_중간_고2_수학I",
+      "sourceFile": "original/high/h2/1mid/23_순천여고_1학기_중간_고2_수학I.js",
+      "questionCount": 23,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/ROOT.promotion.actual-v2.json",
+        "sha256": "473c35cc85acbe8acf195197347d7f7d6ef924668bb0fcae5f221155d8514ce6",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "artifactBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_순천여고_1학기_중간_고2_수학I.js",
+        "rawSha256": "9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757",
+        "oldBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c",
+        "currentBlobSha1": "ec2da748583fdf29443495c6a9b05fc3319c733c"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution.svg",
+          "expectedSha256": "fd9d69194f16705f47fb81c4dd150b9f35487ee2cc64f1d1999c3009f7030b83",
+          "physicalSha256": "fd9d69194f16705f47fb81c4dd150b9f35487ee2cc64f1d1999c3009f7030b83",
+          "shaMatches": true,
+          "oldBlobSha1": "b50326facbe11236c2b2a37430841984ac4a7c15",
+          "newBlobSha1": "b50326facbe11236c2b2a37430841984ac4a7c15",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution.svg",
+          "expectedSha256": "8485a435f9fd983e1f9dfc06aafb09275d7feb2edfc6b45900942913ffb230aa",
+          "physicalSha256": "8485a435f9fd983e1f9dfc06aafb09275d7feb2edfc6b45900942913ffb230aa",
+          "shaMatches": true,
+          "oldBlobSha1": "71badb54fcc012d3d926d6eedaa5d61c1cf8e90b",
+          "newBlobSha1": "71badb54fcc012d3d926d6eedaa5d61c1cf8e90b",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution.svg",
+          "expectedSha256": "afa270f1a1313bbf7bfc7db22edc4dd9ac69276df4ffaff196d1f4fdc4507757",
+          "physicalSha256": "afa270f1a1313bbf7bfc7db22edc4dd9ac69276df4ffaff196d1f4fdc4507757",
+          "shaMatches": true,
+          "oldBlobSha1": "ebe2b2f5ccd53694c01383d4e59de97add07fb1b",
+          "newBlobSha1": "ebe2b2f5ccd53694c01383d4e59de97add07fb1b",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q16.png",
+          "expectedSha256": "d7da3767689997dc5c247dbe2c9319eeb07570bd12aedb1c8332428577f8b5bc",
+          "physicalSha256": "d7da3767689997dc5c247dbe2c9319eeb07570bd12aedb1c8332428577f8b5bc",
+          "shaMatches": true,
+          "oldBlobSha1": "dfc58321ee95a3533e35efbd647b90992b7fa613",
+          "newBlobSha1": "dfc58321ee95a3533e35efbd647b90992b7fa613",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+          "expectedSha256": "f635e850c208450ff71370796ede74a23777aa640a2902b59d8615fae790190b",
+          "physicalSha256": "f635e850c208450ff71370796ede74a23777aa640a2902b59d8615fae790190b",
+          "shaMatches": true,
+          "oldBlobSha1": "3e6b4b232a06cd62ebf3d90f9ffea552a02ca825",
+          "newBlobSha1": "3e6b4b232a06cd62ebf3d90f9ffea552a02ca825",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution.svg",
+          "expectedSha256": "2d999594197d871349a3b53568214fe70af0919a5148b953734cf565624af607",
+          "physicalSha256": "2d999594197d871349a3b53568214fe70af0919a5148b953734cf565624af607",
+          "shaMatches": true,
+          "oldBlobSha1": "224567a27e1e15b5cc1d9253f090b3e0fc75aafe",
+          "newBlobSha1": "224567a27e1e15b5cc1d9253f090b3e0fc75aafe",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution.svg",
+          "expectedSha256": "412c0ab53f959e87c8d5b4add894d9bcd276fbfd5fd6384b4c8ceb83d1dc02b7",
+          "physicalSha256": "412c0ab53f959e87c8d5b4add894d9bcd276fbfd5fd6384b4c8ceb83d1dc02b7",
+          "shaMatches": true,
+          "oldBlobSha1": "cf4676c785e41f4ebf34d3df3b7e031f59f8b2dd",
+          "newBlobSha1": "cf4676c785e41f4ebf34d3df3b7e031f59f8b2dd",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q22.png",
+          "expectedSha256": "1415d36b7f3c6e590a01e2e5535a8a9bf3ebb4c1012862478df7ad353cc75aa5",
+          "physicalSha256": "1415d36b7f3c6e590a01e2e5535a8a9bf3ebb4c1012862478df7ad353cc75aa5",
+          "shaMatches": true,
+          "oldBlobSha1": "9f7a599057da64f0ea35ce9edb0058e49bb8b43c",
+          "newBlobSha1": "9f7a599057da64f0ea35ce9edb0058e49bb8b43c",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution.svg",
+          "expectedSha256": "a0b4147968499094a74967bf23c5b3fd77d9290ac0ca002495c8431e57a1d344",
+          "physicalSha256": "a0b4147968499094a74967bf23c5b3fd77d9290ac0ca002495c8431e57a1d344",
+          "shaMatches": true,
+          "oldBlobSha1": "0c16e1bbc8cfe62d6ca7f85f8f0cc2a8040fb0e0",
+          "newBlobSha1": "0c16e1bbc8cfe62d6ca7f85f8f0cc2a8040fb0e0",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution.svg",
+          "expectedSha256": "f82c0d038ea656146cdebe3db7f189c515937eb0abe6b6f4206b437bd48729eb",
+          "physicalSha256": "f82c0d038ea656146cdebe3db7f189c515937eb0abe6b6f4206b437bd48729eb",
+          "shaMatches": true,
+          "oldBlobSha1": "cdf8cac717707344857e51deeb68b74054ada805",
+          "newBlobSha1": "cdf8cac717707344857e51deeb68b74054ada805",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v2.json",
+        "sha256": "bf2cebbb8e56b74544500d2d34c4ab10e170b5a404f266037d773f285491cacb",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/exam-desktop.png",
+            "expectedSha256": "26b10209762609653e024365e1a8882a171cfdfa9c8998946c2217f645569335",
+            "actualSha256": "26b10209762609653e024365e1a8882a171cfdfa9c8998946c2217f645569335",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/exam-mobile.png",
+            "expectedSha256": "1d3f3b2979660b19762a5b6942e604b41de472c6269ba9bbce70f9731b679213",
+            "actualSha256": "1d3f3b2979660b19762a5b6942e604b41de472c6269ba9bbce70f9731b679213",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/sol-desktop.png",
+            "expectedSha256": "20d88ac8d6d8ad52f94a2efa653a50e3fcd0702331e4ec23042b87ba93041346",
+            "actualSha256": "20d88ac8d6d8ad52f94a2efa653a50e3fcd0702331e4ec23042b87ba93041346",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/sol-mobile.png",
+            "expectedSha256": "dc568907db057241fbbb6b8274c9d5e6aa902b0efeb25895fd87288ef0e0d1d8",
+            "actualSha256": "dc568907db057241fbbb6b8274c9d5e6aa902b0efeb25895fd87288ef0e0d1d8",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/ans-desktop.png",
+            "expectedSha256": "cb771cf74235790d2c2609b84c1e9ccebec1a2e1253fd911e41c98b0639a10d2",
+            "actualSha256": "cb771cf74235790d2c2609b84c1e9ccebec1a2e1253fd911e41c98b0639a10d2",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/render/actual-v2/ans-mobile.png",
+            "expectedSha256": "014a64ee66f1e8c9d3d6bbeea4489796d470b910db483836c8e4da025b319bf8",
+            "actualSha256": "014a64ee66f1e8c9d3d6bbeea4489796d470b910db483836c8e4da025b319bf8",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 23,
+        "catalogRecordCountCurrent": 23,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 23,
+        "questionIndexCountCurrent": 23,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            21
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            21
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "23_순천여고_1학기_중간_고2_확률과통계",
+      "sourceFile": "original/high/h2/1mid/23_순천여고_1학기_중간_고2_확률과통계.js",
+      "questionCount": 23,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/ROOT.promotion.actual-v1.json",
+        "sha256": "096cc88d95dc612b71c1165ba427540c23ba2aff63316f0f6d14dc564f86dea7",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "f248064f4872fe0b581d915783151223d4d7a4619960d845fe61d4b737d25840",
+        "artifactBlobSha1": "043e86d53b7a6d008337f168aa0707ea8dd68d4e"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/23_순천여고_1학기_중간_고2_확률과통계.js",
+        "rawSha256": "f248064f4872fe0b581d915783151223d4d7a4619960d845fe61d4b737d25840",
+        "oldBlobSha1": "043e86d53b7a6d008337f168aa0707ea8dd68d4e",
+        "currentBlobSha1": "043e86d53b7a6d008337f168aa0707ea8dd68d4e"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+          "expectedSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+          "physicalSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+          "shaMatches": true,
+          "oldBlobSha1": "0342217cd16cb90de26c4f05aa8ae88b9a2c6808",
+          "newBlobSha1": "0342217cd16cb90de26c4f05aa8ae88b9a2c6808",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+          "expectedSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+          "physicalSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+          "shaMatches": true,
+          "oldBlobSha1": "c592adc1cc87a0e8fa4a3ebf13eaecf37c264af3",
+          "newBlobSha1": "c592adc1cc87a0e8fa4a3ebf13eaecf37c264af3",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+          "expectedSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+          "physicalSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+          "shaMatches": true,
+          "oldBlobSha1": "6d2387876c5c356f980bafa934e6f7fa5c1b24e0",
+          "newBlobSha1": "6d2387876c5c356f980bafa934e6f7fa5c1b24e0",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/ROOT.render-receipt.durable-v1.json",
+        "sha256": "fc7a907d03fd34e426073b3b94b05d1473a8a39797e1191cb8c3213c7f28837d",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "2046246c9b6ca63df7c0ce8cd28dba7dcc84676ee3e7ab8e09c84698f7ebf67d",
+            "actualSha256": "2046246c9b6ca63df7c0ce8cd28dba7dcc84676ee3e7ab8e09c84698f7ebf67d",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "fde0d5cf6c03c321b84f50ec6f1bade3276be5d7a6e72ce3b0d1376a010d9271",
+            "actualSha256": "fde0d5cf6c03c321b84f50ec6f1bade3276be5d7a6e72ce3b0d1376a010d9271",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "13787db1959e418c06aad7d132b10cd5d14df3669d1e023a8db41eeefb018d2f",
+            "actualSha256": "13787db1959e418c06aad7d132b10cd5d14df3669d1e023a8db41eeefb018d2f",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "668e051b8adde68ee524064c5d4ee95c8531a0e844ff476bbe4877fd86d42295",
+            "actualSha256": "668e051b8adde68ee524064c5d4ee95c8531a0e844ff476bbe4877fd86d42295",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "285758049294521e1079a38fdcfa1249c812c71c9e0b66d2f77b99d1423cea2f",
+            "actualSha256": "285758049294521e1079a38fdcfa1249c812c71c9e0b66d2f77b99d1423cea2f",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "a32491c41cf77b4f33bbf70d788302542471d9569249a2748beea4fdceca110b",
+            "actualSha256": "a32491c41cf77b4f33bbf70d788302542471d9569249a2748beea4fdceca110b",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 23,
+        "catalogRecordCountCurrent": 23,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 23,
+        "questionIndexCountCurrent": 23,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [],
+          "manualTemplateQids": [],
+          "nullProblemTypeQids": [],
+          "nullTemplateQids": []
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    },
+    {
+      "examUid": "24_강남여고_1학기_중간_고2_대수",
+      "sourceFile": "original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+      "questionCount": 25,
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/ROOT.promotion.actual-v1.json",
+        "sha256": "6058b22c74caf6adbfd35cea037046b7f91904e00b90651ddc8450f6b9efc87d",
+        "status": "PROMOTED_PUBLICATION_PENDING",
+        "artifactRawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+        "artifactBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01"
+      },
+      "source": {
+        "productionPath": "archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+        "rawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+        "oldBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01",
+        "currentBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01"
+      },
+      "assets": [
+        {
+          "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q16.png",
+          "expectedSha256": "de7b2a0e108fced35eb682b130b8b1434b6c530b351cccc350e8684150e9b2b8",
+          "physicalSha256": "de7b2a0e108fced35eb682b130b8b1434b6c530b351cccc350e8684150e9b2b8",
+          "shaMatches": true,
+          "oldBlobSha1": "71f79da5a41044fbe755188d72c71fd2d7442a55",
+          "newBlobSha1": "71f79da5a41044fbe755188d72c71fd2d7442a55",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q18.png",
+          "expectedSha256": "a7687ff2b3f447e963f1b37ce6524b5886cf8e5fb91383832413355eb8485623",
+          "physicalSha256": "a7687ff2b3f447e963f1b37ce6524b5886cf8e5fb91383832413355eb8485623",
+          "shaMatches": true,
+          "oldBlobSha1": "53bc114643cc0976f2ecfe75f44cead7e02154ea",
+          "newBlobSha1": "53bc114643cc0976f2ecfe75f44cead7e02154ea",
+          "unchangedAcrossMain": true
+        },
+        {
+          "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q24.png",
+          "expectedSha256": "0f8c1ee47856b02f3df184d87db0a3fda5d68385a5ca0659033b2f3c42325a7b",
+          "physicalSha256": "0f8c1ee47856b02f3df184d87db0a3fda5d68385a5ca0659033b2f3c42325a7b",
+          "shaMatches": true,
+          "oldBlobSha1": "d7a372f2d233818daf916969c630bb6b7087f79f",
+          "newBlobSha1": "d7a372f2d233818daf916969c630bb6b7087f79f",
+          "unchangedAcrossMain": true
+        }
+      ],
+      "r3RenderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/ROOT.render-receipt.durable-v1.json",
+        "sha256": "7f84bf76d6a9b40c537fa8e9bdfca00ca5d9457f5ebe3cfb702652d3575cc18a",
+        "status": "RENDER_PASS",
+        "caseCount": 6,
+        "allCasesPass": true,
+        "fullQidCoverage": true,
+        "loadedAssetsMatchPromotion": true,
+        "captureFiles": [
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/exam-desktop.png",
+            "expectedSha256": "86c58925b76f5a99fcc6e0e480649ec83373b23122993eae5212f8ad105780e6",
+            "actualSha256": "86c58925b76f5a99fcc6e0e480649ec83373b23122993eae5212f8ad105780e6",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/exam-mobile.png",
+            "expectedSha256": "c1d08a208c024d6de31f4e13584ccfa7f26a1086a27e22f8a77488b7e8cce2e6",
+            "actualSha256": "c1d08a208c024d6de31f4e13584ccfa7f26a1086a27e22f8a77488b7e8cce2e6",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/sol-desktop.png",
+            "expectedSha256": "20792fb48e75e56a4bb0faa5185edcb20b8258a953ef549e5b147650bae95745",
+            "actualSha256": "20792fb48e75e56a4bb0faa5185edcb20b8258a953ef549e5b147650bae95745",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/sol-mobile.png",
+            "expectedSha256": "2c8bca872e774d84235cb5aeacbf3696e66c71733d6b4ae5e2316a2220c36bef",
+            "actualSha256": "2c8bca872e774d84235cb5aeacbf3696e66c71733d6b4ae5e2316a2220c36bef",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/ans-desktop.png",
+            "expectedSha256": "67e9ca7ab899f6aaa43916183868f6d3226727c55ef48fb486acfa67662c988e",
+            "actualSha256": "67e9ca7ab899f6aaa43916183868f6d3226727c55ef48fb486acfa67662c988e",
+            "matches": true
+          },
+          {
+            "path": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/render/actual-v1/ans-mobile.png",
+            "expectedSha256": "185d8e73c51953a2db7adbb166440df091546f688707dfbf8422becad20583cf",
+            "actualSha256": "185d8e73c51953a2db7adbb166440df091546f688707dfbf8422becad20583cf",
+            "matches": true
+          }
+        ]
+      },
+      "targetRegistryViews": {
+        "catalogRecordCountOld": 25,
+        "catalogRecordCountCurrent": 25,
+        "catalogRecordsEqual": true,
+        "databaseRowCountOld": 1,
+        "databaseRowCountCurrent": 1,
+        "databaseTargetRowsEqual": true,
+        "questionIndexCountOld": 25,
+        "questionIndexCountCurrent": 25,
+        "questionIndexTargetRowsEqual": true,
+        "fieldStatusSummary": {
+          "manualProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "manualTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "nullProblemTypeQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            22,
+            23,
+            25
+          ],
+          "nullTemplateQids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            22,
+            23,
+            25
+          ]
+        },
+        "automaticCount": 0,
+        "identityResolverTargetJoinsEqual": true
+      },
+      "checks": {
+        "sourceRawMatchesPromotion": true,
+        "sourceBlobUnchanged": true,
+        "assetShaMatches": true,
+        "assetBlobsUnchanged": true,
+        "catalogTargetRowsEqual": true,
+        "metadataTargetRowsEqual": true,
+        "databaseTargetRowsEqual": true,
+        "questionIndexTargetRowsEqual": true,
+        "identityResolverTargetJoinsEqual": true,
+        "r3ReceiptMatchesArtifact": true,
+        "r3CaptureFilesMatch": true,
+        "r3AssetSetMatches": true
+      }
+    }
+  ],
+  "existingFirstUidActualChromeProof": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-technical-qa.final-main-e019d3cf.archive_r3_06.first.rev19.json",
+    "sha256": "8af1aab2c2fefe5c5b7eb284b79bc5cae4e35a1033ecdc60bd4bfdfa8f414a63",
+    "status": "PASS",
+    "mainSha": "e019d3cfec4555f286f3cb48bb0ecc4e6b3ea6c7",
+    "mainShaConfirmed": true,
+    "sourceRawSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+    "questionCount": 25,
+    "searchSelection": {
+      "status": "PASS",
+      "url": "http://127.0.0.1:62676/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F23_%EA%B0%95%EB%82%A8%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam&title=2023+%EA%B0%95%EB%82%A8%EC%97%AC%EA%B3%A0+%EA%B3%A02+1%ED%95%99%EA%B8%B0+%EC%A4%91%EA%B0%84%EA%B3%A0%EC%82%AC&subject=%EC%88%98%ED%95%99I&q=25&qpp=4&submitQr=0&solQr=0&portalQr=1&preRegistered=1&assignmentRegistered=1&v=20261006-interaction-audit-2",
+      "selectedData": "exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학I.js",
+      "selectedMode": "exam",
+      "targetTitle": "2023 강남여고 고2 1학기 중간고사",
+      "filters": [
+        {
+          "ok": true,
+          "value": "고2",
+          "label": "고2"
+        },
+        {
+          "material": "exam"
+        },
+        {
+          "ok": true,
+          "value": "강남여고",
+          "label": "강남여고"
+        },
+        {
+          "ok": true,
+          "value": "1-mid",
+          "label": "1학기 중간"
+        },
+        {
+          "query": "23_강남여고_1학기_중간_고2_수학I",
+          "sourceCourse": "수학I"
+        }
+      ]
+    },
+    "directEngineModes": [
+      {
+        "mode": "exam",
+        "status": "PASS",
+        "sourceResponseSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+        "qidCount": 25,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "pageErrors": 0
+      },
+      {
+        "mode": "sol",
+        "status": "PASS",
+        "sourceResponseSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+        "qidCount": 25,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "pageErrors": 0
+      },
+      {
+        "mode": "ans",
+        "status": "PASS",
+        "sourceResponseSha256": "b797bb695c208cba3e3d16eb36edf3a94fee948ba9f8613599f2f8e6e69fef79",
+        "qidCount": 25,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "pageErrors": 0
+      }
+    ],
+    "browser": {
+      "name": "Chrome",
+      "version": "154.0.8037.98",
+      "sourceMode": "FETCHED_MAIN_WORKTREE_LOOPBACK_HTTP",
+      "origin": "http://127.0.0.1:62676",
+      "remoteCdnClaim": false,
+      "sourceStoragePreseeded": false
+    },
+    "browserObservation": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/browser-observation.json",
+      "sha256": "e350b81c98e3289d473ba0054c81a53939b4995b40ae5ed2d62f7710e16345e0",
+      "bytes": 18895
+    },
+    "assets": {
+      "status": "PASS",
+      "expectedCount": 3,
+      "loadedCount": 3,
+      "items": [
+        {
+          "path": "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+          "expectedSha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96",
+          "actualSha256": "02a7647199f118edcfddab6dcb8fc4700fd0b1a930311285c189d2679b373e96",
+          "status": 200,
+          "loaded": true
+        },
+        {
+          "path": "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+          "expectedSha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c",
+          "actualSha256": "df6618667a0001a24ce3c4ca3ce4042a37f09ecd0da9caef4ad04b77bbab5e3c",
+          "status": 200,
+          "loaded": true
+        },
+        {
+          "path": "archive/assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+          "expectedSha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102",
+          "actualSha256": "fb5978312eb103e414411d47eaa551699ade1c01b34209c07fb888e87fa3e102",
+          "status": 200,
+          "loaded": true
+        }
+      ]
+    },
+    "captures": [
+      {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/workspace-search.png",
+        "sha256": "98a777b2642bb1f2774e9bc3c04e7d9e0b5cb97a6001500afc1b47b45811318e",
+        "bytes": 82902
+      },
+      {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/workspace-selected-exam.png",
+        "sha256": "3cd47016f005756ff99bdf3a8d28084f9a89bfab308dee9c9752bbe7711d3883",
+        "bytes": 300720
+      },
+      {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/engine-exam.png",
+        "sha256": "df2f83da751e2139d75c1579805b36a757e7a02faa4051b648511426060d4c3a",
+        "bytes": 292577
+      },
+      {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/engine-sol.png",
+        "sha256": "e31ae8ba5cd1e578472d10e23b6d8606231e348776640995e6c8fbe51ab50997",
+        "bytes": 393381
+      },
+      {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/R3.post-main-qa.final-main-e019d3cf.archive_r3_06.first.rev19/engine-ans.png",
+        "sha256": "ffd6ac12f350b7e2df7dc3ed1805f20f9470b54cce4d039a3befbd5f90dbd2b1",
+        "bytes": 23476
+      }
+    ],
+    "phase1RenderReceipt": {
+      "status": "RENDER_PASS_REUSED_UNCHANGED",
+      "renderReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.render-receipt.durable-v1.json",
+        "sha256": "0e599fde6fd2c334588e556e8cb0ddfaeea62f59c704f5728aa0338abe3d57fb",
+        "bytes": 31292
+      },
+      "promotionReceipt": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.promotion.actual-v1.json",
+        "sha256": "4f95ea9b36ed577af71b9dfcadb64418aae7c28201aa47bed312858d5a4b8b61",
+        "bytes": 20970
+      }
+    }
+  },
+  "checks": {
+    "headAndOriginMatch": true,
+    "fullDecodedCatalogRecordsEqualBySourceOrdinal": true,
+    "fullDecodedExamRowsEqualByFile": true,
+    "catalogRecordOrderEqual": false,
+    "catalogExamOrderEqual": false,
+    "activeCoreMetaFilterOptionsEqual": true,
+    "focusedFourCoreFilterProofPass": true,
+    "questionMetadataBytesEqual": true,
+    "identityMapBytesEqual": true,
+    "pageAndLocalReferenceBlobsUnchanged": true,
+    "allTenTargetQualitiesUnchanged": true,
+    "targetCatalogRowCountsMatchSource": true,
+    "allTenTargetAutomaticCountZero": true,
+    "existingFirstUidChromeProofBoundToOldMain": true,
+    "firstUidNoRemoteCdnClaim": true
+  }
+}

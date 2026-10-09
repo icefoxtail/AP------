@@ -1,0 +1,9 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),cp=require('child_process');const core=require('../../../../../archive/archive2-core.js');
+const root=process.cwd(),ev=path.join(root,'archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811');
+const relative=[...new Set([...core.Canonical.REQUIRED_INPUT_PATHS,...core.Canonical.RUNTIME_INPUT_PATHS,'data/question_identity_map.json','data/question_metadata.json','question-index.js','question-index-report.md','question-index-audit.md','db.js','data/basic-scope-parent-links.json'])].filter(p=>!['data/archive2-catalog.json','data/archive2-canonical-input-manifest.json'].includes(p));
+const files=relative.map(p=>{const full=p.startsWith('../')?path.resolve(root,'archive',p):path.join(root,'archive',p);const b=fs.readFileSync(full);return {path:full.startsWith(root)?path.relative(root,full).replaceAll('\\','/'):p,sha256:crypto.createHash('sha256').update(b).digest('hex'),size:b.length}});
+const meta=JSON.parse(fs.readFileSync(path.join(root,'archive/data/question_metadata.json'),'utf8'));
+const identity=JSON.parse(fs.readFileSync(path.join(root,'archive/data/question_identity_map.json'),'utf8'));
+const parent=JSON.parse(fs.readFileSync(path.join(root,'archive/data/basic-scope-parent-links.json'),'utf8'));
+const receipt={schemaVersion:'ARCHIVE2_MERGE_INPUT_SNAPSHOT_V1',createdAtUtc:new Date().toISOString(),head:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),mergeHead:cp.execFileSync('git',['rev-parse','MERGE_HEAD'],{cwd:root,encoding:'utf8'}).trim(),questionMetadataRecords:meta.records.length,identityRecords:identity.records.length,basicScopeRecords:parent.records.length,basicScopeSourceParents:parent.sourceParents.length,files};
+fs.writeFileSync(path.join(ev,'merged-canonical-inputs.v1.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt,null,2));

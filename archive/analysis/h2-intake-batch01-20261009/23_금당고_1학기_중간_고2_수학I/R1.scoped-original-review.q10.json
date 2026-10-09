@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SCOPED_ORIGINAL_REVIEW_V1",
+  "stage": "R1",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "sourceReviewMode": "QID_SCOPED_DEFECT_ONLY",
+  "reviewerId": "/root/r1_04",
+  "originalPdf": {
+    "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수1\\2023_금당고2_수1_1중간.pdf",
+    "sha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05"
+  },
+  "intakeEvidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\intake-original.evidence.json",
+    "sha256": "0cf97a9822a1ffc9ebd2e0930bf3f8d4a037a32ebc906014baa36396eb013103"
+  },
+  "rows": [
+    {
+      "qid": 10,
+      "originalPdfPage": 2,
+      "crop": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\R1.source-q10-page2-crop.png",
+        "sha256": "c8b508b36902814b2e280c542817bd005042e08ea3cc407c954ff7c52d97c6c2",
+        "absolutePath": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q10-page2-crop.png",
+        "pixelBounds": {
+          "left": 55,
+          "top": 1010,
+          "right": 1190,
+          "bottom": 1530
+        }
+      },
+      "sourceFact": "Original states “a,b는 1이 아닌 양수이고” (positive and not 1), gives log_a 3 + log_b 3 = 3 and (log_3 a)^2+(log_3 b)^2=7, and asks (log_a3)^3+(log_b3)^3. Printed choices: 18,20,21,25,27. It does not state a,b>1.",
+      "mathematicalFinding": "Let x=log_a3, y=log_b3. Conditions imply x+y=3 and 1/x^2+1/y^2=7, so p=xy solves 7p^2+2p-9=0, giving p=1 or p=-9/7. Both are realizable by nonzero real x,y with sum 3, hence positive a=3^(1/x), b=3^(1/y), neither equal to 1. Requested x^3+y^3=27-9p is therefore 18 or 270/7. The condition has two valid output values and no unique listed response.",
+      "sourceMatch": "EXACT_JS_STUDENT_CONDITION_AND_CHOICES",
+      "answerKeyUsed": false
+    }
+  ],
+  "noAnswerKeyUsed": true
+}

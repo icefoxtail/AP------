@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_CAPTURE_BLOCKER_DIAGNOSTIC_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "reviewerIdentity": {
+    "role": "archive_r3",
+    "reviewerId": "archive_r3_23_순천여고_1학기_중간_고2_수학I"
+  },
+  "artifactRawSha256": "92f2812e402abd9afddbcb65caee674cc61e954e26ebd8c1a4196f6c21a22482",
+  "artifactSha": "48b7d99a4ed4980cddf7ff260f8e701ae9db6cc0",
+  "attempt": {
+    "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/r3-capture-v2-01/machine-capture.json",
+    "sha256": "7d74b1ecfa06ca7808c3b65244de33ff4a20668d786b049ad802ba715e4c582b",
+    "status": "CAPTURE_BLOCKED",
+    "blocker": {
+      "code": "CAPTURE_ERROR",
+      "reason": "page.waitForFunction: Timeout 60000ms exceeded."
+    }
+  },
+  "case": {
+    "id": "exam/desktop",
+    "viewport": {
+      "width": 1280,
+      "height": 1000
+    },
+    "actualCaptureCreated": false
+  },
+  "engine": {
+    "path": "archive/engine.html",
+    "sha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5"
+  },
+  "failure": {
+    "code": "EQUAL_SLOT_AUDIT_FAILED",
+    "message": "EQUAL_SLOT_AUDIT_FAILED",
+    "issues": [
+      {
+        "code": "CONTENT_OUTSIDE_SLOT",
+        "page": 5,
+        "slot": 2,
+        "bounds": {
+          "left": 405.5002554531853,
+          "top": 62.79691456020159,
+          "right": 721.6723296322546,
+          "bottom": 289.04705709110954,
+          "width": 316.1720741790693,
+          "height": 226.25014253090794
+        },
+        "rect": {
+          "left": 408.8440075596504,
+          "top": 52.90628332939602,
+          "right": 725.0004567288763,
+          "bottom": 548.4222204898024,
+          "width": 316.15644916922594,
+          "height": 495.51593716040634
+        }
+      }
+    ]
+  },
+  "qid23Slot": {
+    "page": 5,
+    "slot": 2,
+    "sourceRef": "exams/__codex_capture__/23_순천여고_1학기_중간_고2_수학I.js#legacy:exams/__codex_capture__/23_순천여고_1학기_중간_고2_수학I.js#ordinal:23",
+    "rect": {
+      "left": 408.8440075596504,
+      "top": 52.90628332939602,
+      "right": 725.0004567288763,
+      "bottom": 548.4222204898024,
+      "width": 316.15644916922594,
+      "height": 495.51593716040634
+    },
+    "bounds": {
+      "left": 405.5002554531853,
+      "top": 62.79691456020159,
+      "right": 721.6723296322546,
+      "bottom": 289.04705709110954,
+      "width": 316.1720741790693,
+      "height": 226.25014253090794
+    },
+    "fit": {
+      "profile": "normal",
+      "cost": 0,
+      "width": 319.5158262855343,
+      "height": 229.39076950941018,
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 0.9894860384370875,
+      "score": 0.9894860384370875,
+      "status": "normal",
+      "effectiveFontPx": 12.533522803071056
+    }
+  },
+  "renderPassAsserted": false
+}

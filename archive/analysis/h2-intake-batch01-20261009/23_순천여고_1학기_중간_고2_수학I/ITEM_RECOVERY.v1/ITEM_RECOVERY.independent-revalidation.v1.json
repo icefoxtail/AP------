@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_INDEPENDENT_REVALIDATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "stage": "ITEM_RECOVERY",
+  "assignmentSha256": "1fa8098b3c3ff36168aebba2075a4c39a02b37f9ecc74710ef6ad1babce336f8",
+  "studentBundleSha256": "313ece715f87cde98f73205bb468606630459eeec1055217f615de0d1628ef97",
+  "sourceRawSha256": "12f1a7b01e93130a5e2aba1bfe48e0c8c6d815d6b0aa59f0b12af650ef2a00d5",
+  "reviewOrder": "INDEPENDENT_STUDENT_ONLY_BEFORE_UPSTREAM_DISCLOSURE",
+  "upstreamAnswerOrSolutionRead": false,
+  "upstreamR2ReceiptBodyRead": false,
+  "actualProblemAssetRefs": [],
+  "qidDecisions": [
+    {
+      "sourceDependentFactToCheck": "Whether the extracted choice wording matches the original q4; if unchanged, the multiple-truth defect is in the source item.",
+      "studentPayloadSha256": "704cddba90ce44ccc3594e151a6cf8e5d61daf9a42534319164db008a62a0138",
+      "qid": 4,
+      "status": "TRUE_HOLD",
+      "reason": "The five student statements contain more than one true statement under ordinary real-number root definitions: cube root of -8 is -2; real fourth roots of 81 are ±3; and the negative square root of cube root of 64 is -2. A single-answer objective item therefore has multiple correct choices."
+    },
+    {
+      "sourceDependentFactToCheck": "Whether the extracted quadrant and radical grouping match the original q21; if unchanged, the real-domain defect is in the source item.",
+      "studentPayloadSha256": "177ffe9ecbde85ab98fec838fe9558cbc082e6ad0d64ff874bf7d3c60dafa8ef",
+      "qid": 21,
+      "status": "TRUE_HOLD",
+      "reason": "In quadrant III, sin(theta)<0 and cos(theta)<0. Each separate real square root sqrt(sin(theta)) and sqrt(cos(theta)) is undefined, so the requested product is not a real-valued expression. The equation can constrain theta but does not repair the domain defect."
+    }
+  ]
+}

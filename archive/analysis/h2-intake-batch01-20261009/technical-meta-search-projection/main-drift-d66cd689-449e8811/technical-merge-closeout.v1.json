@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "ARCHIVE2_SHARED_META_SEARCH_MAIN_DRIFT_CLOSEOUT_V1",
+  "status": "MERGE_REGENERATED_OUTPUTS_READY_FOR_ROOT_STAGING",
+  "head": "d66cd6899a9cfdd6ae2d74cb349addf423fafde0",
+  "mergeHead": "449e8811a984a39facdbc9f1cf69e0115aba4c75",
+  "unresolvedIndexPaths": ["archive/data/archive2-catalog.json", "archive/data/archive2-canonical-input-manifest.json"],
+  "conflictSnapshot": { "path": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/conflict-snapshot-receipt.v1.json", "sha256": "589cc541159e7ce8bb7ed09c907b9a87c7fedef81527bc140313387263f09994", "includes": "raw worktree conflict bytes and stage 1/2/3 blobs for both files" },
+  "mergedInputSnapshot": { "path": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/merged-canonical-inputs.v1.json", "sha256": "b6feef10757339e14f9e2c08b1f2c50065d17847c31fc504ab7cde356bcc0c70", "metadataRecords": 13386, "identityRecords": 13386, "basicScopeRecords": 333, "sourceParents": 2702 },
+  "regeneration": {
+    "command": "node archive/tools/build-archive2-catalog.mjs",
+    "exitCode": 0,
+    "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/keyfilter-builder.process-capture.json",
+    "processCaptureSha256": "45c358ab97c066698efaeb4b16414d57f6d1074bdeb4ebf17bb54b5c7bcb5993",
+    "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/keyfilter-builder.stdout.json",
+    "stdoutSha256": "4898831033af2b44b0f80b8095f47330905b0cf599e951702b93f4407185ef1e",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "catalogIndexVersion": "44a44eb4b9472ede4149d1947f1d6873d0e3b8dfa0c4e17d589eb37fd4f256cf",
+    "catalogProjectionVersion": "archive2-canonical-v1:8c5a78ef66115e5803c658bbc59008bcf2b8f45db65e167cc9cf45518d65325a",
+    "examCount": 562,
+    "questionCount": 13378,
+    "metadataRecordCount": 13386,
+    "itemReviewOverridesUnchanged": true
+  },
+  "derivedFiles": [
+    { "path": "archive/data/archive2-catalog.json", "sha256": "fd5eca1171e429c7608f1f0fe4371289a0ff2f597ba7e33160fbab893ddc21de" },
+    { "path": "archive/data/archive2-canonical-input-manifest.json", "sha256": "370910870b4ccd9be674622b2d7b08ba50455c8393e1cfbe7b0c9ba39a78817e" },
+    { "path": "archive/data/archive2-item-review-overrides.json", "sha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1", "unchanged": true }
+  ],
+  "catalogCheck": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 0,
+    "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/keyfilter-catalog-check.process-capture.json",
+    "processCaptureSha256": "ff4efcee07b8c01a7b637b0a07e33211d74e3b16286f46fe32d244efffab7b6e",
+    "stdoutSha256": "4898831033af2b44b0f80b8095f47330905b0cf599e951702b93f4407185ef1e",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "mergeProof": { "path": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/catalog-parent-diff-proof.v2.json", "sha256": "94345fef2344be7ce30656e12c189ee6073c63b03b0437022a973ac4560d25ec", "remoteRowsPreserved": 13378, "oursRowsPreserved": 13378, "remoteSourceHashesPreserved": 562, "oursSourceHashesPreserved": 562, "targetMaesanRowsPreserved": 20 },
+  "coreKeyFilters": {
+    "authorityPath": "archive/data/master_tables/js_archive_tag_master.json",
+    "authoritySha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+    "keys": [
+      { "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH", "currentQuestionCount": 0 },
+      { "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION", "currentQuestionCount": 1, "qid": 10 },
+      { "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH", "currentQuestionCount": 1, "qid": 12 },
+      { "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION", "currentQuestionCount": 1, "qid": 18 }
+    ],
+    "allFilterOptionsCourseDependent": true,
+    "noAssignmentsInvented": true
+  },
+  "tests": {
+    "focused": { "command": "node --test archive/tools/problem-bank-meta-projection.test.mjs", "exitCode": 0, "tests": 8, "pass": 8, "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/final-focused-tests.process-capture.json", "processCaptureSha256": "fc428cd5ea978dc2086e3cb277629730262df03d4b1c1556f5caa207d930e7b3", "stdoutSha256": "78bbb73d5d7270402a106df5e771aabdb84337966213e06fab94776b1588b6b8" },
+    "runtimeGuard": { "command": "node tools/check-archive2-runtime.cjs", "exitCode": 0, "tests": 42, "pass": 42, "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/final-runtime-guard.process-capture.json", "processCaptureSha256": "a4b457e4e749f00302ef71612be99cf0494616131c32db39b8b3dbca44d846b9", "stdoutSha256": "1207b65df5e4d0be2c1426ea40fab985ae1b8c067747488c6ed3e0e3028f39b6" },
+    "syntaxAndDiff": "node --check on builder, projection module and focused test; git diff --check passed"
+  },
+  "browserValidation": { "path": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/browser-keyfilter-validation.v1.json", "sha256": "cd44dbed6bc0ed8cb353bd444236c26f6c00f42790dd32d2e6ba2b932e9ac19b", "allFourKeysSelectable": true, "currentCounts": [0,1,1,1], "actualChrome": true, "fullArchiveDenominator": 13378 },
+  "gitWriterState": { "filesStagedByThisContinuation": false, "mergeCommitted": false, "published": false, "onlyUnmergedPaths": ["archive/data/archive2-catalog.json", "archive/data/archive2-canonical-input-manifest.json"] },
+  "rootNextAction": "Stage the two normally regenerated derived conflict outputs and complete the merge commit."
+}

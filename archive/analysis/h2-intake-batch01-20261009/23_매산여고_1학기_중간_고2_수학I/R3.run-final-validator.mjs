@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import {spawnSync} from 'node:child_process';
+const root=process.cwd(),pkg=path.join('.tmp','archive','h2-intake-batch01-20261009','23_매산여고_1학기_중간_고2_수학I'),er=path.join('archive','analysis','h2-intake-batch01-20261009','23_매산여고_1학기_중간_고2_수학I');
+const assignment=JSON.parse(fs.readFileSync(path.join(root,pkg,'R3.assignment.v2.json'))),exam=assignment.workingJsAbsolute,evidence=path.resolve(root,er,'R3.evidence.v2.json'),assetRoot=assignment.assetRootAbsolute;
+const args=[path.resolve(root,'archive/tools/archive-stage-validator.mjs'),'--exam',exam,'--evidence',evidence,'--stage','R3','--quality-contract','JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006','--execution-line','CODEX','--asset-root',assetRoot,'--json'];
+const proc=spawnSync(process.execPath,args,{cwd:root,encoding:null,windowsHide:true});
+const reportPath=path.join(root,er,'R3.generic-v2.r3-07-final.raw.json'),stderrPath=path.join(root,er,'R3.generic-v2.r3-07-final.stderr.raw.txt'),capturePath=path.join(root,er,'R3.generic-v2.r3-07-final.process-capture.json');
+fs.writeFileSync(reportPath,proc.stdout||Buffer.alloc(0));fs.writeFileSync(stderrPath,proc.stderr||Buffer.alloc(0));
+const capture={schemaVersion:'JS_ARCHIVE_CODEX_COMMAND_PROCESS_CAPTURE_V1',executionLine:'CODEX',command:'archive-stage-validator',cwd:root,argv:[process.execPath,...args],exitCode:proc.status,signal:proc.signal||null,stdoutPath:reportPath,stderrPath:stderrPath,completedAt:new Date().toISOString()};fs.writeFileSync(capturePath,JSON.stringify(capture,null,2)+'\n');
+console.log(JSON.stringify({exitCode:proc.status,signal:proc.signal,reportPath,reportBytes:(proc.stdout||Buffer.alloc(0)).length,stderrBytes:(proc.stderr||Buffer.alloc(0)).length,capturePath},null,2));
+if(proc.error)throw proc.error;if(proc.status!==0)process.exitCode=1;

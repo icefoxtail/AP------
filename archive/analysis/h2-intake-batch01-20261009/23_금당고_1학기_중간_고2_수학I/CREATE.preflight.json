@@ -1,0 +1,498 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_PREFLIGHT_V1",
+  "status": "REVIEW_REQUIRED",
+  "questionCount": 20,
+  "itemHoldCount": 5,
+  "holds": [
+    {
+      "qid": 7,
+      "reason": "The source diagram only implies c=2^a=log_2(b) and d=2^b; it gives no numerical anchor for c. For example, c=2 gives (a,b,d)=(1,4,16), while c=4 gives (2,16,65536), so abcd is not determined. The scoped original PDF page 1 confirms no additional scale or condition."
+    },
+    {
+      "qid": 9,
+      "reason": "로그의 밑 조건은 a>1, a≠2이며 진수 조건은 1<a<5이다. 가능한 정수는 a=3,4여서 합 7이나 7은 원문 보기에서 누락됐다."
+    },
+    {
+      "qid": 10,
+      "reason": "x=log_a3,y=log_b3이면 x+y=3, 1/x²+1/y²=7에서 xy=1 또는 xy=-9/7이 모두 가능하다. 양의 a,b와 a,b≠1은 음수 로그를 배제하지 않으므로 목표값이 유일하지 않다."
+    },
+    {
+      "qid": 18,
+      "reason": "자연수 m,n에 대해 조건은 n≤m/3 (m≤12), n≤48/m (m≥12)이다. 경우별 합은 18+4+28+24=74로 원문 보기와 일치하지 않는다."
+    },
+    {
+      "qid": 19,
+      "reason": "t=3^a≥3이라 두면 A=(0,t), B=(t-6,0). 넓이 조건은 (t²+(t-6)²)/4=13/4, 즉 2t²-12t+23=0이고 판별식이 음수여서 실수 a가 없다."
+    }
+  ],
+  "findings": [
+    {
+      "qid": 1,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 1,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 1,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 2,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 2,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 2,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 2,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 1,
+        "end": 6,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 7,
+        "end": 12,
+        "text": "\\sqrt"
+      },
+      "reason": "TeX command \\sqrt occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 6,
+        "end": 11,
+        "text": "\\sqrt"
+      },
+      "reason": "TeX command \\sqrt occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 6,
+        "end": 11,
+        "text": "\\sqrt"
+      },
+      "reason": "TeX command \\sqrt occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 1,
+        "end": 6,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 3,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 8,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 1,
+        "end": 6,
+        "text": "\\sqrt"
+      },
+      "reason": "TeX command \\sqrt occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 8,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 1,
+        "end": 6,
+        "text": "\\sqrt"
+      },
+      "reason": "TeX command \\sqrt occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 11,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 11,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 11,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 11,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 11,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 13,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 13,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 13,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 13,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 0,
+        "end": 5,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 26,
+        "end": 31,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 57,
+        "end": 62,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[0]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 77,
+        "end": 82,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 26,
+        "end": 31,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 46,
+        "end": 51,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[1]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 69,
+        "end": 74,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 6,
+        "end": 11,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 57,
+        "end": 62,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[2]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 77,
+        "end": 82,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 6,
+        "end": 11,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 37,
+        "end": 42,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[3]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 57,
+        "end": 62,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 6,
+        "end": 11,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 26,
+        "end": 31,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 16,
+      "field": "choices[4]",
+      "code": "TEX_COMMAND_OUTSIDE_MATH",
+      "locus": {
+        "start": 49,
+        "end": 54,
+        "text": "\\frac"
+      },
+      "reason": "TeX command \\frac occurs outside a recognized math wrapper."
+    },
+    {
+      "qid": 19,
+      "code": "ANSWER_CHOICE_INDEX_OUT_OF_RANGE"
+    }
+  ],
+  "unitOrder": {
+    "authority": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\docs\\rules\\01_CANONICAL\\JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+    },
+    "findings": [],
+    "semanticReclassification": false,
+    "sourceMutation": false
+  },
+  "semanticApproval": false,
+  "sourceMutation": false,
+  "artifactRawSha256": "ea3ad7b6d18ad2be61ac8e20420395adb9caee888891c0e9e9ce20fe6f621f65",
+  "artifactSha": "91600dbf991d00b7a012fddc4632a072f0c75793"
+}

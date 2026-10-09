@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_QID16_POSTFREEZE_COMPARISON_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산여고_1학기_중간_고2_수학I",
+  "qid": 16,
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R2.q16.freeze.json",
+    "sha256": "5949a6ba3ba49bf31a88319839d7d335a7438f0e8b2be18ae067855e565e40dd",
+    "sourceRawSha256": "819b61682302a2020b9f990aa57f189219c751725492b7ff71e10262a7a0fd29",
+    "independentAnswer": "5",
+    "studentBundleSha256": "e01d36ae48d104b9cd548d5a96823336d423e67b6a745506d970fa467f85173f",
+    "studentPayloadSha256": "049b7b46a50347503ac73c5900f247cf6a36d6cbe3ceefb3fde1604a7157984d"
+  },
+  "controlledDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\technical-scoped-freeze-reuse-q16\\current-819\\R1.scoped-postfreeze-disclosure.q16.rev2.json",
+    "sha256": "44de334be3710640f65531ac1dd3ac049462d3eec6720972b5972ffcf8810f1d",
+    "currentSourceRawSha256": "819b61682302a2020b9f990aa57f189219c751725492b7ff71e10262a7a0fd29",
+    "qids": [
+      16
+    ],
+    "fields": [
+      "answer",
+      "solution"
+    ],
+    "answer": "③",
+    "solutionReadAfterFreeze": true,
+    "rootAuthorized": true
+  },
+  "comparison": {
+    "independentNumericAnswer": 5,
+    "choiceText": "5",
+    "storedChoice": "③",
+    "result": "MATCH",
+    "reason": "Choices are [3,4,5,6,7], so independent answer 5 is the unique third choice; disclosure selector is ③."
+  },
+  "standardPostfreezeCliAttempt": {
+    "command": "archive-codex-stage-kit.mjs postfreeze --qids 16 with 1-row q16 bundle",
+    "result": "FAIL_CLOSED_CURRENT_SOURCE_DENOMINATOR_CHANGED",
+    "outputCreated": false,
+    "attemptPreservedInSession": true
+  },
+  "scopeBridge": "ROOT_DIRECTED_Q16_SOURCE819_DISCLOSURE_ONLY_AFTER_FREEZE",
+  "full23FreshFreezeClaim": false
+}

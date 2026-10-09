@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_16_C1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q16-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U$의 부분집합 $A,B$가 $A\\cap(A-B)^c=A$를 만족한다. 이 조건만으로 반드시 참인 것은?",
+    "choices": [
+      "$(A^c\\cup B)^c=A",
+      "$B-A=\\varnothing$",
+      "$(A\\cap B)^c=B^c$",
+      "$A\\cup B=A$",
+      "$A\\cap B=A$"
+    ],
+    "answer": "⑤",
+    "solution": "$A\\cap(A-B)^c=A\\cap(A^c\\cup B)=(A\\cap A^c)\\cup(A\\cap B)=A\\cap B$이다. 따라서 조건은 $A\\cap B=A$, 즉 $A\\subseteq B$이다. 이때 반드시 참인 것은 ⑤이다.\n실제로 $U=\\{1,2\\},A=\\{1\\},B=\\{1,2\\}$로 두면 조건은 성립하지만 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2\\}$, ④ 좌변 $\\{1,2\\}$여서 각 보기의 등식이 성립하지 않는다.\n따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 16,
+    "slot": "C1",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q16-C1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q16-C1","meta":{"rpmL1":"집합과 명제","rpmL2":"집합의 연산","rpmL3":"집합의 연산법칙","rpmL4":"복합 연산","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-242","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["EXT-COND-H1-Q16-SUBSET-INCLUSION"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q16-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"INTERDEPENDENT","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_OPERATION_LAW","templateKey":"TPL_OPERATION_LAW_JUDGMENT","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"f2d130682cd178181ae93baf5ce1d030252ea1dc53c8611e28dc2a222dc7b408","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q16-C1.json","sha256":"eec1593cec801e1c329b50076f9bc9b2bf97ad4b42a265c00d393c257cf83fde","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q16-C1"},"metaReviewEvidenceSha256":"eec1593cec801e1c329b50076f9bc9b2bf97ad4b42a265c00d393c257cf83fde","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_OPERATION_LAW","templateKey":"TPL_OPERATION_LAW_JUDGMENT","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["EXT-COND-H1-Q16-SUBSET-INCLUSION"],"integrationPattern":"INTERDEPENDENT"});})();

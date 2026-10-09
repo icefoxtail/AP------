@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_B2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-B2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 조건 $p:x^2\\le16$, $q:|x-1|\\le k$가 있다. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 자연수 $k$의 개수는?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "③",
+    "solution": "$p$의 진리집합은 $[-4,4]$이고, $q$의 진리집합은 $[1-k,1+k]$이다.\n$p$가 $q$의 필요조건이려면 $[1-k,1+k]\\subseteq[-4,4]$이므로\n$1-k\\ge-4$ 및 $1+k\\le4$가 성립해야 한다.\n따라서 $k\\le5$이고 $k\\le3$이므로 $k\\le3$이다. 자연수 $k$는 $1,2,3$이다.\n세 경우 모두 $q$의 구간 길이는 $[-4,4]$보다 짧아서 $p$가 충분조건은 아니다.\n따라서 가능한 $k$는 $3$개이므로 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "B2",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-B2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-B2","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"],"conditionKeys":["COND_NATURAL_NUMBER","COND_RANGE"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_INTERVAL_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"96b06bc6f303135b3b5c60b87442ea22fc202bce1fa9126d88d65372f82031cc","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-B2.json","sha256":"0cc76022b6760274fd629d81a088bc25ce3b808cf52b1113d762f59cfa4c7c5b","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-B2"],"uid":"ALITE-PALMA25-2MID-Q11-B2"},"metaReviewEvidenceSha256":"0cc76022b6760274fd629d81a088bc25ce3b808cf52b1113d762f59cfa4c7c5b","difficultyBucket":3,"level":"중","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_INTERVAL_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"],"conditionKeys":["COND_NATURAL_NUMBER","COND_RANGE"],"integrationPattern":"SEQUENTIAL"});})();

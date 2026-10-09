@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_14_A2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q14-A2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "명제 ‘모든 실수 $x$에 대하여 $-2x^2+ax-8<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+    "choices": [
+      "$a\\le-4$ 또는 $a\\ge4$",
+      "$-8\\le a\\le8$",
+      "$a<-8$ 또는 $a>8$",
+      "$-8<a<8$",
+      "$a\\le-8$ 또는 $a\\ge8$"
+    ],
+    "answer": "⑤",
+    "solution": "부정 명제는 ‘어떤 실수 $x$에서 $-2x^2+ax-8\\ge0$이다.’이다.\n$-2x^2+ax-8=-2\\left(x-\\dfrac a4\\right)^2+\\dfrac{a^2}{8}-8$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge64$이다.\n따라서 $a\\le-8$ 또는 $a\\ge8$이다. 등호인 경우에도 최댓값 $0$을 갖는 실수가 존재한다. 따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 14,
+    "slot": "A2",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q14-A2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q14-A2","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"명제와 조건","rpmL4":"EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-244","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json","generatedL4RegistrySha256":"1f457c1c13ef644774ad188b4bfaef889b040d0c55351be2baa9130ee96fb1ac","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"],"conditionKeys":[],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","conditionRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json","sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":3,"level":"중","problemTypeKey":"PT_PROPOSITION_PARAMETER_CONDITION","templateKey":"TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"3b7f9b9a27ca2e0d817c1fb6f91ff88bc4e168e8e18e78a7b579f659e18df805","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-A2.json","sha256":"c58045517950866feceda0c6f786072461926f4f6b43c1b8611a6a7b697495c3","reviewStatus":"REVIEW_PASS","uid":"ALITE-PALMA25-2MID-Q14-A2"},"metaReviewEvidenceSha256":"c58045517950866feceda0c6f786072461926f4f6b43c1b8611a6a7b697495c3","difficultyBucket":3,"level":"중","problemTypeKey":"PT_PROPOSITION_PARAMETER_CONDITION","templateKey":"TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"],"conditionKeys":[],"integrationPattern":"SEQUENTIAL"});})();

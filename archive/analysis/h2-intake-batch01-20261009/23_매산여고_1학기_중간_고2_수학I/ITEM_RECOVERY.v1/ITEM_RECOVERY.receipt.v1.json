@@ -1,0 +1,281 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_RECEIPT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_매산여고_1학기_중간_고2_수학I",
+  "stage": "ITEM_RECOVERY",
+  "executionAction": "ITEM_RECOVERY",
+  "validatorStage": "CREATE",
+  "sourceMode": "AUDITED_REPAIR",
+  "replacementExecution": "DIRECT_AUTHORING_NO_GENERATION_PIPELINE",
+  "usedAliveGenerator": false,
+  "recoveryType": "AUDITED_REPAIR",
+  "replacementScope": "QUESTION_ONLY",
+  "replacedQid": 16,
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "mutationScope": "isolated candidate q16 only",
+  "assignment": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\item-recovery-v1\\ITEM_RECOVERY.assignment.json",
+    "sha256": "efee39bc394b859d800859ea12dc8605265603081ae76382cb814bf717c38bbd",
+    "expectedHead": "73a8f8a791312ce3a209ba598f1442bebe58e8ad",
+    "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------",
+    "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\item-recovery-v1\\23_매산여고_1학기_중간_고2_수학I.js",
+    "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\item-recovery-v1",
+    "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\ITEM_RECOVERY.v1",
+    "expectedSourceRawSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+    "studentBundleSha256": "3f1212bcdad9d56f01671df47f071ab2aa17223b6c81c0c5e84c87d616e92126"
+  },
+  "originalDefect": {
+    "category": "ORIGINAL_INTRINSIC_CONTRADICTION",
+    "finding": "g(f(x))<0 forces 3<x<9 and therefore integer x in {4,5,6,7,8}; the original asks for six simultaneous integer solutions for some natural c.",
+    "repairRationale": "Correct only the impossible requested solution count from six to four. This preserves both functions, both inequalities, domain, integer/natural-number conditions and multiple-choice response form while producing a unique natural c.",
+    "changedLocus": {
+      "qid": 16,
+      "field": "content/question",
+      "before": "integer-solution count = 6",
+      "after": "integer-solution count = 4"
+    },
+    "notAnExtractionRepair": true,
+    "notClaimedAsOriginalExactParity": true
+  },
+  "sourceEvidence": {
+    "reusedIntakeEvidence": {
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\intake-original.evidence.json",
+      "sha256": "fe88210dc7b24075d36c9bc92ece7bb89506dea2e2ba90b2c2a017b66ab99dd0",
+      "basis": "reused; not re-audited"
+    },
+    "preRepairExtractedBaselineParity": {
+      "baselineAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\extracted-baseline.js",
+      "baselineRawSha256": "2a2ac94e5ee83ee32a9f918912e04557f835753e5d2eb5c2dec83534ece45fcb",
+      "comparedFields": [
+        "content",
+        "choices"
+      ],
+      "equal": true,
+      "notComparedOrNotPresent": [
+        "layoutTag",
+        "wide"
+      ],
+      "baselineDiff": []
+    },
+    "actualPdfReview": {
+      "absolutePath": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_매여고2_수1_1중간.pdf",
+      "rawSha256": "361c3999b49074e71edc520fc363842eca1d1541a72cfafa311a39b743572199",
+      "qid": 16,
+      "page": 4,
+      "regionAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\ITEM_RECOVERY.v1\\original-q16-page4-region.png",
+      "regionSha256": "80282ec398620b45d2be29ed0163be501b4e7bb92d1b3e166578f1dfcecf2f9b",
+      "scope": "qid 16 only; function definitions, both inequalities, requested integer-solution count and choices",
+      "observation": "Original page 4 says the same functions and inequalities as the pre-repair extracted JS and explicitly requires six integer solutions. The first condition allows only x=4,5,6,7,8, so the source item itself is impossible.",
+      "answerSheetConsulted": false,
+      "fullPdfSweep": false
+    },
+    "upstreamScopedR2Receipt": {
+      "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R2.source-review.q16.json",
+      "sha256": "d6e5fd1724a21f5bd33342b16c911be322b4614eb43a5945fb42674d40dcc580",
+      "reviewedQids": [
+        16
+      ],
+      "scope": "qid 16 page 4 only"
+    }
+  },
+  "calibrationPreflight": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\ITEM_RECOVERY.v1\\ITEM_RECOVERY.calibration.preflight.json",
+    "sha256": "0a6e514efa52a8b12a2aee9fe45a25527388312ebe41f01505d46957194cdf34",
+    "gate": "solution-calibration-gate.mjs --stage ITEM_RECOVERY --preflight",
+    "status": "PASS",
+    "goldenBankReadCounts": {
+      "maesan": 6,
+      "hyochon": 6,
+      "jeil": 6
+    },
+    "negativeSampleRead": true,
+    "actualGoldenSolutionImageSvgRead": true
+  },
+  "mathReview": {
+    "candidateQuestion": "두 함수 $f(x) = \\log_{\\sqrt{3}} \\frac{x}{3}$, $g(x) = x^2 - 2x$에 대하여 연립부등식\n$$\\begin{cases} g(f(x)) < 0 \\\\ f(g(x) + 3) < c \\end{cases}$$\n의 정수인 해의 개수가 $4$개가 되도록 하는 자연수 $c$의 값을 구하면? [4.3점]",
+    "candidateChoices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "independentAnswer": "5",
+    "answerChoice": "③",
+    "candidateSolutionsByNaturalC": [
+      {
+        "c": 1,
+        "count": 0
+      },
+      {
+        "c": 2,
+        "count": 0
+      },
+      {
+        "c": 3,
+        "count": 1
+      },
+      {
+        "c": 4,
+        "count": 2
+      },
+      {
+        "c": 5,
+        "count": 4
+      },
+      {
+        "c": 6,
+        "count": 5
+      }
+    ],
+    "candidateCountsMonotoneBeyondC6": "all five candidates remain solutions",
+    "singleCorrectChoice": true,
+    "solutionSha256": "9f82387acd478e924b2fc1b3e6a0ac60b3addcbc7bd61294aaf29cf04d94dfa5",
+    "choiceAudit": [
+      {
+        "choice": "3",
+        "errorPath": "Treat the base sqrt(3) as 3 when rounding the x=7 threshold; this halves the logarithmic scale and yields an underestimate."
+      },
+      {
+        "choice": "4",
+        "errorPath": "Treat both strict boundaries as inclusive: add x=3 and include x=6 at the equality threshold when c=4, producing a mistaken count of four."
+      },
+      {
+        "choice": "5",
+        "errorPath": "Correct: c=5 gives threshold 27sqrt(3), between 38 and 51, admitting x=4,5,6,7."
+      },
+      {
+        "choice": "6",
+        "errorPath": "Include excluded endpoint x=9 from 3<x<9; at c=6 the second inequality admits x=4,...,9."
+      },
+      {
+        "choice": "7",
+        "errorPath": "Omit the divisor 3 in the logarithm argument when exponentiating, producing q(x)<3^(c/2) and a delayed c=7 threshold for four candidates."
+      }
+    ]
+  },
+  "metadata": {
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-04",
+    "standardUnit": "로그함수",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+    "subUnit": "로그함수의 활용",
+    "masterJsonAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\data\\master_tables\\js_archive_tag_master.json",
+    "masterJsonSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+    "problemTypeKey": "PT_COMPOSITION_EQUATION",
+    "templateKey": "TPL_COMPOSITION_INEQUALITY",
+    "projectionStatus": "BINDING_PENDING",
+    "projectionReason": "Active global composition-inequality PT/TPL matches decisive structure; exact 2015 H15-M1-04 curriculum binding is absent. RPM semantic remains FINAL.",
+    "rpmPrimaryPath": {
+      "curriculum": "2015",
+      "scope": "수학I",
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그부등식",
+      "l4": "정의역·밑 조건"
+    },
+    "difficulty": {
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "Standard log monotonicity and a finite five-value comparison; the strategy requires one selection between the open interval and parameter threshold, without a hidden insight."
+    }
+  },
+  "changedQidFields": [
+    "answer",
+    "category",
+    "choices",
+    "conceptClusterKey",
+    "content",
+    "decisiveStep",
+    "difficultyBoundaryFlag",
+    "difficultyBucket",
+    "difficultyConfidence",
+    "itemHoldReason",
+    "legacyLevelCompatibility",
+    "primaryMethod",
+    "problemTypeKey",
+    "projectionReason",
+    "projectionStatus",
+    "question",
+    "rpmL3",
+    "rpmL4",
+    "solution",
+    "subUnit",
+    "subUnitClassificationDepth",
+    "subUnitConfidence",
+    "subUnitKey",
+    "tagConfidence",
+    "tagStatus",
+    "tags",
+    "templateKey"
+  ],
+  "nonTargetInvariant": {
+    "checkedAgainstParentWorkingJsSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+    "nonTargetQids": 22,
+    "objectDifferences": [],
+    "referencedAssets": [
+      {
+        "ref": "assets/images/23_매산여고_1학기_중간_고2_수학I/q17.png",
+        "sourceSha256": "974c007906c2f6c522e0f604e1a45cec6f2d9e19343f5c9ddd44ae08940bbf62",
+        "candidateSha256": "974c007906c2f6c522e0f604e1a45cec6f2d9e19343f5c9ddd44ae08940bbf62",
+        "equal": true
+      },
+      {
+        "ref": "assets/images/23_매산여고_1학기_중간_고2_수학I/q21.png",
+        "sourceSha256": "876c7ddfd7437841ad1067e03aa51515190d2b78bc2e3050877b2abcd084bc63",
+        "candidateSha256": "876c7ddfd7437841ad1067e03aa51515190d2b78bc2e3050877b2abcd084bc63",
+        "equal": true
+      }
+    ],
+    "assetDifferenceCount": 0
+  },
+  "parentWorkingJsUnchanged": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\23_매산여고_1학기_중간_고2_수학I.js",
+    "expectedSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+    "actualSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+    "unchanged": true
+  },
+  "finalArtifact": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\item-recovery-v1\\23_매산여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "86b0a387bdde96fc50231456b33aab28342b8bb061745d1765173566f5c0c15d",
+    "rawBufferGitBlobSha1": "3d2f5f0b239e8264aacd9485f0f7f19dd3a59fdf",
+    "questionCount": 23
+  },
+  "status": "ITEM_RECOVERY_CANDIDATE_PENDING_SCOPED_R1_R2",
+  "notClaimed": [
+    "R1_PASS",
+    "R2_PASS",
+    "RENDER_PASS",
+    "CREATE_COMPLETE",
+    "MAIN_DONE"
+  ],
+  "independentHeldItemRevalidationFirst": true,
+  "independentStudentOnlyRevalidation": {
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\item-recovery-v1\\ITEM_RECOVERY.student-only.json",
+    "studentBundleSha256": "3f1212bcdad9d56f01671df47f071ab2aa17223b6c81c0c5e84c87d616e92126",
+    "performedBeforeUpstreamR2ReceiptDisclosure": true,
+    "decision": "TRUE_HOLD_REPAIRABLE_BY_MINIMUM_AUTHORED_SOURCE_CORRECTION",
+    "reason": "The original condition g(f(x))<0 permits only five integer candidates, so the requested count six is impossible. The corrected request of four has exactly one natural c.",
+    "answer": "5",
+    "answerChoice": "③",
+    "countsForC1to10": [
+      0,
+      0,
+      1,
+      2,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "oneCorrectChoice": true,
+    "solutionHash": "9f82387acd478e924b2fc1b3e6a0ac60b3addcbc7bd61294aaf29cf04d94dfa5"
+  }
+}

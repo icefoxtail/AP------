@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>공통 Meta 문항 검색 | Archive 2.0</title>
+<style>
+body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#17324f;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#155fa8}h1{font-size:26px}.filters{display:flex;flex-wrap:wrap;gap:12px;background:white;padding:18px;border-radius:12px}label{display:grid;gap:6px}select,button{font:inherit;padding:9px;border:1px solid #b8c9dc;border-radius:7px;background:white}article{background:white;padding:16px;margin:10px 0;border-radius:10px}article p{color:#516b83}#preview{white-space:pre-wrap;background:white;padding:20px;margin-top:16px}#preview img{max-width:100%;max-height:360px}#status{min-height:24px}nav{display:flex;gap:20px}button,a{cursor:pointer}#preview[hidden]{display:none}#preview table{border-collapse:collapse;white-space:normal}#preview td,#preview th{border:1px solid #a5b2c0;padding:6px}
+</style>
+<main>
+<nav><a href="workspace.html?view=compose">문제지 만들기</a><a href="generated-bank.html">생성 문항 선택·인쇄</a></nav>
+<h1>공통 Meta 문항 검색</h1>
+<p>기출과 승인된 생성 문항을 같은 분류·난이도로 찾습니다. 미확정 정보는 미지정으로 표시합니다.</p>
+<div class="filters">
+<label>출처<select id="source"><option value="">전체</option><option value="original">기출</option><option value="generated">생성</option><option value="archive">기타 아카이브</option></select></label>
+<label>과목<select id="course"><option value="">전체</option></select></label>
+<label>표준단원 키<select id="standardUnitKey"><option value="">전체</option></select></label>
+<label>세부분류 키<select id="subUnitKey"><option value="">전체</option></select></label>
+<label>L1 대단원<select id="L1"><option value="">전체</option></select></label>
+<label>L2 중단원<select id="L2"><option value="">전체</option></select></label>
+<label>L3 개념<select id="L3"><option value="">전체</option></select></label>
+<label>L4 유형<select id="L4"><option value="">전체</option></select></label>
+<label>난이도<select id="difficulty"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option value="UNKNOWN">미지정</option></select></label>
+</div>
+<p id="status" role="status" aria-live="polite">문항 정보를 불러오는 중입니다.</p>
+<div id="results"></div><button id="more" hidden>더 보기</button>
+<section id="preview" hidden aria-label="생성 문항 미리보기"></section>
+</main>
+<script src="mixer-selector.js?v=20261009-meta1"></script>
+<script src="archive2-canonical.js?v=20261009-meta1"></script>
+<script src="archive2-core.js?v=20261009-meta1"></script>
+<script src="problem-bank-meta.js?v=20261009-meta3"></script>
+<script src="archive2-source.js?v=20261009-meta1"></script>
+<script>
+'use strict';
+const el=id=>document.getElementById(id),shards=new Map();
+let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={};
+const filters=()=>{
+ const f={};for(const k of ['L1','L2','L3','L4'])if(el(k).value)f[k]=el(k).value;
+ if(el('source').value)f.sourceKind=el('source').value;
+ if(el('course').value)f.standardCourse=el('course').value;
+ if(el('standardUnitKey').value)f.standardUnitKey=el('standardUnitKey').value;
+ if(el('subUnitKey').value)f.subUnitKey=el('subUnitKey').value;
+ if(el('difficulty').value)f.difficultyBucket=el('difficulty').value==='UNKNOWN'?'UNKNOWN':Number(el('difficulty').value);
+ return f;
+};
+function options(id,field,rows,authorityRows=null){
+ const selected=el(id).value,values=new Map();
+ for(const row of authorityRows||rows){
+  const value=typeof row==='string'?row:row[field],label=typeof row==='string'?row:(row.displayLabel||value);
+  if(value&&!values.has(value))values.set(value,label);
+ }
+ const sorted=[...values.entries()].sort((a,b)=>a[0].localeCompare(b[0],'ko'));
+ el(id).replaceChildren(new Option('전체',''),...sorted.map(([value,label])=>new Option(label,value)));
+ if(values.has(selected))el(id).value=selected;
+}
+function refreshCoreMetaKeyOptions(){
+ const course=el('course').value,units=(coreMetaFilterOptions.standardUnits||[]).filter(row=>!course||(row.standardCourses||[]).includes(course));
+ if(el('standardUnitKey').value&&!units.some(row=>row.standardUnitKey===el('standardUnitKey').value))el('standardUnitKey').value='';
+ options('standardUnitKey','standardUnitKey',inventory,units);
+ const selectedUnit=el('standardUnitKey').value,subUnits=(coreMetaFilterOptions.subUnits||[]).filter(row=>(!course||(row.standardCourses||[]).includes(course))&&(!selectedUnit||row.standardUnitKey===selectedUnit));
+ if(el('subUnitKey').value&&!subUnits.some(row=>row.subUnitKey===el('subUnitKey').value))el('subUnitKey').value='';
+ options('subUnitKey','subUnitKey',inventory,subUnits);
+}
+function render(){
+ matching=ProblemBankMeta.query(inventory,filters());
+ el('status').textContent=`${matching.length.toLocaleString()}문항 · 기출/아카이브 ${matching.filter(r=>r.sourceKind!=='generated').length.toLocaleString()} · 생성 ${matching.filter(r=>r.sourceKind==='generated').length.toLocaleString()} · 검증 수준은 문항별 근거를 따릅니다.`;
+ el('results').replaceChildren();
+ for(const row of matching.slice(0,limit)){
+  const card=document.createElement('article'),title=document.createElement('strong'),info=document.createElement('p');
+  title.textContent=[row.school,row.year,row.sourceQid??row.sourceQuestionNo??row.sourceOrdinal].filter(v=>v!=null).join(' · ');
+  const unit=row.standardUnit?`${row.standardUnit}${row.standardUnitKey?` (${row.standardUnitKey})`:''}`:'미지정';
+  const subUnit=row.subUnit?`${row.subUnit}${row.subUnitKey?` (${row.subUnitKey})`:''}`:'미지정';
+  info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',`표준단원 ${unit}`,`세부분류 ${subUnit}`,row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
+  card.append(title,info);
+  if(row.sourceKind==='generated'){
+   const preview=document.createElement('button');preview.textContent='문제 보기';preview.onclick=()=>previewGenerated(row,preview);card.append(preview);
+   const select=document.createElement('a');select.textContent=' 생성 문항 선택';select.href='generated-bank.html?uid='+encodeURIComponent(row.uid);card.append(select);
+  }else{
+   for(const [mode,label] of [['exam','시험'],['sol','해설'],['ans','정답']]){
+    const link=document.createElement('a');link.textContent=label+' ';link.target='_blank';link.rel='noopener';
+    link.href='engine.html?data='+encodeURIComponent('exams/'+row.sourceFile)+'&mode='+mode;card.append(link);
+   }
+  }
+  el('results').append(card);
+ }
+ el('more').hidden=matching.length<=limit;
+}
+async function previewGenerated(row,button){
+ const request=++previewRequest;
+ button.disabled=true;el('preview').hidden=false;el('preview').textContent='문항을 불러오는 중입니다.';
+ try{
+  if(!/^data\/generated-lite-consumer\/v1\/shards\/[^?#]+\.json$/.test(row.shard)||row.shard.includes('..'))throw Error('문항 경로 오류');
+  if(!shards.has(row.shard))shards.set(row.shard,fetch(row.shard,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('문항 로드 실패');return r.json();}).catch(e=>{shards.delete(row.shard);throw e;}));
+  const q=await Archive2Source.restoreGenerated(row,await shards.get(row.shard),holds);
+  if(request!==previewRequest)return;
+  el('preview').replaceChildren();const stem=document.createElement('div');safeStem(stem,q.content);el('preview').append(stem);
+  for(const [i,value] of (q.choices||[]).entries()){const p=document.createElement('p');p.textContent='①②③④⑤'[i]+' '+value;el('preview').append(p);}
+  if(q.image){if(!/^assets\/generated-lite\/[^?#]+\.svg$/.test(q.image)||q.image.includes('..'))throw Error('문항 이미지 경로 오류');const img=document.createElement('img');img.src=q.image;img.alt=q.imageAlt||'문제 그림';el('preview').append(img);}
+  if(window.MathJax?.typesetPromise)await MathJax.typesetPromise([el('preview')]);
+ }catch(e){if(request===previewRequest)el('preview').textContent=e.message;}finally{button.disabled=false;}
+}
+function safeStem(host,content){
+ const raw=String(content??''),pattern=/<div class="question-table-wrap"><table class="question-table">([\s\S]*?)<\/table><\/div>/g;
+ let cursor=0;for(const match of raw.matchAll(pattern)){
+  const rows=[...match[1].matchAll(/<tr>([\s\S]*?)<\/tr>/g)],rest=match[1].replace(/<\/?(?:thead|tbody)>/g,'').replace(/<tr>[\s\S]*?<\/tr>/g,'').trim();
+  const cells=rows.map(r=>{const list=[...r[1].matchAll(/<(th|td)>([^<>]*)<\/\1>/g)];return list.length&&!r[1].replace(/<(?:th|td)>[^<>]*<\/(?:th|td)>/g,'').trim()?list:null;});
+  if(!rows.length||rest||cells.some(c=>!c))continue;
+  host.append(document.createTextNode(raw.slice(cursor,match.index)));
+  const table=document.createElement('table');for(const row of cells){const tr=document.createElement('tr');for(const c of row){const cell=document.createElement(c[1]);cell.textContent=c[2];tr.append(cell);}table.append(tr);}host.append(table);cursor=match.index+match[0].length;
+ }host.append(document.createTextNode(raw.slice(cursor)));
+}
+for(const id of ['source','course','standardUnitKey','subUnitKey','L1','L2','L3','L4','difficulty'])el(id).onchange=()=>{
+ limit=40;
+ if(id==='course'){el('standardUnitKey').value='';el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
+ if(id==='standardUnitKey'){el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
+ if(['course','L1','L2','L3'].includes(id)){
+  const order=['L1','L2','L3','L4'],depth=id==='course'?-1:order.indexOf(id);
+  for(const key of order.slice(depth+1))el(key).value='';
+  const scoped=ProblemBankMeta.query(inventory,filters());for(const key of order.slice(depth+1))options(key,key,scoped);
+ }
+ render();
+};
+el('more').onclick=()=>{limit+=40;render();};
+(async()=>{
+ try{
+  const [catalog,index]=await Promise.all(['data/archive2-catalog.json','data/generated-lite-consumer/v1/index.json'].map(async p=>{const r=await fetch(p,{cache:'no-cache'});if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}));
+  coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
+  holds=index.excludedHoldUids||[];inventory=ProblemBankMeta.buildIndex(Archive2Core.decodeCatalog(catalog).records,index.records,{excludedHoldUids:holds});
+  options('course','standardCourse',inventory);
+  refreshCoreMetaKeyOptions();
+  for(const k of ['L1','L2','L3','L4'])options(k,k,inventory);render();
+ }catch(e){el('status').textContent=e.message;}
+})();
+</script>
+<script>window.MathJax={tex:{inlineMath:[['$','$']]},svg:{fontCache:'global'}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</html>

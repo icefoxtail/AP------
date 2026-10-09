@@ -1,0 +1,20 @@
+{
+  "schemaVersion":"JS_ARCHIVE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "stage":"R1",
+  "executionLine":"CODEX",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "performedAt":"2026-10-09T06:30:00Z",
+  "goldenCalibrationSet":[
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration":{"samples":[
+    {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156","items":[{"qid":1,"solutionSha256":"4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3","observation":"실제 solution의 순서는 내분점 P 좌표→중점 M 좌표→PM 거리로 분리되고, 비율의 반대쪽 가중치·각 좌표 대입·제곱근 정리까지 식으로 이어진다. 설명문은 각 공식이 쓰이는 이유를 붙이고 계산식을 생략하지 않는다."}]},
+    {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99","items":[{"qid":2,"solutionSha256":"84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","observation":"두 직선의 y정리→각 기울기 산출→수직 조건 대입→k 계산 순서가 보이고 각 변형식이 표시된다.","visualSha256":"8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"}]},
+    {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665","items":[{"qid":1,"solutionSha256":"452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9","observation":"보기 ㄱㄴㄷㄹ 각각의 참거짓 근거를 독립된 문단으로 나누고 원소 관계와 부분집합 관계를 구분한 뒤 결론을 낸다."}]}
+  ]},
+  "negativeSample":{"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23","observation":"Negative fixture는 SVG의 라벨 문구만 읽지 말고 실제 좌표와 topology를 기대 사실로 계산하고, enumerated 풀이 판단을 각각 분리하며, current runtime 문자열과 Meta exact ACTIVE/null evidence를 확인하도록 요구한다."},
+  "representativeSvg":{"path":"archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg","sha256":"8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30","renderedPng":"C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\golden-hyochon-q2.svg.png","renderedPngSha256":"514fe1e7ba5b9eb1b1342029902a550fcf9ff24aafcfb7744be77c50d5b1719f","observation":"실제 SVG line primitives는 x+3y+2=0(slope -1/3), 6x-2y-1=0(slope 3)이다. 렌더에서도 파란 완만한 하강선과 빨간 상승선이 교차한다. 래스터 변환 환경의 Korean font fallback은 glyph boxes로 나왔으나 수식 좌표와 축·선의 topology는 판독 가능했다."},
+  "preflightBeforeSolutionAuthoringOrRepair":true
+}
