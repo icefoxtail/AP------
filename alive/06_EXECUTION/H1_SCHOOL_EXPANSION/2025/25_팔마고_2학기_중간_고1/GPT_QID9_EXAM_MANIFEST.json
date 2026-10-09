@@ -26,7 +26,8 @@
     16,
     17,
     18,
-    19
+    19,
+    20
   ],
   "qidLedger": [
     {
@@ -1047,16 +1048,61 @@
       "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
       "creationCommit": "ATOMIC_Q19_CREATION_COMMIT",
       "status": "CREATOR_DRAFT_WAITING_ADAPTIVE_OPEN_BOOK_REVIEW"
+    },
+    {
+      "qid": 20,
+      "sourceQid": 20,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q20-A1",
+        "ALITE-PALMA25-2MID-Q20-A2",
+        "ALITE-PALMA25-2MID-Q20-A3",
+        "ALITE-PALMA25-2MID-Q20-B1",
+        "ALITE-PALMA25-2MID-Q20-B2",
+        "ALITE-PALMA25-2MID-Q20-B3",
+        "ALITE-PALMA25-2MID-Q20-C1",
+        "ALITE-PALMA25-2MID-Q20-C2",
+        "ALITE-PALMA25-2MID-Q20-C3"
+      ],
+      "lockedPrimaryL3": "교집합과 합집합",
+      "rpmRecordIds": [
+        "H1-RPM-238"
+      ],
+      "rpmBindingStatus": "DIRECT_ACTIVE",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_STEM_SELF_REVIEW.md",
+        "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q20-cross-concepts-conditions.json"
+      ],
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "selfReverseStem": "KEEP9_REVISED0_HOLD0",
+      "answerForm": "NINE_DESCRIPTIVE_NO_CHOICES",
+      "exactMath": "EXHAUSTIVE_INTEGER_PARTITION_9_OF_9",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerRegistrationStatus": "NOT_REGISTERED",
+      "studentLookupVerifiedCount": 0,
+      "previousQidsProtected": true
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 162,
+    "newCreateDraftTotal": 180,
     "newCreateDraftByGroup": {
-      "A": 54,
-      "B": 54,
-      "C": 54
+      "A": 60,
+      "B": 60,
+      "C": 60
     },
-    "uniqueGeneratedUids": 162,
+    "uniqueGeneratedUids": 180,
     "openBookQualityReviewed": 36,
     "studentSupplyNew": 144,
     "reviewQueue": 0,
@@ -1153,9 +1199,14 @@
     "q18Revised": 0,
     "q18Hold": 0,
     "userDirectedOperatingApprovalQ09Q12": 36,
-    "gptOpenBookQualityReviewedQ09Q12": 36
+    "gptOpenBookQualityReviewedQ09Q12": 36,
+    "q20AuthorSelfReviewComplete": 9,
+    "q20Keep": 9,
+    "q20Revised": 0,
+    "q20Hold": 0,
+    "q20DescriptiveCount": 9
   },
-  "nextSourceQid": 20,
+  "nextSourceQid": 21,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "Q01_Q04_MAIN_DONE_36_PLUS_Q05_Q08_MAIN_STATIC_REGISTERED_36_CHROME_NOT_TESTED_PLUS_Q09_CREATE_ONLY_9 PLUS_Q10_CREATE_ONLY_9 PLUS_Q11_CREATE_ONLY_9 PLUS_Q12_CREATE_ONLY_9 PLUS_Q13_Q16_MAIN_DONE_36_META_CHROME_VERIFIED",
   "workflow": {
@@ -1244,7 +1295,7 @@
       }
     ]
   },
-  "lastSourceQidCreated": 19,
+  "lastSourceQidCreated": 20,
   "q05toQ08Review": {
     "date": "2026-10-09",
     "scope": "Q05-Q08 A1-C3",
@@ -1588,5 +1639,15 @@
     "consumerRegistered": 0,
     "chrome": "NOT_TESTED",
     "priorQidsProtected": true
+  },
+  "q20CreatorOnly": {
+    "scope": "Q20 A1-C3",
+    "uidCount": 9,
+    "creatorSelfReview": "KEEP9_REVISED0_HOLD0",
+    "rpmPrimaryL3Record": "H1-RPM-238",
+    "openBookReviewed": 0,
+    "studentConsumerRegistered": 0,
+    "Chrome": "NOT_TESTED",
+    "originalSourceUnchanged": true
   }
 }
