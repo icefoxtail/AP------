@@ -34,7 +34,7 @@ function contentFingerprint(question) {
   return 'fnv1a64-utf16:' + n.toString(16).padStart(16, '0');
 }
 
-test('consumer DB preserves previous approvals, adds four Palma questions and excludes holds', () => {
+test('consumer DB preserves previous approvals, registers current Palma rows and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
   assert.equal(index.records.length, 346);
@@ -48,7 +48,8 @@ test('consumer DB preserves previous approvals, adds four Palma questions and ex
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ]);
   assert.equal(new Set(index.records.map(r => r.uid)).size, 346);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
@@ -56,7 +57,12 @@ test('consumer DB preserves previous approvals, adds four Palma questions and ex
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
   assert.ok(index.records.slice(165,273).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.every(r => !holdUids.has(r.uid)));
-  assert.ok(index.records.every(r => r.sourceKind === 'generated' && /^ALITE-[A-Za-z0-9-]+$/.test(r.uid)));
+  // Preserve exactly six reviewed B05/B06 source UIDs; reject all other non-ALITE identifiers.
+  const legacyIds=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
+  const historical=index.records.filter(r=>legacyIds.has(r.uid));
+  assert.equal(historical.length,6);
+  assert.ok(historical.every(r=>r.school==='팔마고'&&r.year===2025&&r.sourceKind==='generated'&&r.approval==='REVIEW_APPROVED'&&r.reviewStatus==='REVIEW_PASS'&&r.consumerSelectable===true));
+  assert.ok(index.records.every(r=>r.sourceKind==='generated'&&(/^ALITE-[A-Za-z0-9-]+$/.test(r.uid)||legacyIds.has(r.uid))));
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B01R2-')).length, 45);
   assert.equal(index.records.filter(r => r.uid.includes('BSG26-B02-')).length, 38);
   assert.equal(gitSha(fs.readFileSync(path.join(root, originalFile))), '8266fa476906e9134b94f23e803bd3b2fb26ece4');
@@ -124,12 +130,13 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
   assert.equal(b03.filter(r => r.reviewApprovalBasis.includes('USER_DIRECTED_OVERRIDE')).length, 4);
 });
 
-test('four Palma approvals resolve through the exact runtime shard path and candidate UID', () => {
+test('five Palma B07 approvals resolve through the exact runtime shard path and candidate UID', () => {
   const expectedUids = [
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ];
   assert.deepEqual(palma.filter(r => r.uid.includes('-B07-')).map(r => r.uid), expectedUids);
   for (const row of palma.filter(r => r.uid.includes('-B07-'))) {
@@ -222,8 +229,11 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   };
   let printed=0;
   vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
-  await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
+  // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
+  for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
+    await new Promise(resolve=>setTimeout(resolve,20));
+  }
   const cards=el('exam-cards').children;
   assert.equal(cards.length,2);
   assert.equal(el('print').disabled,true);
@@ -269,6 +279,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   await palmaOpen.listeners.click();
   assert.ok(!textOf(el('generated-preview')).includes('정답'));
   assert.ok(!textOf(el('generated-preview')).includes('해설'));
+  // B07 BP03 is now reviewed and released; its exact UID must be searchable.
   search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
 });
