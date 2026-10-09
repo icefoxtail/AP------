@@ -31,6 +31,7 @@ test('unit-past producer writes the real mixed storage contract with canonical p
   const context = {
     String, Number, Date, JSON, Map, Set, localStorage,
     getProfile: () => ({ grade: 'M3', gradeLabel: '중3' }),
+    getQpp: () => 4,
     getPaperSources: () => [{ label: '2026 · Fixture School · 1학기 중간' }],
     core: {
       getSubUnitLabel: record => record.subUnitLabel || '다항식',
@@ -65,6 +66,7 @@ test('unit-past producer writes the real mixed storage contract with canonical p
   assert.deepEqual(storedMeta.problemTypeKeys, ['poly-type']);
   assert.deepEqual(storedMeta.templateKeys, ['poly-template']);
   assert.equal(meta.sourceSummary, '출처: 2026 · Fixture School · 1학기 중간');
+  assert.equal(meta.qpp, 4);
 });
 
 test('archive index consumer launches the existing mixer with the stored unit-past key, requested mode, and production QPP', () => {
