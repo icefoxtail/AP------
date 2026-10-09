@@ -603,7 +603,7 @@
       "stem": "세 직선 $l:y=x$, $m:y=-x+4$, $n:y=5$가 이루는 삼각형의 외접원의 방정식을 구하고, 이 원과 $y$축의 교점의 좌표를 모두 구하시오.",
       "choices": [],
       "answer": "$(x-2)^2+(y-5)^2=9$, 교점 $(0,5+\\sqrt5)$와 $(0,5-\\sqrt5)$",
-      "solution": "$l,m$의 교점은 $O=(2,2)$이고 두 직선의 기울기 $1,-1$의 곱은 $-1$이므로 직각을 이룬다.\n$l,n$의 교점은 $A=(5,5)$, $m,n$의 교점은 $B=(-1,5)$이다. 빗변 $AB$의 중점은 $M=(2,5)$이고, $MA=3$이므로 외접원은 $(x-2)^2+(y-5)^2=9$이다.\n$y$축과의 교점에서는 $x=0$이므로 $4+(y-5)^2=9$, 즉 $(y-5)^2=5$이다. 따라서 $y=5\\pm\\sqrt5$이다.\n그러므로 원의 방정식은 $(x-2)^2+(y-5)^2=9$이고, 교점은 $(0,5+\\sqrt5)$와 $(0,5-\\sqrt5)$이다.",
+      "solution": "$l,m$의 교점은 $O=(2,2)$이고 두 직선의 기울기 $1,-1$의 곱은 $-1$이므로 직각을 이룬다.\n$l,n$의 교점은 $A=(5,5)$, $m,n$의 교점은 $B=(-1,5)$이다. 빗변 $AB$의 중점은 $M=(2,5)$이고, $MA=3$이므로 외접원은 $(x-2)^2+(y-5)^2=9$이다.\n$y$축과의 교점에서는 $x=0$이므로 $4+(y-5)^2=9$, 즉 $(y-5)^2=5$이다. 따라서 $y=5\\pm\\sqrt5$이다. 두 교점을 각각 $D(0,5+\\sqrt5)$, $E(0,5-\\sqrt5)$라 하자.\n그러므로 원의 방정식은 $(x-2)^2+(y-5)^2=9$이고, 교점은 $(0,5+\\sqrt5)$와 $(0,5-\\sqrt5)$이다.",
       "distractorReasons": {},
       "distractorWitnesses": [],
       "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
@@ -624,12 +624,12 @@
         "disposition": "ADD",
         "type": "SOLUTION_GEOMETRY_SVG",
         "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B3-solution.svg",
-        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화 원과 y축의 두 교점 D,E도 표시한다.",
         "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
         "renderStatus": "NOT_TESTED"
       },
       "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B3-solution.svg",
-      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageAlt": "직각삼각형 OAB의 외접원과 중심 M, y축 및 교점 D,E",
       "solutionImageSize": "medium",
       "answerRole": "DESCRIPTIVE_NO_CHOICES",
       "creatorSelfReview": "KEEP",
@@ -793,7 +793,9 @@
         "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
         "problemTypeKey": "PT_CIRCLE_EQUATION",
         "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "crossConceptKeys": [],
         "crossConceptEvidenceLabels": [
           "두 직선 수직",
