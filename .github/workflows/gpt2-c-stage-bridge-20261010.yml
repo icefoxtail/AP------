@@ -1,0 +1,87 @@
+name: GPT2 C source/official gate bridge (temporary)
+on:
+  push:
+    branches: [gpt2-c-stage-bridge-20261010-0640]
+permissions:
+  contents: read
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout official validator authority
+        uses: actions/checkout@v4
+      - name: Checkout frozen C source assets
+        uses: actions/checkout@v4
+        with:
+          ref: b152d00f8c1daa7ba7f926565fc51d8aa10fc4d3
+          path: frozen
+          sparse-checkout: |
+            archive/assets/images/21_매산여고_1학기_중간_고1_기출/q22.png
+            archive/assets/images/21_제일고_1학기_중간_고1_기출/q4.png
+            archive/assets/images/21_제일고_1학기_중간_고1_기출/q16.png
+            archive/assets/images/20_순천고_1학기_중간_고1_기출/q2.png
+            archive/assets/images/20_순천고_1학기_중간_고1_기출/q15.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q8.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q10.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q15.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q18.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q19.png
+            archive/assets/images/19_매산고_1학기_중간_고1_기출/q20.png
+          sparse-checkout-cone-mode: false
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate C11 CREATE + R1 using official V2 CLI
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p .gpt2-c-bridge/reports
+          for stage in CREATE R1; do
+            node archive/tools/archive-stage-validator.mjs --stage "$stage" --exam ".gpt2-c-bridge/C11/$stage.js" --evidence ".gpt2-c-bridge/C11/$stage-evidence.json" --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line GPT_SCHEDULED --campaign-id H1_GPT2_20261006 --stream C --asset-root "$PWD/frozen/archive" --json > ".gpt2-c-bridge/reports/C11-$stage.raw.json" 2> ".gpt2-c-bridge/reports/C11-$stage.stderr.txt"
+            status=$?
+            echo "$status" > ".gpt2-c-bridge/reports/C11-$stage.exitcode.txt"
+            cat ".gpt2-c-bridge/reports/C11-$stage.raw.json"
+          done
+      - name: Export only frozen C source PNG
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .gpt2-c-bridge/export
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/21_매산여고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/21_매산여고_1학기_중간_고1_기출/q22.png" ".gpt2-c-bridge/export/archive/assets/images/21_매산여고_1학기_중간_고1_기출/q22.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/21_제일고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/21_제일고_1학기_중간_고1_기출/q4.png" ".gpt2-c-bridge/export/archive/assets/images/21_제일고_1학기_중간_고1_기출/q4.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/21_제일고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/21_제일고_1학기_중간_고1_기출/q16.png" ".gpt2-c-bridge/export/archive/assets/images/21_제일고_1학기_중간_고1_기출/q16.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/20_순천고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/20_순천고_1학기_중간_고1_기출/q2.png" ".gpt2-c-bridge/export/archive/assets/images/20_순천고_1학기_중간_고1_기출/q2.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/20_순천고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/20_순천고_1학기_중간_고1_기출/q15.png" ".gpt2-c-bridge/export/archive/assets/images/20_순천고_1학기_중간_고1_기출/q15.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q8.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q8.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q10.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q10.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q15.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q15.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q18.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q18.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q19.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q19.png"
+          mkdir -p ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출"
+          cp -- "frozen/archive/assets/images/19_매산고_1학기_중간_고1_기출/q20.png" ".gpt2-c-bridge/export/archive/assets/images/19_매산고_1학기_중간_고1_기출/q20.png"
+      - name: Upload frozen C PNG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GPT2-C-11-FROZEN-PNG-20261010
+          path: .gpt2-c-bridge/export
+          if-no-files-found: error
+          retention-days: 3
+      - name: Upload actual official reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GPT2-C11-OFFICIAL-V2-RAW-20261010
+          path: .gpt2-c-bridge/reports
+          retention-days: 3
