@@ -343,8 +343,8 @@ test('explicit selected-source entry and saved draft restoration retain the inte
 });
 
 test('approved shared high2/high3 sources survive Finder-to-Compose in both browse directions', async () => {
-  assert.equal(catalog.exams.filter(exam => exam.sourceGrade === '고3').length, 0,
-    'the current Archive2 source population has no registered 고3 source; the reverse direction is fixture-verified');
+  assert.ok(catalog.exams.some(exam => exam.sourceGrade === '고3'),
+    'the current Archive2 source population includes registered 고3 sources; the reverse direction is fixture-verified');
   const base = catalog.records.find(row => row.sourceGrade === '고2' &&
     core.subjectProjectionForRecord(row, '', catalog.projectionPolicy));
   assert.ok(base, 'test needs a canonical high2 subject projection');

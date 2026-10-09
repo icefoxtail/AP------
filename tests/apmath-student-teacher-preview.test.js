@@ -38,7 +38,7 @@ assert(
 );
 
 assert(
-  portalRoute.includes("import { canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';") &&
+  /import\s*\{[^}]*\bcanAccessStudent\b[^}]*\bisStaffUser\b[^}]*\}\s*from\s*['"]\.\.\/helpers\/foundation-db\.js['"]/.test(portalRoute) &&
     portalRoute.includes('async function verifyStudentPortalReadAccess') &&
     portalRoute.includes('await canAccessStudent(teacher, studentId, env)') &&
     portalRoute.includes("accessMode: 'teacher_preview', readOnly: true") &&
