@@ -1,0 +1,31 @@
+{
+  "experiment": "reuse-typeset-mathjax-dom-for-split-solution-chunks",
+  "decision": "NOT_IMPLEMENTED",
+  "source": {
+    "archiveFile": "exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+  },
+  "browser": "real Chrome via Playwright CLI, 1280x720 CSS pixels, DPR 1",
+  "route": "mode=exam&prewarm=0&benchmark=20261010-reuse-parity-final",
+  "result": {
+    "sourceQuestions": 23,
+    "examRemainedVisiblePages": 6,
+    "failingQuestionSourceRef": "exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js#legacy:exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js#ordinal:4",
+    "typesetDomTopLevelNodes": 132,
+    "sourceContractChunkCount": 88,
+    "typesetMathNodes": 40,
+    "failure": "SOLUTION_CHUNK_SCHEMA_PARITY_FAILED",
+    "transaction": "foreground solution request rolled back; no solution page committed"
+  },
+  "parity": {
+    "renderedOutputParity": "NOT_OBSERVED; candidate was rejected before placement",
+    "textLoss": "NOT_CLAIMED",
+    "mathMarkupParity": "NOT_CLAIMED",
+    "speedup": "NOT_CLAIMED"
+  },
+  "reason": "Re-segmenting the already-typeset DOM changes the chunk schema from 88 source chunks to 132 DOM-node chunks. Forcing a count match would change split boundaries and measured geometry. The actual planner failed closed and kept the existing exam root visible.",
+  "rawEvidence": [
+    "output/playwright/.playwright-cli/console-2026-10-09T21-11-52-*.log",
+    "output/playwright/solution-render-upgrade-20261010/reuse-parity-probe.js"
+  ]
+}

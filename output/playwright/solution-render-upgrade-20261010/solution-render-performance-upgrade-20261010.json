@@ -1,0 +1,190 @@
+{
+  "reportVersion": "ARCHIVE_SOLUTION_RENDER_PERFORMANCE_UPGRADE_20261010_V1",
+  "reportPath": "C:\\Users\\USER\\Desktop\\AP------\\output\\playwright\\solution-render-upgrade-20261010\\archive-solution-render-performance-upgrade-20261010.md",
+  "workspace": "C:\\Users\\USER\\Desktop\\AP------",
+  "initialHead": "20afab1c516c71e0d4e4d04a2978b1b5e155c268",
+  "finalHead": "78745111d624ddad766c494dd3d6f8bc859bfef8",
+  "headDriftOwnedFileOverlap": 0,
+  "browserConditions": {
+    "browser": "Actual Chrome automation via Playwright",
+    "viewportCssPx": "1280x720",
+    "deviceScaleFactor": 1,
+    "fit": "screen",
+    "questionsPerPage": 4,
+    "coldFlow": "exam -> actual solution button click",
+    "prewarm": "0"
+  },
+  "coldRoster": [
+    {
+      "name": "A 매산여고",
+      "sourcePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sourceSha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "priorColdVisibleReadyMs": 37930,
+      "firstPassFinalVisibleReadyMs": 19016,
+      "upgradeColdVisibleReadyMs": 21035,
+      "solutionLayoutMs": 20533,
+      "mathJaxMs": 14712,
+      "layoutBarriers": 33,
+      "pages": 20,
+      "solutionBoxes": 40,
+      "answers": 23,
+      "continuations": 32,
+      "svgReady": 12,
+      "unrenderedMath": 0,
+      "errors": 0,
+      "clippedBoxes": 0,
+      "pageBodyOverflowPx": 0,
+      "bodyTextSha256": "8bec4e403bba634204ec3396a851488fb74e0ab515046047a0aa9fb350e584b3",
+      "solutionHtmlSha256": "34d5d4fd594126f89fb0a254c7595d04bc019ed1d9c050d44e6f55272307ce61",
+      "rawEvidence": "chrome-A-post-headless.json"
+    },
+    {
+      "name": "B 복성고",
+      "sourcePath": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+      "sourceSha256": "550d579f4470bf6d4613c7865fa3fc5da9175d999b50fc31a97377b28092afae",
+      "priorColdVisibleReadyMs": 8275,
+      "firstPassFinalVisibleReadyMs": 4535,
+      "upgradeColdVisibleReadyMs": 4606,
+      "solutionLayoutMs": 4404,
+      "mathJaxMs": 3761,
+      "layoutBarriers": 3,
+      "pages": 6,
+      "solutionBoxes": 25,
+      "answers": 24,
+      "continuations": 2,
+      "imageReady": 0,
+      "unrenderedMath": 0,
+      "errors": 0,
+      "clippedBoxes": 0,
+      "pageBodyOverflowPx": 2,
+      "bodyTextSha256": "0438732059795b03aaf76adb493344aaa473366a6f4658a5f3ca749514cb9497",
+      "solutionHtmlSha256": "d73f3352edc118c347791209fb71301956f25403e05ec3d5c21bdf9dc54748fd",
+      "rawEvidence": "chrome-B-post-headless.json"
+    },
+    {
+      "name": "C 효천고",
+      "sourcePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "priorColdVisibleReadyMs": 20521,
+      "firstPassFinalVisibleReadyMs": 10301,
+      "upgradeColdVisibleReadyMs": 10211,
+      "solutionLayoutMs": 9840.2,
+      "mathJaxMs": 7622.9,
+      "layoutBarriers": 13,
+      "pages": 14,
+      "solutionBoxes": 29,
+      "answers": 23,
+      "continuations": 12,
+      "svgReady": 18,
+      "unrenderedMath": 0,
+      "errors": 0,
+      "clippedBoxes": 0,
+      "pageBodyOverflowPx": 1,
+      "bodyTextSha256": "d8dc60dda8efdb705c0c9d219d853984c664ece6c8b257899851c8f8f71fb55",
+      "solutionHtmlSha256": "514850954aa312f98cf1f518ec92936f464b625710c36c9cbb4dde72b2b426d2",
+      "rawEvidence": "chrome-C-post.json"
+    }
+  ],
+  "experiments": {
+    "mathJaxDomReuse": {
+      "decision": "NOT_IMPLEMENTED",
+      "evidence": "experiment1-mathjax-dom-reuse-not-implemented.json",
+      "result": "A q4 candidate failed SOLUTION_CHUNK_SCHEMA_PARITY_FAILED; typeset DOM top-level nodes 132 vs source chunk contract 88; candidate transaction did not commit."
+    },
+    "progressiveFirstPage": {
+      "decision": "NOT_IMPLEMENTED",
+      "evidence": [
+        "progressive-first-page-A-prototype.json",
+        "progressive-first-page-A-print-gate.json"
+      ],
+      "planReadyMs": 40106.2,
+      "firstPageDomAfterPlanReadyMs": 2.2,
+      "overlayPaintBeforeFinalVisibleReadyMs": 466,
+      "plannerMeasurementIterations": 32,
+      "printGate": "Test stub observed only the final 20-page solution after MathJax and output envelope readiness; no OS print was executed."
+    },
+    "boundedDefaultPrewarm": {
+      "decision": "IMPLEMENTED_DEFAULT_ON",
+      "policy": "After foreground VISIBLE_READY, wait 1000 ms trusted-input quiet, then idle-start sequential sol then ans from exam; cancel on interaction, print, hidden/pagehide, reuse latest valid ready cache; resume after quiet.",
+      "bEvidence": [
+        "prewarm-default-final-B-state.json",
+        "prewarm-default-final-B-click.json"
+      ],
+      "bExamVisibleReadyMs": 1821,
+      "bSolutionPrewarmMs": 4135,
+      "bAnswerPrewarmMs": 39,
+      "bSolutionClickCacheHitVisibleReadyMs": 72,
+      "aEvidence": [
+        "prewarm-default-A-yielded.json",
+        "prewarm-default-A-after-click.json"
+      ],
+      "aSolutionClickCacheHitVisibleReadyMs": 205,
+      "interactionEvidence": "prewarm-interruption-yield-v2-A.json",
+      "wheelHandlingDelayMs": 53.8,
+      "maxFrameGapMs": 99.9,
+      "maxLongTaskMs": 523,
+      "caveat": "One Chrome device/sample only; the A prewarm batch behavior matches final code, with the later .3 change limited to cache fingerprint/version. Cache HIT is guaranteed only after prewarm completes."
+    }
+  },
+  "fullwidth": {
+    "fixturePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+    "fixtureSha256": "6ae757501d3819612be07d8f14495cf6f016aa90b7693dbd3b62c8a309a7ed55",
+    "rawEvidence": [
+      "chrome-fullwidth-solution-image-final.json",
+      "chrome-fullwidth-dualrun-final.json"
+    ],
+    "screenshot": "fullwidth-q10-chrome.png",
+    "pages": 10,
+    "q10Page": 4,
+    "q10Layout": "columnSpan=2, layoutTag=fullwidth; sole box in fullwidth column",
+    "svg": "390x360 loaded and contained",
+    "unrenderedMath": 0,
+    "errors": 0,
+    "clippedBoxes": 0,
+    "pageBodyOverflowPx": 0,
+    "dualRunParity": true
+  },
+  "finalSourceSha256": {
+    "archive/engine.html": "b6ec80337e7d03de83c2b801f6b51d6a56599dc7cdbb43f0a799e265b997f865",
+    "archive/solution-render-executor.js": "b0fa2ee21092bd64c968f391e890db0865add6344580561c10eb9cd4b8c5e5c3",
+    "archive/layout-materializer.js": "2b5489e93ec6bffbb536f04ac1407d7dff7e2bda1f243593135821c2a09ba122",
+    "archive/screen-runtime-adapter.js": "8d8b73115f1734c15850eb674db649f0cf4cab73de346e54e659dabcf57b6777",
+    "tests/archive-fast-engine-runtime.test.js": "e7ebc9a9d658df825d4ecc2c186bc4dbca93df2628466b4115e29ae3308f778f",
+    "tests/archive-render-authority-adapter.test.js": "1b8d9157d598398dc54473c417cdbe709670f11f93a7b7a8242ab4696eb5eccd"
+  },
+  "checks": [
+    {
+      "command": "node tools/check-archive2-runtime.cjs",
+      "exitCode": 0,
+      "result": "PASS 42/42",
+      "rawOutput": "check-archive2-runtime-final.log"
+    },
+    {
+      "command": "node --test tests/archive-fast-engine-runtime.test.js tests/archive-render-authority-adapter.test.js tests/layout-authority.test.js tests/archive-solution-materializer-fit.test.cjs",
+      "exitCode": 0,
+      "result": "PASS 41/41",
+      "rawOutput": "archive-runtime-relevant-tests-final.log"
+    },
+    {
+      "command": "node tests/archive-solution-image.test.js",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node --check (owned JS and browser test helpers)",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "PASS"
+    }
+  ],
+  "knownLimits": [
+    "Earlier full-browser cancellation PREPARE audit failure remains NOT_PASS and is not conflated with the new background-prewarm DISCARDED_STALE result.",
+    "No actual OS print was launched; the progressive prototype used a window.print test stub.",
+    "Review snapshot exclusion was checked through static source guard, review bridge prewarm=0 contract, and runtime unit test; no live review iframe session was launched.",
+    "The old first-pass raw report/evidence was unavailable in the current checkout after unrelated HEAD drift; prior cold/first-pass times are retained as historical session values and not used to claim incremental speedup over first-pass final."
+  ]
+}

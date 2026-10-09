@@ -1,0 +1,133 @@
+### Result
+{
+  "result": {
+    "ok": true,
+    "mode": "exam",
+    "pages": 7,
+    "transactionId": "render-1791583122708-12",
+    "sessionId": "session-1791583122708-13"
+  },
+  "before": {
+    "sessionId": "session-1791583097143-2",
+    "source": "exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+    "modes": {
+      "exam": null,
+      "sol": null,
+      "ans": null
+    }
+  },
+  "after": {
+    "requestGeneration": 4,
+    "currentSession": {
+      "sessionId": "session-1791583122708-13",
+      "source": "exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "activeMode": "exam",
+      "modes": {
+        "exam": {
+          "status": "ACTIVE",
+          "pages": 7
+        },
+        "sol": null,
+        "ans": null
+      }
+    },
+    "attempts": [
+      {
+        "type": "MODE_CHANGE",
+        "state": "SUCCEEDED",
+        "cache": "MISS",
+        "error": null
+      },
+      {
+        "type": "MODE_CHANGE",
+        "state": "SUCCEEDED",
+        "cache": "MISS",
+        "error": null
+      },
+      {
+        "type": "SOURCE_CHANGE",
+        "state": "SUCCEEDED",
+        "cache": "MISS",
+        "error": null
+      }
+    ]
+  },
+  "audit": [
+    {
+      "event": "scheduled",
+      "at": 2232,
+      "generation": 2,
+      "activeMode": "exam",
+      "modeOrder": [
+        "sol",
+        "ans"
+      ]
+    },
+    {
+      "event": "started",
+      "at": 3235,
+      "generation": 2,
+      "mode": "sol"
+    },
+    {
+      "event": "background-prewarm_ready",
+      "at": 7271,
+      "mode": "sol",
+      "requestGeneration": 2,
+      "visibleReadyMs": null
+    },
+    {
+      "event": "ready",
+      "at": 7272,
+      "generation": 2,
+      "mode": "sol",
+      "code": "",
+      "visibleReadyMs": null
+    },
+    {
+      "event": "started",
+      "at": 8281,
+      "generation": 2,
+      "mode": "ans"
+    },
+    {
+      "event": "background-prewarm_ready",
+      "at": 8326,
+      "mode": "ans",
+      "requestGeneration": 3,
+      "visibleReadyMs": null
+    },
+    {
+      "event": "ready",
+      "at": 8326,
+      "generation": 2,
+      "mode": "ans",
+      "code": "",
+      "visibleReadyMs": null
+    },
+    {
+      "event": "queue-ready",
+      "at": 8327,
+      "generation": 2,
+      "activeMode": "exam"
+    },
+    {
+      "event": "scheduled",
+      "at": 27907,
+      "generation": 4,
+      "activeMode": "exam",
+      "modeOrder": [
+        "sol",
+        "ans"
+      ]
+    }
+  ]
+}
+### Ran Playwright code
+```js
+await page.evaluate('() => ((async()=>{const before=archiveScreenRuntime.inspect().currentSession;const result=await archiveScreenRuntime.request({type:\'SOURCE_CHANGE\',foreground:true,payload:{safeDataUrl:"exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",mode:\'exam\'}});const after=archiveScreenRuntime.inspect();return {result,before:{sessionId:before.sessionId,source:before.sourceArchiveFile,modes:Object.fromEntries(Object.entries(before.modeSnapshots).map(([m,s])=>[m,s&&{status:s.status,pages:s.pageCount}]))},after:{requestGeneration:after.requestGeneration,currentSession:after.currentSession&&{sessionId:after.currentSession.sessionId,source:after.currentSession.sourceArchiveFile,activeMode:after.currentSession.activeMode,modes:Object.fromEntries(Object.entries(after.currentSession.modeSnapshots).map(([m,s])=>[m,s&&{status:s.status,pages:s.pageCount}]))},attempts:after.attempts.slice(-3).map(a=>({type:a.intentType,state:a.state,cache:a.cacheStatus,error:a.error}))},audit:window.__AP_PREWARM_AUDIT__}})())');
+```
+### Page
+- Page URL: http://127.0.0.1:8766/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh1%2F2mid%2F25_%ED%9A%A8%EC%B2%9C%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C.js&mode=exam&fit=screen&benchmark=20261010-source-cache-invalidation-B&qpp=4
+- Page Title: JS아카이브 엔진 - Stage E v1.7.5 (AP Header + Submit QR)
+- Console: 1 errors, 0 warnings

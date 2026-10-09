@@ -42,7 +42,6 @@ async function initArchiveScreenRuntime() {
     const originalKey=params.get('originalSnapshot');
     const strictOutput = params.get('archive2Context') === 'archive2' || params.has('archive2OutputContract') || params.has('outputRequestId');
     if (strictOutput) {
-        document.documentElement.classList.add('archive2-snapshot-output');
         try {
             const contract = window.Archive2OutputContract;
             const outputRequestId = params.get('outputRequestId') || '';
@@ -52,18 +51,19 @@ async function initArchiveScreenRuntime() {
             if (!outputRequestId || !ownerId)
                 throw new Error('출력 요청 ID가 없습니다. 원본에서 다시 열어 주세요.');
             const expectedMode = params.get('mode') || '';
-            const envelope = window.__AP_OUTPUT_ENVELOPE__ || await window.Archive2Output.readOutputEnvelope(
+            const loadedEnvelope = window.__AP_OUTPUT_ENVELOPE__ || await window.Archive2Output.readOutputEnvelope(
                 outputRequestId,
                 ownerId,
                 expectedMode,
             );
             if (window.__AP_OUTPUT_ENVELOPE__) {
-                await contract.validateOutputEnvelope(envelope, {
+                await contract.validateOutputEnvelope(loadedEnvelope, {
                     outputRequestId,
                     ownerId,
                     mode: expectedMode || undefined,
                 });
             }
+            const envelope = window.APRenderStateNormalizer.copy(loadedEnvelope);
             if (!Array.isArray(envelope.questions) || envelope.questions.length !== envelope.questionCount)
                 throw new Error('출력 문항 snapshot이 불완전합니다. 원본에서 다시 열어 주세요.');
             if (params.has('q') && Number(params.get('q')) !== envelope.questionCount)
@@ -71,8 +71,6 @@ async function initArchiveScreenRuntime() {
             if (params.has('qpp') && Number(params.get('qpp')) !== Number(envelope.meta.qpp))
                 throw new Error('쪽당 문항 수가 snapshot과 다릅니다. 원본에서 다시 열어 주세요.');
             const meta = envelope.meta;
-            AppState.outputEnvelope = envelope;
-            window.__AP_OUTPUT_ENVELOPE__ = envelope;
             const sourceArchiveFile = String(meta.sourceArchiveFile || envelope.sourceId || '').trim();
             if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile))
                 throw new Error('원본 출처를 확인할 수 없습니다. 원본에서 다시 열어 주세요.');
@@ -91,6 +89,7 @@ async function initArchiveScreenRuntime() {
                     mode: envelope.mode,
                     qpp: Number(meta.qpp || 4),
                     sourceRequestId: envelope.outputRequestId,
+                    outputEnvelope: envelope,
                 },
             });
             if (!outcome.ok) throw new Error(outcome.code);
@@ -154,24 +153,137 @@ function createArchiveScreenRuntime() {
     let sourceRequestSerial = 0;
     let runtime;
     let idleHandle = null;
+    let idleHandleIsIdleCallback = false;
+    let lastUserActivityAt = performance.now();
+    let prewarmGeneration = 0;
+    let activePrewarmMode = '';
+    const PREWARM_QUIET_MS = 1000;
+    const BACKGROUND_SOLUTION_STAGING_BATCH_SIZE = 1;
+    const BACKGROUND_SOLUTION_CHUNK_BATCH_SIZE = 8;
+    const prewarmAudit = [];
+    const recordPrewarm = (event, details = {}) => {
+        const entry = { event, at: Math.round(performance.now()), ...details };
+        prewarmAudit.push(entry);
+        if (prewarmAudit.length > 40) prewarmAudit.shift();
+        window.__AP_PREWARM_AUDIT__ = prewarmAudit;
+    };
     function cancelIdlePrewarm() {
-        if (idleHandle !== null) { if (window.cancelIdleCallback) cancelIdleCallback(idleHandle); else clearTimeout(idleHandle); idleHandle = null; }
+        if (idleHandle === null) return;
+        if (idleHandleIsIdleCallback && window.cancelIdleCallback) cancelIdleCallback(idleHandle);
+        else clearTimeout(idleHandle);
+        idleHandle = null;
+        idleHandleIsIdleCallback = false;
+    }
+    function prewarmEligible(candidate) {
+        if (!candidate || candidate.source?.sourceKind === 'review-snapshot' || candidate.qrState?.renderSubmit || candidate.qrState?.renderSolution) return false;
+        const params = new URL(candidate.environment.url).searchParams;
+        return params.get('prewarm') !== '0'
+            && params.get('snapshotCache') !== '0'
+            && params.get('qr') !== '1'
+            && params.get('reviewBridge') !== '1'
+            && params.get('preview') !== '1'
+            && params.get('submitQr') !== '1'
+            && params.get('solQr') !== '1'
+            && params.get('renderAuthorityDualRun') !== '1'
+            && params.get('layoutPlanner') !== 'observed'
+            && params.get('measurement') !== 'legacy';
+    }
+    function modeSnapshotMatches(candidate, mode) {
+        const session = runtime.currentSession;
+        const snapshot = session?.modeSnapshots?.[mode];
+        if (!snapshot || snapshot.status !== 'READY' || snapshot.sessionId !== session.sessionId) return false;
+        const targetUrl = new URL(candidate.environment.url);
+        targetUrl.searchParams.set('mode', mode);
+        targetUrl.searchParams.set('qpp', String(candidate.qpp));
+        const target = N.createCandidate({ ...candidate, mode, environment: { ...candidate.environment, url: targetUrl.href } });
+        return snapshot.key === N.computeSnapshotKey(target);
+    }
+    function cancelPrewarm(reason) {
+        cancelIdlePrewarm();
+        prewarmGeneration += 1;
+        if (activePrewarmMode) {
+            recordPrewarm('cancel-requested', { mode: activePrewarmMode, reason });
+            activePrewarmMode = '';
+            runtime?.cancelBackground?.();
+        }
+    }
+    function scheduleIdleWork(work, generation, minimumDelay = PREWARM_QUIET_MS) {
+        cancelIdlePrewarm();
+        const trySchedule = () => {
+            if (generation !== prewarmGeneration) return;
+            const quietFor = performance.now() - lastUserActivityAt;
+            const quietRemaining = Math.max(0, PREWARM_QUIET_MS - quietFor);
+            if (document.visibilityState === 'hidden' || quietRemaining > 0) {
+                idleHandleIsIdleCallback = false;
+                idleHandle = setTimeout(() => { idleHandle = null; trySchedule(); }, Math.max(quietRemaining, 250));
+                return;
+            }
+            if (!window.requestIdleCallback) {
+                idleHandleIsIdleCallback = false;
+                idleHandle = setTimeout(() => { idleHandle = null; work(); }, Math.max(0, minimumDelay));
+                return;
+            }
+            idleHandleIsIdleCallback = true;
+            idleHandle = requestIdleCallback(deadline => {
+                idleHandle = null;
+                idleHandleIsIdleCallback = false;
+                if (generation !== prewarmGeneration) return;
+                if (document.visibilityState === 'hidden' || deadline.timeRemaining() < 20) {
+                    scheduleIdleWork(work, generation, 250);
+                    return;
+                }
+                work();
+            }, { timeout: Math.max(3000, minimumDelay + 2000) });
+        };
+        if (minimumDelay > 0) {
+            idleHandleIsIdleCallback = false;
+            idleHandle = setTimeout(() => { idleHandle = null; trySchedule(); }, minimumDelay);
+        } else trySchedule();
     }
     function schedulePrewarm(ctx) {
-        const params = new URL(ctx.candidate.environment.url).searchParams;
-        if (ctx.background || params.get('prewarm') !== '1' || params.get('snapshotCache') === '0' || params.get('qr') === '1') return;
+        const candidate = ctx?.candidate;
+        if (ctx?.background || !prewarmEligible(candidate)) return;
         cancelIdlePrewarm();
-        const candidate = ctx.candidate;
-        const warm = async () => {
-            idleHandle = null;
-            for (const mode of ['sol', 'ans', 'exam']) {
-                if (runtime.committedCandidate !== candidate) return;
-                if (mode !== candidate.mode) await runtime.prewarm(mode);
-            }
+        const generation = ++prewarmGeneration;
+        const preferred = candidate.mode === 'exam' ? ['sol', 'ans']
+            : candidate.mode === 'sol' ? ['ans', 'exam'] : ['sol', 'exam'];
+        recordPrewarm('scheduled', { generation, activeMode: candidate.mode, modeOrder: preferred });
+        const next = () => {
+            if (generation !== prewarmGeneration || runtime.committedCandidate !== candidate || !prewarmEligible(candidate)) return;
+            if (typeof printPending !== 'undefined' && printPending) return;
+            const mode = preferred.find(item => item !== candidate.mode && !modeSnapshotMatches(candidate, item));
+            if (!mode) { recordPrewarm('queue-ready', { generation, activeMode: candidate.mode }); return; }
+            scheduleIdleWork(() => {
+                if (generation !== prewarmGeneration || runtime.committedCandidate !== candidate || !prewarmEligible(candidate)) return;
+                if ((typeof printPending !== 'undefined' && printPending) || runtime.busy || document.visibilityState === 'hidden') {
+                    scheduleIdleWork(next, generation, 250);
+                    return;
+                }
+                activePrewarmMode = mode;
+                recordPrewarm('started', { generation, mode });
+                runtime.prewarm(mode).then(outcome => {
+                    if (activePrewarmMode === mode) activePrewarmMode = '';
+                    recordPrewarm(outcome.ok ? 'ready' : (outcome.code === 'DISCARDED_STALE' ? 'discarded' : 'not-ready'), {
+                        generation, mode, code: outcome.code || '', visibleReadyMs: outcome.visibleReadyMs || null
+                    });
+                    if (generation === prewarmGeneration && runtime.committedCandidate === candidate && outcome.ok) next();
+                }).catch(error => {
+                    if (activePrewarmMode === mode) activePrewarmMode = '';
+                    recordPrewarm('failed', { generation, mode, error: String(error?.message || error) });
+                });
+            }, generation);
         };
-        idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
+        next();
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20261003.2', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    function recordUserActivity(event) {
+        if (event?.isTrusted === false) return;
+        lastUserActivityAt = performance.now();
+        if (idleHandle === null && !activePrewarmMode) return;
+        const candidate = runtime?.committedCandidate;
+        cancelPrewarm(event?.type || 'user-input');
+        if (candidate && prewarmEligible(candidate)) schedulePrewarm({ candidate });
+    }
+    const initialFingerprints = Object.freeze({ engine: 'archive-solution-upgrade-20261010.4', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: 'solution-layout-roster-20261010.2', pageLayout: 'engine-fullwidth-aware-20261010.2', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
@@ -187,7 +299,7 @@ function createArchiveScreenRuntime() {
         };
         const next = { ...base };
         const payload = intent.payload || {};
-        const url = new URL(base.url);
+        let url = new URL(base.url);
         if (intent.type === 'SOURCE_CHANGE') {
             if (payload.sourceKind === 'review-snapshot') {
                 if (!Array.isArray(payload.questionBank)) throw new Error('INVALID_REVIEW_SNAPSHOT');
@@ -227,7 +339,10 @@ function createArchiveScreenRuntime() {
                 url.searchParams.set('data', safe);
             }
         }
-        if (intent.type === 'MODE_CHANGE') next.mode = intent.requestedMode;
+        if (intent.type === 'MODE_CHANGE') {
+            next.mode = intent.requestedMode;
+            if (payload.printHeaderOptions) next.header = payload.printHeaderOptions;
+        }
         if (url.searchParams.get('qr') === '1') next.mode = 'sol';
         if (intent.type === 'QPP_CHANGE') next.qpp = payload.qpp;
         if (intent.type === 'HEADER_CHANGE') next.header = { ...base.header, ...payload.printHeaderOptions };
@@ -245,6 +360,20 @@ function createArchiveScreenRuntime() {
         if (!Number.isInteger(next.qpp) || next.qpp < 1 || next.qpp > 40) throw new Error('INVALID_QPP');
         url.searchParams.set('mode', next.mode);
         url.searchParams.set('qpp', String(next.qpp));
+        const outputEnvelope = ['MODE_CHANGE', 'SOURCE_CHANGE'].includes(intent.type) ? payload.outputEnvelope : null;
+        if (outputEnvelope) {
+            const outputUrl = new URL(payload.outputUrl || base.url, base.url);
+            if (outputUrl.origin !== new URL(base.url).origin || outputUrl.pathname !== new URL(base.url).pathname ||
+                outputEnvelope.mode !== next.mode || outputUrl.searchParams.get('mode') !== next.mode ||
+                outputUrl.searchParams.get('archive2Context') !== 'archive2' ||
+                outputUrl.searchParams.get('archive2OutputContract') !== outputEnvelope.contractVersion ||
+                outputUrl.searchParams.get('outputRequestId') !== outputEnvelope.outputRequestId ||
+                outputUrl.searchParams.get('outputOwnerId') !== outputEnvelope.ownerId ||
+                outputUrl.searchParams.get('q') !== String(outputEnvelope.questionCount) ||
+                outputUrl.searchParams.get('qpp') !== String(outputEnvelope.meta?.qpp || next.qpp) ||
+                (intent.type === 'MODE_CHANGE' && N.semanticDigest(outputEnvelope.meta?.printHeaderOptions || {}) !== N.semanticDigest(next.header || {})))
+                throw new Error('OUTPUT_MODE_TRANSACTION_MISMATCH');
+        }
         next.url = url.href;
         return N.copy(next);
     }
@@ -392,6 +521,20 @@ function createArchiveScreenRuntime() {
         ctx.readinessTracker = window.APPrintRuntime.createReadinessTracker('ArchiveAdapter');
         ctx.readinessTracker.begin({ source: candidate.source.sourceArchiveFile, transactionId: ctx.transactionId });
         ctx.readinessTracker.mark('DATA_READY', { questions: ctx.buildState.data.length, sourceArchiveFile: candidate.source.sourceArchiveFile });
+        const yieldBackgroundTypesetting = () => new Promise(resolve => setTimeout(resolve, 0));
+        const typesetBackgroundBatches = async (label, targets, batchSize) => {
+            let result = true;
+            for (let offset = 0; offset < targets.length; offset += batchSize) {
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                result = await window.APRenderLoop.typeset(label, targets.slice(offset, offset + batchSize), ctx.metrics);
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                if (offset + batchSize < targets.length) {
+                    await yieldBackgroundTypesetting();
+                    if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                }
+            }
+            return result;
+        };
         ctx.deps = {
             ...archiveExamDeps, ...archiveSolutionDeps, ...archiveAnswerDeps,
             appState: ctx.buildState, stagingHost: ctx.stagingHost,
@@ -403,6 +546,7 @@ function createArchiveScreenRuntime() {
             rendererMode: () => candidate.rendererMode,
             measurementMode: () => new URL(candidate.environment.url).searchParams.get('measurement') === 'legacy' ? 'legacy' : 'batch',
             layoutPlannerMode: () => new URL(candidate.environment.url).searchParams.get('layoutPlanner') === 'observed' ? 'observed' : 'authority',
+            renderAuthorityDualRun: () => new URL(candidate.environment.url).searchParams.get('renderAuthorityDualRun') === '1',
             renderExamPlan: input => window.APArchiveLayoutMaterializer.exam({ ...input, deps: ctx.deps }),
             renderSolutionPlan: input => window.APArchiveLayoutMaterializer.solution({ ...input, deps: ctx.deps }),
             onLayoutPlan: evidence => {
@@ -412,6 +556,14 @@ function createArchiveScreenRuntime() {
             clearMath: elements => window.MathJax?.typesetClear?.(elements),
             typesetMath: async (label, elements) => {
                 if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                if (ctx.background && label === 'solution-staging') {
+                    const boxes = elements.flatMap(element => element.matches?.('.sol-box') ? [element] : [...(element.querySelectorAll?.('.sol-box') || [])]);
+                    return typesetBackgroundBatches(label, boxes, BACKGROUND_SOLUTION_STAGING_BATCH_SIZE);
+                }
+                if (ctx.background && label === 'solution-planner-chunks') {
+                    const chunks = elements.flatMap(element => element.matches?.('.sol-chunk') ? [element] : [...(element.querySelectorAll?.('.sol-chunk') || [])]);
+                    return typesetBackgroundBatches(label, chunks, BACKGROUND_SOLUTION_CHUNK_BATCH_SIZE);
+                }
                 const result = await window.APRenderLoop.typeset(label, elements, ctx.metrics);
                 if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
                 return result;
@@ -458,9 +610,12 @@ function createArchiveScreenRuntime() {
     function capture(ctx) {
         const area = document.getElementById('print-area');
         const controls = [...document.querySelectorAll('#mode-ctrl input,#mode-ctrl button,#ctrl-title,#qpp-display')].map(node => ({ node, className: node.className, style: node.style.cssText, value: node.value, checked: node.checked, text: node.tagName === 'INPUT' ? null : node.textContent }));
-        return { area, parent: area.parentNode, nextSibling: area.nextSibling, appState: { ...AppState }, controls,
+        const outputEnvelopeGlobals = ['__AP_OUTPUT_ENVELOPE__', '__AP_OUTPUT_ENVELOPE_READY__', '__AP_OUTPUT_RENDER_READY__', '__AP_OUTPUT_RENDER_ERROR__']
+            .map(key => [key, Object.getOwnPropertyDescriptor(window, key)]);
+        return { area, parent: area.parentNode, nextSibling: area.nextSibling, appState: { ...AppState }, controls, outputEnvelopeGlobals,
             url: location.href, historyState: history.state, readiness: archiveReadinessTracker, metrics: window.__AP_RENDER_METRICS__,
-            dataset: { ...document.documentElement.dataset }, scale: document.documentElement.style.getPropertyValue('--screen-page-scale') };
+            dataset: { ...document.documentElement.dataset }, scale: document.documentElement.style.getPropertyValue('--screen-page-scale'),
+            snapshotOutputClass: document.documentElement.classList.contains('archive2-snapshot-output') };
     }
     function attach(ctx, journal) {
         journal.area.removeAttribute('id');
@@ -472,6 +627,26 @@ function createArchiveScreenRuntime() {
     }
     function commit(ctx) {
         Object.assign(AppState, ctx.buildState);
+        const outputEnvelope = ctx.intent?.payload?.outputEnvelope;
+        if (outputEnvelope) {
+            AppState.outputEnvelope = outputEnvelope;
+            window.__AP_OUTPUT_ENVELOPE__ = outputEnvelope;
+            window.__AP_OUTPUT_ENVELOPE_READY__ = {
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+            };
+            window.__AP_OUTPUT_RENDER_READY__ = null;
+            window.__AP_OUTPUT_RENDER_ERROR__ = null;
+            document.documentElement.classList.add('archive2-snapshot-output');
+        } else if (ctx.intentType === 'SOURCE_CHANGE') {
+            delete AppState.outputEnvelope;
+            delete window.__AP_OUTPUT_ENVELOPE__;
+            delete window.__AP_OUTPUT_ENVELOPE_READY__;
+            delete window.__AP_OUTPUT_RENDER_READY__;
+            delete window.__AP_OUTPUT_RENDER_ERROR__;
+            document.documentElement.classList.remove('archive2-snapshot-output');
+        }
         archiveReadinessTracker = ctx.readinessTracker;
         window.__AP_RENDER_METRICS__ = ctx.metrics;
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${ctx.candidate.mode}`));
@@ -491,7 +666,7 @@ function createArchiveScreenRuntime() {
         document.documentElement.dataset.apRenderReady = 'true';
         // No operation that may throw follows history. pushState is atomic on failure.
         const method = ctx.intentType === 'MODE_CHANGE' ? 'pushState' : 'replaceState';
-        history[method](null, '', ctx.candidate.environment.url);
+        history[method](null, '', ctx.intent?.payload?.outputUrl || ctx.candidate.environment.url);
     }
     function rollback(ctx, journal) {
         ctx.targetArea?.removeAttribute('id');
@@ -500,6 +675,10 @@ function createArchiveScreenRuntime() {
         journal.area.id = 'print-area';
         for (const key of Object.keys(AppState)) delete AppState[key];
         Object.assign(AppState, journal.appState);
+        for (const [key, descriptor] of journal.outputEnvelopeGlobals || []) {
+            if (descriptor) Object.defineProperty(window, key, descriptor);
+            else delete window[key];
+        }
         archiveReadinessTracker = journal.readiness;
         window.__AP_RENDER_METRICS__ = journal.metrics;
         for (const item of journal.controls) {
@@ -510,6 +689,7 @@ function createArchiveScreenRuntime() {
         }
         for (const key of Object.keys(document.documentElement.dataset)) delete document.documentElement.dataset[key];
         Object.assign(document.documentElement.dataset, journal.dataset);
+        document.documentElement.classList.toggle('archive2-snapshot-output', journal.snapshotOutputClass);
         document.documentElement.style.setProperty('--screen-page-scale', journal.scale);
         if (location.href !== journal.url) history.replaceState(journal.historyState, '', journal.url);
     }
@@ -548,9 +728,13 @@ function createArchiveScreenRuntime() {
         cleanup(root) { if (!root) return; window.MathJax?.typesetClear?.([root]); root.remove(); },
         release(ctx) { if (ctx.stagingHost) { window.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
         visible: async () => { updateScreenFitScale(); await raf(); },
-        onRequest(promise) { cancelIdlePrewarm(); window.__AP_RENDER_READY__ = promise; },
+        onRequest(promise) { cancelPrewarm('foreground-request'); window.__AP_RENDER_READY__ = promise; },
         observe(event, ctx) {
-            if (ctx.background) { window.__AP_PREWARM_METRICS__ = ctx.metrics; return; }
+            if (ctx.background) {
+                window.__AP_PREWARM_METRICS__ = ctx.metrics;
+                recordPrewarm('background-' + event.toLowerCase(), { mode: ctx.candidate?.mode || '', requestGeneration: ctx.requestGeneration, visibleReadyMs: ctx.visibleReadyMs || null });
+                return;
+            }
             document.documentElement.dataset.apScreenRuntime = JSON.stringify({ event, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, state: ctx.state, error: ctx.error || null, committed: ctx.committed, visibleReadyMs: ctx.visibleReadyMs || null });
             if (event === 'VISIBLE_READY') {
                 ctx.metrics.visibleReadyMs = ctx.visibleReadyMs;
@@ -558,6 +742,19 @@ function createArchiveScreenRuntime() {
                 schedulePrewarm(ctx);
             }
         }
+    });
+    document.addEventListener('pointerdown', recordUserActivity, { capture: true, passive: true });
+    document.addEventListener('wheel', recordUserActivity, { capture: true, passive: true });
+    document.addEventListener('keydown', recordUserActivity, true);
+    document.addEventListener('input', recordUserActivity, { capture: true, passive: true });
+    document.addEventListener('beforeprint', () => cancelPrewarm('beforeprint'), true);
+    window.addEventListener('pagehide', () => cancelPrewarm('pagehide'));
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') cancelPrewarm('document-hidden');
+        else if (runtime.committedCandidate) schedulePrewarm({ candidate: runtime.committedCandidate });
+    });
+    window.addEventListener('afterprint', () => {
+        if (runtime.committedCandidate) schedulePrewarm({ candidate: runtime.committedCandidate });
     });
     let fontReadyObserved = false;
     document.fonts?.ready.then(() => { fontReadyObserved = true; });
