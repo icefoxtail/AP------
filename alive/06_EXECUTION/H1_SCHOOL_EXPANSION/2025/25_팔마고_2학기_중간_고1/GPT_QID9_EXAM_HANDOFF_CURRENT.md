@@ -1,3 +1,12 @@
+# CURRENT 2026-10-10 — Q17–Q23 user-directed approval and main merge
+
+- User instruction: “팔마고 문제은행 검수 17-23번 프로덕션파일 메인에 운영병합해줘”. The instruction binds `USER_DIRECTED_QUALITY_APPROVED` to Q17–Q23 A1–C3 (63 UIDs), using `GPT_QID9_Q17_Q20_OPENBOOK_REVIEW_REPAIR_20261010.md` and `GPT_QID9_Q21_Q23_OPENBOOK_REVIEW_REPAIR_20261010.md` plus each exact final package SHA.
+- Review ledgers: Q17–Q20 36/36, KEEP 26 / REVISED 10 / HOLD 0; Q21–Q23 27/27, KEEP 11 / REVISED 16 / HOLD 0. Total content-review disposition: 63/63, KEEP 37 / REVISED 26 / HOLD 0.
+- Approval receipt: `GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json`.
+- This approval records content-quality authority only. Consumer/index registration is still NOT_REGISTERED; Q22 solution SVGs have not passed student Consumer/desktop-render closure, and Q17–Q19/Q23 remain in the separate solution-visual line. No student Chrome PASS or MAIN_DONE is claimed by this handoff.
+- Current branch: `work/alive-25-palma-h1-2mid-qid9`.
+
+---
 ## CURRENT 2026-10-10 — 원본 Q23 지정 제작 (Q22 동시 작업 반영)
 - 원본 Q23: 두 직선까지의 거리에서 네 교점 평행사변형의 넓이. RPM Primary L3 `점과 직선 사이의 거리` (`H1-RPM-216`).
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`에 `GPT_QID9_Q23_PACKAGE.json` 신규 A1~C3 9개 및 제작자 역발문 ledger 저장. Q01~Q21 189개 보호 → 총 CREATE 198개(22번은 미제작).
