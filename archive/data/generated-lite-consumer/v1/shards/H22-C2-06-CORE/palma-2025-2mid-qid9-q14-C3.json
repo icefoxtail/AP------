@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_14",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-C3.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-C3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 14,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-C3.js",
+      "sourceShardGitSha": "6bd2fbf30dabbfc1b3e30b664bbc5c52d409226b",
+      "localOrdinal": 1,
+      "l2": "H22-C2-06-CORE",
+      "slot": "C3",
+      "purposeGroup": "C",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q14-C3",
+        "level": "상",
+        "difficultyBucket": 5,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "자연수 $k$와 $-5\\le a\\le5$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+2ax-k<0$이다.’를 생각하자. 이 명제의 부정이 참이 되는 정수 $a$가 정확히 $6$개일 때, 가능한 모든 $k$의 값의 합은?",
+        "choices": [
+          "$39$",
+          "$26$",
+          "$35$",
+          "$45$",
+          "$9$"
+        ],
+        "answer": "③",
+        "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+2ax-k\\ge0$이다.’이다.\n$-x^2+2ax-k=-(x-a)^2+a^2-k$이므로, 부정 명제가 참일 조건은 최댓값 $a^2-k\\ge0$, 즉 $a^2\\ge k$이다.\n$-5\\le a\\le5$인 정수 가운데 이를 만족하는 값이 정확히 $6$개이면 $a=-5,-4,-3,3,4,5$여야 한다.\n따라서 $a=\\pm3$에서는 $3^2\\ge k$가 성립하고, $a=\\pm2$에서는 $2^2<k$여야 한다.\n즉 $4<k\\le9$이다. 자연수 $k$는 $5,6,7,8,9$이며 합은 $5+6+7+8+9=35$이다.\n따라서 정답은 ③이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "C3",
+        "purposeGroup": "C",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "generatedL4RegistrySha256": "893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE",
+            "COND_NATURAL_NUMBER",
+            "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 5,
+          "level": "상",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE"
+        },
+        "metaFinalSha256": "1c4eb9d6a10c474452599a9fedac550e795ab16cf8cdb74c67a0f1dbe74ae1b8",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-C3.json",
+          "sha256": "2c0445381d383e183718d08645854bb2646e6cd5bec1848a735da1e29c956c43",
+          "reviewStatus": "REVIEW_PASS",
+          "uid": "ALITE-PALMA25-2MID-Q14-C3"
+        },
+        "metaReviewEvidenceSha256": "2c0445381d383e183718d08645854bb2646e6cd5bec1848a735da1e29c956c43",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-244",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "generatedL4RegistrySha256": "893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE"
+      },
+      "metaFinalSha256": "1c4eb9d6a10c474452599a9fedac550e795ab16cf8cdb74c67a0f1dbe74ae1b8",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-C3.json",
+        "sha256": "2c0445381d383e183718d08645854bb2646e6cd5bec1848a735da1e29c956c43",
+        "reviewStatus": "REVIEW_PASS",
+        "uid": "ALITE-PALMA25-2MID-Q14-C3"
+      },
+      "metaReviewEvidenceSha256": "2c0445381d383e183718d08645854bb2646e6cd5bec1848a735da1e29c956c43"
+    }
+  ],
+  "sourceShardGitSha": "6bd2fbf30dabbfc1b3e30b664bbc5c52d409226b"
+}
