@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "stage": "CREATE",
+  "examUid": "23_순천여고_1학기_중간_고2_확률과통계",
+  "performedBeforeTargetSolutionWork": true,
+  "performedAt": "2026-10-09T01:46:58.063Z",
+  "solutionWorkMode": "SOURCE_ONLY_CREATE",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+      "sha256": "sha256:5630a423d5c39b7443de6d5a41fed1308726cbf45a3141d253b293791b8b0096",
+      "gitBlobSha": "b3f726be20b3ae470dda9641bac8a70f162c70a2"
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
+      "sha256": "sha256:2f88b67bb628c4485861122fc6a63df15900182a70f1bba89fc0d3c3f198bb15",
+      "gitBlobSha": "e436352fc2d8fc5433340d06f7667a1c70db2e24"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+      "qid": 1,
+      "solutionSha256": "sha256:e34bf8a4e9124b3ce9d12e667379303501c2201cc3f9762de2a4eb4532de5d85",
+      "solutionExcerpt": "원순열은 회전만 다른 배열을 같은 것으로 보므로 한 사람을 기준으로 고정한다.",
+      "observation": "[키포인트] 원순열은 회전만 다른 배열을 같은 것으로 보므로 한 사람을 기준으로 고정한다.\n조건 정리: 서로 다른 6명이 원탁에 둘러앉는다.\n풀이 방향:; 필요한 조건을 식에 반영하고 단계별 계산을 거쳐 결론까지 닫는다."
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+      "qid": 3,
+      "solutionSha256": "sha256:42f4c780cfe9ca1512171da28ac8f0997171f7714d7bf41087c0e05088388439",
+      "solutionExcerpt": "같은 문자가 있는 순열은 같은 문자끼리 바뀐 경우를 중복으로 나누어 준다.",
+      "observation": "[키포인트] 같은 문자가 있는 순열은 같은 문자끼리 바뀐 경우를 중복으로 나누어 준다.\n조건 정리: PEOPLE은 전체 6글자이고, P가 2개, E가 2; 필요한 조건을 식에 반영하고 단계별 계산을 거쳐 결론까지 닫는다."
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
+      "qid": 3,
+      "solutionSha256": "sha256:4c5c69667b3c41b45601f5d6368245f49db4f30074ea69140885030e77717741",
+      "solutionExcerpt": "최단 경로는 필요한 방향 이동의 순서를 배열하는 문제로 볼 수 있다.",
+      "observation": "[키포인트] 최단 경로는 필요한 방향 이동의 순서를 배열하는 문제로 볼 수 있다.\n조건 정리: $A$에서 $L$까지는 가로 방향으로 $2$번, 깊이 방향; 필요한 조건을 식에 반영하고 단계별 계산을 거쳐 결론까지 닫는다."
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
+      "qid": 4,
+      "solutionSha256": "sha256:09dd9f323c93903b14ffb75ab1f18c176afef0aca72e1cb9f62eea4a46dbff2b",
+      "solutionExcerpt": "이차방정식이 중근을 가지려면 판별식이 $0$이어야 한다.",
+      "observation": "[키포인트] 이차방정식이 중근을 가지려면 판별식이 $0$이어야 한다.\n조건 정리: $A$는 동전을 $8$번 던질 때 앞면이 나오는 횟수이므로 $A\\sim; 필요한 조건을 식에 반영하고 단계별 계산을 거쳐 결론까지 닫는다."
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    }
+  ],
+  "negativeFindingsReviewed": [
+    "Read the fixture README: labels without matching SVG coordinates are false PASS.",
+    "Source-enumerated cases must remain separate actual solution blocks.",
+    "Runtime JS escaping must be checked after sandbox evaluation."
+  ],
+  "calibrationDecision": "Golden examples model explicit condition-to-formula-to-calculation-to-answer continuity. For the current combinatorics/probability exam, each case will show the counting model and all factors before simplifying, keep subparts/cases separated, and explain why symmetry or restrictions change the count. The negative fixture forbids relying on self-reported audits or labels without physical evidence."
+}

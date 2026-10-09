@@ -1,0 +1,3264 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "23_순천여고_1학기_중간_고2_확률과통계",
+  "artifactSha": "043e86d53b7a6d008337f168aa0707ea8dd68d4e",
+  "artifactRawSha256": "f248064f4872fe0b581d915783151223d4d7a4619960d845fe61d4b737d25840",
+  "questionCount": 23,
+  "createdAt": "2026-10-09T02:06:04.719Z",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read the actual solution: complete-square form fixes center (-3,1), center moves to (-5,2), then origin symmetry maps to (5,-2); radius stays 3. Read q7 SVG and rendered preview: dashed original/intermediate circles and final circle track those centers and unchanged radius; do not treat image-renderer font fallback as browser evidence.",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg"
+          },
+          {
+            "qid": 14,
+            "solutionSha256": "10ee4e341cb3da057af2893386417777181ad5c84adeaf49c917a91ed7dd50a2",
+            "observation": "Read the actual solution: maximum intersection 14; inclusion-exclusion gives minimum 3; the two panels map exact disjoint/intersection counts to the limiting cases. Rendered Venn circles keep A/B owners and the overlap labels legible.",
+            "visualSha256": "329a041add7ad65e98913b3aef6b1f401b3d96713986609acad2d4de9ed8d135",
+            "visualRef": "assets/images/25_매산여고_2학기_중간_고1_기출/q14-solution.svg"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read the actual solution and q02 SVG: the lines have slopes -1/3 and k/2; the drawn blue shallow negative line and red steep positive line express perpendicularity. Rendered side text has math-font fallback boxes in ImageMagick; no browser PASS is inferred.",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+            "observation": "Read the actual solution and q03 SVG: center (-1,3), radius 2, with point (1,3) at the rightmost radius endpoint. Rendered circle/center/radius geometry matches those facts; do not copy unrelated typography.",
+            "visualSha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+            "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "qid": 17,
+            "solutionSha256": "dc90f7eeb09e7d4b09deaa46cf76518426ab5f9e832a005a690e7082177af03b",
+            "observation": "Read the actual solution and q17 SVG: vector AB=(-3,4), the admissible perpendicular side vector is (4,3), CD endpoints (6,11),(9,7), and the diameter circle is centered at (15/2,9) with radius 5/2. Rendered polygon/circle coordinates and labels agree; image renderer shows MathJax fallback boxes in some text.",
+            "visualSha256": "f87f8dab040c26c459d7056923c9801d7655db1d46e65159851f406ded5bc35a",
+            "visualRef": "assets/images/25_제일고_2학기_중간_고1_기출/q17-solution.svg"
+          },
+          {
+            "qid": 22,
+            "solutionSha256": "53aa1f776ff9f4bb671f7f0ff436e7f38feed37c59475d616f0fe769681fc99f",
+            "observation": "Read the actual solution and q22 SVG: center distance 5, source-circle radius 4, integer radii d=1..9; endpoint tangencies give one each and seven interior radii give two each, total 16. Rendered nested-circle intersections illustrate endpoint/interior counts; renderer fallback boxes are not treated as production render evidence.",
+            "visualSha256": "48b7eaf6353b98c1c0433013d5acf20aef62e6480540b610ae904412af5ba988",
+            "visualRef": "assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read failure fixture and confirmed the concrete false-PASS cases: SVG labels can disagree with actual primitives, enumerated subparts must be separated in rendered solution blocks, and runtime TeX escape damage requires sandbox-level checks. These cases guide review without inheriting the rejected outputs."
+    }
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "중복조합의 정의를 직접 적용한다.",
+          "decisiveStep": "중복조합 기호를 조합 기호로 바꾸어 계산한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 1,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "3f64fb94d2aa0ed6ffac3cd84ad2dc4322b7fb727ec28fa8097430995bfb38ac",
+          "currentStudentTextSha256": "3f64fb94d2aa0ed6ffac3cd84ad2dc4322b7fb727ec28fa8097430995bfb38ac",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "원순열은 한 사람을 고정해 회전 중복을 제거한다.",
+          "decisiveStep": "회전 중복을 없애기 위해 한 사람을 고정하고 나머지를 배열한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 2,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "b1019e640c1cdb0bb001499e03a72a6b435bdcf3550573752e6f7d5709a9b371",
+          "currentStudentTextSha256": "b1019e640c1cdb0bb001499e03a72a6b435bdcf3550573752e6f7d5709a9b371",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "현재 ACTIVE PT는 H15-PS-01 순열에 결속되어 있으나 exact repeated-digit template binding이 없다.",
+          "primaryMethod": "첫 자리의 0 금지와 뒤 자리의 중복 허용을 함께 적용한다.",
+          "decisiveStep": "첫 자리의 0 제한과 나머지 자리의 중복 허용을 따로 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 3,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "2775de37d876e59ce8b4c36eebd658813477856b9d5921ce85daa9884be9f33a",
+          "currentStudentTextSha256": "2775de37d876e59ce8b4c36eebd658813477856b9d5921ce85daa9884be9f33a",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "두 계단 이동 횟수별로 이동 순서를 조합으로 센다.",
+          "decisiveStep": "두 계단 이동 횟수 k별로 위치를 조합으로 세어 모두 더한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 4,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "d459c2acec343c0617e6c96d5fb407354e426c16d234f48bea206571860598d6",
+          "currentStudentTextSha256": "d459c2acec343c0617e6c96d5fb407354e426c16d234f48bea206571860598d6",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "H15-PS-02 이항계수의 성질에 exact curriculum template binding이 아직 없다.",
+          "primaryMethod": "이항계수의 합을 2^n으로 바꾼 뒤 지수 경계를 정한다.",
+          "decisiveStep": "이항계수의 합을 2^n으로 바꾼 뒤 경계 거듭제곱을 확인한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 5,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "86023cfa45e9a73afffe1c49765a37b5609c635d4d288458b26aefb78c559ba7",
+          "currentStudentTextSha256": "86023cfa45e9a73afffe1c49765a37b5609c635d4d288458b26aefb78c559ba7",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "AUDITED_REPAIR",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "H15-PS-02 이항계수 성질의 현재 ACTIVE template은 있으나 exact curriculum binding이 없다.",
+          "primaryMethod": "색칠된 두 대각선의 합을 각각 조합계수 합으로 계산한다.",
+          "decisiveStep": "색칠된 두 대각선을 조합계수로 읽고 각각의 합을 계산한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "PROBLEM_RASTER_SOURCE_REPAIRED",
+          "necessity": "VISUAL_REQUIRED",
+          "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+          "assetSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+          "actualAssetOpened": true,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The source problem figure was opened from the repaired 300dpi crop; no solution SVG is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 6,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "a1cefebaf8e0884a861be10f5e98dafa3531c358847739186c4d845a28993c16",
+          "currentStudentTextSha256": "a1cefebaf8e0884a861be10f5e98dafa3531c358847739186c4d845a28993c16",
+          "baselineImageRef": "archive/assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+          "finalImageRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+          "imageRefMigration": "archive/assets/ → assets/"
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        },
+        "repair": {
+          "category": "MISSING_ASSET",
+          "scope": "QID_ONLY",
+          "reason": "Existing student asset is nearly blank and omits the Pascal triangle needed to identify the highlighted coefficient entries.",
+          "sourceReviewEvidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+            "sha256": "cedf6cdd97c91d5b6ff859e2940c32a47920b4a3bb1f5effa1886f759962dc97"
+          },
+          "originalPdfSha256": "cbdba973d67621babfcd08fbff232acef0488557c6e10f0a254018f6f53bc78f",
+          "reviewedQid": 6,
+          "originalPdfPage": 2,
+          "sourceTextChanged": false,
+          "changedFields": [
+            "image",
+            "problem image asset bytes"
+          ]
+        },
+        "repairedTruth": {
+          "reviewedTrue": "The PDF crop shows the Pascal triangle through row 10 and the shaded band; all coefficient labels needed to identify the marked cells remain in frame. Scan artifacts are preserved.",
+          "canonicalAssetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+          "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q06.png",
+          "assetSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+          "opened": true,
+          "aliasPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\archive\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q06.png",
+          "aliasSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97"
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "회전 중복을 없애고 지휘자의 양옆 조건을 적용한다.",
+          "decisiveStep": "지휘자를 고정한 뒤 양옆 바이올린의 순서와 나머지 연주자 배열을 곱한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 7,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "7424b8e2961cab7d8f84cad0bde0a422b754648cafc8633aaef0146ead442653",
+          "currentStudentTextSha256": "7424b8e2961cab7d8f84cad0bde0a422b754648cafc8633aaef0146ead442653",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "AUDITED_REPAIR",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "중앙 색 하나와 바깥 네 영역의 회전 배열을 따로 센다.",
+          "decisiveStep": "중심 영역 색을 먼저 정하고 바깥 네 색의 원순열을 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "PROBLEM_RASTER_SOURCE_REPAIRED",
+          "necessity": "VISUAL_REQUIRED",
+          "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+          "assetSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+          "actualAssetOpened": true,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The source problem figure was opened from the repaired 300dpi crop; no solution SVG is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 8,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "d658830c94dff507aabb8e6d4b49d4313a98f2304696f0f9faee7cabe034b339",
+          "currentStudentTextSha256": "d658830c94dff507aabb8e6d4b49d4313a98f2304696f0f9faee7cabe034b339",
+          "baselineImageRef": "archive/assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+          "finalImageRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+          "imageRefMigration": "archive/assets/ → assets/"
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        },
+        "repair": {
+          "category": "MISSING_ASSET",
+          "scope": "QID_ONLY",
+          "reason": "Existing student asset is a cut-off body-text crop; the concentric-circle diagram is absent.",
+          "sourceReviewEvidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+            "sha256": "cedf6cdd97c91d5b6ff859e2940c32a47920b4a3bb1f5effa1886f759962dc97"
+          },
+          "originalPdfSha256": "cbdba973d67621babfcd08fbff232acef0488557c6e10f0a254018f6f53bc78f",
+          "reviewedQid": 8,
+          "originalPdfPage": 2,
+          "sourceTextChanged": false,
+          "changedFields": [
+            "image",
+            "problem image asset bytes"
+          ]
+        },
+        "repairedTruth": {
+          "reviewedTrue": "The PDF crop shows the central disk and four annular sectors, which are the five regions described by the prompt.",
+          "canonicalAssetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+          "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q08.png",
+          "assetSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+          "opened": true,
+          "aliasPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\archive\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q08.png",
+          "aliasSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7"
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "AUDITED_REPAIR",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "서로 다른 모서리 무리에 남자를 놓은 뒤 3회전 중복을 제거한다.",
+          "decisiveStep": "서로 다른 모서리 무리에 남자를 배정하고 회전 중복 3을 제거한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "PROBLEM_RASTER_SOURCE_REPAIRED",
+          "necessity": "VISUAL_REQUIRED",
+          "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+          "assetSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+          "actualAssetOpened": true,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "The source problem figure was opened from the repaired 300dpi crop; no solution SVG is needed."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 9,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "773b14f90a80792a602e90a85715211b1fd2edd12e19c3e611f6ae1d64de7406",
+          "currentStudentTextSha256": "773b14f90a80792a602e90a85715211b1fd2edd12e19c3e611f6ae1d64de7406",
+          "baselineImageRef": "archive/assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+          "finalImageRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+          "imageRefMigration": "archive/assets/ → assets/"
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        },
+        "repair": {
+          "category": "MISSING_ASSET",
+          "scope": "QID_ONLY",
+          "reason": "Existing student asset contains clipped body text and only a partial seat figure.",
+          "sourceReviewEvidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+            "sha256": "cedf6cdd97c91d5b6ff859e2940c32a47920b4a3bb1f5effa1886f759962dc97"
+          },
+          "originalPdfSha256": "cbdba973d67621babfcd08fbff232acef0488557c6e10f0a254018f6f53bc78f",
+          "reviewedQid": 9,
+          "originalPdfPage": 3,
+          "sourceTextChanged": false,
+          "changedFields": [
+            "image",
+            "problem image asset bytes"
+          ]
+        },
+        "repairedTruth": {
+          "reviewedTrue": "The PDF crop shows the triangular table and six seats around its three corner groups. Pencil marks within the scanned diagram are retained without interpretation or cleanup.",
+          "canonicalAssetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+          "assetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q09.png",
+          "assetSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+          "opened": true,
+          "aliasPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\archive\\assets\\images\\23_순천여고_1학기_중간_고2_확률과통계\\q09.png",
+          "aliasSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45"
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "총합을 만족하는 색별 선택에서 빨간 공 상한 초과를 뺀다.",
+          "decisiveStep": "상한을 무시한 정수해에서 빨간 공이 6개 이상인 경우를 뺀다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 10,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "de5ea140aa7676b09f5e4da81cbbe64ba7030c87340ac4cd7e3563a30c377405",
+          "currentStudentTextSha256": "de5ea140aa7676b09f5e4da81cbbe64ba7030c87340ac4cd7e3563a30c377405",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "숫자 1의 개수에 따라 조합과 중복 배열을 나누어 센다.",
+          "decisiveStep": "숫자 1의 사용 개수 r로 나누어 중복된 1의 배열 중복을 제거한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 11,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "29a0a5af1c67580272347eb1421a86386a2e380d17468fbe641d44d9fddd16d3",
+          "currentStudentTextSha256": "29a0a5af1c67580272347eb1421a86386a2e380d17468fbe641d44d9fddd16d3",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "4,5,6의 상대순서는 고정되므로 자리를 고른 뒤 같은 숫자를 배열한다.",
+          "decisiveStep": "6,5,4의 순서가 고정된 세 자리를 고른 뒤 2와 3을 중복 배열한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 12,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "81b0c7851080e6e7353e9970d2343a1b85821322bf9c2640a73008dfe16a1351",
+          "currentStudentTextSha256": "81b0c7851080e6e7353e9970d2343a1b85821322bf9c2640a73008dfe16a1351",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "일반항의 x 지수를 10으로 맞추어 선택 횟수를 결정한다.",
+          "decisiveStep": "일반항에서 x 지수가 10이 되게 하는 선택 횟수 k를 정한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 13,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "5c7558a915a42b5930a191c737e4fede628a8548e8fa2c790b9641eb72f68b9a",
+          "currentStudentTextSha256": "5c7558a915a42b5930a191c737e4fede628a8548e8fa2c790b9641eb72f68b9a",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "현재 ACTIVE PT는 H15-PS-01 순열에 결속되어 있으나 rank/repeated-digit exact template binding이 없다.",
+          "primaryMethod": "내림차순 순위보다 앞서는 수를 왼쪽 자리부터 블록으로 센다.",
+          "decisiveStep": "숫자열을 왼쪽 자리부터 비교해 5555보다 먼저 나오는 블록을 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 14,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "c8e8293f977570704b31e13a24b039d2bddd570a57be3c4e1a2810d122a985f2",
+          "currentStudentTextSha256": "c8e8293f977570704b31e13a24b039d2bddd570a57be3c4e1a2810d122a985f2",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact TPL_SURJECTION_COUNT curriculum binding은 없다.",
+          "primaryMethod": "전체 함수에서 치역 원소가 빠지는 함수를 포함배제로 뺀다.",
+          "decisiveStep": "포함배제로 치역에서 빠지는 원소가 있는 함수들을 제거한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 15,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "91faabfe13ee6c3545e293785d5befe274badbfdcff4414d2d9c547697076398",
+          "currentStudentTextSha256": "91faabfe13ee6c3545e293785d5befe274badbfdcff4414d2d9c547697076398",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "자연수 변수의 부등식을 여유변수를 더한 정수해로 바꾼다.",
+          "decisiveStep": "부등식에 여유변수 w를 더해 네 변수의 합 7인 정수해로 바꾼다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 16,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "57174ff89b173b61bcda3722a6588b7d54b393d2b850b30b966fdb11a01e7194",
+          "currentStudentTextSha256": "57174ff89b173b61bcda3722a6588b7d54b393d2b850b30b966fdb11a01e7194",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "RPM primary는 H15 이항정리의 활용으로 명확하나 remainder application exact template binding이 없다.",
+          "primaryMethod": "제수의 밑 t=x²+3로 치환해 t² 이상의 항을 제거한다.",
+          "decisiveStep": "t=x²+3 치환 뒤 t² 이상 항을 버려 나머지를 구한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 17,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "5dd6d85f6b0e89902f1929b6013d802d480304e68ac6a760f6bf9cbe4c6d051d",
+          "currentStudentTextSha256": "5dd6d85f6b0e89902f1929b6013d802d480304e68ac6a760f6bf9cbe4c6d051d",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact constrained-function template curriculum binding은 없다.",
+          "primaryMethod": "곱 조건을 지수 합 조건으로 바꾸고 네 입력의 지수 배정을 센다.",
+          "decisiveStep": "곱을 지수 합으로 바꾸고 네 입력에 대응하는 지수 선택을 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 18,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "75a65f02e354c5ad58ad30730a4c374fa79f199c76be4e740099c322bc9bc7f6",
+          "currentStudentTextSha256": "75a65f02e354c5ad58ad30730a4c374fa79f199c76be4e740099c322bc9bc7f6",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "상자별 0개·1개 배치를 포함배제로 제거한다.",
+          "decisiveStep": "상자별 부족 배치를 포함배제로 빼고 두 상자 교집합을 더한다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 19,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "d365b87e5502cb86349a62136e858b39fad08adee7865c0c34ec8941736473ef",
+          "currentStudentTextSha256": "d365b87e5502cb86349a62136e858b39fad08adee7865c0c34ec8941736473ef",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "상한을 적용한 분배 수에서 모두 홀수인 경우를 뺀다.",
+          "decisiveStep": "상한을 적용한 분배 전체에서 네 학생 모두 홀수인 경우를 뺀다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 20,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "c6d9ec62fe86cf3ce7b7883ba03f0eafa95a602056260aa77a910057c69b1ff1",
+          "currentStudentTextSha256": "c6d9ec62fe86cf3ce7b7883ba03f0eafa95a602056260aa77a910057c69b1ff1",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "8,9,10을 C 또는 A/B에 배정하고 공집합과 A=B인 경우를 뺀다.",
+          "decisiveStep": "원소 8,9,10을 C 또는 A/B에 배정하고 공집합·동일집합 조건을 뺀다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 21,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "02730a6ffc58bece21598776312eb3e7455247a941c151c1bf344bfae80000c1",
+          "currentStudentTextSha256": "02730a6ffc58bece21598776312eb3e7455247a941c151c1bf344bfae80000c1",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "BINDING_PENDING",
+          "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact monotone-function template curriculum binding은 없다.",
+          "primaryMethod": "c=f(5)의 가능한 값으로 나누어 합성 조건이 정하는 값을 적용한다.",
+          "decisiveStep": "f(5)의 값 c를 나누어 합성 조건이 정하는 함숫값과 단조쌍을 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 22,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "8763e24449d338fb67159d21514be50d092875602978c33d0031a2c30db5c3b3",
+          "currentStudentTextSha256": "8763e24449d338fb67159d21514be50d092875602978c33d0031a2c30db5c3b3",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "",
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "finalDisposition": "LAYOUT_KEEP",
+          "issueCodes": [],
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "AUTO-FIRST: source punctuation, math atoms and choices are unchanged; grid layout retained, no manual break or special layout override. Actual exam render remains NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "smallBoardEvidence": "Small-board order is explicit: condition/setup → symbolic count or equation → intermediate arithmetic → answer. No source enumeration is collapsed; each solution ends with the answer.",
+          "solutionSha256": "",
+          "reason": "Source/answer-derived independent solution prepared after fixed Golden preflight."
+        },
+        "meta": {
+          "status": "PASS",
+          "reason": "L1/L2 exact H15 master rows and active canonical semantic/projection keys were checked against source and the new solution.",
+          "projectionStatus": "REUSE",
+          "projectionReason": null,
+          "primaryMethod": "고정된 두 원소를 제외한 25개에서 홀수 크기 부분집합을 센다.",
+          "decisiveStep": "고정 원소 두 개를 제외한 25개에서 홀수 크기 부분집합을 센다.",
+          "lookupRefs": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+            "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md",
+            "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json"
+          ]
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "necessity": "VISUAL_EXEMPT",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualAssetOpened": false,
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+          "reason": "No source or solution visual is required for this question."
+        }
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceFile": "archive/23_순천여고_1학기_중간_고2_확률과통계.js",
+          "baselineFile": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/extracted-baseline.js",
+          "baselineArtifactRawSha256": "c7d0b57b45a5905f2a4ab70e854eabf8ed6edfa15c59b53a85e70533f1e96acc",
+          "qid": 23,
+          "sourceTextChoicesUnchanged": true,
+          "baselineStudentTextSha256": "4b26a24a846b87bc15d2932a86dc9f0442d72e7f29b233debd34cfc374c6be71",
+          "currentStudentTextSha256": "4b26a24a846b87bc15d2932a86dc9f0442d72e7f29b233debd34cfc374c6be71",
+          "baselineImageRef": null,
+          "finalImageRef": null,
+          "imageRefMigration": ""
+        },
+        "intakeEvidence": {
+          "path": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/intake-original.evidence.json",
+          "sha256": "491f3c5fdd6f215a8bc0ccfe8723b4736b45a9b4f4d9e5401e76cd98bfffedc3"
+        }
+      }
+    }
+  ],
+  "questionLayoutRows": [
+    {
+      "qid": 1,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 2,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 3,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 4,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 5,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 6,
+      "beforeDisposition": "ASSET_DEFECT",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "Only the defective image crop/ref was repaired; question and choice text are exact."
+    },
+    {
+      "qid": 7,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 8,
+      "beforeDisposition": "ASSET_DEFECT",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "Only the defective image crop/ref was repaired; question and choice text are exact."
+    },
+    {
+      "qid": 9,
+      "beforeDisposition": "ASSET_DEFECT",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "Only the defective image crop/ref was repaired; question and choice text are exact."
+    },
+    {
+      "qid": 10,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 11,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 12,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 13,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 14,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 15,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 16,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 17,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 18,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 19,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 20,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 21,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 22,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    },
+    {
+      "qid": 23,
+      "beforeDisposition": "LAYOUT_KEEP",
+      "finalDisposition": "LAYOUT_KEEP",
+      "sourceTextExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "reason": "AUTO-FIRST static review; source text/choices retained and no forced line break."
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "중복을 허용한 선택"
+      },
+      "rpmL3": "중복조합",
+      "rpmL4": "중복을 허용한 선택",
+      "primaryMethod": "중복조합의 정의를 직접 적용한다.",
+      "decisiveStep": "중복조합 기호를 조합 기호로 바꾸어 계산한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionReasons": {
+        "COND_NATURAL_NUMBER": "지수 n은 자연수 조건으로 경계값을 판정한다."
+      },
+      "integrationPattern": "NONE",
+      "integrationReason": "_3H_7를 _9C_7로 바꾼다.",
+      "sourceTextSha256": "3f64fb94d2aa0ed6ffac3cd84ad2dc4322b7fb727ec28fa8097430995bfb38ac"
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "원순열은 한 사람을 고정해 회전 중복을 제거한다.",
+      "decisiveStep": "회전 중복을 없애기 위해 한 사람을 고정하고 나머지를 배열한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "NONE",
+      "integrationReason": "지휘자 한 명을 고정하고 나머지 네 사람을 배열한다.",
+      "sourceTextSha256": "b1019e640c1cdb0bb001499e03a72a6b435bdcf3550573752e6f7d5709a9b371"
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "현재 ACTIVE PT는 H15-PS-01 순열에 결속되어 있으나 exact repeated-digit template binding이 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "첫 자리의 0 금지와 뒤 자리의 중복 허용을 함께 적용한다.",
+      "decisiveStep": "첫 자리의 0 제한과 나머지 자리의 중복 허용을 따로 센다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "conditionReasons": {
+        "COND_NONZERO": "첫 자리가 0이면 네 자리 자연수가 되지 않는다."
+      },
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "첫 자리는 4가지, 나머지 세 자리는 각각 5가지이다.",
+      "sourceTextSha256": "2775de37d876e59ce8b4c36eebd658813477856b9d5921ce85daa9884be9f33a"
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "두 계단 이동 횟수별로 이동 순서를 조합으로 센다.",
+      "decisiveStep": "두 계단 이동 횟수 k별로 위치를 조합으로 세어 모두 더한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "k개의 두 계단 이동 자리를 _{8-k}C_k로 세어 합한다.",
+      "sourceTextSha256": "d459c2acec343c0617e6c96d5fb407354e426c16d234f48bea206571860598d6"
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "H15-PS-02 이항계수의 성질에 exact curriculum template binding이 아직 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수비교",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "이항계수의 성질"
+      },
+      "rpmL3": "이항계수",
+      "rpmL4": "이항계수의 성질",
+      "primaryMethod": "이항계수의 합을 2^n으로 바꾼 뒤 지수 경계를 정한다.",
+      "decisiveStep": "이항계수의 합을 2^n으로 바꾼 뒤 경계 거듭제곱을 확인한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionReasons": {
+        "COND_NATURAL_NUMBER": "지수 n은 자연수 조건으로 경계값을 판정한다."
+      },
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "1000과 10000 사이의 2의 거듭제곱 지수를 구한다.",
+      "sourceTextSha256": "86023cfa45e9a73afffe1c49765a37b5609c635d4d288458b26aefb78c559ba7"
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "H15-PS-02 이항계수 성질의 현재 ACTIVE template은 있으나 exact curriculum binding이 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수비교",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "이항계수의 성질"
+      },
+      "rpmL3": "이항계수",
+      "rpmL4": "이항계수의 성질",
+      "primaryMethod": "색칠된 두 대각선의 합을 각각 조합계수 합으로 계산한다.",
+      "decisiveStep": "색칠된 두 대각선을 조합계수로 읽고 각각의 합을 계산한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "_nC_1 합은 54, _nC_2 합은 165이다.",
+      "sourceTextSha256": "a1cefebaf8e0884a861be10f5e98dafa3531c358847739186c4d845a28993c16"
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "회전 중복을 없애고 지휘자의 양옆 조건을 적용한다.",
+      "decisiveStep": "지휘자를 고정한 뒤 양옆 바이올린의 순서와 나머지 연주자 배열을 곱한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "바이올린 두 명의 순서 2!과 나머지 세 명의 배열 3!을 곱한다.",
+      "sourceTextSha256": "7424b8e2961cab7d8f84cad0bde0a422b754648cafc8633aaef0146ead442653"
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "중앙 색 하나와 바깥 네 영역의 회전 배열을 따로 센다.",
+      "decisiveStep": "중심 영역 색을 먼저 정하고 바깥 네 색의 원순열을 센다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "5개 색 선택·중앙 색 선택·네 색 원순열을 곱한다.",
+      "sourceTextSha256": "d658830c94dff507aabb8e6d4b49d4313a98f2304696f0f9faee7cabe034b339"
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "서로 다른 모서리 무리에 남자를 놓은 뒤 3회전 중복을 제거한다.",
+      "decisiveStep": "서로 다른 모서리 무리에 남자를 배정하고 회전 중복 3을 제거한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "모서리 두 무리 선택, 남자 배정, 여자 배열을 곱하고 3으로 나눈다.",
+      "sourceTextSha256": "773b14f90a80792a602e90a85715211b1fd2edd12e19c3e611f6ae1d64de7406"
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      },
+      "rpmL3": "중복조합",
+      "rpmL4": "정수해 개수",
+      "primaryMethod": "총합을 만족하는 색별 선택에서 빨간 공 상한 초과를 뺀다.",
+      "decisiveStep": "상한을 무시한 정수해에서 빨간 공이 6개 이상인 경우를 뺀다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReasons": {
+        "COND_RANGE": "색별 개수/상자 개수가 source의 상한·하한에 제한된다."
+      },
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "전체 66에서 빨간 공이 6개 이상인 15를 뺀다.",
+      "sourceTextSha256": "de5ea140aa7676b09f5e4da81cbbe64ba7030c87340ac4cd7e3563a30c377405"
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "숫자 1의 개수에 따라 조합과 중복 배열을 나누어 센다.",
+      "decisiveStep": "숫자 1의 사용 개수 r로 나누어 중복된 1의 배열 중복을 제거한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "r=0,1,2,3,4일 때의 경우를 합해 1045를 얻는다.",
+      "sourceTextSha256": "29a0a5af1c67580272347eb1421a86386a2e380d17468fbe641d44d9fddd16d3"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "중복·원순열",
+      "primaryMethod": "4,5,6의 상대순서는 고정되므로 자리를 고른 뒤 같은 숫자를 배열한다.",
+      "decisiveStep": "6,5,4의 순서가 고정된 세 자리를 고른 뒤 2와 3을 중복 배열한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "세 자리를 고르고 남은 두 쌍을 4!/(2!2!)로 배열한다.",
+      "sourceTextSha256": "81b0c7851080e6e7353e9970d2343a1b85821322bf9c2640a73008dfe16a1351"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "특정 항의 계수"
+      },
+      "rpmL3": "이항정리",
+      "rpmL4": "특정 항의 계수",
+      "primaryMethod": "일반항의 x 지수를 10으로 맞추어 선택 횟수를 결정한다.",
+      "decisiveStep": "일반항에서 x 지수가 10이 되게 하는 선택 횟수 k를 정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "3k+(6-k)=10에서 k=2이다.",
+      "sourceTextSha256": "5c7558a915a42b5930a191c737e4fede628a8548e8fa2c790b9641eb72f68b9a"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "현재 ACTIVE PT는 H15-PS-01 순열에 결속되어 있으나 rank/repeated-digit exact template binding이 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "일렬 배열"
+      },
+      "rpmL3": "순열",
+      "rpmL4": "일렬 배열",
+      "primaryMethod": "내림차순 순위보다 앞서는 수를 왼쪽 자리부터 블록으로 센다.",
+      "decisiveStep": "숫자열을 왼쪽 자리부터 비교해 5555보다 먼저 나오는 블록을 센다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "7이 처음 나타나는 자리에 따라 64+16+4+1을 합한다.",
+      "sourceTextSha256": "c8e8293f977570704b31e13a24b039d2bddd570a57be3c4e1a2810d122a985f2"
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact TPL_SURJECTION_COUNT curriculum binding은 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_SURJECTION_COUNT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "전체 함수에서 치역 원소가 빠지는 함수를 포함배제로 뺀다.",
+      "decisiveStep": "포함배제로 치역에서 빠지는 원소가 있는 함수들을 제거한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "3^5-3·2^5+3을 계산한다.",
+      "sourceTextSha256": "91faabfe13ee6c3545e293785d5befe274badbfdcff4414d2d9c547697076398"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      },
+      "rpmL3": "중복조합",
+      "rpmL4": "정수해 개수",
+      "primaryMethod": "자연수 변수의 부등식을 여유변수를 더한 정수해로 바꾼다.",
+      "decisiveStep": "부등식에 여유변수 w를 더해 네 변수의 합 7인 정수해로 바꾼다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionReasons": {
+        "COND_NATURAL_NUMBER": "지수 n은 자연수 조건으로 경계값을 판정한다."
+      },
+      "integrationPattern": "REINTERPRETATION",
+      "integrationReason": "x+y+z≤10을 네 음이 아닌 정수의 합 7로 바꾼다.",
+      "sourceTextSha256": "57174ff89b173b61bcda3722a6588b7d54b393d2b850b30b966fdb11a01e7194"
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "RPM primary는 H15 이항정리의 활용으로 명확하나 remainder application exact template binding이 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "standardUnitOrder": 2,
+      "subUnitKey": "H15-PS-02-BINOMIAL_APPLICATION",
+      "subUnit": "이항정리의 활용",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "전개식의 항"
+      },
+      "rpmL3": "이항정리",
+      "rpmL4": "전개식의 항",
+      "primaryMethod": "제수의 밑 t=x²+3로 치환해 t² 이상의 항을 제거한다.",
+      "decisiveStep": "t=x²+3 치환 뒤 t² 이상 항을 버려 나머지를 구한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "REINTERPRETATION",
+      "integrationReason": "(t+1)^5를 t²로 나눈 나머지 1+5t를 얻는다.",
+      "sourceTextSha256": "5dd6d85f6b0e89902f1929b6013d802d480304e68ac6a760f6bf9cbe4c6d051d"
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact constrained-function template curriculum binding은 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "곱 조건을 지수 합 조건으로 바꾸고 네 입력의 지수 배정을 센다.",
+      "decisiveStep": "곱을 지수 합으로 바꾸고 네 입력에 대응하는 지수 선택을 센다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "REINTERPRETATION",
+      "integrationReason": "m_i∈{1,2,3}, 합 9를 d_i=3-m_i로 바꾸어 합 3을 센다.",
+      "sourceTextSha256": "75a65f02e354c5ad58ad30730a4c374fa79f199c76be4e740099c322bc9bc7f6"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "분할·분배"
+      },
+      "rpmL3": "중복조합",
+      "rpmL4": "분할·분배",
+      "primaryMethod": "상자별 0개·1개 배치를 포함배제로 제거한다.",
+      "decisiveStep": "상자별 부족 배치를 포함배제로 빼고 두 상자 교집합을 더한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReasons": {
+        "COND_RANGE": "색별 개수/상자 개수가 source의 상한·하한에 제한된다."
+      },
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "전체 분배에서 각 고정 상자 부족 121을 빼고 두 상자 교집합 9를 더한다.",
+      "sourceTextSha256": "d365b87e5502cb86349a62136e858b39fad08adee7865c0c34ec8941736473ef"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      },
+      "rpmL3": "중복조합",
+      "rpmL4": "정수해 개수",
+      "primaryMethod": "상한을 적용한 분배 수에서 모두 홀수인 경우를 뺀다.",
+      "decisiveStep": "상한을 적용한 분배 전체에서 네 학생 모두 홀수인 경우를 뺀다.",
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptReasons": {
+        "CC_NUMBER_PARITY": "분배 수에서 모든 변수의 홀수 경우를 제거해야 조건을 만족하는 짝수 여부가 결정된다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "conditionReasons": {
+        "COND_POSITIVE": "네 학생은 각각 1개 이상을 받는다.",
+        "COND_RANGE": "색별 개수/상자 개수가 source의 상한·하한에 제한된다."
+      },
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "전체 246에서 홀수 분배 40을 빼 206을 얻는다.",
+      "sourceTextSha256": "c6d9ec62fe86cf3ce7b7883ba03f0eafa95a602056260aa77a910057c69b1ff1"
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "8,9,10을 C 또는 A/B에 배정하고 공집합과 A=B인 경우를 뺀다.",
+      "decisiveStep": "원소 8,9,10을 C 또는 A/B에 배정하고 공집합·동일집합 조건을 뺀다.",
+      "crossConceptKeys": [
+        "CC_SET_CARDINALITY"
+      ],
+      "crossConceptReasons": {
+        "CC_SET_CARDINALITY": "세 집합의 교집합·합집합과 공집합/동일 여부를 원소별 배정 수로 변환한다."
+      },
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "64에서 C 공집합 27과 A=B, C 비공집합 7을 뺀다.",
+      "sourceTextSha256": "02730a6ffc58bece21598776312eb3e7455247a941c151c1bf344bfae80000c1"
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "PT_FUNCTION_COUNTING은 H15-PS-01 조합에 ACTIVE 결속되어 있고 exact monotone-function template curriculum binding은 없다.",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "c=f(5)의 가능한 값으로 나누어 합성 조건이 정하는 값을 적용한다.",
+      "decisiveStep": "f(5)의 값 c를 나누어 합성 조건이 정하는 함숫값과 단조쌍을 센다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "c=2,3,4의 함수 수 15,75,50을 합한다.",
+      "sourceTextSha256": "8763e24449d338fb67159d21514be50d092875602978c33d0031a2c30db5c3b3"
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "projectionReason": null,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "standardUnitOrder": 1,
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "rpmPrimaryPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "rpmL3": "조합",
+      "rpmL4": "선택",
+      "primaryMethod": "고정된 두 원소를 제외한 25개에서 홀수 크기 부분집합을 센다.",
+      "decisiveStep": "고정 원소 두 개를 제외한 25개에서 홀수 크기 부분집합을 센다.",
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptReasons": {
+        "CC_NUMBER_PARITY": "고정 원소 수가 짝수이므로 나머지 부분집합의 홀짝이 전체 크기를 결정한다."
+      },
+      "conditionKeys": [],
+      "conditionReasons": {},
+      "integrationPattern": "REINTERPRETATION",
+      "integrationReason": "홀수 크기 부분집합은 2^25개 중 절반인 2^24개이다.",
+      "sourceTextSha256": "4b26a24a846b87bc15d2932a86dc9f0442d72e7f29b233debd34cfc374c6be71"
+    }
+  ],
+  "difficultyRows": [
+    {
+      "qid": 1,
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "중복조합 공식을 바로 적용하는 기본형이다."
+    },
+    {
+      "qid": 2,
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "한 사람 고정 뒤 남은 자리를 배열하는 표준 원순열이다."
+    },
+    {
+      "qid": 3,
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "첫 자리와 나머지 자리의 선택 수를 분리한다."
+    },
+    {
+      "qid": 4,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "두 계단 이동 횟수별 조합 합을 선택한다."
+    },
+    {
+      "qid": 5,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "이항계수 합을 거듭제곱으로 바꾼 뒤 지수 경계 두 개를 판정한다."
+    },
+    {
+      "qid": 6,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "두 이항계수 대각선 합을 각각 계산해 합친다."
+    },
+    {
+      "qid": 7,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "원형 인접 조건과 두 배열 단계를 처리한다."
+    },
+    {
+      "qid": 8,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "5색 선택, 중심색, 회전 동치 원순열을 결합한다."
+    },
+    {
+      "qid": 9,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "모서리 그룹과 좌석을 구별하고 회전 동치까지 처리한다."
+    },
+    {
+      "qid": 10,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "정수해의 상한을 보완사건으로 처리한다."
+    },
+    {
+      "qid": 11,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "반복 숫자 개수에 따른 다섯 경우를 합한다."
+    },
+    {
+      "qid": 12,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "상대순서 조건과 중복 숫자 배열을 함께 처리한다."
+    },
+    {
+      "qid": 13,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "일반항의 지수를 비교해 해당 항을 선택한다."
+    },
+    {
+      "qid": 14,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "네 자리 수의 사전식 앞 블록을 단계적으로 센다."
+    },
+    {
+      "qid": 15,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "전사 함수 수를 포함배제로 구한다."
+    },
+    {
+      "qid": 16,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "부등식 정수해를 여유변수로 등식에 바꾼다."
+    },
+    {
+      "qid": 17,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "다항식 나머지를 치환과 이항전개로 구한다."
+    },
+    {
+      "qid": 18,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "곱을 지수 합으로 바꾸고 유계 정수해를 센다."
+    },
+    {
+      "qid": 19,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "상자별 부족 조건을 포함배제로 처리한다."
+    },
+    {
+      "qid": 20,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "상한 정수해에서 홀수 분배를 제외한다."
+    },
+    {
+      "qid": 21,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "각 원소의 집합 배정과 동일·공집합 조건을 처리한다."
+    },
+    {
+      "qid": 22,
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "합성 함수 조건을 f(5)별로 나누어 단조쌍을 센다."
+    },
+    {
+      "qid": 23,
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "부분집합 크기의 홀짝 대칭을 사용한다."
+    }
+  ],
+  "visualDispositions": [
+    {
+      "qid": 1,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 2,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 3,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 4,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 5,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 6,
+      "problemVisual": {
+        "action": "REBUILD",
+        "necessity": "VISUAL_REQUIRED",
+        "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+        "assetSha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+        "actualOpened": true,
+        "sourceReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 7,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 8,
+      "problemVisual": {
+        "action": "REBUILD",
+        "necessity": "VISUAL_REQUIRED",
+        "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+        "assetSha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+        "actualOpened": true,
+        "sourceReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 9,
+      "problemVisual": {
+        "action": "REBUILD",
+        "necessity": "VISUAL_REQUIRED",
+        "assetRef": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+        "assetSha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+        "actualOpened": true,
+        "sourceReviewPath": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 10,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 11,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 12,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 13,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 14,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 15,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 16,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 17,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 18,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 19,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 20,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 21,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 22,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    },
+    {
+      "qid": 23,
+      "problemVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "Question has no visual dependency."
+      },
+      "solutionVisual": {
+        "action": "EXEMPT",
+        "necessity": "VISUAL_EXEMPT",
+        "reason": "No added solution visual has marginal benefit over the current algebraic/counting solution."
+      }
+    }
+  ],
+  "currentAssetBindings": [
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q06.png",
+      "sha256": "8ba1dc4078ae1477d41fccfe33c0b773bd84059b719914de20e7472aa77d5d97",
+      "reviewed": true,
+      "reviewedAt": "2026-10-09T02:06:04.718Z",
+      "reviewEvidenceRef": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q08.png",
+      "sha256": "99d4baac9f56e3a93224f4f071558b6bd796bc4c02722b682c9690508f284ae7",
+      "reviewed": true,
+      "reviewedAt": "2026-10-09T02:06:04.719Z",
+      "reviewEvidenceRef": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json"
+    },
+    {
+      "kind": "CURRENT_ASSET",
+      "ref": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q09.png",
+      "sha256": "01ac1e58e5acd8be4761ae7c447be7228d13332348130d075696b9ab1e8dff45",
+      "reviewed": true,
+      "reviewedAt": "2026-10-09T02:06:04.719Z",
+      "reviewEvidenceRef": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json"
+    }
+  ],
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "sourceDefectReview": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/CREATE.source-defect-review.json",
+    "sha256": "cedf6cdd97c91d5b6ff859e2940c32a47920b4a3bb1f5effa1886f759962dc97",
+    "reviewedQids": [
+      6,
+      8,
+      9
+    ]
+  },
+  "summary": {
+    "questionCount": 23,
+    "questionLayoutCoverage": "23/23",
+    "smallBoardContinuity": "23/23",
+    "metaCoverage": "23/23",
+    "difficultyCoverage": "23/23",
+    "visualDispositionCoverage": "23/23",
+    "itemHoldCount": 0
+  }
+}

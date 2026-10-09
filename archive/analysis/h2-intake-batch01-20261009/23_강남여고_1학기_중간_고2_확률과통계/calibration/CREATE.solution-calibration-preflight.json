@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "내분점 공식에서 끝점의 반대쪽 비를 곱하는 이유를 설명하고, 내분·중점·거리 계산을 줄마다 이어 최종거리로 닫는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "평행 조건에서 기울기를 읽고 점 대입으로 절편을 결정한 뒤 합까지 순차적으로 계산한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "일반형 두 직선을 기울기형으로 정리하고 수직 관계를 식으로 적용한다; actual SVG 두 직선의 기울기와 표기도 대조한다.",
+        "visualSha256": "sha256:8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+        "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "완전제곱 전개가 보이며 중심·반지름을 표준형과 대조한다.",
+        "visualSha256": "sha256:3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
+        "visualRef": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "negativeVisualInspection": {
+      "sourcePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+      "renderedEvidencePath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/calibration/negative-bokseong-q20.png",
+      "renderedEvidenceSha256": "sha256:af1e26b2662aeeeae13a40fe8c7f87e10c677a9e734b1ab8cb07a737fc770af0",
+      "observation": "Actual primitive line labelled I has positive slope; label 3x+4y-8=0 requires slope -3/4. The wording/text alone cannot validate the visual."
+    },
+    "goldenVisualInspection": {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "solutionImageSha256": "sha256:8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "renderedEvidencePath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_확률과통계/calibration/golden-hyocheon-q02.png",
+      "renderedEvidenceSha256": "sha256:af88827c1c4507cc3c60c32ccca33b7eb6d580f5e706840b083200dce5c1218d",
+      "observation": "Actual blue line descends with slope -1/3; red line rises with slope 3, matching the stated perpendicular relationship. The decisive lines and numerical note are visually readable."
+    }
+  }
+}
