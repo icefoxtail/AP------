@@ -1323,10 +1323,11 @@ try {
       (r) =>
         r.automatic &&
         (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)) &&
-        r.curriculumKey === base.curriculumKey &&
-        r.courseKey === base.courseKey,
+        r.sourceGrade === base.sourceGrade &&
+        r.curriculumKey === base.curriculumKey,
     )
     .slice(0, 50);
+  assert.equal(fiftyRecords.length, 50, "50-question fixture must use 50 approved canonical records");
   const banks = new Map();
   const fifty = fiftyRecords.map((record) => {
     if (!banks.has(record.sourceFile))
@@ -1357,7 +1358,7 @@ try {
     ...payload,
     student_ids: ["student-b"],
     archive_file: "MIXED:archive2-fifty",
-    question_count: 50,
+    question_count: fifty.length,
     selection_filters: {
       grade: base.sourceGrade,
       primaryPaths: [

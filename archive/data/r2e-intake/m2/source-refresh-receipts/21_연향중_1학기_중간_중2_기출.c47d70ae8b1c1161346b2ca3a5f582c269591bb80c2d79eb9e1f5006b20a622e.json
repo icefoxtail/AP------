@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "M2_SCOPED_R1_CORRECTION_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1_SCOPED_CORRECTION_REVIEW",
+  "reviewerIdentity": "root-r1-m2-21-yeonhyang-current-source-refresh",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-------ci-fix",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\exams\\original\\middle\\m2\\1mid\\21_연향중_1학기_중간_중2_기출.js",
+  "source": {
+    "path": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+    "rawSha256": "9df23af29b3bfda408bfbfc3a2235ca58cdd6f4d7af9de4d60b1fdacc2056170",
+    "rawBufferBlobSha1": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
+    "expectedRawSha256": "9df23af29b3bfda408bfbfc3a2235ca58cdd6f4d7af9de4d60b1fdacc2056170",
+    "expectedBlobSha1": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
+    "questionCount": 21
+  },
+  "priorReviewedSourceSha256": "8b4a584129fe3204f3644e0420cf3ee710f9de10f694a27830c5fe2a3e1dc415",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\21_연향중_1mid\\current-student-only.json",
+    "sha256": "ddc4c84e32b1ae8964cf23ea5d30e6704c7b6dc14530a4c4b50d65a6a5d1872a"
+  },
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\21_연향중_1mid\\current-r1-original-freeze.json",
+    "sha256": "bdc6399394f5ec9e5b22bb404134c3f834be3e78cdacde02fa382ff5437b51ca",
+    "sourceRawSha256": "8b4a584129fe3204f3644e0420cf3ee710f9de10f694a27830c5fe2a3e1dc415",
+    "preserved": true
+  },
+  "postfreezeParity": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-m2\\21_연향중_1mid\\correction-current-postfreeze-disclosure.json",
+    "sha256": "f01801caf99230ccad81b6f78dcf9a39f422d2f5fc8018d7a1cf3329db995bb2",
+    "result": "EXACT",
+    "sourceRawSha256": "9df23af29b3bfda408bfbfc3a2235ca58cdd6f4d7af9de4d60b1fdacc2056170",
+    "originalFreezeSourceRawSha256": "8b4a584129fe3204f3644e0420cf3ee710f9de10f694a27830c5fe2a3e1dc415"
+  },
+  "changedRows": {
+    "3": {
+      "changedFields": [
+        "solution"
+      ],
+      "studentPayloadHash": "b480c51c9a5ec8bf00d5dd1b910a00c3ccd89078df10e17908c78ddb658e5af6",
+      "independentAnswerFrozen": "2,4",
+      "verifiedAnswer": "②, ④",
+      "storedAnswer": "②, ④",
+      "answerComparison": "MATCH",
+      "solutionSha256": "916968b5216bd5edad4c957da7754ad32f7ff4ce3ee1017e476763186bd35755",
+      "solutionReviewStatus": "PASS",
+      "solutionReview": "The monomial quotient is now written directly as 5a²/b; no negative exponent notation remains. Both incorrect choices ② and ④ are correctly identified.",
+      "reviewedAxes": [
+        "sourceExact",
+        "answerMath",
+        "solutionMath",
+        "smallBoard",
+        "curriculum"
+      ],
+      "studentParityWithOriginalFreeze": "EXACT",
+      "postfreezeDisclosedAnswer": "②, ④"
+    },
+    "12": {
+      "changedFields": [
+        "solution"
+      ],
+      "studentPayloadHash": "4f0ed7c460b13af398f9d113022d7a06804a131e930de6fccef964094102ea68",
+      "independentAnswerFrozen": "2",
+      "verifiedAnswer": "②",
+      "storedAnswer": "②",
+      "answerComparison": "MATCH",
+      "solutionSha256": "37c3a903bbbb8b3b4507995bf164f1701ea2e09b43e72b92d24277dd9aa2f75a",
+      "solutionReviewStatus": "PASS",
+      "solutionReview": "The solution explicitly defines A as the expression in the box before substitution and solves A=-2a²; answer ② remains correct.",
+      "reviewedAxes": [
+        "sourceExact",
+        "answerMath",
+        "solutionMath",
+        "smallBoard",
+        "curriculum",
+        "meta"
+      ],
+      "studentParityWithOriginalFreeze": "EXACT",
+      "postfreezeDisclosedAnswer": "②",
+      "metaStatus": "PASS",
+      "metaAdjudication": {
+        "rpmRecordId": "M2-RPM-128",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "sourceDecisiveOperation": "The source asks for the blank expression in 6a^3 ÷ (□ ÷ 4a) = -12a^2. Solving explicitly performs nested monomial division and multiplication, matching L3 단항식의 곱셈과 나눗셈 / L4 단항식의 나눗셈.",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnitLabel": "지수법칙",
+        "standardUnitKey": "M2-01",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "semanticDecision": "SUPPORTED",
+        "projectionDecision": "The canonical record declares no active PT/TPL mapping; null projection is expected.",
+        "currentSourceMeta": {
+          "standardUnitKey": "M2-01",
+          "standardUnit": "수와 식",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "subUnit": "지수법칙",
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      }
+    },
+    "17": {
+      "changedFields": [
+        "solution"
+      ],
+      "studentPayloadHash": "c0018c8c8cc6c159a67476b8a26c795afbee72cda421c38d6609df6fe0686722",
+      "independentAnswerFrozen": "5",
+      "verifiedAnswer": "⑤",
+      "storedAnswer": "⑤",
+      "answerComparison": "MATCH",
+      "solutionSha256": "14c42a98d683bb883605d97b4f7c62d87109908668de56369fa093f1a17520b5",
+      "solutionReviewStatus": "PASS",
+      "solutionReview": "The solution explicitly defines x as the number of 150-box trucks, derives x≥14/3, and chooses the minimum integer 5; answer ⑤ remains correct.",
+      "reviewedAxes": [
+        "sourceExact",
+        "answerMath",
+        "solutionMath",
+        "smallBoard",
+        "curriculum"
+      ],
+      "studentParityWithOriginalFreeze": "EXACT",
+      "postfreezeDisclosedAnswer": "⑤"
+    }
+  },
+  "onlyChangedSourceFields": {
+    "qids": [
+      3,
+      12,
+      17
+    ],
+    "field": "solution",
+    "comparisonAgainst": "HEAD source SHA 8b4a584129fe3204f3644e0420cf3ee710f9de10f694a27830c5fe2a3e1dc415",
+    "allOtherQuestionFieldsUnchanged": true,
+    "questionCountBeforeAndAfter": 21
+  },
+  "openItemsCarriedForward": {
+    "metaSemanticAdjudicationQids": [],
+    "note": "q12/q13 semantic questions are resolved by the current canonical RPM records and the source decisive operations."
+  },
+  "scopeOnly": true,
+  "fullExamR1Pass": false,
+  "status": "TARGETED_CORRECTION_PASS",
+  "metaAdjudication": {
+    "status": "PASS",
+    "evidence": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+    },
+    "decisions": {
+      "12": {
+        "rpmRecordId": "M2-RPM-128",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "sourceDecisiveOperation": "The source asks for the blank expression in 6a^3 ÷ (□ ÷ 4a) = -12a^2. Solving explicitly performs nested monomial division and multiplication, matching L3 단항식의 곱셈과 나눗셈 / L4 단항식의 나눗셈.",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnitLabel": "지수법칙",
+        "standardUnitKey": "M2-01",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "semanticDecision": "SUPPORTED",
+        "projectionDecision": "The canonical record declares no active PT/TPL mapping; null projection is expected.",
+        "currentSourceMeta": {
+          "standardUnitKey": "M2-01",
+          "standardUnit": "수와 식",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "subUnit": "지수법칙",
+          "problemTypeKey": null,
+          "templateKey": null
+        },
+        "reviewedAxes": [
+          "meta"
+        ]
+      },
+      "13": {
+        "rpmRecordId": "M2-RPM-129",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "sourceDecisiveOperation": "The source asks for a ratio of cylinder volumes. Substitution yields πa^2b ÷ πb^2a and mixed monomial multiplication/division/cancellation, matching L3 단항식의 곱셈과 나눗셈 / L4 혼합 계산.",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnitLabel": "지수법칙",
+        "standardUnitKey": "M2-01",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "semanticDecision": "SUPPORTED",
+        "projectionDecision": "The canonical record declares no active PT/TPL mapping; null projection is expected.",
+        "currentSourceMeta": {
+          "standardUnitKey": "M2-01",
+          "standardUnit": "수와 식",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "subUnit": "지수법칙",
+          "problemTypeKey": null,
+          "templateKey": null
+        },
+        "reviewedAxes": [
+          "meta"
+        ]
+      }
+    }
+  }
+}

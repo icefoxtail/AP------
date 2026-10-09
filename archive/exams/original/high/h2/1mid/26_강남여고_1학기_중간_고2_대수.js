@@ -621,7 +621,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "content": "함수 $y=-2\\tan\\dfrac{x}{2}$에 대한 설명으로 옳은 것만을 [보기]에서 있는 대로 고른 것은? (4점)\n[보기]\nㄱ. 함수 $y=-2\\tan\\dfrac{x}{2}$를 $x$축의 방향으로 $\\dfrac{\\pi}{3}$만큼 평행이동하면 $y=-2\\tan\\left(\\dfrac{x}{2}-\\dfrac{\\pi}{3}\\right)$이다.\nㄴ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 주기는 $2\\pi$이다.\nㄷ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 점근선은 직선 $x=2n\\pi+\\dfrac43\\pi$이다.\nㄹ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 최솟값은 $-2$, 최댓값은 $2$이다.",
+    "content": "함수 $y=-2\\tan\\dfrac{x}{2}$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? (4점)\n[보기]\nㄱ. 함수 $y=-2\\tan\\dfrac{x}{2}$를 $x$축의 방향으로 $\\dfrac{\\pi}{3}$만큼 평행이동하면 $y=-2\\tan\\left(\\dfrac{x}{2}-\\dfrac{\\pi}{3}\\right)$이다.\nㄴ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 주기는 $2\\pi$이다.\nㄷ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 점근선은 직선 $x=2n\\pi+\\dfrac43\\pi$이다.\nㄹ. 함수 $y=-2\\tan\\dfrac{x}{2}$의 최솟값은 $-2$, 최댓값은 $2$이다.",
     "choices": [
       "ㄱ",
       "ㄴ",

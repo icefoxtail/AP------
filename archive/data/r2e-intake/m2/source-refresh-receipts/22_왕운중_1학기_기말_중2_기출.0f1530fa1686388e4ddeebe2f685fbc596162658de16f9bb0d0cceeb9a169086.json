@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "APMATH_SCOPED_R1_SOURCE_REFRESH_RECEIPT_V1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "root/o33_source_refresh_review"
+  },
+  "createdAt": "2026-10-09T20:36:30.790Z",
+  "examUid": "O33",
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\exams\\original\\middle\\m2\\1final\\22_왕운중_1학기_기말_중2_기출.js",
+    "rawSha256": "a83b1cc334f3ce2e9199c4bd9820b5cceb923f78fbeaa2d3825fb10a2185e294",
+    "rawBufferGitBlobSha1": "f380d8955ce467769abac101955a9ff0493c13da",
+    "questionCount": 24
+  },
+  "scope": {
+    "qids": [
+      10,
+      11,
+      14,
+      16,
+      17,
+      20,
+      24
+    ],
+    "scopeOnly": true,
+    "fullExamR1Pass": false,
+    "fullExamValidatorRun": false
+  },
+  "studentInput": {
+    "currentBundle": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-o33\\current-after-q14-correction-student-bundle.json",
+      "sha256": "f15cbeef2981f5b2b76d794f324ae67f1b26a5ecf928962574256f7d019586e3"
+    },
+    "originalReviewBundle": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-o33\\current-student-bundle.json",
+      "sha256": "fb170244435bab3d7461036a713b7f36835572e81f35876e14d82580fef58185"
+    },
+    "originalFreeze": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-o33\\scoped-r1-freeze.json",
+      "sha256": "86e9c1a7efc6854f2f3425316f0152fdbc4a28525644e5c120a41b67f9b7c4bc"
+    },
+    "originalFreezeSourceRawSha256": "19f60ec5bed29df52d75e2b28077031d92fd43ce7c2843683620aa5a97c769a9",
+    "allScopedStudentPayloadsAndAssetRefs": "EXACT"
+  },
+  "rows": [
+    {
+      "qid": 10,
+      "changedLoci": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "independentAnswer": "① (k=1)",
+      "comparison": "PASS",
+      "reason": "Three collinear points on one line; independent result k=1 matches stored answer and solution.",
+      "metadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "verdict": "SUPPORTED"
+      },
+      "studentPayloadSha256": "fb9239b47e4b0f4f356e19325cefb76abb5e98554a3d4cd019a6c744627aa289",
+      "studentParity": "EXACT",
+      "currentAnswer": "①",
+      "currentSolutionSha256": "502d51d2d62d84aec183aa0755d70cff3e2bfb830f4782b9533a692d36590146",
+      "assets": []
+    },
+    {
+      "qid": 11,
+      "changedLoci": [
+        "solution"
+      ],
+      "independentAnswer": "② (maximum slope 2)",
+      "comparison": "PASS",
+      "reason": "No quadrant-II points iff 0≤m≤2; current answer/solution match.",
+      "studentPayloadSha256": "8d827c7e8689f644c46fac6c9a5c0b2ffcd32bbe3995cdcaf816202ea0b82a60",
+      "studentParity": "EXACT",
+      "currentAnswer": "②",
+      "currentSolutionSha256": "8969930e22cab8b7ed9c912bf4df79e7e6ff1d132576216f33ad0b0c94cfb596",
+      "assets": []
+    },
+    {
+      "qid": 14,
+      "changedLoci": [
+        "subUnitKey",
+        "subUnit",
+        "answer",
+        "solution"
+      ],
+      "independentAnswer": "② (a−b=−3)",
+      "comparison": "PASS_AFTER_TARGETED_CORRECTION",
+      "reason": "① has x-intercept −3, so a=−3; ② passes through origin, so b=0; current corrected answer/solution match.",
+      "metadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "verdict": "SUPPORTED"
+      },
+      "correctionArtifact": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-o33\\q14-correction-review.json",
+        "sha256": "2a3a3b908650a83a25870fab84ab4f7a2d14890a3ff74963957cca2c850492d7"
+      },
+      "studentPayloadSha256": "e9c3ed4d480d74ba22ef626e706539e9c1334e568cefeaa6627b15aee4b93b9c",
+      "studentParity": "EXACT",
+      "currentAnswer": "②",
+      "currentSolutionSha256": "3b54ad48f9690f70f05b4637053a220eea75cf6b40ed7929e9f1b5ae346a918c",
+      "assets": [
+        {
+          "ref": "assets/images/22_왕운중_1학기_기말_중2_기출/q14.png",
+          "sha256": "55e97cb86018256acbb55a3f2319d2bb49967b3de5b1b1fe88aa550cabf269a1",
+          "actualOpenedBeforeFreeze": true,
+          "freezeAck": true
+        }
+      ]
+    },
+    {
+      "qid": 16,
+      "changedLoci": [
+        "solution",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "independentAnswer": "③ (k=0)",
+      "comparison": "PASS",
+      "reason": "Solve y=2x−10 with 6x−y=−10, then evaluate k=0.4x−0.1y=0; current answer/solution match.",
+      "metadata": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "verdict": "SUPPORTED"
+      },
+      "studentPayloadSha256": "3175c1612a41d7a52180ad529368313ab5f9f278be7c4a7a9a3e4e30366b944b",
+      "studentParity": "EXACT",
+      "currentAnswer": "③",
+      "currentSolutionSha256": "f45da781234cbb905eb77148bacb48fddb11abaac15cf1dc8e069cd9277b9ba9",
+      "assets": []
+    },
+    {
+      "qid": 17,
+      "changedLoci": [
+        "solution"
+      ],
+      "independentAnswer": "④ (가, 나, 다, 마)",
+      "comparison": "PASS",
+      "reason": "가, 나, 다, 마 are true; 라 gives a+b=1/2; current answer/solution match.",
+      "studentPayloadSha256": "1b0e909b1d43811cdadc71ac0d7029dd1135a56f17db8791822837b56fc41114",
+      "studentParity": "EXACT",
+      "currentAnswer": "④",
+      "currentSolutionSha256": "be33e51d123a1f53449e6b8ecba20dd7370088eb74e29ef6d778715dc9f607b4",
+      "assets": []
+    },
+    {
+      "qid": 20,
+      "changedLoci": [
+        "solution"
+      ],
+      "independentAnswer": "④ (horizontal 6cm, vertical 4cm)",
+      "comparison": "PASS",
+      "reason": "Using opened diagram strips, 6+2x+3y=30 and x=y+2 yield x=6,y=4; current answer/solution match.",
+      "studentPayloadSha256": "ce0f65adbed258d90e0b6eaad90e70042cc69ae3b38594b74f5fa6e8ec426d81",
+      "studentParity": "EXACT",
+      "currentAnswer": "④",
+      "currentSolutionSha256": "9835be76b044993b87aba2474d978a53ed5a54f626f4b69f331b72920b5bacdc",
+      "assets": [
+        {
+          "ref": "assets/images/22_왕운중_1학기_기말_중2_기출/q20.png",
+          "sha256": "0b15ee72a1a20c09ae4635b1009cca62cc983c98286d168fe4208ce873bc9472",
+          "actualOpenedBeforeFreeze": true,
+          "freezeAck": true
+        }
+      ]
+    },
+    {
+      "qid": 24,
+      "changedLoci": [
+        "solution",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "independentAnswer": "(1) A=(k,2k), C=(3k,0); (2) k=2; (3) area 16, D=(6,4); (4) y=−2x+16",
+      "comparison": "PASS",
+      "reason": "Square side 2k; D=(3k,2k) lies on y=−x+10, giving k=2; current answer/solution match.",
+      "metadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "verdict": "SUPPORTED"
+      },
+      "studentPayloadSha256": "b3b747f5ca61de06419ba5869db4e01b7b4d5b6ffcc2c84681ee681977c4177d",
+      "studentParity": "EXACT",
+      "currentAnswer": "(1) $A(k,2k)$, $C(3k,0)$  (2) $k=2$  (3) 넓이 16, $D(6,4)$  (4) $y=-2x+16$",
+      "currentSolutionSha256": "2949e212933bf7d172eef969b43560e54fdb92d8c7a30dbb7fac0455dc477a40",
+      "assets": [
+        {
+          "ref": "assets/images/22_왕운중_1학기_기말_중2_기출/q24.png",
+          "sha256": "20ee1bff5d827a9c50cc607b10933449caaab242dcd00597c5da796edb8baae9",
+          "actualOpenedBeforeFreeze": true,
+          "freezeAck": true
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "changedLociReviewed": 7,
+    "changedSolutionComparisonsPass": true,
+    "metadataLociSupported": true,
+    "q14CorrectionCleared": true,
+    "allRequiredOpenedAssetsBound": true,
+    "scopeDisposition": "PASS_FOR_LISTED_CHANGED_LOCI",
+    "itemHoldOrFullStageDisposition": "NOT_ASSERTED"
+  },
+  "provenance": {
+    "q14CorrectionReview": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\.tmp\\ci-review-o33\\q14-correction-review.json",
+      "sha256": "2a3a3b908650a83a25870fab84ab4f7a2d14890a3ff74963957cca2c850492d7"
+    },
+    "originalFreezePreserved": true,
+    "physicalEvidenceEdited": false,
+    "productionSourceEdited": false,
+    "pdfOpened": false,
+    "actualOpenedAssets": [
+      "assets/images/22_왕운중_1학기_기말_중2_기출/q14.png",
+      "assets/images/22_왕운중_1학기_기말_중2_기출/q20.png",
+      "assets/images/22_왕운중_1학기_기말_중2_기출/q24.png"
+    ]
+  }
+}

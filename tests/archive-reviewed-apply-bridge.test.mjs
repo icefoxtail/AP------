@@ -494,6 +494,11 @@ test("T2 REPAIR updates an existing UID in metadata, runtime, and catalog projec
   assert.equal(checked.semanticMetadataMutationCount, 1);
   runCli(f.root, cli.patch, ["--packet", packetPath, "--write"]);
   regenerateFixtureCatalog(f);
+  mutateFixtureJson(f, "archive/data/archive2-catalog.json", (catalog) => {
+    const row = catalog.records.find((record) => record.questionUid === q1Uid);
+    assert.ok(row);
+    row.sourceStatus = "VERIFIED";
+  });
   const rebuilt = lastJson(runCli(f.root, cli.runtime, ["--packet", packetPath, "--write"]).stdout);
   assert.deepEqual(rebuilt.canonicalGateCounts, { brokenL4ParentCount: 0, unregisteredL3Count: 0, unregisteredL4Count: 0, unregisteredCrossConceptCount: 0, bindingMismatchCount: 0 });
   const metadata = readJson(f.root, "archive/data/question_metadata.json").records.find((row) => row.questionUid === q1Uid);

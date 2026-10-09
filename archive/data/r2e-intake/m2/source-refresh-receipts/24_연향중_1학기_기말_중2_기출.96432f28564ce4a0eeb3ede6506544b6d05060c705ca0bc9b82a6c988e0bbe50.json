@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": "M2_SCOPED_R1_SOURCE_REFRESH_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "scopeOnly": true,
+  "fullExamR1Pass": false,
+  "scope": {
+    "examUid": "24_연향중_1final",
+    "changedQids": [
+      6,
+      7,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "allQidsCompared": true,
+    "renderReview": "NOT_RUN_SCOPED_R1_NO_RENDER_PASS_ASSERTED",
+    "sourceOrEvidenceFilesEdited": false
+  },
+  "currentExam": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/archive/exams/original/middle/m2/1final/24_연향중_1학기_기말_중2_기출.js",
+    "rawSha256": "201ef7cb107e3da725f04725219de116f7a87dfcf7f57f6afa29f5dc8e0793b4",
+    "rawBufferBlobSha1": "9a5978498c600b0ed18d32b0e0663657599fa0ab",
+    "questionCount": 23
+  },
+  "historicalBaseline": {
+    "commit": "653b2e8",
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/historical-source-653b2e8.js",
+    "rawSha256": "6ad38f66707a29fab84a7593cf498ea7571704755e6f7b6f6133926ae215f9df",
+    "rawBufferBlobSha1": "f5c7749be11e13c9d078d16826aec10a3e3dc243"
+  },
+  "studentBundles": {
+    "current": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/current-student-only.json",
+      "sha256": "4f04c677af9ed5afb2b7073740c4cbd97408b1aebee1ffd090edf93a5982f874",
+      "schemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+      "questionCount": 23,
+      "answersIncluded": false
+    },
+    "baseline": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/historical-student-current-assets.json",
+      "sha256": "d604fe383cb7a6787188c4b3d22239e8b6598b60cbd9cf70bb385beeed74fa88",
+      "schemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+      "questionCount": 23,
+      "answersIncluded": false
+    },
+    "affectedRowsExceptQ22Exact": true
+  },
+  "freezes": {
+    "currentScoped": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/scoped-independent-freeze.json",
+      "sha256": "60dc71f012df196a347aa46678b03f9aa8d72227b8c4b153afe0d5bd0b44e974",
+      "schemaVersion": "M2_SCOPED_R1_INDEPENDENT_FREEZE_V1",
+      "qids": [
+        7,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "scopeOnly": true,
+      "fullExamR1Pass": false
+    },
+    "q20Adjudication": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/q20-answer-adjudication.json",
+      "sha256": "7b51ac5df6e6272f2d0d07f8eff5e744a6db741c3520884a0c41f795f14454b6",
+      "originalFreezePreserved": true
+    },
+    "historicalReusableFreeze": {
+      "located": false,
+      "reason": "No historical R1 freeze file for this exam was present in the assigned checkout evidence paths; current changed-scope answers were independently frozen from the current student bundle."
+    }
+  },
+  "changedRows": [
+    {
+      "qid": 6,
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "739ffbbddf9963ba85628ba725da72bd85eaf84f601358a765d70696690560fa",
+        "currentPayloadSha256": "739ffbbddf9963ba85628ba725da72bd85eaf84f601358a765d70696690560fa",
+        "exact": true
+      },
+      "currentAnswer": "④",
+      "independentAnswer": null,
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": null,
+      "currentMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": {
+        "verdict": "PASS",
+        "canonicalKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "canonicalLabel": "연립일차방정식의 활용",
+        "rationale": "Figure measurements are translated into simultaneous linear equations to determine the congruent rectangle dimensions; this is an application problem.",
+        "taxonomySource": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      },
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Solution text is byte-equivalent to baseline."
+        },
+        "META": {
+          "status": "PASS_CANONICAL_TAXONOMY_REVIEW",
+          "basis": "Figure measurements are translated into simultaneous linear equations to determine the congruent rectangle dimensions; this is an application problem."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      }
+    },
+    {
+      "qid": 7,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "c190ff973cc008888650ea89262ee96c9f1ef112cb161a0417130f6d0d375416",
+        "currentPayloadSha256": "c190ff973cc008888650ea89262ee96c9f1ef112cb161a0417130f6d0d375416",
+        "exact": true
+      },
+      "currentAnswer": "②",
+      "independentAnswer": "4000 m; choice ②",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "e0c51e29da5e850057ea645a6a86f82e5a5fd67deeeaf1666c41ed255fcc5094",
+        "currentSolutionSha256": "36804e4a7fb0dbe7183d7e14a867751e9048c834cd3bd1b835f725378f50eea0",
+        "independentAnswer": "4000 m; choice ②",
+        "storedAnswer": "②",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      }
+    },
+    {
+      "qid": 13,
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "4001b535d59ffeb581e334097ffe6d25d7965a5da3f17b0206978bb7e2e37385",
+        "currentPayloadSha256": "4001b535d59ffeb581e334097ffe6d25d7965a5da3f17b0206978bb7e2e37385",
+        "exact": true
+      },
+      "currentAnswer": "③",
+      "independentAnswer": null,
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": null,
+      "currentMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": {
+        "verdict": "PASS",
+        "canonicalKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "canonicalLabel": "일차함수의 뜻과 그래프",
+        "rationale": "The condition that three coordinate points lie on one straight-line graph is a basic linear-function graph property.",
+        "taxonomySource": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      },
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Solution text is byte-equivalent to baseline."
+        },
+        "META": {
+          "status": "PASS_CANONICAL_TAXONOMY_REVIEW",
+          "basis": "The condition that three coordinate points lie on one straight-line graph is a basic linear-function graph property."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 14,
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "3c2e813b9538e3574babd3592664bd40dec242a2282270fdf4914e659d6f217d",
+        "currentPayloadSha256": "3c2e813b9538e3574babd3592664bd40dec242a2282270fdf4914e659d6f217d",
+        "exact": true
+      },
+      "currentAnswer": "③",
+      "independentAnswer": null,
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": null,
+      "currentMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": {
+        "verdict": "PASS",
+        "canonicalKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "canonicalLabel": "일차함수와 일차방정식의 관계",
+        "rationale": "The task uses the graph of a linear equation and its x-axis intercept, matching the relation between linear functions/equations.",
+        "taxonomySource": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      },
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Solution text is byte-equivalent to baseline."
+        },
+        "META": {
+          "status": "PASS_CANONICAL_TAXONOMY_REVIEW",
+          "basis": "The task uses the graph of a linear equation and its x-axis intercept, matching the relation between linear functions/equations."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 15,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "207b8d0b5f638dfe7992f75b4497dd5145608630dd8ed88cf5b527b585f84435",
+        "currentPayloadSha256": "207b8d0b5f638dfe7992f75b4497dd5145608630dd8ed88cf5b527b585f84435",
+        "exact": true
+      },
+      "currentAnswer": "①",
+      "independentAnswer": "1 second; choice ①",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "37bcb220b739d371853888bdb8cdd6bbb23d7045f8c58aa09e476029eb3ea1d5",
+        "currentSolutionSha256": "8a73dd718b2f0dfedc557cb15a0d19bd6885b6e421b1bf9257dfb9cbd40e1cf1",
+        "independentAnswer": "1 second; choice ①",
+        "storedAnswer": "①",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      }
+    },
+    {
+      "qid": 16,
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "f7fc77da40ae1a2a3f45becbefaa5641bc611c433d5e756c52ff581f7bbb0c39",
+        "currentPayloadSha256": "f7fc77da40ae1a2a3f45becbefaa5641bc611c433d5e756c52ff581f7bbb0c39",
+        "exact": true
+      },
+      "currentAnswer": "③",
+      "independentAnswer": null,
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": null,
+      "currentMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": {
+        "verdict": "PASS",
+        "canonicalKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "canonicalLabel": "일차함수와 일차방정식의 관계",
+        "rationale": "The task interprets intercepts and graph properties of 3x+2y−6=0, matching the relation between linear equations and their graphs.",
+        "taxonomySource": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      },
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Solution text is byte-equivalent to baseline."
+        },
+        "META": {
+          "status": "PASS_CANONICAL_TAXONOMY_REVIEW",
+          "basis": "The task interprets intercepts and graph properties of 3x+2y−6=0, matching the relation between linear equations and their graphs."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "중",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 18,
+      "changedFields": [
+        "solution",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "d18e97a2958eaade55d6494e15b54de4e3411ecaffb67dfacc063791789bd6a3",
+        "currentPayloadSha256": "d18e97a2958eaade55d6494e15b54de4e3411ecaffb67dfacc063791789bd6a3",
+        "exact": true
+      },
+      "currentAnswer": "④",
+      "independentAnswer": "3; choice ④",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "e3ea5c61cbbe0f7cdd3f04699446ef4d8f6ecbcf0666ca4a8e82aa310ac65ae2",
+        "currentSolutionSha256": "59bfb0730e6d3cd4347452cef77827f09b56d93d6c4056c6b0c725112c91515f",
+        "independentAnswer": "3; choice ④",
+        "storedAnswer": "④",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": {
+        "verdict": "PASS",
+        "canonicalKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "canonicalLabel": "일차함수와 일차방정식의 관계",
+        "rationale": "The area is determined from intersections of two linear-function graphs and the x-axis, matching the relation between linear functions/equations.",
+        "taxonomySource": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+      },
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "PASS_CANONICAL_TAXONOMY_REVIEW",
+          "basis": "The area is determined from intersections of two linear-function graphs and the x-axis, matching the relation between linear functions/equations."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 19,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "15626517d23736e1be65c5af6c4291d1f210ee791cf8721cf27d4462bdf4e8c0",
+        "currentPayloadSha256": "15626517d23736e1be65c5af6c4291d1f210ee791cf8721cf27d4462bdf4e8c0",
+        "exact": true
+      },
+      "currentAnswer": "③",
+      "independentAnswer": "0; choice ③",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "28313ee54003ad20b8bf815a114b6e35ebfdc8af13859c1dbfaa55d87e4f0ab3",
+        "currentSolutionSha256": "023219603a976132a73957c9c5272d736afd79de4fa0f41ff3924b6331e64ee1",
+        "independentAnswer": "0; choice ③",
+        "storedAnswer": "③",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 20,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "5517c610d29eb8cf7a255e8654acb08182fb14aa1a0cd0ad3033543db941dd0f",
+        "currentPayloadSha256": "5517c610d29eb8cf7a255e8654acb08182fb14aa1a0cd0ad3033543db941dd0f",
+        "exact": true
+      },
+      "currentAnswer": "⑤",
+      "independentAnswer": "choice ⑤",
+      "preAdjudicationIndependentAnswer": "choice ②",
+      "answerAdjudication": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/q20-answer-adjudication.json",
+        "sha256": "7b51ac5df6e6272f2d0d07f8eff5e744a6db741c3520884a0c41f795f14454b6",
+        "originalFreezeAnswer": "choice ②",
+        "correctedAnswer": "choice ⑤",
+        "originalFreezePreserved": true
+      },
+      "solutionComparison": {
+        "baselineSolutionSha256": "dcbc81829d618866ece3c5d9e75597afe9a506c03e83484704954106d100ca17",
+        "currentSolutionSha256": "52d05af8e4e7f768071273aad256bcfa577ed0d07cbb5fd915eb0925ccb1d4ea",
+        "independentAnswer": "choice ⑤",
+        "storedAnswer": "⑤",
+        "verdict": "MATCH_AFTER_SEPARATE_ADJUDICATION"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      }
+    },
+    {
+      "qid": 21,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "32b2c950a3b49e0d67f9c0c83a9887fac15bd99cdee9bed1ef88ea898365c60e",
+        "currentPayloadSha256": "32b2c950a3b49e0d67f9c0c83a9887fac15bd99cdee9bed1ef88ea898365c60e",
+        "exact": true
+      },
+      "currentAnswer": "(1) $a=2$, $b=1$ (2) $x=\\dfrac{3}{4}$, $y=\\dfrac{5}{4}$",
+      "independentAnswer": "a=2, b=1; original solution (x,y)=(3/4,5/4)",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "a174702d45af93dcafe8778b7f3677b8bf1cce3074f9facb4f9d2099e8793dc7",
+        "currentSolutionSha256": "93029b8e41d0ef88fdc58ad6e3fe196695e949fb60862552af5a885ea7ec4ac2",
+        "independentAnswer": "a=2, b=1; original solution (x,y)=(3/4,5/4)",
+        "storedAnswer": "(1) $a=2$, $b=1$ (2) $x=\\dfrac{3}{4}$, $y=\\dfrac{5}{4}$",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      }
+    },
+    {
+      "qid": 22,
+      "changedFields": [
+        "content",
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "f771976d6e79fe78d84727117a605c660394c7d79a71e18397eb759bc3c8f664",
+        "currentPayloadSha256": "3f716404134edb4642845c7278834a6acf848a835e155becaa73efffaf428b4a",
+        "exact": false
+      },
+      "currentAnswer": "(1) $y=150x+700$ (2) 오후 8시 20분",
+      "independentAnswer": "y=700+150x; 오후 8시 20분",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "5b69ed9d45da939f88142128d4827c087167e075f8928522c779962cdbbb2aac",
+        "currentSolutionSha256": "d0934f1fc5001ae1a1f62a9f52049d2af8e5db84c1ef0cdd4b8696b0458221cb",
+        "independentAnswer": "y=700+150x; 오후 8시 20분",
+        "storedAnswer": "(1) $y=150x+700$ (2) 오후 8시 20분",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_CURRENT_CONTENT_REVIEWED",
+          "basis": "Fresh current student-only payload review; wording now explicitly asks for y as a function of x."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "NOT_APPLICABLE_NO_ASSET",
+          "basis": "No referenced visual asset for this qid."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "contentReview": {
+        "disposition": "FRESH_CURRENT_STUDENT_INPUT_REVIEWED",
+        "changeSummary": "Part (1) now explicitly asks for y as a function of x; current content and independent answer were frozen together."
+      }
+    },
+    {
+      "qid": 23,
+      "changedFields": [
+        "solution"
+      ],
+      "studentInput": {
+        "baselinePayloadSha256": "abfb6df035aa8ea499597578ffdfd477d6f3b9d7f753a5948d15cd527fe2c5d3",
+        "currentPayloadSha256": "abfb6df035aa8ea499597578ffdfd477d6f3b9d7f753a5948d15cd527fe2c5d3",
+        "exact": true
+      },
+      "currentAnswer": "(1) $y=-9x+45$ (2) $y=-3x+27$ (3) 3분 후",
+      "independentAnswer": "(1) y=45−9x; (2) y=27−3x; (3) 3 minutes",
+      "preAdjudicationIndependentAnswer": null,
+      "answerAdjudication": null,
+      "solutionComparison": {
+        "baselineSolutionSha256": "c59b772d0dd4fd1ca7bffe2985c9f14fa6564ad8dc40b2cd7aed288b20474547",
+        "currentSolutionSha256": "4b9db30680a61753593857e3b35c55676a932f547a1a84b0d57556f818279b79",
+        "independentAnswer": "(1) y=45−9x; (2) y=27−3x; (3) 3 minutes",
+        "storedAnswer": "(1) $y=-9x+45$ (2) $y=-3x+27$ (3) 3분 후",
+        "verdict": "MATCH"
+      },
+      "currentMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      },
+      "metaDecision": null,
+      "reviewedAxes": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_EXACT_STUDENT_INPUT_PARITY",
+          "basis": "Current student payload and required assets equal baseline for this qid; no question-body change."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS_SOURCE_REVIEW",
+          "basis": "Current solution algebra/order reviewed against the frozen independent answer; no browser-render claim."
+        },
+        "META": {
+          "status": "UNCHANGED_FROM_BASELINE",
+          "basis": "Meta fields equal baseline."
+        },
+        "VISUAL_SVG": {
+          "status": "PASS_ASSET_OPENED",
+          "basis": "Referenced PNG opened and its mathematical labels/geometry checked; asset bytes match baseline. No SVG dependency."
+        }
+      },
+      "baselineMeta": {
+        "level": "상",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule"
+      }
+    }
+  ],
+  "unchangedQidsExact": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    17
+  ],
+  "solutionChangedRowsStudentAssetsExact": [
+    7,
+    15,
+    18,
+    19,
+    20,
+    21,
+    23
+  ],
+  "assets": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/opened-assets.json",
+    "sha256": "f5c01122ec3510313d68d6fdedee55976288f77939d129026d1e9e921f68c312",
+    "allRequiredAssetsOpened": true,
+    "allAffectedAssetBaselineBytesExact": true,
+    "rows": [
+      {
+        "qid": 6,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q6.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q6.png",
+        "sha256": "b0b09c97bb027e04aeaada3d718c93a303f03e5311eb447bbf9f74cb9a1da7f1",
+        "currentGitBlobSha1": "f0fa63f0a02817a579c1b48f4897ca7e13585a85",
+        "baselineGitBlobSha1": "f0fa63f0a02817a579c1b48f4897ca7e13585a85",
+        "baselineSha256": "b0b09c97bb027e04aeaada3d718c93a303f03e5311eb447bbf9f74cb9a1da7f1",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Two rectangle arrangements with marked totals 19 cm and 21 cm; labels and partition geometry read."
+      },
+      {
+        "qid": 14,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q14.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q14.png",
+        "sha256": "f1b1ca043f6402e2ee1530654f7cd4abf665d1b111d26d1739c6b124f86092f0",
+        "currentGitBlobSha1": "cbb8dddbdd1b278247c6ece0f95e473f65524ce3",
+        "baselineGitBlobSha1": "cbb8dddbdd1b278247c6ece0f95e473f65524ce3",
+        "baselineSha256": "f1b1ca043f6402e2ee1530654f7cd4abf665d1b111d26d1739c6b124f86092f0",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Line graph passes through (4,-3); axes and coordinate labels readable."
+      },
+      {
+        "qid": 15,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q15.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q15.png",
+        "sha256": "7b4eb222ec825fc6859008f940dc096c9990af08389a49c4fab322e3bf3825b5",
+        "currentGitBlobSha1": "e7787a958274b11e4a79eff17a176567ba344c76",
+        "baselineGitBlobSha1": "e7787a958274b11e4a79eff17a176567ba344c76",
+        "baselineSha256": "7b4eb222ec825fc6859008f940dc096c9990af08389a49c4fab322e3bf3825b5",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Rectangle dimensions 10 cm by 6 cm; P travels along BC, matching the area setup."
+      },
+      {
+        "qid": 19,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q19.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q19.png",
+        "sha256": "1def644bbae0151ca9fc698219f8cebe45dbbd35dc687b0b9060ae737f36085e",
+        "currentGitBlobSha1": "939819efa527222cb03bfe4aa6d2d73b3ff2292d",
+        "baselineGitBlobSha1": "939819efa527222cb03bfe4aa6d2d73b3ff2292d",
+        "baselineSha256": "1def644bbae0151ca9fc698219f8cebe45dbbd35dc687b0b9060ae737f36085e",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Two lines intersect at x=-1; vertical guide identifies the stated x-coordinate."
+      },
+      {
+        "qid": 20,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q20.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q20.png",
+        "sha256": "9eccb5ada1e6836b4c3a99aabc2a8a025059e019cfb6ce1d76a6f02586b6296b",
+        "currentGitBlobSha1": "b7c9e6038e001cda9de6adee3d5af88933bf9b5e",
+        "baselineGitBlobSha1": "b7c9e6038e001cda9de6adee3d5af88933bf9b5e",
+        "baselineSha256": "9eccb5ada1e6836b4c3a99aabc2a8a025059e019cfb6ce1d76a6f02586b6296b",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Five graph choices inspected; option ⑤ has negative slope and positive y-intercept."
+      },
+      {
+        "qid": 23,
+        "ref": "assets/images/24_연향중_1학기_기말_중2_기출/q23.png",
+        "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix\\archive\\assets\\images\\24_연향중_1학기_기말_중2_기출\\q23.png",
+        "sha256": "2e62b73339b8b25eecdc23eee5dfb32674b3d75dc639b70dac25fd89311660c2",
+        "currentGitBlobSha1": "8f0d75e182a21889cd5873bc6b26ee710b331611",
+        "baselineGitBlobSha1": "8f0d75e182a21889cd5873bc6b26ee710b331611",
+        "baselineSha256": "2e62b73339b8b25eecdc23eee5dfb32674b3d75dc639b70dac25fd89311660c2",
+        "actualOpened": true,
+        "baselineByteParity": true,
+        "visualNotes": "Graph intercepts inspected: A (0,45) to (5,0), B (0,27) to (9,0)."
+      }
+    ]
+  },
+  "canonicalMetaAuthority": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    }
+  ],
+  "sourceComparison": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-------ci-fix/.tmp/ci-review-m2/24_연향중_1final/full-source-diff.json",
+    "sha256": "a2b6a7d22ac21fb0dc246a9cca6b17d599f06969511272bed933bf26c76ad281",
+    "changedRows": [
+      {
+        "qid": 6,
+        "changedFields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 7,
+        "changedFields": [
+          "solution"
+        ]
+      },
+      {
+        "qid": 13,
+        "changedFields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 14,
+        "changedFields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 15,
+        "changedFields": [
+          "solution"
+        ]
+      },
+      {
+        "qid": 16,
+        "changedFields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 18,
+        "changedFields": [
+          "solution",
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 19,
+        "changedFields": [
+          "solution"
+        ]
+      },
+      {
+        "qid": 20,
+        "changedFields": [
+          "solution"
+        ]
+      },
+      {
+        "qid": 21,
+        "changedFields": [
+          "solution"
+        ]
+      },
+      {
+        "qid": 22,
+        "changedFields": [
+          "content",
+          "solution"
+        ]
+      },
+      {
+        "qid": 23,
+        "changedFields": [
+          "solution"
+        ]
+      }
+    ],
+    "unchangedQidsExact": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      17
+    ]
+  },
+  "answerFreezeSummary": {
+    "q20OriginalFreeze": "choice ②",
+    "q20Adjudicated": "choice ⑤",
+    "reason": "Original freeze preserved; post-freeze sign analysis adjudication is separately hash-bound."
+  },
+  "disposition": "SCOPED_REVIEW_COMPLETE_NO_FULL_EXAM_PASS",
+  "revisionHistory": [
+    {
+      "sha256": "e7fd27dff24da08a2e4ab2e22642f9f96015496a04f26662a303acee643e77ad",
+      "reason": "Initial receipt; expanded with per-qid unchanged proof and Meta before/current values."
+    },
+    {
+      "sha256": "8fb4d92417f92b23f6597b02e8c418bb007bc11ce95d1fd54e2790c8f9a30a95",
+      "reason": "Corrected baselineMeta projection to read flat metadata fields from the historical source."
+    }
+  ],
+  "unchangedQidEvidence": [
+    {
+      "qid": 1,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "e2b3f38eec38d6771c0d03fcffa1f2603fce8ad00bbf76685365c5f787abcb57",
+      "baselineStudentPayloadSha256": "e2b3f38eec38d6771c0d03fcffa1f2603fce8ad00bbf76685365c5f787abcb57",
+      "currentStudentPayloadSha256": "e2b3f38eec38d6771c0d03fcffa1f2603fce8ad00bbf76685365c5f787abcb57",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 2,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "ccea4e2598dd912f6a798a40e09acd92bdf8493b9630ff2d48e558967a446cf9",
+      "baselineStudentPayloadSha256": "ccea4e2598dd912f6a798a40e09acd92bdf8493b9630ff2d48e558967a446cf9",
+      "currentStudentPayloadSha256": "ccea4e2598dd912f6a798a40e09acd92bdf8493b9630ff2d48e558967a446cf9",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 3,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "26cf390c7277e6ecece36a978528b0604e4935d83da81e412359281b513d0a59",
+      "baselineStudentPayloadSha256": "26cf390c7277e6ecece36a978528b0604e4935d83da81e412359281b513d0a59",
+      "currentStudentPayloadSha256": "26cf390c7277e6ecece36a978528b0604e4935d83da81e412359281b513d0a59",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 4,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "252ca864e41fab7aa9eb577048f3ce02e0b37987e08213b4bb42821dd157d66b",
+      "baselineStudentPayloadSha256": "252ca864e41fab7aa9eb577048f3ce02e0b37987e08213b4bb42821dd157d66b",
+      "currentStudentPayloadSha256": "252ca864e41fab7aa9eb577048f3ce02e0b37987e08213b4bb42821dd157d66b",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 5,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "3600f61d19cbfb196143ef90005c7e1a826b3b48ddcc704947836cb0566ef438",
+      "baselineStudentPayloadSha256": "3600f61d19cbfb196143ef90005c7e1a826b3b48ddcc704947836cb0566ef438",
+      "currentStudentPayloadSha256": "3600f61d19cbfb196143ef90005c7e1a826b3b48ddcc704947836cb0566ef438",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 8,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "5fc9f887a66c21324f524c4718dce4bf7f126ffad707e2db40c7666a4df03cbf",
+      "baselineStudentPayloadSha256": "5fc9f887a66c21324f524c4718dce4bf7f126ffad707e2db40c7666a4df03cbf",
+      "currentStudentPayloadSha256": "5fc9f887a66c21324f524c4718dce4bf7f126ffad707e2db40c7666a4df03cbf",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 9,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "4329ad3d0b00676cdd778aacd4de1483b44aa64b6ad35536f4f62a98273d4743",
+      "baselineStudentPayloadSha256": "4329ad3d0b00676cdd778aacd4de1483b44aa64b6ad35536f4f62a98273d4743",
+      "currentStudentPayloadSha256": "4329ad3d0b00676cdd778aacd4de1483b44aa64b6ad35536f4f62a98273d4743",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 10,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "fc7f5af144d3c84628c76ff852ea36dfda1b46b5c99e98ba65e66652ce04b9fb",
+      "baselineStudentPayloadSha256": "fc7f5af144d3c84628c76ff852ea36dfda1b46b5c99e98ba65e66652ce04b9fb",
+      "currentStudentPayloadSha256": "fc7f5af144d3c84628c76ff852ea36dfda1b46b5c99e98ba65e66652ce04b9fb",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 11,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "2d4ccf831a1536f1299a666d01a0f126c764cda60559addfcf40351ead6eb775",
+      "baselineStudentPayloadSha256": "2d4ccf831a1536f1299a666d01a0f126c764cda60559addfcf40351ead6eb775",
+      "currentStudentPayloadSha256": "2d4ccf831a1536f1299a666d01a0f126c764cda60559addfcf40351ead6eb775",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 12,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "1eaf685b5ef3569e3f8602bcffd434c33c870373d886c20155a57fdbcd1a174e",
+      "baselineStudentPayloadSha256": "1eaf685b5ef3569e3f8602bcffd434c33c870373d886c20155a57fdbcd1a174e",
+      "currentStudentPayloadSha256": "1eaf685b5ef3569e3f8602bcffd434c33c870373d886c20155a57fdbcd1a174e",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    },
+    {
+      "qid": 17,
+      "sourceQuestionFieldsExact": true,
+      "studentPayloadSha256": "d2af9087e709f2acbfdabcd12db6bea5387aae9e50b1c26274ee6a1a7c058574",
+      "baselineStudentPayloadSha256": "d2af9087e709f2acbfdabcd12db6bea5387aae9e50b1c26274ee6a1a7c058574",
+      "currentStudentPayloadSha256": "d2af9087e709f2acbfdabcd12db6bea5387aae9e50b1c26274ee6a1a7c058574",
+      "studentPayloadExact": true,
+      "assetsExact": true,
+      "exact": true
+    }
+  ],
+  "taxonomyDecisionBasis": "Current active key master confirms the selected key and canonical label pairs; topic-level rationales are recorded per changed Meta row."
+}

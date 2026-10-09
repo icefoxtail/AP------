@@ -2,7 +2,7 @@ window.examTitle = "2019_매산고_2학기_기말_고2_확률과통계";
 window.questionBank = [
   {
     "id": 1,
-    "content": "다음 중 <보기>에서 전수조사와 표본조사 중 전수조사에 적합한 것의 개수를 고르면?\nㄱ. 매산고등학교 2학년 학생들의 결핵 검사\nㄴ. 동천의 수질 오염도 검사\nㄷ. 대한민국 인구 주택 총조사\nㄹ. OO제약회사의 신약의 임상 시험\nㅁ. △△전구회사의 전구 수명 검사",
+    "content": "다음 중 보기에서 전수조사와 표본조사 중 전수조사에 적합한 것의 개수를 고르면?\nㄱ. 매산고등학교 2학년 학생들의 결핵 검사\nㄴ. 동천의 수질 오염도 검사\nㄷ. 대한민국 인구 주택 총조사\nㄹ. OO제약회사의 신약의 임상 시험\nㅁ. △△전구회사의 전구 수명 검사",
     "choices": [
       "$1$",
       "$2$",
@@ -280,7 +280,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "content": "모평균이 $m$, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n_1$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X}$, 크기가 $n_2$인 표본을 임의추출하여 구한 표본평균을 $\\overline{Y}$라 할 때, 다음 중 옳은 것을 <보기>에서 고르면?\nㄱ. $E(\\overline{X})=m$, $E(\\overline{Y})\\ne m$\nㄴ. $V(\\overline{X})=\\dfrac{\\sigma^2}{n_1}$, $V(\\overline{Y})=\\dfrac{\\sigma^2}{n_2}$이다.\nㄷ. $9n_1=n_2$이면 $\\sigma(\\overline{Y})=\\dfrac13\\times\\sigma(\\overline{X})$이다.",
+    "content": "모평균이 $m$, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n_1$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X}$, 크기가 $n_2$인 표본을 임의추출하여 구한 표본평균을 $\\overline{Y}$라 할 때, 다음 중 옳은 것을 보기에서 고르면?\nㄱ. $E(\\overline{X})=m$, $E(\\overline{Y})\\ne m$\nㄴ. $V(\\overline{X})=\\dfrac{\\sigma^2}{n_1}$, $V(\\overline{Y})=\\dfrac{\\sigma^2}{n_2}$이다.\nㄷ. $9n_1=n_2$이면 $\\sigma(\\overline{Y})=\\dfrac13\\times\\sigma(\\overline{X})$이다.",
     "choices": [
       "ㄱ",
       "ㄴ",

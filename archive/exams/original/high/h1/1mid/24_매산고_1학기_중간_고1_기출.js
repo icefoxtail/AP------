@@ -402,7 +402,7 @@ window.questionBank = [
       "보기판정"
     ],
     "wide": true,
-    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때 <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [4.5점]\n<보기>\nㄱ. $\\omega^2+\\omega+1=0$\nㄴ. $\\dfrac{1}{\\omega}+\\left(\\dfrac{1}{\\omega}\\right)^2=\\dfrac{1}{\\bar{\\omega}}+\\left(\\dfrac{1}{\\bar{\\omega}}\\right)^2$\nㄷ. $(\\omega x+\\omega^2y-1)(\\omega^2x+\\omega y-1)=x^2-xy+y^2+x+y+1$",
+    "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [4.5점]\n<보기>\nㄱ. $\\omega^2+\\omega+1=0$\nㄴ. $\\dfrac{1}{\\omega}+\\left(\\dfrac{1}{\\omega}\\right)^2=\\dfrac{1}{\\bar{\\omega}}+\\left(\\dfrac{1}{\\bar{\\omega}}\\right)^2$\nㄷ. $(\\omega x+\\omega^2y-1)(\\omega^2x+\\omega y-1)=x^2-xy+y^2+x+y+1$",
     "choices": [
       "ㄱ",
       "ㄷ",

@@ -383,7 +383,7 @@ window.questionBank = [
     "tags": [
       "그래프"
     ],
-    "content": "함수 $f(x)$의 도함수 $y=f'(x)$는 우함수이며 그래프가 아래와 같을 때, <보기>에서 옳은 것을 모두 고른 것은? [4.5점]\nㄱ. 함수 $f(x)$의 극값은 $4$개이다.\nㄴ. 함수 $f(x)$는 구간 $(0,2)$에서 증가한다.\nㄷ. $\\displaystyle\\int_{-3}^3f'(x)dx=2\\displaystyle\\int_0^3f'(x)dx$",
+    "content": "함수 $f(x)$의 도함수 $y=f'(x)$는 우함수이며 그래프가 아래와 같을 때, 보기에서 옳은 것을 모두 고른 것은? [4.5점]\nㄱ. 함수 $f(x)$의 극값은 $4$개이다.\nㄴ. 함수 $f(x)$는 구간 $(0,2)$에서 증가한다.\nㄷ. $\\displaystyle\\int_{-3}^3f'(x)dx=2\\displaystyle\\int_0^3f'(x)dx$",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",

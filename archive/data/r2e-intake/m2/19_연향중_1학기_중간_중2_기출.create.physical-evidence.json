@@ -3,8 +3,8 @@
   "stage": "CREATE",
   "generation": "M2_1_CREATE_FIRST_2026_10_04",
   "examPath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
-  "examSha256": "sha256:980154bcd3cea0f9c841ee016ea63d1f7368e12a9dd150e879e1121e18fdb8cd",
-  "finalArtifactGitBlob": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
+  "examSha256": "sha256:5e4c476195a02cb2bb055d93f64ee6a7c11ef50b9ab1152bea5e7c0a32ebc172",
+  "finalArtifactGitBlob": "3c3fbc3ae64a25d4c1b027d36936202b87cb12e4",
   "questionCount": 24,
   "tagMetaAuditCount": "24/24",
   "tagMetaCompleteCount": "24/24",
@@ -209,7 +209,19 @@
       "runtimeString": {
         "status": "PASS",
         "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
-      }
+      },
+      "sourceRefreshReceiptRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+          "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+          "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+          "qid": 5,
+          "changedFields": [
+            "subUnit",
+            "subUnitKey"
+          ]
+        }
+      ]
     },
     {
       "qid": 6,
@@ -248,7 +260,19 @@
       "runtimeString": {
         "status": "PASS",
         "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
-      }
+      },
+      "sourceRefreshReceiptRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+          "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+          "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+          "qid": 6,
+          "changedFields": [
+            "subUnit",
+            "subUnitKey"
+          ]
+        }
+      ]
     },
     {
       "qid": 7,
@@ -287,7 +311,19 @@
       "runtimeString": {
         "status": "PASS",
         "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
-      }
+      },
+      "sourceRefreshReceiptRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+          "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+          "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+          "qid": 7,
+          "changedFields": [
+            "subUnit",
+            "subUnitKey"
+          ]
+        }
+      ]
     },
     {
       "qid": 8,
@@ -326,7 +362,19 @@
       "runtimeString": {
         "status": "PASS",
         "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
-      }
+      },
+      "sourceRefreshReceiptRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+          "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+          "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+          "qid": 8,
+          "changedFields": [
+            "subUnit",
+            "subUnitKey"
+          ]
+        }
+      ]
     },
     {
       "qid": 9,
@@ -355,8 +403,30 @@
         "evidence": "no linked solutionImage; no additional solution visual required for this item"
       },
       "meta": {
-        "status": "PASS",
-        "evidence": "tags + M2-RPM-011 + RPM_ONLY; metadata row physically bound"
+        "status": "HOLD",
+        "evidence": "tags + M2-RPM-011 + RPM_ONLY; metadata row physically bound",
+        "holdEvidence": {
+          "reason": "The source and solution identify monomial multiplication/division as the decisive method (RPM L3-2.1.2). The current active M2-01 Archive subUnit registry has no exact monomial-operation key. M2-01-EXPONENT_LAW maps to the distinct RPM L3-2.1.1 exponent-law branch; M2-01-POLYNOMIAL_OPERATIONS maps to L2-2.2 polynomial calculation, not monomial calculation.",
+          "observedEvidence": [
+            "Current q9 asks which monomial expressions are correct; solution checks coefficient products/quotients and exponent addition/subtraction.",
+            "Active compiled subUnit records under standardUnitKey M2-01: M2-01-EXPONENT_LAW (label 지수법칙), M2-01-POLYNOMIAL_OPERATIONS (label 다항식의 계산), and M2-01-REPEATING_DECIMAL (label 유리수와 순환소수). The last key is semantically unrelated.",
+            "RPM M2-1 canonical source in both 2015 and 2022 middle-school scopes distinguishes L3-2.1.1 지수법칙 from L3-2.1.2 단항식의 곱셈과 나눗셈, under L2-2.1 단항식의 계산.",
+            "Current source has no persisted rpmL3/rpmL4 or primaryMethod fields; current Archive subUnitKey is M2-01-EXPONENT_LAW."
+          ],
+          "unresolvedPoint": "No exact active Archive subUnitKey currently represents RPM L3-2.1.2 monomial multiplication/division. Reusing EXPONENT_LAW would collapse distinct RPM branches; POLYNOMIAL_OPERATIONS is the other, non-matching branch.",
+          "nextRequiredEvidenceOrCapability": "A canonical owner must either (a) approve and compile an M2-01 child subUnit key/label specifically mapped to RPM L3-2.1.2, with parent, curriculum scope, and source evidence, or (b) provide an approved explicit crosswalk proving an existing active subUnit is the exact safe projection for monomial multiplication/division. Then rerun the q9 Meta disposition only against that authority.",
+          "repairAttempted": [
+            "Compared all active compiled subUnitKey records with parent M2-01 against the q9 source/unchanged solution context. The available relevant keys are M2-01-EXPONENT_LAW and M2-01-POLYNOMIAL_OPERATIONS; M2-01-REPEATING_DECIMAL was also observed and excluded as semantically unrelated. Compared q9 decisive method to RPM L3-2.1.1 (exponent laws) and L3-2.1.2 (monomial multiplication/division) in both current curriculum source files. No source/evidence mutation attempted because this task forbids changing source or physical evidence and no safe mapping exists."
+          ],
+          "authorityLookupAttempted": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md — 중2 확장 subUnitKey table: M2-01 exponent law and polynomial operations rows",
+            "archive/data/master_tables/js_archive_tag_master.json — active subUnitKey records for M2-01; keys M2-01-EXPONENT_LAW, M2-01-POLYNOMIAL_OPERATIONS, M2-01-REPEATING_DECIMAL",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md — L2-2.1; L3-2.1.1 and L3-2.1.2",
+            "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md — L2-2.1; L3-2.1.1 and L3-2.1.2",
+            "archive/data/master_tables/js_archive_tag_master.json — enumerated active records with standardUnitKey/parentKey M2-01; confirmed no monomial-operation subUnitKey."
+          ],
+          "whyDeterministicClosureImpossible": "The only active M2-01 Archive subUnit candidate with an algebra-operation meaning is EXPONENT_LAW, which maps to distinct RPM L3-2.1.1; POLYNOMIAL_OPERATIONS belongs to the distinct polynomial-calculation branch (L2-2.2). The decisive q9 method maps to RPM L3-2.1.2, monomial multiplication/division, and the canonical M2-01 subUnit registry contains no child key for that branch. Assigning either existing key would be a semantic mismatch; deterministic closure requires an approved M2-01 key or an approved crosswalk explicitly resolving this exact RPM path."
+        }
       },
       "difficulty": {
         "status": "PASS",
@@ -365,7 +435,19 @@
       "runtimeString": {
         "status": "PASS",
         "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
-      }
+      },
+      "sourceRefreshReceiptRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+          "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+          "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+          "qid": 9,
+          "changedFields": [
+            "subUnit",
+            "subUnitKey"
+          ]
+        }
+      ]
     },
     {
       "qid": 10,
@@ -970,8 +1052,8 @@
     "goldenSampleRefs": [
       {
         "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
-        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
       },
       {
         "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
@@ -1024,7 +1106,7 @@
     "linkedSolutionVisualCount": 0,
     "visualEvidenceRows": 0,
     "metaEvidenceRows": 24,
-    "itemHoldCount": 0
+    "itemHoldCount": 1
   },
   "metaRows": [
     {
@@ -1157,7 +1239,7 @@
     },
     {
       "qid": 9,
-      "result": "PASS",
+      "result": "HOLD",
       "rpmDisposition": "FINAL",
       "projectionDisposition": "RPM_ONLY",
       "primaryMethod": "각 보기의 단항식 곱셈·나눗셈을 독립 계산한다.",
@@ -1169,7 +1251,34 @@
         "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-      ]
+      ],
+      "holdEvidence": {
+        "reason": "The source and solution identify monomial multiplication/division as the decisive method (RPM L3-2.1.2). The current active M2-01 Archive subUnit registry has no exact monomial-operation key. M2-01-EXPONENT_LAW maps to the distinct RPM L3-2.1.1 exponent-law branch; M2-01-POLYNOMIAL_OPERATIONS maps to L2-2.2 polynomial calculation, not monomial calculation.",
+        "observedEvidence": [
+          "Current q9 asks which monomial expressions are correct; solution checks coefficient products/quotients and exponent addition/subtraction.",
+          "Active compiled subUnit records under standardUnitKey M2-01: M2-01-EXPONENT_LAW (label 지수법칙), M2-01-POLYNOMIAL_OPERATIONS (label 다항식의 계산), and M2-01-REPEATING_DECIMAL (label 유리수와 순환소수). The last key is semantically unrelated.",
+          "RPM M2-1 canonical source in both 2015 and 2022 middle-school scopes distinguishes L3-2.1.1 지수법칙 from L3-2.1.2 단항식의 곱셈과 나눗셈, under L2-2.1 단항식의 계산.",
+          "Current source has no persisted rpmL3/rpmL4 or primaryMethod fields; current Archive subUnitKey is M2-01-EXPONENT_LAW."
+        ],
+        "unresolvedPoint": "No exact active Archive subUnitKey currently represents RPM L3-2.1.2 monomial multiplication/division. Reusing EXPONENT_LAW would collapse distinct RPM branches; POLYNOMIAL_OPERATIONS is the other, non-matching branch.",
+        "nextRequiredEvidenceOrCapability": "A canonical owner must either (a) approve and compile an M2-01 child subUnit key/label specifically mapped to RPM L3-2.1.2, with parent, curriculum scope, and source evidence, or (b) provide an approved explicit crosswalk proving an existing active subUnit is the exact safe projection for monomial multiplication/division. Then rerun the q9 Meta disposition only against that authority.",
+        "repairAttempted": [
+          "Compared all active compiled subUnitKey records with parent M2-01 against the q9 source/unchanged solution context. The available relevant keys are M2-01-EXPONENT_LAW and M2-01-POLYNOMIAL_OPERATIONS; M2-01-REPEATING_DECIMAL was also observed and excluded as semantically unrelated. Compared q9 decisive method to RPM L3-2.1.1 (exponent laws) and L3-2.1.2 (monomial multiplication/division) in both current curriculum source files. No source/evidence mutation attempted because this task forbids changing source or physical evidence and no safe mapping exists."
+        ],
+        "authorityLookupAttempted": [
+          "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md — 중2 확장 subUnitKey table: M2-01 exponent law and polynomial operations rows",
+          "archive/data/master_tables/js_archive_tag_master.json — active subUnitKey records for M2-01; keys M2-01-EXPONENT_LAW, M2-01-POLYNOMIAL_OPERATIONS, M2-01-REPEATING_DECIMAL",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md — L2-2.1; L3-2.1.1 and L3-2.1.2",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md — L2-2.1; L3-2.1.1 and L3-2.1.2",
+          "archive/data/master_tables/js_archive_tag_master.json — enumerated active records with standardUnitKey/parentKey M2-01; confirmed no monomial-operation subUnitKey."
+        ],
+        "whyDeterministicClosureImpossible": "The only active M2-01 Archive subUnit candidate with an algebra-operation meaning is EXPONENT_LAW, which maps to distinct RPM L3-2.1.1; POLYNOMIAL_OPERATIONS belongs to the distinct polynomial-calculation branch (L2-2.2). The decisive q9 method maps to RPM L3-2.1.2, monomial multiplication/division, and the canonical M2-01 subUnit registry contains no child key for that branch. Assigning either existing key would be a semantic mismatch; deterministic closure requires an approved M2-01 key or an approved crosswalk explicitly resolving this exact RPM path."
+      },
+      "sourceRefreshReceiptRef": {
+        "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+        "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+        "qid": 9
+      }
     },
     {
       "qid": 10,
@@ -1411,5 +1520,1617 @@
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
       ]
     }
-  ]
+  ],
+  "evidenceBindingHistory": {
+    "schemaVersion": "JS_ARCHIVE_EVIDENCE_BINDING_HISTORY_V1",
+    "entries": [
+      {
+        "sourcePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "previous": {
+          "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+          "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+        },
+        "current": {
+          "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+          "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+        },
+        "verifiedAtCommit": "1ba22c805c9fc4b144b5670d414964ee73d3521d",
+        "verification": {
+          "historicalSourceSha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+          "currentSourceSha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+          "currentSourceGitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+          "verifiedQids": [
+            1,
+            2
+          ],
+          "changedUnreferencedQids": [
+            10,
+            12
+          ],
+          "deltaFinding": "Only line-wrap newlines in unreferenced q10/q12 content differ; all remaining question fields and all referenced q1/q2 are exact."
+        },
+        "rebindTool": "archive/tools/rebind-m2-create-golden-sample-evidence.mjs"
+      }
+    ]
+  },
+  "physicalEvidenceBindingHistoryV1": {
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_EXAM_BINDING_HISTORY_V1",
+    "entries": [
+      {
+        "baseline": {
+          "commit": "7b107db99aac00d3a70aa0410786d03d1b63f1e5",
+          "sha256": "sha256:980154bcd3cea0f9c841ee016ea63d1f7368e12a9dd150e879e1121e18fdb8cd",
+          "gitBlobSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b"
+        },
+        "current": {
+          "sha256": "sha256:5e4c476195a02cb2bb055d93f64ee6a7c11ef50b9ab1152bea5e7c0a32ebc172",
+          "gitBlobSha": "3c3fbc3ae64a25d4c1b027d36936202b87cb12e4"
+        },
+        "preservedPriorEvidence": {
+          "examSha256": "sha256:980154bcd3cea0f9c841ee016ea63d1f7368e12a9dd150e879e1121e18fdb8cd",
+          "finalArtifactGitBlob": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
+          "questionRows": [
+            {
+              "qid": 1,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q1 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q1 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q1 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-001 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 2,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q2 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q2 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q2 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-003 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 3,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q3 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q3 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q3 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-004 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 4,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q4 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q4 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q4 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-002 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 5,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q5 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q5 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q5 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-007 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 6,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q6 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q6 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q6 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-008 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 7,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q7 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q7 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q7 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-007 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 8,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q8 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q8 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q8 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-007 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 9,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q9 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q9 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q9 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-011 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 10,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q10 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q10 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q10 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-013 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 11,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q11 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q11 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q11 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-014 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 12,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q12 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q12 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q12 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-013 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 13,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q13 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q13 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q13 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-013 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 14,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q14 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q14 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q14 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-015 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 15,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q15 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q15 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q15 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-020 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 16,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q16 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q16 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q16 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-018 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 17,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q17 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q17 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q17 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-021 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 18,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q18 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q18 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q18 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-023 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 19,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q19 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q19 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q19 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-024 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 20,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q20 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q20 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q20 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-026 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 3; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 21,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q21 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q21 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q21 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-007 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 22,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q22 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q22 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q22 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-015 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 23,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q23 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q23 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q23 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-020 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 1; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            },
+            {
+              "qid": 24,
+              "sourceExact": {
+                "status": "PASS",
+                "evidence": "D_SOURCE_CONFIRMED artifact; protected source lineage 969c8b19c2085c204db060a32d9a3721bf9bce33; q5 audited source repair is bound in archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json"
+              },
+              "answerMath": {
+                "status": "PASS",
+                "evidence": "q24 independently recomputed in fresh CREATE audit; answer matches source-confirmed artifact"
+              },
+              "solutionMath": {
+                "status": "PASS",
+                "evidence": "q24 fresh CREATE solution recomputed and verified against answer"
+              },
+              "smallBoard": {
+                "status": "PASS",
+                "evidence": "q24 student-reproducible ordered reasoning and conclusion inspected; no unresolved enumerated-block defect"
+              },
+              "curriculum": {
+                "status": "PASS",
+                "evidence": "2015 middle2 scope or lower prerequisite method only"
+              },
+              "visualNecessity": {
+                "status": "PASS",
+                "evidence": "no linked solutionImage; no additional solution visual required for this item"
+              },
+              "meta": {
+                "status": "PASS",
+                "evidence": "tags + M2-RPM-028 + RPM_ONLY; metadata row physically bound"
+              },
+              "difficulty": {
+                "status": "PASS",
+                "evidence": "bucket 2; confidence high; boundary NONE"
+              },
+              "runtimeString": {
+                "status": "PASS",
+                "evidence": "runtime content/choices/answer/solution TeX escape and newline audit: no high-signal doubled TeX escape"
+              }
+            }
+          ],
+          "metaRows": [
+            {
+              "qid": 1,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "기약분수 분모의 소인수를 확인한다.",
+              "decisiveStep": "②의 기약분수 분모가 $2^3$뿐이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 2,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "순환마디 길이로 자리수를 나눈 나머지를 본다.",
+              "decisiveStep": "40을 3으로 나눈 나머지가 1이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 3,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "순환마디 길이만큼 10의 거듭제곱을 곱한 뒤 뺀다.",
+              "decisiveStep": "$100x-x=243$으로 분수화한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 4,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "연속한 두 수의 곱이 2와 5만 소인수로 갖는지 확인한다.",
+              "decisiveStep": "가능한 연속쌍은 (1,2), (4,5)뿐이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 5,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "각 보기의 지수법칙을 직접 계산한다.",
+              "decisiveStep": "현재 추출 보기에서는 ②와 ③이 동시에 참이라 source 확인이 필요하다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 6,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "거듭제곱의 거듭제곱 지수를 비교한다.",
+              "decisiveStep": "$4a=8$, $8b=24$를 비교한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 7,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "2와 5를 짝지어 10의 거듭제곱으로 만든다.",
+              "decisiveStep": "$2^{12}5^{10}=4\\times10^{10}$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 8,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "각 인수의 소인수 지수를 합산한다.",
+              "decisiveStep": "지수합이 각각 10,2,7,1이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 9,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "각 보기의 단항식 곱셈·나눗셈을 독립 계산한다.",
+              "decisiveStep": "②와 ④만 계산 결과가 일치한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 10,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "통분 후 동류항을 정리한다.",
+              "decisiveStep": "$-\\frac16x-\\frac76y$에서 계수를 읽는다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 11,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "분배법칙으로 전개 후 계수를 비교한다.",
+              "decisiveStep": "정리식 $7x^2+3xy+14x$에서 $a=7,b=3$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 12,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "잘못 더한 결과에서 원래 식을 역산한다.",
+              "decisiveStep": "원래 식을 복원한 뒤 올바르게 뺀다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 13,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "안쪽 괄호부터 차례로 푼다.",
+              "decisiveStep": "대괄호 내부가 $a-b$로 정리된다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 14,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "각 분자를 단항식으로 나눈 뒤 뺀다.",
+              "decisiveStep": "$(2x-1)-(1-3x^2)$로 정리한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 15,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "일차부등식을 풀고 보기값을 대입한다.",
+              "decisiveStep": "해는 $x\\le8$이므로 9만 제외된다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 16,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "음수를 곱할 때 부등호 방향이 바뀌는 성질을 쓴다.",
+              "decisiveStep": "⑤는 -5를 곱하고도 방향을 바꾸지 않았다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 17,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "소수와 분수를 없앤 뒤 일차부등식을 푼다.",
+              "decisiveStep": "양변에 6을 곱하면 $x<5$가 된다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 18,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "첫 부등식의 해 경계와 두 번째 부등식의 경계를 일치시킨다.",
+              "decisiveStep": "$x<1$과 $x<-16/a-3$의 경계를 비교한다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 19,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "평균 조건을 일차부등식으로 세운다.",
+              "decisiveStep": "총점이 280점 이상이어야 하므로 $x\\ge68$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 20,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "거리=속력×시간 관계로 남은 구간의 시간을 제한한다.",
+              "decisiveStep": "$0.5+7/v\\le1.5$에서 $v\\ge7$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 21,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "공통 인자 3을 약분하고 9를 3의 거듭제곱으로 바꾼다.",
+              "decisiveStep": "$9^4/3^4=3^4$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 22,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "각 식을 단항식으로 나눈 뒤 합한다.",
+              "decisiveStep": "$A=5a-4b$, $B=6a-10b$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 23,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "전개 후 음수 계수로 나눌 때 방향을 바꾼다.",
+              "decisiveStep": "$-3x<1$에서 $x>-1/3$이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            },
+            {
+              "qid": 24,
+              "result": "PASS",
+              "rpmDisposition": "FINAL",
+              "projectionDisposition": "RPM_ONLY",
+              "primaryMethod": "구입비와 대여비를 사용 개월 수의 식으로 비교한다.",
+              "decisiveStep": "$x>80$이므로 첫 자연수는 81이다.",
+              "problemTypeKey": null,
+              "templateKey": null,
+              "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+              "lookupRefs": [
+                "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+                "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+                "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+              ]
+            }
+          ],
+          "summary": {
+            "questionCount": 24,
+            "questionEvidenceRows": 24,
+            "linkedSolutionVisualCount": 0,
+            "visualEvidenceRows": 0,
+            "metaEvidenceRows": 24,
+            "itemHoldCount": 0
+          }
+        },
+        "receiptRefs": [
+          {
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sourceSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        ]
+      }
+    ]
+  },
+  "sourceRefreshReviewV1": {
+    "schemaVersion": "JS_ARCHIVE_SOURCE_REFRESH_REVIEW_V1",
+    "disposition": "SCOPED_CHANGED_LOCI_REVIEW_BOUND_NOT_FULL_R1_PASS",
+    "scopeOnly": true,
+    "fullExamR1Pass": false,
+    "baseline": {
+      "commit": "7b107db99aac00d3a70aa0410786d03d1b63f1e5",
+      "sha256": "sha256:980154bcd3cea0f9c841ee016ea63d1f7368e12a9dd150e879e1121e18fdb8cd",
+      "gitBlobSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b"
+    },
+    "current": {
+      "examPath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+      "sha256": "sha256:5e4c476195a02cb2bb055d93f64ee6a7c11ef50b9ab1152bea5e7c0a32ebc172",
+      "gitBlobSha": "3c3fbc3ae64a25d4c1b027d36936202b87cb12e4",
+      "questionCount": 24
+    },
+    "exactUnchangedQids": [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "studentPayloadUnchangedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "changedQids": [
+      {
+        "qid": 5,
+        "changedFields": [
+          "subUnit",
+          "subUnitKey"
+        ],
+        "fieldDispositions": {
+          "subUnit": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          },
+          "subUnitKey": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        },
+        "receiptRefs": [
+          {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff"
+          }
+        ]
+      },
+      {
+        "qid": 6,
+        "changedFields": [
+          "subUnit",
+          "subUnitKey"
+        ],
+        "fieldDispositions": {
+          "subUnit": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          },
+          "subUnitKey": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        },
+        "receiptRefs": [
+          {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff"
+          }
+        ]
+      },
+      {
+        "qid": 7,
+        "changedFields": [
+          "subUnit",
+          "subUnitKey"
+        ],
+        "fieldDispositions": {
+          "subUnit": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          },
+          "subUnitKey": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        },
+        "receiptRefs": [
+          {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff"
+          }
+        ]
+      },
+      {
+        "qid": 8,
+        "changedFields": [
+          "subUnit",
+          "subUnitKey"
+        ],
+        "fieldDispositions": {
+          "subUnit": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          },
+          "subUnitKey": {
+            "status": "PASS",
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        },
+        "receiptRefs": [
+          {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff"
+          }
+        ]
+      },
+      {
+        "qid": 9,
+        "changedFields": [
+          "subUnit",
+          "subUnitKey"
+        ],
+        "fieldDispositions": {
+          "subUnit": {
+            "status": "HOLD",
+            "holdAxes": [
+              "meta"
+            ],
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          },
+          "subUnitKey": {
+            "status": "HOLD",
+            "holdAxes": [
+              "meta"
+            ],
+            "receiptSha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+            "receiptPath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json"
+          }
+        },
+        "receiptRefs": [
+          {
+            "path": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+            "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+            "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff"
+          }
+        ]
+      }
+    ],
+    "openedAssets": [],
+    "receipts": [
+      {
+        "sourcePath": ".tmp/ci-review-m2/19_연향중_1mid/r1-meta-scope-refresh-adjudicated.json",
+        "sha256": "sha256:6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff",
+        "sourceSha256": "sha256:5e4c476195a02cb2bb055d93f64ee6a7c11ef50b9ab1152bea5e7c0a32ebc172",
+        "sourceGitBlobSha": "3c3fbc3ae64a25d4c1b027d36936202b87cb12e4",
+        "durablePath": "archive/data/r2e-intake/m2/source-refresh-receipts/19_연향중_1학기_중간_중2_기출.6add26f688c7f0dbbe9ebc090e4075e868e587e8bce021f2f7792d32218e33ff.json",
+        "schemaVersion": "APMATH_TARGETED_R1_META_SCOPE_REFRESH_V1"
+      }
+    ],
+    "itemHoldQids": [
+      9
+    ],
+    "unreviewedAxes": [
+      "SOLUTION",
+      "RENDER",
+      "FULL_EXAM_R1"
+    ]
+  }
 }

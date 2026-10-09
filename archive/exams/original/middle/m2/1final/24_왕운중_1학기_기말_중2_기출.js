@@ -424,8 +424,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "두 그래프가 일치하려면 기울기와 $y$절편이 각각 같아야 한다.\n$\\dfrac a2=2$에서 $a=4$, $3=-b$에서 $b=-3$이다.\n따라서 $a+b=1$이고 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -489,7 +489,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "$3x+4y=23$에서\n$x,y$가 자연수이므로 가능한 $y$를 확인한다.\n\n$y=1$이면\n\n$3x+4=23$\n\n$3x=19$\n\n$x=\\dfrac{19}{3}$이므로 자연수가 아니다.\n\n$y=2$이면\n\n$3x+8=23$\n\n$3x=15$\n\n$x=5$이다.\n\n$y=3$이면\n\n$3x+12=23$\n\n$3x=11$\n\n$x=\\dfrac{11}{3}$이므로 자연수가 아니다.\n\n$y=4$이면\n\n$3x+16=23$\n\n$3x=7$\n\n$x=\\dfrac73$이므로 자연수가 아니다.\n\n$y=5$이면\n\n$3x+20=23$\n\n$3x=3$\n\n$x=1$이다.\n\n따라서 자연수 해는\n\n$(5,2),\\ (1,5)$\n\n의 $2$개이다.\n\n따라서 정답은 ②이다.",
+    "solution": "$3x+4y=23$에서\n$x,y$가 자연수이므로 $x\\ge1$이다.\n따라서\n$3x\\ge3$이고\n$4y=23-3x\\le20$이다.\n그러므로 $y\\le5$이다.\n또 $y$는 자연수이므로 가능한 값은 $1,2,3,4,5$이다.\n\n$y=1$이면\n\n$3x+4=23\n\n$3x=19\n\n$x=\\dfrac{19}{3}$이므로 자연수가 아니다.\n\n$y=2$이면\n\n$3x+8=23\n\n$3x=15\n\n$x=5$이다.\n\n$y=3$이면\n\n$3x+12=23\n\n$3x=11\n\n$x=\\dfrac{11}{3}$이므로 자연수가 아니다.\n\n$y=4$이면\n\n$3x+16=23\n\n$3x=7\n\n$x=\\dfrac73$이므로 자연수가 아니다.\n\n$y=5$이면\n\n$3x+20=23\n\n$3x=3\n\n$x=1$이다.\n\n따라서 자연수 해는\n\n$(5,2),\\ (1,5)$\n\n의 $2$개이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
