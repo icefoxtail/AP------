@@ -1,3 +1,12 @@
+## CURRENT 2026-10-10 — Q22 CREATE 9문항 + 9개 해설 SVG / 다음 Q23
+- 통합 branch `work/alive-25-palma-h1-2mid-qid9`; 원본 Q22 세 직선 직각삼각형 외접원에서 A1~C3 총 9개 서술형 생성.
+- 문항 패키지 `GPT_QID9_Q22_PACKAGE.json`, 자가검산 `GPT_QID9_Q22_STEM_SELF_REVIEW.md`, 해설 SVG 9개 `GPT_QID9_Q22_VISUALS/`.
+- Q01~Q21 189 UID 보존, Q22 추가 후 신규 CREATE **198 UID (22×9)**. Primary L3 `원의 방정식`, RPM `H1-RPM-217`, ACTIVE `PT_CIRCLE_EQUATION/TM_CIRCLE_CIRCUMCIRCLE`.
+- 제작자 자가검수 KEEP9/REVISED0/HOLD0; SVG 수치 사실 Python verified, 실제 Chrome student render NOT_TESTED. Q22 공개답 검수 NOT_RUN, Consumer 0/9, main 출시 NOT_DONE.
+- 다음 원본 **Q23**. 현행 Q22 품질 승인/학생용 등록/실렌더가 완료됐다는 의미 아님.
+
+---
+
 ## CURRENT 2026-10-10 — Q21 CREATE 9문항 / 다음 Q22
 - 원본 Q21: 진리집합 P/Q, r↔¬p의 필요·충분조건을 묻는 서술형. RPM Primary L3 `필요조건·충분조건` (`H1-RPM-247`).
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`, Q21 A1~C3 신규 `GPT_QID9_Q21_PACKAGE.json` 9개, `GPT_QID9_Q21_STEM_SELF_REVIEW.md` 제작자 KEEP9/REVISED0/HOLD0.
