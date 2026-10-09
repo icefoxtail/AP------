@@ -48,13 +48,27 @@ function main(argv) {
   const sealDir = path.join(dir, 'seals', stage);
   const sealPath = path.join(sealDir, sha + '.json');
   const handoffPath = path.join(dir, 'handoffs', NEXT[stage] + '.json');
-  // Pre-existing complete receipt is a no-op. Any drift is a hard error, not a rewrite.
+  // Never trust a receipt by its filename alone: require the original validator bytes.
   if (fs.existsSync(sealPath)) {
     const old = JSON.parse(fs.readFileSync(sealPath));
-    if (old.artifactSha !== sha || old.artifactSha256 !== inputHash || old.evidenceSha256 !== evidenceHash) throw Error('EXISTING_RECEIPT_DRIFT');
-    if (!fs.existsSync(handoffPath)) throw Error('RECEIPT_WITHOUT_HANDOFF_REQUIRES_RECOVERY');
+    const rawPath = path.join(sealDir, sha + '.validator.json');
+    if (old.stageStatus !== STAGE_STATUS[stage] || old.qualityContractVersion !== CONTRACT ||
+        old.campaignId !== opts['campaign-id'] || old.stream !== opts.stream || old.examUid !== opts['exam-uid'] ||
+        old.artifactSha !== sha || old.artifactSha256 !== inputHash || old.evidenceSha256 !== evidenceHash ||
+        !fs.existsSync(rawPath) || digest(fs.readFileSync(rawPath)) !== old.validatorReportSha256) throw Error('EXISTING_RECEIPT_DRIFT');
+    const raw = JSON.parse(fs.readFileSync(rawPath));
+    if (raw.ok !== true || raw.validatorMode !== stage + '_V2' || raw.artifactContract?.active !== true ||
+        raw.issues?.length !== 0 || raw.artifactSha !== sha) throw Error('EXISTING_VALIDATOR_NOT_PASS');
+    if (!fs.existsSync(handoffPath)) {
+      // Crash recovery: only publish the handoff after the immutable PASS+raw report check.
+      const ref = { schemaVersion: 'GPT2_SHA_REFERENCE_HANDOFF_v1', campaignId: opts['campaign-id'], stream: opts.stream,
+        examUid: opts['exam-uid'], previousStage: stage, stage: NEXT[stage], artifactSha: sha, evidenceSha256: evidenceHash,
+        sealReference: path.relative(dir, sealPath), artifactReference: old.nextArtifactReference };
+      atomicWrite(handoffPath, Buffer.from(JSON.stringify(ref, null, 2) + '\n'));
+      return { ok: true, recovered: true, stageStatus: STAGE_STATUS[stage], artifactSha: sha, handoffPath };
+    }
     const prev = JSON.parse(fs.readFileSync(handoffPath));
-    if (prev.artifactSha !== sha || prev.evidenceSha256 !== evidenceHash) throw Error('HANDOFF_DRIFT');
+    if (prev.artifactSha !== sha || prev.evidenceSha256 !== evidenceHash || prev.stage !== NEXT[stage]) throw Error('HANDOFF_DRIFT');
     return { ok: true, noop: true, stageStatus: STAGE_STATUS[stage], artifactSha: sha, handoffPath };
   }
   if (fs.existsSync(handoffPath)) throw Error('EXISTING_HANDOFF_CONFLICT');
