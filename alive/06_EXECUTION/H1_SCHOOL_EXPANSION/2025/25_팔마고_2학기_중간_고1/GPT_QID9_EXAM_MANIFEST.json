@@ -24,7 +24,8 @@
     14,
     15,
     16,
-    17
+    17,
+    18
   ],
   "qidLedger": [
     {
@@ -916,16 +917,62 @@
       "reviewStatus": "NOT_RUN",
       "publicationStatus": "NOT_REGISTERED",
       "sourceUnchanged": true
+    },
+    {
+      "qid": 18,
+      "sourceQid": 18,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q18-A1",
+        "ALITE-PALMA25-2MID-Q18-A2",
+        "ALITE-PALMA25-2MID-Q18-A3",
+        "ALITE-PALMA25-2MID-Q18-B1",
+        "ALITE-PALMA25-2MID-Q18-B2",
+        "ALITE-PALMA25-2MID-Q18-B3",
+        "ALITE-PALMA25-2MID-Q18-C1",
+        "ALITE-PALMA25-2MID-Q18-C2",
+        "ALITE-PALMA25-2MID-Q18-C3"
+      ],
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "rpmRecordIds": [
+        "H1-RPM-209"
+      ],
+      "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q18_STEM_SELF_REVIEW.md",
+        "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json",
+        "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json"
+      ],
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "selfReverseStem": "KEEP9_REVISED0_HOLD0",
+      "distractorProof": "36_OF_36_AUTHOR_RECONSTRUCTED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerRegistrationStatus": "NOT_REGISTERED",
+      "studentLookupVerifiedCount": 0,
+      "releaseGateStatus": "NOT_RELEASED_CREATOR_DRAFT",
+      "previousQidsProtected": true
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 144,
+    "newCreateDraftTotal": 162,
     "newCreateDraftByGroup": {
-      "A": 48,
-      "B": 48,
-      "C": 48
+      "A": 54,
+      "B": 54,
+      "C": 54
     },
-    "uniqueGeneratedUids": 144,
+    "uniqueGeneratedUids": 162,
     "openBookQualityReviewed": 36,
     "studentSupplyNew": 108,
     "reviewQueue": 0,
@@ -1016,9 +1063,13 @@
     "gptOpenBookContentReviewedQ13Q16": 36,
     "q13toQ16ReviewRevisionCount": 3,
     "q13toQ16ReviewHold": 0,
-    "gptOpenBookQualityApprovedQ13Q16": 36
+    "gptOpenBookQualityApprovedQ13Q16": 36,
+    "q18AuthorSelfReviewComplete": 9,
+    "q18Keep": 9,
+    "q18Revised": 0,
+    "q18Hold": 0
   },
-  "nextSourceQid": 18,
+  "nextSourceQid": 19,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "Q01_Q04_MAIN_DONE_36_PLUS_Q05_Q08_MAIN_STATIC_REGISTERED_36_CHROME_NOT_TESTED_PLUS_Q09_CREATE_ONLY_9 PLUS_Q10_CREATE_ONLY_9 PLUS_Q11_CREATE_ONLY_9 PLUS_Q12_CREATE_ONLY_9 PLUS_Q13_Q16_MAIN_DONE_36_META_CHROME_VERIFIED",
   "workflow": {
@@ -1084,7 +1135,7 @@
       }
     ]
   },
-  "lastSourceQidCreated": 17,
+  "lastSourceQidCreated": 18,
   "q05toQ08Review": {
     "date": "2026-10-09",
     "scope": "Q05-Q08 A1-C3",
@@ -1395,6 +1446,16 @@
       "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_PACKAGE.json",
       "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_STEM_SELF_REVIEW.md"
     ],
+    "previousQidsProtected": true
+  },
+  "q18CreatorOnly": {
+    "scope": "Q18 A1-C3",
+    "uidCount": 9,
+    "creatorSelfReview": "KEEP9_REVISED0_HOLD0",
+    "rpmL3RecordId": "H1-RPM-209",
+    "openBookReviewed": 0,
+    "studentConsumerRegistered": 0,
+    "chromiumTest": "NOT_TESTED",
     "previousQidsProtected": true
   }
 }
