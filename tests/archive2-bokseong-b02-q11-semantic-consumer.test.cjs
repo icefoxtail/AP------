@@ -8,9 +8,9 @@ const ext=JSON.parse(fs.readFileSync(path.join(root,base+'extension-l3/registry.
 const db=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-lite-consumer/v1/index.json')));
 const shard=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-lite-consumer/v1/shards/H22-C-06-INEQUALITY/bokseong-2026-1final-batch-BSG26-B02-q11.json')));
 test('q11 all nine released without legacy hold leakage',()=>{
- assert.equal(db.approvedCount,346);assert.equal(db.approvedBySchool['복성고'],191);assert.equal(db.approvedBySchool['효천고'],92);
+ assert.equal(db.approvedCount,454);assert.equal(db.approvedBySchool['복성고'],191);assert.equal(db.approvedBySchool['효천고'],92);
  assert.equal(db.excludedHoldUids.length,2);assert.equal(shard.records.length,9);assert.equal(questions.length,9);
- const uid=new Set(db.records.map(x=>x.uid));assert.equal(uid.size,346);
+ const uid=new Set(db.records.map(x=>x.uid));assert.equal(uid.size,454);
  for(const x of shard.records){assert.ok(uid.has(x.generatedUid));assert.ok(!db.excludedHoldUids.includes(x.generatedUid));}
 });
 test('three exact RPM mappings and six local EXT mappings are unambiguous',()=>{
