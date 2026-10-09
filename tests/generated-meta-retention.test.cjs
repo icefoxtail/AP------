@@ -20,8 +20,10 @@ test('legacy 323 stay exempt while every approved post-cutover UID passes Meta p
  const r=audit(path.resolve(__dirname,'..'));
  assert.equal(r.status,'PASS_NEW_UID_SCOPE_ONLY',r.errors.join('\n'));
  assert.equal(r.legacyExemptNotRecertified,323);
- assert.equal(r.newUidChecked,23);
- assert.equal(r.total,346);
+ const index=require('../archive/data/generated-lite-consumer/v1/index.json');
+ assert.equal(r.newUidChecked,index.records.length-323);
+ assert.equal(r.total,index.approvedCount);
+ assert.ok(r.newUidChecked>=23);
 });
 test('fully evidenced future UID passes projection-only gate',()=>{
  assert.deepEqual(validateMeta(meta),[]);
