@@ -19,7 +19,8 @@
     9,
     10,
     11,
-    12
+    12,
+    13
   ],
   "qidLedger": [
     {
@@ -632,19 +633,70 @@
       "status": "CONTENT_REVIEWED_RELEASE_TECH_PENDING",
       "evidenceOnlyCorrection": "Q12_C2_⑤_DISTRACTOR_REASON_RECALCULATED",
       "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q09_Q12_OPENBOOK_REVIEW_20261009.md"
+    },
+    {
+      "qid": 13,
+      "sourceQid": 13,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q13-A1",
+        "ALITE-PALMA25-2MID-Q13-A2",
+        "ALITE-PALMA25-2MID-Q13-A3",
+        "ALITE-PALMA25-2MID-Q13-B1",
+        "ALITE-PALMA25-2MID-Q13-B2",
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q13-C1",
+        "ALITE-PALMA25-2MID-Q13-C2",
+        "ALITE-PALMA25-2MID-Q13-C3"
+      ],
+      "lockedPrimaryL3": "부분집합",
+      "rpmRecordIds": [
+        "H1-RPM-234"
+      ],
+      "rpmBindingStatus": "DIRECT_ACTIVE_L3_GENERATED_L4_CREATOR_DRAFT",
+      "activeProblemTypeKey": "PT_SUBSET_COUNT",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q13_STEM_SELF_REVIEW.md",
+        "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json"
+      ],
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "selfReverseStem": "KEEP9_REVISED0_HOLD0",
+      "mathSpotChecks": "9_OF_9_EXHAUSTIVE_CREATOR_ENUMERATION",
+      "distractorProof": "36_OF_36",
+      "visualStatus": "NOT_REQUIRED_ALL_STEMS_SELF_CONTAINED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "releasedCount": 0,
+      "consumerRegistrationStatus": "NOT_REGISTERED",
+      "studentLookupVerifiedCount": 0,
+      "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
+      "creationCommit": "ATOMIC_Q13_COMMIT_CONTAINING_THIS_MANIFEST",
+      "status": "CREATOR_DRAFT_WAITING_ADAPTIVE_OPEN_BOOK_REVIEW"
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 108,
+    "newCreateDraftTotal": 117,
     "newCreateDraftByGroup": {
-      "A": 36,
-      "B": 36,
-      "C": 36
+      "A": 39,
+      "B": 39,
+      "C": 39
     },
-    "uniqueGeneratedUids": 108,
+    "uniqueGeneratedUids": 117,
     "openBookQualityReviewed": 36,
     "studentSupplyNew": 72,
-    "reviewQueue": 0,
+    "reviewQueue": 9,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 108,
     "contentReviewKeep": 54,
@@ -699,9 +751,16 @@
     "q11ReviewerCanonicalCrossConceptRebound": 4,
     "q12ReviewerCanonicalCrossConceptRebound": 9,
     "q11GeneratedCrossConceptFinalExtensionCount": 2,
-    "q12GeneratedCrossConceptFinalExtensionCount": 0
+    "q12GeneratedCrossConceptFinalExtensionCount": 0,
+    "q13AuthorSelfReviewComplete": 9,
+    "q13Keep": 9,
+    "q13Revised": 0,
+    "q13Hold": 0,
+    "q13GeneratedL4ExtensionDefinitions": 3,
+    "q13GeneratedConditionExtensionDefinitions": 6,
+    "q13GeneratedCrossConceptExtensionDefinitions": 2
   },
-  "nextSourceQid": 13,
+  "nextSourceQid": 14,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "Q01_Q04_MAIN_DONE_36_PLUS_Q05_Q08_MAIN_STATIC_REGISTERED_36_CHROME_NOT_TESTED_PLUS_Q09_CREATE_ONLY_9 PLUS_Q10_CREATE_ONLY_9 PLUS_Q11_CREATE_ONLY_9 PLUS_Q12_CREATE_ONLY_9",
   "workflow": {
@@ -767,7 +826,7 @@
       }
     ]
   },
-  "lastSourceQidCreated": 12,
+  "lastSourceQidCreated": 13,
   "q05toQ08Review": {
     "date": "2026-10-09",
     "scope": "Q05-Q08 A1-C3",
@@ -827,5 +886,72 @@
       "C2",
       "C3"
     ]
+  },
+  "q13CreatorOnly": {
+    "scope": "Q13 A1-C3",
+    "uidCount": 9,
+    "creatorSelfReview": "KEEP9_REVISED0_HOLD0",
+    "arithmeticEnumerationTruth": [
+      {
+        "slot": "A1",
+        "count": 127,
+        "answer": "③",
+        "distractorProof": 4
+      },
+      {
+        "slot": "A2",
+        "count": 511,
+        "answer": "⑤",
+        "distractorProof": 4
+      },
+      {
+        "slot": "A3",
+        "count": 2047,
+        "answer": "①",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B1",
+        "count": 1024,
+        "answer": "④",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B2",
+        "count": 512,
+        "answer": "②",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B3",
+        "count": 38,
+        "answer": "④",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C1",
+        "count": 41,
+        "answer": "①",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C2",
+        "count": 32,
+        "answer": "②",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C3",
+        "count": 120,
+        "answer": "③",
+        "distractorProof": 4
+      }
+    ],
+    "openBookReviewed": 0,
+    "consumerRegistered": 0,
+    "chromiumTest": "NOT_TESTED",
+    "sourceUnchanged": true,
+    "parentRpmL3": "H1-RPM-234",
+    "previousQidProtected": true
   }
 }

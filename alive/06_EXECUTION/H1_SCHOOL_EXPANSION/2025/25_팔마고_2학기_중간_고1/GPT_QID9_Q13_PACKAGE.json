@@ -1,0 +1,1391 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 13,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "정수 전체의 집합의 공집합이 아닌 부분집합 중 다음 &lt;조건&gt;을 만족시키는 집합 $A$의 개수를 구하시오. [4.5점]<br><br>〈조건〉<br>ㄱ. 집합 $A$의 모든 원소의 곱은 양수이다.<br>ㄴ. $x\\in A$이면 $\\dfrac{6}{x}$는 정수이다.",
+    "storedSourceChoices": [
+      "$15$",
+      "$16$",
+      "$64$",
+      "$127$",
+      "$128$"
+    ],
+    "storedSourceAnswer": "④",
+    "sourceProblemTypeKey": "PT_SUBSET_COUNT",
+    "sourceTemplateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+    "sourceQuestionType": "객관식",
+    "computedTruth": "6의 영이 아닌 정수 약수 8개 중 음수 짝수 개 선택 8×양수 자유 선택 16−공집합 1 =127",
+    "sourceOriginalAssetReference": null,
+    "protectedOriginalJs": true
+  },
+  "lockedPrimaryL3": "부분집합",
+  "rpmEvidence": {
+    "l1": "집합과 명제",
+    "l2": "집합의 뜻과 포함 관계",
+    "l3": "부분집합",
+    "recordIds": [
+      "H1-RPM-234"
+    ],
+    "exactL4CoverageStatus": "H1-RPM-234 L4 부분집합의 개수; 조건 확장만 Generated-only specialization",
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_SUBSET_COUNT",
+    "templateKeys": [
+      "TPL_SUBSET_COUNT_SET_CONDITION",
+      "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json"
+  },
+  "experiencePlan": {
+    "A": "원본과 동일한 양·음의 약수의 짝수 선택과 공집합 제외를 10/16/12로 수치변형",
+    "B": "필수 -1, 필수 2·금지 -3, 원소수 4 제약으로 조건에 따른 실제 선택 판단을 추가",
+    "C": "양·음 약수쌍 최소 포함 / 부호+원소수 홀짝 두 조건 / 정확히 4개와 ±1의 배타 선택"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "finalInputCount": 9,
+    "studentStemReverseReading": 9,
+    "keep": 9,
+    "revised": 0,
+    "hold": 0,
+    "answerFiveUnique": 9,
+    "distractorIndexedPaths": 36,
+    "mathematicalComputationReproducedByCreator": 9,
+    "enumerationAudit": [
+      {
+        "slot": "A1",
+        "count": 127,
+        "answer": "③",
+        "distractorProof": 4
+      },
+      {
+        "slot": "A2",
+        "count": 511,
+        "answer": "⑤",
+        "distractorProof": 4
+      },
+      {
+        "slot": "A3",
+        "count": 2047,
+        "answer": "①",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B1",
+        "count": 1024,
+        "answer": "④",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B2",
+        "count": 512,
+        "answer": "②",
+        "distractorProof": 4
+      },
+      {
+        "slot": "B3",
+        "count": 38,
+        "answer": "④",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C1",
+        "count": 41,
+        "answer": "①",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C2",
+        "count": 32,
+        "answer": "②",
+        "distractorProof": 4
+      },
+      {
+        "slot": "C3",
+        "count": 120,
+        "answer": "③",
+        "distractorProof": 4
+      }
+    ],
+    "beforeAnswerExposure": "CREATOR_EXHAUSTIVE_ENUMERATION_NOT_EXTERNAL_INDEPENDENT_VERIFICATION",
+    "reviewedNaturalStemAndSourceL3Count": 9,
+    "studentVisualAssetsRequired": 0,
+    "separation": "AUTHOR_SELF_CHECK_ONLY_NOT_EXTERNAL_GPT_QUALITY_PASS",
+    "studentChrome": "NOT_TESTED"
+  },
+  "generatedL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+  "generatedCrossConceptRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-A1",
+      "slot": "A1",
+      "sourceQid": 13,
+      "mode": "STRICT_VARIANT",
+      "stem": "$10$의 정수 약수 전체로 이루어진 집합을 $D$라 하자. $D$의 공집합이 아닌 부분집합 $A$ 중 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$15$",
+        "$120$",
+        "$127$",
+        "$128$",
+        "$255$"
+      ],
+      "answer": "③",
+      "solution": "$10$의 양의 약수는 $1,2,5,10$이므로 $D$에는 양수 $4$개와 음수 $4$개가 있다.\n모든 원소의 곱이 양수이려면 선택한 음수의 개수가 짝수여야 한다. 음수를 고르는 방법은 $\\binom40+\\binom42+\\binom44=1+6+1=8$가지이다.\n양수 $4$개는 각각 선택하거나 선택하지 않을 수 있으므로 $2^4=16$가지이다.\n곱이 양수인 선택은 $8\\times16=128$가지인데, 이 안에는 원소를 하나도 선택하지 않은 공집합이 한 개 포함된다.\n따라서 구하는 집합은 $128-1=127$개이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "음수 원소를 전혀 선택할 수 없다고 잘못 제한: 양수만 택한 비공집합 $2^4-1=15 → 15",
+        "②": "양수 원소를 반드시 하나 이상 선택해야 한다고 잘못 제한: (2^4-1)(\\binom40+\\binom42+\\binom44)=15\\times8=120 → 120",
+        "④": "곱을 정의할 수 없는 공집합까지 집합 하나로 포함: 8\\times16=128 → 128",
+        "⑤": "곱의 부호 조건을 무시하고 비공집합만 센다: 2^8-1=255 → 255"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "음수 원소를 전혀 선택할 수 없다고 잘못 제한",
+          "calculation": "양수만 택한 비공집합 $2^4-1=15",
+          "value": "$15$",
+          "matchedChoice": "$15$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "②",
+          "mistake": "양수 원소를 반드시 하나 이상 선택해야 한다고 잘못 제한",
+          "calculation": "(2^4-1)(\\binom40+\\binom42+\\binom44)=15\\times8=120",
+          "value": "$120$",
+          "matchedChoice": "$120$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "곱을 정의할 수 없는 공집합까지 집합 하나로 포함",
+          "calculation": "8\\times16=128",
+          "value": "$128$",
+          "matchedChoice": "$128$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "곱의 부호 조건을 무시하고 비공집합만 센다",
+          "calculation": "2^8-1=255",
+          "value": "$255$",
+          "matchedChoice": "$255$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "정수 약수의 양·음수 분류, 음수의 짝수 선택, 공집합 제외",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "정수 약수의 양·음수 분류, 음수의 짝수 선택, 공집합 제외 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 127,
+        "options": [
+          15,
+          120,
+          127,
+          128,
+          255
+        ],
+        "selectedIndex": 3,
+        "numberOfSignedDivisors": 8
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "정수 약수의 양·음수 분류, 음수의 짝수 선택, 공집합 제외"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-A2",
+      "slot": "A2",
+      "sourceQid": 13,
+      "mode": "STRICT_VARIANT",
+      "stem": "$16$의 정수 약수 전체로 이루어진 집합을 $D$라 하자. $D$의 공집합이 아닌 부분집합 $A$ 중 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$31$",
+        "$496$",
+        "$1023$",
+        "$512$",
+        "$511$"
+      ],
+      "answer": "⑤",
+      "solution": "$16$의 양의 약수는 $1,2,4,8,16$으로 $5$개이며, 음의 약수도 $5$개이다.\n음수 원소의 선택 개수가 짝수여야 하므로 음수 선택은 $\\binom50+\\binom52+\\binom54=1+10+5=16$가지이다.\n양수 선택은 $2^5=32$가지이고, 공집합을 제외해야 한다.\n따라서 구하는 집합의 개수는 $16\\times32-1=511$이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "양의 약수만 골라도 된다고 생각하고 음수의 짝수 선택을 누락: 2^5-1=31 → 31",
+        "②": "양수 원소가 적어도 하나 있어야 한다고 오판: (2^5-1)\\times16=31\\times16=496 → 496",
+        "③": "곱의 부호를 무시하고 모든 비공집합을 선택: 2^{10}-1=1023 → 1023",
+        "④": "공집합을 뺄 필요가 없다고 생각: 16\\times32=512 → 512"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "양의 약수만 골라도 된다고 생각하고 음수의 짝수 선택을 누락",
+          "calculation": "2^5-1=31",
+          "value": "$31$",
+          "matchedChoice": "$31$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "②",
+          "mistake": "양수 원소가 적어도 하나 있어야 한다고 오판",
+          "calculation": "(2^5-1)\\times16=31\\times16=496",
+          "value": "$496$",
+          "matchedChoice": "$496$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "곱의 부호를 무시하고 모든 비공집합을 선택",
+          "calculation": "2^{10}-1=1023",
+          "value": "$1023$",
+          "matchedChoice": "$1023$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "공집합을 뺄 필요가 없다고 생각",
+          "calculation": "16\\times32=512",
+          "value": "$512$",
+          "matchedChoice": "$512$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "양의 약수 다섯 개에서 확장한 부호별 선택의 곱셈 원리",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "양의 약수 다섯 개에서 확장한 부호별 선택의 곱셈 원리 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 511,
+        "options": [
+          31,
+          496,
+          1023,
+          512,
+          511
+        ],
+        "selectedIndex": 5,
+        "numberOfSignedDivisors": 10
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "양의 약수 다섯 개에서 확장한 부호별 선택의 곱셈 원리"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-A3",
+      "slot": "A3",
+      "sourceQid": 13,
+      "mode": "STRICT_VARIANT",
+      "stem": "$12$의 정수 약수 전체로 이루어진 집합을 $D$라 하자. $D$의 공집합이 아닌 부분집합 $A$ 중 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$2047$",
+        "$2048$",
+        "$2016$",
+        "$63$",
+        "$4095$"
+      ],
+      "answer": "①",
+      "solution": "$12$의 양의 약수는 $1,2,3,4,6,12$로 $6$개이고 음의 약수도 $6$개이다.\n음수 원소의 개수가 짝수인 선택은 $\\binom60+\\binom62+\\binom64+\\binom66=1+15+15+1=32$가지이다.\n양의 약수는 $2^6=64$가지로 고를 수 있으므로 전체 $32\\times64=2048$가지이다.\n단, 공집합은 제외하므로 $2048-1=2047$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "공집합 제거를 누락: 32\\times64=2048 → 2048",
+        "③": "양수 하나 이상을 반드시 택해야 한다고 오판: 32(2^6-1)=32\\times63=2016 → 2016",
+        "④": "음수 원소는 모두 빼야 한다고 제한: 2^6-1=63 → 63",
+        "⑤": "부호 조건 없이 전체 비공집합만 계산: 2^{12}-1=4095 → 4095"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "공집합 제거를 누락",
+          "calculation": "32\\times64=2048",
+          "value": "$2048$",
+          "matchedChoice": "$2048$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "양수 하나 이상을 반드시 택해야 한다고 오판",
+          "calculation": "32(2^6-1)=32\\times63=2016",
+          "value": "$2016$",
+          "matchedChoice": "$2016$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "음수 원소는 모두 빼야 한다고 제한",
+          "calculation": "2^6-1=63",
+          "value": "$63$",
+          "matchedChoice": "$63$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "부호 조건 없이 전체 비공집합만 계산",
+          "calculation": "2^{12}-1=4095",
+          "value": "$4095$",
+          "matchedChoice": "$4095$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "약수 쌍 6개에서 공집합·양의 곱 조건 정확히 분리",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "약수 쌍 6개에서 공집합·양의 곱 조건 정확히 분리 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 2047,
+        "options": [
+          2047,
+          2048,
+          2016,
+          63,
+          4095
+        ],
+        "selectedIndex": 1,
+        "numberOfSignedDivisors": 12
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "약수 쌍 6개에서 공집합·양의 곱 조건 정확히 분리"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-B1",
+      "slot": "B1",
+      "sourceQid": 13,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$12$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$ 중 $-1\\in A$이고 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$64$",
+        "$320$",
+        "$1008$",
+        "$1024$",
+        "$2048$"
+      ],
+      "answer": "④",
+      "solution": "음의 약수는 $-1,-2,-3,-4,-6,-12$로 모두 $6$개이다. $-1$을 반드시 택하므로 나머지 음수 $5$개에서는 홀수 개를 택해야 음수의 총 개수가 짝수가 된다.\n나머지 음수의 선택은 $\\binom51+\\binom53+\\binom55=5+10+1=16$가지이다.\n양수 약수 $6$개는 자유롭게 선택하므로 $2^6=64$가지이다.\n$-1$을 반드시 포함하므로 공집합이 나올 수 없다. 따라서 $16\\times64=1024$개이므로 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "곱의 부호 조건을 만족하려면 음의 약수 6개를 모두 택해야 한다고 제한: 음수 한 가지 고정, 양수 자유: $2^6=64$ → 64",
+        "②": "고정된 -1 외에 음수 하나만 더 고르는 경우로 제한: \\binom51\\times2^6=5\\times64=320 → 320",
+        "③": "이미 -1이 포함되는데도 양수 한 개 이상을 추가로 택해야 한다고 제한: 16(2^6-1)=16\\times63=1008 → 1008",
+        "⑤": "-1의 포함만 적용하고 곱의 부호 조건을 무시: 2^5\\times2^6=2048 → 2048"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "곱의 부호 조건을 만족하려면 음의 약수 6개를 모두 택해야 한다고 제한",
+          "calculation": "음수 한 가지 고정, 양수 자유: $2^6=64$",
+          "value": "$64$",
+          "matchedChoice": "$64$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "②",
+          "mistake": "고정된 -1 외에 음수 하나만 더 고르는 경우로 제한",
+          "calculation": "\\binom51\\times2^6=5\\times64=320",
+          "value": "$320$",
+          "matchedChoice": "$320$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "이미 -1이 포함되는데도 양수 한 개 이상을 추가로 택해야 한다고 제한",
+          "calculation": "16(2^6-1)=16\\times63=1008",
+          "value": "$1008$",
+          "matchedChoice": "$1008$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "-1의 포함만 적용하고 곱의 부호 조건을 무시",
+          "calculation": "2^5\\times2^6=2048",
+          "value": "$2048$",
+          "matchedChoice": "$2048$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "필수 음수 1개의 고정으로 나머지 음수 선택의 홀짝이 반전",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "필수 음수 1개의 고정으로 나머지 음수 선택의 홀짝이 반전 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 1024,
+        "options": [
+          64,
+          320,
+          1008,
+          1024,
+          2048
+        ],
+        "selectedIndex": 4,
+        "numberOfSignedDivisors": 12
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-REQUIRED-ELEMENT"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "필수 음수 1개의 고정으로 나머지 음수 선택의 홀짝이 반전"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-B2",
+      "slot": "B2",
+      "sourceQid": 13,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$18$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$ 중 $2\\in A$, $-3\\notin A$이고 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$32$",
+        "$512$",
+        "$1024$",
+        "$496$",
+        "$320$"
+      ],
+      "answer": "②",
+      "solution": "$18$의 양의 약수는 $1,2,3,6,9,18$로 $6$개이다. $-3$을 제외하므로 선택 가능한 음수는 $5$개이고, 그중 짝수 개를 택하는 방법은 $\\binom50+\\binom52+\\binom54=16$가지이다.\n양수 $2$는 반드시 포함해야 하므로 나머지 양수 $5$개의 선택은 $2^5=32$가지이다.\n$2$가 이미 포함되어 있으므로 공집합은 없다. 따라서 $16\\times32=512$개이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "음수는 하나도 포함할 수 없다고 과도하게 제한: 2^5=32 → 32",
+        "③": "-3을 제외해야 한다는 조건을 누락: (\\binom60+\\binom62+\\binom64+\\binom66)\\times2^5=32\\times32=1024 → 1024",
+        "④": "필수 2 외에 다른 양수도 하나 이상 포함하도록 과도하게 제한: 16(2^5-1)=16\\times31=496 → 496",
+        "⑤": "음수는 정확히 두 개만 골라야 한다고 오해: \\binom52\\times2^5=10\\times32=320 → 320"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "음수는 하나도 포함할 수 없다고 과도하게 제한",
+          "calculation": "2^5=32",
+          "value": "$32$",
+          "matchedChoice": "$32$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "-3을 제외해야 한다는 조건을 누락",
+          "calculation": "(\\binom60+\\binom62+\\binom64+\\binom66)\\times2^5=32\\times32=1024",
+          "value": "$1024$",
+          "matchedChoice": "$1024$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "필수 2 외에 다른 양수도 하나 이상 포함하도록 과도하게 제한",
+          "calculation": "16(2^5-1)=16\\times31=496",
+          "value": "$496$",
+          "matchedChoice": "$496$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "음수는 정확히 두 개만 골라야 한다고 오해",
+          "calculation": "\\binom52\\times2^5=10\\times32=320",
+          "value": "$320$",
+          "matchedChoice": "$320$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "필수 양수·금지 음수 제약과 부호 조건 동시 적용",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "필수 양수·금지 음수 제약과 부호 조건 동시 적용 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 512,
+        "options": [
+          32,
+          512,
+          1024,
+          496,
+          320
+        ],
+        "selectedIndex": 2,
+        "numberOfSignedDivisors": 12
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-SIGNED-PRODUCT|정수 약수의 곱의 부호를 만족하는 부분집합",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-REQUIRED-FORBIDDEN"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "필수 양수·금지 음수 제약과 부호 조건 동시 적용"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-B3",
+      "slot": "B3",
+      "sourceQid": 13,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "집합 $D=\\{-6,-3,-2,-1,1,2,3,6\\}$의 부분집합 $A$ 중 원소가 $4$개이고 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$70$",
+        "$32$",
+        "$36$",
+        "$38$",
+        "$1$"
+      ],
+      "answer": "④",
+      "solution": "$D$에는 양수 $4$개와 음수 $4$개가 있다. 원소를 정확히 $4$개 택하면서 곱이 양수가 되려면 음수를 $0,2,4$개 택해야 한다.\n음수 $0$개·양수 $4$개: $\\binom40\\binom44=1$가지이다.\n음수 $2$개·양수 $2$개: $\\binom42\\binom42=6\\times6=36$가지이다.\n음수 $4$개·양수 $0$개: $\\binom44\\binom40=1$가지이다.\n따라서 $1+36+1=38$개이므로 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "곱의 부호를 무시하고 네 원소를 고르는 경우 전체를 계산: \\binom84=70 → 70",
+        "②": "양수가 아니라 음수가 홀수 개여야 한다고 착각: \\binom41\\binom43+\\binom43\\binom41=16+16=32 → 32",
+        "③": "음수 두 개·양수 두 개의 경우만 세어 양 끝 경우를 누락: \\binom42\\binom42=36 → 36",
+        "⑤": "양수 네 개를 전부 고르는 경우만 가능하다고 제한: \\binom40\\binom44=1 → 1"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "곱의 부호를 무시하고 네 원소를 고르는 경우 전체를 계산",
+          "calculation": "\\binom84=70",
+          "value": "$70$",
+          "matchedChoice": "$70$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "②",
+          "mistake": "양수가 아니라 음수가 홀수 개여야 한다고 착각",
+          "calculation": "\\binom41\\binom43+\\binom43\\binom41=16+16=32",
+          "value": "$32$",
+          "matchedChoice": "$32$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "음수 두 개·양수 두 개의 경우만 세어 양 끝 경우를 누락",
+          "calculation": "\\binom42\\binom42=36",
+          "value": "$36$",
+          "matchedChoice": "$36$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "양수 네 개를 전부 고르는 경우만 가능하다고 제한",
+          "calculation": "\\binom40\\binom44=1",
+          "value": "$1$",
+          "matchedChoice": "$1$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "원소 수 제약으로 음수·양수 선택 수를 동시에 결합",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "원소 수 제약으로 음수·양수 선택 수를 동시에 결합 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 38,
+        "options": [
+          70,
+          32,
+          36,
+          38,
+          1
+        ],
+        "selectedIndex": 4,
+        "numberOfSignedDivisors": 8
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-EXACT-CARDINALITY"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "원소 수 제약으로 음수·양수 선택 수를 동시에 결합"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-C1",
+      "slot": "C1",
+      "sourceQid": 13,
+      "mode": "TYPE_BANK",
+      "stem": "$6$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$가 다음 두 조건을 만족한다.<br>㈎ $6$의 양의 약수 $d$마다 $d$와 $-d$ 중 적어도 하나가 $A$에 속한다.<br>㈏ $A$의 모든 원소의 곱은 양수이다.<br>이러한 집합 $A$의 개수는?",
+      "choices": [
+        "$41$",
+        "$81$",
+        "$80$",
+        "$40$",
+        "$8$"
+      ],
+      "answer": "①",
+      "solution": "$6$의 양의 약수는 $1,2,3,6$이다. 각 $d$에 대해 $\\{d,-d\\}$에서 선택하는 방법은 $d$만 택하기, $-d$만 택하기, 둘 다 택하기의 $3$가지이다.\n이 중 음수 원소를 포함하지 않는 선택은 $1$가지이고, 음수 원소를 한 개 포함하는 선택은 $2$가지이다.\n네 개의 양·음수 쌍 중 음수를 포함하는 쌍이 $0,2,4$개여야 전체 곱이 양수이다.\n따라서 경우의 수는 $\\binom40\\cdot2^0+\\binom42\\cdot2^2+\\binom44\\cdot2^4=1+24+16=41$이다.\n각 쌍에서 하나 이상을 택하므로 공집합은 처음부터 제외된다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "곱의 부호 조건 없이 쌍마다 세 선택을 모두 허용: 3^4=81 → 81",
+        "③": "세 선택이 모두 가능하지만 공집합까지 하나 포함되어 있다고 잘못 제외: 3^4-1=80 → 80",
+        "④": "곱이 양수일 조건을 거꾸로 적용하여 음수를 포함한 쌍이 홀수 개라고 계산: \\binom41 2^1+\\binom43 2^3=8+32=40 → 40",
+        "⑤": "각 양·음수 쌍에서 정확히 하나만 택하도록 제한하고 음수 짝수 개만 계산: 2^{4-1}=8 → 8"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "곱의 부호 조건 없이 쌍마다 세 선택을 모두 허용",
+          "calculation": "3^4=81",
+          "value": "$81$",
+          "matchedChoice": "$81$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "세 선택이 모두 가능하지만 공집합까지 하나 포함되어 있다고 잘못 제외",
+          "calculation": "3^4-1=80",
+          "value": "$80$",
+          "matchedChoice": "$80$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "곱이 양수일 조건을 거꾸로 적용하여 음수를 포함한 쌍이 홀수 개라고 계산",
+          "calculation": "\\binom41 2^1+\\binom43 2^3=8+32=40",
+          "value": "$40$",
+          "matchedChoice": "$40$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "각 양·음수 쌍에서 정확히 하나만 택하도록 제한하고 음수 짝수 개만 계산",
+          "calculation": "2^{4-1}=8",
+          "value": "$8$",
+          "matchedChoice": "$8$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "양·음수 쌍별 최소 한 개 포함이라는 3상태 선택, 음수 개수 패리티와 결합",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-PAIR-COVER",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "양·음수 쌍별 최소 한 개 포함이라는 3상태 선택, 음수 개수 패리티와 결합 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 41,
+        "options": [
+          41,
+          81,
+          80,
+          40,
+          8
+        ],
+        "selectedIndex": 1,
+        "numberOfSignedDivisors": 8
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-PAIR-COVER|양·음수 약수쌍의 원소 포함 조건과 곱의 부호",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-PAIR-COVER"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "양·음수 쌍별 최소 한 개 포함이라는 3상태 선택, 음수 개수 패리티와 결합"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-C2",
+      "slot": "C2",
+      "sourceQid": 13,
+      "mode": "TYPE_BANK",
+      "stem": "$10$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$ 중 $-1\\in A$이고 원소의 개수가 짝수이며 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+      "choices": [
+        "$64$",
+        "$32$",
+        "$24$",
+        "$28$",
+        "$8$"
+      ],
+      "answer": "②",
+      "solution": "$10$의 양의 약수와 음의 약수는 각각 $4$개이다. $-1$을 반드시 포함하므로 나머지 음수 $3$개 중 홀수 개를 골라야 선택된 음수의 전체 개수가 짝수이다.\n음수 원소의 선택은 $\\binom31+\\binom33=3+1=4$가지이다.\n음수 원소의 개수가 짝수이므로 전체 원소의 개수까지 짝수가 되려면 양수 원소의 개수도 짝수여야 한다.\n양수 원소 선택은 $\\binom40+\\binom42+\\binom44=1+6+1=8$가지이다.\n따라서 전체 $4\\times8=32$가지이고, $-1$을 포함하므로 공집합은 없다. 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "선택한 원소의 총수가 짝수여야 한다는 조건을 누락: (\\binom31+\\binom33)2^4=4\\times16=64 → 64",
+        "③": "-1 외에 음수를 정확히 한 개만 더 골라야 한다고 제한: \\binom31(\\binom40+\\binom42+\\binom44)=3\\times8=24 → 24",
+        "④": "양수 하나 이상을 골라야 한다고 추가 제한: 4(8-1)=28 → 28",
+        "⑤": "음수 네 개를 모두 선택해야 한다고 과도하게 제한: \\binom33\\times8=8 → 8"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "선택한 원소의 총수가 짝수여야 한다는 조건을 누락",
+          "calculation": "(\\binom31+\\binom33)2^4=4\\times16=64",
+          "value": "$64$",
+          "matchedChoice": "$64$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "③",
+          "mistake": "-1 외에 음수를 정확히 한 개만 더 골라야 한다고 제한",
+          "calculation": "\\binom31(\\binom40+\\binom42+\\binom44)=3\\times8=24",
+          "value": "$24$",
+          "matchedChoice": "$24$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "양수 하나 이상을 골라야 한다고 추가 제한",
+          "calculation": "4(8-1)=28",
+          "value": "$28$",
+          "matchedChoice": "$28$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "음수 네 개를 모두 선택해야 한다고 과도하게 제한",
+          "calculation": "\\binom33\\times8=8",
+          "value": "$8$",
+          "matchedChoice": "$8$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "곱의 부호(음수 짝수)와 원소 수(전체 짝수)를 동시에 맞추는 두 홀짝 제약",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "곱의 부호(음수 짝수)와 원소 수(전체 짝수)를 동시에 맞추는 두 홀짝 제약 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 32,
+        "options": [
+          64,
+          32,
+          24,
+          28,
+          8
+        ],
+        "selectedIndex": 2,
+        "numberOfSignedDivisors": 8
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-REQUIRED-ELEMENT",
+          "EXT-COND-H1-Q13-EVEN-CARDINALITY"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "곱의 부호(음수 짝수)와 원소 수(전체 짝수)를 동시에 맞추는 두 홀짝 제약"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q13-C3",
+      "slot": "C3",
+      "sourceQid": 13,
+      "mode": "TYPE_BANK",
+      "stem": "$12$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$가 다음 조건을 모두 만족한다.<br>㈎ $A$의 원소는 정확히 $4$개이다.<br>㈏ $1,-1$ 중 정확히 하나만 $A$에 속한다.<br>㈐ $A$의 모든 원소의 곱은 양수이다.<br>이러한 집합 $A$의 개수는?",
+      "choices": [
+        "$60$",
+        "$145$",
+        "$120$",
+        "$240$",
+        "$255$"
+      ],
+      "answer": "③",
+      "solution": "$12$의 양의 약수와 음의 약수는 각각 $6$개이다. $1,-1$ 중 하나만 포함하는 조건에 따라 두 경우로 나눈다.\n첫째, $1\\in A$이고 $-1\\notin A$이면 남은 양수 $5$개와 음수 $5$개에서 $3$개를 골라야 한다. 음수를 $0$개 또는 $2$개 고를 때 곱이 양수이므로 $\\binom50\\binom53+\\binom52\\binom51=10+50=60$가지이다.\n둘째, $-1\\in A$이고 $1\\notin A$이면 남은 $3$개 중 음수를 $1$개 또는 $3$개 골라야 전체 음수 개수가 짝수이다. 따라서 $\\binom51\\binom52+\\binom53\\binom50=50+10=60$가지이다.\n두 경우가 겹치지 않으므로 모두 $60+60=120$가지이다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "1만 포함하고 -1을 제외하는 경우만 계산: \\binom50\\binom53+\\binom52\\binom51=10+50=60 → 60",
+        "②": "1,-1 중 정확히 하나가 아닌 적어도 하나를 포함하도록 오해: 정확히 하나인 120 + 두 개를 모두 포함하고 남은 2개 중 음수 1개인 $5\\times5=25$: $145$ → 145",
+        "④": "곱의 부호 조건을 무시하고 ±1 중 정확히 하나와 나머지 3개만 선택: 2\\binom{10}{3}=2\\times120=240 → 240",
+        "⑤": "1,-1 중 하나만 포함하는 조건을 무시하고 12원소 중 4원소의 곱이 양수인 경우 계산: \\binom60\\binom64+\\binom62\\binom62+\\binom64\\binom60=15+225+15=255 → 255"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "1만 포함하고 -1을 제외하는 경우만 계산",
+          "calculation": "\\binom50\\binom53+\\binom52\\binom51=10+50=60",
+          "value": "$60$",
+          "matchedChoice": "$60$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "②",
+          "mistake": "1,-1 중 정확히 하나가 아닌 적어도 하나를 포함하도록 오해",
+          "calculation": "정확히 하나인 120 + 두 개를 모두 포함하고 남은 2개 중 음수 1개인 $5\\times5=25$: $145$",
+          "value": "$145$",
+          "matchedChoice": "$145$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "④",
+          "mistake": "곱의 부호 조건을 무시하고 ±1 중 정확히 하나와 나머지 3개만 선택",
+          "calculation": "2\\binom{10}{3}=2\\times120=240",
+          "value": "$240$",
+          "matchedChoice": "$240$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "1,-1 중 하나만 포함하는 조건을 무시하고 12원소 중 4원소의 곱이 양수인 경우 계산",
+          "calculation": "\\binom60\\binom64+\\binom62\\binom62+\\binom64\\binom60=15+225+15=255",
+          "value": "$255$",
+          "matchedChoice": "$255$",
+          "verification": "ARITHMETIC_WITNESS_CREATOR_DERIVED"
+        }
+      ],
+      "experienceAxis": "원소수·상호배타적 필수원소·음수 패리티를 결합하여 겹치지 않는 경우를 분해",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "부분집합",
+      "lockedL3DecisiveStep": "허용 원소를 확정한 뒤 음수의 곱의 부호·원소의 포함 또는 개수 조건에 맞게 부분집합 선택을 분류·계수한다",
+      "targetL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY",
+      "schoolExamStyleEvidence": "정수 약수의 부분집합을 조건에 따라 세는 2025 팔마고 고1 내신 원본 기반 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "원소수·상호배타적 필수원소·음수 패리티를 결합하여 겹치지 않는 경우를 분해 → 조건을 만족하는 A의 개수",
+      "changedMathRecheck": "FIRST_DRAFT_FROZEN_ENUMERATION_AND_CHOICES_REVERSED",
+      "remainingRisk": "EXTERNAL_GPT_OPENBOOK_CONTENT_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "method": "EXHAUSTIVE_SUBSET_MASK_ENUMERATION_BY_FINAL_STUDENT_CONDITIONS",
+        "actual": 120,
+        "options": [
+          60,
+          145,
+          120,
+          240,
+          255
+        ],
+        "selectedIndex": 3,
+        "numberOfSignedDivisors": 12
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmRecordIds": [
+          "H1-RPM-234"
+        ],
+        "rpmL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-234"
+          ],
+          "mappingRole": "LOCKED_PRIMARY_L3"
+        },
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "crossConceptEvidenceLabels": [
+          "약수의 양·음수 대응과 부호",
+          "짝수 개 선택의 조합 원리"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-EXACT-CARDINALITY",
+          "EXT-COND-H1-Q13-ONE-OF-PAIR"
+        ],
+        "conditionEvidenceLabels": [
+          "정수 약수 범위",
+          "곱은 양수",
+          "원소수·상호배타적 필수원소·음수 패리티를 결합하여 겹치지 않는 경우를 분해"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 13,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 14,
+  "publication": "CREATOR_DRAFT_NOT_APPROVED_NOT_IN_STUDENT_CONSUMER"
+}
