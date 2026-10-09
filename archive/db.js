@@ -321,6 +321,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
+    },
+    {
       "file": "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
       "school": "팔마고",
       "topic": "",
@@ -1483,6 +1514,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M2-04",
           "rangeEndUnit": "일차함수와 그래프",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-06",
+      "rangeEndUnit": "도형의 닮음",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-06",
+          "rangeEndUnit": "도형의 닮음",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "중2 수학"
@@ -17772,68 +17834,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
-      "school": "왕의중",
-      "topic": "",
-      "grade": "중2",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "중2 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M2-05",
-      "rangeStartUnit": "도형의 성질",
-      "rangeStartUnitOrder": 5,
-      "rangeEndUnitKey": "M2-06",
-      "rangeEndUnit": "도형의 닮음",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "중2 수학",
-          "courseCode": "M2",
-          "rangeStartUnitKey": "M2-05",
-          "rangeStartUnit": "도형의 성질",
-          "rangeStartUnitOrder": 5,
-          "rangeEndUnitKey": "M2-06",
-          "rangeEndUnit": "도형의 닮음",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "중2 수학"
-    },
-    {
-      "file": "original/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I.js",
-      "school": "제일고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "미적분I",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H22-M1-01",
-      "rangeStartUnit": "함수의 극한",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-M1-05",
-      "rangeEndUnit": "도함수의 활용",
-      "rangeEndUnitOrder": 5,
-      "courseRanges": [
-        {
-          "standardCourse": "미적분I",
-          "courseCode": "H22-M1",
-          "rangeStartUnitKey": "H22-M1-01",
-          "rangeStartUnit": "함수의 극한",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-M1-05",
-          "rangeEndUnit": "도함수의 활용",
-          "rangeEndUnitOrder": 5
-        }
-      ],
-      "primaryStandardCourse": "미적분I"
     }
   ]
 };
