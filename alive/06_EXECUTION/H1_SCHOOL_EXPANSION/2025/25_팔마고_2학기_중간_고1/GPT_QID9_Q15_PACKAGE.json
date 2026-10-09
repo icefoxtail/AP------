@@ -1,0 +1,1249 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 15,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 각각 그림과 같은 원일 때, &lt;보기&gt;에서 옳은 것을 모두 고른 것은? [4.5점]<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x-1,y+2)$<br>ㄴ. $g(x,y)=f(-x-1,-y)$<br>ㄷ. $g(x,y)=f(y+1,x)$",
+    "storedSourceChoices": [
+      "ㄱ",
+      "ㄷ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "storedSourceAnswer": "③",
+    "originalImagePath": "assets/images/25_팔마고_2학기_중간_고1_기출/q15.png",
+    "sourceImageAlt": "두 좌표평면과 원, 첫째 중심 0 1 반지름 1, 둘째 중심 1 -1 반지름 1",
+    "assetImageDirectVisualReview": "NOT_TESTED_GENERATED_STEMS_ARE_SELF_CONTAINED",
+    "sourceProblemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+    "sourceTemplateKey": "TT_EQUATION_GRAPH_MAPPING",
+    "sourceMathSummary": "JS source solution reports f center (0,1), g center (1,-1), ㄱ·ㄷ true, ㄴ false; f and g not uniquely normalized in source, so every generated A/B defines f,g explicitly.",
+    "originalJsUnchanged": true
+  },
+  "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+  "rpmEvidence": {
+    "l1": "도형의 방정식",
+    "l2": "도형의 이동",
+    "l3": "이동의 합성",
+    "l4": "연속 이동",
+    "recordIds": [
+      "H1-RPM-229"
+    ],
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "taxonomyView": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/공통수학2.md",
+    "classificationReason": "원래 q15는 좌표의 변수 치환/순서 교환까지 비교하므로 단일 평행이동이 아닌 합성 판단"
+  },
+  "activeMeta": {
+    "problemTypeKeys": [
+      "PT_MOVE_EQUATION_TRANSFORM",
+      "PT_MOVE_COMPOSITE"
+    ],
+    "templateKeys": [
+      "TT_EQUATION_GRAPH_MAPPING",
+      "TT_COMPOSITE_CIRCLE"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS",
+      "CC_CIRCLE_TANGENCY"
+    ],
+    "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "conditionNote": "COND_POSITIVE only C3; others no special external condition"
+  },
+  "experiencePlan": {
+    "A": "5지 ㄱㄴㄷ 원의 변수치환 true/false: 원본과 다른 원의 중심·부호·변수 순서",
+    "B": "g=f(치환) 식의 미정계수를 중심 대응으로 역산",
+    "C": "평행이동-대칭의 순서, 두 이동 경로의 일치, 접선과 t>0 조건을 결합"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "finalInputCount": 9,
+    "studentStemReverseReading": 9,
+    "keep": 9,
+    "revised": 0,
+    "hold": 0,
+    "answerFiveUnique": 9,
+    "distractorIndexedPaths": 36,
+    "mathematicalComputationReproducedByCreator": 9,
+    "roundTripEvidence": "CENTER_EQUATION_STUDENT_STEM_SELF_CONTAINED",
+    "numericValidation": {
+      "A1": [
+        [
+          5,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "A2": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          -3
+        ]
+      ],
+      "A3": [
+        [
+          -1,
+          4
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -2,
+          4
+        ]
+      ],
+      "B1": {
+        "a": 2,
+        "b": 4,
+        "sum": 6,
+        "center": [
+          5,
+          4
+        ]
+      },
+      "B2": {
+        "a": 1,
+        "b": -2,
+        "combination": 0,
+        "center": [
+          3,
+          -1
+        ]
+      },
+      "B3": {
+        "a": -3,
+        "b": -5,
+        "sum": -8,
+        "center": [
+          -2,
+          5
+        ]
+      },
+      "C1": {
+        "start": [
+          2,
+          -3
+        ],
+        "afterTranslation": [
+          5,
+          -4
+        ],
+        "end": [
+          -4,
+          5
+        ],
+        "r2": 13
+      },
+      "C2": {
+        "original": [
+          0,
+          2
+        ],
+        "routeA": [
+          3,
+          -4
+        ],
+        "routeB": [
+          3,
+          -4
+        ],
+        "sum": 2
+      },
+      "C3": {
+        "original": [
+          2,
+          -1
+        ],
+        "afterSwap": [
+          -1,
+          2
+        ],
+        "tSolutions": [
+          0,
+          2
+        ],
+        "acceptedT": 2,
+        "final": [
+          -1,
+          -2
+        ],
+        "radius": 2
+      }
+    },
+    "creatorSanityTests": {
+      "A1": true,
+      "A2": true,
+      "A3": true,
+      "B1": true,
+      "B2": true,
+      "B3": true,
+      "C1": true,
+      "C2": true,
+      "C3": true
+    },
+    "protectedSourceUnchanged": true,
+    "requiredNewVisualAssets": 0,
+    "separation": "AUTHOR_SELF_CHECK_ONLY_NOT_EXTERNAL_GPT_QUALITY_PASS",
+    "studentChrome": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A1",
+      "slot": "A1",
+      "sourceQid": 15,
+      "mode": "STRICT_VARIANT",
+      "stem": "두 다항식 $f(x,y)=(x-2)^2+(y+1)^2-4$, $g(x,y)=(x-5)^2+(y-1)^2-4$에 대하여 다음 <보기> 중 옳은 것을 모두 고른 것은?\n<보기>\nㄱ. $g(x,y)=f(x-3,y-2)$\nㄴ. $g(x,y)=f(-x+4,-y)$\nㄷ. $g(x,y)=f(y+1,x-6)$",
+      "choices": [
+        "ㄱ",
+        "ㄷ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "answer": "③",
+      "solution": "$f(x,y)=0$은 중심 $(2,-1)$, 반지름 $2$인 원이고, $g(x,y)=0$은 중심 $(5,1)$, 반지름 $2$인 원이다.\nㄱ의 $f(x-3,y-2)=0$의 중심은 $(5,1)$이므로 참이다.\nㄴ의 $f(-x+4,-y)=0$의 중심은 $(2,1)$이므로 거짓이다.\nㄷ의 $f(y+1,x-6)=0$에서는 $y+1=2$, $x-6=-1$이어서 중심은 $(5,1)$이다. 따라서 참이다.\n양쪽 식은 반지름도 같고 최고차항의 계수도 같으므로 중심이 같으면 다항식으로도 일치한다.\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "ㄱ만 참이라고 선택: ㄷ에서 $y+1=2, x-6=-1$을 풀면 $(x,y)=(5,1)$이라는 사실을 누락 → ㄱ",
+        "②": "ㄷ만 참이라고 선택: ㄱ을 왼쪽 3, 아래 2의 이동으로 잘못 해석해 중심 $(5,1)$을 배제 → ㄷ",
+        "④": "ㄱ을 거짓, ㄴ을 참으로 오판: ㄱ의 $(5,1)$을 제외하고 ㄴ의 실제 중심 $(2,1)$을 $(5,1)$로 잘못 대조 → ㄴ, ㄷ",
+        "⑤": "ㄴ의 $-x+4=2$에서 나온 $x=2$를 $5$로 잘못 계산하여 ㄴ까지 참으로 선택 → ㄱ, ㄴ, ㄷ"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "ㄱ만 참이라고 선택: ㄷ에서 $y+1=2, x-6=-1$을 풀면 $(x,y)=(5,1)$이라는 사실을 누락 → ㄱ",
+          "calculation": "ㄱ만 참이라고 선택: ㄷ에서 $y+1=2, x-6=-1$을 풀면 $(x,y)=(5,1)$이라는 사실을 누락 → ㄱ",
+          "value": "ㄱ",
+          "matchedChoice": "ㄱ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "ㄷ만 참이라고 선택: ㄱ을 왼쪽 3, 아래 2의 이동으로 잘못 해석해 중심 $(5,1)$을 배제 → ㄷ",
+          "calculation": "ㄷ만 참이라고 선택: ㄱ을 왼쪽 3, 아래 2의 이동으로 잘못 해석해 중심 $(5,1)$을 배제 → ㄷ",
+          "value": "ㄷ",
+          "matchedChoice": "ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "ㄱ을 거짓, ㄴ을 참으로 오판: ㄱ의 $(5,1)$을 제외하고 ㄴ의 실제 중심 $(2,1)$을 $(5,1)$로 잘못 대조 → ㄴ, ㄷ",
+          "calculation": "ㄱ을 거짓, ㄴ을 참으로 오판: ㄱ의 $(5,1)$을 제외하고 ㄴ의 실제 중심 $(2,1)$을 $(5,1)$로 잘못 대조 → ㄴ, ㄷ",
+          "value": "ㄴ, ㄷ",
+          "matchedChoice": "ㄴ, ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "ㄴ의 $-x+4=2$에서 나온 $x=2$를 $5$로 잘못 계산하여 ㄴ까지 참으로 선택 → ㄱ, ㄴ, ㄷ",
+          "calculation": "ㄴ의 $-x+4=2$에서 나온 $x=2$를 $5$로 잘못 계산하여 ㄴ까지 참으로 선택 → ㄱ, ㄴ, ㄷ",
+          "value": "ㄱ, ㄴ, ㄷ",
+          "matchedChoice": "ㄱ, ㄴ, ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "원 두 개의 같은 반지름과 변수 치환 식에서 참인 이동 관계를 가린다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 원의 중심을 각 변수 치환의 역대응으로 옮겨 세 문장의 성립 여부를 판단한다.",
+      "actualComputedTruth": "ㄱ 참/ㄴ 거짓/ㄷ 참",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A2",
+      "slot": "A2",
+      "sourceQid": 15,
+      "mode": "STRICT_VARIANT",
+      "stem": "두 다항식 $f(x,y)=(x+1)^2+(y-2)^2-9$, $g(x,y)=(x-2)^2+y^2-9$에 대하여 다음 <보기> 중 옳은 것을 모두 고른 것은?\n<보기>\nㄱ. $g(x,y)=f(x-3,y+2)$\nㄴ. $g(x,y)=f(-x+1,-y+2)$\nㄷ. $g(x,y)=f(y+2,x+1)$",
+      "choices": [
+        "ㄱ",
+        "ㄱ, ㄴ",
+        "ㄴ",
+        "ㄱ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "answer": "②",
+      "solution": "$f=0$의 중심은 $(-1,2)$이고 $g=0$의 중심은 $(2,0)$이다. 두 원의 반지름은 모두 $3$이다.\nㄱ: $f(x-3,y+2)=0$의 중심은 $(-1+3,2-2)=(2,0)$이므로 참이다.\nㄴ: $-x+1=-1$, $-y+2=2$를 풀면 중심은 $(2,0)$이므로 참이다.\nㄷ: $y+2=-1$, $x+1=2$에서 중심은 $(1,-3)$이므로 거짓이다.\n옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "ㄴ의 음수 부호를 식 전체의 불일치로 오인하여 실제 중심 $(2,0)$을 확인하지 않고 제외 → ㄱ",
+        "③": "ㄱ에서 $x-3$을 왼쪽 이동으로 오판해 참인 ㄱ을 제외 → ㄴ",
+        "④": "ㄴ은 부호 때문에 거짓, ㄷ은 변수 순서만 바뀌어 참이라고 오판; 실제 ㄷ 중심 $(1,-3)$을 무시 → ㄱ, ㄷ",
+        "⑤": "ㄷ에서 $y=-3, x=1$ 대신 원의 중심 $(2,0)$을 그대로 대입해 ㄷ도 참이라 오판 → ㄱ, ㄴ, ㄷ"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "ㄴ의 음수 부호를 식 전체의 불일치로 오인하여 실제 중심 $(2,0)$을 확인하지 않고 제외 → ㄱ",
+          "calculation": "ㄴ의 음수 부호를 식 전체의 불일치로 오인하여 실제 중심 $(2,0)$을 확인하지 않고 제외 → ㄱ",
+          "value": "ㄱ",
+          "matchedChoice": "ㄱ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "ㄱ에서 $x-3$을 왼쪽 이동으로 오판해 참인 ㄱ을 제외 → ㄴ",
+          "calculation": "ㄱ에서 $x-3$을 왼쪽 이동으로 오판해 참인 ㄱ을 제외 → ㄴ",
+          "value": "ㄴ",
+          "matchedChoice": "ㄴ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "ㄴ은 부호 때문에 거짓, ㄷ은 변수 순서만 바뀌어 참이라고 오판; 실제 ㄷ 중심 $(1,-3)$을 무시 → ㄱ, ㄷ",
+          "calculation": "ㄴ은 부호 때문에 거짓, ㄷ은 변수 순서만 바뀌어 참이라고 오판; 실제 ㄷ 중심 $(1,-3)$을 무시 → ㄱ, ㄷ",
+          "value": "ㄱ, ㄷ",
+          "matchedChoice": "ㄱ, ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "ㄷ에서 $y=-3, x=1$ 대신 원의 중심 $(2,0)$을 그대로 대입해 ㄷ도 참이라 오판 → ㄱ, ㄴ, ㄷ",
+          "calculation": "ㄷ에서 $y=-3, x=1$ 대신 원의 중심 $(2,0)$을 그대로 대입해 ㄷ도 참이라 오판 → ㄱ, ㄴ, ㄷ",
+          "value": "ㄱ, ㄴ, ㄷ",
+          "matchedChoice": "ㄱ, ㄴ, ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "평행이동·원점대칭 혼합 변수 치환의 정확한 중심 대응",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "첫째 원의 중심에서 세 치환식의 중심 좌표를 각각 역산하여 둘째 원의 중심과 대조한다.",
+      "actualComputedTruth": "ㄱ 참/ㄴ 참/ㄷ 거짓",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-A3",
+      "slot": "A3",
+      "sourceQid": 15,
+      "mode": "STRICT_VARIANT",
+      "stem": "두 다항식 $f(x,y)=(x-3)^2+(y-1)^2-5$, $g(x,y)=(x+2)^2+(y-4)^2-5$에 대하여 다음 <보기> 중 옳은 것을 모두 고른 것은?\n<보기>\nㄱ. $g(x,y)=f(x+4,y-3)$\nㄴ. $g(x,y)=f(-x+1,-y+5)$\nㄷ. $g(x,y)=f(y-1,x+3)$",
+      "choices": [
+        "ㄱ",
+        "ㄴ",
+        "ㄷ",
+        "ㄱ, ㄴ, ㄷ",
+        "ㄴ, ㄷ"
+      ],
+      "answer": "⑤",
+      "solution": "$f=0$의 중심은 $(3,1)$이고, $g=0$의 중심은 $(-2,4)$이다.\nㄱ에서 $x+4=3$, $y-3=1$이면 중심이 $(-1,4)$이므로 거짓이다.\nㄴ에서 $-x+1=3$, $-y+5=1$이면 중심이 $(-2,4)$이므로 참이다.\nㄷ에서 $y-1=3$, $x+3=1$이면 중심이 $(-2,4)$이므로 참이다.\n모든 치환은 원의 반지름을 유지한다. 따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "ㄱ의 $x+4=3$을 $x=-2$라고 잘못 계산하고 실제로 참인 ㄴ·ㄷ을 누락 → ㄱ",
+        "②": "ㄷ의 $(y-1,x+3)$에서 치환변수를 거꾸로 추적하지 못해 ㄴ만 참으로 선택 → ㄴ",
+        "③": "ㄴ의 $-x+1=3$을 $x=2$라 오판해 ㄴ을 빼고 ㄷ만 선택 → ㄷ",
+        "④": "ㄱ의 실제 중심 $(-1,4)$을 목표 $(-2,4)$와 구별하지 않고 ㄱ까지 참으로 선택 → ㄱ, ㄴ, ㄷ"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "ㄱ의 $x+4=3$을 $x=-2$라고 잘못 계산하고 실제로 참인 ㄴ·ㄷ을 누락 → ㄱ",
+          "calculation": "ㄱ의 $x+4=3$을 $x=-2$라고 잘못 계산하고 실제로 참인 ㄴ·ㄷ을 누락 → ㄱ",
+          "value": "ㄱ",
+          "matchedChoice": "ㄱ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "ㄷ의 $(y-1,x+3)$에서 치환변수를 거꾸로 추적하지 못해 ㄴ만 참으로 선택 → ㄴ",
+          "calculation": "ㄷ의 $(y-1,x+3)$에서 치환변수를 거꾸로 추적하지 못해 ㄴ만 참으로 선택 → ㄴ",
+          "value": "ㄴ",
+          "matchedChoice": "ㄴ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "ㄴ의 $-x+1=3$을 $x=2$라 오판해 ㄴ을 빼고 ㄷ만 선택 → ㄷ",
+          "calculation": "ㄴ의 $-x+1=3$을 $x=2$라 오판해 ㄴ을 빼고 ㄷ만 선택 → ㄷ",
+          "value": "ㄷ",
+          "matchedChoice": "ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "ㄱ의 실제 중심 $(-1,4)$을 목표 $(-2,4)$와 구별하지 않고 ㄱ까지 참으로 선택 → ㄱ, ㄴ, ㄷ",
+          "calculation": "ㄱ의 실제 중심 $(-1,4)$을 목표 $(-2,4)$와 구별하지 않고 ㄱ까지 참으로 선택 → ㄱ, ㄴ, ㄷ",
+          "value": "ㄱ, ㄴ, ㄷ",
+          "matchedChoice": "ㄱ, ㄴ, ㄷ",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "반지름을 보존하는 두 종류 대칭/치환의 참거짓 구분",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "변수의 부호와 순서를 정확하게 뒤집어 각 식이 나타내는 원의 중심을 찾는다.",
+      "actualComputedTruth": "ㄱ 거짓/ㄴ 참/ㄷ 참",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-B1",
+      "slot": "B1",
+      "sourceQid": 15,
+      "mode": "FOLLOWUP",
+      "stem": "두 다항식 $f(x,y)=(x-2)^2+(y+1)^2-4$, $g(x,y)=(x-5)^2+(y-4)^2-4$가 모든 실수 $x,y$에 대하여 $g(x,y)=f(y-a,-x+b)$를 만족시킬 때, 상수 $a,b$에 대하여 $a+b$의 값은?",
+      "choices": [
+        "$-4$",
+        "$2$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ],
+      "answer": "③",
+      "solution": "$f=0$의 중심은 $(2,-1)$, $g=0$의 중심은 $(5,4)$이다.\n치환 $y-a=2$, $-x+b=-1$을 통해 얻는 새 중심이 $(5,4)$이므로\n$4-a=2$에서 $a=2$, $-5+b=-1$에서 $b=4$이다.\n따라서 $a+b=2+4=6$이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$-x+b=-1$을 $x+b=-1$로 오독: $b=-1-5=-6$, $a=2$이므로 $a+b=-4$",
+        "②": "$y-a=2$를 $y+a=2$로 오독: $a=2-4=-2$, $b=4$이므로 $a+b=2$",
+        "④": "$-x+b=-1$을 $x-b=-1$로 오독: $b=5+1=6$, $a=2$이므로 $a+b=8$",
+        "⑤": "$(x-2)^2$의 중심을 $-2$로 오인: $4-a=-2$에서 $a=6$, $b=4$이므로 $a+b=10$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$-x+b=-1$을 $x+b=-1$로 오독: $b=-1-5=-6$, $a=2$이므로 $a+b=-4$",
+          "calculation": "$-x+b=-1$을 $x+b=-1$로 오독: $b=-1-5=-6$, $a=2$이므로 $a+b=-4$",
+          "value": "$-4$",
+          "matchedChoice": "$-4$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "$y-a=2$를 $y+a=2$로 오독: $a=2-4=-2$, $b=4$이므로 $a+b=2$",
+          "calculation": "$y-a=2$를 $y+a=2$로 오독: $a=2-4=-2$, $b=4$이므로 $a+b=2$",
+          "value": "$2$",
+          "matchedChoice": "$2$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "$-x+b=-1$을 $x-b=-1$로 오독: $b=5+1=6$, $a=2$이므로 $a+b=8$",
+          "calculation": "$-x+b=-1$을 $x-b=-1$로 오독: $b=5+1=6$, $a=2$이므로 $a+b=8$",
+          "value": "$8$",
+          "matchedChoice": "$8$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$(x-2)^2$의 중심을 $-2$로 오인: $4-a=-2$에서 $a=6$, $b=4$이므로 $a+b=10$",
+          "calculation": "$(x-2)^2$의 중심을 $-2$로 오인: $4-a=-2$에서 $a=6$, $b=4$이므로 $a+b=10$",
+          "value": "$10$",
+          "matchedChoice": "$10$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "미정계수 두 개를 좌표 순서 교환·부호 치환에서 복원",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "두 원의 중심을 확정하고 역치환 방정식을 풀어 a와 b의 값을 찾는다.",
+      "actualComputedTruth": "$a=2,b=4,a+b=6$",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-B2",
+      "slot": "B2",
+      "sourceQid": 15,
+      "mode": "FOLLOWUP",
+      "stem": "$f(x,y)=(x-a)^2+(y-b)^2-9$, $g(x,y)=(x-3)^2+(y+1)^2-9$라 하자. 모든 실수 $x,y$에 대하여 $g(x,y)=f(y+2,-x+1)$이면 $2a+b$의 값은? (단, $a,b$는 실수이다.)",
+      "choices": [
+        "$0$",
+        "$-8$",
+        "$-1$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": "①",
+      "solution": "$g=0$의 중심은 $(3,-1)$이다.\n$g(x,y)=f(y+2,-x+1)$이므로 새 원의 중심에서는 $y+2=a$, $-x+1=b$가 성립한다.\n$(x,y)=(3,-1)$을 대입하여 $a=-1+2=1$, $b=-3+1=-2$를 얻는다.\n따라서 $2a+b=2\\cdot1-2=0$이므로 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$y+2=a$를 $y-2=a$로 잘못 읽어 $a=-1-2=-3$, $b=-2$를 넣음: $2a+b=-8$",
+        "③": "구하는 식 $2a+b$에서 계수 $2$를 빠뜨림: $a+b=1-2=-1$",
+        "④": "$b$의 부호를 잘못 처리하여 $2a-b=2-(-2)=4$를 답으로 고름",
+        "⑤": "$-x+1=b$를 $x+1=b$로 오독: $b=3+1=4$, $a=1$에서 $2a+b=6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$y+2=a$를 $y-2=a$로 잘못 읽어 $a=-1-2=-3$, $b=-2$를 넣음: $2a+b=-8$",
+          "calculation": "$y+2=a$를 $y-2=a$로 잘못 읽어 $a=-1-2=-3$, $b=-2$를 넣음: $2a+b=-8$",
+          "value": "$-8$",
+          "matchedChoice": "$-8$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "구하는 식 $2a+b$에서 계수 $2$를 빠뜨림: $a+b=1-2=-1$",
+          "calculation": "구하는 식 $2a+b$에서 계수 $2$를 빠뜨림: $a+b=1-2=-1$",
+          "value": "$-1$",
+          "matchedChoice": "$-1$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "$b$의 부호를 잘못 처리하여 $2a-b=2-(-2)=4$를 답으로 고름",
+          "calculation": "$b$의 부호를 잘못 처리하여 $2a-b=2-(-2)=4$를 답으로 고름",
+          "value": "$4$",
+          "matchedChoice": "$4$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$-x+1=b$를 $x+1=b$로 오독: $b=3+1=4$, $a=1$에서 $2a+b=6$",
+          "calculation": "$-x+1=b$를 $x+1=b$로 오독: $b=3+1=4$, $a=1$에서 $2a+b=6$",
+          "value": "$6$",
+          "matchedChoice": "$6$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "이동 후 원의 중심에서 원래 원의 미지 중심을 역으로 찾아 선형 결합 계산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "함수 치환 전 원의 중심 (a,b)를 이동 후 중심 (3,-1)로부터 결정하고 식에 대입한다.",
+      "actualComputedTruth": "$a=1,b=-2,2a+b=0$",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-B3",
+      "slot": "B3",
+      "sourceQid": 15,
+      "mode": "FOLLOWUP",
+      "stem": "$f(x,y)=(x-a)^2+(y-b)^2-4$, $g(x,y)=(x+2)^2+(y-5)^2-4$라 하자. 모든 실수 $x,y$에 대하여 $g(x,y)=f(-y+2,x-3)$이면 $a+b$의 값은? (단, $a,b$는 실수이다.)",
+      "choices": [
+        "$6$",
+        "$-8$",
+        "$2$",
+        "$-2$",
+        "$8$"
+      ],
+      "answer": "②",
+      "solution": "$g=0$의 중심은 $(-2,5)$이다. 좌표 치환 $(-y+2,x-3)$이 원래 중심 $(a,b)$가 되는 자리이므로\n$a=-5+2=-3$, $b=-2-3=-5$이다.\n따라서 $a+b=-3-5=-8$이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "둘째 원의 중심 $(-2,5)$를 $(5,-2)$로 바꾸어 대입: $a=-(-2)+2=4$, $b=5-3=2$, 합은 $6$",
+        "③": "$-y+2$의 음수를 무시: $a=5+2=7$, $b=-5$로 계산해 합은 $2$",
+        "④": "$x-3=b$를 $x+3=b$로 오독: $b=-2+3=1$, $a=-3$이므로 합은 $-2$",
+        "⑤": "구하는 값 $a+b$에 절댓값을 임의로 취하여 $|a|+|b|=3+5=8$을 선택"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "둘째 원의 중심 $(-2,5)$를 $(5,-2)$로 바꾸어 대입: $a=-(-2)+2=4$, $b=5-3=2$, 합은 $6$",
+          "calculation": "둘째 원의 중심 $(-2,5)$를 $(5,-2)$로 바꾸어 대입: $a=-(-2)+2=4$, $b=5-3=2$, 합은 $6$",
+          "value": "$6$",
+          "matchedChoice": "$6$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "$-y+2$의 음수를 무시: $a=5+2=7$, $b=-5$로 계산해 합은 $2$",
+          "calculation": "$-y+2$의 음수를 무시: $a=5+2=7$, $b=-5$로 계산해 합은 $2$",
+          "value": "$2$",
+          "matchedChoice": "$2$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "$x-3=b$를 $x+3=b$로 오독: $b=-2+3=1$, $a=-3$이므로 합은 $-2$",
+          "calculation": "$x-3=b$를 $x+3=b$로 오독: $b=-2+3=1$, $a=-3$이므로 합은 $-2$",
+          "value": "$-2$",
+          "matchedChoice": "$-2$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "구하는 값 $a+b$에 절댓값을 임의로 취하여 $|a|+|b|=3+5=8$을 선택",
+          "calculation": "구하는 값 $a+b$에 절댓값을 임의로 취하여 $|a|+|b|=3+5=8$을 선택",
+          "value": "$8$",
+          "matchedChoice": "$8$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "축 반전과 변수 순서 교환이 동시에 있는 역치환 계산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "새 중심을 원래 식의 치환 좌표에 대입할 때 변수 교환과 부호를 동시에 처리한다.",
+      "actualComputedTruth": "$a=-3,b=-5,a+b=-8$",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-C1",
+      "slot": "C1",
+      "sourceQid": 15,
+      "mode": "EXAM_APPLICATION",
+      "stem": "원 $C:(x-2)^2+(y+3)^2=13$을 $x$축의 양의 방향으로 $3$, $y$축의 음의 방향으로 $1$만큼 평행이동한 다음 직선 $y=x$에 대하여 대칭이동하였다. 최종 원의 방정식으로 옳은 것은?",
+      "choices": [
+        "$(x-5)^2+(y+4)^2=13",
+        "$x^2+(y-1)^2=13",
+        "$(x-5)^2+(y-4)^2=13",
+        "$(x+5)^2+(y+4)^2=13",
+        "$(x+4)^2+(y-5)^2=13"
+      ],
+      "answer": "⑤",
+      "solution": "처음 원의 중심은 $(2,-3)$이고 반지름의 제곱은 $13$이다.\n먼저 평행이동하면 중심은 $(2+3,-3-1)=(5,-4)$가 된다.\n직선 $y=x$에 대한 대칭이동에서는 좌표 $(u,v)$가 $(v,u)$로 바뀌므로 최종 중심은 $(-4,5)$이다.\n이동과 대칭이동은 반지름을 보존하므로 최종 원의 방정식은 $(x+4)^2+(y-5)^2=13$이다.\n따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "평행이동까지만 계산해 중심 $(5,-4)$를 사용: $(x-5)^2+(y+4)^2=13$",
+        "②": "이동 순서를 반대로 적용: 원래 중심 $(2,-3)$을 먼저 $y=x$에 대칭시켜 $(-3,2)$, 그다음 $(3,-1)$ 이동해 $(0,1)$ → $x^2+(y-1)^2=13$",
+        "③": "마지막에 $y=x$ 대칭 대신 $x$축 대칭을 적용: $(5,-4)\\to(5,4)$ → $(x-5)^2+(y-4)^2=13$",
+        "④": "마지막에 $y=x$ 대칭 대신 $y$축 대칭을 적용: $(5,-4)\\to(-5,-4)$ → $(x+5)^2+(y+4)^2=13$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "평행이동까지만 계산해 중심 $(5,-4)$를 사용: $(x-5)^2+(y+4)^2=13$",
+          "calculation": "평행이동까지만 계산해 중심 $(5,-4)$를 사용: $(x-5)^2+(y+4)^2=13$",
+          "value": "$(x-5)^2+(y+4)^2=13",
+          "matchedChoice": "$(x-5)^2+(y+4)^2=13",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "이동 순서를 반대로 적용: 원래 중심 $(2,-3)$을 먼저 $y=x$에 대칭시켜 $(-3,2)$, 그다음 $(3,-1)$ 이동해 $(0,1)$ → $x^2+(y-1)^2=13$",
+          "calculation": "이동 순서를 반대로 적용: 원래 중심 $(2,-3)$을 먼저 $y=x$에 대칭시켜 $(-3,2)$, 그다음 $(3,-1)$ 이동해 $(0,1)$ → $x^2+(y-1)^2=13$",
+          "value": "$x^2+(y-1)^2=13",
+          "matchedChoice": "$x^2+(y-1)^2=13",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "마지막에 $y=x$ 대칭 대신 $x$축 대칭을 적용: $(5,-4)\\to(5,4)$ → $(x-5)^2+(y-4)^2=13$",
+          "calculation": "마지막에 $y=x$ 대칭 대신 $x$축 대칭을 적용: $(5,-4)\\to(5,4)$ → $(x-5)^2+(y-4)^2=13$",
+          "value": "$(x-5)^2+(y-4)^2=13",
+          "matchedChoice": "$(x-5)^2+(y-4)^2=13",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "④",
+          "mistake": "마지막에 $y=x$ 대칭 대신 $y$축 대칭을 적용: $(5,-4)\\to(-5,-4)$ → $(x+5)^2+(y+4)^2=13$",
+          "calculation": "마지막에 $y=x$ 대칭 대신 $y$축 대칭을 적용: $(5,-4)\\to(-5,-4)$ → $(x+5)^2+(y+4)^2=13$",
+          "value": "$(x+5)^2+(y+4)^2=13",
+          "matchedChoice": "$(x+5)^2+(y+4)^2=13",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "평행이동 후 직선 y=x 대칭, 역순 오류 판별",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "평행이동과 직선 대칭이동을 지시된 순서로 합성해 마지막 원의 방정식을 결정한다.",
+      "actualComputedTruth": "중심 $(2,-3)\\to(5,-4)\\to(-4,5)$",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_COMPOSITE",
+        "templateKey": "TT_COMPOSITE_CIRCLE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-C2",
+      "slot": "C2",
+      "sourceQid": 15,
+      "mode": "EXAM_APPLICATION",
+      "stem": "중심이 $(a,b)$이고 반지름이 $2$인 원 $C$에 다음 두 이동을 각각 시행하였다.\n(가) $x$축의 양의 방향으로 $3$, $y$축의 양의 방향으로 $2$만큼 평행이동한 뒤 $x$축에 대하여 대칭이동한다.\n(나) 직선 $y=x$에 대하여 대칭이동한 뒤 $x$축의 양의 방향으로 $1$, $y$축의 음의 방향으로 $4$만큼 평행이동한다.\n(가)와 (나)의 최종 원이 일치할 때, $a+b$의 값은?",
+      "choices": [
+        "$-6$",
+        "$-4$",
+        "$-2$",
+        "$2$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "(가)에서 중심 $(a,b)$는 먼저 $(a+3,b+2)$로 옮겨지고, 이를 $x$축에 대하여 대칭이동하면 $(a+3,-b-2)$가 된다.\n(나)에서는 먼저 $(b,a)$로 옮겨진 다음 평행이동하여 $(b+1,a-4)$가 된다.\n반지름이 같은 두 원이 일치하려면 중심이 같아야 한다. 따라서\n$a+3=b+1$에서 $b=a+2$이고, $-b-2=a-4$에서 $a+b=2$이다.\n실제로 $b=a+2$와 $a+b=2$를 풀면 $a=0,b=2$가 되어 최종 중심은 모두 $(3,-4)$다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "(나)의 마지막 $y$축 이동을 $-4$가 아닌 $+4$로 착각: $(b+1,a+4)$를 대입하면 $-b-2=a+4$, 즉 $a+b=-6$",
+        "②": "(가)에서 $x$축 대칭이 아닌 $y$축 대칭을 적용: $(-a-3,b+2)=(b+1,a-4)$에서 $a+b=-4$",
+        "③": "(나)의 첫 대칭을 $y=x$가 아닌 $y=-x$ 대칭으로 착각: $(1-b,-a-4)$를 대입하면 $a+b=-2$",
+        "⑤": "(가)의 순서를 바꿔 $x$축 대칭을 먼저 적용: $(a+3,-b+2)=(b+1,a-4)$에서 $a+b=6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "(나)의 마지막 $y$축 이동을 $-4$가 아닌 $+4$로 착각: $(b+1,a+4)$를 대입하면 $-b-2=a+4$, 즉 $a+b=-6$",
+          "calculation": "(나)의 마지막 $y$축 이동을 $-4$가 아닌 $+4$로 착각: $(b+1,a+4)$를 대입하면 $-b-2=a+4$, 즉 $a+b=-6$",
+          "value": "$-6$",
+          "matchedChoice": "$-6$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "(가)에서 $x$축 대칭이 아닌 $y$축 대칭을 적용: $(-a-3,b+2)=(b+1,a-4)$에서 $a+b=-4$",
+          "calculation": "(가)에서 $x$축 대칭이 아닌 $y$축 대칭을 적용: $(-a-3,b+2)=(b+1,a-4)$에서 $a+b=-4$",
+          "value": "$-4$",
+          "matchedChoice": "$-4$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "(나)의 첫 대칭을 $y=x$가 아닌 $y=-x$ 대칭으로 착각: $(1-b,-a-4)$를 대입하면 $a+b=-2$",
+          "calculation": "(나)의 첫 대칭을 $y=x$가 아닌 $y=-x$ 대칭으로 착각: $(1-b,-a-4)$를 대입하면 $a+b=-2$",
+          "value": "$-2$",
+          "matchedChoice": "$-2$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "(가)의 순서를 바꿔 $x$축 대칭을 먼저 적용: $(a+3,-b+2)=(b+1,a-4)$에서 $a+b=6$",
+          "calculation": "(가)의 순서를 바꿔 $x$축 대칭을 먼저 적용: $(a+3,-b+2)=(b+1,a-4)$에서 $a+b=6$",
+          "value": "$6$",
+          "matchedChoice": "$6$",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "같은 시작 원을 두 경로로 합성 이동시켜 동일 최종 원이 되는 조건",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "서로 다른 두 번의 이동 순서를 좌표에 적용하고 두 결과를 연립해 원래 중심을 찾아낸다.",
+      "actualComputedTruth": "두 최종 중심 같음 → $a=0,b=2,a+b=2$",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_COMPOSITE",
+        "templateKey": "TT_COMPOSITE_CIRCLE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q15-C3",
+      "slot": "C3",
+      "sourceQid": 15,
+      "mode": "EXAM_APPLICATION",
+      "stem": "원 $C:(x-2)^2+(y+1)^2=4$를 직선 $y=x$에 대하여 대칭이동한 뒤, $x$축의 양의 방향으로 $t$, $y$축의 음의 방향으로 $2t$만큼 평행이동한다. 마지막으로 $y$축에 대하여 대칭이동한 원을 $C'$라 하자.\n$C'$가 $x$축에 접하고 $t>0$일 때, $C'$의 방정식은?",
+      "choices": [
+        "$(x-1)^2+(y-2)^2=4",
+        "$(x-1)^2+(y+2)^2=4",
+        "$\\left(x-\\dfrac32\\right)^2+(y+2)^2=4",
+        "$(x+1)^2+(y+2)^2=4",
+        "$(x-3)^2+(y+2)^2=4"
+      ],
+      "answer": "④",
+      "solution": "원 $C$의 중심은 $(2,-1)$이고 반지름은 $2$이다.\n직선 $y=x$에 대하여 대칭이동하면 중심이 $(-1,2)$가 되고, 이어서 $(t,-2t)$만큼 평행이동하면 $(t-1,2-2t)$가 된다.\n마지막으로 $y$축에 대하여 대칭이동하므로 $C'$의 중심은 $(1-t,2-2t)$이다.\n원 $C'$가 $x$축에 접하려면 중심과 $x$축 사이 거리가 반지름 $2$와 같아야 하므로 $|2-2t|=2$이다.\n따라서 $t=0$ 또는 $t=2$인데 $t>0$이므로 $t=2$이다. 최종 중심은 $(-1,-2)$이다.\n반지름이 그대로 $2$이므로 $C':(x+1)^2+(y+2)^2=4$이고 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "접선 조건의 해 $t=0$을 양수 제한 없이 사용: 마지막 중심 $(1,2)$에서 $(x-1)^2+(y-2)^2=4$",
+        "②": "마지막 $y$축 대칭을 생략: $t=2$에서 직전 중심 $(1,-2)$를 그대로 써 $(x-1)^2+(y+2)^2=4$",
+        "③": "첫 대칭을 $y=x$가 아니라 $y$축 대칭으로 오독: $(-2,-1)\\to(t-2,-1-2t)\\to(2-t,-1-2t)$; 접선 $|-1-2t|=2$, $t>0$에서 $t=\\dfrac12$, 중심 $(\\dfrac32,-2)$ → $\\left(x-\\dfrac32\\right)^2+(y+2)^2=4$",
+        "⑤": "$x$축 양의 방향 이동 $+t$를 $-t$로 잘못 적용: $(-1,2)\\to(-1-t,2-2t)\\to(1+t,2-2t)$; $t=2$에서 중심 $(3,-2)$ → $(x-3)^2+(y+2)^2=4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "접선 조건의 해 $t=0$을 양수 제한 없이 사용: 마지막 중심 $(1,2)$에서 $(x-1)^2+(y-2)^2=4$",
+          "calculation": "접선 조건의 해 $t=0$을 양수 제한 없이 사용: 마지막 중심 $(1,2)$에서 $(x-1)^2+(y-2)^2=4$",
+          "value": "$(x-1)^2+(y-2)^2=4",
+          "matchedChoice": "$(x-1)^2+(y-2)^2=4",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "②",
+          "mistake": "마지막 $y$축 대칭을 생략: $t=2$에서 직전 중심 $(1,-2)$를 그대로 써 $(x-1)^2+(y+2)^2=4$",
+          "calculation": "마지막 $y$축 대칭을 생략: $t=2$에서 직전 중심 $(1,-2)$를 그대로 써 $(x-1)^2+(y+2)^2=4$",
+          "value": "$(x-1)^2+(y+2)^2=4",
+          "matchedChoice": "$(x-1)^2+(y+2)^2=4",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "③",
+          "mistake": "첫 대칭을 $y=x$가 아니라 $y$축 대칭으로 오독: $(-2,-1)\\to(t-2,-1-2t)\\to(2-t,-1-2t)$; 접선 $|-1-2t|=2$, $t>0$에서 $t=\\dfrac12$, 중심 $(\\dfrac32,-2)$ → $\\left(x-\\dfrac32\\right)^2+(y+2)^2=4$",
+          "calculation": "첫 대칭을 $y=x$가 아니라 $y$축 대칭으로 오독: $(-2,-1)\\to(t-2,-1-2t)\\to(2-t,-1-2t)$; 접선 $|-1-2t|=2$, $t>0$에서 $t=\\dfrac12$, 중심 $(\\dfrac32,-2)$ → $\\left(x-\\dfrac32\\right)^2+(y+2)^2=4$",
+          "value": "$\\left(x-\\dfrac32\\right)^2+(y+2)^2=4",
+          "matchedChoice": "$\\left(x-\\dfrac32\\right)^2+(y+2)^2=4",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$x$축 양의 방향 이동 $+t$를 $-t$로 잘못 적용: $(-1,2)\\to(-1-t,2-2t)\\to(1+t,2-2t)$; $t=2$에서 중심 $(3,-2)$ → $(x-3)^2+(y+2)^2=4$",
+          "calculation": "$x$축 양의 방향 이동 $+t$를 $-t$로 잘못 적용: $(-1,2)\\to(-1-t,2-2t)\\to(1+t,2-2t)$; $t=2$에서 중심 $(3,-2)$ → $(x-3)^2+(y+2)^2=4$",
+          "value": "$(x-3)^2+(y+2)^2=4",
+          "matchedChoice": "$(x-3)^2+(y+2)^2=4",
+          "verification": "CREATOR_STUDENT_CHOICE_PATH_TRACED"
+        }
+      ],
+      "experienceAxis": "대칭과 평행이동 합성 후 접선의 거리조건·양수 조건으로 유일한 이동량 결정",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "L3-1.4.3|이동의 합성",
+      "lockedL3DecisiveStep": "최초 원의 중심을 변수 치환·대칭·평행이동의 순서에 맞게 대응시키고 최종 원과 비교한다.",
+      "targetL4": "L4-1.4.3.1|연속 이동",
+      "studentVisual": "NOT_REQUIRED_ALL_CIRCLES_DEFINED_BY_EXPLICIT_EQUATIONS",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "연속 이동에서 최종 중심을 t로 나타내고 x축 접선·t>0 경계를 적용해 원을 구한다.",
+      "actualComputedTruth": "$t=2$, 최종 원 중심 $(-1,-2)$ 반지름 2",
+      "remainingRisk": "INDEPENDENT_GPT_OPEN_BOOK_REVIEW_AND_STUDENT_RUNTIME_RELEASE_NOT_PERFORMED",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.3|이동의 합성",
+        "rpmRecordIds": [
+          "H1-RPM-229"
+        ],
+        "rpmL4": "L4-1.4.3.1|연속 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordIds": [
+            "H1-RPM-229"
+          ],
+          "mappingRole": "L3_LOCKED_FROM_SOURCE_PROBLEM_DECISIVE_TRANSFORMATION"
+        },
+        "problemTypeKey": "PT_MOVE_COMPOSITE",
+        "templateKey": "TT_COMPOSITE_CIRCLE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS",
+          "CC_CIRCLE_TANGENCY"
+        ],
+        "crossConceptEvidenceLabels": [
+          "원의 중심과 반지름",
+          "원과 x축이 접함: 중심의 y좌표 절댓값=반지름"
+        ],
+        "crossConceptAuthority": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "conditionEvidenceLabels": [
+          "t>0: 접선 조건에서 t=0 제외"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 15,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "publication": {
+    "status": "CREATE_ONLY_NOT_STUDENT_RELEASED",
+    "newStudentConsumerRegistration": 0,
+    "gptOpenBookReview": "NOT_RUN",
+    "studentChrome": "NOT_TESTED"
+  }
+}
