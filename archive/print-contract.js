@@ -216,7 +216,7 @@
         };
         for (const field of [
             'image', 'imageSize', 'solutionImage', 'solutionImageAlt',
-            'solutionImageCaption', 'solutionImageSize', 'layoutTag'
+            'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout', 'layoutTag'
         ]) {
             const normalized = asOptionalString(value[field], field, 'INVALID_CANONICAL_QUESTION_FIELD');
             if (normalized !== undefined) question[field] = normalized;

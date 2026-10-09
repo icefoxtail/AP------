@@ -504,7 +504,7 @@
         let currentColumn = 1;
         let placementOrder = 0;
         const flushPage = () => {
-            pages.push(currentPage);
+            if (currentPage.itemPlacements.length) pages.push(currentPage);
             currentPage = { pageNo: pages.length + 1, columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, usedHeight: 0, items: [] })), itemPlacements: [] };
             currentColumn = 1;
         };
@@ -525,8 +525,8 @@
                 blockId: continuationOf ? `${block.blockId}:continuation:${continuationNumber}` : block.blockId,
                 questionKey: block.questionKey || block.blockId,
                 columnNo: currentColumn,
-                columnSpan: 1,
-                layoutTag: 'solution',
+                columnSpan: block.fullWidth === true ? columns : 1,
+                layoutTag: block.fullWidth === true ? 'fullwidth' : 'solution',
                 placementKind: 'solution',
                 slotSpanRows: 1,
                 slotRowStart: null,
@@ -552,15 +552,20 @@
             return Math.max(1, primary + Number(chunk?.measuredHeight || chunk?.raw || block.measuredHeight || 1));
         };
         blocks.forEach(block => {
+            if (block.fullWidth !== undefined && typeof block.fullWidth !== 'boolean') fail('SOLUTION_BLOCK_FULLWIDTH_INVALID');
+            const fullWidth = block.fullWidth === true;
+            if (fullWidth && currentPage.itemPlacements.length) flushPage();
+            if (!fullWidth && currentPage.itemPlacements.some(item => item.columnSpan > 1)) flushPage();
             const chunks = Array.isArray(block.chunks) && block.chunks.length ? block.chunks : [{ chunkId: 'c0', measuredHeight: block.measuredHeight, tight: block.measurements?.tight }];
             if (chunks.length === 1) {
                 const raw = Number(block.measuredHeight || chunks[0].measuredHeight || 1);
                 const tight = Number(block.measurements?.tight || chunks[0].tight || raw);
                 let mode = 'raw'; let height = raw; let compressed = false;
                 if (!canFit(height) && canFit(tight)) { mode = 'tight'; height = tight; compressed = true; }
-                if (!canFit(height) && currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+                if (!canFit(height) && currentPage.columns[currentColumn - 1].items.length) (fullWidth ? flushPage : advanceColumn)();
                 if (!canFit(height)) overflowEvidence.push(Object.freeze({ blockId: block.blockId, measuredHeight: height, usableHeight, measurementMode: mode, code: 'SOLUTION_BLOCK_EXCEEDS_PAGE' }));
                 addPlacement(block, height, mode, '', undefined, undefined, compressed);
+                if (fullWidth) flushPage();
                 return;
             }
             // Production first attempts the complete long-solution box. Only
@@ -571,13 +576,15 @@
             const fullTight = Number(block.measurements?.tight || fullRaw);
             if (canFit(fullRaw)) {
                 addPlacement(block, fullRaw, 'raw', '', undefined, undefined, false);
+                if (fullWidth) flushPage();
                 return;
             }
             if (canFit(fullTight)) {
                 addPlacement(block, fullTight, 'tight', '', undefined, undefined, true);
+                if (fullWidth) flushPage();
                 return;
             }
-            if (currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+            if (currentPage.columns[currentColumn - 1].items.length) (fullWidth ? flushPage : advanceColumn)();
             let shellChunks = [];
             let shellIndex = 0;
             const flushShell = (continuation, chunkStart, chunkEnd, compressed) => {
@@ -610,10 +617,10 @@
                         chunkIndex - borrowed.length - 1,
                         false
                     );
-                    advanceColumn();
+                    (fullWidth ? flushPage : advanceColumn)();
                     if (borrowed.length) shellChunks.push(...borrowed);
                 } else if (!shellChunks.length && !canFit(candidate)) {
-                    if (currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+                    if (currentPage.columns[currentColumn - 1].items.length) (fullWidth ? flushPage : advanceColumn)();
                     if (!canFit(candidate)) {
                         const tightCandidate = measure(block, { measuredHeight: chunk.tight || chunk.measuredHeight }, continuation);
                         if (canFit(tightCandidate)) shellChunks.push({ ...chunk, measuredHeight: tightCandidate });
@@ -624,6 +631,7 @@
                 shellChunks.push(chunk);
             });
             flushShell(shellIndex > 0, chunks.length - shellChunks.length, chunks.length - 1, false);
+            if (fullWidth) flushPage();
         });
         if (currentPage.itemPlacements.length) pages.push(currentPage);
         const publicPages = pages.map(page => Object.freeze({
@@ -904,6 +912,7 @@
                 const gridColumn = node.closest('.grid-col');
                 const grid = gridColumn?.parentElement;
                 const columnNo = gridColumn && grid ? Math.min(columns, Math.max(1, Array.from(grid.children).indexOf(gridColumn) + 1)) : 1;
+                const fullWidth = node.dataset?.solutionFullWidth === 'true' || record.layoutTag === 'fullwidth';
                 const columnOrder = columnItems[columnNo - 1].items.length;
                 const ledgerEntry = config.measurementsByBlockId?.[blockId] || {};
                 const measuredHeight = Number(ledgerEntry.raw ?? ledgerEntry.measuredHeight ?? 1);
@@ -912,8 +921,8 @@
                     blockId,
                     questionKey: sourceKey,
                     columnNo,
-                    columnSpan: 1,
-                    layoutTag: 'solution',
+                    columnSpan: fullWidth ? columns : 1,
+                    layoutTag: fullWidth ? 'fullwidth' : 'solution',
                     placementKind: 'solution',
                     slotSpanRows: 1,
                     slotOccupancy: continuationOf ? 0 : 1,
@@ -929,8 +938,8 @@
                     recipientId: record.recipientId || config.recipientId || null,
                     sourceRef: record.sourceRef,
                     displayNo: Number(record.displayNo),
-                    layoutTag: 'solution',
-                    wide: false
+                    layoutTag: fullWidth ? 'fullwidth' : 'solution',
+                    wide: fullWidth
                 };
                 elementsByBlockId[blockId] = node;
                 expectedPlacements.push({ ...item, measuredHeight, measurements: { raw: measuredHeight, tight: tightHeight } });
@@ -1068,7 +1077,19 @@
                     else perColumn[item.columnNo - 1].push(item);
                 });
                 const hasWide = pageLayout.itemPlacements.some(item => item.columnSpan > 1);
-                if (hasWide) {
+                const fullWidthSolution = hasWide && pageLayout.itemPlacements.some(item => item.placementKind === 'solution');
+                if (fullWidthSolution) {
+                    const grid = root.createElement('div');
+                    grid.className = 'grid-container sol-fullwidth-grid';
+                    const column = root.createElement('div');
+                    column.className = 'grid-col sol-grid-col sol-fullwidth-column';
+                    perColumn[0].forEach(item => {
+                        const node = options.resolveElement(item.blockId);
+                        if (node) column.appendChild(node.cloneNode(true));
+                    });
+                    grid.appendChild(column);
+                    body.appendChild(grid);
+                } else if (hasWide) {
                     const wideColumn = root.createElement('div');
                     wideColumn.style.cssText = 'flex:1;display:flex;flex-direction:column;padding:0 8px;min-height:0;overflow:hidden;';
                     perColumn[0].forEach(item => {
@@ -1144,8 +1165,12 @@
         const current = () => page.columns[columnNo - 1];
         const fits = height => Math.round(current().usedHeight + height) <= capacity + tolerance;
         const advance = () => { if (columnNo < columns) columnNo += 1; else { pages.push(page); pageNo += 1; columnNo = 1; page = newPage(); } };
+        const flushPage = () => { if (page.itemPlacements.length) pages.push(page); pageNo = pages.length + 1; page = newPage(); columnNo = 1; };
+        const advanceBlock = fullWidth => fullWidth ? flushPage() : advance();
         const add = (block, height, attempt, extra) => {
-            const item = Object.freeze({ blockId: block.blockId, columnNo, columnOrder: current().items.length, placementOrder: order++, attemptOrder: attempt, height, ...extra });
+            const item = Object.freeze({ blockId: block.blockId, columnNo, columnSpan: block.fullWidth === true ? columns : 1,
+                layoutTag: block.fullWidth === true ? 'fullwidth' : 'solution', placementKind: 'solution',
+                columnOrder: current().items.length, placementOrder: order++, attemptOrder: attempt, height, ...extra });
             current().items.push(item); current().usedHeight += height; page.itemPlacements.push(item);
         };
         for (const block of input.blocks || []) {
@@ -1153,14 +1178,26 @@
                 if (Object.prototype.hasOwnProperty.call(block, field)) fail('SOURCE_DATA_FORBIDDEN_IN_LAYOUT:' + field);
             }
             safeText(block.blockId, 'MEASURED_BLOCK_ID');
+            if (block.fullWidth !== undefined && typeof block.fullWidth !== 'boolean') fail('MEASURED_BLOCK_FULLWIDTH_INVALID');
+            const fullWidth=block.fullWidth===true;
+            if (fullWidth && page.itemPlacements.length) flushPage();
+            if (!fullWidth && page.itemPlacements.some(item=>item.columnSpan>1)) flushPage();
             const raw = positive(block.rawHeight, 'MEASURED_BLOCK_RAW');
             const compressedHeight = positive(block.compressedHeight, 'MEASURED_BLOCK_COMPRESSED');
             let compressed = false;
             while (true) {
                 const attempt = attemptOrder++;
-                if (fits(compressed ? compressedHeight : raw)) { add(block, compressed ? compressedHeight : raw, attempt, { split: false, compressed }); break; }
+                if (fits(compressed ? compressedHeight : raw)) {
+                    add(block, compressed ? compressedHeight : raw, attempt, { split: false, compressed });
+                    if(fullWidth)flushPage();
+                    break;
+                }
                 compressed = true;
-                if (fits(compressedHeight)) { add(block, compressedHeight, attempt, { split: false, compressed }); break; }
+                if (fits(compressedHeight)) {
+                    add(block, compressedHeight, attempt, { split: false, compressed });
+                    if(fullWidth)flushPage();
+                    break;
+                }
                 if (current().items.length) { advance(); continue; }
                 let start = 0, continuation = 0;
                 const count = positiveInteger(block.chunkCount, 'MEASURED_CHUNK_COUNT', 1);
@@ -1190,8 +1227,9 @@
                     }
                     add(block, height, attemptOrder++, { split: true, compressed, chunkStart: start, chunkEnd: end, continuation });
                     start = end + 1; continuation += 1;
-                    if (start < count) advance();
+                    if (start < count) advanceBlock(fullWidth);
                 }
+                if(fullWidth)flushPage();
                 break;
             }
         }

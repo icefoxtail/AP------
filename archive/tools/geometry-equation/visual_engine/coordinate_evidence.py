@@ -10,7 +10,7 @@ import re
 
 ID = re.compile(r'[A-Za-z0-9_-]{1,100}\Z')
 MODES = {'SOURCE_COORDINATES', 'CONSTRUCTED_REALIZATION'}
-CONDITION_KINDS = {'DISTANCE', 'PERPENDICULAR', 'PARALLEL', 'COLLINEAR', 'MIDPOINT', 'EQUAL_DISTANCE'}
+CONDITION_KINDS = {'DISTANCE', 'PERPENDICULAR', 'PARALLEL', 'COLLINEAR', 'MIDPOINT', 'EQUAL_DISTANCE', 'ANGLE'}
 
 
 def _check(condition, message):
@@ -68,6 +68,18 @@ def _condition_residual(points, row):
     if kind == 'EQUAL_DISTANCE':
         _check(len(p) == 4 and 'expected' not in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+row['id'])
         return abs(math.dist(p[0], p[1])-math.dist(p[2], p[3]))
+    if kind == 'ANGLE':
+        _check(len(p) == 3 and len(set(refs)) == 3 and 'expected' in row,
+               'CONSTRUCTED_CONDITION_SCHEMA:'+row['id'])
+        a, v, b = p
+        u, w = (a[0]-v[0], a[1]-v[1]), (b[0]-v[0], b[1]-v[1])
+        nu, nw = math.hypot(*u), math.hypot(*w)
+        _check(nu > 1e-12 and nw > 1e-12, 'CONSTRUCTED_DEGENERATE_CONDITION:'+row['id'])
+        minor = math.degrees(math.acos(max(-1., min(1., (u[0]*w[0]+u[1]*w[1])/(nu*nw)))))
+        expected = _number(row['expected'])
+        _check(0 < expected < 360, 'CONSTRUCTED_ANGLE_EXPECTATION_RANGE:'+row['id'])
+        observed = 360-minor if expected > 180 else minor
+        return abs(observed-expected)
     raise ValueError('UNSUPPORTED_CONSTRUCTED_CONDITION:'+str(kind))
 
 

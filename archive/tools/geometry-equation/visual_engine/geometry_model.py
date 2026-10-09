@@ -1,6 +1,7 @@
 """Finite canonical geometry; display strings belong to another layer."""
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import math
 import math
 
 EPS = 1e-9
@@ -46,6 +47,57 @@ class Circle:
         object.__setattr__(self,'radius',finite(self.radius))
         if self.radius <= 0:
             raise ValueError('DEGENERATE_CIRCLE')
+
+@dataclass(frozen=True)
+class CircularArc:
+    center: tuple
+    start: tuple
+    end: tuple
+    sweep: str
+    radius: float = field(init=False)
+    start_angle: float = field(init=False)
+    sweep_radians: float = field(init=False)
+
+    def __post_init__(self):
+        center, start, end = point(self.center), point(self.start), point(self.end)
+        radius = math.dist(center, start)
+        end_radius = math.dist(center, end)
+        if radius <= EPS or abs(radius-end_radius) > EPS*max(1.,radius,end_radius):
+            raise ValueError('CIRCULAR_ARC_ENDPOINT_RADIUS_MISMATCH')
+        if self.sweep not in {'CW','CCW'}:
+            raise ValueError('CIRCULAR_ARC_SWEEP_INVALID')
+        start_angle = math.atan2(start[1]-center[1], start[0]-center[0])
+        end_angle = math.atan2(end[1]-center[1], end[0]-center[0])
+        delta = ((end_angle-start_angle)%(2*math.pi) if self.sweep=='CCW'
+                 else -((start_angle-end_angle)%(2*math.pi)))
+        if abs(delta) <= EPS or abs(delta) >= 2*math.pi-EPS:
+            raise ValueError('CIRCULAR_ARC_SWEEP_RANGE_INVALID')
+        object.__setattr__(self,'center',center)
+        object.__setattr__(self,'start',start)
+        object.__setattr__(self,'end',end)
+        object.__setattr__(self,'radius',radius)
+        object.__setattr__(self,'start_angle',start_angle)
+        object.__setattr__(self,'sweep_radians',delta)
+
+    @property
+    def degrees(self):
+        return math.degrees(abs(self.sweep_radians))
+
+    def sample_points(self):
+        count=max(32, math.ceil(self.degrees/2.8125))
+        return [point((self.center[0]+self.radius*math.cos(self.start_angle+self.sweep_radians*i/count),
+                       self.center[1]+self.radius*math.sin(self.start_angle+self.sweep_radians*i/count)))
+                for i in range(count+1)]
+
+    def critical_points(self):
+        points=[self.start,self.end]
+        for angle in (0,math.pi/2,math.pi,3*math.pi/2):
+            delta=((angle-self.start_angle)%(2*math.pi) if self.sweep_radians>0
+                   else -((self.start_angle-angle)%(2*math.pi)))
+            if 1e-12 < abs(delta) < abs(self.sweep_radians)-1e-12:
+                points.append((self.center[0]+self.radius*math.cos(angle),
+                               self.center[1]+self.radius*math.sin(angle)))
+        return points
 
 def line_from_two_points(p,q):
     x1,y1=point(p); x2,y2=point(q)
