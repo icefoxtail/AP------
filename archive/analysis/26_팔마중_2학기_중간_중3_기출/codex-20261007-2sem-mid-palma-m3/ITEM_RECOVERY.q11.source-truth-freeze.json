@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_TRUTH_FREEZE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-palma-m3",
+  "targetQid": 11,
+  "reviewer": "archive_create",
+  "sourceFile": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중3\\S28BW-826100719540_0007.jpg",
+  "sourceSha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c",
+  "sourcePage": "5-2 / scan 0007, q11 lower-right",
+  "printedQuestionText": "다음 그림과 같이 사각형 ABCD의 두 대각선이 이루는 예각의 크기가 60°일 때, 사각형 ABCD의 넓이는? (4점)",
+  "printedDiagramFacts": [
+    "AD=8 cm is a printed side label.",
+    "The printed figure shows the acute angle between the two diagonals as 60°."
+  ],
+  "nonSourceMarks": [
+    "The handwritten-looking 11cm mark inside the figure is not accepted as source truth under the assignment sourceMarkPolicy.",
+    "No printed length for the second diagonal is present."
+  ],
+  "alternateEvidenceChecked": [
+    "Current latest q11 student-only row and q11.png were independently hash-revalidated in ITEM_RECOVERY.q11.latest-byte-revalidation.json.",
+    "All five assigned source scans were identified by assignment; scan 0007 contains q11.",
+    "Prior R1/R2 HOLDs were consulted only after latest-byte revalidation was durably saved."
+  ],
+  "determination": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+  "reason": "The printed item gives only one side length AD=8 cm and the angle between diagonals 60°. It does not give the second diagonal length or another condition fixing the diagonal product. The handwritten 11cm annotation is excluded. General quadrilateral area is not uniquely determined; minimum source-faithful repair is impossible, so q11-only direct replacement is authorized.",
+  "whyTruthStillNonDeterministic": "With the diagonals crossing at O, the area is 1/2·AC·BD·sin60°. AD=8 cm and the crossing angle constrain neither AC·BD to a unique value nor the other vertices. Varying a positive diagonal segment while preserving AD and the angle permits different diagonal products.",
+  "minimumRepairAttempt": "Attempted printed-source restoration by reading the exact q11 text and diagram at scan 0007; no printed second diagonal measure exists. Rejected the handwritten 11cm annotation as non-source.",
+  "replacementAuthorized": true,
+  "preReplacementCandidateRawSha256": "7ee9cd224bc4ce1eaf5e397ddb42fdc88c70bbc0a78974b818026402755da13c",
+  "preReplacementCandidateBlobSha1": "686e1080547c34835e727fe6fd023074c58da398",
+  "sourceCropReviewPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-palma-m3\\q11-source-page-crop-review.jpg",
+  "sourceCropReviewSha256": "bc16733a1b723a10e3ebb51507374e260027aad31aca922cf044f7c02e95d716"
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOLUTION_FIRST_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-palma-m3",
+  "qid": 11,
+  "sourceTruthFreezePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.source-truth-freeze.json",
+  "sourceTruthFreezeSha256": "8616f68b388a77bf8281dc5123d0cf8aa5b2bc312a22fa5d45e29012f5fc61fa",
+  "educationalRole": "M3-05 trig-ratio application: quadrilateral area from diagonal lengths and their included angle.",
+  "replacementConditions": [
+    "AC=10 cm",
+    "BD=6 cm",
+    "acute angle between AC and BD is 60°"
+  ],
+  "replacementContent": "사각형 ABCD의 두 대각선 AC, BD의 길이가 각각 10 cm, 6 cm이고, 두 대각선이 이루는 예각의 크기가 60°일 때, 사각형 ABCD의 넓이는? (4점)",
+  "freshSolution": [
+    "대각선 AC와 BD의 교점을 O라 하자. 사각형의 넓이는 네 삼각형 AOB, BOC, COD, DOA의 넓이의 합이다.",
+    "네 삼각형의 끼인각은 60° 또는 120°이고, sin120°=sin60°=√3/2이다.",
+    "S=1/2(AO·BO+BO·OC+OC·OD+OD·AO)sin60°",
+    " =1/2(AO+OC)(BO+OD)sin60°",
+    " =1/2·AC·BD·sin60°",
+    " =1/2·10·6·√3/2",
+    " =15√3 cm²"
+  ],
+  "frozenNumericAnswer": "15√3 cm²",
+  "solutionRole": "Area formula is derived by summing the four triangle areas; all decisive substitutions are shown.",
+  "visualDecision": "No diagram is required because the replacement states both diagonal labels, lengths, and their included acute angle in the text; omit the source scan with non-source handwritten annotations.",
+  "status": "SOLUTION_FIRST_FROZEN_BEFORE_CHOICES"
+}

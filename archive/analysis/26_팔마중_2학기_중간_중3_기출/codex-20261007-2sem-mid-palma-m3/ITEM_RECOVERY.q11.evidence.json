@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_EVIDENCE_V1",
+  "evidenceId": "codex-20261007-2sem-mid-palma-m3-ITEM_RECOVERY-q11",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "26_팔마중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-palma-m3",
+  "stage": "ITEM_RECOVERY",
+  "revision": 1,
+  "targetQid": 11,
+  "scope": "QID_ONLY",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "originalSourceRef": {
+    "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중3\\S28BW-826100719540_0007.jpg",
+    "sha256": "2b94d2a47091183232274aaceb314ccea19118d6ea75cd3247ee328389c05c3c"
+  },
+  "sourceTruthFreeze": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.source-truth-freeze.json",
+    "sha256": "8616f68b388a77bf8281dc5123d0cf8aa5b2bc312a22fa5d45e29012f5fc61fa",
+    "determination": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED"
+  },
+  "priorArtifact": {
+    "rawSha256": "7ee9cd224bc4ce1eaf5e397ddb42fdc88c70bbc0a78974b818026402755da13c",
+    "blobSha1": "686e1080547c34835e727fe6fd023074c58da398"
+  },
+  "finalArtifact": {
+    "path": ".tmp/archive/codex-20261007-2sem-mid-palma-m3/26_팔마중_2학기_중간_중3_기출/candidate/26_팔마중_2학기_중간_중3_기출.js",
+    "rawSha256": "3968635c070f8ca44c726b4709f4be7ea3714da473fcbeeb2b1a7feb1604709a",
+    "blobSha1": "a64aa62f76737f3d74f3f81ed50ac50e505288b4"
+  },
+  "preflight": {
+    "evidencePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.calibration-preflight.json",
+    "evidenceSha256": "89f24598702e0d0ba094a6d9682fa9816e3f110ee3ff4c9afca69716911faea3",
+    "report": {
+      "ok": true,
+      "stage": "ITEM_RECOVERY",
+      "gate": "CALIBRATION_PREFLIGHT",
+      "questionCount": 24,
+      "issues": []
+    },
+    "completedBeforeSolutionAuthoring": true,
+    "rawReportPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.calibration-preflight.raw.json",
+    "rawReportSha256": "05f8f5a4d237848b2c7e7c07fda603666e5c0fb4069e052a0b460c0fb6d94b03"
+  },
+  "latestByteRevalidation": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.latest-byte-revalidation.json",
+    "sha256": "a5adac4d657edaffad3c2e747f650760f63929f1df500d9a5de5b7945de7f09f",
+    "studentBundleSha256": "bd533838909f6b86ba984da754020dc3aabb3656a1930490a6b8f0bc56ab1778",
+    "assetSha256": "13d9f7aeb5b4947f33372349d282cf97a2cd5aa26941b17e6ff4878e0e278466"
+  },
+  "replacement": {
+    "content": "사각형 ABCD의 두 대각선 AC, BD의 길이가 각각 10 cm, 6 cm이고, 두 대각선이 이루는 예각의 크기가 60°일 때, 사각형 ABCD의 넓이는? (4점)",
+    "choices": [
+      "$15 \\,\\mathrm{cm}^2$",
+      "$15\\sqrt{3} \\,\\mathrm{cm}^2$",
+      "$30 \\,\\mathrm{cm}^2$",
+      "$30\\sqrt{3} \\,\\mathrm{cm}^2$",
+      "$60 \\,\\mathrm{cm}^2$"
+    ],
+    "answer": "②",
+    "solution": "대각선 AC와 BD의 교점을 O라 하자. 사각형의 넓이는 네 삼각형 AOB, BOC, COD, DOA의 넓이의 합이다.\n네 삼각형의 끼인각은 60° 또는 120°이고, $\\sin120^\\circ=\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이다.\n$S=\\dfrac12(AO\\cdot BO+BO\\cdot OC+OC\\cdot OD+OD\\cdot AO)\\sin60^\\circ$\n$=\\dfrac12(AO+OC)(BO+OD)\\sin60^\\circ$\n$=\\dfrac12\\cdot AC\\cdot BD\\cdot\\sin60^\\circ$\n$=\\dfrac12\\cdot10\\cdot6\\cdot\\dfrac{\\sqrt3}{2}$\n$=15\\sqrt3\\,\\mathrm{cm}^2$.\n그러므로 정답은 ②이다.",
+    "solutionSha256": "548cae63154c6df2d6f726fdaa02b5bd360523d12d293f757b249b1107d0e966",
+    "studentImage": "OMITTED_TEXT_COMPLETE_REPLACEMENT",
+    "notSourceExact": true,
+    "educationalRole": "M3-05 trig-ratio application; determine quadrilateral area from the two diagonal lengths and their angle."
+  },
+  "directBlindSelfCheck": {
+    "status": "PASS",
+    "method": "Independently take the diagonal lengths AC=10 and BD=6 with included acute angle 60°. Area equals one half of their cross-product magnitude: (1/2)·10·6·sin60°=15√3 cm².",
+    "answerCardinality": "ONE",
+    "matchingChoice": "②",
+    "allFiveChoicesChecked": true,
+    "duplicateOrEquivalentChoices": 0,
+    "existence": "A convex quadrilateral exists by taking two nonparallel diagonal segments crossing at O and their endpoints on opposite rays.",
+    "sourceFactIndependence": "Replacement uses explicit new conditions and does not reuse non-source handwritten source marks."
+  },
+  "freshMeta": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.meta-fresh-evidence.json",
+    "sha256": "720dfa1b0d2ab71364eb9156fd09c706b034bddfa357b9e74ba8f63a85cd1597",
+    "scope": "qid 11 only",
+    "artifactDispositionsPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.artifact-dispositions.json",
+    "artifactDispositionsSha256": "2c37f62e0eea5ff7fad7fd66081959c52ea1713134d9de28be2a503ef2f20c2e",
+    "metaDebtFields": []
+  },
+  "freshStudentBundle": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/handoff/ITEM_RECOVERY.q11.current-final-student-only-bundle.json",
+    "sha256": "022061182de57af15431f31efcd20001dd86bd43dd20fbc9d1ad57e339b3be47",
+    "questionCount": 1,
+    "qids": [
+      11
+    ],
+    "studentFields": [
+      "id",
+      "content",
+      "choices",
+      "image"
+    ],
+    "assetManifest": [],
+    "answerOrSolutionExcluded": true,
+    "payloadSha256": "sha256:a97801360cadf87c25ba8bb9007fe8245d4853a9c2da308e1f713d77d605efde"
+  },
+  "nonTargetInvariants": {
+    "allOtherQuestionObjectsByteEquivalentAfterRuntimeParse": true,
+    "nonTargetQidCount": 23,
+    "nonTargetAssetsUnchanged": true,
+    "nonTargetAssetCount": 20,
+    "q24CorrectionPreserved": true,
+    "q24Answer": "3 cm",
+    "priorR1EvidenceSha256": "f596f5cbca65da41656f8574aa94593914132430d61f7ae30aca1000ca7e2e0f",
+    "priorR2EvidenceSha256": "a216fa7aa48b0541630dd110ea5b2a9a59a319d62c33288ab7ca2ba3ee4bb7e5",
+    "priorFreezePreserved": true,
+    "nonTargetAssetQids": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "q24CandidateObjectMatchesPreRecovery": true
+  },
+  "questionLayout": {
+    "status": "PASS",
+    "disposition": "REPLACEMENT_TEXT_COMPLETE",
+    "sourceTextExactParity": "NOT_APPLICABLE_QUESTION_REPLACEMENT",
+    "choicesExactParity": "NOT_APPLICABLE_REPLACEMENT_CHOICES"
+  },
+  "solutionLayout": {
+    "status": "PASS",
+    "smallBoardContinuityStatus": "PASS",
+    "solutionSha256": "548cae63154c6df2d6f726fdaa02b5bd360523d12d293f757b249b1107d0e966"
+  },
+  "visualSvg": {
+    "status": "PASS",
+    "disposition": "NO_VISUAL_REQUIRED_TEXT_COMPLETE",
+    "oldAnnotatedImageNotReused": true,
+    "requiredNewVisual": false
+  },
+  "status": "RECOVERY_ARTIFACT_READY_FOR_FRESH_Q11_R1_R2",
+  "genericValidator": {
+    "stage": "CREATE",
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX",
+    "reportPath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.generic-create-validator-raw.json",
+    "reportSha256": "a589f7827646683d02aae5df0de03058ca7a46d6f221560d6ad999c93ae190ce",
+    "disposition": "PASS",
+    "issues": [],
+    "denominator": 24,
+    "rowCount": 24,
+    "evidencePath": "archive/analysis/26_팔마중_2학기_중간_중3_기출/codex-20261007-2sem-mid-palma-m3/ITEM_RECOVERY.q11.current-create-evidence.json",
+    "evidenceSha256": "bc0fd55634c8f2f0fdbf55cb1284113e716205a0386cecee4c37a5f7366ea4f5"
+  }
+}
