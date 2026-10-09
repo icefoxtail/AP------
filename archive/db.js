@@ -1292,6 +1292,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "school": "동산중",
       "topic": "",
@@ -17865,37 +17896,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
-      "school": "팔마중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "중3 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-05",
-      "rangeStartUnit": "삼각비",
-      "rangeStartUnitOrder": 5,
-      "rangeEndUnitKey": "M3-06",
-      "rangeEndUnit": "원의 성질",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-05",
-          "rangeStartUnit": "삼각비",
-          "rangeStartUnitOrder": 5,
-          "rangeEndUnitKey": "M3-06",
-          "rangeEndUnit": "원의 성질",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
     }
   ]
 };
