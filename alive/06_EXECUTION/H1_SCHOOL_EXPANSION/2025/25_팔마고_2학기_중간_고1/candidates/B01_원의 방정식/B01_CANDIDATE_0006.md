@@ -28,7 +28,9 @@ or equivalently
 
 ## Detailed student solution
 
-Let the circle be \(x^2+y^2+Dx+Ey+F=0\). Substituting \(A(0,0)\) gives \(F=0\). Substituting \(B(6,0)\) gives \(36+6D=0\), so \(D=-6\). Substituting \(C(2,4)\) gives \(20+2D+4E+F=0\), hence \(20-12+4E=0\) and \(E=-2\). Therefore the circumcircle is \(x^2+y^2-6x-2y=0\). Completing squares gives \((x-3)^2+(y-1)^2=10\).
+외접원의 방정식을 \(x^2+y^2+Dx+Ey+F=0\)이라 놓자. 원이 \(A(0,0)\)을 지나므로 \(F=0\)이다.
+\(B(6,0)\)을 대입하면 \(36+6D=0\)에서 \(D=-6\)이다. 또한 \(C(2,4)\)를 대입하면 \(20+2D+4E=0\)이므로 \(E=-2\)이다.
+따라서 \(x^2+y^2-6x-2y=0\)이고, 완전제곱식으로 정리하면 \((x-3)^2+(y-1)^2=10\)이다. 세 점을 모두 지나므로 구하는 외접원은 이 원이다.
 
 ## Primary curriculum and RPM lookup
 

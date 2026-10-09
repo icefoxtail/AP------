@@ -5,6 +5,13 @@
 상위 authority: RPM Primary v1.0 LOCKED, JS아카이브 문항메타 파운데이션 §1.4, ALIVE_LITE_SOURCE_BLUEPRINT_EXHAUSTION_CONTRACT_v0.1, ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.
 **이 문서는 신규 taxonomy 후보의 탐색·기록 규칙이지, RPM taxonomy/ACTIVE 머신키 자동 승격 권한이 아니다.**
 
+## CURRENT USER OVERRIDE — GPT QID9 Generated EXT-L4 즉시 활성 등록 (2026-10-09)
+- 신규 QID9에서는 **원본 실제 Primary L3 고정**, 기존 RPM L4 + 기존 Generated EXT-L4 먼저 의미 검색, CrossConcept/Condition/Integration 의존 경로 설계 후 문항 제작한다. 학생의 최종 핵심 판단이 다른 L3로 바뀌면 그 슬롯은 원래 L3 확장으로 인정하지 않고 재설계한다.
+- 매칭되는 기존 L4가 없고 최종 학생 풀이 구조가 유의미하다면 **Generated 전용** `EXT-L4`를 새 UID와 함께 자동 등록하여 `GENERATED_ACTIVE`로 운영한다. **사람의 별도 승격 승인 대기는 두지 않는다.** RPM LOCKED 정본 승격과는 별개의 등록이며 기존 canonical RPM key를 임의 바꾸지 않는다.
+- 최소 registry: `generatedExtL4Id, parentLockedRpmL3Id, labelKo, definition, decisiveStepSignature, sourceQid, examples, comparisons, crossConceptRoles, conditionRoles, integrationPath, lifecycle=GENERATED_ACTIVE`. 명확히 중복돼 보이더라도 당장 출시를 차단하지 않고, 후속 alias/consolidation ledger에서 병합한다.
+- 기존 이 파일의 `EXT_L4_CANDIDATE → CANONICAL_PROPOSAL_READY`, `user 승인 전 승격 없음`, `consumerSelectable=false` 등의 구 규칙은 **신규 QID9 Generated 전용 EXT**에는 적용하지 않는다. 기존 팔마고 B01·복성고 등 과거 후보들의 역사 기록과 RPM LOCKED 승격 정책까지 소급해서 덮어쓰지 않는다.
+- 문항 자체의 한국어 발문·정답·해설·교육과정·필수 그림은 GPT 독립검수 1회 필수. PASS 즉시 학생용 Generated Consumer 등록·main 병합·조회까지 마감한다. 실제 adapter 미구현이면 필요한 최소 기술 수정 후 출고하며 미구현 단계는 DONE으로 보고하지 않는다.
+
 ## 1. 확장 목적과 실패 방지
 
 B01 처음 13개는 탐색 부족의 예였다. B01R2는 원본 7개에서 65 후보를 탐색하여 45개를 CREATE 생산했다. 그러나 45개 후보가 서로 다른 신규 L4 45종이라고 증명된 것은 아니다. L3/L4 공백을 먼저 탐색하고, 이미 있는 RPM 정본으로 설명되는 축과 정말 새 의미 구조를 구별해야 한다.
