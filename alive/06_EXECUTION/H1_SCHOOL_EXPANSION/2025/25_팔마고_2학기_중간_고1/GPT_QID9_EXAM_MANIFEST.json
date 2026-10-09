@@ -184,7 +184,8 @@
       "releasedCount": 0,
       "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
       "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
-      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "contentReviewNote": "Q04 9/9 wrong-choice index 4/4 checked, C2/C3 exact numeric witness fresh; consumer not registered."
     }
   ],
   "metrics": {
@@ -200,8 +201,8 @@
     "reviewQueue": 36,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 36,
-    "contentReviewKeep": 25,
-    "contentReviewRevised": 9,
+    "contentReviewKeep": 24,
+    "contentReviewRevised": 10,
     "contentReviewRedesigned": 2
   },
   "nextSourceQid": 5,
@@ -223,8 +224,8 @@
     "date": "2026-10-09",
     "scope": "Q01-Q04 A1-C3",
     "reviewed": 36,
-    "keep": 25,
-    "revised": 9,
+    "keep": 24,
+    "revised": 10,
     "redesigned": 2,
     "finalTechnicalReleaseStatus": "NOT_TESTED",
     "candidateChanges": [
@@ -232,6 +233,8 @@
       "GPT_QID9_Q02_CREATE_DRAFT.md",
       "GPT_QID9_Q04_PACKAGE.json"
     ],
-    "reviewLedger": "GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+    "reviewLedger": "GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md",
+    "correctiveFollowUp": "2026-10-09: Q04 B2/C1 reason-index duplicates removed, B3/B1 error path evidence refreshed, C2/C3 revised student-facing target rebound to updated numericalSpotCheck. Current counts reflect B3 promoted from KEEP to REVISED.",
+    "evidenceFreshness": "REVISED_Q04_NUMERICAL_SPOT_CHECK_BINDING_COMPLETED; NOT_A_RELEASE_GATE"
   }
 }
