@@ -29,6 +29,11 @@
 - q1 SOURCE-L3 `H1-RPM-231 집합과 원소` 고정. B3는 ㄱㄴㄷㄹ 학교식 발문, C2/C3는 원소 소속 조건을 이용하는 최종 질문으로 보정한 후보본. 모든 슬롯은 새 독립 GPT에서 최초 수학 답·발문 품질검수 필요.
 - 첫 독립 PASS UID는 Generated Consumer에 즉시 등록하고 사용자/교사가 Archive 2.0에서 조회·선택/모의고사 출제할 수 있도록 동시 마감. 더 이상 L4 승인·중복 유형 통합을 선행 gate로 기다리지 않는다. Runtime 구현·조회가 실제 실패하면 최소 기술 수정 후 재검증하며 허위 완료 금지.
 
+## CURRENT OVERRIDE — 2026-10-09 Generated 공개답 발문 우선 검수 (이전 'blind freeze 필수' 절차 우선 대체)
+- 원장 최신 지시와 main `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 기준: 생성문항 검수자는 **정답·상세 해설·설계 파일을 처음부터 열어도 된다**. 학생용 발문·보기의 한국 내신 품질을 가장 먼저 판단하고 직접 수정한 뒤, 해설의 수학 계산·경계·오답을 단계적으로 추적한다.
+- `STUDENT_ONLY` 파일은 선택적인 발문 모아보기 보조자료다. 별도 차단·'답 안 보고 먼저 9개 풀어 동결'을 필수로 요구하는 아래 과거 인계 문장은 HISTORY이다. 기존 기출 R1/R2 blind 계약은 불변.
+- 의심 문항만 대체 풀이/정확 경계 대입을 집중 수행한다. 문항 품질 PASS는 최종 검수자가 실제 확인한 것을 기록하고 모든 PASS UID를 Archive2 Consumer/index/main에 즉시 등록·학생 조회 검증까지 마감한다.
+
 ## 다음 창에 붙여넣을 메시지
 
 팔마고 GPT QID9 작업을 이어라. 최신 main과 `pilot/gpt-palma25-2mid-q01-9slots-20261009`의 `alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q01_CREATE_DRAFT.md`, `GPT_QID9_Q01_L3_L4_CROSSCONCEPT_DESIGN.json`, `archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/registry.json`, 이 HANDOFF 파일, `alive/06_EXECUTION/ALIVE_LITE_EXECUTION_RULES.md`를 먼저 읽어라. 새 qid로 가지 말고 q1의 9문항만 독립검수하라. 후보의 답·해설을 보기 전 학생용 발문·5지·필요 그림만 동결해서 9개 전부 먼저 풀고, 이후 비교 및 맞춤 수정·정확한 RPM 매핑·출시 eligibility를 기록하라. Codex는 Git 병합만 담당한다. 완료 결과를 Git에 저장해 새로운 HANDOFF를 갱신하라.
