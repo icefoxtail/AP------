@@ -1,0 +1,822 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "createdKST": "2026-10-09",
+  "executionLine": "GPT_DIRECT",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 6,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalStem": "원 $x^2+y^2=5$와 직선 $x-2y+a=0$이 만날 때, 정수 $a$의 개수를 구하시오. [3.7점]",
+    "originalAnswer": "③",
+    "originalAnswerValue": 11,
+    "originalSubUnitKey": "H22-C2-03-INTERSECTION",
+    "originalVisualDependency": "NONE"
+  },
+  "rpmExactLookup": {
+    "master": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "authority": "RPM_PRIMARY_TAXONOMY_v1.0_LOCKED",
+    "curriculum": "2022",
+    "level": "high",
+    "scope": "공통수학2",
+    "majorUnit": "도형의 방정식",
+    "midUnit": "원의 방정식",
+    "l3": "원과 직선",
+    "l3View": "L3-1.3.2",
+    "l4s": [
+      "L4-1.3.2.1 교점 개수",
+      "L4-1.3.2.2 현의 길이"
+    ],
+    "l3l4ViewStatus": "CANONICAL_DRAFT",
+    "numericRecordId": "NOT_INVENTED"
+  },
+  "lockedPrimaryL3": "원과 직선",
+  "lockedL3DecisiveStep": "중심과 직선 사이의 거리를 반지름과 비교하여 원과 직선의 교점 수·위치 관계를 결정한다. 현의 길이에서는 중심과 현의 수선 관계를 덧붙인다.",
+  "experiencePlan": {
+    "A": "기본 원-직선 거리와 접하는 경계 포함/제외",
+    "B": "짝수 조건·역조건·기울기 조건",
+    "C": "현 길이 기준 정수 구간·두 원 동시 교점·현 중점으로부터 길이 결정"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "reverseStem": 9,
+    "keep": 6,
+    "revised": 3,
+    "hold": 0,
+    "distractorCoverage": "36/36",
+    "distractorValueDerivation": "36/36_AUTHOR_REPRODUCED",
+    "mathDerivations": "9/9",
+    "casPython": "NOT_RUN",
+    "independentGptQualityReview": "NOT_RUN",
+    "browserRender": "NOT_TESTED",
+    "consumerRegistration": "NOT_REGISTERED"
+  },
+  "items": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q06-A1",
+      "sourceQid": 6,
+      "mode": "STRICT_VARIANT",
+      "purpose": "핵심 숙달",
+      "stem": "원 $x^2+y^2=13$과 직선 $2x-3y+k=0$이 만나도록 하는 정수 $k$의 개수는?",
+      "choices": [
+        "$27$",
+        "$25$",
+        "$26$",
+        "$14$",
+        "$28$"
+      ],
+      "answer": "①",
+      "solution": "원의 중심은 $(0,0)$, 반지름은 $\\sqrt{13}$이다.\n중심에서 직선 $2x-3y+k=0$까지의 거리는 $d=\\dfrac{|k|}{\\sqrt{2^2+(-3)^2}}=\\dfrac{|k|}{\\sqrt{13}}$이다.\n접하는 경우까지 포함하여 만나려면 $d\\le\\sqrt{13}$이어야 하므로 $|k|\\le13$이다.\n따라서 가능한 정수는 $-13,-12,\\ldots,12,13$의 $27$개이다. 정답은 ①이다.",
+      "distractorReasons": [
+        "② 접점의 k=±13을 제외하여 -12부터 12까지 25개로 계산 → 보기 25",
+        "③ 접점 경계 하나를 누락하여 27-1=26개로 계산 → 보기 26",
+        "④ 음수 k를 놓치고 0부터 13까지 14개만 계산 → 보기 14",
+        "⑤ 양수·음수 구간에서 k=0을 중복으로 세어 28개로 계산 → 보기 28"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "②",
+          "value": "25",
+          "actualWrongReason": "접점의 k=±13을 제외하여 -12부터 12까지 25개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "26",
+          "actualWrongReason": "접점 경계 하나를 누락하여 27-1=26개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "14",
+          "actualWrongReason": "음수 k를 놓치고 0부터 13까지 14개만 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "28",
+          "actualWrongReason": "양수·음수 구간에서 k=0을 중복으로 세어 28개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyBasis": "중심-직선 거리로 만나는 정수 매개변수 범위 결정",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "NONE",
+      "conditionWorkingLabels": [
+        "정수 매개변수",
+        "접함 포함"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q06-A2",
+      "sourceQid": 6,
+      "mode": "STRICT_VARIANT",
+      "purpose": "핵심 숙달",
+      "stem": "원 $(x-1)^2+(y+2)^2=9$와 직선 $3x+4y+k=0$이 만나도록 하는 정수 $k$의 개수는?",
+      "choices": [
+        "$29$",
+        "$30$",
+        "$16$",
+        "$31$",
+        "$32$"
+      ],
+      "answer": "④",
+      "solution": "원의 중심은 $(1,-2)$, 반지름은 $3$이다.\n중심에서 직선까지의 거리는 $d=\\dfrac{|3\\cdot1+4(-2)+k|}{\\sqrt{3^2+4^2}}=\\dfrac{|k-5|}{5}$이다.\n원과 직선이 만나려면 $d\\le3$, 즉 $|k-5|\\le15$이므로 $-10\\le k\\le20$이다.\n가능한 정수의 개수는 $20-(-10)+1=31$개이다. 따라서 정답은 ④이다.",
+      "distractorReasons": [
+        "① 접점 양쪽 경계 k=-10,20을 빼서 -9부터 19까지 29개로 계산 → 보기 29",
+        "② 접점 경계 하나를 빼서 31-1=30개로 계산 → 보기 30",
+        "③ k-5≥0인 경우만 보아 5부터 20까지 16개로 계산 → 보기 16",
+        "⑤ k-5를 양수·음수로 나누는 과정에서 k=5를 중복 계산하여 32개로 계산 → 보기 32"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "29",
+          "actualWrongReason": "접점 양쪽 경계 k=-10,20을 빼서 -9부터 19까지 29개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "②",
+          "value": "30",
+          "actualWrongReason": "접점 경계 하나를 빼서 31-1=30개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "16",
+          "actualWrongReason": "k-5≥0인 경우만 보아 5부터 20까지 16개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "32",
+          "actualWrongReason": "k-5를 양수·음수로 나누는 과정에서 k=5를 중복 계산하여 32개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyBasis": "이동한 중심을 직선식에 대입하여 절댓값의 구간 결정",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "NONE",
+      "conditionWorkingLabels": [
+        "정수 매개변수",
+        "이동한 원 중심"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q06-A3",
+      "sourceQid": 6,
+      "mode": "STRICT_VARIANT",
+      "purpose": "핵심 숙달",
+      "stem": "원 $x^2+y^2=10$과 직선 $x-3y+t=0$이 서로 다른 두 점에서 만나도록 하는 정수 $t$의 개수는?",
+      "choices": [
+        "$21$",
+        "$19$",
+        "$18$",
+        "$10$",
+        "$20$"
+      ],
+      "answer": "②",
+      "solution": "원 $x^2+y^2=10$의 중심은 원점이고 반지름은 $\\sqrt{10}$이다.\n중심에서 직선까지의 거리는 $d=\\dfrac{|t|}{\\sqrt{1^2+(-3)^2}}=\\dfrac{|t|}{\\sqrt{10}}$이다.\n서로 다른 두 점에서 만나려면 접하면 안 되므로 $d<\\sqrt{10}$이다.\n따라서 $|t|<10$이고, 정수 $t=-9,-8,\\ldots,8,9$의 $19$개이다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① 접하는 t=±10도 포함하여 -10부터 10까지 21개로 계산 → 보기 21",
+        "③ 중심을 지나는 t=0은 두 교점이 아니라고 잘못 판단해 18개로 계산 → 보기 18",
+        "④ 음수 t를 누락하고 0부터 9까지 10개만 계산 → 보기 10",
+        "⑤ 접하는 경계 하나만 제외하여 21-1=20개로 계산 → 보기 20"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "21",
+          "actualWrongReason": "접하는 t=±10도 포함하여 -10부터 10까지 21개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "18",
+          "actualWrongReason": "중심을 지나는 t=0은 두 교점이 아니라고 잘못 판단해 18개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "10",
+          "actualWrongReason": "음수 t를 누락하고 0부터 9까지 10개만 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "20",
+          "actualWrongReason": "접하는 경계 하나만 제외하여 21-1=20개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyBasis": "서로 다른 두 교점 조건과 접점 등호를 구별",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "NONE",
+      "conditionWorkingLabels": [
+        "정수 매개변수",
+        "서로 다른 두 교점"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q06-B1",
+      "sourceQid": 6,
+      "mode": "EXAM_FOLLOWUP",
+      "purpose": "사고 확장",
+      "stem": "원 $(x-1)^2+y^2=25$와 직선 $3x+4y=n$이 서로 다른 두 점에서 만나도록 하는 양의 짝수 $n$의 개수는?",
+      "choices": [
+        "$12$",
+        "$14$",
+        "$27$",
+        "$15$",
+        "$13$"
+      ],
+      "answer": "⑤",
+      "solution": "원의 중심은 $(1,0)$이고 반지름은 $5$이다.\n중심에서 직선 $3x+4y-n=0$까지의 거리는 $d=\\dfrac{|3-n|}{5}$이다.\n두 교점이 있으려면 $d<5$이므로 $|n-3|<25$, 즉 $-22<n<28$이다.\n이 범위의 양의 짝수는 $2,4,6,\\ldots,26$이고, 개수는 $\\dfrac{26-2}{2}+1=13$개이다.\n따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 양의 짝수를 4부터 세기 시작해 4부터 26까지 12개로 계산 → 보기 12",
+        "② 접하는 n=28도 포함해 2부터 28까지 14개로 계산 → 보기 14",
+        "③ 짝수 조건을 잊고 1부터 27까지 양의 정수 27개로 계산 → 보기 27",
+        "④ 0을 양수에 포함하고 접하는 28도 포함해 0부터 28까지 15개로 계산 → 보기 15"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "12",
+          "actualWrongReason": "양의 짝수를 4부터 세기 시작해 4부터 26까지 12개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "②",
+          "value": "14",
+          "actualWrongReason": "접하는 n=28도 포함해 2부터 28까지 14개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "27",
+          "actualWrongReason": "짝수 조건을 잊고 1부터 27까지 양의 정수 27개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "15",
+          "actualWrongReason": "0을 양수에 포함하고 접하는 28도 포함해 0부터 28까지 15개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyBasis": "교점 구간에 양의 짝수 조건을 적용하는 추가 판단",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "양의 짝수의 개수"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "양의 짝수",
+        "두 교점"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q06-B2",
+      "sourceQid": 6,
+      "mode": "EXAM_FOLLOWUP",
+      "purpose": "사고 확장",
+      "stem": "원 $(x-2)^2+(y+1)^2=5$와 직선 $x-2y+k=0$이 만나지 않도록 하는 음의 정수 $k$의 최댓값은?",
+      "choices": [
+        "$-9$",
+        "$-11$",
+        "$-10$",
+        "$-7$",
+        "$-6$"
+      ],
+      "answer": "③",
+      "solution": "원의 중심은 $(2,-1)$, 반지름은 $\\sqrt5$이다.\n중심에서 직선까지의 거리는 $d=\\dfrac{|2-2(-1)+k|}{\\sqrt{1^2+(-2)^2}}=\\dfrac{|k+4|}{\\sqrt5}$이다.\n원과 직선이 만나지 않으려면 $d>\\sqrt5$이므로 $|k+4|>5$이다.\n따라서 $k<-9$ 또는 $k>1$이고, 이 중 음의 정수는 $k\\le-10$이다.\n그러므로 음의 정수 $k$의 최댓값은 $-10$이다. 따라서 정답은 ③이다.",
+      "distractorReasons": [
+        "① 접하는 k=-9도 만나지 않는 경우에 넣어 -9를 택함 → 보기 -9",
+        "② k<-9의 최대 정수 -10을 잘못 누락하여 -11을 택함 → 보기 -11",
+        "④ 거리식 분모 √5를 빠뜨려 |k+4|>√5로 풀면 음의 정수의 최댓값 -7이 나옴 → 보기 -7",
+        "⑤ 원의 중심을 대입하며 상수 4를 빼먹고 |k|>5로 풀면 음의 정수의 최댓값 -6이 나옴 → 보기 -6"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "-9",
+          "actualWrongReason": "접하는 k=-9도 만나지 않는 경우에 넣어 -9를 택함",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "②",
+          "value": "-11",
+          "actualWrongReason": "k<-9의 최대 정수 -10을 잘못 누락하여 -11을 택함",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "-7",
+          "actualWrongReason": "거리식 분모 √5를 빠뜨려 |k+4|>√5로 풀면 음의 정수의 최댓값 -7이 나옴",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "-6",
+          "actualWrongReason": "원의 중심을 대입하며 상수 4를 빼먹고 |k|>5로 풀면 음의 정수의 최댓값 -6이 나옴",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyBasis": "안 만남의 엄격부등식과 두 가지 부호 구간의 정수 극값",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "절댓값 부등식",
+        "음의 정수 최댓값"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "음의 정수",
+        "교점 없음"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "REVISED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q06-B3",
+      "sourceQid": 6,
+      "mode": "EXAM_FOLLOWUP",
+      "purpose": "사고 확장",
+      "stem": "원 $x^2+y^2=5$와 직선 $y=mx+5$가 서로 다른 두 점에서 만나도록 하는 정수 $m$의 개수는? (단, $-4\\le m\\le4$이다.)",
+      "choices": [
+        "$4$",
+        "$6$",
+        "$2$",
+        "$8$",
+        "$9$"
+      ],
+      "answer": "①",
+      "solution": "원의 중심은 원점이고 반지름은 $\\sqrt5$이다.\n직선 $y=mx+5$를 $mx-y+5=0$으로 나타내면 원점에서 직선까지의 거리는 $d=\\dfrac5{\\sqrt{m^2+1}}$이다.\n서로 다른 두 교점이 존재하려면 $d<\\sqrt5$이므로 $\\dfrac{25}{m^2+1}<5$이다.\n따라서 $m^2>4$, 즉 $m<-2$ 또는 $m>2$이다.\n$-4\\le m\\le4$인 정수 중 조건을 만족하는 값은 $-4,-3,3,4$의 $4$개이다. 따라서 정답은 ①이다.",
+      "distractorReasons": [
+        "② 접하는 m=±2도 두 교점으로 계산해 6개로 셈 → 보기 6",
+        "③ 음수 기울기를 누락하고 m=3,4의 2개만 셈 → 보기 2",
+        "④ m=0만 교점이 없다고 생각해 전체 9개에서 1개만 빼 8개로 셈 → 보기 8",
+        "⑤ 기울기와 거리의 관계를 확인하지 않고 전체 9개를 셈 → 보기 9"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "②",
+          "value": "6",
+          "actualWrongReason": "접하는 m=±2도 두 교점으로 계산해 6개로 셈",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "2",
+          "actualWrongReason": "음수 기울기를 누락하고 m=3,4의 2개만 셈",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "8",
+          "actualWrongReason": "m=0만 교점이 없다고 생각해 전체 9개에서 1개만 빼 8개로 셈",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "9",
+          "actualWrongReason": "기울기와 거리의 관계를 확인하지 않고 전체 9개를 셈",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyBasis": "기울기가 거리 공식 분모에 들어가는 매개변수 판단",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "직선의 기울기",
+        "이차부등식"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "정수 기울기",
+        "두 교점"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q06-C1",
+      "sourceQid": 6,
+      "mode": "TYPE_BANK",
+      "purpose": "내신 실전 심화",
+      "stem": "원 $x^2+y^2=25$와 직선 $3x+4y=k$가 만드는 현의 길이가 $8$ 이상이 되도록 하는 정수 $k$의 개수는?",
+      "choices": [
+        "$29$",
+        "$30$",
+        "$16$",
+        "$31$",
+        "$32$"
+      ],
+      "answer": "④",
+      "solution": "원의 중심은 $(0,0)$이고 반지름은 $5$이다. 중심에서 직선까지의 거리는 $d=\\dfrac{|k|}{5}$이다.\n중심에서 현에 내린 수선은 현을 이등분한다. 현의 길이를 $L$이라 하면 피타고라스 정리에 의해 $\\left(\\dfrac L2\\right)^2+d^2=25$이다.\n따라서 $L=2\\sqrt{25-\\dfrac{k^2}{25}}$이다.\n$L\\ge8$이면 $25-\\dfrac{k^2}{25}\\ge16$, 즉 $k^2\\le225$이므로 $|k|\\le15$이다.\n이 범위에서는 현이 존재하며, 가능한 정수는 $-15,-14,\\ldots,14,15$의 $31$개이다.\n따라서 정답은 ④이다.",
+      "distractorReasons": [
+        "① L>8인 것으로 오해해 k=±15를 제외하고 29개로 계산 → 보기 29",
+        "② k=15 한쪽 경계만 누락하여 30개로 계산 → 보기 30",
+        "③ 음수 k를 제외해 0부터 15까지 16개로 계산 → 보기 16",
+        "⑤ k=0을 양수·음수 경우에 중복 계산하여 32개로 계산 → 보기 32"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "29",
+          "actualWrongReason": "L>8인 것으로 오해해 k=±15를 제외하고 29개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "②",
+          "value": "30",
+          "actualWrongReason": "k=15 한쪽 경계만 누락하여 30개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "16",
+          "actualWrongReason": "음수 k를 제외해 0부터 15까지 16개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "32",
+          "actualWrongReason": "k=0을 양수·음수 경우에 중복 계산하여 32개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyBasis": "거리-현 길이 관계에서 정수 구간을 역산",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "현의 길이",
+        "viewPath": "L4-1.3.2.2"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "피타고라스 정리",
+        "이차부등식"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "현 길이 이상 조건",
+        "정수 매개변수"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "REVISED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q06-C2",
+      "sourceQid": 6,
+      "mode": "TYPE_BANK",
+      "purpose": "내신 실전 심화",
+      "stem": "두 원 $C_1:x^2+y^2=25$, $C_2:(x-2)^2+(y+1)^2=9$에 대하여 직선 $3x+4y=t$가 두 원 각각과 서로 다른 두 점에서 만나도록 하는 정수 $t$의 개수는?",
+      "choices": [
+        "$31$",
+        "$29$",
+        "$30$",
+        "$49$",
+        "$28$"
+      ],
+      "answer": "②",
+      "solution": "원 $C_1$의 중심은 $(0,0)$이고 반지름은 $5$이다. 직선까지의 거리는 $\\dfrac{|t|}{5}$이므로 두 교점 조건은 $|t|<25$이다.\n원 $C_2$의 중심은 $(2,-1)$이고 반지름은 $3$이다. 이 중심에서 직선까지의 거리는 $\\dfrac{|3\\cdot2+4(-1)-t|}{5}=\\dfrac{|t-2|}{5}$이다.\n두 교점 조건은 $|t-2|<15$이므로 $-13<t<17$이다. 이 구간의 모든 값은 $-25<t<25$도 만족한다.\n따라서 가능한 정수는 $-12,-11,\\ldots,15,16$이며, 개수는 $16-(-12)+1=29$개이다. 따라서 정답은 ②이다.",
+      "distractorReasons": [
+        "① 두 번째 원의 접점 경계 t=-13,17까지 포함해 31개로 계산 → 보기 31",
+        "③ 두 번째 원의 접점 경계 하나만 포함해 30개로 계산 → 보기 30",
+        "④ 두 번째 원의 조건을 잊고 첫 원의 -24부터 24까지 49개로 계산 → 보기 49",
+        "⑤ t=0일 때 첫 원의 중심을 지난다는 이유로 빼서 28개로 계산 → 보기 28"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "31",
+          "actualWrongReason": "두 번째 원의 접점 경계 t=-13,17까지 포함해 31개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "30",
+          "actualWrongReason": "두 번째 원의 접점 경계 하나만 포함해 30개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "49",
+          "actualWrongReason": "두 번째 원의 조건을 잊고 첫 원의 -24부터 24까지 49개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "⑤",
+          "value": "28",
+          "actualWrongReason": "t=0일 때 첫 원의 중심을 지난다는 이유로 빼서 28개로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyBasis": "복수 원에 대한 교점 조건 동시 적용",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "교점 개수",
+        "viewPath": "L4-1.3.2.1"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "절댓값 부등식의 교집합",
+        "정수 범위"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "두 원 각각 두 교점",
+        "정수 매개변수"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "REVISED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q06-C3",
+      "sourceQid": 6,
+      "mode": "TYPE_BANK",
+      "purpose": "내신 실전 심화",
+      "stem": "원 $x^2+y^2=25$와 직선 $3x+4y=k$가 서로 다른 두 점 $A,B$에서 만난다. 선분 $AB$의 중점 $M$이 직선 $y=x+\\dfrac35$ 위에 있을 때, 선분 $AB$의 길이는? (단, $k$는 실수이다.)",
+      "choices": [
+        "$10$",
+        "$5$",
+        "$16$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": "⑤",
+      "solution": "원의 중심 $O(0,0)$에서 현 $AB$에 내린 수선의 발은 현의 중점 $M$이다.\n직선 $3x+4y=k$의 기울기는 $-\\dfrac34$이므로 $OM$의 기울기는 $\\dfrac43$이다. 따라서 $M$은 직선 $4x-3y=0$ 위에도 있다.\n$M=(u,v)$라 하면 $3u+4v=k$, $4u-3v=0$을 만족한다. 이를 연립하면 $u=\\dfrac{3k}{25}$, $v=\\dfrac{4k}{25}$이다.\n$M$이 $y=x+\\dfrac35$ 위에 있으므로 $v-u=\\dfrac{k}{25}=\\dfrac35$이고, $k=15$이다.\n원점에서 직선 $3x+4y=15$까지의 거리는 $d=\\dfrac{15}{5}=3$이다.\n반지름이 $5$이므로 $AM=BM=\\sqrt{5^2-3^2}=4$이고, $AB=8$이다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": [
+        "① 현의 위치를 결정하지 않고 지름 10을 그대로 구한 길이로 사용 → 보기 10",
+        "② 구해야 할 현의 길이를 반지름 5로 오인 → 보기 5",
+        "③ 반현 4를 두 배해 현 8을 얻고 또 두 배하여 16으로 계산 → 보기 16",
+        "④ 중심에서 현까지 거리 3의 두 배를 현의 길이로 오인해 6으로 계산 → 보기 6"
+      ],
+      "distractorWitnesses": [
+        {
+          "option": "①",
+          "value": "10",
+          "actualWrongReason": "현의 위치를 결정하지 않고 지름 10을 그대로 구한 길이로 사용",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "②",
+          "value": "5",
+          "actualWrongReason": "구해야 할 현의 길이를 반지름 5로 오인",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "③",
+          "value": "16",
+          "actualWrongReason": "반현 4를 두 배해 현 8을 얻고 또 두 배하여 16으로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        },
+        {
+          "option": "④",
+          "value": "6",
+          "actualWrongReason": "중심에서 현까지 거리 3의 두 배를 현의 길이로 오인해 6으로 계산",
+          "reproduction": "AUTHOR_REPRODUCED"
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyBasis": "중점 위치 조건으로 직선 매개변수를 결정한 다음 현 길이",
+      "primaryL3": {
+        "authority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "curriculum": "2022",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "viewPath": "L3-1.3.2"
+      },
+      "targetL4": {
+        "name": "현의 길이",
+        "viewPath": "L4-1.3.2.2"
+      },
+      "standardUnitKey": "H22-C2-03",
+      "subUnitKey": "H22-C2-03-INTERSECTION",
+      "crossConceptWorkingLabels": [
+        "수직인 두 직선의 기울기",
+        "연립방정식",
+        "피타고라스"
+      ],
+      "crossConceptKeys": [],
+      "crossConceptBinding": "CANONICAL_KEY_UNVERIFIED_WORKING_LABEL",
+      "conditionWorkingLabels": [
+        "현의 중점",
+        "두 교점"
+      ],
+      "conditionKeys": [],
+      "conditionBinding": "NOT_CANONICALIZED_CREATE_WORKING_LABEL",
+      "integrationPattern": "SEQUENTIAL",
+      "studentVisual": "NOT_REQUIRED_ALL_FACTS_IN_TEXT",
+      "creatorReverseStemDecision": "KEEP",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_REVIEWED",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextUncreatedSourceQid": 5,
+  "publicationStatus": "CREATE_DRAFT_ONLY_NOT_QUALITY_APPROVED",
+  "notes": "사용자 지정 q06 우선 제작. q05 미완료, 기존 출시 q01-q04 36개는 불변."
+}

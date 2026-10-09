@@ -12,7 +12,8 @@
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
   "qidLedger": [
     {
@@ -253,19 +254,61 @@
       "consumerRegistrationStatus": "NOT_REGISTERED_0_OF_9",
       "studentLookupVerifiedCount": 0,
       "releaseGateStatus": "NOT_PUBLISHED_Q05"
+    },
+    {
+      "qid": 6,
+      "sourceQid": 6,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q06-A1",
+        "ALITE-PALMA25-2MID-Q06-A2",
+        "ALITE-PALMA25-2MID-Q06-A3",
+        "ALITE-PALMA25-2MID-Q06-B1",
+        "ALITE-PALMA25-2MID-Q06-B2",
+        "ALITE-PALMA25-2MID-Q06-B3",
+        "ALITE-PALMA25-2MID-Q06-C1",
+        "ALITE-PALMA25-2MID-Q06-C2",
+        "ALITE-PALMA25-2MID-Q06-C3"
+      ],
+      "lockedPrimaryL3": "RPM_PRIMARY_v1.0: 원과 직선",
+      "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q06_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q06_STEM_SELF_REVIEW.md"
+      ],
+      "commit": "Q06_CREATION_COMMIT_FIND_IN_GIT_HISTORY",
+      "createStatus": "CREATE_DRAFT_SELF_CHECKED",
+      "selfReverseStem": "KEEP6_REVISED3_HOLD0",
+      "reviewStatus": "NOT_REVIEWED",
+      "releasedCount": 0,
+      "consumerRegistrationStatus": "NOT_REGISTERED",
+      "studentLookupVerifiedCount": 0,
+      "studentRenderStatus": "NOT_TESTED",
+      "qualityApprovalBasis": "NONE_PENDING_REVIEW"
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 45,
+    "newCreateDraftTotal": 54,
     "newCreateDraftByGroup": {
-      "A": 15,
-      "B": 15,
-      "C": 15
+      "A": 18,
+      "B": 18,
+      "C": 18
     },
-    "uniqueGeneratedUids": 45,
+    "uniqueGeneratedUids": 54,
     "openBookQualityReviewed": 0,
     "studentSupplyNew": 36,
-    "reviewQueue": 9,
+    "reviewQueue": 18,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 36,
     "contentReviewKeep": 24,
@@ -279,9 +322,14 @@
     "q05AuthorSelfReviewComplete": 9,
     "q05Keep": 7,
     "q05Revised": 2,
-    "q05Hold": 0
+    "q05Hold": 0,
+    "q06NewSelfReview": {
+      "KEEP": 6,
+      "REVISED": 3,
+      "HOLD": 0
+    }
   },
-  "nextSourceQid": 6,
+  "nextSourceQid": 5,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "MAIN_DONE_Q01_Q04_36__Q05_CREATE_ONLY_9_BRANCH",
   "workflow": {
@@ -344,5 +392,7 @@
     "nextSourceQid": 6,
     "qualityApprovalStatus": "Q05_NOT_USER_APPROVED",
     "lastPreviousApprovedUidCount": 36
-  }
+  },
+  "nextSourceQidReason": "User explicitly selected q06 ahead of still-uncreated q05",
+  "lastSourceQidCreated": 6
 }
