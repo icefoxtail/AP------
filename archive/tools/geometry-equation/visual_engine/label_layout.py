@@ -1,5 +1,6 @@
 """Deterministic bounded label layout; approximate boxes cannot grant FINAL."""
 from dataclasses import dataclass,asdict
+import heapq
 import math
 import html
 from .geometry_model import finite
@@ -104,10 +105,24 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
         return [[a[0]+t*r[0],a[1]+t*r[1]]] if -1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9 else []
     for obstacle in obstacles:
         kind=obstacle.get('kind');geometry=obstacle.get('geometry');owner=obstacle.get('id') in owner_ids
+        if kind in {'label','conditionBox','rectangle'}:
+            box=geometry if isinstance(geometry,Box) else Box(**geometry) if isinstance(geometry,dict) and {'x','y','width','height'}<=set(geometry) else None
+            if box is not None and segment_hits_box(start,end,box.expand(clearance)):return False
+            continue
         if kind in {'point','circle'}:
             x,y,radius=geometry;distance=point_segment_distance((x,y),start,end)
+            if kind=='point' and owner and math.dist(start,(x,y))<=radius+1e-4:continue
             if kind=='point' and distance<=radius+clearance:return False
-            if kind=='circle' and abs(distance-radius)<=clearance:return False
+            if kind=='circle':
+                start_radius=math.dist(start,(x,y));end_radius=math.dist(end,(x,y))
+                starts_on_owner=owner and abs(start_radius-radius)<=1e-4
+                if starts_on_owner:
+                    # A leader may leave its source circle at the exact owner
+                    # point, but it may not exit through the circle again.
+                    if end_radius>radius+clearance and distance<radius-clearance:return False
+                elif ((start_radius-radius)*(end_radius-radius)<=0 or
+                      (start_radius>radius and end_radius>radius and distance<radius+clearance)):
+                    return False
             continue
         if kind not in {'line','axis','auxiliary','leader','curve','tick','indicator'} or not isinstance(geometry,(list,tuple)) or len(geometry)<2:continue
         segments=list(zip(geometry,geometry[1:]))
@@ -117,6 +132,140 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0):
             continue
         if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in segments):return False
     return True
+
+
+def find_clear_leader_path(start,end,obstacles,owner_ids,safe_area,clearance=6.0):
+    """Find a bounded polyline route around line and marker obstacles.
+
+    The first segment may leave the exact source owner. Subsequent segments
+    must clear all geometry, labels, and previously placed leaders.
+    """
+    start=(finite(start[0]),finite(start[1]));end=(finite(end[0]),finite(end[1]))
+    owner_ids=set(owner_ids or ())
+
+    def in_safe(point):
+        return safe_area.x<=point[0]<=safe_area.right and safe_area.y<=point[1]<=safe_area.bottom
+
+    def path_is_clear(points):
+        for index,(a,b) in enumerate(zip(points,points[1:])):
+            owners=owner_ids if index==0 else set()
+            if not leader_clear(a,b,obstacles,owners,clearance):
+                return False
+        return True
+
+    direct=[start,end]
+    if path_is_clear(direct):
+        return [list(start),list(end)]
+
+    candidates=set()
+    for elbow in ((start[0],end[1]),(end[0],start[1])):
+        if in_safe(elbow):candidates.add(elbow)
+    for obstacle in obstacles:
+        kind=obstacle.get('kind');geometry=obstacle.get('geometry')
+        vertices=[]
+        offsets=(clearance+8,clearance+16)
+        if kind in {'line','axis','auxiliary','leader','curve','tick','indicator'} and isinstance(geometry,(list,tuple)):
+            vertices=[tuple(point) for point in geometry]
+        elif kind=='point' and isinstance(geometry,(list,tuple)) and len(geometry)>=2:
+            vertices=[(geometry[0],geometry[1])];offsets=(geometry[2]+clearance+2,geometry[2]+clearance+12)
+        elif kind=='circle' and isinstance(geometry,(list,tuple)) and len(geometry)>=3:
+            cx,cy,radius=geometry[:3]
+            for radial in (max(0.0,radius-clearance-10),radius+clearance+10):
+                for index in range(16):
+                    angle=2*math.pi*index/16
+                    candidate=(cx+radial*math.cos(angle),cy+radial*math.sin(angle))
+                    if in_safe(candidate):candidates.add(candidate)
+        elif kind in {'label','conditionBox','rectangle'}:
+            box=geometry if isinstance(geometry,Box) else Box(**geometry) if isinstance(geometry,dict) and {'x','y','width','height'}<=set(geometry) else None
+            if box is not None:
+                vertices=[(box.x,box.y),(box.right,box.y),(box.right,box.bottom),(box.x,box.bottom)]
+        for vertex in vertices:
+            for distance in offsets:
+                for index in range(8):
+                    angle=index*math.pi/4
+                    candidate=(vertex[0]+distance*math.cos(angle),vertex[1]+distance*math.sin(angle))
+                    if in_safe(candidate):candidates.add(candidate)
+
+    routes=[]
+    for waypoint in candidates:
+        route=[start,waypoint,end]
+        if path_is_clear(route):
+            routes.append(route)
+    if routes:
+        chosen=min(routes,key=lambda route:(sum(math.dist(a,b) for a,b in zip(route,route[1:])),route[1]))
+        return [list(point) for point in chosen]
+
+    # If a one-bend detour is not enough, try a small set of page-aligned
+    # corridors. They keep the route deterministic and stay inside the view.
+    step=max(12.0,clearance*2)
+    corridor_y=[]
+    y=safe_area.y+step
+    while y<safe_area.bottom-step:
+        corridor_y.append(y);y+=step
+    corridor_x=[]
+    x=safe_area.x+step
+    while x<safe_area.right-step:
+        corridor_x.append(x);x+=step
+    for y in corridor_y:
+        route=[start,(start[0],y),(end[0],y),end]
+        if path_is_clear(route):routes.append(route)
+    for x in corridor_x:
+        route=[start,(x,start[1]),(x,end[1]),end]
+        if path_is_clear(route):routes.append(route)
+    if not routes:
+        # A* on a bounded visibility grid handles multiple intersecting
+        # segments where a single elbow or page-aligned corridor cannot pass.
+        step=12.0
+        origin_x=safe_area.x+step/2;origin_y=safe_area.y+step/2
+        nx=max(0,int((safe_area.width-step)//step)+1)
+        ny=max(0,int((safe_area.height-step)//step)+1)
+        nodes={(ix,iy):(origin_x+ix*step,origin_y+iy*step) for ix in range(nx) for iy in range(ny)}
+        starts=[];goals={}
+        for key,point in nodes.items():
+            distance=math.dist(start,point)
+            if distance<=step*2 and leader_clear(start,point,obstacles,owner_ids,clearance):starts.append((key,distance))
+            distance=math.dist(end,point)
+            if distance<=step*2 and leader_clear(point,end,obstacles,set(),clearance):goals[key]=distance
+        if not starts or not goals:return None
+        cost_by_node={};previous={};queue=[]
+        for key,cost in starts:
+            if cost<cost_by_node.get(key,float('inf')):
+                cost_by_node[key]=cost;previous[key]=None
+                heapq.heappush(queue,(cost+math.dist(nodes[key],end),cost,key))
+        found=None
+        directions=((-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1))
+        while queue:
+            _,cost,key=heapq.heappop(queue)
+            if cost>cost_by_node.get(key,float('inf'))+1e-9:continue
+            if key in goals:
+                found=key;break
+            point=nodes[key]
+            for dx,dy in directions:
+                neighbor=(key[0]+dx,key[1]+dy)
+                if neighbor not in nodes:continue
+                target=nodes[neighbor]
+                if not leader_clear(point,target,obstacles,set(),clearance):continue
+                next_cost=cost+math.dist(point,target)
+                if next_cost<cost_by_node.get(neighbor,float('inf'))-1e-9:
+                    cost_by_node[neighbor]=next_cost;previous[neighbor]=key
+                    heapq.heappush(queue,(next_cost+math.dist(target,end),next_cost,neighbor))
+        if found is None:return None
+        grid_path=[];cursor=found
+        while cursor is not None:
+            grid_path.append(nodes[cursor]);cursor=previous[cursor]
+        grid_path.reverse();chosen=[start,*grid_path,end]
+    else:
+        chosen=min(routes,key=lambda route:(sum(math.dist(a,b) for a,b in zip(route,route[1:])),tuple(route[1])))
+    # Remove redundant collinear waypoints after a safe route is selected.
+    simplified=list(chosen)
+    index=1
+    while index<len(simplified)-1:
+        previous,current,following=simplified[index-1:index+2]
+        owners=owner_ids if index==1 else set()
+        if leader_clear(previous,following,obstacles,owners,clearance):
+            simplified.pop(index)
+        else:index+=1
+    return [list(point) for point in simplified]
 
 def point_box_has_unambiguous_owner(box,owner,competitors):
     """Require every measured box corner to stay inside its owner's Voronoi cell."""
@@ -196,7 +345,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         else:
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
-        chosen=None;method=None;tick_callout=label.get('tickLabelCallout')
+        chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[]
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
                 or set(tick_callout)!={'schemaVersion','tickId','axis','value','sourceAt','offsetUser'}
@@ -214,7 +363,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             allowed=('N','S') if label['tickAxis']=='x' else ('W','E')
             directions=((preferred,) if preferred in allowed else ())+tuple(v for v in allowed if v!=preferred)
             default_gaps=TICK_LABEL_GAPS
-        else:default_gaps=() if 'candidateCenters' in label else tuple(label.get('gaps',(12,8,20,32,48)))
+        else:default_gaps=() if 'candidateCenters' in label or 'candidateBaselines' in label else tuple(label.get('gaps',(12,8,20,32,48)))
         if tick_callout is not None:
             offset=tick_callout['offsetUser'];center=[label['at'][0]+offset[0],label['at'][1]+offset[1]]
             box=Box(center[0]-w/2,center[1]-h/2,w,h)
@@ -233,12 +382,45 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                     'axis':label['tickAxis'],'value':label['tickValue']})
                 occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
         else:
+            if 'candidateBaselines' in label:
+                for x, y in label['candidateBaselines']:
+                    box=Box(x,y-h*.8,w,h)
+                    if acceptable(box):
+                        if label.get('leaderRequiresClearPath'):
+                            center=(box.x+box.width/2,box.y+box.height/2)
+                            start=label['leaderFrom'];end=owner_leader_endpoint(box,start,center)
+                            if math.dist(start,end)>label.get('leaderMaxLength',label.get('font',13.25)*6):continue
+                            if not leader_clear(start,end,occupied,set(label.get('leaderOwnerIds',()))):
+                                leader_fallbacks.append((box,center,'FROZEN_OWNER_BASELINE'))
+                                continue
+                            label['_selectedLeaderPath']=[list(start),list(end)]
+                        chosen=box;method='FROZEN_OWNER_BASELINE';break
             if 'candidateCenters' in label:
                 from .publication import box_owned
                 for x, y in label['candidateCenters']:
                     box = Box(x-w/2, y-h/2, w, h)
+                    if not acceptable(box) or not box_owned(label, box):
+                        continue
+                    if label.get('leaderRequiresClearPath'):
+                        start = label['leaderFrom']
+                        end = owner_leader_endpoint(box,start,(x,y))
+                        if math.dist(start,end)>label.get('leaderMaxLength',label.get('font',13.25)*6):continue
+                        if not leader_clear(start,end,occupied,set(label.get('leaderOwnerIds',()))):
+                            leader_fallbacks.append((box,(x,y),'OWNER_BOUND_RELOCATION'))
+                            continue
+                        label['_selectedLeaderPath']=[list(start),list(end)]
                     if acceptable(box) and box_owned(label, box):
                         chosen=box;method='OWNER_BOUND_RELOCATION';break
+            if chosen is None and leader_fallbacks and label.get('leaderRequiresClearPath'):
+                start=label['leaderFrom'];owner_ids=set(label.get('leaderOwnerIds',()))
+                max_length=label.get('leaderMaxLength',label.get('font',13.25)*6)
+                for box,center,route_method in leader_fallbacks:
+                    end=owner_leader_endpoint(box,start,center)
+                    route=find_clear_leader_path(start,end,occupied,owner_ids,safe_area)
+                    if route is None:continue
+                    route_length=sum(math.dist(a,b) for a,b in zip(route,route[1:]))
+                    if route_length>max_length:continue
+                    chosen=box;method=route_method;label['_selectedLeaderPath']=route;break
             for gap in default_gaps:
                 for direction in directions:
                     box=candidate(label['at'],w,h,direction,gap)
@@ -287,6 +469,9 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         placed_label={**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method}
         placed.append(placed_label)
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})
+        if 'leaderFrom' in placed_label and '_selectedLeaderPath' in placed_label:
+            occupied.append({'id':label.get('leaderId',label['id']+'-leader'),'kind':'leader',
+                             'geometry':placed_label['_selectedLeaderPath']})
         trace_row={'id':label['id'],'fallback':method}
         if repair is not None:trace_row['repair']=repair
         trace.append(trace_row)

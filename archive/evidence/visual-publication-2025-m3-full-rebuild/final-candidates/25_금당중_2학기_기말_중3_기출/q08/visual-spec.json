@@ -1,0 +1,527 @@
+{
+  "id": "25-geumdang-final-q08-fresh-v2",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5.2,
+    "xMax": 5.7,
+    "yMin": -5.1,
+    "yMax": 5.1,
+    "width": 560,
+    "height": 800,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source gives a diagram and geometric conditions but no absolute coordinates; this coordinate realization was constructed from those incidences, angles and line relations.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 5
+      },
+      "freeVariables": [
+        {
+          "id": "radius",
+          "value": 5
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          5.0,
+          0.0
+        ],
+        "B": [
+          -2.499999999999999,
+          4.330127018922194
+        ],
+        "C": [
+          -0.8682408883346516,
+          -4.92403876506104
+        ],
+        "D": [
+          3.2139380484326963,
+          -3.8302222155948904
+        ],
+        "E": [
+          2.185581793129859,
+          -2.3615772793633583
+        ]
+      },
+      "conditions": [
+        {
+          "id": "E-on-AC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "E-on-BD",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "E",
+            "D"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-D",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "fact-angleBAC",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "C"
+          ],
+          "expected": 70,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "fact-angleBCA",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "expected": 60,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "fact-angleBEC",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "E",
+            "C"
+          ],
+          "expected": 95,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "fact-angleDAC",
+          "kind": "ANGLE",
+          "refs": [
+            "D",
+            "A",
+            "C"
+          ],
+          "expected": 25,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "fact-angleACD",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "D"
+          ],
+          "expected": 25,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "SET_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT",
+          "output": "D",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_POINT",
+          "output": "E",
+          "inputs": [
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "E-on-AC",
+          "residual": 3.155815356552326e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "E-on-BD",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-C",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-D",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "fact-angleBAC",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "fact-angleBCA",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "fact-angleBEC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "fact-angleDAC",
+          "residual": 2.4868995751603507e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "fact-angleACD",
+          "residual": 1.0658141036401503e-14,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "circle-nondegenerate",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -2.499999999999999,
+        4.330127018922194
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -0.8682408883346516,
+        -4.92403876506104
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        3.2139380484326963,
+        -3.8302222155948904
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        2.185581793129859,
+        -2.3615772793633583
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        -2.499999999999999,
+        4.330127018922194
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -2.499999999999999,
+        4.330127018922194
+      ],
+      "to": [
+        -0.8682408883346516,
+        -4.92403876506104
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        -0.8682408883346516,
+        -4.92403876506104
+      ],
+      "to": [
+        3.2139380484326963,
+        -3.8302222155948904
+      ]
+    },
+    {
+      "id": "DA",
+      "kind": "SEGMENT",
+      "from": [
+        3.2139380484326963,
+        -3.8302222155948904
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        -0.8682408883346516,
+        -4.92403876506104
+      ]
+    },
+    {
+      "id": "BD",
+      "kind": "SEGMENT",
+      "from": [
+        -2.499999999999999,
+        4.330127018922194
+      ],
+      "to": [
+        3.2139380484326963,
+        -3.8302222155948904
+      ]
+    },
+    {
+      "id": "circle8",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DA": [
+        "D",
+        "A"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BD": [
+        "B",
+        "D"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "angleBAC",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 70,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleBCA",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleBEC",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 95,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleDAC",
+        "kind": "ANGLE",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 25,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelAt": [
+          3.112839570072966,
+          -2.459395354902829
+        ]
+      },
+      {
+        "id": "angleACD",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 25,
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          1.8814926945178359,
+          -3.4926180640324347
+        ]
+      }
+    ]
+  }
+}

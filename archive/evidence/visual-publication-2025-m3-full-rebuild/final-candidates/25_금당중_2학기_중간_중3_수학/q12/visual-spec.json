@@ -1,0 +1,367 @@
+{
+  "id": "m3-geumdang-mid-q12",
+  "visualType": "line_circle_geometry",
+  "title": "접은 선과 종이의 높이로 넓이 결정",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 4.964101615137754,
+    "yMin": -1.5,
+    "yMax": 3.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed realization of the folded-paper triangle with AC=4, vertical height 2, and the exact 30° opening between folded edges.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "B",
+        "unitScale": 1.1547005383792517
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "H": [
+          0,
+          0
+        ],
+        "A": [
+          0,
+          2
+        ],
+        "B": [
+          1.1547005383792517,
+          0
+        ],
+        "C": [
+          3.4641016151377544,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AC4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AH2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "expected": 2,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "A30",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "C"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "Hright",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "H",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "collinearHBC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "H",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-H",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "H"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "H",
+            "A"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "H",
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AC4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AH2",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "A30",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "Hright",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "collinearHBC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "H",
+            "A",
+            "B"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        2
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        1.1547005383792517,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        3.4641016151377544,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        2
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "HB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1.1547005383792517,
+        0
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.4641016151377544,
+        0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        2
+      ],
+      "to": [
+        1.1547005383792517,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        1.1547005383792517,
+        0
+      ],
+      "to": [
+        3.4641016151377544,
+        0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        2
+      ],
+      "to": [
+        3.4641016151377544,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "H": "H",
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AH": [
+        "A",
+        "H"
+      ],
+      "HB": [
+        "H",
+        "B"
+      ],
+      "HC": [
+        "H",
+        "C"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "AC4",
+        "kind": "LENGTH",
+        "owner": "AC",
+        "value": 4,
+        "mode": "ADJACENT",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AH2",
+        "kind": "LENGTH",
+        "owner": "AH",
+        "value": 2,
+        "mode": "ADJACENT",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 2.3094010767585034,
+        "mode": "ADJACENT",
+        "text": "4sqrt(3)/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "triABC",
+        "kind": "REGION",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 2.309401076758503,
+        "text": "4sqrt(3)/3",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          4.2,
+          0.7
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,481 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7f3b7cb7d9f295c18e66d874bebf17189b3fdbbb999bae6a4523686fc40a080c",
+  "solutionSha256": "74c8d4619dcd09eb83ca25d3de883c34762ccebbd6ec4a6d4ca7519f4291992e",
+  "coordinateModel": {
+    "originX": 290.0,
+    "originY": 256.0,
+    "sx": 36.857142857142854,
+    "sy": 36.857142857142854
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1.9069251784911847,
+        4
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        1.9069251784911847,
+        -2
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        1.9069251784911847,
+        0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        -0.09080596088053206,
+        -1.9047619047619049
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "at": [
+        -1.2006565938648195,
+        1.4814814814814814
+      ],
+      "name": "F"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AF",
+      "points": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "AE",
+      "points": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "incircle",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1.9069251784911847
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc_D",
+      "point": "D",
+      "circle": "incircle"
+    },
+    {
+      "id": "inc_E",
+      "point": "E",
+      "circle": "incircle"
+    },
+    {
+      "id": "inc_F",
+      "point": "F",
+      "circle": "incircle"
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "ab9",
+      "segment": "AB",
+      "value": 9,
+      "mode": "ADJACENT",
+      "text": "9 cm",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "ac7",
+      "segment": "AC",
+      "value": 7,
+      "mode": "ADJACENT",
+      "text": "7 cm",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "af5",
+      "segment": "AF",
+      "value": 5,
+      "mode": "ADJACENT",
+      "text": "5 cm",
+      "factRole": "GIVEN",
+      "labelPlacement": "CONDITION_BOX",
+      "conditionBoxId": "crowded-relations"
+    },
+    {
+      "id": "bc6",
+      "segment": "BC",
+      "value": 6,
+      "mode": "DIMENSION",
+      "text": "6 cm",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Use triangle side lengths 9, 7, 6 from the tangent lengths; compute its incenter and perpendicular contact points, giving equal tangent segments 5,4,2.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "D",
+      "unitScale": 1.9069251784911847
+    },
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        -5.085133809309825,
+        -1.6666666666666667
+      ],
+      "B": [
+        1.9069251784911847,
+        4
+      ],
+      "C": [
+        1.9069251784911847,
+        -2
+      ],
+      "D": [
+        1.9069251784911847,
+        0
+      ],
+      "E": [
+        -0.09080596088053206,
+        -1.9047619047619049
+      ],
+      "F": [
+        -1.2006565938648195,
+        1.4814814814814814
+      ]
+    },
+    "freeVariables": [
+      {
+        "id": "sideAB",
+        "value": 9
+      },
+      {
+        "id": "sideAC",
+        "value": 7
+      },
+      {
+        "id": "sideBC",
+        "value": 6
+      }
+    ],
+    "conditions": [
+      {
+        "id": "AB9",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 9,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "AC7",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 7,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "AF5",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "F"
+        ],
+        "expected": 5,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "A_tangent_equal",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "A",
+          "F",
+          "A",
+          "E"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "B_tangent_equal",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "B",
+          "F",
+          "B",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "C_tangent_equal",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "C",
+          "E",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "F_on_AB",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "F",
+          "B"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "E_on_AC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "D_on_BC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "OFperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "F",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "OEperpAC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "E",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ODperpBC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "D",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "O",
+        "operation": "CONSTRUCT_POINT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "A",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "B",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "C",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "D",
+        "operation": "CONSTRUCT_POINT",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "E",
+        "operation": "CONSTRUCT_POINT",
+        "output": "E",
+        "inputs": []
+      },
+      {
+        "id": "F",
+        "operation": "CONSTRUCT_POINT",
+        "output": "F",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB9",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "AC7",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "AF5",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "A_tangent_equal",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "B_tangent_equal",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "C_tangent_equal",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "F_on_AB",
+        "residual": 7.894919286223336e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "E_on_AC",
+        "residual": 1.2688263138573217e-17,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "D_on_BC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "OFperpAB",
+        "residual": 2.0700653007450532e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "OEperpAC",
+        "residual": 2.744684796077146e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ODperpBC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "ABC_noncollinear",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "minimum": 1e-09,
+        "observed": 0.6659103797905724
+      }
+    ]
+  },
+  "otherLabels": [
+    {
+      "id": "crowded-relations",
+      "text": "AF=AE=5 cmBF=BD=4 cmCE=CD=2 cmBC=BD+DC=6 cm",
+      "powers": [],
+      "conditionBoxFor": [
+        "af5"
+      ]
+    }
+  ]
+}

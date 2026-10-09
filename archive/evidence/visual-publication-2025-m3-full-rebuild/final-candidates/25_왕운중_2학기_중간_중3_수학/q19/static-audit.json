@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "c41ec6093e79d0ee2b71d3f61da494732716dfc5fc72eb2d9dd25ee80ef1803f",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 6,
+      "residualPassCount": 6,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.030693240367316e-11,
+        1.570623418644065e-11
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "C",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        11.999999999989692,
+        1.570623418644065e-11
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        1.030693240367316e-11,
+        4.999999999984294
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "M",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        5.999999999999999,
+        2.5000000000000004
+      ],
+      "sourceLabel": "M",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "H",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        5.999999999999999,
+        1.570623418644065e-11
+      ],
+      "sourceLabel": "H",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.030693240367316e-11,
+          4.999999999984294
+        ],
+        [
+          1.030693240367316e-11,
+          1.570623418644065e-11
+        ]
+      ]
+    },
+    {
+      "id": "BC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.030693240367316e-11,
+          1.570623418644065e-11
+        ],
+        [
+          11.999999999989692,
+          1.570623418644065e-11
+        ]
+      ]
+    },
+    {
+      "id": "CA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          11.999999999989692,
+          1.570623418644065e-11
+        ],
+        [
+          1.030693240367316e-11,
+          4.999999999984294
+        ]
+      ]
+    },
+    {
+      "id": "BM",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.030693240367316e-11,
+          1.570623418644065e-11
+        ],
+        [
+          5.999999999999999,
+          2.5000000000000004
+        ]
+      ]
+    },
+    {
+      "id": "MH",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          5.999999999999999,
+          2.5000000000000004
+        ],
+        [
+          5.999999999999999,
+          1.570623418644065e-11
+        ]
+      ]
+    },
+    {
+      "id": "BH",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          1.030693240367316e-11,
+          1.570623418644065e-11
+        ],
+        [
+          5.999999999999999,
+          1.570623418644065e-11
+        ]
+      ]
+    },
+    {
+      "id": "MC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          5.999999999999999,
+          2.5000000000000004
+        ],
+        [
+          11.999999999989692,
+          1.570623418644065e-11
+        ]
+      ]
+    },
+    {
+      "id": "B90",
+      "type": "ANGLE",
+      "ownerVertex": "B",
+      "expectedAngleDeg": 90.0,
+      "observedAngleDeg": 90.0,
+      "radiusPx": 16.0,
+      "labelShown": true,
+      "labelPlacement": "OWNER_WEDGE"
+    }
+  ],
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "4e0728ddc9ac154feec5c32d7d71d3a00f42e47a0ec0a44d1fd9fcf8a24186ac",
+  "reviewSha256": "b3e8ca7607b1947b00e7609446492fc10048d8a48294acf3d4b2a4d918cdabe1",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "80fee59043d67b95d62a92f116c84d7973c0ac91ff4f57314761cb62df819ac1",
+  "coverage": {
+    "declaredFacts": 14,
+    "observations": 14,
+    "primitiveCount": 13,
+    "labelCount": 7,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

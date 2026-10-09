@@ -1,0 +1,331 @@
+{
+  "id": "wangun-mid-q13",
+  "title": "중심에서 현에 내린 수선은 현을 이등분",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -16.12,
+    "xMax": 16.12,
+    "yMin": -11.120000000000001,
+    "yMax": 21.12,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "B",
+        "unitScale": 12
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "H": [
+          0,
+          0
+        ],
+        "A": [
+          -12,
+          0
+        ],
+        "B": [
+          12,
+          0
+        ],
+        "O": [
+          0,
+          5
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OH",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "H"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "AH",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "HB",
+          "kind": "DISTANCE",
+          "refs": [
+            "H",
+            "B"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "mid",
+          "kind": "MIDPOINT",
+          "refs": [
+            "H",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "perp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "H",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OH",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "AH",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "HB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "mid",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "perp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "H",
+            "A",
+            "O"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -12,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        5
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -12,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        -12,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "HB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "OH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5
+      ],
+      "to": [
+        -12,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        5
+      ],
+      "radius": 13
+    },
+    {
+      "id": "radiusAnswer",
+      "kind": "EQUATION_LABEL",
+      "at": [
+        3,
+        6
+      ],
+      "text": "x=13",
+      "math": true,
+      "priority": 3
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "H": "H",
+      "A": "A",
+      "B": "B",
+      "O": "O"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "HB": [
+        "H",
+        "B"
+      ],
+      "OH": [
+        "O",
+        "H"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ]
+    },
+    "annotations": []
+  }
+}

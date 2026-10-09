@@ -1,0 +1,329 @@
+{
+  "id": "wangun-mid-q23",
+  "title": "접선과 반지름으로 현의 길이 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -8.68,
+    "xMax": 8.68,
+    "yMin": -8.68,
+    "yMax": 8.68,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "M",
+        "unitScale": 5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "M": [
+          5,
+          0
+        ],
+        "A": [
+          5,
+          4.898979485566356
+        ],
+        "B": [
+          5,
+          -4.898979485566356
+        ]
+      },
+      "conditions": [
+        {
+          "id": "rsmall",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "expected": 5,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "OA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 7,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "OB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 7,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "tangent",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "MA",
+          "kind": "DISTANCE",
+          "refs": [
+            "M",
+            "A"
+          ],
+          "expected": 4.898979485566356,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "M",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "rsmall",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "OA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "OB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "tangent",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "MA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "M",
+            "A"
+          ],
+          "observed": 0.6998542122237652,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5,
+        4.898979485566356
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        5,
+        -4.898979485566356
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        4.898979485566356
+      ],
+      "to": [
+        5,
+        -4.898979485566356
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        4.898979485566356
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5,
+        -4.898979485566356
+      ]
+    },
+    {
+      "id": "MA",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        5,
+        4.898979485566356
+      ]
+    },
+    {
+      "id": "MB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        5,
+        -4.898979485566356
+      ]
+    },
+    {
+      "id": "smallCircle",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "largeCircle",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 7
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "O": "O",
+      "M": "M",
+      "A": "A",
+      "B": "B"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "MA": [
+        "M",
+        "A"
+      ],
+      "MB": [
+        "M",
+        "B"
+      ]
+    },
+    "annotations": []
+  }
+}

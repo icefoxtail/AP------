@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "4e0728ddc9ac154feec5c32d7d71d3a00f42e47a0ec0a44d1fd9fcf8a24186ac",
+  "coordinateModel": {
+    "originX": 63.54838709677419,
+    "originY": 234.7715053763441,
+    "sx": 21.908602150537636,
+    "sy": 21.908602150537636
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        12,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        0,
+        5
+      ],
+      "name": "A"
+    },
+    {
+      "id": "M",
+      "at": [
+        6,
+        2.5
+      ],
+      "name": "M"
+    },
+    {
+      "id": "H",
+      "at": [
+        6,
+        0
+      ],
+      "name": "H"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BM",
+      "points": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "MH",
+      "points": [
+        "M",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "MC",
+      "points": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B90",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "answer",
+      "at": [
+        8.4,
+        3.0
+      ],
+      "text": "sin(x)=12/13"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 12
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        12,
+        0
+      ],
+      "A": [
+        0,
+        5
+      ],
+      "M": [
+        6,
+        2.5
+      ],
+      "H": [
+        6,
+        0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 5,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "BC",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 12,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "AC13",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 13,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "Mmid",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "MHperp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "M",
+          "H",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "construct-H",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "H",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "BC",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "AC13",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "Mmid",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "MHperp",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "B90",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

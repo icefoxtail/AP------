@@ -1,0 +1,374 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "8bb9437e51f2fa89ec9c750f8f33ad95be692768c7e3f18c0d5cf93422a9a76c",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 240.0,
+    "sx": 21.333333333333332,
+    "sy": 21.333333333333332
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "at": [
+        7.5,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        4.5,
+        0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "A",
+      "at": [
+        4.5,
+        6
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        4.5,
+        -6
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OD",
+      "points": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "DC",
+      "points": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 7.5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-circle",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "C-circle",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenAD6",
+      "segment": "AD",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenDB6",
+      "segment": "DB",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenDC3",
+      "segment": "DC",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "circumference",
+      "text": "15π"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed realization satisfies AD=DB=6, D is the midpoint foot on chord AB, O-D-C are collinear, and DC=3 with C on the circle.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "C",
+      "unitScale": 7.5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "C": [
+        7.5,
+        0
+      ],
+      "D": [
+        4.5,
+        0
+      ],
+      "A": [
+        4.5,
+        6
+      ],
+      "B": [
+        4.5,
+        -6
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AD6",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DB6",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DC3",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "C"
+        ],
+        "expected": 3,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ODperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "D",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DmidAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ODCcollinear",
+        "kind": "COLLINEAR",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "radius75",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 7.5,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "O",
+          "C",
+          "D"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "O",
+          "C",
+          "D",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AD6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DB6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DC3",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ODperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DmidAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ODCcollinear",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "radius75",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "observed": 0.8,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

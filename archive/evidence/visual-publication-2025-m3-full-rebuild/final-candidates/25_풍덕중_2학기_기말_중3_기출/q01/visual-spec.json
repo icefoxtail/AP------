@@ -1,0 +1,382 @@
+{
+  "id": "pungdeok-final-q01",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -8,
+    "xMax": 8,
+    "yMin": -8,
+    "yMax": 8,
+    "width": 760,
+    "height": 512,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A circle realization preserves the given central angle and the inscribed angle over the same minor arc; absolute coordinates are not claimed.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 5.0
+      },
+      "freeVariables": [
+        {
+          "id": "arcABDegrees",
+          "value": 54.0
+        },
+        {
+          "id": "inscribedVertexDegrees",
+          "value": 180.0
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "A": [
+          5.0,
+          0.0
+        ],
+        "B": [
+          2.938926261462366,
+          4.045084971874737
+        ],
+        "C": [
+          0.0,
+          -5.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc_A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct_A",
+          "operation": "NORMALIZED_RADIUS",
+          "output": "A",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct_B",
+          "operation": "ROTATE_ON_CIRCLE_54_DEG",
+          "output": "B",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        },
+        {
+          "id": "construct_C",
+          "operation": "ROTATE_ON_CIRCLE_180_DEG",
+          "output": "C",
+          "inputs": [
+            "O",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc_A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_OA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 5.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 4.5399049973954675,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "observed": 7.0710678118654755,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_BC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 9.510565162951535,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "facts": [
+      "O is the circle center.",
+      "Central angle AOB is 54 degrees (given).",
+      "Inscribed angle ACB intercepts the same minor arc AB and equals 27 degrees (conclusion)."
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        2.938926261462366,
+        4.045084971874737
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        -5.0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 5.0
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        2.938926261462366,
+        4.045084971874737
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        2.938926261462366,
+        4.045084971874737
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        0.0,
+        -5.0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        2.938926261462366,
+        4.045084971874737
+      ],
+      "to": [
+        0.0,
+        -5.0
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        12.428571428571429,
+        0.0
+      ],
+      "lines": [
+        "∠AOB=54°",
+        "∠ACB=27°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "given54",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 54,
+        "text": "54",
+        "marker": "ARC",
+        "factRole": "GIVEN",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "result27",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 27,
+        "text": "27",
+        "marker": "ARC",
+        "factRole": "CONCLUSION",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      }
+    ],
+    "pointLabelAnchors": {
+      "O": [
+        0,
+        -1.4
+      ]
+    }
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "id": "pungdeok-final-q11",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -4,
+    "xMax": 12.5,
+    "yMin": -4,
+    "yMax": 12.5,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A Euclidean realization built from PT=8, PA=6, PB=32/3 and the tangent contact at T; tangent-chord similarity yields TA=6, TB=8 and AB=14/3.",
+      "normalization": {
+        "originPoint": "P",
+        "xAxisPoint": "T",
+        "unitScale": 8
+      },
+      "freeVariables": [
+        {
+          "id": "circleRadius",
+          "value": 4.024922359499621
+        },
+        {
+          "id": "pa",
+          "value": 6
+        },
+        {
+          "id": "pb",
+          "value": 10.666666666666666
+        }
+      ],
+      "pointCoordinates": {
+        "P": [
+          0.0,
+          0.0
+        ],
+        "T": [
+          8.0,
+          0.0
+        ],
+        "O": [
+          8.0,
+          4.024922359499621
+        ],
+        "A": [
+          4.0,
+          4.47213595499958
+        ],
+        "B": [
+          7.111111111111111,
+          7.950463919999253
+        ]
+      },
+      "conditions": [
+        {
+          "id": "incT",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "expected": 4.024922359499621,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4.024922359499621,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "incB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4.024922359499621,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tan",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "T",
+            "P",
+            "T"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "pt8",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "T"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "ta6",
+          "kind": "DISTANCE",
+          "refs": [
+            "T",
+            "A"
+          ],
+          "expected": 6,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "tb8",
+          "kind": "DISTANCE",
+          "refs": [
+            "T",
+            "B"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "pa6",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "A"
+          ],
+          "expected": 6,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "pb",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "B"
+          ],
+          "expected": 10.666666666666666,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "ab",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 4.666666666666667,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "tangentBase",
+          "operation": "NORMALIZED_TANGENT_SEGMENT",
+          "output": "T",
+          "inputs": [
+            "P"
+          ]
+        },
+        {
+          "id": "center",
+          "operation": "PERPENDICULAR_RADIUS_AT_T",
+          "output": "O",
+          "inputs": [
+            "P",
+            "T"
+          ]
+        },
+        {
+          "id": "nearA",
+          "operation": "SECANT_NEAR_POINT",
+          "output": "A",
+          "inputs": [
+            "P",
+            "T",
+            "O"
+          ]
+        },
+        {
+          "id": "farB",
+          "operation": "SECANT_FAR_POINT",
+          "output": "B",
+          "inputs": [
+            "P",
+            "T",
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "incT",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "incB",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tan",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "pt8",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "ta6",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "tb8",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "pa6",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "pb",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "ab",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_PT",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "T"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_TA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "T",
+            "A"
+          ],
+          "observed": 6.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_PA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "A"
+          ],
+          "observed": 6.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_PB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "P",
+            "B"
+          ],
+          "observed": 10.666666666666666,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_TB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "T",
+            "B"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 4.666666666666667,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "PT tangent",
+      "PT=8",
+      "TA=6",
+      "TB=8"
+    ],
+    "solutionFacts": [
+      "PA=6",
+      "PB=32/3",
+      "AB=14/3"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        8.0,
+        4.024922359499621
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        4.47213595499958
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        7.111111111111111,
+        7.950463919999253
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        8.0,
+        4.024922359499621
+      ],
+      "radius": 4.024922359499621
+    },
+    {
+      "id": "PT",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "TA",
+      "kind": "SEGMENT",
+      "from": [
+        8.0,
+        0.0
+      ],
+      "to": [
+        4.0,
+        4.47213595499958
+      ]
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        4.0,
+        4.47213595499958
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        7.111111111111111,
+        7.950463919999253
+      ]
+    },
+    {
+      "id": "TB",
+      "kind": "SEGMENT",
+      "from": [
+        8.0,
+        0.0
+      ],
+      "to": [
+        7.111111111111111,
+        7.950463919999253
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        4.47213595499958
+      ],
+      "to": [
+        7.111111111111111,
+        7.950463919999253
+      ]
+    },
+    {
+      "id": "resultBox",
+      "kind": "CONDITION_BOX",
+      "at": [
+        10.5,
+        10.5
+      ],
+      "lines": [
+        "AB=14/3"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "P": "P",
+      "T": "T",
+      "O": "O",
+      "A": "A",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "PT": [
+        "P",
+        "T"
+      ],
+      "TA": [
+        "T",
+        "A"
+      ],
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "TB": [
+        "T",
+        "B"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenPT",
+        "kind": "LENGTH",
+        "owner": "PT",
+        "value": 8,
+        "text": "8",
+        "mode": "DIMENSION",
+        "side": -1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenTA",
+        "kind": "LENGTH",
+        "owner": "TA",
+        "value": 6,
+        "text": "6",
+        "mode": "DIMENSION",
+        "side": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenTB",
+        "kind": "LENGTH",
+        "owner": "TB",
+        "value": 8,
+        "text": "8",
+        "mode": "DIMENSION",
+        "side": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

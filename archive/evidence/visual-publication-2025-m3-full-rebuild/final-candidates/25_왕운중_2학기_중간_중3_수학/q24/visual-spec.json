@@ -1,0 +1,396 @@
+{
+  "id": "wangun-mid-q24",
+  "title": "수평선에서 고도를 내려 각의 여각 사용",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -841.6387807937887,
+    "xMax": 1077.9017256719426,
+    "yMin": -185.76198449668368,
+    "yMax": 685.7619844966837,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "B",
+        "unitScale": 832.139741175259
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "H": [
+          0,
+          0
+        ],
+        "P": [
+          0,
+          500
+        ],
+        "A": [
+          -595.876796297105,
+          0
+        ],
+        "B": [
+          832.139741175259,
+          0
+        ],
+        "L": [
+          -655.876796297105,
+          500
+        ],
+        "R": [
+          892.139741175259,
+          500
+        ]
+      },
+      "conditions": [
+        {
+          "id": "alt",
+          "kind": "DISTANCE",
+          "refs": [
+            "P",
+            "H"
+          ],
+          "expected": 500,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "dep40",
+          "kind": "ANGLE",
+          "refs": [
+            "L",
+            "P",
+            "A"
+          ],
+          "expected": 40,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "dep31",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "P",
+            "R"
+          ],
+          "expected": 31,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "groundline",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "H",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "level",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "P",
+            "H",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-L",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "L",
+          "inputs": []
+        },
+        {
+          "id": "construct-R",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "R",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "alt",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "dep40",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "dep31",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "groundline",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "level",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "H",
+            "P",
+            "A"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        0,
+        500
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -595.876796297105,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        832.139741175259,
+        0
+      ]
+    },
+    {
+      "id": "L",
+      "kind": "POINT",
+      "at": [
+        -655.876796297105,
+        500
+      ]
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "at": [
+        892.139741175259,
+        500
+      ]
+    },
+    {
+      "id": "ground",
+      "kind": "SEGMENT",
+      "from": [
+        -595.876796297105,
+        0
+      ],
+      "to": [
+        832.139741175259,
+        0
+      ]
+    },
+    {
+      "id": "PH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        500
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        500
+      ],
+      "to": [
+        -595.876796297105,
+        0
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        500
+      ],
+      "to": [
+        832.139741175259,
+        0
+      ]
+    },
+    {
+      "id": "PL",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        500
+      ],
+      "to": [
+        -655.876796297105,
+        500
+      ]
+    },
+    {
+      "id": "PR",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        500
+      ],
+      "to": [
+        892.139741175259,
+        500
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        -595.876796297105,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "HB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        832.139741175259,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "H": "H",
+      "P": "P",
+      "A": "A",
+      "B": "B",
+      "L": "L",
+      "R": "R"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "ground": [
+        "A",
+        "B"
+      ],
+      "PH": [
+        "P",
+        "H"
+      ],
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "PL": [
+        "P",
+        "L"
+      ],
+      "PR": [
+        "P",
+        "R"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "HB": [
+        "H",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "dep31",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "P",
+          "R"
+        ],
+        "value": 31,
+        "factRole": "GIVEN",
+        "marker": "ARC"
+      }
+    ]
+  }
+}

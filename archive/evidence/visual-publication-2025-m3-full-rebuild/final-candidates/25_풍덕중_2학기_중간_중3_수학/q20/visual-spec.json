@@ -1,0 +1,347 @@
+{
+  "id": "m3-geumdang-mid-q20",
+  "visualType": "line_circle_geometry",
+  "title": "두 접선으로 만든 직각삼각형의 합동",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 9.5,
+    "yMin": -4.5,
+    "yMax": 4.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed external point and tangent circle give two right triangles PAO and PBO with shared hypotenuse OP and equal radii.",
+      "normalization": {
+        "originPoint": "P",
+        "xAxisPoint": "O",
+        "unitScale": 5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "P": [
+          0,
+          0
+        ],
+        "O": [
+          5,
+          0
+        ],
+        "A": [
+          3.2,
+          2.4
+        ],
+        "B": [
+          3.2,
+          -2.4
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA3",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 3,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OB3",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 3,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "rightPAO",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "P",
+            "A",
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "rightPBO",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "P",
+            "B",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "sharedOP",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "expected": 5,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": [
+            "P"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "P",
+            "O"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "P",
+            "O",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "rightPAO",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "rightPBO",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "sharedOP",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "P",
+            "O",
+            "A"
+          ],
+          "observed": 0.6,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        5,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        3.2,
+        2.4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        3.2,
+        -2.4
+      ],
+      "name": "B"
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.2,
+        2.4
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.2,
+        -2.4
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        3.2,
+        2.4
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        3.2,
+        -2.4
+      ]
+    },
+    {
+      "id": "OP",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        5,
+        0
+      ],
+      "radius": 3
+    },
+    {
+      "id": "rhs-proof",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "OA=OB, OP=OP → PA=PB",
+      "at": [
+        5,
+        3.5
+      ],
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "P": "P",
+      "O": "O",
+      "A": "A",
+      "B": "B"
+    },
+    "pointLabelAnchors": {},
+    "pointLabelCallouts": {},
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OP": [
+        "O",
+        "P"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "radiusOA",
+        "kind": "LENGTH",
+        "owner": "OA",
+        "value": 3,
+        "mode": "ADJACENT",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radiusOB",
+        "kind": "LENGTH",
+        "owner": "OB",
+        "value": 3,
+        "mode": "ADJACENT",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

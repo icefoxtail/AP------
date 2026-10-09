@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "055da5fcf1dca54ac34fc0de87b70c3d9c220ef311bb2ba6ba050d249c6159db",
+  "coordinateModel": {
+    "originX": 242.8,
+    "originY": 465.44,
+    "sx": 68.8,
+    "sy": 68.8
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        2,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        2,
+        5
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        2,
+        0.5
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        0.4482758620689655,
+        1.1206896551724137
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [
+    {
+      "id": "B90",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "GIVEN",
+      "showLabel": false
+    },
+    {
+      "id": "E90",
+      "points": [
+        "D",
+        "E",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "showLabel": false
+    }
+  ],
+  "lengths": [
+    {
+      "id": "ACroot29",
+      "segment": "AC",
+      "value": 5.385164807134504,
+      "text": "√(29)",
+      "mode": "ADJACENT",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelPlacement": "LEADER_CALLOUT",
+      "labelAt": [
+        -1.0,
+        3.5
+      ]
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed from AB=2, BC=5, right angle B, D on BC and E as the perpendicular foot from D to AC.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 2
+    },
+    "freeVariables": [
+      {
+        "id": "AB",
+        "value": 2
+      },
+      {
+        "id": "BC",
+        "value": 5
+      },
+      {
+        "id": "BD",
+        "value": 0.5
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        0
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        2,
+        0.5
+      ],
+      "E": [
+        0.4482758620689655,
+        1.1206896551724137
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BC5",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "D_on_BC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "E_on_AC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DE_perp_AC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "D",
+          "E",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "p1",
+        "operation": "CONSTRUCT_POINT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "p2",
+        "operation": "CONSTRUCT_POINT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "p3",
+        "operation": "CONSTRUCT_POINT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "p4",
+        "operation": "CONSTRUCT_POINT",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "p5",
+        "operation": "CONSTRUCT_POINT",
+        "output": "E",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB2",
+        "residual": 0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BC5",
+        "residual": 0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "B90",
+        "residual": 0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "D_on_BC",
+        "residual": 0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "E_on_AC",
+        "residual": 0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DE_perp_AC",
+        "residual": 0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "ABC",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.9284766908852594,
+        "minimum": 1e-06
+      }
+    ]
+  }
+}

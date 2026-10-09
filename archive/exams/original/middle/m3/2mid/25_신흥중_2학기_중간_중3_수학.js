@@ -316,7 +316,9 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q10-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 11,
@@ -716,7 +718,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

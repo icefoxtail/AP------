@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "80f8c184df2db2721d040db2a04d6eaeb71c819b75ea9c9b7444ce41024c8ae4",
+  "coordinateModel": {
+    "originX": 171.89441757938522,
+    "originY": 292.96380992557715,
+    "sx": 35.24223296824591,
+    "sy": 35.24223296824591
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        6,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        6,
+        6.708203932499369
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "angles": [
+    {
+      "id": "rightB",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "labelAt": [
+        4.9,
+        1.1
+      ],
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "lengths": [
+    {
+      "id": "AB2",
+      "segment": "AB",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "BCsqrt5",
+      "segment": "BC",
+      "value": 6.708203932499369,
+      "mode": "ADJACENT",
+      "text": "3√(5)",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "AC3",
+      "segment": "CA",
+      "value": 9,
+      "mode": "ADJACENT",
+      "text": "9",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "cos A=2/3 is represented by a similar right triangle normalized to AC=9.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        6,
+        0
+      ],
+      "C": [
+        6,
+        6.708203932499369
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-09
+      },
+      {
+        "id": "BCsqrt5",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 6.708203932499369,
+        "tolerance": 1e-09
+      },
+      {
+        "id": "AC3",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 9,
+        "tolerance": 1e-09
+      },
+      {
+        "id": "rightB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "NORMALIZE_ORIGIN",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "adjacent-end",
+        "operation": "SET_ADJACENT_RATIO",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "opposite-end",
+        "operation": "PYTHAGOREAN_COMPLETION",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB2",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "BCsqrt5",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "AC3",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "rightB",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "triangle-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.7453559924999299,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

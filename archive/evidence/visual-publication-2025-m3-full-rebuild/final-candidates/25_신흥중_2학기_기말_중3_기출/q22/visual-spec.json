@@ -1,0 +1,743 @@
+{
+  "id": "sinheung-final-q22",
+  "title": "AQ가 지름인 원: 45°-45°-90° 삼각형 → 넓이 18π",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -3.7142135623730956,
+    "xMax": 7.371067811865475,
+    "yMin": -3.7142135623730956,
+    "yMax": 7.371067811865475,
+    "width": 760,
+    "height": 360,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source figure supplies named incidences and Euclidean relations but no fixed Cartesian coordinates. This normalized realization preserves every source condition listed here; arbitrary rotations and free arc placements are recorded separately.",
+      "normalization": {
+        "originPoint": "H",
+        "xAxisPoint": "C",
+        "unitScale": 5.656854249492381
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          5.656854249492381
+        ],
+        "B": [
+          -2,
+          0
+        ],
+        "C": [
+          5.656854249492381,
+          0
+        ],
+        "H": [
+          0,
+          0
+        ],
+        "O": [
+          1.8284271247461903,
+          1.82842712474619
+        ],
+        "Q": [
+          3.6568542494923806,
+          -2.0000000000000004
+        ],
+        "P": [
+          2.7016697493473463,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc-omega-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4.242640687119286,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4.242640687119286,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 4.242640687119286,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-Q",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "Q"
+          ],
+          "expected": 4.242640687119286,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-givenACH",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "H"
+          ],
+          "expected": 45,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-derivedAQB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "Q",
+            "B"
+          ],
+          "expected": 45,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-rightABQ",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "Q"
+          ],
+          "expected": 90,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-rightAHB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "H",
+            "B"
+          ],
+          "expected": 90,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "height-perp-base",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "H",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-lengthAB",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-lengthAC",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-lengthBH",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "H"
+          ],
+          "expected": 2,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-lengthAH",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "expected": 5.656854249492381,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-lengthCH",
+          "kind": "DISTANCE",
+          "refs": [
+            "H",
+            "C"
+          ],
+          "expected": 5.656854249492381,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "length-diameterAQ",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "Q"
+          ],
+          "expected": 8.485281374238571,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-Q",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "Q",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "P",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc-omega-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-Q",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-givenACH",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-derivedAQB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-rightABQ",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-rightAHB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "height-perp-base",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-lengthAB",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-lengthAC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-lengthBH",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-lengthAH",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-lengthCH",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "length-diameterAQ",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-22",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.9023689270621826,
+          "minimum": 1e-06
+        }
+      ]
+    },
+    "sourceProblemImageSha256": "cffda21f84144e5bf801c859fede03f943c790c9fc32fe2ae9c9d5b94d56e16d"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        5.656854249492381
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -2,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5.656854249492381,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        1.8284271247461903,
+        1.82842712474619
+      ],
+      "name": "O"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "at": [
+        3.6568542494923806,
+        -2.0000000000000004
+      ],
+      "name": "Q"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        2.7016697493473463,
+        0.0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "omega",
+      "kind": "CIRCLE",
+      "center": [
+        1.8284271247461903,
+        1.82842712474619
+      ],
+      "radius": 4.242640687119286
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5.656854249492381
+      ],
+      "to": [
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5.656854249492381
+      ],
+      "to": [
+        5.656854249492381,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        0
+      ],
+      "to": [
+        5.656854249492381,
+        0
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5.656854249492381
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "AQ",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        5.656854249492381
+      ],
+      "to": [
+        3.6568542494923806,
+        -2.0000000000000004
+      ]
+    },
+    {
+      "id": "BQ",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        0
+      ],
+      "to": [
+        3.6568542494923806,
+        -2.0000000000000004
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5.656854249492381,
+        0
+      ]
+    },
+    {
+      "id": "base-BC",
+      "kind": "LINE",
+      "coefficients": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "height-AH",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "diameter-AQ",
+      "kind": "LINE",
+      "coefficients": [
+        0.9023689270621825,
+        0.43096440627115085,
+        -2.4379028329949204
+      ]
+    },
+    {
+      "id": "cross-P",
+      "kind": "INTERSECTION",
+      "refs": [
+        "base-BC",
+        "diameter-AQ"
+      ],
+      "target": "P"
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        14.861122794459105,
+        1.8284271247461896
+      ],
+      "lines": [
+        "AB=6",
+        "AC=8",
+        "BH=2",
+        "AH=CH=4√2",
+        "∠ACB=45°",
+        "∠AQB=45°",
+        "AQ=지름"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "H": "H",
+      "O": "O",
+      "Q": "Q",
+      "P": "P"
+    },
+    "pointLabelAnchors": {
+      "A": [
+        0.2666666666666666,
+        6.411101482758031
+      ],
+      "B": [
+        -3.140119483078767,
+        -0.9747448713915889
+      ],
+      "C": [
+        6.316382719483409,
+        0.45279376902878543
+      ],
+      "H": [
+        0.39999999999999947,
+        0.6928203230275513
+      ],
+      "O": [
+        1.0506096654409878,
+        1.0506096654409878
+      ],
+      "Q": [
+        4.5637058957300445,
+        -2.6225914324145805
+      ],
+      "P": [
+        4.677876853350542,
+        1.6895577770787549
+      ]
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "AQ": [
+        "A",
+        "Q"
+      ],
+      "BQ": [
+        "B",
+        "Q"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "HC": [
+        "H",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "givenACH",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "text": "45",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "derivedAQB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "Q",
+          "B"
+        ],
+        "value": 45,
+        "text": "45",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "rightABQ",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "Q"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "SQUARE",
+        "showLabel": false
+      },
+      {
+        "id": "rightAHB",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "H",
+          "B"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "GIVEN",
+        "marker": "SQUARE",
+        "showLabel": false
+      },
+      {
+        "id": "lengthAB",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 6,
+        "text": "6",
+        "factRole": "GIVEN",
+        "mode": "DIMENSION",
+        "side": 1
+      },
+      {
+        "id": "lengthAC",
+        "kind": "LENGTH",
+        "owner": "AC",
+        "value": 8,
+        "text": "8",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "side": 1
+      },
+      {
+        "id": "lengthBH",
+        "kind": "LENGTH",
+        "owner": "BH",
+        "value": 2,
+        "text": "2",
+        "factRole": "GIVEN",
+        "mode": "DIMENSION",
+        "side": 1
+      }
+    ]
+  }
+}

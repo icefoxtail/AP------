@@ -1,0 +1,365 @@
+{
+  "id": "m3-geumdang-mid-q14",
+  "visualType": "line_circle_geometry",
+  "title": "중심에서 현에 내린 수선은 현을 이등분",
+  "viewport": {
+    "xMin": -5.0,
+    "xMax": 21.0,
+    "yMin": -13.0,
+    "yMax": 13.0,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed circle realization with a 12-unit chord, its perpendicular radius line and midpoint foot; radius 10 and offset 8 are schematic normalization choices.",
+      "normalization": {
+        "originPoint": "M",
+        "xAxisPoint": "O",
+        "unitScale": 8
+      },
+      "freeVariables": [
+        {
+          "id": "radius",
+          "value": 10
+        },
+        {
+          "id": "centerToChord",
+          "value": 8
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          8,
+          0
+        ],
+        "M": [
+          0,
+          0
+        ],
+        "A": [
+          0,
+          6
+        ],
+        "B": [
+          0,
+          -6
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB12",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 12,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AM6",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "MB6",
+          "kind": "DISTANCE",
+          "refs": [
+            "M",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OM8",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "expected": 8,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "OMperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "MmidAB",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "M",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "O",
+            "M"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "O",
+            "M",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB12",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AM6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "MB6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OM8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OMperpAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "MmidAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "M",
+            "A"
+          ],
+          "observed": 0.6,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        8,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        6
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        -6
+      ],
+      "name": "B"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        6
+      ],
+      "to": [
+        0,
+        -6
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        0
+      ],
+      "to": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        0
+      ],
+      "to": [
+        0,
+        -6
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        6
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "MB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0,
+        -6
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        8,
+        0
+      ],
+      "radius": 10
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "O": "O",
+      "M": "M",
+      "A": "A",
+      "B": "B"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "MB": [
+        "M",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAM6",
+        "kind": "LENGTH",
+        "owner": "AM",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

@@ -1,0 +1,551 @@
+{
+  "id": "m3-geumdang-mid-q16",
+  "visualType": "line_circle_geometry",
+  "title": "다섯 원이 맞닿는 정사각형",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 11.15685424949238,
+    "yMin": -1.5,
+    "yMax": 11.15685424949238,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed equal-unit packing with five radius-2 circles tangent to the square walls and adjacent center circle.",
+      "normalization": {
+        "originPoint": "P1",
+        "xAxisPoint": "P2",
+        "unitScale": 9.65685424949238
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "P1": [
+          0,
+          0
+        ],
+        "P2": [
+          9.65685424949238,
+          0
+        ],
+        "P3": [
+          9.65685424949238,
+          9.65685424949238
+        ],
+        "P4": [
+          0,
+          9.65685424949238
+        ],
+        "A": [
+          2,
+          2
+        ],
+        "B": [
+          7.656854249492381,
+          2
+        ],
+        "C": [
+          7.656854249492381,
+          7.656854249492381
+        ],
+        "D": [
+          2,
+          7.656854249492381
+        ],
+        "O": [
+          4.82842712474619,
+          4.82842712474619
+        ],
+        "R": [
+          4,
+          2
+        ]
+      },
+      "conditions": [
+        {
+          "id": "radius2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "R"
+          ],
+          "expected": 2,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "centerAcenterO4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "O"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "centerBcenterO4",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "O"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "centerCcenterO4",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "O"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "centerDcenterO4",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "O"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "squareSide",
+          "kind": "DISTANCE",
+          "refs": [
+            "P1",
+            "P2"
+          ],
+          "expected": 9.65685424949238,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-P1",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P1",
+          "inputs": []
+        },
+        {
+          "id": "construct-P2",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P2",
+          "inputs": [
+            "P1"
+          ]
+        },
+        {
+          "id": "construct-P3",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P3",
+          "inputs": [
+            "P1",
+            "P2"
+          ]
+        },
+        {
+          "id": "construct-P4",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "P4",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "A"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "D",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "construct-R",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "R",
+          "inputs": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "A",
+            "B",
+            "C",
+            "D",
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "radius2",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "centerAcenterO4",
+          "residual": 4.440892098500626e-16,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "centerBcenterO4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "centerCcenterO4",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "centerDcenterO4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "squareSide",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "observed": 0.7071067811865476,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "P1",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P2",
+      "kind": "POINT",
+      "at": [
+        9.65685424949238,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P3",
+      "kind": "POINT",
+      "at": [
+        9.65685424949238,
+        9.65685424949238
+      ],
+      "name": null
+    },
+    {
+      "id": "P4",
+      "kind": "POINT",
+      "at": [
+        0,
+        9.65685424949238
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        2,
+        2
+      ],
+      "name": null
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        7.656854249492381,
+        2
+      ],
+      "name": null
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        7.656854249492381,
+        7.656854249492381
+      ],
+      "name": null
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        2,
+        7.656854249492381
+      ],
+      "name": null
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        4.82842712474619,
+        4.82842712474619
+      ],
+      "name": null
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "at": [
+        4,
+        2
+      ],
+      "name": null
+    },
+    {
+      "id": "edge1",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        9.65685424949238,
+        0
+      ]
+    },
+    {
+      "id": "edge2",
+      "kind": "SEGMENT",
+      "from": [
+        9.65685424949238,
+        0
+      ],
+      "to": [
+        9.65685424949238,
+        9.65685424949238
+      ]
+    },
+    {
+      "id": "edge3",
+      "kind": "SEGMENT",
+      "from": [
+        9.65685424949238,
+        9.65685424949238
+      ],
+      "to": [
+        0,
+        9.65685424949238
+      ]
+    },
+    {
+      "id": "edge4",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        9.65685424949238
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "radiusA",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        2
+      ],
+      "to": [
+        4,
+        2
+      ]
+    },
+    {
+      "id": "circleA",
+      "kind": "CIRCLE",
+      "center": [
+        2,
+        2
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleB",
+      "kind": "CIRCLE",
+      "center": [
+        7.656854249492381,
+        2
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleC",
+      "kind": "CIRCLE",
+      "center": [
+        7.656854249492381,
+        7.656854249492381
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleD",
+      "kind": "CIRCLE",
+      "center": [
+        2,
+        7.656854249492381
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        4.82842712474619,
+        4.82842712474619
+      ],
+      "radius": 2
+    },
+    {
+      "id": "radius-given",
+      "kind": "EQUATION_LABEL",
+      "text": "r=2cm",
+      "at": [
+        3.2,
+        2.7
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "P1": null,
+      "P2": null,
+      "P3": null,
+      "P4": null,
+      "A": null,
+      "B": null,
+      "C": null,
+      "D": null,
+      "O": null,
+      "R": null
+    },
+    "segmentPointRefs": {
+      "edge1": [
+        "P1",
+        "P2"
+      ],
+      "edge2": [
+        "P2",
+        "P3"
+      ],
+      "edge3": [
+        "P3",
+        "P4"
+      ],
+      "edge4": [
+        "P4",
+        "P1"
+      ],
+      "radiusA": [
+        "A",
+        "R"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "squareSide",
+        "kind": "LENGTH",
+        "owner": "edge1",
+        "value": 9.65685424949238,
+        "mode": "DIMENSION",
+        "text": "4+4sqrt(2)",
+        "factRole": "CONCLUSION",
+        "unit": "cm"
+      }
+    ]
+  }
+}

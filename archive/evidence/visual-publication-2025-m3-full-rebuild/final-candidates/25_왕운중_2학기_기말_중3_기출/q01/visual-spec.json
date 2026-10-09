@@ -1,0 +1,457 @@
+{
+  "id": "wangun-final-q01",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -12,
+    "xMax": 12,
+    "yMin": -6,
+    "yMax": 18,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source chord of length 16 is bisected perpendicularly by the radius; the resulting right triangle has legs 8 and 6 and hypotenuse 10.",
+      "normalization": {
+        "originPoint": "M",
+        "xAxisPoint": "B",
+        "unitScale": 8
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          6.0
+        ],
+        "A": [
+          -8.0,
+          0.0
+        ],
+        "B": [
+          8.0,
+          0.0
+        ],
+        "M": [
+          0.0,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "oa",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 10,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "ob",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 10,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "ab",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 16,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "am",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "bm",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "expected": 8,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "om",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "expected": 6,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "perp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "B",
+            "O",
+            "M"
+          ],
+          "tolerance": 1e-06
+        },
+        {
+          "id": "collinear",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "M",
+            "B"
+          ],
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "M",
+          "inputs": []
+        },
+        {
+          "id": "baseB",
+          "operation": "NORMALIZED_BASELINE",
+          "output": "B",
+          "inputs": [
+            "M"
+          ]
+        },
+        {
+          "id": "center",
+          "operation": "PERPENDICULAR_FOOT",
+          "output": "O",
+          "inputs": [
+            "M",
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "endpointA",
+          "operation": "CHORD_ENDPOINT",
+          "output": "A",
+          "inputs": [
+            "M",
+            "B",
+            "O"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "oa",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "ob",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "ab",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "am",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "bm",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "om",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "perp",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "collinear",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 16.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AM",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_BM",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OM",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "observed": 6.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 10.0,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "chord AB=16 cm",
+      "radius OA=10 cm"
+    ],
+    "solutionFacts": [
+      "AM=8 cm",
+      "OM=6 cm",
+      "x=6 cm"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        6.0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        6.0
+      ],
+      "radius": 10
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -8.0,
+        0.0
+      ],
+      "to": [
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        -8.0,
+        0.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "BM",
+      "kind": "SEGMENT",
+      "from": [
+        8.0,
+        0.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        6.0
+      ],
+      "to": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        6.0
+      ],
+      "to": [
+        -8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "answerBox",
+      "kind": "CONDITION_BOX",
+      "at": [
+        3,
+        15
+      ],
+      "lines": [
+        "AB ⟂ OM; x = 6 cm"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "M": "M"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "BM": [
+        "B",
+        "M"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAB",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 16,
+        "text": "16",
+        "mode": "DIMENSION",
+        "side": -1,
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAM",
+        "kind": "LENGTH",
+        "owner": "AM",
+        "value": 8,
+        "text": "8",
+        "mode": "ADJACENT",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenOA",
+        "kind": "LENGTH",
+        "owner": "OA",
+        "value": 10,
+        "text": "10",
+        "mode": "ADJACENT",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenOM",
+        "kind": "LENGTH",
+        "owner": "OM",
+        "value": 6,
+        "text": "6",
+        "mode": "ADJACENT",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

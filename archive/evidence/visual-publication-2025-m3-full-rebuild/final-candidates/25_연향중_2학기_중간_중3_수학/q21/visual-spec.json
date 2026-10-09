@@ -1,0 +1,235 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q21",
+  "title": "직육면체의 공간각을 직각삼각형으로",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1,
+    "xMax": 11,
+    "yMin": -1,
+    "yMax": 5,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "E",
+        "xAxisPoint": "G",
+        "unitScale": 10
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "E": [
+          0,
+          0
+        ],
+        "G": [
+          10,
+          0
+        ],
+        "A": [
+          0,
+          4
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AE4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "E"
+          ],
+          "tolerance": 1e-07,
+          "expected": 4
+        },
+        {
+          "id": "EG10",
+          "kind": "DISTANCE",
+          "refs": [
+            "E",
+            "G"
+          ],
+          "tolerance": 1e-07,
+          "expected": 10
+        },
+        {
+          "id": "AEperpEG",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "E",
+            "E",
+            "G"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-G",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "G",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AE4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "EG10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AEperpEG",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "E",
+            "G"
+          ],
+          "observed": 10.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "G",
+      "kind": "POINT",
+      "at": [
+        10,
+        0
+      ],
+      "name": "G"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        4
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "EG",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "AG",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        4
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "x-at-G",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        9,
+        0.8
+      ],
+      "text": "x",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "E": "E",
+      "G": "G"
+    },
+    "segmentPointRefs": {
+      "AE": [
+        "A",
+        "E"
+      ],
+      "EG": [
+        "E",
+        "G"
+      ],
+      "AG": [
+        "A",
+        "G"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": [
+      {
+        "id": "EGlen",
+        "kind": "LENGTH",
+        "owner": "EG",
+        "value": 10,
+        "text": "10",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

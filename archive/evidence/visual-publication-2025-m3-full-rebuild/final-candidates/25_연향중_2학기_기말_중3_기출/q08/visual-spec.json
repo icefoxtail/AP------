@@ -1,0 +1,480 @@
+{
+  "id": "25_연향중_2학기_기말_중3_기출-q8",
+  "title": "같은 호로 중심각을 나누기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.4,
+    "xMax": 1.4,
+    "yMin": -1.4,
+    "yMax": 3.3,
+    "width": 390,
+    "height": 360,
+    "panel": 120
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes incidence, angles or metric facts but no absolute coordinate frame; this equal-unit realization preserves all listed constraints.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "P",
+        "unitScale": 1
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -0.1736481776669303,
+          0.984807753012208
+        ],
+        "B": [
+          -0.7660444431189779,
+          0.6427876096865395
+        ],
+        "C": [
+          -1.0,
+          1.2246467991473532e-16
+        ],
+        "P": [
+          1.0,
+          0.0
+        ],
+        "Q": [
+          0.17364817766693041,
+          -0.984807753012208
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OB1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OC1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OP1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "OQ1",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "Q"
+          ],
+          "tolerance": 1e-07,
+          "expected": 1
+        },
+        {
+          "id": "angleAOC",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 80
+        },
+        {
+          "id": "angleAOB",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 40
+        },
+        {
+          "id": "angleBOC",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 40
+        },
+        {
+          "id": "angleBQC",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "Q",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 20
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-Q",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "Q",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OC1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OP1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OQ1",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleAOC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleAOB",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleBOC",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "angleBQC",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -0.1736481776669303,
+        0.984807753012208
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -0.7660444431189779,
+        0.6427876096865395
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -1.0,
+        1.2246467991473532e-16
+      ],
+      "name": "C"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "at": [
+        0.17364817766693041,
+        -0.984807753012208
+      ],
+      "name": null
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        0.0
+      ],
+      "to": [
+        -0.1736481776669303,
+        0.984807753012208
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        0.0
+      ],
+      "to": [
+        -0.7660444431189779,
+        0.6427876096865395
+      ]
+    },
+    {
+      "id": "QB",
+      "kind": "SEGMENT",
+      "from": [
+        0.17364817766693041,
+        -0.984807753012208
+      ],
+      "to": [
+        -0.7660444431189779,
+        0.6427876096865395
+      ]
+    },
+    {
+      "id": "QC",
+      "kind": "SEGMENT",
+      "from": [
+        0.17364817766693041,
+        -0.984807753012208
+      ],
+      "to": [
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -0.1736481776669303,
+        0.984807753012208
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -0.7660444431189779,
+        0.6427876096865395
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1
+    },
+    {
+      "id": "given-center-angle",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        1.65
+      ],
+      "text": "∠AOC=80°",
+      "math": false
+    },
+    {
+      "id": "equal-arcs",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        2.0
+      ],
+      "text": "arc AB=arc BC",
+      "math": false
+    },
+    {
+      "id": "target-angle",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -1.05,
+        2.35
+      ],
+      "text": "∠BQC=20°",
+      "math": false
+    },
+    {
+      "id": "Q-label",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        0.38,
+        -1.1
+      ],
+      "text": "Q",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "P": "P",
+      "Q": null
+    },
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "QB": [
+        "Q",
+        "B"
+      ],
+      "QC": [
+        "Q",
+        "C"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ]
+    },
+    "annotations": []
+  }
+}

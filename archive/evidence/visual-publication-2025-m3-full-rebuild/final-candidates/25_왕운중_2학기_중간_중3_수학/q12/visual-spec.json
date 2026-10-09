@@ -1,0 +1,439 @@
+{
+  "id": "wangun-mid-q12",
+  "title": "원의 넓이에서 정육각형 넓이 빼기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -7.4399999999999995,
+    "xMax": 7.4399999999999995,
+    "yMin": -7.4399999999999995,
+    "yMax": 7.4399999999999995,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "E",
+        "unitScale": 6
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          -3,
+          5.196152422706632
+        ],
+        "B": [
+          -6,
+          0
+        ],
+        "C": [
+          -3,
+          -5.196152422706632
+        ],
+        "D": [
+          3,
+          -5.196152422706632
+        ],
+        "E": [
+          6,
+          0
+        ],
+        "F": [
+          3,
+          5.196152422706632
+        ],
+        "H": [
+          0,
+          5.196152422706632
+        ]
+      },
+      "conditions": [
+        {
+          "id": "radOA",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 6,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "reg1",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "reg2",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 6,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "radOH",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "H"
+          ],
+          "expected": 5.196152422706632,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "ohperp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "H",
+            "A",
+            "F"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-F",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "F",
+          "inputs": []
+        },
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "H",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "radOA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "reg1",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "reg2",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "radOH",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "ohperp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "observed": 0.8660254037844387,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -3,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -6,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        3,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -3,
+        5.196152422706632
+      ],
+      "to": [
+        -6,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -6,
+        0
+      ],
+      "to": [
+        -3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        -3,
+        -5.196152422706632
+      ],
+      "to": [
+        3,
+        -5.196152422706632
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -5.196152422706632
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "EF",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        0
+      ],
+      "to": [
+        3,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "FA",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        5.196152422706632
+      ],
+      "to": [
+        -3,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "OH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -3,
+        5.196152422706632
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 6
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F",
+      "H": "H"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EF": [
+        "E",
+        "F"
+      ],
+      "FA": [
+        "F",
+        "A"
+      ],
+      "OH": [
+        "O",
+        "H"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenOH",
+        "kind": "LENGTH",
+        "owner": "OH",
+        "value": 5.196152422706632,
+        "text": "3sqrt(3)",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "unit": ""
+      }
+    ]
+  }
+}

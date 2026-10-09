@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "0bf66a171f0f9ed8abb8eecb1d1943eb17d7f1744b6be27c810ad4476e4f1b21",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 8,
+      "residualPassCount": 8,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "O",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        3.430154114513866e-11,
+        4.4185380217150647e-11
+      ],
+      "sourceLabel": "O",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        15.999999999995337,
+        4.4185380217150647e-11
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -16.000000000016044,
+        4.4185380217150647e-11
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "C",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -8.000000000035525,
+        13.856406460530891
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "P",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -16.660254037839717,
+        8.856406460565395
+      ],
+      "sourceLabel": "P",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "T",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        0.6602540378579692,
+        18.856406460585696
+      ],
+      "sourceLabel": "T",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          15.999999999995337,
+          4.4185380217150647e-11
+        ],
+        [
+          -16.000000000016044,
+          4.4185380217150647e-11
+        ]
+      ]
+    },
+    {
+      "id": "AC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          15.999999999995337,
+          4.4185380217150647e-11
+        ],
+        [
+          -8.000000000035525,
+          13.856406460530891
+        ]
+      ]
+    },
+    {
+      "id": "BC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -16.000000000016044,
+          4.4185380217150647e-11
+        ],
+        [
+          -8.000000000035525,
+          13.856406460530891
+        ]
+      ]
+    },
+    {
+      "id": "CP",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -8.000000000035525,
+          13.856406460530891
+        ],
+        [
+          -16.660254037839717,
+          8.856406460565395
+        ]
+      ]
+    },
+    {
+      "id": "CT",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -8.000000000035525,
+          13.856406460530891
+        ],
+        [
+          0.6602540378579692,
+          18.856406460585696
+        ]
+      ]
+    },
+    {
+      "id": "OC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          3.430154114513866e-11,
+          4.4185380217150647e-11
+        ],
+        [
+          -8.000000000035525,
+          13.856406460530891
+        ]
+      ]
+    },
+    {
+      "id": "circle22",
+      "type": "CIRCLE",
+      "center": [
+        3.430154114513866e-11,
+        4.4185380217150647e-11
+      ],
+      "radius": 15.99999999996104
+    },
+    {
+      "id": "inc-A",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "A",
+      "circle": "circle22",
+      "observedPoint": [
+        15.999999999995337,
+        4.4185380217150647e-11
+      ],
+      "observedCenter": [
+        3.430154114513866e-11,
+        4.4185380217150647e-11
+      ],
+      "observedRadius": 15.99999999996104,
+      "radialDelta": 3.552713678800501e-15
+    },
+    {
+      "id": "inc-B",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "B",
+      "circle": "circle22",
+      "observedPoint": [
+        -16.000000000016044,
+        4.4185380217150647e-11
+      ],
+      "observedCenter": [
+        3.430154114513866e-11,
+        4.4185380217150647e-11
+      ],
+      "observedRadius": 15.99999999996104,
+      "radialDelta": 8.930634010084759e-11
+    },
+    {
+      "id": "inc-C",
+      "type": "CIRCLE_INCIDENCE",
+      "point": "C",
+      "circle": "circle22",
+      "observedPoint": [
+        -8.000000000035525,
+        13.856406460530891
+      ],
+      "observedCenter": [
+        3.430154114513866e-11,
+        4.4185380217150647e-11
+      ],
+      "observedRadius": 15.99999999996104,
+      "radialDelta": 1.8179235894422163e-11
+    },
+    {
+      "id": "angleBAC",
+      "type": "ANGLE",
+      "ownerVertex": "A",
+      "expectedAngleDeg": 30.0,
+      "observedAngleDeg": 30.000000000986574,
+      "radiusPx": 16.0,
+      "labelShown": true,
+      "labelPlacement": "OWNER_WEDGE"
+    },
+    {
+      "id": "angleACB",
+      "type": "ANGLE",
+      "ownerVertex": "C",
+      "expectedAngleDeg": 90.0,
+      "observedAngleDeg": 90.0,
+      "radiusPx": 16.000000000388827,
+      "labelShown": true,
+      "labelPlacement": "OWNER_WEDGE"
+    }
+  ],
+  "sourceSha256": "92934d10f806380671f6287e91a794c42e26d1385b9890515085dffc651e79c2",
+  "solutionSha256": "10174c88f745a743dc4e9d9af80a18d7ccc3131a6b231a0f34c1bc04ceb066d3",
+  "reviewSha256": "a7c071f813569fc5e6b7c75abb36e2548bf942cf18b50cc3ed9fc9982ec6462b",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "cd81067af125c7bf6c9bfd10b968b2d31550dbfe42b201e5e166305406f7891d",
+  "coverage": {
+    "declaredFacts": 18,
+    "observations": 19,
+    "primitiveCount": 15,
+    "labelCount": 8,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

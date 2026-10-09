@@ -1,0 +1,504 @@
+{
+  "id": "sinheung-final-q10",
+  "title": "두 원주각의 호를 더해 남는 호를 찾는다",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.3,
+    "xMax": 6.3,
+    "yMin": -6.3,
+    "yMax": 6.3,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source figure supplies named incidences and Euclidean relations but no fixed Cartesian coordinates. This normalized realization preserves every source condition listed here; arbitrary rotations and free arc placements are recorded separately.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 5.0
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          5.0,
+          0.0
+        ],
+        "B": [
+          -0.8682408883346515,
+          4.92403876506104
+        ],
+        "C": [
+          -4.698463103929542,
+          1.7101007166283444
+        ],
+        "D": [
+          -4.330127018922194,
+          -2.500000000000001
+        ],
+        "E": [
+          1.8730329670795598,
+          -4.635919272833937
+        ],
+        "O": [
+          0.0,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc-omega-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-D",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-E",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "expected": 5.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-givenA",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "E"
+          ],
+          "expected": 96,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-givenD",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "D",
+            "E"
+          ],
+          "expected": 114,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "angle-centralX",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "O",
+            "C"
+          ],
+          "expected": 60,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "O",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc-omega-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-B",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-D",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-E",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-givenA",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-givenD",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "angle-centralX",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-10",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.49999999999999983,
+          "minimum": 1e-06
+        }
+      ]
+    },
+    "sourceProblemImageSha256": "bce10e7ee9ded7c115b04750cbf037c388e1b267ae2684d0a125be325ddb99d7"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -0.8682408883346515,
+        4.92403876506104
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -4.698463103929542,
+        1.7101007166283444
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        -4.330127018922194,
+        -2.500000000000001
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        1.8730329670795598,
+        -4.635919272833937
+      ],
+      "name": "E"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "omega",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 5.0
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        -0.8682408883346515,
+        4.92403876506104
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -0.8682408883346515,
+        4.92403876506104
+      ],
+      "to": [
+        -4.698463103929542,
+        1.7101007166283444
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        -4.698463103929542,
+        1.7101007166283444
+      ],
+      "to": [
+        -4.330127018922194,
+        -2.500000000000001
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        -4.330127018922194,
+        -2.500000000000001
+      ],
+      "to": [
+        1.8730329670795598,
+        -4.635919272833937
+      ]
+    },
+    {
+      "id": "EA",
+      "kind": "SEGMENT",
+      "from": [
+        1.8730329670795598,
+        -4.635919272833937
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -0.8682408883346515,
+        4.92403876506104
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -4.698463103929542,
+        1.7101007166283444
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "O": "O"
+    },
+    "pointLabelAnchors": {
+      "A": [
+        6.18,
+        0.0
+      ],
+      "B": [
+        -1.9958720332777415,
+        5.334462937051843
+      ],
+      "C": [
+        -5.807300396456913,
+        2.113684485752634
+      ],
+      "D": [
+        -5.352036995387831,
+        -3.0900000000000007
+      ],
+      "E": [
+        2.315068747310336,
+        -5.729996221222747
+      ],
+      "O": [
+        0.8,
+        0.0
+      ]
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EA": [
+        "E",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "givenA",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 96,
+        "text": "96",
+        "factRole": "GIVEN",
+        "marker": "ARC",
+        "labelAt": [
+          2.821410248768545,
+          -0.3061808221121442
+        ]
+      },
+      {
+        "id": "givenD",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 114,
+        "text": "114",
+        "factRole": "GIVEN",
+        "marker": "ARC",
+        "labelAt": [
+          -2.5965033609874055,
+          -1.1455447542835524
+        ]
+      },
+      {
+        "id": "centralX",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "text": "60",
+        "factRole": "CONCLUSION",
+        "marker": "ARC",
+        "labelAt": [
+          -1.6712477851850025,
+          1.9917155521093428
+        ]
+      }
+    ]
+  }
+}

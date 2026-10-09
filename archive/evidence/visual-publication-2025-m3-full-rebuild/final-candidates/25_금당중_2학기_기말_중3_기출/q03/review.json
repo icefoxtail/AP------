@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "92934d10f806380671f6287e91a794c42e26d1385b9890515085dffc651e79c2",
+  "solutionSha256": "1dd4f3856820792d9a50b5b14dd1914d681b01652a2f7cf92503def5ce248448",
+  "coordinateModel": {
+    "originX": 210.0,
+    "originY": 308.2083333333333,
+    "sx": 148.33333333333334,
+    "sy": 148.33333333333334
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Source problem gives circle/angle relations, not absolute coordinates. Normalize center O to the origin and the selected source point to the positive x-axis; fix a nondegenerate Euclidean realization satisfying every listed incidence and angle condition.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 1.0
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "A": [
+        1.0,
+        0.0
+      ],
+      "B": [
+        0.30901699437494745,
+        0.9510565162951535
+      ],
+      "C": [
+        -0.9781476007338056,
+        -0.2079116908177595
+      ]
+    },
+    "conditions": [
+      {
+        "id": "radius-oA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "radius-oB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "radius-oC",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "given-arc-ab-72",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-06,
+        "expected": 72
+      },
+      {
+        "id": "given-arc-bc-120",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-06,
+        "expected": 120
+      },
+      {
+        "id": "given-arc-ca-168",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-06,
+        "expected": 168
+      },
+      {
+        "id": "conclusion-inscribed-36",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "tolerance": 1e-06,
+        "expected": 36
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "place-O",
+        "operation": "NORMALIZE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "place-A",
+        "operation": "NORMALIZE_X_AXIS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "place-B",
+        "operation": "PLACE_FROM_ARC_RATIO_3_OF_15",
+        "output": "B",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "place-C",
+        "operation": "PLACE_FROM_ARC_RATIO_8_OF_15",
+        "output": "C",
+        "inputs": [
+          "O",
+          "B"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "radius-oA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "radius-oB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "radius-oC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "given-arc-ab-72",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "given-arc-bc-120",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "given-arc-ca-168",
+        "residual": 2.842170943040401e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "conclusion-inscribed-36",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "a-b-distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "minimum": 1e-06,
+        "observed": 1.1755705045849463
+      },
+      {
+        "id": "o-a-b-noncollinear",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "minimum": 1e-06,
+        "observed": 0.9510565162951535
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0.30901699437494745,
+        0.9510565162951535
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -0.9781476007338056,
+        -0.2079116908177595
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circle-main",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 1.0
+    }
+  ],
+  "incidences": [
+    {
+      "id": "circle-main-A",
+      "point": "A",
+      "circle": "circle-main"
+    },
+    {
+      "id": "circle-main-B",
+      "point": "B",
+      "circle": "circle-main"
+    },
+    {
+      "id": "circle-main-C",
+      "point": "C",
+      "circle": "circle-main"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "central-aob-72",
+      "points": [
+        "A",
+        "O",
+        "B"
+      ],
+      "degrees": 72,
+      "marker": "ARC",
+      "text": "72°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelAt": [
+        0.38,
+        0.28
+      ]
+    },
+    {
+      "id": "inscribed-acb-36",
+      "points": [
+        "A",
+        "C",
+        "B"
+      ],
+      "degrees": 36,
+      "marker": "ARC",
+      "text": "36°",
+      "factRole": "CONCLUSION",
+      "labelAt": [
+        -0.24731123461972482,
+        0.11747762364288072
+      ]
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "ratio-note",
+      "text": "호의 비 3:5:7"
+    }
+  ]
+}

@@ -1,0 +1,431 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q15",
+  "title": "현의 수직이등분선에서 반지름 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2,
+    "xMax": 10,
+    "yMin": -9,
+    "yMax": 3,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 8
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          8,
+          0
+        ],
+        "D": [
+          4,
+          0
+        ],
+        "C": [
+          4,
+          2
+        ],
+        "O": [
+          4,
+          -3
+        ]
+      },
+      "conditions": [
+        {
+          "id": "ABmid",
+          "kind": "MIDPOINT",
+          "refs": [
+            "D",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "CDperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "C",
+            "D",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "CD2",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "D"
+          ],
+          "tolerance": 1e-07,
+          "expected": 2
+        },
+        {
+          "id": "AD4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "D"
+          ],
+          "tolerance": 1e-07,
+          "expected": 4
+        },
+        {
+          "id": "OA5",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "OC5",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 5
+        },
+        {
+          "id": "O_D_C",
+          "kind": "COLLINEAR",
+          "refs": [
+            "O",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "ABmid",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CDperpAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CD2",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AD4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OA5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OC5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "O_D_C",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        4,
+        0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        4,
+        2
+      ],
+      "name": "C"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        4,
+        -3
+      ],
+      "name": "O"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        2
+      ],
+      "to": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": "DB",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        -3
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        -3
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        -3
+      ],
+      "to": [
+        4,
+        2
+      ]
+    },
+    {
+      "id": "OD",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        -3
+      ],
+      "to": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        4,
+        -3
+      ],
+      "radius": 5
+    },
+    {
+      "id": "radius-result",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        5,
+        -6
+      ],
+      "text": "r=5",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "O": "O"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DB": [
+        "D",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "OD": [
+        "O",
+        "D"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": [
+      {
+        "id": "CDlen",
+        "kind": "LENGTH",
+        "owner": "CD",
+        "value": 2,
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADlen",
+        "kind": "LENGTH",
+        "owner": "AD",
+        "value": 4,
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

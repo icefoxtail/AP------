@@ -1,0 +1,400 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "3dca2deca9528d1cf322feaf82a0edd5f64c901f27873548e1823591f6b585c7",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 234.02667189747584,
+    "sx": 15.662221350420689,
+    "sy": 15.662221350420689
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "B",
+      "unitScale": 5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        -5,
+        0
+      ],
+      "B": [
+        5,
+        0
+      ],
+      "D": [
+        -5,
+        2.1010205144336442
+      ],
+      "C": [
+        5,
+        11.898979485566356
+      ],
+      "E": [
+        -3.499271061118826,
+        3.5714285714285716
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "OB5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "OE5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "E"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "ADperpAO",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "D",
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BCperpBO",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "B",
+          "C",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DCperpOE",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "D",
+          "C",
+          "O",
+          "E"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "D_E_C",
+        "kind": "COLLINEAR",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ABdiameter",
+        "kind": "COLLINEAR",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DC14",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 14
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "E",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OE5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ADperpAO",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BCperpBO",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DCperpOE",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "D_E_C",
+        "residual": 6.03909531173402e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ABdiameter",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DC14",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 5.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        -5,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        5,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "at": [
+        -5,
+        2.1010205144336442
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "at": [
+        5,
+        11.898979485566356
+      ],
+      "name": "C"
+    },
+    {
+      "id": "E",
+      "at": [
+        -3.499271061118826,
+        3.5714285714285716
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "points": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "points": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "points": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "OE",
+      "points": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-E",
+      "point": "E",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [
+    {
+      "id": "tangentDC",
+      "coefficients": [
+        0.9797958971132712,
+        -1,
+        7
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "perimeter-result",
+      "text": "둘레 38 cm"
+    }
+  ]
+}

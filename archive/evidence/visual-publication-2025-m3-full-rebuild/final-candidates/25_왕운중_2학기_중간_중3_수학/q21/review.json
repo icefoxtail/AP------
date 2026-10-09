@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "ef4b50c58286b411979b42bd8c78dc3a513dbbeb4ff7f024b068aa21266d3ade",
+  "coordinateModel": {
+    "originX": 63.54838709677419,
+    "originY": 87.04967311821996,
+    "sx": 21.908602150537636,
+    "sy": 21.908602150537636
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        12,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "H",
+      "at": [
+        3,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "at": [
+        3,
+        -8.485281374238571
+      ],
+      "name": "A"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "points": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "AB9",
+      "segment": "AB",
+      "value": 9,
+      "text": "9",
+      "unit": "",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "BC12",
+      "segment": "BC",
+      "value": 12,
+      "text": "12",
+      "unit": "",
+      "mode": "ADJACENT",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [
+    {
+      "id": "areaABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 50.91168824543143,
+      "text": "36√(2)",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 12
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        12,
+        0
+      ],
+      "H": [
+        3,
+        0
+      ],
+      "A": [
+        3,
+        -8.485281374238571
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB9",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 9,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "BC12",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 12,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "AHperp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "H",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "BH",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "H"
+        ],
+        "expected": 3,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-H",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB9",
+        "residual": 1.7763568394002505e-15,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "BC12",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "AHperp",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "BH",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "observed": 0.9428090415820632,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "92934d10f806380671f6287e91a794c42e26d1385b9890515085dffc651e79c2",
+  "solutionSha256": "deec6327767cd9c220acead607c0bc563798754cd04a6031b50e0c3ce0aa07d7",
+  "coordinateModel": {
+    "originX": 192.0,
+    "originY": 192.0,
+    "sx": 152.38095238095238,
+    "sy": 152.38095238095238
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Source problem gives circle/angle relations, not absolute coordinates. Normalize center O to the origin and the selected source point to the positive x-axis; fix a nondegenerate Euclidean realization satisfying every listed incidence and angle condition.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "U",
+      "unitScale": 1.0
+    },
+    "freeVariables": [
+      {
+        "id": "inscribedVertexArcFraction",
+        "value": 0.5
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "U": [
+        1.0,
+        0.0
+      ],
+      "V": [
+        -0.6946583704589973,
+        -0.7193398003386512
+      ],
+      "C": [
+        0.3907311284892735,
+        -0.9205048534524405
+      ]
+    },
+    "conditions": [
+      {
+        "id": "radius-OU",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "U"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "radius-OV",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "V"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "radius-OC",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-06,
+        "expected": 1.0
+      },
+      {
+        "id": "given-central-134",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "O",
+          "V"
+        ],
+        "tolerance": 1e-06,
+        "expected": 134
+      },
+      {
+        "id": "derived-reflex-226",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "O",
+          "V"
+        ],
+        "tolerance": 1e-06,
+        "expected": 226
+      },
+      {
+        "id": "conclusion-inscribed-113",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "C",
+          "V"
+        ],
+        "tolerance": 1e-06,
+        "expected": 113
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "place-O",
+        "operation": "NORMALIZE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "place-U",
+        "operation": "NORMALIZE_X_AXIS",
+        "output": "U",
+        "inputs": []
+      },
+      {
+        "id": "place-V",
+        "operation": "PLACE_FROM_GIVEN_CENTRAL_ANGLE",
+        "output": "V",
+        "inputs": [
+          "O",
+          "U"
+        ]
+      },
+      {
+        "id": "place-C",
+        "operation": "PLACE_AT_MINOR_ARC_MIDPOINT",
+        "output": "C",
+        "inputs": [
+          "O",
+          "U",
+          "V"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "radius-OU",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "radius-OV",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "radius-OC",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "given-central-134",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "derived-reflex-226",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "conclusion-inscribed-113",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "u-v-distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "U",
+          "V"
+        ],
+        "minimum": 1e-06,
+        "observed": 1.8410097069048807
+      },
+      {
+        "id": "o-u-v-noncollinear",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "U",
+          "V"
+        ],
+        "minimum": 1e-06,
+        "observed": 0.7193398003386512
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "U",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "V",
+      "at": [
+        -0.6946583704589973,
+        -0.7193398003386512
+      ],
+      "name": null
+    },
+    {
+      "id": "C",
+      "at": [
+        0.3907311284892735,
+        -0.9205048534524405
+      ],
+      "name": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "OU",
+      "points": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "OV",
+      "points": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "UC",
+      "points": [
+        "U",
+        "C"
+      ]
+    },
+    {
+      "id": "CV",
+      "points": [
+        "C",
+        "V"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circle-main",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 1.0
+    }
+  ],
+  "incidences": [
+    {
+      "id": "circle-main-U",
+      "point": "U",
+      "circle": "circle-main"
+    },
+    {
+      "id": "circle-main-V",
+      "point": "V",
+      "circle": "circle-main"
+    },
+    {
+      "id": "circle-main-C",
+      "point": "C",
+      "circle": "circle-main"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "central-134",
+      "points": [
+        "U",
+        "O",
+        "V"
+      ],
+      "degrees": 134,
+      "marker": "ARC",
+      "text": "134°",
+      "factRole": "GIVEN",
+      "labelAt": [
+        0.3,
+        -0.2
+      ]
+    },
+    {
+      "id": "inscribed-113",
+      "points": [
+        "U",
+        "C",
+        "V"
+      ],
+      "degrees": 113,
+      "marker": "ARC",
+      "text": "113°",
+      "factRole": "CONCLUSION",
+      "labelAt": [
+        0.23,
+        -0.52
+      ]
+    },
+    {
+      "id": "reflex-226",
+      "points": [
+        "U",
+        "O",
+        "V"
+      ],
+      "degrees": 226,
+      "marker": "ARC",
+      "text": "226°",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "labelAt": [
+        -0.2,
+        0.46
+      ]
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": []
+}

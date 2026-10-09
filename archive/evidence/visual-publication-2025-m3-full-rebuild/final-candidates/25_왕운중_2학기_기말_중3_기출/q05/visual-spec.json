@@ -1,0 +1,404 @@
+{
+  "id": "wangun-final-q05",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5.5,
+    "xMax": 5.5,
+    "yMin": -5.5,
+    "yMax": 5.5,
+    "width": 512,
+    "height": 512,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The drawing realizes the source diameter and 62 degree central angle; the 31 degree conclusion follows from the equal radii OB=OC.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "B",
+        "unitScale": 4.0
+      },
+      "freeVariables": [
+        {
+          "id": "angleC",
+          "value": 118.0
+        }
+      ],
+      "pointCoordinates": {
+        "B": [
+          4.0,
+          0.0
+        ],
+        "C": [
+          -1.8778862511435637,
+          3.5317903714357075
+        ],
+        "A": [
+          -4.0,
+          4.898587196589413e-16
+        ],
+        "O": [
+          0.0,
+          0.0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc_A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 4.0,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "givenAOC",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "C"
+          ],
+          "expected": 62,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "equalRadii",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "O",
+            "B",
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "baseB",
+          "operation": "NORMALIZED_RADIUS",
+          "output": "B",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "rotateC118",
+          "operation": "ROTATE_C_118_DEG",
+          "output": "C",
+          "inputs": [
+            "O",
+            "B"
+          ]
+        },
+        {
+          "id": "oppositeA",
+          "operation": "DIAMETRAL_OPPOSITE",
+          "output": "A",
+          "inputs": [
+            "O",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc_A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "givenAOC",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "equalRadii",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_AB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "observed": 8.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_BC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 6.857338405616899,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "AB is a diameter",
+      "∠AOC=62°"
+    ],
+    "derivedFacts": [
+      "∠BOC=118°",
+      "OB=OC",
+      "∠BCO=31°"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -4.0,
+        4.898587196589413e-16
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -1.8778862511435637,
+        3.5317903714357075
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4.0
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -4.0,
+        4.898587196589413e-16
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -4.0,
+        4.898587196589413e-16
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -1.8778862511435637,
+        3.5317903714357075
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        4.0,
+        0.0
+      ],
+      "to": [
+        -1.8778862511435637,
+        3.5317903714357075
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "A": "A",
+      "O": "O"
+    },
+    "pointLabelAnchors": {
+      "O": [
+        0,
+        -0.85
+      ]
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "given62",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 62,
+        "text": "62",
+        "marker": "ARC",
+        "factRole": "GIVEN",
+        "labelAt": [
+          -1.6286178713340131,
+          0.9785723423291033
+        ]
+      },
+      {
+        "id": "result31",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "O"
+        ],
+        "value": 31,
+        "text": "31",
+        "marker": "ARC",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          0.13662302318752828,
+          1.445704950453619
+        ]
+      }
+    ]
+  }
+}

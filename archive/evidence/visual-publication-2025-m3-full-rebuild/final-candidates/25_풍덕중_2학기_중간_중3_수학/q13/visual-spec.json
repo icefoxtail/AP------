@@ -1,0 +1,444 @@
+{
+  "id": "pungdeok-mid-fresh-v2-q13",
+  "title": "산의 높이로 터널 길이 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.4,
+    "xMax": 10.8,
+    "yMin": -1.4,
+    "yMax": 6.2,
+    "width": 760,
+    "height": 420,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates realize AB=8, angle B=30, altitude AH perpendicular BC, angle C=45, and equal legs AH=HC.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "H",
+        "unitScale": 6.928203230275509
+      },
+      "freeVariables": [
+        {
+          "id": "AB",
+          "value": 8
+        },
+        {
+          "id": "angleB",
+          "value": 30
+        },
+        {
+          "id": "angleC",
+          "value": 45
+        }
+      ],
+      "pointCoordinates": {
+        "A": [
+          6.928203230275509,
+          4
+        ],
+        "B": [
+          0,
+          0
+        ],
+        "H": [
+          6.928203230275509,
+          0
+        ],
+        "C": [
+          10.928203230275509,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB8",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 8,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AH4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "H"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BH4r3",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "H"
+          ],
+          "expected": 6.928203230275509,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "HC4",
+          "kind": "DISTANCE",
+          "refs": [
+            "H",
+            "C"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B30",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "H"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "H90",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "H",
+            "A"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "C45",
+          "kind": "ANGLE",
+          "refs": [
+            "H",
+            "C",
+            "A"
+          ],
+          "expected": 45,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "p1",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "p2",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "p3",
+          "operation": "CONSTRUCT_POINT",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "p4",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AH4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BH4r3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "HC4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B30",
+          "residual": 3.552713678800501e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "H90",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "C45",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "ABH",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "H"
+          ],
+          "observed": 0.8660254037844386,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        6.928203230275509,
+        4
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        6.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        10.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        4
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        4
+      ],
+      "to": [
+        6.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        6.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        4
+      ],
+      "to": [
+        10.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "SEGMENT",
+      "from": [
+        6.928203230275509,
+        0
+      ],
+      "to": [
+        10.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        10.928203230275509,
+        0
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        14.40877037482306,
+        2.4
+      ],
+      "lines": [
+        "∠ABH=30°",
+        "∠HCA=45°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "H": "H",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "HC": [
+        "H",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "B30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 30,
+        "text": "30",
+        "factRole": "GIVEN",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "H90",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "H",
+          "A"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "SQUARE",
+        "showLabel": false
+      },
+      {
+        "id": "C45",
+        "kind": "ANGLE",
+        "refs": [
+          "H",
+          "C",
+          "A"
+        ],
+        "value": 45,
+        "text": "45",
+        "factRole": "GIVEN",
+        "marker": "ARC",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "AB8",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 8,
+        "text": "8",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "unit": "km"
+      },
+      {
+        "id": "HC4",
+        "kind": "LENGTH",
+        "owner": "HC",
+        "value": 4,
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "mode": "ADJACENT",
+        "unit": "km"
+      },
+      {
+        "id": "BCres",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 10.928203230275509,
+        "text": "4+4*sqrt(3)",
+        "factRole": "CONCLUSION",
+        "mode": "DIMENSION",
+        "unit": "km",
+        "side": -1
+      }
+    ]
+  }
+}

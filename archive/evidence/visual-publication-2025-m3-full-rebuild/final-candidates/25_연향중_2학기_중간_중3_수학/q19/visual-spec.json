@@ -1,0 +1,593 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q19",
+  "title": "한 점에서 그은 접선의 길이",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -9,
+    "xMax": 18,
+    "yMin": -9,
+    "yMax": 9,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 17
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          17,
+          0
+        ],
+        "T": [
+          3.764705882352941,
+          7.0588235294117645
+        ],
+        "Tprime": [
+          3.764705882352941,
+          -7.0588235294117645
+        ],
+        "E": [
+          8,
+          0
+        ],
+        "B": [
+          8,
+          4.8
+        ],
+        "C": [
+          8,
+          -4.8
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OT8",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "T"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8
+        },
+        {
+          "id": "OTp8",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "Tprime"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8
+        },
+        {
+          "id": "OE8",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8
+        },
+        {
+          "id": "AO17",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "O"
+          ],
+          "tolerance": 1e-07,
+          "expected": 17
+        },
+        {
+          "id": "ATperpOT",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "T",
+            "O",
+            "T"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ATpperpOTp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "Tprime",
+            "O",
+            "Tprime"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BCperpOE",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "B",
+            "C",
+            "O",
+            "E"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B_E_line",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "A_T_line",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "T"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "A_Tp_line",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "C",
+            "Tprime"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-T",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "T",
+          "inputs": []
+        },
+        {
+          "id": "construct-Tprime",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "Tprime",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OT8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OTp8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OE8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AO17",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ATperpOT",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ATpperpOTp",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BCperpOE",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B_E_line",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "A_T_line",
+          "residual": 4.644070168366668e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "A_Tp_line",
+          "residual": 4.644070168366668e-17,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 17.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        17,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        3.764705882352941,
+        7.0588235294117645
+      ],
+      "name": "T"
+    },
+    {
+      "id": "Tprime",
+      "kind": "POINT",
+      "at": [
+        3.764705882352941,
+        -7.0588235294117645
+      ],
+      "name": "T′"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        8,
+        0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8,
+        4.8
+      ],
+      "name": null
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        8,
+        -4.8
+      ],
+      "name": "C"
+    },
+    {
+      "id": "AT",
+      "kind": "SEGMENT",
+      "from": [
+        17,
+        0
+      ],
+      "to": [
+        3.764705882352941,
+        7.0588235294117645
+      ]
+    },
+    {
+      "id": "ATp",
+      "kind": "SEGMENT",
+      "from": [
+        17,
+        0
+      ],
+      "to": [
+        3.764705882352941,
+        -7.0588235294117645
+      ]
+    },
+    {
+      "id": "AO",
+      "kind": "SEGMENT",
+      "from": [
+        17,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OT",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.764705882352941,
+        7.0588235294117645
+      ]
+    },
+    {
+      "id": "OTp",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.764705882352941,
+        -7.0588235294117645
+      ]
+    },
+    {
+      "id": "OE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        4.8
+      ],
+      "to": [
+        8,
+        -4.8
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        17,
+        0
+      ],
+      "to": [
+        8,
+        4.8
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        17,
+        0
+      ],
+      "to": [
+        8,
+        -4.8
+      ]
+    },
+    {
+      "id": "BT",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        4.8
+      ],
+      "to": [
+        3.764705882352941,
+        7.0588235294117645
+      ]
+    },
+    {
+      "id": "BE",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        4.8
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "CTp",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        -4.8
+      ],
+      "to": [
+        3.764705882352941,
+        -7.0588235294117645
+      ]
+    },
+    {
+      "id": "CE",
+      "kind": "SEGMENT",
+      "from": [
+        8,
+        -4.8
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 8
+    },
+    {
+      "id": "B-label",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        8.8,
+        5.2
+      ],
+      "text": "B",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": null,
+      "C": "C",
+      "T": "T",
+      "Tprime": "T′",
+      "E": "E",
+      "O": "O"
+    },
+    "segmentPointRefs": {
+      "AT": [
+        "A",
+        "T"
+      ],
+      "ATp": [
+        "A",
+        "Tprime"
+      ],
+      "AO": [
+        "A",
+        "O"
+      ],
+      "OT": [
+        "O",
+        "T"
+      ],
+      "OTp": [
+        "O",
+        "Tprime"
+      ],
+      "OE": [
+        "O",
+        "E"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BT": [
+        "B",
+        "T"
+      ],
+      "BE": [
+        "B",
+        "E"
+      ],
+      "CTp": [
+        "C",
+        "Tprime"
+      ],
+      "CE": [
+        "C",
+        "E"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": [
+      {
+        "id": "AOlen",
+        "kind": "LENGTH",
+        "owner": "AO",
+        "value": 17,
+        "text": "17",
+        "unit": "cm",
+        "factRole": "GIVEN",
+        "mode": "DIMENSION",
+        "side": 1
+      }
+    ]
+  }
+}

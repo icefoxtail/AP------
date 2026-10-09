@@ -1,0 +1,377 @@
+{
+  "id": "pungdeok-mid-fresh-v2-q09",
+  "title": "수선으로 같은 각을 확인",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2.5,
+    "xMax": 3.0,
+    "yMin": -1.2,
+    "yMax": 6.3,
+    "width": 520,
+    "height": 580,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed from AB=2, BC=5, right angle B, D on BC and E as the perpendicular foot from D to AC.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 2
+      },
+      "freeVariables": [
+        {
+          "id": "AB",
+          "value": 2
+        },
+        {
+          "id": "BC",
+          "value": 5
+        },
+        {
+          "id": "BD",
+          "value": 0.5
+        }
+      ],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          2,
+          0
+        ],
+        "C": [
+          2,
+          5
+        ],
+        "D": [
+          2,
+          0.5
+        ],
+        "E": [
+          0.4482758620689655,
+          1.1206896551724137
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 2,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BC5",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 5,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B90",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "D_on_BC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "B",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "E_on_AC",
+          "kind": "COLLINEAR",
+          "refs": [
+            "A",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DE_perp_AC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "D",
+            "E",
+            "A",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "p1",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "p2",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "p3",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "p4",
+          "operation": "CONSTRUCT_POINT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "p5",
+          "operation": "CONSTRUCT_POINT",
+          "output": "E",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB2",
+          "residual": 0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BC5",
+          "residual": 0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B90",
+          "residual": 0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "D_on_BC",
+          "residual": 0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "E_on_AC",
+          "residual": 0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DE_perp_AC",
+          "residual": 0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "ABC",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.9284766908852594,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        2,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        2,
+        0.5
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        0.4482758620689655,
+        1.1206896551724137
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        2,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        0
+      ],
+      "to": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        0.5
+      ],
+      "to": [
+        0.4482758620689655,
+        1.1206896551724137
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 14,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "B90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "GIVEN",
+        "marker": "SQUARE",
+        "labelAt": [
+          1.4,
+          0.6
+        ],
+        "showLabel": false
+      },
+      {
+        "id": "E90",
+        "kind": "ANGLE",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "SQUARE",
+        "labelAt": [
+          1.6,
+          3.05
+        ],
+        "showLabel": false
+      },
+      {
+        "id": "ACroot29",
+        "kind": "LENGTH",
+        "owner": "AC",
+        "value": 5.385164807134504,
+        "text": "sqrt(29)",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "mode": "ADJACENT",
+        "side": 1,
+        "labelPlacement": "LEADER_CALLOUT",
+        "labelAt": [
+          -1.0,
+          3.5
+        ]
+      }
+    ]
+  }
+}

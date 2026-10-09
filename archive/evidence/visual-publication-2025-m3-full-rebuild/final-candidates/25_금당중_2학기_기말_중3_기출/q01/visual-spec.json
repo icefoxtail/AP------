@@ -1,0 +1,384 @@
+{
+  "id": "25-geumdang-final-q01-fresh-v2",
+  "title": "큰 호를 보는 원주각",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.05,
+    "xMax": 1.05,
+    "yMin": -1.05,
+    "yMax": 1.05,
+    "width": 384,
+    "height": 384,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Source problem gives circle/angle relations, not absolute coordinates. Normalize center O to the origin and the selected source point to the positive x-axis; fix a nondegenerate Euclidean realization satisfying every listed incidence and angle condition.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "U",
+        "unitScale": 1.0
+      },
+      "freeVariables": [
+        {
+          "id": "inscribedVertexArcFraction",
+          "value": 0.5
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0.0,
+          0.0
+        ],
+        "U": [
+          1.0,
+          0.0
+        ],
+        "V": [
+          -0.6946583704589973,
+          -0.7193398003386512
+        ],
+        "C": [
+          0.3907311284892735,
+          -0.9205048534524405
+        ]
+      },
+      "conditions": [
+        {
+          "id": "radius-OU",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "radius-OV",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "V"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "radius-OC",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-06,
+          "expected": 1.0
+        },
+        {
+          "id": "given-central-134",
+          "kind": "ANGLE",
+          "refs": [
+            "U",
+            "O",
+            "V"
+          ],
+          "tolerance": 1e-06,
+          "expected": 134
+        },
+        {
+          "id": "derived-reflex-226",
+          "kind": "ANGLE",
+          "refs": [
+            "U",
+            "O",
+            "V"
+          ],
+          "tolerance": 1e-06,
+          "expected": 226
+        },
+        {
+          "id": "conclusion-inscribed-113",
+          "kind": "ANGLE",
+          "refs": [
+            "U",
+            "C",
+            "V"
+          ],
+          "tolerance": 1e-06,
+          "expected": 113
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "place-O",
+          "operation": "NORMALIZE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "place-U",
+          "operation": "NORMALIZE_X_AXIS",
+          "output": "U",
+          "inputs": []
+        },
+        {
+          "id": "place-V",
+          "operation": "PLACE_FROM_GIVEN_CENTRAL_ANGLE",
+          "output": "V",
+          "inputs": [
+            "O",
+            "U"
+          ]
+        },
+        {
+          "id": "place-C",
+          "operation": "PLACE_AT_MINOR_ARC_MIDPOINT",
+          "output": "C",
+          "inputs": [
+            "O",
+            "U",
+            "V"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "radius-OU",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "radius-OV",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "radius-OC",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given-central-134",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "derived-reflex-226",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "conclusion-inscribed-113",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "u-v-distinct",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "U",
+            "V"
+          ],
+          "minimum": 1e-06,
+          "observed": 1.8410097069048807
+        },
+        {
+          "id": "o-u-v-noncollinear",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "U",
+            "V"
+          ],
+          "minimum": 1e-06,
+          "observed": 0.7193398003386512
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "U",
+      "kind": "POINT",
+      "at": [
+        1.0,
+        0.0
+      ],
+      "name": null
+    },
+    {
+      "id": "V",
+      "kind": "POINT",
+      "at": [
+        -0.6946583704589973,
+        -0.7193398003386512
+      ],
+      "name": null
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0.3907311284892735,
+        -0.9205048534524405
+      ],
+      "name": null
+    },
+    {
+      "id": "circle-main",
+      "kind": "CIRCLE",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 1.0
+    },
+    {
+      "id": "OU",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "OV",
+      "kind": "SEGMENT",
+      "from": [
+        0.0,
+        0.0
+      ],
+      "to": [
+        -0.6946583704589973,
+        -0.7193398003386512
+      ]
+    },
+    {
+      "id": "UC",
+      "kind": "SEGMENT",
+      "from": [
+        1.0,
+        0.0
+      ],
+      "to": [
+        0.3907311284892735,
+        -0.9205048534524405
+      ]
+    },
+    {
+      "id": "CV",
+      "kind": "SEGMENT",
+      "from": [
+        0.3907311284892735,
+        -0.9205048534524405
+      ],
+      "to": [
+        -0.6946583704589973,
+        -0.7193398003386512
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "U": null,
+      "V": null,
+      "C": null
+    },
+    "segmentPointRefs": {
+      "OU": [
+        "O",
+        "U"
+      ],
+      "OV": [
+        "O",
+        "V"
+      ],
+      "UC": [
+        "U",
+        "C"
+      ],
+      "CV": [
+        "C",
+        "V"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "central-134",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "O",
+          "V"
+        ],
+        "value": 134,
+        "text": "134",
+        "factRole": "GIVEN",
+        "labelAt": [
+          0.3,
+          -0.2
+        ]
+      },
+      {
+        "id": "inscribed-113",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "C",
+          "V"
+        ],
+        "value": 113,
+        "text": "113",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          0.23,
+          -0.52
+        ]
+      },
+      {
+        "id": "reflex-226",
+        "kind": "ANGLE",
+        "refs": [
+          "U",
+          "O",
+          "V"
+        ],
+        "value": 226,
+        "text": "226",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelAt": [
+          -0.2,
+          0.46
+        ]
+      }
+    ],
+    "pointLabelAnchors": {
+      "O": [
+        -0.35,
+        0.18
+      ]
+    }
+  }
+}

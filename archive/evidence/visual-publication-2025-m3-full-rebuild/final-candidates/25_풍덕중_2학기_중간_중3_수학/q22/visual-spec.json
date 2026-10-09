@@ -1,0 +1,418 @@
+{
+  "id": "m3-geumdang-mid-q22",
+  "visualType": "line_circle_geometry",
+  "title": "나무 높이: 눈높이와 접선 비율",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 6.0,
+    "yMin": -1.5,
+    "yMax": 9.193718642120281,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed coordinate right triangle uses the given ground offset 4.5 m, eye height 1.5 m, and tan 54°=1.38.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "E",
+        "unitScale": 4.5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "E": [
+          4.5,
+          0
+        ],
+        "D": [
+          4.5,
+          1.5
+        ],
+        "B": [
+          0,
+          1.5
+        ],
+        "C": [
+          4.5,
+          7.69371864212028
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AE45",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "E"
+          ],
+          "expected": 4.5,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B54",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "B",
+            "D"
+          ],
+          "expected": 54,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AB15",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 1.5,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DE15",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "E"
+          ],
+          "expected": 1.5,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BD45",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "D"
+          ],
+          "expected": 4.5,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BDperpDC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "B",
+            "D",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AEperpEC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "E",
+            "E",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "E",
+          "inputs": [
+            "A"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "D",
+          "inputs": [
+            "A",
+            "E"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "A",
+            "E",
+            "D"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "A",
+            "E",
+            "D",
+            "B"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AE45",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B54",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AB15",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DE15",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BD45",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BDperpDC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AEperpEC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "E",
+            "D"
+          ],
+          "observed": 0.31622776601683794,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        0
+      ],
+      "name": "E"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        1.5
+      ],
+      "name": "D"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        1.5
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        7.69371864212028
+      ],
+      "name": "C"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0,
+        1.5
+      ]
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.5,
+        0
+      ]
+    },
+    {
+      "id": "BD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        1.5
+      ],
+      "to": [
+        4.5,
+        1.5
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        1.5
+      ],
+      "to": [
+        4.5,
+        0
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        1.5
+      ],
+      "to": [
+        4.5,
+        7.69371864212028
+      ]
+    },
+    {
+      "id": "EC",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        0
+      ],
+      "to": [
+        4.5,
+        7.69371864212028
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        1.5
+      ],
+      "to": [
+        4.5,
+        7.69371864212028
+      ]
+    },
+    {
+      "id": "height-result",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "CE=7.71 m",
+      "at": [
+        7,
+        5
+      ],
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "A": "A",
+      "E": "E",
+      "D": "D",
+      "B": "B",
+      "C": "C"
+    },
+    "pointLabelAnchors": {},
+    "pointLabelCallouts": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AE": [
+        "A",
+        "E"
+      ],
+      "BD": [
+        "B",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ],
+      "EC": [
+        "E",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "AE45",
+        "kind": "LENGTH",
+        "owner": "AE",
+        "value": 4.5,
+        "mode": "ADJACENT",
+        "text": "9/2",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  }
+}

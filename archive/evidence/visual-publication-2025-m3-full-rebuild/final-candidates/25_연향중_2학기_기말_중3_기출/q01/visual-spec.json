@@ -1,0 +1,374 @@
+{
+  "id": "yeonhyang-final-q1-annulus-v2",
+  "title": "두 동심원의 넓이 차",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2,
+    "xMax": 15,
+    "yMin": -6,
+    "yMax": 12,
+    "width": 390,
+    "height": 420,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A source-faithful normalized realization fixes AB=12 and makes OM the perpendicular radius to the inner-circle tangent; the unsupplied inner radius is chosen as the free normalization r=4.5, while the annular result is invariant under this choice.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "B",
+        "unitScale": 12
+      },
+      "freeVariables": [
+        {
+          "id": "innerRadius",
+          "value": 4
+        }
+      ],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          12,
+          0
+        ],
+        "M": [
+          6,
+          0
+        ],
+        "O": [
+          6,
+          4
+        ]
+      },
+      "conditions": [
+        {
+          "id": "chordAB12",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "MmidAB",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "radiusTangent",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "innerRadiusChoice",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "expected": 4,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "outerRadiusDerived",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 7.211102550927978,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "outerRadiusB",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 7.211102550927978,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "set-A",
+          "operation": "SET_ORIGIN",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "set-B",
+          "operation": "PLACE_ON_POSITIVE_X_AXIS",
+          "output": "B",
+          "inputs": [
+            "A"
+          ]
+        },
+        {
+          "id": "set-M",
+          "operation": "MIDPOINT_OF_CHORD",
+          "output": "M",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "set-O",
+          "operation": "NORMAL_TO_TANGENT_AT_M",
+          "output": "O",
+          "inputs": [
+            "M",
+            "innerRadius"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "chordAB12",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "MmidAB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "radiusTangent",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "innerRadiusChoice",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "outerRadiusDerived",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "outerRadiusB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "triangleOMA-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "M",
+            "A"
+          ],
+          "observed": 0.8320502943378437,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {
+    "equationLabelCenters": {
+      "annularArea": [
+        185.41176470588235,
+        83.43529411764703
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        6,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        6,
+        4
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        4
+      ],
+      "to": [
+        6,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        4
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        6,
+        4
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "outerCircle",
+      "kind": "CIRCLE",
+      "center": [
+        6,
+        4
+      ],
+      "radius": 7.211102550927978
+    },
+    {
+      "id": "innerCircle",
+      "kind": "CIRCLE",
+      "center": [
+        6,
+        4
+      ],
+      "radius": 4
+    },
+    {
+      "id": "annularArea",
+      "kind": "EQUATION_LABEL",
+      "at": [
+        6,
+        9.6
+      ],
+      "text": "36π",
+      "math": true,
+      "priority": 3
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "O": "O",
+      "M": null,
+      "A": "A",
+      "B": "B"
+    },
+    "pointLabelAnchors": {},
+    "pointLabelCallouts": {
+      "O": [
+        4,
+        4
+      ]
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "rightM",
+        "kind": "ANGLE",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "marker": "SQUARE",
+        "showLabel": false
+      },
+      {
+        "id": "ab12",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 12,
+        "text": "12",
+        "unit": "cm",
+        "mode": "DIMENSION",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

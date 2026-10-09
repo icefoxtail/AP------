@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "1dc0160ff822c95a7ad5c19a4fdf4158194751cc42052737f25cf7c14944792d",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 180.0,
+    "sx": 123.33333333333334,
+    "sy": 123.33333333333334
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "U",
+      "unitScale": 1
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "U": [
+        1,
+        0
+      ],
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        -0.766044443118978,
+        -0.6427876096865393
+      ],
+      "C": [
+        0.7660444431189778,
+        -0.6427876096865396
+      ],
+      "M": [
+        -0.383022221559489,
+        0.17860619515673037
+      ],
+      "N": [
+        0.3830222215594889,
+        0.1786061951567302
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OB1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OC1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "OU1",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "U"
+        ],
+        "tolerance": 1e-07,
+        "expected": 1
+      },
+      {
+        "id": "M_midAB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "N_midAC",
+        "kind": "MIDPOINT",
+        "refs": [
+          "N",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OM_perpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ON_perpAC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "N",
+          "A",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OM_ON_equal",
+        "kind": "EQUAL_DISTANCE",
+        "refs": [
+          "O",
+          "M",
+          "O",
+          "N"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-U",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "U",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "construct-N",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "N",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB1",
+        "residual": 1.1102230246251565e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OC1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OU1",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "M_midAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "N_midAC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OM_perpAB",
+        "residual": 7.246466145651046e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ON_perpAC",
+        "residual": 7.246466145651048e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OM_ON_equal",
+        "residual": 1.6653345369377348e-16,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "U"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "U",
+      "at": [
+        1,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "at": [
+        0,
+        1
+      ],
+      "name": null
+    },
+    {
+      "id": "B",
+      "at": [
+        -0.766044443118978,
+        -0.6427876096865393
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0.7660444431189778,
+        -0.6427876096865396
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        -0.383022221559489,
+        0.17860619515673037
+      ],
+      "name": null
+    },
+    {
+      "id": "N",
+      "at": [
+        0.3830222215594889,
+        0.1786061951567302
+      ],
+      "name": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "points": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "AN",
+      "points": [
+        "A",
+        "N"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 1
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-U",
+      "point": "U",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-C",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [
+    {
+      "id": "angleB",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "degrees": 65,
+      "marker": "ARC",
+      "text": "65°",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "M-label",
+      "text": "M"
+    },
+    {
+      "id": "N-label",
+      "text": "N"
+    },
+    {
+      "id": "central-given",
+      "text": "130°"
+    },
+    {
+      "id": "A-label",
+      "text": "A"
+    }
+  ]
+}
