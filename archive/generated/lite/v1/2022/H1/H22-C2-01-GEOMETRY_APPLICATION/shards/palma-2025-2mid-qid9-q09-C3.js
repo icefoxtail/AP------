@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_09_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q09-C3",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "평면좌표",
+    "originalCategory": "평면좌표",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-01",
+    "standardUnit": "평면좌표",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+    "subUnit": "도형의 방정식 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "평면좌표"
+    ],
+    "wide": false,
+    "content": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(3,t)$ ($t>0$)이다. 점 $C$는 선분 $OA$를 $OC:CA=1:2$로 내분하고, 점 $D$는 선분 $AB$의 중점이며, 점 $E$는 선분 $BO$를 $BE:EO=2:1$로 내분한다. 삼각형 $CDE$의 무게중심의 y좌표가 $\\dfrac{10}{3}$일 때, 삼각형 $CDE$의 넓이는?",
+    "choices": [
+      "$72$",
+      "$32$",
+      "$\\dfrac{40}{9}$",
+      "$\\dfrac{32}{3}$",
+      "$16$"
+    ],
+    "answer": "⑤",
+    "solution": "내분점과 중점의 좌표는 $C=(4,0)$, $D=(\\dfrac{15}{2},\\dfrac t2)$, $E=(1,\\dfrac t3)$이다. 삼각형 $CDE$의 무게중심의 y좌표는 $\\dfrac{0+\\frac t2+\\frac t3}{3}=\\dfrac{5t}{18}$이다. 따라서 $\\dfrac{5t}{18}=\\dfrac{10}{3}$을 풀면 $t=12$이다.\n이때 $C=(4,0)$, $D=(\\dfrac{15}{2},6)$, $E=(1,4)$이다. 선분 $CE$의 길이는 $\\sqrt{(4-1)^2+(0-4)^2}=5$이고, 두 점 $C$, $E$를 지나는 직선의 방정식은 $4x+3y-16=0$이다.\n점 $D$에서 이 직선까지의 거리는 $\\dfrac{|4\\cdot\\frac{15}{2}+3\\cdot6-16|}{\\sqrt{4^2+3^2}}=\\dfrac{32}{5}$이다. 따라서 삼각형 $CDE$의 넓이는 $\\dfrac12\\times5\\times\\dfrac{32}{5}=16$이므로 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 9,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q09-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q09-C3","meta":{"rpmL1":"도형의 방정식","rpmL2":"평면좌표","rpmL3":"삼각형의 무게중심","rpmL4":"좌표 도형 활용","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-209","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_INTERNAL_DIVISION","CC_TRIANGLE_AREA","CC_POINT_LINE_DISTANCE","CC_DISTANCE_TWO_POINTS"],"conditionKeys":["COND_POSITIVE"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_COORD_CENTROID","templateKey":"TPL_CENTROID_APPLICATION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-01","subUnitKey":"H22-C2-01-GEOMETRY_APPLICATION"},"metaFinalSha256":"1a2d2698c88fdc3da299ce3487392a07599dc9683478661bf5b00a46b135f275","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q09-C3.json","sha256":"954db5c560ec836c1928ea98bdfd6ba468dd1bc2291be1279a4039a4af897e4c","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q09-C3"],"uid":"ALITE-PALMA25-2MID-Q09-C3"},"metaReviewEvidenceSha256":"954db5c560ec836c1928ea98bdfd6ba468dd1bc2291be1279a4039a4af897e4c","difficultyBucket":4,"level":"상","problemTypeKey":"PT_COORD_CENTROID","templateKey":"TPL_CENTROID_APPLICATION","secondaryConceptKeys":[],"crossConceptKeys":["CC_INTERNAL_DIVISION","CC_TRIANGLE_AREA","CC_POINT_LINE_DISTANCE","CC_DISTANCE_TWO_POINTS"],"conditionKeys":["COND_POSITIVE"],"integrationPattern":"SEQUENTIAL"});})();
