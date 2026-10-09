@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_PRODUCER_CLOSEOUT_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산고_1학기_중간_고2_수학I",
+  "head": "96094e378b89a930688335f956965bab13824d74",
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "targetSource": {
+    "path": "archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+    "rawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+    "gitBlobSha1": "5b24e2e417f7d41044afed57267306fca2bd5e68"
+  },
+  "rootBindings": {
+    "authority": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/ROOT.target-registration-producer-authority.v2.json", "sha256": "486d79d2358e2c9a32f6477ab5da76b195f5decc3e2173076b32a5dba27acd61"},
+    "roster": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/registration-subroster.v2.json", "sha256": "2b91ea077791ec947b1149e4ac500fd9a39ba7e53358f4c2e0faeb3b5ad9629a", "rosterIndex": 0},
+    "assignment": {"path": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration.assignment.v2.json", "sha256": "44c3d8a98a9fd25a33eb39186b80a7b79ea19fb66f683a4034afb82491967d8f"},
+    "r1Evidence": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R1.evidence.meta-recovery.bound.rev2.json", "sha256": "1861ba07e19bff3afe2aef81e9715ff753a63930a2e88f8dbccb040bafc5fcab"},
+    "r1Validation": {"path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R1.generic-validator.meta-recovery-rev3.raw.json", "sha256": "46de6c8a79b44d1879dc130c810f602dc17c285488600b791f0ae661379743d8"}
+  },
+  "displayAliasSupport": {
+    "helperPath": "archive/tools/prepare-target-registration-candidate.mjs",
+    "helperSha256": "04a68009f79f8eda57a8310ed3192ccc85dfd9371793435559b882c065b276f2",
+    "testPath": "archive/tools/prepare-target-registration-candidate.test.mjs",
+    "testSha256": "e0b030a193d7a655bedf04dfbc55f5b407ee2a54f5fabd0c12b5f43d4a094ea2",
+    "authorityReceiptPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v2/H15-M1-display-alias-authority.v1.json",
+    "authorityReceiptSha256": "9df1d40e45e15ab88590a1821186f6c44d0cbc04f33946504d59eed12a9aa423",
+    "canonicalCourseMasterSha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5",
+    "existingArchiveDbSha256": "d1d55964fe3c80ef5b69a9b7942c586bca7003633800f1ac957179d91da246e5",
+    "focusedAliasTests": {"command": "node --test --test-name-pattern='locked display aliases|H1 math-upper|H2 probability-statistics|H2 H15-M1' archive/tools/prepare-target-registration-candidate.test.mjs", "exitCode": 0, "passed": 4, "failed": 0},
+    "fullProducerTestFile": {"command": "node --test archive/tools/prepare-target-registration-candidate.test.mjs", "exitCode": 1, "passed": 20, "failed": 1, "failure": "R1_META_CORE_ADMISSION_LIVE_CITATION_SHA256_MISMATCH", "failingTest": "admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while keeping source values and manual holds", "noChangesMadeToThatAdmissionOrGate": true}
+  },
+  "dryRun": {
+    "packagePath": ".tmp/archive/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/registration-package.v3.json",
+    "packageSha256": "b4a38b2bedbbe51fb81e71d798f257610481905fb7f9e4f7ffecdaf211b94e26",
+    "receiptPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v3/target-registration.receipt.json",
+    "receiptSha256": "344e7705ea63ac6dbffd940bbf9b096dd6babbb0a62382cbb1eef144a5c41955",
+    "producerProcessCapturePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/producer-v3/producer-wrapper.process-capture.json",
+    "producerProcessCaptureSha256": "18570b51d492a8f630ea35a0af9a1bbdd769b8206576816374e84c04ad1bd114",
+    "producerExitCode": 0,
+    "targetCounts": {"identity": 20, "metadata": 20, "index": 20, "catalog": 20, "db": 1},
+    "target": {"examUid": "23_매산고_1학기_중간_고2_수학I", "grade": "고2", "course": "수학I", "courseCode": "H15-M1", "sourceQuestionCount": 20},
+    "nonTargetInvariance": {"dbExams": 561, "identityRows": 13366, "metadataRows": 13366, "indexRows": 13358, "catalogRows": 13358, "fullDeepComparison": true, "runtimeIdentityTuplesPreserved": true},
+    "catalogCandidateSha256": "e7a031c90689ccb930e81c4b828606df115fb37635c218e439f41c4fae398694",
+    "catalogIndexVersion": "110a224ed24a1a06b4e0f3cd2a0eedfe773b943200ee2cfb15192c6c20e16c22",
+    "catalogProjectionVersion": "archive2-canonical-v1:4050cdcd9a7a48e4621235c1f9a9793b0c7a6aaa6d7506ef7e6a93f4f1ac5076",
+    "primaryRegistryChanged": false,
+    "applyFlagUsed": false
+  },
+  "actualProjectionDisposition": {
+    "status": "approved_partial_with_explicit_holds",
+    "targetRowCount": 20,
+    "nullProblemTypeAndTemplateRows": {"count": 14, "qids": [1, 2, 3, 5, 6, 7, 8, 11, 13, 15, 16, 17, 18, 19]},
+    "rowsWithBothProblemTypeAndTemplate": {"count": 6, "qids": [4, 9, 10, 12, 14, 20]},
+    "currentR1EvidenceMetaDebtFieldRows": {"count": 16, "qids": [1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 19]},
+    "fieldStatusCounts": {"standardUnitApproved": 20, "subUnitApproved": 20, "conceptManualReviewPending": 20, "problemTypeManualReviewPending": 14, "templateManualReviewPending": 14, "difficultyApproved": 20},
+    "targetAutomaticCount": 0,
+    "noMetaFieldOrAutomaticEligibilityPromotion": true,
+    "note": "These are the package's actual current metadata statuses; no count was rewritten to match a requested shorthand."
+  },
+  "nextAction": "ROOT reviews the dry-run package and actual manual-hold counts, then independently decides whether to apply."
+}

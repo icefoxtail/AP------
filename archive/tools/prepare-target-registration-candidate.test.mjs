@@ -74,6 +74,35 @@ test('accepts only the canonical H2 probability-statistics identity from existin
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '23_강남여고_1학기_중간_고2_확률통계', productionRelativePath: 'archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률통계.js', grade: 'h2', course: 'H15-PS' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
 });
 
+test('accepts only the canonical H2 H15-M1 to 수학I display alias verified by course master and existing DB', () => {
+  const masterText = fs.readFileSync('docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md', 'utf8');
+  assert.match(masterText, /###\s*수학I\s*\(H15-M1\)/);
+  const existingDbContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync('archive/db.js', 'utf8'), existingDbContext);
+  const existingMathIRow = existingDbContext.window.mainDB.exams.find(row => row.file === 'original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js');
+  assert.ok(existingMathIRow);
+  assert.equal(existingMathIRow.subject, '수학I');
+  assert.equal(existingMathIRow.primaryStandardCourse, '수학I');
+  assert.equal(existingMathIRow.courseRanges[0].courseCode, 'H15-M1');
+
+  const targetUid = '23_매산고_1학기_중간_고2_수학I';
+  const targetPath = `archive/exams/original/high/h2/1mid/${targetUid}.js`;
+  const identity = parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath: targetPath, grade: 'h2', course: 'H15-M1' });
+  assert.deepEqual(identity.displayAlias, { school: '매산고', year: 2023, semester: '1', examType: 'mid', grade: '고2', subject: '수학I', contentType: '기출' });
+  const row = buildAuthorizedDbRow({
+    examUid: targetUid, productionRelativePath: targetPath, grade: 'h2', course: 'H15-M1',
+    bank: [{ id: 1, standardCourse: '수학I', standardUnitKey: 'H15-M1-03', standardUnit: '지수함수', standardUnitOrder: 3 }],
+  });
+  assert.equal(row.subject, existingMathIRow.subject);
+  assert.equal(row.primaryStandardCourse, existingMathIRow.primaryStandardCourse);
+  assert.equal(row.courseRanges[0].courseCode, existingMathIRow.courseRanges[0].courseCode);
+
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath: targetPath, grade: 'h1', course: 'H15-M1' }), /ROSTER_GRADE_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath: targetPath, grade: 'h2', course: 'H15-M2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  const wrongSubjectUid = '23_매산고_1학기_중간_고2_수학II';
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: wrongSubjectUid, productionRelativePath: `archive/exams/original/high/h2/1mid/${wrongSubjectUid}.js`, grade: 'h2', course: 'H15-M1' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+});
+
 test('builds DB course ranges from embedded approved Meta only', () => {
   const bank = [
     { id: 1, standardCourse: '수학II', standardUnitKey: 'H15-M2-01', standardUnit: '함수의 극한', standardUnitOrder: 1 },
@@ -376,7 +405,7 @@ test('admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while ke
   const examUid = '23_매산여고_1학기_중간_고2_확률과통계';
   const evidencePath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/R1.recovery.evidence.bound.json`;
   const validationPath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/R1.recovery.generic-validator.raw.json`;
-  const admissionPath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/technical-registration/producer-v1/ROOT.r1-meta-core-debt-admission.v3.json`;
+  const admissionPath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/technical-registration/test-fixtures/r1-meta-citation-current-v1/ROOT.r1-meta-core-debt-admission.v3-current-citations.v1.json`;
   const admissionBytes = fs.readFileSync(path.join(root, admissionPath));
   const admission = JSON.parse(admissionBytes.toString('utf8'));
   const supplement = JSON.parse(fs.readFileSync(path.join(root, admission.metaCoreDebtSupplement.path), 'utf8'));

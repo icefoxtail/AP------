@@ -1,0 +1,45 @@
+✔ uses only locked display aliases and roster grade/course for target DB identity (1.6514ms)
+✔ accepts the locked H1 math-upper display alias and rejects grade, path, or course contradictions (0.7028ms)
+✔ accepts only the canonical H2 probability-statistics identity from existing DB authority (7.1592ms)
+✔ accepts only the canonical H2 H15-M1 to 수학I display alias verified by course master and existing DB (4.725ms)
+✔ builds DB course ranges from embedded approved Meta only (0.3328ms)
+✔ derives target identity with the canonical UID and source fingerprint contracts (0.5973ms)
+✔ copies embedded metadata values, preserves nullable projection, and marks empty advanced fields pending (0.588ms)
+✔ appends exactly one DB row while preserving all existing DB rows (1.5524ms)
+✔ allows candidate drift only in the exact nine registration baseline files (0.1959ms)
+✔ binds a non-index0 R1 evidence path and the actual shared-validator PASS report (12.1097ms)
+✔ normalizes only explicit positive META evidence fields from heterogeneous valid R1 rows (31.0074ms)
+✔ accepts PASS_WITH_META_ONLY_DEBT only for an explicit approved template null-debt matching physical null (14.2074ms)
+✖ admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while keeping source values and manual holds (6.4731ms)
+✔ serializes a reuse R1 proof without assuming the optional Meta-debt row list exists (0.3185ms)
+✔ accepts PASS_AFTER_ITEM_RECOVERY only with cleared source status, fresh scoped R1/R2 proof, and active current artifact PASS (13.9802ms)
+✔ accepts a physically cleared q18 whose source marker was removed, only with exact scoped closure proof (17.7044ms)
+✔ requires explicit physical-clear closure evidence when the source itemStatus marker is absent (13.7367ms)
+✔ rejects a two-step clear chain when any original-map non-target hash differs from current parsed objects (17.1386ms)
+✔ rejects item-recovery PASS when q18 still HOLD, META fails, R2 does not MATCH, or artifact PASS is absent (39.5494ms)
+✔ accepts an authorized historical R1 proof only through current R3 and MAIN_DONE reuse chain (33.7502ms)
+✔ rejects R1 evidence paths that escape the trusted workspace (1.0789ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 336.7341
+
+✖ failing tests:
+
+test at archive\tools\prepare-target-registration-candidate.test.mjs:403:1
+✖ admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while keeping source values and manual holds (6.4731ms)
+  Error: R1_META_CORE_ADMISSION_LIVE_CITATION_SHA256_MISMATCH
+      at assert (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.mjs:37:25)
+      at readBoundFileBytes (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.mjs:448:3)
+      at verifyR1MetaCoreDebtAdmission (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.mjs:505:36)
+      at verifyR1MetaProof (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.mjs:417:36)
+      at verifyR1EvidenceBinding (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.mjs:859:24)
+      at TestContext.<anonymous> (file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/prepare-target-registration-candidate.test.mjs:436:17)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
