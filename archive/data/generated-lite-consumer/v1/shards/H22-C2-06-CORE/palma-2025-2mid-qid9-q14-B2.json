@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_14",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-B2.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-B2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 14,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-B2.js",
+      "sourceShardGitSha": "5c668f8022fc622d85f5f07d3965fc8303992eaa",
+      "localOrdinal": 1,
+      "l2": "H22-C2-06-CORE",
+      "slot": "B2",
+      "purposeGroup": "B",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q14-B2",
+        "level": "중",
+        "difficultyBucket": 3,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+4x+a<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+        "choices": [
+          "$a>-4$",
+          "$a\\ge-4$",
+          "$a\\le-4$",
+          "$a<-4$",
+          "$a\\ge0$"
+        ],
+        "answer": "②",
+        "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에 대하여 $-x^2+4x+a\\ge0$이다.’이다.\n$-x^2+4x+a=-(x-2)^2+a+4$이며 꼭짓점 $x=2$가 주어진 구간에 포함되므로, 구간의 최댓값은 $a+4$이다.\n따라서 부정이 참일 조건은 $a+4\\ge0$, 즉 $a\\ge-4$이다.\n경계 $a=-4$에서도 $x=2$에서 이차식이 $0$이 되므로 포함한다. 따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "B2",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+          "generatedL4RegistrySha256": "893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+          ],
+          "conditionKeys": [
+            "COND_RANGE",
+            "EXT-COND-H1-Q14-X-INTERVAL"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 3,
+          "level": "중",
+          "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+          "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE"
+        },
+        "metaFinalSha256": "6f722c052d942e73d5c39f5cdcdec7bce67b5457281b9fdd661e767fc0c0cc28",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-B2.json",
+          "sha256": "dc78cdf09b5816479c9de911870ced852ee7aa4c5162bf08e3fc8e191ddcc51c",
+          "reviewStatus": "REVIEW_PASS",
+          "uid": "ALITE-PALMA25-2MID-Q14-B2"
+        },
+        "metaReviewEvidenceSha256": "dc78cdf09b5816479c9de911870ced852ee7aa4c5162bf08e3fc8e191ddcc51c",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-244",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "generatedL4RegistrySha256": "893ae7b5ec75110119d2b68579340d12e2761d6cda052904419977d151949559",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE"
+      },
+      "metaFinalSha256": "6f722c052d942e73d5c39f5cdcdec7bce67b5457281b9fdd661e767fc0c0cc28",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-B2.json",
+        "sha256": "dc78cdf09b5816479c9de911870ced852ee7aa4c5162bf08e3fc8e191ddcc51c",
+        "reviewStatus": "REVIEW_PASS",
+        "uid": "ALITE-PALMA25-2MID-Q14-B2"
+      },
+      "metaReviewEvidenceSha256": "dc78cdf09b5816479c9de911870ced852ee7aa4c5162bf08e3fc8e191ddcc51c"
+    }
+  ],
+  "sourceShardGitSha": "5c668f8022fc622d85f5f07d3965fc8303992eaa"
+}
