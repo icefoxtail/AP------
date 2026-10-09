@@ -21,7 +21,8 @@
     11,
     12,
     13,
-    16
+    16,
+    14
   ],
   "qidLedger": [
     {
@@ -736,19 +737,70 @@
       "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
       "creationCommit": "ATOMIC_Q16_COMMIT_CONTAINING_THIS_MANIFEST",
       "status": "CREATOR_DRAFT_WAITING_ADAPTIVE_OPEN_BOOK_REVIEW"
+    },
+    {
+      "qid": 14,
+      "sourceQid": 14,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q14-A1",
+        "ALITE-PALMA25-2MID-Q14-A2",
+        "ALITE-PALMA25-2MID-Q14-A3",
+        "ALITE-PALMA25-2MID-Q14-B1",
+        "ALITE-PALMA25-2MID-Q14-B2",
+        "ALITE-PALMA25-2MID-Q14-B3",
+        "ALITE-PALMA25-2MID-Q14-C1",
+        "ALITE-PALMA25-2MID-Q14-C2",
+        "ALITE-PALMA25-2MID-Q14-C3"
+      ],
+      "lockedPrimaryL3": "명제와 조건",
+      "rpmRecordIds": [
+        "H1-RPM-244"
+      ],
+      "rpmBindingStatus": "DIRECT_ACTIVE_L3_GENERATED_L4_CREATOR_DRAFT",
+      "activeProblemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q14_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q14_STEM_SELF_REVIEW.md",
+        "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json"
+      ],
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "selfReverseStem": "KEEP8_REVISED1_HOLD0",
+      "mathSpotChecks": "6_RANGE_SYMBOLIC_AND_BOUNDARY;3_DISCRETE_EXHAUSTIVE",
+      "distractorProof": "36_OF_36",
+      "visualStatus": "NOT_REQUIRED_ALL_STEMS_SELF_CONTAINED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "releasedCount": 0,
+      "consumerRegistrationStatus": "NOT_REGISTERED",
+      "studentLookupVerifiedCount": 0,
+      "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
+      "creationCommit": "ATOMIC_Q14_COMMIT_CONTAINING_THIS_MANIFEST",
+      "status": "CREATOR_DRAFT_WAITING_ADAPTIVE_OPEN_BOOK_REVIEW"
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 126,
+    "newCreateDraftTotal": 135,
     "newCreateDraftByGroup": {
-      "A": 42,
-      "B": 42,
-      "C": 42
+      "A": 45,
+      "B": 45,
+      "C": 45
     },
-    "uniqueGeneratedUids": 126,
+    "uniqueGeneratedUids": 135,
     "openBookQualityReviewed": 36,
     "studentSupplyNew": 72,
-    "reviewQueue": 18,
+    "reviewQueue": 27,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 108,
     "contentReviewKeep": 54,
@@ -816,9 +868,16 @@
     "q16Revised": 0,
     "q16Hold": 0,
     "q16DistractorEvidence": 36,
-    "q16SourceOriginalBraceFinding": "OPEN_PROVENANCE_NOT_COPIED_INTO_GENERATED_STEMS"
+    "q16SourceOriginalBraceFinding": "OPEN_PROVENANCE_NOT_COPIED_INTO_GENERATED_STEMS",
+    "q14AuthorSelfReviewComplete": 9,
+    "q14Keep": 8,
+    "q14Revised": 1,
+    "q14Hold": 0,
+    "q14GeneratedL4ExtensionDefinitions": 3,
+    "q14GeneratedCrossConceptExtensionDefinitions": 3,
+    "q14GeneratedConditionExtensionDefinitions": 3
   },
-  "nextSourceQid": 14,
+  "nextSourceQid": 15,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "Q01_Q04_MAIN_DONE_36_PLUS_Q05_Q08_MAIN_STATIC_REGISTERED_36_CHROME_NOT_TESTED_PLUS_Q09_CREATE_ONLY_9 PLUS_Q10_CREATE_ONLY_9 PLUS_Q11_CREATE_ONLY_9 PLUS_Q12_CREATE_ONLY_9",
   "workflow": {
@@ -884,7 +943,7 @@
       }
     ]
   },
-  "lastSourceQidCreated": 16,
+  "lastSourceQidCreated": 14,
   "q05toQ08Review": {
     "date": "2026-10-09",
     "scope": "Q05-Q08 A1-C3",
@@ -1010,6 +1069,18 @@
     "chromiumTest": "NOT_TESTED",
     "sourceUnchanged": true,
     "parentRpmL3": "H1-RPM-234",
+    "previousQidProtected": true
+  },
+  "q14CreatorOnly": {
+    "scope": "Q14 A1-C3",
+    "uidCount": 9,
+    "creatorSelfReview": "KEEP8_REVISED1_HOLD0",
+    "l3": "H1-RPM-244",
+    "actualMathEvidence": "6 symbolic-real-boundary cases, 3 exhaustive-integer cases",
+    "openBookReviewed": 0,
+    "consumerRegistered": 0,
+    "chromiumTest": "NOT_TESTED",
+    "sourceUnchanged": true,
     "previousQidProtected": true
   }
 }

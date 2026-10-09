@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_EXT_META_QID14_V1",
+  "status": "CREATOR_CANDIDATE_ONLY",
+  "curriculum": "2022",
+  "standardCourse": "공통수학2",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "parentRPMPrimaryL3RecordId": "H1-RPM-244",
+  "sourceQid": 14,
+  "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "scope": "GENERATED_ONLY_RPM_LOCKED_UNMODIFIED",
+  "crossConcepts": [
+    {
+      "id": "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+      "labelKo": "이차함수 꼭짓점·최댓값 또는 최솟값",
+      "role": "양화된 이차부등식을 꼭짓점의 최대·최소 판단으로 번역",
+      "prerequisiteRpmRecordRef": "H1-RPM-170",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-A1",
+        "ALITE-PALMA25-2MID-Q14-A2",
+        "ALITE-PALMA25-2MID-Q14-A3",
+        "ALITE-PALMA25-2MID-Q14-B1",
+        "ALITE-PALMA25-2MID-Q14-B2",
+        "ALITE-PALMA25-2MID-Q14-B3",
+        "ALITE-PALMA25-2MID-Q14-C1",
+        "ALITE-PALMA25-2MID-Q14-C2",
+        "ALITE-PALMA25-2MID-Q14-C3"
+      ]
+    },
+    {
+      "id": "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA",
+      "labelKo": "닫힌 구간 위 이차함수의 최댓값",
+      "role": "x 범위 제한에서 꼭짓점·끝점 위치를 판단",
+      "prerequisiteRpmRecordRef": "H1-RPM-170",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-B2",
+        "ALITE-PALMA25-2MID-Q14-C1"
+      ]
+    },
+    {
+      "id": "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT",
+      "labelKo": "매개변수 정수 범위와 경계 원소의 개수",
+      "role": "부정 명제의 해집합과 정수 범위를 교차하여 원소 수 또는 역조건 계산",
+      "prerequisiteRpmRecordRef": "H1-RPM-170",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-B3",
+        "ALITE-PALMA25-2MID-Q14-C2",
+        "ALITE-PALMA25-2MID-Q14-C3"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "EXT-COND-H1-Q14-X-INTERVAL",
+      "labelKo": "x의 제한 정의역 0≤x≤2",
+      "definition": "전칭/존재 명제의 실수 x를 닫힌 구간 [0,2]로 제한",
+      "parentRPMPrimaryL3RecordId": "H1-RPM-244",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-B2",
+        "ALITE-PALMA25-2MID-Q14-C1"
+      ]
+    },
+    {
+      "id": "EXT-COND-H1-Q14-BOTH-NEGATIONS",
+      "labelKo": "두 전칭명제의 부정이 모두 참",
+      "definition": "두 존재 반례 조건의 매개변수 해집합 교집합",
+      "parentRPMPrimaryL3RecordId": "H1-RPM-244",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-C2"
+      ]
+    },
+    {
+      "id": "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES",
+      "labelKo": "부정이 참인 정수 매개변수 정확히 6개",
+      "definition": "정수 a의 개수를 이용해 자연수 k의 범위를 결정",
+      "parentRPMPrimaryL3RecordId": "H1-RPM-244",
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q14-C3"
+      ]
+    }
+  ],
+  "existingConditionKeyUsageReferences": [
+    "COND_RANGE",
+    "COND_INTEGER",
+    "COND_NATURAL_NUMBER"
+  ],
+  "duplicateSafetyNote": "H1-RPM-244 and Q02 Generated QUANTIFIER-NEGATION reused; new keys only specify restricted-domain, dual-negation or inverse-count distinctions. No claims of RPM promotion.",
+  "consumerState": "NOT_REGISTERED_CREATOR_DRAFT"
+}

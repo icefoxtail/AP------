@@ -1,0 +1,1281 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 14,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "명제 ‘모든 $x$에 대하여 $-x^2+ax-5<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위를 구하시오. [4.5점]",
+    "storedSourceChoices": [
+      "$a\\le-2\\sqrt5$ 또는 $a\\ge2\\sqrt5$",
+      "$-2\\sqrt5\\le a\\le2\\sqrt5$",
+      "$a<-2\\sqrt5$ 또는 $a>2\\sqrt5$",
+      "$-2\\sqrt5<a<2\\sqrt5$",
+      "$-5\\le a\\le5$"
+    ],
+    "storedSourceAnswer": "①",
+    "sourceProblemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "sourceTemplateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+    "sourceStandardUnitKey": "H22-C2-06",
+    "sourceSubUnitKey": "H22-C2-06-CORE",
+    "computedTruth": "¬(∀x: -x²+ax−5<0) ⇔ ∃x: -x²+ax−5≥0 ⇔ a²≥20",
+    "sourceOriginalAssetReference": null,
+    "protectedOriginalJs": true
+  },
+  "lockedPrimaryL3": "명제와 조건",
+  "rpmEvidence": {
+    "l1": "집합과 명제",
+    "l2": "명제",
+    "l3": "명제와 조건",
+    "recordId": "H1-RPM-244",
+    "l4": "명제의 참·거짓",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "templateKeys": [
+      "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+      "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "TPL_QUANTIFIER_NEGATION_INTERVAL",
+      "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json"
+  },
+  "experiencePlan": {
+    "A": "전 실수 이차식의 엄격 부등식 부정과 최댓값의 0 이상 조건 수치변형",
+    "B": "존재명제의 부정 전환, 닫힌 x구간, 정수 매개변수 개수",
+    "C": "구간 안팎 꼭짓점 분기, 두 전칭명제 부정의 공통 범위, 정수 반례 개수로 상수 역산"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "finalInputCount": 9,
+    "studentStemReverseReading": 9,
+    "keep": 8,
+    "revised": 1,
+    "hold": 0,
+    "answerFiveUnique": 9,
+    "distractorIndexedPaths": 36,
+    "mathematicalCalculationReproducedByCreator": 9,
+    "realVariableSamplesAndBoundaryModels": "A1/A2/A3/B1/B2/C1",
+    "exhaustiveDiscreteVerifications": {
+      "B3": {
+        "answer": 6,
+        "values": [
+          -8,
+          -7,
+          -6,
+          6,
+          7,
+          8
+        ]
+      },
+      "C2": {
+        "answer": 7,
+        "values": [
+          -6,
+          -5,
+          -4,
+          -3,
+          6,
+          7,
+          8
+        ],
+        "afterStemRevised": true
+      },
+      "C3": {
+        "sum": 35,
+        "values": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    "correctedStem": {
+      "uid": "ALITE-PALMA25-2MID-Q14-C2",
+      "before": "$-6\\le a\\le8$인 정수 $a$에 대하여 두 명제<br>$p$: ‘모든 실수 $x$에 대하여 $-x^2+2ax-9<0$이다.’<br>$q$: ‘모든 실수 $x$에 대하여 $-x^2+2(a-4)x-4<0$이다.’<br>의 부정이 모두 참이 되도록 하는 $a$의 개수는?",
+      "after": "$-6\\le a\\le8$인 정수 $a$에 대하여 두 명제<br>$p$: ‘모든 실수 $x$에 대하여 $-x^2+2ax-9<0$이다.’<br>$q$: ‘모든 실수 $x$에 대하여 $-x^2+2(a-4)x-4<0$이다.’<br>명제 $p$의 부정과 명제 $q$의 부정이 모두 참이 되도록 하는 $a$의 개수는?",
+      "effect": "Clarifies that both ¬p and ¬q must hold; revised final stem recounted 7 integer a"
+    },
+    "rubric": "AUTHOR_SELF_CHECK_ONLY; GPT_OPEN_BOOK_QUALITY_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+    "studentAssetRequired": 0,
+    "approvedStudentUids": 0
+  },
+  "generatedL4RegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+  "generatedCrossConceptRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-A1",
+      "slot": "A1",
+      "sourceQid": 14,
+      "mode": "STRICT_VARIANT",
+      "stem": "명제 ‘모든 실수 $x$에 대하여 $-x^2+ax-9<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a<-6$ 또는 $a>6$",
+        "$-6<a<6$",
+        "$a\\le-6$ 또는 $a\\ge6$",
+        "$-6\\le a\\le6$",
+        "$a\\le-3$ 또는 $a\\ge3$"
+      ],
+      "answer": "③",
+      "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에 대하여 $-x^2+ax-9\\ge0$이다.’이다.\n$-x^2+ax-9=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-9$이므로 최댓값은 $\\dfrac{a^2}{4}-9$이다.\n부정 명제가 참이려면 최댓값이 $0$ 이상이어야 하므로 $\\dfrac{a^2}{4}-9\\ge0$, 즉 $a^2\\ge36$이다.\n따라서 $a\\le-6$ 또는 $a\\ge6$이다. 등호에서 식의 값이 $0$이 되는 실수가 존재하므로 경계도 포함한다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "0에서의 등호를 제외: $a^2/4-9>0\\Rightarrow a<-6$ 또는 $a>6$ → $a<-6$ 또는 $a>6$",
+        "②": "부정 대신 원래 명제를 검사: $a^2/4-9<0\\Rightarrow -6<a<6$ → $-6<a<6$",
+        "④": "부등호 방향을 반대로 적용: $a^2/4-9\\le0\\Rightarrow -6\\le a\\le6$ → $-6\\le a\\le6$",
+        "⑤": "최댓값 계산에서 분모 4 누락: $a^2-9\\ge0\\Rightarrow |a|\\ge3$ → $a\\le-3$ 또는 $a\\ge3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "0에서의 등호를 제외",
+          "calculation": "$a^2/4-9>0\\Rightarrow a<-6$ 또는 $a>6$",
+          "matchedChoice": "$a<-6$ 또는 $a>6$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "②",
+          "mistake": "부정 대신 원래 명제를 검사",
+          "calculation": "$a^2/4-9<0\\Rightarrow -6<a<6$",
+          "matchedChoice": "$-6<a<6$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "부등호 방향을 반대로 적용",
+          "calculation": "$a^2/4-9\\le0\\Rightarrow -6\\le a\\le6$",
+          "matchedChoice": "$-6\\le a\\le6$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "최댓값 계산에서 분모 4 누락",
+          "calculation": "$a^2-9\\ge0\\Rightarrow |a|\\ge3$",
+          "matchedChoice": "$a\\le-3$ 또는 $a\\ge3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "전칭 음수 부정→존재 비음수→이차식 최댓값과 등호",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "전칭 음수 부정→존재 비음수→이차식 최댓값과 등호",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "A1",
+        "answer": "③",
+        "equivalentOptionPositions": [
+          3
+        ]
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "l4ReusedFromQ02": true,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값"
+        ],
+        "conditionKeys": [],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "기출 수치변형·동일 풀이",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-A2",
+      "slot": "A2",
+      "sourceQid": 14,
+      "mode": "STRICT_VARIANT",
+      "stem": "명제 ‘모든 실수 $x$에 대하여 $-2x^2+ax-8<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a\\le-4$ 또는 $a\\ge4$",
+        "$-8\\le a\\le8$",
+        "$a<-8$ 또는 $a>8$",
+        "$-8<a<8$",
+        "$a\\le-8$ 또는 $a\\ge8$"
+      ],
+      "answer": "⑤",
+      "solution": "부정 명제는 ‘어떤 실수 $x$에서 $-2x^2+ax-8\\ge0$이다.’이다.\n$-2x^2+ax-8=-2\\left(x-\\dfrac a4\\right)^2+\\dfrac{a^2}{8}-8$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge64$이다.\n따라서 $a\\le-8$ 또는 $a\\ge8$이다. 등호인 경우에도 최댓값 $0$을 갖는 실수가 존재한다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "최댓값 분모 8을 2로 잘못 계산: $a^2/2-8\\ge0\\Rightarrow |a|\\ge4$ → $a\\le-4$ 또는 $a\\ge4$",
+        "②": "최댓값의 부등호를 반대로 적용: $a^2/8-8\\le0\\Rightarrow -8\\le a\\le8$ → $-8\\le a\\le8$",
+        "③": "등호를 허용하지 않음: $a^2/8-8>0\\Rightarrow |a|>8$ → $a<-8$ 또는 $a>8$",
+        "④": "원래 명제의 참 조건을 선택: $a^2/8-8<0\\Rightarrow -8<a<8$ → $-8<a<8$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "최댓값 분모 8을 2로 잘못 계산",
+          "calculation": "$a^2/2-8\\ge0\\Rightarrow |a|\\ge4$",
+          "matchedChoice": "$a\\le-4$ 또는 $a\\ge4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "②",
+          "mistake": "최댓값의 부등호를 반대로 적용",
+          "calculation": "$a^2/8-8\\le0\\Rightarrow -8\\le a\\le8$",
+          "matchedChoice": "$-8\\le a\\le8$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "등호를 허용하지 않음",
+          "calculation": "$a^2/8-8>0\\Rightarrow |a|>8$",
+          "matchedChoice": "$a<-8$ 또는 $a>8$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "원래 명제의 참 조건을 선택",
+          "calculation": "$a^2/8-8<0\\Rightarrow -8<a<8$",
+          "matchedChoice": "$-8<a<8$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "전칭명제를 존재명제로 부정→-2x²의 꼭짓점·최댓값 판정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "전칭명제를 존재명제로 부정→-2x²의 꼭짓점·최댓값 판정",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "A2",
+        "answer": "⑤",
+        "equivalentOptionPositions": [
+          5
+        ]
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "l4ReusedFromQ02": true,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값"
+        ],
+        "conditionKeys": [],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "이차항 계수만 바꾸어 원형과 동일한 풀이",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-A3",
+      "slot": "A3",
+      "sourceQid": 14,
+      "mode": "STRICT_VARIANT",
+      "stem": "명제 ‘모든 실수 $x$에 대하여 $-x^2+2ax-16<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a\\le-4$ 또는 $a\\ge4$",
+        "$a<-4$ 또는 $a>4$",
+        "$-4<a<4$",
+        "$a\\le-8$ 또는 $a\\ge8$",
+        "$-4\\le a\\le4$"
+      ],
+      "answer": "①",
+      "solution": "부정 명제는 ‘어떤 실수 $x$에 대하여 $-x^2+2ax-16\\ge0$이다.’이다.\n$-x^2+2ax-16=-(x-a)^2+a^2-16$이므로 최댓값은 $a^2-16$이다.\n최댓값이 $0$ 이상이면 부정이 참이다. 따라서 $a^2\\ge16$이므로 $a\\le-4$ 또는 $a\\ge4$이다.\n등호에서는 $x=a$에서 식의 값이 $0$이므로 경계를 포함한다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "0에서의 등호 누락: $a^2-16>0\\Rightarrow |a|>4$ → $a<-4$ 또는 $a>4$",
+        "③": "원래 명제의 참 조건을 선택: $a^2-16<0\\Rightarrow -4<a<4$ → $-4<a<4$",
+        "④": "일차항 2ax의 계수 2를 누락: $-x^2+ax-16$의 최댓값 $a^2/4-16\\ge0\\Rightarrow |a|\\ge8$ → $a\\le-8$ 또는 $a\\ge8$",
+        "⑤": "최댓값 부호를 반대로 판정: $a^2-16\\le0\\Rightarrow -4\\le a\\le4$ → $-4\\le a\\le4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "0에서의 등호 누락",
+          "calculation": "$a^2-16>0\\Rightarrow |a|>4$",
+          "matchedChoice": "$a<-4$ 또는 $a>4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "원래 명제의 참 조건을 선택",
+          "calculation": "$a^2-16<0\\Rightarrow -4<a<4$",
+          "matchedChoice": "$-4<a<4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "일차항 2ax의 계수 2를 누락",
+          "calculation": "$-x^2+ax-16$의 최댓값 $a^2/4-16\\ge0\\Rightarrow |a|\\ge8$",
+          "matchedChoice": "$a\\le-8$ 또는 $a\\ge8$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "최댓값 부호를 반대로 판정",
+          "calculation": "$a^2-16\\le0\\Rightarrow -4\\le a\\le4$",
+          "matchedChoice": "$-4\\le a\\le4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "2ax의 완전제곱→0 이상 존재성→양쪽 경계 판정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "2ax의 완전제곱→0 이상 존재성→양쪽 경계 판정",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "A3",
+        "answer": "①",
+        "equivalentOptionPositions": [
+          1
+        ]
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "l4ReusedFromQ02": true,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값"
+        ],
+        "conditionKeys": [],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "원본의 결정적 판단을 그대로 유지하는 계수변형",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-B1",
+      "slot": "B1",
+      "sourceQid": 14,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "명제 ‘어떤 실수 $x$에 대하여 $x^2-4x+a\\le0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a\\ge4$",
+        "$a<4$",
+        "$a\\le4$",
+        "$a>4$",
+        "$a>-4$"
+      ],
+      "answer": "④",
+      "solution": "‘어떤 실수 $x$에 대하여 $x^2-4x+a\\le0$이다.’의 부정은 ‘모든 실수 $x$에 대하여 $x^2-4x+a>0$이다.’이다.\n$x^2-4x+a=(x-2)^2+a-4$이므로 최솟값은 $a-4$이다.\n모든 실수에서 양수이려면 최솟값이 $0$보다 커야 하므로 $a-4>0$이다.\n$a=4$에서는 $x=2$일 때 $0$이 되어 원래 명제가 참이므로 경계는 제외한다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "원래 명제의 ≤를 부정할 때도 등호를 남김: $a-4\\ge0\\Rightarrow a\\ge4$ → $a\\ge4$",
+        "②": "최솟값의 부등호를 반대로 적용: $a-4<0\\Rightarrow a<4$ → $a<4$",
+        "③": "부정 대신 존재명제의 참 조건을 계산: $a-4\\le0\\Rightarrow a\\le4$ → $a\\le4$",
+        "⑤": "완전제곱에서 상수 -4를 +4로 착각: $(x-2)^2+a+4>0\\Rightarrow a>-4$ → $a>-4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "원래 명제의 ≤를 부정할 때도 등호를 남김",
+          "calculation": "$a-4\\ge0\\Rightarrow a\\ge4$",
+          "matchedChoice": "$a\\ge4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "②",
+          "mistake": "최솟값의 부등호를 반대로 적용",
+          "calculation": "$a-4<0\\Rightarrow a<4$",
+          "matchedChoice": "$a<4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "부정 대신 존재명제의 참 조건을 계산",
+          "calculation": "$a-4\\le0\\Rightarrow a\\le4$",
+          "matchedChoice": "$a\\le4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "완전제곱에서 상수 -4를 +4로 착각",
+          "calculation": "$(x-2)^2+a+4>0\\Rightarrow a>-4$",
+          "matchedChoice": "$a>-4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "존재명제의 부정과 전 실수 양수 조건",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "어떤 x에서 0 이하의 부정은 모든 x에서 양수→이차함수 최솟값의 엄격 경계",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "B1",
+        "answer": "④",
+        "eqPosition": 4,
+        "method": "FINITE_BOUNDARY_SAMPLES"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "l4ReusedFromQ02": true,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값"
+        ],
+        "conditionKeys": [],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "원본과 양화사 방향 반대로 변경·엄격 경계 판별",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-B2",
+      "slot": "B2",
+      "sourceQid": 14,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+4x+a<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a>-4$",
+        "$a\\ge-4$",
+        "$a\\le-4$",
+        "$a<-4$",
+        "$a\\ge0$"
+      ],
+      "answer": "②",
+      "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에 대하여 $-x^2+4x+a\\ge0$이다.’이다.\n$-x^2+4x+a=-(x-2)^2+a+4$이며 꼭짓점 $x=2$가 주어진 구간에 포함되므로, 구간의 최댓값은 $a+4$이다.\n따라서 부정이 참일 조건은 $a+4\\ge0$, 즉 $a\\ge-4$이다.\n경계 $a=-4$에서도 $x=2$에서 이차식이 $0$이 되므로 포함한다. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "최댓값 0인 경우를 제외: $a+4>0\\Rightarrow a>-4$ → $a>-4$",
+        "③": "부정에서 최대≥0을 최대≤0으로 바꿈: $a+4\\le0\\Rightarrow a\\le-4$ → $a\\le-4$",
+        "④": "원래 전칭명제의 참 범위를 답함: $a+4<0\\Rightarrow a<-4$ → $a<-4$",
+        "⑤": "x=0 하나에서 존재 여부를 판정: $f(0)=a\\ge0\\Rightarrow a\\ge0$ → $a\\ge0$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "최댓값 0인 경우를 제외",
+          "calculation": "$a+4>0\\Rightarrow a>-4$",
+          "matchedChoice": "$a>-4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "부정에서 최대≥0을 최대≤0으로 바꿈",
+          "calculation": "$a+4\\le0\\Rightarrow a\\le-4$",
+          "matchedChoice": "$a\\le-4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "원래 전칭명제의 참 범위를 답함",
+          "calculation": "$a+4<0\\Rightarrow a<-4$",
+          "matchedChoice": "$a<-4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "x=0 하나에서 존재 여부를 판정",
+          "calculation": "$f(0)=a\\ge0\\Rightarrow a\\ge0$",
+          "matchedChoice": "$a\\ge0$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "변수 x 구간 범위가 주어진 양화명제, 내부/경계점 최대",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "구간 내 전칭명제의 부정→존재 x→구간 안 꼭짓점에서 최대 0 이상",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "B2",
+        "answer": "②",
+        "eqPosition": 2,
+        "method": "FINITE_BOUNDARY_SAMPLES"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "l4ReusedFromQ02": false,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값",
+          "닫힌 구간 위 이차함수의 최댓값"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [
+          "COND_RANGE",
+          "x의 제한 정의역 0≤x≤2"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyBasis": "원본과 같은 명제의 부정에 제한된 정의역 해석 추가",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-B3",
+      "slot": "B3",
+      "sourceQid": 14,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$-8\\le a\\le8$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+ax-9<0$이다.’의 부정이 참이 되도록 하는 $a$의 개수는?",
+      "choices": [
+        "$4$",
+        "$12$",
+        "$3$",
+        "$6$",
+        "$17$"
+      ],
+      "answer": "④",
+      "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+ax-9\\ge0$이다.’이다.\n$-x^2+ax-9=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-9$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge36$이다.\n따라서 $a\\le-6$ 또는 $a\\ge6$이고, $-8\\le a\\le8$인 정수 중 가능한 것은 $-8,-7,-6,6,7,8$의 $6$개이다.\n$a=\\pm6$에서도 식이 $0$이 되는 $x$가 존재하므로 포함한다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "등호인 a=±6을 누락: $|a|>6$으로 잘못 풀어 $-8,-7,7,8$: 4개 → $4$",
+        "②": "최댓값 계산에서 분모 4 누락: $a^2-9\\ge0\\Rightarrow |a|\\ge3$, 정수 ±3부터 ±8까지 12개 → $12$",
+        "③": "음수 a에 해당하는 경우를 제외: $a=6,7,8$: 3개 → $3$",
+        "⑤": "명제의 참 조건을 적용하지 않고 a 범위 전체를 셈: $-8,-7,\\dots,8$: $8-(-8)+1=17$개 → $17$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "등호인 a=±6을 누락",
+          "calculation": "$|a|>6$으로 잘못 풀어 $-8,-7,7,8$: 4개",
+          "matchedChoice": "$4$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "②",
+          "mistake": "최댓값 계산에서 분모 4 누락",
+          "calculation": "$a^2-9\\ge0\\Rightarrow |a|\\ge3$, 정수 ±3부터 ±8까지 12개",
+          "matchedChoice": "$12$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "음수 a에 해당하는 경우를 제외",
+          "calculation": "$a=6,7,8$: 3개",
+          "matchedChoice": "$3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "명제의 참 조건을 적용하지 않고 a 범위 전체를 셈",
+          "calculation": "$-8,-7,\\dots,8$: $8-(-8)+1=17$개",
+          "matchedChoice": "$17$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "모든/어떤 판정 후 정수 매개변수 개수 결정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "전칭 부정으로 매개변수 양쪽 범위→정수 경계 세기",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "B3",
+        "answer": "④",
+        "answerValues": [
+          -8,
+          -7,
+          -6,
+          6,
+          7,
+          8
+        ],
+        "method": "EXHAUSTIVE_INTEGER_RANGE"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "l4ReusedFromQ02": true,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값",
+          "매개변수 정수 범위와 경계 원소의 개수"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "difficultyBasis": "원본의 부정과 새로운 정수 범위 판단 결합",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-C1",
+      "slot": "C1",
+      "sourceQid": 14,
+      "mode": "TYPE_BANK",
+      "stem": "명제 ‘$0\\le x\\le2$인 모든 실수 $x$에 대하여 $-x^2+2ax-3<0$이다.’의 부정이 참이 되도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a\\ge\\sqrt3$",
+        "$a>\\sqrt3$",
+        "$a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+        "$a\\ge\\dfrac74$",
+        "$a\\le\\sqrt3$"
+      ],
+      "answer": "①",
+      "solution": "부정 명제는 ‘$0\\le x\\le2$인 어떤 실수 $x$에서 $-x^2+2ax-3\\ge0$이다.’이다.\n함수 $f(x)=-x^2+2ax-3=-(x-a)^2+a^2-3$을 구간 $0\\le x\\le2$에서 살펴보자.\n$a\\le0$이면 $0\\le x\\le2$에서 $-x^2\\le0$, $2ax\\le0$이므로 $f(x)\\le-3<0$이다.\n$0<a\\le2$이면 꼭짓점 $x=a$가 구간 안에 있으므로 최댓값 $a^2-3\\ge0$, 즉 $\\sqrt3\\le a\\le2$여야 한다.\n$a>2$이면 구간에서 $f(x)$가 증가하여 최댓값은 $f(2)=4a-7>0$이다.\n세 경우를 합치면 $a\\ge\\sqrt3$이다. $a=\\sqrt3$에서도 $x=\\sqrt3$에서 최댓값 $0$을 가지므로 경계를 포함한다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "최댓값이 0인 경우에도 부정이 참임을 놓침: $a=\\sqrt3$에서 $f(\\sqrt3)=0$인데 이를 제외하여 $a>\\sqrt3$ → $a>\\sqrt3$",
+        "③": "x의 정의역 [0,2]를 잊고 전 실수 범위를 대상으로 계산: 전 실수 최댓값 $a^2-3\\ge0\\Rightarrow a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$ → $a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+        "④": "꼭짓점이 구간 안에 오는 경우를 누락하고 끝점 x=2만 검사: $f(2)=4a-7\\ge0\\Rightarrow a\\ge\\dfrac74$ → $a\\ge\\dfrac74$",
+        "⑤": "부정의 비음수 존재조건 대신 구간에서의 최댓값이 비양수인 조건을 선택: $\\max_{0\\le x\\le2}f(x)\\le0\\Rightarrow a\\le\\sqrt3$ → $a\\le\\sqrt3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "최댓값이 0인 경우에도 부정이 참임을 놓침",
+          "calculation": "$a=\\sqrt3$에서 $f(\\sqrt3)=0$인데 이를 제외하여 $a>\\sqrt3$",
+          "matchedChoice": "$a>\\sqrt3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "x의 정의역 [0,2]를 잊고 전 실수 범위를 대상으로 계산",
+          "calculation": "전 실수 최댓값 $a^2-3\\ge0\\Rightarrow a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+          "matchedChoice": "$a\\le-\\sqrt3$ 또는 $a\\ge\\sqrt3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "꼭짓점이 구간 안에 오는 경우를 누락하고 끝점 x=2만 검사",
+          "calculation": "$f(2)=4a-7\\ge0\\Rightarrow a\\ge\\dfrac74$",
+          "matchedChoice": "$a\\ge\\dfrac74$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "부정의 비음수 존재조건 대신 구간에서의 최댓값이 비양수인 조건을 선택",
+          "calculation": "$\\max_{0\\le x\\le2}f(x)\\le0\\Rightarrow a\\le\\sqrt3$",
+          "matchedChoice": "$a\\le\\sqrt3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "꼭짓점의 위치 변화에 따른 구간 최댓값과 양화 부정",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "제한된 구간의 전칭 부정→존재 x→꼭짓점이 구간 안팎일 때 분기→a 경계",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "C1",
+        "answer": "①",
+        "eqPosition": 1,
+        "method": "BOUNDARY_AND_SEGMENT_SAMPLE"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q14-RESTRICTED-DOMAIN|제한된 정의역에서 양화명제 부정의 참 조건",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "l4ReusedFromQ02": false,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTERVAL-EXTREMA"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값",
+          "닫힌 구간 위 이차함수의 최댓값"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-X-INTERVAL"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [
+          "COND_RANGE",
+          "x의 제한 정의역 0≤x≤2"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "difficultyBasis": "구간 위치 세 분기, 등호 반례 및 결과의 일관성",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-C2",
+      "slot": "C2",
+      "sourceQid": 14,
+      "mode": "TYPE_BANK",
+      "stem": "$-6\\le a\\le8$인 정수 $a$에 대하여 두 명제<br>$p$: ‘모든 실수 $x$에 대하여 $-x^2+2ax-9<0$이다.’<br>$q$: ‘모든 실수 $x$에 대하여 $-x^2+2(a-4)x-4<0$이다.’<br>명제 $p$의 부정과 명제 $q$의 부정이 모두 참이 되도록 하는 $a$의 개수는?",
+      "choices": [
+        "$15$",
+        "$7$",
+        "$10$",
+        "$12$",
+        "$3$"
+      ],
+      "answer": "②",
+      "solution": "두 명제의 부정이 모두 참이려면 각각 어떤 실수 $x$에서 해당 이차식이 $0$ 이상이어야 한다. $p$와 $q$의 반례가 되는 $x$는 서로 달라도 된다.\n$p$의 이차식은 $-x^2+2ax-9=-(x-a)^2+a^2-9$이므로, $p$의 부정은 $a^2\\ge9$, 즉 $a\\le-3$ 또는 $a\\ge3$일 때 참이다.\n$q$의 이차식은 $-x^2+2(a-4)x-4=-(x-a+4)^2+(a-4)^2-4$이므로, $q$의 부정은 $(a-4)^2\\ge4$, 즉 $a\\le2$ 또는 $a\\ge6$일 때 참이다.\n두 조건의 공통 범위는 $a\\le-3$ 또는 $a\\ge6$이다.\n$-6\\le a\\le8$인 정수 중 $-6,-5,-4,-3$의 $4$개와 $6,7,8$의 $3$개로 모두 $7$개이다.\n따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "두 부정이 모두가 아니라 하나만 참이어도 된다고 계산: 두 범위의 합집합은 [-6,8]의 정수 전체: 15개 → $15$",
+        "③": "p의 부정이 참인 정수만 계산: $a=-6,-5,-4,-3,3,4,5,6,7,8$: 10개 → $10$",
+        "④": "q의 부정이 참인 정수만 계산: $a=-6,-5,\\dots,2$의 9개와 $6,7,8$의 3개: 12개 → $12$",
+        "⑤": "교집합 중 양수 범위만 남기고 음수 경우를 누락: $a=6,7,8$: 3개 → $3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 부정이 모두가 아니라 하나만 참이어도 된다고 계산",
+          "calculation": "두 범위의 합집합은 [-6,8]의 정수 전체: 15개",
+          "matchedChoice": "$15$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "③",
+          "mistake": "p의 부정이 참인 정수만 계산",
+          "calculation": "$a=-6,-5,-4,-3,3,4,5,6,7,8$: 10개",
+          "matchedChoice": "$10$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "q의 부정이 참인 정수만 계산",
+          "calculation": "$a=-6,-5,\\dots,2$의 9개와 $6,7,8$의 3개: 12개",
+          "matchedChoice": "$12$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "교집합 중 양수 범위만 남기고 음수 경우를 누락",
+          "calculation": "$a=6,7,8$: 3개",
+          "matchedChoice": "$3$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "두 개의 존재 반례 조건을 동시에 만족하는 정수 매개변수",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q14-DUAL-QUANTIFIER",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "REVISED",
+      "authorReverseStemReading": "서로 다른 전칭명제의 부정을 각각 계산→두 매개변수 영역 교집합→정수 개수",
+      "changedMathRecheck": "STUDENT_STEM_REFERENT_REVISED; BOTH_NEGATION_INTEGER_COUNT_FRESH_7",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "C2",
+        "answer": "②",
+        "truth": 7,
+        "values": [
+          -6,
+          -5,
+          -4,
+          -3,
+          6,
+          7,
+          8
+        ],
+        "method": "EXHAUSTIVE_DISCRETE_CASE_VERIFICATION"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q14-DUAL-QUANTIFIER|두 양화명제의 부정 동시 성립",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "l4ReusedFromQ02": false,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값",
+          "매개변수 정수 범위와 경계 원소의 개수"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "EXT-COND-H1-Q14-BOTH-NEGATIONS"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "두 전칭명제의 부정이 모두 참"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "difficultyBasis": "범위 두 개의 교집합 + 정수 경계 세기",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q14-C3",
+      "slot": "C3",
+      "sourceQid": 14,
+      "mode": "TYPE_BANK",
+      "stem": "자연수 $k$와 $-5\\le a\\le5$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+2ax-k<0$이다.’를 생각하자. 이 명제의 부정이 참이 되는 정수 $a$가 정확히 $6$개일 때, 가능한 모든 $k$의 값의 합은?",
+      "choices": [
+        "$39$",
+        "$26$",
+        "$35$",
+        "$45$",
+        "$9$"
+      ],
+      "answer": "③",
+      "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+2ax-k\\ge0$이다.’이다.\n$-x^2+2ax-k=-(x-a)^2+a^2-k$이므로, 부정 명제가 참일 조건은 최댓값 $a^2-k\\ge0$, 즉 $a^2\\ge k$이다.\n$-5\\le a\\le5$인 정수 가운데 이를 만족하는 값이 정확히 $6$개이면 $a=-5,-4,-3,3,4,5$여야 한다.\n따라서 $a=\\pm3$에서는 $3^2\\ge k$가 성립하고, $a=\\pm2$에서는 $2^2<k$여야 한다.\n즉 $4<k\\le9$이다. 자연수 $k$는 $5,6,7,8,9$이며 합은 $5+6+7+8+9=35$이다.\n따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "a=±2까지 포함되는 k=4를 허용: $k=4,5,6,7,8,9$, 합 $39$ → $39$",
+        "②": "a=±3에서 등호를 인정하지 않아 k=9를 제외: $k=5,6,7,8$, 합 $26$ → $26$",
+        "④": "k의 상한을 9가 아니라 10으로 잘못 계산: $k=5,6,7,8,9,10$, 합 $45$ → $45$",
+        "⑤": "허용하는 k의 전체 구간이 아니라 경계 k=9만 취함: $k=3^2=9$만 계산하여 $9$ → $9$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "a=±2까지 포함되는 k=4를 허용",
+          "calculation": "$k=4,5,6,7,8,9$, 합 $39$",
+          "matchedChoice": "$39$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "②",
+          "mistake": "a=±3에서 등호를 인정하지 않아 k=9를 제외",
+          "calculation": "$k=5,6,7,8$, 합 $26$",
+          "matchedChoice": "$26$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "④",
+          "mistake": "k의 상한을 9가 아니라 10으로 잘못 계산",
+          "calculation": "$k=5,6,7,8,9,10$, 합 $45$",
+          "matchedChoice": "$45$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        },
+        {
+          "label": "⑤",
+          "mistake": "허용하는 k의 전체 구간이 아니라 경계 k=9만 취함",
+          "calculation": "$k=3^2=9$만 계산하여 $9$",
+          "matchedChoice": "$9$",
+          "verification": "CREATOR_EXPLICIT_CALCULATION_MATCH"
+        }
+      ],
+      "experienceAxis": "매개변수 참 반례 개수에서 다시 자연수 상수 허용범위 역설계",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "명제와 조건",
+      "lockedL3DecisiveStep": "전칭·존재 명제 및 부등호의 부정을 정확히 변환하고, 그 부정이 참인 매개변수 조건을 실제 반례 존재성으로 판정한다",
+      "targetL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE",
+      "schoolExamStyleEvidence": "원본 2025 팔마고 14번의 명제 부정·이차식 매개변수 구조를 유지 또는 사고 확장한 5지",
+      "studentVisual": "NOT_REQUIRED_STEM_SELF_CONTAINED",
+      "answerRole": "SINGLE_CHOICE_FIVE_OPTIONS",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "부정이 참인 a가 정확히 여섯 개→|a|≥3이어야 함→k의 열린/닫힌 경계 역산",
+      "changedMathRecheck": "NOT_APPLICABLE_NO_MEANING_CHANGING_MUTATION",
+      "remainingRisk": "EXTERNAL_GPT_OPEN_BOOK_QUALITY_REVIEW_AND_STUDENT_RELEASE_NOT_PERFORMED",
+      "numericValidation": {
+        "slot": "C3",
+        "answer": "③",
+        "truth": 35,
+        "values": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "EXHAUSTIVE_DISCRETE_CASE_VERIFICATION"
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_documented",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmPrimaryL3RecordId": "H1-RPM-244",
+        "rpmParentL4": "명제의 참·거짓",
+        "rpmL4": "EXT-H1-C2-06-Q14-COUNTEREXAMPLE-INVERSE|부정의 참 매개변수 개수에서 상수 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/palma-q14-registry.json",
+        "l4ReusedFromQ02": false,
+        "l4Authority": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "recordId": "H1-RPM-244",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "curriculum": "2022"
+        },
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "crossConceptEvidenceLabels": [
+          "이차함수 꼭짓점·최댓값 또는 최솟값",
+          "매개변수 정수 범위와 경계 원소의 개수"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER",
+          "EXT-COND-H1-Q14-EXACT-SIX-COUNTEREXAMPLES"
+        ],
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionEvidenceLabels": [
+          "COND_INTEGER",
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER",
+          "부정이 참인 정수 매개변수 정확히 6개"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "difficultyBasis": "양화 부정과 최댓값 뒤 집합의 정확한 개수로 자연수 k 역산",
+        "sourceQid": 14,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 15,
+  "publication": "CREATOR_DRAFT_NOT_APPROVED_NOT_IN_STUDENT_CONSUMER"
+}
