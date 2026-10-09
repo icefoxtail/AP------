@@ -1,5 +1,9 @@
 # ALIVE LITE — 전체 스캔 선행·적응형 배치·2채팅 생산 검수 계약 v1
 
+## CURRENT USER OVERRIDE — GPT 제작·검수 / Codex Git 병합 전용 (2026-10-09)
+- 본 ALIVE 신규 생성문항 라인은 GPT가 A/B/C 학습 목적별 설계·발문·정답·상세 해설·Meta 품질 확인·실제 검수·필요한 수리를 직접 책임진다. Codex는 GPT가 확정한 파일의 지정 범위 Git 커밋·push·main 운영병합·remote readback만 담당한다.
+- 아래의 'CREATE=Codex', 'REVIEW+MAIN=Codex'로 읽힐 수 있는 과거 분업 지시는 이 범위에서 적용하지 않는다. 실행 단계/품질 HARD gate 자체는 유지한다. 코덱스용 문서에는 기존 후보의 재설계/폐기 정책을 명령하지 않는다.
+
 ## CURRENT — 3×3 목적형 제작 보강 (2026-10-09)
 - B(Blueprint 설계) 전에 원본별 A 반복 숙달 / B 사고 확장 / C 실전 평가 목적과 실제 학생의 사고 경험을 선택한다. 각 목적에서 최대 3개(원본당 최대 9개)는 구성의 상한이며 필수 생산량이 아니다.
 - A는 원본 사고·풀이를 유지한 유효 수치변형도 교육적으로 가치 있다. 단순 수치변형은 고유 Blueprint가 아니라 해당 유형의 별도 instance로 집계한다. 선택한 ALIVE MODE와 STRICT_VARIANT 증거 요건은 그대로 준수한다.
