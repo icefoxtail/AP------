@@ -69,58 +69,97 @@
     "⑤": 2
   },
   "authorSelfCheck": {
-    "authorMathCheck": "9/9; full 5-option semantic review pending independent reviewer",
-    "structuralCheck": "9 candidate objects, 45 unique per-slot choices, exact source SHA, L3 anchored",
+    "authorMathCheck": "Current Q04 candidate: revised B2/C1 distractor coverage and C2/C3 exact target recomputed; arithmetic spot checks are not independent GPT quality PASS",
+    "structuralCheck": "9 candidate objects; 45 pairwise-distinct per-item choices; distractor index coverage 4/4 for 9/9 items; technical release remains NOT_TESTED",
     "numericalSpotCheck": [
       {
         "slot": "B1",
-        "numericalMinimum": 5.000000004499819,
-        "approxArgmin": 1.6664999999999992,
+        "numericalMinimum": 5.00000001800144,
+        "approxArgmin": 1.667,
         "expected": 5,
-        "result": "CONSISTENT"
+        "expectedAnswer": "5",
+        "exactJustification": "A'(-1,-2), B(3,1)의 거리 sqrt(4^2+3^2)=5; x축 교점 t=5/3",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       },
       {
         "slot": "B2",
         "numericalMinimum": 6.324555320336759,
         "approxArgmin": 0,
         "expected": 6.324555320336759,
-        "result": "CONSISTENT"
+        "expectedAnswer": "2sqrt(10)",
+        "exactJustification": "t>=0에서 각 거리 증가; t=0일 때 sqrt10+sqrt10=2sqrt10",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       },
       {
         "slot": "B3",
         "numericalMinimum": 4.47213595499958,
         "approxArgmin": 3,
         "expected": 4.47213595499958,
-        "result": "CONSISTENT"
+        "expectedAnswer": "t=3",
+        "exactJustification": "AB와 y=x 교점 P=(3,3)에서 거리합=AB=sqrt20, 질문은 최소 위치 t=3",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       },
       {
         "slot": "C1",
         "numericalMinimum": 7.404918347287666,
         "approxArgmin": 1,
+        "alsoArgmin": 3,
         "expected": 7.404918347287666,
-        "result": "CONSISTENT"
+        "expectedAnswer": "sqrt(10)+3sqrt(2)",
+        "exactJustification": "t={-1,1,3,5} 각 경우 대입; t=1,3에서 sqrt10+sqrt18이 최소",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       },
       {
         "slot": "C2",
-        "numericalMinimum": 3.8009063392827764,
-        "approxArgmin": 0.3330000000000002,
-        "expected": 3.8005847503304597,
-        "result": "CONSISTENT"
+        "numericalMinimum": 7.211102550927978,
+        "approxArgmin": 2.5,
+        "expected": 5.4083269131959835,
+        "expectedAnswer": "3sqrt(13)/2",
+        "computedTargetPA": 5.4083269131959835,
+        "computedOtherPB": 1.8027756377319946,
+        "exactJustification": "A'(-2,-3), B(4,1), x축 교점 P=(5/2,0); PA=3/4*A'B=3sqrt13/2, PB=sqrt13/2; 거리합 최솟값 A'B=2sqrt13. 현재 질문은 거리합이 아니라 최솟값을 실현할 때 PA.",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       },
       {
         "slot": "C3",
         "numericalMinimum": 10,
         "approxArgmin": 0.25,
-        "expected": 10,
-        "result": "CONSISTENT"
+        "expected": 0.25,
+        "expectedAnswer": "P=(1/4,0)",
+        "recoveredK": 5,
+        "computedPoint": {
+          "x": 0.25,
+          "y": 0
+        },
+        "exactJustification": "min PA+PB=10 -> (k+3)^2=64 and k>0 -> k=5; A'B와 x축 교점 P=(1/4,0), PA+PB=10",
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
       }
     ],
-    "studentSourceReverseRead": "Each stem independently defines requested variable/region; no graphics required; answer/solution shown only in author bundle",
+    "studentSourceReverseRead": "Q04 C2 student stem asks PA at minimum PA+PB (not min of max distances); C3 asks point P where min is achieved (not k+4t); remaining Q04 stems preserved. Generated candidate review only.",
     "notIndependentReview": true,
     "rpmCatalogIdsVerified": false,
     "reviewerStatus": "NOT_RUN",
     "realBrowserRender": "NOT_TESTED",
-    "studentSupply": "NOT_REGISTERED"
+    "studentSupply": "NOT_REGISTERED",
+    "distractorIndexCoverage": {
+      "checkedSlots": 9,
+      "perSlot": "Four unique wrong-answer option labels in ①②③④⑤, excluding stored answer; reasons in matching choice order",
+      "status": "ALL_9_SLOTS_4_OF_4",
+      "reviewKind": "NON_PRODUCTION_AUTHOR_TARGETED_AUDIT"
+    },
+    "evidenceFreshness": {
+      "status": "REFRESHED_FOR_CURRENT_Q04_CANDIDATE",
+      "stalePriorC2": "Original min-max C2 numericalMinimum≈3.800906 and expected≈3.800585 are invalid for redesigned C2 and were removed from active numericalSpotCheck",
+      "affectedSlots": [
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "reusedPreviousResultAsFinalPass": false
+    }
   },
   "items": [
     {
@@ -245,7 +284,7 @@
       "distractorReasons": [
         "① x축 제약을 무시하고 원래 두 점의 거리만 취함",
         "② 수평 좌표 차이만 취함",
-        "③ 두 세로 좌표의 제곱을 따로 더해 √(4²+2²+3²)=√29로 계산",
+        "③ 반사점 A'(-1,-2)에서 B(3,1)까지의 세로 차 3을 사용하면서 A의 높이 2를 중복 합산하여 √(4²+3²+2²)=√29를 답함",
         "⑤ 가로 차이 4에 A의 높이 2만 더해 6으로 계산하고 B의 높이 1을 누락"
       ],
       "level": "중",
@@ -280,10 +319,10 @@
       "answer": "②",
       "solution": "$PA=\\sqrt{(t+1)^2+9}$, $PB=\\sqrt{(t+3)^2+1}$이다. $t\\ge0$에서는 $t+1$, $t+3$이 모두 양수이고 $t$가 커질수록 각 제곱도 커진다. 따라서 두 거리는 모두 $t=0$에서 가장 작다. 이때 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{9+1}=\\sqrt{10}$이므로 최솟값은 $2\\sqrt{10}$이다. $x$축의 왼쪽 반직선까지 허용할 때의 값과 혼동해서는 안 된다. 따라서 정답은 ②이다.",
       "distractorReasons": [
-        "① x축 전체에서의 대칭점 거리 하한을 사용하여 t≥0 제한을 무시",
-        "③ 좌표 차이를 잘못 대입",
-        "③ 허용되지만 최솟값을 주지 않는 t=1을 대입하여 √13+√17로 계산",
-        "⑤ 두 거리의 합을 두 배로 계산"
+        "① x축 전체를 허용한 것으로 착각하고 반사점 A'(-1,-3)과 B(-3,1) 사이의 거리 √(2²+4²)=2√5를 답함",
+        "③ t=1을 최소 위치라고 잘못 정해 PA=√13, PB=√17을 합한 √13+√17을 답함",
+        "④ t=0에서 PA=√10만 구하고 PB=√10을 합산하지 않아 √10을 답함",
+        "⑤ t=0에서 합 PA+PB=2√10을 구한 뒤 두 거리 합을 다시 2배 하여 4√10으로 답함"
       ],
       "level": "중",
       "difficultyBucket": 3,
@@ -318,8 +357,8 @@
       "solution": "삼각부등식에 의해 $PA+PB\\ge AB$이다. 등호가 성립하려면 $P$가 선분 $AB$ 위에 있어야 한다. 두 점을 잇는 직선은 기울기가 $\\dfrac{2-4}{5-1}=-\\dfrac12$이므로 $y-4=-\\dfrac12(x-1)$이다. 여기에 $x=y=t$를 대입하면 $t-4=-\\dfrac12(t-1)$, 즉 $2t-8=-t+1$이어서 $t=3$이다. 이때 $(3,3)$은 두 끝점을 잇는 선분의 중점이므로 등호가 실제로 성립한다. 따라서 정답은 ⑤이다.",
       "distractorReasons": [
         "① 첫 번째 점의 x좌표만 대입",
-        "② 중간 계산에서 t항 하나 누락",
-        "③ 선분 교점 계산에서 부호 착각",
+        "② AB의 기울기를 Δy/Δx=(-2)/1=-2로 잘못 계산해 직선 y-4=-2(x-1)과 y=x의 교점 t=2를 답함",
+        "③ AB를 수평 직선 y=4로 잘못 생각해 y=x와의 교점 t=4를 답함",
         "④ 두 번째 점의 x좌표만 대입"
       ],
       "level": "중",
@@ -354,11 +393,10 @@
       "answer": "②",
       "solution": "허용된 $t$는 네 개이므로 이를 각각 대입하여 비교한다. $t=-1$이면 $PA=\\sqrt{1+9}=\\sqrt{10}$, $PB=\\sqrt{25+9}=\\sqrt{34}$이다. $t=5$에서도 두 거리가 서로 바뀌어 합은 $\\sqrt{10}+\\sqrt{34}$이다. $t=1$에서는 $PA=\\sqrt{10}$, $PB=\\sqrt{9+9}=3\\sqrt2$이고 $t=3$에서도 합이 같다. $\\sqrt{34}>3\\sqrt2$이므로 최솟값은 $\\sqrt{10}+3\\sqrt2$이다. $t$를 모든 실수로 볼 때의 하한과 다름에 주의한다. 따라서 정답은 ②이다.",
       "distractorReasons": [
-        "① t가 연속적인 실수라고 가정한 반사점 거리 하한",
-        "③ 경계 t=-1,5에서의 거리합",
-        "④ 거리 두 개를 각각 같은 값으로 잘못 간주",
-        "④ t=1에서 PA=√10인데 PB와 같다고 착각하여 두 거리를 모두 3√2로 계산",
-        "⑤ 두 점의 y좌표 높이만 사용하여 PA+PB를 3+3=6으로 계산하고 수평 거리를 무시"
+        "① t를 모든 실수로 허용한 것으로 착각하고 A'(0,-3), B(4,3) 사이의 거리 √(4²+6²)=2√13을 답함",
+        "③ 허용된 t=-1(또는 5)을 최소 위치로 착각하여 √10+√34를 답함",
+        "④ t=1에서 PB=3√2인데 PA도 같은 3√2로 잘못 계산하여 6√2를 답함",
+        "⑤ t=1에서 두 점까지의 수평 좌표 차이를 모두 무시하고 세로 길이만 3+3=6으로 답함"
       ],
       "level": "중",
       "difficultyBucket": 3,
