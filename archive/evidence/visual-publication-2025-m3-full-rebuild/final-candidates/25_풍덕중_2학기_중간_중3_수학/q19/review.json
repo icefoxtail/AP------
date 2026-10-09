@@ -1,0 +1,399 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "a07b1a3861307ee3ebf979998838090f0bedd2ef6b2f1c7b1acc1403ebc5b72b",
+  "solutionSha256": "5a97c9f7d6589b2a51cc072d453a5aa960ced2ffece6dff3a92d2a4f0fed4426",
+  "coordinateModel": {
+    "originX": 166.54545454545456,
+    "originY": 277.81818181818187,
+    "sx": 37.81818181818182,
+    "sy": 37.81818181818182
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        6,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "O",
+      "at": [
+        3,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "D",
+      "at": [
+        0,
+        1.8
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "at": [
+        6,
+        5
+      ],
+      "name": "C"
+    },
+    {
+      "id": "E",
+      "at": [
+        1.588235294117647,
+        2.6470588235294117
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "points": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OE",
+      "points": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        3,
+        0
+      ],
+      "radius": 3
+    }
+  ],
+  "incidences": [
+    {
+      "id": "A-circle",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "B-circle",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "E-circle",
+      "point": "E",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenAB6",
+      "segment": "AB",
+      "value": 6,
+      "mode": "ADJACENT",
+      "text": "6",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenBC5",
+      "segment": "BC",
+      "value": 5,
+      "mode": "ADJACENT",
+      "text": "5",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "x-result",
+      "text": "AD=9/5"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed supporting circle for the source semicircle; the upper half and all three tangent lines are the source geometry.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 6
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        6,
+        0
+      ],
+      "O": [
+        3,
+        0
+      ],
+      "D": [
+        0,
+        1.8
+      ],
+      "C": [
+        6,
+        5
+      ],
+      "E": [
+        1.588235294117647,
+        2.6470588235294117
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB6",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 6,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BC5",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 5,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AD9over5",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "expected": 1.8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "DCxplus5",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "C"
+        ],
+        "expected": 6.8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CDtangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "E",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "tangentAtA",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "A",
+          "A",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "tangentAtB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "B",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "A",
+          "B",
+          "O"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B",
+          "O",
+          "D"
+        ]
+      },
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "E",
+        "inputs": [
+          "A",
+          "B",
+          "O",
+          "D",
+          "C"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BC5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AD9over5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "DCxplus5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CDtangent",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "tangentAtA",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "tangentAtB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

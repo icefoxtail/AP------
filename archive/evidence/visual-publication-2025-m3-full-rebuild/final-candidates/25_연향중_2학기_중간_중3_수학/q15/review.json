@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "5aa0001b97951e19497ae43a9a485db387aa5ee0be375c2e5914154e888222b6",
+  "coordinateModel": {
+    "originX": 96.33333333333334,
+    "originY": 106.0,
+    "sx": 24.666666666666668,
+    "sy": 24.666666666666668
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "B",
+      "unitScale": 8
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        8,
+        0
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "C": [
+        4,
+        2
+      ],
+      "O": [
+        4,
+        -3
+      ]
+    },
+    "conditions": [
+      {
+        "id": "ABmid",
+        "kind": "MIDPOINT",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CDperpAB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "C",
+          "D",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CD2",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "AD4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "tolerance": 1e-07,
+        "expected": 4
+      },
+      {
+        "id": "OA5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "OC5",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 5
+      },
+      {
+        "id": "O_D_C",
+        "kind": "COLLINEAR",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "D",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "ABmid",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CDperpAB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CD2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AD4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OA5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OC5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "O_D_C",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        8,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "D",
+      "at": [
+        4,
+        0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "C",
+      "at": [
+        4,
+        2
+      ],
+      "name": "C"
+    },
+    {
+      "id": "O",
+      "at": [
+        4,
+        -3
+      ],
+      "name": "O"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "points": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "points": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        4,
+        -3
+      ],
+      "radius": 5
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-C",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "CDlen",
+      "segment": "CD",
+      "value": 2,
+      "mode": "ADJACENT",
+      "text": "2",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "ADlen",
+      "segment": "AD",
+      "value": 4,
+      "mode": "ADJACENT",
+      "text": "4",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "radius-result",
+      "text": "r=5"
+    }
+  ]
+}

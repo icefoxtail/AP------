@@ -1,0 +1,199 @@
+{
+  "id": "wangun-mid-q9",
+  "title": "변의 비를 피타고라스로 완성",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.0,
+    "xMax": 4.0,
+    "yMin": -1.0,
+    "yMax": 2.0,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "C",
+        "unitScale": 3
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          0,
+          1
+        ],
+        "C": [
+          3,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "rightA",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "C"
+          ],
+          "expected": 90,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "ratio",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 3,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "rightA",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "ratio",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 1.0,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        1
+      ],
+      "to": [
+        3,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": []
+  }
+}

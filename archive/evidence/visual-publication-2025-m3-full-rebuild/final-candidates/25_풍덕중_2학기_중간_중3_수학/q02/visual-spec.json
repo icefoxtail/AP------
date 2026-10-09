@@ -1,0 +1,276 @@
+{
+  "id": "pungdeok-mid-fresh-v2-q02",
+  "title": "30°에서 두 변의 길이",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.4,
+    "xMax": 7.4,
+    "yMin": -1.4,
+    "yMax": 5.4,
+    "width": 520,
+    "height": 420,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed realization from hypotenuse AB=6, angle B=30 degrees and right angle C; no coordinates are measured from the source image.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 5.196152422706632
+      },
+      "freeVariables": [
+        {
+          "id": "AB",
+          "value": 6
+        },
+        {
+          "id": "Bangle",
+          "value": 30
+        }
+      ],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          5.196152422706632,
+          0
+        ],
+        "A": [
+          5.196152422706632,
+          3
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB6",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B30",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "C90",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "expected": 90,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "p1",
+          "operation": "CONSTRUCT_POINT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "p2",
+          "operation": "CONSTRUCT_POINT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "p3",
+          "operation": "CONSTRUCT_POINT",
+          "output": "A",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B30",
+          "residual": 3.552713678800501e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "C90",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "triangle",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "observed": 0.5,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5.196152422706632,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.196152422706632,
+        3
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.196152422706632,
+        3
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        5.196152422706632,
+        0
+      ],
+      "to": [
+        5.196152422706632,
+        3
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "A": "A"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "B30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "text": "30",
+        "factRole": "GIVEN",
+        "marker": "ARC"
+      },
+      {
+        "id": "C90",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 90,
+        "text": "90",
+        "factRole": "GIVEN",
+        "marker": "SQUARE"
+      },
+      {
+        "id": "AB6",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 6,
+        "text": "6",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT"
+      },
+      {
+        "id": "AC3",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 3,
+        "text": "3",
+        "factRole": "CONCLUSION",
+        "mode": "ADJACENT"
+      },
+      {
+        "id": "BC3sqrt3",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 5.196152422706632,
+        "text": "3*sqrt(3)",
+        "factRole": "CONCLUSION",
+        "mode": "ADJACENT"
+      }
+    ]
+  }
+}

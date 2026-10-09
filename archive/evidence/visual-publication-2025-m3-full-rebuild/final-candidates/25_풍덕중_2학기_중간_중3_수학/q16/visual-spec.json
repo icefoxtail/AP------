@@ -1,0 +1,458 @@
+{
+  "id": "m3-geumdang-mid-q16",
+  "visualType": "line_circle_geometry",
+  "title": "깨진 접시의 원둘레 복원",
+  "viewport": {
+    "xMin": -9.75,
+    "xMax": 9.75,
+    "yMin": -9.75,
+    "yMax": 9.75,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed realization satisfies AD=DB=6, D is the midpoint foot on chord AB, O-D-C are collinear, and DC=3 with C on the circle.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "C",
+        "unitScale": 7.5
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "C": [
+          7.5,
+          0
+        ],
+        "D": [
+          4.5,
+          0
+        ],
+        "A": [
+          4.5,
+          6
+        ],
+        "B": [
+          4.5,
+          -6
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AD6",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "D"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DB6",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "B"
+          ],
+          "expected": 6,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DC3",
+          "kind": "DISTANCE",
+          "refs": [
+            "D",
+            "C"
+          ],
+          "expected": 3,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ODperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "O",
+            "D",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "DmidAB",
+          "kind": "MIDPOINT",
+          "refs": [
+            "D",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "ODCcollinear",
+          "kind": "COLLINEAR",
+          "refs": [
+            "O",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "radius75",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 7.5,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "D",
+          "inputs": [
+            "O",
+            "C"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "O",
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "O",
+            "C",
+            "D",
+            "A"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AD6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DB6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DC3",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ODperpAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "DmidAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ODCcollinear",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "radius75",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "C",
+            "A"
+          ],
+          "observed": 0.8,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        7.5,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        0
+      ],
+      "name": "D"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        6
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        4.5,
+        -6
+      ],
+      "name": "B"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        6
+      ],
+      "to": [
+        4.5,
+        -6
+      ]
+    },
+    {
+      "id": "OD",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.5,
+        0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        7.5,
+        0
+      ]
+    },
+    {
+      "id": "DC",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        0
+      ],
+      "to": [
+        7.5,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.5,
+        6
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.5,
+        -6
+      ]
+    },
+    {
+      "id": "AD",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        6
+      ],
+      "to": [
+        4.5,
+        0
+      ]
+    },
+    {
+      "id": "DB",
+      "kind": "SEGMENT",
+      "from": [
+        4.5,
+        0
+      ],
+      "to": [
+        4.5,
+        -6
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 7.5
+    },
+    {
+      "id": "circumference",
+      "kind": "EQUATION_LABEL",
+      "text": "15π",
+      "at": [
+        0,
+        8
+      ],
+      "math": true
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "O": "O",
+      "C": "C",
+      "D": "D",
+      "A": "A",
+      "B": "B"
+    },
+    "pointLabelAnchors": {},
+    "pointLabelCallouts": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "OD": [
+        "O",
+        "D"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "DC": [
+        "D",
+        "C"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "AD": [
+        "A",
+        "D"
+      ],
+      "DB": [
+        "D",
+        "B"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAD6",
+        "kind": "LENGTH",
+        "owner": "AD",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenDB6",
+        "kind": "LENGTH",
+        "owner": "DB",
+        "value": 6,
+        "mode": "ADJACENT",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenDC3",
+        "kind": "LENGTH",
+        "owner": "DC",
+        "value": 3,
+        "mode": "ADJACENT",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

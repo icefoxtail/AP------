@@ -83,7 +83,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "빗변 AB=6, ∠B=30°인 직각삼각형 ABC",
     "solutionImageCaption": "30°의 맞은변 x와 이웃변 y를 빗변 AB에 연결한다.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
@@ -92,7 +92,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 3,
@@ -260,7 +261,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q6-solution.svg",
     "solutionImageAlt": "sin A=√5/3인 직각삼각형에서 AB=2, BC=√5, AC=3",
     "solutionImageCaption": "sin A로 정한 변 비와 피타고라스 길이를 확인한다.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [
@@ -271,7 +272,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 7,
@@ -311,7 +313,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q7-solution.svg",
     "solutionImageAlt": "BC를 공유하는 45°-45°-90°와 30° 직각삼각형",
     "solutionImageCaption": "두 삼각형에서 구한 공통 길이 BC로 AC를 결정한다.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
@@ -322,7 +324,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 8,
@@ -398,6 +401,7 @@ window.questionBank = [
     "solution": "$\\triangle ABC$에서 $\\angle B=90^\\circ$, $AB=2$, $BC=5$이므로\n$AC=\\sqrt{2^2+5^2}=\\sqrt{29}$이다.\n\n또 $DE\\perp AC$, $AB\\perp BC$이므로\n$\\angle CDE=\\angle A=x^\\circ$이다.\n\n따라서\n$\\cos x^\\circ\n=\\cos A\n=\\dfrac{AB}{AC}\n=\\dfrac2{\\sqrt{29}}\n=\\dfrac{2\\sqrt{29}}{29}$이다.\n\n정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -413,7 +417,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 10,
@@ -591,7 +596,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageAlt": "산 정상 A에서 터널 바닥 BC에 내린 H와 양쪽 직각삼각형",
     "solutionImageCaption": "BH와 HC를 삼각비로 구해 터널 길이 BC를 더한다.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
     "crossConceptKeys": [],
@@ -600,7 +605,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 14,
@@ -640,7 +646,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
     "solutionImageAlt": "원 O의 반지름이 5이다. 아래 현의 길이는 8이고 중심과 현 사이 거리는 3이다. 위 현의 반길이는 4이며 중심과 현 사이 거리가 x이다.",
     "solutionImageCaption": "해설의 핵심 관계: 같은 반지름 5에서 아래 현 반길이 4, 중심거리 3; 위 현 반길이 4이므로 x²+4²=5², x=3.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
     "crossConceptKeys": [
@@ -651,7 +657,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 15,
@@ -688,7 +695,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
     "solutionImageAlt": "원 O에 같은 길이의 두 현 AB와 CD를 그리고, 중심 O에서 각 현의 중점 M,N에 내린 수선과 중점의 자취 원을 나타낸다.",
     "solutionImageCaption": "해설의 핵심 관계: 같은 원의 같은 길이 현은 중심에서 같은 거리에 있고 각 현의 중점은 중심과 현을 잇는 수선 위에 있어 그 자취가 중심 O인 원.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": [],
@@ -697,7 +704,8 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 16,
@@ -731,6 +739,7 @@ window.questionBank = [
     "solution": "원의 중심을 $O$, 반지름을 $r$이라 하자.\n$AD=DB=6$이므로 $D$는 현 $AB$의 중점이다.\n\n원의 중심과 현의 중점을 이은 선은 현에 수직이므로\n$OD\\perp AB$이다.\n또 $O,D,C$가 한 직선 위에 있고 $C$는 원 위의 점이므로\n$OC=r$이다.\n그림에서 $DC=3$이므로\n$OD=OC-DC=r-3$이다.\n\n직각삼각형 $ODA$에서\n$OA^2=OD^2+AD^2$이므로\n$r^2=(r-3)^2+6^2$이다.\n\n전개하면\n$r^2=r^2-6r+9+36$\n$6r=45$\n$r=\\dfrac{15}{2}$이다.\n\n따라서 접시의 둘레는\n$2\\pi r$\n$=2\\pi\\times\\dfrac{15}{2}$\n$=15\\pi\\,\\mathrm{cm}$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q16.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -745,7 +754,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 17,
@@ -785,7 +795,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
     "solutionImageAlt": "원 O 안의 삼각형 PBC에서 중심 O에서 현 PB와 BC에 내린 수선 OM, ON의 길이가 같다. 각 PBC는 62°이고 x는 P에서의 각이다.",
     "solutionImageCaption": "해설의 핵심 관계: 중심에서 같은 거리인 두 현은 길이가 같아 삼각형 PBC에서 PB=BC; 꼭짓각 62°이므로 밑각 x=59°.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": [],
@@ -794,7 +804,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 18,
@@ -834,7 +845,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
     "solutionImageAlt": "원 O에 외접하는 삼각형 ABC의 변 길이는 AB=3, AC=6, BC=7이다. P,Q,R은 접점이고 x는 C에서의 접선 길이 CR이다.",
     "solutionImageCaption": "해설의 핵심 관계: AB=3, AC=6, BC=7인 내접원 접선에서 C의 두 접선 길이 CQ=CR=5.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": [],
@@ -843,7 +854,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 19,
@@ -877,6 +889,7 @@ window.questionBank = [
     "solution": "한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n\n따라서\n$AD=DE=x$,\n$BC=CE=5$이다.\n\n그러므로\n$DC=DE+EC$\n$=x+5$이다.\n\n또 $AB=6$이고 $AD\\perp AB$, $BC\\perp AB$이므로\n$D$, $C$의 세로 길이 차는 $|5-x|$이다.\n\n따라서\n$DC^2=6^2+(5-x)^2$이다.\n\n즉\n$(x+5)^2=36+(5-x)^2$이다.\n양변을 전개하면\n$x^2+10x+25=36+x^2-10x+25$\n$20x=36$\n$x=\\dfrac95$이다.\n\n정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -891,7 +904,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 20,
@@ -932,7 +946,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageAlt": "원 O의 외부점 P에서 접선 PA, PB를 그었다. OA와 OB는 접선에 수직인 같은 반지름이며, OP는 두 직각삼각형의 공통 빗변이다.",
     "solutionImageCaption": "해설의 핵심 관계: 접점에서 OA⊥PA, OB⊥PB이고 OP 공통, OA=OB이므로 직각삼각형 PAO와 PBO가 RHS 합동, PA=PB.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": [
@@ -943,7 +957,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 21,
@@ -1014,7 +1029,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q22-solution.svg",
     "solutionImageAlt": "눈높이 B에서 D까지 수평거리 BD=4.5 m이고, 눈높이 AB=DE=1.5 m이다. 시선각 54°와 수직선 CE를 이용해 고양이의 높이 CE=7.71 m를 나타낸다.",
     "solutionImageCaption": "BD=AE=4.5 m에서 tan54°=CD/BD=1.38이므로 CD=6.21 m이다. 눈높이 DE=1.5 m를 더해 CE=7.71 m를 구한다.",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
@@ -1023,7 +1038,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 23,
@@ -1091,6 +1107,7 @@ window.questionBank = [
     "solution": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp AP$이다.\n\n직각삼각형 $AOP$에서\n$OP=16$, $\\angle APO=30^\\circ$이므로\n$OA=16\\sin30^\\circ=8$,\n$AP=16\\cos30^\\circ=8\\sqrt3$이다.\n\n점 $P$에서 원에 그은 두 접선의 길이는 같으므로\n$AP=BP$이다.\n또 $OA$, $OB$는 같은 원의 반지름이므로\n$OA=OB=8$이다.\n\n따라서 $\\triangle AOP$와 $\\triangle BOP$는\n합동인 직각삼각형이고,\n$\\square APBO$의 넓이는\n\n$2\\times\\dfrac12\\times8\\times8\\sqrt3\n=64\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -1105,7 +1122,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 25,
@@ -1132,6 +1150,7 @@ window.questionBank = [
     "solution": "한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n\n$PA=PB=8$이고 $PC=7$이므로\n$CA=PA-PC=1$이다.\n\n점 $C$에서 그은 두 접선의 길이는 같으므로\n$CE=CA=1$이다.\n\n$CD=3$이므로\n$DE=CD-CE=2$이다.\n\n점 $D$에서 그은 두 접선의 길이는 같으므로\n$DB=DE=2$이다.\n\n따라서\n$x=PD=PB-DB=8-2=6$이다.\n\n답은 $6$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -1144,6 +1163,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImageLayout": "fullwidth"
   }
 ];

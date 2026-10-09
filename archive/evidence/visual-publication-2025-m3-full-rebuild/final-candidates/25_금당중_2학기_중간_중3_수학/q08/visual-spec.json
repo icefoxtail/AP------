@@ -1,0 +1,264 @@
+{
+  "id": "m3-geumdang-mid-q8",
+  "visualType": "line_circle_geometry",
+  "title": "삼각형의 두 변과 끼인각",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 11.5,
+    "yMin": -1.5,
+    "yMax": 8.428203230275509,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed coordinate triangle realizes AB=8, BC=10 and included angle B=60° exactly.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 10
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          10,
+          0
+        ],
+        "A": [
+          4,
+          6.928203230275509
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB8",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 8,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BC10",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 10,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B60",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 60,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AC2sqrt21",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 9.16515138991168,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "B"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "B",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BC10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B60",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AC2sqrt21",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "observed": 0.8660254037844386,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        10,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        4,
+        6.928203230275509
+      ],
+      "name": "A"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        6.928203230275509
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        10,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        10,
+        0
+      ],
+      "to": [
+        4,
+        6.928203230275509
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "A": "A"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "AB8",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 8,
+        "mode": "ADJACENT",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BC10",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 10,
+        "mode": "ADJACENT",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC2sqrt21",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 9.16515138991168,
+        "mode": "ADJACENT",
+        "text": "sqrt(84)",
+        "factRole": "CONCLUSION",
+        "side": 1
+      }
+    ]
+  }
+}

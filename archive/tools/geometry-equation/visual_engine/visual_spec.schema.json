@@ -85,6 +85,7 @@
               "LINE",
               "SEGMENT",
               "CIRCLE",
+              "CIRCULAR_ARC",
               "FUNCTION_GRAPH",
               "INTERSECTION",
               "TANGENT",
@@ -150,6 +151,21 @@
             "items": {
               "type": "number"
             }
+          },
+          "centerPoint": {
+            "type": "string"
+          },
+          "startPoint": {
+            "type": "string"
+          },
+          "endPoint": {
+            "type": "string"
+          },
+          "sweep": {
+            "enum": [
+              "CW",
+              "CCW"
+            ]
           },
           "name": {
             "type": "string"
@@ -537,9 +553,43 @@
           "type": "object",
           "minProperties": 1,
           "additionalProperties": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 24
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 24
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "pointLabelAnchors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {"type": "number"},
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "pointLabelCallouts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {"type": "number"},
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "pointLabelCalloutCandidates": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+            "minItems": 1,
+            "maxItems": 32
           }
         },
         "segmentPointRefs": {
@@ -613,6 +663,32 @@
                       "CW",
                       "CCW"
                     ]
+                  },
+                  "labelAt": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "labelAtCandidates": {
+                    "type": "array",
+                    "items": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                    "minItems": 1,
+                    "maxItems": 32
+                  },
+                  "showLabel": {
+                    "type": "boolean"
+                  },
+                  "labelPlacement": {
+                    "enum": [
+                      "OWNER_WEDGE",
+                      "LEADER_CALLOUT",
+                      "CONDITION_BOX"
+                    ]
+                  },
+                  "conditionBoxId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
                   }
                 }
               },
@@ -671,6 +747,29 @@
                       "m",
                       "km"
                     ]
+                  },
+                  "labelPlacement": {
+                    "enum": [
+                      "OWNER_SEGMENT",
+                      "LEADER_CALLOUT",
+                      "CONDITION_BOX"
+                    ]
+                  },
+                  "conditionBoxId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  },
+                  "labelAt": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "labelAtCandidates": {
+                    "type": "array",
+                    "items": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                    "minItems": 1,
+                    "maxItems": 32
                   }
                 }
               },

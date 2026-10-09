@@ -1,0 +1,452 @@
+{
+  "id": "wangun-final-q07",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5,
+    "xMax": 5,
+    "yMin": -5,
+    "yMax": 5,
+    "width": 760,
+    "height": 512,
+    "panel": 180
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "A circle realization preserves the source inscribed angles 18° and 36°, the radii, and the central conclusion 108°; coordinates are not source givens.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "C",
+        "unitScale": 4
+      },
+      "freeVariables": [
+        {
+          "id": "polarA",
+          "value": 144
+        },
+        {
+          "id": "polarB",
+          "value": 252
+        }
+      ],
+      "pointCoordinates": {
+        "C": [
+          4.0,
+          0.0
+        ],
+        "A": [
+          -3.2360679774997894,
+          2.351141009169893
+        ],
+        "B": [
+          -1.2360679774997902,
+          -3.804226065180614
+        ],
+        "O": [
+          0,
+          0
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc_A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc_C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 4,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "given18",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "A",
+            "O"
+          ],
+          "expected": 18,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "given36",
+          "kind": "ANGLE",
+          "refs": [
+            "C",
+            "B",
+            "O"
+          ],
+          "expected": 36,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "x108",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "O",
+            "B"
+          ],
+          "expected": 108,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "origin",
+          "operation": "SOURCE_ORIGIN",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "baseC",
+          "operation": "NORMALIZED_RADIUS",
+          "output": "C",
+          "inputs": [
+            "O"
+          ]
+        },
+        {
+          "id": "placeA",
+          "operation": "ROTATE_TO_ANGLE_144",
+          "output": "A",
+          "inputs": [
+            "O",
+            "C"
+          ]
+        },
+        {
+          "id": "placeB",
+          "operation": "ROTATE_TO_ANGLE_252",
+          "output": "B",
+          "inputs": [
+            "O",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc_A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc_C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given18",
+          "residual": 1.0658141036401503e-14,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "given36",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "x108",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct_OA",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OB",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_OC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_AC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "observed": 7.608452130361229,
+          "minimum": 1e-05
+        },
+        {
+          "id": "distinct_BC",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "observed": 6.47213595499958,
+          "minimum": 1e-05
+        }
+      ]
+    },
+    "givenFacts": [
+      "∠CAO=18°",
+      "∠CBO=36°",
+      "A,B,C lie on circle O"
+    ],
+    "solutionFacts": [
+      "∠AOC=144°",
+      "∠BOC=108°",
+      "∠AOB=108°"
+    ]
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -3.2360679774997894,
+        2.351141009169893
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -1.2360679774997902,
+        -3.804226065180614
+      ]
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -3.2360679774997894,
+        2.351141009169893
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        -1.2360679774997902,
+        -3.804226065180614
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "AC",
+      "kind": "SEGMENT",
+      "from": [
+        -3.2360679774997894,
+        2.351141009169893
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        -1.2360679774997902,
+        -3.804226065180614
+      ],
+      "to": [
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "id": "crowded-relations",
+      "kind": "CONDITION_BOX",
+      "at": [
+        7.767857142857143,
+        0.0
+      ],
+      "lines": [
+        "∠CAO=18°"
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "C": "C",
+      "A": "A",
+      "B": "B",
+      "O": "O"
+    },
+    "pointLabelAnchors": {
+      "O": [
+        0.45,
+        -0.65
+      ]
+    },
+    "segmentPointRefs": {
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "AC": [
+        "A",
+        "C"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "given18",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "A",
+          "O"
+        ],
+        "value": 18,
+        "text": "18",
+        "marker": "ARC",
+        "factRole": "GIVEN",
+        "labelPlacement": "CONDITION_BOX",
+        "showLabel": false,
+        "conditionBoxId": "crowded-relations"
+      },
+      {
+        "id": "given36",
+        "kind": "ANGLE",
+        "refs": [
+          "C",
+          "B",
+          "O"
+        ],
+        "value": 36,
+        "text": "36",
+        "marker": "ARC",
+        "factRole": "GIVEN",
+        "labelAt": [
+          0.40973072891913453,
+          -1.5389784809307616
+        ]
+      },
+      {
+        "id": "x108",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 108,
+        "text": "108",
+        "marker": "ARC",
+        "factRole": "CONCLUSION",
+        "labelAt": [
+          -2.377641290737884,
+          -0.7725424859373682
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "3e6c9a4949151a2a00aaa8d7932d04d2d3848420ac31584fdd638232520c42ba",
+  "coordinateModel": {
+    "originX": 121.30134990098557,
+    "originY": 398.6986500990144,
+    "sx": 32.86756660065705,
+    "sy": 32.86756660065705
+  },
+  "points": [
+    {
+      "id": "P1",
+      "at": [
+        0,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P2",
+      "at": [
+        9.65685424949238,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "P3",
+      "at": [
+        9.65685424949238,
+        9.65685424949238
+      ],
+      "name": null
+    },
+    {
+      "id": "P4",
+      "at": [
+        0,
+        9.65685424949238
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "at": [
+        2,
+        2
+      ],
+      "name": null
+    },
+    {
+      "id": "B",
+      "at": [
+        7.656854249492381,
+        2
+      ],
+      "name": null
+    },
+    {
+      "id": "C",
+      "at": [
+        7.656854249492381,
+        7.656854249492381
+      ],
+      "name": null
+    },
+    {
+      "id": "D",
+      "at": [
+        2,
+        7.656854249492381
+      ],
+      "name": null
+    },
+    {
+      "id": "O",
+      "at": [
+        4.82842712474619,
+        4.82842712474619
+      ],
+      "name": null
+    },
+    {
+      "id": "R",
+      "at": [
+        4,
+        2
+      ],
+      "name": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "edge1",
+      "points": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "edge2",
+      "points": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "edge3",
+      "points": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "edge4",
+      "points": [
+        "P4",
+        "P1"
+      ]
+    },
+    {
+      "id": "radiusA",
+      "points": [
+        "A",
+        "R"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleA",
+      "center": [
+        2,
+        2
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleB",
+      "center": [
+        7.656854249492381,
+        2
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleC",
+      "center": [
+        7.656854249492381,
+        7.656854249492381
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleD",
+      "center": [
+        2,
+        7.656854249492381
+      ],
+      "radius": 2
+    },
+    {
+      "id": "circleO",
+      "center": [
+        4.82842712474619,
+        4.82842712474619
+      ],
+      "radius": 2
+    }
+  ],
+  "incidences": [
+    {
+      "id": "R-on-circleA",
+      "point": "R",
+      "circle": "circleA"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "squareSide",
+      "segment": "edge1",
+      "value": 9.65685424949238,
+      "mode": "DIMENSION",
+      "text": "4+4√(2) cm",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "radius-given",
+      "text": "r=2cm"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed equal-unit packing with five radius-2 circles tangent to the square walls and adjacent center circle.",
+    "normalization": {
+      "originPoint": "P1",
+      "xAxisPoint": "P2",
+      "unitScale": 9.65685424949238
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "P1": [
+        0,
+        0
+      ],
+      "P2": [
+        9.65685424949238,
+        0
+      ],
+      "P3": [
+        9.65685424949238,
+        9.65685424949238
+      ],
+      "P4": [
+        0,
+        9.65685424949238
+      ],
+      "A": [
+        2,
+        2
+      ],
+      "B": [
+        7.656854249492381,
+        2
+      ],
+      "C": [
+        7.656854249492381,
+        7.656854249492381
+      ],
+      "D": [
+        2,
+        7.656854249492381
+      ],
+      "O": [
+        4.82842712474619,
+        4.82842712474619
+      ],
+      "R": [
+        4,
+        2
+      ]
+    },
+    "conditions": [
+      {
+        "id": "radius2",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "R"
+        ],
+        "expected": 2,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "centerAcenterO4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "O"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "centerBcenterO4",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "O"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "centerCcenterO4",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "O"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "centerDcenterO4",
+        "kind": "DISTANCE",
+        "refs": [
+          "D",
+          "O"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "squareSide",
+        "kind": "DISTANCE",
+        "refs": [
+          "P1",
+          "P2"
+        ],
+        "expected": 9.65685424949238,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-P1",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P1",
+        "inputs": []
+      },
+      {
+        "id": "construct-P2",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P2",
+        "inputs": [
+          "P1"
+        ]
+      },
+      {
+        "id": "construct-P3",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P3",
+        "inputs": [
+          "P1",
+          "P2"
+        ]
+      },
+      {
+        "id": "construct-P4",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "P4",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3"
+        ]
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      {
+        "id": "construct-R",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "R",
+        "inputs": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "radius2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "centerAcenterO4",
+        "residual": 4.440892098500626e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "centerBcenterO4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "centerCcenterO4",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "centerDcenterO4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "squareSide",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "observed": 0.7071067811865476,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

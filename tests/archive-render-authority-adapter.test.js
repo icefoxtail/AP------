@@ -10,11 +10,12 @@ const answerExecutor = fs.readFileSync(path.join(root, 'archive', 'answer-render
 const examExecutor = fs.readFileSync(path.join(root, 'archive', 'exam-render-executor.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
-  assert.match(engine, /src="print-contract\.js\?v=20260906\.2"/);
-  assert.match(engine, /src="render-authority\.js\?v=20260906\.5"/);
+  assert.match(engine, /src="print-contract\.js\?v=20261009\.1"/);
+  assert.match(engine, /src="render-authority\.js\?v=20261009\.1"/);
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
+  assert.match(engine, /\.sol-image-wrap\.layout-fullwidth img \{ max-height: 640px; \}/);
   assert.match(engine, /prepareArchiveCanonicalContent/);
   assert.match(engine, /prepareArchiveCanonicalSolution/);
   assert.match(engine, /compareAnswerSemantics/);
@@ -23,17 +24,18 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
     const version = {
-      'layout-materializer': '20261003\\.2',
-      'solution-render-executor': '20260924\\.2',
+      'layout-materializer': '20261009\\.1',
+      'solution-render-executor': '20261009\\.1',
       'exam-render-executor': '20261002-output-envelope-v3',
       'question-image-readiness': '20260915\\.2',
-      'layout-authority': '20260924\\.1',
+      'layout-authority': '20261009\\.1',
       'screen-runtime-adapter': '20261003.2',
-      'screen-runtime': '20260922\\.2'
+      'screen-runtime': '20260922\\.2',
+      'render-state-normalizer': '20261009\\.1'
     }[script] || (script === 'snapshot-contract' ? '20260923\\.1' : '20260911\\.5');
     assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
-  assert.match(engine, /solution-render-executor\.js\?v=20260924\.2/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261009\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /exam-render-executor\.js\?v=20261002-output-envelope-v3/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);

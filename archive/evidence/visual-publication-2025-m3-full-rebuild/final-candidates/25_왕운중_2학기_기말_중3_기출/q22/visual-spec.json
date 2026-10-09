@@ -1,0 +1,411 @@
+{
+  "id": "wangun-final-q22",
+  "title": "마주 보는 호 여섯 개를 합하면 360°",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6.2,
+    "xMax": 6.2,
+    "yMin": -6.2,
+    "yMax": 6.2,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes named incidences, circle/tangent/angle/length relations but no Cartesian coordinates. This explicit constructed realization preserves the listed source and verified-solution conditions; arbitrary arc placements are declared free variables.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "A",
+        "unitScale": 5.0
+      },
+      "freeVariables": [
+        {
+          "id": "arcABdeg",
+          "value": 60
+        },
+        {
+          "id": "arcBCdeg",
+          "value": 70
+        },
+        {
+          "id": "arcCDdeg",
+          "value": 50
+        }
+      ],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          5.0,
+          0.0
+        ],
+        "B": [
+          2.5000000000000004,
+          4.330127018922193
+        ],
+        "C": [
+          -3.2139380484326967,
+          3.83022221559489
+        ],
+        "D": [
+          -5.0,
+          6.123233995736766e-16
+        ],
+        "E": [
+          -2.500000000000002,
+          -4.330127018922193
+        ],
+        "F": [
+          2.5000000000000004,
+          -4.330127018922193
+        ]
+      },
+      "conditions": [
+        {
+          "id": "inc-omega-A",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-B",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-C",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-D",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "D"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-E",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "E"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        },
+        {
+          "id": "inc-omega-F",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "F"
+          ],
+          "expected": 5,
+          "tolerance": 1e-06
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-F",
+          "operation": "NORMALIZED_EUCLIDEAN_CONSTRUCTION",
+          "output": "F",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "inc-omega-A",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-B",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-C",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-D",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-E",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-06
+        },
+        {
+          "conditionId": "inc-omega-F",
+          "residual": 0.0,
+          "tolerance": 1e-06
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-triple",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "O",
+            "A",
+            "B"
+          ],
+          "observed": 0.8660254037844385,
+          "minimum": 1e-06
+        }
+      ]
+    },
+    "sourceProblemImageSha256": "87d9022dd574ebc5da7fa76cb4f6d1a0111af60510b94112a503a453e2427cfa"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        5.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        2.5000000000000004,
+        4.330127018922193
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -3.2139380484326967,
+        3.83022221559489
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        -5.0,
+        6.123233995736766e-16
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        -2.500000000000002,
+        -4.330127018922193
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        2.5000000000000004,
+        -4.330127018922193
+      ],
+      "name": "F"
+    },
+    {
+      "id": "omega",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        5.0,
+        0.0
+      ],
+      "to": [
+        2.5000000000000004,
+        4.330127018922193
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        2.5000000000000004,
+        4.330127018922193
+      ],
+      "to": [
+        -3.2139380484326967,
+        3.83022221559489
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        -3.2139380484326967,
+        3.83022221559489
+      ],
+      "to": [
+        -5.0,
+        6.123233995736766e-16
+      ]
+    },
+    {
+      "id": "DE",
+      "kind": "SEGMENT",
+      "from": [
+        -5.0,
+        6.123233995736766e-16
+      ],
+      "to": [
+        -2.500000000000002,
+        -4.330127018922193
+      ]
+    },
+    {
+      "id": "EF",
+      "kind": "SEGMENT",
+      "from": [
+        -2.500000000000002,
+        -4.330127018922193
+      ],
+      "to": [
+        2.5000000000000004,
+        -4.330127018922193
+      ]
+    },
+    {
+      "id": "FA",
+      "kind": "SEGMENT",
+      "from": [
+        2.5000000000000004,
+        -4.330127018922193
+      ],
+      "to": [
+        5.0,
+        0.0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F",
+      "O": null
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DE": [
+        "D",
+        "E"
+      ],
+      "EF": [
+        "E",
+        "F"
+      ],
+      "FA": [
+        "F",
+        "A"
+      ]
+    },
+    "annotations": []
+  }
+}

@@ -1,0 +1,468 @@
+{
+  "id": "25_연향중_2학기_기말_중3_기출-q21",
+  "title": "현의 수직이등분선에서 중심 찾기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -11,
+    "xMax": 11,
+    "yMin": -17,
+    "yMax": 8,
+    "width": 350,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "The source fixes incidence, angles or metric facts but no absolute coordinate frame; this equal-unit realization preserves all listed constraints.",
+      "normalization": {
+        "originPoint": "M",
+        "xAxisPoint": "B",
+        "unitScale": 8
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          -6
+        ],
+        "A": [
+          -8,
+          0
+        ],
+        "B": [
+          8,
+          0
+        ],
+        "M": [
+          0,
+          0
+        ],
+        "C": [
+          0,
+          4
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA10",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 10
+        },
+        {
+          "id": "OB10",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 10
+        },
+        {
+          "id": "OC10",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "C"
+          ],
+          "tolerance": 1e-07,
+          "expected": 10
+        },
+        {
+          "id": "AM8",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "M"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8
+        },
+        {
+          "id": "BM8",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "M"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8
+        },
+        {
+          "id": "CM4",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "M"
+          ],
+          "tolerance": 1e-07,
+          "expected": 4
+        },
+        {
+          "id": "CA4root5",
+          "kind": "DISTANCE",
+          "refs": [
+            "C",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 8.94427190999916
+        },
+        {
+          "id": "ABmid",
+          "kind": "MIDPOINT",
+          "refs": [
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "CMperpAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "C",
+            "M",
+            "A",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "O_M_C",
+          "kind": "COLLINEAR",
+          "refs": [
+            "O",
+            "M",
+            "C"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-M",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "M",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "C",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OC10",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AM8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BM8",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CM4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CA4root5",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ABmid",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "CMperpAB",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "O_M_C",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "observed": 10.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        -6
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -8,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        8,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "M",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0,
+        4
+      ],
+      "name": "C"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        -8,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "AM",
+      "kind": "SEGMENT",
+      "from": [
+        -8,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "MB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        8,
+        0
+      ]
+    },
+    {
+      "id": "CM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        4
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OM",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -6
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -6
+      ],
+      "to": [
+        -8,
+        0
+      ]
+    },
+    {
+      "id": "OC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -6
+      ],
+      "to": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        4
+      ],
+      "to": [
+        -8,
+        0
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        -6
+      ],
+      "radius": 10
+    },
+    {
+      "id": "radius-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        7,
+        5.5
+      ],
+      "text": "r=10 cm",
+      "math": false
+    },
+    {
+      "id": "area-summary",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        -10,
+        6.2
+      ],
+      "text": "area=100π",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "O": "O",
+      "A": "A",
+      "B": "B",
+      "M": "M",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "AM": [
+        "A",
+        "M"
+      ],
+      "MB": [
+        "M",
+        "B"
+      ],
+      "CM": [
+        "C",
+        "M"
+      ],
+      "OM": [
+        "O",
+        "M"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OC": [
+        "O",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": []
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "82e1bb02d1213cd96a2999bbc7b9dc4b7ea9640e24123c3e4871db3be9e0f16b",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 225.9057071960298,
+    "sx": 9.181141439205955,
+    "sy": 9.181141439205955
+  },
+  "points": [
+    {
+      "id": "H",
+      "at": [
+        0,
+        0
+      ],
+      "name": "H"
+    },
+    {
+      "id": "A",
+      "at": [
+        -12,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        12,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "O",
+      "at": [
+        0,
+        5
+      ],
+      "name": "O"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "HB",
+      "points": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "OH",
+      "points": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        5
+      ],
+      "radius": 13
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "radiusAnswer",
+      "at": [
+        3,
+        6
+      ],
+      "text": "x=13"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "H",
+      "xAxisPoint": "B",
+      "unitScale": 12
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "H": [
+        0,
+        0
+      ],
+      "A": [
+        -12,
+        0
+      ],
+      "B": [
+        12,
+        0
+      ],
+      "O": [
+        0,
+        5
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OH",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "H"
+        ],
+        "expected": 5,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "AH",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "H"
+        ],
+        "expected": 12,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "HB",
+        "kind": "DISTANCE",
+        "refs": [
+          "H",
+          "B"
+        ],
+        "expected": 12,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "mid",
+        "kind": "MIDPOINT",
+        "refs": [
+          "H",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "perp",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "H",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-H",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "O",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OH",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "AH",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "HB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "mid",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "perp",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "H",
+          "A",
+          "O"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

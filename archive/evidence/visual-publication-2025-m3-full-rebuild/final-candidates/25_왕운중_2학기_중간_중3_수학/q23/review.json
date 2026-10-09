@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "18beff97c61fd548e2d9b9526dd13e38cffe65e96243fe21f7fb3f7edf48e685",
+  "solutionSha256": "89cb3a5bba683c23786aaa36199dd919ce2b2116c097d7c54f58e8b2468964c6",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 180.0,
+    "sx": 17.050691244239633,
+    "sy": 17.050691244239633
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "M",
+      "at": [
+        5,
+        0
+      ],
+      "name": "M"
+    },
+    {
+      "id": "A",
+      "at": [
+        5,
+        4.898979485566356
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        5,
+        -4.898979485566356
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "MA",
+      "points": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "MB",
+      "points": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "smallCircle",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 5
+    },
+    {
+      "id": "largeCircle",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 7
+    }
+  ],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "M",
+      "unitScale": 5
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "M": [
+        5,
+        0
+      ],
+      "A": [
+        5,
+        4.898979485566356
+      ],
+      "B": [
+        5,
+        -4.898979485566356
+      ]
+    },
+    "conditions": [
+      {
+        "id": "rsmall",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": 5,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "OA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 7,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "OB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 7,
+        "tolerance": 1e-08
+      },
+      {
+        "id": "tangent",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-08
+      },
+      {
+        "id": "MA",
+        "kind": "DISTANCE",
+        "refs": [
+          "M",
+          "A"
+        ],
+        "expected": 4.898979485566356,
+        "tolerance": 1e-08
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "NORMALIZED_POINT_PLACEMENT",
+        "output": "B",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "rsmall",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "OA",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "OB",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "tangent",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      },
+      {
+        "conditionId": "MA",
+        "residual": 0.0,
+        "tolerance": 1e-08
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "main-figure-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "observed": 0.6998542122237652,
+        "minimum": 1e-08
+      }
+    ]
+  }
+}

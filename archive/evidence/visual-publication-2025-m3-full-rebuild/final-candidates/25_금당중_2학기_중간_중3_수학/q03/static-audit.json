@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "geometry-publication-audit-v1",
+  "authority": "INDEPENDENT_STATIC_OBSERVER",
+  "publicationAuthorized": false,
+  "renderStatus": "NOT_RUN",
+  "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+  "svgSha256": "802eca78df054dd4d5bfe8a8201e6e4a96eafee23bdb35abf857b8424321b5ed",
+  "errors": [],
+  "observations": [
+    {
+      "type": "COORDINATE_EVIDENCE",
+      "mode": "CONSTRUCTED_REALIZATION",
+      "conditionCount": 4,
+      "residualPassCount": 4,
+      "degeneracyPassCount": 1
+    },
+    {
+      "id": "A",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        -1.0930858154385263e-11,
+        -1.1998620895746196e-11
+      ],
+      "sourceLabel": "A",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "B",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        6.000000000003953,
+        -1.1998620895746196e-11
+      ],
+      "sourceLabel": "B",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "C",
+      "type": "POINT_IDENTITY",
+      "observed": [
+        6.000000000003953,
+        6.708203932497413
+      ],
+      "sourceLabel": "C",
+      "labelPlacement": "OWNER_ADJACENT"
+    },
+    {
+      "id": "AB",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          -1.0930858154385263e-11,
+          -1.1998620895746196e-11
+        ],
+        [
+          6.000000000003953,
+          -1.1998620895746196e-11
+        ]
+      ]
+    },
+    {
+      "id": "BC",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          6.000000000003953,
+          -1.1998620895746196e-11
+        ],
+        [
+          6.000000000003953,
+          6.708203932497413
+        ]
+      ]
+    },
+    {
+      "id": "CA",
+      "type": "SEGMENT",
+      "observedEndpoints": [
+        [
+          6.000000000003953,
+          6.708203932497413
+        ],
+        [
+          -1.0930858154385263e-11,
+          -1.1998620895746196e-11
+        ]
+      ]
+    },
+    {
+      "id": "rightB",
+      "type": "ANGLE",
+      "ownerVertex": "B",
+      "expectedAngleDeg": 90.0,
+      "observedAngleDeg": 90.0,
+      "radiusPx": 16.0,
+      "labelShown": true,
+      "labelPlacement": "OWNER_WEDGE"
+    },
+    {
+      "id": "AB2",
+      "type": "LENGTH",
+      "ownerSegment": "AB",
+      "observedLength": 6.000000000014884,
+      "projectionFraction": 0.5000000000000001,
+      "offsetPx": 22.5,
+      "labelPlacement": "OWNER_SEGMENT"
+    },
+    {
+      "id": "BCsqrt5",
+      "type": "LENGTH",
+      "ownerSegment": "BC",
+      "observedLength": 6.708203932509411,
+      "projectionFraction": 0.5,
+      "offsetPx": 40.5,
+      "labelPlacement": "OWNER_SEGMENT"
+    },
+    {
+      "id": "AC3",
+      "type": "LENGTH",
+      "ownerSegment": "CA",
+      "observedLength": 9.000000000017408,
+      "projectionFraction": 0.49999999999951256,
+      "offsetPx": 22.499999999814857,
+      "labelPlacement": "OWNER_SEGMENT"
+    }
+  ],
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "80f8c184df2db2721d040db2a04d6eaeb71c819b75ea9c9b7444ce41024c8ae4",
+  "reviewSha256": "34b6e9f8fbf7cfd3574e00af5040c537685556893f8958660d16939be01d9a25",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "9592cacd18ec36f35d3b4d056de1a7f451915a30812114e364bf91f9bb3bf8bf",
+  "coverage": {
+    "declaredFacts": 10,
+    "observations": 11,
+    "primitiveCount": 7,
+    "labelCount": 7,
+    "unreviewedPrimitives": 0,
+    "unreviewedLabels": 0
+  },
+  "status": "PASS"
+}

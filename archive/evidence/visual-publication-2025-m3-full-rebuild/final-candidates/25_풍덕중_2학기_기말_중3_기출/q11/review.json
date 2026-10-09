@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "20bb7e51dacfbf80bbc732b3217f29056a9ff50ee6617eb70638949b51ab4e51",
+  "solutionSha256": "64c092bb431597e9a1813432647c0f4cab7cc512ceb110fa1fb5348957fb0a79",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A Euclidean realization built from PT=8, PA=6, PB=32/3 and the tangent contact at T; tangent-chord similarity yields TA=6, TB=8 and AB=14/3.",
+    "normalization": {
+      "originPoint": "P",
+      "xAxisPoint": "T",
+      "unitScale": 8
+    },
+    "freeVariables": [
+      {
+        "id": "circleRadius",
+        "value": 4.024922359499621
+      },
+      {
+        "id": "pa",
+        "value": 6
+      },
+      {
+        "id": "pb",
+        "value": 10.666666666666666
+      }
+    ],
+    "pointCoordinates": {
+      "P": [
+        0.0,
+        0.0
+      ],
+      "T": [
+        8.0,
+        0.0
+      ],
+      "O": [
+        8.0,
+        4.024922359499621
+      ],
+      "A": [
+        4.0,
+        4.47213595499958
+      ],
+      "B": [
+        7.111111111111111,
+        7.950463919999253
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incT",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "expected": 4.024922359499621,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4.024922359499621,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4.024922359499621,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tan",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "T",
+          "P",
+          "T"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "pt8",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "T"
+        ],
+        "expected": 8,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ta6",
+        "kind": "DISTANCE",
+        "refs": [
+          "T",
+          "A"
+        ],
+        "expected": 6,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tb8",
+        "kind": "DISTANCE",
+        "refs": [
+          "T",
+          "B"
+        ],
+        "expected": 8,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "pa6",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "A"
+        ],
+        "expected": 6,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "pb",
+        "kind": "DISTANCE",
+        "refs": [
+          "P",
+          "B"
+        ],
+        "expected": 10.666666666666666,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "ab",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 4.666666666666667,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "P",
+        "inputs": []
+      },
+      {
+        "id": "tangentBase",
+        "operation": "NORMALIZED_TANGENT_SEGMENT",
+        "output": "T",
+        "inputs": [
+          "P"
+        ]
+      },
+      {
+        "id": "center",
+        "operation": "PERPENDICULAR_RADIUS_AT_T",
+        "output": "O",
+        "inputs": [
+          "P",
+          "T"
+        ]
+      },
+      {
+        "id": "nearA",
+        "operation": "SECANT_NEAR_POINT",
+        "output": "A",
+        "inputs": [
+          "P",
+          "T",
+          "O"
+        ]
+      },
+      {
+        "id": "farB",
+        "operation": "SECANT_FAR_POINT",
+        "output": "B",
+        "inputs": [
+          "P",
+          "T",
+          "O"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incT",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incB",
+        "residual": 8.881784197001252e-16,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tan",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "pt8",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ta6",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tb8",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "pa6",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "pb",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "ab",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_PT",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "P",
+          "T"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "A"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_PA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "P",
+          "A"
+        ],
+        "observed": 6.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_PB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "P",
+          "B"
+        ],
+        "observed": 10.666666666666666,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "B"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_AB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 4.666666666666667,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 140.60606060606062,
+    "originY": 371.3939393939394,
+    "sx": 27.151515151515152,
+    "sy": 27.151515151515152
+  },
+  "points": [
+    {
+      "id": "P",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "T",
+      "at": [
+        8.0,
+        0.0
+      ],
+      "name": "T"
+    },
+    {
+      "id": "O",
+      "at": [
+        8.0,
+        4.024922359499621
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        4.0,
+        4.47213595499958
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        7.111111111111111,
+        7.950463919999253
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PT",
+      "points": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "TA",
+      "points": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "PA",
+      "points": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "points": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "TB",
+      "points": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        8.0,
+        4.024922359499621
+      ],
+      "radius": 4.024922359499621
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incT",
+      "point": "T",
+      "circle": "circleO"
+    },
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incB",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenPT",
+      "segment": "PT",
+      "value": 8,
+      "text": "8",
+      "mode": "DIMENSION",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenTA",
+      "segment": "TA",
+      "value": 6,
+      "text": "6",
+      "mode": "DIMENSION",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenTB",
+      "segment": "TB",
+      "value": 8,
+      "text": "8",
+      "mode": "DIMENSION",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "resultBox",
+      "text": "AB=14/3"
+    }
+  ]
+}

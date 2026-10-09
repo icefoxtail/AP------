@@ -1,0 +1,442 @@
+{
+  "id": "m3-geumdang-mid-q10",
+  "visualType": "line_circle_geometry",
+  "title": "정사각형 안의 삼각형 넓이",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 5.5,
+    "yMin": -1.5,
+    "yMax": 5.5,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed square realization with E midpoint AD and F midpoint DC; the interior triangle EBF is the decisive region.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 4
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          4
+        ],
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          4,
+          0
+        ],
+        "D": [
+          4,
+          4
+        ],
+        "E": [
+          2,
+          4
+        ],
+        "F": [
+          4,
+          2
+        ]
+      },
+      "conditions": [
+        {
+          "id": "squareSideAB4",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "squareSideBC4",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 4,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "E_mid_AD",
+          "kind": "MIDPOINT",
+          "refs": [
+            "E",
+            "A",
+            "D"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "F_mid_DC",
+          "kind": "MIDPOINT",
+          "refs": [
+            "F",
+            "D",
+            "C"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "areaEBF6",
+          "kind": "DISTANCE",
+          "refs": [
+            "E",
+            "F"
+          ],
+          "expected": 2.8284271247461903,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": [
+            "A"
+          ]
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "construct-D",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "D",
+          "inputs": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "construct-E",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "E",
+          "inputs": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        {
+          "id": "construct-F",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "F",
+          "inputs": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "squareSideAB4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "squareSideBC4",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "E_mid_AD",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "F_mid_DC",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "areaEBF6",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.7071067811865475,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        4,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        4,
+        4
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        2,
+        4
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        4,
+        2
+      ],
+      "name": "F"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        4
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        0
+      ],
+      "to": [
+        4,
+        4
+      ]
+    },
+    {
+      "id": "DA",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        4
+      ],
+      "to": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "BE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "EF",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        4
+      ],
+      "to": [
+        4,
+        2
+      ]
+    },
+    {
+      "id": "FB",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        2
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ED",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        4
+      ],
+      "to": [
+        4,
+        4
+      ]
+    },
+    {
+      "id": "DF",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        4
+      ],
+      "to": [
+        4,
+        2
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DA": [
+        "D",
+        "A"
+      ],
+      "BE": [
+        "B",
+        "E"
+      ],
+      "EF": [
+        "E",
+        "F"
+      ],
+      "FB": [
+        "F",
+        "B"
+      ],
+      "ED": [
+        "E",
+        "D"
+      ],
+      "DF": [
+        "D",
+        "F"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "side4",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 4,
+        "mode": "ADJACENT",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "triEBF",
+        "kind": "REGION",
+        "refs": [
+          "B",
+          "E",
+          "F"
+        ],
+        "value": 6,
+        "text": "6",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

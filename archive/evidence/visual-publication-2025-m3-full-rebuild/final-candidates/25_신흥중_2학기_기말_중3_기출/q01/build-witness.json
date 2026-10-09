@@ -1,0 +1,195 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "96fba87d1cd9c7c0125cdb0e9b3f38dbaa12a6708b7d3db83cb35526020d4e5c",
+  "normalizedSvgSha256": "4580147617d60ee477b4e9662c73c33f551dd8d7c0126a71399118e84533c36e",
+  "texSha256": "141e2ba69ae48fdd65effe0d8aa9c344bede9cec8069e70e9986fe95a7d145bf",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 180.0,
+    "sx": 23.492063492063494,
+    "sy": 23.492063492063494,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "O-name",
+        "kind": "POINT_NAME",
+        "target": "O",
+        "text": "O",
+        "at": [
+          195.0,
+          180.0
+        ],
+        "font": 16.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "O",
+        "sourceLabel": "O",
+        "allowPanel": false,
+        "candidateBaselines": [
+          [
+            159.76190476190476,
+            168.25396825396825
+          ]
+        ],
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "SW",
+          "S",
+          "W",
+          "NE",
+          "SE",
+          "NW",
+          "N",
+          "E"
+        ],
+        "box": {
+          "x": 159.76190476190476,
+          "y": 149.05396825396826,
+          "width": 10.56,
+          "height": 24.0
+        },
+        "baseline": [
+          159.76190476190476,
+          168.25396825396825
+        ],
+        "placement": "FROZEN_OWNER_BASELINE"
+      },
+      {
+        "id": "central100-label",
+        "kind": "ANGLE_LABEL",
+        "text": "100°",
+        "markup": "100°",
+        "math": true,
+        "font": 16.0,
+        "priority": 1,
+        "centered": true,
+        "allowPanel": false,
+        "owner": "central100",
+        "annotation": "central100",
+        "ownerKind": "ANGLE",
+        "factRole": "CONCLUSION",
+        "at": [
+          195.0,
+          180.0
+        ],
+        "candidateCenters": [
+          [
+            225.2008146773358,
+            144.0080706090131
+          ]
+        ],
+        "ownerWedge": [
+          [
+            195.0,
+            180.0
+          ],
+          0.0,
+          -1.7453292519943295,
+          99.84126984126982
+        ],
+        "box": {
+          "x": 201.3608146773358,
+          "y": 132.0080706090131,
+          "width": 47.68,
+          "height": 24.0
+        },
+        "baseline": [
+          225.2008146773358,
+          144.0080706090131
+        ],
+        "placement": "OWNER_BOUND_RELOCATION"
+      },
+      {
+        "id": "inscribed50-label",
+        "kind": "ANGLE_LABEL",
+        "text": "50°",
+        "markup": "50°",
+        "math": true,
+        "font": 16.0,
+        "priority": 1,
+        "centered": true,
+        "allowPanel": false,
+        "owner": "inscribed50",
+        "annotation": "inscribed50",
+        "ownerKind": "ANGLE",
+        "factRole": "GIVEN",
+        "at": [
+          119.49796330666044,
+          269.9798234774672
+        ],
+        "candidateCenters": [
+          [
+            169.32930752426455,
+            210.59313998233887
+          ]
+        ],
+        "ownerWedge": [
+          [
+            119.49796330666044,
+            269.9798234774672
+          ],
+          -0.43633231299858216,
+          -0.8726646259971647,
+          180.97384064954053
+        ],
+        "box": {
+          "x": 150.76930752426455,
+          "y": 198.59313998233887,
+          "width": 37.120000000000005,
+          "height": 24.0
+        },
+        "baseline": [
+          169.32930752426455,
+          210.59313998233887
+        ],
+        "placement": "OWNER_BOUND_RELOCATION"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "O-name",
+        "fallback": "FROZEN_OWNER_BASELINE"
+      },
+      {
+        "id": "central100-label",
+        "fallback": "OWNER_BOUND_RELOCATION"
+      },
+      {
+        "id": "inscribed50-label",
+        "fallback": "OWNER_BOUND_RELOCATION"
+      }
+    ],
+    "repairs": [],
+    "leaders": [],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+    "publicationWarnings": []
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "publicationProfile": "geometry-publication-v1",
+  "requiredGates": [
+    "INDEPENDENT_PUBLICATION_AUDIT",
+    "RENDERED_LAYOUT",
+    "ARCHIVE_MODE_SOL_390",
+    "INDEPENDENT_VISUAL_REVIEW"
+  ],
+  "publicationSpecSha256": "d6c124b091b7046fe3e50ec09056d334ef26241cadcf497646d9f09454d0b6e2",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "6379cbec37e3a3a530854136370f129746f4cc40973bcf889a5f3ab444958d94",
+  "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+  "semanticWitnessSha256": "f9d32af93287736d141a968271dc367615a9ce4421a722925ced6a868db46748"
+}

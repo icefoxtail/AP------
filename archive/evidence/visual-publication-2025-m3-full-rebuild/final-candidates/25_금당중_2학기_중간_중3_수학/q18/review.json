@@ -1,0 +1,527 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "78fc5c6928a6d84617035f5da68f35058aec000378b8d5fc07aba3c4c1aa2eb8",
+  "coordinateModel": {
+    "originX": 71.15789473684211,
+    "originY": 396.63157894736844,
+    "sx": 26.105263157894736,
+    "sy": 26.105263157894736
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        12
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        16,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "O",
+      "at": [
+        4,
+        4
+      ],
+      "name": "O"
+    },
+    {
+      "id": "D",
+      "at": [
+        0,
+        4
+      ],
+      "name": "D"
+    },
+    {
+      "id": "F",
+      "at": [
+        4,
+        0
+      ],
+      "name": "F"
+    },
+    {
+      "id": "E",
+      "at": [
+        6.4,
+        7.2
+      ],
+      "name": "E"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "points": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "points": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "points": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "points": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "points": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OF",
+      "points": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "BD",
+      "points": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "points": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "points": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "points": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "AD",
+      "points": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AF",
+      "points": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        4,
+        4
+      ],
+      "radius": 4
+    }
+  ],
+  "incidences": [
+    {
+      "id": "D-touch",
+      "point": "D",
+      "circle": "circleO"
+    },
+    {
+      "id": "E-touch",
+      "point": "E",
+      "circle": "circleO"
+    },
+    {
+      "id": "F-touch",
+      "point": "F",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lenBE8",
+      "segment": "BE",
+      "value": 8,
+      "mode": "DIMENSION",
+      "text": "8",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "lenCE12",
+      "segment": "CE",
+      "value": 12,
+      "mode": "DIMENSION",
+      "text": "12",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "perimeter",
+      "text": "20+4√(5)+4√(10)"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed 12-16-20 right triangle with its incircle and three exact tangency points.",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "C",
+      "unitScale": 16
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        12
+      ],
+      "C": [
+        16,
+        0
+      ],
+      "O": [
+        4,
+        4
+      ],
+      "D": [
+        0,
+        4
+      ],
+      "F": [
+        4,
+        0
+      ],
+      "E": [
+        6.4,
+        7.2
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AB12",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 12,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AC16",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": 16,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BC20",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 20,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BE8",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "E"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CE12",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "E"
+        ],
+        "expected": 12,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AD4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AF4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "F"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "rightA",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "expected": 90,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ADperpOD",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "D",
+          "O",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "CFperpOF",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "C",
+          "F",
+          "O",
+          "F"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OEperpBC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "E",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O"
+        ]
+      },
+      {
+        "id": "construct-F",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "F",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "D"
+        ]
+      },
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "E",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "O",
+          "D",
+          "F"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AB12",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AC16",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BC20",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BE8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CE12",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AD4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AF4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "rightA",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ADperpOD",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CFperpOF",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OEperpBC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 1.0,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

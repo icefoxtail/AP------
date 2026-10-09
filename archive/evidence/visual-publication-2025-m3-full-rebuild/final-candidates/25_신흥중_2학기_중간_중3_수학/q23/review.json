@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "dc0382608187994fa50347ec461d82ab5d2ced4da07c609c2f683199f380d994",
+  "solutionSha256": "139a3bdbdefe9d4f9f50bc98a55b3e8b6680b3e1b093cd9fa453c97a21bf0f35",
+  "coordinateModel": {
+    "originX": 195.0,
+    "originY": 180.0,
+    "sx": 67.27272727272727,
+    "sy": 67.27272727272727
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 2
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "O": [
+        0,
+        0
+      ],
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        1.532088886237956,
+        1.2855752193730785
+      ],
+      "C": [
+        0.34729635533386083,
+        1.969615506024416
+      ],
+      "M": [
+        1.766044443118978,
+        0.6427876096865393
+      ],
+      "N": [
+        0.9396926207859084,
+        1.6275953626987474
+      ]
+    },
+    "conditions": [
+      {
+        "id": "OA2",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "OB2",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "OC2",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 2
+      },
+      {
+        "id": "M_mid_AB",
+        "kind": "MIDPOINT",
+        "refs": [
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "N_mid_BC",
+        "kind": "MIDPOINT",
+        "refs": [
+          "N",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "OM_perp_AB",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "M",
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "ON_perp_BC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "N",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-M",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "M",
+        "inputs": []
+      },
+      {
+        "id": "construct-N",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "N",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "OA2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OB2",
+        "residual": 2.220446049250313e-16,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OC2",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "M_mid_AB",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "N_mid_BC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "OM_perp_AB",
+        "residual": 8.636002062691953e-17,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "ON_perp_BC",
+        "residual": 8.636002062691952e-17,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "observed": 2.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "A",
+      "at": [
+        2,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        1.532088886237956,
+        1.2855752193730785
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0.34729635533386083,
+        1.969615506024416
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        1.766044443118978,
+        0.6427876096865393
+      ],
+      "name": null
+    },
+    {
+      "id": "N",
+      "at": [
+        0.9396926207859084,
+        1.6275953626987474
+      ],
+      "name": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "points": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "BN",
+      "points": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "NC",
+      "points": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "points": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "points": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 2
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc-circleO-A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc-circleO-C",
+      "point": "C",
+      "circle": "circleO"
+    }
+  ],
+  "lines": [
+    {
+      "id": "bisectorAB",
+      "coefficients": [
+        0.6427876096865393,
+        -1.766044443118978,
+        0
+      ]
+    },
+    {
+      "id": "bisectorBC",
+      "coefficients": [
+        1.6275953626987474,
+        -0.9396926207859084,
+        0
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": []
+}

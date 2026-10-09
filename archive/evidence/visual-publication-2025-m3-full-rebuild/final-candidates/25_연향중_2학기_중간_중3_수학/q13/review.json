@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "7b52e650927c02279350f508acef047e5ddd346cd527cdb3cbf09042bfe87cf9",
+  "solutionSha256": "9910abd6b03a5cb0e8b95c94fd508f8303674ab404f95448915303a8ccc260fa",
+  "coordinateModel": {
+    "originX": 46.81818181818182,
+    "originY": 246.41580281782808,
+    "sx": 14.818181818181818,
+    "sy": 14.818181818181818
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 20
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        20,
+        0
+      ],
+      "A": [
+        8,
+        8
+      ],
+      "H": [
+        8,
+        0
+      ],
+      "D": [
+        15.567734059897223,
+        8.964096085841831
+      ]
+    },
+    "conditions": [
+      {
+        "id": "ABgiven",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "tolerance": 1e-07,
+        "expected": 11.313708498984761
+      },
+      {
+        "id": "BCgiven",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 20
+      },
+      {
+        "id": "CDgiven",
+        "kind": "DISTANCE",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07,
+        "expected": 10
+      },
+      {
+        "id": "angleB45",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07,
+        "expected": 45
+      },
+      {
+        "id": "angleC30",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "tolerance": 1e-07,
+        "expected": 30
+      },
+      {
+        "id": "AHperpBC",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "A",
+          "H",
+          "B",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BonHC",
+        "kind": "COLLINEAR",
+        "refs": [
+          "B",
+          "H",
+          "C"
+        ],
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "B",
+        "inputs": []
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "C",
+        "inputs": []
+      },
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-H",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "H",
+        "inputs": []
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+        "output": "D",
+        "inputs": []
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "ABgiven",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BCgiven",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "CDgiven",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "angleB45",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "angleC30",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AHperpBC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BonHC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct-anchor-points",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 20.0,
+        "minimum": 1e-06
+      }
+    ]
+  },
+  "points": [
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        20,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "at": [
+        8,
+        8
+      ],
+      "name": "A"
+    },
+    {
+      "id": "H",
+      "at": [
+        8,
+        0
+      ],
+      "name": null
+    },
+    {
+      "id": "D",
+      "at": [
+        15.567734059897223,
+        8.964096085841831
+      ],
+      "name": "D"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "points": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "points": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BH",
+      "points": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "points": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [],
+  "regions": [
+    {
+      "id": "areaABC",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 80,
+      "text": "80",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "otherLabels": []
+}

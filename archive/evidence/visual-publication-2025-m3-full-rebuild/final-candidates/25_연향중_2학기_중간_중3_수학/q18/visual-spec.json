@@ -1,0 +1,340 @@
+{
+  "id": "25_연향중_2학기_중간_중3_수학-q18",
+  "title": "접선과 반지름으로 넓이 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -3,
+    "xMax": 5,
+    "yMin": -3,
+    "yMax": 3,
+    "width": 390,
+    "height": 360,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a constructed realization of the source geometry, not measurements from the sketch.",
+      "normalization": {
+        "originPoint": "O",
+        "xAxisPoint": "P",
+        "unitScale": 4
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "O": [
+          0,
+          0
+        ],
+        "P": [
+          4,
+          0
+        ],
+        "A": [
+          1,
+          -1.7320508075688772
+        ],
+        "B": [
+          1,
+          1.7320508075688772
+        ]
+      },
+      "conditions": [
+        {
+          "id": "OA2",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07,
+          "expected": 2
+        },
+        {
+          "id": "OB2",
+          "kind": "DISTANCE",
+          "refs": [
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 2
+        },
+        {
+          "id": "APperpOA",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "P",
+            "O",
+            "A"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "BPperpOB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "B",
+            "P",
+            "O",
+            "B"
+          ],
+          "tolerance": 1e-07
+        },
+        {
+          "id": "Pangle60",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07,
+          "expected": 60
+        },
+        {
+          "id": "ABequal",
+          "kind": "EQUAL_DISTANCE",
+          "refs": [
+            "P",
+            "A",
+            "P",
+            "B"
+          ],
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-O",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "O",
+          "inputs": []
+        },
+        {
+          "id": "construct-P",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "P",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_FROM_FROZEN_GEOMETRY",
+          "output": "B",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "OA2",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "OB2",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "APperpOA",
+          "residual": 6.409875621278547e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "BPperpOB",
+          "residual": 6.409875621278547e-17,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "Pangle60",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "ABequal",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "distinct-anchor-points",
+          "kind": "DISTINCT_POINTS",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "observed": 4.0,
+          "minimum": 1e-06
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        4,
+        0
+      ],
+      "name": "P"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1,
+        -1.7320508075688772
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        1,
+        1.7320508075688772
+      ],
+      "name": "B"
+    },
+    {
+      "id": "PA",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        0
+      ],
+      "to": [
+        1,
+        -1.7320508075688772
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        4,
+        0
+      ],
+      "to": [
+        1,
+        1.7320508075688772
+      ]
+    },
+    {
+      "id": "OA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1,
+        -1.7320508075688772
+      ]
+    },
+    {
+      "id": "OB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        1,
+        1.7320508075688772
+      ]
+    },
+    {
+      "id": "circleO",
+      "kind": "CIRCLE",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 2
+    },
+    {
+      "id": "area-conclusion",
+      "kind": "GRAPH_ANNOTATION",
+      "at": [
+        1.4,
+        0
+      ],
+      "text": "4√3 cm²",
+      "math": false
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "P": "P",
+      "O": "O"
+    },
+    "segmentPointRefs": {
+      "PA": [
+        "P",
+        "A"
+      ],
+      "PB": [
+        "P",
+        "B"
+      ],
+      "OA": [
+        "O",
+        "A"
+      ],
+      "OB": [
+        "O",
+        "B"
+      ]
+    },
+    "pointLabelAnchors": {},
+    "annotations": [
+      {
+        "id": "angleP",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "text": "60"
+      },
+      {
+        "id": "radiusA",
+        "kind": "LENGTH",
+        "owner": "OA",
+        "value": 2,
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

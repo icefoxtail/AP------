@@ -1,0 +1,329 @@
+{
+  "id": "wangun-mid-q21",
+  "title": "높이로 삼각형 넓이 계산",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.44,
+    "xMax": 13.44,
+    "yMin": -9.92528137423857,
+    "yMax": 1.44,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 12
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          12,
+          0
+        ],
+        "H": [
+          3,
+          0
+        ],
+        "A": [
+          3,
+          -8.485281374238571
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB9",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 9,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "BC12",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "expected": 12,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "AHperp",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "H",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "BH",
+          "kind": "DISTANCE",
+          "refs": [
+            "B",
+            "H"
+          ],
+          "expected": 3,
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-H",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "H",
+          "inputs": []
+        },
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB9",
+          "residual": 1.7763568394002505e-15,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "BC12",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "AHperp",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "BH",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "observed": 0.9428090415820632,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        3,
+        -8.485281374238571
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -8.485281374238571
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        12,
+        0
+      ],
+      "to": [
+        3,
+        -8.485281374238571
+      ]
+    },
+    {
+      "id": "AH",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -8.485281374238571
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "BH",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        0
+      ],
+      "to": [
+        12,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "H": "H",
+      "A": "A"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ],
+      "AH": [
+        "A",
+        "H"
+      ],
+      "BH": [
+        "B",
+        "H"
+      ],
+      "HC": [
+        "H",
+        "C"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "AB9",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 9,
+        "text": "9",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "unit": ""
+      },
+      {
+        "id": "BC12",
+        "kind": "LENGTH",
+        "owner": "BC",
+        "value": 12,
+        "text": "12",
+        "factRole": "GIVEN",
+        "mode": "ADJACENT",
+        "unit": ""
+      },
+      {
+        "id": "areaABC",
+        "kind": "REGION",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50.91168824543143,
+        "text": "36sqrt(2)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

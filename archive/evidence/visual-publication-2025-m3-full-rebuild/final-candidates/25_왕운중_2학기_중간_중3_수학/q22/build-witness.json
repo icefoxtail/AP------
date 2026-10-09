@@ -1,0 +1,256 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "230e6b14c390d0282085b68bbf0a8df2dcabfd3a951fac3587b211d5f4fef813",
+  "normalizedSvgSha256": "859f2ee9f6c32e27719a8f3f4f6cf6856bd31bde6e4e402643d10f26338b403c",
+  "texSha256": "26736cb221cb96cf38d1cf115c935777e061cc6d9bf295b6f90786031fbf1fa8",
+  "coordinateModel": {
+    "originX": 121.0,
+    "originY": 278.6666666666667,
+    "sx": 49.333333333333336,
+    "sy": 49.333333333333336,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "A-name",
+        "kind": "POINT_NAME",
+        "target": "A",
+        "text": "A",
+        "at": [
+          121.0,
+          278.6666666666667
+        ],
+        "font": 15.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "A",
+        "sourceLabel": "A",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "SW",
+          "W",
+          "S",
+          "NW",
+          "SE",
+          "N",
+          "NE",
+          "E"
+        ],
+        "box": {
+          "x": 101.1,
+          "y": 288.6666666666667,
+          "width": 9.9,
+          "height": 22.5
+        },
+        "baseline": [
+          101.1,
+          306.6666666666667
+        ],
+        "placement": "COORDINATE_RELOCATION_SW"
+      },
+      {
+        "id": "B-name",
+        "kind": "POINT_NAME",
+        "target": "B",
+        "text": "B",
+        "at": [
+          269.0,
+          278.6666666666667
+        ],
+        "font": 15.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "B",
+        "sourceLabel": "B",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "SE",
+          "E",
+          "S",
+          "NE",
+          "SW",
+          "NW",
+          "N",
+          "W"
+        ],
+        "box": {
+          "x": 279.0,
+          "y": 288.6666666666667,
+          "width": 9.9,
+          "height": 22.5
+        },
+        "baseline": [
+          279.0,
+          306.6666666666667
+        ],
+        "placement": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "B90-label",
+        "kind": "ANGLE_LABEL",
+        "text": "90°",
+        "markup": "90°",
+        "math": true,
+        "font": 15.0,
+        "priority": 1,
+        "centered": true,
+        "allowPanel": false,
+        "owner": "B90",
+        "annotation": "B90",
+        "ownerKind": "ANGLE",
+        "factRole": "GIVEN",
+        "at": [
+          269.0,
+          278.6666666666667
+        ],
+        "candidateCenters": [
+          [
+            239.65506858075827,
+            249.32173524742495
+          ],
+          [
+            231.1697872065197,
+            240.8364538731864
+          ],
+          [
+            222.68450583228113,
+            232.35117249894782
+          ],
+          [
+            214.19922445804255,
+            223.86589112470926
+          ],
+          [
+            205.713943083804,
+            215.38060975047068
+          ],
+          [
+            197.22866170956542,
+            206.8953283762321
+          ],
+          [
+            188.74338033532683,
+            198.41004700199355
+          ]
+        ],
+        "ownerWedge": [
+          [
+            269.0,
+            278.6666666666667
+          ],
+          3.141592653589793,
+          1.5707963267948966,
+          125.8
+        ],
+        "box": {
+          "x": 213.76978720651968,
+          "y": 229.5864538731864,
+          "width": 34.8,
+          "height": 22.5
+        },
+        "baseline": [
+          231.1697872065197,
+          240.8364538731864
+        ],
+        "placement": "OWNER_BOUND_RELOCATION"
+      },
+      {
+        "id": "C-name",
+        "kind": "POINT_NAME",
+        "target": "C",
+        "text": "C",
+        "at": [
+          269.0,
+          81.33333333333334
+        ],
+        "font": 15.0,
+        "priority": 1,
+        "allowSuppress": false,
+        "owner": "C",
+        "sourceLabel": "C",
+        "allowPanel": false,
+        "gaps": [
+          10,
+          16,
+          24
+        ],
+        "directions": [
+          "N",
+          "NE",
+          "NW",
+          "E",
+          "W",
+          "SE",
+          "SW",
+          "S"
+        ],
+        "box": {
+          "x": 264.05,
+          "y": 48.83333333333334,
+          "width": 9.9,
+          "height": 22.5
+        },
+        "baseline": [
+          264.05,
+          66.83333333333334
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "A-name",
+        "fallback": "COORDINATE_RELOCATION_SW"
+      },
+      {
+        "id": "B-name",
+        "fallback": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "B90-label",
+        "fallback": "OWNER_BOUND_RELOCATION"
+      },
+      {
+        "id": "C-name",
+        "fallback": "COORDINATE_RELOCATION_N"
+      }
+    ],
+    "repairs": [],
+    "leaders": [],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+    "publicationWarnings": []
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "publicationProfile": "geometry-publication-v1",
+  "requiredGates": [
+    "INDEPENDENT_PUBLICATION_AUDIT",
+    "RENDERED_LAYOUT",
+    "ARCHIVE_MODE_SOL_390",
+    "INDEPENDENT_VISUAL_REVIEW"
+  ],
+  "publicationSpecSha256": "247c6a06f421e592a122e6bd3237c80eaecb5a73f0d2fdec69ba94c19705fdbb",
+  "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+  "coordinateEvidenceSha256": "46eebd17f4e6b0839cc8a5922d938d736a44486e2e8f09d0c5a72b355fb0d4c7",
+  "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+  "semanticWitnessSha256": "d8da0df072cea332359ba8fff900fed80088787b460f2aaf6b03c5f9bef8555d"
+}

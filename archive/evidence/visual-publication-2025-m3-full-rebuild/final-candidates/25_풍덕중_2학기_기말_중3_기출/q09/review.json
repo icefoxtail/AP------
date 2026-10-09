@@ -1,0 +1,525 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "20bb7e51dacfbf80bbc732b3217f29056a9ff50ee6617eb70638949b51ab4e51",
+  "solutionSha256": "4420aa53ff6540b25bdc78455dbd50cacf9d881b5ffe4b376cf7668ca01275b1",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "The irregular cyclic hexagon is constructed from chosen positive arc gaps that realize the verified three alternating angles 120°, 123°, and 117°; no regular-hexagon assumption is made.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "A",
+      "unitScale": 4
+    },
+    "freeVariables": [
+      {
+        "id": "arc_AB",
+        "value": 60
+      },
+      {
+        "id": "arc_BC",
+        "value": 50
+      },
+      {
+        "id": "arc_CD",
+        "value": 64
+      },
+      {
+        "id": "arc_DE",
+        "value": 62
+      },
+      {
+        "id": "arc_EF",
+        "value": 64
+      },
+      {
+        "id": "arc_FA",
+        "value": 60
+      }
+    ],
+    "pointCoordinates": {
+      "A": [
+        4.0,
+        0.0
+      ],
+      "B": [
+        2.0000000000000004,
+        3.4641016151377544
+      ],
+      "C": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ],
+      "D": [
+        -3.978087581473093,
+        0.41811385307061494
+      ],
+      "E": [
+        -2.2367716138829863,
+        -3.3161502902201674
+      ],
+      "F": [
+        2.0000000000000004,
+        -3.4641016151377544
+      ],
+      "O": [
+        0,
+        0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "inc_A",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc_B",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc_C",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "C"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc_D",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "D"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc_E",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "E"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "inc_F",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "F"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleA120",
+        "kind": "ANGLE",
+        "refs": [
+          "F",
+          "A",
+          "B"
+        ],
+        "expected": 120,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleC123",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "expected": 123,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angleE117",
+        "kind": "ANGLE",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "expected": 117,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "baseA",
+        "operation": "NORMALIZED_RADIUS",
+        "output": "A",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "placeB",
+        "operation": "ROTATE_ARC_60",
+        "output": "B",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "placeC",
+        "operation": "ROTATE_ARC_110",
+        "output": "C",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "placeD",
+        "operation": "ROTATE_ARC_174",
+        "output": "D",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "placeE",
+        "operation": "ROTATE_ARC_236",
+        "output": "E",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "placeF",
+        "operation": "ROTATE_ARC_300",
+        "output": "F",
+        "inputs": [
+          "O",
+          "A"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "inc_A",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc_B",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc_C",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc_D",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc_E",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "inc_F",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleA120",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleC123",
+        "residual": 1.4210854715202004e-14,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angleE117",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_AB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 3.9999999999999996,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_BC",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "observed": 3.380946093925596,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_CD",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "C",
+          "D"
+        ],
+        "observed": 4.239354113865639,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_DE",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "D",
+          "E"
+        ],
+        "observed": 4.120304599280436,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_EF",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "E",
+          "F"
+        ],
+        "observed": 4.239354113865638,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_FA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "F",
+          "A"
+        ],
+        "observed": 3.9999999999999996,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 256,
+    "originY": 256,
+    "sx": 44.8,
+    "sy": 44.8
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        4.0,
+        0.0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        2.0000000000000004,
+        3.4641016151377544
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        -3.978087581473093,
+        0.41811385307061494
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        -2.2367716138829863,
+        -3.3161502902201674
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "at": [
+        2.0000000000000004,
+        -3.4641016151377544
+      ],
+      "name": "F"
+    },
+    {
+      "id": "O",
+      "at": [
+        0,
+        0
+      ],
+      "name": "O"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "points": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "points": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "points": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4
+    }
+  ],
+  "incidences": [
+    {
+      "id": "inc_A",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_B",
+      "point": "B",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_C",
+      "point": "C",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_D",
+      "point": "D",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_E",
+      "point": "E",
+      "circle": "circleO"
+    },
+    {
+      "id": "inc_F",
+      "point": "F",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [
+    {
+      "id": "angleA120",
+      "points": [
+        "F",
+        "A",
+        "B"
+      ],
+      "degrees": 120,
+      "marker": "ARC",
+      "text": "120°",
+      "factRole": "CONCLUSION"
+    },
+    {
+      "id": "angleC123",
+      "points": [
+        "B",
+        "C",
+        "D"
+      ],
+      "degrees": 123,
+      "marker": "ARC",
+      "text": "123°",
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "angleE117",
+      "points": [
+        "D",
+        "E",
+        "F"
+      ],
+      "degrees": 117,
+      "marker": "ARC",
+      "text": "117°",
+      "factRole": "GIVEN"
+    }
+  ],
+  "lengths": [],
+  "regions": []
+}

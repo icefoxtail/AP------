@@ -1,0 +1,340 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "ea0d4c9a2ca97a81c7f974c89b26bfca5394fde98bc984675ec00cfedfae4211",
+  "coordinateModel": {
+    "originX": 161.14285714285714,
+    "originY": 358.8571428571429,
+    "sx": 59.42857142857143,
+    "sy": 59.42857142857143
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        4
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        4,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "D",
+      "at": [
+        4,
+        4
+      ],
+      "name": "D"
+    },
+    {
+      "id": "E",
+      "at": [
+        2,
+        4
+      ],
+      "name": "E"
+    },
+    {
+      "id": "F",
+      "at": [
+        4,
+        2
+      ],
+      "name": "F"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "points": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "points": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BE",
+      "points": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "points": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "points": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "ED",
+      "points": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "points": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "side4",
+      "segment": "AB",
+      "value": 4,
+      "mode": "ADJACENT",
+      "text": "4",
+      "factRole": "GIVEN"
+    }
+  ],
+  "regions": [
+    {
+      "id": "triEBF",
+      "points": [
+        "B",
+        "E",
+        "F"
+      ],
+      "value": 6,
+      "text": "6",
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "otherLabels": [],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed square realization with E midpoint AD and F midpoint DC; the interior triangle EBF is the decisive region.",
+    "normalization": {
+      "originPoint": "B",
+      "xAxisPoint": "C",
+      "unitScale": 4
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        0,
+        0
+      ],
+      "C": [
+        4,
+        0
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        2,
+        4
+      ],
+      "F": [
+        4,
+        2
+      ]
+    },
+    "conditions": [
+      {
+        "id": "squareSideAB4",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "squareSideBC4",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "E_mid_AD",
+        "kind": "MIDPOINT",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "F_mid_DC",
+        "kind": "MIDPOINT",
+        "refs": [
+          "F",
+          "D",
+          "C"
+        ],
+        "tolerance": 1e-07
+      },
+      {
+        "id": "areaEBF6",
+        "kind": "DISTANCE",
+        "refs": [
+          "E",
+          "F"
+        ],
+        "expected": 2.8284271247461903,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-C",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "C",
+        "inputs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "construct-D",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "D",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "construct-E",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "E",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      {
+        "id": "construct-F",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "F",
+        "inputs": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "squareSideAB4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "squareSideBC4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "E_mid_AD",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "F_mid_DC",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "areaEBF6",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "observed": 0.7071067811865475,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

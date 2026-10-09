@@ -1,0 +1,421 @@
+{
+  "id": "wangun-mid-q20",
+  "title": "수평 성분을 더해 75° 사인 구하기",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1.0,
+    "xMax": 6.79555495773441,
+    "yMin": -4.674234614174766,
+    "yMax": 1.0,
+    "width": 390,
+    "height": 360,
+    "panel": 0,
+    "margin": 32
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Coordinates are a normalized exact Euclidean realization of the source and verified-solution relations; they are not source coordinate claims.",
+      "normalization": {
+        "originPoint": "A",
+        "xAxisPoint": "D",
+        "unitScale": 5.79555495773441
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          0,
+          -3.674234614174767
+        ],
+        "C": [
+          5.79555495773441,
+          -3.674234614174767
+        ],
+        "D": [
+          5.79555495773441,
+          0
+        ],
+        "E": [
+          3.674234614174767,
+          -3.674234614174767
+        ],
+        "F": [
+          5.79555495773441,
+          -1.552914270615124
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AF",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "F"
+          ],
+          "expected": 6,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "BAE45",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "E"
+          ],
+          "expected": 45,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "EAF30",
+          "kind": "ANGLE",
+          "refs": [
+            "E",
+            "A",
+            "F"
+          ],
+          "expected": 30,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "AEF90",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "E",
+            "F"
+          ],
+          "expected": 90,
+          "tolerance": 1e-08
+        },
+        {
+          "id": "rectAB",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "A",
+            "B",
+            "B",
+            "C"
+          ],
+          "tolerance": 1e-08
+        },
+        {
+          "id": "rectBC",
+          "kind": "PERPENDICULAR",
+          "refs": [
+            "B",
+            "C",
+            "C",
+            "D"
+          ],
+          "tolerance": 1e-08
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-A",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "A",
+          "inputs": []
+        },
+        {
+          "id": "construct-B",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "C",
+          "inputs": []
+        },
+        {
+          "id": "construct-D",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "D",
+          "inputs": []
+        },
+        {
+          "id": "construct-E",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "E",
+          "inputs": []
+        },
+        {
+          "id": "construct-F",
+          "operation": "NORMALIZED_POINT_PLACEMENT",
+          "output": "F",
+          "inputs": []
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AF",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "BAE45",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "EAF30",
+          "residual": 7.105427357601002e-15,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "AEF90",
+          "residual": 1.4210854715202004e-14,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "rectAB",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        },
+        {
+          "conditionId": "rectBC",
+          "residual": 0.0,
+          "tolerance": 1e-08
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "main-figure-nondegenerate",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "observed": 0.8445741745770592,
+          "minimum": 1e-08
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5.79555495773441,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "D",
+      "kind": "POINT",
+      "at": [
+        5.79555495773441,
+        0
+      ]
+    },
+    {
+      "id": "E",
+      "kind": "POINT",
+      "at": [
+        3.674234614174767,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "F",
+      "kind": "POINT",
+      "at": [
+        5.79555495773441,
+        -1.552914270615124
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        0,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        -3.674234614174767
+      ],
+      "to": [
+        5.79555495773441,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "CD",
+      "kind": "SEGMENT",
+      "from": [
+        5.79555495773441,
+        -3.674234614174767
+      ],
+      "to": [
+        5.79555495773441,
+        0
+      ]
+    },
+    {
+      "id": "DA",
+      "kind": "SEGMENT",
+      "from": [
+        5.79555495773441,
+        0
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "AE",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3.674234614174767,
+        -3.674234614174767
+      ]
+    },
+    {
+      "id": "EF",
+      "kind": "SEGMENT",
+      "from": [
+        3.674234614174767,
+        -3.674234614174767
+      ],
+      "to": [
+        5.79555495773441,
+        -1.552914270615124
+      ]
+    },
+    {
+      "id": "AF",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        5.79555495773441,
+        -1.552914270615124
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 15,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "E": "E",
+      "F": "F"
+    },
+    "pointLabelAnchors": {},
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CD": [
+        "C",
+        "D"
+      ],
+      "DA": [
+        "D",
+        "A"
+      ],
+      "AE": [
+        "A",
+        "E"
+      ],
+      "EF": [
+        "E",
+        "F"
+      ],
+      "AF": [
+        "A",
+        "F"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "BAE45",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 45,
+        "factRole": "GIVEN",
+        "marker": "ARC"
+      },
+      {
+        "id": "EAF30",
+        "kind": "ANGLE",
+        "refs": [
+          "E",
+          "A",
+          "F"
+        ],
+        "value": 30,
+        "factRole": "GIVEN",
+        "marker": "ARC"
+      },
+      {
+        "id": "AEF90",
+        "kind": "ANGLE",
+        "refs": [
+          "A",
+          "E",
+          "F"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "marker": "SQUARE"
+      }
+    ]
+  }
+}

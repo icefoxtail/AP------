@@ -1,0 +1,283 @@
+{
+  "id": "m3-geumdang-mid-q11",
+  "visualType": "line_circle_geometry",
+  "title": "이등변삼각형의 꼭짓각과 넓이",
+  "viewport": {
+    "xMin": -1.5,
+    "xMax": 4.428203230275509,
+    "yMin": -1.5,
+    "yMax": 6.964101615137754,
+    "width": 560,
+    "height": 480,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "CONSTRUCTED_REALIZATION",
+      "rationale": "Constructed symmetric realization of AB=AC=4√2 and base angle 75°, with exact area 8.",
+      "normalization": {
+        "originPoint": "B",
+        "xAxisPoint": "C",
+        "unitScale": 2.9282032302755088
+      },
+      "freeVariables": [],
+      "pointCoordinates": {
+        "B": [
+          0,
+          0
+        ],
+        "C": [
+          2.9282032302755088,
+          0
+        ],
+        "A": [
+          1.4641016151377544,
+          5.464101615137754
+        ]
+      },
+      "conditions": [
+        {
+          "id": "AB4sqrt2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "expected": 5.656854249492381,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "AC4sqrt2",
+          "kind": "DISTANCE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "expected": 5.656854249492381,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "B75",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": 75,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "C75",
+          "kind": "ANGLE",
+          "refs": [
+            "A",
+            "C",
+            "B"
+          ],
+          "expected": 75,
+          "tolerance": 1e-07
+        },
+        {
+          "id": "A30",
+          "kind": "ANGLE",
+          "refs": [
+            "B",
+            "A",
+            "C"
+          ],
+          "expected": 30,
+          "tolerance": 1e-07
+        }
+      ],
+      "constructionSteps": [
+        {
+          "id": "construct-B",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "B",
+          "inputs": []
+        },
+        {
+          "id": "construct-C",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "C",
+          "inputs": [
+            "B"
+          ]
+        },
+        {
+          "id": "construct-A",
+          "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+          "output": "A",
+          "inputs": [
+            "B",
+            "C"
+          ]
+        }
+      ],
+      "residualChecks": [
+        {
+          "conditionId": "AB4sqrt2",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "AC4sqrt2",
+          "residual": 8.881784197001252e-16,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "B75",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "C75",
+          "residual": 0.0,
+          "tolerance": 1e-07
+        },
+        {
+          "conditionId": "A30",
+          "residual": 2.1316282072803006e-14,
+          "tolerance": 1e-07
+        }
+      ],
+      "degeneracyChecks": [
+        {
+          "id": "noncollinear-witness",
+          "kind": "NONCOLLINEAR",
+          "refs": [
+            "B",
+            "C",
+            "A"
+          ],
+          "observed": 0.9659258262890683,
+          "minimum": 1e-09
+        }
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        2.9282032302755088,
+        0
+      ],
+      "name": "C"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1.4641016151377544,
+        5.464101615137754
+      ],
+      "name": "A"
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        1.4641016151377544,
+        5.464101615137754
+      ],
+      "to": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        2.9282032302755088,
+        0
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        2.9282032302755088,
+        0
+      ],
+      "to": [
+        1.4641016151377544,
+        5.464101615137754
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 18,
+    "sourcePointLabels": {
+      "B": "B",
+      "C": "C",
+      "A": "A"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lenAB",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 5.656854249492381,
+        "mode": "ADJACENT",
+        "text": "4sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAC",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 5.656854249492381,
+        "mode": "ADJACENT",
+        "text": "4sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "triABC",
+        "kind": "REGION",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 8,
+        "text": "8",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

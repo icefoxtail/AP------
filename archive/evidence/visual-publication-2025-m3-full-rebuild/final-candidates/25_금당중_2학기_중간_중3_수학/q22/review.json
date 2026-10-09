@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "daaae1df4071544541ab2d7dd5ddcf559036a1ccfa6511bef22d3a24fe7fc8eb",
+  "solutionSha256": "d2a0e400fb2c282578124783dde9a782e94013f0f25fa807b277752eb90ef778",
+  "coordinateModel": {
+    "originX": 99.63636363636364,
+    "originY": 330.1818181818182,
+    "sx": 45.09090909090909,
+    "sy": 45.09090909090909
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "O",
+      "at": [
+        8,
+        0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "B",
+      "at": [
+        8,
+        4
+      ],
+      "name": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AO",
+      "points": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "BO",
+      "points": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "circles": [],
+  "incidences": [],
+  "lines": [
+    {
+      "id": "x-axis",
+      "coefficients": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "y-axis",
+      "coefficients": [
+        1,
+        0,
+        -8
+      ]
+    },
+    {
+      "id": "graph",
+      "coefficients": [
+        -1,
+        2,
+        0
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "AO8",
+      "segment": "AO",
+      "value": 8,
+      "mode": "ADJACENT",
+      "text": "8",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "BO4",
+      "segment": "BO",
+      "value": 4,
+      "mode": "ADJACENT",
+      "text": "4",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "AB4sqrt5",
+      "segment": "AB",
+      "value": 8.94427190999916,
+      "mode": "ADJACENT",
+      "text": "4√(5)",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "expression-result",
+      "text": "−3"
+    }
+  ],
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Constructed coordinate realization of y=1/2x+4 with intercepts A=(-8,0), B=(0,4), and O=(0,0).",
+    "normalization": {
+      "originPoint": "A",
+      "xAxisPoint": "O",
+      "unitScale": 8
+    },
+    "freeVariables": [],
+    "pointCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "O": [
+        8,
+        0
+      ],
+      "B": [
+        8,
+        4
+      ]
+    },
+    "conditions": [
+      {
+        "id": "AO8",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "O"
+        ],
+        "expected": 8,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "BO4",
+        "kind": "DISTANCE",
+        "refs": [
+          "B",
+          "O"
+        ],
+        "expected": 4,
+        "tolerance": 1e-07
+      },
+      {
+        "id": "AB4sqrt5",
+        "kind": "DISTANCE",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": 8.94427190999916,
+        "tolerance": 1e-07
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-A",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "A",
+        "inputs": []
+      },
+      {
+        "id": "construct-O",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "O",
+        "inputs": [
+          "A"
+        ]
+      },
+      {
+        "id": "construct-B",
+        "operation": "CONSTRUCT_POINT_FROM_FROZEN_RELATIONS",
+        "output": "B",
+        "inputs": [
+          "A",
+          "O"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "AO8",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "BO4",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      },
+      {
+        "conditionId": "AB4sqrt5",
+        "residual": 0.0,
+        "tolerance": 1e-07
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "noncollinear-witness",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "observed": 0.4472135954999579,
+        "minimum": 1e-09
+      }
+    ]
+  }
+}

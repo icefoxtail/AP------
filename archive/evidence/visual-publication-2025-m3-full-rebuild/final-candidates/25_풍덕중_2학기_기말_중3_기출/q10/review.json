@@ -1,0 +1,359 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "20bb7e51dacfbf80bbc732b3217f29056a9ff50ee6617eb70638949b51ab4e51",
+  "solutionSha256": "8024cd1714d1584740df40e9e1e5c6e85ca43aeed16bc3b5d52dd6fb93d94639",
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "A circle realization preserves the source tangent at T and the 110 degree minor arc TB; the tangent-chord theorem yields both 55 degree owners.",
+    "normalization": {
+      "originPoint": "O",
+      "xAxisPoint": "T",
+      "unitScale": 4
+    },
+    "freeVariables": [
+      {
+        "id": "polarB",
+        "value": 110
+      },
+      {
+        "id": "polarA",
+        "value": 250
+      }
+    ],
+    "pointCoordinates": {
+      "O": [
+        0.0,
+        0.0
+      ],
+      "T": [
+        4.0,
+        0.0
+      ],
+      "B": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ],
+      "A": [
+        -1.3680805733026742,
+        -3.7587704831436337
+      ],
+      "Q": [
+        4.0,
+        8.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "incT",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incA",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "A"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "incB",
+        "kind": "DISTANCE",
+        "refs": [
+          "O",
+          "B"
+        ],
+        "expected": 4,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "tan",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "O",
+          "T",
+          "T",
+          "Q"
+        ],
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angGiven",
+        "kind": "ANGLE",
+        "refs": [
+          "B",
+          "T",
+          "Q"
+        ],
+        "expected": 55,
+        "tolerance": 1e-06
+      },
+      {
+        "id": "angResult",
+        "kind": "ANGLE",
+        "refs": [
+          "T",
+          "A",
+          "B"
+        ],
+        "expected": 55,
+        "tolerance": 1e-06
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "origin",
+        "operation": "SOURCE_ORIGIN",
+        "output": "O",
+        "inputs": []
+      },
+      {
+        "id": "baseT",
+        "operation": "NORMALIZED_RADIUS",
+        "output": "T",
+        "inputs": [
+          "O"
+        ]
+      },
+      {
+        "id": "placeB",
+        "operation": "ROTATE_TO_110_DEG",
+        "output": "B",
+        "inputs": [
+          "O",
+          "T"
+        ]
+      },
+      {
+        "id": "placeA",
+        "operation": "ROTATE_TO_250_DEG",
+        "output": "A",
+        "inputs": [
+          "O",
+          "T"
+        ]
+      },
+      {
+        "id": "tangentRay",
+        "operation": "TANGENT_RAY_AT_T",
+        "output": "Q",
+        "inputs": [
+          "O",
+          "T"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "incT",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incA",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "incB",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "tan",
+        "residual": 0.0,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angGiven",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-06
+      },
+      {
+        "conditionId": "angResult",
+        "residual": 7.105427357601002e-15,
+        "tolerance": 1e-06
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "distinct_OT",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "O",
+          "T"
+        ],
+        "observed": 4.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TQ",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "Q"
+        ],
+        "observed": 8.0,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "B"
+        ],
+        "observed": 6.553216354311934,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_TA",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "T",
+          "A"
+        ],
+        "observed": 6.5532163543119335,
+        "minimum": 1e-05
+      },
+      {
+        "id": "distinct_AB",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "observed": 7.517540966287267,
+        "minimum": 1e-05
+      }
+    ]
+  },
+  "coordinateModel": {
+    "originX": 256.0,
+    "originY": 256.0,
+    "sx": 22.4,
+    "sy": 22.4
+  },
+  "points": [
+    {
+      "id": "O",
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "O"
+    },
+    {
+      "id": "T",
+      "at": [
+        4.0,
+        0.0
+      ],
+      "name": "T"
+    },
+    {
+      "id": "B",
+      "at": [
+        -1.3680805733026749,
+        3.7587704831436337
+      ],
+      "name": "B"
+    },
+    {
+      "id": "A",
+      "at": [
+        -1.3680805733026742,
+        -3.7587704831436337
+      ],
+      "name": "A"
+    },
+    {
+      "id": "Q",
+      "at": [
+        4.0,
+        8.0
+      ],
+      "name": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OT",
+      "points": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "TQ",
+      "points": [
+        "T",
+        "Q"
+      ]
+    },
+    {
+      "id": "TB",
+      "points": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "TA",
+      "points": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "id": "circleO",
+      "center": [
+        0,
+        0
+      ],
+      "radius": 4
+    }
+  ],
+  "incidences": [
+    {
+      "id": "incT",
+      "point": "T",
+      "circle": "circleO"
+    },
+    {
+      "id": "incA",
+      "point": "A",
+      "circle": "circleO"
+    },
+    {
+      "id": "incB",
+      "point": "B",
+      "circle": "circleO"
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [],
+  "otherLabels": [
+    {
+      "id": "angleNote",
+      "text": "∠BTQ = 55°; ∠TAB = 55°"
+    }
+  ]
+}

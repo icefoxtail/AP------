@@ -31,7 +31,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q1-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q1-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -63,7 +64,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q2-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q2-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -95,7 +97,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q3-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 4,
@@ -127,7 +131,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q4-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q4-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 5,
@@ -159,7 +165,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q5-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q5-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 6,
@@ -191,7 +199,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q6-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q6-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 7,
@@ -223,7 +233,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q7-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q7-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 8,
@@ -255,7 +267,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q8-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q8-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 9,
@@ -287,7 +301,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 10,
@@ -319,7 +335,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q10-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -351,7 +368,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q11-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 12,
@@ -640,7 +659,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q21-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 22,
@@ -667,7 +688,9 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageLayout": "fullwidth"
   },
   {
     "id": 23,
