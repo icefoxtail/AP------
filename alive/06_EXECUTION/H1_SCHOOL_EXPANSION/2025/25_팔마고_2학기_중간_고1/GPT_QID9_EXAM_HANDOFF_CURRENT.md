@@ -5,7 +5,7 @@
 - Target release checks: generated Meta registration/retention PASS (index 454, failures0); Archive2 Runtime Guard 42/42; generated-bank tests 22/22; focused consumer regressions 13/13; actual Chrome Palma lookup144/HOLD excluded.
 - Full repository CI remains red on baseline failures also reproduced on current-main baseline: inline bracket-label inventory, compose scope (삼각비), derivative/integral fixture counts, M2 O11 Golden SHA. Those files are not changed by QID9 release; see PR body for details.
 - Branch now contains q17-q20 creator drafts only; none have review/Consumer registration. They are not included in the 72-UID release approval. Next source qid: 21.
-- Current main baseline: `1ba22c805c9fc4b144b5670d414964ee73d3521d`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
+- Current main baseline: `cf42ca40766e859cb2f6cad4ebd160c29cf877a3`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
 
 ---
 
