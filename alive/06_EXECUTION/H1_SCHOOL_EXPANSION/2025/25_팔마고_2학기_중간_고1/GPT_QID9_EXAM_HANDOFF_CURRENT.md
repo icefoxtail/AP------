@@ -1,3 +1,16 @@
+# CURRENT — 팔마고 QID9 원본 q10 제작 종료 / 다음 q11 (2026-10-09)
+
+- 단일 작업 브랜치: `work/alive-25-palma-h1-2mid-qid9` (기존 q01~q09 후보 보호).
+- q10 새 9개 A1~C3: `GPT_QID9_Q10_PACKAGE.json`, `GPT_QID9_Q10_STEM_SELF_REVIEW.md`.
+- A1/A2/A3/B2 Venn 4종: `GPT_QID9_Q10_VISUALS/` 신규 생성, 정적 수학 패리티 확인. 실렌더 미확인.
+- 누적 신규 후보 90개, q09~q10 18개는 제작자 자가점검만 완료, 독립 품질승인 및 학생 등록은 미완료.
+- q10 원본의 차집합 L3를 잠그고 B1/C2 발문 역검사 후 수정, 오답 반례 36개 기록.
+- **다음 정확한 대상: source q11 단독.** A1~C3 제작→역발문→9 UID ledger→동일 브랜치의 독립 커밋. 완료 q01~q10 중복 제작 금지.
+- 원본 q10.png 직접 시각 판독 및 신규 4 SVG 학생 브라우저 렌더는 NOT_TESTED. quality/consumer/main PASS 주장 금지.
+- 아래 내용은 이전 시점의 인계 이력이다.
+
+---
+
 # CURRENT 2026-10-09 — q05~q08 36문항 검수·수정·main 정적 등록 완료, 다음 q09
 
 - 원본 q05~q08 각 A1~C3 9문항 검수: KEEP30, REVISED6, HOLD0. 신규 36개 원장 지시 품질승인.

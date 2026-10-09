@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 10,
+  "lockedPrimaryL3": "여집합과 차집합",
+  "rpmRecordId": "H1-RPM-240",
+  "activeProblemTypeKey": "PT_SET_REGION_EXPRESSION",
+  "originalPngInspection": "NOT_TESTED",
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "KEEP": 7,
+    "REVISED": 2,
+    "HOLD": 0,
+    "booleanTruthTableCases": 72,
+    "wrongChoiceCounterexamples": 36,
+    "vennAssets": 4,
+    "independentGptReview": "NOT_RUN",
+    "studentBrowser": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-A1",
+      "slot": "A1",
+      "sourceQid": 10,
+      "mode": "STRICT_VARIANT",
+      "stem": "다음은 전체집합 $U$의 부분집합 $A,B,C$를 나타낸 벤다이어그램이다. 색칠한 부분과 같은 집합은?",
+      "choices": [
+        "$A\\cap (C-B)$",
+        "$A\\cap (B-C)$",
+        "$(A\\cup B)-C$",
+        "$A-(B\\cup C)$",
+        "$(A\\cap B)\\cup C$"
+      ],
+      "answer": "②",
+      "solution": "색칠한 부분은 $A,B$에 모두 속하면서 $C$에는 속하지 않는 원소로 이루어진다. 먼저 $B$에서 $C$를 뺀 $B-C$를 정하고, 이 중 $A$에 속하는 원소만 남기면 $A\\cap(B-C)$가 된다.\n따라서 정답은 ②이다.",
+      "studentVisual": {
+        "type": "PROBLEM_VENN_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q10_VISUALS/q10-A1.svg",
+        "required": true,
+        "semanticRegion": "$A\\cap (B-C)$",
+        "mask": 64,
+        "renderStatus": "NOT_TESTED"
+      },
+      "experienceAxis": "한 음영 영역의 차집합·교집합 변환",
+      "level": "중",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "B와 C의 역할을 뒤바꾸어 A∩(C−B)를 선택 → $A\\cap (C-B)$",
+        "③": "A와 B의 교집합을 합집합으로 오해 → $(A\\cup B)-C$",
+        "④": "B에 속해야 할 부분까지 지워 A만의 영역을 택함 → $A-(B\\cup C)$",
+        "⑤": "C에 속하지 않는 조건을 C 전체 포함으로 반전 → $(A\\cap B)\\cup C$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "B와 C의 역할을 뒤바꾸어 A∩(C−B)를 선택",
+          "erroneousExpression": "$A\\cap (C-B)$",
+          "targetExpr": "$A\\cap (B-C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "③",
+          "mistake": "A와 B의 교집합을 합집합으로 오해",
+          "erroneousExpression": "$(A\\cup B)-C$",
+          "targetExpr": "$A\\cap (B-C)$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "④",
+          "mistake": "B에 속해야 할 부분까지 지워 A만의 영역을 택함",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$A\\cap (B-C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "C에 속하지 않는 조건을 C 전체 포함으로 반전",
+          "erroneousExpression": "$(A\\cap B)\\cup C$",
+          "targetExpr": "$A\\cap (B-C)$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 64,
+      "choiceMasks": [
+        32,
+        64,
+        84,
+        16,
+        234
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-A2",
+      "slot": "A2",
+      "sourceQid": 10,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U$의 부분집합 $A,B,C$에 관한 다음 벤다이어그램에서 색칠한 영역과 같은 집합은?",
+      "choices": [
+        "$A\\cap (B-C)$",
+        "$(A\\cup C)-B$",
+        "$(A\\cap C)\\cup B$",
+        "$A-(B\\cup C)$",
+        "$A\\cap (C-B)$"
+      ],
+      "answer": "⑤",
+      "solution": "색칠한 영역은 $A$와 $C$에 속하고 $B$에는 속하지 않는다. $C-B$는 $C$에 속하지만 $B$에는 속하지 않는 부분이므로, 여기서 $A$에 속하는 부분만 고르면 된다.\n따라서 집합은 $A\\cap(C-B)$이며 정답은 ⑤이다.",
+      "studentVisual": {
+        "type": "PROBLEM_VENN_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q10_VISUALS/q10-A2.svg",
+        "required": true,
+        "semanticRegion": "$A\\cap (C-B)$",
+        "mask": 32,
+        "renderStatus": "NOT_TESTED"
+      },
+      "experienceAxis": "음영 한 조각의 위치를 바꾸고 차집합 방향성 검증",
+      "level": "중",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "B와 C를 바꾸어 A와 B에만 속하는 영역 선택 → $A\\cap (B-C)$",
+        "②": "교집합 대신 A 또는 C를 선택해 영역 확대 → $(A\\cup C)-B$",
+        "③": "B는 제외해야 하는데 합집합으로 포함 → $(A\\cap C)\\cup B$",
+        "④": "C에 속해야 하는 조건을 반대로 바꾸어 C까지 제외 → $A-(B\\cup C)$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "B와 C를 바꾸어 A와 B에만 속하는 영역 선택",
+          "erroneousExpression": "$A\\cap (B-C)$",
+          "targetExpr": "$A\\cap (C-B)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "②",
+          "mistake": "교집합 대신 A 또는 C를 선택해 영역 확대",
+          "erroneousExpression": "$(A\\cup C)-B$",
+          "targetExpr": "$A\\cap (C-B)$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "③",
+          "mistake": "B는 제외해야 하는데 합집합으로 포함",
+          "erroneousExpression": "$(A\\cap C)\\cup B$",
+          "targetExpr": "$A\\cap (C-B)$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "④",
+          "mistake": "C에 속해야 하는 조건을 반대로 바꾸어 C까지 제외",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$A\\cap (C-B)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 32,
+      "choiceMasks": [
+        64,
+        50,
+        236,
+        16,
+        32
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-A3",
+      "slot": "A3",
+      "sourceQid": 10,
+      "mode": "STRICT_VARIANT",
+      "stem": "다음 벤다이어그램은 전체집합 $U$의 부분집합 $A,B,C$를 나타낸다. 색칠한 부분과 같은 집합은?",
+      "choices": [
+        "$B\\cap (C-A)$",
+        "$A\\cap (B-C)$",
+        "$(B\\cup C)-A$",
+        "$B-(A\\cup C)$",
+        "$A\\cap B\\cap C$"
+      ],
+      "answer": "①",
+      "solution": "색칠한 부분은 $B,C$에 모두 속하지만 $A$에는 속하지 않는다. 따라서 $C-A$에 속하는 원소 중 $B$에 속하는 원소만 골라야 한다.\n즉 $B\\cap(C-A)$이므로 정답은 ①이다.",
+      "studentVisual": {
+        "type": "PROBLEM_VENN_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q10_VISUALS/q10-A3.svg",
+        "required": true,
+        "semanticRegion": "$B\\cap (C-A)$",
+        "mask": 8,
+        "renderStatus": "NOT_TESTED"
+      },
+      "experienceAxis": "원형과 동일한 사고를 다른 음영으로 숙달",
+      "level": "중",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "②": "B,C 대신 A,B의 공통영역을 선택 → $A\\cap (B-C)$",
+        "③": "교집합을 합집합으로 바꾸어 B만 또는 C만 속하는 부분까지 포함 → $(B\\cup C)-A$",
+        "④": "C에 속하는 부분을 구해야 하는데 C까지 제외 → $B-(A\\cup C)$",
+        "⑤": "A 밖이어야 하는 조건을 반대로 읽어 세 집합의 공통영역을 선택 → $A\\cap B\\cap C$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "B,C 대신 A,B의 공통영역을 선택",
+          "erroneousExpression": "$A\\cap (B-C)$",
+          "targetExpr": "$B\\cap (C-A)$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "교집합을 합집합으로 바꾸어 B만 또는 C만 속하는 부분까지 포함",
+          "erroneousExpression": "$(B\\cup C)-A$",
+          "targetExpr": "$B\\cap (C-A)$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "④",
+          "mistake": "C에 속하는 부분을 구해야 하는데 C까지 제외",
+          "erroneousExpression": "$B-(A\\cup C)$",
+          "targetExpr": "$B\\cap (C-A)$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A 밖이어야 하는 조건을 반대로 읽어 세 집합의 공통영역을 선택",
+          "erroneousExpression": "$A\\cap B\\cap C$",
+          "targetExpr": "$B\\cap (C-A)$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 8,
+      "choiceMasks": [
+        8,
+        64,
+        14,
+        4,
+        128
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-B1",
+      "slot": "B1",
+      "sourceQid": 10,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U$의 부분집합 $A,B,C$에 대하여, $A$에 속하는 원소 중 $B$에는 속하고 $C$에는 속하지 않는 원소만 제외하여 집합 $S$를 만들었다. $S$와 항상 같은 집합은?",
+      "choices": [
+        "$A-(B\\cup C)$",
+        "$(A-B)\\cap C$",
+        "$A\\cap (B-C)$",
+        "$(A-B)\\cup (A\\cap C)$",
+        "$(A\\cup C)-B$"
+      ],
+      "answer": "④",
+      "solution": "$S$의 원소는 우선 $A$에 속한다. 제외해야 할 원소는 $B$에 속하면서 $C$에는 속하지 않는 원소이다. 따라서 $A$의 원소 중 $B$에 속하지 않는 것 또는 $C$에도 속하는 것은 남는다.\n남는 두 부분은 $A-B$와 $A\\cap C$이므로 $S=(A-B)\\cup(A\\cap C)$이다. 따라서 정답은 ④이다.",
+      "studentVisual": {
+        "type": "VISUAL_EXEMPT",
+        "required": false
+      },
+      "experienceAxis": "차집합 내부의 제외조건을 원소 소속논리로 해석",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "B만 제외해야 하는데 B 또는 C의 원소 전부 제외 → $A-(B\\cup C)$",
+        "②": "A-B 중에서 C 안에 있는 원소만 남기는 추가 제한 → $(A-B)\\cap C$",
+        "③": "제외되는 A∩(B−C)를 답으로 선택 → $A\\cap (B-C)$",
+        "⑤": "범위를 A에서 A∪C로 확대하고 B를 일괄 제외 → $(A\\cup C)-B$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "B만 제외해야 하는데 B 또는 C의 원소 전부 제외",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$A-(B-C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "②",
+          "mistake": "A-B 중에서 C 안에 있는 원소만 남기는 추가 제한",
+          "erroneousExpression": "$(A-B)\\cap C$",
+          "targetExpr": "$A-(B-C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "제외되는 A∩(B−C)를 답으로 선택",
+          "erroneousExpression": "$A\\cap (B-C)$",
+          "targetExpr": "$A-(B-C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "⑤",
+          "mistake": "범위를 A에서 A∪C로 확대하고 B를 일괄 제외",
+          "erroneousExpression": "$(A\\cup C)-B$",
+          "targetExpr": "$A-(B-C)$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_REGION_EQUIVALENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "REVISED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 176,
+      "choiceMasks": [
+        16,
+        32,
+        64,
+        176,
+        50
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-B2",
+      "slot": "B2",
+      "sourceQid": 10,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "다음은 전체집합 $U$의 부분집합 $A,B,C$를 나타낸 벤다이어그램이다. 색칠한 두 부분의 합집합과 같은 집합은?",
+      "choices": [
+        "$A\\cap (B\\cup C)$",
+        "$A\\cap B\\cap C$",
+        "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+        "$A-(B\\cup C)$",
+        "$(A-B)\\cup (A-C)$"
+      ],
+      "answer": "③",
+      "solution": "색칠한 영역은 두 부분이다. 첫째는 $A,B$에 속하지만 $C$에는 속하지 않는 $A\\cap(B-C)$이고, 둘째는 $A,C$에 속하지만 $B$에는 속하지 않는 $A\\cap(C-B)$이다.\n두 부분을 모두 모으면 $\\big(A\\cap(B-C)\\big)\\cup\\big(A\\cap(C-B)\\big)$이다. 따라서 정답은 ③이다.",
+      "studentVisual": {
+        "type": "PROBLEM_VENN_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q10_VISUALS/q10-B2.svg",
+        "required": true,
+        "semanticRegion": "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+        "mask": 96,
+        "renderStatus": "NOT_TESTED"
+      },
+      "experienceAxis": "두 음영 조각을 합집합으로 결합하는 복합 영역 판정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "B,C 중 정확히 한 곳이라는 조건을 적어도 한 곳으로 바꾸어 세 집합 공통부분도 포함 → $A\\cap (B\\cup C)$",
+        "②": "정확히 하나가 아니라 B와 C 둘 다 겹치는 중심영역만 선택 → $A\\cap B\\cap C$",
+        "④": "B,C 중 어느 곳에도 속하지 않는 A만의 부분을 잘못 선택 → $A-(B\\cup C)$",
+        "⑤": "B,C 중 하나만 속하는 것뿐 아니라 둘 다 안 속하는 A 영역도 포함 → $(A-B)\\cup (A-C)$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "B,C 중 정확히 한 곳이라는 조건을 적어도 한 곳으로 바꾸어 세 집합 공통부분도 포함",
+          "erroneousExpression": "$A\\cap (B\\cup C)$",
+          "targetExpr": "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "②",
+          "mistake": "정확히 하나가 아니라 B와 C 둘 다 겹치는 중심영역만 선택",
+          "erroneousExpression": "$A\\cap B\\cap C$",
+          "targetExpr": "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "④",
+          "mistake": "B,C 중 어느 곳에도 속하지 않는 A만의 부분을 잘못 선택",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "B,C 중 하나만 속하는 것뿐 아니라 둘 다 안 속하는 A 영역도 포함",
+          "erroneousExpression": "$(A-B)\\cup (A-C)$",
+          "targetExpr": "$(A\\cap (B-C))\\cup (A\\cap (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 96,
+      "choiceMasks": [
+        224,
+        128,
+        96,
+        16,
+        112
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-B3",
+      "slot": "B3",
+      "sourceQid": 10,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "전체집합 $U$의 부분집합 $A,B,C$에 대하여, $A$의 원소 가운데 $B$와 $C$에 동시에 속하는 원소만 제외하여 집합 $T$를 만들었다. $T$와 항상 같은 집합은?",
+      "choices": [
+        "$(A\\cap B)-C$",
+        "$(A-B)\\cup (A-C)$",
+        "$A-(B\\cup C)$",
+        "$A\\cap (B\\cup C)$",
+        "$A^{c}\\cup (B\\cap C)^{c}$"
+      ],
+      "answer": "②",
+      "solution": "$T=A-(B\\cap C)$이다. $A$에 속하면서 $B\\cap C$에 속하지 않는다는 것은 $B$에 속하지 않거나 $C$에 속하지 않는다는 뜻이다.\n따라서 $(A-B)$ 또는 $(A-C)$에 속하는 원소를 모으면 되므로 $T=(A-B)\\cup(A-C)$이다. 정답은 ②이다.",
+      "studentVisual": {
+        "type": "VISUAL_EXEMPT",
+        "required": false
+      },
+      "experienceAxis": "교집합만 제외하는 차집합 조건의 분해",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "A와 B에 속하고 C 밖에 있는 부분만 남기는 조건으로 바꿈 → $(A\\cap B)-C$",
+        "③": "B∩C 대신 B∪C를 제외해 남길 영역을 과도하게 줄임 → $A-(B\\cup C)$",
+        "④": "제외해야 할 B,C의 원소를 도리어 포함하는 집합 선택 → $A\\cap (B\\cup C)$",
+        "⑤": "A 안에 있어야 한다는 조건을 잊고 A 밖 원소까지 포함 → $A^{c}\\cup (B\\cap C)^{c}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "A와 B에 속하고 C 밖에 있는 부분만 남기는 조건으로 바꿈",
+          "erroneousExpression": "$(A\\cap B)-C$",
+          "targetExpr": "$A-(B\\cap C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "B∩C 대신 B∪C를 제외해 남길 영역을 과도하게 줄임",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$A-(B\\cap C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "④",
+          "mistake": "제외해야 할 B,C의 원소를 도리어 포함하는 집합 선택",
+          "erroneousExpression": "$A\\cap (B\\cup C)$",
+          "targetExpr": "$A-(B\\cap C)$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "⑤",
+          "mistake": "A 안에 있어야 한다는 조건을 잊고 A 밖 원소까지 포함",
+          "erroneousExpression": "$A^{c}\\cup (B\\cap C)^{c}$",
+          "targetExpr": "$A-(B\\cap C)$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_REGION_EQUIVALENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 112,
+      "choiceMasks": [
+        64,
+        112,
+        16,
+        224,
+        127
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C1",
+      "slot": "C1",
+      "sourceQid": 10,
+      "mode": "TYPE_BANK",
+      "stem": "집합 $A,B,C$에 대하여 $A$ 또는 $B$에 속하면서 $C$에는 속하지 않는 원소들의 집합 $S$와 항상 같은 것은?",
+      "choices": [
+        "$(A\\cap B)-C$",
+        "$(A\\cup B)\\cap C$",
+        "$(A-B)\\cup (B-A)$",
+        "$(A-C)\\cup (B-C)$",
+        "$(A\\cup B)\\cup C^{c}$"
+      ],
+      "answer": "④",
+      "solution": "$A$와 $B$의 합집합에서 $C$의 원소를 제거해야 한다. $A$쪽에서 남는 영역은 $A-C$, $B$쪽에서 남는 영역은 $B-C$이다.\n따라서 $S=(A-C)\\cup(B-C)$이므로 정답은 ④이다.",
+      "studentVisual": {
+        "type": "VISUAL_EXEMPT",
+        "required": false
+      },
+      "experienceAxis": "합집합에서 같은 차집합 적용",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "또는을 동시에로 오해 → $(A\\cap B)-C$",
+        "②": "C 밖과 안을 반대로 판단 → $(A\\cup B)\\cap C$",
+        "③": "C 제거를 잊음 → $(A-B)\\cup (B-A)$",
+        "⑤": "A,B 밖인 원소까지 포함 → $(A\\cup B)\\cup C^{c}$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "또는을 동시에로 오해",
+          "erroneousExpression": "$(A\\cap B)-C$",
+          "targetExpr": "$(A\\cup B)-C$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "②",
+          "mistake": "C 밖과 안을 반대로 판단",
+          "erroneousExpression": "$(A\\cup B)\\cap C$",
+          "targetExpr": "$(A\\cup B)-C$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "C 제거를 잊음",
+          "erroneousExpression": "$(A-B)\\cup (B-A)$",
+          "targetExpr": "$(A\\cup B)-C$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "A,B 밖인 원소까지 포함",
+          "erroneousExpression": "$(A\\cup B)\\cup C^{c}$",
+          "targetExpr": "$(A\\cup B)-C$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_REGION_EQUIVALENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 84,
+      "choiceMasks": [
+        64,
+        168,
+        60,
+        84,
+        253
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C2",
+      "slot": "C2",
+      "sourceQid": 10,
+      "mode": "TYPE_BANK",
+      "stem": "집합 $A,B,C$에 대하여 $S=(A\\cup B)-\\big(C-(A\\cap B)\\big)$일 때 $S$와 항상 같은 것은?",
+      "choices": [
+        "$((A\\cup B)-C)\\cup (A\\cap B)$",
+        "$(A\\cup B)-C$",
+        "$(A\\cap B)-C$",
+        "$(A\\cup B)\\cap C$",
+        "$A\\cup B\\cup C$"
+      ],
+      "answer": "①",
+      "solution": "$A\\cap B$의 원소는 $C-(A\\cap B)$에 속하지 않아 모두 남는다. 그 밖에 $A\\cup B$에 속하는 원소는 $C$ 밖일 때 남는다.\n따라서 $S=\\big((A\\cup B)-C\\big)\\cup(A\\cap B)$이므로 정답은 ①이다.",
+      "studentVisual": {
+        "type": "VISUAL_EXEMPT",
+        "required": false
+      },
+      "experienceAxis": "중첩 차집합의 예외 영역 분리",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "②": "A∩B 다시 포함 누락 → $(A\\cup B)-C$",
+        "③": "A∪B를 A∩B로 축소 → $(A\\cap B)-C$",
+        "④": "C 안쪽을 남김 → $(A\\cup B)\\cap C$",
+        "⑤": "C의 일부 제외를 생략 → $A\\cup B\\cup C$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "A∩B 다시 포함 누락",
+          "erroneousExpression": "$(A\\cup B)-C$",
+          "targetExpr": "$(A\\cup B)-(C-(A\\cap B))$",
+          "counterexample": {
+            "A": true,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "A∪B를 A∩B로 축소",
+          "erroneousExpression": "$(A\\cap B)-C$",
+          "targetExpr": "$(A\\cup B)-(C-(A\\cap B))$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "④",
+          "mistake": "C 안쪽을 남김",
+          "erroneousExpression": "$(A\\cup B)\\cap C$",
+          "targetExpr": "$(A\\cup B)-(C-(A\\cap B))$",
+          "counterexample": {
+            "A": false,
+            "B": true,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "⑤",
+          "mistake": "C의 일부 제외를 생략",
+          "erroneousExpression": "$A\\cup B\\cup C$",
+          "targetExpr": "$(A\\cup B)-(C-(A\\cap B))$",
+          "counterexample": {
+            "A": false,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_REGION_EQUIVALENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 212,
+      "choiceMasks": [
+        212,
+        84,
+        64,
+        168,
+        254
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q10-C3",
+      "slot": "C3",
+      "sourceQid": 10,
+      "mode": "TYPE_BANK",
+      "stem": "집합 $A,B,C$에 대하여 $A$의 원소 중 $B,C$에 모두 속하거나 둘 다 속하지 않는 원소만 모아 집합 $S$를 만들었다. $S$와 항상 같은 것은?",
+      "choices": [
+        "$A-(B\\cup C)$",
+        "$A\\cap B\\cap C$",
+        "$A-(B\\cap C)$",
+        "$A\\cap (B\\cup C)$",
+        "$(A\\cap B\\cap C)\\cup (A-(B\\cup C))$"
+      ],
+      "answer": "⑤",
+      "solution": "$A$의 원소 중 $B$와 $C$에 모두 속하는 원소는 $A\\cap B\\cap C$이다. 두 집합에 모두 속하지 않는 원소는 $A-(B\\cup C)$이다.\n두 경우를 합쳐 $S=(A\\cap B\\cap C)\\cup\\big(A-(B\\cup C)\\big)$이다. 따라서 정답은 ⑤이다.",
+      "studentVisual": {
+        "type": "VISUAL_EXEMPT",
+        "required": false
+      },
+      "experienceAxis": "둘 다 충족·둘 다 불충족 두 경우를 차집합으로 분류",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "여집합과 차집합",
+      "targetL4": "차집합",
+      "distractorReasons": {
+        "①": "둘 다 밖인 경우만 남김 → $A-(B\\cup C)$",
+        "②": "둘 다 안인 경우만 남김 → $A\\cap B\\cap C$",
+        "③": "둘 중 정확히 한 곳에 속하는 경우를 잘못 포함 → $A-(B\\cap C)$",
+        "④": "어느 쪽이든 한 번 속하면 포함 → $A\\cap (B\\cup C)$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "둘 다 밖인 경우만 남김",
+          "erroneousExpression": "$A-(B\\cup C)$",
+          "targetExpr": "$A-((B-C)\\cup (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": true,
+            "C": true
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "②",
+          "mistake": "둘 다 안인 경우만 남김",
+          "erroneousExpression": "$A\\cap B\\cap C$",
+          "targetExpr": "$A-((B-C)\\cup (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        },
+        {
+          "label": "③",
+          "mistake": "둘 중 정확히 한 곳에 속하는 경우를 잘못 포함",
+          "erroneousExpression": "$A-(B\\cap C)$",
+          "targetExpr": "$A-((B-C)\\cup (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": true
+          },
+          "expectedMembership": false,
+          "misreadMembership": true
+        },
+        {
+          "label": "④",
+          "mistake": "어느 쪽이든 한 번 속하면 포함",
+          "erroneousExpression": "$A\\cap (B\\cup C)$",
+          "targetExpr": "$A-((B-C)\\cup (C-B))$",
+          "counterexample": {
+            "A": true,
+            "B": false,
+            "C": false
+          },
+          "expectedMembership": true,
+          "misreadMembership": false
+        }
+      ],
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 연산",
+        "rpmL3": "여집합과 차집합",
+        "rpmL4": "차집합",
+        "rpmRecordId": "H1-RPM-240",
+        "pt": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_REGION_EQUIVALENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "KEEP",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED",
+      "booleanTruthMask": 144,
+      "choiceMasks": [
+        16,
+        128,
+        112,
+        224,
+        144
+      ]
+    }
+  ],
+  "nextSourceQid": 11,
+  "publication": "CREATE_CANDIDATE_ONLY"
+}
