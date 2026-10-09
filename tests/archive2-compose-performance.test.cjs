@@ -5,12 +5,14 @@ const vm = require('node:vm');
 const crypto = require('node:crypto');
 const { performance } = require('node:perf_hooks');
 const { catalog, core } = require('./helpers/archive2-scope-harness.cjs');
+const problemBankMeta = require('../archive/problem-bank-meta.js');
 
 function app() {
   const nodes = { content: { addEventListener() {} } };
   const listeners = {};
   const window = {
     Archive2Core: core,
+    ProblemBankMeta: problemBankMeta,
     Archive2Output: require('../archive/archive2-output.js'),
     Archive2Papers: require('../archive/archive2-papers.js'),
     addEventListener() {},
@@ -27,6 +29,7 @@ function app() {
   });
   const { state, render } = window.testApp;
   Object.assign(state, { catalog: structuredClone(catalog), view: 'compose', filters: { grade: '고1' } });
+  state.metaIndex = window.ProblemBankMeta.buildIndex(state.catalog.records, []);
   state.finderIndex = core.buildFinderIndex(state.catalog);
   return { state, render, nodes, listeners };
 }
@@ -43,6 +46,22 @@ test('production-size compose curriculum and scope interactions stay responsive'
     assert.match(a.nodes.content.innerHTML, /data-scope=/);
     assert.ok(elapsed < 500, `compose blocks input for ${elapsed.toFixed(1)}ms`);
   }
+  const knownMeta = a.state.catalog.records.find(record => record.L1 && Number.isInteger(record.difficultyBucket));
+  assert.ok(knownMeta, 'production catalog must contain a concrete L1 and difficulty projection');
+  a.state.filters = { grade: knownMeta.sourceGrade, L1: knownMeta.L1 };
+  a.state.buckets = [knownMeta.difficultyBucket];
+  const metaStart = performance.now();
+  a.render();
+  const metaElapsed = performance.now() - metaStart;
+  t.diagnostic(`shared Meta L1+difficulty render: ${metaElapsed.toFixed(1)}ms`);
+  assert.ok(metaElapsed < 500, `shared Meta filter blocks input for ${metaElapsed.toFixed(1)}ms`);
+  const directMetaResult = problemBankMeta.query(a.state.metaIndex, {
+    rpmL1: knownMeta.L1, difficultyBuckets: [knownMeta.difficultyBucket],
+  }, { profile: 'DIRECT' });
+  assert.ok(directMetaResult.some(record => record.questionUid === knownMeta.questionUid));
+  a.state.filters = { grade: '고1' };
+  a.state.buckets = [];
+  a.render();
   const scope = a.nodes.content.innerHTML.match(/data-scope="([^"]+)"/)[1];
   const start = performance.now();
   await a.listeners.change({ target: { dataset: { scope }, checked: true } });

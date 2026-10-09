@@ -332,6 +332,8 @@ $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();ren
   rows=data.records;excludedHoldUids=new Set(data.excludedHoldUids);
   selectableRows=rows.filter(isSelectable);
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
+  const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
+  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
   displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();status("");
  }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
 })();

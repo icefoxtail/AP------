@@ -38,6 +38,10 @@
       if (generated) value = own(m, field) ? m[field] : own(q, field) ? q[field] : record[field];
       else value = record[alias];
       if (field === 'difficultyBucket') value = bucket(value);
+      else if (field.endsWith('Keys')) {
+        if (!Array.isArray(value) || value.some(v => typeof v !== 'string' || !v.trim()) ||
+            new Set(value).size !== value.length) value = null;
+      } else if (typeof value !== 'string' || !value.trim()) value = null;
       if (!known(value)) value = null;
       view[field] = value;
       if (alias !== field) view[alias] = value;
@@ -51,6 +55,14 @@
       'rpmPrimaryRecordId', 'familyKey', 'variantGroupKey', 'templateFamilyKey']) {
       view[field] = m[field] ?? record[field] ?? q[field] ?? null;
     }
+    view.sourceRelation = generated ? {
+      sourceExamPath: record.sourceExamPath ?? consumer?.sourceExamPath ?? null,
+      sourceExamBlobSha: record.sourceExamBlobSha ?? consumer?.sourceExamBlobSha ?? null,
+      sourceQid: record.sourceQid ?? consumer?.sourceQid ?? null,
+      status: (record.sourceExamBlobSha ?? consumer?.sourceExamBlobSha) &&
+        (record.sourceQid ?? consumer?.sourceQid) != null ? 'RECORDED' : 'UNKNOWN',
+    } : {sourceFile: record.sourceFile ?? null, sourceOrdinal: record.sourceOrdinal ?? null,
+      sourceFingerprint: record.sourceFingerprint ?? null, status: record.sourceFingerprint ? 'RECORDED' : 'UNKNOWN'};
     view.metaCompleteness = FIELDS.every(k => known(view[k])) ? 'RECORDED_COMPLETE' : 'EVIDENCE_DEBT';
     view.directSelectable = generated ? isGeneratedSelectable(record, holds) : true;
     // Completeness, recorded approval and hash strings alone never certify a paper.

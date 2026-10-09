@@ -1,0 +1,34 @@
+name: Problem Bank Shared Meta
+on:
+  push:
+    branches: [main]
+    paths: ['archive/**', 'tests/*meta*', '.github/workflows/problem-bank-meta.yml']
+  pull_request:
+    branches: [main]
+    paths: ['archive/**', 'tests/*meta*', '.github/workflows/problem-bank-meta.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shared-meta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Meta persistence, recovery and shared consumer contracts
+        run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install browser driver used by this audit
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false playwright@1.62.1
+      - name: Actual Chrome shared search and storage failure
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tests/problem-bank-meta-browser.cjs

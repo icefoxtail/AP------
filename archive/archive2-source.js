@@ -1,9 +1,11 @@
 (function (root, factory) {
   const api = factory(typeof module === "object" && module.exports
-    ? require("./archive2-core.js") : root.Archive2Core);
+    ? require("./archive2-core.js") : root.Archive2Core,
+    typeof module === "object" && module.exports
+      ? require("./problem-bank-meta.js") : root.ProblemBankMeta);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Source = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (core) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta) {
   "use strict";
   const cache = new Map();
   function evaluate(source, file) {
@@ -38,6 +40,76 @@
         image: question.image ?? null,
       }),
     );
+  }
+  function generatedContentFingerprint(question) {
+    const value = JSON.stringify({
+      content: question.content,
+      choices: question.choices,
+      answer: question.answer,
+      solution: question.solution,
+    });
+    let hash = 14695981039346656037n;
+    for (let i = 0; i < value.length; i++)
+      hash = BigInt.asUintN(64, (hash ^ BigInt(value.charCodeAt(i))) * 1099511628211n);
+    return "fnv1a64-utf16:" + hash.toString(16).padStart(16, "0");
+  }
+  function restoreGenerated(indexRow, shard, excludedHoldUids = []) {
+    if (!problemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
+    if (!problemBankMeta.isGeneratedSelectable(indexRow, excludedHoldUids))
+      throw new Error("GENERATED_QUESTION_NOT_SELECTABLE");
+    if (!shard || shard.schemaVersion !== "ALIVE_GENERATED_CONSUMER_SHARD_V1" ||
+        !Array.isArray(shard.records))
+      throw new Error("GENERATED_CONSUMER_SHARD_SCHEMA_INVALID");
+    if (indexRow.school && shard.school && indexRow.school !== shard.school)
+      throw new Error("GENERATED_INDEX_SHARD_CONFLICT:school");
+    const matches = shard.records.filter(row => row.generatedUid === indexRow.uid &&
+      row.localOrdinal === indexRow.localOrdinal);
+    if (matches.length !== 1 || matches[0].sourceKind !== "generated")
+      throw new Error("GENERATED_UID_ORDINAL_NOT_UNIQUE");
+    const consumerRecord = matches[0];
+    const question = consumerRecord.question;
+    if (!question || !Array.isArray(question.choices) || question.answer == null ||
+        question.content == null || question.solution == null)
+      throw new Error("GENERATED_QUESTION_PAYLOAD_INCOMPLETE");
+    const fingerprint = generatedContentFingerprint(question);
+    const expectedFingerprint = consumerRecord.contentFingerprint || indexRow.contentFingerprint || "";
+    if ((consumerRecord.contentFingerprint && consumerRecord.contentFingerprint !== fingerprint) ||
+        (indexRow.contentFingerprint && indexRow.contentFingerprint !== fingerprint))
+      throw new Error("GENERATED_CONTENT_FINGERPRINT_MISMATCH");
+    for (const field of ["sourceExamBlobSha", "sourceQid", "l2"]) {
+      if (indexRow[field] != null && consumerRecord[field] != null &&
+          indexRow[field] !== consumerRecord[field])
+        throw new Error("GENERATED_INDEX_SHARD_CONFLICT:" + field);
+    }
+    for (const field of ["school", "year", "grade", "sourceExamPath", "sourceShardGitSha"]) {
+      if (indexRow[field] != null && consumerRecord[field] != null &&
+          indexRow[field] !== consumerRecord[field])
+        throw new Error("GENERATED_INDEX_SHARD_CONFLICT:" + field);
+    }
+    if (question.uid != null && question.uid !== indexRow.uid)
+      throw new Error("GENERATED_QUESTION_UID_CONFLICT");
+    if (indexRow.reviewFinalArtifactSha && consumerRecord.reviewApprovalMainSha &&
+        indexRow.reviewFinalArtifactSha !== consumerRecord.reviewApprovalMainSha)
+      throw new Error("GENERATED_REVIEW_ARTIFACT_CONFLICT");
+    const metaProjection = problemBankMeta.projectGenerated(indexRow, consumerRecord, excludedHoldUids);
+    return {
+      ...question,
+      uid: indexRow.uid,
+      questionUid: indexRow.uid,
+      generatedUid: indexRow.uid,
+      localOrdinal: indexRow.localOrdinal,
+      sourceKind: "generated",
+      sourceExamPath: indexRow.sourceExamPath || consumerRecord.sourceExamPath || "",
+      sourceExamBlobSha: indexRow.sourceExamBlobSha || consumerRecord.sourceExamBlobSha || "",
+      sourceQid: indexRow.sourceQid ?? consumerRecord.sourceQid ?? null,
+      sourceShard: consumerRecord.sourceShard || "",
+      sourceShardGitSha: consumerRecord.sourceShardGitSha || "",
+      consumerShardGitSha: indexRow.consumerShardGitSha || "",
+      sourceFingerprint: expectedFingerprint || null,
+      restoredContentFingerprint: fingerprint,
+      contentFingerprintStatus: expectedFingerprint ? "CONFIRMED" : "UNKNOWN",
+      metaProjection,
+    };
   }
   async function load(file, sourceHash = "") {
     if (!file || file.includes("..") || /^(?:[a-z]+:|\/)/i.test(file))
@@ -149,5 +221,5 @@
       }),
     );
   }
-  return { evaluate, digest, fingerprint, load, restore };
+  return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated };
 });
