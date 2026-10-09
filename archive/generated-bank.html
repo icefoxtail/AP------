@@ -286,7 +286,7 @@ async function printGeneratedSelection(){
    const part=document.createElement("section");part.className="paper-question";
    text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],selected[i],false);fragment.appendChild(part);
   }
-  panel.replaceChildren(fragment);$("paper-title").textContent="검수 승인 생성문제 · "+selected.length+"문항";
+  panel.replaceChildren(fragment);$("paper-title").textContent="생성문제 · "+selected.length+"문항";
   await math();status("선택한 "+selected.length+"개 문항 인쇄 화면을 엽니다.");window.print();
  }catch(error){status("선택 문항을 출력하지 못했습니다: "+error.message);}
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
