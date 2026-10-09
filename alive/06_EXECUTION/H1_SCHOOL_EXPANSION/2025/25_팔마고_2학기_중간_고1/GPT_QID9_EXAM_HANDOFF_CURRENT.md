@@ -1,3 +1,14 @@
+# CURRENT — 2026-10-09 q06 원본 9문항 CREATE checkpoint
+
+- 사용자 직접 지정 q06 제작. q05는 여전히 미제작이며 건너뛰어 계속 생산하지 않는다.
+- q06 산출: `GPT_QID9_Q06_PACKAGE.json` 및 `GPT_QID9_Q06_STEM_SELF_REVIEW.md`.
+- q06 CREATE 9/9; 역발문 KEEP 6, REVISED 3, HOLD 0; 오답 36/36 도출경로 기록.
+- q06 GPT 공개답 검수 0, 학생 공급 0, Consumer/index/Chrome NOT_TESTED.
+- 누적 CREATE 후보 q01~q04 36 + q06 9 = 45. 기존 출시 승인 36/36, main/Chrome 완료는 변경하지 않음.
+- RPM L3 `원과 직선` 고정, 기존 L4 `교점 개수`/`현의 길이` 활용.
+- 다음 정확한 단계는 q06 별도 품질 검수 또는 형님 직접 품질승인 후 승인 UID 기술 출고; 다음 미생산 source는 q05.
+
+---
 # 2025 팔마고 2학기 중간 — ALIVE QID9 시험지 통합 작업 인계 CURRENT
 
 ## CURRENT — q05 A1~C3 신규 9문항 제작·자가검수 완료 (2026-10-09)
