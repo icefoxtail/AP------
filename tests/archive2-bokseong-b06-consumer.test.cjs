@@ -8,19 +8,19 @@ function fp(q){const s=JSON.stringify({content:q.content,choices:q.choices,answe
 function sourceBank(file){const ctx={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),ctx,{timeout:1000});return ctx.window.questionBank}
 function originalPng(q){const file=path.join(archive,'assets/images/26_복성고_1학기_기말_고1_기출/'+q+'.png');return fs.readFileSync(file)}
 test('B06 25 new UIDs registered without disrupting 165 original approvals or 12 prior HOLD UID exclusions',()=>{
- assert.equal(index.approvedCount,345);
- assert.equal(index.records.length,345);
+ assert.equal(index.approvedCount,346);
+ assert.equal(index.records.length,346);
  assert.equal(index.approvedBySchool['효천고'],92);
  assert.equal(index.approvedBySchool['복성고'],191);
  assert.equal(rows.length,25);
  assert.equal(rows.filter(r=>r.uid.includes('-Q18-')).length,10);
  assert.equal(rows.filter(r=>r.uid.includes('-Q19-')).length,15);
- assert.equal(new Set(index.records.map(r=>r.uid)).size,345);
+ assert.equal(new Set(index.records.map(r=>r.uid)).size,346);
  assert.ok(index.records.slice(0,92).every(r=>r.school==='효천고'));
  assert.ok(index.records.slice(92,130).every(r=>r.uid.startsWith('ALITE-BSG26-B03-')));
  assert.ok(index.records.slice(130,165).every(r=>r.uid.startsWith('ALITE-BSG26-B04R2-')||r.uid.startsWith('ALITE-BSG26-B05R2-')));
  assert.ok(index.records.slice(165,190).every(r=>r.uid.startsWith('ALITE-BSG26-B06-')));
- assert.equal(index.excludedHoldUids.length,3);
+ assert.equal(index.excludedHoldUids.length,2);
  assert.equal(index.excludedHoldUids.filter(u=>u.includes('B05R2-Q22')).length,0);
  assert.ok(index.excludedHoldUids.every(uid=>!index.records.some(r=>r.uid===uid)));
  assert.equal(gitSha(fs.readFileSync(path.join(root,original))),'8266fa476906e9134b94f23e803bd3b2fb26ece4');
