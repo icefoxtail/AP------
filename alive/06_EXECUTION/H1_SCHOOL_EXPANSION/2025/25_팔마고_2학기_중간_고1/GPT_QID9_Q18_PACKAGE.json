@@ -1,0 +1,1054 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 18,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalProblem": "A(2,-2) B(3,0) C(-1,4) I incenter H angle-bisector intersection BC, G centroid, area GHC",
+    "originalSourceUnchanged": true,
+    "sourceSolutionImageNotReused": true
+  },
+  "lockedPrimaryL3": "삼각형의 무게중심",
+  "rpmEvidence": {
+    "authority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "recordIds": [
+      "H1-RPM-209"
+    ],
+    "mappingStatus": "DIRECT_BINDING_GAP",
+    "rpmLockedUnmodified": true
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "status": "SOURCE_COMPATIBLE_PT_TPL_RPM_BINDING_GAP",
+    "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json",
+    "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json"
+  },
+  "experiencePlan": {
+    "A": "각이등분선과 무게중심의 면적 직접 계산",
+    "B": "넓이비·역산·다른 부분삼각형",
+    "C": "역매개변수·양수해·복합 부등식"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "uidCount": 9,
+    "reverseStem": "KEEP_9_REVISED_0_HOLD_0",
+    "distractorReproduction": "36/36_CREATOR_WRONG_FORMULA_ARITHMETIC",
+    "exactMath": "ALL_9_FORMULA_AND_ANSWER_VERIFIED_BY_CREATOR",
+    "studentAssetsRequired": 0,
+    "independentQualityReview": "NOT_RUN",
+    "Chrome": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-A1",
+      "slot": "A1",
+      "sourceQid": 18,
+      "mode": "STRICT_VARIANT",
+      "stem": "좌표평면 위의 세 점 $A(1,1)$, $B(4,1)$, $C(1,7)$을 꼭짓점으로 하는 삼각형 $ABC$의 내심을 $I$라 한다. 직선 $AI$와 변 $BC$의 교점을 $H$, 무게중심을 $G$라 할 때 삼각형 $GHC$의 넓이는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": "②",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=3$, $AC=6$, $[ABC]=9$이다. $HC/BC=6/(3+6)=2/3$이므로 $[GHC]=9\\cdot(2/3)\\cdot(1/3)=2$. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "$HC/BC$ 대신 $BH/BC=1/3$을 적용하여 $9(1/3)(1/3)=1$",
+        "③": "무게중심의 높이비를 $1/2$로 오인하여 $9(2/3)(1/2)=3$",
+        "④": "삼각형 원면적에서 $1/2$를 빼먹어 $18(2/3)(1/3)=4$",
+        "⑤": "무게중심 높이비를 적용하지 않아 $9(2/3)=6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$HC/BC$ 대신 $BH/BC=1/3$을 적용하여 $9(1/3)(1/3)=1$",
+          "actualIncorrectChoice": "$1$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "무게중심의 높이비를 $1/2$로 오인하여 $9(2/3)(1/2)=3$",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "삼각형 원면적에서 $1/2$를 빼먹어 $18(2/3)(1/3)=4$",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심 높이비를 적용하지 않아 $9(2/3)=6$",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "각이등분선 내분비와 무게중심 높이비를 결합",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-A2",
+      "slot": "A2",
+      "sourceQid": 18,
+      "mode": "STRICT_VARIANT",
+      "stem": "삼각형 $ABC$의 꼭짓점이 $A(2,-1)$, $B(8,-1)$, $C(2,2)$이다. 내심을 $I$, 직선 $AI$와 변 $BC$의 교점을 $H$, 무게중심을 $G$라 할 때 삼각형 $GHC$의 넓이는?",
+      "choices": [
+        "$\\dfrac{3}{2}$",
+        "$2$",
+        "$3$",
+        "$1$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=6$, $AC=3$, $[ABC]=9$, $HC/BC=3/(6+3)=1/3$이다. 따라서 $[GHC]=9\\cdot(1/3)\\cdot(1/3)=1$. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "높이비 $1/3$을 $1/2$로 잘못 적용해 $9(1/3)(1/2)=3/2$",
+        "②": "$HC$와 $BH$의 비를 뒤집어 $9(2/3)(1/3)=2$",
+        "③": "무게중심 높이비를 누락해 $9(1/3)=3$",
+        "⑤": "$G=A$, $H=B$처럼 전체 삼각형으로 취급하여 $[ABC]=9$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "높이비 $1/3$을 $1/2$로 잘못 적용해 $9(1/3)(1/2)=3/2$",
+          "actualIncorrectChoice": "$\\dfrac{3}{2}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "$HC$와 $BH$의 비를 뒤집어 $9(2/3)(1/3)=2$",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "무게중심 높이비를 누락해 $9(1/3)=3$",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$G=A$, $H=B$처럼 전체 삼각형으로 취급하여 $[ABC]=9$",
+          "actualIncorrectChoice": "$9$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "HC와 BH 중 어느 쪽에 대응하는 비인지 판별",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-A3",
+      "slot": "A3",
+      "sourceQid": 18,
+      "mode": "STRICT_VARIANT",
+      "stem": "세 점 $A(-2,1)$, $B(2,1)$, $C(-2,13)$을 꼭짓점으로 하는 삼각형의 내심은 $I$이다. 직선 $AI$와 $BC$의 교점을 $H$, 무게중심을 $G$라 할 때 삼각형 $GHC$의 넓이는?",
+      "choices": [
+        "$6$",
+        "$2$",
+        "$9$",
+        "$12$",
+        "$18$"
+      ],
+      "answer": "①",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=4$, $AC=12$이고 $[ABC]=4\\cdot12/2=24$이다. $BH:HC=1:3$이므로 $HC/BC=3/4$이다. $[GHC]=24\\cdot(3/4)\\cdot(1/3)=6$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$HC/BC=1/4$로 반대로 두어 $24(1/4)(1/3)=2$",
+        "③": "높이비를 $1/2$로 오인해 $24(3/4)(1/2)=9$",
+        "④": "원면적을 $48$로 두어 $48(3/4)(1/3)=12$",
+        "⑤": "무게중심의 높이비를 빠뜨려 $24(3/4)=18$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$HC/BC=1/4$로 반대로 두어 $24(1/4)(1/3)=2$",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "높이비를 $1/2$로 오인해 $24(3/4)(1/2)=9$",
+          "actualIncorrectChoice": "$9$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "원면적을 $48$로 두어 $48(3/4)(1/3)=12$",
+          "actualIncorrectChoice": "$12$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심의 높이비를 빠뜨려 $24(3/4)=18$",
+          "actualIncorrectChoice": "$18$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "내분비 1:3 및 면적의 정확한 높이 변환",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-DIRECT-AREA",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-B1",
+      "slot": "B1",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "좌표평면의 세 점 $A(0,0)$, $B(4,0)$, $C(0,6)$으로 만든 삼각형의 내심을 $I$라 한다. 직선 $AI$와 $BC$의 교점을 $H$, 무게중심을 $G$라 할 때, 넓이의 비 $\\dfrac{[GHC]}{[ABC]}$는?",
+      "choices": [
+        "$\\dfrac{2}{15}$",
+        "$\\dfrac{1}{3}$",
+        "$\\dfrac{3}{10}$",
+        "$\\dfrac{3}{5}$",
+        "$\\dfrac{1}{5}$"
+      ],
+      "answer": "⑤",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=4$, $AC=6$, $HC/BC=3/5$이다. 따라서 $\\dfrac{[GHC]}{[ABC]}=(1/3)(3/5)=1/5$이다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "내분비를 반대로 해 $(1/3)(4/10)=2/15$",
+        "②": "$HC/BC$를 빼먹고 높이비 $1/3$만 적용",
+        "③": "무게중심 높이비를 $1/2$로 잘못 써 $(1/2)(3/5)=3/10$",
+        "④": "높이비를 적용하지 않고 $HC/BC=3/5$만 계산"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "내분비를 반대로 해 $(1/3)(4/10)=2/15$",
+          "actualIncorrectChoice": "$\\dfrac{2}{15}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "$HC/BC$를 빼먹고 높이비 $1/3$만 적용",
+          "actualIncorrectChoice": "$\\dfrac{1}{3}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "무게중심 높이비를 $1/2$로 잘못 써 $(1/2)(3/5)=3/10$",
+          "actualIncorrectChoice": "$\\dfrac{3}{10}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "높이비를 적용하지 않고 $HC/BC=3/5$만 계산",
+          "actualIncorrectChoice": "$\\dfrac{3}{5}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "좌표 대신 부분면적 비율을 추상화",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-B2",
+      "slot": "B2",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "삼각형 $ABC$에서 $AB:AC=1:2$이다. 내심 $I$를 지나는 직선 $AI$와 변 $BC$의 교점을 $H$, 무게중심을 $G$라 한다. 삼각형 $GHC$의 넓이가 $4$일 때 삼각형 $ABC$의 넓이는?",
+      "choices": [
+        "$6$",
+        "$8$",
+        "$18$",
+        "$12$",
+        "$36$"
+      ],
+      "answer": "③",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$HC/BC=2/3$이며 무게중심의 높이비는 $1/3$이다. 따라서 $[GHC]=[ABC]\\cdot(2/3)\\cdot(1/3)=(2/9)[ABC]$이다. $4=(2/9)[ABC]$이므로 $[ABC]=18$이다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "무게중심 높이비를 무시해 $4=(2/3)[ABC]$에서 $6$",
+        "②": "$H$가 중점이고 $G=A$라고 생각해 $4=[ABC]/2$에서 $8$",
+        "④": "$H=C$로 처리해 $4=[ABC]/3$에서 $12$",
+        "⑤": "$HC/BC$를 $1/3$으로 뒤집어 $4=[ABC]/9$에서 $36$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "무게중심 높이비를 무시해 $4=(2/3)[ABC]$에서 $6$",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "$H$가 중점이고 $G=A$라고 생각해 $4=[ABC]/2$에서 $8$",
+          "actualIncorrectChoice": "$8$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$H=C$로 처리해 $4=[ABC]/3$에서 $12$",
+          "actualIncorrectChoice": "$12$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$HC/BC$를 $1/3$으로 뒤집어 $4=[ABC]/9$에서 $36$",
+          "actualIncorrectChoice": "$36$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "부분면적 조건에서 원래 삼각형 넓이 역산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-B3",
+      "slot": "B3",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "삼각형 $ABC$에서 $A(0,0)$, $B(6,0)$, $C(0,3)$이다. 내심 $I$와 꼭짓점 $A$를 지나는 직선이 $BC$와 만나는 점을 $H$, 무게중심을 $G$라 하자. 삼각형 $GHB$의 넓이는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": "②",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n같은 이유로 $[GHB]=[ABC]\\dfrac{b}{3(b+c)}$이다.\n$AB=6$, $AC=3$, $[ABC]=9$이고 $BH:HC=2:1$이다. $BH/BC=2/3$이므로 $[GHB]=9\\cdot(2/3)\\cdot(1/3)=2$이다. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "$BH$ 대신 $HC$를 밑변으로 삼아 $[GHC]=9(1/3)(1/3)=1$",
+        "③": "분할 길이를 무시해 $[GBC]=9/3=3$",
+        "④": "삼각형 넓이의 $1/2$를 누락해 $18(2/3)(1/3)=4$",
+        "⑤": "무게중심 높이비를 누락해 $9(2/3)=6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$BH$ 대신 $HC$를 밑변으로 삼아 $[GHC]=9(1/3)(1/3)=1$",
+          "actualIncorrectChoice": "$1$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "분할 길이를 무시해 $[GBC]=9/3=3$",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "삼각형 넓이의 $1/2$를 누락해 $18(2/3)(1/3)=4$",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심 높이비를 누락해 $9(2/3)=6$",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "GHC가 아닌 GHB를 묻는 부분영역 전환",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-AREA-RELATION",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-SIDE-RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "이등분선이 BC를 나누는 두 이웃변의 비"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-SIDE-RATIO"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-C1",
+      "slot": "C1",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "실수 $t>0$에 대해 $A(0,0)$, $B(6,0)$, $C(0,t)$로 삼각형을 만든다. 내심 $I$를 지나는 직선 $AI$와 $BC$의 교점을 $H$, 무게중심을 $G$라 하자. 삼각형 $GHC$의 넓이가 $8$일 때 $t$의 값은?",
+      "choices": [
+        "$\\dfrac{8}{3}$",
+        "$8$",
+        "$16$",
+        "$12$",
+        "$24$"
+      ],
+      "answer": "④",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=6$, $AC=t$, $[ABC]=3t$이므로 $[GHC]=3t\\cdot\\dfrac{t}{t+6}\\cdot\\dfrac13=\\dfrac{t^2}{t+6}$이다. 넓이가 $8$이므로 $t^2-8t-48=(t-12)(t+4)=0$. $t>0$에 따라 $t=12$만 가능하다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "부분넓이를 전체넓이 $[ABC]=3t$로 오인해 $t=8/3$",
+        "②": "부분넓이를 $[GBC]=t$로 오인해 $t=8$",
+        "③": "$H$를 $BC$ 중점으로 가정해 $[GHC]=t/2$에서 $t=16$",
+        "⑤": "$HC/BC=1/3$을 고정해 $[GHC]=t/3$에서 $t=24$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "부분넓이를 전체넓이 $[ABC]=3t$로 오인해 $t=8/3$",
+          "actualIncorrectChoice": "$\\dfrac{8}{3}$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "부분넓이를 $[GBC]=t$로 오인해 $t=8$",
+          "actualIncorrectChoice": "$8$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$H$를 $BC$ 중점으로 가정해 $[GHC]=t/2$에서 $t=16$",
+          "actualIncorrectChoice": "$16$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$HC/BC=1/3$을 고정해 $[GHC]=t/3$에서 $t=24$",
+          "actualIncorrectChoice": "$24$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "넓이 조건을 양수 매개변수의 이차방정식으로 역산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-PARAMETER-RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "양수 길이 또는 자연수 범위 및 면적 조건"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-PARAMETER-RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-C2",
+      "slot": "C2",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "실수 $b>0$에 대해 $A(0,0)$, $B(b,0)$, $C(0,6)$을 꼭짓점으로 하는 삼각형의 내심은 $I$이다. 직선 $AI$와 $BC$의 교점을 $H$, 무게중심을 $G$라 할 때 $[GHC]=2$를 만족하는 $b$는?",
+      "choices": [
+        "$3$",
+        "$2$",
+        "$4$",
+        "$6$",
+        "$12$"
+      ],
+      "answer": "①",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n$AB=b$, $AC=6$, $[ABC]=3b$이고 $HC/BC=6/(b+6)$이다. 따라서 $[GHC]=3b\\cdot\\dfrac{6}{b+6}\\cdot\\dfrac13=\\dfrac{6b}{b+6}$. 이 값이 $2$이므로 $6b=2b+12$, $b=3>0$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$H=B$라 놓아 $[GHC]=[GBC]=b$에서 $b=2$",
+        "③": "$H$를 중점으로 놓아 $[GHC]=b/2$에서 $b=4$",
+        "④": "$HC/BC=1/3$으로 고정해 $[GHC]=b/3$에서 $b=6$",
+        "⑤": "$HC/BC=1/6$으로 고정해 $[GHC]=b/6$에서 $b=12$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$H=B$라 놓아 $[GHC]=[GBC]=b$에서 $b=2$",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$H$를 중점으로 놓아 $[GHC]=b/2$에서 $b=4$",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$HC/BC=1/3$으로 고정해 $[GHC]=b/3$에서 $b=6$",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$HC/BC=1/6$으로 고정해 $[GHC]=b/6$에서 $b=12$",
+          "actualIncorrectChoice": "$12$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "변 길이가 변하는 내분비의 유리식 역산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-PARAMETER-RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "양수 길이 또는 자연수 범위 및 면적 조건"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-PARAMETER-RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q18-C3",
+      "slot": "C3",
+      "sourceQid": 18,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "자연수 $t$에 대해 $A(0,0)$, $B(6,0)$, $C(0,t)$이다. 삼각형의 내심을 $I$, 직선 $AI$와 $BC$의 교점을 $H$, 무게중심을 $G$라 하자. $[GHC]\\ge4$이고 $[GHB]\\ge2$를 모두 만족시키는 $t$의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$6$",
+        "$8$",
+        "$7$",
+        "$12$"
+      ],
+      "answer": "③",
+      "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n같은 이유로 $[GHB]=[ABC]\\dfrac{b}{3(b+c)}$이다.\n$[ABC]=3t$, $BH:HC=6:t$이므로 $[GHC]=\\dfrac{t^2}{t+6}$, $[GHB]=\\dfrac{6t}{t+6}$이다. 두 번째 조건 $6t/(t+6)\\ge2$에서 $t\\ge3$을 얻는다. 첫 번째 조건은 $t^2-4t-24\\ge0$이며 $t>0$이므로 $t\\ge2+2\\sqrt7$이다. $7<2+2\\sqrt7<8$이므로 자연수 $t$의 최솟값은 $8$이다. 이때 두 조건 모두 성립한다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$[GHB]\\ge2$만 검사해 $t\\ge3$에서 $3$을 선택",
+        "②": "문제의 두 면적 하한 대신 $[GHC]\\ge[GHB]$를 검사해 $t\\ge6$을 선택",
+        "④": "$t=7$에서 $49/13\\approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
+        "⑤": "$\\dfrac{HC}{BC}=\\dfrac13$으로 잘못 고정해 $[GHC]=\\dfrac{t}{3}\\ge4$에서 $t=12$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$[GHB]\\ge2$만 검사해 $t\\ge3$에서 $3$을 선택",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "문제의 두 면적 하한 대신 $[GHC]\\ge[GHB]$를 검사해 $t\\ge6$을 선택",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$t=7$에서 $49/13\\approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
+          "actualIncorrectChoice": "$7$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "$\\dfrac{HC}{BC}=\\dfrac13$으로 잘못 고정해 $[GHC]=\\dfrac{t}{3}\\ge4$에서 $t=12$",
+          "actualIncorrectChoice": "$12$",
+          "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "두 넓이의 부등식 및 자연수 경계 교집합 판단",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "무게중심에서 BC까지 높이=꼭짓점 A에서 BC까지 높이/3 으로 분할 삼각형 넓이를 산출",
+      "targetL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+      "schoolExamStyleEvidence": "자연스러운 한국어 학교식 5지 객관식; 수치·범위·질문 대상 명시",
+      "studentVisual": "NOT_REQUIRED_TEXT_ONLY",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C2-01-GEOMETRY_APPLICATION",
+        "subUnit": "도형의 방정식 활용",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmL4": "EXT-L4-H1-Q18-CENTROID-PARAMETER",
+        "rpmRecordId": "H1-RPM-209",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP_GENERATED_EXTENSION_ONLY",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "ptTplAuthority": "SOURCE_COMPATIBLE_RPM_2022_BINDING_GAP",
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+        ],
+        "conditionKeys": [
+          "EXT-COND-H1-Q18-PARAMETER-RANGE"
+        ],
+        "integrationPattern": "CONDITION_INTERSECTION",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 18,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "conditionEvidenceLabels": [
+          "양수 길이 또는 자연수 범위 및 면적 조건"
+        ],
+        "crossConceptEvidenceLabels": [
+          "내심을 지나는 각이등분선이 무게중심 문제의 내분점을 결정"
+        ],
+        "generatedMetaRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-l4/palma-q18-registry.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "주어진 조건과 질문이 자기 완결; 내심 각이등분선으로 H의 분할을 얻고 무게중심 높이비를 적용해야 결과가 결정됨",
+      "changedMathRecheck": "AUTHOR_EXACT_FORMULA_PLUS_FOUR_WRONG_RESULT_PATHS_RECALCULATED",
+      "remainingRisk": "SEPARATE_GPT_OPENBOOK_REVIEW_AND_STUDENT_PUBLICATION_NOT_RUN",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "EXT-COND-H1-Q18-PARAMETER-RANGE"
+      ],
+      "crossConceptKeys": [
+        "EXT-CC-H1-Q18-ANGLE-BISECTOR"
+      ]
+    }
+  ],
+  "nextSourceQid": 19,
+  "publication": "CREATOR_ONLY_NOT_RELEASED",
+  "generatedMetaRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-01-GEOMETRY_APPLICATION/extension-meta/palma-q18-cross-concepts-conditions.json"
+}

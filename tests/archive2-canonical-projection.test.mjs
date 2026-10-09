@@ -498,7 +498,7 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
   });
 });
 
-test("runtime canonical bootstrap keeps all 57 authority digests while fetching only resolver inputs", async () => {
+test("runtime canonical bootstrap keeps all 58 authority digests while fetching only resolver inputs", async () => {
   const archiveDir = path.join(root, "archive");
   const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, "data/archive2-canonical-input-manifest.json"), "utf8"));
   const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
@@ -516,7 +516,7 @@ test("runtime canonical bootstrap keeps all 57 authority digests while fetching 
   };
 
   const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
-  assert.equal(manifest.files.length, 57);
+  assert.equal(manifest.files.length, 58);
   assert.equal(bundle.projectionVersion, manifest.projectionVersion);
   assert.equal(Object.keys(bundle.files).length, manifest.files.length,
     "projection version remains bound to every manifest digest");

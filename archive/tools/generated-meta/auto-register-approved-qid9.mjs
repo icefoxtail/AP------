@@ -137,8 +137,8 @@ const main=()=>{
     ...(missing.length?{crossConceptEvidenceLabels:missing}:{}),
     standardCourse:'공통수학2',standardUnitKey,subUnitKey
    };
-   const category={ 'H22-C2-02':'직선의 방정식','H22-C2-03':'원의 방정식','H22-C2-04':'도형의 이동','H22-C2-05':'집합','H22-C2-06':'명제'}[standardUnitKey];
-   const subLabel={'H22-C2-02-LINE_EQUATION':'직선의 방정식','H22-C2-03-INTERSECTION':'원과 직선·원의 관계','H22-C2-04-CORE':'도형의 이동 핵심 개념','H22-C2-05-CORE':'집합 핵심 개념','H22-C2-06-CORE':'명제 핵심 개념'}[subUnitKey];
+   const category={ 'H22-C2-01':'평면좌표','H22-C2-02':'직선의 방정식','H22-C2-03':'원의 방정식','H22-C2-04':'도형의 이동','H22-C2-05':'집합','H22-C2-06':'명제'}[standardUnitKey];
+   const subLabel={'H22-C2-01-GEOMETRY_APPLICATION':'도형의 방정식 활용','H22-C2-02-LINE_EQUATION':'직선의 방정식','H22-C2-03-INTERSECTION':'원과 직선·원의 관계','H22-C2-03-TANGENT':'원과 접선','H22-C2-04-CORE':'도형의 이동 핵심 개념','H22-C2-05-CORE':'집합 핵심 개념','H22-C2-06-CORE':'명제 핵심 개념'}[subUnitKey];
    requireTrue(category&&subLabel,'UNIT_MASTER_MAPPING_REQUIRED:'+uid);
    const qa=gate.validateMeta(meta);
    if(qa.length)throw Error('META_PRECHECK:'+uid+':'+qa.join('|'));

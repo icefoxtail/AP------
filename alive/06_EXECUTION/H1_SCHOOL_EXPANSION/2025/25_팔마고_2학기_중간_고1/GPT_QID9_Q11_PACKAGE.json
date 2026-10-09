@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 11,
+  "sourceFingerprint": {
+    "sourceStem": "두 조건 $p,q$에 대하여 다음 중 $p$는 $q$이기 위한 필요조건이지만 충분조건은 아닌 것을 고르시오. (단, $x,y$는 실수) [4.3점]",
+    "sourceChoices": [
+      "$p: xy$가 홀수<br>$q: x+y$가 짝수",
+      "$p: -1<x<1$<br>$q: (x+3)(x-2)\\le0$",
+      "$p: |x|<|y|$<br>$q: x<y$",
+      "$p: x^2+y^2=0$<br>$q: |x|+|y|=0$",
+      "$p: xz=yz$<br>$q: x=y$"
+    ],
+    "storedSourceAnswer": "⑤",
+    "originalMathCore": "q⇒p 성립과 p⇒q 반례로 필요조건이면서 충분조건은 아닌 조건 판정",
+    "originalInputIssue": {
+      "code": "SOURCE_FREE_VARIABLE_Z",
+      "evidence": "원본 ⑤의 p는 xz=yz, q는 x=y인데 발문은 x,y만 실수로 선언하며 z의 범위를 선언하지 않음",
+      "action": "원본 source READ_ONLY, 신규 생성문항은 x·n·a·k의 범위를 문항 안에서 명시"
+    }
+  },
+  "lockedPrimaryL3": "필요조건·충분조건",
+  "rpmEvidence": {
+    "rpmRecordIds": [
+      "H1-RPM-247",
+      "H1-RPM-248"
+    ],
+    "l1": "집합과 명제",
+    "l2": "명제",
+    "l3": "필요조건·충분조건",
+    "l4": [
+      "조건 관계",
+      "매개변수"
+    ],
+    "directStatus": "H1-RPM-247 DIRECT_ACTIVE",
+    "parameterStatus": "H1-RPM-248 FAMILY_ACTIVE",
+    "crosswalkAuthority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_NEC_SUFF_RELATION",
+    "templates": [
+      "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+      "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
+      "TPL_NEC_SUFF_SET_RELATION",
+      "TPL_NEC_SUFF_CHAIN"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json"
+  },
+  "experiencePlan": {
+    "A": "원본과 동일한 필요조건이지만 충분조건은 아닌 5지 판정; 실수·배수·근 집합 표현 변화",
+    "B": "구간/이차부등식/방정식 근의 진부분집합과 매개변수 역산",
+    "C": "유한 전체집합 원소 count, 세 조건 이중 포함, 이차부등식 근의 대칭·중근·동치 경계"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorSelfCheck": {
+    "finalItemCount": 9,
+    "uidUnique": true,
+    "choiceCoverage": "45_OF_45",
+    "distractorIndexCoverage": "36_OF_36",
+    "reverseStemRead": "9_OF_9",
+    "keep": 9,
+    "revised": 0,
+    "hold": 0,
+    "logicVerification": "CONDITIONS_AND_COUNTEREXAMPLES_RECALCULATED_BY_CREATOR",
+    "separateGPTQualityReview": "NOT_PERFORMED",
+    "chrome": "NOT_TESTED",
+    "sourceOriginalChanged": false,
+    "sourceUndefinedZIssue": "SOURCE_FREE_VARIABLE_Z",
+    "calculationWitness": {
+      "A2ChoiceTruth": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "B2FeasibleNaturalK": [
+        1,
+        2,
+        3
+      ],
+      "B3ValidA": [
+        1
+      ],
+      "C1ValidK": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10,
+        12
+      ],
+      "C2ValidIntegerA": [
+        1,
+        2,
+        3
+      ],
+      "C3ValidIntegerA": [
+        3,
+        4,
+        5
+      ]
+    },
+    "revisionEvidence": "NO_STUDENT_STEM_REVISIONS_DURING_Q11_CREATION; SELF_REVIEW_METADATA_CORRECTED"
+  },
+  "generatedOnlyCrossConceptExtensions": [
+    {
+      "key": "EXT-CROSS-H1-C2-06-DIVISIBILITY",
+      "labelKo": "배수·약수 관계의 집합 포함",
+      "parentPrimaryL3": "필요조건·충분조건",
+      "role": "자연수 배수조건 q⇒p의 진리집합 포함을 판정",
+      "uids": [
+        "A2",
+        "C1"
+      ],
+      "sourceQid": 11,
+      "sourceBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q11-A2",
+        "ALITE-PALMA25-2MID-Q11-C1"
+      ],
+      "status": "GENERATED_ACTIVE_CANDIDATE_SCOPE",
+      "registryAuthority": "Q11_PACKAGE_GENERATED_EXTENSION_REGISTRY",
+      "scope": "H22-C2-06-CORE"
+    },
+    {
+      "key": "EXT-CROSS-H1-C2-06-ROOT-SET",
+      "labelKo": "방정식 근의 집합 비교",
+      "parentPrimaryL3": "필요조건·충분조건",
+      "role": "근의 중복·동치·진부분집합으로 함의 방향 판정",
+      "uids": [
+        "A3",
+        "B3"
+      ],
+      "sourceQid": 11,
+      "sourceBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q11-A3",
+        "ALITE-PALMA25-2MID-Q11-B3"
+      ],
+      "status": "GENERATED_ACTIVE_CANDIDATE_SCOPE",
+      "registryAuthority": "Q11_PACKAGE_GENERATED_EXTENSION_REGISTRY",
+      "scope": "H22-C2-06-CORE"
+    },
+    {
+      "key": "EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION",
+      "labelKo": "부등식 진리집합의 구간 포함",
+      "parentPrimaryL3": "필요조건·충분조건",
+      "role": "구간의 양 끝과 진부분집합 조건을 변환",
+      "uids": [
+        "B1",
+        "B2",
+        "C2",
+        "C3"
+      ],
+      "sourceQid": 11,
+      "sourceBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q11-B1",
+        "ALITE-PALMA25-2MID-Q11-B2",
+        "ALITE-PALMA25-2MID-Q11-C2",
+        "ALITE-PALMA25-2MID-Q11-C3"
+      ],
+      "status": "GENERATED_ACTIVE_CANDIDATE_SCOPE",
+      "registryAuthority": "Q11_PACKAGE_GENERATED_EXTENSION_REGISTRY",
+      "scope": "H22-C2-06-CORE"
+    },
+    {
+      "key": "EXT-CROSS-H1-C2-06-QUADRATIC-SIGN",
+      "labelKo": "이차식 부호와 중근 진리집합",
+      "parentPrimaryL3": "필요조건·충분조건",
+      "role": "이차부등식의 두 근과 퇴화 경우에서 구간을 확정",
+      "uids": [
+        "C3"
+      ],
+      "sourceQid": 11,
+      "sourceBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q11-C3"
+      ],
+      "status": "GENERATED_ACTIVE_CANDIDATE_SCOPE",
+      "registryAuthority": "Q11_PACKAGE_GENERATED_EXTENSION_REGISTRY",
+      "scope": "H22-C2-06-CORE"
+    }
+  ],
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-A1",
+      "slot": "A1",
+      "sourceQid": 11,
+      "mode": "STRICT_VARIANT",
+      "stem": "두 조건 $p$, $q$에 대하여 $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 것은? (단, $x$는 실수이다.)",
+      "choices": [
+        "$p:x\\ge0$\n$q:x>2$",
+        "$p:x>2$\n$q:x\\ge0$",
+        "$p:x=0$\n$q:x^2=0$",
+        "$p:x>0$\n$q:x<0$",
+        "$p:-1\\le x\\le1$\n$q:-2\\le x\\le2$"
+      ],
+      "answer": "①",
+      "solution": "$p$가 $q$이기 위한 필요조건이면 $q\\Rightarrow p$가 참이고, 충분조건은 아니어야 하므로 $p\\Rightarrow q$는 거짓이어야 한다.\n①에서는 $x>2$이면 반드시 $x\\ge0$이다. 반대로 $x=1$은 $x\\ge0$을 만족하지만 $x>2$를 만족하지 않는다.\n②와 ⑤는 $p\\Rightarrow q$만 성립하고, ③은 두 조건이 동치이다. ④는 어느 방향의 함의도 성립하지 않는다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$x>2$이면 $x\\ge0$이라는 한쪽 포함만 보고 필요조건으로 오판 → $x=1$은 $q$이나 $p$는 아니다",
+        "③": "$x^2=0\\Leftrightarrow x=0$을 일방향으로만 판정 → 실제로는 필요충분조건",
+        "④": "$x>0$과 $x<0$이 서로 배타적이라는 사실을 빠뜨림 → 두 함의 모두 반례 존재",
+        "⑤": "$[-1,1]\\subset[-2,2]$의 포함 방향을 뒤집음 → 실제로는 충분조건만 성립"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$x>2$이면 $x\\ge0$이라는 한쪽 포함만 보고 필요조건으로 오판",
+          "computedPath": "$x>2$이면 $x\\ge0$이라는 한쪽 포함만 보고 필요조건으로 오판 → $x=1$은 $q$이나 $p$는 아니다",
+          "value": "$p:x>2$\n$q:x\\ge0$"
+        },
+        {
+          "label": "③",
+          "mistake": "$x^2=0\\Leftrightarrow x=0$을 일방향으로만 판정",
+          "computedPath": "$x^2=0\\Leftrightarrow x=0$을 일방향으로만 판정 → 실제로는 필요충분조건",
+          "value": "$p:x=0$\n$q:x^2=0$"
+        },
+        {
+          "label": "④",
+          "mistake": "$x>0$과 $x<0$이 서로 배타적이라는 사실을 빠뜨림",
+          "computedPath": "$x>0$과 $x<0$이 서로 배타적이라는 사실을 빠뜨림 → 두 함의 모두 반례 존재",
+          "value": "$p:x>0$\n$q:x<0$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$[-1,1]\\subset[-2,2]$의 포함 방향을 뒤집음",
+          "computedPath": "$[-1,1]\\subset[-2,2]$의 포함 방향을 뒤집음 → 실제로는 충분조건만 성립",
+          "value": "$p:-1\\le x\\le1$\n$q:-2\\le x\\le2$"
+        }
+      ],
+      "experienceAxis": "실수 범위의 부등식 두 조건을 포함 관계와 반례로 판정",
+      "level": "하",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "조건 관계",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "조건 관계",
+        "rpmRecordId": "H1-RPM-247",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "하",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "A1"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "q가 p를 함의하는지 먼저 확인, p이지만 q가 아닌 x=1 제시; 학생 입력 외 추가 정보 불필요",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-A2",
+      "slot": "A2",
+      "sourceQid": 11,
+      "mode": "STRICT_VARIANT",
+      "stem": "자연수 $n$에 관한 두 조건 $p$, $q$가 다음과 같을 때, $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 것은?",
+      "choices": [
+        "p: $n$은 $12$의 배수\nq: $n$은 $6$의 배수",
+        "p: $n$은 $6$의 배수\nq: $n$은 $6$의 배수",
+        "p: $n$은 짝수\nq: $n$은 홀수",
+        "p: $n$은 $3$의 배수\nq: $n$은 $12$의 배수",
+        "p: $n$은 $10$의 배수\nq: $n$은 $5$의 배수"
+      ],
+      "answer": "④",
+      "solution": "필요조건만 성립하려면 $q\\Rightarrow p$는 참이고 $p\\Rightarrow q$는 거짓이어야 한다.\n④에서 $12$의 배수는 모두 $3$의 배수이므로 $q\\Rightarrow p$이다. 그러나 $n=3$은 $3$의 배수이지만 $12$의 배수가 아니므로 $p\\Rightarrow q$는 거짓이다.\n①과 ⑤는 $p$가 충분조건일 뿐이고, ②는 필요충분조건이다. ③은 어느 쪽도 상대 조건을 함의하지 않는다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "배수의 포함을 거꾸로 판단 → $n=6$이면 q 참, p 거짓",
+        "②": "동일한 $6$의 배수 조건을 필요조건만으로 오판 → 양방향 동치",
+        "③": "홀수·짝수가 포함관계라고 잘못 판단 → n=1,2가 각 방향의 반례",
+        "⑤": "$10$의 배수는 $5$의 배수라는 포함 방향을 뒤집음 → n=5는 q 참, p 거짓"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "배수의 포함을 거꾸로 판단",
+          "computedPath": "배수의 포함을 거꾸로 판단 → $n=6$이면 q 참, p 거짓",
+          "value": "p: $n$은 $12$의 배수\nq: $n$은 $6$의 배수"
+        },
+        {
+          "label": "②",
+          "mistake": "동일한 $6$의 배수 조건을 필요조건만으로 오판",
+          "computedPath": "동일한 $6$의 배수 조건을 필요조건만으로 오판 → 양방향 동치",
+          "value": "p: $n$은 $6$의 배수\nq: $n$은 $6$의 배수"
+        },
+        {
+          "label": "③",
+          "mistake": "홀수·짝수가 포함관계라고 잘못 판단",
+          "computedPath": "홀수·짝수가 포함관계라고 잘못 판단 → n=1,2가 각 방향의 반례",
+          "value": "p: $n$은 짝수\nq: $n$은 홀수"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$10$의 배수는 $5$의 배수라는 포함 방향을 뒤집음",
+          "computedPath": "$10$의 배수는 $5$의 배수라는 포함 방향을 뒤집음 → n=5는 q 참, p 거짓",
+          "value": "p: $n$은 $10$의 배수\nq: $n$은 $5$의 배수"
+        }
+      ],
+      "experienceAxis": "배수조건의 진리집합 포함과 홀짝 반례를 판단",
+      "level": "하",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "조건 관계",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "조건 관계",
+        "rpmRecordId": "H1-RPM-247",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "자연수 배수 집합의 포함관계"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "하",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "A2"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "자연수 전체를 전제로 q⇒p가 참이고 역이 거짓인 것은 ④뿐임",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-A3",
+      "slot": "A3",
+      "sourceQid": 11,
+      "mode": "STRICT_VARIANT",
+      "stem": "실수 $x$에 대한 두 조건 $p$, $q$가 다음과 같을 때, $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 것은?",
+      "choices": [
+        "$p:|x|=3$\n$q:x^2=9$",
+        "$p:x^2=9$\n$q:x=3$",
+        "$p:x=3$\n$q:x^2=9$",
+        "$p:x>0$\n$q:x<0$",
+        "$p:x^2\\le1$\n$q:x^2\\le4$"
+      ],
+      "answer": "②",
+      "solution": "②에서 $q$인 $x=3$이면 $x^2=9$이므로 $q\\Rightarrow p$가 성립한다. 그러나 $x=-3$은 $x^2=9$를 만족하면서도 $x=3$을 만족하지 않는다. 따라서 $p\\Rightarrow q$는 거짓이다.\n①의 두 조건은 $|x|=3\\Leftrightarrow x^2=9$로 동치이다. ③은 충분조건만 성립한다. ④는 양방향 모두 성립하지 않고, ⑤도 충분조건만 성립한다.\n따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "$|x|=3$과 $x^2=9$가 완전히 같다는 점을 놓침 → 양방향 참",
+        "③": "$x=3\\Rightarrow x^2=9$만 보고 필요로 오해 → x=-3에서 q 참, p 거짓",
+        "④": "양수·음수의 배타성을 포함 관계로 오해 → x=1과 x=-1이 각 방향 반례",
+        "⑤": "$x^2\\le1$이 $x^2\\le4$보다 강한 조건임을 역전 → x=2는 q 참, p 거짓"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$|x|=3$과 $x^2=9$가 완전히 같다는 점을 놓침",
+          "computedPath": "$|x|=3$과 $x^2=9$가 완전히 같다는 점을 놓침 → 양방향 참",
+          "value": "$p:|x|=3$\n$q:x^2=9$"
+        },
+        {
+          "label": "③",
+          "mistake": "$x=3\\Rightarrow x^2=9$만 보고 필요로 오해",
+          "computedPath": "$x=3\\Rightarrow x^2=9$만 보고 필요로 오해 → x=-3에서 q 참, p 거짓",
+          "value": "$p:x=3$\n$q:x^2=9$"
+        },
+        {
+          "label": "④",
+          "mistake": "양수·음수의 배타성을 포함 관계로 오해",
+          "computedPath": "양수·음수의 배타성을 포함 관계로 오해 → x=1과 x=-1이 각 방향 반례",
+          "value": "$p:x>0$\n$q:x<0$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$x^2\\le1$이 $x^2\\le4$보다 강한 조건임을 역전",
+          "computedPath": "$x^2\\le1$이 $x^2\\le4$보다 강한 조건임을 역전 → x=2는 q 참, p 거짓",
+          "value": "$p:x^2\\le1$\n$q:x^2\\le4$"
+        }
+      ],
+      "experienceAxis": "제곱식과 절댓값의 해집합을 확인하고 부호 반례로 필요조건 판정",
+      "level": "중",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "조건 관계",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "조건 관계",
+        "rpmRecordId": "H1-RPM-247",
+        "rpmBindingStatus": "DIRECT_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-ROOT-SET"
+        ],
+        "crossConceptEvidenceLabels": [
+          "제곱방정식 두 실근과 한쪽 근의 비교"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "A3",
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "|x|=3과 x²=9는 동치이나 q:x=3은 p:x²=9에 진포함된다. x=-3 반례를 학생 발문에서 직접 복원",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-B1",
+      "slot": "B1",
+      "sourceQid": 11,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "실수 $x$에 대한 두 조건 $p:x\\ge-1$, $q:x\\ge a$가 있다. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 실수 $a$의 값의 범위는?",
+      "choices": [
+        "$a<-1$",
+        "$a\\le-1$",
+        "$a=-1$",
+        "$a\\ge-1$",
+        "$a>-1$"
+      ],
+      "answer": "⑤",
+      "solution": "$p$가 $q$이기 위한 필요조건이려면 $q\\Rightarrow p$여야 한다.\n따라서 $x\\ge a$를 만족하는 모든 $x$가 $x\\ge-1$을 만족해야 하므로 $a\\ge-1$이다.\n그런데 $a=-1$이면 두 조건이 같아져 충분조건도 성립한다. 따라서 $a=-1$을 제외해야 한다.\n즉 $a>-1$이며, 이때 $-1\\le x<a$인 실수가 존재하여 $p\\Rightarrow q$가 거짓이다.\n따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "포함관계를 반대로 세워 a<-1로 판단 → a=-2일 때 x=-2는 q이나 p가 아님",
+        "②": "a=-1을 포함하면서 필요충분조건 경계를 누락 → a=-1은 p=q",
+        "③": "등호 한 점만 선택해 필요충분조건을 필요조건만으로 오판 → a=-1은 동치",
+        "④": "a≥-1에서 등호를 제외하지 않음 → a=-1이면 충분조건도 성립"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "포함관계를 반대로 세워 a<-1로 판단",
+          "computedPath": "포함관계를 반대로 세워 a<-1로 판단 → a=-2일 때 x=-2는 q이나 p가 아님",
+          "value": "$a<-1$"
+        },
+        {
+          "label": "②",
+          "mistake": "a=-1을 포함하면서 필요충분조건 경계를 누락",
+          "computedPath": "a=-1을 포함하면서 필요충분조건 경계를 누락 → a=-1은 p=q",
+          "value": "$a\\le-1$"
+        },
+        {
+          "label": "③",
+          "mistake": "등호 한 점만 선택해 필요충분조건을 필요조건만으로 오판",
+          "computedPath": "등호 한 점만 선택해 필요충분조건을 필요조건만으로 오판 → a=-1은 동치",
+          "value": "$a=-1$"
+        },
+        {
+          "label": "④",
+          "mistake": "a≥-1에서 등호를 제외하지 않음",
+          "computedPath": "a≥-1에서 등호를 제외하지 않음 → a=-1이면 충분조건도 성립",
+          "value": "$a\\ge-1$"
+        }
+      ],
+      "experienceAxis": "구간 함의의 방향과 동치가 되는 경계값 제외",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"
+        ],
+        "crossConceptEvidenceLabels": [
+          "반직선 진리집합 포함과 경계 등호"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "B1",
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "q의 진리집합이 p에 진부분집합으로 포함되어야 하므로 a=-1 경계를 제외",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-B2",
+      "slot": "B2",
+      "sourceQid": 11,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "실수 $x$에 대한 조건 $p:x^2\\le16$, $q:|x-1|\\le k$가 있다. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 자연수 $k$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": "③",
+      "solution": "$p$의 진리집합은 $[-4,4]$이고, $q$의 진리집합은 $[1-k,1+k]$이다.\n$p$가 $q$의 필요조건이려면 $[1-k,1+k]\\subseteq[-4,4]$이므로\n$1-k\\ge-4$ 및 $1+k\\le4$가 성립해야 한다.\n따라서 $k\\le5$이고 $k\\le3$이므로 $k\\le3$이다. 자연수 $k$는 $1,2,3$이다.\n세 경우 모두 $q$의 구간 길이는 $[-4,4]$보다 짧아서 $p$가 충분조건은 아니다.\n따라서 가능한 $k$는 $3$개이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$\\sqrt{16}=2$로 오계산하여 $[-2,2]$를 사용 → k≤1로 잘못 계산",
+        "②": "닫힌 끝점도 포함할 수 있는데 k<3을 적용 → k=1,2 두 개만 셈",
+        "④": "중심이 1만큼 이동한 것을 무시하고 k≤4로 판단 → k=1,2,3,4 네 개",
+        "⑤": "왼쪽 끝 조건 $1-k\\ge-4$만 검사 → k≤5 다섯 개를 잘못 포함"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$\\sqrt{16}=2$로 오계산하여 $[-2,2]$를 사용",
+          "computedPath": "$\\sqrt{16}=2$로 오계산하여 $[-2,2]$를 사용 → k≤1로 잘못 계산",
+          "value": "$1$"
+        },
+        {
+          "label": "②",
+          "mistake": "닫힌 끝점도 포함할 수 있는데 k<3을 적용",
+          "computedPath": "닫힌 끝점도 포함할 수 있는데 k<3을 적용 → k=1,2 두 개만 셈",
+          "value": "$2$"
+        },
+        {
+          "label": "④",
+          "mistake": "중심이 1만큼 이동한 것을 무시하고 k≤4로 판단",
+          "computedPath": "중심이 1만큼 이동한 것을 무시하고 k≤4로 판단 → k=1,2,3,4 네 개",
+          "value": "$4$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "왼쪽 끝 조건 $1-k\\ge-4$만 검사",
+          "computedPath": "왼쪽 끝 조건 $1-k\\ge-4$만 검사 → k≤5 다섯 개를 잘못 포함",
+          "value": "$5$"
+        }
+      ],
+      "experienceAxis": "이동한 구간의 양 끝 조건과 정수 범위·진부분집합을 함께 판정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"
+        ],
+        "crossConceptEvidenceLabels": [
+          "절댓값 부등식의 닫힌 구간과 이차부등식 해집합 포함"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "B2",
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "k 자연수, q⊆p 두 끝점 제약 k≤3; 길이 차이로 동치는 불가능",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-B3",
+      "slot": "B3",
+      "sourceQid": 11,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "실수 $x$에 관한 두 조건 $p:x^2-4x+3=0$, $q:(x-1)(x-a)=0$이 있다. $p$가 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 실수 $a$의 값은?",
+      "choices": [
+        "$0$",
+        "$2$",
+        "$3$",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": "④",
+      "solution": "$p$를 인수분해하면 $(x-1)(x-3)=0$이므로 진리집합은 $\\{1,3\\}$이다.\n$q$의 진리집합은 $\\{1,a\\}$이다. $q\\Rightarrow p$이려면 $a=1$ 또는 $a=3$이어야 한다.\n$a=3$이면 두 진리집합이 같아 필요충분조건이 된다. $a=1$이면 $q$의 진리집합이 $\\{1\\}$이고 $p$에는 $3$이 추가로 속한다.\n그러므로 필요조건만 성립하는 값은 $a=1$이고 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "두 번째 근 a=0을 조건 검사에서 빠뜨림 → x=0은 q 참, p 거짓",
+        "②": "p의 두 근 사이 숫자면 된다고 오해 → a=2이면 x=2는 q 참, p 거짓",
+        "③": "q의 두 근을 p와 같게 맞추면 필요조건만 된다고 오해 → a=3은 두 조건이 동치",
+        "⑤": "a=-1을 허용하면서 두 번째 근을 놓침 → x=-1은 q 참, p 거짓"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 번째 근 a=0을 조건 검사에서 빠뜨림",
+          "computedPath": "두 번째 근 a=0을 조건 검사에서 빠뜨림 → x=0은 q 참, p 거짓",
+          "value": "$0$"
+        },
+        {
+          "label": "②",
+          "mistake": "p의 두 근 사이 숫자면 된다고 오해",
+          "computedPath": "p의 두 근 사이 숫자면 된다고 오해 → a=2이면 x=2는 q 참, p 거짓",
+          "value": "$2$"
+        },
+        {
+          "label": "③",
+          "mistake": "q의 두 근을 p와 같게 맞추면 필요조건만 된다고 오해",
+          "computedPath": "q의 두 근을 p와 같게 맞추면 필요조건만 된다고 오해 → a=3은 두 조건이 동치",
+          "value": "$3$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "a=-1을 허용하면서 두 번째 근을 놓침",
+          "computedPath": "a=-1을 허용하면서 두 번째 근을 놓침 → x=-1은 q 참, p 거짓",
+          "value": "$-1$"
+        }
+      ],
+      "experienceAxis": "매개변수에서 중복근을 만들어 진리집합이 진부분집합이 되는 경우 역산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "crossConceptEvidenceLabels": [
+          "이차방정식 두 근의 해집합과 중근 퇴화"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "B3"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "a=1이면 중근으로 Q={1}, a=3이면 P=Q로 탈락",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-C1",
+      "slot": "C1",
+      "sourceQid": 11,
+      "mode": "TYPE_BANK",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,12\\}$의 원소 $x$에 대하여 조건 $p$는 ‘$x$는 $2$의 배수 또는 $3$의 배수’, 조건 $q_k$는 ‘$x$는 $k$의 배수’라고 하자. $2\\le k\\le12$인 자연수 $k$ 중에서 $p$가 $q_k$이기 위한 필요조건이지만 충분조건은 아닌 $k$의 개수는?",
+      "choices": [
+        "$8$",
+        "$6$",
+        "$7$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "①",
+      "solution": "$p$가 $q_k$의 필요조건이려면 $q_k\\Rightarrow p$여야 한다. $k$ 자체가 $U$에 속하므로, $k$가 $2$ 또는 $3$의 배수여야 한다.\n따라서 가능한 $k$는 $2,3,4,6,8,9,10,12$로 총 $8$개이다.\n이때 $q_k$의 모든 원소는 $p$를 만족한다. 반면 $p$는 $2$와 $3$을 모두 포함하지만 $q_k$가 두 수를 동시에 포함하려면 $k$가 $2$와 $3$의 공약수여야 한다. $k\\ge2$에서 그런 값은 없다.\n그러므로 어느 경우에도 $p$는 $q_k$의 충분조건이 아니며, 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "짝수 k=2,4,6,8,10,12만 세고 3과 9를 누락 → 6개",
+        "③": "k=12일 때 진리집합 {12}도 포함된다는 점을 놓침 → 7개",
+        "④": "k=1을 허용해 전체 U도 q에 넣음 → 8+1=9개로 오계산",
+        "⑤": "k=1을 포함하고, k=5도 10이 배수라는 이유로 잘못 포함 → 8+2=10개"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "짝수 k=2,4,6,8,10,12만 세고 3과 9를 누락",
+          "computedPath": "짝수 k=2,4,6,8,10,12만 세고 3과 9를 누락 → 6개",
+          "value": "$6$"
+        },
+        {
+          "label": "③",
+          "mistake": "k=12일 때 진리집합 {12}도 포함된다는 점을 놓침",
+          "computedPath": "k=12일 때 진리집합 {12}도 포함된다는 점을 놓침 → 7개",
+          "value": "$7$"
+        },
+        {
+          "label": "④",
+          "mistake": "k=1을 허용해 전체 U도 q에 넣음",
+          "computedPath": "k=1을 허용해 전체 U도 q에 넣음 → 8+1=9개로 오계산",
+          "value": "$9$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "k=1을 포함하고, k=5도 10이 배수라는 이유로 잘못 포함",
+          "computedPath": "k=1을 포함하고, k=5도 10이 배수라는 이유로 잘못 포함 → 8+2=10개",
+          "value": "$10$"
+        }
+      ],
+      "experienceAxis": "유한 전체집합에서 역함의 반례가 항상 존재하는지 세고 배수 집합 구조화",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "유한 전체집합의 배수 집합 및 참·거짓 포함 판단"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "C1"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "k 자체가 U에 있으므로 p 판정 필수, p는 2와3 동시 포함이므로 충분조건 아님",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-C2",
+      "slot": "C2",
+      "sourceQid": 11,
+      "mode": "TYPE_BANK",
+      "stem": "실수 $x$에 대한 세 조건 $p:|x|\\le4$, $q:|x-a|\\le1$, $r:0\\le x\\le6$이 있다. $p$와 $r$이 모두 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 모든 정수 $a$의 값의 합은?",
+      "choices": [
+        "$0$",
+        "$3$",
+        "$6$",
+        "$10$",
+        "$15$"
+      ],
+      "answer": "③",
+      "solution": "$q$의 진리집합은 $[a-1,a+1]$이다.\n$p$가 $q$의 필요조건이려면 이 구간이 $[-4,4]$에 포함되어야 하므로 $-3\\le a\\le3$이다.\n$r$도 $q$의 필요조건이려면 $[a-1,a+1]\\subseteq[0,6]$이므로 $1\\le a\\le5$이다.\n두 조건을 동시에 만족하는 정수 $a$는 $1,2,3$이다. 이때 $q$의 구간 길이는 $2$이고, $p,r$ 각각의 진리집합보다 작아 어느 것도 $q$의 충분조건이 아니다.\n따라서 $a$의 값의 합은 $1+2+3=6$이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "$q\\subseteq p$만 검사해 a=-3,-2,-1,0,1,2,3을 선택 → 합 0",
+        "②": "a=3일 때 오른끝 4가 포함되는 것을 누락 → a=1,2 합 3",
+        "④": "a=4이면 q 오른끝 5가 p 밖인데 허용 → a=1,2,3,4 합 10",
+        "⑤": "$q\\subseteq r$만 검사해 a=1,2,3,4,5를 선택 → 합 15"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$q\\subseteq p$만 검사해 a=-3,-2,-1,0,1,2,3을 선택",
+          "computedPath": "$q\\subseteq p$만 검사해 a=-3,-2,-1,0,1,2,3을 선택 → 합 0",
+          "value": "$0$"
+        },
+        {
+          "label": "②",
+          "mistake": "a=3일 때 오른끝 4가 포함되는 것을 누락",
+          "computedPath": "a=3일 때 오른끝 4가 포함되는 것을 누락 → a=1,2 합 3",
+          "value": "$3$"
+        },
+        {
+          "label": "④",
+          "mistake": "a=4이면 q 오른끝 5가 p 밖인데 허용",
+          "computedPath": "a=4이면 q 오른끝 5가 p 밖인데 허용 → a=1,2,3,4 합 10",
+          "value": "$10$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "$q\\subseteq r$만 검사해 a=1,2,3,4,5를 선택",
+          "computedPath": "$q\\subseteq r$만 검사해 a=1,2,3,4,5를 선택 → 합 15",
+          "value": "$15$"
+        }
+      ],
+      "experienceAxis": "한 q의 진리집합이 서로 다른 두 집합의 교집합에 포함되도록 매개변수 역산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_CHAIN",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"
+        ],
+        "crossConceptEvidenceLabels": [
+          "세 진리집합 사이의 중첩 포함 및 정수 교집합"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "C2",
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "p와 r의 두 필요조건을 동시에 충족, q의 길이로 충분조건 실패를 확인",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q11-C3",
+      "slot": "C3",
+      "sourceQid": 11,
+      "mode": "TYPE_BANK",
+      "stem": "실수 $x$에 대한 두 조건 $p:(x-2)(x-6)\\le0$, $q:(x-a)(x+a-8)\\le0$이 있다. $0\\le a\\le8$인 정수 $a$ 중에서 $p$가 $q$이기 위한 필요조건이지만 충분조건은 아닌 $a$의 개수는?",
+      "choices": [
+        "$1$",
+        "$3$",
+        "$2$",
+        "$5$",
+        "$7$"
+      ],
+      "answer": "②",
+      "solution": "$p$의 진리집합은 $[2,6]$이다.\n$q$의 두 근은 $a$, $8-a$이므로 진리집합은 중심이 $4$이고 반폭이 $|a-4|$인 $[4-|a-4|,4+|a-4|]$이다.\n$q\\Rightarrow p$가 성립하려면 이 구간이 $[2,6]$에 포함되어야 하므로 $|a-4|\\le2$이다. 따라서 정수 $a=2,3,4,5,6$을 얻는다.\n그런데 $a=2$ 또는 $a=6$이면 두 진리집합이 같아 $p$도 $q$의 충분조건이 된다. 두 값을 제외하면 $a=3,4,5$이다.\n$a=4$일 때 $q$는 $(x-4)^2\\le0$, 즉 $x=4$인 조건이므로 역시 진부분집합이다.\n따라서 가능한 $a$는 $3$개이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "두 근이 겹치는 a=4만 허용해야 한다고 착각 → 1개",
+        "③": "a=4의 중근 조건을 없어진 구간으로 오판해 제외 → a=3,5 두 개",
+        "④": "a=2와 a=6에서 p=q인 사실을 누락 → a=2,3,4,5,6 다섯 개",
+        "⑤": "반폭 제한을 |a-4|≤3으로 잘못 계산 → a=1,2,...,7 일곱 개"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 근이 겹치는 a=4만 허용해야 한다고 착각",
+          "computedPath": "두 근이 겹치는 a=4만 허용해야 한다고 착각 → 1개",
+          "value": "$1$"
+        },
+        {
+          "label": "③",
+          "mistake": "a=4의 중근 조건을 없어진 구간으로 오판해 제외",
+          "computedPath": "a=4의 중근 조건을 없어진 구간으로 오판해 제외 → a=3,5 두 개",
+          "value": "$2$"
+        },
+        {
+          "label": "④",
+          "mistake": "a=2와 a=6에서 p=q인 사실을 누락",
+          "computedPath": "a=2와 a=6에서 p=q인 사실을 누락 → a=2,3,4,5,6 다섯 개",
+          "value": "$5$"
+        },
+        {
+          "label": "⑤",
+          "mistake": "반폭 제한을 |a-4|≤3으로 잘못 계산",
+          "computedPath": "반폭 제한을 |a-4|≤3으로 잘못 계산 → a=1,2,...,7 일곱 개",
+          "value": "$7$"
+        }
+      ],
+      "experienceAxis": "근의 순서 전환·중근 퇴화·집합 동치 경계를 함께 판정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "필요조건·충분조건",
+      "lockedL3DecisiveStep": "두 조건의 진리집합 Q⊆P와 P⊄Q를 구별해 필요조건이지만 충분조건은 아닌 상태를 판정",
+      "targetL4": "매개변수",
+      "schoolExamStyleEvidence": "고1 공통수학2의 조건 관계 판정·매개변수 범위를 묻는 5지선다",
+      "studentVisual": "NOT_REQUIRED_ALL_CONDITIONS_TEXT_COMPLETE",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "필요조건·충분조건",
+        "rpmL4": "매개변수",
+        "rpmRecordId": "H1-RPM-248",
+        "rpmBindingStatus": "FAMILY_ACTIVE",
+        "pt": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "crossConceptEvidenceLabels": [
+          "이차부등식 두 근의 순서 및 닫힌 진리집합의 동치 경계"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 11,
+        "slot": "C3",
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "두 근 a와 8-a의 순서 전환·경계 a=2,6 동치 제외·중근 a=4 허용을 직접 복원",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_PASS",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 12,
+  "skippedQids": [],
+  "publication": "CONTENT_OPEN_BOOK_REVIEW_PASS_TECHNICAL_PUBLICATION_PENDING",
+  "generatedCrossConceptRegistryPath": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json",
+  "generationContinuity": "Q10_CREATE_FOUND_ON_SAME_BRANCH; Q11_DONE_NEXT_Q12"
+}

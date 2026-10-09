@@ -45,6 +45,11 @@ test('Question authority emits canonical exam, answer, and solution semantics', 
   assert.match(solution, /class="sol-exp">latex\(해설\)/);
 });
 
+test('Question authority carries a fullwidth solution-image layout through its render class', () => {
+  const solution = A.renderQuestionHTML(question({ solutionImageLayout: 'fullwidth' }), { ...renderOptions, mode: 'solution' });
+  assert.match(solution, /class="sol-image-wrap image-medium layout-fullwidth"/);
+});
+
 test('Question authority requires adapter-owned asset resolution and compares semantic parity deterministically', () => {
   assert.throws(() => A.renderQuestionHTML(question(), { mode: 'exam' }), /MISSING_ASSET_RESOLVER/);
   const shared = A.renderQuestionHTML(question(), { ...renderOptions, mode: 'solution' });

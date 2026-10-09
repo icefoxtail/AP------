@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_11_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q11-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 세 조건 $p:|x|\\le4$, $q:|x-a|\\le1$, $r:0\\le x\\le6$이 있다. $p$와 $r$이 모두 $q$이기 위한 필요조건이지만 충분조건은 아니도록 하는 모든 정수 $a$의 값의 합은?",
+    "choices": [
+      "$0$",
+      "$3$",
+      "$6$",
+      "$10$",
+      "$15$"
+    ],
+    "answer": "③",
+    "solution": "$q$의 진리집합은 $[a-1,a+1]$이다.\n$p$가 $q$의 필요조건이려면 이 구간이 $[-4,4]$에 포함되어야 하므로 $-3\\le a\\le3$이다.\n$r$도 $q$의 필요조건이려면 $[a-1,a+1]\\subseteq[0,6]$이므로 $1\\le a\\le5$이다.\n두 조건을 동시에 만족하는 정수 $a$는 $1,2,3$이다. 이때 $q$의 구간 길이는 $2$이고, $p,r$ 각각의 진리집합보다 작아 어느 것도 $q$의 충분조건이 아니다.\n따라서 $a$의 값의 합은 $1+2+3=6$이므로 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 11,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q11-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q11-C2","meta":{"rpmL1":"집합과 명제","rpmL2":"명제","rpmL3":"필요조건·충분조건","rpmL4":"매개변수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-248","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"crossConceptRegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json","conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"CASE_BRANCH","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_CHAIN","standardCourse":"공통수학2","standardUnitKey":"H22-C2-06","subUnitKey":"H22-C2-06-CORE"},"metaFinalSha256":"00caf0264b17d276e1597ab110f8afb358fb3675953f52b06db26677748d21ef","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q11-C2.json","sha256":"a7c233f75f4b501f373fc74f9cf36458c94d0c2159a45c5abfe9131df8ee48b2","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q09_Q12_36","scopeUids":["ALITE-PALMA25-2MID-Q11-C2"],"uid":"ALITE-PALMA25-2MID-Q11-C2"},"metaReviewEvidenceSha256":"a7c233f75f4b501f373fc74f9cf36458c94d0c2159a45c5abfe9131df8ee48b2","difficultyBucket":4,"level":"상","problemTypeKey":"PT_NEC_SUFF_RELATION","templateKey":"TPL_NEC_SUFF_CHAIN","secondaryConceptKeys":[],"crossConceptKeys":["EXT-CROSS-H1-C2-06-INTERVAL-INCLUSION"],"conditionKeys":["COND_INTEGER","COND_RANGE"],"integrationPattern":"CASE_BRANCH"});})();

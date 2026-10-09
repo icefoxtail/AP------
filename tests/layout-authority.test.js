@@ -106,6 +106,33 @@ test('measured solution production planner requests only source-free range geome
   assert.throws(() => L.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: 100 }, blocks: [{ blockId: 'x', rawHeight: 1, compressedHeight: 1, chunkCount: 1, sourcePayload: {} }] }), /SOURCE_DATA_FORBIDDEN/);
 });
 
+test('measured solution planner reserves a full-page row for a fullwidth diagram box', () => {
+  const plan=L.planMeasuredSolutionLayout({pageGeometry:{usableHeight:100,columns:2,tolerance:0},blocks:[
+    {blockId:'column-before',rawHeight:30,compressedHeight:30,chunkCount:1},
+    {blockId:'diagram-fullwidth',rawHeight:60,compressedHeight:55,chunkCount:1,fullWidth:true},
+    {blockId:'column-after',rawHeight:20,compressedHeight:20,chunkCount:1}
+  ]});
+  assert.equal(plan.status,'READY');
+  assert.deepEqual(plan.pages.flatMap((page,index)=>page.itemPlacements.map(item=>[item.blockId,index+1,item.columnNo,item.columnSpan])),[
+    ['column-before',1,1,1],
+    ['diagram-fullwidth',2,1,2],
+    ['column-after',3,1,1]
+  ]);
+});
+
+test('legacy solution planner keeps fullwidth diagrams on a dedicated page between column layouts', () => {
+  const plan=L.planLegacySolutionLayout({pageGeometry:{usableHeight:100,columns:2,blockGap:0},blocks:[
+    {blockId:'column-before',questionKey:'q1',measuredHeight:30,measurements:{tight:30},chunks:[{chunkId:'c0',measuredHeight:30}]},
+    {blockId:'diagram-fullwidth',questionKey:'q2',measuredHeight:60,measurements:{tight:55},fullWidth:true,chunks:[{chunkId:'c0',measuredHeight:60}]},
+    {blockId:'column-after',questionKey:'q3',measuredHeight:20,measurements:{tight:20},chunks:[{chunkId:'c0',measuredHeight:20}]}
+  ]});
+  assert.deepEqual(plan.pages.flatMap((page,index)=>page.itemPlacements.map(item=>[item.blockId,index+1,item.columnNo,item.columnSpan])),[
+    ['column-before',1,1,1],
+    ['diagram-fullwidth',2,1,2],
+    ['column-after',3,1,1]
+  ]);
+});
+
 test('promotion comparator fails closed for a mutated legacy page, column, or continuation fact', () => {
   const records = {
     a: { sectionId: 'exam', sourceRef: ref(1), displayNo: 1 },

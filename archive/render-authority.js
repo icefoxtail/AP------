@@ -139,7 +139,7 @@
 
         const image = firstPresent(raw, ['image', 'imageUrl', 'img', 'imageTag', 'imagePath', 'image_path']);
         if (image !== undefined) question.image = text(image).trim();
-        for (const field of ['imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag']) {
+        for (const field of ['imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout', 'layoutTag']) {
             const value = optionalString(raw, field);
             if (value !== undefined) question[field] = value;
         }
@@ -255,11 +255,14 @@
         const sizeField = field === 'solutionImage' ? 'solutionImageSize' : 'imageSize';
         const size = optionalString(question, sizeField);
         const sizeClass = size ? ` image-${size}` : '';
+        const solutionLayout = field === 'solutionImage' ? optionalString(question,'solutionImageLayout') : '';
+        if (solutionLayout && solutionLayout !== 'fullwidth') throw new Error('INVALID_SOLUTION_IMAGE_LAYOUT');
+        const layoutClass = solutionLayout ? ` layout-${solutionLayout}` : '';
         const alt = field === 'solutionImage' ? optionalString(question, 'solutionImageAlt') || `문항 ${question.displayNo} 해설 그래프` : '';
         const caption = field === 'solutionImage' && question.solutionImageCaption
             ? `<span class="sol-image-caption">${question.solutionImageCaption}</span>`
             : '';
-        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}"><img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
+        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}${layoutClass}"><img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
     }
 
     function renderQuestionHTML(inputQuestion, options) {
