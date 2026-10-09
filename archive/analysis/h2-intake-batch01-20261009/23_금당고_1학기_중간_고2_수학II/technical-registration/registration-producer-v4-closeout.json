@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_TECHNICAL_CLOSEOUT_V1",
+  "status": "PLAN_VALIDATED_NOT_APPLIED",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "head": "fb312c5a02c05ef30c34f086e647ccb905811431",
+  "target": {
+    "examUid": "23_금당고_1학기_중간_고2_수학II",
+    "productionPath": "archive/exams/original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
+    "rawSha256": "3b905a30464f7f056c0e67bd4eb0bfc23b856caf90c84847aa4f618313ffaf9a",
+    "rawBufferBlobSha1": "e4192c46c79a3abdf4ff7e6a729f4cd0a470e31c",
+    "questionCount": 20,
+    "sourceTrackedAndClean": true
+  },
+  "rootBindings": {
+    "promotion": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/ROOT.promotion.actual-v1.json",
+      "sha256": "f46340add1f17ec2de2744a92985ab938137a004d31e16ec9b5a0977ebfd6a6a"
+    },
+    "renderReceipt": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/ROOT.render-receipt.durable-v1.json",
+      "sha256": "bcbb7edc445120e0bc3b4447b6049f5ae06003a9f974dbceef719a06ecc4391a"
+    },
+    "r1Evidence": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.evidence.revision3.bound.json",
+      "sha256": "e856ed826d7fbe6774851e3903a023a695435c07c427f8a5872735e39f05fb87"
+    },
+    "r1Validation": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.validator-report.v3.raw.json",
+      "sha256": "84ec4a63ac6e000419b20ca040a3178efc0ec6b7d525901ca2bc878a5043f45d",
+      "mode": "R1_V2",
+      "disposition": "PASS",
+      "denominator": 20,
+      "issues": 0
+    },
+    "r1CompleteEvent": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.complete-event.source-fact-v2.json",
+      "sha256": "23f8a5f262c7809c40ab14450dd78df38cb4bde64832c566de5c51e730487485"
+    },
+    "r1MetaInventory": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/registration-r1-approved-meta-inventory.json",
+      "sha256": "8d4d740951f30ead4a7f629e8c584b28736987402a12dd83f095fd860235594a",
+      "qidCount": 20,
+      "allMetaRowsPass": true
+    }
+  },
+  "registrationScope": {
+    "parentLockedRoster": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/roster.revision2.json",
+      "sha256": "8d0cf270ff622ec8b8b905a431f5c30dd29a5c1683dc1f6a0f017c7da1534c18",
+      "parentRowIndex": 3
+    },
+    "subrosterV3": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/registration-subroster.v3.json",
+      "sha256": "4d0c99eaa5dc18a845dbafe8240eda113477a69fca188af8e9e57c9e90f856a1"
+    },
+    "authorityV3": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/ROOT.target-registration-producer-authority.v3.json",
+      "sha256": "d42bad71b3ac76dde50e2c7879a79ea568068ddfb32debaa7a1294f239eddff9"
+    },
+    "assignmentV4": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration.assignment.v4.json",
+      "sha256": "6c2f854c5302f083a82b74a2df92a48e988f2c7fc1ee4185d26807b6c5150f62",
+      "releaseAssetCount": 6
+    }
+  },
+  "priorAttempts": [
+    {
+      "version": "v1",
+      "exitCode": 1,
+      "error": "ASSIGNMENT_AUTHORITY_ROW_MISMATCH",
+      "rawStderr": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-attempt-raw/registration-producer-v1-stderr.raw.txt",
+        "sha256": "5eeb06bde2548ab4780785e96dfb8784f9fc3abe4345f0e308b03bff810d320c"
+      }
+    },
+    {
+      "version": "v2",
+      "exitCode": 1,
+      "error": "LOCKED_ROSTER_QCOUNT_MISMATCH",
+      "rawStderr": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-attempt-raw/registration-producer-v2-stderr.raw.txt",
+        "sha256": "e77cdcc04f3ced89c145b014a518dd1ee9789b9fffcb7911c5f764a7b48240f0"
+      }
+    },
+    {
+      "version": "v3",
+      "exitCode": 1,
+      "error": "assignment.releaseAssets is not iterable",
+      "rawFailure": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-v3/target-registration.failure.json",
+        "sha256": "bb58f548fa9bbb556d41dc1789738db961efd85f9e448fdf5118978b169b2f25"
+      },
+      "package": {
+        "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration-package.v3.json",
+        "sha256": "74031aec91de9d63846fc308eebca0f24e2324e2c111e8b6d91c8167db2f2679"
+      },
+      "candidateSnapshotManifest": {
+        "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration-producer-v3-candidate-snapshot/snapshot-manifest.json",
+        "sha256": "bdc183ade4315a9691c24bdcf4103cee7c59bdbebc0bdd27910503569c615293"
+      }
+    }
+  ],
+  "dryRun": {
+    "command": "node archive/tools/prepare-target-registration-candidate.mjs",
+    "exitCode": 0,
+    "status": "PLAN_VALIDATED_NOT_APPLIED",
+    "package": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration-package.v4.json",
+      "sha256": "c206569b7962b391b5aca8ee5bf272aa90a094df227b2bf743407dc5e0a3d074"
+    },
+    "candidateCatalog": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/registration-canonical-root/archive/data/archive2-catalog.json",
+      "sha256": "55407621045d27094e9b01ad6b01b68abad3c8043011620b0326ea0cdd6bcf03",
+      "matchesPackage": true
+    },
+    "receipt": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-v4/target-registration.receipt.json",
+      "sha256": "1247494870cb47219b3c23401298642ac17507017a30226544481723d40e46d1"
+    },
+    "producerReceipt": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-v4/target-registration-producer.receipt.json",
+      "sha256": "1da8d1e838f80b9eae67f13182c0a01ec6297d61478820a1863de3415b8f0148"
+    },
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-attempt-raw/registration-producer-v4-stdout.raw.txt",
+      "sha256": "48be556e435c13859363b309a51fbc4c97b0b2fa1577d703d21af15bfc3009e5"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/technical-registration/producer-attempt-raw/registration-producer-v4-stderr.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "targetCounts": {
+      "identity": 20,
+      "metadata": 20,
+      "questionIndex": 20,
+      "catalog": 20
+    },
+    "nonTargetRowsPreserved": true,
+    "runtimeIdentityTuplesPreserved": true,
+    "registryBaselines": 9,
+    "sourceAssetHashesMatch": true,
+    "semanticFieldsCopiedUnchanged": true,
+    "targetAutomaticCount": 0,
+    "applyFlagUsed": false
+  },
+  "firstMissingClosureStep": "ROOT_TARGET_REGISTRY_APPLY_AND_POST_APPLY_VALIDATORS",
+  "constraints": {
+    "primaryRegistryModified": false,
+    "primaryHeadModified": false,
+    "sourceModified": false,
+    "assetsModified": false,
+    "semanticReclassification": false,
+    "stageValidatorRerun": false,
+    "renderRerun": false
+  }
+}
