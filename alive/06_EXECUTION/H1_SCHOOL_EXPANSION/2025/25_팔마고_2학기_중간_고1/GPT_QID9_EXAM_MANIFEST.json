@@ -11,7 +11,8 @@
     1,
     2,
     3,
-    4
+    4,
+    5
   ],
   "qidLedger": [
     {
@@ -210,19 +211,61 @@
       "historicalReviewStatus": "USER_DIRECTED_OPEN_BOOK_CONTENT_REVIEWED_FORMAL_INDEPENDENT_NOT_CLAIMED",
       "qualityApprovalBasis": "USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36",
       "additionalGptQualityCertificationRequired": false
+    },
+    {
+      "qid": 5,
+      "sourceQid": 5,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q05-A1",
+        "ALITE-PALMA25-2MID-Q05-A2",
+        "ALITE-PALMA25-2MID-Q05-A3",
+        "ALITE-PALMA25-2MID-Q05-B1",
+        "ALITE-PALMA25-2MID-Q05-B2",
+        "ALITE-PALMA25-2MID-Q05-B3",
+        "ALITE-PALMA25-2MID-Q05-C1",
+        "ALITE-PALMA25-2MID-Q05-C2",
+        "ALITE-PALMA25-2MID-Q05-C3"
+      ],
+      "lockedPrimaryL3": "L3-1.2.1|직선의 방정식",
+      "activeTemplateKey": "TPL_LINE_PERP_BISECTOR",
+      "commit": "e47a5734eb0d7624bee455e280d1c28d3af0f33a",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_STEM_SELF_REVIEW.md",
+        "archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json"
+      ],
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "reviewStatus": "NOT_USER_APPROVED_CREATE_ONLY",
+      "selfReview": "KEEP7_REVISED2_HOLD0",
+      "releasedCount": 0,
+      "consumerRegistrationStatus": "NOT_REGISTERED_0_OF_9",
+      "studentLookupVerifiedCount": 0,
+      "releaseGateStatus": "NOT_PUBLISHED_Q05"
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 36,
+    "newCreateDraftTotal": 45,
     "newCreateDraftByGroup": {
-      "A": 12,
-      "B": 12,
-      "C": 12
+      "A": 15,
+      "B": 15,
+      "C": 15
     },
-    "uniqueGeneratedUids": 36,
+    "uniqueGeneratedUids": 45,
     "openBookQualityReviewed": 0,
     "studentSupplyNew": 36,
-    "reviewQueue": 0,
+    "reviewQueue": 9,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 36,
     "contentReviewKeep": 24,
@@ -232,11 +275,15 @@
     "generatedCanonicalJSCount": 36,
     "studentLookupBrowserVerified": 36,
     "userDirectedQualityApproved": 36,
-    "additionalFormalGptReviewPending": 0
+    "additionalFormalGptReviewPending": 0,
+    "q05AuthorSelfReviewComplete": 9,
+    "q05Keep": 7,
+    "q05Revised": 2,
+    "q05Hold": 0
   },
-  "nextSourceQid": 5,
+  "nextSourceQid": 6,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
-  "publication": "MAIN_DONE_36_USER_DIRECTED_OPERATING_APPROVAL_CHROME_VERIFIED_20261009",
+  "publication": "MAIN_DONE_Q01_Q04_36__Q05_CREATE_ONLY_9_BRANCH",
   "workflow": {
     "create": "ONE_QID_AT_A_TIME_ONE_COMMIT_IN_SAME_EXAM_BRANCH",
     "review": "BATCH_OPEN_BOOK_STEM_FIRST_MATH_SOLUTION_TRACE_META",
@@ -290,5 +337,12 @@
     "extraFormalGptCertificationRequired": false,
     "formalIndependentReviewPerformed": false,
     "notes": "원장 직접 검수·main 반영 지시가 품질 최종 authority이며, formal GPT review 0회는 품질 대기나 재검수 사유가 아니다. 기술적 Chrome 및 main remote readback 완료."
+  },
+  "lastCheckpoint": {
+    "sourceQid": 5,
+    "createCommit": "e47a5734eb0d7624bee455e280d1c28d3af0f33a",
+    "nextSourceQid": 6,
+    "qualityApprovalStatus": "Q05_NOT_USER_APPROVED",
+    "lastPreviousApprovedUidCount": 36
   }
 }
