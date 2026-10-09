@@ -28,11 +28,18 @@ function parse(argv) {
 }
 const digest = b => crypto.createHash('sha256').update(b).digest('hex');
 function atomicWrite(filename, bytes) {
+  // Hard-link is an atomic create-if-absent operation. renameSync would silently
+  // overwrite a seal/handoff written by another MASTER with a different SHA.
   fs.mkdirSync(path.dirname(filename), { recursive: true });
-  const tmp = filename + '.' + process.pid + '.tmp';
+  const tmp = filename + '.' + process.pid + '.' + crypto.randomUUID() + '.tmp';
   try {
     fs.writeFileSync(tmp, bytes, { flag: 'wx' });
-    fs.renameSync(tmp, filename);
+    try {
+      fs.linkSync(tmp, filename);
+    } catch (error) {
+      if (error.code !== 'EEXIST') throw error;
+      if (!fs.readFileSync(filename).equals(bytes)) throw Error('IMMUTABLE_WRITE_CONFLICT:' + filename);
+    }
   } finally { if (fs.existsSync(tmp)) fs.unlinkSync(tmp); }
 }
 function main(argv) {
