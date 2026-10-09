@@ -225,12 +225,12 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,2);
+  assert.equal(cards.length,1);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
   assert.ok(bok);
-  assert.ok(hyo);
+  assert.equal(hyo,undefined);
   assert.match(bok.children[1].textContent,/23문항/);
   bok.onclick();await el('print').listeners.click();
   assert.equal(printed,1);
