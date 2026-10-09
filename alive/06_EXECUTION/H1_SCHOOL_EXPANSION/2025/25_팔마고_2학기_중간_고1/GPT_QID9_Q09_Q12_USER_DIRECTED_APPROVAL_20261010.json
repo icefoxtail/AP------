@@ -129,7 +129,45 @@
       "receipt": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json",
       "receiptSha256": "2fc3e5fe71198ad7106864a5990acf4f8929f2b5edb776db23559238556a160b"
     },
-    "mainPublication": "PENDING_PR_AND_REMOTE_READBACK"
+    "mainPublication": {
+      "status": "MAIN_DONE",
+      "pullRequest": "https://github.com/icefoxtail/AP------/pull/359",
+      "mainPublicationCommit": "707708eeb5478a5c650fa7055f063a1180747274",
+      "remoteMainReadback": {
+        "ref": "origin/main",
+        "sha": "707708eeb5478a5c650fa7055f063a1180747274",
+        "index": {
+          "path": "archive/data/generated-lite-consumer/v1/index.json",
+          "sha256": "2cb1f6aabcc35f36302d8f773b7cc1196ef8c48726c7944dbe06de912a61d199",
+          "gitBlobSha1": "bd96a123510fc85679b3380ce28651eb1e73eff4",
+          "records": 454,
+          "approvedCount": 454
+        }
+      },
+      "targetUidCount": 36,
+      "sourceMetadataConsumerAndReviewFiles": 144,
+      "remoteParity": "PASS",
+      "autoRegisterWorkflow": {
+        "status": "PASS",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/37985118865"
+      },
+      "consumerBrowserSmoke": {
+        "status": "PASS",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/37985118717"
+      },
+      "archive2RuntimeGuard": {
+        "status": "PASS",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/37985118845"
+      },
+      "sharedMeta": {
+        "status": "PASS",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/37985118705"
+      },
+      "fullRepositoryCi": {
+        "status": "FAIL_UNRELATED_BASELINE_TESTS",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/37985118937"
+      }
+    }
   },
   "recordedAt": "2026-10-10",
   "preCorrectionPackageHashes": {

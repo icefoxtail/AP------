@@ -1,7 +1,7 @@
-# CURRENT 2026-10-10 — Q09-Q12 local release complete, main PR pending; Q13-Q16 already MAIN_DONE
+# CURRENT 2026-10-10 — Q09-Q12 MAIN_DONE after remote readback; Q13-Q16 already MAIN_DONE
 
 - Approved user scope: Q09-Q16 A1-C3 = 72 UIDs. Q13-Q16 (36) were already released to main; this PR publishes Q09-Q12 (36) once.
-- Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. Status stays pending until PR #359 merge and remote readback.
+- Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. MAIN_DONE: PR #359 merged and remote main file SHA readback passed.
 - Target release checks: generated Meta registration/retention PASS (index 454, failures0); Archive2 Runtime Guard 42/42; generated-bank tests 22/22; focused consumer regressions 13/13; actual Chrome Palma lookup144/HOLD excluded.
 - Full repository CI remains red on baseline failures also reproduced on current-main baseline: inline bracket-label inventory, compose scope (삼각비), derivative/integral fixture counts, M2 O11 Golden SHA. Those files are not changed by QID9 release; see PR body for details.
 - Branch also contains Q17-Q20 candidate packages and a separate open-book review/repair ledger. They remain unregistered in the student Consumer and outside this Q09-Q16 72-UID release scope. Next source qid: 21.
