@@ -12,6 +12,89 @@
   const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
   const known = v => v !== undefined && v !== null && v !== '' && v !== 'UNKNOWN';
   const bucket = v => Number.isInteger(v) && v >= 1 && v <= 5 ? v : null;
+  const sourcePath = value => String(value ?? '').normalize('NFC').replace(/\\/g, '/').replace(/^\/?(?:archive\/)?exams\//, '').replace(/^\/+/, '');
+  const approved = value => /^approved(?:_|$)/i.test(String(value || ''));
+  function createSourceBoundDisplayProjection({
+    meta = null, identity = null, sourceFile = '', sourceOrdinal = 0, sourceGrade = '',
+    sourceFingerprint = '', assignmentFingerprint = '', gradeCourseAllowlist = [],
+    scopeParents = [], canonicalParents = [],
+  } = {}) {
+    const fail = reason => ({ projection: null, reason });
+    const file = sourcePath(sourceFile), ordinal = Number(sourceOrdinal);
+    if (!meta || !identity || !file || !Number.isInteger(ordinal) || ordinal < 1 || !sourceGrade)
+      return fail('DISPLAY_PROJECTION_INPUT_MISSING');
+    if (identity.questionUid !== meta.questionUid || !/^qid_v1_[a-f0-9]{64}$/.test(String(meta.questionUid || '')) ||
+        sourcePath(identity.sourceArchiveFile) !== file || sourcePath(meta.sourceArchiveFile) !== file ||
+        Number(identity.sourceOrdinal) !== ordinal || Number(meta.sourceOrdinal) !== ordinal)
+      return fail('DISPLAY_PROJECTION_IDENTITY_MISMATCH');
+    if (!sourceFingerprint || meta.sourceFingerprint !== sourceFingerprint ||
+        !assignmentFingerprint || meta.contentFingerprint !== assignmentFingerprint)
+      return fail('DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+    if (!String(meta.metadataStatus || '').startsWith('approved_') ||
+        !approved(meta.fieldStatus?.standardUnit) || !approved(meta.fieldStatus?.subUnit) ||
+        !Array.isArray(meta.approvalEvidence) || !meta.approvalEvidence.some(value => typeof value === 'string' && value.trim()))
+      return fail('DISPLAY_PROJECTION_CORE_APPROVAL_MISSING');
+    for (const field of ['standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit'])
+      if (typeof meta[field] !== 'string' || !meta[field].trim()) return fail('DISPLAY_PROJECTION_CORE_FIELD_MISSING');
+
+    const allowed = gradeCourseAllowlist.filter(row => row.grade === sourceGrade && row.courseKey === meta.standardCourse);
+    if (allowed.length !== 1) return fail(allowed.length ? 'DISPLAY_PROJECTION_COURSE_AMBIGUOUS' : 'DISPLAY_PROJECTION_COURSE_NOT_ALLOWED');
+    const { curriculumKey, courseKey } = allowed[0];
+    const matchingUnit = scopeParents.filter(row => row.grade === sourceGrade &&
+      row.curriculumKey === curriculumKey && row.courseKey === courseKey &&
+      row.standardUnitKey === meta.standardUnitKey);
+    const exact = matchingUnit.filter(row => row.subUnitKey === meta.subUnitKey);
+    const parent = matchingUnit.filter(row => !row.subUnitKey);
+    const candidates = exact.length ? exact : parent;
+    if (!candidates.length) return fail('DISPLAY_PROJECTION_PARENT_MISSING');
+    if (candidates.length !== 1) return fail('DISPLAY_PROJECTION_PARENT_AMBIGUOUS');
+    const canonical = candidates[0];
+    const canonicalMatches = canonicalParents.filter(row => row.curriculumKey === curriculumKey &&
+      row.courseKey === courseKey && row.L1 === canonical.L1 && row.L2 === canonical.L2);
+    if (canonicalMatches.length !== 1) return fail(canonicalMatches.length ? 'DISPLAY_PROJECTION_CANONICAL_PARENT_AMBIGUOUS' : 'DISPLAY_PROJECTION_CANONICAL_PARENT_MISSING');
+
+    return {
+      reason: '',
+      projection: {
+        projectionStatus: 'DISPLAY_ONLY_SOURCE_BOUND',
+        displayOnly: true,
+        curriculumKey,
+        courseKey,
+        standardCourse: meta.standardCourse,
+        standardUnitKey: meta.standardUnitKey,
+        standardUnit: meta.standardUnit,
+        subUnitKey: meta.subUnitKey,
+        subUnit: meta.subUnit,
+        L1: canonical.L1,
+        L2: canonical.L2,
+        evidenceByField: {
+          rpmL1: { status: 'CONFIRMED' },
+          rpmL2: { status: 'CONFIRMED' },
+          standardCourse: { status: meta.fieldStatus.standardUnit },
+          standardUnitKey: { status: meta.fieldStatus.standardUnit },
+          standardUnit: { status: meta.fieldStatus.standardUnit },
+          subUnitKey: { status: meta.fieldStatus.subUnit },
+          subUnit: { status: meta.fieldStatus.subUnit },
+        },
+        sourceBinding: {
+          questionUid: meta.questionUid,
+          sourceFile: file,
+          sourceOrdinal: ordinal,
+          sourceFingerprint,
+          assignmentFingerprint,
+          metadataRevision: String(meta.metadataRevision || ''),
+          evidenceRefs: [...meta.approvalEvidence],
+        },
+        parentBinding: {
+          standardUnitKey: meta.standardUnitKey,
+          matchedSubUnitKey: exact.length ? meta.subUnitKey : '',
+          resolution: exact.length ? 'EXACT_CANONICAL_SUBUNIT' : 'CANONICAL_PARENT_LABEL_ONLY',
+          L1: canonical.L1,
+          L2: canonical.L2,
+        },
+      },
+    };
+  }
   function isGeneratedSelectable(row, holds = []) {
     if (!row || row.sourceKind !== 'generated' || row.consumerSelectable !== true ||
         new Set(holds).has(row.uid || row.questionUid)) return false;
@@ -25,7 +108,11 @@
   }
   function project(record, generated, consumer, holds) {
     const q = consumer?.question || {};
-    const m = record.meta || record.metaProjection || consumer?.meta || consumer?.metaProjection || {};
+    const displayProjection = record.metaProjection?.projectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND' &&
+      record.metaProjection?.displayOnly === true ? record.metaProjection : null;
+    const m = generated
+      ? record.meta || record.metaProjection || consumer?.meta || consumer?.metaProjection || {}
+      : displayProjection || {};
     const view = {...record};
     view.uid = generated ? record.uid : record.questionUid;
     view.questionUid = view.uid;
@@ -38,7 +125,7 @@
       const alias = /^rpmL[1-4]$/.test(field) ? field.slice(3) : field;
       let value;
       if (generated) value = own(m, field) ? m[field] : own(q, field) ? q[field] : record[field];
-      else value = record[alias];
+      else value = own(m, field) ? m[field] : own(m, alias) ? m[alias] : record[alias];
       if (field === 'difficultyBucket') value = bucket(value);
       else if (field.endsWith('Keys')) {
         if (!Array.isArray(value) || value.some(v => typeof v !== 'string' || !v.trim()) ||
@@ -119,5 +206,6 @@
     });
   }
   return Object.freeze({VERSION, FIELDS, projectOriginal, projectGenerated, buildIndex, query,
+    createSourceBoundDisplayProjection,
     isGeneratedSelectable});
 });

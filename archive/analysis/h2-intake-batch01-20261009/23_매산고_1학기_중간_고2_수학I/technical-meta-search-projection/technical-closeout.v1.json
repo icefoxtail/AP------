@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "ARCHIVE2_SHARED_META_SEARCH_TECHNICAL_CLOSEOUT_V1",
+  "status": "TECHNICAL_FIX_READY_FOR_ROOT_COMMIT",
+  "head": "089d3250b3366dd5d7c323c9f88dd622707e8036",
+  "scope": "display-only source-bound core Meta projection for common problem-bank search; no canonical assignment, Meta judgment, or eligibility promotion",
+  "implementation": [
+    { "path": "archive/tools/build-archive2-catalog.mjs", "sha256": "8fb8e4ef45ed8eac4f65066978c22b4f506d4c8aeb0ea84def44789d13bbc08c", "change": "emits display-only projection only after current identity/source/content fingerprint, approved core field status, current grade-course allowlist, unique scope parent and unique canonical parent checks" },
+    { "path": "archive/problem-bank-meta.js", "sha256": "e56e6fcf0e2df7318658205ef070cf460884ba1aad1b19c18e55910893336011", "change": "consumes only typed display-only projection for original rows; preserves evidence debt and verifiedEligible=false" },
+    { "path": "archive/tools/problem-bank-meta-projection.test.mjs", "sha256": "bd7620fc8d1114e0edac2282dfe4cfb23c257c5a818d6fbaecc9c0f24a549adc", "change": "8 focused positive, search, stale, ambiguous, missing and non-promotion tests" },
+    { "path": "archive/problem-bank-search.html", "sha256": "8e387c70b7d7047bf56355c6a7ad4014497b7d5e92a4a8931fcb437dd57358b7", "change": "bumped problem-bank-meta.js cache key to meta2" }
+  ],
+  "derivedOutputs": [
+    { "path": "archive/data/archive2-catalog.json", "sha256": "959a331aed36ccdbb1fd68fade9662e07c43285b93d118c4dbac74e4ead40f04" },
+    { "path": "archive/data/archive2-canonical-input-manifest.json", "sha256": "5e0d5cafd6e603fbb1cfc6bff5fe9267ae7c552cf394f5b2d7c7dd6636ba0099" },
+    { "path": "archive/data/archive2-item-review-overrides.json", "sha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1", "unchanged": true }
+  ],
+  "preservation": {
+    "catalogDiffProofPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/catalog-diff-proof.v1.json",
+    "catalogDiffProofSha256": "4a920fbc37206396f0afd0fa19eef037c105b19de54493bf349895b4f9a1a1e7",
+    "recordCountBeforeAfter": 13378,
+    "targetRows": 20,
+    "targetRowsRemainCanonicalAssignmentFailure": true,
+    "targetAssignmentEvidenceStillAbsent": true,
+    "PTTPLNotInvented": true,
+    "sourceHashesAndQuestionContentHashesPreserved": true,
+    "nonCatalogManifestInputsPreserved": true
+  },
+  "validation": {
+    "focusedTest": { "command": "node --test archive/tools/problem-bank-meta-projection.test.mjs", "exitCode": 0, "tests": 8, "pass": 8, "stdoutSha256": "5ed54a8b187483c8ec2a7bc590f4b5717da3f6a3c3f36ccefff1d836ed789f9a", "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/focused-tests.process-capture.json", "processCaptureSha256": "9dd7930aba8081a4a7c850900c50e60f5c704fe6c643e5db5244dfb9552d7baf" },
+    "runtimeGuard": { "command": "node tools/check-archive2-runtime.cjs", "exitCode": 0, "tests": 42, "pass": 42, "stdoutSha256": "c766cfb1d9fdd0835f024bae3ba132bd4a422de4c2fc2b7623c4e1842b99a0d9", "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/runtime-guard.process-capture.json", "processCaptureSha256": "c455053875030f26b9d979bcdb1d5d46ac53932048669f0f53f69b3090cab925" },
+    "catalogCheck": { "command": "node archive/tools/build-archive2-catalog.mjs --check", "exitCode": 0, "stdoutSha256": "c9f6d9e21664539111f2d02b5daa6ffd80051904958472fd6ecc57213519673a", "processCapturePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/catalog-check.final.process-capture.json", "processCaptureSha256": "7be71de8e11931a06efde8f793d3eb39620c8092776c9c89186c235c002a0ea9" },
+    "syntaxAndDiffChecks": "node --check for build-archive2-catalog.mjs and problem-bank-meta.js; git diff --check exit 0",
+    "actualChrome": { "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/browser-validation.v2.json", "sha256": "3e03d64501976b8cded8625b0a075acb1114db641c2a83ad1645eba458b5037e", "scope": "actual local Chrome field/filter checks for all 20 Maesan qids plus unchanged examples and direct engine links; not MAIN_DONE" }
+  },
+  "preservedFailure": { "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-technical-qa.archive_r3_06.rev3.json", "sha256": "6f1c38633a1c963a81df8d153f38867457aa4f496ad7466dac191fcd8b30f3ab", "status": "FAIL, preserved unchanged" },
+  "git": { "staged": false, "committed": false, "published": false, "sourceOrRegistryMutation": false },
+  "nextStep": "ROOT review, commit and publication; subsequent normal producer registrations remain ROOT-coordinated and are outside this shared search fix."
+}
