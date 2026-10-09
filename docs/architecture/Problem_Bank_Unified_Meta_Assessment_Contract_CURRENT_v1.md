@@ -3,6 +3,12 @@
 > CURRENT DESIGN / DOCUMENTATION ONLY · 2026-10-09. 사용자 최우선 목표: 모든 생성문항의 정확한 Meta를 먼저 완성하고, 그 하나의 Meta로 문제지 만들기·5분 테스트·소단원 평가·단원 평가·월말 평가·미래 모의고사를 모두 연결한다. 본 문서는 제품 구현/PASS가 아니다.
 > 기존 출처: Problem_Bank_Project_Master_Handoff_And_Roadmap_CURRENT.md, Problem_Bank_Generated_Meta_Retention_Audit_20261009.md, ALIVE QID9 CURRENT, Notion Common Assessment Factory 계획 v0.13. 충돌 시 사용자의 최신 명시 지시와 실제 Git main, 제품별 정본을 확인한다.
 
+## CURRENT HARD — 원장 품질 승인 후 이중 인증 금지 (2026-10-09)
+- **원장이 특정 문항·배치를 "검수하고 main에 반영"하도록 지시하면 품질 게이트는 `USER_DIRECTED_QUALITY_APPROVED`로 종료한다.** 신규 별도 GPT 세션의 정식 품질검수·독립검수 인증·재승인을 출고의 선행 조건으로 추가하지 않는다. 원장 지시는 실제 범위와 UID를 기록하고 기존 승인 상태를 보호한다.
+- 이후 **Meta 필드의 정확한 영구 저장, Source→Consumer→검색 인덱스 parity, asset/렌더/Chrome, main remote readback**은 품질 재승인이 아닌 기술 출시 완결 검사로 수행한다. 실제 오류가 확인되면 해당 UID만 수정한다. 검증하지 않은 독립 검수를 PASS라고 허위 기록하지 않는다.
+- 기존 팔마고 q01~q04 36개는 user-directed 품질 승인과 main/Chrome 완료다. 기존 formal independent GPT 0회는 과거 검사 횟수일 뿐 품질 미승인이나 다시 검수할 필요가 있다는 뜻이 아니다. 본 계약의 Meta-only repair로 수학 문제를 다시 검수하지 않는다.
+- 원장의 직접 지시가 없는 신규 초안은 현행 품질 절차를 적용한다. 학교 기출 R1/R2 blind 및 Common Factory의 제품 단위 paper validator와 기술·권한 검사는 별개의 계약으로 유지한다.
+
 ## 1. 성공 목표 — 문항 Meta 하나, 평가 Recipe 여러 개
 
 기출과 Generated는 원본 저장소가 달라도 UID로 검색·복원된다. 각 UID의 최종 수학 분류·난이도·유형·통합사고·승인 상태와 근거를 하나의 공통 논리 Meta 계약으로 저장한다. Source JS/metadata → Consumer shard의 record/question → index/query projection → 출제 선택에서 동일 의미가 유지되어야 한다.
@@ -50,7 +56,7 @@ Notion Factory v0.13은 중등 전체 JS 활용/교사의 검색·직접 선택�
 ## 5. 데이터 파이프라인과 엄격한 완료 게이트
 
 1. 제작/원본 인수: 확정된 문항 Meta·실제 출처/설계·family 관계를 UID로 저장. 없는 정보를 NONE으로 오기록하지 않음.
-2. 검수: 생성은 발문 우선 공개답 풀이 추적, 기출은 해당 R1/R2 계약 유지. self-check와 독립 검수 분리.
+2. 검수: **원장 직접 검수·main 반영 지시 시 `USER_DIRECTED_QUALITY_APPROVED`로 품질 승인 종료**하고 별도 GPT 검수를 강제하지 않는다. 그 외 생성 신규 초안은 발문 우선 공개답 추적, 기출은 R1/R2 계약을 적용한다. self-check를 독립 수행으로 허위 표시하지 않는다.
 3. 등록: 설계·승인 Meta → generated Source JS/metadata → 승인 Consumer record/question → index/query projection을 SHA/UID 단위로 무손실 동기화. 평가별 서로 다른 분류값 생성 금지.
 4. 소비: Compose·Factory의 동일 Meta 조회/eligibility adapter. 기출 source fingerprint 복원, Generated 승인 shard UID+localOrdinal 복원, 권한별 정답/해설 비공개.
 5. Factory: Expected Registry → AssessmentBlueprint → Recipe → Eligible Pool → deterministic bundle builder → 독립 paper validator → immutable artifact/release pointer → 교사 카드/출력/Assignment.
