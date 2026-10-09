@@ -16,6 +16,7 @@ test('semantic RPM and physical storage bucket never alias; unknown differs from
   const x=meta.projectGenerated({...approved,meta:{level:'상'}});
   assert.equal(x.difficultyBucket,null); assert.equal(x.L2,null);
   assert.equal(x.conditionKeys,null); assert.equal(x.metaStatus.conditionKeys,'UNKNOWN');
+  assert.equal(meta.projectGenerated({...approved,meta:{...approved.meta,conditionKeys:'NONE'}}).conditionKeys,null);
 });
 test('same query works for original and Generated, unknown does not fill a bucket', () => {
   const rows=meta.buildIndex([{questionUid:'qid_v1_test',sourceFile:'original/test.js',
