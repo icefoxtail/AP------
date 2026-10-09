@@ -1,5 +1,11 @@
 # 문제은행 프로젝트 — 생성문항 공통 Meta 및 전체 평가상품 연결 계약 v1.0
 
+## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
+- 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
+- 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
+- 원장 직접 Generated 품질 지시의 별도 인증은 생략. **main 병합 이후 필요한 실제 Chrome 학생 조회/출력 등 기술 검사는 수정 AI가 끝까지 진행**한다. main write만으로 MAIN_DONE이 아니며, 실패하면 본 작업의 수리 대상으로 처리한다. 실제 미실행을 PASS로 꾸미지 않는다. 예외적 막힘은 시도·정확한 blockers·주체를 ledger에 남기되 재승인 요청/보고만 하고 끝내지 않는다.
+
+
 > CURRENT DESIGN / DOCUMENTATION ONLY · 2026-10-09. 사용자 최우선 목표: 모든 생성문항의 정확한 Meta를 먼저 완성하고, 그 하나의 Meta로 문제지 만들기·5분 테스트·소단원 평가·단원 평가·월말 평가·미래 모의고사를 모두 연결한다. 본 문서는 제품 구현/PASS가 아니다.
 > 기존 출처: Problem_Bank_Project_Master_Handoff_And_Roadmap_CURRENT.md, Problem_Bank_Generated_Meta_Retention_Audit_20261009.md, ALIVE QID9 CURRENT, Notion Common Assessment Factory 계획 v0.13. 충돌 시 사용자의 최신 명시 지시와 실제 Git main, 제품별 정본을 확인한다.
 
