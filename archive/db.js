@@ -1106,6 +1106,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "school": "삼산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/1final/26_왕운중_1학기_기말_중3_기출.js",
       "school": "왕운중",
       "topic": "",
@@ -8020,6 +8051,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "미적분"
+    },
+    {
+      "file": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/2mid/23_금당고_2학기_중간_고2_확률과통계.js",
@@ -17648,68 +17710,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
-      "school": "삼산중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "중3 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-05",
-      "rangeStartUnit": "삼각비",
-      "rangeStartUnitOrder": 5,
-      "rangeEndUnitKey": "M3-06",
-      "rangeEndUnit": "원의 성질",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-05",
-          "rangeStartUnit": "삼각비",
-          "rangeStartUnitOrder": 5,
-          "rangeEndUnitKey": "M3-06",
-          "rangeEndUnit": "원의 성질",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
-    },
-    {
-      "file": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
-      "school": "금당고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "수학II",
-      "contentType": "기출",
-      "qCount": 20,
-      "rangeStartUnitKey": "H15-M2-01",
-      "rangeStartUnit": "함수의 극한",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-M2-06",
-      "rangeEndUnit": "도함수의 활용",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "수학II",
-          "courseCode": "H15-M2",
-          "rangeStartUnitKey": "H15-M2-01",
-          "rangeStartUnit": "함수의 극한",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-M2-06",
-          "rangeEndUnit": "도함수의 활용",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률과통계.js",
