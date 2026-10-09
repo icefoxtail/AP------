@@ -1,0 +1,388 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_CORE_PROJECTION_COMPATIBILITY_ASSESSMENT_V2",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "status": "CONDITIONAL_NARROW_ADAPTER_PROPOSAL_ONLY",
+  "target": {
+    "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+    "sourcePath": ".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/23_매산여고_1학기_중간_고2_확률과통계.js",
+    "sourceRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "sourceGitBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+    "questionCount": 22,
+    "diagnosticQids": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "rootAuthority": {
+    "assignment": {
+      "path": ".tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/registration.assignment.v1.json",
+      "sha256": "82d2dbbd31eb2ff9ee29cb23dbf5fe310e98e13bc582423d65e8c2b72a2d0c6a"
+    },
+    "producerAuthority": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/ROOT.target-registration-producer-authority.v1.json",
+      "sha256": "ac7b1d049830c63b65dec2c8e5d0ea155356e5e62785f84cf98dac1c6dc355ea"
+    },
+    "explicitDiagnosticScope": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "r1Proof": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.evidence.bound.json",
+    "sha256": "f39ba789c807950350a45badb7c8cb1a0e08f6fd5e908490c5390f310f0b8b24",
+    "status": "R1_REVIEW_PASS_CANDIDATE_PENDING_GENERIC_V2",
+    "overallVerdict": "PASS",
+    "validatorReport": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.generic-validator.raw.json",
+      "sha256": "499284b4d14b41992b2f2c31bcae92fa5941d35c8621f98a62a6e9727f8b7f52",
+      "ok": true,
+      "disposition": "PASS",
+      "validatorMode": "R1_V2",
+      "denominator": 22,
+      "issues": []
+    },
+    "artifactRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "artifactSha": "df50cff7b9565ff390f4b112accc6b1ced31bcc1"
+  },
+  "registryAuthority": {
+    "curriculumBindings": {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+    },
+    "basicScopeParentLinks": {
+      "path": "archive/data/basic-scope-parent-links.json",
+      "sha256": "70d57a4a8231e5f2da877ccab70cecf57178575a44fccfaa2d495fc31c845c8f"
+    }
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "r1Verdict": "PASS_WITH_META_DEBT",
+      "r1MetaStatus": "META_ONLY_UNRESOLVED",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current q1 fields are null and projectionStatus is PROJECTION_UNMATERIALIZED. The three independent truth checks require distinct arrangement, combination and repeated-combination semantics; GLOBAL ACTIVE taxonomy and exact binding lookup did not yield a unique primary. Preserve the existing unresolved projection; do not invent a mixed key.",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "coreFields": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+        "subUnit": "경우의 수의 활용",
+        "difficultyBucket": 2
+      },
+      "coreFieldsSourceEqual": true,
+      "difficultyReview": {
+        "currentBucket": 2,
+        "independentBucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyCurrentEqualsIndependent": true,
+      "registeredL2Authority": {
+        "curriculumBindingMatchCount": 4,
+        "basicScopeParentLinkMatchCount": 0,
+        "registered": true,
+        "authorityRefs": {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+        }
+      },
+      "sourceEligibility": "manual_review",
+      "candidateProjection": {
+        "metadataStatus": "approved_partial_with_explicit_holds",
+        "reviewStatus": "manual_review",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_source",
+          "problemType": "manual_review_pending",
+          "template": "manual_review_pending",
+          "difficulty": "approved_source"
+        },
+        "projectionStatusPreserved": false,
+        "metaDebtFieldsPreserved": false,
+        "metaDebtReasonPreserved": false
+      }
+    },
+    {
+      "qid": 6,
+      "r1Verdict": "PASS",
+      "r1MetaStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "coreFields": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "difficultyBucket": 3
+      },
+      "coreFieldsSourceEqual": true,
+      "difficultyReview": {
+        "currentBucket": 3,
+        "independentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyCurrentEqualsIndependent": true,
+      "registeredL2Authority": {
+        "curriculumBindingMatchCount": 0,
+        "basicScopeParentLinkMatchCount": 1,
+        "registered": true,
+        "authorityRefs": {
+          "path": "archive/data/basic-scope-parent-links.json",
+          "sha256": "70d57a4a8231e5f2da877ccab70cecf57178575a44fccfaa2d495fc31c845c8f"
+        }
+      },
+      "sourceEligibility": "manual_review",
+      "candidateProjection": {
+        "metadataStatus": "approved_source",
+        "reviewStatus": "manual_review",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_source",
+          "problemType": "approved_source",
+          "template": "approved_source",
+          "difficulty": "approved_source"
+        },
+        "projectionStatusPreserved": false,
+        "metaDebtFieldsPreserved": false,
+        "metaDebtReasonPreserved": false
+      }
+    },
+    {
+      "qid": 7,
+      "r1Verdict": "PASS",
+      "r1MetaStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "coreFields": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "difficultyBucket": 3
+      },
+      "coreFieldsSourceEqual": true,
+      "difficultyReview": {
+        "currentBucket": 3,
+        "independentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyCurrentEqualsIndependent": true,
+      "registeredL2Authority": {
+        "curriculumBindingMatchCount": 0,
+        "basicScopeParentLinkMatchCount": 1,
+        "registered": true,
+        "authorityRefs": {
+          "path": "archive/data/basic-scope-parent-links.json",
+          "sha256": "70d57a4a8231e5f2da877ccab70cecf57178575a44fccfaa2d495fc31c845c8f"
+        }
+      },
+      "sourceEligibility": "manual_review",
+      "candidateProjection": {
+        "metadataStatus": "approved_source",
+        "reviewStatus": "manual_review",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_source",
+          "problemType": "approved_source",
+          "template": "approved_source",
+          "difficulty": "approved_source"
+        },
+        "projectionStatusPreserved": false,
+        "metaDebtFieldsPreserved": false,
+        "metaDebtReasonPreserved": false
+      }
+    },
+    {
+      "qid": 8,
+      "r1Verdict": "PASS",
+      "r1MetaStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "coreFields": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "difficultyBucket": 3
+      },
+      "coreFieldsSourceEqual": true,
+      "difficultyReview": {
+        "currentBucket": 3,
+        "independentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyCurrentEqualsIndependent": true,
+      "registeredL2Authority": {
+        "curriculumBindingMatchCount": 0,
+        "basicScopeParentLinkMatchCount": 1,
+        "registered": true,
+        "authorityRefs": {
+          "path": "archive/data/basic-scope-parent-links.json",
+          "sha256": "70d57a4a8231e5f2da877ccab70cecf57178575a44fccfaa2d495fc31c845c8f"
+        }
+      },
+      "sourceEligibility": "manual_review",
+      "candidateProjection": {
+        "metadataStatus": "approved_source",
+        "reviewStatus": "manual_review",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_source",
+          "problemType": "approved_source",
+          "template": "approved_source",
+          "difficulty": "approved_source"
+        },
+        "projectionStatusPreserved": false,
+        "metaDebtFieldsPreserved": false,
+        "metaDebtReasonPreserved": false
+      }
+    },
+    {
+      "qid": 9,
+      "r1Verdict": "PASS",
+      "r1MetaStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "coreFields": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "difficultyBucket": 3
+      },
+      "coreFieldsSourceEqual": true,
+      "difficultyReview": {
+        "currentBucket": 3,
+        "independentBucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyCurrentEqualsIndependent": true,
+      "registeredL2Authority": {
+        "curriculumBindingMatchCount": 0,
+        "basicScopeParentLinkMatchCount": 1,
+        "registered": true,
+        "authorityRefs": {
+          "path": "archive/data/basic-scope-parent-links.json",
+          "sha256": "70d57a4a8231e5f2da877ccab70cecf57178575a44fccfaa2d495fc31c845c8f"
+        }
+      },
+      "sourceEligibility": "manual_review",
+      "candidateProjection": {
+        "metadataStatus": "approved_source",
+        "reviewStatus": "manual_review",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_source",
+          "problemType": "approved_source",
+          "template": "approved_source",
+          "difficulty": "approved_source"
+        },
+        "projectionStatusPreserved": false,
+        "metaDebtFieldsPreserved": false,
+        "metaDebtReasonPreserved": false
+      }
+    }
+  ],
+  "producerFailure": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/producer-v1/r1-adapter-compatibility-failure.v1.json",
+    "sha256": "97e26f03899cb73840c2a4714b7e67cf87a20c0ec00fae7fbcd5d6e526b9a704",
+    "error": "R1_META_PROOF_META_PASS_REQUIRED",
+    "packageProduced": false,
+    "candidateClean": true
+  },
+  "assessment": {
+    "allFiveCoreFieldsSourceExact": true,
+    "allFiveDifficultyCurrentEqualsIndependent": true,
+    "allFiveL2AuthorityPresent": true,
+    "allFiveSourceReviewStatusManual": true,
+    "q1": {
+      "classification": "R1_EXPLICIT_META_ONLY_UNRESOLVED_ADVANCED_PT_TPL",
+      "coreL1L2DifficultyPass": true,
+      "fieldsMissingOnly": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "r1EvidenceSaysNoUniqueL3L4Primary": true,
+      "notEquivalentToGenericAcceptedVerdict": true
+    },
+    "q6to9": {
+      "classification": "R1_EXPLICIT_PROJECTION_BINDING_PENDING_PT_TPL",
+      "coreL1L2DifficultyPass": true,
+      "fieldsInDebt": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "physicalPtTplSourceValuesRetained": true
+    },
+    "noSemanticReclassification": true,
+    "noSourceOrR1Change": true
+  },
+  "conditionalCompatibilityProposal": {
+    "qidAllowlist": [
+      1,
+      6,
+      7,
+      8,
+      9
+    ],
+    "requireExactR1RecoveryEvidenceHash": true,
+    "requireExactSourceRawAndBlob": true,
+    "requireFullR1V2ActiveArtifactPass": true,
+    "requireRowLevelAcceptedCurrentR1VerdictsWithoutRelabeling": true,
+    "requireAllCoreFieldsExactAndRegisteredL2": true,
+    "requireDifficultyCurrentIndependentMatch": true,
+    "q1Condition": "only exact q1 R1 verdict/status/debt/current fields; both PT/TPL null; preserve META_ONLY_UNRESOLVED and PROJECTION_UNMATERIALIZED as manual debt; do not generalize status",
+    "q6to9Condition": "only exact qids; retain current PT/TPL values and PROJECTION_BINDING_PENDING debt; no new binding or classification",
+    "preserveReviewStatusManual": true,
+    "preserveProjectionStatusAndDebtFields": true,
+    "noSemanticMetadataPromotion": true,
+    "noOtherMETA_ONLY_UNRESOLVEDOrCoreDebt": true
+  },
+  "implementationHazard": "makeTargetMetadataRows currently drops projectionStatus/metaDebtFields/metaDebtReason; for q6-q9 it computes fieldStatus.problemType/template=approved_source from non-null source values and metadataStatus=approved_source, although reviewStatus remains manual_review. A bounded adapter, if authorized, must keep the explicit projection debt and prevent auto eligibility from advancing; no helper change is made by this assessment."
+}

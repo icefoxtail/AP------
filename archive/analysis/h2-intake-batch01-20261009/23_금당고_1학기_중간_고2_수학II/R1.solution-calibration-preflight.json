@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "stage": "R1",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "reviewerId": "/root/r1_05",
+  "sampleReadBeforeWork": true,
+  "blindDecisionFrozenBeforeCompare": true,
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "직접 읽은 해설은 기울기 −3을 읽고 점을 대입해 상수항을 구한 뒤 m+n 결론으로 진행한다. 학생이 따라 쓸 수 있는 식 흐름이다."
+          },
+          {
+            "qid": 4,
+            "solutionSha256": "871e7e0f0fbd6a385eba138eeaa25c5e0bd50ed778c640993b81c2b7961ca0d7",
+            "observation": "기울기 변환, 수직 조건, 점-직선 거리, 두 b 후보와 b>0 선택을 각각 계산 block으로 보여 준다."
+          }
+        ]
+      },
+      {
+        "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "두 점 거리 풀이에서 좌표차, 거리식 대입, 제곱근 정리를 순차적으로 보여 학생이 재현할 수 있다."
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "집합 등식에서 필수 원소 3으로 a를 결정하고 남은 원소로 b를 정하는 조건 논리가 분명하다."
+          }
+        ]
+      }
+    ]
+  },
+  "negativeSample": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "README와 frozen q20 bad SVG를 읽고 실제 rendered primitive를 확인했다. 3x+4y−8=0 라벨과 선의 기울기가 다르다. 문구나 self-reported audit count는 실제 geometry/board flow 확인을 대체하지 않는다.",
+    "svgPath": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+    "svgSha256": "89debcfed249f581602aa9c77fb54390866dccb4a95fe21f59ec1ee6fac82cb7",
+    "renderedPngPath": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/preflight-negative-q20.png",
+    "renderedPngSha256": "424157ad349d4d1a95ecad85828c3e5928a6fa24eaab2d908419d3b821685247"
+  },
+  "targetVisualReads": [
+    {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q17-solution.svg",
+      "sha256": "b5f2f717a629267192bd8df2030c757296f4eda5b90da0f755c56bb40940abbd",
+      "opened": true,
+      "observation": "포물선 근 A/C 대칭, 수평 AC, 수직 BH 및 AH/CH 표지가 기하와 맞고 AH−CH=−2x_B를 나타낸다."
+    },
+    {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution.svg",
+      "sha256": "b46e07fdb5c3b769ed23a051659634e949321b13650adc1ba2b6e10fea40a248",
+      "opened": true,
+      "observation": "접선 삼각형과 내접원은 의미가 맞지만 풀이에 불필요한 점 (0,1)과 라벨이 추가되어 있어 제거가 필요하다."
+    }
+  ],
+  "calibrationStatus": "PASS"
+}

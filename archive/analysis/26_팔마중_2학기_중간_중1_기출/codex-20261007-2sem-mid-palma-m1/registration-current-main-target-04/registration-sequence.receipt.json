@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_TARGET_REGISTRATION_SEQUENCE_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "runId": "codex-20261007-2sem-mid-palma-m1",
+  "mainHead": "63e49b275317a9a6ac01de5781b437f31b3942ea",
+  "registrationAssignmentPath": ".tmp/archive/codex-20261007-2sem-mid-palma-m1/26_팔마중_2학기_중간_중1_기출/registration.assignment.current-main.63e49b2.v2.json",
+  "registrationAssignmentSha256": "6772ba59547bec897eea3ccbff9c3de8793fce397cad0705c6f0828b8602cfde",
+  "packagePath": ".tmp/archive/codex-20261007-2sem-mid-palma-m1/26_팔마중_2학기_중간_중1_기출/registration-package.current-main.target-04.63e49b2.json",
+  "packageSha256": "ab2383cf0eabb0e70b476b825190014d9192326053cb176324f1488780d1eb7f",
+  "applyReceiptPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/apply/target-registration.receipt.json",
+  "applyReceiptSha256": "1908f0feaf5b0a41864f6835fd89a3f4ebbab4bcfd6912eca67ea3220a155dfa",
+  "applyStatus": "APPLIED_PENDING_VALIDATORS",
+  "commands": [
+    {
+      "name": "prepare-target-registration",
+      "command": "node archive/tools/prepare-target-registration.mjs --root . --assignment .tmp/archive/codex-20261007-2sem-mid-palma-m1/26_팔마중_2학기_중간_중1_기출/registration.assignment.current-main.63e49b2.v2.json --candidate-root .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root --output .tmp/archive/codex-20261007-2sem-mid-palma-m1/26_팔마중_2학기_중간_중1_기출/registration-package.current-main.target-04.63e49b2.json",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/prepare-target-registration.stdout.txt",
+      "stdoutSha256": "fa4ea68184cdeebc62983c4c32e03219e0b472ed9beab71ac8a8041adabba849",
+      "stderrPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/prepare-target-registration.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "register-target-exam.dryrun",
+      "command": "node archive/tools/register-target-exam.mjs --root . --assignment ... --proposal ... --catalog-candidate .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root/archive/data/archive2-catalog.json --evidence-root archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/dryrun",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/dryrun/stdout.txt",
+      "stdoutSha256": "27c95c9e4cfcc09a49ac15744750771ec6a7760be81b93f4c06f3bc3a794e06c",
+      "stderrPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/dryrun/stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "register-target-exam.apply",
+      "command": "node archive/tools/register-target-exam.mjs --root . --assignment ... --proposal ... --catalog-candidate .tmp/archive/codex-20261007-2sem-mid-import/registration-canonical-root/archive/data/archive2-catalog.json --evidence-root archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/apply --apply",
+      "status": "completed",
+      "exitCode": 0,
+      "stdoutPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/apply/stdout.txt",
+      "stdoutSha256": "0af3521e3ec656e40eb07c41569226f9bba4dc78eb05c86f6d7d4fd0d4b9d20e",
+      "stderrPath": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/registration-current-main-target-04/apply/stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

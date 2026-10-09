@@ -321,6 +321,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "미적분I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-M1-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-M1-05",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "미적분I",
+          "courseCode": "H22-M1",
+          "rangeStartUnitKey": "H22-M1-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-M1-05",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "미적분I"
+    },
+    {
       "file": "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
       "school": "팔마고",
       "topic": "",
@@ -1106,6 +1137,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "school": "삼산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/1final/26_왕운중_1학기_기말_중3_기출.js",
       "school": "왕운중",
       "topic": "",
@@ -1225,6 +1287,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M3-04",
           "rangeEndUnit": "이차함수와 그래프",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -1457,6 +1550,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-06",
+      "rangeEndUnit": "도형의 닮음",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-06",
+          "rangeEndUnit": "도형의 닮음",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
       "school": "팔마중",
       "topic": "",
@@ -1514,6 +1638,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M1-08",
           "rangeEndUnit": "자료의 정리와 해석",
           "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "중1 수학"
@@ -7960,6 +8115,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률과통계.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과통계"
+    },
+    {
       "file": "original/high/h2/2mid/23_강남여고_2학기_중간_고2_확률과통계.js",
       "school": "강남여고",
       "topic": "",
@@ -8020,6 +8206,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "미적분"
+    },
+    {
+      "file": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/2mid/23_금당고_2학기_중간_고2_확률과통계.js",
@@ -8206,6 +8423,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-03",
+      "rangeEndUnit": "확률의 뜻과 활용",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-03",
+          "rangeEndUnit": "확률의 뜻과 활용",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "확률과통계"
     },
     {
       "file": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
@@ -8547,6 +8795,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/23_순천여고_1학기_중간_고2_확률과통계.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과통계"
     },
     {
       "file": "original/high/h2/1final/23_제일고_1학기_기말_고2_수학I.js",
@@ -17648,37 +17927,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
-      "school": "삼산중",
-      "topic": "",
-      "grade": "중3",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "중3 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M3-05",
-      "rangeStartUnit": "삼각비",
-      "rangeStartUnitOrder": 5,
-      "rangeEndUnitKey": "M3-06",
-      "rangeEndUnit": "원의 성질",
-      "rangeEndUnitOrder": 6,
-      "courseRanges": [
-        {
-          "standardCourse": "중3 수학",
-          "courseCode": "M3",
-          "rangeStartUnitKey": "M3-05",
-          "rangeStartUnit": "삼각비",
-          "rangeStartUnitOrder": 5,
-          "rangeEndUnitKey": "M3-06",
-          "rangeEndUnit": "원의 성질",
-          "rangeEndUnitOrder": 6
-        }
-      ],
-      "primaryStandardCourse": "중3 수학"
     }
   ]
 };

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_SOURCE_REFERENCE_ASSIGNMENT_V1",
+  "sourceReferencePolicy": {
+    "schemaVersion": "JS_ARCHIVE_SOURCE_REFERENCE_POLICY_V1",
+    "stage": "CREATE",
+    "sourceInputMode": "EXTRACTED_JS_ASSETS",
+    "pdfReviewMode": "DEFECT_ONLY",
+    "sourceParityBasis": "EXTRACTED_INPUT_BASELINE",
+    "reusedIntakeEvidence": null,
+    "pdfActuallyReviewed": true,
+    "originalSourceReviewEvidence": {
+      "originalPdf": {
+        "path": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\확률과통계\\2023_순여고2_확통_1중간.pdf",
+        "sha256": "cbdba973d67621babfcd08fbff232acef0488557c6e10f0a254018f6f53bc78f"
+      },
+      "evidence": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_확률과통계\\CREATE.source-defect-review.json",
+        "sha256": "cedf6cdd97c91d5b6ff859e2940c32a47920b4a3bb1f5effa1886f759962dc97"
+      },
+      "reviewedQids": [
+        6,
+        8,
+        9
+      ],
+      "reviewerId": "/root/create_11",
+      "reviewedAt": "2026-10-09T01:55:44.291841+00:00",
+      "physicalPdfSha256Verified": true,
+      "pdfByteInspection": "SHA256_ONLY",
+      "readingAttestationBasis": "REVIEWER_EVIDENCE"
+    },
+    "sourceDefect": {
+      "category": "MISSING_ASSET",
+      "qids": [
+        6,
+        8,
+        9
+      ],
+      "scope": "QID_ONLY",
+      "reason": "The extracted image refs q06/q08/q09 do not expose their required problem figures; only the corresponding original-PDF figures were inspected and re-cropped.",
+      "findings": [
+        {
+          "qid": 6,
+          "detail": "Existing student asset is nearly blank and omits the Pascal triangle needed to identify the highlighted coefficient entries."
+        },
+        {
+          "qid": 8,
+          "detail": "Existing student asset is a cut-off body-text crop; the concentric-circle diagram is absent."
+        },
+        {
+          "qid": 9,
+          "detail": "Existing student asset contains clipped body text and only a partial seat figure."
+        }
+      ]
+    },
+    "originalReferencePlan": {
+      "required": false,
+      "scope": "QID_ONLY",
+      "qids": [
+        6,
+        8,
+        9
+      ],
+      "category": "MISSING_ASSET",
+      "reason": "The extracted image refs q06/q08/q09 do not expose their required problem figures; only the corresponding original-PDF figures were inspected and re-cropped.",
+      "findings": [
+        {
+          "qid": 6,
+          "detail": "Existing student asset is nearly blank and omits the Pascal triangle needed to identify the highlighted coefficient entries."
+        },
+        {
+          "qid": 8,
+          "detail": "Existing student asset is a cut-off body-text crop; the concentric-circle diagram is absent."
+        },
+        {
+          "qid": 9,
+          "detail": "Existing student asset contains clipped body text and only a partial seat figure."
+        }
+      ],
+      "evidenceRequirement": "ACTUAL_ORIGINAL_SOURCE_SHA_AND_QID_SCOPED_REVIEW_FINDINGS"
+    },
+    "semanticVerdictCreated": false
+  }
+}

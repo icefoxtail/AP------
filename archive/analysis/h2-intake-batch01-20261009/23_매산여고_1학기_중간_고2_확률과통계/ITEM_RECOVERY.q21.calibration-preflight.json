@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:387029a67b1f37b92625cf1284f67b4e1a5e8c33384e7e6de418b982935dd307",
+        "solutionExcerpt": "먼저 직선 $y=ax+b$를 평행이동한 뒤의 식을 구한다.\n$x$축의 방향으로 $2$만큼 이동한다는 것은 오른쪽으로 $2$만큼 이동하는 것이고,\n$",
+        "observation": "Student can reproduce the horizontal/vertical translation substitutions, perpendicular-slope equation, and intersection constraint in order.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위",
+        "observation": "Completing the square yields center (-3,1), translation maps it to (-5,2), origin symmetry maps it to (5,-2), and the SVG labels preserve this sequence and radius 3.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+        "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=원의 평행이동과 원점 대칭; desc=중심의 이동을 순서대로 표시한 좌표 도형; labels=중심의 이동을 따라 원의 최종 위치를 확인 | y | x | C₀ | C₁ | C₂ | 핵심 관계 | C₀=(−3,1), r=3 | 평행이동 (−2,1) | C₁=(−5,2) | 원점 대칭 | C₂=(5,−2) | 최종: (x−5)²+(y+2)²=9"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$",
+        "observation": "The coordinate differences are exposed before the distance formula, followed by an explicit radical simplification.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$",
+        "observation": "Both line equations are written in slope-intercept form before applying the perpendicular-slope product; SVG labels show slopes -1/3 and 3.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+        "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=직선의 방정식 해설 도형 · 문항 2; desc=실제 점·직선·관계를 표시한 좌표 도형; labels=직선의 방정식 해설 도형 · 문항 2 | 실제 좌표·직선식·핵심 관계를 수치로 표시 | y | x | 핵심 수치 | 첫째 기울기=−1/3 | 둘째 기울기=3, 수직 조건 k=6 | 축척: x,y 동일 단위 · 실제 계산값 기반"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 11,
+        "solutionSha256": "sha256:b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+        "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=",
+        "observation": "The centroid condition is applied separately to x and y coordinates, then the requested centroid sum is computed.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:d7804138ca5964bbd84a9f1147bbae6c70eabbaaad399c9192148929d05e9426",
+        "solutionExcerpt": "주어진 직선을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이다.\n그림에서 기울기는 양수이고 $y$절편은 음수이므로\n$-\\",
+        "observation": "The diagram supplies only sign information; the solution translates each sign into inequalities, then follows the coefficient ratios to the matching graph.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "visualSha256": "2f440fbb2f1e6df2bc549fe0d8c3ec4d1995ea5f7d545ee539ebca7109d76655",
+        "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=직선의 방정식 해설 도형 · 문항 12; desc=기울기와 y절편의 부호 관계만 보여 주는 대표 개형. 실제 기울기와 절편의 크기는 정해지지 않는다.; labels=직선의 방정식 해설 도형 · 문항 12 | 기울기와 y절편의 부호만 반영한 대표 개형 | y | x | 핵심 부호 | 원래 직선: 기울기&gt;0, y절편&lt;0 | 변환 직선: 기울기&lt;0, y절편&gt;0 | 원래 직선은 양의 기울기·음의 y절편, 변환  | 직선은 음의 기울기·양의 y절편 | 대표 개형 · 실제 기울기와 절편의 크기는 정해지지 않음"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "Read the current fixed false-PASS regression README and confirmed the documented need for physical SVG geometry checks, board completeness, resolvable Meta, and safe TeX handling."
+      }
+    ],
+    "negativeAssetRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+        "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+        "observation": "Read the preserved bad SVG as a negative sample; its geometry/label placements need semantic comparison with the source facts before any positive visual verdict."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "goldenCalibrationSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+            "qid": 6,
+            "solutionSha256": "sha256:387029a67b1f37b92625cf1284f67b4e1a5e8c33384e7e6de418b982935dd307",
+            "solutionExcerpt": "먼저 직선 $y=ax+b$를 평행이동한 뒤의 식을 구한다.\n$x$축의 방향으로 $2$만큼 이동한다는 것은 오른쪽으로 $2$만큼 이동하는 것이고,\n$",
+            "observation": "Student can reproduce the horizontal/vertical translation substitutions, perpendicular-slope equation, and intersection constraint in order.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+            "qid": 7,
+            "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위",
+            "observation": "Completing the square yields center (-3,1), translation maps it to (-5,2), origin symmetry maps it to (5,-2), and the SVG labels preserve this sequence and radius 3.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=원의 평행이동과 원점 대칭; desc=중심의 이동을 순서대로 표시한 좌표 도형; labels=중심의 이동을 따라 원의 최종 위치를 확인 | y | x | C₀ | C₁ | C₂ | 핵심 관계 | C₀=(−3,1), r=3 | 평행이동 (−2,1) | C₁=(−5,2) | 원점 대칭 | C₂=(5,−2) | 최종: (x−5)²+(y+2)²=9"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+            "qid": 1,
+            "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$",
+            "observation": "The coordinate differences are exposed before the distance formula, followed by an explicit radical simplification.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+            "qid": 2,
+            "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$",
+            "observation": "Both line equations are written in slope-intercept form before applying the perpendicular-slope product; SVG labels show slopes -1/3 and 3.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=직선의 방정식 해설 도형 · 문항 2; desc=실제 점·직선·관계를 표시한 좌표 도형; labels=직선의 방정식 해설 도형 · 문항 2 | 실제 좌표·직선식·핵심 관계를 수치로 표시 | y | x | 핵심 수치 | 첫째 기울기=−1/3 | 둘째 기울기=3, 수직 조건 k=6 | 축척: x,y 동일 단위 · 실제 계산값 기반"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+            "qid": 11,
+            "solutionSha256": "sha256:b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+            "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=",
+            "observation": "The centroid condition is applied separately to x and y coordinates, then the requested centroid sum is computed.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+            "qid": 12,
+            "solutionSha256": "sha256:d7804138ca5964bbd84a9f1147bbae6c70eabbaaad399c9192148929d05e9426",
+            "solutionExcerpt": "주어진 직선을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이다.\n그림에서 기울기는 양수이고 $y$절편은 음수이므로\n$-\\",
+            "observation": "The diagram supplies only sign information; the solution translates each sign into inequalities, then follows the coefficient ratios to the matching graph.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "2f440fbb2f1e6df2bc549fe0d8c3ec4d1995ea5f7d545ee539ebca7109d76655",
+            "visualObservation": "Actual solutionImage opened and label/geometry source checked: title=직선의 방정식 해설 도형 · 문항 12; desc=기울기와 y절편의 부호 관계만 보여 주는 대표 개형. 실제 기울기와 절편의 크기는 정해지지 않는다.; labels=직선의 방정식 해설 도형 · 문항 12 | 기울기와 y절편의 부호만 반영한 대표 개형 | y | x | 핵심 부호 | 원래 직선: 기울기&gt;0, y절편&lt;0 | 변환 직선: 기울기&lt;0, y절편&gt;0 | 원래 직선은 양의 기울기·음의 y절편, 변환  | 직선은 음의 기울기·양의 y절편 | 대표 개형 · 실제 기울기와 절편의 크기는 정해지지 않음"
+          }
+        ]
+      }
+    ],
+    "negativeSampleVisualRead": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "observation": "Failure fixture physically inspected at SVG source level; it encodes a source-mismatch and should be rejected as a positive visual example."
+    },
+    "targetQidPreflightBoundary": {
+      "qid": 21,
+      "upstreamHoldEvidenceRead": false,
+      "contentModification": "NONE"
+    }
+  },
+  "executionLine": "CODEX",
+  "preflightCompletedBeforeReplacementAuthoring": true,
+  "targetInitialRawSha256": "78ec18a54c1390132b7c6bcf01efeab26f71647afc1362faa0c9e47dd4657e77"
+}

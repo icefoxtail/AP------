@@ -112,6 +112,10 @@ const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
 const status=message=>$("message").textContent=message;
 const unique=items=>new Set(items).size===items.length;
+// Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
+const APPROVED_LEGACY_PALMA_UIDS=new Set(["B05_Q04_C01_DISTANCE_SUM_MIN","B05_Q09_C01_CENTROID_RATIO_RECOVERY","B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY","B06_Q05_C01_TWO_POINT_LINE_INTERSECTION","B06_Q05_C02_INTERSECTION_PARALLEL_LINE","B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE"]);
+const validGeneratedUid=row=>/^ALITE-[A-Za-z0-9-]+$/.test(row.uid)||
+ (APPROVED_LEGACY_PALMA_UIDS.has(row.uid)&&row.sourceKind==="generated"&&row.school==="팔마고"&&row.year===2025&&row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS");
 const isSelectable=row=>{
  if(!row||row.sourceKind!=="generated"||row.consumerSelectable!==true||excludedHoldUids.has(row.uid))return false;
  const reviewed=row.approval==="REVIEW_APPROVED"&&row.reviewStatus==="REVIEW_PASS";
@@ -119,7 +123,8 @@ const isSelectable=row=>{
   String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_OPERATING_APPROVAL_")||
   row.reviewApprovalBasis==="USER_EXPLICIT_FIX_AND_MAIN_MERGE_20261008"
  );
- return reviewed||directed;
+ const userQuality=row.approval==="USER_DIRECTED_QUALITY_APPROVED"&&String(row.reviewApprovalBasis||"").startsWith("USER_DIRECTED_QUALITY_APPROVED");
+ return reviewed||directed||userQuality;
 };
 const unitName=row=>UNIT_LABELS[row.l2]||null;
 async function readJson(path){
@@ -286,7 +291,7 @@ async function printGeneratedSelection(){
    const part=document.createElement("section");part.className="paper-question";
    text(part,String(i+1)+".","div","paper-number");questionMarkup(part,questions[i],selected[i],false);fragment.appendChild(part);
   }
-  panel.replaceChildren(fragment);$("paper-title").textContent="검수 승인 생성문제 · "+selected.length+"문항";
+  panel.replaceChildren(fragment);$("paper-title").textContent="생성문제 · "+selected.length+"문항";
   await math();status("선택한 "+selected.length+"개 문항 인쇄 화면을 엽니다.");window.print();
  }catch(error){status("선택 문항을 출력하지 못했습니다: "+error.message);}
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
@@ -324,10 +329,12 @@ $("generated-clear").addEventListener("click",()=>{selectedGenerated.clear();ren
   const data=await readJson(INDEX);
   if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_INDEX_V1"||data.sourceKind!=="generated"||!Array.isArray(data.records)||data.records.length!==data.approvedCount||data.records.length<1)throw Error("문제지 데이터 확인 실패");
   const ids=data.records.map(r=>r.uid);
-  if(!Array.isArray(data.excludedHoldUids)||!unique(ids)||ids.some(id=>!/^ALITE-[A-Za-z0-9-]+$/.test(id)||data.excludedHoldUids.includes(id)))throw Error("문항 데이터 확인 실패");
+  if(!Array.isArray(data.excludedHoldUids)||!unique(ids)||data.records.some(row=>!validGeneratedUid(row)||data.excludedHoldUids.includes(row.uid)))throw Error("문항 데이터 확인 실패");
   rows=data.records;excludedHoldUids=new Set(data.excludedHoldUids);
   selectableRows=rows.filter(isSelectable);
   searchableRows=selectableRows.map(row=>({row,searchText:generatedSearchText(row)}));
+  const requestedUid=typeof location==='object'?new URLSearchParams(location.search).get('uid'):null;
+  if(requestedUid&&selectableRows.some(row=>row.uid===requestedUid))$("generated-search").value=requestedUid;
   displayExams();updateSelection();renderGeneratedSearch();renderGeneratedSelection();status("");
  }catch(error){status("시험지를 불러오지 못했습니다: "+error.message);$("exam-cards").textContent="시험지 목록을 확인할 수 없습니다.";}
 })();

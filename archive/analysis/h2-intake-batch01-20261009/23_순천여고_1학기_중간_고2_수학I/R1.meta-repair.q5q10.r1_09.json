@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_REPAIR_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "sourceBefore": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "b7574ced3df6335c498fcb91e55a3c8cfef8f3d245d1d3f44c279c23113b778f",
+    "preservedCopy": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.source-before-meta-q5q10.r1_09.js",
+    "preservedCopySha256": "b7574ced3df6335c498fcb91e55a3c8cfef8f3d245d1d3f44c279c23113b778f"
+  },
+  "sourceAfter": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\23_순천여고_1학기_중간_고2_수학I.js",
+    "rawSha256": "569e980862b42a894b86d5eeb61002a4ed7cefa8279b28856ee5d6da81b8a025"
+  },
+  "repair": {
+    "qids": [
+      5,
+      10
+    ],
+    "changedFields": [
+      "standardUnitKey",
+      "standardUnit",
+      "standardUnitOrder",
+      "subUnitKey",
+      "subUnit",
+      "subUnitConfidence",
+      "subUnitClassificationDepth"
+    ],
+    "studentFieldsUnchanged": true,
+    "answerSolutionDecisiveStepUnchanged": true,
+    "reason": "Current source problems are a logarithmic equation and a logarithmic inequality. The 2015 MathI locked RPM crosswalk maps log equations/inequalities to H15-M1-04 로그함수 (rows H2-M1-RPM-023 and H2-M1-RPM-025). The standard-unit master has no registered L2 child under H15-M1-04, so subUnit fields remain explicit null/UNKNOWN rather than inventing a key.",
+    "rows": [
+      {
+        "qid": 5,
+        "field": "standardUnitKey",
+        "before": "\"H15-M1-02\"",
+        "after": "\"H15-M1-04\""
+      },
+      {
+        "qid": 5,
+        "field": "standardUnit",
+        "before": "\"로그의 뜻과 성질\"",
+        "after": "\"로그함수\""
+      },
+      {
+        "qid": 5,
+        "field": "standardUnitOrder",
+        "before": "2",
+        "after": "4"
+      },
+      {
+        "qid": 5,
+        "field": "subUnitKey",
+        "before": "\"H15-M1-02-LOGARITHM\"",
+        "after": "null"
+      },
+      {
+        "qid": 5,
+        "field": "subUnit",
+        "before": "\"로그의 뜻과 성질\"",
+        "after": "null"
+      },
+      {
+        "qid": 5,
+        "field": "subUnitConfidence",
+        "before": "\"high\"",
+        "after": "\"UNKNOWN\""
+      },
+      {
+        "qid": 5,
+        "field": "subUnitClassificationDepth",
+        "before": "\"L2\"",
+        "after": "\"UNKNOWN\""
+      },
+      {
+        "qid": 10,
+        "field": "standardUnitKey",
+        "before": "\"H15-M1-02\"",
+        "after": "\"H15-M1-04\""
+      },
+      {
+        "qid": 10,
+        "field": "standardUnit",
+        "before": "\"로그의 뜻과 성질\"",
+        "after": "\"로그함수\""
+      },
+      {
+        "qid": 10,
+        "field": "standardUnitOrder",
+        "before": "2",
+        "after": "4"
+      },
+      {
+        "qid": 10,
+        "field": "subUnitKey",
+        "before": "\"H15-M1-02-LOGARITHM\"",
+        "after": "null"
+      },
+      {
+        "qid": 10,
+        "field": "subUnit",
+        "before": "\"로그의 뜻과 성질\"",
+        "after": "null"
+      },
+      {
+        "qid": 10,
+        "field": "subUnitConfidence",
+        "before": "\"high\"",
+        "after": "\"UNKNOWN\""
+      },
+      {
+        "qid": 10,
+        "field": "subUnitClassificationDepth",
+        "before": "\"L2\"",
+        "after": "\"UNKNOWN\""
+      }
+    ]
+  },
+  "authority": {
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "standardUnitMaster": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md"
+  }
+}

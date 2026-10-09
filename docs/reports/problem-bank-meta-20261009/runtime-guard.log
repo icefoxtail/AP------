@@ -1,0 +1,59 @@
+Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006
+✔ production-size compose curriculum and scope interactions stay responsive (1386.5398ms)
+ℹ curriculum all: 152.9ms
+ℹ curriculum 2015: 73.8ms
+ℹ curriculum 2022: 54.7ms
+ℹ shared Meta L1+difficulty render: 139.8ms
+ℹ scope checkbox: 104.8ms
+✔ select all and count edits do not block the production-size composition form (1074.3409ms)
+ℹ select-all click: 131.6ms
+ℹ equal selection/count edit: 125.9ms
+ℹ all selection/count edit: 124.0ms
+✔ original Finder exam, solution and answer open the Archive 1 source URL synchronously without storing a snapshot (5.6418ms)
+✔ browser output metrics separate canonical JSON bytes, base64 data URLs, and decoded image bytes (5.2903ms)
+✔ 50-question multi-image materialization reports UTF-8 and pinned-image growth independently (7.1939ms)
+✔ separate Saved Paper, batch, Archive2 request-text, Assignment text, and PDF injection boundaries remain explicit (0.2312ms)
+✔ canonical serialization sorts object keys and preserves array order (0.7889ms)
+✔ producer creates a versioned SHA-256 envelope that its consumer verifies (5.3245ms)
+✔ consumer fails closed for changed payload, contract, mode, or request identity (1.0636ms)
+✔ question count and ordered UID list are bound to materialized questions (0.2372ms)
+✔ envelope rejects split or incomplete payload and expired output (0.8951ms)
+✔ immutable references are accepted as a single payload authority (0.5939ms)
+✔ Archive2 output consumption requires one exact request envelope before any legacy path (0.7297ms)
+✔ Archive2 browser producers do not persist questions and metadata as separate keys (0.585ms)
+✔ embedded Output Envelope URLs carry iframe-only preview mode (0.2488ms)
+✔ same-source Output Envelope mode switching uses the existing producer (0.137ms)
+✔ Worker PDF builds and validates an envelope without relying on browser IndexedDB (0.155ms)
+✔ frozen assignment QPP 1/2 stays exact through envelope routing and rendering (0.1444ms)
+✔ an isolated output window receives and validates its exact snapshot when both storage backends fail (20.2976ms)
+✔ IndexedDB transport stores and reads one exact, validated envelope (8.2555ms)
+✔ IndexedDB Internal error preserves a complete validated output across reopened stores (2.0498ms)
+✔ fallback output rejects corrupted snapshots and expires without deleting unrelated storage (1.48ms)
+✔ publish and reopened consumers retain fallback output after IndexedDB recovers (1.7468ms)
+✔ large or quota-blocked fallback outputs remain readable without a localStorage write (105.7881ms)
+✔ A/B request cleanup is exact and cannot delete another owner or request (2.3361ms)
+✔ expired records fail closed and are removed only for their owner (1.0856ms)
+✔ owner cleanup stays scoped while TTL scavenging removes only expired envelope records (1.1616ms)
+✔ serialization failures do not fall back to split browser keys (0.7157ms)
+✔ a full primary IndexedDB transfers one exact output in memory without another storage write (0.7287ms)
+✔ assignment envelope URLs preserve every supported frozen QPP (0.56ms)
+✔ mode envelopes preserve the exact source, owner, snapshot, and ordered UID list (1.7714ms)
+✔ PDF readiness rejects clipped question containers even when the page itself fits (1.1468ms)
+✔ PDF readiness accepts question containers with no hidden overflow (0.1782ms)
+✔ preview acknowledges input before source preparation and clears loading on an engine error (4.9775ms)
+✔ standalone readers expose only the compact mobile back/mode/more controls (0.8374ms)
+✔ preview stays embedded and mode actions do not reset an iframe (0.5228ms)
+✔ Finder, Saved Paper, and Assignment print URLs are standalone outputs (0.1831ms)
+✔ browser smoke can verify preview-only rendering inside an iframe (0.1419ms)
+✔ Archive 2 unit preparation does not duplicate the question snapshot in legacy browser keys (4.4208ms)
+✔ unit assignment uses its in-memory snapshot without requiring legacy localStorage keys (2.0176ms)
+✔ the embedded unit assignment consumes the shared envelope and passes the exact snapshot to class selection (2.2886ms)
+✔ the unit preview republishes an expired cached request instead of reopening a dead output (2.5309ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5100.1962

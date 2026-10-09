@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LITERAL_SELECTOR_TECHNICAL_ASSESSMENT_V1",
+  "status": "OPEN_ROOT_AUTHORIZATION_REQUIRED",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "worktreeRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------",
+  "head": "3cecb45b2483ee1273a4b8a288f9b05ab91c9865",
+  "predicateScope": "generic, source-bound literal selector glyph-only lists; no exam/qid allowlist",
+  "cases": [
+    {
+      "examUid": "24_강남여고_1학기_중간_고2_대수",
+      "qid": 7,
+      "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수\\24_강남여고_1학기_중간_고2_대수.js",
+      "workingJsRawSha256": "f9d8592009218672855c6515795dc01d6092ccf039e931091213e7258add6837",
+      "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수",
+      "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\24_강남여고_1학기_중간_고2_대수",
+      "continuationPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.continuation.json",
+      "continuationSha256": "04cf70bafffdfb9b436ce79e616ef2ed985847824b1351ad8f25430355044942",
+      "finalValidatorCapturePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.validator-capture.final.json",
+      "finalValidatorCaptureSha256": "51b9bffa6b7e58792d901532b46449bd8d5b4cb3c2f3948e0bbd6b6ac5762f10",
+      "sourceSelectorProofPath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/q7-source-choice-verification.json",
+      "sourceSelectorProofSha256": "cbcbaf389e6fd3f97079245a20200b93fc4899fd7f428c38814e29c38e39e006",
+      "boundCreateEvidencePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/CREATE.evidence.bound.final.json",
+      "boundCreateEvidenceSha256": "d7b09356c156a4641ee6adaaacfc56a031e22b6aa691a48c1a9d32ba05a2faa1",
+      "sourceChoiceValues": ["①", "②", "③", "④", "⑤"],
+      "sourceReference": { "kind": "QUESTION_CONTENT", "markersOccurInOrder": true },
+      "rendererControlCurrent": true,
+      "rendererControlDisposition": "preserveChoicePrefixes is currently true and would retain source glyph text in addition to the engine label; proposed change is explicit false."
+    },
+    {
+      "examUid": "23_매산고_1학기_중간_고2_수학I",
+      "qid": 4,
+      "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I\\23_매산고_1학기_중간_고2_수학I.js",
+      "workingJsRawSha256": "a1aac835fc80dc637e36a2ba1c982dad20ce8b746b976a189600b516ae1ba9a5",
+      "assetRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I",
+      "evidenceRootAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산고_1학기_중간_고2_수학I",
+      "continuationPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/CREATE.incomplete-closure.json",
+      "continuationSha256": "629d731939ba40c514387b6ff22add78e4a9486ecbbb6e8839bbce7bfe11ea9b",
+      "createEvidencePath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/CREATE.evidence.json",
+      "createEvidenceSha256": "1e93b60cdcd43280a88dbe15091df8aa0c6512cc80da11ff03a47ba1babcc8d1",
+      "sourceBaselineRawSha256": "312841cc5f7a4d4d95c2f5490224b5edf84ef0c32ae1c2df819f44623b8c1b2c",
+      "sourceAssetRef": "assets/images/23_매산고_1학기_중간_고2_수학I/q04.png",
+      "sourceAssetSha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2",
+      "sourceChoiceValues": ["①", "②", "③", "④", "⑤"],
+      "sourceReference": { "kind": "PROBLEM_ASSET", "markersObservedInOrder": ["①", "②", "③", "④", "⑤"], "assetOpened": true, "sourceFidelity": "EXACT_EXTRACTED_IMAGE" },
+      "rendererControlCurrent": "OMITTED_DEFAULT_FALSE",
+      "validatorFailure": "ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED for q4 indices 0..4"
+    }
+  ],
+  "implementationBindings": [
+    { "path": "archive/engine.html", "sha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5", "locus": "stripChoicePrefix lines 1847-1849; renderChoicesHTML lines 1881-1884", "finding": "The default/false path strips a leading marker from choice text and emits one engine-owned ①-⑤ ordinal. preserveChoicePrefixes=true retains text and duplicates that ordinal." },
+    { "path": "archive/tools/archive-stage-validator-artifact-v2.mjs", "sha256": "2603cee4d1846f9fb63699d0305faf6fcca8fbfd796116be55a98b2ee0983e4d", "locus": "validateChoiceStructure lines 196-216; caller lines 372-378", "finding": "The current unconditional leading-circled-glyph rejection ignores ordered selector-only lists, renderer control, question body, image reference, and source evidence." },
+    { "path": "archive/tools/archive-stage-validator-artifact-v2.test.mjs", "sha256": "f9841dbd7b9e2a519e0e09de9ed328421a80b61dcd21baf645b0b9c7d49969c8", "finding": "No existing tests cover a source-bound selector-only representation or its rejection boundaries." },
+    { "path": "docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md", "sha256": "90517785f701e92813b07cff2f93783434ab99a9502f51b8c5f117f15363287e", "locus": "§4", "finding": "Keep source choice exact parity and the engine-owned objective-choice label rule; a precise evidence-backed validator interpretation can preserve both." }
+  ],
+  "genericPredicateProposal": {
+    "choiceShape": "choices must be exactly five nonempty strings, byte-equal and ordered as [①, ②, ③, ④, ⑤]. This predicate is structural and does not infer correctness of the answer.",
+    "displayControl": "Allow only when preserveChoicePrefixes is false or omitted (current renderer default). Reject exception when true because that renders both source text marker and engine marker.",
+    "currentArtifactBinding": "The evidence row qid must match; its choice hash must equal the current question choices; its sourceArchiveFile/sourceOrdinal/baseline raw SHA must match the current source-parity row; source choices must be explicitly recorded unchanged.",
+    "sourceReferenceBinding": "Require one reviewed reference proof bound to the current source representation: QUESTION_CONTENT requires content hash match and the exact ordered marker sequence present in the student content; PROBLEM_ASSET requires the ref to equal an actual current image/visualAsset ref, the actual file SHA-256 to match evidence, opened=true/source fidelity exact, and an explicit reviewer observation of the exact ordered marker sequence in those pixels. The assigned assetRoot is used for the file check.",
+    "decision": "Only suppress ARTIFACT_CHOICE_ENGINE_LABEL_DUPLICATED for members of this exact list when the full predicate passes. Retain empty/unknown/reordered/partial/extra/appended-marker failures and all ordinary objective label checks. No exam/qid-specific bypass."
+  },
+  "requiredTestsForAuthorizedRepair": [
+    "Positive content case: q7 ordered glyph-only array, false display flag, exact source/content hashes and source marker proof; allow only its five duplicate-label findings.",
+    "Positive asset case: q4 ordered glyph-only array, default-false display flag, current image ref+bytes SHA and observed ordered markers bound to opened exact source asset; allow only its five duplicate-label findings.",
+    "Negative: preserveChoicePrefixes=true, missing source reference, missing/failed marker observation, qid/baseline/choices/content/asset hash mismatch, or false source choice parity keeps rejection.",
+    "Negative: any appended text after a glyph, reordered/repeated/partial/extra/unknown/empty choices, or non-five list never matches the exception; existing empty and structural diagnostics remain active.",
+    "Focused validator unit tests in archive/tools/archive-stage-validator-artifact-v2.test.mjs; then CREATE generic validation for only authorized target bindings. R1/R2 source semantics and R3 actual render remain separate gates."
+  ],
+  "unrelatedCurrentFailures": {
+    "24_강남여고_1학기_중간_고2_대수": "q9/q17/q18/q19 H2 Math I L2 proof/value issues remain outside this selector proposal.",
+    "23_매산고_1학기_중간_고2_수학I": "The H15-M1-03/04 canonical child-key gap remains outside this selector proposal."
+  },
+  "workPerformed": {
+    "targetExamJsChanged": false,
+    "engineChanged": false,
+    "validatorChanged": false,
+    "contractChanged": false,
+    "stageEvidenceChanged": false,
+    "validatorExecuted": false,
+    "actualRenderPerformed": false,
+    "mathSolved": false
+  },
+  "nextRequiredAction": "ROOT authorizes the generic evidence-backed selector predicate and q7 preserveChoicePrefixes-only correction. Stage owners can then bind the normalized selector proof to the reviewed body/asset reference; apply the validator change and focused tests only at the authorized locus."
+}

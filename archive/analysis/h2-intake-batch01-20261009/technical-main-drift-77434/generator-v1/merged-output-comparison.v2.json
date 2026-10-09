@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TECHNICAL_MERGE_OUTPUT_COMPARISON_V2",
+  "supersedes": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-77434/generator-v1/merged-output-comparison.v1.json",
+    "sha256": "45ba80e32ec2a2858514941ca63f5eb59d0eedfc6b7ab62d32bfca789ffcc950",
+    "reason": "v1 summary accidentally counted approved target additions in fields labeled non-target; v2 filters the two exact target source files before computing record diffs."
+  },
+  "sourceHeads": {
+    "ours": "fca4988d9c510492cce88652041ab48652d20180",
+    "theirs": "77434db3b1eecea08491c30274b28168c0473ba4",
+    "mergeBase": "45fc99a20054ea7e923ba571c9de4034e13b46c9",
+    "candidate": "77434db3b1eecea08491c30274b28168c0473ba4"
+  },
+  "targetFiles": [
+    "original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률과통계.js",
+    "original/high/h2/1mid/23_순천여고_1학기_중간_고2_확률과통계.js"
+  ],
+  "authoritativeMaps": {
+    "identityMap": {
+      "remoteRows": 13202,
+      "currentRows": 13250,
+      "approvedRowsFromOurs": 48,
+      "nonTargetDiff": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      },
+      "targetDiff": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      }
+    },
+    "metadata": {
+      "remoteRows": 13202,
+      "currentRows": 13250,
+      "approvedRowsFromOurs": 48,
+      "nonTargetDiff": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      },
+      "targetDiff": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0
+      }
+    }
+  },
+  "db": {
+    "remoteRows": 554,
+    "mergedRows": 556,
+    "targetRows": 2,
+    "nonTargetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "nonTargetOrderedBytesPreserved": true,
+    "targetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "targetRowsSource": "stage-2 local applied target DB rows"
+  },
+  "questionIndex": {
+    "remoteRows": 13194,
+    "mergedRows": 13242,
+    "targetRows": 48,
+    "nonTargetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "nonTargetOrderedObjectArrayPreserved": true,
+    "targetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "targetRowsSource": "stage-2 local applied target index rows"
+  },
+  "identityRuntime": {
+    "remoteUids": 13202,
+    "mergedUids": 13250,
+    "targetUids": 48,
+    "nonTargetTupleDiff": 0,
+    "targetTupleDiff": 0,
+    "semanticTuple": "sourceFile + sourceOrdinal + sourceQuestionNo"
+  },
+  "catalog": {
+    "remoteRecords": 13194,
+    "mergedRecords": 13242,
+    "targetRows": 48,
+    "nonTargetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "nonTargetOrderedObjectArrayPreserved": true,
+    "targetDiff": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0
+    },
+    "targetRowsSource": "stage-2 local applied target catalog rows",
+    "indexVersion": "b411d78fedc23be01da5624f39f0acab3af21c2b3e2deb861be831d38b232eb4"
+  },
+  "generatedOutputs": {
+    "archive/db.js": {
+      "sha256": "2e17aa5f4bec2c7d7760323283342de5c2adee23374bcc24e33618d21d591f38",
+      "bytes": 555576
+    },
+    "archive/question-identity.js": {
+      "sha256": "42b9df78113219a0d2989433f523df918dbe4af1108efd92c1d9d7694eaede89",
+      "bytes": 3376587
+    },
+    "archive/question-index.js": {
+      "sha256": "c7ff2ecba69cb738110f267311d80c6176992d47bf571309359184f370dbbaef",
+      "bytes": 14120169
+    },
+    "archive/question-index-report.md": {
+      "sha256": "0e18c18c406adb9f4b3a1b2eb72858347478325d1228f2b421376f4ca283432d",
+      "bytes": 3188
+    },
+    "archive/question-index-audit.md": {
+      "sha256": "d563a89a613a4975c5f7bf95009d3f0df51bd3854c294482e21fafad2b662ebe",
+      "bytes": 7689
+    },
+    "archive/data/archive2-catalog.json": {
+      "sha256": "4705f3d4706b8135a945491fa70d5013af169eb2c83f2144111dcc1d1257bb7a",
+      "bytes": 28466878
+    },
+    "archive/data/archive2-canonical-input-manifest.json": {
+      "sha256": "52174b4bf66153f3fda940c50abe89f8f183885933f463856af4163b601b5c8a",
+      "bytes": 9014
+    }
+  },
+  "generatorProcesses": {
+    "identity-runtime": {
+      "exit": 0,
+      "stdoutSha256": "3ac883750a2c7ab79d65de312342c84a806d1a0a07d92e6f0a812f7ad7c6f57c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "question-index": {
+      "exit": 0,
+      "stdoutSha256": "81629a43d31717add0e1359a7eb98511a8a3d01803108020a3eb9d2fce1c2bbf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "archive2-catalog": {
+      "exit": 0,
+      "stdoutSha256": "589189aecc303c1414656b48d85f48babc9fe3a8f69f7f3e80853a41f315cbb4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_EXPERIMENTAL_CONCURRENCY_AUTHORITY_V1",
+  "runId": "h2-intake-batch01-20261009",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "authority": "DIRECT_USER_INSTRUCTION",
+  "userInstruction": "니가 처리가능하면 r1 r2 r3도 늘려도 되지 않을까? 실험이니까?",
+  "scope": "This ten-exam intake production batch",
+  "supersedes": "run-ledger.json userOverride R1/R2/R3 per-role serial limits only",
+  "configuredSubagentLimit": 8,
+  "actualSessionSubagentLimit": 5,
+  "actualSessionIncludingRootLimit": 6,
+  "policy": "Adaptive role allocation within actual session limit; multiple exams per role permitted; exactly one writer per exam-stage; fresh independent stage sessions; answer/solution disclosure forbidden before valid freeze; stage ordering and quality gates unchanged.",
+  "currentChildAssignments": [
+    "r1_04",
+    "r1_06",
+    "r3_11",
+    "item_recovery_08",
+    "meta_technical_01"
+  ],
+  "rootResponsibility": "Routing, publication, byte parity, technical evidence acceptance",
+  "qualityWaiverGranted": false
+}

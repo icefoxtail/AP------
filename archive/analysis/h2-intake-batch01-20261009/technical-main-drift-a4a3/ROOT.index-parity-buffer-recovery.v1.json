@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_TECHNICAL_BUFFER_RECOVERY_V1",
+  "attempt1": {
+    "status": "FAIL",
+    "code": "ENOBUFS",
+    "syscall": "spawnSync git",
+    "maxBuffer": 300000000,
+    "signal": "SIGTERM",
+    "commitPerformed": false
+  },
+  "recovery": {
+    "method": "Bound each cat-file batch by local raw file sizes while retaining all staged paths",
+    "batchTargetBytes": 100000000,
+    "verifiedFileCount": 1425,
+    "status": "PASS",
+    "evidence": "ROOT.index-byte-parity.v1.json",
+    "denominatorReduced": false
+  },
+  "qualityPassFabricated": false
+}

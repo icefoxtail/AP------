@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTAPPLY_CATALOG_COMPARISON_V1",
+  "target": "23_순천여고_1학기_중간_고2_확률과통계",
+  "comparisonStatus": "ZERO_RECORD_DIFF_TWO_FILE_PROJECTION_DRIFT",
+  "expectedHead": "9a1dc9d87fa5ebbb4d441300baca2404b6f9015a",
+  "candidateHead": "9a1dc9d87fa5ebbb4d441300baca2404b6f9015a",
+  "failureAttempt": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 1,
+    "capture": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/ROOT.command-process-capture.json",
+      "sha256": "4ac2cb1f4fb0f5c78e36573ee16d188e3e7303dbcd6fb5be510a1a5558b8dfa3"
+    },
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/stdout.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-01/stderr.raw.txt",
+      "sha256": "7a6a46625fb0a64a386bafd24f7bf4b0fb6cfef289b0ad18cd23fb8e94f5b9ad"
+    }
+  },
+  "appliedRegistrationReceipt": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/root-apply-v2/target-registration.receipt.json",
+    "sha256": "59e442372a3b48198319bf0b5e2a99e265b55f466df7d523c26c76b016f0e61a"
+  },
+  "isolatedCanonicalGeneration": {
+    "command": "node archive/tools/build-archive2-catalog.mjs",
+    "candidateRoot": ".tmp/archive/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/registration-canonical-root",
+    "exitCode": 0,
+    "stdout": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.stdout.raw.txt",
+      "sha256": "52b6eb09352d1690314de87a86382835067b78d7b29b95e3182b4f8c130814ad"
+    },
+    "stderr": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.stderr.raw.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_확률과통계/technical-registration/postapply-catalog/attempt-02/isolated-generator.exit.txt",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    }
+  },
+  "catalog": {
+    "appliedSha256": "f5ca7ddfbc76d357602d96172ca202ff4d8ee68c55f21cabc9e6213cb27eebb6",
+    "canonicalSha256": "d33e429bbc643308fdefe91d527806431eef9441efb03cad73b746cb4496afce",
+    "appliedIndexVersion": "62ae3763fac398369a16bc33cfcd0f55061eb451ed63d05e6a1a924f0d54a3d1",
+    "canonicalIndexVersion": "edfa23d6323afe98ca5fc5408187b294ac64a912fb7caadffe9b130800901245",
+    "topLevelDiffFields": [
+      "indexVersion"
+    ],
+    "columnsEqual": true,
+    "stringsEqual": true,
+    "packedRecordMatrixEqual": true,
+    "decodedRecordCount": {
+      "applied": 13242,
+      "canonical": 13242
+    },
+    "targetRowCount": {
+      "applied": 23,
+      "canonical": 23
+    },
+    "targetRecordDiffCount": 0,
+    "nonTargetRecordDiffCount": 0,
+    "examDirectoryEqual": true,
+    "taxonomyEqual": true,
+    "healthEqual": true
+  },
+  "runtimeInvariance": {
+    "dbBytesEqual": true,
+    "dbRowCount": {
+      "applied": 556,
+      "canonical": 556
+    },
+    "runtimeTupleDiffCount": 0,
+    "questionIndexBytesEqual": true,
+    "questionIndexCount": {
+      "applied": 13242,
+      "canonical": 13242
+    },
+    "questionIndexRowsEqual": true
+  },
+  "manifest": {
+    "appliedSha256": "d1cb4e63f50cd40c105cc52c88030f6d08d733204648cd86acad4a544593b7be",
+    "canonicalSha256": "52c344ca88b89cbe839f807e048ed4af3ba338ea4019a992e20bdfa05abb41af",
+    "topLevelDiffFields": [
+      "generatedFromCatalogIndexVersion",
+      "projectionVersion",
+      "files"
+    ],
+    "fileDiffs": [
+      {
+        "path": "data/archive2-catalog.json",
+        "applied": {
+          "path": "data/archive2-catalog.json",
+          "sha256": "f5ca7ddfbc76d357602d96172ca202ff4d8ee68c55f21cabc9e6213cb27eebb6"
+        },
+        "canonical": {
+          "path": "data/archive2-catalog.json",
+          "sha256": "d33e429bbc643308fdefe91d527806431eef9441efb03cad73b746cb4496afce"
+        }
+      }
+    ]
+  },
+  "reviewOverride": {
+    "path": "archive/data/archive2-item-review-overrides.json",
+    "appliedSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+    "canonicalSha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+    "equal": true
+  },
+  "appliedNineFileBindings": [
+    {
+      "path": "archive/db.js",
+      "appliedSha256": "31bea09aafdb7fd7e8a5415bd964551dee2c9ac68caa60d76d0e351503bec0f2",
+      "canonicalSha256": "31bea09aafdb7fd7e8a5415bd964551dee2c9ac68caa60d76d0e351503bec0f2",
+      "equal": true
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "appliedSha256": "487a835fc619d7cb590ee37214a3fbd681b83b10a6cda4316f15e7a1b017de5f",
+      "canonicalSha256": "487a835fc619d7cb590ee37214a3fbd681b83b10a6cda4316f15e7a1b017de5f",
+      "equal": true
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "appliedSha256": "11ccc0afd18eef53c9c5bde8c8bbaa4c86abcf6f8b3884cec57ff02932acb46a",
+      "canonicalSha256": "11ccc0afd18eef53c9c5bde8c8bbaa4c86abcf6f8b3884cec57ff02932acb46a",
+      "equal": true
+    },
+    {
+      "path": "archive/question-identity.js",
+      "appliedSha256": "21925136e1b87d62d340ac0158b453dd2052724f11a236a7507a904171ef8c85",
+      "canonicalSha256": "21925136e1b87d62d340ac0158b453dd2052724f11a236a7507a904171ef8c85",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index.js",
+      "appliedSha256": "cd9e0cf9693928f006e060964dfd4cfff6168eca6ee1f61e0108168ea79e2558",
+      "canonicalSha256": "cd9e0cf9693928f006e060964dfd4cfff6168eca6ee1f61e0108168ea79e2558",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "appliedSha256": "d625b84e2bb238c53b877492053404ebb61970bd3e257046206afb86ea2aa320",
+      "canonicalSha256": "d625b84e2bb238c53b877492053404ebb61970bd3e257046206afb86ea2aa320",
+      "equal": true
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "appliedSha256": "4d6b03987eefd1084f5378d5bcb0badee76703246dfbd8c6c70c02607dc90e70",
+      "canonicalSha256": "4d6b03987eefd1084f5378d5bcb0badee76703246dfbd8c6c70c02607dc90e70",
+      "equal": true
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "appliedSha256": "f5ca7ddfbc76d357602d96172ca202ff4d8ee68c55f21cabc9e6213cb27eebb6",
+      "canonicalSha256": "d33e429bbc643308fdefe91d527806431eef9441efb03cad73b746cb4496afce",
+      "equal": false
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "appliedSha256": "d1cb4e63f50cd40c105cc52c88030f6d08d733204648cd86acad4a544593b7be",
+      "canonicalSha256": "52c344ca88b89cbe839f807e048ed4af3ba338ea4019a992e20bdfa05abb41af",
+      "equal": false
+    }
+  ],
+  "allowedRepair": [
+    "archive/data/archive2-catalog.json",
+    "archive/data/archive2-canonical-input-manifest.json"
+  ],
+  "repairBasis": "Only catalog indexVersion differs; every full decoded target and non-target record plus runtime DB tuples and question-index rows match. Manifest differs only in generated catalog/index/projection bindings. Review override index and seven other registered files are identical."
+}

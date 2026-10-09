@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_QID_DISCLOSURE_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "qid": 21,
+  "scope": "QID_ONLY_AFTER_SEALED_INDEPENDENT_FREEZE",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.sealed-freeze.json",
+    "sha256": "618cf75dc3afe2052cdaa1a886efaa717189223487901ed43bd3ffe959953f00"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.student-only.json",
+    "sha256": "e33dfaa74d886e0976914b9b1c5da2eb77f42be05c14a7aa8c9d9e17c9ebd752"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\23_매산여고_1학기_중간_고2_확률과통계.js",
+    "sha256": "2d7c596ecd62024f22240a3db69817f298b8ae00fbf6d9f657bf52575781c92b"
+  },
+  "fullArtifactQuestionCount": 22,
+  "studentParity": "EXACT",
+  "currentStudentPayloadSha256": "97d1a906668f10c3d6ee7b0eda61e5105f44a9f69f731c8cafbfc724111a8201",
+  "bundleStudentPayloadSha256": "97d1a906668f10c3d6ee7b0eda61e5105f44a9f69f731c8cafbfc724111a8201",
+  "rows": [
+    {
+      "qid": 21,
+      "answer": "(1) 7개; (2) 9개",
+      "solution": "전체 경우의 수는 두 주머니 모두 $\\binom{12}{4}=495$가지이다.\n\n(1) 첫 번째 주머니의 흰 구슬 수를 $x$라 하자. 모두 흰 구슬을 고르는 경우는 $\\binom{x}{4}$가지이므로\n$\\dfrac{\\binom{x}{4}}{495}=\\dfrac{7}{99}$이다.\n따라서 $\\binom{x}{4}=35$이고, $\\binom{7}{4}=35$이므로 첫 번째 주머니의 흰 구슬은 $7$개이다.\n\n(2) 두 번째 주머니의 흰 구슬 수를 $y$라 하자. 흰 구슬 $3$개와 빨간 구슬 $1$개를 고르는 경우는 $\\binom{y}{3}(12-y)$가지이다.\n$\\dfrac{\\binom{y}{3}(12-y)}{495}=\\dfrac{28}{55}$에서 $\\binom{y}{3}(12-y)=252$를 얻는다.\n가능한 $y=3,4,5,6,7,8,9,10,11$에 대한 값은 차례로 $9,32,70,120,175,224,252,240,165$이다. 이 중 $252$는 $y=9$일 때만 나오므로 두 번째 주머니의 흰 구슬은 $9$개이다.\n\n따라서 정답은 (1) $7$개, (2) $9$개이다.",
+      "decisiveStep": "(1)은 C(x,4)=35에서 x=7, (2)는 C(y,3)(12-y)=252를 가능한 정수 범위에서 확인하여 y=9를 정한다.",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "layoutTag": "grid",
+      "wide": false
+    }
+  ],
+  "disclosedAt": "2026-10-09T04:36:24.280Z"
+}

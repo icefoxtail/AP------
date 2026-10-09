@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "23_매산여고_1학기_중간_고2_수학I",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "gitBlobSha": "b83cb4191335f0c0093c8b29c05e9c38385be808"
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:7339822bfe2bec8266c05182dc0284034489adb413982f0ed49c0a4fce5e7c56",
+        "gitBlobSha": "8039567aa0ed7c9dcf1e0a327b4105902f61d204"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+        "qid": 1,
+        "solutionSha256": "sha256:ce60bbcc286346cdff4c74ac861dbbb1593e596420d53c7f3ab1a66e17b63705",
+        "solutionExcerpt": "지수법칙과 거듭제곱근을 차례로 정리한다.\n\n$\\left(\\frac{b^3}{a^2}\\right)^2=\\frac{b^6}{a^4}$,\n$\\left(\\sqrt[3]{a^4}\\r",
+        "observation": "q1의 실제 풀이에서 거듭제곱근을 지수로 바꾼 뒤 소거되는 지수와 마지막 계산을 차례로 확인했다. 짧은 풀이도 결정 계산을 빠뜨리지 않는다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+        "qid": 2,
+        "solutionSha256": "sha256:623952e80e6b027f4fbfd879ac16dcab62564d285234d9e2df985d3e9e59cd97",
+        "solutionExcerpt": "역수 관계를 이용해 밑을 맞춘다.\n\n$\\frac{1}{\\log_{10}3}=\\log_3 10$이므로\n\n$\\log_3 6+\\log_3 5-\\log_3 10$\n$=\\log_3\\",
+        "observation": "q2의 실제 풀이에서 역수 로그 성질을 적용하고 로그의 곱·몫을 순서대로 바꾸어 결론까지 이어지는 작은 칠판 흐름을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "qid": 2,
+        "solutionSha256": "sha256:5834fa5caafa2a05aefae6e914ca825d0aa6ce0f876c153dbecb68e63f26cea2",
+        "solutionExcerpt": "각 식을 지수·로그의 정의로 확인한다.\n① $(9^{0.25})^2=9^{1/2}=3$이다.\n② $3^{\\sqrt5+1}\\div3^{\\sqrt5-1}=3^2=9$이다.\n③ ",
+        "observation": "q2의 실제 보기별 풀이에서 각 변형의 근거와 보기별 결론을 분리하고 마지막 오답 선택까지 연결하는 흐름을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "qid": 3,
+        "solutionSha256": "sha256:b0c9fbcc8228793e23277bf1669499904c1c70e354d0fac807c74fb9e2b24912",
+        "solutionExcerpt": "로그의 차는 진수의 비의 상용로그이다.\n$\\log x-\\log9.25=2.9661-0.9661=2$\n따라서\n$\\log\\frac{x}{9.25}=2$\n$\\frac{x}{9.2",
+        "observation": "q3의 실제 풀이에서 주어진 로그값의 차를 식으로 옮기고 로그의 몫, 진수 관계, 최종 수를 단계별로 적는 구조를 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+    "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "실패 fixture 설명을 직접 읽었다. solution 정합성은 주장 문구만으로 판정하지 않고 실제 계산 단계와 final source를 대조하며, enumerated reasoning의 분리·런타임 TeX·필요 visual을 각각 확인한다."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:48b1499bc19623757d2c5250497cbe0e4abbdc63f0a600d44fe9db616e6a532d",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "sha256:ce60bbcc286346cdff4c74ac861dbbb1593e596420d53c7f3ab1a66e17b63705",
+            "observation": "q1의 실제 풀이에서 거듭제곱근을 지수로 바꾼 뒤 소거되는 지수와 마지막 계산을 차례로 확인했다. 짧은 풀이도 결정 계산을 빠뜨리지 않는다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "sha256:623952e80e6b027f4fbfd879ac16dcab62564d285234d9e2df985d3e9e59cd97",
+            "observation": "q2의 실제 풀이에서 역수 로그 성질을 적용하고 로그의 곱·몫을 순서대로 바꾸어 결론까지 이어지는 작은 칠판 흐름을 확인했다."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:7339822bfe2bec8266c05182dc0284034489adb413982f0ed49c0a4fce5e7c56",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "sha256:5834fa5caafa2a05aefae6e914ca825d0aa6ce0f876c153dbecb68e63f26cea2",
+            "observation": "q2의 실제 보기별 풀이에서 각 변형의 근거와 보기별 결론을 분리하고 마지막 오답 선택까지 연결하는 흐름을 확인했다."
+          },
+          {
+            "qid": 3,
+            "solutionSha256": "sha256:b0c9fbcc8228793e23277bf1669499904c1c70e354d0fac807c74fb9e2b24912",
+            "observation": "q3의 실제 풀이에서 주어진 로그값의 차를 식으로 옮기고 로그의 몫, 진수 관계, 최종 수를 단계별로 적는 구조를 확인했다."
+          }
+        ]
+      }
+    ]
+  }
+}

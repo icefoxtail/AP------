@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "JS_ARCHIVE_QID_ONLY_ORIGINAL_SOURCE_FACT_REVIEW_V1",
+  "stage": "R1_SOURCE_FACT_CONTINUATION",
+  "reviewerId": "/root/r1_05",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "scope": {
+    "qids": [
+      11
+    ],
+    "fact": "whether the straight graph branch at x=-3 is an actual domain endpoint or clipped by the plotted window"
+  },
+  "sourcePolicy": {
+    "mode": "EXTRACTED_JS_ASSETS_DEFECT_ONLY",
+    "originalPdfOpened": true,
+    "answerSheetOpened": false,
+    "otherQidsReviewed": false
+  },
+  "sourcePdf": {
+    "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수2/2023_금당고2_수2_1중간.pdf",
+    "sha256": "a36454f63a712daecb22a489bdb112f8489e88c526174d4d170c900afb4c4002",
+    "pageCount": 4,
+    "reviewedPage": 2,
+    "reviewedAtDpi": 300,
+    "pageRender": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/source-q11-pdf/page-2.png",
+      "sha256": "1a09007ce1380db4b6fd986c948ef91de5fd1f02e684f40205e1f65e7ea2b983"
+    },
+    "q11PromptAndGraphCrop": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/source-q11-prompt-graph-only.png",
+      "sha256": "f6dfbc2f1663661f7773e3c25550055685ec8e6c7971a3693b78b1b655cc654e"
+    },
+    "q11EndpointDetailCrop": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/source-q11-endpoint-detail.png",
+      "sha256": "ccc0aba1efea18951c7334fe766a1cee1fea4dbe97575ae7c5228033ba0fdcb9a"
+    },
+    "graphOnlyCrop": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/source-q11-graph-from-pdf.png",
+      "sha256": "23f560d315b0fff477618a711c9221cebc1e2b8262ac1b480bf97517b7969d7a"
+    }
+  },
+  "crossCheck": {
+    "currentSourceBeforeRepairRawSha256": "cec218a0e7561e30f3fb786e070fd0c360e2326de1483394b826955e467a96a1",
+    "currentSourceBeforeRepairBlobSha1": "4c3d094fbbb3d4f6f5fa00558494314cb2b0f49c",
+    "currentProblemAsset": {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q11.png",
+      "sha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc"
+    },
+    "pdfQ11GraphMatchesExtractedProblemAsset": true,
+    "pdfGraphToAssetPixels": {
+      "width": 620,
+      "height": 290,
+      "normalizedCorrelation": 0.9286431074142456,
+      "meanAbsolutePixelDifference": 4.408442714126807,
+      "exactPixelFraction": 0.5037986651835372
+    },
+    "omittedSourcePixelsFound": false
+  },
+  "sourceFact": {
+    "pdfPrompt": "함수 y=f(x)의 그래프가 그림과 같을 때, 정수 a(-3≤a≤3)에 대하여 lim_{x→a} x/f(x)의 값이 존재하도록 하는 모든 a의 개수는?",
+    "aMinus3GraphObservation": "The q11 source graph's straight descending branch reaches the upper plotting boundary at the vertical guide x=-3. No open/closed endpoint symbol is drawn there. The horizontal x-axis extends to the left of -3, while a separate filled point at (-3,0) marks f(-3). In the complete original PDF region the branch is clipped by the drawing window; the source contains no stated domain restriction at x=-3 and no endpoint marker on the straight branch.",
+    "reading": "Treat the unmarked straight line as continuing through x=-3 beyond the plotted window; along it f(x)→3 from both sides. The filled f(-3)=0 point is isolated and does not change the limit of x/f(x).",
+    "endpointVersusWindow": "UNCHANGED_SOURCE_PLOTTED_WINDOW_CUT; the extracted PNG matches the complete q11 graph region in the original PDF. No extraction omission was found.",
+    "answerSetFromSource": [
+      -3,
+      -2,
+      0,
+      2
+    ],
+    "answerCount": 4,
+    "choiceIdentity": {
+      "currentPreRepairAnswer": "①",
+      "currentPreRepairChoiceValue": "3",
+      "correctChoiceLabel": "②",
+      "correctChoiceValue": "4"
+    }
+  },
+  "dependencyReview": {
+    "qid11CurrentStudentBodyUnchanged": true,
+    "freezeStudentPayloadParity": "EXACT",
+    "freezeAnswerStillValid": true,
+    "originalR1Freeze": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.original-freeze.json",
+      "sha256": "ed4a57d458f6bdcc776795bdc750cdbd6440a7e72c6f5dadc320be92eef78665",
+      "qid11IndependentAnswer": "4"
+    },
+    "previousR1Adjudication": {
+      "path": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.answer-adjudication.json",
+      "sha256": "0917d949aade26c53baaebd5516fe6061d46e0cf93d4b8fb03654d040db0a5d4",
+      "qid11PreviouslyCorrectedTo": "3",
+      "nowSuperseded": true
+    },
+    "R2ReadOnlyReferences": {
+      "freezeSha256": "cc51d47318c31c6043f9f06e536d1356c0c4d744c1f0a8b03c0514f5ce430ee8",
+      "adjudicationSha256": "57e2a2815e1eead781c4adf5da241b82c33ba51b31ff5573d13ea0b79a96fa47",
+      "postfreezeDisclosureSha256": "399a8cd1f105c970bed20cc7f58d54bd07595ea618554a7f3c3302acf6870ce8",
+      "adjudicationPath": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.adjudication.json",
+      "postfreezeDisclosurePath": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.r2_05.postfreeze-disclosure.json"
+    }
+  },
+  "result": "PDF confirms a=-3 is a plotting-window cut without an endpoint marker; source-derived count is four. The R1 blind freeze value 4 was correct. The prior R1 adjudication to 3 and current answer/solution encoding to 3 require a qid11-only correction. R1 freeze remains valid because the complete student prompt, choices, and problem asset are unchanged.",
+  "createdAt": "2026-10-09T02:25:48.537Z"
+}

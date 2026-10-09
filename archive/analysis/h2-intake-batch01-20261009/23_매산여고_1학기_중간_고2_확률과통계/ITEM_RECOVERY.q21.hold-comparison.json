@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_UPSTREAM_HOLD_COMPARISON_V1",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "qid": 21,
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "comparedAfterInitialIndependentVerdict": true,
+  "initialVerdictPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.initial-independent-verdict.json",
+  "sources": [
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1_08.complete-event.json",
+      "sha256": "82e4f1da046b560ec2ac7f72dde60b10b97c4bc0a015103ae79e8e51addccee4"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1_08.evidence.bound.json",
+      "sha256": "e5744f6c0d230c9f7708bee53ad976a89bccca73a732b9d143b7a64076c825da"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R2.08.complete-event.json",
+      "sha256": "0da78f74ae92cc19fde11b491ab717519ce05aefb64cc246a97557dd4ed97f27"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R2.08.evidence.json",
+      "sha256": "409c9bfb140c272bb36078f90eb04a18486b62089e10fea73ec89ab834e6fc9c"
+    },
+    {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R2.08.q21.adjudication.json",
+      "sha256": "d69d52ea8e31887254e49c84004bd98113791bd091504e09d68ee2f2f3db3cda"
+    }
+  ],
+  "findings": {
+    "r1": {
+      "status": "HOLD_ITEM",
+      "validOriginalFreeze": true,
+      "independentCorrectedAnswer": "(1) 6; (2) 4 또는 9",
+      "reason": "Part (2) has two valid counts while its prompt requests one; R1 also recorded question/source parity exact and no visual needed.",
+      "fullSourceReview": "q21-only PDF comparison confirmed original wording; independent answer and solution layout pass."
+    },
+    "r2": {
+      "status": "HOLD_ITEM",
+      "independentFreezeInitiallyListed4Only": true,
+      "postfreezeAdjudicationAdded9": true,
+      "originalFreezePreserved": true,
+      "reason": "Complete student-input check shows the part (2) equation has both 4 and 9; final R2 answer cardinality is 2."
+    }
+  },
+  "decision": "TRUE_HOLD_RECONFIRMED; original source wording is genuinely underdetermined, so do not alter it as a source repair. Direct q21 replacement is authorized and required.",
+  "unchangedUpstreamArtifactSha": "fbeeea2346d3830d8aee67c97c5fe88551f34915"
+}

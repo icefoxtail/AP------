@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1_08.original-freeze.json",
+    "sha256": "e4b87b8dfb2c3ffd79e729246ad3630575fe2e03b824502bcc5c375c9cac56c8"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.student-only.json",
+    "sha256": "27dd6b2eb51be07f24fbdfb76c9cff95a9be9406559beda1d255f3d71b7ec481"
+  },
+  "sourceRawSha256": "85d912a87bb002a20e89a2c17c13b0e2731285db78d4bdb120ddfa39e5aa171e",
+  "originalFreezeSourceRawSha256": "8cb33720b3785c8014c939e4ffd3c67e86c52a0cc32c62fba7a28e82ddc268bd",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 3,
+      "answer": "④",
+      "solution": "첫 자리에는 0을 놓을 수 없으므로 첫 자리의 선택은 1, 2, 3, 4, 5의 5가지이다. 나머지 세 자리는 각각 0부터 5까지 6가지씩 선택할 수 있다.\n$P=5\\times6^3=1080$이다.\n\n3000보다 큰 네 자리 수를 천의 자리가 3, 4, 5인 경우로 나눈다.\n천의 자리가 4 또는 5이면 나머지 세 자리는 각각 6가지이므로 $2\\times6^3=432$가지이다.\n천의 자리가 3이면 뒤 세 자리가 모두 0인 3000은 제외해야 한다. 따라서 이 경우는 $6^3-1=215$가지이다.\n$Q=432+215=647$이다.\n\n따라서 $P+Q=1080+647=1727$이고, 정답은 ④이다.",
+      "decisiveStep": "Q=2·6³+(6³−1)=647, P+Q=1727이므로 ④이다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T03:30:37.229Z"
+}

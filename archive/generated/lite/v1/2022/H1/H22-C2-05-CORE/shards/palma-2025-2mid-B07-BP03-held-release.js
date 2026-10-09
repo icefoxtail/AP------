@@ -1,0 +1,59 @@
+window.examTitle = "ALIVE_LITE_PALMA25_H1_2MID_B07_BONUS_H22-C2-05-CORE";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-H1-2MID-B07-Q13-BP03",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "부분집합"
+    ],
+    "wide": false,
+    "content": "집합 $S=\\{a,b,c,d\\}$의 부분집합 $A,B$에 대하여\n$$A\\subseteq B,\\qquad |A|=1,\\qquad |B|=3$$\n을 만족시키는 순서쌍 $(A,B)$의 개수는?",
+    "choices": [
+      "$12$",
+      "$4$",
+      "$6$",
+      "$24$",
+      "$81$"
+    ],
+    "answer": "①",
+    "solution": "먼저 $B$는 $S$의 원소 세 개를 고르는 집합이므로 $\\binom43=4$가지이다. $B$를 하나 정하면 $A$는 그 세 원소 중 한 원소를 고르는 부분집합이므로 $3$가지이다. 따라서\n$$4\\cdot3=12$$\n개의 순서쌍 $(A,B)$가 있다. $A$와 $B$의 크기가 다르므로 각 경우 $A\\subseteq B$는 자동으로 진부분집합 관계이지만, 문제의 포함 조건은 모두 만족한다. 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "problemTypeKey": "PT_SUBSET_COUNT",
+    "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+    "meta": {
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.1|집합의 뜻과 포함 관계",
+      "rpmL3": "L3-2.1.2|부분집합",
+      "rpmL4": "L4-2.1.2.2|부분집합의 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "rpmPrimaryRecordId": "H1-RPM-234",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "level": "중",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "templateAuthorityNote": "ACTIVE SETS_PROPOSITIONS, same PT_SUBSET_COUNT; differs from RPM default powerset template"
+    },
+    "metaFinalSha256": "a2b2c50ced0c4230d120cd3579b110238a7d4d93e242b3f2bfeaf529351bee43"
+  }
+];

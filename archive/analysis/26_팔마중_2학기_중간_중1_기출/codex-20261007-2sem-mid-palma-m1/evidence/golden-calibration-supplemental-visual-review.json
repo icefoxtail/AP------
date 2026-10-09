@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GOLDEN_SUPPLEMENTAL_VISUAL_REVIEW_V1",
+  "runId": "codex-20261007-2sem-mid-palma-m1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "performedAtUtc": "2026-10-08T00:29:11Z",
+  "status": "SUPPLEMENTAL_VISUAL_REVIEW_COMPLETE",
+  "timeline": {
+    "initialGoldenNegativePreflight": {
+      "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/golden-negative-preflight.json",
+      "sha256": "742dd1b799c9c543907c7178df6330c796dc4c25b6d09e3289e2af96145ed00a",
+      "performedBeforeSolutionWriting": true,
+      "coverageDisposition": "INCOMPLETE_FOR_SELECTED_V2_SET; actual visual was included for Hyochon q2, while the selected Maesan and Jeil sample items lacked their required visual asset read."
+    },
+    "initialValidatorFailure": {
+      "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/generic-create-validator.initial-failure.raw.json",
+      "sha256": "3c548f2fe984eaa1cfc93d2c1d00c7c6b76448e6bf5f712ad2e4d2a05abd9b4e",
+      "disposition": "FAIL",
+      "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+    },
+    "supplementalTiming": "AFTER_INITIAL_SOLUTION_DRAFT; these visual reads are recorded as supplemental review and are not backdated as preflight."
+  },
+  "items": [
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "observation": "After the initial draft, read the complete small-board solution and actual SVG. The solution tracks center C0=(-3,1) to C1=(-5,2) to C2=(5,-2), keeps r=3, and ends at (x−5)^2+(y+2)^2=9; SVG circle centers and radius agree with those calculations."
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 6,
+      "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+      "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+      "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+      "observation": "After the initial draft, read the complete small-board solution and actual SVG. The solution establishes the minimum intersection count y=5, and the Venn SVG labels A-only=20−y, overlap=y, B-only=15−y and displays y≥20+15−30; the visual supports the stated constraint."
+    }
+  ],
+  "correctionReview": {
+    "scope": "Only loci affected by the missing visual calibration evidence.",
+    "candidateQidRechecks": [
+      {
+        "qid": 21,
+        "axis": "SOLUTION_LAYOUT",
+        "status": "PASS",
+        "observation": "The student solution states the triangle exterior-angle property, computes y=33°, uses the supplementary angle at D to get x=42°, and separates x−y=9° as the conclusion. The source diagram crop is unchanged."
+      },
+      {
+        "qid": 24,
+        "axis": "SOLUTION_LAYOUT",
+        "status": "PASS",
+        "observation": "The area solution partitions the shaded quadrilateral into △EJC and △ECI, compares △EDJ and △ECI using the two square angle relations, and reduces the result to one of four equal triangles of ABCD, 16 cm². The source diagram crop is unchanged."
+      }
+    ],
+    "solutionVisualApplicability": "Candidate uses source-only PNG crops in problem image fields; it has no solutionImage/SVG fields. The supplemental Golden SVG review introduced no candidate asset or solution changes.",
+    "candidateBytesChangedDuringSupplementalReview": false
+  }
+}

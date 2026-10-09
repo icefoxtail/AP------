@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_QID_SCOPED_MANUAL_V1",
+  "status": "QID_SCOPE_PARITY_VERIFIED",
+  "scope": {
+    "examUid": "23_순천여고_1학기_중간_고2_수학I",
+    "qids": [
+      23
+    ],
+    "fullSourceQuestionCount": 23
+  },
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "pdfActualReadThisAttempt": false,
+  "source": {
+    "rawSha256": "1c10dfc9210c5c5ffee9d42c137675a6c7aebb323b5763161f91bb055e163722",
+    "rawBufferBlobSha1": "1509a2227d6fcf63aad699e2beb667adf37c0f81",
+    "questionCount": 23
+  },
+  "expectedAssignmentSourceRawSha256": "1c10dfc9210c5c5ffee9d42c137675a6c7aebb323b5763161f91bb055e163722",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.independent-freeze.r1_09.json",
+    "sha256": "dab3ee1fff943ffe6fa7b55ee5d0482776635a197e6fdeb003329d1b95980f9b",
+    "sourceRawSha256": "1c10dfc9210c5c5ffee9d42c137675a6c7aebb323b5763161f91bb055e163722",
+    "studentBundle": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.recovery.student-only.json",
+      "sha256": "1edc59676a3d1aad8df150e4a40e181fa9e842893272f6f74c56a3803b735605"
+    },
+    "reviewerIdentity": {
+      "role": "archive_r1",
+      "reviewerId": "r1_09_q23"
+    },
+    "independentAnswer": "(4+sqrt(10))/3",
+    "reasoning": "학생용 발문만으로 풀이했다. D와 E는 h의 점근선 x=k 위에서 각각 f와 g에 놓이므로 DE는 두 함수값 차이다. k>0이므로 k+3>0이고 주어진 식은 (3/2)log_3(k+3)=(3/2)log_3 6, 따라서 k=3이다. A에서는 f=g이므로 -log_3(x+3)=(1/2)log_3(x+3), x=-2. B는 x>3에서 -log_3(x+3)=log_3(x-3)이므로 (x+3)(x-3)=1, 따라서 x_B=sqrt(10). C는 x>3에서 (1/2)log_3(x+3)=log_3(x-3)이므로 sqrt(x+3)=x-3; 제곱하면 x^2-7x+6=0이고 정의역을 적용해 x_C=6이다. 무게중심의 x좌표는 (-2+sqrt(10)+6)/3=(4+sqrt(10))/3이다."
+  },
+  "currentStudentBundles": {
+    "scoped": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.recovery.student-only.json",
+      "sha256": "1edc59676a3d1aad8df150e4a40e181fa9e842893272f6f74c56a3803b735605",
+      "questionCount": 1,
+      "qids": [
+        23
+      ]
+    },
+    "full": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.recovery.student-full.json",
+      "sha256": "0bc68e5f58a327dcceccb26166541e559a86387f44680242e9ac8403e5778e79",
+      "questionCount": 23,
+      "expectedSha256": "0bc68e5f58a327dcceccb26166541e559a86387f44680242e9ac8403e5778e79"
+    }
+  },
+  "postfreezeCliAttempt": {
+    "status": "FAIL",
+    "issue": "CURRENT_SOURCE_DENOMINATOR_CHANGED",
+    "sourceQuestionCount": 23,
+    "scopedBundleQuestionCount": 1
+  },
+  "manualQidParity": {
+    "scopedToFullStudentExact": true,
+    "currentSourceToFullStudentExact": true,
+    "fullSourceToBundleStudentExactCount": 23,
+    "fullSourceQuestionCount": 23,
+    "requiredQ23ProblemAssetRefs": [],
+    "requiredQ23ProblemAssetsOpened": []
+  },
+  "q23Disclosure": {
+    "student": {
+      "id": 23,
+      "content": "양수 $k$에 대하여 세 함수 $f(x) = \\log_{\\frac{1}{3}} (x+3)$, $g(x) = \\log_9 (x+3)$, $h(x) = \\log_3 (x-k)$가 있다. 두 함수 $y = f(x)$, $y = g(x)$의 그래프의 교점을 $A$, 두 함수 $y = f(x)$, $y = h(x)$의 그래프의 교점을 $B$, 두 함수 $y = g(x)$, $y = h(x)$의 그래프의 교점을 $C$라고 하고, 함수 $y = h(x)$의 그래프의 점근선이 두 함수 $y = f(x)$, $y = g(x)$의 그래프와 만나는 점을 각각 $D, E$라 하자. $\\overline{DE} = \\frac{3}{2}\\log_3 6$일 때, 삼각형 $ABC$의 무게중심의 $x$좌표를 구하시오. (7점)",
+      "question": "양수 $k$에 대하여 세 함수 $f(x) = \\log_{\\frac{1}{3}} (x+3)$, $g(x) = \\log_9 (x+3)$, $h(x) = \\log_3 (x-k)$가 있다. 두 함수 $y = f(x)$, $y = g(x)$의 그래프의 교점을 $A$, 두 함수 $y = f(x)$, $y = h(x)$의 그래프의 교점을 $B$, 두 함수 $y = g(x)$, $y = h(x)$의 그래프의 교점을 $C$라고 하고, 함수 $y = h(x)$의 그래프의 점근선이 두 함수 $y = f(x)$, $y = g(x)$의 그래프와 만나는 점을 각각 $D, E$라 하자. $\\overline{DE} = \\frac{3}{2}\\log_3 6$일 때, 삼각형 $ABC$의 무게중심의 $x$좌표를 구하시오. (7점)",
+      "choices": [],
+      "layoutTag": "",
+      "wide": false
+    },
+    "answer": "\\frac{4+\\sqrt{10}}{3}",
+    "solution": "교점 $A$는\n$\\log_{1/3}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=u/2$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{1/3}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
+    "solutionSha256": "0d80b7201c60fedfd4798631d87c84c3f08737d9f5aa9a4ec9e7ffcf8c9aa199",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution.svg",
+    "solutionImageFile": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\assets\\images\\23_순천여고_1학기_중간_고2_수학I\\q23-solution.svg",
+      "sha256": "a0b4147968499094a74967bf23c5b3fd77d9290ac0ca002495c8431e57a1d344"
+    },
+    "currentMeta": {
+      "standardCourse": "수학I",
+      "standardUnitKey": "H15-M1-04",
+      "standardUnit": "로그함수",
+      "standardUnitOrder": 4,
+      "subUnitKey": null,
+      "subUnit": null,
+      "subUnitConfidence": "UNKNOWN",
+      "subUnitClassificationDepth": "UNKNOWN",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    }
+  },
+  "sourceProvenance": {
+    "currentJsToCurrentStudentBundleParity": "QID23_EXACT",
+    "currentFullStudentBundleSourceRawSha256": "1c10dfc9210c5c5ffee9d42c137675a6c7aebb323b5763161f91bb055e163722",
+    "priorQ23SourceRepairEvidencePath": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.source-repair.q23.r1_09.json",
+    "priorQ23SourceRepairEvidenceSha256": "d0d380f3fc10a845a360bb8e68db8cc745936a66ba20c86370797dd3b918c8eb",
+    "thisAttemptPdfFact": "NOT_READ",
+    "originalSourceParityClaim": "NOT_ASSERTED"
+  },
+  "createdBy": {
+    "role": "archive_r1",
+    "reviewerId": "r1_09_q23",
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX"
+  }
+}

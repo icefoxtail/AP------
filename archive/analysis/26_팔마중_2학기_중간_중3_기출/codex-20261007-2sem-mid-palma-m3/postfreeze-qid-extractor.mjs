@@ -1,0 +1,7 @@
+import fs from 'node:fs'; import vm from 'node:vm'; import crypto from 'node:crypto';
+const [examPath,freezePath,outPath,expectedFreezeSha]=process.argv.slice(2); const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const freeze=JSON.parse(fs.readFileSync(freezePath,'utf8')); if(sha(freezePath)!==expectedFreezeSha) throw new Error('FREEZE_SHA_BINDING_INVALID'); if(sha(examPath)!==freeze.workingArtifactRawSha256) throw new Error('ARTIFACT_RAW_SHA_CHANGED');
+const sandbox={window:{}}; vm.createContext(sandbox); vm.runInContext(fs.readFileSync(examPath,'utf8'),sandbox,{filename:examPath,timeout:5000}); const qs=sandbox.window.questionBank||sandbox.window.questions;
+if(!Array.isArray(qs)||qs.length!==freeze.freezeCount) throw new Error('QUESTION_DENOMINATOR_MISMATCH'); const qids=new Set(freeze.rows.map(r=>r.qid)); if(qids.size!==freeze.freezeCount) throw new Error('FREEZE_QID_CARDINALITY_INVALID');
+const rows=qs.filter(q=>qids.has(Number(q.id))).map(q=>({qid:Number(q.id),storedAnswer:q.answer,solution:q.solution,solutionImage:q.solutionImage??null})); if(rows.length!==freeze.freezeCount) throw new Error('POSTFREEZE_QID_EXTRACTION_INCOMPLETE');
+fs.writeFileSync(outPath,JSON.stringify({schemaVersion:'JS_ARCHIVE_R1_POSTFREEZE_DISCLOSURE_V1',examUid:freeze.examUid,runId:freeze.runId,stage:'R1',qualityContractVersion:freeze.qualityContractVersion,executionLine:freeze.executionLine,freezePath,freezeSha256:expectedFreezeSha,sourceArtifactRawSha256:sha(examPath),disclosedAfterFreeze:true,rows},null,2)+'\n');

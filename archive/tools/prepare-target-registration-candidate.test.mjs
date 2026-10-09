@@ -13,6 +13,8 @@ import {
   makeTargetIdentityRows,
   makeTargetMetadataRows,
   parseAuthorizedDisplayIdentity,
+  serializeR1MetaProofSummary,
+  verifyR1MetaCoreDebtAdmission,
   verifyR1EvidenceBinding,
   verifyR1ReuseBinding,
 } from './prepare-target-registration-candidate.mjs';
@@ -51,6 +53,25 @@ test('accepts the locked H1 math-upper display alias and rejects grade, path, or
     registeredGrade: '고1', sourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
     identitySourceFile: 'original/high/h1/1final/21_금당고_1학기_기말_고1_기출.js',
   }), { status: 'VALID', grade: '고1', reason: '' });
+});
+
+test('accepts only the canonical H2 probability-statistics identity from existing DB authority', () => {
+  const existingDbContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync('archive/db.js', 'utf8'), existingDbContext);
+  const existingPsRow = existingDbContext.window.mainDB.exams.find(row => row.file === 'original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js');
+  assert.equal(existingPsRow.primaryStandardCourse, '확률과 통계');
+  assert.equal(existingPsRow.courseRanges[0].courseCode, 'H15-PS');
+  assert.equal(existingPsRow.subject, '확률과통계');
+  const psExamUid = '23_강남여고_1학기_중간_고2_확률과통계';
+  const psPath = `archive/exams/original/high/h2/1mid/${psExamUid}.js`;
+  const identity = parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h2', course: 'H15-PS' });
+  assert.equal(identity.sourceFile, `original/high/h2/1mid/${psExamUid}.js`);
+  assert.deepEqual(identity.displayAlias, { school: '강남여고', year: 2023, semester: '1', examType: 'mid', grade: '고2', subject: '확률과통계', contentType: '기출' });
+  assert.equal(identity.displayAlias.subject, existingPsRow.subject);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h1', course: 'H15-PS' }), /ROSTER_GRADE_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: psExamUid, productionRelativePath: psPath, grade: 'h2', course: 'H15-M2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '23_강남여고_1학기_중간_고2_수학II', productionRelativePath: 'archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_수학II.js', grade: 'h2', course: 'H15-PS' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+  assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: '23_강남여고_1학기_중간_고2_확률통계', productionRelativePath: 'archive/exams/original/high/h2/1mid/23_강남여고_1학기_중간_고2_확률통계.js', grade: 'h2', course: 'H15-PS' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
 });
 
 test('builds DB course ranges from embedded approved Meta only', () => {
@@ -317,7 +338,7 @@ test('normalizes only explicit positive META evidence fields from heterogeneous 
     const invalid = writeR1Chain(root, { evidencePath: invalidPath, validationPath: invalidValidationPath, examUid: '22_테스트고_1학기_중간_고2_기하_기출', row: { verdict: 'PASS', metaStatus: 'PENDING' } });
     assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: invalidPath, validationPath: invalidValidationPath, assignment: invalid.assignment, examUid: invalid.evidence.examUid, bank: [{ id: 1 }] }), /R1_META_PROOF_META_PASS_REQUIRED/);
     const missingValidation = { ...invalid.assignment, r1EvidenceSha256: invalid.assignment.r1EvidenceSha256, r1ValidationSha256: '0'.repeat(64) };
-    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: invalidPath, validationPath: invalidValidationPath, assignment: missingValidation, examUid: invalid.evidence.examUid, bank: [{ id: 1 }] }), /R1_META_PROOF_META_PASS_REQUIRED/);
+    assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath: invalidPath, validationPath: invalidValidationPath, assignment: missingValidation, examUid: invalid.evidence.examUid, bank: [{ id: 1 }] }), /ASSIGNMENT_R1_VALIDATION_SHA256_MISMATCH/);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -348,6 +369,116 @@ test('accepts PASS_WITH_META_ONLY_DEBT only for an explicit approved template nu
       assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: invalid.assignment, examUid, bank: [badQuestion] }), /R1_META_PROOF_META_PASS_REQUIRED/);
     }
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('admits only ROOT-bound Maesan q1 and q6-q9 PT/TPL projection debt while keeping source values and manual holds', () => {
+  const root = process.cwd();
+  const examUid = '23_매산여고_1학기_중간_고2_확률과통계';
+  const evidencePath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/R1.recovery.evidence.bound.json`;
+  const validationPath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/R1.recovery.generic-validator.raw.json`;
+  const admissionPath = `archive/analysis/h2-intake-batch01-20261009/${examUid}/technical-registration/producer-v1/ROOT.r1-meta-core-debt-admission.v3.json`;
+  const admissionBytes = fs.readFileSync(path.join(root, admissionPath));
+  const admission = JSON.parse(admissionBytes.toString('utf8'));
+  const supplement = JSON.parse(fs.readFileSync(path.join(root, admission.metaCoreDebtSupplement.path), 'utf8'));
+  const evidenceBytes = fs.readFileSync(path.join(root, evidencePath));
+  const validationBytes = fs.readFileSync(path.join(root, validationPath));
+  const evidence = JSON.parse(evidenceBytes.toString('utf8'));
+  const validation = JSON.parse(validationBytes.toString('utf8'));
+  const sourcePath = path.join(root, admission.scope.productionPath);
+  const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  sourceContext.globalThis = sourceContext;
+  vm.createContext(sourceContext);
+  vm.runInContext(fs.readFileSync(sourcePath, 'utf8'), sourceContext);
+  const bank = JSON.parse(JSON.stringify(sourceContext.window.questionBank));
+  const assignment = {
+    productionRelativePath: admission.scope.productionPath,
+    artifactRawSha256: admission.scope.sourceRawSha256,
+    validatorRawBufferBlobSha1: admission.scope.sourceGitBlobSha1,
+    lockedRosterSha256: admission.scope.lockedRosterSha256,
+    producerAuthorityPath: admission.rootAuthorityReference.path,
+    producerAuthoritySha256: admission.rootAuthorityReference.sha256,
+    r1EvidencePath: admission.r1Evidence.path,
+    r1EvidenceSha256: admission.r1Evidence.sha256,
+    r1ValidationPath: admission.r1Validation.path,
+    r1ValidationSha256: admission.r1Validation.sha256,
+    r1MetaCoreDebtAdmissionPath: admissionPath,
+    r1MetaCoreDebtAdmissionSha256: crypto.createHash('sha256').update(admissionBytes).digest('hex'),
+  };
+  const bound = verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment, examUid, bank });
+  assert.equal(bound.validation.disposition, 'PASS');
+  assert.deepEqual(bound.metaDebtRows.map(row => row.qid), [1, 6, 7, 8, 9]);
+  assert.equal(bound.metaDebtAdmission.path, admissionPath);
+
+  const identities = bank.map((_, index) => ({ questionUid: `fixture-${index + 1}`, sourceOrdinal: index + 1, sourceQuestionNo: index + 1, sourceFingerprint: `fp-${index + 1}` }));
+  const metadataRows = makeTargetMetadataRows({ sourceFile: admission.scope.productionPath.replace(/^archive\/exams\//, ''), bank, identityRows: identities, r1EvidencePath: evidencePath, r1MetaDebtRows: bound.metaDebtRows });
+  for (const qid of [1, 6, 7, 8, 9]) {
+    const source = bank[qid - 1], projected = metadataRows[qid - 1];
+    assert.equal(projected.reviewStatus, 'manual_review');
+    assert.equal(projected.metadataStatus, 'approved_partial_with_explicit_holds');
+    assert.equal(projected.fieldStatus.problemType, 'manual_review_pending');
+    assert.equal(projected.fieldStatus.template, 'manual_review_pending');
+    assert.equal(projected.projectionStatus, source.projectionStatus);
+    assert.deepEqual(projected.metaDebtFields, ['problemTypeKey', 'templateKey']);
+    assert.equal(projected.problemTypeKey, source.problemTypeKey);
+    assert.equal(projected.templateKey, source.templateKey);
+  }
+  assert.equal(metadataRows[0].problemTypeKey, null);
+  assert.equal(metadataRows[0].templateKey, null);
+
+  const ordinaryAssignment = { ...assignment };
+  delete ordinaryAssignment.r1MetaCoreDebtAdmissionPath;
+  delete ordinaryAssignment.r1MetaCoreDebtAdmissionSha256;
+  assert.throws(() => verifyR1EvidenceBinding({ root, evidencePath, validationPath, assignment: ordinaryAssignment, examUid, bank }), /R1_META_PROOF_META_PASS_REQUIRED/);
+
+  for (const mutate of [
+    copy => { copy.scope.allowedQids = [1, 6, 7, 8]; },
+    copy => { copy.r1Evidence.sha256 = '0'.repeat(64); },
+    copy => { copy.metaCoreDebtSupplement.sha256 = '0'.repeat(64); },
+    copy => { copy.admissionPolicy.rows[0].coreMetaAssessment.registeredL2Valid = false; },
+    copy => { copy.admissionPolicy.rows[1].registeredL2.status = 'missing'; },
+  ]) {
+    const invalid = JSON.parse(JSON.stringify(admission));
+    mutate(invalid);
+    assert.throws(() => verifyR1MetaCoreDebtAdmission({ admission: invalid, evidence, assignment, examUid, bank, root }));
+  }
+  const badBank = JSON.parse(JSON.stringify(bank));
+  badBank[0].standardUnitKey = 'H15-PS-99';
+  assert.throws(() => verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment, examUid, bank: badBank, root }), /R1_META_CORE_ADMISSION_SUPPLEMENT_CORE_MISMATCH/);
+  const otherUnresolved = JSON.parse(JSON.stringify(evidence));
+  otherUnresolved.rows[1].metaReview.status = 'META_ONLY_UNRESOLVED';
+  assert.throws(() => verifyR1MetaCoreDebtAdmission({ admission, evidence: otherUnresolved, assignment, examUid, bank, root }), /R1_META_CORE_ADMISSION_SCOPE_EXPANSION_REJECTED/);
+  const wrongContract = JSON.parse(JSON.stringify(evidence));
+  wrongContract.qualityContractVersion = 'LEGACY';
+  assert.throws(() => verifyR1MetaCoreDebtAdmission({ admission, evidence: wrongContract, assignment, examUid, bank, root }), /R1_META_CORE_ADMISSION_R1_CONTRACT_INVALID/);
+
+  const temporaryAuthorityRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-r1-live-meta-authority-'));
+  try {
+    const proofReferences = [admission.rootAuthorityReference, admission.metaCoreDebtSupplement, ...supplement.citationFiles];
+    for (const ref of proofReferences) {
+      const source = path.join(root, ...ref.path.split('/'));
+      const target = path.join(temporaryAuthorityRoot, ...ref.path.split('/'));
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(source, target);
+    }
+    assert.equal(verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment, examUid, bank, root: temporaryAuthorityRoot }).length, 5);
+    const changedAuthorityPath = path.join(temporaryAuthorityRoot, ...supplement.citationFiles[5].path.split('/'));
+    fs.appendFileSync(changedAuthorityPath, '\nchanged after supplement freeze\n');
+    assert.throws(() => verifyR1MetaCoreDebtAdmission({ admission, evidence, assignment, examUid, bank, root: temporaryAuthorityRoot }), /R1_META_CORE_ADMISSION_LIVE_CITATION_SHA256_MISMATCH/);
+  } finally { fs.rmSync(temporaryAuthorityRoot, { recursive: true, force: true }); }
+});
+
+test('serializes a reuse R1 proof without assuming the optional Meta-debt row list exists', () => {
+  const summary = serializeR1MetaProofSummary({
+    relative: 'archive/analysis/reuse/R1.evidence.json',
+    evidenceSha256: 'a'.repeat(64),
+    evidenceCleanLfSha256: 'b'.repeat(64),
+    validationRelative: 'archive/analysis/reuse/R1.validation.json',
+    validationSha256: 'c'.repeat(64),
+    validation: { validatorMode: 'R1_V2', disposition: 'PASS' },
+  }, { artifactSha: 'd'.repeat(40), artifactRawSha256: 'e'.repeat(64), artifactRawBufferBlobSha1: 'd'.repeat(40), rows: [{ qid: 1 }] });
+  assert.equal(summary.allMetaAxesPass, true);
+  assert.equal(Object.hasOwn(summary, 'metaDebtQids'), false);
+  assert.doesNotThrow(() => JSON.stringify(summary));
 });
 
 test('accepts PASS_AFTER_ITEM_RECOVERY only with cleared source status, fresh scoped R1/R2 proof, and active current artifact PASS', () => {

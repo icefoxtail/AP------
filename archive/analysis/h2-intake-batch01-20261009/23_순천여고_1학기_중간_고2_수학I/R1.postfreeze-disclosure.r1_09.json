@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.blind-freeze.r1_09.json",
+    "sha256": "9e1620dcb2d7b14a00c846e1c7e57c37bc458da48bbf4344451f84a479320cbd"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_순천여고_1학기_중간_고2_수학I\\R1.student-only.json",
+    "sha256": "cf9f612506ae0942a67917badaa47fbef37c7532acbbc12c936daa513573a18a"
+  },
+  "sourceRawSha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17",
+  "originalFreezeSourceRawSha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 1,
+      "answer": "②",
+      "solution": "부채꼴의 넓이는\n$\\frac12 r^2\\theta$이다.\n주어진 값 $r=8$, $\\theta=\\frac{\\pi}{4}$를 대입하면\n$\\frac12\\cdot8^2\\cdot\\frac{\\pi}{4}$\n$=32\\cdot\\frac{\\pi}{4}=8\\pi$이다.\n따라서 정답은 ②이다.",
+      "decisiveStep": "S=½r²θ=½·64·π/4=8π"
+    },
+    {
+      "qid": 2,
+      "answer": "①",
+      "solution": "거듭제곱의 거듭제곱에서는 지수를 곱한다.\n$\\left(2^{\\sqrt3}\\right)^{\\sqrt3}=2^{\\sqrt3\\cdot\\sqrt3}=2^3=8$이다.\n또\n$2^{\\frac32}\\cdot\\frac1{\\sqrt2}=2^{\\frac32}\\cdot2^{-\\frac12}=2$이다.\n따라서 구하는 값은 $8+2=10$이고 정답은 ①이다.",
+      "decisiveStep": "(2^√3)^√3=8, 2^(3/2)/√2=2"
+    },
+    {
+      "qid": 3,
+      "answer": "⑤",
+      "solution": "주어진 식에서 로그의 밑을 바꾸어 비를 구한다.\n$5\\log a=3\\log b$이므로\n$\\frac{\\log b}{\\log a}=\\frac53$이다.\n따라서\n$\\log_a b=\\frac{\\log b}{\\log a}=\\frac53$이고\n$10\\log_a b=10\\cdot\\frac53=\\frac{50}{3}$이다.\n따라서 정답은 ⑤이다.",
+      "decisiveStep": "log_a b=log b/log a=5/3"
+    },
+    {
+      "qid": 4,
+      "answer": "",
+      "solution": "",
+      "decisiveStep": "①·②·④가 모두 실수 범위에서 참"
+    },
+    {
+      "qid": 5,
+      "answer": "⑤",
+      "solution": "로그의 진수 조건에서 $x>2$이다.\n로그의 합을 곱으로 바꾸면\n$\\log_2{(x+1)(x-2)}=2$이다.\n따라서\n$(x+1)(x-2)=4$\n$x^2-x-6=0$\n$(x-3)(x+2)=0$이다.\n조건 $x>2$를 만족하는 해는 $\\alpha=3$뿐이다.\n그러므로 $3^\\alpha=27$이고 정답은 ⑤이다.",
+      "decisiveStep": "(x+1)(x−2)=4, x>2이면 x=3"
+    },
+    {
+      "qid": 6,
+      "answer": "④",
+      "solution": "삼각함수의 특수각 값을 각각 구한다.\n$\\sin(-150^\\circ)=-\\frac12$,\n$\\cos(\\frac{4\\pi}{3})=-\\frac12$,\n$\\tan(-\\frac{3\\pi}{4})=1$이다.\n따라서\n$-\\frac12-(-\\frac12)+1=1$이다.\n정답은 ④이다.",
+      "decisiveStep": "−1/2−(−1/2)+1=1"
+    },
+    {
+      "qid": 7,
+      "answer": "①",
+      "solution": "밑 $r=\\frac{a}{a+2}$는 $a>0$이므로 $0<r<1$이다.\n따라서 $f(x)=3r^x$는 감소함수이고, 정의역 $[-2,2]$에서 최댓값은 $x=-2$일 때이다.\n$3r^{-2}=48$에서\n$r^2=\\frac1{16}$, $r=\\frac14$이다.\n그러므로\n$\\frac{a}{a+2}=\\frac14$\n$4a=a+2$\n$a=\\frac23$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution.svg",
+      "decisiveStep": "0<a/(a+2)<1이므로 최댓값은 x=−2"
+    },
+    {
+      "qid": 8,
+      "answer": "②",
+      "solution": "속삭이는 소리에서\n$20=k\\log\\frac{10^{-10}}{10^{-12}}=k\\log 10^2=2k$이므로 $k=10$이다.\n망치질 소리에서는\n$D=10\\log\\frac{10^{-6}}{10^{-12}}=10\\log 10^6=60$이다.\n따라서 크기의 비는 $\\frac{60}{20}=3$이고 정답은 ②이다.",
+      "decisiveStep": "Dwhisper=20 gives k=10; Dhammer=60"
+    },
+    {
+      "qid": 9,
+      "answer": "③",
+      "solution": "$3^a=144$에서 $a=\\log_3 144$이므로\n$\\frac1a=\\log_{144}3$이다.\n같은 방법으로 $\\frac1b=\\log_{144}4$이다.\n따라서\n$\\frac1a+\\frac1b=\\log_{144}3+\\log_{144}4$\n$=\\log_{144}12=\\frac12$이다.\n정답은 ③이다.",
+      "decisiveStep": "1/a+1/b=log_144(12)=1/2"
+    },
+    {
+      "qid": 10,
+      "answer": "①",
+      "solution": "정의역에서 $x>4$이다.\n오른쪽은 $\\log_{1/2}4-1=-2-1=-3$이다.\n왼쪽 로그의 합은\n$\\log_{1/2}{(x-4)(x+3)}$이다.\n밑이 $0$과 $1$ 사이이므로\n$(x-4)(x+3)<(\\frac12)^{-3}=8$이다.\n정리하면\n$x^2-x-20<0$\n$(x+4)(x-5)<0$이므로 $-4<x<5$이다.\n정의역과 함께 보면 $4<x<5$이고, 구간의 길이는 $1$이다.\n정답은 ①이다.",
+      "decisiveStep": "4<x<5"
+    },
+    {
+      "qid": 11,
+      "answer": "⑤",
+      "solution": "분모 $10^{-12}$는 양수이므로 분자의 이차식이 모든 실수 $x$에서 양수여야 한다.\n이차식의 판별식이 음수일 조건을 쓰면\n$\\frac D4=(3^k)^2-(7\\cdot3^k+18)<0$이다.\n인수분해하면\n$(3^k-9)(3^k+2)<0$이다.\n$3^k+2>0$이므로 $3^k<9$, 즉 $k<2$이다.\n따라서 범위는 ⑤이다.",
+      "decisiveStep": "D/4=(3^k−9)(3^k+2)<0 iff k<2"
+    },
+    {
+      "qid": 12,
+      "answer": "③",
+      "solution": "$a=1,2,3,4,5,6$을 대입한다.\n$X=\\{\\sin\\frac{\\pi}{7},\\sin\\frac{2\\pi}{7},\\sin\\frac{3\\pi}{7},\\sin\\frac{4\\pi}{7},\\sin\\frac{5\\pi}{7},\\sin\\frac{6\\pi}{7}\\}$이다.\n$\\sin(\\pi-t)=\\sin t$이므로\n$\\sin\\frac{6\\pi}{7}=\\sin\\frac{\\pi}{7}$,\n$\\sin\\frac{5\\pi}{7}=\\sin\\frac{2\\pi}{7}$,\n$\\sin\\frac{4\\pi}{7}=\\sin\\frac{3\\pi}{7}$이다.\n처음 세 값은 서로 다르므로 원소는 3개이다.\n정답은 ③이다.",
+      "decisiveStep": "sin(π−t)=sin t yields three pairs"
+    },
+    {
+      "qid": 13,
+      "answer": "②",
+      "solution": "$y=\\log_2x$를 $x$축에 대칭이동하면 $y=-\\log_2x$이다.\n이를 위로 $m$만큼 옮긴 그래프는\n$g(x)=-\\log_2x+m$이다.\n직선 $y=2$에 대한 대칭 그래프의 식은\n$y=4-\\log_2x$이다.\n따라서 $-\\log_2x+m=4-\\log_2x$이므로 $m=4$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution.svg",
+      "decisiveStep": "−log₂x+m=4−log₂x gives m=4"
+    },
+    {
+      "qid": 14,
+      "answer": "①",
+      "solution": "$t=3^{x+1}$이라 두면 $t>0$이고, $x>0$은 $t>3$, $x<0$은 $0<t<3$과 같다.\n$|t-5|=k$의 두 후보는 $t=5+k$, $t=5-k$이다.\n첫 값은 $k>0$일 때 항상 $3$보다 크다.\n둘째 값이 양수이면서 $3$보다 작으려면\n$0<5-k<3$이므로 $2<k<5$이다.\n자연수 $k$는 $3,4$이고 합은 $7$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution.svg",
+      "decisiveStep": "5−k∈(0,3) iff 2<k<5; integers 3,4"
+    },
+    {
+      "qid": 15,
+      "answer": "⑤",
+      "solution": "$-x^2+ax+2=3^n$을 생각하면\n$x^2-ax+(3^n-2)=0$이다.\n자연수 $n$마다 실근 개수는 판별식\n$D=a^2-4(3^n-2)=a^2+8-4\\cdot3^n$으로 결정된다.\n실근이 2개인 단계가 두 번이고 한 번 접하는 단계가 한 번이면 전체가 5개다.\n따라서 세 번째 단계 $n=3$에서 꼭짓값이 $3^3=27$이고, 그보다 작은 $3,9$에서는 각각 서로 다른 두 근이 생긴다.\n$\\frac{a^2}{4}+2=27$에서 $a^2=100$이다.\n$a>0$이므로 $a=10$이고 정답은 ⑤이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution.svg",
+      "decisiveStep": "The fifth total root count occurs when the third level is tangent: max=27, a=10"
+    },
+    {
+      "qid": 16,
+      "answer": "②",
+      "solution": "$x_2-x_1=x_3-x_2$이므로 ㄱ의 두 로그 진수는 같다. ㄱ은 참이다.\n또\n$x_1+x_2+x_3=3x_2$이므로 ㄴ도 참이다.\n$x_1<x_2<x_3$이고 두 간격이 같으므로\n$\\frac{x_2}{x_1}=1+\\frac d{x_1}>1+\\frac d{x_2}=\\frac{x_3}{x_2}$이다.\n밑 $1/2$인 로그함수는 감소하므로\n$\\log_{1/2}\\frac{x_2}{x_1}<\\log_{1/2}\\frac{x_3}{x_2}$이다. ㄷ은 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ②이다.",
+      "decisiveStep": "ㄱ and ㄴ true; log base 1/2 reverses the ratio comparison in ㄷ"
+    },
+    {
+      "qid": 17,
+      "answer": "④",
+      "solution": "로그의 분모와 분자는 양수이므로 비가 같다는 식에서\n$(\\log a)^2=(\\log\\sqrt b)^2$이고 두 값이 양수이므로\n$\\log a=\\log\\sqrt b$이다.\n따라서 $a=\\sqrt b$, 즉 $b=a^2$이다.\n$1<a,b<50$에서 $a$는 $2,3,4,5,6,7$이고 각 값마다 $b=a^2<50$이 성립한다.\n순서쌍은 6개이며 정답은 ④이다.",
+      "decisiveStep": "log a=log√b gives b=a²; a=2…7"
+    },
+    {
+      "qid": 18,
+      "answer": "②",
+      "solution": "$Q$는 $AP$의 중점이고 $QR\\perp AB$이므로 $R$은 $AP$의 수평 중점이다.\n$\\angle APB=90^\\circ$이고 $\\angle PAB=30^\\circ$이므로 $\\triangle PAB$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형이다.\n$AB=L$이라 두면 $AP=\\frac{\\sqrt3}{2}L$이고, $P$의 높이는\n$AP\\sin30^\\circ=\\frac{\\sqrt3}{4}L$이다.\n또 $AR=AP\\cos30^\\circ/2=3L/8$, $OR=AB/2-AR=L/8$이다.\n따라서\n$AR\\cdot OR=3L^2/64$이고\n$\\log_3(3L^2/64)=8/3$에서\n$3L^2/64=3^{8/3}$, $L^2=64\\cdot3^{5/3}$이다.\n삼각형 넓이는\n$\\frac12L\\cdot\\frac{\\sqrt3}{4}L=\\frac{\\sqrt3}{8}L^2=72\\sqrt[6]{3}$이다.\n따라서 $k=72$이고 정답은 ②이다.",
+      "decisiveStep": "AR=3L/8, OR=L/8, area=72√[6]3"
+    },
+    {
+      "qid": 19,
+      "answer": "①",
+      "solution": "$g(x)=1$에서\n$\\log_2|x-3|-2=1$, 따라서 $|x-3|=8$이다.\n그러므로 $A=(-5,1)$, $B=(11,1)$이다.\n점 $B$를 지나고 기울기가 $-1$인 직선은 $y=-x+12$이다.\n$f(x)=\\log_2(x-3)-2$의 역함수는\n$y=3+2^{x+2}$이다.\n교점에서 $3+2^{x+2}=-x+12$이다. $x=1$을 대입하면 양쪽이 모두 $11$이므로 $C=(1,11)$이다.\n밑변 $AB=16$, 높이는 $10$이므로 넓이는 $\\frac12\\cdot16\\cdot10=80$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution.svg",
+      "decisiveStep": "A=(−5,1), B=(11,1), C=(1,11), area 80"
+    },
+    {
+      "qid": 20,
+      "answer": "①",
+      "solution": "$2\\cos(x/3)$의 주기는 $6\\pi$이므로 ㄱ은 참이다.\n치역은 $[k-2,k+2]$이다. 정수 $k$에 따라 정수 원소의 개수는 달라지므로 모든 실수 $k$에 대한 ㄴ은 거짓이다.\n$u=f(x)-1$의 범위는 $[k-3,k+1]$이다.\n$M-m=3$이 되려면 이 구간이 0을 포함하는 경우\n$M=\\max(|k-3|,|k+1|)$, $m=0$이므로 $M=3$이어야 한다. 이는 $k=0$ 또는 $k=2$에서 성립한다.\n두 값의 곱은 $0$이므로 ㄷ의 주장은 거짓이다.\n따라서 ㄱ만 참이고 정답은 ①이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution.svg",
+      "decisiveStep": "ㄱ true; ㄴ false for arbitrary real k; ㄷ yields product 0, not −1"
+    },
+    {
+      "qid": 21,
+      "answer": "",
+      "solution": "",
+      "decisiveStep": "sinθ<0 and cosθ<0 make both real square-root radicands negative"
+    },
+    {
+      "qid": 22,
+      "answer": "a=-1, k=8",
+      "solution": "$C$의 $x$좌표가 $2$이므로 $C=(2,4)$이고\n$-2(2)+k=4$에서 $k=8$이다.\n$A=(0,8)$이다. 세 점은 같은 직선 위에 있고, $A$가 $BC$를 $3:4$로 외분하며 그림에서 $A,B,C$ 순으로 놓이므로\n$AB:AC=3:4$이다.\n$x_A=0$, $x_C=2$이므로\n$|x_B|:|x_C|=3:4$에서 $x_B=3/2$이다.\n$B$는 $y=4^x-3$ 위에 있으므로\n$y_B=4^{3/2}-3=8-3=5$이다.\n직선에서 $y_B=-2(3/2)+8=5$로 일치한다.\n$C$는 $y=2^{x+a}+2$ 위에 있으므로\n$4=2^{2+a}+2$, $2^{2+a}=2$, $a=-1$이다.\n따라서 $a=-1$, $k=8$이다.",
+      "decisiveStep": "A=(0,8), B=(3/2,5), C=(2,4), so a=−1,k=8"
+    },
+    {
+      "qid": 23,
+      "answer": "\\frac{4+\\sqrt{10}}{3}",
+      "solution": "교점 $A$는\n$\\log_{1/3}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=u/2$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{1/3}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
+      "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution.svg",
+      "decisiveStep": "k=3; xA=−2, xB=√10, xC=6"
+    }
+  ],
+  "disclosedAt": "2026-10-09T04:45:08.093Z"
+}

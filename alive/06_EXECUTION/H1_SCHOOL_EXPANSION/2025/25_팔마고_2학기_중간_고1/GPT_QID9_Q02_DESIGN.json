@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "ALIVE_GPT_QID9_MATH_BLUEPRINT_V2",
+  "authority": "2026-10-09 Gemini backward design and school-style Korean stem CURRENT",
+  "sourceExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 2,
+  "primaryRPMRecordIds": [
+    "H1-RPM-243",
+    "H1-RPM-244"
+  ],
+  "lockedPrimaryL3": "명제와 조건",
+  "lockedParentL3Description": "조건의 참·거짓과 부정(진리집합 여집합)을 판단하는 논리 관계가 최종 목표",
+  "targetCourse": "공통수학2",
+  "standardUnitKey": "H22-C2-06",
+  "standardUnit": "명제",
+  "subUnitKey": "H22-C2-06-CORE",
+  "subUnit": "명제 핵심 개념",
+  "coverageBaseline": "UNKNOWN; source q2 and current rpm and nearby registered candidates reviewed, not a complete cross-exam student experience census",
+  "invariants": [
+    "조건 p의 부정/진리집합 또는 전체 명제의 참·거짓이 마지막 판단",
+    "부등식 등은 필요한 선수 연산 또는 CrossConcept이며 최종 질문은 명제와 조건",
+    "학생에게 보이는 final stem에 비밀 답·중간 도출식 불포함"
+  ],
+  "modeDistinction": "A1 STRICT_VARIANT, A2/A3 EXAM_FOLLOWUP, B/C TYPE_BANK proposals; actual Validator proof needs reviewer",
+  "existingRPM": [
+    {
+      "id": "H1-RPM-243",
+      "l3": "명제와 조건",
+      "l4": "진리집합",
+      "status": "DIRECT_ACTIVE"
+    },
+    {
+      "id": "H1-RPM-244",
+      "l3": "명제와 조건",
+      "l4": "명제의 참·거짓",
+      "status": "DIRECT_ACTIVE"
+    }
+  ],
+  "generatedExtension": {
+    "id": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+    "parentL3": "명제와 조건",
+    "label": "양화 명제의 부정과 매개변수 판정",
+    "signature": "전체 명제의 부정 또는 전체 참 조건을 존재 반례·구간 포함으로 환원",
+    "status": "GENERATED_ACTIVE_SEMANTIC_NOT_STUDENT_APPROVED",
+    "comparison": [
+      "H1-RPM-243: 진리집합",
+      "H1-RPM-244: 명제의 참·거짓"
+    ],
+    "examples": [
+      "C2",
+      "C3"
+    ],
+    "canonicalRPMChanged": false
+  },
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q02-A1",
+      "purpose": "반복 숙달",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [],
+      "conditions": [
+        "엄격 부등식의 여집합",
+        "등호 복원"
+      ],
+      "studentMentalPath": "|x-4|>3 부정 → ≤ 경계 포함",
+      "difficultyCandidate": 1,
+      "levelCandidate": "하",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "절댓값 조건의 직접 부정",
+      "answer": "①",
+      "choicesAndActualMistakeRationales": [
+        "② 등호를 누락",
+        "③ 부정 대신 원조건에 등호 추가",
+        "④ 오른쪽 상수의 부호만 반전",
+        "⑤ 절댓값의 비음수성 오해"
+      ],
+      "mode": "STRICT_VARIANT",
+      "experience": "ORIGINAL_FIDELITY",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q02-A2",
+      "purpose": "반복 숙달",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [
+        "이차식 인수분해: 참 구간 산출"
+      ],
+      "conditions": [
+        "구간의 양끝 포함·배제"
+      ],
+      "studentMentalPath": "x(x-4)<0 진리집합 → 여집합과 끝점",
+      "difficultyCandidate": 2,
+      "levelCandidate": "하",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "이차부등식 조건의 부정",
+      "answer": "④",
+      "choicesAndActualMistakeRationales": [
+        "① 원조건의 양 끝점을 빠뜨림",
+        "② 진리집합의 닫힌 구간만 제시",
+        "③ 여집합의 합집합을 교집합으로 착각",
+        "⑤ 부정 대신 원조건을 선택"
+      ],
+      "mode": "EXAM_FOLLOWUP",
+      "experience": "ORIGINAL_FIDELITY",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q02-A3",
+      "purpose": "반복 숙달",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [
+        "구간 교집합·여집합: 연결어 해석"
+      ],
+      "conditions": [
+        "그리고→또는",
+        "양쪽 경계"
+      ],
+      "studentMentalPath": "x≥−1 그리고 x<4 → x<−1 또는 x≥4",
+      "difficultyCandidate": 2,
+      "levelCandidate": "중",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "두 조건의 논리적 부정",
+      "answer": "②",
+      "choicesAndActualMistakeRationales": [
+        "① 양 끝의 등호를 모두 잘못 처리",
+        "③ 또는를 그리고로 오해",
+        "④ 열린/닫힌 경계만 반전",
+        "⑤ 왼쪽 경계에서 등호를 잘못 포함"
+      ],
+      "mode": "EXAM_FOLLOWUP",
+      "experience": "ORIGINAL_FIDELITY",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q02-B1",
+      "purpose": "사고 확장",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [
+        "절댓값 일차부등식: 진리집합 계산",
+        "정수의 개수: 경계 제외 계산"
+      ],
+      "conditions": [
+        "-5\\le x\\le5",
+        "원조건의 부정"
+      ],
+      "studentMentalPath": "절댓값 부등식 → 부정의 분리 구간 → 정수 열거",
+      "difficultyCandidate": 2,
+      "levelCandidate": "중",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "부정의 진리집합과 정수 개수",
+      "answer": "⑤",
+      "choicesAndActualMistakeRationales": [
+        "① 경계·양쪽 가지 대량 누락",
+        "② 두 구간 각각 1개씩만 세는 오류",
+        "③ 음수 쪽 세 개만 계산",
+        "④ 양수 쪽 일부 누락"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q02-B2",
+      "purpose": "사고 확장",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [
+        "이차부등식: 진리집합 확인",
+        "집합의 합집합: 두 조건 결합"
+      ],
+      "conditions": [
+        "p 또는 q의 부정",
+        "끝점에서 참/거짓 판정"
+      ],
+      "studentMentalPath": "p와 q의 참 구간을 합침 → 전체 부정 구간",
+      "difficultyCandidate": 3,
+      "levelCandidate": "중",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "두 조건의 합집합 부정",
+      "answer": "③",
+      "choicesAndActualMistakeRationales": [
+        "① 왼쪽 경계 −2를 부정에 잘못 포함",
+        "② 드모르간의 연결어를 잘못 유지",
+        "④ 양쪽 끝점 모두 부정에 포함",
+        "⑤ 부정이 아닌 원래 합집합을 선택"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q02-B3",
+      "purpose": "사고 확장",
+      "l4": "H1-RPM-244",
+      "crossConcepts": [
+        "절댓값 부등식: 매개변수에 관한 범위",
+        "정수 매개변수: 두 조건 교집합"
+      ],
+      "conditions": [
+        "p(-1) 참",
+        "p(3) 거짓",
+        "a 정수"
+      ],
+      "studentMentalPath": "두 지정값의 참/거짓 → a의 두 범위 교집합 → 개수",
+      "difficultyCandidate": 3,
+      "levelCandidate": "중",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "참과 거짓 조건으로 매개변수 역산",
+      "answer": "①",
+      "choicesAndActualMistakeRationales": [
+        "② 한쪽 경계 정수를 빠뜨림",
+        "③ 열린 구간 끝의 정수를 포함",
+        "④ 두 조건의 교집합을 지나치게 제한",
+        "⑤ 두 번째 조건을 무시하고 첫 범위 전체를 셈"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q02-C1",
+      "purpose": "실전 평가",
+      "l4": "H1-RPM-243",
+      "crossConcepts": [
+        "절댓값 부등식: 첫 진리집합",
+        "이차부등식: 둘째 진리집합",
+        "정수열거: 부정의 최종 개수"
+      ],
+      "conditions": [
+        "p 또는 q의 부정",
+        "−6부터 7까지 정수",
+        "비연결 구간 3개"
+      ],
+      "studentMentalPath": "두 구간 합집합 → 여집합의 세 영역 → 정수 7개",
+      "difficultyCandidate": 3,
+      "levelCandidate": "상",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "복합 조건 부정의 정수해 판정",
+      "answer": "④",
+      "choicesAndActualMistakeRationales": [
+        "① 한 가지 구간만 세는 오류",
+        "② 원래 참 구간에서 일부만 제외",
+        "③ 경계 정수 하나를 누락",
+        "⑤ 원조건의 경계 정수 하나를 추가"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q02-C2",
+      "purpose": "실전 평가",
+      "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "crossConcepts": [
+        "제곱 부등식: 거리형 구간",
+        "구간 교차: 존재하는 반례 판단"
+      ],
+      "conditions": [
+        "모든 실수 x∈[0,2]",
+        "부정은 존재하는 반례",
+        "a 정수 −3..5"
+      ],
+      "studentMentalPath": "∀ 명제 부정 → ∃ 반례 → 두 구간의 공통점 조건 → 정수 a 세기",
+      "difficultyCandidate": 4,
+      "levelCandidate": "상",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "전체 명제의 부정과 매개변수",
+      "answer": "②",
+      "choicesAndActualMistakeRationales": [
+        "① 경계 조건을 과도하게 제한",
+        "③ 열린 구간의 경계값 a를 추가",
+        "④ 다른 정수 경계까지 포함",
+        "⑤ 두 구간이 포함 관계에 있을 필요가 있다고 오해"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q02-C3",
+      "purpose": "실전 평가",
+      "l4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION",
+      "crossConcepts": [
+        "제곱 부등식: 매개변수 이동 구간",
+        "구간 포함: 함의의 진리집합 판정"
+      ],
+      "conditions": [
+        "모든 실수 x",
+        "p(x) 또는 ~q_a(x)",
+        "a 정수 −5..5"
+      ],
+      "studentMentalPath": "∀x(p∨~q) → q 참인 모든 x는 p 참 → 열린 구간의 닫힌 구간 포함 → 정수 a",
+      "difficultyCandidate": 4,
+      "levelCandidate": "상",
+      "stemQualityBasis": "기출식 짧은 조건 제시·자연스러운 질문·불필요한 가공목표 생략",
+      "finalObjective": "모든 실수에 대한 복합명제 참 조건",
+      "answer": "⑤",
+      "choicesAndActualMistakeRationales": [
+        "① 포함 관계를 한 끝만 검사",
+        "② 정수 a의 시작·끝 범위 일부 누락",
+        "③ 열린 구간 경계와 전체 명제 혼동",
+        "④ 한 끝 정수를 누락"
+      ],
+      "mode": "TYPE_BANK",
+      "experience": "L3_EXPANSION",
+      "qualityState": "CREATE_DRAFT_SELF_CHECK_ONLY"
+    }
+  ],
+  "studentRegistration": "NOT_REGISTERED",
+  "independentReview": "NOT_RUN",
+  "newStudentUIDs": 9,
+  "answerHistogram": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  }
+}

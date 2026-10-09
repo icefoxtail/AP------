@@ -1,0 +1,11 @@
+file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/register-target-exam.mjs:53
+  for(const asset of assignment.releaseAssets){if(shaFile(path.join(root,'archive',asset.ref))!==asset.sha256)throw Error('asset SHA mismatch: '+asset.ref);}
+                                ^
+
+TypeError: assignment.releaseAssets is not iterable
+    at file:///C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/tools/register-target-exam.mjs:53:33
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

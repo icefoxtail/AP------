@@ -1,0 +1,270 @@
+Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006
+TAP version 13
+# Subtest: production-size compose curriculum and scope interactions stay responsive
+ok 1 - production-size compose curriculum and scope interactions stay responsive
+  ---
+  duration_ms: 1611.2297
+  type: 'test'
+  ...
+# curriculum all: 253.3ms
+# curriculum 2015: 125.8ms
+# curriculum 2022: 80.3ms
+# scope checkbox: 58.8ms
+# Subtest: select all and count edits do not block the production-size composition form
+ok 2 - select all and count edits do not block the production-size composition form
+  ---
+  duration_ms: 1772.5999
+  type: 'test'
+  ...
+# select-all click: 218.1ms
+# equal selection/count edit: 207.2ms
+# all selection/count edit: 205.8ms
+# Subtest: original Finder exam, solution and answer open the Archive 1 source URL synchronously without storing a snapshot
+ok 3 - original Finder exam, solution and answer open the Archive 1 source URL synchronously without storing a snapshot
+  ---
+  duration_ms: 9.8912
+  type: 'test'
+  ...
+# Subtest: browser output metrics separate canonical JSON bytes, base64 data URLs, and decoded image bytes
+ok 4 - browser output metrics separate canonical JSON bytes, base64 data URLs, and decoded image bytes
+  ---
+  duration_ms: 9.8025
+  type: 'test'
+  ...
+# Subtest: 50-question multi-image materialization reports UTF-8 and pinned-image growth independently
+ok 5 - 50-question multi-image materialization reports UTF-8 and pinned-image growth independently
+  ---
+  duration_ms: 9.7815
+  type: 'test'
+  ...
+# Subtest: separate Saved Paper, batch, Archive2 request-text, Assignment text, and PDF injection boundaries remain explicit
+ok 6 - separate Saved Paper, batch, Archive2 request-text, Assignment text, and PDF injection boundaries remain explicit
+  ---
+  duration_ms: 0.4543
+  type: 'test'
+  ...
+# Subtest: canonical serialization sorts object keys and preserves array order
+ok 7 - canonical serialization sorts object keys and preserves array order
+  ---
+  duration_ms: 1.5352
+  type: 'test'
+  ...
+# Subtest: producer creates a versioned SHA-256 envelope that its consumer verifies
+ok 8 - producer creates a versioned SHA-256 envelope that its consumer verifies
+  ---
+  duration_ms: 9.7305
+  type: 'test'
+  ...
+# Subtest: consumer fails closed for changed payload, contract, mode, or request identity
+ok 9 - consumer fails closed for changed payload, contract, mode, or request identity
+  ---
+  duration_ms: 1.9816
+  type: 'test'
+  ...
+# Subtest: question count and ordered UID list are bound to materialized questions
+ok 10 - question count and ordered UID list are bound to materialized questions
+  ---
+  duration_ms: 0.4304
+  type: 'test'
+  ...
+# Subtest: envelope rejects split or incomplete payload and expired output
+ok 11 - envelope rejects split or incomplete payload and expired output
+  ---
+  duration_ms: 1.3955
+  type: 'test'
+  ...
+# Subtest: immutable references are accepted as a single payload authority
+ok 12 - immutable references are accepted as a single payload authority
+  ---
+  duration_ms: 1.1845
+  type: 'test'
+  ...
+# Subtest: Archive2 output consumption requires one exact request envelope before any legacy path
+ok 13 - Archive2 output consumption requires one exact request envelope before any legacy path
+  ---
+  duration_ms: 1.4625
+  type: 'test'
+  ...
+# Subtest: Archive2 browser producers do not persist questions and metadata as separate keys
+ok 14 - Archive2 browser producers do not persist questions and metadata as separate keys
+  ---
+  duration_ms: 1.1249
+  type: 'test'
+  ...
+# Subtest: embedded Output Envelope URLs carry iframe-only preview mode
+ok 15 - embedded Output Envelope URLs carry iframe-only preview mode
+  ---
+  duration_ms: 0.4272
+  type: 'test'
+  ...
+# Subtest: same-source Output Envelope mode switching uses the existing producer
+ok 16 - same-source Output Envelope mode switching uses the existing producer
+  ---
+  duration_ms: 0.3781
+  type: 'test'
+  ...
+# Subtest: Worker PDF builds and validates an envelope without relying on browser IndexedDB
+ok 17 - Worker PDF builds and validates an envelope without relying on browser IndexedDB
+  ---
+  duration_ms: 0.2609
+  type: 'test'
+  ...
+# Subtest: frozen assignment QPP 1/2 stays exact through envelope routing and rendering
+ok 18 - frozen assignment QPP 1/2 stays exact through envelope routing and rendering
+  ---
+  duration_ms: 0.2059
+  type: 'test'
+  ...
+# Subtest: an isolated output window receives and validates its exact snapshot when both storage backends fail
+ok 19 - an isolated output window receives and validates its exact snapshot when both storage backends fail
+  ---
+  duration_ms: 38.2916
+  type: 'test'
+  ...
+# Subtest: IndexedDB transport stores and reads one exact, validated envelope
+ok 20 - IndexedDB transport stores and reads one exact, validated envelope
+  ---
+  duration_ms: 14.9148
+  type: 'test'
+  ...
+# Subtest: IndexedDB Internal error preserves a complete validated output across reopened stores
+ok 21 - IndexedDB Internal error preserves a complete validated output across reopened stores
+  ---
+  duration_ms: 4.4386
+  type: 'test'
+  ...
+# Subtest: fallback output rejects corrupted snapshots and expires without deleting unrelated storage
+ok 22 - fallback output rejects corrupted snapshots and expires without deleting unrelated storage
+  ---
+  duration_ms: 3.3877
+  type: 'test'
+  ...
+# Subtest: publish and reopened consumers retain fallback output after IndexedDB recovers
+ok 23 - publish and reopened consumers retain fallback output after IndexedDB recovers
+  ---
+  duration_ms: 4.0856
+  type: 'test'
+  ...
+# Subtest: large or quota-blocked fallback outputs remain readable without a localStorage write
+ok 24 - large or quota-blocked fallback outputs remain readable without a localStorage write
+  ---
+  duration_ms: 185.8487
+  type: 'test'
+  ...
+# Subtest: A/B request cleanup is exact and cannot delete another owner or request
+ok 25 - A/B request cleanup is exact and cannot delete another owner or request
+  ---
+  duration_ms: 12.6269
+  type: 'test'
+  ...
+# Subtest: expired records fail closed and are removed only for their owner
+ok 26 - expired records fail closed and are removed only for their owner
+  ---
+  duration_ms: 2.631
+  type: 'test'
+  ...
+# Subtest: owner cleanup stays scoped while TTL scavenging removes only expired envelope records
+ok 27 - owner cleanup stays scoped while TTL scavenging removes only expired envelope records
+  ---
+  duration_ms: 2.5748
+  type: 'test'
+  ...
+# Subtest: serialization failures do not fall back to split browser keys
+ok 28 - serialization failures do not fall back to split browser keys
+  ---
+  duration_ms: 1.841
+  type: 'test'
+  ...
+# Subtest: a full primary IndexedDB transfers one exact output in memory without another storage write
+ok 29 - a full primary IndexedDB transfers one exact output in memory without another storage write
+  ---
+  duration_ms: 1.8901
+  type: 'test'
+  ...
+# Subtest: assignment envelope URLs preserve every supported frozen QPP
+ok 30 - assignment envelope URLs preserve every supported frozen QPP
+  ---
+  duration_ms: 2.0959
+  type: 'test'
+  ...
+# Subtest: mode envelopes preserve the exact source, owner, snapshot, and ordered UID list
+ok 31 - mode envelopes preserve the exact source, owner, snapshot, and ordered UID list
+  ---
+  duration_ms: 5.1698
+  type: 'test'
+  ...
+# Subtest: PDF readiness rejects clipped question containers even when the page itself fits
+ok 32 - PDF readiness rejects clipped question containers even when the page itself fits
+  ---
+  duration_ms: 2.0725
+  type: 'test'
+  ...
+# Subtest: PDF readiness accepts question containers with no hidden overflow
+ok 33 - PDF readiness accepts question containers with no hidden overflow
+  ---
+  duration_ms: 0.2946
+  type: 'test'
+  ...
+# Subtest: preview acknowledges input before source preparation and clears loading on an engine error
+ok 34 - preview acknowledges input before source preparation and clears loading on an engine error
+  ---
+  duration_ms: 9.2146
+  type: 'test'
+  ...
+# Subtest: standalone readers expose only the compact mobile back/mode/more controls
+ok 35 - standalone readers expose only the compact mobile back/mode/more controls
+  ---
+  duration_ms: 1.4392
+  type: 'test'
+  ...
+# Subtest: preview stays embedded and mode actions do not reset an iframe
+ok 36 - preview stays embedded and mode actions do not reset an iframe
+  ---
+  duration_ms: 0.7003
+  type: 'test'
+  ...
+# Subtest: Finder, Saved Paper, and Assignment print URLs are standalone outputs
+ok 37 - Finder, Saved Paper, and Assignment print URLs are standalone outputs
+  ---
+  duration_ms: 0.3227
+  type: 'test'
+  ...
+# Subtest: browser smoke can verify preview-only rendering inside an iframe
+ok 38 - browser smoke can verify preview-only rendering inside an iframe
+  ---
+  duration_ms: 0.1805
+  type: 'test'
+  ...
+# Subtest: Archive 2 unit preparation does not duplicate the question snapshot in legacy browser keys
+ok 39 - Archive 2 unit preparation does not duplicate the question snapshot in legacy browser keys
+  ---
+  duration_ms: 7.6621
+  type: 'test'
+  ...
+# Subtest: unit assignment uses its in-memory snapshot without requiring legacy localStorage keys
+ok 40 - unit assignment uses its in-memory snapshot without requiring legacy localStorage keys
+  ---
+  duration_ms: 3.2141
+  type: 'test'
+  ...
+# Subtest: the embedded unit assignment consumes the shared envelope and passes the exact snapshot to class selection
+ok 41 - the embedded unit assignment consumes the shared envelope and passes the exact snapshot to class selection
+  ---
+  duration_ms: 4.586
+  type: 'test'
+  ...
+# Subtest: the unit preview republishes an expired cached request instead of reopening a dead output
+ok 42 - the unit preview republishes an expired cached request instead of reopening a dead output
+  ---
+  duration_ms: 4.8228
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7918.4481

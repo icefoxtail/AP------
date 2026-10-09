@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CORRECTION_REVIEW_CALIBRATION_V1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "recordedAt": "2026-10-09T04:45:02.1455710Z",
+  "reviewerId": "r1_07",
+  "chronology": "SUPPLEMENTAL_SAMPLE_REVIEW_AFTER_FIRST_VALIDATOR_FAIL; NOT_BACKDATED_AS_THE_ORIGINAL_PREFLIGHT",
+  "originalPreflight": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/R1.golden-negative-preflight.corrected.v1.json",
+    "sha256": "68ae8a04b7581b1abcf4e890f0f987c8e968d91ea0e0a9b4a349ebce327fae6c",
+    "occurredBeforeTargetSolutionRepairs": true,
+    "coverageGap": "It read all three fixed Golden sources and the Negative fixture before target edits, but the recorded item sample selection did not include a solution SVG from every Golden source that contains solutionImage."
+  },
+  "firstGenericValidatorFailure": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/R1.generic-v2-report.raw.json",
+    "sha256": "90e2008ea8961643afd7d3e537ce2fb7facb0f06d1985f480469e44edfaa482",
+    "issues": [
+      "ARTIFACT_GOLDEN_CALIBRATION_REQUIRED",
+      "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+    ],
+    "preserved": true
+  },
+  "fixedGoldenSet": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "내분점 좌표→중점 좌표→거리 계산이 수식으로 분리되어 비율 가중치와 좌표 대입을 따라갈 수 있다."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "observation": "원의 중심을 표준형에서 읽고 평행이동과 원점대칭을 좌표에 순서대로 적용한다.",
+          "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+          "renderedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\golden-maesan-q7.svg.png",
+          "renderedPngSha256": "ed17859b2bc4b410f5836a6b8ba8c8e1b950669430efaee573f975a2eac80b2"
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b1d50c91842ac94ea225b99",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "두 좌표 차를 계산하고 거리 공식에 대입해 거리를 단계별로 줄인다."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "기울기를 각각 읽고 수직 조건을 적용한다. 실제 SVG line data는 x+3y+2=0과 6x-2y-1=0이며 두 기울기 곱은 -1이다.",
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "renderedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\golden-hyochon-q2.svg.png",
+          "renderedPngSha256": "514fe1e7ba5b9eb1b1342029902a550fcf9ff24aafcfb7744be77c50d5b1719f"
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "observation": "각 보기의 원소 관계 판단을 개별 문단으로 나눈다."
+        },
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "observation": "포함배제 조건에서 교집합의 하한을 구한 뒤 여집합 합집합 최댓값을 얻는다. 실제 Venn SVG는 A=20, B=15, 겹침 y, 바깥 영역 0의 배치를 표시하고 y≥5를 명시한다.",
+          "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+          "renderedPng": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\golden-jeil-q6.svg.png",
+          "renderedPngSha256": "0fe5d2104a523849553353f63857b77faf88a29a68885627cfc090cf8afd22f8"
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Actual coordinate/topology calculations are required for SVGs; enumerated source conditions must be block-separated; runtime strings and exact Meta null/ACTIVE lookup matter."
+  },
+  "sampleSequence": "All three fixed Golden samples and all three source visual assets were read before q13/q21 correction-review recheck; the Hyochon SVG was already read during the original preflight, Maesan q7 and Jeil q6 were added after the first generic failure.",
+  "next": "Re-read only changed target solution loci q13 and q21 after this supplemental calibration; do not repeat untouched qids or full math sweep.",
+  "supersedes": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.correction-review-calibration.v1.json",
+    "sha256": "c381a9fceb152d3f18068fc26b9f8c8f622b8901e681f552393d1f463814c267"
+  },
+  "fixedProvenanceErrors": [
+    "Maesan q7 rendered PNG raw SHA-256 corrected to physical file hash.",
+    "Correction-review calibration record time aligned to its actual file creation time."
+  ]
+}

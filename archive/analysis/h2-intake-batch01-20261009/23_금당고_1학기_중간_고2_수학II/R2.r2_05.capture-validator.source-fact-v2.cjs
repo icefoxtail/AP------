@@ -1,0 +1,18 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const {spawnSync}=require('node:child_process');
+const root='C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------';
+const exam='C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/23_금당고_1학기_중간_고2_수학II.js';
+const evidence='C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.evidence.source-fact-v2.json';
+const assetRoot='C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II';
+const validator=path.join(root,'archive/tools/archive-stage-validator.mjs');
+const argv=[validator,'--exam',exam,'--evidence',evidence,'--stage','R2','--quality-contract','JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006','--execution-line','CODEX','--asset-root',assetRoot,'--json'];
+const result=spawnSync(process.execPath,argv,{cwd:root,encoding:'utf8',windowsHide:true});
+const ev=path.dirname(evidence);
+const write=(name,data)=>fs.writeFileSync(path.join(ev,name),data,{flag:'wx'});
+write('R2.validator.source-fact-v2.stdout.raw.json',result.stdout||'');
+write('R2.validator.source-fact-v2.stderr.raw.txt',result.stderr||'');
+const receipt={schemaVersion:'CODEX_VALIDATOR_PROCESS_CAPTURE_V1',command:'node archive/tools/archive-stage-validator.mjs',argv:argv.slice(1),cwd:root,exitCode:result.status,signal:result.signal||null,stdoutFile:'archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.validator.source-fact-v2.stdout.raw.json',stderrFile:'archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R2.validator.source-fact-v2.stderr.raw.txt'};
+write('R2.validator.source-fact-v2.process.json',JSON.stringify(receipt,null,2)+'\n');
+process.stdout.write(JSON.stringify({exitCode:result.status,signal:result.signal||null,stdoutBytes:Buffer.byteLength(result.stdout||''),stderrBytes:Buffer.byteLength(result.stderr||''),reportPreview:(result.stdout||'').slice(0,500)}));
+process.exitCode=result.status===0?0:1;

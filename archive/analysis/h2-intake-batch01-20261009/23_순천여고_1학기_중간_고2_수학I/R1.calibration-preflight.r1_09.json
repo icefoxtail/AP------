@@ -1,0 +1,121 @@
+{
+  "stage": "R1",
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_V1",
+  "targetSourceRawSha256": "6d7b75d6c9b4743a3687a2a092966bed532a81fd82033adbd11f4f5668452b17",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "executionLine": "CODEX",
+  "solutionQualityCalibration": {
+    "goldenSampleQuestionRefs": [
+      {
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution explicitly substitutes both coordinates in the 2:1 section formula, computes midpoint, then distance with intermediate arithmetic; a student can reproduce each operation."
+      },
+      {
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution follows original center → translated center → origin-reflected center. Opened SVG coordinates map exactly to C₀=(−3,1), C₁=(−5,2), C₂=(5,−2), with all three circle radii 3; labels and movement connectors are readable."
+      },
+      {
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution preserves signed coordinate differences, squares each, sums, and simplifies √50 to 5√2 with each step visible."
+      },
+      {
+        "solutionExcerpt": "기울기가 $1$인 직선을",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution derives both tangent offsets from center-to-line distance and selects signs using the positive-b condition. Opened SVG shows two slope −1 tangents, radius vectors slope +1 to their contact points, and y-intercepts separated by 2√10."
+      },
+      {
+        "solutionExcerpt": "ㄱ. 차집합은 교집합으로 나타내면",
+        "qid": 5,
+        "solutionSha256": "sha256:5e4868f8a81c3f06c5319c07a69299fbc6dcb8a93594f408afc7c5da9343aa8e",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution falsifies the difference/union identity with a concrete universe and keeps the remaining set assertions distinct, supporting reproducibility and concise decision evidence."
+      },
+      {
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "observation": "Actual solution derives the minimum intersection using inclusion-exclusion, then proves attainability. Opened Venn SVG labels regions 20−y, y, 15−y and y≥5, matching the maximum complement-union argument; schematic equal circle sizes are not claimed as scale."
+      }
+    ],
+    "sequenceNote": "The immutable answer freeze was created from the assignment current student-only bundle and opened problem assets before source-answer disclosure; Golden/Negative source/solution/SVG samples were then physically read before any target solution inspection or solution repair. This preflight governs the solution/layout/visual review and final comparison; it does not replace or rewrite the earlier answer freeze.",
+    "negativeSampleRefs": [
+      {
+        "observation": "Read the fixed cross-axis regression README: count-only small-board/Meta claims and SVG labels are not physical proof; SVG coordinates/topology must establish the claimed fact.",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23"
+      },
+      {
+        "observation": "Read the actual frozen failed SVG: the polyline misses labeled A(−1/2,0), B(0,−1); the alleged C is also off the curve. The negative illustrates checking primitives instead of trusting labels.",
+        "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4"
+      }
+    ],
+    "representativeSvgRefs": [
+      {
+        "qid": 7,
+        "gitBlobSha": "d6922fb8bf801d2ef4fcb19fadea40f57bcbe778",
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "observation": "Source geometry opens and coordinate-derived three centers/radii match the solution.",
+        "sha256": "sha256:c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+      },
+      {
+        "qid": 4,
+        "gitBlobSha": "a1bf345018eb777c9337dde50697eced178e1272",
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+        "observation": "Source geometry opens; computed tangency points lie on the two slope −1 lines, radius is perpendicular, and y-axis distance matches 2√10.",
+        "sha256": "sha256:e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a"
+      },
+      {
+        "qid": 6,
+        "gitBlobSha": "2c092797d422e16b8893a6fd19f188f2cb3e7125",
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+        "observation": "Source Venn geometry/text opens; region labels and y lower bound agree with the derived count.",
+        "sha256": "sha256:b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88"
+      }
+    ],
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "sampleReadBeforeWork": true,
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "goldenSampleRefs": [
+      {
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156"
+      },
+      {
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99"
+      },
+      {
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationStatus": "PASS"
+  },
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "independentFreezeSha256": "9e1620dcb2d7b14a00c846e1c7e57c37bc458da48bbf4344451f84a479320cbd"
+}

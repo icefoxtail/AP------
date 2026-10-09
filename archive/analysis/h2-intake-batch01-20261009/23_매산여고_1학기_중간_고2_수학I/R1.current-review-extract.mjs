@@ -1,0 +1,5 @@
+import {readExam} from '../../../../archive/tools/archive-codex-artifact-io.mjs';
+const src='.tmp/archive/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I/23_매산여고_1학기_중간_고2_수학I.js';
+const e=readExam(src);const fields=['layoutTag','wide','choiceColumns','preserveChoicePrefixes','__apExamSubjectiveSpacing','questionType','level','category','originalCategory','standardCourse','standardUnitKey','standardUnit','standardUnitOrder','subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth','problemTypeKey','templateKey','crossConceptKeys','conditionKeys','integrationPattern','conceptClusterKey','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','tags','image','solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize','decisiveStep'];
+const rows=e.questions.map(q=>({qid:Number(q.id),...Object.fromEntries(fields.filter(k=>Object.hasOwn(q,k)).map(k=>[k,q[k]]))}));
+console.log(JSON.stringify({sourceRawSha256:e.rawSha256,sourceRawBufferBlobSha1:e.rawBufferGitBlobSha1,qids:rows.map(r=>r.qid),rows},null,2));

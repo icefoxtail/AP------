@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_05_B2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q05-B2",
+    "level": "중",
+    "difficultyBucket": 4,
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "직선의 방정식"
+    ],
+    "wide": false,
+    "content": "두 점 $P(0,0)$, $Q(2,1)$과 점 $A(1,3)$이 있다. 점 $B$는 $A$와 다른 점이며 $AP=BP$, $AQ=BQ$를 만족한다. 점 $B$의 좌표는?",
+    "choices": [
+      "$(2,1)$",
+      "$(1,-3)$",
+      "$(-1,3)$",
+      "$(3,-1)$",
+      "$(3,3)$"
+    ],
+    "answer": "④",
+    "solution": "점 $P,Q$는 모두 두 점 $A,B$까지의 거리가 같고 $P\\ne Q$이므로 직선 $PQ$는 선분 $AB$의 수직이등분선이다. $PQ$는 $P(0,0)$과 $Q(2,1)$을 지나므로 $y=\\frac12x$이다. 점 $A(1,3)$을 지나며 $PQ$에 수직인 직선은 기울기가 $-2$이므로 $y-3=-2(x-1)$, 즉 $y=-2x+5$이다. 두 직선의 교점은 $M(2,1)$이고, 이는 $AB$의 중점이다. 따라서 $B=(2\\cdot2-1,\\;2\\cdot1-3)=(3,-1)$이다. 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 5,
+    "slot": "B2",
+    "purposeGroup": "B"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q05-B2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q05-B2","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.2|직선의 방정식","rpmL3":"L3-1.2.1|직선의 방정식","rpmL4":"EXT-H1-C2-02-Q05-PERP-BISECTOR-APPLICATION|수직이등분선을 이용한 점·넓이·외심 문제","rpmL4Namespace":"GENERATED_EXT_L4","rpmPrimaryRecordId":"H1-RPM-210","rpmAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","generatedL4RegistryRef":"archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json","generatedL4RegistrySha256":"4563c60b4f64ea69e8f501fa0a367b07b6ed3514b4a0ff402102599d38378658","secondaryConceptKeys":[],"crossConceptKeys":["CC_REFLECTION"],"conditionKeys":["COND_NONZERO"],"integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"중","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-LINE_EQUATION"},"metaFinalSha256":"f65d292d8d3684ed30e4926e275c623999e5b25bebe01882e994fc30045c6940","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q05-B2.json","sha256":"032672fe0c092dc56a550e0d4901b81f20c0a1e7773929b00041fae7130a2a75","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q05-B2"],"uid":"ALITE-PALMA25-2MID-Q05-B2"},"metaReviewEvidenceSha256":"032672fe0c092dc56a550e0d4901b81f20c0a1e7773929b00041fae7130a2a75","difficultyBucket":4,"level":"중","problemTypeKey":"PT_LINE_EQUATION","templateKey":"TPL_LINE_PERP_BISECTOR","secondaryConceptKeys":[],"crossConceptKeys":["CC_REFLECTION"],"conditionKeys":["COND_NONZERO"],"integrationPattern":"SEQUENTIAL"});})();

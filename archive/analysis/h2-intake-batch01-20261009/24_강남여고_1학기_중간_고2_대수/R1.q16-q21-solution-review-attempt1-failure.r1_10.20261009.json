@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_REVIEW_ATTEMPT_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "qids": [
+    16,
+    21
+  ],
+  "status": "FAILED_CHECK_ATTEMPT_PRESERVED",
+  "attemptSourceRawSha256": "a0a603448bc6b213debfec2f6b1c4b2dd2ac84dae33f9fb48db3a4bf81c78619",
+  "postfreezeDisclosurePath": "archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.postfreeze-disclosure.q16-q21.r1_10.20261009.json",
+  "postfreezeDisclosureSha256": "6c013ac2b46e6c589bab7e9eca7a5be07159e188a2d2809dd6a2ed249c92728d",
+  "failure": "Attempted solution line separators were escaped as literal backslash-n text instead of runtime newlines; q21 center-root MathJax fractions require grouping.",
+  "recovery": "Replace only q16 and q21 solution string values with actual LF separators and grouped display fractions, preserve student fields and answer freeze, then rerun qid-limited postfreeze.",
+  "sourceMutationAfterAttempt": "NONE"
+}

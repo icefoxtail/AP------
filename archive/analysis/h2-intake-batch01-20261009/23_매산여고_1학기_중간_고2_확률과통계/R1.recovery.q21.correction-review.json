@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_CORRECTION_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "stage": "R1",
+  "reviewerId": "r1_08_recovery",
+  "qid": 21,
+  "verdict": "PASS",
+  "finalDisposition": "PASS_AFTER_MINIMAL_SOLUTION_CORRECTION",
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\23_매산여고_1학기_중간_고2_확률과통계.js",
+    "sha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8"
+  },
+  "currentSourceRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+  "currentSourceRawBufferBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+  "answerFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.sealed-freeze.json",
+    "sha256": "618cf75dc3afe2052cdaa1a886efaa717189223487901ed43bd3ffe959953f00"
+  },
+  "answerFreezeSourceRawSha256": "2d7c596ecd62024f22240a3db69817f298b8ae00fbf6d9f657bf52575781c92b",
+  "answerFreezeStudentBundleSha256": "e33dfaa74d886e0976914b9b1c5da2eb77f42be05c14a7aa8c9d9e17c9ebd752",
+  "answerFreezeValidAfterSolutionOnlyEdit": true,
+  "postfreezeCurrentQidDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.postfreeze.solution-revision.json",
+    "sha256": "2d31fcf821f5090fa1c8ace892839ad1195665f00d3298407433c7d6f58dc2da"
+  },
+  "studentParity": "EXACT",
+  "studentPayloadSha256": "97d1a906668f10c3d6ee7b0eda61e5105f44a9f69f731c8cafbfc724111a8201",
+  "answerComparison": {
+    "independentAnswer": {
+      "part1": "7",
+      "part2": "9"
+    },
+    "storedAnswer": "(1) 7개; (2) 9개",
+    "compareResult": "MATCH",
+    "answerCardinality": {
+      "part1": 1,
+      "part2": 1
+    },
+    "reasoning": "C(12,4)=495. Part 1 gives C(x,4)=35, whose values on integer x=4..12 attain 35 only at x=7. Part 2 gives C(y,3)(12-y)=252; values for y=3..11 attain 252 only at y=9."
+  },
+  "questionIdentity": {
+    "contentSha256": "806d511156b94042926d9a13a73964bbbbebefa1522bca8878dc6cac911f47e1",
+    "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "questionEqualsContent": true,
+    "choicesCount": 0,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "questionLayout": {
+    "status": "PASS",
+    "disposition": "LAYOUT_KEEP",
+    "candidateStudentParity": "EXACT to current full student bundle and qid21 frozen student input",
+    "originalPdfParity": "NOT_CLAIMED: q21 is a direct replacement; existing qid-only source check is retained only as evidence that the original item was underdetermined",
+    "actualPdfComparedInThisR1": false,
+    "choicesExactParity": "EXACT_EMPTY",
+    "layoutTag": "grid",
+    "wide": false,
+    "reason": "Two short subparts fit the default grid structure; no image/table or layout-only override is needed. 서술형, empty choices, two subparts, and wording length alone do not justify 2up."
+  },
+  "solutionLayout": {
+    "status": "PASS_AFTER_MINIMAL_CORRECTION",
+    "beforeSolutionSha256": "2c90662153f516b78879b6cfcafb98b20870f05edd6ff00ad0c4ed2d65e046fc",
+    "afterSolutionSha256": "0f6abc08d8e0f6e9d18377467de18913d68eaf7d8ca6840aa03ef0ee25ea108c",
+    "changedLocus": [
+      "opening denominator sentence",
+      "part (1) finite integer uniqueness check"
+    ],
+    "studentInputChanged": false,
+    "mathCheck": "The 495 denominator applies separately to each pouch. Part (1) lists C(x,4) for all integer x=4..12 and proves uniqueness at 7. Part (2) counts C(y,3)(12-y) for every feasible y=3..11 and proves uniqueness at 9.",
+    "smallBoardContinuityStatus": "PASS",
+    "solutionIdentityAlignmentStatus": "ALIGNMENT_PASS",
+    "reason": "Every part states the event count, equation, feasible integer domain and unique conclusion; the correction removes denominator ambiguity and makes uniqueness explicit. The second part retains the full finite-value check."
+  },
+  "metaReview": {
+    "status": "PASS_KEEP",
+    "independentSemanticAssessment": true,
+    "blindFirstPassStatus": "NOT_CLAIMED_CURRENT_META_FIELDS_WERE_VISIBLE_AFTER_VALID_ANSWER_FREEZE",
+    "currentFieldsVisibleAfterFreeze": true,
+    "fields": {
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+      "subUnit": "확률의 활용",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": "2015 확률과 통계 > 경우의 수 > 확률의 활용 > 확률의 기본 성질과 활용 > 확률의 뜻·기본 계산",
+      "rpmL3": "확률의 기본 성질과 활용",
+      "rpmL4": "확률의 뜻·기본 계산",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "category": "조합확률로 구슬 수를 역산",
+      "originalCategory": "확률의 뜻과 활용",
+      "tags": [
+        "서술형",
+        "확률",
+        "조합",
+        "경우의수",
+        "구슬",
+        "정수조건"
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "tagConfidence": "high",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass"
+    },
+    "assessment": {
+      "standardUnit": "H15-PS-03 / 확률의 뜻과 활용 / order 3; actual master row matches",
+      "subUnit": "H15-PS-03-PROBABILITY_APPLICATION / 확률의 활용; current parent is H15-PS-03",
+      "problemType": "PT_PROBABILITY_PROPERTIES_APPLICATION is active and directly classifies probability-application questions",
+      "template": "TPL_PROBABILITY_BASIC_COUNT_RATIO is active and matches counting favorable outcomes over a finite sample space",
+      "crossConcept": "CC_COMBINATORICS_COUNTING is an indispensable count concept outside the probability-primary taxonomy because the favorable event counts are combinations",
+      "conditions": "COND_INTEGER and COND_RANGE are active; the unknown marble counts are integers and part (2) has feasible domain 3..11",
+      "integrationPattern": "INTERDEPENDENT is valid because the probability equations depend on the combination counts at the decisive step",
+      "difficulty": "Bucket 3 / medium / NONE / NORMAL is independently supported by two standard combination-probability equations and one finite integer check; no nonroutine insight or deep branching."
+    },
+    "metaDebtFields": [],
+    "reason": "Current values were evaluated against the problem, reviewed solution, actual high-school unit master, probability taxonomy/bindings, active concept and condition registries, and difficulty canonical; no author field was automatically accepted."
+  },
+  "visualSvgReview": {
+    "status": "PASS_NOT_NEEDED",
+    "independentReview": true,
+    "visualNeed": "NO_VISUAL_REQUIRED",
+    "problemImageRef": null,
+    "solutionImageRef": null,
+    "requiredStudentAssetRefs": [],
+    "reason": "The entire problem is numeric and the solution is exact combination counting. A diagram would add no mathematical fact or decision cue; no prior CREATE visual exemption was inherited.",
+    "actualRenderedPreview": false,
+    "renderStatus": "NOT_RUN_R1_ROLE_SCOPE"
+  },
+  "axisEvidence": {
+    "QUESTION_LAYOUT": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.postfreeze.solution-revision.json",
+        "sha256": "2d31fcf821f5090fa1c8ace892839ad1195665f00d3298407433c7d6f58dc2da"
+      },
+      "disposition": "LAYOUT_KEEP"
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.postfreeze.solution-revision.json",
+        "sha256": "2d31fcf821f5090fa1c8ace892839ad1195665f00d3298407433c7d6f58dc2da"
+      },
+      "smallBoardContinuityStatus": "PASS"
+    },
+    "META": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.current-meta-snapshot.json",
+        "sha256": "01282d6340a8d14f3f02714dc8e997ae6c1ab0f245d89b244d7d51b8e122218f"
+      },
+      "reviewBlindness": "NOT_CLAIMED_CURRENT_FIELDS_VISIBLE_AFTER_FREEZE"
+    },
+    "VISUAL_SVG": {
+      "status": "PASS",
+      "disposition": "NO_VISUAL_REQUIRED",
+      "evidenceRef": {
+        "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.postfreeze.solution-revision.json",
+        "sha256": "2d31fcf821f5090fa1c8ace892839ad1195665f00d3298407433c7d6f58dc2da"
+      }
+    }
+  },
+  "sourceProvenance": {
+    "mode": "DIRECT_REPLACEMENT",
+    "claimsOriginalExactRestoration": false,
+    "priorScopedSourceCheck": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.source-check.json",
+      "sha256": "f5c29b2dd1af7be08039a2c10aec2c617cf01602ffe6937b441cad48ffceaab8"
+    },
+    "intakeEvidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\intake-original.evidence.json",
+      "sha256": "2f2adfcae10d9f7239692375da6768b3dfcc1fa7afc140e87445814a4d22ab68"
+    },
+    "intakeReuse": "source identity/intake provenance only; no current full-page PDF recheck or original-parity PASS",
+    "currentExtractedBaselineParity": "Recorded distinctly by existing scoped q21 source-check; this R1 confirms replacement source fields exact to the current student bundle, not the original PDF.",
+    "currentCandidateExactFieldParity": true,
+    "scopedPdfReadByThisReviewer": false
+  },
+  "recoveryRefs": {
+    "directDesign": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.direct-design.json",
+      "sha256": "7d79f5f6c80c068da075b33534a45108fd9d5813691541a6f13f24ddf2120f44"
+    },
+    "sourceCheck": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.source-check.json",
+      "sha256": "f5c29b2dd1af7be08039a2c10aec2c617cf01602ffe6937b441cad48ffceaab8"
+    },
+    "recoveryReceipt": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.receipt.json",
+      "sha256": "dc60dd88ab232fb7d314c809d0506e5f4ab13c2746371c007e049bac639338d0"
+    },
+    "nonTargetInvariance": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\ITEM_RECOVERY.q21.non-target-invariance.json",
+      "sha256": "013faab15e8399d9480c6fbdfa26f51666db87bf0873c6733aafc20c75218bf7"
+    }
+  },
+  "goldenPreflight": {
+    "preRepairPreflight": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.golden-preflight.json",
+      "sha256": "c7a2ad063eb5b879b4c5eb41f785ceedbfecbc2e6884bd50508c57492ea28377"
+    },
+    "completeValidatorProvenance": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.q21.golden-preflight.complete.json",
+      "sha256": "a5baec01360a20cd4d8fccf5f8b7e921ca342aabc139ab0377ef33d70c17d670"
+    },
+    "chronology": "First fixed-bank/actual-SVG/Negative preflight qids 7,2,6 occurred before this correction; the extra qid1 sample reads were added later solely to satisfy the generic validator’s 2-items-per-bank provenance schema, after the correction. No later solution edit followed."
+  },
+  "solutionCorrection": {
+    "beforeSha256": "2c90662153f516b78879b6cfcafb98b20870f05edd6ff00ad0c4ed2d65e046fc",
+    "afterSha256": "0f6abc08d8e0f6e9d18377467de18913d68eaf7d8ca6840aa03ef0ee25ea108c",
+    "sourceRawSha256Before": "2d7c596ecd62024f22240a3db69817f298b8ae00fbf6d9f657bf52575781c92b",
+    "sourceRawSha256After": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+    "changedFields": [
+      "solution"
+    ],
+    "why": "The original wording could read as a joint 495-case sample space, and part (1) named one C(x,4) value without making uniqueness visible. Clarified the per-pouch denominator and enumerated the finite x domain.",
+    "freezeValidity": "STUDENT_FIELDS_UNCHANGED; original q21 independent answer freeze remains valid.",
+    "preflightBeforeEdit": true
+  },
+  "createdAtUtc": "2026-10-09T04:47:57.525Z"
+}

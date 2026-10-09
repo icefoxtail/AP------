@@ -1,0 +1,127 @@
+[
+  {
+    "independentAnswer": "80 (choice 4)",
+    "reasoning": "5C2=10 and 2Pi3=2^3=8, so the product is 80.",
+    "qid": 1
+  },
+  {
+    "independentAnswer": "10 (choice 2)",
+    "reasoning": "2H9=C(10,9)=10. For natural n, nC9=10 gives n=10.",
+    "qid": 2
+  },
+  {
+    "independentAnswer": "24 (choice 5)",
+    "reasoning": "Circular arrangements of 5 distinct people are (5-1)!=24.",
+    "qid": 3
+  },
+  {
+    "independentAnswer": "100 (choice 4)",
+    "reasoning": "The hundreds digit has 4 choices (1 through 4); each other place has 5, giving 4*5*5=100.",
+    "qid": 4
+  },
+  {
+    "independentAnswer": "60 (choice 5)",
+    "reasoning": "The five letters of happy have p repeated twice, so 5!/2!=60.",
+    "qid": 5
+  },
+  {
+    "independentAnswer": "20 (choice 2)",
+    "reasoning": "Choose 3 of 5 positions for P,A,T in their required relative order, then arrange R,Y: C(5,3)*2!=20.",
+    "qid": 6
+  },
+  {
+    "independentAnswer": "19 (choice 1)",
+    "reasoning": "The binomial sum is 2^19, hence log base 2 is 19.",
+    "qid": 7
+  },
+  {
+    "independentAnswer": "60 (choice 3)",
+    "reasoning": "The x^8 term uses four x^2 factors: C(6,4)*2^2=60.",
+    "qid": 8
+  },
+  {
+    "independentAnswer": "44 (choice 1)",
+    "reasoning": "Count endpoints by ordered distinct symbol types. Remaining interior arrangements sum: ab 12, ac 4, ba 12, bc 6, ca 4, cb 6; total 44.",
+    "qid": 9
+  },
+  {
+    "independentAnswer": "45 (choice 1)",
+    "reasoning": "The centroid condition gives x1+x2+x3=8. Nonnegative ordered triples are C(8+3-1,3-1)=C(10,2)=45.",
+    "qid": 10
+  },
+  {
+    "independentAnswer": "9 (choice 3)",
+    "reasoning": "There are 2^n signals. 2^8=256<300 and 2^9=512, so the minimum is 9.",
+    "qid": 11
+  },
+  {
+    "independentAnswer": "10 (choice 1)",
+    "reasoning": "Subtract 2 of each color; the remaining 3 balls are distributed among 3 colors. Stars and bars gives C(5,2)=10; the upper cap 6 is not reached.",
+    "qid": 12
+  },
+  {
+    "independentAnswer": "120 (choice 2)",
+    "reasoning": "There are 24 circular seatings of 5 distinct students. For each seating, exactly 5 of the 10 seat-pairs are nonadjacent, giving 24*5=120.",
+    "qid": 13
+  },
+  {
+    "independentAnswer": "43 (choice 5)",
+    "reasoning": "On the 5-by-5 lattice, the blocked vertices are at x=1,3 on the second and fourth rows from the top. Applying paths(i,j)=left+below with blocked values zero gives 43 at B.",
+    "qid": 14
+  },
+  {
+    "independentAnswer": "3 (choice 2)",
+    "reasoning": "A term has exponent 8-k(n+1); zero requires k(n+1)=8. Natural n arise for k=1,2,4, giving n=7,3,1: three values.",
+    "qid": 15
+  },
+  {
+    "independentAnswer": "225 (choice 5)",
+    "reasoning": "Choose the 2 elements of B-A in C(6,2) ways, then choose any nonempty A from the remaining 4 elements: 15*(2^4-1)=225.",
+    "qid": 16
+  },
+  {
+    "independentAnswer": "192 (choice 5)",
+    "reasoning": "There are 2^8=256 colorings. Reflection-fixed colorings choose colors independently for four axis-invariant triangles and two mirrored pairs, so 2^6=64 are symmetric; 256-64=192 are not.",
+    "qid": 17
+  },
+  {
+    "independentAnswer": "30 (choice 3)",
+    "reasoning": "f1<=f2<=4 has C(5,2)=10 choices; f4 can be 4,5,6 and f5=6, so 10*3=30.",
+    "qid": 18
+  },
+  {
+    "independentAnswer": "247 (choice 4)",
+    "reasoning": "There are 8 primes at most 20. Distinct products correspond to subsets of size at least 2, giving 2^8-1-8=247.",
+    "qid": 19
+  },
+  {
+    "independentAnswer": "81 (choice 1)",
+    "reasoning": "For adjacent differences at most 2, 1 and 4 cannot be adjacent. Transfer counts over length 5 give 99 total valid strings. Those with zero 2s are 2; with exactly one 2 are 16. Thus 99-18=81.",
+    "qid": 20
+  },
+  {
+    "independentAnswer": "624 (choice 2)",
+    "reasoning": "Around the 6-cycle no two odd numbers may be adjacent. For 2 odds: 9 seat patterns*P(4,2)*P(4,4)/6=432. For 3 odds: 2 alternating patterns*P(4,3)*P(4,3)/6=192. Total 624.",
+    "qid": 21
+  },
+  {
+    "independentAnswer": "148",
+    "reasoning": "(a) C(8,3)=56; (b) P(4,3)=24; (c) 4^3=64; (d) C(4,3)=4. Sum=148.",
+    "qid": 22
+  },
+  {
+    "independentAnswer": "3/2",
+    "reasoning": "The x^2 and x coefficients are 6a^2 and -4a^3. Their sum is 2a^2(3-2a)=0; positive a=3/2.",
+    "qid": 23
+  },
+  {
+    "independentAnswer": "20",
+    "reasoning": "For total sum s=0,1,2,3 there are C(s+2,2) triples; 1+3+6+10=20.",
+    "qid": 24
+  },
+  {
+    "independentAnswer": "424",
+    "reasoning": "Leading digit 2,3,4 contributes 3*5^3=375. With leading digit 1, the remaining three digits must exceed 300: 25 choices with hundreds 4 and 24 with hundreds 3, total 49. Overall 424.",
+    "qid": 25
+  }
+]
