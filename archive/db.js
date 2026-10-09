@@ -17772,6 +17772,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-06",
+      "rangeEndUnit": "도형의 닮음",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-06",
+          "rangeEndUnit": "도형의 닮음",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
     }
   ]
 };
