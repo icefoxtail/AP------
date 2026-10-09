@@ -39,7 +39,7 @@
 ## A2 — 반복 숙달 — 비집합 판정
 
 - UID: `ALITE-PALMA25-2MID-Q01-A2`
-- 교육 목적: `A`; 제안 MODE: `STRICT_VARIANT 후보`, 독립 proof 아직 없음
+- 교육 목적: `A`; 제안 MODE: `EXAM_FOLLOWUP 확인 후보`, 독립 proof 아직 없음
 - 난도 후보: `하` / difficultyBucket `1`; 원본 목표 L2: 집합; 실제 RPM L3/L4 · PT/TPL은 REVIEW에서 최종 판정
 - 변형·평가 논리: 부정형 응답 경험과 수치·조건 재배열
 
