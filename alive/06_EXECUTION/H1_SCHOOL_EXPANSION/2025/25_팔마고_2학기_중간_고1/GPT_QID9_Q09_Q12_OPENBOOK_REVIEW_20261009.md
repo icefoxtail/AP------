@@ -57,3 +57,8 @@
 - Q09~Q12 Generated source+metadata 및 student Consumer/index 36 UID 등록, Q10 SVG 4개 자산 연결.
 - main 원격 SHA/readback, Meta L3/L4/CrossConcept/Condition parity 및 Chrome/동등한 학생용 실제 출력 테스트.
 - 실제 미실행을 품질 검수 `PASS`로 갈음하거나 기술 PASS로 위조하지 않음.
+
+## Canonical CrossConcept 최종 중복 제거
+- Q11 A2/B3/C1/C3은 active canonical CC_NUMBER_DIVISOR_MULTIPLE, CC_QUADRATIC_EQUATION, CC_INEQUALITY_QUADRATIC로 재결속. Q11의 고유 EXT는 ROOT-SET(A3), INTERVAL-INCLUSION(B1/B2/C2/C3) 2개만 유지. RPM L3/L4 변경 없음.
+- Q12 A1/A2/A3/B1/B2/B3/C1/C2/C3은 기존 canonical CC_POINT_LINE_DISTANCE, CC_PYTHAGOREAN, CC_QUADRATIC_EQUATION으로 재결속. **CrossConcept 신규 EXT 4개는 release하지 않음**; 작업 브랜치의 creator draft registry는 superseded audit로만 보존. Q12 Generated EXT-L4 3개는 별도 유지.
+- 교정한 CrossConcept 키는 학생용 수학 내용과 답을 바꾸지 않음. 최종 Meta는 active canonical registry 우선·generated extension 필요할 때만 유지.
