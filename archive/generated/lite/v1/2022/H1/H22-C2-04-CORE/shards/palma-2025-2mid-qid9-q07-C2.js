@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_07_C2";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q07-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "standardUnit": "도형의 이동",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C2-04-CORE",
+    "subUnit": "도형의 이동 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형의 이동"
+    ],
+    "wide": false,
+    "content": "원 $C_1:(x+1)^2+(y-2)^2=1$을 $x$축의 양의 방향으로 $a$만큼, $y$축의 양의 방향으로 $2$만큼 평행이동한 원을 $C_2$라 하자. 또 원 $C_3:(x-4)^2+(y-7)^2=1$이 있다. $C_1,C_2$의 넓이를 동시에 이등분하는 직선과 $C_2,C_3$의 넓이를 동시에 이등분하는 직선이 서로 수직일 때, 양수 $a$의 값은?",
+    "choices": [
+      "$6$",
+      "$-1$",
+      "$5$",
+      "$2$",
+      "$1$"
+    ],
+    "answer": "①",
+    "solution": "원 $C_1$의 중심은 $A(-1,2)$, 평행이동한 원 $C_2$의 중심은 $B(a-1,4)$, 원 $C_3$의 중심은 $C(4,7)$이다.\n두 원의 넓이를 동시에 이등분하는 직선은 두 원의 중심을 지나는 직선이므로, 주어진 두 직선은 각각 $AB$, $BC$이다.\n$AB$의 기울기는 $\\dfrac2a$이다. $a=5$이면 $BC$가 수직선이지만 $AB$는 수평선이 아니므로 조건을 만족하지 않는다.\n$a\\ne5$이면 $BC$의 기울기는 $\\dfrac{7-4}{4-(a-1)}=\\dfrac3{5-a}$이다.\n두 직선이 수직이므로 $\\dfrac2a\\cdot\\dfrac3{5-a}=-1$이다. 이를 정리하면 $a(5-a)=-6$, 즉 $a^2-5a-6=0$이다.\n$(a-6)(a+1)=0$에서 $a=6$ 또는 $a=-1$이고, $a>0$이므로 $a=6$이다.\n따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 7,
+    "slot": "C2",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q07-C2");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q07-C2","meta":{"rpmL1":"L1-1|도형의 방정식","rpmL2":"L2-1.4|도형의 이동","rpmL3":"L3-1.4.1|평행이동","rpmL4":"L4-1.4.1.2|원의 이동","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-226","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":["CC_PERPENDICULAR"],"conditionKeys":["COND_POSITIVE"],"integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_MOVE_CIRCLE_TRANSLATION","templateKey":"TT_CIRCLE_TRANSLATION_CENTER","standardCourse":"공통수학2","standardUnitKey":"H22-C2-04","subUnitKey":"H22-C2-04-CORE"},"metaFinalSha256":"63abd7aabb72195d964b7e9d5a5300799c610b9b04a191faf58e6931a1c66b84","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q07-C2.json","sha256":"dc34d38c60dcc64a763d6ebdd55c9f089be7efe5886e9a33a69ea106a98eafdd","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q07-C2"],"uid":"ALITE-PALMA25-2MID-Q07-C2"},"metaReviewEvidenceSha256":"dc34d38c60dcc64a763d6ebdd55c9f089be7efe5886e9a33a69ea106a98eafdd","difficultyBucket":4,"level":"상","problemTypeKey":"PT_MOVE_CIRCLE_TRANSLATION","templateKey":"TT_CIRCLE_TRANSLATION_CENTER","secondaryConceptKeys":[],"crossConceptKeys":["CC_PERPENDICULAR"],"conditionKeys":["COND_POSITIVE"],"integrationPattern":"SEQUENTIAL"});})();
