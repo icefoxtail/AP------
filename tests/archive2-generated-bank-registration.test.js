@@ -34,7 +34,7 @@ function contentFingerprint(question) {
   return 'fnv1a64-utf16:' + n.toString(16).padStart(16, '0');
 }
 
-test('consumer DB preserves previous approvals, adds four Palma questions and excludes holds', () => {
+test('consumer DB preserves previous approvals, registers current Palma rows and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
   assert.equal(index.records.length, 346);
@@ -48,7 +48,8 @@ test('consumer DB preserves previous approvals, adds four Palma questions and ex
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ]);
   assert.equal(new Set(index.records.map(r => r.uid)).size, 346);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
@@ -124,12 +125,13 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
   assert.equal(b03.filter(r => r.reviewApprovalBasis.includes('USER_DIRECTED_OVERRIDE')).length, 4);
 });
 
-test('four Palma approvals resolve through the exact runtime shard path and candidate UID', () => {
+test('five Palma B07 approvals resolve through the exact runtime shard path and candidate UID', () => {
   const expectedUids = [
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
-    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP03'
   ];
   assert.deepEqual(palma.filter(r => r.uid.includes('-B07-')).map(r => r.uid), expectedUids);
   for (const row of palma.filter(r => r.uid.includes('-B07-'))) {
@@ -222,8 +224,11 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   };
   let printed=0;
   vm.runInNewContext(code,{document,window:{print:()=>printed++},fetch:fetchStub,console,Map,Set,Promise},{timeout:2000});
-  await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
+  // An index of hundreds of questions can take longer than a fixed 25ms VM fixture delay.
+  for(let attempt=0;attempt<150&&el('exam-cards').children.length!==2;attempt++){
+    await new Promise(resolve=>setTimeout(resolve,20));
+  }
   const cards=el('exam-cards').children;
   assert.equal(cards.length,2);
   assert.equal(el('print').disabled,true);
