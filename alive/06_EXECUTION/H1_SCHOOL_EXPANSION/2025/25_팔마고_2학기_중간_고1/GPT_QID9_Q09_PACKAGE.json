@@ -1,0 +1,830 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 9,
+  "sourceFingerprint": {
+    "sourceStem": "다음 그림과 같이 좌표평면 위의 세 점 $O(0,0)$, $A(6,0)$, $B(3,6)$에 대하여 세 선분 $OA$, $AB$, $BO$를 각각 $3:1$로 내분하는 점을 $C$, $D$, $E$라고 하자. 삼각형 $CDE$의 무게중심을 $(a,b)$라고 할 때, $a+b$의 값은? [4점]",
+    "storedSourceAnswer": "⑤",
+    "independentlyComputedValue": 5,
+    "sourceCentroid": [
+      3,
+      2
+    ],
+    "core": "세 변의 내분점 좌표를 구한 뒤 내분점 삼각형의 무게중심을 계산",
+    "sourceImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q09.png",
+    "sourceImageInspection": "NOT_TESTED_BINARY_CONNECTOR_UNAVAILABLE; GENERATED_STEMS_SELF_CONTAINED"
+  },
+  "lockedPrimaryL3": "삼각형의 무게중심",
+  "rpmEvidence": {
+    "rpmRecordIds": [
+      "H1-RPM-208",
+      "H1-RPM-209"
+    ],
+    "l1": "도형의 방정식",
+    "l2": "평면좌표",
+    "l3": "삼각형의 무게중심",
+    "l4": [
+      "좌표로 무게중심",
+      "좌표 도형 활용"
+    ],
+    "mappingStatus": "DIRECT_BINDING_GAP",
+    "bindingStatus": "MISSING",
+    "crosswalkAuthority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "rpmTaxonomyAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templates": [
+      "TPL_CENTROID_DIRECT",
+      "TPL_CENTROID_REVERSE",
+      "TPL_CENTROID_APPLICATION",
+      "TPL_CENTROID_DISTANCE_RELATION"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "availableCrossConcepts": [
+      "CC_INTERNAL_DIVISION",
+      "CC_DISTANCE_TWO_POINTS",
+      "CC_TRIANGLE_AREA"
+    ],
+    "registryStatus": "ACTIVE_PT_TPL_WITH_RPM_BINDING_GAP_NO_FAKE_ACTIVE_BINDING"
+  },
+  "experiencePlan": {
+    "A": "원본과 같은 순환 내분비·무게중심 계산을 수치로 숙달",
+    "B": "무게중심 역조건·비대칭 내분비·분점 역추정",
+    "C": "두 무게중심 거리·직선 조건으로 좌표 역산·면적 조건 결합"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "reverseStem": {
+      "KEEP": 7,
+      "REVISED": 2,
+      "HOLD": 0
+    },
+    "originalQidMathRecomputed": true,
+    "candidateCorrectAnswerDeterministicCoordinateChecks": "9_OF_9",
+    "distractorLabelsAndArithmeticEvidence": "36_OF_36_RECORDED",
+    "studentVisual": "NOT_REQUIRED_FOR_GENERATED_STEMS",
+    "independentGptQualityReview": "NOT_RUN_CREATOR_ONLY",
+    "browser": "NOT_TESTED",
+    "sourceImage": "NOT_READ",
+    "studentSolutionActualNewline": "9_OF_9",
+    "curriculumRepair": "B1_VECTOR_STYLE_REMOVED_C3_VECTOR_NOTATION_REMOVED_POINT_LINE_DISTANCE"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A1",
+      "slot": "A1",
+      "sourceQid": 9,
+      "mode": "STRICT_VARIANT",
+      "stem": "좌표평면 위의 세 점 $O(0,0)$, $A(9,0)$, $B(3,9)$에 대하여 세 선분 $OA$, $AB$, $BO$를 각각 $2:1$로 내분하는 점을 $C$, $D$, $E$라 하자. 삼각형 $CDE$의 무게중심이 $(a,b)$일 때, $a+b$의 값은?",
+      "choices": [
+        "$12$",
+        "$7$",
+        "$9$",
+        "$21$",
+        "$\\dfrac{21}{2}$"
+      ],
+      "answer": "②",
+      "solution": "$OC:CA=2:1$이므로 $C=(6,0)$이다. $AD:DB=2:1$이므로 $D=\\left(\\dfrac{9+2\\cdot3}{3},\\dfrac{0+2\\cdot9}{3}\\right)=(5,6)$이다. $BE:EO=2:1$이므로 $E=\\left(\\dfrac{3}{3},\\dfrac{9}{3}\\right)=(1,3)$이다.\n따라서 삼각형 $CDE$의 무게중심은 $\\left(\\dfrac{6+5+1}{3},\\dfrac{0+6+3}{3}\\right)=(4,3)$이다. 그러므로 $a+b=7$이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "x좌표의 합을 평균하지 않고 답으로 사용 | 6+5+1=12 → 12",
+        "③": "y좌표의 합을 평균하지 않고 답으로 사용 | 0+6+3=9 → 9",
+        "④": "세 꼭짓점 좌표를 전부 더하고 무게중심의 평균을 생략 | (6+5+1)+(0+6+3)=21 → 21",
+        "⑤": "무게중심의 좌표를 구할 때 분모를 3 대신 2로 사용 | (12+9)/2=21/2 → 21/2"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "x좌표의 합을 평균하지 않고 답으로 사용",
+          "calculation": "6+5+1=12",
+          "value": "12"
+        },
+        {
+          "label": "③",
+          "mistake": "y좌표의 합을 평균하지 않고 답으로 사용",
+          "calculation": "0+6+3=9",
+          "value": "9"
+        },
+        {
+          "label": "④",
+          "mistake": "세 꼭짓점 좌표를 전부 더하고 무게중심의 평균을 생략",
+          "calculation": "(6+5+1)+(0+6+3)=21",
+          "value": "21"
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심의 좌표를 구할 때 분모를 3 대신 2로 사용",
+          "calculation": "(12+9)/2=21/2",
+          "value": "21/2"
+        }
+      ],
+      "experienceAxis": "동일 비율로 세 변을 내분한 뒤 새 삼각형의 무게중심",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표로 무게중심",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표로 무게중심",
+        "rpmRecordId": "H1-RPM-208",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A2",
+      "slot": "A2",
+      "sourceQid": 9,
+      "mode": "STRICT_VARIANT",
+      "stem": "좌표평면 위의 세 점 $O(0,0)$, $A(6,0)$, $B(0,9)$에 대하여 세 선분 $OA$, $AB$, $BO$를 각각 $3:1$로 내분하는 점을 $C$, $D$, $E$라 하자. 삼각형 $CDE$의 무게중심을 $(a,b)$라 할 때, $a+b$의 값은?",
+      "choices": [
+        "$6$",
+        "$9$",
+        "$15$",
+        "$\\dfrac{15}{2}$",
+        "$5$"
+      ],
+      "answer": "⑤",
+      "solution": "$OC:CA=3:1$이므로 $C=(\\dfrac92,0)$이다. $AD:DB=3:1$이므로 $D=(\\dfrac64,\\dfrac{27}{4})=(\\dfrac32,\\dfrac{27}{4})$이다. $BE:EO=3:1$이므로 $E=(0,\\dfrac94)$이다.\n무게중심 좌표는 $a=\\dfrac{\\frac92+\\frac32+0}{3}=2$, $b=\\dfrac{0+\\frac{27}4+\\frac94}{3}=3$이다. 따라서 $a+b=5$이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "무게중심의 x좌표를 구할 때 3으로 나누지 않음 | 9/2+3/2=6 → 6",
+        "②": "무게중심의 y좌표를 구할 때 3으로 나누지 않음 | 27/4+9/4=9 → 9",
+        "③": "두 좌표의 합을 계산하고 3으로 나누지 않음 | 6+9=15 → 15",
+        "④": "무게중심의 세 꼭짓점 평균 대신 두 점 평균 적용 | (6+9)/2=15/2 → 15/2"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "무게중심의 x좌표를 구할 때 3으로 나누지 않음",
+          "calculation": "9/2+3/2=6",
+          "value": "6"
+        },
+        {
+          "label": "②",
+          "mistake": "무게중심의 y좌표를 구할 때 3으로 나누지 않음",
+          "calculation": "27/4+9/4=9",
+          "value": "9"
+        },
+        {
+          "label": "③",
+          "mistake": "두 좌표의 합을 계산하고 3으로 나누지 않음",
+          "calculation": "6+9=15",
+          "value": "15"
+        },
+        {
+          "label": "④",
+          "mistake": "무게중심의 세 꼭짓점 평균 대신 두 점 평균 적용",
+          "calculation": "(6+9)/2=15/2",
+          "value": "15/2"
+        }
+      ],
+      "experienceAxis": "직각삼각형의 순환 내분점을 구해 무게중심 계산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표로 무게중심",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표로 무게중심",
+        "rpmRecordId": "H1-RPM-208",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-A3",
+      "slot": "A3",
+      "sourceQid": 9,
+      "mode": "STRICT_VARIANT",
+      "stem": "좌표평면 위의 세 점 $O(0,0)$, $A(12,0)$, $B(3,9)$에 대하여 점 $C$, $D$, $E$가 각각 선분 $OA$, $AB$, $BO$를 $1:2$로 내분한다. 삼각형 $CDE$의 무게중심을 $(a,b)$라 할 때, $a+b$의 값은?",
+      "choices": [
+        "$8$",
+        "$15$",
+        "$9$",
+        "$24$",
+        "$12$"
+      ],
+      "answer": "①",
+      "solution": "$OC:CA=1:2$이므로 $C=(4,0)$이다. $AD:DB=1:2$이므로 $D=\\left(\\dfrac{2\\cdot12+3}{3},\\dfrac9{3}\\right)=(9,3)$이다. $BE:EO=1:2$이므로 $E=\\left(\\dfrac{2\\cdot3}{3},\\dfrac{2\\cdot9}{3}\\right)=(2,6)$이다.\n따라서 무게중심은 $(a,b)=\\left(\\dfrac{4+9+2}{3},\\dfrac{0+3+6}{3}\\right)=(5,3)$이다. 그러므로 $a+b=8$이고 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "무게중심의 x좌표에서 3으로 나누는 과정 생략 | 4+9+2=15 → 15",
+        "③": "무게중심의 y좌표에서 3으로 나누는 과정 생략 | 0+3+6=9 → 9",
+        "④": "좌표 전체를 합한 뒤 평균 생략 | 15+9=24 → 24",
+        "⑤": "세 꼭짓점의 좌표 합을 3 대신 2로 나눔 | 24/2=12 → 12"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "무게중심의 x좌표에서 3으로 나누는 과정 생략",
+          "calculation": "4+9+2=15",
+          "value": "15"
+        },
+        {
+          "label": "③",
+          "mistake": "무게중심의 y좌표에서 3으로 나누는 과정 생략",
+          "calculation": "0+3+6=9",
+          "value": "9"
+        },
+        {
+          "label": "④",
+          "mistake": "좌표 전체를 합한 뒤 평균 생략",
+          "calculation": "15+9=24",
+          "value": "24"
+        },
+        {
+          "label": "⑤",
+          "mistake": "세 꼭짓점의 좌표 합을 3 대신 2로 나눔",
+          "calculation": "24/2=12",
+          "value": "12"
+        }
+      ],
+      "experienceAxis": "내분비 1:2의 방향을 정확히 읽어 좌표 평균",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표로 무게중심",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표로 무게중심",
+        "rpmRecordId": "H1-RPM-208",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-B1",
+      "slot": "B1",
+      "sourceQid": 9,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "좌표평면 위의 세 점 $O(0,0)$, $A(9,0)$, $B(p,6)$에 대하여 점 $C$, $D$, $E$가 각각 선분 $OA$, $AB$, $BO$를 $3:1$로 내분한다. 삼각형 $CDE$의 무게중심이 $(4,2)$일 때, 실수 $p$의 값은?",
+      "choices": [
+        "$-5$",
+        "$12$",
+        "$-3$",
+        "$3$",
+        "$-1$"
+      ],
+      "answer": "④",
+      "solution": "각 선분의 내분점 좌표를 구하면 $C=(\\dfrac{27}{4},0)$, $D=(\\dfrac{9+3p}{4},\\dfrac92)$, $E=(\\dfrac p4,\\dfrac32)$이다.\n세 점의 x좌표의 합은 $\\dfrac{27+9+3p+p}{4}=9+p$이고, y좌표의 합은 $0+\\dfrac92+\\dfrac32=6$이다. 따라서 삼각형 $CDE$의 무게중심은 $\\left(\\dfrac{9+p}{3},2\\right)$이다.\n문제에서 무게중심이 $(4,2)$라고 했으므로 $\\dfrac{9+p}{3}=4$이고, $9+p=12$에서 $p=3$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "무게중심 x좌표의 평균식에서 분모 3을 빠뜨림 | 9+p=4 -> p=-5 → -5",
+        "②": "무게중심 x좌표만 3배하고 A의 x좌표 9를 빼지 않음 | 3×4=12 → 12",
+        "③": "좌표 방정식에서 항 이항의 부호를 반대로 처리 | p=9-3×4=-3 → -3",
+        "⑤": "무게중심을 세 점 대신 두 점 평균으로 처리 | (9+p)/2=4 -> p=-1 → -1"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "무게중심 x좌표의 평균식에서 분모 3을 빠뜨림",
+          "calculation": "9+p=4 -> p=-5",
+          "value": "-5"
+        },
+        {
+          "label": "②",
+          "mistake": "무게중심 x좌표만 3배하고 A의 x좌표 9를 빼지 않음",
+          "calculation": "3×4=12",
+          "value": "12"
+        },
+        {
+          "label": "③",
+          "mistake": "좌표 방정식에서 항 이항의 부호를 반대로 처리",
+          "calculation": "p=9-3×4=-3",
+          "value": "-3"
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심을 세 점 대신 두 점 평균으로 처리",
+          "calculation": "(9+p)/2=4 -> p=-1",
+          "value": "-1"
+        }
+      ],
+      "experienceAxis": "순환하는 같은 내분비에서 무게중심이 보존된다는 관계를 이용한 역산",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_REVERSE",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-B2",
+      "slot": "B2",
+      "sourceQid": 9,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(0,12)$이다. 점 $C$, $D$는 각각 선분 $OA$, $AB$의 중점이고, 점 $E$는 선분 $BO$를 $BE:EO=1:3$으로 내분한다. 삼각형 $CDE$의 무게중심을 $(a,b)$라 할 때, $a+b$의 값은?",
+      "choices": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$4$",
+        "$27$"
+      ],
+      "answer": "③",
+      "solution": "$C$는 $OA$의 중점이므로 $C=(6,0)$이고, $D$는 $AB$의 중점이므로 $D=(6,6)$이다. $BE:EO=1:3$이므로 $E$는 $B$에서 $O$를 향해 선분 길이의 $\\dfrac14$만큼 이동한 점이다. 따라서 $E=(0,9)$이다.\n이 세 점의 무게중심은 $(a,b)=\\left(\\dfrac{6+6+0}{3},\\dfrac{0+6+9}{3}\\right)=(4,5)$이다. 그러므로 $a+b=9$이므로 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "BE:EO=1:3을 3:1로 뒤집어 E의 y좌표를 3으로 계산 | E_y=12×1/4=3, G=(4,3), a+b=7 → 7",
+        "②": "CDE 대신 원래 OAB의 무게중심을 이용 | G(OAB)=(4,4), a+b=8 → 8",
+        "④": "무게중심 x좌표 4만 답으로 사용 | (6+6+0)/3=4 → 4",
+        "⑤": "무게중심 좌표를 평균하지 않고 모두 더함 | 6+6+0+0+6+9=27 → 27"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "BE:EO=1:3을 3:1로 뒤집어 E의 y좌표를 3으로 계산",
+          "calculation": "E_y=12×1/4=3, G=(4,3), a+b=7",
+          "value": "7"
+        },
+        {
+          "label": "②",
+          "mistake": "CDE 대신 원래 OAB의 무게중심을 이용",
+          "calculation": "G(OAB)=(4,4), a+b=8",
+          "value": "8"
+        },
+        {
+          "label": "④",
+          "mistake": "무게중심 x좌표 4만 답으로 사용",
+          "calculation": "(6+6+0)/3=4",
+          "value": "4"
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심 좌표를 평균하지 않고 모두 더함",
+          "calculation": "6+6+0+0+6+9=27",
+          "value": "27"
+        }
+      ],
+      "experienceAxis": "서로 다른 내분비에서 기존 삼각형과 다른 무게중심",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-B3",
+      "slot": "B3",
+      "sourceQid": 9,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "삼각형 $OAB$의 꼭짓점이 $O(0,0)$, $A(9,0)$, $B(0,9)$일 때, 점 $C$, $D$를 각각 선분 $OA$, $AB$의 중점으로 잡는다. 선분 $BO$ 위의 점 $E$에 대하여 삼각형 $CDE$의 무게중심이 $\\left(3,\\dfrac52\\right)$이다. $BE:EO$의 값은?",
+      "choices": [
+        "$13:5$",
+        "$2:1$",
+        "$1:2$",
+        "$3:1$",
+        "$1:1$"
+      ],
+      "answer": "②",
+      "solution": "$C$와 $D$는 중점이므로 $C=(\\dfrac92,0)$, $D=(\\dfrac92,\\dfrac92)$이다. $E$는 선분 $BO$ 위에 있으므로 $E=(0,t)$ ($0<t<9$)로 놓는다.\n삼각형 $CDE$의 무게중심의 y좌표는 $\\dfrac{0+\\frac92+t}{3}=\\dfrac52$이므로 $\\dfrac92+t=\\dfrac{15}{2}$에서 $t=3$이다. 따라서 $BE=9-3=6$, $EO=3$이므로 $BE:EO=6:3=2:1$이다. 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "E의 y좌표를 무게중심의 y좌표 5/2와 동일시 | BE:EO=(9-5/2):(5/2)=13:5 → 13:5",
+        "③": "BE와 EO의 위치 순서를 반대로 사용 | EO:BE=3:6=1:2 → 1:2",
+        "④": "선분 BO 전체 길이를 BE로 착각 | BO:EO=9:3=3:1 → 3:1",
+        "⑤": "E를 선분 BO의 중점으로 임의 가정 | BE:EO=(9/2):(9/2)=1:1 → 1:1"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "E의 y좌표를 무게중심의 y좌표 5/2와 동일시",
+          "calculation": "BE:EO=(9-5/2):(5/2)=13:5",
+          "value": "13:5"
+        },
+        {
+          "label": "③",
+          "mistake": "BE와 EO의 위치 순서를 반대로 사용",
+          "calculation": "EO:BE=3:6=1:2",
+          "value": "1:2"
+        },
+        {
+          "label": "④",
+          "mistake": "선분 BO 전체 길이를 BE로 착각",
+          "calculation": "BO:EO=9:3=3:1",
+          "value": "3:1"
+        },
+        {
+          "label": "⑤",
+          "mistake": "E를 선분 BO의 중점으로 임의 가정",
+          "calculation": "BE:EO=(9/2):(9/2)=1:1",
+          "value": "1:1"
+        }
+      ],
+      "experienceAxis": "무게중심 좌표에서 내분점 위치와 비를 역으로 결정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_REVERSE",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C1",
+      "slot": "C1",
+      "sourceQid": 9,
+      "mode": "TYPE_BANK",
+      "stem": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(0,12)$이다. 선분 $OA$, $AB$, $BO$ 위의 점 $C$, $D$, $E$는 각각 $OC:CA=1:2$, $AD:DB=1:2$, $BE:EO=2:1$을 만족한다. 삼각형 $OAB$, $CDE$의 무게중심을 각각 $H$, $G$라 할 때, 선분 $GH$의 길이는?",
+      "choices": [
+        "$0$",
+        "$\\dfrac{8}{3}$",
+        "$4$",
+        "$\\dfrac{4}{3}$",
+        "$\\dfrac{4\\sqrt{2}}{3}$"
+      ],
+      "answer": "④",
+      "solution": "내분점 공식으로 $C=(4,0)$, $D=(8,4)$, $E=(0,4)$를 구한다. 따라서 삼각형 $CDE$의 무게중심은 $G=\\left(\\dfrac{4+8+0}{3},\\dfrac{0+4+4}{3}\\right)=\\left(4,\\dfrac83\\right)$이다.\n원래 삼각형 $OAB$의 무게중심은 $H=\\left(\\dfrac{0+12+0}{3},\\dfrac{0+0+12}{3}\\right)=(4,4)$이다. 두 점의 x좌표가 같으므로 $GH=4-\\dfrac83=\\dfrac43$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "BE:EO를 1:2로 뒤집어 E=(0,8)로 잡아 두 무게중심이 일치한다고 판단 | E=(0,8), G=(4,4)=H => GH=0 → 0",
+        "②": "G의 y좌표를 두 무게중심 사이 거리로 착각 | G_y=(0+4+4)/3=8/3 → 8/3",
+        "③": "H의 y좌표를 두 무게중심 사이 거리로 착각 | H_y=(0+0+12)/3=4 → 4",
+        "⑤": "OC:CA를 2:1로 뒤집어 C=(8,0)으로 계산 | G'=(16/3,8/3),H=(4,4),G'H=4√2/3 → 4sqrt2/3"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "BE:EO를 1:2로 뒤집어 E=(0,8)로 잡아 두 무게중심이 일치한다고 판단",
+          "calculation": "E=(0,8), G=(4,4)=H => GH=0",
+          "value": "0"
+        },
+        {
+          "label": "②",
+          "mistake": "G의 y좌표를 두 무게중심 사이 거리로 착각",
+          "calculation": "G_y=(0+4+4)/3=8/3",
+          "value": "8/3"
+        },
+        {
+          "label": "③",
+          "mistake": "H의 y좌표를 두 무게중심 사이 거리로 착각",
+          "calculation": "H_y=(0+0+12)/3=4",
+          "value": "4"
+        },
+        {
+          "label": "⑤",
+          "mistake": "OC:CA를 2:1로 뒤집어 C=(8,0)으로 계산",
+          "calculation": "G'=(16/3,8/3),H=(4,4),G'H=4√2/3",
+          "value": "4sqrt2/3"
+        }
+      ],
+      "experienceAxis": "두 삼각형의 무게중심 좌표 차이와 거리",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_DISTANCE_RELATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION",
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C2",
+      "slot": "C2",
+      "sourceQid": 9,
+      "mode": "TYPE_BANK",
+      "stem": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(p,9)$이다. 점 $C$는 선분 $OA$의 중점, 점 $D$는 선분 $AB$를 $AD:DB=1:2$로 내분하는 점, 점 $E$는 선분 $BO$를 $BE:EO=2:1$로 내분하는 점이다. 삼각형 $CDE$의 무게중심이 직선 $x+y=8$ 위에 있을 때, 선분 $AB$의 길이는?",
+      "choices": [
+        "$3\\sqrt{13}$",
+        "$9\\sqrt{2}$",
+        "$\\sqrt{202}$",
+        "$9$",
+        "$3\\sqrt{73}$"
+      ],
+      "answer": "①",
+      "solution": "내분점 좌표는 $C=(6,0)$, $D=(8+\\dfrac p3,3)$, $E=(\\dfrac p3,3)$이다. 따라서 삼각형 $CDE$의 무게중심은 $G=\\left(\\dfrac{6+8+\\frac p3+\\frac p3}{3},\\dfrac{0+3+3}{3}\\right)=\\left(\\dfrac{14}{3}+\\dfrac{2p}{9},2\\right)$이다.\n이 점이 직선 $x+y=8$ 위에 있으므로 $\\dfrac{14}{3}+\\dfrac{2p}{9}+2=8$이다. 양변에 $9$를 곱하면 $42+2p+18=72$이므로 $p=6$이다. 따라서 $AB=\\sqrt{(12-6)^2+(0-9)^2}=\\sqrt{117}=3\\sqrt{13}$이므로 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "CDE 대신 OAB의 무게중심이 주어진 직선에 있다고 생각 | (12+p)/3+3=8 => p=3 => AB=√(9²+9²)=9√2 → 9sqrt2",
+        "③": "BE:EO=2:1을 1:2로 거꾸로 적용 | E'=(2p/3,6), G'=((14+p)/3,3), (14+p)/3+3=8 => p=1 => AB=√202 → sqrt202",
+        "④": "E의 x좌표가 0이라고 잘못 계산 | G'_x=(14+p/3)/3, G'_y=2, x+y=8 => p=12 => AB=9 → 9",
+        "⑤": "무게중심 x좌표 계산에서 세 점의 좌표 합을 3으로 나누지 않음 | 14+2p/3+2=8 => p=-12 => AB=√(24²+9²)=3√73 → 3sqrt73"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "CDE 대신 OAB의 무게중심이 주어진 직선에 있다고 생각",
+          "calculation": "(12+p)/3+3=8 => p=3 => AB=√(9²+9²)=9√2",
+          "value": "9sqrt2"
+        },
+        {
+          "label": "③",
+          "mistake": "BE:EO=2:1을 1:2로 거꾸로 적용",
+          "calculation": "E'=(2p/3,6), G'=((14+p)/3,3), (14+p)/3+3=8 => p=1 => AB=√202",
+          "value": "sqrt202"
+        },
+        {
+          "label": "④",
+          "mistake": "E의 x좌표가 0이라고 잘못 계산",
+          "calculation": "G'_x=(14+p/3)/3, G'_y=2, x+y=8 => p=12 => AB=9",
+          "value": "9"
+        },
+        {
+          "label": "⑤",
+          "mistake": "무게중심 x좌표 계산에서 세 점의 좌표 합을 3으로 나누지 않음",
+          "calculation": "14+2p/3+2=8 => p=-12 => AB=√(24²+9²)=3√73",
+          "value": "3sqrt73"
+        }
+      ],
+      "experienceAxis": "내분점 무게중심의 직선 조건으로 미지 좌표 결정 후 거리 계산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION",
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q09-C3",
+      "slot": "C3",
+      "sourceQid": 9,
+      "mode": "TYPE_BANK",
+      "stem": "삼각형 $OAB$의 꼭짓점은 $O(0,0)$, $A(12,0)$, $B(3,t)$ ($t>0$)이다. 점 $C$는 선분 $OA$를 $OC:CA=1:2$로 내분하고, 점 $D$는 선분 $AB$의 중점이며, 점 $E$는 선분 $BO$를 $BE:EO=2:1$로 내분한다. 삼각형 $CDE$의 무게중심의 y좌표가 $\\dfrac{10}{3}$일 때, 삼각형 $CDE$의 넓이는?",
+      "choices": [
+        "$72$",
+        "$32$",
+        "$\\dfrac{40}{9}$",
+        "$\\dfrac{32}{3}$",
+        "$16$"
+      ],
+      "answer": "⑤",
+      "solution": "내분점과 중점의 좌표는 $C=(4,0)$, $D=(\\dfrac{15}{2},\\dfrac t2)$, $E=(1,\\dfrac t3)$이다. 삼각형 $CDE$의 무게중심의 y좌표는 $\\dfrac{0+\\frac t2+\\frac t3}{3}=\\dfrac{5t}{18}$이다. 따라서 $\\dfrac{5t}{18}=\\dfrac{10}{3}$을 풀면 $t=12$이다.\n이때 $C=(4,0)$, $D=(\\dfrac{15}{2},6)$, $E=(1,4)$이다. 선분 $CE$의 길이는 $\\sqrt{(4-1)^2+(0-4)^2}=5$이고, 두 점 $C$, $E$를 지나는 직선의 방정식은 $4x+3y-16=0$이다.\n점 $D$에서 이 직선까지의 거리는 $\\dfrac{|4\\cdot\\frac{15}{2}+3\\cdot6-16|}{\\sqrt{4^2+3^2}}=\\dfrac{32}{5}$이다. 따라서 삼각형 $CDE$의 넓이는 $\\dfrac12\\times5\\times\\dfrac{32}{5}=16$이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "작은 삼각형 대신 원래 삼각형 OAB의 넓이를 계산 | t=12, (12×12)/2=72 → 72",
+        "②": "좌표 차이의 행렬식 절댓값을 바로 넓이로 사용해 1/2을 누락 | | (7/2)×4−6×(−3) |=32 → 32",
+        "③": "무게중심 y좌표를 B의 y좌표로 혼동 | t=10/3, S(CDE)=4t/3=40/9 → 40/9",
+        "④": "무게중심의 y좌표를 세 점이 아닌 두 점의 평균으로 계산 | (t/2+t/3)/2=10/3 => t=8, S=4t/3=32/3 → 32/3"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "작은 삼각형 대신 원래 삼각형 OAB의 넓이를 계산",
+          "calculation": "t=12, (12×12)/2=72",
+          "value": "72"
+        },
+        {
+          "label": "②",
+          "mistake": "좌표 차이의 행렬식 절댓값을 바로 넓이로 사용해 1/2을 누락",
+          "calculation": "| (7/2)×4−6×(−3) |=32",
+          "value": "32"
+        },
+        {
+          "label": "③",
+          "mistake": "무게중심 y좌표를 B의 y좌표로 혼동",
+          "calculation": "t=10/3, S(CDE)=4t/3=40/9",
+          "value": "40/9"
+        },
+        {
+          "label": "④",
+          "mistake": "무게중심의 y좌표를 세 점이 아닌 두 점의 평균으로 계산",
+          "calculation": "(t/2+t/3)/2=10/3 => t=8, S=4t/3=32/3",
+          "value": "32/3"
+        }
+      ],
+      "experienceAxis": "무게중심의 좌표 역조건과 내분점 삼각형의 넓이 결합",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "삼각형의 무게중심",
+      "lockedL3DecisiveStep": "원본 삼각형의 주어진 꼭짓점과 내분점 정보로 삼각형 무게중심을 계산하거나 역조건을 복원한다",
+      "targetL4": "좌표 도형 활용",
+      "studentVisual": "NOT_REQUIRED_COORDINATES_AND_RATIOS_IN_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-01",
+        "standardUnit": "평면좌표",
+        "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "평면좌표",
+        "rpmL3": "삼각형의 무게중심",
+        "rpmBindingStatus": "DIRECT_BINDING_GAP",
+        "pt": "PT_COORD_CENTROID",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "rpmL4": "좌표 도형 활용",
+        "rpmRecordId": "H1-RPM-209",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "crossConceptKeys": [
+          "CC_INTERNAL_DIVISION",
+          "CC_TRIANGLE_AREA",
+          "CC_POINT_LINE_DISTANCE",
+          "CC_DISTANCE_TWO_POINTS"
+        ],
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [
+          "t>0 (삼각형 비퇴화)"
+        ],
+        "integrationPattern": "COMPOSITE",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 10,
+  "publication": "CREATE_DRAFT_ONLY_NOT_STUDENT_APPROVED_NOT_CONSUMER_REGISTERED"
+}
