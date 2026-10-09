@@ -1,3 +1,11 @@
+## CURRENT — 팔마고 q19 신규 9문항 (2026-10-10)
+- 원본 q19: 큰 원·반원호·직선의 교점 개수, RPM H1-RPM-219 (원과 직선/교점 개수) DIRECT_ACTIVE. 기존 검수·배포 대상 q01~q18 보호.
+- 같은 브랜치 A1~C3 9문항: `GPT_QID9_Q19_PACKAGE.json`, `GPT_QID9_Q19_STEM_SELF_REVIEW.md`; 각각 발문·보기5·정답·상세 해설·오답 계산근거와 Meta 포함.
+- 누적 q01~q19 **171문항**(q09~q19 **99문항**). q19 제작자 점검 KEEP9/REVISED0/HOLD0; 별도 독립 GPT 공개답 검수 NOT_RUN, Consumer/index 신규 0/9, Chrome NOT_TESTED, main Q19 출시 미완료. 다음 q20.
+- 기존 Manifest 잘못된 말미의 리터럴 백슬래시+n을 정식 JSON 줄바꿈으로 정상화; q18 포함 기존 기록은 데이터 그대로 유지.
+
+---
+
 # CURRENT 2026-10-10 — Q09-Q12 Archive 2.0 Consumer/Chrome PASS, main publication pending
 
 - 운영 요청 범위: Q09-Q16 A1-C3 총 72 UID. Q13-Q16의 36 UID는 이미 main 운영완료 (publication commit `7bc7b6ed02635db18a95931607ae60e36fe0b9c0`, Chrome evidence https://github.com/icefoxtail/AP------/actions/runs/37938836922). 이번 release 대상은 아직 main 미등록이던 Q09-Q12 36 UID다.
