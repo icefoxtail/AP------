@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 12,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q12-A1-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "원 위의 P, Q와 접선 교점 A, H에서 PQ에 내린 수선 및 OH.",
+    "solutionImageCaption": "접선과 반지름의 수직 관계, OH의 길이를 확인한다."
   }
 ];
 

@@ -3,7 +3,7 @@
 <head>
     <script src="archive2-review.js"></script>
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-    <script src="archive2-output.js?v=20261006-storage-independent-output-2"></script>
+    <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script>
@@ -190,7 +190,10 @@
         /* [Grid] Exam Layout */
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
+        .grid-container.sol-fullwidth-grid { grid-template-columns: minmax(0, 1fr); }
+        .grid-container.sol-fullwidth-grid::after { display: none; }
         .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
+        .grid-col.sol-fullwidth-column { height: auto; min-height: 0; overflow: visible; }
 
         /* [Box] Question Style */
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
@@ -300,6 +303,8 @@
         .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
         .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-wrap.layout-fullwidth { width: 100%; }
+        .sol-image-wrap.layout-fullwidth img { max-width: 100%; max-height: none; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
 
         /* [Answer Grid] Styles */
@@ -415,11 +420,11 @@
     <script src="render-state-normalizer.js?v=20260912.1"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
-    <script src="common-fast-runtime.js?v=20261003-reader-controls-s1-2"></script>
+    <script src="common-fast-runtime.js?v=20261010-q19-typeset-diagnostic-2"></script>
     <script src="equal-slot-engine.js?v=20260915.1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
     <script src="exam-render-executor.js?v=20261002-output-envelope-v3"></script>
-    <script src="solution-render-executor.js?v=20260914.1"></script>
+    <script src="solution-render-executor.js?v=20261010-qpp1-fullwidth-1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
     <script defer src="archive2-reader-controls.js?v=20261003-student-return-s4-1"></script>
@@ -1492,33 +1497,47 @@ function fitQuestionBox(box) {
 
 function makeSolutionHtmlChunks(html) {
     const host = document.createElement('div');
-    host.innerHTML = html || '';
+    const displayMathBlocks = [];
+    const displayMathToken = index => `__AP_SOLUTION_DISPLAY_MATH_${index}__`;
+    const mathProtectedHtml = String(html || '').replace(/\$\$[\s\S]*?\$\$/g, block => {
+        const index = displayMathBlocks.push(block.replace(/<br\s*\/?>/gi, ' ')) - 1;
+        return displayMathToken(index);
+    });
+    const restoreDisplayMath = value => String(value || '').replace(/__AP_SOLUTION_DISPLAY_MATH_(\d+)__/g, (_, index) => displayMathBlocks[Number(index)] || '');
+    host.innerHTML = mathProtectedHtml;
     const chunks = [];
     const pushTextChunks = (text) => {
-        const parts = String(text || '').split(/(\s+)/);
+        const parts = String(text || '').split(/(__AP_SOLUTION_DISPLAY_MATH_\d+__|\$[^$\n]*?\$|\s+)/g);
         let buf = '';
+        const flush = () => {
+            if (!buf) return;
+            const span = document.createElement('span');
+            span.textContent = buf;
+            chunks.push(span.outerHTML);
+            buf = '';
+        };
         for (const part of parts) {
+            const mathToken = /^__AP_SOLUTION_DISPLAY_MATH_(\d+)__$/.exec(part);
+            if (mathToken || /^\$[^$\n]*?\$$/.test(part)) {
+                flush();
+                chunks.push(mathToken ? displayMathBlocks[Number(mathToken[1])] : part);
+                continue;
+            }
             if ((buf + part).length > 260 && buf.trim()) {
-                const span = document.createElement('span');
-                span.textContent = buf;
-                chunks.push(span.outerHTML);
+                flush();
                 buf = part;
             } else {
                 buf += part;
             }
         }
-        if (buf) {
-            const span = document.createElement('span');
-            span.textContent = buf;
-            chunks.push(span.outerHTML);
-        }
+        flush();
     };
     host.childNodes.forEach(node => {
         if (node.nodeType === Node.TEXT_NODE) {
             pushTextChunks(node.textContent || '');
         } else if (node.nodeType === Node.ELEMENT_NODE) {
             if (node.tagName === 'BR') chunks.push('<br>');
-            else chunks.push(node.outerHTML);
+            else chunks.push(restoreDisplayMath(node.outerHTML));
         }
     });
     return chunks.length ? chunks : [''];
@@ -1980,7 +1999,8 @@ function renderSolutionImageHTML(q) {
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
-    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
+    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -2536,16 +2556,19 @@ async function renderSol(area, data) {
         let pNum = 1;
         let cols;
         let colIdx = 0;
+        const singleColumn = normalizeMixedQpp(AppState.qpp) === 1;
         const makeGridPage = () => {
             const p = makePage(area, 'sol', pNum++);
-            const grid = document.createElement('div'); grid.className = 'grid-container';
-            const l = document.createElement('div'); l.className = 'grid-col';
+            const grid = document.createElement('div'); grid.className = `grid-container${singleColumn ? ' sol-fullwidth-grid' : ''}`;
+            const l = document.createElement('div'); l.className = `grid-col${singleColumn ? ' sol-fullwidth-column' : ''}`;
             const r = document.createElement('div'); r.className = 'grid-col';
-            grid.appendChild(l); grid.appendChild(r); p.body.appendChild(grid);
-            return { p, cols: [l, r] };
+            grid.appendChild(l);
+            if (!singleColumn) grid.appendChild(r);
+            p.body.appendChild(grid);
+            return { p, cols: singleColumn ? [l] : [l, r] };
         };
         const advanceColumn = () => {
-            if (colIdx === 0) colIdx = 1;
+            if (colIdx === 0 && cols.length > 1) colIdx = 1;
             else { ({ cols } = makeGridPage()); colIdx = 0; }
             return cols[colIdx];
         };

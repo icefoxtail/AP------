@@ -36,7 +36,11 @@ window.questionBank = [
     "sourceKind": "generated",
     "sourceQid": 9,
     "slot": "A1",
-    "purposeGroup": "A"
+    "purposeGroup": "A",
+    "solutionImage": "assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q09-A1-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "삼각형과 점 O, A, B, C, D, E, G 및 세 길이비.",
+    "solutionImageCaption": "각 선분의 소유 점과 길이비 관계를 확인한다."
   }
 ];
 
