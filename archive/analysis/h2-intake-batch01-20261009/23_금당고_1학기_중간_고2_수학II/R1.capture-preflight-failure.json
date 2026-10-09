@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CAPTURE_PREFLIGHT_FAILURE_V1",
+  "stage": "R1",
+  "reviewerId": "/root/r1_05",
+  "command": "archive-codex-handoff.mjs validate-capture",
+  "exitCode": 2,
+  "stderr": "{\"ok\":false,\"error\":\"CURRENT_STUDENT_SOURCE_SHA_REQUIRED\"}",
+  "genericValidatorInvoked": false,
+  "reason": "The first capture attempt used the original pre-repair bundle whose source SHA was the frozen source. Re-extracted the current student-only bundle from the repaired current source; independent payload and asset parity remain exact.",
+  "currentSourceRawSha256": "cec218a0e7561e30f3fb786e070fd0c360e2326de1483394b826955e467a96a1",
+  "originalFreezeSha256": "ed4a57d458f6bdcc776795bdc750cdbd6440a7e72c6f5dadc320be92eef78665",
+  "originalBundleSha256": "737a799ff903dcd35d04fe963a8b1bb2e73fa4fc750e71e866636da83bb7d43c",
+  "currentBundleSha256": "130b63d993f248cee76199740a410da52127351e27080807d649a592574cb3a6"
+}

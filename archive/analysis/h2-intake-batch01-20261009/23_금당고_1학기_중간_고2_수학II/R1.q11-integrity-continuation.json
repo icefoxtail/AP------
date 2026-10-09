@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_INTEGRITY_CONTINUATION_V1",
+  "stage": "R1",
+  "examUid": "23_금당고_1학기_중간_고2_수학II",
+  "reviewerId": "/root/r1_05",
+  "scope": {
+    "qid": 11,
+    "changedLoci": [],
+    "sourceOrSolutionChanged": false
+  },
+  "determination": "CURRENT_ARTIFACT_Q11_INTERNALLY_CONSISTENT_R1_WITNESS_CORRECT; R2 ADJUDICATION IS AN EXTERNAL STAGE RECORD CONFLICT",
+  "currentArtifact": {
+    "workingJs": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\23_금당고_1학기_중간_고2_수학II.js",
+      "sha256": "cec218a0e7561e30f3fb786e070fd0c360e2326de1483394b826955e467a96a1"
+    },
+    "rawBufferBlobSha1": "4c3d094fbbb3d4f6f5fa00558494314cb2b0f49c",
+    "qid": 11,
+    "contentSha256": "003cc4163a30f7822902b8d7b00c768434227e4d870cdcb2225095a5e68198ea",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": {
+      "label": "①",
+      "zeroBasedChoiceIndex": 0,
+      "oneBasedChoiceIndex": 1,
+      "numericValue": "3"
+    },
+    "solutionTerminal": {
+      "statement": "가능한 정수는 -2,0,2의 세 개이다. 따라서 정답은 ①이다.",
+      "numericValue": 3,
+      "solutionSha256": "a6094cce17b185f0dad02d3f859d6bab36b0c60dc898e4e0fff11fa9109f01be"
+    },
+    "decisiveStep": "그래프와 분자 영점으로 몫의 극한 판정",
+    "studentPayloadSha256": "da54ed7e266ab320c0a33e0379fc64abee6c3a85f38f0a71b374ccc6b716fda2",
+    "studentProjectionSourceRawSha256": "cec218a0e7561e30f3fb786e070fd0c360e2326de1483394b826955e467a96a1",
+    "sourceImage": {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학II/q11.png",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\assets\\images\\23_금당고_1학기_중간_고2_수학II\\q11.png",
+      "sha256": "9fbcc57cfb43b79c5cee8c19d5970dcae0095091ffdd484080318b35deccc2fc"
+    }
+  },
+  "r1": {
+    "originalFreeze": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R1.original-freeze.json",
+      "sha256": "ed4a57d458f6bdcc776795bdc750cdbd6440a7e72c6f5dadc320be92eef78665"
+    },
+    "frozenQid11": {
+      "independentAnswer": "4",
+      "reasoning": "정수 a=−3,−2에서는 그래프가 연속이고 f(a)≠0이다. a=−1은 점프, a=1 및 3은 f→0이라 x/f 발산한다. a=0에서는 양쪽 f→1이라 비의 극한 0, a=2에서는 양쪽 f→1이라 비의 극한 2가 존재한다. 해당 정수는 −3,−2,0,2로 4개.",
+      "qid": 11
+    },
+    "adjudication": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R1.answer-adjudication.json",
+      "sha256": "0917d949aade26c53baaebd5516fe6061d46e0cf93d4b8fb03654d040db0a5d4"
+    },
+    "adjudicatedQid11": {
+      "qid": 11,
+      "correctedAnswer": "3",
+      "reason": "Postfreeze graph reread shows the displayed graph begins at x=-3, so a two-sided limit at that domain endpoint is not established; exclude a=-3. At a=-1 the left and right function limits differ, so exclude it. At a=0 the graph approaches 1 from both sides (the isolated f(0)=2 is irrelevant) and x/f(x) tends to 0. At a=-2 and a=2 the nonzero function limit exists; at a=1 and a=3 the denominator tends to 0 while numerator does not. The valid integers are -2,0,2, giving 3. Original blind freeze remains unchanged.",
+      "originalAnswer": "4"
+    },
+    "evidence": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R1.evidence.revision2.bound.json",
+      "sha256": "2eb7ff6b55e243833296aa5af8295fc003d2b5669145f4e31bb80e60cc114f79"
+    },
+    "finalRowQid11": {
+      "qid": 11,
+      "sourceMode": "EXTRACTED_JS_ASSETS",
+      "independentAnswer": "4",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS",
+      "answerCardinality": {
+        "status": "UNIQUE",
+        "reason": "One option equals the independently derived value; no second option is equivalent."
+      },
+      "reasoning": "정수 a=−3,−2에서는 그래프가 연속이고 f(a)≠0이다. a=−1은 점프, a=1 및 3은 f→0이라 x/f 발산한다. a=0에서는 양쪽 f→1이라 비의 극한 0, a=2에서는 양쪽 f→1이라 비의 극한 2가 존재한다. 해당 정수는 −3,−2,0,2로 4개.",
+      "independentAnswerAfterAdjudication": "3",
+      "repairApplied": true,
+      "disposition": "MINIMAL_REPAIR_RECHECKED",
+      "adjudicationRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학II/R1.answer-adjudication.json",
+        "sha256": "0917d949aade26c53baaebd5516fe6061d46e0cf93d4b8fb03654d040db0a5d4"
+      },
+      "answerComparison": {
+        "storedValue": "3",
+        "finalIndependentAnswer": "3",
+        "status": "MATCH_AFTER_ADJUDICATION"
+      },
+      "primaryMethod": "Graph quotient-limit existence",
+      "decisiveSteps": [
+        "Check endpoint, jumps, zeros and nonzero limits for each integer"
+      ],
+      "smallBoardContinuityStatus": "PASS",
+      "metaDebtFields": [],
+      "metaDebtReason": "",
+      "difficultyEvidence": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Seven integers require graph limit and denominator-zero screening."
+      },
+      "questionLayout": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP",
+        "defectCodes": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactEquality": "PASS"
+      },
+      "visualDisposition": {
+        "status": "SOURCE_VISUAL_KEEP",
+        "reason": "Required source graph was opened; it carries information unavailable from text alone."
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "KEEP",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactEquality": "PASS",
+          "browserRenderStatus": "NOT_RUN_R1_EXPECTED_R3",
+          "reason": "Graph prompt and integer range remain together; graph is the necessary source visual."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "studentReproducibility": "PASS",
+          "explanationDensity": "PASS",
+          "solutionIdentityAlignmentStatus": "PASS",
+          "reviewBasis": "Repaired after review: endpoint −3, jump −1, isolated f(0), zeros 1/3 and regular −2/2 are distinguished; count is 3."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitAuthority": "JS아카이브_표준단원키_마스터테이블.md plus Meta Foundation/RPM Primary/current binding lookup",
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-01",
+          "standardUnit": "함수의 극한",
+          "standardUnitOrder": 1,
+          "subUnitKey": "H15-M2-01-LIMIT",
+          "subUnit": "함수의 극한",
+          "problemTypeKey": "PT_LIMIT_EXISTENCE",
+          "templateKey": "TPL_LIMIT_EXISTENCE_TEST",
+          "primaryMethod": "Graph quotient-limit existence",
+          "decisiveStep": "Check endpoint, jumps, zeros and nonzero limits for each integer",
+          "lookupBasis": "Recomputed from current prompt, actually reviewed solution and current canonical key/master scope; existing projection fields preserved without semantic rewrite."
+        },
+        "visualSvg": {
+          "status": "SOURCE_VISUAL_KEEP",
+          "sourceImageDisposition": "REQUIRED_SOURCE_IMAGE_OPENED",
+          "solutionImage": null,
+          "browserRenderStatus": "NOT_RUN_R1_EXPECTED_R3",
+          "reason": "Opened assigned image and read the graph for independent answer/visual necessity."
+        }
+      },
+      "currentMetadata": {
+        "standardCourse": "수학II",
+        "standardUnitKey": "H15-M2-01",
+        "standardUnit": "함수의 극한",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M2-01-LIMIT",
+        "subUnit": "함수의 극한",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_LIMIT_EXISTENCE",
+        "templateKey": "TPL_LIMIT_EXISTENCE_TEST",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_CONCEPT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "preAdjudicationComparison": {
+        "independentAnswer": "4",
+        "storedValue": "3",
+        "reason": "Blind reading initially counted endpoint a=-3; adjudication applies the two-sided endpoint convention from the displayed graph."
+      },
+      "solutionSha256": "a6094cce17b185f0dad02d3f859d6bab36b0c60dc898e4e0fff11fa9109f01be"
+    },
+    "validatorReport": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R1.validator-report.v2.raw.json",
+      "sha256": "9b35f208f7d9903a6463e850b59c989e6a397acda43726e5e7899d2ce6a647dc"
+    },
+    "validator": {
+      "disposition": "PASS",
+      "denominator": 20,
+      "rowCount": 20,
+      "issues": []
+    },
+    "completionEvent": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R1.complete-event.json",
+      "sha256": "9af521b73fb67015bcc39ab11b044b0d757603403543466f227300fd44ed8ebf"
+    },
+    "completionEventRef": {
+      "nextStage": "R2",
+      "freedSlot": "R1",
+      "nextRosterTarget": "23_강남여고_1학기_중간_고2_확률과통계"
+    }
+  },
+  "r2": {
+    "originalFreeze": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R2.r2_05.original-freeze.json",
+      "sha256": "cc51d47318c31c6043f9f06e536d1356c0c4d744c1f0a8b03c0514f5ce430ee8"
+    },
+    "frozenQid11": {
+      "qid": 11,
+      "independentAnswer": "5 (choice 3)",
+      "reasoning": "Checking integer a=-3,…,3 against the graph: the two-sided quotient limit exists finitely at -3,-2,-1,0,2. At 1 the denominator tends to 0 with nonzero numerator, and at 3 the graph crosses f=0 with x≠0, so those limits are not finite. Count=5."
+    },
+    "adjudication": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R2.r2_05.adjudication.json",
+      "sha256": "57e2a2815e1eead781c4adf5da241b82c33ba51b31ff5573d13ea0b79a96fa47"
+    },
+    "adjudicatedQid11": {
+      "qid": 11,
+      "correctedAnswer": "4 (choice 2)",
+      "reason": "The graph is defined only from x=-3 onward, so a two-sided limit at its left endpoint a=-3 cannot be taken. At a=-2, f has a nonzero limit. At a=-1, both branches approach 1, so x/f(x) approaches -1 from both sides. At a=0, f has nonzero one-sided limits 2 and 1 while x tends to 0, so both quotient limits are 0. At a=2, f approaches 1 from both sides. At a=1 and a=3, f tends to 0 while x tends to a nonzero value, so no finite limit exists. Exactly four values (-2,-1,0,2) qualify.",
+      "originalAnswer": "5 (choice 3)"
+    },
+    "postfreezeDisclosure": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\R2.r2_05.postfreeze-disclosure.json",
+      "sha256": "399a8cd1f105c970bed20cc7f58d54bd07595ea618554a7f3c3302acf6870ce8"
+    },
+    "disclosedQid11": {
+      "qid": 11,
+      "answer": "①",
+      "solution": "그래프에서 각 정수 $a$를 살펴본다.\n$a=-3$은 그래프의 왼쪽 끝점이므로 양쪽에서 접근하는 극한을 판단할 수 없다. 따라서 이 값은 제외한다.\n$a=-2$에서는 $f(x)$가 0이 아닌 값으로 수렴하므로 $x/f(x)$의 극한이 존재한다.\n$a=-1$에서는 $f(x)$의 좌극한은 1, 우극한은 2이다. 분자는 −1로 수렴하므로 몫의 좌우 극한이 달라 제외한다.\n$a=0$에서는 점에서의 함수값과 관계없이 양쪽에서 $f(x)$가 1로 수렴한다. 따라서 $x/f(x)\\to0$이고 극한이 존재한다.\n$a=1,3$에서는 $f(x)\\to0$이고 분자는 각각 1,3으로 수렴하므로 유한한 극한값이 존재하지 않는다.\n$a=2$에서는 $f(x)$가 0이 아닌 값으로 수렴하므로 $x/f(x)$의 극한이 존재한다.\n가능한 정수는 $-2,0,2$의 세 개이다.\n따라서 정답은 ①이다.",
+      "decisiveStep": "그래프와 분자 영점으로 몫의 극한 판정"
+    }
+  },
+  "numericChoiceIdentityWitness": {
+    "currentAnswerLabel": "①",
+    "currentChoiceIndexZeroBased": 0,
+    "currentChoiceIndexOneBased": 1,
+    "currentChoiceValue": "3",
+    "currentSolutionTerminalValue": 3,
+    "currentR1AdjudicatedValue": "3",
+    "identityMatches": true,
+    "r2AdjudicatedValue": "4 (choice 2)",
+    "r2AdjudicatedIndex": "2",
+    "r2DisclosedAnswer": "①"
+  },
+  "chatSummaryCorrection": "The earlier chat summary accurately stated the R1 blind freeze value 4, current stored answer label ① maps to choice value 3, and R1 postfreeze adjudication corrected the independent answer to 3. No current JS answer/choice/solution/decisiveStep contradiction is present. R2’s later adjudication says 4 (choice ②) while its postfreeze disclosure and current JS still encode ①/value 3; R2’s cited claim that both branches at a=-1 approach 1 is contradicted by the opened graph, whose open endpoints at x=-1 are y=1 and y=2. This continuation makes no source/evidence edits and does not re-run the generic validator.",
+  "createdAt": "2026-10-09T02:17:08.000Z"
+}

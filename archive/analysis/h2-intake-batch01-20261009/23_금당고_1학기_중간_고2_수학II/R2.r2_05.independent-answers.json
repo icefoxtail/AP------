@@ -1,0 +1,102 @@
+[
+  {
+    "qid": 1,
+    "independentAnswer": "1 (choice 4)",
+    "reasoning": "From the graph, lim x→-1− f(x)=-1 and lim x→1+ f(x)=2; their sum is 1."
+  },
+  {
+    "qid": 2,
+    "independentAnswer": "3 (choice 3)",
+    "reasoning": "For a ratio of quadratic polynomials as x→∞, the limit is the ratio of leading coefficients, 3/1."
+  },
+  {
+    "qid": 3,
+    "independentAnswer": "3 (choice 5)",
+    "reasoning": "Continuity at 1 requires 1−4+a=3−a, hence 2a=6 and a=3."
+  },
+  {
+    "qid": 4,
+    "independentAnswer": "1 (choice 4)",
+    "reasoning": "f′(x)=6x²−5, so f′(1)=1."
+  },
+  {
+    "qid": 5,
+    "independentAnswer": "4 (choice 1)",
+    "reasoning": "Rationalizing gives (x+2)(√(x+6)+2)/(x+2)=√(x+6)+2, whose limit is 4."
+  },
+  {
+    "qid": 6,
+    "independentAnswer": "-1 (choice 3)",
+    "reasoning": "The first limit forces a quadratic polynomial with leading coefficient 2. The finite second limit forces f(1)=0 and f′(1)=3. Writing f=2x²+bx+c gives b=-1,c=-1, hence f(0)=-1."
+  },
+  {
+    "qid": 7,
+    "independentAnswer": "-1 (choice 2)",
+    "reasoning": "Continuity forces the numerator x²+ax+b to vanish at 2. f(4)=1 gives 16+4a+b=2; together with 4+2a+b=0 this gives a=-5,b=6. The removable value f(2) is the derivative of the numerator at 2, 4+a=-1."
+  },
+  {
+    "qid": 8,
+    "independentAnswer": "3 (choice 5)",
+    "reasoning": "On [2,4], max √(2x−4)=2. g′(x)=6/(x+1)²>0, so its minimum is g(2)=1. Sum=3."
+  },
+  {
+    "qid": 9,
+    "independentAnswer": "3 (choice 1)",
+    "reasoning": "The unit-interval average rate for x²−x+2 from a to a+1 simplifies to 2a. Setting 2a=6 gives a=3."
+  },
+  {
+    "qid": 10,
+    "independentAnswer": "y=x−2 (choice 1)",
+    "reasoning": "The derivative is −2x+3; slope 1 occurs at x=1, where y=−1. The tangent is y+1=x−1, or y=x−2."
+  },
+  {
+    "qid": 11,
+    "independentAnswer": "5 (choice 3)",
+    "reasoning": "Checking integer a=-3,…,3 against the graph: the two-sided quotient limit exists finitely at -3,-2,-1,0,2. At 1 the denominator tends to 0 with nonzero numerator, and at 3 the graph crosses f=0 with x≠0, so those limits are not finite. Count=5."
+  },
+  {
+    "qid": 12,
+    "independentAnswer": "1 (choice 4)",
+    "reasoning": "Continuity of f(x)g(x) at 3 requires the polynomial f to have a zero of order at least 2 there, so f(x)=(x−3)² by the leading-coefficient limit. Thus f(2)=1."
+  },
+  {
+    "qid": 13,
+    "independentAnswer": "15 (choice 5)",
+    "reasoning": "Intersection parameter k=-x³+2x²−3x. Its derivative is −3x²+4x−3<0, so on (-2,-1) its range is (6,22). Natural integer k values are 7 through 21, totaling 15; the cubic intersection equation is strictly monotone, so the single-intersection condition holds."
+  },
+  {
+    "qid": 14,
+    "independentAnswer": "9 (choice 3)",
+    "reasoning": "At x=2, f(2+h)=f(2)+3h+o(h) and f(2−5h)=f(2)−15h+o(h). The numerator is 18h+o(h), giving limit 9."
+  },
+  {
+    "qid": 15,
+    "independentAnswer": "12 (choice 5)",
+    "reasoning": "Differentiate the identity with respect to x: f′(x+y)=f′(x)+y. Set x=1,y=9 to obtain f′(10)=f′(1)+9=12."
+  },
+  {
+    "qid": 16,
+    "independentAnswer": "5 (choice 2)",
+    "reasoning": "The secant slope on [1,a] is (f(a)-f(1))/(a−1)=a−1. MVT point c=3 requires this to equal f′(3)=4, so a=5."
+  },
+  {
+    "qid": 17,
+    "independentAnswer": "1/2",
+    "reasoning": "Let A=(u,2u²) with u>0 and B=(v,2v²), v<0, be intersections with y=x+t. Roots satisfy 2z²−z−t=0, so v=(1−√(1+8t))/4 and v/t→−1. Since AC is horizontal from x=−u to x=u, H has x-coordinate v; AH−CH=(u−v)−(v+u)=−2v. Divide by 4t to get −v/(2t)→1/2."
+  },
+  {
+    "qid": 18,
+    "independentAnswer": "29",
+    "reasoning": "At x=1, f+g=3−1+2=4 and f′+g′=6−1=5. The given product-difference limit is (fg)′(1)=−9. Therefore ff′+gg′=(f+g)(f′+g′)−(fg)′=4·5−(−9)=29."
+  },
+  {
+    "qid": 19,
+    "independentAnswer": "-16",
+    "reasoning": "At x=3, the left and right values of f are −2 and 3a−9, both nonzero for a>3. Continuity of g/f therefore forces g(3)=0. Continuity at the zeros 1 and a likewise forces g(1)=g(a)=0, so the monic cubic is g=(x−1)(x−3)(x−a). Then h(1)=g′(1)/f′_left(1)=−2(a−1)/3, and h(a)=g′(a)/f′_right(a)=−(a−1)(a−3)/a. Equating and using a>3 gives a=9, hence h(1)=−16/3 and 3h(1)=−16."
+  },
+  {
+    "qid": 20,
+    "independentAnswer": "-1/2",
+    "reasoning": "Let u=√(-k)>0. The tangent contact points are x=±u, giving an isosceles triangle with base u, height u², equal side u√(1/4+u²). Its inradius is area/semiperimeter = u²/(1+√(1+4u²)). Since k=−u², r(k)/k=−1/(1+√(1+4u²))→−1/2."
+  }
+]
