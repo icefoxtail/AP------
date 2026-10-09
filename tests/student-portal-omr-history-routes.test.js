@@ -24,7 +24,7 @@ assert(
 
 assert(
   source.includes("method === 'GET' && id === 'exams'") &&
-    source.includes('loadStudentClassExamAssignments(env, verified.student.id, 150)'),
+    /loadStudentClassExamAssignments\(\s*env,\s*verified\.student\.id,\s*150,/.test(source),
   'student portal should expose a student-token protected historical OMR exam list'
 );
 
