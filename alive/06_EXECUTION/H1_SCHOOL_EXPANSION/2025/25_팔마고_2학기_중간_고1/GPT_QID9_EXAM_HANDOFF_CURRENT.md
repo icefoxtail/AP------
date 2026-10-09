@@ -2,7 +2,7 @@
 
 - **실행 사용자 범위:** 2025 팔마고 고1 2학기 중간 **원본 q11 하나**. 기존 q01~q10 보호, 건너뛴 q10은 별도 작업자에 의해 branch manifest에 9개 CREATE로 등록된 것이 실제 확인됨.
 - **Git 브랜치:** `work/alive-25-palma-h1-2mid-qid9`, 원본 Git blob `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`.
-- **q11 물리 산출물:** `GPT_QID9_Q11_PACKAGE.json` (A1~C3 9개, 상세 한국어 해설, 오답 4개별 실제 오류·반례와 선지, 전체 Meta), `GPT_QID9_Q11_STEM_SELF_REVIEW.md` (KEEP7/REVISED2/HOLD0), `archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json` (4개의 Generated 후보 메타 확장 정의). source 기출 JS 무변경.
+- **q11 물리 산출물:** `GPT_QID9_Q11_PACKAGE.json` (A1~C3 9개, 상세 한국어 해설, 오답 4개별 실제 오류·반례와 선지, 전체 Meta), `GPT_QID9_Q11_STEM_SELF_REVIEW.md` (KEEP9/REVISED0/HOLD0), `archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q11-cross-concepts.json` (4개의 Generated 후보 메타 확장 정의). source 기출 JS 무변경.
 - **실제 원본 평가 핵심:** 원본 필요한 L3 `필요조건·충분조건` (H1-RPM-247 조건 관계 / H1-RPM-248 매개변수), ACTIVE `PT_NEC_SUFF_RELATION` 및 정확한 유형별 Template. 원본 ⑤에 발문에서 선언 안 된 변수 z가 있음. 신규 문항은 전부 필요한 변수 범위를 명시.
 - **제작자 테스트:** 9 UID/45보기/36 오답 경로 및 정답위치 ①2·②2·③2·④2·⑤1. A2/B2/B3/C1/C2/C3의 세부 값 및 경계 경우 별도 자체 계산. q11 package에 계산 및 결속 증거 추가.
 - **이번 실행:** CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE. **GPT 독립 공개답 품질인증, 학생 Consumer/index 신규 등록, Chrome 실조회/출력은 미수행**. 기존 형님 승인 72 UID의 상태는 변경하지 않음.
