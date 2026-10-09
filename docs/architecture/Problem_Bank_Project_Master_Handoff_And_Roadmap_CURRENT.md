@@ -6,6 +6,16 @@
 > **적용 프로젝트:** JS Archive 학교 기출 + Archive 2.0 검색·출제 + ALIVE Generated Bank = **문제은행 프로젝트**.  
 > **역할:** 사용자와 이전 작업에서 합의한 목적·증거·종료 상태·미완료 구현 순서의 단일 인계점. 이 문서는 새 제품 코드나 출시 인증이 아니며 기존 수학 품질, RPM 정본, Archive 2.0 Runtime/권한 계약을 대체하지 않는다.
 
+## CURRENT USER OVERRIDE — Meta-first / 모든 평가상품 공통 공급 목표 (2026-10-09)
+
+**사용자 최상위 목표는 L2 검색 화면이나 팔마고 복구 자체가 아니라, 생성문항 Meta의 정확한 영구 완성이다.** 해당 Meta를 문제지 만들기(Compose)와 Factory의 5분 테스트·소단원 평가·단원 평가·월말 평가, 이후 모의고사까지 **한 번 만들어 여러 평가에서 재사용**하도록 한다.
+
+- 필독 신규 공통 Meta 계약: [문제은행 프로젝트 — 생성문항 공통 Meta 및 전체 평가상품 연결 계약 v1.0](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/Problem_Bank_Unified_Meta_Assessment_Contract_CURRENT_v1.md). 교육과정/L1~L4·유형/PT/TPL·CrossConcept·Condition·Integration·난이도 1~5·변형/중복·검수 상태·UID source/asset가 Source→Consumer→검색 Projection까지 일치해야 한다.
+- **Meta 정본과 평가 Recipe 분리:** 5분 4문항/소단원 12문항/단원 20문항/월말 24문항은 Factory v0.13 기본 Recipe다. Factory 공용평가는 사전생산·검수·봉인하고, 문제지 만들기는 Compose에서 직접 구성한다. 모두 동일한 문항 Meta adapter를 사용한다. 미래 모의고사 분량·시간은 아직 확정하지 않는다.
+- **기준 경계:** 모르는 값은 UNKNOWN/근거부족으로 정확히 기록하며 NONE/[]은 진짜 미적용에만 사용한다. 기존 중등 직접 사용과 검증 완료 Common의 자격 기준은 구분한다. ALIVE 승인·HOLD, 과거 323 LEGACY_NOT_RECERTIFIED, original direct-open, RPM LOCKED/DRAFT/EXT namespace는 보존한다.
+- **실제 다음 구현 우선순위:** 새 계약의 M0(기존 schema·소비자 1:1 매핑) → M1(신규 Meta 무손실 영구 저장) → M2(기존 승인 323 근거 기반 복원) → M3(기출+Generated 통합 검색/Compose·Factory 동일 입력) → M4(Factory 4종 Recipe 연결) → M5(출시·변경 시 색인 자동 동기화). 아래 구 P0의 팔마고 historical closeout은 중요하지만 Meta 완성을 막는 선행 stage barrier는 아니다. 제품 UX/미래 모의고사는 후속.
+- **상태:** 문서화 완료, M0~M5의 실제 코드 구현 완료 아님. 완료한 기존 346개 Consumer 승인/Chrome PASS를 제품별 Common 공급 완료나 완전 Meta 인증으로 주장하지 않는다.
+
 ## 0. 핵심 인계 — 다음 작업자가 절대 혼동하지 말 것
 
 1. **지금의 본류는 새로운 팔마고 QID9 문항 19개(q05~q23) 제작이 아니다.** 본 작업은 이미 생성된 문항의 물리 저장·메타데이터 영구 보존·학생용 공급·기출/Generated 통합 검색 권위를 확립하는 **문제은행 인프라 작업**이다. QID9 생성라인은 별도 캠페인.
