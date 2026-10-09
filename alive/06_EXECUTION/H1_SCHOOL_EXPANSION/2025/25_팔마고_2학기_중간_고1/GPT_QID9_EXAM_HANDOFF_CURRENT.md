@@ -1,12 +1,10 @@
-# CURRENT — 2026-10-09 q06 원본 9문항 CREATE checkpoint
+# CURRENT — 2026-10-09 q06 생성 및 q05 병렬 작성 동기화
 
-- 사용자 직접 지정 q06 제작. q05는 여전히 미제작이며 건너뛰어 계속 생산하지 않는다.
-- q06 산출: `GPT_QID9_Q06_PACKAGE.json` 및 `GPT_QID9_Q06_STEM_SELF_REVIEW.md`.
-- q06 CREATE 9/9; 역발문 KEEP 6, REVISED 3, HOLD 0; 오답 36/36 도출경로 기록.
-- q06 GPT 공개답 검수 0, 학생 공급 0, Consumer/index/Chrome NOT_TESTED.
-- 누적 CREATE 후보 q01~q04 36 + q06 9 = 45. 기존 출시 승인 36/36, main/Chrome 완료는 변경하지 않음.
-- RPM L3 `원과 직선` 고정, 기존 L4 `교점 개수`/`현의 길이` 활용.
-- 다음 정확한 단계는 q06 별도 품질 검수 또는 형님 직접 품질승인 후 승인 UID 기술 출고; 다음 미생산 source는 q05.
+- q06: 9문항 신규 CREATE 완료, commit `4aedc59b2e6e5af2ca6f7c3efdbfb72a800b691f`. 작성자 역발문 KEEP6 / REVISED3 / HOLD0.
+- q05도 별도 GPT가 `e47a5734eb0d7624bee455e280d1c28d3af0f33a`에서 9문항 CREATE 완료한 것을 현재 branch/manifest로 확인. **q05를 미제작으로 취급하지 않는다.**
+- 누적 신규 제작 54개 (q01~q06 각 9개). q01~q04 36개만 승인·main·Consumer/Chrome 출시 완료; q05+q06 18개는 CREATE 후보/검수 및 학생 등록 미완료.
+- q06 학생용 본문과 정답·해설·Meta 원본은 `GPT_QID9_Q06_PACKAGE.json`; SELF_REVIEW는 동일 디렉터리 ledger.
+- **다음 미제작 source qid는 q07.** 미검수 q05/q06를 출시된 문항으로 추정하지 않는다.
 
 ---
 # 2025 팔마고 2학기 중간 — ALIVE QID9 시험지 통합 작업 인계 CURRENT
