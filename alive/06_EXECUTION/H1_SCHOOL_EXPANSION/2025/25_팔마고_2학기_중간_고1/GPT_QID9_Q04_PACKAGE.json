@@ -79,7 +79,8 @@
         "expected": 5,
         "expectedAnswer": "5",
         "exactJustification": "A'(-1,-2), B(3,1)의 거리 sqrt(4^2+3^2)=5; x축 교점 t=5/3",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       },
       {
         "slot": "B2",
@@ -88,7 +89,8 @@
         "expected": 6.324555320336759,
         "expectedAnswer": "2sqrt(10)",
         "exactJustification": "t>=0에서 각 거리 증가; t=0일 때 sqrt10+sqrt10=2sqrt10",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       },
       {
         "slot": "B3",
@@ -97,7 +99,8 @@
         "expected": 4.47213595499958,
         "expectedAnswer": "t=3",
         "exactJustification": "AB와 y=x 교점 P=(3,3)에서 거리합=AB=sqrt20, 질문은 최소 위치 t=3",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       },
       {
         "slot": "C1",
@@ -107,24 +110,26 @@
         "expected": 7.404918347287666,
         "expectedAnswer": "sqrt(10)+3sqrt(2)",
         "exactJustification": "t={-1,1,3,5} 각 경우 대입; t=1,3에서 sqrt10+sqrt18이 최소",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       },
       {
         "slot": "C2",
         "numericalMinimum": 7.211102550927978,
         "approxArgmin": 2.5,
-        "expected": 5.4083269131959835,
+        "expected": 7.211102550927978,
         "expectedAnswer": "3sqrt(13)/2",
         "computedTargetPA": 5.4083269131959835,
         "computedOtherPB": 1.8027756377319946,
         "exactJustification": "A'(-2,-3), B(4,1), x축 교점 P=(5/2,0); PA=3/4*A'B=3sqrt13/2, PB=sqrt13/2; 거리합 최솟값 A'B=2sqrt13. 현재 질문은 거리합이 아니라 최솟값을 실현할 때 PA.",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       },
       {
         "slot": "C3",
         "numericalMinimum": 10,
         "approxArgmin": 0.25,
-        "expected": 0.25,
+        "expected": 10,
         "expectedAnswer": "P=(1/4,0)",
         "recoveredK": 5,
         "computedPoint": {
@@ -132,7 +137,8 @@
           "y": 0
         },
         "exactJustification": "min PA+PB=10 -> (k+3)^2=64 and k>0 -> k=5; A'B와 x축 교점 P=(1/4,0), PA+PB=10",
-        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE"
+        "result": "CONSISTENT_WITH_CURRENT_CANDIDATE",
+        "expectedMeaning": "minimum of PA+PB; student requested answer separately in expectedAnswer"
       }
     ],
     "studentSourceReverseRead": "Q04 C2 student stem asks PA at minimum PA+PB (not min of max distances); C3 asks point P where min is achieved (not k+4t); remaining Q04 stems preserved. Generated candidate review only.",
@@ -158,7 +164,8 @@
         "C2",
         "C3"
       ],
-      "reusedPreviousResultAsFinalPass": false
+      "reusedPreviousResultAsFinalPass": false,
+      "details": "numericalMinimum and expected always refer to min(PA+PB); expectedAnswer refers to student's target (length PA in C2; coordinate P in C3)"
     }
   },
   "items": [
