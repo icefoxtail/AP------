@@ -952,36 +952,36 @@
       "answer": "③",
       "solution": "$AB=b,\\ AC=c$일 때 $AI$는 각의 이등분선이므로 $BH:HC=b:c$이고 $\\dfrac{HC}{BC}=\\dfrac{c}{b+c}$이다. 무게중심 $G$의 직선 $BC$에 대한 높이는 꼭짓점 $A$의 높이의 $\\dfrac13$이므로 $[GHC]=[ABC]\\dfrac{c}{3(b+c)}$이다.\n같은 이유로 $[GHB]=[ABC]\\dfrac{b}{3(b+c)}$이다.\n$[ABC]=3t$, $BH:HC=6:t$이므로 $[GHC]=\\dfrac{t^2}{t+6}$, $[GHB]=\\dfrac{6t}{t+6}$이다. 두 번째 조건 $6t/(t+6)\\ge2$에서 $t\\ge3$을 얻는다. 첫 번째 조건은 $t^2-4t-24\\ge0$이며 $t>0$이므로 $t\\ge2+2\\sqrt7$이다. $7<2+2\\sqrt7<8$이므로 자연수 $t$의 최솟값은 $8$이다. 이때 두 조건 모두 성립한다. 따라서 정답은 ③이다.",
       "distractorReasons": {
-        "①": "$[GHB]ge2$만 검사해 $tge3$에서 $3$을 선택",
-        "②": "문제의 두 면적 하한 대신 $[GHC]ge[GHB]$를 검사해 $tge6$을 선택",
-        "④": "$t=7$에서 $49/13approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
-        "⑤": "$HC/BC=1/3$으로 잘못 고정해 $[GHC]=t/3ge4$에서 $t=12$"
+        "①": "$[GHB]\\ge2$만 검사해 $t\\ge3$에서 $3$을 선택",
+        "②": "문제의 두 면적 하한 대신 $[GHC]\\ge[GHB]$를 검사해 $t\\ge6$을 선택",
+        "④": "$t=7$에서 $49/13\\approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
+        "⑤": "$\\dfrac{HC}{BC}=\\dfrac13$으로 잘못 고정해 $[GHC]=\\dfrac{t}{3}\\ge4$에서 $t=12$"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "$[GHB]ge2$만 검사해 $tge3$에서 $3$을 선택",
+          "mistake": "$[GHB]\\ge2$만 검사해 $t\\ge3$에서 $3$을 선택",
           "actualIncorrectChoice": "$3$",
           "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "문제의 두 면적 하한 대신 $[GHC]ge[GHB]$를 검사해 $tge6$을 선택",
+          "mistake": "문제의 두 면적 하한 대신 $[GHC]\\ge[GHB]$를 검사해 $t\\ge6$을 선택",
           "actualIncorrectChoice": "$6$",
           "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$t=7$에서 $49/13approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
+          "mistake": "$t=7$에서 $49/13\\approx3.77$을 $4$로 반올림해 부등식을 만족한다고 오판",
           "actualIncorrectChoice": "$7$",
           "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$HC/BC=1/3$으로 잘못 고정해 $[GHC]=t/3ge4$에서 $t=12$",
+          "mistake": "$\\dfrac{HC}{BC}=\\dfrac13$으로 잘못 고정해 $[GHC]=\\dfrac{t}{3}\\ge4$에서 $t=12$",
           "actualIncorrectChoice": "$12$",
           "verificationBasis": "EXPLICIT_WRONG_FORMULA_TO_DISPLAYED_CHOICE",
           "validatedAgainstStudentChoices": true
