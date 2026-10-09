@@ -37,20 +37,20 @@ function contentFingerprint(question) {
 test('consumer DB preserves previous approvals, adds four Palma questions and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 345);
+  assert.equal(index.records.length, 346);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
   assert.equal(index.approvedBySchool['복성고'],191);
-  assert.equal(palma.length, 62);
-  assert.equal(index.approvedBySchool['팔마고'], 62);
+  assert.equal(palma.length, 63);
+  assert.equal(index.approvedBySchool['팔마고'], 63);
   assert.deepEqual(palma.filter(r => r.uid.includes('-B07-')).map(r => r.uid), [
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
     'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
   ]);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 345);
+  assert.equal(new Set(index.records.map(r => r.uid)).size, 346);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
@@ -254,8 +254,8 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.equal(el('paper-items').children.length,1);
   const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
   assert.ok(!textOf(el('paper-items')).includes('정답:'));
-  assert.equal(index.records.length,345);
-  assert.equal(selectableCount(index),345);
+  assert.equal(index.records.length,346);
+  assert.equal(selectableCount(index),346);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
   search.value='팔마고';search.listeners.input();
   // Up to 50 cards are displayed; search by UID reaches every approved Palma question.
