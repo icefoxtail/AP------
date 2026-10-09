@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_REGISTRATION_R1_ADAPTER_FAILURE_ANALYSIS_V1",
+  "executionLine": "CODEX",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "producerResult": "FAIL_CLOSED_BEFORE_GENERATION",
+  "producerError": "R1_META_PROOF_META_PASS_REQUIRED",
+  "producerEvidence": {
+    "stderrPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/producer-v1/outer.stderr.raw.txt",
+    "stderrSha256": "8ef681b354bd0dfa21e4f199e9c9ceb68f292eeabe4993f7d2bb8dda0b703dc7",
+    "exitPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/producer-v1/outer.exit.txt",
+    "exitCode": 1,
+    "exitFileSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+    "stdoutPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/technical-registration/producer-v1/outer.stdout.raw.txt",
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "r1Evidence": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.evidence.bound.json",
+    "sha256": "f39ba789c807950350a45badb7c8cb1a0e08f6fd5e908490c5390f310f0b8b24",
+    "denominator": 22,
+    "r1ValidatorReportPath": "archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_확률과통계/R1.recovery.generic-validator.raw.json",
+    "r1ValidatorReportSha256": "499284b4d14b41992b2f2c31bcae92fa5941d35c8621f98a62a6e9727f8b7f52",
+    "r1ValidatorDisposition": "PASS",
+    "validatorMode": "R1_V2",
+    "issues": 0
+  },
+  "adapterExpectations": {
+    "acceptedVerdicts": [
+      "PASS",
+      "PASS_AFTER_ADJUDICATION",
+      "PASS_AFTER_SAME_STAGE_SOURCE_FIGURE_ADJUDICATION",
+      "PASS_AFTER_REPAIR",
+      "PASS_AFTER_ITEM_RECOVERY"
+    ],
+    "acceptedMetaValues": [
+      "PASS",
+      "PASS_WITH_RPM_PROJECTION_DEBT",
+      "PASS_CURRENT_FIELDS_AND_RPM_PROOF",
+      "PASS_AFTER_RECHECK",
+      "SAME_STAGE_CLASSIFICATION_REPAIR_PASS",
+      "CURRENT_FIELDS_RECORDED_NO_SEMANTIC_RECLASSIFICATION",
+      "REVIEWED_CURRENT_META_DISPOSITION"
+    ]
+  },
+  "incompatibleRows": [
+    {
+      "qid": 1,
+      "currentVerdict": "PASS_WITH_META_DEBT",
+      "currentMetaReviewStatus": "META_ONLY_UNRESOLVED",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "adapterVerdictAccepted": false,
+      "adapterMetaAccepted": false
+    },
+    {
+      "qid": 6,
+      "currentVerdict": "PASS",
+      "currentMetaReviewStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "adapterVerdictAccepted": true,
+      "adapterMetaAccepted": false
+    },
+    {
+      "qid": 7,
+      "currentVerdict": "PASS",
+      "currentMetaReviewStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "adapterVerdictAccepted": true,
+      "adapterMetaAccepted": false
+    },
+    {
+      "qid": 8,
+      "currentVerdict": "PASS",
+      "currentMetaReviewStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "adapterVerdictAccepted": true,
+      "adapterMetaAccepted": false
+    },
+    {
+      "qid": 9,
+      "currentVerdict": "PASS",
+      "currentMetaReviewStatus": "PROJECTION_BINDING_PENDING",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "adapterVerdictAccepted": true,
+      "adapterMetaAccepted": false
+    }
+  ],
+  "affectedCode": {
+    "path": "archive/tools/prepare-target-registration-candidate.mjs",
+    "sha256": "dd34ec0fe6b8a7b45b8e6271a08e6a7d6b4053ee776e1bedd50bfeaac13c7e6f",
+    "checkFunction": "verifyR1MetaProof / isAcceptedR1Verdict / hasAcceptedMetaDisposition"
+  },
+  "scopeStatus": {
+    "packageProduced": false,
+    "indexRootCreated": false,
+    "candidateWorktreeHead": "d7a32efc9364454d9d1cb0c36ff468d90487eb06",
+    "candidateWorktreeClean": true,
+    "registryMutation": false,
+    "sourceOrAssetMutation": false,
+    "r1EvidenceOrReportMutation": false
+  },
+  "disposition": "Helper schema compatibility gap, not a failing R1 generic gate or item HOLD. No status relabel, Meta rewrite, validator relaxation, or apply was performed. Root must authorize an exact bounded compatibility path that consumes existing current-field debt evidence, or provide another approved assignment-bound route."
+}
