@@ -21,7 +21,13 @@ function validateMeta(meta){
  const issues=[];
  if(!meta||typeof meta!=='object'||Array.isArray(meta))return ['META_OBJECT_MISSING'];
  for(const key of META_FIELDS)if(!nonempty(meta[key]))issues.push(key+':MISSING_CANONICAL_KEY');
- if(!['RPM_LOCKED','GENERATED_EXT_L4'].includes(meta.rpmL4Namespace))issues.push('rpmL4Namespace:INVALID');
+ if(!['RPM_LOCKED','RPM_EXISTING_DRAFT','GENERATED_EXT_L4'].includes(meta.rpmL4Namespace))issues.push('rpmL4Namespace:INVALID');
+ if(meta.rpmL4Namespace==='RPM_EXISTING_DRAFT'){
+  if(!nonempty(meta.rpmPrimaryRecordId))issues.push('rpmPrimaryRecordId:DRAFT_RPM_RECORD_REQUIRED');
+  if(!nonempty(meta.rpmDraftAuthorityRef)||!meta.rpmDraftAuthorityRef.startsWith('archive/data/meta-foundation/'))
+   issues.push('rpmDraftAuthorityRef:SOURCE_REQUIRED');
+  if(!sha64(meta.rpmDraftAuthoritySha256))issues.push('rpmDraftAuthoritySha256:INVALID');
+ }
  if(!uniqueStrings(meta.crossConceptKeys))issues.push('crossConceptKeys:MISSING_OR_INVALID');
  if(!uniqueStrings(meta.conditionKeys))issues.push('conditionKeys:MISSING_OR_INVALID');
  if(!nonempty(meta.integrationPattern))issues.push('integrationPattern:MISSING');
@@ -129,6 +135,12 @@ function audit(root){
    if(q.difficultyBucket!==m.meta?.difficultyBucket||q.level!==m.meta?.level||
       q.standardUnitKey!==sourceQs[0].standardUnitKey||q.subUnitKey!==sourceQs[0].subUnitKey)
     issue('SOURCE_QUESTION_STANDARD_OR_DIFFICULTY_MISMATCH');
+   if(m.meta?.rpmL4Namespace==='RPM_EXISTING_DRAFT'){
+    const ref=contained(root,m.meta.rpmDraftAuthorityRef,'archive/data/meta-foundation/');
+    if(!fs.existsSync(ref))issue('RPM_DRAFT_SOURCE_MISSING');
+    else if(crypto.createHash('sha256').update(fs.readFileSync(ref)).digest('hex').toLowerCase()!==
+      m.meta.rpmDraftAuthoritySha256.toLowerCase())issue('RPM_DRAFT_AUTHORITY_BYTES_MISMATCH');
+   }
    if(m.meta?.rpmL4Namespace==='GENERATED_EXT_L4'){
     const ref=contained(root,m.meta.generatedL4RegistryRef,sourcePrefix);
     if(!fs.existsSync(ref))issue('GENERATED_EXT_L4_REGISTRY_MISSING');

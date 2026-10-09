@@ -48,3 +48,15 @@ test('any projection mismatch, missing digest or missing review evidence is FAIL
  const c=valid();c.evidence.authority=undefined;
  assert.ok(validateProjection(c).some(x=>x.includes('META_REVIEW_EVIDENCE_REQUIRED')));
 });
+
+
+test('existing source-backed RPM draft is represented honestly and never falsified as LOCKED',()=>{
+ const draft={...meta,rpmL4Namespace:'RPM_EXISTING_DRAFT',
+  rpmPrimaryRecordId:'H1-RPM-234',
+  rpmDraftAuthorityRef:'archive/data/meta-foundation/compiled/taxonomy_registry.json',
+  rpmDraftAuthoritySha256:'b'.repeat(64)};
+ assert.deepEqual(validateMeta(draft),[]);
+ assert.ok(validateMeta({...draft,rpmPrimaryRecordId:''}).some(x=>x.includes('rpmPrimaryRecordId')));
+ assert.ok(validateMeta({...draft,rpmDraftAuthorityRef:'alive/unverified.md'}).some(x=>x.includes('rpmDraftAuthorityRef')));
+ assert.ok(validateMeta({...draft,rpmDraftAuthoritySha256:''}).some(x=>x.includes('rpmDraftAuthoritySha256')));
+});
