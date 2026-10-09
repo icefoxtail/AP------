@@ -20,8 +20,8 @@ test('existing 323 approvals stay exempt while six new Palma records pass full M
  const r=audit(path.resolve(__dirname,'..'));
  assert.equal(r.status,'PASS_NEW_UID_SCOPE_ONLY',r.errors.join('\n'));
  assert.equal(r.legacyExemptNotRecertified,323);
- assert.equal(r.newUidChecked,12);
- assert.equal(r.total,335);
+ assert.equal(r.newUidChecked,15);
+ assert.equal(r.total,338);
 });
 test('fully evidenced future UID passes projection-only gate',()=>{
  assert.deepEqual(validateMeta(meta),[]);
