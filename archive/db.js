@@ -8425,6 +8425,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-03",
+      "rangeEndUnit": "확률의 뜻과 활용",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-03",
+          "rangeEndUnit": "확률의 뜻과 활용",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "확률과통계"
+    },
+    {
       "file": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
       "school": "매산여고",
       "topic": "",
@@ -17896,37 +17927,6 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_확률과통계.js",
-      "school": "매산여고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2023,
-      "semester": "1",
-      "examType": "mid",
-      "subject": "확률과통계",
-      "contentType": "기출",
-      "qCount": 22,
-      "rangeStartUnitKey": "H15-PS-01",
-      "rangeStartUnit": "순열과 조합",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H15-PS-03",
-      "rangeEndUnit": "확률의 뜻과 활용",
-      "rangeEndUnitOrder": 3,
-      "courseRanges": [
-        {
-          "standardCourse": "확률과 통계",
-          "courseCode": "H15-PS",
-          "rangeStartUnitKey": "H15-PS-01",
-          "rangeStartUnit": "순열과 조합",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H15-PS-03",
-          "rangeEndUnit": "확률의 뜻과 활용",
-          "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "확률과통계"
     }
   ]
 };
