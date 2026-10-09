@@ -1,5 +1,11 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT — ALIVE Generated 해설용 SVG 누락방지 (2026-10-10)
+- **문제용 studentVisual TEXT_ONLY/NOT_REQUIRED는 해설용 solution SVG 면제 사유가 아니다.** 각 UID별 독립 해설 시각화 ADD/REUSE/EXEMPT/HOLD 판정과 교육적 근거를 남긴다.
+- 정본 실행 규정: [QID9 해설 SVG 전수조사·신규제작 게이트](ALIVE_QID9_SOLUTION_SVG_AUDIT_AND_CREATION_GATE_v1.md). 기존 `apmath-visual-upgrade` 스킬·시각엔진·도형추출 v3·독립 geometry evidence를 재사용하며 새 엔진/규칙을 중복 도입하지 않는다.
+- 팔마고 2026-10-10 정적 조사: q01~q20 180 UID, q04~q20 JSON 153개에서 해설 직접 SVG 연결 0개, q01~q03 27개는 초안 Markdown, q10 네 SVG는 **문제용**. 이 숫자는 학생 Consumer 실조회 결과가 아니며 향후 UID별 해설 시각 효용을 반드시 확정한다.
+
+
 ## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
 - 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
 - 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
