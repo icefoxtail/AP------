@@ -1,0 +1,82 @@
+[
+  {
+    "name": "R1_V2_GENERIC",
+    "command": "archive-stage-validator R1 V2 raw generic report",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "1fc6bb681ac9f85ef3b3412113efb3ee6abc318b602509ce0a7bb06135439adb",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R1.generic-validator.rev2.raw.json"
+  },
+  {
+    "name": "R2_V2_GENERIC",
+    "command": "archive-stage-validator R2 V2 raw generic report",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "277bf5e91f546341fd64e745b24beae7b7094de6f67aad8ae5aabb9649038f2a",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R2/R2.generic-validator.raw.json"
+  },
+  {
+    "name": "R3_V2_GENERIC",
+    "command": "archive-stage-validator R3 V2 raw generic report",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "c6cd01f44e78d165f395da48f9ce8c87c0e2291156887ac3b6d190d7881d9618",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R3/R3.generic-validator.rev2.raw.json"
+  },
+  {
+    "name": "R3_RENDER_RECEIPT",
+    "command": "validateCodexRenderReceipt on durable six-case receipt",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "197741b6d2359ae196856db6de6089fdf235806eb543bd506222c7e531860766",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.render-receipt-validation.json"
+  },
+  {
+    "name": "STABLE_STAGE_EVENTS",
+    "command": "verify-complete R1 R2 R3 events",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "ca44865a690d9e8d39f59a7fb53ce676cb7281d74d83f7ebfaf864c233dfb936",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.stage-event-verification.json"
+  },
+  {
+    "name": "ASSET_AND_INDEX_REFERENCES",
+    "command": "source and question-index reference integrity",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "159e7d154c2aa3ec640aa8dde18cb6e04699280afce094a11c826c02dc6977ef",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.reference-integrity.json"
+  },
+  {
+    "name": "REMOTE_MAIN_DRIFT",
+    "command": "current-main target overlap audit",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "9b4acc07f223e2f88c2f5cb65a48dcd02f2f23410207ab3207423f31bcc31a63",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.main-drift.rev2.json"
+  },
+  {
+    "name": "RAW_INDEX_BYTE_PARITY",
+    "command": "raw SHA to Git index byte parity for all staged paths",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "a2a1aa0eec3111d72850e39810489bc93af91060d954968305e6e6b4a26fec73",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "05e6ce39c86c679ddf8b7168d603ece1c2a0cfc2781176fffd06c8b9a3750114",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.raw-byte-index-rebind.json"
+  }
+]

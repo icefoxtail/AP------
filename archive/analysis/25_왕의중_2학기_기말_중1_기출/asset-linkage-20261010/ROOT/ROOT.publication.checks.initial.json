@@ -1,0 +1,72 @@
+[
+  {
+    "name": "R1_V2_GENERIC",
+    "command": "node archive/tools/archive-stage-validator.mjs --stage R1 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "1fc6bb681ac9f85ef3b3412113efb3ee6abc318b602509ce0a7bb06135439adb",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R1.generic-validator.rev2.raw.json"
+  },
+  {
+    "name": "R2_V2_GENERIC",
+    "command": "node archive/tools/archive-stage-validator.mjs --stage R2 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "277bf5e91f546341fd64e745b24beae7b7094de6f67aad8ae5aabb9649038f2a",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R2/R2.generic-validator.raw.json"
+  },
+  {
+    "name": "R3_V2_GENERIC",
+    "command": "node archive/tools/archive-stage-validator.mjs --stage R3 --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "c6cd01f44e78d165f395da48f9ce8c87c0e2291156887ac3b6d190d7881d9618",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R3/R3.generic-validator.rev2.raw.json"
+  },
+  {
+    "name": "R3_RENDER_RECEIPT",
+    "command": "archive-codex-closeout-v2.validateCodexRenderReceipt",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "197741b6d2359ae196856db6de6089fdf235806eb543bd506222c7e531860766",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.render-receipt-validation.json"
+  },
+  {
+    "name": "STABLE_STAGE_EVENTS",
+    "command": "archive-codex-stage-kit.mjs verify-complete R1,R2,R3",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "ca44865a690d9e8d39f59a7fb53ce676cb7281d74d83f7ebfaf864c233dfb936",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.stage-event-verification.json"
+  },
+  {
+    "name": "ASSET_AND_INDEX_REFERENCES",
+    "command": "source JS and question-index asset reference audit",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "159e7d154c2aa3ec640aa8dde18cb6e04699280afce094a11c826c02dc6977ef",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.reference-integrity.json"
+  },
+  {
+    "name": "REMOTE_MAIN_DRIFT",
+    "command": "target-only drift comparison against origin/main",
+    "status": "completed",
+    "exitCode": 0,
+    "stdoutSha256": "6932f6fdbc99501dca4105530e1c96e77ec3a907b1442c1034ccbad9f0630877",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bindingSha256": "c3cc9a8270c0fdd21ee23dd0c1c8005bdfa71c4b597eabf8481c6be7d2ac1432",
+    "outputPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/ROOT/ROOT.main-drift.json"
+  }
+]

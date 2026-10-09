@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_AUDIT_ATTEMPT_V1",
+  "attemptedAt": "2026-10-09T21:56:06.859Z",
+  "status": "FAILED_BEFORE_BASELINE_COMPLETE",
+  "errorCode": "ENOBUFS",
+  "operation": "git show origin/main:archive/question-index.js",
+  "detail": "The 1 MiB default child-process output buffer was smaller than the generated question-index file. Root reference/render/drift reports already written are valid; production files were not changed.",
+  "recovery": "Rerun the baseline snapshot read with an explicit larger maxBuffer."
+}

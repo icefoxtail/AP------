@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVENT_VERIFICATION_V1",
+  "results": [
+    {
+      "stage": "R1",
+      "command": "node archive/tools/archive-codex-stage-kit.mjs verify-complete --root <worktree> --event archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R1.stable-completion-event.json --event-sha 03b9804332dcb77857603adc1fbda9c1b330856605d43dcffece85b58f972da2",
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"eventRef\": {\n    \"path\": \"C:\\\\Users\\\\USER\\\\.codex\\\\worktrees\\\\wangui-assets-linkage\\\\AP------\\\\archive\\\\analysis\\\\25_왕의중_2학기_기말_중1_기출\\\\asset-linkage-20261010\\\\R1.stable-completion-event.json\",\n    \"sha256\": \"03b9804332dcb77857603adc1fbda9c1b330856605d43dcffece85b58f972da2\"\n  },\n  \"examUid\": \"25_왕의중_2학기_기말_중1_기출\",\n  \"stage\": \"R1\",\n  \"nextStage\": \"R2\",\n  \"freedSlot\": \"R1\",\n  \"nextRosterTarget\": \"NONE\"\n}\n",
+      "stderr": "",
+      "eventPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R1.stable-completion-event.json",
+      "eventSha256": "03b9804332dcb77857603adc1fbda9c1b330856605d43dcffece85b58f972da2"
+    },
+    {
+      "stage": "R2",
+      "command": "node archive/tools/archive-codex-stage-kit.mjs verify-complete --root <worktree> --event archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R2/R2.completion-event.json --event-sha ae3ee66959e688cd62ceef1bfa0b9fe83fa2211ff4bf4f31255b4926b26882de",
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"eventRef\": {\n    \"path\": \"C:\\\\Users\\\\USER\\\\.codex\\\\worktrees\\\\wangui-assets-linkage\\\\AP------\\\\archive\\\\analysis\\\\25_왕의중_2학기_기말_중1_기출\\\\asset-linkage-20261010\\\\R2\\\\R2.completion-event.json\",\n    \"sha256\": \"ae3ee66959e688cd62ceef1bfa0b9fe83fa2211ff4bf4f31255b4926b26882de\"\n  },\n  \"examUid\": \"25_왕의중_2학기_기말_중1_기출\",\n  \"stage\": \"R2\",\n  \"nextStage\": \"R3\",\n  \"freedSlot\": \"R2\",\n  \"nextRosterTarget\": \"25_왕의중_2학기_기말_중1_기출:R3\"\n}\n",
+      "stderr": "",
+      "eventPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R2/R2.completion-event.json",
+      "eventSha256": "ae3ee66959e688cd62ceef1bfa0b9fe83fa2211ff4bf4f31255b4926b26882de"
+    },
+    {
+      "stage": "R3",
+      "command": "node archive/tools/archive-codex-stage-kit.mjs verify-complete --root <worktree> --event archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R3/R3.stable-completion-event.rev2.json --event-sha 821f9db555b58279f38ea9e004789481a0c671f87c20c384eee532cac88ccb14",
+      "exitCode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"eventRef\": {\n    \"path\": \"C:\\\\Users\\\\USER\\\\.codex\\\\worktrees\\\\wangui-assets-linkage\\\\AP------\\\\archive\\\\analysis\\\\25_왕의중_2학기_기말_중1_기출\\\\asset-linkage-20261010\\\\R3\\\\R3.stable-completion-event.rev2.json\",\n    \"sha256\": \"821f9db555b58279f38ea9e004789481a0c671f87c20c384eee532cac88ccb14\"\n  },\n  \"examUid\": \"25_왕의중_2학기_기말_중1_기출\",\n  \"stage\": \"R3\",\n  \"nextStage\": \"RENDER\",\n  \"freedSlot\": \"R3\",\n  \"nextRosterTarget\": \"PUBLICATION:25_왕의중_2학기_기말_중1_기출\"\n}\n",
+      "stderr": "",
+      "eventPath": "archive/analysis/25_왕의중_2학기_기말_중1_기출/asset-linkage-20261010/R3/R3.stable-completion-event.rev2.json",
+      "eventSha256": "821f9db555b58279f38ea9e004789481a0c671f87c20c384eee532cac88ccb14"
+    }
+  ]
+}

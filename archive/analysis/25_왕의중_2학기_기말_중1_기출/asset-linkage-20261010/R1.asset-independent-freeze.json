@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "codex-r1-independent-asset-freeze/v1",
+  "examUid": "25_왕의중_2학기_기말_중1_기출",
+  "stage": "R1",
+  "scopeQids": [
+    1,
+    2,
+    4
+  ],
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "freezeFirstOrder": [
+    "Read R1.student-only.json only",
+    "Open referenced q1/q2/q4 PNG assets and record their hashes",
+    "Independently solve before reading any answer/solution or production JS",
+    "Durably record this freeze",
+    "Only then inspect production JS image bindings/direct dependencies"
+  ],
+  "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\analysis\\25_왕의중_2학기_기말_중1_기출\\asset-linkage-20261010\\R1.student-only.json",
+  "studentBundleSha256": "0a731f3f8f99a4f23fd609585763df558097bc5651d7801c3bf0cadc4bba14d9",
+  "workingJsPath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\exams\\original\\middle\\m1\\2final\\25_왕의중_2학기_기말_중1_기출.js",
+  "expectedSourceSha256": "a41b91c399c837dd88ffcbf269a54b445ab7b021845fe1510cb867a2a249dcae",
+  "actualSourceSha256": "a41b91c399c837dd88ffcbf269a54b445ab7b021845fe1510cb867a2a249dcae",
+  "assets": [
+    {
+      "qid": 1,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\assets\\images\\25_왕의중_2학기_기말_중1_기출\\q1.png",
+      "imageSha256": "f0f284141ed75e9bea21992db9a86f3ab25df5981e441e41664c56037e77eb51"
+    },
+    {
+      "qid": 2,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\assets\\images\\25_왕의중_2학기_기말_중1_기출\\q2.png",
+      "imageSha256": "2273167f183c4e3aaa95a1c0e54b3eac6074c331967695dab2f338f5e9b877f4"
+    },
+    {
+      "qid": 4,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\assets\\images\\25_왕의중_2학기_기말_중1_기출\\q4.png",
+      "imageSha256": "9a4f38e1f58d2922071b7838866ab83cb8039c6e0098b33a1968f9e823740c78"
+    }
+  ],
+  "answerFreeze": [
+    {
+      "qid": 1,
+      "independentAnswer": "70°",
+      "reason": "Triangle ABC has A=80°; AD bisects angle A so DAC=40°. In triangle ADC, angle ADC=180°−40°−70°=70°."
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "130°",
+      "reason": "Hexagon interior-angle sum is 720°. The exterior angles 48° and 53° give adjacent interior angles 132° and 127°. Thus x=720°−(132°+111°+127°+112°+108°)=130°."
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "③, ④",
+      "reason": "Equal minor arcs AB, CD, DE imply equal chords AB=DE, central angle COE is twice AOB, and sector COE area is twice sector AOB. The chord CE of doubled central angle is not generally twice AB; the triangle area ratio is not generally 2 (it depends on the central angle)."
+    }
+  ],
+  "answerExposure": "No production JS, answer/solution data, SVG, or existing answer evidence opened before this file was written.",
+  "pdfReview": "No PDF comparison performed; no source-dependent defect identified from student-only input and actual PNGs."
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "codex-r1-golden-negative-preflight/v1",
+  "stage": "R1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "completedBeforeVisualCorrections": [
+    "q1-solution.svg spacing correction",
+    "q4-solution.svg explanation spacing correction"
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "Internal division, midpoint, and distance calculations are sequenced into separate readable blocks; coordinate substitutions and simplifications are explicit."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "observation": "Parallel-slope condition is stated first; point substitution and solving n are separated, then the final expression is evaluated."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "Distance formula is applied with signed coordinate differences, then square-root simplification is shown line by line."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "Perpendicular-slope condition and each rearranged line are explicit; actual SVG graph was rasterized and opened, with axes/slopes and k=6 visibly aligned.",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualRasterSha256": "22b32b3ba1742764f52bc829cd92673db2aecccefab5b5cb2bd863b2f5dedca6"
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "Direct source/solution/SVG bytes and geometry must be audited; small-board counts and Meta N/N self-reports do not substitute for item-level review. This review inspected current source and actual assets, froze first, and recorded actual static SVG reads rather than trusting prior verdicts."
+  },
+  "notes": "Golden samples calibrate solution sequencing/readability and static visual clarity only; they do not determine target answers, Meta, or difficulty."
+}
