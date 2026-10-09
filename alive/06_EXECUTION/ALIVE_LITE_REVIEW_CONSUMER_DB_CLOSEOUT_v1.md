@@ -3,6 +3,11 @@
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
+## CURRENT HARD — 생성 독립검수 1회: 발문·오개념·역발문 일치
+- 새 Generated 문항은 **학생이 보는 최종 발문 자연성/질문 대상**을 가장 먼저 판정한다. 이어서 학생 최종 입력에서 수학 답·모든 보기·CrossConcept 역할·교육과정·Meta를 확인한다. 이중으로 별도 quality approval 절차를 반복하지 않는다.
+- 제작자의 자체검산이 같은 창에서 수행됐다는 사실로 독립 검수 완료를 주장하지 않는다. 별도 GPT 창에서는 의도한 답·해설·Blueprint를 보기 전 학생 입력만 동결해 풀어야 한다. 틀린 문항은 정답 위치만 조작하지 말고 영향 범위를 핀포인트 수정한다.
+- 객관식 9문항(한 source qid)의 정답 번호 분포는 가급적 ①~⑤ 각각 1~2개로 한다. `2,2,2,2,1` 구성 우선, 지문/보기 순서가 고정된 문항은 이유 기록. 무리한 ③ 집중 금지.
+
 ## CURRENT USER OVERRIDE — QID9 GPT 1회 검수 PASS면 즉시 학생 제공 (2026-10-09)
 - 생성 QID9은 **L3 잠금, 기존 L4 우선 탐색, 새 Generated EXT-L4 자동 등록, CrossConcept/Condition/Integration 필수 사고 역할**을 기록한다. 이때 Generated EXT-L4는 RPM LOCKED를 바꾸지 않는 별도 GENERATED_ACTIVE namespace이므로 마스터 유형 승격 대기를 신규 문항 출제 보류 이유로 쓰지 않는다.
 - GPT는 최종 발문을 **학교 내신과 같은 한국어 문장인지 먼저 검사**하고, 독립 수학 풀이/5지 유일/교육과정/자산/해설을 한 번 검수한다. **첫 독립 PASS 즉시** 해당 UID의 Generated JS + Meta + Consumer index + 실제 학생 검색·선택 및 main 병합까지 마감한다. 별도의 사람 승인/중복 유형 정리/동일 artifact 재검으로 출시를 지연하지 않는다.
