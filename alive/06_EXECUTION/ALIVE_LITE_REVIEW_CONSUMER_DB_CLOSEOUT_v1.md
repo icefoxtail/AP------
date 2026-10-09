@@ -3,6 +3,10 @@
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
+## CURRENT USER OVERRIDE — GPT 품질·공급 판단 / Codex Git 병합 전용 (2026-10-09)
+- ALIVE 신규 생성문항의 독립 수학 검수, 발문·5지·한국어 해설·Meta·Visual 평가, 수정, Consumer 공급 승인 판단 및 필요한 등록 데이터 완성은 GPT가 직접 담당한다. Codex는 품질 판단을 하지 않고 GPT가 확정한 변경분의 Git 커밋·운영병합·remote readback만 담당한다.
+- 본 기존 계약의 단계별 proof/validator/등록/Chrome 게이트는 유효하며 미실행을 PASS로 선언하지 않는다. 기존 후보 자동 삭제나 재설계 대상 폐기 지시는 이 문서에 두지 않는다.
+
 ## CURRENT — 학생용 목적 적합성 및 canonical 표시 검증 (2026-10-09)
 - A 반복 숙달에는 조건을 만족한 수치변형을 허용하고 고유 Blueprint 수와 분리한다. B 사고 확장과 C 실전 평가에서는 학생이 실제 경험하는 새 판단·실전형 종합을 최종 발문으로 확인한다. 교육 목적 A/B/C는 ALIVE MODE 검증 계약과 별개다.
 - 수학 독립 풀이뿐 아니라 발문이 요구하는 답의 종류와 5지 보기 형식, 한국어 상세 해설, 교과 개념 용어, 응답 자연성, 그림·수식 완결성을 함께 확인한다.
