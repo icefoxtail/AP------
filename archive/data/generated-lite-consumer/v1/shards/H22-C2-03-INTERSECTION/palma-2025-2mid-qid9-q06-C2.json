@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_06",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-C2.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q06-C2",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 6,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-03-INTERSECTION/shards/palma-2025-2mid-qid9-q06-C2.js",
+      "sourceShardGitSha": "d3a5952dc11c03fe2dc648ff8446171bc6420cbb",
+      "localOrdinal": 1,
+      "l2": "H22-C2-03-INTERSECTION",
+      "slot": "C2",
+      "purposeGroup": "C",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q06-C2",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "원의 방정식",
+        "originalCategory": "원의 방정식",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-INTERSECTION",
+        "subUnit": "원과 직선·원의 관계",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "원의 방정식"
+        ],
+        "wide": false,
+        "content": "두 원 $C_1:x^2+y^2=25$, $C_2:(x-2)^2+(y+1)^2=9$에 대하여 직선 $3x+4y=t$가 두 원 각각과 서로 다른 두 점에서 만나도록 하는 정수 $t$의 개수는?",
+        "choices": [
+          "$31$",
+          "$29$",
+          "$30$",
+          "$49$",
+          "$28$"
+        ],
+        "answer": "②",
+        "solution": "원 $C_1$의 중심은 $(0,0)$이고 반지름은 $5$이다. 직선까지의 거리는 $\\dfrac{|t|}{5}$이므로 두 교점 조건은 $|t|<25$이다.\n원 $C_2$의 중심은 $(2,-1)$이고 반지름은 $3$이다. 이 중심에서 직선까지의 거리는 $\\dfrac{|3\\cdot2+4(-1)-t|}{5}=\\dfrac{|t-2|}{5}$이다.\n두 교점 조건은 $|t-2|<15$이므로 $-13<t<17$이다. 이 구간의 모든 값은 $-25<t<25$도 만족한다.\n따라서 가능한 정수는 $-12,-11,\\ldots,15,16$이며, 개수는 $16-(-12)+1=29$개이다. 따라서 정답은 ②이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 6,
+        "slot": "C2",
+        "purposeGroup": "C",
+        "meta": {
+          "rpmL1": "L1-1|도형의 방정식",
+          "rpmL2": "L2-1.3|원의 방정식",
+          "rpmL3": "L3-1.3.2|원과 직선",
+          "rpmL4": "L4-1.3.2.1|교점 개수",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmPrimaryRecordId": "H1-RPM-219",
+          "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+          "conditionEvidenceLabels": [
+            "두 원 각각 두 교점",
+            "정수 매개변수"
+          ],
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-03",
+          "subUnitKey": "H22-C2-03-INTERSECTION"
+        },
+        "metaFinalSha256": "bb9faab41c3a08c809498c6a3d8cbd2b2182fa775b311bb628e00fef7f94eccb",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q06-C2.json",
+          "sha256": "af219273942fa956c793caa2d6eda4e860c90621669bfd2fc983b951343968cb",
+          "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+          "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36",
+          "scopeUids": [
+            "ALITE-PALMA25-2MID-Q06-C2"
+          ],
+          "uid": "ALITE-PALMA25-2MID-Q06-C2"
+        },
+        "metaReviewEvidenceSha256": "af219273942fa956c793caa2d6eda4e860c90621669bfd2fc983b951343968cb",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "meta": {
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.3|원의 방정식",
+        "rpmL3": "L3-1.3.2|원과 직선",
+        "rpmL4": "L4-1.3.2.1|교점 개수",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmPrimaryRecordId": "H1-RPM-219",
+        "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+        "conditionEvidenceLabels": [
+          "두 원 각각 두 교점",
+          "정수 매개변수"
+        ],
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "subUnitKey": "H22-C2-03-INTERSECTION"
+      },
+      "metaFinalSha256": "bb9faab41c3a08c809498c6a3d8cbd2b2182fa775b311bb628e00fef7f94eccb",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q06-C2.json",
+        "sha256": "af219273942fa956c793caa2d6eda4e860c90621669bfd2fc983b951343968cb",
+        "reviewStatus": "USER_DIRECTED_QUALITY_APPROVED",
+        "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36",
+        "scopeUids": [
+          "ALITE-PALMA25-2MID-Q06-C2"
+        ],
+        "uid": "ALITE-PALMA25-2MID-Q06-C2"
+      },
+      "metaReviewEvidenceSha256": "af219273942fa956c793caa2d6eda4e860c90621669bfd2fc983b951343968cb"
+    }
+  ],
+  "sourceShardGitSha": "d3a5952dc11c03fe2dc648ff8446171bc6420cbb"
+}

@@ -1,0 +1,821 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 8,
+  "sourceFingerprint": {
+    "sourceStem": "전체집합 $U=\\{x\\mid x\\text{는 }100\\text{ 이하의 자연수}\\}$의 부분집합 $A_k=\\{x\\mid x\\text{는 자연수 }k\\text{의 배수}\\}$에 대하여 $n(A_6\\cup A_9)$을 구하시오. (단, $n(A)$는 집합 $A$의 원소의 개수이다.) [4점]",
+    "storedSourceAnswer": "④",
+    "sourceComputedValue": 22,
+    "core": "배수 집합의 교집합을 이용해 합집합 원소 수에서 중복을 제거"
+  },
+  "lockedPrimaryL3": "L3-2.2.1|교집합과 합집합",
+  "rpmEvidence": {
+    "rpmRecordId": "H1-RPM-238",
+    "l1": "L1-2|집합과 명제",
+    "l2": "L2-2.2|집합의 연산",
+    "l3": "L3-2.2.1|교집합과 합집합",
+    "l4": "L4-2.2.1.2|원소 개수",
+    "status": "DIRECT_ACTIVE"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templates": [
+      "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "TPL_SYMMETRIC_DIFFERENCE_CARDINALITY",
+      "TPL_COMPLEMENT_CARDINALITY",
+      "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "TPL_THREE_SET_INCLUSION_EXCLUSION",
+      "TPL_EXACTLY_K_SETS"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json"
+  },
+  "experiencePlan": {
+    "A": "원본의 수치·상한·최소공배수 변형",
+    "B": "정확히 한쪽·여집합·짝수 조건",
+    "C": "3집합·정확히 둘·합집합에서 제3집합 제거"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "exactIntegerEnumeration": [
+      {
+        "slot": "A1",
+        "actual": 20,
+        "answer": "②",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "A2",
+        "actual": 36,
+        "answer": "④",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "A3",
+        "actual": 21,
+        "answer": "①",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "B1",
+        "actual": 30,
+        "answer": "⑤",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "B2",
+        "actual": 67,
+        "answer": "③",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "B3",
+        "actual": 50,
+        "answer": "②",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "C1",
+        "actual": 70,
+        "answer": "④",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "C2",
+        "actual": 18,
+        "answer": "①",
+        "wrongChecks": 4
+      },
+      {
+        "slot": "C3",
+        "actual": 35,
+        "answer": "⑤",
+        "wrongChecks": 4
+      }
+    ],
+    "distractorCoverage": "36/36",
+    "reverseStem": {
+      "KEEP": 6,
+      "REVISED": 3,
+      "HOLD": 0
+    },
+    "independentReview": "NOT_RUN",
+    "browser": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-A1",
+      "slot": "A1",
+      "sourceQid": 8,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,120\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{8}\\cup A_{12})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+      "choices": [
+        "$25$",
+        "$20$",
+        "$5$",
+        "$15$",
+        "$10$"
+      ],
+      "answer": "②",
+      "solution": "$120$ 이하의 $8$의 배수는 $15$개, $12$의 배수는 $10$개이다. 공통 원소는 $24$의 배수이므로 $5$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{8}\\cup A_{12})=15+10-5=20$이다. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "두 집합을 단순히 더하고 중복을 빼지 않음: 15+10=25 → 25",
+        "③": "교집합의 공배수만 계산: ⌊120/24⌋=5 → 5",
+        "④": "첫 집합의 배수만 계산: ⌊120/8⌋=15 → 15",
+        "⑤": "두 번째 집합의 배수만 계산: ⌊120/12⌋=10 → 10"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "두 집합을 단순히 더하고 중복을 빼지 않음",
+          "computedPath": "15+10=25",
+          "value": 25
+        },
+        {
+          "label": "③",
+          "mistake": "교집합의 공배수만 계산",
+          "computedPath": "⌊120/24⌋=5",
+          "value": 5
+        },
+        {
+          "label": "④",
+          "mistake": "첫 집합의 배수만 계산",
+          "computedPath": "⌊120/8⌋=15",
+          "value": 15
+        },
+        {
+          "label": "⑤",
+          "mistake": "두 번째 집합의 배수만 계산",
+          "computedPath": "⌊120/12⌋=10",
+          "value": 10
+        }
+      ],
+      "experienceAxis": "최소공배수로 교집합을 계산하고 합집합 중복을 제거",
+      "level": "중",
+      "difficultyBucket": 2,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-A2",
+      "slot": "A2",
+      "sourceQid": 8,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,110\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{4}\\cup A_{6})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+      "choices": [
+        "$27$",
+        "$45$",
+        "$18$",
+        "$36$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "$110$ 이하의 $4$의 배수는 $27$개, $6$의 배수는 $18$개이다. 공통 원소는 $12$의 배수이므로 $9$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{4}\\cup A_{6})=27+18-9=36$이다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "첫 집합의 배수만 계산: ⌊110/4⌋=27 → 27",
+        "②": "두 집합을 단순히 더하고 중복을 빼지 않음: 27+18=45 → 45",
+        "③": "두 번째 집합의 배수만 계산: ⌊110/6⌋=18 → 18",
+        "⑤": "교집합의 공배수만 계산: ⌊110/12⌋=9 → 9"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "첫 집합의 배수만 계산",
+          "computedPath": "⌊110/4⌋=27",
+          "value": 27
+        },
+        {
+          "label": "②",
+          "mistake": "두 집합을 단순히 더하고 중복을 빼지 않음",
+          "computedPath": "27+18=45",
+          "value": 45
+        },
+        {
+          "label": "③",
+          "mistake": "두 번째 집합의 배수만 계산",
+          "computedPath": "⌊110/6⌋=18",
+          "value": 18
+        },
+        {
+          "label": "⑤",
+          "mistake": "교집합의 공배수만 계산",
+          "computedPath": "⌊110/12⌋=9",
+          "value": 9
+        }
+      ],
+      "experienceAxis": "최소공배수로 교집합을 계산하고 합집합 중복을 제거",
+      "level": "중",
+      "difficultyBucket": 2,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-A3",
+      "slot": "A3",
+      "sourceQid": 8,
+      "mode": "STRICT_VARIANT",
+      "stem": "전체집합 $U=\\{1,2,\\ldots,90\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{6}\\cup A_{10})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+      "choices": [
+        "$21$",
+        "$24$",
+        "$3$",
+        "$15$",
+        "$9$"
+      ],
+      "answer": "①",
+      "solution": "$90$ 이하의 $6$의 배수는 $15$개, $10$의 배수는 $9$개이다. 공통 원소는 $30$의 배수이므로 $3$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{6}\\cup A_{10})=15+9-3=21$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "두 집합을 단순히 더하고 중복을 빼지 않음: 15+9=24 → 24",
+        "③": "교집합의 공배수만 계산: ⌊90/30⌋=3 → 3",
+        "④": "첫 집합의 배수만 계산: ⌊90/6⌋=15 → 15",
+        "⑤": "두 번째 집합의 배수만 계산: ⌊90/10⌋=9 → 9"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "두 집합을 단순히 더하고 중복을 빼지 않음",
+          "computedPath": "15+9=24",
+          "value": 24
+        },
+        {
+          "label": "③",
+          "mistake": "교집합의 공배수만 계산",
+          "computedPath": "⌊90/30⌋=3",
+          "value": 3
+        },
+        {
+          "label": "④",
+          "mistake": "첫 집합의 배수만 계산",
+          "computedPath": "⌊90/6⌋=15",
+          "value": 15
+        },
+        {
+          "label": "⑤",
+          "mistake": "두 번째 집합의 배수만 계산",
+          "computedPath": "⌊90/10⌋=9",
+          "value": 9
+        }
+      ],
+      "experienceAxis": "최소공배수로 교집합을 계산하고 합집합 중복을 제거",
+      "level": "중",
+      "difficultyBucket": 2,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-B1",
+      "slot": "B1",
+      "sourceQid": 8,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$1$ 이상 $150$ 이하의 자연수 중 $6$의 배수 또는 $10$의 배수이지만 두 수의 공배수는 아닌 수의 개수는?",
+      "choices": [
+        "$40$",
+        "$35$",
+        "$5$",
+        "$20$",
+        "$30$"
+      ],
+      "answer": "⑤",
+      "solution": "$6$의 배수는 $25$개, $10$의 배수는 $15$개이고 공배수는 $30$의 배수로 $5$개이다.\n두 수 중 정확히 한쪽의 배수인 수는 $6$의 배수에만 속하는 $25-5=20$개와 $10$의 배수에만 속하는 $15-5=10$개이다.\n따라서 $20+10=30$개이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "공배수 중복을 무시: 25+15=40 → 40",
+        "②": "합집합 전체를 계산: 25+15-5=35 → 35",
+        "③": "공배수만 계산: 150/30=5 → 5",
+        "④": "6의 배수에만 속하는 경우만 계산: 25-5=20 → 20"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "공배수 중복을 무시",
+          "computedPath": "25+15=40",
+          "value": 40
+        },
+        {
+          "label": "②",
+          "mistake": "합집합 전체를 계산",
+          "computedPath": "25+15-5=35",
+          "value": 35
+        },
+        {
+          "label": "③",
+          "mistake": "공배수만 계산",
+          "computedPath": "150/30=5",
+          "value": 5
+        },
+        {
+          "label": "④",
+          "mistake": "6의 배수에만 속하는 경우만 계산",
+          "computedPath": "25-5=20",
+          "value": 20
+        }
+      ],
+      "experienceAxis": "두 배수 집합의 합집합 중 정확히 한쪽에만 속하는 부분",
+      "level": "중",
+      "difficultyBucket": 3,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_SYMMETRIC_DIFFERENCE_CARDINALITY",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 배수 집합의 합집합 중 정확히 한쪽에만 속하는 부분"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "REVISED",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-B2",
+      "slot": "B2",
+      "sourceQid": 8,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$1$ 이상 $100$ 이하의 자연수 중 $4$의 배수도 아니고 $6$의 배수도 아닌 수의 개수는?",
+      "choices": [
+        "$75$",
+        "$59$",
+        "$67$",
+        "$92$",
+        "$33$"
+      ],
+      "answer": "③",
+      "solution": "$4$의 배수는 $25$개, $6$의 배수는 $16$개, 공배수는 $12$의 배수로 $8$개이다.\n$4$ 또는 $6$의 배수는 $25+16-8=33$개이다. 어느 쪽의 배수도 아닌 수는 이 합집합의 여집합이므로 전체 $100$개에서 빼면 $100-33=67$개이다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "4의 배수만 제외: 100-25=75 → 75",
+        "②": "중복 보정 없이 두 배수 개수를 뺌: 100-(25+16)=59 → 59",
+        "④": "교집합만 제외: 100-8=92 → 92",
+        "⑤": "여집합 아닌 합집합을 답함: 25+16-8=33 → 33"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "4의 배수만 제외",
+          "computedPath": "100-25=75",
+          "value": 75
+        },
+        {
+          "label": "②",
+          "mistake": "중복 보정 없이 두 배수 개수를 뺌",
+          "computedPath": "100-(25+16)=59",
+          "value": 59
+        },
+        {
+          "label": "④",
+          "mistake": "교집합만 제외",
+          "computedPath": "100-8=92",
+          "value": 92
+        },
+        {
+          "label": "⑤",
+          "mistake": "여집합 아닌 합집합을 답함",
+          "computedPath": "25+16-8=33",
+          "value": 33
+        }
+      ],
+      "experienceAxis": "합집합 원소를 제거한 여집합",
+      "level": "중",
+      "difficultyBucket": 3,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_COMPLEMENT_CARDINALITY",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "합집합 원소를 제거한 여집합"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-B3",
+      "slot": "B3",
+      "sourceQid": 8,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "$1$ 이상 $180$ 이하의 자연수 중 $4$의 배수이거나 $9$의 배수인 수들 가운데 짝수인 수의 개수는?",
+      "choices": [
+        "$55$",
+        "$50$",
+        "$45$",
+        "$60$",
+        "$10$"
+      ],
+      "answer": "②",
+      "solution": "$4$의 배수는 모두 짝수이고 $180$ 이하에 $45$개 있다. $9$의 배수 중 짝수인 수는 $18$의 배수로 $10$개이다.\n두 조건에 모두 속하는 수는 $36$의 배수로 $5$개이므로, 합집합의 원소 수는 $45+10-5=50$개이다. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "공통 원소를 빼지 않음: 45+10=55 → 55",
+        "③": "4의 배수만 셈: 180/4=45 → 45",
+        "④": "짝수 조건을 빠뜨림: 45+20-5=60 → 60",
+        "⑤": "짝수인 9의 배수만 셈: 180/18=10 → 10"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "공통 원소를 빼지 않음",
+          "computedPath": "45+10=55",
+          "value": 55
+        },
+        {
+          "label": "③",
+          "mistake": "4의 배수만 셈",
+          "computedPath": "180/4=45",
+          "value": 45
+        },
+        {
+          "label": "④",
+          "mistake": "짝수 조건을 빠뜨림",
+          "computedPath": "45+20-5=60",
+          "value": 60
+        },
+        {
+          "label": "⑤",
+          "mistake": "짝수인 9의 배수만 셈",
+          "computedPath": "180/18=10",
+          "value": 10
+        }
+      ],
+      "experienceAxis": "합집합과 짝수 조건의 연속 적용",
+      "level": "중",
+      "difficultyBucket": 3,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "합집합과 짝수 조건의 연속 적용"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-C1",
+      "slot": "C1",
+      "sourceQid": 8,
+      "mode": "TYPE_BANK",
+      "stem": "$1$ 이상 $180$ 이하의 자연수 중 $4$, $6$, $9$ 가운데 적어도 하나의 배수인 수의 개수는?",
+      "choices": [
+        "$95$",
+        "$65$",
+        "$80$",
+        "$70$",
+        "$75$"
+      ],
+      "answer": "④",
+      "solution": "$4$, $6$, $9$의 배수는 각각 $45$, $30$, $20$개이다. 두 집합씩의 교집합은 $12$, $36$, $18$의 배수로 각각 $15$, $5$, $10$개이고, 세 집합의 교집합은 $36$의 배수로 $5$개이다.\n세 집합 합집합의 원소 수는 각 집합을 합한 뒤 두 집합씩의 공통 원소를 빼고 세 집합 공통 원소를 다시 더하므로\n$45+30+20-(15+5+10)+5=70$개이다. 따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "중복 전부 무시: 45+30+20=95 → 95",
+        "②": "삼중교집합을 다시 더하지 않음: 95-(15+5+10)=65 → 65",
+        "③": "4와 6의 교집합만 제외: 95-15=80 → 80",
+        "⑤": "4와 9의 교집합 제외 누락: 95-15-10+5=75 → 75"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "중복 전부 무시",
+          "computedPath": "45+30+20=95",
+          "value": 95
+        },
+        {
+          "label": "②",
+          "mistake": "삼중교집합을 다시 더하지 않음",
+          "computedPath": "95-(15+5+10)=65",
+          "value": 65
+        },
+        {
+          "label": "③",
+          "mistake": "4와 6의 교집합만 제외",
+          "computedPath": "95-15=80",
+          "value": 80
+        },
+        {
+          "label": "⑤",
+          "mistake": "4와 9의 교집합 제외 누락",
+          "computedPath": "95-15-10+5=75",
+          "value": 75
+        }
+      ],
+      "experienceAxis": "3개 배수 집합 합집합에서 삼중 공통 원소까지 중복 보정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_THREE_SET_INCLUSION_EXCLUSION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "3개 배수 집합 합집합에서 삼중 공통 원소까지 중복 보정"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "KEEP",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-C2",
+      "slot": "C2",
+      "sourceQid": 8,
+      "mode": "TYPE_BANK",
+      "stem": "$1$ 이상 $240$ 이하의 자연수 중 $6$, $8$, $10$의 세 수 가운데 정확히 두 수의 배수인 자연수의 개수는?",
+      "choices": [
+        "$18$",
+        "$24$",
+        "$22$",
+        "$20$",
+        "$72$"
+      ],
+      "answer": "①",
+      "solution": "$6$과 $8$의 공배수는 $24$의 배수로 $10$개, $6$과 $10$의 공배수는 $30$의 배수로 $8$개, $8$과 $10$의 공배수는 $40$의 배수로 $6$개이다.\n세 수 모두의 공배수는 $120$의 배수로 $2$개이다. 두 수씩의 공배수 개수를 합하면 세 집합에 모두 속하는 각 원소가 세 번씩 세어진다.\n정확히 두 집합에만 속해야 하므로 $10+8+6-3\\times2=18$개이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "삼중교집합을 제외하지 않음: 10+8+6=24 → 24",
+        "③": "삼중교집합을 한 번만 제외: 24-2=22 → 22",
+        "④": "삼중교집합을 두 번만 제외: 24-2×2=20 → 20",
+        "⑤": "정확히 두 개가 아닌 합집합을 계산: 40+30+24-(10+8+6)+2=72 → 72"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "삼중교집합을 제외하지 않음",
+          "computedPath": "10+8+6=24",
+          "value": 24
+        },
+        {
+          "label": "③",
+          "mistake": "삼중교집합을 한 번만 제외",
+          "computedPath": "24-2=22",
+          "value": 22
+        },
+        {
+          "label": "④",
+          "mistake": "삼중교집합을 두 번만 제외",
+          "computedPath": "24-2×2=20",
+          "value": 20
+        },
+        {
+          "label": "⑤",
+          "mistake": "정확히 두 개가 아닌 합집합을 계산",
+          "computedPath": "40+30+24-(10+8+6)+2=72",
+          "value": 72
+        }
+      ],
+      "experienceAxis": "세 집합 중 정확히 두 집합에 속하는 원소 수",
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_EXACTLY_K_SETS",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "세 집합 중 정확히 두 집합에 속하는 원소 수"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q08-C3",
+      "slot": "C3",
+      "sourceQid": 8,
+      "mode": "TYPE_BANK",
+      "stem": "$1$ 이상 $180$ 이하의 자연수 중 $6$의 배수 또는 $8$의 배수인 수의 집합을 $A$라 하자. $A$의 원소 가운데 $9$의 배수가 아닌 수의 개수는?",
+      "choices": [
+        "$45$",
+        "$30$",
+        "$25$",
+        "$33$",
+        "$35$"
+      ],
+      "answer": "⑤",
+      "solution": "$6$의 배수는 $30$개, $8$의 배수는 $22$개이고 두 수의 공배수는 $24$의 배수로 $7$개이다. 따라서 $n(A)=30+22-7=45$이다.\n$A$에 속하는 $9$의 배수는 $18$의 배수 $10$개 또는 $72$의 배수 $2$개이다. $72$의 배수는 $18$의 배수에도 포함되므로 $10+2-2=10$개이다.\n$A$ 중 $9$의 배수가 아닌 수는 $45-10=35$개이다. 따라서 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "9의 배수 제외를 잊음: 30+22-7=45 → 45",
+        "②": "6의 배수만 계산: 180/6=30 → 30",
+        "③": "9의 배수 전체를 부적절하게 제외: 45-20=25 → 25",
+        "④": "72의 배수 중복 제거를 누락: 45-(10+2)=33 → 33"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "9의 배수 제외를 잊음",
+          "computedPath": "30+22-7=45",
+          "value": 45
+        },
+        {
+          "label": "②",
+          "mistake": "6의 배수만 계산",
+          "computedPath": "180/6=30",
+          "value": 30
+        },
+        {
+          "label": "③",
+          "mistake": "9의 배수 전체를 부적절하게 제외",
+          "computedPath": "45-20=25",
+          "value": 25
+        },
+        {
+          "label": "④",
+          "mistake": "72의 배수 중복 제거를 누락",
+          "computedPath": "45-(10+2)=33",
+          "value": 33
+        }
+      ],
+      "experienceAxis": "두 집합 합집합에서 제3집합 중복을 차감",
+      "level": "상",
+      "difficultyBucket": 4,
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "rpmL1": "L1-2|집합과 명제",
+        "rpmL2": "L2-2.2|집합의 연산",
+        "rpmL3": "L3-2.2.1|교집합과 합집합",
+        "rpmL4": "L4-2.2.1.2|원소 개수",
+        "rpmRecordId": "H1-RPM-238",
+        "pt": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 집합 합집합에서 제3집합 중복을 차감"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "studentVisual": "NOT_REQUIRED",
+      "status": "CREATE_CANDIDATE",
+      "reviewStatus": "NOT_APPROVED",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 9,
+  "publication": "CREATE_CANDIDATE_ONLY"
+}

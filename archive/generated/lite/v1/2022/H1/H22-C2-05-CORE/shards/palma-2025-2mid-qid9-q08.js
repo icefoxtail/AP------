@@ -1,0 +1,1371 @@
+window.examTitle = "ALIVE_LITE_PALMA25_H1_2MID_QID9_Q08_H22-C2-05-CORE";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q08-A1",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,120\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{8}\\cup A_{12})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+    "choices": [
+      "$25$",
+      "$20$",
+      "$5$",
+      "$15$",
+      "$10$"
+    ],
+    "answer": "②",
+    "solution": "$120$ 이하의 $8$의 배수는 $15$개, $12$의 배수는 $10$개이다. 공통 원소는 $24$의 배수이므로 $5$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{8}\\cup A_{12})=15+10-5=20$이다. 따라서 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "A1",
+    "purposeGroup": "A",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-A1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "difficultyBucket": 2,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-PALMA25-2MID-Q08-A2",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,110\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{4}\\cup A_{6})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+    "choices": [
+      "$27$",
+      "$45$",
+      "$18$",
+      "$36$",
+      "$9$"
+    ],
+    "answer": "④",
+    "solution": "$110$ 이하의 $4$의 배수는 $27$개, $6$의 배수는 $18$개이다. 공통 원소는 $12$의 배수이므로 $9$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{4}\\cup A_{6})=27+18-9=36$이다. 따라서 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "A2",
+    "purposeGroup": "A",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-A2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "difficultyBucket": 2,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 3,
+    "uid": "ALITE-PALMA25-2MID-Q08-A3",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,90\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{6}\\cup A_{10})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+    "choices": [
+      "$21$",
+      "$24$",
+      "$3$",
+      "$15$",
+      "$9$"
+    ],
+    "answer": "①",
+    "solution": "$90$ 이하의 $6$의 배수는 $15$개, $10$의 배수는 $9$개이다. 공통 원소는 $30$의 배수이므로 $3$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{6}\\cup A_{10})=15+9-3=21$이다. 따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "A3",
+    "purposeGroup": "A",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-A3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "difficultyBucket": 2,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 4,
+    "uid": "ALITE-PALMA25-2MID-Q08-B1",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $150$ 이하의 자연수 중 $6$의 배수 또는 $10$의 배수이지만 두 수의 공배수는 아닌 수의 개수는?",
+    "choices": [
+      "$40$",
+      "$35$",
+      "$5$",
+      "$20$",
+      "$30$"
+    ],
+    "answer": "⑤",
+    "solution": "$6$의 배수는 $25$개, $10$의 배수는 $15$개이고 공배수는 $30$의 배수로 $5$개이다.\n두 수 중 정확히 한쪽의 배수인 수는 $6$의 배수에만 속하는 $25-5=20$개와 $10$의 배수에만 속하는 $15-5=10$개이다.\n따라서 $20+10=30$개이므로 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "B1",
+    "purposeGroup": "B",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_SYMMETRIC_DIFFERENCE_CARDINALITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-B1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_SYMMETRIC_DIFFERENCE_CARDINALITY",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 5,
+    "uid": "ALITE-PALMA25-2MID-Q08-B2",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $100$ 이하의 자연수 중 $4$의 배수도 아니고 $6$의 배수도 아닌 수의 개수는?",
+    "choices": [
+      "$75$",
+      "$59$",
+      "$67$",
+      "$92$",
+      "$33$"
+    ],
+    "answer": "③",
+    "solution": "$4$의 배수는 $25$개, $6$의 배수는 $16$개, 공배수는 $12$의 배수로 $8$개이다.\n$4$ 또는 $6$의 배수는 $25+16-8=33$개이다. 어느 쪽의 배수도 아닌 수는 이 합집합의 여집합이므로 전체 $100$개에서 빼면 $100-33=67$개이다. 따라서 정답은 ③이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "B2",
+    "purposeGroup": "B",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_COMPLEMENT_CARDINALITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-B2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_COMPLEMENT_CARDINALITY",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 6,
+    "uid": "ALITE-PALMA25-2MID-Q08-B3",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $180$ 이하의 자연수 중 $4$의 배수이거나 $9$의 배수인 수들 가운데 짝수인 수의 개수는?",
+    "choices": [
+      "$55$",
+      "$50$",
+      "$45$",
+      "$60$",
+      "$10$"
+    ],
+    "answer": "②",
+    "solution": "$4$의 배수는 모두 짝수이고 $180$ 이하에 $45$개 있다. $9$의 배수 중 짝수인 수는 $18$의 배수로 $10$개이다.\n두 조건에 모두 속하는 수는 $36$의 배수로 $5$개이므로, 합집합의 원소 수는 $45+10-5=50$개이다. 따라서 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "B3",
+    "purposeGroup": "B",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-B3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "difficultyBucket": 3,
+      "level": "중",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 7,
+    "uid": "ALITE-PALMA25-2MID-Q08-C1",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $180$ 이하의 자연수 중 $4$, $6$, $9$ 가운데 적어도 하나의 배수인 수의 개수는?",
+    "choices": [
+      "$95$",
+      "$65$",
+      "$80$",
+      "$70$",
+      "$75$"
+    ],
+    "answer": "④",
+    "solution": "$4$, $6$, $9$의 배수는 각각 $45$, $30$, $20$개이다. 두 집합씩의 교집합은 $12$, $36$, $18$의 배수로 각각 $15$, $5$, $10$개이고, 세 집합의 교집합은 $36$의 배수로 $5$개이다.\n세 집합 합집합의 원소 수는 각 집합을 합한 뒤 두 집합씩의 공통 원소를 빼고 세 집합 공통 원소를 다시 더하므로\n$45+30+20-(15+5+10)+5=70$개이다. 따라서 정답은 ④이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "C1",
+    "purposeGroup": "C",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_THREE_SET_INCLUSION_EXCLUSION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-C1",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_THREE_SET_INCLUSION_EXCLUSION",
+      "difficultyBucket": 4,
+      "level": "상",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 8,
+    "uid": "ALITE-PALMA25-2MID-Q08-C2",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $240$ 이하의 자연수 중 $6$, $8$, $10$의 세 수 가운데 정확히 두 수의 배수인 자연수의 개수는?",
+    "choices": [
+      "$18$",
+      "$24$",
+      "$22$",
+      "$20$",
+      "$72$"
+    ],
+    "answer": "①",
+    "solution": "$6$과 $8$의 공배수는 $24$의 배수로 $10$개, $6$과 $10$의 공배수는 $30$의 배수로 $8$개, $8$과 $10$의 공배수는 $40$의 배수로 $6$개이다.\n세 수 모두의 공배수는 $120$의 배수로 $2$개이다. 두 수씩의 공배수 개수를 합하면 세 집합에 모두 속하는 각 원소가 세 번씩 세어진다.\n정확히 두 집합에만 속해야 하므로 $10+8+6-3\\times2=18$개이다. 따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "C2",
+    "purposeGroup": "C",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_EXACTLY_K_SETS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-C2",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_EXACTLY_K_SETS",
+      "difficultyBucket": 4,
+      "level": "상",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  },
+  {
+    "id": 9,
+    "uid": "ALITE-PALMA25-2MID-Q08-C3",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $180$ 이하의 자연수 중 $6$의 배수 또는 $8$의 배수인 수의 집합을 $A$라 하자. $A$의 원소 가운데 $9$의 배수가 아닌 수의 개수는?",
+    "choices": [
+      "$45$",
+      "$30$",
+      "$25$",
+      "$33$",
+      "$35$"
+    ],
+    "answer": "⑤",
+    "solution": "$6$의 배수는 $30$개, $8$의 배수는 $22$개이고 두 수의 공배수는 $24$의 배수로 $7$개이다. 따라서 $n(A)=30+22-7=45$이다.\n$A$에 속하는 $9$의 배수는 $18$의 배수 $10$개 또는 $72$의 배수 $2$개이다. $72$의 배수는 $18$의 배수에도 포함되므로 $10+2-2=10$개이다.\n$A$ 중 $9$의 배수가 아닌 수는 $45-10=35$개이다. 따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "C3",
+    "purposeGroup": "C",
+    "rpmPrimaryRecordId": "H1-RPM-238",
+    "rpmL1": "L1-2|집합과 명제",
+    "rpmL2": "L2-2.2|집합의 연산",
+    "rpmL3": "L3-2.2.1|교집합과 합집합",
+    "rpmL4": "L4-2.2.1.2|원소 개수",
+    "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaProjection": {
+      "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+      "uid": "ALITE-PALMA25-2MID-Q08-C3",
+      "status": "SOURCE_META_PRESERVED",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "subUnitKey": "H22-C2-05-CORE",
+      "rpmPrimaryRecordId": "H1-RPM-238",
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.2|집합의 연산",
+      "rpmL3": "L3-2.2.1|교집합과 합집합",
+      "rpmL4": "L4-2.2.1.2|원소 개수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "difficultyBucket": 4,
+      "level": "상",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "conditionEvidenceLabels": [],
+      "evidenceDebt": [],
+      "sourceRPMNamespace": "RPM_PRIMARY",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": null,
+      "approval": "USER_DIRECTED_OPERATING_APPROVED",
+      "reviewStatus": "USER_DIRECTED_CONTENT_REVIEWED",
+      "consumerSelectable": true,
+      "sourceCandidatePackageGitBlobSha": "28105404bff5c1bd8ec33b49c3ab7fabbce44d1b",
+      "reviewLedgerRef": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q05_Q08_OPENBOOK_REVIEW_REPAIR_20261009.md",
+      "physicalStorageBucketKey": "H22-C2-05-CORE",
+      "sourceKind": "generated",
+      "evidenceByField": {
+        "standardCourse": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardCourse"
+        },
+        "standardUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "standardUnitKey"
+        },
+        "subUnitKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "subUnitKey"
+        },
+        "rpmPrimaryRecordId": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmPrimaryRecordId"
+        },
+        "rpmL1": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL1"
+        },
+        "rpmL2": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL2"
+        },
+        "rpmL3": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL3"
+        },
+        "rpmL4": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4"
+        },
+        "rpmL4Namespace": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "rpmL4Namespace"
+        },
+        "problemTypeKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "problemTypeKey"
+        },
+        "templateKey": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "templateKey"
+        },
+        "difficultyBucket": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "difficultyBucket"
+        },
+        "level": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "level"
+        },
+        "crossConceptKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "crossConceptKeys"
+        },
+        "conditionKeys": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "conditionKeys"
+        },
+        "integrationPattern": {
+          "status": "SOURCE_OR_CROSSWALK_GROUNDED",
+          "evidenceKey": "integrationPattern"
+        }
+      }
+    }
+  }
+];

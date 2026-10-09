@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_08_C3";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q08-C3",
+    "level": "상",
+    "difficultyBucket": 4,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "$1$ 이상 $180$ 이하의 자연수 중 $6$의 배수 또는 $8$의 배수인 수의 집합을 $A$라 하자. $A$의 원소 가운데 $9$의 배수가 아닌 수의 개수는?",
+    "choices": [
+      "$45$",
+      "$30$",
+      "$25$",
+      "$33$",
+      "$35$"
+    ],
+    "answer": "⑤",
+    "solution": "$6$의 배수는 $30$개, $8$의 배수는 $22$개이고 두 수의 공배수는 $24$의 배수로 $7$개이다. 따라서 $n(A)=30+22-7=45$이다.\n$A$에 속하는 $9$의 배수는 $18$의 배수 $10$개 또는 $72$의 배수 $2$개이다. $72$의 배수는 $18$의 배수에도 포함되므로 $10+2-2=10$개이다.\n$A$ 중 $9$의 배수가 아닌 수는 $45-10=35$개이다. 따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "C3",
+    "purposeGroup": "C"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q08-C3");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q08-C3","meta":{"rpmL1":"L1-2|집합과 명제","rpmL2":"L2-2.2|집합의 연산","rpmL3":"L3-2.2.1|교집합과 합집합","rpmL4":"L4-2.2.1.2|원소 개수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-238","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"integrationPattern":"SEQUENTIAL","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_OPERATION_CARDINALITY_COMPOSITE","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"816278a275b7a61e81b7ba28721bf434cc5c2030d6d3d5811612df514e9859e4","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q08-C3.json","sha256":"d0a99dbcdac419dcc3dee86d44095ae364d532b7eaff0cb83ff7a5e6244a90f5","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q08-C3"],"uid":"ALITE-PALMA25-2MID-Q08-C3"},"metaReviewEvidenceSha256":"d0a99dbcdac419dcc3dee86d44095ae364d532b7eaff0cb83ff7a5e6244a90f5","difficultyBucket":4,"level":"상","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_OPERATION_CARDINALITY_COMPOSITE","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"integrationPattern":"SEQUENTIAL"});})();
