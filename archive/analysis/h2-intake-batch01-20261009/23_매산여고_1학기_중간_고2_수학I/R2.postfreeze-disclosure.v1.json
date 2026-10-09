@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POSTFREEZE_DISCLOSURE_V2",
+  "originalFreeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R2.independent-freeze.v1.json",
+    "sha256": "a6208d966ef1b1610486ceeaa85d5eed76324a19d0cacd0d0e818cc62e8d86a0"
+  },
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R2.student-only.json",
+    "sha256": "d11119bba4a76eb068c961ad35672d0d85faa92ef96dc45b29b3af88efd917fd"
+  },
+  "sourceRawSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+  "originalFreezeSourceRawSha256": "4c957a97acf3df720c16c7b7947cb76ea371802448f5a883990c664a713de485",
+  "studentParity": "EXACT",
+  "rows": [
+    {
+      "qid": 1,
+      "answer": "③",
+      "solution": "세제곱근을 거듭제곱으로 나타내면\n$\\sqrt[3]{16}=2^{4/3}$이다.\n\n따라서\n$2^{4/3}\\times2^{-1/3}=2^{(4/3)-(1/3)}=2$이다.\n\n정답은 ③이다.",
+      "decisiveStep": "세제곱근을 유리수 지수로 바꾸어 같은 밑의 지수를 더한다."
+    },
+    {
+      "qid": 2,
+      "answer": "②",
+      "solution": "로그의 뺄셈을 진수의 몫으로 바꾼다.\n\n$\\log_2 28-\\log_2 7=\\log_2\\frac{28}{7}$\n$=\\log_2 4=2$.\n\n정답은 ②이다.",
+      "decisiveStep": "로그의 뺄셈을 진수의 몫으로 바꾸어 값을 계산한다."
+    },
+    {
+      "qid": 3,
+      "answer": "④",
+      "solution": "밑 $5$가 $1$보다 크므로 지수의 대소가 그대로 유지된다.\n\n$2x-3<15$\n$2x<18$\n$x<9$.\n\n$x$는 정수이므로 가능한 가장 큰 값은 $8$이다.\n\n정답은 ④이다.",
+      "decisiveStep": "밑이 1보다 큰 지수함수의 증가성을 이용해 지수끼리 비교한다."
+    },
+    {
+      "qid": 4,
+      "answer": "④",
+      "solution": "한 바퀴의 각도 $2\\pi$는 $360^\\circ$이므로\n\n$\\frac{\\pi}{3}=\\frac{180^\\circ}{3}=60^\\circ$.\n\n정답은 ④이다.",
+      "decisiveStep": "라디안과 도 사이의 비례 관계를 적용한다."
+    },
+    {
+      "qid": 5,
+      "answer": "③",
+      "solution": "삼각형의 내각의 합은 $A+B+C=\\pi$이다.\n\nㄱ. $B+C=\\pi-A$이므로\n$\\sin\\frac{B+C}{2}=\\sin\\frac{\\pi-A}{2}=\\cos\\frac A2$.\n따라서 참이다.\n\nㄴ. $B+C=\\pi-A$이므로\n$\\tan(B+C)=\\tan(\\pi-A)=-\\tan A$.\n따라서 $\\tan A+\\tan(B+C)=0$으로 참이다.\n\nㄷ. $A+B=\\pi-C$이므로\n$\\sin(A+B)+\\sin C=\\sin C+\\sin C=2\\sin C\\ne0$.\n따라서 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이므로 정답은 ③이다.",
+      "decisiveStep": "삼각형의 내각 합으로 B+C와 A+B를 각각 바꾸어 세 등식을 판정한다."
+    },
+    {
+      "qid": 6,
+      "answer": "①",
+      "solution": "근과 계수의 관계에서\n$\\alpha+\\beta=\\frac{\\log_3 16}{2}=\\log_3 4$,\n$\\alpha\\beta=\\frac{6}{2}=3$이다.\n\n따라서\n$\\alpha^2\\beta+\\alpha\\beta^2=\\alpha\\beta(\\alpha+\\beta)=3\\log_3 4$.\n\n그러므로\n$3^{\\alpha^2\\beta+\\alpha\\beta^2}=3^{3\\log_3 4}=4^3=64$.\n\n정답은 ①이다.",
+      "decisiveStep": "이차방정식의 근의 합과 곱으로 지수의 합성식을 먼저 정리한 뒤 로그와 지수의 관계를 쓴다."
+    },
+    {
+      "qid": 7,
+      "answer": "③",
+      "solution": "먼저 그래프를 오른쪽으로 $m$, 위로 $n$만큼 옮기면\n$y=2^{x-m+1}+n$이다.\n\n이 그래프를 $y$축 대칭이동하면 $x$ 대신 $-x$를 대입하여\n$y=2^{-x-m+1}+n=2^{1-m}\\left(\\frac12\\right)^x+n$이다.\n\n주어진 함수는\n$4\\left(\\frac12\\right)^{x-2}+3=16\\left(\\frac12\\right)^x+3$이므로 계수를 비교하면\n$2^{1-m}=16=2^4$, $n=3$.\n\n따라서 $m=-3$이고 $m+n=0$이다.\n\n정답은 ③이다.",
+      "decisiveStep": "평행이동과 y축 대칭을 식에 차례로 반영한 뒤 같은 지수함수 꼴의 계수를 비교한다."
+    },
+    {
+      "qid": 8,
+      "answer": "②",
+      "solution": "$10<x<1000$이므로 $1<\\log x<3$이다.\n두 로그의 차는\n$2\\log x-\\frac13\\log x=\\frac53\\log x$이다.\n\n이 값은 정수이고 $\\frac53<\\frac53\\log x<5$이므로 가능한 정수는 $2,3,4$이다.\n\n따라서 $\\log x=\\frac65,\\frac95,\\frac{12}{5}$이고, 모든 $x$의 곱은\n$10^{6/5}\\times10^{9/5}\\times10^{12/5}=10^{27/5}$.\n\n$p=5,q=27$이므로 $p+q=32$.\n\n정답은 ②이다.",
+      "decisiveStep": "로그의 차를 하나의 계수로 묶고 x의 범위에서 가능한 정수 지수를 열거한다."
+    },
+    {
+      "qid": 9,
+      "answer": "⑤",
+      "solution": "$2^{|x-1|}+4$의 최솟값은 $|x-1|=0$, 즉 $x=1$일 때 $5$이다.\n\n$k<5$이면 교점이 없고, $k=5$이면 $x=1$에서 한 점으로 만난다.\n$k>5$이면 $|x-1|=\\log_2(k-4)>0$이므로\n$x=1-\\log_2(k-4),\\quad x=1+\\log_2(k-4)$\n의 서로 다른 두 해가 있다.\n\n따라서 $k>5$이고 정답은 ⑤이다.",
+      "decisiveStep": "절댓값 지수함수의 최솟값과 대칭성을 이용해 수평선과의 교점 개수를 구분한다."
+    },
+    {
+      "qid": 10,
+      "answer": "③",
+      "solution": "삼각함수의 여각 관계를 쓰면\n$\\cos\\left(\\frac\\pi2-\\theta\\right)=\\sin\\theta$,\n$\\cos\\left(\\frac\\pi2+\\theta\\right)=-\\sin\\theta$이다.\n\n따라서 부등식의 왼쪽은\n$x^2-2x\\sin\\theta+\\frac12\\sin\\theta$이다.\n이 이차식이 모든 실수 $x$에서 양수이려면 판별식이 음수여야 한다.\n\n$D=(-2\\sin\\theta)^2-4\\cdot\\frac12\\sin\\theta$\n$=2\\sin\\theta(2\\sin\\theta-1)<0$.\n\n$\\frac\\pi2<\\theta<\\pi$에서 $\\sin\\theta>0$이므로 $\\sin\\theta<\\frac12$, 즉\n$\\frac{5\\pi}{6}<\\theta<\\pi$.\n\n따라서 $\\alpha+\\beta=\\frac{11\\pi}{6}$이고 정답은 ③이다.",
+      "decisiveStep": "여각 관계로 x의 이차식 계수를 정리하고 모든 x에서 양수일 판별식 조건을 적용한다."
+    },
+    {
+      "qid": 11,
+      "answer": "⑤",
+      "solution": "두 동경이 방향이 반대이므로 두 각의 차는 홀수배의 $\\pi$이다.\n\n$7\\theta-3\\theta=4\\theta=(2k+1)\\pi$.\n$\\frac\\pi2<\\theta<\\pi$에서 $2\\pi<4\\theta<4\\pi$이므로 $4\\theta=3\\pi$, $\\theta=\\frac{3\\pi}{4}$.\n\n따라서\n$\\tan\\left(\\theta-\\frac\\pi2\\right)=\\tan\\frac\\pi4=1$.\n\n정답은 ⑤이다.",
+      "decisiveStep": "반대 방향 동경의 각 차 조건을 이용해 θ를 범위 안에서 결정한다."
+    },
+    {
+      "qid": 12,
+      "answer": "⑤",
+      "solution": "로그의 역수 관계로\n$\\frac1{\\log_x3}=\\log_3x$,\n$\\frac1{\\log_{y^2}9}=\\log_9(y^2)=\\log_3y$,\n$\\frac1{\\log_4 3}=\\log_3 4$이다.\n\n따라서 주어진 식은\n$\\log_3x+\\log_3y-\\log_3 4=\\log_3 8$\n$\\log_3\\frac{xy}{4}=\\log_3 8$.\n\n그러므로 $xy=32$이고 정답은 ⑤이다.",
+      "decisiveStep": "로그의 역수 관계로 밑을 바꾸고 로그의 합·차를 하나의 로그로 묶는다."
+    },
+    {
+      "qid": 13,
+      "answer": "④",
+      "solution": "$A$의 조건을 정리하면\n$|\\sin\\theta|-\\sin\\theta=|\\cos\\theta|-\\cos\\theta$이다.\n\n왼쪽은 $\\sin\\theta\\ge0$일 때 $0$, $\\sin\\theta<0$일 때 $-2\\sin\\theta$이다.\n오른쪽도 $\\cos\\theta\\ge0$일 때 $0$, $\\cos\\theta<0$일 때 $-2\\cos\\theta$이다.\n\n제1사분면에서는 양쪽이 모두 $0$이므로 $[0,\\dfrac{\\pi}{2}]$가 $A$에 포함된다.\n제2사분면에서는 왼쪽이 $0$이고 오른쪽은 양수이므로 성립하지 않는다.\n제3사분면에서는 $-2\\sin\\theta=-2\\cos\\theta$, 즉 $\\sin\\theta=\\cos\\theta$인 $\\theta=\\dfrac{5\\pi}{4}$만 성립한다.\n제4사분면에서는 왼쪽이 양수이고 오른쪽은 $0$이므로 성립하지 않는다.\n따라서 $A=[0,\\dfrac{\\pi}{2}]\\cup\\{\\dfrac{5\\pi}{4}\\}$이다.\n\n또\n$\\cos(\\dfrac{\\pi}{2}-\\theta)=\\sin\\theta$이므로\n$B=\\{\\theta\\mid\\sin\\theta\\ge\\dfrac12\\}=[\\dfrac{\\pi}{6},\\dfrac{5\\pi}{6}]$.\n\n따라서\n$A\\cup B=[0,\\dfrac{5\\pi}{6}]\\cup\\{\\dfrac{5\\pi}{4}\\}$.\n즉 $\\alpha=0$, $\\beta=\\dfrac{5\\pi}{6}$, $\\gamma=\\dfrac{5\\pi}{4}$이므로\n$\\alpha+\\beta+\\gamma=\\dfrac{25\\pi}{12}$.\n\n정답은 ④이다.",
+      "decisiveStep": "절댓값 식을 사분면 부호로 풀어 A를 구하고, B의 사인 범위를 구해 합집합을 만든다."
+    },
+    {
+      "qid": 14,
+      "answer": "①",
+      "solution": "$P$가 제4사분면에 있으므로 $x>0$, $y<0$이다.\n\n주어진 비의 합에서\n$\\frac yx+\\frac xy=\\frac{x^2+y^2}{xy}=-\\frac{16}{3}$.\n$x^2+y^2=8$이므로 $xy=-\\frac32$.\n\n따라서\n$(\\sin\\theta-\\cos\\theta)^2=\\frac{(y-x)^2}{8}$\n$=\\frac{x^2+y^2-2xy}{8}=\\frac{8+3}{8}=\\frac{11}{8}$.\n\n제4사분면에서 $y-x<0$이므로\n$\\sin\\theta-\\cos\\theta=-\\frac{\\sqrt{22}}4$.\n\n정답은 ①이다.",
+      "decisiveStep": "좌표비 조건으로 xy를 구하고 제4사분면 조건으로 삼각함수 차의 부호를 정한다."
+    },
+    {
+      "qid": 15,
+      "answer": "⑤",
+      "solution": "$t=2^x$라 놓으면 $t>0$이고 부등식의 좌변에서 우변을 뺀 식은\n$D=t^2+3t-3-k(t-1)$이다.\n\n$t>1$에서 $u=t-1>0$로 두면\n$D=(u-1)^2+(7-k)u$.\n$k\\le7$이면 $D\\ge0$이고, $k>7$이면 $t=2$에서 $D=7-k<0$이다.\n\n$0<t<1$에서는\n$D=t^2+(k-3)(1-t)$.\n$k\\ge3$이면 $D\\ge0$이다. $k<3$이면 $t$를 0에 충분히 가까이 잡았을 때 $D<0$이다.\n\n$t=1$일 때는 $D=1$이다. 따라서 모든 $t>0$에서 성립하는 범위는 $3\\le k\\le7$이고 정답은 ⑤이다.",
+      "decisiveStep": "t=2^x로 양수 치환한 다음 t=1을 경계로 부등식 차를 분리해 k의 필요충분 범위를 얻는다."
+    },
+    {
+      "qid": 16,
+      "answer": "조건 모순(보류)",
+      "solution": "첫째 부등식이 허용하는 정수 x를 먼저 구한다.\n\n$g(t)=t^2-2t$이므로 $g(f(x))<0$은 $0<f(x)<2$와 같다.\n\n$f(x)=\\log_{\\sqrt3}(x/3)$이고 밑 $\\sqrt3>1$이므로\n$0<\\log_{\\sqrt3}(x/3)<2$\n$1<x/3<3$, 즉 $3<x<9$.\n\n따라서 정수 x는 $4,5,6,7,8$ 다섯 개뿐이다. 연립부등식의 해는 이 집합의 부분집합이므로 6개가 될 수 없다. 원문을 만족하는 자연수 c는 존재하지 않는다.",
+      "decisiveStep": "첫 부등식의 정의역과 단조성으로 가능한 정수 후보 수가 최대 다섯임을 확정한다."
+    },
+    {
+      "qid": 17,
+      "answer": "②",
+      "solution": "$B=(t,3^{-t})$라 두면 $y_B>1$에서 $t<0$이다. B와 같은 높이에서 $y=9^{-x}$와 만나는 점은\n$9^{-x_D}=3^{-t}$이므로 $x_D=t/2$이다.\n\nB가 A와 C 사이에 있고 $AB:BC=2:1$이므로 세로 좌표 차도 $2:1$이다. 따라서 $y_A=3y_B=3^{1-t}$. A가 $y=9^{-x}$ 위에 있어\n$9^{-x_A}=3^{1-t}$, $x_A=(t-1)/2$.\n\n이제 두 거리의 제곱을 비교한다.\n$AB^2=(x_A-t)^2+(y_A-y_B)^2=\\frac{(t+1)^2}{4}+4\\cdot3^{-2t}$,\n$AD^2=(x_D-x_A)^2+(y_B-y_A)^2=\\frac14+4\\cdot3^{-2t}$.\n$AB=AD$이므로 $(t+1)^2=1$. $t=0,-2$ 중 $t<0$을 만족하는 값은 $t=-2$이다.\n\n따라서 $A=(-\\frac32,27)$, $B=(-2,9)$, $D=(-1,9)$. $BD=1$이고 A와 BD의 높이 차는 18이므로\n$[\\triangle ABD]=\\frac12\\cdot1\\cdot18=9$. 정답은 ②이다.",
+      "decisiveStep": "로그 밑의 정의로 B,D,A를 t로 나타내고 AB=AD 조건으로 t를 고정한 뒤 삼각형 밑변과 높이를 계산한다."
+    },
+    {
+      "qid": 18,
+      "answer": "④",
+      "solution": "직선의 기울기가 $-1$이고 $1<a<c$이므로\n$c-a=2$이다.\n\n두 점은 같은 직선 위에 있어 $d=b-2$. 또\n$b=\\log_2a$, $d=\\log_4(c+10)=\\frac12\\log_2(c+10)$이므로\n$\\frac12\\log_2(c+10)=\\log_2a-2$.\n\n양변을 2배하고 로그의 성질을 적용하면\n$\\log_2(c+10)=2\\log_2a-4=\\log_2\\frac{a^2}{16}$.\n따라서 $c+10=\\frac{a^2}{16}$. $c=a+2$를 대입하여\n$a^2-16a-192=0$, $(a-24)(a+8)=0$.\n$a>1$이므로 $a=24$, $c=26$.\n\n따라서 $a+c=50$이고 정답은 ④이다.",
+      "decisiveStep": "기울기와 두 점 사이 거리로 x좌표 차를 정하고 로그함수식에서 a,c를 결정한다."
+    },
+    {
+      "qid": 19,
+      "answer": "\\frac{1}{243}, 3",
+      "solution": "$u=\\log_3x$라 두면\n$\\log_3(3x)=u+1$,\n$\\log_9(27x)=\\frac{\\log_3(27x)}2=\\frac{u+3}{2}$이다.\n\n따라서\n$(u+1)\\frac{u+3}{2}=4$\n$(u+1)(u+3)=8$\n$u^2+4u-5=0$\n$(u-1)(u+5)=0$.\n\n$u=1$ 또는 $u=-5$이므로\n$x=3$ 또는 $x=3^{-5}=\\frac1{243}$.",
+      "decisiveStep": "로그의 진수를 밑 3의 거듭제곱으로 바꾸어 로그값을 하나의 미지수로 둔다."
+    },
+    {
+      "qid": 20,
+      "answer": "\\frac74",
+      "solution": "$t=x-\\frac\\pi4$라 두면\n$\\cos^2(x-\\frac{3\\pi}4)=\\sin^2t$이고 $\\cos(x-\\frac\\pi4)=\\cos t$이다.\n\n$u=\\cos t$라 두어 $-1\\le u\\le1$을 쓰면\n$f(x)=1-u^2-u+k= k+\\frac54-(u+\\frac12)^2$.\n\n최댓값은 $u=-\\frac12$일 때 $k+\\frac54=4$이므로 $k=\\frac{11}{4}$.\n최솟값은 $(u+\\frac12)^2$가 가장 큰 $\\frac94$일 때이므로\n$m=k+\\frac54-\\frac94=k-1=\\frac74$.",
+      "decisiveStep": "삼각함수의 위상 차를 같은 각 t로 맞춘 뒤 cos t를 변수로 치환해 이차식의 범위를 구한다."
+    },
+    {
+      "qid": 21,
+      "answer": "(1) $3\\sqrt2$, (2) $A=(1,4),\\ a=4",
+      "solution": "$y=a^x$와 $y=\\log_a x$는 서로 역함수이므로 $y=x$ 대칭이다. 직선 $y=-x+5$도 이 대칭에 그대로 놓인다.\n\n따라서 $A=(p,5-p)$일 때 $B=(5-p,p)$. $C=(0,1)$, $D=(1,0)$를 차례로 놓고 신발끈 공식에 대입하면\n$[ACDB]=\\dfrac12|p-1+p+(5-p)^2-p^2|=|12-4p|$.\n\n넓이가 8이므로 $|12-4p|=8$에서 $p=1$ 또는 $p=5$. A가 제1사분면이므로 $5-p>0$이고 $p=5$는 제외되어 $p=1$.\n\n따라서 $A=(1,4)$이고 $a^1=4$이므로 $a=4$. 또한 $B=(4,1)$이어서\n$AB=\\sqrt{(4-1)^2+(1-4)^2}=3\\sqrt2$.\n\n(1) $3\\sqrt2$, (2) $A=(1,4)$, $a=4$이다.",
+      "decisiveStep": "역함수 대칭으로 A,B를 한 변수로 나타내고 넓이의 절댓값 방정식에서 제1사분면 조건으로 p를 고른다."
+    },
+    {
+      "qid": 22,
+      "answer": "\\frac52",
+      "solution": "그래프를 오른쪽으로 $\\frac\\pi6$만큼 옮기면\n$f(x)=a\\cos b(x-\\frac\\pi6)+2$이다.\n\n주기가 $8\\pi$이므로\n$\\frac{2\\pi}{b}=8\\pi$, $b=\\frac14$.\n최댓값은 $a+2=3$이고 a는 양수이므로 $a=1$.\n\n따라서\n$f(\\frac32\\pi)=\\cos[\\frac14(\\frac32\\pi-\\frac16\\pi)]+2$\n$=\\cos\\frac\\pi3+2=\\frac52$.",
+      "decisiveStep": "평행이동된 함수식을 쓰고 주기와 최댓값으로 b,a를 정한다."
+    },
+    {
+      "qid": 23,
+      "answer": "12",
+      "solution": "$a=\\prod p_i^{e_i}$라 하고 $g=\\gcd(e_1,e_2,\\ldots)$라 하자.\n\n$\\log_a b=r$가 유리수이면 $b=a^r$도 유리수여야 한다. 기약분수 r의 분모는 모든 소인수 지수 $e_i$를 나누어야 하므로 r은 $g$의 정수배인 $\\frac1g$ 간격의 값이다.\n\n$\\frac1a\\le b\\le a^2$는 밑 $a>1$에서\n$-1\\le r\\le2$와 같다. 따라서 가능한 유리수 r의 개수는\n$f(a)=2g-(-g)+1=3g+1$.\n\n$f(a)\\ge7$이려면 $g\\ge2$이므로 a는 완전거듭제곱수여야 한다.\n$2\\le a\\le100$의 제곱수는\n$4,9,16,25,36,49,64,81,100$의 9개이고, 여기에 제곱수는 아닌 완전거듭제곱수 $8,27,32$를 더한다.\n\n따라서 구하는 a의 개수는 $9+3=12$이다.",
+      "decisiveStep": "a의 소인수 지수들의 최대공약수 g로 유리 로그값의 간격과 개수를 나타낸다."
+    }
+  ],
+  "disclosedAt": "2026-10-09T11:21:47.233Z"
+}

@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const [root,evidenceRoot,candidateAsset] = process.argv.slice(2);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const get=p=>({path:p,sha256:sha(fs.readFileSync(p))});
+const examDir=path.join(root,'archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I');
+const repair=path.join(examDir,'R1.svg-repair.q7.r1_09.json');
+const capture=path.join(examDir,'R1.svg-review.q7.after-r1_09.png');
+const actualAssetSha=sha(fs.readFileSync(candidateAsset));
+const expected='f82c0d038ea656146cdebe3db7f189c515937eb0abe6b6f4206b437bd48729eb';
+if(actualAssetSha!==expected)throw Error('CURRENT_Q7_ASSET_SHA_UNEXPECTED');
+const ack=[{ref:'assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution.svg',sha256:actualAssetSha,reviewed:true,observation:'Reused current R1 q7 visual review: corrected y-axis x=0 and endpoint x=-2 maximum; exact post-repair SVG SHA matches isolated candidate bytes. R1 recorded SVG raster review; actual Archive sol render remained NOT_RUN.',reviewEvidence:[get(repair),get(capture)],reviewMode:'REUSED_CURRENT_R1_STATIC_RASTER_REVIEW',actualArchiveRender:'NOT_RUN'}];
+const ackPath=path.join(evidenceRoot,'ITEM_RECOVERY.current-assets-reviewed.json');fs.writeFileSync(ackPath,JSON.stringify(ack,null,2)+'\n');
+const receiptPath=path.join(evidenceRoot,'ITEM_RECOVERY.receipt.v1.json'),receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
+receipt.currentAssetBindingCorrection={reviewedCurrentAssetsAck:get(ackPath),bindingsToUpdate:[{ref:ack[0].ref,previousSha256:'cc899d0c7702e40a9ddf4dc6787c7bb5a71cf50677e0d83a982a6f6686530f1d',currentSha256:actualAssetSha,reason:'Rebind only the previously R1-reviewed q7 current SVG bytes; no asset bytes changed in ITEM_RECOVERY.'}],actualArchiveRenderClaimed:false};
+fs.writeFileSync(receiptPath,JSON.stringify(receipt,null,2)+'\n');const receiptSha=sha(fs.readFileSync(receiptPath));
+const draftPath=path.join(evidenceRoot,'ITEM_RECOVERY.CREATE_V2.evidence.draft.json'),draft=JSON.parse(fs.readFileSync(draftPath,'utf8'));
+for(const row of draft.rows||[]){if([4,21].includes(row.qid)){row.itemRecoveryReceipt.sha256=receiptSha;row.provenanceEvidence.itemRecoveryReceipt.sha256=receiptSha;}}
+draft.itemRecoveryReceipt.sha256=receiptSha;draft.itemRecoveryAdapter.receipt.sha256=receiptSha;draft.itemRecoveryAdapter.currentAssetReviewAck=get(ackPath);
+fs.writeFileSync(draftPath,JSON.stringify(draft,null,2)+'\n');
+console.log(JSON.stringify({ackPath,ackSha256:sha(fs.readFileSync(ackPath)),assetSha256:actualAssetSha,receiptSha256:receiptSha,draftSha256:sha(fs.readFileSync(draftPath))},null,2));

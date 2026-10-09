@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1",
+  "stage": "R1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "/root/r1_07_recovery"
+  },
+  "frozenAt": "2026-10-09T12:46:14.785Z",
+  "sourceRawSha256": "86b0a387bdde96fc50231456b33aab28342b8bb061745d1765173566f5c0c15d",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.student-only.json",
+    "sha256": "79271035059a8f076b9dae5f97f5a329bfe0aa5a0131f2131de3f2bc5f037d69"
+  },
+  "bundleAdapterProvenance": {
+    "input": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_수학I\\R1.recovery.student-only.json",
+      "sha256": "79271035059a8f076b9dae5f97f5a329bfe0aa5a0131f2131de3f2bc5f037d69"
+    },
+    "inputSchemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+    "legacyConverted": false,
+    "studentFieldsDropped": [],
+    "answersRead": false,
+    "originalBundleMutated": false
+  },
+  "studentQidOrder": [
+    16
+  ],
+  "rows": [
+    {
+      "qid": 16,
+      "reasoning": "From g(f(x))<0, write t=f(x); then t^2-2t<0 gives 0<t<2. Since f(x)=2log_3(x/3), this is 3<x<9, so the integer candidates are 4,5,6,7,8. Also f(g(x)+3)=2log_3((x^2-2x+3)/3)<c is equivalent to x^2-2x+3<3^(1+c/2). At x=4,5,6,7,8 the left side is 11,18,27,38,51. Exactly four are below the threshold when 38<3^(1+c/2)<=51. For natural c, c=5 gives 3^(3.5)=27sqrt(3), which lies between 38 and 51; c=4 gives 27 and only two candidates, while c=6 gives 81 and all five. Thus the unique value is 5.",
+      "independentAnswer": "5"
+    }
+  ],
+  "assetReads": []
+}

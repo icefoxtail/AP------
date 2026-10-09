@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "R1_PROOF_SERIALIZATION_CORRECTION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_순천여고_1학기_중간_고2_수학I",
+  "scope": "Evidence serialization only; source, student content, layout, answers, solutions, Meta, and assets unchanged by this serialization repair.",
+  "cause": "The prior three evidence JSON files ended with literal two-byte backslash+n after the closing brace, so strict JSON parsing rejected the trailing bytes.",
+  "preservedFailedSerializationWitnesses": [
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.q23-layout-correction.r1_09.json",
+      "sha256": "a1044adac20f4007df03b64eb64d06694bcdc4872489296937988adf87291f73",
+      "trailingBytes": "\\\\n",
+      "overwritten": false
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.q23-layout-correction.before.r1_09.json",
+      "sha256": "37fec815646e1cda265196ed1949ac586063ff036da2ee8f3f203a53035c260c",
+      "trailingBytes": "\\\\n",
+      "overwritten": false
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.student-parity.q23-layout-fullwidth.r1_09.json",
+      "sha256": "f35158ee9d604a26e0f1e430b036dd94c9940fbb143dfa62aad606ec614348c0",
+      "trailingBytes": "\\\\n",
+      "overwritten": false
+    }
+  ],
+  "strictJsonRevision1": [
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.q23-layout-correction.r1_09.revision1.json",
+      "sha256": "ca1b989e856f260daad0769a919662eeadff51a4d815c0d4a2eb2e6ce6e2daa1",
+      "strictJsonParse": true,
+      "semanticContentPreserved": true
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.q23-layout-correction.before.r1_09.revision1.json",
+      "sha256": "1f07ec83e7e777368917365bc7b3694a61b02d10deaad3da6f6c7a805a8a641c",
+      "strictJsonParse": true,
+      "semanticContentPreserved": true
+    },
+    {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/R1.student-parity.q23-layout-fullwidth.r1_09.revision1.json",
+      "sha256": "3e3bdfdea8ff1b1729666fcfbfe78dd5dfc0f97cb39f06e09ac305793904136d",
+      "strictJsonParse": true,
+      "semanticContentPreserved": true
+    }
+  ],
+  "sourceRawSha256": "5c35df2711729b9f9549abdef77a00b71a1794d63bb499353d4f7b09ebd30451"
+}
