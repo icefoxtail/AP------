@@ -20,6 +20,20 @@ const REGISTRATION_BASELINE_FILES = Object.freeze([
   'archive/data/archive2-canonical-input-manifest.json',
 ]);
 const REGISTRATION_BASELINE_SET = new Set(REGISTRATION_BASELINE_FILES);
+const LEGACY_DISPLAY_ALIAS_SCHEMA = 'ROOT_TARGET_REGISTRATION_LEGACY_DISPLAY_ALIAS_ADMISSION_V1';
+const LEGACY_DISPLAY_ALIAS_EXPECTED = Object.freeze({
+  examUid: '24_강남여고_1학기_중간_고2_대수',
+  productionPath: 'archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js',
+  grade: 'h2',
+  course: 'H15-M1',
+  questionCount: 25,
+  sourceField: 'standardCourse',
+  sourceFieldValue: '수학I',
+  sourceCurriculumFamily: 'H15-M1',
+  legacyUidSuffix: '대수',
+  displaySubject: '수학I',
+});
+const verifiedLegacyDisplayAliasTokens = new WeakSet();
 
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const hashJson = value => sha256(Buffer.from(JSON.stringify(value), 'utf8'));
@@ -81,7 +95,7 @@ function runVmSourceBytes(sourceBytes, filename) {
   return bank.map(question => jsonClone(question));
 }
 
-export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course }) {
+export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course, verifiedLegacyDisplayAlias = null }) {
   assert(nonempty(examUid) && nonempty(productionRelativePath), 'DISPLAY_IDENTITY_REQUIRED');
   const file = core.normalizeFile(String(productionRelativePath).replace(/^archive\/exams\//, ''));
   assert(/^original\/high\/(h1|h2)\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
@@ -99,7 +113,7 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
   const uidSubject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
   // H1's canonical Archive DB stores first-term finals with the locked exam UID ending in `_기출`;
   // the existing DB's subject/primaryStandardCourse fields supply the display alias.
-  const subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
+  let subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
   const acceptedSubjects = courseCode === 'math2'
     ? new Set(['수학II', '수학Ⅱ'])
     : courseCode === 'geometry'
@@ -111,7 +125,17 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
       : rosterGrade === 'h1' && courseCode === '수학(상)'
         ? new Set(['수학(상)'])
         : new Set();
-  assert(acceptedSubjects.has(subject), 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
+  if (!acceptedSubjects.has(subject)) {
+    const token = verifiedLegacyDisplayAlias;
+    assert(token && verifiedLegacyDisplayAliasTokens.has(token)
+      && token.examUid === examUid
+      && token.productionPath === productionRelativePath
+      && token.grade === rosterGrade
+      && token.course === courseCode
+      && token.legacyUidSuffix === uidSubject
+      && token.displaySubject === '수학I', 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
+    subject = token.displaySubject;
+  }
   return {
     sourceFile: file,
     displayAlias: { school, year: 2000 + Number(yearToken), semester: semesterToken.slice(0, 1), examType: examTypeToken === '중간' ? 'mid' : 'final', grade: gradeDisplay, subject, contentType: file.startsWith('original/') ? '기출' : '' },
@@ -162,9 +186,9 @@ function metaRangeRows(bank) {
   });
 }
 
-export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, course, bank }) {
+export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, course, bank, verifiedLegacyDisplayAlias = null }) {
   assert(Array.isArray(bank) && bank.length > 0, 'SOURCE_VM_BANK_REQUIRED');
-  const { sourceFile, displayAlias } = parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course });
+  const { sourceFile, displayAlias } = parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course, verifiedLegacyDisplayAlias });
   const courseRanges = metaRangeRows(bank);
   const singleRange = courseRanges.length === 1 ? courseRanges[0] : null;
   return {
@@ -187,6 +211,94 @@ export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, c
     courseRanges,
     primaryStandardCourse: displayAlias.subject,
   };
+}
+
+export function verifyBoundLegacyDisplayAliasAdmission({
+  root, authorityAdmission, rosterAdmission, assignment, examUid, productionRelativePath, grade, course, sourceBytes, bank,
+}) {
+  const keys = ['schemaVersion', 'examUid', 'productionPath', 'grade', 'course', 'questionCount', 'sourceRawSha256', 'sourceGitBlobSha1', 'sourceField', 'sourceFieldValue', 'sourceCurriculumFamily', 'legacyUidSuffix', 'displaySubject', 'attestation'];
+  const exactKeys = value => value && typeof value === 'object' && !Array.isArray(value)
+    && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...keys].sort());
+  assert(exactKeys(authorityAdmission) && exactKeys(rosterAdmission), 'ROOT_LEGACY_DISPLAY_ALIAS_ADMISSION_SCHEMA_REQUIRED');
+  for (const key of keys) {
+    if (key === 'attestation') continue;
+    assert(authorityAdmission[key] === rosterAdmission[key], 'ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_ROW_MISMATCH', key);
+  }
+  assert(authorityAdmission.attestation?.path === rosterAdmission.attestation?.path
+    && authorityAdmission.attestation?.sha256 === rosterAdmission.attestation?.sha256,
+  'ROOT_LEGACY_DISPLAY_ALIAS_ATTESTATION_REF_MISMATCH');
+  const admission = authorityAdmission;
+  assert(admission.schemaVersion === LEGACY_DISPLAY_ALIAS_SCHEMA, 'ROOT_LEGACY_DISPLAY_ALIAS_SCHEMA_INVALID');
+  for (const [key, expected] of Object.entries(LEGACY_DISPLAY_ALIAS_EXPECTED)) {
+    assert(admission[key] === expected, 'ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_INVALID', key);
+  }
+  assert(examUid === admission.examUid && productionRelativePath === admission.productionPath
+    && String(grade).toLowerCase() === admission.grade && course === admission.course,
+  'ROOT_LEGACY_DISPLAY_ALIAS_TARGET_BINDING_MISMATCH');
+  assert(assignment?.examUid === admission.examUid
+    && assignment?.productionRelativePath === admission.productionPath
+    && assignment?.grade === admission.grade
+    && assignment?.course === admission.course
+    && Number(assignment?.questionCount) === admission.questionCount,
+  'ROOT_LEGACY_DISPLAY_ALIAS_ASSIGNMENT_BINDING_MISMATCH');
+  assert(Buffer.isBuffer(sourceBytes) && sha256(sourceBytes) === admission.sourceRawSha256
+    && assignment.artifactRawSha256 === admission.sourceRawSha256,
+  'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_RAW_SHA_MISMATCH');
+  assert(gitBlobSha(sourceBytes) === admission.sourceGitBlobSha1
+    && assignment.validatorRawBufferBlobSha1 === admission.sourceGitBlobSha1,
+  'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_BLOB_SHA_MISMATCH');
+  assert(Array.isArray(bank) && bank.length === admission.questionCount, 'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_DENOMINATOR_MISMATCH');
+  assert(bank.every(question => question?.standardCourse === admission.sourceFieldValue), 'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_COURSE_PARITY_FAIL');
+
+  const attestationBytes = readBoundFileBytes(root, admission.attestation, 'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION');
+  let attestation;
+  try { attestation = JSON.parse(attestationBytes.toString('utf8').replace(/^\uFEFF/, '')); }
+  catch { throw new Error('R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_JSON_INVALID'); }
+  const scope = attestation.scope;
+  assert(attestation.schemaVersion === 'JS_ARCHIVE_R1_BOUNDED_LEGACY_DISPLAY_ALIAS_ATTESTATION_V1'
+    && attestation.executionLine === 'CODEX'
+    && attestation.qualityContractVersion === QUALITY_CONTRACT_V2
+    && attestation.reviewerId === 'r1_10'
+    && attestation.examUid === admission.examUid
+    && attestation.decision === 'R1_CONFIRMS_H15_MATH_I_DISPLAY_ALIAS_FOR_THIS_TARGET_ONLY',
+  'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_IDENTITY_INVALID');
+  assert(scope?.currentSourceRawSha256 === admission.sourceRawSha256
+    && scope?.currentSourceBufferBlobSha1 === admission.sourceGitBlobSha1
+    && scope?.productionPath === admission.productionPath
+    && scope?.questionCount === admission.questionCount
+    && scope?.reviewedQids === '1-25'
+    && scope?.sourceField === admission.sourceField
+    && scope?.sourceFieldValue === admission.sourceFieldValue
+    && scope?.sourceCurriculumFamily === admission.sourceCurriculumFamily
+    && scope?.legacyUidSuffix === admission.legacyUidSuffix
+    && scope?.approvedDisplaySubject === admission.displaySubject
+    && scope?.normalizationScope === 'DISPLAY_ALIAS_ONLY_FOR_THIS_EXAMUID_AND_SOURCE_SHA',
+  'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_SCOPE_MISMATCH');
+  const actualUnitKeys = [...new Set(bank.map(question => text(question?.standardUnitKey)))].sort();
+  const attestedUnitKeys = Array.isArray(scope?.observedStandardUnitKeys) ? [...new Set(scope.observedStandardUnitKeys)].sort() : [];
+  assert(actualUnitKeys.length > 0 && actualUnitKeys.every(key => key.startsWith('H15-M1-') && attestedUnitKeys.includes(key))
+    && attestedUnitKeys.every(key => key.startsWith('H15-M1-')),
+  'R1_LEGACY_DISPLAY_ALIAS_UNIT_SCOPE_MISMATCH');
+  assert(attestation.r1Judgment?.sourceOrMetaMutation === false
+    && typeof attestation.r1Judgment?.finding === 'string' && attestation.r1Judgment.finding.trim()
+    && attestation.allowedConsumerUse?.useDisplayAlias === true
+    && attestation.allowedConsumerUse?.displaySubject === admission.displaySubject
+    && attestation.allowedConsumerUse?.preserveExamUidExactly === true
+    && attestation.allowedConsumerUse?.preserveSourceFileAndProductionPathExactly === true
+    && attestation.allowedConsumerUse?.preserveStandardCourseAndEveryMetaFieldExactly === true
+    && attestation.allowedConsumerUse?.globalAliasOrSuffixRuleCreated === false,
+  'R1_LEGACY_DISPLAY_ALIAS_CONSUMER_SCOPE_INVALID');
+
+  const token = Object.freeze({
+    examUid: admission.examUid,
+    productionPath: admission.productionPath,
+    grade: admission.grade,
+    course: admission.course,
+    legacyUidSuffix: admission.legacyUidSuffix,
+    displaySubject: admission.displaySubject,
+  });
+  verifiedLegacyDisplayAliasTokens.add(token);
+  return token;
 }
 
 export function canonicalSourceFingerprint(question) {
@@ -1081,6 +1193,22 @@ async function main() {
   const r1EvidenceRelative = r1EvidenceBinding.relative;
   const r1Evidence = r1EvidenceBinding.evidence;
   const r1MetaDebtRows = r1EvidenceBinding.metaDebtRows || [];
+  const authorityLegacyAlias = authorizedRow.legacyDisplayAliasAdmission;
+  const rosterLegacyAlias = rosterRow.legacyDisplayAliasAdmission;
+  const verifiedLegacyDisplayAlias = authorityLegacyAlias !== undefined || rosterLegacyAlias !== undefined
+    ? verifyBoundLegacyDisplayAliasAdmission({
+      root,
+      authorityAdmission: authorityLegacyAlias,
+      rosterAdmission: rosterLegacyAlias,
+      assignment,
+      examUid: authorizedRow.examUid,
+      productionRelativePath: authorizedRow.productionPath,
+      grade: authorizedRow.grade,
+      course: authorizedRow.course,
+      sourceBytes,
+      bank,
+    })
+    : null;
   const sourceFingerprintByOrdinal = bank.map(question => canonicalSourceFingerprint(question));
   const contentFingerprintByOrdinal = bank.map(question => canonicalContentFingerprint(question));
   const identityRows = makeTargetIdentityRows(targetFile, bank);
@@ -1104,8 +1232,8 @@ async function main() {
     assert(!legacyQKeys.has(row.legacyQKey), 'TARGET_LEGACY_QKEY_COLLISION', row.legacyQKey);
   }
 
-  const display = parseAuthorizedDisplayIdentity({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course });
-  const targetDbRow = buildAuthorizedDbRow({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, bank });
+  const display = parseAuthorizedDisplayIdentity({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, verifiedLegacyDisplayAlias });
+  const targetDbRow = buildAuthorizedDbRow({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, bank, verifiedLegacyDisplayAlias });
   const targetMetadataRows = makeTargetMetadataRows({ sourceFile: targetFile, bank, identityRows, r1EvidencePath: r1EvidenceRelative, r1MetaDebtRows });
   assert(targetMetadataRows.every((row, index) => row.questionUid === identityRows[index].questionUid && row.sourceFingerprint === sourceFingerprintByOrdinal[index] && row.contentFingerprint === contentFingerprintByOrdinal[index]), 'TARGET_METADATA_FINGERPRINT_PARITY_FAIL');
 

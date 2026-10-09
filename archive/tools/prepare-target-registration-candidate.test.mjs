@@ -13,6 +13,7 @@ import {
   makeTargetIdentityRows,
   makeTargetMetadataRows,
   parseAuthorizedDisplayIdentity,
+  verifyBoundLegacyDisplayAliasAdmission,
   serializeR1MetaProofSummary,
   verifyR1MetaCoreDebtAdmission,
   verifyR1EvidenceBinding,
@@ -101,6 +102,99 @@ test('accepts only the canonical H2 H15-M1 to 수학I display alias verified by 
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath: targetPath, grade: 'h2', course: 'H15-M2' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
   const wrongSubjectUid = '23_매산고_1학기_중간_고2_수학II';
   assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: wrongSubjectUid, productionRelativePath: `archive/exams/original/high/h2/1mid/${wrongSubjectUid}.js`, grade: 'h2', course: 'H15-M1' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+});
+
+test('accepts legacy H15-M1 display alias only with matching ROOT roster scope and current R1 attestation', () => {
+  const root = process.cwd();
+  const targetUid = '24_강남여고_1학기_중간_고2_대수';
+  const productionRelativePath = `archive/exams/original/high/h2/1mid/${targetUid}.js`;
+  const attestationRelativePath = `archive/analysis/h2-intake-batch01-20261009/${targetUid}/R1.legacy-course-display-alias-attestation.r1_10.rev1.json`;
+  const sourceBytes = fs.readFileSync(path.join(root, productionRelativePath));
+  const sourceRawSha256 = crypto.createHash('sha256').update(sourceBytes).digest('hex');
+  const sourceGitBlobSha1 = crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${sourceBytes.length}\0`), sourceBytes])).digest('hex');
+  const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  sourceContext.globalThis = sourceContext;
+  vm.createContext(sourceContext);
+  vm.runInContext(sourceBytes.toString('utf8'), sourceContext, { filename: productionRelativePath, timeout: 5000 });
+  const bank = sourceContext.window.questionBank || sourceContext.window.questions || sourceContext.questionBank || sourceContext.questions;
+  const attestationBytes = fs.readFileSync(path.join(root, attestationRelativePath));
+  const attestationSha256 = crypto.createHash('sha256').update(attestationBytes).digest('hex');
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-legacy-display-alias-'));
+  try {
+    const writeBound = (relative, bytes) => {
+      const target = path.join(tempRoot, relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.writeFileSync(target, bytes);
+    };
+    writeBound(productionRelativePath, sourceBytes);
+    writeBound(attestationRelativePath, attestationBytes);
+    const admission = {
+      schemaVersion: 'ROOT_TARGET_REGISTRATION_LEGACY_DISPLAY_ALIAS_ADMISSION_V1',
+      examUid: targetUid,
+      productionPath: productionRelativePath,
+      grade: 'h2',
+      course: 'H15-M1',
+      questionCount: 25,
+      sourceRawSha256,
+      sourceGitBlobSha1,
+      sourceField: 'standardCourse',
+      sourceFieldValue: '수학I',
+      sourceCurriculumFamily: 'H15-M1',
+      legacyUidSuffix: '대수',
+      displaySubject: '수학I',
+      attestation: { path: attestationRelativePath, sha256: attestationSha256 },
+    };
+    const assignment = {
+      examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', questionCount: 25,
+      artifactRawSha256: sourceRawSha256, validatorRawBufferBlobSha1: sourceGitBlobSha1,
+    };
+    const verify = (authorityAdmission = admission, rosterAdmission = admission, extra = {}) => verifyBoundLegacyDisplayAliasAdmission({
+      root: tempRoot, authorityAdmission, rosterAdmission, assignment, examUid: targetUid,
+      productionRelativePath, grade: 'h2', course: 'H15-M1', sourceBytes, bank, ...extra,
+    });
+    const token = verify();
+    const identity = parseAuthorizedDisplayIdentity({
+      examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', verifiedLegacyDisplayAlias: token,
+    });
+    assert.deepEqual(identity.displayAlias, { school: '강남여고', year: 2024, semester: '1', examType: 'mid', grade: '고2', subject: '수학I', contentType: '기출' });
+    const dbRow = buildAuthorizedDbRow({ examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', bank, verifiedLegacyDisplayAlias: token });
+    assert.equal(dbRow.file, 'original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js');
+    assert.equal(dbRow.subject, '수학I');
+    assert.equal(dbRow.primaryStandardCourse, '수학I');
+    assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1' }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+    assert.throws(() => parseAuthorizedDisplayIdentity({ examUid: targetUid, productionRelativePath, grade: 'h2', course: 'H15-M1', verifiedLegacyDisplayAlias: { ...token } }), /ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH/);
+
+    const changed = (field, value) => ({ ...admission, [field]: value });
+    for (const [label, value] of [
+      ['examUid', '24_다른여고_1학기_중간_고2_대수'],
+      ['grade', 'h1'],
+      ['course', 'math2'],
+      ['productionPath', 'archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_수학I.js'],
+      ['questionCount', 24],
+      ['legacyUidSuffix', '수학I'],
+    ]) {
+      const mutatedAdmission = changed(label, value);
+      assert.throws(() => verify(mutatedAdmission, mutatedAdmission), /ROOT_LEGACY_DISPLAY_ALIAS_/ , label);
+    }
+    const missingAttestation = { ...admission };
+    delete missingAttestation.attestation;
+    assert.throws(() => verify(missingAttestation), /ROOT_LEGACY_DISPLAY_ALIAS_ADMISSION_SCHEMA_REQUIRED/);
+    const staleAttestation = changed('attestation', { path: attestationRelativePath, sha256: '0'.repeat(64) });
+    assert.throws(() => verify(staleAttestation, staleAttestation), /R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_SHA256_MISMATCH/);
+    assert.throws(() => verify(admission, { ...admission, course: 'math2' }), /ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_ROW_MISMATCH/);
+    const wrongSourceSha = changed('sourceRawSha256', '0'.repeat(64));
+    assert.throws(() => verify(wrongSourceSha, wrongSourceSha), /ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_RAW_SHA_MISMATCH/);
+    const wrongSourceBlob = changed('sourceGitBlobSha1', '0'.repeat(40));
+    assert.throws(() => verify(wrongSourceBlob, wrongSourceBlob), /ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_BLOB_SHA_MISMATCH/);
+    assert.throws(() => verify(admission, admission, { sourceBytes: Buffer.concat([sourceBytes, Buffer.from('\n')]) }), /ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_RAW_SHA_MISMATCH/);
+    const wrongCourseBank = bank.map(question => ({ ...question }));
+    wrongCourseBank[0].standardCourse = '수학II';
+    assert.throws(() => verify(admission, admission, { bank: wrongCourseBank }), /ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_COURSE_PARITY_FAIL/);
+    const outsideRoot = { ...admission, attestation: { path: '../outside.json', sha256: attestationSha256 } };
+    assert.throws(() => verify(outsideRoot, outsideRoot), /R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_PATH_OUTSIDE_ROOT/);
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
 });
 
 test('builds DB course ranges from embedded approved Meta only', () => {
