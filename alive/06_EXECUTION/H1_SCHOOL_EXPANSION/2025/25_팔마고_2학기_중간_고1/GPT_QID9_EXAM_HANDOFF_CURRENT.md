@@ -1,5 +1,13 @@
 # 2025 팔마고 2학기 중간 — ALIVE QID9 시험지 통합 작업 인계 CURRENT
 
+## CURRENT — q05 A1~C3 신규 9문항 제작·자가검수 완료 (2026-10-09)
+- **q05 원본**: 공통수학2 선분의 수직이등분선, Git 원본 blob `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`; 제작 전 시험지 단일 브랜치를 최신 main과 동기화했다.
+- **제작 커밋** [e47a5734](https://github.com/icefoxtail/AP------/commit/e47a5734eb0d7624bee455e280d1c28d3af0f33a). `GPT_QID9_Q05_PACKAGE.json`에 A1~C3 9문항(발문·5지·정답·한국어 상세해설·실제 오답경로·Meta), `GPT_QID9_Q05_STEM_SELF_REVIEW.md`에 UID별 역발문 자가검수 기록 저장. Generated-only EXT-L4 4종을 `archive/generated/lite/v1/2022/H1/H22-C2-02-LINE_EQUATION/extension-l4/registry.json`에 제작했다. RPM LOCKED 불변.
+- **잠긴 L3:** `L3-1.2.1|직선의 방정식`; 실제 ACTIVE `PT_LINE_EQUATION` + `TPL_LINE_PERP_BISECTOR`. A는 기본과 수평/수직 특수형, B는 역조건·대칭점·좌표축 넓이, C는 매개변수 분기·외심 두 수직이등분선·외심 역조건. 시각자료 필수 문항 0개.
+- **제작 자가검수 9/9:** KEEP 7 / REVISED 2(C1 질문을 L3 직선 방정식 판단으로 변경, C3 외심좌표 선공개 삭제 및 ⑤ 오답 실제 계산식으로 교체) / HOLD 0. 정답 ①2·②2·③2·④2·⑤1, 각 객관식 오답 네 개의 산출 경로를 최종 후보와 결속. 좌표·거리 수학적 등식 직접 검산. 독립 품질검수 또는 실제 Chrome을 실행했다고 주장하지 않음.
+- **상태 구분:** q01~q04의 기존 36개 = 원장 직접 품질승인·Consumer/index·main·Chrome 완료. **q05 신규 9개 = 제작 및 자가검수 종료 / 이번 지시는 제작만 / 품질승인·Consumer·main 출시는 아직 0/9.** 원장이 검수·main 반영을 지시하면 별도 GPT 정식 인증 대기 없이 기술 출시 단계로 바로 진행한다.
+- **다음 제작 원본 q06**(원의 방정식). latest main + 현재 branch, `GPT_QID9_EXAM_MANIFEST.json`의 `nextSourceQid=6`을 기준으로 이어가되, 기존 q01~q05를 재생성하지 않는다.
+
 ## CURRENT HARD — 원장 품질 승인 완료, 별도 GPT 정식 인증 불필요 (2026-10-09 최신)
 - 원장이 **"검수하고 main에 반영하라"**고 지시한 대상은 `USER_DIRECTED_QUALITY_APPROVED`로 품질 승인 종료다. 별도 GPT 정식 독립검수, open-book PASS, 새 대화 인증을 기다리지 않는다. 실제 오류가 발견되면 해당 UID만 수정하고 변경 범위만 확인한다.
 - q01~q04 **36/36은 원장 직접 승인 + main 운영병합 + 실제 Chrome 확인 완료**. 독립 GPT 별도검수 횟수가 0이라는 역사적 표기는 **품질 미승인 또는 출시 미완료가 아니다**. 완료된 36개를 재검수·재등록하지 않는다.
@@ -48,7 +56,7 @@
 - **기존 q01~q04 36개:** 원장 품질승인·기술 출시가 모두 완료됐다. 2026-10-09 원장 요청에 따라 이미 36문항 공개답 내용검토를 완료했다. q04 C3의 `k+4t`는 최적점 좌표 질문으로 재설계했으며, 상세 내역은 `GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md`에 있다. 브랜치 Consumer/index 정적 등록 완료, main 병합과 브라우저 검증은 완료됐다. `USER_DIRECTED_MAIN_DONE`; formal independent GPT review를 별도로 했다고 주장하지 않지만, 별도 인증을 더 요구하지 않는다.
 - 현재 main 정본: [ALIVE QID9 제작 GPT 역발문 자가수정 HARD](https://github.com/icefoxtail/AP------/blob/main/alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md). 제작자 self-review는 독립 GPT 공개답 품질 PASS가 아니며 학생 등록 권한도 아니다.
 
-## 다음 정확한 실행
+## HISTORY — q05 이전 실행 인계
 1. 동일 브랜치 `work/alive-25-palma-h1-2mid-qid9` 최신 HEAD와 [통합 manifest](https://github.com/icefoxtail/AP------/blob/work/alive-25-palma-h1-2mid-qid9/alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_EXAM_MANIFEST.json), main QID9 CURRENT를 한 번 확인한다.
 2. **다음 원본 q05만** 집중하여 실제 원본 JS를 읽고 L3·L4/CrossConcept·사고 경험 계획 → A1~C3 9개 발문·5지·정답·해설·오답 경로 제작 → **학생 관점 역발문 자가점검 → 결함 즉시 수정·영향 재확인 → 9 UID별 KEEP/REVISED/HOLD ledger**까지 마친다.
 3. Q05 제작물은 **같은 시험지 브랜치에 Q05 파일만 한 독립 commit**으로 추가하고 manifest/handoff 갱신. 신규 원본별 브랜치·PR 생성 금지.
@@ -56,5 +64,5 @@
 5. GPT 품질검수 PASS 또는 **원장 직접 검수·main 반영 지시에 따라 승인된 UID**는 별도 GPT 인증 없이 Archive 2.0 Generated Consumer/index/main 학생용 공급과 실제 조회까지 연속 마감한다. Codex는 확정 Git 운영병합/readback만 담당한다.
 6. 컨텍스트 사용률은 실제 측정 가능하지 않으면 추정하지 않는다.
 
-## 다음 GPT 창 단문
+## HISTORY — q05 이전 다음 창 프롬프트
 > 2025 팔마고 2학기 중간 ALIVE QID9 단일 브랜치 `work/alive-25-palma-h1-2mid-qid9`에서 이어라. q01~q04 신규 후보 36개는 생성 완료이므로 중복 제작하지 말라. main의 ALIVE GPT QID9 CURRENT 및 통합 `GPT_QID9_EXAM_MANIFEST.json`, `GPT_QID9_EXAM_HANDOFF_CURRENT.md`를 읽은 뒤 **원본 q05 하나**로 A1~C3 신규 9문항을 제작한 뒤 **학생·학교 출제자 관점 발문 역독해 → 발견 결함 즉시 수정 → 수정 영향 확인 → 9 UID별 KEEP/REVISED/HOLD 및 수정 전후가 기록된 별도 SELF_REVIEW**를 수행하고, 최종 Q05 산출물과 검수 ledger를 같은 브랜치에 누적하라. q01~q04 36개는 원장 승인·MAIN_DONE·Chrome까지 완료했으므로 중복 검수·재등록하지 말고, 신규 q05의 제작 및 이후 승인될 문항의 실제 Consumer·Meta·렌더·main 기술 출시 단계만 처리한다. 기존 q01~q04를 재생성하거나 별도 qid PR을 만들지 말라.
