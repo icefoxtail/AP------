@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22'
       - name: Meta persistence, recovery and shared consumer contracts
-        run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs
+        run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs tests/generated-meta-browse-aliases.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
