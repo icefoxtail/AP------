@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_Q8_AUTHORING_RECEIPT_V1",
+  "revision": 3,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "stage": "ITEM_RECOVERY",
+  "result": "READY_FOR_FRESH_Q8_ONLY_R1_R2",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "replacementScope": "QUESTION_ONLY",
+  "targetQid": 8,
+  "finalArtifactSha": "fd1e9e22da6cfbd6c51b0a633ad370352a902e2b",
+  "finalArtifactRawSha256": "41a052f24f3f90cf5c1b66a89b38ef0bb8aeb958d545a20c23c205633e6fd0ae",
+  "baselineArtifactRawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+  "baselineArtifactBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386",
+  "evidence": {
+    "changeAndInvariance": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.replacement.change-and-invariance-evidence.json",
+      "sha256": "0a944b3856e471c22b11554423f78916b570a279b249b7c105c0028431327ad8"
+    },
+    "validationSupplement": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.replacement.validation-supplement.json",
+      "sha256": "00edf8418d959595d8fcf844119373b8a691955417d2bd0e358ef68cb3019b08"
+    },
+    "studentBundle": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1R2.answer-free.student-bundle.json",
+      "sha256": "da590a87e034b0fc6b8823b09d5b0183a2076949832e72436f770fd626d94fc2"
+    },
+    "freshMeta": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.fresh-meta-evidence.json",
+      "sha256": "f38773237dc0914d5e54531c68b16a4ee019e319425da8072da965fae052f3e7"
+    },
+    "solutionFirstFreeze": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.solution-first-freeze.corrected.json",
+      "sha256": "dd217f8fe9cd976741ad40e06f219b81bb75acd7506b86e2ab7dfbb3d7c66652"
+    },
+    "choiceDesign": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.choice-design.corrected.json",
+      "sha256": "b8be3eb43836b6f671112dbffa752b23ddad5f858e005db89528c1257b0d52bb"
+    },
+    "sourceByteInvariance": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.replacement.source-byte-invariance.json",
+      "sha256": "5b4031a68cf01f02d72e942368e3f942287739d86e9bc1512303d2447c3cb729"
+    }
+  },
+  "firstMissingClosureStep": "Fresh q8-only clean R1 and R2 review, followed by full-denominator V2 raw validator reports and aggregate evidence.",
+  "exactReason": "ROOT authorized QUESTION_ONLY replacement after same-session R2 retained q8 HOLD. The replacement targets BC explicitly and has exactly one valid choice, ④.",
+  "validatorDisposition": {
+    "disposition": "NOT_RUN_UNSUPPORTED_STAGE",
+    "reason": "archive-stage-validator.mjs ALLOWED_STAGES excludes ITEM_RECOVERY; R1 and R2 owners must run raw V2 generic validators after their qid-specific reviews.",
+    "nonTargetSourceBytes": "PASS",
+    "productionPathGitStatus": "CLEAN"
+  },
+  "nextRequiredAction": [
+    "Route q8.R1R2.answer-free.student-bundle.json with q8.svg to a clean R1 review; keep solution and answer hidden for R2.",
+    "Route the same answer-free bundle to a clean R2 blind session; freeze the answer before revealing q8 answer/solution/Meta.",
+    "After qid-specific reviews, produce current V2 R1/R2 reports with --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json and full-denominator aggregate evidence.",
+    "Resolve any remaining item HOLD before R3; do not publish before R3 release/static closure."
+  ]
+}

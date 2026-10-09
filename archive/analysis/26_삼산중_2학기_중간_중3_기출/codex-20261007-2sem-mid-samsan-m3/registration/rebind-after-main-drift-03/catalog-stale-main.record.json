@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_NON_TARGET_CATALOG_STALE_FAILURE_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "currentMainSha": "0ee236041e3818ba11b59da7d86685c25e4c9f27",
+  "status": "PRESERVED_NON_TARGET_MAIN_DRIFT_FAILURE",
+  "check": {
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 1,
+    "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-03/checks/catalog.stdout.txt",
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-03/checks/catalog.stderr.txt",
+    "stderrSha256": "4e338d806b85606bbf324bb5e86dc587e72c956a57529676f08dff9d83debca4",
+    "issue": "Archive 2.0 catalog projection is stale"
+  },
+  "unrelatedRegisteredSource": {
+    "path": "archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js",
+    "registeredInDb": true,
+    "sourceBlobAt526": "d879651e8d0e4dae0d851e61dfcfefd4b1f30376",
+    "sourceBlobAtCurrentMain": "553638f62fb801ca31954c10c7c9799ef7533439",
+    "catalogSourceSha256": "00d43e8a63932babe1382ffa572de36c7d6c0fb27de011cae7c4bd86f28e9dcc",
+    "sourceShaAt526": "00d43e8a63932babe1382ffa572de36c7d6c0fb27de011cae7c4bd86f28e9dcc",
+    "sourceShaAtCurrentMain": "56bcf54f117295e23b8f68c9fef4100b7dfedbb7d6c1a06d13bcf9a4590eb51f"
+  },
+  "targetOverlap": false,
+  "targetRegistrationVerifierStatus": "PASS",
+  "latestMainChangePaths": [
+    "archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js"
+  ],
+  "disposition": "Exclude from target-only publication gates; preserve exact failure and leave unrelated source/catalog row untouched."
+}

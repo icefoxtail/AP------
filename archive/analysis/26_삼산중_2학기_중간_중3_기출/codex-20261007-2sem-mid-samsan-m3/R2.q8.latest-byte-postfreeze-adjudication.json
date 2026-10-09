@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_Q8_POSTFREEZE_ADJUDICATION_V1",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "stage": "R2",
+  "qid": 8,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "outcome": "HOLD_RETAINED",
+  "falseHoldNoRepairNeeded": false,
+  "blindFreeze": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.blind-freeze.json",
+    "sha256": "bc2358365962930c558887150b59cf0fc5dab7974c755c90d01c0ef6b4645274",
+    "qid": 8,
+    "blindAnswer": "② and ④ (both correct; ambiguous single-choice item)",
+    "issue": "SUSPICIOUS_MULTIPLE_VALID_CHOICES"
+  },
+  "currentCandidate": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\26_삼산중_2학기_중간_중3_기출.js",
+    "rawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "gitBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386",
+    "storedAnswer": "④"
+  },
+  "latestByteIndependentRevalidation": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.latest-byte-independent-revalidation.json",
+    "sha256": "9a74cb726ace32a572f455e37fa1a60685cdcadc9e3dac1be517cc65209fd80b",
+    "qid": 8,
+    "sourceArtifactRawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "studentBundleSha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2",
+    "selectedChoice": 4,
+    "selectedValue": "BC=√13 cos a°",
+    "sourceAndStudentFieldsMatch": true
+  },
+  "comparison": {
+    "answerIdentity": "AGREES_ON_CHOICE_4",
+    "answerCardinality": "UNRESOLVED_BY_LATEST_BYTE_RECEIPT",
+    "exactMismatch": "The R2 blind freeze supports choices ② and ④ as equivalent true identities; the latest-byte receipt selects ④ and does not address or refute choice ②. Therefore the key is supported but uniqueness is not established, and a false-hold release is unsupported."
+  },
+  "preservedHold": {
+    "originalVerdict": "HOLD",
+    "originalCompareResult": "SUSPICIOUS",
+    "originalDisposition": "ITEM_HOLD: The printed source page 2 and the current student bundle match for the stem/choices. In the right triangle, a+b=90°, so choice ② (AC=√13 sin b°) and choice ④ (BC=√13 cos a°) express the same true leg identity. The stored key ④ is valid but not unique. Source scan page 2 SHA-256 426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61; handwritten marks were not used as answer evidence. No source-backed minimal correction is available; requires ROOT bounded item recovery/replacement.",
+    "effectiveItemHolds": [
+      8
+    ],
+    "aggregateEvidenceChanged": false,
+    "candidateChanged": false
+  },
+  "existingR2Evidence": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.evidence.json",
+    "sha256": "52ed42c47ed646cd9ba403ea58669eb24a1cfa8bca28996f3dc7a692c7e054e4"
+  },
+  "existingRawGenericReport": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.generic-validation.raw.post-q17-label-correction.json",
+    "sha256": "17c0c6f911a0d8e40816ca34bc3378cce3a617a054de6fcfee95c2585cf0a571",
+    "disposition": "FAIL",
+    "issues": [
+      "ARTIFACT_KNOWN_FAILED_REVIEW:q8"
+    ]
+  },
+  "q17CorrectionReceipt": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.q17-solution-label-correction.receipt.json",
+    "sha256": "0b35d6739c187aef9b00761f8faf11d70ffc69aa657b17d4bda3ef7b6ccd93b8"
+  },
+  "createdAtUtc": "2026-10-08T05:53:05.164Z"
+}

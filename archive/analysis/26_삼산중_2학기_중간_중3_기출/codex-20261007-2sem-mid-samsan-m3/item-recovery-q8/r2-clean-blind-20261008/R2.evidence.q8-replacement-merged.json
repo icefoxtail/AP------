@@ -1,0 +1,419 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R2",
+  "status": "R2_VERIFIED",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "cohortRunId": "codex-20261007-2sem-mid-import",
+  "artifactSha": "fd1e9e22da6cfbd6c51b0a633ad370352a902e2b",
+  "artifactRawSha256": "41a052f24f3f90cf5c1b66a89b38ef0bb8aeb958d545a20c23c205633e6fd0ae",
+  "artifactGitBlobSha1": "fd1e9e22da6cfbd6c51b0a633ad370352a902e2b",
+  "freezeArtifactSha": "6ba2247cbf5f60e87b8848defb4750a7c6e62fd6",
+  "freezeArtifactRawSha256": "1ba8a93b5c9e68dbd49e373a65455277a47794b90eeea3e95553874f48db0252",
+  "blindFreeze": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\r2-clean-blind-20261008\\R2.blind-freeze.q8-replacement-merged.json",
+    "sha256": "1ba8a93b5c9e68dbd49e373a65455277a47794b90eeea3e95553874f48db0252",
+    "allQidsFrozenBeforeDisclosure": true,
+    "referencedStudentAssetsChecked": true,
+    "studentBundles": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\handoff\\R2.student-only-bundle.current-final.post-q17-label-correction.json",
+        "sha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2",
+        "scope": "unchanged qids 1-7, 9-24"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1R2.answer-free.student-bundle.json",
+        "sha256": "da590a87e034b0fc6b8823b09d5b0183a2076949832e72436f770fd626d94fc2",
+        "scope": "replacement qid 8"
+      }
+    ]
+  },
+  "sourceStudentBundle": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1R2.answer-free.student-bundle.json",
+    "sha256": "da590a87e034b0fc6b8823b09d5b0183a2076949832e72436f770fd626d94fc2",
+    "qidScope": [
+      8
+    ]
+  },
+  "mutation": {
+    "qid": 17,
+    "fields": [
+      "answer"
+    ],
+    "from": "⑤",
+    "to": "②",
+    "postMutationArtifactRawSha256": "5b4ab58d1d78a4f1f928e471f92356b9aca968cdf62357c4de9a6576d6a3a2f3",
+    "postMutationArtifactGitBlobSha1": "1ba595c01583956bab9a5f59c9906b31dcc619ae"
+  },
+  "validationReportPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\r2-clean-blind-20261008\\R2.generic-validator.raw.json",
+  "itemHolds": [],
+  "rows": [
+    {
+      "qid": 1,
+      "blindAnswer": "⑤",
+      "answerReasoning": "AB=3, BC=4, AC=5. Thus sinA=4/5, cosA=3/5, tanA=4/3; sinC=3/5, cosC=4/5, tanC=3/4. Only choice ⑤ (tan C=3/4) is true.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "e7bf34f79aae30d9e6499785da8633e133307f7daa19968489e90541c77d8559",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "① (−2)",
+      "answerReasoning": "(2sin30+2cos30)(2cos60−tan60)=(1+√3)(1−√3)=−2.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "e0f523fe190ce8898e04fe55e2b638be13ca199b1fe4c8ac3f9b32e4bb613f14",
+      "storedAnswerBeforeRepair": "①",
+      "storedAnswerAfterRepair": "①",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "⑤ (30π cm)",
+      "answerReasoning": "Half-chord=12 and center-to-chord distance=9, so radius=sqrt(12²+9²)=15; circumference=30π.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "809379a1d1653817e73f762fa18e27dd03add79bd461826af7334048409000a3",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "④ (√10/10)",
+      "answerReasoning": "Let AC=x and BC=3x from tanA=3; AB=√10x. Since B complements A, sinB=AC/AB=1/√10=√10/10.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "df0e74e1956f298ba523bc5b0623682f2fe2555e3759c5826a20324d756ed67c",
+      "storedAnswerBeforeRepair": "④",
+      "storedAnswerAfterRepair": "④",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "③ (2.8244)",
+      "answerReasoning": "AB=2 is the hypotenuse. Table values sin42°=.6691 and cos42°=.7431 give BC=1.3382 and AC=1.4862; sum=2.8244.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "1a682b7e0cd903b5fec500cdce0f42dbfdda728602ce87e1ddbeac3a3a1fa816",
+      "storedAnswerBeforeRepair": "③",
+      "storedAnswerAfterRepair": "③",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "② ((3+√3)/2)",
+      "answerReasoning": "In right △BDC, ∠C=60° and DC=1, so BC=2 and BD=√3. Right △ABD has ∠A=45°, hence AB=BD=√3. Total area is (1/2)(√3)(√3)+(1/2)(√3)(1)=(3+√3)/2.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "eee822f71e544f42a2d54d5b0a971fe1a6513dbaa2b7837adf9baf1071af80af",
+      "storedAnswerBeforeRepair": "②",
+      "storedAnswerAfterRepair": "②",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "⑤ (학생5)",
+      "answerReasoning": "tan0° is 0; sin61°≠cos61°; table entries are approximations; corresponding angles in similar triangles have equal ratios. A right isosceles triangle gives the exact 45° ratios, so only student5 is correct.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "04ab711cdfccb9e20915807f740e8ff3e7dcdb4b34c615c94cb846e25f729c77",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "④",
+      "answerReasoning": "In right triangle ABC, AB is the hypotenuse and BC is opposite angle A. Since sin(a°)=BC/AB, BC=√13 sin(a°), which is choice ④.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-08T06:26:07.6164980Z",
+      "studentPayloadSha256": "0dd363f74fb30637a220d48f3c145e7865d1a0c4a747462fd5feae9dcf9615d2",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Fresh blind review of the replacement item matches the current candidate answer; the former q8 hold is closed by this q8-only replacement review."
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "② (2√3 m)",
+      "answerReasoning": "At A the ray rises 2m at 30° to the horizontal, so A-to-wall horizontal distance is 2√3. Reflection at the vertical mirror keeps the 30° angle, and the 1m rise to C requires horizontal travel √3. Thus the horizontal A-to-C gap is √3 and vertical gap is 3; AC=√(3+9)=2√3.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "3e8184cff3137aed9b39ccb0fa7d1ef3c36c822440d900bc6215250c341960ba",
+      "storedAnswerBeforeRepair": "②",
+      "storedAnswerAfterRepair": "②",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "② ((1+2√2)m)",
+      "answerReasoning": "A to D rises 0.5m along a 30° path, so AD=1m. D to B falls 2m at 45°, so DB=2√2m. Total=1+2√2m.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "11545fccb4d5dbd41a3928361045f5edd9c7e87faaced226175643fc8df768ef",
+      "storedAnswerBeforeRepair": "②",
+      "storedAnswerAfterRepair": "②",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "④ (√21 cm)",
+      "answerReasoning": "Using base AB=4√3, area=(1/2)AB·AC·sin30°=3√3 gives AC=3. Law of cosines at A: BC²=3²+(4√3)²−2·3·4√3·cos30°=21.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "23afbbf4da0929faccc2c561214e740e6f1d574a4871852b648616f98c0d606f",
+      "storedAnswerBeforeRepair": "④",
+      "storedAnswerAfterRepair": "④",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "⑤ (24√3 cm²)",
+      "answerReasoning": "Parallelogram area=12·8·sin60°=48√3. Its diagonals split it into four equal-area triangles; shaded opposite triangles AOD and BOC together are half the total, 24√3.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "8c1b628bbbe486dda704bc31b06339c6e1e17254f6cbd38c3cdd150b1d7c04f5",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "③ (20√3−12)",
+      "answerReasoning": "Area △ABD=1/2·(4√2)²·sin120°=8√3. In △BCD, BC=4√3, CD=6√2−2√6, and included ∠C=135°, so area=1/2·BC·CD·sin135°=12√3−12. Sum=20√3−12.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "ffc9651b12db95622d3adf5ef65213c0887cebcbcc52c98483ccd44ee4dd036c",
+      "storedAnswerBeforeRepair": "③",
+      "storedAnswerAfterRepair": "③",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "③ (6√3 cm)",
+      "answerReasoning": "AB=18 and AB perpendicularly bisects radius OC, so with M the intersection, AM=9 and OM=OC/2=r/2. Right △OMA gives r²=9²+(r/2)², hence r=6√3.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "76141616eb47c7b9bc7d6d645f90ab1225c6db5e8e2f1dd873dd6a1acdec519e",
+      "storedAnswerBeforeRepair": "③",
+      "storedAnswerAfterRepair": "③",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "① (12√7 cm²)",
+      "answerReasoning": "OD=8 and the perpendicular distance OM=6, so half of chord AB is sqrt(8²−6²)=2√7, giving AB=4√7. Equal chords AB and CD have equal lengths, so area △OCD=(1/2)(4√7)(6)=12√7.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "6fa611f9a1fe74c43433cd0c77f7fa1c7f9ca3b5c73458924a0caf85a4796144",
+      "storedAnswerBeforeRepair": "①",
+      "storedAnswerAfterRepair": "①",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "⑤ (8√10 cm)",
+      "answerReasoning": "Equal parallel chords AB and CD are 10cm apart, hence each lies 5cm from the center. AB=24 gives radius²=12²+5²=169. The equal parallel chords EF/GH are 6cm apart, so EF is 3cm from the center; half EF=sqrt(13²−3²)=4√10 and EF=8√10.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "06bc82bc748f0bc1ae78da67c8237b1892ffe28748e08a069f692240a6b3a706",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "② (30√3 cm²)",
+      "answerReasoning": "Tangents from A give AD=AF=18, so CF=3. From C, CE=CF=3; from B, BE=BD=AD−AB=5. Thus BC=8. Area △ACB=(1/2)(15)(8)sin60°=30√3.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "5630cdbc938b535d7a8ad314c06bfbdc8f5e444a38b19d1df47d377c3064fcd0",
+      "storedAnswerBeforeRepair": "⑤",
+      "storedAnswerAfterRepair": "②",
+      "compareResult": "MISMATCH",
+      "verdict": "PASS_AFTER_MINIMAL_REPAIR",
+      "disposition": "Postfreeze qid-limited comparison found stored answer ⑤ inconsistent with both the frozen result and the stored solution, which computes 30√3 cm² (choice ②). Applied an answer-field-only repair ⑤→②; all other question objects were verified unchanged.",
+      "postfreezeAdjudication": {
+        "repair": "answer-only",
+        "from": "⑤",
+        "to": "②",
+        "basis": "independent blind solution and current stored solution both calculate 30√3 cm²",
+        "mutatedQuestionFields": [
+          "answer"
+        ],
+        "solutionLabelCorrection": {
+          "receiptPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.q17-solution-label-correction.receipt.json",
+          "receiptSha256": "0b35d6739c187aef9b00761f8faf11d70ffc69aa657b17d4bda3ef7b6ccd93b8",
+          "from": "⑤",
+          "to": "②",
+          "blindFreezeReused": true
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "① ((√5−1)/4)",
+      "answerReasoning": "For an isosceles triangle with vertex angle 36° and base 1, splitting at the apex gives a 18°-36°-126°? Better use the standard half-angle value derived from cos36°=(1+√5)/4: sin18°=√((1−cos36°)/2)=(√5−1)/4.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "54ac907ff58577a5dca927645596ac1bb08da7d99cd4394fae5e093ee541ae9e",
+      "storedAnswerBeforeRepair": "①",
+      "storedAnswerAfterRepair": "①",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "① (64√3−16π)",
+      "answerReasoning": "The equilateral triangle area is (√3/4)·16²=64√3. Circle radius is 4√3; its center is the midpoint of diameter AH. The circle segment inside the triangle is a 120° sector (distance from center to each side is 2√3, so central half-angle is 60°), area=16π. Shaded area=64√3−16π.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "d7251bddf63aa35f3e6b0718a8e2a2a71703fc71c5a28375501937ed954ec90c",
+      "storedAnswerBeforeRepair": "①",
+      "storedAnswerAfterRepair": "①",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "② (3√2+√34+3√17)",
+      "answerReasoning": "Let the inradius be r. Tangency gives legs AB=r+5, AC=r+12, and hypotenuse BC=17. Pythagoras yields (r+5)²+(r+12)²=17², so r=3 and legs are 8,15. Then OA=3√2, OB=√(5²+3²)=√34, OC=√(12²+3²)=3√17.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "206b65e1e570d7d5da83533805c5f246dc1de0e02c5d2f912b6af7fee9cda140",
+      "storedAnswerBeforeRepair": "②",
+      "storedAnswerAfterRepair": "②",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "3√2/4 cm",
+      "answerReasoning": "In right △CDF, ∠C=60°, CF=1, so DF=√3/2. Folding preserves length, so AF=DF=√3/2. The crease EF is the symmetry axis of isosceles △AFD, where ∠AFD=180°−30°=150°, hence ∠AFE=75°. In △AEF, ∠A=60°, ∠E=45°; sine rule gives EF=AF·sin60/sin45=3√2/4.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "483f951face8c321984c38febd3fd5618f6bef1de61833d71dc74a91665ff3e6",
+      "storedAnswerBeforeRepair": "3√2/4 cm",
+      "storedAnswerAfterRepair": "3√2/4 cm",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "56 m",
+      "answerReasoning": "Let DB=x be the horizontal shift from base B toward A to the vertical projection D of C. Since ∠A=45°, CD=AD=60−x. The tower angle is 86° to ground, so tan86=CD/DB=14; hence 14x=60−x, x=4 and CD=56.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "82ee65abffcdbbb6f8728612d491da25916910145e0ab9059e1ae02f1689f223",
+      "storedAnswerBeforeRepair": "56 m",
+      "storedAnswerAfterRepair": "56 m",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "42√5 cm²",
+      "answerReasoning": "Both triangles use the same included angle at A. Their area ratio is (AE/AC)(AD/AB)=(1/2)(3)=3/2, so [ADE]=(3/2)(28√5)=42√5.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "56254c9e0a70f66e90b87828e4946371a8ce9fe6613d20f611eb0c318bdc8ed4",
+      "storedAnswerBeforeRepair": "42√5",
+      "storedAnswerAfterRepair": "42√5",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Blind answer independently agrees with the current stored answer."
+    },
+    {
+      "qid": 24,
+      "blindAnswer": "(1) The perpendicular bisector of a chord passes through the center of the circle; draw perpendicular bisectors of two chords and their intersection is the center. (2) In △OMA and △OMB, OA=OB (radii), OM is common, and both angles at M are right angles, so the right triangles are congruent by hypotenuse-leg; therefore AM=MB.",
+      "answerReasoning": "Part 1 applies the chord-perpendicular-bisector center property and intersects two such loci. For part 2, equal radii, a common perpendicular OM, and right angles give RHS congruence, proving AM=MB.",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "freezeTimestampUtc": "2026-10-07T23:29:09.612Z",
+      "studentPayloadSha256": "43e44cfae939db68b47fb246d4f99d429c2330328794eb89af13568d70b2381f",
+      "storedAnswerBeforeRepair": "(1) 원의 중심에서 현에 내린 수선은 그 현을 이등분한다. 서로 다른 두 현에 각각 수직이등분선을 작도하고, 그 교점을 원의 중심으로 한다. (2) OA=OB, OM은 공통, ∠OMA=∠OMB=90°이므로 △OMA≅△OMB (RHS), 따라서 AM=BM이다.",
+      "storedAnswerAfterRepair": "(1) 원의 중심에서 현에 내린 수선은 그 현을 이등분한다. 서로 다른 두 현에 각각 수직이등분선을 작도하고, 그 교점을 원의 중심으로 한다. (2) OA=OB, OM은 공통, ∠OMA=∠OMB=90°이므로 △OMA≅△OMB (RHS), 따라서 AM=BM이다.",
+      "compareResult": "MATCH",
+      "verdict": "MATCH",
+      "disposition": "Equivalent written response: source property plus two-chord perpendicular-bisector construction; RHS proves AM=MB."
+    }
+  ],
+  "previousArtifactBinding": {
+    "rawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "gitBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386"
+  },
+  "postfreezeEncodingCorrection": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.q17-solution-label-correction.receipt.json",
+    "sha256": "0b35d6739c187aef9b00761f8faf11d70ffc69aa657b17d4bda3ef7b6ccd93b8",
+    "qid": 17,
+    "fields": [
+      "solution.finalChoiceLabel"
+    ],
+    "from": "⑤",
+    "to": "②",
+    "newRawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "newGitBlobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386"
+  },
+  "sourceStudentBundles": [
+    {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\handoff\\R2.student-only-bundle.current-final.post-q17-label-correction.json",
+      "sha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2",
+      "qidScope": "1-7,9-24"
+    },
+    {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.R1R2.answer-free.student-bundle.json",
+      "sha256": "da590a87e034b0fc6b8823b09d5b0183a2076949832e72436f770fd626d94fc2",
+      "qidScope": [
+        8
+      ]
+    }
+  ],
+  "priorQ8ItemHold": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.evidence.json",
+    "sha256": "52ed42c47ed646cd9ba403ea58669eb24a1cfa8bca28996f3dc7a692c7e054e4",
+    "resolution": "FRESH_Q8_ONLY_R2_BLIND_REVIEW_MATCH"
+  },
+  "q8Review": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\r2-clean-blind-20261008\\q8-review.json",
+    "sha256": "1a30f2ce1adf0b42e6e15e1de1c6af9efdf795baeca63cea48978b3a83cdf7af"
+  }
+}

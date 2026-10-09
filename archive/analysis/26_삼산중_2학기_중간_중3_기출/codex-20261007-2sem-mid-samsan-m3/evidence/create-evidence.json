@@ -1,0 +1,3309 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "artifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+  "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+  "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+  "answerFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+  "answerFreezeSha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+  "visualDispositionPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\visual\\visual-dispositions.json",
+  "visualDispositionSha256": "bdf2211c06f9064410c1c9efa8f95a9194f18e087272435131c4b5a2086d644f",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\exams\\original\\high\\h1\\2mid\\25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Computes internal division P=(1,6), midpoint M=(3,8), then displays the PM distance formula and simplification to 2√2 in separate board steps."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Uses equal slopes, substitutes the point into y=mx+n, then calculates m+n in visible algebra lines."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Static source-linked review: the solution tracks centers (−3,1)→(−5,2)→(5,−2), keeps radius 3, and the SVG primitives label the three matching center points and final circle equation. This is a source/primitive review; no browser rendering is claimed.",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "visualReadStatus": "STATIC_SOURCE_AND_PRIMITIVE_REVIEW;ACTUAL_VIEW_NOT_RUN"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\exams\\original\\high\\h1\\2mid\\25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Shows coordinate differences 5 and −5 before the distance formula, then simplifies to 5√2."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Rearranges both line equations to slope-intercept form before applying the perpendicular-slope product; the linked solution SVG is source-bound, but no actual browser view is claimed in this CREATE record.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualReadStatus": "SOURCE_BYTES_BOUND_NOT_BROWSER_RENDERED"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\fixtures\\review-negative-regressions\\2026-10-01-bokseong\\README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Reviewed the approved false-PASS fixture before solution authoring: check actual geometry, separate enumerated blocks, exact ACTIVE Meta lookup, and runtime escapes."
+    },
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS_TEXT_AXES_WITH_SVG_SOURCE_BINDING",
+    "solutionWorkMode": "NEW_SOURCE_ONLY_CREATE",
+    "calibrationOrder": "GOLDEN_NEGATIVE_PREFLIGHT_BEFORE_TARGET_SOLUTION_WORK"
+  },
+  "sourceIdentity": {
+    "sourceFormat": "JPEG_PAGE_SCANS",
+    "sourceRosterPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\codex-20261007-2sem-mid-import\\source-roster.json",
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+    "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+    "sourcePages": [
+      {
+        "page": 1,
+        "name": "S28BW-826100719540_0011.jpg",
+        "sha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c"
+      },
+      {
+        "page": 2,
+        "name": "S28BW-826100719540_0012.jpg",
+        "sha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61"
+      },
+      {
+        "page": 3,
+        "name": "S28BW-826100719540_0013.jpg",
+        "sha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c"
+      },
+      {
+        "page": 4,
+        "name": "S28BW-826100719540_0014.jpg",
+        "sha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44"
+      },
+      {
+        "page": 5,
+        "name": "S28BW-826100719540_0015.jpg",
+        "sha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf"
+      }
+    ],
+    "handwrittenMarksExcluded": true
+  },
+  "sourceCorrectionHistory": {
+    "supersededSourceBundlePath": "source/superseded/student-source-bundle-b08c312f.json",
+    "supersededSourceBundleSha256": "b08c312f4c0561c8375a41d4de6773ededaba11acb3d195d59ee1fbf37ce39b9",
+    "correction": "q23 full printed <조건> lines restored from page 5; exact parity rerun and frozen in source-freeze-revision-03."
+  },
+  "answerAdjudicationPath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-adjudication.json",
+  "answerAdjudicationSha256": "756086a8e629372e5ca73de2eb8c5513252d6fd234db9397fdd5db734c2fcb48",
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 1,
+        "sourcePagePath": "S28BW-826100719540_0011.jpg",
+        "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 1
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "right triangle ABC; right angle at B; AC=5, BC=4"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "⑤",
+        "studentPayloadSha256": "331d9095c7102c706e4a370f13e4ae5ade0128fa588cd7f9f79243e5aea179eb",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "a997e8a79fdbfa02864d0d4b47bc96360d0ac5ff951ee00594176d2f09568243"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q1.svg",
+          "assetSha256": "7c54e3e1f455a71009146ab3faf50fdc50f55367da143717873c5f5d5b68399f",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a997e8a79fdbfa02864d0d4b47bc96360d0ac5ff951ee00594176d2f09568243",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 1,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 1,
+          "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+          "sourceVisualFacts": "right triangle ABC; right angle at B; AC=5, BC=4",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q1.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q1.svg",
+          "assetSha256": "7c54e3e1f455a71009146ab3faf50fdc50f55367da143717873c5f5d5b68399f",
+          "assetGitBlobSha1": "c48253f2a58cf37c4708c9bd3f8e453baf60358e",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 5
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "5",
+            "4"
+          ],
+          "expectedFacts": [
+            "right triangle ABC; right angle at B; AC=5, BC=4"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "B",
+              "A",
+              "C",
+              "B",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 1,
+        "sourcePagePath": "S28BW-826100719540_0011.jpg",
+        "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 2
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": null
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "①",
+        "studentPayloadSha256": "daa8d4b7ae41a7cc0b63c17aed9db9675965d0f2ade434b94769e5bf3d371844",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "229a9998de824430123e50d9ed1c29b2388911ede87744a30ce9e7497cdc0d1c"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "problemVisualDisposition": "VISUAL_EXEMPT",
+          "solutionVisualDisposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "229a9998de824430123e50d9ed1c29b2388911ede87744a30ce9e7497cdc0d1c",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 2,
+        "problemVisual": {
+          "necessity": "NONE",
+          "disposition": "VISUAL_EXEMPT",
+          "reason": "No printed problem figure/table/graph in the source."
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "reason": "Small-board equations and explanation are self-sufficient."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 1,
+        "sourcePagePath": "S28BW-826100719540_0011.jpg",
+        "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 3
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "circle O with chord length 24cm and perpendicular center-to-chord distance 9cm"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "⑤",
+        "studentPayloadSha256": "9a49a44448ad47a4e4f273a0b7bc06f3c5833f9727d1a704e7f942b73af85c17",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9b688dad4268e9e84b0624ddc506db2b6326935e297d6c2d042d47dda991dbaa"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q3.svg",
+          "assetSha256": "c772d3f2f89f9209000db6bb8f82b32377f87cfd7e69fde331e2d70628f77ff3",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9b688dad4268e9e84b0624ddc506db2b6326935e297d6c2d042d47dda991dbaa",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 3,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 1,
+          "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+          "sourceVisualFacts": "circle O with chord length 24cm and perpendicular center-to-chord distance 9cm",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q3.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q3.svg",
+          "assetSha256": "c772d3f2f89f9209000db6bb8f82b32377f87cfd7e69fde331e2d70628f77ff3",
+          "assetGitBlobSha1": "6ae3bde36fa578748437bd2912b58962240c2018",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 2,
+            "circle": 1,
+            "polygon": 0,
+            "path": 1,
+            "text": 3
+          },
+          "presentedLabels": [
+            "O",
+            "24cm",
+            "9cm"
+          ],
+          "expectedFacts": [
+            "circle O with chord length 24cm and perpendicular center-to-chord distance 9cm"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "O"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 1,
+        "sourcePagePath": "S28BW-826100719540_0011.jpg",
+        "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 4
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": null
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "④",
+        "studentPayloadSha256": "1b87e631b7b9e8034547abbd24762a85cbe26310df6bdab8049db25f0f50cdb0",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ceee36df7e958ad3879511a3f0990e591fef80d4182e583432fa914ff879d16c"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "problemVisualDisposition": "VISUAL_EXEMPT",
+          "solutionVisualDisposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ceee36df7e958ad3879511a3f0990e591fef80d4182e583432fa914ff879d16c",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 4,
+        "problemVisual": {
+          "necessity": "NONE",
+          "disposition": "VISUAL_EXEMPT",
+          "reason": "No printed problem figure/table/graph in the source."
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "reason": "Small-board equations and explanation are self-sufficient."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 1,
+        "sourcePagePath": "S28BW-826100719540_0011.jpg",
+        "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 5
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "right triangle ABC, right angle at C, hypotenuse AB=2; printed trig table: 40° (0.6428,0.7660,0.8391); 41° (0.6561,0.7547,0.8693); 42° (0.6691,0.7431,0.9004); 43° (0.6820,0.7314,0.9325); columns sin, cos, tan"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "③",
+        "studentPayloadSha256": "f0ec35c5c90b273d6e91fac7a8500e15ce48e1fbb1eb2348bbead7fce7aa9d08",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "952ec97d7409447f74eecf4c68998e3c2e6071eca09dd264ca82cfed6c504ffa"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q5.svg",
+          "assetSha256": "8f94c347b3195643ad2799da3424e546e4ba6037ec3a7ad874f3788e65479e04",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "952ec97d7409447f74eecf4c68998e3c2e6071eca09dd264ca82cfed6c504ffa",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 5,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 1,
+          "sourcePageSha256": "e566d1d6428e51360088efd3debd52f93ddd85da36f4cbf64b0314d687d9c73c",
+          "sourceVisualFacts": "right triangle ABC, right angle at C, hypotenuse AB=2; printed trig table: 40° (0.6428,0.7660,0.8391); 41° (0.6561,0.7547,0.8693); 42° (0.6691,0.7431,0.9004); 43° (0.6820,0.7314,0.9325); columns sin, cos, tan",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q5.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q5.svg",
+          "assetSha256": "8f94c347b3195643ad2799da3424e546e4ba6037ec3a7ad874f3788e65479e04",
+          "assetGitBlobSha1": "6ac950e21992e3abe9599bd98a4c8a746a46109a",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 0,
+            "polygon": 0,
+            "path": 2,
+            "text": 10
+          },
+          "presentedLabels": [
+            "A",
+            "C",
+            "B",
+            "2",
+            "42°",
+            "각도　　사인(sin)　 코사인(cos)　 탄젠트(tan)",
+            "40°　　0.6428　　0.7660　　　0.8391",
+            "41°　　0.6561　　0.7547　　　0.8693",
+            "42°　　0.6691　　0.7431　　　0.9004",
+            "43°　　0.6820　　0.7314　　　0.9325"
+          ],
+          "expectedFacts": [
+            "right triangle ABC, right angle at C, hypotenuse AB=2; printed trig table: 40° (0.6428,0.7660,0.8391); 41° (0.6561,0.7547,0.8693); 42° (0.6691,0.7431,0.9004); 43° (0.6820,0.7314,0.9325); columns sin, cos, tan"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "A",
+              "B"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 6
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "parallelogram ABCD, diagonal BD, right angles at B and D, DC=1, angles A=45°, C=60°"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "②",
+        "studentPayloadSha256": "a3b9e8bc7c3ed43c6b0cf508b52acec1555dfd0224484cc96d1a4c0705108e01",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "1e836dd68556ae2bd2073abafe1f1038b5d56318632eab968dd2ee24257e717c"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q6.svg",
+          "assetSha256": "09176cf932d14cccc341ccd88bf881f8db7f06b0182e693eb076e06f16fdd05d",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1e836dd68556ae2bd2073abafe1f1038b5d56318632eab968dd2ee24257e717c",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 6,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 2,
+          "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+          "sourceVisualFacts": "parallelogram ABCD, diagonal BD, right angles at B and D, DC=1, angles A=45°, C=60°",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q6.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q6.svg",
+          "assetSha256": "09176cf932d14cccc341ccd88bf881f8db7f06b0182e693eb076e06f16fdd05d",
+          "assetGitBlobSha1": "49ab23840a597b390cb387ef360ccf92d0a8da9b",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 5,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 7
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "1",
+            "45°",
+            "60°"
+          ],
+          "expectedFacts": [
+            "parallelogram ABCD, diagonal BD, right angles at B and D, DC=1, angles A=45°, C=60°"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "B",
+              "D",
+              "B",
+              "D",
+              "D",
+              "C",
+              "A",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 7
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": null
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "⑤",
+        "studentPayloadSha256": "34d08831e6a4f381744b8f80fe845f74cdf79c14883f89666b9dd9a66b7308b5",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "f766e6fc854cc3361e17effbe2d64b5e1e78ae94b1ada66553ba1cda866fd33d"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "problemVisualDisposition": "VISUAL_EXEMPT",
+          "solutionVisualDisposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "assetRef": null,
+          "assetSha256": null,
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f766e6fc854cc3361e17effbe2d64b5e1e78ae94b1ada66553ba1cda866fd33d",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 7,
+        "problemVisual": {
+          "necessity": "NONE",
+          "disposition": "VISUAL_EXEMPT",
+          "reason": "No printed problem figure/table/graph in the source."
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_NO_SPATIAL_SOLUTION_VISUAL_NEEDED",
+          "reason": "Small-board equations and explanation are self-sufficient."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 8
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "right triangle ABC, right angle at C, AB=√13, angle B=a°, angle A=b°"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "④",
+        "studentPayloadSha256": "0ccc82ad1b666f41b5d9cf58912ed77627c3a8eef557ff7f8c669bc402aad89e",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "926cda0f1b01ba67e8d0e708b90a39210ddd34fc7647384d2d59d4049906b356"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg",
+          "assetSha256": "fb3352b2aa9469ab52d672f00af42491745cbc62c396606adc139de2bfb3d564",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "926cda0f1b01ba67e8d0e708b90a39210ddd34fc7647384d2d59d4049906b356",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 8,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 2,
+          "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+          "sourceVisualFacts": "right triangle ABC, right angle at C, AB=√13, angle B=a°, angle A=b°",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q8.svg",
+          "assetSha256": "fb3352b2aa9469ab52d672f00af42491745cbc62c396606adc139de2bfb3d564",
+          "assetGitBlobSha1": "c347250034950137d94241f45dd5a2274e2a1a2e",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 6
+          },
+          "presentedLabels": [
+            "A",
+            "C",
+            "B",
+            "√13",
+            "a°",
+            "b°"
+          ],
+          "expectedFacts": [
+            "right triangle ABC, right angle at C, AB=√13, angle B=a°, angle A=b°"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "A",
+              "B",
+              "B",
+              "A"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 9
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "3m rectangular room; vertical mirror wall on right; B is 2m above floor; ray A-B at 30° to floor and reflected ray B-C to ceiling"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "②",
+        "studentPayloadSha256": "9378e29262cf9fa029d190f127dac7f4f7113cd69dae8e0fe9074df10512c5a5",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "f01fe6ebe6d301b7e04646a7f3ec01469d6a2a7474bce6366b5f13745aba1bdf"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q9.svg",
+          "assetSha256": "8ce835dd65f924004a67b9d8a9952759ac3550e23deb2a0bb645c5450bd4bbd3",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f01fe6ebe6d301b7e04646a7f3ec01469d6a2a7474bce6366b5f13745aba1bdf",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 9,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 2,
+          "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+          "sourceVisualFacts": "3m rectangular room; vertical mirror wall on right; B is 2m above floor; ray A-B at 30° to floor and reflected ray B-C to ceiling",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q9.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q9.svg",
+          "assetSha256": "8ce835dd65f924004a67b9d8a9952759ac3550e23deb2a0bb645c5450bd4bbd3",
+          "assetGitBlobSha1": "3a549cdf8a8bc03aed858369593fbd3c31328c32",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 6,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 6
+          },
+          "presentedLabels": [
+            "3m",
+            "2m",
+            "A",
+            "B",
+            "C",
+            "30°"
+          ],
+          "expectedFacts": [
+            "3m rectangular room; vertical mirror wall on right; B is 2m above floor; ray A-B at 30° to floor and reflected ray B-C to ceiling"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "B",
+              "A",
+              "B",
+              "B",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 10
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "volleyball trajectory A-D-B, A 2.5m high, net D 2m high, incoming angle 30°, outgoing trajectory 45° to floor"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "②",
+        "studentPayloadSha256": "63f2db883fd8da81fe48e32cf2cd739d4fb464960ba4dd2723512b4fa89ddfc0",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "82f9c08970ae7e15ff46650c6dc05b3d52624b51ed4f273f98676fa6bad86f48"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q10.svg",
+          "assetSha256": "5f1a21f420f017a3d6eb65fbd50aab7c9c354798f8759e877c2e328c299906d8",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "82f9c08970ae7e15ff46650c6dc05b3d52624b51ed4f273f98676fa6bad86f48",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 10,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 2,
+          "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+          "sourceVisualFacts": "volleyball trajectory A-D-B, A 2.5m high, net D 2m high, incoming angle 30°, outgoing trajectory 45° to floor",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q10.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q10.svg",
+          "assetSha256": "5f1a21f420f017a3d6eb65fbd50aab7c9c354798f8759e877c2e328c299906d8",
+          "assetGitBlobSha1": "867509679b560e702c04164d6a79d80e071d8225",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 5,
+            "circle": 0,
+            "polygon": 0,
+            "path": 0,
+            "text": 7
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "D",
+            "2.5m",
+            "2m",
+            "30°",
+            "45°"
+          ],
+          "expectedFacts": [
+            "volleyball trajectory A-D-B, A 2.5m high, net D 2m high, incoming angle 30°, outgoing trajectory 45° to floor"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "D",
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 2,
+        "sourcePagePath": "S28BW-826100719540_0012.jpg",
+        "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 11
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "triangle ABC, AB=4√3cm, angle A=30°, find BC"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "④",
+        "studentPayloadSha256": "253cdf38c5da67f40455eb2ea3cd073d7932281f0893acfb03ee195aef2508d4",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6532d766dbeaa5547714ec6408128449a76159dad981888e14f621cdd43f5014"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg",
+          "assetSha256": "470fd460072fdc1e17632950f69ce949748a67614462de6e9159886b0af8ad9b",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6532d766dbeaa5547714ec6408128449a76159dad981888e14f621cdd43f5014",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 11,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 2,
+          "sourcePageSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+          "sourceVisualFacts": "triangle ABC, AB=4√3cm, angle A=30°, find BC",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q11.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q11.svg",
+          "assetSha256": "470fd460072fdc1e17632950f69ce949748a67614462de6e9159886b0af8ad9b",
+          "assetGitBlobSha1": "bed002df426fad7ef851e5e95433248e94e6da00",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 5
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "4√3",
+            "30°"
+          ],
+          "expectedFacts": [
+            "triangle ABC, AB=4√3cm, angle A=30°, find BC"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "A",
+              "B",
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 12
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "parallelogram ABCD with diagonals intersecting at O; opposite triangles AOD and BOC shaded; BC=12cm, CD=8cm"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "⑤",
+        "studentPayloadSha256": "2238b92abab93c72a15a1543e3592609d9740c3a6073a07b46135205760f01b9",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "5ef967f82d1318b8c7e5c0029713eb0024c47b4c5437f09444e33e82f87e0eb3"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q12.svg",
+          "assetSha256": "edaa90735b02a6b5ecc58b5158f83ecd97869bc23983028992bc318acaadd9c6",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5ef967f82d1318b8c7e5c0029713eb0024c47b4c5437f09444e33e82f87e0eb3",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 12,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "parallelogram ABCD with diagonals intersecting at O; opposite triangles AOD and BOC shaded; BC=12cm, CD=8cm",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q12.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q12.svg",
+          "assetSha256": "edaa90735b02a6b5ecc58b5158f83ecd97869bc23983028992bc318acaadd9c6",
+          "assetGitBlobSha1": "3d3a92f413602933faa36dbfefd086ca36b682ef",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 2,
+            "circle": 0,
+            "polygon": 3,
+            "path": 0,
+            "text": 7
+          },
+          "presentedLabels": [
+            "B",
+            "A",
+            "D",
+            "C",
+            "O",
+            "8cm",
+            "12cm"
+          ],
+          "expectedFacts": [
+            "parallelogram ABCD with diagonals intersecting at O; opposite triangles AOD and BOC shaded; BC=12cm, CD=8cm"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "O",
+              "A",
+              "O",
+              "D",
+              "B",
+              "O",
+              "C",
+              "B",
+              "C",
+              "C",
+              "D"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 13
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "quadrilateral ABCD with diagonal BD; angle A=120°, angle C=135°; side labels AB=DA=4√2, BC=4√3, CD=6√2−2√6"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "③",
+        "studentPayloadSha256": "f193be1599d2de6ea4d8dd8fe6876af0672ff94f7b2105d0cba2b9e01b347365",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "59855e31081dbdc30b2862bb44cb906975c02425d2ae85e583216fcf58441ab0"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q13.svg",
+          "assetSha256": "6bc7469ab668eee5ac2e17f9e7932cc761b43605fab0a68956c4d79ea726be0e",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "59855e31081dbdc30b2862bb44cb906975c02425d2ae85e583216fcf58441ab0",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 13,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "quadrilateral ABCD with diagonal BD; angle A=120°, angle C=135°; side labels AB=DA=4√2, BC=4√3, CD=6√2−2√6",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q13.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q13.svg",
+          "assetSha256": "6bc7469ab668eee5ac2e17f9e7932cc761b43605fab0a68956c4d79ea726be0e",
+          "assetGitBlobSha1": "c90e3be7614147767f59ce59e585b69f91549f45",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 4,
+            "circle": 0,
+            "polygon": 0,
+            "path": 0,
+            "text": 10
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "4√2",
+            "4√3",
+            "6√2−2√6",
+            "4√2",
+            "120°",
+            "135°"
+          ],
+          "expectedFacts": [
+            "quadrilateral ABCD with diagonal BD; angle A=120°, angle C=135°; side labels AB=DA=4√2, BC=4√3, CD=6√2−2√6"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "B",
+              "D",
+              "A",
+              "C",
+              "A",
+              "B",
+              "D",
+              "A",
+              "B",
+              "C",
+              "C",
+              "D"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 14
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "circle O, chord AB perpendicular to radius OC at its midpoint; chord AB=18cm"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "③",
+        "studentPayloadSha256": "fff4044dace9dbb9f3db74f7567986b7261ed407d72c8324af20d27b2b5c5452",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9af8f4d7e09a32eafba289c62dcd3cda7aa2b4570a289690a2c5d4cb3932f7fe"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q14.svg",
+          "assetSha256": "0701846610e14b963f9d9348cf74ed6f9537a9ae6720156ba9987a307e51d4ba",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9af8f4d7e09a32eafba289c62dcd3cda7aa2b4570a289690a2c5d4cb3932f7fe",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 14,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "circle O, chord AB perpendicular to radius OC at its midpoint; chord AB=18cm",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q14.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q14.svg",
+          "assetSha256": "0701846610e14b963f9d9348cf74ed6f9537a9ae6720156ba9987a307e51d4ba",
+          "assetGitBlobSha1": "263cac1078176931156410ebf4cb429172274556",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 2,
+            "circle": 1,
+            "polygon": 0,
+            "path": 3,
+            "text": 5
+          },
+          "presentedLabels": [
+            "O",
+            "A",
+            "B",
+            "C",
+            "18cm"
+          ],
+          "expectedFacts": [
+            "circle O, chord AB perpendicular to radius OC at its midpoint; chord AB=18cm"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "O",
+              "A",
+              "B",
+              "O",
+              "C",
+              "A",
+              "B"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 15
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "circle O; chord AB perpendicular to OM at M; equal chord CD; radius OD=8cm and OM=6cm"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "①",
+        "studentPayloadSha256": "f527d9b16f7423aec03cf95794fad35530841fddb62d4a01ec322dce3889cddf",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "01bc996f596b6743117af3b76724402bda53a7c808d64f7625d386ec3aba4366"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q15.svg",
+          "assetSha256": "9cccf673d71113bce920ae0a6b1d7627240a8edfb0ef8c9536b65b8c5e220636",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "01bc996f596b6743117af3b76724402bda53a7c808d64f7625d386ec3aba4366",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 15,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "circle O; chord AB perpendicular to OM at M; equal chord CD; radius OD=8cm and OM=6cm",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q15.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q15.svg",
+          "assetSha256": "9cccf673d71113bce920ae0a6b1d7627240a8edfb0ef8c9536b65b8c5e220636",
+          "assetGitBlobSha1": "55ea173aa7ce49e3a69d968b897da799ecad0cf2",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 1,
+            "polygon": 0,
+            "path": 2,
+            "text": 8
+          },
+          "presentedLabels": [
+            "O",
+            "A",
+            "B",
+            "C",
+            "D",
+            "M",
+            "6cm",
+            "8cm"
+          ],
+          "expectedFacts": [
+            "circle O; chord AB perpendicular to OM at M; equal chord CD; radius OD=8cm and OM=6cm"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "O",
+              "A",
+              "B",
+              "O",
+              "M",
+              "M",
+              "C",
+              "D",
+              "O",
+              "D",
+              "O",
+              "M"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 16
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "circle O with equal parallel chord pairs AB/CD and EF/GH; two chord directions perpendicular; distances 10cm and 6cm; AB=24cm"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "⑤",
+        "studentPayloadSha256": "19a90a54985444d5d1a2fa96ff8e17e99e9d97093297459f151ad845cda02f04",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e6f64f9fcec4f33c3a0e735e96f773e6ddc709049b650920f9186e415b472e78"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q16.svg",
+          "assetSha256": "dc7e8f3ea108ca6c7e95832a3d9c11a7649e0d357cb45416698d9730dd14356e",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e6f64f9fcec4f33c3a0e735e96f773e6ddc709049b650920f9186e415b472e78",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 16,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "circle O with equal parallel chord pairs AB/CD and EF/GH; two chord directions perpendicular; distances 10cm and 6cm; AB=24cm",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q16.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q16.svg",
+          "assetSha256": "dc7e8f3ea108ca6c7e95832a3d9c11a7649e0d357cb45416698d9730dd14356e",
+          "assetGitBlobSha1": "45330b636e601787024fb9edf018efb448b01ccb",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 8,
+            "circle": 1,
+            "polygon": 0,
+            "path": 0,
+            "text": 11
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "10cm",
+            "6cm",
+            "24cm"
+          ],
+          "expectedFacts": [
+            "circle O with equal parallel chord pairs AB/CD and EF/GH; two chord directions perpendicular; distances 10cm and 6cm; AB=24cm"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "O",
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "A",
+              "B"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 3,
+        "sourcePagePath": "S28BW-826100719540_0013.jpg",
+        "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 17
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "external point A and triangle ACB; tangent lines AD, BC, AF touch circle O at D, E, F; AB=13, AC=15, AD=18, angle ACB=60°"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "②",
+        "studentPayloadSha256": "f13d7bd449f1c68944da3cf2e12eccc655e1534a525a9f78261adf5d434b2518",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9b64386df4ec9f7db18dce5470c2724bd3dfffa8dcc2f14a49c8dcbf28206d69"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q17.svg",
+          "assetSha256": "b758db6d42dca8c6c7d1061862fd849a252ae7b1af0035c38827c751407def87",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9b64386df4ec9f7db18dce5470c2724bd3dfffa8dcc2f14a49c8dcbf28206d69",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 17,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 3,
+          "sourcePageSha256": "df5c26cd84922b8d4e7b30b403344779117ccc1d9f615825768f32bfad6d138c",
+          "sourceVisualFacts": "external point A and triangle ACB; tangent lines AD, BC, AF touch circle O at D, E, F; AB=13, AC=15, AD=18, angle ACB=60°",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q17.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q17.svg",
+          "assetSha256": "b758db6d42dca8c6c7d1061862fd849a252ae7b1af0035c38827c751407def87",
+          "assetGitBlobSha1": "0c7e0c424d6f9413c20797f7cb307206e48d8be4",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 4,
+            "circle": 1,
+            "polygon": 0,
+            "path": 0,
+            "text": 11
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "O",
+            "18cm",
+            "15cm",
+            "13cm",
+            "60°"
+          ],
+          "expectedFacts": [
+            "external point A and triangle ACB; tangent lines AD, BC, AF touch circle O at D, E, F; AB=13, AC=15, AD=18, angle ACB=60°"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "A",
+              "C",
+              "B",
+              "A",
+              "D",
+              "B",
+              "C",
+              "A",
+              "F",
+              "O",
+              "D",
+              "E",
+              "F",
+              "A",
+              "B",
+              "A",
+              "C",
+              "A",
+              "D",
+              "A",
+              "C",
+              "B"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 4,
+        "sourcePagePath": "S28BW-826100719540_0014.jpg",
+        "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 18
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "isosceles triangle ABC with AB=AC, base BC=1, angle A=36°; angle bisector BD meets AC at D"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "①",
+        "studentPayloadSha256": "1ebeb24ded303f4e321fb66a6ead9ec14283c866fb7b08971b298f910e5bba61",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "c12df18090d9e7e9d53ccb616d5466b606f560de425a7bfce5de8f9749ac5a1d"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q18.svg",
+          "assetSha256": "a818118dcda6afabc7f35cfb06f38451f8168ed422aec9e6d8d2f5fd00ddaae5",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c12df18090d9e7e9d53ccb616d5466b606f560de425a7bfce5de8f9749ac5a1d",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 18,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 4,
+          "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+          "sourceVisualFacts": "isosceles triangle ABC with AB=AC, base BC=1, angle A=36°; angle bisector BD meets AC at D",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q18.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q18.svg",
+          "assetSha256": "a818118dcda6afabc7f35cfb06f38451f8168ed422aec9e6d8d2f5fd00ddaae5",
+          "assetGitBlobSha1": "c67407d6d5ceff2e29421f292b7289dcdb670fc1",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 4,
+            "circle": 0,
+            "polygon": 0,
+            "path": 0,
+            "text": 6
+          },
+          "presentedLabels": [
+            "B",
+            "C",
+            "A",
+            "D",
+            "36°",
+            "1"
+          ],
+          "expectedFacts": [
+            "isosceles triangle ABC with AB=AC, base BC=1, angle A=36°; angle bisector BD meets AC at D"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "A",
+              "B",
+              "A",
+              "C",
+              "B",
+              "C",
+              "A",
+              "B",
+              "D",
+              "A",
+              "C",
+              "D"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 4,
+        "sourcePagePath": "S28BW-826100719540_0014.jpg",
+        "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 19
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "equilateral triangle ABC, AB=16; circle radius 4√3 centered on altitude AH and tangent to BC at H; shaded triangle portions outside circle"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "①",
+        "studentPayloadSha256": "3d9084fb5150eb8a3dc63ee6401863f5451048609a8c3bcf74902054a956f8fe",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "0c0feeeb1d7e2f1b724d1c3c815a825517992d6a089c50c9e7842968c7f74af9"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q19.svg",
+          "assetSha256": "2562bb578daccfcd7a6139cc547025f510c00f962451b48fd5d18b71b46ddfeb",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0c0feeeb1d7e2f1b724d1c3c815a825517992d6a089c50c9e7842968c7f74af9",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 19,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 4,
+          "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+          "sourceVisualFacts": "equilateral triangle ABC, AB=16; circle radius 4√3 centered on altitude AH and tangent to BC at H; shaded triangle portions outside circle",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q19.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q19.svg",
+          "assetSha256": "2562bb578daccfcd7a6139cc547025f510c00f962451b48fd5d18b71b46ddfeb",
+          "assetGitBlobSha1": "688eff89494c37dabf463fcd5ebf6422d2bf2274",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 0,
+            "circle": 1,
+            "polygon": 1,
+            "path": 3,
+            "text": 7
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "H",
+            "O",
+            "4√3",
+            "16"
+          ],
+          "expectedFacts": [
+            "equilateral triangle ABC, AB=16; circle radius 4√3 centered on altitude AH and tangent to BC at H; shaded triangle portions outside circle"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "A",
+              "B",
+              "A",
+              "H",
+              "B",
+              "C",
+              "H"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 4,
+        "sourcePagePath": "S28BW-826100719540_0014.jpg",
+        "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 20
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "right triangle ABC with right angle A; incircle O tangent at D on AB, E on BC, F on AC; BD=5, CE=12"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "②",
+        "studentPayloadSha256": "72c734c412a5c4df9265671ae682de7dddff727214b92a92a61b2373284cbdb5",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "4c989e8c014957c1dee45d94125f973cdce4dc0f4e63ba4726f85b5ea23da5a6"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q20.svg",
+          "assetSha256": "25fdce61528b1e0b9196769acb447747eb97c48b4a238bd31188cc84160bd5c8",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4c989e8c014957c1dee45d94125f973cdce4dc0f4e63ba4726f85b5ea23da5a6",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 20,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 4,
+          "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+          "sourceVisualFacts": "right triangle ABC with right angle A; incircle O tangent at D on AB, E on BC, F on AC; BD=5, CE=12",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q20.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q20.svg",
+          "assetSha256": "25fdce61528b1e0b9196769acb447747eb97c48b4a238bd31188cc84160bd5c8",
+          "assetGitBlobSha1": "43e086b252ab4c985c55b6e45ed7ec4816ebae76",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 3,
+            "circle": 4,
+            "polygon": 0,
+            "path": 1,
+            "text": 9
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "O",
+            "D",
+            "F",
+            "E",
+            "5",
+            "12"
+          ],
+          "expectedFacts": [
+            "right triangle ABC with right angle A; incircle O tangent at D on AB, E on BC, F on AC; BD=5, CE=12"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "A",
+              "O",
+              "D",
+              "A",
+              "B",
+              "E",
+              "B",
+              "C",
+              "F",
+              "A",
+              "C",
+              "B",
+              "D",
+              "C",
+              "E"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 4,
+        "sourcePagePath": "S28BW-826100719540_0014.jpg",
+        "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 21
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "equilateral triangle ABC folded along EF, with E on AB and F on AC; folded image sends A to D on BC; CF=1cm; DF⊥BC"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "3√2/4 cm",
+        "studentPayloadSha256": "d7e3d106927863232e90e81441062e73d264f518ae4e2de569d28d91b5348d80",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ce4b3f894b850dfa995c80ab2a84b6a07539eaef4e158e1316e25ee603f82fa5"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q21.svg",
+          "assetSha256": "31068d94ea8c78d6b6b5f3367bc56458a6aa71da2290c15db15e2191bab5ca8b",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ce4b3f894b850dfa995c80ab2a84b6a07539eaef4e158e1316e25ee603f82fa5",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 21,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 4,
+          "sourcePageSha256": "628270d613824a4b8fdf9df5b51a6ba742399931d35b7a38a7db68edc347fc44",
+          "sourceVisualFacts": "equilateral triangle ABC folded along EF, with E on AB and F on AC; folded image sends A to D on BC; CF=1cm; DF⊥BC",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q21.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q21.svg",
+          "assetSha256": "31068d94ea8c78d6b6b5f3367bc56458a6aa71da2290c15db15e2191bab5ca8b",
+          "assetGitBlobSha1": "6d585ff59d25d1493be67db45178d7b4d30e6e8c",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 8,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 7
+          },
+          "presentedLabels": [
+            "B",
+            "C",
+            "A",
+            "E",
+            "F",
+            "D",
+            "1cm"
+          ],
+          "expectedFacts": [
+            "equilateral triangle ABC folded along EF, with E on AB and F on AC; folded image sends A to D on BC; CF=1cm; DF⊥BC"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "E",
+              "F",
+              "E",
+              "A",
+              "B",
+              "F",
+              "A",
+              "C",
+              "A",
+              "D",
+              "B",
+              "C",
+              "C",
+              "F",
+              "D",
+              "F",
+              "B",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 5,
+        "sourcePagePath": "S28BW-826100719540_0015.jpg",
+        "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 22
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "leaning tower triangle; ground A-B=60m; top C leaned 4° from vertical; sightline from A to C is 45°; vertical height from ground to C"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "56 m",
+        "studentPayloadSha256": "06eebd492fdfc9832cf00367890ba377ea4deebe0f31da46c62cdc662ff4160c",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "bae83de36f479c61debccb02d9784f45ef43b5749ff71ff412d37c27fdc470f3"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q22.svg",
+          "assetSha256": "2db09f74847a272a132a1df3c832001dd438d886cdf60df39edc803711c4c54e",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bae83de36f479c61debccb02d9784f45ef43b5749ff71ff412d37c27fdc470f3",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 22,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 5,
+          "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+          "sourceVisualFacts": "leaning tower triangle; ground A-B=60m; top C leaned 4° from vertical; sightline from A to C is 45°; vertical height from ground to C",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q22.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q22.svg",
+          "assetSha256": "2db09f74847a272a132a1df3c832001dd438d886cdf60df39edc803711c4c54e",
+          "assetGitBlobSha1": "207d26a6a988f41fca4c673232a7a348e017c62e",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 4,
+            "circle": 0,
+            "polygon": 0,
+            "path": 1,
+            "text": 7
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "60m",
+            "4°",
+            "45°",
+            "D"
+          ],
+          "expectedFacts": [
+            "leaning tower triangle; ground A-B=60m; top C leaned 4° from vertical; sightline from A to C is 45°; vertical height from ground to C"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "A",
+              "C",
+              "C"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 5,
+        "sourcePagePath": "S28BW-826100719540_0015.jpg",
+        "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 23
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "triangle ABC with E on AC, B on AD line extended; triangle ADE; condition box requires area expressions using trigonometric ratio and an area relation"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "42√5",
+        "studentPayloadSha256": "ae535cfd878c0deae99555334a18a00fe43cc08172c339bbb7ab04b7871e0bb4",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "80c0fe618fd0234a325519b945e67513eb4bcb4dd2b1e7e29013d72e453cf008"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q23.svg",
+          "assetSha256": "aed08fff0525a48d32228e300eb37d6eecaf0de60bab0e31e16ac9277d64300c",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "80c0fe618fd0234a325519b945e67513eb4bcb4dd2b1e7e29013d72e453cf008",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 23,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 5,
+          "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+          "sourceVisualFacts": "triangle ABC with E on AC, B on AD line extended; triangle ADE; condition box requires area expressions using trigonometric ratio and an area relation",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q23.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q23.svg",
+          "assetSha256": "aed08fff0525a48d32228e300eb37d6eecaf0de60bab0e31e16ac9277d64300c",
+          "assetGitBlobSha1": "8efa10ba7bc458338c5de2771893e7576d18c56a",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 10,
+            "circle": 0,
+            "polygon": 1,
+            "path": 0,
+            "text": 7
+          },
+          "presentedLabels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "AB:AD=1:3",
+            "AC:AE=2:1"
+          ],
+          "expectedFacts": [
+            "triangle ABC with E on AC, B on AD line extended; triangle ADE; condition box requires area expressions using trigonometric ratio and an area relation"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "A",
+              "B",
+              "C",
+              "E",
+              "A",
+              "C",
+              "B",
+              "A",
+              "D",
+              "A",
+              "D",
+              "E"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    },
+    {
+      "qid": 24,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceFormat": "JPEG_PAGE_SCAN",
+        "sourcePage": 5,
+        "sourcePagePath": "S28BW-826100719540_0015.jpg",
+        "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+        "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+        "sourceOrdinal": 24
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "studentContentExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "actualPageViewed": true,
+          "sourceBundlePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\student-source-bundle.json",
+          "sourceBundleSha256": "39740e161c89ff3bbc97a8583d3d2f992ba0df227697e13d825ac403f2ab18fc",
+          "sourceFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\source\\source-freeze-revision-03.json",
+          "sourceFreezeSha256": "05e0fe8daa5c1dede274bcec222d61c6e410c77e5fe361a0deec3e503d2255f3",
+          "sourceVisualInventory": "damaged roof tile with circular arc for center construction; proof diagram circle O, chord AB, OM perpendicular at M, equal radii OA and OB marked"
+        }
+      },
+      "answerFreeze": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\answers\\answer-freeze-revision-02.json",
+        "sha256": "9b960ecc7799912511dc3f05e2d3f93b23410724113ff4f4a86b3a3fe467268a",
+        "answer": "(1) 원의 중심에서 현에 내린 수선은 그 현을 이등분한다. 서로 다른 두 현에 각각 수직이등분선을 작도하고, 그 교점을 원의 중심으로 한다. (2) OA=OB, OM은 공통, ∠OMA=∠OMB=90°이므로 △OMA≅△OMB (RHS), 따라서 AM=BM이다.",
+        "studentPayloadSha256": "5fc924aa6d8bde97b1ab0527609ede764e146812434e0c199bbbf418ad5771c9",
+        "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+      },
+      "answerCardinality": {
+        "status": "PASS",
+        "count": 1
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP",
+          "reason": "No text or choice rewrite; source-bundle exact parity is bound."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "9b98c02dc576d1a525f0294c4e96e545219ae399436bc70fee1715957580057b"
+        },
+        "meta": {
+          "status": "PASS",
+          "fields": [
+            "M3 standard unit",
+            "subunit",
+            "problemTypeKey",
+            "templateKey",
+            "crossConceptKeys",
+            "conditionKeys",
+            "integrationPattern",
+            "difficulty four-field"
+          ]
+        },
+        "visualSvg": {
+          "status": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "problemVisualDisposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "solutionVisualDisposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q24.svg",
+          "assetSha256": "a3640f1022d28711b1b0e111f9044ed9b88eb501eac7fc0e7403982e04c27043",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9b98c02dc576d1a525f0294c4e96e545219ae399436bc70fee1715957580057b",
+      "sourceDisposition": {
+        "beforeDisposition": "KEEP",
+        "finalDisposition": "KEEP"
+      },
+      "metaDebtFields": [],
+      "visualDisposition": {
+        "qid": 24,
+        "problemVisual": {
+          "necessity": "SOURCE_PRINTED_FIGURE_OR_TABLE",
+          "disposition": "RECONSTRUCTED_CLEAN_SOURCE_FIGURE",
+          "sourcePage": 5,
+          "sourcePageSha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+          "sourceVisualFacts": "damaged roof tile with circular arc for center construction; proof diagram circle O, chord AB, OM perpendicular at M, equal radii OA and OB marked",
+          "sourceMarksExcluded": true,
+          "assetRef": "assets/images/26_삼산중_2학기_중간_중3_기출/q24.svg",
+          "assetAbsolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q24.svg",
+          "assetSha256": "a3640f1022d28711b1b0e111f9044ed9b88eb501eac7fc0e7403982e04c27043",
+          "assetGitBlobSha1": "51528ee4db4a586821451f8f3cb821964d0a7162",
+          "xmlParseStatus": "PASS",
+          "primitiveSummary": {
+            "line": 4,
+            "circle": 2,
+            "polygon": 0,
+            "path": 2,
+            "text": 5
+          },
+          "presentedLabels": [
+            "O",
+            "A",
+            "B",
+            "O",
+            "M"
+          ],
+          "expectedFacts": [
+            "damaged roof tile with circular arc for center construction; proof diagram circle O, chord AB, OM perpendicular at M, equal radii OA and OB marked"
+          ],
+          "sourceSemanticIdentity": {
+            "applicable": true,
+            "status": "STATIC_SOURCE_IDENTITY_BOUND",
+            "labelsReferenced": [
+              "O",
+              "A",
+              "B",
+              "O",
+              "M",
+              "M",
+              "O",
+              "A",
+              "O",
+              "B"
+            ]
+          },
+          "actualSvgFactReview": "STATIC_SOURCE_TO_PRIMITIVE_REVIEW",
+          "actualArchiveRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED"
+        },
+        "solutionVisual": {
+          "disposition": "EXEMPT_SOURCE_FIGURE_AND_SMALL_BOARD_TEXT_SUFFICIENT",
+          "reason": "The printed source visual already supplies the geometry/topology; the small-board solution explains the numerical deductions without a new auxiliary visual."
+        }
+      },
+      "finalArtifactSha": "db340cee260255df6a04c8ce82a13554eba1b2ed"
+    }
+  ],
+  "artifactRawSha256": "38e3cef74ac241cb8474f95d1a8f9ebcb5b0919733afeed5ccf50e9e8f195d2b",
+  "artifactBinding": {
+    "workingJsAbsolute": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\26_삼산중_2학기_중간_중3_기출.js",
+    "rawSha256": "38e3cef74ac241cb8474f95d1a8f9ebcb5b0919733afeed5ccf50e9e8f195d2b",
+    "rawBufferBlobSha1": "db340cee260255df6a04c8ce82a13554eba1b2ed",
+    "gitCleanFilterBlobSha1": "db340cee260255df6a04c8ce82a13554eba1b2ed",
+    "gitCleanFilterParity": "PASS"
+  },
+  "archiveEngineRenderStatus": "NOT_RUN_CREATE_R3_REQUIRED",
+  "studentOnlyHandoff": {
+    "schema": "JS_ARCHIVE_CURRENT_STUDENT_ONLY_BUNDLE_V1",
+    "consumerStages": [
+      "R1",
+      "R2"
+    ],
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\handoff\\R1-R2.current-student-only-bundle.json",
+    "sha256": "867f5b340c62c8ce22dacbf8d63650631ecc84846d99e1fc001a403c2cb8f1bc",
+    "sourceRawSha256": "38e3cef74ac241cb8474f95d1a8f9ebcb5b0919733afeed5ccf50e9e8f195d2b",
+    "sourceArtifactBlobSha1": "db340cee260255df6a04c8ce82a13554eba1b2ed",
+    "qidOrder": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "studentWhitelist": [
+      "id",
+      "content",
+      "choices",
+      "image",
+      "assetSha256",
+      "payloadSha256"
+    ],
+    "hiddenAnswerSolutionMetaVerdictFieldsIncluded": false
+  }
+}

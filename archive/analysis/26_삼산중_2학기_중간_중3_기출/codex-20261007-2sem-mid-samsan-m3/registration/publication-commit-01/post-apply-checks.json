@@ -1,0 +1,23 @@
+[
+  {
+    "name": "catalog-rebuild",
+    "command": "node archive/tools/build-archive2-catalog.mjs",
+    "exitCode": 0,
+    "stdoutSha256": "177c177deee1b4b32fad535172ae75003c2f6736762a9ee729f5c85153fe7050",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "catalog-check",
+    "command": "node archive/tools/build-archive2-catalog.mjs --check",
+    "exitCode": 0,
+    "stdoutSha256": "177c177deee1b4b32fad535172ae75003c2f6736762a9ee729f5c85153fe7050",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "registration-verify",
+    "command": "node archive/tools/verify-archive-registration.mjs",
+    "exitCode": 0,
+    "stdoutSha256": "20e9b45e9f08c0cf6b2c5824058074e3b043691cfe3ca84c11564aa2e93a2c91",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
