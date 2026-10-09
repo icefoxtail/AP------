@@ -1,5 +1,11 @@
 # ALIVE LITE — REVIEW → Consumer DB → MAIN 완료 계약 v1
 
+## CURRENT HARD — Generated 품질검수는 시험지당 누적 배치 (2026-10-09)
+- **동일 시험지 통합 CREATE 브랜치**에서 생성된 원본 qid별 완성 후보를 축적한다. 리뷰 원장에 검수 분모와 모든 대상 UID를 확정한 뒤 한 번에 공개답 검수한다. 권장 **약 45 UID**, 현재 물량에 따라 27/36/45 및 사용자 지정 건수 가능. **45 미만이라서 검수를 보류하는 HARD GATE 없음**.
+- 리뷰는 발문 한국어 내신 품질을 우선하고 정답·상세 해설을 보며 핵심 계산·논리·경계를 추적, 오답 네 개와 L3/L4/CrossConcept를 확인한다. 눈가린 독립 수학 선풀이 일괄강제 금지. 의심/고위험 문항만 추가 검산. 품질 수정은 **그 qid/UID만** 하고 나머지 기존 PASS 재검 금지.
+- 검수 승인된 UID는 일괄 Generated Consumer JS/metadata/index 등록·학생 조회 및 main 운영병합까지 마감한다. 같은 시험지라도 이미 출시된 UID/파일은 덮어쓰지 않고 정합성을 확인한다. Codex의 신규 수학문항 품질판정은 금지.
+- 기존 `원본 한 문항 제작 직후 무조건 별도 검수하고 등록 완료 전 다음 원본 금지`, `q1 단독 브랜치·PR` 규칙은 본 신규 GPT QID9 작업에서 폐기한다. 원본 학교 기출 CREATE/R1/R2/R3 운영과 혼동하지 않는다.
+
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
