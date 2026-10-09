@@ -3,6 +3,12 @@
 2026-10-08 KST | CURRENT | 신규 ALIVE Generated Bank의 REVIEW+MAIN 작업자 실행 정본.
 상위: ALIVE_LITE_FULL_SCAN_ADAPTIVE_BATCH_TWO_CHAT_CONTRACT_v1.md, ALIVE_LITE_ANSWER_POSITION_REVIEW_REPORT_GATE_v0.1.md, ALIVE_GPT_LITE_CURRICULUM_HARD_GATE_v0.4.md. 기존 original/RPM LOCKED/타 운영라인은 수정 금지.
 
+## CURRENT USER OVERRIDE — QID9 GPT 1회 검수 PASS면 즉시 학생 제공 (2026-10-09)
+- 생성 QID9은 **L3 잠금, 기존 L4 우선 탐색, 새 Generated EXT-L4 자동 등록, CrossConcept/Condition/Integration 필수 사고 역할**을 기록한다. 이때 Generated EXT-L4는 RPM LOCKED를 바꾸지 않는 별도 GENERATED_ACTIVE namespace이므로 마스터 유형 승격 대기를 신규 문항 출제 보류 이유로 쓰지 않는다.
+- GPT는 최종 발문을 **학교 내신과 같은 한국어 문장인지 먼저 검사**하고, 독립 수학 풀이/5지 유일/교육과정/자산/해설을 한 번 검수한다. **첫 독립 PASS 즉시** 해당 UID의 Generated JS + Meta + Consumer index + 실제 학생 검색·선택 및 main 병합까지 마감한다. 별도의 사람 승인/중복 유형 정리/동일 artifact 재검으로 출시를 지연하지 않는다.
+- 모든 PASS 문항을 공급하는 것이 기본이다. 일부 슬롯 FAIL·실물 필수 에셋 미완성은 **그 UID만** 보류한다. 분류 중복은 Alias/Consolidation 후처리, 학생 오류 신고 시 UID별 비활성화·원장 결정. UID/label/schema/Chrome 확인은 기술 연계 검사로 최소화하되 실패를 PASS로 가장하지 않는다.
+- 이전 계약의 기존 REGISTER_ONLY_ACTIVE 또는 EXT_L4_APPROVAL_REQUIRED는 신규 QID9 Generated AUTO L4에만 이 절로 대체된다. 제품 코드가 지원하지 않는 자동매핑은 실제 구현/최소 테스트가 필요하므로 완성됐다고 주장하지 않는다.
+
 ## CURRENT HARD 2026-10-09 — 원본 1문항 단위 GPT 독립검수 (이전 두 채팅 운영 배치 기준 우선)
 - 신규 QID9 한 세트(원본 qid 1개, A1~C3 최대 9개 초안)를 **별도 GPT 검수 단계**가 하나씩 독립 풀고 먼저 동결한다. 이후 저장 정답·한국어 해설·오개념 선지·교육 목적·RPM/Meta·그림 필요성을 대조한다. CREATE의 자가 계산을 독립 REVIEW로 인정하지 않는다.
 - 9개 생산 시도는 필수지만 출판할 문항 9개 PASS 강제는 아니다. 미완료 슬롯·수리·보류는 sourceQid별 HANDOFF에 기록하며, 다음 qid를 무단 개시하지 않는다. Codex가 품질을 재판정하거나 문항을 자체 제작하지 않는다.
