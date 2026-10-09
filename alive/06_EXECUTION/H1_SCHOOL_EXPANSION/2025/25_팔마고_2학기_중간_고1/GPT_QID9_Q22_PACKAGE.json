@@ -1,0 +1,1044 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 22,
+  "sourceQuestionType": "서술형",
+  "sourceFingerprint": {
+    "original": "세 직선 x−3y=0, 3x+y=0, x+2y−10=0의 삼각형 외접원",
+    "sourcePreserved": true
+  },
+  "lockedPrimaryL3": "원의 방정식",
+  "rpmEvidence": {
+    "rpmRecordIds": [
+      "H1-RPM-217",
+      "H1-RPM-218"
+    ],
+    "l1": "도형의 방정식",
+    "l2": "원의 방정식",
+    "l3": "원의 방정식",
+    "l4": [
+      "중심과 반지름",
+      "일반형에서 원 찾기"
+    ],
+    "bindingStatus": "DIRECT_ACTIVE_PARENT_SOURCE_HISTORICAL_TRIANGLE_IS_TM_CIRCLE_CIRCUMCIRCLE",
+    "crosswalkAuthority": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+    "taxonomyAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "rpmLockedPreserved": true
+  },
+  "experiencePlan": {
+    "A": "세 직선 교점과 수직 및 외접원의 기본형",
+    "B": "일반형·축 교점의 추가 결정",
+    "C": "반지름·중심·통과점 역조건으로 매개변수 결정"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "notApplicable": "NINE_DESCRIPTIVE"
+  },
+  "authorSelfCheck": {
+    "uidCount": 9,
+    "reverseStem": "KEEP9_REVISED0_HOLD0",
+    "pythonGeometryNumericalChecked": 9,
+    "geometrySvgBuilt": 9,
+    "svgStaticCheck": "PENDING_REMOTE_READBACK",
+    "separateGptQualityReview": "NOT_RUN",
+    "studentChrome": "NOT_TESTED"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-A1",
+      "slot": "A1",
+      "sourceQid": 22,
+      "mode": "STRICT_VARIANT",
+      "stem": "세 직선 $l:x=0$, $m:y=0$, $n:x+y-8=0$으로 둘러싸인 삼각형의 외접원의 방정식을 구하고, 풀이 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$(x-4)^2+(y-4)^2=32",
+      "solution": "$l,m$의 교점은 $O(0,0)$이다. $m,n$의 교점을 $A$, $l,n$의 교점을 $B$로 정하면 각각 $A(8,0)$, $B(0,8)$이다.\n$l$과 $m$은 수직이므로 $\\angle AOB=90^\\circ$이고, 외접원은 빗변 $AB$를 지름으로 한다. 중심 $M$은 $AB$의 중점이므로 $M(4,4)$이다.\n$MO^2=4^2+4^2=32$이므로 반지름의 제곱은 $32$이다.\n따라서 외접원의 방정식은 $(x-4)^2+(y-4)^2=32$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "수평·수직 교점으로 지름과 중점",
+      "level": "중",
+      "difficultyBucket": 2,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A1-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A1-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "A=(8,0), B=(0,8), M=(4,4), r²=32",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          8,
+          0
+        ],
+        "B": [
+          0,
+          8
+        ],
+        "M": [
+          4,
+          4
+        ],
+        "radiusSquared": 32,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "A=(8,0), B=(0,8), M=(4,4), r²=32",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A1-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-A2",
+      "slot": "A2",
+      "sourceQid": 22,
+      "mode": "STRICT_VARIANT",
+      "stem": "세 직선 $l:x-2y=0$, $m:2x+y=0$, $n:x+3y-10=0$이 이루는 삼각형의 외접원의 방정식을 구하고 그 이유를 서술하시오.",
+      "choices": [],
+      "answer": "$(x-1)^2+(y-3)^2=10",
+      "solution": "$l,m$의 교점은 $O(0,0)$이다. 두 직선의 기울기는 각각 $\\dfrac12$와 $-2$이므로 두 직선은 서로 수직이다.\n$l$에서 $x=2y$이므로 $n$에 대입하여 $5y=10$, 즉 $A=(4,2)$를 얻는다. $m$에서 $y=-2x$이므로 $n$에 대입하여 $-5x=10$, 즉 $B=(-2,4)$를 얻는다.\n직각삼각형 $OAB$의 외접원은 $AB$가 지름이므로 중심은 $M=\\left(\\dfrac{4-2}{2},\\dfrac{2+4}{2}\\right)=(1,3)$이다. 반지름의 제곱은 $MO^2=1^2+3^2=10$이다.\n따라서 외접원의 방정식은 $(x-1)^2+(y-3)^2=10$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "사선 두 직선의 수직·교점",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A2-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A2-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "A=(4,2), B=(-2,4), M=(1,3), r²=10",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          4,
+          2
+        ],
+        "B": [
+          -2,
+          4
+        ],
+        "M": [
+          1,
+          3
+        ],
+        "radiusSquared": 10,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "A=(4,2), B=(-2,4), M=(1,3), r²=10",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A2-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-A3",
+      "slot": "A3",
+      "sourceQid": 22,
+      "mode": "STRICT_VARIANT",
+      "stem": "세 직선 $l:y=x$, $m:x+y=2$, $n:x-3y+10=0$으로 이루어진 삼각형의 외접원의 방정식을 풀이 과정과 함께 구하시오.",
+      "choices": [],
+      "answer": "$(x-2)^2+(y-4)^2=10",
+      "solution": "$l$과 $m$을 연립하면 $O=(1,1)$이다. 두 직선의 기울기는 $1$과 $-1$로 곱이 $-1$이므로 서로 수직이다.\n$l$과 $n$을 연립하면 $x=y$, $x-3x+10=0$이므로 $A=(5,5)$이다. $m$과 $n$을 연립하면 $x+y=2$, $x-3y+10=0$이므로 $B=(-1,3)$이다.\n직각삼각형 $OAB$의 외접원은 빗변 $AB$를 지름으로 한다. 중심은 $M=\\left(\\dfrac{5-1}{2},\\dfrac{5+3}{2}\\right)=(2,4)$이다. $MO^2=(2-1)^2+(4-1)^2=10$이다.\n따라서 외접원의 방정식은 $(x-2)^2+(y-4)^2=10$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "직각 꼭짓점이 원점이 아닌 사례",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A3-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A3-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "O=(1,1), A=(5,5), B=(-1,3), M=(2,4), r²=10",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          1,
+          1
+        ],
+        "A": [
+          5,
+          5
+        ],
+        "B": [
+          -1,
+          3
+        ],
+        "M": [
+          2,
+          4
+        ],
+        "radiusSquared": 10,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "O=(1,1), A=(5,5), B=(-1,3), M=(2,4), r²=10",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-A3-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-B1",
+      "slot": "B1",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "세 직선 $l:x-2y-4=0$, $m:2x+y-3=0$, $n:x+3y-9=0$이 이루는 삼각형의 외접원의 중심과 반지름을 구한 뒤, 외접원의 방정식을 서술하시오.",
+      "choices": [],
+      "answer": "중심 $(3,2)$, 반지름 $\\sqrt{10}$, 방정식 $(x-3)^2+(y-2)^2=10$",
+      "solution": "두 직선 $l,m$을 연립하면 $x=2y+4$, $2(2y+4)+y-3=0$에서 $y=-1$, $x=2$이므로 $O=(2,-1)$이다. 두 직선의 기울기는 $\\dfrac12$와 $-2$로 서로 수직이다.\n$l,n$의 교점은 $A=(6,1)$이고 $m,n$의 교점은 $B=(0,3)$이다. 따라서 $OAB$는 $O$가 직각인 삼각형이다.\n외접원의 중심은 빗변 $AB$의 중점 $M=\\left(\\dfrac{6+0}{2},\\dfrac{1+3}{2}\\right)=(3,2)$이다. $MO^2=(3-2)^2+(2+1)^2=10$이므로 반지름은 $\\sqrt{10}$이다.\n따라서 중심은 $(3,2)$, 반지름은 $\\sqrt{10}$이고 외접원의 방정식은 $(x-3)^2+(y-2)^2=10$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "평행이동된 직각삼각형의 중심·반지름 연결",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B1-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B1-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "O=(2,-1), A=(6,1), B=(0,3), M=(3,2), r²=10",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          2,
+          -1
+        ],
+        "A": [
+          6,
+          1
+        ],
+        "B": [
+          0,
+          3
+        ],
+        "M": [
+          3,
+          2
+        ],
+        "radiusSquared": 10,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "O=(2,-1), A=(6,1), B=(0,3), M=(3,2), r²=10",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B1-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-B2",
+      "slot": "B2",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "세 직선 $l:y=2$, $m:x=1$, $n:2x+3y=14$가 이루는 삼각형의 외접원의 방정식을 $x^2+y^2+ax+by+c=0$ 꼴로 구하고 과정을 서술하시오.",
+      "choices": [],
+      "answer": "$x^2+y^2-5x-6y+12=0$",
+      "solution": "$l,m$의 교점은 $O=(1,2)$이다. $l,n$을 연립하면 $2x+6=14$이므로 $A=(4,2)$이고, $m,n$을 연립하면 $2+3y=14$이므로 $B=(1,4)$이다.\n$l$과 $m$은 수직이므로 $OAB$는 직각삼각형이다. 외접원의 중심은 $AB$의 중점 $M=\\left(\\dfrac{4+1}{2},\\dfrac{2+4}{2}\\right)=\\left(\\dfrac52,3\\right)$이다.\n$MO^2=\\left(\\dfrac52-1\\right)^2+(3-2)^2=\\dfrac{13}{4}$이므로 원은 $\\left(x-\\dfrac52\\right)^2+(y-3)^2=\\dfrac{13}{4}$이다.\n이를 전개하여 $x^2+y^2-5x-6y+12=0$을 얻는다. 따라서 구하는 방정식은 $x^2+y^2-5x-6y+12=0$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "중심 분수좌표를 일반형 원의 방정식으로 전환",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "일반형에서 원 찾기",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B2-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B2-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "O=(1,2), A=(4,2), B=(1,4), M=(5/2,3), r²=13/4",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          1,
+          2
+        ],
+        "A": [
+          4,
+          2
+        ],
+        "B": [
+          1,
+          4
+        ],
+        "M": [
+          2.5,
+          3
+        ],
+        "radiusSquared": 3.25,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "O=(1,2), A=(4,2), B=(1,4), M=(5/2,3), r²=13/4",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "일반형에서 원 찾기",
+        "rpmRecordIds": [
+          "H1-RPM-217",
+          "H1-RPM-218"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B2-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-B3",
+      "slot": "B3",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "세 직선 $l:y=x$, $m:y=-x+4$, $n:y=5$가 이루는 삼각형의 외접원의 방정식을 구하고, 이 원과 $y$축의 교점의 좌표를 모두 구하시오.",
+      "choices": [],
+      "answer": "$(x-2)^2+(y-5)^2=9$, 교점 $(0,5+\\sqrt5)$와 $(0,5-\\sqrt5)$",
+      "solution": "$l,m$의 교점은 $O=(2,2)$이고 두 직선의 기울기 $1,-1$의 곱은 $-1$이므로 직각을 이룬다.\n$l,n$의 교점은 $A=(5,5)$, $m,n$의 교점은 $B=(-1,5)$이다. 빗변 $AB$의 중점은 $M=(2,5)$이고, $MA=3$이므로 외접원은 $(x-2)^2+(y-5)^2=9$이다.\n$y$축과의 교점에서는 $x=0$이므로 $4+(y-5)^2=9$, 즉 $(y-5)^2=5$이다. 따라서 $y=5\\pm\\sqrt5$이다. 두 교점을 각각 $D(0,5+\\sqrt5)$, $E(0,5-\\sqrt5)$라 하자.\n그러므로 원의 방정식은 $(x-2)^2+(y-5)^2=9$이고, 교점은 $(0,5+\\sqrt5)$와 $(0,5-\\sqrt5)$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "외접원 결정 후 좌표축과 교점 계산",
+      "level": "상",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B3-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화 원과 y축의 두 교점 D,E도 표시한다.",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B3-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB의 외접원과 중심 M, y축 및 교점 D,E",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "O=(2,2), A=(5,5), B=(-1,5), M=(2,5), r²=9; x=0→y=5±√5",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          2,
+          2
+        ],
+        "A": [
+          5,
+          5
+        ],
+        "B": [
+          -1,
+          5
+        ],
+        "M": [
+          2,
+          5
+        ],
+        "radiusSquared": 9,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "O=(2,2), A=(5,5), B=(-1,5), M=(2,5), r²=9; x=0→y=5±√5",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-B3-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-C1",
+      "slot": "C1",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "양수 $k$에 대하여 세 직선 $l:x=0$, $m:y=0$, $n:x+y=k$가 이루는 삼각형의 외접원 반지름이 $5\\sqrt2$이다. $k$의 값과 외접원의 방정식을 구하고 그 이유를 서술하시오.",
+      "choices": [],
+      "answer": "$k=10$, $(x-5)^2+(y-5)^2=50$",
+      "solution": "교점은 $O=(0,0)$, $A=(k,0)$, $B=(0,k)$이다. 두 좌표축은 수직이므로 $OAB$는 직각삼각형이며 빗변 $AB$가 외접원의 지름이다.\n중심은 $M=\\left(\\dfrac{k}{2},\\dfrac{k}{2}\\right)$이고 반지름의 제곱은 $MO^2=\\dfrac{k^2}{4}+\\dfrac{k^2}{4}=\\dfrac{k^2}{2}$이다.\n반지름이 $5\\sqrt2$이므로 $\\dfrac{k^2}{2}=50$, 즉 $k^2=100$이다. $k>0$이므로 $k=10$이다. 따라서 중심은 $(5,5)$이고 외접원은 $(x-5)^2+(y-5)^2=50$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "외접원 반지름에서 직선의 매개변수 역결정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C1-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C1-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "r²=k²/2=50, k positive ->10",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          10,
+          0
+        ],
+        "B": [
+          0,
+          10
+        ],
+        "M": [
+          5,
+          5
+        ],
+        "radiusSquared": 50,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "r²=k²/2=50, k positive ->10",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C1-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-C2",
+      "slot": "C2",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "양수 $k$에 대하여 세 직선 $l:x-2y=0$, $m:2x+y=0$, $n:x+3y=k$가 삼각형을 이룬다. 이 삼각형의 외접원 중심의 $x$좌표가 $2$일 때, $k$의 값과 외접원의 방정식을 구하시오.",
+      "choices": [],
+      "answer": "$k=20$, $(x-2)^2+(y-6)^2=40$",
+      "solution": "$l,m$은 기울기 $\\dfrac12,-2$인 수직인 직선이고 교점은 $O=(0,0)$이다.\n$l$에서 $x=2y$이므로 $n$과의 교점은 $A=\\left(\\dfrac{2k}{5},\\dfrac{k}{5}\\right)$이다. $m$에서 $y=-2x$이므로 $n$과의 교점은 $B=\\left(-\\dfrac{k}{5},\\dfrac{2k}{5}\\right)$이다.\n외접원 중심은 $AB$의 중점이므로 $M=\\left(\\dfrac{k}{10},\\dfrac{3k}{10}\\right)$이다. 중심의 $x$좌표가 $2$이므로 $\\dfrac{k}{10}=2$, 즉 $k=20$이다.\n따라서 $M=(2,6)$, $r^2=MO^2=2^2+6^2=40$이므로 외접원의 방정식은 $(x-2)^2+(y-6)^2=40$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "사선 매개변수 교점과 외접원 중심 역산",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C2-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C2-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "M=(k/10,3k/10); x=2 =>k=20, M=(2,6), r²=40",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          8,
+          4
+        ],
+        "B": [
+          -4,
+          8
+        ],
+        "M": [
+          2,
+          6
+        ],
+        "radiusSquared": 40,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "M=(k/10,3k/10); x=2 =>k=20, M=(2,6), r²=40",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C2-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q22-C3",
+      "slot": "C3",
+      "sourceQid": 22,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "양수 $k$에 대하여 세 직선 $l:x-2y=0$, $m:2x+y=0$, $n:x+3y=k$로 이루어진 삼각형의 외접원이 점 $(1,3)$을 지난다. $k$의 값과 외접원의 방정식을 구하시오.",
+      "choices": [],
+      "answer": "$k=5$, $\\left(x-\\dfrac12\\right)^2+\\left(y-\\dfrac32\\right)^2=\\dfrac52$",
+      "solution": "$l,m$의 교점은 $O=(0,0)$이고 두 직선은 서로 수직이다. $n$과 만나는 점은 각각 $A=\\left(\\dfrac{2k}{5},\\dfrac{k}{5}\\right)$, $B=\\left(-\\dfrac{k}{5},\\dfrac{2k}{5}\\right)$이다.\n외접원 중심은 $AB$의 중점 $M=\\left(\\dfrac{k}{10},\\dfrac{3k}{10}\\right)$이다. 원이 원점 $O$를 지나므로 중심이 $(a,b)$인 원의 방정식은 $x^2+y^2-2ax-2by=0$이다. 따라서 이 외접원은 $x^2+y^2-\\dfrac{k}{5}x-\\dfrac{3k}{5}y=0$이다.\n점 $(1,3)$을 대입하면 $1+9-\\dfrac{k}{5}-\\dfrac{9k}{5}=0$, 즉 $10-2k=0$이므로 $k=5$이다.\n중심은 $M=\\left(\\dfrac12,\\dfrac32\\right)$이고 반지름의 제곱은 $MO^2=\\dfrac14+\\dfrac94=\\dfrac52$이다. 따라서 $k=5$이고 외접원의 방정식은 $\\left(x-\\dfrac12\\right)^2+\\left(y-\\dfrac32\\right)^2=\\dfrac52$이다.",
+      "distractorReasons": {},
+      "distractorWitnesses": [],
+      "distractorApplicability": "NOT_APPLICABLE_DESCRIPTIVE",
+      "experienceAxis": "외접원이 추가 점을 지난다는 조건으로 매개변수 역산",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "원의 방정식",
+      "lockedL3DecisiveStep": "교점으로 직각삼각형 확인 후 외접원 중심·반지름을 정하여 원의 방정식 작성",
+      "targetL4": "중심과 반지름",
+      "schoolExamStyleEvidence": "고1 공통수학2 학교식 서술형 외접원 계산·근거 제시",
+      "problemVisual": {
+        "visualNecessity": "VISUAL_EXEMPT",
+        "disposition": "EXEMPT",
+        "benefitReason": "원문이 세 직선의 방정식을 완전하게 제시하여 문제 풀이에 추가 도형이 필수는 아님. 학생용 문제에 빗변 지름을 표시하면 풀이를 누설할 수 있음"
+      },
+      "solutionVisual": {
+        "visualNecessity": "VISUAL_REQUIRED",
+        "disposition": "ADD",
+        "type": "SOLUTION_GEOMETRY_SVG",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C3-solution.svg",
+        "benefitReason": "수직인 두 직선·직각 꼭짓점 O·빗변 AB·외접원의 중심 M을 실제 좌표로 연결하여 핵심 원리를 시각화",
+        "backend": "STANDARD_SVG_PYTHON_VERIFIED_COORDINATES",
+        "renderStatus": "NOT_TESTED"
+      },
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C3-solution.svg",
+      "solutionImageAlt": "직각삼각형 OAB와 빗변 AB의 중점을 중심으로 하는 외접원",
+      "solutionImageSize": "medium",
+      "answerRole": "DESCRIPTIVE_NO_CHOICES",
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "세 직선의 교점 O,A,B로 직각삼각형이 결정되며, 외접원의 중심·반지름 또는 추가 조건을 계산하는 서술형 질문이다.",
+      "changedMathRecheck": "circle x²+y²−kx/5−3ky/5=0; P(1,3) -> k=5",
+      "remainingRisk": "SEPARATE_GPT_CONTENT_REVIEW_NOT_RUN; ACTUAL_STUDENT_BROWSER_RENDER_NOT_TESTED",
+      "mathWitness": {
+        "O": [
+          0,
+          0
+        ],
+        "A": [
+          2,
+          1
+        ],
+        "B": [
+          -1,
+          2
+        ],
+        "M": [
+          0.5,
+          1.5
+        ],
+        "radiusSquared": 2.5,
+        "rightAngleAt": "O",
+        "rightAngleDot": 0,
+        "hypotenuse": "AB",
+        "reason": "circle x²+y²−kx/5−3ky/5=0; P(1,3) -> k=5",
+        "method": "PYTHON_FRACTION_GEOMETRY_INDEPENDENT_PRECHECK",
+        "geometrySvgCoordinateTransform": {
+          "centerSvg": [
+            170,
+            145
+          ],
+          "pixelRadius": 104
+        }
+      },
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "standardUnit": "원의 방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "subUnit": "원의 방정식",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "원의 방정식",
+        "rpmL3": "원의 방정식",
+        "rpmL4": "중심과 반지름",
+        "rpmRecordIds": [
+          "H1-RPM-217"
+        ],
+        "rpmBindingStatus": "DIRECT_ACTIVE_L3_PARENT",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+        "conditionKeys": [],
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "두 직선 수직",
+          "직각삼각형의 빗변 지름",
+          "선분의 중점"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceQid": 22,
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE",
+        "solutionAsset": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q22_VISUALS/q22-C3-solution.svg"
+      },
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN_CREATOR_ONLY",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "publication": {
+    "creatorOnly": true,
+    "qualityReview": "NOT_RUN",
+    "consumerRegistration": "NOT_REGISTERED",
+    "mainRelease": "NOT_DONE",
+    "previousQidsProtected": true
+  }
+}
