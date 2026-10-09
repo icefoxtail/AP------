@@ -65,7 +65,8 @@
     "assetsRequired": 0,
     "actualBrowserRender": "NOT_TESTED",
     "originalSourceConflict": "ISOLATED_NOT_SILENTLY_CORRECTED",
-    "independentGptQualityReview": "NOT_RUN"
+    "independentGptQualityReview": "NOT_RUN",
+    "technicalFormattingPatch": "STEM_HTML_BREAKS_AND_DISTRACTOR_4_OF_4_CLEAN"
   },
   "items": [
     {
@@ -73,7 +74,7 @@
       "slot": "A1",
       "sourceQid": 16,
       "mode": "STRICT_VARIANT",
-      "stem": "전체집합 $U$의 부분집합 $A,B$에 대하여 $B\\subseteq U-(A^c\\cup B^c)$이다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?\\nㄱ. $(A\\cap B)^c=B^c$\\nㄴ. $A\\cap(A-B)^c=A$\\nㄷ. $(A^c\\cup B)^c=\\varnothing$\\nㄹ. $(B-A)\\cup(A^c-B^c)=\\varnothing$",
+      "stem": "전체집합 $U$의 부분집합 $A,B$에 대하여 $B\\subseteq U-(A^c\\cup B^c)$이다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $(A\\cap B)^c=B^c$<br>ㄴ. $A\\cap(A-B)^c=A$<br>ㄷ. $(A^c\\cup B)^c=\\varnothing$<br>ㄹ. $(B-A)\\cup(A^c-B^c)=\\varnothing$",
       "choices": [
         "ㄱ, ㄴ",
         "ㄱ, ㄷ",
@@ -82,38 +83,38 @@
         "ㄴ, ㄹ"
       ],
       "answer": "③",
-      "solution": "드모르간의 법칙에 의해 $U-(A^c\\cup B^c)=A\\cap B$이므로 주어진 조건은 $B\\subseteq A$와 같다.\\nㄱ. $A\\cap B=B$이므로 참이다.\\nㄴ. $A\\cap(A-B)^c=A\\cap(A^c\\cup B)=B$이므로 항상 $A$인 것은 아니다.\\nㄷ. $(A^c\\cup B)^c=A-B$이므로 반드시 공집합인 것은 아니다.\\nㄹ. $B-A=\\varnothing$이고 $A^c-B^c=A^c\\cap B=B-A=\\varnothing$이므로 참이다.\\n따라서 옳은 것은 ㄱ, ㄹ이므로 정답은 ③이다.",
+      "solution": "드모르간의 법칙에 의해 $U-(A^c\\cup B^c)=A\\cap B$이므로 주어진 조건은 $B\\subseteq A$와 같다.\nㄱ. $A\\cap B=B$이므로 참이다.\nㄴ. $A\\cap(A-B)^c=A\\cap(A^c\\cup B)=B$이므로 항상 $A$인 것은 아니다.\nㄷ. $(A^c\\cup B)^c=A-B$이므로 반드시 공집합인 것은 아니다.\nㄹ. $B-A=\\varnothing$이고 $A^c-B^c=A^c\\cap B=B-A=\\varnothing$이므로 참이다.\n따라서 옳은 것은 ㄱ, ㄹ이므로 정답은 ③이다.",
       "distractorReasons": {
-        "①": "ㄴ을 $A$로 잘못 단순화해 ㄱ·ㄴ 선택. $U={1,2},A={1,2},B={1}$이면 ㄴ의 좌변은 ${1}$",
-        "②": "$(A^ccup B)^c$를 공집합으로 오인해 ㄱ·ㄷ 선택. 위 집합에서 이 식은 ${2}$",
-        "④": "ㄴ과 ㄷ을 동시에 참으로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 두 식 모두 거짓",
-        "⑤": "ㄴ을 참으로 오인하고 ㄱ을 빠뜨려 ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓"
+        "①": "ㄴ을 참으로 착각: U={1,2}, A={1,2}, B={1}에서 ㄴ 좌변={1}, 우변={1,2}. 그래서 ㄱ·ㄴ을 잘못 선택",
+        "②": "ㄷ을 참으로 착각: 같은 예에서 (A의 여집합 ∪ B)의 여집합={2}. 그래서 ㄱ·ㄷ을 잘못 선택",
+        "④": "ㄴ과 ㄷ을 참이라고 오인: 같은 예에서 두 명제 모두 거짓인데 ㄴ·ㄷ 선택",
+        "⑤": "ㄴ 참/ㄱ 거짓으로 오인: ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓, ㄱ은 참"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "ㄴ을 $A$로 잘못 단순화해 ㄱ·ㄴ 선택. $U={1,2},A={1,2},B={1}$이면 ㄴ의 좌변은 ${1}$",
+          "mistake": "ㄴ을 참으로 착각: U={1,2}, A={1,2}, B={1}에서 ㄴ 좌변={1}, 우변={1,2}. 그래서 ㄱ·ㄴ을 잘못 선택",
           "actualIncorrectChoice": "ㄱ, ㄴ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "$(A^ccup B)^c$를 공집합으로 오인해 ㄱ·ㄷ 선택. 위 집합에서 이 식은 ${2}$",
+          "mistake": "ㄷ을 참으로 착각: 같은 예에서 (A의 여집합 ∪ B)의 여집합={2}. 그래서 ㄱ·ㄷ을 잘못 선택",
           "actualIncorrectChoice": "ㄱ, ㄷ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "ㄴ과 ㄷ을 동시에 참으로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 두 식 모두 거짓",
+          "mistake": "ㄴ과 ㄷ을 참이라고 오인: 같은 예에서 두 명제 모두 거짓인데 ㄴ·ㄷ 선택",
           "actualIncorrectChoice": "ㄴ, ㄷ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "ㄴ을 참으로 오인하고 ㄱ을 빠뜨려 ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓",
+          "mistake": "ㄴ 참/ㄱ 거짓으로 오인: ㄴ·ㄹ 선택. 같은 반례에서 ㄴ은 거짓, ㄱ은 참",
           "actualIncorrectChoice": "ㄴ, ㄹ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -166,7 +167,7 @@
       "slot": "A2",
       "sourceQid": 16,
       "mode": "STRICT_VARIANT",
-      "stem": "전체집합 $U$의 부분집합 $A,B$가 $A\\subseteq U-(B^c\\cup A^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?\\nㄱ. $A\\cup B=B$\\nㄴ. $(A\\cup B)^c=A^c$\\nㄷ. $A-B=\\varnothing$\\nㄹ. $B\\cap A^c=\\varnothing$",
+      "stem": "전체집합 $U$의 부분집합 $A,B$가 $A\\subseteq U-(B^c\\cup A^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $A\\cup B=B$<br>ㄴ. $(A\\cup B)^c=A^c$<br>ㄷ. $A-B=\\varnothing$<br>ㄹ. $B\\cap A^c=\\varnothing$",
       "choices": [
         "ㄱ, ㄴ",
         "ㄴ, ㄷ",
@@ -175,38 +176,38 @@
         "ㄱ, ㄷ"
       ],
       "answer": "⑤",
-      "solution": "$U-(B^c\\cup A^c)=A\\cap B$이므로 조건은 $A\\subseteq B$이다.\\nㄱ. $A\\cup B=B$이므로 참이다.\\nㄴ. $(A\\cup B)^c=B^c$이며, $A^c$와는 항상 같지 않다.\\nㄷ. $A\\subseteq B$이므로 $A-B=\\varnothing$이다.\\nㄹ. $B\\cap A^c=B-A$이므로 반드시 공집합은 아니다.\\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ⑤이다.",
+      "solution": "$U-(B^c\\cup A^c)=A\\cap B$이므로 조건은 $A\\subseteq B$이다.\nㄱ. $A\\cup B=B$이므로 참이다.\nㄴ. $(A\\cup B)^c=B^c$이며, $A^c$와는 항상 같지 않다.\nㄷ. $A\\subseteq B$이므로 $A-B=\\varnothing$이다.\nㄹ. $B\\cap A^c=B-A$이므로 반드시 공집합은 아니다.\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ⑤이다.",
       "distractorReasons": {
-        "①": "ㄴ을 $B^c$가 아니라 $A^c$로 오인해 ㄱ·ㄴ 선택. $U={1,2},A={1},B={1,2}$이면 좌변 $\u000barnothing$, 우변 ${2}$",
-        "②": "ㄴ의 여집합 대상을 뒤집어 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
-        "③": "$B-A$를 $A-B$와 혼동하여 ㄱ·ㄹ 선택. 반례에서 $B-A={2}$",
-        "④": "$Bcap A^c$를 공집합으로 잘못 판단해 ㄷ·ㄹ 선택. 반례에서 ${2}$"
+        "①": "ㄴ을 참으로 오인: U={1,2}, A={1}, B={1,2}에서 ㄴ 좌변=공집합, 우변={2}",
+        "②": "ㄴ의 여집합 대상 B를 A로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
+        "③": "B−A를 A−B와 혼동해 ㄱ·ㄹ 선택. 같은 반례에서 B−A={2}",
+        "④": "B∩(A의 여집합)을 공집합으로 오인해 ㄷ·ㄹ 선택. 같은 반례에서 {2}"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "ㄴ을 $B^c$가 아니라 $A^c$로 오인해 ㄱ·ㄴ 선택. $U={1,2},A={1},B={1,2}$이면 좌변 $\u000barnothing$, 우변 ${2}$",
+          "mistake": "ㄴ을 참으로 오인: U={1,2}, A={1}, B={1,2}에서 ㄴ 좌변=공집합, 우변={2}",
           "actualIncorrectChoice": "ㄱ, ㄴ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "ㄴ의 여집합 대상을 뒤집어 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
+          "mistake": "ㄴ의 여집합 대상 B를 A로 오해해 ㄴ·ㄷ 선택. 같은 반례에서 ㄴ은 거짓",
           "actualIncorrectChoice": "ㄴ, ㄷ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$B-A$를 $A-B$와 혼동하여 ㄱ·ㄹ 선택. 반례에서 $B-A={2}$",
+          "mistake": "B−A를 A−B와 혼동해 ㄱ·ㄹ 선택. 같은 반례에서 B−A={2}",
           "actualIncorrectChoice": "ㄱ, ㄹ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$Bcap A^c$를 공집합으로 잘못 판단해 ㄷ·ㄹ 선택. 반례에서 ${2}$",
+          "mistake": "B∩(A의 여집합)을 공집합으로 오인해 ㄷ·ㄹ 선택. 같은 반례에서 {2}",
           "actualIncorrectChoice": "ㄷ, ㄹ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -259,7 +260,7 @@
       "slot": "A3",
       "sourceQid": 16,
       "mode": "STRICT_VARIANT",
-      "stem": "전체집합 $U$의 부분집합 $P,Q$가 $Q\\subseteq U-(P^c\\cup Q^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?\\nㄱ. $(P-Q)^c=Q$\\nㄴ. $(P\\cap Q)^c=Q^c$\\nㄷ. $Q-P=\\varnothing$\\nㄹ. $P\\cup Q=Q$",
+      "stem": "전체집합 $U$의 부분집합 $P,Q$가 $Q\\subseteq U-(P^c\\cup Q^c)$를 만족한다. 다음 보기에서 항상 옳은 것만을 있는 대로 고른 것은?<br><br>〈보기〉<br>ㄱ. $(P-Q)^c=Q$<br>ㄴ. $(P\\cap Q)^c=Q^c$<br>ㄷ. $Q-P=\\varnothing$<br>ㄹ. $P\\cup Q=Q$",
       "choices": [
         "ㄴ, ㄷ",
         "ㄱ, ㄴ",
@@ -268,38 +269,38 @@
         "ㄱ, ㄹ"
       ],
       "answer": "①",
-      "solution": "$U-(P^c\\cup Q^c)=P\\cap Q$이므로 조건은 $Q\\subseteq P$이다.\\nㄱ. $(P-Q)^c$는 일반적으로 $Q$와 같지 않다.\\nㄴ. $P\\cap Q=Q$이므로 참이다.\\nㄷ. $Q\\subseteq P$이므로 $Q-P=\\varnothing$이다.\\nㄹ. $P\\cup Q=P$이므로 항상 $Q$인 것은 아니다.\\n따라서 옳은 것은 ㄴ, ㄷ이므로 정답은 ①이다.",
+      "solution": "$U-(P^c\\cup Q^c)=P\\cap Q$이므로 조건은 $Q\\subseteq P$이다.\nㄱ. $(P-Q)^c$는 일반적으로 $Q$와 같지 않다.\nㄴ. $P\\cap Q=Q$이므로 참이다.\nㄷ. $Q\\subseteq P$이므로 $Q-P=\\varnothing$이다.\nㄹ. $P\\cup Q=P$이므로 항상 $Q$인 것은 아니다.\n따라서 옳은 것은 ㄴ, ㄷ이므로 정답은 ①이다.",
       "distractorReasons": {
-        "②": "ㄱ의 여집합을 잘못 계산해 ㄱ·ㄴ 선택. $U={1,2},P={1},Q=\u000barnothing$이면 $(P-Q)^c={2}\ne Q$",
-        "③": "$Pcup Q=P$를 $Q$로 착각해 ㄴ·ㄹ 선택. 같은 반례에서 합집합은 ${1}$",
-        "④": "ㄱ을 참으로 오인해 ㄱ·ㄷ 선택. 같은 반례에서 ㄱ 거짓",
-        "⑤": "ㄱ과 ㄹ을 모두 참으로 오인해 ㄱ·ㄹ 선택. 같은 반례에서 두 식 모두 거짓"
+        "②": "ㄱ의 여집합을 오계산: U={1,2}, P={1}, Q=공집합에서 (P−Q)의 여집합={2} ≠ Q",
+        "③": "P∪Q=P를 Q로 혼동해 ㄴ·ㄹ 선택. 같은 반례에서 P∪Q={1} ≠ Q",
+        "④": "ㄱ을 참으로 오판하여 ㄱ·ㄷ 선택. 앞의 예에서 ㄱ은 거짓",
+        "⑤": "ㄱ과 ㄹ을 동시에 참으로 오판하여 ㄱ·ㄹ 선택. 앞의 예에서 둘 다 거짓"
       },
       "distractorWitnesses": [
         {
           "label": "②",
-          "mistake": "ㄱ의 여집합을 잘못 계산해 ㄱ·ㄴ 선택. $U={1,2},P={1},Q=\u000barnothing$이면 $(P-Q)^c={2}\ne Q$",
+          "mistake": "ㄱ의 여집합을 오계산: U={1,2}, P={1}, Q=공집합에서 (P−Q)의 여집합={2} ≠ Q",
           "actualIncorrectChoice": "ㄱ, ㄴ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$Pcup Q=P$를 $Q$로 착각해 ㄴ·ㄹ 선택. 같은 반례에서 합집합은 ${1}$",
+          "mistake": "P∪Q=P를 Q로 혼동해 ㄴ·ㄹ 선택. 같은 반례에서 P∪Q={1} ≠ Q",
           "actualIncorrectChoice": "ㄴ, ㄹ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "ㄱ을 참으로 오인해 ㄱ·ㄷ 선택. 같은 반례에서 ㄱ 거짓",
+          "mistake": "ㄱ을 참으로 오판하여 ㄱ·ㄷ 선택. 앞의 예에서 ㄱ은 거짓",
           "actualIncorrectChoice": "ㄱ, ㄷ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "ㄱ과 ㄹ을 모두 참으로 오인해 ㄱ·ㄹ 선택. 같은 반례에서 두 식 모두 거짓",
+          "mistake": "ㄱ과 ㄹ을 동시에 참으로 오판하여 ㄱ·ㄹ 선택. 앞의 예에서 둘 다 거짓",
           "actualIncorrectChoice": "ㄱ, ㄹ",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -361,38 +362,38 @@
         "$A\\cap B=A$"
       ],
       "answer": "④",
-      "solution": "$B\\subseteq A$이므로 $A$에서 $B$를 뺀 집합과 $B$는 공통 원소가 없고, 둘을 합치면 정확히 $A$가 된다. 즉 $(A-B)\\cup B=A$이다.\\n다른 보기들이 항상 참인 것은 아니다. 예를 들어 $U=\\{1,2,3\\},A=\\{1,2\\},B=\\{1\\}$이면 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2,3\\}$, ⑤ 좌변 $\\{1\\}$이므로 각 우변과 다르다.\\n따라서 정답은 ④이다.",
+      "solution": "$B\\subseteq A$이므로 $A$에서 $B$를 뺀 집합과 $B$는 공통 원소가 없고, 둘을 합치면 정확히 $A$가 된다. 즉 $(A-B)\\cup B=A$이다.\n다른 보기들이 항상 참인 것은 아니다. 예를 들어 $U=\\{1,2,3\\},A=\\{1,2\\},B=\\{1\\}$이면 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2,3\\}$, ⑤ 좌변 $\\{1\\}$이므로 각 우변과 다르다.\n따라서 정답은 ④이다.",
       "distractorReasons": {
-        "①": "차집합과 원래 집합은 서로소인데 교집합을 $B$로 잘못 판정. $A={1,2},B={1}$이면 교집합 $\u000barnothing$",
-        "②": "$(A^ccup B)^c=A-B={2}$를 $A={1,2}$로 오인",
-        "③": "$(Acap B)^c=B^c={2,3}$을 $A^c={3}$로 오인",
-        "⑤": "$Acap B=B={1}$을 $A={1,2}$로 오인"
+        "①": "차집합과 B는 서로소인데 (A−B)∩B=B라고 오판. A={1,2},B={1}이면 좌변 공집합",
+        "②": "(A의 여집합∪B)의 여집합=A−B={2}를 A={1,2}로 오판",
+        "③": "(A∩B)의 여집합=B의 여집합={2,3}을 A의 여집합={3}으로 오판",
+        "⑤": "A∩B=B={1}을 A={1,2}로 오판"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "차집합과 원래 집합은 서로소인데 교집합을 $B$로 잘못 판정. $A={1,2},B={1}$이면 교집합 $\u000barnothing$",
+          "mistake": "차집합과 B는 서로소인데 (A−B)∩B=B라고 오판. A={1,2},B={1}이면 좌변 공집합",
           "actualIncorrectChoice": "$(A-B)\\cap B=B$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "$(A^ccup B)^c=A-B={2}$를 $A={1,2}$로 오인",
+          "mistake": "(A의 여집합∪B)의 여집합=A−B={2}를 A={1,2}로 오판",
           "actualIncorrectChoice": "$(A^c\\cup B)^c=A",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$(Acap B)^c=B^c={2,3}$을 $A^c={3}$로 오인",
+          "mistake": "(A∩B)의 여집합=B의 여집합={2,3}을 A의 여집합={3}으로 오판",
           "actualIncorrectChoice": "$(A\\cap B)^c=A^c",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$Acap B=B={1}$을 $A={1,2}$로 오인",
+          "mistake": "A∩B=B={1}을 A={1,2}로 오판",
           "actualIncorrectChoice": "$A\\cap B=A$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -454,38 +455,38 @@
         "$9$"
       ],
       "answer": "②",
-      "solution": "드모르간의 법칙을 적용하면 $(A^c\\cup B)^c=A\\cap B^c=A-B$이다. $A$의 원소 중 $B$에 없는 것은 $1,3,5,7$이므로 $A-B=\\{1,3,5,7\\}$이다.\\n따라서 원소의 개수는 $4$개이므로 정답은 ②이다.",
+      "solution": "드모르간의 법칙을 적용하면 $(A^c\\cup B)^c=A\\cap B^c=A-B$이다. $A$의 원소 중 $B$에 없는 것은 $1,3,5,7$이므로 $A-B=\\{1,3,5,7\\}$이다.\n따라서 원소의 개수는 $4$개이므로 정답은 ②이다.",
       "distractorReasons": {
-        "①": "$|Acap B|=|{2,4,6}|=3$으로 교집합을 셈",
-        "③": "$|B-A|=|{8,10}|=2$로 차집합의 순서를 바꿈",
-        "④": "$|B|=5$로 여집합·교집합 연산을 생략",
-        "⑤": "$|Acup B|=9$로 차집합 대신 합집합을 셈"
+        "①": "A∩B={2,4,6}의 크기 3을 정답이라고 착각",
+        "③": "B−A={8,10}의 크기 2를 계산하며 빼는 순서를 반대로 함",
+        "④": "B의 원소 수 5를 그대로 답으로 사용",
+        "⑤": "A∪B의 원소 수 9를 계산하며 차집합 대신 합집합을 사용"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "$|Acap B|=|{2,4,6}|=3$으로 교집합을 셈",
+          "mistake": "A∩B={2,4,6}의 크기 3을 정답이라고 착각",
           "actualIncorrectChoice": "$3$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$|B-A|=|{8,10}|=2$로 차집합의 순서를 바꿈",
+          "mistake": "B−A={8,10}의 크기 2를 계산하며 빼는 순서를 반대로 함",
           "actualIncorrectChoice": "$2$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$|B|=5$로 여집합·교집합 연산을 생략",
+          "mistake": "B의 원소 수 5를 그대로 답으로 사용",
           "actualIncorrectChoice": "$5$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$|Acup B|=9$로 차집합 대신 합집합을 셈",
+          "mistake": "A∪B의 원소 수 9를 계산하며 차집합 대신 합집합을 사용",
           "actualIncorrectChoice": "$9$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -547,38 +548,38 @@
         "$9$"
       ],
       "answer": "①",
-      "solution": "$U-(A^c\\cup B^c)=A\\cap B$이다. 그런데 $B\\subseteq A$이므로 $A\\cap B=B$이다. 따라서 $B=\\{2,7,11\\}$이고 $|B|=3$이다.\\n따라서 정답은 ①이다.",
+      "solution": "$U-(A^c\\cup B^c)=A\\cap B$이다. 그런데 $B\\subseteq A$이므로 $A\\cap B=B$이다. 따라서 $B=\\{2,7,11\\}$이고 $|B|=3$이다.\n따라서 정답은 ①이다.",
       "distractorReasons": {
-        "②": "$|A|=5$를 구해 조건의 교집합으로 제한하지 않음",
-        "③": "$|A-B|=|{3,5}|=2$를 구하여 남은 원소를 세었음",
-        "④": "$|U-A|=12-5=7$로 여집합만 계산",
-        "⑤": "$|U-B|=12-3=9$로 구할 집합을 여집합으로 바꿈"
+        "②": "A={2,3,5,7,11}의 원소 수 5만 세고 복합식의 조건을 무시",
+        "③": "A−B={3,5}의 원소 수 2를 B의 원소 수로 오인",
+        "④": "U−A의 원소 수 12−5=7을 답으로 오인",
+        "⑤": "U−B의 원소 수 12−3=9를 답으로 오인"
       },
       "distractorWitnesses": [
         {
           "label": "②",
-          "mistake": "$|A|=5$를 구해 조건의 교집합으로 제한하지 않음",
+          "mistake": "A={2,3,5,7,11}의 원소 수 5만 세고 복합식의 조건을 무시",
           "actualIncorrectChoice": "$5$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$|A-B|=|{3,5}|=2$를 구하여 남은 원소를 세었음",
+          "mistake": "A−B={3,5}의 원소 수 2를 B의 원소 수로 오인",
           "actualIncorrectChoice": "$2$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$|U-A|=12-5=7$로 여집합만 계산",
+          "mistake": "U−A의 원소 수 12−5=7을 답으로 오인",
           "actualIncorrectChoice": "$7$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$|U-B|=12-3=9$로 구할 집합을 여집합으로 바꿈",
+          "mistake": "U−B의 원소 수 12−3=9를 답으로 오인",
           "actualIncorrectChoice": "$9$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -640,38 +641,38 @@
         "$A\\cap B=A$"
       ],
       "answer": "⑤",
-      "solution": "$A\\cap(A-B)^c=A\\cap(A^c\\cup B)=(A\\cap A^c)\\cup(A\\cap B)=A\\cap B$이다. 따라서 조건은 $A\\cap B=A$, 즉 $A\\subseteq B$이다. 이때 반드시 참인 것은 ⑤이다.\\n실제로 $U=\\{1,2\\},A=\\{1\\},B=\\{1,2\\}$로 두면 조건은 성립하지만 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2\\}$, ④ 좌변 $\\{1,2\\}$여서 각 보기의 등식이 성립하지 않는다.\\n따라서 정답은 ⑤이다.",
+      "solution": "$A\\cap(A-B)^c=A\\cap(A^c\\cup B)=(A\\cap A^c)\\cup(A\\cap B)=A\\cap B$이다. 따라서 조건은 $A\\cap B=A$, 즉 $A\\subseteq B$이다. 이때 반드시 참인 것은 ⑤이다.\n실제로 $U=\\{1,2\\},A=\\{1\\},B=\\{1,2\\}$로 두면 조건은 성립하지만 ① 좌변 $\\varnothing$, ② 좌변 $\\{2\\}$, ③ 좌변 $\\{2\\}$, ④ 좌변 $\\{1,2\\}$여서 각 보기의 등식이 성립하지 않는다.\n따라서 정답은 ⑤이다.",
       "distractorReasons": {
-        "①": "$(A^ccup B)^c=A-B=\u000barnothing$을 $A$로 오인. 반례에서 $\u000barnothing\ne{1}$",
-        "②": "$B-A$를 $A-B$와 혼동. 반례에서 $B-A={2}$",
-        "③": "$(Acap B)^c=A^c={2}$를 $B^c=\u000barnothing$로 오인",
-        "④": "$Acup B=B={1,2}$를 $A={1}$로 오인"
+        "①": "A−B=공집합을 A와 같다고 오인. U={1,2},A={1},B={1,2}에서 두 집합은 다름",
+        "②": "B−A와 A−B를 혼동. 같은 반례에서 B−A={2}",
+        "③": "(A∩B)의 여집합=A의 여집합={2}를 B의 여집합=공집합으로 오인",
+        "④": "A∪B=B={1,2}를 A={1}로 오인"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "$(A^ccup B)^c=A-B=\u000barnothing$을 $A$로 오인. 반례에서 $\u000barnothing\ne{1}$",
+          "mistake": "A−B=공집합을 A와 같다고 오인. U={1,2},A={1},B={1,2}에서 두 집합은 다름",
           "actualIncorrectChoice": "$(A^c\\cup B)^c=A",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "$B-A$를 $A-B$와 혼동. 반례에서 $B-A={2}$",
+          "mistake": "B−A와 A−B를 혼동. 같은 반례에서 B−A={2}",
           "actualIncorrectChoice": "$B-A=\\varnothing$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$(Acap B)^c=A^c={2}$를 $B^c=\u000barnothing$로 오인",
+          "mistake": "(A∩B)의 여집합=A의 여집합={2}를 B의 여집합=공집합으로 오인",
           "actualIncorrectChoice": "$(A\\cap B)^c=B^c$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$Acup B=B={1,2}$를 $A={1}$로 오인",
+          "mistake": "A∪B=B={1,2}를 A={1}로 오인",
           "actualIncorrectChoice": "$A\\cup B=A$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -733,38 +734,38 @@
         "$15$"
       ],
       "answer": "②",
-      "solution": "$A\\cup B=U$이므로 $|A\\cap B|=|A|+|B|-|U|=8+7-12=3$이다. $C=A\\cap B$이고, $(A-C)\\cup(B-C)=(A\\cup B)-C=U-C$이다.\\n따라서 구하는 원소의 개수는 $12-3=9$개이므로 정답은 ②이다.",
+      "solution": "$A\\cup B=U$이므로 $|A\\cap B|=|A|+|B|-|U|=8+7-12=3$이다. $C=A\\cap B$이고, $(A-C)\\cup(B-C)=(A\\cup B)-C=U-C$이다.\n따라서 구하는 원소의 개수는 $12-3=9$개이므로 정답은 ②이다.",
       "distractorReasons": {
-        "①": "$|U|=12$를 그대로 답으로 써 교집합 $C$ 제거를 잊음",
-        "③": "$|Acap B|=8+7-12=3$만 구하고 실제 질문 집합으로 전환하지 않음",
-        "④": "$|U|-2|C|=12-2cdot3=6$으로 같은 교집합을 두 번 제거",
-        "⑤": "$|A|+|B|=15$로 겹치는 원소를 중복 계산"
+        "①": "U의 원소 수 12를 그대로 답으로 써 교집합 C 제거를 생략",
+        "③": "교집합의 원소 수 8+7−12=3만 구한 뒤 질문의 차집합 합집합으로 진행하지 않음",
+        "④": "공통부분을 두 번 제거하여 12−2×3=6으로 계산",
+        "⑤": "A와 B의 원소 수 8+7=15를 더하면서 겹치는 원소를 중복 집계"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "$|U|=12$를 그대로 답으로 써 교집합 $C$ 제거를 잊음",
+          "mistake": "U의 원소 수 12를 그대로 답으로 써 교집합 C 제거를 생략",
           "actualIncorrectChoice": "$12$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$|Acap B|=8+7-12=3$만 구하고 실제 질문 집합으로 전환하지 않음",
+          "mistake": "교집합의 원소 수 8+7−12=3만 구한 뒤 질문의 차집합 합집합으로 진행하지 않음",
           "actualIncorrectChoice": "$3$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "④",
-          "mistake": "$|U|-2|C|=12-2cdot3=6$으로 같은 교집합을 두 번 제거",
+          "mistake": "공통부분을 두 번 제거하여 12−2×3=6으로 계산",
           "actualIncorrectChoice": "$6$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$|A|+|B|=15$로 겹치는 원소를 중복 계산",
+          "mistake": "A와 B의 원소 수 8+7=15를 더하면서 겹치는 원소를 중복 집계",
           "actualIncorrectChoice": "$15$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
@@ -826,38 +827,38 @@
         "$16$"
       ],
       "answer": "④",
-      "solution": "$|A|=10$, $|B|=6$, $|A\\cap B|=3$이다. 따라서 $|A\\cup B|=10+6-3=13$이고, $|(A\\cup B)^c|=20-13=7$이다.\\n$(A\\cup B)^c$와 $A\\cap B$는 서로소이므로 $|C|=7+3=10$이다.\\n따라서 정답은 ④이다.",
+      "solution": "$|A|=10$, $|B|=6$, $|A\\cap B|=3$이다. 따라서 $|A\\cup B|=10+6-3=13$이고, $|(A\\cup B)^c|=20-13=7$이다.\n$(A\\cup B)^c$와 $A\\cap B$는 서로소이므로 $|C|=7+3=10$이다.\n따라서 정답은 ④이다.",
       "distractorReasons": {
-        "①": "$|Acup B|=10+6-3=13$만 구해 여집합·교집합 결합을 생략",
-        "②": "$|Acap B|=3$만 세고 여집합 부분을 빠뜨림",
-        "③": "$|(Acup B)^c|=20-13=7$만 세고 공통부분을 빠뜨림",
-        "⑤": "$|A|+|B|=10+6=16$으로 교집합 중복과 여집합을 모두 무시"
+        "①": "합집합의 크기 10+6−3=13만 구하고 여집합과 교집합의 결합을 생략",
+        "②": "교집합의 크기 3만 세고 여집합 부분 누락",
+        "③": "합집합의 여집합 크기 20−13=7만 세고 교집합 부분 누락",
+        "⑤": "A와 B의 원소 수를 10+6=16으로 합쳐 공통영역 중복 및 여집합 의미 누락"
       },
       "distractorWitnesses": [
         {
           "label": "①",
-          "mistake": "$|Acup B|=10+6-3=13$만 구해 여집합·교집합 결합을 생략",
+          "mistake": "합집합의 크기 10+6−3=13만 구하고 여집합과 교집합의 결합을 생략",
           "actualIncorrectChoice": "$13$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "②",
-          "mistake": "$|Acap B|=3$만 세고 여집합 부분을 빠뜨림",
+          "mistake": "교집합의 크기 3만 세고 여집합 부분 누락",
           "actualIncorrectChoice": "$3$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "③",
-          "mistake": "$|(Acup B)^c|=20-13=7$만 세고 공통부분을 빠뜨림",
+          "mistake": "합집합의 여집합 크기 20−13=7만 세고 교집합 부분 누락",
           "actualIncorrectChoice": "$7$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
         },
         {
           "label": "⑤",
-          "mistake": "$|A|+|B|=10+6=16$으로 교집합 중복과 여집합을 모두 무시",
+          "mistake": "A와 B의 원소 수를 10+6=16으로 합쳐 공통영역 중복 및 여집합 의미 누락",
           "actualIncorrectChoice": "$16$",
           "verificationBasis": "FORMULA_REDUCTION_OR_EXPLICIT_SET_COUNTEREXAMPLE",
           "validatedAgainstStudentChoices": true
