@@ -92,7 +92,7 @@ function validateReviewBinding(root,binding,uid,expectedMetaSha,expectedStatus){
 }
 function authorityLabel(value){return typeof value==='string'?value.split('|').at(-1).trim():'';}
 function authorityCode(value){return typeof value==='string'?value.split('|')[0].trim():'';}
-function validateMetaTaxonomyBindings(root,meta,primaryRecord=null){
+function validateMetaTaxonomyBindings(root,meta,primaryRecord=null,uid=null){
  const issues=[];
  try{
   const taxonomy=readJson(contained(root,'archive/data/meta-foundation/compiled/taxonomy_registry.json','archive/data/meta-foundation/'));
@@ -102,11 +102,28 @@ function validateMetaTaxonomyBindings(root,meta,primaryRecord=null){
   if(taxonomy.schemaVersion!=='meta-foundation-compiled-taxonomy-v1'||taxonomy.status!=='DERIVED_READ_ONLY')issues.push('META_TAXONOMY_REGISTRY_NOT_CURRENT_READ_ONLY');
   if(concepts.schemaVersion!=='meta-foundation-compiled-concept-registry-v1'||concepts.status!=='DERIVED_READ_ONLY')issues.push('META_CONCEPT_REGISTRY_NOT_CURRENT_READ_ONLY');
   if(conditions.schemaVersion!=='meta-foundation-condition-registry-v1'||rules.schemaVersion!=='meta-foundation-metadata-rules-v1'||rules.status!=='ACTIVE')issues.push('META_RULES_OR_CONDITION_REGISTRY_INVALID');
+  // Generated-only extension keys are validated against their own active UID-scoped
+  // registries; the read-only RPM/compiled taxonomy is never modified.
+  const generatedKeyRegistered=(family,key)=>{
+   if(!uid||typeof key!=='string'||!key.startsWith('EXT-'))return false;
+   const ref=family==='crossConcepts'?meta.crossConceptRegistryRef:meta.conditionRegistryRef;
+   if(typeof ref!=='string'||!ref.startsWith('archive/generated/lite/v1/'))return false;
+   const ext=readJson(contained(root,ref,'archive/generated/lite/v1/'));
+   const matches=(ext[family]||[]).filter(row=>
+     row.id===key&&/ACTIVE/.test(String(row.status||''))&&Array.isArray(row.exampleUids)&&row.exampleUids.includes(uid));
+   return matches.length===1;
+  };
   const problemType=meta.problemTypeKey==null?null:(taxonomy.problemTypes||[]).filter(row=>row.problemTypeKey===meta.problemTypeKey);
   if(meta.problemTypeKey==null){
    if(!nonempty(meta.metaDebt?.problemTypeKey))issues.push('META_PROBLEM_TYPE_UNKNOWN_WITHOUT_DEBT');
   }else if(problemType.length!==1||problemType[0].status!=='ACTIVE')issues.push('META_PROBLEM_TYPE_NOT_ACTIVE_UNIQUE');
-  else if(primaryRecord?.problemTypeKey&&primaryRecord.problemTypeKey!==meta.problemTypeKey)issues.push('META_PROBLEM_TYPE_PRIMARY_RPM_PARENT_MISMATCH');
+  else if(primaryRecord?.problemTypeKey&&primaryRecord.problemTypeKey!==meta.problemTypeKey){
+   // A Generated variant may use a narrower ACTIVE PT in the *same canonical
+   // owner pack*, provided the source RPM L3, course and unit stay locked.
+   const sibling=meta.sourceKind==='generated'&&primaryRecord.ownerPack&&
+     problemType[0].ownerPack===primaryRecord.ownerPack;
+   if(!sibling)issues.push('META_PROBLEM_TYPE_PRIMARY_RPM_PARENT_MISMATCH');
+  }
   const template=meta.templateKey==null?null:(taxonomy.templates||[]).filter(row=>row.templateKey===meta.templateKey);
   if(meta.templateKey==null){
    if(!nonempty(meta.metaDebt?.templateKey))issues.push('META_TEMPLATE_UNKNOWN_WITHOUT_DEBT');
@@ -120,12 +137,17 @@ function validateMetaTaxonomyBindings(root,meta,primaryRecord=null){
    if(!Array.isArray(keys)||new Set(keys).size!==keys.length||keys.some(key=>!nonempty(key))){issues.push('META_'+label+'_KEYS_INVALID');continue;}
    for(const key of keys){
     const found=(concepts.concepts||[]).filter(row=>row.conceptKey===key);
-    if(found.length!==1||found[0].status!=='ACTIVE'){issues.push('META_'+label+'_NOT_ACTIVE_UNIQUE:'+key);continue;}
+    if(found.length!==1||found[0].status!=='ACTIVE'){
+      if(!generatedKeyRegistered('crossConcepts',key))issues.push('META_'+label+'_NOT_ACTIVE_UNIQUE:'+key);
+      continue;
+    }
    }
   }
   for(const key of meta.conditionKeys||[]){
    const found=(conditions.conditions||[]).filter(row=>row.conditionKey===key);
-   if(found.length!==1||found[0].status!=='ACTIVE')issues.push('META_CONDITION_NOT_ACTIVE_UNIQUE:'+key);
+   if(found.length!==1||found[0].status!=='ACTIVE'){
+     if(!generatedKeyRegistered('conditions',key))issues.push('META_CONDITION_NOT_ACTIVE_UNIQUE:'+key);
+   }
   }
   if(!Array.isArray(rules.integrationPatterns)||!rules.integrationPatterns.includes(meta.integrationPattern))issues.push('META_INTEGRATION_PATTERN_NOT_CANONICAL');
  }catch(e){issues.push('META_TAXONOMY_BINDING_INSPECTION_ERROR:'+e.message);}
@@ -197,7 +219,10 @@ function validateAuthorityBinding(root,meta,question,uid){
     else{
      const candidate=candidateMatches[0];
      const parent=candidate.proposedParentRPMPrimaryL3||candidate.parentRPMPrimaryL3||candidate.parentPrimaryL3||candidate.parentL3;
-     if(parent!==meta.rpmL3&&parent!==authorityCode(meta.rpmL3)&&parent!==authorityLabel(meta.rpmL3)&&parent!==primaryRecord?.rpmPath?.l3)
+     const parentRecordId=candidate.parentPrimaryL3RecordId||candidate.parentRPMPrimaryL3RecordId||
+       candidate.parentRpmL3RecordId||registry.parentPrimaryL3RecordId||registry.parentRPMPrimaryL3RecordId;
+     if(parent!==meta.rpmL3&&parent!==authorityCode(meta.rpmL3)&&parent!==authorityLabel(meta.rpmL3)&&
+        parent!==primaryRecord?.rpmPath?.l3&&parentRecordId!==meta.rpmPrimaryRecordId)
       issues.push('GENERATED_L4_PARENT_L3_MISMATCH');
      if(candidate.sourceUid&&candidate.sourceUid!==uid&&!(candidate.exampleUids||[]).includes(uid))issues.push('GENERATED_L4_UID_SCOPE_MISMATCH');
      if(!candidate.sourceUid&&!(candidate.exampleUids||[]).includes(uid)&&candidate.consumerSelectable!==true&&candidate.canonicalPromoted!==true)
@@ -310,7 +335,7 @@ function audit(root){
     }
     const authorityBinding=validateAuthorityBinding(root,m.meta,q,uid);
     for(const item of authorityBinding.issues)issue(item);
-    for(const item of validateMetaTaxonomyBindings(root,m.meta,authorityBinding.primaryRecord))issue(item);
+    for(const item of validateMetaTaxonomyBindings(root,m.meta,authorityBinding.primaryRecord,uid))issue(item);
    }else{
     const prior=historicalEvidenceCompat.get(uid);
     if(!prior||prior.metaFinalSha256!==sha256(m.meta)||prior.metaReviewEvidenceSha256!==m.metaReviewEvidenceSha256||prior.sourceShardGitSha!==sourceBlob)

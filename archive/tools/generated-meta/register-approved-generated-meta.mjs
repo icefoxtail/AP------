@@ -156,7 +156,7 @@ export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence,
   const authorityValidation = validateAuthorityBinding(root, meta, sourceQuestion, uid);
   if (authorityValidation.issues.length) throw new Error(`META_AUTHORITY_INVALID:${authorityValidation.issues.join('|')}`);
   const parentRecord = authorityValidation.primaryRecord;
-  const taxonomyIssues = validateMetaTaxonomyBindings(root, meta, parentRecord);
+  const taxonomyIssues = validateMetaTaxonomyBindings(root, meta, parentRecord, uid);
   if (taxonomyIssues.length) throw new Error(`META_TAXONOMY_INVALID:${taxonomyIssues.join('|')}`);
   const sourceHadUid = sourceQuestion.uid === uid;
   if (sourceQuestion.uid == null) sourceQuestion.uid = uid;
