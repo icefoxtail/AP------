@@ -2,17 +2,17 @@
 from __future__ import annotations
 from copy import deepcopy
 import math
-from .geometry_model import (Line,Circle,point,finite,line_intersection,
+from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersection,
     parallel_check,perpendicular_check,point_on_line,tangent_check)
 
-KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE',
+KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL',
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL'}
-FIELDS={'id','kind','at','from','to','center','radius','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -82,8 +82,17 @@ def validate(spec):
                     raise ValueError('CONDITION_LINES_REQUIRED')
             elif not isinstance(obj.get('text'),str): raise ValueError('LABEL_TEXT_REQUIRED')
     for obj in spec['objects']:
+        if obj['kind'] != 'CIRCULAR_ARC': continue
+        refs=(obj['centerPoint'],obj['startPoint'],obj['endPoint'])
+        if len(set(refs)) != 3 or any(objects.get(ref,{}).get('kind') != 'POINT' for ref in refs):
+            raise ValueError('CIRCULAR_ARC_POINT_REFS_REQUIRED:'+obj['id'])
+        arc=CircularArc(geometry[refs[0]],geometry[refs[1]],geometry[refs[2]],obj['sweep'])
+        geometry[obj['id']]=arc
+        relations.append({'id':obj['id'],'kind':'CIRCULAR_ARC','status':'PASS','observed':arc.degrees})
+    for obj in spec['objects']:
         kind=obj['kind']; refs=obj.get('refs',[])
         if any(ref not in objects for ref in refs): raise ValueError('UNKNOWN_REF')
+        if kind == 'CIRCULAR_ARC': continue
         if kind in {'POINT_NAME','COORDINATE_LABEL'}:
             if obj.get('target') not in geometry or objects[obj['target']]['kind']!='POINT': raise ValueError('POINT_TARGET_REQUIRED')
             if kind=='POINT_NAME' and not isinstance(obj.get('text'),str): raise ValueError('POINT_NAME_REQUIRED')
