@@ -1,5 +1,11 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT USER OVERRIDE — 2026-10-09 L3·발문·자동출시
+- 새 QID9의 최우선 실행은 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 상단 CURRENT USER AUTHORITY 절이다. **L3 잠금 → 기존 L4/Generated EXT 탐색 → CrossConcept/Condition/Integration 조합 → 9문항 기획** 후 학생용 발문부터 실제 내신 품질을 확인한다.
+- GPT 독립검수 1회 PASS 후 해당 UID는 별도 EXT L4 승인·active binding 요청·중복 분류 정리 없이 Archive 2.0 Generated Consumer에 즉시 등록하고 main에 병합한다. Generated EXT L4는 별도 GENERATED_ACTIVE namespace로 기록해 RPM LOCKED를 건드리지 않는다.
+- Codex는 품질판정 금지, 지정 파일 Git 병합만. 출시 가능한 PASS를 '마스터 승인 대기'로 보류하는 기존 문구는 신규 QID9에 적용하지 않는다. 기술적 조회/직렬화 오류는 수정해 닫고 미실행을 PASS라고 하지 않는다.
+- 학교식 한국어 발문 → 독립 수학·교육과정/5지 → 한국어 해설 순서로 판단한다. 학생 사용 후 개별 UID 불만·원장 결정으로 비활성화할 수 있도록 진단 정보 보존.
+
 ## CURRENT HARD — GPT 원본 1문항 × 9슬롯 직렬 제작·검수 / 연속 핸드오프
 - 상세 실행·모의고사 3×3 슬롯 선택 및 미사용 UID 순환 설계 정본: `alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md`. 이 계획의 제품 미구현 영역은 구현·출시 완료로 보고하지 않는다. (2026-10-09)
 - 형님 직접 지시: **source qid 한 개씩만** 다룬다. 해당 문항의 A1·A2·A3(반복 숙달), B1·B2·B3(사고 확장), C1·C2·C3(실전 평가) 총 **9개 슬롯을 모두 설계하고 완성 후보 제작을 목표가 아니라 필수 작업량으로 배정**한다. 9개가 완성되지 않으면 숫자를 채운 척하지 말고 해당 qid를 `QID_INCOMPLETE`로 기록하고 누락 슬롯의 이유·다음 작업을 남긴다. 미완성인데 다음 qid를 자동 개시하지 않는다.
