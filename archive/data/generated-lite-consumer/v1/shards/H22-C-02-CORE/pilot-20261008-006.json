@@ -55,7 +55,227 @@
         "solution": "[키포인트] 두 인수의 차이를 확인하여 다항식을 복원한다.\n$Q(x)=x^2+x+1$로 놓으면 $P^2+2xP=Q(Q+2x)$이다.\n$(P-Q)(P+Q+2x)=0$이므로 $P=Q$ 또는 $P=-Q-2x$이다.\n최고차항이 양수인 경우는 $P=Q$뿐이다.\n따라서 $P(-1)=1-1+1=1$이다.",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
         "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 3
+        "difficultyBucket": 3,
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q10-002",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-140",
+          "rpmL1": "다항식",
+          "rpmL2": "항등식과 나머지정리",
+          "rpmL3": "항등식",
+          "rpmL4": "미정계수법",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "CC_COMPLETE_SQUARE",
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "REINTERPRETATION",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-02-CORE",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-20261008-HYC26-Q10-002",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmL1": "다항식",
+        "rpmL2": "항등식과 나머지정리",
+        "rpmL3": "항등식",
+        "rpmL4": "미정계수법",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-02-CORE",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
       }
     },
     {
@@ -109,7 +329,227 @@
         "solution": "[키포인트] 우변에 있는 두 인수의 차이로 $P(x)$를 판정한다.\n$Q(x)=x^2-3x+4$로 놓으면 우변은 $Q(Q+2x-2)$이다.\n양변의 차를 인수분해하면 $(P-Q)(P+Q+2x-2)=0$이다.\n최고차항의 계수가 양수인 다항식은 $P=Q$이므로 $P(1)=1-3+4=2$이다.",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
         "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 3
+        "difficultyBucket": 3,
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q10-003",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-140",
+          "rpmL1": "다항식",
+          "rpmL2": "항등식과 나머지정리",
+          "rpmL3": "항등식",
+          "rpmL4": "미정계수법",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "CC_COMPLETE_SQUARE",
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "REINTERPRETATION",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-02-CORE",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-20261008-HYC26-Q10-003",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmL1": "다항식",
+        "rpmL2": "항등식과 나머지정리",
+        "rpmL3": "항등식",
+        "rpmL4": "미정계수법",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-02-CORE",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
       }
     },
     {
@@ -163,7 +603,227 @@
         "solution": "[키포인트] 양변의 동류항 계수를 비교한다.\n$P(x)^2=x^4+2ax^3+(a^2+2b)x^2+2abx+b^2$이다.\n$(x+2)P(x)=x^3+(a+2)x^2+(b+2a)x+2b$이다.\n$x^3$의 계수에서 $2a+1=3$이므로 $a=1$이다.\n$x^2$의 계수에서 $a^2+2b+a+2=6$이므로 $b=1$이다.\n따라서 $a+b=2$이다.",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
         "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 4
+        "difficultyBucket": 4,
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q10-004",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-140",
+          "rpmL1": "다항식",
+          "rpmL2": "항등식과 나머지정리",
+          "rpmL3": "항등식",
+          "rpmL4": "미정계수법",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": [
+            "CC_COMPLETE_SQUARE",
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "REINTERPRETATION",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-02-CORE",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-20261008-HYC26-Q10-004",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmL1": "다항식",
+        "rpmL2": "항등식과 나머지정리",
+        "rpmL3": "항등식",
+        "rpmL4": "미정계수법",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-02-CORE",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
       }
     },
     {
@@ -217,7 +877,227 @@
         "solution": "[키포인트] 높은 차수에서도 우변 인수 차이와 최고차항 조건을 이용한다.\n$Q(x)=x^3-2x+1$이라 놓으면 우변은 $Q(Q+x)$이다.\n$(P-Q)(P+Q+x)=0$이므로 $P=Q$ 또는 $P=-Q-x$이다.\n두 번째는 최고차항의 계수가 음수이다.\n따라서 $P=x^3-2x+1$이고 $P(2)=8-4+1=5$이다.",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
         "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 4
+        "difficultyBucket": 4,
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q10-005",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-140",
+          "rpmL1": "다항식",
+          "rpmL2": "항등식과 나머지정리",
+          "rpmL3": "항등식",
+          "rpmL4": "미정계수법",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "difficultyBucket": 4,
+          "level": "상",
+          "crossConceptKeys": [
+            "CC_COMPLETE_SQUARE",
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "REINTERPRETATION",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-02-CORE",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-20261008-HYC26-Q10-005",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmL1": "다항식",
+        "rpmL2": "항등식과 나머지정리",
+        "rpmL3": "항등식",
+        "rpmL4": "미정계수법",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 4,
+        "level": "상",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-02-CORE",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
       }
     },
     {
@@ -271,7 +1151,227 @@
         "solution": "[키포인트] 양변에 $x^2$을 더해 완전제곱식으로 만든다.\n$(P-x)^2=(x^2+1)(x-1)^2+x^2=(x^2-x+1)^2$이다.\n따라서 $P-x=\\pm(x^2-x+1)$이다.\n최고차항의 계수가 양수이므로 $P-x=x^2-x+1$이며 $P=x^2+1$이다.\n따라서 $P(1)=2$이다.",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
         "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "difficultyBucket": 3
+        "difficultyBucket": 3,
+        "metaProjection": {
+          "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+          "uid": "ALITE-20261008-HYC26-Q10-006",
+          "status": "LEGACY_NOT_RECERTIFIED",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-02",
+          "subUnitKey": "H22-C-02-CORE",
+          "rpmPrimaryRecordId": "H1-RPM-140",
+          "rpmL1": "다항식",
+          "rpmL2": "항등식과 나머지정리",
+          "rpmL3": "항등식",
+          "rpmL4": "미정계수법",
+          "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+          "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "difficultyBucket": 3,
+          "level": "중",
+          "crossConceptKeys": [
+            "CC_COMPLETE_SQUARE",
+            "CC_POLYNOMIAL_FACTORIZATION"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "integrationPattern": "REINTERPRETATION",
+          "approval": "REVIEW_APPROVED",
+          "reviewStatus": "REVIEW_PASS",
+          "consumerSelectable": true,
+          "evidenceByField": {
+            "standardCourse": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardCourse"
+            },
+            "standardUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "standardUnitKey"
+            },
+            "subUnitKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "subUnitKey"
+            },
+            "rpmPrimaryRecordId": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmPrimaryRecordId"
+            },
+            "rpmL1": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL1"
+            },
+            "rpmL2": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL2"
+            },
+            "rpmL3": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL3"
+            },
+            "rpmL4": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4"
+            },
+            "rpmL4Namespace": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmL4Namespace"
+            },
+            "rpmDraftAuthorityRef": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthorityRef"
+            },
+            "rpmDraftAuthoritySha256": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "rpmDraftAuthoritySha256"
+            },
+            "problemTypeKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "problemTypeKey"
+            },
+            "templateKey": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "templateKey"
+            },
+            "difficultyBucket": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "difficultyBucket"
+            },
+            "level": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "level"
+            },
+            "crossConceptKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "crossConceptKeys"
+            },
+            "conditionKeys": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "conditionKeys"
+            },
+            "integrationPattern": {
+              "status": "EXACT_SOURCE",
+              "evidenceKey": "integrationPattern"
+            }
+          },
+          "evidenceDebt": [],
+          "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+          "physicalStorageBucketKey": "H22-C-02-CORE",
+          "sourceKind": "generated",
+          "rpmMappingStatus": "EXACT_CROSSWALK"
+        }
+      },
+      "metaProjection": {
+        "schemaVersion": "PROBLEM_BANK_META_PROJECTION_V1",
+        "uid": "ALITE-20261008-HYC26-Q10-006",
+        "status": "LEGACY_NOT_RECERTIFIED",
+        "standardCourse": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "rpmL1": "다항식",
+        "rpmL2": "항등식과 나머지정리",
+        "rpmL3": "항등식",
+        "rpmL4": "미정계수법",
+        "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+        "rpmDraftAuthorityRef": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "rpmDraftAuthoritySha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "difficultyBucket": 3,
+        "level": "중",
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "approval": "REVIEW_APPROVED",
+        "reviewStatus": "REVIEW_PASS",
+        "consumerSelectable": true,
+        "evidenceByField": {
+          "standardCourse": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardCourse"
+          },
+          "standardUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "standardUnitKey"
+          },
+          "subUnitKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "subUnitKey"
+          },
+          "rpmPrimaryRecordId": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmPrimaryRecordId"
+          },
+          "rpmL1": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL1"
+          },
+          "rpmL2": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL2"
+          },
+          "rpmL3": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL3"
+          },
+          "rpmL4": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4"
+          },
+          "rpmL4Namespace": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmL4Namespace"
+          },
+          "rpmDraftAuthorityRef": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthorityRef"
+          },
+          "rpmDraftAuthoritySha256": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "rpmDraftAuthoritySha256"
+          },
+          "problemTypeKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "problemTypeKey"
+          },
+          "templateKey": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "templateKey"
+          },
+          "difficultyBucket": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "difficultyBucket"
+          },
+          "level": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "level"
+          },
+          "crossConceptKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "crossConceptKeys"
+          },
+          "conditionKeys": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "conditionKeys"
+          },
+          "integrationPattern": {
+            "status": "EXACT_SOURCE",
+            "evidenceKey": "integrationPattern"
+          }
+        },
+        "evidenceDebt": [],
+        "evidenceLedgerRef": "archive/data/generated-lite-consumer/v1/legacy-meta-evidence-323.json",
+        "physicalStorageBucketKey": "H22-C-02-CORE",
+        "sourceKind": "generated",
+        "rpmMappingStatus": "EXACT_CROSSWALK"
       }
     }
   ]
