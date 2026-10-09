@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_META_EXTENSIONS_QID20_V1",
+  "curriculum": "2022",
+  "course": "공통수학2",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceQid": 20,
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "parentRpmL3": "교집합과 합집합",
+  "parentRpmL3RecordIds": [
+    "H1-RPM-238"
+  ],
+  "parentL4": "원소 개수",
+  "scope": "GENERATED_ONLY_RPM_LOCKED_UNMODIFIED",
+  "crossConcepts": [],
+  "crossConceptRationale": "순수 두 집합의 포함배제 및 영역의 원소 수만을 사용해 다른 교과·단원 CrossConcept는 적용되지 않음",
+  "conditions": [
+    {
+      "id": "EXT-COND-H1-Q20-NONPARTICIPANT-EXACT",
+      "labelKo": "어느 모임에도 속하지 않은 학생 인원 고정",
+      "definition": "전체집합에서 합집합을 제외한 영역의 원소 수를 알려 주는 등식 조건",
+      "role": "기존 동아리 참여 인원에서 교집합·차집합의 확정값 역산",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-238"
+      ],
+      "sourceQid": 20,
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q20-B1"
+      ],
+      "status": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY"
+    },
+    {
+      "id": "EXT-COND-H1-Q20-EXACTLY-ONE-BOUND",
+      "labelKo": "정확히 한 모임에만 속한 인원 조건",
+      "definition": "두 차집합의 원소 수의 합에 등식·최솟값·최댓값 범위를 제시",
+      "role": "교집합의 양쪽 경계 또는 확정값을 결정",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-238"
+      ],
+      "sourceQid": 20,
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q20-B3",
+        "ALITE-PALMA25-2MID-Q20-C1",
+        "ALITE-PALMA25-2MID-Q20-C2",
+        "ALITE-PALMA25-2MID-Q20-C3"
+      ],
+      "status": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY"
+    },
+    {
+      "id": "EXT-COND-H1-Q20-UNION-LOWER-BOUND",
+      "labelKo": "적어도 한 모임에 속한 인원 하한",
+      "definition": "합집합의 원소 수가 정해진 숫자 이상이라는 제한",
+      "role": "교집합 인원 수에 상한을 부여",
+      "parentRpmL3RecordIds": [
+        "H1-RPM-238"
+      ],
+      "sourceQid": 20,
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q20-B2",
+        "ALITE-PALMA25-2MID-Q20-C2",
+        "ALITE-PALMA25-2MID-Q20-C3"
+      ],
+      "status": "GENERATED_ACTIVE_CREATOR_CANDIDATE_ONLY"
+    }
+  ],
+  "canonicalConditionKeysReused": [
+    "COND_RANGE"
+  ],
+  "canonicalRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+  "sourceUidMetadataProjection": {
+    "ALITE-PALMA25-2MID-Q20-A1": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2
+    },
+    "ALITE-PALMA25-2MID-Q20-A2": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2
+    },
+    "ALITE-PALMA25-2MID-Q20-A3": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2
+    },
+    "ALITE-PALMA25-2MID-Q20-B1": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "EXT-COND-H1-Q20-NONPARTICIPANT-EXACT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3
+    },
+    "ALITE-PALMA25-2MID-Q20-B2": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q20-UNION-LOWER-BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4
+    },
+    "ALITE-PALMA25-2MID-Q20-B3": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "EXT-COND-H1-Q20-EXACTLY-ONE-BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3
+    },
+    "ALITE-PALMA25-2MID-Q20-C1": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q20-EXACTLY-ONE-BOUND"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4
+    },
+    "ALITE-PALMA25-2MID-Q20-C2": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q20-EXACTLY-ONE-BOUND",
+        "EXT-COND-H1-Q20-UNION-LOWER-BOUND"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4
+    },
+    "ALITE-PALMA25-2MID-Q20-C3": {
+      "rpmL1": "집합과 명제",
+      "rpmL2": "집합의 연산",
+      "rpmL3": "교집합과 합집합",
+      "rpmL4": "원소 개수",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "EXT-COND-H1-Q20-EXACTLY-ONE-BOUND",
+        "EXT-COND-H1-Q20-UNION-LOWER-BOUND"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 5
+    }
+  },
+  "underlyingEvidence": "Q20 candidate final student stem and solution plus four-region feasible integer count witness per UID",
+  "consumerState": "CREATOR_DRAFT_NOT_REGISTERED"
+}
