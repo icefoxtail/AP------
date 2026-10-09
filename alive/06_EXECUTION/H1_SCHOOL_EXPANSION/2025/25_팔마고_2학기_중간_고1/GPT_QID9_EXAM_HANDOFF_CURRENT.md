@@ -1,3 +1,13 @@
+## CURRENT — 2026-10-10 팔마고 q17 CREATE 9개 신규 후보
+- 브랜치 `work/alive-25-palma-h1-2mid-qid9`; source q17 (`PT_MOVE_REFLECTION_SHORTEST`) 기반 A1~C3 9문항 제작자 역발문·오답 경로 자체점검 완료.
+- 파일: `GPT_QID9_Q17_PACKAGE.json`, `GPT_QID9_Q17_STEM_SELF_REVIEW.md`. 원본 q17 및 기출·q01~q16은 무변경.
+- 누적: q01~q17 × 9 = **153 신규 후보** (q09~q17 81, q09~q16 기존 72 보존).
+- 상태: q17 `CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED 9/9`, 독립 공개답 검수 NOT_RUN, Consumer/index 0/9, Chrome NOT_TESTED, main 미출시. 다음 원본 q18.
+- 정답 분포 ①1·②2·③2·④2·⑤2. RPM L3 대칭이동 lock, B2 교점 복원·C2 영역 경계·C3 자연수 범위 exact check.
+- 원본 시험지 인쇄 PNG 시각 대조는 이번 생성에서 하지 않았음. 신규 자체완결 발문만 사용. 사용자 지시로 공개답 검수/운영병합 시 새 q17만 점검하고 기존 승인 문항 반복 검수 금지.
+
+---
+
 # CURRENT 2026-10-09 — 팔마고 원본 q14 신규 9문항 작성·역발문 자체검산 완료 / 다음 q15
 
 - 원본 q14: 명제 ‘모든 x에 대해 -x²+ax-5<0’의 부정 매개변수 범위. RPM Primary L3 **명제와 조건** `H1-RPM-244`, 원본 blob `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`.

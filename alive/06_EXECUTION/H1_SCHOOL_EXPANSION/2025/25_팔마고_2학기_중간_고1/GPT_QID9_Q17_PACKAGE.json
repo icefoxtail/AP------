@@ -1,0 +1,1000 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 17,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "sourceStem": "원 x²+y²=4, A(2,0), B(√2,√2), P∈호AB, Q∈OB, R∈OA, 삼각형 PQR 둘레의 최솟값",
+    "storedSourceChoices": [
+      "$\\sqrt2$",
+      "$2$",
+      "$2\\sqrt2$",
+      "$4$",
+      "$4\\sqrt2$"
+    ],
+    "storedSourceAnswer": "③",
+    "originalImagePath": "assets/images/25_팔마고_2학기_중간_고1_기출/q17.png",
+    "sourceImageDirectVisualReview": "NOT_TESTED_GENERATED_INPUTS_ARE_SELF_CONTAINED",
+    "originalJsUnchanged": true
+  },
+  "lockedPrimaryL3": "대칭이동",
+  "rpmEvidence": {
+    "l1": "도형의 방정식",
+    "l2": "도형의 이동",
+    "l3": "대칭이동",
+    "l4": "직선에 대한 대칭",
+    "recordIds": [
+      "H1-RPM-228"
+    ],
+    "source": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "sourceOriginalPt": "PT_MOVE_REFLECTION_SHORTEST",
+    "sourceOriginalTemplate": "TT_SHORTEST_MULTI_LINE",
+    "ptTplActiveAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "rpmLockedPreserved": true
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+    "templateKeys": [
+      "TT_SHORTEST_MULTI_LINE",
+      "TT_SHORTEST_WITH_POSITION"
+    ],
+    "crossConceptKeys": [
+      "CC_CIRCLE_CENTER_RADIUS"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "conditionRegistryRef": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "generatedExtensionsCreated": 0,
+    "allItemsHaveExplicitUidMeta": true
+  },
+  "experiencePlan": {
+    "A": "원과 부채꼴 경계의 각을 30·45·60도로 바꾸는 원본형 직선경로 반사",
+    "B": "역반지름·최적 교점·역방향 좌표 복원",
+    "C": "비표준 방향의 좌표 반사·부채꼴 띠 반지름 하한·자연수 경계 개수",
+    "computationBudgetSeparated": true
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 1,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "uidCount": 9,
+    "reverseStem": "KEEP:9/REVISED:0/HOLD:0",
+    "distractorPaths": "36/36_EXPLICIT_REASON_TO_FIVE_CHOICES",
+    "coreIdentity": "2r*sin(theta), theta in (0,90), equality at arc bisector",
+    "exactBoundaryChecks": "B2_REFLECTED_LINE_INTERSECTIONS_Q=(1/2,sqrt3/2)_R=(1,0);C2_R_MIN_3_INTERSECTIONS_INSIDE_5;C3_N_19_TO_32",
+    "solutionFinalAnswerParity": "9/9",
+    "sourceImageDependence": "NONE_GENERATED_STUDENT_STEMS_SELF_CONTAINED",
+    "actualBrowserRender": "NOT_TESTED",
+    "independentGptQualityReview": "NOT_RUN"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-A1",
+      "slot": "A1",
+      "sourceQid": 17,
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $x^2+y^2=9$ 위의 점 $A(3,0)$, $B(\\dfrac{3\\sqrt2}{2},\\dfrac{3\\sqrt2}{2})$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때, 삼각형 $PQR$의 둘레의 길이의 최솟값은? (단, $O$는 원점이다.)",
+      "choices": [
+        "$3$",
+        "$3\\sqrt2$",
+        "$3\\sqrt3$",
+        "$6$",
+        "$6\\sqrt2$"
+      ],
+      "answer": "②",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=3$, $\\angle AOB=45^\\circ$이므로 $P_1P_2=2\\cdot3\\cdot\\dfrac{\\sqrt2}{2}=3\\sqrt2$이다. 따라서 최솟값은 $3\\sqrt2$이고 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "반사된 두 점 사이의 길이에서 $2\\sin45^\\circ$를 누락하여 반지름 $3$만 답함 → $3$",
+        "③": "$45^\\circ$를 $60^\\circ$로 잘못 읽어 $2\\cdot3\\sin60^\\circ=3\\sqrt3$ → ③",
+        "④": "반사된 점들이 지름 양 끝이라 착각하여 $2r=6$ → ④",
+        "⑤": "반사하여 얻은 길이 $3\\sqrt2$를 두 배 중복 합산하여 $6\\sqrt2$ → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "반사된 두 점 사이의 길이에서 $2\\sin45^\\circ$를 누락하여 반지름 $3$만 답함 → $3$",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$45^\\circ$를 $60^\\circ$로 잘못 읽어 $2\\cdot3\\sin60^\\circ=3\\sqrt3$ → ③",
+          "actualIncorrectChoice": "$3\\sqrt3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "반사된 점들이 지름 양 끝이라 착각하여 $2r=6$ → ④",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "반사하여 얻은 길이 $3\\sqrt2$를 두 배 중복 합산하여 $6\\sqrt2$ → ⑤",
+          "actualIncorrectChoice": "$6\\sqrt2$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "45도 경계에 대한 두 번의 반사와 실제 등호 성립",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 45도 경계에 대한 두 번의 반사와 실제 등호 성립. 질문: $r=3$, $\\angle AOB=45^\\circ$이므로 $P_1P_2=2\\cdot3\\cdot\\dfrac{\\sqrt2}{2}=3\\sqr. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-A2",
+      "slot": "A2",
+      "sourceQid": 17,
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $x^2+y^2=16$ 위의 점 $A(4,0)$, $B(2\\sqrt3,2)$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때, $PQ+QR+RP$의 최솟값은? (단, $O$는 원점이다.)",
+      "choices": [
+        "$2$",
+        "$2\\sqrt3$",
+        "$4$",
+        "$4\\sqrt3$",
+        "$8$"
+      ],
+      "answer": "③",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=4$, $\\angle AOB=30^\\circ$이므로 $P_1P_2=2\\cdot4\\cdot\\dfrac12=4$이다. 따라서 최솟값은 $4$이고 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "한 반지름의 수직 성분 $r\\sin30^\\circ=2$만 계산해 반사 두 점의 거리를 절반으로 둠 → ①",
+        "②": "반사 후 현이 아니라 $r\\cos30^\\circ=2\\sqrt3$을 거리로 착각 → ②",
+        "④": "현 공식에서 $\\sin30^\\circ$를 $\\cos30^\\circ$로 바꾸어 $2r\\cos30^\\circ=4\\sqrt3$ → ④",
+        "⑤": "반사점 사이의 현을 지름으로 오인하여 $2r=8$ → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "한 반지름의 수직 성분 $r\\sin30^\\circ=2$만 계산해 반사 두 점의 거리를 절반으로 둠 → ①",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "반사 후 현이 아니라 $r\\cos30^\\circ=2\\sqrt3$을 거리로 착각 → ②",
+          "actualIncorrectChoice": "$2\\sqrt3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "현 공식에서 $\\sin30^\\circ$를 $\\cos30^\\circ$로 바꾸어 $2r\\cos30^\\circ=4\\sqrt3$ → ④",
+          "actualIncorrectChoice": "$4\\sqrt3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "반사점 사이의 현을 지름으로 오인하여 $2r=8$ → ⑤",
+          "actualIncorrectChoice": "$8$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "30도 반사각과 현 길이의 분리",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 30도 반사각과 현 길이의 분리. 질문: $r=4$, $\\angle AOB=30^\\circ$이므로 $P_1P_2=2\\cdot4\\cdot\\dfrac12=4$이다. 따라서 최솟값은. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-A3",
+      "slot": "A3",
+      "sourceQid": 17,
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $x^2+y^2=9$ 위의 점 $A(3,0)$, $B(\\dfrac32,\\dfrac{3\\sqrt3}{2})$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때, 삼각형 $PQR$의 둘레의 길이의 최솟값은? (단, $O$는 원점이다.)",
+      "choices": [
+        "$\\dfrac32$",
+        "$\\dfrac{3\\sqrt3}{2}$",
+        "$3$",
+        "$3\\sqrt3$",
+        "$6$"
+      ],
+      "answer": "④",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=3$, $\\angle AOB=60^\\circ$이므로 $P_1P_2=2\\cdot3\\cdot\\dfrac{\\sqrt3}{2}=3\\sqrt3$이다. 따라서 최솟값은 $3\\sqrt3$이고 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "$r\\cos60^\\circ=\\dfrac32$을 반사된 현의 길이로 오해 → ①",
+        "②": "$r\\sin60^\\circ=\\dfrac{3\\sqrt3}{2}$만 쓰고 두 반사점 사이 거리의 계수 2를 누락 → ②",
+        "③": "$\\sin60^\\circ$ 대신 $\\cos60^\\circ$을 사용하여 $2r\\cos60^\\circ=3$ → ③",
+        "⑤": "두 반사점을 원의 지름 끝점이라 잘못 판단하여 $2r=6$ → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$r\\cos60^\\circ=\\dfrac32$을 반사된 현의 길이로 오해 → ①",
+          "actualIncorrectChoice": "$\\dfrac32$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "$r\\sin60^\\circ=\\dfrac{3\\sqrt3}{2}$만 쓰고 두 반사점 사이 거리의 계수 2를 누락 → ②",
+          "actualIncorrectChoice": "$\\dfrac{3\\sqrt3}{2}$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$\\sin60^\\circ$ 대신 $\\cos60^\\circ$을 사용하여 $2r\\cos60^\\circ=3$ → ③",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "두 반사점을 원의 지름 끝점이라 잘못 판단하여 $2r=6$ → ⑤",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "60도 호·양쪽 반사 후 120도 현의 길이",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 60도 호·양쪽 반사 후 120도 현의 길이. 질문: $r=3$, $\\angle AOB=60^\\circ$이므로 $P_1P_2=2\\cdot3\\cdot\\dfrac{\\sqrt3}{2}=3\\sqr. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-B1",
+      "slot": "B1",
+      "sourceQid": 17,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "양수 $k$에 대하여 원 $x^2+y^2=k$ 위의 점 $A(\\sqrt k,0)$, $B(\\sqrt{\\dfrac{k}{2}},\\sqrt{\\dfrac{k}{2}})$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직인다. 삼각형 $PQR$의 둘레의 길이의 최솟값이 $4\\sqrt2$일 때, $k$의 값은? (단, $O$는 원점이다.)",
+      "choices": [
+        "$16$",
+        "$4$",
+        "$8$",
+        "$32$",
+        "$64$"
+      ],
+      "answer": "①",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=\\sqrt k$이고 두 반사 경계가 이루는 각은 $45^\\circ$이다. 따라서 최소 둘레는 $2\\sqrt k\\sin45^\\circ=\\sqrt{2k}$. 조건에 의해 $\\sqrt{2k}=4\\sqrt2$, 즉 $2k=32$이므로 $k=16$이다. 따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "$r=4$까지 옳게 구한 뒤 원의 방정식 계수 $k=r^2$ 대신 $k=r=4$로 둠 → ②",
+        "③": "$(4\\sqrt2)^2=32$을 구한 뒤 반사 현 공식의 제곱식 $2k=32$이 아닌 $4k=32$로 오해 → $k=8$ → ③",
+        "④": "$(4\\sqrt2)^2=32$에서 $2k=32$의 계수 2를 빠뜨려 $k=32$ → ④",
+        "⑤": "최소 둘레를 반사 현이 아닌 반지름의 절반으로 착각하여 $r=8$로 놓고 $k=64$ → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "mistake": "$r=4$까지 옳게 구한 뒤 원의 방정식 계수 $k=r^2$ 대신 $k=r=4$로 둠 → ②",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "$(4\\sqrt2)^2=32$을 구한 뒤 반사 현 공식의 제곱식 $2k=32$이 아닌 $4k=32$로 오해 → $k=8$ → ③",
+          "actualIncorrectChoice": "$8$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "$(4\\sqrt2)^2=32$에서 $2k=32$의 계수 2를 빠뜨려 $k=32$ → ④",
+          "actualIncorrectChoice": "$32$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "최소 둘레를 반사 현이 아닌 반지름의 절반으로 착각하여 $r=8$로 놓고 $k=64$ → ⑤",
+          "actualIncorrectChoice": "$64$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "대칭 최단경로 공식을 역으로 이용하여 원의 방정식 계수 결정",
+      "level": "중",
+      "difficultyBucket": 3,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "level": "중",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 대칭 최단경로 공식을 역으로 이용하여 원의 방정식 계수 결정. 질문: $r=\\sqrt k$이고 두 반사 경계가 이루는 각은 $45^\\circ$이다. 따라서 최소 둘레는 $2\\sqrt k\\sin45^\\cir. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-B2",
+      "slot": "B2",
+      "sourceQid": 17,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $x^2+y^2=3$ 위의 세 점 $A(\\sqrt3,0)$, $B(\\dfrac{\\sqrt3}{2},\\dfrac32)$, $P(\\dfrac32,\\dfrac{\\sqrt3}{2})$가 있다. 점 $Q$는 선분 $OB$ 위, 점 $R$은 선분 $OA$ 위를 움직인다. 삼각형 $PQR$의 둘레의 길이가 최소가 될 때, 선분 $QR$의 길이는? (단, $O$는 원점이다.)",
+      "choices": [
+        "$\\dfrac12$",
+        "$\\dfrac{\\sqrt3}{2}$",
+        "$\\sqrt3$",
+        "$3$",
+        "$1$"
+      ],
+      "answer": "⑤",
+      "solution": "$\\angle AOB=60^\\circ$이고 $P$는 그 사이의 $30^\\circ$ 방향에 있다. $P$를 $OB$에 대칭이동한 점은 $P_1=(0,\\sqrt3)$, $OA$에 대칭이동한 점은 $P_2=(\\dfrac32,-\\dfrac{\\sqrt3}{2})$이다. 둘레가 최소일 때 $P_1,Q,R,P_2$는 이 순서로 일직선상에 있다. 선분 $P_1P_2$와 $OB$의 교점은 $Q=(\\dfrac12,\\dfrac{\\sqrt3}{2})$, $OA$의 교점은 $R=(1,0)$이다. 따라서 $QR=\\sqrt{(1-\\dfrac12)^2+(0-\\dfrac{\\sqrt3}{2})^2}=1$이고 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "$Q$와 $R$의 $x$좌표 차 $1-\\dfrac12=\\dfrac12$만 길이로 삼고 $y$좌표 차를 누락 → ①",
+        "②": "$Q$의 높이 $\\dfrac{\\sqrt3}{2}$를 사선 $QR$의 실제 길이로 오해 → ②",
+        "③": "최단 직선의 내부 구간 $QR$ 대신 원의 반지름 $OP=\\sqrt3$으로 답함 → ③",
+        "④": "반사점 $P_1P_2$의 전체 길이 $3$을 내부 선분 $QR$이라고 오해 → ④"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$Q$와 $R$의 $x$좌표 차 $1-\\dfrac12=\\dfrac12$만 길이로 삼고 $y$좌표 차를 누락 → ①",
+          "actualIncorrectChoice": "$\\dfrac12$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "$Q$의 높이 $\\dfrac{\\sqrt3}{2}$를 사선 $QR$의 실제 길이로 오해 → ②",
+          "actualIncorrectChoice": "$\\dfrac{\\sqrt3}{2}$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "최단 직선의 내부 구간 $QR$ 대신 원의 반지름 $OP=\\sqrt3$으로 답함 → ③",
+          "actualIncorrectChoice": "$\\sqrt3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "반사점 $P_1P_2$의 전체 길이 $3$을 내부 선분 $QR$이라고 오해 → ④",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "반사로 펼친 최단경로 위의 실제 중간 교점을 좌표로 복원",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_WITH_POSITION",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 반사로 펼친 최단경로 위의 실제 중간 교점을 좌표로 복원. 질문: $\\angle AOB=60^\\circ$이고 $P$는 그 사이의 $30^\\circ$ 방향에 있다. $P$를 $OB$에 대칭이동한 점은 $. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-B3",
+      "slot": "B3",
+      "sourceQid": 17,
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "반지름이 $5$이고 중심이 원점 $O$인 원 위 제1사분면의 점을 $B$라고 하고 $A(5,0)$을 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때, 삼각형 $PQR$의 둘레의 길이의 최솟값은 $6$이다. 점 $B$의 $x$좌표는?",
+      "choices": [
+        "$1$",
+        "$4$",
+        "$2$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": "②",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$\\theta=\\angle AOB$라 하면 두 직선에 대한 반사로 최솟값은 $2\\cdot5\\sin\\theta$이다. 점 $B=(x_B,y_B)$는 반지름 $5$인 원의 제1사분면에 있으므로 $y_B=5\\sin\\theta$. 따라서 $2y_B=6$에서 $y_B=3$이다. 원의 방정식 $x_B^2+y_B^2=25$에서 $x_B^2=16$이고 제1사분면이므로 $x_B=4$이다. 따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "원의 방정식 $x_B^2+3^2=25$에서 $x_B^2=16$까지 계산하고, $\\sqrt{16}$을 $1$로 잘못 계산 → ①",
+        "③": "높이 $y_B=3$을 구한 뒤 $5-3=2$를 좌표 $x_B$로 잘못 처리 → ③",
+        "④": "둘레식 $2y_B=6$에서 얻은 $y_B=3$을 $x_B$로 착각 → ④",
+        "⑤": "원의 반지름 $5$를 그대로 점 $B$의 $x$좌표로 답함 → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "원의 방정식 $x_B^2+3^2=25$에서 $x_B^2=16$까지 계산하고, $\\sqrt{16}$을 $1$로 잘못 계산 → ①",
+          "actualIncorrectChoice": "$1$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "높이 $y_B=3$을 구한 뒤 $5-3=2$를 좌표 $x_B$로 잘못 처리 → ③",
+          "actualIncorrectChoice": "$2$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "둘레식 $2y_B=6$에서 얻은 $y_B=3$을 $x_B$로 착각 → ④",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "원의 반지름 $5$를 그대로 점 $B$의 $x$좌표로 답함 → ⑤",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "반사 경로의 최솟값으로부터 미지의 원 위 위치 역결정",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 반사 경로의 최솟값으로부터 미지의 원 위 위치 역결정. 질문: $\\theta=\\angle AOB$라 하면 두 직선에 대한 반사로 최솟값은 $2\\cdot5\\sin\\theta$이다. 점 $B=(x_B,. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-C1",
+      "slot": "C1",
+      "sourceQid": 17,
+      "mode": "TYPE_BANK",
+      "stem": "원 $x^2+y^2=25$ 위의 두 점 $A(5,0)$, $B(3,4)$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때, 삼각형 $PQR$의 둘레의 길이의 최솟값은? (단, $O$는 원점이다.)",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ],
+      "answer": "④",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$OB=5$, $B=(3,4)$이므로 $\\sin\\angle AOB=\\dfrac45$이다. 두 직선에 대한 반사로 $P_1P_2=2r\\sin\\angle AOB=2\\cdot5\\cdot\\dfrac45=8$. 호의 중점 방향에서 등호가 실현된다. 따라서 최솟값은 $8$이고 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "$B$의 높이 $4$를 반사 경로 전체 거리로 착각하여 계수 2 누락 → ①",
+        "②": "반사된 두 점의 거리 대신 반지름 $OB=5$를 답함 → ②",
+        "③": "수직성분 $4$가 아닌 수평성분 $3$을 써 $2\\cdot3=6$ → ③",
+        "⑤": "반사점 사이의 현을 지름 $2r=10$으로 오해 → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$B$의 높이 $4$를 반사 경로 전체 거리로 착각하여 계수 2 누락 → ①",
+          "actualIncorrectChoice": "$4$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "반사된 두 점의 거리 대신 반지름 $OB=5$를 답함 → ②",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "수직성분 $4$가 아닌 수평성분 $3$을 써 $2\\cdot3=6$ → ③",
+          "actualIncorrectChoice": "$6$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "반사점 사이의 현을 지름 $2r=10$으로 오해 → ⑤",
+          "actualIncorrectChoice": "$10$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "기울기가 비표준인 경계에서 좌표의 높이와 반사 현을 연결",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [],
+        "crossConceptEvidenceLabels": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 기울기가 비표준인 경계에서 좌표의 높이와 반사 현을 연결. 질문: $OB=5$, $B=(3,4)$이므로 $\\sin\\angle AOB=\\dfrac45$이다. 두 직선에 대한 반사로 $P_1P_2=2r\\s. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [],
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ]
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-C2",
+      "slot": "C2",
+      "sourceQid": 17,
+      "mode": "TYPE_BANK",
+      "stem": "점 $O(0,0)$, $A(5,0)$, $B(\\dfrac{5\\sqrt2}{2},\\dfrac{5\\sqrt2}{2})$를 잡는다. 점 $P(x,y)$는 $3\\le OP\\le5$, $0\\le y\\le x$인 영역에서 움직이고, 점 $Q$는 선분 $OB$ 위, 점 $R$은 선분 $OA$ 위를 움직인다. 삼각형 $PQR$의 둘레의 길이의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$4\\sqrt2$",
+        "$5$",
+        "$5\\sqrt2$",
+        "$3\\sqrt2$"
+      ],
+      "answer": "⑤",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$P$를 두 직선 $OA$, $OB$에 각각 대칭이동하면 $PQ+QR+RP\\ge2OP\\sin45^\\circ=\\sqrt2\\,OP$이다. 주어진 영역에서 $OP\\ge3$이므로 둘레는 $3\\sqrt2$ 이상이다. $OP=3$인 점을 두 경계 사이 각의 이등분선 위에 잡으면 펼친 직선 경로의 두 교점이 각각 선분 $OB$, $OA$ 안에 놓인다. 따라서 등호가 성립하고 최솟값은 $3\\sqrt2$이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "$OP=3$을 택하고도 반사에 따른 현의 배율 $\\sqrt2$를 누락 → ①",
+        "②": "반지름 경계 $3\\le OP\\le5$의 중간값 $OP=4$가 최소일 것이라고 오해해 $4\\sqrt2$ → ②",
+        "③": "작은 반지름 $3$ 대신 바깥 경계 길이 $5$를 최소 둘레로 오해 → ③",
+        "④": "최솟값에 필요한 $OP=3$을 빠뜨리고 바깥쪽 $OP=5$만 사용해 $5\\sqrt2$ → ④"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "$OP=3$을 택하고도 반사에 따른 현의 배율 $\\sqrt2$를 누락 → ①",
+          "actualIncorrectChoice": "$3$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "반지름 경계 $3\\le OP\\le5$의 중간값 $OP=4$가 최소일 것이라고 오해해 $4\\sqrt2$ → ②",
+          "actualIncorrectChoice": "$4\\sqrt2$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "③",
+          "mistake": "작은 반지름 $3$ 대신 바깥 경계 길이 $5$를 최소 둘레로 오해 → ③",
+          "actualIncorrectChoice": "$5$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "최솟값에 필요한 $OP=3$을 빠뜨리고 바깥쪽 $OP=5$만 사용해 $5\\sqrt2$ → ④",
+          "actualIncorrectChoice": "$5\\sqrt2$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "부채꼴 띠 영역의 반지름 경계와 두 번의 반사 최단경로를 결합",
+      "level": "상",
+      "difficultyBucket": 4,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "level": "상",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [
+          "COND_RANGE"
+        ],
+        "crossConceptEvidenceLabels": [],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 부채꼴 띠 영역의 반지름 경계와 두 번의 반사 최단경로를 결합. 질문: $P$를 두 직선 $OA$, $OB$에 각각 대칭이동하면 $PQ+QR+RP\\ge2OP\\sin45^\\circ=\\sqrt2\\,OP$이다. . 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": []
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q17-C3",
+      "slot": "C3",
+      "sourceQid": 17,
+      "mode": "TYPE_BANK",
+      "stem": "자연수 $n$에 대하여 원 $x^2+y^2=n$ 위의 점 $A(\\sqrt n,0)$, $B(\\sqrt{\\dfrac n2},\\sqrt{\\dfrac n2})$를 잡는다. 작은 호 $AB$ 위의 점 $P$, 선분 $OB$ 위의 점 $Q$, 선분 $OA$ 위의 점 $R$이 움직일 때 삼각형 $PQR$ 둘레의 길이의 최솟값을 $m$이라 하자. $6<m\\le8$을 만족시키는 자연수 $n$의 개수는? (단, $O$는 원점이다.)",
+      "choices": [
+        "$7$",
+        "$13$",
+        "$14$",
+        "$15$",
+        "$28$"
+      ],
+      "answer": "③",
+      "solution": "점 $P$를 직선 $OB$에 대칭이동한 점을 $P_1$, 직선 $OA$에 대칭이동한 점을 $P_2$라 하자. $Q$는 $OB$ 위, $R$은 $OA$ 위이므로 $PQ=P_1Q$, $PR=P_2R$이다. 따라서 $PQ+QR+RP=P_1Q+QR+RP_2\\ge P_1P_2$이다. 반사 전후의 거리가 같고 $\\angle P_1OP_2=2\\angle AOB$이므로, $OP=r$일 때 $P_1P_2=2r\\sin\\angle AOB$이다. $0^\\circ<\\angle AOB<90^\\circ$인 이 문항에서는 $P$를 호 $AB$의 중점에 잡으면 직선 $P_1P_2$가 선분 $OB$, $OA$를 차례로 지나므로 $Q,R$을 두 교점으로 택하여 등호를 실현한다.\n$r=\\sqrt n$, $\\angle AOB=45^\\circ$이므로 두 직선에 대한 반사에 의해 $m=2\\sqrt n\\sin45^\\circ=\\sqrt{2n}$이다. 따라서 $6<\\sqrt{2n}\\le8$이고, 모두 양수이므로 제곱하여 $36<2n\\le64$, 즉 $18<n\\le32$이다. 가능한 자연수는 $19,20,\\ldots,32$로 $32-19+1=14$개이다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "반사 현 길이를 $m=2\\sqrt n$으로 잘못 놓아 $9<n\\le16$인 자연수 7개를 계산 → ①",
+        "②": "올바른 범위 $18<n\\le32$에서 등호가 있는 상한 $n=32$를 빠뜨려 $19$부터 $31$까지 13개 → ②",
+        "④": "하한이 엄격한 $18<n$을 $18\\le n$으로 잘못 바꾸어 $18$부터 $32$까지 15개 → ④",
+        "⑤": "반사 경로 최솟값을 반지름 $m=\\sqrt n$이라 오인하여 $36<n\\le64$인 자연수 28개 → ⑤"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "mistake": "반사 현 길이를 $m=2\\sqrt n$으로 잘못 놓아 $9<n\\le16$인 자연수 7개를 계산 → ①",
+          "actualIncorrectChoice": "$7$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "②",
+          "mistake": "올바른 범위 $18<n\\le32$에서 등호가 있는 상한 $n=32$를 빠뜨려 $19$부터 $31$까지 13개 → ②",
+          "actualIncorrectChoice": "$13$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "④",
+          "mistake": "하한이 엄격한 $18<n$을 $18\\le n$으로 잘못 바꾸어 $18$부터 $32$까지 15개 → ④",
+          "actualIncorrectChoice": "$15$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        },
+        {
+          "label": "⑤",
+          "mistake": "반사 경로 최솟값을 반지름 $m=\\sqrt n$이라 오인하여 $36<n\\le64$인 자연수 28개 → ⑤",
+          "actualIncorrectChoice": "$28$",
+          "verificationBasis": "EXPLICIT_MISSTEP_TO_NUMERICAL_CHOICE",
+          "validatedAgainstStudentChoices": true
+        }
+      ],
+      "experienceAxis": "반사 최단거리 식을 자연수 매개변수의 부등식과 끝점 개수로 변환",
+      "level": "상",
+      "difficultyBucket": 5,
+      "lockedPrimaryL3": "대칭이동",
+      "lockedL3DecisiveStep": "두 경계 직선에 점 P를 대칭이동하여 꺾인 둘레를 반사된 두 점 사이의 직선 거리로 환원하고 실제 등호 가능성을 확인",
+      "targetL4": "직선에 대한 대칭",
+      "schoolExamStyleEvidence": "공통수학2 고1 5지선다. 좌표·선분·호·조건·답형을 텍스트로 직접 완결",
+      "studentVisual": "NOT_REQUIRED_SELF_CONTAINED_COORDINATE_AND_RAY_STEM",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C2-04-CORE",
+        "subUnit": "도형의 이동 핵심 개념",
+        "rpmL1": "도형의 방정식",
+        "rpmL2": "도형의 이동",
+        "rpmL3": "대칭이동",
+        "rpmL4": "직선에 대한 대칭",
+        "rpmRecordId": "H1-RPM-228",
+        "rpmBindingStatus": "PRIMARY_L3_L4_MATCH_SPECIALIZED_ACTIVE_PT_TEMPLATE",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 5,
+        "level": "상",
+        "sourceQid": 17,
+        "sourceType": "GENERATED_ALIVE_QID9",
+        "sourceOriginalExam": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+        "requiredStudentAsset": "NONE_SELF_CONTAINED_STEM",
+        "conditionEvidenceLabels": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "crossConceptEvidenceLabels": [
+          "CC_CIRCLE_CENTER_RADIUS"
+        ],
+        "metaRegistryBasis": "ACTIVE_CANONICAL_Q17_CREATOR_CANDIDATE"
+      },
+      "creatorSelfReview": "KEEP",
+      "authorReverseStemReading": "조건: 반사 최단거리 식을 자연수 매개변수의 부등식과 끝점 개수로 변환. 질문: $r=\\sqrt n$, $\\angle AOB=45^\\circ$이므로 두 직선에 대한 반사에 의해 $m=2\\sqrt n\\sin45^\\ci. 대칭이동을 사용하지 않으면 최소 경로식과 등호 달성 여부를 단정할 수 없음",
+      "changedMathRecheck": "EXACT_REFLECTION_CHORD_IDENTITY_AND_BOUNDARY_OR_INVERSE_ALGEBRA_CHECKED",
+      "remainingRisk": "SOURCE_ORIGINAL_PNG_NOT_VISUALLY_REVIEWED; INDEPENDENT_GPT_OPEN_BOOK_REVIEW_NOT_RUN; CHROME_NOT_TESTED",
+      "status": "CREATE_CANDIDATE_AUTHOR_SELF_REVIEWED",
+      "reviewStatus": "NOT_RUN",
+      "consumerStatus": "NOT_REGISTERED",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ]
+    }
+  ],
+  "nextSourceQid": 18,
+  "publication": {
+    "status": "CREATE_CANDIDATES_ONLY_NOT_CONSUMER",
+    "sourceApproved": false,
+    "studentConsumerIndexed": 0,
+    "actualChrome": "NOT_TESTED"
+  },
+  "qualityReview": {
+    "method": "NOT_RUN_PENDING_CUMULATIVE_OPEN_BOOK",
+    "authorSelfCheckNotIndependentPass": true
+  }
+}
