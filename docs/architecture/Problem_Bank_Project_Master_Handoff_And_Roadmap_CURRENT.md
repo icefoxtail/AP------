@@ -6,6 +6,12 @@
 > **적용 프로젝트:** JS Archive 학교 기출 + Archive 2.0 검색·출제 + ALIVE Generated Bank = **문제은행 프로젝트**.  
 > **역할:** 사용자와 이전 작업에서 합의한 목적·증거·종료 상태·미완료 구현 순서의 단일 인계점. 이 문서는 새 제품 코드나 출시 인증이 아니며 기존 수학 품질, RPM 정본, Archive 2.0 Runtime/권한 계약을 대체하지 않는다.
 
+## CURRENT HARD — 원장 직접 검수·main 반영 = 품질승인 종료 (2026-10-09)
+- 원장이 지정한 Generated/ALIVE UID·배치에 **"검수하고 main에 반영하라"**고 지시하면 해당 범위의 품질 authority는 `USER_DIRECTED_QUALITY_APPROVED`이며, **별도 GPT 정식 검수·독립검수 완료 인증·재승인 대기는 요구하지 않는다.** 출고 시 필요한 Meta/UID/asset/Chrome/validator/remote readback은 독립된 기술 무결성 확인으로 끝낸다.
+- 문항 자체의 실제 결함이 발견되면 해당 locus만 수리하며 이를 무시하라는 뜻은 아니다. 수행하지 않은 독립 GPT 검사를 PASS라고 표기하지 않고 사용자 지정 승인을 기록한다.
+- 팔마고 QID9 q01~q04는 `USER_DIRECTED_OPERATING_APPROVAL_20261009_QID9_36`에 따라 **36/36 품질승인·학생등록·main/Chrome 완료**다. 과거 formal GPT review 0건은 독립 수행 이력이며 품질 미승인/재검수 요구가 아니다. 새 제작은 q05부터, 기존 36개 작업 반복 금지.
+- 위 원장 직접 승인 예외는 **새 미승인 후보 일반 검수경로**, **학교 기출 R1/R2**, **Factory 사전생산 paper validator**, **기술 출시 게이트**를 허위 완료 처리하지 않는다.
+
 ## CURRENT USER OVERRIDE — Meta-first / 모든 평가상품 공통 공급 목표 (2026-10-09)
 
 **사용자 최상위 목표는 L2 검색 화면이나 팔마고 복구 자체가 아니라, 생성문항 Meta의 정확한 영구 완성이다.** 해당 Meta를 문제지 만들기(Compose)와 Factory의 5분 테스트·소단원 평가·단원 평가·월말 평가, 이후 모의고사까지 **한 번 만들어 여러 평가에서 재사용**하도록 한다.
