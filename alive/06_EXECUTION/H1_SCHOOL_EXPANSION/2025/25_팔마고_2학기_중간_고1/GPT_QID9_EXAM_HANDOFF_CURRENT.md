@@ -1,3 +1,13 @@
+# CURRENT — 팔마고 원본 q07 CREATE 9문항 (2026-10-09)
+
+- q07 최신 원본 `도형의 이동 / 원의 평행이동` 1개에서 신규 A1~C3 9문항 제작.
+- 정확한 RPM ID `H1-RPM-226` → `L3-1.4.1|평행이동` → `L4-1.4.1.2|원의 이동`, ACTIVE `PT_MOVE_CIRCLE_TRANSLATION` / TT_CENTER·TT_TANGENCY 사용.
+- 새 산출 `GPT_QID9_Q07_PACKAGE.json`, `GPT_QID9_Q07_STEM_SELF_REVIEW.md`, 제작자 KEEP 5 / REVISED 4 / HOLD 0.
+- 누적 CREATE q01~q07 63문항. 기존 q01~q04 학생 출시 36 완료 불변, q05~q07 생성 27은 학생 등록/별도 공개답 검수 미실시.
+- 현행 통합 브랜치 `work/alive-25-palma-h1-2mid-qid9`에서 q07 전용 독립 제작 커밋, 정확한 커밋 SHA는 git history readback 기준.
+- 다음 미제작 원본은 **q08**. 기존 완료 1~6번을 반복 생성하지 않는다.
+
+---
 # CURRENT — 2026-10-09 q06 생성 및 q05 병렬 작성 동기화
 
 - q06: 9문항 신규 CREATE 완료, commit `4aedc59b2e6e5af2ca6f7c3efdbfb72a800b691f`. 작성자 역발문 KEEP6 / REVISED3 / HOLD0.

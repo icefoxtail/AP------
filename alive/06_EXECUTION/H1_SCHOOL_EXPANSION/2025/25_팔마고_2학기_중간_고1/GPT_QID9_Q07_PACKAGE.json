@@ -1,0 +1,996 @@
+{
+  "schemaVersion": "ALIVE_QID9_CREATE_PACKAGE_V1",
+  "scope": "2025 팔마고 고1 2학기 중간 원본 q07 신규 9문항",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 7,
+  "sourceQuestionType": "객관식",
+  "sourceFingerprint": {
+    "originalStem": "원 $C_1: x^2+(y-1)^2=1$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $6$만큼 평행이동한 원을 $C_2$라고 하자. 두 원 $C_1$, $C_2$의 넓이를 동시에 이등분하는 직선 $l$의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은? (단, $m,n$은 상수이다.) [4점]",
+    "originalAnswer": "④",
+    "originalAnswerValue": "4",
+    "originalCircleCenter": [
+      0,
+      1
+    ],
+    "translatedCircleCenter": [
+      2,
+      7
+    ],
+    "invariant": "원의 평행이동은 반지름을 보존하고 중심을 이동시킨다. 두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지난다.",
+    "sourceProblemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+    "sourceTemplateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+    "sourceVisualDependency": "NONE",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-04",
+    "subUnitKey": "H22-C2-04-CORE"
+  },
+  "lockedPrimaryL3": "L3-1.4.1|평행이동",
+  "rpmExactL3L4Lookup": {
+    "rpmCanonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "recordId": "H1-RPM-226",
+    "scope": "2022/high/공통수학2",
+    "l1": "L1-1|도형의 방정식",
+    "l2": "L2-1.4|도형의 이동",
+    "l3": "L3-1.4.1|평행이동",
+    "l4": "L4-1.4.1.2|원의 이동",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "rpmViewL3L4Status": "CANONICAL_DRAFT",
+    "rpmTaxonomyAuthority": "LOCKED"
+  },
+  "activeMeta": {
+    "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+    "templates": [
+      "TT_CIRCLE_TRANSLATION_CENTER",
+      "TT_CIRCLE_TRANSLATION_TANGENCY"
+    ],
+    "authority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "registryStatus": "ACTIVE",
+    "newUnverifiedCanonicalKeysInvented": 0
+  },
+  "experiencePlan": {
+    "A": "평행이동 방향·중심 좌표·공통 이등분 직선 m+n의 수치 숙달",
+    "B": "이동 후 두 중심을 잇는 직선의 기울기·통과점·y절편을 거꾸로 이용해 이동량 구하기",
+    "C": "이동된 원의 축 접함, 세 원의 중심에 관한 공통 이등분선 수직관계, 복합 역조건"
+  },
+  "itemCount": 9,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "authorSelfCheck": {
+    "reverseStemChecked": 9,
+    "keep": 5,
+    "revised": 4,
+    "hold": 0,
+    "wrongChoiceLabelCoverage": "36/36",
+    "wrongChoiceCalculationToValue": "36/36",
+    "correctAnswerExactCalculations": [
+      {
+        "slot": "A1",
+        "calculation": "center1=(0,-2),center2=(3,4),m=2,n=-2,m+n=0",
+        "calculated": 0,
+        "expected": 0
+      },
+      {
+        "slot": "A2",
+        "calculation": "center1=(2,1),center2=(0,5),m=-2,n=5,m+n=3",
+        "calculated": 3,
+        "expected": 3
+      },
+      {
+        "slot": "A3",
+        "calculation": "center1=(-1,3),center2=(3,1),m=-1/2,n=5/2,m+n=2",
+        "calculated": 2,
+        "expected": 2
+      },
+      {
+        "slot": "B1",
+        "calculation": "Δy=6, common slope=2, p=6/2=3",
+        "calculated": 3,
+        "expected": 3
+      },
+      {
+        "slot": "B2",
+        "calculation": "(3-4)/(3-1)=-1/2, deltaY=-6, t=12",
+        "calculated": 12,
+        "expected": 12
+      },
+      {
+        "slot": "B3",
+        "calculation": "1-2a/3=-3 => a=6",
+        "calculated": 6,
+        "expected": 6
+      },
+      {
+        "slot": "C1",
+        "calculation": "radius2, 1+p=2 => p=1, 2+q=2*2 => q=2",
+        "calculated": 2,
+        "expected": 2
+      },
+      {
+        "slot": "C2",
+        "calculation": "a²-5a-6=0, roots 6,-1, a>0 =>6",
+        "calculated": 6,
+        "expected": 6
+      },
+      {
+        "slot": "C3",
+        "calculation": "b=a/2=2(5-a), a=4,b=2, center=(4,2)",
+        "calculated": "(4,2)",
+        "expected": "(4,2)"
+      }
+    ],
+    "independentGPTReview": "NOT_RUN",
+    "browserRender": "NOT_TESTED",
+    "generatedConsumer": "NOT_REGISTERED",
+    "qualityApproval": "NONE"
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A1",
+      "sourceQid": 7,
+      "slot": "A1",
+      "purpose": "원형 반복숙달",
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $C_1:x^2+(y+2)^2=9$를 $x$축의 양의 방향으로 $3$, $y$축의 양의 방향으로 $6$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은?",
+      "choices": [
+        "$2$",
+        "$0$",
+        "$-2$",
+        "$4$",
+        "$-4$"
+      ],
+      "answer": "②",
+      "solution": "원 $C_1$의 중심은 $(0,-2)$이다. 평행이동한 원 $C_2$의 중심은 $(3,4)$이다.\n원의 넓이를 이등분하는 직선은 원의 중심을 지나므로, 두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 모두 지난다.\n이 직선의 기울기는 $m=\\dfrac{4-(-2)}{3-0}=2$이고, $(0,-2)$를 지나므로 $n=-2$이다.\n따라서 $m+n=2+(-2)=0$이므로 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "기울기만 계산하고 절편을 더하지 않음 | m=6/3=2 → 답 2 → $2$",
+        "③": "기울기를 더하지 않고 y절편만 적음 | n=-2 → 답 -2 → $-2$",
+        "④": "$(y+2)^2$의 중심을 $(0,2)$로 오인함 | 오독 중심(0,2)→(3,8), m=6/3=2,n=2,m+n=4 → $4$",
+        "⑤": "y축 양의 방향으로 $6$만큼을 음의 방향으로 이동함 | C_2=(3,-8),m=(-8+2)/3=-2,n=-2,m+n=-4 → $-4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "2",
+          "mistake": "기울기만 계산하고 절편을 더하지 않음",
+          "calculation": "m=6/3=2 → 답 2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "-2",
+          "mistake": "기울기를 더하지 않고 y절편만 적음",
+          "calculation": "n=-2 → 답 -2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "4",
+          "mistake": "$(y+2)^2$의 중심을 $(0,2)$로 오인함",
+          "calculation": "오독 중심(0,2)→(3,8), m=6/3=2,n=2,m+n=4",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "-4",
+          "mistake": "y축 양의 방향으로 $6$만큼을 음의 방향으로 이동함",
+          "calculation": "C_2=(3,-8),m=(-8+2)/3=-2,n=-2,m+n=-4",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 2,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "이동 전후 원의 중심을 지나는 직선의 기울기와 절편",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "crossConceptKeyStatus": "NONE_APPLIED",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A2",
+      "sourceQid": 7,
+      "slot": "A2",
+      "purpose": "원형 반복숙달",
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $C_1:(x-2)^2+(y-1)^2=1$을 $x$축의 음의 방향으로 $2$, $y$축의 양의 방향으로 $4$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은?",
+      "choices": [
+        "$-2$",
+        "$5$",
+        "$1$",
+        "$3$",
+        "$-1$"
+      ],
+      "answer": "④",
+      "solution": "원 $C_1$의 중심은 $(2,1)$이다. 이를 왼쪽으로 $2$, 위쪽으로 $4$만큼 이동하면 원 $C_2$의 중심은 $(0,5)$가 된다.\n두 원의 넓이를 동시에 이등분하려면 두 중심을 지나야 한다. 기울기는 $m=\\dfrac{5-1}{0-2}=-2$이다.\n이 직선은 $(0,5)$를 지나므로 $n=5$이다.\n따라서 $m+n=-2+5=3$이므로 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "기울기만 답으로 사용 | m=4/(-2)=-2 → 답 -2 → $-2$",
+        "②": "y절편만 답으로 사용 | n=5 → 답 5 → $5$",
+        "③": "원의 처음 중심 y좌표를 $-1$로 잘못 읽음 | 오독 중심(2,-1)→(0,3),m=-2,n=3,m+n=1 → $1$",
+        "⑤": "위쪽 $4$만큼의 이동을 아래쪽으로 잘못 적용 | 오류 이동 후 중심(0,-3),m=(-3-1)/(-2)=2,n=-3,m+n=-1 → $-1$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "-2",
+          "mistake": "기울기만 답으로 사용",
+          "calculation": "m=4/(-2)=-2 → 답 -2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "②",
+          "value": "5",
+          "mistake": "y절편만 답으로 사용",
+          "calculation": "n=5 → 답 5",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "1",
+          "mistake": "원의 처음 중심 y좌표를 $-1$로 잘못 읽음",
+          "calculation": "오독 중심(2,-1)→(0,3),m=-2,n=3,m+n=1",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "-1",
+          "mistake": "위쪽 $4$만큼의 이동을 아래쪽으로 잘못 적용",
+          "calculation": "오류 이동 후 중심(0,-3),m=(-3-1)/(-2)=2,n=-3,m+n=-1",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 2,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "음의 x방향 평행이동과 공통 중심 직선",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "crossConceptKeyStatus": "NONE_APPLIED",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-A3",
+      "sourceQid": 7,
+      "slot": "A3",
+      "purpose": "원형 반복숙달",
+      "mode": "STRICT_VARIANT",
+      "stem": "원 $C_1:(x+1)^2+(y-3)^2=4$를 $x$축의 양의 방향으로 $4$, $y$축의 음의 방향으로 $2$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 방정식을 $y=mx+n$이라 할 때, $m+n$의 값은?",
+      "choices": [
+        "$2$",
+        "$-\\dfrac12$",
+        "$\\dfrac52$",
+        "$4$",
+        "$3$"
+      ],
+      "answer": "①",
+      "solution": "원 $C_1$의 중심은 $(-1,3)$이고, 평행이동한 원 $C_2$의 중심은 $(3,1)$이다.\n두 원의 중심을 지나는 직선의 기울기는 $m=\\dfrac{1-3}{3-(-1)}=-\\dfrac12$이다.\n$(-1,3)$을 대입하면 $3=(-\\dfrac12)(-1)+n$이므로 $n=\\dfrac52$이다.\n따라서 $m+n=-\\dfrac12+\\dfrac52=2$이므로 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "기울기만 답함 | m=(-2)/4=-1/2 → $-\\dfrac12$",
+        "③": "y절편만 답함 | n=3-1/2=5/2 → $\\dfrac52$",
+        "④": "아래쪽 $2$가 아니라 위쪽 $2$로 평행이동 | C_2=(3,5),m=2/4=1/2,n=7/2,m+n=4 → $4$",
+        "⑤": "$(x+1)^2$의 중심 x좌표를 $1$로 오독 | 오독 중심(1,3)→(5,1),m=-1/2,n=7/2,m+n=3 → $3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "value": "-\\dfrac12",
+          "mistake": "기울기만 답함",
+          "calculation": "m=(-2)/4=-1/2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "\\dfrac52",
+          "mistake": "y절편만 답함",
+          "calculation": "n=3-1/2=5/2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "4",
+          "mistake": "아래쪽 $2$가 아니라 위쪽 $2$로 평행이동",
+          "calculation": "C_2=(3,5),m=2/4=1/2,n=7/2,m+n=4",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "3",
+          "mistake": "$(x+1)^2$의 중심 x좌표를 $1$로 오독",
+          "calculation": "오독 중심(1,3)→(5,1),m=-1/2,n=7/2,m+n=3",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "기울기가 분수인 두 중심 직선",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [],
+        "crossConceptKeyStatus": "NONE_APPLIED",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-B1",
+      "sourceQid": 7,
+      "slot": "B1",
+      "purpose": "사고 확장",
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $C_1:x^2+(y+1)^2=1$을 $x$축의 방향으로 $p$만큼, $y$축의 양의 방향으로 $6$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 방정식이 $y=2x-1$일 때, $p$의 값은?",
+      "choices": [
+        "$12$",
+        "$6$",
+        "$-3$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": "⑤",
+      "solution": "원 $C_1$의 중심은 $(0,-1)$이고, 원 $C_2$의 중심은 $(p,5)$이다.\n두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지나므로, 두 중심 사이의 기울기는 주어진 직선의 기울기 $2$와 같다.\n따라서 $\\dfrac{5-(-1)}{p-0}=2$, 즉 $\\dfrac6p=2$이다.\n$p=3$이므로 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "기울기의 분자와 분모를 뒤집음 | p/6=2 → p=12 → $12$",
+        "②": "기울기를 고려하지 않고 가로 이동량을 세로 이동량과 같게 둠 | p=6 → $6$",
+        "③": "주어진 기울기 $2$를 $-2$로 오독 | 6/p=-2 → p=-3 → $-3$",
+        "④": "가로 이동량을 직선의 기울기와 같게 설정 | p=m=2 → $2$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "12",
+          "mistake": "기울기의 분자와 분모를 뒤집음",
+          "calculation": "p/6=2 → p=12",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "②",
+          "value": "6",
+          "mistake": "기울기를 고려하지 않고 가로 이동량을 세로 이동량과 같게 둠",
+          "calculation": "p=6",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "-3",
+          "mistake": "주어진 기울기 $2$를 $-2$로 오독",
+          "calculation": "6/p=-2 → p=-3",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "2",
+          "mistake": "가로 이동량을 직선의 기울기와 같게 설정",
+          "calculation": "p=m=2",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "공통 이등분 직선의 기울기에서 가로 이동량 역결정",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-B2",
+      "sourceQid": 7,
+      "slot": "B2",
+      "purpose": "사고 확장",
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $C_1:(x-1)^2+(y-4)^2=4$를 $x$축의 방향으로 $t$만큼, $y$축의 음의 방향으로 $6$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선이 점 $(3,3)$을 지날 때, $t$의 값은?",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$12$",
+        "$-12$",
+        "$3$"
+      ],
+      "answer": "③",
+      "solution": "원 $C_1$의 중심은 $(1,4)$이고, 원 $C_2$의 중심은 $(1+t,-2)$이다.\n두 원의 넓이를 동시에 이등분하는 직선은 두 중심을 지난다. 이 직선이 $(3,3)$도 지나므로 기울기는 $\\dfrac{3-4}{3-1}=-\\dfrac12$이다.\n한편 두 중심의 y좌표 차는 $-2-4=-6$이고 x좌표 차는 $t$이므로 기울기는 $\\dfrac{-6}{t}$이다.\n따라서 $\\dfrac{-6}{t}=-\\dfrac12$에서 $t=12$이다. 따라서 정답은 ③이다.",
+      "distractorReasons": {
+        "①": "직선 위의 점 $(3,3)$을 평행이동한 원의 중심으로 착각하여 x좌표 차만 구함 | t=3-1=2 → $2$",
+        "②": "주어진 점을 두 중심의 중점이라고 가정 | t=2(3-1)=4 → $4$",
+        "④": "직선의 기울기 부호를 반대로 계산 | -6/t=+1/2 → t=-12 → $-12$",
+        "⑤": "기울기에 세로 이동량을 나누지 않고 곱함 | t=(-6)(-1/2)=3 → $3$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "2",
+          "mistake": "직선 위의 점 $(3,3)$을 평행이동한 원의 중심으로 착각하여 x좌표 차만 구함",
+          "calculation": "t=3-1=2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "②",
+          "value": "4",
+          "mistake": "주어진 점을 두 중심의 중점이라고 가정",
+          "calculation": "t=2(3-1)=4",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "-12",
+          "mistake": "직선의 기울기 부호를 반대로 계산",
+          "calculation": "-6/t=+1/2 → t=-12",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "3",
+          "mistake": "기울기에 세로 이동량을 나누지 않고 곱함",
+          "calculation": "t=(-6)(-1/2)=3",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "이동한 원의 중심을 잇는 직선이 지나는 점으로부터 이동량 역산",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "KEEP",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-B3",
+      "sourceQid": 7,
+      "slot": "B3",
+      "purpose": "사고 확장",
+      "mode": "EXAM_FOLLOWUP",
+      "stem": "원 $C_1:(x-2)^2+(y-1)^2=9$를 $x$축의 양의 방향으로 $3$, $y$축의 방향으로 $a$만큼 평행이동한 원을 $C_2$라 하자. 두 원의 넓이를 동시에 이등분하는 직선의 $y$절편이 $-3$일 때, $a$의 값은?",
+      "choices": [
+        "$4$",
+        "$6$",
+        "$3$",
+        "$\\dfrac32$",
+        "$-6$"
+      ],
+      "answer": "②",
+      "solution": "원 $C_1$의 중심은 $(2,1)$, 원 $C_2$의 중심은 $(5,a+1)$이다.\n두 원의 중심을 지나는 직선의 기울기는 $\\dfrac{a}{3}$이다.\n따라서 직선의 방정식은 $y-1=\\dfrac a3(x-2)$이고, $y$절편은 $1-\\dfrac{2a}{3}$이다.\n이것이 $-3$이므로 $1-\\dfrac{2a}{3}=-3$, 즉 $\\dfrac{2a}{3}=4$에서 $a=6$이다.\n따라서 정답은 ②이다.",
+      "distractorReasons": {
+        "①": "두 중심의 x좌표 차를 $3$이 아닌 $2$로 계산 | n=1-2(a/2)=1-a=-3 → a=4 → $4$",
+        "③": "$(y-1)^2$의 처음 중심 y좌표를 $-1$로 오독 | n=-1-(2a/3)=-3 → a=3 → $3$",
+        "④": "원의 중심을 잇는 직선의 기울기를 $a/3$ 대신 $3/a$로 계산 | n=1-2(3/a)=-3 → 6/a=4 → a=3/2 → $\\dfrac32$",
+        "⑤": "기울기 부호를 거꾸로 읽음 | n=1+2a/3=-3 → a=-6 → $-6$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "4",
+          "mistake": "두 중심의 x좌표 차를 $3$이 아닌 $2$로 계산",
+          "calculation": "n=1-2(a/2)=1-a=-3 → a=4",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "3",
+          "mistake": "$(y-1)^2$의 처음 중심 y좌표를 $-1$로 오독",
+          "calculation": "n=-1-(2a/3)=-3 → a=3",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "\\dfrac32",
+          "mistake": "원의 중심을 잇는 직선의 기울기를 $a/3$ 대신 $3/a$로 계산",
+          "calculation": "n=1-2(3/a)=-3 → 6/a=4 → a=3/2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "-6",
+          "mistake": "기울기 부호를 거꾸로 읽음",
+          "calculation": "n=1+2a/3=-3 → a=-6",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "중",
+      "difficultyBucket": 3,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "두 원을 공통으로 이등분하는 직선의 y절편에서 세로 이동량 역산",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "level": "중"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-C1",
+      "sourceQid": 7,
+      "slot": "C1",
+      "purpose": "학교 내신 심화",
+      "mode": "TYPE_BANK",
+      "stem": "원 $C_1:(x-1)^2+(y-2)^2=4$를 $x$축의 방향으로 $p$만큼, $y$축의 방향으로 $q$만큼 평행이동한 원을 $C_2$라 하자. $C_2$가 $y$축에 접하고, 두 원의 넓이를 동시에 이등분하는 직선이 $y=2x$일 때, $q$의 값은? (단, $p>0$이다.)",
+      "choices": [
+        "$-2$",
+        "$0$",
+        "$1$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": "④",
+      "solution": "원 $C_1$의 중심은 $(1,2)$이고 반지름은 $2$이다. 원 $C_2$의 중심은 $(1+p,2+q)$이고 반지름은 변하지 않아 $2$이다.\n$C_2$가 $y$축에 접하므로 중심의 x좌표의 절댓값은 $2$이다. $p>0$에서 $1+p>1$이므로 $1+p=2$, 즉 $p=1$이다.\n두 원의 넓이를 동시에 이등분하는 직선 $y=2x$는 두 원의 중심을 모두 지난다.\n따라서 원 $C_2$의 중심 $(2,2+q)$를 대입하면 $2+q=2\\cdot2=4$이므로 $q=2$이다.\n따라서 정답은 ④이다.",
+      "distractorReasons": {
+        "①": "공통 이등분 직선의 기울기를 $2$가 아닌 $-2$로 보아 처음 중심을 지나는 $y=-2x+4$를 사용 | 이동 중심 x=2이면 y=-2*2+4=0, q=0-2=-2 → $-2$",
+        "②": "수평 이동만 있고 수직 이동은 없다고 설정 | q=0 → $0$",
+        "③": "공통 이등분 직선의 기울기를 1로 보아 수직 이동량도 p와 같다고 판단 | p=1 → q=p=1 → $1$",
+        "⑤": "평행이동량 q 대신 이동된 원의 중심 y좌표를 답으로 적음 | C_2의 중심 y=4 → 오답 4 (실제 q=4-2=2) → $4$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "-2",
+          "mistake": "공통 이등분 직선의 기울기를 $2$가 아닌 $-2$로 보아 처음 중심을 지나는 $y=-2x+4$를 사용",
+          "calculation": "이동 중심 x=2이면 y=-2*2+4=0, q=0-2=-2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "②",
+          "value": "0",
+          "mistake": "수평 이동만 있고 수직 이동은 없다고 설정",
+          "calculation": "q=0",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "1",
+          "mistake": "공통 이등분 직선의 기울기를 1로 보아 수직 이동량도 p와 같다고 판단",
+          "calculation": "p=1 → q=p=1",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "4",
+          "mistake": "평행이동량 q 대신 이동된 원의 중심 y좌표를 답으로 적음",
+          "calculation": "C_2의 중심 y=4 → 오답 4 (실제 q=4-2=2)",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "원의 좌표축 접선 조건과 공통 이등분 직선으로 이동량 결정",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식",
+          "접선 조건"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [
+          "이동된 원의 좌표축 접함",
+          "p>0"
+        ],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-C2",
+      "sourceQid": 7,
+      "slot": "C2",
+      "purpose": "학교 내신 심화",
+      "mode": "TYPE_BANK",
+      "stem": "원 $C_1:(x+1)^2+(y-2)^2=1$을 $x$축의 양의 방향으로 $a$만큼, $y$축의 양의 방향으로 $2$만큼 평행이동한 원을 $C_2$라 하자. 또 원 $C_3:(x-4)^2+(y-7)^2=1$이 있다. $C_1,C_2$의 넓이를 동시에 이등분하는 직선과 $C_2,C_3$의 넓이를 동시에 이등분하는 직선이 서로 수직일 때, 양수 $a$의 값은?",
+      "choices": [
+        "$6$",
+        "$-1$",
+        "$5$",
+        "$2$",
+        "$1$"
+      ],
+      "answer": "①",
+      "solution": "원 $C_1$의 중심은 $A(-1,2)$, 평행이동한 원 $C_2$의 중심은 $B(a-1,4)$, 원 $C_3$의 중심은 $C(4,7)$이다.\n두 원의 넓이를 동시에 이등분하는 직선은 두 원의 중심을 지나는 직선이므로, 주어진 두 직선은 각각 $AB$, $BC$이다.\n$AB$의 기울기는 $\\dfrac2a$이다. $a=5$이면 $BC$가 수직선이지만 $AB$는 수평선이 아니므로 조건을 만족하지 않는다.\n$a\\ne5$이면 $BC$의 기울기는 $\\dfrac{7-4}{4-(a-1)}=\\dfrac3{5-a}$이다.\n두 직선이 수직이므로 $\\dfrac2a\\cdot\\dfrac3{5-a}=-1$이다. 이를 정리하면 $a(5-a)=-6$, 즉 $a^2-5a-6=0$이다.\n$(a-6)(a+1)=0$에서 $a=6$ 또는 $a=-1$이고, $a>0$이므로 $a=6$이다.\n따라서 정답은 ①이다.",
+      "distractorReasons": {
+        "②": "방정식의 다른 근 $-1$을 양수 조건과 대조하지 않고 답으로 사용 | (a-6)(a+1)=0 → a=-1 (a>0 위반) → $-1$",
+        "③": "수직 조건의 기울기 분자 2×3=6을 누락 | a(5-a)=0 → a=5 (정작 BC는 수직이고 AB는 비수평) → $5$",
+        "④": "기울기 곱의 부호를 $-1$ 대신 $+1$로 처리 | 6/[a(5-a)]=+1 → a^2-5a+6=0 → a=2 또는 3 중 2 선택 → $2$",
+        "⑤": "인수분해를 $(a-6)(a+1)$ 대신 $(a-1)(a+6)$으로 잘못 작성 | (a-1)(a+6)=0 → 양의 근 a=1 → $1$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "②",
+          "value": "-1",
+          "mistake": "방정식의 다른 근 $-1$을 양수 조건과 대조하지 않고 답으로 사용",
+          "calculation": "(a-6)(a+1)=0 → a=-1 (a>0 위반)",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "5",
+          "mistake": "수직 조건의 기울기 분자 2×3=6을 누락",
+          "calculation": "a(5-a)=0 → a=5 (정작 BC는 수직이고 AB는 비수평)",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "2",
+          "mistake": "기울기 곱의 부호를 $-1$ 대신 $+1$로 처리",
+          "calculation": "6/[a(5-a)]=+1 → a^2-5a+6=0 → a=2 또는 3 중 2 선택",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "⑤",
+          "value": "1",
+          "mistake": "인수분해를 $(a-6)(a+1)$ 대신 $(a-1)(a+6)$으로 잘못 작성",
+          "calculation": "(a-1)(a+6)=0 → 양의 근 a=1",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "원이 평행이동한 뒤 세 원의 중심 직선 두 개가 수직인 역조건",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [
+          "이등분선 수직",
+          "a>0"
+        ],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    },
+    {
+      "uid": "ALITE-PALMA25-2MID-Q07-C3",
+      "sourceQid": 7,
+      "slot": "C3",
+      "purpose": "학교 내신 심화",
+      "mode": "TYPE_BANK",
+      "stem": "원 $C_1:x^2+y^2=1$을 $x$축의 양의 방향으로 $a$만큼, $y$축의 양의 방향으로 $b$만큼 평행이동한 원을 $C_2$라 하고, 원 $C_3:(x-5)^2+y^2=1$이라 하자. $C_1,C_2$의 넓이를 동시에 이등분하는 직선이 점 $(2,1)$을 지나고, $C_2,C_3$의 넓이를 동시에 이등분하는 직선과 수직일 때, 원 $C_2$의 중심은? (단, $a,b$는 양수이다.)",
+      "choices": [
+        "$(2,1)$",
+        "$(4,-2)$",
+        "$(5,0)$",
+        "$(1,2)$",
+        "$(4,2)$"
+      ],
+      "answer": "⑤",
+      "solution": "원 $C_1$의 중심은 $O(0,0)$, 평행이동한 원 $C_2$의 중심은 $B(a,b)$, 원 $C_3$의 중심은 $C(5,0)$이다.\n$C_1,C_2$의 넓이를 동시에 이등분하는 직선은 $O$, $B$를 지나고 점 $(2,1)$도 지난다. 따라서 그 기울기는 $\\dfrac12$이고, $\\dfrac ba=\\dfrac12$, 즉 $b=\\dfrac a2$이다.\n이와 수직인 $BC$ 직선의 기울기는 $-2$이다. 한편 $BC$의 기울기는 $\\dfrac{0-b}{5-a}=-\\dfrac b{5-a}$이므로 $b=2(5-a)$이다.\n두 식을 연립하면 $\\dfrac a2=10-2a$에서 $5a=20$, 즉 $a=4$이다. 따라서 $b=2$이다.\n그러므로 평행이동한 원 $C_2$의 중심은 $(4,2)$이며 정답은 ⑤이다.",
+      "distractorReasons": {
+        "①": "이등분 직선이 지나는 점을 곧바로 이동한 원의 중심으로 오인 | P=(2,1) → C_2 중심도 (2,1)이라고 오답 → $(2,1)$",
+        "②": "점 $(2,1)$을 $(2,-1)$로 잘못 읽어 공통 이등분선의 기울기를 $-dfrac12$로 사용 | b=-a/2, BC slope +2 조건 → a=4,b=-2 → $(4,-2)$",
+        "③": "별도로 주어진 원 $C_3$의 중심을 이동된 $C_2$ 중심으로 착각 | C_3 중심=(5,0) → 오답 (5,0) → $(5,0)$",
+        "④": "통과점 $(2,1)$의 x/y를 뒤집어 기울기 $2$로 사용 | b=2a,BC 기울기 -1/2 → 2a=(5-a)/2 → a=1,b=2 → $(1,2)$"
+      },
+      "distractorWitnesses": [
+        {
+          "label": "①",
+          "value": "(2,1)",
+          "mistake": "이등분 직선이 지나는 점을 곧바로 이동한 원의 중심으로 오인",
+          "calculation": "P=(2,1) → C_2 중심도 (2,1)이라고 오답",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "②",
+          "value": "(4,-2)",
+          "mistake": "점 $(2,1)$을 $(2,-1)$로 잘못 읽어 공통 이등분선의 기울기를 $-dfrac12$로 사용",
+          "calculation": "b=-a/2, BC slope +2 조건 → a=4,b=-2",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "③",
+          "value": "(5,0)",
+          "mistake": "별도로 주어진 원 $C_3$의 중심을 이동된 $C_2$ 중심으로 착각",
+          "calculation": "C_3 중심=(5,0) → 오답 (5,0)",
+          "calcMatchesChoice": true
+        },
+        {
+          "label": "④",
+          "value": "(1,2)",
+          "mistake": "통과점 $(2,1)$의 x/y를 뒤집어 기울기 $2$로 사용",
+          "calculation": "b=2a,BC 기울기 -1/2 → 2a=(5-a)/2 → a=1,b=2",
+          "calcMatchesChoice": true
+        }
+      ],
+      "level": "상",
+      "difficultyBucket": 4,
+      "studentVisual": "NOT_REQUIRED_STEM_CONTAINS_ALL_EQUATIONS",
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "lockedL3DecisiveStep": "원의 중심을 평행이동시킨 뒤 이동된 중심과 주어진 중심·직선/접선 조건을 연결한다.",
+      "targetL4": "L4-1.4.1.2|원의 이동",
+      "experienceAxis": "이동된 원의 중심을 지나는 두 공통 이등분 직선의 통과점·수직관계 복합 추론",
+      "meta": {
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-04",
+        "standardUnit": "도형의 이동",
+        "subUnitKey": "H22-C2-04-CORE",
+        "rpmL1": "L1-1|도형의 방정식",
+        "rpmL2": "L2-1.4|도형의 이동",
+        "rpmL3": "L3-1.4.1|평행이동",
+        "rpmL4": "L4-1.4.1.2|원의 이동",
+        "rpmL4Namespace": "RPM_PRIMARY",
+        "sourceRpmL3Evidence": {
+          "authorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "evidenceRecordId": "H1-RPM-226",
+          "mappingRole": "DIRECT_ACTIVE"
+        },
+        "sourceRpmTaxonomyAuthority": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+        "ptTplAuthority": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "crossConceptKeys": [],
+        "crossConceptEvidenceLabels": [
+          "원 중심과 직선의 방정식"
+        ],
+        "crossConceptKeyStatus": "WORKING_CONCEPT_LABELS_NOT_CANONICAL_KEY_BOUND",
+        "conditionKeys": [],
+        "conditionEvidenceLabels": [
+          "이등분선 통과점·수직",
+          "a,b>0"
+        ],
+        "conditionKeyStatus": "WORKING_CONDITIONS_NOT_CANONICAL_KEY_BOUND",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "level": "상"
+      },
+      "creatorSelfReview": "REVISED",
+      "status": "CREATE_CANDIDATE_AUTHOR_REVIEWED",
+      "qualityApprovalStatus": "NOT_APPROVED_FOR_Q07",
+      "consumerStatus": "NOT_REGISTERED"
+    }
+  ],
+  "nextSourceQid": 8,
+  "publication": "CREATE_DRAFT_ONLY_NOT_QUALITY_APPROVED"
+}

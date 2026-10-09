@@ -13,7 +13,8 @@
     3,
     4,
     5,
-    6
+    6,
+    7
   ],
   "qidLedger": [
     {
@@ -296,19 +297,67 @@
       "studentLookupVerifiedCount": 0,
       "studentRenderStatus": "NOT_TESTED",
       "qualityApprovalBasis": "NONE_PENDING_REVIEW"
+    },
+    {
+      "qid": 7,
+      "sourceQid": 7,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q07-A1",
+        "ALITE-PALMA25-2MID-Q07-A2",
+        "ALITE-PALMA25-2MID-Q07-A3",
+        "ALITE-PALMA25-2MID-Q07-B1",
+        "ALITE-PALMA25-2MID-Q07-B2",
+        "ALITE-PALMA25-2MID-Q07-B3",
+        "ALITE-PALMA25-2MID-Q07-C1",
+        "ALITE-PALMA25-2MID-Q07-C2",
+        "ALITE-PALMA25-2MID-Q07-C3"
+      ],
+      "lockedPrimaryL3": "L3-1.4.1|평행이동",
+      "activeProblemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+      "activeTemplateKeys": [
+        "TT_CIRCLE_TRANSLATION_CENTER",
+        "TT_CIRCLE_TRANSLATION_TANGENCY"
+      ],
+      "rpmRecord": "H1-RPM-226",
+      "sourceBranch": "work/alive-25-palma-h1-2mid-qid9",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q07_PACKAGE.json",
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q07_STEM_SELF_REVIEW.md"
+      ],
+      "commit": "LOOKUP_Q07_CREATE_COMMIT_IN_GIT_HISTORY",
+      "createStatus": "CREATE_DRAFT_AUTHOR_SELF_REVIEW_COMPLETE",
+      "reviewStatus": "NOT_APPROVED_CREATE_ONLY",
+      "selfReview": "KEEP5_REVISED4_HOLD0",
+      "releasedCount": 0,
+      "consumerRegistrationStatus": "NOT_REGISTERED_0_OF_9",
+      "studentLookupVerifiedCount": 0,
+      "studentRenderStatus": "NOT_TESTED",
+      "qualityApprovalBasis": "NONE_PENDING_REVIEW"
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 54,
+    "newCreateDraftTotal": 63,
     "newCreateDraftByGroup": {
-      "A": 18,
-      "B": 18,
-      "C": 18
+      "A": 21,
+      "B": 21,
+      "C": 21
     },
-    "uniqueGeneratedUids": 54,
+    "uniqueGeneratedUids": 63,
     "openBookQualityReviewed": 0,
     "studentSupplyNew": 36,
-    "reviewQueue": 18,
+    "reviewQueue": 27,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
     "openBookContentReviewed": 36,
     "contentReviewKeep": 24,
@@ -327,11 +376,15 @@
       "KEEP": 6,
       "REVISED": 3,
       "HOLD": 0
-    }
+    },
+    "q07AuthorSelfReviewComplete": 9,
+    "q07Keep": 5,
+    "q07Revised": 4,
+    "q07Hold": 0
   },
-  "nextSourceQid": 7,
+  "nextSourceQid": 8,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
-  "publication": "MAIN_DONE_Q01_Q04_36__Q05_Q06_CREATE_ONLY_18_BRANCH",
+  "publication": "MAIN_DONE_Q01_Q04_36__Q05_Q07_CREATE_ONLY_27_BRANCH",
   "workflow": {
     "create": "ONE_QID_AT_A_TIME_ONE_COMMIT_IN_SAME_EXAM_BRANCH",
     "review": "BATCH_OPEN_BOOK_STEM_FIRST_MATH_SOLUTION_TRACE_META",
@@ -393,7 +446,7 @@
     "qualityApprovalStatus": "Q05_NOT_USER_APPROVED",
     "lastPreviousApprovedUidCount": 36
   },
-  "nextSourceQidReason": "q01-q06 all have 9-slot CREATE candidate; q05 created by another worker before q06, q07 is next uncreated",
-  "lastSourceQidCreated": 6,
+  "nextSourceQidReason": "q01-q07 all have 9-slot CREATE candidates; next uncreated q08.",
+  "lastSourceQidCreated": 7,
   "q06CandidateStatus": "CREATE_DRAFT_SELF_CHECKED_9__REVIEW_NOT_RUN__CONSUMER_NOT_REGISTERED"
 }
