@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "ALIVE_LITE_SOURCE_BLUEPRINT_EXPLORATION_LEDGER_V1",
+  "batchId": "B01",
+  "primaryL1": "도형의 방정식",
+  "primaryL2": "원의 방정식",
+  "sourcePath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceFileSha256": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+  "rpmLookupAuthority": {
+    "package": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0",
+    "currentCourseFile": "02_2022/HIGH/공통수학2.md",
+    "master": "00_POLICY/CANONICAL_MASTER.json",
+    "result": "L1/L2 exact; L3/L4 exact records remain CANONICAL_DRAFT; extensions are separate unpromoted candidates."
+  },
+  "actualModel": "gpt-6-luna",
+  "actualReasoningEffort": "max",
+  "candidateFiles": [
+    "B01_CANDIDATE_0001.md",
+    "B01_CANDIDATE_0002.md",
+    "B01_CANDIDATE_0003.md",
+    "B01_CANDIDATE_0004.md",
+    "B01_CANDIDATE_0005.md",
+    "B01_CANDIDATE_0006.md"
+  ],
+  "qidCoverage": [
+    {
+      "sourceQid": 3,
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "explored": [
+        {
+          "path": "L3-1.3.1 / L4-1.3.1.1 중심과 반지름",
+          "disposition": "ACCEPT condition-recovery candidate 0001; direct supplied-center substitution is DUPLICATE"
+        },
+        {
+          "path": "L3-1.3.1 / L4-1.3.1.2 일반형에서 원 찾기",
+          "disposition": "ACCEPT radius-to-coefficient recovery candidate 0002"
+        }
+      ],
+      "acceptedBlueprintCount": 2,
+      "generatedCandidates": 2,
+      "numericInstanceCount": 2,
+      "unresolvedHolds": []
+    },
+    {
+      "sourceQid": 6,
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "explored": [
+        {
+          "path": "L3-1.3.2 / L4-1.3.2.1 교점 개수",
+          "disposition": "source inclusive-intersection form is DUPLICATE; tangent-only equality is CONDITION_PATTERN_ONLY"
+        },
+        {
+          "path": "L3-1.3.2 / L4-1.3.2.2 현의 길이",
+          "disposition": "ACCEPT strict chord-length threshold and integer count candidate 0003"
+        }
+      ],
+      "acceptedBlueprintCount": 1,
+      "generatedCandidates": 1,
+      "numericInstanceCount": 1,
+      "unresolvedHolds": []
+    },
+    {
+      "sourceQid": 12,
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "explored": [
+        {
+          "path": "L3-1.3.3 / L4-1.3.3.1 접점이 주어진 접선",
+          "disposition": "not an exact target; relation is a derivation step"
+        },
+        {
+          "path": "L3-1.3.3 / L4-1.3.3.2 기울기가 주어진 접선",
+          "disposition": "not an exact target; no slope is given and output is not a tangent line"
+        },
+        {
+          "path": "EXT_L4 contact-chord distance inversion",
+          "disposition": "ACCEPT candidate 0004; DISCOVERED_UNREVIEWED, not promoted"
+        }
+      ],
+      "acceptedBlueprintCount": 1,
+      "generatedCandidates": 1,
+      "numericInstanceCount": 1,
+      "unresolvedHolds": []
+    },
+    {
+      "sourceQid": 19,
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "explored": [
+        {
+          "path": "L3-1.3.2 / L4-1.3.2.1 교점 개수",
+          "disposition": "ACCEPT EXT_L4_CANDIDATE for distinct intersections of a full-circle/semicircle union with shared-endpoint dedup; not canonical"
+        },
+        {
+          "path": "L3-1.3.2 / L4-1.3.2.2 현의 길이",
+          "disposition": "not applicable to the source's intersection-count target"
+        }
+      ],
+      "sourceFigure": {
+        "path": "archive/assets/images/25_팔마고_2학기_중간_고1_기출/q19.png",
+        "sha256": "716D7AA89291167E880C6C109B792056D3A5739CB0A4CF25DFB75DA3BFB5B479",
+        "readback": "opened directly at original resolution"
+      },
+      "acceptedBlueprintCount": 1,
+      "generatedCandidates": 1,
+      "numericInstanceCount": 1,
+      "unresolvedHolds": []
+    },
+    {
+      "sourceQid": 22,
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "explored": [
+        {
+          "path": "L3-1.3.1 / L4-1.3.1.1 중심과 반지름",
+          "disposition": "source's right-triangle/diameter shortcut is DUPLICATE"
+        },
+        {
+          "path": "L3-1.3.1 / L4-1.3.1.2 일반형에서 원 찾기",
+          "disposition": "ACCEPT three-point coefficient recovery candidate 0006"
+        }
+      ],
+      "acceptedBlueprintCount": 1,
+      "generatedCandidates": 1,
+      "numericInstanceCount": 1,
+      "unresolvedHolds": []
+    }
+  ],
+  "answerPositionPlan": {
+    "multipleChoiceCount": 5,
+    "positionCounts": {
+      "①": 1,
+      "②": 1,
+      "③": 1,
+      "④": 1,
+      "⑤": 1
+    },
+    "assignment": {
+      "①": [
+        "ALITE-B01-2025PALMA-0002"
+      ],
+      "②": [
+        "ALITE-B01-2025PALMA-0001"
+      ],
+      "③": [
+        "ALITE-B01-2025PALMA-0005"
+      ],
+      "④": [
+        "ALITE-B01-2025PALMA-0003"
+      ],
+      "⑤": [
+        "ALITE-B01-2025PALMA-0004"
+      ]
+    },
+    "placementLockedCount": 0,
+    "uniqueAnswerValidation": "5/5 multiple-choice candidates checked against their keyed choice by author self-check only; not independent validation.",
+    "constructedResponseAnswerCheck": "candidate 0006 result derived by author self-check only.",
+    "answerPositionHistogram": {
+      "①": 1,
+      "②": 1,
+      "③": 1,
+      "④": 1,
+      "⑤": 1
+    }
+  },
+  "totals": {
+    "acceptedDistinctBlueprintCount": 6,
+    "generatedCandidateCount": 6,
+    "numericInstanceCount": 6,
+    "duplicateNumericInstanceCount": 0,
+    "unresolvedHolds": 0,
+    "persistentUidCount": 0
+  },
+  "reviewAndRender": {
+    "independentMath": "NOT_TESTED",
+    "independentMeta": "NOT_TESTED",
+    "actualRender": "NOT_TESTED"
+  },
+  "sourceExplorationLedger": [
+    {
+      "sourceQid": 3,
+      "sourceArtifactSha": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "rpmL3Id": "L3-1.3.1 원의 방정식",
+      "originalL4Id": "L4-1.3.1.1 중심과 반지름",
+      "exploredBlueprints": [
+        {
+          "id": "BP-Q03-DIRECT-CENTER-RADIUS",
+          "targetL4Id": "L4-1.3.1.1 중심과 반지름",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "substitute supplied center and radius directly into standard form",
+          "disposition": "DUPLICATE",
+          "reason": "same structure as locked source q3; no generated candidate",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q03-AXIS-CENTER-RECOVERY",
+          "targetL4Id": "L4-1.3.1.1 중심과 반지름",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "recover unknown center from symmetric point incidence, fixed radius, and side branch",
+          "disposition": "ACCEPT",
+          "reason": "unknown center and two-root branch materially change reasoning",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0001"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        },
+        {
+          "id": "BP-Q03-GENERAL-FORM-RADIUS-RECOVERY",
+          "targetL4Id": "L4-1.3.1.2 일반형에서 원 찾기",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "complete squares and recover an unknown constant from prescribed radius",
+          "disposition": "ACCEPT",
+          "reason": "reverse coefficient-recovery goal is distinct from supplied center/radius substitution",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0002"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        }
+      ],
+      "notExploredL4": [],
+      "candidateCount": 2,
+      "acceptedBlueprintCount": 2,
+      "generatedQuestionCount": 2,
+      "numericInstanceCount": 2,
+      "draftCandidateIds": [
+        "ALITE-B01-2025PALMA-0001",
+        "ALITE-B01-2025PALMA-0002"
+      ],
+      "generatedUids": [],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "unresolvedHolds": [],
+      "lastReadback": "candidate MDs and ledger read back; no persistent UID assigned"
+    },
+    {
+      "sourceQid": 6,
+      "sourceArtifactSha": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "rpmL3Id": "L3-1.3.2 원과 직선",
+      "originalL4Id": "L4-1.3.2.1 교점 개수",
+      "exploredBlueprints": [
+        {
+          "id": "BP-Q06-INTERSECTION-EXISTENCE",
+          "targetL4Id": "L4-1.3.2.1 교점 개수",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "inclusive center-distance bound for any intersection followed by integer count",
+          "disposition": "DUPLICATE",
+          "reason": "same existence/tangent-boundary structure as source q6",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q06-TANGENCY-ONLY",
+          "targetL4Id": "L4-1.3.2.1 교점 개수",
+          "candidateKind": "CONDITION_PATTERN_ONLY",
+          "decisiveStepSignature": "replace intersection existence with equality at tangent boundary",
+          "disposition": "DUPLICATE",
+          "reason": "boundary-only query is a condition pattern, not a distinct accepted blueprint",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q06-STRICT-CHORD-THRESHOLD",
+          "targetL4Id": "L4-1.3.2.2 현의 길이",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "strict chord-length bound to open distance interval and integer count",
+          "disposition": "ACCEPT",
+          "reason": "changes target from any intersection to chord metric threshold and strict interval",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0003"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        }
+      ],
+      "notExploredL4": [],
+      "candidateCount": 1,
+      "acceptedBlueprintCount": 1,
+      "generatedQuestionCount": 1,
+      "numericInstanceCount": 1,
+      "draftCandidateIds": [
+        "ALITE-B01-2025PALMA-0003"
+      ],
+      "generatedUids": [],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "unresolvedHolds": [],
+      "lastReadback": "candidate MD and ledger read back; no persistent UID assigned"
+    },
+    {
+      "sourceQid": 12,
+      "sourceArtifactSha": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "rpmL3Id": "L3-1.3.3 원의 접선",
+      "originalL4Id": null,
+      "exploredBlueprints": [
+        {
+          "id": "BP-Q12-FORWARD-CONTACT-CHORD",
+          "targetL4Id": "EXT-L4 contact-chord metric relation",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "decisiveStepSignature": "external point gives contact chord then center-line distance",
+          "disposition": "DUPLICATE",
+          "reason": "same forward information flow as source q12",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q12-INVERSE-CONTACT-CHORD",
+          "targetL4Id": "EXT-L4 contact-chord metric inversion",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "decisiveStepSignature": "prescribed contact-chord distance recovers external-point parameter and norm",
+          "disposition": "ACCEPT",
+          "reason": "inverse condition-recovery target is distinct; taxonomy extension stays unreviewed",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0004"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        }
+      ],
+      "relatedCanonicalL4Lookup": [
+        "L4-1.3.3.1 접점이 주어진 접선",
+        "L4-1.3.3.2 기울기가 주어진 접선"
+      ],
+      "notExploredL4": [],
+      "candidateCount": 1,
+      "acceptedBlueprintCount": 1,
+      "generatedQuestionCount": 1,
+      "numericInstanceCount": 1,
+      "draftCandidateIds": [
+        "ALITE-B01-2025PALMA-0004"
+      ],
+      "generatedUids": [],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "unresolvedHolds": [],
+      "lastReadback": "candidate MD and ledger read back; no persistent UID assigned"
+    },
+    {
+      "sourceQid": 19,
+      "sourceArtifactSha": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "rpmL3Id": "L3-1.3.2 원과 직선",
+      "originalL4Id": "L4-1.3.2.1 교점 개수",
+      "exploredBlueprints": [
+        {
+          "id": "BP-Q19-SOURCE-ARC-PIVOT",
+          "targetL4Id": "L4-1.3.2.1 교점 개수",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "line through one arc center with strict tangency-bounded slope interval",
+          "disposition": "DUPLICATE",
+          "reason": "repeating the locked source structure with new numbers or target count is not a new blueprint",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q19-SHARED-ENDPOINT-ARC-UNION",
+          "targetL4Id": "EXT-L4 multi-arc distinct intersection count",
+          "candidateKind": "EXT_L4_CANDIDATE",
+          "decisiveStepSignature": "line through shared endpoint, sign-based half-arc membership, and endpoint deduplication",
+          "disposition": "ACCEPT",
+          "reason": "branch topology and overlap logic differ from source; extension remains unreviewed",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0005"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        }
+      ],
+      "relatedCanonicalL4Lookup": [
+        "L4-1.3.2.1 교점 개수",
+        "L4-1.3.2.2 현의 길이"
+      ],
+      "notExploredL4": [],
+      "candidateCount": 1,
+      "acceptedBlueprintCount": 1,
+      "generatedQuestionCount": 1,
+      "numericInstanceCount": 1,
+      "draftCandidateIds": [
+        "ALITE-B01-2025PALMA-0005"
+      ],
+      "generatedUids": [],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "unresolvedHolds": [],
+      "lastReadback": "candidate MD and ledger read back; no persistent UID assigned"
+    },
+    {
+      "sourceQid": 22,
+      "sourceArtifactSha": "1C7C2C331464AA214331D844E32F9378C86654B1B8E495C8C3CDF759B26BEAEF",
+      "rpmL3Id": "L3-1.3.1 원의 방정식",
+      "originalL4Id": "L4-1.3.1.1 중심과 반지름",
+      "exploredBlueprints": [
+        {
+          "id": "BP-Q22-RIGHT-TRIANGLE-DIAMETER",
+          "targetL4Id": "L4-1.3.1.1 중심과 반지름",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "right triangle circumcenter is the hypotenuse midpoint",
+          "disposition": "DUPLICATE",
+          "reason": "same shortcut as source q22",
+          "draftCandidateIds": [],
+          "generatedUids": [],
+          "numericInstanceCount": 0
+        },
+        {
+          "id": "BP-Q22-THREE-POINT-COEFFICIENTS",
+          "targetL4Id": "L4-1.3.1.2 일반형에서 원 찾기",
+          "candidateKind": "RPM_EXISTING",
+          "decisiveStepSignature": "solve three noncollinear point-incidence equations for general-form coefficients",
+          "disposition": "ACCEPT",
+          "reason": "non-right triangle removes diameter shortcut and requires three coefficient constraints",
+          "draftCandidateIds": [
+            "ALITE-B01-2025PALMA-0006"
+          ],
+          "generatedUids": [],
+          "numericInstanceCount": 1
+        }
+      ],
+      "notExploredL4": [],
+      "candidateCount": 1,
+      "acceptedBlueprintCount": 1,
+      "generatedQuestionCount": 1,
+      "numericInstanceCount": 1,
+      "draftCandidateIds": [
+        "ALITE-B01-2025PALMA-0006"
+      ],
+      "generatedUids": [],
+      "sourceStatus": "SOURCE_EXPANSION_DONE",
+      "unresolvedHolds": [],
+      "lastReadback": "candidate MD and ledger read back; no persistent UID assigned"
+    }
+  ]
+}
