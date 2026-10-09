@@ -2,10 +2,12 @@
   "use strict";
   const C = window.Archive2Core,
     Source = window.Archive2Source;
+  const ProblemBankMeta = window.ProblemBankMeta;
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
   const History = window.Archive2History;
   const frozenPaperCache = new Map();
+  const composeMetaQueryCache = new Map();
   const lockedIndex = (index) =>
     Boolean(Parts.receipt(state.receipts, Parts.partIndex(index)));
   const ownHistoryContext = () => {
@@ -69,6 +71,13 @@
         new URL("workspace.html?view=find&material=exam", location.href).href,
     }),
     Object.freeze({
+      productKey: "generated-bank",
+      label: "검수 완료 생성문제",
+      availability: true,
+      routeOwner: "generated-consumer",
+      routeResolver: () => new URL("generated-bank.html", location.href).href,
+    }),
+    Object.freeze({
       productKey: "five-minute-test",
       label: "5분 테스트",
       availability: false,
@@ -127,7 +136,7 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
       const parent = C.basicScopeParent(
         record,
         state.catalog.basicScopeLinks,
@@ -200,6 +209,8 @@
     historyError: "",
     targetVersion: 0,
     finderIndex: new Map(),
+    metaIndex: [],
+    metaIndexSource: null,
     inspector: "summary",
     previewIndex: 0,
     outputMode: "exam",
@@ -730,7 +741,7 @@
     const seenUids = new Set();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
-      if (!C.matches(record, selectionFilters, state) || !workspaceEligibility(record).ok) continue;
+      if (!C.matches(record, selectionFilters, state) || !composeMetaMatches(record) || !workspaceEligibility(record).ok) continue;
       if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
       const parent = C.basicScopeParent(
         record,
@@ -863,11 +874,37 @@
   }
   function pool() {
     const scopes = selectedScopeOptions();
-    if (!scopes.length) return state.catalog.records;
+    if (!scopes.length) return state.catalog.records.filter(record => composeMetaMatches(record));
     const uids = new Set(scopes.flatMap(scope => scope.scopeQuestionUids));
     return state.catalog.records.filter(
-      (r) => uids.has(r.questionUid),
+      (r) => uids.has(r.questionUid) && composeMetaMatches(r),
     );
+  }
+  function composeMetaMatches(record, filters = state.filters) {
+    const hasMetaFilter = Boolean(filters.L1 || filters.L2 || filters.L3 || filters.L4 || state.buckets.length);
+    if (!hasMetaFilter) return true;
+    if (state.catalog?.records && state.metaIndexSource !== state.catalog.records) {
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
+    }
+    // Existing MF-qualified selectors keep their established canonical authority path.
+    const directFilters = {};
+    for (const level of [1, 2, 3, 4]) {
+      const value = filters[`L${level}`];
+      if (value && !(level >= 3 && /^(?:mf|rpm):/.test(value)))
+        directFilters[`rpmL${level}`] = value.replace(/^rpm:/, "");
+    }
+    if (state.buckets.length) directFilters.difficultyBuckets = state.buckets;
+    const key = JSON.stringify([state.indexVersion, directFilters]);
+    let allowed = composeMetaQueryCache.get(key);
+    if (!allowed) {
+      allowed = new Set(ProblemBankMeta.query(state.metaIndex, directFilters, { profile: "DIRECT" })
+        .map(row => row.questionUid));
+      if (composeMetaQueryCache.size >= 8) composeMetaQueryCache.clear();
+      composeMetaQueryCache.set(key, allowed);
+    }
+    return allowed.has(record.questionUid);
   }
   function request(useFrozen = false) {
     const rows = useFrozen ? state.rows : planRows();
@@ -1144,7 +1181,7 @@
   }
   function finderDetailFilterMarkup(filters) {
     const schools = finderSchoolValues(filters);
-    return `<div class="finder-filter-detail"><label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field"><span>시험 시기</span><select data-filter="axis" data-group="find">${options(
+    return `<div class="finder-filter-detail"><label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field finder-term"><span>시험 시기</span><select data-filter="axis" data-group="find">${options(
       [
         { value: "1-mid", label: "1학기 중간" },
         { value: "1-final", label: "1학기 기말" },
@@ -1153,7 +1190,7 @@
       ],
       filters.axis,
       "전체 시험",
-    )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${
+    )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label><div class="finder-axis-quick" role="group" aria-label="시험 시기 빠른 선택">${[["1-mid","1학기 중간"],["1-final","1학기 기말"],["2-mid","2학기 중간"],["2-final","2학기 기말"]].map(([value,label])=>button("finder-axis-quick",label,`type="button" data-axis="${value}" aria-pressed="${filters.axis===value}"`)).join("")}</div>${
       filters.grade
         ? ""
         : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
@@ -1463,10 +1500,9 @@
       state.page = lastPage;
       replaceFinderUrlState();
     }
-    const page = exams.slice(state.page * 18, (state.page + 1) * 18),
-      detailOpen = matchMedia("(max-width: 700px)").matches ? "" : " open";
+    const page = exams.slice(state.page * 18, (state.page + 1) * 18);
     return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
-      <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}${finderPrimaryFilterMarkup(state.find)}<details class="finder-detail-filters"${detailOpen}><summary>상세 필터</summary>${finderDetailFilterMarkup(state.find)}</details></section>
+      <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}<div class="finder-filter-bar">${finderPrimaryFilterMarkup(state.find)}${finderDetailFilterMarkup(state.find)}</div></section>
       ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
       <div class="resultbar finder-resultbar"><strong>${state.find.material === "textbook" ? "교과서" : state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
       <div class="finder-results-wrap"><div class="exam-list">${page
@@ -1517,7 +1553,7 @@
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
     const excluded = C.composeExclusions(context()).union;
     const eligible = pool().filter(r =>
-      C.matches(r, baseFilters, state) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
+      C.matches(r, baseFilters, state) && composeMetaMatches(r) && workspaceEligibility(r).ok && !excluded.has(r.questionUid));
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
@@ -1556,6 +1592,7 @@
     const candidates = pool().filter(
       (r) =>
         C.matches(r, selectionFilters, state) &&
+        composeMetaMatches(r) &&
         workspaceEligibility(r).ok &&
         !excluded.has(r.questionUid),
     );
@@ -3294,6 +3331,11 @@
         state.page = 0;
         urlState();
         render();
+      } else if (a === "finder-axis-quick") {
+        state.find.axis = b.dataset.axis === state.find.axis ? "" : b.dataset.axis;
+        state.page = 0;
+        urlState();
+        render();
       } else if (a === "finder-reset") {
         for (const key of [
           "curriculumKey",
@@ -3951,6 +3993,10 @@
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
         throw new Error("CANONICAL_AUTHORITY_UNAVAILABLE: 현재 분류 기준을 확인할 수 없습니다.");
       state.catalog = await window.applyArchiveMetaFoundationCatalog();
+      if (!ProblemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
+      state.metaIndex = ProblemBankMeta.buildIndex(state.catalog.records, []);
+      state.metaIndexSource = state.catalog.records;
+      composeMetaQueryCache.clear();
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )

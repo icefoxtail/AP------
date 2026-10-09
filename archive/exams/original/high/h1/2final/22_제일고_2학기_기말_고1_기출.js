@@ -676,6 +676,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
+    "image": "assets/images/22_제일고_2학기_기말_고1_기출/q22.png?v=20261008.1",
     "content": "서술형 4<br>다음 그림과 같이 좌표평면 위의 두 곡선 $y=-\\sqrt{x}$과 $y=-\\sqrt{x+2}$이 $y$축에 평행한 직선 $x=k$ $(k=1,2,3,4,\\cdots)$와 만나는 점을 각각 $P_k,Q_k$라 할 때, $\\overline{P_1Q_1}+\\overline{P_2Q_2}+\\cdots+\\overline{P_{47}Q_{47}}=a+b\\sqrt2+c\\sqrt3$을 만족하는 $a+b+c$의 값을 구하시오. (단, $a,b,c$는 유리수) [5점]",
     "choices": [],
     "answer": "$9$",

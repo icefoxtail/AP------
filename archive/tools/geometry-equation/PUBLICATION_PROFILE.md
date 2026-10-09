@@ -169,11 +169,12 @@ For an authored candidate, use the existing adapter/engine build command, then:
 python archive/tools/geometry-equation/audit_publication.py \
   --svg candidate.svg --review frozen-review.json \
   --source source.txt --solution verified-solution.txt \
-  --out archive/_generated/geometry-visual-engine/run/audit.json
+  --out .tmp/archive/run-id/examUid/visual-engine/production/audit.json
 ```
 
-All generated candidates, screenshots and reports stay under ignored
-`archive/_generated/geometry-visual-engine/`; they are CI artifacts, not Git input.
+All new generated candidates, screenshots and reports stay under the bound
+`.tmp/archive/<run-id>/<examUid>/` workspace; historical `archive/_generated`
+outputs are read-only evidence, not destinations for new runs.
 
 ## Render evidence and limits
 

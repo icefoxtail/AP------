@@ -9,6 +9,8 @@ This skill is **not a normal Archive exam startup prerequisite**.
 
 The user's current instruction and the already-assigned CURRENT stage are the authority.
 
+For CODEX, once stem/choices/formulas/problem assets have been extracted, follow `docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md`: CREATE and downstream stages use the extracted JS/assets directly. Available PDF files are conditional reference inputs for concrete source-dependent defects, not a routine full-paper re-transcription or comparison prerequisite. A genuinely unextracted PDF still needs source intake. Never escalate an already-extracted input to NEW_IMPORT just to re-open its PDF.
+
 ## 0. NORMAL EXISTING-EXAM WORK — EXIT THIS SKILL
 
 If the target already has an Archive JS and the task already names or clearly implies a bounded stage such as:

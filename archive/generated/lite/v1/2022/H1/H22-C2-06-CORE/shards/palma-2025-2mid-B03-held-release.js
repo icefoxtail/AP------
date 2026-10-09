@@ -1,0 +1,239 @@
+window.examTitle = "ALIVE_LITE_PALMA25_H1_2MID_B03_H22-C2-06-CORE";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-25PAL-B03-Q02-P01",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 조건 $p$를 다음과 같이 정의한다.\n\n$(-2\\le x<4)$이고 $x^2\\le9$\n\n 다음 중 조건 $\\sim p$와 동치인 것은?",
+    "choices": [
+      "$x<-2$ 또는 $x>3$",
+      "$-2\\le x\\le3$",
+      "$x\\le-2$ 또는 $x>3$",
+      "$x<-2$ 또는 $x\\ge3$",
+      "$x<-3$ 또는 $x\\ge4$"
+    ],
+    "answer": "①",
+    "solution": "조건 $p$가 참이려면 두 부등식이 모두 성립해야 한다.\n\n첫째 조건 $-2\\le x<4$의 진리집합은 $[-2,4)$이다. 둘째 조건은\n\n$$x^2\\le9\\iff -3\\le x\\le3$$\n\n이므로 진리집합은 $[-3,3]$이다. 따라서 $p$의 진리집합은 두 구간의 교집합\n\n$$[-2,4)\\cap[-3,3]=[-2,3]$$\n\n이다. $\\sim p$는 이 구간에 속하지 않는 실수 전체이므로\n\n$$x<-2\\quad\\text{또는}\\quad x>3$$\n\n이다. 양 끝점 $-2$와 $3$에서는 $p$가 참이므로 부정의 진리집합에는 들어가지 않는다. 따라서 정답은 ①이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "problemTypeKey": "PT_TRUTH_SET_RELATION",
+    "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+    "meta": {
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.3|명제",
+      "rpmL3": "L3-2.3.1|명제와 조건",
+      "rpmL4": "L4-2.3.1.1|진리집합",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "rpmPrimaryRecordId": "H1-RPM-243",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptKeys": [],
+      "crossConceptEvidenceLabels": [
+        "집합의 연산"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "level": "중",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION"
+    },
+    "metaFinalSha256": "a2bfee6e9919e6c9a1c276f87c39da890952da8b0cbfcd0648993db1c8b42a19"
+  },
+  {
+    "id": 2,
+    "uid": "ALITE-25PAL-B03-Q02-P02",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대한 조건 $p$를 다음과 같이 정의한다.\n\n$x\\le-2$ 또는 $|x-1|\\le1$\n\n 다음 중 조건 $\\sim p$와 동치인 것은?",
+    "choices": [
+      "$-2\\le x<0$ 또는 $x>2$",
+      "$-2<x\\le0$ 또는 $x>2$",
+      "$x\\le-2$ 또는 $0\\le x\\le2$",
+      "$-2<x<0$ 또는 $x\\ge2$",
+      "$-2<x<0$ 또는 $x>2$"
+    ],
+    "answer": "⑤",
+    "solution": "$|x-1|\\le1$을 풀면\n\n$$-1\\le x-1\\le1\\iff 0\\le x\\le2$$\n\n이다. 따라서 조건 $p$의 진리집합은\n\n$$(-\\infty,-2]\\cup[0,2]$$\n\n이다. $\\sim p$의 진리집합은 이 합집합에 속하지 않는 실수의 집합이다. 두 구간 사이의 빈 부분과 오른쪽 바깥 부분을 쓰면\n\n$$(-2,0)\\cup(2,\\infty)$$\n\n이므로 조건으로는 $-2<x<0$ 또는 $x>2$이다. $x=-2,0,2$에서는 $p$가 참이므로 이 세 점은 부정의 진리집합에 포함되지 않는다. 따라서 정답은 ⑤이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "problemTypeKey": "PT_TRUTH_SET_RELATION",
+    "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+    "meta": {
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.3|명제",
+      "rpmL3": "L3-2.3.1|명제와 조건",
+      "rpmL4": "L4-2.3.1.1|진리집합",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "rpmPrimaryRecordId": "H1-RPM-243",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptKeys": [],
+      "crossConceptEvidenceLabels": [
+        "집합의 연산"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "level": "중",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION"
+    },
+    "metaFinalSha256": "a2bfee6e9919e6c9a1c276f87c39da890952da8b0cbfcd0648993db1c8b42a19"
+  },
+  {
+    "id": 3,
+    "uid": "ALITE-25PAL-B03-Q14-P01",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $a$에 대하여 명제\n\n모든 실수 $x$에 대하여 $x^2-2ax+a+3\\ge0$이다.\n\n가 참이 되도록 하는 실수 $a$의 범위를 고르시오.",
+    "choices": [
+      "$a\\le\\dfrac{1-\\sqrt{13}}2$ 또는 $a\\ge\\dfrac{1+\\sqrt{13}}2$",
+      "$\\dfrac{1-\\sqrt{13}}2\\le a\\le\\dfrac{1+\\sqrt{13}}2$",
+      "$\\dfrac{1-\\sqrt{13}}2<a<\\dfrac{1+\\sqrt{13}}2$",
+      "$\\dfrac{-1-\\sqrt{13}}2\\le a\\le\\dfrac{-1+\\sqrt{13}}2$",
+      "모든 실수 $a$"
+    ],
+    "answer": "②",
+    "solution": "왼쪽 식을 완전제곱식으로 고치면\n\n$$x^2-2ax+a+3=(x-a)^2-a^2+a+3$$\n\n이다. $(x-a)^2\\ge0$이고 $x=a$일 때 $0$이 되므로, 이 식의 최솟값은 $-a^2+a+3$이다.\n\n모든 실수 $x$에 대하여 식이 $0$ 이상이려면 최솟값도 $0$ 이상이어야 한다. 따라서\n\n$$-a^2+a+3\\ge0\n\\iff a^2-a-3\\le0$$\n\n이다. 방정식 $a^2-a-3=0$의 두 근은\n\n$$a=\\frac{1-\\sqrt{13}}2,\\qquad a=\\frac{1+\\sqrt{13}}2$$\n\n이다. 이차식 $a^2-a-3$은 아래로 볼록하므로 $0$ 이하인 $a$의 범위는 두 근 사이이며, 등호도 허용한다. 따라서\n\n$$\\frac{1-\\sqrt{13}}2\\le a\\le\\frac{1+\\sqrt{13}}2$$\n\n이고 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+    "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+    "meta": {
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.3|명제",
+      "rpmL3": "L3-2.3.1|명제와 조건",
+      "rpmL4": "L4-2.3.1.2|명제의 참·거짓",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "rpmPrimaryRecordId": "H1-RPM-244",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptKeys": [],
+      "crossConceptEvidenceLabels": [
+        "이차식의 완전제곱식과 최솟값"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "level": "중",
+      "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+      "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT"
+    },
+    "metaFinalSha256": "1226d6dd6d8c60ff130acfaa28414f767da015c3cd4e43cdfe85e70e1dec1e92"
+  },
+  {
+    "id": 4,
+    "uid": "ALITE-25PAL-B03-Q21-P01",
+    "level": "중",
+    "difficultyBucket": 3,
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-06",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE",
+    "subUnit": "명제 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "명제"
+    ],
+    "wide": false,
+    "content": "실수 $x$와 실수 $a$에 대하여 두 조건 $p,q$를\n\n$$p:\\quad x^2-6x+8\\le0,\\qquad q:\\quad |x-a|<2$$\n\n라고 하자.\n\n1) 두 조건 $p,q$의 진리집합을 각각 구하시오. [2점]\n2) $p$가 $q$이기 위한 충분조건이지만 필요조건은 아니도록 하는 실수 $a$의 범위를 구하고, 그 이유를 서술하시오. [3점]\n\n[총 5점]",
+    "choices": [],
+    "answer": "1) $P=[2,4]$, $Q=(a-2,a+2)$\n2) $2<a<4$",
+    "solution": "1) 인수분해하면\n\n$$x^2-6x+8=(x-2)(x-4)$$\n\n이다. 따라서 $(x-2)(x-4)\\le0$을 만족하는 범위는 $2\\le x\\le4$이고,\n\n$$P=[2,4]$$\n\n이다. $|x-a|<2$는\n\n$$-2<x-a<2\\iff a-2<x<a+2$$\n\n이므로\n\n$$Q=(a-2,a+2)$$\n\n이다.\n\n2) $p$가 $q$이기 위한 충분조건이라는 말은 $p\\Rightarrow q$, 즉 $P\\subseteq Q$라는 뜻이다. $P=[2,4]$의 양 끝점도 $Q=(a-2,a+2)$에 들어가야 하므로\n\n$$a-2<2,\\qquad 4<a+2$$\n\n이어야 한다. 이를 풀면 $a<4$, $a>2$이므로 $2<a<4$이다.\n\n이 범위에서 $q$가 $p$이기 위한 충분조건은 아님을 보이자. $x=\\dfrac a2$로 두면\n\n$$|x-a|=\\left|\\frac a2-a\\right|=\\frac a2<2$$\n\n이므로 $q$는 참이다. 반면 $2<a<4$이므로 $x=\\dfrac a2<2$이고, 따라서 $x\\notin[2,4]=P$이다. 즉 $p$는 거짓이다. 그러므로 $q\\Rightarrow p$는 거짓이며 $p$는 $q$이기 위한 충분조건이지만 필요조건은 아니다. 정답은 $2<a<4$이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "problemTypeKey": "PT_NEC_SUFF_RELATION",
+    "meta": {
+      "rpmL1": "L1-2|집합과 명제",
+      "rpmL2": "L2-2.3|명제",
+      "rpmL3": "L3-2.3.3|필요조건·충분조건",
+      "rpmL4": "L4-2.3.3.2|매개변수",
+      "rpmL4Namespace": "RPM_EXISTING_DRAFT",
+      "rpmPrimaryRecordId": "H1-RPM-248",
+      "rpmDraftAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "rpmDraftAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+      "crossConceptKeys": [],
+      "crossConceptEvidenceLabels": [
+        "집합의 포함 관계"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "level": "중",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": null,
+      "metaDebt": {
+        "templateKey": "Exact template not assigned for existing FAMILY_ACTIVE RPM path"
+      }
+    },
+    "metaFinalSha256": "bed8f1be96dca463d352cd6ab5a7f1ff10f9b753f8de6fd66de89b41e40cf3b0"
+  }
+];

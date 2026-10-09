@@ -1,4 +1,13 @@
+## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
+- 모든 JS Archive·ALIVE·문제은행 수정/검수/메타/출시 실행자는 [수정 AI 책임·Meta 확장·출시 마감 CURRENT](docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md)를 필독한다. **보고/미확정/NOT_TESTED로 작업 종료하지 않고**, 자신이 발견한 결함을 직접 수정하거나 실제 기술 실행자를 연결해 완료를 수납한다.
+- 기존 canonical key를 먼저 검색하되 필요한 CrossConcept·Condition·Generated L4 키가 없으면 사용자 추가 승인 대기 없이 **Generated-only 확장 registry**에 의미·parent·evidence·UID를 등록한 뒤 Source/metadata/Consumer/index에 영구반영한다. RPM LOCKED·원본 기출 및 무관한 UID 보호, 무근거 추정 금지.
+- 원장 직접 Generated 품질 지시의 별도 인증은 생략. **main 병합 이후 필요한 실제 Chrome 학생 조회/출력 등 기술 검사는 수정 AI가 끝까지 진행**한다. main write만으로 MAIN_DONE이 아니며, 실패하면 본 작업의 수리 대상으로 처리한다. 실제 미실행을 PASS로 꾸미지 않는다. 예외적 막힘은 시도·정확한 blockers·주체를 ledger에 남기되 재승인 요청/보고만 하고 끝내지 않는다.
+
 # Repository Agent Instructions
+
+## Archive 추출 입력 우선 — 사용자 지정 2026-10-09
+
+`docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md`를 따른다. 발문·보기·수식·문제 이미지가 추출된 이후에는 CREATE부터 JS·실제 에셋을 기본 입력으로 쓰며 PDF routine 전수 대조를 하지 않는다. 원본이 실제로 필요한 문항 결함만 qid·확인할 사실을 명시해 해당 영역을 대조한다. JS/asset SHA·intake provenance는 재사용하고 실제 하지 않은 원문 대조 PASS를 기록하지 않는다. 완전한 학생 입력·실제 에셋 열람과 독립 freeze, 문항 품질·렌더·HOLD·publication 기준은 유지한다. 아래의 기존 PDF 자동 선행·전 페이지 대조 요구보다 최신 사용자 지시가 우선한다.
 
 ## Archive 2.0 코드 구현의 최우선 필수 조건
 
@@ -39,7 +48,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 ## Archive Codex 실행 증거·수납 보완
 
 - assignment의 worktree/working JS/asset root/evidence root 절대 경로와 expected SHA를 첫 동작에서 확인한다. asset root는 실제 `assets/` 부모다.
-- CREATE item HOLD는 PDF 대조 → 최소 수정 → R1/R2 검수 → true item HOLD의 QUESTION_ONLY 대체 경로를 이어 간다. 복구 가능한 기술 결속 오류를 시험지 최종 HOLD로 종료하지 않는다.
+- CREATE item HOLD는 JS·에셋 결함 판정 → 필요한 경우에만 scoped PDF 대조 → 최소 수정 → R1/R2 검수 → true item HOLD의 QUESTION_ONLY 대체 경로를 이어 간다. 복구 가능한 기술 결속 오류를 시험지 최종 HOLD로 종료하지 않는다.
 - stage 결과는 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --json`의 실제 raw generic report를 보존한다. custom PASS 요약이나 common-only PASS는 active artifact contract 증거를 대신하지 않는다.
 - ROOT는 publish 전에 실제 report schema, 전 qid 분모, JS·자산·receipt SHA를 수납한다. Git index와 remote bytes를 각각 확인하고 기존 파일도 raw witness와 다르면 명시한 경로만 재정규화·stage한다. 기존 실패와 수정 provenance는 보존한다.
 - 명시적 사용자 지시가 특정 run의 실제 캡처 요건을 면제하면 원문 지시·고정 roster·범위·SHA를 별도 evidence로 결속한다. `NOT_RUN_USER_WAIVER`와 `USER_DIRECTED_STATIC_COMPLETE`를 사용하고 실제 `RENDER_PASS`를 주장하지 않는다. JS/자산, R1/R2, item HOLD, production·remote readback 요건은 유지한다. 기본 actual render 계약은 유지한다.

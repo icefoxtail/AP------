@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "ALIVE_LITE_EXTENSION_L3_CANDIDATES_v1",
+  "status": "SIX_LOCAL_GENERATED_EXT_APPROVED_RPM_LOCKED_UNCHANGED",
+  "targetL2": "H22-C-06-INEQUALITY",
+  "candidateCount": 1,
+  "candidates": [
+    {
+      "candidateL3Id": "EXT-H1-BSG26-ABS-PIECEWISE-L3",
+      "label": "절댓값을 포함한 부등식",
+      "closestCanonicalL3": [
+        "연립일차부등식",
+        "절대부등식"
+      ],
+      "closestCanonicalRPMRecords": [
+        "H1-RPM-178",
+        "H1-RPM-182",
+        "H1-RPM-183"
+      ],
+      "machineComparator": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY is ACTIVE PT, not proof of RPM semantic equivalence",
+      "definingDecisiveStep": "절댓값 내부 일차식의 영점으로 구간을 분할하여 좌변을 구간별 일차식으로 변환",
+      "newL3Argument": "현 RPM 절대부등식은 산술기하평균/코시형이며 |ax+b| 합·차 부등식을 설명하지 않는다",
+      "againstNewL3": "기존 연립일차부등식 및 부등식의 활용의 Condition Pattern으로 흡수될 여지 심사",
+      "sourceSeedQids": [
+        11
+      ],
+      "exampleUids": [
+        "ALITE-BSG26-B02-Q11-A01",
+        "ALITE-BSG26-B02-Q11-A02",
+        "ALITE-BSG26-B02-Q11-A04",
+        "ALITE-BSG26-B02-Q11-A05",
+        "ALITE-BSG26-B02-Q11-A07",
+        "ALITE-BSG26-B02-Q11-A08"
+      ],
+      "status": "GENERATED_LOCAL_SEMANTIC_REVIEW_APPROVED_NOT_RPM_CANONICAL",
+      "canonicalPromoted": false,
+      "consumerSelectable": true,
+      "exampleUidCount": 6,
+      "reviewStatus": "SEMANTIC_REVIEWED",
+      "parentStandardUnitKey": "H22-C-06",
+      "parentStandardUnitOrder": 6,
+      "parentSubUnitKey": "H22-C-06-INEQUALITY",
+      "classificationTablePath": "archive/data/meta-foundation/candidates/high1/2022-commonmath1-absolute-value-inequality-v1.json",
+      "mathReview": "A1_STUDENT_INPUT_FROZEN_A2_9_OF_9_MATCH",
+      "reviewEvidence": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/B02_Q11_SEMANTIC_REVIEW_20261009.json"
+    }
+  ],
+  "originalSourceBlobSha": "8266fa476906e9134b94f23e803bd3b2fb26ece4",
+  "independentReview": "6_EXT_APPROVED_3_EXISTING_RPM",
+  "canonicalRPMModified": false,
+  "generatedSampleEvidenceBound": true
+}

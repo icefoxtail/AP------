@@ -2,7 +2,8 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
-ROOT는 CURRENT §25에 따라 캡처/실제 render 요건 면제와 예외·HOLD 복구/해제를 결정할 상시 위임 권한을 가진다. 반복 사용자 승인을 prerequisite로 요구하지 않는다. 품질 결함은 원본 PDF→최소 수정→true item HOLD 문항 대체→영향 qid 검수로 복구한다. 캡처만 없으면 ROOT가 static 완성 경로를 결정한다. 실제 미실행 render는 NOT_RUN_ROOT_WAIVER로 기록하고 RENDER_PASS를 가장하지 않는다. 유효한 R1/R2·전 qid·JS/자산/SVG·zero item HOLD·production/readback 요건은 유지한다.
+최신 사용자 지시 2026-10-09: docs/rules/02_PIPELINES/Archive_Extracted_Source_First_v1.md를 따른다. 발문·보기·수식·문제 에셋의 추출이 끝나면 CREATE부터 JS·실제 에셋을 기본 입력으로 사용한다. PDF 존재/경로는 열람 사유가 아니며 routine 전 페이지 대조·재전사·OCR를 하지 않는다. 원문 확인이 실제로 필요한 구체적 문항 결함만 qid·확인할 사실을 기록해 PDF 해당 영역을 대조한다. 계산/답 불일치·조판·SVG·기술 receipt 문제는 먼저 JS·에셋으로 처리한다. PDF 실제 대조, 재사용 intake evidence, 추출 baseline parity를 구분해 기록한다. R1/R2 freeze 전 PDF/답안/upstream 풀이 비노출과 완전한 필수 입력·실제 에셋 열람, 독립 검수·렌더·zero item HOLD 기준은 유지한다.
+ROOT는 CURRENT §25에 따라 캡처/실제 render 요건 면제와 예외·HOLD 복구/해제를 결정할 상시 위임 권한을 가진다. 반복 사용자 승인을 prerequisite로 요구하지 않는다. 품질 결함은 추출 JS·에셋에서 먼저 판정하고 원본 의존 결함만 scoped PDF 확인→최소 수정→true item HOLD 문항 대체→영향 qid 검수로 복구한다. 캡처만 없으면 ROOT가 static 완성 경로를 결정한다. 실제 미실행 render는 NOT_RUN_ROOT_WAIVER로 기록하고 RENDER_PASS를 가장하지 않는다. 유효한 R1/R2·전 qid·JS/자산/SVG·zero item HOLD·production/readback 요건은 유지한다.
 CURRENT 실행 authority는 JS_Archive_2.0_Codex_Execution_v1.md §§16–25이다. Canary pilot은 역사 조회 전용이다.
 assignment의 worktreeRootAbsolute/workingJsAbsolute/assetRootAbsolute/evidenceRootAbsolute와 expected SHA를 첫 동작에서 확인하고 absolute 경로로 작업한다. default cwd/primary checkout/source-batch를 임의 대용하지 않는다.
 MASTER는 firstMissingClosureStep에 실제 필요한 validator만 실행하고 승계된 유효 PASS를 다시 검증하지 않는다. 실제 FAIL/수정 후 같은 session에서 필요한 binding/locus를 고치고 재검증한다; one-run은 실패 뒤 재검증 금지가 아니다. 변화 없는 PASS를 반복하지 않는다.

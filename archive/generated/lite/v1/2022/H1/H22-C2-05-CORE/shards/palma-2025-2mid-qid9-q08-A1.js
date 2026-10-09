@@ -1,0 +1,43 @@
+window.examTitle = "PALMA_2025_QID9_08_A1";
+window.questionBank = [
+  {
+    "id": 1,
+    "uid": "ALITE-PALMA25-2MID-Q08-A1",
+    "level": "중",
+    "difficultyBucket": 2,
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-05",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE",
+    "subUnit": "집합 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "집합"
+    ],
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,120\\}$에 대하여 $A_k$는 $U$에 속하는 $k$의 배수의 집합이다. $n(A_{8}\\cup A_{12})$의 값은? (단, $n(X)$는 집합 $X$의 원소의 개수이다.)",
+    "choices": [
+      "$25$",
+      "$20$",
+      "$5$",
+      "$15$",
+      "$10$"
+    ],
+    "answer": "②",
+    "solution": "$120$ 이하의 $8$의 배수는 $15$개, $12$의 배수는 $10$개이다. 공통 원소는 $24$의 배수이므로 $5$개이다.\n합집합의 원소 수는 중복된 교집합을 한 번 빼서 구하므로 $n(A_{8}\\cup A_{12})=15+10-5=20$이다. 따라서 정답은 ②이다.",
+    "sourceType": "generated",
+    "sourceKind": "generated",
+    "sourceQid": 8,
+    "slot": "A1",
+    "purposeGroup": "A"
+  }
+];
+
+;(function(){const bank=window.questionBank;if(!Array.isArray(bank))throw Error("META_OVERLAY_BANK_MISSING");const rows=bank.filter(q=>q.uid === "ALITE-PALMA25-2MID-Q08-A1");if(rows.length!==1)throw Error("META_OVERLAY_UID_NOT_UNIQUE");Object.assign(rows[0],{"uid":"ALITE-PALMA25-2MID-Q08-A1","meta":{"rpmL1":"L1-2|집합과 명제","rpmL2":"L2-2.2|집합의 연산","rpmL3":"L3-2.2.1|교집합과 합집합","rpmL4":"L4-2.2.1.2|원소 개수","rpmL4Namespace":"RPM_EXISTING_DRAFT","rpmPrimaryRecordId":"H1-RPM-238","rpmDraftAuthorityRef":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json","rpmDraftAuthoritySha256":"f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"crossConceptRegistryRef":null,"conditionRegistryRef":null,"sourceKind":"generated","integrationPattern":"SEQUENTIAL","difficultyBucket":2,"level":"중","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_TWO_SET_INCLUSION_EXCLUSION","standardCourse":"공통수학2","standardUnitKey":"H22-C2-05","subUnitKey":"H22-C2-05-CORE"},"metaFinalSha256":"cecd8c845928e7a94c55afca01697b433c84976115f9955d55bf864a7512186e","metaReviewEvidence":{"path":"alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q08-A1.json","sha256":"1f4ea0c38123cb14ce9215f6cf9853ed4cf788f63ef554f930f05515616c1ebb","reviewStatus":"USER_DIRECTED_QUALITY_APPROVED","approvalBasis":"USER_DIRECTED_QUALITY_APPROVED_20261009_PALMA_Q05_Q08_36","scopeUids":["ALITE-PALMA25-2MID-Q08-A1"],"uid":"ALITE-PALMA25-2MID-Q08-A1"},"metaReviewEvidenceSha256":"1f4ea0c38123cb14ce9215f6cf9853ed4cf788f63ef554f930f05515616c1ebb","difficultyBucket":2,"level":"중","problemTypeKey":"PT_SET_CARDINALITY","templateKey":"TPL_TWO_SET_INCLUSION_EXCLUSION","secondaryConceptKeys":[],"crossConceptKeys":[],"conditionKeys":["COND_NATURAL_NUMBER"],"integrationPattern":"SEQUENTIAL"});})();

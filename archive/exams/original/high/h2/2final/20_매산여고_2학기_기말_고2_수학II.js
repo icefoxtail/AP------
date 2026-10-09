@@ -166,7 +166,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
-    "content": "함수 $f(x)=\\displaystyle\\int\\left{\\dfrac{d}{dx}(2x^2-8x)\\right}dx$에 대하여 $f(x)$의 최솟값이 $5$일 때, $f(1)$의 값을 구하면? [3.6점]",
+    "content": "함수 $f(x)=\\displaystyle\\int\\left\\{\\dfrac{d}{dx}(2x^2-8x)\\right\\}dx$에 대하여 $f(x)$의 최솟값이 $5$일 때, $f(1)$의 값을 구하면? [3.6점]",
     "choices": [
       "$-6$",
       "$-2$",
