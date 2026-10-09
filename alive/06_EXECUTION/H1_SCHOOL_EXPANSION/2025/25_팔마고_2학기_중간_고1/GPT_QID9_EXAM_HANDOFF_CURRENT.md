@@ -1,9 +1,9 @@
-## CURRENT 2026-10-10 — 원본 Q23 지정 제작 (Q22 별도 미제작)
+## CURRENT 2026-10-10 — 원본 Q23 지정 제작 (Q22 동시 작업 반영)
 - 원본 Q23: 두 직선까지의 거리에서 네 교점 평행사변형의 넓이. RPM Primary L3 `점과 직선 사이의 거리` (`H1-RPM-216`).
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`에 `GPT_QID9_Q23_PACKAGE.json` 신규 A1~C3 9개 및 제작자 역발문 ledger 저장. Q01~Q21 189개 보호 → 총 CREATE 198개(22번은 미제작).
 - 제작자 KEEP9/REVISED0/HOLD0, 서술형 9개. 신규 C2·C3 Generated-only L4는 별도 registry로 기록, RPM LOCKED 불변. 원본 Q23 불변.
 - 독립 GPT 공개답 검수 NOT_RUN, 신규 Consumer 0/9, SVG 별도 팔마고 엔진 라인 필요, Chrome NOT_TESTED, main Q23 출시 NOT_DONE.
-- `nextSourceQid=22`: 제작 순서상 Q22가 미제작이므로 상태를 건너뛰어 완료 처리하지 않음.
+- `nextSourceQid=null`: Q22도 별도 작업에서 생성되어 Q01~Q23 전 원본 23개에 9개씩 CREATE 후보가 존재함. 다만 Q22/Q23 독립 품질승인·학생 출시는 별도.
 
 ---
 
