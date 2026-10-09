@@ -1,6 +1,7 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
 ## CURRENT — ALIVE Generated 해설용 SVG 누락방지 (2026-10-10)
+- **기존 HARD 우선:** `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` §2-2-1 및 §2-2-1-A에 따라 **2022 공통수학2 도형의 방정식(H22-C2-01~04)의 의미 있는 실제 도형/그래프 문항은 원칙적으로 해설 SVG 전수 필수**다. 임의 ‘유용하면 제작’ 판정으로 축소 금지. 미생성은 `SOLUTION_VISUAL_MISSING`. 예외는 실수 도형 퇴화/불성립과 같은 문항별 수학적 이유로 제한하며, 기존 실제 검증된 SVG는 REUSE 가능하다.
 - **문제용 studentVisual TEXT_ONLY/NOT_REQUIRED는 해설용 solution SVG 면제 사유가 아니다.** 각 UID별 독립 해설 시각화 ADD/REUSE/EXEMPT/HOLD 판정과 교육적 근거를 남긴다.
 - 정본 실행 규정: [QID9 해설 SVG 전수조사·신규제작 게이트](ALIVE_QID9_SOLUTION_SVG_AUDIT_AND_CREATION_GATE_v1.md). 기존 `apmath-visual-upgrade` 스킬·시각엔진·도형추출 v3·독립 geometry evidence를 재사용하며 새 엔진/규칙을 중복 도입하지 않는다.
 - 팔마고 2026-10-10 정적 조사: q01~q20 180 UID, q04~q20 JSON 153개에서 해설 직접 SVG 연결 0개, q01~q03 27개는 초안 Markdown, q10 네 SVG는 **문제용**. 이 숫자는 학생 Consumer 실조회 결과가 아니며 향후 UID별 해설 시각 효용을 반드시 확정한다.
