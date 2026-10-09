@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_META_EXTENSIONS_QID13_V1",
+  "curriculum": "2022",
+  "course": "공통수학2",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceQid": 13,
+  "parentRpmL3RecordId": "H1-RPM-234",
+  "scope": "GENERATED_ONLY_RPM_LOCKED_UNMODIFIED",
+  "crossConcepts": [
+    {
+      "id": "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+      "labelKo": "정수 약수의 양·음수 대응",
+      "role": "원소 후보 집합 결정 및 양·음수 약수 개수 확정",
+      "sourceQid": 13,
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-A1",
+        "ALITE-PALMA25-2MID-Q13-A2",
+        "ALITE-PALMA25-2MID-Q13-A3",
+        "ALITE-PALMA25-2MID-Q13-B1",
+        "ALITE-PALMA25-2MID-Q13-B2",
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q13-C1",
+        "ALITE-PALMA25-2MID-Q13-C2",
+        "ALITE-PALMA25-2MID-Q13-C3"
+      ]
+    },
+    {
+      "id": "EXT-CC-H1-Q13-COMBINATION-COUNTING",
+      "labelKo": "짝수 선택의 조합 및 곱셈원리",
+      "role": "선택 가능한 부분집합의 수 계산; 공통수학1 선수 경우의 수",
+      "sourceQid": 13,
+      "status": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-A1",
+        "ALITE-PALMA25-2MID-Q13-A2",
+        "ALITE-PALMA25-2MID-Q13-A3",
+        "ALITE-PALMA25-2MID-Q13-B1",
+        "ALITE-PALMA25-2MID-Q13-B2",
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q13-C1",
+        "ALITE-PALMA25-2MID-Q13-C2",
+        "ALITE-PALMA25-2MID-Q13-C3"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "EXT-COND-H1-Q13-REQUIRED-ELEMENT",
+      "labelKo": "음수 -1 필수 포함",
+      "signature": "-1∈A",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-B1",
+        "ALITE-PALMA25-2MID-Q13-C2"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    },
+    {
+      "id": "EXT-COND-H1-Q13-REQUIRED-FORBIDDEN",
+      "labelKo": "정해진 원소 필수 포함 및 배제",
+      "signature": "2∈A 및 -3∉A",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-B2"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    },
+    {
+      "id": "EXT-COND-H1-Q13-EXACT-CARDINALITY",
+      "labelKo": "부분집합 원소 수 4개",
+      "signature": "|A|=4",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-B3",
+        "ALITE-PALMA25-2MID-Q13-C3"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    },
+    {
+      "id": "EXT-COND-H1-Q13-PAIR-COVER",
+      "labelKo": "양·음수 약수쌍 최소 1개 포함",
+      "signature": "모든 양의 약수 d에 대해 A∩{d,-d}≠∅",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-C1"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    },
+    {
+      "id": "EXT-COND-H1-Q13-EVEN-CARDINALITY",
+      "labelKo": "부분집합의 원소 수 짝수",
+      "signature": "|A|가 짝수",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-C2"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    },
+    {
+      "id": "EXT-COND-H1-Q13-ONE-OF-PAIR",
+      "labelKo": "양·음수 지정 쌍 중 정확히 1개",
+      "signature": "|A∩{1,-1}|=1",
+      "exampleUids": [
+        "ALITE-PALMA25-2MID-Q13-C3"
+      ],
+      "status": "GENERATED_ACTIVE",
+      "parentRpmL3RecordId": "H1-RPM-234"
+    }
+  ],
+  "canonicalConditionKeysReused": [
+    "COND_INTEGER",
+    "COND_POSITIVE"
+  ],
+  "underlyingEvidence": "Q13 full-mask enumeration 9 UID, source L3 H1-RPM-234 and source signed divisors",
+  "consumerState": "NOT_REGISTERED_CREATOR_DRAFT"
+}
