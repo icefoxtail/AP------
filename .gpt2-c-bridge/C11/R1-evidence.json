@@ -998,3 +998,231 @@
             "qid": 1,
             "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
             "observation": "내분점 P=(1,6), 중점 M=(3,8), 거리 2√2 단계가 실제 설명·수식에 연결된다."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "visualGitBlobSha": "d6922fb8bf801d2ef4fcb19fadea40f57bcbe778",
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+            "observation": "실제 SVG three-circle geometry: C0(-3,1)→C1(-5,2)→C2(5,-2), circle center coordinates are not merely textual labels."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "좌표 차 5,-5→제곱 합 50→5√2까지 교사의 설명과 수식이 끊어지지 않는다."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "visualGitBlobSha": "f82defa94ca5ec41e76f7bf5977fcfa37db888ca",
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+            "observation": "실제 SVG data-geometry line (a,b,c)=(1,3,2) 및 (6,-2,-1), 기울기 -1/3과 3으로 실제 직교"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "원소 관계와 부분집합 판단을 ①~⑤ 독립 문단으로 풀어 서술 생략을 방지한다."
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+            "visualGitBlobSha": "2c092797d422e16b8893a6fd19f188f2cb3e7125",
+            "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+            "observation": "Venn 두 원의 겹침 y, 비겹침 20-y 및 15-y를 실제 도형의 영역에 명시한다. 제일고 q18 예외는 벤치마킹하지 않는다."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "부호 틀린 SVG primitive를 문구만 보고 PASS하는 false-pass, ㄱ/ㄴ/ㄷ 판정 블록 축약, exact ACTIVE PT/TPL null 누락, runtime TeX double-escape 등을 실제 README에서 확인함. 현재 C10은 SVG 불필요, q7 ㄱ/ㄴ/ㄷ 독립판단, q17 (1)/(2) 독립해설, TeX control 검출 시행."
+    }
+  },
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibrationReviewed": true,
+  "goldenTimingDisclosure": "Golden samples inspected after student-only answer freeze and before stored solution four-axis judgement; does not claim before freeze. CREATE provenance not copied as R1 verdict.",
+  "negativeSampleRead": true,
+  "sourceCorrectionsAlreadyInCreate": [
+    {
+      "qid": 9,
+      "provenance": "AUDITED_REPAIR",
+      "sourceIssue": "Original M=number of all integers k with discriminant>0; infinitely many k<=1, so M not finite.",
+      "repair": "first number domain: 정수 k → 자연수 k only",
+      "verifiedAnswer": "M=1, m=-4; Mm=-4=choice ④"
+    },
+    {
+      "qid": 13,
+      "provenance": "ALIVE_REPLACEMENT",
+      "sourceIssue": "Original a,b,c rational but roots sum 3+sqrt(6) irrational; impossible, and no unique a+b+c.",
+      "repair": "Set line y=bx-c through (0,-2),(1,0) and x-root sum=3; preserve qid/5 choices/graph concept.",
+      "verifiedAnswer": "b=2,c=2,a=-1, so a+b+c=3=choice ③"
+    }
+  ],
+  "sourceImageRecovery": {
+    "qid": 22,
+    "gitOriginalSourceBlobSha": "e756a40e0c1fe109c5ef6a541b07b7f59e1aa88b",
+    "readbackLibraryAreas": [
+      "source/assets",
+      "final/assets",
+      "R1/assets"
+    ],
+    "fullOriginalSourcePreserved": true
+  },
+  "r1MetaRevision": {
+    "qid": 7,
+    "field": "conditionKeys",
+    "old": [],
+    "new": [
+      "COND_POSITIVE"
+    ],
+    "reason": "The stem explicitly constrains a,b,c to be positive triangle side lengths; positivity is used in selecting valid triangle geometry."
+  },
+  "canonicalValidatorExecuted": false,
+  "canonicalValidatorStatus": "R1_MODULE_FUNCTION_FAIL_Q17_DISPOSITION_REPAIRED_PENDING_REAL_GENERIC_CLI_AND_ARTIFACT_GATE",
+  "r1QualitySealed": false,
+  "pendingClosureSteps": [
+    "RUN actual native canonical V2 R1 and active artifact gate over SHA-bound candidate_v2.js + evidence_v2.json in complete Node22 Git checkout; do not claim quality PASS from this structural preflight.",
+    "On any actual validator FAIL repair changed qids and direct dependencies only; q17 Meta source ACTIVE parity checked, no math rewind.",
+    "On raw ok:true and artifactContract.active:true + stage PASS, seal R1_QUALITY_SEALED, promote matching JS/receipt to Library and handoff R2.",
+    "Preserve separate historical CREATE provenance/validator closure debt; do not bypass upstream seal."
+  ],
+  "createdAtUTC": "2026-10-09T08:52:37.833691+00:00",
+  "historicalPreExposedQids": [
+    1
+  ],
+  "q1IndependentReReviewBinding": {
+    "freezeRef": "R1/R1_Q1_INDEPENDENT_REFREEZE_20261009.json",
+    "freezeSha256": "09f40ed6f83877c9f60c70683b87d79dec09d199dbabf5fe029dd0dc2f8de394",
+    "compareRef": "R1/R1_Q1_INDEPENDENT_COMPARE_20261009.json",
+    "compareSha256": "3c7159bcacebdd3c2d1091a6e3becefa55200c04f642b189b0212d29c4164b69",
+    "historicalReviewerPreExposure": true,
+    "provenance": "Prior MASTER-C clean independent q1 freeze and later comparison; this run binds the already-saved evidence only."
+  },
+  "evidenceReboundAtUTC": "2026-10-09T13:51:46.078292+00:00",
+  "r1TemplateActiveLookup20261009": {
+    "registryStatus": "ACTIVE",
+    "pack": "H1_FOUNDATION",
+    "taxonomyPath": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+    "taxonomyGitBlobSha": "2d2ce738893a58206072da3f972a832c9adf5eb6",
+    "bindingsPath": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+    "bindingsGitBlobSha": "53dc8919232dbd0f86b126c26fbca16d84be0269",
+    "lookupCount": 9,
+    "activeExactRepairQids": [
+      17
+    ],
+    "explicitNullableTemplateDebtQids": [
+      1,
+      6,
+      7,
+      9,
+      11,
+      14,
+      16,
+      22
+    ],
+    "results": [
+      {
+        "qid": 1,
+        "currentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "Active TPL_H1_REMAINDER_COMPOSITE_DIVISOR combines multiple factor/remainder conditions; TPL_H1_REMAINDER_NESTED_DIVISION requires sequential division. Stem is one polynomial division by quadratic with quotient+remainder evaluation; neither exact."
+      },
+      {
+        "qid": 6,
+        "currentProblemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "Active TPL_H1_COMPLEX_COMPONENT_OPERATION and TPL_H1_COMPLEX_CONJUGATE_NORM are component/conjugate procedures; this multi-statement negative-square-root classification is neither exact."
+      },
+      {
+        "qid": 7,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under PT_H1_EQUATION_APPLICATION; source subUnit H15-SA-05-EQUATION_APPLICATION has no exact active binding. Do not invent template or remap unrelated unit."
+      },
+      {
+        "qid": 9,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under retained PT_H1_EQUATION_APPLICATION, and source subUnit H15-SA-05-EQUATION_APPLICATION has no exact ACTIVE binding. Discriminant-oriented alternate PT requires coordinated source-derived L2 review; not blind attach."
+      },
+      {
+        "qid": 11,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under retained PT_H1_EQUATION_APPLICATION, and source subUnit H15-SA-05-EQUATION_APPLICATION has no exact ACTIVE binding. Graph-intersection PT needs coordinated L2 resolution; not blind attach."
+      },
+      {
+        "qid": 14,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under retained PT_H1_EQUATION_APPLICATION; source subUnit H15-SA-05-EQUATION_APPLICATION has no exact ACTIVE binding. Extrema-model PT template exists under a different ACTIVE L2, not safe to attach alone."
+      },
+      {
+        "qid": 16,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under retained PT_H1_EQUATION_APPLICATION; source subUnit H15-SA-05-EQUATION_APPLICATION has no exact ACTIVE binding. Interval-extrema PT template under different ACTIVE L2 must not be attached without source-grounded reclassification."
+      },
+      {
+        "qid": 17,
+        "oldProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "newProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+        "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+        "disposition": "ACTIVE_PT_TPL_EXACT_BINDING_PINPOINT_REPAIRED"
+      },
+      {
+        "qid": 22,
+        "currentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "templateKey": null,
+        "disposition": "EXPLICIT_CANONICAL_PT_TPL_GAP_RETAINED",
+        "exactReason": "ACTIVE H1_FOUNDATION taxonomy defines no TPL under retained PT_H1_EQUATION_APPLICATION; source subUnit H15-SA-05-EQUATION_APPLICATION has no exact ACTIVE binding. Interval-extrema PT alternative requires coupled source-grounded L2 classification."
+      }
+    ],
+    "claim": "Q17 pinpoint canonical Meta repair and 8 exact evidence-based nullable template dispositions; no fabricated source subunit mappings. This is not a canonical R1 validator PASS."
+  },
+  "r1MetaPinpointRepair20261009": {
+    "qid": 17,
+    "fields": [
+      "problemTypeKey",
+      "templateKey"
+    ],
+    "sourceArtifactSha": "06effeb97b5777da0c0e6677440323f018ef130a",
+    "finalArtifactSha": "ccdd08eb8c388f39184f34078671a7e85fd1f067",
+    "studentFacingBytesChanged": false,
+    "answerAndSolutionChanged": false,
+    "directDependencyQids": [],
+    "reviewScope": "qid17 metadata only",
+    "registryBindingVerified": true
+  }
+}
