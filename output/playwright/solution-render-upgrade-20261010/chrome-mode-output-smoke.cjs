@@ -1,11 +1,14 @@
 const { chromium } = require(process.env.AP_PLAYWRIGHT_MODULE || 'playwright');
+const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const outDir = __dirname;
 const prefix = process.env.AP_SMOKE_PREFIX || 'pre-main';
 const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
+const sourceA = 'exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js';
 const sourceB = 'exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js';
 const sourceC = 'exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js';
+const sourceFullwidth = 'exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js';
 async function readOutput(page) {
   return page.evaluate(async () => {
     const root = document.getElementById('print-area');
@@ -62,11 +65,34 @@ async function readOutput(page) {
   });
 }
 (async () => {
-  const browser = await chromium.launch({ channel: 'chrome', headless: true });
-  const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
+  const browser = await chromium.launch({ channel: 'chrome', headless: process.env.AP_SMOKE_HEADED !== '1' });
+  const context = await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
+  const page = await context.newPage();
   const consoleErrors = [], pageErrors = [];
-  page.on('pageerror', error => pageErrors.push(String(error.stack || error)));
-  page.on('console', message => { if (message.type() === 'error' && !message.text().includes('favicon')) consoleErrors.push(message.text()); });
+  const trackResources = target => {
+    const servedResources = [], reads = [];
+    target.on('pageerror', error => pageErrors.push(String(error.stack || error)));
+    target.on('console', message => { if (message.type() === 'error' && !message.text().includes('favicon')) consoleErrors.push(message.text()); });
+    target.on('response', response => {
+      const url = new URL(response.url());
+      if (url.pathname === '/archive/engine.html' ||
+          url.pathname.endsWith('/screen-runtime-adapter.js') ||
+          url.pathname.endsWith('/solution-render-executor.js') ||
+          url.pathname.endsWith('/layout-materializer.js') ||
+          url.pathname.endsWith('/25_매산여고_2학기_중간_고1_기출.js') ||
+          url.pathname.endsWith('/26_복성고_1학기_중간_고1_기출.js') ||
+          url.pathname.endsWith('/25_효천고_2학기_중간_고1_기출.js') ||
+          url.pathname.endsWith('/25_신흥중_2학기_중간_중3_수학.js') ||
+          url.pathname.startsWith('/archive/assets/images/')) {
+        reads.push(response.body().then(bytes => servedResources.push({
+          url: response.url(), status: response.status(), byteLength: bytes.length,
+          sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+        })));
+      }
+    });
+    return { servedResources, settle: () => Promise.all(reads) };
+  };
+  const mainResources = trackResources(page);
   await page.context().route('**/api/**', route => route.fulfill({status:200,contentType:'application/json',body:'{"success":true}'}));
   const url = base + '/archive/engine.html?data=' + encodeURIComponent(sourceB) + '&mode=exam&fit=screen&qpp=4&printDryRun=1&benchmark=' + prefix + '-bounded-prewarm';
   console.log('OPEN', url);
@@ -142,6 +168,53 @@ async function readOutput(page) {
   await page.waitForFunction(() => AppState.mode === 'sol' && window.__AP_OUTPUT_RENDER_READY__?.outputRequestId === AppState.outputEnvelope?.outputRequestId && document.getElementById('archive2-reader-controls')?.dataset.ready === 'true', null, { timeout: 120000 });
   const solutionC = await readOutput(page);
   await page.screenshot({ path: path.join(outDir, prefix + '-C-solution-after-source-change.png'), fullPage: true });
+
+  const fullwidthUrl = base + '/archive/engine.html?data=' + encodeURIComponent(sourceFullwidth) + '&mode=exam&fit=screen&qpp=4&prewarm=0&printDryRun=1&benchmark=' + prefix + '-fullwidth';
+  await page.goto(fullwidthUrl, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot?.mode === 'exam', null, { timeout: 120000 });
+  const fullwidthExamSession = await page.evaluate(() => ({source:archiveScreenRuntime.currentSession.sourceArchiveFile,mode:AppState.mode,pages:document.querySelectorAll('#print-area .page').length}));
+  await page.locator('#btn-sol').click();
+  await page.waitForFunction(() => AppState.mode === 'sol' && window.__AP_OUTPUT_RENDER_READY__?.outputRequestId === AppState.outputEnvelope?.outputRequestId && document.getElementById('archive2-reader-controls')?.dataset.ready === 'true', null, { timeout: 120000 });
+  const fullwidthSolution = await readOutput(page);
+  const fullwidthGeometry = await page.evaluate(() => {
+    const root = document.getElementById('print-area');
+    const boxes = [...(root?.querySelectorAll('.sol-box') || [])];
+    const q10 = boxes.find(box => String(box.dataset.sourceRef || '').includes('#ordinal:10'));
+    const q9 = boxes.find(box => String(box.dataset.sourceRef || '').includes('#ordinal:9'));
+    const q11 = boxes.find(box => String(box.dataset.sourceRef || '').includes('#ordinal:11'));
+    const image = q10?.querySelector('.sol-image-wrap img');
+    const pages = [...(root?.querySelectorAll('.page') || [])];
+    const pageNo = box => box ? pages.indexOf(box.closest('.page')) + 1 : null;
+    const rect = node => { if (!node) return null; const r=node.getBoundingClientRect(); return {width:r.width,height:r.height,top:r.top,bottom:r.bottom,left:r.left,right:r.right}; };
+    return {
+      source:AppState.sourceArchiveFile,
+      q9Page:pageNo(q9),q10Page:pageNo(q10),q11Page:pageNo(q11),
+      q10SourceRef:q10?.dataset.sourceRef || null,
+      q10Fullwidth:q10?.dataset.solutionFullWidth === 'true' || !!q10?.closest('.sol-fullwidth-column'),
+      q10ColumnSpan:q10?.dataset.columnSpan || null,
+      q10Column:rect(q10?.closest('.sol-fullwidth-column')),
+      q10Box:rect(q10),
+      svg:{src:image?.getAttribute('src')||null,complete:!!image?.complete,width:image?.naturalWidth||0,height:image?.naturalHeight||0,contained:!!q10&&!!image&&(()=>{const b=q10.getBoundingClientRect(),i=image.getBoundingClientRect();return i.left>=b.left-1&&i.right<=b.right+1&&i.top>=b.top-1&&i.bottom<=b.bottom+1})()},
+      fullwidthColumns:root?.querySelectorAll('.sol-fullwidth-column').length||0,
+      clipped:[...(root?.querySelectorAll('.sol-box,.sol-exp,.page-body,.sol-grid-col,.sol-fullwidth-column')||[])].flatMap(node=>{const style=getComputedStyle(node),dy=node.scrollHeight-node.clientHeight;return ['hidden','clip'].includes(style.overflowY)&&dy>2?[{sourceRef:node.closest('.sol-box')?.dataset.sourceRef||'',delta:dy}]:[]})
+    };
+  });
+  await page.screenshot({ path: path.join(outDir, prefix + '-fullwidth-solution.png'), fullPage: true });
+  await page.evaluate(async () => { await safePrint('vector'); });
+  const fullwidthPrint = await page.evaluate(() => ({readiness:archiveReadinessTracker.snapshot(),metrics:JSON.parse(document.documentElement.dataset.apPrintMetrics||'null'),pending:printPending}));
+
+  const aPage = await page.context().newPage();
+  const aResources = trackResources(aPage);
+  const aUrl = base + '/archive/engine.html?data=' + encodeURIComponent(sourceA) + '&mode=exam&fit=screen&qpp=4&prewarm=0&printDryRun=1&benchmark=' + prefix + '-long-sol-svg';
+  await aPage.goto(aUrl, { waitUntil: 'domcontentloaded' });
+  await aPage.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot?.mode === 'exam', null, { timeout: 120000 });
+  await aPage.locator('#btn-sol').click();
+  await aPage.waitForFunction(() => AppState.mode === 'sol' && window.__AP_OUTPUT_RENDER_READY__?.outputRequestId === AppState.outputEnvelope?.outputRequestId && document.getElementById('archive2-reader-controls')?.dataset.ready === 'true', null, { timeout: 120000 });
+  const solutionA = await readOutput(aPage);
+  await aPage.screenshot({ path: path.join(outDir, prefix + '-A-long-solution.png'), fullPage: true });
+  await aPage.evaluate(async () => { await safePrint('vector'); });
+  const printA = await aPage.evaluate(() => ({readiness:archiveReadinessTracker.snapshot(),metrics:JSON.parse(document.documentElement.dataset.apPrintMetrics||'null'),pending:printPending}));
+  await Promise.all([mainResources.settle(), aResources.settle()]);
   const result = {
     schemaVersion:'ARCHIVE_MODE_OUTPUT_CANCELLATION_SMOKE_V1',
     browser: await browser.version(),
@@ -155,6 +228,15 @@ async function readOutput(page) {
     beforeSourceChange,
     sourceChange,
     solutionC,
+    sourceA,
+    solutionA,
+    printA,
+    sourceFullwidth,
+    fullwidthExamSession,
+    fullwidthSolution,
+    fullwidthGeometry,
+    fullwidthPrint,
+    servedResources:[...mainResources.servedResources,...aResources.servedResources],
     consoleErrors,
     pageErrors
   };
@@ -163,5 +245,11 @@ async function readOutput(page) {
   if (consoleErrors.length || pageErrors.length || solutionB.cacheStatus !== 'HIT' || answerB.cacheStatus !== 'HIT' ||
       !print.readiness.ready || print.readiness.state !== 'PRINT_READY' || !print.metrics?.dryRun ||
       !sourceChange.result.ok || !sourceChange.outputEnvelopeCleared || sourceChange.modes.sol !== null || sourceChange.modes.ans !== null ||
-      solutionC.cacheStatus === 'HIT') process.exitCode = 1;
+      solutionC.cacheStatus === 'HIT' || !fullwidthGeometry.q10Fullwidth ||
+      fullwidthGeometry.q10Page !== 4 || fullwidthGeometry.q9Page !== 3 || fullwidthGeometry.q11Page !== 5 ||
+      !fullwidthGeometry.svg.complete || !fullwidthGeometry.svg.contained || fullwidthGeometry.clipped.length ||
+      fullwidthSolution.mathUnrendered !== 0 || !fullwidthPrint.readiness.ready || fullwidthPrint.readiness.state !== 'PRINT_READY' ||
+      solutionA.bodyTextSha256 !== '8bec4e403bba634204ec3396a851488fb74e0ab515046047a0aa9fb350e584b3' ||
+      solutionA.answerCount !== 23 || solutionA.imageCount !== 12 || !solutionA.imagesReady || solutionA.mathUnrendered !== 0 ||
+      solutionA.clipped.length || !printA.readiness.ready || printA.readiness.state !== 'PRINT_READY') process.exitCode = 1;
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
