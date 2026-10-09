@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
+import problemBankMeta from "../problem-bank-meta.js";
 
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -49,6 +50,7 @@ if ((basicScopeLinks.authority?.sha256 !== canonicalMasterSha &&
   throw new Error("Archive2 canonical source-pack drift: master version does not match parent-link/projection policy");
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
 const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
+const uniqueCanonicalParents = [...new Map(taxonomy.map((record) => [core.pathKey(record, 4), record])).values()];
 const sourceParentsByUid = new Map();
 for (const link of basicScopeLinks.sourceParents || []) {
   if (!sourceParentsByUid.has(link.questionUid)) sourceParentsByUid.set(link.questionUid, []);
@@ -373,6 +375,25 @@ for (const exam of exams) {
         ),
       ],
     };
+    if (validJoin && meta && (meta.standardCourse || meta.standardUnitKey || meta.subUnitKey)) {
+      const displayResult = problemBankMeta.createSourceBoundDisplayProjection({
+        meta,
+        identity: id,
+        sourceFile: file,
+        sourceOrdinal: ordinal,
+        sourceGrade: sourceGradeEvidence.grade,
+        sourceFingerprint: fingerprint,
+        assignmentFingerprint,
+        gradeCourseAllowlist: projectionPolicy.gradeCourseAllowlist || [],
+        scopeParents: basicScopeLinks.records || [],
+        canonicalParents: uniqueCanonicalParents,
+      });
+      record.metaProjectionStatus = displayResult.projection
+        ? "DISPLAY_ONLY_SOURCE_BOUND"
+        : "DISPLAY_PROJECTION_UNAVAILABLE";
+      record.metaProjectionFailureReason = displayResult.reason || "";
+      record.metaProjection = displayResult.projection;
+    }
     if (
       node &&
       (node.curriculumApplicability !== record.curriculumApplicability ||
