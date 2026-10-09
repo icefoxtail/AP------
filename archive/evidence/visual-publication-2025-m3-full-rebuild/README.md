@@ -2,7 +2,7 @@
 
 Working branch: `codex/2025-m3-visual-publication-full-rebuild`
 Base commit: `b3c373b43f8932fa42792987663729730d4b4768`
-Publication boundary: push this branch after the full rebuild; do not merge it into `main`.
+Initial publication boundary: the full rebuild was first pushed as a branch-only result. A follow-up user instruction on 2026-10-10 authorized main and operations integration; the completed integration is recorded in `main-merge-receipt-v1.json`.
 
 ## Final full rebuild — 2026-10-09
 
@@ -87,3 +87,11 @@ SVGs from source question, verified solution, and frozen geometry facts.
 `phase1-5-full-rebuild/<exam>/denominator.json` contains the exact inventory qids
 for worker ownership. Non-contiguous qids are intentional; records in the
 current inventory, not `1..N`, define each exam denominator.
+
+
+## Post-merge verification — 2026-10-10
+
+- The integrated main tree passed `node tools/check-archive2-runtime.cjs` (42/42).
+- The actual Archive desktop `mode=sol` render on the integrated tree passed all 10 exams and loaded all 130 solution SVGs with zero errors. Evidence is recorded in `archive-render-desktop-20261009-v8/summary.json` and `archive-render-desktop-20261009-v8/archive-render-matrix.json`.
+- Remote main readback matched `1ba22c805c9fc4b144b5670d414964ee73d3521d` after the merge.
+- The later registration-artifact synchronization at `cf42ca40701510ff4caedac99612879f727c6a25` was merged into the integration tree at `f3ae9664a9e454f9910664d59250f46419d2ff7c`; the runtime guard passed 42/42 after that merge. Its three changed paths do not include the ten target exam JS files, 130 target SVGs, or Archive renderer.

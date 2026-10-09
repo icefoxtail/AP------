@@ -7,7 +7,7 @@
 - Current branch: `work/alive-25-palma-h1-2mid-qid9`.
 
 ---
-## CURRENT 2026-10-10 — 원본 Q23 지정 제작 (Q22 동시 작업 반영)
+## HISTORY — 2026-10-10 Q23 CREATE checkpoint (superseded by the approval record above)
 - 원본 Q23: 두 직선까지의 거리에서 네 교점 평행사변형의 넓이. RPM Primary L3 `점과 직선 사이의 거리` (`H1-RPM-216`).
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`에 `GPT_QID9_Q23_PACKAGE.json` 신규 A1~C3 9개 및 제작자 역발문 ledger 저장. Q01~Q21 189개 보호 → 총 CREATE 198개(22번은 미제작).
 - 제작자 KEEP9/REVISED0/HOLD0, 서술형 9개. 신규 C2·C3 Generated-only L4는 별도 registry로 기록, RPM LOCKED 불변. 원본 Q23 불변.
@@ -16,7 +16,7 @@
 
 ---
 
-## CURRENT 2026-10-10 — Q22 CREATE 9문항 + 9개 해설 SVG / 다음 Q23
+## HISTORY — 2026-10-10 Q22 CREATE checkpoint / 다음 Q23
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`; 원본 Q22 세 직선 직각삼각형 외접원에서 A1~C3 총 9개 서술형 생성.
 - 문항 패키지 `GPT_QID9_Q22_PACKAGE.json`, 자가검산 `GPT_QID9_Q22_STEM_SELF_REVIEW.md`, 해설 SVG 9개 `GPT_QID9_Q22_VISUALS/`.
 - Q01~Q21 189 UID 보존, Q22 추가 후 신규 CREATE **198 UID (22×9)**. Primary L3 `원의 방정식`, RPM `H1-RPM-217`, ACTIVE `PT_CIRCLE_EQUATION/TM_CIRCLE_CIRCUMCIRCLE`.
@@ -25,7 +25,7 @@
 
 ---
 
-## CURRENT 2026-10-10 — Q21 CREATE 9문항 / 다음 Q22
+## HISTORY — 2026-10-10 Q21 CREATE checkpoint / 다음 Q22
 - 원본 Q21: 진리집합 P/Q, r↔¬p의 필요·충분조건을 묻는 서술형. RPM Primary L3 `필요조건·충분조건` (`H1-RPM-247`).
 - 통합 branch `work/alive-25-palma-h1-2mid-qid9`, Q21 A1~C3 신규 `GPT_QID9_Q21_PACKAGE.json` 9개, `GPT_QID9_Q21_STEM_SELF_REVIEW.md` 제작자 KEEP9/REVISED0/HOLD0.
 - 기존 Q01~Q20 180 후보 보호. 총 신규 CREATE **189 (21×9)**. q21 독립 GPT 공개답 검수 NOT_RUN / Consumer 0/9 / Chrome NOT_TESTED / main 출시 NOT_DONE. 이전 승인 144 UID와 다른 상태.
@@ -33,14 +33,15 @@
 
 ---
 
-# CURRENT 2026-10-10 — Q09-Q12 local release complete, main PR pending; Q13-Q16 already MAIN_DONE
+# CURRENT 2026-10-10 — Q09-Q12 MAIN_DONE after remote readback; Q13-Q16 already MAIN_DONE
+# CURRENT 2026-10-10 — Q09-Q12 MAIN_DONE after remote readback; Q13-Q16 already MAIN_DONE
 
 - Approved user scope: Q09-Q16 A1-C3 = 72 UIDs. Q13-Q16 (36) were already released to main; this PR publishes Q09-Q12 (36) once.
-- Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. Status stays pending until PR #359 merge and remote readback.
+- Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. MAIN_DONE: PR #359 merged and remote main file SHA readback passed.
 - Target release checks: generated Meta registration/retention PASS (index 454, failures0); Archive2 Runtime Guard 42/42; generated-bank tests 22/22; focused consumer regressions 13/13; actual Chrome Palma lookup144/HOLD excluded.
 - Full repository CI remains red on baseline failures also reproduced on current-main baseline: inline bracket-label inventory, compose scope (삼각비), derivative/integral fixture counts, M2 O11 Golden SHA. Those files are not changed by QID9 release; see PR body for details.
-- Branch also contains Q17-Q20 candidate packages and a separate open-book review/repair ledger. They remain unregistered in the student Consumer and outside this Q09-Q16 72-UID release scope. Next source qid: 21.
-- Current main baseline: `cf42ca40701510ff4caedac99612879f727c6a25`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
+- Current Q17–Q23 packages are covered by `GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json` (63 UIDs). They remain absent from Generated Consumer/index (0/63); Q22 solution SVG student render is NOT_TESTED and the separate solution-visual line remains open for Q17–Q19/Q23. No Q17–Q23 MAIN_DONE or Chrome PASS is claimed.
+- Current main baseline for this merge: `20afab1c516c71e0d4e4d04a2978b1b5e155c268`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
 
 ---
 

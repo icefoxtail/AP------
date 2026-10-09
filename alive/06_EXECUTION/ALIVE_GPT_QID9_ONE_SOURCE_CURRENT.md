@@ -1,3 +1,8 @@
+## CURRENT HARD — 문제은행 전체 문제·해설 SVG 필요성 2축 전수판정 (2026-10-10 원장 지시)
+- **문제은행의 모든 기출·ALIVE Generated·교재/유형/유사문항**에서 *문제용*과 *해설용* 시각자료의 필요성을 UID마다 **독립 판단**한다. 문자·수식만으로 문제를 풀 수 있어도 해설의 접선/교점/대칭/보조선/그래프/영역 관계를 학생에게 명확히 전달하는 SVG가 필요하면 반드시 제작한다. `VISUAL_OPTIONAL`도 실질 교육 효과가 있으면 ADD하며, 진짜 중복·장식은 근거 있는 EXEMPT.
+- 기존 Visual 생성 스킬과 엔진을 재사용하고, source PNG 불변·교육과정·실제 primitive/렌더 검증을 유지한다. 기존 승인 문항의 품질 상태를 일괄 취소하지 말고 누락 UID의 시각 결함만 보강한다. 실측 누락률은 고유 UID × 문제/해설 전수조사 후 확정한다.
+- 실행 정본: `docs/rules/04_VISUAL/Problem_Bank_Per_Item_Problem_Solution_SVG_Full_Audit_CURRENT_v1.md`. 문서 작성은 전수조사/SVG 생성/Chrome 완료가 아니다.
+
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
 ## CURRENT — ALIVE Generated 해설용 SVG 누락방지 (2026-10-10)
@@ -5,6 +10,11 @@
 - **문제용 studentVisual TEXT_ONLY/NOT_REQUIRED는 해설용 solution SVG 면제 사유가 아니다.** 각 UID별 독립 해설 시각화 ADD/REUSE/EXEMPT/HOLD 판정과 교육적 근거를 남긴다.
 - 정본 실행 규정: [QID9 해설 SVG 전수조사·신규제작 게이트](ALIVE_QID9_SOLUTION_SVG_AUDIT_AND_CREATION_GATE_v1.md). 기존 `apmath-visual-upgrade` 스킬·시각엔진·도형추출 v3·독립 geometry evidence를 재사용하며 새 엔진/규칙을 중복 도입하지 않는다.
 - 팔마고 2026-10-10 정적 조사: q01~q20 180 UID, q04~q20 JSON 153개에서 해설 직접 SVG 연결 0개, q01~q03 27개는 초안 Markdown, q10 네 SVG는 **문제용**. 이 숫자는 학생 Consumer 실조회 결과가 아니며 향후 UID별 해설 시각 효용을 반드시 확정한다.
+
+## CURRENT HARD — 다음 학교 신규 제작은 해설 SVG를 CREATE에 동봉 (2026-10-10)
+- 학교 첫 진입에 Visual 전문 문서·엔진 스키마 필독 후 생성 중 문항별 PROBLEM_VISUAL/SOLUTION_VISUAL을 별도로 처리한다. 도형의 방정식 해설 SVG 기본 필수 규정 적용, 실제 지원 renderer로 SVG 및 SHA/geometry 증거를 **qid 제작 시점에** 동결. 문항 패키지만 commit하고 SVG를 사후 일괄 보강 대상으로 남기는 관행 금지.
+- 상세 규정 [ALIVE 다음 학교 CREATE+SVG CURRENT](ALIVE_NEXT_SCHOOL_CREATE_WITH_SOLUTION_SVG_CURRENT_v1.md). **기존 팔마고 QID9는 별도 SVG 엔진 보강 라인**, 재제작/재검수 자동 소급 없음. Student Consumer·Chrome 시험은 실제 시행 시에만 PASS.
+
 
 
 ## CURRENT HARD — 수정 AI OWN_AND_FIX / 메타 확장 / main 후 학생 화면 기술 마감 (2026-10-09 형님 직접 지시)
