@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_ASSESSMENT_EXPOSURE_ADDENDUM_V1",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceAssessmentPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.source-assessment-02.json",
+  "sourceAssessmentSha256": "11594801b55d933e50b9d30c2e2911b11a4112e67a9a4c5aac1117e40fec3acc",
+  "timing": "After confirming the safe student bundle and before opening qid-specific source crops. Exact wall-clock timestamp was not captured; preserve this sequence rather than inventing a time.",
+  "queries": [
+    "rg --files archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출",
+    "rg -n 'sourcePage|sourceRegion|qid.*(1|16)|page.*(1|16)|000[5-8]' archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출 -g '*intake*' -g '*provenance*' -g '*source*"
+  ],
+  "returnedPriorSnippets": [
+    "CREATE.evidence.final2 included: Opened the full locked JPG and enlarged the answer-expression crop; no clearer assigned source pixels were available.",
+    "R1.evidence.source9 included the existing Meta debt statement: Current source fields are explicitly null; per-qid RPM L3/L4 review is recorded; 2015 middle2 crosswalk is RPM_ONLY / NO_ACTIVE_MAPPING for this M2 projection; no exact active curriculum-bound PT/TPL was found; preserve projection debt without synthesizing keys."
+  ],
+  "fieldsNotViewedDuringAccidentalSearch": [
+    "stored answer values",
+    "solution bodies",
+    "difficultyBucket/difficultyConfidence/difficultyBoundaryFlag/legacyLevelCompatibility physical fields",
+    "source image pixels at qid-specific crops"
+  ],
+  "fieldsExposedDuringAccidentalSearch": [
+    "qid1 sourcePage provenance",
+    "qid1 prior source-crop/repair context",
+    "existing Meta debt reason text for current null PT/TPL projection (generic statement shown in R1 evidence output)"
+  ],
+  "laterExposure": "After the source assessment and preliminary D2/semantic-Meta proposal were written, a later direct target-object inspection did reveal current q1/q16 difficulty and Meta fields. Those values were reported separately to ROOT and have remained unchanged.",
+  "interpretation": "Do not claim a clean pre-upstream review. The q1/q16 source conclusions were subsequently grounded in the current student bundle and directly opened scoped source crops. R1/R2 must remain fresh and independent."
+}

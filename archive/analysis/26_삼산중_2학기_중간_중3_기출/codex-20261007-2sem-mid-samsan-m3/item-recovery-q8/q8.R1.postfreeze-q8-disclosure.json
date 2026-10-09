@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_Q8_POSTFREEZE_DISCLOSURE_V1",
+  "qid": 8,
+  "sourceRawSha256": "41a052f24f3f90cf5c1b66a89b38ef0bb8aeb958d545a20c23c205633e6fd0ae",
+  "disclosedAfterFreeze": true,
+  "question": {
+    "id": 8,
+    "level": "중",
+    "category": "삼각비",
+    "originalCategory": "삼각비",
+    "standardCourse": "중3 수학",
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "도형"
+    ],
+    "wide": false,
+    "content": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+    "choices": [
+      "√13 cos a°",
+      "√13 tan a°",
+      "√13 sin² a°",
+      "√13 sin a°",
+      "√13 sin a° cos a°"
+    ],
+    "answer": "④",
+    "solution": "그림에서 AB는 빗변이고 BC는 ∠A=a°의 맞은편 변이다.\n따라서 사인비를 이용하면\n$\\sin a^\\circ=\\dfrac{BC}{AB}=\\dfrac{BC}{\\sqrt{13}}$이다.\n양변에 $\\sqrt{13}$을 곱하면\n$BC=\\sqrt{13}\\sin a^\\circ$이다.\n그러므로 정답은 ④이다.",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "TRIG_RATIO",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg",
+    "curriculum": "2015",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각비",
+      "midUnit": "삼각비",
+      "l3": "삼각비와 길이",
+      "l4": "각을 이용한 길이"
+    },
+    "rpmL3": "삼각비와 길이",
+    "rpmL4": "각을 이용한 길이",
+    "primaryMethod": "∠A=a°에서 BC가 맞은편 변이고 AB가 빗변임을 확인하여 사인비를 적용한다.",
+    "decisiveStep": "sin a°=BC/AB, hence BC=√13 sin a°.",
+    "projectionStatus": "REUSE",
+    "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+    "bindingOwnerPack": "MIDDLE_GEOMETRY"
+  }
+}

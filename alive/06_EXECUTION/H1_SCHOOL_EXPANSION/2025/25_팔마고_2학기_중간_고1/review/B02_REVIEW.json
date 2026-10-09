@@ -1,0 +1,79 @@
+{
+  "reviewPhase": 2,
+  "reviewedDenominator": 3,
+  "verdictSummary": {"PASS": 2, "REJECT": 0, "HOLD": 1},
+  "freeze": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review/B02_INDEPENDENT_FREEZE.md",
+    "sha256": "06A7B0DA56E4F7469AB193511F8412C4F003440723A2744A9A6732ACC542E71D",
+    "studentPacketPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review-blind/B02_STUDENT_ONLY.md",
+    "studentPacketSha256": "C02BBD18313D768B215A39A77664020AE1B738861A3E3CAAA8F7DC178EF5FC24"
+  },
+  "svg": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B02_집합의_연산/visuals/B02_Q10_VENN.svg",
+    "sha256": "C8AD60988107F1C78766B72E46411A1EB7F08DCDF30B9790FF0F3A45CE421920",
+    "staticMathAndLabels": "PASS",
+    "actualExamEngineRender": "NOT_RUN"
+  },
+  "receipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B02_집합의_연산/B02_CREATE_RECEIPT.md",
+    "sha256": "B7A8586E7B1D9606FB25840891111A7625E1D79CADFA3B8EE02C8F95F33C170F",
+    "sourceQ16Status": "HOLD; no candidate generated"
+  },
+  "answerPositionHistogram": {"①": 0, "②": 1, "③": 0, "④": 1, "⑤": 0},
+  "mcTelemetryNote": "Two MC items split 50/50 between positions ② and ④; small-sample telemetry, not an automatic rejection.",
+  "renderVisualGateBlockingSupply": "Q10 requires actual exam-engine/browser render; not run, so Q10 remains HOLD for student supply.",
+  "renderStatus": "NOT_RUN",
+  "items": [
+    {
+      "draftCandidateId": "ALITE-PALMA25-H1-2MID-B02-Q08-BP01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B02_집합의_연산/B02_Q08_EXACTLY_ONE_MULTIPLES.md",
+      "candidateSha256": "F50A76304E8B85273B3956140C37AB3D0438283FA02254C9283E0A8FAC0E8584",
+      "verdict": "PASS",
+      "independentAnswer": "④, 17",
+      "candidateAnswer": "④, 17",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① union 22; ② unadjusted sum 27; ③ intersection 5; ④ exact-one 17; ⑤ one-sided count 11. All distinct.",
+      "solutionAudit": "|A|=16, |B|=11, |A∩B|=5, exact-one=(16-5)+(11-5)=17.",
+      "sourceNovelty": "Source q8 is union count; candidate is symmetric-difference count with overlap removed from both sides.",
+      "curriculum": "Primary L1/L2 set operations; RPM L3/L4 element count CANONICAL_DRAFT, disclosed.",
+      "difficultyMeta": "Bucket 2 appropriate; readable standard LCM/inclusion-exclusion counting.",
+      "visual": "NOT_REQUIRED; no ambiguity."
+    },
+    {
+      "draftCandidateId": "ALITE-PALMA25-H1-2MID-B02-Q10-BP01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B02_집합의_연산/B02_Q10_VENN_REGION_UNION.md",
+      "candidateSha256": "D4AB2DBDD2464E13EC7050DA6963F3DB61EC1342CC4BD3560B0B2DE36D476894",
+      "verdict": "HOLD",
+      "independentAnswer": "②, B∩(A∪C)",
+      "candidateAnswer": "②, B∩(A∪C)",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① A-or-C outside B; ② target; ③ includes C outside B; ④ misplaces B condition; ⑤ triple intersection only.",
+      "solutionAudit": "Diagram shade is B intersect (A union C), equivalent to (A∩B) union (B∩C).",
+      "sourceNovelty": "Combines B∩A-only, triple overlap, and B∩C-only regions; distinct from source's single A∩B outside C cell.",
+      "curriculum": "Primary L1/L2 set operations; RPM L3/L4 mixed operations CANONICAL_DRAFT, disclosed.",
+      "difficultyMeta": "Bucket 2 appropriate; direct visual set-expression translation.",
+      "staticSvgAssessment": "PASS: U rectangle; A left, B right, C lower; B fill masked to visible A or C regions, including triple overlap.",
+      "actualRender": "NOT_RUN; required render gate blocks student supply.",
+      "visual": "REQUIRED; static mathematics clear, actual engine display unverified."
+    },
+    {
+      "draftCandidateId": "ALITE-PALMA25-H1-2MID-B02-Q20-BP01",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B02_집합의_연산/B02_Q20_EXACTLY_ONE_RANGE.md",
+      "candidateSha256": "4EE97666F5FF831CC86A1554C70DCEB29FE509F75A536675C855F97F7FF332A4",
+      "verdict": "PASS",
+      "independentAnswer": "maximum 26, minimum 2",
+      "candidateAnswer": "maximum 26, minimum 2",
+      "answerMatches": true,
+      "responseCardinality": "Constructed response; no choices.",
+      "solutionAudit": "Intersection x∈[4,16]; exact-one 34-2x; configurations (14,12,4,0) and (2,0,16,12) attain endpoints.",
+      "sourceNovelty": "Source asks intersection bounds; candidate extremizes symmetric-difference count and reverses endpoints.",
+      "sourceQ16Hold": "Receipt records unresolved source condition scope; preserved and outside candidate denominator.",
+      "typoProvenance": "Source school-name typo '마팔고' omitted in generic context; reviewed math data/objective unchanged.",
+      "curriculum": "Primary L1/L2 set operations; RPM L3/L4 element count CANONICAL_DRAFT, disclosed.",
+      "difficultyMeta": "Bucket 3 defensible near lower edge; B23 flag retained; solution readable.",
+      "visual": "NOT_REQUIRED; no ambiguity."
+    }
+  ]
+}

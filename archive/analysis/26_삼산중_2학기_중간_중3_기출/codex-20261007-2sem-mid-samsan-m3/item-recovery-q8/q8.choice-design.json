@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_CHOICE_DESIGN_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qid": 8,
+  "stage": "ITEM_RECOVERY",
+  "solutionFirstFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.solution-first-freeze.corrected.json",
+  "solutionFirstFreezeSha256": "dd217f8fe9cd976741ad40e06f219b81bb75acd7506b86e2ab7dfbb3d7c66652",
+  "stem": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가 √13이다. (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)",
+  "choiceDesignOrder": "Solution freeze → all five choices and distractor rationales → answer placement",
+  "choices": [
+    {
+      "position": 1,
+      "text": "√13 cos a°",
+      "rationale": "인접한 변을 목표변으로 혼동한 cos 선택",
+      "correct": false
+    },
+    {
+      "position": 2,
+      "text": "√13 tan a°",
+      "rationale": "tan을 길이비로 바로 사용한 오류",
+      "correct": false
+    },
+    {
+      "position": 3,
+      "text": "√13 / sin a°",
+      "rationale": "사인비를 뒤집은 오류",
+      "correct": false
+    },
+    {
+      "position": 4,
+      "text": "√13 sin a°",
+      "rationale": "사인 정의: 맞은편 변/빗변",
+      "correct": true
+    },
+    {
+      "position": 5,
+      "text": "√13 sin a° cos a°",
+      "rationale": "sin과 cos 값을 곱해 추가 비율을 만든 오류",
+      "correct": false
+    }
+  ],
+  "correctChoiceNumber": 4,
+  "uniquenessCheck": {
+    "domain": "0°<a<90° and a≠45°",
+    "proofs": [
+      "BC=√13 sin a° by sin a°=BC/AB.",
+      "cos a° differs from sin a° because a≠45°.",
+      "tan a°>sin a° for 0°<a<90°.",
+      "1/sin a°>1>sin a°.",
+      "sin a°cos a°<sin a° because 0<cos a°<1."
+    ],
+    "correctChoiceCount": 1
+  },
+  "answerPositionReview": {
+    "existingMcqAnswerDistributionBeforeTargetChange": {
+      "①": 4,
+      "②": 5,
+      "③": 3,
+      "④": 3,
+      "⑤": 5
+    },
+    "selectedAfterChoiceSetComplete": 4,
+    "reason": "Replacing the existing q8 ④ maintains the most even answer-label distribution among q1–q20 while respecting the solution-first choice design."
+  }
+}

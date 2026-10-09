@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_ITEM_RECOVERY_META_DIFFICULTY_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceArtifactRawSha256": "cea9276a3202f11e6c99d9dbd26686cc0870dfe380dc4dd2c2aa76c20cdea579",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\26_왕운중_1학기_중간_중2_기출.js",
+  "priorRecoveryArtifactRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+  "priorRecoveryMetaSidecarPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.item-recovery-meta-difficulty-02.json",
+  "priorRecoveryMetaSidecarSha256": "1ba3ccafc82f5c856c88b7be069dc42c69ee59b457f902e5a9744a347fdf4836",
+  "proposalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-proposal-03.json",
+  "proposalSha256": "d02fc72a5d946b34f98820878b8322dbb081bff6749cd51bca5a4ca98b318e7a",
+  "revisionAuditPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.q16-supported-replacement-audit-03.json",
+  "revisionAuditSha256": "5ba2e8cd98eb120133bc64b6723b2480b03849c3482a61be14374801e9252527",
+  "r1OwnerProposal": "r1_09 verified exact current M2-RPM-020 path and proposed basic-form solve",
+  "oldTargetExposureBoundary": "Prior q16 difficulty/Meta values were exposed earlier in this session and are preserved in search/source-exposure addenda. This new proposal was derived from the new replacement content and the scoped r1_09 proposal; it is not represented as clean pre-exposure.",
+  "physicalSourceChanges": {
+    "q16StudentFields": true,
+    "q16DifficultyFields": true,
+    "q16RpmSemanticFields": false,
+    "why": "RPM semantic/path and projection status are stored in evidence/Meta ledger only; do not invent source JS RPM fields."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "level": "하",
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The repeating block is immediate; multiply by 100 and subtract once, with no strategy choice or hidden condition."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL"
+      },
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": {
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "유리수와 순환소수",
+        "midUnit": "유리수와 순환소수",
+        "l3": "순환소수",
+        "l4": "순환소수를 분수로"
+      },
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "rpmRecordId": "M2-RPM-004",
+      "primaryMethod": "Convert a pure repeating decimal to a fraction by aligning one full repeating period and subtracting.",
+      "decisiveStep": "100x-x=23, hence 99x=23; the resulting fraction is irreducible.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "nullReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only."
+    },
+    {
+      "qid": 16,
+      "level": "중",
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The item uses a familiar one-step linear-inequality transformation; the only decisive step is collecting variable and constant terms before dividing by a positive coefficient."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "standardUnitOrder": 2
+      },
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": {
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "일차부등식",
+        "l3": "일차부등식의 풀이",
+        "l4": "기본형"
+      },
+      "rpmL3": "일차부등식의 풀이",
+      "rpmL4": "기본형",
+      "rpmRecordId": "M2-RPM-020",
+      "primaryMethod": "Move variable terms to one side and constants to the other, then divide by the positive coefficient.",
+      "decisiveStep": "2x>-8; division by positive 2 preserves >, so x>-4.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "The current M2-2 crosswalk for M2-RPM-020 is RPM_ONLY / NO_ACTIVE_MAPPING. The semantic path is FINAL; no exact ACTIVE curriculum-bound problemTypeKey/templateKey projection is available.",
+      "nullReason": "The current M2-2 crosswalk for M2-RPM-020 is RPM_ONLY / NO_ACTIVE_MAPPING. The semantic path is FINAL; no exact ACTIVE curriculum-bound problemTypeKey/templateKey projection is available.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current M2-2 crosswalk for M2-RPM-020 is RPM_ONLY / NO_ACTIVE_MAPPING. The semantic path is FINAL; no exact ACTIVE curriculum-bound problemTypeKey/templateKey projection is available.",
+      "itemStatus": null
+    }
+  ],
+  "r1FreshQid16ReviewRequired": true,
+  "r2FreshQid16ReviewRequired": true,
+  "qualityVerdict": "NOT_ASSERTED"
+}

@@ -13,7 +13,9 @@ const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
 const prefix = 'data/generated-lite-consumer/v1/';
 const b03 = index.records.filter(r => r.uid.startsWith('ALITE-BSG26-B03-'));
 const hyocheon = index.records.filter(r => r.school === '효천고');
+const palma = index.records.filter(r => r.school === '팔마고');
 const holdUids = new Set(index.excludedHoldUids);
+const selectableCount = value => value.records.filter(r => r.consumerSelectable === true).length;
 const originalFile = 'archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 
 function gitSha(bytes) {
@@ -32,15 +34,23 @@ function contentFingerprint(question) {
   return 'fnv1a64-utf16:' + n.toString(16).padStart(16, '0');
 }
 
-test('consumer DB preserves 130 previous approvals, adds 35 Bokseong B04/B05 and excludes holds', () => {
+test('consumer DB preserves previous approvals, adds four Palma questions and excludes holds', () => {
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
-  assert.equal(index.records.length, 283);
+  assert.equal(index.records.length, 287);
   assert.equal(hyocheon.length, 92);
   assert.equal(b03.length, 38);
   assert.equal(index.approvedBySchool['효천고'], 92);
   assert.equal(index.approvedBySchool['복성고'],191);
-  assert.equal(new Set(index.records.map(r => r.uid)).size, 283);
+  assert.equal(palma.length, 4);
+  assert.equal(index.approvedBySchool['팔마고'], 4);
+  assert.deepEqual(palma.map(r => r.uid), [
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+  ]);
+  assert.equal(new Set(index.records.map(r => r.uid)).size, 287);
   assert.ok(index.records.slice(0, 92).every(r => r.school === '효천고'));
   assert.ok(index.records.slice(92,130).every(r => r.school === '복성고' && r.approval === 'REVIEW_APPROVED'));
   assert.ok(index.records.slice(130,165).every(r => r.school === '복성고' && r.approval === 'USER_DIRECTED_OPERATING_APPROVED'));
@@ -114,6 +124,35 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
   assert.equal(b03.filter(r => r.reviewApprovalBasis.includes('USER_DIRECTED_OVERRIDE')).length, 4);
 });
 
+test('four Palma approvals resolve through the exact runtime shard path and candidate UID', () => {
+  const expectedUids = [
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q01-BP02',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP01',
+    'ALITE-PALMA25-H1-2MID-B07-Q13-BP02'
+  ];
+  assert.deepEqual(palma.map(r => r.uid), expectedUids);
+  for (const row of palma) {
+    assert.equal(row.consumerSelectable, true, row.uid);
+    assert.equal(row.approval, 'REVIEW_APPROVED', row.uid);
+    assert.equal(row.reviewStatus, 'REVIEW_PASS', row.uid);
+    assert.ok(row.shard.startsWith(prefix) && !row.shard.includes('..'), row.uid);
+    const bytes = fs.readFileSync(path.join(archive, row.shard));
+    assert.equal(gitSha(bytes), row.consumerShardGitSha, row.uid);
+    const consumer = JSON.parse(bytes.toString('utf8'));
+    assert.equal(consumer.schemaVersion, 'ALIVE_GENERATED_CONSUMER_SHARD_V1');
+    const matches = consumer.records.filter(r => r.generatedUid === row.uid && r.localOrdinal === row.localOrdinal);
+    assert.equal(matches.length, 1, row.uid);
+    const question = matches[0].question;
+    assert.equal(question.uid, row.uid);
+    assert.equal(matches[0].sourceQid, row.sourceQid);
+    assert.equal(question.choices.length, 5);
+    assert.ok('①②③④⑤'.includes(question.answer));
+    assert.equal(question.subUnitKey, row.l2);
+    assert.equal(matches[0].sourceExamBlobSha, row.sourceExamBlobSha);
+  }
+});
+
 class Node {
   constructor(tag = 'div', fragment = false) {
     this.tag = tag; this.fragment = fragment; this.children = [];
@@ -130,7 +169,7 @@ class Node {
   setAttribute(key, value) { this[key] = value; }
 }
 
-test('283 registered questions remain protected while exam-only UI prints exact original 23/26', async () => {
+test('consumer UI lists only selectable generated rows, searches individual questions, and preserves approved paper printing', async () => {
   const nodes=Object.create(null);
   const document={
     getElementById:id=>nodes[id]??(nodes[id]=new Node()),
@@ -138,7 +177,8 @@ test('283 registered questions remain protected while exam-only UI prints exact 
     createDocumentFragment:()=>new Node('fragment',true)
   };
   const html=fs.readFileSync(path.join(archive,'generated-bank.html'),'utf8');
-  assert.ok(!html.includes('개별 문항 검색')&&!html.includes('검수 승인'));
+  assert.ok(html.includes('생성 문항 검색·선택'));
+  assert.ok(html.includes('consumerSelectable'));
   const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)];
   const code=scripts.at(-1)?.[1];
   assert.ok(code&&code.includes('data/generated-lite-consumer/v1/index.json'));
@@ -153,21 +193,46 @@ test('283 registered questions remain protected while exam-only UI prints exact 
   await new Promise(resolve=>setTimeout(resolve,25));
   const el=id=>document.getElementById(id);
   const cards=el('exam-cards').children;
-  assert.equal(cards.length,2);
+  assert.equal(cards.length,1);
   assert.equal(el('print').disabled,true);
   const bok=cards.find(x=>x.children[0].textContent.includes('복성고'));
   const hyo=cards.find(x=>x.children[0].textContent.includes('효천고'));
-  assert.ok(bok&&hyo);
+  assert.ok(bok);
+  assert.equal(hyo,undefined);
   assert.match(bok.children[1].textContent,/23문항/);
-  assert.match(hyo.children[1].textContent,/26문항/);
   bok.onclick();await el('print').listeners.click();
   assert.equal(printed,1);
   assert.equal(el('paper-items').children.length,23);
   assert.match(el('paper-title').textContent,/복성고/);
-  hyo.onclick();await el('print').listeners.click();
+  const search=el('generated-search');
+  search.value='효천고';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  search.value='복성고';search.listeners.input();
+  assert.ok(el('generated-results').children.length>0);
+  const card=el('generated-results').children[0];
+  const actions=card.children.find(x=>x.className==='generated-actions');
+  const open=actions.children.find(x=>x.textContent==='문항 열기');
+  const choose=actions.children.find(x=>x.textContent==='시험지에 선택');
+  await open.listeners.click();
+  assert.equal(el('generated-preview').hidden,false);
+  choose.listeners.click();
+  assert.match(el('generated-selection-summary').textContent,/1개 문항/);
+  await el('generated-print').listeners.click();
   assert.equal(printed,2);
-  assert.equal(el('paper-items').children.length,26);
-  assert.match(el('paper-title').textContent,/효천고/);
-  assert.equal(index.records.length,283);
+  assert.equal(el('paper-items').children.length,1);
+  const textOf=node=>String(node.textContent||'')+node.children.map(textOf).join('');
+  assert.ok(!textOf(el('paper-items')).includes('정답:'));
+  assert.equal(index.records.length,287);
+  assert.equal(selectableCount(index),195);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
+  search.value='팔마고';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,4);
+  const palmaCard=el('generated-results').children.find(x=>x.tag==='article');
+  const palmaActions=palmaCard.children.find(x=>x.className==='generated-actions');
+  const palmaOpen=palmaActions.children.find(x=>x.textContent==='문항 열기');
+  await palmaOpen.listeners.click();
+  assert.ok(!textOf(el('generated-preview')).includes('정답'));
+  assert.ok(!textOf(el('generated-preview')).includes('해설'));
+  search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
 });

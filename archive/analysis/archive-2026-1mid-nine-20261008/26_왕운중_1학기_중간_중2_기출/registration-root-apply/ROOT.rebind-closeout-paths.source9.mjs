@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const root='C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------';
+const run='archive-2026-1mid-nine-20261008';
+const uid='26_왕운중_1학기_중간_중2_기출';
+const base=path.join(root,'archive/analysis',run,uid);
+const oldPath=path.join(base,'registration-technical-source9/ROOT.registration.preapply-closeout.json');
+const newPath=path.join(base,'registration-technical-source9/ROOT.registration.postcopy-closeout.source9.immutable.json');
+const expectedOld='389433d9bd89b0d9c7f4e866849dcb3793147ca0214c0e06bbcc872dad3eec9f';
+const correctedPath=path.join(base,'R1.complete-event.r1_09.final.json');
+const correctedSha='43663598607427c8ffa2e8732bbafc5bef41f7d3e31968963df10037849a649e';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+if(hash(fs.readFileSync(oldPath))!==expectedOld)throw Error('OLD_CLOSEOUT_SHA_DRIFT');
+if(hash(fs.readFileSync(correctedPath))!==correctedSha)throw Error('R1_COMPLETE_EVENT_SHA_MISMATCH');
+const c=JSON.parse(fs.readFileSync(oldPath,'utf8'));
+if(c.status!=='REGISTRATION_VALIDATORS_PASS_AWAITING_ROOT_PUBLICATION')throw Error('CLOSEOUT_STATUS_MISMATCH');
+const prior=c.stageBindings?.R1?.completeEvent;
+if(prior?.sha256!==correctedSha)throw Error('R1_COMPLETE_EVENT_BINDING_SHA_MISMATCH');
+c.stageBindings.R1.completeEvent.path=correctedPath;
+c.supersedesCloseout={path:oldPath,sha256:expectedOld,reason:'Immutable path binding correction after ROOT.publication-prep ENOENT; original closeout preserved byte-for-byte.'};
+c.pathBindingRepair={status:'PASS',binding:'stageBindings.R1.completeEvent',previousPath:prior.path,correctedPath,sha256:correctedSha,reason:'R1 complete event is at the exam evidence root; no review/ subdirectory.'};
+function collect(v,out=[]){if(!v||typeof v!=='object')return out;if(typeof v.path==='string'&&typeof v.sha256==='string')out.push(v);for(const x of Object.values(v))collect(x,out);return out;}
+const refs=collect(c),issues=[];
+for(const ref of refs){const p=path.isAbsolute(ref.path)?ref.path:path.resolve(root,ref.path);if(!fs.existsSync(p)){issues.push({path:p,expected:ref.sha256,actual:null});continue;}const actual=hash(fs.readFileSync(p));if(actual!==ref.sha256)issues.push({path:p,expected:ref.sha256,actual});}
+if(issues.length)throw Error('CLOSEOUT_PATH_SHA_AUDIT_FAIL:'+JSON.stringify(issues));
+if(fs.existsSync(newPath))throw Error('IMMUTABLE_CLOSEOUT_ALREADY_EXISTS');
+fs.writeFileSync(newPath,JSON.stringify(c,null,2)+'\n');
+const newSha=hash(fs.readFileSync(newPath));
+if(hash(fs.readFileSync(oldPath))!==expectedOld)throw Error('OLD_CLOSEOUT_MUTATED');
+console.log(JSON.stringify({oldCloseout:{path:oldPath,sha256:expectedOld,preserved:true},newCloseout:{path:newPath,sha256:newSha,status:c.status},correctedBinding:{path:correctedPath,sha256:correctedSha},pathShaAudit:{status:'PASS',checkedPhysicalRefs:refs.length,issues:0}},null,2));

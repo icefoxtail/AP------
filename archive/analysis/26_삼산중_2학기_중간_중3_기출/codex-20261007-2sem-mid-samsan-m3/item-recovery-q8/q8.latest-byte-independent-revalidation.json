@@ -1,0 +1,92 @@
+{
+  "schema": "JS_ARCHIVE_QID8_LATEST_BYTE_INDEPENDENT_REVALIDATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "qid": 8,
+  "stage": "ITEM_RECOVERY",
+  "createdUtc": "2026-10-08T05:22:23.8862225Z",
+  "assignment": {
+    "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\assignment.ITEM_RECOVERY.q8.json",
+    "sha256": "b5c712d770de5258d523b8e9eae6b60f8a37024c0f6eae785cd29aeaf3ff55d0"
+  },
+  "sourceArtifact": {
+    "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\26_삼산중_2학기_중간_중3_기출.js",
+    "rawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "expectedBaselineRawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf"
+  },
+  "studentBundle": {
+    "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\handoff\\R2.student-only-bundle.current-final.post-q17-label-correction.json",
+    "rawSha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2",
+    "expectedRawSha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2",
+    "qidCount": 24,
+    "qidOrder": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "selectedQuestion": {
+      "id": 8,
+      "content": "직각삼각형 ABC에서 변의 길이를 삼각비를 이용하여 나타내었을 때, 옳은 것은? (단, a≠b이다.) (4점)",
+      "choices": [
+        "AC=√13 cos a°",
+        "AC=√13 sin b°",
+        "BC=√13 sin a°",
+        "BC=√13 cos a°",
+        "BC=√13 tan b°"
+      ],
+      "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q8.svg",
+      "assetSha256": "fb3352b2aa9469ab52d672f00af42491745cbc62c396606adc139de2bfb3d564",
+      "payloadSha256": "10ba78a2009cb8458e4057dadfa8c5b5c82288e0e39c2605bd8c44037ae37230"
+    }
+  },
+  "referencedAsset": {
+    "absolutePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\assets\\images\\26_삼산중_2학기_중간_중3_기출\\q8.svg",
+    "bytes": 1063,
+    "sha256": "fb3352b2aa9469ab52d672f00af42491745cbc62c396606adc139de2bfb3d564",
+    "expectedBytes": 1063,
+    "expectedSha256": "fb3352b2aa9469ab52d672f00af42491745cbc62c396606adc139de2bfb3d564"
+  },
+  "sourceScan": {
+    "absolutePath": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\삼산중3\\S28BW-826100719540_0012.jpg",
+    "bytes": 1032184,
+    "sha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+    "expectedBytes": 1032184,
+    "expectedSha256": "426baaabcb486401e3493444f55c4f2042b472c999f6f8fd98d4ae3e2d889a61",
+    "markPolicy": "Ignore all handwriting and use printed content and diagram only."
+  },
+  "independentFreeze": {
+    "diagramFacts": [
+      "Right angle at C.",
+      "AB is the hypotenuse and is labeled √13.",
+      "Angle a is at B; angle b is at A."
+    ],
+    "derivation": "cos(a)=adjacent/hypotenuse=BC/AB=BC/√13, so BC=√13 cos(a).",
+    "answerChoice": 4,
+    "answerValue": "BC=√13 cos a°",
+    "result": "SOURCE_AND_STUDENT_BUNDLE_MATCH; ANSWER_FROZEN_FROM_STUDENT_FIELDS",
+    "upstreamHoldEvidenceOpened": false
+  },
+  "durableValidation": "PASS only if the observed bundle, referenced asset and source-scan hashes match the assignment pins and the q8 student content/printed diagram are semantically identical."
+}

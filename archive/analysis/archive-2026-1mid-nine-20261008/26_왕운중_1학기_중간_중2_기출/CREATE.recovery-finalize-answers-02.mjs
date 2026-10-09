@@ -1,0 +1,36 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import vm from 'node:vm';
+const root=process.cwd(),uid='26_왕운중_1학기_중간_중2_기출';
+const rel=`.tmp/archive/archive-2026-1mid-nine-20261008/${uid}/${uid}.js`,file=path.join(root,rel);
+const evidence=path.join(root,`archive/analysis/archive-2026-1mid-nine-20261008/${uid}`);
+const bytes=fs.readFileSync(file),raw=bytes.toString('utf8'),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
+const expected='003874d7b5dabd6fcd66a026de5c87bab39a8202fc4e37aa7a6a859d213a06c5';
+if(sha(bytes)!==expected)throw new Error(`CANDIDATE_RAW_SHA_MISMATCH:${sha(bytes)}`);
+function load(source){const c={window:{}};vm.createContext(c);vm.runInContext(source,c);return c.window.questionBank;}
+const prior=load(raw),sourceAssessment=JSON.parse(fs.readFileSync(path.join(evidence,'CREATE.source-assessment-02.json'),'utf8'));
+const preimage=JSON.parse(fs.readFileSync(path.join(evidence,'ROOT.recovery.non-target-preimage.json'),'utf8'));
+if(sourceAssessment.currentArtifactRawSha256!==preimage.sourceRawSha256||!sourceAssessment.sourceAssessmentBoundary)throw new Error('ASSESSMENT_OR_PREIMAGE_BINDING_REQUIRED');
+const history={schemaVersion:'JS_ARCHIVE_ITEM_HOLD_HISTORY_V1',examUid:uid,sourceRawSha256:preimage.sourceRawSha256,sourceAssessmentPath:`archive/analysis/archive-2026-1mid-nine-20261008/${uid}/CREATE.source-assessment-02.json`,sourceAssessmentSha256:sha(fs.readFileSync(path.join(evidence,'CREATE.source-assessment-02.json'))),entries:[1,16].map(id=>{const q=prior.find(x=>x.id===id);return {qid:id,priorItemStatus:q.itemStatus,priorAnswerStatus:q.answerStatus,priorSolutionStatus:q.solutionStatus,priorReviewStatus:q.reviewStatus,priorItemHoldReason:q.itemHoldReason,priorHoldEvidence:q.holdEvidence};}),disposition:'Historical CREATE hold records retained verbatim here and in prior evidence. Current markers cleared only for the two scoped QUESTION_ONLY replacements after source defects were confirmed. This record makes no R1/R2 or quality PASS claim.'};
+fs.writeFileSync(path.join(evidence,'CREATE.item-hold-history-02.json'),JSON.stringify(history,null,2));
+const q1sol='Let $x=0.\\overline{23}$라고 놓는다.\n순환마디가 두 자리이므로 소수점 아래 첫 두 자리가 한 번 밀려 같은 소수가 되도록 $100$을 곱한다.\n$100x=23.\\overline{23}$\n두 식을 빼면 순환 부분이 사라진다.\n$100x-x=23.\\overline{23}-0.\\overline{23}$\n$99x=23$\n따라서\n$x=\\dfrac{23}{99}$이다.\n$23$과 $99$는 공약수가 없으므로 이미 기약분수이다.\n그러므로 정답은 ①이다.';
+const q16sol='부등식은 두 식 사이에 부등호가 있는 식이고, 일차부등식은 정리했을 때 미지수의 최고차항이 1차인 부등식이다. 각 항목을 따로 확인한다.\n\nㄱ. $3x+5=0$은 등식이므로 부등식이 아니다.\nㄴ. $5x>7$은 부등식이며 미지수의 차수가 1이므로 일차부등식이다.\nㄷ. $x+7=5$는 등식이므로 부등식이 아니다.\nㄹ. $8-x^2\\le x^2+5$는 부등식이다. 정리하면 $-2x^2+3\\le0$이므로 이차부등식이며 일차부등식은 아니다.\nㅁ. $2-\\dfrac13>\\dfrac{x}{2}$는 부등식이다. 양변을 정리하면 $\\dfrac53>\\dfrac{x}{2}$, 즉 $x<\\dfrac{10}{3}$이므로 일차부등식이다.\nㅂ. $1.3x-2x=4$는 등식이므로 부등식이 아니다.\nㅅ. $5x+3y=9$는 등식이므로 부등식이 아니다.\nㅇ. $2(x-3)<x+2$는 부등식이다. 정리하면 $x<8$이므로 일차부등식이다.\n\n부등식은 ㄴ, ㄹ, ㅁ, ㅇ의 $4$개이고, 그중 일차부등식은 ㄴ, ㅁ, ㅇ의 $3$개이다.\n따라서 정답은 ①이다.';
+const changes=new Map([[1,{answer:'①',solution:q1sol}],[16,{answer:'①',solution:q16sol}]]);
+for(const id of [1,16]){
+ const q=prior.find(x=>x.id===id);if(!q||!q.itemHoldReason||q.itemStatus!=='HOLD')throw new Error(`EXPECTED_HELD_TARGET_${id}`);
+ q.answer=changes.get(id).answer;q.solution=changes.get(id).solution;
+ q.answerStatus='draft';q.solutionStatus='draft';q.reviewStatus='pending';
+ delete q.itemStatus;delete q.itemHoldReason;delete q.holdEvidence;
+}
+const after=prior; // apply the already-created target solution mutations while preserving the locked student bytes
+function spans(src){const m=src.match(/window\.questionBank\s*=\s*\[/);if(!m)throw Error('QUESTIONBANK_NOT_FOUND');let square=1,curly=0,string=null,escape=false,start=-1;const out=[],from=m.index+m[0].lastIndexOf('[');for(let i=from+1;i<src.length;i++){const ch=src[i];if(string){if(escape)escape=false;else if(ch==='\\')escape=true;else if(ch===string)string=null;continue;}if(ch==='"'||ch==="'"||ch==='`'){string=ch;continue;}if(ch==='/'&&src[i+1]==='/'){const n=src.indexOf('\n',i+2);i=n<0?src.length:n;continue;}if(ch==='/'&&src[i+1]==='*'){const n=src.indexOf('*/',i+2);if(n<0)throw Error('COMMENT_UNCLOSED');i=n+1;continue;}if(ch==='['){square++;continue;}if(ch===']'){square--;if(square===0&&curly===0)break;continue;}if(ch==='{'){if(curly===0&&square===1)start=i;curly++;continue;}if(ch==='}'){curly--;if(curly===0&&start>=0){out.push({start,end:i+1});start=-1;}}}return out;}
+const ranges=spans(raw),targetNew=new Map([1,16].map(id=>[id,after.find(x=>x.id===id)]));let edited=raw;
+for(const r of [...ranges].reverse()){const q=JSON.parse(raw.slice(r.start,r.end));if(!targetNew.has(q.id))continue;const encoded=JSON.stringify(targetNew.get(q.id),null,2).split('\n').map(line=>'  '+line).join('\n');edited=edited.slice(0,r.start)+encoded+edited.slice(r.end);}
+const ctx={window:{}};vm.createContext(ctx);vm.runInContext(edited,ctx);if(ctx.window.questionBank.length!==24)throw Error('DENOMINATOR_CHANGED');
+for(const id of [1,16]){const q=ctx.window.questionBank.find(x=>x.id===id);const student=JSON.parse(fs.readFileSync(path.join(evidence,'CREATE.student-candidate-02.json'),'utf8')).studentRows.find(x=>x.qid===id);if(JSON.stringify(q.content)!==JSON.stringify(student.content)||JSON.stringify(q.choices)!==JSON.stringify(student.choices))throw Error(`LOCKED_STUDENT_BYTES_CHANGED:${id}`);}
+const tmp=file+'.tmp';fs.writeFileSync(tmp,edited);fs.renameSync(tmp,file);
+const fields=['subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth','conceptClusterKey','problemTypeKey','templateKey','crossConceptKeys','conditionKeys','integrationPattern','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','standardUnitKey','standardUnit','standardUnitOrder'];
+const final=ctx.window.questionBank.map(q=>q);const proposalLock={qids:[1,16],preExposureProposalPath:`archive/analysis/archive-2026-1mid-nine-20261008/${uid}/CREATE.source-assessment-02.json`,preExposureProposalSha256:sha(fs.readFileSync(path.join(evidence,'CREATE.source-assessment-02.json'))),fieldsUntouched:true,metaAndDifficultyFieldNames:fields,requiresOriginalR1OwnerResolution:true,sequenceNote:'The source assessment file physically records the preliminary D2/semantic-Meta proposals before old target Meta/difficulty fields were opened. During later inspection those old fields were opened for recovery mechanics; no current Meta/difficulty bytes were changed and this file does not claim a clean source-only sequence beyond its recorded boundary.'};
+fs.writeFileSync(path.join(evidence,'CREATE.current-target-meta-difficulty-untouched-02.json'),JSON.stringify(proposalLock,null,2));
+console.log(JSON.stringify({rawSha256:sha(edited),qids:[1,16].map(id=>{const q=ctx.window.questionBank.find(x=>x.id===id);return {qid:id,answer:q.answer,solutionSha256:sha(q.solution),solutionChars:q.solution.length,itemStatus:q.itemStatus??null,reviewStatus:q.reviewStatus};}),studentBytesLocked:true,historyPath:path.join(evidence,'CREATE.item-hold-history-02.json')},null,2));

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_R1_META_D2_APPLICATION_RECEIPT_V1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "dispositionBasis": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.r1-meta-d2-application-basis.json",
+    "sha256": "6d63ee4c07a58798c5ccb22ffe0a11677785b3cc7c3a4fab731d21d858133a56",
+    "r1Q21ProposalSha256": "07bb0309bf2d0fcc7d5fcd47bdb5dea9e4e101130dcca098ab9e731edec3327a",
+    "r1Q21FreezeSha256": "865a04c8fb3329f4f9aaf9a6d04f09e0a47884a117509ca16ddc0ffc0ef0b060"
+  },
+  "artifactBefore": {
+    "rawSha256": "3546fb48c2bba3e18be75da0118defa83189bb3f9a741b2b36c28d57ce71c121",
+    "rawBufferBlobSha1": "19d7b4b75abba6fb8c1036fde74c7dfe7c77b848"
+  },
+  "artifactAfter": {
+    "path": "C:/Users/USER/Desktop/AP-worktrees/archive-2026-1mid-nine/AP------/.tmp/archive/archive-2026-1mid-nine-20261008/26_동산중_1학기_중간_중2_기출/26_동산중_1학기_중간_중2_기출.js",
+    "rawSha256": "bf01f97280750894b99b631e501f8990d40a14a82133def913b85c2f3d6f7e52",
+    "rawBufferBlobSha1": "b677fcfb7dca704aa461e3aacc69954856b51244"
+  },
+  "changedQids": [
+    19,
+    20,
+    21
+  ],
+  "changedFields": [
+    "standardCourse",
+    "standardUnitKey",
+    "standardUnit",
+    "standardUnitOrder",
+    "category",
+    "originalCategory",
+    "subUnitKey",
+    "subUnit",
+    "difficultyBucket",
+    "difficultyConfidence",
+    "difficultyBoundaryFlag",
+    "legacyLevelCompatibility",
+    "problemTypeKey",
+    "templateKey",
+    "crossConceptKeys",
+    "conditionKeys",
+    "integrationPattern",
+    "imageStatus",
+    "tags"
+  ],
+  "studentFieldsUnchanged": true,
+  "answersAndSolutionsUnchanged": true,
+  "itemStatusAndHoldReasonsUnchanged": true,
+  "allOther21ObjectsByteExact": true,
+  "nonTargetProof": {
+    "sha256": "cf3f07dd6b8baa509f4a0e9d7a9a9e531881bf17902b7b23362a3a4c76287d00",
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.meta-d2-object-invariance.json"
+  },
+  "preflight": {
+    "sha256": "1aaf2a622df2e80b59404f85b1256507a7c866c54db9110870da730537bdcd4d",
+    "status": "CARRY_ITEM_HOLD",
+    "exitCode": 0,
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\CREATE.item-recovery.create-preflight.meta-d2-current.raw.json",
+    "findings": 0,
+    "pendingHolds": [
+      19,
+      20,
+      21
+    ],
+    "unitOrderFindings": 0
+  },
+  "assets": {
+    "addedOrChanged": [],
+    "existingStudentAssetHashesStillMatch": true
+  },
+  "metadataDebt": {
+    "qids": [
+      19,
+      20,
+      21
+    ],
+    "reason": "No ACTIVE M2-02 curriculum binding/exact active machine projection; preserve RPM Primary and do not borrow H1 keys or invent an M2 key.",
+    "fields": [
+      "problemTypeKey",
+      "templateKey"
+    ]
+  },
+  "stageClosure": {
+    "completionSealRun": false,
+    "itemHoldCleared": false,
+    "nextRequiredAction": "Wait for integrated R1 evidence; ROOT may clear the replaced-scope item holds only after its R1 pass. Then complete full 24-qid CREATE evidence, run generic V2/CODEX validator once, and seal stable completion event.",
+    "integratedR1EvidencePending": true,
+    "genericValidatorRun": false
+  }
+}

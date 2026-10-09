@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_VISUAL_METHOD_EXPOSURE_V1",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "timing": "Before reading ROOT.existing-golden-render-reuse.decision.json and before opening its approved PNG witnesses.",
+  "action": "ImageMagick rasterized current Hyocheon q2 solution SVG and Negative Bokseong q1 SVG to temporary PNG previews; both previews were opened with view_image.",
+  "outputs": [
+    {
+      "sha256": "289057c29ab3cfe8001680bc0724f90434badbd16dae607c6bc0060d04984d71",
+      "sourceSvg": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "sourceSvgSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/hyocheon-q2-solution.png"
+    },
+    {
+      "sha256": "e88da032df3519bd0294fd51c07ff3705f256fbfedc24398bfb537a6b9a28c55",
+      "sourceSvg": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "sourceSvgSha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/negative-q1.svg.png"
+    }
+  ],
+  "decisionReadAfterAction": {
+    "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/ROOT.existing-golden-render-reuse.decision.json",
+    "sha256": "af80e5b4142a8ff17455457d9dea969464e53763dae5e2022020e36289573262"
+  },
+  "policyOutcome": "These ImageMagick outputs are excluded from final visual calibration evidence and are not claimed as authorized Chrome renders. Preserve them as process artifacts only.",
+  "approvedFollowup": "After reading ROOT decision, directly opened the two approved earlier Chrome PNG witness files at original size. Their hashes match the decision and current source SVG hashes match the recorded witness hashes. Final evidence uses only those authorized PNGs for Golden visual reads; the Negative q1 SVG is read directly from its source bytes, with no new rendering used in final evidence.",
+  "candidateSourceChanged": false,
+  "sourceAssessmentChanged": false
+}

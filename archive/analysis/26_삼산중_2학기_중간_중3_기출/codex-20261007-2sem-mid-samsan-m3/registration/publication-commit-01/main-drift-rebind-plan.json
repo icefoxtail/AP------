@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PUBLICATION_RESUME_PLAN_V1",
+  "status": "WAITING",
+  "reportOnly": true,
+  "irreversibleActionPerformed": false,
+  "phase": "COMMIT_READY",
+  "nextAction": "REFRESH_BASELINE_THEN_REPLAN_CHECKPOINT",
+  "drift": {
+    "kind": "UNRELATED_MAIN_DRIFT",
+    "disposition": "REBASE_OR_REFRESH_BASELINE",
+    "overlappingPaths": []
+  },
+  "bindingSha256": "a88bb2552606717197f9fff3036a3f663a972b8c25bdc2e0f40de80c6bd5526a",
+  "reusedPhases": [
+    "INPUTS_BOUND",
+    "CHECKS_PASSED"
+  ],
+  "checks": [
+    {
+      "name": "materializer",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "semantic-authority",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "identity-contract",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "identity-runtime",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "archive2-runtime",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "git-diff-check",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "archive2-catalog-check",
+      "status": "completed",
+      "exitCode": 0
+    },
+    {
+      "name": "verify-archive-registration",
+      "status": "completed",
+      "exitCode": 0
+    }
+  ]
+}

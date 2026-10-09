@@ -1,0 +1,74 @@
+{
+  "reviewPhase": 2,
+  "reviewedDenominator": 3,
+  "contentVerdictSummary": {"PASS": 3, "REJECT": 0, "HOLD": 0},
+  "freeze": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review/B05_INDEPENDENT_FREEZE.md",
+    "sha256": "50EFD6FA8594620C8A8A4BF36F9FFC7187FEEC68AE9FE4570345758610217868",
+    "studentPacketPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review-blind/B05_STUDENT_ONLY.md",
+    "studentPacketSha256": "1A80368C01179F117B77225A3DBF15AB9541AFEB775B5F4EACE128CC2CFC7593"
+  },
+  "receipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B05_평면좌표/B05_RECEIPT.md",
+    "sha256": "9702CC9A5574DB83BE0CA093B8E3C784321E81D0CA0E1EE07B2696D319810338"
+  },
+  "answerPositionHistogram": {"①": 0, "②": 0, "③": 1, "④": 1, "⑤": 1},
+  "actualRender": "NOT_RUN",
+  "visualAssetAudit": "Packet references no student-facing figure; all three candidates marked NOT_REQUIRED. Q09 source image is provenance only; current prompt is text-complete. No omitted student visual identified.",
+  "items": [
+    {
+      "draftCandidateId": "B05_Q04_C01_DISTANCE_SUM_MIN",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B05_평면좌표/B05_Q04_C01_DISTANCE_SUM_MIN.md",
+      "candidateSha256": "8D18E32973927D2368114B963F3B634AD5B234CD9BB4884016FA7D58D15A1D01",
+      "qualityVerdict": "PASS",
+      "taxonomyStatus": "Proposed EXT-L4 DISCOVERED_UNREVIEWED; curriculum gate REVIEW_REQUIRED; canonicalPromoted=false; consumerSelectable=false",
+      "supplyStatus": "HOLD_EXTENSION_UNPROMOTED",
+      "canonicalEligibility": "Not canonical or selectable absent separately approved promotion.",
+      "independentAnswer": "④, 10",
+      "candidateAnswer": "④, 10",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① horizontal difference; ② vertical difference; ③ coordinatewise sum; ④ Euclidean endpoint distance/minimum; ⑤ squared distance.",
+      "solutionAudit": "Triangle inequality PA+PB>=AB=10 with equality attainable on segment AB.",
+      "novelty": "Distance-sum minimum and equality segment are not explicitly covered by listed canonical distance comparators; valid content-level extension candidate.",
+      "difficultyMeta": "Bucket 2 appropriate; direct triangle inequality and equality check.",
+      "visual": "NOT_REQUIRED; actual render NOT_RUN."
+    },
+    {
+      "draftCandidateId": "B05_Q09_C01_CENTROID_RATIO_RECOVERY",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B05_평면좌표/B05_Q09_C01_CENTROID_RATIO_RECOVERY.md",
+      "candidateSha256": "1F32997E84964187C275B821E744A801B032F758A27BEFE16F6A9AE6E6AEFC6E",
+      "qualityVerdict": "PASS",
+      "taxonomyStatus": "Existing RPM-backed centroid/coordinate-figure application; referenced L3/L4 CANONICAL_DRAFT",
+      "supplyStatus": "EXISTING_TAXONOMY_DRAFT; no promotion or render pass claimed",
+      "canonicalEligibility": "No new identity claimed; draft lookup is not promoted.",
+      "independentAnswer": "⑤, k=2",
+      "candidateAnswer": "⑤, k=2",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "Only k=2 solves 3/(k+1)=1; all five numeric choices distinct.",
+      "solutionAudit": "P=(4,0), Q=(2,6), R=(0,9/(k+1)); centroid equality yields k=2.",
+      "novelty": "Reverse ratio recovery from centroid coincidence differs from source-described forward centroid calculation.",
+      "difficultyMeta": "Bucket 4 plausible; ratio translation plus centroid condition.",
+      "visual": "NOT_REQUIRED; no figure referenced; source image provenance only; render NOT_RUN."
+    },
+    {
+      "draftCandidateId": "B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B05_평면좌표/B05_Q18_C01_CENTROID_AREA_SIDE_RECOVERY.md",
+      "candidateSha256": "B4EF67B36D3764A3162FBFCB24D0301CD4E9578B33CAF0B0B2BE62AA3D42E30C",
+      "qualityVerdict": "PASS",
+      "taxonomyStatus": "Existing RPM-backed centroid/coordinate-figure application; referenced L3/L4 CANONICAL_DRAFT; supporting prior-scope records disclosed",
+      "supplyStatus": "EXISTING_TAXONOMY_DRAFT; no promotion or render pass claimed",
+      "canonicalEligibility": "No new identity claimed; draft lookup is not promoted.",
+      "independentAnswer": "③, t=3",
+      "candidateAnswer": "③, t=3",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "Area formula 6t/(t+6); only t=3 yields 2. All five choices distinct.",
+      "solutionAudit": "Angle bisector gives HC/BC=6/(t+6); centroid yields [GBC]=t; hence [GHC]=6t/(t+6)=2 and t=3.",
+      "novelty": "Unknown side recovered from centroid subarea condition, unlike source-described fixed-triangle area request.",
+      "difficultyMeta": "Bucket 4 plausible for multi-step geometric relation chain.",
+      "visual": "NOT_REQUIRED; text fully specifies geometry; render NOT_RUN."
+    }
+  ]
+}

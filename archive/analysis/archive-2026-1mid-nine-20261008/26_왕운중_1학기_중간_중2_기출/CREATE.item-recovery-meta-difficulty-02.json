@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_ITEM_RECOVERY_META_DIFFICULTY_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceArtifactRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+  "workingJsAbsolute": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\26_왕운중_1학기_중간_중2_기출.js",
+  "sourceAssessmentPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\CREATE.source-assessment-02.json",
+  "sourceAssessmentExposureAddendumPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\CREATE.source-assessment-exposure-addendum-02.json",
+  "preApplyR1Freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\archive\\analysis\\archive-2026-1mid-nine-20261008\\26_왕운중_1학기_중간_중2_기출\\R1.scope-1,16@recovery-01.freeze.json",
+    "sha256": "fd6c6069025df96fdf9712876b8ddbc157cb114eef77f27b8ff0d9f475ce37b3",
+    "sourceRawSha256": "fcefb93c3dc486b3bebebd0ea5fbc3d496d7923d0dc53a6d9b1be4e3fa374944"
+  },
+  "r1Resolver": "r1_09",
+  "postFreezeR1CorrectionScope": [
+    "qid1.solution leading sentence language only",
+    "qid1 difficulty fields",
+    "qid16 difficulty fields",
+    "qid1/qid16 semantic/projection adjudication in this sidecar"
+  ],
+  "sourceStudentFieldsUnchanged": true,
+  "sourceMetaD2Physical": {
+    "writtenDifficultyFieldsOnly": true,
+    "semanticFieldsStoredInEvidenceOnly": true,
+    "unresolvedQ16DoesNotSetItemHold": true
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "level": "하",
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The repeating block is immediate; multiply by 100 and subtract once, with no strategy choice or hidden condition."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL"
+      },
+      "rpmSemanticStatus": "FINAL",
+      "rpmPrimaryPath": {
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "유리수와 순환소수",
+        "midUnit": "유리수와 순환소수",
+        "l3": "순환소수",
+        "l4": "순환소수를 분수로"
+      },
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "rpmRecordId": "M2-RPM-004",
+      "primaryMethod": "Convert a pure repeating decimal to a fraction by aligning one full repeating period and subtracting.",
+      "decisiveStep": "100x-x=23, hence 99x=23; the resulting fraction is irreducible.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "nullReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The current 2015 M2-1 crosswalk for M2-RPM-004 is RPM_ONLY / NO_ACTIVE_MAPPING. No exact ACTIVE problemTypeKey/templateKey with curriculum binding is available. RPM semantic remains FINAL; this is projection debt only."
+    },
+    {
+      "qid": 16,
+      "level": "중",
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The criterion is familiar and direct, but it is applied across eight expressions, distinguishing equations from inequalities and excluding a quadratic inequality; this is a small one-pass task near the Bucket 1/2 boundary."
+      },
+      "currentCurriculum": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "rpmSemanticStatus": "HOLD",
+      "rpmL3": null,
+      "rpmL4": null,
+      "rpmSemanticReason": "NO_EXACT_CLASSIFICATION_ONLY_PATH_AFTER_CURRENT_AND_PERMITTED_PREREQUISITE_LOOKUP",
+      "primaryMethod": "Classify each relation first, then classify variable degree and count both classes.",
+      "decisiveStep": "Four inequalities; three have only first-degree variable terms; ㄹ is quadratic.",
+      "projectionStatus": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "projectionReason": "No exact active classification-only PT/TPL projection; retain explicit nulls without borrowing a solving taxonomy.",
+      "nullReason": "Current M2-02 offers relation properties, solution representation, and inequality solving leaves, but none matches classification-only as primary. The permitted 2015 M1 prerequisite lookup yields equation/property/graph leaves and none classifies inequalities. No deterministic exact classification-only L3/L4 path or ACTIVE classification projection was found. Do not map to M2-RPM-018/020, borrow H1 keys, or invent PT/TPL. This is a semantic Meta HOLD only; the repaired student item remains complete.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Current M2-02 offers relation properties, solution representation, and inequality solving leaves, but none matches classification-only as primary. The permitted 2015 M1 prerequisite lookup yields equation/property/graph leaves and none classifies inequalities. No deterministic exact classification-only L3/L4 path or ACTIVE classification projection was found. Do not map to M2-RPM-018/020, borrow H1 keys, or invent PT/TPL. This is a semantic Meta HOLD only; the repaired student item remains complete.",
+      "itemStatus": null,
+      "reviewStatus": "pending"
+    }
+  ],
+  "r1PostApplyReviewRequired": true,
+  "qualityVerdict": "NOT_ASSERTED"
+}

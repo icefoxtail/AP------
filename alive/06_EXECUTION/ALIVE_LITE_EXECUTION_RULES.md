@@ -1,5 +1,35 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT USER OVERRIDE — 2026-10-09 L3·발문·자동출시
+- 새 QID9의 최우선 실행은 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 상단 CURRENT USER AUTHORITY 절이다. **L3 잠금 → 기존 L4/Generated EXT 탐색 → CrossConcept/Condition/Integration 조합 → 9문항 기획** 후 학생용 발문부터 실제 내신 품질을 확인한다.
+- GPT 독립검수 1회 PASS 후 해당 UID는 별도 EXT L4 승인·active binding 요청·중복 분류 정리 없이 Archive 2.0 Generated Consumer에 즉시 등록하고 main에 병합한다. Generated EXT L4는 별도 GENERATED_ACTIVE namespace로 기록해 RPM LOCKED를 건드리지 않는다.
+- Codex는 품질판정 금지, 지정 파일 Git 병합만. 출시 가능한 PASS를 '마스터 승인 대기'로 보류하는 기존 문구는 신규 QID9에 적용하지 않는다. 기술적 조회/직렬화 오류는 수정해 닫고 미실행을 PASS라고 하지 않는다.
+- 학교식 한국어 발문 → 독립 수학·교육과정/5지 → 한국어 해설 순서로 판단한다. 학생 사용 후 개별 UID 불만·원장 결정으로 비활성화할 수 있도록 진단 정보 보존.
+
+## CURRENT HARD — GPT 원본 1문항 × 9슬롯 직렬 제작·검수 / 연속 핸드오프
+- 상세 실행·모의고사 3×3 슬롯 선택 및 미사용 UID 순환 설계 정본: `alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md`. 이 계획의 제품 미구현 영역은 구현·출시 완료로 보고하지 않는다. (2026-10-09)
+- 형님 직접 지시: **source qid 한 개씩만** 다룬다. 해당 문항의 A1·A2·A3(반복 숙달), B1·B2·B3(사고 확장), C1·C2·C3(실전 평가) 총 **9개 슬롯을 모두 설계하고 완성 후보 제작을 목표가 아니라 필수 작업량으로 배정**한다. 9개가 완성되지 않으면 숫자를 채운 척하지 말고 해당 qid를 `QID_INCOMPLETE`로 기록하고 누락 슬롯의 이유·다음 작업을 남긴다. 미완성인데 다음 qid를 자동 개시하지 않는다.
+- 9개 슬롯은 모두 실제 완성된 발문·보기(객관식 5지)/답·한국어 상세 해설·수학 검산·Meta·교육 목적이 있어야 한다. A는 의도된 수치변형도 허용하되 서로 다른 수치 인스턴스 UID를 지닌다. B는 새로운 사고/역추적/경계·조건 판단, C는 실전 조건 종합·난이도 상승을 우선한다. **A/B/C 교육 목적 슬롯 ≠ 고유 RPM L3/L4·새 Blueprint 9개**다.
+- **각 슬롯의 수학·발문 품질은 GPT 책임**, 별도 독립 GPT 검수 시 이전 답·해설을 숨겨 최초 풀이 동결 후 비교한다. 한 세션에서 CREATE한 산출물을 그 세션 자체검산으로 `INDEPENDENT_REVIEW_PASS`라고 기록하지 않는다. 결함 수정·교육적 승인도 GPT 담당. Codex는 이미 확정한 파일의 Git commit/push/main merge/remote SHA readback만 수행한다.
+- 작업 checkpoint는 qid별 `sourceQid, sourceGitBlob, stage, A1~C3[UID, path, candidateSha, qualityState, releaseState, reason], completedCount, nextExactStep, headSha`를 Git에 기록한다. 시험지 전체 문항을 세션 한 번에 지시·적재하지 않는다. 이미 완료/검수한 슬롯은 SHA 동일하면 무의미하게 다시 제작하지 않는다.
+- **컨텍스트 임계 사용률 80%를 직접 측정할 수 없는 ChatGPT 창에서는 실제 사용률을 안다고 주장하지 않는다.** 새 창 인계가 필요하다고 판단되는 즉시, 또는 안전하게 한 qid를 닫을 때, 현재 Git SHA·완료 문항·열린 finding·다음 qid·인계 프롬프트를 가진 물리적 HANDOFF 문서를 남기고 사용자에게 새 대화에서 이어받도록 안내한다. 50/80%처럼 근거 없는 숫자 추정 통보는 금지한다.
+- 기존 팔마고 27개는 main에 **candidate 보존 완료**. 등록 4 / 공급 HOLD 23의 학생 접근 gate는 별개이며, 여기서 9슬롯 정책만으로 강제 해제하지 않는다. 최초 pilot은 팔마고 원본 q1부터 qid 단위로 새 UID namespace를 사용하여 기존 27개와 충돌하지 않게 한다. 기존 원본 JS 불변.
+
+
+## CURRENT HARD — ALIVE 생성 품질은 GPT 직접 책임 / Codex는 Git 운영병합만 (2026-10-09 형님 직접 지시)
+- 본 ALIVE 신규 문항 제작·검수 운영에서 수학 문항의 기획·A 반복 숙달/B 사고 확장/C 실전 평가 설계·독립 풀이·발문/보기/해설/교육적 가치 판정·수리·학생 공급 승인과 Meta 정확성 판단은 GPT 직접 품질 작업으로 수행한다.
+- Codex에 신규 수학문항을 자동 제작시키거나, Codex 자체 PASS·검수로 학생용 품질을 승인시키지 않는다. Codex 담당은 **GPT가 확정해 전달한 변경 파일의 지정 범위 Git 커밋·push·main 운영병합·remote readback**으로 제한한다.
+- 기존 하단의 Codex CREATE/REVIEW/Consumer 판단 위임 문구는 본 ALIVE 품질 책임 범위에서 이 CURRENT에 의해 대체된다. 다른 Archive 시험지 제작·코드 엔진·필수 validator 계약까지 자동 변경한다는 뜻은 아니다.
+- 3×3 신규 운영에서는 원본당 9슬롯 전부 제작 목표를 필수 배정하되 품질 미달 시 QID_INCOMPLETE로 유지한다. A의 의도된 수치변형은 인정하되 고유 Blueprint 수와 분리한다. 필요 시 GPT가 독립된 품질 기록에 따라 공급 보류를 유지한다. 이 Codex용 문서에는 기존 문제은행 폐기 판단·명령을 위임하지 않는다.
+
+## CURRENT — Codex 3×3 문항 제작 품질 방향 (2026-10-09)
+- 원본마다 A 반복 숙달, B 사고 확장, C 실전 평가 중 필요한 교육 목적을 선택한다. 각 목적별 3개, 총 9개 슬롯을 실제 설계·완성 대상으로 배정한다. 불충족 시 완료로 선언하지 않는다.
+- A 반복 숙달은 원본의 핵심 풀이를 보존하는 수치변형도 유효하다. 단, 새 의미적 Blueprint 수와 수치 인스턴스 수를 구분하고 실제 ALIVE MODE의 조건을 지킨다.
+- B는 새로운 결정적 판단 또는 풀이·조건 구조를 요구하며, C는 자연스러운 내신형 종합 판단과 오개념 선택지 설계를 우선한다. 계산량만 늘려 B/C를 주장하지 않는다.
+- 교육 목적 A/B/C와 ALIVE 런타임 MODE/검증 등급은 서로 다른 분류다. 기존 정본과 독립 검증 게이트를 유지한다.
+- 공통 품질: 발문이 요구하는 답의 종류와 보기 형식 일치, 한국어 학생 해설, 교과 용어 정확성, 필요한 그림/표 완결, 5지 정답 유일성 및 교육적 오답을 확인한다.
+- 신규 Consumer 등록은 정본 마스터의 키와 표기(labelKo)를 함께 대조한다. layoutTag는 현행 직렬화·표시 계약의 허용값을 확인한다. Chrome 표시 PASS는 콘텐츠 품질 PASS를 대신하지 않는다.
+
 ## CURRENT FINAL-CLOSURE OVERRIDE — REVIEW가 Consumer DB까지 마감 (2026-10-08)
 - REVIEW+MAIN 담당자는 `ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`를 읽는다. 독립 검수 → 정답 위치/5지 오개념 검수 → 필요 핀포인트 수리 → 승인 UID 확정 → Generated Consumer 등록·학생용 실제 검색/조회/선택 → main push·readback까지 한 채팅이 책임진다.
 - `generated UID main 저장` ≠ `consumer DB 등록` ≠ `student supply verified`. ALITE UID를 기존 original qid_v1 UID로 강제 변환하지 않는다. Consumer adapter 미지원 시 기술 구현/검증을 닫기 전 DONE 선언 금지.

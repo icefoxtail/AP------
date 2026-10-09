@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "JS_ARCHIVE_IMMUTABLE_BLIND_FREEZE_V1",
+  "stage": "R1",
+  "reviewerIdentity": {
+    "role": "archive_r1",
+    "reviewerId": "r1_recovery_08"
+  },
+  "frozenAt": "2026-10-08T16:42:25.504Z",
+  "sourceRawSha256": "5253521b97afb93dec752e0ad28e361ca35a3e5f5dbfef8e26889142fe876633",
+  "studentBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\R1.scope-19,20,21@recovery-01.json",
+    "sha256": "40ed3b7603d7c3750cdcf5ae7a4b2a45b4520f8a1f045f6b33e101d48b83e16f"
+  },
+  "bundleAdapterProvenance": {
+    "input": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\archive-2026-1mid-nine\\AP------\\.tmp\\archive\\archive-2026-1mid-nine-20261008\\26_동산중_1학기_중간_중2_기출\\R1.scope-19,20,21@recovery-01.json",
+      "sha256": "40ed3b7603d7c3750cdcf5ae7a4b2a45b4520f8a1f045f6b33e101d48b83e16f"
+    },
+    "inputSchemaVersion": "JS_ARCHIVE_STUDENT_BUNDLE_V2",
+    "legacyConverted": false,
+    "studentFieldsDropped": [],
+    "answersRead": false,
+    "originalBundleMutated": false
+  },
+  "studentQidOrder": [
+    19,
+    20,
+    21
+  ],
+  "rows": [
+    {
+      "qid": 19,
+      "independentAnswer": {
+        "choice": 2,
+        "text": "$x\\le5$",
+        "cardinality": 1
+      },
+      "reasoning": "5x-7≤2x+8에서 양변에서 2x를 빼면 3x-7≤8, 양변에 7을 더하면 3x≤15이다. 양수 3으로 나누어 x≤5이므로 두 번째 보기를 고른다.",
+      "difficultyProposal": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기본형 일차부등식에서 풀이 절차가 바로 정해지고 이항과 양수 나눗셈으로 곧바로 경계를 얻는다. 별도 전략 선택이나 조건 결합이 없다."
+      },
+      "semanticMetaProposal": {
+        "curriculumScope": "2022 중학교 수학, 중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmL3": "L3-3.1.2 일차부등식의 풀이",
+        "rpmL4": "L4-3.1.2.1 기본형",
+        "primaryMethod": "일차부등식의 이항과 양수 나눗셈",
+        "decisiveStep": "미지수 항을 한쪽에 모아 3x≤15로 정리한 뒤 x≤5로 끝점을 구한다.",
+        "projectionStatus": "PROPOSAL_ONLY; machine-key binding deferred"
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": {
+        "choice": 3,
+        "text": "7",
+        "cardinality": 1
+      },
+      "reasoning": "4x-7<2x+9에서 2x<16, 따라서 x<8이다. x는 1 이상의 자연수이므로 가능한 값은 1,2,3,4,5,6,7의 일곱 개이고 세 번째 보기를 고른다.",
+      "difficultyProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "풀이법은 표준 일차부등식 풀이로 바로 결정된다. 해의 끝점에 엄격부등호를 반영한 후 1 이상의 자연수 범위에서 개수를 세는 한 번의 조건 해석이 필요하다."
+      },
+      "semanticMetaProposal": {
+        "curriculumScope": "2022 중학교 수학, 중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmL3": "L3-3.1.3 해의 조건",
+        "rpmL4": "L4-3.1.3.1 정수해 개수",
+        "primaryMethod": "일차부등식을 풀고 자연수 해의 개수를 센다",
+        "decisiveStep": "x<8과 x≥1을 함께 적용하여 1부터 7까지의 정수해를 센다.",
+        "projectionStatus": "PROPOSAL_ONLY; machine-key binding deferred"
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": {
+        "choice": 3,
+        "text": "11,500원",
+        "cardinality": 1
+      },
+      "reasoning": "정가를 p원이라 두면 할인 판매가는 0.8p원이다. 원가 8,000원보다 1,200원 이상 이익을 얻으려면 판매가가 9,200원 이상이어야 하므로 0.8p≥9,200, p≥11,500이다. 세 번째 보기를 고른다.",
+      "difficultyProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "할인율을 판매가로 바꾸고 이익 조건을 일차부등식 하나로 표현하는 익숙한 가격 문장제다. 조건 번역은 필요하지만 풀이 방향은 직접 결정된다."
+      },
+      "semanticMetaProposal": {
+        "curriculumScope": "2022 중학교 수학, 중2",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "rpmL3": "L3-3.2.3 비율·가격·도형",
+        "rpmL4": "L4-3.2.3.1 할인·이익",
+        "primaryMethod": "할인된 판매가와 원가 이익 조건을 일차부등식으로 표현",
+        "decisiveStep": "0.8p-8000≥1200을 세워 p≥11500을 얻는다.",
+        "projectionStatus": "PROPOSAL_ONLY; machine-key binding deferred"
+      }
+    }
+  ],
+  "assetReads": []
+}

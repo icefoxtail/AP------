@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "runId": "archive-2026-1mid-nine-20261008",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "performedBeforeTargetSolutionAuthoring": true,
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registrySha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "items": [
+        {
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "Solution tracks the internal-division coordinate formula by axis, computes the midpoint independently, then substitutes both points into the distance formula and reduces sqrt(8) to 2sqrt(2). Each intermediate coordinate is stated before the next step.",
+          "qid": 1
+        },
+        {
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "observation": "Reads the slope from y=mx+n, uses the point condition to solve n, then evaluates the requested sum. The reasoning is explicit before each substitution and final answer.",
+          "qid": 2
+        }
+      ],
+      "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js"
+    },
+    {
+      "items": [
+        {
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "observation": "Uses signed x- and y-coordinate differences, substitutes both in the distance formula, and reduces sqrt(50) to 5sqrt(2).",
+          "qid": 1
+        },
+        {
+          "observation": "Separately rewrites each line in slope-intercept form, applies perpendicular slopes product -1, and solves k. The actual SVG was opened and checked: the blue line has negative slope and red line positive steep slope, matching the two equations and perpendicular relationship at their intersection.",
+          "openedPreviewPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/hyocheon-q2-solution.png",
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30",
+          "openedPreviewSha256": "289057c29ab3cfe8001680bc0724f90434badbd16dae607c6bc0060d04984d71",
+          "qid": 2
+        }
+      ],
+      "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+    "observation": "Read the registered negative fixture before authoring. Check actual SVG coordinates/topology against mathematical labels, split source-enumerated cases into separate solution blocks, verify null Meta only after exact current lookup, and inspect evaluated runtime strings for TeX escaping. Opened negative q1 SVG: the line passes through neither plotted point A(-5,3) nor B(1,-2), despite its label; it visibly crosses the axes at the origin. This is a locked failure sample and must never be copied.",
+    "visualPath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+    "visualSha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+    "openedPreviewPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-preflight/negative-q1.svg.png",
+    "openedPreviewSha256": "e88da032df3519bd0294fd51c07ff3705f256fbfedc24398bfb537a6b9a28c55"
+  },
+  "preflightOutcomes": [
+    "No sample wording was copied.",
+    "Fresh target solutions will expose every transformation and decisive step.",
+    "No target SVG is required because both replacements are text-only and their decisive mathematics is fully represented by equations."
+  ]
+}

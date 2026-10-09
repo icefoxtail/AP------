@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_TARGET_QID_REVISION_PROPOSAL_V1",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "stage": "CREATE",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "qid": 16,
+  "supersededCandidateRawSha256": "f0c5cd0b0494f2a27b3da62846692ea497b0668928cbf7ef64035717c917a27e",
+  "priorR1ValidatorDisposition": "FAIL with q16 classification-only semantic HOLD as the only issue",
+  "rootDirectedScope": "Replace only already-replaced q16 with an inequality-topic task that has an exact existing current RPM semantic path; preserve q1 and all22 non-target objects/student/solutions/Meta/assets exactly.",
+  "studentCandidate": {
+    "content": "다음 일차부등식을 풀면? [3점]<br>$4x+3>2x-5$",
+    "choices": [
+      "$x>-4$",
+      "$x<-4$",
+      "$x>4$",
+      "$x\\ge-4$",
+      "$x>-1$"
+    ],
+    "answer": "①"
+  },
+  "solution": "먼저 양변에서 $2x$를 빼고 $3$을 뺀다.<br>$4x+3>2x-5$<br>$2x+3>-5$<br>$2x>-8$<br>양변을 양수 $2$로 나누므로 부등호의 방향은 바뀌지 않는다.<br>$x>-4$<br>따라서 정답은 ①이다.",
+  "difficultyProposal": {
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B12",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "NORMAL",
+    "rationale": "The item uses a familiar one-step linear-inequality transformation; the only decisive step is collecting variable and constant terms before dividing by a positive coefficient."
+  },
+  "semanticProposal": {
+    "rpmSemanticStatus": "FINAL",
+    "l3": "일차부등식의 풀이",
+    "projectionStatus": "UNMATERIALIZED",
+    "primaryMethod": "Move variable terms to one side and constants to the other, then divide by the positive coefficient.",
+    "problemTypeKey": null,
+    "decisiveStep": "2x>-8; division by positive 2 preserves >, so x>-4.",
+    "majorUnit": "일차부등식과 연립일차방정식",
+    "curriculum": "2015",
+    "rpmRecordId": "M2-RPM-020",
+    "templateKey": null,
+    "midUnit": "일차부등식",
+    "crosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+    "l4": "기본형",
+    "projectionReason": "The current M2-2 crosswalk is RPM_ONLY / NO_ACTIVE_MAPPING; no exact ACTIVE curriculum-bound PT/TPL pair is available.",
+    "scope": "M2-2"
+  },
+  "proposalSource": "r1_09 scoped read-only proposal after R1 full24 V2 report",
+  "priorExposureBoundary": "This proposal is created after the earlier recorded q16 D2/Meta field exposure. It is not represented as a clean pre-exposure classification; the value is newly derived for the replacement task and awaits fresh R1 review.",
+  "assetDisposition": "NO_VISUAL_REQUIRED",
+  "sourceLineage": "ALIVE_REPLACEMENT + CODEX_DIRECT_AUTHORING"
+}

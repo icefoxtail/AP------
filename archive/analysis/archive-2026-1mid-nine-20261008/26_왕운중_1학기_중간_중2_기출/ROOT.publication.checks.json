@@ -1,0 +1,44 @@
+[
+  {
+    "name": "workspace-policy",
+    "command": "node tools/archive/check-exam-workspace-policy.mjs --staged",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "311d0c356c0ba3eac2e1ecfdd4bb1a816c9769449ee7f67b5ef9e48f1f0049b5",
+    "stdoutSha256": "bbe1f6f5aa83a3cdc8a61a6b93fa21da0c690283c374159738ddc3e588c43bf5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "postcopyCatalog",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/build-archive2-catalog.mjs --check",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "311d0c356c0ba3eac2e1ecfdd4bb1a816c9769449ee7f67b5ef9e48f1f0049b5",
+    "stdoutSha256": "ba2bd0d296d5430667cfcd90eeef73255357c42386d93c732d7e02f32e609c20",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/registration-root-apply/checks/catalog-check-02-postcopy.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "postcopyRegistration",
+    "command": "C:\\Program Files\\nodejs\\node.exe archive/tools/verify-archive-registration.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "311d0c356c0ba3eac2e1ecfdd4bb1a816c9769449ee7f67b5ef9e48f1f0049b5",
+    "stdoutSha256": "59b9057604cd59c81e80a670372f01e184fe5cf607a85e946e3e34fd4e61e1ef",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/registration-root-apply/checks/registration-parity-02-postcopy.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  },
+  {
+    "name": "postcopyIdentity",
+    "command": "C:\\Program Files\\nodejs\\node.exe --test tests/archive-question-identity-runtime.test.mjs tests/archive-question-identity-contract.test.mjs tests/archive-question-identity-collision-regression.test.mjs",
+    "status": "completed",
+    "exitCode": 0,
+    "bindingSha256": "311d0c356c0ba3eac2e1ecfdd4bb1a816c9769449ee7f67b5ef9e48f1f0049b5",
+    "stdoutSha256": "f3ca117664f7d98c0fb866908a3a415de9e6fc0addc11d9d84eeb4d588c362c2",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "proof": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/registration-root-apply/checks/identity-runtime-tests-02-postcopy.result.json",
+    "reuseBasis": "Exact source/assets/nine registry bytes unchanged since this current-bound successful validator."
+  }
+]

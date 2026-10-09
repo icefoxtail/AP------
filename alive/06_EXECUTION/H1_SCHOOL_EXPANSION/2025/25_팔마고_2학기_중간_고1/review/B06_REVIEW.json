@@ -1,0 +1,93 @@
+{
+  "reviewPhase": 2,
+  "reviewedDenominator": 3,
+  "verdictSummary": {
+    "PASS": 3,
+    "REJECT": 0,
+    "HOLD": 0
+  },
+  "freeze": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review/B06_INDEPENDENT_FREEZE.md",
+    "sha256": "23615780869D90D8BDEA0B140FAF88C559FB4EB95829F0EDB0AC52F9298E9214",
+    "studentPacketPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/review-blind/B06_STUDENT_ONLY.md",
+    "studentPacketSha256": "5CE5A428520C0CF35A3A8F59DCAED984F7C66FA59FFE09C101C546CAB41E652B"
+  },
+  "receipt": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B06_직선의_방정식/B06_RECEIPT.md",
+    "status": "FOUND_AFTER_PHASE2",
+    "sha256": "48FB47AB238973C7EE5B7B32E390574126340387E8ECF4F2689A7C077ABA96C9"
+  },
+  "answerPositionHistogram": {
+    "①": 0,
+    "②": 1,
+    "③": 0,
+    "④": 1,
+    "⑤": 0
+  },
+  "constructedResponseCount": 1,
+  "actualRender": "NOT_RUN",
+  "visualGate": "No candidate requires a visual asset; no actual render pass claimed.",
+  "items": [
+    {
+      "draftCandidateId": "B06_Q05_C01_TWO_POINT_LINE_INTERSECTION",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B06_직선의_방정식/B06_Q05_C01_TWO_POINT_LINE_INTERSECTION.md",
+      "candidateSha256": "80D8523D91A6A7658BAEA50AD4AF733385B065872A3D9E34B97F84B2AC9FBE19",
+      "verdict": "PASS",
+      "independentAnswer": "④ (4/3, 5/3)",
+      "candidateAnswer": "④ (4/3, 5/3)",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "① on AB but not m; ②/⑤ on m but not AB; ③ on m but not AB; ④ satisfies both.",
+      "solutionAudit": "AB: x+y=3; intersect 2x-y=1 gives x=4/3,y=5/3.",
+      "curriculum": "Primary L1/L2 line equations; proposed L3/L4 CANONICAL_DRAFT.",
+      "semanticDistinctness": "Construct line through two points then intersect a second line; distinct from C02's intersection-then-parallel construction.",
+      "difficultyMeta": "Bucket 3 reasonable for two linked standard steps.",
+      "visual": "Not required; prompt is self-contained."
+    },
+    {
+      "draftCandidateId": "B06_Q05_C02_INTERSECTION_PARALLEL_LINE",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B06_직선의_방정식/B06_Q05_C02_INTERSECTION_PARALLEL_LINE.md",
+      "candidateSha256": "EED907E0101E9D8C43A6D37B7DAB6B00BA2A40EB7AD6174CCBA423F2992BA5E7",
+      "verdict": "PASS",
+      "independentAnswer": "② 3x-2y-7=0",
+      "candidateAnswer": "② 3x-2y-7=0",
+      "answerMatches": true,
+      "uniqueChoice": true,
+      "choiceAudit": "①/⑤ pass through P but wrong direction; ③/④ correct direction but wrong intercept; ② satisfies both.",
+      "solutionAudit": "Given lines intersect at (3,1); parallel normal (3,-2) gives 3x-2y-7=0.",
+      "curriculum": "Primary L1/L2 line equations; proposed point-slope/parallel/intersection L3/L4 CANONICAL_DRAFT.",
+      "semanticDistinctness": "Find line intersection then transport a parallel direction through it; distinct from C01.",
+      "difficultyMeta": "Bucket 3 appropriate.",
+      "visual": "Not required; prompt is self-contained."
+    },
+    {
+      "draftCandidateId": "B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE",
+      "candidatePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/candidates/B06_직선의_방정식/B06_Q23_C01_PARAMETER_INTERSECTION_EQUIDISTANCE.md",
+      "candidateSha256": "6956C8F1E1C433E9EAB03445960AB827F50D1900CC203514DD1C3D399564A498",
+      "verdict": "PASS",
+      "independentAnswer": "t=-10 or t=15/2",
+      "candidateAnswer": "t=-10 or t=15/2",
+      "answerMatches": true,
+      "uniqueResponseSet": true,
+      "solutionAudit": "P=((6-t)/3,(12+t)/3); distances 7|t|/15 and |60-t|/15; complete sign cases yield -10,15/2.",
+      "curriculum": "Primary L1/L2 line equations; point-line distance/intersection L3/L4 CANONICAL_DRAFT.",
+      "semanticDistinctness": "Equidistant parameterized intersection differs from source-described four-locus parallelogram-area objective.",
+      "difficultyMeta": "Bucket 4 defensible for parameter retention, two distances, and absolute-value cases.",
+      "visual": "Not required; source solution-only SVG unused."
+    }
+  ],
+  "correction": {
+    "version": "1.1",
+    "status": "receipt_found_after_phase2",
+    "receiptSha256": "48FB47AB238973C7EE5B7B32E390574126340387E8ECF4F2689A7C077ABA96C9",
+    "candidateHashes": {
+      "C01": "MATCH",
+      "Q23": "MATCH",
+      "C02": "MATCH"
+    },
+    "candidateByteContinuity": "NOT_CLAIMED: no candidate hashes were frozen at phase 1",
+    "verdictsPreserved": "3 PASS, 0 REJECT, 0 HOLD",
+    "visualRequired": false,
+    "actualRender": "NOT_RUN"
+  }
+}

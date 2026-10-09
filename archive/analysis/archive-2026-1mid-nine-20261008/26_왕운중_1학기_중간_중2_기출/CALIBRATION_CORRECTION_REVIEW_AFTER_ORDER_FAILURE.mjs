@@ -1,0 +1,40 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+const path='archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CALIBRATION_CORRECTION_REVIEW_AFTER_ORDER_FAILURE.json';
+const record={
+ schemaVersion:'CALIBRATION_CORRECTION_REVIEW_AFTER_ORDER_FAILURE',runId:'archive-2026-1mid-nine-20261008',examUid:'26_왕운중_1학기_중간_중2_기출',stage:'CREATE',executionLine:'CODEX',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',createdAt:new Date().toISOString(),
+ sourceArtifactRawSha256:'c38f2c0b8f746170688be1d1c919bd1bbcdf4b4ffab0f925698aa8ef2b2dfbd2',sourceRawBufferGitBlobSha1:'e51fe7b5b2cfadf69131632a56b10008e34a1fcc',
+ orderingFailure:'Initial q1/q16 solution authoring preceded the ROOT-authorized existing-visual witness review; unauthorized ImageMagick raster previews were excluded. This record is a bounded correction-review after an in-order current Golden/Negative preflight, not a claim that the original authoring order was compliant.',
+ reviewScope:[1,16],
+ orderedSteps:[
+  {step:1,action:'Re-read the current registered Golden registry and exact registered sample JS solution bytes before opening target solutions.',registryPath:'archive/data/codex-quality-calibration-registry-v2.json'},
+  {step:2,action:'Re-read the Negative README and inspect its registered q1 SVG source coordinates directly.',negativeReadmePath:'archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md',negativeSvgPath:'archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg'},
+  {step:3,action:'Verified ROOT reuse decision and current SVG hashes, then opened only its two authorized pre-existing Chrome PNG witnesses at original resolution; no new render/browser execution.',decisionPath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/ROOT.existing-golden-render-reuse.decision.json',decisionSha256:'af80e5b4142a8ff17455457d9dea969464e53763dae5e2022020e36289573262',visualWitnesses:[
+   {qid:7,svgPath:'archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg',svgSha256:'c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8',pngPath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-maesan-q7-chrome.png',pngSha256:'890ebd7f52131fe6c85a47e1a16a77b3c822ec25c5b9a409760148ee0058d406',observation:'Three circle/center states, axes and note card fit; center transform labels remain legible and no clipping is visible.'},
+   {qid:2,svgPath:'archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg',svgSha256:'8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30',pngPath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/golden-existing-render-witness/golden-hyocheon-q2-chrome.png',pngSha256:'525b1cd62a8665035d1b4c6adb77a3e00e331c5da5ddb3ad8e7b7be195cf8f40',observation:'Descending blue line and steep ascending red line are visible with readable axes and labels; no clipping.'}
+  ]},
+  {step:4,action:'Only after sample and approved visual review, read the authored q1/q16 current solutions and review correctness, board continuity, MathJax boundaries and choice closure.'}
+ ],
+ goldenReads:[
+  {path:'archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js',sha256:'7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156',items:[
+   {qid:1,solutionSha256:'4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3',finding:'Internal division, midpoint and final distance each have explicit substituted formula steps.'},
+   {qid:2,solutionSha256:'b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba',finding:'Slope equality, point substitution and final sum are separate and traceable.'},
+   {qid:7,solutionSha256:'0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9',finding:'Square completion and center transformations are shown; current SVG matches approved raster witness.'}
+  ]},
+  {path:'archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js',sha256:'3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99',items:[
+   {qid:1,solutionSha256:'027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682',finding:'Signed coordinate differences are substituted into the distance formula and simplified.'},
+   {qid:2,solutionSha256:'84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2',finding:'Each line is converted to slope-intercept form before the perpendicular slope condition is used.'},
+   {qid:5,solutionSha256:'8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109',finding:'Set equality is applied to identify parameters in a traceable order.'}
+  ]}
+ ],
+ negativeReview:{readmePath:'archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md',readmeSha256:'dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23',svgPath:'archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg',svgSha256:'022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92',coordinateObservation:'Line endpoints (70,82.5) and (535,340.8): at x=150, y≈126.9, not A-circle y=135; at x=330, y≈226.9, not B-circle y=285; at x=300, y≈210.3 (the x-axis), not the labeled y-intercept −7/6.',lesson:'Check actual SVG coordinates/topology, separate enumerated solution decisions, inspect runtime TeX, and use exact current Meta mappings.'},
+ candidateReview:[
+  {qid:1,solutionSha256:'b832400dc250d96a4a88a452593b5e289e0dd0688da7a16431eef5a94ec0afdb',finding:'Correct 100x−x=23 gives 99x=23; coprimality and unique choice are stated. Board flow is continuous, math delimiters are balanced, no correction needed.'},
+  {qid:16,solutionSha256:'e8219e7d92ffb8fe69d1a0d9c950c2afb78ec7e771f58597666199204a2bd1f5',finding:'The inequality is transformed in separate steps; division by positive 2 preserves direction; x>-4 maps uniquely to choice ①. Board flow is clear, math delimiters balanced, HTML is outside math, and no visual is required. No correction needed.'}
+ ],
+ correctionDisposition:'NO_SOURCE_CORRECTION_NEEDED',sourceEditsMade:false,studentMetaAssetBytesChanged:false,
+ priorGenericCreatePass:{reportPath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.generic-validation.recovery-09.c38.raw.json',reportSha256:'d2064af12640f422180367f779c99c27f8214c38f186f899d8f8f0b3e75109b7',disposition:'PASS',reexecuted:false},
+ priorCreateCompleteEvent:{path:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/CREATE.complete-event.recovery-09.c38.json',sha256:'0673e51589467ff414f664e00a3811b3b3e8c650f9a4ee76fd386123d6b8a419',preservedSuperseded:true},
+ r1Final:{evidencePath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json',evidenceSha256:'642a42bdd24eda8e001ccf17b55e4faedf091408e1c8c4678e0acda6544bb07e',reportPath:'archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.validator.final.r1_09.revision2.raw.json',reportSha256:'1fc855ad31ac123497297b75a6469bfae5211d98142045d585e912ed615b8044',disposition:'PASS 24/24'},
+ excludedImageMagickPreviews:'CREATE.visual-method-exposure-addendum-03.json; excluded from final visual evidence',noRenderPassClaim:true
+};
+fs.writeFileSync(path,JSON.stringify(record,null,2));console.log(JSON.stringify({path,sha256:crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'),sourceArtifactRawSha256:record.sourceArtifactRawSha256,reviewScope:record.reviewScope,disposition:record.correctionDisposition},null,2));

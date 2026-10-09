@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ROOT_RUNTIME_GUARD_ATTEMPT_ANALYSIS_V1",
+  "currentMainSha": "526966031dfc426adcd54e246f8f65c38f022253",
+  "command": "node tools/check-archive2-runtime.cjs",
+  "parallelAttempt": {
+    "exitCode": 1,
+    "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-02/checks/archive2-runtime.stdout.txt",
+    "stdoutSha256": "2f2bb9bfd4dd4ac100957f1f5b9f7a6831a329c16333a61797a46a25de497190",
+    "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-02/checks/archive2-runtime.stderr.txt",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observedFailure": "compose blocks input for 638.1ms",
+    "executionContext": "Ran in parallel with seven other independent validators."
+  },
+  "serialAttempt": {
+    "exitCode": 0,
+    "stdoutPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-02/checks/archive2-runtime-serial.stdout.txt",
+    "stdoutSha256": "a1b080c346623aa8b6d8836c4d3c841b2091a7f603d07da7bc73a4f9372cbb23",
+    "stderrPath": "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/rebind-after-main-drift-02/checks/archive2-runtime-serial.stderr.txt",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "curriculumAllMs": 359.9,
+    "testSummary": "42 passed, 0 failed"
+  },
+  "codeOrInputChangeBetweenAttempts": false,
+  "finding": "The same runtime guard passes serially and fails only in the parallel run. Evidence is consistent with concurrent executor load; no runtime source change was made.",
+  "disposition": "Preserve parallel failure and serial PASS; use the serial PASS as current gate result."
+}

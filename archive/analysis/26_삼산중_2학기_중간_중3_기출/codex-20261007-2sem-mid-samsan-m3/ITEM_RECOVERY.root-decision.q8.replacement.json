@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_ROOT_ITEM_RECOVERY_DECISION_V1",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "createdAtUtc": "2026-10-08T05:54:39.825Z",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "authorityBasis": "User-authorized full import; JS Archive Codex Execution §25.1 and §25.4 ROOT item-HOLD recovery/release authority, with §20 direct replacement path after clean R1/R2.",
+  "qid": 8,
+  "currentMainHead": "40676fd96dde5eeb104dde534a1f817fade5ab36",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "currentArtifact": {
+    "path": ".tmp\\archive\\codex-20261007-2sem-mid-samsan-m3\\26_삼산중_2학기_중간_중3_기출\\candidate\\26_삼산중_2학기_중간_중3_기출.js",
+    "rawSha256": "a8066dfa880cfe56ae6d654b6d3f4f766877142310da28006e950e49d7ce96cf",
+    "blobSha1": "4b1e67892f682375d9f18c8ad07a694a37ca9386"
+  },
+  "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+  "currentStudentBundle": {
+    "path": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\handoff\\R2.student-only-bundle.current-final.post-q17-label-correction.json",
+    "sha256": "90986187d778f2907f72f11f52904e21ee05940dfd9381627f95d1bb80a8add2"
+  },
+  "r2Evidence": {
+    "path": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.evidence.json",
+    "sha256": "52ed42c47ed646cd9ba403ea58669eb24a1cfa8bca28996f3dc7a692c7e054e4",
+    "blindFreezePath": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.blind-freeze.json",
+    "blindFreezeSha256": "bc2358365962930c558887150b59cf0fc5dab7974c755c90d01c0ef6b4645274",
+    "latestValidatorPath": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.generic-validation.raw.post-q17-label-correction.json",
+    "latestValidatorSha256": "17c0c6f911a0d8e40816ca34bc3378cce3a617a054de6fcfee95c2585cf0a571",
+    "postfreezeAdjudicationPath": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\R2.q8.latest-byte-postfreeze-adjudication.json",
+    "postfreezeAdjudicationSha256": "07d265adaadce15b5ea75cc53d618ac2be5e5e06065c9d8fd411e0fe52fe6faf"
+  },
+  "independentItemRecoveryRevalidation": {
+    "path": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.latest-byte-independent-revalidation.json",
+    "sha256": "9a74cb726ace32a572f455e37fa1a60685cdcadc9e3dac1be517cc65209fd80b",
+    "workerClassification": "SEE_RECEIPT"
+  },
+  "conflictingReviewResolution": {
+    "directRevalidationDisposition": "FALSE_HOLD_NO_REPAIR_NEEDED",
+    "r2Disposition": "HOLD_RETAINED",
+    "rootResolution": "Preserve R2 HOLD because the independent revalidation did not refute the alternate-valid-choice concern recorded after the complete R2 freeze; do not claim the item is cleared. Authorize question-only replacement to guarantee a single defensible student answer.",
+    "selectedRecovery": "QUESTION_REPLACEMENT"
+  },
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "allowedQids": [
+    8
+  ],
+  "itemHoldCountBefore": 1,
+  "itemHoldCountAfterTargetedFreshR1R2": 0,
+  "sourceMutation": "NONE",
+  "candidateMutationAtDecision": "NONE",
+  "nonTargetInvariantRequirement": "All qids other than q8 and all unrelated assets remain byte-identical.",
+  "preflight": {
+    "path": "archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\item-recovery-q8\\q8.solution-calibration-preflight.json",
+    "sha256": "e75407359a55fd57241099cc160fbf3f816ea09bf7b473b9445120f8823f768d",
+    "calibrationStatus": "PASS"
+  },
+  "requiredPostwork": [
+    "solution-first q8 replacement; 5 choices and fresh Meta",
+    "q8-only clean R1 and R2 blind review after student-body change",
+    "full-denominator current V2/CODEX R1/R2 aggregate closure",
+    "zero unresolved item holds before R3"
+  ]
+}

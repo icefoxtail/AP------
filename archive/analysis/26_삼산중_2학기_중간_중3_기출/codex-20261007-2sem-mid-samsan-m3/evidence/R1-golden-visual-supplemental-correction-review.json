@@ -1,0 +1,114 @@
+{
+  "schema": "JS_ARCHIVE_R1_GOLDEN_VISUAL_SUPPLEMENTAL_CORRECTION_REVIEW_V1",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "recordedAtUtc": "2026-10-08T05:45:37.457Z",
+  "status": "SUPPLEMENTAL_POST_TARGET_VISUAL_READ",
+  "trigger": {
+    "previousFailures": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\failed-attempt\\generic-r1-validator-fail-01.json",
+        "sha256": "93b110d80ec0a3d16212cbd9e491acd4ab7785ec4c6ab90c9c6c320e5f2382a9",
+        "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\evidence\\generic-r1-validator-after-q21-source-ref-correction.json",
+        "sha256": "4e8d323617a6c2923da744dccc5371b10e928da1ff07693f35a3ab0da4aa2c13",
+        "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_BINDING_REQUIRED"
+      }
+    ]
+  },
+  "timing": {
+    "preTargetGoldenTextReviewOccurred": true,
+    "completeGoldenVisualBindingBeforeTargetReview": false,
+    "lateMaesanQ7VisualReadNowRecordedWithoutBackdating": true
+  },
+  "scope": {
+    "reviewedItems": [
+      "25_매산여고 q7 solution SVG",
+      "25_효천고 q2 solution SVG"
+    ],
+    "targetExamQidsReopened": [],
+    "contentOrCandidateChanges": []
+  },
+  "samples": [
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sampleJsSha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "qid": 7,
+      "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+      "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "visualLastWriteUtc": "2026-10-07T11:44:00.275Z",
+      "visualBytes": 3700,
+      "circlePrimitives": [
+        {
+          "cx": "160.00",
+          "cy": "164.17",
+          "r": "62.50"
+        },
+        {
+          "cx": "118.33",
+          "cy": "143.33",
+          "r": "62.50"
+        },
+        {
+          "cx": "326.67",
+          "cy": "226.67",
+          "r": "62.50"
+        },
+        {
+          "cx": "160.00",
+          "cy": "164.17",
+          "r": "2.20"
+        },
+        {
+          "cx": "118.33",
+          "cy": "143.33",
+          "r": "2.20"
+        },
+        {
+          "cx": "326.67",
+          "cy": "226.67",
+          "r": "2.20"
+        }
+      ],
+      "linePrimitives": [],
+      "observation": "Equal-unit axes; all three circles use the same screen radius. Labels bind C0=(-3,1), C1=(-5,2), C2=(5,-2), with translation (-2,1) then origin reflection to (5,-2); final equation matches the final center and r=3."
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sampleJsSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "qid": 2,
+      "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+      "visualLastWriteUtc": "2026-10-07T11:44:01.619Z",
+      "visualBytes": 3762,
+      "circlePrimitives": [],
+      "linePrimitives": [
+        {
+          "a": "1",
+          "b": "3",
+          "c": "2",
+          "equation": "1x+3y+2=0",
+          "x1": "-2",
+          "y1": "0",
+          "x2": "3",
+          "y2": "-1.6666666666666667"
+        },
+        {
+          "a": "6",
+          "b": "-2",
+          "c": "-1",
+          "equation": "6x−2y−1=0",
+          "x1": "-0.8333333333333334",
+          "y1": "-3",
+          "x2": "1.5",
+          "y2": "4"
+        }
+      ],
+      "observation": "Two line primitives encode 1x+3y+2=0 and 6x−2y−1=0. Their slopes are −1/3 and 3 (product −1); equal-unit axes and model coordinates match the plotted lines."
+    }
+  ]
+}

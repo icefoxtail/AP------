@@ -1,0 +1,162 @@
+{
+  "schema": "JS_ARCHIVE_CODEX_R1_POSTFREEZE_ADJUDICATION_V1",
+  "runId": "codex-20261007-2sem-mid-samsan-m3",
+  "examUid": "26_삼산중_2학기_중간_중3_기출",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "preDisclosureFreezePath": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_삼산중_2학기_중간_중3_기출\\codex-20261007-2sem-mid-samsan-m3\\evidence\\R1-independent-answer-freeze.json",
+  "preDisclosureFreezeSha256": "AF292F41D2D784925E726036C496682EC731D04E5929D8DC776D660AA6DE3DAC",
+  "postfreezeChecks": [
+    {
+      "qid": 8,
+      "freezeAnswer": "③: BC=√13 sin a°",
+      "finalIndependentAnswer": "④: BC=√13 cos a°",
+      "reason": "The a° label is at vertex B; BC is adjacent to angle B and AB=√13 is the hypotenuse. Initial option-symbol encoding corrected; student text and bound SVG unchanged."
+    },
+    {
+      "qid": 11,
+      "freezeAnswer": "answer text √21 cm was correct; freeze choice field was ③, but √21 cm is choice ④",
+      "finalIndependentAnswer": "④: √21 cm",
+      "reason": "Area formula gives AC=3; cosine rule gives BC²=48+9−36=21. The written answer was correct; the frozen option index ③ was an encoding error and is corrected to ④. Candidate answer/solution already agree on ④."
+    },
+    {
+      "qid": 17,
+      "freezeAnswer": "⑤: 60√3 cm²",
+      "storedBeforeRepair": "②",
+      "finalIndependentAnswer": "⑤: 60√3 cm²",
+      "reason": "Tangency lengths give BC=8; area is 1/2·15·8·sin60°=60√3. Candidate answer symbol and solution conclusion corrected from ② to ⑤."
+    },
+    {
+      "qid": 19,
+      "freezeAnswer": "④: 40√3−16π",
+      "finalIndependentAnswer": "①: 64√3−16π",
+      "reason": "The circle is centered at the midpoint of altitude AH with radius AH/2. Its portion inside the equilateral triangle is a 120° sector; shaded area is 64√3−(120/360)·48π=64√3−16π. Candidate answer and solution match after correcting the independent freeze."
+    },
+    {
+      "qid": 21,
+      "freezeAnswer": "HOLD",
+      "finalIndependentAnswer": "3√2/4 cm",
+      "sourceScan": {
+        "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\삼산중3\\S28BW-826100719540_0015.jpg",
+        "sha256": "9548585497c2fc69292f28e36aa00ffee6a8fcb790e80fcf4dcfc8bfba32fcaf",
+        "observation": "Printed page 5/5 q21 figure shows original dashed A and folded solid vertex D with crease EF; handwriting ignored."
+      },
+      "alternateEvidenceChecked": [
+        "current student-only bundle and bound q21.svg",
+        "the five ordered JPG scans listed in assignment"
+      ],
+      "pdfLookup": {
+        "scope": "ROOT full Downloads filename/extension search",
+        "pdfCount": 0
+      },
+      "reason": "The student figure establishes A→D under the fold. Triangle CDF has CD=1/2 and DF=√3/2. Folding gives AF=DF. With ∠AFD=150°, crease EF bisects it; in △AEF the angles are 60°, 45°, 75°. Drop FG perpendicular to AE: FG=AF sin60°=3/4 and EG=FG, so EF=3√2/4. Original HOLD freeze is preserved; this is explicit same-stage postfreeze adjudication."
+    },
+    {
+      "qid": 22,
+      "freezeAnswer": "840/13 m",
+      "finalIndependentAnswer": "56 m",
+      "reason": "The printed figure places D between A and B; AD=h because ∠CAD=45°. Therefore BD=60−h and tan86°=h/BD=14, giving h=56. Candidate answer and solution match."
+    }
+  ],
+  "repairs": [
+    {
+      "qid": 17,
+      "fields": [
+        "answer",
+        "solution"
+      ],
+      "change": "②→⑤ in answer and solution conclusion",
+      "reason": "Verified solution is 60√3 cm², choice ⑤."
+    },
+    {
+      "qid": 21,
+      "fields": [
+        "solution",
+        "legacyLevelCompatibility"
+      ],
+      "change": "replace sine-rule step with right-triangle trigonometry and Pythagorean calculation; BORDERLINE_REVIEW→BORDERLINE_ACCEPTABLE",
+      "reason": "Use Grade 9 trigonometric ratios only; full multi-step fold structure rechecked."
+    },
+    {
+      "qid": 3,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT→PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH",
+      "reason": "Calculates chord relation then radius/circumference."
+    },
+    {
+      "qid": 14,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "Perpendicular bisector of chord through center."
+    },
+    {
+      "qid": 15,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH",
+      "reason": "Equal chord and center-to-chord distance determine chord and triangle area."
+    },
+    {
+      "qid": 16,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH",
+      "reason": "Equal parallel chords, their distances, and chord lengths."
+    },
+    {
+      "qid": 17,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH",
+      "reason": "Two tangents from external points supply tangent lengths."
+    },
+    {
+      "qid": 20,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH",
+      "reason": "Incircle tangent segments yield the right-triangle side lengths."
+    },
+    {
+      "qid": 24,
+      "fields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "change": "PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "Center-to-chord perpendicular and chord midpoint theorem."
+    },
+    {
+      "qid": 13,
+      "fields": [
+        "legacyLevelCompatibility"
+      ],
+      "change": "BORDERLINE_REVIEW→BORDERLINE_ACCEPTABLE",
+      "reason": "Current-pass review confirms Bucket 3 standard two-triangle area decomposition; prior upper legacy level retained under adjacent mismatch stability lock."
+    },
+    {
+      "qid": 24,
+      "fields": [
+        "problemAsset:q24.svg"
+      ],
+      "change": "remove unattached O label outside the broken-circle diagram",
+      "reason": "The label did not denote a point on the figure. Answer is unaffected; source text, part 2 labeled proof diagram, and relevant circle/chord geometry are unchanged."
+    }
+  ],
+  "createdAt": "2026-10-07T13:07:00.511Z"
+}
