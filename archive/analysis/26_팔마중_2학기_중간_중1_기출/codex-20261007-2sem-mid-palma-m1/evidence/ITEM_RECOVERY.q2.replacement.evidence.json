@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_QID_EVIDENCE_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 2,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "recoveryType": "QUESTION_REPLACEMENT",
+  "method": "CODEX_DIRECT_AUTHORING",
+  "replacementScope": "QUESTION_ONLY",
+  "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+  "sourceMode": "QUESTION_REPLACEMENT",
+  "decisionAuthority": "ROOT_DELEGATED",
+  "rootDecision": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/ITEM_RECOVERY.root-decision.q2.json",
+    "sha256": "6d71708c1a31ff7d7ffdd131779dff01a420f098068eb0cea0664fb01d9a20e0"
+  },
+  "originalSourceRef": {
+    "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중2\\S28BW-826100719540_0001.jpg",
+    "page": 1,
+    "qid": 2,
+    "sha256": "491a1907d8cf148260e046268161b74feb64fcbc2ba3333a1e7d63e133de2548",
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "handwritingTreatment": "ignored_as_non_source"
+  },
+  "studentOnlyRevalidation": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/ITEM_RECOVERY.q2.student-only-latest-byte.json",
+    "sha256": "8838db6fb4128623661064688326b39922342f51945638bd5b8872ce4ae40710"
+  },
+  "priorHold": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/R2.clean.evidence.json",
+    "sha256": "294b451aac097a8a8ef9b8e54359e4c629fe633839ce182d43adfb18db26c121",
+    "originalQ2Verdict": "ITEM_HOLD"
+  },
+  "holdReassessment": {
+    "status": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "fullPageLookupResult": "original page 1 directly read; q2 print confirmed against provided candidate crop",
+    "decisiveMissingFacts": [
+      "No marked equality or explicit distance condition supports the ray/vector interpretation needed to make statement ① true.",
+      "Under the taught ray interpretation, ① has different starting points and ④ has opposite directions, so both are false.",
+      "Under vector equality, the same-origin vectors CA and CB in ⑤ have different lengths, making another false claim."
+    ],
+    "alternateEvidenceChecked": [
+      "full original page scan page 1 SHA verified",
+      "current q02 crop SHA verified and visually read",
+      "printed point order A,B,C,D checked",
+      "handwritten circles/crosses ignored"
+    ],
+    "whyTruthStillNonDeterministic": "The original printed item combines ray-style arrow notation with claims whose truth changes under ray-set versus vector equality; neither reading produces a unique incorrect choice.",
+    "repairAttempted": "Minimal source-faithful repair rejected because changing one statement or adding a condition alters the original prompt meaning. A solution-only correction cannot make the printed choices have one false statement."
+  },
+  "replacement": {
+    "content": "직선 $l$ 위에 네 점 A, B, C, D가 이 순서대로 있고 $\\overline{AB}=\\overline{BC}$일 때, 다음 중 옳지 않은 것을 고르면? (4점)",
+    "choices": [
+      "$\\overrightarrow{AB} = \\overrightarrow{AC}$",
+      "$\\overrightarrow{DC} = \\overrightarrow{DB}$",
+      "$\\overline{AB} = \\overline{BC}$",
+      "$\\overrightarrow{AB} = \\overrightarrow{DC}$",
+      "$\\overrightarrow{CA} = \\overrightarrow{CB}$"
+    ],
+    "answer": "④",
+    "solution": "반직선은 시작점과 향하는 방향이 같으면 같은 반직선이다. 점 A, B, C, D는 직선 위에 이 순서대로 놓여 있다.\n\n① 반직선 AB와 AC는 시작점이 A이고 둘 다 오른쪽을 향하므로 같다.\n\n② 반직선 DC와 DB는 시작점이 D이고 둘 다 왼쪽을 향하므로 같다.\n\n③ 문제에서 선분 AB와 BC의 길이가 같다고 주어졌다.\n\n④ 반직선 AB는 오른쪽을 향하지만 반직선 DC는 왼쪽을 향하므로 서로 다르다.\n\n⑤ 반직선 CA와 CB는 시작점이 C이고 둘 다 왼쪽을 향하므로 같다.\n\n따라서 옳지 않은 것은 ④이다.",
+    "image": null,
+    "visualDisposition": "TEXT_ONLY_NO_VISUAL_NEEDED"
+  },
+  "answerAndChoiceAudit": {
+    "choiceTruths": [
+      "TRUE",
+      "TRUE",
+      "TRUE",
+      "FALSE",
+      "TRUE"
+    ],
+    "correctChoiceCount": 1,
+    "directBlindSolve": "PASS",
+    "result": "④",
+    "distractorReasoning": [
+      "same start A and rightward direction",
+      "same start D and leftward direction",
+      "explicitly given segment equality",
+      "opposite directions from A and D",
+      "same start C and leftward direction"
+    ]
+  },
+  "freshMetaEvidence": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/ITEM_RECOVERY.q2.fresh-meta.evidence.json",
+    "sha256": "fed95e2e4e903820cde202dd91ce5a1b2b13420f5ad954c7ead4f29b564592ef",
+    "status": "FRESH_META_PASS_PENDING_INDEPENDENT_R1"
+  },
+  "studentBundle": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/handoff/ITEM_RECOVERY.q2.student-only-bundle.current-final.json",
+    "sha256": "20baaa4003ed58c63c55394668a4e4991c5ada3b1944034cfe696ea0df3f4e90",
+    "artifactRawSha256": "cc286187d15c6952e823f3d6278a02c04f34488ef206cf1add12e475704d8be5",
+    "artifactBlobSha1": "c9eebe6c47d715f07a8b6282f1e5b4f4d0fc45a3",
+    "qid": 2,
+    "payloadSha256": "95384744c9e69140750f8efb50f73d8824f36b52bdf5a852805c3b6e2927f7f4",
+    "answerFree": true,
+    "assetRefs": []
+  },
+  "failureHistory": {
+    "attempt": "initial targeted replacement serialization",
+    "preFixArtifactRawSha256": "00b486821ec7489c41267c0f812128afec1118eb10566567bcd90c8d7704d238",
+    "observedIssue": "JS syntax error at q2/q3 object boundary: replacement block omitted comma/newline",
+    "rootCause": "q2 slice end included the following object opener while deleting the comma separator",
+    "repairLocus": "inserted only the required comma and newline between the q2 closing brace and q3 opening brace",
+    "postRepairParse": "PASS"
+  },
+  "changeLocus": {
+    "qid": 2,
+    "changedQids": [
+      2
+    ],
+    "nonTargetQuestionObjectsChanged": 0,
+    "nonTargetQidsUnchanged": true,
+    "targetAssetBytesChanged": false
+  },
+  "requiredNext": "fresh q2-only R1 and R2 on the current-final q2 student bundle",
+  "calibrationPreflight": {
+    "path": "archive/analysis/26_팔마중_2학기_중간_중1_기출/codex-20261007-2sem-mid-palma-m1/evidence/ITEM_RECOVERY.q2.calibration.preflight.json",
+    "sha256": "8e5cd6df69ee58e8b77d0b1a28283724a4c5b2f4063dd0826bf39775a17db4b4",
+    "observedResult": "PASS",
+    "gateCommand": "node archive/tools/solution-calibration-gate.mjs --exam <assigned candidate> --evidence <q2 calibration evidence> --stage ITEM_RECOVERY --preflight --json"
+  },
+  "artifact": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\.tmp\\archive\\codex-20261007-2sem-mid-palma-m1\\26_팔마중_2학기_중간_중1_기출\\candidate\\26_팔마중_2학기_중간_중1_기출.js",
+    "rawSha256": "cc286187d15c6952e823f3d6278a02c04f34488ef206cf1add12e475704d8be5",
+    "gitBlobSha1": "c9eebe6c47d715f07a8b6282f1e5b4f4d0fc45a3"
+  },
+  "nonTargetIntegrity": {
+    "studentBodies": "23/23 MATCH original current R2 bundle",
+    "referencedAssetBytes": "all unchanged",
+    "targetQ2AssetBytes": "unchanged but no longer referenced",
+    "nonTargetQuestionObjectsChanged": 0
+  }
+}

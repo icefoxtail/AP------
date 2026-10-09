@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 2,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "targetScope": "q2 second question-only replacement; same exam/stage calibration references reused",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "P=(1,6)",
+        "observation": "내분점 좌표를 각 좌표식과 약분까지 보인 뒤 중점, 두 점 거리 계산으로 연결해 학생이 순서를 재현할 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "m+n=-3+1=-2",
+        "observation": "평행에서 기울기를 같게 놓고 점 대입으로 절편을 결정한 뒤 물은 합으로 마무리한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "=5\\sqrt2",
+        "observation": "좌표 차를 각각 계산하고 거리식 대입과 근호 정리 단계를 순서대로 드러낸다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "-\\dfrac{k}{6}=-1",
+        "observation": "두 직선식을 기울기형으로 바꾸고 수직 기울기 곱 조건으로 k를 도출한다. 해당 q02 solution SVG도 확인했으며 좌표 line primitive의 계수/기울기와 기재한 k=6을 대조했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "복성고 false-PASS 사례에서 SVG label 대신 실제 좌표 primitive, solution의 독립 판단 block, runtime의 평가된 문자열을 확인해야 함을 직접 읽었다."
+      }
+    ],
+    "visualSampleRefs": [
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "gitBlobSha": "43028e415d716ebac63e6a5dd5981bd9340f12c1",
+        "observation": "Hyochen q02의 두 line primitive가 각각 1x+3y+2=0, 6x−2y−1=0을 나타내고 panel의 수직 조건 및 k=6 수치와 맞는지 확인했다."
+      }
+    ],
+    "readBeforeTargetAuthoring": true
+  }
+}

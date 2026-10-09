@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_SOURCE_DECISION_SNAPSHOT_V1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "qid": 2,
+  "stage": "ITEM_RECOVERY",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "decisionAuthority": "ORIGINAL_PRINTED_SOURCE_AND_STANDARD_M1_NOTATION",
+  "studentOnlyRevalidation": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\evidence\\ITEM_RECOVERY.q2.second-replacement.student-only-latest-byte.json",
+    "sha256": "3741e3b15f5154ef8435ca9758bdd455118d25f29c347731954431169371aa33"
+  },
+  "source": {
+    "path": "C:\\Users\\USER\\Downloads\\2학기중간_2026\\팔마중2\\S28BW-826100719540_0001.jpg",
+    "page": 1,
+    "sha256": "491a1907d8cf148260e046268161b74feb64fcbc2ba3333a1e7d63e133de2548",
+    "sourceRosterSha256": "20cd9e34f408c4840946d34be1f0fca7d9914bc06da21ab004aba008fecc07c6",
+    "handwritingTreatment": "ignored as non-source"
+  },
+  "printedProblemFacts": {
+    "pointOrder": "A-B-C-D on line l",
+    "singleIncorrectStatementPrompt": true,
+    "choices": [
+      "ray AC equals ray BD",
+      "segment AC equals CA",
+      "segment BC equals CB",
+      "ray BC equals ray BA",
+      "ray CA equals ray CB"
+    ],
+    "distanceMarkersOrEqualSpacingTicks": "none visible"
+  },
+  "interpretationChecks": {
+    "KOREAN_M1_RAY_NOTATION": {
+      "choice1": "FALSE: rays AC and BD have different starting points A and B",
+      "choice4": "FALSE: rays BC and BA share B but point in opposite directions",
+      "result": "at least two false statements"
+    },
+    "DIRECTED_VECTOR_READING": {
+      "choice1": "UNDETERMINED_BY_PRINT: AC and BD lengths are not tied by any printed equality mark",
+      "choice4": "FALSE: opposite directions",
+      "choice5": "not guaranteed equal; CA and CB have different vector lengths absent a printed BC=0 condition",
+      "result": "not one deterministically false statement"
+    }
+  },
+  "sourceHold": {
+    "classification": "TRUE_HOLD_SOURCE_TRUTH_BLOCKED",
+    "reason": "The full printed source is clear but does not make the single-incorrect-choice item unique under the taught ray reading, and the competing vector reading has no printed length condition. No source-grounded single-value correction exists.",
+    "minimalSourceRepair": "IMPOSSIBLE_WITHOUT_INVENTING_A_PRINTED_CONDITION_OR_ALTERING_A_CHOICE"
+  },
+  "firstReplacementCrossReview": {
+    "priorR1": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\R1.fresh.q2-q10-q13.evidence.after-q2-image-null-normalization.json",
+      "sha256": "0040d92b421060540dc48c2035bd591444a56eec32e605e088809053ff457651",
+      "disposition": "POSTFREEZE_RAY_NOTATION_ADJUDICATION_PASS"
+    },
+    "priorR2": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-exam-import-2026-2mid\\AP------\\archive\\analysis\\26_팔마중_2학기_중간_중1_기출\\codex-20261007-2sem-mid-palma-m1\\R2.fresh.q2-q10-q13.evidence.json",
+      "sha256": "7a38eb2eeb2f85f90c97bcb1a7fd1c3527f1d60ca52a68096e80a3c0793296e3",
+      "disposition": "ITEM_HOLD_MULTIPLE_FALSE_OPTIONS"
+    },
+    "currentConclusion": "The first replacement retained arrow notation, leaving cross-review ambiguity between rays and vectors; second version will state rays and their origin/direction explicitly."
+  },
+  "handwritingIgnored": true
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "JS_ARCHIVE_GOLDEN_NEGATIVE_PREFLIGHT_V1",
+  "runId": "codex-20261007-2sem-mid-palma-m1",
+  "examUid": "26_팔마중_2학기_중간_중1_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "performedBeforeSolutionWriting": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf","items":[{"qid":1,"observation":"Small-board solution explicitly derives the internal division point P, midpoint M, substitutes coordinates, simplifies distance radical, and states the matching choice."},{"qid":2,"observation":"Small-board solution identifies slope equality, substitutes the point condition, solves n, and evaluates m+n with the answer choice."}]},
+    {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","items":[{"qid":1,"observation":"Uses coordinate differences and the distance formula in separate traceable arithmetic steps, then matches choice ③."},{"qid":2,"observation":"Rearranges both line equations to slope form, applies perpendicular-slope product, solves k, then matches choice ①.","visualSha256":"cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4","visualPath":"archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg","visualObservation":"Read the actual SVG coordinate primitives for both lines; first is x+3y+2=0 and second is 6x−2y−1=0, consistent with the displayed slope annotations and k=6."}]},
+    {"path":"archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js","sha256":"17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b","items":[{"qid":1,"observation":"Student-facing solution distinguishes element membership from subset relation and tests each listed choice independently."},{"qid":2,"observation":"Student-facing solution applies the vertical-line criterion to each graph and distinguishes included/excluded boundary points."}]}
+  ],
+  "negativeSample": {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8","observation":"Regression check covered actual SVG coordinates rather than labels, independent blocks for enumerated choices, canonical tag lookup/null evidence, and sandbox runtime escape parity. The fixture is negative and was not treated as a positive example."},
+  "calibrationDisposition":"APPLY_STUDENT_FACING_BOARD_FLOW_AND_VISUAL_FLOOR_ONLY; curriculum, Meta, and difficulty remain bound to their current canonical authorities."
+}
