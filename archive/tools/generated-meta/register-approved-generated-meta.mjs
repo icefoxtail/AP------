@@ -160,6 +160,7 @@ function atomicReplace(files, beforeReplace) {
  */
 export function registerApprovedGeneratedMeta({ root, uid, meta, reviewEvidence, approval, paths, expectedSha256, newRegistration }, options = {}) {
   if (typeof uid !== 'string' || !uid.trim()) throw new Error('UID_REQUIRED');
+  if (newRegistration && !/^ALITE-[A-Za-z0-9-]+$/.test(uid)) throw new Error('NEW_UID_RUNTIME_UID_INVALID');
   if (!approval || !['REVIEW_PASS', 'REVIEW_APPROVED', 'USER_DIRECTED_OPERATING_APPROVED'].includes(approval.status)) throw new Error('APPROVAL_STATUS_REQUIRED');
   assertMetaValid(meta);
   if (approval.status !== reviewEvidence?.reviewStatus) throw new Error('APPROVAL_STATUS_REVIEW_EVIDENCE_MISMATCH');
