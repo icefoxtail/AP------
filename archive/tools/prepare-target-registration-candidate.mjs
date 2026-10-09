@@ -104,6 +104,8 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
     ? new Set(['수학II', '수학Ⅱ'])
     : courseCode === 'geometry'
       ? new Set(['기하', '기하와벡터', '기하와 벡터'])
+      : rosterGrade === 'h2' && courseCode === 'H15-PS'
+        ? new Set(['확률과통계'])
       : rosterGrade === 'h1' && courseCode === '수학(상)'
         ? new Set(['수학(상)'])
         : new Set();
