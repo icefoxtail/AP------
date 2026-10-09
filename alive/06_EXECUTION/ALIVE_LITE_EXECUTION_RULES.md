@@ -1,5 +1,10 @@
 # ALIVE LITE 실행 계약 — 다른 채팅·Codex용
 
+## CURRENT HARD — 생성 문항 전용 Gemini 0~5 + 역발문 검증 + 답 위치 분산
+- 신규 문항 1 qid × 9슬롯은 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md`의 2026-10-09 Gemini 역설계 5단계 계약을 **첫 진입 기준**으로 읽고, 발문 품질을 먼저 판정한다. 기존 기출 보존·추출 검수의 원문 동일성 검사와 구분한다.
+- 객관식 9슬롯은 보기 정답 위치 ①~⑤ 각각 1~2개를 목표로 한다. 한 위치(특히 ③)가 3개 이상이면 오개념 보기/배열을 점검해 수학적으로 동치인 재배열로 분산한다. 임의 정답 변조 금지. 기출 기존 정답 위치를 수정하는 요구가 아니다.
+- 제작자 1차 자체검산은 독립검수가 아니다. 다음 별도 GPT 리뷰에서 학생 입력만 독립 풀이하고 역발문 재구성 후 공개 답 비교한다.
+
 ## CURRENT USER OVERRIDE — 2026-10-09 L3·발문·자동출시
 - 새 QID9의 최우선 실행은 `ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md` 상단 CURRENT USER AUTHORITY 절이다. **L3 잠금 → 기존 L4/Generated EXT 탐색 → CrossConcept/Condition/Integration 조합 → 9문항 기획** 후 학생용 발문부터 실제 내신 품질을 확인한다.
 - GPT 독립검수 1회 PASS 후 해당 UID는 별도 EXT L4 승인·active binding 요청·중복 분류 정리 없이 Archive 2.0 Generated Consumer에 즉시 등록하고 main에 병합한다. Generated EXT L4는 별도 GENERATED_ACTIVE namespace로 기록해 RPM LOCKED를 건드리지 않는다.
