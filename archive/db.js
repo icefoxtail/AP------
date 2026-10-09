@@ -1612,6 +1612,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/high/h2/2final/25_강남여고_2학기_기말_고2_수학II.js",
       "school": "강남여고",
       "topic": "",
@@ -17831,37 +17862,6 @@ window.mainDB = {
           "rangeEndUnitKey": "M1-03",
           "rangeEndUnit": "문자와 식",
           "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "중1 수학"
-    },
-    {
-      "file": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
-      "school": "팔마중",
-      "topic": "",
-      "grade": "중1",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "중1 수학",
-      "contentType": "기출",
-      "qCount": 24,
-      "rangeStartUnitKey": "M1-05",
-      "rangeStartUnit": "기본도형",
-      "rangeStartUnitOrder": 5,
-      "rangeEndUnitKey": "M1-07",
-      "rangeEndUnit": "입체도형의 성질",
-      "rangeEndUnitOrder": 7,
-      "courseRanges": [
-        {
-          "standardCourse": "중1 수학",
-          "courseCode": "M1",
-          "rangeStartUnitKey": "M1-05",
-          "rangeStartUnit": "기본도형",
-          "rangeStartUnitOrder": 5,
-          "rangeEndUnitKey": "M1-07",
-          "rangeEndUnit": "입체도형의 성질",
-          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "중1 수학"
