@@ -1,3 +1,14 @@
+# CURRENT 2026-10-10 — Q09-Q12 local release complete, main PR pending; Q13-Q16 already MAIN_DONE
+
+- Approved user scope: Q09-Q16 A1-C3 = 72 UIDs. Q13-Q16 (36) were already released to main; this PR publishes Q09-Q12 (36) once.
+- Q09-Q12: review 36/36 (KEEP24 / Meta revised9 / STEM revised0 / HOLD0); UID/package SHA-bound approval; Source JS + metadata + Consumer/index 36/36 registered; Chrome student lookup/print PASS. Local receipt: `GPT_QID9_Q09_Q12_LOCAL_RELEASE_20261010.json`. Status stays pending until PR #359 merge and remote readback.
+- Target release checks: generated Meta registration/retention PASS (index 454, failures0); Archive2 Runtime Guard 42/42; generated-bank tests 22/22; focused consumer regressions 13/13; actual Chrome Palma lookup144/HOLD excluded.
+- Full repository CI remains red on baseline failures also reproduced on current-main baseline: inline bracket-label inventory, compose scope (삼각비), derivative/integral fixture counts, M2 O11 Golden SHA. Those files are not changed by QID9 release; see PR body for details.
+- Branch now contains q17-q20 creator drafts only; none have review/Consumer registration. They are not included in the 72-UID release approval. Next source qid: 21.
+- Current main baseline: `1ba22c805c9fc4b144b5670d414964ee73d3521d`. Branch: `work/alive-25-palma-h1-2mid-qid9`.
+
+---
+
 ## CURRENT — 팔마고 q19 신규 9문항 (2026-10-10)
 - 원본 q19: 큰 원·반원호·직선의 교점 개수, RPM H1-RPM-219 (원과 직선/교점 개수) DIRECT_ACTIVE. 기존 검수·배포 대상 q01~q18 보호.
 - 같은 브랜치 A1~C3 9문항: `GPT_QID9_Q19_PACKAGE.json`, `GPT_QID9_Q19_STEM_SELF_REVIEW.md`; 각각 발문·보기5·정답·상세 해설·오답 계산근거와 Meta 포함.
