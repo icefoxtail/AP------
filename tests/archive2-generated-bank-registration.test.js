@@ -279,6 +279,7 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   await palmaOpen.listeners.click();
   assert.ok(!textOf(el('generated-preview')).includes('정답'));
   assert.ok(!textOf(el('generated-preview')).includes('해설'));
+  // B07 BP03 is now reviewed and released; its exact UID must be searchable.
   search.value='ALITE-PALMA25-H1-2MID-B07-Q13-BP03';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,0);
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
 });
