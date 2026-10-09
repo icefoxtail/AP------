@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "ALIVE_GPT_QID9_GEMINI_BLUEPRINT_V1",
+  "authority": "ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceGitBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceQid": 3,
+  "standardCourse": "공통수학2",
+  "standardUnitKey": "H22-C2-03",
+  "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+  "lockedPrimaryL3": "원의 방정식",
+  "lockedRpmRecordIds": [
+    "H1-RPM-217",
+    "H1-RPM-218"
+  ],
+  "sourceStem": "다음 중 중심이 (2,-1)이고 반지름이 2인 원의 방정식으로 옳은 것을 고르시오.",
+  "sourceAnswer": "④",
+  "firstPriority": "natural Korean school-exam stem after exact reverse engineered mathematical spec",
+  "invariants": [
+    "중심과 반지름으로 원의 방정식을 실제 결정하는 것이 최종 핵심",
+    "원의 방정식 H1-RPM-217/218 아래에서 부개념 L3 전이 방지",
+    "문항 발문은 해설·답을 누설하지 않음"
+  ],
+  "preExistingL4": [
+    {
+      "rpm": "H1-RPM-217",
+      "l4": "중심과 반지름",
+      "template": "TM_CIRCLE_CENTER_RADIUS"
+    },
+    {
+      "rpm": "H1-RPM-218",
+      "l4": "일반형에서 원 찾기",
+      "template": "TM_CIRCLE_EXISTENCE_CONDITION"
+    }
+  ],
+  "generatedExt": [
+    {
+      "id": "EXT-H1-C2-03-Q03-CENTER-LOCUS",
+      "labelKo": "중심의 자취·현 조건으로 원의 방정식 복원",
+      "parent": "원의 방정식",
+      "comparison": "H1-RPM-217은 중심과 반지름을 직접 제공하는 반면 이 L4는 중심 조건/복수 현 정보에서 중심을 먼저 복원",
+      "exampleSlots": [
+        "B1",
+        "C3"
+      ],
+      "status": "GENERATED_ACTIVE_SEMANTIC_ONLY",
+      "canonicalRPMChanged": false
+    },
+    {
+      "id": "EXT-H1-C2-03-Q03-TANGENCY-RECOVERY",
+      "labelKo": "접선 조건에서 중심·반지름 역산",
+      "parent": "원의 방정식",
+      "comparison": "H1-RPM-217 기본형과 달리 축에 접한다는 거리 제약으로 반지름과 중심을 연립 복원",
+      "exampleSlots": [
+        "B2",
+        "C2"
+      ],
+      "status": "GENERATED_ACTIVE_SEMANTIC_ONLY",
+      "canonicalRPMChanged": false
+    }
+  ],
+  "modeBoundary": "Educational A/B/C slots are not runtime VERIFIED_A/B/C; reviewer must assess final exact MODE/Meta",
+  "slots": [
+    {
+      "slot": "A1",
+      "uid": "ALITE-PALMA25-2MID-Q03-A1",
+      "purpose": "A 반복 숙달",
+      "l4": "H1-RPM-217",
+      "mode": "STRICT_VARIANT",
+      "experience": "원 중심·반지름 직접 적용",
+      "studentMentalPath": "중심 (-3,2), r=4 → 표준형에 대입",
+      "additionalDecision": "기본 좌표 부호·r²",
+      "levelCandidate": "하",
+      "difficultyBucketCandidate": 1,
+      "crossConcepts": [],
+      "conditions": [
+        "중심·반지름 직접 제시"
+      ],
+      "integration": "NONE",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "A2",
+      "uid": "ALITE-PALMA25-2MID-Q03-A2",
+      "purpose": "A 반복 숙달",
+      "l4": "H1-RPM-218",
+      "mode": "EXAM_FOLLOWUP",
+      "experience": "일반형에서 중심과 반지름 복원",
+      "studentMentalPath": "x²+y²−6x+4y−12=0 → 완전제곱 → 중심(3,-2),r=5",
+      "additionalDecision": "표준형↔일반형 표현 변환",
+      "levelCandidate": "하",
+      "difficultyBucketCandidate": 2,
+      "crossConcepts": [
+        "완전제곱식(중학 선수개념)"
+      ],
+      "conditions": [
+        "완전제곱을 통한 중심 판정"
+      ],
+      "integration": "SEQUENTIAL",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "A3",
+      "uid": "ALITE-PALMA25-2MID-Q03-A3",
+      "purpose": "A 반복 숙달",
+      "l4": "H1-RPM-217",
+      "mode": "EXAM_FOLLOWUP",
+      "experience": "지름 양끝에서 원의 방정식",
+      "studentMentalPath": "양끝점→중점(-1,3)→r²=13→표준형",
+      "additionalDecision": "지름·중점·거리의 정보 변환",
+      "levelCandidate": "중",
+      "difficultyBucketCandidate": 2,
+      "crossConcepts": [
+        "중점 공식",
+        "두 점 사이 거리"
+      ],
+      "conditions": [
+        "AB가 지름"
+      ],
+      "integration": "SEQUENTIAL",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "B1",
+      "uid": "ALITE-PALMA25-2MID-Q03-B1",
+      "purpose": "B 사고 확장",
+      "l4": "EXT-H1-C2-03-Q03-CENTER-LOCUS",
+      "mode": "TYPE_BANK",
+      "experience": "두 점과 중심의 직선 조건으로 복원",
+      "studentMentalPath": "A(0,1),B(4,1)→중심 x=2→y=x→(2,2)→r²=5",
+      "additionalDecision": "두 점 같은 거리 + 중심 자취 조건",
+      "levelCandidate": "중",
+      "difficultyBucketCandidate": 3,
+      "crossConcepts": [
+        "수직이등분선",
+        "직선 y=x"
+      ],
+      "conditions": [
+        "중심은 y=x 위"
+      ],
+      "integration": "SEQUENTIAL",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "B2",
+      "uid": "ALITE-PALMA25-2MID-Q03-B2",
+      "purpose": "B 사고 확장",
+      "l4": "EXT-H1-C2-03-Q03-TANGENCY-RECOVERY",
+      "mode": "TYPE_BANK",
+      "experience": "축 접선·중심 위치·지나는 점 역산",
+      "studentMentalPath": "중심 x=3→r=3→점(3,0) 조건→y=±3→제4사분면→−3",
+      "additionalDecision": "축 접함·경계/사분면 결정",
+      "levelCandidate": "중",
+      "difficultyBucketCandidate": 3,
+      "crossConcepts": [
+        "중심-좌표축 거리",
+        "사분면 부호"
+      ],
+      "conditions": [
+        "중심 x=3, y축 접함, 4사분면"
+      ],
+      "integration": "BRANCH",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "B3",
+      "uid": "ALITE-PALMA25-2MID-Q03-B3",
+      "purpose": "B 사고 확장",
+      "l4": "H1-RPM-218",
+      "mode": "TYPE_BANK",
+      "experience": "중심과 한 점에서 일반형 계수 복원",
+      "studentMentalPath": "(2,-1), P(5,3)→r²=25→계수 −4,2,−20",
+      "additionalDecision": "좌표 조건에서 일반형 계수 역산",
+      "levelCandidate": "중",
+      "difficultyBucketCandidate": 3,
+      "crossConcepts": [
+        "두 점 사이 거리",
+        "완전제곱 역전개"
+      ],
+      "conditions": [
+        "일반형 c를 질문"
+      ],
+      "integration": "SEQUENTIAL",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "C1",
+      "uid": "ALITE-PALMA25-2MID-Q03-C1",
+      "purpose": "C 실전 평가",
+      "l4": "H1-RPM-217",
+      "mode": "TYPE_BANK",
+      "experience": "일반형 원의 이동·대칭 합성",
+      "studentMentalPath": "일반형→중심(1,-2),r=3→평행(3,-3)→y=x 대칭(-3,3)→원식",
+      "additionalDecision": "표현 변환·비가환 이동 경로 결합",
+      "levelCandidate": "상",
+      "difficultyBucketCandidate": 4,
+      "crossConcepts": [
+        "도형의 평행이동",
+        "직선 y=x 대칭이동"
+      ],
+      "conditions": [
+        "순서고정 S/T"
+      ],
+      "integration": "COMPOSITE",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "C2",
+      "uid": "ALITE-PALMA25-2MID-Q03-C2",
+      "purpose": "C 실전 평가",
+      "l4": "EXT-H1-C2-03-Q03-TANGENCY-RECOVERY",
+      "mode": "TYPE_BANK",
+      "experience": "두 좌표축 접함·지나는 점·복수 반지름",
+      "studentMentalPath": "중심(r,r),r>0→(2,1)대입→(r−1)(r−5)=0→큰 원 선택",
+      "additionalDecision": "이차방정식·축 접함·해의 분기",
+      "levelCandidate": "상",
+      "difficultyBucketCandidate": 4,
+      "crossConcepts": [
+        "원과 좌표축 접함",
+        "이차방정식 인수분해"
+      ],
+      "conditions": [
+        "제1사분면, 큰 반지름 선택"
+      ],
+      "integration": "BRANCH",
+      "questionStemPrepared": false
+    },
+    {
+      "slot": "C3",
+      "uid": "ALITE-PALMA25-2MID-Q03-C3",
+      "purpose": "C 실전 평가",
+      "l4": "EXT-H1-C2-03-Q03-CENTER-LOCUS",
+      "mode": "TYPE_BANK",
+      "experience": "두 점·다른 축의 현 길이·사분면으로 원 복원",
+      "studentMentalPath": "A(0,0),B(4,0)→중심 x=2→y축 교점 (0,±6)→중심 y=±3→제1사분면→r²=13",
+      "additionalDecision": "복수 현·중심의 위치조건·경계 부호 종합",
+      "levelCandidate": "상",
+      "difficultyBucketCandidate": 4,
+      "crossConcepts": [
+        "원의 두 현 수직이등분선",
+        "제1사분면 판단"
+      ],
+      "conditions": [
+        "y축과 만나는 두 점 사이 거리6"
+      ],
+      "integration": "COMPOSITE",
+      "questionStemPrepared": false
+    }
+  ],
+  "registeredStudentUids": 0,
+  "independentReview": "NOT_RUN",
+  "originalFileMutation": false
+}

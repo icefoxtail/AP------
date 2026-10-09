@@ -1,5 +1,11 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT HARD — 생성 Meta 설계→저장 영구보존 계약 (2026-10-09 문제은행 프로젝트)
+- **문항 생성 시 실제 사용한 L1/L2/L3/L4, CrossConcept, Condition, IntegrationPattern 및 1~5단계 난이도는 작업용 사고 메모만 남겨서는 안 된다.** 최종 생성 source shard/metadata에 UID별 확정값으로 저장하고, GPT REVIEW 통과 후 학생용 Generated Consumer shard 및 인덱스에도 동일 UID로 검색·조회 가능한 형태로 투영한다. 보존 여부는 출시 직전 UID별 확인 대상이다.
+- 필수: 정확한 RPM/Generated 확장 Primary L3와 L4, 교육과정·L1/L2 parent, difficultyBucket=1~5, crossConceptKeys[]/conditionKeys[]/integrationPattern. 개념·조건이 실제 미적용이면 [] 또는 NONE을 명시하여 **미기재와 구별**한다. problemTypeKey/templateKey는 ACTIVE 매핑을 사용하거나 실제 매핑 상태를 근거와 함께 보류한다. 가짜 canonical 키·L3/L4 임의 추정 금지.
+- Generated Consumer 기존 `l2`는 storage bucket·subUnitKey 계열이며 RPM L2의 정식 의미 필드가 아니다. 신규 상세 Meta에서는 RPM L2를 **별도의 필드**로 보존하고 원본 교육과정 standardUnitKey/subUnitKey 및 generated EXT-L4와 혼동하지 않는다.
+- 출판 전 `설계/검수 Meta → source JS/metadata → Consumer question → 학생용 검색 index` 데이터의 UID 단위 parity 확인이 필수다. **본문·정답·해설만 등록되었거나 RPM label만 표시되고 상세 Meta가 분실되면 `META_PERSISTENCE_HOLD`**이며, 해당 UID는 기술 출시 완료로 기록하지 않는다. 다른 정상 UID/생성 레인의 진행은 유지한다.
+- 기존 학생용 323 UID(2026-10-09)의 Meta 보존 누락은 [실측 감사 원장](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/Problem_Bank_Generated_Meta_Retention_Audit_20261009.md)에 격리한다. **이 지시만으로 기존 문항의 PASS를 철회하거나 323개를 일괄 재제작하지 않는다.** 검증된 현재 상태를 정확히 기록하고, 조회 가능한 원본/설계 증거가 있는 범위만 나중에 UID별 백필한다.
 ## CURRENT HARD — 제작 GPT 역발문 자가수정 HARD (2026-10-09 원장 직접 지시)
 - **적용 범위:** 신규 ALIVE/QID9 A1~C3 생성 후보를 쓰는 GPT 제작자. 기출 원본 전사·조판 및 기존 R1/R2 blind 검수의 의미/입력은 변경하지 않는다. 제작 GPT는 최종 후보를 저장·qid별 commit하기 **전에 각 후보의 학생용 발문을 자신의 출제 의도에서 분리해 비판적으로 다시 읽고, 발견한 결함은 해당 제작자가 즉시 수정하여 최종본에 반영**해야 한다. 검수 단계의 다른 GPT에게 단순히 결함을 떠넘기지 않는다.
 - **읽는 순서:** 완성된 **학생에게 실제 보이는 문장·보기·그림/표/수식**만 먼저 놓고 제작 당시 목표 정답·풀이·Blueprint의 자동 보충을 중지한다. 수학 풀이 전체의 별도 blind-first 재수행을 뜻하지 않는다. (1) 학생은 질문 대상·정의역·변수·부호·등호·그림 조건과 답형을 오해 없이 읽을 수 있는가? (2) 학교 수학 교사가 실제 시험에서 이렇게 묻는가? 단지 예쁜 답을 위해 임의 배수·이질량 합·부자연스러운 조건을 만들지 않았는가? (3) 발문만으로 **의도한 Primary L3의 결정적 사고**가 필요한가? 핵심 조건이 소거되거나 더 쉬운 우회 풀이로 평가 목표가 무력화되는가? (4) 보기 네 오답을 각 실재 오류 과정으로 만들 수 있는가? 정답 유일성·경계·시각 참조·해설과 학생 입력이 일치하는가?
@@ -10,6 +16,18 @@
 - **다음 제작 GPT에 전달할 필수 실행문:** "발문·보기·정답·해설 1차 완성 후 자신의 설계 의도를 잠시 접고 학생·학교 출제자·우회풀이 관점에서 최종 발문을 역독해하라. 이상이 있으면 그 자리에서 발문/조건/목표량을 수정하고 영향을 받은 보기·정답·해설·Meta만 재확인하라. UID별 KEEP/REVISED/HOLD, 수정 전후와 해결 여부를 별도 self-review ledger에 남기고 최종 후보와 함께 같은 브랜치에 저장하라. 자체검수만으로 독립 PASS 또는 학생 출시를 주장하지 말라."
 - **대표 네거티브:** 팔마고 q04 C3처럼 `k+4t`가 예쁜 정수를 만드는지와 별도로 학교 시험 질문으로 자연스러운지 평가하고, "k+t를 잘못 결합"과 오답 ⑤의 값처럼 실제 오답 값이 오류 경로에서 재현되는지도 확인한다. 이 예시는 **의심 locus**이지 검증 없이 자동 FAIL·답 변경을 명령하는 것은 아니다. 원문 출제 의도와 근거를 확인한 후 최소 수정한다.
 - 이 CURRENT는 아래 이전 문구 중 모든 생성문항에 별도 blind-first/freeze를 요구하는 표현보다 우선한다. **제작자 역발문 self-check는 새 독립 리뷰 단계가 아니라 CREATE 안의 필수 수정 루프**이다.
+
+
+### CURRENT HARD 보강 — 팔마고 q04 회귀 방지: 오답 재현·변경증거 무효화·출제 목표 역검사 (2026-10-09)
+- **원인:** 계산값/해설 결론의 일치, 5지 개수·문자열 중복 없음, 정답번호 분포, 제한된 수치 샘플링은 각각 *그 검사만* 통과시킨다. 이 결과만으로 발문 교육성·L3 유지·오답의 유효한 유도 경로·변경 후 증거 정합성을 'AUTHOR_SELF_CHECKED'라고 포괄 선언하지 않는다. 정답이 맞는 문제와 출제할 가치가 있는 문제는 별개다.
+- **① 문제 자체 역검사:** 각 UID의 학생에게 보이는 최종 입력만 읽고 '주어진 것 → 묻는 것 → 결정적 사고 → 실제 풀이/더 쉬운 우회'를 복원한다. 원본 Primary L3의 결정적 판단이 *실제 풀이에서 필요한지* 확인한다. C 슬롯의 '사고 확장'을 빌미로 거리합 최솟값을 두 거리의 최댓값 최소화로 바꾸는 등 평가 대상 자체를 교체하면 L3 유지로 자동 통과시키지 않는다. 보기값을 정수로 만들려고 임의의 'k+4t' 같은 결합값을 물으면 교육적 질문 이유를 설명할 수 있어야 하며, 아니라면 목표량을 자연스러운 값/위치/조건으로 재설계한다.
+- **② 오답 4개 계산 경로 역재현:** 객관식은 정답을 제외한 선택지 **4개 번호를 각각 정확히 한 번** 대응시켜 '실제 잘못된 전제/연산 → 중간식(필요 시) → 계산된 값 또는 판단 → 해당 보기의 최종 값'을 직접 확인한다. 문자열 5개가 서로 다르다는 검사만으로는 불충분하다. 설명이 그럴듯해도 최종 보기값을 만들지 못하면 'DISTRACTOR_PATH_INVALID', 번호 중복/누락이면 'DISTRACTOR_INDEX_COVERAGE_INVALID', 동치인 복수 정답은 'ANSWER_UNIQUENESS_INVALID'. 재현 불가인 선택지/오답 근거는 제작자가 다시 설계하고 정답에 맞춰 억지 설명을 만들지 않는다.
+- **③ 변경 후 evidence freshness HARD:** 발문·목표량·조건·보기·정답·해설·L3/L4/CrossConcept·난도·자산 중 하나라도 의미상 변경되면 그 UID의 **영향받는 증거를 먼저 STALE로 무효화**한다. 특히 기존 numericalSpotCheck·예상 정답/경계·오답 4개 경로·답 인덱스/분포·평가목표 판정·Meta 분류를 이전 artifact의 PASS인 것처럼 최종본에 남기지 않는다. 바뀐 문제와 무관한 계산은 이력으로 분리하거나 제거하고, 최종 학생 입력 기준으로 **변경 영향 범위만** 재계산·재확인한다. 수치 샘플링은 exact math나 교육성 PASS의 대체 증거가 아니다.
+- **④ 최종 후보와 ledger 결속:** 비프로덕션 qid별 ledger에는 UID마다 'finalCandidateSha(또는 정확한 최종 후보 snapshot 식별자) / reverseStemFinding / primaryL3Necessity / distractorIndexCoverage(4/4) / distractorReproduction(4/4 또는 OPEN) / evidenceFreshness / decision KEEP|REVISED|HOLD / before→after / affectedFields / changedLocusRecheck / remainingRisk'를 기록한다. KEEP에도 학생 발문·보기·실제 사고의 역독해 근거를 남긴다. REVISED는 최종본의 영향 검사 증거를 갱신하고 HOLD는 미해결 사유를 남긴다. 최종 후보가 바뀌었는데 이전 예상값·정답·오답 계산을 현재 증거로 재사용하는 것은 금지한다.
+- **⑤ 완료 조건의 범위:** 'SELF_RECHECK_COMPLETE'는 현재 저장된 최종 artifact의 UID 분모 전체에서 KEEP/REVISED/HOLD를 명시하고, **자체 통과로 선언하는 UID**의 학교식 발문·L3 필요성·오답경로 4/4·영향 증거 freshness를 실제 확인한 경우에만 기록한다. 일부 검사만 실행했으면 해당 축을 NOT_TESTED/HOLD로 기록하며 9개 자동 PASS를 강제하지 않는다. 제작자 자체검수는 별도 GPT 공개답 품질검수와 학생용 출시를 대체하지 않는다.
+- **회귀 네거티브 fixture:** 팔마고 초기 q04 C2는 거리합에서 'min max(PA,PB)'로 평가 목표가 이동했고 C3는 자연스럽지 않은 'k+4t'를 물으면서 오답 근거가 실제 보기값과 맞지 않았다. 이후 수정본에서는 B2·C1의 오답 설명에 번호 중복·누락이 남았고, C2 발문/답이 변경된 뒤에도 이전 min-max 문제의 numericalSpotCheck가 남았다. **수정된 문제의 정답이 옳아도 종전 수치 증거는 현재 계산 PASS가 아니다.** 이미 완성된 다른 qid 전부를 재생성하지 말고 확인된 UID/증거만 표적 보정한다.
+- **허위완료 금지:** 'choices.length=5', 문자열 중복 0, 예상값과 수치 근접, 'solution.endsWith(정답)', 'studentSourceReverseRead=충분' 같은 요약을 모아 교육적 자가검수 완료로 선언하지 않는다. 실제 검사별 판정 범위를 한정한다. 별도 agent·독립풀이 전수 반복·신규 stage를 추가하는 규칙이 아니라 **CREATE 내 역발문 → 직접수정 → 변경증거 재확인의 최소 루프**다.
+
 
 ## CURRENT HARD — 시험지당 단일 브랜치 / 문항별 독립 커밋 / 누적 배치 검수 (2026-10-09)
 - **대상:** 신규 ALIVE GPT QID9 생산 라인. **시험지 하나 = 보호된 작업 브랜치 하나**. 같은 시험지 원본 q1, q2, q3...의 설계·생성물은 한 브랜치에 순서대로 누적한다. **원본 source qid 1개 = 변경대상 파일만 포함한 독립 Git commit 1개**가 표준. 문항마다 새 브랜치·새 PR을 만들지 않는다. 필요 기술/검수/핸드오프 변경은 성격별 독립 commit으로 기록한다. `git add .` 또는 다른 작업 동시 stage 금지.
