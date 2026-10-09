@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_13",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q13-B3.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q13-B3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 13,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q13-B3.js",
+      "sourceShardGitSha": "625f855b46fe5132203cf0b04d07d22443777b07",
+      "localOrdinal": 1,
+      "l2": "H22-C2-05-CORE",
+      "slot": "B3",
+      "purposeGroup": "B",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q13-B3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "집합",
+        "originalCategory": "집합",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "집합"
+        ],
+        "wide": false,
+        "content": "집합 $D=\\{-6,-3,-2,-1,1,2,3,6\\}$의 부분집합 $A$ 중 원소가 $4$개이고 모든 원소의 곱이 양수인 집합 $A$의 개수는?",
+        "choices": [
+          "$70$",
+          "$32$",
+          "$36$",
+          "$38$",
+          "$1$"
+        ],
+        "answer": "④",
+        "solution": "$D$에는 양수 $4$개와 음수 $4$개가 있다. 원소를 정확히 $4$개 택하면서 곱이 양수가 되려면 음수를 $0,2,4$개 택해야 한다.\n음수 $0$개·양수 $4$개: $\\binom40\\binom44=1$가지이다.\n음수 $2$개·양수 $2$개: $\\binom42\\binom42=6\\times6=36$가지이다.\n음수 $4$개·양수 $0$개: $\\binom44\\binom40=1$가지이다.\n따라서 $1+36+1=38$개이므로 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 13,
+        "slot": "B3",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "집합의 뜻과 포함 관계",
+          "rpmL3": "부분집합",
+          "rpmL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-234",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+          "generatedL4RegistrySha256": "06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+            "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+          ],
+          "conditionKeys": [
+            "COND_POSITIVE",
+            "EXT-COND-H1-Q13-EXACT-CARDINALITY"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_SUBSET_COUNT",
+          "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-05",
+          "subUnitKey": "H22-C2-05-CORE"
+        },
+        "metaFinalSha256": "80d568a4fe83553c590bbbffbaa1d94b6b31ff4aa1309684723edbe94a3a1ff2",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-B3.json",
+          "sha256": "5a02eb39b94c53e497b8057a5136adbe250e412b9851c4041a6db53e07ee666d",
+          "reviewStatus": "REVIEW_PASS",
+          "uid": "ALITE-PALMA25-2MID-Q13-B3"
+        },
+        "metaReviewEvidenceSha256": "5a02eb39b94c53e497b8057a5136adbe250e412b9851c4041a6db53e07ee666d",
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-EXACT-CARDINALITY"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmL4": "EXT-H1-C2-05-Q13-FIXED-SIZE-PARITY|원소 수 조건과 곱의 부호를 결합한 부분집합 계수",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-234",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "generatedL4RegistrySha256": "06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-EXACT-CARDINALITY"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE"
+      },
+      "metaFinalSha256": "80d568a4fe83553c590bbbffbaa1d94b6b31ff4aa1309684723edbe94a3a1ff2",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-B3.json",
+        "sha256": "5a02eb39b94c53e497b8057a5136adbe250e412b9851c4041a6db53e07ee666d",
+        "reviewStatus": "REVIEW_PASS",
+        "uid": "ALITE-PALMA25-2MID-Q13-B3"
+      },
+      "metaReviewEvidenceSha256": "5a02eb39b94c53e497b8057a5136adbe250e412b9851c4041a6db53e07ee666d"
+    }
+  ],
+  "sourceShardGitSha": "625f855b46fe5132203cf0b04d07d22443777b07"
+}

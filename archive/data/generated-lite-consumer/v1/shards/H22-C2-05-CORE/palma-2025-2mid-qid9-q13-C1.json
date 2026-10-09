@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_13",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q13-C1.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q13-C1",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 13,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/shards/palma-2025-2mid-qid9-q13-C1.js",
+      "sourceShardGitSha": "67e39ad1b7e111a8142f9b40d7ff760e2ff4969c",
+      "localOrdinal": 1,
+      "l2": "H22-C2-05-CORE",
+      "slot": "C1",
+      "purposeGroup": "C",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q13-C1",
+        "level": "상",
+        "difficultyBucket": 5,
+        "category": "집합",
+        "originalCategory": "집합",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "standardUnit": "집합",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C2-05-CORE",
+        "subUnit": "집합 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "집합"
+        ],
+        "wide": false,
+        "content": "$6$의 정수 약수 전체의 집합을 $D$라 하자. $D$의 부분집합 $A$가 다음 두 조건을 만족한다.<br>㈎ $6$의 양의 약수 $d$마다 $d$와 $-d$ 중 적어도 하나가 $A$에 속한다.<br>㈏ $A$의 모든 원소의 곱은 양수이다.<br>이러한 집합 $A$의 개수는?",
+        "choices": [
+          "$41$",
+          "$81$",
+          "$80$",
+          "$40$",
+          "$8$"
+        ],
+        "answer": "①",
+        "solution": "$6$의 양의 약수는 $1,2,3,6$이다. 각 $d$에 대해 $\\{d,-d\\}$에서 선택하는 방법은 $d$만 택하기, $-d$만 택하기, 둘 다 택하기의 $3$가지이다.\n이 중 음수 원소를 포함하지 않는 선택은 $1$가지이고, 음수 원소를 한 개 포함하는 선택은 $2$가지이다.\n네 개의 양·음수 쌍 중 음수를 포함하는 쌍이 $0,2,4$개여야 전체 곱이 양수이다.\n따라서 경우의 수는 $\\binom40\\cdot2^0+\\binom42\\cdot2^2+\\binom44\\cdot2^4=1+24+16=41$이다.\n각 쌍에서 하나 이상을 택하므로 공집합은 처음부터 제외된다. 따라서 정답은 ①이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 13,
+        "slot": "C1",
+        "purposeGroup": "C",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "집합의 뜻과 포함 관계",
+          "rpmL3": "부분집합",
+          "rpmL4": "EXT-H1-C2-05-Q13-PAIR-COVER|양·음수 약수쌍의 원소 포함 조건과 곱의 부호",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-234",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+          "generatedL4RegistrySha256": "06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+            "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_POSITIVE",
+            "EXT-COND-H1-Q13-PAIR-COVER"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 5,
+          "level": "상",
+          "problemTypeKey": "PT_SUBSET_COUNT",
+          "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-05",
+          "subUnitKey": "H22-C2-05-CORE"
+        },
+        "metaFinalSha256": "55759b0aa9b8603ba049e2ea2d47c380424fabb1223c5093d93347fd6a0b2e3d",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-C1.json",
+          "sha256": "6ce7742b9b71800fff220300da4ddb2b74f4b6e07140a57ac41f343817934ac6",
+          "reviewStatus": "REVIEW_PASS",
+          "uid": "ALITE-PALMA25-2MID-Q13-C1"
+        },
+        "metaReviewEvidenceSha256": "6ce7742b9b71800fff220300da4ddb2b74f4b6e07140a57ac41f343817934ac6",
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-PAIR-COVER"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "집합의 뜻과 포함 관계",
+        "rpmL3": "부분집합",
+        "rpmL4": "EXT-H1-C2-05-Q13-PAIR-COVER|양·음수 약수쌍의 원소 포함 조건과 곱의 부호",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-234",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-l4/palma-q13-registry.json",
+        "generatedL4RegistrySha256": "06968c7dd781aca7ca25b99adca3a5706bb29b6f72ac21ece46cd6d117b3b18b",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CC-H1-Q13-SIGNED-DIVISOR-ENUMERATION",
+          "EXT-CC-H1-Q13-COMBINATION-COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_POSITIVE",
+          "EXT-COND-H1-Q13-PAIR-COVER"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-05-CORE/extension-meta/palma-q13-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "level": "상",
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE"
+      },
+      "metaFinalSha256": "55759b0aa9b8603ba049e2ea2d47c380424fabb1223c5093d93347fd6a0b2e3d",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q13-C1.json",
+        "sha256": "6ce7742b9b71800fff220300da4ddb2b74f4b6e07140a57ac41f343817934ac6",
+        "reviewStatus": "REVIEW_PASS",
+        "uid": "ALITE-PALMA25-2MID-Q13-C1"
+      },
+      "metaReviewEvidenceSha256": "6ce7742b9b71800fff220300da4ddb2b74f4b6e07140a57ac41f343817934ac6"
+    }
+  ],
+  "sourceShardGitSha": "67e39ad1b7e111a8142f9b40d7ff760e2ff4969c"
+}

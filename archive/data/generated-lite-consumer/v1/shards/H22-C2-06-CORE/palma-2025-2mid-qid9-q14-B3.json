@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "ALIVE_GENERATED_CONSUMER_SHARD_V1",
+  "school": "팔마고",
+  "batchId": "PALMA25_QID9_AUTO_14",
+  "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-B3.js",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "records": [
+    {
+      "generatedUid": "ALITE-PALMA25-2MID-Q14-B3",
+      "sourceKind": "generated",
+      "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+      "sourceExamBlobSha": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+      "sourceQid": 14,
+      "sourceShard": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/shards/palma-2025-2mid-qid9-q14-B3.js",
+      "sourceShardGitSha": "8fcae8d00c8c45dffeab9cd8c5d24609133c63bf",
+      "localOrdinal": 1,
+      "l2": "H22-C2-06-CORE",
+      "slot": "B3",
+      "purposeGroup": "B",
+      "consumerSelectable": true,
+      "question": {
+        "id": 1,
+        "uid": "ALITE-PALMA25-2MID-Q14-B3",
+        "level": "상",
+        "difficultyBucket": 4,
+        "category": "명제",
+        "originalCategory": "명제",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "객관식",
+          "명제"
+        ],
+        "wide": false,
+        "content": "$-8\\le a\\le8$인 정수 $a$에 대하여 명제 ‘모든 실수 $x$에 대하여 $-x^2+ax-9<0$이다.’의 부정이 참이 되도록 하는 $a$의 개수는?",
+        "choices": [
+          "$4$",
+          "$12$",
+          "$3$",
+          "$6$",
+          "$17$"
+        ],
+        "answer": "④",
+        "solution": "주어진 명제의 부정은 ‘어떤 실수 $x$에서 $-x^2+ax-9\\ge0$이다.’이다.\n$-x^2+ax-9=-\\left(x-\\dfrac a2\\right)^2+\\dfrac{a^2}{4}-9$이므로 최댓값이 $0$ 이상일 조건은 $a^2\\ge36$이다.\n따라서 $a\\le-6$ 또는 $a\\ge6$이고, $-8\\le a\\le8$인 정수 중 가능한 것은 $-8,-7,-6,6,7,8$의 $6$개이다.\n$a=\\pm6$에서도 식이 $0$이 되는 $x$가 존재하므로 포함한다. 따라서 정답은 ④이다.",
+        "sourceType": "generated",
+        "sourceKind": "generated",
+        "sourceQid": 14,
+        "slot": "B3",
+        "purposeGroup": "B",
+        "meta": {
+          "rpmL1": "집합과 명제",
+          "rpmL2": "명제",
+          "rpmL3": "명제와 조건",
+          "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+          "rpmL4Namespace": "GENERATED_EXT_L4",
+          "rpmPrimaryRecordId": "H1-RPM-244",
+          "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+          "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+          "generatedL4RegistrySha256": "1f457c1c13ef644774ad188b4bfaef889b040d0c55351be2baa9130ee96fb1ac",
+          "secondaryConceptKeys": [],
+          "crossConceptKeys": [
+            "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+            "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+          ],
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_RANGE"
+          ],
+          "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+          "sourceKind": "generated",
+          "integrationPattern": "CASE_BRANCH",
+          "difficultyBucket": 4,
+          "level": "상",
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+          "standardCourse": "공통수학2",
+          "standardUnitKey": "H22-C2-06",
+          "subUnitKey": "H22-C2-06-CORE"
+        },
+        "metaFinalSha256": "636c09ed084b80797491cc5a606b2f22abe9b7d0cf38ff942d5591c078e22f59",
+        "metaReviewEvidence": {
+          "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-B3.json",
+          "sha256": "c0b77a5fdbc9783cdc08ef104b1c30a5a8eb7fbd08fca81c786b0d13e7fde7b6",
+          "reviewStatus": "REVIEW_PASS",
+          "uid": "ALITE-PALMA25-2MID-Q14-B3"
+        },
+        "metaReviewEvidenceSha256": "c0b77a5fdbc9783cdc08ef104b1c30a5a8eb7fbd08fca81c786b0d13e7fde7b6",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "meta": {
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "명제와 조건",
+        "rpmL4": "EXT-H1-C2-06-Q02-QUANTIFIER-NEGATION|양화 명제의 부정과 매개변수 구간 역산",
+        "rpmL4Namespace": "GENERATED_EXT_L4",
+        "rpmPrimaryRecordId": "H1-RPM-244",
+        "rpmAuthorityRef": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "rpmAuthoritySha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf",
+        "generatedL4RegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-l4/registry.json",
+        "generatedL4RegistrySha256": "1f457c1c13ef644774ad188b4bfaef889b040d0c55351be2baa9130ee96fb1ac",
+        "secondaryConceptKeys": [],
+        "crossConceptKeys": [
+          "EXT-CROSS-H1-C2-06-Q14-QUADRATIC-EXTREMA",
+          "EXT-CROSS-H1-C2-06-Q14-INTEGER-PARAMETER-COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "crossConceptRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "conditionRegistryRef": "archive/generated/lite/v1/2022/H1/H22-C2-06-CORE/extension-meta/palma-q14-cross-concepts-conditions.json",
+        "sourceKind": "generated",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "level": "상",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-06",
+        "subUnitKey": "H22-C2-06-CORE"
+      },
+      "metaFinalSha256": "636c09ed084b80797491cc5a606b2f22abe9b7d0cf38ff942d5591c078e22f59",
+      "metaReviewEvidence": {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/AUTO_REGISTER_EVIDENCE/palma-2025-2mid-qid9-q14-B3.json",
+        "sha256": "c0b77a5fdbc9783cdc08ef104b1c30a5a8eb7fbd08fca81c786b0d13e7fde7b6",
+        "reviewStatus": "REVIEW_PASS",
+        "uid": "ALITE-PALMA25-2MID-Q14-B3"
+      },
+      "metaReviewEvidenceSha256": "c0b77a5fdbc9783cdc08ef104b1c30a5a8eb7fbd08fca81c786b0d13e7fde7b6"
+    }
+  ],
+  "sourceShardGitSha": "8fcae8d00c8c45dffeab9cd8c5d24609133c63bf"
+}
