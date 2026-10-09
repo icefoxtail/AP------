@@ -20,6 +20,60 @@ const REGISTRATION_BASELINE_FILES = Object.freeze([
   'archive/data/archive2-canonical-input-manifest.json',
 ]);
 const REGISTRATION_BASELINE_SET = new Set(REGISTRATION_BASELINE_FILES);
+const LEGACY_DISPLAY_ALIAS_SCHEMA = 'ROOT_TARGET_REGISTRATION_LEGACY_DISPLAY_ALIAS_ADMISSION_V1';
+const LEGACY_DISPLAY_ALIAS_EXPECTED = Object.freeze({
+  examUid: '24_강남여고_1학기_중간_고2_대수',
+  productionPath: 'archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js',
+  grade: 'h2',
+  course: 'H15-M1',
+  questionCount: 25,
+  sourceField: 'standardCourse',
+  sourceFieldValue: '수학I',
+  sourceCurriculumFamily: 'H15-M1',
+  legacyUidSuffix: '대수',
+  displaySubject: '수학I',
+});
+const META_BINDING_PENDING_ADMISSION_SCHEMA = 'ROOT_TARGET_REGISTRATION_META_BINDING_PENDING_ADMISSION_V1';
+const META_BINDING_PENDING_FIELD_NAMES = Object.freeze(['problemTypeKey', 'templateKey']);
+const META_BINDING_PENDING_DISPOSITION = 'PRESERVE_CURRENT_VALUES_AS_MANUAL_REVIEW_PENDING';
+const META_BINDING_PENDING_SCOPES = Object.freeze({
+  '24_강남여고_1학기_중간_고2_대수': Object.freeze({
+    sourceRawSha256: '7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f',
+    sourceGitBlobSha1: '829ee06ee6275c5106db0cd5286e0f2db42f8a01',
+    questionCount: 25,
+    qids: Object.freeze([9, 17, 18, 19, 20, 21, 24]),
+    axisStatus: 'PASS_WITH_BINDING_PENDING',
+    metaField: null,
+    projectionStatus: 'BINDING_PENDING',
+  }),
+  '23_매산여고_1학기_중간_고2_수학I': Object.freeze({
+    sourceRawSha256: '339ef62e6a0e163f70a37251d1419c39469c0bf9e8a138242b3fc04448451eb9',
+    sourceGitBlobSha1: 'c6d691872f370d518f64d309b7bf27707cbffbc0',
+    questionCount: 23,
+    qids: Object.freeze([16]),
+    axisStatus: 'CURRENT_FIELDS_REVIEWED',
+    metaField: 'currentFields',
+    projectionStatus: 'BINDING_PENDING',
+  }),
+  '23_순천여고_1학기_중간_고2_수학I': Object.freeze({
+    sourceRawSha256: '9b0aff68d0d57ad182d0198bd9b5247fb42e8cd5e902954929402fcc9e299757',
+    sourceGitBlobSha1: 'ec2da748583fdf29443495c6a9b05fc3319c733c',
+    questionCount: 23,
+    qids: Object.freeze([7, 13, 16, 19, 20, 22, 23]),
+    axisStatusesByQid: Object.freeze({
+      7: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+      13: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+      16: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+      19: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+      20: 'REVIEWED_BINDING_PENDING',
+      22: 'REVIEWED_WITH_EXISTING_PROJECTION_STATUS',
+      23: 'REVIEWED_CURRENT_META_DISPOSITION',
+    }),
+    metaField: 'currentMeta',
+    projectionStatus: 'PROJECTION_BINDING_PENDING',
+  }),
+});
+const verifiedLegacyDisplayAliasTokens = new WeakSet();
 
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const hashJson = value => sha256(Buffer.from(JSON.stringify(value), 'utf8'));
@@ -81,7 +135,7 @@ function runVmSourceBytes(sourceBytes, filename) {
   return bank.map(question => jsonClone(question));
 }
 
-export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course }) {
+export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course, verifiedLegacyDisplayAlias = null }) {
   assert(nonempty(examUid) && nonempty(productionRelativePath), 'DISPLAY_IDENTITY_REQUIRED');
   const file = core.normalizeFile(String(productionRelativePath).replace(/^archive\/exams\//, ''));
   assert(/^original\/high\/(h1|h2)\//.test(file) && file.endsWith('.js'), 'TARGET_PRODUCTION_PATH_REQUIRED', file);
@@ -99,7 +153,7 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
   const uidSubject = hasPastExamSuffix ? suffixParts.slice(0, -1).join('_') : suffix;
   // H1's canonical Archive DB stores first-term finals with the locked exam UID ending in `_기출`;
   // the existing DB's subject/primaryStandardCourse fields supply the display alias.
-  const subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
+  let subject = uidSubject || (rosterGrade === 'h1' ? courseCode : '');
   const acceptedSubjects = courseCode === 'math2'
     ? new Set(['수학II', '수학Ⅱ'])
     : courseCode === 'geometry'
@@ -111,7 +165,17 @@ export function parseAuthorizedDisplayIdentity({ examUid, productionRelativePath
       : rosterGrade === 'h1' && courseCode === '수학(상)'
         ? new Set(['수학(상)'])
         : new Set();
-  assert(acceptedSubjects.has(subject), 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
+  if (!acceptedSubjects.has(subject)) {
+    const token = verifiedLegacyDisplayAlias;
+    assert(token && verifiedLegacyDisplayAliasTokens.has(token)
+      && token.examUid === examUid
+      && token.productionPath === productionRelativePath
+      && token.grade === rosterGrade
+      && token.course === courseCode
+      && token.legacyUidSuffix === uidSubject
+      && token.displaySubject === '수학I', 'ROSTER_COURSE_DISPLAY_ALIAS_MISMATCH', `${courseCode}|${subject}`);
+    subject = token.displaySubject;
+  }
   return {
     sourceFile: file,
     displayAlias: { school, year: 2000 + Number(yearToken), semester: semesterToken.slice(0, 1), examType: examTypeToken === '중간' ? 'mid' : 'final', grade: gradeDisplay, subject, contentType: file.startsWith('original/') ? '기출' : '' },
@@ -162,9 +226,9 @@ function metaRangeRows(bank) {
   });
 }
 
-export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, course, bank }) {
+export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, course, bank, verifiedLegacyDisplayAlias = null }) {
   assert(Array.isArray(bank) && bank.length > 0, 'SOURCE_VM_BANK_REQUIRED');
-  const { sourceFile, displayAlias } = parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course });
+  const { sourceFile, displayAlias } = parseAuthorizedDisplayIdentity({ examUid, productionRelativePath, grade, course, verifiedLegacyDisplayAlias });
   const courseRanges = metaRangeRows(bank);
   const singleRange = courseRanges.length === 1 ? courseRanges[0] : null;
   return {
@@ -187,6 +251,110 @@ export function buildAuthorizedDbRow({ examUid, productionRelativePath, grade, c
     courseRanges,
     primaryStandardCourse: displayAlias.subject,
   };
+}
+
+export function verifyBoundLegacyDisplayAliasAdmission({
+  root, authorityAdmission, rosterAdmission, authorizedRow, rosterRow, assignment, examUid, productionRelativePath, grade, course, sourceBytes, bank,
+}) {
+  const keys = ['schemaVersion', 'examUid', 'productionPath', 'grade', 'course', 'questionCount', 'sourceRawSha256', 'sourceGitBlobSha1', 'sourceField', 'sourceFieldValue', 'sourceCurriculumFamily', 'legacyUidSuffix', 'displaySubject', 'attestation'];
+  const exactKeys = value => value && typeof value === 'object' && !Array.isArray(value)
+    && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...keys].sort());
+  assert(exactKeys(authorityAdmission) && exactKeys(rosterAdmission), 'ROOT_LEGACY_DISPLAY_ALIAS_ADMISSION_SCHEMA_REQUIRED');
+  for (const key of keys) {
+    if (key === 'attestation') continue;
+    assert(authorityAdmission[key] === rosterAdmission[key], 'ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_ROW_MISMATCH', key);
+  }
+  assert(authorityAdmission.attestation?.path === rosterAdmission.attestation?.path
+    && authorityAdmission.attestation?.sha256 === rosterAdmission.attestation?.sha256,
+  'ROOT_LEGACY_DISPLAY_ALIAS_ATTESTATION_REF_MISMATCH');
+  const admission = authorityAdmission;
+  assert(admission.schemaVersion === LEGACY_DISPLAY_ALIAS_SCHEMA, 'ROOT_LEGACY_DISPLAY_ALIAS_SCHEMA_INVALID');
+  for (const [key, expected] of Object.entries(LEGACY_DISPLAY_ALIAS_EXPECTED)) {
+    assert(admission[key] === expected, 'ROOT_LEGACY_DISPLAY_ALIAS_SCOPE_INVALID', key);
+  }
+  assert(examUid === admission.examUid && productionRelativePath === admission.productionPath
+    && String(grade).toLowerCase() === admission.grade && course === admission.course,
+  'ROOT_LEGACY_DISPLAY_ALIAS_TARGET_BINDING_MISMATCH');
+  for (const [row, code] of [[authorizedRow, 'ROOT_LEGACY_DISPLAY_ALIAS_AUTHORITY_ROW'], [rosterRow, 'ROOT_LEGACY_DISPLAY_ALIAS_ROSTER_ROW']]) {
+    assert(row?.examUid === admission.examUid && row?.productionPath === admission.productionPath
+      && row?.grade === admission.grade && row?.course === admission.course
+      && Number(row?.questionCount) === admission.questionCount,
+    `${code}_SCOPE_MISMATCH`);
+    const rowAdmission = row.legacyDisplayAliasAdmission;
+    assert(exactKeys(rowAdmission) && rowAdmission.schemaVersion === admission.schemaVersion
+      && rowAdmission.examUid === admission.examUid && rowAdmission.productionPath === admission.productionPath
+      && rowAdmission.grade === admission.grade && rowAdmission.course === admission.course
+      && rowAdmission.questionCount === admission.questionCount && rowAdmission.sourceRawSha256 === admission.sourceRawSha256
+      && rowAdmission.sourceGitBlobSha1 === admission.sourceGitBlobSha1 && rowAdmission.sourceField === admission.sourceField
+      && rowAdmission.sourceFieldValue === admission.sourceFieldValue && rowAdmission.sourceCurriculumFamily === admission.sourceCurriculumFamily
+      && rowAdmission.legacyUidSuffix === admission.legacyUidSuffix && rowAdmission.displaySubject === admission.displaySubject
+      && rowAdmission.attestation?.path === admission.attestation.path && rowAdmission.attestation?.sha256 === admission.attestation.sha256,
+    `${code}_ADMISSION_BINDING_MISMATCH`);
+  }
+  assert(assignment?.examUid === admission.examUid
+    && assignment?.productionRelativePath === admission.productionPath
+    && assignment?.grade === admission.grade
+    && assignment?.course === admission.course
+    && Number(assignment?.questionCount) === admission.questionCount,
+  'ROOT_LEGACY_DISPLAY_ALIAS_ASSIGNMENT_BINDING_MISMATCH');
+  assert(Buffer.isBuffer(sourceBytes) && sha256(sourceBytes) === admission.sourceRawSha256
+    && assignment.artifactRawSha256 === admission.sourceRawSha256,
+  'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_RAW_SHA_MISMATCH');
+  assert(gitBlobSha(sourceBytes) === admission.sourceGitBlobSha1
+    && assignment.validatorRawBufferBlobSha1 === admission.sourceGitBlobSha1,
+  'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_BLOB_SHA_MISMATCH');
+  assert(Array.isArray(bank) && bank.length === admission.questionCount, 'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_DENOMINATOR_MISMATCH');
+  assert(bank.every(question => question?.standardCourse === admission.sourceFieldValue), 'ROOT_LEGACY_DISPLAY_ALIAS_SOURCE_COURSE_PARITY_FAIL');
+
+  const attestationBytes = readBoundFileBytes(root, admission.attestation, 'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION');
+  let attestation;
+  try { attestation = JSON.parse(attestationBytes.toString('utf8').replace(/^\uFEFF/, '')); }
+  catch { throw new Error('R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_JSON_INVALID'); }
+  const scope = attestation.scope;
+  assert(attestation.schemaVersion === 'JS_ARCHIVE_R1_BOUNDED_LEGACY_DISPLAY_ALIAS_ATTESTATION_V1'
+    && attestation.executionLine === 'CODEX'
+    && attestation.qualityContractVersion === QUALITY_CONTRACT_V2
+    && attestation.reviewerId === 'r1_10'
+    && attestation.examUid === admission.examUid
+    && attestation.decision === 'R1_CONFIRMS_H15_MATH_I_DISPLAY_ALIAS_FOR_THIS_TARGET_ONLY',
+  'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_IDENTITY_INVALID');
+  assert(scope?.currentSourceRawSha256 === admission.sourceRawSha256
+    && scope?.currentSourceBufferBlobSha1 === admission.sourceGitBlobSha1
+    && scope?.productionPath === admission.productionPath
+    && scope?.questionCount === admission.questionCount
+    && scope?.reviewedQids === '1-25'
+    && scope?.sourceField === admission.sourceField
+    && scope?.sourceFieldValue === admission.sourceFieldValue
+    && scope?.sourceCurriculumFamily === admission.sourceCurriculumFamily
+    && scope?.legacyUidSuffix === admission.legacyUidSuffix
+    && scope?.approvedDisplaySubject === admission.displaySubject
+    && scope?.normalizationScope === 'DISPLAY_ALIAS_ONLY_FOR_THIS_EXAMUID_AND_SOURCE_SHA',
+  'R1_LEGACY_DISPLAY_ALIAS_ATTESTATION_SCOPE_MISMATCH');
+  const actualUnitKeys = [...new Set(bank.map(question => text(question?.standardUnitKey)))].sort();
+  const attestedUnitKeys = Array.isArray(scope?.observedStandardUnitKeys) ? [...new Set(scope.observedStandardUnitKeys)].sort() : [];
+  assert(actualUnitKeys.length > 0 && actualUnitKeys.every(key => key.startsWith('H15-M1-') && attestedUnitKeys.includes(key))
+    && attestedUnitKeys.every(key => key.startsWith('H15-M1-')),
+  'R1_LEGACY_DISPLAY_ALIAS_UNIT_SCOPE_MISMATCH');
+  assert(attestation.r1Judgment?.sourceOrMetaMutation === false
+    && typeof attestation.r1Judgment?.finding === 'string' && attestation.r1Judgment.finding.trim()
+    && attestation.allowedConsumerUse?.useDisplayAlias === true
+    && attestation.allowedConsumerUse?.displaySubject === admission.displaySubject
+    && attestation.allowedConsumerUse?.preserveExamUidExactly === true
+    && attestation.allowedConsumerUse?.preserveSourceFileAndProductionPathExactly === true
+    && attestation.allowedConsumerUse?.preserveStandardCourseAndEveryMetaFieldExactly === true
+    && attestation.allowedConsumerUse?.globalAliasOrSuffixRuleCreated === false,
+  'R1_LEGACY_DISPLAY_ALIAS_CONSUMER_SCOPE_INVALID');
+
+  const token = Object.freeze({
+    examUid: admission.examUid,
+    productionPath: admission.productionPath,
+    grade: admission.grade,
+    course: admission.course,
+    legacyUidSuffix: admission.legacyUidSuffix,
+    displaySubject: admission.displaySubject,
+  });
+  verifiedLegacyDisplayAliasTokens.add(token);
+  return token;
 }
 
 export function canonicalSourceFingerprint(question) {
@@ -234,13 +402,15 @@ function sourceFieldStatus(question, key, nullableProjection = false) {
   return value !== null && value !== undefined && String(value).trim() !== '' ? 'approved_source' : 'manual_review_pending';
 }
 
-export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath, r1MetaDebtRows = [] }) {
+export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1EvidencePath, r1MetaDebtRows = [], r1MetaBindingPendingRows = [] }) {
   assert(identityRows.length === bank.length, 'TARGET_METADATA_IDENTITY_DENOMINATOR_MISMATCH');
   const metaDebtByOrdinal = new Map((r1MetaDebtRows || []).map(row => [Number(row.qid), row]));
+  const metaBindingPendingByOrdinal = new Map((r1MetaBindingPendingRows || []).map(row => [Number(row.qid), row]));
   return bank.map((question, index) => {
     const identity = identityRows[index];
     assert(identity.sourceOrdinal === index + 1, 'TARGET_METADATA_IDENTITY_ORDINAL_MISMATCH', String(index + 1));
     const admittedDebt = metaDebtByOrdinal.get(index + 1);
+    const admittedBindingPending = metaBindingPendingByOrdinal.get(index + 1);
     const nullableProjection = question.subUnitKey === null;
     const fieldStatus = {
       standardUnit: sourceFieldStatus(question, 'standardUnitKey'),
@@ -256,12 +426,24 @@ export function makeTargetMetadataRows({ sourceFile, bank, identityRows, r1Evide
         if (field === 'templateKey') fieldStatus.template = 'manual_review_pending';
       }
     }
+    if (admittedBindingPending) {
+      for (const field of admittedBindingPending.fieldNames || []) {
+        if (field === 'problemTypeKey') fieldStatus.problemType = 'manual_review_pending';
+        if (field === 'templateKey') fieldStatus.template = 'manual_review_pending';
+      }
+    }
     const hasExplicitHolds = Object.values(fieldStatus).some(value => value === 'manual_review_pending');
     const serializedFieldStatus = hasOwn(question, 'fieldStatus') && question.fieldStatus && typeof question.fieldStatus === 'object'
       ? jsonClone(question.fieldStatus)
       : fieldStatus;
     if (admittedDebt) {
       for (const field of admittedDebt.metaDebtFields || []) {
+        if (field === 'problemTypeKey') serializedFieldStatus.problemType = 'manual_review_pending';
+        if (field === 'templateKey') serializedFieldStatus.template = 'manual_review_pending';
+      }
+    }
+    if (admittedBindingPending) {
+      for (const field of admittedBindingPending.fieldNames || []) {
         if (field === 'problemTypeKey') serializedFieldStatus.problemType = 'manual_review_pending';
         if (field === 'templateKey') serializedFieldStatus.template = 'manual_review_pending';
       }
@@ -421,6 +603,84 @@ function verifyR1MetaProof(evidence, assignment, examUid, bank, root, admission 
   const itemRecoveryRows = evidence.rows.filter(row => row.verdict === 'PASS_AFTER_ITEM_RECOVERY');
   assert(itemRecoveryRows.every(row => verifyR1ItemRecoveryProof({ row, examUid, bank, root, assignment })), 'R1_ITEM_RECOVERY_VERDICT_PROOF_REQUIRED');
   return admittedRows;
+}
+
+export function verifyBoundR1MetaBindingPendingAdmission({
+  authorityAdmission, rosterAdmission, assignment, examUid, sourceRawSha256, sourceGitBlobSha1,
+  r1EvidenceBinding, bank,
+}) {
+  const keys = ['schemaVersion', 'examUid', 'sourceRawSha256', 'sourceGitBlobSha1', 'questionCount', 'r1EvidencePath', 'r1EvidenceSha256', 'qids', 'fieldNames', 'disposition'];
+  const exactKeys = value => value && typeof value === 'object' && !Array.isArray(value)
+    && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...keys].sort());
+  assert(exactKeys(authorityAdmission) && exactKeys(rosterAdmission), 'ROOT_R1_META_BINDING_PENDING_ADMISSION_SCHEMA_REQUIRED');
+  const admission = authorityAdmission;
+  const expectedScope = META_BINDING_PENDING_SCOPES[examUid];
+  assert(expectedScope, 'ROOT_R1_META_BINDING_PENDING_UID_UNSUPPORTED', examUid);
+  assert(keys.filter(key => !['qids', 'fieldNames'].includes(key)).every(key => admission[key] === rosterAdmission[key])
+    && JSON.stringify(admission.qids) === JSON.stringify(rosterAdmission.qids)
+    && JSON.stringify(admission.fieldNames) === JSON.stringify(rosterAdmission.fieldNames),
+  'ROOT_R1_META_BINDING_PENDING_SCOPE_ROW_MISMATCH');
+  assert(admission.schemaVersion === META_BINDING_PENDING_ADMISSION_SCHEMA, 'ROOT_R1_META_BINDING_PENDING_SCHEMA_INVALID');
+  assert(admission.examUid === examUid
+    && admission.sourceRawSha256 === expectedScope.sourceRawSha256
+    && sourceRawSha256 === admission.sourceRawSha256
+    && assignment?.artifactRawSha256 === admission.sourceRawSha256
+    && admission.sourceGitBlobSha1 === expectedScope.sourceGitBlobSha1
+    && sourceGitBlobSha1 === admission.sourceGitBlobSha1
+    && assignment?.validatorRawBufferBlobSha1 === admission.sourceGitBlobSha1
+    && admission.questionCount === expectedScope.questionCount
+    && bank.length === admission.questionCount
+    && admission.disposition === META_BINDING_PENDING_DISPOSITION,
+  'ROOT_R1_META_BINDING_PENDING_SCOPE_INVALID');
+  assert(admission.r1EvidencePath === r1EvidenceBinding?.relative
+    && admission.r1EvidencePath === assignment?.r1EvidencePath
+    && admission.r1EvidenceSha256 === r1EvidenceBinding?.evidenceSha256
+    && admission.r1EvidenceSha256 === assignment?.r1EvidenceSha256,
+  'ROOT_R1_META_BINDING_PENDING_R1_BINDING_MISMATCH');
+  assert(JSON.stringify(admission.qids) === JSON.stringify(expectedScope.qids)
+    && JSON.stringify(admission.fieldNames) === JSON.stringify(META_BINDING_PENDING_FIELD_NAMES),
+  'ROOT_R1_META_BINDING_PENDING_QID_OR_FIELD_SCOPE_INVALID');
+  const evidence = r1EvidenceBinding.evidence;
+  assert(evidence?.examUid === admission.examUid
+    && evidence?.artifactRawSha256 === admission.sourceRawSha256
+    && Array.isArray(evidence.rows) && evidence.rows.length === admission.questionCount,
+  'ROOT_R1_META_BINDING_PENDING_EVIDENCE_IDENTITY_INVALID');
+  const rowsByQid = new Map(evidence.rows.map(row => [Number(row.qid), row]));
+  const expectedQids = admission.qids;
+  assert(rowsByQid.size === evidence.rows.length && expectedQids.every(qid => rowsByQid.has(qid)), 'ROOT_R1_META_BINDING_PENDING_EVIDENCE_QID_SET_INVALID');
+  const hasPendingMarker = row => {
+    const meta = row?.axisEvidence?.META;
+    const projectionStatus = meta?.projectionStatus ?? meta?.currentFields?.projectionStatus ?? meta?.currentMeta?.projectionStatus;
+    return (typeof meta?.status === 'string' && meta.status.includes('BINDING_PENDING'))
+      || (typeof projectionStatus === 'string' && projectionStatus.includes('BINDING_PENDING'));
+  };
+  const pendingRows = evidence.rows.filter(hasPendingMarker);
+  assert(JSON.stringify(pendingRows.map(row => Number(row.qid)).sort((a, b) => a - b)) === JSON.stringify([...expectedQids].sort((a, b) => a - b)),
+    'ROOT_R1_META_BINDING_PENDING_EVIDENCE_SCOPE_MISMATCH');
+
+  const rows = expectedQids.map(qid => {
+    const row = rowsByQid.get(qid);
+    const question = bank[qid - 1];
+    const axisMeta = row?.axisEvidence?.META;
+    const meta = expectedScope.metaField ? axisMeta?.[expectedScope.metaField] : axisMeta;
+    const fourAxisMeta = row?.fourAxisReview?.META;
+    assert(row && question && isAcceptedR1Verdict(row.verdict), 'ROOT_R1_META_BINDING_PENDING_R1_VERDICT_REQUIRED', String(qid));
+    const expectedAxisStatus = expectedScope.axisStatusesByQid?.[qid] ?? expectedScope.axisStatus;
+    assert(axisMeta?.status === expectedAxisStatus
+      && meta?.projectionStatus === expectedScope.projectionStatus
+      && (!hasOwn(meta, 'metaDebtFields') || (Array.isArray(meta.metaDebtFields) && meta.metaDebtFields.length === 0)),
+    'ROOT_R1_META_BINDING_PENDING_TYPED_STATE_REQUIRED', String(qid));
+    assert(fourAxisMeta?.disposition === 'CURRENT_FIELDS_RETAINED'
+      && (fourAxisMeta?.sourceRawSha256 === undefined || fourAxisMeta.sourceRawSha256 === admission.sourceRawSha256)
+      && nonempty(fourAxisMeta?.evidence),
+    'ROOT_R1_META_BINDING_PENDING_CURRENT_FIELDS_PROOF_REQUIRED', String(qid));
+    assert(question.problemTypeKey !== null && question.problemTypeKey !== undefined && String(question.problemTypeKey).trim()
+      && question.templateKey !== null && question.templateKey !== undefined && String(question.templateKey).trim()
+      && meta.problemTypeKey === question.problemTypeKey && meta.templateKey === question.templateKey,
+    'ROOT_R1_META_BINDING_PENDING_SOURCE_VALUE_PARITY_FAIL', String(qid));
+    return { qid, fieldNames: [...admission.fieldNames], disposition: admission.disposition };
+  });
+  return rows;
 }
 
 const R1_META_DEBT_CORE_FIELDS = Object.freeze([
@@ -1081,6 +1341,47 @@ async function main() {
   const r1EvidenceRelative = r1EvidenceBinding.relative;
   const r1Evidence = r1EvidenceBinding.evidence;
   const r1MetaDebtRows = r1EvidenceBinding.metaDebtRows || [];
+  const authorityBindingPendingAdmission = authorizedRow.r1MetaBindingPendingAdmission;
+  const rosterBindingPendingAdmission = rosterRow.r1MetaBindingPendingAdmission;
+  const isBoundMetaBindingTarget = hasOwn(META_BINDING_PENDING_SCOPES, authorizedRow.examUid);
+  const hasBindingPendingR1Rows = isBoundMetaBindingTarget && r1Evidence.rows.some(row => {
+    const meta = row?.axisEvidence?.META;
+    const projectionStatus = meta?.projectionStatus ?? meta?.currentFields?.projectionStatus ?? meta?.currentMeta?.projectionStatus;
+    return (typeof meta?.status === 'string' && meta.status.includes('BINDING_PENDING'))
+      || (typeof projectionStatus === 'string' && projectionStatus.includes('BINDING_PENDING'));
+  });
+  const r1MetaBindingPendingRows = hasBindingPendingR1Rows
+    || authorityBindingPendingAdmission !== undefined
+    || rosterBindingPendingAdmission !== undefined
+    ? verifyBoundR1MetaBindingPendingAdmission({
+      authorityAdmission: authorityBindingPendingAdmission,
+      rosterAdmission: rosterBindingPendingAdmission,
+      assignment,
+      examUid: authorizedRow.examUid,
+      sourceRawSha256,
+      sourceGitBlobSha1: sourceBlobSha1,
+      r1EvidenceBinding,
+      bank,
+    })
+    : [];
+  const authorityLegacyAlias = authorizedRow.legacyDisplayAliasAdmission;
+  const rosterLegacyAlias = rosterRow.legacyDisplayAliasAdmission;
+  const verifiedLegacyDisplayAlias = authorityLegacyAlias !== undefined || rosterLegacyAlias !== undefined
+    ? verifyBoundLegacyDisplayAliasAdmission({
+      root,
+      authorityAdmission: authorityLegacyAlias,
+      rosterAdmission: rosterLegacyAlias,
+      authorizedRow,
+      rosterRow,
+      assignment,
+      examUid: authorizedRow.examUid,
+      productionRelativePath: authorizedRow.productionPath,
+      grade: authorizedRow.grade,
+      course: authorizedRow.course,
+      sourceBytes,
+      bank,
+    })
+    : null;
   const sourceFingerprintByOrdinal = bank.map(question => canonicalSourceFingerprint(question));
   const contentFingerprintByOrdinal = bank.map(question => canonicalContentFingerprint(question));
   const identityRows = makeTargetIdentityRows(targetFile, bank);
@@ -1104,9 +1405,9 @@ async function main() {
     assert(!legacyQKeys.has(row.legacyQKey), 'TARGET_LEGACY_QKEY_COLLISION', row.legacyQKey);
   }
 
-  const display = parseAuthorizedDisplayIdentity({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course });
-  const targetDbRow = buildAuthorizedDbRow({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, bank });
-  const targetMetadataRows = makeTargetMetadataRows({ sourceFile: targetFile, bank, identityRows, r1EvidencePath: r1EvidenceRelative, r1MetaDebtRows });
+  const display = parseAuthorizedDisplayIdentity({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, verifiedLegacyDisplayAlias });
+  const targetDbRow = buildAuthorizedDbRow({ examUid: authorizedRow.examUid, productionRelativePath: authorizedRow.productionPath, grade: authorizedRow.grade, course: authorizedRow.course, bank, verifiedLegacyDisplayAlias });
+  const targetMetadataRows = makeTargetMetadataRows({ sourceFile: targetFile, bank, identityRows, r1EvidencePath: r1EvidenceRelative, r1MetaDebtRows, r1MetaBindingPendingRows });
   assert(targetMetadataRows.every((row, index) => row.questionUid === identityRows[index].questionUid && row.sourceFingerprint === sourceFingerprintByOrdinal[index] && row.contentFingerprint === contentFingerprintByOrdinal[index]), 'TARGET_METADATA_FINGERPRINT_PARITY_FAIL');
 
   const beforeCandidateHashes = Object.fromEntries(REGISTRATION_BASELINE_FILES.map(file => [file, sha256(fs.readFileSync(path.join(candidateRoot, file)))]));

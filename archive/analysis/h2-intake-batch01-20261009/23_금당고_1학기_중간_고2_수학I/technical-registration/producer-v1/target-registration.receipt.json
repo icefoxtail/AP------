@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1",
+  "status": "APPLIED_PENDING_VALIDATORS",
+  "runId": "h2-intake-batch01-20261009",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "head": "d348f0dae2bf7fd7fac9e608e35bc9675cec097e",
+  "sourceArtifactSha256": "41e536055918cf8fde660a2fc7bd32dcea3683adaeb49fa9a853d9cc2c7643dc",
+  "sourceArtifactBlobSha1": "ca4f71316ecd593f7240fd6232c7797112b64488",
+  "targetQidSet": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "targetCounts": {
+    "identity": 20,
+    "metadata": 20,
+    "index": 20,
+    "catalog": 20,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 563,
+    "identityRows": 13411,
+    "metadataRows": 13411,
+    "indexRows": 13403,
+    "catalogRows": 13403,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "metaProjection": {
+    "targetFieldStatusCounts": {
+      "standardUnit=approved_source": 20,
+      "subUnit=approved_source": 20,
+      "concept=manual_review_pending": 20,
+      "problemType=manual_review_pending": 14,
+      "template=manual_review_pending": 14,
+      "difficulty=approved_source": 20,
+      "problemType=approved_source": 6,
+      "template=approved_source": 6
+    },
+    "targetNullProblemType": 14,
+    "targetNullTemplate": 14,
+    "semanticFieldsCopiedUnchanged": true
+  },
+  "catalog": {
+    "records": 13423,
+    "exams": 564,
+    "identityDigest": "c4f7b7e0035014197a14c8fc163e532befae61ab80eb5b374f98cf16bea58344",
+    "indexVersion": "eae90a65d2c8dfa8b083cba327f60410c314acf6f3b77f167e3f03caef58b9bc",
+    "projectionVersion": "archive2-canonical-v1:b11cf6bf80dfb668914c87c94ef973468da17ac01bc0eb950de1b191bd5f3b61",
+    "targetAutomaticCount": 0
+  },
+  "assets": [
+    {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학I/q07.png",
+      "sha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203",
+      "expectedSha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203"
+    },
+    {
+      "ref": "assets/images/23_금당고_1학기_중간_고2_수학I/q13.png",
+      "sha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df",
+      "expectedSha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df"
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "archive/db.js",
+      "beforeSha256": "2a231f318cca9d32a32e42bbd905487b20898e69736202a4844fcebf252292ea",
+      "afterSha256": "33a3a94f277af5510f9e668c3d75c8ac3fcb79d7dcf085de76eeaf7dd8b3f5eb"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeSha256": "e596d9bac7edc338b535176309b97f4e1b0781abcfac8afdf4a1df07de5c0ab8",
+      "afterSha256": "90f9fc7f7e84cd99b49ff8e3fe0d082d90230dc350fb5fca98feb70e5f42ddac"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeSha256": "d97d37322f781b59e42be5bf5a67d300ac094a7dceb86103061ba45fcd3f5edf",
+      "afterSha256": "938b56667ba53b7df9582aa2db555e103a90763afbb7acfca027a55c2858dfcd"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "beforeSha256": "bb040de3367aa6ee7393e7b47dbe3975e88d2cdf4475cc2e605bb7479e1c2fc4",
+      "afterSha256": "6014acc8c22e2bcccbdc0649bee64affc3227eaaab1cb805c470b5d3a133481b"
+    },
+    {
+      "path": "archive/question-index.js",
+      "beforeSha256": "ca723daf04523fea7435d2c2714fe0479d9b4adb7d44b6895c8ae109e0edb436",
+      "afterSha256": "1800af4d349998a1359480c35db7e65d8c88237559306deba6afba15d56d1ea5"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "beforeSha256": "2e91775bf4d3f7ca5b9a5076ec38c31813a7f49addde74c9da0471a2278d7697",
+      "afterSha256": "dbfaa871fea35ad9c4c7c189157e8435fc915fd4176405e07237c9e710fee340"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "beforeSha256": "321c111827880659f21bb2e9d71f2b9a70d0ab3a5d4a76ea595b958c6dbe6852",
+      "afterSha256": "73985a7ff226a55a1994a6e80b55bb4f57d73ae128cc9acf2012dea63a167fa8"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "beforeSha256": "0302e8e949cd89ad63b7b585269f6aa54888d91b523c2f04ddb90a852280aaa6",
+      "afterSha256": "c178047048acca8265b136013c8b3ac11ca03605d916529f3b8f9703a9abab09"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "db78be3fcdc6fe6e6f2e3e1dfccdad69b37254537aad86357dcfac37d31446fa",
+      "afterSha256": "e8c99e3d433219e8acdb128bb81cf0844cbca58f9f0d8fb94469964bed8021f5"
+    }
+  ],
+  "checks": {
+    "baselineSnapshotExact": true,
+    "targetOrdinalCoverage": true,
+    "nonTargetRowsUnchanged": true,
+    "sourceAssetHashesMatch": true,
+    "sourceStatusVerified": true,
+    "manifestGeneratedFromCurrentCatalog": true
+  },
+  "createdAt": "2026-10-09T14:50:47.503Z"
+}

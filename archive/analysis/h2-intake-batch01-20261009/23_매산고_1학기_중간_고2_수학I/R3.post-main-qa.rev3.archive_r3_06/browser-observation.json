@@ -1,0 +1,2576 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POST_MAIN_TECHNICAL_QA_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "examUid": "23_매산고_1학기_중간_고2_수학I",
+  "mainSha": "a1e6d1c8eecff9c57aa0d1854cfa8c7adbc8aab7",
+  "headSha": "a1e6d1c8eecff9c57aa0d1854cfa8c7adbc8aab7",
+  "originMainSha": "a1e6d1c8eecff9c57aa0d1854cfa8c7adbc8aab7",
+  "source": {
+    "path": "archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+    "rawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+    "sourceUidCount": 20,
+    "questionCount": 20
+  },
+  "assets": [
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q04.png",
+      "sha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2"
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q14.png",
+      "sha256": "6a0c59805c59729bd8ed2ab788a51bad77ec69cc171918127507f55a31199fba"
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg",
+      "sha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766"
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg",
+      "sha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13"
+    }
+  ],
+  "runtime": {
+    "browser": "Chrome",
+    "browserVersion": "154.0.8037.98",
+    "sourceMode": "loopback HTTP server serving fetched main worktree; no remote CDN claim",
+    "origin": "http://127.0.0.1:50822",
+    "sourceServedRawSha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+    "mainShaConfirmedBeforeRun": true
+  },
+  "searchFlows": [
+    {
+      "flow": "archive2_common_meta_search",
+      "url": "http://127.0.0.1:50822/archive/problem-bank-search.html",
+      "status": "VISITED",
+      "sourceMode": "main-worktree-static-http",
+      "initial": {
+        "title": "공통 Meta 문항 검색 | Archive 2.0",
+        "status": "13,796문항 · 기출/아카이브 13,378 · 생성 418 · 검증 수준은 문항별 근거를 따릅니다.",
+        "sourceOptions": [
+          {
+            "label": "전체",
+            "value": ""
+          },
+          {
+            "label": "기출",
+            "value": "original"
+          },
+          {
+            "label": "생성",
+            "value": "generated"
+          },
+          {
+            "label": "기타 아카이브",
+            "value": "archive"
+          }
+        ],
+        "courseOptions": [
+          {
+            "label": "전체",
+            "value": ""
+          },
+          {
+            "label": "공통수학1",
+            "value": "공통수학1"
+          },
+          {
+            "label": "공통수학2",
+            "value": "공통수학2"
+          },
+          {
+            "label": "기하",
+            "value": "기하"
+          },
+          {
+            "label": "대수",
+            "value": "대수"
+          },
+          {
+            "label": "수학(상)",
+            "value": "수학(상)"
+          },
+          {
+            "label": "수학(하)",
+            "value": "수학(하)"
+          },
+          {
+            "label": "수학I",
+            "value": "수학I"
+          },
+          {
+            "label": "수학II",
+            "value": "수학II"
+          },
+          {
+            "label": "중1 수학",
+            "value": "중1 수학"
+          },
+          {
+            "label": "중2",
+            "value": "중2"
+          },
+          {
+            "label": "중2 수학",
+            "value": "중2 수학"
+          },
+          {
+            "label": "중3",
+            "value": "중3"
+          },
+          {
+            "label": "중3 수학",
+            "value": "중3 수학"
+          },
+          {
+            "label": "확률과 통계",
+            "value": "확률과 통계"
+          }
+        ],
+        "l2Options": [
+          {
+            "label": "전체",
+            "value": ""
+          },
+          {
+            "label": "경우의 수와 순열",
+            "value": "경우의 수와 순열"
+          },
+          {
+            "label": "근호를 포함한 식의 계산",
+            "value": "근호를 포함한 식의 계산"
+          },
+          {
+            "label": "다면체와 회전체",
+            "value": "다면체와 회전체"
+          },
+          {
+            "label": "다항식의 곱셈",
+            "value": "다항식의 곱셈"
+          },
+          {
+            "label": "다항식의 연산",
+            "value": "다항식의 연산"
+          },
+          {
+            "label": "단항식의 계산",
+            "value": "단항식의 계산"
+          },
+          {
+            "label": "대푯값",
+            "value": "대푯값"
+          },
+          {
+            "label": "대푯값과 산포도",
+            "value": "대푯값과 산포도"
+          },
+          {
+            "label": "도수분포표와 상대도수",
+            "value": "도수분포표와 상대도수"
+          },
+          {
+            "label": "도함수의 활용(1)",
+            "value": "도함수의 활용(1)"
+          },
+          {
+            "label": "도함수의 활용(2)",
+            "value": "도함수의 활용(2)"
+          },
+          {
+            "label": "도함수의 활용(3)",
+            "value": "도함수의 활용(3)"
+          },
+          {
+            "label": "도형의 닮음",
+            "value": "도형의 닮음"
+          },
+          {
+            "label": "도형의 이동",
+            "value": "도형의 이동"
+          },
+          {
+            "label": "등차수열과 등비수열",
+            "value": "등차수열과 등비수열"
+          },
+          {
+            "label": "로그",
+            "value": "로그"
+          },
+          {
+            "label": "명제",
+            "value": "명제"
+          },
+          {
+            "label": "미분계수와 도함수",
+            "value": "미분계수와 도함수"
+          },
+          {
+            "label": "벡터의 연산",
+            "value": "벡터의 연산"
+          },
+          {
+            "label": "복소수",
+            "value": "복소수"
+          },
+          {
+            "label": "삼각비",
+            "value": "삼각비"
+          },
+          {
+            "label": "삼각비의 활용",
+            "value": "삼각비의 활용"
+          },
+          {
+            "label": "삼각함수",
+            "value": "삼각함수"
+          },
+          {
+            "label": "삼각함수의 활용",
+            "value": "삼각함수의 활용"
+          },
+          {
+            "label": "삼각형의 무게중심",
+            "value": "삼각형의 무게중심"
+          },
+          {
+            "label": "삼각형의 성질",
+            "value": "삼각형의 성질"
+          },
+          {
+            "label": "삼각형의 외심과 내심",
+            "value": "삼각형의 외심과 내심"
+          },
+          {
+            "label": "상관관계",
+            "value": "상관관계"
+          },
+          {
+            "label": "순열과 조합",
+            "value": "순열과 조합"
+          },
+          {
+            "label": "여러 가지 방정식",
+            "value": "여러 가지 방정식"
+          },
+          {
+            "label": "여러 가지 부등식",
+            "value": "여러 가지 부등식"
+          },
+          {
+            "label": "여러 가지 사각형",
+            "value": "여러 가지 사각형"
+          },
+          {
+            "label": "연립일차방정식의 활용",
+            "value": "연립일차방정식의 활용"
+          },
+          {
+            "label": "원과 부채꼴",
+            "value": "원과 부채꼴"
+          },
+          {
+            "label": "원과 직선",
+            "value": "원과 직선"
+          },
+          {
+            "label": "원의 방정식",
+            "value": "원의 방정식"
+          },
+          {
+            "label": "원주각",
+            "value": "원주각"
+          },
+          {
+            "label": "위치 관계",
+            "value": "위치 관계"
+          },
+          {
+            "label": "이등변삼각형",
+            "value": "이등변삼각형"
+          },
+          {
+            "label": "이차방정식",
+            "value": "이차방정식"
+          },
+          {
+            "label": "이차방정식과 이차함수",
+            "value": "이차방정식과 이차함수"
+          },
+          {
+            "label": "이차방정식의 풀이",
+            "value": "이차방정식의 풀이"
+          },
+          {
+            "label": "이차방정식의 활용",
+            "value": "이차방정식의 활용"
+          },
+          {
+            "label": "이차함수 y=ax²+bx+c의 그래프",
+            "value": "이차함수 y=ax²+bx+c의 그래프"
+          },
+          {
+            "label": "이차함수와 그 그래프",
+            "value": "이차함수와 그 그래프"
+          },
+          {
+            "label": "이항정리",
+            "value": "이항정리"
+          },
+          {
+            "label": "인수분해",
+            "value": "인수분해"
+          },
+          {
+            "label": "일차부등식의 활용",
+            "value": "일차부등식의 활용"
+          },
+          {
+            "label": "일차함수와 그 그래프",
+            "value": "일차함수와 그 그래프"
+          },
+          {
+            "label": "입체도형의 겉넓이와 부피",
+            "value": "입체도형의 겉넓이와 부피"
+          },
+          {
+            "label": "정적분의 활용",
+            "value": "정적분의 활용"
+          },
+          {
+            "label": "제곱근과 실수",
+            "value": "제곱근과 실수"
+          },
+          {
+            "label": "조합",
+            "value": "조합"
+          },
+          {
+            "label": "좌표와 그래프",
+            "value": "좌표와 그래프"
+          },
+          {
+            "label": "지수",
+            "value": "지수"
+          },
+          {
+            "label": "직선의 방정식",
+            "value": "직선의 방정식"
+          },
+          {
+            "label": "집합의 뜻과 포함 관계",
+            "value": "집합의 뜻과 포함 관계"
+          },
+          {
+            "label": "집합의 연산",
+            "value": "집합의 연산"
+          },
+          {
+            "label": "통계적 추정",
+            "value": "통계적 추정"
+          },
+          {
+            "label": "평면좌표",
+            "value": "평면좌표"
+          },
+          {
+            "label": "평행사변형",
+            "value": "평행사변형"
+          },
+          {
+            "label": "평행선과 선분의 길이의 비",
+            "value": "평행선과 선분의 길이의 비"
+          },
+          {
+            "label": "함수",
+            "value": "함수"
+          },
+          {
+            "label": "항등식과 나머지정리",
+            "value": "항등식과 나머지정리"
+          },
+          {
+            "label": "행렬",
+            "value": "행렬"
+          },
+          {
+            "label": "확률분포",
+            "value": "확률분포"
+          },
+          {
+            "label": "확률의 뜻과 활용",
+            "value": "확률의 뜻과 활용"
+          },
+          {
+            "label": "L2-1.1|평면좌표",
+            "value": "L2-1.1|평면좌표"
+          },
+          {
+            "label": "L2-1.2|직선의 방정식",
+            "value": "L2-1.2|직선의 방정식"
+          },
+          {
+            "label": "L2-1.3|원의 방정식",
+            "value": "L2-1.3|원의 방정식"
+          },
+          {
+            "label": "L2-1.4|도형의 이동",
+            "value": "L2-1.4|도형의 이동"
+          },
+          {
+            "label": "L2-2.2|집합의 연산",
+            "value": "L2-2.2|집합의 연산"
+          }
+        ],
+        "hasMetaFoundationOverlay": false
+      },
+      "afterFilters": {
+        "status": "40문항 · 기출/아카이브 40 · 생성 0 · 검증 수준은 문항별 근거를 따릅니다.",
+        "selectedSource": "original",
+        "selectedCourse": "수학I",
+        "l2Options": [
+          {
+            "label": "전체",
+            "value": ""
+          },
+          {
+            "label": "등차수열과 등비수열",
+            "value": "등차수열과 등비수열"
+          },
+          {
+            "label": "삼각함수",
+            "value": "삼각함수"
+          }
+        ],
+        "cards": [
+          {
+            "text": "복성고 · 2023 · 2\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 3\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 5\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 8\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 9\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 10\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 11\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 12\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 14\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 15\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 17\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 20\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "복성고 · 2023 · 22\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 1\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 2\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 4\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 5\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 6\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 7\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 8\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 10\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 11\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 13\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 16\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 19\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 21\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 22\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "제일고 · 2023 · 23\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 2\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 4\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 5\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 6\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 7\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 8\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 10\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 12\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 17\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 18\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 19\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          },
+          {
+            "text": "팔마고 · 2023 · 20\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+            "hrefs": [
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+              "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+            ]
+          }
+        ],
+        "targetRows": [
+          {
+            "uid": "qid_v1_2b1ccddf6980388aa40355a56cb6995b7cb8c4776c98465a08d06c58bff2edad",
+            "sourceOrdinal": 10,
+            "sourceKind": "original",
+            "standardCourse": "",
+            "standardUnitKey": "",
+            "subUnitKey": "",
+            "L1": null,
+            "L2": null,
+            "L3": null,
+            "L4": null,
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaCompleteness": "EVIDENCE_DEBT"
+          },
+          {
+            "uid": "qid_v1_ba1b3382142c68d1c5ead5778c0da30bede55e458cf01c0de16af930cfa2d1d8",
+            "sourceOrdinal": 12,
+            "sourceKind": "original",
+            "standardCourse": "",
+            "standardUnitKey": "",
+            "subUnitKey": "",
+            "L1": null,
+            "L2": null,
+            "L3": null,
+            "L4": null,
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaCompleteness": "EVIDENCE_DEBT"
+          },
+          {
+            "uid": "qid_v1_5414e6f6f5d90e18bc67e4e548f54ea110501dbda7e4e6ab30781c48a52411f2",
+            "sourceOrdinal": 15,
+            "sourceKind": "original",
+            "standardCourse": "",
+            "standardUnitKey": "",
+            "subUnitKey": "",
+            "L1": null,
+            "L2": null,
+            "L3": null,
+            "L4": null,
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaCompleteness": "EVIDENCE_DEBT"
+          },
+          {
+            "uid": "qid_v1_1662d05fe77bd46b8d2eb6d06fba2d444e6ceb9132249f49cc6dfd1f1bf3e156",
+            "sourceOrdinal": 18,
+            "sourceKind": "original",
+            "standardCourse": "",
+            "standardUnitKey": "",
+            "subUnitKey": "",
+            "L1": null,
+            "L2": null,
+            "L3": null,
+            "L4": null,
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaCompleteness": "EVIDENCE_DEBT"
+          },
+          {
+            "uid": "qid_v1_270143d5b2c3727cf66e5118c481836acefb7f7eee9d50c14dad50dda78dd738",
+            "sourceOrdinal": 20,
+            "sourceKind": "original",
+            "standardCourse": "",
+            "standardUnitKey": "",
+            "subUnitKey": "",
+            "L1": null,
+            "L2": null,
+            "L3": null,
+            "L4": null,
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaCompleteness": "EVIDENCE_DEBT"
+          }
+        ]
+      },
+      "searchScreenshot": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-qa.rev3.archive_r3_06/meta-search-main.png",
+      "l2Checks": [
+        {
+          "label": "지수함수의 활용",
+          "optionPresent": false,
+          "targetResultUids": []
+        },
+        {
+          "label": "로그함수의 그래프",
+          "optionPresent": false,
+          "targetResultUids": []
+        },
+        {
+          "label": "로그함수의 활용",
+          "optionPresent": false,
+          "targetResultUids": []
+        }
+      ],
+      "loadedMainSourceHash": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed"
+    },
+    {
+      "flow": "archive2_workspace_exam_finder",
+      "url": "http://127.0.0.1:50822/archive/workspace.html?view=find",
+      "status": "SEARCH_RESULT_FOUND",
+      "initial": {
+        "title": "Archive 2.0 · 교사용 작업공간",
+        "status": "시험 562개 · 전체 13,378문항 · 문제지 만들기에 사용 가능 1,042문항",
+        "findInput": true,
+        "buttons": [
+          {
+            "text": "홈"
+          },
+          {
+            "text": "기출·자료"
+          },
+          {
+            "text": "문제지 만들기"
+          },
+          {
+            "text": "저장한 시험지"
+          },
+          {
+            "text": "출제 내역"
+          },
+          {
+            "text": "자료 점검"
+          },
+          {
+            "text": "•••"
+          },
+          {
+            "text": "자료 점검"
+          },
+          {
+            "text": "홈"
+          },
+          {
+            "text": "기출·자료"
+          },
+          {
+            "text": "문제지 만들기"
+          },
+          {
+            "text": "저장한 시험지"
+          },
+          {
+            "text": "출제 내역"
+          },
+          {
+            "text": "문제지 만들기",
+            "action": "go-compose"
+          },
+          {
+            "text": "학교 기출",
+            "action": "material"
+          },
+          {
+            "text": "기출 외 시험지",
+            "action": "material"
+          },
+          {
+            "text": "전체",
+            "action": "material"
+          },
+          {
+            "text": "검색",
+            "action": "finder-search"
+          },
+          {
+            "text": "1학기 중간",
+            "action": "finder-axis-quick"
+          },
+          {
+            "text": "1학기 기말",
+            "action": "finder-axis-quick"
+          },
+          {
+            "text": "2학기 중간",
+            "action": "finder-axis-quick"
+          },
+          {
+            "text": "2학기 기말",
+            "action": "finder-axis-quick"
+          },
+          {
+            "text": "2026 팔마고 고3 1학기 중간고사",
+            "action": "source-output-direct",
+            "mode": "exam",
+            "exam": "0"
+          },
+          {
+            "text": "시험",
+            "action": "source-output-direct",
+            "mode": "exam",
+            "exam": "0"
+          },
+          {
+            "text": "해설",
+            "action": "source-output-direct",
+            "mode": "sol",
+            "exam": "0"
+          }
+        ],
+        "mainText": "기출·자료 찾기\n\n제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.\n\n문제지 만들기\n학교 기출\n기출 외 시험지\n전체\n⌕\n검색\n학년\n전체 학년\n중1\n중2\n중3\n고1\n고2\n고3\n교육과정\n전체 교육과정\n2015\n2022\n과목\n전체 과목\n중1 · 2학기\n중2 · 1학기\n중2 · 2학기\n중3 · 1학기\n중3 · 2학기\n중1 · 1학기\n수학(상)\n수학(하)\n수학I\n수학II\n확률과통계\n공통수학1\n공통수학2\n대수\n기하\n학교\n전체 학교\n강남여고\n고흥고\n광양제철고\n금당고\n금당중\n동산중\n매산고\n매산여고\n매산중\n문성중\n복성고\n부영여고\n비상\n비상교육\n삼산중\n수피아여고\n순여중\n순천고\n순천여고\n순천여중\n승평중\n신흥중\n여수고\n여수여고\n여천고\n연향중\n왕운중\n왕의중\n율촌중\n이수중\n제일고\n조대부고\n중앙여고\n진남중\n충무고\n팔마고\n팔마중\n풍덕중\n한영고\n향림중\n효천고\nAP수학학원\nRPM\n시험 시기\n전체 시험\n1학기 중간\n1학기 기말\n2학기 중간\n2학기 기말\n연도\n~\n과목 계열\n전체 계열\n공통수학1 계열\n공통수학2 계열\n대수 계열\n미적분 기초 계열\n미적분 심화 계열\n확률과통계\n기하\n시험지 562개\n시험지 확인 · 반·학생 출제\n고3\n기출\n2026 팔마고 고3 1학기 중간고사\n미적분\n1학기 중간\n\n미적분 · 수열의 극한 ~ 도함수의 활용\n\n22문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 강남여고 고2 1학기 중간고사\n대수\n1학기 중간\n\n대수 · 지수와 로그 ~ 삼각함수\n\n25문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 금당고 고2 1학기 기말고사\n대수\n1학기 기말\n\n대수 · 삼각함수 ~ 수열의 합\n\n21문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 금당고 고2 1학기 중간고사\n대수\n1학기 중간\n\n대수 · 지수와 로그 ~ 삼각함수\n\n21문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 금당고 고2 2학기 중간고사\n미적분I\n2학기 중간\n\n미적분I · 함수의 극한 ~ 도함수\n\n21문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 매산고 고2 1학기 중간고사\n기하\n1학기 중간\n\n기하 · 이차곡선 ~ 공간도형\n\n21문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 순천고 고2 1학기 기말고사\n대수\n1학기 기말\n\n대수 · 삼각함수 ~ 수학적 귀납법\n\n24문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 순천고 고2 1학기 중간고사\n대수\n1학기 중간\n\n대수 · 지수와 로그 ~ 삼각함수\n\n24문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 제일고 고2 1학기 기말고사\n공통수학2 · 대수\n1학기 기말\n\n공통수학2 · 직선의 방정식\n대수 · 사인법칙과 코사인법칙 ~ 수학적 귀납법\n\n21문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 제일고 고2 1학기 중간고사\n기하\n1학기 중간\n\n기하 · 이차곡선 ~ 공간도형\n\n23문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기\n고2\n기출\n2026 제일고 고2 2학기 중간고사\n미적분I\n2학기 중간\n\n미적분I · "
+      },
+      "search": {
+        "count": 4,
+        "target": [
+          {
+            "text": "고2\n기출\n2023 매산고 고2 1학기 중간고사\n수학I\n1학기 중간\n\n수학I · 지수의 뜻과 성질 ~ 삼각방정식과 삼각부등식\n\n20문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기",
+            "title": "2023 매산고 고2 1학기 중간고사",
+            "actions": [
+              {
+                "action": "source-output-direct",
+                "mode": "exam",
+                "exam": "561",
+                "text": "2023 매산고 고2 1학기 중간고사"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "exam",
+                "exam": "561",
+                "text": "시험"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "sol",
+                "exam": "561",
+                "text": "해설"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "ans",
+                "exam": "561",
+                "text": "정답"
+              },
+              {
+                "action": "source-issue",
+                "exam": "561",
+                "text": "출제"
+              },
+              {
+                "action": "source-toggle",
+                "exam": "561",
+                "text": ""
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "text": "고2\n기출\n2023 매산고 고2 1학기 중간고사\n수학I\n1학기 중간\n\n수학I · 지수의 뜻과 성질 ~ 삼각방정식과 삼각부등식\n\n20문항\n원본 전체\n시험\n해설\n정답\n출제\n더보기",
+            "title": "2023 매산고 고2 1학기 중간고사",
+            "actions": [
+              {
+                "action": "source-output-direct",
+                "mode": "exam",
+                "exam": "561",
+                "text": "2023 매산고 고2 1학기 중간고사"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "exam",
+                "exam": "561",
+                "text": "시험"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "sol",
+                "exam": "561",
+                "text": "해설"
+              },
+              {
+                "action": "source-output-direct",
+                "mode": "ans",
+                "exam": "561",
+                "text": "정답"
+              },
+              {
+                "action": "source-issue",
+                "exam": "561",
+                "text": "출제"
+              },
+              {
+                "action": "source-toggle",
+                "exam": "561",
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      "metaFoundationProjection": {
+        "available": false
+      },
+      "screenshot": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-qa.rev3.archive_r3_06/workspace-search-main.png"
+    },
+    {
+      "flow": "archive2_workspace_exam_selection",
+      "status": "OPENED",
+      "url": "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam&title=2023+%EB%A7%A4%EC%82%B0%EA%B3%A0+%EA%B3%A02+1%ED%95%99%EA%B8%B0+%EC%A4%91%EA%B0%84%EA%B3%A0%EC%82%AC&subject=%EC%88%98%ED%95%99I&q=20&qpp=4&submitQr=0&solQr=0&portalQr=1&preRegistered=1&assignmentRegistered=1&v=20261006-interaction-audit-2"
+    }
+  ],
+  "metaFilterProjection": {
+    "status": "FAIL",
+    "expectedL2Labels": [
+      "지수함수의 활용",
+      "로그함수의 그래프",
+      "로그함수의 활용"
+    ],
+    "initial": {
+      "title": "공통 Meta 문항 검색 | Archive 2.0",
+      "status": "13,796문항 · 기출/아카이브 13,378 · 생성 418 · 검증 수준은 문항별 근거를 따릅니다.",
+      "sourceOptions": [
+        {
+          "label": "전체",
+          "value": ""
+        },
+        {
+          "label": "기출",
+          "value": "original"
+        },
+        {
+          "label": "생성",
+          "value": "generated"
+        },
+        {
+          "label": "기타 아카이브",
+          "value": "archive"
+        }
+      ],
+      "courseOptions": [
+        {
+          "label": "전체",
+          "value": ""
+        },
+        {
+          "label": "공통수학1",
+          "value": "공통수학1"
+        },
+        {
+          "label": "공통수학2",
+          "value": "공통수학2"
+        },
+        {
+          "label": "기하",
+          "value": "기하"
+        },
+        {
+          "label": "대수",
+          "value": "대수"
+        },
+        {
+          "label": "수학(상)",
+          "value": "수학(상)"
+        },
+        {
+          "label": "수학(하)",
+          "value": "수학(하)"
+        },
+        {
+          "label": "수학I",
+          "value": "수학I"
+        },
+        {
+          "label": "수학II",
+          "value": "수학II"
+        },
+        {
+          "label": "중1 수학",
+          "value": "중1 수학"
+        },
+        {
+          "label": "중2",
+          "value": "중2"
+        },
+        {
+          "label": "중2 수학",
+          "value": "중2 수학"
+        },
+        {
+          "label": "중3",
+          "value": "중3"
+        },
+        {
+          "label": "중3 수학",
+          "value": "중3 수학"
+        },
+        {
+          "label": "확률과 통계",
+          "value": "확률과 통계"
+        }
+      ],
+      "l2Options": [
+        {
+          "label": "전체",
+          "value": ""
+        },
+        {
+          "label": "경우의 수와 순열",
+          "value": "경우의 수와 순열"
+        },
+        {
+          "label": "근호를 포함한 식의 계산",
+          "value": "근호를 포함한 식의 계산"
+        },
+        {
+          "label": "다면체와 회전체",
+          "value": "다면체와 회전체"
+        },
+        {
+          "label": "다항식의 곱셈",
+          "value": "다항식의 곱셈"
+        },
+        {
+          "label": "다항식의 연산",
+          "value": "다항식의 연산"
+        },
+        {
+          "label": "단항식의 계산",
+          "value": "단항식의 계산"
+        },
+        {
+          "label": "대푯값",
+          "value": "대푯값"
+        },
+        {
+          "label": "대푯값과 산포도",
+          "value": "대푯값과 산포도"
+        },
+        {
+          "label": "도수분포표와 상대도수",
+          "value": "도수분포표와 상대도수"
+        },
+        {
+          "label": "도함수의 활용(1)",
+          "value": "도함수의 활용(1)"
+        },
+        {
+          "label": "도함수의 활용(2)",
+          "value": "도함수의 활용(2)"
+        },
+        {
+          "label": "도함수의 활용(3)",
+          "value": "도함수의 활용(3)"
+        },
+        {
+          "label": "도형의 닮음",
+          "value": "도형의 닮음"
+        },
+        {
+          "label": "도형의 이동",
+          "value": "도형의 이동"
+        },
+        {
+          "label": "등차수열과 등비수열",
+          "value": "등차수열과 등비수열"
+        },
+        {
+          "label": "로그",
+          "value": "로그"
+        },
+        {
+          "label": "명제",
+          "value": "명제"
+        },
+        {
+          "label": "미분계수와 도함수",
+          "value": "미분계수와 도함수"
+        },
+        {
+          "label": "벡터의 연산",
+          "value": "벡터의 연산"
+        },
+        {
+          "label": "복소수",
+          "value": "복소수"
+        },
+        {
+          "label": "삼각비",
+          "value": "삼각비"
+        },
+        {
+          "label": "삼각비의 활용",
+          "value": "삼각비의 활용"
+        },
+        {
+          "label": "삼각함수",
+          "value": "삼각함수"
+        },
+        {
+          "label": "삼각함수의 활용",
+          "value": "삼각함수의 활용"
+        },
+        {
+          "label": "삼각형의 무게중심",
+          "value": "삼각형의 무게중심"
+        },
+        {
+          "label": "삼각형의 성질",
+          "value": "삼각형의 성질"
+        },
+        {
+          "label": "삼각형의 외심과 내심",
+          "value": "삼각형의 외심과 내심"
+        },
+        {
+          "label": "상관관계",
+          "value": "상관관계"
+        },
+        {
+          "label": "순열과 조합",
+          "value": "순열과 조합"
+        },
+        {
+          "label": "여러 가지 방정식",
+          "value": "여러 가지 방정식"
+        },
+        {
+          "label": "여러 가지 부등식",
+          "value": "여러 가지 부등식"
+        },
+        {
+          "label": "여러 가지 사각형",
+          "value": "여러 가지 사각형"
+        },
+        {
+          "label": "연립일차방정식의 활용",
+          "value": "연립일차방정식의 활용"
+        },
+        {
+          "label": "원과 부채꼴",
+          "value": "원과 부채꼴"
+        },
+        {
+          "label": "원과 직선",
+          "value": "원과 직선"
+        },
+        {
+          "label": "원의 방정식",
+          "value": "원의 방정식"
+        },
+        {
+          "label": "원주각",
+          "value": "원주각"
+        },
+        {
+          "label": "위치 관계",
+          "value": "위치 관계"
+        },
+        {
+          "label": "이등변삼각형",
+          "value": "이등변삼각형"
+        },
+        {
+          "label": "이차방정식",
+          "value": "이차방정식"
+        },
+        {
+          "label": "이차방정식과 이차함수",
+          "value": "이차방정식과 이차함수"
+        },
+        {
+          "label": "이차방정식의 풀이",
+          "value": "이차방정식의 풀이"
+        },
+        {
+          "label": "이차방정식의 활용",
+          "value": "이차방정식의 활용"
+        },
+        {
+          "label": "이차함수 y=ax²+bx+c의 그래프",
+          "value": "이차함수 y=ax²+bx+c의 그래프"
+        },
+        {
+          "label": "이차함수와 그 그래프",
+          "value": "이차함수와 그 그래프"
+        },
+        {
+          "label": "이항정리",
+          "value": "이항정리"
+        },
+        {
+          "label": "인수분해",
+          "value": "인수분해"
+        },
+        {
+          "label": "일차부등식의 활용",
+          "value": "일차부등식의 활용"
+        },
+        {
+          "label": "일차함수와 그 그래프",
+          "value": "일차함수와 그 그래프"
+        },
+        {
+          "label": "입체도형의 겉넓이와 부피",
+          "value": "입체도형의 겉넓이와 부피"
+        },
+        {
+          "label": "정적분의 활용",
+          "value": "정적분의 활용"
+        },
+        {
+          "label": "제곱근과 실수",
+          "value": "제곱근과 실수"
+        },
+        {
+          "label": "조합",
+          "value": "조합"
+        },
+        {
+          "label": "좌표와 그래프",
+          "value": "좌표와 그래프"
+        },
+        {
+          "label": "지수",
+          "value": "지수"
+        },
+        {
+          "label": "직선의 방정식",
+          "value": "직선의 방정식"
+        },
+        {
+          "label": "집합의 뜻과 포함 관계",
+          "value": "집합의 뜻과 포함 관계"
+        },
+        {
+          "label": "집합의 연산",
+          "value": "집합의 연산"
+        },
+        {
+          "label": "통계적 추정",
+          "value": "통계적 추정"
+        },
+        {
+          "label": "평면좌표",
+          "value": "평면좌표"
+        },
+        {
+          "label": "평행사변형",
+          "value": "평행사변형"
+        },
+        {
+          "label": "평행선과 선분의 길이의 비",
+          "value": "평행선과 선분의 길이의 비"
+        },
+        {
+          "label": "함수",
+          "value": "함수"
+        },
+        {
+          "label": "항등식과 나머지정리",
+          "value": "항등식과 나머지정리"
+        },
+        {
+          "label": "행렬",
+          "value": "행렬"
+        },
+        {
+          "label": "확률분포",
+          "value": "확률분포"
+        },
+        {
+          "label": "확률의 뜻과 활용",
+          "value": "확률의 뜻과 활용"
+        },
+        {
+          "label": "L2-1.1|평면좌표",
+          "value": "L2-1.1|평면좌표"
+        },
+        {
+          "label": "L2-1.2|직선의 방정식",
+          "value": "L2-1.2|직선의 방정식"
+        },
+        {
+          "label": "L2-1.3|원의 방정식",
+          "value": "L2-1.3|원의 방정식"
+        },
+        {
+          "label": "L2-1.4|도형의 이동",
+          "value": "L2-1.4|도형의 이동"
+        },
+        {
+          "label": "L2-2.2|집합의 연산",
+          "value": "L2-2.2|집합의 연산"
+        }
+      ],
+      "hasMetaFoundationOverlay": false
+    },
+    "afterFilters": {
+      "status": "40문항 · 기출/아카이브 40 · 생성 0 · 검증 수준은 문항별 근거를 따릅니다.",
+      "selectedSource": "original",
+      "selectedCourse": "수학I",
+      "l2Options": [
+        {
+          "label": "전체",
+          "value": ""
+        },
+        {
+          "label": "등차수열과 등비수열",
+          "value": "등차수열과 등비수열"
+        },
+        {
+          "label": "삼각함수",
+          "value": "삼각함수"
+        }
+      ],
+      "cards": [
+        {
+          "text": "복성고 · 2023 · 2\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 3\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 5\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 8\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 9\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 10\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 11\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 12\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 14\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 15\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 17\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 20\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "복성고 · 2023 · 22\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 1\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 2\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 4\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 5\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 6\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 7\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 8\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 10\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 11\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 13\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 16\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 19\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 21\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 22\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "제일고 · 2023 · 23\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%EC%A0%9C%EC%9D%BC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 2\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 4\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 5\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 6\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 7\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 8\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 10\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 12\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 17\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 18\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 19\n\n수학I / 수열 / 등차수열과 등비수열 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        },
+        {
+          "text": "팔마고 · 2023 · 20\n\n수학I / 삼각함수 / 삼각함수 / L3 미지정 / L4 미지정 / 난이도 미지정\n\n시험 해설 정답",
+          "hrefs": [
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+            "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1final%2F23_%ED%8C%94%EB%A7%88%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans"
+          ]
+        }
+      ],
+      "targetRows": [
+        {
+          "uid": "qid_v1_2b1ccddf6980388aa40355a56cb6995b7cb8c4776c98465a08d06c58bff2edad",
+          "sourceOrdinal": 10,
+          "sourceKind": "original",
+          "standardCourse": "",
+          "standardUnitKey": "",
+          "subUnitKey": "",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "metaCompleteness": "EVIDENCE_DEBT"
+        },
+        {
+          "uid": "qid_v1_ba1b3382142c68d1c5ead5778c0da30bede55e458cf01c0de16af930cfa2d1d8",
+          "sourceOrdinal": 12,
+          "sourceKind": "original",
+          "standardCourse": "",
+          "standardUnitKey": "",
+          "subUnitKey": "",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "metaCompleteness": "EVIDENCE_DEBT"
+        },
+        {
+          "uid": "qid_v1_5414e6f6f5d90e18bc67e4e548f54ea110501dbda7e4e6ab30781c48a52411f2",
+          "sourceOrdinal": 15,
+          "sourceKind": "original",
+          "standardCourse": "",
+          "standardUnitKey": "",
+          "subUnitKey": "",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "metaCompleteness": "EVIDENCE_DEBT"
+        },
+        {
+          "uid": "qid_v1_1662d05fe77bd46b8d2eb6d06fba2d444e6ceb9132249f49cc6dfd1f1bf3e156",
+          "sourceOrdinal": 18,
+          "sourceKind": "original",
+          "standardCourse": "",
+          "standardUnitKey": "",
+          "subUnitKey": "",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "metaCompleteness": "EVIDENCE_DEBT"
+        },
+        {
+          "uid": "qid_v1_270143d5b2c3727cf66e5118c481836acefb7f7eee9d50c14dad50dda78dd738",
+          "sourceOrdinal": 20,
+          "sourceKind": "original",
+          "standardCourse": "",
+          "standardUnitKey": "",
+          "subUnitKey": "",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null,
+          "problemTypeKey": null,
+          "templateKey": null,
+          "metaCompleteness": "EVIDENCE_DEBT"
+        }
+      ]
+    },
+    "l2Checks": [
+      {
+        "label": "지수함수의 활용",
+        "optionPresent": false,
+        "targetResultUids": []
+      },
+      {
+        "label": "로그함수의 그래프",
+        "optionPresent": false,
+        "targetResultUids": []
+      },
+      {
+        "label": "로그함수의 활용",
+        "optionPresent": false,
+        "targetResultUids": []
+      }
+    ]
+  },
+  "directEngineModes": [
+    {
+      "mode": "exam",
+      "url": "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=exam",
+      "status": "URL_CHANGED",
+      "httpSource": {
+        "status": 200,
+        "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+        "bytes": 39938
+      },
+      "loadedResponses": {
+        "/archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js": {
+          "status": 200,
+          "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+          "bytes": 39938
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q04.png": {
+          "status": 200,
+          "sha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2",
+          "bytes": 266874
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q14.png": {
+          "status": 200,
+          "sha256": "6a0c59805c59729bd8ed2ab788a51bad77ec69cc171918127507f55a31199fba",
+          "bytes": 70252
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg": {
+          "status": 200,
+          "sha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766",
+          "bytes": 1814
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg": {
+          "status": 200,
+          "sha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13",
+          "bytes": 2756
+        }
+      },
+      "metrics": {
+        "count": 20,
+        "renderedNodeCount": 20,
+        "sourceRefs": [
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:1",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:2",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:3",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:4",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:5",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:6",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:7",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:8",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:9",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:10",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:11",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:12",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:13",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:14",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:15",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:16",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:17",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:18",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:19",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:20"
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "mathJaxPresent": true,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "images": [
+          {
+            "src": "http://127.0.0.1:50822/archive/assets/images/23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/q04.png?v=20260903.1",
+            "decoded": true,
+            "naturalWidth": 1320
+          },
+          {
+            "src": "http://127.0.0.1:50822/archive/assets/images/23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/q14.png?v=20260903.1",
+            "decoded": true,
+            "naturalWidth": 1280
+          }
+        ]
+      },
+      "pageErrors": [],
+      "capture": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-qa.rev3.archive_r3_06/main-engine-exam.png",
+        "sha256": "c497d8f5f396d66598dcff6d7411113da8e1833df945ae49d5ead730295325bb",
+        "bytes": 187426
+      },
+      "sourceMode": "DIRECT_ENGINE_QUERY_NO_PRELOADED_SOURCE_STORAGE"
+    },
+    {
+      "mode": "sol",
+      "url": "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=sol",
+      "status": "URL_CHANGED",
+      "httpSource": {
+        "status": 200,
+        "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+        "bytes": 39938
+      },
+      "loadedResponses": {
+        "/archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js": {
+          "status": 200,
+          "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+          "bytes": 39938
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg": {
+          "status": 200,
+          "sha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766",
+          "bytes": 1814
+        },
+        "/archive/assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg": {
+          "status": 200,
+          "sha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13",
+          "bytes": 2756
+        }
+      },
+      "metrics": {
+        "count": 20,
+        "renderedNodeCount": 20,
+        "sourceRefs": [
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:1",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:2",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:3",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:4",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:5",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:6",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:7",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:8",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:9",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:10",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:11",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:12",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:13",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:14",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:15",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:16",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:17",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:18",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:19",
+          "exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#legacy:exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js#ordinal:20"
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "mathJaxPresent": true,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "images": [
+          {
+            "src": "http://127.0.0.1:50822/archive/assets/images/23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/q18-solution.svg?v=20260903.1",
+            "decoded": true,
+            "naturalWidth": 257
+          },
+          {
+            "src": "http://127.0.0.1:50822/archive/assets/images/23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I/q20-solution.svg?v=20260903.1",
+            "decoded": true,
+            "naturalWidth": 257
+          }
+        ]
+      },
+      "pageErrors": [],
+      "capture": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-qa.rev3.archive_r3_06/main-engine-sol.png",
+        "sha256": "1f1c1cf689dce8dbb2b9069d7326d56fced5bfd42804079faf083ec9529e1618",
+        "bytes": 374767
+      },
+      "sourceMode": "DIRECT_ENGINE_QUERY_NO_PRELOADED_SOURCE_STORAGE"
+    },
+    {
+      "mode": "ans",
+      "url": "http://127.0.0.1:50822/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh2%2F1mid%2F23_%EB%A7%A4%EC%82%B0%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99I.js&mode=ans",
+      "status": "URL_CHANGED",
+      "httpSource": {
+        "status": 200,
+        "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+        "bytes": 39938
+      },
+      "loadedResponses": {
+        "/archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js": {
+          "status": 200,
+          "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+          "bytes": 39938
+        }
+      },
+      "metrics": {
+        "count": 20,
+        "renderedNodeCount": 20,
+        "sourceRefs": [
+          "1.",
+          "13.",
+          "2.",
+          "14.",
+          "3.",
+          "15.",
+          "4.",
+          "16.",
+          "5.",
+          "17.",
+          "6.",
+          "18.",
+          "7.",
+          "19.",
+          "8.",
+          "20.",
+          "9.",
+          "10.",
+          "11.",
+          "12."
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "scrollWidth": 1440,
+        "mathJaxPresent": true,
+        "mathJaxSource": "local",
+        "mathErrors": 0,
+        "images": []
+      },
+      "pageErrors": [],
+      "capture": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/R3.post-main-qa.rev3.archive_r3_06/main-engine-ans.png",
+        "sha256": "761092a1b5573ceb4674269c0d3b28c2f6c92b559e2bd118491cd5d4f244158c",
+        "bytes": 25563
+      },
+      "sourceMode": "DIRECT_ENGINE_QUERY_NO_PRELOADED_SOURCE_STORAGE"
+    }
+  ],
+  "consolePageErrors": [],
+  "assertions": {
+    "sourceIdentityAndCount": true,
+    "allFourAssetsMatch": true,
+    "newL2FilterProjection": false,
+    "directEngineExamSolAns": true,
+    "storageCopyNotRequired": true
+  },
+  "verdict": "FAIL",
+  "serverReads": [
+    {
+      "path": "archive/problem-bank-search.html",
+      "sha256": "dcbde7add566daf920271b540dca88d1c972f2f5c2a06a7c46bb7cefc8296d81",
+      "bytes": 9001
+    },
+    {
+      "path": "archive/mixer-selector.js",
+      "sha256": "1cd4e6786d2a465ff4ce4fc0571b3feabd933eb8113f1fdad013260ab03e76a5",
+      "bytes": 27112
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "sha256": "20c89db997b24e67db23254595446e82200a96b8c8ab6da9168ff0661acfd9b2",
+      "bytes": 45675
+    },
+    {
+      "path": "archive/archive2-core.js",
+      "sha256": "e3f286eff21dff62dc41a677db6632d028bc068fbccadd2b5e58283402f012e3",
+      "bytes": 35653
+    },
+    {
+      "path": "archive/problem-bank-meta.js",
+      "sha256": "546416f27150fc87770000d20bf8b25fbf044d1dee4d5bab9b73a1cfa029fc59",
+      "bytes": 7600
+    },
+    {
+      "path": "archive/archive2-source.js",
+      "sha256": "6543d8db91780f4569d9617bdd6adbf5eaee2e49445728d7fd94012aff109be9",
+      "bytes": 11409
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "sha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "bytes": 28696436
+    },
+    {
+      "path": "archive/data/generated-lite-consumer/v1/index.json",
+      "sha256": "57a08e0317466d3de8fa7e088c65000fc8ceb40cc6a6d6e840386ec0a7152035",
+      "bytes": 2225065
+    },
+    {
+      "path": "archive/workspace.html",
+      "sha256": "5c2bc99715872bcb78ca4842d9b1a74387b5e92f9679c3bdbaae0f84c13ee9be",
+      "bytes": 2393
+    },
+    {
+      "path": "archive/archive-session.js",
+      "sha256": "945aeb92b53c871736fb441790fa455cf5cf816cbe46621b98364625c18580af",
+      "bytes": 2161
+    },
+    {
+      "path": "archive/archive2.css",
+      "sha256": "b8bd9b7338afda7ecc44265a678c3b69e488775bf5a9a1c394667a44a140bc56",
+      "bytes": 51311
+    },
+    {
+      "path": "archive/archive2-history.css",
+      "sha256": "e56030e007dd6ea6c9aa80622744e0b732e1f55aa7b300ede5466f00112dc38f",
+      "bytes": 5898
+    },
+    {
+      "path": "archive/archive2-navigation.css",
+      "sha256": "ce11f84c7ac6a2708409b4ee0b5a2845dd0d997abcc992f1e6ae364da0d7351a",
+      "bytes": 10171
+    },
+    {
+      "path": "archive/archive2-navigation.js",
+      "sha256": "6b192f267f9cedb2215e14eae021ab8d259218b94e31d318117d8b388a39f855",
+      "bytes": 6451
+    },
+    {
+      "path": "archive/archive2-output-contract.js",
+      "sha256": "89aad418459a73bdbbe7d8a3834f39fda8c8ebf9788abcf551ec846199197976",
+      "bytes": 9035
+    },
+    {
+      "path": "archive/archive2-output.js",
+      "sha256": "ce7066c9c1817fd9c7fea3e199e86d403fb7474bb2a5a739c7796ce0e8ee1aeb",
+      "bytes": 22880
+    },
+    {
+      "path": "archive/archive2-papers.js",
+      "sha256": "b6caa3082d1eb55ffc9f481f11b48c69a1d5e57eeb2efa74984380c7ab8454aa",
+      "bytes": 1152
+    },
+    {
+      "path": "archive/meta-foundation-runtime.js",
+      "sha256": "d58f74d1fc2c77ed6b86143fdd2af039cc551fce5efb935186099f5e698af680",
+      "bytes": 13689
+    },
+    {
+      "path": "archive/archive2-history.js",
+      "sha256": "2be66691d30f01b234cb5405bfef693088dae97921090eb6d315dff8ee0dc9ec",
+      "bytes": 7292
+    },
+    {
+      "path": "archive/archive2-library.js",
+      "sha256": "6f5cc2ee32d7ad8cf9fe0f99ebab4ae6dda36eec66141bf35fdfae9f5774065b",
+      "bytes": 28379
+    },
+    {
+      "path": "archive/archive2-workspace.js",
+      "sha256": "6cb234bbedef8e21a93fc1ce4fe9291ac32ebe4671fccc70326c599d72a87778",
+      "bytes": 193289
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "sha256": "9a961b1190dffdb94c42a3e687cd222c33e10ec2c4dea830a58bfc13ae9afee1",
+      "bytes": 9014
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "bytes": 558996
+    },
+    {
+      "path": "archive/data/archive2-canonical-projection-policy.json",
+      "sha256": "375264f1a619ae1e6a5f40f61e73fd8f977b7b8caee6973572412083b0562de1",
+      "bytes": 13272
+    },
+    {
+      "path": "archive/data/archive2-item-review-overrides.json",
+      "sha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1",
+      "bytes": 256446
+    },
+    {
+      "path": "archive/data/basic-scope-parent-links.json",
+      "sha256": "3368d3662af2b02b9eb7812983862b94f233693e26bab5ae7a468e6106868680",
+      "bytes": 1646254
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+      "bytes": 1655704
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+      "bytes": 743114
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "sha256": "385b7c8de6a25ed5a27c6018095a2b61c1be0a747232cd4800bd709ea0e01c6c",
+      "bytes": 965464
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "sha256": "3c2f08fbe5a37f14368e4b430f3a1a6368b7fa8d99682a852b4911b19289c5b0",
+      "bytes": 745118
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "sha256": "7832615023442f4452d31078270688a8f925bb3a33fd15597f618445940999bc",
+      "bytes": 930443
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "bytes": 309698
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "sha256": "3357a57c1d1512f08c9f87c61da020669d9b47bd06a6f106629a4f70d786acd4",
+      "bytes": 243759
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "sha256": "e1792cf59676b1d91b2e07ede931547497307832d8455d1d20403f0de311b4c3",
+      "bytes": 550599
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "sha256": "1eb818dc465fc03a0563cc07f4fe3a3e72af64c064a05b84de951bb96d2cf5c7",
+      "bytes": 1286679
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "sha256": "5ef9533b1c44e4b3567c63325d7076eaf4d6c47b75f7786a618c199a6b72711a",
+      "bytes": 2342921
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "sha256": "e49d8eeef5e41be4d5ebe6a7065fbdae1b8fb26e874eecfba56d9ca2c9d41a4c",
+      "bytes": 1158528
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "sha256": "84e51ad83d970469d0dac87a8a7a35e3097a2b806c5c3dc1eac664cd4400b2d6",
+      "bytes": 3672527
+    },
+    {
+      "path": "archive/data/archive2-crosswalk-inventory.json",
+      "sha256": "fcc288bc5d7f0a37e1f3d2fee3ceaea58235e969c8f36af66cacf225506f2307",
+      "bytes": 26540
+    },
+    {
+      "path": "archive/engine.html",
+      "sha256": "4f335aee010e092c25a3dd428ff1aaf2f81ec39209c0669b162f1c042fd162c5",
+      "bytes": 183473
+    },
+    {
+      "path": "archive/archive2-review.js",
+      "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+      "bytes": 407
+    },
+    {
+      "path": "archive/archive2-review.css",
+      "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+      "bytes": 476
+    },
+    {
+      "path": "archive/archive2-pdf-readiness.js",
+      "sha256": "ddb6b6b2fb3d58b7d2cc87de3fa6244fd7489fae321493df0e835bc25a35cfd2",
+      "bytes": 5020
+    },
+    {
+      "path": "archive/vendor/qrious/qrious.min.js",
+      "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+      "bytes": 17579
+    },
+    {
+      "path": "archive/vendor/html2canvas/html2canvas.min.js",
+      "sha256": "e87e550794322e574a1fda0c1549a3c70dae5a93d9113417a429016838eab8cb",
+      "bytes": 198689
+    },
+    {
+      "path": "archive/native_print.js",
+      "sha256": "ff79950e52285419d9b88ea4c5ef3bdbbd2acb564bce851c3542f7b53aa48072",
+      "bytes": 18120
+    },
+    {
+      "path": "archive/print_image_optimizer.js",
+      "sha256": "03aee33c5790d35ca829d7d53752a0937f7a6852807a7ad605e59dc6b900b8e6",
+      "bytes": 7210
+    },
+    {
+      "path": "archive/mathjax_render_loop.js",
+      "sha256": "367b73892bee7b7b97db6d1cf64586a1840ff282b4336d279602ade8af9490ef",
+      "bytes": 3452
+    },
+    {
+      "path": "archive/concept_map.js",
+      "sha256": "7972e247e5b1379bd837f720a6607bc60d48e42a9d987a5c6e7a342f6d5cefe9",
+      "bytes": 8232
+    },
+    {
+      "path": "archive/question-meta.js",
+      "sha256": "4ed00cf44356e1a4c50181dfe4e0461a4b8c0f4414e97bc299a1e0c0b8c3be1e",
+      "bytes": 27301
+    },
+    {
+      "path": "archive/print-contract.js",
+      "sha256": "6bcd0fba50c8b8def0b350de0f66dd8016c762875935d1a295b1198329bea344",
+      "bytes": 27137
+    },
+    {
+      "path": "archive/render-authority.js",
+      "sha256": "95ab1f47972c21b99ad1b5213632c45f7ec71114d48d32d5c210a8535b822092",
+      "bytes": 26710
+    },
+    {
+      "path": "archive/layout-authority.js",
+      "sha256": "1226f363df7ea0b760fecee650a799ff27d0cdbb500fc40eebb6dd3752a059c1",
+      "bytes": 83652
+    },
+    {
+      "path": "archive/layout-materializer.js",
+      "sha256": "bcb296557df4ae887bbf2d06a7c0facdd6da4e543606207a439429ddef690834",
+      "bytes": 11206
+    },
+    {
+      "path": "archive/solution-render-executor.js",
+      "sha256": "086b16e441d5d39381ee800b155a65d0893905a76bc6650b6d0bbd7ce9c074ba",
+      "bytes": 29739
+    },
+    {
+      "path": "archive/answer-render-executor.js",
+      "sha256": "69956925c578f3891c92f91c0dad3555523a1479b4b477742b4d1ff57e0c9fec",
+      "bytes": 3075
+    },
+    {
+      "path": "archive/equal-slot-engine.js",
+      "sha256": "21c02803d261f63db3fd05a29bf438039dbb9faecd8be35ff6f868b034e22e39",
+      "bytes": 20276
+    },
+    {
+      "path": "archive/equal-slot-engine.css",
+      "sha256": "a31fe14fbd28a306ee2f052dc9b0dc51c4fd54c850aa6baf1274974993a7c261",
+      "bytes": 1828
+    },
+    {
+      "path": "archive/exam-render-executor.js",
+      "sha256": "be52837114679e8388e275d2c6dc3b6929c12bb8f97bd23d1d43935bcdf1f87d",
+      "bytes": 24307
+    },
+    {
+      "path": "archive/render-state-normalizer.js",
+      "sha256": "7e25eff5f1194601134b30abda16f2229e0ac5b65b6c3654ac91e148d19d5d20",
+      "bytes": 7058
+    },
+    {
+      "path": "archive/side-effect-ledger.js",
+      "sha256": "00cb757605d329bad73e5ff53c1c3ee71c2ceb54083661303a2a440c6e7cc9ff",
+      "bytes": 2816
+    },
+    {
+      "path": "archive/screen-runtime.js",
+      "sha256": "ca60624a8c57beb72c89688e9837ad3cbd1d972a1ee163894169fb1e26f60d02",
+      "bytes": 19294
+    },
+    {
+      "path": "archive/snapshot-contract.js",
+      "sha256": "b3aba93b43c81980fec9ef336aa5c33b6f38e628635a344b8637293e7b9a1cc1",
+      "bytes": 5845
+    },
+    {
+      "path": "archive/review-preview-bridge.js",
+      "sha256": "cb648c3f3ad29300e8ee5b2e8dff8196b42df9ed1b7bcdd7842ca16f7adf62f8",
+      "bytes": 20086
+    },
+    {
+      "path": "archive/question-image-readiness.js",
+      "sha256": "57eea0ebab7b813d6de500a3b417400036712a04e286c2386174cf95f036044d",
+      "bytes": 6947
+    },
+    {
+      "path": "archive/screen-runtime-adapter.js",
+      "sha256": "b1be87d3450f6f514299bbf9578a04a64ce1cd463a2f6c43bddf7388ab083b25",
+      "bytes": 39197
+    },
+    {
+      "path": "archive/print-runtime.js",
+      "sha256": "9ef9af4073c7f9685c74060ca81c9116cf7ed9a133e6973ac099da892a9f125b",
+      "bytes": 4086
+    },
+    {
+      "path": "archive/css/js-archive-theme-override.css",
+      "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+      "bytes": 15557
+    },
+    {
+      "path": "archive/archive2-preview-mobile.css",
+      "sha256": "f09397f04fea96ed4980f0ba3cfd0e2670811365098ddf92a5a32a67fca3cd51",
+      "bytes": 10493
+    },
+    {
+      "path": "archive/archive2-reader-controls.css",
+      "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+      "bytes": 3687
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+      "sha256": "b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+      "bytes": 968520
+    },
+    {
+      "path": "archive/archive2-reader-controls.js",
+      "sha256": "a97dc7812d2bf4cbc63aac54e26b9ee6323afc161033bf0c52f26d0078f751f6",
+      "bytes": 7809
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "690bfee3ea2aed049b48244885bbfbfaa6c21e22d664765307ef2d059f260575",
+      "bytes": 33848270
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+      "sha256": "baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+      "bytes": 2460
+    },
+    {
+      "path": "archive/exams/original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+      "sha256": "0e56431a868ca59f8a573e09b3fc8db9a15152528621e3bfa7b5d70ad19e7fed",
+      "bytes": 39938
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q04.png",
+      "sha256": "b5200307293df2f9e5cd87962677b2ad131ddf8f593f55e43f34402b35118ae2",
+      "bytes": 266874
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q14.png",
+      "sha256": "6a0c59805c59729bd8ed2ab788a51bad77ec69cc171918127507f55a31199fba",
+      "bytes": 70252
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+      "sha256": "2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+      "bytes": 960
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+      "sha256": "4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+      "bytes": 980
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/speech-worker.js",
+      "sha256": "80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+      "bytes": 425256
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+      "sha256": "fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+      "bytes": 164864
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+      "sha256": "0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45",
+      "bytes": 6472
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+      "sha256": "07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+      "bytes": 2560
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+      "sha256": "72558700556d997a95e9281044e330eba9a472dda43642a9b5cc0483294d875f",
+      "bytes": 217157
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+      "sha256": "5e60d1843351966a159cc409eb73e9abc7c7e375a3311c40d35843d70fee79fb",
+      "bytes": 364204
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+      "sha256": "16f30ad5bc7db02bbcce4623b108626f1a73d65660799891f23efd76dcaa333e",
+      "bytes": 227472
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg",
+      "sha256": "a230cdfc94bf93218c943d8dcdfe6ef437311a6e4889b6c08b78b4915d47e766",
+      "bytes": 1814
+    },
+    {
+      "path": "archive/assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg",
+      "sha256": "b86405c9a630682255087b92c37711fe7d7862a2ba2eef64d26f7e4145dd1d13",
+      "bytes": 2756
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-lo.woff2",
+      "sha256": "98b20475232f47749126ae098177b5c71d3b6512e068efedb3a912c2c8f6ed0f",
+      "bytes": 5160
+    }
+  ]
+}

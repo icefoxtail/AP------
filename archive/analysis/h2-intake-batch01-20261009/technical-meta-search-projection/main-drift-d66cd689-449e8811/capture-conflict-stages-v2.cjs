@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
+const root=process.cwd(), ev=path.join(root,'archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811');
+const files=['archive/data/archive2-catalog.json','archive/data/archive2-canonical-input-manifest.json'];
+const stageDir=path.join(ev,'conflict-stage-snapshots'); fs.mkdirSync(stageDir,{recursive:true});
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const run=(args,maxBuffer=1024*1024)=>{const r=cp.spawnSync('git',args,{cwd:root,encoding:null,maxBuffer});if(r.status!==0)throw new Error(`git ${args.join(' ')} failed status=${r.status} error=${r.error||''} stderr=${String(r.stderr||'')}`);return r.stdout};
+const capture={head:run(['rev-parse','HEAD']).toString('utf8').trim(),mergeHead:run(['rev-parse','MERGE_HEAD']).toString('utf8').trim(),unmergedIndex:run(['ls-files','-u']).toString('utf8'),files:[]};
+for(const file of files){const row={path:file,stages:{}};for(const stage of [1,2,3]){const oid=run(['rev-parse',`:${stage}:${file}`]).toString('utf8').trim();const bytes=run(['cat-file','blob',oid],128*1024*1024);const out=path.join(stageDir,file.replaceAll('/','__')+`.stage${stage}.bin`);fs.writeFileSync(out,bytes);row.stages[stage]={blobSha1:oid,sha256:sha(bytes),size:bytes.length,snapshot:path.relative(root,out).replaceAll('\\','/')}}const bytes=fs.readFileSync(path.join(root,file));const out=path.join(stageDir,file.replaceAll('/','__')+'.worktree.bin');fs.writeFileSync(out,bytes);row.worktree={sha256:sha(bytes),size:bytes.length,snapshot:path.relative(root,out).replaceAll('\\','/')};capture.files.push(row);}
+const listing=path.join(ev,'git-ls-files-unmerged.raw.txt');fs.writeFileSync(listing,capture.unmergedIndex);capture.unmergedIndexPath=path.relative(root,listing).replaceAll('\\','/');
+const receipt=path.join(ev,'conflict-snapshot-receipt.v1.json');fs.writeFileSync(receipt,JSON.stringify(capture,null,2)+'\n');console.log(JSON.stringify(capture,null,2));

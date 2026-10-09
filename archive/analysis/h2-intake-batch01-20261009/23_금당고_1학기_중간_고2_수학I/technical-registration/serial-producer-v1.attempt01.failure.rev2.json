@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "ARCHIVE2_TARGET_PRODUCER_ATTEMPT_FAILURE_V1",
+  "revision": 2,
+  "supersedes": { "path": "serial-producer-v1.attempt01.failure.json", "reason": "first note used a placeholder for the stderr hash" },
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "command": "node archive/tools/prepare-target-registration-candidate.mjs ... --candidate-root .tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/registration-canonical-root ...",
+  "exitCode": 1,
+  "reason": "Candidate path was incorrectly scoped under the target exam; ROOT assigned one shared candidate under the Gangnam Math I worktree.",
+  "stdoutCaptured": false,
+  "stderrPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/serial-producer-v1.stderr.txt",
+  "stderrSha256": "c5c544dcf598b3a5b26aa2c032a357a393d181505ef56cf12c37a3ac679ea41d",
+  "mainRegistryWrites": false,
+  "qualityVerdict": false
+}

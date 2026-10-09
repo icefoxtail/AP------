@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1",
+  "status": "APPLIED_PENDING_VALIDATORS",
+  "runId": "h2-intake-batch01-20261009",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "head": "bd43c9d3f2b59557068afd282003f8478b8cb3f5",
+  "sourceArtifactSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+  "sourceArtifactBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01",
+  "targetQidSet": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "targetCounts": {
+    "identity": 25,
+    "metadata": 25,
+    "index": 25,
+    "catalog": 25,
+    "db": 1
+  },
+  "nonTargetInvariant": {
+    "dbExamRows": 564,
+    "identityRows": 13431,
+    "metadataRows": 13431,
+    "indexRows": 13423,
+    "catalogRows": 13423,
+    "allPreservedByDeepComparison": true,
+    "identityRuntimeTuplesPreserved": true
+  },
+  "metaProjection": {
+    "targetFieldStatusCounts": {
+      "standardUnit=approved_source": 25,
+      "subUnit=approved_source": 25,
+      "concept=manual_review_pending": 25,
+      "problemType=manual_review_pending": 25,
+      "template=manual_review_pending": 25,
+      "difficulty=approved_source": 25
+    },
+    "targetNullProblemType": 18,
+    "targetNullTemplate": 18,
+    "semanticFieldsCopiedUnchanged": true
+  },
+  "catalog": {
+    "records": 13448,
+    "exams": 565,
+    "identityDigest": "61ead7d9478452ae73025236d1ce576c843b54a2b539aa3db11b4b1a00e79b00",
+    "indexVersion": "bd13d0cbe6fe5899fc54bc54eb8fda5c2c551a5b1955d7f2c82e723f445d3799",
+    "projectionVersion": "archive2-canonical-v1:ea65f15e9a05c2f0b0b9d29ff173357eebbb1d5dd333d04566c7a366e76b9e87",
+    "targetAutomaticCount": 0
+  },
+  "assets": [
+    {
+      "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q16.png",
+      "sha256": "de7b2a0e108fced35eb682b130b8b1434b6c530b351cccc350e8684150e9b2b8",
+      "expectedSha256": "de7b2a0e108fced35eb682b130b8b1434b6c530b351cccc350e8684150e9b2b8"
+    },
+    {
+      "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q18.png",
+      "sha256": "a7687ff2b3f447e963f1b37ce6524b5886cf8e5fb91383832413355eb8485623",
+      "expectedSha256": "a7687ff2b3f447e963f1b37ce6524b5886cf8e5fb91383832413355eb8485623"
+    },
+    {
+      "ref": "assets/images/24_강남여고_1학기_중간_고2_대수/q24.png",
+      "sha256": "0f8c1ee47856b02f3df184d87db0a3fda5d68385a5ca0659033b2f3c42325a7b",
+      "expectedSha256": "0f8c1ee47856b02f3df184d87db0a3fda5d68385a5ca0659033b2f3c42325a7b"
+    }
+  ],
+  "changedFiles": [
+    {
+      "path": "archive/db.js",
+      "beforeSha256": "33a3a94f277af5510f9e668c3d75c8ac3fcb79d7dcf085de76eeaf7dd8b3f5eb",
+      "afterSha256": "806d8bc92186aba2f9af0c3493ca5cb48b4e91c7a27dfc7bbf8f6d358b4df22e"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeSha256": "90f9fc7f7e84cd99b49ff8e3fe0d082d90230dc350fb5fca98feb70e5f42ddac",
+      "afterSha256": "1b4fade56aae3bfd03594b0b134d41f04e15e2a17ed9539c9daf27fea326e531"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeSha256": "938b56667ba53b7df9582aa2db555e103a90763afbb7acfca027a55c2858dfcd",
+      "afterSha256": "0d19570f9272717035ab6999ddf511b9c77472f88ae35ee0edc7094b5e826419"
+    },
+    {
+      "path": "archive/question-identity.js",
+      "beforeSha256": "6014acc8c22e2bcccbdc0649bee64affc3227eaaab1cb805c470b5d3a133481b",
+      "afterSha256": "259c8f25e14648429b1690c45d4ac7c72fd68a3a21800b92961b268c54c53cc0"
+    },
+    {
+      "path": "archive/question-index.js",
+      "beforeSha256": "1800af4d349998a1359480c35db7e65d8c88237559306deba6afba15d56d1ea5",
+      "afterSha256": "a1d31c53a9a6fdabb983b4a6996741486f711e012432a7290e6f3df1411eda95"
+    },
+    {
+      "path": "archive/question-index-report.md",
+      "beforeSha256": "dbfaa871fea35ad9c4c7c189157e8435fc915fd4176405e07237c9e710fee340",
+      "afterSha256": "e3e49070002b7ee3fc1a130742ed65041f4400695b8035f13975fe0f3b7180df"
+    },
+    {
+      "path": "archive/question-index-audit.md",
+      "beforeSha256": "73985a7ff226a55a1994a6e80b55bb4f57d73ae128cc9acf2012dea63a167fa8",
+      "afterSha256": "7b3168e25d4aa03de7aeb061d3f7ad85c70cbb4e88dcd70d44b0b0910814f571"
+    },
+    {
+      "path": "archive/data/archive2-catalog.json",
+      "beforeSha256": "35f7dfadfc86f434ddd4849f1aba0156ffa9fcd415807e1cefbf49e8046a2330",
+      "afterSha256": "2d174bc1bfc160881c2b9accf6f3f364bfbbcef4cb04a9c943c5d953d6ef3369"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "beforeSha256": "7674780c3aab4b283df5b135172b49fb53a69b0f9a8fda0891d6f3526f06bff0",
+      "afterSha256": "562b2a51937282f70cf42f3eb4316bd87ca7a52bbb59629665682d432983a584"
+    }
+  ],
+  "checks": {
+    "baselineSnapshotExact": true,
+    "targetOrdinalCoverage": true,
+    "nonTargetRowsUnchanged": true,
+    "sourceAssetHashesMatch": true,
+    "sourceStatusVerified": true,
+    "manifestGeneratedFromCurrentCatalog": true
+  },
+  "createdAt": "2026-10-09T15:41:14.304Z"
+}

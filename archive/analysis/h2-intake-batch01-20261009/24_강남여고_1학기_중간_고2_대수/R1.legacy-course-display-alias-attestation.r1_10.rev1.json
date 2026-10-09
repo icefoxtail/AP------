@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_BOUNDED_LEGACY_DISPLAY_ALIAS_ATTESTATION_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "examUid": "24_강남여고_1학기_중간_고2_대수",
+  "decision": "R1_CONFIRMS_H15_MATH_I_DISPLAY_ALIAS_FOR_THIS_TARGET_ONLY",
+  "scope": {
+    "currentSourceRawSha256": "7682d45aa112f60403a32f1333def73d8598dfc12715a17a3726b708d40c469f",
+    "currentSourceBufferBlobSha1": "829ee06ee6275c5106db0cd5286e0f2db42f8a01",
+    "productionPath": "archive/exams/original/high/h2/1mid/24_강남여고_1학기_중간_고2_대수.js",
+    "questionCount": 25,
+    "reviewedQids": "1-25",
+    "sourceField": "standardCourse",
+    "sourceFieldValue": "수학I",
+    "sourceCurriculumFamily": "H15-M1",
+    "observedStandardUnitKeys": ["H15-M1-01", "H15-M1-02", "H15-M1-03", "H15-M1-04", "H15-M1-05", "H15-M1-06", "H15-M1-07"],
+    "legacyUidSuffix": "대수",
+    "approvedDisplaySubject": "수학I",
+    "normalizationScope": "DISPLAY_ALIAS_ONLY_FOR_THIS_EXAMUID_AND_SOURCE_SHA"
+  },
+  "r1Judgment": {
+    "finding": "All 25 current R1 question rows use standardCourse 수학I; their standardUnitKey values are exclusively H15-M1-01 through H15-M1-07 and current canonical L1 labels are the 2015 Math I units. Current question content includes exponent, logarithm, trigonometric-value, and function items. The UID suffix 대수 is a legacy display token and does not describe the current source course.",
+    "basis": "Current source-bound R1 curriculumIdentityAudit and full 25-row Meta review; the legacy filename/suffix was not used alone to infer the course.",
+    "sourceOrMetaMutation": false,
+    "pdfOpened": false,
+    "pdfReason": "No question transcription or condition defect; current extracted JS and independently reviewed H15-M1 fields establish the course identity."
+  },
+  "allowedConsumerUse": {
+    "useDisplayAlias": true,
+    "displaySubject": "수학I",
+    "preserveExamUidExactly": true,
+    "preserveSourceFileAndProductionPathExactly": true,
+    "preserveStandardCourseAndEveryMetaFieldExactly": true,
+    "globalAliasOrSuffixRuleCreated": false
+  },
+  "evidenceRefs": [
+    {"path":"archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.evidence.r1_10.20261009.rev4.bound.json","sha256":"e7590ad859348cfb3941e031c8de6dc32286c5450d2b5319b4cea661cd5a1830"},
+    {"path":"archive/analysis/h2-intake-batch01-20261009/24_강남여고_1학기_중간_고2_대수/R1.current-student-parity.after-L2.r1_10.rev1.json","sha256":"c6ab266d5d59dcf7b5812decf0657356e5f66018d8c41f255b2085eb0865b537"},
+    {"path":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md","sha256":"d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"}
+  ]
+}

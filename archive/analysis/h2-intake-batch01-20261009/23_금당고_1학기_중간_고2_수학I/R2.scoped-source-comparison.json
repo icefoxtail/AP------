@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_SCOPED_SOURCE_COMPARISON_V1",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "reviewerIdentity": {
+    "role": "archive_r2",
+    "reviewerId": "/root/r2_04"
+  },
+  "sourcePdf": {
+    "absolutePath": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(1)1중간\\수1\\2023_금당고2_수1_1중간.pdf",
+    "rawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+    "actualPdfPagesRendered": 0,
+    "actualPdfFullDocumentReviewed": false
+  },
+  "sourceScope": "QID_SCOPED_ONLY",
+  "sourceQids": [
+    9,
+    10,
+    18,
+    19
+  ],
+  "sourceRegions": [
+    {
+      "opened": true,
+      "cropSha256": "3ee97b41868652ef00400b68b70a8b1dfa156136b851e7f8bc90dbbbb380359a",
+      "qid": 9,
+      "crop": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q09-page2-crop.png",
+      "page": 2
+    },
+    {
+      "opened": true,
+      "cropSha256": "c8b508b36902814b2e280c542817bd005042e08ea3cc407c954ff7c52d97c6c2",
+      "qid": 10,
+      "crop": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q10-page2-crop.png",
+      "page": 2
+    },
+    {
+      "opened": true,
+      "cropSha256": "9b7fc1cce968bcea1e90e2b2758a87a9b3f039994d4da6d2d88c3f128232c380",
+      "qid": 18,
+      "crop": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q18-page3-crop.png",
+      "page": 3
+    },
+    {
+      "opened": true,
+      "cropSha256": "7211133a7f648939cd78ae7dc932bf547a16a233c7daa9ac06d8f147e74ee0fa",
+      "qid": 19,
+      "crop": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q19-page4-crop.png",
+      "page": 4
+    }
+  ],
+  "baselineParity": {
+    "studentBundleSha256": "fb540de2bef9c0dbfe4ed934401e38b59cd0c81e1b8245928591d9c52ddf27c5",
+    "sourceRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+    "studentOnlyParity": "EXACT",
+    "interpretation": "R2 postfreeze extractor verified exact full-bundle student parity against current JS; source crops match printed student statements/choices in scoped qids."
+  },
+  "findings": [
+    {
+      "fact": "The printed log base is a-1, its argument is -a^2+6a-5, and options are 5,9,10,14,19. Valid integer a values are 3 and 4; sum 7 is not offered.",
+      "finding": "SOURCE_QUESTION_DEFECT",
+      "qid": 9
+    },
+    {
+      "fact": "The source states a,b are positive and not 1. This permits both signs of log_a 3 and log_b 3; satisfying conditions yields expression values 18 and 270/7. The printed statement contains no a,b>1 restriction.",
+      "finding": "SOURCE_QUESTION_AMBIGUITY",
+      "qid": 10
+    },
+    {
+      "fact": "The source condition and choices match the student bundle. For m<=12, there are 22 pairs; for m>=12, there are 67 including m=12, so 85 distinct pairs total. 85 is not offered.",
+      "finding": "SOURCE_QUESTION_DEFECT",
+      "qid": 18
+    },
+    {
+      "fact": "The source states a>=1 and circle area 13π/4. With t=3^a>=3, the required equation t^2+(t-6)^2=13 is impossible because its minimum is 18.",
+      "finding": "SOURCE_QUESTION_DEFECT",
+      "qid": 19
+    }
+  ],
+  "conclusion": "All four printed student statements and listed choices match the current student bundle; findings are in the original exam, not extraction transcription. No source-backed student-field repair is available.",
+  "answerMarksUsedAsEvidence": false,
+  "answerSheetOrSolutionConsulted": false
+}

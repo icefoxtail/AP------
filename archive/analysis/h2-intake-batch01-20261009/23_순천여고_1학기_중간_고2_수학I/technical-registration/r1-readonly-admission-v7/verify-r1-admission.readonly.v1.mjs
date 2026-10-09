@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { pathToFileURL } from 'node:url';
+const root=process.cwd();
+const bindingPath='archive/analysis/h2-intake-batch01-20261009/23_순천여고_1학기_중간_고2_수학I/technical-registration/r1-readonly-admission-v7/r1-readonly-binding.v1.json';
+const b=JSON.parse(fs.readFileSync(bindingPath,'utf8'));
+const sourceBytes=fs.readFileSync(b.currentWorkingJs);
+const sourceRawSha256=crypto.createHash('sha256').update(sourceBytes).digest('hex');
+const sourceGitBlobSha1=crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${sourceBytes.length}\0`),sourceBytes])).digest('hex');
+if(sourceRawSha256!==b.artifactRawSha256||sourceGitBlobSha1!==b.validatorRawBufferBlobSha1)throw new Error('READ_ONLY_SOURCE_BINDING_MISMATCH');
+const ctx={window:{},console:{log(){},warn(){},error(){}}};ctx.globalThis=ctx;vm.createContext(ctx);vm.runInContext(sourceBytes.toString('utf8'),ctx,{filename:b.currentWorkingJs,timeout:5000});
+const bank=ctx.window.questionBank||ctx.window.questions||ctx.questionBank||ctx.questions;
+const {verifyR1EvidenceBinding}=await import(pathToFileURL(path.join(root,'archive/tools/prepare-target-registration-candidate.mjs')).href);
+const assignment={examUid:b.examUid,artifactRawSha256:b.artifactRawSha256,validatorRawBufferBlobSha1:b.validatorRawBufferBlobSha1,r1EvidencePath:b.r1EvidencePath,r1EvidenceSha256:b.r1EvidenceSha256,r1ValidationPath:b.r1ValidationPath,r1ValidationSha256:b.r1ValidationSha256};
+const result=verifyR1EvidenceBinding({root,evidencePath:b.r1EvidencePath,validationPath:b.r1ValidationPath,assignment,examUid:b.examUid,bank});
+console.log(JSON.stringify({status:'PASS',qids:result.evidence.rows.length,validationDisposition:result.validation.disposition,issues:result.validation.issues.length,acceptedVerdicts:[...new Set(result.evidence.rows.map(r=>r.verdict))],bindingProjectionQids:result.evidence.rows.filter(r=>String(r.axisEvidence?.META?.status||'').includes('BINDING_PENDING')||String(r.axisEvidence?.META?.projectionStatus||r.axisEvidence?.META?.currentMeta?.projectionStatus||'').includes('BINDING_PENDING')).map(r=>r.qid)}));

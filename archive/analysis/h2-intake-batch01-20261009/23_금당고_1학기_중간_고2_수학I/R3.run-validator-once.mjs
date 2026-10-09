@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
+const root=String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------`;
+const exam=String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------\.tmp\archive\h2-intake-batch01-20261009\23_금당고_1학기_중간_고2_수학I\23_금당고_1학기_중간_고2_수학I.js`;
+const evidence=String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------\archive\analysis\h2-intake-batch01-20261009\23_금당고_1학기_중간_고2_수학I\R3.evidence.bound.v1.json`;
+const assetRoot=String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------\.tmp\archive\h2-intake-batch01-20261009\23_금당고_1학기_중간_고2_수학I`;
+const prefix=String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------\archive\analysis\h2-intake-batch01-20261009\23_금당고_1학기_중간_고2_수학I\R3.generic-validation`;
+const args=[String.raw`C:\Users\USER\Desktop\AP-worktrees\h2-intake-batch01\AP------\archive\tools\archive-stage-validator.mjs`,'--exam',exam,'--evidence',evidence,'--stage','R3','--quality-contract','JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006','--execution-line','CODEX','--asset-root',assetRoot,'--json'];
+const result=spawnSync(process.execPath,args,{cwd:root,encoding:null,maxBuffer:32*1024*1024});
+fs.writeFileSync(prefix+'.raw.json',result.stdout||Buffer.alloc(0));fs.writeFileSync(prefix+'.stderr.txt',result.stderr||Buffer.alloc(0));
+fs.writeFileSync(prefix+'.process.json',JSON.stringify({command:[process.execPath,...args],cwd:root,exitCode:result.status,signal:result.signal,stdoutBytes:result.stdout?.length||0,stderrBytes:result.stderr?.length||0},null,2)+'\n');
+console.log(JSON.stringify({exitCode:result.status,signal:result.signal,stdoutBytes:result.stdout?.length||0,stderrBytes:result.stderr?.length||0,report:prefix+'.raw.json'},null,2));if(result.error)throw result.error;process.exitCode=result.status??1;

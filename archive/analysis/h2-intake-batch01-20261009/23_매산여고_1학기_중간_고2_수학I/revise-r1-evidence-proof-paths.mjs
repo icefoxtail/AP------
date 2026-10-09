@@ -1,0 +1,10 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+const root='C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------',run=`${root}/archive/analysis/h2-intake-batch01-20261009/23_매산여고_1학기_중간_고2_수학I`;
+const src=`${run}/R1.recovery.evidence.v3.json`,metaPath=`${run}/R1.recovery.meta-closure.v4.json`,output=`${run}/R1.recovery.evidence.v4.json`,oldFreeze=`${run}/R1.independent-freeze.tool.v1.json`;
+if(fs.existsSync(output))throw new Error('OUTPUT_ALREADY_EXISTS');const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');const e=JSON.parse(fs.readFileSync(src,'utf8')),meta=JSON.parse(fs.readFileSync(metaPath,'utf8'));
+if(e.rows.length!==23||meta.rows.length!==23||meta.artifactSha!==e.artifactSha)throw new Error('EVIDENCE_REVISION_BINDING_INVALID');
+for(const row of e.rows)row.reviewedMetaEvidenceRef=metaPath;
+for(const ref of e.evidenceRefs||[]){if(ref.path.endsWith('R1.recovery.meta-closure.v3.json')){ref.path=metaPath;ref.sha256=sha(metaPath);ref.scope='full23 current Meta closure, corrected physical freeze reference';}if(ref.path.endsWith('R1.original-freeze.json')){ref.path=oldFreeze;ref.sha256=sha(oldFreeze);ref.scope='preserved original full-qid freeze identity';}}
+if(!(e.evidenceRefs||[]).some(r=>r.path===oldFreeze)||!(e.evidenceRefs||[]).some(r=>r.path===metaPath))throw new Error('CORRECTED_PHYSICAL_REFERENCES_REQUIRED');
+e.revisionProvenance={supersedesEvidence:{path:src,sha256:sha(src)},supersedesPriorRawReport:{path:`${run}/R1.recovery.generic-v2.raw.json`,sha256:sha(`${run}/R1.recovery.generic-v2.raw.json`)},reason:'R1 evidence v3 generic PASS is preserved; v4 corrects only a nonexistent original-freeze evidence path to the physical R1.independent-freeze.tool.v1.json path. No source or semantic verdict changed.'};
+fs.writeFileSync(output,JSON.stringify(e,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({path:output,sha256:sha(output),artifactSha:e.artifactSha,sourceRawSha256:e.artifactRawSha256,rowCount:e.rows.length,dispositionRows:e.artifactDispositions.rows.length,originalFreezePath:oldFreeze,originalFreezeSha256:sha(oldFreeze),metaPath,metaSha256:sha(metaPath)},null,2));

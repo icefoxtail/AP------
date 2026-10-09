@@ -1,0 +1,1915 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "stage": "CREATE",
+  "validatorStage": "CREATE",
+  "executionAction": "ITEM_RECOVERY",
+  "authoringStage": "ITEM_RECOVERY",
+  "validatorAdapterRole": "archive_create",
+  "freshReviewScopeQids": [
+    9,
+    10,
+    18,
+    19
+  ],
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "4c21f2909756d08c2eea8f9a1d9b026a7fc8949f",
+  "artifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+  "sourceRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "pdfReviewMode": "DEFECT_ONLY",
+  "questionCount": 20,
+  "targetQids": [
+    9,
+    10,
+    18,
+    19
+  ],
+  "artifactRoot": ".tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2",
+  "renderStatus": "NOT_RUN",
+  "actualRenderPassAsserted": false,
+  "stageClaim": "ITEM_RECOVERY_READY_FOR_FRESH_R1_R2_ONLY; no CREATE_COMPLETE/R1/R2/R3/RENDER_PASS asserted",
+  "targetItemHoldCount": 0,
+  "independentHeldRevalidationRef": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.independent-held-revalidation.json",
+    "sha256": "d333a24a7fa9c687ca693ec9929a0467f2cfb9b495b1348bcb0ba4a33c77d305"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "Read the regression: actual SVG coordinates can contradict labels; inspect real geometry, complete board structure and runtime escapes."
+    },
+    "negativeVisualRef": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "sha256": "022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "observation": "Opened the actual rendered negative SVG; its line crosses the origin and misses labeled points/intercept."
+    },
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "observation": "Read complete q7 solution and verified its stated derivation against the displayed answer. Opened the linked SVG and checked its actual geometry against the solution.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8"
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Read complete q2 solution and verified its stated derivation against the displayed answer.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "items": [
+          {
+            "qid": 4,
+            "solutionSha256": "acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+            "observation": "Read complete q4 solution and verified its stated derivation against the displayed answer. Opened the linked SVG and checked its actual geometry against the solution.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a"
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "Read complete q2 solution and verified its stated derivation against the displayed answer. Opened the linked SVG and checked its actual geometry against the solution.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "8914784b537211d08cfb237a460ce7067211b6ea9f87486906da4831d94fac30"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "items": [
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "observation": "Read complete q6 solution and verified its stated derivation against the displayed answer. Opened the linked SVG and checked its actual geometry against the solution.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88"
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "Read complete q2 solution and verified its stated derivation against the displayed answer. Opened the source problem image and checked all panels.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "problemImageSha256": "7b18959c67b0a7e5b8678bf9ebcdb574790791219dbe56c04763660f360122c8"
+          }
+        ]
+      }
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleCount": 6,
+    "perBankQuestionCount": 2,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7f283c40ccf322a73079324f53b161315ab142579b80790de4469008330be156",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "Read the full board-flow solution: standard form, center/radius, translation, origin reflection, final equation. Opened the linked SVG and checked the initial, translated and reflected centers and unchanged radius."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Read the full slope and point-substitution solution; constants are derived before the requested sum with no hidden calculation jump."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "solutionExcerpt": "기울기가 $1$인 직선을",
+        "observation": "Read the full tangent-distance solution, both signed intercepts and their distance. Opened the linked SVG and checked the tangent pair, circle, y-axis intercepts and labeled segment."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "Read conversion to slope-intercept form and the perpendicular-slope product, then checked the resulting choice."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "observation": "Read De Morgan transformation, inclusion-exclusion lower bound and an explicit extremal construction. Opened the linked SVG and checked the labels of all three regions and the total cardinality."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다.",
+        "observation": "Read the full vertical-line test over five drawings. Opened the source question image and checked each panel, including the circle with two intersections."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "sha256:022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+        "gitBlobSha": "952e3492201bfa100a22c3af830320f84abd14fa"
+      }
+    ],
+    "goldenVisualRefs": [
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "sha256": "sha256:c9765e63093f01d8ae0bd958c2925798dfeaf0e0b451538f63b4d3c1eea986b8",
+        "gitBlobSha": "d6922fb8bf801d2ef4fcb19fadea40f57bcbe778",
+        "opened": true,
+        "renderPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/golden-render/maesan-q7.png",
+        "renderSha256": "92da41817e57b0e253ae6550609a6c39b0499d4f41188458145ac37e8ab1d721",
+        "renderObservation": "Center sequence is consistent; temporary raster shows font fallback glyphs, so geometry alone informed visual calibration."
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+        "sha256": "sha256:e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a",
+        "gitBlobSha": "a1bf345018eb777c9337dde50697eced178e1272",
+        "opened": true,
+        "renderPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/golden-render/hyochon-q4.png",
+        "renderSha256": "38f05785b3fa0ebc2b7afa80f04eeec2795a91d6933a122e9c41e379bf9d5eea",
+        "renderObservation": "Diagram supports the tangent pair and the y-axis intercept distance."
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+        "sha256": "sha256:b561aec78467dac0c4783f00fef9eae8eab15ff38f77b0a0fa0e0a0096d09b88",
+        "gitBlobSha": "2c092797d422e16b8893a6fd19f188f2cb3e7125",
+        "opened": true,
+        "renderPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/golden-render/jeil-q6.png",
+        "renderSha256": "76c810e66dd183035031c5d87f613dafafadb214b46329f2822b05917326bca7",
+        "renderObservation": "Diagram supports inclusion-exclusion and the constructed minimum overlap."
+      }
+    ],
+    "negativeVisualRead": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "sha256": "sha256:022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "gitBlobSha": "952e3492201bfa100a22c3af830320f84abd14fa",
+      "opened": true,
+      "observation": "Actual line crosses the origin and misses labeled coordinates/intercept. The labels claiming slope -5/6 and y-intercept -7/6 do not match primitive geometry."
+    },
+    "targetSourceRevalidationFile": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.independent-held-revalidation.json"
+  },
+  "solutionQualityCalibrationRef": {
+    "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+    "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "271c9258d914d910ce5c23263f1f39e79ed0292e7e297e5f8615292192c5ad55",
+          "studentPayloadSha256": "785b22cc7d131093a2a67636c1d9b87ed4da2f0a181d4b1b2bcdfac289ca61fe",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d4795f9f2a826f66c5bb71b76709c34ff822101629e9da4e7b1beb1bdd8d9e08",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "271c9258d914d910ce5c23263f1f39e79ed0292e7e297e5f8615292192c5ad55"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "7d740e618f26d0017016ba1746be8d2ff6dc8500600cced446d2d9dcd9e25ad5",
+          "studentPayloadSha256": "7c5e0eac91e499567e0a11d064eb4689cc30d98cfa1ce51485bd1b5a9c727f3a",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "143ad4f0a68bc3a4408691f90beb63f47b6e3c010c3a5d38bbde0b1655430053",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "7d740e618f26d0017016ba1746be8d2ff6dc8500600cced446d2d9dcd9e25ad5"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "d57d88d4acbe2a1facc0ea1e5b0273c2ca615812e5e9d3c19c41175d2d10749a",
+          "studentPayloadSha256": "7d7ed77c0b2a48baf27d630f60995ba732627f944fa90f671e6902e60b9db1ff",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09ae8a20e21fd513644fa392d415c7259865b169cd8dd084701566e16b041ce4",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "d57d88d4acbe2a1facc0ea1e5b0273c2ca615812e5e9d3c19c41175d2d10749a"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "619e7e9c49159cf264add997db6e64071150ad73a0aaaecc60b2feb9e80a0244",
+          "studentPayloadSha256": "1cc6e118e5d3889e04e736b990298f9b09fba681c4abf199047ee5c856366c9b",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0da0b64039709dae164492a7f43384ec867e73a349b204f1bf80599f40ca0e4b",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "619e7e9c49159cf264add997db6e64071150ad73a0aaaecc60b2feb9e80a0244"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "SAME_STAGE_MINIMAL_REPAIR_APPLIED",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "bd58afd255e9de86d71225903b17c2fc22751b3c02fb7dfe896f975657126bfe",
+          "studentPayloadSha256": "720ce31fbb65f9ed8e4db92368ff9c5e4958f63cad8cc5e65e7e9d825fdfaf15",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a79f24665bb56c8142ba8d916a6dc711840e2f47eb79b20162ecf9ecaf18ade3",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "bd58afd255e9de86d71225903b17c2fc22751b3c02fb7dfe896f975657126bfe"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "9f04eeb4fc42f41b86f2b965e0f2f3659d6711d92eb1c195add5efb90fe7385f",
+          "studentPayloadSha256": "06691d9dd7b7beb1e17aced4ee4f3d057c5fb4fd443d2e53645a05aa631aaf39",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c8c650e530d1ed8f70208e6af5fb472be07c7f361b1410c2029f937aeb0f9cae",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "9f04eeb4fc42f41b86f2b965e0f2f3659d6711d92eb1c195add5efb90fe7385f"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "SAME_STAGE_MINIMAL_REPAIR_APPLIED",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "2765a837c3ebeb52eb28e1e75b55865e622e5dbae77884cbb289ea612f019d6a",
+          "studentPayloadSha256": "1e2bc282e7b11c05054bab053587b0bda43245ddd5fff44c002a41e2bb1aea31",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b985fba36ebc486729b297d20af816f6a3eafca1b59d893694188ef2036b29c8",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "2765a837c3ebeb52eb28e1e75b55865e622e5dbae77884cbb289ea612f019d6a"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "4665867f4506f0d533e48aea26415badc3c54110207ef404b6d05990c906fe5f",
+          "studentPayloadSha256": "23e037abbada224106737a427ed22c39f5bc97a7fdeb2592f01c6297c92a52e3",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4bf5f3c088fff61aefcdbcabde45b0a8a40cb2286b4d2dfaeceabb6fe7ca8989",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "4665867f4506f0d533e48aea26415badc3c54110207ef404b6d05990c906fe5f"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "sourceModeExplanation": "CREATE_V2 wire enum ALIVE_REPLACEMENT only; explicit top-level executionAction=ITEM_RECOVERY, replacementExecution=DIRECT_AUTHORING_NO_GENERATION_PIPELINE, usedAliveGenerator=false.",
+      "reviewScope": "FRESH_ITEM_RECOVERY_ONLY",
+      "verdict": "PASS",
+      "beforeDisposition": "TRUE_SOURCE_ITEM_HOLD",
+      "finalDisposition": "QUESTION_REPLACEMENT_READY_FOR_FRESH_R1_R2",
+      "independentSelfCheckStatus": "PASS",
+      "independentSelfCheckRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+        "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+      },
+      "sourceParityScope": "NEW_AUTHORED_STUDENT_INPUT_NOT_ORIGINAL_PDF_PARITY",
+      "provenanceEvidence": {
+        "replacement": {
+          "recoveryType": "QUESTION_REPLACEMENT",
+          "method": "CODEX_DIRECT_AUTHORING",
+          "replacementScope": "QUESTION_ONLY",
+          "replacedQid": 9,
+          "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+          "originalSourceRef": {
+            "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+            "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+            "page": 2,
+            "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q09-page2-crop.png",
+            "cropSha256": "3ee97b41868652ef00400b68b70a8b1dfa156136b851e7f8bc90dbbbb380359a"
+          },
+          "sourceDefect": "Logarithm domain requires a-1>0, a-1!=1 and -(a-1)(a-5)>0. Integer candidates from 1<a<5 are 2,3,4; a=2 has base 1 and is excluded. Valid values are 3,4, sum=7.",
+          "studentPayloadSha256": "61fa20104b1ad6581830824d88c60f2feb031b2b3cd16734234ca069219384aa",
+          "authoredReplacement": true,
+          "claimsOriginalPdfHadReplacementFacts": false
+        },
+        "curriculum": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "subUnit": "로그의 뜻과 성질",
+          "registeredActive": true,
+          "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+          "masterRawSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "assessmentRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+            "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+          },
+          "reason": "Fresh solution-based classification of the authored replacement; no original-PDF content is claimed for the new body."
+        },
+        "answerCardinality": {
+          "responseForm": "OBJECTIVE_FIVE_CHOICE",
+          "choiceCount": 5,
+          "correctChoiceCount": 1,
+          "answerPosition": "②",
+          "studentPayloadSha256": "61fa20104b1ad6581830824d88c60f2feb031b2b3cd16734234ca069219384aa",
+          "proofRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+            "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+          },
+          "uniquenessProof": "For log base a-2, require a>2 and a!=3. The argument -(a-2)(a-7)>0 gives 2<a<7. Valid integer a are 4,5,6, so the sum is 15.",
+          "choiceAudit": [
+            {
+              "choice": "9",
+              "route": "Incorrectly factor the argument with root 6 instead of 7, retaining integers 4,5."
+            },
+            {
+              "choice": "15",
+              "route": "Correct candidates 4,5,6; sum 15."
+            },
+            {
+              "choice": "17",
+              "route": "Incorrectly admit base a-2=0 at a=2 while correctly excluding base 1 at a=3; 2+4+5+6=17."
+            },
+            {
+              "choice": "18",
+              "route": "Omit the base-not-1 condition, retaining 3,4,5,6."
+            },
+            {
+              "choice": "22",
+              "route": "Include the zero-argument endpoint a=7, retaining 4,5,6,7."
+            }
+          ],
+          "solutionSha256": "e79f1f702c7075dfad4c2aad80ff768a1460ac9187b86022e6f18adfa1e2a56d"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Authored student statement and objective choices are paired exactly; no target visual/shared material is required. Actual engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Small-board steps are explicit and solution SHA is bound below; actual engine render remains unclaimed."
+        },
+        "meta": {
+          "status": "PASS",
+          "evidence": "Fresh target-only Meta in archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json; active L1/L2 values, current semantic path, explicit projection disposition and fresh difficulty recorded."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "No problem image, shared visual or solution SVG is required for this target qid."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e79f1f702c7075dfad4c2aad80ff768a1460ac9187b86022e6f18adfa1e2a56d",
+      "studentPayloadSha256": "61fa20104b1ad6581830824d88c60f2feb031b2b3cd16734234ca069219384aa",
+      "metaFreshAssessmentRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+        "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+      },
+      "calibrationPreflightRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+        "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+      },
+      "actualPdfScope": {
+        "page": 2,
+        "cropSha256": "3ee97b41868652ef00400b68b70a8b1dfa156136b851e7f8bc90dbbbb380359a",
+        "checkedFact": "The logarithm is log_(a-1)(-a^2+6a-5) and the choices are 5, 9, 10, 14, 19.",
+        "result": "Matches extracted student bundle; valid integer sum 7 is absent.",
+        "answerSheetConsulted": false
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "sourceModeExplanation": "CREATE_V2 wire enum ALIVE_REPLACEMENT only; explicit top-level executionAction=ITEM_RECOVERY, replacementExecution=DIRECT_AUTHORING_NO_GENERATION_PIPELINE, usedAliveGenerator=false.",
+      "reviewScope": "FRESH_ITEM_RECOVERY_ONLY",
+      "verdict": "PASS",
+      "beforeDisposition": "TRUE_SOURCE_ITEM_HOLD",
+      "finalDisposition": "QUESTION_REPLACEMENT_READY_FOR_FRESH_R1_R2",
+      "independentSelfCheckStatus": "PASS",
+      "independentSelfCheckRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+        "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+      },
+      "sourceParityScope": "NEW_AUTHORED_STUDENT_INPUT_NOT_ORIGINAL_PDF_PARITY",
+      "provenanceEvidence": {
+        "replacement": {
+          "recoveryType": "QUESTION_REPLACEMENT",
+          "method": "CODEX_DIRECT_AUTHORING",
+          "replacementScope": "QUESTION_ONLY",
+          "replacedQid": 10,
+          "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+          "originalSourceRef": {
+            "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+            "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+            "page": 2,
+            "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q10-page2-crop.png",
+            "cropSha256": "c8b508b36902814b2e280c542817bd005042e08ea3cc407c954ff7c52d97c6c2"
+          },
+          "sourceDefect": "Let x=log_a 3, y=log_b 3. x+y=3 and 1/x^2+1/y^2=7 imply 7p^2+2p-9=0 for p=xy, so p=1 or p=-9/7. Both give valid nonzero real x,y (hence positive a,b !=1), but x^3+y^3=27-9p is 18 or 270/7. Neither is among choices and the result is nonunique.",
+          "studentPayloadSha256": "dafc172f008950f1caa2839299276fae93c21f5210580ddc7862ebaab11b004f",
+          "authoredReplacement": true,
+          "claimsOriginalPdfHadReplacementFacts": false
+        },
+        "curriculum": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-02",
+          "standardUnit": "로그의 뜻과 성질",
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "subUnit": "지수와 로그의 활용",
+          "registeredActive": true,
+          "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+          "masterRawSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "assessmentRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+            "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+          },
+          "reason": "Fresh solution-based classification of the authored replacement; no original-PDF content is claimed for the new body."
+        },
+        "answerCardinality": {
+          "responseForm": "OBJECTIVE_FIVE_CHOICE",
+          "choiceCount": 5,
+          "correctChoiceCount": 1,
+          "answerPosition": "①",
+          "studentPayloadSha256": "dafc172f008950f1caa2839299276fae93c21f5210580ddc7862ebaab11b004f",
+          "proofRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+            "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+          },
+          "uniquenessProof": "Set x=log_a2,y=log_b2. Since a,b>1, x,y>0. The second condition is 1/x^2+1/y^2=14; with x+y=4 and p=xy, this gives 7p^2+p-8=0, so p=1 or -8/7. Positivity leaves p=1. Then x,y=2±sqrt(3), both positive, so valid a,b exist; x^3+y^3=52.",
+          "choiceAudit": [
+            {
+              "choice": "52",
+              "route": "Correct symmetric identity with p=xy=1."
+            },
+            {
+              "choice": "56",
+              "route": "Erroneously use x^3+y^3=(x+y)(x^2+y^2), omitting the -xy term."
+            },
+            {
+              "choice": "60",
+              "route": "Use S^3-pS instead of S^3-3pS."
+            },
+            {
+              "choice": "61",
+              "route": "Use S^3-3p, omitting the factor S."
+            },
+            {
+              "choice": "64",
+              "route": "Use (x+y)^3 without subtracting cross terms."
+            }
+          ],
+          "solutionSha256": "09a3c8260a4f4d5a7aa19cff16bfb498567f7d8029d845af6f7376cc4eff9cc9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Authored student statement and objective choices are paired exactly; no target visual/shared material is required. Actual engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Small-board steps are explicit and solution SHA is bound below; actual engine render remains unclaimed."
+        },
+        "meta": {
+          "status": "PASS",
+          "evidence": "Fresh target-only Meta in archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json; active L1/L2 values, current semantic path, explicit projection disposition and fresh difficulty recorded."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "No problem image, shared visual or solution SVG is required for this target qid."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "09a3c8260a4f4d5a7aa19cff16bfb498567f7d8029d845af6f7376cc4eff9cc9",
+      "studentPayloadSha256": "dafc172f008950f1caa2839299276fae93c21f5210580ddc7862ebaab11b004f",
+      "metaFreshAssessmentRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+        "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+      },
+      "calibrationPreflightRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+        "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+      },
+      "actualPdfScope": {
+        "page": 2,
+        "cropSha256": "c8b508b36902814b2e280c542817bd005042e08ea3cc407c954ff7c52d97c6c2",
+        "checkedFact": "a,b are positive and not 1; log_a 3 + log_b 3 = 3; (log_3 a)^2 + (log_3 b)^2 = 7; target is the sum of the reciprocal-log cubes; choices 18, 20, 21, 25, 27.",
+        "result": "Matches extracted student bundle; both valid branches yield 18 and 270/7, so the target is not unique.",
+        "answerSheetConsulted": false
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "cac262b17bad00653b9ba4b971995a04940fa13f251be4fe34b490aebdc354f0",
+          "studentPayloadSha256": "88900332ab6ddd6334b72c8e9146c519661be1fc3d2dac37ece86b0f652f293f",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "408d3c19032bcbf1a976225da7f0842ad1dbfa3899cfb08e51d9b2a6485fdae9",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "cac262b17bad00653b9ba4b971995a04940fa13f251be4fe34b490aebdc354f0"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "1c357cd03094787eea8023cc5ed68e473327a7af4ef0067042ce5c932f9af7fc",
+          "studentPayloadSha256": "a376337bf56220f9415b8ff77fda6df0349a7c569e51dba1f876d4da0f1eb7a4",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1c6770105d761e7bb94fbdce19b1788d8c2bd357bdf0624ed6fd33de3d788c82",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "1c357cd03094787eea8023cc5ed68e473327a7af4ef0067042ce5c932f9af7fc"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "05ad1d62ff09ec2a043196bbb10ee2289ab04636166952cd0f46e44f388c5cca",
+          "studentPayloadSha256": "0fd039c321f92195b444c312a48983d32469114fc5d63bc21b44d1971f3a0833",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8dae730507aa789bf5cf5b19c2141eb907ea7b234e8caabfcbd648d4199501e8",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "05ad1d62ff09ec2a043196bbb10ee2289ab04636166952cd0f46e44f388c5cca"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "FREEZE_ADJUDICATION_ONLY",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "6139844f2f276767262884adb1320ebcf702a5b9cda9facbee9e058c46793812",
+          "studentPayloadSha256": "1c6c79815460f840261d0ca0f61693c2dd2abfc254d8457d8b2b568af8b5a488",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "87247f8cc71ab2f7b88a2fe0a174b402adc0542e6ed408ea9ca5576c553b1563",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "6139844f2f276767262884adb1320ebcf702a5b9cda9facbee9e058c46793812"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "d3b37c3b636cbe92a23b3d3cabb9780fccf797a2509a5469e1ac58d548355f78",
+          "studentPayloadSha256": "eea42611d21a6695a2c72deab88444d138110100a5ee9eaba29e88ccb3665d9d",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bd60caf1e580bf83bc9f36b129ca24f9f9614634724658c74e8a9142ee1a85f8",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "d3b37c3b636cbe92a23b3d3cabb9780fccf797a2509a5469e1ac58d548355f78"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "1dfcb33d8ec4413c994b18f3db05858c4b5a0a8809c5b3e8be4866e9ff0b3bf0",
+          "studentPayloadSha256": "a4956c70b129afe7b1b56d095d0a9ba43f624a9707ff1b442b364bf3c9471052",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "120c73fd44753aa6e8bcf2299a87dbdad8c89698fe309abbc78b24853ca5822e",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "1dfcb33d8ec4413c994b18f3db05858c4b5a0a8809c5b3e8be4866e9ff0b3bf0"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "3151674bcfac643d218b03c7a8fb72c340ebdc050f8084078d9ecc8f571a11cd",
+          "studentPayloadSha256": "66ffe51a3f5e5c31c3d673c5b45f0221e74aef07dc3c9b2e1efcbe8ff1a8d7bb",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "1e221a42f1b9b2e4e8ba96f7cfa69f717038deb10b73e5234d9b15d289135bce",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "3151674bcfac643d218b03c7a8fb72c340ebdc050f8084078d9ecc8f571a11cd"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "sourceModeExplanation": "CREATE_V2 wire enum ALIVE_REPLACEMENT only; explicit top-level executionAction=ITEM_RECOVERY, replacementExecution=DIRECT_AUTHORING_NO_GENERATION_PIPELINE, usedAliveGenerator=false.",
+      "reviewScope": "FRESH_ITEM_RECOVERY_ONLY",
+      "verdict": "PASS",
+      "beforeDisposition": "TRUE_SOURCE_ITEM_HOLD",
+      "finalDisposition": "QUESTION_REPLACEMENT_READY_FOR_FRESH_R1_R2",
+      "independentSelfCheckStatus": "PASS",
+      "independentSelfCheckRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+        "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+      },
+      "sourceParityScope": "NEW_AUTHORED_STUDENT_INPUT_NOT_ORIGINAL_PDF_PARITY",
+      "provenanceEvidence": {
+        "replacement": {
+          "recoveryType": "QUESTION_REPLACEMENT",
+          "method": "CODEX_DIRECT_AUTHORING",
+          "replacementScope": "QUESTION_ONLY",
+          "replacedQid": 18,
+          "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+          "originalSourceRef": {
+            "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+            "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+            "page": 3,
+            "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q18-page3-crop.png",
+            "cropSha256": "9b7fc1cce968bcea1e90e2b2758a87a9b3f039994d4da6d2d88c3f128232c380"
+          },
+          "sourceDefect": "For a>1, monotonicity gives n*max(m/12,12/m)<=4. For m<12 this is 3n<=m, totaling 18 pairs. For m>=12 it is mn<=48, totaling 56 pairs with m=12 counted once. Total=74.",
+          "studentPayloadSha256": "dcfbd0615dd4086f8bcc1299b0a0ac5b0c6e5b4f25cd16232e6520a55478df6f",
+          "authoredReplacement": true,
+          "claimsOriginalPdfHadReplacementFacts": false
+        },
+        "curriculum": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-04",
+          "standardUnit": "로그함수",
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "subUnit": "로그함수의 활용",
+          "registeredActive": true,
+          "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+          "masterRawSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "assessmentRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+            "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+          },
+          "reason": "Fresh solution-based classification of the authored replacement; no original-PDF content is claimed for the new body."
+        },
+        "answerCardinality": {
+          "responseForm": "OBJECTIVE_FIVE_CHOICE",
+          "choiceCount": 5,
+          "correctChoiceCount": 1,
+          "answerPosition": "③",
+          "studentPayloadSha256": "dcfbd0615dd4086f8bcc1299b0a0ac5b0c6e5b4f25cd16232e6520a55478df6f",
+          "proofRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+            "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+          },
+          "uniquenessProof": "The inequality is equivalent to n*max(m/8,8/m)<=3. For m=1..8, the floor counts are 0,0,1,1,1,2,2,3, totaling 10. For m=8..24, counts are 3, then 2 for m=9..12, then 1 for m=13..24, totaling 23. Subtract the shared m=8,n=1..3 row: 10+23-3=30.",
+          "choiceAudit": [
+            {
+              "choice": "23",
+              "route": "Count only the m>=8 branch, omitting all pairs with m<8."
+            },
+            {
+              "choice": "27",
+              "route": "Treat <= as < and omit the three equality pairs (8,3),(12,2),(24,1)."
+            },
+            {
+              "choice": "30",
+              "route": "Correct branch counts 10+23-3=30."
+            },
+            {
+              "choice": "33",
+              "route": "Add the two inclusive branch totals without subtracting the shared m=8,n=1..3 row."
+            },
+            {
+              "choice": "37",
+              "route": "Use ceilings instead of floors for the m<=8 integer upper bounds: left subtotal 17 instead of 10."
+            }
+          ],
+          "solutionSha256": "77ed353fc1991861631499f140424b47ab5e319a81d43bf99b4f89d6a8ff760d"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Authored student statement and objective choices are paired exactly; no target visual/shared material is required. Actual engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Small-board steps are explicit and solution SHA is bound below; actual engine render remains unclaimed."
+        },
+        "meta": {
+          "status": "PASS",
+          "evidence": "Fresh target-only Meta in archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json; active L1/L2 values, current semantic path, explicit projection disposition and fresh difficulty recorded."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "No problem image, shared visual or solution SVG is required for this target qid."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "77ed353fc1991861631499f140424b47ab5e319a81d43bf99b4f89d6a8ff760d",
+      "studentPayloadSha256": "dcfbd0615dd4086f8bcc1299b0a0ac5b0c6e5b4f25cd16232e6520a55478df6f",
+      "metaFreshAssessmentRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+        "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+      },
+      "calibrationPreflightRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+        "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+      },
+      "actualPdfScope": {
+        "page": 3,
+        "cropSha256": "9b7fc1cce968bcea1e90e2b2758a87a9b3f039994d4da6d2d88c3f128232c380",
+        "checkedFact": "For a>1, the displayed absolute-log inequality is followed by the request to count natural-number ordered pairs (m,n); choices are 52, 56, 67, 71, 75.",
+        "result": "Matches extracted student bundle; correct count is 74, absent from choices.",
+        "answerSheetConsulted": false
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "sourceModeExplanation": "CREATE_V2 wire enum ALIVE_REPLACEMENT only; explicit top-level executionAction=ITEM_RECOVERY, replacementExecution=DIRECT_AUTHORING_NO_GENERATION_PIPELINE, usedAliveGenerator=false.",
+      "reviewScope": "FRESH_ITEM_RECOVERY_ONLY",
+      "verdict": "PASS",
+      "beforeDisposition": "TRUE_SOURCE_ITEM_HOLD",
+      "finalDisposition": "QUESTION_REPLACEMENT_READY_FOR_FRESH_R1_R2",
+      "independentSelfCheckStatus": "PASS",
+      "independentSelfCheckRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+        "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+      },
+      "sourceParityScope": "NEW_AUTHORED_STUDENT_INPUT_NOT_ORIGINAL_PDF_PARITY",
+      "provenanceEvidence": {
+        "replacement": {
+          "recoveryType": "QUESTION_REPLACEMENT",
+          "method": "CODEX_DIRECT_AUTHORING",
+          "replacementScope": "QUESTION_ONLY",
+          "replacedQid": 19,
+          "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+          "originalSourceRef": {
+            "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+            "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+            "page": 4,
+            "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q19-page4-crop.png",
+            "cropSha256": "7211133a7f648939cd78ae7dc932bf547a16a233c7daa9ac06d8f147e74ee0fa"
+          },
+          "sourceDefect": "Set t=3^a>=3. A=(0,t), B=(t-6,0). The circumradius through O,A,B satisfies R^2=(t^2+(t-6)^2)/4. This expression is >=18/4=9/2 for t>=3, while the stated area 13pi/4 requires R^2=13/4; no real a satisfies it.",
+          "studentPayloadSha256": "0d4c8d5eb4391f2ea50b0e2d96be22702cb00522688cc6ff82bf5db0fb7abca8",
+          "authoredReplacement": true,
+          "claimsOriginalPdfHadReplacementFacts": false
+        },
+        "curriculum": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-03",
+          "standardUnit": "지수함수",
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "subUnit": "지수함수의 활용",
+          "registeredActive": true,
+          "masterPath": "archive/data/master_tables/js_archive_tag_master.json",
+          "masterRawSha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+          "assessmentRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+            "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+          },
+          "reason": "Fresh solution-based classification of the authored replacement; no original-PDF content is claimed for the new body."
+        },
+        "answerCardinality": {
+          "responseForm": "SUBJECTIVE_EXACT_SYMBOLIC",
+          "choiceCount": 0,
+          "correctChoiceCount": 1,
+          "answerPosition": "\\log_3 6",
+          "studentPayloadSha256": "0d4c8d5eb4391f2ea50b0e2d96be22702cb00522688cc6ff82bf5db0fb7abca8",
+          "proofRef": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+            "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+          },
+          "uniquenessProof": "Let t=3^a>=3. A=(0,t), B=(t-8,0), so OAB is a right triangle with R^2=(t^2+(t-8)^2)/4. Area 10pi gives (t-2)(t-6)=0. The domain leaves t=6, hence a=log_3 6. This value satisfies a>=1 and yields distinct non-collinear O,A,B.",
+          "solutionSha256": "d551ead4a7ba04efbb14da2ffc286f21c152147ea5a1701a6a5c5935c7e04886"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Authored student statement and objective choices are paired exactly; no target visual/shared material is required. Actual engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Small-board steps are explicit and solution SHA is bound below; actual engine render remains unclaimed."
+        },
+        "meta": {
+          "status": "PASS",
+          "evidence": "Fresh target-only Meta in archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json; active L1/L2 values, current semantic path, explicit projection disposition and fresh difficulty recorded."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "No problem image, shared visual or solution SVG is required for this target qid."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d551ead4a7ba04efbb14da2ffc286f21c152147ea5a1701a6a5c5935c7e04886",
+      "studentPayloadSha256": "0d4c8d5eb4391f2ea50b0e2d96be22702cb00522688cc6ff82bf5db0fb7abca8",
+      "metaFreshAssessmentRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+        "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+      },
+      "calibrationPreflightRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+        "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+      },
+      "actualPdfScope": {
+        "page": 4,
+        "cropSha256": "7211133a7f648939cd78ae7dc932bf547a16a233c7daa9ac06d8f147e74ee0fa",
+        "checkedFact": "a>=1, y=3^(x+a), y=log_3(x+6)-a, and the circle through A,B,O has area 13pi/4.",
+        "result": "Matches extracted student bundle; no a satisfies the stated area.",
+        "answerSheetConsulted": false
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "reviewScope": "REUSED_UNCHANGED_NON_TARGET",
+      "verdict": "PASS",
+      "beforeDisposition": "NO_SOURCE_REPAIR",
+      "finalDisposition": "REUSED_UNCHANGED_NON_TARGET",
+      "sourceParityScope": "EXTRACTED_BASELINE_AND_PRIOR_R1_ONLY_NO_NEW_PDF_CLAIM",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "priorR1Evidence": {
+            "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+            "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+          },
+          "priorArtifactRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+          "currentArtifactRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987",
+          "nonTargetQuestionObjectSha256": "3645fc1511dbe90ec85434c402e2837c5a50b6e52ca69ad234632761c8cd6dad",
+          "studentPayloadSha256": "c43f4a703e4f67c681d509fe4774e50b58fc00956a26e07edbcab977c058ae73",
+          "parity": "EXACT_STUDENT_FIELDS_AND_OBJECT_SHA"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review; exact non-target object SHA is invariant. Actual Archive Engine render remains unclaimed."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 qid review and solution SHA; no new semantic review performed."
+        },
+        "meta": {
+          "status": "PENDING_AUTHORITY",
+          "evidence": "Current physical fields were extracted after freeze and recorded in R1.postfreeze-current-fields-final.json. Existing null projection fields are bound separately without semantic reclassification.",
+          "reason": "Cannot close current L1/L2 authority and exact PT/TPL lookup: the required JS아카이브_표준단원키_마스터테이블.md is absent from this assigned worktree; no semantic PASS is asserted."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "evidence": "Reused unchanged prior R1 visual disposition; actual non-target asset bytes are invariant."
+        }
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7ed325b25dc8c8f379d42e6be469de26c7e482a670a8f3a21846205bfe523b2d",
+      "reusedEvidenceRef": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+        "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+      },
+      "nonTargetObjectSha256": "3645fc1511dbe90ec85434c402e2837c5a50b6e52ca69ad234632761c8cd6dad"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "4c21f2909756d08c2eea8f9a1d9b026a7fc8949f",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-008은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 로그 밑·진수 조건과 정확히 일치하는 PT/TPL이 없다. 더 넓은 PT_DOMAIN_RANGE_SURJECTIVITY는 로그 정의 조건을 충분히 특정하지 않아 임의 결속하지 않는다.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "H2-M1-RPM-008은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 로그 밑·진수 조건과 정확히 일치하는 PT/TPL이 없다. 더 넓은 PT_DOMAIN_RANGE_SURJECTIVITY는 로그 정의 조건을 충분히 특정하지 않아 임의 결속하지 않는다."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-007은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 reciprocal-log 대칭합 유형과 정확히 일치하는 PT/TPL이 없다. 유사한 일반 다항식 평가 유형은 결정 전략을 과장하므로 결속하지 않는다.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "H2-M1-RPM-007은 RPM_ONLY이며 GLOBAL ACTIVE lookup에서 reciprocal-log 대칭합 유형과 정확히 일치하는 PT/TPL이 없다. 유사한 일반 다항식 평가 유형은 결정 전략을 과장하므로 결속하지 않는다."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": []
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H2-M1-RPM-025는 RPM_ONLY이며 GLOBAL ACTIVE registry에 로그부등식 기반 자연수 순서쌍 세기를 정확히 나타내는 PT/TPL이 없다. 임의 키를 만들지 않았다.",
+        "projectionStatus": "UNMATERIALIZED",
+        "projectionReason": "H2-M1-RPM-025는 RPM_ONLY이며 GLOBAL ACTIVE registry에 로그부등식 기반 자연수 순서쌍 세기를 정확히 나타내는 PT/TPL이 없다. 임의 키를 만들지 않았다."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE shared PT/TPL은 의미와 parent 관계가 정확하지만 2015 수학I H15-M1-03 exact curriculum binding이 없다. H2-M1-RPM-020 그래프 교점은 함수끼리의 교점을 요구하므로 이 축 절편·원의 넓이 구조에는 적용하지 않았다. Binding gap은 semantic HOLD가 아니다."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing current physical null projection field(s) recorded exactly; no semantic reclassification or new mapping asserted. Current canonical L1/L2 and exact RPM/projection review remains pending authority lookup."
+      }
+    ]
+  },
+  "sourceEvidenceRefs": {
+    "assignment": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\item-recovery-v2\\23_금당고_1학기_중간_고2_수학I.js",
+      "assignmentPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.assignment.revision2.json",
+      "assignmentSha256": "1f7e12760e15460dba82d61fdf5bdd571ac0c5b516da6ae4f529a1343e5cd367",
+      "expectedHead": "15bf11a8a6bc91ff08e9aa86b525cca0b6e769bd"
+    },
+    "sourceBefore": {
+      "rawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\item-recovery-v2\\23_금당고_1학기_중간_고2_수학I.js"
+    },
+    "parentWorkingJs": {
+      "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학I\\23_금당고_1학기_중간_고2_수학I.js",
+      "rawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e"
+    },
+    "sourcePDF": {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+      "rawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+      "scopedComparison": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.scoped-pdf-comparison.json",
+        "sha256": "9f3541947bc96702c96e5e0bc3613c8ddffcfe8395d8e124c50d8a7fd4034c86"
+      }
+    },
+    "priorR1": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.evidence.revision04.json",
+      "sha256": "45caad076820d2c00b583834a7b02f8cddd0f87479cf1acf69143b0c0cbd048d"
+    },
+    "priorR2": {
+      "sourceAssessment": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.source-assessment.json",
+        "sha256": "0a9aa48bd06cec862d6649640ec3243b17780958f86f67548924d2f88e22a217"
+      },
+      "originalFreeze": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.original-freeze.json",
+        "sha256": "b96c5a2fa90e12497caa9b72632d61e55cf9c76322e9d6f26b56ac3e28fb79a8"
+      },
+      "q18Witness": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.q18-enumeration-witness.json",
+        "sha256": "d018f91deb591af7db2ea4139c813068a73b77e3a9fa5e0d20e6b69972536bc7"
+      },
+      "q18Adjudication": {
+        "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.q18-adjudication.json",
+        "sha256": "e5aeafa51a03e5b2b44d9bb866e85f39d9db92a76dd0218bc185781214652f0e"
+      }
+    },
+    "currentStudentBundle": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.current-student-only.revision02.json",
+      "sha256": "c777cfb26cdb62c8c3a07ec340fbf8a9bdb6f99615c9523a7c25426cedc4d052",
+      "sourceRawSha256": "420efca1b17423e9b7cb05f3e2b1b0ff37a206e55ab10598d71fcc73e29a5987"
+    },
+    "metaFresh": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.meta-fresh-assessment.json",
+      "sha256": "8118fe9b30ca63e61d00ef95cb38eb4d2e3cc062e1ad2673d4645fdc2ab4ad11"
+    },
+    "selfCheck": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.blind-self-check.json",
+      "sha256": "f2e51ed7f2e98facf4e31f66d381f283dce79375dde31ad9141cf9a44aa8e864"
+    },
+    "calibration": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.calibration.preflight.revision01.json",
+      "sha256": "23b5a218701048dd7c286377dd97a23ca146ca15b8a63fa12ba69a36fcc68aac"
+    },
+    "sourceComparison": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.scoped-pdf-comparison.json",
+      "sha256": "9f3541947bc96702c96e5e0bc3613c8ddffcfe8395d8e124c50d8a7fd4034c86"
+    }
+  },
+  "metaAuthorityStatus": "TARGETS_FRESH_NON_TARGETS_REUSED_WITH_PRIOR_PROJECTION_DEBT",
+  "metaAuthorityNote": "Only qid 9,10,18,19 received fresh semantic and difficulty classification. Existing non-target disposition rows are copied with current artifact SHA after exact object/asset invariance; no non-target semantic reclassification. Generic CREATE adapter may report their current physical Meta gaps.",
+  "q18FreezeAdjudication": {
+    "originalFreezePreserved": true,
+    "originalAnswer": "85",
+    "correctedAnswer": "74",
+    "witnessRef": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.q18-enumeration-witness.json",
+      "sha256": "d018f91deb591af7db2ea4139c813068a73b77e3a9fa5e0d20e6b69972536bc7"
+    },
+    "adjudicationRef": {
+      "path": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.q18-adjudication.json",
+      "sha256": "e5aeafa51a03e5b2b44d9bb866e85f39d9db92a76dd0218bc185781214652f0e"
+    }
+  },
+  "nonTargetInvariance": {
+    "qidObjectSha256": [
+      {
+        "qid": 1,
+        "sha256": "271c9258d914d910ce5c23263f1f39e79ed0292e7e297e5f8615292192c5ad55"
+      },
+      {
+        "qid": 2,
+        "sha256": "7d740e618f26d0017016ba1746be8d2ff6dc8500600cced446d2d9dcd9e25ad5"
+      },
+      {
+        "qid": 3,
+        "sha256": "d57d88d4acbe2a1facc0ea1e5b0273c2ca615812e5e9d3c19c41175d2d10749a"
+      },
+      {
+        "qid": 4,
+        "sha256": "619e7e9c49159cf264add997db6e64071150ad73a0aaaecc60b2feb9e80a0244"
+      },
+      {
+        "qid": 5,
+        "sha256": "bd58afd255e9de86d71225903b17c2fc22751b3c02fb7dfe896f975657126bfe"
+      },
+      {
+        "qid": 6,
+        "sha256": "9f04eeb4fc42f41b86f2b965e0f2f3659d6711d92eb1c195add5efb90fe7385f"
+      },
+      {
+        "qid": 7,
+        "sha256": "2765a837c3ebeb52eb28e1e75b55865e622e5dbae77884cbb289ea612f019d6a"
+      },
+      {
+        "qid": 8,
+        "sha256": "4665867f4506f0d533e48aea26415badc3c54110207ef404b6d05990c906fe5f"
+      },
+      {
+        "qid": 11,
+        "sha256": "cac262b17bad00653b9ba4b971995a04940fa13f251be4fe34b490aebdc354f0"
+      },
+      {
+        "qid": 12,
+        "sha256": "1c357cd03094787eea8023cc5ed68e473327a7af4ef0067042ce5c932f9af7fc"
+      },
+      {
+        "qid": 13,
+        "sha256": "05ad1d62ff09ec2a043196bbb10ee2289ab04636166952cd0f46e44f388c5cca"
+      },
+      {
+        "qid": 14,
+        "sha256": "6139844f2f276767262884adb1320ebcf702a5b9cda9facbee9e058c46793812"
+      },
+      {
+        "qid": 15,
+        "sha256": "d3b37c3b636cbe92a23b3d3cabb9780fccf797a2509a5469e1ac58d548355f78"
+      },
+      {
+        "qid": 16,
+        "sha256": "1dfcb33d8ec4413c994b18f3db05858c4b5a0a8809c5b3e8be4866e9ff0b3bf0"
+      },
+      {
+        "qid": 17,
+        "sha256": "3151674bcfac643d218b03c7a8fb72c340ebdc050f8084078d9ecc8f571a11cd"
+      },
+      {
+        "qid": 20,
+        "sha256": "3645fc1511dbe90ec85434c402e2837c5a50b6e52ca69ad234632761c8cd6dad"
+      }
+    ],
+    "studentParity": "16/16",
+    "assets": [
+      {
+        "path": "assets/images/23_금당고_1학기_중간_고2_수학I/q07.png",
+        "sha256": "05f9c34e9e82f3a23b776a4a4b895a1a18ce2728e541e4c7f19034048d28e203",
+        "gitBlobSha": "cead384b20473fcb36b21de263a556c8a7cace33",
+        "bytes": 41040
+      },
+      {
+        "path": "assets/images/23_금당고_1학기_중간_고2_수학I/q13.png",
+        "sha256": "81aff54bf4d3f1e6ff2a1f20ce7c45cb0b6fac6a12d329b005f224f8c29d23df",
+        "gitBlobSha": "5caf357ace4850386912857a9cd87c42affd9f22",
+        "bytes": 51762
+      }
+    ],
+    "parentWorkingJsSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e"
+  },
+  "targetReplacementProvenance": [
+    {
+      "recoveryType": "QUESTION_REPLACEMENT",
+      "method": "CODEX_DIRECT_AUTHORING",
+      "replacementScope": "QUESTION_ONLY",
+      "replacedQid": 9,
+      "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+      "originalSourceRef": {
+        "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+        "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+        "page": 2,
+        "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q09-page2-crop.png",
+        "cropSha256": "3ee97b41868652ef00400b68b70a8b1dfa156136b851e7f8bc90dbbbb380359a"
+      },
+      "sourceDefect": "Logarithm domain requires a-1>0, a-1!=1 and -(a-1)(a-5)>0. Integer candidates from 1<a<5 are 2,3,4; a=2 has base 1 and is excluded. Valid values are 3,4, sum=7.",
+      "studentPayloadSha256": "61fa20104b1ad6581830824d88c60f2feb031b2b3cd16734234ca069219384aa",
+      "authoredReplacement": true,
+      "claimsOriginalPdfHadReplacementFacts": false
+    },
+    {
+      "recoveryType": "QUESTION_REPLACEMENT",
+      "method": "CODEX_DIRECT_AUTHORING",
+      "replacementScope": "QUESTION_ONLY",
+      "replacedQid": 10,
+      "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+      "originalSourceRef": {
+        "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+        "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+        "page": 2,
+        "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q10-page2-crop.png",
+        "cropSha256": "c8b508b36902814b2e280c542817bd005042e08ea3cc407c954ff7c52d97c6c2"
+      },
+      "sourceDefect": "Let x=log_a 3, y=log_b 3. x+y=3 and 1/x^2+1/y^2=7 imply 7p^2+2p-9=0 for p=xy, so p=1 or p=-9/7. Both give valid nonzero real x,y (hence positive a,b !=1), but x^3+y^3=27-9p is 18 or 270/7. Neither is among choices and the result is nonunique.",
+      "studentPayloadSha256": "dafc172f008950f1caa2839299276fae93c21f5210580ddc7862ebaab11b004f",
+      "authoredReplacement": true,
+      "claimsOriginalPdfHadReplacementFacts": false
+    },
+    {
+      "recoveryType": "QUESTION_REPLACEMENT",
+      "method": "CODEX_DIRECT_AUTHORING",
+      "replacementScope": "QUESTION_ONLY",
+      "replacedQid": 18,
+      "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+      "originalSourceRef": {
+        "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+        "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+        "page": 3,
+        "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q18-page3-crop.png",
+        "cropSha256": "9b7fc1cce968bcea1e90e2b2758a87a9b3f039994d4da6d2d88c3f128232c380"
+      },
+      "sourceDefect": "For a>1, monotonicity gives n*max(m/12,12/m)<=4. For m<12 this is 3n<=m, totaling 18 pairs. For m>=12 it is mn<=48, totaling 56 pairs with m=12 counted once. Total=74.",
+      "studentPayloadSha256": "dcfbd0615dd4086f8bcc1299b0a0ac5b0c6e5b4f25cd16232e6520a55478df6f",
+      "authoredReplacement": true,
+      "claimsOriginalPdfHadReplacementFacts": false
+    },
+    {
+      "recoveryType": "QUESTION_REPLACEMENT",
+      "method": "CODEX_DIRECT_AUTHORING",
+      "replacementScope": "QUESTION_ONLY",
+      "replacedQid": 19,
+      "reason": "ORIGINAL_ITEM_UNRECOVERABLE_AFTER_REVIEW2",
+      "originalSourceRef": {
+        "pdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수1/2023_금당고2_수1_1중간.pdf",
+        "pdfRawSha256": "ab2d49cfcce9e92b17e59cc6fa6c38fda58bff65aa00a29acb0da9d66e95cc05",
+        "page": 4,
+        "crop": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R1.source-q19-page4-crop.png",
+        "cropSha256": "7211133a7f648939cd78ae7dc932bf547a16a233c7daa9ac06d8f147e74ee0fa"
+      },
+      "sourceDefect": "Set t=3^a>=3. A=(0,t), B=(t-6,0). The circumradius through O,A,B satisfies R^2=(t^2+(t-6)^2)/4. This expression is >=18/4=9/2 for t>=3, while the stated area 13pi/4 requires R^2=13/4; no real a satisfies it.",
+      "studentPayloadSha256": "0d4c8d5eb4391f2ea50b0e2d96be22702cb00522688cc6ff82bf5db0fb7abca8",
+      "authoredReplacement": true,
+      "claimsOriginalPdfHadReplacementFacts": false
+    }
+  ],
+  "nextRequiredAction": "ROOT promote isolated candidate only after receipt; then fresh affected-qid R1/R2 for 9,10,18,19; reuse unchanged non-target freezes and close outstanding Meta debt per ROOT authority.",
+  "replacementExecution": "DIRECT_AUTHORING_NO_GENERATION_PIPELINE",
+  "usedAliveGenerator": false,
+  "validatorWireNote": "ALIVE_REPLACEMENT is used only as the supported CREATE_V2 replacement provenance category. This action is ITEM_RECOVERY direct authoring; no ALIVE generator or pipeline was invoked."
+}

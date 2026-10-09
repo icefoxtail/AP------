@@ -1,0 +1,22 @@
+{
+  "schemaVersion":"JS_ARCHIVE_ITEM_RECOVERY_SOLUTION_FIRST_DESIGN_FREEZE_V1",
+  "examUid":"23_금당고_1학기_중간_고2_수학I",
+  "stage":"ITEM_RECOVERY",
+  "executionLine":"CODEX",
+  "qualityContractVersion":"JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "recoveryType":"QUESTION_REPLACEMENT",
+  "method":"CODEX_DIRECT_AUTHORING",
+  "replacementScope":"QUESTION_ONLY",
+  "sourceRawSha256":"f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+  "studentBundleSha256":"54b0325d784241d6b8e387d742849831c95f2b283eb4a00a0c8d38b9c915818b",
+  "originalPdfComparisonRef":"archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ITEM_RECOVERY.v1/ITEM_RECOVERY.scoped-pdf-comparison.json",
+  "q18FreezeCorrectionRef":"archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/R2.q18-adjudication.json",
+  "order":"core-and-difficulty-role -> replacement conditions/goal -> direct solve -> unique answer freeze -> distractor routes -> choices -> student solution",
+  "answerChoicesFrozenAfterThisRecord":true,
+  "rows":[
+    {"qid":9,"replacementAuthorship":"NEW_STUDENT_INPUT_DIRECT_REPLACEMENT","curriculumRole":"수학I 로그의 뜻·밑과 진수 조건; 4.4점 객관식","replacementStudentBody":"로그의 밑과 진수 조건을 함께 적용해 모든 정수 a를 추리고 그 합을 구한다.","conditionsAndGoal":"log base a-2; argument -a^2+9a-14; determine the sum of integer a for which the logarithm is defined.","directSolve":"Base: a-2>0 and a-2!=1, so a>2 and a!=3. Argument: -(a-2)(a-7)>0, so 2<a<7. Integer candidates are 3,4,5,6; removing a=3 leaves 4,5,6.","frozenAnswer":"15","uniqueness":"The logarithm is defined exactly for a=4,5,6; their sum is 15.","difficultyFresh":"bucket 2; one definition/domain interpretation and a finite integer filter; no boundary flag."},
+    {"qid":10,"replacementAuthorship":"NEW_STUDENT_INPUT_DIRECT_REPLACEMENT","curriculumRole":"수학I 지수·로그 관계와 대칭식; 4.4점 객관식","replacementStudentBody":"For a,b>1, let x=log_a 2, y=log_b 2. Given x+y=4 and (log_2 a)^2+(log_2 b)^2=14, find x^3+y^3.","conditionsAndGoal":"x,y>0; log_2 a=1/x and log_2 b=1/y. Determine x^3+y^3 from the sum and reciprocal-square sum.","directSolve":"Let p=xy>0. (x^2+y^2)/p^2=14 and x^2+y^2=16-2p, hence 14p^2+2p-16=0, or (7p+8)(p-1)=0. Positivity forces p=1. Then x^3+y^3=(x+y)^3-3xy(x+y)=64-12=52.","frozenAnswer":"52","uniqueness":"The other algebraic product root -8/7 contradicts x,y>0; p=1 is the only admissible product and determines the requested symmetric sum.","difficultyFresh":"bucket 4; reciprocal logarithm relation, symmetric product equation and domain branch exclusion are central; no boundary flag."},
+    {"qid":18,"replacementAuthorship":"NEW_STUDENT_INPUT_DIRECT_REPLACEMENT","curriculumRole":"수학I 로그부등식의 자연수 순서쌍 응용; 5점 객관식","replacementStudentBody":"For a>1, count natural-number ordered pairs (m,n) satisfying |log_a m-log_a 8|+log_a(n/2)<=log_a(3/2).","conditionsAndGoal":"Use monotonicity of logarithm base a>1; convert the absolute-log inequality to finite integer bounds and count each ordered pair once.","directSolve":"The inequality is n*max(m/8,8/m)<=3. For m<=8, n<=floor(3m/8), with counts m=1..8 totaling 10. For m>=8, n<=floor(24/m), with counts m=8:3, m=9..12:2 each, m=13..24:1 each, totaling 23. The shared row m=8 contributes n=1,2,3 and is subtracted once: 10+23-3=30.","frozenAnswer":"30","uniqueness":"The exhaustive bounds are 1<=m<=24 and 1<=n<=3; both case lists cover every valid pair, and the overlap is exactly m=8,n=1,2,3.","difficultyFresh":"bucket 4; absolute-value case split and finite integer floor counts are central; no boundary flag."},
+    {"qid":19,"replacementAuthorship":"NEW_STUDENT_INPUT_DIRECT_REPLACEMENT","curriculumRole":"수학I 지수함수의 활용 with logarithmic intercept and circle geometry; 12점 서술형","replacementStudentBody":"Let a>=1. Let A be the y-intercept of y=3^(x+a), and B the x-intercept of y=log_3(x+8)-a. If the circle through A,B,O has area 10pi, find a.","conditionsAndGoal":"Set t=3^a>=3. A=(0,t), B=(t-8,0). Use the right triangle OAB to convert the circumcircle area to an equation for t.","directSolve":"The circumradius is half the hypotenuse AB, so area=pi[t^2+(t-8)^2]/4. Setting this equal to 10pi gives t^2+(t-8)^2=40 and (t-2)(t-6)=0. Since t>=3, t=6 and a=log_3 6.","frozenAnswer":"\\log_3 6","uniqueness":"The quadratic roots are t=2 and 6; only t=6 satisfies t=3^a>=3.","difficultyFresh":"bucket 4; function-intercept geometry, circumradius relation and domain-based root selection are central; no boundary flag."}
+  ]
+}

@@ -1,0 +1,757 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_META_CORE_DEBT_SUPPLEMENT_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "23_매산여고_1학기_중간_고2_확률과통계",
+  "stage": "R1_SUPPLEMENTAL_META_ONLY",
+  "source": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\23_매산여고_1학기_중간_고2_확률과통계.js",
+    "sha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8"
+  },
+  "sourceRawSha256": "935c52ea1e6d60dbb8c280559c9a8666076d7fd59a7c803154641679034433e8",
+  "sourceRawBufferBlobSha1": "df50cff7b9565ff390f4b112accc6b1ced31bcc1",
+  "scopeQids": [
+    1,
+    6,
+    7,
+    8,
+    9
+  ],
+  "fullArtifactDenominator": 22,
+  "priorR1Evidence": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.evidence.bound.json",
+    "sha256": "f39ba789c807950350a45badb7c8cb1a0e08f6fd5e908490c5390f310f0b8b24"
+  },
+  "priorR1ValidatorReport": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\R1.recovery.generic-validator.raw.json",
+    "sha256": "499284b4d14b41992b2f2c31bcae92fa5941d35c8621f98a62a6e9727f8b7f52"
+  },
+  "producerAdapterFailure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_매산여고_1학기_중간_고2_확률과통계\\technical-registration\\producer-v1\\r1-adapter-compatibility-failure.v1.json",
+    "sha256": "97e26f03899cb73840c2a4714b7e67cf87a20c0ec00fae7fbcd5d6e526b9a704"
+  },
+  "assessmentLimit": "Only current student prompts and Meta fields for qids 1,6,7,8,9 plus actual masters/registries were inspected. No answer/solution/math re-solve, Golden reread, source edit, R1 generic-validator rerun, R3 evidence edit, or producer retry.",
+  "overallConclusion": "The required core course/unit/registered L2/difficulty values are resolved and valid for all five qids. The only detected debt is PT/TPL projection: q1 remains explicitly META_ONLY_UNRESOLVED/PROJECTION_UNMATERIALIZED with no unique primary; q6-q9 retain active parent-compatible PT/TPL but the exact current legacy L2 binding is missing. Do not promote these rows to overall semantic Meta PASS, fill nulls, relabel statuses, or alter source fields.",
+  "rows": [
+    {
+      "qid": 1,
+      "currentMeta": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+        "subUnit": "경우의 수의 활용",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "reviewStatus": "manual_review"
+      },
+      "registeredMasterRows": {
+        "standardUnit": {
+          "key": "H15-PS-01",
+          "keyType": "standardUnitKey",
+          "labelKo": "순열과 조합",
+          "description": "문서 기준 표준단원 (1)",
+          "evidencePolicy": "content_required",
+          "autoApplyAllowed": true,
+          "reviewRequiredWhen": [],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        },
+        "subUnit": {
+          "key": "H15-PS-01-COUNTING_APPLICATION",
+          "keyType": "subUnitKey",
+          "labelKo": "경우의 수의 활용",
+          "parentKey": "H15-PS-01",
+          "standardUnitKey": "H15-PS-01",
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "subUnit": "경우의 수의 활용",
+          "conceptClusterKey": "H15-PS-01-COUNTING_APPLICATION",
+          "evidencePolicy": "content_or_solution_required",
+          "autoApplyAllowed": false,
+          "reviewRequiredWhen": [
+            "source_solution_disagreement",
+            "visual_only_evidence"
+          ],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        }
+      },
+      "coreMetaAssessment": {
+        "standardCourseValid": true,
+        "standardUnitValid": true,
+        "standardUnitOrderValid": true,
+        "registeredL2Valid": true,
+        "difficultyFieldsValid": true,
+        "difficultyLevelMappingValid": true,
+        "priorR1DifficultyReview": {
+          "currentBucket": 2,
+          "independentBucket": 2,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "reasoning": "Three familiar formula checks are direct and each result is substituted immediately; low strategy-selection burden."
+        }
+      },
+      "projectionAssessment": {
+        "currentProblemTypeKey": null,
+        "currentTemplateKey": null,
+        "status": "PROJECTION_UNMATERIALIZED",
+        "disposition": "META_ONLY_UNRESOLVED_NO_SINGLE_PRIMARY; do not claim semantic PASS",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Current q1 fields are null and projectionStatus is PROJECTION_UNMATERIALIZED. The three independent truth checks require distinct arrangement, combination and repeated-combination semantics; GLOBAL ACTIVE taxonomy and exact binding lookup did not yield a unique primary. Preserve the existing unresolved projection; do not invent a mixed key.",
+        "activeBindingsAtSameL1L2": [
+          {
+            "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+            "templateKey": null,
+            "status": "ACTIVE",
+            "ownerPack": "PROBABILITY_STATISTICS"
+          },
+          {
+            "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+            "templateKey": null,
+            "status": "ACTIVE",
+            "ownerPack": "PROBABILITY_STATISTICS"
+          },
+          {
+            "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+            "templateKey": null,
+            "status": "ACTIVE",
+            "ownerPack": "PROBABILITY_STATISTICS"
+          },
+          {
+            "problemTypeKey": "PT_FUNCTION_COUNTING",
+            "templateKey": null,
+            "status": "ACTIVE",
+            "ownerPack": "PROBABILITY_STATISTICS"
+          }
+        ],
+        "statementSemantics": [
+          "one ordinary combination assertion",
+          "one repeated-permutation assertion",
+          "one repeated-combination assertion"
+        ],
+        "finding": "The student prompt asks which among three distinct counting statements are true. Current ACTIVE exact L2 bindings have multiple primary families; no single active PT/TPL mapping represents the whole mixed item without inventing a combined key. The existing null PT/TPL and PROJECTION_UNMATERIALIZED remain explicit projection debt; core L1/L2/difficulty are valid."
+      }
+    },
+    {
+      "qid": 6,
+      "currentMeta": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "reviewStatus": "manual_review"
+      },
+      "registeredMasterRows": {
+        "standardUnit": {
+          "key": "H15-PS-02",
+          "keyType": "standardUnitKey",
+          "labelKo": "이항정리",
+          "description": "문서 기준 표준단원 (2)",
+          "evidencePolicy": "content_required",
+          "autoApplyAllowed": true,
+          "reviewRequiredWhen": [],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        },
+        "subUnit": {
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "keyType": "subUnitKey",
+          "labelKo": "이항계수와 계수비교",
+          "parentKey": "H15-PS-02",
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "subUnit": "이항계수와 계수비교",
+          "conceptClusterKey": "H15_PS_02_BINOMIAL_COEFFICIENT",
+          "evidencePolicy": "content_or_solution_required",
+          "autoApplyAllowed": false,
+          "reviewRequiredWhen": [
+            "source_solution_disagreement",
+            "visual_only_evidence"
+          ],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        }
+      },
+      "coreMetaAssessment": {
+        "standardCourseValid": true,
+        "standardUnitValid": true,
+        "standardUnitOrderValid": true,
+        "registeredL2Valid": true,
+        "difficultyFieldsValid": true,
+        "difficultyLevelMappingValid": true,
+        "priorR1DifficultyReview": {
+          "currentBucket": 3,
+          "independentBucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "reasoning": "Two binomial coefficients are extracted and combined into an equation with a positivity filter."
+        }
+      },
+      "projectionAssessment": {
+        "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "currentTemplateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "status": "PROJECTION_BINDING_PENDING",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "activePackProblemTypeStatus": "ACTIVE",
+        "activePackTemplateStatus": "ACTIVE",
+        "activePackTemplateParent": "PT_BINOMIAL_THEOREM",
+        "exactCurrentL2Bindings": [],
+        "retainedKeysActiveAndSameParent": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+        "finding": "Retained binomial PT/TPL are active and parent-compatible. The current H15-PS-02-BINOMIAL_COEFFICIENT child has no exact current binding in the compiled registry; this is projection binding debt, not a core-course/unit/L2/difficulty error."
+      }
+    },
+    {
+      "qid": 7,
+      "currentMeta": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "reviewStatus": "manual_review"
+      },
+      "registeredMasterRows": {
+        "standardUnit": {
+          "key": "H15-PS-02",
+          "keyType": "standardUnitKey",
+          "labelKo": "이항정리",
+          "description": "문서 기준 표준단원 (2)",
+          "evidencePolicy": "content_required",
+          "autoApplyAllowed": true,
+          "reviewRequiredWhen": [],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        },
+        "subUnit": {
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "keyType": "subUnitKey",
+          "labelKo": "이항계수와 계수비교",
+          "parentKey": "H15-PS-02",
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "subUnit": "이항계수와 계수비교",
+          "conceptClusterKey": "H15_PS_02_BINOMIAL_COEFFICIENT",
+          "evidencePolicy": "content_or_solution_required",
+          "autoApplyAllowed": false,
+          "reviewRequiredWhen": [
+            "source_solution_disagreement",
+            "visual_only_evidence"
+          ],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        }
+      },
+      "coreMetaAssessment": {
+        "standardCourseValid": true,
+        "standardUnitValid": true,
+        "standardUnitOrderValid": true,
+        "registeredL2Valid": true,
+        "difficultyFieldsValid": true,
+        "difficultyLevelMappingValid": true,
+        "priorR1DifficultyReview": {
+          "currentBucket": 3,
+          "independentBucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "reasoning": "The product requires finding two separate exponent contributions and recognizing their cancellation."
+        }
+      },
+      "projectionAssessment": {
+        "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "currentTemplateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "status": "PROJECTION_BINDING_PENDING",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "activePackProblemTypeStatus": "ACTIVE",
+        "activePackTemplateStatus": "ACTIVE",
+        "activePackTemplateParent": "PT_BINOMIAL_THEOREM",
+        "exactCurrentL2Bindings": [],
+        "retainedKeysActiveAndSameParent": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+        "finding": "Retained binomial PT/TPL are active and parent-compatible. The current H15-PS-02-BINOMIAL_COEFFICIENT child has no exact current binding in the compiled registry; this is projection binding debt, not a core-course/unit/L2/difficulty error."
+      }
+    },
+    {
+      "qid": 8,
+      "currentMeta": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "reviewStatus": "manual_review"
+      },
+      "registeredMasterRows": {
+        "standardUnit": {
+          "key": "H15-PS-02",
+          "keyType": "standardUnitKey",
+          "labelKo": "이항정리",
+          "description": "문서 기준 표준단원 (2)",
+          "evidencePolicy": "content_required",
+          "autoApplyAllowed": true,
+          "reviewRequiredWhen": [],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        },
+        "subUnit": {
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "keyType": "subUnitKey",
+          "labelKo": "이항계수와 계수비교",
+          "parentKey": "H15-PS-02",
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "subUnit": "이항계수와 계수비교",
+          "conceptClusterKey": "H15_PS_02_BINOMIAL_COEFFICIENT",
+          "evidencePolicy": "content_or_solution_required",
+          "autoApplyAllowed": false,
+          "reviewRequiredWhen": [
+            "source_solution_disagreement",
+            "visual_only_evidence"
+          ],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        }
+      },
+      "coreMetaAssessment": {
+        "standardCourseValid": true,
+        "standardUnitValid": true,
+        "standardUnitOrderValid": true,
+        "registeredL2Valid": true,
+        "difficultyFieldsValid": true,
+        "difficultyLevelMappingValid": true,
+        "priorR1DifficultyReview": {
+          "currentBucket": 3,
+          "independentBucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "reasoning": "Three blanks require matching two proof methods to a binomial identity and coefficient symmetry."
+        }
+      },
+      "projectionAssessment": {
+        "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "currentTemplateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "status": "PROJECTION_BINDING_PENDING",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "activePackProblemTypeStatus": "ACTIVE",
+        "activePackTemplateStatus": "ACTIVE",
+        "activePackTemplateParent": "PT_BINOMIAL_THEOREM",
+        "exactCurrentL2Bindings": [],
+        "retainedKeysActiveAndSameParent": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+        "finding": "Retained binomial PT/TPL are active and parent-compatible. The current H15-PS-02-BINOMIAL_COEFFICIENT child has no exact current binding in the compiled registry; this is projection binding debt, not a core-course/unit/L2/difficulty error."
+      }
+    },
+    {
+      "qid": 9,
+      "currentMeta": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+        "subUnit": "이항계수와 계수비교",
+        "subUnitConfidence": "rule_inferred",
+        "subUnitClassificationDepth": "complete_rule",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "reviewStatus": "manual_review"
+      },
+      "registeredMasterRows": {
+        "standardUnit": {
+          "key": "H15-PS-02",
+          "keyType": "standardUnitKey",
+          "labelKo": "이항정리",
+          "description": "문서 기준 표준단원 (2)",
+          "evidencePolicy": "content_required",
+          "autoApplyAllowed": true,
+          "reviewRequiredWhen": [],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        },
+        "subUnit": {
+          "key": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "keyType": "subUnitKey",
+          "labelKo": "이항계수와 계수비교",
+          "parentKey": "H15-PS-02",
+          "standardUnitKey": "H15-PS-02",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "subUnit": "이항계수와 계수비교",
+          "conceptClusterKey": "H15_PS_02_BINOMIAL_COEFFICIENT",
+          "evidencePolicy": "content_or_solution_required",
+          "autoApplyAllowed": false,
+          "reviewRequiredWhen": [
+            "source_solution_disagreement",
+            "visual_only_evidence"
+          ],
+          "sourceKind": "document",
+          "sourceTitle": "JS아카이브 표준단원키 마스터 테이블",
+          "sourceUrlOrPath": "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+          "status": "active"
+        }
+      },
+      "coreMetaAssessment": {
+        "standardCourseValid": true,
+        "standardUnitValid": true,
+        "standardUnitOrderValid": true,
+        "registeredL2Valid": true,
+        "difficultyFieldsValid": true,
+        "difficultyLevelMappingValid": true,
+        "priorR1DifficultyReview": {
+          "currentBucket": 3,
+          "independentBucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "reasoning": "The binomial sum is transformed, bounded between powers of two, and solved again as an equation."
+        }
+      },
+      "projectionAssessment": {
+        "currentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "currentTemplateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "status": "PROJECTION_BINDING_PENDING",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+        "activePackProblemTypeStatus": "ACTIVE",
+        "activePackTemplateStatus": "ACTIVE",
+        "activePackTemplateParent": "PT_BINOMIAL_THEOREM",
+        "exactCurrentL2Bindings": [],
+        "retainedKeysActiveAndSameParent": true,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Existing physical PT/TPL are retained; projectionStatus is PROJECTION_BINDING_PENDING for the registered legacy L2 key H15-PS-02-BINOMIAL_COEFFICIENT. This is compatibility projection debt, not a semantic HOLD or authority to reclassify.",
+        "disposition": "ACTIVE_KEYS_VALID; CURRENT_L2_BINDING_PENDING; do not rewrite keys or claim full projection PASS",
+        "finding": "Retained binomial PT/TPL are active and parent-compatible. The current H15-PS-02-BINOMIAL_COEFFICIENT child has no exact current binding in the compiled registry; this is projection binding debt, not a core-course/unit/L2/difficulty error."
+      }
+    }
+  ],
+  "canonicalCitations": {
+    "q1": [
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sections": [
+          "§4 standard unit H15-PS-01 row",
+          "§6 subUnit key parent table; H15-PS-01-COUNTING_APPLICATION"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "sections": [
+          "CURRENT HARD GATE §0, lines 18-26 (null requires lookup/nullReason; unique exact active null fails)",
+          "§1.3 (PT/TPL compatibility projection)",
+          "§1.4.1 §9 (multi-L4 meta-only unresolved; do not force one primary)",
+          "§10.2-10.3 (current registry-valid keys)",
+          "§17.0 (explicit projection status/null reason)"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "sections": [
+          "§2.1 difficulty enums",
+          "§3 Bucket 2",
+          "§11 expected level mapping"
+        ]
+      },
+      {
+        "data": [
+          "archive/data/master_tables/js_archive_tag_master.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+        ],
+        "recordEvidence": "ACTIVE current L2 has several distinct PT candidates; current source’s three independent formula assertions span permutation, combination, repeated permutation and repeated combination."
+      }
+    ],
+    "q6": [
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sections": [
+          "§4 standard unit H15-PS-02 row",
+          "§6 subUnit key parent table; H15-PS-02-BINOMIAL_COEFFICIENT"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "sections": [
+          "§1.3 projection layer",
+          "§1.4.1 lines 186-187: missing exact current binding is PROJECTION_BINDING_PENDING, not semantic HOLD",
+          "§10.3 lines 859-870: production binding gate",
+          "§17.0 lines 1720-1726: explicit pending projection/debt"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "sections": [
+          "§2.1 difficulty enums",
+          "§3 Bucket 3",
+          "§11 expected level mapping"
+        ]
+      },
+      {
+        "data": [
+          "archive/data/master_tables/js_archive_tag_master.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+        ],
+        "recordEvidence": "PT_BINOMIAL_THEOREM ACTIVE; TPL_BINOMIAL_TERM_COEFFICIENT ACTIVE, parent PT_BINOMIAL_THEOREM; no exact current L2 binding row for H15-PS-02-BINOMIAL_COEFFICIENT."
+      }
+    ],
+    "q7": [
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sections": [
+          "§4 H15-PS-02",
+          "§6 H15-PS-02-BINOMIAL_COEFFICIENT parent"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "sections": [
+          "§1.3 projection layer",
+          "§1.4.1 lines 186-187 pending binding is not semantic HOLD",
+          "§17.0 lines 1720-1726 explicit debt"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "sections": [
+          "§2.1",
+          "§3 Bucket 3",
+          "§11 level mapping"
+        ]
+      },
+      {
+        "data": [
+          "archive/data/master_tables/js_archive_tag_master.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+        ],
+        "recordEvidence": "Retained PT/TPL ACTIVE with same parent; current L2 exact binding absent."
+      }
+    ],
+    "q8": [
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sections": [
+          "§4 H15-PS-02",
+          "§6 H15-PS-02-BINOMIAL_COEFFICIENT parent"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "sections": [
+          "§1.3 projection layer",
+          "§1.4.1 lines 186-187 pending binding is not semantic HOLD",
+          "§17.0 lines 1720-1726 explicit debt"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "sections": [
+          "§2.1",
+          "§3 Bucket 3",
+          "§11 level mapping"
+        ]
+      },
+      {
+        "data": [
+          "archive/data/master_tables/js_archive_tag_master.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+        ],
+        "recordEvidence": "PT_BINOMIAL_THEOREM ACTIVE; TPL_BINOMIAL_COEFFICIENT_IDENTITY ACTIVE, parent PT_BINOMIAL_THEOREM; current L2 exact binding absent."
+      }
+    ],
+    "q9": [
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sections": [
+          "§4 H15-PS-02",
+          "§6 H15-PS-02-BINOMIAL_COEFFICIENT parent"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "sections": [
+          "§1.3 projection layer",
+          "§1.4.1 lines 186-187 pending binding is not semantic HOLD",
+          "§17.0 lines 1720-1726 explicit debt"
+        ]
+      },
+      {
+        "file": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "sections": [
+          "§2.1",
+          "§3 Bucket 3",
+          "§11 level mapping"
+        ]
+      },
+      {
+        "data": [
+          "archive/data/master_tables/js_archive_tag_master.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json"
+        ],
+        "recordEvidence": "PT_BINOMIAL_THEOREM ACTIVE; TPL_BINOMIAL_COEFFICIENT_IDENTITY ACTIVE, parent PT_BINOMIAL_THEOREM; current L2 exact binding absent."
+      }
+    ]
+  },
+  "citationFiles": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "sha256": "2a748f5915a359b35b5e68e9473c49027c73993290ed1726a80a487694624e15"
+    }
+  ],
+  "producerCompatibilityDisposition": "R1 V2 report remains PASS; the failure is the target-registration adapter rejecting the current explicit Meta debt statuses. This assessment proves core fields and projection debt separately for ROOT’s bounded compatibility decision; it is not a quality waiver or adapter PASS.",
+  "createdAtUtc": "2026-10-09T05:38:12.735Z"
+}

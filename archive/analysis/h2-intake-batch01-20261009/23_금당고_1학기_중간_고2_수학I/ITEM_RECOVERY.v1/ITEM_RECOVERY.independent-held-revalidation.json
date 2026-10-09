@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "JS_ARCHIVE_ITEM_RECOVERY_INDEPENDENT_REVALIDATION_V1",
+  "examUid": "23_금당고_1학기_중간_고2_수학I",
+  "stage": "ITEM_RECOVERY",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sourceInputMode": "EXTRACTED_JS_ASSETS",
+  "assignmentSha256": "1f7e12760e15460dba82d61fdf5bdd571ac0c5b516da6ae4f529a1343e5cd367",
+  "sourceRawSha256": "f991b9796817f3ac596126c2dc911002124822a04e1a7455065712fcee59194e",
+  "studentBundleSha256": "54b0325d784241d6b8e387d742849831c95f2b283eb4a00a0c8d38b9c915818b",
+  "qidScope": [
+    9,
+    10,
+    18,
+    19
+  ],
+  "upstreamDisclosure": "NOT_READ_AT_FREEZE",
+  "assetInspection": {
+    "existingBundleReferences": 0,
+    "targetQidsReferenceNoAssets": true,
+    "assetRoot": "C:/Users/USER/Desktop/AP-worktrees/h2-intake-batch01/AP------/.tmp/archive/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/item-recovery-v2"
+  },
+  "rows": [
+    {
+      "choiceSet": [
+        "5",
+        "9",
+        "10",
+        "14",
+        "19"
+      ],
+      "decision": "SCOPED_ORIGINAL_CHECK_REQUIRED",
+      "independentWork": "Logarithm domain requires a-1>0, a-1!=1 and -(a-1)(a-5)>0. Integer candidates from 1<a<5 are 2,3,4; a=2 has base 1 and is excluded. Valid values are 3,4, sum=7.",
+      "studentPayloadSha256": "7c631ee28f1eb73adacbd9b29a955b3c51800190e1d819a2f49c08d546ee3744",
+      "qid": 9,
+      "factToCheck": "Whether the extracted statement or choices differ from qid 9 on source PDF page 2."
+    },
+    {
+      "choiceSet": [
+        "18",
+        "20",
+        "21",
+        "25",
+        "27"
+      ],
+      "decision": "SCOPED_ORIGINAL_CHECK_REQUIRED",
+      "independentWork": "Let x=log_a 3, y=log_b 3. x+y=3 and 1/x^2+1/y^2=7 imply 7p^2+2p-9=0 for p=xy, so p=1 or p=-9/7. Both give valid nonzero real x,y (hence positive a,b !=1), but x^3+y^3=27-9p is 18 or 270/7. Neither is among choices and the result is nonunique.",
+      "studentPayloadSha256": "3175f38adea9e6f3f74ab53b6742e514ac1385fdc09faf213cdd3a1d845c4a3a",
+      "qid": 10,
+      "factToCheck": "Whether either logarithm condition or the choices differ from qid 10 on source PDF page 2."
+    },
+    {
+      "choiceSet": [
+        "52",
+        "56",
+        "67",
+        "71",
+        "75"
+      ],
+      "decision": "SCOPED_ORIGINAL_CHECK_REQUIRED",
+      "independentWork": "For a>1, monotonicity gives n*max(m/12,12/m)<=4. For m<12 this is 3n<=m, totaling 18 pairs. For m>=12 it is mn<=48, totaling 56 pairs with m=12 counted once. Total=74.",
+      "studentPayloadSha256": "a7ff5fc4d22748cd9238a76a0fd4df7ca9bc42da6bb4789836e2daf72ffeb2d7",
+      "qid": 18,
+      "factToCheck": "Whether the extracted inequality, quantifier, or choices differ from qid 18 on source PDF page 3."
+    },
+    {
+      "choiceSet": [],
+      "decision": "SCOPED_ORIGINAL_CHECK_REQUIRED",
+      "independentWork": "Set t=3^a>=3. A=(0,t), B=(t-6,0). The circumradius through O,A,B satisfies R^2=(t^2+(t-6)^2)/4. This expression is >=18/4=9/2 for t>=3, while the stated area 13pi/4 requires R^2=13/4; no real a satisfies it.",
+      "studentPayloadSha256": "55a0a423eaf74dac0451323007e4a7533c7c300524d1236a05afb92f2d3da8d6",
+      "qid": 19,
+      "factToCheck": "Whether the extracted constraint a>=1, curve equation, or circle area differs from qid 19 on source PDF page 4."
+    }
+  ]
+}

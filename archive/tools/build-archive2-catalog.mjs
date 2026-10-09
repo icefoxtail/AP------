@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
+import problemBankMeta from "../problem-bank-meta.js";
 
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -20,6 +21,53 @@ const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compile
 const foundationConcepts = JSON.parse(read("archive/data/meta-foundation/compiled/concept_registry.json"));
 const foundationConditions = JSON.parse(read("archive/data/meta-foundation/compiled/condition_registry.json"));
 const foundationBindings = JSON.parse(read("archive/data/meta-foundation/compiled/curriculum_bindings.json"));
+const coreMetaFilterAuthorityPath = "data/master_tables/js_archive_tag_master.json";
+const coreMetaFilterAuthorityBytes = fs.readFileSync(path.join(root, "archive", coreMetaFilterAuthorityPath));
+const coreMetaFilterAuthoritySha256 = hash(coreMetaFilterAuthorityBytes);
+const coreMetaTagMaster = JSON.parse(coreMetaFilterAuthorityBytes.toString("utf8"));
+const activeTagOptions = (keyType, keyField, labelField, extraFields = []) => {
+  const byKey = new Map();
+  for (const row of coreMetaTagMaster) {
+    if (row.status !== "active" || row.keyType !== keyType) continue;
+    const key = String(row.key || "").trim();
+    const label = String(row[labelField] || row.labelKo || "").trim();
+    if (!key || !label) continue;
+    const option = {
+      [keyField]: key,
+      label,
+      displayLabel: `${label} · ${key}`,
+      ...Object.fromEntries(extraFields.map((field) => [field, row[field] || ""])),
+    };
+    const previous = byKey.get(key);
+    if (previous && JSON.stringify(previous) !== JSON.stringify(option))
+      throw new Error(`Archive2 active tag-master filter option conflicts: ${key}`);
+    byKey.set(key, option);
+  }
+  return [...byKey.values()].sort((a, b) => a[keyField].localeCompare(b[keyField]));
+};
+const allowedGradeCourses = new Set((projectionPolicy.gradeCourseAllowlist || []).map(row =>
+  [row.grade, row.curriculumKey, row.courseKey].join("\u0000"),
+));
+const standardUnitCourseKeys = new Map();
+for (const row of basicScopeLinks.records || []) {
+  if (!allowedGradeCourses.has([row.grade, row.curriculumKey, row.courseKey].join("\u0000"))) continue;
+  if (!row.standardUnitKey || !row.courseKey) continue;
+  if (!standardUnitCourseKeys.has(row.standardUnitKey)) standardUnitCourseKeys.set(row.standardUnitKey, new Set());
+  standardUnitCourseKeys.get(row.standardUnitKey).add(row.courseKey);
+}
+const standardUnitFilterOptions = activeTagOptions("standardUnitKey", "standardUnitKey", "labelKo")
+  .map(row => ({ ...row, standardCourses: [...(standardUnitCourseKeys.get(row.standardUnitKey) || [])].sort() }));
+const standardUnitLabelByKey = new Map(standardUnitFilterOptions.map((row) => [row.standardUnitKey, row.label]));
+const subUnitFilterOptions = activeTagOptions("subUnitKey", "subUnitKey", "subUnit", ["standardUnitKey"])
+  .map((row) => ({
+    ...row,
+    standardUnit: standardUnitLabelByKey.get(row.standardUnitKey) || "",
+    standardCourses: standardUnitFilterOptions.find(unit => unit.standardUnitKey === row.standardUnitKey)?.standardCourses || [],
+  }));
+const coreMetaFilterOptions = {
+  standardUnits: standardUnitFilterOptions,
+  subUnits: subUnitFilterOptions,
+};
 const foundationProblemTypes = new Set(foundationTaxonomy.problemTypes.map((r) => r.problemTypeKey));
 const foundationTemplates = new Map(foundationTaxonomy.templates.map((r) => [r.templateKey, r]));
 const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r.conceptKey));
@@ -49,6 +97,7 @@ if ((basicScopeLinks.authority?.sha256 !== canonicalMasterSha &&
   throw new Error("Archive2 canonical source-pack drift: master version does not match parent-link/projection policy");
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
 const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
+const uniqueCanonicalParents = [...new Map(taxonomy.map((record) => [core.pathKey(record, 4), record])).values()];
 const sourceParentsByUid = new Map();
 for (const link of basicScopeLinks.sourceParents || []) {
   if (!sourceParentsByUid.has(link.questionUid)) sourceParentsByUid.set(link.questionUid, []);
@@ -373,6 +422,25 @@ for (const exam of exams) {
         ),
       ],
     };
+    if (validJoin && meta && (meta.standardCourse || meta.standardUnitKey || meta.subUnitKey)) {
+      const displayResult = problemBankMeta.createSourceBoundDisplayProjection({
+        meta,
+        identity: id,
+        sourceFile: file,
+        sourceOrdinal: ordinal,
+        sourceGrade: sourceGradeEvidence.grade,
+        sourceFingerprint: fingerprint,
+        assignmentFingerprint,
+        gradeCourseAllowlist: projectionPolicy.gradeCourseAllowlist || [],
+        scopeParents: basicScopeLinks.records || [],
+        canonicalParents: uniqueCanonicalParents,
+      });
+      record.metaProjectionStatus = displayResult.projection
+        ? "DISPLAY_ONLY_SOURCE_BOUND"
+        : "DISPLAY_PROJECTION_UNAVAILABLE";
+      record.metaProjectionFailureReason = displayResult.reason || "";
+      record.metaProjection = displayResult.projection;
+    }
     if (
       node &&
       (node.curriculumApplicability !== record.curriculumApplicability ||
@@ -460,6 +528,8 @@ const indexVersion = hash(
     taxonomy,
     exams,
     records,
+    coreMetaFilterAuthoritySha256,
+    coreMetaFilterOptions,
   ]),
 );
 const catalog = {
@@ -473,6 +543,12 @@ const catalog = {
   taxonomy,
   exams,
   records,
+  coreMetaFilterAuthority: {
+    path: coreMetaFilterAuthorityPath,
+    sha256: coreMetaFilterAuthoritySha256,
+    status: "ACTIVE_COMPILED_STANDARD_KEY_MASTER",
+  },
+  coreMetaFilterOptions,
   health: {
     ...health,
     exams: exams.length,
@@ -528,13 +604,16 @@ const overrideIndexTarget = path.join(root, "archive/data/archive2-item-review-o
 const runtimePacks = core.Canonical.RUNTIME_INPUT_PATHS.map((runtimePath) =>
   JSON.parse(read("archive/" + runtimePath)),
 );
-const allInputPaths = core.Canonical.manifestInputPathsFromRuntimePacks(
-  runtimePacks,
-  (inputPath) => {
-    const absolutePath = path.resolve(root, "archive", inputPath);
-    return fs.existsSync(absolutePath) && fs.statSync(absolutePath).isFile();
-  },
-);
+const allInputPaths = [...new Set([
+  ...core.Canonical.manifestInputPathsFromRuntimePacks(
+    runtimePacks,
+    (inputPath) => {
+      const absolutePath = path.resolve(root, "archive", inputPath);
+      return fs.existsSync(absolutePath) && fs.statSync(absolutePath).isFile();
+    },
+  ),
+  coreMetaFilterAuthorityPath,
+])].sort();
 const manifestFiles = allInputPaths.map((inputPath) => {
   const bytes = inputPath === "data/archive2-catalog.json"
     ? Buffer.from(packedText, "utf8")
