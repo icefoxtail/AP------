@@ -258,7 +258,11 @@ test('consumer UI lists only selectable generated rows, searches individual ques
   assert.equal(selectableCount(index),338);
   assert.ok(index.records.every(r=>!holdUids.has(r.uid)));
   search.value='팔마고';search.listeners.input();
-  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,55);
+  // Up to 50 cards are displayed; search by UID reaches every approved Palma question.
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,Math.min(50,palma.length));
+  search.value=palma.at(-1).uid;search.listeners.input();
+  assert.equal(el('generated-results').children.filter(x=>x.tag==='article').length,1);
+  search.value='팔마고';search.listeners.input();
   const palmaCard=el('generated-results').children.find(x=>x.tag==='article');
   const palmaActions=palmaCard.children.find(x=>x.className==='generated-actions');
   const palmaOpen=palmaActions.children.find(x=>x.textContent==='문항 열기');
