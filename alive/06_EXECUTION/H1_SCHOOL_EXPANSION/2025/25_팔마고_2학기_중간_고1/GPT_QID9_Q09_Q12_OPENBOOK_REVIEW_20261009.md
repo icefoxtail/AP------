@@ -7,7 +7,7 @@
 - 구조: UID 36개 중복 0, 180/180 보기, 144/144 오답설명과 오답 witness 위치·번호 대응을 확인. 오답 144개 전부를 별도 독립 코드로 수치 재연산했다고 주장하지 않음.
 - 독립 계산: Q10 9개 집합 진리표 × 8 membership assignments의 보기 45/45 평가값과 정답 유일 9/9. Q09/Q12 수치형 선택값 독립 산술 17/17 일치, Q09 B3 내분비 2:1 별도 확인. Q11 B2 k=1,2,3, C1 k=2,3,4,6,8,9,10,12, C2 a=1,2,3, C3 a=3,4,5 재열거.
 - Q10 SVG A1/A2/A3/B2: clip/mask 영역을 코드에서 직접 확인하여 수학적 shade mask 64/32/8/96과 대응. **실제 브라우저 렌더 NOT_TESTED**. Q10 나머지는 발문 자체에 집합 조건 제시.
-- 수리 Q09 전 9 UID: `meta.subUnitKey`를 잘못된 `H22-C2-01-COORDINATE_METRIC`에서 current RPM crosswalk(H1-RPM-208/209)의 `H22-C2-01-GEOMETRY_APPLICATION`으로 교정, compiled master의 공식 라벨 `subUnit:"도형의 방정식 활용"` 보강. Q09 C3의 `t>0` 범위조건은 기존 `COND_RANGE`로 연결. RPM LOCKED/원본 변경 없음.
+- 수리 Q09 전 9 UID: `meta.subUnitKey`를 잘못된 `H22-C2-01-COORDINATE_METRIC`에서 current RPM crosswalk(H1-RPM-208/209)의 `H22-C2-01-GEOMETRY_APPLICATION`으로 교정, compiled master의 공식 라벨 `subUnit:"도형의 방정식 활용"` 보강. Q09 C3의 `t>0` 양수조건은 existing canonical `COND_POSITIVE`로 연결. RPM LOCKED/원본 변경 없음.
 - Q11 원본 ⑤ 조건의 미선언 변수 `z`는 새 Generated Q11 문항들에는 복제되지 않아 Generated 결함으로 승계하지 않음.
 - 원본 9~12 Primary L3: 삼각형의 무게중심/여집합과 차집합/필요조건·충분조건/원의 접선 유지. Q12 Generated EXT-L4는 RPM 공식 L4로 주장하지 않음.
 - 출시 분리: 신규 36 UID의 Source→Meta→Consumer→Index 영구 저장 및 main·Chrome 기술 게이트는 아직 실행 전. 이 문서는 CONTENT REVIEW 판정이며 `MAIN_DONE`이나 Chrome PASS가 아님. 기존 승인 Q01~Q08와 시험지 원본은 보호.
