@@ -1,3 +1,11 @@
+## CURRENT 2026-10-10 — Q21 CREATE 9문항 / 다음 Q22
+- 원본 Q21: 진리집합 P/Q, r↔¬p의 필요·충분조건을 묻는 서술형. RPM Primary L3 `필요조건·충분조건` (`H1-RPM-247`).
+- 통합 branch `work/alive-25-palma-h1-2mid-qid9`, Q21 A1~C3 신규 `GPT_QID9_Q21_PACKAGE.json` 9개, `GPT_QID9_Q21_STEM_SELF_REVIEW.md` 제작자 KEEP9/REVISED0/HOLD0.
+- 기존 Q01~Q20 180 후보 보호. 총 신규 CREATE **189 (21×9)**. q21 독립 GPT 공개답 검수 NOT_RUN / Consumer 0/9 / Chrome NOT_TESTED / main 출시 NOT_DONE. 이전 승인 144 UID와 다른 상태.
+- 원본 다음 제작 Q22. Q21 review와 기술 출시가 실제 이행되기 전에는 MAIN_DONE 또는 학생 조회 PASS 주장 금지.
+
+---
+
 # CURRENT 2026-10-10 — Q09-Q12 local release complete, main PR pending; Q13-Q16 already MAIN_DONE
 
 - Approved user scope: Q09-Q16 A1-C3 = 72 UIDs. Q13-Q16 (36) were already released to main; this PR publishes Q09-Q12 (36) once.
