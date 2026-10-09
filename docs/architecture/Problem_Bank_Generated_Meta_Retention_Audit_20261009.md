@@ -41,6 +41,7 @@
 
 ## 4. 현재 기술적 상태
 
-- source/Consumer 메타 영구 저장·동등성 HARD **구현 전**이다. 이 문서 반영만으로 자동 validator가 생기거나 기존 323개가 보정되었다고 주장하지 않는다.
-- 다음 코드 작업은 Generated CREATE payload schema와 Consumer register adapter, UID별 Meta parity validator, 검색 index projection 및 최소 회귀 fixture에 국한한다. 원본 기출·RPM LOCKED·기존 승인 source 본문은 보호한다.
+- **2026-10-09 증분 구현:** `archive/tools/generated-meta-retention-gate.cjs`가 신규(outside 323 legacy cutover) UID의 source JS + approved Meta + Consumer record/question + index 동일 UID, 상세 Meta값 및 SHA projection, 1~5 난이도, 명시 NONE/[]와 누락 차이, Generated EXT-L4 원장 및 실재 RPM DRAFT authority 파일/bytes SHA를 검사한다. `tests/generated-meta-retention.test.cjs`와 `.github/workflows/generated-consumer-browser-smoke.yml`에 CI 검증을 연결했다. 코드 커밋: `87d8dd1`, RPM DRAFT 거짓 LOCKED 방지 보완 `1ed8ad9`.
+- **구현 완료 범위 정확화:** 이 단계는 신규 UID 배포 전 정적 CI **검출 게이트**다. 승인 Meta source 등록 adapter의 자동 작성, 실제 검색용 L1~L4 쿼리/검색 projection, 기존 승인 323 UID 누락값 backfill, 팔마고 HOLD 23 승격을 완성했다는 뜻은 아니다. review evidence SHA는 현재 값 존재·형식만 확인하므로 실제 review artifact bytes 결속은 후속 강화 대상이다. 기존 323개는 `meta-retention-cutover-20261009.json`을 따라 명시적으로 **LEGACY_NOT_RECERTIFIED**다.
+- 다음 작업은 Generated CREATE payload schema 및 register adapter에서 확정 Meta 직접 보존, source/Consumer/index 신규 항목 실배포, 검색 index에서 상세 Meta 조회, 레거시 근거 기반 UID별 백필에 국한한다. UID Meta parity validator는 신규 정적 CI 기초 구현 상태이며 source review bytes·활성 정본 키 대조는 후속 보강한다. 원본 기출·RPM LOCKED·기존 승인 source 본문은 보호한다.
 - 관련 정본: `alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md`, `alive/06_EXECUTION/ALIVE_LITE_REVIEW_CONSUMER_DB_CLOSEOUT_v1.md`, `docs/architecture/Problem_Bank_Storage_And_Retrieval_Current_v1.md`.
