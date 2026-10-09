@@ -68,7 +68,9 @@
       "stage": "CREATE_PENDING",
       "productionRelativePath": "archive/exams/original/high/h2/1mid/23_금당고_1학기_중간_고2_수학II.js"
     },
-    "disposition": "Preparation-only child roster; ROOT authority file and final assignment not synthesized here."
+    "disposition": "Preparation-only child roster; ROOT authority file and final assignment not synthesized here.",
+    "durableSubrosterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\technical-registration\\registration-subroster.json",
+    "durableSubrosterSha256": "9653a7af4a0f893cc44e06277a2d3171a6f5d621d443355488a8550ae216cf88"
   },
   "normalCanonicalGenerator": {
     "command": "node archive/tools/build-question-index.mjs",
@@ -86,7 +88,10 @@
       "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\archive\\analysis\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\technical-registration\\normal-generator-attempt-01.stderr.raw.txt",
       "sha256": "93339d209ad3897047bfbd053c6ade0f6292f9a963bb9f4e72864ef0d93081a6"
     },
-    "interpretation": "Actual isolated global generator failure. The sole missing DB source is the newly promoted target; no unrelated stale path was repaired or hidden."
+    "interpretation": "Actual isolated global generator failure. The sole missing DB source is the newly promoted target; no unrelated stale path was repaired or hidden.",
+    "attemptHead": "3cecb45b2483ee1273a4b8a288f9b05ab91c9865",
+    "candidateDbRawSha256": "f906ec6c3c7acc2d86ade9b80e6b916085de948b6e221e83e851e7c801cb9e0e",
+    "attemptNote": "Attempt ran before ROOT fast-forwarded working HEAD; captured failure inputs are pinned to HEAD 3cecb45b2483ee1273a4b8a288f9b05ab91c9865. The current HEAD is recorded separately at plan creation."
   },
   "boundedProducerReadiness": {
     "courseCode": "math2",
@@ -98,7 +103,9 @@
     "candidateRootHeadMustMatchCurrentHead": true,
     "candidateRootHeadFrozen": false,
     "documentedAdmissionCaveat": "CODEX_MAINTENANCE.md describes bounded production when unrelated tracked source/DB parity failures block global candidate generation. This captured failure names this new target alone; ROOT should confirm that this expected target-registration failure is admitted before producer invocation.",
-    "producerInvoked": false
+    "producerInvoked": false,
+    "candidateRootMustBeFreshManagedWorktree": true,
+    "preparationOnlyCandidateRootPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\h2-intake-batch01\\AP------\\.tmp\\archive\\h2-intake-batch01-20261009\\23_금당고_1학기_중간_고2_수학II\\registration-full-canonical-root\\archive"
   },
   "currentRegistryBaseline": [
     {
@@ -138,6 +145,6 @@
       "sha256": "3c6a427b7c64ef8ad786f68fdd0c9dea86e5b218c9e97d451915730b3a226187"
     }
   ],
-  "nextRequiredAction": "ROOT fast-forwards the worktree to origin/main and commits the exact promoted source plus authorized registration-preparation evidence. ROOT then supplies the new expectedHead and producer authority/assignment; create a fresh managed candidate worktree at that HEAD and run the bounded math2 producer only after ROOT confirms the documented admission route. Do not reuse the preparation-only candidate as a final package.",
+  "nextRequiredAction": "ROOT, now on post-fast-forward HEAD 9d5686f3a09f156e15549a5a393a2ae7eb3215ea, commits the exact promoted source plus authorized registration-preparation evidence. Then ROOT supplies the resulting expectedHead and producer authority/assignment; create a fresh managed candidate worktree at that new HEAD and run the bounded math2 producer only after ROOT confirms the documented admission route. Do not reuse the partial global-generator candidate as a final package.",
   "unchangedScope": "No production source/assets, nine registry baselines, Git index, HEAD, R1/R2/R3 evidence, or semantics were modified. No stage validator was rerun."
 }
