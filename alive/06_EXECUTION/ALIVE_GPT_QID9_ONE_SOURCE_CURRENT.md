@@ -1,5 +1,11 @@
 # ALIVE GPT QID9 — 원본 한 문항 × 9개 슬롯 작업 계약 CURRENT
 
+## CURRENT HARD — 생성 Meta 설계→저장 영구보존 계약 (2026-10-09 문제은행 프로젝트)
+- **문항 생성 시 실제 사용한 L1/L2/L3/L4, CrossConcept, Condition, IntegrationPattern 및 1~5단계 난이도는 작업용 사고 메모만 남겨서는 안 된다.** 최종 생성 source shard/metadata에 UID별 확정값으로 저장하고, GPT REVIEW 통과 후 학생용 Generated Consumer shard 및 인덱스에도 동일 UID로 검색·조회 가능한 형태로 투영한다. 보존 여부는 출시 직전 UID별 확인 대상이다.
+- 필수: 정확한 RPM/Generated 확장 Primary L3와 L4, 교육과정·L1/L2 parent, difficultyBucket=1~5, crossConceptKeys[]/conditionKeys[]/integrationPattern. 개념·조건이 실제 미적용이면 [] 또는 NONE을 명시하여 **미기재와 구별**한다. problemTypeKey/templateKey는 ACTIVE 매핑을 사용하거나 실제 매핑 상태를 근거와 함께 보류한다. 가짜 canonical 키·L3/L4 임의 추정 금지.
+- Generated Consumer 기존 `l2`는 storage bucket·subUnitKey 계열이며 RPM L2의 정식 의미 필드가 아니다. 신규 상세 Meta에서는 RPM L2를 **별도의 필드**로 보존하고 원본 교육과정 standardUnitKey/subUnitKey 및 generated EXT-L4와 혼동하지 않는다.
+- 출판 전 `설계/검수 Meta → source JS/metadata → Consumer question → 학생용 검색 index` 데이터의 UID 단위 parity 확인이 필수다. **본문·정답·해설만 등록되었거나 RPM label만 표시되고 상세 Meta가 분실되면 `META_PERSISTENCE_HOLD`**이며, 해당 UID는 기술 출시 완료로 기록하지 않는다. 다른 정상 UID/생성 레인의 진행은 유지한다.
+- 기존 학생용 323 UID(2026-10-09)의 Meta 보존 누락은 [실측 감사 원장](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/Problem_Bank_Generated_Meta_Retention_Audit_20261009.md)에 격리한다. **이 지시만으로 기존 문항의 PASS를 철회하거나 323개를 일괄 재제작하지 않는다.** 검증된 현재 상태를 정확히 기록하고, 조회 가능한 원본/설계 증거가 있는 범위만 나중에 UID별 백필한다.
 ## CURRENT HARD — 제작 GPT 역발문 자가수정 HARD (2026-10-09 원장 직접 지시)
 - **적용 범위:** 신규 ALIVE/QID9 A1~C3 생성 후보를 쓰는 GPT 제작자. 기출 원본 전사·조판 및 기존 R1/R2 blind 검수의 의미/입력은 변경하지 않는다. 제작 GPT는 최종 후보를 저장·qid별 commit하기 **전에 각 후보의 학생용 발문을 자신의 출제 의도에서 분리해 비판적으로 다시 읽고, 발견한 결함은 해당 제작자가 즉시 수정하여 최종본에 반영**해야 한다. 검수 단계의 다른 GPT에게 단순히 결함을 떠넘기지 않는다.
 - **읽는 순서:** 완성된 **학생에게 실제 보이는 문장·보기·그림/표/수식**만 먼저 놓고 제작 당시 목표 정답·풀이·Blueprint의 자동 보충을 중지한다. 수학 풀이 전체의 별도 blind-first 재수행을 뜻하지 않는다. (1) 학생은 질문 대상·정의역·변수·부호·등호·그림 조건과 답형을 오해 없이 읽을 수 있는가? (2) 학교 수학 교사가 실제 시험에서 이렇게 묻는가? 단지 예쁜 답을 위해 임의 배수·이질량 합·부자연스러운 조건을 만들지 않았는가? (3) 발문만으로 **의도한 Primary L3의 결정적 사고**가 필요한가? 핵심 조건이 소거되거나 더 쉬운 우회 풀이로 평가 목표가 무력화되는가? (4) 보기 네 오답을 각 실재 오류 과정으로 만들 수 있는가? 정답 유일성·경계·시각 참조·해설과 학생 입력이 일치하는가?
