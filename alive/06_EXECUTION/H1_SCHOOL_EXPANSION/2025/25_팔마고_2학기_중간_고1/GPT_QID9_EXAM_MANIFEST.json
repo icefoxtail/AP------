@@ -10,7 +10,8 @@
   "createdQids": [
     1,
     2,
-    3
+    3,
+    4
   ],
   "qidLedger": [
     {
@@ -136,22 +137,58 @@
       "createStatus": "CREATE_DRAFT_SELF_CHECKED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
       "releasedCount": 0
+    },
+    {
+      "qid": 4,
+      "sourceQid": 4,
+      "candidateCount": 9,
+      "slots": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "uids": [
+        "ALITE-PALMA25-2MID-Q04-A1",
+        "ALITE-PALMA25-2MID-Q04-A2",
+        "ALITE-PALMA25-2MID-Q04-A3",
+        "ALITE-PALMA25-2MID-Q04-B1",
+        "ALITE-PALMA25-2MID-Q04-B2",
+        "ALITE-PALMA25-2MID-Q04-B3",
+        "ALITE-PALMA25-2MID-Q04-C1",
+        "ALITE-PALMA25-2MID-Q04-C2",
+        "ALITE-PALMA25-2MID-Q04-C3"
+      ],
+      "lockedPrimaryL3": "평면좌표: 두 점 사이 거리 및 거리합 최솟값",
+      "exactRpmRecordLookup": "PENDING_NO_ID_INVENTED",
+      "commit": "4ed8b6c244b8c735ed8e417d151796dd407787a8",
+      "files": [
+        "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q04_PACKAGE.json"
+      ],
+      "createStatus": "CREATE_DRAFT_SELF_CHECKED",
+      "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
+      "releasedCount": 0
     }
   ],
   "metrics": {
-    "newCreateDraftTotal": 27,
+    "newCreateDraftTotal": 36,
     "newCreateDraftByGroup": {
-      "A": 9,
-      "B": 9,
-      "C": 9
+      "A": 12,
+      "B": 12,
+      "C": 12
     },
-    "uniqueGeneratedUids": 27,
+    "uniqueGeneratedUids": 36,
     "openBookQualityReviewed": 0,
     "studentSupplyNew": 0,
-    "reviewQueue": 27,
+    "reviewQueue": 36,
     "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier"
   },
-  "nextSourceQid": 4,
+  "nextSourceQid": 5,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
   "publication": "NOT_RELEASED_REVIEW_QUEUED",
   "workflow": {
