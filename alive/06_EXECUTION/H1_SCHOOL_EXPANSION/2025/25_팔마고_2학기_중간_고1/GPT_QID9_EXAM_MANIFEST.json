@@ -51,7 +51,10 @@
       ],
       "createStatus": "CREATE_DRAFT_SELF_CHECKED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "releasedCount": 0
+      "releasedCount": 0,
+      "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
+      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
     },
     {
       "qid": 2,
@@ -92,7 +95,10 @@
       ],
       "createStatus": "CREATE_DRAFT_SELF_CHECKED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "releasedCount": 0
+      "releasedCount": 0,
+      "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
+      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
     },
     {
       "qid": 3,
@@ -136,7 +142,10 @@
       ],
       "createStatus": "CREATE_DRAFT_SELF_CHECKED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "releasedCount": 0
+      "releasedCount": 0,
+      "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
+      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
     },
     {
       "qid": 4,
@@ -172,7 +181,10 @@
       ],
       "createStatus": "CREATE_DRAFT_SELF_CHECKED",
       "reviewStatus": "GPT_OPEN_BOOK_REVIEW_NOT_RUN",
-      "releasedCount": 0
+      "releasedCount": 0,
+      "contentReviewStatus": "OPEN_BOOK_CONTENT_REVIEW_20261009_COMPLETED",
+      "releaseGateStatus": "PENDING_GENERATED_CONSUMER_AND_META_READBACK",
+      "reviewLedger": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
     }
   ],
   "metrics": {
@@ -186,7 +198,11 @@
     "openBookQualityReviewed": 0,
     "studentSupplyNew": 0,
     "reviewQueue": 36,
-    "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier"
+    "reviewBatchTarget": "adaptive 27/36/~45; suggested ~45 (five source qids); user can trigger earlier",
+    "openBookContentReviewed": 36,
+    "contentReviewKeep": 25,
+    "contentReviewRevised": 9,
+    "contentReviewRedesigned": 2
   },
   "nextSourceQid": 5,
   "legacyMainCandidates": "기존 팔마고 27개 후보는 main의 별도 작업으로 보존. 신규 27개와 합산한 54를 이번 생성분으로 보지 말 것.",
@@ -202,5 +218,20 @@
     353,
     354,
     355
-  ]
+  ],
+  "contentReview": {
+    "date": "2026-10-09",
+    "scope": "Q01-Q04 A1-C3",
+    "reviewed": 36,
+    "keep": 25,
+    "revised": 9,
+    "redesigned": 2,
+    "finalTechnicalReleaseStatus": "NOT_TESTED",
+    "candidateChanges": [
+      "GPT_QID9_Q01_CREATE_DRAFT.md",
+      "GPT_QID9_Q02_CREATE_DRAFT.md",
+      "GPT_QID9_Q04_PACKAGE.json"
+    ],
+    "reviewLedger": "GPT_QID9_36_OPENBOOK_REVIEW_REPAIR_20261009.md"
+  }
 }
