@@ -12,6 +12,8 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <div class="filters">
 <label>출처<select id="source"><option value="">전체</option><option value="original">기출</option><option value="generated">생성</option><option value="archive">기타 아카이브</option></select></label>
 <label>과목<select id="course"><option value="">전체</option></select></label>
+<label>표준단원 키<select id="standardUnitKey"><option value="">전체</option></select></label>
+<label>세부분류 키<select id="subUnitKey"><option value="">전체</option></select></label>
 <label>L1 대단원<select id="L1"><option value="">전체</option></select></label>
 <label>L2 중단원<select id="L2"><option value="">전체</option></select></label>
 <label>L3 개념<select id="L3"><option value="">전체</option></select></label>
@@ -25,23 +27,38 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="archive2-canonical.js?v=20261009-meta1"></script>
 <script src="archive2-core.js?v=20261009-meta1"></script>
-<script src="problem-bank-meta.js?v=20261009-meta2"></script>
+<script src="problem-bank-meta.js?v=20261009-meta3"></script>
 <script src="archive2-source.js?v=20261009-meta1"></script>
 <script>
 'use strict';
 const el=id=>document.getElementById(id),shards=new Map();
-let inventory=[],matching=[],limit=40,holds=[],previewRequest=0;
+let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={};
 const filters=()=>{
  const f={};for(const k of ['L1','L2','L3','L4'])if(el(k).value)f[k]=el(k).value;
  if(el('source').value)f.sourceKind=el('source').value;
  if(el('course').value)f.standardCourse=el('course').value;
+ if(el('standardUnitKey').value)f.standardUnitKey=el('standardUnitKey').value;
+ if(el('subUnitKey').value)f.subUnitKey=el('subUnitKey').value;
  if(el('difficulty').value)f.difficultyBucket=el('difficulty').value==='UNKNOWN'?'UNKNOWN':Number(el('difficulty').value);
  return f;
 };
-function options(id,field,rows){
- const selected=el(id).value,values=[...new Set(rows.map(r=>r[field]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));
- el(id).replaceChildren(new Option('전체',''),...values.map(v=>new Option(v,v)));
- if(values.includes(selected))el(id).value=selected;
+function options(id,field,rows,authorityRows=null){
+ const selected=el(id).value,values=new Map();
+ for(const row of authorityRows||rows){
+  const value=typeof row==='string'?row:row[field],label=typeof row==='string'?row:(row.displayLabel||value);
+  if(value&&!values.has(value))values.set(value,label);
+ }
+ const sorted=[...values.entries()].sort((a,b)=>a[0].localeCompare(b[0],'ko'));
+ el(id).replaceChildren(new Option('전체',''),...sorted.map(([value,label])=>new Option(label,value)));
+ if(values.has(selected))el(id).value=selected;
+}
+function refreshCoreMetaKeyOptions(){
+ const course=el('course').value,units=(coreMetaFilterOptions.standardUnits||[]).filter(row=>!course||(row.standardCourses||[]).includes(course));
+ if(el('standardUnitKey').value&&!units.some(row=>row.standardUnitKey===el('standardUnitKey').value))el('standardUnitKey').value='';
+ options('standardUnitKey','standardUnitKey',inventory,units);
+ const selectedUnit=el('standardUnitKey').value,subUnits=(coreMetaFilterOptions.subUnits||[]).filter(row=>(!course||(row.standardCourses||[]).includes(course))&&(!selectedUnit||row.standardUnitKey===selectedUnit));
+ if(el('subUnitKey').value&&!subUnits.some(row=>row.subUnitKey===el('subUnitKey').value))el('subUnitKey').value='';
+ options('subUnitKey','subUnitKey',inventory,subUnits);
 }
 function render(){
  matching=ProblemBankMeta.query(inventory,filters());
@@ -50,7 +67,9 @@ function render(){
  for(const row of matching.slice(0,limit)){
   const card=document.createElement('article'),title=document.createElement('strong'),info=document.createElement('p');
   title.textContent=[row.school,row.year,row.sourceQid??row.sourceQuestionNo??row.sourceOrdinal].filter(v=>v!=null).join(' · ');
-  info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
+  const unit=row.standardUnit?`${row.standardUnit}${row.standardUnitKey?` (${row.standardUnitKey})`:''}`:'미지정';
+  const subUnit=row.subUnit?`${row.subUnit}${row.subUnitKey?` (${row.subUnitKey})`:''}`:'미지정';
+  info.textContent=[row.standardCourse||'과목 미지정',row.L1||'L1 미지정',row.L2||'L2 미지정',`표준단원 ${unit}`,`세부분류 ${subUnit}`,row.L3||'L3 미지정',row.L4||'L4 미지정',`난이도 ${row.difficultyBucket??'미지정'}`].join(' / ');
   card.append(title,info);
   if(row.sourceKind==='generated'){
    const preview=document.createElement('button');preview.textContent='문제 보기';preview.onclick=()=>previewGenerated(row,preview);card.append(preview);
@@ -89,8 +108,10 @@ function safeStem(host,content){
   const table=document.createElement('table');for(const row of cells){const tr=document.createElement('tr');for(const c of row){const cell=document.createElement(c[1]);cell.textContent=c[2];tr.append(cell);}table.append(tr);}host.append(table);cursor=match.index+match[0].length;
  }host.append(document.createTextNode(raw.slice(cursor)));
 }
-for(const id of ['source','course','L1','L2','L3','L4','difficulty'])el(id).onchange=()=>{
+for(const id of ['source','course','standardUnitKey','subUnitKey','L1','L2','L3','L4','difficulty'])el(id).onchange=()=>{
  limit=40;
+ if(id==='course'){el('standardUnitKey').value='';el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
+ if(id==='standardUnitKey'){el('subUnitKey').value='';refreshCoreMetaKeyOptions();}
  if(['course','L1','L2','L3'].includes(id)){
   const order=['L1','L2','L3','L4'],depth=id==='course'?-1:order.indexOf(id);
   for(const key of order.slice(depth+1))el(key).value='';
@@ -102,8 +123,11 @@ el('more').onclick=()=>{limit+=40;render();};
 (async()=>{
  try{
   const [catalog,index]=await Promise.all(['data/archive2-catalog.json','data/generated-lite-consumer/v1/index.json'].map(async p=>{const r=await fetch(p,{cache:'no-cache'});if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}));
+  coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
   holds=index.excludedHoldUids||[];inventory=ProblemBankMeta.buildIndex(Archive2Core.decodeCatalog(catalog).records,index.records,{excludedHoldUids:holds});
-  options('course','standardCourse',inventory);for(const k of ['L1','L2','L3','L4'])options(k,k,inventory);render();
+  options('course','standardCourse',inventory);
+  refreshCoreMetaKeyOptions();
+  for(const k of ['L1','L2','L3','L4'])options(k,k,inventory);render();
  }catch(e){el('status').textContent=e.message;}
 })();
 </script>

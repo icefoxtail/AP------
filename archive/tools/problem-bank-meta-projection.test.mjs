@@ -102,7 +102,9 @@ test('original projection consumes only typed display-only metadata and does not
   const [view] = metaView.buildIndex([row], []);
   assert.equal(view.standardCourse, '수학I');
   assert.equal(view.standardUnitKey, 'H15-M1-03');
+  assert.equal(view.standardUnit, '지수함수');
   assert.equal(view.subUnitKey, 'H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION');
+  assert.equal(view.subUnit, '지수함수의 활용');
   assert.equal(view.rpmL1, '지수함수와 로그함수');
   assert.equal(view.rpmL2, '지수함수');
   assert.equal(view.metaStatus.rpmL1, 'CONFIRMED');
@@ -131,6 +133,23 @@ test('ignores untyped or unavailable nested projections', () => {
 test('projects all twenty published Maesan Math I core tags for search without changing canonical assignment status', () => {
   const packed = JSON.parse(fs.readFileSync(new URL('../data/archive2-catalog.json', import.meta.url), 'utf8'));
   const catalog = archive2Core.decodeCatalog(packed);
+  const tagMasterBytes = fs.readFileSync(new URL('../data/master_tables/js_archive_tag_master.json', import.meta.url));
+  const tagMaster = JSON.parse(tagMasterBytes.toString('utf8'));
+  const sha256 = bytes => require('node:crypto').createHash('sha256').update(bytes).digest('hex');
+  assert.equal(catalog.coreMetaFilterAuthority.path, 'data/master_tables/js_archive_tag_master.json');
+  assert.equal(catalog.coreMetaFilterAuthority.sha256, sha256(tagMasterBytes));
+  const newlyApprovedKeys = [
+    'H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH',
+    'H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION',
+    'H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH',
+    'H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION',
+  ];
+  for (const key of newlyApprovedKeys) {
+    const option = catalog.coreMetaFilterOptions.subUnits.find(row => row.subUnitKey === key);
+    assert.ok(option);
+    assert.ok(option.standardCourses.includes('수학I'));
+    assert.ok(tagMaster.some(row => row.keyType === 'subUnitKey' && row.key === key && row.status === 'active'));
+  }
   const targetRows = catalog.records.filter(row => row.sourceFile === sourceFile);
   assert.equal(targetRows.length, 20);
   assert.ok(targetRows.every(row => row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND'));
@@ -142,4 +161,29 @@ test('projects all twenty published Maesan Math I core tags for search without c
   assert.deepEqual(filtered.map(row => row.sourceOrdinal).sort((a, b) => a - b), Array.from({ length: 20 }, (_, i) => i + 1));
   assert.ok(filtered.every(row => row.rpmL1 && row.rpmL2 && row.standardCourse === '수학I'));
   assert.ok(filtered.every(row => row.verifiedEligible === false));
+  const q10 = filtered.find(row => row.sourceOrdinal === 10);
+  assert.equal(q10.standardUnit, '지수함수');
+  assert.equal(q10.standardUnitKey, 'H15-M1-03');
+  assert.equal(q10.subUnit, '지수함수의 활용');
+  assert.equal(q10.subUnitKey, 'H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION');
+  const expectedByKey = new Map([
+    ['H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH', []],
+    ['H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION', [10]],
+    ['H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH', [12]],
+    ['H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION', [18]],
+  ]);
+  for (const [key, expectedQids] of expectedByKey) {
+    const matches = metaView.query(projected, { subUnitKey: key });
+    assert.deepEqual(matches.map(row => row.sourceOrdinal).sort((a, b) => a - b), expectedQids);
+  }
+  const exponentialGraphOption = catalog.coreMetaFilterOptions.subUnits.find(row => row.subUnitKey === 'H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH');
+  assert.equal(exponentialGraphOption.label, '지수함수의 그래프');
+  assert.deepEqual(metaView.query(projected, { standardUnitKey: 'H15-M1-03', subUnitKey: 'H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH' }), []);
+  assert.deepEqual(targetRows.filter(row => row.metaProjection).map(row => row.metaProjection.subUnitKey).includes('H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH'), false);
+  const html = fs.readFileSync(new URL('../problem-bank-search.html', import.meta.url), 'utf8');
+  assert.match(html, /<select id="standardUnitKey">/);
+  assert.match(html, /<select id="subUnitKey">/);
+  assert.match(html, /f\.standardUnitKey=el\('standardUnitKey'\)\.value/);
+  assert.match(html, /f\.subUnitKey=el\('subUnitKey'\)\.value/);
+  assert.match(html, /refreshCoreMetaKeyOptions/);
 });
