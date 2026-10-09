@@ -2642,3 +2642,36 @@ body[data-archive-view="compose"] .compose-create-bar {
     order: 2;
   }
 }
+
+
+/* Archive 2.0 × Lovable visual foundation — 2026-10-09.
+   Presentation-only. Preserve existing Archive events, DOM, routes and render engines. */
+:root {
+  --ink: #1c293b;
+  --muted: #5f6979;
+  --line: #e1e2e1;
+  --bg: #faf9f6;
+  --navy: #25364c;
+  --accent: #58647e;
+  --radius: 9px;
+  --archive2-focus: #58647e;
+}
+body { background: var(--bg); }
+button, input, select { border-radius: 8px; }
+button { transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
+button:hover:not(:disabled) { background: #f3f2ee; }
+button.primary:hover:not(:disabled) { background: #334661; color: #fff; }
+button.active, button[aria-pressed="true"] {
+  background: #eff0f4;
+  border-color: #b6bece;
+}
+input, select { border-color: #d8dadc; background: #fffefa; }
+:focus-visible { outline: 2px solid var(--archive2-focus); outline-offset: 3px; }
+.panel, .exam { background: #fffefa; border-color: var(--line); box-shadow: none; }
+.badge { border-radius: 6px; background: #f0f1f0; color: #526071; }
+.exam.selected { background: #f5f6f9; border-color: #a9b3c8; }
+.empty { background: #fffefa; border-color: var(--line); }
+@media (max-width: 700px) {
+  button, input, select { min-height: 44px; }
+  input[type="checkbox"] { min-height: 18px; }
+}
