@@ -1,3 +1,14 @@
+# CURRENT 2026-10-09 — 팔마고 원본 q12 신규 9문항 CREATE / 다음 q13
+
+- 원본 q12: 원 $x^2+y^2=10$ 및 외부점 $(-3,4)$의 **두 접선 접점 현**. 원문 Git SHA `4cfce909c023e5c4df4a759945c8cc3e0a63ec76`. **Primary L3 원의 접선**, RPM H1-RPM-221/222, ACTIVE PT_CIRCLE_TANGENT + 현재 템플릿.
+- 전용 Git 통합 브랜치 `work/alive-25-palma-h1-2mid-qid9`에서 q12만 추가. `GPT_QID9_Q12_PACKAGE.json` 9문항, `GPT_QID9_Q12_STEM_SELF_REVIEW.md` KEEP9/REVISED0/HOLD0, Generated L4 레지스트리 3종 + CrossConcept 레지스트리 4종. 원본 기출·q01~q11/학생 Consumer 모두 보호.
+- A1~A3 접점 현까지 거리, B1~B3 반지름 역산·현 길이·접선 길이, C1~C3 현 역조건/통과점/가능 반지름 2개 합. 모든 문항 문제용 그림 불필요. 정답 ①2·②2·③2·④2·⑤1, 5지 유일·오답 4/4 산출 증거, 정확 수치 9건 자체 검증.
+- **누적 신규 제작 q01~q12 108개.** 기존 승인/학생 공급 계수 `72` 보존; 현 시점 CREATE 단계에서 새 q12 승인·Consumer·Chrome·main 출판 주장 금지. q09~q12 합산 미승인 생산 36개(각9)는 사용자 요청 시 누적 GPT 공개답 검수 대상.
+- 다음 신규 제작은 원본 **q13**, `GPT_QID9_EXAM_MANIFEST.json`의 `nextSourceQid=13`. q12 품질이 새로 승인되면 별도 품질인증 중복 없이 정확한 Meta source→Consumer→index·main·Chrome 기술 출고를 처리.
+- Git source SHA, CURRENT, branch의 실제 UID/manifest를 우선; 과거 HISTORY의 '다음 q11/q12'는 더 이상 active 단계가 아님.
+
+---
+
 # CURRENT 2026-10-09 — 원본 q11 새 A1~C3 9문항 CREATE 완료 / 다음 q12
 
 - **실행 사용자 범위:** 2025 팔마고 고1 2학기 중간 **원본 q11 하나**. 기존 q01~q10 보호, 건너뛴 q10은 별도 작업자에 의해 branch manifest에 9개 CREATE로 등록된 것이 실제 확인됨.
